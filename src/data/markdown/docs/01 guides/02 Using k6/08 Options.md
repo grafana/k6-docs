@@ -371,7 +371,7 @@ done and a slot opens. Available in both the `k6 run` and the `k6 cloud` command
 
 ### Default
 
-10
+20
 
 ### Example
 
@@ -380,6 +380,34 @@ done and a slot opens. Available in both the `k6 run` and the `k6 cloud` command
 ```js
 export let options = {
   batch: 15,
+};
+```
+
+</div>
+
+## Batch per host
+
+The maximum number of simultaneous/parallel connections for the same hostname that an
+[`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
+`batch()` call that you've given 20 URLs to the *same* hostname and `--batch-per-host` is set to 5, then the VU will make 5
+requests right away in parallel and queue the rest, executing them as soon as a previous request is
+done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
+
+| Env        | CLI       | Code / Config file |
+| ---------- | --------- | ------------------ |
+| `K6_BATCH_PER_HOST` | `--batch-per-host` | `batchPerHost`            |
+
+### Default
+
+6
+
+### Example
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```js
+export let options = {
+  batchPerHost: 5,
 };
 ```
 
