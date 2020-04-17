@@ -261,7 +261,7 @@ one you've been invited to, you have two options:
    the UI and looking in the URL bar of your browser, the `12345` in
    `https://app.k6.io/projects/12345` is the project ID.
 
-## Differences between local and cloud execution (in beta)
+## Differences between local and cloud execution
 
 There's currently one difference between local and cloud execution:
 local execution has support for iterations based test length (`-i` or
