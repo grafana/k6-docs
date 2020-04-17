@@ -268,10 +268,6 @@ async function createDocPages({ graphql, actions, pathPrefix }) {
     )(path);
 
     // injection of a link to an article in git repo
-    // NOTE, that this is part of feature/edit-article-btn
-    // so it won't be used unless you have
-    // GATSBY_FEATURE_EDIT_ARTICLE_BTN=true
-    // in your .env file
     remarkNode.frontmatter.fileOrigin = encodeURI(
       `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
     );
