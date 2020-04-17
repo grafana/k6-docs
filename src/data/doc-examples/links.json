@@ -14,7 +14,7 @@
     },
     {
       "title": "Correlating Tokens and Dynamic Data",
-      "description": "Scripting examples on how to correlate dynamic data in your test script.",
+      "description": "Scripting examples to correlate dynamic data in your test script.",
       "url": "",
       "to": "/examples/correlation-and-dynamic-data"
     },
