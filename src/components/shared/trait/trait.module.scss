@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  padding-left: 26px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: url('./check.svg');
+  }
+
+  &.wrapper_disadvantage:before {
+    background: url('./minus.svg');
+  }
+}

@@ -1,0 +1,50 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3805822, 2019-09-10T00:13:33-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: TTNormsPro-Bold by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/bold/
+ *
+ * Webfont: TTNormsPro-Medium by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/medium/
+ *
+ * Webfont: TTNormsPro-Regular by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/regular/
+ *
+ *
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3805822
+ * Licensed pageviews: 200,000
+ * Webfonts copyright: Copyright (c) 2016-2019 by TypeType. Designers Ivan Gladkikh, Pavel Emelyanov. Technical designers Vika Usmanova, Olexa Volochay, Nadyr Rakhimov. All rights reserved.
+ *
+ * © 2019 MyFonts Inc
+*/
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/tt-norms-pro/tt-pro-regular-webfont.woff2') format('woff2'),
+    url('./fonts/tt-norms-pro/tt-pro-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/tt-norms-pro/tt-pro-medium-webfont.woff2') format('woff2'),
+    url('./fonts/tt-norms-pro/tt-pro-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/tt-norms-pro/tt-pro-bold-webfont.woff2') format('woff2'),
+    url('./fonts/tt-norms-pro/tt-pro-bold-webfont.woff') format('woff');
+}

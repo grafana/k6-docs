@@ -1,0 +1,66 @@
+.wrapper {
+  @include default-section-spacing;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-tertiary;
+  background-color: $color-primary;
+  box-shadow: 0 1px 5px rgba($color-primary, 0.3);
+  padding-top: 67.5px;
+  padding-right: 100px;
+  padding-bottom: 67.5px;
+  padding-left: 60px;
+
+  @include md-down {
+    padding: 50px 40px;
+  }
+
+  @include sm-down {
+    display: block;
+  }
+
+  @include xs-down {
+    padding: 50px 20px;
+  }
+}
+
+.content {
+  max-width: 485px;
+
+  @include md-down {
+    max-width: 315px;
+  }
+
+  @include sm-down {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  margin-top: 0;
+  margin-bottom: 0;
+  @include md-down {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+}
+
+.cta-button {
+  @include lg-down {
+    min-width: 275px;
+  }
+  @include sm-down {
+    width: 100%;
+    min-width: unset;
+  }
+}

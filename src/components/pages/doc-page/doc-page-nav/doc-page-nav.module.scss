@@ -1,0 +1,39 @@
+.wrapper {
+  width: 275px;
+}
+
+.anchor-wrapper {
+  padding: 0;
+  margin: 0;
+  box-shadow: $light-block-shadow;
+  display: flex;
+  flex-flow: column;
+  border: 1px solid $color-additional-2;
+  list-style: none;
+}
+
+.anchor-box {
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-additional-2;
+  }
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.anchor {
+  text-decoration: none;
+  font-size: $font-size-base;
+  line-height: 20px;
+  color: $color-secondary;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  padding: 15px 20px;
+  &_active {
+    color: $color-accent-primary;
+  }
+  &:hover {
+    color: $color-accent-primary;
+  }
+}

@@ -1,0 +1,19 @@
+.item-card-wrapper {
+  height: 100%;
+}
+
+.container {
+  @include doc-section-spacing;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.image {
+  margin-bottom: 15px;
+}
+
+.footer {
+  padding: 15px 20px;
+}

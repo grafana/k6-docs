@@ -1,0 +1,49 @@
+.wrapper {
+  @include doc-section-spacing;
+}
+
+.dashboard {
+  padding: 0;
+  list-style-type: none;
+}
+
+.link-wrapper {
+  display: flex;
+  align-items: flex-start;
+  padding: 25px;
+  border: 1px solid $color-additional-2;
+  &:not(:last-child) {
+    margin-bottom: -1px;
+  }
+  @include sm-down {
+    flex-flow: column;
+  }
+}
+
+.picture-wrapper {
+  margin-right: 20px;
+  @include sm-down {
+    margin: 0 0 10px 0;
+  }
+}
+
+.content {
+  max-width: 100%;
+}
+
+.link-title {
+  margin: 0 0 10px 0;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+}
+
+.link-description {
+  margin: 0 0 10px 0;
+  max-width: 100%;
+}
+
+.link {
+  margin: 0;
+  max-width: 100%;
+  word-break: break-all;
+}

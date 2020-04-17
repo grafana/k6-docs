@@ -1,0 +1,43 @@
+.wrapper {
+  @include doc-section-spacing;
+}
+
+.subtitle {
+  margin-top: 10px;
+  color: $color-secondary;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+}
+
+.icons-container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.icon-wrapper {
+  &:not(:last-child) {
+    margin-right: 50px;
+    @include md-down {
+      margin-right: 0;
+    }
+  }
+}
+
+.icon {
+  width: 70px;
+  flex: 1;
+}
+
+.link {
+  text-decoration: none;
+  outline: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  p {
+    white-space: nowrap;
+    margin: 0;
+  }
+}

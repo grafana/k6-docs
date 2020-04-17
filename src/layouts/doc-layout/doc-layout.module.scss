@@ -1,0 +1,165 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1600px;
+}
+
+.sidebar {
+  width: 270px;
+  flex-shrink: 0;
+  background-color: $color-additional-3;
+  border-right: 1px solid $color-additional-2;
+  @include lg-down {
+    width: 230px;
+  }
+  @include md-down {
+    width: 195px;
+  }
+  @include sm-down {
+    display: none;
+  }
+}
+.search-box {
+  padding-bottom: 5px;
+}
+.dropdown-wrapper {
+  box-shadow: $light-block-shadow;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 2.5px);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $color-secondary;
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+}
+.dropdown {
+  appearance: none;
+  cursor: pointer;
+  border-radius: 0;
+  border: 1px solid $color-secondary;
+  padding: 12px 40px 11px 15px;
+  width: 100%;
+  background: transparent;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
+  font-weight: 500;
+  outline: none;
+  transition: 0.3s border-color;
+  &::-moz-focusring {
+    border: none;
+  }
+  &:focus {
+    border-color: $color-accent-primary;
+  }
+}
+
+.sidebar-section {
+  padding: 20px;
+  border-bottom: 1px solid $color-additional-2;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+}
+
+// bumping specifity
+h2.sidebar-section-title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-align: start;
+  text-transform: none;
+  color: $color-secondary;
+}
+
+.sidebar-section-title_link {
+  text-decoration: none;
+  color: $color-secondary;
+  transition: 0.3s ease;
+  font-weight: 600;
+  &:hover {
+    color: $color-secondary;
+    border-color: rgba(90, 92, 135, 0.5);
+  }
+}
+
+.sidebarNodeWithChildren > a {
+  &.sidebar-node-title_active {
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 4px 4px 4px;
+      border-color: transparent transparent #5a5c87 transparent;
+      display: inline-block;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 4px;
+    border-color: transparent transparent transparent #5a5c87;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+}
+
+.sidebar-node-title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: $color-primary;
+  transition: font-weight 0.3s;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  margin-bottom: 5px;
+  &:hover {
+    color: $color-accent-primary;
+  }
+}
+
+.sidebar-node-title_active {
+  color: $color-accent-primary;
+  font-weight: 500;
+}
+
+.sidebar-node-children {
+  padding-left: 10px;
+}
+
+a.sidebar-link {
+  color: $color-accent-primary;
+  font-weight: 500;
+}
+
+.main {
+  position: relative;
+  margin: 0 50px;
+  max-width: 1175px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @include lg-down {
+    max-width: calc(100% - 330px); // respecting sidebar width and margins
+  }
+  @include md-down {
+    max-width: calc(100% - 240px); // respecting sidebar width and margins
+    margin: 0 25px;
+  }
+  @include sm-down {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

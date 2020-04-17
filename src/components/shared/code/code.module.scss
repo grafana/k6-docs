@@ -1,0 +1,106 @@
+.code {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  @include no-scrollbars;
+}
+
+.codeContainer {
+  :global {
+    pre {
+      display: flex;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      background: $color-primary;
+      padding-top: 15px !important;
+      padding-bottom: 15px !important;
+      padding-left: 60px !important;
+      @include no-scrollbars;
+      /* preparing for hiding line numbers on md-down */
+      @include md-down {
+        padding-left: 20px !important;
+      }
+    }
+
+    code {
+      flex-grow: 1;
+      display: block;
+      // font-family: $font-family-secondary !important;
+      // font-size: $font-size-code;
+      // line-height: $line-height-code;
+      // color: $color-tertiary !important;
+      text-shadow: none !important;
+      padding-right: 15px !important;
+
+      font-family: Roboto Mono, sans-serif !important;
+      font-size: 14px;
+      line-height: 24px;
+      color: #e2e2e2 !important;
+    }
+
+    .token {
+      &.keyword {
+        color: #00cdff;
+      }
+      &.property {
+        color: $color-tertiary;
+      }
+      &.boolean,
+      &.string {
+        // color: #bc70fd !important;
+        color: rgba(233, 149, 255, 1);
+      }
+
+      &.number {
+        // color: $color-accent-secondary !important;
+        color: rgb(195, 232, 141);
+      }
+
+      &.operator {
+        // color: $color-accent-primary !important;
+        background-color: transparent !important;
+        color: rgb(181, 181, 181) !important;
+      }
+
+      &.constant {
+        color: $color-accent-secondary !important;
+      }
+
+      &.function {
+        // color: #ff21c3 !important;
+        color: rgb(255, 255, 255);
+      }
+
+      &.punctuation {
+        color: $color-tertiary !important;
+      }
+    }
+
+    .line-numbers-rows {
+      left: -40px !important;
+      width: auto !important;
+      letter-spacing: 0 !important;
+      border-right: none !important;
+      /* hiding line numbers on md-down */
+      @include md-down {
+        display: none;
+      }
+
+      span {
+        &:before {
+          font-family: $font-family-secondary !important;
+          font-weight: 300;
+          color: $color-additional-1 !important;
+          padding-right: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+// to override existing padding settings in case of no line numbers required
+.no-line-numbers {
+  pre {
+    padding-left: 20px !important;
+  }
+}

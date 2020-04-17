@@ -1,0 +1,37 @@
+.container {
+  margin-top: 115px;
+  @include lg-down {
+    margin-top: 185px;
+  }
+  @include md-down {
+    margin-top: 225px;
+  }
+  @include sm-down {
+    margin-top: 250px;
+    width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include xs-down {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.main-doc-content {
+  padding-right: 37.5px; // keeping spacing of 50px
+  @include md-down {
+    padding-right: 12.5px; // reverting back after hiding table of contents
+  }
+}
+
+.section-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+  li {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}

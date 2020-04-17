@@ -1,0 +1,110 @@
+version: 2
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.19.0
+      environment:
+        JOBS: 1
+  working_directory: ~/k6-docs
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy-to-staging:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export GATSBY_GOOGLE_API_KEY=${GATSBY_GOOGLE_API_KEY_STAG}" > $BASH_ENV
+            echo "export GATSBY_DRIFT_API=${GATSBY_DRIFT_API_STAG}" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_MAIN_URL=https://${MAIN_URL_STAG}" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_DOC_URL=https://${MAIN_URL_STAG}/docs" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_BLOG_URL=https://${MAIN_URL_STAG}/blog" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_APP_URL=https://app.${MAIN_URL_STAG}" >> $BASH_ENV
+            echo "export BUCKET_NAME=${BUCKET_NAME_STAG}" >> $BASH_ENV
+            echo "export BUCKET_REGION=${BUCKET_REGION_STAG}" >> $BASH_ENV
+            echo "export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_STAG}" >> $BASH_ENV
+            echo "export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_STAG}" >> $BASH_ENV
+            echo "export AWS_CLOUDFRONT_DISTRIBUTION_ID=${AWS_CLOUDFRONT_DISTRIBUTION_ID_STAG}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID_STAG}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_INDEX_NAME=${GATSBY_ALGOLIA_INDEX_NAME_STAG}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_SEARCH_ONLY_KEY=${GATSBY_ALGOLIA_SEARCH_ONLY_KEY_STAG}" >> $BASH_ENV
+            echo "export ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY_STAG}" >> $BASH_ENV
+      - run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
+      - run: sudo pip install awscli
+      - run: npm run build:gatsby
+      - run: npm run deploy
+            
+
+  deploy-to-production:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export GATSBY_GOOGLE_API_KEY=${GATSBY_GOOGLE_API_KEY_PROD}" > $BASH_ENV
+            echo "export GATSBY_DRIFT_API=${GATSBY_DRIFT_API_PROD}" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_MAIN_URL=https://k6.io" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_DOC_URL=https://k6.io/docs" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_BLOG_URL=https://k6.io/blog" >> $BASH_ENV
+            echo "export GATSBY_DEFAULT_APP_URL=https://app.k6.io" >> $BASH_ENV
+            echo "export BUCKET_NAME=${BUCKET_NAME_PROD}" >> $BASH_ENV
+            echo "export BUCKET_REGION=${BUCKET_REGION_PROD}" >> $BASH_ENV
+            echo "export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_PROD}" >> $BASH_ENV
+            echo "export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_PROD}" >> $BASH_ENV
+            echo "export AWS_CLOUDFRONT_DISTRIBUTION_ID=${AWS_CLOUDFRONT_DISTRIBUTION_ID_PROD}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_APP_ID=${GATSBY_ALGOLIA_APP_ID_PROD}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_INDEX_NAME=${GATSBY_ALGOLIA_INDEX_NAME_PROD}" >> $BASH_ENV
+            echo "export GATSBY_ALGOLIA_SEARCH_ONLY_KEY=${GATSBY_ALGOLIA_SEARCH_ONLY_KEY_PROD}" >> $BASH_ENV
+            echo "export ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY_PROD}" >> $BASH_ENV
+      - run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
+      - run: sudo pip install awscli
+      - run: npm run build:gatsby
+      - run: npm run deploy
+
+
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+      - deploy-to-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
+      - deploy-to-production:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

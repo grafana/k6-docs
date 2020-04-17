@@ -1,0 +1,171 @@
+---
+title: "Session recording / HAR support"
+excerpt: ""
+---
+
+In terms of load testing, recording usually refers to the process of creating a load test from the recording of a user session. The process looks like:
+
+1. Record a user or API session 
+2. Convert the recorded session into a test  
+3. Run the test.
+
+While not exclusive, it is common to use the recording when testing complex scenarios of websites or mobile applications. If you have to create a performance test that simulates a scenario with dozens or hundreds of requests, the recording could help you to be more productive in creating your test.
+
+Recording allows seeing the sequence of requests and parameters of the session instead of having to figure them out. Additionally, you could use the recorded information to auto-generate your test instead of building it from scratch.
+
+k6 does not have built-in functionality to record user or API sessions, but it allows to auto-generate a k6 script via an [HAR file](https://en.wikipedia.org/wiki/HAR_(file_format)); HAR is a file format used by all the browsers and various tools to export the recorded HTTP requests.
+
+In k6, the process looks like:
+
+1. Record a HAR file using your browser or tool of choice.
+2. Use **k6 convert** command to convert the HAR file into a k6 test.
+3. Update the auto-generated k6 test.
+4. Use **k6 run** to run the test.
+
+## 1. Record a HAR file
+
+There are many browsers and tools that can be used to export HTTP traffic in a HAR format. A few popular ones are:
+
+ * [Chrome](https://www.google.com/chrome/) 
+ * [Firefox](https://www.mozilla.org/en-US/firefox/)
+ * [Microsoft Edge](https://www.microsoft.com/en-us/windows/microsoft-edge)
+ * [Charles recording proxy ](http://www.charlesproxy.com/)(HTTP proxy/recorder)
+ * [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
+
+Here are the basic steps you need to take to make a recording in Chrome:
+
+1. Open a new incognito window in Chrome (not really necessary, but using an incognito window means you won't be sending a lot of cookies, etc that might have been saved by your browser).
+2. Open up Chrome developer tools (press F12)
+3. Click the "Network" tab
+4. Check out that the recording button (round button) is activated (red color).
+5. Click the "Preserve log" checkbox if you want to make a recording of several successive page loads.
+6. Enter the URL of your site and start doing whatever you'd like your simulated load test users to be doing.
+7. When done, right-click on the list of URLs in Chrome developer tools and choose "Save as HAR with content".
+
+![Save HAR for load testing](./images/session_recorder_save_as_har.png)
+
+It's good to have in consideration the following best practices to record a user session:
+
+## Do
+
+- Browse like a user would
+- Take natural pauses that users would take to consume page content
+- Focus on the most common use cases, rather than all the possible use cases
+- Take note of pages where forms/logins occur, you will likely need to complete some scripting there
+
+## Do NOT
+
+- Visit every page in one journey
+- Click every possible option
+- Navigate as fast as you can
+- Navigate away your actual site or application
+
+## 2. Convert the HAR file to a k6 script
+
+The first step is to install k6. If you have not installed yet, please, follow the [k6 installation instructions](/getting-started/installation).
+
+k6 has a built-in HAR converter that will read HAR files and convert them to k6 scripts that can then be executed:
+
+```bash
+k6 convert -O loadtest.js myfile.har
+```
+
+The above command will auto-generate a k6 script for you. k6 will read the HAR file (*myfile.har*) and convert it into a k6 test (*loadtest.js*).
+
+The auto-generation of the test is a great option to add to your toolbox. It’s common practice for advanced user flows that generate many sophisticated HTTP requests, or for helping testers to identify the format of the requests.
+
+The recording avoids writing advanced tests from scratch, saving you precious time building your performance tests.
+
+## 3. Modify the auto-generated k6 script
+
+In the previous step, the converter did create a k6 script for testing. Now, you should evaluate if you have to change any part of the k6 script. Depending on your use case, you might need to modify some of the following aspects:
+
+* Configure the load options
+* Remove third-party content
+* Correlate dynamic data
+
+### Configure the load options
+
+At this moment, k6 has auto-generated a “functional” test, a test that by default will run with one “Virtual User” for one “Iteration”.
+
+It’s time for you to configure the “load” options of your performance tests. k6 allows configuring in several ways:
+
+1 -  As CLI arguments while running the test: 
+
+```bash
+k6 run --vus 10 --duration 30s loadtest.js
+```
+
+2 - The options of the script file.
+
+```js
+export let options = {
+  vus: 10,
+  duration: "30s"
+};
+```
+
+To learn more information about how to configure the load options, read the [Adding more VUs guide](/getting-started/running-k6#adding-more-vus) and the [Options guide](/using-k6/options).
+
+### Remove third-party content 
+
+If you are recording a user session of a website, by default, you will record all the HTTP requests, including requests from third-party tools used on your website — for example, Analytics tools, Facebook, Twitter, Support Widgets, CDNs and many more. 
+
+You should remove these third party requests because:
+
+* These third-party requests will skew the percentiles of your performance results. 
+* You may have no ability to impact the performance of the third-party service 
+* The load test may violate the terms of service contract that you have with the provider.
+
+There are at least three options to skip third-party requests in your k6 script.
+
+1 - Edit the auto-generate k6 script and remove one by one the requests to third-party services.
+
+
+2 -  Use the **--only** and **--skip** options of the **k6 convert** command.
+
+**--only**
+
+*This option allows you to supply a comma-separated list of domains which are the only ones you want to fetch things from within your k6 test. This means that k6 will filter out any requests that go to domains other than these.* 
+
+**--skip** 
+
+The inverse of **--only**. This option allows you to specify some domains that you want to exclude *from the k6 test, meaning that the generated k6 script will not contain any requests for this domain.* 
+
+3 - Download a HAR file with only requests to the selected domains.
+
+In Chrome, you can use the DevTools Network Filter to select only particular domains. The Filter input accepts a Regex to match multiple domains. 
+
+    `/k6.io|cloudfront.net/`
+
+![Save HAR filter domain using regex](./images/session_recorder_filter_domain.png)
+
+After filtering your selected domains,  you can download the HAR file as described in the first step of this tutorial, and the HAR file will only include the requests to the selected domains.
+
+If you don’t know all the domains to filter, it is beneficial to use the query language of the Network Filter. Just input `domain:` in the filter to see all the different domains recorded by the Network Panel.
+
+![Save HAR filter domain list](./images/session_recorder_filter_domain_list.png)
+
+### Correlate dynamic data 
+
+In a load testing, **correlation** means extracting one or more values from the response of one request and then reusing them in subsequent requests. Often times this could be getting a token or some sort of ID necessary to fulfill a sequence of steps in a user journey
+
+The recorded HAR file may include dynamic data used on your site -  `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.  
+
+To run your load test correctly, you may need to replace the hardcoded data with dynamic data that k6 gets from previous requests.   For example, tokens will expire quickly and it is one of the most common things that users will correlate from a recorded session.
+
+[Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
+
+## 4. Run the test
+
+Now,  you can run your load test by executing the command:
+
+```bash
+k6 run loadtest.js
+```
+
+For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
+
+## Recording in the k6 Cloud Service
+
+If you are a user of the k6 Cloud Service, you can directly upload HAR files through the web UI or [use a Chrome extension](/cloud/creating-and-running-a-test/recording-a-test-script) to create a script while recording a browsing session.

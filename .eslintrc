@@ -1,0 +1,63 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "camelcase": 0,
+    "object-curly-newline": 0,
+    "operator-linebreak": 0,
+    "no-shadow": 0,
+    "max-len": [2, 120],
+    "react/prop-types": 0,
+    "react/jsx-curly-brace-presence": [
+      2,
+      {
+        "props": "always",
+        "children": "never"
+      }
+    ],
+    "react/jsx-tag-spacing": [
+      2,
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "never",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js"]
+      }
+    ],
+    "react/no-array-index-key": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-wrap-multilines": 0,
+    "import/order": 0, // TODO: Come up with a solution for this
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          "components",
+          "images",
+          "layouts",
+          "pages",
+          "templates",
+          "styles",
+          "svg",
+          "utils"
+        ]
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "jsx-a11y/html-has-lang": 0, // We use react-helmet for that
+    "jsx-a11y/control-has-associated-label": 0
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"]
+}

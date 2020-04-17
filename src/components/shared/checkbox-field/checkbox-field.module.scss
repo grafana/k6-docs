@@ -1,0 +1,39 @@
+.input {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-secondary;
+  padding-left: 28px;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $color-secondary;
+    color: $color-accent-primary;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  &:hover:before {
+    border-color: $color-accent-primary;
+  }
+}
+
+.input:checked + label:before {
+  content: url("./svg/checkmark.svg");
+  background: $color-accent-primary;
+  border: 1px solid $color-accent-primary;
+}

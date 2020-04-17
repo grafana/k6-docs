@@ -1,0 +1,56 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  max-width: calc(100% - 325px);
+  margin: 15px 0 50px;
+  @include lg-down {
+    max-width: calc(100% - 240px);
+    flex-flow: column-reverse;
+  }
+  @include md-down {
+    max-width: 100%;
+  }
+}
+
+.title {
+  flex: 1;
+}
+
+.edit-link {
+  position: absolute;
+  right: -50px;
+  top: 25px;
+  transform: translateX(100%);
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: $color-primary;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 18px;
+    height: auto;
+    margin-right: 10px;
+    path {
+      transition: 0.3s ease;
+    }
+  }
+  @include lg-down {
+    position: initial;
+    top: unset;
+    right: unset;
+    margin-bottom: 10px;
+    transform: unset;
+  }
+  &:hover {
+    color: $color-accent-primary;
+    svg {
+      path {
+        fill: $color-accent-primary;
+      }
+    }
+  }
+}

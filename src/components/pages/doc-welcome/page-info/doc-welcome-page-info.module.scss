@@ -1,0 +1,32 @@
+.container {
+  margin-bottom: 50px;
+  margin-top: 135px;
+  @include lg-down {
+    margin-top: 200px;
+  }
+  @include md-down {
+    margin-top: 245px;
+  }
+  @include sm-down {
+    margin-top: 265px;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+  max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
+  @include lg-down {
+    max-width: 100%;
+  }
+}
+
+.description {
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
+  @include lg-down {
+    max-width: 100%;
+  }
+}

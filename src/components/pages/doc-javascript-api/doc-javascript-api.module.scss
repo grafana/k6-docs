@@ -1,0 +1,18 @@
+.js-api-wrapper {
+  table {
+    tr {
+      td:first-child {
+        width: 35%;
+      }
+    }
+  }
+  div + div > h2 {
+    margin-top: 20px !important;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow: auto;
+  margin: 40px 0;
+}

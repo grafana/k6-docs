@@ -1,0 +1,43 @@
+.ci-row {
+  ul {
+    a svg {
+      max-height: 150px;
+    }
+  }
+}
+
+.store-row {
+  ul {
+    li {
+      &:nth-of-type(3) {
+        a svg {
+          width: 40px;
+        }
+      }
+      &:last-child {
+        p {
+          word-wrap: normal;
+        }
+      }
+    }
+  }
+}
+
+.double-icon {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  height: 100%;
+  @include xs-down {
+    width: 140px;
+  }
+  svg {
+    width: 100%;
+  }
+  span {
+    display: inline-flex;
+    color: $color-primary;
+    font-size: $font-size-xl;
+    padding: 0 10px;
+  }
+}
