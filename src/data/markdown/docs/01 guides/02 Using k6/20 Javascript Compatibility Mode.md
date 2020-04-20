@@ -26,7 +26,7 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 
 Pure Golang JavaScript VM supporting ES5.1+. Use this mode if your scripts are already written
 using only ES5.1 features, or were previously transformed by [Babel](https://babeljs.io/),
-to reduce startup time, RAM usage and improve performance. See the [k6-es6 project](https://github.com/MStoykov/k6-es6)
+to reduce startup time, RAM usage and improve performance. See the [k6-es6 project](https://github.com/k6io/k6-es6)
 for an example [Webpack](https://webpack.js.org/) setup that does this
 transformation outside of k6.
 
