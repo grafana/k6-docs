@@ -77,7 +77,7 @@ you need them:
 
 | Tag           | Description                                                                                                             |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `vui`iu099u   | the ID of the virtual user that executed the request                                                                    |
+| `vu`          | the ID of the virtual user that executed the request                                                                    |
 | `iter`        | the iteration number                                                                                                    |
 | `ip`          | The IP address of the remote server                                                                                     |
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
@@ -185,12 +185,12 @@ In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups
 in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
 
 When using Groups, [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http-requests)
-can be view by group, as shown below. You can switch between the group and list layout by changing the "view as"
+can be viewed by group, as shown below. You can switch between the group and list layout by changing the "view as"
 selection in the top right.
 
 ![Cloud Insights Grouping](/images/02 Using k6/cloud-insights-http-tab.png)
 
-Additionally you can filter the results in the in [analysis tab](/cloud/analyzing-results/analysis-tab)
-by tags as shown below:
+Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab)
+as shown below:
 
 ![filter](/images/analysis-tab-tags.png)
