@@ -65,7 +65,7 @@ k6 may also output more granular result data using special output plugins. Curre
   - [StatsD](/getting-started/results-output/statsd)
 - [Cloud](/getting-started/results-output/cloud) plugin that streams your test results to the k6 Cloud platform
 
-To know more about the metrics k6 collects, please see the [Metrics management page](/using-k6/metrics)
+To know more about the metrics k6 collects, please see the [Metrics management page](/docs/using-k6/metrics)
 
 ## Multiple outputs
 
