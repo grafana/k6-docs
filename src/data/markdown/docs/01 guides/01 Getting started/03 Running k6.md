@@ -11,11 +11,11 @@ if you prefer using the k6 [Docker image](https://en.wikipedia.org/wiki/Docker_%
 <div class="code-group" data-props='{"labels": ["Mac / prebuilt binary", "Docker image"]}'>
 
 ```shell
-$ k6 run github.com/loadimpact/k6/samples/http_get.js
+$ k6 run https://raw.githubusercontent.com/loadimpact/k6/master/samples/http_get.js
 ```
 
 ```shell
-$ docker run loadimpact/k6 run github.com/loadimpact/k6/samples/http_get.js
+$ docker run loadimpact/k6 run https://raw.githubusercontent.com/loadimpact/k6/master/samples/http_get.js
 ```
 
 </div>
