@@ -82,7 +82,9 @@ While running the test, k6 send metrics periodically to DataDog. By default, the
 ![Datadog visualizing performance testing metrics](images/datadog-performance-testing-metrics.png)
 
 <blockquote>
-To learn more about all the types of k6 metrics, read the <a href="/using-k6/metrics">k6 Metrics guide</a>.
+
+To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/using-k6/metrics)
+
 </blockquote>
 
 Because Datadog handles k6 metrics as regular metrics, you could also use additional Datadog features like creating [monitors](https://docs.datadoghq.com/monitors/) or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/) for your performance testing metrics.
