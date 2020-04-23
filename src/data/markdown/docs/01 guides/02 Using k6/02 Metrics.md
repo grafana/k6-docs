@@ -23,7 +23,7 @@ The following _built-in_ metrics will **always** be collected by k6:
 | `iteration_duration` | Trend   | The time it took to complete one full iteration of the default/main function.                                                                                                                                 |
 | `data_received`      | Counter | The amount of received data.                                                                                                                                                                                                           |
 | `data_sent`          | Counter | The amount of data sent.                                                                                                                                                                                                               |
-| `checks`             | Rate    | Number of failed checks                                                                                                                                                                                                                |
+| `checks`             | Rate    | The rate of successful checks.                                                                                                                                                                                                                |
 
 ## HTTP-specific built-in metrics
 
