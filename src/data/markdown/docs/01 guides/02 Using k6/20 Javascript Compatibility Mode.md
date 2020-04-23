@@ -30,23 +30,28 @@ to reduce startup time, RAM usage and improve performance. See the [k6-es6 proje
 for an example [Webpack](https://webpack.js.org/) setup that does this
 transformation outside of k6.
 
+> ### ⚠️ Disclaimer
+>
+> Your mileage may vary while running `--compatibility-mode=base` and also importing external dependencies. For instance,
+> `xml2js` and `cheerio` currently dont work, while `lodash` does.
+
 ### Basic Example
 
 <div class="code-group" data-props='{"labels": [ "base-example.js" ], "lineNumbers": "[true]"}'>
 
 ```js
-var http = require("k6/http");
-var k6 = require("k6");
+var http = require('k6/http');
+var k6 = require('k6');
 
 module.exports.options = {
   vus: 10,
-  duration: "30s",
-}
+  duration: '30s',
+};
 
-module.exports.default = function() {
-  http.get("http://test.k6.io");
+module.exports.default = function () {
+  http.get('http://test.k6.io');
   k6.sleep(1);
-}
+};
 ```
 
 </div>
@@ -58,7 +63,7 @@ module.exports.default = function() {
 > [require() call in Node.js](https://nodejs.org/api/modules.html#modules_require_id).
 > Specifically, it only handles loading of built-in k6 modules,
 > scripts on the local filesystem, and remote scripts over HTTP(S),
-> but it does *not* support the
+> but it does _not_ support the
 > [Node.js module resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together).
 
 ### Advanced Example
@@ -66,33 +71,35 @@ module.exports.default = function() {
 <div class="code-group" data-props='{"labels": [ "advanced-example.js" ], "lineNumbers": "[true]"}'>
 
 ```js
-var http = require("k6/http");
-var metrics = require("k6/metrics");
-var k6 = require("k6");
+var http = require('k6/http');
+var metrics = require('k6/metrics');
+var k6 = require('k6');
 
 module.exports.options = {
   stages: [
-    { duration: "30s", target: 20 },
-    { duration: "1m30s", target: 10 },
-    { duration: "20s", target: 0 },
+    { duration: '30s', target: 20 },
+    { duration: '1m30s', target: 10 },
+    { duration: '20s', target: 0 },
   ],
   thresholds: {
-    "failed requests": ["rate<0.1"],
-  }
-}
+    'failed requests': ['rate<0.1'],
+  },
+};
 
-var myFailRate = new metrics.Rate("failed requests");
+var myFailRate = new metrics.Rate('failed requests');
 
-module.exports.default = function() {
-  var res = http.get("https://httpbin.test.k6.io/");
+module.exports.default = function () {
+  var res = http.get('https://httpbin.test.k6.io/');
   var checkRes = k6.check(res, {
-    "status was 200": function(r) { return r.status == 200 }
+    'status was 200': function (r) {
+      return r.status == 200;
+    },
   });
   if (!checkRes) {
     myFailRate.add(1);
   }
   k6.sleep(1);
-}
+};
 ```
 
 </div>
