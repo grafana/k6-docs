@@ -95,6 +95,12 @@
       "description": "Reference project demonstrating how to use webpack and babel to bundle node modules or transpile code to ES5.1+ for usage in k6 tests.",
       "url": "https://github.com/k6io/k6-es6",
       "to": ""
+    },
+    {
+      "title": "Functional testing",
+      "description": "Use checks and thresholds for unit testing.",
+      "url": "https://community.k6.io/t/report-for-functional-test/574/2",
+      "to": ""
     }
   ],
   "tutorials": [
