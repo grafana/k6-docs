@@ -52,14 +52,14 @@ Use the [http module](/javascript-api/k6-http) to perform all kinds of HTTP requ
 
 | Name                                                               | Value                                                                     |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| [batch()](/javascript-api/k6-http/batch-requests)                   | Issue any type of HTTP request.                                           |
+| [batch()](/javascript-api/k6-http/batch-requests)                   | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
 | [del()](/javascript-api/k6-http/del-url-body-params)                | Issue an HTTP DELETE request.                                                |
 | [get()](/javascript-api/k6-http/get-url-params)                | Issue an HTTP GET request.                                               |
 | [options()](/javascript-api/k6-http/options-url-body-params)        | Issue an HTTP OPTIONS request.                                              |
 | [patch()](/javascript-api/k6-http/patch-url-body-params)            | Issue an HTTP PATCH request.                                            |
 | [post()](/javascript-api/k6-http/post-url-body-params)              | Issue an HTTP POST request.                                                |
 | [put()](/javascript-api/k6-http/put-url-body-params)                | Issue an HTTP PUT request.                                             |
-| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
+| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue any type of HTTP request.                                            |
 
 ## HTTP Request Tags
 
