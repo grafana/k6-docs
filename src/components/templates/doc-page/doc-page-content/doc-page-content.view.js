@@ -15,9 +15,19 @@ const components = {
   h2: ({ mdBlockContent }) => (
     <h2
       className={styles.markHeading}
-      id={`${slugify(mdBlockContent).replace(/\//g, '-')}`}
+      id={`${slugify(mdBlockContent)
+        .replace(/\//g, '-')
+        .replace(/^\d+/g, '')
+        .replace(/^-*/g, '')
+        .replace(/-*$/g, '')}`}
     >
-      <a href={`#${slugify(mdBlockContent).replace(/\//g, '-')}`}>
+      <a
+        href={`#${slugify(mdBlockContent)
+          .replace(/\//g, '-')
+          .replace(/^\d+/g, '')
+          .replace(/^-*/g, '')
+          .replace(/-*$/g, '')}`}
+      >
         <AnchorIcon />
       </a>
       {mdBlockContent}
