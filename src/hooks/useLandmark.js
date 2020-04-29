@@ -9,11 +9,21 @@ import AnchorIcon from 'components/templates/doc-page/doc-page-content/svg/ancho
 const markHeadingComponent = ({ content }) => (
   <Heading
     className={docPageContent.markHeading}
-    id={`${slugify(content).replace(/\//g, '-')}`}
+    id={`${slugify(content)
+      .replace(/\//g, '-')
+      .replace(/^\d+/g, '')
+      .replace(/^-*/g, '')
+      .replace(/-*$/g, '')}`}
     tag={'h2'}
     size={'lg'}
   >
-    <a href={`#${slugify(content).replace(/\//g, '-')}`}>
+    <a
+      href={`#${slugify(content)
+        .replace(/\//g, '-')
+        .replace(/^\d+/g, '')
+        .replace(/^-*/g, '')
+        .replace(/-*$/g, '')}`}
+    >
       <AnchorIcon />
     </a>
     {content}
@@ -28,7 +38,7 @@ const useLandmark = ({ selector, component = markHeadingComponent }) => {
     const allHeadingMarks = document
       .querySelector(`.${selector}`)
       .querySelectorAll('h2');
-    allHeadingMarks.forEach(element => {
+    allHeadingMarks.forEach((element) => {
       const compContent = element.innerHTML;
       // Render with container replacement.
       const temp = document.createElement('div');
@@ -39,7 +49,11 @@ const useLandmark = ({ selector, component = markHeadingComponent }) => {
     setLinks(
       Array.from(allHeadingMarks).map(({ innerHTML }) => ({
         title: innerHTML,
-        anchor: `#${slugify(innerHTML).replace(/\//g, '-')}`,
+        anchor: `#${slugify(innerHTML)
+          .replace(/\//g, '-')
+          .replace(/^\d+/g, '')
+          .replace(/^-*/g, '')
+          .replace(/-*$/g, '')}`,
       })),
     );
   }, []);

@@ -1,18 +1,17 @@
-Contributing File Formats
-====================================
+# Contributing File Formats
 
 The k6 documentation is a Gatsby application using React components and markdown files for the content of the different pages.
 
 There are two types of pages: Welcome Pages and Documentation articles.
 
-[Welcome Pages](src/templates/docs) are the pages shown on the header menu: `Guides`, `Javascript API`, `Cloud Docs`, `Integration`, and `Examples`. They are made as separate React Components for maximum customisation. 
+[Welcome Pages](src/templates/docs) are the pages shown on the header menu: `Guides`, `Javascript API`, `Cloud Docs`, `Integration`, and `Examples`. They are made as separate React Components for maximum customisation.
 
 Documentation articles are markdown files structured under the [`src/data/markdown/docs`](src/data/markdown/docs) folder.
 
 ### Folder structure
 
 Root folders represent main categories at the top of the page.  
-Use numbers in front of the folder name to set the order. 
+Use numbers in front of the folder name to set the order.
 
 Pattern: {number}{space}{page name}
 
@@ -26,7 +25,7 @@ The same pattern used to define orders not only root folderы but also pages(md 
 
 ## Headers
 
-Use typical ## markdown definition to format headers. 
+Use typical ## markdown definition to format headers.
 
     ## Making HTTP requests
 
@@ -34,25 +33,25 @@ Make sure you are using '##' which stands for a h2 tag - h1 i*s reserved for the
 
 ![internal-images/Untitled%202.png](internal-images/Untitled%202.png)
 
-Use h2 *and only h2 as landmarks*. h3 tag is designed to be used in your blockquote heading, like that: 
+Use h2 _and only h2 as landmarks_. h3 tag is designed to be used in your blockquote heading, like that:
 
 ![internal-images/Untitled%203.png](internal-images/Untitled%203.png)
 
-And h4,h5,h6 have no specified styles, therefore will be rendered by default very similar to h1, so you probably  do not want to use them, but if there are use cases, please, let us know.
+And h4,h5,h6 have no specified styles, therefore will be rendered by default very similar to h1, so you probably do not want to use them, but if there are use cases, please, let us know.
 
 ## Images
+
 Default image syntax for markdown files
 
     ![Alt field of an image](images/insights-url-table-full.png)
 
-You have to store images in src/images folder and access them from md files by using relative path.  This way allows image-sharp-plugin process your image: compressing, converting and lazy loading.
+You have to store images in src/images folder and access them from md files by using relative path. This way allows image-sharp-plugin process your image: compressing, converting and lazy loading.
 
 If you really have to put there some remote picture, write it like that:
 
     ![Alt field of an image](https://files.readme.io/9e92efd-insights-url-table-full.png)
 
 But keep in mind the size of an image on the other side of a link to prevent page overweighting.
-
 
 ## Blockquotes
 
@@ -76,21 +75,10 @@ And you'll get a fine quote block:
 ![internal-images/Untitled%204.png](internal-images/Untitled%204.png)
 
 And, in case of a 'warning' mod for a blockquote, you just add an ⚠️ emoji, like this:
-    
-    > ### ⚠️ Docker syntax
-    >
-    > When using the `k6` docker image, you can't just give the script name since
-    > the script file will not be available to the container as it runs. Instead
-    > you must tell k6 to read `stdin` by passing the file name as `-`. Then you
-    > pipe the actual file into the container with `<` or equivalent. This will
-    > cause the file to be redirected into the container and be read by k6.
-    >
-    > **Note**: If your script imports other files (JS modules), piping like this
-    > will not work since the extra files will not be visible inside the container.
-    > To use modules you need to first mount your host/local directory into the
-    > Docker container, see [Modules with Docker](https://docs.k6.io/v1.0/docs/modules#section-using-local-modules-with-docker)."
 
-*Pay attention to those empty lines between md block and a wrapper, they are required to correctly parsing.*
+> ### ⚠️ Docker syntax > > When using the `k6` docker image, you can't just give the script name since > the script file will not be available to the container as it runs. Instead > you must tell k6 to read `stdin` by passing the file name as `-`. Then you > pipe the actual file into the container with `<` or equivalent. This will > cause the file to be redirected into the container and be read by k6. > > **Note**: If your script imports other files (JS modules), piping like this > will not work since the extra files will not be visible inside the container. > To use modules you need to first mount your host/local directory into the > Docker container, see [Modules with Docker](https://docs.k6.io/v1.0/docs/modules#section-using-local-modules-with-docker)."
+
+_Pay attention to those empty lines between md block and a wrapper, they are required to correctly parsing._
 
 And our default blockquote will take a form of:
 
@@ -100,9 +88,9 @@ At the moment there are only two mods available, default (no wrapper needed) and
 
 ## Code blocks
 
-So, there are basically three types of code blocks, small ones, headerless ones and headerfull ones, 
+So, there are basically three types of code blocks, small ones, headerless ones and headerfull ones,
 
-that last two have one possible modification - line numbers. 
+that last two have one possible modification - line numbers.
 
 ### Small
 
@@ -118,36 +106,32 @@ and you are good to go
 
 We are going to write them a bit differently, half-native md, just like blockquotes:
 
-    <div class="code-group" data-props='{"labels": []}'>
-    
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
-    </div>
 
 And, as a result:
 
 ![internal-images/Untitled%207.png](internal-images/Untitled%207.png)
 
-If we want line numbers to be rendered, we shall adjust our data-props to:
+If we want line numbers to be rendered, we shall add the wrapper and adjust our data-props to:
 
     <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
-    
+
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
+
     </div>
 
 Here you go:
@@ -156,19 +140,19 @@ Here you go:
 
 ### Headerfull
 
-Pretty much the same routine as with headerless ones, but one difference in data-props, labels field, but I bet, you already got that: 
+Pretty much the same routine as with headerless ones, but one difference in data-props, labels field, but I bet, you already got that:
 
     <div class="code-group" data-props='{"labels": ["Nice code!"], "lineNumbers": [true]}'>
-    
+
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
+
     </div>
 
 ![internal-images/Untitled%209.png](internal-images/Untitled%209.png)
@@ -178,35 +162,35 @@ Pretty much the same routine as with headerless ones, but one difference in data
 To be able to switch between different code tabs, we have to repeat the headerfull routine, but extend labels and md code blocks:
 
     <div class="code-group" data-props='{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'>
-    
+
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
+
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
+
     ```javascript
     for (var id = 1; id <= 100; id++) {
     	http.get(http.url`http://example.com/posts/${id}`)
     }
-    
-    // tags.name="http://example.com/posts/${}", 
+
+    // tags.name="http://example.com/posts/${}",
     // tags.name="http://example.com/posts/${}"
     ```
-    
-    
+
+
     </div>
 
 ![internal-images/Untitled%2010.png](internal-images/Untitled%2010.png)
@@ -232,7 +216,7 @@ In md file it should look like this to be formatted as a table. You could use on
     |[put()](https://docs.k6.io/docs/put-url-body-params) | Issue an HTTP PUT request. |
     |[request()](https://docs.k6.io/docs/request-method-url-body-params) | Issue any type of HTTP request. |
 
-Result: 
+Result:
 
 ![internal-images/Untitled%2011.png](internal-images/Untitled%2011.png)
 
@@ -242,4 +226,4 @@ The rest of elements you could write as you would in native md. It includes p, u
 
 ## Additional information
 
-Check out the [project Wiki](https://github.com/loadimpact/k6-docs/wiki)  for additional information
+Check out the [project Wiki](https://github.com/loadimpact/k6-docs/wiki) for additional information
