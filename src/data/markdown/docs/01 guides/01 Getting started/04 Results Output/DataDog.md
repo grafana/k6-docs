@@ -10,12 +10,13 @@ This article outlines the instructions of the Datadog integration:
 - Run the Datadog Agent
 - Run the k6 test
 - Visualize in Datadog
+- Add the k6 Dashboard
 
 ## Run the Datadog Agent
 
-To get k6 metrics into Datadog, k6 has to send metrics to the Datadog Agent that will collect, aggregate, and forward the metrics to the Datadog platform. 
+To get k6 metrics into Datadog, k6 sends metrics through the Datadog Agent, which collects, aggregates, and forwards the metrics to the Datadog platform.
 
-You can run the Datadog Agent service as a Docker container with this command:
+Run the Datadog Agent service as a Docker container with this command:
 
 
 <div class="code-group" data-props='{"labels": [""]}'>
@@ -36,9 +37,9 @@ docker run -d \
 
 </div>
 
-Remember that you have to replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api). 
+**Note**: Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api). 
 
-Also note that if your account is registered with Datadog EU, the value of `DD_SITE` should be `datadoghq.eu`.
+If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
 
 <blockquote>
 For additional information, read the <a href="https://docs.datadoghq.com/agent/docker/">Datadog Docker Agent documentation</a>.
@@ -52,7 +53,7 @@ The instruction above runs the `DogStatsD` service using the [Docker container](
 
 ## Run the k6 test
 
-Once the Datadog Agent service is running, you can run the k6 test and send the metrics to the agent with:
+Once the Datadog Agent service is running, run the k6 test and send the metrics to the Agent with:
 
 <div class="code-group" data-props='{"labels": [""]}'>
 
@@ -76,7 +77,9 @@ The environment variables for the command are:
 
 ## Visualize in Datadog
 
-While running the test, k6 send metrics periodically to DataDog. By default, these metrics have  **`k6.`** as name prefix. Like other metrics, you can visualize them in realtime at the [Datadog Metrics Explorer](https://docs.datadoghq.com/metrics/explorer/).
+While running the test, k6 sends metrics periodically to DataDog. By default, these metrics have `k6.` as the name prefix.
+
+You can visualize k6 metrics in realtime with the [metrics explorer](https://docs.datadoghq.com/metrics/explorer/), [monitors](https://docs.datadoghq.com/monitors/), or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/).
 
 
 ![Datadog visualizing performance testing metrics](images/datadog-performance-testing-metrics.png)
@@ -87,4 +90,20 @@ To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/us
 
 </blockquote>
 
-Because Datadog handles k6 metrics as regular metrics, you could also use additional Datadog features like creating [monitors](https://docs.datadoghq.com/monitors/) or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/) for your performance testing metrics.
+## Add the k6 Dashboard
+
+In Datadog, you can enable the k6 integration to add the default k6 dashboard to your dashboard list. 
+
+![Datadog Dashboard List](images/dashboard-listing-with-k6-dashboard.png)
+
+**Installation**
+
+1. Log in to `Datadog`.
+2. From the sidebar menu, choose `Integrations` > `Integrations`.
+3. Search for `k6`, then select the `k6` integration.
+4. Click on the `Configuration` tab option.
+5. Scroll down and click on the `Install integration` button.
+
+
+![k6 Datadog Dashboard](images/k6-datadog-dashboard.png)
+
