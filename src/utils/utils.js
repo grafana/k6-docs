@@ -16,7 +16,7 @@ const getRandomNumberBetween = (min = 1, max = 10) => {
 
 // transforms path-like strings into slugs
 // slugify(path: String) -> String
-const slugify = path =>
+const slugify = (path) =>
   path
     .toLowerCase()
     .replace(/[\s-;:!?&,\(\)\[\]]{1,}/g, '-')
@@ -26,13 +26,13 @@ const slugify = path =>
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
 // buildBreadcrumbs(path: String) -> Array<Object>
-const buildBreadcrumbs = path => {
+const buildBreadcrumbs = (path) => {
   let accumulatedPath = '';
   return path
     .replace(/\/guides/g, '')
     .replace(/examples\/examples/, 'examples')
     .split('/')
-    .map(part => {
+    .map((part) => {
       accumulatedPath += `/${part}`;
       const slug = utils.slugify(accumulatedPath);
       return {
@@ -52,14 +52,14 @@ const buildFileTreeNode = (name, meta = {}, children = {}) => ({
 
 // creates a file tree structure
 // buildFileTree(nodeBuild: Function) -> Object
-const buildFileTree = nodeBuilder => {
+const buildFileTree = (nodeBuilder) => {
   const root = nodeBuilder('_root');
 
   const addNode = (path, name, meta = {}) => {
     let parent = root;
     const parts = path.split('/');
     parts.push(name);
-    parts.forEach(part => {
+    parts.forEach((part) => {
       parent.children[part] = parent.children[part] || nodeBuilder(part);
       parent = parent.children[part];
     });
@@ -78,27 +78,21 @@ const buildFileTree = nodeBuilder => {
 
 // takes a nested object with file nodes and returns an array of values;
 // childrenToList(children: Object) -> Array
-const childrenToList = children => Object.values(children);
+const childrenToList = (children) => Object.values(children);
 
 // takes a string like 'docs/001-Directory/01-file' or just '001-Directory'
 // and removes all the order numbers like 'docs/Directory/file' or 'Directory'
 // unorderify(str: String, nameOnly?: Bool) -> String
 const unorderify = (str, nameOnly = false) => {
-  const unorderEntry = entry => entry.replace(/^(\d*\W*)(\.*)/, '$2');
+  const unorderEntry = (entry) => entry.replace(/^(\d*\W*)(\.*)/, '$2');
   return nameOnly
     ? unorderEntry(str)
-    : str
-        .split('/')
-        .map(unorderEntry)
-        .join('/');
+    : str.split('/').map(unorderEntry).join('/');
 };
 
 // makes a consequence of random digits in form of a string to be served as a key prop
 // getRandomKey() -> String
-const getRandomKey = () =>
-  `k${Math.random()
-    .toString()
-    .replace('.', '')}`;
+const getRandomKey = () => `k${Math.random().toString().replace('.', '')}`;
 
 // takes a path string and a type of path and trims redundant directories according to a type
 // stripDirectoryPath(str: String, type?: String) -> String
@@ -131,7 +125,7 @@ const trimToLengthWithEllipsis = (str, ln = 140) =>
 // post manipulation related function that extracts a date and a path
 // from given path
 // getDateAndSlugFromPath(path: String) -> Object
-const getDateAndSlugFromPath = path => {
+const getDateAndSlugFromPath = (path) => {
   const [date, slug] = stripDirectoryPath(path, 'post').split('--');
   return { date, slug: slugify(slug) };
 };
@@ -164,31 +158,30 @@ const createMetaImagePath = (image, defaultSiteUrl, defaultImage) => {
 
 // docs-page-specific fn that creates a set of data to be used in docs component
 // getAnchorLinks(content: String) -> Array
-const getAnchorLinks = content => {
+const getAnchorLinks = (content) => {
   const rawHeadings = content.match(/<h2>.*<\/h2>/g);
   const strippedHeadings = rawHeadings
-    ? rawHeadings.map(heading => heading.replace(/<\/?h2>/g, ''))
+    ? rawHeadings.map((heading) => heading.replace(/<\/?h2>/g, ''))
     : [];
-  return strippedHeadings.map(heading => ({
+  return strippedHeadings.map((heading) => ({
     title: heading,
-    anchor: `#${
-      slugify(heading).replace(
-        /\//g,
-        '-',
-      ) /* replace slashes in titles manually */
-    }`,
+    anchor: `#${slugify(heading)
+      .replace(/\//g, '-')
+      .replace(/^\d+/g, '')
+      .replace(/^-*/g, '')
+      .replace(/-*$/g, '')}`,
   }));
 };
 
 // creating-docs-pages-specific function; extracts the category after
 // 'docs'; e.g. /whatever/some-more -> whatever
 // getDocSection(str: String) -> String
-const getDocSection = str => str.replace(/^(.*?)\/.*$/, '$1');
+const getDocSection = (str) => str.replace(/^(.*?)\/.*$/, '$1');
 
 // docs-sidebar-specific function; extracts a certain part of a sidebar which
 // which root key matches passed child
 // getChildSidebar(sidebar: Object -> child: String) -> Object
-const getChildSidebar = sidebar => child => sidebar.children[child];
+const getChildSidebar = (sidebar) => (child) => sidebar.children[child];
 
 // basic compose function
 const compose = (...fns) => (...args) =>
@@ -202,7 +195,7 @@ const noSlugDuplication = (indexEntry, slug) => {
 
 // this function takes CSSSelector and callback which
 // is being executed as soon as passed selector matches DOM element
-const whenElementAvailable = elementSelector => cb =>
+const whenElementAvailable = (elementSelector) => (cb) =>
   document.querySelector(elementSelector)
     ? cb(document.querySelector(elementSelector))
     : setTimeout(() => whenElementAvailable(elementSelector)(cb), 100);
