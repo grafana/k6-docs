@@ -5,6 +5,7 @@ import BackgroundLine from './svg/footer-background-line.inline.svg';
 import Logo from 'svg/logo.inline.svg';
 import GithubLogo from './svg/github.inline.svg';
 import TwitterLogo from './svg/twitter.inline.svg';
+import SlackLogo from './svg/slack.inline.svg';
 
 import styles from './footer.module.scss';
 import './footer.scss';
@@ -33,6 +34,10 @@ export const Footer = () => (
               >
                 {' '}
                 <TwitterLogo />
+              </a>
+              <a className={styles.socialIcon} href={`${main}/slack`}>
+                {' '}
+                <SlackLogo />
               </a>
             </div>
           </div>
@@ -237,10 +242,7 @@ export const Footer = () => (
               </a>
             </li>
             <li className={styles.navColumnItem}>
-              <a
-                className={styles.navColumnLink}
-                href={`${main}/stewardship`}
-              >
+              <a className={styles.navColumnLink} href={`${main}/stewardship`}>
                 Stewardship
               </a>
             </li>

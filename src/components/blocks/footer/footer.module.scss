@@ -139,13 +139,18 @@
 }
 .social {
   margin-top: 42px;
+  margin: 37px -5px -5px -5px;
+  display: flex;
+  flex-wrap: wrap;
+  > * {
+    padding: 5px;
+  }
   @include xs-down {
     margin-top: 0;
   }
 }
 .social-icon {
   text-decoration: none;
-  margin-left: 10px;
   display: inline-block;
   svg {
     display: block;
@@ -155,8 +160,5 @@
   }
   &:hover svg path {
     fill: $color-primary;
-  }
-  &:first-child {
-    margin-left: 0px;
   }
 }
