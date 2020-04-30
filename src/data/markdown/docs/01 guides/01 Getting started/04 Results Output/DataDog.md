@@ -10,7 +10,6 @@ This article outlines the instructions of the Datadog integration:
 - Run the Datadog Agent
 - Run the k6 test
 - Visualize in Datadog
-- Add the k6 Dashboard
 
 ## Run the Datadog Agent
 
@@ -90,13 +89,11 @@ To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/us
 
 </blockquote>
 
-## Add the k6 Dashboard
+**Note**: the first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list. 
 
-In Datadog, you can enable the k6 integration to add the default k6 dashboard to your dashboard list. 
+![k6 Datadog Dashboard](images/k6-datadog-dashboard.png)
 
-![Datadog Dashboard List](images/dashboard-listing-with-k6-dashboard.png)
-
-**Installation**
+Optionally, you can install the k6 integration tile following these instructions:
 
 1. Log in to `Datadog`.
 2. From the sidebar menu, choose `Integrations` > `Integrations`.
@@ -105,5 +102,4 @@ In Datadog, you can enable the k6 integration to add the default k6 dashboard to
 5. Scroll down and click on the `Install integration` button.
 
 
-![k6 Datadog Dashboard](images/k6-datadog-dashboard.png)
 
