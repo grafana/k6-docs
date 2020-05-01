@@ -8,7 +8,7 @@ k6 can also push the metrics to a [StatsD](https://github.com/statsd/statsd) ser
 <div class="code-group" data-props='{"labels": ["StatsD"]}'>
 
 ```shell
-k6 run --out statsd script.js
+$ k6 run --out statsd script.js
 ```
 
 </div>

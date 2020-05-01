@@ -72,3 +72,13 @@ A test that has exceeded one or more of the following limits:
 - The max VUs is higher than 20,000 VUs (for tests higher than 20k, please contact us)
 
 If your test has too many groups, please reduce their number.  If your test has too many metrics, please use URL grouping to combine similar URLs.  You should also remove external requests from your test script.  Each URL captured will account for 7 individual metrics that we keep track of.  External requests can quickly produce a large number of metrics that aren't helpful to the understanding performance of the System Under Test.
+
+## Uploading results
+
+When you send the [k6 results to the k6 Cloud](/results-visualization/cloud), data will be continuously streamed to the cloud. While this happens the state of the test run will be marked as `Running`. A test run that ran its course will be marked `Finished`. The run state has nothing to do with the test passing any thresholds, only that the test itself is operating correctly.
+
+If you deliberately abort your test (e.g. by pressing *Ctrl-C*), it will still be considered `Finished`. You can still look and analyze the test data you streamed so far. The test will just have run shorter than originally planned.
+
+Another possibility would be if you lose network connection with the k6 Cloud while your test is running. In that case the k6 Cloud will patiently wait for you to reconnect. In the meanwhile your test's run state will continue to appear as `Running` on the web app.
+
+If no reconnection happens, the k6 Cloud will time out after two minutes of no data, setting the run state to `Timed out`. You can still analyze a timed out test but you'll of course only have access to as much data as was streamed before the network issue.
