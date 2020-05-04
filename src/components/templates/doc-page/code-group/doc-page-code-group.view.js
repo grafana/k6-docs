@@ -19,7 +19,7 @@ export const CodeGroup = ({
   const randomKey = getRandomKey();
   return (
     <div className={styles.wrapper}>
-      {labels.length ? (
+      {labels && labels.length ? (
         <div className={styles.header}>
           {labels.map((label, i) => (
             <div
