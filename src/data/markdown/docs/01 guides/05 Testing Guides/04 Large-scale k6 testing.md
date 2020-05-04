@@ -68,7 +68,7 @@ This may cause the result metrics to have much larger response time than in real
 ### Memory
 k6 likes memory, but [it isn't as greedy as other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage). 
 Memory consumption heavily depend on your test scenarios. To estimate the memory requirement of your test, 
-run the test on your laptop with 100VUs and multiply the consumed memory by the target number of VUs. 
+run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs. 
 
 Simple tests will use ~1-5MB per VU. (1000VUs = 1-5GB). 
 Tests that are using file-uploads can consume tens of megabytes per VU.
