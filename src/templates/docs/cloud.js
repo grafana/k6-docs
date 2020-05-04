@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { Cloud, PageInfo } from 'components/pages/doc-welcome';
+import { CtaDoc } from 'components/shared/cta-doc';
 import { DocLayout } from 'layouts/doc-layout';
 import { Trait } from 'components/shared/trait';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
@@ -12,7 +13,7 @@ import SeoMetadata from 'utils/seo-metadata';
 import { app } from 'utils/urls';
 import { useLandmark } from 'hooks';
 
-export default function({ pageContext: { sidebarTree, navLinks } }) {
+export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const pageMetadata = SeoMetadata.cloud;
 
   const [showFooter, setShowFooter] = useState(true);
@@ -27,7 +28,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
     const scrollMark = location.hash;
     if (scrollMark) {
       // wait when html content adds all id to h2 then scroll to it
-      whenElementAvailable(scrollMark)(el =>
+      whenElementAvailable(scrollMark)((el) =>
         // no smooth scroll needed
         window.scrollTo({
           top: el.getBoundingClientRect().top + window.scrollY - 25,
@@ -182,15 +183,16 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                 </div>
               </div>
               <p></p>
-              {showFooter && (
-                <Cloud
-                  href={`${app}/account/register`}
-                  title={'Free Trial'}
-                  buttonText={'Try now'}
-                  description={'Sign up to run 50 cloud tests for Free.'}
-                />
-              )}
             </div>
+            {showFooter && (
+              <CtaDoc
+                btnLink={`${app}/account/register`}
+                title={'Free Trial'}
+                btnText={'Try now'}
+                description={'Sign up to run 50 cloud tests for Free.'}
+                isExternal
+              />
+            )}
           </div>
           <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
             {({ style }) => (
@@ -204,7 +206,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                         <a
                           className={docPageNav.anchor}
                           href={anchor}
-                          onClick={e => handleAnchorClick(e, anchor)}
+                          onClick={(e) => handleAnchorClick(e, anchor)}
                         >
                           {title}
                         </a>
