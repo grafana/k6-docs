@@ -15,6 +15,18 @@ Unless you need more than 100.000-300.000 requests per second (6-12M requests pe
 Below we will explore what hardware is needed for generating different levels of load.
 
 
+<div class="doc-blockquote">
+
+> ### Note about native distributed-execution in k6
+>
+> The long-term goal for k6 is to support distributed execution natively. We are currently laying groundwork for this feature in [PR #1007](https://github.com/loadimpact/k6/pull/1007).
+> You can follow this effort on guthub [in issue 140](https://github.com/loadimpact/k6/issues/140). Again, this is useful only if you need to generate load larger than 300k RPS.
+>
+> [k6 cloud](/cloud) (a paid service) supports distributed execution already.
+
+</div>
+
+
 ## OS fine-tuning for maximum performance
 
 For the purpose of this demonstration, we are using a Linix (Ubuntu Server) machine. The instructions will be the same for any Linux distribution. 
@@ -95,11 +107,11 @@ ERRO[0625] TypeError: Cannot read property 'length' of undefined
 
 To fix this issue your checks must be resilient to any response type. This change will fix the above problem.
 
-<div class="code-group" data-props='{"labels": ["fragile check"]}'>
+<div class="code-group" data-props='{"labels": ["resilient check"]}'>
 
 ```javascript
 let checkRes = check(res, {
-    "Homepage body size is 11026 bytes": (r) => r.status === 200 && r.body && r.body.length === 11026
+    "Homepage body size is 11026 bytes": (r) => r.body && r.body.length === 11026
 });
 ```
 
@@ -139,7 +151,7 @@ This setting disables the internal babel transpilation from ES6 to ES5 and inclu
 
 To get the best performance out of k6, it's best to transpile the scripts outside of k6 using webpack.
 
-In this repository we have prepared an efficient transpilation scheme that produces performant ES5.1 code for k6. 
+In [k6-hardware-benchmark](https://github.com/loadimpact/k6-hardware-benchmark) repository, we have prepared an efficient transpilation scheme that produces performant ES5.1 code for k6. 
 
 Use it like this:
 
@@ -192,7 +204,13 @@ Here are all the mentioned flags, all in one:
 <div class="code-group">
 
 ```bash
-k6 run -o cloud --vus=20000 --duration=10m --compatibility-mode=base --no-thresholds --no-summary scripts/website.es5.js
+k6 run scripts/website.es5.js \
+  -o cloud \
+  --vus=20000 \
+  --duration=10m \
+  --compatibility-mode=base \
+  --no-thresholds \
+  --no-summary \
 ```
 
 </div>
@@ -202,13 +220,16 @@ k6 run -o cloud --vus=20000 --duration=10m --compatibility-mode=base --no-thresh
 If everything else has failed and you are trying to squeeze more performance out of the hardware, 
 you can consider optimizing the code of the load test itself.
 
-*Checks and groups*
+**Checks and groups**
+
 k6 records the result of every individual check and group separately. If you are using many checks and groups, you may consider removing them to boost performance.
 
-*Custom metrics*
+**Custom metrics**
+
 Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) are recorded separately. Consider minimizing the usage of custom metrics.
 
-*Thresholds with abortOnFail*
+**Thresholds with abortOnFail**
+
 If you have configured [abortOnFail thresholds](https://k6.io/docs/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
 
 
@@ -216,19 +237,19 @@ If you have configured [abortOnFail thresholds](https://k6.io/docs/using-k6/thre
 ## File upload testing
 Special considerations must be taken when testing file-uploads. 
 
-##### Network throughput
+### Network throughput
 The network throughput of the load-generator machine, as well as the SUT will likely be the bottleneck. 
 
-##### Memory
+### Memory
 k6 needs significant amount of memory when uploading files, as every VU is independent and has its own memory.
 
-##### Data transfer costs
+### Data transfer costs
 k6 can upload a large amount data in a very short period of time. Make sure you understand the data transfer costs before commencing a large scale test.
 
 [Outbound Data Transfer is expensive in AWS EC2](https://www.cloudmanagementinsider.com/data-transfer-costs-everything-you-need-to-know/). The price ranges between $0.08 to $0.20 per GB depending on the region. 
 If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB therefore costs about $80. Long running test can cost several hundreds of dollars in data transfer alone.
 
-##### EC2 costs
+### EC2 costs
 The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour. Make sure to turn off the load-gen servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.  
 Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost. 
 
@@ -292,7 +313,17 @@ If you make 50M requests with 100 failures, this is generally a good result (0.0
 
 # Benchmarking k6 on AWS hardware
 
+We have executed few large tests on different EC2 machines to see how much load k6 can generate. 
+Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
+The limit to this scalability is in the number of open connections. Single Linux machine can open up to `65 535` sockets per IP. 
+This means that maximum of 65k requests can be executed simultaneously on a single machine.
+The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000. 
+
 ## Real-life test of a website.
+
+Testing the theoretical limits is fun, but that's not the point of this benchmark. 
+The point of this benchmark is to give users indication of how much traffic k6 can generate when executing complicated, real-life tests.
+For this purpose we have written a rather heavy [real-life website test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/website.js) that uses almost all k6 features.
 
 Setup:
 - All tests were executed on AWS EC2 instances
@@ -300,24 +331,29 @@ Setup:
 - Scripts used for testing are available in the `/scripts` directory. The results are reproducible
 - k6 v0.26.2 was used 
 - Note: the target system (test.k6.io) was running on a large cluster to boost performance. 
-- NOTE: the target system (test.k6.io) is a slow-ish PHP website, not optimized for performance - a static website would be much quicker.
+- Note: the target system (test.k6.io) is a slow-ish PHP website, not optimized for performance - a static website would be much quicker.
 
 The "website.js" test file uses a wide range of k6 features to make the test emulate a real usage of k6. This is not a test rigged for performance - quite the opposite.
 This test uses plenty of custom metrics, checks, parametrization, batches, thresholds and groups. It's a heavy test that should represent well the "real life" use case.
 
-### AWS m5.large server
+### Execution on AWS m5.large EC2 server
 
 The `m5.large` instance has 8GB of RAM and 2 CPU cores. 
 
 The following command was used to execute the test
 <div class="code-group">
 
-```
-k6 run -o cloud --vus=6000 --duration=10m --compatibility-mode=base --no-thresholds --no-summary -e TEST_NAME="AWS EC2 m5.large" scripts/website.es5.js
+```bash
+k6 run scripts/website.es5.js \
+ -o cloud \
+ --vus=6000 \
+ --duration=10m \
+ --compatibility-mode=base \
+ --no-thresholds \
+ --no-summary
 ```
 
 </div>
-
 
 Results
 - Maximum VUS reached: 6000
@@ -325,16 +361,21 @@ Results
 - CPU load (avg): 1.49 (out of 2.0). 
 - Peak RPS: ~6000 (note, this test was not optimized for RPS).
 - 2x `sleep(5)` in each iteration.
- 
-https://app.k6.io/runs/720172
 
-### AWS m5.4xlarge
+### Execution on AWS m5.4xlarge
 The `m5.4xlarge` instance has 64GB of RAM and 16 CPU cores.
 https://app.k6.io/runs/720179
 <div class="code-group">
 
-```
-k6 run -o cloud --vus=20000 --duration=10m --compatibility-mode=base --no-thresholds --no-summary -e TEST_NAME="AWS EC2 m5.4xlarge website test" scripts/website.es5.js
+```bash
+k6 run scripts/website.es5.js \
+   -o cloud  \
+   --vus=20000 \ 
+   --duration=10m \ 
+   --compatibility-mode=base  \
+   --no-thresholds  \
+   --no-summary 
+
 ```
 
 </div>
@@ -347,35 +388,47 @@ Results
 - 2x `sleep(5)` in each iteration.
 
 
-### AWS m5.24xlarge
+### Execution on AWS m5.24xlarge
 The m5.24xlarge has 384GB of RAM and 96 CPU cores.
 NOTE: sleep has been reduced to 1s instead of 5s to produce more requests.
 <div class="code-group">
 
-```
-k6 run -o cloud --vus=30000 --duration=5m --compatibility-mode=base --no-thresholds --no-summary -e TEST_NAME="AWS EC2 m5.24xlarge website test" scripts/website.es5.js
+```bash
+k6 run scripts/website.es5.js  \
+   -o cloud  \
+   --vus=30000 \ 
+   --duration=5m \ 
+   --compatibility-mode=base  \
+   --no-thresholds  \
+   --no-summary 
 ```
 
 </div>
 
 Results
-- Maximum VUS reached: 20.000
-- Memory used: XXX GB  (out of 370 available)
-- CPU load (avg): XXX (out of 96.0). 
+- Maximum VUS reached: 30.000
+- Memory used: ~120 GB  (out of 370 available)
+- CPU load (avg): ~45 (out of 96.0). 
 - Peak RPS: ~61.500.
 - `sleep(1)` in each iteration.
 
 ## Testing for RPS.
 
 As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
-Unfortunately our `test.k6.io` target system is rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS. 
+To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS. 
 Much higher numbers are possible for faster systems.
 
-### AWS m5.24xlarge
+### Execution on AWS m5.24xlarge
 <div class="code-group">
 
-```
-k6 run -o cloud --vus=30000 --duration=1m --compatibility-mode=base --no-thresholds --no-summary -e TEST_NAME="AWS EC2 m5.24xlarge RPS test" scripts/RPS-optimized.es5.js
+```bash
+k6 run scripts/RPS-optimized.es5.js \
+   -o cloud  \
+   --vus=30000  \
+   --duration=1m  \
+   --compatibility-mode=base  \
+   --no-thresholds \
+   --no-summary 
 ```
 
 </div>
@@ -395,17 +448,23 @@ k6 can utilize the available network bandwidth when uploading files, but it need
 
 Please read the warning about the cost of data transfer in AWS before commencing a large scale test.
 
-### AWS m5.24xlarge
+### Execution on AWS m5.24xlarge
 
-We have executed this test for only 1 minute to minimize the data-transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs. 
+To test the network throughput we have written a [file-uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data-transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs. 
+
 <div class="code-group">
 
-```
-k6 run -o cloud --vus=1000 --duration=1m --compatibility-mode=base --no-thresholds --no-summary -e TEST_NAME="AWS EC2 m5.24xlarge file upload" scripts/file-upload.es5.js
+```bash
+k6 run scripts/file-upload.es5.js \
+-o cloud \
+--vus=1000 \ 
+--duration=1m \ 
+--compatibility-mode=base \
+--no-thresholds \
+--no-summary
 ```
 
 </div>
-
 
 Results
 - Maximum VUS reached: 1.000
@@ -414,14 +473,12 @@ Results
 - Network throughput reached **4.7Gbit/s**
 - Data transferred: 36GB.
 
-Note: each VU in k6 is completely independent, and therefore it doesn't hare any memory with other VUs. 
+Note: each VU in k6 is completely independent, and therefore it doesn't share any memory with other VUs. 
 1000VUs uploading 26MB file need as much as 81GB of RAM since each VU holds the copy of the file in memory. 
-
-https://app.k6.io/runs/720228
 
 
 ## Summary
 
 k6 is able to fully utilize CPU, memory and Network bandwidth available on any hardware we have tested it on. 
 Single instance of k6 can run 30k+ VUs and produce 100k+ RPS. For the vast majority of systems, load coming from a single k6 process will be more than enough.
-At the time of writing this article, distributed execution isn't implemented in k6, but this is not something that 
+At the time of writing this article, distributed execution isn't implemented in k6, but this is not something that should stop you from running very large load tests.
