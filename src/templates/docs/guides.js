@@ -26,7 +26,7 @@ const pageInfo = {
     'This documentation will help you go from a total beginner to a seasoned k6 expert!',
 };
 
-export default function({ pageContext: { sidebarTree, navLinks } }) {
+export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const { links } = useLandmark({
     selector: docPageContent.inner,
   });
@@ -37,7 +37,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
     const scrollMark = location.hash;
     if (scrollMark) {
       // wait when html content adds all id to h2 then scroll to it
-      whenElementAvailable(scrollMark)(el =>
+      whenElementAvailable(scrollMark)((el) =>
         // no smooth scroll needed
         window.scrollTo({
           top: el.getBoundingClientRect().top + window.scrollY - 25,
@@ -75,7 +75,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               <a
                 className={docPageNav.anchor}
                 href={`${anchor}`}
-                onClick={e => handleAnchorClick(e, anchor)}
+                onClick={(e) => handleAnchorClick(e, anchor)}
               >
                 {title}
               </a>
@@ -104,8 +104,10 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
             <K6DoesNot />
             <Cloud
               title={'k6 Cloud'}
-              href={`${docs}/cloud`}
-              buttonText={'Cloud docs'}
+              btnLink={`${docs}/cloud`}
+              isExternal
+              btnTarget={'_self'}
+              btnText={'Cloud docs'}
               description={
                 'A tailored SaaS service to bring your team together into load testing.'
               }

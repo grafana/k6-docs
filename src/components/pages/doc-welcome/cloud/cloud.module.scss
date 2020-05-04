@@ -1,7 +1,7 @@
 .wrapper {
   border: 1px solid $color-additional-2;
   box-shadow: $light-block-shadow;
-  padding: 20px;
+  padding: 30px;
   @include xs-down {
     max-width: calc(100% - 40px);
   }

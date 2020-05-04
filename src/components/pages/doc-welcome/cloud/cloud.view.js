@@ -1,11 +1,16 @@
 import * as React from 'react';
-import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
-import styles from './cloud.module.scss';
-import { Button } from 'components/shared/button';
+import { CtaDoc } from 'components/shared/cta-doc';
 
-export const Cloud = props => {
-  const { title, description, buttonText, href = '/cloud' } = props;
+export const Cloud = (props) => {
+  const {
+    title,
+    description,
+    isExternal,
+    btnText,
+    btnTarget,
+    btnLink = '/cloud',
+  } = props;
   const {
     file: {
       childImageSharp: { fluid },
@@ -22,23 +27,14 @@ export const Cloud = props => {
     }
   `);
   return (
-    <section className={`container ${styles.wrapper}`}>
-      <div className={`row ${styles.inner}`}>
-        <div className={`col-md-6 col-12 ${styles.hook}`}>
-          <div className={styles.imgWrapper}>
-            <Img fluid={fluid} className={styles.img} />
-          </div>
-        </div>
-        <div className={`col-md-6 col-12 ${styles.hook}`}>
-          <div className={styles.cloudText}>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <Button className={styles.button} tag={'a'} href={href} cursor>
-              {buttonText}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CtaDoc
+      image={fluid}
+      title={title}
+      description={description}
+      btnText={btnText}
+      btnLink={btnLink}
+      isExternal={isExternal}
+      btnTarget={btnTarget}
+    />
   );
 };

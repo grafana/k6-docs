@@ -1,7 +1,3 @@
-.wrapper {
-  @include default-section-spacing;
-}
-
 .wrapper-light {
   overflow: hidden;
   position: relative;
@@ -34,13 +30,8 @@
   .inner {
     position: relative;
     z-index: 1;
-    padding-top: 64.5px;
-    padding-bottom: 69.5px;
     background-color: #fff;
     color: $color-primary;
-  }
-  .button-wrapper {
-    margin-top: 4px;
   }
   .cta-button {
     border: 0;
@@ -49,16 +40,19 @@
 
 .inner {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   color: $color-tertiary;
   background-color: $color-primary;
   box-shadow: 0 1px 5px rgba($color-primary, 0.3);
-  padding-top: 67.5px;
-  padding-right: 100px;
-  padding-bottom: 67.5px;
-  padding-left: 60px;
-
+  padding-top: 47.5px;
+  padding-right: 80px;
+  padding-bottom: 47.5px;
+  padding-left: 40px;
+  & > * {
+    margin: 20px;
+  }
   @include md-down {
     padding: 50px 40px;
   }
@@ -73,7 +67,9 @@
 }
 
 .content {
-  max-width: 485px;
+  max-width: 370px;
+  flex: 1 1 35%;
+  padding-right: 20px;
 
   @include md-down {
     max-width: 315px;
@@ -106,7 +102,7 @@
 
 .cta-button {
   @include lg-down {
-    min-width: 275px;
+    min-width: 235px;
   }
   @include sm-down {
     width: 100%;
