@@ -1,5 +1,5 @@
 ---
-title: "Hardware requirements for large-scale k6 tests"
+title: "Running large tests"
 excerpt: "How to run large-scale k6 tests without distributed-execution"
 ---
 
