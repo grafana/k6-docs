@@ -1,16 +1,16 @@
 ---
-title: "Hardware-sizing for large-scale k6 tests"
+title: "Hardware requirements for large-scale k6 tests"
 excerpt: "How to run large-scale k6 tests without distributed-execution"
 ---
 
 This document explains how to launch a large-scale k6 test on a single machine without the need of distributed execution. 
 
-The common misconception of many load-testers is that distributed-execution (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
+The common misconception of many load testers is that distributed execution (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
 
-k6 is different from many other load-testing tools in a way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load-generator machine.
-Single instance of k6 is often enough to generate load of 30.000-40.000 simultaneus users (VUs). This amount of VUs can generate upwards of 300.000 requests per second (RPS). 
+k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine.
+A single instance of k6 is often enough to generate load of 30.000-40.000 simultaneous users (VUs). This amount of VUs can generate upwards of 300,000 requests per second (RPS). 
 
-Unless you need more than 100.000-300.000 requests per second (6-12M requests per minute), a single instance of k6 will likely be sufficient for your needs.
+Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), or geographical distribution of the traffic, a single instance of k6 will likely be sufficient for your needs.
 
 Below we will explore what hardware is needed for generating different levels of load.
 
@@ -20,7 +20,7 @@ Below we will explore what hardware is needed for generating different levels of
 > ### Note about native distributed-execution in k6
 >
 > The long-term goal for k6 is to support distributed execution natively. We are currently laying groundwork for this feature in [PR #1007](https://github.com/loadimpact/k6/pull/1007).
-> You can follow this effort on guthub [in issue 140](https://github.com/loadimpact/k6/issues/140). Again, this is useful only if you need to generate load larger than 300k RPS.
+> You can follow this effort on GitHub [in issue 140](https://github.com/loadimpact/k6/issues/140). Again, this is useful only if you need to generate load larger than 300k RPS.
 >
 > [k6 cloud](/cloud) (a paid service) supports distributed execution already.
 
@@ -29,7 +29,7 @@ Below we will explore what hardware is needed for generating different levels of
 
 ## OS fine-tuning for maximum performance
 
-For the purpose of this demonstration, we are using a Linix (Ubuntu Server) machine. The instructions will be the same for any Linux distribution. 
+For the purpose of this demonstration, we are using a Linux (Ubuntu Server) machine. The instructions will be the same for any Linux distribution. 
 
 The following configuration changes are required to allow the k6 instance to use the full network capacity of the server.
 Detailed information about these settings can be found in our [OS Fine tuning article](/misc/fine-tuning-os).
@@ -45,7 +45,7 @@ ulimit -n 250000
 
 </div>
 
-For quick testing, you can paste these commands in the root terminal window. To make these changes permanent, refer to the instructions of your Linux distribution.
+For quick testing, you can paste these commands in a terminal window as the root user. To make these changes permanent, refer to the instructions of your Linux distribution.
 
 ## Hardware considerations
 
@@ -63,7 +63,7 @@ The amount of CPU you need depends on your test files (sometimes called test scr
 Regardless of the test file, you can assume that large tests require significant amount of CPU power. 
 We recommend that you size the machine to have at least 20% idle cycles (up to 80% used by k6, 20% idle). 
 If k6 uses 100% to generate load, it won't have enough CPU to measure the responses correctly. 
-This may cause the result metrics to have much larger response time than in reality.
+This may cause the result metrics to have a much larger response time than in reality.
 
 ### Memory
 k6 likes memory, but [it isn't as greedy as other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage). 
@@ -71,7 +71,7 @@ Memory consumption heavily depend on your test scenarios. To estimate the memory
 run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs. 
 
 Simple tests will use ~1-5MB per VU. (1000VUs = 1-5GB). 
-Tests that are using file-uploads can consume tens of megabytes per VU.
+Tests that are using file uploads can consume tens of megabytes per VU.
 
 ## General advice for running large tests.
 
@@ -94,7 +94,7 @@ let checkRes = check(res, {
 Code like this runs fine when the system under test (SUT) is not overloaded and returns proper responses.
 When the system starts to fail, the above check won't work as expected. 
 
-The issue here is that the check assumes that there's  always a body in a response. The `r.body` may not exist if server is failing.
+The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if server is failing.
 In such case the check itself won't work as expected and error similar to the one below will be returned: 
 
 <div class="code-group" data-props='{}'>
@@ -117,10 +117,10 @@ let checkRes = check(res, {
 
 </div>
 
-### Monitor the load-generator server
+### Monitor the load generator server
 
 If you are running a test for the first time, it's a good idea to keep an eye on the available resources while the test is running.
-The easiest way to do so is to ssh to the server with 3 sessions:
+The easiest way to do so is to SSH to the server with 3 sessions:
 1. To run k6 
 2. To monitor CPU and memory
 3. To monitor the network
@@ -138,13 +138,13 @@ Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 
 If you are pushing the limits of the hardware, this is the most impactful k6 setting you can enable.
 
-This setting disables the internal babel transpilation from ES6 to ES5 and inclusion of corejs library.
+This setting disables the internal [Babel](https://babeljs.io/) transpilation from ES6 to ES5.1+ and inclusion of [corejs](https://github.com/zloirock/core-js) library.
 
 <div class="doc-blockquote" data-props='{}'>
 
 > ### Some background
 > k6 at its core executes ECMAScript 5.1 code. Most k6 script examples and documentation is written in ECMAScript 6+. 
-> When k6 gets ES6+ code as input, it transpiles it to ES5.1 using babel and loads corejs to enable commonly used APIs.
+> By default, k6 transpiles ES6+ code to ES5.1 using babel and loads corejs to enable commonly used APIs.
 > This works very well for 99% of use cases, but it adds significant overheard with large tests.
 
 </div>
@@ -176,7 +176,7 @@ k6 run -o cloud --compatibility-mode=base someplace/yourscript.es5.js
 ```
 </div>
 
-k6 will use about 50% of memory in comparison to running the original script. It will also reduce the CPU load. 
+k6 will use about 50-85% of memory in comparison to running the original script. It will also reduce the CPU load, and significantly decrease startup time.
 
 ### discardResponseBodies
 
@@ -192,10 +192,11 @@ export let options = {
 </div>
 
 k6 by default loads the response body of the request into memory. This causes much higher memory consumption, and often is completely unnecessary.
+If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params-k6-http).
 
 ### --no-thresholds --no-summary 
 
-If you are running a cloud test with local execution (`k6 run -o cloud`), you may want to disable the terminal summary 
+If you are running a local test and streaming results to the cloud (`k6 run -o cloud`), you may want to disable the terminal summary 
 and local threshold calculation because thresholds and summary will be displayed in the cloud. 
 This will save you some memory and CPU cycles.
 
@@ -235,10 +236,10 @@ If you have configured [abortOnFail thresholds](https://k6.io/docs/using-k6/thre
 
 
 ## File upload testing
-Special considerations must be taken when testing file-uploads. 
+Special considerations must be taken when testing file uploads. 
 
 ### Network throughput
-The network throughput of the load-generator machine, as well as the SUT will likely be the bottleneck. 
+The network throughput of the load generator machine, as well as the SUT will likely be the bottleneck. 
 
 ### Memory
 k6 needs significant amount of memory when uploading files, as every VU is independent and has its own memory.
@@ -250,12 +251,13 @@ k6 can upload a large amount data in a very short period of time. Make sure you 
 If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB therefore costs about $80. Long running test can cost several hundreds of dollars in data transfer alone.
 
 ### EC2 costs
-The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour. Make sure to turn off the load-gen servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.  
+The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour. 
+Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.  
 Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost. 
 
 ## Errors
 
-If you run into errors during the execution, it's good to understand if they were caused by the load-generator or by the failing SUT. 
+If you run into errors during the execution, it's good to understand if they were caused by the load generator or by the failing SUT. 
 
 ### read: connection reset by peer
 
@@ -313,9 +315,9 @@ If you make 50M requests with 100 failures, this is generally a good result (0.0
 
 # Benchmarking k6 on AWS hardware
 
-We have executed few large tests on different EC2 machines to see how much load k6 can generate. 
+We have executed a few large tests on different EC2 machines to see how much load k6 can generate. 
 Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
-The limit to this scalability is in the number of open connections. Single Linux machine can open up to `65 535` sockets per IP. 
+The limit to this scalability is in the number of open connections. A single Linux machine can open up to `65 535` sockets per IP. 
 This means that maximum of 65k requests can be executed simultaneously on a single machine.
 The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000. 
 
@@ -364,7 +366,6 @@ Results
 
 ### Execution on AWS m5.4xlarge
 The `m5.4xlarge` instance has 64GB of RAM and 16 CPU cores.
-https://app.k6.io/runs/720179
 <div class="code-group">
 
 ```bash
@@ -412,7 +413,7 @@ Results
 - Peak RPS: ~61.500.
 - `sleep(1)` in each iteration.
 
-## Testing for RPS.
+## Testing for RPS
 
 As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
 To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS. 
@@ -440,7 +441,6 @@ Results
 - CPU load (avg): 80 (out of 96.0). 
 - Peak RPS: ~188.500.
 
-https://app.k6.io/runs/720216
 
 ## Testing for data transfer
 
@@ -450,7 +450,7 @@ Please read the warning about the cost of data transfer in AWS before commencing
 
 ### Execution on AWS m5.24xlarge
 
-To test the network throughput we have written a [file-uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data-transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs. 
+To test the network throughput we have written a [file uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data-transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs. 
 
 <div class="code-group">
 
@@ -480,5 +480,5 @@ Note: each VU in k6 is completely independent, and therefore it doesn't share an
 ## Summary
 
 k6 is able to fully utilize CPU, memory and Network bandwidth available on any hardware we have tested it on. 
-Single instance of k6 can run 30k+ VUs and produce 100k+ RPS. For the vast majority of systems, load coming from a single k6 process will be more than enough.
+A single instance of k6 can run 30k+ VUs and produce 100k+ RPS. For the vast majority of systems, load coming from a single k6 process will be more than enough.
 At the time of writing this article, distributed execution isn't implemented in k6, but this is not something that should stop you from running very large load tests.
