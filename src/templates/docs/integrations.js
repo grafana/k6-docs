@@ -26,6 +26,7 @@ import Grafana from 'svg/grafana.inline.svg';
 import Influx from 'svg/influx.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import Kafka from 'svg/kafka.inline.svg';
+import StatsD from 'svg/statsd.inline.svg';
 import Loadimpact from 'svg/loadimpact.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
@@ -194,9 +195,9 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               }
               iconsData={[
                 {
-                  Icon: Jenkins,
-                  name: 'Jenkins',
-                  link: `${blog}/integrating-load-testing-with-jenkins`,
+                  Icon: Azure,
+                  name: 'Azure Pipelines',
+                  link: `${blog}/integrating-load-testing-with-azure-pipelines`,
                 },
                 {
                   Icon: CircleCI,
@@ -204,24 +205,24 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                   link: `${blog}/integrating-load-testing-with-circleci`,
                 },
                 {
+                  Icon: GitHub,
+                  name: 'GitHub Actions',
+                  link: `${blog}/load-testing-using-github-actions`,
+                },
+                {
                   Icon: Gitlab,
-                  name: 'Gitlab',
+                  name: 'GitLab',
                   link: `${blog}/integrating-load-testing-with-gitlab`,
                 },
                 {
-                  Icon: Azure,
-                  name: 'Azure Pipelines',
-                  link: `${blog}/integrating-load-testing-with-azure-pipelines`,
+                  Icon: Jenkins,
+                  name: 'Jenkins',
+                  link: `${blog}/integrating-load-testing-with-jenkins`,
                 },
                 {
                   Icon: TeamCity,
                   name: 'TeamCity',
                   link: `${blog}/load-testing-using-teamcity-and-k6`,
-                },
-                {
-                  Icon: GitHub,
-                  name: 'GitHub Actions',
-                  link: `${blog}/load-testing-using-github-actions`,
                 },
               ]}
             />
@@ -253,9 +254,19 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               }
               iconsData={[
                 {
-                  Icon: Json,
-                  name: 'JSON file',
-                  to: '/getting-started/results-output/json',
+                  Icon: Kafka,
+                  name: 'Apache Kafka',
+                  to: '/results-visualization/apache-kafka',
+                },
+                {
+                  Icon: Loadimpact,
+                  name: 'Cloud',
+                  to: '/results-visualization/cloud',
+                },
+                {
+                  Icon: Datadog,
+                  name: 'DataDog',
+                  to: '/results-visualization/datadog',
                 },
                 {
                   Icon: () => (
@@ -265,26 +276,24 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                       <Grafana />
                     </div>
                   ),
-                  name: 'InfluxDB/Grafana',
+                  name: 'InfluxDB +Grafana',
                   to: '/results-visualization/influxdb-+-grafana',
                   // handling non-standard sizes
                   col: 2,
                 },
                 {
-                  Icon: Kafka,
-                  name: 'Apache Kafka',
-                  to: '/getting-started/results-output/apache-kafka',
+                  Icon: Json,
+                  name: 'JSON file',
+                  to: '/results-visualization/apache-kafka',
                 },
                 {
-                  Icon: Datadog,
-                  name: 'DataDog',
-                  to: '/getting-started/results-output/datadog',
-                },
-                {
-                  Icon: Loadimpact,
-                  name: 'k6 Cloud',
-                  to: '/getting-started/results-output/cloud',
-                  col: 2,
+                  Icon: () => (
+                    <div className={styles.doubleIcon}>
+                      <StatsD />
+                    </div>
+                  ),
+                  name: 'StatsD',
+                  to: '/results-visualization/statsd',
                 },
               ]}
             />

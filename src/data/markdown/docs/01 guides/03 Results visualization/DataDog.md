@@ -36,7 +36,7 @@ docker run -d \
 
 </div>
 
-**Note**: Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api). 
+Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
 
 If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
 
@@ -48,7 +48,7 @@ For additional information, read the <a href="https://docs.datadoghq.com/agent/d
 
 The Datadog agent includes the [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd/) service to collect and aggregate metrics. DogStatsD implements the [StatsD](https://github.com/etsy/statsd) protocol with some extensions. For example, [DogStatsD tagging](https://docs.datadoghq.com/tagging/) allows to collect k6 metrics with tags to distinguish between requests for different URLs, response statuses, groups, etc.
 
-The instruction above runs the `DogStatsD` service using the [Docker container](https://docs.datadoghq.com/developers/dogstatsd/?tab=containeragent#agent), but there are other alternatives like the [Host Agent](https://docs.datadoghq.com/developers/dogstatsd/?tab=hostagent#agent), [Kubernetes](https://docs.datadoghq.com/developers/dogstatsd/?tab=kubernetes#agent), and [Helm](https://docs.datadoghq.com/developers/dogstatsd/?tab=helm#agent). 
+The instruction above runs the `DogStatsD` service in a [Docker container](https://docs.datadoghq.com/developers/dogstatsd/?tab=containeragent#agent), but it's also possible to run it either as [Host Agent](https://docs.datadoghq.com/developers/dogstatsd/?tab=hostagent#agent), [Kubernetes](https://docs.datadoghq.com/developers/dogstatsd/?tab=kubernetes#agent), and [Helm](https://docs.datadoghq.com/developers/dogstatsd/?tab=helm#agent).
 
 ## Run the k6 test
 
@@ -57,7 +57,7 @@ Once the Datadog Agent service is running, run the k6 test and send the metrics 
 <div class="code-group" data-props='{"labels": [""]}'>
 
 ```shell
-k6 run --out datadog script.js
+$ k6 run --out datadog script.js
 ```
 
 </div>
@@ -89,7 +89,7 @@ To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/us
 
 </blockquote>
 
-**Note**: the first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list. 
+The first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list.
 
 ![k6 Datadog Dashboard](images/k6-datadog-dashboard.png)
 
@@ -100,6 +100,3 @@ Optionally, you can install the k6 integration tile following these instructions
 3. Search for `k6`, then select the `k6` integration.
 4. Click on the `Configuration` tab option.
 5. Scroll down and click on the `Install integration` button.
-
-
-
