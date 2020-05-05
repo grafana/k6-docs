@@ -91,7 +91,7 @@ Usually, this is not a big problem as each application only allocates these reso
 
 By running code requiring additional features on top of ES5.1, we also need additional extensions to the javascript vm, further boosting the resource usage. This is the default mode of k6.
 
-When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance bnefits of running in the base compability mode, see [this article](<(/using-k6/javascript-compatibility-mode#performance-comparison)>).
+When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compability mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 
 ## Setting up the bundler
 
