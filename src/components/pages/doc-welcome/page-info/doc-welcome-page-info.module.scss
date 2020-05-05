@@ -1,19 +1,15 @@
 .container {
-  margin-bottom: 50px;
-  margin-top: 135px;
+  margin-bottom: 47.5px;
+  margin-top: 105px;
   @include lg-down {
-    margin-top: 200px;
-  }
-  @include md-down {
-    margin-top: 245px;
+    margin-top: 160px;
   }
   @include sm-down {
-    margin-top: 265px;
+    margin-top: 230px;
   }
 }
 
 .title {
-  margin-bottom: 15px;
   max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
   @include lg-down {
     max-width: 100%;
@@ -23,9 +19,13 @@
 .description {
   font-size: $font-size-lg;
   line-height: $line-height-lg;
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 0;
   max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
+  @include md-down {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
   @include lg-down {
     max-width: 100%;
   }

@@ -23,9 +23,42 @@
 .logo-wrapper {
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  span {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    font-size: 12px;
+    color: $color-accent-primary;
+    border-radius: 2px;
+    background-color: rgba($color-accent-primary, 0.1);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 2px 5px;
+    transform: translate(100%, -50%);
+    text-align: center;
+  }
+  @include lg-down {
+    span {
+      bottom: -10px;
+      top: unset;
+      right: 0;
+      left: 0;
+      transform: translate(0, 100%);
+    }
+  }
 
   @include xs-down {
     margin-bottom: 25px;
+    span {
+      bottom: unset;
+      top: 50%;
+      left: unset;
+      right: -10px;
+      transform: translate(100%, -50%);
+    }
   }
 }
 
@@ -138,8 +171,7 @@
   }
 }
 .social {
-  margin-top: 42px;
-  margin: 37px -5px -5px -5px;
+  margin: 47px -5px -5px -5px;
   display: flex;
   flex-wrap: wrap;
   > * {

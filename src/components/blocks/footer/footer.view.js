@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import classNames from 'classnames';
-import BackgroundLine from './svg/footer-background-line.inline.svg';
 import Logo from 'svg/logo.inline.svg';
 import GithubLogo from './svg/github.inline.svg';
 import TwitterLogo from './svg/twitter.inline.svg';
@@ -18,9 +16,10 @@ export const Footer = () => (
       <div className={'container'}>
         <div className={'row'}>
           <div className={`col-md-2 col-12 `}>
-            <a href={main} className={styles.logoWrapper}>
+            <Link className={`${styles.logoWrapper}`} to={`/`}>
               <Logo className={styles.logo} />
-            </a>
+              <span>docs</span>
+            </Link>
             <div className={styles.social}>
               <a
                 href={'https://github.com/loadimpact/k6'}

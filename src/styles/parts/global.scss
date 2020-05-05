@@ -40,8 +40,10 @@ h6 {
   font-weight: 400;
   margin: 0;
   @include md-down {
-    font-size: 25px;
-    line-height: 30px;
+    h1 {
+      font-size: 25px;
+      line-height: 30px;
+    }
   }
 }
 

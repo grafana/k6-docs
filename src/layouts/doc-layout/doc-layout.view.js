@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
 import { Link, navigate, withPrefix } from 'gatsby';
 import {
   Cookies,
@@ -25,7 +26,7 @@ import { slugify, isInIFrame } from 'utils';
 import CookieConsent from 'components/shared/cookie-consent';
 import _ from 'lodash/lang';
 
-import { main } from 'utils/urls';
+import { main, app } from 'utils/urls';
 import AlgoliaQueries from 'utils/algolia';
 
 const indexName = AlgoliaQueries[0].indexName;
@@ -69,9 +70,9 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
   return (
     <>
       <option
-        label={`${Array(nested)
-          .fill('-')
-          .join('')}${nested ? ' ' : ''}${meta.title || name}`}
+        label={`${Array(nested).fill('-').join('')}${nested ? ' ' : ''}${
+          meta.title || name
+        }`}
         selected={isActive}
         value={meta.redirect || meta.path}
         // ignore react warning on this
@@ -81,7 +82,7 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
       </option>
       {hasSubMenu && (
         <>
-          {childrenToList(children).map(node => (
+          {childrenToList(children).map((node) => (
             <OptionsGroup
               node={node}
               key={node.name}
@@ -95,7 +96,7 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
 };
 
 // renders sidebar nodes from passed children prop, recursively
-const SidebarNode = props => {
+const SidebarNode = (props) => {
   const {
     node: { name, meta, children },
   } = props;
@@ -147,7 +148,7 @@ const SidebarNode = props => {
       )}
       {children && isActive && (
         <div className={styles.sidebarNodeChildren}>
-          {childrenToList(children).map(node => (
+          {childrenToList(children).map((node) => (
             <SidebarNode node={node} key={node.name} />
           ))}
         </div>
@@ -183,8 +184,11 @@ export const DocLayout = ({
       <SEO {...pageMetadata} />
 
       <div className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <HeaderLogo theme="doc" />
+        </div>
         {sidebarTree &&
-          childrenToList(sidebarTree.children).map(sectionNode => (
+          childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
               {sectionNode.meta.path ? (
                 <Heading
@@ -209,29 +213,30 @@ export const DocLayout = ({
                 </Heading>
               )}
               <div>
-                {childrenToList(sectionNode.children).map(node => (
+                {childrenToList(sectionNode.children).map((node) => (
                   <SidebarNode node={node} key={node.name} />
                 ))}
               </div>
             </div>
           ))}
-        <div className={styles.sidebarSection}>
-          Go To{' '}
+        <div
+          className={classNames(styles.sidebarSection, styles.sidebarFooter)}
+        >
           <a className={'link'} href={`${main}`}>
             k6.io
+          </a>
+          <a className={'link'} href={`${app}`}>
+            app.k6.io
           </a>
         </div>
       </div>
 
       <main className={styles.main}>
         <Header>
-          <div className={'col-xl-1 col-2'}>
-            <HeaderLogo disableLink={!showFooter} />
-          </div>
-          <div className={'col-xl-7 col-lg-10 d-md-block col-md-12 d-none'}>
+          <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
             <HeaderNav links={links} />
           </div>
-          <div className={'d-md-none col-10 d-flex justify-content-end'}>
+          <div className={'d-md-none col-12 d-flex justify-content-end'}>
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
           <div className={`col-xl-4 col-12 ${styles.searchBox}`}>
@@ -250,12 +255,12 @@ export const DocLayout = ({
                 className={styles.dropdown}
               >
                 {sidebarTree &&
-                  childrenToList(sidebarTree.children).map(sectionNode => (
+                  childrenToList(sidebarTree.children).map((sectionNode) => (
                     <optgroup
                       label={sectionNode.name}
                       key={`docSection-${sectionNode.name}`}
                     >
-                      {childrenToList(sectionNode.children).map(node => (
+                      {childrenToList(sectionNode.children).map((node) => (
                         <OptionsGroup node={node} key={node.name} nested={0} />
                       ))}
                     </optgroup>
@@ -281,7 +286,7 @@ export const DocLayout = ({
           disableStyle
           cookie={'user-has-accepted-cookies'}
         >
-          {onAccept => <CookieConsent onAccept={onAccept} />}
+          {(onAccept) => <CookieConsent onAccept={onAccept} />}
         </CookieBannerUniversal>
       </CookiesProvider>
       <HelperWidget />
