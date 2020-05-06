@@ -30,7 +30,7 @@ You may discover that the performance of your application was much better at the
 test in comparison to the end. This typically happens if your database is not properly tuned.
 Adding indexes or assigning additional memory may help.
 
-# Soak testing in k6
+## Soak testing in k6
 
 We recommend you to configure your Soak Test at about 80% capacity of your system.
 If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
