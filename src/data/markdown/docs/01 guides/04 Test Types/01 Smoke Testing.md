@@ -5,12 +5,11 @@ script or modify an existing script"
 ---
 
 Smoke test is a regular load test, configured for minimal load. 
-You want to run a smoke test as a sanity check every time you write a new 
-script or modify an existing script.
+You want to run a smoke test as a sanity check every time you write a new script or modify an existing script.
 
 You want to run a smoke test to:
  1. Verify that your test script doesn't have errors.
- 2. Verify that your system doesn't throw any errors when under minimal load
+ 2. Verify that your system doesn't throw any errors when under minimal load.
 
 ## Smoke testing in k6
 
@@ -57,13 +56,12 @@ export default () => {
 </div>
 
 The VU chart of a smoke test should look similar to this. You want to use only 1 or 2 VUs. 
-![Smoke Test VU chart](./images/smoke-test.png) 
+![Smoke test VU chart](./images/smoke-test.png)
 
 If your smoke test produced any errors, you must either correct the script or fix your environment 
 before you can continue. 
 
 The k6 output should look similar to this:
-![Smoke Test Terminal Output](./images/smoke-test-terminal-output.png)
+![Smoke test Terminal Output](./images/smoke-test-terminal-output.png)
 
-Once your Smoke Test shows 0 errors, as on the screenshot above, you can go to the next step and 
-execute a [Load Test](/test-types/load-testing) to assess the performance of your system.
+Once your smoke test shows 0 errors, as on the screenshot above, you can go to the next step and execute a [load test](/test-types/load-testing) to assess the performance of your system.

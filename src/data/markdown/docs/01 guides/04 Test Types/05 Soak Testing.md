@@ -3,9 +3,8 @@ title: "Soak testing"
 excerpt: "The soak test uncovers performance and reliability issues stemming from a system being under pressure for an extended period."
 ---
 
-While [Load testing](/test-types/load-testing) is primarily concerned with Performance assessment, and
-[Stress Testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, 
-the Soak Testing is concerned with reliability over a long time. 
+While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
+[stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a long time.
 
 The soak test uncovers performance and reliability issues stemming from a system being under 
 pressure for an extended period.
@@ -14,15 +13,15 @@ Reliability issues typically relate to bugs, memory leaks, insufficient storage 
 incorrect configuration or infrastructure failures. Performance issues typically relate to
 incorrect database tuning, memory leaks, resource leaks or a large amount of data. 
 
-With Soak test you can simulate days worth of traffic in only a few hours.
+With soak test you can simulate days worth of traffic in only a few hours.
 
 You typically run this test to:
  - Verify that your system doesn't suffer from bugs or memory leaks, which result in a crash or
-   restart after several hours of operation
+   restart after several hours of operation.
  - Verify that expected application restarts don't lose requests.
  - Find bugs related to race-conditions that appear sporadically. 
  - Make sure your database doesn't exhaust the allotted storage space and stops.
- - Make sure your logs don't exhaust the allotted disk storage
+ - Make sure your logs don't exhaust the allotted disk storage.
  - Make sure the external services you depend on don't stop working after a certain amount of
    requests are executed.
  
@@ -32,7 +31,7 @@ Adding indexes or assigning additional memory may help.
 
 ## Soak testing in k6
 
-We recommend you to configure your Soak Test at about 80% capacity of your system.
+We recommend you to configure your soak test at about 80% capacity of your system.
 If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
 
 The duration of a stress test should be measured in hours. We recommend you to start with a 1 hour test, 
@@ -76,7 +75,7 @@ The VU chart of a Soak Test should look similar to this:
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> ### Make a cost estimate before starting a Soak Test
+> ### Make a cost estimate before starting a soak test
 >
 > Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your 
 > infrastructure and vendor costs may be significant.
@@ -85,9 +84,27 @@ The VU chart of a Soak Test should look similar to this:
 
 </div>
 
-## Conclusions
-Soak Testing helps you uncover bugs and reliability issues that surface over an extended period. 
-Many complex systems have bugs of this nature. This test should be executed after your standard 
-Load Tests are successful, and your system has been found stable when executing a Stress Test.
+## When to do soak testing?
+Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.
 
-Soak testing is the last major step on the road to building reliable systems. 
+You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.
+
+Soak testing is the last major step on the road to building reliable systems.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "When to do soak testing?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p>
+<p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p>
+<p>Soak testing is the last major step on the road to building reliable systems.</p>"
+    }
+  }]
+}
+</script>
+
