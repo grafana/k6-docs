@@ -3,55 +3,57 @@ title: "Load testing websites"
 excerpt: "This guide provides some recommendations to help you load testing a website or web app with k6."
 ---
 
-Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle "well".
+Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle appropriately.
 
-That is what load testing is all about. Load testing will help you simulate those users to asses your system performance and know if your website or web app meet your goals.
+Load testing helps you simulate those users to asses your system performance and know if your website or web app meets your goals.
 
-This guide will provide guidance and recommendations to get started, creating user scenarios, and avoiding common pitfalls to load test a website.
+This guide provides guidance and recommendations to get started, creating user scenarios, and avoiding common pitfalls to load test a website.
 
-## What does affect the performance of a website?
+## Factors that affect website performance
 
-On a website, performance refers to the user experience. That is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
+On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
 
  - Frontend
  - Backend
 
-Frontend performance focuses on browser metrics like rendering time, interactive time, loading time, etc.
+Frontend performance focuses on browser metrics like rendering time, interactive time, loading time, among others.
 
-Backend performance focuses mostly on the server response time and the number of returned errors.
+Backend performance, on the other hand, focuses mostly on the server response time and the amount of returned errors.
 
-Which one is more important? There is not one true answer to this question. In general terms, the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states:
+Which one is more important? There is no one true answer to this question. In general terms, the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states:
 
 > 80-90% of the end-user response time is spent on the frontend.
 
 
 But this is not necessarily accurate.
 
-When the number of users visiting your website increases, the frontend time will always be the same, but if your system struggles with the increased concurrency, the **backend time might grow exponentially with the rise of concurrent users**.
+With an increasing amount of visits to your website, the frontend response time remains roughly the same. Still, when your system struggles with the increased concurrency, the **backend time might grow exponentially with the rise of concurrent users**.
 
 The following chart illustrates this situation:
 
-![](./Frontend-Backend-LoadTesting.png)
+![Frontend time vs Backend time with increasing amount of website visitors](./Frontend-Backend-LoadTesting.png)
 
 
-## When should I load test a website?
+## When to load test a website?
 
-In short, when you are concerned about the **availability and scalability of your website**.
+In short, whenever you are concerned about the **availability and scalability of your website**.
 
-If you have very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.
+If you have a very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.
 
-But as the number of user grows, you should start spending more time improving and testing the performance of your backend. In the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/), Steve Souders pointed out that:
+But as the number of users grows, you should start spending more time improving and testing the performance of your backend. In the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/), Steve Souders pointed out that:
 
 > If you’re worried about availability and scalability, focus on the backend.
 
 ### Browser metrics and load testing
 
-When testing how your system behaves with some concurrent users, browser metrics are, in most cases, less useful. The reason is that each browser runs independently of the number of users visiting your website.  Hence, a load test will not impact browser metrics like rendering time.
+When testing how your system behaves with some concurrent users, browser metrics are, in most cases, less useful. 
+
+Because each browser runs independently, the number of concurrent users in a load test will not affect browser metrics like rendering time.
 
 
-## How to load test a website?
+## Load testing a website
 
-A load test will focus on testing the <b>performance of the requests to your backend</b>. The two most basic aspects to analyze are the <b>server response time</b> and the number of <b>returned errors</b>.
+A load test focuses on testing the <b>performance of the requests to your backend</b>. The two most fundamental aspects to analyze are the <b>server response time</b> and the number of <b>returned errors</b>.
 
 For example, a load test simulating hundreds of concurrent users could validate that:
 
@@ -63,16 +65,16 @@ Below, some common recommendations that you could consider when load testing a w
 
 ### Decide what to test first
 
- To begin, we recommend you to consider performance testing an iterative and continuous process.
+We recommend you to consider performance testing an iterative and continuous process.
 
- You start small, test, learn and iterate frequently.
+You start small by testing, evaluating, and iterating frequently.
 
 > Start small and simple, make sure you get something out of the testing first, then expand the test suite and add more complexity until you feel that you’ve reached the point where more effort spent on realism will not give enough return on your invested time.
 >
 >
 > [Simple testing is better than no testing](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
 
-The first thing is to decide what to load test. On one side, you could evaluate which are the performance aspects that are most valuable to your business and has the most significant risks. On the other side, you could identify what your users do regularly. Use your analytics tools to find the most frequent user journeys.
+The first thing is to decide what to load test. On the one hand, you could evaluate which are the performance aspects that are most valuable to your business and has the most significant risks. On the other hand, you could identify what your users do regularly. Use your analytics tools to find the most frequent user journeys.
 
 With this information, it’s time to analyze the frequency of usage, business value, performance risks, and any other critical performance aspect of your organization to help you deciding what to load test first.
 
@@ -173,3 +175,20 @@ group("login page", function() {
 - [Session recording guide](/using-k6/session-recording-har-support)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "When to load test a website?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p>
+<p>If you have a very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.</p>
+<p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"
+    }
+  }]
+}
+</script>
