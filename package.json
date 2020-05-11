@@ -32,7 +32,7 @@
     "formik": "^1.5.8",
     "gatsby": "^2.15.35",
     "gatsby-image": "^2.2.27",
-    "gatsby-plugin-algolia": "^0.5.0",
+    "gatsby-plugin-algolia": "^0.11.0",
     "gatsby-plugin-catch-links": "^2.1.24",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-manifest": "^2.2.21",
