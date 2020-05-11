@@ -42,20 +42,20 @@ Once your goals are clear, you need to codify them as [thresholds](/using-k6/thr
 
 Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is very simple with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
 
-1. **Installation of k6**: Install k6 on the server/VM/container that will be running the CI jobs.
-2. **Create a test**: Create and store the test files in version control, alongside application code.
-3. **Pass/fail criteria**: Codify pass/fail criteria as thresholds so that k6 can pass/fail your tests when run in CI.
-4. **Local vs Cloud execution**: Decide how to run tests.
-5. **Test frequency**: Decide how often to run tests.
-6. **Notifications**: Get notified in your team communication tool of choice when your tests fail.
+1.  [Installation of k6](#installation-of-k6): Install k6 on the machine running the CI jobs.
+2.  [Create a test](#create-a-test): Create and store the test files in version control, alongside application code.
+3.  [Pass/fail criteria](#pass-fail-criteria): Codify pass/fail criteria that can fail your tests when run in CI.
+4.  [Local vs Cloud execution](#local-vs-cloud-execution): Decide what type of tests to run.
+5.  [Test frequency](#test-frequency): Decide how often to run tests.
+6.  [Notifications](#notifications): Get notified when your tests fail.
 
-We'll have a closer look at these general steps in more detail below. 
+We'll have a closer look at these general steps in more detail below.
 
 ## 1. Installation of k6
 
 The first step to integrating load testing in your CI is to find and install a performance testing tool.
 
-We built k6 for automation. It's a CLI tool that can integrate easily into your tech stack. 
+We built k6 for automation. It's a CLI tool that can integrate easily into your tech stack.
 
 There are three ways to install k6:
 
@@ -63,9 +63,9 @@ There are three ways to install k6:
 - Pulling the Docker image
 - Downloading the binary for your OS
 
-See the full [installation instructions](/getting-started/installation) for more information. 
+See the full [installation instructions](/getting-started/installation) for more information.
 
-Additionally, we also have available [guides for installing k6 in specific CI tools](/integrations#continuous-integration-and-continuous-delivery). 
+Additionally, we also have available [guides for installing k6 in specific CI tools](/integrations#continuous-integration-and-continuous-delivery).
 
 ## 2. Create a test
 
@@ -120,12 +120,12 @@ If the test ends with one or more failed thresholds k6 will exit with a non-zero
 
 k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes. In local execution mode k6 will generate all the traffic from the machine where it's being run. In CI this would be the build servers. When executing a test locally, you can optionally stream the results to k6 Cloud for storage and visualization (`k6 run -o cloud ...`). In cloud execution mode k6 will instead bundle up and send the main JS test file, and all dependent files, to k6 Cloud as an archive for execution on cloud infrastructure managed by our k6 Cloud service. The different modes of execution are appropriate for different use cases. Some general guidance follows:
 
-| Use case | Execution mode |
-| --------------------- | -------------- |
-| Load test with <1000 VUs on a machine with consistent dedicated resources | Local execution |
-| The target system is behind a firewall and not accessible from the public Internet | Local execution |
+| Use case                                                                                                                                                     | Execution mode  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
+| Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                    | Local execution |
+| The target system is behind a firewall and not accessible from the public Internet                                                                           | Local execution |
 | Can't ensure consistent dedicated resources locally for load test, eg. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
-| Need to run test from multiple geographic locations in a test | Cloud execution |
+| Need to run test from multiple geographic locations in a test                                                                                                | Cloud execution |
 
 ### Authenticating with k6 Cloud
 
@@ -188,12 +188,12 @@ Things to consider with your test environment:
 
 Generalized, our recommendation is as follows, broken down by VU iteration duration:
 
-| VU iteration duration | Test frequency | Trigger mechanism |
-| --------------------- | -------------- | -------------- |
-| <10s | On every commit | Commit push |
-| <60s | Daily/Nightly | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >60s | Couple of times a week | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >5min | Once a week | Scheduling, Pull/Merge Requests or when merging into main development branch |
+| VU iteration duration | Test frequency         | Trigger mechanism                                                            |
+| --------------------- | ---------------------- | ---------------------------------------------------------------------------- |
+| <10s                  | On every commit        | Commit push                                                                  |
+| <60s                  | Daily/Nightly          | Scheduling, Pull/Merge Requests or when merging into main development branch |
+| >60s                  | Couple of times a week | Scheduling, Pull/Merge Requests or when merging into main development branch |
+| >5min                 | Once a week            | Scheduling, Pull/Merge Requests or when merging into main development branch |
 
 **Scheduling**
 
@@ -284,3 +284,42 @@ We have written CI tool specific guides following the steps mentioned above:
 
 
 
+ <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "HowTo",
+    "name": "How to automate performance testing",
+    "description": "Automation is the end-goal for many organizations when it comes to understanding performance over time. This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.",
+    "step": [{
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#installation-of-k6",
+        "name": "Installation of k6",
+        "text": "Install k6 on the machine running the CI jobs."
+    }, {
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#create-a-test",
+        "name": "Create a test",
+        "text": "Create and store the test files in version control, alongside application code."
+    }, {
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#pass-fail-criteria",
+        "name": "Pass/fail criteria",
+        "text": "Codify pass/fail criteria that can fail your tests when run in CI."
+    }, {
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#local-vs-cloud-execution",
+        "name": "Local vs Cloud execution",
+        "text": "Decide what type of tests to run."
+    }, {
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#test-frequency",
+        "name": "Test frequency",
+        "text": "Decide how often to run tests."
+    }, {
+        "@type": "HowToStep",
+        "url": "https://k6.io/docs/testing-guides/automated-performance-testing#notifications",
+        "name": "Notifications",
+        "text": "Get notified when your tests fail."
+    }]
+}
+</script>
