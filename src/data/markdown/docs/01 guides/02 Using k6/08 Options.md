@@ -766,7 +766,7 @@ export let options = {
 ## Summary Trend Stats
 
 Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
-in `k6 run` and `k6 cloud` commands
+in `k6 run` command.
 
 | Env                      | CLI                     | Code / Config file  |
 | ------------------------ | ----------------------- | ------------------- |
