@@ -540,6 +540,10 @@ export let options = {
 
 </div>
 
+> ### Cloud runs
+>
+> There are a couple of considerations with this option when running cloud tests. The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
+
 ## Stages
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
