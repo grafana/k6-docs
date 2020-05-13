@@ -25,11 +25,11 @@ export const K6DoesNot = ({ style }) => (
           more performant.
         </p>
         <p>
-          k6 can still be used for website load testing. It even has a{' '}
-          <Link className={'link'} to="/using-k6/session-recording-har-support">
-            Session Recorder
+          k6 can still be used for{' '}
+          <Link className={'link'} to="/testing-guides/load-testing-websites">
+            load testing websites
           </Link>
-          , enabling you to generate tests from a website session.
+          . You can even run a test from a <Link className={'link'} to="/using-k6/session-recording-har-support">recorded user session</Link>.
         </p>
       </li>
       <li>
@@ -44,12 +44,8 @@ export const K6DoesNot = ({ style }) => (
         </p>
         <p>
           If you want to import npm modules or libraries using NodeJS APIs, you
-          can bundle npm modules with browserify or webpack and import them in
-          your tests. Read more about{' '}
-          <Link className={'link'} to="/using-k6/modules">
-            npm Modules
-          </Link>
-          .
+          can <Link className={'link'} to="/using-k6/modules#bundling-node-modules">bundle npm modules with webpack</Link> and import them in
+          your tests. 
         </p>
       </li>
     </ul>

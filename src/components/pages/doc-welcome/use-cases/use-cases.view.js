@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { Heading } from 'components/shared/heading';
 import styles from './use-cases.module.scss';
 
@@ -20,9 +21,8 @@ export const UseCases = () => {
           </Heading>
           <p>
             k6 is optimized for minimal consumption of system resources. It’s a
-            high-performance tool designed for running tests with high load. You
-            can use it for running tests with a high load (spike, stress,
-            endurance tests) in pre-production and QA environments.
+            high-performance tool designed for running tests with high load (<Link className={'link'} to="/test-types/spike-testing">spike</Link>, <Link className={'link'} to="/test-types/stress-testing">stress</Link>,
+            {' '}<Link className={'link'} to="/test-types/soak-testing">soak tests</Link>) in pre-production and QA environments.
           </p>
         </li>
         <li>
@@ -30,11 +30,7 @@ export const UseCases = () => {
             Performance monitoring
           </Heading>
           <p>
-            k6 provides great primitives for code modularization, performance
-            thresholds, and automation. These features make it an excellent
-            choice for performance monitoring. You could run tests with a small
-            amount of load to continuously monitor the performance of your
-            production environment.
+            k6 provides great primitives for <Link className={'link'} to="/testing-guides/automated-performance-testing">performance testing automation</Link>. You could run tests with a small amount of load to continuously monitor the performance of your production environment.
           </p>
         </li>
       </ul>
