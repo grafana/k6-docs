@@ -78,6 +78,14 @@ The first thing is to decide what to load test. On the one hand, you could evalu
 
 With this information, it’s time to analyze the frequency of usage, business value, performance risks, and any other critical performance aspect of your organization to help you deciding what to load test first.
 
+Next, you should decide what [types of load tests](/test-types/introduction) to run. Check out the following articles to learn more:
+
+- [Smoke test](/test-types/smoke-testing)
+- [Load test](/test-types/load-testing)
+- [Stress  test](/test-types/stress-testing)
+- [Spike  test](/test-types/stress-testing#spike-testing)
+- [Soak test](/test-types/soak-testing)
+
 ### Calculate the number of concurrent users
 
 You could define your load tests based on the observation of your normal and peak traffic levels, and use this formula to determine the number of VUs to specify in your load tests:
