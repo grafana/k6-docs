@@ -86,11 +86,10 @@
 }
 
 .title {
-  margin-bottom: 15px;
+  margin: 0 0 15px 0;
   font-size: $font-size-xl;
   line-height: $line-height-xl;
   font-weight: 400;
-  margin: 0;
   @include md-down {
     font-size: 25px;
     line-height: 30px;
