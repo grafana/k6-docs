@@ -26,9 +26,7 @@ export const CTA = ({
           <div className={themeLight && styles.wrapperLight}>
             <div className={styles.inner}>
               <div className={styles.content}>
-                <Heading className={styles.title} tag={'h2'}>
-                  {title}
-                </Heading>
+                <p className={styles.title}>{title}</p>
                 <p className={styles.description}>{description}</p>
               </div>
 
