@@ -10,9 +10,7 @@ export const CtaDocDefault = ({ title, description, Button }) => {
         <div className={styles.wrapperLight}>
           <div className={styles.inner}>
             <div className={styles.content}>
-              <Heading className={styles.title} tag={'h3'}>
-                {title}
-              </Heading>
+              <p className={styles.title}>{title}</p>
               <p className={styles.description}>{description}</p>
             </div>
 

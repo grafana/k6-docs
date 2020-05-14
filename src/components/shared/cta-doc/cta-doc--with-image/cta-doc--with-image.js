@@ -16,7 +16,7 @@ export const CtaDocWithImage = ({ title, description, image, Button }) => {
               </div>
               <div className={`col-md-6 col-12 ${styles.hook}`}>
                 <div className={styles.cloudText}>
-                  <h3>{title}</h3>
+                  <p className={styles.title}>{title}</p>
                   <p>{description}</p>
                   <Button />
                 </div>
