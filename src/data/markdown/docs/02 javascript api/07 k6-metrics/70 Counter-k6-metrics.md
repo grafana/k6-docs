@@ -1,24 +1,25 @@
 ---
-title: "Counter (k6/metrics)"
+title: 'Counter (k6/metrics)'
 ---
 
 _Counter_ is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.
 
-| Parameter | Type    | Description                    |
-| --------- | ------- | ------------------------------ |
-| `name`    | string  | The name of the custom metric. |
+| Parameter | Type   | Description                    |
+| --------- | ------ | ------------------------------ |
+| `name`    | string | The name of the custom metric. |
 
-| Method                                                                                       | Description                        |
-| -------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter/counter-add-value-tags)      | Add a value to the counter metric. |
+| Method                                                                                             | Description                        |
+| -------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
 
-When `Counter` is used in a threshold expression, the variable must be called `count` or `rate` (lower case). 
-For example: 
- - `count >= 200` // value of the counter must be larger or equal to 200
- - `count < 10` // less than 10.
- 
+When `Counter` is used in a threshold expression, the variable must be called `count` or `rate` (lower case).
+For example:
+
+- `count >= 200` // value of the counter must be larger or equal to 200
+- `count < 10` // less than 10.
+
 ### Examples
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
@@ -33,27 +34,27 @@ export default function() {
   myCounter.add(3);
 }
 ```
-</div>
 
+</div>
 
 <div class="code-group" data-props='{"labels": ["Simple Threshold usage"], "lineNumbers": [true]}'>
 
 ```javaScript
-import http from "k6/http"; 
+import http from "k6/http";
 import { Counter } from "k6/metrics";
 
 let CounterErrors = new Counter("Errors");
 
 export let options = { thresholds: { "Errors": ["count<100"] } };
 
-export default function() { 
+export default function() {
   let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  let contentOK = res.json("name") === 'Bert'; 
-  CounterErrors.add(!contentOK); 
-}; 
+  let contentOK = res.json("name") === 'Bert';
+  CounterErrors.add(!contentOK);
+};
 ```
-</div>
 
+</div>
 
 <div class="code-group" data-props='{"labels": ["Advanced Thresholds"], "lineNumbers": [true]}'>
 
@@ -78,7 +79,7 @@ export let options = {
 };
 
 export default function () {
-  let auth_resp = http.post('https://test-api.k6.io/auth/token/login/', 
+  let auth_resp = http.post('https://test-api.k6.io/auth/token/login/',
                             {username: 'test-user', 'password': 'supersecure'});
 
   if (auth_resp.status >= 400){
@@ -93,4 +94,5 @@ export default function () {
   sleep(1);
 }
 ```
+
 </div>

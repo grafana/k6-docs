@@ -4,24 +4,24 @@ title: 'Rate (k6/metrics)'
 
 _Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/javascript-api/k6-metrics).
 
-| Parameter | Type    | Description                                                                                         |
-| --------- | ------- | --------------------------------------------------------------------------------------------------- |
-| `name`    | string  | The name of the custom metric.                                                                      |
+| Parameter | Type   | Description                    |
+| --------- | ------ | ------------------------------ |
+| `name`    | string | The name of the custom metric. |
 
-| Method                                                                           | Description                     |
-| -------------------------------------------------------------------------------- | ------------------------------- |
-| [Rate.add(value, [tags])](/javascript-api/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
-
+| Method                                                                                      | Description                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------- |
+| [Rate.add(value, [tags])](/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags) ] | Add a value to the rate metric. |
 
 ## Rate usage in Thresholds
 
-When `Rate` is used in a threshold expression, the variable must be called `rate` (lower case). 
-For example: 
- - `rate < 0.1` // less than 10%
- - `rate >= 0.9` // more or equal to 90%
- 
-The value of the `rate` variable ranges between `0.00` and `1.00`. 
- 
+When `Rate` is used in a threshold expression, the variable must be called `rate` (lower case).
+For example:
+
+- `rate < 0.1` // less than 10%
+- `rate >= 0.9` // more or equal to 90%
+
+The value of the `rate` variable ranges between `0.00` and `1.00`.
+
 ### Examples
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
@@ -40,7 +40,6 @@ export default function() {
 ```
 
 </div>
-
 
 <div class="code-group" data-props='{"labels": ["Usage in Thresholds"], "lineNumbers": [true]}'>
 
@@ -70,4 +69,5 @@ export default function () {
   sleep(1);
 }
 ```
+
 </div>
