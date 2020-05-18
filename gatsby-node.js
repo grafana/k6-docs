@@ -342,43 +342,42 @@ const createRedirects = ({ actions, pathPrefix }) => {
   createRedirect({
     fromPath: '/getting-started/results-output/apache-kafka',
     toPath: '/results-visualization/apache-kafka',
-    isPermanent: true
+    isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/getting-started/results-output/cloud',
     toPath: '/results-visualization/cloud',
-    isPermanent: true
+    isPermanent: true,
   });
   createRedirect({
     fromPath: '/results-visualization/k6-cloud-test-results',
     toPath: '/results-visualization/cloud',
-    isPermanent: true
+    isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/getting-started/results-output/datadog',
     toPath: '/results-visualization/datadog',
-    isPermanent: true
+    isPermanent: true,
   });
   createRedirect({
     fromPath: '/getting-started/results-output/influxdb',
     toPath: '/results-visualization/influxdb-+-grafana',
-    isPermanent: true
+    isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/getting-started/results-output/json',
     toPath: '/results-visualization/json',
-    isPermanent: true
+    isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/getting-started/results-output/statsd',
     toPath: '/results-visualization/statsd',
-    isPermanent: true
+    isPermanent: true,
   });
-
 };
 
 exports.createPages = async (options) => {
