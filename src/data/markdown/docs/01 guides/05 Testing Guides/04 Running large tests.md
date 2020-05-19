@@ -313,7 +313,7 @@ WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=
 Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
 
-# Benchmarking k6 on AWS hardware
+## Benchmarking k6 on AWS hardware
 
 We have executed a few large tests on different EC2 machines to see how much load k6 can generate. 
 Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
@@ -321,7 +321,7 @@ The limit to this scalability is in the number of open connections. A single Lin
 This means that maximum of 65k requests can be executed simultaneously on a single machine.
 The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000. 
 
-## Real-life test of a website.
+### Real-life test of a website.
 
 Testing the theoretical limits is fun, but that's not the point of this benchmark. 
 The point of this benchmark is to give users an indication of how much traffic k6 can generate when executing complicated, real-life tests.
@@ -338,7 +338,7 @@ Setup:
 The "website.js" test file uses a wide range of k6 features to make the test emulate a real usage of k6. This is not a test rigged for performance - quite the opposite.
 This test uses plenty of custom metrics, checks, parametrization, batches, thresholds and groups. It's a heavy test that should represent well the "real life" use case.
 
-### Execution on AWS m5.large EC2 server
+**> AWS m5.large EC2 server**
 
 The `m5.large` instance has 8GB of RAM and 2 CPU cores. 
 
@@ -364,7 +364,8 @@ Results
 - Peak RPS: ~6000 (note, this test was not optimized for RPS).
 - 2x `sleep(5)` in each iteration.
 
-### Execution on AWS m5.4xlarge
+**> AWS m5.4xlarge**
+
 The `m5.4xlarge` instance has 64GB of RAM and 16 CPU cores.
 <div class="code-group">
 
@@ -389,7 +390,8 @@ Results
 - 2x `sleep(5)` in each iteration.
 
 
-### Execution on AWS m5.24xlarge
+**> AWS m5.24xlarge**
+
 The m5.24xlarge has 384GB of RAM and 96 CPU cores.
 NOTE: sleep has been reduced to 1s instead of 5s to produce more requests.
 <div class="code-group">
@@ -413,13 +415,14 @@ Results
 - Peak RPS: ~61.500.
 - `sleep(1)` in each iteration.
 
-## Testing for RPS
+### Testing for RPS
 
 As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
 To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately, our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS. 
 Much higher numbers are possible for faster systems.
 
-### Execution on AWS m5.24xlarge
+**> AWS m5.24xlarge**
+
 <div class="code-group">
 
 ```bash
@@ -442,13 +445,13 @@ Results
 - Peak RPS: ~188.500.
 
 
-## Testing for data transfer
+### Testing for data transfer
 
 k6 can utilize the available network bandwidth when uploading files, but it needs plenty of memory to do so. 
 
 Please read the warning about the cost of data transfer in AWS before commencing a large scale test.
 
-### Execution on AWS m5.24xlarge
+**> AWS m5.24xlarge**
 
 To test the network throughput we have written a [file uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs. 
 
