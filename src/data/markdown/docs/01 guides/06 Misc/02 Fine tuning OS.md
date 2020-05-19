@@ -115,6 +115,7 @@ There you should navigate to `Utilities` which are located in the menu bar at th
 Once you press enter and close the Terminal, you can reboot your Mac normally and log into your account.
 
 **Changing soft limits**
+
 **> Linux**
 
 So, let's say that we want to run a 1000 VU test which makes 4 HTTP requests per iteration. In this case we could increase the open files limit to 5000, to account for additional non-network file usage. This can be done with the following command:
@@ -298,7 +299,9 @@ In this section we will go over some of the optimisations that are not necessari
 
 Depending on the particular k6 test: maximum number of VUs used, number and size of JavaScript dependencies, and complexity of the test script itself, k6 can consume large amounts of system RAM during test execution. While the development is focused on reducing RAM usage as much as possible, a single test run might use tens of gigabytes of RAM under certain scenarios.
 
-As a baseline, count each VU instance to require between 5MB and 20MB of RAM, depending on your script complexity and dependencies. This is roughly between 5GB and 20GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
+As a baseline, count each VU instance to require between 1MB and 5MB of RAM, depending on your script complexity and dependencies. This is roughly between `GB and 5GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
+
+If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode).
 
 ### Virtual memory
 In addition to physical RAM, ensure that the system is configured with an appropriate amount of virtual memory, or swap space, in case higher memory usage bursts are required.
