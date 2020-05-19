@@ -29,10 +29,7 @@ Below we will explore what hardware is needed for generating different levels of
 
 ## OS fine-tuning
 
-For the purpose of this demonstration, we are using a Linux (Ubuntu Server) machine. The instructions will be the same for any Linux distribution. 
-
-The following configuration changes are required to allow the k6 instance to use the full network capacity of the server.
-Detailed information about these settings can be found in our [OS fine-tuning article](/misc/fine-tuning-os).
+The following OS changes allow k6 to use the **full network capacity** of the machine for maximum performance. 
 
 <div class="code-group" data-props='{}'>
 
@@ -45,7 +42,9 @@ ulimit -n 250000
 
 </div>
 
-For quick testing, you can paste these commands in a terminal window as the root user. To make these changes permanent, refer to the instructions of your Linux distribution.
+These commands enable reusing network connections, increase the limit of network connections, and range of local ports. 
+
+For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine-tuning OS" article](/misc/fine-tuning-os).
 
 ## Hardware considerations
 
