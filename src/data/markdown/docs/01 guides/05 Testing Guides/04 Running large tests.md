@@ -477,8 +477,8 @@ Note: each VU in k6 is completely independent, and therefore it doesn't share an
 1000VUs uploading 26MB file need as much as 81GB of RAM since each VU holds the copy of the file in memory. 
 
 
-## Summary
+## See also
 
-k6 is able to fully utilize CPU, memory and network bandwidth available on any hardware we have tested it on. 
-A single instance of k6 can run 30k+ VUs and produce 100k+ RPS. For the vast majority of systems, load coming from a single k6 process will be more than enough.
-At the time of writing this article, distributed execution isn't implemented in k6, but this is not something that should stop you from running very large load tests.
+- [Fine tuning OS](/misc/fine-tuning-os)
+- [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
+- [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
