@@ -44,6 +44,8 @@ ulimit -n 250000
 
 These commands enable reusing network connections, increase the limit of network connections, and range of local ports. 
 
+To apply these changes, you can either paste these commands as a root user before running a k6 test or change the configuration files in your operating system.
+
 For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine-tuning OS" article](/misc/fine-tuning-os).
 
 ## Hardware considerations
@@ -132,6 +134,8 @@ Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 
 
 ## k6 Options
+
+The k6 settings listed below will unlock additional performance benefits when running large tests.
 
 ### --compatibility-mode=base
 
