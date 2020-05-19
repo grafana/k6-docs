@@ -28,7 +28,7 @@ The k6 Cloud Chrome extension will capture everything – every single HTTP(s) r
 ![Step 3](images/03 Recording a test script/Step 3.png)
 
   4. **Save your test scripts**
-    Save the recorded script in any of your projects.  
+    Save the recorded script in any of your projects.
     If any _third party requests_ or requests to download assets were made during the recording those requests will be filtered out by default.
     Would you want to include some of the requests in the _third party list_ simply deselect the ones you want to include then hit save.
 ![Step 4](images/03 Recording a test script/Step 4.png)

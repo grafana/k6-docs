@@ -3,28 +3,9 @@ title: 'Running k6'
 excerpt: ''
 ---
 
-## Running k6 the first time
+## Running local tests
 
-This will run a very simple k6 sample script from github (click on the _Docker_ tab
-if you prefer using the k6 [Docker image](https://en.wikipedia.org/wiki/Docker_%28software%29)):
-
-<div class="code-group" data-props='{"labels": ["Mac / prebuilt binary", "Docker image"]}'>
-
-```shell
-$ k6 run github.com/loadimpact/k6/samples/http_get.js
-```
-
-```shell
-$ docker run loadimpact/k6 run github.com/loadimpact/k6/samples/http_get.js
-```
-
-</div>
-
-You should see `k6` download the sample script and run it with a single virtual user (VU).
-
-## Executing local scripts
-
-Next, let's try to run a local script. Copy the code below, paste it into your
+Let's start by running a simple local script. Copy the code below, paste it into your
 favourite editor, and save it as "script.js":
 
 <div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
@@ -43,13 +24,19 @@ export default function() {
 
 Then run k6 using this command:
 
-<div class="code-group" data-props='{"labels": ["Mac / prebuilt binary", "Docker", "Docker in Win PowerShell"]}'>
+<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
 
 ```shell
 $ k6 run script.js
 ```
 
 ```shell
+# When using the `k6` docker image, you can't just give the script name since
+# the script file will not be available to the container as it runs. Instead
+# you must tell k6 to read `stdin` by passing the file name as `-`. Then you
+# pipe the actual file into the container with `<` or equivalent. This will
+# cause the file to be redirected into the container and be read by k6.
+
 $ docker run -i loadimpact/k6 run - <script.js
 ```
 
@@ -59,26 +46,11 @@ $ cat script.js | docker run -i loadimpact/k6 run -
 
 </div>
 
-### Docker syntax
-
-When using the `k6` docker image, you can't just give the script name since
-the script file will not be available to the container as it runs. Instead
-you must tell k6 to read `stdin` by passing the file name as `-`. Then you
-pipe the actual file into the container with `<` or equivalent. This will
-cause the file to be redirected into the container and be read by k6.
-
-> ### ⚠️ Note
->
-> If your script imports other files (JS modules), piping like this
-> will not work since the extra files will not be visible inside the container.
-> To use modules you need to first mount your host/local directory into the
-> Docker container, see [Modules with Docker](/using-k6/modules#using-local-modules-with-docker).
-
 ## Adding more VUs
 
-Now we'll try running a _real_ load test, with more than 1 virtual user and a slightly longer duration:
+Now we'll try running a load test with more than 1 virtual user and a slightly longer duration:
 
-<div class="code-group" data-props='{"labels": ["Mac / prebuilt binary", "Docker", "Docker in Win PowerShell"]}'>
+<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
 
 ```shell
 k6 run --vus 10 --duration 30s script.js
@@ -103,17 +75,17 @@ which allows you to break larger tests into smaller pieces, or make reusable pie
 Scripts must contain, at the very least, a `default` function - this defines the entry point for
 your VUs, similar to the `main()` function in many other languages:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
 export default function() {
-  // do things here...
+  // vu code: do things here...
 }
 ```
 
 </div>
 
-## The init context and the default function
+### The init context and the default function
 
 "Why not just run my script normally, from top to bottom", you might ask - the answer is: we do,
 but code inside and outside your default function can do different things.
@@ -121,37 +93,25 @@ but code inside and outside your default function can do different things.
 Code _inside_ `default` is called "VU code", and is run over and over for as long as the test is
 running. Code _outside_ of it is called "init code", and is run only once per VU.
 
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```js
+// init code
+
+export default function( {
+  // vu code
+}
+
+```
+
+</div>
+
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
 to do - with a few important exceptions: you can't load anything from your local filesystem, or
 import any other modules. This all has to be done from init-code.
 
-There are two reasons for this. The first is, of course: performance.
+Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
-If you read a file from disk on every single script iteration, it'd be needlessly slow; even if
-you cache the contents of the file and any imported modules, it'd mean the _first run_ of the
-script would be much slower than all the others. Worse yet, if you have a script that imports
-or loads things based on things that can only be known at runtime, you'd get slow iterations
-thrown in every time you load something new.
-
-But there's another, more interesting reason. By forcing all imports and file reads into the
-init context, we design for distributed execution. We know which files will be needed, so we
-distribute only those files. We know which modules will be imported, so we can bundle them up
-from the get-go. And, tying into the performance point above, the other nodes don't even need
-writable filesystems - everything can be kept in-memory.
-
-As an added bonus, you can use this to reuse data between iterations (but only for the same VU):
-
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
-
-```javascript
-var counter = 0;
-
-export default function() {
-  counter++;
-}
-```
-
-</div>
 
 ## Using options
 
@@ -177,7 +137,7 @@ export default function() {
 
 Then you just run the script without those parameters on the command line:
 
-<div class="code-group" data-props='{"labels": ["Mac / prebuilt binary", "Docker", "Docker in Win PowerShell"]}'>
+<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
 
 ```shell
 $ k6 run script.js
@@ -221,63 +181,26 @@ export default function() {
 
 </div>
 
-## Using checks
+## Running cloud tests
 
-Maybe we want to verify that an HTTP transaction worked and that the transaction time stayed below some acceptable value. We can use the [check()](/javascript-api/k6/check-val-sets-tags) function for this:
+One of the goals with k6 is to support three execution modes to run your k6 tests:
 
-<div class="code-group" data-props='{"labels": ["stages.js"], "lineNumbers": [true]}'>
+- [Local](#running-local-tests): on your local machine or a CI server.
+- [Cloud](/cloud): on cloud infrastructure managed by `k6 Cloud`.
+- Clustered: on more than one machine managed by you. Not supported yet.
 
-```javascript
-import http from 'k6/http';
-import { check, sleep } from 'k6';
+The goal of k6 is to support running a test on the three execution modes without making modifications to the script. 
 
-export let options = {
-  vus: 10,
-  duration: '30s',
-};
+For running cloud tests, you must sign up with the k6 Cloud and log in with the CLI. Then, you'd only have to pass your existing script to the `k6 cloud` command.
 
-export default function() {
-  let res = http.get('http://test.k6.io');
-  check(res, {
-    'status was 200': r => r.status == 200,
-    'transaction time OK': r => r.timings.duration < 200,
-  });
-  sleep(1);
-}
-```
-
-</div>
-
-_Using check() to verify that transactions work and are fast enough_
-
-The above will generate a couple of extra output lines after the test, telling you if your check conditions succeeded or failed during the test. If the check conditions never failed, you will see this:
-
-<div class="code-group" data-props='{"labels": []}'>
+<div class="code-group" data-props='{"labels": ["Running a cloud test"]}'>
 
 ```shell
-done [==========================================================] 30s / 30s
 
-✓ status was 200 OK
-✓ transaction time OK
+$ k6 cloud script.js
 
 ```
 
 </div>
 
-And if a check condition fails, it will instead look like this:
-
-<div class="code-group" data-props='{"labels": []}'>
-
-```shell
-done [==========================================================] 30s / 30s
-
-✗ status was 200
-↳  0% — ✓ 0 / ✗ 150
-✓ transaction time OK
-```
-
-</div>
-
-If you are using [k6 Cloud Insights](/cloud/analyzing-results/overview) you can also see how a given check has failed or passed during the test run:
-
-![Cloud Insights checks](./images/cloud-insights-checks.png)
+For detailed instructions and the different options, read more on [running cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
