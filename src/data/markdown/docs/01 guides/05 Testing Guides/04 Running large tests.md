@@ -27,7 +27,7 @@ Below we will explore what hardware is needed for generating different levels of
 </div>
 
 
-## OS fine-tuning for maximum performance
+## OS fine-tuning
 
 For the purpose of this demonstration, we are using a Linux (Ubuntu Server) machine. The instructions will be the same for any Linux distribution. 
 
@@ -73,7 +73,7 @@ run the test on your development machine with 100VUs and multiply the consumed m
 Simple tests will use ~1-5MB per VU. (1000VUs = 1-5GB). 
 Tests that are using file uploads can consume tens of megabytes per VU.
 
-## General advice for running large tests.
+## General advice
 
 ### Make your test code resilient
 
@@ -132,7 +132,7 @@ Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 ![k6 iftop htop](./images/large-scale-testing-3-terminals.png)
 
 
-## Additional k6 flags to achieve better performance
+## k6 Options
 
 ### --compatibility-mode=base
 
@@ -313,7 +313,7 @@ WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=
 Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
 
-## Benchmarking k6 on AWS hardware
+## Benchmarking k6 on AWS
 
 We have executed a few large tests on different EC2 machines to see how much load k6 can generate. 
 Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
