@@ -3,8 +3,6 @@ title: "Fine tuning OS"
 excerpt: ""
 ---
 
-## Background
-
 A number of users while running their test scripts locally will run into limits within their OS which would prevent them from making the necessary number of requests to complete the test. This limit usually manifests itself in a form of **Too Many Open Files** error. These limits, if unchanged, can be a severe bottleneck if you choose to run a somewhat bigger or complicated test locally on your machine.
 
 In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.
@@ -13,7 +11,7 @@ Important to note here is that everything that we are covering in this article n
 
 > Modifications below have been tested for macOS Sierra 10.12 and above, so if you are running an older version than that, the process for changing these settings may be different.
 
-## User resource limits
+## Network resource limit
 
 Unix operating system derivatives like GNU/Linux, BSDs and macOS, have the capability to limit the amount of system resources available to a process to safeguard system stability. This includes the total amount of memory, CPU time or amount of open files a single process is allowed to manage.
 
@@ -29,16 +27,16 @@ This message means that the network resource limit has been reached, which will 
 
 Below we will look at ways to increase this resource limit, and allow k6 to run tests with hundreds or thousands of concurrent VUs from a single system.
 
-## Limit types
+**Limit types**
 
 There are two types of resource limits in Unix systems:
 
 - hard limits: these are the absolute maximum allowed for each user, and can only be configured by the root user.
 - soft limits: these can be configured by each user, but cannot be above the hard limit setting.
 
-## Viewing limits configuration
+### Viewing limits configuration
 
-**Linux**
+**> Linux**
 
 On GNU/Linux, you can see the configured limits with the ulimit command.
 
@@ -87,7 +85,7 @@ file locks                      (-x) unlimited
 
 Note the difference of open files being a maximum of 1024 for the soft limit, while it's 1048576 for the hard limit.
 
-**macOS**
+**> macOS**
 
 In macOS however, you will have a couple of different system imposed limits to take into consideration.
 
@@ -100,11 +98,11 @@ The first one is `launchctl limit maxfiles` which prints the per-process limits 
 
 So, to reiterate, running commands above will show you the system limits on open files and running processes.
 
-## Changing limits configuration
+### Changing limits configuration
 
 The first thing you should consider before changing the configuration is the amount of network connections you expect your test to require. The http_reqs metric in the k6 result summary can hint at this, but a baseline calculation of number of max. VUs * number of HTTP requests in a single VU iteration will deliver a fair approximation. Note that k6 also deals with text files and other resources that count towards the "open files" quota, but network connections are the biggest consumers.
 
-**macOS**
+**> macOS**
 
 Before we can change any system imposed limits in macOS we will need to disable a security feature put in place to prevent us in doing so. You will need to disable System Integrity Protection that was introduced in OS X El Capitan to prevent certain system-owned files and directories from being modified by processes without the proper privileges.
 
@@ -116,8 +114,9 @@ There you should navigate to `Utilities` which are located in the menu bar at th
 
 Once you press enter and close the Terminal, you can reboot your Mac normally and log into your account.
 
-## Changing soft limits
-**Linux**
+**Changing soft limits**
+
+**> Linux**
 
 So, let's say that we want to run a 1000 VU test which makes 4 HTTP requests per iteration. In this case we could increase the open files limit to 5000, to account for additional non-network file usage. This can be done with the following command:
 
@@ -133,7 +132,7 @@ If we want to persist this change for future sessions, we can add this to a shel
 $ echo "ulimit -n 5000" >> ~/.bashrc
 ```
 
-**macOS**
+**> macOS**
 
 If the soft limit is too low, set the current session to (values written here are usually close to default ones) :
 
@@ -143,8 +142,9 @@ sudo launchctl limit maxfiles 65536 200000
 
 Since sudo is needed, you are prompted for a password.
 
-## Changing hard limits
-**Linux**
+**Changing hard limits**
+
+**> Linux**
 
 If the above command results in an error like cannot modify limit: Operation not permitted or value exceeds hard limit, that means that the hard limit is too low, which as mentioned before, can only be changed by the root user.
 
@@ -161,7 +161,7 @@ The new limits will be in place after logging out and back in.
 
 Alternatively, * hard nofile 1048576 would apply the setting for all non-root user accounts, and root hard nofile 1048576 for the root user. See the documentation in that file or man bash for the ulimit command documentation.
 
-**macOS**
+**> macOS**
 
 Next step will be to configure your new file limits. Open terminal and paste the following command:
 
@@ -241,41 +241,11 @@ In most cases these limits should be enough to run most of your simple tests loc
 
 </div>
 
-## General optimizations not dependent on OS
-In this section we will go over some of the optimisations that are not necessarily dependant on your OS, but may impact your testing.
 
-## RAM usage
-
-Depending on the particular k6 test: maximum number of VUs used, number and size of JavaScript dependencies, and complexity of the test script itself, k6 can consume large amounts of system RAM during test execution. While the development is focused on reducing RAM usage as much as possible, a single test run might use tens of gigabytes of RAM under certain scenarios.
-
-As a baseline, count each VU instance to require between 5MB and 20MB of RAM, depending on your script complexity and dependencies. This is roughly between 5GB and 20GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
-
-## Virtual memory
-In addition to physical RAM, ensure that the system is configured with an appropriate amount of virtual memory, or swap space, in case higher memory usage bursts are required.
-
-You can see the status and amount of available swap space on your system with the commands swapon or free.
-
-We won't go into swap configuration details here, but you can find several guides online.
-
-## Network performance
-Because k6 can generate and sustain large amounts of network traffic, it also stresses the network stack of modern operating systems. Under certain loads or network conditions it's possible to achieve higher throughput and better performance by tweaking some network settings of the operating system or restructuring the network conditions of the test.
-
-## TCP TIME_WAIT period
-TCP network applications, such as web clients and servers, are assigned a network socket pair (a unique combination of local address, local port, remote address, and remote port) for each incoming or outgoing connection. Typically this socket pair is used for a single HTTP request/response session, and closed soon after. However, even after a connection is successfully closed by the application, the kernel might still reserve resources for quickly reopening the same socket if a new matching TCP segment arrives. This also occurs during network congestion where some packets get lost in transmission. This places the socket in a TIME_WAIT state, and is released once the TIME_WAIT period expires. This period is typically configured between 15 seconds and 2 minutes.
-
-The problem some applications like k6 might run into is causing a high number of connections to end up in the TIME_WAIT state, which can prevent new network connections being created.
-
-In these scenarios, before making changes to the system network configuration, which might have adverse side-effects for other applications, it's preferable to first take some common testing precautions.
-Use different server ports or IPs
-
-Since sockets are uniquely created for a combination of local address, local port, remote address and remote port, a safe workaround for avoiding TIME_WAIT congestion is using different server ports or IP addresses.
-
-For example, you can configure your application to run on ports :8080, :8081, :8082, etc. and spread out your HTTP requests across these endpoints.
-
-## Increase local port range
+## Local port range
 When creating an outgoing network connection the kernel allocates a local (source) port for the connection from a range of available ports.
 
-**GNU/Linux**
+**> GNU/Linux**
 
 On GNU/Linux you can see this range with:
 
@@ -301,7 +271,7 @@ sysctl -w net.ipv4.tcp_tw_reuse=1
 
 This will enable a feature to quickly reuse connections in TIME_WAIT state, potentially yielding higher throughput.
 
-**macOS**
+**> macOS/Linux**
 
 On macOS the default ephemeral port range is 49152 to 65535, for a total of 16384 ports. You can check this with the sysctl command:
 
@@ -321,3 +291,41 @@ net.inet.ip.portrange.first: 49152 -> 32768
 ```
 
 Note that the official range designated by IANA is 49152 to 65535, and some firewalls may assume that dynamically assigned ports fall within that range. You may need to reconfigure your firewall in order to make use of a larger range outside of your local network.
+
+## General optimizations
+In this section we will go over some of the optimisations that are not necessarily dependant on your OS, but may impact your testing.
+
+### RAM usage
+
+Depending on the particular k6 test: maximum number of VUs used, number and size of JavaScript dependencies, and complexity of the test script itself, k6 can consume large amounts of system RAM during test execution. While the development is focused on reducing RAM usage as much as possible, a single test run might use tens of gigabytes of RAM under certain scenarios.
+
+As a baseline, count each VU instance to require between 1MB and 5MB of RAM, depending on your script complexity and dependencies. This is roughly between `GB and 5GB of required system RAM for a 1,000 VU test, so make sure that sufficient physical RAM is available to meet your test demands.
+
+If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode).
+
+### Virtual memory
+In addition to physical RAM, ensure that the system is configured with an appropriate amount of virtual memory, or swap space, in case higher memory usage bursts are required.
+
+You can see the status and amount of available swap space on your system with the commands swapon or free.
+
+We won't go into swap configuration details here, but you can find several guides online.
+
+### Network performance
+Because k6 can generate and sustain large amounts of network traffic, it also stresses the network stack of modern operating systems. Under certain loads or network conditions it's possible to achieve higher throughput and better performance by tweaking some network settings of the operating system or restructuring the network conditions of the test.
+
+### TCP TIME_WAIT period
+TCP network applications, such as web clients and servers, are assigned a network socket pair (a unique combination of local address, local port, remote address, and remote port) for each incoming or outgoing connection. Typically this socket pair is used for a single HTTP request/response session, and closed soon after. However, even after a connection is successfully closed by the application, the kernel might still reserve resources for quickly reopening the same socket if a new matching TCP segment arrives. This also occurs during network congestion where some packets get lost in transmission. This places the socket in a TIME_WAIT state, and is released once the TIME_WAIT period expires. This period is typically configured between 15 seconds and 2 minutes.
+
+The problem some applications like k6 might run into is causing a high number of connections to end up in the TIME_WAIT state, which can prevent new network connections being created.
+
+In these scenarios, before making changes to the system network configuration, which might have adverse side-effects for other applications, it's preferable to first take some common testing precautions.
+Use different server ports or IPs
+
+Since sockets are uniquely created for a combination of local address, local port, remote address and remote port, a safe workaround for avoiding TIME_WAIT congestion is using different server ports or IP addresses.
+
+For example, you can configure your application to run on ports :8080, :8081, :8082, etc. and spread out your HTTP requests across these endpoints.
+
+## See also
+
+- [Running large tests](/testing-guides/running-large-tests)
+- [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
