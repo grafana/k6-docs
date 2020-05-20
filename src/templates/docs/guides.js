@@ -103,7 +103,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             <Manifesto />
             <K6DoesNot />
             <Cloud
-              title={'k6 Cloud'}
+              title={'Looking for k6 Cloud?'}
               btnLink={`${docs}/cloud`}
               isExternal
               btnTarget={'_self'}
