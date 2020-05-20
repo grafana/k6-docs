@@ -180,6 +180,7 @@ async function createDocPages({ graphql, actions, pathPrefix }) {
               html
               frontmatter {
                 title
+                head_title
                 excerpt
                 redirect
                 hideFromSidebar
@@ -381,7 +382,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
   createRedirect({
     fromPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
+    toPath:
+      '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
     isPermanent: true,
   });
 
@@ -405,25 +407,30 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
   createRedirect({
     fromPath: '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url',
-    toPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
+    toPath:
+      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
-    toPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
+    fromPath:
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
+    toPath:
+      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/javascript-api/k6-http/response/response-clicklink-params',
-    toPath: '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
+    toPath:
+      '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/javascript-api/k6-http/response/response-submitform-params',
-    toPath: '/javascript-api/k6-http/response-k6-http/response-submitform-params',
+    toPath:
+      '/javascript-api/k6-http/response-k6-http/response-submitform-params',
     isPermanent: true,
   });
 };
@@ -452,6 +459,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'draft',
       value: node.frontmatter.draft || 'false',
+    });
+    createNodeField({
+      node,
+      name: 'head_title',
+      value: node.frontmatter.head_title || '',
     });
   }
 };
