@@ -1,6 +1,7 @@
 ---
 title: "Automated performance testing"
-excerpt: "The why and how of performance testing automation"
+head_title: 'How to Automate Performance Testing: The k6 Guide'
+excerpt: "Automation is a hot topic in the testing community. This guide answers the WHY and HOW of Performance Testing Automation and gives you 6 steps to automate your performance tests."
 ---
 
 Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always straightforward. Especially if you don’t already have a lot of experience in performance engineering. 
@@ -42,12 +43,23 @@ Once your goals are clear, you need to codify them as [thresholds](/using-k6/thr
 
 Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is very simple with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
 
-1.  [Installation of k6](#installation-of-k6): Install k6 on the machine running the CI jobs.
-2.  [Create a test](#create-a-test): Create and store the test files in version control, alongside application code.
-3.  [Pass/fail criteria](#pass-fail-criteria): Codify pass/fail criteria that can fail your tests when run in CI.
-4.  [Local vs Cloud execution](#local-vs-cloud-execution): Decide what type of tests to run.
-5.  [Test frequency](#test-frequency): Decide how often to run tests.
-6.  [Notifications](#notifications): Get notified when your tests fail.
+- [Why to automate performance tests?](#why-to-automate-performance-tests)
+- [Know your goals](#know-your-goals)
+- [How to automate performance testing](#how-to-automate-performance-testing)
+- [1. Installation of k6](#1-installation-of-k6)
+- [2. Create a test](#2-create-a-test)
+- [3. Pass/fail criteria](#3-passfail-criteria)
+- [4. Local vs Cloud execution](#4-local-vs-cloud-execution)
+  - [Authenticating with k6 Cloud](#authenticating-with-k6-cloud)
+- [5. Test frequency](#5-test-frequency)
+  - [VU iteration duration](#vu-iteration-duration)
+  - [Branching strategy](#branching-strategy)
+  - [Pre-production test environment](#pre-production-test-environment)
+  - [Guidance](#guidance)
+- [6. Notifications](#6-notifications)
+  - [For k6 OSS](#for-k6-oss)
+  - [For k6 cloud](#for-k6-cloud)
+- [See also](#see-also)
 
 We'll have a closer look at these general steps in more detail below.
 

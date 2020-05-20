@@ -1,6 +1,7 @@
 ---
 title: 'API load testing'
-excerpt: 'API load testing considerations, best practices and examples'
+head_title: 'Intro to API Load Testing: The k6 Guide'
+excerpt: 'APIs are everywhere. Slow APIs impact user experience and business. This guide introduces you to performance testing and gives you the best practices on how to load test your APIs with k6.'
 ---
 
 It is crucial to test your API with various testing methods and tools. From unit- to performance-testing, you need to have plans and execute them with great care. One type of testing the API is to put load on it to see how it performs, hence the load-testing.

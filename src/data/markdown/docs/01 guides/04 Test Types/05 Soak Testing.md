@@ -1,6 +1,7 @@
 ---
 title: "Soak testing"
-excerpt: "The soak test uncovers performance and reliability issues stemming from a system being under pressure for an extended period."
+head_title: 'What is Soak Testing? How to create a Soak Test in k6'
+excerpt: "A Soak Test is a type of Performance Test that tells you about the reliability and performance of your system over an extended period of time. Let’s see an example."
 ---
 
 While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and

@@ -1,7 +1,7 @@
 ---
 title: "Load testing"
-excerpt: "Load testing is primarily concerned with assessing the current performance of your system in terms
-of concurrent users or requests per second."
+head_title: 'What is Load Testing? How to create a Load Test in k6'
+excerpt: "A Load Test is a type of Performance Test that is primarily concerned with assessing the performance of your system in terms of concurrent users or requests per second. Let’s see an example."
 ---
 
 Load Testing is primarily concerned with assessing the current performance of your system in terms 

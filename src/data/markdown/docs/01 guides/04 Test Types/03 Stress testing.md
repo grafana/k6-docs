@@ -1,6 +1,7 @@
 ---
 title: 'Stress testing'
-excerpt: 'Stress testing is a type of load testing used to determine the limits of the system. The purpose of this test is to verify the stability and reliability of the system under extreme conditions.'
+head_title: 'What is Stress Testing? How to create a Stress Test in k6'
+excerpt: 'Stress and Spike Tests are types of performance tests that are concerned with assessing the limits of your system and stability under extreme conditions. Let’s see two examples.'
 ---
 
 Stress testing is one of many different types of load testing.

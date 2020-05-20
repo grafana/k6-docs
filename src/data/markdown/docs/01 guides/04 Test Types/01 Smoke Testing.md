@@ -1,7 +1,8 @@
 ---
 title: "Smoke testing"
+head_title: 'What is Smoke Testing? How to create a Smoke Test in k6'
 excerpt: "Smoke test is a regular load test, configured for minimal load. You want to run a smoke test as a sanity check every time you write a new
-script or modify an existing script"
+script or modify an existing script. Let’s see an example."
 ---
 
 Smoke test is a regular load test, configured for minimal load. 
