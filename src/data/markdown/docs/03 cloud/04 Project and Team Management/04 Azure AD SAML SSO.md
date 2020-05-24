@@ -3,12 +3,22 @@ title: 'Azure AD SAML SSO'
 excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 ---
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+## Background
 
-> <b>This feature requires the SAML SSO addon or an Enterprise plan</b><br>
-> To setup SAML SSO based authentication to k6 Cloud you must have a Team plan or above and the SAML SSO addon, alternatively be on an Enterprise plan. You must also have an Azure AD Premium Subscription.
+Federated authentication is a must to virtually all organizations beyond a certain size. Microsoft's Active Directory product has been a long time gold standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud intergrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
 
-</div>
+## What is SAML?
+
+Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an Identity Provider (eg. Azure AD) and a Service Provider (eg. k6 Cloud). SAML is an XML-based markup language for security assertions (statements that service providers use to make access-control decisions).
+
+Read more over at [WikiPedia](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language).
+
+## Prerequisites
+
+To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
+
+1. A [Team plan](/pricing) or above and the SAML SSO addon, alternatively be on an Enterprise plan.
+2. An [Azure AD Premium Subscription](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
 
 ## Configuration
 
@@ -55,7 +65,7 @@ excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
     | ------------------------------------------ | ----------------------------------- |
     | Identifier (Entity ID)                     | `https://api.k6.io/sso/acs/`        |
     | Reply URL (Assertion Consumer Service URL) | `https://api.k6.io/sso/acs/`        |
-    | Logout Url                                 | `https://api.k6.io/account/logout/` |
+    | Logout Url                                 | `https://app.k6.io/account/logout` |
 
     Resulting in:
 
@@ -85,3 +95,14 @@ excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 12. Copy the "App Federation Metadata Url" and send it to k6 Cloud support for completion of the setup.
 
     ![Azure AD SAML Signing Certificate](images/04 Azure AD SAML SSO/azure-ad-setup-saml-signing-cert.png)
+<br><br>
+
+13. Once you've gotten confirmation from k6 Cloud support that your account is ready we advise you to test the integration by clicking the "Test" button in Azure AD:
+
+    ![Azure AD Test SSO](images/04 Azure AD SAML SSO/azure-ad-test-sso.png)
+
+## Setting up access to projects
+
+With a completed integration between k6 Cloud and Azure AD your team members can Single Sign On to k6 Cloud via the Azure Portal. The next step is to setup project access permissions for team members in k6 Cloud, this doesn't happen automatically as part of account provisioning.
+
+See our docs on [adding team members](/cloud/project-and-team-management/team-members#adding-team-members) for more information on how to setup access permissions to projects for team members.
