@@ -183,15 +183,15 @@ export default function() {
 
 ## Running cloud tests
 
-One of the goals with k6 is to support three execution modes to run your k6 tests:
+k6 supports three execution modes to run your k6 tests:
 
 - [Local](#running-local-tests): on your local machine or a CI server.
-- [Cloud](/cloud): on cloud infrastructure managed by `k6 Cloud`.
-- Clustered: on more than one machine managed by you. Not supported yet.
+- [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
+- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/loadimpact/k6/issues/140).
 
-The goal of k6 is to support running a test on the three execution modes without making modifications to the script. 
+One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script. 
 
-For running cloud tests, you must sign up with the k6 Cloud and log in with the CLI. Then, you'd only have to pass your existing script to the `k6 cloud` command.
+For running cloud tests from the CLI, you must first register a k6 Cloud account and then log into your account via the CLI. Then, you only have to pass your existing script to the `k6 cloud` command.
 
 <div class="code-group" data-props='{"labels": ["Running a cloud test"]}'>
 

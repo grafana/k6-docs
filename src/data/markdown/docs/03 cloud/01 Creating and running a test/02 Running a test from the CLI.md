@@ -93,13 +93,13 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 7. Navigate to the URL to check your test results.  When the test is running, the test result page is shown. 
 
-   ![Insights results](/images/cloud-insights-results.png 'k6 Cloud Test Results')
+   ![k6 Cloud Test Results](/images/cloud-insights-results.png 'k6 Cloud Test Results')
 
    Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
 
 ## Cloud execution options
 
-All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the same between the `k6 run` and `k6 cloud` commands. k6 aims to run the same script on different execution modes without making any script modifications.
+All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the same between the `k6 run` and `k6 cloud` commands. k6 aims to run the same script in different execution modes without making any script modifications.
 
 Optionally, you can define some cloud options in your k6 script.
 
@@ -148,6 +148,7 @@ export let options = {
 | N. California         | `amazon:us:palo alto` |
 | Oregon                | `amazon:us:portland`  |
 | Hong Kong             | `amazon:cn:hong kong` |
+| São Paulo             | `amazon:br:sao paulo` |
 
 
 ### Running tests under a different project than your default one
@@ -156,7 +157,7 @@ By default tests and test runs will be created and run under your default projec
 
 To create and run tests under a different project, whether under your default organization or one you've been invited to, you have to pass the `Project ID` to k6.
 
-Select the project on the sidebar menu and you will find the `Project ID` on the header of the Project Dashboard page.
+Select the project on the sidebar menu and you will find the `Project ID` in the header of the Project Dashboard page.
 
 ![k6 Cloud Project ID](/images/dashboard-project-id.png 'Project ID')
 
@@ -261,5 +262,5 @@ Your [setup and teardown life cycle functions](/using-k6/test-life-cycle)
 are executed as normal when running cloud tests. Depending on the size
 of your test, it will execute from one or more cloud servers, but the
 setup and teardown will only execute from one server, so execute once
-each test-wide. There's no guarantee though that the same cloud server
+for each test run. There's no guarantee though that the same cloud server
 that executed the `setup()` will execute the `teardown()`.
