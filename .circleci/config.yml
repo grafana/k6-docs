@@ -95,13 +95,13 @@ workflows:
             branches:
               only:
                 - master
-                - update-running-k6
+                - develop
       - deploy-to-staging:
           requires:
             - build
           filters:
             branches:
-              only: update-running-k6
+              only: develop
       - deploy-to-production:
           requires:
             - build
