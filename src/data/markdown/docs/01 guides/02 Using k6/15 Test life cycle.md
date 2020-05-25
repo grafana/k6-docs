@@ -67,6 +67,20 @@ we distribute only those files. We know which modules will be imported, so we ca
 up from the get-go. And, tying into the performance point above, the other nodes don't even
 need writable filesystems - everything can be kept in-memory.
 
+As an added bonus, you can use this to reuse data between iterations (but only for the same VU):
+
+<div class="code-group" data-props='{"labels": []}'>
+
+```javascript
+var counter = 0;
+
+export default function() {
+  counter++;
+}
+```
+
+</div>
+
 ## The default function life-cycle
 
 A VU will execute the default function from start to end in sequence. Nothing out of the ordinary 
