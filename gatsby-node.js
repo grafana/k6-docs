@@ -341,6 +341,12 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
+    fromPath: '/using-k6/multipart-requests-file-uploads',
+    toPath: '/examples/data-uploads',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/getting-started/results-output/apache-kafka',
     toPath: '/results-visualization/apache-kafka',
     isPermanent: true,
