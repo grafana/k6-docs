@@ -25,6 +25,12 @@
       "to": "/examples/data-parameterization"
     },
     {
+      "title": "Parse HTML",
+      "description": "Scripting examples parsing HTML content.",
+      "url": "",
+      "to": "/examples/parse-html"
+    },
+    {
       "title": "Filling and Submitting HTML Forms",
       "description": "Scripting example on how to handle HTML forms in a load test.",
       "url": "",
