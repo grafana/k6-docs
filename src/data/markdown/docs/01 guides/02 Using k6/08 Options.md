@@ -913,6 +913,8 @@ export let options = {
 Log all HTTP requests and responses. Excludes body by default, to include body use
 '--http-debug=full'. Available in `k6 run` and `k6 cloud` commands.
 
+Read more [here](/using-k6/http-debugging).
+
 | Env             | CLI                                     | Code / Config file |
 | --------------- | --------------------------------------- | ------------------ |
 | `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        |
