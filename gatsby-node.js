@@ -445,6 +445,13 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/examples/html-forms',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/using-k6/html',
+    toPath: '/javascript-api/k6-html',
+    isPermanent: true,
+  });
+
 };
 
 exports.createPages = async (options) => {

@@ -134,6 +134,29 @@ You should consider your CDN as a third-party provider and do not include CDN re
 
 But there are also valid cases to test your CDN in case you want to understand something about your CDN provider.
 
+### Parsing HTML content
+
+When testing web sites it's common that you have to interact with HTML to submit forms, extract data, check for existence of elements or text etc.
+
+For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) and the [Selection](/javascript-api/k6-html/selection) API that contains more or less all of the [jQuery API](http://api.jquery.com/) that makes sense in the context of k6.
+
+<div class="code-group" data-props='{"labels": ["Parsing HTML content"]}'>
+
+```js
+import {parseHTML} from "k6/html";
+import http from "k6/http";
+
+export default function() {
+  const res = http.get("https://k6.io");
+  const doc = parseHTML(res.body);  // equivalent to res.html()
+  const pageTitle = doc.find('head title').text();
+  const langAttr = doc.find('html').attr('lang');
+};
+```
+
+</div>
+
+For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response-k6-http/response-submitform-params).
 
 ### Tag different types of resources
 
@@ -184,6 +207,7 @@ group("login page", function() {
 - [Session recording guide](/using-k6/session-recording-har-support)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
+- Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)
 
 <script type="application/ld+json">
 {
