@@ -439,6 +439,12 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/using-k6/html/working-with-html-forms',
+    toPath: '/examples/html-forms',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
