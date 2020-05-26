@@ -340,6 +340,11 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
+    fromPath: '/using-k6/archives-for-bundling-sharing-a-test',
+    toPath: '/misc/archive',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/using-k6/ssl-tls',
     toPath: '/using-k6/protocols/ssl-tls',
     isPermanent: true,
