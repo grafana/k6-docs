@@ -1,6 +1,7 @@
 ---
 title: JavaScript Compatibility Mode
 excerpt: ''
+hideFromSidebar: true
 ---
 
 > ### 🎉 This feature is new as of version 0.26.0

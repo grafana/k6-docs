@@ -1157,3 +1157,29 @@ export let options = {
 ```
 
 </div>
+
+
+## Compatibility mode
+
+Support running scripts with different ECMAScript compatibility modes.
+
+Read about the different modes on the [JavaScript Compatibility Mode documentation](/using-k6/javascript-compatibility-mode).
+
+
+| Env                   | CLI | Code / Config file |
+| --------------------- | --- | ------------------ |
+| `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A   |
+
+### Default
+
+extended
+
+### Example
+
+<div class="code-group" data-props='{"labels": []}'>
+
+```shell
+$ k6 run --compatibility-mode=base script.js
+```
+
+</div>

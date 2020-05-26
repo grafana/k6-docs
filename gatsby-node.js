@@ -339,6 +339,26 @@ const createRedirects = ({ actions, pathPrefix }) => {
     redirectInBrowser: true,
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/using-k6/ssl-tls',
+    toPath: '/using-k6/protocols/ssl-tls',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp',
+    toPath: '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/using-k6/ssl-tls/ssl-tls-client-certificates',
+    toPath: '/using-k6/protocols/ssl-tls/ssl-tls-client-certificates',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/using-k6/ssl-tls/ssl-tls-version-and-ciphers',
+    toPath: '/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers',
+    isPermanent: true,
+  });
 
   createRedirect({
     fromPath: '/using-k6/multipart-requests-file-uploads',

@@ -87,7 +87,7 @@ distribute the test files to all participating nodes.
 ## Contents of an archive file
 
 An archive contains the original source of the JS code, any [`open()`](/javascript-api/init-context/open-filepath-mode)'ed
-data files, [SSL/TLS client certificates](/using-k6/ssl-tls/ssl-tls-client-certificates) as well as a 
+data files, [SSL/TLS client certificates](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates) as well as a 
 `metadata.json` with all the options (a cascading of the options set on the [CLI](/using-k6/options),
 via [Environment variables](/using-k6/options) and [in-script options](/using-k6/options)
 (`export let options = {...}`)).
