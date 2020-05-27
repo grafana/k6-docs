@@ -95,13 +95,13 @@ workflows:
             branches:
               only:
                 - master
-                - update-using-html
+                - develop
       - deploy-to-staging:
           requires:
             - build
           filters:
             branches:
-              only: update-using-html
+              only: develop
       - deploy-to-production:
           requires:
             - build
