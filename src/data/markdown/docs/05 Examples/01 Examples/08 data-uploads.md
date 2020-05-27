@@ -1,9 +1,9 @@
 ---
-title: "Multipart requests (file uploads)"
-excerpt: ""
+title: "Data Uploads"
+excerpt: "Scripting examples on how to execute a load test that will upload a file to the System Under Test(SUT)."
 ---
-Uploading files is a common use case for many applications, so a tool like k6 needs to support
-testing such functionality.
+
+Example to execute a load test that will upload a file to the System Under Test(SUT).
 
 ## The open() function
 
@@ -50,7 +50,7 @@ export default function() {
 
 </div>
 
-## Creating a multipart request (uploading a file)
+## Multipart request (uploading a file)
 
 Now that you know how to load a local file, let's look at a script that creates a POST request
 to upload this data to an API endpoint along with a regular text field (`field` in the example
@@ -83,3 +83,9 @@ When passing a JS object as the body parameter to [http.post()](/javascript-api/
 or any of the other HTTP request functions, where one of the property values is a
 [FileData](/javascript-api/k6-http/filedata-k6-http) a multipart request will be constructed
 and sent.
+
+
+### Relevant k6 APIs
+- [open(filePath, [mode])](/javascript-api/init-context/open-filepath-mode)
+- [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file-data-filename-contenttype)
+

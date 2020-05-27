@@ -1,6 +1,7 @@
 ---
 title: "HTTP debugging"
 excerpt: ""
+hideFromSidebar: true
 ---
 
 It's not always things work as expected. For those cases there's a handy CLI flag, `--http-debug`,

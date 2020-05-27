@@ -68,7 +68,7 @@ Currently, k6 automatically creates the following tags by default:
 | `check`       | the [Check](/using-k6/checks) name                                                                                                                                              |
 | `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                               |
 | `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
-| `tls_version` | the [TLS](/using-k6/ssl-tls) version                                                                                                                                             |
+| `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                             |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
@@ -80,7 +80,7 @@ you need them:
 | `vu`          | the ID of the virtual user that executed the request                                                                    |
 | `iter`        | the iteration number                                                                                                    |
 | `ip`          | The IP address of the remote server                                                                                     |
-| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
+| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
 
 ### User-defined tags
 
