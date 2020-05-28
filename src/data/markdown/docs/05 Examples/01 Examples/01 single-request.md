@@ -38,7 +38,7 @@ export default function() {
 
   const checkRes = check(res, {
     'status is 200': r => r.status === 200,
-    'response body': r => r.body.indexOf('Feel free to browse'),
+    'response body': r => r.body.indexOf('Feel free to browse') !== -1,
   });
 }
 ```
