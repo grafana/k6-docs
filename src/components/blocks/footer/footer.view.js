@@ -75,9 +75,12 @@ export const Footer = () => (
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
-                    <Link className={styles.navColumnLink} to={'/integrations'}>
-                      Integrations
-                    </Link>
+                    <a
+                      className={styles.navColumnLink}
+                      href={`${main}/testimonials`}
+                    >
+                      Testimonials
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -102,25 +105,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <Link
                       className={styles.navColumnLink}
-                      to={'/testing-guides/load-testing-websites'}
+                      to={'/integrations'}
                     >
-                      Load testing websites
-                    </Link>
-                  </li>
-                  <li className={styles.navColumnItem}>
-                    <Link
-                      className={styles.navColumnLink}
-                      to={'/testing-guides/api-load-testing'}
-                    >
-                      API load testing
-                    </Link>
-                  </li>
-                  <li className={styles.navColumnItem}>
-                    <Link
-                      className={styles.navColumnLink}
-                      to={'/testing-guides/automated-performance-testing'}
-                    >
-                      Automated performance testing
+                      Integrations
                     </Link>
                   </li>
                 </ul>
