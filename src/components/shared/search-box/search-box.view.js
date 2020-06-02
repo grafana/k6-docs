@@ -15,7 +15,7 @@ import Algolia from 'svg/icon-algolia.inline.svg';
 
 const Hits = connectHits(({ showAll, hitComponent: Comp, hits }) => (
   <ul>
-    {hits.slice(0, showAll ? hits.length - 1 : 5).map((hit, i) => (
+    {hits.slice(0, showAll ? hits.length : 5).map((hit, i) => (
       <li key={`he-${i}${hit.objectID}`}>
         <Comp hit={hit} />
       </li>
