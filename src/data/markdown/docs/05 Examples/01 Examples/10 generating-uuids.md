@@ -5,6 +5,9 @@ excerpt: "Scripting example on how to generate UUIDs in your load test."
 
 Scripting example on how to generate UUIDs in your load test.
 
+Note that if you don't need v1 UUIDs, consider using the `uuidv4` function from
+the [k6 JS lib repository](https://jslib.k6.io/).
+
 ## Generate v1 and v4 UUIDs
 Universally unique identifiers are handy in many scenarios, as k6 doesn't have built-in support
 for UUIDs, we'll have to resort to using a Node.js library called [uuid](https://www.npmjs.com/package/uuid)
