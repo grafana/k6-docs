@@ -14,18 +14,18 @@ There are a few steps required to make this work:
 
 1. Make sure you have the necessary prerequisites installed:
    [Node.js](https://nodejs.org/en/download/) and [Browserify](http://browserify.org/)
-  
+
 2. Install the `uuid` library:
    <div class="code-group" data-props='{ "labels": [], "lineNumbers": [false] }'>
-    
+
     ```shell
-    $ npm install uuid
+    $ npm install uuid@3.4.0
     ```
 
    </div>
 3. Run it through browserify:
    <div class="code-group" data-props='{ "labels": [], "lineNumbers": [false] }'>
-   
+
    ```shell
    $ browserify node_modules/uuid/index.js -s uuid > uuid.js
    ```
@@ -42,7 +42,7 @@ There are a few steps required to make this work:
    ```
 
    </div>
-   
+
 
 Here's an example generating a v1 and v4 UUID:
 
