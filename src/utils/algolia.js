@@ -24,8 +24,8 @@ const removeGuidesAndRedirectWelcome = (path) =>
 
 // helper
 const flatten = (arr) =>
-  arr
-    .map(({ node: { frontmatter, fileAbsolutePath, excerpt, objectID } }) => {
+  arr.flatMap(
+    ({ node: { frontmatter, fileAbsolutePath, excerpt, objectID } }) => {
       const strippedDirectory = utils.stripDirectoryPath(
         fileAbsolutePath,
         'docs',
@@ -50,8 +50,8 @@ const flatten = (arr) =>
         )(path),
         content: piece,
       }));
-    })
-    .flat();
+    },
+  );
 
 // main query
 // keep the length of excerpt really absurd to make sure the article comes in full
