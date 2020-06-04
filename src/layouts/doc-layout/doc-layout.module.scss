@@ -9,6 +9,9 @@
 }
 
 .sidebar {
+  // guarantee the space for absolutely positioned footer
+  // in case sidebar height === page height
+  padding-bottom: 63px;
   width: 270px;
   flex-shrink: 0;
   background-color: $color-additional-3;
