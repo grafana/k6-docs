@@ -12,3 +12,82 @@ title: "Socket"
 | [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send-data)                                          | Send data.                                                                                                                                                |
 | [Socket.setInterval(callback, interval)](/javascript-api/k6-ws/socket/socket-setinterval-callback-interval) | Call a function repeatedly at certain intervals, while the connection is open.                                                                            |
 | [Socket.setTimeout(callback, period)](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay)        | Call a function with a delay, if the connection is open.                                                                                                  |
+
+### WebSocket built-in metrics
+
+`k6` will automatically collect some metrics when interacting with a WebSocket service through the `k6/ws` API.
+
+| Metric name           | Type    | Description                                                                                                               |
+| -------------------   | ------- | ------------------------------------------------------------------------------------------------------------------------  |
+| ws\_connecting        | Trend   | Total duration for the WebSocket connection request.                                                                      |
+| ws\_session\_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution.              |
+| ws\_sessions          | Counter | Total number of started WebSocket sessions.                                                                               |
+| ws\_ping              | Trend   | Duration between a ping request and its pong reception                                                                    |
+| ws\_msgs\_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send-data)                   |
+| ws\_msgs\_received    | Counter | Total number of received messages [Socket.on('message', callback)](/javascript-api/k6-ws/socket/socket-on-event-callback). |
+
+
+Check out the [Results output article](/getting-started/results-output) for more information about how to process the metric information.
+
+### Example
+
+<div class="code-group" data-props='{"labels": []}'>
+
+```js
+import ws from 'k6/ws';
+import { check } from 'k6';
+
+export default function() {
+  var url = 'ws://echo.websocket.org';
+  var params = { tags: { my_tag: 'hello' } };
+
+  var response = ws.connect(url, params, function(socket) {
+    socket.on('open', function open() {
+      console.log('connected');
+      socket.send(Date.now());
+
+      socket.setInterval(function timeout() {
+        socket.ping();
+        console.log('Pinging every 1sec (setInterval test)');
+      }, 1000);
+    });
+
+    socket.on('ping', function() {
+      console.log('PING!');
+    });
+
+    socket.on('pong', function() {
+      console.log('PONG!');
+    });
+
+    socket.on('pong', function() {
+      // Multiple event handlers on the same event
+      console.log('OTHER PONG!');
+    });
+
+    socket.on('message', function(message) {
+      console.log(`Received message: ${message}`);
+    });
+
+    socket.on('close', function() {
+      console.log('disconnected');
+    });
+
+    socket.on('error', function(e) {
+      if (e.error() != 'websocket: close sent') {
+        console.log('An unexpected error occured: ', e.error());
+      }
+    });
+
+    socket.setTimeout(function() {
+      console.log('2 seconds passed, closing the socket');
+      socket.close();
+    }, 2000);
+  });
+
+  check(response, { 'status is 101': r => r && r.status === 101 });
+}
+//VU execution won't be completely finished until the connection is closed.
+```
+
+</div>
