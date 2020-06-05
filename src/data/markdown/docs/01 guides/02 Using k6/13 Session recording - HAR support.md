@@ -18,9 +18,14 @@ k6 does not have built-in functionality to record user or API sessions, but it a
 In k6, the process looks like:
 
 1. Record a HAR file using your browser or tool of choice.
-2. Use **k6 convert** command to convert the HAR file into a k6 test.
+2. Use **har-to-k6 converter** to convert the HAR file into a k6 test.
 3. Update the auto-generated k6 test.
 4. Use **k6 run** to run the test.
+
+
+> The auto-generation of the test is a great option to add to your toolbox. It’s common practice for advanced user flows that generate many sophisticated HTTP requests, or for helping testers to identify the format of the requests.
+> 
+> The recording avoids writing advanced tests from scratch, saving you precious time building your performance tests.
 
 ## 1. Record a HAR file
 
@@ -62,19 +67,28 @@ It's good to have in consideration the following best practices to record a user
 
 ## 2. Convert the HAR file to a k6 script
 
-The first step is to install k6. If you have not installed yet, please, follow the [k6 installation instructions](/getting-started/installation).
+The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS tool that can convert a HAR file (browser session) into a k6 script. 
 
-k6 has a built-in HAR converter that will read HAR files and convert them to k6 scripts that can then be executed:
+**Install the har-to-k6 converter**
+
+A prerequisite is to have installed NodeJS. To install the converter, you can use the npm install command:
 
 ```bash
-k6 convert -O loadtest.js myfile.har
+$ npm install -g har-to-k6
 ```
 
-The above command will auto-generate a k6 script for you. k6 will read the HAR file (*myfile.har*) and convert it into a k6 test (*loadtest.js*).
+For other installation options, check out the [the har-to-k6 installation instructions](https://github.com/loadimpact/har-to-k6#installation).
 
-The auto-generation of the test is a great option to add to your toolbox. It’s common practice for advanced user flows that generate many sophisticated HTTP requests, or for helping testers to identify the format of the requests.
+**Run the convert command**
 
-The recording avoids writing advanced tests from scratch, saving you precious time building your performance tests.
+Now, you can use the converter to generate a k6 script from a HAR file. Run the converter like:
+
+```bash
+$ har-to-k6 myfile.har -o loadtest.js
+```
+
+The above command will auto-generate a k6 script for you. It will read the HAR file (*myfile.har*) and convert it into a k6 test (*loadtest.js*).
+
 
 ## 3. Modify the auto-generated k6 script
 
@@ -117,26 +131,15 @@ You should remove these third party requests because:
 * You may have no ability to impact the performance of the third-party service 
 * The load test may violate the terms of service contract that you have with the provider.
 
-There are at least three options to skip third-party requests in your k6 script.
+You have two options to skip third-party requests in your k6 script.
 
 1 - Edit the auto-generate k6 script and remove one by one the requests to third-party services.
 
-
-2 -  Use the **--only** and **--skip** options of the **k6 convert** command.
-
-**--only**
-
-*This option allows you to supply a comma-separated list of domains which are the only ones you want to fetch things from within your k6 test. This means that k6 will filter out any requests that go to domains other than these.* 
-
-**--skip** 
-
-The inverse of **--only**. This option allows you to specify some domains that you want to exclude *from the k6 test, meaning that the generated k6 script will not contain any requests for this domain.* 
-
-3 - Download a HAR file with only requests to the selected domains.
+2 - Download a HAR file with only requests to the selected domains.
 
 In Chrome, you can use the DevTools Network Filter to select only particular domains. The Filter input accepts a Regex to match multiple domains. 
 
-    `/k6.io|cloudfront.net/`
+    `/loadimpact.com|cloudfront.net/`
 
 ![Save HAR filter domain using regex](./images/session_recorder_filter_domain.png)
 
@@ -158,10 +161,12 @@ To run your load test correctly, you may need to replace the hardcoded data with
 
 ## 4. Run the test
 
-Now,  you can run your load test by executing the command:
+Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](/getting-started/installation).
+
+Execute the `k6 run` command to run your k6 script:
 
 ```bash
-k6 run loadtest.js
+$ k6 run loadtest.js
 ```
 
 For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
