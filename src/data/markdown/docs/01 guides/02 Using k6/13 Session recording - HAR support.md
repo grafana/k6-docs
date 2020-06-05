@@ -5,8 +5,8 @@ excerpt: ""
 
 In terms of load testing, recording usually refers to the process of creating a load test from the recording of a user session. The process looks like:
 
-1. Record a user or API session 
-2. Convert the recorded session into a test  
+1. Record a user or API session.
+2. Convert the recorded session into a test.
 3. Run the test.
 
 While not exclusive, it is common to use the recording when testing complex scenarios of websites or mobile applications. If you have to create a performance test that simulates a scenario with dozens or hundreds of requests, the recording could help you to be more productive in creating your test.
@@ -18,14 +18,14 @@ k6 does not have built-in functionality to record user or API sessions, but it a
 In k6, the process looks like:
 
 1. Record a HAR file using your browser or tool of choice.
-2. Use **har-to-k6 converter** to convert the HAR file into a k6 test.
+2. Use the **har-to-k6 converter** to generate a k6 test from the HAR file.
 3. Update the auto-generated k6 test.
-4. Use **k6 run** to run the test.
+4. Use **k6** to run the test.
 
 
 > The auto-generation of the test is a great option to add to your toolbox. It’s common practice for advanced user flows that generate many sophisticated HTTP requests, or for helping testers to identify the format of the requests.
 > 
-> The recording avoids writing advanced tests from scratch, saving you precious time building your performance tests.
+> The recording avoids writing advanced tests from scratch, saving you time building your performance tests.
 
 ## 1. Record a HAR file
 
@@ -71,17 +71,17 @@ The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS t
 
 **Install the har-to-k6 converter**
 
-A prerequisite is to have installed NodeJS. To install the converter, you can use the npm install command:
+A prerequisite is to have installed NodeJS. To install the converter, you can use `npm`:
 
 ```bash
 $ npm install -g har-to-k6
 ```
 
-For other installation options, check out the [the har-to-k6 installation instructions](https://github.com/loadimpact/har-to-k6#installation).
+For other installation options, check out the [har-to-k6 installation instructions](https://github.com/loadimpact/har-to-k6#installation).
 
 **Run the convert command**
 
-Now, you can use the converter to generate a k6 script from a HAR file. Run the converter like:
+Now, you can run the converter to generate a k6 script from a HAR file:
 
 ```bash
 $ har-to-k6 myfile.har -o loadtest.js
