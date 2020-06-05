@@ -298,7 +298,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               ]}
             />
             <ExternalLinksDashboard
-              dashboardTitle={"Grafana's dashboards"}
+              dashboardTitle={"Grafana dashboards"}
               linksData={[
                 {
                   title: 'dcadwallader',
