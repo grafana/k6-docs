@@ -73,6 +73,9 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
     azureImg: {
       childImageSharp: { fixed: azureImgData },
     },
+    vscodeImg: {
+      childImageSharp: { fixed: vscodeImgData },
+    },
     harImg: {
       childImageSharp: { fixed: harImgData },
     },
@@ -99,6 +102,13 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
       azureImg: file(
         absolutePath: { regex: "/images/doc-integrations/azure/" }
       ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      vscodeImg: file(absolutePath: { regex: "/images/doc-integrations/vscode/" }) {
         childImageSharp {
           fixed(width: 60, height: 60, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
@@ -188,65 +198,6 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               ]}
             />
             <DocIconsRow
-              className={styles.ciRow}
-              title={'Continuous Integration and Continuous Delivery'}
-              subtitle={
-                'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
-              }
-              iconsData={[
-                {
-                  Icon: Azure,
-                  name: 'Azure Pipelines',
-                  link: `${blog}/integrating-load-testing-with-azure-pipelines`,
-                },
-                {
-                  Icon: CircleCI,
-                  name: 'CircleCI',
-                  link: `${blog}/integrating-load-testing-with-circleci`,
-                },
-                {
-                  Icon: GitHub,
-                  name: 'GitHub Actions',
-                  link: `${blog}/load-testing-using-github-actions`,
-                },
-                {
-                  Icon: Gitlab,
-                  name: 'GitLab',
-                  link: `${blog}/integrating-load-testing-with-gitlab`,
-                },
-                {
-                  Icon: Jenkins,
-                  name: 'Jenkins',
-                  link: `${blog}/integrating-load-testing-with-jenkins`,
-                },
-                {
-                  Icon: TeamCity,
-                  name: 'TeamCity',
-                  link: `${blog}/load-testing-using-teamcity-and-k6`,
-                },
-              ]}
-            />
-            <ExternalLinksDashboard
-              dashboardTitle={'Community integrations'}
-              linksData={[
-                {
-                  picture: graphqlImgData,
-                  title: 'easygraphql-load-tester',
-                  description:
-                    'Create queries from your GraphQL schema to use with your favorite load testing package.',
-                  url: 'https://github.com/EasyGraphQL/easygraphql-load-tester',
-                },
-                {
-                  picture: azureImgData,
-                  title: 'k6ToAzure',
-                  description:
-                    'Takes output JSON from k6 (k6.io) and pushes into Azure Log Analytics.',
-                  url:
-                    'https://github.com/benc-uk/smilr/blob/master/azure/load-test-reports/k6ToAzure.js',
-                },
-              ]}
-            />
-            <DocIconsRow
               className={styles.storeRow}
               title={'Result store and visualization'}
               subtitle={
@@ -298,6 +249,62 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
               ]}
             />
             <ExternalLinksDashboard
+              dashboardTitle={"IDE"}
+              linksData={[
+                {
+                  picture: vscodeImgData,
+                  title: 'Visual Studio Code Extension',
+                  description: 'Execute VS Code commands to run a k6 test of your current file.',
+                  url: 'https://marketplace.visualstudio.com/items?itemName=k6.k6',
+                },
+                {
+                  picture: vscodeImgData,
+                  title: 'IntelliSense',
+                  description: 'Get code autocompletion and in-context documentation.',
+                  url: 'https://k6.io/blog/july-2019-product-update#k6-typescript',
+                },
+              ]}
+            />
+            <DocIconsRow
+              className={styles.ciRow}
+              title={'Continuous Integration and Continuous Delivery'}
+              subtitle={
+                'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
+              }
+              iconsData={[
+                {
+                  Icon: Azure,
+                  name: 'Azure Pipelines',
+                  link: `${blog}/integrating-load-testing-with-azure-pipelines`,
+                },
+                {
+                  Icon: CircleCI,
+                  name: 'CircleCI',
+                  link: `${blog}/integrating-load-testing-with-circleci`,
+                },
+                {
+                  Icon: GitHub,
+                  name: 'GitHub Actions',
+                  link: `${blog}/load-testing-using-github-actions`,
+                },
+                {
+                  Icon: Gitlab,
+                  name: 'GitLab',
+                  link: `${blog}/integrating-load-testing-with-gitlab`,
+                },
+                {
+                  Icon: Jenkins,
+                  name: 'Jenkins',
+                  link: `${blog}/integrating-load-testing-with-jenkins`,
+                },
+                {
+                  Icon: TeamCity,
+                  name: 'TeamCity',
+                  link: `${blog}/load-testing-using-teamcity-and-k6`,
+                },
+              ]}
+            />
+            <ExternalLinksDashboard
               dashboardTitle={"Grafana dashboards"}
               linksData={[
                 {
@@ -319,6 +326,26 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                 {
                   title: 'k m',
                   url: 'https://grafana.com/grafana/dashboards/10660',
+                },
+              ]}
+            />
+            <ExternalLinksDashboard
+              dashboardTitle={'Community integrations'}
+              linksData={[
+                {
+                  picture: graphqlImgData,
+                  title: 'easygraphql-load-tester',
+                  description:
+                    'Create queries from your GraphQL schema to use with your favorite load testing package.',
+                  url: 'https://github.com/EasyGraphQL/easygraphql-load-tester',
+                },
+                {
+                  picture: azureImgData,
+                  title: 'k6ToAzure',
+                  description:
+                    'Takes output JSON from k6 (k6.io) and pushes into Azure Log Analytics.',
+                  url:
+                    'https://github.com/benc-uk/smilr/blob/master/azure/load-test-reports/k6ToAzure.js',
                 },
               ]}
             />
