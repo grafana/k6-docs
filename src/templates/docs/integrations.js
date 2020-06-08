@@ -261,7 +261,7 @@ export default function({ pageContext: { sidebarTree, navLinks } }) {
                   picture: vscodeImgData,
                   title: 'IntelliSense',
                   description: 'Get code autocompletion and in-context documentation.',
-                  url: 'https://k6.io/blog/july-2019-product-update#k6-typescript',
+                  url: 'https://k6.io/docs/misc/intellisense',
                 },
               ]}
             />
