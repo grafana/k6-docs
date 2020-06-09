@@ -15,7 +15,7 @@ In Visual Studio Code, [IntelliSense](https://code.visualstudio.com/docs/editor/
 - Auto imports of k6 modules.
 - Access to k6 documentation when writing and hovering code.
 
-![](./images/typescript-demo.gif)
+![](./images/intellisense-k6-demo.gif)
 
 ### Setup
 
