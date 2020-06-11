@@ -60,3 +60,4 @@ some ideas below:
 | I got this error and I'm sure it's a bug   | [File an issue](https://github.com/loadimpact/k6/issues)                                                                                              |
 | Why do you? When will you?                 | [Slack](https://k6.io/slack/)                                                                                                                         |
 | I want to contribute/help with development | Start here, then proceed to [Slack](https://k6.io/slack/) and [issues](https://github.com/loadimpact/k6/issues)                                       |
+| I want to write or give a talk about k6 | Reach us on [Slack](https://k6.io/slack/) to see how we can help you                                       |

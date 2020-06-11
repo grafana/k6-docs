@@ -116,6 +116,14 @@ export const Footer = () => (
                 <h3 className={styles.navColumnTitle}>Community</h3>
                 <ul className={styles.navColumnList}>
                   <li className={styles.navColumnItem}>
+                    <Link
+                      className={styles.navColumnLink}
+                      to={'/getting-started/community'}
+                    >
+                      Engage
+                    </Link>
+                  </li>
+                  <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
                       href={'https://community.k6.io'}
