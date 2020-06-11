@@ -16,6 +16,16 @@ npm install
 npm start
 ```
 
+Visit http://localhost:8000
+
+## Using Docker 
+
+```shell
+docker-compose  up --build
+```
+
+Visit http://localhost:8000
+
 ## Contributing
 
 Documentation articles are markdown files structured under the [`src/data/markdown/docs`](src/data/markdown/docs) folder. 
