@@ -4,8 +4,7 @@ This repo contains the source code of the [k6 documentation](https://k6.io/docs/
 
 ## Install and run in Docker
 
-This uses `docker-compose` and port `8100` so it can be used in parallel with
-devenv.
+This uses `docker-compose` and port `8100`.
 
 ```shell
 git clone git@github.com:loadimpact/k6-docs.git
