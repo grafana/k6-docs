@@ -5,7 +5,7 @@ services:
     build: .
     command: sh -c "yarn --pure-lockfile && yarn develop -H 0.0.0.0"
     ports:
-      - "8000:8000"
+      - "8100:8000"
     volumes:
       - .:/app
       - web_node_modules:/app/node_modules
