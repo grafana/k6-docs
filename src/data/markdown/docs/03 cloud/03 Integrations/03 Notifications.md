@@ -125,8 +125,8 @@ a notification is sent.
 | Test aborted (by limit) | `test.finished.aborted_limit` | Only tests that were _aborted_ due to hitting an execution or network limit |
 
 You can safely pick multiple options and will still at most get two notifications per
-test-run, one when it starts and one when it ends. The event-name will be passed along
-to identify which condition triggered the notification. 
+test-run, one when it starts and one when it ends. The event-identifier will be passed along
+to specify which condition triggered the notification. 
 
 <!--  These are not supported by frontend yet, commented out for now:
 |  -    | `test.started.all` | All tests started, no matter how |
