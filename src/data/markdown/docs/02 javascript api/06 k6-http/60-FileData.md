@@ -1,5 +1,5 @@
 ---
-title: "FileData (k6/http)"
+title: "FileData"
 category: "k6api-class"
 description: "Used for wrapping data representing a file when doing multipart requests (file uploads)."
 ---

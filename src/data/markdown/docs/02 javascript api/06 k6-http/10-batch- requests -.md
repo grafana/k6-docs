@@ -16,7 +16,7 @@ When each request is specified as an array, the order of the arguments for each 
 
 | Type   | Description                                                                                                                                                                                                            |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object | An object containing [Response](/javascript-api/k6-http/response-k6-http) objects.<br /><br />It has integer keys when users pass an array as `requests` and string keys when named requests are used (see below). |
+| object | An object containing [Response](/javascript-api/k6-http/response) objects.<br /><br />It has integer keys when users pass an array as `requests` and string keys when named requests are used (see below). |
 
 
 | Position | Name | Type | Description |
@@ -24,7 +24,7 @@ When each request is specified as an array, the order of the arguments for each 
 | 1 | method | string | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION. |
 | 2 | url | string | Mandatory. The URL to request. |
 | 3 | body (optional) | string \| object | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
-| 4 | params (optional) | object | [Params](/javascript-api/k6-http/params-k6-http) like auth, custom headers and tags. |
+| 4 | params (optional) | object | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags. |
 
 
 ### Example with request as an array
@@ -93,7 +93,7 @@ export default function() {
 
 ### Example with request objects
 
-You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/k6-http/params-k6-http) object to the request:
+You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/k6-http/params) object to the request:
 
 <div class="code-group" data-props='{"labels": []}'>
 

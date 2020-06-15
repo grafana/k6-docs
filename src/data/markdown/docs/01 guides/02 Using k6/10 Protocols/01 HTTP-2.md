@@ -39,5 +39,5 @@ When you make HTTP requests in k6 it will automatically upgrade the connection t
 
 For more information on what values the r.proto field can have, check out:
 
-* [k6 HTTP](/javascript-api/k6-http/response-k6-http)
+* [k6 HTTP](/javascript-api/k6-http/response)
 * https://http2.github.io/http2-spec/#versioning

@@ -156,7 +156,7 @@ export default function() {
 
 </div>
 
-For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response-k6-http/response-submitform-params).
+For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
 
 ### Tag different types of resources
 
