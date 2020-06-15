@@ -100,6 +100,38 @@ customized directly in the k6 app.
 ![MSTeams Setup example](images/03 Notifications/custom-webhook-setup.png)
 
 
+## Supported Notification events 
+
+You can receive notifications for two main situations - when a test-run
+_starts_ and when it _ends_. You can then further limit the conditions under which
+a notification is sent.
+
+### Events when a test starts
+
+| Event name | Description | 
+| ---------- | ----------- |
+| `test.started.all`     | Any test that starts |
+| `test.started.manual`  |  Only tests started manually |
+| `test.started.scheduled` | Only tests that were scheduled |
+
+### Events when a test ends
+| Event name | Description |
+| ---------- | ----------- |
+| `test.finished.all` | All tests that ends, no matter how |
+| `test.finished.success` | Only tests that _pass_ their [checks](/using-k6/checks) or [thresholds](/using-k6/thresholds) |
+| `test.finished.failed` | Only tests that _fail_ their checks or thresholds |
+| `test.finished.aborted_threshold` | Only tests that were _aborted_ by crossing a test threshold |
+| `test.finished.aborted_user` | Only tests that were _aborted_ manually by a user |
+| `test.finished.aborted_script_error` | Only tests that were _aborted_ due to a test-script error |
+| `test.finished.aborted_limit` | Only tests that were _aborted_ due to hitting an execution or network limit |
+| `test.finished.aborted_system` | Only tests that were _aborted_ due to some upstream system problem |
+| `test.finished.timed_out` | Only tests that _timed out_ in some way due to an upstream issue |
+
+You can safely pick multiple options and will still at most get two notifications per
+test-run, one when it starts and one when it ends. The event-name will be passed along
+to identify which condition triggered the notification. 
+
+
 ## Templating syntax
 
 The notification templates use the
@@ -169,37 +201,6 @@ comma after the very last item (a comma at the end would not be valid JSON).
 
 ---
 
-## Supported Notification events 
-
-You can receive notifications for two main situations - when a test-run
-_starts_ and when it _ends_. You can then further limit the conditions under which
-a notification is sent.
-
-### Events when a test starts
-
-| Event name | Description | 
-| ---------- | ----------- |
-| `test.started.all`     | Any test that starts |
-| `test.started.manual`  |  Only tests started manually |
-| `test.started.scheduled` | Only tests that were scheduled |
-
-### Events when a test ends
-| Event name | Description |
-| ---------- | ----------- |
-| `test.finished.all` | All tests that ends, no matter how |
-| `test.finished.success` | Only tests that _pass_ their [checks](/using-k6/checks) or [thresholds](/using-k6/thresholds) |
-| `test.finished.failed` | Only tests that _fail_ their checks or thresholds |
-| `test.finished.aborted_threshold` | Only tests that were _aborted_ by crossing a test threshold |
-| `test.finished.aborted_user` | Only tests that were _aborted_ manually by a user |
-| `test.finished.aborted_script_error` | Only tests that were _aborted_ due to a test-script error |
-| `test.finished.aborted_limit` | Only tests that were _aborted_ due to hitting an execution or network limit |
-| `test.finished.aborted_system` | Only tests that were _aborted_ due to some upstream system problem |
-| `test.finished.timed_out` | Only tests that _timed out_ in some way due to an upstream issue |
-
-You can safely pick multiple options and will still at most get two notifications per
-test-run, one when it starts and one when it ends. The event-name will be passed along
-to identify which condition triggered the notification. 
-
 ## Template Context variables
 
 
@@ -225,7 +226,7 @@ This holds test-run data for the test-run that triggered the event.
 | `test.was_scheduled` | `int` | 1 or 0 depending on if this was a scheduled test or not |
 | `test.started` | `str` | ISO time stamp for when test-run started (GMT) |
 | `test.ended` | `str` | ISO time stamp for when test-run ended (GMT) |
-| `test.status` | `int` | The `run_status` of the test (-2..9) |
+| `test.status` | `int` | The [run-status code](/cloud/cloud-faq/test-status-codes) of the test
 | `test.status_text` | `str`| Run-status as human-readable text ("Finished", "Timed out" etc) |
 | `test.result` | `int` | Is `0` if passed, `1` if failed |
 | `test.result_text` | `str` | Result as text ("Passed"/"Failed") |
@@ -275,11 +276,11 @@ URL.
 
 Headers sent with all requests:
 
-| Header             | Description                                                           |
+| Header             | Description                                                           | 
 | ------------------ | --------------------------------------------------------------------- |
 | `X-k6cloud-ID`            | Unique ID for this request                                       |
-| `X-k6cloud-Event`         | Name of the event, like test.ended                               |
-| `User-Agent`              | K6CloudWebHook                                                   |
+| `X-k6cloud-Event`         | Name of the event, like "test.ended"                             |
+| `User-Agent`              | Always "K6CloudWebHook"                                          |
 
 <div class="code-group" data-props='{"labels": ["Example Headers"]}'>
 
@@ -294,34 +295,3 @@ User-Agent: K6CloudWebHook
 
 The body of the request is a JSON structure created by populating the chosen
 notification template with values relevant to the event.
-
-## Appendix: Status Codes
-
-The `test.status_text` template variable describes the run-state of the test.
-This is usually what you need, but the `test.status` is also available; this is
-an integer
-describing the state:
-
-| Status	 | Status Text 
-|------- | ------------
-| -2	 | Created
-| -1	 | Validated
-| 0	 | Queued
-| 1	 | Initializing
-| 2	 | Running
-| 3	 | Finished
-| 4	 | Timed out
-| 5	 | Aborted by user
-| 6	 | Aborted by system
-| 7	 | Aborted by script error
-| 8	 | Aborted by threshold
-| 9	 | Aborted by limit
-
-In contrast, `test_result_text` indicates in text-form if the test-run actually passed its
-checks/thresholds. `test.result` shows the same as an integer.
-
-| Result | Result Text |
-| ------ | ----------- |
-|   0    |   Passed    |
-|   1    |   Failed    |
-
