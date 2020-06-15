@@ -78,10 +78,10 @@ export default function() {
 </div>
 
 In the example above we use the [http.file()](/javascript-api/k6-http/file-data-filename-contenttype)
-API to wrap the file contents in a [FileData](/javascript-api/k6-http/filedata-k6-http) object.
+API to wrap the file contents in a [FileData](/javascript-api/k6-http/filedata) object.
 When passing a JS object as the body parameter to [http.post()](/javascript-api/k6-http/post-url-body-params),
 or any of the other HTTP request functions, where one of the property values is a
-[FileData](/javascript-api/k6-http/filedata-k6-http) a multipart request will be constructed
+[FileData](/javascript-api/k6-http/filedata) a multipart request will be constructed
 and sent.
 
 

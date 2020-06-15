@@ -16,14 +16,14 @@ The following events can close the connection:
 | Parameter | Type     | Description                                                                                                                                                                                                                                                                  |
 | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                |
-| params    | object   | [Params](/javascript-api/k6-http/params-k6-http) object containing additional request parameters.                                                                                                                                                                        |
+| params    | object   | [Params](/javascript-api/k6-http/params) object containing additional request parameters.                                                                                                                                                                        |
 | callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](/javascript-api/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
 
 ### Returns
 
 | Type     | Description                                                           |
 | -------- | --------------------------------------------------------------------- |
-| [Response](/javascript-api/k6-http/response-k6-http) | HTTP Response object. |
+| [Response](/javascript-api/k6-http/response) | HTTP Response object. |
 
 ### Example
 

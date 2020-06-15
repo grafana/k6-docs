@@ -91,7 +91,7 @@ export default function() {
 
 </div>
 
-The above script declares a custom [Rate](/javascript-api/k6-metrics/rate-k6-metrics)
+The above script declares a custom [Rate](/javascript-api/k6-metrics/rate)
 metric (called "errors") to hold information about the errors we have seen during the test, then
 it uses a threshold on that custom metric to fail the test when it encounters too many errors.
 If we replace the "http://httpbin.org" URL with one that will generate an error, k6 will exit with

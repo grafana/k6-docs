@@ -42,7 +42,7 @@ There are also _built-in_ metrics that will only be generated when/if HTTP reque
 
 ### Accessing HTTP timings from a script
 
-If you want to access the timing information from an individual HTTP request, the _built-in_ HTTP timing metrics are also available in the [HTTP Response](/javascript-api/k6-http/response-k6-http) object:
+If you want to access the timing information from an individual HTTP request, the _built-in_ HTTP timing metrics are also available in the [HTTP Response](/javascript-api/k6-http/response) object:
 
 <div class="code-group" data-props='{"labels": ["timings.js"], "lineNumbers": [true]}'>
 
@@ -56,7 +56,7 @@ export default function() {
 
 </div>
 
-In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/response-k6-http) object containing:
+In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/response) object containing:
 
 | Property                      | Description                                                           |
 | ----------------------------- | --------------------------------------------------------------------- |
@@ -101,10 +101,10 @@ Custom metrics will be reported at the end of a test. Here is how the output mig
 
 All metrics (both the _built-in_ ones and the custom ones) have a type. There are four different metrics types:
 
-- [Counter](/javascript-api/k6-metrics/counter-k6-metrics)
-- [Gauge](/javascript-api/k6-metrics/gauge-k6-metrics)
-- [Rate](/javascript-api/k6-metrics/rate-k6-metrics) and
-- [Trend](/javascript-api/k6-metrics/trend-k6-metrics)
+- [Counter](/javascript-api/k6-metrics/counter)
+- [Gauge](/javascript-api/k6-metrics/gauge)
+- [Rate](/javascript-api/k6-metrics/rate) and
+- [Trend](/javascript-api/k6-metrics/trend)
 
 ### Counter _(cumulative metric)_
 

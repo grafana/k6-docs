@@ -1,5 +1,5 @@
 ---
-title: 'Trend (k6/metrics)'
+title: 'Trend'
 ---
 
 _Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [custom metrics](/javascript-api/k6-metrics).
@@ -11,7 +11,7 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 
 | Method                                                                                       | Description                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------- |
-| [Trend.add(value, [tags])](/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags) | Add a value to the trend metric. |
+| [Trend.add(value, [tags])](/javascript-api/k6-metrics/trend/trend-add-value-tags) | Add a value to the trend metric. |
 
 ## Trend usage in Thresholds
 

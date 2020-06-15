@@ -7,7 +7,7 @@ Get the active cookie jar.
 
 | Type                                                       | Description         |
 | ---------------------------------------------------------- | ------------------- |
-| [CookieJar](/javascript-api/k6-http/cookiejar-k6-http) | A CookieJar object. |
+| [CookieJar](/javascript-api/k6-http/cookiejar) | A CookieJar object. |
 
 ### Example
 

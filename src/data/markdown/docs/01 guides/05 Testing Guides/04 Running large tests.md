@@ -195,7 +195,7 @@ export let options = {
 </div>
 
 k6 by default loads the response body of the request into memory. This causes much higher memory consumption and often is completely unnecessary.
-If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params-k6-http).
+If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
 
 ### --no-thresholds --no-summary 
 

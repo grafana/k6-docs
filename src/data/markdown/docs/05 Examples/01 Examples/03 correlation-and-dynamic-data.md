@@ -55,7 +55,7 @@ export default function() {
 
 **Relevant k6 APIs**:
 
-- [Response.json()](/javascript-api/k6-http/response-k6-http)
+- [Response.json()](/javascript-api/k6-http/response)
 - [JSON.parse()](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Global_Objects/JSON/parse)
   (An alternative API that can be used for parsing JSON data)
 

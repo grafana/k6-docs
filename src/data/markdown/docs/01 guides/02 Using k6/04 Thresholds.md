@@ -16,7 +16,7 @@ Example expectations (Thresholds):
 Thresholds analyze the performance metrics and determine the final test result (pass/fail). 
 Thresholds are a essential for [load-testing automation](/testing-guides/automated-performance-testing). 
 
-Here is a sample script that specifies two thresholds, one using a custom [Rate metric](/javascript-api/k6-metrics/rate-k6-metrics), and one using a standard `http_req_duration` metric.
+Here is a sample script that specifies two thresholds, one using a custom [Rate metric](/javascript-api/k6-metrics/rate), and one using a standard `http_req_duration` metric.
 
 <div class="code-group" data-props='{"labels": ["threshold.js"], "lineNumbers": [true]}'>
 
@@ -139,7 +139,7 @@ export default function() {
 </div>
 
 
-You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter-k6-metrics#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge-k6-metrics#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend-k6-metrics#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate-k6-metrics#rate-usage-in-thresholds) pages.
+You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 
 ## Threshold Syntax

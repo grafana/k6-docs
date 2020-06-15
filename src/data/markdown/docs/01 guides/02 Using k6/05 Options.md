@@ -271,9 +271,9 @@ null
 <h3 id="discard-response-bodies">Discard Response Bodies</h3>
 
 Specify if response bodies should be discarded by changing the default value of
-[responseType](/javascript-api/k6-http/params-k6-http) to `none` for all HTTP requests. Highly recommended to be set
+[responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
 to `true` and then only for the requests where the response body is needed for scripting
-to set [responseType](/javascript-api/k6-http/params-k6-http) to `text` or `binary`. Lessens the amount of memory
+to set [responseType](/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
 required and the amount of GC - reducing the load on the testing machine, and probably producing
 more reliable test results.
 

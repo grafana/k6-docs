@@ -19,7 +19,7 @@ The k6/http module contains functionality for performing HTTP transactions.
 
 | Class | Description |
 | -------- | ----------- |
-| [CookieJar (k6/http)](/javascript-api/k6-http/cookiejar-k6-http)  |  Used for storing cookies, set by the server and/or added by the client. |
-| [FileData (k6/http)](/javascript-api/k6-http/filedata-k6-http)  |  Used for wrapping data representing a file when doing multipart requests (file uploads). |
-| [Params (k6/http)](/javascript-api/k6-http/params-k6-http)  |  Used for setting various HTTP request-specific parameters such as headers, cookies, etc. |
-| [Response (k6/http)](/javascript-api/k6-http/response-k6-http)  |  Returned by the http.* methods that generate HTTP requests. |
+| [CookieJar](/javascript-api/k6-http/cookiejar)  |  Used for storing cookies, set by the server and/or added by the client. |
+| [FileData](/javascript-api/k6-http/filedata)  |  Used for wrapping data representing a file when doing multipart requests (file uploads). |
+| [Params](/javascript-api/k6-http/params)  |  Used for setting various HTTP request-specific parameters such as headers, cookies, etc. |
+| [Response](/javascript-api/k6-http/response)  |  Returned by the http.* methods that generate HTTP requests. |

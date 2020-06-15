@@ -317,7 +317,7 @@ export default function() {
 
 ## Custom metrics
 
-Beyond the standard metrics collected by the 3.0 product you can also collect custom metrics using the `results.custom_metric()` API in the example below. The equivalent in JS would be to use the [`Trend`](/javascript-api/k6-metrics/trend-k6-metrics) custom metric:
+Beyond the standard metrics collected by the 3.0 product you can also collect custom metrics using the `results.custom_metric()` API in the example below. The equivalent in JS would be to use the [`Trend`](/javascript-api/k6-metrics/trend) custom metric:
 
 <div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
 

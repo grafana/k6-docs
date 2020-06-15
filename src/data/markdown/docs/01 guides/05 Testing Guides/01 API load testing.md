@@ -59,7 +59,7 @@ While hammering is good in some cases, e.g. if you want to test endpoints in iso
 
 ### User flow (scenarios) testing
 
-In the following example, you see four consecutive [HTTP requests](/using-k6/http-requests) to your API to log in, fetch user profile, update user profile and finally log out. Each request has unique characteristics, accepts some parameters and finally returns a [response](/javascript-api/k6-http/response-k6-http), which is [check](/using-k6/checks)ed against a set of rules. We also pause after each request and response, for the API to be able to keep up and not be flooded. There are also a set of options at the top, that defines load test [options](/using-k6/options) in your script.
+In the following example, you see four consecutive [HTTP requests](/using-k6/http-requests) to your API to log in, fetch user profile, update user profile and finally log out. Each request has unique characteristics, accepts some parameters and finally returns a [response](/javascript-api/k6-http/response), which is [check](/using-k6/checks)ed against a set of rules. We also pause after each request and response, for the API to be able to keep up and not be flooded. There are also a set of options at the top, that defines load test [options](/using-k6/options) in your script.
 
 The `iterations` is a number that specifies how many iterations (executions) of the script per VU should happen, which is divided by the number of virtual users. The `vus` is a number specifying the number of concurrent sessions (virtual users) to your API. So from `iterations` and `vus` you deduct that you'll likely run each VU around 10 iterations, depending on your API response time and network roundtrip.
 
@@ -235,7 +235,7 @@ for (var id = 1; id <= 100; id++) {
 // tags.name="http://example.com/posts/2",
 ```
 
-There's a way to prevent creating a lot of metrics for the same URL. It's called [URL grouping](/using-k6/http-requests#section-url-grouping), and by using it you'll avoid creating separate metrics for the same URL. It is just a matter of using a tag that you should add to your requests' [parameters](/javascript-api/k6-http/params-k6-http).
+There's a way to prevent creating a lot of metrics for the same URL. It's called [URL grouping](/using-k6/http-requests#section-url-grouping), and by using it you'll avoid creating separate metrics for the same URL. It is just a matter of using a tag that you should add to your requests' [parameters](/javascript-api/k6-http/params).
 
 ```javascript
 for (var id = 1; id <= 100; id++) {

@@ -108,6 +108,6 @@ export default function() {
 </div>
 
 **Relevant k6 APIs**:
-- [http.CookieJar](/javascript-api/k6-http/cookiejar-k6-http)
+- [http.CookieJar](/javascript-api/k6-http/cookiejar)
     - [set(name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options)
 - [http.cookieJar()](/javascript-api/k6-http/cookiejar)

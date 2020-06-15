@@ -1,5 +1,5 @@
 ---
-title: 'Counter (k6/metrics)'
+title: 'Counter'
 ---
 
 _Counter_ is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.
@@ -10,7 +10,7 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 
 | Method                                                                                             | Description                        |
 | -------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags) | Add a value to the counter metric. |
+| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
 

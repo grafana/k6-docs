@@ -340,6 +340,96 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
+    fromPath: '/javascript-api/k6-http/cookiejar-k6-http',
+    toPath: '/javascript-api/k6-http/cookiejar',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
+    toPath: '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
+    toPath: '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/filedata-k6-http',
+    toPath: '/javascript-api/k6-http/filedata',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/params-k6-http',
+    toPath: '/javascript-api/k6-http/params',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/response-k6-http',
+    toPath: '/javascript-api/k6-http/response',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
+    toPath: '/javascript-api/k6-http/response/response-clicklink-params',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/response-k6-http/response-html',
+    toPath: '/javascript-api/k6-http/response/response-html',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/response-k6-http/response-json-selector',
+    toPath: '/javascript-api/k6-http/response/response-json-selector',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-http/response-k6-http/response-submitform-params',
+    toPath: '/javascript-api/k6-http/response/response-submitform-params',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/counter-k6-metrics',
+    toPath: '/javascript-api/k6-metrics/counter',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/gauge-k6-metrics',
+    toPath: '/javascript-api/k6-metrics/gauge',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics',
+    toPath: '/javascript-api/k6-metrics/rate',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/rate/rate-add-value-tags',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/trend-k6-metrics',
+    toPath: '/javascript-api/k6-metrics/trend',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/using-k6/archives-for-bundling-sharing-a-test',
     toPath: '/misc/archive',
     isPermanent: true,

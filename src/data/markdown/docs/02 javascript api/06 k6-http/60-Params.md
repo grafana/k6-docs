@@ -1,5 +1,5 @@
 ---
-title: 'Params (k6/http)'
+title: 'Params'
 category: 'k6api-class'
 description: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
 ---
