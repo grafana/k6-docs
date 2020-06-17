@@ -36,7 +36,7 @@ in a subsequent request to the server we include the cookie in the `cookies` req
 ```js
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   http.get('https://httpbin.org/cookies', {
     cookies: {
       my_cookie: 'hello world',
@@ -56,7 +56,7 @@ default there's a per-VU cookie jar we can interact with to set and inspect cook
 ```js
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   const jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world');
   http.get('https://httpbin.org/cookies');
@@ -76,7 +76,7 @@ You can also specify that a cookie should be overridden if already part of the p
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   const jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world');
 
@@ -92,7 +92,7 @@ export default function() {
   });
 
   check(res, {
-    'cookie has correct value': r =>
+    'cookie has correct value': (r) =>
       r.json().cookies.my_cookie === 'hello world 2',
   });
 }
@@ -111,14 +111,14 @@ the response object:
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   const res = http.get(
     'https://httpbin.org/cookies/set?my_cookie=hello%20world',
     { redirects: 0 },
   );
   check(res, {
-    "has cookie 'my_cookie'": r => r.cookies.my_cookie.length > 0,
-    'cookie has correct value': r =>
+    "has cookie 'my_cookie'": (r) => r.cookies.my_cookie.length > 0,
+    'cookie has correct value': (r) =>
       r.cookies.my_cookie[0].value === 'hello world',
   });
 }
@@ -135,16 +135,16 @@ is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 
 A response cookie object contains the following properties:
 
-| Property  | Type      | Description                                                                                                                                            |
-| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| name      | `string`  | the name of the cookie                                                                                                                                 |
-| value     | `string`  | the value of the cookie                                                                                                                                |
-| domain    | `string`  | domain deciding what hostnames this cookie should be sent to                                                                                           |
-| path      | `string`  | limiting the cookie to only be sent if the path of the request matches this value                                                                      |
+| Property  | Type      | Description                                                                                                   |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------- |
+| name      | `string`  | the name of the cookie                                                                                        |
+| value     | `string`  | the value of the cookie                                                                                       |
+| domain    | `string`  | domain deciding what hostnames this cookie should be sent to                                                  |
+| path      | `string`  | limiting the cookie to only be sent if the path of the request matches this value                             |
 | expires   | `string`  | when the cookie expires, this needs to be in the RFC1123 format looking like: `Mon, 02 Jan 2006 15:04:05 MST` |
-| max_age   | `number`  | used for the same purpose as expires but defined as the number of seconds a cookie will be valid                                                     |
-| secure    | `boolean` | if true, the cookie will only be sent over an encrypted (SSL/TLS) connection                                                                               |
-| http_only | `boolean` | if true, the cookie would not be exposed to JavaScript in a browser environment                                                                            |
+| max_age   | `number`  | used for the same purpose as expires but defined as the number of seconds a cookie will be valid              |
+| secure    | `boolean` | if true, the cookie will only be sent over an encrypted (SSL/TLS) connection                                  |
+| http_only | `boolean` | if true, the cookie would not be exposed to JavaScript in a browser environment                               |
 
 ## Inspecting a cookie in the jar
 
@@ -157,7 +157,7 @@ To see which cookies are set, and stored in the cookie jar, for a particular URL
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let res = http.get(
     'https://httpbin.org/cookies/set?my_cookie=hello%20world',
     { redirects: 0 },
@@ -165,8 +165,8 @@ export default function() {
   let jar = http.cookieJar();
   let cookies = jar.cookiesForURL('http://httpbin.org/');
   check(res, {
-    "has cookie 'my_cookie'": r => cookies.my_cookie.length > 0,
-    'cookie has correct value': r => cookies.my_cookie[0] === 'hello world',
+    "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
+    'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
   });
 }
 ```
@@ -189,7 +189,7 @@ cookie jar. An example:
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
     domain: 'httpbin.org',
@@ -199,9 +199,9 @@ export default function() {
   });
   let res = http.get('https://httpbin.org/cookies');
   check(res, {
-    'has status 200': r => r.status === 200,
-    "has cookie 'my_cookie'": r => r.json().cookies.my_cookie !== null,
-    'cookie has correct value': r =>
+    'has status 200': (r) => r.status === 200,
+    "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
+    'cookie has correct value': (r) =>
       r.json().cookies.my_cookie == 'hello world',
   });
 }
@@ -220,7 +220,7 @@ cookie jar on a per-request basis. An example:
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   const jar = new http.CookieJar();
 
   // Add cookie to local jar
@@ -240,9 +240,9 @@ export default function() {
   // Override per-VU jar with local jar for the following request
   let res = http.get('https://httpbin.org/cookies', { jar });
   check(res, {
-    'has status 200': r => r.status === 200,
-    "has cookie 'my_cookie'": r => r.json().cookies.my_cookie !== null,
-    'cookie has correct value': r =>
+    'has status 200': (r) => r.status === 200,
+    "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
+    'cookie has correct value': (r) =>
       r.json().cookies.my_cookie == 'hello world',
   });
 }
@@ -271,7 +271,7 @@ function logCookie(c) {
   `;
   console.log(output);
 }
-export default function() {
+export default function () {
   let res = http.get('https://www.google.com/');
 
   // Method 1: Use for-loop and check for non-inherited properties
@@ -287,3 +287,5 @@ export default function() {
   });
 }
 ```
+
+</div>

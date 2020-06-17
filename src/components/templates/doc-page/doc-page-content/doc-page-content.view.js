@@ -1,47 +1,24 @@
 import React from 'react';
 import { HtmlContent } from 'components/blocks/html-content';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { DocPageNav } from 'components/pages/doc-page/doc-page-nav';
-import { CodeGroup } from 'components/templates/doc-page/code-group';
-import { DocBlockquote } from 'components/pages/doc-page/doc-blockquote';
-import AnchorIcon from './svg/anchor.inline.svg';
+import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import { CodeGroup } from 'components/pages/doc-page/code-group';
+import TableWrapper from 'components/pages/doc-page/table-wrapper';
+import { HeadingLandmark } from 'components/shared/heading';
+import Blockquote from 'components/pages/doc-page/blockquote';
+import LdScript from 'components/pages/doc-page/ld-script';
 import styles from './doc-page-content.module.scss';
 import classNames from 'classnames';
 
-import { slugify } from 'utils';
-
 const components = {
   '.code-group': CodeGroup,
-  h2: ({ mdBlockContent }) => (
-    <h2
-      className={styles.markHeading}
-      id={`${slugify(mdBlockContent)
-        .replace(/\//g, '-')
-        .replace(/^\d+/g, '')
-        .replace(/^-*/g, '')
-        .replace(/-*$/g, '')}`}
-    >
-      <a
-        href={`#${slugify(mdBlockContent)
-          .replace(/\//g, '-')
-          .replace(/^\d+/g, '')
-          .replace(/^-*/g, '')
-          .replace(/-*$/g, '')}`}
-      >
-        <AnchorIcon />
-      </a>
-      {mdBlockContent}
-    </h2>
-  ),
-  table: ({ mdBlockContent }) => (
-    <div className={styles.tableWrapper}>
-      <table dangerouslySetInnerHTML={{ __html: mdBlockContent }} />
-    </div>
-  ),
-  '.doc-blockquote': DocBlockquote,
+  h2: HeadingLandmark,
+  table: TableWrapper,
+  '.doc-blockquote': Blockquote,
+  '.ld-markup': LdScript,
 };
 
-export const DocPageContent = ({ label, html, currentPath, mod }) => (
+export const DocPageContent = ({ label, content, mod }) => (
   <div
     className={classNames(styles.wrapper, {
       [styles.wrapper_beliefs]: mod === 'beliefs',
@@ -55,7 +32,7 @@ export const DocPageContent = ({ label, html, currentPath, mod }) => (
           })}
         >
           <HtmlContent
-            content={html}
+            content={content}
             components={components}
             className={classNames(
               styles.contentWrapper,
@@ -68,10 +45,8 @@ export const DocPageContent = ({ label, html, currentPath, mod }) => (
         <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
           {({ style }) => (
             <div style={style} className={styles.anchorBarWrapper}>
-              <DocPageNav
-                currentPath={currentPath}
-                label={styles.anchorBar}
-                content={html}
+              <TableOfContents
+                contentContainerSelector={styles.mainDocContent}
               />
             </div>
           )}

@@ -9,12 +9,11 @@ import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-grou
 export default function (props) {
   const {
     pageContext: {
-      remarkNode: { html, frontmatter },
+      remarkNode: { body, frontmatter },
       sidebarTree,
       navLinks,
       breadcrumbs,
     },
-    location,
   } = props;
 
   const pageMetadata = {
@@ -36,11 +35,7 @@ export default function (props) {
           title={frontmatter.title}
           articleSrc={frontmatter.fileOrigin}
         />
-        <DocPageContent
-          currentPath={location.pathname}
-          label={codeStyles.codeContainer}
-          html={html}
-        />
+        <DocPageContent label={codeStyles.codeContainer} content={body} />
       </div>
     </DocLayout>
   );

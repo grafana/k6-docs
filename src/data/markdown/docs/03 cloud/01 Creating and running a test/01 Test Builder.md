@@ -58,7 +58,7 @@ To modify requests, move over to the right side of the `REQUESTS` section. You a
 > We also include some examples of common actions. This is accessible by using the
 > `Test builder examples` drop down in the title bar of the section. Use these for
 > inspiration and guidance as you use the test builder.
-><br>
+><br/>
 >
 > **NOTE:** Choosing one of the examples will replace the current requests in the Test Builder.
 

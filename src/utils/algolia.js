@@ -1,9 +1,45 @@
 const utils = require('./utils');
 
-const rearrange = (text, chunkLength = 300) => {
-  const regex = new RegExp(`.{1,${chunkLength}}`, 'g');
-  return text.match(regex) || [];
-};
+// const rearrange = (text, chunkLength = 300) => {
+//   const regex = new RegExp(`.{1,${chunkLength}}`, 'g');
+//   return text.match(regex) || [];
+// };
+// cleaning up function, synchronously strips html, markdown and so on
+const rawToText = (rawBody) =>
+  rawBody
+    // remove imports
+    .replace(/\nimport.*?;\n/g, '')
+    // remove frontmatter
+    .replace(/(---).*?\1/gs, '')
+    // remove html tags
+    .replace(/<[^>]*>/g, '')
+    // Remove setext-style headers
+    .replace(/^[=\-]{2,}\s*$/g, '')
+    // Remove footnotes?
+    .replace(/\[\^.+?\](\: .*?$)?/g, '')
+    .replace(/\s{0,2}\[.*?\]: .*?$/g, '')
+    // Remove images
+    .replace(/\!\[(.*?)\][\[\(].*?[\]\)]/g, '$1')
+    // Remove inline links
+    .replace(/\[(.*?)\][\[\(].*?[\]\)]/g, '$1')
+    // Remove blockquotes
+    .replace(/^\s{0,3}>\s?/g, '')
+    // Remove reference-style links?
+    .replace(/^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$/g, '')
+    // Remove atx-style headers
+    .replace(
+      /^(\n)?\s{0,}#{1,6}\s+| {0,}(\n)?\s{0,}#{0,} {0,}(\n)?\s{0,}$/gm,
+      '$1$2$3',
+    )
+    // Remove emphasis (repeat the line to remove double emphasis)
+    .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+    .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+    // Remove code blocks
+    .replace(/(`{3,}).*?\1/gs, '')
+    // Remove inline code
+    .replace(/`(.+?)`/g, '$1')
+    // Replace two or more newlines with exactly two? Not entirely sure this belongs here...
+    .replace(/\n{2,}/g, '\n\n');
 
 // this copypaste from gatsby-node sidebar node
 // generation, we have to
@@ -25,7 +61,7 @@ const removeGuidesAndRedirectWelcome = (path) =>
 // helper
 const flatten = (arr) =>
   arr.flatMap(
-    ({ node: { frontmatter, fileAbsolutePath, excerpt, objectID } }) => {
+    ({ node: { frontmatter, fileAbsolutePath, rawBody, objectID } }) => {
       const strippedDirectory = utils.stripDirectoryPath(
         fileAbsolutePath,
         'docs',
@@ -39,37 +75,42 @@ const flatten = (arr) =>
       const path = utils.slugify(
         `/${cutStrippedDirectory}/${frontmatter.title.replace(/\//g, '-')}`,
       );
-      return rearrange(excerpt).map((piece, i) => ({
-        ...frontmatter,
-        objectID: `${objectID}-${i}`,
-        slug: utils.compose(
-          noTrailingSlash,
-          dedupeExamples,
-          removeGuidesAndRedirectWelcome,
-          utils.unorderify,
-        )(path),
-        content: piece,
-      }));
+      return rawToText(rawBody)
+        .split('\n\n')
+        .map((piece, i) => ({
+          ...frontmatter,
+          objectID: `${objectID}-${i}`,
+          slug: utils.compose(
+            noTrailingSlash,
+            dedupeExamples,
+            removeGuidesAndRedirectWelcome,
+            utils.unorderify,
+          )(path),
+          content: piece,
+        }));
     },
   );
 
 // main query
 // keep the length of excerpt really absurd to make sure the article comes in full
 const docPagesQuery = `{
-  docPages: allMarkdownRemark(
-    filter: { fileAbsolutePath: { regex: "/" } }
+  docPages: allFile(
+    filter: { fileAbsolutePath: { regex: "/docs/" }, ext:{in: [".md", ".mdx"]} }
   ) {
-    edges {
-      node {
+    nodes {
+      children {
+        ... on Mdx {
         objectID: id
         frontmatter {
           title
         }
+        rawBody
         excerpt(pruneLength: 100000) 
         fileAbsolutePath
       }
     }
   }
+}
 }`;
 
 // additional config

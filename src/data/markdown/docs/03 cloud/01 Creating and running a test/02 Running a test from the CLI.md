@@ -22,20 +22,19 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 3. Authenticate to k6 Cloud from the CLI. Log in using your username and password or your [API token](https://app.k6.io/account/api-token).
 
-    <div class="code-group" data-props='{"labels": ["Log in with username and password", "Log in with the API Token"]}'>
+   <div class="code-group" data-props='{"labels": ["Log in with username and password", "Log in with the API Token"]}'>
 
-    ```shell
-    $ k6 login cloud
-    ```
+   ```shell
+   $ k6 login cloud
+   ```
 
-    ```shell
-    $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
-    ```
+   ```shell
+   $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
+   ```
 
-    </div>
+   </div>
 
-    `k6 login` stores your API Token in a local config file to authenticate to k6 Cloud when running cloud commands.
-
+   `k6 login` stores your API Token in a local config file to authenticate to k6 Cloud when running cloud commands.
 
 4. Run your test in the cloud.
 
@@ -46,25 +45,31 @@ Reasons for triggering cloud tests from the k6 CLI include:
    ```
 
    ```shell
-   # Note the difference in specifying the `K6_CLOUD_TOKEN` environment variable 
+   # Note the difference in specifying the `K6_CLOUD_TOKEN` environment variable
    # using the `docker run -e` option.
 
    $ docker run -i -e K6_CLOUD_TOKEN=<API_TOKEN> loadimpact/k6 cloud - <script.js
 
-
    # When passing the script via stdin there is no way for the containerized k6 process
+
    # to get the script filename, which is required for cloud execution. To solve this issue:
-   
+
    # a) specify the `options.ext.loadimpact.name` property in the script:
 
-   #   export let options = {
-   #    ext: {
-   #      loadimpact: {
-   #        name: 'My awesome test',
-   #      },
-   #    },
-   #  };
-   
+   # export let options = {
+
+   # ext: {
+
+   # loadimpact: {
+
+   # name: 'My awesome test',
+
+   # },
+
+   # },
+
+   # };
+
    # b) mount the local filesystem as a Docker volume:
 
    $ docker run -i -e ... -v "$PWD/script.js:/script.js" loadimpact/k6 cloud /script.js
@@ -72,38 +77,35 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    </div>
 
+5. You'll see k6 print some information and the URL of your test results.
 
-6. You'll see k6 print some information and the URL of your test results.
-
-    <div class="code-group" data-props='{"labels": [""]}'>
+ <div class="code-group" data-props='{"labels": [""]}'>
 
     ```shell
-             /\      |‾‾|  /‾‾/  /‾/   
-        /\  /  \     |  |_/  /  / /    
-       /  \/    \    |      |  /  ‾‾\  
-      /          \   |  |‾\  \ | (_) | 
-     / __________ \  |__|  \__\ \___/ .io
+            /\      |‾‾|  /‾‾/  /‾/
+        /\  /  \     |  |_/  /  / /
+      /  \/    \    |      |  /  ‾‾\
+      /          \   |  |‾\  \ | (_) |
+    / __________ \  |__|  \__\ \___/ .io
 
       execution: cloud
       script: test.js
       output: https://app.k6.io/runs/TEST_RUN_ID
     ```
 
-    </div>
+ </div>
 
-7. Navigate to the URL to check your test results.  When the test is running, the test result page is shown. 
+6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-   ![k6 Cloud Test Results](/images/cloud-insights-results.png 'k6 Cloud Test Results')
+![k6 Cloud Test Results](/images/cloud-insights-results.png 'k6 Cloud Test Results')
 
-   Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
+Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
 
 ## Cloud execution options
 
 All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the same between the `k6 run` and `k6 cloud` commands. k6 aims to run the same script in different execution modes without making any script modifications.
 
 Optionally, you can define some cloud options in your k6 script.
-
-<div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
 export let options = {
@@ -120,12 +122,10 @@ export let options = {
 };
 ```
 
-</div>
-
 | Name                  | Default                                                                                          | Description                                                                                                                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
-| projectID (number)         | Optional. It is empty by default.                       | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                                                                       |
+| projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                           |
 | distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed. The keys are string labels that will be injected as [environment variables](/using-k6/environment-variables) on the appropriate nodes (matching the `loadZone`): `__ENV["someDefaultLabel"]` |
 
 ### List of supported load zones
@@ -149,7 +149,6 @@ export let options = {
 | Oregon                | `amazon:us:portland`  |
 | Hong Kong             | `amazon:cn:hong kong` |
 | São Paulo             | `amazon:br:sao paulo` |
-
 
 ### Running tests under a different project than your default one
 
@@ -181,8 +180,6 @@ You have two options to pass the Project ID to k6:
 
 2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running the test.
 
-
-
 ## Cloud execution tags
 
 [Tags](/using-k6/tags-and-groups) is a powerful concept in k6 as it opens up for great flexibility in how you can slice and dice the result data.
@@ -192,10 +189,9 @@ When running a k6 test in the cloud we add two tags to all metrics:
 | Tag name      | Type   | Description                                                                                              |
 | ------------- | ------ | -------------------------------------------------------------------------------------------------------- |
 | `load_zone`   | string | The load zone from where the the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
-| `instance_id` | number    | A unique number representing the ID of a load generator server taking part in the test.                  |
+| `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.                  |
 
 ![filter tags](/images/analysis-tab-cloud-tags.png 'Cloud execution tags')
-
 
 ## Environment variables
 
@@ -205,17 +201,16 @@ With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environme
 
 For example, given the script below, which reads the `MY_HOSTNAME` environment variable.
 
-
 <div class="code-group" data-props='{"labels": ["script.js"]}'>
 
 ```javascript
 import { check, sleep } from 'k6';
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   var r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
   check(r, {
-    'status is 200': r => r.status === 200,
+    'status is 200': (r) => r.status === 200,
   });
   sleep(5);
 }
@@ -225,27 +220,21 @@ export default function() {
 
 You'd execute it using the command like:
 
-
-<div class="code-group" data-props='{}'>
-
-```js
+```shell
 $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
-
-</div>
 
 ### Injected environment variables on the cloud execution
 
 When running in the k6 Cloud there will be three additional environment variables that can be used to find out in which load zone, server instance, and distribution label the given script is currently running.
 
-Name|	Value|	Description
--|-|-
-`LI_LOAD_ZONE`	|string|	The load zone from where the the metric was collected. Values will be of the form: amazon:us :ashburn (see list above).
-`LI_INSTANCE_ID`	|number|	A sequential number representing the unique ID of a load generator server taking part in the test, starts at 0.
-`LI_DISTRIBUTION`	|string|	The value of the "distribution label" that you used in `ext.loadimpact.distribution` corresponding to the load zone the script is currently executed in.
+| Name              | Value  | Description                                                                                                                                              |
+| ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LI_LOAD_ZONE`    | string | The load zone from where the the metric was collected. Values will be of the form: amazon:us :ashburn (see list above).                                  |
+| `LI_INSTANCE_ID`  | number | A sequential number representing the unique ID of a load generator server taking part in the test, starts at 0.                                          |
+| `LI_DISTRIBUTION` | string | The value of the "distribution label" that you used in `ext.loadimpact.distribution` corresponding to the load zone the script is currently executed in. |
 
 You can read the values of these variables in your k6 script as usual.
-
 
 ## Differences between local and cloud execution
 
@@ -254,7 +243,6 @@ You can read the values of these variables in your k6 script as usual.
 Local execution has support for iterations based test length (`-i` or
 `--iterations` on CLI, and `iterations` in script options) which is
 not yet supported by the cloud execution mode.
-
 
 ### Using setup/teardown life-cycle functions
 

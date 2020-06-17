@@ -64,7 +64,7 @@ When you use the "Add this graph to analysis tab" action in the other tabs, two 
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> <b>Only metrics from current test run can be added to comparison chart</b><br>
+> <b>Only metrics from current test run can be added to comparison chart</b><br/>
 > At this point metrics from the compared test run can't be added to the comparison chart.
 
 </div>

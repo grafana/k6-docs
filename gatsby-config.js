@@ -55,9 +55,10 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-transformer-remark',
+    resolve: 'gatsby-plugin-mdx',
     options: {
-      plugins: [
+      extensions: ['.md', '.mdx'],
+      gatsbyRemarkPlugins: [
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
@@ -176,7 +177,7 @@ if (process.env.BUCKET_NAME) {
       bucketName: process.env.BUCKET_NAME,
       region: process.env.BUCKET_REGION,
       protocol: 'https',
-      hostname: isProduction ? 'k6.io' : 'staging.k6.io'
+      hostname: isProduction ? 'k6.io' : 'staging.k6.io',
     },
   });
 }

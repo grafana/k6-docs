@@ -4,16 +4,13 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import { getDateAndSlugFromPath } from 'utils';
 import styles from './showcase.module.scss';
-import { blog } from 'utils/urls';
 
 export const Showcase = () => {
   const {
     allMarkdownRemark: { edges: featuredPost },
   } = useStaticQuery(graphql`
     query featuredPostQuery {
-      allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/markdown/posts/" } }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/markdown/posts/" } }) {
         edges {
           node {
             frontmatter {
@@ -52,22 +49,21 @@ export const Showcase = () => {
     const { date, slug } = getDateAndSlugFromPath(
       featuredPostData.fileAbsolutePath,
     );
-    featuredPostData.frontmatter.date = date;
-    featuredPostData.frontmatter.slug = slug;
-  }
 
-  return featuredPostData ? (
-    <section className={`container ${styles.container}`}>
-      <FeaturedPostCard
-        gatsbyImageData={
-          featuredPostData.frontmatter.cover.childImageSharp.fluid
-        }
-        date={featuredPostData.frontmatter.date}
-        title={featuredPostData.frontmatter.title}
-        url={featuredPostData.frontmatter.slug}
-        covertext={featuredPostData.frontmatter.covertext}
-        summary={featuredPostData.frontmatter.summary}
-      />
-    </section>
-  ) : null;
+    return (
+      <section className={`container ${styles.container}`}>
+        <FeaturedPostCard
+          gatsbyImageData={
+            featuredPostData.frontmatter.cover.childImageSharp.fluid
+          }
+          date={date}
+          title={featuredPostData.frontmatter.title}
+          url={slug}
+          covertext={featuredPostData.frontmatter.covertext}
+          summary={featuredPostData.frontmatter.summary}
+        />
+      </section>
+    );
+  }
+  return null;
 };

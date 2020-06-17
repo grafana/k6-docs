@@ -1,1 +1,1 @@
-export { Heading } from './heading.view';
+export { Heading, HeadingLandmark } from './heading.view';

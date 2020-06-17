@@ -17,7 +17,7 @@ import { check } from 'k6';
 const username = 'user';
 const password = 'passwd';
 
-export default function() {
+export default function () {
   const credentials = `${username}:${password}`;
 
   // Passing username and password as part of the URL will
@@ -28,9 +28,9 @@ export default function() {
 
   // Verify response
   check(res, {
-    'status is 200': r => r.status === 200,
-    'is authenticated': r => r.json().authenticated === true,
-    'is correct user': r => r.json().user === username,
+    'status is 200': (r) => r.status === 200,
+    'is authenticated': (r) => r.json().authenticated === true,
+    'is correct user': (r) => r.json().user === username,
   });
 
   // Alternatively you can create the header yourself to authenticate
@@ -50,9 +50,9 @@ export default function() {
   // Verify response (checking the echoed data from the httpbin.org
   // basic auth test API endpoint)
   check(res, {
-    'status is 200': r => r.status === 200,
-    'is authenticated': r => r.json().authenticated === true,
-    'is correct user': r => r.json().user === username,
+    'status is 200': (r) => r.status === 200,
+    'is authenticated': (r) => r.json().authenticated === true,
+    'is correct user': (r) => r.json().user === username,
   });
 }
 ```
@@ -70,7 +70,7 @@ import { check } from 'k6';
 const username = 'user';
 const password = 'passwd';
 
-export default function() {
+export default function () {
   // Passing username and password as part of URL plus the auth option will
   // authenticate using HTTP Digest authentication.
   const credentials = `${username}:${password}`;
@@ -82,9 +82,9 @@ export default function() {
   // Verify response (checking the echoed data from the httpbin.org digest auth
   // test API endpoint)
   check(res, {
-    'status is 200': r => r.status === 200,
-    'is authenticated': r => r.json().authenticated === true,
-    'is correct user': r => r.json().user === username,
+    'status is 200': (r) => r.status === 200,
+    'is authenticated': (r) => r.json().authenticated === true,
+    'is correct user': (r) => r.json().user === username,
   });
 }
 ```
@@ -101,7 +101,7 @@ import http from 'k6/http';
 const username = 'user';
 const password = 'passwd';
 
-export default function() {
+export default function () {
   // Passing username and password as part of URL and then specifying
   // "ntlm" as auth type will do the trick!
   const credentials = `${username}:${password}`;
@@ -130,7 +130,7 @@ There are a few steps required to make this work:
    $ npm install aws4
    ```
 
-   <div>
+   </div>
 
 3. Run it through browserify:
 
@@ -165,7 +165,6 @@ and secret key needs to be provided through [environment variables](/using-k6/en
 <div class="code-group" data-props='{ "labels": ["awsv4-auth.js"], "lineNumbers": [false] }'>
 
 ```js
-
 import http from 'k6/http';
 import { sleep } from 'k6';
 
@@ -178,7 +177,7 @@ const AWS_CREDS = {
   secretAccessKey: __ENV.AWS_SECRETKEY,
 };
 
-export default function() {
+export default function () {
   // Sign the AWS API request
   const signed = aws4.sign(
     {
@@ -190,10 +189,9 @@ export default function() {
 
   // Make the actual request to the AWS API including the
   // "Authorization" header with the signature
-  let res = http.get(
-    `https://${signed.hostname}${signed.path}`,
-    { headers: signed.headers },
-  );
+  let res = http.get(`https://${signed.hostname}${signed.path}`, {
+    headers: signed.headers,
+  });
 
   // Print the response
   console.log(res.body);

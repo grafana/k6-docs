@@ -1,4 +1,16 @@
-.wrapper {
+.anchor-bar-wrapper {
+  position: absolute;
+  right: 0;
+  top: -15px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+  @include lg-down {
+    display: none;
+  }
+}
+
+.anchor-bar {
   width: 275px;
 }
 

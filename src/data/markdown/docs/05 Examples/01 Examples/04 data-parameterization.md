@@ -14,17 +14,16 @@ necessary when Virtual Users(VUs) will make a POST, PUT, or PATCH request in a t
 Parameterization helps to prevent server-side caching from impacting your load test.
 This will, in turn, make your test more realistic.
 
-
 ## From a JSON file
 
 <div class="code-group" data-props='{ "labels": ["data.json"], "lineNumbers": [true] }'>
 
 ```json
 {
-    "users": [
-        { username: "test", password: "qwerty" },
-        { username: "test", password: "qwerty" }
-    ]
+  "users": [
+    { "username": "test", "password": "qwerty" },
+    { "username": "test", "password": "qwerty" }
+  ]
 }
 ```
 
@@ -32,11 +31,10 @@ This will, in turn, make your test more realistic.
 
 <div class="code-group" data-props='{ "labels": ["parse-json.js"], "lineNumbers": [true] }'>
 
-```js
-
+```javascript
 const data = JSON.parse(open('./data.json'));
 
-export default function() {
+export default function () {
   let user = data.users[0];
   console.log(data.users[0].username);
 }
@@ -47,18 +45,18 @@ export default function() {
 ## From a CSV file
 
 As k6 doesn't support parsing CSV files natively, we'll have to resort to using a
-library called [Papa Parse](https://www.papaparse.com/). 
+library called [Papa Parse](https://www.papaparse.com/).
 
 You can download the library and and import it locally like this:
 
 <div class="code-group" data-props='{ "labels": ["papaparse-local-import.js"], "lineNumbers": [true] }'>
 
-```JavaScript
+```javascript
 import papaparse from './papaparse.js';
 
 const csvData = papaparse.parse(open('./data.csv'), { header: true });
 
-export default function() {
+export default function () {
   // ...
 }
 ```
@@ -69,13 +67,13 @@ Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
 
 <div class="code-group" data-props='{ "labels": ["papaparse-remote-import.js"], "lineNumbers": [true] }'>
 
-```JavaScript
-import papaparse from "https://jslib.k6.io/papaparse/5.1.1/index.js"
+```javascript
+import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 
 // Load CSV file and parse it using Papa Parse
 const csvData = papaparse.parse(open('./data.csv'), { header: true });
 
-export default function() {
+export default function () {
   // ...
 }
 ```
@@ -87,7 +85,7 @@ data to login to the test.k6.io test site:
 
 <div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
 
-```js
+```javascript
 /*  Where contents of data.csv is:
 
     username,password
@@ -96,23 +94,22 @@ data to login to the test.k6.io test site:
 */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-import papaparse from "https://jslib.k6.io/papaparse/5.1.1/index.js"
+import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 
 // Load CSV file and parse it using Papa Parse
 const csvData = papaparse.parse(open('./data.csv'), { header: true }).data;
 
-export default function() {
+export default function () {
   // Now you can use the CSV data in your test logic below.
   // Below are some examples of how you can access the CSV data.
 
   // Loop through all username/password pairs
-  csvData.forEach(userPwdPair => {
+  csvData.forEach((userPwdPair) => {
     console.log(JSON.stringify(userPwdPair));
   });
 
   // Pick a random username/password pair
-  let randomUser =
-    csvData[Math.floor(Math.random() * csvData.length)];
+  let randomUser = csvData[Math.floor(Math.random() * csvData.length)];
   console.log('Random user: ', JSON.stringify(randomUser));
 
   const params = {
@@ -122,7 +119,7 @@ export default function() {
 
   let res = http.post('https://test.k6.io/login.php', params);
   check(res, {
-    'login succeeded': r =>
+    'login succeeded': (r) =>
       r.status === 200 && r.body.indexOf('successfully authorized') !== -1,
   });
 
@@ -132,14 +129,15 @@ export default function() {
 
 </div>
 
-<br>
+<br/>
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
 > ### ⚠️ Strive to keep the data files small
-> Each VU in k6 will have its separate copy of the data file. 
-> If your script uses 300 VUs, there will be 300 copies of the data file in memory. 
-> Cloud service allots 8GB of memory for every 300VUs. 
+>
+> Each VU in k6 will have its separate copy of the data file.
+> If your script uses 300 VUs, there will be 300 copies of the data file in memory.
+> Cloud service allots 8GB of memory for every 300VUs.
 > When executing cloud tests, make sure your data files aren't exceeding this limit or your test run may get aborted.
 
 </div>

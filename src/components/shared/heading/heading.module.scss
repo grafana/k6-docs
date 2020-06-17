@@ -28,3 +28,24 @@
     text-align: center;
   }
 }
+.mark-heading {
+  position: relative;
+  margin-bottom: 15px;
+  a {
+    position: absolute;
+    left: -20px;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    &:hover {
+      text-decoration: none;
+      border: none;
+    }
+  }
+  &:hover {
+    a {
+      visibility: visible;
+    }
+  }
+}

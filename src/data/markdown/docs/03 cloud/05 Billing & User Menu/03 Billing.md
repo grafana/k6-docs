@@ -5,7 +5,7 @@ excerpt: 'Update and view information such as Billing address, VAT, Credit Cards
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> <b>VAT for EU Organizations</b><br>
+> <b>VAT for EU Organizations</b><br/>
 > If you are making a purchase from within the EU, Please be sure to enter your VAT number before purchase.
 > If you do not enter a VAT number, we must collect VAT and are unable to refund VAT if you present a valid number later on.
 > Due to regulations, all purchases made within Sweden will include VAT.

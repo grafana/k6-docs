@@ -5,7 +5,7 @@ excerpt: 'Explanation of organizations and the hierarchy in the k6 web app'
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> <b>Running tests in another Organization</b><br>
+> <b>Running tests in another Organization</b><br/>
 > If you have been invited to another organization as a Team Member, you must specify a projectId in `ext.loadimpact.projectId` in order to use that organization's subscription to run your test.
 
 </div>

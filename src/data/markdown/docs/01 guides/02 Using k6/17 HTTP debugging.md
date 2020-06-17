@@ -1,6 +1,6 @@
 ---
-title: "HTTP debugging"
-excerpt: ""
+title: 'HTTP debugging'
+excerpt: ''
 hideFromSidebar: true
 ---
 
@@ -88,5 +88,7 @@ X-Xss-Protection: 1; mode=block
 ...
 
 ```
+
+</div>
 
 If we want to get the full response body printed as well we run the script with `k6 run --http-debug="full" script.js` instead.
