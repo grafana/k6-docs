@@ -117,6 +117,8 @@ a notification is sent.
 | Event name | Identifier | Description |
 | --------------------| ---------- | ----------- |
 | Test finished | `test.finished.finished` | All tests that ends with a `Finished` run-status |
+| Test finished successfully | `test.finished.success` | Only tests that _pass_ their [checks](/using-k6/checks) or [thresholds](/using-k6/thresholds) |
+| Test failed  | `test.finished.failed` | Only tests that _fail_ their checks or thresholds |
 | Test timed out | `test.finished.timed_out` | Only tests that _timed out_ in some way due to an upstream issue |
 | Test aborted (by user) | `test.finished.aborted_user` | Only tests that were _aborted_ manually by a user |
 | Test aborted (by system) | `test.finished.aborted_system` | Only tests that were _aborted_ due to some upstream system problem |
@@ -128,11 +130,9 @@ You can safely pick multiple options and will still at most get two notification
 test-run, one when it starts and one when it ends. The event-identifier will be passed along
 to specify which condition triggered the notification. 
 
-<!--  These are not supported by frontend yet, commented out for now:
+<!--  These are not in frontend, superfluous and commented out for now:
 |  -    | `test.started.all` | All tests started, no matter how |
 |  -    | `test.finished.all` | All tests that ends, no matter how |
-|  -    | `test.finished.success` | Only tests that _pass_ their [checks](/using-k6/checks) or [thresholds](/using-k6/thresholds) |
-|  -    | `test.finished.failed` | Only tests that _fail_ their checks or thresholds |
 -->
 
 ## Templating syntax
