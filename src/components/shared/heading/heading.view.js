@@ -31,6 +31,7 @@ export const HeadingLandmark = ({ mdBlockContent }) => (
       .replace(/-*$/g, '')}`}
   >
     <a
+      className={'anchor-icon'}
       href={`#${slugify(mdBlockContent)
         .replace(/\//g, '-')
         .replace(/^\d+/g, '')

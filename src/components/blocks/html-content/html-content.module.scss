@@ -73,7 +73,7 @@
     width: 100%;
   }
 
-  a {
+  a:not([class='anchor-icon']) {
     position: relative;
     text-decoration: none;
     color: $color-accent-primary;
@@ -95,7 +95,7 @@
     padding: 3px 5px 2px;
   }
 
-  /* modifications in doc-blockquote.module.scss */
+  /* modifications in blockquote.module.scss */
   blockquote {
     padding: 20px 36px 20px 20px;
     background: $color-additional-3;

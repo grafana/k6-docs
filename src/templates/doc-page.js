@@ -5,6 +5,7 @@ import styles from 'components/templates/doc-page/doc-page.module.scss';
 import { styles as codeStyles } from 'components/shared/code';
 import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
+import { useScrollToAnchor } from 'hooks';
 
 export default function (props) {
   const {
@@ -15,6 +16,7 @@ export default function (props) {
       breadcrumbs,
     },
   } = props;
+  useScrollToAnchor();
 
   const pageMetadata = {
     data: {

@@ -44,11 +44,10 @@ export const DocPageContent = ({ label, content, mod }) => (
 
         <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
           {({ style }) => (
-            <div style={style} className={styles.anchorBarWrapper}>
-              <TableOfContents
-                contentContainerSelector={styles.mainDocContent}
-              />
-            </div>
+            <TableOfContents
+              style={style}
+              contentContainerSelector={`.${styles.mainDocContent}`}
+            />
           )}
         </Sticky>
       </StickyContainer>
