@@ -1,13 +1,27 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import styles from './table-of-contents.module.scss';
-import { useLandmark } from 'hooks';
+import { useLandmark, useElementsReplacement } from 'hooks';
+import { HeadingLandmark } from 'components/shared/heading';
+
+const components = {
+  h2: HeadingLandmark,
+};
 
 const TableOfContents = forwardRef(
-  ({ style, contentContainerSelector, label }, ref) => {
-    const { links } = useLandmark({
-      containerSelector: contentContainerSelector,
+  (
+    { style, label, contentContainerRef, shouldMakeReplacement = false },
+    ref,
+  ) => {
+    const replaced = useElementsReplacement({
+      containerRef: contentContainerRef,
+      components,
+      shouldMakeReplacement,
+    });
+    const links = useLandmark({
+      containerRef: contentContainerRef,
       markSelector: 'h2',
+      shouldUseLandmark: replaced,
     });
     const handleAnchorClick = (e, anchor) => {
       e.preventDefault();

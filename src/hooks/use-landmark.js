@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { HeadingLandmark } from 'components/shared/heading';
+import { useState, useEffect } from 'react';
 import { slugify } from 'utils';
 
-const useLandmark = ({ containerSelector, markSelector }) => {
-  console.log(containerSelector, markSelector);
+const useLandmark = ({ containerRef, markSelector }) => {
   const [links, setLinks] = useState([]);
   useEffect(() => {
-    // get all marks of a parent
-    const allMarks = document
-      .querySelector(containerSelector)
-      .querySelectorAll(markSelector);
+    if (containerRef?.current) {
+      // get all marks of a parent
+      const allMarks = containerRef.current.querySelectorAll(markSelector);
 
-    setLinks(
-      Array.from(allMarks).map(({ innerHTML }) => ({
-        title: innerHTML,
-        anchor: `#${slugify(innerHTML)
-          .replace(/\//g, '-')
-          .replace(/^\d+/g, '')
-          .replace(/^-*/g, '')
-          .replace(/-*$/g, '')}`,
-      })),
-    );
+      setLinks(
+        Array.from(allMarks).map(({ id, innerHTML }) => ({
+          title: innerHTML,
+          anchor:
+            id ||
+            `#${slugify(innerHTML)
+              .replace(/\//g, '-')
+              .replace(/^\d+/g, '')
+              .replace(/^-*/g, '')
+              .replace(/-*$/g, '')}`,
+        })),
+      );
+    }
   }, []);
-  return { links };
+  return links;
 };
 export default useLandmark;

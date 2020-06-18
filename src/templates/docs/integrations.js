@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { useStaticQuery, graphql } from 'gatsby';
 import classNames from 'classnames';
@@ -32,6 +32,7 @@ import { blog, main } from 'utils/urls';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const pageMetadata = SeoMetadata.integrations;
+  const contentContainerRef = useRef(null);
 
   const {
     graphqlImg: {
@@ -134,7 +135,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       <PageInfo title={'Integrations & Tools'} description={''} />
       <div className={`${docPageContent.inner} `}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <ExternalLinksDashboard
               dashboardTitle={'Converters'}
               linksData={[
@@ -333,7 +334,13 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             </CustomContentContainer>
           </div>
           <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-            <TableOfContents contentContainerSelector={docPageContent.inner} />
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+                shouldMakeReplacement
+              />
+            )}
           </Sticky>
         </StickyContainer>
       </div>

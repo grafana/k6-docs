@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { HtmlContent } from 'components/blocks/html-content';
 import { StickyContainer, Sticky } from 'react-sticky';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
@@ -18,39 +18,43 @@ const components = {
   '.ld-markup': LdScript,
 };
 
-export const DocPageContent = ({ label, content, mod }) => (
-  <div
-    className={classNames(styles.wrapper, {
-      [styles.wrapper_beliefs]: mod === 'beliefs',
-    })}
-  >
-    <div className={`${styles.inner}`}>
-      <StickyContainer>
-        <div
-          className={classNames(styles.mainDocContent, {
-            [styles.mainDocContent_beliefs]: mod === 'beliefs',
-          })}
-        >
-          <HtmlContent
-            content={content}
-            components={components}
-            className={classNames(
-              styles.contentWrapper,
-              { [styles.contentWrapper_beliefs]: mod === 'beliefs' },
-              label,
-            )}
-          />
-        </div>
-
-        <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-          {({ style }) => (
-            <TableOfContents
-              style={style}
-              contentContainerSelector={`.${styles.mainDocContent}`}
+export const DocPageContent = ({ label, content, mod }) => {
+  const contentContainerRef = useRef(null);
+  return (
+    <div
+      className={classNames(styles.wrapper, {
+        [styles.wrapper_beliefs]: mod === 'beliefs',
+      })}
+    >
+      <div className={`${styles.inner}`}>
+        <StickyContainer>
+          <div
+            ref={contentContainerRef}
+            className={classNames(styles.mainDocContent, {
+              [styles.mainDocContent_beliefs]: mod === 'beliefs',
+            })}
+          >
+            <HtmlContent
+              content={content}
+              components={components}
+              className={classNames(
+                styles.contentWrapper,
+                { [styles.contentWrapper_beliefs]: mod === 'beliefs' },
+                label,
+              )}
             />
-          )}
-        </Sticky>
-      </StickyContainer>
+          </div>
+
+          <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+              />
+            )}
+          </Sticky>
+        </StickyContainer>
+      </div>
     </div>
-  </div>
-);
+  );
+};

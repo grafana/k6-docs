@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { PageInfo } from 'components/pages/doc-welcome';
@@ -16,6 +16,7 @@ import { useScrollToAnchor } from 'hooks';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const [showFooter, setShowFooter] = useState(true);
+  const contentContainerRef = useRef(null);
   useEffect(() => setShowFooter(!isInIFrame()), []);
   useScrollToAnchor();
 
@@ -35,7 +36,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       <PageInfo title={'k6 Cloud documentation'} />
       <div className={`${docPageContent.inner}`}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={'container'}>
               <div className={`${htmlStyles.wrapper}`}>
                 <h2>What is the k6 Cloud?</h2>
@@ -122,7 +123,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     </Trait>
                   </div>
 
-                  <div className={'col-lg-6'}>
+                  <div className={'col-lg-6 traits'}>
                     <Trait>
                       <Link
                         to={'/cloud/analyzing-results/performance-insights'}
@@ -187,7 +188,12 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             )}
           </div>
           <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-            <TableOfContents contentContainerSelector={docPageContent.inner} />
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+              />
+            )}
           </Sticky>
         </StickyContainer>
       </div>

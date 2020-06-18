@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { graphql, Link } from 'gatsby';
 import { DocLayout } from 'layouts/doc-layout';
@@ -127,7 +127,7 @@ function createTableMaybe(elements, header) {
 export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
   const index = buildIndex(data.allFile.nodes, sidebarTree);
   const pageMetadata = SeoMetadata['javascript-api'];
-
+  const contentContainerRef = useRef(null);
   useScrollToAnchor();
 
   const stickyContainerClasses = classNames(
@@ -146,7 +146,7 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
       />
       <div className={docPageContent.inner}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={`${htmlStyles.wrapper}`}>
               <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
                 {index.map(({ module, classes, functions }) => {
@@ -159,7 +159,13 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
             </div>
           </div>
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            <TableOfContents contentContainerSelector={docPageContent.inner} />
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+                shouldUseReplacement
+              />
+            )}
           </Sticky>
         </StickyContainer>
       </div>

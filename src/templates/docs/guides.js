@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { DocLayout } from 'layouts/doc-layout';
 import { Sticky, StickyContainer } from 'react-sticky';
@@ -28,7 +28,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
   useScrollToAnchor();
 
   const pageMetadata = SeoMetadata.guides;
-
+  const contentContainerRef = useRef(null);
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
@@ -43,7 +43,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       <PageInfo {...pageInfo} />
       <div className={classNames(docPageContent.inner)}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <Quickstart />
             <WhatIs />
             <Features />
@@ -66,7 +66,8 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             {({ style }) => (
               <TableOfContents
                 style={style}
-                contentContainerSelector={`.${docPageContent.inner}`}
+                contentContainerRef={contentContainerRef}
+                shouldMakeReplacement
               />
             )}
           </Sticky>

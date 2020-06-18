@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -12,7 +12,7 @@ import TableOfContents from 'components/pages/doc-page/table-of-contents';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   useScrollToAnchor();
-
+  const contentContainerRef = useRef(null);
   const pageMetadata = SeoMetadata.examples;
 
   const {
@@ -53,7 +53,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       />
       <div className={`${docPageContent.inner} `}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <DocLinksBlock title={'Examples'} links={examplesBlockLinks} />
             <DocLinksBlock
               title={'Tutorials'}
@@ -62,7 +62,13 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             />
           </div>
           <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-            <TableOfContents contentContainerSelector={docPageContent.inner} />
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+                shouldMakeReplacement
+              />
+            )}
           </Sticky>
         </StickyContainer>
       </div>

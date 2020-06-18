@@ -1,7 +1,6 @@
 .table-wrapper {
   width: 100%;
   overflow: auto;
-  margin: 40px 0;
   @include sm-down {
     tr td:nth-of-type(3) {
       width: 100%;

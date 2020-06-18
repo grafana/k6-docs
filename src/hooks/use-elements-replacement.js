@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const useElementsReplacement = (
-  { containerRef, components = {} },
+  { containerRef, components = {}, shouldMakeReplacement = true },
   deps = [],
 ) => {
+  const [replaced, setReplaced] = useState(false);
   useEffect(() => {
-    if (Object.keys(components).length && containerRef.current) {
+    if (
+      Object.keys(components).length &&
+      containerRef?.current &&
+      shouldMakeReplacement
+    ) {
       Object.keys(components).forEach((selector) => {
         const Component = components[selector];
         // limiting the scope of manipulation to a parent element
@@ -37,7 +42,9 @@ const useElementsReplacement = (
         });
       });
     }
+    setReplaced(true);
   }, deps);
+  return replaced;
 };
 
 export default useElementsReplacement;

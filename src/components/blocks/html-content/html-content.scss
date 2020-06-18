@@ -1,6 +1,24 @@
 a.gatsby-resp-image-link {
   border-bottom: none;
+  outline: none;
+  text-decoration: none;
   &:hover {
     border-bottom: none;
+  }
+  .gatsby-resp-image-image {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+  }
+}
+
+.traits {
+  & > * + * {
+    margin-top: 10px;
   }
 }
