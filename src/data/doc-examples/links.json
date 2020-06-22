@@ -153,6 +153,12 @@
       "url": "https://k6.io/blog/load-testing-restful-apis-with-k6"
     },
     {
+      "title": "Using TypeScript in k6 scripts",
+      "description": "This repository provides a scaffolding project to start using Typescript in your k6 scripts.",
+      "to": "",
+      "url": "https://github.com/k6io/template-typescript"
+    },
+    {
       "title": "How to control a live k6 test, with these built-in commands",
       "description": "This article takes a look at the k6 pause/resume/scale/stats/status commands, and how to use them to control and query a remote k6 instance running a test.",
       "to": "",
