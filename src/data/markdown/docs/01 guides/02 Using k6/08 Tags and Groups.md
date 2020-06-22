@@ -190,7 +190,4 @@ selection in the top right.
 
 ![Cloud Insights Grouping](/images/cloud-insights-http-tab.png)
 
-Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab)
-as shown below:
-
-![filter](/images/analysis-tab-tags.png)
+Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab).

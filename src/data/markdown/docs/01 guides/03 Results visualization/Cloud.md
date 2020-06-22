@@ -61,16 +61,8 @@ execution: local
 
 ![k6 Cloud Test Results](/images/k6-cloud-results.png)
 
-> **Analyzing results**
->
->
->
-> If you want to know how the k6 Cloud analyzes the results and its visualization features. Read [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview).
-
-
 ## See also
 
 -  [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
--  [Running tests under a different project than your default one](/using-k6/cloud-execution#running-tests-under-a-different-project-than-your-default-one)
 -  [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
 -  [Cloud test run status - Uploading results](/cloud/cloud-faq/test-status-codes#uploading-results)
