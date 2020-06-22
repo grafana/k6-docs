@@ -1,10 +1,10 @@
 const utils = require('./utils');
 
 // @TODO optimize chunking
-// const rearrange = (text, chunkLength = 300) => {
-//   const regex = new RegExp(`.{1,${chunkLength}}`, 'g');
-//   return text.match(regex) || [];
-// };
+const rearrange = (text, chunkLength = 300) => {
+  const regex = new RegExp(`.{1,${chunkLength}}`, 'g');
+  return text.match(regex) || [];
+};
 // @TODO: make it work properly
 // cleaning up function, synchronously strips html, markdown and so on
 // const rawToText_ = (rawBody) =>
@@ -67,7 +67,7 @@ const removeGuidesAndRedirectWelcome = (path) =>
 
 // helper
 const flatten = (arr) =>
-  arr.map(({ children: [entry] }, i) => {
+  arr.flatMap(({ children: [entry] }, i) => {
     const {
       fileAbsolutePath,
       rawBody,
@@ -88,17 +88,17 @@ const flatten = (arr) =>
       `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`,
     );
     console.log('processing file #', i, title);
-    return {
+    return rearrange(rawToText(rawBody)).map((piece, i) => ({
       title,
-      objectID,
+      objectID: `${objectID}-${i}`,
       slug: utils.compose(
         noTrailingSlash,
         dedupeExamples,
         removeGuidesAndRedirectWelcome,
         utils.unorderify,
       )(path),
-      content: rawToText(rawBody),
-    };
+      content: piece,
+    }));
     // @TODO: optimize chucking
     // return rawToText(rawBody)
     //   .split('\n\n')
@@ -143,7 +143,7 @@ const settings = {
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'stag_k6_docs';
 
 const queries = [
   {
