@@ -1,6 +1,6 @@
 ---
-title: "Threshold Tab"
-excerpt: "The Threshold Tab allows you to visually inspect the performance of your Thresholds during a k6 test. "
+title: 'Threshold Tab'
+excerpt: 'The Threshold Tab allows you to visually inspect the performance of your Thresholds during a k6 test. '
 ---
 
 ## Cloud Results: Thresholds
@@ -13,10 +13,9 @@ Further within this tab, you are able to:
 - Expand a threshold to view it's graph. In our example below, the expanded threshold is below the threshold of 100 ms
 - Add the chart to the `Analysis Tab` for further correlation with other data
 
-![Thresholds Tab](images/03 Threshold Tab/thresholds-tab.png)
+![Thresholds Tab](/images/03%Threshold%Tab/thresholds-tab.png)
 
 Next, [Checks Tab](/cloud/analyzing-results/checks-tab)
-
 
 ## See Also
 

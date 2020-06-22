@@ -57,7 +57,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
-      extensions: ['.md', '.mdx'],
+      extensions: ['.md'],
       gatsbyRemarkPlugins: [
         {
           resolve: 'gatsby-remark-prismjs',

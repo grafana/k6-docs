@@ -162,10 +162,7 @@ async function createDocPages({ graphql, actions }) {
   const { data } = await graphql(`
     query docPagesQuery {
       allFile(
-        filter: {
-          ext: { in: [".md", ".mdx"] }
-          relativeDirectory: { regex: "/docs/" }
-        }
+        filter: { ext: { in: [".md"] }, relativeDirectory: { regex: "/docs/" } }
         sort: { fields: absolutePath, order: ASC }
       ) {
         nodes {

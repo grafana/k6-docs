@@ -34,8 +34,10 @@ function buildIndex(nodes, sidebarTree) {
 
   const components = {
     '.code-group': CodeGroup,
+    '.gatsby-highlight': CodeGroup,
     h2: HeadingLandmark,
     table: TableWrapper,
+    blockquote: Blockquote,
     '.doc-blockquote': Blockquote,
   };
 
@@ -163,7 +165,7 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
               <TableOfContents
                 style={style}
                 contentContainerRef={contentContainerRef}
-                shouldUseReplacement
+                shouldMakeReplacement
               />
             )}
           </Sticky>
@@ -177,7 +179,7 @@ export const query = graphql`
   query IndexQuery {
     allFile(
       filter: {
-        ext: { in: [".md", ".mdx"] }
+        ext: { in: [".md"] }
         relativeDirectory: { regex: "/javascript api/" }
       }
       sort: { fields: absolutePath, order: ASC }

@@ -6,16 +6,17 @@ import { CodeGroup } from 'components/pages/doc-page/code-group';
 import TableWrapper from 'components/pages/doc-page/table-wrapper';
 import { HeadingLandmark } from 'components/shared/heading';
 import Blockquote from 'components/pages/doc-page/blockquote';
-import LdScript from 'components/pages/doc-page/ld-script';
+
 import styles from './doc-page-content.module.scss';
 import classNames from 'classnames';
 
 const components = {
   '.code-group': CodeGroup,
+  '.gatsby-highlight': CodeGroup,
   h2: HeadingLandmark,
   table: TableWrapper,
+  blockquote: Blockquote,
   '.doc-blockquote': Blockquote,
-  '.ld-markup': LdScript,
 };
 
 export const DocPageContent = ({ label, content, mod }) => {

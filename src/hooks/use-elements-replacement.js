@@ -29,15 +29,15 @@ const useElementsReplacement = (
           ReactDOM.render(
             <Component
               mdBlockContent={content}
-              labels={componentProps && componentProps.labels}
-              lineNumbers={componentProps && componentProps.lineNumbers}
-              mod={componentProps && componentProps.mod}
+              {...componentProps}
               noWrapper={selector === '.gatsby-highlight'}
             />,
             temp,
             () =>
-              element.parentElement &&
-              element.parentElement.replaceChild(temp.children[0], element),
+              (element?.parentElement ?? element.parentNode).replaceChild(
+                temp.children[0],
+                element,
+              ),
           );
         });
       });

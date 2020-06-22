@@ -1,11 +1,11 @@
 ---
-title: "Calculating Virtual Uses with Google Analytics"
-excerpt: "A guide on how to use data from Google Analytics to calculate the number of Virtual Users required for load and performance testing with k6 Cloud."
+title: 'Calculating Virtual Uses with Google Analytics'
+excerpt: 'A guide on how to use data from Google Analytics to calculate the number of Virtual Users required for load and performance testing with k6 Cloud.'
 ---
 
 To calculate the number of Virtual Users you need to test with, you should consider this formula:
 
->Virtual Users = (Hourly Sessions x Average Session Duration in seconds) / 3,600
+> Virtual Users = (Hourly Sessions x Average Session Duration in seconds) / 3,600
 
 Google Analytics and other tools are great for seeing where your users are coming from, and it also offers plenty of data that can help you create realistic load tests.
 
@@ -13,9 +13,7 @@ Google Analytics tracks new visitors (“Users”) and how long they stay on you
 
 The formula above takes it's inputs and determines how many users are in the middle of a "Session" at any one time, meaning they are currently active on the site and generating traffic the servers have to handle.
 
-
 **Where do I get this data in Google Analytics?**
-
 
 1. Login to your Google Analytics account
 2. Click the “Reporting” tab across the top
@@ -28,7 +26,7 @@ Check out the screenshot below to get an idea of the view and where you’ll fin
 
 **Note:** This screenshot is from a small site’s Google Analytics dashboard. We redacted the name in the top-right corner in the name of privacy!
 
-![Google Analytics Example](images/09 Calculating virtual users/calculating-the-number-of-virtual-users-to-test-1.png)
+![Google Analytics Example](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-1.png)
 
 And that’s it! As you can see, Google made this data pretty easy to find.
 
@@ -44,7 +42,7 @@ It can also be because of user behaviour. Maybe your app provides dinner recipes
 
 So how do we do this? Here’s the Google Analytics dashboard for a small example site that has had a (relatively) big traffic spike. For this little site, nearly 40 percent of November 2015’s traffic came on a single day — Nov. 25. Keep in mind this is example data for a super small site.
 
-![Google Analytics Example 2](images/09 Calculating virtual users/calculating-the-number-of-virtual-users-to-test-2.png)
+![Google Analytics Example 2](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-2.png)
 
 Here’s the basic math we used to analyze the data:
 
@@ -53,19 +51,18 @@ The site averaged .08 concurrent sessions for the entire month.
 - 2,591 **monthly** sessions x 82 seconds per session / 3600 = 59.0172
 - 59.0172 / 720 (30 days in November x 24h per day = 720) = .08 average concurrent users in November
 
-
 However, if you calculate the average concurrent sessions for just Nov. 25, you get 1.05 — that is more than 10x the monthly number. And if you calculate the average concurrent sessions between 3 p.m. and 4 p.m. on that day, when most of the traffic spike happened, the average number of concurrent sessions is 7.2. While not a huge number by itself, it is almost 100x the monthly average.
 
-![Google Analytics Example 3](images/09 Calculating virtual users/calculating-the-number-of-virtual-users-to-test-3.png)
+![Google Analytics Example 3](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-3.png)
 
 This illustrates how important it is to look at the right numbers, or the right time frames, when designing your load test. Even if you do not have a huge spike like in this case, chances are that you will still see temporary peaks that can reach perhaps 10x your average traffic level.
 
 No matter the size of your company or the amount of traffic you typically handle, a sudden increase in traffic by nearly 100x definitely has the potential to degrade performance for the user, so spike tests are always a good idea before marketing initiatives, funding announcements, new feature rollouts and just for the sake of always being prepared.
 
-
-***
+---
 
 See also:
+
 - [Virtual Users](/cloud/cloud-faq/what-are-vus-virtual-users)
 - [Creating tests in k6 Cloud](/cloud/creating-and-running-a-test)
 - [Code Samples and Scripting Examples](/examples)

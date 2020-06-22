@@ -5,9 +5,11 @@ import styles from './doc-icons-row.module.scss';
 
 export const DocIconsRow = ({ className, title, subtitle, iconsData }) => (
   <div className={`container ${styles.wrapper} ${className}`}>
-    <Heading tag={'h2'} size={'lg'}>
-      {title}
-    </Heading>
+    {title && (
+      <Heading tag={'h2'} size={'lg'}>
+        {title}
+      </Heading>
+    )}
     {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
     <ul className={`row ${styles.iconsContainer}`}>
       {iconsData.map(({ Icon, name, link, col, to }, i) => (
@@ -15,7 +17,7 @@ export const DocIconsRow = ({ className, title, subtitle, iconsData }) => (
           className={`col col-xl-2 col-sm-3 col-6 ${styles.iconWrapper}`}
           key={`icori-${i}`}
         >
-          { to ? (
+          {to ? (
             <Link className={styles.link} to={to}>
               <Icon className={styles.icon} />
               <p className={'link'}>{name}</p>

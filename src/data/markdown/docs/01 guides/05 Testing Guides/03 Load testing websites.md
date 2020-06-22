@@ -4,6 +4,8 @@ head_title: 'How to Load Test a Website: The k6 Guide'
 excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
 ---
 
+import LdScript from 'components/pages/doc-page/ld-script';
+
 Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle appropriately.
 
 Load testing helps you simulate those users to asses your system performance and know if your website or web app meets your goals.
@@ -197,21 +199,4 @@ group('login page', function () {
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
 - Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)
 
-<div class="ld-markup">
-
-`{"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [{
-"@type": "Question",
-"name": "When to load test a website?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p>
-
-  <p>If you have a very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.</p>
-  <p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"
-      }
-    }]
-  }`
-
-</div>
+<LdScript script='{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "When to load test a website?", "acceptedAnswer": { "@type": "Answer", "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p><p>If you have a very low number of users, backend performance won&apos;t likely be an issue. Spend your time optimizing the frontend.</p><p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"}}]}' />

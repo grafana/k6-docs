@@ -119,7 +119,7 @@ const flatten = (arr) =>
 // keep the length of excerpt really absurd to make sure the article comes in full
 const docPagesQuery = `{
   docPages: allFile(
-    filter: { absolutePath: { regex: "/docs/" }, ext:{in: [".md", ".mdx"]} }
+    filter: { absolutePath: { regex: "/docs/" }, ext:{in: [".md"]} }
   ) {
     nodes {
       children {

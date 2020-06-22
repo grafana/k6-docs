@@ -20,7 +20,7 @@ The billing allows you to manages things such as billing address, VAT numbers, p
 
 Use this section to update your billing email, billing address and VAT (if applicable). To update this information click "Update Billing Information"
 
-![Updating Billing Information](images/03 Billing/update-billing.png)
+![Updating Billing Information](images/03%Billing/update-billing.png)
 
 ---
 

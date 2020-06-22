@@ -1,5 +1,24 @@
-/* main blockquote styles in html-content.module.scss */
+blockquote {
+  padding: 20px 36px 20px 20px;
+  background: $color-additional-3;
+  border-left: 2px solid $color-accent-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  margin: 0;
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+  p {
+    margin: 0;
+  }
+  :not(pre) > code[class*='language-'] {
+    background: $color-additional-2;
+    line-height: 18px;
+  }
+}
 
+/* modifications in blockquote.module.scss */
 blockquote.doc-blockquote-warning {
   border-left: 2px solid $color-error;
   span {

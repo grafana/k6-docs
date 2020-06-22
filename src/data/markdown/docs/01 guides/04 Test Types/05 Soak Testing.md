@@ -4,6 +4,8 @@ head_title: 'What is Soak Testing? How to create a Soak Test in k6'
 excerpt: 'A Soak Test is a type of Performance Test that tells you about the reliability and performance of your system over an extended period of time. Let’s see an example.'
 ---
 
+import LdScript from 'components/pages/doc-page/ld-script';
+
 While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
 [stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a long time.
 
@@ -94,9 +96,7 @@ You should execute soak tests after your standard load tests are successful, and
 
 Soak testing is the last major step on the road to building reliable systems.
 
-<div class="ld-markup">
-
-`{
+<LsScript script='{
 "@context": "https://schema.org",
 "@type": "FAQPage",
 "mainEntity": [{
@@ -104,12 +104,4 @@ Soak testing is the last major step on the road to building reliable systems.
 "name": "When to do soak testing?",
 "acceptedAnswer": {
 "@type": "Answer",
-"text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p>
-
-<p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p>
-<p>Soak testing is the last major step on the road to building reliable systems.</p>"
-    }
-  }]
-}`
-
-</div>
+"text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p><p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p><p>Soak testing is the last major step on the road to building reliable systems.</p>"}}]}' />

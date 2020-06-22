@@ -15,21 +15,21 @@ The top of the page provides a breadcrumb menu and an overview of details about 
 
 The breadcrumb menu allows to quickly navigate between the latest runs of the test, the test page or all the tests in the current project.
 
-![Test result navigation](images/cloud/01 Overview/test-run-navigation.png)
+![Test result navigation](/images/01%Overview/test-run-navigation.png)
 
 Additionally, you can see metadata about the current test. Status, Duration, VUs, Regions used, and who started a test. To the write, you have various buttons and menus to let you re-run, share, compare, configure, or delete your test.
 
-![Test result metadata](images/cloud/01 Overview/test-metadata.png)
+![Test result metadata](/images/01%Overview/test-metadata.png)
 
 ## Performance Overview
 
 The Performance Overview section displays high level data for your test. If the test is running live metrics are displayed.
 
-![Performance overview of a running test](images/cloud/01 Overview/running-performance-overview.png)
+![Performance overview of a running test](images/01%Overview/running-performance-overview.png)
 
 After the test has finished the section is updated to show HTTP failures and peak RPS in place of Active VUs and current RPS. If any Performance Alerts have been detected, we will also display that information to you. In this test, our automated algorithms did not find any problems.
 
-![Performance overview of a finished test](images/cloud/01 Overview/finished-performance-overview.png)
+![Performance overview of a finished test](images/01%Overview/finished-performance-overview.png)
 
 The first signal of a good or bad result will generally be in the Performance Overview panel. Here are the most common patterns to consider.
 
@@ -61,7 +61,7 @@ The result tabs allow you to dig into the specific result data sets from your te
 
 These tabs let you dig into your test data in a visual and error-driven way. You are able to click on any metric to expand a graph to dig deeper. You can also add these graphs to the Analysis tab. This allows you to look for interesting correlations in your result data. Within each tab note the &#10003; or &#10005; next to the individual metrics if failures were encountered. In the example below, we have two checks with failures which are clearly apparent.
 
-![Checks tab with a failing check](images/cloud//01 Overview/checks-tab-with-failures.png)
+![Checks tab with a failing check](images/01%Overview/checks-tab-with-failures.png)
 
 Refer to these articles for more specific information on:
 

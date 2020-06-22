@@ -30,6 +30,84 @@ import Loadimpact from 'svg/loadimpact.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
 
+const iconsDataSet1 = [
+  {
+    Icon: Kafka,
+    name: 'Apache Kafka',
+    to: '/results-visualization/apache-kafka',
+  },
+  {
+    Icon: Loadimpact,
+    name: 'Cloud',
+    to: '/results-visualization/cloud',
+  },
+  {
+    Icon: Datadog,
+    name: 'DataDog',
+    to: '/results-visualization/datadog',
+  },
+  {
+    Icon: () => (
+      <div className={styles.doubleIcon}>
+        <Influx />
+        <span>+</span>
+        <Grafana />
+      </div>
+    ),
+    name: 'InfluxDB +Grafana',
+    to: '/results-visualization/influxdb-+-grafana',
+    // handling non-standard sizes
+    col: 2,
+  },
+  {
+    Icon: Json,
+    name: 'JSON file',
+    to: '/results-visualization/apache-kafka',
+  },
+  {
+    Icon: () => (
+      <div className={styles.doubleIcon}>
+        <StatsD />
+      </div>
+    ),
+    name: 'StatsD',
+    to: '/results-visualization/statsd',
+  },
+];
+
+const iconsDataSet2 = [
+  {
+    Icon: Azure,
+    name: 'Azure Pipelines',
+    link: `${blog}/integrating-load-testing-with-azure-pipelines`,
+  },
+  {
+    Icon: CircleCI,
+    name: 'CircleCI',
+    link: `${blog}/integrating-load-testing-with-circleci`,
+  },
+  {
+    Icon: GitHub,
+    name: 'GitHub Actions',
+    link: `${blog}/load-testing-using-github-actions`,
+  },
+  {
+    Icon: Gitlab,
+    name: 'GitLab',
+    link: `${blog}/integrating-load-testing-with-gitlab`,
+  },
+  {
+    Icon: Jenkins,
+    name: 'Jenkins',
+    link: `${blog}/integrating-load-testing-with-jenkins`,
+  },
+  {
+    Icon: TeamCity,
+    name: 'TeamCity',
+    link: `${blog}/load-testing-using-teamcity-and-k6`,
+  },
+];
+
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const pageMetadata = SeoMetadata.integrations;
   const contentContainerRef = useRef(null);
@@ -173,50 +251,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               subtitle={
                 'k6 can output its test result data to different sources:'
               }
-              iconsData={[
-                {
-                  Icon: Kafka,
-                  name: 'Apache Kafka',
-                  to: '/results-visualization/apache-kafka',
-                },
-                {
-                  Icon: Loadimpact,
-                  name: 'Cloud',
-                  to: '/results-visualization/cloud',
-                },
-                {
-                  Icon: Datadog,
-                  name: 'DataDog',
-                  to: '/results-visualization/datadog',
-                },
-                {
-                  Icon: () => (
-                    <div className={styles.doubleIcon}>
-                      <Influx />
-                      <span>+</span>
-                      <Grafana />
-                    </div>
-                  ),
-                  name: 'InfluxDB +Grafana',
-                  to: '/results-visualization/influxdb-+-grafana',
-                  // handling non-standard sizes
-                  col: 2,
-                },
-                {
-                  Icon: Json,
-                  name: 'JSON file',
-                  to: '/results-visualization/apache-kafka',
-                },
-                {
-                  Icon: () => (
-                    <div className={styles.doubleIcon}>
-                      <StatsD />
-                    </div>
-                  ),
-                  name: 'StatsD',
-                  to: '/results-visualization/statsd',
-                },
-              ]}
+              iconsData={iconsDataSet1}
             />
             <ExternalLinksDashboard
               dashboardTitle={'IDE'}
@@ -244,38 +279,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               subtitle={
                 'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
               }
-              iconsData={[
-                {
-                  Icon: Azure,
-                  name: 'Azure Pipelines',
-                  link: `${blog}/integrating-load-testing-with-azure-pipelines`,
-                },
-                {
-                  Icon: CircleCI,
-                  name: 'CircleCI',
-                  link: `${blog}/integrating-load-testing-with-circleci`,
-                },
-                {
-                  Icon: GitHub,
-                  name: 'GitHub Actions',
-                  link: `${blog}/load-testing-using-github-actions`,
-                },
-                {
-                  Icon: Gitlab,
-                  name: 'GitLab',
-                  link: `${blog}/integrating-load-testing-with-gitlab`,
-                },
-                {
-                  Icon: Jenkins,
-                  name: 'Jenkins',
-                  link: `${blog}/integrating-load-testing-with-jenkins`,
-                },
-                {
-                  Icon: TeamCity,
-                  name: 'TeamCity',
-                  link: `${blog}/load-testing-using-teamcity-and-k6`,
-                },
-              ]}
+              iconsData={iconsDataSet2}
             />
             <ExternalLinksDashboard
               dashboardTitle={'Grafana dashboards'}
@@ -347,3 +351,11 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     </DocLayout>
   );
 }
+
+export const IntegrationsResultIconBlock = () => (
+  <DocIconsRow className={styles.storeRow} iconsData={iconsDataSet1} />
+);
+
+export const IntegrationsCiIconBlock = () => (
+  <DocIconsRow className={styles.ciRow} iconsData={iconsDataSet2} />
+);
