@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { graphql, Link } from 'gatsby';
 import { DocLayout } from 'layouts/doc-layout';
+import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import { Sticky, StickyContainer } from 'react-sticky';
 import {
@@ -10,20 +11,20 @@ import {
   unorderify,
   compose,
   noSlugDuplication,
-  whenElementAvailable,
 } from 'utils';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
-import { default as docPageContent } from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
-import { default as docPageNav } from 'components/pages/doc-page/doc-page-nav/doc-page-nav.module.scss';
+import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import SeoMetadata from 'utils/seo-metadata';
 import { HtmlContent } from 'components/blocks/html-content';
 import { styles as codeStyles } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
-import { CodeGroup } from 'components/templates/doc-page/code-group';
-import { DocBlockquote } from 'components/pages/doc-page/doc-blockquote';
+
+import { CodeGroup } from 'components/pages/doc-page/code-group';
+import TableWrapper from 'components/pages/doc-page/table-wrapper';
+import { HeadingLandmark } from 'components/shared/heading';
+import Blockquote from 'components/pages/doc-page/blockquote';
 import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
-import AnchorIcon from 'components/templates/doc-page/doc-page-content/svg/anchor.inline.svg';
-import docPage from 'templates/doc-page';
+import { useScrollToAnchor } from 'hooks';
 
 // Return an array of { module: <div>, classes: [<tr>...], functions: [<tr>...] } objects.
 // Top-level documents (modules) as defined by the sidebarTree will be
@@ -33,23 +34,11 @@ function buildIndex(nodes, sidebarTree) {
 
   const components = {
     '.code-group': CodeGroup,
-    h2: ({ mdBlockContent }) => (
-      <h2
-        className={docPageContent.markHeading}
-        id={`${slugify(mdBlockContent).replace(/\//g, '-')}`}
-      >
-        <a href={`#${slugify(mdBlockContent).replace(/\//g, '-')}`}>
-          <AnchorIcon />
-        </a>
-        {mdBlockContent}
-      </h2>
-    ),
-    '.doc-blockquote': DocBlockquote,
-    table: ({ mdBlockContent }) => (
-      <div className={jsApiStyles.tableWrapper}>
-        <table dangerouslySetInnerHTML={{ __html: mdBlockContent }} />
-      </div>
-    ),
+    '.gatsby-highlight': CodeGroup,
+    h2: HeadingLandmark,
+    table: TableWrapper,
+    blockquote: Blockquote,
+    '.doc-blockquote': Blockquote,
   };
 
   for (let i = 0; i < nodes.length; i += 1) {
@@ -61,7 +50,7 @@ function buildIndex(nodes, sidebarTree) {
           <div key={node.id} className={jsApiStyles.moduleWrapper}>
             <h2>{md.frontmatter.title}</h2>
             <HtmlContent
-              content={md.html}
+              content={md.body}
               components={components}
               className={classNames(
                 docPageContent.contentWRapper,
@@ -109,8 +98,7 @@ function buildIndex(nodes, sidebarTree) {
     }
 
     const last = index[index.length - 1];
-    // checking if here is identical slug already exists in main module
-    // skipping row addition if true
+    // skip row addition if there is an identical slug already exists in main module
     if (noSlugDuplication(last, slug)) {
       last[nodeType].push(row);
     }
@@ -138,74 +126,15 @@ function createTableMaybe(elements, header) {
   return null;
 }
 
-export default function({ data, pageContext: { sidebarTree, navLinks } }) {
+export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
   const index = buildIndex(data.allFile.nodes, sidebarTree);
   const pageMetadata = SeoMetadata['javascript-api'];
-
-  const [pageNavLinks, setPageNavLinks] = useState([]);
-
-  useEffect(() => {
-    const allHeadingMarks = document
-      .querySelector(`.${docPageContent.inner}`)
-      .querySelectorAll('h2');
-    setPageNavLinks(
-      Array.from(allHeadingMarks).map(({ innerHTML }) => ({
-        title: innerHTML,
-        anchor: `#${slugify(innerHTML).replace(/\//g, '-')}`,
-      })),
-    );
-  }, []);
-
-  useEffect(() => {
-    // check if given url contains hash (therefore an anchor)
-    const scrollMark = location.hash;
-    if (scrollMark) {
-      // wait when html content adds all id to h2 then scroll to it
-      whenElementAvailable(scrollMark)(el =>
-        // no smooth scroll needed
-        window.scrollTo({
-          top: el.getBoundingClientRect().top + window.scrollY - 25,
-        }),
-      );
-    }
-  }, []);
-  const handleAnchorClick = (e, anchor) => {
-    e.preventDefault();
-    document.querySelector(anchor).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-    // changing hash without default jumps to anchor
-    if (history.pushState) {
-      history.pushState(false, false, anchor);
-    } else {
-      // old browser support
-      window.location.hash = anchor;
-    }
-  };
+  const contentContainerRef = useRef(null);
+  useScrollToAnchor();
 
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
-  );
-  const renderSidebar = ({ style }) => (
-    <div style={style} className={docPageContent.anchorBarWrapper}>
-      <nav className={`${docPageNav.wrapper} ${docPageContent.anchorBar}`}>
-        <ul className={docPageNav.anchorWrapper}>
-          {pageNavLinks.map(({ title, anchor }, i) => (
-            <li className={docPageNav.anchorBox} key={`al-${i}`}>
-              <a
-                className={docPageNav.anchor}
-                href={anchor}
-                onClick={e => handleAnchorClick(e, anchor)}
-              >
-                {title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
   );
   return (
     <DocLayout
@@ -219,20 +148,26 @@ export default function({ data, pageContext: { sidebarTree, navLinks } }) {
       />
       <div className={docPageContent.inner}>
         <StickyContainer>
-          <div className={stickyContainerClasses}>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={`${htmlStyles.wrapper}`}>
               <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
-                {index.map(node => {
-                  const out = [node.module];
-                  out.push(createTableMaybe(node.classes, 'Class'));
-                  out.push(createTableMaybe(node.functions, 'Function'));
+                {index.map(({ module, classes, functions }) => {
+                  const out = [module];
+                  out.push(createTableMaybe(classes, 'Class'));
+                  out.push(createTableMaybe(functions, 'Function'));
                   return out;
                 })}
               </CustomContentContainer>
             </div>
           </div>
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            {renderSidebar}
+            {({ style }) => (
+              <TableOfContents
+                style={style}
+                contentContainerRef={contentContainerRef}
+                shouldMakeReplacement
+              />
+            )}
           </Sticky>
         </StickyContainer>
       </div>
@@ -244,7 +179,7 @@ export const query = graphql`
   query IndexQuery {
     allFile(
       filter: {
-        ext: { eq: ".md" }
+        ext: { in: [".md"] }
         relativeDirectory: { regex: "/javascript api/" }
       }
       sort: { fields: absolutePath, order: ASC }
@@ -253,8 +188,8 @@ export const query = graphql`
         id
         relativeDirectory
         children {
-          ... on MarkdownRemark {
-            html
+          ... on Mdx {
+            body
             frontmatter {
               title
               category

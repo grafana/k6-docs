@@ -19,22 +19,6 @@
   }
 }
 
-.anchor-bar-wrapper {
-  position: absolute;
-  right: 0;
-  top: -15px;
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 15px;
-  @include lg-down {
-    display: none;
-  }
-}
-
-.anchor-bar {
-  max-width: 275px;
-}
-
 .main-doc-content {
   max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
   &_beliefs {
@@ -53,39 +37,5 @@
   }
   @include lg-down {
     position: unset;
-  }
-}
-
-.table-wrapper {
-  width: 100%;
-  overflow: auto;
-  margin: 40px 0;
-  @include sm-down {
-    tr td:nth-of-type(3) {
-      width: 100%;
-      min-width: 230px; //usually 3rd column contains text which is being squished
-    }
-  }
-}
-
-.mark-heading {
-  position: relative;
-  margin-bottom: 15px;
-  a {
-    position: absolute;
-    left: -20px;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: none;
-    &:hover {
-      text-decoration: none;
-      border: none;
-    }
-  }
-  &:hover {
-    a {
-      visibility: visible;
-    }
   }
 }

@@ -55,9 +55,10 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-transformer-remark',
+    resolve: 'gatsby-plugin-mdx',
     options: {
-      plugins: [
+      extensions: ['.md'],
+      gatsbyRemarkPlugins: [
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
@@ -84,15 +85,9 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-plugin-prefetch-google-fonts',
+    resolve: 'gatsby-plugin-google-fonts',
     options: {
-      fonts: [
-        {
-          family: 'Roboto Mono',
-          subsets: ['latin'],
-          variants: ['300', '400'],
-        },
-      ],
+      fonts: ['roboto mono:300,400'],
     },
   },
   {
@@ -176,7 +171,7 @@ if (process.env.BUCKET_NAME) {
       bucketName: process.env.BUCKET_NAME,
       region: process.env.BUCKET_REGION,
       protocol: 'https',
-      hostname: isProduction ? 'k6.io' : 'staging.k6.io'
+      hostname: isProduction ? 'k6.io' : 'staging.k6.io',
     },
   });
 }

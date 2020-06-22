@@ -1,16 +1,4 @@
 .wrapper {
-  *:last-child {
-    margin-bottom: 0;
-  }
-  *:first-child {
-    margin-top: 0;
-  }
-  * + h2 {
-    margin-top: 50px;
-  }
-  * + h3 {
-    margin-top: 30px;
-  }
   h2 {
     font-size: 25px;
     line-height: 35px;
@@ -28,24 +16,15 @@
     font-weight: 500;
   }
 
-  p {
-    margin: 15px 0;
-  }
-
   ul,
   ol {
-    margin: 15px 0;
     padding-left: 45px;
     @include xs-down {
       padding-left: 30px;
     }
-    p:not(:last-child) {
-      margin-bottom: 8px;
-    }
   }
 
   li {
-    margin-bottom: 5px;
     counter-increment: li;
   }
 
@@ -73,7 +52,7 @@
     width: 100%;
   }
 
-  a {
+  a:not([class='anchor-icon']):not([class='gatsby-resp-image-link']) {
     position: relative;
     text-decoration: none;
     color: $color-accent-primary;
@@ -95,31 +74,9 @@
     padding: 3px 5px 2px;
   }
 
-  /* modifications in doc-blockquote.module.scss */
-  blockquote {
-    padding: 20px 36px 20px 20px;
-    background: $color-additional-3;
-    margin: 30px 0;
-    border-left: 2px solid $color-accent-primary;
-    font-size: $font-size-sm;
-    line-height: $line-height-sm;
-    h3 {
-      margin-top: 0px;
-      margin-bottom: 15px;
-    }
-    p {
-      margin: 0;
-    }
-    :not(pre) > code[class*='language-'] {
-      background: $color-additional-2;
-      line-height: 18px;
-    }
-  }
-
   table {
     border: 1px solid $color-additional-2;
     border-collapse: collapse;
-    margin: 30px 0;
     width: 100%;
 
     td,
@@ -161,12 +118,18 @@
     line-height: 23px;
     border-radius: 0;
   }
-  :global .traits {
-    > div {
-      margin-top: 5px;
-      &:first-child {
-        margin-top: 0;
-      }
-    }
+  & > * + * {
+    margin-top: 30px;
+  }
+  & > * + h2 {
+    margin-top: 50px;
+  }
+  & * + ul,
+  & * + ol,
+  & * + p {
+    margin-top: 15px;
+  }
+  & * + li {
+    margin-top: 5px;
   }
 }

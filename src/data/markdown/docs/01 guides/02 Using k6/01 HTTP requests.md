@@ -13,7 +13,7 @@ your system. A simple example that just performs a GET request looks like this:
 ```js
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   http.get('http://test.k6.io');
 }
 ```
@@ -27,7 +27,7 @@ A slightly more complex request might be e.g. a POST request to authenticate on 
 ```javascript
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   var url = 'http://test.k6.io/login';
   var payload = JSON.stringify({
     email: 'aaa',
@@ -50,16 +50,16 @@ export default function() {
 
 Use the [http module](/javascript-api/k6-http) to perform all kinds of HTTP requests in your load tests.
 
-| Name                                                               | Value                                                                     |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Name                                                                | Value                                                                     |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | [batch()](/javascript-api/k6-http/batch-requests)                   | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
-| [del()](/javascript-api/k6-http/del-url-body-params)                | Issue an HTTP DELETE request.                                                |
-| [get()](/javascript-api/k6-http/get-url-params)                | Issue an HTTP GET request.                                               |
-| [options()](/javascript-api/k6-http/options-url-body-params)        | Issue an HTTP OPTIONS request.                                              |
-| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Issue an HTTP PATCH request.                                            |
-| [post()](/javascript-api/k6-http/post-url-body-params)              | Issue an HTTP POST request.                                                |
-| [put()](/javascript-api/k6-http/put-url-body-params)                | Issue an HTTP PUT request.                                             |
-| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue any type of HTTP request.                                            |
+| [del()](/javascript-api/k6-http/del-url-body-params)                | Issue an HTTP DELETE request.                                             |
+| [get()](/javascript-api/k6-http/get-url-params)                     | Issue an HTTP GET request.                                                |
+| [options()](/javascript-api/k6-http/options-url-body-params)        | Issue an HTTP OPTIONS request.                                            |
+| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Issue an HTTP PATCH request.                                              |
+| [post()](/javascript-api/k6-http/post-url-body-params)              | Issue an HTTP POST request.                                               |
+| [put()](/javascript-api/k6-http/put-url-body-params)                | Issue an HTTP PUT request.                                                |
+| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue any type of HTTP request.                                           |
 
 ## HTTP Request Tags
 
@@ -195,4 +195,4 @@ for (var id = 1; id <= 100; id++) {
 
 [k6 Cloud Results's HTTP Table](/cloud/analyzing-results/http-tab) will show all the requests, on an aggregated level per URL.
 
-![cloud insights url table](/images/02 Using k6/cloud-insights-http-tab.png)
+![cloud insights url table](/images/cloud-insights-http-tab.png)

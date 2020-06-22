@@ -6,14 +6,14 @@ import styles from 'components/templates/doc-page/doc-page.module.scss';
 import { Heading } from 'components/shared/heading';
 import { childrenToList, slugify } from 'utils';
 
-export default function(props) {
+export default function (props) {
   const {
     pageContext: { sidebarTree, breadcrumbs, navLinks, title, directChildren },
   } = props;
   return (
     <DocLayout sidebarTree={sidebarTree} navLinks={navLinks}>
       <div className={`${styles.container}`}>
-        <Breadcrumbs items={breadcrumbs} />
+        <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
         <Heading className={styles.title}>{title}</Heading>
         <ul className={styles.sectionList}>
           {childrenToList(directChildren).map(({ meta, name }, i) => (

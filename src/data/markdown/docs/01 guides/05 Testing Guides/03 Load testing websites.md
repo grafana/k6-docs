@@ -1,8 +1,10 @@
 ---
-title: "Load testing websites"
+title: 'Load testing websites'
 head_title: 'How to Load Test a Website: The k6 Guide'
-excerpt: "Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started."
+excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
 ---
+
+import LdScript from 'components/pages/doc-page/ld-script';
 
 Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle appropriately.
 
@@ -14,8 +16,8 @@ This guide provides guidance and recommendations to get started, creating user s
 
 On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
 
- - Frontend
- - Backend
+- Frontend
+- Backend
 
 Frontend performance focuses on browser metrics like rendering time, interactive time, loading time, among others.
 
@@ -25,7 +27,6 @@ Which one is more important? There is no one true answer to this question. In ge
 
 > 80-90% of the end-user response time is spent on the frontend.
 
-
 But this is not necessarily accurate.
 
 With an increasing amount of visits to your website, the frontend response time remains roughly the same. Still, when your system struggles with the increased concurrency, the **backend time might grow exponentially with the rise of concurrent users**.
@@ -33,7 +34,6 @@ With an increasing amount of visits to your website, the frontend response time 
 The following chart illustrates this situation:
 
 ![Frontend time vs Backend time with increasing amount of website visitors](./Frontend-Backend-LoadTesting.png)
-
 
 ## When to load test a website?
 
@@ -47,10 +47,9 @@ But as the number of users grows, you should start spending more time improving 
 
 ### Browser metrics and load testing
 
-When testing how your system behaves with some concurrent users, browser metrics are, in most cases, less useful. 
+When testing how your system behaves with some concurrent users, browser metrics are, in most cases, less useful.
 
 Because each browser runs independently, the number of concurrent users in a load test will not affect browser metrics like rendering time.
-
 
 ## Load testing a website
 
@@ -72,7 +71,6 @@ You start small by testing, evaluating, and iterating frequently.
 
 > Start small and simple, make sure you get something out of the testing first, then expand the test suite and add more complexity until you feel that you’ve reached the point where more effort spent on realism will not give enough return on your invested time.
 >
->
 > [Simple testing is better than no testing](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
 
 The first thing is to decide what to load test. On the one hand, you could evaluate which are the performance aspects that are most valuable to your business and has the most significant risks. On the other hand, you could identify what your users do regularly. Use your analytics tools to find the most frequent user journeys.
@@ -83,8 +81,8 @@ Next, you should decide what [types of load tests](/test-types/introduction) to 
 
 - [Smoke test](/test-types/smoke-testing)
 - [Load test](/test-types/load-testing)
-- [Stress  test](/test-types/stress-testing)
-- [Spike  test](/test-types/stress-testing#spike-testing)
+- [Stress test](/test-types/stress-testing)
+- [Spike test](/test-types/stress-testing#spike-testing)
 - [Soak test](/test-types/soak-testing)
 
 ### Calculate the number of concurrent users
@@ -98,35 +96,32 @@ You could define your load tests based on the observation of your normal and pea
 
 Refer to [Determining Concurrent Users in Your Load Tests](https://k6.io/blog/monthly-visits-concurrent-users) to learn how to calculate the formula using Google Analytics.
 
-
 ### Load test your website in pre-production.
 
 We recommend to <a href="https://k6.io/our-beliefs#load-test-in-a-pre-production-environment">Load test in a pre-production environment</a> that mimics the production environment as closely as possible.
 
 Testing regularly in a pre-production environment allows assessing the performance of your website over time and catch performance regressions before they reach production.
 
-Load testing a website in pre-production allows breaking your systems without worrying about the interruption of your service.  Load testing in production is risky, but if your processes and team are mature, you could run your load tests in production as part of your [chaos experiments](https://principlesofchaos.org/). Sometimes it is the best way to get a picture of the real world.
-
+Load testing a website in pre-production allows breaking your systems without worrying about the interruption of your service. Load testing in production is risky, but if your processes and team are mature, you could run your load tests in production as part of your [chaos experiments](https://principlesofchaos.org/). Sometimes it is the best way to get a picture of the real world.
 
 ### Start recording your user journey
 
-Load tests should mimic user journeys as closely as possible.  These user journeys, aka user scenarios, generally involve complex actions in a logical flow (dozens or hundreds of requests).
+Load tests should mimic user journeys as closely as possible. These user journeys, aka user scenarios, generally involve complex actions in a logical flow (dozens or hundreds of requests).
 
 The process of creating this type of load test could be tedious. But the recording of a user session could facilitate the job of starting the test creation for you.
 
 Check out the [Session Recording guide](/using-k6/session-recording-har-support) to learn more about how to auto-generate your load test from a user session.
-
 
 ### Do not include third-party requests
 
 You may have various external requests happening for a normal visitor on your site — for example, Analytics tools, Social Networks, Widgets, etc.
 
 While these requests do impact the user experience on the frontend, they have no impact on the performance of your system on your backend. We highly recommend removing all third party requests from your test script for the following reasons:
+
 - Third-party requests have no impact on your backend performance.
 - Third parties may throttle requests, skewing your results.
 - Third parties add a lot of noise to your test result data which makes understanding results harder.
 - It may be against the TOS with the third party to run a test against their system.
-
 
 ### Do not include your CDN assets
 
@@ -143,15 +138,15 @@ For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) an
 <div class="code-group" data-props='{"labels": ["Parsing HTML content"]}'>
 
 ```js
-import {parseHTML} from "k6/html";
-import http from "k6/http";
+import { parseHTML } from 'k6/html';
+import http from 'k6/http';
 
-export default function() {
-  const res = http.get("https://k6.io");
-  const doc = parseHTML(res.body);  // equivalent to res.html()
+export default function () {
+  const res = http.get('https://k6.io');
+  const doc = parseHTML(res.body); // equivalent to res.html()
   const pageTitle = doc.find('head title').text();
   const langAttr = doc.find('html').attr('lang');
-};
+}
 ```
 
 </div>
@@ -167,18 +162,15 @@ By default, the standard metrics of a load testing tool -- for example, the resp
 
 Different types of resources could behave very differently and could make <b>meaningless the value of the aggregated metrics</b>.
 
-
 If you might want to filter your metrics based on different types of requests, consider using the [tagging feature](/using-k6/tags-and-groups#tags).
-
 
 <div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
-http.get("http://myweb.com/images/logo.png", { tags: { assets: "image" } });
+http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 ```
 
 </div>
-
 
 ### Group the different webpages
 
@@ -188,17 +180,15 @@ When a load test simulates a user scenario visiting multiple pages, it is a good
 <div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
-group("visit homepage", function() {
+group('visit homepage', function () {
   // load homepage resources
 });
-group("login page", function() {
+group('login page', function () {
   // load login page and perform login
 });
 ```
 
 </div>
-
-
 
 ## See also
 
@@ -209,19 +199,4 @@ group("login page", function() {
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
 - Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "When to load test a website?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p>
-<p>If you have a very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.</p>
-<p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"
-    }
-  }]
-}
-</script>
+<LdScript script='{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "When to load test a website?", "acceptedAnswer": { "@type": "Answer", "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p><p>If you have a very low number of users, backend performance won&apos;t likely be an issue. Spend your time optimizing the frontend.</p><p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"}}]}' />

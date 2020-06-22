@@ -1,6 +1,6 @@
 ---
-title: "Checks Tab"
-excerpt: "The Checks tab allow you to visualize performance of your checks in your k6 test"
+title: 'Checks Tab'
+excerpt: 'The Checks tab allow you to visualize performance of your checks in your k6 test'
 ---
 
 ## Cloud Results: Checks
@@ -14,10 +14,9 @@ As you further examine this tab, you are able to:
 - Expand a `Check` to view it's graph. We can see how many failures occur at different points in the test.
 - Add the chart to the `Analysis Tab` for further correlation with other data
 
-![Checks Tab](images/04 Checks Tab/checks-tab.png)
+![Checks Tab](/images/04%Checks%Tab/checks-tab.png)
 
 Next, [HTTP Tab](/cloud/analyzing-results/http-tab)
-
 
 ## See Also
 

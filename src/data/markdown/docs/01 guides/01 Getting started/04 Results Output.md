@@ -7,7 +7,7 @@ By default, the `k6 run` command prints runtime information and general results 
 
 ## Standard output
 
-![k6 results - console/stdout output](images/k6-results-stdout.png)
+![k6 results - console/stdout output](/images/k6-results-stdout.png)
 
 When k6 displays the results to `stdout`, it will show the k6 logo and the following test information:
 
@@ -46,7 +46,6 @@ The test summary provides a general overview of your test result. The summary pr
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
 
-
 <div class="code-group" data-props='{"labels": []}'>
 
 ```shell
@@ -84,7 +83,6 @@ http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s   
 
 You could use the [summary-trend-stats](/using-k6/options#summary-trend-stats) option to change the stats reported for Trend metrics.
 
-
 <div class="code-group" data-props='{"labels": []}'>
 
 ```shell
@@ -93,24 +91,20 @@ $ k6 run --summary-trend-stats="avg,p(99)" script.js
 
 </div>
 
-
-
 ## Output plugins
 
 k6 can send more granular result data to different outputs to integrate and visualize k6 metrics on other platforms.
 
 The list of output plugins are:
 
-| Plugin | Usage |
-|-|-|
-| [Apache Kafka](/results-visualization/apache-kafka)  | `k6 run --out kafka` |
-| [Cloud](/results-visualization/cloud)  | `k6 run --out cloud`  |
-| [Datadog](/results-visualization/datadog) | `k6 run --out datadog` |
+| Plugin                                                | Usage                   |
+| ----------------------------------------------------- | ----------------------- |
+| [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`    |
+| [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`    |
+| [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`  |
 | [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb` |
-| [JSON](/results-visualization/json)  | `k6 run --out json` |
-| [StatsD](/results-visualization/statsd)  | `k6 run --out statsd` |
-
-
+| [JSON](/results-visualization/json)                   | `k6 run --out json`     |
+| [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`   |
 
 ## Multiple outputs
 

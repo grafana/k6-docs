@@ -10,22 +10,15 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
   const PRODUCTION = stage !== 'develop';
   const isSSR = stage.includes('html');
 
-  const rules = existingConfig.module.rules
-    // .filter(
-    //   rule =>
-    //     // Remove default url loader for fonts
-    //     String(rule.test) !== String(/\.(eot|otf|ttf|woff(2)?)(\?.*)?$/),
-    // )
-    .map((rule) => {
-      if (
-        String(rule.test) ===
-        String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
-      ) {
-        return { ...rule, test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/ };
-      }
+  const rules = existingConfig.module.rules.map((rule) => {
+    if (
+      String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
+    ) {
+      return { ...rule, test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/ };
+    }
 
-      return rule;
-    });
+    return rule;
+  });
 
   replaceWebpackConfig({
     ...existingConfig,
@@ -143,7 +136,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
   });
 };
 
-async function createDocPages({ graphql, actions, pathPrefix }) {
+async function createDocPages({ graphql, actions }) {
   /*
    * custom path processing rules
    */
@@ -169,15 +162,15 @@ async function createDocPages({ graphql, actions, pathPrefix }) {
   const { data } = await graphql(`
     query docPagesQuery {
       allFile(
-        filter: { ext: { eq: ".md" }, relativeDirectory: { regex: "/docs/" } }
+        filter: { ext: { in: [".md"] }, relativeDirectory: { regex: "/docs/" } }
         sort: { fields: absolutePath, order: ASC }
       ) {
         nodes {
           name
           relativeDirectory
           children {
-            ... on MarkdownRemark {
-              html
+            ... on Mdx {
+              body
               frontmatter {
                 title
                 head_title
@@ -195,36 +188,41 @@ async function createDocPages({ graphql, actions, pathPrefix }) {
 
   // Build a tree for a sidebar
   const sidebarTreeBuilder = utils.buildFileTree(utils.buildFileTreeNode);
-  data.allFile.nodes.forEach((file) => {
-    const { name, relativeDirectory, children } = file;
-    const {
-      frontmatter: { title, redirect, hideFromSidebar, draft },
-    } = children[0];
-    // skip altogether if this content has draft flag
-    // OR hideFromSidebar
-    if ((draft === 'true' && isProduction) || hideFromSidebar) return;
-    const path = utils.slugify(
-      `/${utils.stripDirectoryPath(relativeDirectory, 'docs')}/${title.replace(
-        /\//g,
-        '-',
-      )}`,
-    );
-    // titles like k6/html treated like paths otherwise
-    sidebarTreeBuilder.addNode(
-      utils.unorderify(utils.stripDirectoryPath(relativeDirectory, 'docs')),
-      utils.unorderify(name),
-      {
-        path: utils.compose(
-          noTrailingSlash,
-          dedupeExamples,
-          removeGuidesAndRedirectWelcome,
-          utils.unorderify,
-        )(path),
-        title,
-        redirect,
-      },
-    );
-  });
+  data.allFile.nodes.forEach(
+    ({ name, relativeDirectory, children, children: [remarkNode] }) => {
+      // for debuggin purpose in case there is errors in md/html syntax
+      if (typeof children === 'undefined' || typeof remarkNode === 'undefined')
+        return;
+
+      const {
+        frontmatter: { title, redirect, hideFromSidebar, draft },
+      } = remarkNode;
+      // skip altogether if this content has draft flag
+      // OR hideFromSidebar
+      if ((draft === 'true' && isProduction) || hideFromSidebar) return;
+      const path = utils.slugify(
+        `/${utils.stripDirectoryPath(
+          relativeDirectory,
+          'docs',
+        )}/${title.replace(/\//g, '-')}`,
+      );
+      // titles like k6/html treated like paths otherwise
+      sidebarTreeBuilder.addNode(
+        utils.unorderify(utils.stripDirectoryPath(relativeDirectory, 'docs')),
+        utils.unorderify(name),
+        {
+          path: utils.compose(
+            noTrailingSlash,
+            dedupeExamples,
+            removeGuidesAndRedirectWelcome,
+            utils.unorderify,
+          )(path),
+          title,
+          redirect,
+        },
+      );
+    },
+  );
 
   // tree representation of a data/markdown/docs folder
   const sidebar = sidebarTreeBuilder.getTree();
@@ -241,54 +239,72 @@ async function createDocPages({ graphql, actions, pathPrefix }) {
     }))
     .filter(Boolean);
   // creating actual docs pages
-  data.allFile.nodes.forEach((file) => {
-    const { relativeDirectory, children, name } = file;
-    const strippedDirectory = utils.stripDirectoryPath(
-      relativeDirectory,
-      'docs',
-    );
-    const remarkNode = children[0];
-    const { title, redirect, draft } = remarkNode.frontmatter;
-    // if there is value in redirect field, skip page creation
-    // OR there is draft flag and mode is prod
-    if ((draft === 'true' && isProduction) || redirect) return;
-    const path = utils.slugify(
-      `${strippedDirectory}/${title.replace(/\//g, '-')}`,
-    );
-    const breadcrumbs = utils.compose(
-      utils.buildBreadcrumbs,
-      removeGuides,
-      utils.unorderify,
-    )(path);
-    // injecting the slug, replacing guides with nothing cuz its real path is /doc
-    remarkNode.frontmatter.slug = utils.compose(
-      noTrailingSlash,
-      dedupeExamples,
-      removeGuides,
-      utils.unorderify,
-    )(path);
+  data.allFile.nodes.forEach(
+    ({ relativeDirectory, children, children: [remarkNode], name }) => {
+      const strippedDirectory = utils.stripDirectoryPath(
+        relativeDirectory,
+        'docs',
+      );
+      // for debuggin purpose in case there is errors in md/html syntax
+      if (typeof remarkNode === 'undefined') {
+        console.log('remarkNode is', remarkNode);
+        console.log('children is', children);
+        console.log(
+          '\nmarkup is broken! check the following file: \n\n',
+          `${relativeDirectory}/${name}`,
+        );
+        return;
+      }
+      const { title, redirect, draft } = remarkNode.frontmatter;
+      // if there is value in redirect field, skip page creation
+      // OR there is draft flag and mode is prod
+      if ((draft === 'true' && isProduction) || redirect) return;
+      const path = utils.slugify(
+        `${strippedDirectory}/${title.replace(/\//g, '-')}`,
+      );
+      const breadcrumbs = utils.compose(
+        utils.buildBreadcrumbs,
+        removeGuides,
+        utils.unorderify,
+      )(path);
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...remarkNode.frontmatter,
+          slug: utils.compose(
+            noTrailingSlash,
+            dedupeExamples,
+            removeGuides,
+            utils.unorderify,
+          )(path),
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          ),
+        },
+      };
 
-    // injection of a link to an article in git repo
-    remarkNode.frontmatter.fileOrigin = encodeURI(
-      `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
-    );
-
-    actions.createPage({
-      path: utils.compose(dedupeExamples, removeGuides, utils.unorderify)(path),
-      component: Path.resolve('./src/templates/doc-page.js'),
-      context: {
-        remarkNode,
-        // dynamically evalute which part of the sidebar tree are going to be used
-        sidebarTree: utils.compose(
-          getSidebar,
-          utils.getDocSection,
+      actions.createPage({
+        path: utils.compose(
+          dedupeExamples,
+          removeGuides,
           utils.unorderify,
-        )(strippedDirectory),
-        breadcrumbs,
-        navLinks: docPageNavLinks,
-      },
-    });
-  });
+        )(path),
+        component: Path.resolve('./src/templates/doc-page.js'),
+        context: {
+          remarkNode: extendedRemarkNode,
+          // dynamically evalute which part of the sidebar tree are going to be used
+          sidebarTree: utils.compose(
+            getSidebar,
+            utils.getDocSection,
+            utils.unorderify,
+          )(strippedDirectory),
+          breadcrumbs,
+          navLinks: docPageNavLinks,
+        },
+      });
+    },
+  );
 
   // generating pages currently presented in templates/docs/ folder
   [...docPageNav].forEach((item) => {
@@ -335,7 +351,7 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
   createRedirect({
     fromPath: `${pathPrefix}/getting-started/welcome`,
-    toPath: pathPrefix ? pathPrefix : `/`,
+    toPath: pathPrefix || `/`,
     redirectInBrowser: true,
     isPermanent: true,
   });
@@ -345,13 +361,16 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
+    fromPath:
+      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
     toPath: '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
-    toPath: '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
+    fromPath:
+      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
+    toPath:
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
     isPermanent: true,
   });
   createRedirect({
@@ -370,7 +389,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
+    fromPath:
+      '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
     toPath: '/javascript-api/k6-http/response/response-clicklink-params',
     isPermanent: true,
   });
@@ -385,7 +405,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-http/response-k6-http/response-submitform-params',
+    fromPath:
+      '/javascript-api/k6-http/response-k6-http/response-submitform-params',
     toPath: '/javascript-api/k6-http/response/response-submitform-params',
     isPermanent: true,
   });
@@ -395,7 +416,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
+    fromPath:
+      '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
     toPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
     isPermanent: true,
   });
@@ -405,7 +427,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
+    fromPath:
+      '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
     toPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags',
     isPermanent: true,
   });
@@ -425,7 +448,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
+    fromPath:
+      '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
     toPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags',
     isPermanent: true,
   });
@@ -441,7 +465,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
   createRedirect({
     fromPath: '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp',
-    toPath: '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp',
+    toPath:
+      '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp',
     isPermanent: true,
   });
   createRedirect({
@@ -572,7 +597,6 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/javascript-api/k6-html',
     isPermanent: true,
   });
-
 };
 
 exports.createPages = async (options) => {
@@ -580,7 +604,7 @@ exports.createPages = async (options) => {
   await createRedirects(options);
 };
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
   // Adding default values for some fields and moving them under node.fields
   // because that how createNodeField works

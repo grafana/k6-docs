@@ -1,6 +1,6 @@
 ---
-title: "Test Builder"
-excerpt: "Details on using the k6 Request Builder to generate test scripts and take the guess work out of scripting"
+title: 'Test Builder'
+excerpt: 'Details on using the k6 Request Builder to generate test scripts and take the guess work out of scripting'
 ---
 
 ## Background
@@ -29,8 +29,7 @@ To input a HAR file, simply click on `IMPORT HAR` on the right, and select your 
 We will automatically populate the Test Builder with your requests, including any `Headers` sent.
 You are able to modify/delete various parts of the requests to meet your requirements.
 
-![Test Builder Configuration](images/01 Test Builder/test-builder-config.png)
-
+![Test Builder Configuration](images/01%TestBuilder/test-builder-config.png)
 
 ## Test Builder Requests
 
@@ -42,7 +41,6 @@ You can also duplicate or delete requests when hovering over a specific request.
 To add a new request, click `ADD REQUEST`. Your test will execute in the order of these requests.
 
 To modify requests, move over to the right side of the `REQUESTS` section. You are able to:
-
 
 - Give your request a name to better describe it.
 - Change the `HTTP METHOD` by using the drop down prepopulated with `GET`.
@@ -58,11 +56,11 @@ To modify requests, move over to the right side of the `REQUESTS` section. You a
 > We also include some examples of common actions. This is accessible by using the
 > `Test builder examples` drop down in the title bar of the section. Use these for
 > inspiration and guidance as you use the test builder.
-><br>
+> <br/>
 >
 > **NOTE:** Choosing one of the examples will replace the current requests in the Test Builder.
 
-![Test Builder Requests](images/01 Test Builder/test-builder-requests.png)
+![Test Builder Requests](images/01%Test%Builder/test-builder-requests.png)
 
 ## Test Builder Script
 

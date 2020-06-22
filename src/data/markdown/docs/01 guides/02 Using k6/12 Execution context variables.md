@@ -1,6 +1,6 @@
 ---
-title: "Execution context variables"
-excerpt: ""
+title: 'Execution context variables'
+excerpt: ''
 ---
 
 [The "Running k6" tutorial](/getting-started/running-k6) describes how k6 runs a test script for a specified
@@ -29,15 +29,17 @@ $ k6 run --vus 10 --iterations 100 script.js
 
 </div>
 
-## __VU and __ITER
+## \_\_VU and \_\_ITER
 
 There are a couple of global variables with execution context information that k6 makes available
-to the load script, namely **__VU** and **__ITER**.
+to the load script, namely **\_\_VU** and **\_\_ITER**.
 
-### __ITER
+### \_\_ITER
+
 A numeric counter with the current iteration number for a specific VU. Zero-based.
 
-### __VU
+### \_\_VU
+
 Current VU number. The value is assigned incrementally for each new VU instance. One-based.
 However, VU number is 0 while executing the setup and teardown functions.
 
@@ -47,7 +49,6 @@ However, VU number is 0 while executing the setup and teardown functions.
 > [environment variables](/using-k6/environment-variables) that will tell you on which server, load zone
 > and distribution of the test you are currently executing. You can read more about them
 > [here](/using-k6/environment-variables)
-
 
 ## k6 Test Coordinator
 
@@ -61,14 +62,14 @@ after the completion of the iteration.
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
 ```js
-import http from "k6/http";
-import { sleep } from "k6";
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-export default function() {
-  http.get("http://test.k6.io");
+export default function () {
+  http.get('http://test.k6.io');
   console.log(`VU: ${__VU}  -  ITER: ${__ITER}`);
   sleep(1);
-};
+}
 ```
 
 </div>
@@ -80,19 +81,19 @@ performing a login flow.
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
 ```js
-import http from "k6/http";
-import { sleep } from "k6";
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-export default function() {
+export default function () {
   const email = `user+${__VU}@mail.com`;
-  const payload = JSON.stringify({ email: email, password: "test" });
-  const params =  { headers: { "Content-Type": "application/json" } }
-  http.post("http://test.k6.io/login", payload, params);
+  const payload = JSON.stringify({ email: email, password: 'test' });
+  const params = { headers: { 'Content-Type': 'application/json' } };
+  http.post('http://test.k6.io/login', payload, params);
   console.log(email);
   // .. continue the user flow
-  
+
   sleep(1);
-};
+}
 ```
 
 </div>

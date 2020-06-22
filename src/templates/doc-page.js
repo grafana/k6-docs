@@ -5,17 +5,18 @@ import styles from 'components/templates/doc-page/doc-page.module.scss';
 import { styles as codeStyles } from 'components/shared/code';
 import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
+import { useScrollToAnchor } from 'hooks';
 
 export default function (props) {
   const {
     pageContext: {
-      remarkNode: { html, frontmatter },
+      remarkNode: { body, frontmatter },
       sidebarTree,
       navLinks,
       breadcrumbs,
     },
-    location,
   } = props;
+  useScrollToAnchor();
 
   const pageMetadata = {
     data: {
@@ -36,11 +37,7 @@ export default function (props) {
           title={frontmatter.title}
           articleSrc={frontmatter.fileOrigin}
         />
-        <DocPageContent
-          currentPath={location.pathname}
-          label={codeStyles.codeContainer}
-          html={html}
-        />
+        <DocPageContent label={codeStyles.codeContainer} content={body} />
       </div>
     </DocLayout>
   );

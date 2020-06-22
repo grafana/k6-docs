@@ -9,8 +9,8 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                                       | Description                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------- |
+| Method                                                                            | Description                      |
+| --------------------------------------------------------------------------------- | -------------------------------- |
 | [Trend.add(value, [tags])](/javascript-api/k6-metrics/trend/trend-add-value-tags) | Add a value to the trend metric. |
 
 ## Trend usage in Thresholds
@@ -40,7 +40,6 @@ The unit of these variables and functions are all in milliseconds.
 > values represent outliers. Use percentiles instead.
 
 </div>
-
 
 ### Examples
 
@@ -85,3 +84,5 @@ export default function () {
   sleep(1);
 }
 ```
+
+</div>

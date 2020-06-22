@@ -23,12 +23,12 @@ allowing you the BDD-style of testing.
 ```js
 import { group } from 'k6';
 
-export default function() {
-  group('user flow: returning user', function() {
-    group('visit homepage', function() {
+export default function () {
+  group('user flow: returning user', function () {
+    group('visit homepage', function () {
       // load homepage resources
     });
-    group('login', function() {
+    group('login', function () {
       // perform login
     });
   });
@@ -56,30 +56,30 @@ k6 provides two types of tags:
 
 Currently, k6 automatically creates the following tags by default:
 
-| Tag           | Description                                                                                                                                                                      |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `proto`       | the used protocol name (e.g. `HTTP/1.1`)                                                                                                                                         |
-| `subproto`    | the subprotocol name (used by websockets)                                                                                                                                        |
-| `status`      | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                                   |
-| `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.)                                                                                                                                  |
-| `url`         | the HTTP request URL                                                                                                                                                             |
-| `name`        | the HTTP [request name](/using-k6/http-requests#url-grouping)                                                                                                                    |
-| `group`       | the full [group](#groups) path                                                                                                                                                   |
-| `check`       | the [Check](/using-k6/checks) name                                                                                                                                              |
-| `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                               |
+| Tag           | Description                                                                                                                                                                       |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `proto`       | the used protocol name (e.g. `HTTP/1.1`)                                                                                                                                          |
+| `subproto`    | the subprotocol name (used by websockets)                                                                                                                                         |
+| `status`      | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                                    |
+| `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.)                                                                                                                                   |
+| `url`         | the HTTP request URL                                                                                                                                                              |
+| `name`        | the HTTP [request name](/using-k6/http-requests#url-grouping)                                                                                                                     |
+| `group`       | the full [group](#groups) path                                                                                                                                                    |
+| `check`       | the [Check](/using-k6/checks) name                                                                                                                                                |
+| `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                                |
 | `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
-| `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                             |
+| `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
 may require that certain tags be present. Also, you can enable some additional system tags, if
 you need them:
 
-| Tag           | Description                                                                                                             |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `vu`          | the ID of the virtual user that executed the request                                                                    |
-| `iter`        | the iteration number                                                                                                    |
-| `ip`          | The IP address of the remote server                                                                                     |
+| Tag           | Description                                                                                                                       |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `vu`          | the ID of the virtual user that executed the request                                                                              |
+| `iter`        | the iteration number                                                                                                              |
+| `ip`          | The IP address of the remote server                                                                                               |
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
 
 ### User-defined tags
@@ -101,7 +101,7 @@ import { check } from 'k6';
 
 let myTrend = new Trend('my_trend');
 
-export default function() {
+export default function () {
   // Add tag to request metric data
   let res = http.get('http://httpbin.org/', {
     tags: {
@@ -112,7 +112,7 @@ export default function() {
   // Add tag to check
   check(
     res,
-    { 'status is 200': r => r.status === 200 },
+    { 'status is 200': (r) => r.status === 200 },
     { my_tag: "I'm a tag" },
   );
 
@@ -188,7 +188,7 @@ When using Groups, [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http
 can be viewed by group, as shown below. You can switch between the group and list layout by changing the "view as"
 selection in the top right.
 
-![Cloud Insights Grouping](/images/02 Using k6/cloud-insights-http-tab.png)
+![Cloud Insights Grouping](/images/cloud-insights-http-tab.png)
 
 Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab)
 as shown below:

@@ -5,7 +5,7 @@ excerpt: 'Guide on inviting Team Members to your k6 account for collaboration'
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> <b>Team Members must specify a projectId</b><br>
+> <b>Team Members must specify a projectId</b><br/>
 > Invited Team members must specify a `projectId` in `options.ext.loadimpact.projectId` of the options object of their test in order to use the subscription of the organization they have been invited to.
 
 </div>
@@ -20,19 +20,19 @@ The Team Member functionality allows you to invite others users to gain access t
 
 To add Team Members, click "Members" under "Organization Settings" in the drop down menu in the top left corner.
 
-![User Drop Down Menu](images/03 Team Members/drop-down-menu.png)
+![User Drop Down Menu](images/03%Team%Members/drop-down-menu.png)
 
 ---
 
 Next, click "Invite New Members"
 
-![Invite Team Members](images/03 Team Members/invite-new-members.png)
+![Invite Team Members](images/03%Team%Members/invite-new-members.png)
 
 ---
 
 Then, within the modal window, enter the email address and select a role for the user. For the Project Member permission role, users can be specifically assigned to projects. Admins are able to see all projects
 
-![Invite Modal](images/03 Team Members/invite-modal.png)
+![Invite Modal](images/03%Team%Members/invite-modal.png)
 
 ---
 
