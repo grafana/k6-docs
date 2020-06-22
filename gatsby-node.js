@@ -10,22 +10,15 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
   const PRODUCTION = stage !== 'develop';
   const isSSR = stage.includes('html');
 
-  const rules = existingConfig.module.rules
-    // .filter(
-    //   rule =>
-    //     // Remove default url loader for fonts
-    //     String(rule.test) !== String(/\.(eot|otf|ttf|woff(2)?)(\?.*)?$/),
-    // )
-    .map((rule) => {
-      if (
-        String(rule.test) ===
-        String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
-      ) {
-        return { ...rule, test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/ };
-      }
+  const rules = existingConfig.module.rules.map((rule) => {
+    if (
+      String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp)(\?.*)?$/)
+    ) {
+      return { ...rule, test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/ };
+    }
 
-      return rule;
-    });
+    return rule;
+  });
 
   replaceWebpackConfig({
     ...existingConfig,

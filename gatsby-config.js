@@ -85,15 +85,9 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-plugin-prefetch-google-fonts',
+    resolve: 'gatsby-plugin-google-fonts',
     options: {
-      fonts: [
-        {
-          family: 'Roboto Mono',
-          subsets: ['latin'],
-          variants: ['300', '400'],
-        },
-      ],
+      fonts: ['roboto mono:300,400'],
     },
   },
   {
