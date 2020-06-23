@@ -91,6 +91,42 @@ const plugins = [
     },
   },
   {
+    resolve: 'gatsby-plugin-svgr-svgo',
+    options: {
+      inlineSvgOptions: [
+        {
+          test: /\.inline.svg$/,
+          svgoConfig: {
+            plugins: [
+              {
+                removeViewBox: false,
+              },
+            ],
+          },
+        },
+      ],
+      urlSvgOptions: [
+        {
+          test: /\.svg$/,
+          svgoConfig: {
+            plugins: [
+              {
+                removeViewBox: false,
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
+  {
+    resolve: 'gatsby-plugin-sass',
+    options: {
+      includePaths: ['src/styles/styles.scss'],
+      data: '@import "./src/styles/styles.scss";',
+    },
+  },
+  {
     resolve: 'gatsby-plugin-sitemap',
     options: {
       query: `
