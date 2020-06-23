@@ -127,9 +127,7 @@ async function createDocPages({ graphql, actions }) {
       // if there is value in redirect field, skip page creation
       // OR there is draft flag and mode is prod
       if ((draft === 'true' && isProduction) || redirect) return;
-      const path = utils.slugify(
-        `${strippedDirectory}/${title.replace(/\//g, '-')}`,
-      );
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
       const breadcrumbs = utils.compose(
         utils.buildBreadcrumbs,
         removeGuides,
@@ -144,6 +142,7 @@ async function createDocPages({ graphql, actions }) {
             dedupeExamples,
             removeGuides,
             utils.unorderify,
+            utils.slugify,
           )(path),
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
@@ -157,6 +156,7 @@ async function createDocPages({ graphql, actions }) {
           dedupeExamples,
           removeGuides,
           utils.unorderify,
+          utils.slugify,
         )(path),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
@@ -194,13 +194,14 @@ async function createDocPages({ graphql, actions }) {
     .filter((s) => s !== 'javascript api')
     .forEach((section) => {
       utils.childrenToList(getSidebar(section).children).forEach(({ name }) => {
-        const path = utils.compose(
-          removeGuides,
-          utils.slugify,
-        )(`${section}/${name}`);
+        const path = `${section}/${name}`;
         const breadcrumbs = utils.buildBreadcrumbs(path);
         actions.createPage({
-          path: noTrailingSlash(path),
+          path: utils.compose(
+            noTrailingSlash,
+            removeGuides,
+            utils.slugify,
+          )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
             sidebarTree: getSidebar(section),
