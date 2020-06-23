@@ -84,9 +84,7 @@ const flatten = (arr) =>
       .split('/')
       .slice(0, -1)
       .join('/');
-    const path = utils.slugify(
-      `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`,
-    );
+    const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
     console.log('processing file #', i, title);
     return rearrange(rawToText(rawBody)).map((piece, i) => ({
       title,
@@ -96,6 +94,7 @@ const flatten = (arr) =>
         dedupeExamples,
         removeGuidesAndRedirectWelcome,
         utils.unorderify,
+        utils.slugify,
       )(path),
       content: piece,
     }));

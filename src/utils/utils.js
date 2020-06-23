@@ -28,17 +28,14 @@ const slugify = (path) =>
 // buildBreadcrumbs(path: String) -> Array<Object>
 const buildBreadcrumbs = (path) => {
   let accumulatedPath = '';
-  return path
-    .replace(/examples\/examples/, 'examples')
-    .split('/')
-    .map((part) => {
-      accumulatedPath += `/${part}`;
-      const slug = utils.slugify(accumulatedPath);
-      return {
-        name: part,
-        path: slug,
-      };
-    });
+  return path.split('/').map((part) => {
+    accumulatedPath += `/${part}`;
+    const slug = utils.slugify(accumulatedPath);
+    return {
+      name: part.slice(0, 1).toUpperCase() + part.slice(1),
+      path: slug,
+    };
+  });
 };
 
 // builds a single file tree node

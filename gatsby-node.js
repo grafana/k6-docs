@@ -10,18 +10,18 @@ async function createDocPages({ graphql, actions }) {
    */
 
   // guides category is the root: / or /docs in prod, so we removing that part
-  const removeGuides = (path) => path.replace(/guides\//, '');
+  const removeGuides = (path) => path.replace(/guides\//i, '');
 
   // examples page contains `examples` folder which causing path
   // duplication, removing it as well
   const dedupeExamples = (path) =>
-    path.replace(/examples\/examples/, 'examples');
+    path.replace(/examples\/examples/i, 'examples');
 
   // no /guides route; welcome is redirecting to the root path
   // difference from removeGuides: this one is for sidebar links processing and
   // the former is for creatingPages
   const removeGuidesAndRedirectWelcome = (path) =>
-    path.replace(/guides\/(getting-started\/welcome)?/, '');
+    path.replace(/guides\/(getting-started\/welcome)?/i, '');
 
   // ensures that no trailing slash is left
   const noTrailingSlash = (path) =>
@@ -130,6 +130,7 @@ async function createDocPages({ graphql, actions }) {
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
       const breadcrumbs = utils.compose(
         utils.buildBreadcrumbs,
+        dedupeExamples,
         removeGuides,
         utils.unorderify,
       )(path);
@@ -195,10 +196,15 @@ async function createDocPages({ graphql, actions }) {
     .forEach((section) => {
       utils.childrenToList(getSidebar(section).children).forEach(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = utils.buildBreadcrumbs(path);
+        const breadcrumbs = utils.compose(
+          utils.buildBreadcrumbs,
+          dedupeExamples,
+          removeGuides,
+        )(path);
         actions.createPage({
           path: utils.compose(
             noTrailingSlash,
+            dedupeExamples,
             removeGuides,
             utils.slugify,
           )(path),
