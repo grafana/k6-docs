@@ -21,7 +21,7 @@ export const UseCases = () => {
           </Heading>
           <p>
             k6 is optimized for minimal consumption of system resources. It’s a
-            high-performance tool designed for running tests with high load (<Link className={'link'} to="/test-types/spike-testing">spike</Link>, <Link className={'link'} to="/test-types/stress-testing">stress</Link>,
+            high-performance tool designed for running tests with high load (<Link className={'link'} to="/test-types/stress-testing#spike-testing-in-k6">spike</Link>, <Link className={'link'} to="/test-types/stress-testing">stress</Link>,
             {' '}<Link className={'link'} to="/test-types/soak-testing">soak tests</Link>) in pre-production and QA environments.
           </p>
         </li>

@@ -96,7 +96,7 @@ You should execute soak tests after your standard load tests are successful, and
 
 Soak testing is the last major step on the road to building reliable systems.
 
-<LsScript script='{
+<LdScript script='{
 "@context": "https://schema.org",
 "@type": "FAQPage",
 "mainEntity": [{
