@@ -192,6 +192,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               <TableOfContents
                 style={style}
                 contentContainerRef={contentContainerRef}
+                shouldMakeReplacement
               />
             )}
           </Sticky>

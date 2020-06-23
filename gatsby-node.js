@@ -113,7 +113,7 @@ async function createDocPages({ graphql, actions }) {
         relativeDirectory,
         'docs',
       );
-      // for debuggin purpose in case there is errors in md/html syntax
+      // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         console.log('remarkNode is', remarkNode);
         console.log('children is', children);

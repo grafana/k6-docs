@@ -143,7 +143,7 @@ const settings = {
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'stag_k6_docs';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
 
 const queries = [
   {
