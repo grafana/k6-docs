@@ -52,7 +52,10 @@ jobs:
             echo "export ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY_STAG}" >> $BASH_ENV
       - run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
       - run: sudo pip install awscli
-      - run: npm run build:gatsby
+      - run:
+          name: build:gatsby
+          command: GATSBY_CPU_COUNT=1 npm run build:gatsby
+          no_output_timeout: 15m
       - run: npm run deploy
             
 
@@ -81,7 +84,10 @@ jobs:
             echo "export ALGOLIA_ADMIN_KEY=${ALGOLIA_ADMIN_KEY_PROD}" >> $BASH_ENV
       - run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
       - run: sudo pip install awscli
-      - run: npm run build:gatsby
+      - run:
+          name: build:gatsby
+          command: GATSBY_CPU_COUNT=1 npm run build:gatsby
+          no_output_timeout: 15m
       - run: npm run deploy
 
 
