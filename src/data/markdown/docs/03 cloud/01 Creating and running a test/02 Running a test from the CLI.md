@@ -236,6 +236,58 @@ When running in the k6 Cloud there will be three additional environment variable
 
 You can read the values of these variables in your k6 script as usual.
 
+**Examples**
+
+*Per load zone checks*:
+
+<div class="code-group" data-props='{"labels": ["script.js"]}'>
+
+```javascript
+import http from "k6/http";
+import { sleep, check } from "k6";
+
+export let options = {
+    stages: [
+        { target: 10, duration: "30s" },
+        { target: 10, duration: "30s" },
+        { target: 0, duration: "30s" }
+    ],
+    thresholds: {
+        "checks{load_zone:amazon:us:ashburn}": ["rate > 0.9"]
+    },
+    ext: {
+        loadimpact: {
+            projectID: YOUR_PROJECT_ID,
+            name: "Per load zone checks",
+            distribution: {
+                // The keys in the distribution config are injected as global var LI_DISTRIBUTION.
+                // See: https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#environment-variables
+                ashburnScenerio: { loadZone: "amazon:us:ashburn", percent: 50 },
+                dublinScenerio: { loadZone: "amazon:ie:dublin", percent: 50 }
+            }
+        }
+    }
+};
+
+export default function() {
+    let res = http.get("https://test.k6.io/");
+
+    if (__ENV.LI_DISTRIBUTION == "ashburnScenerio") {
+        let checkRes = check(res, {
+            "[ashburn] status is 200": (r) => r.status === 200
+        });
+    } else if (__ENV.LI_DISTRIBUTION == "dublinScenerio") {
+        let checkRes = check(res, {
+            "[dublin] status is 20": (r) => r.status === 200
+        });
+    }
+
+    sleep(1);
+};
+```
+
+</div>
+
 ## Differences between local and cloud execution
 
 ### Iterations
