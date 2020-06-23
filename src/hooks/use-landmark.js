@@ -9,11 +9,11 @@ const useLandmark = ({ containerRef, markSelector }) => {
       const allMarks = containerRef.current.querySelectorAll(markSelector);
 
       setLinks(
-        Array.from(allMarks).map(({ id, innerHTML }) => ({
-          title: innerHTML,
+        Array.from(allMarks).map(({ id, innerText }) => ({
+          title: innerText,
           anchor:
             id ||
-            `#${slugify(innerHTML)
+            `#${slugify(innerText)
               .replace(/\//g, '-')
               .replace(/^\d+/g, '')
               .replace(/^-*/g, '')

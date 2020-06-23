@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
+const textOnlySelectors = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+
 const useElementsReplacement = (
   { containerRef, components = {}, shouldMakeReplacement = true },
   deps = [],
@@ -18,7 +20,9 @@ const useElementsReplacement = (
         const container = containerRef.current;
         container.querySelectorAll(selector).forEach((element) => {
           let { props: componentProps = {} } = element.dataset;
-          const content = element.innerHTML;
+          const content = textOnlySelectors.includes(selector)
+            ? element.innerText
+            : element.innerHTML;
           try {
             componentProps = JSON.parse(componentProps);
           } catch (e) {

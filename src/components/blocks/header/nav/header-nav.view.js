@@ -43,8 +43,10 @@ const Single = ({ to, label, sections }) => {
   let Component = null;
   if (to === '/') {
     const guidesPartiallyActive =
-      typeof window !== undefined &&
-      !sections.some((section) => window.location.pathname.startsWith(section));
+      typeof window !== 'undefined' &&
+      !sections.some((sectionUrl) =>
+        window.location.pathname.startsWith(sectionUrl),
+      );
     Component = (
       <Link
         className={styles.link}
@@ -80,14 +82,11 @@ const Single = ({ to, label, sections }) => {
 
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
-  const prefixedLinks = links.map((item) => ({
-    ...item,
-    to: withPrefix(item.to),
-  }));
+
   return (
     <nav>
       <ul className={styles.list}>
-        {prefixedLinks.map(({ label, to, submenu }) => (
+        {links.map(({ label, to, submenu }) => (
           <li
             className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
             key={label + to}
@@ -98,9 +97,9 @@ export const HeaderNav = ({ links }) => {
               <Single
                 label={label}
                 to={to}
-                sections={prefixedLinks
-                  .map((item) => item.to)
-                  .filter((path) => path !== '/')}
+                sections={links
+                  .filter((item) => item.to !== '/')
+                  .map((item) => withPrefix(item.to))}
               />
             )}
           </li>
