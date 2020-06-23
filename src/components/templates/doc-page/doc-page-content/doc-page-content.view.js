@@ -14,6 +14,7 @@ const components = {
   '.code-group': CodeGroup,
   '.gatsby-highlight': CodeGroup,
   h2: HeadingLandmark,
+  h3: HeadingLandmark,
   table: TableWrapper,
   blockquote: Blockquote,
   '.doc-blockquote': Blockquote,

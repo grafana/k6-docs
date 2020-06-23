@@ -28,12 +28,14 @@ const useElementsReplacement = (
           } catch (e) {
             void e;
           }
+          const tag = element.tagName.toLowerCase();
           // Render with container replacement.
           const temp = document.createElement('div');
           ReactDOM.render(
             <Component
               mdBlockContent={content}
               {...componentProps}
+              tag={textOnlySelectors.includes(selector) ? tag : undefined}
               noWrapper={selector === '.gatsby-highlight'}
             />,
             temp,

@@ -21,8 +21,8 @@ export const Heading = ({ className, id, tag = 'h1', size, children }) => {
   );
 };
 
-export const HeadingLandmark = ({ mdBlockContent }) => (
-  <h2
+export const HeadingLandmark = ({ mdBlockContent, tag: Tag }) => (
+  <Tag
     className={styles.markHeading}
     id={`${slugify(mdBlockContent)
       .replace(/\//g, '-')
@@ -41,5 +41,5 @@ export const HeadingLandmark = ({ mdBlockContent }) => (
       <AnchorIcon />
     </a>
     {mdBlockContent}
-  </h2>
+  </Tag>
 );
