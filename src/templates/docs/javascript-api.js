@@ -5,13 +5,6 @@ import { DocLayout } from 'layouts/doc-layout';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import { Sticky, StickyContainer } from 'react-sticky';
-import {
-  slugify,
-  stripDirectoryPath,
-  unorderify,
-  compose,
-  noSlugDuplication,
-} from 'utils';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import SeoMetadata from 'utils/seo-metadata';
@@ -26,108 +19,40 @@ import Blockquote from 'components/pages/doc-page/blockquote';
 import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
 import { useScrollToAnchor } from 'hooks';
 
-// Return an array of { module: <div>, classes: [<tr>...], functions: [<tr>...] } objects.
-// Top-level documents (modules) as defined by the sidebarTree will be
-// rendered as header+content, and child documents as table rows.
-function buildIndex(nodes, sidebarTree) {
-  const index = [];
+const components = {
+  '.code-group': CodeGroup,
+  '.gatsby-highlight': CodeGroup,
+  h2: HeadingLandmark,
+  table: TableWrapper,
+  blockquote: Blockquote,
+  '.doc-blockquote': Blockquote,
+};
 
-  const components = {
-    '.code-group': CodeGroup,
-    '.gatsby-highlight': CodeGroup,
-    h2: HeadingLandmark,
-    table: TableWrapper,
-    blockquote: Blockquote,
-    '.doc-blockquote': Blockquote,
-  };
-
-  for (let i = 0; i < nodes.length; i += 1) {
-    const node = nodes[i];
-    const md = node.children[0];
-    if (md.frontmatter.title.replace('/', '-') in sidebarTree.children) {
-      index.push({
-        module: (
-          <div key={node.id} className={jsApiStyles.moduleWrapper}>
-            <h2>{md.frontmatter.title}</h2>
-            <HtmlContent
-              content={md.body}
-              components={components}
-              className={classNames(
-                docPageContent.contentWRapper,
-                codeStyles.docContainer,
-              )}
-            />
-          </div>
-        ),
-        classes: [],
-        functions: [],
-      });
-      continue;
+const getContent = (nodes, sidebarTree) =>
+  nodes.map(({ id, children: [entity] }) => {
+    const {
+      frontmatter: { title },
+      body,
+    } = entity;
+    if (title.replace('/', '-') in sidebarTree.children) {
+      return (
+        <div key={id} className={jsApiStyles.moduleWrapper}>
+          <h2>{title}</h2>
+          <HtmlContent
+            content={body}
+            components={components}
+            className={classNames(
+              docPageContent.contentWRapper,
+              codeStyles.docContainer,
+            )}
+          />
+        </div>
+      );
     }
-
-    // FIXME: Hack to avoid showing methods in the Functions table.
-    // This needs a more structural fix (exclude by frontmatter field?),
-    // but I wasn't able to get an exclude filter working with allFile or
-    // allMarkdownRemark.
-    if (
-      md.frontmatter.title.match(
-        /(CookieJar|Counter|Gauge|Rate|Response|Selection|Socket|Trend)\./,
-      )
-    ) {
-      continue;
-    }
-
-    const path = `${stripDirectoryPath(
-      node.relativeDirectory,
-      'docs',
-    )}/${md.frontmatter.title.replace(/\//g, '-')}`;
-    const slug = compose(unorderify, slugify)(path);
-
-    const row = (
-      <tr key={node.id}>
-        <td>
-          <Link to={`/${slug}`}>{md.frontmatter.title}</Link>
-        </td>
-        <td>{md.frontmatter.description}</td>
-      </tr>
-    );
-
-    let nodeType = 'functions';
-    if (md.frontmatter.category === 'k6api-class') {
-      nodeType = 'classes';
-    }
-
-    const last = index[index.length - 1];
-    // skip row addition if there is an identical slug already exists in main module
-    if (noSlugDuplication(last, slug)) {
-      last[nodeType].push(row);
-    }
-  }
-
-  return index;
-}
-
-function createTableMaybe(elements, header) {
-  if (elements.length > 0) {
-    return (
-      <div className={jsApiStyles.tableWrapper}>
-        <table>
-          <thead>
-            <tr>
-              <th>{header}</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>{elements}</tbody>
-        </table>
-      </div>
-    );
-  }
-  return null;
-}
+  });
 
 export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
-  const index = buildIndex(data.allFile.nodes, sidebarTree);
+  const content = getContent(data.allFile.nodes, sidebarTree);
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
@@ -151,12 +76,7 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
           <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={`${htmlStyles.wrapper}`}>
               <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
-                {index.map(({ module, classes, functions }) => {
-                  const out = [module];
-                  out.push(createTableMaybe(classes, 'Class'));
-                  out.push(createTableMaybe(functions, 'Function'));
-                  return out;
-                })}
+                {content}
               </CustomContentContainer>
             </div>
           </div>
@@ -192,7 +112,6 @@ export const query = graphql`
             body
             frontmatter {
               title
-              category
               description
             }
           }
