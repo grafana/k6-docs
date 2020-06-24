@@ -195,4 +195,4 @@ for (var id = 1; id <= 100; id++) {
 
 [k6 Cloud Results's HTTP Table](/cloud/analyzing-results/http-tab) will show all the requests, on an aggregated level per URL.
 
-![cloud insights url table](/images/cloud-insights-http-tab.png)
+![k6 Cloud URL table](/images/cloud-insights-http-tab.png)

@@ -210,9 +210,9 @@ added to the metric were non-zero.
 
 ## Metric graphs in k6 Cloud Results
 
-If you use [k6 Cloud's Cloud Insights](/cloud/analyzing-results/overview), you have access to all test
+If you use [k6 Cloud Results](/cloud/analyzing-results/overview), you have access to all test
 metrics within the [Analysis Tab](/cloud/analyzing-results/analysis-tab). You can use this tab to further analyze and
 compare test result data, to look for meaningful correlations in your data.
 
 
-![k6 cloud insights analysis](images/cloud-insights-analysis-tab.png)
+![k6 Cloud Analysis Tab](images/cloud-insights-analysis-tab.png)

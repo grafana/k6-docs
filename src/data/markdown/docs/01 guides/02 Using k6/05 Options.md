@@ -338,7 +338,7 @@ null
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
-[k6 Cloud Insights](/cloud/analyzing-results/performance-insights).
+[k6 Cloud Performance Insights](/cloud/analyzing-results/performance-insights).
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 

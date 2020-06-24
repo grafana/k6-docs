@@ -347,6 +347,6 @@ their [own tab](/cloud/analyzing-results/threshold-tab) for analysis.
 You can also see how the underlying metric compares to a specific threshold throughout the test.
 The threshold can be added to the analysis tab for further comparison against other metrics.
 
-![Cloud Insights Thresholds tab](images/cloud-insights-thresholds-tab.png)
+![k6 Cloud Thresholds Tab](images/cloud-insights-thresholds-tab.png)
 
 Learn more about analyzing results in the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
