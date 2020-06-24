@@ -194,6 +194,42 @@ const whenElementAvailable = (elementSelector) => (cb) =>
 const isInIFrame = () =>
   typeof window !== 'undefined' && window.location !== window.parent.location;
 
+// accepts a logger (reporter, console.log)
+// and returns a set of functions
+// to perform the path collision detection
+const pathCollisionDetector = (logger) => {
+  /* paths store */
+  const PATHS = [];
+  /* private functions */
+
+  // shout message template
+  const buildWarning = ({ current, stored }) =>
+    `\n\n### ATTENTION!\n\nDetected path collision at the following files:\n\nFile 1: name: ${stored.name}, path: ${stored.path}, status: CREATED  \nFile 2: name: ${current.name}, path: ${current.path}, status: ATTEMPT TO CREATE \nSKIPPING PAGE CREATION OF FILE 2\n\nMost likely the reason for collision is the 'title' fields in frontmatter area that became identic after slugifying. Consider changing it, using 'slug' field of frontmatter to override default path generation or contact the developer team.\n\n`;
+  // check if the path already exist in collection
+  const contains = (path) => PATHS.some(({ path: $path }) => $path === path);
+  // get an pathMeta entity
+  const get = (path) => PATHS.find((pathMeta) => pathMeta.path === path);
+
+  /* public functions */
+  // puts path into the storage if there is no such yet
+  // otherwise loggs warning message
+  const add = ({ name, path }) => {
+    if (contains(path)) {
+      logger(buildWarning({ current: { name, path }, stored: get(path) }));
+      return {
+        isUnique: () => false,
+      };
+    }
+    PATHS.push({ name, path });
+    return {
+      isUnique: () => true,
+    };
+  };
+  return {
+    add,
+  };
+};
+
 Object.defineProperties(utils, {
   isInIFrame: {
     value: isInIFrame,
@@ -251,6 +287,9 @@ Object.defineProperties(utils, {
   },
   whenElementAvailable: {
     value: whenElementAvailable,
+  },
+  pathCollisionDetector: {
+    value: pathCollisionDetector,
   },
 });
 
