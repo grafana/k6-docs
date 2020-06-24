@@ -176,7 +176,7 @@ async function createDocPages({ graphql, actions }) {
   );
 
   // generating pages currently presented in templates/docs/ folder
-  [...docPageNav].forEach((item) => {
+  docPageNav.forEach((item) => {
     const slug = utils.slugify(item);
     actions.createPage({
       path: slug === 'guides' ? `/` : `/${slug}`,
@@ -191,8 +191,8 @@ async function createDocPages({ graphql, actions }) {
   // generating a bunch of breadcrumbs stubs for top level non-links categories
 
   // ! attention: filtering here because of unplanned case with actual pages for top level sidebar sections. Removing breadcrumbs stub generation manually.
-  [...docPageNav]
-    .filter((s) => s !== 'javascript api')
+  docPageNav
+    .filter((s) => !['javascript api', 'examples'].includes(s.toLowerCase()))
     .forEach((section) => {
       utils.childrenToList(getSidebar(section).children).forEach(({ name }) => {
         const path = `${section}/${name}`;
