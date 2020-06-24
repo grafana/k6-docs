@@ -28,11 +28,21 @@ const slugify = (path) =>
 // buildBreadcrumbs(path: String) -> Array<Object>
 const buildBreadcrumbs = (path) => {
   let accumulatedPath = '';
-  return path.split('/').map((part) => {
+  return path.split('/').map((part, i) => {
     accumulatedPath += `/${part}`;
-    const slug = utils.slugify(accumulatedPath);
+    const slug = slugify(accumulatedPath);
+    let name;
+    if (i === 0) {
+      name = new RegExp(/javascript api/i).test(part)
+        ? 'Javascript API'
+        : part.slice(0, 1).toUpperCase() + part.slice(1);
+    } else if (i === 1) {
+      name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
+    } else {
+      name = part;
+    }
     return {
-      name: part.slice(0, 1).toUpperCase() + part.slice(1),
+      name,
       path: slug,
     };
   });
