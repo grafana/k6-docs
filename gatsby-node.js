@@ -136,9 +136,6 @@ async function createDocPages({ graphql, actions, reporter }) {
       frontmatter,
       frontmatter: { title, redirect, draft, slug: customSlug },
     } = remarkNode;
-    if (customSlug) {
-      console.log(name);
-    }
     // if there is a value in redirect field, skip page creation
     // OR there is draft flag and mode is prod
     if ((draft === 'true' && isProduction) || redirect) return;
