@@ -28,18 +28,24 @@ const slugify = (path) =>
 // buildBreadcrumbs(path: String) -> Array<Object>
 const buildBreadcrumbs = (path) => {
   let accumulatedPath = '';
-  return path
-    .replace(/\/guides/g, '')
-    .replace(/examples\/examples/, 'examples')
-    .split('/')
-    .map((part) => {
-      accumulatedPath += `/${part}`;
-      const slug = utils.slugify(accumulatedPath);
-      return {
-        name: utils.slugify(part),
-        path: slug,
-      };
-    });
+  return path.split('/').map((part, i) => {
+    accumulatedPath += `/${part}`;
+    const slug = slugify(accumulatedPath);
+    let name;
+    if (i === 0) {
+      name = new RegExp(/javascript api/i).test(part)
+        ? 'Javascript API'
+        : part.slice(0, 1).toUpperCase() + part.slice(1);
+    } else if (i === 1) {
+      name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
+    } else {
+      name = part;
+    }
+    return {
+      name,
+      path: slug,
+    };
+  });
 };
 
 // builds a single file tree node
@@ -156,23 +162,6 @@ const createMetaImagePath = (image, defaultSiteUrl, defaultImage) => {
   }
 };
 
-// docs-page-specific fn that creates a set of data to be used in docs component
-// getAnchorLinks(content: String) -> Array
-const getAnchorLinks = (content) => {
-  const rawHeadings = content.match(/<h2>.*<\/h2>/g);
-  const strippedHeadings = rawHeadings
-    ? rawHeadings.map((heading) => heading.replace(/<\/?h2>/g, ''))
-    : [];
-  return strippedHeadings.map((heading) => ({
-    title: heading,
-    anchor: `#${slugify(heading)
-      .replace(/\//g, '-')
-      .replace(/^\d+/g, '')
-      .replace(/^-*/g, '')
-      .replace(/-*$/g, '')}`,
-  }));
-};
-
 // creating-docs-pages-specific function; extracts the category after
 // 'docs'; e.g. /whatever/some-more -> whatever
 // getDocSection(str: String) -> String
@@ -247,9 +236,6 @@ Object.defineProperties(utils, {
   },
   unorderify: {
     value: unorderify,
-  },
-  getAnchorLinks: {
-    value: getAnchorLinks,
   },
   getDocSection: {
     value: getDocSection,

@@ -10,18 +10,18 @@ async function createDocPages({ graphql, actions }) {
    */
 
   // guides category is the root: / or /docs in prod, so we removing that part
-  const removeGuides = (path) => path.replace(/guides\//, '');
+  const removeGuides = (path) => path.replace(/guides\//i, '');
 
   // examples page contains `examples` folder which causing path
   // duplication, removing it as well
   const dedupeExamples = (path) =>
-    path.replace(/examples\/examples/, 'examples');
+    path.replace(/examples\/examples/i, 'examples');
 
   // no /guides route; welcome is redirecting to the root path
   // difference from removeGuides: this one is for sidebar links processing and
   // the former is for creatingPages
   const removeGuidesAndRedirectWelcome = (path) =>
-    path.replace(/guides\/(getting-started\/welcome)?/, '');
+    path.replace(/guides\/(getting-started\/welcome)?/i, '');
 
   // ensures that no trailing slash is left
   const noTrailingSlash = (path) =>
@@ -127,11 +127,10 @@ async function createDocPages({ graphql, actions }) {
       // if there is value in redirect field, skip page creation
       // OR there is draft flag and mode is prod
       if ((draft === 'true' && isProduction) || redirect) return;
-      const path = utils.slugify(
-        `${strippedDirectory}/${title.replace(/\//g, '-')}`,
-      );
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
       const breadcrumbs = utils.compose(
         utils.buildBreadcrumbs,
+        dedupeExamples,
         removeGuides,
         utils.unorderify,
       )(path);
@@ -144,6 +143,7 @@ async function createDocPages({ graphql, actions }) {
             dedupeExamples,
             removeGuides,
             utils.unorderify,
+            utils.slugify,
           )(path),
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
@@ -157,6 +157,7 @@ async function createDocPages({ graphql, actions }) {
           dedupeExamples,
           removeGuides,
           utils.unorderify,
+          utils.slugify,
         )(path),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
@@ -175,7 +176,7 @@ async function createDocPages({ graphql, actions }) {
   );
 
   // generating pages currently presented in templates/docs/ folder
-  [...docPageNav].forEach((item) => {
+  docPageNav.forEach((item) => {
     const slug = utils.slugify(item);
     actions.createPage({
       path: slug === 'guides' ? `/` : `/${slug}`,
@@ -190,17 +191,23 @@ async function createDocPages({ graphql, actions }) {
   // generating a bunch of breadcrumbs stubs for top level non-links categories
 
   // ! attention: filtering here because of unplanned case with actual pages for top level sidebar sections. Removing breadcrumbs stub generation manually.
-  [...docPageNav]
-    .filter((s) => s !== 'javascript api')
+  docPageNav
+    .filter((s) => !['javascript api', 'examples'].includes(s.toLowerCase()))
     .forEach((section) => {
       utils.childrenToList(getSidebar(section).children).forEach(({ name }) => {
-        const path = utils.compose(
+        const path = `${section}/${name}`;
+        const breadcrumbs = utils.compose(
+          utils.buildBreadcrumbs,
+          dedupeExamples,
           removeGuides,
-          utils.slugify,
-        )(`${section}/${name}`);
-        const breadcrumbs = utils.buildBreadcrumbs(path);
+        )(path);
         actions.createPage({
-          path: noTrailingSlash(path),
+          path: utils.compose(
+            noTrailingSlash,
+            dedupeExamples,
+            removeGuides,
+            utils.slugify,
+          )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
             sidebarTree: getSidebar(section),
