@@ -1,10 +1,24 @@
-const utils = require('./src/utils/utils');
+const {
+  pathCollisionDetector,
+  slugify,
+  buildFileTree,
+  buildFileTreeNode,
+  stripDirectoryPath,
+  compose,
+  getChildSidebar,
+  unorderify,
+  getDocSection,
+  buildBreadcrumbs,
+  childrenToList,
+} = require('./src/utils/utils');
 const Path = require('path');
 
 // auxilary flag to determine the environment (staging/prod)
 const isProduction = process.env.GATSBY_DEFAULT_MAIN_URL === 'https://k6.io';
 
-async function createDocPages({ graphql, actions }) {
+async function createDocPages({ graphql, actions, reporter }) {
+  // initiating path collision checker
+  const pathCollisionDetectorInstance = pathCollisionDetector(reporter.warn);
   /*
    * custom path processing rules
    */
@@ -27,7 +41,11 @@ async function createDocPages({ graphql, actions }) {
   const noTrailingSlash = (path) =>
     path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
 
-  const { data } = await graphql(`
+  const {
+    data: {
+      allFile: { nodes },
+    },
+  } = await graphql(`
     query docPagesQuery {
       allFile(
         filter: { ext: { in: [".md"] }, relativeDirectory: { regex: "/docs/" } }
@@ -41,6 +59,7 @@ async function createDocPages({ graphql, actions }) {
               body
               frontmatter {
                 title
+                slug
                 head_title
                 excerpt
                 redirect
@@ -55,129 +74,133 @@ async function createDocPages({ graphql, actions }) {
   `);
 
   // Build a tree for a sidebar
-  const sidebarTreeBuilder = utils.buildFileTree(utils.buildFileTreeNode);
-  data.allFile.nodes.forEach(
-    ({ name, relativeDirectory, children, children: [remarkNode] }) => {
-      // for debuggin purpose in case there is errors in md/html syntax
-      if (typeof children === 'undefined' || typeof remarkNode === 'undefined')
-        return;
-
-      const {
-        frontmatter: { title, redirect, hideFromSidebar, draft },
-      } = remarkNode;
-      // skip altogether if this content has draft flag
-      // OR hideFromSidebar
-      if ((draft === 'true' && isProduction) || hideFromSidebar) return;
-      const path = utils.slugify(
-        `/${utils.stripDirectoryPath(
-          relativeDirectory,
-          'docs',
-        )}/${title.replace(/\//g, '-')}`,
-      );
-      // titles like k6/html treated like paths otherwise
-      sidebarTreeBuilder.addNode(
-        utils.unorderify(utils.stripDirectoryPath(relativeDirectory, 'docs')),
-        utils.unorderify(name),
-        {
-          path: utils.compose(
+  const sidebarTreeBuilder = buildFileTree(buildFileTreeNode);
+  nodes.forEach(({ name, relativeDirectory, children: [remarkNode] }) => {
+    const {
+      frontmatter: { title, redirect, hideFromSidebar, draft, slug },
+    } = remarkNode;
+    // skip altogether if this content has draft flag
+    // OR hideFromSidebar
+    if ((draft === 'true' && isProduction) || hideFromSidebar) return;
+    const path = slugify(
+      `/${stripDirectoryPath(relativeDirectory, 'docs')}/${title.replace(
+        /\//g,
+        '-',
+      )}`,
+    );
+    // titles like k6/html treated like paths otherwise
+    sidebarTreeBuilder.addNode(
+      unorderify(stripDirectoryPath(relativeDirectory, 'docs')),
+      unorderify(name),
+      {
+        path:
+          slug ||
+          compose(
             noTrailingSlash,
             dedupeExamples,
             removeGuidesAndRedirectWelcome,
-            utils.unorderify,
+            unorderify,
           )(path),
-          title,
-          redirect,
-        },
-      );
-    },
-  );
+        title,
+        redirect,
+      },
+    );
+  });
 
   // tree representation of a data/markdown/docs folder
   const sidebar = sidebarTreeBuilder.getTree();
 
   // local helper function that uses carrying, expects one more arg
-  const getSidebar = utils.getChildSidebar(sidebar);
+  const getSidebar = getChildSidebar(sidebar);
   const docPageNav = Object.keys(sidebar.children);
 
   // create data for rendering docs navigation
   const docPageNavLinks = docPageNav
     .map((item) => ({
       label: item === 'cloud' ? 'Cloud Docs' : item.toUpperCase(),
-      to: item === 'guides' ? `/` : `/${utils.slugify(item)}`,
+      to: item === 'guides' ? `/` : `/${slugify(item)}`,
     }))
     .filter(Boolean);
   // creating actual docs pages
-  data.allFile.nodes.forEach(
-    ({ relativeDirectory, children, children: [remarkNode], name }) => {
-      const strippedDirectory = utils.stripDirectoryPath(
-        relativeDirectory,
-        'docs',
+  nodes.forEach(({ relativeDirectory, children: [remarkNode], name }) => {
+    const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
+    // for debuggin purpose in case there are errors in md/html syntax
+    if (typeof remarkNode === 'undefined') {
+      reporter.warn(
+        `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
+          ${relativeDirectory}/${name}`,
       );
-      // for debuggin purpose in case there are errors in md/html syntax
-      if (typeof remarkNode === 'undefined') {
-        console.log('remarkNode is', remarkNode);
-        console.log('children is', children);
-        console.log(
-          '\nmarkup is broken! check the following file: \n\n',
-          `${relativeDirectory}/${name}`,
-        );
-        return;
-      }
-      const { title, redirect, draft } = remarkNode.frontmatter;
-      // if there is value in redirect field, skip page creation
-      // OR there is draft flag and mode is prod
-      if ((draft === 'true' && isProduction) || redirect) return;
-      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
-      const breadcrumbs = utils.compose(
-        utils.buildBreadcrumbs,
+      return;
+    }
+    const {
+      frontmatter,
+      frontmatter: { title, redirect, draft, slug: customSlug },
+    } = remarkNode;
+    // if there is a value in redirect field, skip page creation
+    // OR there is draft flag and mode is prod
+    if ((draft === 'true' && isProduction) || redirect) return;
+    const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+    const slug =
+      customSlug ||
+      compose(
+        noTrailingSlash,
         dedupeExamples,
         removeGuides,
-        utils.unorderify,
+        unorderify,
+        slugify,
       )(path);
-      const extendedRemarkNode = {
-        ...remarkNode,
-        frontmatter: {
-          ...remarkNode.frontmatter,
-          slug: utils.compose(
-            noTrailingSlash,
-            dedupeExamples,
-            removeGuides,
-            utils.unorderify,
-            utils.slugify,
-          )(path),
-          // injection of a link to an article in git repo
-          fileOrigin: encodeURI(
-            `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
-          ),
-        },
-      };
+    // path collision check
+    if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+      // skip the page creation if there is already a page with identical url
+      return;
+    }
+    const breadcrumbs = compose(
+      buildBreadcrumbs,
+      dedupeExamples,
+      removeGuides,
+      unorderify,
+    )(path);
+    const extendedRemarkNode = {
+      ...remarkNode,
+      frontmatter: {
+        ...frontmatter,
+        slug,
+        // injection of a link to an article in git repo
+        fileOrigin: encodeURI(
+          `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+        ),
+      },
+    };
 
-      actions.createPage({
-        path: utils.compose(
-          dedupeExamples,
-          removeGuides,
-          utils.unorderify,
-          utils.slugify,
-        )(path),
-        component: Path.resolve('./src/templates/doc-page.js'),
-        context: {
-          remarkNode: extendedRemarkNode,
-          // dynamically evalute which part of the sidebar tree are going to be used
-          sidebarTree: utils.compose(
-            getSidebar,
-            utils.getDocSection,
-            utils.unorderify,
-          )(strippedDirectory),
-          breadcrumbs,
-          navLinks: docPageNavLinks,
-        },
-      });
-    },
-  );
+    actions.createPage({
+      path: slug,
+      component: Path.resolve('./src/templates/doc-page.js'),
+      context: {
+        remarkNode: extendedRemarkNode,
+        // dynamically evaluate which part of the sidebar tree are going to be used
+        sidebarTree: compose(
+          getSidebar,
+          getDocSection,
+          unorderify,
+        )(strippedDirectory),
+        breadcrumbs,
+        navLinks: docPageNavLinks,
+      },
+    });
+  });
 
   // generating pages currently presented in templates/docs/ folder
   docPageNav.forEach((item) => {
-    const slug = utils.slugify(item);
+    const slug = slugify(item);
+    // path collision check
+    if (
+      !pathCollisionDetectorInstance
+        .add({ path: slug, name: `${slug}.js` })
+        .isUnique()
+    ) {
+      // skip the page creation if there is already a page with identical url
+      return;
+    }
     actions.createPage({
       path: slug === 'guides' ? `/` : `/${slug}`,
       component: Path.resolve(`./src/templates/docs/${slug}.js`),
@@ -194,19 +217,19 @@ async function createDocPages({ graphql, actions }) {
   docPageNav
     .filter((s) => !['javascript api', 'examples'].includes(s.toLowerCase()))
     .forEach((section) => {
-      utils.childrenToList(getSidebar(section).children).forEach(({ name }) => {
+      childrenToList(getSidebar(section).children).forEach(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = utils.compose(
-          utils.buildBreadcrumbs,
+        const breadcrumbs = compose(
+          buildBreadcrumbs,
           dedupeExamples,
           removeGuides,
         )(path);
         actions.createPage({
-          path: utils.compose(
+          path: compose(
             noTrailingSlash,
             dedupeExamples,
             removeGuides,
-            utils.slugify,
+            slugify,
           )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
@@ -503,6 +526,11 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'head_title',
       value: node.frontmatter.head_title || '',
+    });
+    createNodeField({
+      node,
+      name: 'slug',
+      value: node.frontmatter.slug || '',
     });
   }
 };

@@ -21,7 +21,7 @@ For example:
 - `value < 200`
 - `value > 1`
 
-### Example
+### Examples
 
 <div class="code-group" data-props='{"labels": ["gauge-metric.js"], "lineNumbers": [true]}'>
 
