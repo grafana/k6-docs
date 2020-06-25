@@ -107,6 +107,12 @@
       "description": "Use checks and thresholds for unit testing.",
       "url": "https://community.k6.io/t/report-for-functional-test/574/2",
       "to": ""
+    },
+    {
+      "title": "Track transmitted data per URL",
+      "description": "How to track data sent and received for an individual URL.",
+      "url": "",
+      "to": "/examples/track-transmitted-data-per-url"
     }
   ],
   "tutorials": [
