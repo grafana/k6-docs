@@ -232,7 +232,7 @@ We have these thresholds:
   The success criteria here implies that content can't have been bad more than 99 times.
 
 
-## Thresholds on sub-metrics (tagged metrics)
+## Thresholds on tags
 
 It's often useful to specify thresholds only on a single URL or a specific tag. 
 In k6, tagged requests create sub-metrics that can be used in thresholds as shown below.
@@ -311,28 +311,75 @@ support a JS object with parameters to control the abort behavior. The fields ar
 
 ## Failing a load test using checks
 
-[Checks](/using-k6/checks) are nice for codifying assertions, but unlike thresholds,
-checks will not affect the exit status of k6. This means a script that only uses checks to
-verify that things work as expected, will not be able to fail the whole test run based on the
-results of that/those checks. It can often be useful to combine checks and thresholds, to get
-the best of both:
+[Checks](/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` will not affect the exit status of k6.
+
+If you only use `checks` to verify that things work as expected, you will not be able to fail the whole test run based on the results of those `checks`.
+
+It can often be useful to combine `checks` and `thresholds`, to get the best of both:
 
 <div class="code-group" data-props='{"labels": ["check_and_fail.js"], "lineNumbers": [true]}'>
 
 ```js
 import http from 'k6/http';
-import { check } from 'k6';
-import { Rate } from 'k6/metrics';
+import { check, sleep } from 'k6';
 
-export let Rate500 = new Rate('500 errors');
-export let options = { thresholds: { '500 errors': ['rate<0.1'] } }; // 10%
+
+export let options = {
+  vus: 50,
+  duration: '10s',
+  thresholds: {
+    // the rate of successful checks should be higher than 90%
+    'checks': ['rate>0.9']
+  }
+};
 
 export default function() {
-  const result = check(http.get('http://httpbin.org'), {
+
+  const res = http.get('http://httpbin.org');
+
+  check(res, {
     'status is 500': r => r.status == 500,
   });
 
-  Rate500.add(result);
+  sleep(1);
+}
+```
+
+</div>
+
+In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics) - establishing that the rate of successful checks should be higher than 90%.
+
+Additionally, you can use `tags`  on checks if you want to define a threshold based on a particular check or group of checks. For example:
+
+<div class="code-group" data-props='{"labels": [""], "lineNumbers": [true]}'>
+
+```js
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export let options = {
+  vus: 50,
+  duration: '10s',
+  thresholds: {
+    'checks{myTag:hola}': ['rate>0.9']
+  }
+};
+
+export default function() {
+
+  let res;
+
+  res = http.get('http://httpbin.org');
+  check(res, {
+    'status is 500': r => r.status == 500,
+  });
+
+  res = http.get('http://httpbin.org');
+  check(res, {
+    'status is 200': r => r.status == 200,
+  }, {myTag: 'hola'});
+
+  sleep(1);
 }
 ```
 
