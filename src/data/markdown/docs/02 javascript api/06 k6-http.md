@@ -7,7 +7,7 @@ The k6/http module contains functionality for performing HTTP transactions.
 | Function | Description |
 | -------- | ----------- |
 | [batch( requests )](/javascript-api/k6-http/batch-requests)  | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
-| [cookieJar()](/javascript-api/k6-http/cookiejar)  | Get active HTTP Cookie jar. |
+| [cookieJar()](/javascript-api/k6-http/cookiejar-method)  | Get active HTTP Cookie jar. |
 | [del( url, [body], [params] )](/javascript-api/k6-http/del-url-body-params)  | Issue an HTTP DELETE request. |
 | [file( data, [filename], [contentType] )](/javascript-api/k6-http/file-data-filename-contenttype)  | Create a file object that is used for building multi-part requests. |
 | [get( url, [params] )](/javascript-api/k6-http/get-url-params)  | Issue an HTTP GET request. |

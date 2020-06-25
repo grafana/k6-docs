@@ -1,12 +1,13 @@
 ---
-title: "cookieJar()"
-description: "Get active HTTP Cookie jar."
+title: 'cookieJar()'
+slug: '/javascript-api/k6-http/cookiejar-method'
+description: 'Get active HTTP Cookie jar.'
 ---
 
 Get the active cookie jar.
 
-| Type                                                       | Description         |
-| ---------------------------------------------------------- | ------------------- |
+| Type                                           | Description         |
+| ---------------------------------------------- | ------------------- |
 | [CookieJar](/javascript-api/k6-http/cookiejar) | A CookieJar object. |
 
 ### Example
@@ -16,7 +17,7 @@ Get the active cookie jar.
 ```js
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   let jar = http.cookieJar();
 }
 ```
