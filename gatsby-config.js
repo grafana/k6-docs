@@ -93,14 +93,12 @@ const plugins = [
       environment: process.env.NODE_ENV,
       enabled: isProduction || isStaging,
       ignoreErrors: [
-        // Random plugins/extensions
-        'top.GLOBALS',
-        /getBoundingClientRect/, // that's a real bug we have, but I'm ignoring it for now.
+        // that's a real bug we have, but I'm ignoring it for now.
+        'getBoundingClientRect',
+        'Cannot read property \'getBoundingClientRect\' of undefined',
+        'TypeError: undefined is not an object (evaluating \'n.content.getBoundingClientRect\')',
       ],
       denyUrls: [
-        // Random Chrome extensions crashing
-        /extensions\//i,
-        /^chrome:\/\//i,
       ]
     }
   },
