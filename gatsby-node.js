@@ -211,6 +211,16 @@ async function createDocPages({ graphql, actions, reporter }) {
     });
   });
 
+  // generating custom 404
+  actions.createPage({
+    path: '/404',
+    component: Path.resolve(`./src/templates/404.js`),
+    context: {
+      sidebarTree: getSidebar('guides'),
+      navLinks: docPageNavLinks,
+    },
+  });
+
   // generating a bunch of breadcrumbs stubs for top level non-links categories
 
   // ! attention: filtering here because of unplanned case with actual pages for top level sidebar sections. Removing breadcrumbs stub generation manually.

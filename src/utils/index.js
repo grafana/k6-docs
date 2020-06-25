@@ -1,4 +1,6 @@
 export {
+  buildFileTree,
+  buildFileTreeNode,
   getRandomNumberBetween,
   slugify,
   childrenToList,
