@@ -114,8 +114,8 @@ export let options = {
       name: 'Hello k6 cloud!',
       projectID: 123456,
       distribution: {
-        scenarioLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
-        scenarioLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
+        distributionLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
+        distributionLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
       },
     },
   },
@@ -191,7 +191,41 @@ When running a k6 test in the cloud we add two tags to all metrics:
 | `load_zone`   | string | The load zone from where the the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
 | `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.                  |
 
+The cloud tags are automatically added when collecting the test metrics, and they work as regular tags. 
+
+For example, you can filter the results for a particular load zone on the k6 Cloud Results view.
+
 ![filter tags](/images/analysis-tab-cloud-tags.png 'Cloud execution tags')
+
+Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
+
+<div class="code-group" data-props='{"labels": ["Threshold based on a cloud execution tag"]}'>
+
+```js
+import http from "k6/http";
+
+export let options = {
+    vus: 50,
+    duration: "30s",
+    thresholds: {
+        "http_req_duration{load_zone:amazon:us:ashburn}": ["p(95)<500"],
+        "http_req_duration{load_zone:amazon:ie:dublin}": ["p(95)<800"]
+    },
+    ext: {
+        loadimpact: {
+            distribution: {
+                ashburnDistribution: { loadZone: "amazon:us:ashburn", percent: 50 },
+                dublinDistribution: { loadZone: "amazon:ie:dublin", percent: 50 }
+            }
+        }
+    }
+};
+export default function() {
+   http.get("https://test.k6.io/");
+};
+```
+
+</div>
 
 ## Environment variables
 
@@ -201,7 +235,7 @@ With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environme
 
 For example, given the script below, which reads the `MY_HOSTNAME` environment variable.
 
-<div class="code-group" data-props='{"labels": ["script.js"]}'>
+<div class="code-group" data-props='{"labels": ["Environment variables"]}'>
 
 ```javascript
 import { check, sleep } from 'k6';
@@ -235,6 +269,36 @@ When running in the k6 Cloud there will be three additional environment variable
 | `LI_DISTRIBUTION` | string | The value of the "distribution label" that you used in `ext.loadimpact.distribution` corresponding to the load zone the script is currently executed in. |
 
 You can read the values of these variables in your k6 script as usual.
+
+<div class="code-group" data-props='{"labels": ["Reading injected environment variables"]}'>
+
+```js
+export let options = {
+    vus: 50,
+    duration: "30s",
+    ext: {
+        loadimpact: {
+            distribution: {
+                ashburnDistribution: { loadZone: "amazon:us:ashburn", percent: 50 },
+                dublinDistribution: { loadZone: "amazon:ie:dublin", percent: 50 }
+            }
+        }
+    }
+};
+export default function() {
+  
+    if (__ENV.LI_DISTRIBUTION === "ashburnDistribution") {
+        // do something
+    } else if (__ENV.LI_DISTRIBUTION == "dublinDistribution") {
+        // do something
+    }
+
+};
+```
+
+</div>
+
+
 
 ## Differences between local and cloud execution
 
