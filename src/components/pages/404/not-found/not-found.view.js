@@ -21,8 +21,8 @@ export const NotFound = (props) => (
             </p>
             <Button
               className={styles.button}
-              onClick={() => window.history.back()}
-              tag={'button'}
+              href={'https://github.com/loadimpact/k6-docs'}
+              tag={'a'}
               cursor
             >
               Report Issue on GitHub
