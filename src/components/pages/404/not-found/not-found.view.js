@@ -4,7 +4,7 @@ import NotFoundIllustration from './svg/not-found.inline.svg';
 import { Button } from 'components/shared/button';
 import { Heading } from 'components/shared/heading';
 
-export const NotFound = props => (
+export const NotFound = (props) => (
   <section className={styles.wrapper}>
     <div className={`container ${styles.inner}`}>
       <div className={'row'}>
@@ -14,10 +14,10 @@ export const NotFound = props => (
               <NotFoundIllustration />
             </div>
             <Heading className={styles.title} tag={'h1'}>
-              Oops! 404 page - page not found
+              Oops! Broken link.
             </Heading>
             <p className={styles.description}>
-              The page you requested could not be found
+              The docs are public available on GitHub.
             </p>
             <Button
               className={styles.button}
@@ -25,7 +25,7 @@ export const NotFound = props => (
               tag={'button'}
               cursor
             >
-              Go back
+              Report Issue on GitHub
             </Button>
           </div>
         </div>
