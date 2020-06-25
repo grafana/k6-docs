@@ -17,7 +17,7 @@ export const NotFound = (props) => (
               Oops! Broken link.
             </Heading>
             <p className={styles.description}>
-              The docs are public available on GitHub.
+              The docs are publicly available on GitHub.
             </p>
             <Button
               className={styles.button}
