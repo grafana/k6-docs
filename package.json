@@ -45,6 +45,7 @@
     "gatsby-plugin-resolve-src": "^2.0.0",
     "gatsby-plugin-s3": "^0.3.3",
     "gatsby-plugin-sass": "^2.3.5",
+    "gatsby-plugin-sentry": "^1.0.1",
     "gatsby-plugin-sharp": "^2.2.29",
     "gatsby-plugin-sitemap": "^2.2.26",
     "gatsby-plugin-svgr-svgo": "^1.0.12",
