@@ -17,6 +17,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Config](#config) | Specify the config file in JSON format to read the options values |
 | [Discard Response Bodies](#discard-response-bodies) | Specify if response bodies should be discarded |
 | [Duration](#duration) |  A string specifying the total duration a test run should be run for  |
+| [Execution Segment](#execution-segment) |  Limit execution to a segment of the total test  |
 | [Extension Options](#extension-options) |  An object used to set configuration options for third-party collectors  |
 | [Hosts](#hosts) | An object with overrides to DNS resolution |
 | [HTTP Debug](#http-debug) | Log all HTTP requests and responses |
@@ -314,6 +315,33 @@ export let options = {
 ```
 
 </div>
+
+
+<h3 id="execution-segment">Execution Segment</h3>
+
+> _New in v0.27.0_
+
+These options specify how to partition the test run and which segment to run.
+If defined, k6 will scale the number of VUs and iterations to be run for that
+segment, which is useful in distributed execution. Available in the `k6 run` command.
+
+| Env | CLI                            | Code / Config file         | Default |
+|-----|--------------------------------|----------------------------|---------|
+| N/A | `--execution-segment`          | `executionSegment`         | `"0:1"` |
+| N/A | `--execution-segment-sequence` | `executionSegmentSequence` | `"0,1"` |
+
+For example, to run 25% of a test, you would specify `--execution-segment '25%'`,
+which would be equivalent to `--execution-segment '0:1/4'`, i.e. run the first
+1/4 of the test.
+To ensure that each instance executes a specific segment, also specify the full
+segment sequence, e.g. `--execution-segment-sequence '0,1/4,1/2,1'`.
+This way one instance could run with `--execution-segment '0:1/4'`, another with
+`--execution-segment '1/4:1/2'`, etc. and there would be no overlap between them.
+
+In v0.27.0 this distinction is not very important, but it will be required
+in future versions when support for test data partitioning is added.
+
+<!-- TODO: Add more examples, link to a standalone page? -->
 
 
 <h3 id="hosts">Hosts</h3>
