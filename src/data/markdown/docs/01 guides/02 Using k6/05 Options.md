@@ -3,7 +3,7 @@ title: 'Options'
 excerpt: ''
 ---
 
-Options allow you to configure how k6 will behave during test execution. 
+Options allow you to configure how k6 will behave during test execution.
 
 ## List of Options
 
@@ -55,7 +55,7 @@ Options allow you to configure how k6 will behave during test execution.
 
 
 Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line
-flags, environment variables or via a config file. 
+flags, environment variables or via a config file.
 
 The order of precedence is: defaults < config file < exported script options < environment
 variables < command-line flags. Options from each subsequent level can be used to overwrite the
@@ -145,6 +145,7 @@ Below, you'll find details on all available options that can be specified within
 documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
 and `k6 cloud ...` that can be used to override options specified in the code.
 
+
 <h3 id="batch">Batch</h3>
 
 The maximum number of simultaneous/parallel connections in total that an
@@ -153,15 +154,9 @@ The maximum number of simultaneous/parallel connections in total that an
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
 done and a slot opens. Available in both the `k6 run` and the `k6 cloud` commands
 
-| Env        | CLI       | Code / Config file |
-| ---------- | --------- | ------------------ |
-| `K6_BATCH` | `--batch` | `batch`            |
-
-Default
-
-20
-
-
+| Env        | CLI       | Code / Config file | Default |
+|------------|-----------|--------------------|---------|
+| `K6_BATCH` | `--batch` | `batch`            | `20`    |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -173,6 +168,7 @@ export let options = {
 
 </div>
 
+
 <h3 id="batch-per-host">Batch per host</h3>
 
 The maximum number of simultaneous/parallel connections for the same hostname that an
@@ -181,15 +177,9 @@ The maximum number of simultaneous/parallel connections for the same hostname th
 requests right away in parallel and queue the rest, executing them as soon as a previous request is
 done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
 
-| Env        | CLI       | Code / Config file |
-| ---------- | --------- | ------------------ |
-| `K6_BATCH_PER_HOST` | `--batch-per-host` | `batchPerHost`            |
-
-Default
-
-6
-
-
+| Env                 | CLI                | Code / Config file | Default |
+|---------------------|--------------------|--------------------|---------|
+| `K6_BATCH_PER_HOST` | `--batch-per-host` | `batchPerHost`     | `6`     |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -201,19 +191,14 @@ export let options = {
 
 </div>
 
+
 <h3 id="blacklist-ips">Blacklist IPs</h3>
 
 Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
 
-| Env                | CLI              | Code / Config file |
-| ------------------ | ---------------- | ------------------ |
-| `K6_BLACKLIST_IPS` | `--blacklist-ip` | `blacklistIPs`     |
-
-Default
-
-null
-
-
+| Env                | CLI              | Code / Config file | Default |
+|--------------------|------------------|--------------------|---------|
+| `K6_BLACKLIST_IPS` | `--blacklist-ip` | `blacklistIPs`     | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -225,6 +210,7 @@ export let options = {
 
 </div>
 
+
 <h3 id="compatibility-mode">Compatibility Mode</h3>
 
 Support running scripts with different ECMAScript compatibility modes.
@@ -232,15 +218,9 @@ Support running scripts with different ECMAScript compatibility modes.
 Read about the different modes on the [JavaScript Compatibility Mode documentation](/using-k6/javascript-compatibility-mode).
 
 
-| Env                   | CLI | Code / Config file |
-| --------------------- | --- | ------------------ |
-| `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A   |
-
-Default
-
-extended
-
-
+| Env                     | CLI                    | Code / Config file | Default      |
+|-------------------------|------------------------|--------------------|--------------|
+| `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
 
 <div class="code-group" data-props='{"labels": []}'>
 
@@ -249,6 +229,7 @@ $ k6 run --compatibility-mode=base script.js
 ```
 
 </div>
+
 
 <h3 id="config">Config</h3>
 
@@ -259,13 +240,9 @@ directory for configuration files on the operating system.
 For example in Linux/BSDs, it will look for `config.json` inside `${HOME}/.config/loadimpact/k6`.
 Available in `k6 run` and `k6 cloud` commands
 
-| Env | CLI                            | Code / Config file |
-| --- | ------------------------------ | ------------------ |
-| N/A | `--config <path>`, `-c <path>` | N/A                |
-
-Default
-
-null
+| Env | CLI                            | Code / Config file | Default |
+|-----|--------------------------------|--------------------|---------|
+| N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
 
 <h3 id="discard-response-bodies">Discard Response Bodies</h3>
@@ -277,15 +254,9 @@ to set [responseType](/javascript-api/k6-http/params) to `text` or `binary`. Les
 required and the amount of GC - reducing the load on the testing machine, and probably producing
 more reliable test results.
 
-| Env                          | CLI                         | Code / Config file      |
-| ---------------------------- | --------------------------- | ----------------------- |
-| `K6_DISCARD_RESPONSE_BODIES` | `--discard-response-bodies` | `discardResponseBodies` |
-
-Default
-
-false
-
-
+| Env                          | CLI                         | Code / Config file      | Default |
+|------------------------------|-----------------------------|-------------------------|---------|
+| `K6_DISCARD_RESPONSE_BODIES` | `--discard-response-bodies` | `discardResponseBodies` | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -297,20 +268,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="duration">Duration</h3>
 
 A string specifying the total duration a test run should be run for. During this time each
 VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
 
-| Env           | CLI                | Code / Config file |
-| ------------- | ------------------ | ------------------ |
-| `K6_DURATION` | `--duration`, `-d` | `duration`         |
-
-Default
-
-null
-
-
+| Env           | CLI                | Code / Config file | Default |
+|---------------|--------------------|--------------------|---------|
+| `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -322,19 +288,14 @@ export let options = {
 
 </div>
 
+
 <h3 id="extension-options">Extension Options</h3>
 
 An object used to set configuration options for third-party collectors, like plugins.
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `ext`              |
-
-Default
-
-null
-
-
+| Env | CLI | Code / Config file | Default |
+|-----|-----|--------------------|---------|
+| N/A | N/A | `ext`              | `null`  |
 
 This is an example of how to specify the test name (test runs/executions with the same name will be
 logically grouped for trending and comparison) when streaming results to
@@ -354,6 +315,7 @@ export let options = {
 
 </div>
 
+
 <h3 id="hosts">Hosts</h3>
 
 An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
@@ -364,15 +326,9 @@ up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 >
 > This does not modify the actual HTTP `Host` header, but rather where it will be routed.
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `hosts`            |
-
-Default
-
-null
-
-
+| Env | CLI | Code / Config file | Default |
+|-----|-----|--------------------|---------|
+| N/A | N/A | `hosts`            | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -386,6 +342,7 @@ export let options = {
 
 </div>
 
+
 <h3 id="http-debug">HTTP Debug</h3>
 
 Log all HTTP requests and responses. Excludes body by default, to include body use
@@ -393,15 +350,9 @@ Log all HTTP requests and responses. Excludes body by default, to include body u
 
 Read more [here](/using-k6/http-debugging).
 
-| Env             | CLI                                     | Code / Config file |
-| --------------- | --------------------------------------- | ------------------ |
-| `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        |
-
-Default
-
-false
-
-
+| Env             | CLI                                     | Code / Config file | Default |
+|-----------------|-----------------------------------------|--------------------|---------|
+| `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -413,20 +364,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="include-system-env-vars">Include System Env Vars</h3>
 
 Pass the real system environment variables to the runtime. Available in `k6 run` and `k6 cloud`
 commands.
 
-| Env | CLI                         | Code / Config file |
-| --- | --------------------------- | ------------------ |
-| N/A | `--include-system-env-vars` | N/A                |
-
-Default
-
-true for `k6 run`, but false for all other commands to prevent inadvertent sensitive data leaks.
-
-
+| Env | CLI                         | Code / Config file | Default                                                                                              |
+|-----|-----------------------------|--------------------|------------------------------------------------------------------------------------------------------|
+| N/A | `--include-system-env-vars` | N/A                | `true` for `k6 run`, but `false` for all other commands to prevent inadvertent sensitive data leaks. |
 
 <div class="code-group" data-props='{"labels": [ "Shell" ], "lineNumbers": [true]}'>
 
@@ -436,6 +382,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 </div>
 
+
 <h3 id="iterations">Iterations</h3>
 
 A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
@@ -444,15 +391,9 @@ a duration of time during which the script would run in a loop.
 is split between all VUs. Available in `k6 run` command (not yet supported for cloud executed
 tests using the `k6 cloud` command).
 
-| Env             | CLI                  | Code / Config file |
-| --------------- | -------------------- | ------------------ |
-| `K6_ITERATIONS` | `--iterations`, `-i` | `iterations`       |
-
-Default
-
-1
-
-
+| Env             | CLI                  | Code / Config file | Default |
+|-----------------|----------------------|--------------------|---------|
+| `K6_ITERATIONS` | `--iterations`, `-i` | `iterations`       | `1`     |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -477,20 +418,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="linger">Linger</h3>
 
 A boolean, true or false, specifying whether the k6 process should linger around after test
 run completion. Available in the `k6 run` command.
 
-| Env         | CLI              | Code / Config file |
-| ----------- | ---------------- | ------------------ |
-| `K6_LINGER` | `--linger`, `-l` | `linger`           |
-
-Default
-
-false
-
-
+| Env         | CLI              | Code / Config file | Default |
+|-------------|------------------|--------------------|---------|
+| `K6_LINGER` | `--linger`, `-l` | `linger`           | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -502,20 +438,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="max-redirects">Max Redirects</h3>
 
 The maximum number of HTTP redirects that k6 will follow before giving up on a request and
 erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
 
-| Env                | CLI               | Code / Config file |
-| ------------------ | ----------------- | ------------------ |
-| `K6_MAX_REDIRECTS` | `--max-redirects` | `maxRedirects`     |
-
-Default
-
-10
-
-
+| Env                | CLI               | Code / Config file | Default |
+|--------------------|-------------------|--------------------|---------|
+| `K6_MAX_REDIRECTS` | `--max-redirects` | `maxRedirects`     | `10`    |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -527,21 +458,16 @@ export let options = {
 
 </div>
 
+
 <h3 id="minimum-iteration-duration">Minimum Iteration Duration</h3>
 
 Specifies the minimum duration for every single execution (i.e. iteration) of the default
 function should be. Any iterations that are shorter than it will cause that VU to sleep for
 the remainder of the time until the specified minimum duration is reached.
 
-| Env                         | CLI                        | Code / Config file     |
-| --------------------------- | -------------------------- | ---------------------- |
-| `K6_MIN_ITERATION_DURATION` | `--min-iteration-duration` | `minIterationDuration` |
-
-Default
-
-`0` (disabled)
-
-
+| Env                         | CLI                        | Code / Config file     | Default        |
+|-----------------------------|----------------------------|------------------------|----------------|
+| `K6_MIN_ITERATION_DURATION` | `--min-iteration-duration` | `minIterationDuration` | `0` (disabled) |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -553,20 +479,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="no-connection-reuse">No Connection Reuse</h3>
 
 A boolean, true or false, specifying whether k6 should disable keep-alive connections.
 Available in `k6 run` and `k6 cloud` commands.
 
-| Env                      | CLI                     | Code / Config file  |
-| ------------------------ | ----------------------- | ------------------- |
-| `K6_NO_CONNECTION_REUSE` | `--no-connection-reuse` | `noConnectionReuse` |
-
-Default
-
-false
-
-
+| Env                      | CLI                     | Code / Config file  | Default |
+|--------------------------|-------------------------|---------------------|---------|
+| `K6_NO_CONNECTION_REUSE` | `--no-connection-reuse` | `noConnectionReuse` | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -583,15 +504,9 @@ export let options = {
 This disables the default behavior of resetting the cookie jar after each VU iteration. If
 it's enabled, saved cookies will be persisted across VU iterations.
 
-| Env                   | CLI | Code / Config file |
-| --------------------- | --- | ------------------ |
-| `K6_NO_COOKIES_RESET` | N/A | `noCookiesReset`   |
-
-Default
-
-false
-
-
+| Env                   | CLI | Code / Config file | Default |
+|-----------------------|-----|--------------------|---------|
+| `K6_NO_COOKIES_RESET` | N/A | `noCookiesReset`   | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -608,15 +523,9 @@ export let options = {
 
 Disables threshold execution. Available in the `k6 run` command.
 
-| Env                | CLI               | Code / Config file |
-| ------------------ | ----------------- | ------------------ |
-| `K6_NO_THRESHOLDS` | `--no-thresholds` | N/A                |
-
-Default
-
-false
-
-
+| Env                | CLI               | Code / Config file | Default |
+|--------------------|-------------------|--------------------|---------|
+| `K6_NO_THRESHOLDS` | `--no-thresholds` | N/A                | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -626,6 +535,7 @@ $ k6 run --no-thresholds ~/script.js
 
 </div>
 
+
 <h3 id="no-usage-report">No Usage Report</h3>
 
 A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
@@ -633,15 +543,9 @@ track how often people use it. If this option is set to true, no usage report wi
 learn more, have a look at the [Usage reports](/misc/usage-reports) documentation. Available in
 `k6 run` commands.
 
-| Env                  | CLI                 | Code / Config file |
-| -------------------- | ------------------- | ------------------ |
-| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`    |
-
-Default
-
-false
-
-
+| Env                  | CLI                 | Code / Config file | Default |
+|----------------------|---------------------|--------------------|---------|
+| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`    | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -653,20 +557,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="no-vu-connection-reuse">No VU Connection Reuse</h3>
 
 A boolean, true or false, specifying whether k6 should reuse TCP connections between iterations
 of a VU. Available in `k6 run` and `k6 cloud` commands.
 
-| Env                         | CLI                        | Code / Config file    |
-| --------------------------- | -------------------------- | --------------------- |
-| `K6_NO_VU_CONNECTION_REUSE` | `--no-vu-connection-reuse` | `noVUConnectionReuse` |
-
-Default
-
-false
-
-
+| Env                         | CLI                        | Code / Config file    | Default |
+|-----------------------------|----------------------------|-----------------------|---------|
+| `K6_NO_VU_CONNECTION_REUSE` | `--no-vu-connection-reuse` | `noVUConnectionReuse` | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -678,20 +577,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="paused">Paused</h3>
 
 A boolean, true or false, specifying whether the test should start in a paused state. To resume
 a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud` commands.
 
-| Env         | CLI              | Code / Config file |
-| ----------- | ---------------- | ------------------ |
-| `K6_PAUSED` | `--paused`, `-p` | `paused`           |
-
-Default
-
-false
-
-
+| Env         | CLI              | Code / Config file | Default |
+|-------------|------------------|--------------------|---------|
+| `K6_PAUSED` | `--paused`, `-p` | `paused`           | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -703,21 +597,16 @@ export let options = {
 
 </div>
 
+
 <h3 id="results-output">Results Output</h3>
 
 Specify the results output. Please go to [Results ouput](/getting-started/results-output) for more information
 on all output plugins available and how to configure them. Since version 0.21, this option can be
 specified multiple times. Available in `k6 run` command.
 
-| Env | CLI           | Code / Config file |
-| --- | ------------- | ------------------ |
-| N/A | `--out`, `-o` | N/A                |
-
-Default
-
-null
-
-
+| Env | CLI           | Code / Config file | Default |
+|-----|---------------|--------------------|---------|
+| N/A | `--out`, `-o` | N/A                | `null`  |
 
 <div class="code-group" data-props='{"labels": [ "Shell" ], "lineNumbers": [true]}'>
 
@@ -727,20 +616,15 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 </div>
 
+
 <h3 id="rps">RPS</h3>
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run`
 and `k6 cloud` commands.
 
-| Env      | CLI     | Code / Config file |
-| -------- | ------- | ------------------ |
-| `K6_RPS` | `--rps` | `rps`              |
-
-Default
-
-0 (unlimited)
-
-
+| Env      | CLI     | Code / Config file | Default         |
+|----------|---------|--------------------|-----------------|
+| `K6_RPS` | `--rps` | `rps`              | `0` (unlimited) |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -752,6 +636,7 @@ export let options = {
 
 </div>
 
+
 > ### Cloud runs
 >
 > There are a couple of considerations with this option when running cloud tests. The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
@@ -760,15 +645,9 @@ export let options = {
 
 Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
 
-| Env                | CLI | Code / Config file |
-| ------------------ | --- | ------------------ |
-| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     |
-
-Default
-
-`10s`
-
-
+| Env                | CLI | Code / Config file | Default |
+|--------------------|-----|--------------------|---------|
+| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"10s"` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -780,21 +659,16 @@ export let options = {
 
 </div>
 
+
 <h3 id="skip-tls-verification">Skip TLS Verification</h3>
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
 Available in `k6 run` and `k6 cloud` commands
 
-| Env                           | CLI                          | Code / Config file      |
-| ----------------------------- | ---------------------------- | ----------------------- |
-| `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` |
-
-Default
-
-false
-
-
+| Env                           | CLI                          | Code / Config file      | Default |
+|-------------------------------|------------------------------|-------------------------|---------|
+| `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -806,20 +680,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="stages">Stages</h3>
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
 ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands,
 
-| Env         | CLI                                                     | Code / Config file |
-| ----------- | ------------------------------------------------------- | ------------------ |
-| `K6_STAGES` | `--stage <duration>:<target>`, `-s <duration>:<target>` | `stages`           |
-
-Default
-
-Based on `vus` and `duration`.
-
-
+| Env         | CLI                                                     | Code / Config file | Default                        |
+|-------------|---------------------------------------------------------|--------------------|--------------------------------|
+| `K6_STAGES` | `--stage <duration>:<target>`, `-s <duration>:<target>` | `stages`           | Based on `vus` and `duration`. |
 
 <div class="code-group" data-props='{"labels": ["Code", "Shell"], "lineNumbers": [true]}'>
 
@@ -849,6 +718,7 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 
 </div>
 
+
 <h3 id="summary-export">Summary export</h3>
 
 > _New in v0.26.0_
@@ -860,15 +730,9 @@ integration with dashboards, external alerts, etc.
 
 Available in the `k6 run` command.
 
-| Env                 | CLI                           | Code / Config file |
-|---------------------|-------------------------------|--------------------|
-| `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                |
-
-Default
-
-null
-
-
+| Env                 | CLI                           | Code / Config file | Default |
+|---------------------|-------------------------------|--------------------|---------|
+| `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                | `null`  |
 
 <div class="code-group" data-props='{"labels": ["Code", "Shell"], "lineNumbers": [true]}'>
 
@@ -884,17 +748,14 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
 
+
 <h3 id="supply-env-var">Supply Env Var</h3>
 
 Add/override environment variable with VAR=value. Available in `k6 run` and `k6 cloud` commands.
 
-| Env | CLI           | Code / Config file |
-| --- | ------------- | ------------------ |
-| N/A | `--env`, `-e` | N/A                |
-
-Default
-
-
+| Env | CLI           | Code / Config file | Default |
+|-----|---------------|--------------------|---------|
+| N/A | `--env`, `-e` | N/A                | `null`  |
 
 <div class="code-group" data-props='{"labels": [ "Shell" ], "lineNumbers": [true]}'>
 
@@ -912,15 +773,9 @@ metrics. Some collectors like the `cloud` one may require that certain system ta
 You can specify the tags as an array from the JS scripts or as a comma-separated list via the
 CLI. Available in `k6 run` and `k6 cloud` commands
 
-| Env              | CLI             | Code / Config file |
-| ---------------- | --------------- | ------------------ |
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       |
-
-Default
-
-`proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version`
-
-
+| Env              | CLI             | Code / Config file | Default                                                                                          |
+|------------------|-----------------|--------------------|--------------------------------------------------------------------------------------------------|
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -932,20 +787,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="summary-trend-stats">Summary Trend Stats</h3>
 
 Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
 in `k6 run` command.
 
-| Env                      | CLI                     | Code / Config file  |
-| ------------------------ | ----------------------- | ------------------- |
-| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` |
-
-Default
-
-null
-
-
+| Env                      | CLI                     | Code / Config file  | Default |
+|--------------------------|-------------------------|---------------------|---------|
+| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -957,21 +807,16 @@ export let options = {
 
 </div>
 
+
 <h3 id="tags">Tags</h3>
 
 Specify tags that should be set test wide across all metrics. If a tag with the same name has
 been specified on a request, check or custom metrics it will have precedence over a test wide
 tag. Available in `k6 run` and `k6 cloud` commands.
 
-| Env | CLI                | Code / Config file |
-| --- | ------------------ | ------------------ |
-| N/A | `--tag NAME=VALUE` | `tags`             |
-
-Default
-
-null
-
-
+| Env | CLI                | Code / Config file | Default |
+|-----|--------------------|--------------------|---------|
+| N/A | `--tag NAME=VALUE` | `tags`             | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -985,20 +830,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="teardown-timeout">Teardown Timeout</h3>
 
 Specify how long the `teardown()` function is allowed to run before it's terminated and the test
 fails.
 
-| Env                   | CLI | Code / Config file |
-| --------------------- | --- | ------------------ |
-| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  |
-
-Default
-
-`10s`
-
-
+| Env                   | CLI | Code / Config file | Default |
+|-----------------------|-----|--------------------|---------|
+| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"10s"` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1017,15 +857,9 @@ A collection of threshold specifications to configure under what condition(s) a 
 successful or not, when it has passed or failed, based on metric data. To learn more, have a look
 at the [Thresholds](/using-k6/thresholds) documentation. Available in `k6 run` commands.
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `thresholds`       |
-
-Default
-
-null
-
-
+| Env | CLI | Code / Config file | Default |
+|-----|-----|--------------------|---------|
+| N/A | N/A | `thresholds`       | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1040,20 +874,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="throw">Throw</h3>
 
 A boolean, true or false, specifying whether to throw errors on failed HTTP requests or not.
 Available in `k6 run` and `k6 cloud` commands.
 
-| Env        | CLI             | Code / Config file |
-| ---------- | --------------- | ------------------ |
-| `K6_THROW` | `--throw`, `-w` | `throw`            |
-
-Default
-
-false
-
-
+| Env        | CLI             | Code / Config file | Default |
+|------------|-----------------|--------------------|---------|
+| `K6_THROW` | `--throw`, `-w` | `throw`            | `false` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1065,20 +894,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="tls-authentication">TLS Authentication</h3>
 
 A list of TLS client certificate configuration objects. Each object needs to specify for
 which host(s)/domain(s) the given client certificate is valid for.
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `tlsAuth`          |
-
-Default
-
-null
-
-
+| Env | CLI | Code / Config file | Default |
+|-----|-----|--------------------|---------|
+| N/A | N/A | `tlsAuth`          | `null`  |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1096,20 +920,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="tls-cipher-suites">TLS Cipher Suites</h3>
 
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `tlsCipherSuites`  |
-
-Default
-
-`null` - Allow all suites
-
-
+| Env | CLI | Code / Config file | Default                   |
+|-----|-----|--------------------|---------------------------|
+| N/A | N/A | `tlsCipherSuites`  | `null` (Allow all suites) |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1124,20 +943,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="tls-version">TLS Version</h3>
 
 Either a string representing the only SSL/TLS version allowed to be used in interactions with a
 server, or an object specifying the "min" and "max" versions allowed to be used.
 
-| Env | CLI | Code / Config file |
-| --- | --- | ------------------ |
-| N/A | N/A | `tlsVersion`       |
-
-Default
-
-`null` - Allow all versions
-
-:
+| Env | CLI | Code / Config file | Default                     |
+|-----|-----|--------------------|-----------------------------|
+| N/A | N/A | `tlsVersion`       | `null` (Allow all versions) |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1158,20 +972,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="user-agent">User Agent</h3>
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
 requests. Available in `k6 run` and `k6 cloud` commands
 
-| Env             | CLI            | Code / Config file |
-| --------------- | -------------- | ------------------ |
-| `K6_USER_AGENT` | `--user-agent` | `userAgent`        |
-
-Default
-
-`k6/0.20 (https://k6.io/)` (depending on the version you're using)
-
-
+| Env             | CLI            | Code / Config file | Default                                                               |
+|-----------------|----------------|--------------------|-----------------------------------------------------------------------|
+| `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `k6/0.27.0 (https://k6.io/)` (depending on the version you're using)` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1183,20 +992,15 @@ export let options = {
 
 </div>
 
+
 <h3 id="vus">VUs</h3>
 
 A number specifying the number of VUs to run concurrently. If you'd like more control look at
 the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
 
-| Env      | CLI           | Code / Config file |
-| -------- | ------------- | ------------------ |
-| `K6_VUS` | `--vus`, `-v` | `vus`              |
-
-Default
-
-1
-
-
+| Env      | CLI           | Code / Config file | Default |
+|----------|---------------|--------------------|---------|
+| `K6_VUS` | `--vus`, `-v` | `vus`              | `1`     |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -1208,6 +1012,7 @@ export let options = {
 
 </div>
 
+
 <h3 id="vus-max">VUs Max</h3>
 
 A number specifying max number of virtual users, if more than `vus`. This option is typically
@@ -1215,15 +1020,9 @@ used when the intent is to dynamically scale the amount of VUs up and down durin
 the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
 is used to preallocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
 
-| Env          | CLI           | Code / Config file |
-| ------------ | ------------- | ------------------ |
-| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           |
-
-Default
-
-0
-
-
+| Env          | CLI           | Code / Config file | Default         |
+|--------------|---------------|--------------------|-----------------|
+| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
