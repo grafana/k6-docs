@@ -42,7 +42,7 @@ export default function() {
 </div>
 
 The `failed requests` threshold specifies that we want our load test to be considered a failure 
-(resulting in k6 exiting with a nonzero exit code) if 10% or more of requests resulted in the server
+(resulting in k6 exiting with a non-zero exit code) if 10% or more of requests resulted in the server
 returning anything else than a 200-response. The `http_req_duration` threshold specifies that 
 95% of requests must complete within 500ms. 
 
@@ -109,6 +109,56 @@ export default function() {
 
 </div>
 
+### Threshold on group duration
+
+<div class="code-group" data-props='{"labels": ["threshold-group-duration.js"], "lineNumbers": [true]}'>
+
+```javascript
+import http from "k6/http";
+import { group, sleep } from "k6";
+import { Trend } from 'k6/metrics';
+
+let groupDuration = Trend("groupDuration");
+
+export let options = {
+  thresholds: {
+    'groupDuration{groupName:individualRequests}': ['avg < 200'],
+    'groupDuration{groupName:batchRequests}': ['avg < 200'],
+  },
+  vus: 1,
+  duration: '10s'
+};
+
+function groupWithDurationMetric(name, group_function) {
+  let start = new Date();
+  group(name, group_function);
+  let end = new Date();
+  groupDuration.add(end - start, {groupName: name})
+}
+
+export default function () {
+
+  groupWithDurationMetric("individualRequests", function () {
+    http.get('https://test-api.k6.io/public/crocodiles/1/');
+    http.get('https://test-api.k6.io/public/crocodiles/2/');
+    http.get('https://test-api.k6.io/public/crocodiles/3/');
+  });
+
+  groupWithDurationMetric("batchRequests", function () {
+    http.batch([
+      ['GET', `https://test-api.k6.io/public/crocodiles/1/`],
+      ['GET', `https://test-api.k6.io/public/crocodiles/2/`],
+      ['GET', `https://test-api.k6.io/public/crocodiles/3/`],
+    ]);
+  });
+
+  sleep(1);
+}
+```
+
+</div>
+
+
 You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 
@@ -121,8 +171,8 @@ Thresholds can be specified in a short or full format.
 ```js
 export let options = {
   thresholds: {
-    metric_name1: [ 'eval1', ... ], // short format
-    metric_name1: [ { threshold: 'eval1', abortOnFail: boolean, delayAbortEval: string }, ], // full format
+    metric_name1: [ 'threshold_expression', ... ], // short format
+    metric_name1: [ { threshold: 'threshold_expression', abortOnFail: boolean, delayAbortEval: string }, ], // full format
   }
 };
 ```
@@ -130,22 +180,26 @@ export let options = {
 </div>
 
 The above declaration inside a k6 script means that there will be a threshold configured for
-the metric `metric_name1`. To determine if the threshold has failed or passed, the string `'eval1'`
-will be executed by the JavaScript runtime. This means that `'eval1'` should be a valid JavaScript
-expression.
+the metric `metric_name1`. To determine if the threshold has failed or passed, the string `'threshold_expression'`
+will be evaluated. The `'threshold_expression'` must follow the following format.
 
-A threshold expression `'eval1'` is a snippet of JS code that is expected to evaluate to `true` or `false`. 
-Every time a threshold is being evaluated, k6 injects one or more variables into the JS context. 
-There are four metric types in k6, and each metric type provides its own set of variables that are injected and which can be used in threshold expressions. 
+`aggregation_method operator value` 
+
+Examples:
+ - `avg < 200` // average duration can't be larger than 200ms
+ - `count >= 500` // count must be larger or equal to 500 
+ - `p(90) < 300` // 90% of samples must be below 300
+
+A threshold expression evaluates to `true` or `false`. 
+There are four metric types in k6, and each metric type provides its own set of aggregation methods which can be used in threshold expressions. 
 
 
-| Metric type    | Threshold expression variables |
+| Metric type    | Aggregation methods |
 | -------------- | ------- | 
 | Counter | `count` and `rate` | 
 | Gauge | `value` | 
 | Rate | `rate` | 
-| Trend | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, eg. `p(99.99)` means the 99.99th percentile. The unit of these variables and functions are all in milliseconds. | 
-
+| Trend | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, eg. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. | 
 
 Here is a (slightly contrived) sample script that uses all different types of metrics, and sets
 different types of thresholds for them:
@@ -210,7 +264,7 @@ In k6, tagged requests create sub-metrics that can be used in thresholds as show
 ```javascript
 export let options = {
   thresholds: {
-    "metric_name{tag_name:tag_value}": ["eval1"],  
+    "metric_name{tag_name:tag_value}": ["threshold_expression"],  
   }
 }
 ```
@@ -269,7 +323,7 @@ support a JS object with parameters to control the abort behavior. The fields ar
 
 | Name           | Type    | Description                                                                                                                                                                                                               |
 | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| threshold      | string  | This is the JS expression string specifying the threshold condition to evaluate.                                                                                                                                          |
+| threshold      | string  | This is the threshold expression string specifying the threshold condition to evaluate.                                                                                                                                          |
 | abortOnFail    | boolean | Whether to abort the test if the threshold is evaluated to false before the test has completed.                                                                                                                           |
 | delayAbortEval | string  | If you want to delay the evaluation of the threshold for some time, to allow for some metric samples to be collected, you can specify the amount of time to delay using relative time strings like `10s`, `1m` and so on. |
 
