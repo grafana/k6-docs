@@ -109,36 +109,6 @@ export default function() {
 
 </div>
 
-### Threshold on a group duration
-
-<div class="code-group" data-props='{"labels": ["threshold-group-duration.js"], "lineNumbers": [true]}'>
-
-```JavaScript
-import http from "k6/http";
-import { check, group } from "k6";
-import { sleep } from 'k6';
-
-export let options = {
-  thresholds: {
-    // This group must finish in 400ms, at least 90% of the time.
-    'group_duration{group:::publicCrocodiles}': ['p(90) < 400'], 
-  }
-};
-
-export default function() {
-  group("publicCrocodiles", function() {
-    let inside1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
-    let inside2 = http.get('https://test-api.k6.io/public/crocodiles/2/');
-  });
-
-  let outside = http.get('https://test-api.k6.io/public/crocodiles/3/');
-
-  sleep(1);
-}
-```
-</div>
-
-
 You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 
