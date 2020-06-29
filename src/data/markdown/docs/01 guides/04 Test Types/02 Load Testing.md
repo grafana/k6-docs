@@ -24,10 +24,10 @@ You probably have some understanding about the amount of traffic your system is 
 This information will be useful when deciding what your performance goals should be, in other words, 
 how to configure the [performance thresholds](/using-k6/thresholds).
 
-Let's say you're seeing around 600 concurrent users on average and 1000 users during the peak hours of operation. 
+Let's say you're seeing around 60 concurrent users on average and 100 users during the peak hours of operation. 
 
 It's probably important to you to meet the performance goals both during normal hours and peak hours, 
-therefore it's recommended to configure the load test with the high load in mind - 1000 users in this case.
+therefore it's recommended to configure the load test with the high load in mind - 100 users in this case.
 
 ## Load Testing in k6
 
@@ -94,8 +94,8 @@ We recommend you to always include a ramp-up stage in all your Load Tests becaus
 
 ## Load Testing scenario - simulating a normal day
 You may also go one step further and configure the load test to resemble more closely your normal and peak conditions.
-In that case you could configure the load test to stay at 600 users for most of the day, and ramp-up 
-to 1000 users during the peak hours of operation, then ramp-down back to normal load. 
+In that case you could configure the load test to stay at 60 users for most of the day, and ramp-up 
+to 100 users during the peak hours of operation, then ramp-down back to normal load. 
 
 Make sure you don't go over your normal number of VUs - that's not load testing, it's [stress testing](/test-types/stress-testing).
 
