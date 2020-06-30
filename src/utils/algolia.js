@@ -53,7 +53,7 @@ const flatten = (arr) => {
   while (pointer--) {
     cache[pointer] = processMdxEntry(arr[pointer]);
   }
-  return cache.flat(2);
+  return cache.flatMap((entry) => entry);
 };
 
 // main query
