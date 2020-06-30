@@ -230,7 +230,78 @@ const pathCollisionDetector = (logger) => {
   };
 };
 
+// Get the text content of a node.
+// Prefer the node’s plain-text fields, otherwise serialize its children,
+// and if the given value is an array, serialize the nodes in it.
+const mdxAstToPlainText = (ast) => {
+  function $all(values) {
+    const result = [];
+    const { length } = values;
+    let index = -1;
+    while (++index < length) {
+      result[index] = $toString(values[index]);
+    }
+
+    return result.join(' ');
+  }
+
+  function $toString(node) {
+    const omitNodeTypes = ['jsx', 'import', 'export', 'comment', 'code'];
+    if (node) {
+      const { value, alt, title, children, type, length } = node;
+      const shouldProcessType = type && !omitNodeTypes.includes(type);
+      return (
+        (shouldProcessType && value) ||
+        (shouldProcessType && alt) ||
+        (shouldProcessType && title) ||
+        (shouldProcessType && children && $all(children)) ||
+        (shouldProcessType && length && $all(node)) ||
+        ''
+      );
+    }
+    return '';
+  }
+  return $toString(ast);
+};
+
+/*
+ * custom path processing rules, gatsby-node specific
+ */
+
+// guides category is the root: / or /docs in prod, so we removing that part
+const removeGuides = (path) => path.replace(/guides\//i, '');
+
+// examples page contains `examples` folder which causing path
+// duplication, removing it as well
+const dedupeExamples = (path) =>
+  path.replace(/examples\/examples/i, 'examples');
+
+// no /guides route; welcome is redirecting to the root path
+// difference from removeGuides: this one is for sidebar links processing and
+// the former is for creatingPages
+const removeGuidesAndRedirectWelcome = (path) =>
+  path.replace(/guides\/(getting-started\/welcome)?/i, '');
+
+// ensures that no trailing slash is left
+const noTrailingSlash = (path) =>
+  path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
+
 Object.defineProperties(utils, {
+  mdxAstToPlainText: {
+    value: mdxAstToPlainText,
+  },
+  noTrailingSlash: {
+    value: noTrailingSlash,
+  },
+  removeGuidesAndRedirectWelcome: {
+    value: removeGuidesAndRedirectWelcome,
+  },
+  dedupeExamples: {
+    value: dedupeExamples,
+  },
+  removeGuides: {
+    value: removeGuides,
+  },
   isInIFrame: {
     value: isInIFrame,
   },

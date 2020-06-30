@@ -23,6 +23,7 @@
   "dependencies": {
     "@storybook/react": "^5.2.5",
     "algoliasearch": "^3.35.1",
+    "chunk-text": "^1.0.5",
     "classnames": "^2.2.6",
     "date-fns": "^2.7.0",
     "dateformat": "^3.0.3",

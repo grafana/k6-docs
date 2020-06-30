@@ -10,6 +10,10 @@ const {
   getDocSection,
   buildBreadcrumbs,
   childrenToList,
+  noTrailingSlash,
+  removeGuides,
+  dedupeExamples,
+  removeGuidesAndRedirectWelcome,
 } = require('./src/utils/utils');
 const Path = require('path');
 
@@ -19,28 +23,6 @@ const isProduction = process.env.GATSBY_DEFAULT_MAIN_URL === 'https://k6.io';
 async function createDocPages({ graphql, actions, reporter }) {
   // initiating path collision checker
   const pathCollisionDetectorInstance = pathCollisionDetector(reporter.warn);
-  /*
-   * custom path processing rules
-   */
-
-  // guides category is the root: / or /docs in prod, so we removing that part
-  const removeGuides = (path) => path.replace(/guides\//i, '');
-
-  // examples page contains `examples` folder which causing path
-  // duplication, removing it as well
-  const dedupeExamples = (path) =>
-    path.replace(/examples\/examples/i, 'examples');
-
-  // no /guides route; welcome is redirecting to the root path
-  // difference from removeGuides: this one is for sidebar links processing and
-  // the former is for creatingPages
-  const removeGuidesAndRedirectWelcome = (path) =>
-    path.replace(/guides\/(getting-started\/welcome)?/i, '');
-
-  // ensures that no trailing slash is left
-  const noTrailingSlash = (path) =>
-    path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
-
   const {
     data: {
       allFile: { nodes },
@@ -82,13 +64,11 @@ async function createDocPages({ graphql, actions, reporter }) {
     // skip altogether if this content has draft flag
     // OR hideFromSidebar
     if ((draft === 'true' && isProduction) || hideFromSidebar) return;
-    const path = slugify(
-      `/${stripDirectoryPath(relativeDirectory, 'docs')}/${title.replace(
-        /\//g,
-        '-',
-      )}`,
-    );
     // titles like k6/html treated like paths otherwise
+    const path = `/${stripDirectoryPath(
+      relativeDirectory,
+      'docs',
+    )}/${title.replace(/\//g, '-')}`;
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, 'docs')),
       unorderify(name),
@@ -100,6 +80,7 @@ async function createDocPages({ graphql, actions, reporter }) {
             dedupeExamples,
             removeGuidesAndRedirectWelcome,
             unorderify,
+            slugify,
           )(path),
         title,
         redirect,
