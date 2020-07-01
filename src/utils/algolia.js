@@ -15,8 +15,12 @@ const processMdxEntry = ({ children: [entry] }) => {
     fileAbsolutePath,
     mdxAST,
     objectID,
-    frontmatter: { title },
+    frontmatter: { title, redirect },
   } = entry;
+  if (redirect) {
+    // avoid pushing empty records
+    return [];
+  }
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
   // cut the last piece (the actual name of a file) to match the generation
   // in node
@@ -68,6 +72,7 @@ const docPagesQuery = `{
         objectID: id
         frontmatter {
           title
+          redirect
         }
         mdxAST
         fileAbsolutePath

@@ -234,6 +234,15 @@ const pathCollisionDetector = (logger) => {
 // Prefer the node’s plain-text fields, otherwise serialize its children,
 // and if the given value is an array, serialize the nodes in it.
 const mdxAstToPlainText = (ast) => {
+  function $jsxToText(rawBody) {
+    return (
+      rawBody
+        // remove html tags
+        .replace(/<[^>]*>/g, '')
+        // remove line feeds with a single space
+        .replace(/\n{1,}/g, ' ')
+    );
+  }
   function $all(values) {
     const result = [];
     const { length } = values;
@@ -246,12 +255,12 @@ const mdxAstToPlainText = (ast) => {
   }
 
   function $toString(node) {
-    const omitNodeTypes = ['jsx', 'import', 'export', 'comment', 'code'];
+    const omitNodeTypes = ['import', 'export', 'comment', 'code'];
     if (node) {
       const { value, alt, title, children, type, length } = node;
       const shouldProcessType = type && !omitNodeTypes.includes(type);
       return (
-        (shouldProcessType && value) ||
+        (shouldProcessType && (type === 'jsx' ? $jsxToText(value) : value)) ||
         (shouldProcessType && alt) ||
         (shouldProcessType && title) ||
         (shouldProcessType && children && $all(children)) ||
