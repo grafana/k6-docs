@@ -323,7 +323,8 @@ export let options = {
 
 These options specify how to partition the test run and which segment to run.
 If defined, k6 will scale the number of VUs and iterations to be run for that
-segment, which is useful in distributed execution. Available in the `k6 run` command.
+segment, which is useful in distributed execution. Available in `k6 run` and
+`k6 cloud` commands.
 
 | Env | CLI                            | Code / Config file         | Default |
 |-----|--------------------------------|----------------------------|---------|

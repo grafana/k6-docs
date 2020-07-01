@@ -27,19 +27,46 @@ extensible.
 > if that's not the case.
 
 
-## Executor types
+## Shared configuration
 
+Below you can see the list of all executors and their options, but since all
+executors share a base configuration, the following options can be used for all:
+
+| Option         | Type   | Description                                                                      | Default     |
+|----------------|--------|----------------------------------------------------------------------------------|-------------|
+| `startTime`    | string | Time offset since test start this scenario should begin execution.               | `"0s"`      |
+| `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. | `"30s"`     |
+| `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
+| `env`          | object | Environment variables specific to this scenario.                                 | `{}`        |
+| `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
+
+
+## Executor types
 
 ### Shared iterations
 
-A fixed number of iterations are "shared" by all VUs, and the test ends once all
-iterations are executed. This executor is equivalent to the global `vus` and
+A fixed number of iterations are "shared" between a number of VUs, and the test ends
+once all iterations are executed. This executor is equivalent to the global `vus` and
 `iterations` options.
+
+Note that iterations aren't fairly distributed with this executor, and a VU that
+executes faster will complete more iterations than others.
 
 | Option        | Type    | Description                                                                    | Default |
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Total number of script iterations to execute across all VUs.                   | `1`     |
+| `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+
+
+### Per VU iterations
+
+Each VU executes an exact number of iterations.
+
+| Option        | Type    | Description                                                                    | Default |
+|---------------|---------|--------------------------------------------------------------------------------|---------|
+| `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
+| `iterations`  | integer | Number of script iterations to execute with each VU.                           | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 
@@ -66,37 +93,15 @@ amount of time. This executor is equivalent to the global `stages` option.
 | `gracefulRampDown` | string  | Time to wait for iterations to finish before starting new VUs.                | `"30s"` |
 
 
-### Externally controlled
-
-Control and scale execution at runtime via k6's REST API or the CLI.
-
-This executor formalizes what was [previously possible globally](https://k6.io/blog/how-to-control-a-live-k6-test),
-and using it is required in order to use the `pause`, `resume`, and `scale` CLI commands.
-
-| Option     | Type    | Description                                         | Default |
-|------------|---------|-----------------------------------------------------|---------|
-| `vus`      | integer | Number of VUs to run concurrently.                  | -       |
-| `duration` | string  | Total test duration.                                | -       |
-| `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
-
-
-### Per VU iterations
-
-Each VU executes a fixed number of iterations.
-
-| Option        | Type    | Description                                                                    | Default |
-|---------------|---------|--------------------------------------------------------------------------------|---------|
-| `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
-| `iterations`  | integer | Number of script iterations to execute with each VU.                           | `1`     |
-| `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
-
-
 ### Constant arrival rate
 
-A fixed number of iterations are executed in a specified period of time. This allows
-k6 to dynamically change the amount of VUs during a test run to achieve the specified
-amount of iterations per period, which is useful for a more accurate representation
-of RPS, for example. See [issue #550](https://github.com/loadimpact/k6/issues/550) for details.
+A fixed number of iterations are executed in a specified period of time.
+Since iteration execution time can vary because of test logic or the
+system-under-test responding more slowly, this executor will try to compensate
+by running a variable number of VUs--including initializing more in the middle
+of the test--in order to meet the configured iteration rate. This approach is
+useful for a more accurate representation of RPS, for example.
+See [issue #550](https://github.com/loadimpact/k6/issues/550) for details.
 <!-- Should we instead link to an article about open/closed testing models? -->
 
 | Option            | Type    | Description                                                                             | Default |
@@ -123,17 +128,20 @@ to dynamically change the number of VUs to achieve the configured iteration rate
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 
-## Shared configuration
+### Externally controlled
 
-All executors share a base configuration, so the following options can be used for all:
+Control and scale execution at runtime via k6's REST API or the CLI.
 
-| Option         | Type   | Description                                                                      | Default     |
-|----------------|--------|----------------------------------------------------------------------------------|-------------|
-| `startTime`    | string | Time offset since test start this scenario should begin execution.               | `"0s"`      |
-| `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. | `"30s"`     |
-| `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
-| `env`          | object | Environment variables specific to this scenario.                                 | `{}`        |
-| `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
+This executor formalizes what was [previously possible globally](https://k6.io/blog/how-to-control-a-live-k6-test),
+and using it is required in order to use the `pause`, `resume`, and `scale` CLI commands.
+Also note that arguments to `scale` to change the amount of active or maximum VUs
+only affect the externally controlled executor.
+
+| Option     | Type    | Description                                         | Default |
+|------------|---------|-----------------------------------------------------|---------|
+| `vus`      | integer | Number of VUs to run concurrently.                  | -       |
+| `duration` | string  | Total test duration.                                | -       |
+| `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
 
 
 ## Examples
@@ -152,10 +160,9 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    constant_arr_rate: {  // arbitrary scenario name
+    contacts: {  // arbitrary scenario name
       executor: 'constant-arrival-rate',
-      rate: 200,
-      timeUnit: '1s',
+      rate: 200,  // 200 RPS, since timeUnit is the default 1s
       duration: '1m',
       preAllocatedVUs: 50,
       maxVUs: 100,
@@ -164,7 +171,7 @@ export let options = {
 };
 
 export default function() {
-  http.get('https://test.k6.io/');
+  http.get('https://test.k6.io/contacts.php');
 }
 ```
 
@@ -182,7 +189,7 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    ramping_arrival: {  // arbitrary scenario name
+    contacts: {
       executor: 'ramping-arrival-rate',
       startRate: 50,
       timeUnit: '1s',
@@ -197,7 +204,7 @@ export let options = {
 };
 
 export default function() {
-  http.get('https://test.k6.io/');
+  http.get('https://test.k6.io/contacts.php');
 }
 ```
 
@@ -217,15 +224,15 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    const_vus: {
+    contacts: {
       executor: 'constant-vus',
-      exec: 'scenario1',
+      exec: 'contacts',
       vus: 50,
       duration: '30s',
     },
-    per_vu_iters: {
+    news: {
       executor: 'per-vu-iterations',
-      exec: 'scenario2',
+      exec: 'news',
       vus: 50,
       iterations: 100,
       startTime: '30s',
@@ -234,12 +241,12 @@ export let options = {
   }
 };
 
-export function scenario1() {
-  http.get('https://test.k6.io/', { tags: { scenario: '1' }} );
+export function contacts() {
+  http.get('https://test.k6.io/contacts.php', { tags: { my_custom_tag: 'contacts' }});
 }
 
-export function scenario2() {
-  http.get('https://test.k6.io/', { tags: { scenario: '2' }} );
+export function news() {
+  http.get('https://test.k6.io/news.php', { tags: { my_custom_tag: 'news' }});
 }
 ```
 
@@ -260,35 +267,35 @@ import { fail } from 'k6';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    const_vus: {
+    contacts: {
       executor: 'constant-vus',
-      exec: 'scenario1',
+      exec: 'contacts',
       vus: 50,
       duration: '30s',
-      tags: { scenario: '1' },
-      env: { SCENARIO: '1' },
+      tags: { my_custom_tag: 'contacts' },
+      env: { MYVAR: 'contacts' },
     },
-    per_vu_iters: {
+    news: {
       executor: 'per-vu-iterations',
-      exec: 'scenario2',
+      exec: 'news',
       vus: 50,
       iterations: 100,
       startTime: '30s',
       maxDuration: '1m',
-      tags: { scenario: '2' },
-      env: { SCENARIO: '2' },
+      tags: { my_custom_tag: 'news' },
+      env: { MYVAR: 'news' },
     },
   }
 };
 
-export function scenario1() {
-  if (__ENV.SCENARIO != '1') fail();
-  http.get('https://test.k6.io/');
+export function contacts() {
+  if (__ENV.MYVAR != 'contacts') fail();
+  http.get('https://test.k6.io/contacts.php');
 }
 
-export function scenario2() {
-  if (__ENV.SCENARIO != '2') fail();
-  http.get('https://test.k6.io/');
+export function news() {
+  if (__ENV.MYVAR != 'news') fail();
+  http.get('https://test.k6.io/news.php');
 }
 ```
 
