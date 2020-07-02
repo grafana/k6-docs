@@ -30,15 +30,17 @@ extensible.
 ## Shared configuration
 
 Below you can see the list of all executors and their options, but since all
-executors share a base configuration, the following options can be used for all:
+executors share a base configuration, the following options can be used for all*:
 
 | Option         | Type   | Description                                                                      | Default     |
 |----------------|--------|----------------------------------------------------------------------------------|-------------|
 | `startTime`    | string | Time offset since test start this scenario should begin execution.               | `"0s"`      |
-| `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. | `"30s"`     |
+| `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. See the [gracefulStop](#graceful-stop-and-ramp-down) section. | `"30s"`     |
 | `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
 | `env`          | object | Environment variables specific to this scenario.                                 | `{}`        |
 | `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
+
+\* Except `gracefulStop` which is disabled for the externally-controlled executor.
 
 
 ## Executor types
@@ -142,6 +144,63 @@ only affect the externally controlled executor.
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
 | `duration` | string  | Total test duration.                                | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
+
+
+## Graceful stop and ramp down
+
+In versions before v0.27.0, k6 would interrupt any iterations being executed if the
+test is done or when ramping down VUs when using the `stages` option. This behavior
+could cause skewed metrics and wasn't user configurable.
+
+In v0.27.0 a new option is introduced for all executors: `gracefulStop`. With a
+default value of `30s`, it specifies the time k6 should wait for iterations to
+complete before forcefully interrupting them.
+
+A similar option exists for the ramping VUs executor: `gracefulRampDown`. This
+specifies the time k6 should wait for any iterations in progress to finish before
+VUs are returned to the global pool during the ramp down period defined in `stages`.
+
+### Example
+
+<div class="code-group" data-props='{"labels": [ "graceful-stop.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '5s', target: 100 },
+        { duration: '5s', target: 0 },
+      ],
+      gracefulRampDown: '3s',
+      gracefulStop: '3s',
+    },
+  }
+};
+
+export default function () {
+  let delay = Math.floor(Math.random() * 5) + 1;
+  http.get(`https://httpbin.test.k6.io/delay/${delay}`);
+}
+```
+
+</div>
+
+Running this script would result in something like:
+
+```
+running (13.0s), 000/100 VUs, 177 complete and 27 interrupted iterations
+contacts ✓ [======================================] 001/100 VUs  10s
+```
+
+Notice that even though the total test duration is 10s, the actual run time was 13s
+because of `gracefulStop`, and some iterations were interrupted since they exceeded
+the configured 3s of both `gracefulStop` and `gracefulRampDown`.
 
 
 ## Examples
