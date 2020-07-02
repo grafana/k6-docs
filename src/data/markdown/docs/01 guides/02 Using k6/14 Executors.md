@@ -27,7 +27,7 @@ extensible.
 > if that's not the case.
 
 
-## Shared configuration
+## Common configuration
 
 Below you can see the list of all executors and their options, but since all
 executors share a base configuration, the following options can be used for all*:
