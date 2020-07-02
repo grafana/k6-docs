@@ -359,3 +359,8 @@ export function news() {
 ```
 
 </div>
+
+Note that by default a `scenario` tag with the name of the scenario as value is
+applied to all metrics in each scenario, which simplifies filtering metrics when
+using [result outputs](/getting-started/results-output). This can be disabled
+with the [`--system-tags` option](/using-k6/options#system-tags).

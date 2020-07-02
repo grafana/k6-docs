@@ -804,7 +804,7 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 
 | Env              | CLI             | Code / Config file | Default                                                                                          |
 |------------------|-----------------|--------------------|--------------------------------------------------------------------------------------------------|
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version` |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version`, `scenario` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
