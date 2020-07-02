@@ -60,6 +60,34 @@ executes faster will complete more iterations than others.
 | `iterations`  | integer | Total number of script iterations to execute across all VUs.                   | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
+#### Examples
+
+- Execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds:
+
+<div class="code-group" data-props='{"labels": [ "shared-iters.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {  // arbitrary scenario name
+      executor: 'shared-iterations',
+      vus: 10,
+      iterations: 200,
+      maxDuration: '10s',
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
+
 
 ### Per VU iterations
 
@@ -70,6 +98,35 @@ Each VU executes an exact number of iterations.
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Number of script iterations to execute with each VU.                           | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+
+#### Examples
+
+- Execute 20 iterations by 10 VUs *each*, for a total of 200 iterations, with a
+  maximum duration of 10 seconds:
+
+<div class="code-group" data-props='{"labels": [ "per-vu-iters.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'per-vu-iterations',
+      vus: 10,
+      iterations: 20,
+      maxDuration: '10s',
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
 
 
 ### Constant VUs
@@ -82,6 +139,33 @@ of time. This executor is equivalent to the global `vus` and `duration` options.
 | `vus`      | integer | Number of VUs to run concurrently.              | `1`     |
 | `duration` | string  | Total test duration (excluding `gracefulStop`). | -       |
 
+#### Examples
+
+- Run a constant 10 VUs for 10 seconds:
+
+<div class="code-group" data-props='{"labels": [ "constant-vus.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'constant-vus',
+      vus: 10,
+      duration: '10s',
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
+
 
 ### Ramping VUs
 
@@ -93,6 +177,41 @@ amount of time. This executor is equivalent to the global `stages` option.
 | `startVUs`         | integer | Number of VUs to run at test start.                                           | `1`     |
 | `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to. | `[]`    |
 | `gracefulRampDown` | string  | Time to wait for iterations to finish before starting new VUs.                | `"30s"` |
+
+#### Examples
+
+- Run a two-stage test, ramping up from 0 to 100 VUs for 5 seconds, and down to 0 VUs
+  for 5 seconds:
+
+<div class="code-group" data-props='{"labels": [ "ramping-vus.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '5s', target: 100 },
+        { duration: '5s', target: 0 },
+      ],
+      gracefulRampDown: '0s',
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
+
+Note the setting of `gracefulRampDown` to 0 seconds, which could cause some
+iterations to be interrupted during the ramp down stage.
 
 
 ### Constant arrival rate
@@ -114,6 +233,39 @@ See the [arrival rate](#arrival-rate) section for details.
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
+#### Examples
+
+- Execute a constant 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs:
+
+<div class="code-group" data-props='{"labels": [ "constant-arr-rate.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {  // arbitrary scenario name
+      executor: 'constant-arrival-rate',
+      rate: 200,  // 200 RPS, since timeUnit is the default 1s
+      duration: '1m',
+      preAllocatedVUs: 50,
+      maxVUs: 100,
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
+
+Note that in order to reliably achieve a fixed request rate, it's recommended to keep
+the function being executed very simple, with preferably only a single request call,
+and no additional processing or `sleep()` calls.
+
 
 ### Ramping arrival rate
 
@@ -131,21 +283,85 @@ See the [arrival rate](#arrival-rate) section for details.
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
+#### Examples
+
+- Execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0,
+  over a 1 minute period:
+
+<div class="code-group" data-props='{"labels": [ "ramping-arr-rate.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'ramping-arrival-rate',
+      startRate: 50,
+      timeUnit: '1s',
+      preAllocatedVUs: 50,
+      maxVUs: 100,
+      stages: [
+        { target: 200, duration: '30s' },
+        { target: 0, duration: '30s' },
+      ],
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
+
 
 ### Externally controlled
 
-Control and scale execution at runtime via k6's REST API or the CLI.
+Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or
+the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
-This executor formalizes what was [previously possible globally](https://k6.io/blog/how-to-control-a-live-k6-test),
-and using it is required in order to use the `pause`, `resume`, and `scale` CLI commands.
-Also note that arguments to `scale` to change the amount of active or maximum VUs
-only affect the externally controlled executor.
+This executor formalizes what was previously possible globally, and using it is
+required in order to use the `pause`, `resume`, and `scale` CLI commands. Also note
+that arguments to `scale` to change the amount of active or maximum VUs only affect
+the externally controlled executor.
 
 | Option     | Type    | Description                                         | Default |
 |------------|---------|-----------------------------------------------------|---------|
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
-| `duration` | string  | Total test duration.                                | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
+| `duration` | string  | Total test duration.                                | -       |
+
+#### Examples
+
+- Execute a test run controllable at runtime, starting with 0 VUs up to a maximum of
+  50, and a total duration of 10 minutes:
+
+<div class="code-group" data-props='{"labels": [ "externally-controlled.js" ], "lineNumbers": "[true]"}'>
+
+```js
+import http from 'k6/http';
+
+export let options = {
+  discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'externally-controlled',
+      vus: 0,
+      maxVUs: 50,
+      duration: '10m',
+    }
+  }
+};
+
+export default function() {
+  http.get('https://test.k6.io/contacts.php');
+}
+```
+
+</div>
 
 
 ## Arrival rate
@@ -159,9 +375,9 @@ In versions before v0.27.0, k6 would interrupt any iterations being executed if 
 test is done or when ramping down VUs when using the `stages` option. This behavior
 could cause skewed metrics and wasn't user configurable.
 
-In v0.27.0 a new option is introduced for all executors: `gracefulStop`. With a
-default value of `30s`, it specifies the time k6 should wait for iterations to
-complete before forcefully interrupting them.
+In v0.27.0 a new option is introduced for all executors (except externally-controlled):
+`gracefulStop`. With a default value of `30s`, it specifies the time k6 should wait
+for iterations to complete before forcefully interrupting them.
 
 A similar option exists for the ramping VUs executor: `gracefulRampDown`. This
 specifies the time k6 should wait for any iterations in progress to finish before
@@ -210,72 +426,7 @@ because of `gracefulStop`, and some iterations were interrupted since they excee
 the configured 3s of both `gracefulStop` and `gracefulRampDown`.
 
 
-## Examples
-
-- Execute a constant 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs.
-
-Note that in order to reliably achieve a fixed request rate, it's recommended to keep
-the function being executed very simple, with preferably only a single request call,
-and no additional processing or `sleep()` calls.
-
-<div class="code-group" data-props='{"labels": [ "constant-arr-rate.js" ], "lineNumbers": "[true]"}'>
-
-```js
-import http from 'k6/http';
-
-export let options = {
-  discardResponseBodies: true,
-  scenarios: {
-    contacts: {  // arbitrary scenario name
-      executor: 'constant-arrival-rate',
-      rate: 200,  // 200 RPS, since timeUnit is the default 1s
-      duration: '1m',
-      preAllocatedVUs: 50,
-      maxVUs: 100,
-    }
-  }
-};
-
-export default function() {
-  http.get('https://test.k6.io/contacts.php');
-}
-```
-
-</div>
-
-
-- Execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0,
-  over a 1 minute period:
-
-<div class="code-group" data-props='{"labels": [ "ramping-arr-rate.js" ], "lineNumbers": "[true]"}'>
-
-```js
-import http from 'k6/http';
-
-export let options = {
-  discardResponseBodies: true,
-  scenarios: {
-    contacts: {
-      executor: 'ramping-arrival-rate',
-      startRate: 50,
-      timeUnit: '1s',
-      preAllocatedVUs: 50,
-      maxVUs: 100,
-      stages: [
-        { target: 200, duration: '30s' },
-        { target: 0, duration: '30s' },
-      ],
-    }
-  }
-};
-
-export default function() {
-  http.get('https://test.k6.io/contacts.php');
-}
-```
-
-</div>
-
+## Advanced examples
 
 - Run as many iterations as possible with 50 VUs for 30s, and then run 100 iterations
   per VU of another scenario.
