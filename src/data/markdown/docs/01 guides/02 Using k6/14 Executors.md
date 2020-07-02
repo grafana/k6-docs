@@ -103,8 +103,8 @@ system-under-test responding more slowly, this executor will try to compensate
 by running a variable number of VUs--including initializing more in the middle
 of the test--in order to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
-See [issue #550](https://github.com/loadimpact/k6/issues/550) for details.
-<!-- Should we instead link to an article about open/closed testing models? -->
+
+See the [arrival rate](#arrival-rate) section for details.
 
 | Option            | Type    | Description                                                                             | Default |
 |-------------------|---------|-----------------------------------------------------------------------------------------|---------|
@@ -120,6 +120,8 @@ See [issue #550](https://github.com/loadimpact/k6/issues/550) for details.
 A variable number of iterations are executed in a specified period of time. This is
 similar to the ramping VUs executor, but for iterations instead, and k6 will attempt
 to dynamically change the number of VUs to achieve the configured iteration rate.
+
+See the [arrival rate](#arrival-rate) section for details.
 
 | Option            | Type    | Description                                                                             | Default |
 |-------------------|---------|-----------------------------------------------------------------------------------------|---------|
@@ -144,6 +146,11 @@ only affect the externally controlled executor.
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
 | `duration` | string  | Total test duration.                                | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
+
+
+## Arrival rate
+
+TODO (expand on https://github.com/loadimpact/k6/issues/550)
 
 
 ## Graceful stop and ramp down
