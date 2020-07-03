@@ -29,11 +29,13 @@ extensible.
 
 ## Common configuration
 
-Below you can see the list of all executors and their options, but since all
-executors share a base configuration, the following options can be used for all*:
+See [Executor types](#executor-types) for the list of all executors and their
+options, and the following options that can be used for all* executors as they
+share a common configuration:
 
 | Option         | Type   | Description                                                                      | Default     |
 |----------------|--------|----------------------------------------------------------------------------------|-------------|
+| `executor`     | string | Unique executor name. See the list of possible values below.                     | -           |
 | `startTime`    | string | Time offset since test start this scenario should begin execution.               | `"0s"`      |
 | `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. See the [gracefulStop](#graceful-stop-and-ramp-down) section. | `"30s"`     |
 | `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
@@ -41,6 +43,15 @@ executors share a base configuration, the following options can be used for all*
 | `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
 
 \* Except `gracefulStop` which is disabled for the externally-controlled executor.
+
+Possible values for `executor` are the executor name separated by hyphens:
+- `shared-iterations`
+- `per-vu-iterations`
+- `constant-vus`
+- `ramping-vus`
+- `constant-arrival-rate`
+- `ramping-arrival-rate`
+- `externally-controlled`
 
 
 ## Executor types
