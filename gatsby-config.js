@@ -97,6 +97,7 @@ const plugins = [
         'getBoundingClientRect',
         'Cannot read property \'getBoundingClientRect\' of undefined',
         'TypeError: undefined is not an object (evaluating \'n.content.getBoundingClientRect\')',
+        'n.content is undefined', // same as above.
       ],
       denyUrls: [
       ]
