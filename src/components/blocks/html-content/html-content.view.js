@@ -2,20 +2,33 @@ import React, { useRef } from 'react';
 import styles from './html-content.module.scss';
 import './html-content.scss';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 import { useElementsReplacement } from 'hooks';
 
-export const HtmlContent = ({ content, className, components }) => {
+export const HtmlContent = ({
+  content,
+  className,
+  componentsForNativeReplacement,
+  componentsForCustomReplacement,
+}) => {
   const containerRef = useRef(null);
   useElementsReplacement(
     {
       containerRef,
-      components,
+      components: componentsForCustomReplacement,
     },
     [content],
   );
-  return (
+  const MdxWrapper = ({ children }) => (
     <div ref={containerRef} className={`${styles.wrapper} ${className}`}>
-      <MDXRenderer>{content}</MDXRenderer>
+      {children}
     </div>
+  );
+  return (
+    <MDXProvider
+      components={{ ...componentsForNativeReplacement, wrapper: MdxWrapper }}
+    >
+      <MDXRenderer>{content}</MDXRenderer>
+    </MDXProvider>
   );
 };

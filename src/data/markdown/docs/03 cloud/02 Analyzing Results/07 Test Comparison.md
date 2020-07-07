@@ -3,13 +3,13 @@ title: 'Test comparison'
 excerpt: 'Use the k6 Cloud Results test comparison feature to compare data across different test runs.'
 ---
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### Test Comparison is for comparing runs of the same Test Script
+> #### Test Comparison is for comparing runs of the same Test Script
 >
 > When using test comparison, you may only compare tests from the same series of test runs. You are not able to compare two different test scripts.
 
-</div>
+</Blockquote>
 
 The test comparison feature built-in to k6 Cloud Results that allows you to compare the results of two different test runs of the same test script. You can compare high-level metrics, individual checks and URL endpoints. You may wish to compare against a previous test run to look for a measurable difference in some change you made. Or you may be comparing against a known baseline.
 
@@ -60,10 +60,10 @@ Next, [Sharing Results](/cloud/analyzing-results/test-results-menu#share-test-re
 
 When you use the "Add this graph to analysis tab" action in the other tabs, two charts will be added to the analysis panel, one for each test run. Same goes if you add a metric via the "Add metric to visualize" button, you'll get two charts.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
 > <b>Only metrics from current test run can be added to comparison chart</b><br/>
 > At this point metrics from the compared test run can't be added to the comparison chart.
 
-</div>
+</Blockquote>
 --->

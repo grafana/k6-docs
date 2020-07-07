@@ -3,15 +3,15 @@ title: 'In-app script editor'
 excerpt: 'How to use the k6 in-app script editor'
 ---
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<blockquote mod="warning">
 
-> ### Limitations of the in-app editor
+> #### Limitations of the in-app editor
 >
 > The in-app editor has access to all built-in k6 modules and remote modules available via
 > the web. If you need to import a custom library or file for parameterization, you
 > must trigger your test using the CLI.
 
-</div>
+</blockquote>
 
 ## Background
 

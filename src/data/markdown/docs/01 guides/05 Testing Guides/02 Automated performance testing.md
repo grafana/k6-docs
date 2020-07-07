@@ -4,7 +4,6 @@ head_title: 'How to Automate Performance Testing: The k6 Guide'
 excerpt: 'Automation is a hot topic in the testing community. This guide answers the WHY and HOW of Performance Testing Automation and gives you 6 steps to automate your performance tests.'
 ---
 
-import LdScript from 'components/pages/doc-page/ld-script';
 import {IntegrationsCiIconBlock} from 'templates/docs/integrations'
 
 Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always straightforward. Especially if you don’t already have a lot of experience in performance engineering.

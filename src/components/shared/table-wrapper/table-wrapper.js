@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './table-wrapper.module.scss';
 
-const TableWrapper = ({ mdBlockContent }) => (
+const TableWrapper = ({ children }) => (
   <div className={styles.tableWrapper}>
-    <table dangerouslySetInnerHTML={{ __html: mdBlockContent }} />
+    <table>{children}</table>
   </div>
 );
 

@@ -5,7 +5,7 @@ import { useLandmark, useElementsReplacement } from 'hooks';
 import { HeadingLandmark } from 'components/shared/heading';
 
 const components = {
-  h2: HeadingLandmark,
+  h2: HeadingLandmark('h2'),
 };
 
 const TableOfContents = forwardRef(
@@ -13,16 +13,18 @@ const TableOfContents = forwardRef(
     { style, label, contentContainerRef, shouldMakeReplacement = false },
     ref,
   ) => {
-    const replaced = useElementsReplacement({
+    useElementsReplacement({
       containerRef: contentContainerRef,
       components,
       shouldMakeReplacement,
     });
-    const links = useLandmark({
-      containerRef: contentContainerRef,
-      markSelector: 'h2',
-      shouldUseLandmark: replaced,
-    });
+    const links = useLandmark(
+      {
+        containerRef: contentContainerRef,
+        markSelector: 'h2',
+      },
+      [],
+    );
     const handleAnchorClick = (e, anchor) => {
       e.preventDefault();
       document.querySelector(anchor).scrollIntoView({

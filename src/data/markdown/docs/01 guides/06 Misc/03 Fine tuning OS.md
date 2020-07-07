@@ -1,6 +1,6 @@
 ---
-title: "Fine tuning OS"
-excerpt: ""
+title: 'Fine tuning OS'
+excerpt: ''
 ---
 
 A number of users while running their test scripts locally will run into limits within their OS which would prevent them from making the necessary number of requests to complete the test. This limit usually manifests itself in a form of **Too Many Open Files** error. These limits, if unchanged, can be a severe bottleneck if you choose to run a somewhat bigger or complicated test locally on your machine.
@@ -61,6 +61,7 @@ max user processes              (-u) 3736
 virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
+
 While `ulimit -Ha` will show all hard limits for the current user:
 
 ```bash
@@ -100,7 +101,7 @@ So, to reiterate, running commands above will show you the system limits on open
 
 ### Changing limits configuration
 
-The first thing you should consider before changing the configuration is the amount of network connections you expect your test to require. The http_reqs metric in the k6 result summary can hint at this, but a baseline calculation of number of max. VUs * number of HTTP requests in a single VU iteration will deliver a fair approximation. Note that k6 also deals with text files and other resources that count towards the "open files" quota, but network connections are the biggest consumers.
+The first thing you should consider before changing the configuration is the amount of network connections you expect your test to require. The http_reqs metric in the k6 result summary can hint at this, but a baseline calculation of number of max. VUs \* number of HTTP requests in a single VU iteration will deliver a fair approximation. Note that k6 also deals with text files and other resources that count towards the "open files" quota, but network connections are the biggest consumers.
 
 **> macOS**
 
@@ -159,7 +160,7 @@ alice hard nofile 1048576
 
 The new limits will be in place after logging out and back in.
 
-Alternatively, * hard nofile 1048576 would apply the setting for all non-root user accounts, and root hard nofile 1048576 for the root user. See the documentation in that file or man bash for the ulimit command documentation.
+Alternatively, \* hard nofile 1048576 would apply the setting for all non-root user accounts, and root hard nofile 1048576 for the root user. See the documentation in that file or man bash for the ulimit command documentation.
 
 **> macOS**
 
@@ -170,7 +171,6 @@ sudo nano /Library/LaunchDaemons/limit.maxfiles.plist
 ```
 
 This will open a text editor inside your terminal window where you will be prompted to provide your user password and then paste the following:
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -229,20 +229,20 @@ Again, after prompted for your password, you can paste the following and save an
  <false />
  </dict>
  </plist>
- ```
+```
 
- All that is left after this is to reboot your Mac back to the Recovery Mode, open the Terminal, turn the SIP back on with `csrutil enable` and check if the limits were changed with commands we used at the beginning.
+All that is left after this is to reboot your Mac back to the Recovery Mode, open the Terminal, turn the SIP back on with `csrutil enable` and check if the limits were changed with commands we used at the beginning.
 
 In most cases these limits should be enough to run most of your simple tests locally for some time, but you can modify the files above to any values you will need in your testing.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
 > Please be aware that all of these limitations are put in place to protect your operating system from files and applications that are poorly written and might leak memory like in huge quantities. We would suggest not going too overboard with the values, or you might find your system slowing down to a crawl if or when it runs out of RAM.
 
-</div>
-
+</Blockquote>
 
 ## Local port range
+
 When creating an outgoing network connection the kernel allocates a local (source) port for the connection from a range of available ports.
 
 **> GNU/Linux**
@@ -282,7 +282,7 @@ net.inet.ip.portrange.first: 49152
 net.inet.ip.portrange.last: 65535
 ```
 
-Once you run out of ephemeral ports, you will normally need to wait until the TIME_WAIT state expires (2 * maximum segment lifetime) until you can reuse a particular port number. You can double the number of ports by changing the range to start at 32768, which is the default on Linux and Solaris. (The maximum port number is 65535 so you cannot increase the high end.)
+Once you run out of ephemeral ports, you will normally need to wait until the TIME_WAIT state expires (2 \* maximum segment lifetime) until you can reuse a particular port number. You can double the number of ports by changing the range to start at 32768, which is the default on Linux and Solaris. (The maximum port number is 65535 so you cannot increase the high end.)
 
 ```bash
 $ sudo sysctl -w net.inet.ip.portrange.first=32768
@@ -293,6 +293,7 @@ net.inet.ip.portrange.first: 49152 -> 32768
 Note that the official range designated by IANA is 49152 to 65535, and some firewalls may assume that dynamically assigned ports fall within that range. You may need to reconfigure your firewall in order to make use of a larger range outside of your local network.
 
 ## General optimizations
+
 In this section we will go over some of the optimisations that are not necessarily dependant on your OS, but may impact your testing.
 
 ### RAM usage
@@ -304,6 +305,7 @@ As a baseline, count each VU instance to require between 1MB and 5MB of RAM, dep
 If you need to decrease the RAM usage, you could use the option `--compatibility-mode=base`. Read more on [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode).
 
 ### Virtual memory
+
 In addition to physical RAM, ensure that the system is configured with an appropriate amount of virtual memory, or swap space, in case higher memory usage bursts are required.
 
 You can see the status and amount of available swap space on your system with the commands swapon or free.
@@ -311,9 +313,11 @@ You can see the status and amount of available swap space on your system with th
 We won't go into swap configuration details here, but you can find several guides online.
 
 ### Network performance
+
 Because k6 can generate and sustain large amounts of network traffic, it also stresses the network stack of modern operating systems. Under certain loads or network conditions it's possible to achieve higher throughput and better performance by tweaking some network settings of the operating system or restructuring the network conditions of the test.
 
 ### TCP TIME_WAIT period
+
 TCP network applications, such as web clients and servers, are assigned a network socket pair (a unique combination of local address, local port, remote address, and remote port) for each incoming or outgoing connection. Typically this socket pair is used for a single HTTP request/response session, and closed soon after. However, even after a connection is successfully closed by the application, the kernel might still reserve resources for quickly reopening the same socket if a new matching TCP segment arrives. This also occurs during network congestion where some packets get lost in transmission. This places the socket in a TIME_WAIT state, and is released once the TIME_WAIT period expires. This period is typically configured between 15 seconds and 2 minutes.
 
 The problem some applications like k6 might run into is causing a high number of connections to end up in the TIME_WAIT state, which can prevent new network connections being created.

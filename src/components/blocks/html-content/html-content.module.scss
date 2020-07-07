@@ -111,7 +111,7 @@
       }
     }
   }
-  :not(pre) > code[class*='language-'] {
+  :not(pre) code[class='language-text'] {
     background: $color-additional-3;
     padding: 0 5px !important; // to fight another important @ code.module
     color: $color-primary !important;

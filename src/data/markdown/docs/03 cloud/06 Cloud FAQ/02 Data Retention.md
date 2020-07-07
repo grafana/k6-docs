@@ -3,16 +3,16 @@ title: 'What is Data Retention?'
 excerpt: 'What is k6 data retention and how does it work?'
 ---
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### Data Retention
+> #### Data Retention
 >
 > Data is retained on a rolling basis. Test result data older than what is specified in
 > your plan is automatically deleted. If you need to save data, please be sure to export,
 > set the test as baseline, or purchase a period of data retention that meets your
 > requirements.
 
-</div>
+</Blockquote>
 
 ## What is Data Retention?
 
