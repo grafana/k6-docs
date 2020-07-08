@@ -71,7 +71,7 @@ Make sure to meet the following requirements, otherwise we can't guarantee a wor
 1. You can specify your own custom metrics (defined in your script) to be exported to one or many APM platform(s).
 2. If the APM configuration has errors, e.g. invalid provider, wrong credentials, etc., the test will continue, but the metrics export(s) will be disabled.
 3. If you provide invalid custom metrics to the `export_metrics` field, the test will continue, but the metrics export(s) will not include the invalid custom metric.
-4. Provider name, export_metrics is case-sensitive.
+4. The `provider` (name) and metrics defined in `export_metrics` are case-sensitive.
 
 ## Feature Availability
 
