@@ -14,7 +14,7 @@ Currently, the following platforms are supported:
 | datadog   | <https://www.datadoghq.com> |
 | datadogeu | <https://www.datadoghq.eu>  |
 
-This list will be expanded in the future. Please [contact us](https://io/contact) if you would like an integration that isn't currently listed.
+This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
 
 ## Cloud APM Configuration
 
