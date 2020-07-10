@@ -419,7 +419,7 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 ```
 
 This tight coupling between the VU iteration duration and start of new VU iterations
-in effect means that the target system can influence the throughtput of the test, via
+in effect means that the target system can influence the throughput of the test, via
 its response time. Slower response times means longer iterations and a lower arrival
 rate of new iterations, and vice versa for faster response times.
 
@@ -428,7 +428,7 @@ slowly a closed model load test will play "nice" and wait, resulting in increase
 iteration durations and a tapering off of the arrival rate of new VU iterations.
 
 This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
-or more generally throuhgput (eg. requests per second).
+or more generally throughput (eg. requests per second).
 
 To fix this problem we use an open model, decoupling the start of new VU iterations
 from the iteration duration and the influence of the target system's response time.
