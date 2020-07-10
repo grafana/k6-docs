@@ -1,37 +1,64 @@
 ---
-title: Executors
+title: Scenarios
 excerpt: ''
 hideFromSidebar: false
 ---
 
-k6 v0.27.0 introduces the concept of _executors_: configurable modes of executing a
-JavaScript function that can model diverse traffic scenarios in load tests.
+k6 v0.27.0 introduces the concept of scenarios: configurable modes of scheduling VUs
+and iterations which can be used to model diverse traffic patterns in load tests.
 
-Multiple executors can be used in the same script, they can be scheduled to run
-parallel or in sequence, and each executor can run a different JS function with
-different environment variables and tags, so this brings a lot of flexibility with
-organizing and modeling testing scenarios.
+This is an optional feature and existing scripts and options will continue to work as before
+(with a few minor breaking changes, as mentioned
+in the [release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)),
+but please [create a bug issue](https://github.com/loadimpact/k6/issues/new?labels=bug&template=bug_report.md)
+if that's not the case.
 
-Existing global execution options such as `vus`, `duration` and `stages` were
-formalized into standalone executors, while new executors were added to support more
-advanced modes of execution. A major benefit of this restructuring is that support
-for new testing scenarios can be added relatively easily to k6, making it very
-extensible.
+There are several benefits of using scenarios in your tests:
+- Multiple scenarios can be declared in the same script, and each one can
+  execute a different JavaScript function, which makes organizing tests easier
+  and more flexible.
+- Every scenario can use a distinct VU and iteration scheduling pattern,
+  powered by a purpose-built [executor](#executors). This enables modeling
+  of advanced execution patterns which can better simulate real-world traffic.
+- They can be configured to run in sequence or parallel.
+- Different environment variables and tags can be set per scenario.
 
-> ### ⚠  Backwards compatibility
->
-> Note that pre-v0.27.0 scripts and options should continue to work
-> the same as before (with a few minor breaking changes, as mentioned
-> in the [release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0))
-> but please [create a bug issue](https://github.com/loadimpact/k6/issues/new?labels=bug&template=bug_report.md)
-> if that's not the case.
+If you're excited to try it out, make sure you're using
+[k6 v0.27.0 or above](https://github.com/loadimpact/k6/releases) and keep reading!
+Note that scenarios are supported both in k6 CLI (local) and
+[k6 Cloud](/cloud) execution.
 
 
-## Common configuration
+## Configuration
 
-See [Executor types](#executor-types) for the list of all executors and their
-options, and the following options that can be used for all* executors as they
-share a common configuration:
+Scenarios are primarily configured via the `options` object in your test script. For example:
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": "[false]"}'>
+
+```js
+export let options = {
+  scenarios: {
+    my_cool_scenario: {  // arbitrary and unique scenario name, will appear in the result summary, tags, etc.
+      executor: 'shared-iterations',  // name of the executor to use
+      // common scenario configuration
+      startTime: '10s',
+      gracefulStop: '5s',
+      env: { EXAMPLEVAR: 'testing' },
+      tags: { example_tag: 'testing' },
+      // executor-specific configuration
+      vus: 10,
+      iterations: 200,
+      maxDuration: '10s',
+    },
+    another_scenario: { ... }
+  }
+}
+```
+
+</div>
+
+
+### Common configuration
 
 | Option         | Type   | Description                                                                      | Default     |
 |----------------|--------|----------------------------------------------------------------------------------|-------------|
@@ -41,8 +68,6 @@ share a common configuration:
 | `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
 | `env`          | object | Environment variables specific to this scenario.                                 | `{}`        |
 | `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
-
-\* Except `gracefulStop` which is disabled for the externally-controlled executor.
 
 Possible values for `executor` are the executor name separated by hyphens:
 - `shared-iterations`
@@ -54,7 +79,11 @@ Possible values for `executor` are the executor name separated by hyphens:
 - `externally-controlled`
 
 
-## Executor types
+## Executors
+
+Executors are the workers of the k6 execution engine. Each one schedules VUs and
+iterations differently, and you'll choose one depending on the type of traffic you
+want to model to test your services.
 
 ### Shared iterations
 
@@ -83,7 +112,7 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    contacts: {  // arbitrary scenario name
+    contacts: {
       executor: 'shared-iterations',
       vus: 10,
       iterations: 200,
