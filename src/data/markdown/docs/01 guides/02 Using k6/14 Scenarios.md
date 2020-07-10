@@ -68,13 +68,13 @@ export let options = {
 | `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
 
 Possible values for `executor` are the executor name separated by hyphens:
-- `shared-iterations`
-- `per-vu-iterations`
-- `constant-vus`
-- `ramping-vus`
-- `constant-arrival-rate`
-- `ramping-arrival-rate`
-- `externally-controlled`
+- [`shared-iterations`](#shared-iterations)
+- [`per-vu-iterations`](#per-vu-iterations)
+- [`constant-vus`](#constant-vus)
+- [`ramping-vus`](#ramping-vus)
+- [`constant-arrival-rate`](#constant-arrival-rate)
+- [`ramping-arrival-rate`](#ramping-arrival-rate)
+- [`externally-controlled`](#externally-controlled)
 
 
 ## Executors
@@ -150,7 +150,7 @@ iterations will be `vus * iterations`.
 #### When to use
 
 Use this executor if you need a specific amount of VUs to complete the same amount of
-iterations. This can be useful when you have fixed sets of test data that you want to 
+iterations. This can be useful when you have fixed sets of test data that you want to
 partition between VUs.
 
 #### Examples
