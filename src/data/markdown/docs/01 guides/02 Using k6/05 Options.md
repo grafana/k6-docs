@@ -418,8 +418,8 @@ $ k6 run --include-system-env-vars ~/script.js
 A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
 a duration of time during which the script would run in a loop.
 \*Note: The number of iterations
-is split between all VUs. Available in `k6 run` command (not yet supported for cloud executed
-tests using the `k6 cloud` command).
+is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
+`k6 cloud` command as well.
 
 | Env             | CLI                  | Code / Config file | Default |
 |-----------------|----------------------|--------------------|---------|
