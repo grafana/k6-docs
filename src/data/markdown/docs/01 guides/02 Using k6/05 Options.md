@@ -34,6 +34,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Paused](#paused) | A boolean specifying whether the test should start in a paused state |
 | [Results Output](#results-output) | Specify the results output |
 | [RPS](#rps) | The maximum number of requests to make per second |
+| [Scenarios](#scenarios) | Define advanced execution scenarios |
 | [Setup Timeout](#setup-timeout) | Specify how long the `setup()` function is allow to run before it's terminated  |
 | [Skip TLS Verification](#skip-tls-verification) | A boolean specifying whether should ignore TLS verifications |
 | [Stages](#stages) | A list of objects that specify the target number of VUs to ramp up or down |
@@ -665,10 +666,47 @@ export let options = {
 
 </div>
 
-
 > ### Cloud runs
 >
 > There are a couple of considerations with this option when running cloud tests. The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
+
+
+<h3 id="rps">Scenarios</h3>
+
+Define one or more execution patterns, with various VU and iteration scheduling
+settings, running different exported functions (besides `default`!), using different
+environment variables, tags, and more.
+
+See the [Scenarios](/using-k6/scenarios) article for details and more examples.
+
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI | Code / Config file | Default         |
+|-----|-----|--------------------|-----------------|
+| N/A | N/A | `scenarios`        | `null`          |
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```js
+export let options = {
+  scenarios: {
+    my_api_scenario: {  // arbitrary scenario name
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '5s', target: 100 },
+        { duration: '5s', target: 0 },
+      ],
+      gracefulRampDown: '10s',
+      env: { MYVAR: 'example' },
+      tags: { my_tag: 'example' },
+    }
+  }
+};
+```
+
+</div>
+
 
 <h3 id="setup-timeout">Setup Timeout</h3>
 
