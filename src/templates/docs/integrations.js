@@ -62,7 +62,7 @@ const iconsDataSet1 = [
   {
     Icon: Json,
     name: 'JSON file',
-    to: '/results-visualization/apache-kafka',
+    to: '/results-visualization/json',
   },
   {
     Icon: () => (
