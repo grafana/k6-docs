@@ -146,7 +146,7 @@ iterations will be `vus * iterations`.
 | Option        | Type    | Description                                                                    | Default |
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
-| `iterations`  | integer | Number of script iterations to execute with each VU.                           | `1`     |
+| `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 #### When to use
@@ -287,8 +287,8 @@ iterations to be interrupted during the ramp down stage.
 A fixed number of iterations are executed in a specified period of time.
 Since iteration execution time can vary because of test logic or the
 system-under-test responding more slowly, this executor will try to compensate
-by running a variable number of VUs--including initializing more in the middle
-of the test--in order to meet the configured iteration rate. This approach is
+by running a variable number of VUs&mdash;including initializing more in the middle
+of the test&mdash;in order to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
 
 See the [arrival rate](#arrival-rate) section for details.
@@ -567,7 +567,7 @@ In v0.27.0 a new option is introduced for all executors (except externally-contr
 `gracefulStop`. With a default value of `30s`, it specifies the time k6 should wait
 for iterations to complete before forcefully interrupting them.
 
-A similar option exists for the ramping VUs executor: `gracefulRampDown`. This
+A similar option exists for the [ramping-vus](#ramping-vus) executor: `gracefulRampDown`. This
 specifies the time k6 should wait for any iterations in progress to finish before
 VUs are returned to the global pool during a ramp down period defined in `stages`.
 
