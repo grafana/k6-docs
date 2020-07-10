@@ -94,11 +94,18 @@ once all iterations are executed. This executor is equivalent to the global `vus
 Note that iterations aren't fairly distributed with this executor, and a VU that
 executes faster will complete more iterations than others.
 
+#### Options
+
 | Option        | Type    | Description                                                                    | Default |
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Total number of script iterations to execute across all VUs.                   | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+
+#### When to use
+
+This executor is suitable when you want a specific amount of VUs to complete a fixed
+number of total iterations, and the amount of iterations per VU is not important.
 
 #### Examples
 
@@ -131,13 +138,21 @@ export default function() {
 
 ### Per VU iterations
 
-Each VU executes an exact number of iterations.
+Each VU executes an exact number of iterations. The total number of completed
+iterations will be `vus * iterations`.
+
+#### Options
 
 | Option        | Type    | Description                                                                    | Default |
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Number of script iterations to execute with each VU.                           | `1`     |
 | `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+
+#### When to use
+
+Use this executor if you need a specific amount of VUs to complete the same amount of
+iterations.
 
 #### Examples
 
@@ -174,10 +189,16 @@ export default function() {
 A fixed number of VUs execute as many iterations as possible for a specified amount
 of time. This executor is equivalent to the global `vus` and `duration` options.
 
+#### Options
+
 | Option     | Type    | Description                                     | Default |
 |------------|---------|-------------------------------------------------|---------|
 | `vus`      | integer | Number of VUs to run concurrently.              | `1`     |
 | `duration` | string  | Total test duration (excluding `gracefulStop`). | -       |
+
+#### When to use
+
+Use this executor if you need a specific amount of VUs to run for a certain amount of time.
 
 #### Examples
 
@@ -212,11 +233,18 @@ export default function() {
 A variable number of VUs execute as many iterations as possible for a specified
 amount of time. This executor is equivalent to the global `stages` option.
 
+#### Options
+
 | Option             | Type    | Description                                                                   | Default |
 |--------------------|---------|-------------------------------------------------------------------------------|---------|
 | `startVUs`         | integer | Number of VUs to run at test start.                                           | `1`     |
 | `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to. | `[]`    |
 | `gracefulRampDown` | string  | Time to wait for iterations to finish before starting new VUs.                | `"30s"` |
+
+#### When to use
+
+This executor is a good fit if you need VUs to ramp up or down during specific periods
+of time.
 
 #### Examples
 
@@ -265,6 +293,8 @@ useful for a more accurate representation of RPS, for example.
 
 See the [arrival rate](#arrival-rate) section for details.
 
+#### Options
+
 | Option            | Type    | Description                                                                             | Default |
 |-------------------|---------|-----------------------------------------------------------------------------------------|---------|
 | `rate`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
@@ -272,6 +302,11 @@ See the [arrival rate](#arrival-rate) section for details.
 | `duration`        | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`).          | -       |
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+
+#### When to use
+
+When you want to maintain a constant number of requests without being affected by the
+system-under-test's performance.
 
 #### Examples
 
@@ -315,6 +350,8 @@ to dynamically change the number of VUs to achieve the configured iteration rate
 
 See the [arrival rate](#arrival-rate) section for details.
 
+#### Options
+
 | Option            | Type    | Description                                                                             | Default |
 |-------------------|---------|-----------------------------------------------------------------------------------------|---------|
 | `startRate`       | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
@@ -322,6 +359,11 @@ See the [arrival rate](#arrival-rate) section for details.
 | `stages`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+
+#### When to use
+
+If you need your tests to not be affected by the system-under-test's performance, and
+would like to ramp the number of iterations up or down during specific periods of time.
 
 #### Examples
 
@@ -368,11 +410,17 @@ required in order to use the `pause`, `resume`, and `scale` CLI commands. Also n
 that arguments to `scale` to change the amount of active or maximum VUs only affect
 the externally controlled executor.
 
+#### Options
+
 | Option     | Type    | Description                                         | Default |
 |------------|---------|-----------------------------------------------------|---------|
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
 | `duration` | string  | Total test duration.                                | -       |
+
+#### When to use
+
+If you want to control the number of VUs while the test is running.
 
 #### Examples
 
