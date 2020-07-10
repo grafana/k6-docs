@@ -569,7 +569,7 @@ for iterations to complete before forcefully interrupting them.
 
 A similar option exists for the ramping VUs executor: `gracefulRampDown`. This
 specifies the time k6 should wait for any iterations in progress to finish before
-VUs are returned to the global pool during the ramp down period defined in `stages`.
+VUs are returned to the global pool during a ramp down period defined in `stages`.
 
 ### Example
 
