@@ -320,7 +320,7 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    contacts: {  // arbitrary scenario name
+    contacts: {
       executor: 'constant-arrival-rate',
       rate: 200,  // 200 RPS, since timeUnit is the default 1s
       duration: '1m',
