@@ -69,6 +69,7 @@ Currently, k6 automatically creates the following tags by default:
 | `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                                |
 | `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
 | `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
+| `scenario`    | the name of the scenario where the metric was emitted                                                                                                                             |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
