@@ -4,24 +4,22 @@ excerpt: ''
 hideFromSidebar: false
 ---
 
-k6 v0.27.0 introduces the concept of scenarios: configurable modes of scheduling VUs
-and iterations which can be used to model diverse traffic patterns in load tests.
+k6 v0.27.0 introduced the concept of scenarios: configurable modes of scheduling VUs
+and iterations, which can be used to model diverse traffic patterns in load tests.
 
 This is an optional feature and existing scripts and options will continue to work as before
 (with a few minor breaking changes, as mentioned
-in the [release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)),
-but please [create a bug issue](https://github.com/loadimpact/k6/issues/new?labels=bug&template=bug_report.md)
-if that's not the case.
+in the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
 
 There are several benefits of using scenarios in your tests:
 - Multiple scenarios can be declared in the same script, and each one can
-  execute a different JavaScript function, which makes organizing tests easier
+  independently execute a different JavaScript function, which makes organizing tests easier
   and more flexible.
 - Every scenario can use a distinct VU and iteration scheduling pattern,
   powered by a purpose-built [executor](#executors). This enables modeling
   of advanced execution patterns which can better simulate real-world traffic.
-- They can be configured to run in sequence or parallel.
-- Different environment variables and tags can be set per scenario.
+- They can be configured to run in sequence or parallel, or in any mix of the two.
+- Different environment variables and metric tags can be set per scenario.
 
 If you're excited to try it out, make sure you're using
 [k6 v0.27.0 or above](https://github.com/loadimpact/k6/releases) and keep reading!
@@ -31,7 +29,7 @@ Note that scenarios are supported both in k6 CLI (local) and
 
 ## Configuration
 
-Scenarios are primarily configured via the `options` object in your test script. For example:
+Execution scenarios are primarily configured via the `scenarios` key of the the exported `options` object in your test scripts. For example:
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": "[false]"}'>
 
@@ -81,7 +79,7 @@ Possible values for `executor` are the executor name separated by hyphens:
 
 ## Executors
 
-Executors are the workers of the k6 execution engine. Each one schedules VUs and
+Executors are the workhorses of the k6 execution engine. Each one schedules VUs and
 iterations differently, and you'll choose one depending on the type of traffic you
 want to model to test your services.
 
@@ -100,7 +98,7 @@ executes faster will complete more iterations than others.
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Total number of script iterations to execute across all VUs.                   | `1`     |
-| `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+| `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 #### When to use
 
@@ -147,17 +145,18 @@ iterations will be `vus * iterations`.
 |---------------|---------|--------------------------------------------------------------------------------|---------|
 | `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
 | `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                | `1`     |
-| `maxDuration` | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+| `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 #### When to use
 
 Use this executor if you need a specific amount of VUs to complete the same amount of
-iterations.
+iterations. This can be useful when you have fixed sets of test data that you want to 
+partition between VUs.
 
 #### Examples
 
 - Execute 20 iterations by 10 VUs *each*, for a total of 200 iterations, with a
-  maximum duration of 10 seconds:
+  maximum duration of 1 hour and 30 minutes:
 
 <div class="code-group" data-props='{"labels": [ "per-vu-iters.js" ], "lineNumbers": "[true]"}'>
 
@@ -171,7 +170,7 @@ export let options = {
       executor: 'per-vu-iterations',
       vus: 10,
       iterations: 20,
-      maxDuration: '10s',
+      maxDuration: '1h30m',
     }
   }
 };
@@ -194,7 +193,7 @@ of time. This executor is equivalent to the global `vus` and `duration` options.
 | Option     | Type    | Description                                     | Default |
 |------------|---------|-------------------------------------------------|---------|
 | `vus`      | integer | Number of VUs to run concurrently.              | `1`     |
-| `duration` | string  | Total test duration (excluding `gracefulStop`). | -       |
+| `duration` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
 
 #### When to use
 
@@ -202,7 +201,7 @@ Use this executor if you need a specific amount of VUs to run for a certain amou
 
 #### Examples
 
-- Run a constant 10 VUs for 10 seconds:
+- Run a constant 10 VUs for 45 minutes:
 
 <div class="code-group" data-props='{"labels": [ "constant-vus.js" ], "lineNumbers": "[true]"}'>
 
@@ -212,16 +211,17 @@ import http from 'k6/http';
 export let options = {
   discardResponseBodies: true,
   scenarios: {
-    contacts: {
+    my_awesome_api_test: {
       executor: 'constant-vus',
       vus: 10,
-      duration: '10s',
+      duration: '45m',
     }
   }
 };
 
 export default function() {
-  http.get('https://test.k6.io/contacts.php');
+  http.get('https://test-api.k6.io/');
+  sleep(Math.random() * 3);
 }
 ```
 
@@ -287,7 +287,7 @@ iterations to be interrupted during the ramp down stage.
 A fixed number of iterations are executed in a specified period of time.
 Since iteration execution time can vary because of test logic or the
 system-under-test responding more slowly, this executor will try to compensate
-by running a variable number of VUs&mdash;including initializing more in the middle
+by running a variable number of VUs&mdash;including potentially initializing more in the middle
 of the test&mdash;in order to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
 
@@ -299,14 +299,14 @@ See the [arrival rate](#arrival-rate) section for details.
 |-------------------|---------|-----------------------------------------------------------------------------------------|---------|
 | `rate`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
 | `timeUnit`        | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| `duration`        | string  | Maximum test duration before it's forcibly stopped (excluding `gracefulStop`).          | -       |
+| `duration`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 #### When to use
 
 When you want to maintain a constant number of requests without being affected by the
-system-under-test's performance.
+performance of the system under test.
 
 #### Examples
 
@@ -422,6 +422,8 @@ the externally controlled executor.
 
 If you want to control the number of VUs while the test is running.
 
+Important: this is the only executor that is not supported in `k6 cloud`, it can only be used locally with `k6 run`.
+
 #### Examples
 
 - Execute a test run controllable at runtime, starting with 0 VUs up to a maximum of
@@ -528,7 +530,7 @@ export let options = {
       rate: 1,
       timeUnit: '1s',
       duration: '1m',
-      preAllocatedVUs: 1,
+      preAllocatedVUs: 20,
       maxVUs: 100,
     }
   }
