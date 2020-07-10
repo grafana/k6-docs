@@ -416,7 +416,7 @@ of the VU's `exec` function, by default the `export default function`):
 <div class="code-group" data-props='{"labels": [ "closed-model.js" ], "lineNumbers": "[true]"}'>
 
 ```js
-import http from "k6/http";
+import http from 'k6/http';
 
 export let options = {
   scenarios: {
@@ -471,7 +471,7 @@ two arrival rate executors to chose from for your scenario(s),
 <div class="code-group" data-props='{"labels": [ "open-model.js" ], "lineNumbers": "[true]"}'>
 
 ```js
-import http from "k6/http";
+import http from 'k6/http';
 
 export let options = {
   scenarios: {
