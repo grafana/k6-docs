@@ -142,6 +142,81 @@ export default function () {
 
 </div>
 
+The above can be mitigated after v0.27.0 somewhat easier as while there is still no way to share
+memory between VUs, the __VU variable is now defined during the init context which means that we can
+split the data between the VUs during initialization and not have to have multiple copies of it.
+
+<div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
+
+```javascript
+var splits = 100; // in how many parts are we going to split the data
+
+if (__VU == 0) {
+    open("./data.json"); // we just open it so it is available in the cloud or if we do k6 archive
+} else {
+    var data = function() { // separate function in order to not leak the all the data in the main scope
+        var all_data = JSON.parse(open("./data.json")); // we load and parse the data in one go, no need for temp variables
+        var part_size = all_data.length / splits;
+        var index = part_size * (__VU % splits);
+        return all_data.slice(index, index+part_size);
+    }()
+}
+
+export default function() {
+    console.log("VU="+__VU+ " has "+ data.length+ " data");
+}
+```
+
+</div>
+with 100k lines like:
+```
+    { "username": "test", "password": "qwerty" },
+```
+and a total of 4.8mb the script uses 3.5GB to start 300 VUs, while without it for 100 VUs (with all the data for each VU) it requires nearly 10GB.
+For direct comparison 100VUs used near 2GB of memory.
+
+Playing with the value for `splits` will give a different balance between memory used and the amount of data each VU has.
+
+A second approach using another technique will be to pre split the data in different files and load and parse only the one for each VU.
+
+<div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
+
+```javascript
+import papaparse from "https://jslib.k6.io/papaparse/5.1.1/index.js";
+import {sleep} from "k6";
+
+let dataFiles = [
+    './data1.csv',
+    './data2.csv',
+    './data3.csv',
+    './data4.csv',
+    './data5.csv',
+    './data6.csv',
+    './data7.csv',
+    './data8.csv',
+    './data9.csv',
+    './data10.csv',
+];
+var csvData;
+if (__VU == 0) { // workaround to collect all files for the cloud execution
+    for(let i=0; i<dataFiles.length; i++){
+        open(dataFiles[i]);
+    }
+} else {
+    csvData = papaparse.parse(open(dataFiles[__VU%dataFiles.length]), { header: true }).data;
+}
+export default function() {
+    sleep(10);
+}
+```
+
+</div>
+
+The files have 10k lines and are in total 128kb, running 100VUs with this script takes around 2GB, while running the same with a single file takes upwards of 15GBs.
+
+Both approaches work both for json and csv files and can be combined, as that will probably reduce the memory pressure during the initialization even further.
+
+
 ## Generating data
 
 See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.
