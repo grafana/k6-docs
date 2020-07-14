@@ -181,6 +181,9 @@ export default function() {
 
 </div>
 
+This can also be accomplished with more advanced configuration using
+[scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+
 ## Running cloud tests
 
 k6 supports three execution modes to run your k6 tests:
@@ -189,7 +192,7 @@ k6 supports three execution modes to run your k6 tests:
 - [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
 - Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/loadimpact/k6/issues/140).
 
-One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script. 
+One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script.
 
 For running cloud tests from the CLI, you must first register a k6 Cloud account and then log into your account via the CLI. Then, you only have to pass your existing script to the `k6 cloud` command.
 
