@@ -23,7 +23,7 @@ This will, in turn, make your test more realistic.
 > Cloud service allots 8GB of memory for every 300VUs.
 > When executing cloud tests, make sure your data files aren't exceeding this limit or your test run may get aborted.
 >
-> With version v0.27.0 there are some [tricks that can be used to better handle bigger data files](#handling-bigger-data-files).
+> Starting with k6 v0.27.0, there are some [tricks that can be used to better handle bigger data files](#handling-bigger-data-files).
 
 </div>
 
