@@ -158,9 +158,9 @@ Writing your own script is the recommended way to create your load test script, 
 
 ### Converters for API testing tools
 
-We have developed two (actually more) converters for you to be able to convert your existing Postman collections or your existing Swagger/OpenAPI specification documents to k6 scripts. Although fairly easy to use, the output script is not 100 percent accurate, since they uses wrapper APIs and limited functionality (postman-to-k6) or have limited support for all the features (openapi-to-k6). Use them to create the skeleton of your script, then try to eventually modify it or your own script.
+We have developed two (actually more) converters for you to convert your existing Postman collections or Swagger/OpenAPI specification documents to k6 scripts. Although fairly easy to use, the output script is not 100 percent accurate, since they use wrapper APIs and limited functionality (postman-to-k6), or have limited support for all the features (openapi-to-k6). Use them to create the skeleton of your script, then modify or use it in your own script.
 
-The postman-to-k6 converter produces non-idiomatic k6 scripts, because it uses wrapper for various functionality inside Postman and it has its own limitations. On the other hand, the openapi-to-k6 converter produces idiomatic k6 scripts, yet not every single OpenAPI specification is supported.
+The postman-to-k6 converter produces non-idiomatic k6 scripts, because it uses a wrapper for various functionality inside Postman, and has its own limitations. On the other hand, the openapi-to-k6 converter produces idiomatic k6 scripts, yet not every single OpenAPI specification is supported.
 
 **Postman-to-k6**
 
