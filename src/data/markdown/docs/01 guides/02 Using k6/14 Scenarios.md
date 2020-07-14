@@ -12,6 +12,7 @@ This is an optional feature and existing scripts and options will continue to wo
 in the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
 
 There are several benefits of using scenarios in your tests:
+
 - Multiple scenarios can be declared in the same script, and each one can
   independently execute a different JavaScript function, which makes organizing tests easier
   and more flexible.
@@ -58,14 +59,14 @@ export let options = {
 
 ### Common configuration
 
-| Option         | Type   | Description                                                                      | Default     |
-|----------------|--------|----------------------------------------------------------------------------------|-------------|
-| `executor`     | string | Unique executor name. See the list of possible values below.                     | -           |
-| `startTime`    | string | Time offset since test start this scenario should begin execution.               | `"0s"`      |
+| Option         | Type   | Description                                                                                                                                    | Default     |
+| -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `executor`     | string | Unique executor name. See the list of possible values below.                                                                                   | -           |
+| `startTime`    | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                  | `"0s"`      |
 | `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. See the [gracefulStop](#graceful-stop-and-ramp-down) section. | `"30s"`     |
-| `exec`         | string | Name of exported JS function to execute.                                         | `"default"` |
-| `env`          | object | Environment variables specific to this scenario.                                 | `{}`        |
-| `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                     | `{}`        |
+| `exec`         | string | Name of exported JS function to execute.                                                                                                       | `"default"` |
+| `env`          | object | Environment variables specific to this scenario.                                                                                               | `{}`        |
+| `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |
 
 Possible values for `executor` are the executor name separated by hyphens:
 - [`shared-iterations`](#shared-iterations)
@@ -94,10 +95,10 @@ executes faster will complete more iterations than others.
 
 #### Options
 
-| Option        | Type    | Description                                                                    | Default |
-|---------------|---------|--------------------------------------------------------------------------------|---------|
-| `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
-| `iterations`  | integer | Total number of script iterations to execute across all VUs.                   | `1`     |
+| Option        | Type    | Description                                                                        | Default |
+| ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
+| `vus`         | integer | Number of VUs to run concurrently.                                                 | `1`     |
+| `iterations`  | integer | Total number of script iterations to execute across all VUs.                       | `1`     |
 | `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 #### When to use
@@ -141,10 +142,10 @@ iterations will be `vus * iterations`.
 
 #### Options
 
-| Option        | Type    | Description                                                                    | Default |
-|---------------|---------|--------------------------------------------------------------------------------|---------|
-| `vus`         | integer | Number of VUs to run concurrently.                                             | `1`     |
-| `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                | `1`     |
+| Option        | Type    | Description                                                                        | Default |
+| ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
+| `vus`         | integer | Number of VUs to run concurrently.                                                 | `1`     |
+| `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                    | `1`     |
 | `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 #### When to use
@@ -190,9 +191,9 @@ of time. This executor is equivalent to the global `vus` and `duration` options.
 
 #### Options
 
-| Option     | Type    | Description                                     | Default |
-|------------|---------|-------------------------------------------------|---------|
-| `vus`      | integer | Number of VUs to run concurrently.              | `1`     |
+| Option     | Type    | Description                                         | Default |
+| ---------- | ------- | --------------------------------------------------- | ------- |
+| `vus`      | integer | Number of VUs to run concurrently.                  | `1`     |
 | `duration` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
 
 #### When to use
@@ -236,7 +237,7 @@ amount of time. This executor is equivalent to the global `stages` option.
 #### Options
 
 | Option             | Type    | Description                                                                   | Default |
-|--------------------|---------|-------------------------------------------------------------------------------|---------|
+| ------------------ | ------- | ----------------------------------------------------------------------------- | ------- |
 | `startVUs`         | integer | Number of VUs to run at test start.                                           | `1`     |
 | `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to. | `[]`    |
 | `gracefulRampDown` | string  | Time to wait for iterations to finish before starting new VUs.                | `"30s"` |
@@ -296,7 +297,7 @@ See the [arrival rate](#arrival-rate) section for details.
 #### Options
 
 | Option            | Type    | Description                                                                             | Default |
-|-------------------|---------|-----------------------------------------------------------------------------------------|---------|
+| ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
 | `rate`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
 | `timeUnit`        | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
 | `duration`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
@@ -353,7 +354,7 @@ See the [arrival rate](#arrival-rate) section for details.
 #### Options
 
 | Option            | Type    | Description                                                                             | Default |
-|-------------------|---------|-----------------------------------------------------------------------------------------|---------|
+| ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
 | `startRate`       | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
 | `timeUnit`        | string  | Period of time to apply the `startRate` the `stages` `target` value.                    | `"1s"`  |
 | `stages`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
@@ -405,15 +406,17 @@ export default function() {
 Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
-This executor formalizes what was previously possible globally, and using it is
-required in order to use the `pause`, `resume`, and `scale` CLI commands. Also note
-that arguments to `scale` to change the amount of active or maximum VUs only affect
-the externally controlled executor.
+Previously, the `pause`, `resume`, and `scale` CLI commands were used to globally control
+k6 execution. This executor does the same job by providing a better API that can be used to
+control k6 execution at runtime.
+
+Note that, passing arguments to the `scale` CLI command for changing the amount of active or
+maximum VUs will only affect the externally controlled executor.
 
 #### Options
 
 | Option     | Type    | Description                                         | Default |
-|------------|---------|-----------------------------------------------------|---------|
+| ---------- | ------- | --------------------------------------------------- | ------- |
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
 | `duration` | string  | Total test duration.                                | -       |
@@ -456,12 +459,11 @@ export default function() {
 
 ## Arrival rate
 
-Up until v0.27.0 k6 only supported a closed model for the simulation of new VU arrivals,
-or expressed in another way, the start of new VU iterations.
-In a closed model a new VU iteration only starts when a VU's previous iteration has
-completed executing. The start rate, or arrival rate, of new VU iterations in a closed
-model is thus tightly coupled with the iteration duration (time from start to finish
-of the VU's `exec` function, by default the `export default function`):
+Up until v0.27.0, k6 only supported a closed model for the simulation of new VU arrivals.
+In this closed model, a new VU iteration only starts when a VU's previous iteration has
+completed its execution. Thus, in a closed model, the start rate, aka. arrival rate, of
+new VU iterations is tightly coupled with the iteration duration (that is, time from start
+to finish of the VU's `exec` function, by default the `export default function`):
 
 <div class="code-group" data-props='{"labels": [ "closed-model.js" ], "lineNumbers": "[true]"}'>
 
@@ -554,8 +556,8 @@ running (1m09.3s), 000/011 VUs, 60 complete and 0 interrupted iterations
 open_model ✓ [======================================] 011/011 VUs  1m0s  1 iters/s
 ```
 
-Compared to the first example of the closed model, in this open model example we can see
-that the VU iteration arrival rate is now decoupled from the iteration duration.
+Compared with the first example of the closed model, in this open model example we
+can see that the VU iteration arrival rate is now decoupled from the iteration duration.
 The response times of the target system are no longer influencing the load being
 put on the target system.
 
@@ -565,7 +567,7 @@ In versions before v0.27.0, k6 would interrupt any iterations being executed if 
 test is done or when ramping down VUs when using the `stages` option. This behavior
 could cause skewed metrics and wasn't user configurable.
 
-In v0.27.0 a new option is introduced for all executors (except externally-controlled):
+In v0.27.0, a new option is introduced for all executors (except externally-controlled):
 `gracefulStop`. With a default value of `30s`, it specifies the time k6 should wait
 for iterations to complete before forcefully interrupting them.
 
