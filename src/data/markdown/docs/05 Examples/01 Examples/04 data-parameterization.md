@@ -14,6 +14,19 @@ necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a 
 Parameterization helps to prevent server-side caching from impacting your load test.
 This will, in turn, make your test more realistic.
 
+<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+
+> ### ⚠️ Strive to keep the data files small
+>
+> Each VU in k6 will have its separate copy of the data file.
+> If your script uses 300 VUs, there will be 300 copies of the data file in memory.
+> Cloud service allots 8GB of memory for every 300VUs.
+> When executing cloud tests, make sure your data files aren't exceeding this limit or your test run may get aborted.
+>
+> With version v0.27.0 there are some [tricks that can be used to better handle bigger data files](#handling-bigger-data-files).
+
+</div>
+
 ## From a JSON file
 
 <div class="code-group" data-props='{ "labels": ["data.json"], "lineNumbers": [true] }'>
@@ -131,23 +144,15 @@ export default function () {
 
 <br/>
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-> ### ⚠️ Strive to keep the data files small
->
-> Each VU in k6 will have its separate copy of the data file.
-> If your script uses 300 VUs, there will be 300 copies of the data file in memory.
-> Cloud service allots 8GB of memory for every 300VUs.
-> When executing cloud tests, make sure your data files aren't exceeding this limit or your test run may get aborted.
+## Handling bigger data files
 
-</div>
-
-The above can be mitigated after v0.27.0 more easily, as while there is still no way
+In k6 version v0.27.0, while there is still no way
 to share memory between VUs, the `__VU` variable is now defined during the init
 context which means that we can split the data between the VUs during initialization
 and not have multiple copies of it during the test run.
 
-<div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
+<div class="code-group" data-props='{ "labels": ["parse-json-big.js"], "lineNumbers": [true] }'>
 
 ```javascript
 var splits = 100; // in how many parts are we going to split the data
@@ -183,7 +188,7 @@ Playing with the value for `splits` will give a different balance between memory
 
 A second approach using another technique will be to pre split the data in different files and load and parse only the one for each VU.
 
-<div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
+<div class="code-group" data-props='{ "labels": ["parse-csv-many.js"], "lineNumbers": [true] }'>
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
