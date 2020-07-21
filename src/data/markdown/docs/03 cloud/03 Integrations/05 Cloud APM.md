@@ -43,7 +43,7 @@ The `metrics` parameter allows you to specify built-in and custom metrics to be 
 
 <div class="doc-blockquote" data-props='{"mod": "warning"}'>
 
-A typical use case is to only export custom metrics defined in the script. To do that you should specify the named of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
+A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
 
 </div>
 
@@ -70,7 +70,7 @@ export let options = {
 };
 ```
 
-Make sure to meet the following requirements, otherwise we can't guarantee a working metrics export:
+Make sure to meet the following requirements, otherwise, we can't guarantee a working metrics export:
 
 1. If you use custom metrics in your script, remember to add them to the `metrics` array, otherwise, those metrics won't be automatically exported.
 2. If you want to export built-in metrics that are not listed above, you can include them in the `metrics` array.
@@ -82,7 +82,7 @@ Make sure to meet the following requirements, otherwise we can't guarantee a wor
 ## Limitations
 
 1. APM data export is supported for tests that are up to 1 hour long. Longer tests are currently not supported.
-2. The data exported in near real-time may appear incorrect, until the test is finished and the 2nd pass export has completed.
+2. The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed.
 
 ## Feature Availability
 
