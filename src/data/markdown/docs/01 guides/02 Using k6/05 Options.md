@@ -419,7 +419,8 @@ A number specifying a fixed number of iterations to execute of the script, as op
 a duration of time during which the script would run in a loop.
 \*Note: The number of iterations
 is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
-`k6 cloud` command as well.
+`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed, 
+the default `maxDuration` is 10 minutes when using iterations with the cloud service.
 
 | Env             | CLI                  | Code / Config file | Default |
 |-----------------|----------------------|--------------------|---------|
