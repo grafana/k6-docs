@@ -12,9 +12,9 @@ blockquote {
   p {
     margin: 0;
   }
-  :not(pre) > code[class*='language-'] {
-    background: $color-additional-2;
-    line-height: 18px;
+  :not(pre) code[class='language-text'] {
+    background: $color-additional-2 !important;
+    line-height: 18px !important;
   }
 }
 

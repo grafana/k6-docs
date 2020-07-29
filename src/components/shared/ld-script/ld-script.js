@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const LdScript = ({ script }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const LdScript = ({ script }) => {
       document.body.removeChild(scriptTemp);
     };
   }, []);
-  return <p />;
+  return null;
 };
 
 export default LdScript;

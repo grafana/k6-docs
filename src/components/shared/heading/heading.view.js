@@ -21,25 +21,32 @@ export const Heading = ({ className, id, tag = 'h1', size, children }) => {
   );
 };
 
-export const HeadingLandmark = ({ mdBlockContent, tag: Tag }) => (
-  <Tag
-    className={styles.markHeading}
-    id={`${slugify(mdBlockContent)
-      .replace(/\//g, '-')
-      .replace(/^\d+/g, '')
-      .replace(/^-*/g, '')
-      .replace(/-*$/g, '')}`}
-  >
-    <a
-      className={'anchor-icon'}
-      href={`#${slugify(mdBlockContent)
+export const HeadingLandmark = (Tag) => ({ children }) => {
+  const getPlainText = (arr) =>
+    arr.reduce((acc, cur) => acc.concat(cur.props?.children ?? cur), '');
+  const textContent = Array.isArray(children)
+    ? getPlainText(children)
+    : children;
+  return (
+    <Tag
+      className={styles.markHeading}
+      id={`${slugify(textContent)
         .replace(/\//g, '-')
         .replace(/^\d+/g, '')
         .replace(/^-*/g, '')
         .replace(/-*$/g, '')}`}
     >
-      <AnchorIcon />
-    </a>
-    {mdBlockContent}
-  </Tag>
-);
+      <a
+        className={'anchor-icon'}
+        href={`#${slugify(textContent)
+          .replace(/\//g, '-')
+          .replace(/^\d+/g, '')
+          .replace(/^-*/g, '')
+          .replace(/-*$/g, '')}`}
+      >
+        <AnchorIcon />
+      </a>
+      {children}
+    </Tag>
+  );
+};
