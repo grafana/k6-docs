@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const textOnlySelectors = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
@@ -7,14 +7,12 @@ const useElementsReplacement = (
   { containerRef, components = {}, shouldMakeReplacement = true },
   deps = [],
 ) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       Object.keys(components).length &&
       containerRef?.current &&
       shouldMakeReplacement
     ) {
-      // @todo: figure out what is wrong with replacement
-      console.log('should be replacing');
       Object.keys(components).forEach((selector) => {
         const Component = components[selector];
         // limiting the scope of manipulation to a parent element

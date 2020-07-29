@@ -18,10 +18,9 @@ import { SearchBox } from 'components/shared/search-box';
 import { Footer } from 'components/blocks/footer';
 import { SEO } from 'components/shared/seo';
 import { MobileNav } from 'components/blocks/mobile-nav';
-import { childrenToList } from 'utils';
+import { childrenToList, slugify, isInIFrame } from 'utils';
 
 import styles from './doc-layout.module.scss';
-import { slugify, isInIFrame } from 'utils';
 
 import CookieConsent from 'components/shared/cookie-consent';
 import _ from 'lodash/lang';
@@ -29,7 +28,7 @@ import _ from 'lodash/lang';
 import { main, app } from 'utils/urls';
 import AlgoliaQueries from 'utils/algolia';
 
-const indexName = AlgoliaQueries[0].indexName;
+const { indexName } = AlgoliaQueries[0];
 
 // local helper data
 //
@@ -45,9 +44,11 @@ const cookies = new Cookies({ 'user-has-accepted-cookies': true });
  */
 
 // renders options from the passed children array, recursively
-const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
-  const [isActive, setIsActive] = useState(false);
-
+const OptionsGroup = ({
+  node: { name, meta, children },
+  nested,
+  setSelectValue,
+}) => {
   useEffect(() => {
     const maybePrefixedPath = withPrefix(meta.path);
     const doesPathMatchLocation =
@@ -63,7 +64,9 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
               .concat(slugify(name))
               .join('/')}/`,
           );
-    setIsActive(doesPathMatchLocation || isPathLocationPart);
+    if (doesPathMatchLocation || isPathLocationPart) {
+      setSelectValue(meta.redirect || meta.path);
+    }
   }, []);
 
   const hasSubMenu = !_.isEmpty(children);
@@ -73,25 +76,50 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
         label={`${Array(nested).fill('-').join('')}${nested ? ' ' : ''}${
           meta.title || name
         }`}
-        selected={isActive}
         value={meta.redirect || meta.path}
-        // ignore react warning on this
-        selected={!meta.redirect && isActive}
       >
         {meta.title || name}
       </option>
       {hasSubMenu && (
         <>
           {childrenToList(children).map((node) => (
-            <OptionsGroup
-              node={node}
-              key={node.name}
-              nested={nested ? nested + 1 : 1}
-            />
+            <OptionsGroup node={node} key={node.name} nested={nested + 1} />
           ))}
         </>
       )}
     </>
+  );
+};
+
+const MobileNavMenu = ({ sidebarTree }) => {
+  const [value, setValue] = useState('');
+  return (
+    <select
+      onChange={({ target }) => {
+        const val = target.value;
+        const isExternalLink = val.includes('http');
+        return isExternalLink ? window.location.assign(val) : navigate(val);
+      }}
+      className={styles.dropdown}
+      value={value}
+    >
+      {sidebarTree &&
+        childrenToList(sidebarTree.children).map((sectionNode) => (
+          <optgroup
+            label={sectionNode.name}
+            key={`docSection-${sectionNode.name}`}
+          >
+            {childrenToList(sectionNode.children).map((node) => (
+              <OptionsGroup
+                node={node}
+                key={node.name}
+                nested={0}
+                setSelectValue={setValue}
+              />
+            ))}
+          </optgroup>
+        ))}
+    </select>
   );
 };
 
@@ -185,7 +213,7 @@ export const DocLayout = ({
 
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <HeaderLogo theme="doc" />
+          <HeaderLogo theme={'doc'} />
         </div>
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
@@ -244,28 +272,7 @@ export const DocLayout = ({
           </div>
           <div className={'d-md-none col-12'}>
             <div className={styles.dropdownWrapper}>
-              <select
-                onChange={({ target }) => {
-                  const val = target.value;
-                  const isExternalLink = val.includes('http');
-                  return isExternalLink
-                    ? window.location.assign(val)
-                    : navigate(val);
-                }}
-                className={styles.dropdown}
-              >
-                {sidebarTree &&
-                  childrenToList(sidebarTree.children).map((sectionNode) => (
-                    <optgroup
-                      label={sectionNode.name}
-                      key={`docSection-${sectionNode.name}`}
-                    >
-                      {childrenToList(sectionNode.children).map((node) => (
-                        <OptionsGroup node={node} key={node.name} nested={0} />
-                      ))}
-                    </optgroup>
-                  ))}
-              </select>
+              <MobileNavMenu sidebarTree={sidebarTree} />
             </div>
           </div>
         </Header>

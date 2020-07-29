@@ -12,7 +12,7 @@ import { HtmlContent } from 'components/blocks/html-content';
 import { styles as codeStyles } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
 
-import CodeGroup from 'components/shared/code-group';
+import { CodeGroup } from 'components/shared/code-group';
 import TableWrapper from 'components/shared/table-wrapper';
 import Blockquote from 'components/shared/blockquote';
 import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';

@@ -40,8 +40,14 @@ const TableOfContents = forwardRef(
       }
     };
 
-    return links.length ? (
-      <div style={style} className={styles.anchorBarWrapper} ref={ref}>
+    return (
+      <div
+        style={style}
+        className={`${styles.anchorBarWrapper} ${
+          !links.length && styles.anchorBarWrapper__hidden
+        }`}
+        ref={ref}
+      >
         <nav className={`${styles.anchorBar} ${label ?? ''}`}>
           <ul className={styles.anchorWrapper}>
             {links.map(({ title, anchor }, i) => (
@@ -58,7 +64,7 @@ const TableOfContents = forwardRef(
           </ul>
         </nav>
       </div>
-    ) : null;
+    );
   },
 );
 

@@ -11,19 +11,21 @@ export const HtmlContent = ({
   componentsForNativeReplacement,
   componentsForCustomReplacement,
 }) => {
-  const containerRef = useRef(null);
-  useElementsReplacement(
-    {
-      containerRef,
-      components: componentsForCustomReplacement,
-    },
-    [content],
-  );
-  const MdxWrapper = ({ children }) => (
-    <div ref={containerRef} className={`${styles.wrapper} ${className}`}>
-      {children}
-    </div>
-  );
+  const MdxWrapper = ({ children }) => {
+    const containerRef = useRef(null);
+    useElementsReplacement(
+      {
+        containerRef,
+        components: componentsForCustomReplacement,
+      },
+      [],
+    );
+    return (
+      <div ref={containerRef} className={`${styles.wrapper} ${className}`}>
+        {children}
+      </div>
+    );
+  };
   return (
     <MDXProvider
       components={{ ...componentsForNativeReplacement, wrapper: MdxWrapper }}
