@@ -18,11 +18,10 @@ blockquote {
   }
 }
 
-/* modifications in blockquote.module.scss */
 blockquote.doc-blockquote-warning {
   border-left: 2px solid $color-error;
   span {
-    display: inline-block;
+    display: block;
     text-transform: uppercase;
     font-size: $font-size-xs;
     line-height: $line-height-xs;

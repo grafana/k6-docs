@@ -173,9 +173,11 @@ export default function () {
 }
 ```
 
+</div>
+
 With 100k lines like:
 
-```
+```json
 { "username": "test", "password": "qwerty" },
 ```
 

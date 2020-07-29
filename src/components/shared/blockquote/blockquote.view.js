@@ -4,7 +4,6 @@ import styles from './blockquote.module.scss';
 
 const Blockquote = ({ children, mod = 'default' }) => {
   // prevent nesting blockquote tags
-  // const blockquoteInner = children.replace(/<\/?blockquote>/g, '');
   // create optional kicker in case of modifications
   const getKicker = (mod) => {
     const kickers = {

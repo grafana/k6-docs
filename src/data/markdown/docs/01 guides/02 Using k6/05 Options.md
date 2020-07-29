@@ -359,10 +359,10 @@ export let options = {
 
 </div>
 
-### HTTP Debug</h3>
+### HTTP Debug
 
 Log all HTTP requests and responses. Excludes body by default, to include body use
-'--http-debug=full'. Available in `k6 run` and `k6 cloud` commands.
+`--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
 
 Read more [here](/using-k6/http-debugging).
 
@@ -640,7 +640,7 @@ export let options = {
 
 </div>
 
-> ### Cloud runs
+> #### Cloud runs
 >
 > There are a couple of considerations with this option when running cloud tests. The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
 
