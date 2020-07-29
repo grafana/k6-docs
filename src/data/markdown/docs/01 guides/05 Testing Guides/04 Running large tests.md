@@ -97,7 +97,7 @@ In such case, the check itself won't work as expected and error similar to the o
 
 <div class="code-group" data-props='{}'>
 
-```
+```bash
 ERRO[0625] TypeError: Cannot read property 'length' of undefined
 ```
 
@@ -267,7 +267,7 @@ Error similar to this one is caused by the target system resetting the TCP conne
 
 <div class="code-group">
 
-```text
+```bash
 WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72.209:35288->63.32.205.136:80: read: connection reset by peer"
 ```
 
@@ -279,7 +279,7 @@ Error like this happens when k6 was able to send a request, but the target syste
 
 <div class="code-group">
 
-```
+```bash
 WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exceeded"
 ```
 
@@ -291,7 +291,7 @@ This is a similar error to the one above, but in this case, k6 wasn't even able 
 
 <div class="code-group">
 
-```
+```bash
 WARN[0057] Request Failed     error="Get http://pawel.staging.loadimpact.com/static/logo.svg?url=v3: dial tcp 52.18.24.222:80: i/o timeout"
 ```
 
@@ -304,7 +304,7 @@ Make sure that your limit is set sufficiently high `ulimit -n 250000` should be 
 
 <div class="code-group">
 
-```
+```bash
 WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=6: dial tcp 99.81.83.131:80: socket: too many open files"
 ```
 

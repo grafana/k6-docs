@@ -9,7 +9,7 @@ of concurrent users or requests per second.
 
 When you want to understand if your system is meeting the performance goals, this is the type of test you'll run.
 
-> ## What is Load Testing
+> #### What is Load Testing
 >
 > Load Testing is a type of Performance Testing used to
 > determine a system's behavior under both normal and peak conditions.
