@@ -83,7 +83,12 @@ const OptionsGroup = ({
       {hasSubMenu && (
         <>
           {childrenToList(children).map((node) => (
-            <OptionsGroup node={node} key={node.name} nested={nested + 1} />
+            <OptionsGroup
+              node={node}
+              key={node.name}
+              nested={nested + 1}
+              setSelectValue={setSelectValue}
+            />
           ))}
         </>
       )}

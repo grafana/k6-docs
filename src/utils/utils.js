@@ -20,7 +20,7 @@ const slugify = (path) =>
   path
     .toLowerCase()
     .replace(/[\s-;:!?&,\(\)\[\]]{1,}/g, '-')
-    .replace(/[%@~]/g, '')
+    .replace(/[%@~`'"]/g, '')
     .replace(/(-{1,})?(\.md)?$/, '') // removes parts like "*-.md" or "*.md" or "-" postfix
     .replace(/(\/)\-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
