@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Link, navigate, withPrefix } from 'gatsby';
 import {
@@ -44,31 +44,7 @@ const cookies = new Cookies({ 'user-has-accepted-cookies': true });
  */
 
 // renders options from the passed children array, recursively
-const OptionsGroup = ({
-  node: { name, meta, children },
-  nested,
-  setSelectValue,
-}) => {
-  useEffect(() => {
-    const maybePrefixedPath = withPrefix(meta.path);
-    const doesPathMatchLocation =
-      maybePrefixedPath === window.location.pathname;
-    const isPathLocationPart =
-      meta.path === '/'
-        ? false
-        : window.location.pathname.startsWith(`${maybePrefixedPath}/`) ||
-          window.location.pathname.startsWith(
-            `${maybePrefixedPath
-              .split('/')
-              .slice(0, -1)
-              .concat(slugify(name))
-              .join('/')}/`,
-          );
-    if (doesPathMatchLocation || isPathLocationPart) {
-      setSelectValue(meta.redirect || meta.path);
-    }
-  }, []);
-
+const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
   const hasSubMenu = !_.isEmpty(children);
   return (
     <>
@@ -83,12 +59,7 @@ const OptionsGroup = ({
       {hasSubMenu && (
         <>
           {childrenToList(children).map((node) => (
-            <OptionsGroup
-              node={node}
-              key={node.name}
-              nested={nested + 1}
-              setSelectValue={setSelectValue}
-            />
+            <OptionsGroup node={node} key={node.name} nested={nested + 1} />
           ))}
         </>
       )}
@@ -98,11 +69,14 @@ const OptionsGroup = ({
 
 const MobileNavMenu = ({ sidebarTree }) => {
   const [value, setValue] = useState('');
+  useLayoutEffect(() => {
+    setValue(window.location.pathname.replace(/^\/docs/, ''));
+  }, []);
   return (
     <select
       onChange={({ target }) => {
         const val = target.value;
-        const isExternalLink = val.includes('http');
+        const isExternalLink = val.startsWith('http');
         return isExternalLink ? window.location.assign(val) : navigate(val);
       }}
       className={styles.dropdown}
@@ -115,12 +89,7 @@ const MobileNavMenu = ({ sidebarTree }) => {
             key={`docSection-${sectionNode.name}`}
           >
             {childrenToList(sectionNode.children).map((node) => (
-              <OptionsGroup
-                node={node}
-                key={node.name}
-                nested={0}
-                setSelectValue={setValue}
-              />
+              <OptionsGroup node={node} key={node.name} nested={0} />
             ))}
           </optgroup>
         ))}
