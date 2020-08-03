@@ -144,9 +144,6 @@ const plugins = [
       includePaths: ['src/styles/variables.scss', 'src/styles/mixins.scss'],
       data:
         '@import "./src/styles/variables.scss", "./src/styles/mixins.scss";',
-      cssLoaderOptions: {
-        camelCase: true,
-      },
     },
   },
   {
