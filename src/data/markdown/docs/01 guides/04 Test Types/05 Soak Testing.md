@@ -4,8 +4,6 @@ head_title: 'What is Soak Testing? How to create a Soak Test in k6'
 excerpt: 'A Soak Test is a type of Performance Test that tells you about the reliability and performance of your system over an extended period of time. Let’s see an example.'
 ---
 
-import LdScript from 'components/pages/doc-page/ld-script';
-
 While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
 [stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a long time.
 
@@ -77,16 +75,16 @@ export default function () {
 The VU chart of a Soak Test should look similar to this:
 ![Soak Test Configuration](./images/soak-test.png)
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### Make a cost estimate before starting a soak test
+> #### Make a cost estimate before starting a soak test
 >
 > Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your
 > infrastructure and vendor costs may be significant.
 > If you are testing a website, you should consider excluding your CDN from the test.
 > If your system makes use of external services, you may want to calculate the cost before you start the test.
 
-</div>
+</Blockquote>
 
 ## When to do soak testing?
 

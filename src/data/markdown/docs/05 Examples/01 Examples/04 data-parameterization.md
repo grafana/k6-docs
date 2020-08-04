@@ -14,9 +14,9 @@ necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a 
 Parameterization helps to prevent server-side caching from impacting your load test.
 This will, in turn, make your test more realistic.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### ⚠️ Strive to keep the data files small
+> #### ⚠️ Strive to keep the data files small
 >
 > Each VU in k6 will have its separate copy of the data file.
 > If your script uses 300 VUs, there will be 300 copies of the data file in memory.
@@ -25,7 +25,7 @@ This will, in turn, make your test more realistic.
 >
 > Starting with k6 v0.27.0, there are some [tricks that can be used to better handle bigger data files](#handling-bigger-data-files).
 
-</div>
+</Blockquote>
 
 ## From a JSON file
 
@@ -144,7 +144,6 @@ export default function () {
 
 <br/>
 
-
 ## Handling bigger data files
 
 In k6 version v0.27.0, while there is still no way
@@ -160,15 +159,16 @@ var splits = 100; // in how many parts are we going to split the data
 if (__VU == 0) {
   open('./data.json'); // we just open it so it is available in the cloud or if we do k6 archive
 } else {
-  var data = function() { // separate function in order to not leak all the data in the main scope
+  var data = (function () {
+    // separate function in order to not leak all the data in the main scope
     var all_data = JSON.parse(open('./data.json')); // we load and parse the data in one go, no need for temp variables
     var part_size = all_data.length / splits;
     var index = part_size * (__VU % splits);
-    return all_data.slice(index, index+part_size);
-  }()
+    return all_data.slice(index, index + part_size);
+  })();
 }
 
-export default function() {
+export default function () {
   console.log(`VU=${__VU} has ${data.length} data`);
 }
 ```
@@ -177,7 +177,7 @@ export default function() {
 
 With 100k lines like:
 
-```
+```json
 { "username": "test", "password": "qwerty" },
 ```
 
@@ -207,14 +207,17 @@ let dataFiles = [
   './data10.csv',
 ];
 var csvData;
-if (__VU == 0) { // workaround to collect all files for the cloud execution
-  for(let i=0; i<dataFiles.length; i++){
+if (__VU == 0) {
+  // workaround to collect all files for the cloud execution
+  for (let i = 0; i < dataFiles.length; i++) {
     open(dataFiles[i]);
   }
 } else {
-  csvData = papaparse.parse(open(dataFiles[__VU%dataFiles.length]), { header: true }).data;
+  csvData = papaparse.parse(open(dataFiles[__VU % dataFiles.length]), {
+    header: true,
+  }).data;
 }
-export default function() {
+export default function () {
   sleep(10);
 }
 ```
@@ -224,7 +227,6 @@ export default function() {
 The files have 10k lines and are in total 128kb. Running 100VUs with this script takes around 2GB, while running the same with a single file takes upwards of 15GBs.
 
 Either approach works for both JSON and CSV files and they can be combined, as that will probably reduce the memory pressure during the initialization even further.
-
 
 ## Generating data
 

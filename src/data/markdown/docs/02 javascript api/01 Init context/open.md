@@ -7,9 +7,9 @@ excerpt: ''
 
 Opens a file, reading all its contents into memory for use in the script. Favourably used to parameterize tests with data from CSV/JSON files etc.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod='warning'>
 
-> ### Function only available in "init context"
+> #### Function only available in "init context"
 >
 > This is a function that can only be called from the init context (aka `init code`), code in the global context that is, outside of the main export default function { ... }.
 >
@@ -17,7 +17,7 @@ Opens a file, reading all its contents into memory for use in the script. Favour
 >
 > See example further down on this page. For more in-depth description see [Running k6](/getting-started/running-k6).
 
-</div>
+</Blockquote>
 
 | Parameter | Type   | Description                                                                                                                                       |
 | --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |

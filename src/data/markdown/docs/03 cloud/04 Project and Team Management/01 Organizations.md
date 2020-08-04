@@ -3,12 +3,12 @@ title: 'Organizations'
 excerpt: 'Explanation of organizations and the hierarchy in the k6 web app'
 ---
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
 > <b>Running tests in another Organization</b><br/>
 > If you have been invited to another organization as a Team Member, you must specify a projectId in `ext.loadimpact.projectId` in order to use that organization's subscription to run your test.
 
-</div>
+</Blockquote>
 
 ## Background
 
@@ -20,7 +20,7 @@ By default, all users have one Organization within their k6 account, this is aut
 
 If you have been invited to another user's Organization, you will have access based on the role the owner assigned to you (Admin or Project Member). You may utilize the subscription associated with that Organization.
 
-> ### Note on Organizations
+> #### Note on Organizations
 >
 > Most users will only require 1 organization for their subscription. Some larger companies may wish to use multiple organizations to manage multiple unique subscriptions.
 

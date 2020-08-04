@@ -15,15 +15,15 @@ Starts a data export. For more information on the structure of the export, pleas
 
 Generates a URL that you can use to share test results.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### Test Result Sharing URL
+> #### Test Result Sharing URL
 >
 > The generated URL does not require a user to be authenticated to view. If you want to share sensitive results, considering add users as [Team Members](/cloud/project-and-team-management/team-members) instead.
 >
 > **Note**: The URL is not generated until after you choose the option to share.
 
-</div>
+</Blockquote>
 
 ![Test Sharing](/images/08%Test%Results%Menu/test-share.png)
 
@@ -31,11 +31,11 @@ Generates a URL that you can use to share test results.
 
 Deletes the current test result.
 
-<div class="doc-blockquote" data-props='{"mod": "warning"}'>
+<Blockquote mod="warning">
 
-> ### Test Deletion is not reversible
+> #### Test Deletion is not reversible
 
-</div>
+</Blockquote>
 
 ## Set as baseline
 

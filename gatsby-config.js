@@ -86,22 +86,22 @@ const plugins = [
     },
   },
   {
-    resolve: "gatsby-plugin-sentry",
+    resolve: 'gatsby-plugin-sentry',
     options: {
-      dsn: "https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132",
+      dsn:
+        'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
       // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
       environment: process.env.NODE_ENV,
       enabled: isProduction || isStaging,
       ignoreErrors: [
         // that's a real bug we have, but I'm ignoring it for now.
         'getBoundingClientRect',
-        'Cannot read property \'getBoundingClientRect\' of undefined',
-        'TypeError: undefined is not an object (evaluating \'n.content.getBoundingClientRect\')',
+        "Cannot read property 'getBoundingClientRect' of undefined",
+        "TypeError: undefined is not an object (evaluating 'n.content.getBoundingClientRect')",
         'n.content is undefined', // same as above.
       ],
-      denyUrls: [
-      ]
-    }
+      denyUrls: [],
+    },
   },
   {
     resolve: 'gatsby-plugin-google-fonts',
@@ -141,8 +141,9 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-sass',
     options: {
-      includePaths: ['src/styles/styles.scss'],
-      data: '@import "./src/styles/styles.scss";',
+      includePaths: ['src/styles/variables.scss', 'src/styles/mixins.scss'],
+      data:
+        '@import "./src/styles/variables.scss", "./src/styles/mixins.scss";',
     },
   },
   {

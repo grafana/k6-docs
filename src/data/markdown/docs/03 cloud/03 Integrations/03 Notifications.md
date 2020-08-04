@@ -157,7 +157,9 @@ to the template:
 
 Jinja also supports simple if/else conditionals. These are written on the form
 
-    {% if condition %}if_true_result{% else %}if_untrue_result{% endif %}
+```json
+{% if condition %}if_true_result{% else %}if_untrue_result{% endif %}
+```
 
 Here is an example (from the generic template) of setting a color based on the
 result of the test-run:
@@ -172,9 +174,11 @@ result of the test-run:
 
 Jinja also allows for for-loops.
 
-    {% for value in iterable}
-       ...
-    {% endfor %}
+```json
+{% for value in iterable}
+    ...
+{% endfor %}
+```
 
 This example loops over the list of `errors` (if any):
 
@@ -209,7 +213,7 @@ usually be accessed with Jinja's `{{ }}` tags. Note the type of each value
 and especially remember to put double-quotes around strings so the result
 after template-replacement is still valid JSON.
 
-### `test`
+### \`test\`
 
 This holds test-run data for the test-run that triggered the event.
 
@@ -230,7 +234,7 @@ This holds test-run data for the test-run that triggered the event.
 | `test.result`          | `int` | Is `0` if passed, `1` if failed                                       |
 | `test.result_text`     | `str` | Result as text ("Passed"/"Failed")                                    |
 
-### `user`
+### \`user\`
 
 Information about the user associated with this test-run.
 
@@ -240,7 +244,7 @@ Information about the user associated with this test-run.
 | `user.name`   | `str` | The full name of the user (first and last name, if available)                         |
 | `user.avatar` | `str` | A [gravatar](https://en.gravatar.com/) link, needed for example for Slack integration |
 
-### `event`
+### \`event\`
 
 This holds details about the event itself.
 
@@ -250,7 +254,7 @@ This holds details about the event itself.
 | `event.type` | `str` | This is the event trigger type that fired, like "test.finished.all". If no `event` was specified, this will be the string `<any>`         |
 | `event.text` | `str` | This is a more readable description of the event type, like "Test finished running". If `event.type` is `<any>`, this will be `"Unknown"` |
 
-### `errors`
+### \`errors\`
 
 This is an array of error objects attached to this test run (if any).
 
@@ -280,11 +284,11 @@ Headers sent with all requests:
 | `X-k6cloud-Event` | Name of the event, like "test.ended" |
 | `User-Agent`      | Always "K6CloudWebHook"              |
 
-<div class="code-group" data-props='{"labels": ["Example Headers"]}'>
-
 Header Example:
 
-```
+<div class="code-group" data-props='{"labels": ["Example Headers"]}'>
+
+```json
 X-k6cloud-ID: 19c5d426-3b4d-43c3-8277-37ad7d457430
 X-k6cloud-Event: test.started
 User-Agent: K6CloudWebHook

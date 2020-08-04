@@ -8,6 +8,9 @@
   @include lg-down {
     display: none;
   }
+  &__hidden {
+    visibility: hidden;
+  }
 }
 
 .anchor-bar {

@@ -21,6 +21,8 @@
     "check:blc": "wait-on tcp:8000 && blc http://localhost:8000 -rof"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.6.6",
+    "@mdx-js/react": "^1.6.6",
     "@storybook/react": "^5.2.5",
     "algoliasearch": "^3.35.1",
     "chunk-text": "^1.0.5",
@@ -30,7 +32,6 @@
     "dotenv": "^8.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "formik": "^1.5.8",
     "gatsby": "^2.21.26",
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-algolia": "^0.11.0",
@@ -38,7 +39,7 @@
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.21",
-    "gatsby-plugin-mdx": "^1.2.15",
+    "gatsby-plugin-mdx": "^1.2.22",
     "gatsby-plugin-offline": "^3.0.14",
     "gatsby-plugin-react-helmet": "^3.1.11",
     "gatsby-plugin-react-helmet-canonical-urls": "^1.4.0",

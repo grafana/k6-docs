@@ -12,17 +12,16 @@ blockquote {
   p {
     margin: 0;
   }
-  :not(pre) > code[class*='language-'] {
-    background: $color-additional-2;
-    line-height: 18px;
+  :not(pre) code[class='language-text'] {
+    background: $color-additional-2 !important;
+    line-height: 18px !important;
   }
 }
 
-/* modifications in blockquote.module.scss */
 blockquote.doc-blockquote-warning {
   border-left: 2px solid $color-error;
   span {
-    display: inline-block;
+    display: block;
     text-transform: uppercase;
     font-size: $font-size-xs;
     line-height: $line-height-xs;

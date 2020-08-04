@@ -4,8 +4,6 @@ head_title: 'What is Stress Testing? How to create a Stress Test in k6'
 excerpt: 'Stress and Spike Tests are types of performance tests that are concerned with assessing the limits of your system and stability under extreme conditions. Let’s see two examples.'
 ---
 
-import LdScript from 'components/pages/doc-page/ld-script';
-
 Stress testing is one of many different types of load testing.
 
 While [load testing](/test-types/load-testing) is primarily concerned with assessing the systems performance,

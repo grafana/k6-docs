@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { DocLayout } from 'layouts/doc-layout';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
@@ -12,20 +12,21 @@ import { HtmlContent } from 'components/blocks/html-content';
 import { styles as codeStyles } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
 
-import { CodeGroup } from 'components/pages/doc-page/code-group';
-import TableWrapper from 'components/pages/doc-page/table-wrapper';
-import { HeadingLandmark } from 'components/shared/heading';
-import Blockquote from 'components/pages/doc-page/blockquote';
+import { CodeGroup } from 'components/shared/code-group';
+import TableWrapper from 'components/shared/table-wrapper';
+import Blockquote from 'components/shared/blockquote';
 import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
 import { useScrollToAnchor } from 'hooks';
 
-const components = {
-  '.code-group': CodeGroup,
-  '.gatsby-highlight': CodeGroup,
-  h2: HeadingLandmark,
+const componentsForNativeReplacement = {
   table: TableWrapper,
   blockquote: Blockquote,
-  '.doc-blockquote': Blockquote,
+  Blockquote,
+};
+
+const componentsForCustomReplacement = {
+  '.code-group': CodeGroup,
+  '.gatsby-highlight': CodeGroup,
 };
 
 const getContent = (nodes, sidebarTree) =>
@@ -40,7 +41,8 @@ const getContent = (nodes, sidebarTree) =>
           <h2>{title}</h2>
           <HtmlContent
             content={body}
-            components={components}
+            componentsForCustomReplacement={componentsForCustomReplacement}
+            componentsForNativeReplacement={componentsForNativeReplacement}
             className={classNames(
               docPageContent.contentWRapper,
               codeStyles.docContainer,

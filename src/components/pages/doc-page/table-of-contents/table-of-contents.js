@@ -5,7 +5,7 @@ import { useLandmark, useElementsReplacement } from 'hooks';
 import { HeadingLandmark } from 'components/shared/heading';
 
 const components = {
-  h2: HeadingLandmark,
+  h2: HeadingLandmark('h2'),
 };
 
 const TableOfContents = forwardRef(
@@ -13,16 +13,18 @@ const TableOfContents = forwardRef(
     { style, label, contentContainerRef, shouldMakeReplacement = false },
     ref,
   ) => {
-    const replaced = useElementsReplacement({
+    useElementsReplacement({
       containerRef: contentContainerRef,
       components,
       shouldMakeReplacement,
     });
-    const links = useLandmark({
-      containerRef: contentContainerRef,
-      markSelector: 'h2',
-      shouldUseLandmark: replaced,
-    });
+    const links = useLandmark(
+      {
+        containerRef: contentContainerRef,
+        markSelector: 'h2',
+      },
+      [],
+    );
     const handleAnchorClick = (e, anchor) => {
       e.preventDefault();
       document.querySelector(anchor).scrollIntoView({
@@ -38,8 +40,14 @@ const TableOfContents = forwardRef(
       }
     };
 
-    return links.length ? (
-      <div style={style} className={styles.anchorBarWrapper} ref={ref}>
+    return (
+      <div
+        style={style}
+        className={`${styles.anchorBarWrapper} ${
+          !links.length && styles.anchorBarWrapper__hidden
+        }`}
+        ref={ref}
+      >
         <nav className={`${styles.anchorBar} ${label ?? ''}`}>
           <ul className={styles.anchorWrapper}>
             {links.map(({ title, anchor }, i) => (
@@ -56,7 +64,7 @@ const TableOfContents = forwardRef(
           </ul>
         </nav>
       </div>
-    ) : null;
+    );
   },
 );
 

@@ -2,22 +2,28 @@ import React, { useRef } from 'react';
 import { HtmlContent } from 'components/blocks/html-content';
 import { StickyContainer, Sticky } from 'react-sticky';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { CodeGroup } from 'components/pages/doc-page/code-group';
-import TableWrapper from 'components/pages/doc-page/table-wrapper';
+import { CodeGroup } from 'components/shared/code-group';
+import TableWrapper from 'components/shared/table-wrapper';
 import { HeadingLandmark } from 'components/shared/heading';
-import Blockquote from 'components/pages/doc-page/blockquote';
+import Blockquote from 'components/shared/blockquote';
+import LdScript from 'components/shared/ld-script';
 
 import styles from './doc-page-content.module.scss';
 import classNames from 'classnames';
 
-const components = {
-  '.code-group': CodeGroup,
-  '.gatsby-highlight': CodeGroup,
-  h2: HeadingLandmark,
-  h3: HeadingLandmark,
+const componentsForNativeReplacement = {
+  h2: HeadingLandmark('h2'),
+  h3: HeadingLandmark('h3'),
   table: TableWrapper,
   blockquote: Blockquote,
-  '.doc-blockquote': Blockquote,
+  Blockquote,
+  LdScript,
+};
+
+const componentsForCustomReplacement = {
+  // order is important!
+  '.code-group': CodeGroup,
+  '.gatsby-highlight': CodeGroup,
 };
 
 export const DocPageContent = ({ label, content, mod }) => {
@@ -38,7 +44,8 @@ export const DocPageContent = ({ label, content, mod }) => {
           >
             <HtmlContent
               content={content}
-              components={components}
+              componentsForCustomReplacement={componentsForCustomReplacement}
+              componentsForNativeReplacement={componentsForNativeReplacement}
               className={classNames(
                 styles.contentWrapper,
                 { [styles.contentWrapper_beliefs]: mod === 'beliefs' },

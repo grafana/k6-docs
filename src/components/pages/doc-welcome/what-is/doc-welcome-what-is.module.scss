@@ -7,8 +7,8 @@
 }
 
 .description {
-  font-size: $font-size-lg;
-  line-height: $line-height-lg;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
   margin: 0 0 20px;
   @include md-down {
     font-size: $font-size-base;
