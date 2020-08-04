@@ -101,13 +101,13 @@ workflows:
             branches:
               only:
                 - master
-                - feat/improving-perf-and-bugfixes
+                - develop
       - deploy-to-staging:
           requires:
             - build
           filters:
             branches:
-              only: feat/improving-perf-and-bugfixes
+              only: develop
       - deploy-to-production:
           requires:
             - build
