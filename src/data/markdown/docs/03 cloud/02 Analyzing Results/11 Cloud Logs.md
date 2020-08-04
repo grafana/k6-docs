@@ -13,7 +13,7 @@ The execution logs are intended to aid you in troubleshooting your script. The l
 
 ## Installation
 
-k6cloudlogs binaries for Linux and MacOS can be found here: https://github.com/loadimpact/k6cloudlogs/release
+k6cloudlogs binaries for Linux, Windows and MacOS can be found here: https://github.com/loadimpact/k6cloudlogs/release
 
 
 ## Using k6cloudlogs CLI utility
