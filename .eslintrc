@@ -39,7 +39,20 @@
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-wrap-multilines": 0,
-    "import/order": 0, // TODO: Come up with a solution for this
+    "import/no-extraneous-dependencies": [
+      "warn",
+      { "devDependencies": false, "peerDependencies": true }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc" /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          "caseInsensitive": true /* ignore case. Options: [true, false] */
+        },
+        "newlines-between": "always"
+      }
+    ],
     "import/no-unresolved": [
       2,
       {
@@ -57,8 +70,14 @@
     ],
     "import/prefer-default-export": 0,
     "jsx-a11y/html-has-lang": 0, // We use react-helmet for that
-    "jsx-a11y/control-has-associated-label": 0
+    "jsx-a11y/control-has-associated-label": 0,
+    "mdx/no-jsx-html-comments": "error",
+    "mdx/no-unescaped-entities": "error",
+    "mdx/no-unused-expressions": "error"
   },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"]
+  "extends": ["airbnb", "plugin:mdx/recommended", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "extensions": [".md", ".mdx"]
+  }
 }
