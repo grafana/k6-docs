@@ -125,7 +125,7 @@ const SidebarNode = (props) => {
 
   return (
     <div className={hasSubMenu ? styles.sidebarNodeWithChildren : ''}>
-      {/*eslint-disable-next-line no-nested-ternary*/}
+      {/* eslint-disable-next-line no-nested-ternary */}
       {isLink ? (
         meta.redirect ? (
           <a className={`${styles.sidebarNodeTitle}`} href={meta.redirect}>
