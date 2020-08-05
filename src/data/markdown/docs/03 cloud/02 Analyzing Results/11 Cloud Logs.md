@@ -13,7 +13,7 @@ The execution logs are intended to aid you in troubleshooting your script. The l
 
 ## Installation
 
-k6cloudlogs binaries for Linux, Windows and MacOS can be found here: https://github.com/loadimpact/k6cloudlogs/releases/
+k6cloudlogs binaries for Linux, Windows and macOS can be found here: https://github.com/loadimpact/k6cloudlogs/releases/
 
 
 ## Using k6cloudlogs CLI utility
@@ -33,14 +33,14 @@ Usage of ./k6cloudlogs:
         k6 Cloud authentication token
 ```
 
-Setting the token can also be done from the env variable K6_CLOUD_TOKEN
+Setting the token can also be done from the environment variable `K6_CLOUD_TOKEN`.
 
 ## Basic example
 
-To tail the execution logs from your cloud test in real-time you have to provide a testrunid and your API token like this:
+To tail the execution logs from your cloud test in real-time you have to provide a test run ID and your API token like this:
 
 ```bash
-./kcloudlogs -id 127855 -token YOUR_API_TOKEN
+K6_CLOUD_TOKEN=<YOUR_API_TOKEN> ./kcloudlogs -id 127855
 ```
 
 You can find your API token in https://app.k6.io/account/api-token. 
@@ -62,7 +62,6 @@ K6_CLOUD_TOKEN=YOUR_API_TOKEN./kcloudlogs -id 127855 -start 55m -limit 1000
 ```
 
 This command will retrieve 1000 log lines from 55 minutes ago. Note, only 1000 lines will be printed. The limit for the `-limit` parameter is about 1500. 
-If you would like to view more logs, you will have to execute this command several times with different `-start` parameter. 
+If you would like to view more logs, you will have to execute this command several times with a different `-start` parameter.
 
 This limitation may be removed in the future.
-
