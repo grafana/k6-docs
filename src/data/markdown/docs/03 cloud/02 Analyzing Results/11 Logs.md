@@ -58,7 +58,7 @@ If you would like to retrieve logs from the past, you need to provide a `-start`
 For example:
 
 ```bash
-K6_CLOUD_TOKEN=YOUR_API_TOKEN./k6cloudlogs -id 127855 -start 55m -limit 1000
+K6_CLOUD_TOKEN=YOUR_API_TOKEN ./k6cloudlogs -id 127855 -start 55m -limit 1000
 ```
 
 This command will retrieve 1000 log lines from 55 minutes ago. Note, only 1000 lines will be printed. The limit for the `-limit` parameter is about 1500.
