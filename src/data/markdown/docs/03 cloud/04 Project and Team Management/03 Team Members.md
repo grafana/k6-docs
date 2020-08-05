@@ -5,8 +5,8 @@ excerpt: 'Guide on inviting Team Members to your k6 account for collaboration'
 
 <Blockquote mod="warning">
 
-> <b>Team Members must specify a projectId</b><br/>
-> Invited Team members must specify a `projectId` in `options.ext.loadimpact.projectId` of the options object of their test in order to use the subscription of the organization they have been invited to.
+> <b>Team Members must specify a `projectID`</b><br/>
+> Invited Team members must specify a `projectID` in `options.ext.loadimpact.projectID` of the options object of their test in order to use the subscription of the organization they have been invited to.
 
 </Blockquote>
 
@@ -36,7 +36,7 @@ Then, within the modal window, enter the email address and select a role for the
 
 ---
 
-## Specify a projectId
+## Specify a projectID
 
 <div class="code-group" data-props='{"labels": []}'>
 
@@ -46,7 +46,7 @@ export let options = {
   ext: {
     loadimpact: {
       name: 'My Test Name',
-      projectId: 1234567, // Replace with your projectId
+      projectID: 1234567, // Replace with your projectID
       distribution: {
         scenarioLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
         scenarioLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },

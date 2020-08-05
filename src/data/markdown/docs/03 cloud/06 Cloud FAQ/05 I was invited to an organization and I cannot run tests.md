@@ -23,7 +23,7 @@ If you are running tests from the web interface, you will need to use the menu i
 
 ## From the command line
 
-If you are using k6 to trigger tests from the command line, you will need to specify, in your test configuration, the project that should be used to run a test. By default, k6 will use the default Organization and default Project associated with a users account. In order to do this, the `projectId` must be set as a [test configuration option](/using-k6/options) within the `ext` object of your script.
+If you are using k6 to trigger tests from the command line, you will need to specify, in your test configuration, the project that should be used to run a test. By default, k6 will use the default Organization and default Project associated with a users account. In order to do this, the `projectID` must be set as a [test configuration option](/using-k6/options) within the `ext` object of your script.
 
 <div class="code-group" data-props='{"labels": ["Example:"]}'>
 
