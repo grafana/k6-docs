@@ -23,43 +23,36 @@ const Hits = connectHits(({ showAll, hitComponent: Comp, hits }) => (
   </ul>
 ));
 
-const Results = connectStateResults(
-  ({ setResultsExist, searchState: state, searchResults: res, children }) => {
-    if (res && res.nbHits > 0) {
+const Stats = connectStateResults(({ setResultsExist, searchResults }) => {
+  const [stats, setStats] = useState(null);
+  useEffect(() => {
+    if (searchResults?.nbHits) {
+      const { nbHits, processingTimeMS } = searchResults;
       setResultsExist(true);
-      return null;
-    }
-    setResultsExist(false);
-    return null;
-  },
-);
-
-const Stats = connectStateResults(({ setResultsExist, searchResults: res }) => {
-  if (res && res.nbHits > 0) {
-    setResultsExist(true);
-    return (
-      <span className={styles.stats}>
-        {`${res.nbHits} result${res.nbHits > 1 ? 's' : ''}`}
-      </span>
-    );
-  } else {
-    setResultsExist(false);
-    return null;
-  }
+      setStats(
+        <span className={styles.stats}>
+          {`${nbHits} result${
+            nbHits > 1 ? 's' : ''
+          } found in ${processingTimeMS}ms`}
+        </span>,
+      );
+    } else setResultsExist(false);
+  }, [searchResults]);
+  return stats;
 });
 
 const useClickOutside = (ref, handler, events) => {
-  if (!events) events = ['mousedown', 'touchstart'];
+  const _events = events || ['mousedown', 'touchstart'];
   const detectClickOutside = (event) =>
     !ref.current.contains(event.target) && handler();
   useEffect(() => {
-    for (const event of events) {
-      document.addEventListener(event, detectClickOutside);
-    }
+    _events.forEach((event) =>
+      document.addEventListener(event, detectClickOutside),
+    );
     return () => {
-      for (const event of events) {
-        document.removeEventListener(event, detectClickOutside);
-      }
+      _events.forEach((event) =>
+        document.removeEventListener(event, detectClickOutside),
+      );
     };
   });
 };

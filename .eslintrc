@@ -11,11 +11,12 @@
     "operator-linebreak": 0,
     "no-shadow": 0,
     "max-len": [2, 120],
+    "no-underscore-dangle": "off",
     "react/prop-types": 0,
     "react/jsx-curly-brace-presence": [
       2,
       {
-        "props": "always",
+        "props": "ignore",
         "children": "never"
       }
     ],
@@ -23,8 +24,8 @@
       2,
       {
         "closingSlash": "never",
-        "beforeSelfClosing": "never",
-        "afterOpening": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "allow-multiline",
         "beforeClosing": "never"
       }
     ],
