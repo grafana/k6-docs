@@ -19,19 +19,21 @@ k6cloudlogs binaries for Linux, Windows and MacOS can be found here: https://git
 ## Using k6cloudlogs CLI utility
 
 
-```text
+```bash
 Usage of ./k6cloudlogs:
   -id string
-    	test run id
+        test run id
   -level string
-    	the info (default "info")
+        lowest logging level to return events for (info assumes error, etc.) (default "info")
   -limit string
-    	how many messages should be fetched (default "100")
+        maximum amount of messages to be in a response from the server (default "100")
   -start string
-    	from how long ago to start tailing (default "5m")
+        from how long ago to start tailing (default "5m")
   -token string
-    	the k6 cloud API token
+        k6 Cloud authentication token
 ```
+
+Setting the token can also be done from the env variable K6_CLOUD_TOKEN
 
 ## Basic example
 
@@ -56,7 +58,7 @@ If you would like to retrieve logs from the past, you need to provide a `-start`
 For example:
 
 ```bash
-./kcloudlogs -id 127855 -token YOUR_API_TOKEN -start 55m -limit 1000
+K6_CLOUD_TOKEN=YOUR_API_TOKEN./kcloudlogs -id 127855 -start 55m -limit 1000
 ```
 
 This command will retrieve 1000 log lines from 55 minutes ago. Note, only 1000 lines will be printed. The limit for the `-limit` parameter is about 1500. 
