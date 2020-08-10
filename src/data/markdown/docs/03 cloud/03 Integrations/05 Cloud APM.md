@@ -1,7 +1,6 @@
 ---
 title: 'Cloud APM'
 excerpt: 'How to export metrics from k6 Cloud to APM platforms'
-draft: 'true'
 ---
 
 k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling users to export metrics from a running test in near real-time to their preferred [APM](https://en.wikipedia.org/wiki/Application_performance_management) platform(s).
