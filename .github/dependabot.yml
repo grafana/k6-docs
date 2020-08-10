@@ -16,7 +16,7 @@ updates:
     target-branch: 'develop'
     # Set labels
     labels:
-      - 'npm'
+      - 'maintenance'
       - 'dependencies'
     # Set reviewers
     reviewers:
