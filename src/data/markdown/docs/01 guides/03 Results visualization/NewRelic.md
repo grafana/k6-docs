@@ -77,7 +77,7 @@ As your k6 test is running, k6 is sending performance metrics to the New Relic S
 
 You can visualise the metrics sent from this integration in the [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) in the top right of New Relic (*query your data*). You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) and [alert on k6 metrics](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions). At the bottom of this guide is a sample k6 dashboard with the JSON that you can add to your account using the [New Relic Dashboard API](https://rpm.newrelic.com/api/explore/dashboards/create).
 
-![Sample New Relic k6 dashboard](https://i.imgur.com/zNb8t5u.png)
+![Sample New Relic k6 dashboard](images/new-relic-dashboard.png)
 
 Here is the JSON for adding this custom dashboard to your account. Make sure to set the account ID at the bottom of this snippet before adding to your account. You can use your preferred method or use the [API Explorer](https://rpm.newrelic.com/api/explore/dashboards/create).
 
