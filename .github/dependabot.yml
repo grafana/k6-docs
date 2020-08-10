@@ -7,14 +7,11 @@ updates:
   - package-ecosystem: 'npm'
     # Look for `package.json` and `lock` files in the `root` directory
     directory: '/'
-    # Check the npm registry for updates every week
+    # Check the npm registry for updates every month
     schedule:
-      interval: 'weekly'
-      # Check for npm updates on Wednesday (the two days after the bot will
-      # make PRs to main and blog repos)
-      day: 'wednesday'
+      interval: 'monthly'
     # Set limit on amount of opened PRs with deps updates to 5
-    open-pull-request-limit: 5
+    open-pull-requests-limit: 5
     # Set the target branch
     target-branch: 'develop'
     # Set labels
@@ -25,4 +22,5 @@ updates:
     reviewers:
       - 'bolotskyDev'
       # Set assignees
+    assignees:
       - 'bolotskyDev'

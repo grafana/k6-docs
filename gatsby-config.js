@@ -77,7 +77,11 @@ const plugins = [
           options: {
             maxWidth: 800,
             quality: 90,
-            withWebp: true,
+            // @TODO: there is a bug in one of the
+            // latest version of the plugin which
+            // prevents prefix getting into generated
+            // webp srcset. disabling it for now
+            withWebp: false,
             disableBgImage: true,
             wrapperStyle: 'margin-left: 0;',
           },
@@ -240,6 +244,7 @@ module.exports = {
       'Docs k6.io - Performance testing for developers, like unit-testing, for performance', // <title>
     shortSiteTitle: 'k6', // <title> ending for posts and pages
     siteDescription:
+      // eslint-disable-next-line max-len
       'Docs k6 is an open source developer-centric load and performance regression testing tool for cloud native APIs, microservices and web sites/apps. Tests are written in ES6 JS with support for HTTP/1.1, HTTP/2.0 and WebSocket protocols.',
     siteImage: '/images/landscape-icon.png',
     siteLanguage: 'en',
