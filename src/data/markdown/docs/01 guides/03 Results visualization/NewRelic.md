@@ -1,15 +1,15 @@
 ---
 title: "New Relic"
-excerpt: "The New Relic integration allows visualising load test results and correlation with your New Relic telemetry data, create and share reports, and alert on k6 telemetry."
+excerpt: "The New Relic integration allows visualizing load test results and correlation with your New Relic telemetry data, create and share reports, and alert on k6 telemetry."
 ---
 
-k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualised in dashboards and shared with colleagues, used to compare load impact with system performance, and alert on metrics too.
+k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualized in dashboards and shared with others, used to compare load impact with system performance, and alert on metrics too.
 
 This guide covers running the New Relic integration:
 
 - Run the New Relic StatsD integration
 - Run the k6 test
-- Visualise k6 telemetry in New Relic
+- Visualize k6 telemetry in New Relic
 
 ## Run the New Relic StatsD integration
 
@@ -56,7 +56,7 @@ $ k6 run --out statsd script.js
 </div>
 
 
-The *(required)* environment variables used in the above command are:
+The *required* environment variables used in the above command are:
 
 | Name  | Value |
 | ------------- | ------------- |
@@ -68,186 +68,83 @@ There are also *optional* environment variables you can use:
 | Name  | Value |
 | ------------- | ------------- |
 | `NR_EU_REGION` | Setting this to `true` tells the integration your account is housed in the New Relic EU region. |
-| `TAGS` | Setting tags in key"value format separated by a space lets you further understand your data in New Relic. For example identifying different test runs or machines running the tests. In the docker command add: `-e TAGS="k6Test:Search revision:4" \`. |
+| `TAGS` | Setting tags in key:value format separated by a space lets you further understand your data in New Relic. For example identifying different test runs or machines running the tests. In the docker command add: `-e TAGS="k6Test:myExampleTest someKey:someValue" \`. |
 | `NR_LOG_METRICS` | Setting this to `true` activates verbose logging for the integration. |
 
 ## Visualisation in New Relic
 
 As your k6 test is running, k6 is sending performance metrics to the New Relic StatsD integration which in turn is sending these metrics to the New Relic Telemetry Data Platform. These will be prefixed with `k6.` so you can identify them.
 
-You can visualise the metrics sent from this integration in the [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) in the top right of New Relic (*query your data*). You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) and [alert on k6 metrics](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions). At the bottom of this guide is a sample k6 dashboard with the JSON that you can add to your account using the [New Relic Dashboard API](https://rpm.newrelic.com/api/explore/dashboards/create).
+![k6 metrics as seen in the New Relic data explorer](images/new-relic-data-explorer.png)
+You can visualize the metrics sent from this integration in the [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) in the top right of New Relic (*query your data*). 
 
 ![Sample New Relic k6 dashboard](images/new-relic-dashboard.png)
+You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) and [alert on k6 metrics](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions). 
 
-Here is the JSON for adding this custom dashboard to your account. Make sure to set the account ID at the bottom of this snippet before adding to your account. You can use your preferred method or use the [API Explorer](https://rpm.newrelic.com/api/explore/dashboards/create).
+### Example NRQL Queries
 
-```json
-{
-   "title":"k6",
-   "icon":"line-chart",
-   "grid_column_count":12,
-   "filter":null,
-   "owner":{
-      "email":"bob@servability.com"
-   },
-   "widgets":[
-      {
-         "title":"",
-         "nrql":null,
-         "width":1,
-         "height":3,
-         "row":1,
-         "column":1,
-         "notes":null,
-         "event_types":null,
-         "facet":null,
-         "agent_ids":[
+Here are some example NRQL queries you can easily copy and paste into widgets in a New Relic dashboard, you can however stick with the [chart builder](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder). Find all your k6 Metrics under the metrics tab, prefixed with `k6.`
 
-         ],
-         "duration":null,
-         "metrics":null,
-         "raw_metric_name":null,
-         "end_time":null,
-         "cds_params_payload":null,
-         "renderer":null,
-         "renderer_props":null,
-         "extension_type":null,
-         "customizations":{
-            "markdown":"![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/K6-logo.svg/1200px-K6-logo.svg.png)"
-         }
-      },
-      {
-         "title":"Virtual Users",
-         "nrql":"SELECT latest(k6.vus) FROM Metric TIMESERIES SINCE 1800 seconds ago",
-         "process_as":"faceted_area_chart",
-         "width":4,
-         "height":3,
-         "row":1,
-         "column":2,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Response time: max, 90th, avg, median",
-         "nrql":null,
-         "width":4,
-         "height":3,
-         "row":1,
-         "column":6,
-         "notes":null,
-         "event_types":null,
-         "facet":null,
-         "agent_ids":[
+**Number of Virtual Users**
+<div class="code-group" data-props='{"labels": [""]}'>
 
-         ],
-         "duration":null,
-         "metrics":null,
-         "raw_metric_name":null,
-         "end_time":null,
-         "cds_params_payload":null,
-         "renderer":null,
-         "renderer_props":null,
-         "extension_type":"MULTIQUERY",
-         "customizations":{
-            "drilldown":{
-
-            }
-         }
-      },
-      {
-         "title":"All k6 metrics",
-         "nrql":"FROM Metric select uniques(metricName) where metricName like 'k6%' limit max",
-         "process_as":"uniques_list",
-         "width":3,
-         "height":12,
-         "row":1,
-         "column":10,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Requests per second",
-         "nrql":"select rate(max(k6.http_reqs.per_second), 1 seconds) from Metric timeseries 10 second since 30 minutes ago",
-         "process_as":"faceted_area_chart",
-         "width":4,
-         "height":3,
-         "row":4,
-         "column":2,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Response timings - 90th",
-         "nrql":"SELECT sum(k6.http_req_duration.sum.percentiles) as '90th' FROM Metric WHERE percentile = 90 TIMESERIES 10 seconds SINCE 1800 seconds ago",
-         "process_as":"line_chart",
-         "width":4,
-         "height":3,
-         "row":4,
-         "column":6,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Data Sent/Received (B)",
-         "nrql":"SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) as 'Data Sent' FROM Metric TIMESERIES 10 seconds since 30 minutes ago",
-         "process_as":"line_chart",
-         "width":4,
-         "height":3,
-         "row":7,
-         "column":2,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Requests Histogram",
-         "nrql":"SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric SINCE 30 minutes AGO UNTIL NOW ",
-         "process_as":"histogram",
-         "width":4,
-         "height":3,
-         "row":7,
-         "column":6,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Request Rate",
-         "nrql":"select derivative(k6.http_reqs, 30 seconds) as 'Ramping Rate /reqs' from Metric timeseries since 30 minutes ago",
-         "process_as":"faceted_area_chart",
-         "width":4,
-         "height":3,
-         "row":10,
-         "column":2,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      },
-      {
-         "title":"Blocked Requests",
-         "nrql":"FROM Metric SELECT sum(k6.http_req_blocked.per_second) as 'Blocked Requests' timeseries 10 seconds since 30 minutes ago",
-         "process_as":"faceted_area_chart",
-         "width":4,
-         "height":3,
-         "row":10,
-         "column":6,
-         "event_types":null,
-         "facet":null,
-         "customizations":null,
-         "notes":null
-      }
-   ],
-   "dashboard_account_id":12345
-}
+```sql
+SELECT latest(k6.vus) FROM Metric TIMESERIES
 ```
+</div>
+
+**90th Percentile Request Duration**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE percentile = 90 TIMESERIES
+```
+</div>
+
+**Max, Average, Median Request Duration Duration**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT max(k6.http_req_duration) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
+```
+</div>
+
+**Rate of Requests**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
+```
+</div>
+
+**Data Sent and Data Received**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent' FROM Metric TIMESERIES
+```
+</div>
+
+**Histogram bucketing Requests**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
+```
+</div>
+
+**Change in the number of Requests**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERIES
+```
+</div>
+
+**Scrolling List of all k6 Performance Metrics**
+<div class="code-group" data-props='{"labels": [""]}'>
+
+```sql
+SELECT uniques(metricName) FROM Metric WHERE metricName LIKE 'k6%' LIMIT MAX
+```
+</div>
