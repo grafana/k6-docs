@@ -138,11 +138,7 @@ export default function() {
 
 Historically, there are two types of categories of load testing tools: scriptable and non-scriptable. Non-scriptable tools generate requests to one or multiple endpoints without any correlation between the requests providing the option to define a constant request rate to hit an endpoint. On the other hand, scriptable tools are usually designed to facilitate user flow testing, thus providing the option to configure the number of virtual users to set up the load of your test. k6 belongs to this category.
 
-With some changes to your test script, k6 can also perform a constant request rate in your load test by controlling the number of virtual users and the sleep time between each iteration.
-
-The following blog post shows [how to generate a constant request rate in k6](https://k6.io/blog/how-to-generate-a-constant-request-rate-in-k6).
-
-> We are working on a set of awesome new features in k6, namely the [New Executors](https://github.com/loadimpact/k6/pull/1007) that will introduce new ways to configure the load in your tests.
+The k6 v0.27 includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. With the v0.27 release, the k6 execution engine is completely revamped and now includes different executors. Earlier versions didn't have support for generating a constant request rate, which led to a [workaround solution](https://k6.io/blog/how-to-generate-a-constant-request-rate-in-k6). Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api) with no boilerplate code.
 
 ## Test creation
 
@@ -186,7 +182,7 @@ Originally called [FiddlerToLoadImpact](https://github.com/loadimpact/FiddlerToL
 
 As said in the introduction, it is crucial to test your API in advance, rather than relying on the untested API, which may crash at any time and have unexpected consequences.
 
-There are various ways to test your API, each pertaining to a particular test type and each producing a different type of load. 
+There are various ways to test your API, each pertaining to a particular test type and each producing a different type of load.
 
 - [Smoke test](/test-types/smoke-testing)
 - [Load test](/test-types/load-testing)
