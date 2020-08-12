@@ -10,8 +10,12 @@ updates:
     # Check the npm registry for updates every month
     schedule:
       interval: 'monthly'
-    # Set limit on amount of opened PRs with deps updates to 5
-    open-pull-requests-limit: 5
+    # Set limit on amount of opened PRs with deps updates to 1:
+    # previous experience with depndabot clearly shows, that
+    # separate PRs create too much of a fuss so I intend
+    # to use it as a mere once-a-month notifier that it is
+    # time for batch manual deps update
+    open-pull-requests-limit: 1
     # Set the target branch
     target-branch: 'develop'
     # Set labels

@@ -77,11 +77,7 @@ const plugins = [
           options: {
             maxWidth: 800,
             quality: 90,
-            // @TODO: there is a bug in one of the
-            // latest version of the plugin which
-            // prevents prefix getting into generated
-            // webp srcset. disabling it for now
-            withWebp: false,
+            withWebp: true,
             disableBgImage: true,
             wrapperStyle: 'margin-left: 0;',
           },
