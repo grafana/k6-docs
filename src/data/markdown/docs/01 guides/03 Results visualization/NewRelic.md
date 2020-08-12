@@ -105,7 +105,7 @@ SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE per
 <div class="code-group" data-props='{"labels": [""]}'>
 
 ```sql
-SELECT max(k6.http_req_duration) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
+SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
 ```
 </div>
 
