@@ -60,12 +60,15 @@ const Single = ({ to, label, sections }) => {
     return Component;
   }
   if (to.startsWith('/')) {
+    const isPartiallyActive =
+      typeof window !== 'undefined' &&
+      !/(\/docs)?\/cloud-rest-api/.test(window.location.pathname);
     Component = (
       <Link
         className={styles.link}
         to={to}
         activeClassName={styles.link_active}
-        partiallyActive
+        partiallyActive={isPartiallyActive}
       >
         {label}
       </Link>
