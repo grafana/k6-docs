@@ -16,9 +16,6 @@ const {
   removeGuidesAndRedirectWelcome,
 } = require('./src/utils/utils');
 const Path = require('path');
-// @TODO: 1. remove any breadcrumbs/pages
-// generation related to cloud-api in prod
-// 2. remove algolia indexing
 
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
@@ -141,7 +138,9 @@ async function createDocPages({ graphql, actions, reporter }) {
     } = remarkNode;
     // if there is a value in redirect field, skip page creation
     // OR there is draft flag and mode is prod
-    if ((draft === 'true' && isProduction) || redirect) return;
+    if ((draft === 'true' && isProduction) || redirect) {
+      return;
+    }
     const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
     const slug =
       customSlug ||
