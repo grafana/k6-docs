@@ -26,6 +26,7 @@ import Influx from 'svg/influx.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import Kafka from 'svg/kafka.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
+import NewRelic from 'svg/new-relic.inline.svg';
 import Loadimpact from 'svg/loadimpact.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
@@ -65,13 +66,14 @@ const iconsDataSet1 = [
     to: '/results-visualization/json',
   },
   {
-    Icon: () => (
-      <div className={styles.doubleIcon}>
-        <StatsD />
-      </div>
-    ),
+    Icon: StatsD,
     name: 'StatsD',
     to: '/results-visualization/statsd',
+  },
+  {
+    Icon: NewRelic,
+    name: 'New Relic',
+    to: '/results-visualization/new-relic',
   },
 ];
 

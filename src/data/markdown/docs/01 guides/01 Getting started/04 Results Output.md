@@ -97,14 +97,15 @@ k6 can send more granular result data to different outputs to integrate and visu
 
 The list of output plugins are:
 
-| Plugin                                                | Usage                   |
-| ----------------------------------------------------- | ----------------------- |
-| [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`    |
-| [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`    |
-| [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`  |
-| [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb` |
-| [JSON](/results-visualization/json)                   | `k6 run --out json`     |
-| [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`   |
+| Plugin                                                | Usage                                                                           |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`                                                            |
+| [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`                                                            |
+| [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`                                                          |
+| [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb`                                                         |
+| [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
+| [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`                                                           |
+| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd`, see [page](/results-visualization/new-relic) for details |
 
 ## Multiple outputs
 
