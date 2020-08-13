@@ -67,21 +67,38 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
   );
 };
 
-const MobileNavMenu = ({ sidebarTree }) => {
-  const [value, setValue] = useState('');
+const MobileNavMenu = ({ sidebarTree, links }) => {
+  const [value, setValue] = useState(false);
   useLayoutEffect(() => {
-    setValue(window.location.pathname.replace(/^\/docs/, ''));
+    /* manually adding back cloud rest api path
+     since we have excluded it in gatsby-node
+     */
+    const topLevelNav = [...links, '/cloud-rest-api'];
+    const currentValue = window.location.pathname
+      .replace(/^\/docs/, '')
+      .replace(/\/$/, '');
+    if (!topLevelNav.includes(currentValue.replace(/\/$/, ''))) {
+      setValue(currentValue);
+    }
   }, []);
   return (
     <select
       onChange={({ target }) => {
         const val = target.value;
+        if (!val) return;
         const isExternalLink = val.startsWith('http');
-        return isExternalLink ? window.location.assign(val) : navigate(val);
+        if (isExternalLink) {
+          window.location.assign(val);
+        } else {
+          navigate(val);
+        }
       }}
       className={styles.dropdown}
       value={value}
     >
+      <option disabled value={false}>
+        Choose a section
+      </option>
       {sidebarTree &&
         childrenToList(sidebarTree.children).map((sectionNode) => (
           <optgroup
@@ -103,7 +120,7 @@ const SidebarNode = (props) => {
     node: { name, meta, children },
   } = props;
 
-  const isLink = meta && meta.path;
+  const isLink = meta?.path;
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -246,7 +263,10 @@ export const DocLayout = ({
           </div>
           <div className={'d-md-none col-12'}>
             <div className={styles.dropdownWrapper}>
-              <MobileNavMenu sidebarTree={sidebarTree} />
+              <MobileNavMenu
+                sidebarTree={sidebarTree}
+                links={links.map(({ to }) => to)}
+              />
             </div>
           </div>
         </Header>

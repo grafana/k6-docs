@@ -17,7 +17,7 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => (
         <div className={'row d-flex align-items-center'}>
           <div className={'col-3'}>
             <Link to={'/'}>
-              <Logo className={styles.logo}/>
+              <Logo className={styles.logo} />
             </Link>
           </div>
           <div className={'col-9 d-flex justify-content-end'}>
@@ -34,7 +34,7 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => (
     <div className={`container ${styles.inner}`}>
       <ul className={styles.list}>
         {links.map(({ label, to }) => (
-          <li className={styles.listItem} key={label}>
+          <li className={styles.listItem} key={label || to}>
             <Link className={styles.listLink} to={to}>
               {label}
             </Link>
