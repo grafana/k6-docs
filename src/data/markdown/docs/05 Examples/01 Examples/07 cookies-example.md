@@ -110,4 +110,4 @@ export default function() {
 **Relevant k6 APIs**:
 - [http.cookieJar()](/javascript-api/k6-http/cookiejar-method)
 - [http.CookieJar](/javascript-api/k6-http/cookiejar)
-    - [set(name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options)
+    - [set(url, name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options)
