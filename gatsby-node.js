@@ -263,6 +263,13 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
+    fromPath:
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
+    toPath:
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/javascript-api/k6-http/filedata-k6-http',
     toPath: '/javascript-api/k6-http/filedata',
     isPermanent: true,
