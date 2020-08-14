@@ -448,13 +448,6 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url',
-    toPath:
-      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath:
       '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
     toPath:
