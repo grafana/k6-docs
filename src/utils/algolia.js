@@ -4,7 +4,7 @@ const {
   stripDirectoryPath,
   compose,
   noTrailingSlash,
-  dedupeExamples,
+  dedupePath,
   removeGuidesAndRedirectWelcome,
   mdxAstToPlainText,
 } = require('./utils');
@@ -21,6 +21,13 @@ const processMdxEntry = ({ children: [entry] }) => {
     // avoid pushing empty records
     return [];
   }
+  // @TODO: remove after cloud rest api docs will be ported ,
+  // avoid indexing this section for a while to avoid
+  // search user's confusion
+  if (/cloud rest api/i.test(fileAbsolutePath)) {
+    console.log('yes, it includes cloud rest api:', fileAbsolutePath);
+    return [];
+  }
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
   // cut the last piece (the actual name of a file) to match the generation
   // in node
@@ -31,7 +38,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
   const slug = compose(
     noTrailingSlash,
-    dedupeExamples,
+    dedupePath,
     removeGuidesAndRedirectWelcome,
     unorderify,
     slugify,
