@@ -19,10 +19,10 @@ const getRandomNumberBetween = (min = 1, max = 10) => {
 const slugify = (path) =>
   path
     .toLowerCase()
-    .replace(/[\s-;:!?&,\(\)\[\]]{1,}/g, '-')
+    .replace(/[\s-;:!?&,()[\]]{1,}/g, '-')
     .replace(/[%@~`'"]/g, '')
     .replace(/(-{1,})?(\.md)?$/, '') // removes parts like "*-.md" or "*.md" or "-" postfix
-    .replace(/(\/)\-{1,}/g, '$1') // removed '-' prefix from any path part
+    .replace(/(\/)-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
 // buildBreadcrumbs(path: String) -> Array<Object>
@@ -280,10 +280,9 @@ const mdxAstToPlainText = (ast) => {
 // guides category is the root: / or /docs in prod, so we removing that part
 const removeGuides = (path) => path.replace(/guides\//i, '');
 
-// examples page contains `examples` folder which causing path
-// duplication, removing it as well
-const dedupeExamples = (path) =>
-  path.replace(/examples\/examples/i, 'examples');
+// removes duplicates from path, e.g.
+// examples/examples -> examples
+const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 
 // no /guides route; welcome is redirecting to the root path
 // difference from removeGuides: this one is for sidebar links processing and
@@ -305,8 +304,8 @@ Object.defineProperties(utils, {
   removeGuidesAndRedirectWelcome: {
     value: removeGuidesAndRedirectWelcome,
   },
-  dedupeExamples: {
-    value: dedupeExamples,
+  dedupePath: {
+    value: dedupePath,
   },
   removeGuides: {
     value: removeGuides,

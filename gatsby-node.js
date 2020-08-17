@@ -12,13 +12,25 @@ const {
   childrenToList,
   noTrailingSlash,
   removeGuides,
-  dedupeExamples,
+  dedupePath,
   removeGuidesAndRedirectWelcome,
 } = require('./src/utils/utils');
 const Path = require('path');
 
 // auxilary flag to determine the environment (staging/prod)
-const isProduction = process.env.GATSBY_DEFAULT_MAIN_URL === 'https://k6.io';
+const isProduction =
+  process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
+
+// @TODO: remove this after the porting of cloud rest api
+// section will be finished
+const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
+  if (!isProduction && title === 'Cloud REST API') {
+    const docUrl = process.env.GATSBY_DEFAULT_DOC_URL;
+    const domain = docUrl.includes('9000') ? `/docs` : ``;
+    return `${domain}/cloud-rest-api/introduction`;
+  }
+  return redirect;
+};
 
 async function createDocPages({ graphql, actions, reporter }) {
   // initiating path collision checker
@@ -57,18 +69,22 @@ async function createDocPages({ graphql, actions, reporter }) {
 
   // Build a tree for a sidebar
   const sidebarTreeBuilder = buildFileTree(buildFileTreeNode);
+
   nodes.forEach(({ name, relativeDirectory, children: [remarkNode] }) => {
     const {
       frontmatter: { title, redirect, hideFromSidebar, draft, slug },
     } = remarkNode;
+
     // skip altogether if this content has draft flag
     // OR hideFromSidebar
     if ((draft === 'true' && isProduction) || hideFromSidebar) return;
+
     // titles like k6/html treated like paths otherwise
     const path = `/${stripDirectoryPath(
       relativeDirectory,
       'docs',
     )}/${title.replace(/\//g, '-')}`;
+
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, 'docs')),
       unorderify(name),
@@ -77,13 +93,14 @@ async function createDocPages({ graphql, actions, reporter }) {
           slug ||
           compose(
             noTrailingSlash,
-            dedupeExamples,
+            dedupePath,
+
             removeGuidesAndRedirectWelcome,
             unorderify,
             slugify,
           )(path),
         title,
-        redirect,
+        redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
       },
     );
   });
@@ -97,11 +114,13 @@ async function createDocPages({ graphql, actions, reporter }) {
 
   // create data for rendering docs navigation
   const docPageNavLinks = docPageNav
+    .filter((item) => item !== 'Cloud REST API')
     .map((item) => ({
       label: item === 'cloud' ? 'Cloud Docs' : item.toUpperCase(),
       to: item === 'guides' ? `/` : `/${slugify(item)}`,
     }))
     .filter(Boolean);
+
   // creating actual docs pages
   nodes.forEach(({ relativeDirectory, children: [remarkNode], name }) => {
     const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
@@ -119,13 +138,16 @@ async function createDocPages({ graphql, actions, reporter }) {
     } = remarkNode;
     // if there is a value in redirect field, skip page creation
     // OR there is draft flag and mode is prod
-    if ((draft === 'true' && isProduction) || redirect) return;
+    if ((draft === 'true' && isProduction) || redirect) {
+      return;
+    }
     const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
     const slug =
       customSlug ||
       compose(
         noTrailingSlash,
-        dedupeExamples,
+        dedupePath,
+
         removeGuides,
         unorderify,
         slugify,
@@ -137,7 +159,7 @@ async function createDocPages({ graphql, actions, reporter }) {
     }
     const breadcrumbs = compose(
       buildBreadcrumbs,
-      dedupeExamples,
+      dedupePath,
       removeGuides,
       unorderify,
     )(path);
@@ -171,8 +193,13 @@ async function createDocPages({ graphql, actions, reporter }) {
   });
 
   // generating pages currently presented in templates/docs/ folder
+  // for the exception of Cloud REST API
   docPageNav.forEach((item) => {
     const slug = slugify(item);
+    // manually exclude from top navigation cloud rest api section
+    if (slug === 'cloud-rest-api') {
+      return;
+    }
     // path collision check
     if (
       !pathCollisionDetectorInstance
@@ -204,21 +231,32 @@ async function createDocPages({ graphql, actions, reporter }) {
 
   // generating a bunch of breadcrumbs stubs for top level non-links categories
 
-  // ! attention: filtering here because of unplanned case with actual pages for top level sidebar sections. Removing breadcrumbs stub generation manually.
+  // ! attention: filtering here because of unplanned
+  // case with actual pages for top level
+  // sidebar sections. Removing breadcrumbs stub
+  // generation manually.
   docPageNav
-    .filter((s) => !['javascript api', 'examples'].includes(s.toLowerCase()))
+    .filter(
+      (s) =>
+        ![
+          'javascript api',
+          'examples',
+          isProduction ? 'cloud rest api' : '',
+        ].includes(s.toLowerCase()),
+    )
     .forEach((section) => {
       childrenToList(getSidebar(section).children).forEach(({ name }) => {
         const path = `${section}/${name}`;
         const breadcrumbs = compose(
           buildBreadcrumbs,
-          dedupeExamples,
+          dedupePath,
           removeGuides,
         )(path);
         actions.createPage({
           path: compose(
             noTrailingSlash,
-            dedupeExamples,
+            dedupePath,
+
             removeGuides,
             slugify,
           )(path),
