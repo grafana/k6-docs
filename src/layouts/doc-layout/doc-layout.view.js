@@ -119,8 +119,6 @@ const SidebarNode = (props) => {
   const {
     node: { name, meta, children },
   } = props;
-
-  const isLink = meta?.path;
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -143,29 +141,43 @@ const SidebarNode = (props) => {
 
   const hasSubMenu = !_.isEmpty(children);
 
+  const nodes = {
+    externalLink: () => (
+      <a className={styles.sidebarNodeTitle} href={meta.redirect}>
+        {meta.title}
+      </a>
+    ),
+    internalLink: () => (
+      <Link
+        className={`${styles.sidebarNodeTitle} ${
+          isActive ? styles.sidebarNodeTitle_active : ''
+        }`}
+        to={meta.path}
+      >
+        {meta.title}
+      </Link>
+    ),
+    text: () => (
+      <Heading className={styles.sidebarNodeTitle} tag={'h3'} size={'sm'}>
+        {name}
+      </Heading>
+    ),
+  };
+
+  const nodeType = () => {
+    if (meta.redirect) {
+      return 'externalLink';
+    }
+    if (meta.path) {
+      return 'internalLink';
+    }
+    return 'text';
+  };
+
   return (
-    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : ''}>
-      {isLink ? (
-        meta.redirect ? (
-          <a className={`${styles.sidebarNodeTitle}`} href={meta.redirect}>
-            {meta.title}
-          </a>
-        ) : (
-          <Link
-            className={`${styles.sidebarNodeTitle} ${
-              isActive ? styles.sidebarNodeTitle_active : ''
-            }`}
-            to={meta.path}
-          >
-            {meta.title}
-          </Link>
-        )
-      ) : (
-        <Heading className={styles.sidebarNodeTitle} tag={'h3'} size={'sm'}>
-          {name}
-        </Heading>
-      )}
-      {children && isActive && (
+    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}>
+      {nodes[nodeType()]()}
+      {!!Object.keys(children).length && isActive && (
         <div className={styles.sidebarNodeChildren}>
           {childrenToList(children).map((node) => (
             <SidebarNode node={node} key={node.name} />

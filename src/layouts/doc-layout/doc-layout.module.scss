@@ -111,7 +111,7 @@ h2.sidebar-section-title {
   }
 }
 
-.sidebarNodeWithChildren > a {
+.sidebar-node-with-children > a {
   &.sidebar-node-title_active {
     &:after {
       content: '';
