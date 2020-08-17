@@ -25,7 +25,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   // avoid indexing this section for a while to avoid
   // search user's confusion
   if (/cloud rest api/i.test(fileAbsolutePath)) {
-    console.log('yes, it includes cloud rest api:', fileAbsolutePath);
+    console.log('exluded from algolia indecies pages:', fileAbsolutePath);
     return [];
   }
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
