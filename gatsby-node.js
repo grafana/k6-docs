@@ -93,9 +93,8 @@ async function createDocPages({ graphql, actions, reporter }) {
           slug ||
           compose(
             noTrailingSlash,
-            dedupePath,
-
             removeGuidesAndRedirectWelcome,
+            dedupePath,
             unorderify,
             slugify,
           )(path),
@@ -147,7 +146,6 @@ async function createDocPages({ graphql, actions, reporter }) {
       compose(
         noTrailingSlash,
         dedupePath,
-
         removeGuides,
         unorderify,
         slugify,
