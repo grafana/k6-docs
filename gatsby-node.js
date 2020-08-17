@@ -26,7 +26,7 @@ const isProduction =
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
   if (!isProduction && title === 'Cloud REST API') {
     const docUrl = process.env.GATSBY_DEFAULT_DOC_URL;
-    const domain = docUrl.includes('9000') ? `/docs` : ``;
+    const domain = docUrl.includes('8000') ? `` : `/docs`;
     return `${domain}/cloud-rest-api/introduction`;
   }
   return redirect;
