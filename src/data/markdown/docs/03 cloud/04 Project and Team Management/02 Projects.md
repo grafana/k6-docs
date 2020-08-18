@@ -21,6 +21,6 @@ Here are some ways we have seen users utilize Projects to stay organized:
 
 ## Running CLI Tests in a Specific Project
 
-If you are using the CLI to trigger your tests, you will need to specify a projectId in order to use the correct subscription and organize your results in the correct project. You will need to get the project ID from the top left corner of the dashboard:
+If you are using the CLI to trigger your tests, you will need to specify a `projectID` in order to use the correct subscription and organize your results in the correct project. You will need to get the project ID from the top left corner of the dashboard:
 
 ![Test result navigation](images/02%Projects/projectID.png)

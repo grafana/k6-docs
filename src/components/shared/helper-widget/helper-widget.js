@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, navigate } from 'gatsby';
+
 import styles from './helper-widget.module.scss';
 // icons
-import OpenIcon from './svg/open.inline.svg';
 import CloseIcon from './svg/close.inline.svg';
-import Slack from './svg/slack.inline.svg';
 import Cloud from './svg/cloud.inline.svg';
 import Message from './svg/message.inline.svg';
+import OpenIcon from './svg/open.inline.svg';
+import Slack from './svg/slack.inline.svg';
 
 const CHAT_ONLY_PATHS = [
   '/cloud',
@@ -17,13 +17,13 @@ const CHAT_ONLY_PATHS = [
   '/pricing/',
 ];
 
-const HelperWidget = props => {
+const HelperWidget = () => {
   // states
   const [shouldRender, setShouldRender] = useState(false);
   const [driftReady, setDriftReady] = useState(false);
   const [defaultWidgetIsOpen, setDefaultWidgetIsOpen] = useState(false);
 
-  const widgetClickOutside = e => {
+  const widgetClickOutside = (e) => {
     const widget = document.getElementById('custom-drift-widget-container');
     if (!widget.contains(e.target)) {
       setDefaultWidgetIsOpen(false);
@@ -36,16 +36,17 @@ const HelperWidget = props => {
     if (typeof window.drift !== 'undefined') {
       // try to send an opaque get request to drift api
       fetch('https://js.driftt.com/', { mode: 'no-cors' })
-        .then(res => {
+        .then(() => {
           // if successfull (endpoint is not blocked by ad blocker)
           // use native drift listener
-          window.drift.on('ready', api => {
+          window.drift.on('ready', () => {
             setDriftReady(true);
             setShouldRender(true);
           });
         })
-        .catch(err => {
+        .catch((err) => {
           // else just render without setting drifReady flag
+          console.log(err);
           setShouldRender(true);
         });
     }
@@ -57,12 +58,12 @@ const HelperWidget = props => {
       setDefaultWidgetIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
     } else {
-      navigate('/contact');
+      window.location.assign(`${process.env.GATSBY_DEFAULT_MAIN_URL}/contact`);
     }
   };
   // handlers
   const handleOpenClick = () => {
-    const showChatOnly = CHAT_ONLY_PATHS.some(path =>
+    const showChatOnly = CHAT_ONLY_PATHS.some((path) =>
       window.location.pathname.includes(path),
     );
     if (showChatOnly) {
@@ -84,7 +85,7 @@ const HelperWidget = props => {
         {!defaultWidgetIsOpen && (
           <button
             className={styles.button}
-            type={'button'}
+            type="button"
             onClick={handleOpenClick}
           >
             <OpenIcon />
@@ -102,13 +103,13 @@ const HelperWidget = props => {
               </a>
             </li>
             <li className={styles.listItem}>
-              <a href={'https://k6.io/slack'}>
+              <a href={`${process.env.GATSBY_DEFAULT_MAIN_URL}/slack`}>
                 <Slack />
                 Community Slack
               </a>
             </li>
             <li className={styles.listItem}>
-              <button type={'button'} onClick={handleCloudClick}>
+              <button type="button" onClick={handleCloudClick}>
                 <Cloud />
                 Cloud support chat
               </button>
@@ -118,7 +119,7 @@ const HelperWidget = props => {
         {defaultWidgetIsOpen && (
           <button
             className={styles.button}
-            type={'button'}
+            type="button"
             onClick={handleCloseClick}
           >
             <CloseIcon />

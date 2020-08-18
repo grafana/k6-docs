@@ -1,32 +1,34 @@
-import React, { useRef } from 'react';
-import { StickyContainer, Sticky } from 'react-sticky';
-import { useStaticQuery, graphql } from 'gatsby';
 import classNames from 'classnames';
 // components
-import { DocLayout } from 'layouts/doc-layout';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import { DocIconsRow } from 'components/pages/doc-integrations/doc-icons-row';
+import styles from 'components/pages/doc-integrations/doc-integrations.module.scss';
 import { ExternalLinksDashboard } from 'components/pages/doc-integrations/external-links-dashboard';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import CustomContentContainer from 'components/shared/custom-content-container';
 // styles
-import styles from 'components/pages/doc-integrations/doc-integrations.module.scss';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import { useStaticQuery, graphql } from 'gatsby';
+// eslint-disable-next-line import/no-unresolved
 import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
+import React, { useRef } from 'react';
+import { StickyContainer, Sticky } from 'react-sticky';
 // icons
-import Jenkins from 'svg/jenkins.inline.svg';
-import CircleCI from 'svg/circleci.inline.svg';
-import Gitlab from 'svg/gitlab.inline.svg';
-import GitHub from 'svg/github.inline.svg';
 import Azure from 'svg/azure.inline.svg';
-import TeamCity from 'svg/teamcity.inline.svg';
-import Json from 'svg/json.inline.svg';
+import CircleCI from 'svg/circleci.inline.svg';
+import Datadog from 'svg/datadog.inline.svg';
+import GitHub from 'svg/github.inline.svg';
+import Gitlab from 'svg/gitlab.inline.svg';
 import Grafana from 'svg/grafana.inline.svg';
 import Influx from 'svg/influx.inline.svg';
-import Datadog from 'svg/datadog.inline.svg';
+import Jenkins from 'svg/jenkins.inline.svg';
+import Json from 'svg/json.inline.svg';
 import Kafka from 'svg/kafka.inline.svg';
-import StatsD from 'svg/statsd.inline.svg';
 import Loadimpact from 'svg/loadimpact.inline.svg';
+import NewRelic from 'svg/new-relic.inline.svg';
+import StatsD from 'svg/statsd.inline.svg';
+import TeamCity from 'svg/teamcity.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
 
@@ -65,13 +67,14 @@ const iconsDataSet1 = [
     to: '/results-visualization/json',
   },
   {
-    Icon: () => (
-      <div className={styles.doubleIcon}>
-        <StatsD />
-      </div>
-    ),
+    Icon: StatsD,
     name: 'StatsD',
     to: '/results-visualization/statsd',
+  },
+  {
+    Icon: NewRelic,
+    name: 'New Relic',
+    to: '/results-visualization/new-relic',
   },
 ];
 
@@ -277,6 +280,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               className={styles.ciRow}
               title={'Continuous Integration and Continuous Delivery'}
               subtitle={
+                // eslint-disable-next-line max-len
                 'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
               }
               iconsData={iconsDataSet2}

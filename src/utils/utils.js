@@ -19,10 +19,10 @@ const getRandomNumberBetween = (min = 1, max = 10) => {
 const slugify = (path) =>
   path
     .toLowerCase()
-    .replace(/[\s-;:!?&,\(\)\[\]]{1,}/g, '-')
+    .replace(/[\s-;:!?&,()[\]]{1,}/g, '-')
     .replace(/[%@~`'"]/g, '')
     .replace(/(-{1,})?(\.md)?$/, '') // removes parts like "*-.md" or "*.md" or "-" postfix
-    .replace(/(\/)\-{1,}/g, '$1') // removed '-' prefix from any path part
+    .replace(/(\/)-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
 // buildBreadcrumbs(path: String) -> Array<Object>
@@ -123,7 +123,7 @@ const trimToLengthWithEllipsis = (str, ln = 140) =>
         .split(' ')
         .reduce(
           (acc, cur) =>
-            acc.length + cur.length + 1 > ln - 4 ? acc : (acc += ` ${cur}`),
+            acc.length + cur.length + 1 > ln - 4 ? acc : `${acc} ${cur}`,
           '',
         )
         .concat(' ...');
@@ -204,6 +204,7 @@ const pathCollisionDetector = (logger) => {
 
   // shout message template
   const buildWarning = ({ current, stored }) =>
+    // eslint-disable-next-line max-len
     `\n\n### ATTENTION!\n\nDetected path collision at the following files:\n\nFile 1: name: ${stored.name}, path: ${stored.path}, status: CREATED  \nFile 2: name: ${current.name}, path: ${current.path}, status: ATTEMPT TO CREATE \nSKIPPING PAGE CREATION OF FILE 2\n\nMost likely the reason for collision is the 'title' fields in frontmatter area that became identic after slugifying. Consider changing it, using 'slug' field of frontmatter to override default path generation or contact the developer team.\n\n`;
   // check if the path already exist in collection
   const contains = (path) => PATHS.some(({ path: $path }) => $path === path);
@@ -247,7 +248,9 @@ const mdxAstToPlainText = (ast) => {
     const result = [];
     const { length } = values;
     let index = -1;
+    // eslint-disable-next-line no-plusplus
     while (++index < length) {
+      // eslint-disable-next-line no-use-before-define
       result[index] = $toString(values[index]);
     }
 
@@ -280,10 +283,9 @@ const mdxAstToPlainText = (ast) => {
 // guides category is the root: / or /docs in prod, so we removing that part
 const removeGuides = (path) => path.replace(/guides\//i, '');
 
-// examples page contains `examples` folder which causing path
-// duplication, removing it as well
-const dedupeExamples = (path) =>
-  path.replace(/examples\/examples/i, 'examples');
+// removes duplicates from path, e.g.
+// examples/examples -> examples
+const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 
 // no /guides route; welcome is redirecting to the root path
 // difference from removeGuides: this one is for sidebar links processing and
@@ -305,8 +307,8 @@ Object.defineProperties(utils, {
   removeGuidesAndRedirectWelcome: {
     value: removeGuidesAndRedirectWelcome,
   },
-  dedupeExamples: {
-    value: dedupeExamples,
+  dedupePath: {
+    value: dedupePath,
   },
   removeGuides: {
     value: removeGuides,

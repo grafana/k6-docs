@@ -1,7 +1,6 @@
-import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import { Button } from 'components/shared/button';
+import React from 'react';
 import Logo from 'svg/logo.inline.svg';
 
 import styles from './mobile-nav.module.scss';
@@ -17,13 +16,13 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => (
         <div className={'row d-flex align-items-center'}>
           <div className={'col-3'}>
             <Link to={'/'}>
-              <Logo className={styles.logo}/>
+              <Logo className={styles.logo} />
             </Link>
           </div>
           <div className={'col-9 d-flex justify-content-end'}>
             <button
               className={styles.closeButton}
-              type={'button'}
+              type="button"
               onClick={onCloseButtonClick}
             />
           </div>
@@ -34,7 +33,7 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => (
     <div className={`container ${styles.inner}`}>
       <ul className={styles.list}>
         {links.map(({ label, to }) => (
-          <li className={styles.listItem} key={label}>
+          <li className={styles.listItem} key={label || to}>
             <Link className={styles.listLink} to={to}>
               {label}
             </Link>

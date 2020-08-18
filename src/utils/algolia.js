@@ -1,14 +1,15 @@
+const chunk = require('chunk-text');
+
 const {
   unorderify,
   slugify,
   stripDirectoryPath,
   compose,
   noTrailingSlash,
-  dedupeExamples,
+  dedupePath,
   removeGuidesAndRedirectWelcome,
   mdxAstToPlainText,
 } = require('./utils');
-const chunk = require('chunk-text');
 
 const processMdxEntry = ({ children: [entry] }) => {
   const {
@@ -21,6 +22,13 @@ const processMdxEntry = ({ children: [entry] }) => {
     // avoid pushing empty records
     return [];
   }
+  // @TODO: remove after cloud rest api docs will be ported ,
+  // avoid indexing this section for a while to avoid
+  // search user's confusion
+  if (/cloud rest api/i.test(fileAbsolutePath)) {
+    console.log('exluded from algolia indecies pages:', fileAbsolutePath);
+    return [];
+  }
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
   // cut the last piece (the actual name of a file) to match the generation
   // in node
@@ -31,7 +39,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
   const slug = compose(
     noTrailingSlash,
-    dedupeExamples,
+    dedupePath,
     removeGuidesAndRedirectWelcome,
     unorderify,
     slugify,
@@ -39,6 +47,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
+  // eslint-disable-next-line no-plusplus
   while (pointer--) {
     cache[pointer] = {
       title,
@@ -54,6 +63,7 @@ const processMdxEntry = ({ children: [entry] }) => {
 const flatten = (arr) => {
   let pointer = arr.length;
   const cache = new Array(pointer);
+  // eslint-disable-next-line no-plusplus
   while (pointer--) {
     cache[pointer] = processMdxEntry(arr[pointer]);
   }

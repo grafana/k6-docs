@@ -3,9 +3,9 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const mainURL = process.env.GATSBY_DEFAULT_MAIN_URL;
-const isProduction = mainURL === 'https://k6.io';
-const isStaging = mainURL === 'https://staging.k6.io';
+const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
+const isProduction = mainURL === 'https://k6.io/docs';
+const isStaging = mainURL === 'https://staging.k6.io/docs';
 
 const plugins = [
   'gatsby-plugin-react-helmet',

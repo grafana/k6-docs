@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link, withPrefix } from 'gatsby';
 import classNames from 'classnames/bind';
+import { Link, withPrefix } from 'gatsby';
+import React from 'react';
+
 import styles from './header-nav.module.scss';
 
 // aux
@@ -60,12 +61,15 @@ const Single = ({ to, label, sections }) => {
     return Component;
   }
   if (to.startsWith('/')) {
+    const isPartiallyActive =
+      typeof window !== 'undefined' &&
+      !/(\/docs)?\/cloud-rest-api/.test(window.location.pathname);
     Component = (
       <Link
         className={styles.link}
         to={to}
         activeClassName={styles.link_active}
-        partiallyActive
+        partiallyActive={isPartiallyActive}
       >
         {label}
       </Link>

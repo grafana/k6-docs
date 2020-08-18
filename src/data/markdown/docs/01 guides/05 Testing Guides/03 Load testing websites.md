@@ -191,7 +191,7 @@ group('login page', function () {
 ## See also
 
 - [Test types](/test-types/introduction)
-- [k6 does not run in a browser](#what-k6-does-not)
+- [k6 does not run in a browser](/#what-k6-does-not)
 - [Session recording guide](/using-k6/session-recording-har-support)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)

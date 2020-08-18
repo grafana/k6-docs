@@ -64,21 +64,38 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
   );
 };
 
-const MobileNavMenu = ({ sidebarTree }) => {
-  const [value, setValue] = useState('');
+const MobileNavMenu = ({ sidebarTree, links }) => {
+  const [value, setValue] = useState(false);
   useLayoutEffect(() => {
-    setValue(window.location.pathname.replace(/^\/docs/, ''));
+    /* manually adding back cloud rest api path
+     since we have excluded it in gatsby-node
+     */
+    const topLevelNav = [...links, '/cloud-rest-api'];
+    const currentValue = window.location.pathname
+      .replace(/^\/docs/, '')
+      .replace(/\/$/, '');
+    if (!topLevelNav.includes(currentValue.replace(/\/$/, ''))) {
+      setValue(currentValue);
+    }
   }, []);
   return (
     <select
       onChange={({ target }) => {
         const val = target.value;
+        if (!val) return;
         const isExternalLink = val.startsWith('http');
-        return isExternalLink ? window.location.assign(val) : navigate(val);
+        if (isExternalLink) {
+          window.location.assign(val);
+        } else {
+          navigate(val);
+        }
       }}
       className={styles.dropdown}
       value={value}
     >
+      <option disabled value={false}>
+        Choose a section
+      </option>
       {sidebarTree &&
         childrenToList(sidebarTree.children).map((sectionNode) => (
           <optgroup
@@ -99,8 +116,6 @@ const SidebarNode = (props) => {
   const {
     node: { name, meta, children },
   } = props;
-
-  const isLink = meta && meta.path;
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -123,30 +138,43 @@ const SidebarNode = (props) => {
 
   const hasSubMenu = Object.keys(children).length;
 
+  const nodes = {
+    externalLink: () => (
+      <a className={styles.sidebarNodeTitle} href={meta.redirect}>
+        {meta.title}
+      </a>
+    ),
+    internalLink: () => (
+      <Link
+        className={`${styles.sidebarNodeTitle} ${
+          isActive ? styles.sidebarNodeTitle_active : ''
+        }`}
+        to={meta.path}
+      >
+        {meta.title}
+      </Link>
+    ),
+    text: () => (
+      <Heading className={styles.sidebarNodeTitle} tag={'h3'} size={'sm'}>
+        {name}
+      </Heading>
+    ),
+  };
+
+  const nodeType = () => {
+    if (meta.redirect) {
+      return 'externalLink';
+    }
+    if (meta.path) {
+      return 'internalLink';
+    }
+    return 'text';
+  };
+
   return (
-    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : ''}>
-      {/* eslint-disable-next-line no-nested-ternary */}
-      {isLink ? (
-        meta.redirect ? (
-          <a className={`${styles.sidebarNodeTitle}`} href={meta.redirect}>
-            {meta.title}
-          </a>
-        ) : (
-          <Link
-            className={`${styles.sidebarNodeTitle} ${
-              isActive ? styles.sidebarNodeTitle_active : ''
-            }`}
-            to={meta.path}
-          >
-            {meta.title}
-          </Link>
-        )
-      ) : (
-        <Heading className={styles.sidebarNodeTitle} tag={'h3'} size={'sm'}>
-          {name}
-        </Heading>
-      )}
-      {children && isActive && (
+    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}>
+      {nodes[nodeType()]()}
+      {!!Object.keys(children).length && isActive && (
         <div className={styles.sidebarNodeChildren}>
           {childrenToList(children).map((node) => (
             <SidebarNode node={node} key={node.name} />
@@ -244,7 +272,10 @@ export const DocLayout = ({
           </div>
           <div className={'d-md-none col-12'}>
             <div className={styles.dropdownWrapper}>
-              <MobileNavMenu sidebarTree={sidebarTree} />
+              <MobileNavMenu
+                sidebarTree={sidebarTree}
+                links={links.map(({ to }) => to)}
+              />
             </div>
           </div>
         </Header>
