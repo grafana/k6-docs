@@ -116,7 +116,6 @@ You just need to do the following:
 ```shell
 $ git clone 'https://github.com/loadimpact/k6'
 $ cd k6
-$ git submodule update --init
 $ docker-compose up -d \
     influxdb \
     grafana
