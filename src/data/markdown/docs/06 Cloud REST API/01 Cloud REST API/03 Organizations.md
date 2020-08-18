@@ -8,7 +8,7 @@ draft: 'true'
 
 Returns a list of organizations associated with the authenticated user along with organization details.
 
-**GET** `v3/organizations`
+**GET** `/v3/organizations`
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
@@ -40,7 +40,7 @@ Returns a list of organizations associated with the authenticated user along wit
 
 Returns details for the specified organization.
 
-**GET** `v3/organizations/{organization_id}`
+**GET** `/v3/organizations/{organization_id}`
 
 | Path Parameter | Type | Description |
 | ----------| ---- | ----------- |

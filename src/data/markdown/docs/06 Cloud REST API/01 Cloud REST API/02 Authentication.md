@@ -6,7 +6,7 @@ draft: 'true'
 
 Authentication is based on a custom token scheme.
 
-Your Auth Token is what enables this and allows you to interact with the k6 Cloud using the k6 CLI or through the REST API. To get your Auth Token, please visit [this page](https://app.k6.io/account/token).
+Your Auth Token allows you to interact with the k6 Cloud through k6 CLI and REST API. To get the token, please visit [this page](https://app.k6.io/account/token).
 
 
 Using cURL, your requests must contain the following header:
