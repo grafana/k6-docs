@@ -128,3 +128,121 @@ Test run ids can be found from `test_run_ids` field in response from Read Test o
 ```
 
 </div>
+
+
+## List thresholds
+
+Returns all thresholds (and related metrics) for a test run.
+
+**GET** `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}`
+
+| Query Parameter | Type | Description | Example |
+| ----------| ---- | ----------- | ---------- | 
+| test_run_id | integer | Returns thresholds associated with a given test_run_id. | |
+| ids[] | integer | Specify threshold id(s). | `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}&ids[]={threshold_id_2}` |
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "k6-metrics": [
+        {
+            "check_id": null,
+            "contains": "default",
+            "group_id": "3cb67e24358b7c3f1256ff423381c05b",
+            "id": "threshold_166100",
+            "name": "iterations",
+            "project_id": 3458575,
+            "tags": {},
+            "test_run_id": 0,
+            "type": "counter",
+            "url_id": null
+        }
+    ],
+    "k6-thresholds": [
+        {
+            "calc_state": {
+                "max_created_at": "2020-08-18 13:36:41.348933+00:00",
+                "max_time": "2020-08-18 13:36:04+00:00",
+                "min_time": "2020-08-18 13:34:05+00:00",
+                "tainted_value": null
+            },
+            "calculated_value": 22024.0,
+            "id": 166100,
+            "metric_id": "threshold_166100",
+            "name": "threshold_1",
+            "stat": "count",
+            "tainted": false,
+            "tainted_at": null,
+            "testrun_id": 0,
+            "value": 200.0
+        }
+    ]
+}
+```
+
+</div>
+
+
+## Read threshold
+
+Returns details of a threshold with the specified ID.
+
+**GET** `/loadtests/v2/thresholds/{id}?test_run_id={test_run_id}`
+
+| Query Parameter | Type | Description |
+| ----------| ---- | ----------- | ---------- | 
+| test_run_id | integer | ID of the test run. |
+| id | integer | ID of the threshold. |
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "k6-threshold": {
+        "calc_state": {
+            "max_created_at": "2020-08-18 13:36:41.348933+00:00",
+            "max_time": "2020-08-18 13:36:04+00:00",
+            "min_time": "2020-08-18 13:34:05+00:00",
+            "tainted_value": null
+        },
+        "calculated_value": 22024.0,
+        "id": 166100,
+        "metric_id": "threshold_166100",
+        "name": "threshold_1",
+        "stat": "count",
+        "tainted": false,
+        "tainted_at": null,
+        "test_run_id": 0,
+        "value": 200.0
+    }
+}
+```
+
+</div>
+
+## Export test run data
+
+Exports metric data for test run in CSV format. Generated file is available in the app by going to selected test run and clicking on `Download export data` option in the dropdown menu in upper-right corner.
+
+**POST** `/loadtests/v2/runs/{test_run_id}/export`
+
+| Path Parameter | Type | Description |
+| ----------| ---- | ----------- |
+| test_run_id | integer | A unique integer value identifying this test run. |
+
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "exports": [
+        {
+            "export_status": 1,
+            "load_test_run_id": 0
+        }
+    ]
+}
+```
+
+</div>
