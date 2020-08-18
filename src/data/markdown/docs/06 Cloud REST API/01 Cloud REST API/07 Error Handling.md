@@ -4,7 +4,7 @@ excerpt: ''
 draft: 'true'
 ---
 
-If an error occurs, the error will be on the following format:
+If an error occurs, the error will be in the following format:
 
 ```json
 {"error": {
@@ -23,7 +23,7 @@ If an error occurs, the error will be on the following format:
 
 All fields are optional except for `message` and `code`.
 
-The `message` field holds an overall description of the error, and the `code` field is an internal numerical identifier useful when reporting problems to Load Impact support.
+The `message` field holds error description, and the `code` field is an internal numerical identifier useful when reporting problems to Load Impact support.
 
 The optional `field_errors` object will have keys named after the data field causing a problem (`fieldname1` and `fieldname2` above are just examples) whereas the `errors` array will hold details about any other errors.
 
