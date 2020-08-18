@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, navigate } from 'gatsby';
+
 import styles from './helper-widget.module.scss';
 // icons
-import OpenIcon from './svg/open.inline.svg';
 import CloseIcon from './svg/close.inline.svg';
-import Slack from './svg/slack.inline.svg';
 import Cloud from './svg/cloud.inline.svg';
 import Message from './svg/message.inline.svg';
+import OpenIcon from './svg/open.inline.svg';
+import Slack from './svg/slack.inline.svg';
 
 const CHAT_ONLY_PATHS = [
   '/cloud',

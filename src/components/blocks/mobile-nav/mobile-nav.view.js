@@ -1,7 +1,6 @@
-import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import { Button } from 'components/shared/button';
+import React from 'react';
 import Logo from 'svg/logo.inline.svg';
 
 import styles from './mobile-nav.module.scss';
@@ -23,7 +22,7 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => (
           <div className={'col-9 d-flex justify-content-end'}>
             <button
               className={styles.closeButton}
-              type={'button'}
+              type="button"
               onClick={onCloseButtonClick}
             />
           </div>
