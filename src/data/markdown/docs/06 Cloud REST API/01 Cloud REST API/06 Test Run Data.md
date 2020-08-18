@@ -6,13 +6,13 @@ draft: 'true'
 
 ## List metrics
 
-Returns all metrics within a specified test run. Test run id's can be found from field test_run_ids in response of Read Test endpoint.
+Returns all metrics within a specified test run. Test run ids can be found from `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint.
 
 **GET** `/loadtests/v2/metrics?test_run_id={test_run_id}`
 
 | Query Parameter | Type | Description |
 | ----------| ---- | ----------- |
-| test_run_id | integer | Returns metrics who are associated with a given test_run_id. |
+| test_run_id | integer | Returns metrics associated with a given test_run_id. |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
@@ -52,8 +52,8 @@ Returns details of a metric with the specified ID.
 
 | Query Parameters | Type | Description | Example |
 | ----------| ---- | ----------- | ---------- | 
-| test_run_id | integer | Returns metric who are associated with a given test_run_id. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}` |
-| include[] | string | Returns tests with given ids. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=group` `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check` `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=url` `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check&include[]=group&include[]=url` |
+| test_run_id | integer | Returns metric associated with a given test_run_id. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}` |
+| include[] | string | Specifies additional information to be included in response. Allowed options: url, group, check. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check&include[]=group` |
 
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
@@ -92,17 +92,17 @@ Returns details of a metric with the specified ID.
 </div>
 
 
-## Read test data
+## Read series data
 
 Returns timeseries data for specified metrics ids within a specified test run id.
-Test run id's can be found from field test_run_ids in response of Read Test endpoint. Metric id's of interested test runs could be found from field id in response of List metrics endpoint.
+Test run ids can be found from `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint. Metric ids can be found from `id` field in response from List metrics endpoint.
 
 **GET** `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}`
 
 | Query Parameters | Type | Description | Example |
 | ----------| ---- | ----------- | ---------- | 
 | test_run_id | integer | Specify test run id. | |
-| ids[] | string | Specify metric id. | `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}&ids[]={metric_id_1}` |
+| ids[] | string | Specify metric id(s). | `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}&ids[]={metric_id_2}` |
 
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
