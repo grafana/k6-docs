@@ -1,3 +1,5 @@
+const chunk = require('chunk-text');
+
 const {
   unorderify,
   slugify,
@@ -8,7 +10,6 @@ const {
   removeGuidesAndRedirectWelcome,
   mdxAstToPlainText,
 } = require('./utils');
-const chunk = require('chunk-text');
 
 const processMdxEntry = ({ children: [entry] }) => {
   const {
@@ -46,6 +47,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
+  // eslint-disable-next-line no-plusplus
   while (pointer--) {
     cache[pointer] = {
       title,
@@ -61,6 +63,7 @@ const processMdxEntry = ({ children: [entry] }) => {
 const flatten = (arr) => {
   let pointer = arr.length;
   const cache = new Array(pointer);
+  // eslint-disable-next-line no-plusplus
   while (pointer--) {
     cache[pointer] = processMdxEntry(arr[pointer]);
   }

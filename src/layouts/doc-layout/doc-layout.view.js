@@ -1,32 +1,29 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Link, navigate, withPrefix } from 'gatsby';
-import {
-  Cookies,
-  CookiesProvider,
-  CookieBannerUniversal,
-} from 'react-cookie-banner';
-import { Heading } from 'components/shared/heading';
-import HelperWidget from 'components/shared/helper-widget';
+import { Footer } from 'components/blocks/footer';
 import {
   Header,
   HeaderNav,
   HeaderLogo,
   Burger,
 } from 'components/blocks/header';
-import { SearchBox } from 'components/shared/search-box';
-import { Footer } from 'components/blocks/footer';
-import { SEO } from 'components/shared/seo';
 import { MobileNav } from 'components/blocks/mobile-nav';
+import CookieConsent from 'components/shared/cookie-consent';
+import { Heading } from 'components/shared/heading';
+import HelperWidget from 'components/shared/helper-widget';
+import { SearchBox } from 'components/shared/search-box';
+import { SEO } from 'components/shared/seo';
+import { Link, navigate, withPrefix } from 'gatsby';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
+import {
+  Cookies,
+  CookiesProvider,
+  CookieBannerUniversal,
+} from 'react-cookie-banner';
 import { childrenToList, slugify, isInIFrame } from 'utils';
+import AlgoliaQueries from 'utils/algolia';
+import { main, app } from 'utils/urls';
 
 import styles from './doc-layout.module.scss';
-
-import CookieConsent from 'components/shared/cookie-consent';
-import _ from 'lodash/lang';
-
-import { main, app } from 'utils/urls';
-import AlgoliaQueries from 'utils/algolia';
 
 const { indexName } = AlgoliaQueries[0];
 
@@ -45,7 +42,7 @@ const cookies = new Cookies({ 'user-has-accepted-cookies': true });
 
 // renders options from the passed children array, recursively
 const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
-  const hasSubMenu = !_.isEmpty(children);
+  const hasSubMenu = Object.keys(children).length;
   return (
     <>
       <option
@@ -139,7 +136,7 @@ const SidebarNode = (props) => {
     setIsActive(doesPathMatchLocation || isPathLocationPart);
   }, []);
 
-  const hasSubMenu = !_.isEmpty(children);
+  const hasSubMenu = Object.keys(children).length;
 
   const nodes = {
     externalLink: () => (

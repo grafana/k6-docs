@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link, withPrefix } from 'gatsby';
 import classNames from 'classnames/bind';
+import { Link, withPrefix } from 'gatsby';
+import React from 'react';
+
 import styles from './header-nav.module.scss';
 
 // aux

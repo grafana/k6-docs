@@ -1,0 +1,30 @@
+# Basic dependabot.yml file with
+# minimum configuration for one package manager
+
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: 'npm'
+    # Look for `package.json` and `lock` files in the `root` directory
+    directory: '/'
+    # Check the npm registry for updates every month
+    schedule:
+      interval: 'monthly'
+    # Set limit on amount of opened PRs with deps updates to 1:
+    # previous experience with depndabot clearly shows, that
+    # separate PRs create too much of a fuss so I intend
+    # to use it as a mere once-a-month notifier that it is
+    # time for batch manual deps update
+    open-pull-requests-limit: 1
+    # Set the target branch
+    target-branch: 'develop'
+    # Set labels
+    labels:
+      - 'maintenance'
+      - 'dependencies'
+    # Set reviewers
+    reviewers:
+      - 'bolotskyDev'
+      # Set assignees
+    assignees:
+      - 'bolotskyDev'

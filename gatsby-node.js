@@ -1,3 +1,5 @@
+const Path = require('path');
+
 const {
   pathCollisionDetector,
   slugify,
@@ -15,7 +17,6 @@ const {
   dedupePath,
   removeGuidesAndRedirectWelcome,
 } = require('./src/utils/utils');
-const Path = require('path');
 
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
