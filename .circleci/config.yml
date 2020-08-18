@@ -98,13 +98,13 @@ workflows:
             branches:
               only:
                 - master
-                - feature/repo-maintenance
+                - develop
       - deploy-to-staging:
           requires:
             - build
           filters:
             branches:
-              only: feature/repo-maintenance
+              only: develop
       - deploy-to-production:
           requires:
             - build
