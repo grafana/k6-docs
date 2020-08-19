@@ -1,5 +1,5 @@
 ---
-title: 'Test Run Data'
+title: 'Test Run Metrics'
 excerpt: ''
 draft: 'true'
 ---
@@ -221,9 +221,9 @@ Returns details of a threshold with the specified ID.
 
 </div>
 
-## Export test run data
+## Export test run metrics
 
-Exports metric data for test run in CSV format. Generated file is available in the app by going to selected test run and clicking on `Download export data` option in the dropdown menu in upper-right corner.
+Exports metric data for test run in CSV format. URL to the file is available in `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
 
 **POST** `/loadtests/v2/runs/{test_run_id}/export`
 
