@@ -48,3 +48,146 @@ Starts a test-run in the k6 cloud. It uses the specified test ID, previously ret
 ```
 
 </div>
+
+## Read test run
+
+Returns details of a test run with the specified ID. There are several fields in response that are helpful for checking test run's status:
+
+`run_status` - Describes how far test run is in the execution pipeline. Possible values are:
+
+| Value | Description |
+| ----- | ---------- |
+| -2 | CREATED - test run is created in our system. |
+| -1 | VALIDATED - test run passed script and subscription validation. |
+| 0 | QUEUED - test run is waiting for an empty slot in execution queue. |
+| 1 | INITIALIZING - load generator instances are being allocated for the test run. |
+| 2 | RUNNING - test run is currently executing. |
+| 3 | FINISHED - test run has finished executing. |
+| 4 | TIMED_OUT - test run has timed out (usually because data took too long to arrive/process). |
+| 5 | ABORTED_BY_USER - test run was aborted by user. |
+| 6 | ABORTED_BY_SYSTEM - test run was aborted by our system (usually because of some error). |
+| 7 | ABORTED_BY_SCRIPT_ERROR - test run was aborted due to an error in the script. |
+| 8 | ABORTED_BY_THRESHOLD - test run was aborted because a threshold defined in k6 script was reached. |
+| 9 | ABORTED_BY_LIMIT - test run was aborted because of a limit in script definition or execution (e.g. subscription limitations). |
+
+`processing_status` - Describes if system is (still) processing metric data for the test run. Possible values are:
+
+| Value | Description |
+| ----- | ---------- |
+| 0 | NOT_STARTED - data processing has not started yet. |
+| 1 | PROCESSING - data processing is in progress. |
+| 2 | FINISHED - data processing is finished and all metrics are available. |
+| 3 | ERROR - there was an error in data processing and some or all metrics are not available. |
+
+
+`result_status` - Describes if the test has passed or failed. Possible values are:
+
+| Value | Description |
+| ----- | ---------- |
+| 0 | PASSED - all criteria defined in k6 script have passed. |
+| 1 | FAILED - on or more criteria in k6 script has failed. |
+
+**GET** `/loadtests/v2/runs/{id}`
+
+| Path Parameter | Type | Description |
+| ----------| ---- | ----------- |
+| id | integer | ID of the test run. |
+
+| Query Parameter | Type | Description | Example |
+| ----------| ---- | ----------- | ---------- |
+| $select | string | Specify a subset of fields to return. | `/loadtests/v2/runs/1?$select=id,test_id,run_status,created` |
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "k6-run": {
+        "config": {},
+        "created": "2020-08-18T13:33:41",
+        "duration": 120,
+        "ended": "2020-08-18T13:36:02",
+        "error_code": null,
+        "error_detail": null,
+        "export": null,
+        "id": 0,
+        "is_baseline": false,
+        "k6_archive": "string",
+        "load_time": 75.0,
+        "note": "",
+        "organization_id": 0,
+        "processing_status": 2,
+        "project_id": 0,
+        "public_id": null,
+        "request_builder_config": null,
+        "result_status": 1,
+        "run_process": "k6 to Cloud",
+        "run_status": 3,
+        "script": "",
+        "started": "2020-08-18T13:34:04",
+        "stopped_by_id": 0,
+        "test_id": 0,
+        "user_id": 0,
+        "version": 2,
+        "vus": 200,
+        "vus_per_instance": 0
+    }
+}
+```
+
+</div>
+
+
+## List test runs
+
+Returns test runs for a particular test.
+
+**GET** `/loadtests/v2/runs?test_id={test_id}`
+
+| Query Parameter | Type | Description | Example |
+| ----------| ---- | ----------- | ---------- |
+| test_id | integer | ID of the test. | `/loadtests/v2/runs?$test_id=1` |
+| $select | string | Specify a subset of fields to return. | `/loadtests/v2/runs?$test_id=1&select=id,test_id,run_status,created` |
+| ids[] | integer | Specify a subset test runs to return. | `/loadtests/v2/runs?$test_id=1&ids[]=1&ids[]=3` |
+| public_id | string | Get a test run by public_id. | `/loadtests/v2/runs?public_id={public_id}` |
+
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "k6-runs": [{
+        "config": {},
+        "created": "2020-08-18T13:33:41",
+        "duration": 120,
+        "ended": "2020-08-18T13:36:02",
+        "error_code": null,
+        "error_detail": null,
+        "id": 0,
+        "is_baseline": false,
+        "k6_archive": "string",
+        "load_time": 75.0,
+        "note": "",
+        "organization_id": 0,
+        "processing_status": 2,
+        "project_id": 0,
+        "public_id": null,
+        "request_builder_config": null,
+        "result_status": 1,
+        "run_process": "k6 to Cloud",
+        "run_status": 3,
+        "script": "",
+        "started": "2020-08-18T13:34:04",
+        "stopped_by_id": 0,
+        "test_id": 0,
+        "user_id": 0,
+        "version": 2,
+        "vus": 200,
+        "vus_per_instance": 0
+    }],
+    "meta": {
+        "count": 1
+    }
+}
+```
+
+</div>

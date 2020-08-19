@@ -1,5 +1,5 @@
 ---
-title: 'Test Run Data'
+title: 'Test Run Metrics'
 excerpt: ''
 draft: 'true'
 ---
@@ -7,6 +7,14 @@ draft: 'true'
 ## List metrics
 
 Returns all metrics within a specified test run. Test run ids can be found from `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint.
+
+Note that k6 cloud may store multiple (sub)metrics for each metric generated in the k6 script. For example, when sending an HTTP request within the script, k6 cloud will store `http_req_duration`, `http_req_blocked`, `http_req_connecting` and other metrics for that particular endpoint.
+Also, separate metrics will be created for different HTTP methods and status codes (e.g. same url will produce multiple metrics if k6 detects statuses such as 200, 400 etc).
+
+Some of the fields contained in response are described here:
+* `check_id` - ID of the `check` defined in `k6` script. Checks have their underlying metrics stored in k6 cloud.
+* `group_id` - ID of the `group` this metric belongs to.
+* `contains` - "Unit" for the metrics. Some examples are: `time`, `percent`, `bytes` et.
 
 **GET** `/loadtests/v2/metrics?test_run_id={test_run_id}`
 
@@ -26,7 +34,11 @@ Returns all metrics within a specified test run. Test run ids can be found from 
       "id": "d9b21849a4ee9c3b67c30cfe6993ae6a",
       "name": "http_req_duration",
       "project_id": 123,
-      "tags": {},
+      "tags": {
+         "method": "GET",
+         "status": "200",
+         "url": "https://test.k6.io"
+      },
       "test_run_id": 103054,
       "type": "trend",
       "url_id": "string"
@@ -221,9 +233,9 @@ Returns details of a threshold with the specified ID.
 
 </div>
 
-## Export test run data
+## Export test run metrics
 
-Exports metric data for test run in CSV format. Generated file is available in the app by going to selected test run and clicking on `Download export data` option in the dropdown menu in upper-right corner.
+Exports metric data for test run in CSV format. URL to the file is available in `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
 
 **POST** `/loadtests/v2/runs/{test_run_id}/export`
 
