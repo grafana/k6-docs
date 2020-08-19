@@ -1,6 +1,6 @@
 ---
-title: "Datadog"
-excerpt: "The Datadog integration allows visualizing load test results and correlating performance testing metrics in Datadog."
+title: 'Datadog'
+excerpt: 'The Datadog integration allows visualizing load test results and correlating performance testing metrics in Datadog.'
 ---
 
 k6 can send performance testing metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
@@ -16,7 +16,6 @@ This article outlines the instructions of the Datadog integration:
 To get k6 metrics into Datadog, k6 sends metrics through the Datadog Agent, which collects, aggregates, and forwards the metrics to the Datadog platform.
 
 Run the Datadog Agent service as a Docker container with this command:
-
 
 <div class="code-group" data-props='{"labels": [""]}'>
 
@@ -62,17 +61,15 @@ $ k6 run --out datadog script.js
 
 </div>
 
-
 The environment variables for the command are:
 
-| Name  | Value |
-| ------------- | ------------- |
-| `K6_DATADOG_ADDR` | Address of the DogsStatsD service, currently only UDP is supported. The default value is `localhost:8125`. |
-| `K6_DATADOG_NAMESPACE` | The namespace used as a prefix for all the metric names. The default value is `k6.` |
-| `K6_DATADOG_PUSH_INTEVAL` | Configure how often data batches are sent. The default value is `1s`. |
-| `K6_DATADOG_BUFFER_SIZE` | The buffer size. The default value is `20`. |
+| Name                       | Value                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `K6_DATADOG_ADDR`          | Address of the DogsStatsD service, currently only UDP is supported. The default value is `localhost:8125`.                        |
+| `K6_DATADOG_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6.`                                               |
+| `K6_DATADOG_PUSH_INTEVAL`  | Configure how often data batches are sent. The default value is `1s`.                                                             |
+| `K6_DATADOG_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                                                       |
 | `K6_DATADOG_TAG_BLACKLIST` | This is a comma-separated list of tags that should NOT be sent to Datadog. For example, "tag1, tag2". The default value is empty. |
-
 
 ## Visualize in Datadog
 
@@ -80,8 +77,7 @@ While running the test, k6 sends metrics periodically to DataDog. By default, th
 
 You can visualize k6 metrics in realtime with the [metrics explorer](https://docs.datadoghq.com/metrics/explorer/), [monitors](https://docs.datadoghq.com/monitors/), or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/).
 
-
-![Datadog visualizing performance testing metrics](images/datadog-performance-testing-metrics.png)
+![Datadog visualizing performance testing metrics](images/DataDog/datadog-performance-testing-metrics.png)
 
 <blockquote>
 
@@ -91,7 +87,7 @@ To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/us
 
 The first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list.
 
-![k6 Datadog Dashboard](images/k6-datadog-dashboard.png)
+![k6 Datadog Dashboard](images/DataDog/k6-datadog-dashboard.png)
 
 Optionally, you can install the k6 integration tile following these instructions:
 

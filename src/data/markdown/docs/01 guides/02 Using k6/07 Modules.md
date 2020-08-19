@@ -380,4 +380,4 @@ $ docker run -v /home/k6/example/src:/src -i loadimpact/k6 run /src/index.js
 Note that on Windows, you also need to make sure that your drive in question, say `C:\`,
 has been marked for sharing in the Docker settings:
 
-![Running k6 in docker on Windows](images/running-k6-in-docker-on-windows.png)
+![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)

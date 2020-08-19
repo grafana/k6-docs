@@ -21,17 +21,17 @@ _Note:_ Before you begin, please be sure to force refresh the k6 Cloud app to en
 
 2. **Start a recording**
    Open the extension by clicking the k6 logo, and press "Start recording" to begin recording the current browser tab. Now browse like a user would or how you want our Virtual Users to execute. We suggest basing this on _real user behavior_ - don't try to visit every single page on your site or app. Focus on common journeys.
-   ![Step 2](images/04%Recording%a%test%script/step-2.png)
+   ![Step 2](/images/Recording-a-test-script/step-2.png)
 
 3. **Stop recording**
    When done, press "Stop recording", you'll be taken to the app to review the recorded test script
-   ![Step 3](images/04%Recording%a%test%script/step-3.png)
+   ![Step 3](/images/Recording-a-test-script/step-3.png)
 
 4. **Save your test scripts**
    Save the recorded script in any of your projects.
    If any _third party requests_ or requests to download assets were made during the recording those requests will be filtered out by default.
    Would you want to include some of the requests in the _third party list_ simply deselect the ones you want to include then hit save.
-   ![Step 4](images/04%Recording%a%test%script/step-4.png)
+   ![Step 4](/images/Recording-a%test-script/step-4.png)
 
 5. **You can now edit your script as necessary.** k6 Cloud's in app IDE will update in real time to alert you of any syntax errors. You may need to edit your script to deal with CSRF tokens, adding advanced business logic, creating custom metrics, etc.
 

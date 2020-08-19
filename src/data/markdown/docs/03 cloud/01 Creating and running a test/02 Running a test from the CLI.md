@@ -97,7 +97,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-![k6 Cloud Test Results](/images/cloud-insights-results.png 'k6 Cloud Test Results')
+![k6 Cloud Test Results](/images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
 
 Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
 
@@ -158,7 +158,7 @@ To create and run tests under a different project, whether under your default or
 
 Select the project on the sidebar menu and you will find the `Project ID` in the header of the Project Dashboard page.
 
-![k6 Cloud Project ID](/images/dashboard-project-id.png 'Project ID')
+![k6 Cloud Project ID](/images/Running-a-test-from-the-CLI/dashboard-project-id.png 'Project ID')
 
 You have two options to pass the Project ID to k6:
 
@@ -191,38 +191,38 @@ When running a k6 test in the cloud we add two tags to all metrics:
 | `load_zone`   | string | The load zone from where the the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
 | `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.                  |
 
-The cloud tags are automatically added when collecting the test metrics, and they work as regular tags. 
+The cloud tags are automatically added when collecting the test metrics, and they work as regular tags.
 
 For example, you can filter the results for a particular load zone on the k6 Cloud Results view.
 
-![filter tags](/images/analysis-tab-cloud-tags.png 'Cloud execution tags')
+![filter tags](/images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
 
 Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
 <div class="code-group" data-props='{"labels": ["Threshold based on a cloud execution tag"]}'>
 
 ```js
-import http from "k6/http";
+import http from 'k6/http';
 
 export let options = {
-    vus: 50,
-    duration: "30s",
-    thresholds: {
-        "http_req_duration{load_zone:amazon:us:ashburn}": ["p(95)<500"],
-        "http_req_duration{load_zone:amazon:ie:dublin}": ["p(95)<800"]
+  vus: 50,
+  duration: '30s',
+  thresholds: {
+    'http_req_duration{load_zone:amazon:us:ashburn}': ['p(95)<500'],
+    'http_req_duration{load_zone:amazon:ie:dublin}': ['p(95)<800'],
+  },
+  ext: {
+    loadimpact: {
+      distribution: {
+        ashburnDistribution: { loadZone: 'amazon:us:ashburn', percent: 50 },
+        dublinDistribution: { loadZone: 'amazon:ie:dublin', percent: 50 },
+      },
     },
-    ext: {
-        loadimpact: {
-            distribution: {
-                ashburnDistribution: { loadZone: "amazon:us:ashburn", percent: 50 },
-                dublinDistribution: { loadZone: "amazon:ie:dublin", percent: 50 }
-            }
-        }
-    }
+  },
 };
-export default function() {
-   http.get("https://test.k6.io/");
-};
+export default function () {
+  http.get('https://test.k6.io/');
+}
 ```
 
 </div>
@@ -274,31 +274,27 @@ You can read the values of these variables in your k6 script as usual.
 
 ```js
 export let options = {
-    vus: 50,
-    duration: "30s",
-    ext: {
-        loadimpact: {
-            distribution: {
-                ashburnDistribution: { loadZone: "amazon:us:ashburn", percent: 50 },
-                dublinDistribution: { loadZone: "amazon:ie:dublin", percent: 50 }
-            }
-        }
-    }
+  vus: 50,
+  duration: '30s',
+  ext: {
+    loadimpact: {
+      distribution: {
+        ashburnDistribution: { loadZone: 'amazon:us:ashburn', percent: 50 },
+        dublinDistribution: { loadZone: 'amazon:ie:dublin', percent: 50 },
+      },
+    },
+  },
 };
-export default function() {
-  
-    if (__ENV.LI_DISTRIBUTION === "ashburnDistribution") {
-        // do something
-    } else if (__ENV.LI_DISTRIBUTION == "dublinDistribution") {
-        // do something
-    }
-
-};
+export default function () {
+  if (__ENV.LI_DISTRIBUTION === 'ashburnDistribution') {
+    // do something
+  } else if (__ENV.LI_DISTRIBUTION == 'dublinDistribution') {
+    // do something
+  }
+}
 ```
 
 </div>
-
-
 
 ## Differences between local and cloud execution
 

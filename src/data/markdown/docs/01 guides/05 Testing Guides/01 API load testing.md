@@ -32,7 +32,7 @@ Suppose you want to load test your login endpoint to see how many requests it ca
 ```js
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   var url = 'http://api.yourplatform.com/login';
   var payload = JSON.stringify({
     email: 'johndoe@example.com',
@@ -75,7 +75,7 @@ let options = {
 };
 const SLEEP_DURATION = 0.1;
 
-export default function() {
+export default function () {
   let body = JSON.stringify({
     username: 'user_' + __ITER,
     password: 'PASSWORD',
@@ -89,7 +89,7 @@ export default function() {
     },
   };
 
-  group('simple user journey', _ => {
+  group('simple user journey', (_) => {
     // Login request
     let login_response = http.post(
       'http://api.yourplatform.com/v2/login',
@@ -97,8 +97,8 @@ export default function() {
       params,
     );
     check(login_response, {
-      'is status 200': r => r.status === 200,
-      'is api key present': r => r.json().hasOwnProperty('api_key'),
+      'is status 200': (r) => r.status === 200,
+      'is api key present': (r) => r.json().hasOwnProperty('api_key'),
     });
     params.headers['api-key'] = login_response.json()['api_key'];
     sleep(SLEEP_DURATION);
@@ -138,13 +138,13 @@ export default function() {
 
 Historically, there are two types of categories of load testing tools: scriptable and non-scriptable. Non-scriptable tools generate requests to one or multiple endpoints without any correlation between the requests providing the option to define a constant request rate to hit an endpoint. On the other hand, scriptable tools are usually designed to facilitate user flow testing, thus providing the option to configure the number of virtual users to set up the load of your test. k6 belongs to this category.
 
-The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. The k6 execution engine was completely revamped and now includes  support for different [executors](/using-k6/scenarios#executors) in each scenario. Earlier k6 versions didn't have support for natively generating a constant request rate, which led to a [workaround solution](https://k6.io/blog/how-to-generate-a-constant-request-rate-in-k6). Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api) with no boilerplate code.
+The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. The k6 execution engine was completely revamped and now includes support for different [executors](/using-k6/scenarios#executors) in each scenario. Earlier k6 versions didn't have support for natively generating a constant request rate, which led to a [workaround solution](https://k6.io/blog/how-to-generate-a-constant-request-rate-in-k6). Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api) with no boilerplate code.
 
 ## Test creation
 
 There are various ways to create a test and eventually run it using k6. You can write your tests in your favorite editor, convert your existing Postman collections and Swagger/OpenAPI specification documents to scripts or use proxy recording as HAR files and convert them to k6 scripts. The recommended way is definitely to write your own scripts. The other tools are available just to help you with onboarding to k6. There's a rich set of tools that can help you create load tests and run them to gain insight into your system.
 
-![Our tools](./our-tools.png)
+![Our tools](./images/our-tools.png)
 
 As is evident in the above diagram, there are four different tools to help onboard existing users into k6. The best way is to make your own custom script, but you can use our converters to help you with generating script out of your existing postman collections, swagger specification documents, fiddler and [HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>) recordings.
 
@@ -162,7 +162,7 @@ The postman-to-k6 converter produces non-idiomatic k6 scripts, because it uses a
 
 Postman is a good and easy to use tool for API testing. It can group requests into collections and you can export/import them easily. Yet, there is an easy way to create your own k6 script out of your existing Postman exported collections. We have a [postman-to-k6](https://github.com/loadimpact/postman-to-k6) tool that can convert your Postman exported collections. This tool also converts your Postman scripts written with the help of the [Postman Scripting API](https://learning.postman.com/docs/postman/scripts/postman-sandbox-api-reference/) and includes a wrapper for its API and related libraries. Read more at the article [Load Testing Your API with Postman](https://k6.io/blog/load-testing-with-postman-collections).
 
-![Postman export collection](./postman-export.png)
+![Postman export collection](./images/postman-export.png)
 
 **OpenAPI-Generator**
 
@@ -186,8 +186,8 @@ There are various ways to test your API, each pertaining to a particular test ty
 
 - [Smoke test](/test-types/smoke-testing)
 - [Load test](/test-types/load-testing)
-- [Stress  test](/test-types/stress-testing)
-- [Spike  test](/test-types/stress-testing#spike-testing)
+- [Stress test](/test-types/stress-testing)
+- [Spike test](/test-types/stress-testing#spike-testing)
 - [Soak test](/test-types/soak-testing)
 
 ## API load testing considerations
