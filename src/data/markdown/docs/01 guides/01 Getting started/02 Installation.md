@@ -2,9 +2,12 @@
 title: 'Installation'
 ---
 
-## Linux (deb and rpm packages)
+## Linux
 
-<div class="code-group" data-props='{ "labels": ["Linux (Debian/Ubuntu)", "Linux (Redhat/CentOS)"] }'>
+
+### Debian/Ubuntu
+
+<div class="code-group" data-props='{ "labels": [""] }'>
 
 ```shell
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
@@ -12,6 +15,22 @@ echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/
 sudo apt-get update
 sudo apt-get install k6
 ```
+
+</div>
+
+> ### ⚠️ If you are behind a firewall or proxy
+>
+> There have been reports of users being unable to download the key from Ubuntu's keyserver using `apt-key`
+> command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
+> alternative approach instead:
+>
+> ```
+> wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+> ```
+
+### Redhat/CentOS
+
+<div class="code-group" data-props='{ "labels": [""] }'>
 
 ```shell
 wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
