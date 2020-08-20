@@ -233,6 +233,43 @@ Returns details of a threshold with the specified ID.
 
 </div>
 
+## Read test run overview
+
+Returns an overview of the test run whcih includes numbers of URLs, thresholds, checks, etc.
+
+**GET** `/loadtests/v2/run-overviews?test_run_id={test_run_id}`
+
+| Query Parameter | Type | Description |
+| ----------| ---- | ----------- |
+| test_run_id | integer | A unique integer value identifying this test run. |
+
+
+<div class="code-group" data-props='{"labels": ["Response"]}'>
+
+```json
+{
+    "k6-run-overviews": [
+        {
+            "checks_hits_successes": 44048,
+            "checks_hits_total": 44048,
+            "checks_successes": 2,
+            "checks_total": 2,
+            "http_req_duration_avg": 21.3739818525472,
+            "http_reqs_avg": 716.2276422764228,
+            "test_run_id": 0,
+            "thresholds_successes": 2,
+            "thresholds_total": 3,
+            "urls_hits_successes": 88096,
+            "urls_hits_total": 88096,
+            "urls_successes": 4,
+            "urls_total": 4
+        }
+    ]
+}
+```
+
+</div>
+
 ## Export test run metrics
 
 Exports metric data for test run in CSV format. URL to the file is available in `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
