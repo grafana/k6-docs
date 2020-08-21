@@ -27,7 +27,6 @@ If you're excited to try it out, make sure you're using
 Note that scenarios are supported both in k6 CLI (local) and
 [k6 Cloud](/cloud) execution.
 
-
 ## Configuration
 
 Execution scenarios are primarily configured via the `scenarios` key of the the exported `options` object in your test scripts. For example:
@@ -56,7 +55,6 @@ export let options = {
 
 </div>
 
-
 ### Common configuration
 
 | Option         | Type   | Description                                                                                                                                    | Default     |
@@ -69,6 +67,7 @@ export let options = {
 | `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |
 
 Possible values for `executor` are the executor name separated by hyphens:
+
 - [`shared-iterations`](#shared-iterations)
 - [`per-vu-iterations`](#per-vu-iterations)
 - [`constant-vus`](#constant-vus)
@@ -76,7 +75,6 @@ Possible values for `executor` are the executor name separated by hyphens:
 - [`constant-arrival-rate`](#constant-arrival-rate)
 - [`ramping-arrival-rate`](#ramping-arrival-rate)
 - [`externally-controlled`](#externally-controlled)
-
 
 ## Executors
 
@@ -123,17 +121,16 @@ export let options = {
       vus: 10,
       iterations: 200,
       maxDuration: '10s',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
 
 </div>
-
 
 ### Per VU iterations
 
@@ -156,7 +153,7 @@ partition between VUs.
 
 #### Examples
 
-- Execute 20 iterations by 10 VUs *each*, for a total of 200 iterations, with a
+- Execute 20 iterations by 10 VUs _each_, for a total of 200 iterations, with a
   maximum duration of 1 hour and 30 minutes:
 
 <div class="code-group" data-props='{"labels": [ "per-vu-iters.js" ], "lineNumbers": "[true]"}'>
@@ -172,17 +169,16 @@ export let options = {
       vus: 10,
       iterations: 20,
       maxDuration: '1h30m',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
 
 </div>
-
 
 ### Constant VUs
 
@@ -216,18 +212,17 @@ export let options = {
       executor: 'constant-vus',
       vus: 10,
       duration: '45m',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test-api.k6.io/');
   sleep(Math.random() * 3);
 }
 ```
 
 </div>
-
 
 ### Ramping VUs
 
@@ -268,11 +263,11 @@ export let options = {
         { duration: '5s', target: 0 },
       ],
       gracefulRampDown: '0s',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
@@ -281,7 +276,6 @@ export default function() {
 
 Note the setting of `gracefulRampDown` to 0 seconds, which could cause some
 iterations to be interrupted during the ramp down stage.
-
 
 ### Constant arrival rate
 
@@ -323,15 +317,15 @@ export let options = {
   scenarios: {
     contacts: {
       executor: 'constant-arrival-rate',
-      rate: 200,  // 200 RPS, since timeUnit is the default 1s
+      rate: 200, // 200 RPS, since timeUnit is the default 1s
       duration: '1m',
       preAllocatedVUs: 50,
       maxVUs: 100,
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
@@ -341,7 +335,6 @@ export default function() {
 Note that in order to reliably achieve a fixed request rate, it's recommended to keep
 the function being executed very simple, with preferably only a single request call,
 and no additional processing or `sleep()` calls.
-
 
 ### Ramping arrival rate
 
@@ -389,17 +382,16 @@ export let options = {
         { target: 200, duration: '30s' },
         { target: 0, duration: '30s' },
       ],
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
 
 </div>
-
 
 ### Externally controlled
 
@@ -445,17 +437,16 @@ export let options = {
       vus: 0,
       maxVUs: 50,
       duration: '10m',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
 
 </div>
-
 
 ## Arrival rate
 
@@ -476,11 +467,11 @@ export let options = {
       executor: 'constant-vus',
       vus: 1,
       duration: '1m',
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   // The following request will take roughly 6s to complete,
   // resulting in an iteration duration of 6s.
   // New VU iterations will thus start at a rate of 1 per 6s,
@@ -514,7 +505,7 @@ or more generally throughput (eg. requests per second).
 To fix this problem we use an open model, decoupling the start of new VU iterations
 from the iteration duration and the influence of the target system's response time.
 
-![Arrival rate closed/open models](images/arrival-rate-open-closed-model.png)
+![Arrival rate closed/open models](images/Scenarios/arrival-rate-open-closed-model.png)
 
 In k6 we've implemented this open model with our "arrival rate" executors. There are
 two arrival rate executors to chose from for your scenario(s),
@@ -534,11 +525,11 @@ export let options = {
       duration: '1m',
       preAllocatedVUs: 20,
       maxVUs: 100,
-    }
-  }
+    },
+  },
 };
 
-export default function() {
+export default function () {
   // With the open model arrival rate executor config above,
   // new VU iteration will start at a rate of 1 every second,
   // and we can thus expect to get 60 iterations completed
@@ -595,7 +586,7 @@ export let options = {
       gracefulRampDown: '3s',
       gracefulStop: '3s',
     },
-  }
+  },
 };
 
 export default function () {
@@ -616,7 +607,6 @@ contacts ✓ [======================================] 001/100 VUs  10s
 Notice that even though the total test duration is 10s, the actual run time was 13s
 because of `gracefulStop`, and some iterations were interrupted since they exceeded
 the configured 3s of both `gracefulStop` and `gracefulRampDown`.
-
 
 ## Advanced examples
 
@@ -647,15 +637,17 @@ export let options = {
       startTime: '30s',
       maxDuration: '1m',
     },
-  }
+  },
 };
 
 export function contacts() {
-  http.get('https://test.k6.io/contacts.php', { tags: { my_custom_tag: 'contacts' }});
+  http.get('https://test.k6.io/contacts.php', {
+    tags: { my_custom_tag: 'contacts' },
+  });
 }
 
 export function news() {
-  http.get('https://test.k6.io/news.php', { tags: { my_custom_tag: 'news' }});
+  http.get('https://test.k6.io/news.php', { tags: { my_custom_tag: 'news' } });
 }
 ```
 
@@ -694,7 +686,7 @@ export let options = {
       tags: { my_custom_tag: 'news' },
       env: { MYVAR: 'news' },
     },
-  }
+  },
 };
 
 export function contacts() {
@@ -726,7 +718,8 @@ import { sleep } from 'k6';
 
 export let options = {
   scenarios: {
-    my_web_test: { // some arbitrary scenario name
+    my_web_test: {
+      // some arbitrary scenario name
       executor: 'constant-vus',
       vus: 50,
       duration: '5m',
@@ -736,7 +729,8 @@ export let options = {
     },
     my_api_test_1: {
       executor: 'constant-arrival-rate',
-      rate: 90, timeUnit: '1m', // 90 iterations per minute, i.e. 1.5 RPS
+      rate: 90,
+      timeUnit: '1m', // 90 iterations per minute, i.e. 1.5 RPS
       duration: '5m',
       preAllocatedVUs: 10, // the size of the VU (i.e. worker) pool for this scenario
       tags: { test_type: 'api' }, // different extra metric tags for this scenario
@@ -746,7 +740,8 @@ export let options = {
     my_api_test_2: {
       executor: 'ramping-arrival-rate',
       startTime: '30s', // the ramping API test starts a little later
-      startRate: 50, timeUnit: '1s', // we start at 50 iterations per second
+      startRate: 50,
+      timeUnit: '1s', // we start at 50 iterations per second
       stages: [
         { target: 200, duration: '30s' }, // go from 50 to 200 iters/s in the first 30 seconds
         { target: 200, duration: '3m30s' }, // hold at 200 iters/s for 3.5 minutes
@@ -767,8 +762,8 @@ export let options = {
     'http_req_duration{test_type:website}': ['p(99)<500'],
     // we can reference the scenario names as well
     'http_req_duration{scenario:my_api_test_2}': ['p(99)<300'],
-  }
-}
+  },
+};
 
 export function webtest() {
   http.get('https://test.k6.io/contacts.php');

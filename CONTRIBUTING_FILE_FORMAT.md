@@ -46,8 +46,10 @@ And `h5`,`h6` have no specified styles, therefore will be rendered by default ve
 Default image syntax for markdown files
 
 ```md
-![Alt field of an image](images/insights-url-table-full.png)
+![Alt field of an image](/images/insights-url-table-full.png)
 ```
+
+Note, that path begins with `/`, not just `images/`.
 
 Store images relative to a source `.md` file, and access them from `.md` files by using relative path. `image-sharp-plugin` will handle your image: compress, convert and lazy load.
 
@@ -72,6 +74,27 @@ or
 |           ├── image.png
 ```
 
+or, in more comples scenarios:
+
+```
+.
+├── markdown
+│   └── article cluster
+│       └── images
+│           └── article-1
+|               ├── image.png
+│           └── article 2
+|               ├── image.png
+│           └── article 3
+|               ├── image.png
+│       └── article 1
+|           ├── article 1.md
+│       └── article 2
+|           ├── article 2.md
+│       └── article 3
+|           ├── article 3.md
+```
+
 If you really have to put there some remote picture, write it like that:
 
 ```md
@@ -83,6 +106,8 @@ But keep in mind the size of an image on the other side of a link to prevent pag
 There are also cases when the path to an image contains white space characters. You have to replace them with `%` sign, like on the screenshot below:
 
 ![Alt field of an image](internal-images/image-paths-with-spaces.jpg)
+
+Note, that for some reason not every `%`-ed path with spaces works everytime. The truly foolproof solution is using kebab only case: like `[](/images/kebab-cased-folder-name/kebab-cased-image-name.png)`
 
 ## Blockquotes
 
@@ -304,6 +329,8 @@ As you can see, the `LdScript` expects a sole prop `script` of type string of JS
 ## Custom
 
 It is also possible that you want to use a custom UI block in a certain `.md` document, not defined in this guide, like CTA button, or really any other piece of content from normal react page. By no means _do not copypast generated html into md file_: we are using `gatsby-plugin-mdx`, so please, just import the component you need right into `md` exactly the way you would import it on any react page and provide necessary props.
+
+See example how it is done with `IntegrationsCiIconBlock` in `Using k6/Testing Guides/Automated Performance Testing`
 
 ## The rest
 
