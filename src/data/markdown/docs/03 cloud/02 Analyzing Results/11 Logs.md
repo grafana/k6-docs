@@ -47,7 +47,7 @@ You can find your API token in https://app.k6.io/account/api-token.
 
 The output should look similar to this:
 
-![Example output](/images/11%PCloug%Logs/cloud-logs-example-output.png)
+![Example output](/images/11-Cloug-Logs/cloud-logs-example-output.png)
 
 
 ## Fetching logs from the past

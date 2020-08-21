@@ -26,7 +26,7 @@ Check out the screenshot below to get an idea of the view and where you’ll fin
 
 **Note:** This screenshot is from a small site’s Google Analytics dashboard. We redacted the name in the top-right corner in the name of privacy!
 
-![Google Analytics Example](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-1.png)
+![Google Analytics Example](images/09-Calculating-virtual-users/calculating-the-number-of-virtual-users-to-test-1.png)
 
 And that’s it! As you can see, Google made this data pretty easy to find.
 
@@ -42,7 +42,7 @@ It can also be because of user behaviour. Maybe your app provides dinner recipes
 
 So how do we do this? Here’s the Google Analytics dashboard for a small example site that has had a (relatively) big traffic spike. For this little site, nearly 40 percent of November 2015’s traffic came on a single day — Nov. 25. Keep in mind this is example data for a super small site.
 
-![Google Analytics Example 2](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-2.png)
+![Google Analytics Example 2](images/09-Calculating-virtual-users/calculating-the-number-of-virtual-users-to-test-2.png)
 
 Here’s the basic math we used to analyze the data:
 
@@ -53,7 +53,7 @@ The site averaged .08 concurrent sessions for the entire month.
 
 However, if you calculate the average concurrent sessions for just Nov. 25, you get 1.05 — that is more than 10x the monthly number. And if you calculate the average concurrent sessions between 3 p.m. and 4 p.m. on that day, when most of the traffic spike happened, the average number of concurrent sessions is 7.2. While not a huge number by itself, it is almost 100x the monthly average.
 
-![Google Analytics Example 3](images/09%Calculating%virtual%users/calculating-the-number-of-virtual-users-to-test-3.png)
+![Google Analytics Example 3](images/09-Calculating-virtual-users/calculating-the-number-of-virtual-users-to-test-3.png)
 
 This illustrates how important it is to look at the right numbers, or the right time frames, when designing your load test. Even if you do not have a huge spike like in this case, chances are that you will still see temporary peaks that can reach perhaps 10x your average traffic level.
 

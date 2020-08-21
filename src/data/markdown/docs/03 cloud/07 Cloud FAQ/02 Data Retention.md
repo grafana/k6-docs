@@ -22,7 +22,7 @@ Generally speaking data retention is continued storage of an organization's data
 
 You can select a single test run per test as a baseline test. The purpose of this is to serve as a point of comparison for future tests. Baseline tests are exempt from data retention rules and are saved indefinitely. To mark a test as baseline, use the three dot menu in the top right corner of your test run and click `Set as Baseline`
 
-![Set as baseline](images/02%data%retention/set-as-baseline.png)
+![Set as baseline](images/02-data-retention/set-as-baseline.png)
 
 ## How long is my data retained?
 

@@ -32,7 +32,7 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
 5.  Select **"Non-gallery application"**.
 
-    ![Azure AD New Application Type](images/04%Azure%AD%SAML%SSO/azure-ad-new-application-type.png)
+    ![Azure AD New Application Type](images/04-Azure-AD-SAML-SSO/azure-ad-new-application-type.png)
 
 6.  Give the application a name, eg. **k6 Cloud**.
 
@@ -40,15 +40,15 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
 8.  When your application has successfully been added, click **"Set up single sign on"** (or the equivalent "Single sign-on" link in the left menu):
 
-    ![Azure AD Setup Single Sign-On](images/04%Azure%AD%SAML%SSO/azure-ad-setup-single-sign-on.png)
+    ![Azure AD Setup Single Sign-On](images/04-Azure-AD-SAML-SSO/azure-ad-setup-single-sign-on.png)
 
 9.  Click **"SAML"** to enable it:
 
-    ![Azure AD Enable SAML](images/04%Azure%AD%SAML%SSO/azure-ad-enable-saml.png)
+    ![Azure AD Enable SAML](images/04-Azure-AD-SAML-SSO/azure-ad-enable-saml.png)
 
 10. Edit **"Basic SAML Configuration"**:
 
-    ![Azure AD Basic SAML Configuration](images/04%Azure%AD%SAML%SSO/azure-ad-setup-basic-config.png)
+    ![Azure AD Basic SAML Configuration](images/04-Azure-AD-SAML-SSO/azure-ad-setup-basic-config.png)
 
     Setting:
 
@@ -60,11 +60,11 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     Resulting in:
 
-    ![Azure AD Basic SAML Configuration](images/04%Azure%AD%SAML%SSO/azure-ad-setup-basic-config2.png)
+    ![Azure AD Basic SAML Configuration](images/04-Azure-AD-SAML-SSO/azure-ad-setup-basic-config2.png)
 
 11. Edit **"User Attributes & Claims"**:
 
-    ![Azure AD User Attributes](images/04%Azure%AD%SAML%SSO/azure-ad-setup-user-attributes.png)
+    ![Azure AD User Attributes](images/04-Azure-AD-SAML-SSO/azure-ad-setup-user-attributes.png)
 
     Setting the following user attributes (and clearing the "Namespace" property for each attribute):
 
@@ -79,19 +79,19 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     Resulting in:
 
-    ![Azure AD User Attributes](images/04%Azure%AD%SAML%SSO/azure-ad-setup-user-attributes2.png)
+    ![Azure AD User Attributes](images/04-Azure-AD-SAML-SSO/azure-ad-setup-user-attributes2.png)
 
 12. Copy the "App Federation Metadata Url" and send it to k6 Cloud support for completion of the setup.
 
-    ![Azure AD SAML Signing Certificate](images/04%Azure%AD%SAML%SSO/azure-ad-setup-saml-signing-cert.png)
+    ![Azure AD SAML Signing Certificate](images/04-Azure-AD-SAML-SSO/azure-ad-setup-saml-signing-cert.png)
 
 13. Before moving to the final step of testing the integration, make sure you've added the appropriate users and groups to the application in Azure AD:
 
-    ![Azure AD Users and Groups menu](images/04%Azure%AD%SAML%SSO/azure-ad-users-groups-menu.png)
+    ![Azure AD Users and Groups menu](images/04-Azure-AD-SAML-SSO/azure-ad-users-groups-menu.png)
 
 14. Once you've gotten confirmation from k6 Cloud support that your account is ready we advise you to test the integration by clicking the "Test" button in Azure AD:
 
-    ![Azure AD Test SSO](images/04%Azure%AD%SAML%SSO/azure-ad-test-sso.png)
+    ![Azure AD Test SSO](images/04-Azure-AD-SAML-SSO/azure-ad-test-sso.png)
 
 ## Setting up access to projects
 
