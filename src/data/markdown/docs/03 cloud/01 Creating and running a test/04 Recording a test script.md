@@ -31,7 +31,7 @@ _Note:_ Before you begin, please be sure to force refresh the k6 Cloud app to en
    Save the recorded script in any of your projects.
    If any _third party requests_ or requests to download assets were made during the recording those requests will be filtered out by default.
    Would you want to include some of the requests in the _third party list_ simply deselect the ones you want to include then hit save.
-   ![Step 4](/images/Recording-a%test-script/step-4.png)
+   ![Step 4](/images/Recording-a-test-script/step-4.png)
 
 5. **You can now edit your script as necessary.** k6 Cloud's in app IDE will update in real time to alert you of any syntax errors. You may need to edit your script to deal with CSRF tokens, adding advanced business logic, creating custom metrics, etc.
 

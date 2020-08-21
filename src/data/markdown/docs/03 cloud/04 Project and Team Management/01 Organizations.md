@@ -28,7 +28,7 @@ If you have been invited to another user's Organization, you will have access ba
 
 Please refer to the following diagram to visualize the relationship of different aspects of the web application
 
-![Hierarchy](/images/01%Organizations/organization-hierarchy-diagram.png)
+![Hierarchy](/images/01-Organizations/organization-hierarchy-diagram.png)
 
 ## See also
 

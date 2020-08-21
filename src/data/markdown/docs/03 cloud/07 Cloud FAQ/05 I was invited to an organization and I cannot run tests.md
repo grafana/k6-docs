@@ -19,7 +19,7 @@ It's important to note that every user in k6 is an owner of organization. Organi
 
 If you are running tests from the web interface, you will need to use the menu in the left side bar, to select a project within the organization with a subscription. The ogranization can be changed from the dropdown User menu in the top left corner. In the image below, our user is a member of two organizations, "LoadImpact" and "Second Organization". In this example "LoadImpact" is our primary organization associated with the users account and "Second Organization" is one which the user has been invited to. In order to run tests using the subscription that was purchased and associated with "Second Organization" we would need to select a Project associated with it. Once you have selected the Project, the project ID will be displayed below the project name in your main overview (top left). You can simply click the copy button next to it.
 
-![Select a project](images/05%team%member%org%id/projects-in-app.png)
+![Select a project](images/05-team-member-org-id/projects-in-app.png)
 
 ## From the command line
 

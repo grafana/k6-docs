@@ -11,7 +11,7 @@ The subscription menu gives you a simple view of the limits of your current plan
 
 Details of your current active subscription and any add-ons you may have. Note the counter in the right corner displaying usage for the current period of your subscription.
 
-![subscription rules](images/02%Subscription/subscription.png)
+![subscription rules](images/02-Subscription/subscription.png)
 
 ## Upgrades
 
