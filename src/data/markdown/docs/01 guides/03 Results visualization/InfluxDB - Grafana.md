@@ -7,7 +7,7 @@ You can use [Grafana](https://grafana.com/grafana/) for visualization of your k6
 
 To use Grafana, you have to setup k6 to send the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
 
-![Grafana Visualization](images/grafana-visualization.png)
+![Grafana Visualization](/images/InfluxDB-Grafana/grafana-visualization.png)
 
 ## Installing InfluxDB and Grafana
 
@@ -48,7 +48,6 @@ and a Grafana server on `http://localhost:3000_`
 
 ## Run the test and upload the results to InfluxDB
 
-
 k6 has built-in support for outputting results data directly to an InfluxDB database using
 the `--out` (`-o`) switch:
 
@@ -75,16 +74,16 @@ create results visualizations.
 
 - Open `http://localhost:3000` (or wherever your Grafana installation is located) in your browser.
 - Create a data source:
-  ![Create Data Source](images/grafana-create-data-source.png)
+  ![Create Data Source](/images/InfluxDB-Grafana/grafana-create-data-source.png)
 - Now create a dashboard. Here is the newly created dashboard:
-  ![Create Dashboard](images/grafana-new-dashboard.png)
+  ![Create Dashboard](/images/InfluxDB-Grafana/grafana-new-dashboard.png)
 - Click `Graph` to create a new graph panel:
-  ![Create Graph Panel](images/grafana-new-graph-panel.png)
+  ![Create Graph Panel](/images/InfluxDB-Grafana/grafana-new-graph-panel.png)
 - Click the `Panel title` and then `Edit` to set up the graph panel:
-  ![Edit Graph Panel](images/grafana-configure-graph-panel.png)
+  ![Edit Graph Panel](/images/InfluxDB-Grafana/grafana-configure-graph-panel.png)
 - Set the panel data source to your `myk6db` database and click the `SELECT mean(value)...`
   statement to edit the metric:
-  ![Edit metric](images/grafana-edit-metric.png)
+  ![Edit metric](/images/InfluxDB-Grafana/grafana-edit-metric.png)
 
 ## Preconfigured Grafana dashboards
 
@@ -98,9 +97,7 @@ Here we will list premade Grafana dashboard configurations contributed by users,
 
 To enable a contributed Grafana dashboard is simple: you just choose to "import" a dashboard in the Grafana UI and then specify the ID number of the dashboard you want, see http://docs.grafana.org/reference/export_import/ for more details.
 
-
-![](images/grafana-dave.png)
-
+![](/images/InfluxDB-Grafana/grafana-dave.png)
 
 ### Using our docker-compose setup
 
@@ -128,5 +125,6 @@ Now you should be able to connect to localhost on port 3000 with your browser an
 Grafana installation in the Docker container.
 
 ## See also
+
 - [Tutorial about using k6 with InfluxDB and Grafana](https://k6.io/blog/k6-loves-grafana/)
 - [Comparison of k6 test result visualizations](https://k6.io/blog/comparison-of-k6-test-result-visualizations)

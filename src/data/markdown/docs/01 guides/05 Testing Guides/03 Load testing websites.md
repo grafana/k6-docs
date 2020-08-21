@@ -31,7 +31,7 @@ With an increasing amount of visits to your website, the frontend response time 
 
 The following chart illustrates this situation:
 
-![Frontend time vs Backend time with increasing amount of website visitors](./Frontend-Backend-LoadTesting.png)
+![Frontend time vs Backend time with increasing amount of website visitors](./images/Frontend-Backend-LoadTesting.png)
 
 ## When to load test a website?
 

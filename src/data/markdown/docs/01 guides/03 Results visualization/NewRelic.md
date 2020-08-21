@@ -73,11 +73,11 @@ There are also _optional_ environment variables you can use:
 
 As your k6 test is running, k6 is sending performance metrics to the New Relic StatsD integration which in turn is sending these metrics to the New Relic Telemetry Data Platform. These will be prefixed with `k6.` so you can identify them.
 
-![k6 metrics as seen in the New Relic data explorer](images/new-relic-data-explorer.png)
+![k6 metrics as seen in the New Relic data explorer](images/NewRelic/new-relic-data-explorer.png)
 
 You can visualize the metrics sent from this integration in the [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) in the top right of New Relic (_query your data_).
 
-![Sample New Relic k6 dashboard](images/new-relic-dashboard.png)
+![Sample New Relic k6 dashboard](images/NewRelic/new-relic-dashboard.png)
 
 You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) and [alert on k6 metrics](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions).
 

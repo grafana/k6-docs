@@ -2,6 +2,7 @@
 title: 'Cloud'
 excerpt: ''
 ---
+
 Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), you can also stream your test results in real-time to the [k6 Cloud](/cloud).
 
 The k6 Cloud will pre-process your data, and you can visualize and analyze the results on the web app.
@@ -36,7 +37,7 @@ $ k6 run --out cloud script.js
 
 </div>
 
-Alternatively, you could skip the  `k6 login` command when using your [API token](https://app.k6.io/account/api-token) with the `k6 run` command as:
+Alternatively, you could skip the `k6 login` command when using your [API token](https://app.k6.io/account/api-token) with the `k6 run` command as:
 
 <div class="code-group" data-props='{"labels": ["Upload results to the k6 Cloud using K6_CLOUD_TOKEN"]}'>
 
@@ -45,7 +46,6 @@ $ K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> k6 run --out cloud script.js
 ```
 
 </div>
-
 
 After running the command, the console shows an URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
 
@@ -59,10 +59,10 @@ execution: local
 
 </div>
 
-![k6 Cloud Test Results](/images/k6-cloud-results.png)
+![k6 Cloud Test Results](/images/Cloud/k6-cloud-results.png)
 
 ## See also
 
--  [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
--  [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
--  [Cloud test run status - Uploading results](/cloud/cloud-faq/test-status-codes#uploading-results)
+- [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
+- [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
+- [Cloud test run status - Uploading results](/cloud/cloud-faq/test-status-codes#uploading-results)
