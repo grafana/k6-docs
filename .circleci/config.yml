@@ -98,13 +98,13 @@ workflows:
             branches:
               only:
                 - master
-                - fix/image-files-position
+                - develop
       - deploy-to-staging:
           requires:
             - build
           filters:
             branches:
-              only: fix/image-files-position
+              only: develop
       - deploy-to-production:
           requires:
             - build
