@@ -84,8 +84,7 @@ export default function () {
   const res = http.get('http://httpbin.org');
   const result = check(res, {
     'status is 200': (r) => r.status == 200,
-  });
-  errorRate.add(!result);
+  }) || errorRate.add(1);
 }
 ```
 
