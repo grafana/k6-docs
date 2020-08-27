@@ -16,7 +16,7 @@ When each request is specified as an array, the order of the arguments for each 
 
 | Type   | Description                                                                                                                                                                                                            |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object | An object containing [Response](/javascript-api/k6-http/response) objects.<br /><br />It has integer keys when users pass an array as `requests` and string keys when named requests are used (see below). |
+| object | An object containing [Response](/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is a normal object with string keys when named requests are used (see below). |
 
 
 | Position | Name | Type | Description |
