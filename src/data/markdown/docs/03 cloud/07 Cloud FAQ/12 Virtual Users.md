@@ -13,7 +13,7 @@ For example, if you ran a test with 10 VUs for 10 minutes and the default functi
 
 ## Virtual Users in context of Web Apps/Websites
 
-Virtual Users are designed to act and behave like real users/browsers would. That is, they are capable of making multiple network connnections in parallel, just like a real user in a browser would. When using a `http.batch()` request, HTTP requests are sent in parallel.  Further, you can even control the specifics of this behavior through the [batch](/using-k6/options#batch) and [batchPerHost](/using-k6/options#batchPerHost) options. The default is 10 connections in parallel and per host. For further information, refer to the article about [load testing websites](/testing-guides/load-testing-websites).
+Virtual Users are designed to act and behave like real users/browsers would. That is, they are capable of making multiple network connections in parallel, just like a real user in a browser would. When using a `http.batch()` request, HTTP requests are sent in parallel.  Further, you can even control the specifics of this behavior through the [batch](/using-k6/options#batch) and [batchPerHost](/using-k6/options#batchPerHost) options. The default is 10 connections in parallel and per host. For further information, refer to the article about [load testing websites](/testing-guides/load-testing-websites).
 
 
 <!--
