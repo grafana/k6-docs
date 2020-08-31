@@ -85,11 +85,15 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     ![Azure AD SAML Signing Certificate](images/04-Azure-AD-SAML-SSO/azure-ad-setup-saml-signing-cert.png)
 
-13. Before moving to the final step of testing the integration, make sure you've added the appropriate users and groups to the application in Azure AD:
+13. Also, edit **"SAML Signing Certificate"** and set the "Signing option" to "Sign SAML response and assertion":
+
+    ![Azure AD SAML Signing Certificate's signing option](images/04-Azure-AD-SAML-SSO/azure-ad-signing-option.png)
+
+14. Before moving to the final step of testing the integration, make sure you've added the appropriate users and groups to the application in Azure AD:
 
     ![Azure AD Users and Groups menu](images/04-Azure-AD-SAML-SSO/azure-ad-users-groups-menu.png)
 
-14. Once you've gotten confirmation from k6 Cloud support that your account is ready we advise you to test the integration by clicking the "Test" button in Azure AD:
+15. Once you've gotten confirmation from k6 Cloud support that your account is ready we advise you to test the integration by clicking the "Test" button in Azure AD:
 
     ![Azure AD Test SSO](images/04-Azure-AD-SAML-SSO/azure-ad-test-sso.png)
 
