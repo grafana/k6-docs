@@ -94,6 +94,10 @@ You should execute soak tests after your standard load tests are successful, and
 
 Soak testing is the last major step on the road to building reliable systems.
 
+## See also
+
+- [Running large tests](/testing-guides/running-large-tests)
+
 <LdScript script='{
 "@context": "https://schema.org",
 "@type": "FAQPage",
