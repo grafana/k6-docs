@@ -1,11 +1,12 @@
-import React from 'react';
 import { Link } from 'gatsby';
+import React from 'react';
 import Logo from 'svg/logo.inline.svg';
-import GithubLogo from './svg/github.inline.svg';
-import TwitterLogo from './svg/twitter.inline.svg';
-import SlackLogo from './svg/slack.inline.svg';
 
 import styles from './footer.module.scss';
+import GithubLogo from './svg/github.inline.svg';
+import SlackLogo from './svg/slack.inline.svg';
+import TwitterLogo from './svg/twitter.inline.svg';
+
 import './footer.scss';
 
 import { blog, main, docs } from 'utils/urls';
@@ -77,6 +78,14 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
+                      href={`${main}/professional-services`}
+                    >
+                      Professional services
+                    </a>
+                  </li>
+                  <li className={styles.navColumnItem}>
+                    <a
+                      className={styles.navColumnLink}
                       href={`${main}/testimonials`}
                     >
                       Testimonials
@@ -103,10 +112,7 @@ export const Footer = () => (
                     </Link>
                   </li>
                   <li className={styles.navColumnItem}>
-                    <Link
-                      className={styles.navColumnLink}
-                      to={'/integrations'}
-                    >
+                    <Link className={styles.navColumnLink} to={'/integrations'}>
                       Integrations
                     </Link>
                   </li>
