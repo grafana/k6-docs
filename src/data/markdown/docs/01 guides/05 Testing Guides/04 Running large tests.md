@@ -5,21 +5,14 @@ excerpt: 'How to run large-scale k6 tests without distributed-execution'
 
 This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution.
 
-The common misconception of many load testers is that distributed execution (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
+The common misconception of many load testers is that [distributed execution](#distributed-execution) (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
 
 k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine.
 A single instance of k6 is often enough to generate load of 30.000-40.000 simultaneous users (VUs). This amount of VUs can generate upwards of 300,000 requests per second (RPS).
 
-Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), or geographical distribution of the traffic, a single instance of k6 will likely be sufficient for your needs.
+Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 will likely be sufficient for your needs.
 
-Below we will explore what hardware is needed for generating different levels of load.
-
-> #### Note about native distributed-execution in k6
->
-> The long-term goal for k6 is to support distributed execution natively. We are currently laying the groundwork for this feature in [PR #1007](https://github.com/loadimpact/k6/pull/1007).
-> You can follow this effort on GitHub [in issue 140](https://github.com/loadimpact/k6/issues/140). Again, this is useful only if you need to generate load larger than 300k RPS.
->
-> [k6 cloud](/cloud) (a paid service) supports distributed execution already.
+Below we will explore what hardware and considerations are needed for generating different levels of load.
 
 ## OS fine-tuning
 
@@ -485,8 +478,65 @@ Results
 Note: each VU in k6 is completely independent, and therefore it doesn't share any memory with other VUs.
 1000VUs uploading 26MB file need as much as 81GB of RAM since each VU holds the copy of the file in memory.
 
+## Distributed execution
+
+In load testing, distributed execution refers to running a load test distributed across multiple machines. 
+
+Users often look for the distributed execution mode to run large-scale tests. Although we have shown that a single k6 instance can generate enormous load, distributed execution is necessary to:
+
+- Simulate load from multiple locations simultaneously.
+- Scale the load of your test beyond what a single machine can handle.
+
+In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/options#execution-segment) option. For example:
+
+
+<div class="code-group" data-props='{"labels": ["Two machines", "Three machines", "Four machines"]}'>
+
+```bash
+## split the load of my-script.js across two machines
+k6 run --execution-segment "0:1/2"   --execution-segment-sequence "0,1/2,1" my-script.js
+k6 run --execution-segment "1/2:1"   --execution-segment-sequence "0,1/2,1" my-script.js
+```
+
+```bash
+## split the load of my-script.js across three machines
+k6 run --execution-segment "0:1/3"   --execution-segment-sequence "0,1/3,2/3,1" my-script.js
+k6 run --execution-segment "1/3:2/3" --execution-segment-sequence "0,1/3,2/3,1" my-script.js
+k6 run --execution-segment "2/3:1"   --execution-segment-sequence "0,1/3,2/3,1" my-script.js
+```
+
+```bash
+## split the load of my-script.js across four machines
+k6 run --execution-segment "0:1/4"     --execution-segment-sequence "0,1/4,2/4,3/4,1" my-script.js
+k6 run --execution-segment "1/4:2/4"   --execution-segment-sequence "0,1/4,2/4,3/4,1" my-script.js
+k6 run --execution-segment "2/4:3/4"   --execution-segment-sequence "0,1/4,2/4,3/4,1" my-script.js
+k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3/4,1" my-script.js
+```
+
+</div>
+
+However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
+
+- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution. 
+- k6 does not evaluate [Thresholds](/using-k6/thresholds) across multiple instances. You'll have to disable the threshold execution of each k6 instance using [--no-thresholds](/using-k6/options#no-thresholds).
+- k6 reports individually the metrics for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly. 
+
+
+> The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/loadimpact/k6/issues/140) on GitHub.
+
+
+## Large-scale tests in k6 Cloud
+
+Building a load testing infrastructure to support running large-scale distributed tests is a challenging engineering project.
+
+[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running this type of testing. Amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me), our cloud platform will prevent your engineering team from building and maintaining the software and infrastructure of your load testing solution.
+
+Rolling your own or buying a load testing solution is a decision to consider that depends on your project, the type of testing, your team's expertise, organization's aspects, etc. If you doubt which solution is a better fit for your project, reach us on the [Community Forum](https://community.k6.io/) or to the [Cloud Support team](https://k6.io/contact) to help you with your questions. 
+
+
 ## See also
 
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
+- [k6 Cloud Pricing - soak and large-scale tests](https://k6.io/pricing#larger-tests)
