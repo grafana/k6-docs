@@ -518,7 +518,7 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
 - k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution. 
-- k6 does not evaluate [Thresholds](/using-k6/thresholds) across multiple instances. You'll have to disable the threshold execution of each k6 instance using [--no-thresholds](/using-k6/options#no-thresholds).
+- Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
 - k6 reports individually the metrics for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly. 
 
 
