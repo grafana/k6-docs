@@ -519,7 +519,7 @@ However - at this moment - the distributed execution mode of k6 is not entirely 
 
 - k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution. 
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
-- k6 reports individually the metrics for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly. 
+- k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/loadimpact/k6/issues/140) on GitHub.
@@ -531,7 +531,7 @@ Building a load testing infrastructure to support running large-scale distribute
 
 [k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running this type of testing. Amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me), our cloud platform will prevent your engineering team from building and maintaining the software and infrastructure of your load testing solution.
 
-Rolling your own or buying a load testing solution is a decision to consider that depends on your project, the type of testing, your team's expertise, organization's aspects, etc. If you doubt which solution is a better fit for your project, reach us on the [Community Forum](https://community.k6.io/) or to the [Cloud Support team](https://k6.io/contact) to help you with your questions. 
+Rolling your own or buying a load testing solution is a decision to consider that depends on your project, the type of testing, your team's expertise, organization's aspects, etc. If you aren't sure which solution is a better fit for your project, reach us on the [Community Forum](https://community.k6.io/) or to the [Cloud Support team](https://k6.io/contact) to help you with your questions.
 
 
 ## See also
