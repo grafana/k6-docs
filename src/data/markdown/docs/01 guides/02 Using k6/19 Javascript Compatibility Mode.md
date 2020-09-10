@@ -4,8 +4,6 @@ excerpt: ''
 hideFromSidebar: true
 ---
 
-> ### 🎉 This feature is new as of version 0.26.0
-
 k6 supports running test scripts with different ECMAScript compatibility modes using the
 `run --compatibility-mode` CLI option or `K6_COMPATIBILITY_MODE` environment variable.
 
