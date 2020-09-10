@@ -51,7 +51,7 @@ Because each browser runs independently, the number of concurrent users in a loa
 
 ## Load testing a website
 
-A load test focuses on testing the <b>performance of the requests to your backend</b>. The two most fundamental aspects to analyze are the <b>server response time</b> and the number of <b>returned errors</b>.
+A load test focuses on testing the **performance of the requests to your backend**. The two most fundamental aspects to analyze are the **server response time** and the number of **returned errors**.
 
 For example, a load test simulating hundreds of concurrent users could validate that:
 
@@ -71,7 +71,7 @@ You start small by testing, evaluating, and iterating frequently.
 >
 > [Simple testing is better than no testing](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
 
-The first thing is to decide what to load test. On the one hand, you could evaluate which are the performance aspects that are most valuable to your business and has the most significant risks. On the other hand, you could identify what your users do regularly. Use your analytics tools to find the most frequent user journeys.
+The first thing is to decide what to load test. On the one hand, you could test your **critical services**, the most valuable to your business, and have the most significant risks. On the other hand,  test the most **frequent user journeys**.
 
 With this information, it’s time to analyze the frequency of usage, business value, performance risks, and any other critical performance aspect of your organization to help you deciding what to load test first.
 
@@ -158,7 +158,7 @@ By default, the standard metrics of a load testing tool -- for example, the resp
 - 95th percentile response time of all the images.
 - 99th percentile response time of all the API requests.
 
-Different types of resources could behave very differently and could make <b>meaningless the value of the aggregated metrics</b>.
+Different types of resources could behave very differently and could make **meaningless the value of the aggregated metrics**.
 
 If you might want to filter your metrics based on different types of requests, consider using the [tagging feature](/using-k6/tags-and-groups#tags).
 
