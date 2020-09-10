@@ -3,10 +3,15 @@ title: 'Per VU iterations'
 excerpt: ''
 ---
 
+## Description
+
 Each VU executes an exact number of iterations. The total number of completed
 iterations will be `vus * iterations`.
 
-#### Options
+## Options
+
+In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
+also adds the following options:
 
 | Option        | Type    | Description                                                                        | Default |
 | ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
@@ -14,16 +19,16 @@ iterations will be `vus * iterations`.
 | `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                    | `1`     |
 | `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
-#### When to use
+## When to use
 
 Use this executor if you need a specific amount of VUs to complete the same amount of
 iterations. This can be useful when you have fixed sets of test data that you want to
 partition between VUs.
 
-#### Examples
+## Example
 
-- Execute 20 iterations by 10 VUs _each_, for a total of 200 iterations, with a
-  maximum duration of 1 hour and 30 minutes:
+In this example, we'll let 10 VUs execute 20 iterations _each_, for a total of 200 iterations, with
+a maximum duration of 1 hour and 30 minutes.
 
 <div class="code-group" data-props='{"labels": [ "per-vu-iters.js" ], "lineNumbers": "[true]"}'>
 

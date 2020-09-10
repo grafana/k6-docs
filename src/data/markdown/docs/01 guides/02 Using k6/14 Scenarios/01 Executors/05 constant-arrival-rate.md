@@ -3,6 +3,8 @@ title: 'Constant arrival rate'
 excerpt: ''
 ---
 
+## Description
+
 A fixed number of iterations are executed in a specified period of time.
 Since iteration execution time can vary because of test logic or the
 system-under-test responding more slowly, this executor will try to compensate
@@ -12,7 +14,10 @@ useful for a more accurate representation of RPS, for example.
 
 See the [arrival rate](#arrival-rate) section for details.
 
-#### Options
+## Options
+
+In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
+also adds the following options:
 
 | Option            | Type    | Description                                                                             | Default |
 | ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
@@ -22,14 +27,14 @@ See the [arrival rate](#arrival-rate) section for details.
 | `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
-#### When to use
+## When to use
 
 When you want to maintain a constant number of requests without being affected by the
 performance of the system under test.
 
-#### Examples
+## Examples
 
-- Execute a constant 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs:
+In this example, we'll execute a constant rate of 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs.
 
 <div class="code-group" data-props='{"labels": [ "constant-arr-rate.js" ], "lineNumbers": "[true]"}'>
 

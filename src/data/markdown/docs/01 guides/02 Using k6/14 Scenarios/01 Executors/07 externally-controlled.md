@@ -3,6 +3,8 @@ title: 'Externally controlled'
 excerpt: ''
 ---
 
+## Description
+
 Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
@@ -13,7 +15,10 @@ control k6 execution at runtime.
 Note that, passing arguments to the `scale` CLI command for changing the amount of active or
 maximum VUs will only affect the externally controlled executor.
 
-#### Options
+## Options
+
+In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
+also adds the following options:
 
 | Option     | Type    | Description                                         | Default |
 | ---------- | ------- | --------------------------------------------------- | ------- |
@@ -21,18 +26,19 @@ maximum VUs will only affect the externally controlled executor.
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
 | `duration` | string  | Total test duration.                                | -       |
 
-#### When to use
+## When to use
 
 If you want to control the number of VUs while the test is running.
 
-Important: this is the only executor that is not supported in `k6 cloud`, it can only be used locally with `k6 run`.
+Important: this is the only executor that is not supported in `k6 cloud`, it can only be used
+locally with `k6 run`.
 
-#### Examples
+## Examples
 
-- Execute a test run controllable at runtime, starting with 0 VUs up to a maximum of
-  50, and a total duration of 10 minutes:
+In this example, we'll execute a testrun controllable at runtime, starting with 0 VUs up to
+a maximum of 50, and a total duration of 10 minutes.
 
-<div class="code-group" data-props='{"labels": [ "externally-controlled.js" ], "lineNumbers": "[true]"}'>
+<div class="code-group" data-props='{"labels": [ "externally-controlled.js" ], "lineNumbers": "true"}'>
 
 ```js
 import http from 'k6/http';

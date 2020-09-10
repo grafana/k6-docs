@@ -3,6 +3,8 @@ title: 'Shared iterations'
 excerpt: ''
 ---
 
+## Description
+
 A fixed number of iterations are "shared" between a number of VUs, and the test ends
 once all iterations are executed. This executor is equivalent to the global `vus` and
 `iterations` options.
@@ -10,7 +12,10 @@ once all iterations are executed. This executor is equivalent to the global `vus
 Note that iterations aren't fairly distributed with this executor, and a VU that
 executes faster will complete more iterations than others.
 
-#### Options
+## Options
+
+In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
+also adds the following options:
 
 | Option        | Type    | Description                                                                        | Default |
 | ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
@@ -18,14 +23,14 @@ executes faster will complete more iterations than others.
 | `iterations`  | integer | Total number of script iterations to execute across all VUs.                       | `1`     |
 | `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
-#### When to use
+### When to use
 
 This executor is suitable when you want a specific amount of VUs to complete a fixed
 number of total iterations, and the amount of iterations per VU is not important.
 
-#### Examples
+## Example
 
-- Execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds:
+In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds
 
 <div class="code-group" data-props='{"labels": [ "shared-iters.js" ], "lineNumbers": "[true]"}'>
 
