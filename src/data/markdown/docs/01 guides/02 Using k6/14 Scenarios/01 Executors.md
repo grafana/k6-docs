@@ -2,8 +2,6 @@
 title: 'Executors'
 ---
 
-## Executors
-
 Executors are the workhorses of the k6 execution engine. Each one schedules VUs and
 iterations differently, and you'll choose one depending on the type of traffic you
 want to model to test your services.
