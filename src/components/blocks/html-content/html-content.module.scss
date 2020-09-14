@@ -117,8 +117,10 @@
     color: $color-primary !important;
     display: inline-block;
     text-align: center;
-    line-height: 23px;
     border-radius: 0;
+    font-weight: normal;
+    font-size: $font-size-code;
+    line-height: $line-height-xs;
   }
   & > * + * {
     margin-top: 30px;
