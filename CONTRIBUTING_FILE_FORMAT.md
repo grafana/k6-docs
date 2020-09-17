@@ -291,11 +291,37 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
 ![internal-images/Untitled%2010.png](internal-images/Untitled%2010.png)
 
-### A little note
+### Notes on code blocks
+
+#### Line numbers
 
     '{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'
 
 Line numbers are optional not for the whole code block, but for each tab. That is why here we have an array of `bool`.
+
+#### Text in-between tabs
+
+See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothing in `code-group` except code blocks, or you'll broke the page.
+
+    <div class="code-group" data-props='{"labels": ["Nice code!"], "lineNumbers": [true]}'>
+
+    ```javascript
+    for (var id = 1; id <= 100; id++) {
+    	http.get(http.url`http://example.com/posts/${id}`)
+    }
+
+    ```
+
+    Then do this:
+
+    ```javascript
+    for (var id = 1; id <= 100; id++) {
+    	http.get(http.url`http://example.com/posts/${id}`)
+    }
+
+    ```
+
+    </div>
 
 ## Table data
 
