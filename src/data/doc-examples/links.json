@@ -129,6 +129,12 @@
       "url": "https://k6.io/blog/load-testing-with-postman-collections"
     },
     {
+      "title": "Test OAuth secured APIs",
+      "description": "How to load test APIs secured with OAuth on Azure Active Directory and Okta.",
+      "to": "",
+      "url": "https://k6.io/blog/how-to-load-test-oauth-secured-apis-with-k6"
+    },
+    {
       "title": "Load testing with Swagger/OpenAPI",
       "description": "How to generate a load test script out of an OpenAPI document.",
       "to": "",
