@@ -2,9 +2,17 @@
 title: 'Advanced Examples'
 ---
 
-## Constant VUs to Per VU iterations
+> ### 🎉 New in v0.27.0
+>
+> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority,
+> existing scripts and configurations will continue to work as before. For a list of breaking changes,
+> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
 
-Run as many iterations as possible with 50 VUs for 30s, and then run 100 iterations per VU of another scenario.
+## Using multiple scenarios
+
+This configuration will first execute a scenario where 50 VUs will try to run as many iterations
+as possible for 30 seconds. It will then transition to the next scenario, executing 100 iterations
+per VU for a maximum duration of 1 minute.
 
 Note the use of `startTime`, and different `exec` functions for each scenario.
 

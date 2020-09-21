@@ -1,11 +1,9 @@
 ---
 title: Glossary
 excerpt: |
-  
-
 ---
 
-When discussing complex topics, it is usually a good idea to define a clear, shared terminology to ensure that we leave as little room as possible for misunderstandings.  Below, you'll find a list of terms commonly used within the k6 project and what we mean when we use them.
+When discussing complex topics, it is usually a good idea to define a clear, shared terminology to ensure that we leave as little room as possible for misunderstandings. Below, you'll find a list of terms commonly used within the k6 project and what we mean when we use them.
 
 ## Correlation
 
@@ -13,7 +11,7 @@ When discussing complex topics, it is usually a good idea to define a clear, sha
 
 ## Dynamic Data
 
-**Dynamic data** is data that might, or will, change between test runs.  Common examples are order ids, session tokens or timestamps.
+**Dynamic data** is data that might, or will, change between test runs. Common examples are order ids, session tokens or timestamps.
 
 ## Endurance Testing
 
@@ -30,6 +28,12 @@ When discussing complex topics, it is usually a good idea to define a clear, sha
 ## HTTP Archive
 
 An **HTTP Archive**, or **HAR file**, is a file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/loadimpact/har-to-k6). For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).
+
+## Iteration
+
+An iteration is the same as an execution of the `default function`, or scenario `exec` function.
+
+You can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)).
 
 ## k6 Cloud
 

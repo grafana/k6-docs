@@ -2,6 +2,12 @@
 title: 'Executors'
 ---
 
+> ### 🎉 New in v0.27.0
+>
+> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority,
+> existing scripts and configurations will continue to work as before. For a list of breaking changes,
+> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
+
 [Executors](/using-k6/scenarios/executors) are the workhorses of the k6 execution engine. Each one
 schedules VUs and iterations differently, and you'll choose one depending on the type of traffic you
 want to model to test your services.

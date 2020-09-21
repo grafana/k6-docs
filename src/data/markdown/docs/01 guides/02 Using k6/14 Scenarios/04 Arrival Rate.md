@@ -2,6 +2,14 @@
 title: 'Arrival rate'
 ---
 
+> ### 🎉 New in v0.27.0
+>
+> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority,
+> existing scripts and configurations will continue to work as before. For a list of breaking changes,
+> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
+
+## Closed Model
+
 Prior to v0.27.0, k6 only supported a closed model for the simulation of new VU arrivals.
 In this closed model, a new VU iteration only starts when a VU's previous iteration has
 completed its execution. Thus, in a closed model, the start rate, or arrival rate, of
@@ -46,6 +54,8 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ```
 
+## Drawbacks of using the closed model
+
 This tight coupling between the VU iteration duration and start of new VU iterations
 in effect means that the target system can influence the throughput of the test, via
 its response time. Slower response times means longer iterations and a lower arrival
@@ -58,12 +68,14 @@ iteration durations and a tapering off of the arrival rate of new VU iterations.
 This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
 or more generally throughput (eg. requests per second).
 
+## Open model
+
 To fix this problem we use an open model, decoupling the start of new VU iterations
 from the iteration duration and the influence of the target system's response time.
 
 ![Arrival rate closed/open models](images/Scenarios/arrival-rate-open-closed-model.png)
 
-In k6 we've implemented this open model with our "arrival rate" executors. There are
+In k6 we've implemented this open model with our "arrival rate" executors. There are  
 two arrival rate executors to chose from for your scenario(s),
 [constant-arrival-rate](#constant-arrival-rate) and [ramping-arrival-rate](#ramping-arrival-rate):
 
