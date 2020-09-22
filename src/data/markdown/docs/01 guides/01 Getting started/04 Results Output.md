@@ -101,6 +101,7 @@ The list of output plugins are:
 | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`                                                            |
 | [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`                                                            |
+| [CSV](/results-visualization/csv)                     | `k6 run --out csv`                                                              |
 | [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`                                                          |
 | [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb`                                                         |
 | [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
