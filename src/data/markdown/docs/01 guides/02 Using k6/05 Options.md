@@ -23,6 +23,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
+| [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
@@ -448,6 +449,42 @@ run completion. Available in the `k6 run` command.
 export let options = {
   linger: true,
 };
+```
+
+</div>
+
+### Log output
+This options specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
+
+Possible values are:
+- none - disable
+- stdout - send to the standard output
+- stderr - send to the standard error output (this is the default)
+- loki   - send logs to a loki server
+
+The loki can additionally be configured as follows:
+`loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`
+Where all but the url in the beginning are not required. 
+The possible keys with their meanings and default values:
+
+| key           | meaning                                                            | default value                            |
+| ------------- | ------------------------------------------------------------------ | ---------------------------------------- |
+| <nothing>     | the endpoint to which to send logs                                 | `http://127.0.0.1:3100/loki/api/v1/push` |
+| label.<label> | adds an additional label with the provided key and value to each message    | N/A                                      |
+| limit         | the limit of message per pushPeriod, an additonal log is send when the limit is reached, logging how many logs were dropped | 100 |
+| level         | the minimal level of a message so it's send to loki | all |
+| pushPeriod    | at what period to send log lines | 1s |
+| profile       | whether to print some info about performance of the sending to loki | false |
+| msgMaxSize    | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additonal few characters explaining how many characters were dropped. | 1048576 |
+
+| Env             | CLI              | Code / Config file | Default  |
+| --------------- | ---------------- | ------------------ | -------- |
+| `K6_LOG_OUTPUT` | `--log-output`   | N/A                | `stderr` |
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```shell
+$ k6 run --log-output=stdout script.js
 ```
 
 </div>
