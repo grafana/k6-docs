@@ -23,7 +23,7 @@ also adds the following options:
 | ------------------ | ------- | ----------------------------------------------------------------------------- | ------- |
 | `startVUs`         | integer | Number of VUs to run at test start.                                           | `1`     |
 | `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to. | `[]`    |
-| `gracefulRampDown` | string  | Time to wait for iterations to finish before starting new VUs.                | `"30s"` |
+| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down.                | `"30s"` |
 
 ## When to use
 
