@@ -31,7 +31,7 @@ An **HTTP Archive**, or **HAR file**, is a file containing logs of a browser int
 
 ## Iteration
 
-An iteration is the same as an execution of the `default function`, or scenario `exec` function.
+An iteration is an execution of the `default function`, or scenario `exec` function.
 
 You can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)).
 
