@@ -4,7 +4,7 @@ excerpt: ''
 hideFromSidebar: true
 ---
 
-k6 supports running test scripts with different ECMAScript compatibility modes using the
+As of v0.26, k6 supports running test scripts with different ECMAScript compatibility modes using the
 `run --compatibility-mode` CLI option or `K6_COMPATIBILITY_MODE` environment variable.
 
 Currently two modes are available:
