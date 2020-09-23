@@ -23,6 +23,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
+| [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
@@ -454,6 +455,27 @@ run completion. Available in the `k6 run` command.
 export let options = {
   linger: true,
 };
+```
+
+</div>
+
+### LogFormat
+
+A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
+
+- `json`: print all the debug information in JSON format. 
+
+- `raw`: print only the log message. 
+
+
+| Env         | CLI                    | Code / Config file | Default |
+| ----------- | ---------------------- | ------------------ | ------- |
+| `K6_LOGFORMAT` | `--logformat`, `-f` | N/A                |         |
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```bash
+k6 run --logformat raw test.js
 ```
 
 </div>
