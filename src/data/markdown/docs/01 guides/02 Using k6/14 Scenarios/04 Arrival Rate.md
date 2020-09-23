@@ -92,7 +92,6 @@ export let options = {
       timeUnit: '1s',
       duration: '1m',
       preAllocatedVUs: 20,
-      maxVUs: 100,
     },
   },
 };
