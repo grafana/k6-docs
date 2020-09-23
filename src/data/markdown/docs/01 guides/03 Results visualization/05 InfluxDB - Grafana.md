@@ -5,13 +5,13 @@ excerpt: ''
 
 You can use [Grafana](https://grafana.com/grafana/) for visualization of your k6 metrics.
 
-To use Grafana, you have to setup k6 to send the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
+The first step is to upload your test result metrics to a storage backend. And next, configure Grafana to fetch the data from your backend to visualize the test results.
+
+This tutorial shows how to upload the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
 
 ![Grafana Visualization](/images/InfluxDB-Grafana/grafana-visualization.png)
 
-## Installing InfluxDB and Grafana
-
-### InfluxDB
+## Installing InfluxDB
 
 Full installation instructions are available in [the InfluxDB docs](https://docs.influxdata.com/influxdb/v1.2/introduction/installation/).
 
@@ -27,24 +27,6 @@ $ brew install influxdb
 
 </div>
 
-### Grafana
-
-Full installation instructions are available in [the Grafana docs](http://docs.grafana.org/installation/).
-
-<div class="code-group" data-props='{ "labels": ["Linux (Debian/Ubuntu)", "macOS"] }'>
-
-```shell
-$ sudo apt install grafana
-```
-
-```shell
-$ brew install grafana
-```
-
-</div>
-
-_After this, you should have an InfluxDB server running on localhost, listening on port 8086,
-and a Grafana server on `http://localhost:3000_`
 
 ## Run the test and upload the results to InfluxDB
 
@@ -70,7 +52,30 @@ automatically.
 Once you have k6 results in your InfluxDB database, you can then use Grafana to
 create results visualizations.
 
-## Using Grafana to visualize results
+## Install Grafana
+
+Full installation instructions are available in [the Grafana docs](http://docs.grafana.org/installation/).
+
+<div class="code-group" data-props='{ "labels": ["Linux (Debian/Ubuntu)", "macOS"] }'>
+
+```shell
+$ sudo apt install grafana
+```
+
+```shell
+$ brew install grafana
+```
+
+</div>
+
+After the installation, you should have an InfluxDB server running on localhost, listening on port 8086,
+and a Grafana server on `http://localhost:3000`. Now, we show two different ways to visualize your k6 metrics: 
+
+- [Custom Grafana dashboard](#custom-grafana-dashboard)
+
+- [Preconfigured Grafana dashboards](#preconfigured-grafana-dashboards)
+
+## Custom Grafana dashboard 
 
 - Open `http://localhost:3000` (or wherever your Grafana installation is located) in your browser.
 - Create a data source:
@@ -123,6 +128,18 @@ $ docker-compose run -v \
 
 Now you should be able to connect to localhost on port 3000 with your browser and access the
 Grafana installation in the Docker container.
+
+## InfluxDB options
+
+When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can configure other InfluxDB options passing these environment variables:
+
+| InfluxDB Options             | Description                                               |  Default |
+| --------------------------------------- | ---------------------------------------------- | -----------------------| 
+| `K6_INFLUXDB_USERNAME`                  | InfluxDB username, optional                     |    |
+| `K6_INFLUXDB_PASSWORD`                  | InfluxDB user password                     |    |
+| `K6_INFLUXDB_INSECURE`                  | If `true`, it will skip https certificate verification  | `false`   |
+| `K6_INFLUXDB_TAGS_AS_FIELDS`            |  A comma-separated string to set k6 metrics as nonindexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field interger. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int`  |   |
+
 
 ## See also
 
