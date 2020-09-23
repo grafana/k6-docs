@@ -5,7 +5,7 @@ require('dotenv').config({
 
 const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
-const isStaging = mainURL === 'https://staging.k6.io/docs';
+const isStaging = mainURL.startsWith('https://staging.k6.io');
 
 const plugins = [
   'gatsby-plugin-react-helmet',
@@ -226,6 +226,7 @@ if (process.env.BUCKET_NAME) {
     options: {
       bucketName: process.env.BUCKET_NAME,
       region: process.env.BUCKET_REGION,
+      retainObjectsPatterns: ['pull-requests/**/*'],
       protocol: 'https',
       hostname: isProduction ? 'k6.io' : 'staging.k6.io',
     },
@@ -233,7 +234,7 @@ if (process.env.BUCKET_NAME) {
 }
 
 module.exports = {
-  pathPrefix: `/docs`,
+  pathPrefix: process.env.PATH_PREFIX || `/docs`,
 
   siteMetadata: {
     siteTitle:
