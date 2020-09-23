@@ -135,8 +135,8 @@ When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can co
 
 | InfluxDB Options             | Description                                               |  Default |
 | --------------------------------------- | ---------------------------------------------- | -----------------------| 
-| `K6_INFLUXDB_USERNAME`                  | Influxdb username, optional                     |    |
-| `K6_INFLUXDB_PASSWORD`                  | Influx user password                     |    |
+| `K6_INFLUXDB_USERNAME`                  | InfluxDB username, optional                     |    |
+| `K6_INFLUXDB_PASSWORD`                  | InfluxDB user password                     |    |
 | `K6_INFLUXDB_INSECURE`                  | If `true`, it will skip https certificate verification  | `false`   |
 | `K6_INFLUXDB_TAGS_AS_FIELDS`            |  A comma-separated string to set k6 metrics as nonindexable fields (instead of tags). Example: `vu:int,iter:int,url:string,event_time:int`  |   |
 
