@@ -18,7 +18,7 @@ by running a variable number of VUs&mdash;including potentially initializing mor
 of the test&mdash;in order to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
 
-See the [arrival rate](#arrival-rate) section for details.
+See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
 ## Options
 
