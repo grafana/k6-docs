@@ -41,7 +41,7 @@ locally with `k6 run`.
 
 ## Examples
 
-In this example, we'll execute a testrun controllable at runtime, starting with 0 VUs up to
+In this example, we'll execute a test controllable at runtime, starting with 0 VUs up to
 a maximum of 50, and a total duration of 10 minutes.
 
 <div class="code-group" data-props='{"labels": [ "externally-controlled.js" ], "lineNumbers": "true"}'>
