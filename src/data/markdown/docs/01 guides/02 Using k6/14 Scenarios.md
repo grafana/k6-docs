@@ -13,7 +13,7 @@ hideFromSidebar: false
 ## Benefits
 
 Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled, allowing
-us to model diverse traffic patterns in our load tests. There are several benefits of using scenarios in your tests:
+k6 scenarios enable configuring how VUs and iterations are scheduled, making it possible to model diverse traffic patterns in load tests. There are several benefits of using scenarios:
 
 - Multiple scenarios can be declared in the same script, and each one can
   independently execute a different JavaScript function, which makes organizing tests easier
