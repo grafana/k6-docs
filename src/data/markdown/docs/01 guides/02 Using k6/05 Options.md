@@ -454,7 +454,7 @@ export let options = {
 </div>
 
 ### Log output
-This options specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
+This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
 
 Possible values are:
 - none - disable
