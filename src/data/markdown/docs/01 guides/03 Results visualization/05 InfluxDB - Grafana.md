@@ -138,7 +138,7 @@ When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can co
 | `K6_INFLUXDB_USERNAME`                  | InfluxDB username, optional                     |    |
 | `K6_INFLUXDB_PASSWORD`                  | InfluxDB user password                     |    |
 | `K6_INFLUXDB_INSECURE`                  | If `true`, it will skip https certificate verification  | `false`   |
-| `K6_INFLUXDB_TAGS_AS_FIELDS`            |  A comma-separated string to set k6 metrics as nonindexable fields (instead of tags). Example: `vu:int,iter:int,url:string,event_time:int`  |   |
+| `K6_INFLUXDB_TAGS_AS_FIELDS`            |  A comma-separated string to set k6 metrics as nonindexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field interger. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int`  |   |
 
 
 ## See also
