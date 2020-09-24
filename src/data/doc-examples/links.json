@@ -13,6 +13,12 @@
       "to": "/examples/http-authentication"
     },
     {
+      "title": "OAuth Authentication",
+      "description": "How to load test APIs secured with OAuth on Azure Active Directory and Okta.",
+      "url": "",
+      "to": "/examples/oauth-authentication"
+    },
+    {
       "title": "Correlating Tokens and Dynamic Data",
       "description": "Scripting examples to correlate dynamic data in your test script.",
       "url": "",
@@ -127,12 +133,6 @@
       "description": "How to use postman collections in k6?",
       "to": "",
       "url": "https://k6.io/blog/load-testing-with-postman-collections"
-    },
-    {
-      "title": "Test OAuth secured APIs",
-      "description": "How to load test APIs secured with OAuth on Azure Active Directory and Okta.",
-      "to": "",
-      "url": "https://k6.io/blog/how-to-load-test-oauth-secured-apis-with-k6"
     },
     {
       "title": "Load testing with Swagger/OpenAPI",
