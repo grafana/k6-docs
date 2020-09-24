@@ -24,6 +24,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
+| [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
@@ -340,6 +341,8 @@ An object with overrides to DNS resolution, similar to what you can do with `/et
 Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
 up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
+From v0.28.0 it is also supported to redirect only from certain ports and/or to certain ports.
+
 > #### ⚠️ Keep in mind!
 >
 > This does not modify the actual HTTP `Host` header, but rather where it will be routed.
@@ -354,11 +357,15 @@ up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 export let options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
+    'test.k6.io:443': '1.2.3.4:8443',
   },
 };
 ```
 
 </div>
+
+With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
+it port unless it's port is `443` which will be redirected to port `8443`.
 
 ### HTTP Debug
 
@@ -485,6 +492,24 @@ The possible keys with their meanings and default values:
 
 ```shell
 $ k6 run --log-output=stdout script.js
+
+### LogFormat
+
+A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
+
+- `json`: print all the debug information in JSON format. 
+
+- `raw`: print only the log message. 
+
+
+| Env         | CLI                    | Code / Config file | Default |
+| ----------- | ---------------------- | ------------------ | ------- |
+| `K6_LOGFORMAT` | `--logformat`, `-f` | N/A                |         |
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```bash
+k6 run --logformat raw test.js
 ```
 
 </div>

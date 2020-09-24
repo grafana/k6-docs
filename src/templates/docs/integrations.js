@@ -17,6 +17,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 // icons
 import Azure from 'svg/azure.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
+import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
@@ -42,6 +43,11 @@ const iconsDataSet1 = [
     Icon: Loadimpact,
     name: 'Cloud',
     to: '/results-visualization/cloud',
+  },
+  {
+    Icon: CSV,
+    name: 'CSV',
+    to: '/results-visualization/csv',
   },
   {
     Icon: Datadog,
