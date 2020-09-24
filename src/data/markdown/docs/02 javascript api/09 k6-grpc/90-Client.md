@@ -9,6 +9,7 @@ title: Client
 | Method | Description |
 |--------|-------------|
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-grpc/client/client-load-importpaths----protofiles) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
+| [Client.connect(address [,params])](/javascript-api/k6-grpc/client/client-connect-address-params) | Open's a connection to the given gRPC server. |
 
 
 ### Examples
