@@ -523,6 +523,12 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/javascript-api/k6-html',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/logs',
+    toPath: '/javascript-api/k6-http/filedata',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
