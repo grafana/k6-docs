@@ -61,7 +61,7 @@ Currently, k6 automatically creates the following tags by default:
 | `proto`       | the used protocol name (e.g. `HTTP/1.1`)                                                                                                                                          |
 | `subproto`    | the subprotocol name (used by websockets)                                                                                                                                         |
 | `status`      | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                                    |
-| `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.)                                                                                                                                   |
+| `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                                   |
 | `url`         | the HTTP request URL                                                                                                                                                              |
 | `name`        | the HTTP [request name](/using-k6/http-requests#url-grouping)                                                                                                                     |
 | `group`       | the full [group](#groups) path                                                                                                                                                    |
@@ -70,6 +70,8 @@ Currently, k6 automatically creates the following tags by default:
 | `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
 | `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
 | `scenario`    | the name of the scenario where the metric was emitted                                                                                                                             |
+| `service`     | the RPC service name for gRPC                                                                                                                                                     |
+| `rpc_type`    | one of `unary`, `server_streaming`, `client_streaming` or `bidirectional_streaming` for gRPC. *Note:*  only `unary` requests are currently supported.                             |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
