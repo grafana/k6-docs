@@ -461,9 +461,11 @@ export let options = {
 </div>
 
 ### Log output
+
 This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
 
 Possible values are:
+
 - none - disable
 - stdout - send to the standard output
 - stderr - send to the standard error output (this is the default)
@@ -476,13 +478,14 @@ The possible keys with their meanings and default values:
 
 | key           | meaning                                                            | default value                            |
 | ------------- | ------------------------------------------------------------------ | ---------------------------------------- |
-| <nothing>     | the endpoint to which to send logs                                 | `http://127.0.0.1:3100/loki/api/v1/push` |
-| label.<label> | adds an additional label with the provided key and value to each message    | N/A                                      |
+| `nothing`     | the endpoint to which to send logs                                 | `http://127.0.0.1:3100/loki/api/v1/push` |
+| label.`labelName` | adds an additional label with the provided key and value to each message    | N/A                                      |
 | limit         | the limit of message per pushPeriod, an additonal log is send when the limit is reached, logging how many logs were dropped | 100 |
 | level         | the minimal level of a message so it's send to loki | all |
 | pushPeriod    | at what period to send log lines | 1s |
 | profile       | whether to print some info about performance of the sending to loki | false |
 | msgMaxSize    | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additonal few characters explaining how many characters were dropped. | 1048576 |
+
 
 | Env             | CLI              | Code / Config file | Default  |
 | --------------- | ---------------- | ------------------ | -------- |
@@ -512,7 +515,7 @@ A value specifying the log format. By default, k6 includes extra debug informati
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
 ```bash
-k6 run --logformat raw test.js
+$ k6 run --logformat raw test.js
 ```
 
 </div>
