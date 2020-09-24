@@ -492,6 +492,9 @@ The possible keys with their meanings and default values:
 
 ```shell
 $ k6 run --log-output=stdout script.js
+```
+
+</div>
 
 ### LogFormat
 
