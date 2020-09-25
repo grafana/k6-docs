@@ -526,7 +526,7 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
   createRedirect({
     fromPath: '/cloud/analyzing-results/logs',
-    toPath: '/javascript-api/k6-http/filedata',
+    toPath: '/cloud/analyzing-results/logs-tab',
     isPermanent: true,
   });
 };
