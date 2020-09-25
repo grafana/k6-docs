@@ -1,15 +1,16 @@
-import React, { useRef } from 'react';
+import classNames from 'classnames';
 import { HtmlContent } from 'components/blocks/html-content';
-import { StickyContainer, Sticky } from 'react-sticky';
+import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { CodeGroup } from 'components/shared/code-group';
-import TableWrapper from 'components/shared/table-wrapper';
-import { HeadingLandmark } from 'components/shared/heading';
 import Blockquote from 'components/shared/blockquote';
+import { CodeGroup } from 'components/shared/code-group';
+import { HeadingLandmark } from 'components/shared/heading';
 import LdScript from 'components/shared/ld-script';
+import TableWrapper from 'components/shared/table-wrapper';
+import React, { useRef } from 'react';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 import styles from './doc-page-content.module.scss';
-import classNames from 'classnames';
 
 const componentsForNativeReplacement = {
   h2: HeadingLandmark('h2'),
@@ -18,6 +19,7 @@ const componentsForNativeReplacement = {
   blockquote: Blockquote,
   Blockquote,
   LdScript,
+  Glossary,
 };
 
 const componentsForCustomReplacement = {
