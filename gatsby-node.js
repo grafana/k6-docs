@@ -525,7 +525,7 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/cloud/analyzing-results/logs',
+    fromPath: '/cloud/analyzing-results/logs$',
     toPath: '/cloud/analyzing-results/logs-tab',
     isPermanent: true,
   });
