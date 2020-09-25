@@ -1,5 +1,6 @@
 ---
 title: 'Logs Tab'
+slug: '/cloud/analyzing-results/logs'
 excerpt: 'The Logs tab allows you to view console logs'
 ---
 
