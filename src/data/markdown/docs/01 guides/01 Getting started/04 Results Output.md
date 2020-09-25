@@ -106,7 +106,8 @@ The list of output plugins are:
 | [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb`                                                         |
 | [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
 | [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`                                                           |
-| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd`, see [page](/results-visualization/new-relic) for details |
+| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd` |
+| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)         | `k6 run --out statsd` |
 
 ## Multiple outputs
 
