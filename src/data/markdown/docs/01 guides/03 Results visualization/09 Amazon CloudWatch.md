@@ -19,7 +19,7 @@ This guide covers running the CloudWatch integration and visualizing the results
 
 ## Install k6
 
-For more information about how to install k6, please visit our [installation](https://k6.io/docs/getting-started/installation) guide. For Amazon EC2 instances, you also need to install [GnuPG](https://www.gnupg.org/) software to verify repository signature before attempting to install k6 from the official repository:
+For more information about how to install k6, please visit our [installation](https://k6.io/docs/getting-started/installation) guide. For Amazon EC2 instances running Debian 10 (Buster), you also need to install [GnuPG](https://www.gnupg.org/) software to verify repository signature before attempting to install k6 from the official repository:
 
 ```bash
 sudo apt install -y gnupg
@@ -29,26 +29,27 @@ sudo apt install -y gnupg
 
 We presume that you already have [launched an EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) and you're connected to it. Once you are connected to your EC2 instance, [download, install and configure](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html) the CloudWatch agent:
 
-1. Create an IAM role for CloudWatch agent and attach it to your EC2 instance, so that we'll be able to send metrics to CloudWatch:
+1. Create an [IAM role](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html) for CloudWatch agent and [attach](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) it to your EC2 instance, so that we'll be able to send metrics to CloudWatch.
 
-- [Create IAM Roles to Use with the CloudWatch Agent on Amazon EC2 Instances](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html)
-![Create IAM Roles to Use with the CloudWatch Agent on Amazon EC2 Instances](./images/CloudWatch/iam-policy-for-cloudwatch.png)
-- [Attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#attach-iam-role)
-![Attaching an IAM role to an instance](./images/CloudWatch/ec2-instance.png)
+    This is what the role should look like:
+    ![Create IAM Roles to Use with the CloudWatch Agent on Amazon EC2 Instances](./images/CloudWatch/iam-policy-for-cloudwatch.png)
 
-1. Download the CloudWatch Agent package suitable for your operating system. For Debian 10 (Buster), we've used the following link, but for other operating systems, please refer to its [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
+    The role is attached to the EC2 instance:
+    ![Attaching an IAM role to an instance](./images/CloudWatch/ec2-instance.png)
 
-    ```bash
-    wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
-    ```
-
-2. Install the package:
+2. Download the CloudWatch Agent package suitable for your operating system. For Debian 10 (Buster), we've used the following link, but for other operating systems, please refer to this [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
 
     ```bash
-    sudo dpkg -i amazon-cloudwatch-agent.deb
+    $ wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
     ```
 
-3. Configure the agent to receive data from k6. For this, create a file called "/opt/aws/amazon-cloudwatch-agent/etc/statsd.json" and paste the following snippet into it. It means that the agent would listen on "localhost:8125", which is the default host and port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
+3. Install the package:
+
+    ```bash
+    $ sudo dpkg -i amazon-cloudwatch-agent.deb
+    ```
+
+4. Configure the agent to receive data from k6. For this, create a file called **/opt/aws/amazon-cloudwatch-agent/etc/statsd.json** and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
 
     ```js
     {
@@ -65,16 +66,16 @@ We presume that you already have [launched an EC2 instance](https://docs.aws.ama
     }
     ```
 
-4. Run the following command to start the agent:
+5. Run the following command to start the agent:
 
     ```bash
-    sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
+    $ sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
     ```
 
-5. You can check the status of the agent using the following command:
+6. You can check the status of the agent using the following command:
 
     ```bash
-    amazon-cloudwatch-agent-ctl -a status
+    $ amazon-cloudwatch-agent-ctl -a status
     ```
 
 ## Run the k6 test
@@ -109,10 +110,10 @@ export default function () {
 Run the above file using this command. It will send the collected metrics to CloudWatch agent, which in turn sends it to CloudWatch.
 
 ```bash
-k6 run --out statsd test.js
+$ k6 run --out statsd test.js
 ```
 
-This is the output produced by k6:
+This is the result output produced by k6:
 
 ```bash
 
