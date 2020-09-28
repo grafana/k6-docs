@@ -75,7 +75,7 @@ or more generally throughput (eg. requests per second).
 To fix this problem we use an open model, decoupling the start of new VU iterations
 from the iteration duration and the influence of the target system's response time.
 
-![Arrival rate closed/open models](/images/Scenarios/arrival-rate-open-closed-model.png)
+![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
 
 In k6 we've implemented this open model with our "arrival rate" executors. There are  
 two arrival rate executors to chose from for your scenario(s),
