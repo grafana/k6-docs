@@ -107,6 +107,7 @@ The list of output plugins are:
 | [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
 | [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`                                                           |
 | [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd`, see [page](/results-visualization/new-relic) for details |
+| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)         | `k6 run --out statsd`, see [page](/results-visualization/amazon-cloudwatch) for details |
 
 ## Multiple outputs
 
