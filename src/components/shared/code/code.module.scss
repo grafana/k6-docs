@@ -34,10 +34,10 @@
       color: #e2e2e2 !important;
       &[class='language-diff'] {
         .deleted {
-          color: $color-error;
+          color: #dd4a68;
         }
         .inserted {
-          color: $color-success;
+          color: #c3e88d;
         }
       }
     }
