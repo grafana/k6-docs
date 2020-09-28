@@ -32,6 +32,14 @@
       font-size: 14px;
       line-height: 24px;
       color: #e2e2e2 !important;
+      &[class='language-diff'] {
+        .deleted {
+          color: $color-error;
+        }
+        .inserted {
+          color: $color-success;
+        }
+      }
     }
 
     .token {
@@ -43,17 +51,14 @@
       }
       &.boolean,
       &.string {
-        // color: #bc70fd !important;
         color: rgba(233, 149, 255, 1);
       }
 
       &.number {
-        // color: $color-accent-secondary !important;
         color: rgb(195, 232, 141);
       }
 
       &.operator {
-        // color: $color-accent-primary !important;
         background-color: transparent !important;
         color: rgb(181, 181, 181) !important;
       }
@@ -63,7 +68,6 @@
       }
 
       &.function {
-        // color: #ff21c3 !important;
         color: rgb(255, 255, 255);
       }
 
