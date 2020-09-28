@@ -85,9 +85,11 @@ Here's an example dashboard we've created to visualize the test results.
 
 ![k6 Dashboard on Amazon CloudWatch](./images/CloudWatch/cloudwatch-k6-dashboard.png)
 
-You can use the following export to create the above dashboard. Just replace **REGION** and **ADDRESS** with relevant information from your environment, that is the AWS regions and the private IP address of the EC2 instance.
+You can use the following export to create the above dashboard. Just replace **REGION** and **ADDRESS** with relevant information from your environment, that is, the AWS regions and the private IP address of the EC2 instance.
 
-```js
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```javascript
 {
     "widgets": [
         {
@@ -190,3 +192,5 @@ You can use the following export to create the above dashboard. Just replace **R
     ]
 }
 ```
+
+</div>
