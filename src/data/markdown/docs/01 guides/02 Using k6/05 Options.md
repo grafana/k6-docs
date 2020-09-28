@@ -1094,7 +1094,7 @@ the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
 
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
-| `K6_VUS` | `--vus`, `-v` | `vus`              | `1`     |
+| `K6_VUS` | `--vus`, `-u` | `vus`              | `1`     |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
