@@ -3,6 +3,11 @@ title: 'Graceful stop'
 excerpt: ''
 ---
 
+Prior to v0.27.0, k6 would interrupt any iterations in progress when the test duration was reached
+or when scaling down VUs with the stages option. In some cases this would lead to skewed metrics
+and unexpected test results. Starting with v0.27.0, this behavior can be controlled through the
+`gracefulStop` and `gracefulRampDown` options.
+
 ## Description
 
 This option is available for all executors except `externally-controlled` and allows the
@@ -20,13 +25,9 @@ export let options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
-      executor: 'ramping-vus',
-      startVUs: 0,
-      stages: [
-        { duration: '5s', target: 100 },
-        { duration: '5s', target: 0 },
-      ],
-      gracefulRampDown: '3s',
+      executor: 'constant-vus',
+      vus: 100,
+      duration: '10s',
       gracefulStop: '3s',
     },
   },
@@ -43,13 +44,13 @@ export default function () {
 Running this script would result in something like:
 
 ```bash
-running (13.0s), 000/100 VUs, 177 complete and 27 interrupted iterations
-contacts ✓ [======================================] 001/100 VUs  10s
+running (13.0s), 000/100 VUs, 349 complete and 23 interrupted iterations
+contacts ✓ [======================================] 100 VUs  10s
 ```
 
 Notice that even though the total test duration is 10s, the actual execution time was 13s
-because of `gracefulStop`, and some iterations were interrupted since they exceeded
-the configured 3s of both `gracefulStop` and `gracefulRampDown`.
+because of `gracefulStop`, giving the VUs a 3s additional time to complete iterations in progress. 23
+of the iterations currently in progress did not complete within this window and was therefore interrupted.
 
 ## Additional Information
 

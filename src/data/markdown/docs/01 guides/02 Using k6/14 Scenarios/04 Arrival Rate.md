@@ -4,6 +4,10 @@ title: 'Arrival rate'
 
 ## Closed Model
 
+> In a closed model, the execution time of each iteration dictates the actual
+> number of iterations executed in your test, as the next iteration won't be started
+> until the previous one is completed.
+
 Prior to v0.27.0, k6 only supported a closed model for the simulation of new VU arrivals.
 In this closed model, a new VU iteration only starts when a VU's previous iteration has
 completed its execution. Thus, in a closed model, the start rate, or arrival rate, of
@@ -64,14 +68,18 @@ or more generally throughput (eg. requests per second).
 
 ## Open model
 
+> Compared to the closed model, the open model decouples VU iterations from
+> the actual iteration duration. The response times of the target system are no longer
+> influencing the load being put on the target system.
+
 To fix this problem we use an open model, decoupling the start of new VU iterations
 from the iteration duration and the influence of the target system's response time.
 
-![Arrival rate closed/open models](images/Scenarios/arrival-rate-open-closed-model.png)
+![Arrival rate closed/open models](/images/Scenarios/arrival-rate-open-closed-model.png)
 
 In k6 we've implemented this open model with our "arrival rate" executors. There are  
 two arrival rate executors to chose from for your scenario(s),
-[constant-arrival-rate](#constant-arrival-rate) and [ramping-arrival-rate](#ramping-arrival-rate):
+[constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
 
 <div class="code-group" data-props='{"labels": [ "open-model.js" ], "lineNumbers": "[true]"}'>
 
@@ -92,10 +100,10 @@ export let options = {
 
 export default function () {
   // With the open model arrival rate executor config above,
-  // new VU iteration will start at a rate of 1 every second,
+  // new VU iterations will start at a rate of 1 every second,
   // and we can thus expect to get 60 iterations completed
   // for the full 1m test duration.
-  http.get('http://httpbin.test.k6.io/delay/10');
+  http.get('http://httpbin.test.k6.io/delay/6');
 }
 ```
 
@@ -107,8 +115,3 @@ Running this script would result in something like:
 running (1m09.3s), 000/011 VUs, 60 complete and 0 interrupted iterations
 open_model ✓ [======================================] 011/011 VUs  1m0s  1 iters/s
 ```
-
-Compared with the first example of the closed model, in this open model example we
-can see that the VU iteration arrival rate is now decoupled from the iteration duration.
-The response times of the target system are no longer influencing the load being
-put on the target system.
