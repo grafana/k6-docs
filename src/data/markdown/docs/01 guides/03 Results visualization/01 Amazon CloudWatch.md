@@ -85,4 +85,4 @@ Here's an example dashboard we've created to visualize the test results.
 
 ![k6 Dashboard on Amazon CloudWatch](./images/CloudWatch/cloudwatch-k6-dashboard.png)
 
-The above dashboard is exported as JSON and is available [here](https://github.com/k6io/amazon-cloudwatch-dashboard).
+The above dashboard is exported as JSON and is available [here](https://github.com/k6io/example-cloudwatch-dashboards).
