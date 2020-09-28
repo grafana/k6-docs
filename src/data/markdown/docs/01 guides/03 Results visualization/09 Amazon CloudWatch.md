@@ -66,7 +66,7 @@ Once the agent is running, run the k6 test and send the metrics to the agent wit
 $ k6 run --out statsd script.js
 ```
 
-The following options can be configured, depending on the agent's configuration:
+The following options can be configured as environment variables, depending on the agent's configuration:
 
 | Name  | Value |
 | ------------- | ------------- |
