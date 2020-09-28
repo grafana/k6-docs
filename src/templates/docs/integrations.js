@@ -17,6 +17,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 // icons
 import Azure from 'svg/azure.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
+import CloudWatch from 'svg/cloudwatch.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
@@ -81,6 +82,11 @@ const iconsDataSet1 = [
     Icon: NewRelic,
     name: 'New Relic',
     to: '/results-visualization/new-relic',
+  },
+  {
+    Icon: CloudWatch,
+    name: 'Amazon CloudWatch',
+    to: '/results-visualization/amazon-cloudwatch',
   },
 ];
 
