@@ -40,6 +40,17 @@
           color: #c3e88d;
         }
       }
+      &[class='language-html'] {
+        .tag {
+          color: #00cdff;
+        }
+        .attr-name {
+          color: rgb(195, 232, 141);
+        }
+        .attr-value {
+          color: rgba(233, 149, 255, 1);
+        }
+      }
     }
 
     .token {
