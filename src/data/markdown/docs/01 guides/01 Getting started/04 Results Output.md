@@ -99,13 +99,15 @@ The list of output plugins are:
 
 | Plugin                                                | Usage                                                                           |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)         | `k6 run --out statsd` |
 | [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`                                                            |
 | [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`                                                            |
+| [CSV](/results-visualization/csv)                     | `k6 run --out csv`                                                              |
 | [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`                                                          |
 | [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb`                                                         |
 | [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
+| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd` |
 | [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`                                                           |
-| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd`, see [page](/results-visualization/new-relic) for details |
 
 ## Multiple outputs
 

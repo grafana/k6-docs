@@ -21,4 +21,4 @@ Other things you can do on this tab:
 
 ![Analysis Tab](/images/06-Analysis-Tab/analysis-tab.png)
 
-Next, [Test Comparison](/cloud/analyzing-results/test-comparison)
+Next, [Logs Tab](/cloud/analyzing-results/logs)

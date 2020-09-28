@@ -13,6 +13,12 @@
       "to": "/examples/http-authentication"
     },
     {
+      "title": "OAuth Authentication",
+      "description": "How to load test APIs secured with OAuth on Azure Active Directory and Okta.",
+      "url": "",
+      "to": "/examples/oauth-authentication"
+    },
+    {
       "title": "Correlating Tokens and Dynamic Data",
       "description": "Scripting examples to correlate dynamic data in your test script.",
       "url": "",

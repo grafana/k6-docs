@@ -8,7 +8,7 @@ There are two types of pages: Welcome Pages and Documentation articles.
 
 Documentation articles are markdown files structured under the [`src/data/markdown/docs`](src/data/markdown/docs) folder.
 
-### Folder structure
+## Folder structure
 
 Root folders represent main categories at the top of the page.  
 Use numbers in front of the folder name to set the order.
@@ -53,7 +53,7 @@ Note, that path begins with `/`, not just `images/`.
 
 Store images relative to a source `.md` file, and access them from `.md` files by using relative path. `image-sharp-plugin` will handle your image: compress, convert and lazy load.
 
-### Example file structure:
+### Example file structure
 
 ```
 .
@@ -201,7 +201,7 @@ We are going to write them a bit differently, half-native md:
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-      	http.get(http.url`http://example.com/posts/${id}`)
+       http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -221,7 +221,7 @@ If we want line numbers to be rendered, we shall add the wrapper and adjust our 
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-    	http.get(http.url`http://example.com/posts/${id}`)
+     http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -242,7 +242,7 @@ Pretty much the same routine as with headerless ones, but one difference in data
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-    	http.get(http.url`http://example.com/posts/${id}`)
+     http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -261,7 +261,7 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-    	http.get(http.url`http://example.com/posts/${id}`)
+     http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -270,7 +270,7 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-    	http.get(http.url`http://example.com/posts/${id}`)
+     http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -279,7 +279,7 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-    	http.get(http.url`http://example.com/posts/${id}`)
+     http.get(http.url`http://example.com/posts/${id}`)
     }
 
     // tags.name="http://example.com/posts/${}",
@@ -291,11 +291,37 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
 ![internal-images/Untitled%2010.png](internal-images/Untitled%2010.png)
 
-### A little note
+### Notes on code blocks
+
+#### Line numbers
 
     '{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'
 
 Line numbers are optional not for the whole code block, but for each tab. That is why here we have an array of `bool`.
+
+#### Text in-between tabs
+
+See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothing in `code-group` except code blocks, or you'll broke the page.
+
+    <div class="code-group" data-props='{"labels": ["Nice code!"], "lineNumbers": [true]}'>
+
+    ```javascript
+    for (var id = 1; id <= 100; id++) {
+     http.get(http.url`http://example.com/posts/${id}`)
+    }
+
+    ```
+
+    Then do this:
+
+    ```javascript
+    for (var id = 1; id <= 100; id++) {
+	http.get(http.url`http://example.com/posts/${id}`)
+    }
+
+    ```
+
+    </div>
 
 ## Table data
 
@@ -325,6 +351,33 @@ Result:
 ```
 
 As you can see, the `LdScript` expects a sole prop `script` of type string of JSON-LD data, which it will render appropriately on its own.
+
+## External Link Card (Blog only)
+
+This is a component that represents a common pattern of external link decoration. Here is how you would use it:
+
+1. Find a place in your article where you'd like to see the card
+2. Write down the following snippet:
+
+```md
+<!-- other content -->
+
+<ExternalCardLink title="Card title" description="Card description" link="https://card-link.com">
+<!-- note empty line -->
+![image](./path/to-image.png)
+<!-- note empty line -->
+</ExternalCardLink>
+
+<!-- other content -->
+```
+
+3. Replace `title`, `description`, `link` and image inside with your data. Note, that `title` and `link` are **required**, while `description` field and image inside are **optional**, though without an image it will look much less appealing.
+
+4. Result will be something like that:
+
+![external-card-result](./internal-images/external-link-card-sample.png)
+
+Currently, this component is absent in k6-docs repo, though could be added anytime the need arises.
 
 ## Custom
 

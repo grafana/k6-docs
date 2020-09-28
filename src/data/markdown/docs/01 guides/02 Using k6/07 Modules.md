@@ -149,7 +149,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: [(login: './src/login.test.js'), (signup: './src/signup.test.js')],
+  entry: {
+    login: './src/login.test.js',
+    signup: './src/signup.test.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'commonjs',

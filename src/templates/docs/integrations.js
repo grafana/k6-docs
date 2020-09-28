@@ -17,6 +17,8 @@ import { StickyContainer, Sticky } from 'react-sticky';
 // icons
 import Azure from 'svg/azure.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
+import CloudWatch from 'svg/cloudwatch.inline.svg';
+import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
@@ -34,6 +36,11 @@ import { blog, main } from 'utils/urls';
 
 const iconsDataSet1 = [
   {
+    Icon: CloudWatch,
+    name: 'Amazon CloudWatch',
+    to: '/results-visualization/amazon-cloudwatch',
+  },
+  {
     Icon: Kafka,
     name: 'Apache Kafka',
     to: '/results-visualization/apache-kafka',
@@ -42,6 +49,11 @@ const iconsDataSet1 = [
     Icon: Loadimpact,
     name: 'Cloud',
     to: '/results-visualization/cloud',
+  },
+  {
+    Icon: CSV,
+    name: 'CSV',
+    to: '/results-visualization/csv',
   },
   {
     Icon: Datadog,
@@ -67,14 +79,14 @@ const iconsDataSet1 = [
     to: '/results-visualization/json',
   },
   {
-    Icon: StatsD,
-    name: 'StatsD',
-    to: '/results-visualization/statsd',
-  },
-  {
     Icon: NewRelic,
     name: 'New Relic',
     to: '/results-visualization/new-relic',
+  },
+  {
+    Icon: StatsD,
+    name: 'StatsD',
+    to: '/results-visualization/statsd',
   },
 ];
 
