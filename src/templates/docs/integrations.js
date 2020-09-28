@@ -36,6 +36,11 @@ import { blog, main } from 'utils/urls';
 
 const iconsDataSet1 = [
   {
+    Icon: CloudWatch,
+    name: 'Amazon CloudWatch',
+    to: '/results-visualization/amazon-cloudwatch',
+  },
+  {
     Icon: Kafka,
     name: 'Apache Kafka',
     to: '/results-visualization/apache-kafka',
@@ -74,19 +79,14 @@ const iconsDataSet1 = [
     to: '/results-visualization/json',
   },
   {
-    Icon: StatsD,
-    name: 'StatsD',
-    to: '/results-visualization/statsd',
-  },
-  {
     Icon: NewRelic,
     name: 'New Relic',
     to: '/results-visualization/new-relic',
   },
   {
-    Icon: CloudWatch,
-    name: 'Amazon CloudWatch',
-    to: '/results-visualization/amazon-cloudwatch',
+    Icon: StatsD,
+    name: 'StatsD',
+    to: '/results-visualization/statsd',
   },
 ];
 
