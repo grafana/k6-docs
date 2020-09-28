@@ -3,12 +3,6 @@ title: 'Ramping VUs'
 excerpt: ''
 ---
 
-> ### 🎉 New in v0.27.0
->
-> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority,
-> existing scripts and configurations will continue to work as before. For a list of breaking changes,
-> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0)).
-
 ## Description
 
 A variable number of VUs execute as many iterations as possible for a specified
@@ -19,11 +13,11 @@ amount of time. This executor is equivalent to the global `stages` option.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option             | Type    | Description                                                                   | Default |
-| ------------------ | ------- | ----------------------------------------------------------------------------- | ------- |
-| `startVUs`         | integer | Number of VUs to run at test start.                                           | `1`     |
-| `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to. | `[]`    |
-| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down.                | `"30s"` |
+| Option             | Type    | Description                                                                                    | Default |
+| ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |
+| `startVUs`         | integer | Number of VUs to run at test start.                                                            | `1`     |
+| `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to.                  | `[]`    |
+| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
 
 ## When to use
 
