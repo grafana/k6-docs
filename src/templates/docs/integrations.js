@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 // components
 import { DocIconsRow } from 'components/pages/doc-integrations/doc-icons-row';
-import styles from 'components/pages/doc-integrations/doc-integrations.module.scss';
 import { ExternalLinksDashboard } from 'components/pages/doc-integrations/external-links-dashboard';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
@@ -15,19 +14,18 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 // icons
+import CloudWatch from 'svg/amazon-cloudwatch.inline.svg';
+import Kafka from 'svg/apache-kafka.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
-import CloudWatch from 'svg/cloudwatch.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
-import Grafana from 'svg/grafana.inline.svg';
-import Influx from 'svg/influx.inline.svg';
+import Grafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
-import Kafka from 'svg/kafka.inline.svg';
-import Loadimpact from 'svg/loadimpact.inline.svg';
+import K6 from 'svg/k6.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
@@ -36,17 +34,17 @@ import { blog, main } from 'utils/urls';
 
 const iconsDataSet1 = [
   {
-    Icon: CloudWatch,
-    name: 'Amazon CloudWatch',
-    to: '/results-visualization/amazon-cloudwatch',
-  },
-  {
     Icon: Kafka,
     name: 'Apache Kafka',
     to: '/results-visualization/apache-kafka',
   },
   {
-    Icon: Loadimpact,
+    Icon: CloudWatch,
+    name: 'Amazon CloudWatch',
+    to: '/results-visualization/amazon-cloudwatch',
+  },
+  {
+    Icon: K6,
     name: 'Cloud',
     to: '/results-visualization/cloud',
   },
@@ -61,17 +59,9 @@ const iconsDataSet1 = [
     to: '/results-visualization/datadog',
   },
   {
-    Icon: () => (
-      <div className={styles.doubleIcon}>
-        <Influx />
-        <span>+</span>
-        <Grafana />
-      </div>
-    ),
-    name: 'InfluxDB +Grafana',
+    Icon: Grafana,
+    name: 'InfluxDB + Grafana',
     to: '/results-visualization/influxdb-+-grafana',
-    // handling non-standard sizes
-    col: 2,
   },
   {
     Icon: Json,
@@ -261,7 +251,6 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               ]}
             />
             <DocIconsRow
-              className={styles.storeRow}
               title={'Result store and visualization'}
               subtitle={
                 'k6 can output its test result data to different sources:'
@@ -289,7 +278,6 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               ]}
             />
             <DocIconsRow
-              className={styles.ciRow}
               title={'Continuous Integration and Continuous Delivery'}
               subtitle={
                 // eslint-disable-next-line max-len
@@ -369,9 +357,9 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
 }
 
 export const IntegrationsResultIconBlock = () => (
-  <DocIconsRow className={styles.storeRow} iconsData={iconsDataSet1} />
+  <DocIconsRow iconsData={iconsDataSet1} />
 );
 
 export const IntegrationsCiIconBlock = () => (
-  <DocIconsRow className={styles.ciRow} iconsData={iconsDataSet2} />
+  <DocIconsRow iconsData={iconsDataSet2} />
 );

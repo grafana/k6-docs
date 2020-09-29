@@ -12,32 +12,48 @@
 .icons-container {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 
 .icon-wrapper {
-  &:not(:last-child) {
-    margin-right: 50px;
-    @include md-down {
-      margin-right: 0;
-    }
+  display: flex;
+  flex: 0 0 33.3333%;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 25px 0;
+  // one-off case
+  @media screen and (max-width: 1360px) {
+    flex: 0 0 50%;
+  }
+  @include lg-down {
+    flex: 0 0 33.333%;
+  }
+  @media screen and (max-width: 900px) {
+    flex: 0 0 50%;
+  }
+  @include xs-down {
+    flex: 1 1 100%;
+    padding: 10px 0;
   }
 }
 
 .icon {
-  width: 70px;
-  flex: 1;
+  width: 60px;
+  margin-right: 10px;
 }
 
 .link {
   text-decoration: none;
   outline: none;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
+  width: 100%;
   p {
-    white-space: nowrap;
     margin: 0;
   }
 }
