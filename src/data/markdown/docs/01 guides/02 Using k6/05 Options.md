@@ -47,7 +47,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
 | [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
 | [Throw](#throw)                                           | A boolean specifying whether to throw errors on failed HTTP requests                |
-| [TLS Authentication](#tls-authentication)                 | A list of TLS client certificate configuration objects                              |
+| [TLS Auth](#tls-auth)                                     | A list of TLS client certificate configuration objects                              |
 | [TLS Cipher Suites](#tls-cipher-suites)                   | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
 | [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
 | [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
@@ -993,7 +993,7 @@ export let options = {
 
 </div>
 
-### TLS Authentication
+### TLS Auth
 
 A list of TLS client certificate configuration objects. Each object needs to specify for
 which host(s)/domain(s) the given client certificate is valid for.
