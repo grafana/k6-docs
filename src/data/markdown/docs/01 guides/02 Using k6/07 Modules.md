@@ -8,6 +8,10 @@ excerpt: ''
 While writing test scripts, it's common to import different modules, or part of modules, for
 usage throughout the script. In k6, it is possible to import three different kinds of modules:
 
+- [Built-in modules](#built-in-modules)
+- [Local filesystem modules](#local-filesystem-modules)
+- [Remote HTTP(S) modules](#remote-http-s-modules)
+
 ### Built-in modules
 
 These modules are provided through the k6 core, and gives access to the functionality built
@@ -26,7 +30,19 @@ with k6, the module itself may only use relative or absolute filesystem imports 
 dependencies.
 
 ```js
-import { someHelper } from './some.helper.js';
+//helpers.js
+export function someHelper() {
+  ...
+}
+```
+
+```js
+//my-test.js
+import { someHelper } from './helpers.js';
+
+export default function () {
+  someHelper();
+}
 ```
 
 ### Remote HTTP(S) modules
@@ -38,14 +54,17 @@ it in a test script**.
 
 ```js
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.0.0/index.js';
+
+export default function () {
+  randomItem();
+}
 ```
 
 ## Bundling node modules
 
 > ### Using the k6-es6 starter
 >
-> A ready-to-use Webpack and Babel starter is available in the [examples section](/examples), or directly
-> [on GitHub](https://github.com/k6io/k6-es6).
+> A ready-to-use Webpack and Babel starter is available [on GitHub](https://github.com/k6io/k6-es6).
 
 In a javascript project running NodeJS, modules are imported using either `import` or `require()`,
 using the node module resolution algorithm. This means that the developer can import modules
@@ -271,29 +290,7 @@ dist
 $ npm run bundle
 # ...
 $ k6 run dist/login.bundle.js
-
-          /\      |‾‾|  /‾‾/  /‾/
-     /\  /  \     |  |_/  /  / /
-    /  \/    \    |      |  /  ‾‾\
-   /          \   |  |‾\  \ | (_) |
-  / __________ \  |__|  \__\ \___/ .io
-
-  execution: local
-     output: -
-     script: dist/login.bundle.js
-
-    duration: -,  iterations: 1
-         vus: 1, max: 1
-
-    done [==========================================================] 1 / 1
-
-    data_received........: 0 B 0 B/s
-    data_sent............: 0 B 0 B/s
-    iteration_duration...: avg=1s min=1s med=1s max=1s p(90)=1s p(95)=1s
-    iterations...........: 1   0.999794/s
-    vus..................: 1   min=1 max=1
-    vus_max..............: 1   min=1 max=1
-
+# ...
 ```
 
 </div>
@@ -306,38 +303,11 @@ $ npm run bundle
 $ k6 run dist/signup.bundle.js \
     --vus 10 \
     --duration 10s
-
-          /\      |‾‾|  /‾‾/  /‾/
-     /\  /  \     |  |_/  /  / /
-    /  \/    \    |      |  /  ‾‾\
-   /          \   |  |‾\  \ | (_) |
-  / __________ \  |__|  \__\ \___/ .io
-
-  execution: local
-     output: -
-     script: dist/signup.bundle.js
-
-    duration: 10s, iterations: -
-         vus: 10,  max: 10
-
-    done [==========================================================] 10s / 10s
-
-    data_received........: 0 B 0 B/s
-    data_sent............: 0 B 0 B/s
-    iteration_duration...: avg=1s min=1s med=1s max=1s p(90)=1s p(95)=1s
-    iterations...........: 90  8.999886/s
-    vus..................: 10  min=10 max=10
-    vus_max..............: 10  min=10 max=10
-
+# ...
 ```
 
 </div>
 
-## The JSLib repository
-
-A repository of libraries that are known to play nicely with k6 is available at https://jslib.k6.io/.
-
-These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports as shown [here](#remote-https-modules).
 
 ## Using local modules with Docker
 
@@ -384,3 +354,19 @@ Note that on Windows, you also need to make sure that your drive in question, sa
 has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
+
+## The JSLib repository
+
+[JSLib](https://jslib.k6.io/) is a set of libraries known to play nicely with k6, and available at https://jslib.k6.io/.
+
+- `k6-utils`
+- `jsonpath`
+- `form-urlencoded`
+- `papaparse`
+
+These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports as shown [here](#remote-http-s-modules).
+
+## See also
+
+- [ES6 template](https://github.com/k6io/template-es6): a scaffolding project to use ES6 in your k6 scripts.
+- [TypeScript template](https://github.com/k6io/template-typescript): a scaffolding project to use TypeScript in your k6 scripts.
