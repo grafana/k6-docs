@@ -33,7 +33,10 @@ git clone git@github.com:loadimpact/k6-docs.git
 cd k6-docs
 npm install
 ```
-
+or you can run install.sh if u are a linux user just goto the current directory and type 
+'''
+bash install.sh
+'''
 Running manually: 
 
 ```bash
