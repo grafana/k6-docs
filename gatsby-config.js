@@ -210,7 +210,7 @@ if (
   });
 }
 
-const enableBanner = true;
+const enableBanner = false;
 if (enableBanner) {
   // https://github.com/loadimpact/new.k6.io/pull/102
   plugins.push({
