@@ -1,3 +1,5 @@
+const path = require('path');
+
 const queries = require('./src/utils/algolia');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -204,6 +206,41 @@ if (
       enablePartialUpdates: true,
       queries,
       chunkSize: 10000, // default: 1000
+    },
+  });
+}
+
+const enableBanner = true;
+if (enableBanner) {
+  // https://github.com/loadimpact/new.k6.io/pull/102
+  plugins.push({
+    resolve: 'gatsby-plugin-announcement-banner',
+    options: {
+      banner: {
+        componentPath: path.join(
+          __dirname,
+          './src/components/shared/announcement-banner/announcement-banner.js',
+        ),
+        text:
+          'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
+        link: 'https://k6.io/docs/using-k6/scenarios',
+        buttonText: 'Learn more',
+        // tags for analytics
+        linkButtonId: '#banner-readmore-button',
+        closeButtonId: '#banner-dissmiss-button',
+      },
+      // settings below have to match
+      // settings in other repos to avoid
+      // upredictable behavior
+      cookie: {
+        name: 'k6-announcement-banner-is-hidden',
+        expiration: {
+          days: 3,
+        },
+      },
+      storage: {
+        name: 'k6-ab-was-shown',
+      },
     },
   });
 }
