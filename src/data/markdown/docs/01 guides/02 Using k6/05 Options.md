@@ -7,52 +7,52 @@ Options allow you to configure how k6 will behave during test execution.
 
 ## List of Options
 
-| Option                                                    | Description                                                                         |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
-| [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
-| [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
-| [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
-| [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
-| [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
-| [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
-| [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
-| [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
-| [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
-| [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
-| [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
-| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
-| [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
-| [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
-| [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
-| [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
-| [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
-| [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
-| [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
-| [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
-| [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
-| [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
-| [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
-| [Results Output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
-| [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
-| [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
-| [Skip TLS Verification](#skip-tls-verification)           | A boolean specifying whether should ignore TLS verifications                        |
-| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down          |
-| [Summary export](#summary-export)                         | Output the end-of-test summary report to a JSON file                                |
-| [Supply Env Var](#supply-env-var)                         | Add/override environment variable with VAR=value                                    |
-| [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
-| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
-| [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
-| [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
-| [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
-| [Throw](#throw)                                           | A boolean specifying whether to throw errors on failed HTTP requests                |
-| [TLS Auth](#tls-auth)                                     | A list of TLS client certificate configuration objects                              |
-| [TLS Cipher Suites](#tls-cipher-suites)                   | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
-| [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
-| [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
-| [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [VUs Max](#vus-max)                                       | A number specifying max number of virtual users                                     |
+| Option                                                          | Description                                                                         |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Batch](#batch)                                                 | Max number of simultaneous connections of a `http.batch()` call                     |
+| [Batch per host](#batch-per-host)                               | Max number of simultaneous connections of a `http.batch()` call for a host          |
+| [Blacklist IPs](#blacklist-ips)                                 | Blacklist IP ranges from being called                                               |
+| [Compatibility Mode](#compatibility-mode)                       | Support running scripts with different ECMAScript modes                             |
+| [Config](#config)                                               | Specify the config file in JSON format to read the options values                   |
+| [Discard Response Bodies](#discard-response-bodies)             | Specify if response bodies should be discarded                                      |
+| [Duration](#duration)                                           | A string specifying the total duration a test run should be run for                 |
+| [Execution Segment](#execution-segment)                         | Limit execution to a segment of the total test                                      |
+| [Extension Options](#extension-options)                         | An object used to set configuration options for third-party collectors              |
+| [Hosts](#hosts)                                                 | An object with overrides to DNS resolution                                          |
+| [HTTP Debug](#http-debug)                                       | Log all HTTP requests and responses                                                 |
+| [Include System Env Vars](#include-system-env-vars)             | Pass the real system environment variables to the runtime                           |
+| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)           | A boolean specifying whether should ignore TLS verifications                        |
+| [Iterations](#iterations)                                       | A number specifying a fixed number of iterations to execute of the script           |
+| [Linger](#linger)                                               | A boolean specifying whether k6 should linger around after test run completion      |
+| [Log Output](#log-output)                                       | Configuration about where logs from k6 should be send                               |
+| [LogFormat](#logformat)                                         | Specify the format of the log output                                                |
+| [Max Redirects](#max-redirects)                                 | The maximum number of HTTP redirects that k6 will follow                            |
+| [Minimum Iteration Duration](#minimum-iteration-duration)       | Specify the minimum duration for every single execution                             |
+| [No Connection Reuse](#no-connection-reuse)                     | A boolean specifying whether k6 should disable keep-alive connections               |
+| [No Cookies Reset](#no-cookies-reset)                           | This disables resetting the cookie jar after each VU iteration                      |
+| [No Thresholds](#no-thresholds)                                 | Disables threshold execution                                                        |
+| [No Usage Report](#no-usage-report)                             | A boolean specifying whether k6 should send a usage report                          |
+| [No VU Connection Reuse](#no-vu-connection-reuse)               | A boolean specifying whether k6 should reuse TCP connections                        |
+| [Paused](#paused)                                               | A boolean specifying whether the test should start in a paused state                |
+| [Results Output](#results-output)                               | Specify the results output                                                          |
+| [RPS](#rps)                                                     | The maximum number of requests to make per second                                   |
+| [Scenarios](#scenarios)                                         | Define advanced execution scenarios                                                 |
+| [Setup Timeout](#setup-timeout)                                 | Specify how long the `setup()` function is allow to run before it's terminated      |
+| [Stages](#stages)                                               | A list of objects that specify the target number of VUs to ramp up or down          |
+| [Summary export](#summary-export)                               | Output the end-of-test summary report to a JSON file                                |
+| [Supply Env Var](#supply-env-var)                               | Add/override environment variable with VAR=value                                    |
+| [System Tags](#system-tags)                                     | Specify which System Tags will be in the collected metrics                          |
+| [Summary Trend Stats](#summary-trend-stats)                     | Define stats for trend metrics                                                      |
+| [Tags](#tags)                                                   | Specify tags that should be set test wide across all metrics                        |
+| [Teardown Timeout](#teardown-timeout)                           | Specify how long the teardown() function is allowed to run before it's terminated   |
+| [Thresholds](#thresholds)                                       | Configure under what conditions a test is successful or not                         |
+| [Throw](#throw)                                                 | A boolean specifying whether to throw errors on failed HTTP requests                |
+| [TLS Auth](#tls-auth)                                           | A list of TLS client certificate configuration objects                              |
+| [TLS Cipher Suites](#tls-cipher-suites)                         | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
+| [TLS Version](#tls-version)                                     | String or object representing the only SSL/TLS version allowed                      |
+| [User Agent](#user-agent)                                       | A string specifying the User-Agent header when sending HTTP requests                |
+| [VUs](#vus)                                                     | A number specifying the number of VUs to run concurrently                           |
+| [VUs Max](#vus-max)                                             | A number specifying max number of virtual users                                     |
 
 ## Using Options
 
@@ -401,6 +401,26 @@ commands.
 
 ```shell
 $ k6 run --include-system-env-vars ~/script.js
+```
+
+</div>
+
+### Insecure Skip TLS Verify
+
+A boolean, true or false. When this option is enabled (set to true), all of the verifications that
+would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
+Available in `k6 run` and `k6 cloud` commands
+
+| Env                           | CLI                          | Code / Config file      | Default |
+| ----------------------------- | ---------------------------- | ----------------------- | ------- |
+| `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` | `false` |
+
+<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+
+```js
+export let options = {
+  insecureSkipTLSVerify: true,
+};
 ```
 
 </div>
@@ -763,26 +783,6 @@ Specify how long the `setup()` function is allow to run before it's terminated a
 ```js
 export let options = {
   setupTimeout: '30s',
-};
-```
-
-</div>
-
-### Skip TLS Verification
-
-A boolean, true or false. When this option is enabled (set to true), all of the verifications that
-would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
-Available in `k6 run` and `k6 cloud` commands
-
-| Env                           | CLI                          | Code / Config file      | Default |
-| ----------------------------- | ---------------------------- | ----------------------- | ------- |
-| `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` | `false` |
-
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
-
-```js
-export let options = {
-  insecureSkipTLSVerify: true,
 };
 ```
 
