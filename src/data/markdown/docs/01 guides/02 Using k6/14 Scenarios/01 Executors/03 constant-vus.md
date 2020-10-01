@@ -13,10 +13,10 @@ of time. This executor is equivalent to the global `vus` and `duration` options.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option     | Type    | Description                                         | Default |
-| ---------- | ------- | --------------------------------------------------- | ------- |
-| `vus`      | integer | Number of VUs to run concurrently.                  | `1`     |
-| `duration` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
+| Option       | Type    | Description                                                     | Default |
+| ------------ | ------- | --------------------------------------------------------------- | ------- |
+| `duration*` | string  | Total scenario duration (excluding `gracefulStop`).    | -       |
+| `vus`        | integer | Number of VUs to run concurrently.                              | `1`     |
 
 ## When to use
 

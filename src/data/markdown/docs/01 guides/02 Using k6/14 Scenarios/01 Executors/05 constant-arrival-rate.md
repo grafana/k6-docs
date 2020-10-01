@@ -19,13 +19,13 @@ See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option            | Type    | Description                                                                             | Default |
-| ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
-| `rate`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
-| `timeUnit`        | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| `duration`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
-| `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
-| `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| Option              | Type    | Description                                                                               | Default |
+| ------------------- | ------- | ----------------------------------------------------------------------------------------- | ------- |
+| `duration*`        | string  | Total scenario duration (excluding `gracefulStop`).                                       | -       |
+| `rate*`            | integer | Number of iterations to execute each `timeUnit` period.                                   | -       |
+| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources.   | -       |
+| `timeUnit`          | string  | Period of time to apply the `rate` value.                                                 | `"1s"`  |
+| `maxVUs`            | integer | Maximum number of VUs to allow during the test run.                                       | -       |
 
 ## When to use
 

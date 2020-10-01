@@ -18,10 +18,10 @@ also adds the following options:
 
 | Option            | Type    | Description                                                                             | Default |
 | ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
+| `stages*`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
+| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `startRate`       | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
 | `timeUnit`        | string  | Period of time to apply the `startRate` the `stages` `target` value.                    | `"1s"`  |
-| `stages`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
-| `preAllocatedVUs` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
 | `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 ## When to use

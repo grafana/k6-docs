@@ -22,9 +22,9 @@ also adds the following options:
 
 | Option     | Type    | Description                                         | Default |
 | ---------- | ------- | --------------------------------------------------- | ------- |
+| `duration*` | string  | Total test duration.                                | -       |
 | `vus`      | integer | Number of VUs to run concurrently.                  | -       |
 | `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
-| `duration` | string  | Total test duration.                                | -       |
 
 ## When to use
 

@@ -13,11 +13,11 @@ amount of time. This executor is equivalent to the global `stages` option.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option             | Type    | Description                                                                                    | Default |
-| ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |
-| `startVUs`         | integer | Number of VUs to run at test start.                                                            | `1`     |
-| `stages`           | array   | Array of objects that specify the target number of VUs to ramp up or down to.                  | `[]`    |
-| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
+| Option               | Type    | Description                                                                                    | Default |
+| -------------------- | ------- | ---------------------------------------------------------------------------------------------- | ------- |
+| `stages*`           | array   | Array of objects that specify the target number of VUs to ramp up or down to.                   | `[]`    |
+| `startVUs`           | integer | Number of VUs to run at test start.                                                            | `1`     |
+| `gracefulRampDown`   | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
 
 ## When to use
 
