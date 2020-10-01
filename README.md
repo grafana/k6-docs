@@ -1,6 +1,6 @@
 # k6 Documentation
 
-This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
+This repository contains the source code of the [k6 documentation](https://k6.io/docs/).
 
 ## Install and run in Docker
 
