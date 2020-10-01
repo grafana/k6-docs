@@ -227,7 +227,7 @@ if (enableBanner) {
         buttonText: 'Learn more',
         // tags for analytics
         linkButtonId: '#banner-readmore-button',
-        closeButtonId: '#banner-dissmiss-button',
+        closeButtonId: '#banner-dismiss-button',
       },
       // settings below have to match
       // settings in other repos to avoid
@@ -235,7 +235,7 @@ if (enableBanner) {
       cookie: {
         name: 'k6-announcement-banner-is-hidden',
         expiration: {
-          days: 3,
+          days: 60,
         },
       },
       storage: {
