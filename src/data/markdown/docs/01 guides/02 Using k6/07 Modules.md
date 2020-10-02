@@ -81,7 +81,7 @@ would be automatically resolved by the node resolution algorithm by searching:
 - Any `node_modules` folder in a parent directory, up to the closest `package.json` file.
 
 As the implementation of `import` in k6 lacks support for the node module resolution algorithm,
-node modules that resolve external dependencies will first needto be transformed into a self-contained,
+node modules that resolve external dependencies will first need to be transformed into a self-contained,
 isolated, bundle.
 
 This is done with the help of a bundling tool, like Webpack, which analyses the test script,
