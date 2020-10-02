@@ -8,6 +8,10 @@ excerpt: ''
 While writing test scripts, it's common to import different modules, or part of modules, for
 usage throughout the script. In k6, it is possible to import three different kinds of modules:
 
+- [Built-in modules](#built-in-modules)
+- [Local filesystem modules](#local-filesystem-modules)
+- [Remote HTTP(S) modules](#remote-http-s-modules)
+
 ### Built-in modules
 
 These modules are provided through the k6 core, and gives access to the functionality built
@@ -26,7 +30,19 @@ with k6, the module itself may only use relative or absolute filesystem imports 
 dependencies.
 
 ```js
-import { someHelper } from './some.helper.js';
+//helpers.js
+export function someHelper() {
+  ...
+}
+```
+
+```js
+//my-test.js
+import { someHelper } from './helpers.js';
+
+export default function () {
+  someHelper();
+}
 ```
 
 ### Remote HTTP(S) modules
@@ -38,14 +54,32 @@ it in a test script**.
 
 ```js
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.0.0/index.js';
+
+export default function () {
+  randomItem();
+}
 ```
+
+### The JSLib repository
+
+**JSLib** is a set of libraries known to play nicely with k6, and available at https://jslib.k6.io/.
+
+These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports as shown above.
 
 ## Bundling node modules
 
+The steps of this tutorial are as follows:
+
+- [Setting up the bundler](#setting-up-the-bundler)
+  - [Installing packages](#installing-packages)
+  - [Configuring Webpack](#configuring-webpack)
+  - [Adding a bundle command](#adding-a-bundle-command)
+- [Running the bundling](#running-the-bundling)
+- [Running the tests](#running-the-tests)
+
 > ### Using the k6-es6 starter
 >
-> A ready-to-use Webpack and Babel starter is available in the [examples section](/examples), or directly
-> [on GitHub](https://github.com/k6io/k6-es6).
+> A ready-to-use Webpack and Babel starter is available [on GitHub](https://github.com/k6io/k6-es6).
 
 In a javascript project running NodeJS, modules are imported using either `import` or `require()`,
 using the node module resolution algorithm. This means that the developer can import modules
@@ -62,7 +96,7 @@ would be automatically resolved by the node resolution algorithm by searching:
 - Any `node_modules` folder in a parent directory, up to the closest `package.json` file.
 
 As the implementation of `import` in k6 lacks support for the node module resolution algorithm,
-node modules that resolve external dependencies will first needto be transformed into a self-contained,
+node modules that resolve external dependencies will first need to be transformed into a self-contained,
 isolated, bundle.
 
 This is done with the help of a bundling tool, like Webpack, which analyses the test script,
@@ -72,7 +106,7 @@ everything necessary to run the script.
 If the test script has no external dependencies, already has them vendored in a k6 compatible way,
 or only uses ES5.1+ features, using a bundler will not be necessary.
 
-### Picking a bundler
+**Picking a bundler**
 
 It is possible to use any bundler that supports transpilation. Popular ones include, but are not
 limited to, [webpack](https://github.com/webpack/webpack),
@@ -83,7 +117,7 @@ Due to its flexibility, ease of use, relatively low resource consumption, and kn
 with k6, it is recommended to use [webpack](https://github.com/webpack/webpack) unless you have a
 specific reason to choose something else.
 
-### Things to consider
+**Things to consider**
 
 In general, all external modules added to a test project have a negative impact on performance, as they further increase the memory footprint and CPU usage.
 
@@ -93,7 +127,8 @@ By running code requiring additional features on top of ES5.1, we also need addi
 
 When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compability mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 
-## Setting up the bundler
+
+### Setting up the bundler
 
 Setting up a Babel and Webpack project from scratch might sound like a big undertaking, but
 is usually accomplished within minutes. Start by creating a project folder and initializing
@@ -109,7 +144,7 @@ $ mkdir ./example-project && \
 
 </div>
 
-### Installing packages
+<h4 id="installing-packages">Installing packages</h4>
 
 Then, install the packages needed:
 
@@ -138,7 +173,7 @@ $ npm install --save-dev \
 | [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |
 | [core-js](https://github.com/zloirock/core-js)                                            | A modular standard library for JS including polyfills                                                                                                                                                                                                                 |
 
-### Configuring Webpack
+<h4 id="configuring-webpack">Configuring Webpack</h4>
 
 Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
 
@@ -168,12 +203,12 @@ module.exports = {
 
 </div>
 
-**Mode**
+`Mode`
 
 Tells Webpack to automatically use the optimizations associated with the `mode`.
 Additional details available in [the webpack docs](https://webpack.js.org/configuration/mode/).
 
-**Entry**
+`Entry`
 
 The files Webpack will use as its entry points while performing the bundling. From these points,
 Webpack will automatically traverse all imports recursively until every possible dependency path has
@@ -212,7 +247,7 @@ export class SomeService {
 would result in Webpack bundling `login.test.js`, `some.service.js` and all upstream dependencies
 utilized by `lodash`.
 
-**Output**
+`Output`
 
 The `path` key takes an absolute path which is where the finished bundle will be placed. In
 this example, `path.resolve` is used to concatenate `__dirname` and `'dist'` into an absolute
@@ -226,7 +261,7 @@ The `filename` key, as the name suggests, configures the name of the finished bu
 example, the [template string](https://webpack.js.org/configuration/output/#template-strings) `[name]`
 is used to add a dynamic part to the output filename.
 
-### Adding a bundle command
+<h4 id="adding-a-bundle-command">Adding a bundle command</h4>
 
 Open the `package.json` file and add a new script entry, used for running the bundling process.
 
@@ -243,7 +278,7 @@ Open the `package.json` file and add a new script entry, used for running the bu
 }
 ```
 
-## Running the bundling
+### Running the bundling
 
 Running webpack will now output two different test bundles, that may be executed independently:
 
@@ -263,7 +298,7 @@ dist
 
 </div>
 
-## Running the tests
+### Running the tests
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
 
@@ -271,29 +306,7 @@ dist
 $ npm run bundle
 # ...
 $ k6 run dist/login.bundle.js
-
-          /\      |‾‾|  /‾‾/  /‾/
-     /\  /  \     |  |_/  /  / /
-    /  \/    \    |      |  /  ‾‾\
-   /          \   |  |‾\  \ | (_) |
-  / __________ \  |__|  \__\ \___/ .io
-
-  execution: local
-     output: -
-     script: dist/login.bundle.js
-
-    duration: -,  iterations: 1
-         vus: 1, max: 1
-
-    done [==========================================================] 1 / 1
-
-    data_received........: 0 B 0 B/s
-    data_sent............: 0 B 0 B/s
-    iteration_duration...: avg=1s min=1s med=1s max=1s p(90)=1s p(95)=1s
-    iterations...........: 1   0.999794/s
-    vus..................: 1   min=1 max=1
-    vus_max..............: 1   min=1 max=1
-
+# ...
 ```
 
 </div>
@@ -306,38 +319,11 @@ $ npm run bundle
 $ k6 run dist/signup.bundle.js \
     --vus 10 \
     --duration 10s
-
-          /\      |‾‾|  /‾‾/  /‾/
-     /\  /  \     |  |_/  /  / /
-    /  \/    \    |      |  /  ‾‾\
-   /          \   |  |‾\  \ | (_) |
-  / __________ \  |__|  \__\ \___/ .io
-
-  execution: local
-     output: -
-     script: dist/signup.bundle.js
-
-    duration: 10s, iterations: -
-         vus: 10,  max: 10
-
-    done [==========================================================] 10s / 10s
-
-    data_received........: 0 B 0 B/s
-    data_sent............: 0 B 0 B/s
-    iteration_duration...: avg=1s min=1s med=1s max=1s p(90)=1s p(95)=1s
-    iterations...........: 90  8.999886/s
-    vus..................: 10  min=10 max=10
-    vus_max..............: 10  min=10 max=10
-
+# ...
 ```
 
 </div>
 
-## The JSLib repository
-
-A repository of libraries that are known to play nicely with k6 is available at https://jslib.k6.io/.
-
-These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports as shown [here](#remote-https-modules).
 
 ## Using local modules with Docker
 
@@ -384,3 +370,9 @@ Note that on Windows, you also need to make sure that your drive in question, sa
 has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
+
+
+## See also
+
+- [ES6 template](https://github.com/k6io/template-es6): a scaffolding project to use ES6 in your k6 scripts.
+- [TypeScript template](https://github.com/k6io/template-typescript): a scaffolding project to use TypeScript in your k6 scripts.
