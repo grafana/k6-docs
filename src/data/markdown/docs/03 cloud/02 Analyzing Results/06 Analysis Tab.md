@@ -17,7 +17,7 @@ Other things you can do on this tab:
 - View metrics you added from previous tabs. They will show up below the main chart.
   - You may also change aggregation of these metrics in this tab or filter on tags
 - Add small charts to the larger chart by clicking on the "+" in the top right corner of the small charts
-- Add additional metrics to the small chart area by clickin `ADD NEW METRIC` in the small chart area
+- Add additional metrics to the small chart area by clicking `ADD NEW METRIC` in the small chart area
 
 ![Analysis Tab](/images/06-Analysis-Tab/analysis-tab.png)
 

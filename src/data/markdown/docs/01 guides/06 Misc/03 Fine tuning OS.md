@@ -29,7 +29,7 @@ Below we will look at ways to increase this resource limit, and allow k6 to run 
 
 **Limit types**
 
-There are two types of resource limits in Unix systems:
+Unix systems have two types of resource limits:
 
 - hard limits: these are the absolute maximum allowed for each user, and can only be configured by the root user.
 - soft limits: these can be configured by each user, but cannot be above the hard limit setting.

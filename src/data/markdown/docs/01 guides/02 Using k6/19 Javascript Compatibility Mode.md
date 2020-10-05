@@ -32,7 +32,7 @@ transformation outside of k6.
 > ### ⚠️ Disclaimer
 >
 > Your mileage may vary while running `--compatibility-mode=base` and also importing external dependencies. For instance,
-> `xml2js` and `cheerio` currently dont work, while `lodash` does.
+> `xml2js` and `cheerio` currently do not work, while `lodash` does.
 
 ### Basic Example
 

@@ -1,14 +1,14 @@
 ---
-title: "Data Uploads"
-excerpt: "Scripting examples on how to execute a load test that will upload a file to the System Under Test(SUT)."
+title: 'Data Uploads'
+excerpt: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test(SUT).'
 ---
 
 Example to execute a load test that will upload a file to the System Under Test(SUT).
 
 ## The open() function
 
-There is a builtin function, [`open()`](/javascript-api/init-context/open-filepath-mode),
-that given a file or a URL will return its contents.
+Using the built-in function, [`open()`](/javascript-api/init-context/open-filepath-mode),
+we are able to read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
 
@@ -25,11 +25,9 @@ Below is a simple example showing how to load the contents of a local file `data
 <div class="code-group" data-props='{"labels": ["Loading a local JSON file using open()"], "lineNumbers": [true]}'>
 
 ```js
-const data = JSON.parse(
-  open("./data.json")
-);
+const data = JSON.parse(open('./data.json'));
 
-export default function() {
+export default function () {
   console.log(data.my_key);
 }
 ```
@@ -59,18 +57,18 @@ below):
 <div class="code-group" data-props='{"labels": ["POST upload example"], "lineNumbers": [true]}'>
 
 ```js
-import http from "k6/http";
-import { sleep } from "k6";
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-let binFile = open("/path/to/file.bin", "b");
+let binFile = open('/path/to/file.bin', 'b');
 
-export default function() {
+export default function () {
   var data = {
-    field: "this is a standard form field",
-    file: http.file(binFile, "test.bin")
+    field: 'this is a standard form field',
+    file: http.file(binFile, 'test.bin'),
   };
 
-  var res = http.post("https://example.com/upload", data);
+  var res = http.post('https://example.com/upload', data);
   sleep(3);
 }
 ```
@@ -84,8 +82,7 @@ or any of the other HTTP request functions, where one of the property values is 
 [FileData](/javascript-api/k6-http/filedata) a multipart request will be constructed
 and sent.
 
-
 ### Relevant k6 APIs
+
 - [open(filePath, [mode])](/javascript-api/init-context/open-filepath-mode)
 - [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file-data-filename-contenttype)
-

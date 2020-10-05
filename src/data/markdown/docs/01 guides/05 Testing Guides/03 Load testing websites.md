@@ -21,7 +21,7 @@ Frontend performance focuses on browser metrics like rendering time, interactive
 
 Backend performance, on the other hand, focuses mostly on the server response time and the amount of returned errors.
 
-Which one is more important? There is no one true answer to this question. In general terms, the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states:
+Which one is more important? It depends! In general terms, the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states:
 
 > 80-90% of the end-user response time is spent on the frontend.
 
@@ -71,7 +71,7 @@ You start small by testing, evaluating, and iterating frequently.
 >
 > [Simple testing is better than no testing](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
 
-The first thing is to decide what to load test. On the one hand, you could test your **critical services**, the most valuable to your business, and have the most significant risks. On the other hand,  test the most **frequent user journeys**.
+The first thing is to decide what to load test. On the one hand, you could test your **critical services**, the most valuable to your business, and have the most significant risks. On the other hand, test the most **frequent user journeys**.
 
 With this information, it’s time to analyze the frequency of usage, business value, performance risks, and any other critical performance aspect of your organization to help you deciding what to load test first.
 

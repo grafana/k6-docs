@@ -1,6 +1,6 @@
 ---
-title: "WebSockets"
-excerpt: ""
+title: 'WebSockets'
+excerpt: ''
 ---
 
 ## Overview
@@ -9,27 +9,27 @@ excerpt: ""
 
 ## Load testing WebSockets with k6
 
-There are some differences in the structure and inner workings of a test when comparing HTTP based to WebSocket based ones. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over an over, each VU is now setup to run an asynchronous event loop.
+Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over an over, each VU is now setup to run an asynchronous event loop.
 
 The basic structure of a WebSocket test looks like this:
 
 <div class="code-group" data-props='{"labels": ["Basic structure of WebSocket-based tests"], "lineNumbers": [true]}'>
 
 ```javascript
-import ws from "k6/ws";
-import { check } from "k6";
+import ws from 'k6/ws';
+import { check } from 'k6';
 
-export default function() {
-  const url = "ws://echo.websocket.org";
-  const params = { tags: { my_tag: "hello" } };
+export default function () {
+  const url = 'ws://echo.websocket.org';
+  const params = { tags: { my_tag: 'hello' } };
 
-  const res = ws.connect(url, params, function(socket) {
-    socket.on("open", () => console.log("connected"));
-    socket.on("message", data => console.log("Message received: ", data));
-    socket.on("close", () => console.log("disconnected"));
+  const res = ws.connect(url, params, function (socket) {
+    socket.on('open', () => console.log('connected'));
+    socket.on('message', (data) => console.log('Message received: ', data));
+    socket.on('close', () => console.log('disconnected'));
   });
 
-  check(res, { "status is 101": r => r && r.status === 101 });
+  check(res, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
 
@@ -78,34 +78,33 @@ If you want to schedule a recurring action you can use the [socket.setInterval](
 <div class="code-group" data-props='{"labels": ["Timers in WebSocket tests"], "lineNumbers": [true]}'>
 
 ```javascript
-import ws from "k6/ws";
-import { check } from "k6";
+import ws from 'k6/ws';
+import { check } from 'k6';
 
-export default function() {
-  const url = "ws://echo.websocket.org";
-  const params = { tags: { my_tag: "hello" } };
+export default function () {
+  const url = 'ws://echo.websocket.org';
+  const params = { tags: { my_tag: 'hello' } };
 
-  const res = ws.connect(url, params, function(socket) {
-    socket.on("open", function open() {
-      console.log("connected");
+  const res = ws.connect(url, params, function (socket) {
+    socket.on('open', function open() {
+      console.log('connected');
 
       socket.setInterval(function timeout() {
         socket.ping();
-        console.log("Pinging every 1sec (setInterval test)");
+        console.log('Pinging every 1sec (setInterval test)');
       }, 1000);
     });
 
-    socket.on("ping", () => console.log("PING!"));
-    socket.on("pong", () => console.log("PONG!"));
-    socket.on("close", () => console.log("disconnected"));
+    socket.on('ping', () => console.log('PING!'));
+    socket.on('pong', () => console.log('PONG!'));
+    socket.on('close', () => console.log('disconnected'));
   });
 
-  check(res, { "status is 101": r => r && r.status === 101 });
+  check(res, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
 
 </div>
-
 
 ## Timeouts
 
@@ -115,24 +114,24 @@ timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws
 <div class="code-group" data-props='{"labels": ["Timeouts in WebSocket tests"], "lineNumbers": [true]}'>
 
 ```javascript
-import ws from "k6/ws";
-import { check } from "k6";
+import ws from 'k6/ws';
+import { check } from 'k6';
 
-export default function() {
-  const url = "ws://echo.websocket.org";
-  const params = { tags: { my_tag: "hello" } };
+export default function () {
+  const url = 'ws://echo.websocket.org';
+  const params = { tags: { my_tag: 'hello' } };
 
-  const res = ws.connect(url, params, function(socket) {
-    socket.on("open", () => console.log("connected"));
-    socket.on("close", () => console.log("disconnected"));
+  const res = ws.connect(url, params, function (socket) {
+    socket.on('open', () => console.log('connected'));
+    socket.on('close', () => console.log('disconnected'));
 
-    socket.setTimeout(function() {
-      console.log("2 seconds passed, closing the socket");
+    socket.setTimeout(function () {
+      console.log('2 seconds passed, closing the socket');
       socket.close();
     }, 2000);
   });
 
-  check(res, { "status is 101": r => r && r.status === 101 });
+  check(res, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
 
@@ -147,46 +146,46 @@ You can attach multiple handler functions to an event as the code below illustra
 <div class="code-group" data-props='{"labels": ["Multiple event handlers in WebSocket tests"], "lineNumbers": [true]}'>
 
 ```javascript
-import ws from "k6/ws";
-import { check } from "k6";
+import ws from 'k6/ws';
+import { check } from 'k6';
 
-export default function() {
-  const url = "ws://echo.websocket.org";
-  const params = { tags: { my_tag: "hello" } };
+export default function () {
+  const url = 'ws://echo.websocket.org';
+  const params = { tags: { my_tag: 'hello' } };
 
-  const response = ws.connect(url, params, function(socket) {
-    socket.on("open", function open() {
-      console.log("connected");
+  const response = ws.connect(url, params, function (socket) {
+    socket.on('open', function open() {
+      console.log('connected');
       socket.send(Date.now());
 
       socket.setInterval(function timeout() {
         socket.ping();
-        console.log("Pinging every 1sec (setInterval test)");
+        console.log('Pinging every 1sec (setInterval test)');
       }, 1000);
     });
 
-    socket.on("ping", () => console.log("PING!"));
-    socket.on("pong", () => console.log("PONG!"));
-    socket.on("pong", () => {
+    socket.on('ping', () => console.log('PING!'));
+    socket.on('pong', () => console.log('PONG!'));
+    socket.on('pong', () => {
       // Multiple event handlers on the same event
-      console.log("OTHER PONG!");
+      console.log('OTHER PONG!');
     });
 
-    socket.on("close", () => console.log("disconnected"));
+    socket.on('close', () => console.log('disconnected'));
 
-    socket.on("error", (e) => {
-      if (e.error() != "websocket: close sent") {
-        console.log("An unexpected error occured: ", e.error());
+    socket.on('error', (e) => {
+      if (e.error() != 'websocket: close sent') {
+        console.log('An unexpected error occured: ', e.error());
       }
     });
 
-    socket.setTimeout(function() {
-      console.log("2 seconds passed, closing the socket");
+    socket.setTimeout(function () {
+      console.log('2 seconds passed, closing the socket');
       socket.close();
     }, 2000);
   });
 
-  check(response, { "status is 101": r => r && r.status === 101 });
+  check(response, { 'status is 101': (r) => r && r.status === 101 });
 }
 ```
 

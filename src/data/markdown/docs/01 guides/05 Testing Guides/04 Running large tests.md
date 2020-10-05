@@ -47,7 +47,7 @@ If the traffic is constant at 1Gbit/s, your test is probably limited by the netw
 
 ### CPU
 
-Unlike many other load testing tools, k6 is heavily multithreaded. It will effectively use all available CPU cores.
+Unlike many other load testing tools, k6 is heavily multi-threaded. It will effectively use all available CPU cores.
 
 The amount of CPU you need depends on your test files (sometimes called test script).
 Regardless of the test file, you can assume that large tests require a significant amount of CPU power.
@@ -268,7 +268,7 @@ WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72
 
 ### context deadline exceeded
 
-Error like this happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this timeframe, this error will appear.
+Error like this happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
 
 <div class="code-group">
 
@@ -480,7 +480,7 @@ Note: each VU in k6 is completely independent, and therefore it doesn't share an
 
 ## Distributed execution
 
-In load testing, distributed execution refers to running a load test distributed across multiple machines. 
+In load testing, distributed execution refers to running a load test distributed across multiple machines.
 
 Users often look for the distributed execution mode to run large-scale tests. Although we have shown that a single k6 instance can generate enormous load, distributed execution is necessary to:
 
@@ -488,7 +488,6 @@ Users often look for the distributed execution mode to run large-scale tests. Al
 - Scale the load of your test beyond what a single machine can handle.
 
 In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/options#execution-segment) option. For example:
-
 
 <div class="code-group" data-props='{"labels": ["Two machines", "Three machines", "Four machines"]}'>
 
@@ -517,13 +516,11 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
-- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution. 
+- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution.
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
-
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/loadimpact/k6/issues/140) on GitHub.
-
 
 ## Large-scale tests in k6 Cloud
 
@@ -532,7 +529,6 @@ Building a load testing infrastructure to support running large-scale distribute
 [k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running this type of testing. Amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me), our cloud platform will prevent your engineering team from building and maintaining the software and infrastructure of your load testing solution.
 
 Rolling your own or buying a load testing solution is a decision to consider that depends on your project, the type of testing, your team's expertise, organization's aspects, etc. If you aren't sure which solution is a better fit for your project, reach us on the [Community Forum](https://community.k6.io/) or to the [Cloud Support team](https://k6.io/contact) to help you with your questions.
-
 
 ## See also
 

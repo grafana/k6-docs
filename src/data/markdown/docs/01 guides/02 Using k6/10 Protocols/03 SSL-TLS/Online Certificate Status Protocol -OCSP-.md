@@ -1,6 +1,6 @@
 ---
-title: "Online Certificate Status Protocol (OCSP)"
-excerpt: ""
+title: 'Online Certificate Status Protocol (OCSP)'
+excerpt: ''
 ---
 
 ## What is OCSP?
@@ -9,7 +9,7 @@ Online Certificate Status Protocol (OCSP) is a protocol that web browsers and cl
 to check the status of an issued TLS certificate with a Certificate Authority (CA), making sure
 it has not been revoked for whatever purpose.
 
-There are different ways in which this can be done, by putting the burden on different parties:
+This can be done in different ways, putting the burden on different parties:
 
 - The browser/client: talk to the CA (or by CA entrusted OCSP responder) with OCSP. One downside
   with this approach is that the CA's servers need to be available which might not always be the case.
@@ -30,13 +30,13 @@ property of the response object.
 <div class="code-group" data-props='{"labels": ["OCSP stapled response properties example"], "lineNumbers": [true]}'>
 
 ```javascript
-import http from "k6/http";
-import { check } from "k6";
+import http from 'k6/http';
+import { check } from 'k6';
 
-export default function() {
-  let res = http.get("https://stackoverflow.com");
+export default function () {
+  let res = http.get('https://stackoverflow.com');
   check(res, {
-    "is OCSP response good": r => r.ocsp.status === http.OCSP_STATUS_GOOD
+    'is OCSP response good': (r) => r.ocsp.status === http.OCSP_STATUS_GOOD,
   });
 }
 ```

@@ -118,7 +118,7 @@ does not support this authentication mechanism out of the box, so we'll have to 
 a Node.js library called [awsv4.js](https://github.com/mhart/aws4) and
 [Browserify](http://browserify.org/) (to make it work in k6).
 
-There are a few steps required to make this work:
+For this to work, we first need to do the following:
 
 1. Make sure you have the necessary prerequisites installed: [Node.js](https://nodejs.org/en/download/)
    and [Browserify](http://browserify.org/)

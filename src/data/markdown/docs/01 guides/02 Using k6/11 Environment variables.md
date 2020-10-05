@@ -5,12 +5,11 @@ excerpt: ''
 
 ## k6 and environment variables
 
-There are two ways in which environment variables can be used with k6:
+Environment variables can be used with k6 in two ways:
 
 - You can access any environment variables from your k6 script code, and use this to supply your
   VUs with configuration information.
-- There are also a couple of environment variables that k6 will automatically try to read upon
-  startup, and which will affect its behavior.
+- A couple of environment variables are automatically read by k6 on startup, affecting its behavior.
 
 ## Accessing environment variables from a script
 
@@ -67,10 +66,10 @@ The environment variable could then be used as follows in a script:
 import { check, sleep } from 'k6';
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   var r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
   check(r, {
-    'status is 200': r => r.status === 200,
+    'status is 200': (r) => r.status === 200,
   });
   sleep(5);
 }

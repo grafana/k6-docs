@@ -6,21 +6,22 @@ draft: 'true'
 
 ## List metrics
 
-Returns all metrics within a specified test run. Test run ids can be found from `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint.
+Returns all metrics within a specified test run. The test run ids are available in the `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint.
 
 Note that k6 cloud may store multiple (sub)metrics for each metric generated in the k6 script. For example, when sending an HTTP request within the script, k6 cloud will store `http_req_duration`, `http_req_blocked`, `http_req_connecting` and other metrics for that particular endpoint.
-Also, separate metrics will be created for different HTTP methods and status codes (e.g. same url will produce multiple metrics if k6 detects statuses such as 200, 400 etc).
+Differing HTTP methods and statuses are all grouped as separate metrics. (e.g. same URL produces multiple metrics if k6 detects statuses such as 200, 400 etc).
 
-Some of the fields contained in response are described here:
-* `check_id` - ID of the `check` defined in `k6` script. Checks have their underlying metrics stored in k6 cloud.
-* `group_id` - ID of the `group` this metric belongs to.
-* `contains` - "Unit" for the metrics. Some examples are: `time`, `percent`, `bytes` et.
+Some of the fields contained in the response are:
+
+- `check_id` - ID of the `check` defined in `k6` script. Checks have their underlying metrics stored in k6 cloud.
+- `group_id` - ID of the `group` this metric belongs to.
+- `contains` - "Unit" for the metrics. Some examples are: `time`, `percent`, `bytes` et.
 
 **GET** `/loadtests/v2/metrics?test_run_id={test_run_id}`
 
-| Query Parameter | Type | Description |
-| ----------| ---- | ----------- |
-| test_run_id | integer | Returns metrics associated with a given test_run_id. |
+| Query Parameter | Type    | Description                                          |
+| --------------- | ------- | ---------------------------------------------------- |
+| test_run_id     | integer | Returns metrics associated with a given test_run_id. |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
@@ -35,9 +36,9 @@ Some of the fields contained in response are described here:
       "name": "http_req_duration",
       "project_id": 123,
       "tags": {
-         "method": "GET",
-         "status": "200",
-         "url": "https://test.k6.io"
+        "method": "GET",
+        "status": "200",
+        "url": "https://test.k6.io"
       },
       "test_run_id": 103054,
       "type": "trend",
@@ -49,24 +50,24 @@ Some of the fields contained in response are described here:
 
 </div>
 
-
 ## Read metric
 
 Returns details of a metric with the specified ID.
 
 **GET** `/loadtests/v2/metrics/{id}`
 
+| Path Parameter | Type   | Description                 |
+| -------------- | ------ | --------------------------- |
+| id             | string | Return metric given the id. |
 
-| Path Parameter | Type | Description |
-| ----------| ---- | ----------- |
-| id | string | Return metric given the id. |
+<!-- vale off -->
 
+| Query Parameters | Type    | Description                                                                                      | Example                                                                                       |
+| ---------------- | ------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| test_run_id      | integer | Returns metric associated with a given test_run_id.                                              | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}`                                 |
+| include[]        | string  | Specifies additional information to include in the response. Allowed options: url, group, check. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check&include[]=group` |
 
-| Query Parameters | Type | Description | Example |
-| ----------| ---- | ----------- | ---------- | 
-| test_run_id | integer | Returns metric associated with a given test_run_id. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}` |
-| include[] | string | Specifies additional information to be included in response. Allowed options: url, group, check. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check&include[]=group` |
-
+<!-- vale on -->
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
@@ -103,19 +104,19 @@ Returns details of a metric with the specified ID.
 
 </div>
 
-
 ## Read series data
 
-Returns timeseries data for specified metrics ids within a specified test run id.
-Test run ids can be found from `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint. Metric ids can be found from `id` field in response from List metrics endpoint.
+Returns time series data for specified metrics ids within a specified test run id. Test run ids are
+available in the `test_run_ids` field of a response from `Read Test` or in the `id` field of a response
+from `Start Test Run` endpoint. Metric ids are available in the `id` field of the response from the
+List metrics endpoint.
 
 **GET** `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}`
 
-| Query Parameters | Type | Description | Example |
-| ----------| ---- | ----------- | ---------- | 
-| test_run_id | integer | Specify test run id. | |
-| ids[] | string | Specify metric id(s). | `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}&ids[]={metric_id_2}` |
-
+| Query Parameters | Type    | Description           | Example                                                                                  |
+| ---------------- | ------- | --------------------- | ---------------------------------------------------------------------------------------- |
+| test_run_id      | integer | Specify test run id.  |                                                                                          |
+| ids[]            | string  | Specify metric id(s). | `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}&ids[]={metric_id_2}` |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
@@ -141,60 +142,58 @@ Test run ids can be found from `test_run_ids` field in response from Read Test o
 
 </div>
 
-
 ## List thresholds
 
 Returns all thresholds (and related metrics) for a test run.
 
 **GET** `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}`
 
-| Query Parameter | Type | Description | Example |
-| ----------| ---- | ----------- | ---------- | 
-| test_run_id | integer | Returns thresholds associated with a given test_run_id. | |
-| ids[] | integer | Specify threshold id(s). | `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}&ids[]={threshold_id_2}` |
+| Query Parameter | Type    | Description                                             | Example                                                                                            |
+| --------------- | ------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| test_run_id     | integer | Returns thresholds associated with a given test_run_id. |                                                                                                    |
+| ids[]           | integer | Specify threshold id(s).                                | `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}&ids[]={threshold_id_2}` |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
 ```json
 {
-    "k6-metrics": [
-        {
-            "check_id": null,
-            "contains": "default",
-            "group_id": "3cb67e24358b7c3f1256ff423381c05b",
-            "id": "threshold_166100",
-            "name": "iterations",
-            "project_id": 3458575,
-            "tags": {},
-            "test_run_id": 0,
-            "type": "counter",
-            "url_id": null
-        }
-    ],
-    "k6-thresholds": [
-        {
-            "calc_state": {
-                "max_created_at": "2020-08-18 13:36:41.348933+00:00",
-                "max_time": "2020-08-18 13:36:04+00:00",
-                "min_time": "2020-08-18 13:34:05+00:00",
-                "tainted_value": null
-            },
-            "calculated_value": 22024.0,
-            "id": 166100,
-            "metric_id": "threshold_166100",
-            "name": "threshold_1",
-            "stat": "count",
-            "tainted": false,
-            "tainted_at": null,
-            "testrun_id": 0,
-            "value": 200.0
-        }
-    ]
+  "k6-metrics": [
+    {
+      "check_id": null,
+      "contains": "default",
+      "group_id": "3cb67e24358b7c3f1256ff423381c05b",
+      "id": "threshold_166100",
+      "name": "iterations",
+      "project_id": 3458575,
+      "tags": {},
+      "test_run_id": 0,
+      "type": "counter",
+      "url_id": null
+    }
+  ],
+  "k6-thresholds": [
+    {
+      "calc_state": {
+        "max_created_at": "2020-08-18 13:36:41.348933+00:00",
+        "max_time": "2020-08-18 13:36:04+00:00",
+        "min_time": "2020-08-18 13:34:05+00:00",
+        "tainted_value": null
+      },
+      "calculated_value": 22024.0,
+      "id": 166100,
+      "metric_id": "threshold_166100",
+      "name": "threshold_1",
+      "stat": "count",
+      "tainted": false,
+      "tainted_at": null,
+      "testrun_id": 0,
+      "value": 200.0
+    }
+  ]
 }
 ```
 
 </div>
-
 
 ## Read threshold
 
@@ -202,32 +201,32 @@ Returns details of a threshold with the specified ID.
 
 **GET** `/loadtests/v2/thresholds/{id}?test_run_id={test_run_id}`
 
-| Query Parameter | Type | Description |
-| ----------| ---- | ----------- | ---------- | 
-| test_run_id | integer | ID of the test run. |
-| id | integer | ID of the threshold. |
+| Query Parameter | Type    | Description          |
+| --------------- | ------- | -------------------- |
+| test_run_id     | integer | ID of the test run.  |
+| id              | integer | ID of the threshold. |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
 ```json
 {
-    "k6-threshold": {
-        "calc_state": {
-            "max_created_at": "2020-08-18 13:36:41.348933+00:00",
-            "max_time": "2020-08-18 13:36:04+00:00",
-            "min_time": "2020-08-18 13:34:05+00:00",
-            "tainted_value": null
-        },
-        "calculated_value": 22024.0,
-        "id": 166100,
-        "metric_id": "threshold_166100",
-        "name": "threshold_1",
-        "stat": "count",
-        "tainted": false,
-        "tainted_at": null,
-        "test_run_id": 0,
-        "value": 200.0
-    }
+  "k6-threshold": {
+    "calc_state": {
+      "max_created_at": "2020-08-18 13:36:41.348933+00:00",
+      "max_time": "2020-08-18 13:36:04+00:00",
+      "min_time": "2020-08-18 13:34:05+00:00",
+      "tainted_value": null
+    },
+    "calculated_value": 22024.0,
+    "id": 166100,
+    "metric_id": "threshold_166100",
+    "name": "threshold_1",
+    "stat": "count",
+    "tainted": false,
+    "tainted_at": null,
+    "test_run_id": 0,
+    "value": 200.0
+  }
 }
 ```
 
@@ -235,36 +234,35 @@ Returns details of a threshold with the specified ID.
 
 ## Read test run overview
 
-Returns an overview of the test run whcih includes numbers of URLs, thresholds, checks, etc.
+Returns an overview of the test run which includes numbers of URLs, thresholds, checks, etc.
 
 **GET** `/loadtests/v2/run-overviews?test_run_id={test_run_id}`
 
-| Query Parameter | Type | Description |
-| ----------| ---- | ----------- |
-| test_run_id | integer | A unique integer value identifying this test run. |
-
+| Query Parameter | Type    | Description                                       |
+| --------------- | ------- | ------------------------------------------------- |
+| test_run_id     | integer | A unique integer value identifying this test run. |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
 ```json
 {
-    "k6-run-overviews": [
-        {
-            "checks_hits_successes": 44048,
-            "checks_hits_total": 44048,
-            "checks_successes": 2,
-            "checks_total": 2,
-            "http_req_duration_avg": 21.3739818525472,
-            "http_reqs_avg": 716.2276422764228,
-            "test_run_id": 0,
-            "thresholds_successes": 2,
-            "thresholds_total": 3,
-            "urls_hits_successes": 88096,
-            "urls_hits_total": 88096,
-            "urls_successes": 4,
-            "urls_total": 4
-        }
-    ]
+  "k6-run-overviews": [
+    {
+      "checks_hits_successes": 44048,
+      "checks_hits_total": 44048,
+      "checks_successes": 2,
+      "checks_total": 2,
+      "http_req_duration_avg": 21.3739818525472,
+      "http_reqs_avg": 716.2276422764228,
+      "test_run_id": 0,
+      "thresholds_successes": 2,
+      "thresholds_total": 3,
+      "urls_hits_successes": 88096,
+      "urls_hits_total": 88096,
+      "urls_successes": 4,
+      "urls_total": 4
+    }
+  ]
 }
 ```
 
@@ -276,21 +274,20 @@ Exports metric data for test run in CSV format. URL to the file is available in 
 
 **POST** `/loadtests/v2/runs/{test_run_id}/export`
 
-| Path Parameter | Type | Description |
-| ----------| ---- | ----------- |
-| test_run_id | integer | A unique integer value identifying this test run. |
-
+| Path Parameter | Type    | Description                                       |
+| -------------- | ------- | ------------------------------------------------- |
+| test_run_id    | integer | A unique integer value identifying this test run. |
 
 <div class="code-group" data-props='{"labels": ["Response"]}'>
 
 ```json
 {
-    "exports": [
-        {
-            "export_status": 1,
-            "load_test_run_id": 0
-        }
-    ]
+  "exports": [
+    {
+      "export_status": 1,
+      "load_test_run_id": 0
+    }
+  ]
 }
 ```
 

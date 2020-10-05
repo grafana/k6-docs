@@ -22,7 +22,7 @@ For most intents and purposes k6 will transparently manage the receiving, storag
 cookies as described above, so that testing of your cookie-based web site or app will just work
 without you having to do anything special.
 
-There are however use cases where more control over cookies is desired. In k6 you have two
+In some use cases, you might desire more control over the cookies. In k6 you have two
 options, [either to directly manipulate HTTP headers](/javascript-api/k6-http/params),
 or use the more ergonomic cookie API. We will go through the latter below.
 

@@ -1,11 +1,10 @@
 ---
-title: "Test life cycle"
-excerpt: ""
+title: 'Test life cycle'
+excerpt: ''
 ---
 
-There are four distinct life cycle stages to a k6 test that can be controlled by you, the user.
-They are the "init", "setup", "vu" and "teardown" stages. We also refer to it as "init code",
-"VU code" etc. in the documentation.
+The four distinct life cycle stages in a k6 test are "init", "setup", "vu" and "teardown"
+Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
 
 <div class="code-group" data-props='{"labels": ["The four life cycle stages"], "lineNumbers": [true]}'>
 
@@ -16,7 +15,7 @@ export function setup() {
   // 2. setup code
 }
 
-export default function(data) {
+export default function (data) {
   // 3. vu code
 }
 
@@ -35,10 +34,11 @@ for your VUs, similar to the `main()` function in many other languages:
 <div class="code-group" data-props='{"labels": ["Default/Main function"], "lineNumbers": [true]}'>
 
 ```js
-export default function() {
+export default function () {
   // do things here...
 }
 ```
+
 </div>
 
 _"Why not just run my script normally, from top to bottom"_, you might ask - the answer is: we
@@ -51,7 +51,7 @@ VU code can make HTTP requests, emit metrics, and generally do everything you'd 
 test to do - with a few important exceptions: you can't load anything from your local filesystem,
 or import any other modules. This all has to be done from the init code.
 
-There are two reasons for this. The first is, of course: performance.
+We have two reasons for this. The first is, of course: performance.
 
 If you read a file from disk on every single script iteration, it'd be needlessly slow; even
 if you cache the contents of the file and any imported modules, it'd mean the _first run_ of the
@@ -74,7 +74,7 @@ As an added bonus, you can use this to reuse data between iterations (but only f
 ```javascript
 var counter = 0;
 
-export default function() {
+export default function () {
   counter++;
 }
 ```
@@ -83,20 +83,19 @@ export default function() {
 
 ## The default function life-cycle
 
-A VU will execute the default function from start to end in sequence. Nothing out of the ordinary 
-so far, but here's the important part; once the VU reaches the end of the default function it will 
+A VU will execute the default function from start to end in sequence. Nothing out of the ordinary
+so far, but here's the important part; once the VU reaches the end of the default function it will
 loop back to the start and execute the code all over.
 
-As part of this "restart" process, the VU is reset. Cookies are cleared and TCP connections 
+As part of this "restart" process, the VU is reset. Cookies are cleared and TCP connections
 might be torn down, depending on your test configuration options.
 
-> Make sure to use `sleep()` statements to pace your VUs properly. An appropriate amount of 
-> sleep/think time at the end of the default function is often needed to properly simulate a 
-> user reading content on a page. If you don't have a `sleep()` statement at the end of 
+> Make sure to use `sleep()` statements to pace your VUs properly. An appropriate amount of
+> sleep/think time at the end of the default function is often needed to properly simulate a
+> user reading content on a page. If you don't have a `sleep()` statement at the end of
 > the default function your VU might be more "aggressive" than you've planned.
 >
 > VU without any `sleep()` is akin to a user who constantly presses F5 to refresh the page.
-
 
 ## Setup and teardown stages
 
@@ -119,7 +118,7 @@ export function setup() {
   // 2. setup code
 }
 
-export default function(data) {
+export default function (data) {
   // 3. vu code
 }
 
@@ -151,13 +150,13 @@ export function setup() {
   return { v: 1 };
 }
 
-export default function(data) {
+export default function (data) {
   console.log(JSON.stringify(data));
 }
 
 export function teardown(data) {
   if (data.v != 1) {
-    throw new Error("incorrect data: " + JSON.stringify(data));
+    throw new Error('incorrect data: ' + JSON.stringify(data));
   }
 }
 ```
@@ -172,7 +171,7 @@ stages:
 
 ```js
 export function setup() {
-  let res = http.get("https://httpbin.org/get");
+  let res = http.get('https://httpbin.org/get');
   return { data: res.json() };
 }
 
@@ -180,7 +179,7 @@ export function teardown(data) {
   console.log(JSON.stringify(data));
 }
 
-export default function(data) {
+export default function (data) {
   console.log(JSON.stringify(data));
 }
 ```
@@ -193,7 +192,8 @@ for the `group` metric tag, so that you can filter them in JSON output or Influx
 
 ## Skip setup and teardown execution
 
-There are two CLI options that can be used to skip the execution of setup and teardown stages.
+It is possible to skip the execution of setup and teardown stages using the two options `--no-setup` and
+`--no-teardown` respectively.
 
 <div class="code-group" data-props='{"labels": ["Skipping setup/teardown execution"], "lineNumbers": [true]}'>
 

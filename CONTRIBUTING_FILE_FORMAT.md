@@ -4,7 +4,7 @@ The k6 documentation is a Gatsby application using React components and markdown
 
 There are two types of pages: Welcome Pages and Documentation articles.
 
-[Welcome Pages](src/templates/docs) are the pages shown on the header menu: `Guides`, `Javascript API`, `Cloud Docs`, `Integration`, and `Examples`. They are made as separate React Components for maximum customisation.
+[Welcome Pages](src/templates/docs) are the pages shown on the header menu: `Guides`, `JavaScript API`, `Cloud Docs`, `Integration`, and `Examples`. They are made as separate React Components for maximum customisation.
 
 Documentation articles are markdown files structured under the [`src/data/markdown/docs`](src/data/markdown/docs) folder.
 
@@ -316,7 +316,7 @@ See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothi
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
-	http.get(http.url`http://example.com/posts/${id}`)
+    http.get(http.url`http://example.com/posts/${id}`)
     }
 
     ```

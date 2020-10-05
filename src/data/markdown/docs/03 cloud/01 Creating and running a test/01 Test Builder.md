@@ -43,7 +43,7 @@ To add a new request, click `ADD REQUEST`. Your test will execute in the order o
 To modify requests, move over to the right side of the `REQUESTS` section. You are able to:
 
 - Give your request a name to better describe it.
-- Change the `HTTP METHOD` by using the drop down prepopulated with `GET`.
+- Change the `HTTP METHOD` by using the drop down pre-populated with `GET`.
 - Change the URL/Endpoint (This is predefine as `http://test.k6.io/` for example purposes)
 - Specify Headers (If you have imported a HAR file, we will include some Headers here)
 - Specify Query Parameters

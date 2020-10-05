@@ -1,6 +1,6 @@
 ---
 title: "What's the Difference Between LoadImpact's Version 3.0 (Lua) and k6 Cloud 4.0(JavaScript)"
-excerpt: "A brief overview of the differences between LoadImpact 3.0 (Lua) and k6 Cloud 4.0 (JS/k6) products"
+excerpt: 'A brief overview of the differences between LoadImpact 3.0 (Lua) and k6 Cloud 4.0 (JS/k6) products'
 ---
 
 ## Purpose
@@ -16,6 +16,7 @@ From a general performance testing perspective the 3.0 and 4.0 products are more
 3. You execute your test, metrics data is collected and you are presented with results.
 
 ## Differences between 3.0 and 4.0 products
+
 When looking more closely though there are some differences in how you accomplish step 1, 2 and 3 above.
 
 A big difference is in the workflow that you can accomplish with each respective product.
@@ -71,7 +72,7 @@ export let options = {
 
 </div>
 
-***
+---
 
 ## Lua to JS migration guide
 
@@ -107,7 +108,6 @@ export default function() {
 
 In Lua VUs execute the script from top to bottom over and over, while in JS VUs execute the global scope (aka "init code") once to initialize, and then executes the "main function" (`export default function`) over and over:
 
-
 <div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
 
 ```lua linenos
@@ -124,13 +124,11 @@ export default function() {
 
 </div>
 
-
 ## Converting Lua APIs to JS APIs
 
 ## Client sleep/think time
 
 Below you have examples on how to have a VU sleep or think for a specific amount of time (in the example below for 3 seconds), pausing the VU execution:
-
 
 <div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
 
@@ -146,7 +144,6 @@ export default function() {
 ```
 
 </div>
-
 
 ## Making requests
 
@@ -183,12 +180,11 @@ export default function() {
 
 </div>
 
-
-
 See the [HTTP API](/using-k6/http-requests) docs for k6 for more information and examples.
 
 ## Group requests and logic into transactions/pages
-In the 3.0 product there's a concept of pages. Lua code in between calls to `http.page_start()` and `http.page_end()` will be be measured to provide a page load times in the results. The equivalent in JS would be to use [`Groups`](/using-k6/tags-and-groups#groups):
+
+In the 3.0 product there's a concept of pages. Lua code in between calls to `http.page_start()` and `http.page_end()` will be measured to provide a page load times in the results. The equivalent in JS would be to use [`Groups`](/using-k6/tags-and-groups#groups):
 
 <div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
 
@@ -217,12 +213,11 @@ export default function() {
 
 </div>
 
-
 ## Data store
 
-In the 3.0 product there's a concept of a Datastore. A CSV file that you can upload to the service and then attach to your user scenario for accessing and using the data in your user scenario logic.
+In the 3.0 product there's a concept of a datastore. A CSV file that you can upload to the service and then attach to your user scenario for accessing and using the data in your user scenario logic.
 
-In the 4.0 product there's no specific concept of a Datastore, but in k6 you have two different ways to separate test parameterization data from script logic.
+In the 4.0 product there's no specific concept of a datastore, but in k6 you have two different ways to separate test parameterization data from script logic.
 
 Both of the examples below can be run with:
 
@@ -233,7 +228,6 @@ k6 run --vus 3 --iterations 3 script.js
 ```
 
 </div>
-
 
 ## Use the open() scripting API to open a CSV/JSON/TXT file:
 
@@ -260,7 +254,6 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
 </div>
 
-
 <div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
 
 ```JavaScript
@@ -274,7 +267,6 @@ export default function() {
 ```
 
 </div>
-
 
 ## Put the data in a JS file and import it as a module:
 
@@ -301,7 +293,6 @@ export let users = [
 
 ## Main Script:
 
-
 <div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
 
 ```JavaScript
@@ -313,6 +304,7 @@ export default function() {
   sleep(3);
 }
 ```
+
 </div>
 
 ## Custom metrics
@@ -341,6 +333,5 @@ export default function() {
 ```
 
 </div>
-
 
 For more information, see our docs on [custom metrics](/using-k6/metrics#custom-metrics) (Additional metrics for `Counter`, `Gauge` and `Rate` are available beyond the `Trend` one used above).

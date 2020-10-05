@@ -10,7 +10,7 @@ excerpt: 'The Logs tab allows you to view console logs'
 >
 > This feature is new as of version `0.28.0` and is currently in Beta.
 
-When developing a load test, it's often useful to print messages for debugging purposes. 
+When developing a load test, it's often useful to print messages for debugging purposes.
 
 The k6 API supports the following console logging methods:
 
@@ -20,12 +20,12 @@ The k6 API supports the following console logging methods:
 - `console.warn()`
 - `console.error()`
 
-
 Logs can aid you in troubleshooting your test execution. But they should NOT replace the functionality of other k6 APIs.
 
 For example, it is often an **anti-pattern** to use `logs` to:
--  Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check-val-sets-tags) to assert these conditions.
--  Track a variable value during the test execution. Instead, use the [Trend](/javascript-api/k6-metrics/trend) metric.
+
+- Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check-val-sets-tags) to assert these conditions.
+- Track a variable value during the test execution. Instead, use the [Trend](/javascript-api/k6-metrics/trend) metric.
 
 > **Tip**
 >
@@ -40,6 +40,7 @@ The Logs Tab allows you to view and filter log messages in the Cloud Results pag
 ![Cloud Logs Tab](/images/11-Cloud-Logs/cloud-logs-output-messages.png)
 
 In addition to the log messages, the log panel shows context information such as:
+
 - Log date in the local time zone
 - Load zone: the geographic zone where the load generator server is located
 - Instance ID: numerical ID of the load generator server taking part in the test
@@ -48,8 +49,9 @@ See [how the k6 Cloud injects environment variables](/cloud/creating-and-running
 
 ### Filter by log level and load zone
 
-Each Javascript log statement has a severity level:
-- **Info**:  `console.log` and `console.info`.
+Each JavaScript log statement has a severity level:
+
+- **Info**: `console.log` and `console.info`.
 - **Debug**: `console.debug`.
 - **Warning**: `console.warning`.
 - **Error**: `console.error`.
@@ -63,7 +65,8 @@ You can filter messages by severity level and load zone. The load zone filter is
 Logs are intended to help you in finding script issues and debugging execution anomalies. You should NOT rely on logging to interpret or analyze the performance of your system.
 
 For this reason, the cloud logs have some limitations:
-- The logs are deleted 3 days after the test execution. 
+
+- The logs are deleted 3 days after the test execution.
 - The number of log lines is limited to 10 messages per second per server. If this limit is crossed, a warning messages appears showing the number of discarded log lines.
 
 ![Cloud Logs Tab Drop Message](/images/11-Cloud-Logs/cloud-logs-output-drop-messages.png)
@@ -74,10 +77,8 @@ k6 aims to have a consistent experience when running local and cloud tests.
 
 When running cloud tests using the CLI (`k6 cloud`), k6 will print cloud logs on the standard output as it does with your local tests.
 
-
 ![Cloud Logs Tab in CLI](/images/11-Cloud-Logs/cloud-logs-cli-output.png)
 
 If you don't want the cloud logs to be printed on the terminal, add the `--show-logs=false` argument.
-
 
 Next, [Test Comparison](/cloud/analyzing-results/test-comparison)

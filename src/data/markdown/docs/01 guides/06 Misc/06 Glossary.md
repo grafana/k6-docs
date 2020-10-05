@@ -54,7 +54,7 @@ When discussing complex topics, it is usually a good idea to define a clear, sha
 
 ### Goja
 
-**Goja** is a javascript runtime, purely written in go, that emphasizes standard compliance and performance. We use goja to allow for test scripting without having to compromise speed, efficiency or reliability, which would have been the case using NodeJS. For more details, see the [Goja repository on GitHub](https://github.com/dop251/goja).
+**Goja** is a JavaScript runtime, purely written in go, that emphasizes standard compliance and performance. We use goja to allow for test scripting without having to compromise speed, efficiency or reliability, which would have been the case using NodeJS. For more details, see the [Goja repository on GitHub](https://github.com/dop251/goja).
 
 ### Horizontal Scalability
 

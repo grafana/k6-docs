@@ -5,11 +5,11 @@ excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 
 ## Background
 
-Federated authentication is a must to virtually all organizations beyond a certain size. Microsoft's Active Directory product has been a long time gold standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud intergrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
+Federated authentication is a must to virtually all organizations beyond a certain size. Microsoft's Active Directory product has been a long time gold standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud integrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
 
 ## What is SAML?
 
-Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an Identity Provider (eg. Azure AD) and a Service Provider (eg. k6 Cloud). SAML is an XML-based markup language for security assertions (statements that service providers use to make access-control decisions).
+Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an Identity Provider (e.g. Azure AD) and a Service Provider (e.g. k6 Cloud). SAML is an XML-based markup language for security assertions (statements that service providers use to make access-control decisions).
 
 Read more over at [Wikipedia](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language).
 
@@ -17,7 +17,7 @@ Read more over at [Wikipedia](https://en.wikipedia.org/wiki/Security_Assertion_M
 
 To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
-1. A [Team plan](https://k6.io/pricing) or above and the SAML SSO addon($), alternatively be on an Enterprise plan.
+1. A [Team plan](https://k6.io/pricing) or above and the SAML SSO add-on(\$), alternatively be on an Enterprise plan.
 2. An [Azure AD Premium Subscription](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
 
 ## Configuration
@@ -34,7 +34,7 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     ![Azure AD New Application Type](images/04-Azure-AD-SAML-SSO/azure-ad-new-application-type.png)
 
-6.  Give the application a name, eg. **k6 Cloud**.
+6.  Give the application a name, e.g. **k6 Cloud**.
 
 7.  Click **"Add"**.
 
@@ -52,10 +52,10 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     Setting:
 
-    | Property                                   | Value                               |
-    | ------------------------------------------ | ----------------------------------- |
-    | Identifier (Entity ID)                     | `https://api.k6.io/sso/acs/`        |
-    | Reply URL (Assertion Consumer Service URL) | `https://api.k6.io/sso/acs/`        |
+    | Property                                   | Value                              |
+    | ------------------------------------------ | ---------------------------------- |
+    | Identifier (Entity ID)                     | `https://api.k6.io/sso/acs/`       |
+    | Reply URL (Assertion Consumer Service URL) | `https://api.k6.io/sso/acs/`       |
     | Logout Url                                 | `https://app.k6.io/account/logout` |
 
     Resulting in:
@@ -68,13 +68,13 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
     Setting the following user attributes (and clearing the "Namespace" property for each attribute):
 
-    | Attribute                | Value                                                                     |
-    | -------------------------| ------------------------------------------------------------------------- |
-    | `Unique User Identifier` | `user.userprincipalname`                                                  |
-    | `user.email`             | `user.userprincipalname`                                                  |
-    | `user.username`          | `user.userprincipalname`                                                  |
-    | `user.first_name`        | `user.givenname`                                                          |
-    | `user.last_name`         | `user.surname`                                                            |
+    | Attribute                | Value                                                                      |
+    | ------------------------ | -------------------------------------------------------------------------- |
+    | `Unique User Identifier` | `user.userprincipalname`                                                   |
+    | `user.email`             | `user.userprincipalname`                                                   |
+    | `user.username`          | `user.userprincipalname`                                                   |
+    | `user.first_name`        | `user.givenname`                                                           |
+    | `user.last_name`         | `user.surname`                                                             |
     | `token`                  | An unique token that you'll be provided with by the k6 Cloud support team. |
 
     Resulting in:
