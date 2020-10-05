@@ -1,15 +1,13 @@
 ---
-title: "Pricing FAQ"
-excerpt: "Frequently asked questions about k6 cloud pricing and subscriptions"
+title: 'Pricing FAQ'
+excerpt: 'Frequently asked questions about k6 cloud pricing and subscriptions'
 ---
-
 
 This document contains some of our most frequently asked questions about pricing. If your question isn't answered here, please contact [support](mailto:support@k6.io).
 
-
 ## Does k6 have a concept of VU Hours?
 
-No - There is no concept of VU hours for our plans. You can run all your tests up to the maximum limits as defined by your subscription.
+No - there is no concept of VU hours for our plans. You can run all your tests up to the maximum limits as defined by your subscription.
 
 ## What tests count against my monthly limit?
 

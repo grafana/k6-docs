@@ -34,7 +34,7 @@ and can be handled with a little bit of scripting.
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   // Make a request that returns some JSON data
   let res = http.get('https://httpbin.org/json');
 
@@ -43,8 +43,8 @@ export default function() {
   // navigating the JSON data as a JS object with dot notation.
   let slide1 = res.json().slideshow.slides[0];
   check(slide1, {
-    'slide 1 has correct title': s => s.title === 'Wake up to WonderWidgets!',
-    'slide 1 has correct type': s => s.type === 'all',
+    'slide 1 has correct title': (s) => s.title === 'Wake up to WonderWidgets!',
+    'slide 1 has correct type': (s) => s.type === 'all',
   });
 
   // Now we could use the "slide1" variable in subsequent requests...
@@ -61,8 +61,8 @@ export default function() {
 
 ### Extracting values/tokens from form fields
 
-There are primarily two different ways you can choose from when deciding how to handle form
-submissions. Either you use the higher-level [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params) API
+You can choose from two different approaches when deciding how to handle form submissions.
+Either you use the higher-level [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params) API
 or you extract necessary hidden fields etc. and build a request yourself and then send it using the
 appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/javascript-api/k6-http/post-url-body-params).
 
@@ -106,5 +106,5 @@ export default function() {
 **Relevant k6 APIs**:
 
 - [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find-selector) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
-  docs are also a good resource on what possible selector queryies can be made)
+  docs are also a good resource on what possible selector queries can be made)
 - [Selection.attr(name)](/javascript-api/k6-html/selection/selection-attr-name)

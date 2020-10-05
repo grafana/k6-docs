@@ -47,7 +47,7 @@ export default function () {
 
 ### Remote HTTP(S) modules
 
-These modules are accessed over HTTP(S), from a source like [the k6 jslib](#the-jslib-repository) or
+These modules are accessed over HTTP(S), from a source like [the k6 jsLIB](#the-jslib-repository) or
 from any publicly accessible web server. The imported modules will be downloaded and executed at
 runtime, making it extremely important to **make sure the code is legit and trusted before including
 it in a test script**.
@@ -125,7 +125,7 @@ Usually, this is not a big problem as each application only allocates these reso
 
 By running code requiring additional features on top of ES5.1, we also need additional extensions to the javascript vm, further boosting the resource usage. This is the default mode of k6.
 
-When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compability mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
+When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 
 
 ### Setting up the bundler
@@ -167,7 +167,7 @@ $ npm install --save-dev \
 | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [webpack](https://github.com/webpack/webpack)                                             | The bundler part of Webpack                                                                                                                                                                                                                                           |
 | [webpack-cli](https://github.com/webpack/webpack-cli)                                     | The CLI part of Webpack, which allows us to use it from the terminal                                                                                                                                                                                                  |
-| [k6](https://github.com/loadimpact/k6)                                                    | A dummy package used to provide typeahead in VSCode and similar                                                                                                                                                                                                       |
+| [k6](https://github.com/loadimpact/k6)                                                    | A dummy package used to provide type-ahead in VSCode and similar                                                                                                                                                                                                      |
 | [babel-loader](https://github.com/babel/babel-loader)                                     | A loader used by Webpack to leverage babel functionality while bundling                                                                                                                                                                                               |
 | [@babel/core](https://github.com/babel/babel/tree/master/packages/babel-core)             | The core functionality of Babel                                                                                                                                                                                                                                       |
 | [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |

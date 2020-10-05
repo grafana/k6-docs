@@ -1,15 +1,15 @@
 ---
 title: 'Projects'
-excerpt: 'Keep your tests and team members organized with projects, a foldering system built into the k6 web app'
+excerpt: 'Keep your tests and team members organized with projects, a filing system built into the k6 web app'
 ---
 
 ## Background
 
-Projects are a way to stay organized within your account in k6. In the simpliest terms, projects can be considered a foldering system which you can use to organize your tests. Projects are assigned on a per organization level. Organization owners and admins can invite users to be members of a project. Only Read/Write members can be explicitly restricted from accessing a project.
+Projects are a way to stay organized within your account in k6. In the simplest terms, projects can be considered a filing system which you can use to organize your tests. Projects are assigned on a per organization level. Organization owners and admins can invite users to be members of a project. Only Read/Write members can be explicitly restricted from accessing a project.
 
 ## Using Projects
 
-Projects are a simple foldering system. They are flexible enough to allow you to use them in a way that makes sense to you, but simple enough to not lose information in a deep nested structure.
+Projects can be thought of as a simple filing system. They are flexible enough to allow you to use them in a way that makes sense to you, but simple enough to not lose information in a deep nested structure.
 
 Here are some ways we have seen users utilize Projects to stay organized:
 

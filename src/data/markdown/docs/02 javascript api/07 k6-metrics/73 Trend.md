@@ -21,7 +21,7 @@ When `Trend` is used in a threshold expression, there are a range of variables t
 - `min` for minimum
 - `max` for maximum
 - `med` for median
-- `p(N)` for specific percentile. `N` is a number between `0.0` and `100.0` meaning the percentile value to look at, eg. `p(99.99)` means the 99.99th percentile.
+- `p(N)` for specific percentile. `N` is a number between `0.0` and `100.0` meaning the percentile value to look at, e.g. `p(99.99)` means the 99.99th percentile.
 
 The unit of these variables and functions are all in milliseconds.
 

@@ -27,7 +27,6 @@ $ brew install influxdb
 
 </div>
 
-
 ## Run the test and upload the results to InfluxDB
 
 k6 has built-in support for outputting results data directly to an InfluxDB database using
@@ -69,13 +68,13 @@ $ brew install grafana
 </div>
 
 After the installation, you should have an InfluxDB server running on localhost, listening on port 8086,
-and a Grafana server on `http://localhost:3000`. Now, we show two different ways to visualize your k6 metrics: 
+and a Grafana server on `http://localhost:3000`. Now, we show two different ways to visualize your k6 metrics:
 
 - [Custom Grafana dashboard](#custom-grafana-dashboard)
 
 - [Preconfigured Grafana dashboards](#preconfigured-grafana-dashboards)
 
-## Custom Grafana dashboard 
+## Custom Grafana dashboard
 
 - Open `http://localhost:3000` (or wherever your Grafana installation is located) in your browser.
 - Create a data source:
@@ -92,7 +91,7 @@ and a Grafana server on `http://localhost:3000`. Now, we show two different ways
 
 ## Preconfigured Grafana dashboards
 
-Here we will list premade Grafana dashboard configurations contributed by users, for use with k6.
+Here we will list pre-made Grafana dashboard configurations contributed by users, for use with k6.
 
 - [dcadwallader](https://grafana.com/grafana/dashboards/2587)
 - [Stian Øvrevåge](https://grafana.com/grafana/dashboards/4411)
@@ -133,13 +132,12 @@ Grafana installation in the Docker container.
 
 When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can configure other InfluxDB options passing these environment variables:
 
-| InfluxDB Options             | Description                                               |  Default |
-| --------------------------------------- | ---------------------------------------------- | -----------------------| 
-| `K6_INFLUXDB_USERNAME`                  | InfluxDB username, optional                     |    |
-| `K6_INFLUXDB_PASSWORD`                  | InfluxDB user password                     |    |
-| `K6_INFLUXDB_INSECURE`                  | If `true`, it will skip https certificate verification  | `false`   |
-| `K6_INFLUXDB_TAGS_AS_FIELDS`            |  A comma-separated string to set k6 metrics as nonindexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field interger. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int`  |   |
-
+| InfluxDB Options             | Description                                                                                                                                                                                                                                                                                                                                                                                          | Default |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `K6_INFLUXDB_USERNAME`       | InfluxDB username, optional                                                                                                                                                                                                                                                                                                                                                                          |         |
+| `K6_INFLUXDB_PASSWORD`       | InfluxDB user password                                                                                                                                                                                                                                                                                                                                                                               |         |
+| `K6_INFLUXDB_INSECURE`       | If `true`, it will skip https certificate verification                                                                                                                                                                                                                                                                                                                                               | `false` |
+| `K6_INFLUXDB_TAGS_AS_FIELDS` | A comma-separated string to set k6 metrics as non-indexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field integer. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int` |         |
 
 ## See also
 

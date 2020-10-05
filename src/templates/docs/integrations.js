@@ -55,7 +55,7 @@ const iconsDataSet1 = [
   },
   {
     Icon: Datadog,
-    name: 'DataDog',
+    name: 'Datadog',
     to: '/results-visualization/datadog',
   },
   {

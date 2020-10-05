@@ -11,7 +11,7 @@ hideFromSidebar: false
 > see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0).
 
 Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled, allowing
-k6 scenarios enable configuring how VUs and iterations are scheduled, making it possible to model diverse traffic patterns in load tests. There are several benefits of using scenarios:
+k6 scenarios enable configuring how VUs and iterations are scheduled, making it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
 
 - Multiple scenarios can be declared in the same script, and each one can
   independently execute a different JavaScript function, which makes organizing tests easier
@@ -24,7 +24,7 @@ k6 scenarios enable configuring how VUs and iterations are scheduled, making it 
 
 ## Configuration
 
-Execution scenarios are primarily configured via the `scenarios` key of the the exported `options` object
+Execution scenarios are primarily configured via the `scenarios` key of the exported `options` object
 in your test scripts. The key for each scenario can be an arbitrary, but unique, scenario name. It will
 appear in the result summary, tags, etc.
 

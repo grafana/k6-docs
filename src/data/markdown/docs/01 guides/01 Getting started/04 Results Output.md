@@ -36,7 +36,7 @@ duration: 1m0s, iterations: -
 - `duration: 1m0s` the test run [duration](/using-k6/options#duration).
 - `iterations: -` the total number of VU [iterations](https://k6.io/docs/using-k6/options#iterations).
 - `vus: 100` the initial number of VUs that test will start running.
-- `max: 100` the maximun number of VUs that the test will scale.
+- `max: 100` the maximum number of VUs that the test will scale.
 
 ### Test summary
 
@@ -97,17 +97,17 @@ k6 can send more granular result data to different outputs to integrate and visu
 
 The list of output plugins are:
 
-| Plugin                                                | Usage                                                                           |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)         | `k6 run --out statsd` |
-| [Apache Kafka](/results-visualization/apache-kafka)   | `k6 run --out kafka`                                                            |
-| [Cloud](/results-visualization/cloud)                 | `k6 run --out cloud`                                                            |
-| [CSV](/results-visualization/csv)                     | `k6 run --out csv`                                                              |
-| [Datadog](/results-visualization/datadog)             | `k6 run --out datadog`                                                          |
-| [InfluxDB](/results-visualization/influxdb-+-grafana) | `k6 run --out influxdb`                                                         |
-| [JSON](/results-visualization/json)                   | `k6 run --out json`                                                             |
-| [New Relic](/results-visualization/new-relic)         | `k6 run --out statsd` |
-| [StatsD](/results-visualization/statsd)               | `k6 run --out statsd`                                                           |
+| Plugin                                                        | Usage                   |
+| ------------------------------------------------------------- | ----------------------- |
+| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch) | `k6 run --out statsd`   |
+| [Apache Kafka](/results-visualization/apache-kafka)           | `k6 run --out kafka`    |
+| [Cloud](/results-visualization/cloud)                         | `k6 run --out cloud`    |
+| [CSV](/results-visualization/csv)                             | `k6 run --out csv`      |
+| [Datadog](/results-visualization/datadog)                     | `k6 run --out datadog`  |
+| [InfluxDB](/results-visualization/influxdb-+-grafana)         | `k6 run --out influxdb` |
+| [JSON](/results-visualization/json)                           | `k6 run --out json`     |
+| [New Relic](/results-visualization/new-relic)                 | `k6 run --out statsd`   |
+| [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
 
 ## Multiple outputs
 

@@ -31,8 +31,8 @@ $ k6 run --vus 10 --iterations 100 script.js
 
 ## \_\_VU and \_\_ITER
 
-There are a couple of global variables with execution context information that k6 makes available
-to the load script, namely **\_\_VU** and **\_\_ITER**.
+**\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes
+available to the test script.
 
 ### \_\_ITER
 

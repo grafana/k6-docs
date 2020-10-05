@@ -64,7 +64,7 @@ slowly a closed model load test will play "nice" and wait, resulting in increase
 iteration durations and a tapering off of the arrival rate of new VU iterations.
 
 This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
-or more generally throughput (eg. requests per second).
+or more generally throughput (e.g. requests per second).
 
 ## Open model
 
@@ -77,8 +77,7 @@ from the iteration duration and the influence of the target system's response ti
 
 ![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
 
-In k6 we've implemented this open model with our "arrival rate" executors. There are  
-two arrival rate executors to chose from for your scenario(s),
+In k6, we've implemented this open model with our two "arrival rate" executors:
 [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
 
 <div class="code-group" data-props='{"labels": [ "open-model.js" ], "lineNumbers": "[true]"}'>

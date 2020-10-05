@@ -1,31 +1,28 @@
 ---
-title: "batch( requests )"
-description: "Issue multiple HTTP requests in parallel (like e.g. browsers tend to do)."
+title: 'batch( requests )'
+description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 ---
 
 Batch multiple HTTP requests together, to issue them in parallel over multiple TCP connections.
 
-| Parameter | Type           | Description                                                      |
-| --------- | -------------- | ---------------------------------------------------------------- |
+| Parameter | Type            | Description                                                      |
+| --------- | --------------- | ---------------------------------------------------------------- |
 | requests  | array \| object | An array or object containing requests, in string or object form |
 
 When each request is specified as an array, the order of the arguments for each request is as follows:
 
-
 ### Returns
 
-| Type   | Description                                                                                                                                                                                                            |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type   | Description                                                                                                                                                                                                                   |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | object | An object containing [Response](/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is a normal object with string keys when named requests are used (see below). |
 
-
-| Position | Name | Type | Description |
-| -------- | ---- | ---- | ----------- |
-| 1 | method | string | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION. |
-| 2 | url | string | Mandatory. The URL to request. |
-| 3 | body (optional) | string \| object | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
-| 4 | params (optional) | object | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags. |
-
+| Position | Name              | Type             | Description                                                                                                                 |
+| -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1        | method            | string           | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
+| 2        | url               | string           | Mandatory. The URL to request.                                                                                              |
+| 3        | body (optional)   | string \| object | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
+| 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
 
 ### Example with request as an array
 
@@ -35,15 +32,10 @@ When each request is specified as an array, the order of the arguments for each 
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
-    [
-      'GET',
-      'https://test.k6.io/style.css',
-      null,
-      { tags: { ctype: 'css' } },
-    ],
+    ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
     [
       'GET',
       'https://test.k6.io/images/logo.png',
@@ -52,7 +44,7 @@ export default function() {
     ],
   ]);
   check(responses[0], {
-    'main page status was 200': res => res.status === 200,
+    'main page status was 200': (res) => res.status === 200,
   });
 }
 ```
@@ -67,15 +59,10 @@ export default function() {
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
-    [
-      'GET',
-      'https://test.k6.io/style.css',
-      null,
-      { tags: { ctype: 'css' } },
-    ],
+    ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
     [
       'GET',
       'https://test.k6.io/images/logo.png',
@@ -84,7 +71,7 @@ export default function() {
     ],
   ]);
   check(responses[0], {
-    'main page status was 200': res => res.status === 200,
+    'main page status was 200': (res) => res.status === 200,
   });
 }
 ```
@@ -101,7 +88,7 @@ You can also use objects to hold information about a request. Here is an example
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let req1 = {
     method: 'GET',
     url: 'https://httpbin.org/get',
@@ -124,14 +111,14 @@ export default function() {
   // httpbin.org should return our POST data in the response body, so
   // we check the third response object to see that the POST worked.
   check(responses[2], {
-    'form data OK': res => JSON.parse(res.body)['form']['hello'] == 'world!',
+    'form data OK': (res) => JSON.parse(res.body)['form']['hello'] == 'world!',
   });
 }
 ```
 
 </div>
 
-_Note that the requests in the example above may happen in any order, or simultaneously. There is no guarantee that e.g. req1 will happen before req2 or req3_
+_Note that the requests in the example above may happen in any order, or simultaneously. When running requests in batches, there is no guarantee that e.g. req1 will happen before req2 or req3_
 
 ### Example with named requests
 
@@ -143,7 +130,7 @@ Finally, you can also send in named requests by using an object instead of an ar
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let requests = {
     'front page': 'https://k6.io',
     'features page': {
@@ -156,7 +143,7 @@ export default function() {
   // when accessing results, we use the name of the request as index
   // in order to find the corresponding Response object
   check(responses['front page'], {
-    'front page status was 200': res => res.status === 200,
+    'front page status was 200': (res) => res.status === 200,
   });
 }
 ```

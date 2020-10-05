@@ -3,7 +3,7 @@ title: 'Introduction'
 excerpt: 'Guide to test types'
 ---
 
-There are many types of tests that can be performed with k6. Each type serves a different purpose.
+It is possible to perform many types of tests using k6, each type serving a different purpose.
 
 ![Types of performance tests](./images/test-types.png)
 

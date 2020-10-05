@@ -18,7 +18,7 @@ The following _built-in_ metrics will **always** be collected by k6:
 | Metric Name          | Type    | Description                                                                                                                                                                                                     |
 | -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `vus`                | Gauge   | Current number of active virtual users                                                                                                                                                                          |
-| `vus_max`            | Gauge   | Max possible number of virtual users (VU resources are preallocated, to ensure performance will not be affected when scaling up the load level)                                                                 |
+| `vus_max`            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level)                                                                |
 | `iterations`         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function).                                                                                                         |
 | `iteration_duration` | Trend   | The time it took to complete one full iteration of the default/main function.                                                                                                                                   |
 | `dropped_iterations` | Counter | Introduced in k6 v0.27.0, the number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
@@ -28,7 +28,7 @@ The following _built-in_ metrics will **always** be collected by k6:
 
 ## HTTP-specific built-in metrics
 
-There are also _built-in_ metrics that will only be generated when/if HTTP requests are made:
+_built-in_ metrics will only be generated when/if HTTP requests are made:
 
 | Metric Name                | Type    | Description                                                                                                                                                                                                                                  |
 | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +63,7 @@ In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/respon
 | ----------------------------- | --------------------------------------------------------------------- |
 | `res.body`                    | `string` containing the HTTP response body                            |
 | `res.headers`                 | `object` containing header-name/header-value pairs                    |
-| `res.status`                  | `integer` contaning HTTP response code received from server           |
+| `res.status`                  | `integer` containing HTTP response code received from server          |
 | `res.timings`                 | `object` containing HTTP timing information for the request in **ms** |
 | `res.timings.blocked`         | = `http_req_blocked`                                                  |
 | `res.timings.connecting`      | = `http_req_connecting`                                               |
@@ -100,7 +100,7 @@ Custom metrics will be reported at the end of a test. Here is how the output mig
 
 ## Metric types
 
-All metrics (both the _built-in_ ones and the custom ones) have a type. There are four different metrics types:
+All metrics (both the _built-in_ ones and the custom ones) have a type. The four different metric types in k6 are:
 
 - [Counter](/javascript-api/k6-metrics/counter)
 - [Gauge](/javascript-api/k6-metrics/gauge)

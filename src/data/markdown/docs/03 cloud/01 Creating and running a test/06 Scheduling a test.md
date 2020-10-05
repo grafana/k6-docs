@@ -22,7 +22,7 @@ You can schedule any of your tests from the page with the performance trending g
 
 ## Scheduling options
 
-In both cases, after clicking "Schedule" you are presented with the following options. You are able to run a test now or at a later date. You can also set the execution to repeat on an Hourly, Daily, Weekly, or Monthly interval. You can also control how long the test will run for, either after a set number of occurrences, or after a certain date. There is some very granular control here, so do explore the option.
+In both cases, after clicking "Schedule" you are presented with the following options. You are able to run a test now or at a later date. You can also set the execution to repeat on an Hourly, Daily, Weekly, or Monthly interval. You can also control how long the test will run for, either after a set number of occurrences, or after a certain date. The granularity for controlling this is high, so do explore the options.
 
 ![Scheduling options](/images/Scheduling-a-test/schedule-options.png)
 

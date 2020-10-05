@@ -190,14 +190,15 @@ Examples:
 - `p(90) < 300` // 90% of samples must be below 300
 
 A threshold expression evaluates to `true` or `false`.
-There are four metric types in k6, and each metric type provides its own set of aggregation methods which can be used in threshold expressions.
 
-| Metric type | Aggregation methods                                                                                                                                                                                                |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Counter     | `count` and `rate`                                                                                                                                                                                                 |
-| Gauge       | `value`                                                                                                                                                                                                            |
-| Rate        | `rate`                                                                                                                                                                                                             |
-| Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, eg. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. |
+Each of the four metric types included in k6 provide its own set of aggregation methods usable in threshold expressions.
+
+| Metric type | Aggregation methods                                                                                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Counter     | `count` and `rate`                                                                                                                                                                                                  |
+| Gauge       | `value`                                                                                                                                                                                                             |
+| Rate        | `rate`                                                                                                                                                                                                              |
+| Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, e.g. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. |
 
 Here is a (slightly contrived) sample script that uses all different types of metrics, and sets
 different types of thresholds for them:

@@ -31,7 +31,7 @@ would like to ramp the number of iterations up or down during specific periods o
 
 ## Examples
 
-In this example, we'll xecute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
+In this example, we'll execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
 
 <div class="code-group" data-props='{"labels": [ "ramping-arr-rate.js" ], "lineNumbers": "[true]"}'>
 

@@ -4,7 +4,6 @@ title: 'Installation'
 
 ## Linux
 
-
 ### Debian/Ubuntu
 
 <div class="code-group" data-props='{ "labels": [""] }'>
@@ -20,15 +19,15 @@ sudo apt-get install k6
 
 > ### ⚠️ If you are behind a firewall or proxy
 >
-> There have been reports of users being unable to download the key from Ubuntu's keyserver using `apt-key`
+> There have been reports of users being unable to download the key from Ubuntu's key-server using `apt-key`
 > command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
 > alternative approach instead:
-> 
+>
 > ```
 > wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
 > ```
 
-### Redhat/CentOS
+### Red Hat/CentOS
 
 <div class="code-group" data-props='{ "labels": [""] }'>
 

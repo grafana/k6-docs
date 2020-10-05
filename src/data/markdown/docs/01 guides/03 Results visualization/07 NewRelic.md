@@ -61,7 +61,7 @@ The _required_ environment variables used in the above command are:
 | `NR_ACCOUNT_ID` | The Account ID used in New Relic You can find your account ID [here](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.).                        |
 | `NR_API_KEY`    | The Insert API Key for your New Relic account to send k6 telemetry to the account ID specified above. You can generate an Insert API key [here](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register). |
 
-There are also _optional_ environment variables you can use:
+_Optional_ environment variables you can use:
 
 | Name             | Value                                                                                                                                                                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -105,7 +105,7 @@ SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE per
 
 </div>
 
-**Max, Average, Median Request Duration Duration**
+**Max, Median, and Average Request Duration**
 
 <div class="code-group" data-props='{"labels": [""]}'>
 

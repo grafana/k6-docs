@@ -14,9 +14,9 @@ This guide aims to lay down the steps and best practices for achieving your goal
 
 Let’s start by examining why you would consider automating your performance tests. To do that we need to revisit why we run performance tests in the first place:
 
-- **Avoid launch failures** leading to a missed opportunity window and wasted investments, eg. your app or site crashing during a high-profile product launch event.
-- **Avoid bad user experiences** leading visitors and customers to go with the competition, and you ultimately losing revenue, eg. churning hard won customers due to non responsive app or website.
-- **Avoid performance regressions** as new code changes get deployed to your production system and put infront of end users. This is what this guide is primarily aimed at.
+- **Avoid launch failures** leading to a missed opportunity window and wasted investments, e.g. your app or site crashing during a high-profile product launch event.
+- **Avoid bad user experiences** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to non responsive app or website.
+- **Avoid performance regressions** as new code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
 
 From here, the decision to go for automated testing is hopefully straightforward:
 
@@ -71,7 +71,7 @@ The first step to integrating load testing in your CI is to find and install a p
 
 We built k6 for automation. It's a CLI tool that can integrate easily into your tech stack.
 
-There are three ways to install k6:
+Installing k6 can be done in three different ways:
 
 - Using one of the OS specific package managers
 - Pulling the Docker image
@@ -100,7 +100,7 @@ Once you’ve gained enough experience with test creation, we strongly advise yo
 
 ## 3. Pass/fail criteria
 
-Every step in an automation pipeline either passes or fails. As mentioned in [Know your goals](/testing-guides/automated-performance-testing#know-your-goals), the mechanism by which k6 decides whether a test has passed or failed is called [thresholds](/using-k6/thresholds). Without your goals codifed as thresholds there's no way for k6 to actually know if your test should be considered a success or failure.
+Every step in an automation pipeline either passes or fails. As mentioned in [Know your goals](/testing-guides/automated-performance-testing#know-your-goals), the mechanism by which k6 decides whether a test has passed or failed is called [thresholds](/using-k6/thresholds). Without your goals codified as thresholds there's no way for k6 to actually know if your test should be considered a success or failure.
 
 A basic threshold on the 95th percentile of the response time metric looks like this:
 
@@ -127,18 +127,18 @@ export let options = {
 };
 ```
 
-If the test ends with one or more failed thresholds k6 will exit with a non-zero exit code signalling to the CI tool that the load test step failed, halting the build/pipeline from progressing further, and hopefully notifiying you so you can take corrective action, but more on notifications further down below.
+If the test ends with one or more failed thresholds k6 will exit with a non-zero exit code signalling to the CI tool that the load test step failed, halting the build/pipeline from progressing further, and hopefully notifying you so you can take corrective action, but more on notifications further down below.
 
 ## 4. Local vs Cloud execution
 
 k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes. In local execution mode k6 will generate all the traffic from the machine where it's being run. In CI this would be the build servers. When executing a test locally, you can optionally stream the results to k6 Cloud for storage and visualization (`k6 run -o cloud ...`). In cloud execution mode k6 will instead bundle up and send the main JS test file, and all dependent files, to k6 Cloud as an archive for execution on cloud infrastructure managed by our k6 Cloud service. The different modes of execution are appropriate for different use cases. Some general guidance follows:
 
-| Use case                                                                                                                                                     | Execution mode  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
-| Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                    | Local execution |
-| The target system is behind a firewall and not accessible from the public Internet                                                                           | Local execution |
-| Can't ensure consistent dedicated resources locally for load test, eg. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
-| Need to run test from multiple geographic locations in a test                                                                                                | Cloud execution |
+| Use case                                                                                                                                                      | Execution mode  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                     | Local execution |
+| The target system is behind a firewall and not accessible from the public Internet                                                                            | Local execution |
+| Can't ensure consistent dedicated resources locally for load test, e.g. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
+| Need to run test from multiple geographic locations in a test                                                                                                 | Cloud execution |
 
 ### Authenticating with k6 Cloud
 
@@ -154,7 +154,7 @@ Get your k6 Cloud token from the [account settings page](https://app.k6.io/accou
 
 The boring, but true, answer to the question of how often you should run load tests is that "it depends". It depends on a number of parameters. How often is your application changing? Do you need many or few VUs to generate the necessary load? How long is one full cycle of a VU iteration? etc. Testing a full user journey or just a single API endpoint or website page has different implications on the answer as well.
 
-There are three primary factors that will affect what solution is the best for you:
+Consider these three factors when picking the best solution for you:
 
 - VU iteration duration
 - Your branching strategy
@@ -210,7 +210,7 @@ Generalized, our recommendation is as follows, broken down by VU iteration durat
 
 Besides triggering tests based on commit events, we also often see users and customers use [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) or CI tool equivalent mechanisms for running tests on off-hours or at a particular cadence.
 
-If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/creating-and-running-a-test/scheduling-tests) to trigger tests at a frequency of your chosing.
+If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/creating-and-running-a-test/scheduling-tests) to trigger tests at a frequency of your choosing.
 
 **Load test suite**
 

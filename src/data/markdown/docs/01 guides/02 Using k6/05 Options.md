@@ -431,7 +431,7 @@ A number specifying a fixed number of iterations to execute of the script, as op
 a duration of time during which the script would run in a loop.
 \*Note: The number of iterations
 is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
-`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed, 
+`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed,
 the default `maxDuration` is 10 minutes when using iterations with the cloud service.
 
 | Env             | CLI                  | Code / Config file | Default |
@@ -489,27 +489,26 @@ Possible values are:
 - none - disable
 - stdout - send to the standard output
 - stderr - send to the standard error output (this is the default)
-- loki   - send logs to a loki server
+- loki - send logs to a loki server
 
 The loki can additionally be configured as follows:
 `loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`
-Where all but the url in the beginning are not required. 
+Where all but the url in the beginning are not required.
 The possible keys with their meanings and default values:
 
-| key           | meaning                                                            | default value                            |
-| ------------- | ------------------------------------------------------------------ | ---------------------------------------- |
-| `nothing`     | the endpoint to which to send logs                                 | `http://127.0.0.1:3100/loki/api/v1/push` |
-| label.`labelName` | adds an additional label with the provided key and value to each message    | N/A                                      |
-| limit         | the limit of message per pushPeriod, an additonal log is send when the limit is reached, logging how many logs were dropped | 100 |
-| level         | the minimal level of a message so it's send to loki | all |
-| pushPeriod    | at what period to send log lines | 1s |
-| profile       | whether to print some info about performance of the sending to loki | false |
-| msgMaxSize    | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additonal few characters explaining how many characters were dropped. | 1048576 |
+| key               | meaning                                                                                                                                                                                | default value                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `nothing`         | the endpoint to which to send logs                                                                                                                                                     | `http://127.0.0.1:3100/loki/api/v1/push` |
+| label.`labelName` | adds an additional label with the provided key and value to each message                                                                                                               | N/A                                      |
+| limit             | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped                                                           | 100                                      |
+| level             | the minimal level of a message so it's send to loki                                                                                                                                    | all                                      |
+| pushPeriod        | at what period to send log lines                                                                                                                                                       | 1s                                       |
+| profile           | whether to print some info about performance of the sending to loki                                                                                                                    | false                                    |
+| msgMaxSize        | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576                                  |
 
-
-| Env             | CLI              | Code / Config file | Default  |
-| --------------- | ---------------- | ------------------ | -------- |
-| `K6_LOG_OUTPUT` | `--log-output`   | N/A                | `stderr` |
+| Env             | CLI            | Code / Config file | Default  |
+| --------------- | -------------- | ------------------ | -------- |
+| `K6_LOG_OUTPUT` | `--log-output` | N/A                | `stderr` |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
@@ -523,13 +522,12 @@ $ k6 run --log-output=stdout script.js
 
 A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
 
-- `json`: print all the debug information in JSON format. 
+- `json`: print all the debug information in JSON format.
 
-- `raw`: print only the log message. 
+- `raw`: print only the log message.
 
-
-| Env         | CLI                    | Code / Config file | Default |
-| ----------- | ---------------------- | ------------------ | ------- |
+| Env            | CLI                 | Code / Config file | Default |
+| -------------- | ------------------- | ------------------ | ------- |
 | `K6_LOGFORMAT` | `--logformat`, `-f` | N/A                |         |
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
@@ -694,7 +692,7 @@ export let options = {
 
 ### Results Output
 
-Specify the results output. Please go to [Results ouput](/getting-started/results-output) for more information
+Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
 on all output plugins available and how to configure them. Since version 0.21, this option can be
 specified multiple times. Available in `k6 run` command.
 
@@ -729,9 +727,9 @@ export let options = {
 
 </div>
 
-> #### Cloud runs
+> #### Considerations when running in the cloud
 >
-> There are a couple of considerations with this option when running cloud tests. The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
+> The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
 
 ### Scenarios
 
@@ -1111,7 +1109,7 @@ export let options = {
 A number specifying max number of virtual users, if more than `vus`. This option is typically
 used when the intent is to dynamically scale the amount of VUs up and down during the test using
 the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
-is used to preallocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
+is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
 
 | Env          | CLI           | Code / Config file | Default         |
 | ------------ | ------------- | ------------------ | --------------- |

@@ -60,7 +60,7 @@ export default function () {
 As k6 doesn't support parsing CSV files natively, we'll have to resort to using a
 library called [Papa Parse](https://www.papaparse.com/).
 
-You can download the library and and import it locally like this:
+You can download the library and import it locally like this:
 
 <div class="code-group" data-props='{ "labels": ["papaparse-local-import.js"], "lineNumbers": [true] }'>
 
@@ -186,7 +186,7 @@ For direct comparison 100VUs used near 2GB of memory.
 
 Playing with the value for `splits` will give a different balance between memory used and the amount of data each VU has.
 
-A second approach using another technique will be to pre split the data in different files and load and parse only the one for each VU.
+A second approach using another technique will be to pre-split the data in different files and load and parse only the one for each VU.
 
 <div class="code-group" data-props='{ "labels": ["parse-csv-many.js"], "lineNumbers": [true] }'>
 

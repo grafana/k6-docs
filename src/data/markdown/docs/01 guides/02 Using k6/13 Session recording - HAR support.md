@@ -28,7 +28,7 @@ In k6, the process looks like:
 
 ## 1. Record a HAR file
 
-There are many browsers and tools that can be used to export HTTP traffic in a HAR format. A few popular ones are:
+Multiple browsers and tools can be used to export HTTP traffic in a HAR format. A few popular ones are:
 
 - [Chrome](https://www.google.com/chrome/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/)
@@ -153,7 +153,7 @@ In a load testing, **correlation** means extracting one or more values from the 
 
 The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.
 
-To run your load test correctly, you may need to replace the hardcoded data with dynamic data that k6 gets from previous requests. For example, tokens will expire quickly and it is one of the most common things that users will correlate from a recorded session.
+To run your load test correctly, you may need to replace the hard coded data with dynamic data that k6 gets from previous requests. For example, tokens will expire quickly and it is one of the most common things that users will correlate from a recorded session.
 
 [Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
 

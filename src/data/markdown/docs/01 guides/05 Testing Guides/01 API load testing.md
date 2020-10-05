@@ -59,9 +59,9 @@ While hammering is good in some cases, e.g. if you want to test endpoints in iso
 
 ### User flow (scenarios) testing
 
-In the following example, you see four consecutive [HTTP requests](/using-k6/http-requests) to your API to log in, fetch user profile, update user profile and finally log out. Each request has unique characteristics, accepts some parameters and finally returns a [response](/javascript-api/k6-http/response), which is [check](/using-k6/checks)ed against a set of rules. We also pause after each request and response, for the API to be able to keep up and not be flooded. There are also a set of options at the top, that defines load test [options](/using-k6/options) in your script.
+In the following example, you see four consecutive [HTTP requests](/using-k6/http-requests) to your API to log in, fetch user profile, update user profile and finally log out. Each request has unique characteristics, accepts some parameters and finally returns a [response](/javascript-api/k6-http/response), which is [check](/using-k6/checks)ed against a set of rules. We also pause after each request and response, for the API to be able to keep up and not be flooded. In the beginning of the script, we've also added a set of [options](/using-k6/options) used to control your script.
 
-The `iterations` is a number that specifies how many iterations (executions) of the script per VU should happen, which is divided by the number of virtual users. The `vus` is a number specifying the number of concurrent sessions (virtual users) to your API. So from `iterations` and `vus` you deduct that you'll likely run each VU around 10 iterations, depending on your API response time and network roundtrip.
+`iterations` is a number that specifies how many iterations (executions) of the script per VU should happen, which is divided by the number of virtual users. `vus` is a number specifying the number of concurrent sessions (virtual users) to your API. So from `iterations` and `vus` you deduct that you'll likely run each VU around 10 iterations, depending on your API response time and network roundtrip.
 
 As you can see, this is a fairly normal, yet simple, user flow that tries to mimic the user behavior while using our mobile App or website. For the sake of simplicity, only four requests has been shown, but you can easily add additional requests to be able to have a more realistic user experience. This way you can test the flow of your users' navigation in your application or platform. This is the point that distinguishes k6 from most of the currently available load testing tools, in that it can be used to test realistic user flows, instead of just relying on hammering a set of endpoints.<!-- The [open source load testing tool review 2020](https://blog.loadimpact.com/comparing-best-open-source-load-testing-tools) blog post goes into details of all the open source load testing tools available today, and tries to dig deep into their pros and cons, performance and developer experience. This is particularly important, because it gives you a more holistic view of the user experience and your system's performance under load, while hammering gives you a more narrow view of your system. -->
 
@@ -142,7 +142,7 @@ The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, wh
 
 ## Test creation
 
-There are various ways to create a test and eventually run it using k6. You can write your tests in your favorite editor, convert your existing Postman collections and Swagger/OpenAPI specification documents to scripts or use proxy recording as HAR files and convert them to k6 scripts. The recommended way is definitely to write your own scripts. The other tools are available just to help you with onboarding to k6. There's a rich set of tools that can help you create load tests and run them to gain insight into your system.
+It is possible to create a test, and eventually run it in k6, in multiple ways. You can write your tests in your favorite editor, convert your existing Postman collections and Swagger/OpenAPI specification documents to scripts or use proxy recording as HAR files and convert them to k6 scripts. The recommended way is definitely to write your own scripts. The other tools are available just to help you with onboarding to k6. There's a rich set of tools that can help you create load tests and run them to gain insight into your system.
 
 ![Our tools](./images/our-tools.png)
 
@@ -182,7 +182,7 @@ Originally called [FiddlerToLoadImpact](https://github.com/loadimpact/FiddlerToL
 
 As said in the introduction, it is crucial to test your API in advance, rather than relying on the untested API, which may crash at any time and have unexpected consequences.
 
-There are various ways to test your API, each pertaining to a particular test type and each producing a different type of load.
+You can test your API in multiple ways, each pertaining to a particular test type and each producing a different type of load.
 
 - [Smoke test](/test-types/smoke-testing)
 - [Load test](/test-types/load-testing)

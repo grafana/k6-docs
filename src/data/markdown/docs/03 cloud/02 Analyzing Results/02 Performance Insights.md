@@ -30,8 +30,8 @@ Errors that occur early on are typically not considered to be performance relate
 With that in mind, there are a number of non-performance related reasons for errors, which includes, but is not limited to:
 
 - You're making invalid requests:
-  - Invalid URLs, eg. with a typo in it or a hostname that is not in the public DNS system.
-  - Missing required headers, eg. authentication/authorization headers or user-agent.
+  - Invalid URLs, e.g. with a typo in it or a hostname that is not in the public DNS system.
+  - Missing required headers, e.g. authentication/authorization headers or user-agent.
   - Sending the wrong body data.
 - You're trying to test a system that's behind a firewall.
 - You're hitting a rate limit.
@@ -104,12 +104,12 @@ Groups are meant to organize and provide an overview of your result tests allowi
 ```javascript
 import { group } from 'k6';
 
-export default function() {
-  group('user flow: returning user', function() {
-    group('visit homepage', function() {
+export default function () {
+  group('user flow: returning user', function () {
+    group('visit homepage', function () {
       // load homepage resources
     });
-    group('login', function() {
+    group('login', function () {
       // perform login
     });
   });

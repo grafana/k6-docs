@@ -40,11 +40,10 @@ channel on [Slack](https://k6.io/slack/).
 ## Contributing
 
 Interested in contributing to the k6 project? We're super-excited to have you! 🥳
-There are multiple ways in which you could contribute to the project, you'll find
-some ideas below:
+You can contribute to the project in multiple ways. You'll find some ideas below:
 
 - Report bugs and features.
-- Contributing to the development through open issues on Github If the issue is complex,
+- Contributing to the development through open issues on GitHub If the issue is complex,
   it's usually a good idea to discuss your approach in the issue before you start writing
   code. We have issues labeled as good first issue that have a limited scope.
 - Blog about k6. Contact us on [Slack](https://k6.io/slack/) if you would like your post to
@@ -60,4 +59,4 @@ some ideas below:
 | I got this error and I'm sure it's a bug   | [File an issue](https://github.com/loadimpact/k6/issues)                                                                                              |
 | Why do you? When will you?                 | [Slack](https://k6.io/slack/)                                                                                                                         |
 | I want to contribute/help with development | Start here, then proceed to [Slack](https://k6.io/slack/) and [issues](https://github.com/loadimpact/k6/issues)                                       |
-| I want to write or give a talk about k6 | Reach us on [Slack](https://k6.io/slack/) to see how we can help you                                       |
+| I want to write or give a talk about k6    | Reach us on [Slack](https://k6.io/slack/) to see how we can help you                                                                                  |

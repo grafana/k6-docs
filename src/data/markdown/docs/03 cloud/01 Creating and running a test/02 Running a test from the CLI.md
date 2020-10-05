@@ -186,10 +186,10 @@ You have two options to pass the Project ID to k6:
 
 When running a k6 test in the cloud we add two tags to all metrics:
 
-| Tag name      | Type   | Description                                                                                              |
-| ------------- | ------ | -------------------------------------------------------------------------------------------------------- |
-| `load_zone`   | string | The load zone from where the the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
-| `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.                  |
+| Tag name      | Type   | Description                                                                                          |
+| ------------- | ------ | ---------------------------------------------------------------------------------------------------- |
+| `load_zone`   | string | The load zone from where the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
+| `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.              |
 
 The cloud tags are automatically added when collecting the test metrics, and they work as regular tags.
 
@@ -264,7 +264,7 @@ When running in the k6 Cloud there will be three additional environment variable
 
 | Name              | Value  | Description                                                                                                                                              |
 | ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `LI_LOAD_ZONE`    | string | The load zone from where the the metric was collected. Values will be of the form: amazon:us :ashburn (see list above).                                  |
+| `LI_LOAD_ZONE`    | string | The load zone from where the metric was collected. Values will be of the form: amazon:us :ashburn (see list above).                                      |
 | `LI_INSTANCE_ID`  | number | A sequential number representing the unique ID of a load generator server taking part in the test, starts at 0.                                          |
 | `LI_DISTRIBUTION` | string | The value of the "distribution label" that you used in `ext.loadimpact.distribution` corresponding to the load zone the script is currently executed in. |
 
