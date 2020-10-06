@@ -67,7 +67,7 @@ The environment variables for the command are:
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `K6_DATADOG_ADDR`          | Address of the DogsStatsD service, currently only UDP is supported. The default value is `localhost:8125`.                        |
 | `K6_DATADOG_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6.`                                               |
-| `K6_DATADOG_PUSH_INTEVAL`  | Configure how often data batches are sent. The default value is `1s`.                                                             |
+| `K6_DATADOG_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                                             |
 | `K6_DATADOG_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                                                       |
 | `K6_DATADOG_TAG_BLACKLIST` | This is a comma-separated list of tags that should NOT be sent to Datadog. For example, "tag1, tag2". The default value is empty. |
 
