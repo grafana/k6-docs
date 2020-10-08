@@ -1106,6 +1106,10 @@ export let options = {
 
 ### VUs Max
 
+> #### ⚠️ Keep in mind!
+>
+> This option was deprecated in k6 version 0.27.0. 
+
 A number specifying max number of virtual users, if more than `vus`. This option is typically
 used when the intent is to dynamically scale the amount of VUs up and down during the test using
 the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
