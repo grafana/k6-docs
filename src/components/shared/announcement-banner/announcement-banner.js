@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 import { Button } from '../button';
 
@@ -11,10 +11,9 @@ const AnnouncementBanner = ({
   text,
   link,
   buttonText,
-  closeButtonHandler,
+  dismissButtonClickHandler,
+  readMoreButtonClickHandler,
   storageItemName,
-  buttonId,
-  closeButtonId,
 }) => {
   const [isShown, setIsShown] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
@@ -28,65 +27,60 @@ const AnnouncementBanner = ({
     return false;
   });
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const initialState = window.sessionStorage.getItem(storageItemName);
-      if (!initialState && !isMobile) {
-        setAnimateIn(true);
-        window.sessionStorage.setItem(storageItemName, true);
-      }
+  useLayoutEffect(() => {
+    const initialState = window?.sessionStorage.getItem(storageItemName);
+    if (!initialState && !isMobile) {
+      setAnimateIn(true);
+      window.sessionStorage.setItem(storageItemName, true);
     }
     setIsShown(true);
   }, []);
 
   const onTransitionEndHandler = () => {
     if (animateOut) {
-      closeButtonHandler();
+      dismissButtonClickHandler();
     }
   };
 
   const onCloseButtonClick = isMobile
-    ? closeButtonHandler
+    ? dismissButtonClickHandler
     : () => setAnimateOut(true);
 
-  return (
-    isShown && (
-      <div
-        className={classNames(
-          styles.wrapper,
-          { [styles.in]: animateIn },
-          { [styles.out]: animateOut },
-        )}
-        onTransitionEnd={isMobile ? undefined : onTransitionEndHandler}
-      >
-        <div className={styles.backgroundPatternWrapper}>
-          <Pattern />
-          <Pattern />
-        </div>
-        <div className={'container'}>
-          <div className={styles.inner}>
-            <p className={styles.message}>{text}</p>
-            <Button
-              id={buttonId}
-              tag="a"
-              rel="noreferrer"
-              href={link}
-              className={styles.btn}
-              size={'sm'}
-            >
-              {buttonText}
-            </Button>
-          </div>
-        </div>
-        <button
-          id={closeButtonId}
-          type="button"
-          className={styles.btnClose}
-          onClick={onCloseButtonClick}
-        />
+  return isShown ? (
+    <div
+      className={classNames(
+        styles.wrapper,
+        { [styles.in]: animateIn && !animateOut },
+        { [styles.out]: animateOut },
+      )}
+      onTransitionEnd={isMobile ? undefined : onTransitionEndHandler}
+    >
+      <div className={styles.backgroundPatternWrapper}>
+        <Pattern />
+        <Pattern />
       </div>
-    )
-  );
+      <div className={'container'}>
+        <div className={styles.inner}>
+          <p className={styles.message}>{text}</p>
+          <Button
+            tag="a"
+            rel="noreferrer"
+            href={link}
+            className={styles.btn}
+            size={'sm'}
+            onClick={readMoreButtonClickHandler}
+          >
+            {buttonText}
+          </Button>
+        </div>
+      </div>
+      <button
+        type="button"
+        className={styles.btnClose}
+        onClick={onCloseButtonClick}
+      />
+    </div>
+  ) : null;
 };
 
 AnnouncementBanner.propTypes = {
@@ -94,9 +88,8 @@ AnnouncementBanner.propTypes = {
   link: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
   storageItemName: PropTypes.string.isRequired,
-  buttonId: PropTypes.string.isRequired,
-  closeButtonId: PropTypes.string.isRequired,
-  closeButtonHandler: PropTypes.func.isRequired,
+  dismissButtonClickHandler: PropTypes.func.isRequired,
+  readMoreButtonClickHandler: PropTypes.func.isRequired,
 };
 
 export default AnnouncementBanner;

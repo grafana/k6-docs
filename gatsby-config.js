@@ -9,6 +9,8 @@ const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
 const isStaging = mainURL === 'https://staging.k6.io/docs';
 
+const shouldAnnouncementBannerBeShown = true;
+
 const plugins = [
   'gatsby-plugin-react-helmet',
   {
@@ -210,38 +212,47 @@ if (
   });
 }
 
-const enableBanner = false;
-if (enableBanner) {
+if (shouldAnnouncementBannerBeShown) {
+  // See more on how it works:
   // https://github.com/loadimpact/new.k6.io/pull/102
-  plugins.push({
-    resolve: 'gatsby-plugin-announcement-banner',
-    options: {
-      banner: {
-        componentPath: path.join(
-          __dirname,
-          './src/components/shared/announcement-banner/announcement-banner.js',
-        ),
-        text:
-          'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
-        link: 'https://k6.io/docs/using-k6/scenarios',
-        buttonText: 'Learn more',
-        // tags for analytics
-        linkButtonId: '#banner-readmore-button',
-        closeButtonId: '#banner-dismiss-button',
-      },
-      // settings below have to match
-      // settings in other repos to avoid
-      // upredictable behavior
-      cookie: {
-        name: 'k6-announcement-banner-is-hidden',
-        expiration: {
-          days: 60,
-        },
-      },
-      storage: {
-        name: 'k6-ab-was-shown',
+  const options = {
+    banner: {
+      componentPath: path.join(
+        __dirname,
+        './src/components/shared/announcement-banner/announcement-banner.js',
+      ),
+      text:
+        'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
+      link: 'https://k6.io/docs/using-k6/scenarios',
+      buttonText: 'Learn more',
+    },
+    // settings below have to match
+    // settings in other repos to avoid
+    // unpredictable behavior
+    cookie: {
+      name: 'k6-announcement-banner-is-hidden',
+      consentBannerCookieName: 'user-has-accepted-cookies',
+      expiration: {
+        days: 60,
       },
     },
+    storage: {
+      name: 'k6-ab-was-shown',
+    },
+  };
+  if (isProduction) {
+    // enabling GA in prod
+    options.ga = {
+      label: 'docs',
+      action: 'Click',
+      readMoreButtonCategory: 'BannerAnnouncementReadMore',
+      dismissButtonCategory: 'BannerAnnouncementDismiss',
+    };
+  }
+
+  plugins.push({
+    resolve: 'gatsby-plugin-announcement-banner',
+    options,
   });
 }
 

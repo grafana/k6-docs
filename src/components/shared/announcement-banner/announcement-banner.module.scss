@@ -1,27 +1,27 @@
 @keyframes in {
   0% {
     height: 0;
-    transform: translate3d(0px, -100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -100%, 0px);
   }
   100% {
     height: 60px;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px);
   }
 }
 @keyframes out {
   0% {
     height: 60px;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px);
   }
   100% {
     height: 0px;
-    transform: translate3d(0px, -100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, -100%, 0px);
   }
 }
 
 .in {
   height: 0;
-  transform: translate3d(0px, -100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform: translate3d(0px, -100%, 0px);
   animation-name: in;
   animation-delay: 1s;
   animation-duration: 0.5s;
@@ -30,7 +30,7 @@
 }
 .out {
   height: 60px;
-  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform: translate3d(0px, 0px, 0px);
   animation-name: out;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
@@ -43,7 +43,6 @@
   position: relative;
   height: 60px;
   align-items: center;
-  transition: all 0.5s ease-in-out;
   overflow: hidden;
   @include xs-down {
     padding: 20px 0;

@@ -1,5 +1,6 @@
 /* eslint-disable */
 const React = require('react');
+const { trackCustomEvent } = require('gatsby-plugin-google-analytics');
 const {
   Cookies,
   CookiesProvider,
@@ -8,14 +9,42 @@ const {
 
 exports.wrapPageElement = ({ element }, pluginOptions) => {
   const {
-    banner: { text, link, buttonText, linkButtonId, closeButtonId },
-    cookie: { name, expiration },
+    banner: { text, link, buttonText },
+    cookie: { name, expiration, consentBannerCookieName },
     storage: { name: storageItemName },
+    ga: { label, action, readMoreButtonCategory, dismissButtonCategory } = {},
   } = pluginOptions;
   const BannerComponent = require(__AnnouncementBannerComponent__).default;
   const cookies = new Cookies({ [name]: true });
+
+  const isGAEnabled =
+    label && action && readMoreButtonCategory && dismissButtonCategory;
+
+  const readMoreButtonClickHandler = () => {
+    if (isGAEnabled) {
+      trackCustomEvent({
+        label,
+        action,
+        category: readMoreButtonCategory,
+      });
+    }
+  };
+
+  const closeButtonClickHandler = (cb) => () => {
+    if (isGAEnabled) {
+      trackCustomEvent({
+        label,
+        action,
+        category: dismissButtonCategory,
+      });
+    }
+    cb();
+  };
+  if (!cookies.get(consentBannerCookieName)) {
+    return element;
+  }
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <CookiesProvider cookies={cookies}>
         <CookieBannerUniversal
           disableStyle
@@ -30,15 +59,14 @@ exports.wrapPageElement = ({ element }, pluginOptions) => {
               text={text}
               link={link}
               buttonText={buttonText}
-              closeButtonHandler={onAccept}
+              readMoreButtonClickHandler={readMoreButtonClickHandler}
+              dismissButtonClickHandler={closeButtonClickHandler(onAccept)}
               storageItemName={storageItemName}
-              buttonId={linkButtonId}
-              closeButtonId={closeButtonId}
             />
           )}
         </CookieBannerUniversal>
       </CookiesProvider>
       {element}
-    </>
+    </div>
   );
 };
