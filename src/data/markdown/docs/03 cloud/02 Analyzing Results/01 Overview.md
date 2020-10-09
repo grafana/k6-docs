@@ -15,11 +15,11 @@ The top of the page provides a breadcrumb menu and an overview of details about 
 
 The breadcrumb menu allows to quickly navigate between the latest runs of the test, the test page or all the tests in the current project.
 
-![Test result navigation](/images/01-Overview/test-run-navigation.png)
+![Test result navigation](./images/01-Overview/test-run-navigation.png)
 
 Additionally, you can see metadata about the current test. Status, Duration, VUs, Regions used, and who started a test. To the write, you have various buttons and menus to let you re-run, share, compare, configure, or delete your test.
 
-![Test result metadata](/images/01-Overview/test-metadata.png)
+![Test result metadata](./images/01-Overview/test-metadata.png)
 
 ## Performance Overview
 

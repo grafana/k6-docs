@@ -7,7 +7,7 @@ By default, the `k6 run` command prints runtime information and general results 
 
 ## Standard output
 
-![k6 results - console/stdout output](/images/k6-results-stdout.png)
+![k6 results - console/stdout output](./images/k6-results-stdout.png)
 
 When k6 displays the results to `stdout`, it will show the k6 logo and the following test information:
 

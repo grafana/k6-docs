@@ -9,13 +9,13 @@ Opens a file, reading all its contents into memory for use in the script. Favour
 
 <Blockquote mod='warning'>
 
-> #### Function only available in "init context"
->
-> This is a function that can only be called from the init context (aka `init code`), code in the global context that is, outside of the main export default function { ... }.
->
-> By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
->
-> See example further down on this page. For more in-depth description see [Running k6](/getting-started/running-k6).
+#### Function only available in "init context"
+
+This is a function that can only be called from the init context (aka `init code`), code in the global context that is, outside of the main export default function { ... }.
+
+By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
+
+See example further down on this page. For more in-depth description see [Running k6](/getting-started/running-k6).
 
 </Blockquote>
 

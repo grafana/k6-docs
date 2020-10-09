@@ -59,7 +59,7 @@ execution: local
 
 </div>
 
-![k6 Cloud Test Results](/images/Cloud/k6-cloud-results.png)
+![k6 Cloud Test Results](./images/Cloud/k6-cloud-results.png)
 
 ## See also
 

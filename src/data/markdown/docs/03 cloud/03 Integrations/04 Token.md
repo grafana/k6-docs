@@ -9,26 +9,26 @@ Below are some examples on how to utilize the token to authenticate.
 
 <Blockquote mod="warning">
 
-> #### Google/GitHub Single Sign-On Users
->
-> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 cloud account email and password. You will need to create a password by using [Forgot Password](), or you'll instead need to <a href="https://app.k6.io/account/token"> get your API authentication token from the app</a> and supply that explicitly: `k6 login cloud --token YOUR_API_AUTH_TOKEN`.
-> <a href="#authenticating-with-api-token">See below</a> for more information.
+#### Google/GitHub Single Sign-On Users
+
+For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 cloud account email and password. You will need to create a password by using [Forgot Password](), or you'll instead need to <a href="https://app.k6.io/account/token"> get your API authentication token from the app</a> and supply that explicitly: `k6 login cloud --token YOUR_API_AUTH_TOKEN`.
+<a href="#authenticating-with-api-token">See below</a> for more information.
 
 </Blockquote>
 
 <Blockquote mod="warning">
 
-> #### Docker Users
->
-> If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 cloud API authentication information (an API authentication token) will be stored to is persisted via a Docker volume to the host machine using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag, e.g. `docker run -i -v /path/on-host:/path/in-container/ loadimpact/k6 login cloud -c /path/in-container/config.json`.
+#### Docker Users
+
+If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 cloud API authentication information (an API authentication token) will be stored to is persisted via a Docker volume to the host machine using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag, e.g. `docker run -i -v /path/on-host:/path/in-container/ loadimpact/k6 login cloud -c /path/in-container/config.json`.
 
 </Blockquote>
 
 <Blockquote mod="warning">
 
-> #### Integrating with CI
->
-> If you are integrating k6 into your CI pipeline, we recommend using one of the token methods to authenticate and not exposing your username/password within your CI configuration files or as variables.
+#### Integrating with CI
+
+If you are integrating k6 into your CI pipeline, we recommend using one of the token methods to authenticate and not exposing your username/password within your CI configuration files or as variables.
 
 </Blockquote>
 

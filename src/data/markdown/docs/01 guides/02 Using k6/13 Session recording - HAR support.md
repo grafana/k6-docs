@@ -33,7 +33,7 @@ Multiple browsers and tools can be used to export HTTP traffic in a HAR format. 
 - [Chrome](https://www.google.com/chrome/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/)
 - [Microsoft Edge](https://www.microsoft.com/en-us/windows/microsoft-edge)
-- [Charles recording proxy ](http://www.charlesproxy.com/)(HTTP proxy/recorder)
+- [Charles recording proxy](http://www.charlesproxy.com/)(HTTP proxy/recorder)
 - [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
 
 Here are the basic steps you need to take to make a recording in Chrome:
@@ -46,7 +46,7 @@ Here are the basic steps you need to take to make a recording in Chrome:
 6. Enter the URL of your site and start doing whatever you'd like your simulated load test users to be doing.
 7. When done, right-click on the list of URLs in Chrome developer tools and choose "Save as HAR with content".
 
-![Save HAR for load testing](/images/Session-recording-HAR-support/session_recorder_save_as_har.png)
+![Save HAR for load testing](./images/Session-recording-HAR-support/session_recorder_save_as_har.png)
 
 It's good to have in consideration the following best practices to record a user session:
 

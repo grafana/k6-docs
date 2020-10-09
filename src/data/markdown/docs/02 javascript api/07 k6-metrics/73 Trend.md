@@ -34,10 +34,10 @@ The unit of these variables and functions are all in milliseconds.
 
 <Blockquote mod="warning">
 
-> #### ⚠️ Don't use `min` and `max` in thresholds.
->
-> We don't recommend using `min` and `max` for specifying thresholds because these
-> values represent outliers. Use percentiles instead.
+#### ⚠️ Don't use `min` and `max` in thresholds
+
+We don't recommend using `min` and `max` for specifying thresholds because these
+values represent outliers. Use percentiles instead.
 
 </Blockquote>
 

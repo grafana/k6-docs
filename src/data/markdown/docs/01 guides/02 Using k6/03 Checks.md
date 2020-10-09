@@ -85,8 +85,8 @@ export default function () {
   const result = check(res, {
     'status is 200': (r) => r.status == 200,
   });
-  
-  errorRate.add(result ? 0 : 1)
+
+  errorRate.add(result ? 0 : 1);
 }
 ```
 
@@ -117,4 +117,4 @@ In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available 
 Here we can quickly see what checks are failing, and upon clicking on any check, see the count of passes/failures
 at given points in the test. You can also add the check to the analysis tab, for further comparison with other metrics.
 
-![k6 Cloud Checks Tab](/images/Checks/cloud-insights-checks-tab.png)
+![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)

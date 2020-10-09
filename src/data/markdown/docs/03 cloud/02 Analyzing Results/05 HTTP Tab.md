@@ -9,7 +9,7 @@ The HTTP Tab allow you to inspect individual HTTP requests made in your test. Th
 
 On this tab, we can easily see `HTTP` requests with failures that have failures. Take notice of the &#10003; on the left of each row. If we had failures they would be marked with a &#10005;
 
-![HTTP Tab](/images/05-HTTP-Tab/http-tab.png)
+![HTTP Tab](./images/05-HTTP-Tab/http-tab.png)
 
 When you click on a row to expand, you can also:
 
@@ -17,6 +17,6 @@ When you click on a row to expand, you can also:
 - Change the aggregation (Mean, Median, Min, Max, Std Deviation, or 95th percentile)
 - Add the chart (plus additional metrics) to the analysis tab.
 
-![HTTP Tab](/images/05-HTTP-Tab/http-tab-graph.png)
+![HTTP Tab](./images/05-HTTP-Tab/http-tab-graph.png)
 
 Next, [Analysis Tab](/cloud/analyzing-results/analysis-tab)

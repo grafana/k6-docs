@@ -37,7 +37,7 @@ For example, it is often an **anti-pattern** to use `logs` to:
 
 The Logs Tab allows you to view and filter log messages in the Cloud Results page.
 
-![Cloud Logs Tab](/images/11-Cloud-Logs/cloud-logs-output-messages.png)
+![Cloud Logs Tab](./images/11-Cloud-Logs/cloud-logs-output-messages.png)
 
 In addition to the log messages, the log panel shows context information such as:
 
@@ -58,7 +58,7 @@ Each JavaScript log statement has a severity level:
 
 You can filter messages by severity level and load zone. The load zone filter is only present when your test has been executed in two or more load zones.
 
-![Cloud Logs Tab with Filter](/images/11-Cloud-Logs/cloud-logs-output-messages-with-filter.png)
+![Cloud Logs Tab with Filter](./images/11-Cloud-Logs/cloud-logs-output-messages-with-filter.png)
 
 ## Logging limitations
 
@@ -69,7 +69,7 @@ For this reason, the cloud logs have some limitations:
 - The logs are deleted 3 days after the test execution.
 - The number of log lines is limited to 10 messages per second per server. If this limit is crossed, a warning messages appears showing the number of discarded log lines.
 
-![Cloud Logs Tab Drop Message](/images/11-Cloud-Logs/cloud-logs-output-drop-messages.png)
+![Cloud Logs Tab Drop Message](./images/11-Cloud-Logs/cloud-logs-output-drop-messages.png)
 
 ## Cloud logs on the CLI
 
@@ -77,7 +77,7 @@ k6 aims to have a consistent experience when running local and cloud tests.
 
 When running cloud tests using the CLI (`k6 cloud`), k6 will print cloud logs on the standard output as it does with your local tests.
 
-![Cloud Logs Tab in CLI](/images/11-Cloud-Logs/cloud-logs-cli-output.png)
+![Cloud Logs Tab in CLI](./images/11-Cloud-Logs/cloud-logs-cli-output.png)
 
 If you don't want the cloud logs to be printed on the terminal, add the `--show-logs=false` argument.
 

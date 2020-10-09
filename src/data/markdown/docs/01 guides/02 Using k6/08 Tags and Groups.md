@@ -189,6 +189,6 @@ When using Groups, [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http
 can be viewed by group, as shown below. You can switch between the group and list layout by changing the "view as"
 selection in the top right.
 
-![k6 Cloud URL Grouping](/images/Tags-and-Groups/cloud-insights-http-tab.png)
+![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
 
 Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab).

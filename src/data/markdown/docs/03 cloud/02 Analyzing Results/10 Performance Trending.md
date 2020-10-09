@@ -11,10 +11,10 @@ The performance trending graph is automatically created as you continue to run y
 
 Directly from the dashboard you can see all of your tests and the status of the test runs. This view is helpful to get a high level view of how performance is trending over time. In our example below, we can see a `Demo with Cloud Execution` is currently running, but has quite a few failures before this test run. Our script, `api.js` is passing and trending down, which is a good sign.
 
-![Dashboard Performance Trending](/images/09-Performance-Trending/dashboard-perf-trending.png)
+![Dashboard Performance Trending](./images/09-Performance-Trending/dashboard-perf-trending.png)
 
 ## Test Performance Trending
 
 By clicking on the name of any of your tests will bring you to a performance trending graph for that specific test run. We show more data points over time in this graph. You can see more information by hovering over any bar in the graph. This test has stable response times between test runs, but is failing by [Thresholds](/using-k6/thresholds)
 
-![Performance Trending](/images/09-Performance-Trending/performance-trending.png)
+![Performance Trending](./images/09-Performance-Trending/performance-trending.png)
