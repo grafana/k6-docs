@@ -70,7 +70,7 @@ The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS t
 
 **Install the har-to-k6 converter**
 
-A prerequisite is to have installed NodeJS. To install the converter, you can use `npm`:
+A prerequisite is to have installed NodeJS (version >=11.0.0). To install the converter, you can use `npm`:
 
 ```bash
 $ npm install -g har-to-k6
