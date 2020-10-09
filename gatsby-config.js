@@ -9,7 +9,10 @@ const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
 const isStaging = mainURL === 'https://staging.k6.io/docs';
 
-const shouldAnnouncementBannerBeShown = true;
+// @TODO: please, do not enable it just yet,
+// for some reason dynamically created pages get
+// broken layout in prod, investigation is in WIP (K.)
+const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
   'gatsby-plugin-react-helmet',

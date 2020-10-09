@@ -45,7 +45,7 @@ exports.wrapPageElement = ({ element }, pluginOptions) => {
   }
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <CookiesProvider cookies={cookies}>
         <CookieBannerUniversal
           disableStyle
@@ -68,6 +68,6 @@ exports.wrapPageElement = ({ element }, pluginOptions) => {
         </CookieBannerUniversal>
       </CookiesProvider>
       {element}
-    </>
+    </div>
   );
 };
