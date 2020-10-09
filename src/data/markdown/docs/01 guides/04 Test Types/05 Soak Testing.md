@@ -77,12 +77,13 @@ The VU chart of a Soak Test should look similar to this:
 
 <Blockquote mod="warning">
 
-> #### Make a cost estimate before starting a soak test
->
-> Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your
-> infrastructure and vendor costs may be significant.
-> If you are testing a website, you should consider excluding your CDN from the test.
-> If your system makes use of external services, you may want to calculate the cost before you start the test.
+#### Make a cost estimate before starting a soak test
+
+Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
+
+If you are testing a website, you should consider excluding your CDN from the test.
+
+If your system makes use of external services, you may want to calculate the cost before you start the test.
 
 </Blockquote>
 

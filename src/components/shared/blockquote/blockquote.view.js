@@ -1,9 +1,9 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import styles from './blockquote.module.scss';
 
 const Blockquote = ({ children, mod = 'default' }) => {
-  // prevent nesting blockquote tags
   // create optional kicker in case of modifications
   const getKicker = (mod) => {
     const kickers = {
@@ -19,7 +19,7 @@ const Blockquote = ({ children, mod = 'default' }) => {
       })}
     >
       {getKicker(mod)}
-      {mod === 'default' ? children : children.props.children}
+      {children}
     </blockquote>
   );
 };

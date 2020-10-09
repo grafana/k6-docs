@@ -132,6 +132,11 @@ async function createDocPages({ graphql, actions, reporter }) {
       );
       return;
     }
+    if (typeof remarkNode.frontmatter === 'undefined') {
+      reporter.warn(
+        `\nFrontmatter data is missing, unable to generate. Check the following file:\n\n ${relativeDirectory}/${name}`,
+      );
+    }
     const {
       frontmatter,
       frontmatter: { title, redirect, draft, slug: customSlug },

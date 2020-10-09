@@ -3,15 +3,15 @@ title: 'In-app script editor'
 excerpt: 'How to use the k6 in-app script editor'
 ---
 
-<blockquote mod="warning">
+<Blockquote mod="warning">
 
-> #### Limitations of the in-app editor
->
-> The in-app editor has access to all built-in k6 modules and remote modules available via
-> the web. If you need to import a custom library or file for parameterization, you
-> must trigger your test using the CLI.
+#### Limitations of the in-app editor
 
-</blockquote>
+The in-app editor has access to all built-in k6 modules and remote modules available via
+the web. If you need to import a custom library or file for parameterization, you
+must trigger your test using the CLI.
+
+</Blockquote>
 
 ## Background
 

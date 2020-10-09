@@ -9,7 +9,7 @@ The first step is to upload your test result metrics to a storage backend. And n
 
 This tutorial shows how to upload the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
 
-![Grafana Visualization](/images/InfluxDB-Grafana/grafana-visualization.png)
+![Grafana Visualization](./images/InfluxDB-Grafana/grafana-visualization.png)
 
 ## Installing InfluxDB
 
@@ -78,16 +78,16 @@ and a Grafana server on `http://localhost:3000`. Now, we show two different ways
 
 - Open `http://localhost:3000` (or wherever your Grafana installation is located) in your browser.
 - Create a data source:
-  ![Create Data Source](/images/InfluxDB-Grafana/grafana-create-data-source.png)
+  ![Create Data Source](./images/InfluxDB-Grafana/grafana-create-data-source.png)
 - Now create a dashboard. Here is the newly created dashboard:
-  ![Create Dashboard](/images/InfluxDB-Grafana/grafana-new-dashboard.png)
+  ![Create Dashboard](./images/InfluxDB-Grafana/grafana-new-dashboard.png)
 - Click `Graph` to create a new graph panel:
-  ![Create Graph Panel](/images/InfluxDB-Grafana/grafana-new-graph-panel.png)
+  ![Create Graph Panel](./images/InfluxDB-Grafana/grafana-new-graph-panel.png)
 - Click the `Panel title` and then `Edit` to set up the graph panel:
-  ![Edit Graph Panel](/images/InfluxDB-Grafana/grafana-configure-graph-panel.png)
+  ![Edit Graph Panel](./images/InfluxDB-Grafana/grafana-configure-graph-panel.png)
 - Set the panel data source to your `myk6db` database and click the `SELECT mean(value)...`
   statement to edit the metric:
-  ![Edit metric](/images/InfluxDB-Grafana/grafana-edit-metric.png)
+  ![Edit metric](./images/InfluxDB-Grafana/grafana-edit-metric.png)
 
 ## Preconfigured Grafana dashboards
 
@@ -99,9 +99,9 @@ Here we will list pre-made Grafana dashboard configurations contributed by users
 - [smockvavelsky](https://grafana.com/grafana/dashboards/10553)
 - [k m](https://grafana.com/grafana/dashboards/10660)
 
-To enable a contributed Grafana dashboard is simple: you just choose to "import" a dashboard in the Grafana UI and then specify the ID number of the dashboard you want, see http://docs.grafana.org/reference/export_import/ for more details.
+To enable a contributed Grafana dashboard is simple: you just choose to "import" a dashboard in the Grafana UI and then specify the ID number of the dashboard you want, see [http://docs.grafana.org/reference/export_import](http://docs.grafana.org/reference/export_import) for more details.
 
-![](/images/InfluxDB-Grafana/grafana-dave.png)
+![](./images/InfluxDB-Grafana/grafana-dave.png)
 
 ### Using our docker-compose setup
 

@@ -97,7 +97,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-![k6 Cloud Test Results](/images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
+![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
 
 Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
 
@@ -158,7 +158,7 @@ To create and run tests under a different project, whether under your default or
 
 Select the project on the sidebar menu and you will find the `Project ID` in the header of the Project Dashboard page.
 
-![k6 Cloud Project ID](/images/Running-a-test-from-the-CLI/dashboard-project-id.png 'Project ID')
+![k6 Cloud Project ID](./images/Running-a-test-from-the-CLI/dashboard-project-id.png 'Project ID')
 
 You have two options to pass the Project ID to k6:
 
@@ -195,7 +195,7 @@ The cloud tags are automatically added when collecting the test metrics, and the
 
 For example, you can filter the results for a particular load zone on the k6 Cloud Results view.
 
-![filter tags](/images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
+![filter tags](./images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
 
 Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
