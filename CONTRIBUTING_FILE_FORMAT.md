@@ -158,12 +158,13 @@ Another option is 'warning' mod, the syntax is following:
 ```md
 <Blockquote mod="warning">
 
-> #### Make a cost estimate before starting a soak test
->
-> Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your
-> infrastructure and vendor costs may be significant.
-> If you are testing a website, you should consider excluding your CDN from the test.
-> If your system makes use of external services, you may want to calculate the cost before you start the test.
+#### Make a cost estimate before starting a soak test
+
+Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
+
+If you are testing a website, you should consider excluding your CDN from the test.
+
+If your system makes use of external services, you may want to calculate the cost before you start the test.
 
 </Blockquote>
 ```
@@ -174,7 +175,9 @@ And the result is:
 
 _Pay attention to those empty lines between md block and a wrapper, they are required to correctly parsing._
 
-At the moment there are only three mods available, default, attention (no wrapper needed) and warning. If you need more, let us know.
+_Also pay attention, that usage of `Blockquote` requires omitting native `md` blockquote syntax, so you just put your content inside withou any `>` and you are good to go._
+
+At the moment there are only three mods available: `default`, `attention` (wrapper for both is optional) and warning (wrapper is required). If you need more, let us know.
 
 ## Code blocks
 
