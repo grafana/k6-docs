@@ -137,7 +137,9 @@ You have two options to skip third-party requests in your k6 script.
 
 In Chrome, you can use the DevTools Network Filter to select only particular domains. The Filter input accepts a Regex to match multiple domains.
 
-    `/loadimpact.com|cloudfront.net/`
+```shell
+/loadimpact.com|cloudfront.net/
+```
 
 ![Save HAR filter domain using regex](./images/Session-recording-HAR-support/session_recorder_filter_domain.png)
 

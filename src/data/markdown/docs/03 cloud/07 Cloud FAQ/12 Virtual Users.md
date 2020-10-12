@@ -35,7 +35,7 @@ Calculating the number of virtual users can be done by using this formula:
 
 <div class="code-group" data-props='{"labels": ["Formula for calculating the number of VUs needed"]}'>
 
-```
+```shell
 VUs = (hourly sessions * average session duration in seconds)/3600
 ```
 

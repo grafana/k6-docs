@@ -27,7 +27,7 @@ If we run it using `k6 run --http-debug script.js` we get output that looks like
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
-```text
+```shell
           /\      |‾‾|  /‾‾/  /‾/
      /\  /  \     |  |_/  /  / /
     /  \/    \    |      |  /  ‾‾\

@@ -52,7 +52,7 @@ If you're a Google/GitHub Single Sign-On (SSO) user or if you have a use case wh
 
 <div class="code-group" data-props='{"labels": ["Using API token"]}'>
 
-```C
+```shell
 k6 login cloud --token YOUR_API_AUTH_TOKEN
 ```
 
@@ -68,7 +68,7 @@ You can also directly add your k6 cloud API authentication token to a configurat
 
 <div class="code-group" data-props='{"labels": ["Linux", "MacOS", "Windows"], "lineNumbers": [true, true, true]}'>
 
-```
+```shell
 ${HOME}/.config/loadimpact/k6/config.json
 ```
 
@@ -76,7 +76,7 @@ ${HOME}/.config/loadimpact/k6/config.json
 ${HOME}/Library/Application Support/LoadImpact/k6/config.json
 ```
 
-```
+```shell
 C:\Users\&lt;User&gt;\AppData\Roaming\loadimpact\k6\config.json
 ```
 

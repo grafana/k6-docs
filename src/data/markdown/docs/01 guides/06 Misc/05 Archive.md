@@ -125,7 +125,7 @@ this:
 
 <div class="code-group" data-props='{"labels": ["Structure of archive.tar"], "lineNumbers": [true]}'>
 
-```text
+```shell
 ├-- data
 ├-- files
 |   └-- home

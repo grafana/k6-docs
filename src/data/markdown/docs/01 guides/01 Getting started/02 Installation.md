@@ -23,7 +23,7 @@ sudo apt-get install k6
 > command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
 > alternative approach instead:
 >
-> ```
+> ```shell
 > wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
 > ```
 
