@@ -60,4 +60,5 @@ For other EU organizations - please be sure to enter your VAT number in the bill
 
 ## Do you offer professional services or help with scripting?
 
-Yes - we have a professional services team that can be engaged to assist in your testing. This team can be utilized to just give a hand with scripting or execute entire projects based on your need. Please contact [sales](mailto:sales@k6.io) for more information. Note: Projects need to be scoped and typically require a 1-2 week lead time, depending on availability.
+Yes - we have a [professional services team](https://k6.io/professional-services) to help your organization with your performance testing projects. 
+
