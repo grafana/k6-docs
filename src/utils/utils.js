@@ -276,6 +276,11 @@ const mdxAstToPlainText = (ast) => {
   return $toString(ast);
 };
 
+// es5 tricky alternative to .flat
+// !warninng: support only 1 level deep
+// eslint-disable-next-line prefer-spread
+const flat = (arrays) => [].concat.apply([], arrays);
+
 /*
  * custom path processing rules, gatsby-node specific
  */
@@ -336,6 +341,9 @@ Object.defineProperties(utils, {
   },
   getRandomKey: {
     value: getRandomKey,
+  },
+  flat: {
+    value: flat,
   },
   stripDirectoryPath: {
     value: stripDirectoryPath,

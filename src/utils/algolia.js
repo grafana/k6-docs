@@ -9,6 +9,7 @@ const {
   dedupePath,
   removeGuidesAndRedirectWelcome,
   mdxAstToPlainText,
+  flat,
 } = require('./utils');
 
 const processMdxEntry = ({ children: [entry] }) => {
@@ -67,11 +68,10 @@ const flatten = (arr) => {
   while (pointer--) {
     cache[pointer] = processMdxEntry(arr[pointer]);
   }
-  return cache.flatMap((entry) => entry);
+  return flat(cache);
 };
 
 // main query
-// keep the length of excerpt really absurd to make sure the article comes in full
 const docPagesQuery = `{
   docPages: allFile(
     filter: { absolutePath: { regex: "/docs/" }, ext:{in: [".md"]} }
