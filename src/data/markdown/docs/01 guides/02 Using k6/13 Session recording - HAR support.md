@@ -139,13 +139,13 @@ In Chrome, you can use the DevTools Network Filter to select only particular dom
 
     `/loadimpact.com|cloudfront.net/`
 
-![Save HAR filter domain using regex](/images/Session-recording-HAR-support/session_recorder_filter_domain.png)
+![Save HAR filter domain using regex](./images/Session-recording-HAR-support/session_recorder_filter_domain.png)
 
 After filtering your selected domains, you can download the HAR file as described in the first step of this tutorial, and the HAR file will only include the requests to the selected domains.
 
 If you don’t know all the domains to filter, it is beneficial to use the query language of the Network Filter. Just input `domain:` in the filter to see all the different domains recorded by the Network Panel.
 
-![Save HAR filter domain list](/images/Session-recording-HAR-support/session_recorder_filter_domain_list.png)
+![Save HAR filter domain list](./images/Session-recording-HAR-support/session_recorder_filter_domain_list.png)
 
 ### Correlate dynamic data
 
