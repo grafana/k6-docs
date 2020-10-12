@@ -77,7 +77,7 @@ While running the test, k6 sends metrics periodically to Datadog. By default, th
 
 You can visualize k6 metrics in real-time with the [metrics explorer](https://docs.datadoghq.com/metrics/explorer/), [monitors](https://docs.datadoghq.com/monitors/), or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/).
 
-![Datadog visualizing performance testing metrics](images/Datadog/datadog-performance-testing-metrics.png)
+![Datadog visualizing performance testing metrics](./images/DataDog/datadog-performance-testing-metrics.png)
 
 <blockquote>
 
@@ -87,7 +87,7 @@ To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/us
 
 The first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list.
 
-![k6 Datadog Dashboard](images/Datadog/k6-datadog-dashboard.png)
+![k6 Datadog Dashboard](./images/DataDog/k6-datadog-dashboard.png)
 
 Optionally, you can install the k6 integration tile following these instructions:
 
