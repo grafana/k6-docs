@@ -1,3 +1,3 @@
-import HelperWidget from './helper-widget'
+import HelperWidget from './helper-widget';
 
-export default HelperWidget
+export default HelperWidget;

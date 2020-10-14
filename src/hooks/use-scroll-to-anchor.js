@@ -6,6 +6,7 @@ const useScrollToAnchor = () => {
 
   useEffect(() => {
     // check if given url contains hash (therefore an anchor)
+    // eslint-disable-next-line no-restricted-globals
     setScrollMark(location.hash);
 
     if (scrollMark) {

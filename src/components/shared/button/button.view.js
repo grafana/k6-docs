@@ -1,8 +1,9 @@
-import React from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'gatsby';
-import Loader from './loader.inline.svg';
+import React from 'react';
+
 import styles from './button.module.scss';
+import Loader from './loader.inline.svg';
 
 const cx = classNames.bind(styles);
 export const Button = (props) => {
@@ -40,18 +41,18 @@ export const Button = (props) => {
         <>
           <span className={styles.border}>
             <span className={styles.borderInner}>
-              <span className={styles.borderInnerSpace}/>
-              <span className={styles.borderInnerGradient}/>
+              <span className={styles.borderInnerSpace} />
+              <span className={styles.borderInnerGradient} />
             </span>
           </span>
 
           <span className={styles.blur}>
             <span className={styles.blurInner}>
-              <span className={styles.blurInnerSpace}/>
-              <span className={styles.blurInnerGradient}/>
+              <span className={styles.blurInnerSpace} />
+              <span className={styles.blurInnerGradient} />
             </span>
           </span>
-          <span className={styles.fill}/>
+          <span className={styles.fill} />
           <span className={styles.text}>
             {children}
             {cursor && (
@@ -65,17 +66,22 @@ export const Button = (props) => {
         </>
       ) : (
         <>
-            {loading && <div className={styles.loader}><Loader/></div>}
-            <span className={styles.buttonContent}>{children}
-              {cursor && (
-                <>
-                  {/* No-break space and > */}
-                  &nbsp;&gt;
-                  <span className={styles.cursor}>_</span>
-                </>
-              )}
-            </span>
-          </>
+          {loading && (
+            <div className={styles.loader}>
+              <Loader />
+            </div>
+          )}
+          <span className={styles.buttonContent}>
+            {children}
+            {cursor && (
+              <>
+                {/* No-break space and > */}
+                &nbsp;&gt;
+                <span className={styles.cursor}>_</span>
+              </>
+            )}
+          </span>
+        </>
       )}
     </>
   );
@@ -98,6 +104,7 @@ export const Button = (props) => {
       return (
         <button
           className={buttonClassName}
+          // eslint-disable-next-line react/button-has-type
           type={type}
           disabled={disabled}
           {...attributes}

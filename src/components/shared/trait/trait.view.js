@@ -6,7 +6,11 @@ export const Trait = (props) => {
   const { children, disadvantage, className = '' } = props;
 
   return (
-    <div className={`${styles.wrapper} ${disadvantage ? styles.wrapper_disadvantage : ''} ${className}`}>
+    <div
+      className={`${styles.wrapper} ${
+        disadvantage ? styles.wrapper_disadvantage : ''
+      } ${className}`}
+    >
       {children}
     </div>
   );

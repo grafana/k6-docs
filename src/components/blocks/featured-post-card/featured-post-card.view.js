@@ -1,11 +1,12 @@
-import React from 'react';
-import Img from 'gatsby-image';
-import styles from './featured-post-card.module.scss';
 import classNames from 'classnames';
-import { format } from 'date-fns';
 import { Button } from 'components/shared/button';
 import { Heading } from 'components/shared/heading';
+import { format } from 'date-fns';
+import Img from 'gatsby-image';
+import React from 'react';
 import { trimToLengthWithEllipsis } from 'utils';
+
+import styles from './featured-post-card.module.scss';
 
 export const FeaturedPostCard = ({
   gatsbyImageData,

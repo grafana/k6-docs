@@ -1,6 +1,7 @@
-import React from 'react';
-import Img from 'gatsby-image';
 import { Heading } from 'components/shared/heading';
+import Img from 'gatsby-image';
+import React from 'react';
+
 import styles from './external-links-dashboard.module.scss';
 
 export const ExternalLinksDashboard = ({ dashboardTitle, linksData }) => (
@@ -13,7 +14,7 @@ export const ExternalLinksDashboard = ({ dashboardTitle, linksData }) => (
         <li className={styles.linkWrapper} key={`exb-${i}`}>
           {picture && (
             <div className={styles.pictureWrapper}>
-              <Img fixed={picture}/>
+              <Img fixed={picture} />
             </div>
           )}
           <div className={styles.content}>

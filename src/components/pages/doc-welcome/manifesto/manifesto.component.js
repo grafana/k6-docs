@@ -1,7 +1,8 @@
-import React from 'react';
 import { Heading } from 'components/shared/heading';
-import styles from './manifesto.module.scss';
+import React from 'react';
 import { main } from 'utils/urls';
+
+import styles from './manifesto.module.scss';
 
 const bullets = [
   {

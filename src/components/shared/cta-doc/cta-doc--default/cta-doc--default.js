@@ -1,7 +1,8 @@
 import React from 'react';
-import { Heading } from 'components/shared/heading';
-import styles from './cta-doc--default.module.scss';
+
 import ButtonBg from '../svg/button-bg.inline.svg';
+
+import styles from './cta-doc--default.module.scss';
 
 export const CtaDocDefault = ({ title, description, Button }) => {
   return (

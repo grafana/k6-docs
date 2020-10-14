@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './quickstart.module.scss';
+
 import { ItemCardsRow } from '../../../blocks/item-cards-row';
+
+import styles from './quickstart.module.scss';
 
 const quickstart = {
   blockTitle: 'Quickstart',

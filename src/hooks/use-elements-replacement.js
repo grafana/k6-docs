@@ -24,6 +24,7 @@ const useElementsReplacement = (
           try {
             componentProps = JSON.parse(componentProps);
           } catch (e) {
+            // eslint-disable-next-line no-void
             void e;
           }
           // Render with container replacement.

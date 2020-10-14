@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './cookie-consent.module.scss';
+import { main } from 'utils/urls';
+
 import { Button } from '../button';
 
-import { main } from 'utils/urls';
+import styles from './cookie-consent.module.scss';
 
 const CookieConsent = ({ onAccept }) => (
   <div className={styles.wrapper}>
@@ -12,6 +13,7 @@ const CookieConsent = ({ onAccept }) => (
         cookies. Please, feel free read our{' '}
         <a
           className={'link'}
+          rel={'noreferrer'}
           target={'_blank'}
           href={`${main}/privacy-policy`}
         >

@@ -1,6 +1,6 @@
+import { Heading } from 'components/shared/heading';
 import * as React from 'react';
 
-import { Heading } from 'components/shared/heading';
 import styles from './doc-welcome-help.module.scss';
 
 export const Help = () => (

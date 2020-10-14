@@ -1,18 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { Link } from 'gatsby';
-import { PageInfo } from 'components/pages/doc-welcome';
-import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { CtaDoc } from 'components/shared/cta-doc';
-import { DocLayout } from 'layouts/doc-layout';
-import { Trait } from 'components/shared/trait';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
+import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import { PageInfo } from 'components/pages/doc-welcome';
+import { CtaDoc } from 'components/shared/cta-doc';
+import { Trait } from 'components/shared/trait';
+import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import { Link } from 'gatsby';
+import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
+import React, { useRef, useState, useEffect } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { isInIFrame } from 'utils';
-import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import SeoMetadata from 'utils/seo-metadata';
 import { app } from 'utils/urls';
-import { useScrollToAnchor } from 'hooks';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const [showFooter, setShowFooter] = useState(true);

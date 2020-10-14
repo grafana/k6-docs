@@ -1,11 +1,12 @@
-import * as React from 'react';
-import Img from 'gatsby-image';
 import classNames from 'classnames';
 import { Heading } from 'components/shared/heading';
 import {
   ItemCard,
   styles as itemCardStyles,
 } from 'components/shared/item-card';
+import Img from 'gatsby-image';
+import * as React from 'react';
+
 import styles from './item-cards-row.module.scss';
 
 export const ItemCardsRow = ({ blockTitle, cardsData, label }) => (

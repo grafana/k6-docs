@@ -1,8 +1,7 @@
-import * as React from 'react';
-
 import { Heading } from 'components/shared/heading';
 import { Trait } from 'components/shared/trait';
 import { Link } from 'gatsby';
+import * as React from 'react';
 
 import styles from './doc-welcome-features.module.scss';
 
@@ -12,8 +11,8 @@ export const Features = () => (
       Key features
     </Heading>
     <p>
-      k6 is packed with features, which you can learn all about in the documentation.
-      Key features include:
+      k6 is packed with features, which you can learn all about in the
+      documentation. Key features include:
     </p>
 
     <div className={'row'}>

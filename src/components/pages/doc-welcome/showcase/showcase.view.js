@@ -1,8 +1,8 @@
-import React from 'react';
 import { FeaturedPostCard } from 'components/blocks/featured-post-card';
 import { graphql, useStaticQuery } from 'gatsby';
-
+import React from 'react';
 import { getDateAndSlugFromPath } from 'utils';
+
 import styles from './showcase.module.scss';
 
 export const Showcase = () => {

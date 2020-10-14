@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import React, { useState, useLayoutEffect } from 'react';
 

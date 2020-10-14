@@ -1,9 +1,5 @@
-import React, { useRef } from 'react';
 import classNames from 'classnames';
-import { DocLayout } from 'layouts/doc-layout';
-import { Sticky, StickyContainer } from 'react-sticky';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import {
   Cloud,
   Features,
@@ -14,9 +10,13 @@ import {
 } from 'components/pages/doc-welcome';
 import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
+import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
+import React, { useRef } from 'react';
+import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
-import { useScrollToAnchor } from 'hooks';
 
 const pageInfo = {
   title: 'Welcome to the k6 documentation',

@@ -1,14 +1,14 @@
+import classNames from 'classnames';
+import { DocLinksBlock } from 'components/pages/doc-examples/doc-links-block';
+import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import { PageInfo } from 'components/pages/doc-welcome/page-info';
+import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import { graphql, useStaticQuery } from 'gatsby';
+import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
-import classNames from 'classnames';
-import { graphql, useStaticQuery } from 'gatsby';
-import { DocLayout } from 'layouts/doc-layout';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
-import { DocLinksBlock } from 'components/pages/doc-examples/doc-links-block';
-import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import SeoMetadata from 'utils/seo-metadata';
-import { useScrollToAnchor } from 'hooks';
-import TableOfContents from 'components/pages/doc-page/table-of-contents';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   useScrollToAnchor();

@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Heading } from 'components/shared/heading';
-import { Trait } from 'components/shared/trait';
+import * as React from 'react';
+
 import styles from './doc-welcome-what-is.module.scss';
 
 export const WhatIs = () => {
@@ -14,8 +14,8 @@ export const WhatIs = () => {
         for making performance testing a productive and enjoyable experience.
       </p>
       <p className={styles.description}>
-        Using k6, you'll be able to catch performance regression and problems
-        earlier, allowing you to build resilient systems and robust
+        Using k6, you&apos;ll be able to catch performance regression and
+        problems earlier, allowing you to build resilient systems and robust
         applications.
       </p>
     </section>

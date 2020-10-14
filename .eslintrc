@@ -58,12 +58,13 @@
       {
         "ignore": [
           "components",
+          "hooks",
           "images",
           "layouts",
           "pages",
-          "templates",
           "styles",
           "svg",
+          "templates",
           "utils"
         ]
       }

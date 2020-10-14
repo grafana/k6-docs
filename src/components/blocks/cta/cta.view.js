@@ -1,11 +1,8 @@
-import React from 'react';
-
-import { Heading } from 'components/shared/heading';
 import { Button } from 'components/shared/button';
 import { navigate } from 'gatsby';
+import React from 'react';
 
 import styles from './cta.module.scss';
-
 import ButtonBg from './svg/button-bg.inline.svg';
 
 export const CTA = ({
@@ -16,7 +13,6 @@ export const CTA = ({
   buttonRef,
   buttonTarget,
   openDrift,
-  openDriftMessage,
   themeLight,
 }) => (
   <section className={styles.wrapper}>
@@ -32,6 +28,7 @@ export const CTA = ({
 
               <div className={styles.buttonWrapper}>
                 {themeLight && <ButtonBg className={styles.buttonBg} />}
+                {/* eslint-disable-next-line no-nested-ternary */}
                 {openDrift ? (
                   <Button
                     className={styles.ctaButton}

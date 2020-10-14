@@ -1,25 +1,24 @@
-import React from 'react';
-import {
-  Cookies,
-  CookiesProvider,
-  CookieBannerUniversal,
-} from 'react-cookie-banner';
-import HelperWidget from 'components/shared/helper-widget';
-
+import { Footer } from 'components/blocks/footer';
 import {
   Header,
   HeaderNav,
   HeaderLogo,
   Burger,
 } from 'components/blocks/header';
-import { Footer } from 'components/blocks/footer';
 import { MobileNav } from 'components/blocks/mobile-nav';
-import { SEO } from 'components/shared/seo';
 import { Button } from 'components/shared/button';
+import CookieConsent from 'components/shared/cookie-consent';
+import HelperWidget from 'components/shared/helper-widget';
+import { SEO } from 'components/shared/seo';
+import React from 'react';
+import {
+  Cookies,
+  CookiesProvider,
+  CookieBannerUniversal,
+} from 'react-cookie-banner';
+import { app, main, blog, docs } from 'utils/urls';
 
 import styles from './default-layout.module.scss';
-import CookieConsent from 'components/shared/cookie-consent';
-import { app, main, blog, docs } from 'utils/urls';
 
 const cookies = new Cookies({ 'user-has-accepted-cookies': true });
 
@@ -107,7 +106,7 @@ export const DefaultLayout = ({ pageMetadata, children }) => {
           disableStyle
           cookie={'user-has-accepted-cookies'}
         >
-          {onAccept => <CookieConsent onAccept={onAccept} />}
+          {(onAccept) => <CookieConsent onAccept={onAccept} />}
         </CookieBannerUniversal>
       </CookiesProvider>
       <HelperWidget />

@@ -1,13 +1,14 @@
-import React from 'react';
-import { Heading } from 'components/shared/heading';
-import styles from './partners.module.scss';
 import classNames from 'classnames';
+import { Heading } from 'components/shared/heading';
+import React from 'react';
+
 import amazonLogo from './images/amazon.svg';
+import citrixLogo from './images/citrix.svg';
+import koneLogo from './images/kone.svg';
 import noaaLogo from './images/noaa.svg';
 import sephoraLogo from './images/sephora.svg';
-import citrixLogo from './images/citrix.svg';
 import uefaLogo from './images/uefa.svg';
-import koneLogo from './images/kone.svg';
+import styles from './partners.module.scss';
 
 export const Partners = ({ title }) => (
   <section className={styles.wrapper}>
@@ -17,7 +18,7 @@ export const Partners = ({ title }) => (
       </Heading>
       <div className={styles.logosWrapper}>
         <div className={styles.logoWrapper}>
-          <img className={styles.logo} src={amazonLogo} alt={'Amazon'}/>
+          <img className={styles.logo} src={amazonLogo} alt={'Amazon'} />
         </div>
         <div className={styles.logoWrapper}>
           <img
@@ -27,10 +28,10 @@ export const Partners = ({ title }) => (
           />
         </div>
         <div className={styles.logoWrapper}>
-          <img className={styles.logo} src={sephoraLogo} alt={'Serphora'}/>
+          <img className={styles.logo} src={sephoraLogo} alt={'Serphora'} />
         </div>
         <div className={styles.logoWrapper}>
-          <img className={styles.logo} src={citrixLogo} alt={'Citrix'}/>
+          <img className={styles.logo} src={citrixLogo} alt={'Citrix'} />
         </div>
         <div className={styles.logoWrapper}>
           <img
@@ -40,7 +41,7 @@ export const Partners = ({ title }) => (
           />
         </div>
         <div className={styles.logoWrapper}>
-          <img className={styles.logo} src={koneLogo} alt={'Kone'}/>
+          <img className={styles.logo} src={koneLogo} alt={'Kone'} />
         </div>
       </div>
     </div>

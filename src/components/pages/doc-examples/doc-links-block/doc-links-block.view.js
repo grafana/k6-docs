@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'gatsby';
 import { Heading } from 'components/shared/heading';
+import { Link } from 'gatsby';
+import React from 'react';
+
 import styles from './doc-links-block.module.scss';
 
 export const DocLinksBlock = ({ title, links, last }) => (

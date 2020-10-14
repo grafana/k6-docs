@@ -1,4 +1,6 @@
+/* eslint-disable react/no-danger */
 import * as React from 'react';
+
 import styles from './code.module.scss';
 
 export const Code = ({ children, noLineNumbers }) => {
