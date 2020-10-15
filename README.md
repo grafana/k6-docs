@@ -1,4 +1,6 @@
 # k6 Documentation
+![Staging](https://github.com/loadimpact/k6-docs/workflows/Staging/badge.svg)
+![Production](https://github.com/loadimpact/k6-docs/workflows/Production/badge.svg)
 
 This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
 
