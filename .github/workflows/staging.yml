@@ -73,8 +73,8 @@ jobs:
         run: |
           export PATH="./bin:$PATH"
           npm run lint:prose
-  build:
-    name: Build docs
+  build-deploy-staging:
+    name: Build and deploy to staging
     runs-on: ubuntu-latest
     needs:
       - lint
@@ -95,30 +95,6 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: k6-docs
-          path: public/
-  deploy-to-staging:
-    name: Deploy to staging
-    runs-on: ubuntu-latest
-    needs:
-      - lint
-      - build
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
-      - name: Use Node.js 12.xs
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: k6-docs
-          path: public/
       - name: Install AWS CLI dependencies
         run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
       - name: Install AWS CLI
