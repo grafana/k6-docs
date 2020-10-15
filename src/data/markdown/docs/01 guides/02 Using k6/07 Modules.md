@@ -16,7 +16,7 @@ usage throughout the script. In k6, it is possible to import three different kin
 
 These modules are provided through the k6 core, and gives access to the functionality built
 into k6. This could, for instance, be the `http` client used for making requests against the
-system under test. For a full list of built-in modules, see [the api documentation](/javascript-api).
+system under test. For a full list of built-in modules, see [the API documentation](/javascript-api).
 
 ```js
 import http from 'k6/http';

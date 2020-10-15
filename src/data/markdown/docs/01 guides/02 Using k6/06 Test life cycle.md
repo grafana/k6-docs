@@ -3,7 +3,7 @@ title: 'Test life cycle'
 excerpt: ''
 ---
 
-The four distinct life cycle stages in a k6 test are "init", "setup", "vu" and "teardown"
+The four distinct life cycle stages in a k6 test are "init", "setup", "VU" and "teardown"
 Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
 
 <div class="code-group" data-props='{"labels": ["The four life cycle stages"], "lineNumbers": [true]}'>
@@ -16,7 +16,7 @@ export function setup() {
 }
 
 export default function (data) {
-  // 3. vu code
+  // 3. VU code
 }
 
 export function teardown(data) {
@@ -119,7 +119,7 @@ export function setup() {
 }
 
 export default function (data) {
-  // 3. vu code
+  // 3. VU code
 }
 
 export function teardown(data) {

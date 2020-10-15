@@ -61,6 +61,7 @@ iftop
 impactful
 ints
 io
+jmx
 j[qQ]uery
 jq
 loki
