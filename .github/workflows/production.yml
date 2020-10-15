@@ -22,6 +22,7 @@ env:
   GATSBY_DEFAULT_MAIN_URL: https://${{ secrets.PROD_CI_MAIN_URL }}
   GATSBY_DRIFT_API: ${{ secrets.PROD_CI_GATSBY_DRIFT_API }}
   GATSBY_GOOGLE_API_KEY: ${{ secrets.PROD_CI_GATSBY_GOOGLE_API_KEY }}
+
 jobs:
   update-dependencies:
     name: Update node module dependencies
@@ -41,6 +42,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm install
+
   lint:
     name: Lint code and prose
     runs-on: ubuntu-latest
@@ -67,12 +69,12 @@ jobs:
           export PATH="./bin:$PATH"
           vale -v
       - name: Lint code
-        run: |
-          npm run lint
+        run: npm run lint
       - name: Lint prose
         run: |
           export PATH="./bin:$PATH"
           npm run lint:prose
+
   build-deploy-prod:
     name: Build and deploy to prod
     runs-on: ubuntu-latest
@@ -93,8 +95,18 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm install
+      - name: Gatsby Cache Folder
+        uses: actions/cache@v1
+        with:
+          key: gatsby-cache-folder
+          path: .cache
+      - name: Gatsby Public Folder
+        uses: actions/cache@v1
+        with:
+          key: gatsby-public-folder
+          path: public
       - name: Build project
-        run: npm run build
+        run: npm run build:incremental
       - name: Install AWS CLI dependencies
         run: sudo apt-get update && sudo apt-get -y install python-pip python-dev
       - name: Install AWS CLI
