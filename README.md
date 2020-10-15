@@ -42,6 +42,14 @@ npm start
 
 Visit http://localhost:8000
 
+## Deployment
+
+### To staging
+All pull requests merged to `master` will result in an automatic deployment to the staging environment.
+
+### To production
+All tags created using the format `vN.N.N`, for instance `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/loadimpact/k6-docs/releases
+
 ## Contributing
 
 Documentation articles are markdown files structured under the
