@@ -16,7 +16,7 @@ usage throughout the script. In k6, it is possible to import three different kin
 
 These modules are provided through the k6 core, and gives access to the functionality built
 into k6. This could, for instance, be the `http` client used for making requests against the
-system under test. For a full list of built-in modules, see `the api documentation`.
+system under test. For a full list of built-in modules, see [the api documentation](/javascript-api).
 
 ```js
 import http from 'k6/http';
@@ -47,7 +47,7 @@ export default function () {
 
 ### Remote HTTP(S) modules
 
-These modules are accessed over HTTP(S), from a source like [the k6 jsLIB](#the-jslib-repository) or
+These modules are accessed over HTTP(S), from a source like [the k6 JSLib](#the-jslib-repository) or
 from any publicly accessible web server. The imported modules will be downloaded and executed at
 runtime, making it extremely important to **make sure the code is legit and trusted before including
 it in a test script**.
@@ -126,7 +126,6 @@ Usually, this is not a big problem as each application only allocates these reso
 By running code requiring additional features on top of ES5.1, we also need additional extensions to the javascript vm, further boosting the resource usage. This is the default mode of k6.
 
 When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
-
 
 ### Setting up the bundler
 
@@ -324,7 +323,6 @@ $ k6 run dist/signup.bundle.js \
 
 </div>
 
-
 ## Using local modules with Docker
 
 When running k6 in a Docker container you must make sure to mount the necessary folders from the host into the container, using [Docker volumes](https://docs.docker.com/engine/admin/volumes/volumes/), so that k6 can see all the JS modules it needs to import.
@@ -370,7 +368,6 @@ Note that on Windows, you also need to make sure that your drive in question, sa
 has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
-
 
 ## See also
 
