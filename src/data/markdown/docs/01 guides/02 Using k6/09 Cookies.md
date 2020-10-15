@@ -93,7 +93,7 @@ export default function () {
 
   check(res, {
     'cookie has correct value': (r) =>
-      r.json().cookies.my_cookie === 'hello world 2',
+      r.cookies.my_cookie[0].value === 'hello world 2',
   });
 }
 ```
@@ -200,9 +200,9 @@ export default function () {
   let res = http.get('https://httpbin.org/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
-    "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
+    "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
     'cookie has correct value': (r) =>
-      r.json().cookies.my_cookie == 'hello world',
+      r.cookies.my_cookie[0].value == 'hello world',
   });
 }
 ```
@@ -241,9 +241,9 @@ export default function () {
   let res = http.get('https://httpbin.org/cookies', { jar });
   check(res, {
     'has status 200': (r) => r.status === 200,
-    "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
+    "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
     'cookie has correct value': (r) =>
-      r.json().cookies.my_cookie == 'hello world',
+      r.cookies.my_cookie[0].value == 'hello world',
   });
 }
 ```
