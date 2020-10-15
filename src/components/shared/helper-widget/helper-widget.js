@@ -46,6 +46,7 @@ const HelperWidget = () => {
         })
         .catch((err) => {
           // else just render without setting drifReady flag
+          // eslint-disable-next-line no-console
           console.log(err);
           setShouldRender(true);
         });

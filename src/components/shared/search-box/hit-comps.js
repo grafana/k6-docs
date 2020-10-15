@@ -1,7 +1,8 @@
-import React from 'react';
 import { Heading } from 'components/shared/heading';
-import { Highlight, Snippet } from 'react-instantsearch-dom';
 import { Link } from 'gatsby';
+import React from 'react';
+import { Highlight, Snippet } from 'react-instantsearch-dom';
+
 import styles from './search-box.module.scss';
 
 export const docPageHit = (clickHandler) => ({ hit }) => (

@@ -1,6 +1,6 @@
-import React from 'react';
-import { DocLayout } from 'layouts/doc-layout';
 import { NotFound } from 'components/pages/404/not-found';
+import { DocLayout } from 'layouts/doc-layout';
+import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
@@ -11,7 +11,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       navLinks={navLinks}
       pageMetadata={pageMetadata}
     >
-      <NotFound/>
+      <NotFound />
     </DocLayout>
   );
 }

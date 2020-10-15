@@ -1,11 +1,12 @@
-import * as React from 'react';
-import dateFormat from 'dateformat';
-import { Link } from 'gatsby';
-
+/* eslint-disable react/no-danger */
 import { Heading } from 'components/shared/heading';
 import { styles as itemCardStyles } from 'components/shared/item-card';
-import styles from './doc-welcome-whats-new.module.scss';
+import dateFormat from 'dateformat';
+import { Link } from 'gatsby';
+import * as React from 'react';
+
 import docChangeImage from './doc-change.svg';
+import styles from './doc-welcome-whats-new.module.scss';
 
 export const WhatsNew = () => {
   const item = {
@@ -24,7 +25,7 @@ export const WhatsNew = () => {
       </Heading>
 
       <div className={itemCardStyles.wrapper}>
-        {items.map(item => (
+        {items.map((item) => (
           <div className={`${itemCardStyles.content} ${styles.item}`}>
             <img
               className={styles.itemImage}

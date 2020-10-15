@@ -1,1 +1,1 @@
-export { Quickstart } from "./quickstart.component";
+export { Quickstart } from './quickstart.component';

@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'gatsby';
 import { Heading } from 'components/shared/heading';
+import { Link } from 'gatsby';
+import React from 'react';
+
 import styles from './k6-does-not.module.scss';
 
-export const K6DoesNot = ({ style }) => (
+export const K6DoesNot = () => (
   <section className={`container ${styles.container}`}>
     <Heading tag={'h2'} size={'lg'} className={styles.title}>
       What k6 does not
@@ -19,7 +20,7 @@ export const K6DoesNot = ({ style }) => (
         </Heading>
         <p>
           As a result, k6 does not render webpages the same way a browser does.
-          This also means that libraries relying on browser APIs won't be
+          This also means that libraries relying on browser APIs won&apos;t be
           compatible. By skipping the browser, the consumption of system
           resources are dramatically decreased, making the tool significantly
           more performant.
@@ -29,14 +30,17 @@ export const K6DoesNot = ({ style }) => (
           <Link className={'link'} to="/testing-guides/load-testing-websites">
             load testing websites
           </Link>
-          . You can even run a test from a <Link className={'link'} to="/using-k6/session-recording-har-support">recorded user session</Link>.
+          . You can even run a test from a{' '}
+          <Link className={'link'} to="/using-k6/session-recording-har-support">
+            recorded user session
+          </Link>
+          .
         </p>
       </li>
       <li>
         <Heading tag={'h3'} size={'md'} className={styles.title}>
           Does not run in NodeJS
         </Heading>
-        <h3></h3>
         <p>
           JavaScript is not generally well suited for high performance. To
           achieve maximum performance, the tool itself is written in Go,
@@ -44,8 +48,11 @@ export const K6DoesNot = ({ style }) => (
         </p>
         <p>
           If you want to import npm modules or libraries using NodeJS APIs, you
-          can <Link className={'link'} to="/using-k6/modules#bundling-node-modules">bundle npm modules with webpack</Link> and import them in
-          your tests. 
+          can{' '}
+          <Link className={'link'} to="/using-k6/modules#bundling-node-modules">
+            bundle npm modules with webpack
+          </Link>{' '}
+          and import them in your tests.
         </p>
       </li>
     </ul>

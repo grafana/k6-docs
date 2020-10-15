@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import { CtaDoc } from 'components/shared/cta-doc';
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
 
 export const Cloud = (props) => {
   const {

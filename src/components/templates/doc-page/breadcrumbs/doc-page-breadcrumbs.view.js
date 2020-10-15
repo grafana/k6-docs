@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { Link } from 'gatsby';
+import * as React from 'react';
+
 import styles from './doc-page-breadcrumbs.module.scss';
 
 export const Breadcrumbs = (props) => {

@@ -1,5 +1,6 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import styles from './terminal-header.module.scss';
 
 export const TerminalHeader = ({ title, theme }) => (
@@ -10,9 +11,9 @@ export const TerminalHeader = ({ title, theme }) => (
       { [`${styles.grey}`]: theme === 'grey' },
     ])}
   >
-    <span className={styles.button}/>
-    <span className={styles.button}/>
-    <span className={styles.button}/>
+    <span className={styles.button} />
+    <span className={styles.button} />
+    <span className={styles.button} />
     <span className={styles.title}>{title}</span>
   </div>
 );

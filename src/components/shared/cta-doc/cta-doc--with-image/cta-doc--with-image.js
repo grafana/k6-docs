@@ -1,5 +1,6 @@
-import React from 'react';
 import Img from 'gatsby-image';
+import React from 'react';
+
 import styles from './cta-doc--with-image.module.scss';
 
 export const CtaDocWithImage = ({ title, description, image, Button }) => {

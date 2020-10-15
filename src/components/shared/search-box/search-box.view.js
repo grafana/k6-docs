@@ -1,3 +1,6 @@
+import algoliasearch from 'algoliasearch/lite';
+import classNames from 'classnames';
+import { Heading } from 'components/shared/heading';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   InstantSearch,
@@ -5,13 +8,11 @@ import {
   connectStateResults,
   connectHits,
 } from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch/lite';
-import Input from './search-input';
-import * as hitComps from './hit-comps';
-import classNames from 'classnames';
-import styles from './search-box.module.scss';
-import { Heading } from 'components/shared/heading';
 import Algolia from 'svg/icon-algolia.inline.svg';
+
+import * as hitComps from './hit-comps';
+import styles from './search-box.module.scss';
+import Input from './search-input';
 
 const Hits = connectHits(({ showAll, hitComponent: Comp, hits }) => (
   <ul>
@@ -99,7 +100,10 @@ export const SearchBox = ({ inputLabel, indices }) => {
               <header>
                 <Heading tag={'h3'} size={'sm'} className={styles.indexHeading}>
                   {resultsExist ? 'Search results for' : 'No results for'}
-                  <span className={styles.indexHeadingKeyword}> "{query}"</span>
+                  <span className={styles.indexHeadingKeyword}>
+                    {' '}
+                    &ldquo;{query}&rdquo;
+                  </span>
                 </Heading>
                 <Stats setResultsExist={setResultsExist} />
               </header>
@@ -126,6 +130,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
             <a
               href={'https://algolia.com'}
               target={'_blank'}
+              rel={'noreferrer'}
               className={'link'}
             >
               Powered by

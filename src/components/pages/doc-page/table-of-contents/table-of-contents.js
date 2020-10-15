@@ -1,8 +1,9 @@
-import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import styles from './table-of-contents.module.scss';
-import { useLandmark, useElementsReplacement } from 'hooks';
 import { HeadingLandmark } from 'components/shared/heading';
+import { useLandmark, useElementsReplacement } from 'hooks';
+import React, { forwardRef } from 'react';
+
+import styles from './table-of-contents.module.scss';
 
 const components = {
   h2: HeadingLandmark('h2'),
@@ -32,7 +33,9 @@ const TableOfContents = forwardRef(
         block: 'start',
       });
       // changing hash without default jumps to anchor
+      // eslint-disable-next-line no-restricted-globals
       if (history.pushState) {
+        // eslint-disable-next-line no-restricted-globals
         history.pushState(false, false, anchor);
       } else {
         // old browser support

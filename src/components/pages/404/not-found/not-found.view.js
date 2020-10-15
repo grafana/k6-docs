@@ -1,10 +1,11 @@
-import React from 'react';
-import styles from './not-found.module.scss';
-import NotFoundIllustration from './svg/not-found.inline.svg';
 import { Button } from 'components/shared/button';
 import { Heading } from 'components/shared/heading';
+import React from 'react';
 
-export const NotFound = (props) => (
+import styles from './not-found.module.scss';
+import NotFoundIllustration from './svg/not-found.inline.svg';
+
+export const NotFound = () => (
   <section className={styles.wrapper}>
     <div className={`container ${styles.inner}`}>
       <div className={'row'}>

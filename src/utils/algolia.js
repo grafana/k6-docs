@@ -27,6 +27,7 @@ const processMdxEntry = ({ children: [entry] }) => {
   // avoid indexing this section for a while to avoid
   // search user's confusion
   if (/cloud rest api/i.test(fileAbsolutePath)) {
+    // eslint-disable-next-line no-console
     console.log('exluded from algolia indecies pages:', fileAbsolutePath);
     return [];
   }

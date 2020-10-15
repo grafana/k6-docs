@@ -1,11 +1,11 @@
-import React from 'react';
-import { DocLayout } from 'layouts/doc-layout';
-import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
-import styles from 'components/templates/doc-page/doc-page.module.scss';
-import { styles as codeStyles } from 'components/shared/code';
-import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
+import { styles as codeStyles } from 'components/shared/code';
+import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
+import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
+import styles from 'components/templates/doc-page/doc-page.module.scss';
 import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
+import React from 'react';
 
 export default function (props) {
   const {

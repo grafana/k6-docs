@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { DocLayout } from 'layouts/doc-layout';
+import { Heading } from 'components/shared/heading';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
-import { Heading } from 'components/shared/heading';
+import { Link } from 'gatsby';
+import { DocLayout } from 'layouts/doc-layout';
+import React from 'react';
 import { childrenToList, slugify } from 'utils';
 
 export default function (props) {

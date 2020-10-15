@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import Logo from 'svg/logo.inline.svg';
+import { blog, main, docs } from 'utils/urls';
 
 import styles from './footer.module.scss';
 import GithubLogo from './svg/github.inline.svg';
@@ -8,8 +9,6 @@ import SlackLogo from './svg/slack.inline.svg';
 import TwitterLogo from './svg/twitter.inline.svg';
 
 import './footer.scss';
-
-import { blog, main, docs } from 'utils/urls';
 
 export const Footer = () => (
   <footer className={styles.wrapper}>

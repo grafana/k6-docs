@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './item-card.module.scss';
 import { Link } from 'gatsby';
+import React from 'react';
+
+import styles from './item-card.module.scss';
 
 export const ItemCard = (props) => {
   const { children, lifted, as, label, noBorderOnHover, ...rest } = props;
@@ -15,7 +16,7 @@ export const ItemCard = (props) => {
     >
       {!noBorderOnHover && (
         <div className={`${styles.circleWrapper} ${styles.circleWrapper1}`}>
-          <div className={styles.circle}/>
+          <div className={styles.circle} />
         </div>
       )}
       {children}

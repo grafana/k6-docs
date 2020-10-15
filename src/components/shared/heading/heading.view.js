@@ -1,6 +1,7 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 import { slugify } from 'utils';
+
 import styles from './heading.module.scss';
 import AnchorIcon from './svg/anchor.inline.svg';
 

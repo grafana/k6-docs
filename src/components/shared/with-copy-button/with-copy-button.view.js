@@ -1,6 +1,7 @@
+import classNames from 'classnames';
 import React from 'react';
 import Clipboard from 'react-clipboard.js';
-import classNames from 'classnames';
+
 import styles from './with-copy-button.module.scss';
 
 export const WithCopyButton = ({

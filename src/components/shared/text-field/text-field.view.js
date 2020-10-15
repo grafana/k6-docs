@@ -1,10 +1,16 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
 import styles from './text-field.module.scss';
 
-
-export const TextField = ({ className, tag = 'input', type = 'text', onChange, isInvalid, ...attributes }) => {
+export const TextField = ({
+  className,
+  tag = 'input',
+  type = 'text',
+  onChange,
+  isInvalid,
+  ...attributes
+}) => {
   const wrapperClassName = classNames(
     styles.wrapper,
     { [styles.wrapper_invalid]: isInvalid === true },
@@ -14,12 +20,21 @@ export const TextField = ({ className, tag = 'input', type = 'text', onChange, i
   switch (tag) {
     case 'textarea':
       return (
-        <textarea className={wrapperClassName} onChange={onChange} {...attributes}/>
+        <textarea
+          className={wrapperClassName}
+          onChange={onChange}
+          {...attributes}
+        />
       );
     case 'input':
     default:
       return (
-        <input className={wrapperClassName} type={type} onChange={onChange} {...attributes}/>
+        <input
+          className={wrapperClassName}
+          type={type}
+          onChange={onChange}
+          {...attributes}
+        />
       );
   }
 };

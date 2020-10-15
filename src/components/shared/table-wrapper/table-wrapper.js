@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './table-wrapper.module.scss';
 
 const TableWrapper = ({ children }) => (

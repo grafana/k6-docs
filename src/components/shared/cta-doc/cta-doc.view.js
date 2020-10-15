@@ -1,9 +1,9 @@
-import React from 'react';
-import { CtaDocDefault } from './cta-doc--default';
-import { CtaDocWithImage } from './cta-doc--with-image';
 import { Button } from 'components/shared/button';
 import { navigate } from 'gatsby';
+import React from 'react';
 
+import { CtaDocDefault } from './cta-doc--default';
+import { CtaDocWithImage } from './cta-doc--with-image';
 import styles from './cta-doc.module.scss';
 
 export const CtaDoc = ({
