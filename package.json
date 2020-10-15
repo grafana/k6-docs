@@ -13,7 +13,6 @@
     "predevelop": "test -f ./.env.development || cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
     "lint": "eslint src/",
-    "prelint:prose": "which vale || (echo 'Requires Vale. See https://docs.errata.ai/vale/install for instructions.' && exit 1)",
     "lint:prose": " vale --glob='*.md' ./src/data/markdown",
     "lint:fix": "eslint src/ --fix",
     "precheck:links": "gatsby build",
