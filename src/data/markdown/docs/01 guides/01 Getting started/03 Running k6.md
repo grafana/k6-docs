@@ -14,7 +14,7 @@ favourite editor, and save it as "script.js":
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export default function() {
+export default function () {
   http.get('http://test.k6.io');
   sleep(1);
 }
@@ -78,7 +78,7 @@ your VUs, similar to the `main()` function in many other languages:
 <div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
-export default function() {
+export default function () {
   // vu code: do things here...
 }
 ```
@@ -112,7 +112,6 @@ import any other modules. This all has to be done from init-code.
 
 Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
-
 ## Using options
 
 If you want to avoid having to type `--vus 10` and `--duration 30s` all the time, you can include
@@ -127,7 +126,7 @@ export let options = {
   vus: 10,
   duration: '30s',
 };
-export default function() {
+export default function () {
   http.get('http://test.k6.io');
   sleep(1);
 }
@@ -172,9 +171,9 @@ export let options = {
   ],
 };
 
-export default function() {
+export default function () {
   let res = http.get('https://httpbin.org/');
-  check(res, { 'status was 200': r => r.status == 200 });
+  check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }
 ```
@@ -199,9 +198,7 @@ For running cloud tests from the CLI, you must first register a k6 Cloud account
 <div class="code-group" data-props='{"labels": ["Running a cloud test"]}'>
 
 ```shell
-
 $ k6 cloud script.js
-
 ```
 
 </div>

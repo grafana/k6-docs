@@ -3,6 +3,7 @@ import { HtmlContent } from 'components/blocks/html-content';
 import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
+import { CodeInline } from 'components/shared/code';
 import { CodeGroup } from 'components/shared/code-group';
 import { HeadingLandmark } from 'components/shared/heading';
 import LdScript from 'components/shared/ld-script';
@@ -20,6 +21,7 @@ const componentsForNativeReplacement = {
   Blockquote,
   LdScript,
   Glossary,
+  inlineCode: CodeInline,
 };
 
 const componentsForCustomReplacement = {

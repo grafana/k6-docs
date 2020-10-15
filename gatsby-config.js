@@ -68,6 +68,7 @@ const plugins = [
           resolve: 'gatsby-remark-prismjs',
           options: {
             showLineNumbers: true,
+            noInlineHighlight: true,
           },
         },
         {

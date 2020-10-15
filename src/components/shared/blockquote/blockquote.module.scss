@@ -12,9 +12,8 @@ blockquote {
   p {
     margin: 0;
   }
-  :not(pre) code[class='language-text'] {
-    background: $color-additional-2 !important;
-    line-height: 18px !important;
+  span[class='code-inline'] {
+    background-color: $color-additional-2;
   }
 }
 
