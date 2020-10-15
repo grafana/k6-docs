@@ -86,7 +86,7 @@ export default function () {
     'status is 200': (r) => r.status == 200,
   });
 
-  errorRate.add(result ? 0 : 1);
+  errorRate.add(!result);
 }
 ```
 
