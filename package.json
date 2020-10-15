@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build:gatsby": "gatsby build --prefix-paths",
+    "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --prefix-paths --log-pages",
     "build": "npm run build:gatsby",
     "clean": "gatsby clean",
     "start": "npm run develop --host=0.0.0.0",
