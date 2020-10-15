@@ -24,7 +24,7 @@ const UniversalWrapper = ({ element, pluginOptions }) => {
   const isGAEnabled =
     label && action && readMoreButtonCategory && dismissButtonCategory;
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setShouldBeMounted(true);
   }, []);
 

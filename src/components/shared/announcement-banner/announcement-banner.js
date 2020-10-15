@@ -47,38 +47,40 @@ const AnnouncementBanner = ({
     : () => setAnimateOut(true);
 
   return isShown ? (
-    <div
-      className={classNames(
-        styles.wrapper,
-        { [styles.in]: animateIn && !animateOut },
-        { [styles.out]: animateOut },
-      )}
-      onTransitionEnd={isMobile ? undefined : onTransitionEndHandler}
-    >
-      <div className={styles.backgroundPatternWrapper}>
-        <Pattern />
-        <Pattern />
-      </div>
-      <div className={'container'}>
-        <div className={styles.inner}>
-          <p className={styles.message}>{text}</p>
-          <Button
-            tag="a"
-            rel="noreferrer"
-            href={link}
-            className={styles.btn}
-            size={'sm'}
-            onClick={readMoreButtonClickHandler}
-          >
-            {buttonText}
-          </Button>
+    <div style={{ height: isMobile ? 'auto' : '60px' }}>
+      <div
+        className={classNames(
+          styles.wrapper,
+          { [styles.in]: animateIn && !animateOut },
+          { [styles.out]: animateOut },
+        )}
+        onTransitionEnd={isMobile ? undefined : onTransitionEndHandler}
+      >
+        <div className={styles.backgroundPatternWrapper}>
+          <Pattern />
+          <Pattern />
         </div>
+        <div className={'container'}>
+          <div className={styles.inner}>
+            <p className={styles.message}>{text}</p>
+            <Button
+              tag="a"
+              rel="noreferrer"
+              href={link}
+              className={styles.btn}
+              size={'sm'}
+              onClick={readMoreButtonClickHandler}
+            >
+              {buttonText}
+            </Button>
+          </div>
+        </div>
+        <button
+          type="button"
+          className={styles.btnClose}
+          onClick={onCloseButtonClick}
+        />
       </div>
-      <button
-        type="button"
-        className={styles.btnClose}
-        onClick={onCloseButtonClick}
-      />
     </div>
   ) : null;
 };
