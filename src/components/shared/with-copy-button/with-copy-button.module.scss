@@ -19,8 +19,4 @@
   color: $color-tertiary;
   text-transform: uppercase;
   cursor: pointer;
-  @include sm-down {
-    top: unset;
-    bottom: 10px;
-  }
 }
