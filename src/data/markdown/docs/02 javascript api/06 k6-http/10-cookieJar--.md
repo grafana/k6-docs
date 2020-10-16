@@ -12,7 +12,7 @@ Get the active cookie jar.
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -22,4 +22,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

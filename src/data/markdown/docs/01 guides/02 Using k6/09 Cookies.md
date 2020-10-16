@@ -31,7 +31,7 @@ or use the more ergonomic cookie API. We will go through the latter below.
 To simulate that a cookie has previously been set by a browser and is now supposed to be included
 in a subsequent request to the server we include the cookie in the `cookies` request parameter:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -45,13 +45,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 This will only apply the cookie for the request in question, but will not be sent for any
 subsequent requests. If you want to do that you have to add the cookie to a cookie jar, and by
 default there's a per-VU cookie jar we can interact with to set and inspect cookies:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -63,14 +63,14 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The per-VU cookie jar stores all cookies received from the server in a `Set-Cookie` header. You
 can also create "local cookie jars" that overrides the per-VU cookie jar, but more on that in a bit.
 
 You can also specify that a cookie should be overridden if already part of the per-VU cookie jar:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -98,14 +98,14 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Accessing cookies
 
 To see which cookies were set for a particular response we can look in the `cookies` property of
 the response object:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -124,7 +124,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The response object's `cookies` property is a map where the key is the cookie name and the value
 is an array of response cookie objects (see below for description). It is an array to support
@@ -151,7 +151,7 @@ A response cookie object contains the following properties:
 To see which cookies are set, and stored in the cookie jar, for a particular URL we can use the
 `cookieForURL()` method of the cookie jar object:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -171,7 +171,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The `cookies` object returned by the jar's `cookiesForURL()` method is a map where the key is the
 cookie name and the value is an array of cookie values (strings). It is an array to support
@@ -183,7 +183,7 @@ is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 To set cookies that more tightly controls the behavior of the cookie we must add the cookie to a
 cookie jar. An example:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -207,14 +207,14 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Local cookie jars
 
 Besides the per-VU cookie jar you can also create local cookie jars that can override the per-VU
 cookie jar on a per-request basis. An example:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -248,11 +248,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Examples
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 // Example showing two methods how to log all cookies (with attributes) from a HTTP response.
@@ -288,4 +288,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

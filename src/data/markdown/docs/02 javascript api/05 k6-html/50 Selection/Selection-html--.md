@@ -1,28 +1,26 @@
 ---
-title: "Selection.html()"
-excerpt: ""
+title: 'Selection.html()'
+excerpt: ''
 ---
+
 Get the HTML contents of the first element in the set of matched elements.
 Mimics [jquery.html](https://api.jquery.com/html/)
 
 ### Returns
 
-
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                                                           |
+| ------ | --------------------------------------------------------------------- |
 | string | The HTML content of the first element in the set of matched elements. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -43,13 +41,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('dt');
 
   console.log(sel.html());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

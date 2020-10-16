@@ -1,29 +1,27 @@
 ---
-title: "Selection.val()"
-excerpt: ""
+title: 'Selection.val()'
+excerpt: ''
 ---
+
 Get the current value of the first element in the set of matched elements.
 Mimics [jquery.val](https://api.jquery.com/val/).
 
-
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                                                    |
+| ------ | -------------------------------------------------------------- |
 | string | The value of the first element in the set of matched elements. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
                 <input id="text_input" type="text" value="input-text-value"/>
                 <select id="select_one">
                         <option value="not this option">no</option>
@@ -50,7 +48,7 @@ export default function() {
   console.log(doc.find('#textarea').val());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

@@ -12,7 +12,7 @@ we are able to read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
 
-<div class="code-group" data-props='{"labels": ["data.json"], "lineNumbers": [true]}'>
+<CodeGroup labels={["data.json"]} lineNumbers={[true]}>
 
 ```json
 {
@@ -20,9 +20,9 @@ Below is a simple example showing how to load the contents of a local file `data
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Loading a local JSON file using open()"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Loading a local JSON file using open()"]} lineNumbers={[true]}>
 
 ```js
 const data = JSON.parse(open('./data.json'));
@@ -32,11 +32,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 If you want to open a binary file you need to pass in `"b"` as the second argument.
 
-<div class="code-group" data-props='{"labels": ["Loading a binary file using open()"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Loading a binary file using open()"]} lineNumbers={[true]}>
 
 ```js
 const binFile = open("./image.png", "b");
@@ -46,7 +46,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Multipart request (uploading a file)
 
@@ -54,7 +54,7 @@ Now that you know how to load a local file, let's look at a script that creates 
 to upload this data to an API endpoint along with a regular text field (`field` in the example
 below):
 
-<div class="code-group" data-props='{"labels": ["POST upload example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["POST upload example"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -73,7 +73,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 In the example above we use the [http.file()](/javascript-api/k6-http/file-data-filename-contenttype)
 API to wrap the file contents in a [FileData](/javascript-api/k6-http/filedata) object.

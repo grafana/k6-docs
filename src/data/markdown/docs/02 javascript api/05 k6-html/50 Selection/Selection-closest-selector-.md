@@ -1,32 +1,30 @@
 ---
-title: "Selection.closest(selector)"
-excerpt: ""
+title: 'Selection.closest(selector)'
+excerpt: ''
 ---
+
 For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
 Mimics [jquery.closest](https://api.jquery.com/closest/)
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector | string | A string containing a selector expression to match elements against |
-
+| Parameter | Type   | Description                                                         |
+| --------- | ------ | ------------------------------------------------------------------- |
+| selector  | string | A string containing a selector expression to match elements against |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection. |
-
+| Type                                           | Description |
+| ---------------------------------------------- | ----------- |
+| [Selection](/javascript-api/k6-html/selection) | Selection.  |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
   <ul id="one" class="level-1">
   <li class="item-i">I</li>
@@ -51,7 +49,7 @@ export default function() {
   const sel = doc.find('li.item-a').closest('ul');
   console.log(sel.attr('class'));
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

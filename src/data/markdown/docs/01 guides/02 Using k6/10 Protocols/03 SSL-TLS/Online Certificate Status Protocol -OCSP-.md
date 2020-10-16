@@ -27,7 +27,7 @@ At the moment k6 supports OCSP stapling, receiving and parsing a stapled respons
 the TLS connection setup. The OCSP response information is available on the `ocsp.stapled_response`
 property of the response object.
 
-<div class="code-group" data-props='{"labels": ["OCSP stapled response properties example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["OCSP stapled response properties example"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -41,7 +41,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Properties of an OCSP object
 

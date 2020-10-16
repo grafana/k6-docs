@@ -11,7 +11,7 @@ store the result of the check, pass or fail, and let the script execution contin
 codifying assertions relating to HTTP requests/responses, making sure the response code is 2xx
 for example:
 
-<div class="code-group" data-props='{"labels": ["check.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["check.js"]} lineNumbers={[true]}>
 
 ```js
 import { check } from 'k6';
@@ -25,7 +25,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 In the above example, one check was specified but you can add as many as you need in a call to
 [`check()`](/javascript-api/k6/check-val-sets-tags). When the above script is run you can see
@@ -37,7 +37,7 @@ In the output above you can see that our check "is status 200" was successful 10
 
 You may also add multiple checks within a single check() statement, like this:
 
-<div class="code-group" data-props='{"labels": ["checks.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["checks.js"]} lineNumbers={[true]}>
 
 ```js
 import { check } from 'k6';
@@ -52,7 +52,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ![multiple checks output](images/Checks/multiple-checks-output.png)
 
@@ -66,7 +66,7 @@ a CI test suite you may want to check for error conditions that fail the whole l
 case you may want to combine checks with [thresholds](/using-k6/thresholds) to
 get what you want:
 
-<div class="code-group" data-props='{"labels": ["check_thresholds.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["check_thresholds.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -90,7 +90,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above script declares a custom [Rate](/javascript-api/k6-metrics/rate)
 metric (called "errors") to hold information about the errors we have seen during the test, then

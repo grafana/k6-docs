@@ -1,6 +1,6 @@
 ---
-title: "createHMAC( algorithm, secret )"
-description: "Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way."
+title: 'createHMAC( algorithm, secret )'
+description: 'Create an HMAC hashing object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 ---
 
 Creates a HMAC hashing object that can then be fed with data repeatedly, and from which you can extract a signed hash digest whenever you want.
@@ -12,18 +12,18 @@ Creates a HMAC hashing object that can then be fed with data repeatedly, and fro
 
 ### Returns
 
-| Type   | Description                                              |
-| ------ | :------------------------------------------------------- |
+| Type   | Description                                          |
+| ------ | :--------------------------------------------------- |
 | object | A [Hasher](/javascript-api/k6-crypto/hasher) object. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
 import crypto from 'k6/crypto';
 
-export default function() {
+export default function () {
   console.log(crypto.hmac('sha256', 'a secret', 'my data', 'hex'));
   let hasher = crypto.createHMAC('sha256', 'a secret');
   hasher.update('my ');
@@ -32,7 +32,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above script should result in the following being printed during execution:
 

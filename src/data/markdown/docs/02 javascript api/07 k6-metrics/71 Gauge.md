@@ -9,8 +9,8 @@ _Gauge_ is an object for representing a custom metric holding only the latest va
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                                       | Description                                                                |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Method                                                                            | Description                                                                |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | [Gauge.add(value, [tags])](/javascript-api/k6-metrics/gauge/gauge-add-value-tags) | Add a value to the gauge metric. Only the latest value added will be kept. |
 
 ## Gauge usage in Thresholds
@@ -23,7 +23,7 @@ For example:
 
 ### Examples
 
-<div class="code-group" data-props='{"labels": ["gauge-metric.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["gauge-metric.js"]} lineNumbers={[true]}>
 
 ```js
 import { Gauge } from 'k6/metrics';
@@ -37,9 +37,9 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["gauge-threshold.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["gauge-threshold.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -61,4 +61,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

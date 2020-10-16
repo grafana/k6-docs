@@ -11,7 +11,7 @@
   text-align: right;
   padding-right: 1em;
   user-select: none;
-  opacity: 0.5;
+  color: $color-additional-1;
 }
 
 .line-content {
@@ -64,6 +64,9 @@
     .token {
       &-line {
         display: table-row;
+      }
+      &.comment {
+        opacity: 0.5;
       }
       &.keyword {
         color: #00cdff;

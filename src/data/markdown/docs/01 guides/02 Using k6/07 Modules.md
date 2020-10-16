@@ -127,14 +127,13 @@ By running code requiring additional features on top of ES5.1, we also need addi
 
 When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 
-
 ### Setting up the bundler
 
 Setting up a Babel and Webpack project from scratch might sound like a big undertaking, but
 is usually accomplished within minutes. Start by creating a project folder and initializing
 npm:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ mkdir ./example-project && \
@@ -142,13 +141,13 @@ $ mkdir ./example-project && \
     npm init -y
 ```
 
-</div>
+</CodeGroup>
 
 <h4 id="installing-packages">Installing packages</h4>
 
 Then, install the packages needed:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ npm install --save-dev \
@@ -161,7 +160,7 @@ $ npm install --save-dev \
     core-js
 ```
 
-</div>
+</CodeGroup>
 
 | Package                                                                                   | Usage                                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -177,7 +176,7 @@ $ npm install --save-dev \
 
 Once these packages have been added, the next step will be to set up a `webpack.config.js` file:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 const path = require('path');
@@ -201,7 +200,7 @@ module.exports = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 `Mode`
 
@@ -214,7 +213,7 @@ The files Webpack will use as its entry points while performing the bundling. Fr
 Webpack will automatically traverse all imports recursively until every possible dependency path has
 been exhausted. For instance:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 // login.test.js
@@ -224,11 +223,11 @@ import { SomeService } from './some.service.js';
 const svc = new SomeService();
 ```
 
-</div>
+</CodeGroup>
 
 and
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 // some.service.js
@@ -242,7 +241,7 @@ export class SomeService {
 }
 ```
 
-</div>
+</CodeGroup>
 
 would result in Webpack bundling `login.test.js`, `some.service.js` and all upstream dependencies
 utilized by `lodash`.
@@ -282,7 +281,7 @@ Open the `package.json` file and add a new script entry, used for running the bu
 
 Running webpack will now output two different test bundles, that may be executed independently:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ npm run bundle
@@ -296,11 +295,11 @@ dist
 0 directories, 2 files
 ```
 
-</div>
+</CodeGroup>
 
 ### Running the tests
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ npm run bundle
@@ -309,9 +308,9 @@ $ k6 run dist/login.bundle.js
 # ...
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ npm run bundle
@@ -322,8 +321,7 @@ $ k6 run dist/signup.bundle.js \
 # ...
 ```
 
-</div>
-
+</CodeGroup>
 
 ## Using local modules with Docker
 
@@ -334,7 +332,7 @@ For example, say you have the following structure on your host machine:
 - `/home/k6/example/src/index.js`
 - `/home/k6/example/src/modules/module.js`
 
-<div class="code-group" data-props='{"labels": ["index.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["index.js"]} lineNumbers={[true]}>
 
 ```js
 import { hello_world } from './modules/module.js';
@@ -344,9 +342,9 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["./modules/module.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["./modules/module.js"]} lineNumbers={[true]}>
 
 ```js
 export function hello_world() {
@@ -354,23 +352,22 @@ export function hello_world() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 To run index.js and make the modules available for import we execute the following Docker command with the `/home/k6/example/src` host folder mounted at `/src` in the container:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [false]}'>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```shell
 $ docker run -v /home/k6/example/src:/src -i loadimpact/k6 run /src/index.js
 ```
 
-</div>
+</CodeGroup>
 
 Note that on Windows, you also need to make sure that your drive in question, say `C:\`,
 has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
-
 
 ## See also
 

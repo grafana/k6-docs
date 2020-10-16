@@ -5,19 +5,19 @@ excerpt: ''
 
 You can also make k6 output detailed statistics in JSON format by using the `--out/-o` option for `k6 run`, like this:
 
-<div class="code-group" data-props='{"labels": ["CLI"]}'>
+<CodeGroup labels={["CLI"]}>
 
 ```shell
 $ k6 run --out json=my_test_result.json script.js
 ```
 
-</div>
+</CodeGroup>
 
 ## JSON format
 
 The JSON file will contain lines like these:
 
-<div class="code-group" data-props='{"labels": ["Output"]}'>
+<CodeGroup labels={["Output"]}>
 
 ```json
 {"type":"Metric","data":{"type":"gauge","contains":"default","tainted":null,"thresholds":[],"submetrics":null},"metric":"vus"}
@@ -26,7 +26,7 @@ The JSON file will contain lines like these:
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.239531499+02:00","value":459.865729,"tags":{"group":"::my group::json","method":"GET","status":"200","url":"https://httpbin.org/get"}},"metric":"http_req_duration"}
 ```
 
-</div>
+</CodeGroup>
 
 Each line will either contain information about a metric, or log a data point (sample) for a metric. Lines consist of three items:
 
@@ -58,39 +58,39 @@ We recommend using [jq][jq_url] to process the k6 JSON output. [jq][jq_url] is a
 
 You can quickly create [filters][jq_filters_url] to return a particular metric of the JSON file:
 
-<div class="code-group" data-props='{"labels": ["Filters"]}'>
+<CodeGroup labels={["Filters"]}>
 
 ```shell
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200")' myscript-output.json
 ```
 
-</div>
+</CodeGroup>
 
 And calculate an aggregated value of any metric:
 
-<div class="code-group" data-props='{"labels": ["Average"]}'>
+<CodeGroup labels={["Average"]}>
 
 ```shell
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s 'add/length'
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Min"]}'>
+<CodeGroup labels={["Min"]}>
 
 ```shell
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s min
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Max"]}'>
+<CodeGroup labels={["Max"]}>
 
 ```shell
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s max
 ```
 
-</div>
+</CodeGroup>
 
 For more advanced cases, check out the [jq Manual][jq_manual_url]
 
@@ -106,7 +106,7 @@ The `--summary-export` option of the `k6 run` command can export the end-of-test
 
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
 
-<div class="code-group" data-props='{"labels": [ "stdout", "Other output"] }'>
+<CodeGroup labels={[ "stdout", "Other output"]}>
 
 ```shell
 $ k6 run --summary-export=export.json script.js
@@ -117,11 +117,11 @@ $ k6 run --summary-export=export.json script.js
 $ k6 run --summary-export=export.json --out datadog script.js
 ```
 
-</div>
+</CodeGroup>
 
 The format of the summary is like:
 
-<div class="code-group" data-props='{"labels": [ "export.json" ] }'>
+<CodeGroup labels={[ "export.json" ]}>
 
 ```json
 {
@@ -240,7 +240,7 @@ The format of the summary is like:
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## See also
 

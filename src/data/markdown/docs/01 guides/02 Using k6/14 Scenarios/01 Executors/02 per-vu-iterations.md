@@ -30,7 +30,7 @@ partition between VUs.
 In this example, we'll let 10 VUs execute 20 iterations _each_, for a total of 200 iterations, with
 a maximum duration of 1 hour and 30 minutes.
 
-<div class="code-group" data-props='{"labels": [ "per-vu-iters.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "per-vu-iters.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -52,4 +52,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

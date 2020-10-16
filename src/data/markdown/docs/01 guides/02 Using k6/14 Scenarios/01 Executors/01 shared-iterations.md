@@ -32,7 +32,7 @@ number of total iterations, and the amount of iterations per VU is not important
 
 In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds
 
-<div class="code-group" data-props='{"labels": [ "shared-iters.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "shared-iters.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -54,4 +54,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

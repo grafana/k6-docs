@@ -133,7 +133,7 @@ When testing web sites it's common that you have to interact with HTML to submit
 
 For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) and the [Selection](/javascript-api/k6-html/selection) API that contains more or less all of the [jQuery API](http://api.jquery.com/) that makes sense in the context of k6.
 
-<div class="code-group" data-props='{"labels": ["Parsing HTML content"]}'>
+<CodeGroup labels={["Parsing HTML content"]}>
 
 ```js
 import { parseHTML } from 'k6/html';
@@ -147,7 +147,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
 
@@ -162,20 +162,20 @@ Different types of resources could behave very differently and could make **mean
 
 If you might want to filter your metrics based on different types of requests, consider using the [tagging feature](/using-k6/tags-and-groups#tags).
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```javascript
 http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 ```
 
-</div>
+</CodeGroup>
 
 ### Group the different webpages
 
 [Groups](/using-k6/tags-and-groups#groups) help you organize your load test around a common logic.
 When a load test simulates a user scenario visiting multiple pages, it is a good practice to set up a group for each webpage to organize your load test and facilitate the visualization of your test results.
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```javascript
 group('visit homepage', function () {
@@ -186,7 +186,7 @@ group('login page', function () {
 });
 ```
 
-</div>
+</CodeGroup>
 
 ## See also
 

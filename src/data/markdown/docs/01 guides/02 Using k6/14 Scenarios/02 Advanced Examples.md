@@ -10,7 +10,7 @@ per VU for a maximum duration of 1 minute.
 
 Note the use of `startTime`, and different `exec` functions for each scenario.
 
-<div class="code-group" data-props='{"labels": [ "multiple-scenarios.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -46,7 +46,7 @@ export function news() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Different environment variables and tags per scenario.
 
@@ -54,7 +54,7 @@ In the previous example we set tags on individual HTTP request metrics, but this
 can also be done per scenario, which would apply them to other
 [taggable](https://k6.io/docs/using-k6/tags-and-groups#tags) objects as well.
 
-<div class="code-group" data-props='{"labels": [ "multiple-scenarios-env-tags.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -95,7 +95,7 @@ export function news() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Note that by default a `scenario` tag with the name of the scenario as value is
 applied to all metrics in each scenario, which can be used in thresholds and
@@ -106,7 +106,7 @@ This can be disabled with the [`--system-tags` option](/using-k6/options#system-
 
 A test with 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
 
-<div class="code-group" data-props='{"labels": [ "multiple-scenarios-complex.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -173,4 +173,4 @@ export function apitest() {
 }
 ```
 
-</div>
+</CodeGroup>

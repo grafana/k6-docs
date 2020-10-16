@@ -6,7 +6,7 @@ excerpt: ''
 The four distinct life cycle stages in a k6 test are "init", "setup", "vu" and "teardown"
 Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
 
-<div class="code-group" data-props='{"labels": ["The four life cycle stages"], "lineNumbers": [true]}'>
+<CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
 ```js
 // 1. init code
@@ -24,14 +24,14 @@ export function teardown(data) {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Init and VU stages
 
 Scripts must contain, at the very least, a `default` function - this defines the entry point
 for your VUs, similar to the `main()` function in many other languages:
 
-<div class="code-group" data-props='{"labels": ["Default/Main function"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
 
 ```js
 export default function () {
@@ -39,7 +39,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 _"Why not just run my script normally, from top to bottom"_, you might ask - the answer is: we
 do, but code **inside** and **outside** your `default` function can do different things.
@@ -69,7 +69,7 @@ need writable filesystems - everything can be kept in-memory.
 
 As an added bonus, you can use this to reuse data between iterations (but only for the same VU):
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```javascript
 var counter = 0;
@@ -79,7 +79,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## The default function life-cycle
 
@@ -109,7 +109,7 @@ VU number is 0 while executing the `setup` and `teardown` functions.
 
 Again, let's have a look at the basic structure of a k6 test:
 
-<div class="code-group" data-props='{"labels": ["Setup/Teardown"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
 ```js
 // 1. init code
@@ -127,7 +127,7 @@ export function teardown(data) {
 }
 ```
 
-</div>
+</CodeGroup>
 
 You might have noticed the function signature of the `default` function and `teardown` function
 takes an argument, which we here refer to as `data`.
@@ -143,7 +143,7 @@ other stages, any passed functions will be stripped.
 
 Here's an example of doing just that, passing some data from setup to VU and teardown stages:
 
-<div class="code-group" data-props='{"labels": ["Setup/Teardown"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
 ```js
 export function setup() {
@@ -161,13 +161,13 @@ export function teardown(data) {
 }
 ```
 
-</div>
+</CodeGroup>
 
 A big difference between the init stage and setup/teardown stages is that you have the full k6
 API available in the latter, you can for example make HTTP requests in the setup and teardown
 stages:
 
-<div class="code-group" data-props='{"labels": ["Setup/Teardown with HTTP request"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
 ```js
 export function setup() {
@@ -184,7 +184,7 @@ export default function (data) {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Note that any requests made in the setup and teardown stages will be counted in the end-of-test
 summary. Those requests will be tagged appropriately with the `::setup` and `::teardown` values
@@ -195,10 +195,10 @@ for the `group` metric tag, so that you can filter them in JSON output or Influx
 It is possible to skip the execution of setup and teardown stages using the two options `--no-setup` and
 `--no-teardown` respectively.
 
-<div class="code-group" data-props='{"labels": ["Skipping setup/teardown execution"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Skipping setup/teardown execution"]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run --no-setup --no-teardown ...
 ```
 
-</div>
+</CodeGroup>

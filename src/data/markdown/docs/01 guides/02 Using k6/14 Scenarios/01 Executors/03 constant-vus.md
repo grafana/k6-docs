@@ -13,10 +13,10 @@ of time. This executor is equivalent to the global `vus` and `duration` options.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option       | Type    | Description                                                     | Default |
-| ------------ | ------- | --------------------------------------------------------------- | ------- |
-| `duration*` | string  | Total scenario duration (excluding `gracefulStop`).    | -       |
-| `vus`        | integer | Number of VUs to run concurrently.                              | `1`     |
+| Option      | Type    | Description                                         | Default |
+| ----------- | ------- | --------------------------------------------------- | ------- |
+| `duration*` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
+| `vus`       | integer | Number of VUs to run concurrently.                  | `1`     |
 
 ## When to use
 
@@ -26,7 +26,7 @@ Use this executor if you need a specific amount of VUs to run for a certain amou
 
 In this example, we'll run 10 VUs constantly for a duration 45 minutes.
 
-<div class="code-group" data-props='{"labels": [ "constant-vus.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "constant-vus.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -48,4 +48,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

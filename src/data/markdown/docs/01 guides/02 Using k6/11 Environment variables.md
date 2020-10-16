@@ -32,7 +32,7 @@ variables when running scripts by using `--include-system-env-vars=false`.
 
 An environment variable could, for example, be specified like this on the command line:
 
-<div class="code-group" data-props='{"labels": ["Bash", "Windows: CMD", "Windows: Powershell"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: Powershell"]} lineNumbers={[false]}>
 
 ```shell
 $ MY_HOSTNAME=test.k6.io k6 run script.js
@@ -46,21 +46,21 @@ c:\\k6> set MY_HOSTNAME=\"test.k6.io\"\nc:\\k6> k6 run script.js
 c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
 ```
 
-</div>
+</CodeGroup>
 
 or using an `-e` CLI flag (which will be the same for all platforms):
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
 
-</div>
+</CodeGroup>
 
 The environment variable could then be used as follows in a script:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import { check, sleep } from 'k6';
@@ -75,7 +75,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Environment variables specified with the `-e` CLI flag takes precedence over (overwrite) actual
 system environment variables with the same name.

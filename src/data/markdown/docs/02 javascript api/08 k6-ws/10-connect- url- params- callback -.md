@@ -1,6 +1,6 @@
 ---
-title: "connect( url, params, callback )"
-description: "Create a WebSocket connection, and provides a Socket client to interact with the service."
+title: 'connect( url, params, callback )'
+description: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
 ---
 
 Initiate a WebSocket connection to a remote host.
@@ -13,29 +13,29 @@ The following events can close the connection:
 - [Socket.close()](/javascript-api/k6-ws/socket/socket-close).
 - k6 VU interruption based on test configuration or CLI commands.
 
-| Parameter | Type     | Description                                                                                                                                                                                                                                                                  |
-| --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                |
-| params    | object   | [Params](/javascript-api/k6-http/params) object containing additional request parameters.                                                                                                                                                                        |
+| Parameter | Type     | Description                                                                                                                                                                                                                                                              |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                            |
+| params    | object   | [Params](/javascript-api/k6-http/params) object containing additional request parameters.                                                                                                                                                                                |
 | callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](/javascript-api/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
 
 ### Returns
 
-| Type     | Description                                                           |
-| -------- | --------------------------------------------------------------------- |
+| Type                                         | Description           |
+| -------------------------------------------- | --------------------- |
 | [Response](/javascript-api/k6-http/response) | HTTP Response object. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import ws from 'k6/ws';
 
-export default function() {
+export default function () {
   var url = 'ws://echo.websocket.org';
-  var resp = ws.connect(url, null, function(socket) {
-    socket.on('open', function() {
+  var resp = ws.connect(url, null, function (socket) {
+    socket.on('open', function () {
       console.log('WebSocket connection established!');
       socket.close();
     });
@@ -43,4 +43,4 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>

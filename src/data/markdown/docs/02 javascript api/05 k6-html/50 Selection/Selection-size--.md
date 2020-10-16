@@ -1,28 +1,26 @@
 ---
-title: "Selection.size()"
-excerpt: ""
+title: 'Selection.size()'
+excerpt: ''
 ---
+
 Return the number of elements in the Selection.
 Mimics [jquery.size](https://api.jquery.com/size/)
 
-
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                              |
+| ------ | ---------------------------------------- |
 | Number | The number of elements in the Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -43,13 +41,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('dt');
 
   console.log(sel.size());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

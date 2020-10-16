@@ -16,26 +16,26 @@ files needed to execute a k6 test.
 
 Let's say that you normally execute a test using:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run script.js
 ```
 
-</div>
+</CodeGroup>
 
 Now if you replace `run` with `archive` k6 will run the [init stage](/using-k6/test-life-cycle) of
 the code to determine which JS files are being imported and what data files are being
 [`open()`](/javascript-api/init-context/open-filepath-mode)'ed and bundles all of the files up
 into a tar file:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 archive script.js
 ```
 
-</div>
+</CodeGroup>
 
 This would produce a tar file on disk called `archive.tar` (you can change that by setting
 `-O filename.tar`). It's also easy to run an archive, as `k6 run` is compatible with archive
@@ -46,13 +46,13 @@ files you can execute:
 > As always you can override options using CLI flags or environment variables when
 > running an archive.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run archive.tar
 ```
 
-</div>
+</CodeGroup>
 
 ## Use cases
 
@@ -98,7 +98,7 @@ via [Environment variables](/using-k6/options) and [in-script options](/using-k6
 Let's create an archive from the following sample test. Here is the layout in the filesystem
 of the files:
 
-<div class="code-group" data-props='{"labels": ["Sample test structure"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Sample test structure"]} lineNumbers={[true]}>
 
 ```shell
 /home/johndoe/tests/api-test $ tree
@@ -116,14 +116,14 @@ of the files:
 └-- script.js
 ```
 
-</div>
+</CodeGroup>
 
 Now, if the current working directory is `/home/johndoe/tests/api-test/` and we run
 `k6 archive script.js` we'd get a tar file called `archive.tar` (you can change the name of the
 file using `-O filename.tar`). The contents of the archive file would look like something like
 this:
 
-<div class="code-group" data-props='{"labels": ["Structure of archive.tar"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Structure of archive.tar"]} lineNumbers={[true]}>
 
 ```text
 ├-- data
@@ -151,7 +151,7 @@ this:
                             └-- lib.js
 ```
 
-</div>
+</CodeGroup>
 
 Breaking down the file structure we get:
 
@@ -164,7 +164,7 @@ Breaking down the file structure we get:
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 
-<div class="code-group" data-props='{"labels": ["metadata.json"], "lineNumbers": [true]}'>
+<CodeGroup labels={["metadata.json"]} lineNumbers={[true]}>
 
 ```json
 {
@@ -218,7 +218,7 @@ Breaking down the file structure we get:
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## What an archive file does not contain
 

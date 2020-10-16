@@ -15,7 +15,7 @@ This tutorial shows how to upload the test result metrics to an [InfluxDB](https
 
 Full installation instructions are available in [the InfluxDB docs](https://docs.influxdata.com/influxdb/v1.2/introduction/installation/).
 
-<div class="code-group" data-props='{ "labels": ["Linux (Debian/Ubuntu)", "macOS"] }'>
+<CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
 ```shell
 $ sudo apt install influxdb
@@ -25,14 +25,14 @@ $ sudo apt install influxdb
 $ brew install influxdb
 ```
 
-</div>
+</CodeGroup>
 
 ## Run the test and upload the results to InfluxDB
 
 k6 has built-in support for outputting results data directly to an InfluxDB database using
 the `--out` (`-o`) switch:
 
-<div class="code-group" data-props='{ "labels": ["Linux & MacOS", "Docker"] }'>
+<CodeGroup labels={["Linux & MacOS", "Docker"]}>
 
 ```shell
 $ k6 run --out influxdb=http://localhost:8086/myk6db script.js
@@ -42,7 +42,7 @@ $ k6 run --out influxdb=http://localhost:8086/myk6db script.js
 $ docker run -i loadimpact/k6 run --out influxdb=http://localhost:8086/myk6db - <script.js
 ```
 
-</div>
+</CodeGroup>
 
 The above command line makes k6 connect to a local influxdb instance, and send the results from
 the test to a database named `myk6db`. If this database does not exist, k6 will create it
@@ -55,7 +55,7 @@ create results visualizations.
 
 Full installation instructions are available in [the Grafana docs](http://docs.grafana.org/installation/).
 
-<div class="code-group" data-props='{ "labels": ["Linux (Debian/Ubuntu)", "macOS"] }'>
+<CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
 ```shell
 $ sudo apt install grafana
@@ -65,7 +65,7 @@ $ sudo apt install grafana
 $ brew install grafana
 ```
 
-</div>
+</CodeGroup>
 
 After the installation, you should have an InfluxDB server running on localhost, listening on port 8086,
 and a Grafana server on `http://localhost:3000`. Now, we show two different ways to visualize your k6 metrics:

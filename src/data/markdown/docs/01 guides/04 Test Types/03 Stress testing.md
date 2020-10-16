@@ -49,7 +49,7 @@ You can easily create a stress test in k6 by properly configuring the `options` 
 Remember, the point of this test is to gradually push your APIs beyond its breaking point.
 It's probably the easiest to start with an example.
 
-<div class="code-group" data-props='{"labels": ["API stress test k6 example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["API stress test k6 example"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -103,7 +103,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The VU chart of a stress test should look similar to this:
 ![Virtual user chart of an API stress test](./images/stress-test.png)
@@ -162,7 +162,7 @@ Success or failure of a spike test depends on your expectations. Systems general
 
 Here's an example script configuration for a spike test.
 
-<div class="code-group" data-props='{"labels": ["Spike test k6 example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Spike test k6 example"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -213,7 +213,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The VU chart of a spike test should look similar to this:
 ![Virtual user chart of a spike test](./images/spike-test.png)

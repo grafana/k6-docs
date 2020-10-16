@@ -1,37 +1,35 @@
 ---
-title: "Socket.setTimeout(callback, delay)"
+title: 'Socket.setTimeout(callback, delay)'
 ---
 
 Call a function at a later time, if the WebSocket connection is still open then.
 
-
-| Parameter | Type     | Description                                                                                                                                                                                                                                                                |
-| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| callback  | function | The function to call when `delay` has expired.                                                                                                                                                                                                                             |
-| delay     | number   | The delay time, in milliseconds.                                                                                                                                                                                                                                           |
-
+| Parameter | Type     | Description                                    |
+| --------- | -------- | ---------------------------------------------- |
+| callback  | function | The function to call when `delay` has expired. |
+| delay     | number   | The delay time, in milliseconds.               |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import ws from 'k6/ws';
 import { sleep } from 'k6';
 
-export default function() {
+export default function () {
   console.log('T0: Script started');
   var url = 'ws://echo.websocket.org';
-  var response = ws.connect(url, null, function(socket) {
+  var response = ws.connect(url, null, function (socket) {
     console.log('T0: Entered WebSockets run loop');
-    socket.setTimeout(function() {
+    socket.setTimeout(function () {
       console.log('T0+1: This is printed');
     }, 1000);
-    socket.setTimeout(function() {
+    socket.setTimeout(function () {
       console.log('T0+2: Closing socket');
       socket.close();
     }, 2000);
-    socket.setTimeout(function() {
+    socket.setTimeout(function () {
       console.log('T0+3: This is not printed, because socket is closed');
     }, 3000);
   });
@@ -41,4 +39,4 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>

@@ -18,16 +18,12 @@ Below we will explore what hardware and considerations are needed for generating
 
 The following OS changes allow k6 to use the **full network capacity** of the machine for maximum performance.
 
-<div class="code-group" data-props='{}'>
-
 ```bash
 sysctl -w net.ipv4.ip_local_port_range="1024 65535"
 sysctl -w net.ipv4.tcp_tw_reuse=1
 sysctl -w net.ipv4.tcp_timestamps=1
 ulimit -n 250000
 ```
-
-</div>
 
 These commands enable reusing network connections, increase the limit of network connections, and range of local ports.
 
@@ -72,15 +68,11 @@ When running large stress tests, your script can't assume anything about the HTT
 Often performance tests are written with a "happy path" in mind.
 For example, a "happy path" check like the one below is something that we see in k6 often.
 
-<div class="code-group" data-props='{"lineNumbers": [false]}'>
-
 ```javascript
 let checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body.length === 11026,
 });
 ```
-
-</div>
 
 Code like this runs fine when the system under test (SUT) is not overloaded and returns proper responses.
 When the system starts to fail, the above check won't work as expected.
@@ -88,17 +80,13 @@ When the system starts to fail, the above check won't work as expected.
 The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if server is failing.
 In such case, the check itself won't work as expected and error similar to the one below will be returned:
 
-<div class="code-group" data-props='{}'>
-
 ```bash
 ERRO[0625] TypeError: Cannot read property 'length' of undefined
 ```
 
-</div>
-
 To fix this issue your checks must be resilient to any response type. This change will fix the above problem.
 
-<div class="code-group" data-props='{"labels": ["resilient check"]}'>
+<CodeGroup labels={["resilient check"]}>
 
 ```javascript
 let checkRes = check(res, {
@@ -106,7 +94,7 @@ let checkRes = check(res, {
 });
 ```
 
-</div>
+</CodeGroup>
 
 ### Monitor the load generator server
 
@@ -145,8 +133,6 @@ In [k6-hardware-benchmark](https://github.com/loadimpact/k6-hardware-benchmark) 
 
 Use it like this:
 
-<div class="code-group">
-
 ```bash
 git clone https://github.com/loadimpact/k6-hardware-benchmark/
 cd k6-hardware-benchmark
@@ -155,17 +141,11 @@ yarn run to-es5 someplace/yourscript.js
 # your ES5 script is in someplace/yourscript.es5.js
 ```
 
-</div>
-
 Once your code is transpiled, run it like this:
-
-<div class="code-group">
 
 ```bash
 k6 run -o cloud --compatibility-mode=base someplace/yourscript.es5.js
 ```
-
-</div>
 
 k6 will use about 50-85% of memory in comparison to running the original script. It will also reduce the CPU load, and significantly decrease startup time.
 
@@ -173,15 +153,11 @@ k6 will use about 50-85% of memory in comparison to running the original script.
 
 You can tell k6 to not process the body of the response by setting `discardResponseBodies` in the options object like this:
 
-<div class="code-group">
-
 ```js
 export let options = {
   discardResponseBodies: true,
 };
 ```
-
-</div>
 
 k6 by default loads the response body of the request into memory. This causes much higher memory consumption and often is completely unnecessary.
 If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
@@ -194,8 +170,6 @@ This will save you some memory and CPU cycles.
 
 Here are all the mentioned flags, all in one:
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/website.es5.js \
   -o cloud \
@@ -205,8 +179,6 @@ k6 run scripts/website.es5.js \
   --no-thresholds \
   --no-summary \
 ```
-
-</div>
 
 ### Remove unnecessary checks, groups and custom metrics
 
@@ -258,50 +230,34 @@ If you run into errors during the execution, it's good to understand if they wer
 
 Error similar to this one is caused by the target system resetting the TCP connection. This happens when the Load balancer or the server itself isn't able to handle the traffic.
 
-<div class="code-group">
-
 ```bash
 WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72.209:35288->63.32.205.136:80: read: connection reset by peer"
 ```
-
-</div>
 
 ### context deadline exceeded
 
 Error like this happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
 
-<div class="code-group">
-
 ```bash
 WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exceeded"
 ```
-
-</div>
 
 ### dial tcp 52.18.24.222:80: i/o timeout
 
 This is a similar error to the one above, but in this case, k6 wasn't even able to make a request. The target system isn't able to establish a connection.
 
-<div class="code-group">
-
 ```bash
 WARN[0057] Request Failed     error="Get http://pawel.staging.loadimpact.com/static/logo.svg?url=v3: dial tcp 52.18.24.222:80: i/o timeout"
 ```
-
-</div>
 
 ### socket: too many open files
 
 This error means that the load-generator machine isn't able to open TCP sockets because it reached the limit of open file descriptors.
 Make sure that your limit is set sufficiently high `ulimit -n 250000` should be enough for anyone :tm:
 
-<div class="code-group">
-
 ```bash
 WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=6: dial tcp 99.81.83.131:80: socket: too many open files"
 ```
-
-</div>
 
 Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
@@ -338,8 +294,6 @@ The `m5.large` instance has 8GB of RAM and 2 CPU cores.
 
 The following command was used to execute the test
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/website.es5.js \
  -o cloud \
@@ -349,8 +303,6 @@ k6 run scripts/website.es5.js \
  --no-thresholds \
  --no-summary
 ```
-
-</div>
 
 Results
 
@@ -364,8 +316,6 @@ Results
 
 The `m5.4xlarge` instance has 64GB of RAM and 16 CPU cores.
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/website.es5.js \
    -o cloud  \
@@ -376,8 +326,6 @@ k6 run scripts/website.es5.js \
    --no-summary
 
 ```
-
-</div>
 
 Results
 
@@ -392,8 +340,6 @@ Results
 The m5.24xlarge has 384GB of RAM and 96 CPU cores.
 NOTE: sleep has been reduced to 1s instead of 5s to produce more requests.
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/website.es5.js  \
    -o cloud  \
@@ -403,8 +349,6 @@ k6 run scripts/website.es5.js  \
    --no-thresholds  \
    --no-summary
 ```
-
-</div>
 
 Results
 
@@ -422,8 +366,6 @@ Much higher numbers are possible for faster systems.
 
 **> AWS m5.24xlarge**
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/RPS-optimized.es5.js \
    -o cloud  \
@@ -433,8 +375,6 @@ k6 run scripts/RPS-optimized.es5.js \
    --no-thresholds \
    --no-summary
 ```
-
-</div>
 
 Results
 
@@ -453,8 +393,6 @@ Please read the warning about the cost of data transfer in AWS before commencing
 
 To test the network throughput we have written a [file uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs.
 
-<div class="code-group">
-
 ```bash
 k6 run scripts/file-upload.es5.js \
 -o cloud \
@@ -464,8 +402,6 @@ k6 run scripts/file-upload.es5.js \
 --no-thresholds \
 --no-summary
 ```
-
-</div>
 
 Results
 
@@ -489,7 +425,7 @@ Users often look for the distributed execution mode to run large-scale tests. Al
 
 In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/options#execution-segment) option. For example:
 
-<div class="code-group" data-props='{"labels": ["Two machines", "Three machines", "Four machines"]}'>
+<CodeGroup labels={["Two machines", "Three machines", "Four machines"]}>
 
 ```bash
 ## split the load of my-script.js across two machines
@@ -512,7 +448,7 @@ k6 run --execution-segment "2/4:3/4"   --execution-segment-sequence "0,1/4,2/4,3
 k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3/4,1" my-script.js
 ```
 
-</div>
+</CodeGroup>
 
 However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
