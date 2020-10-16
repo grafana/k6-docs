@@ -2,37 +2,35 @@
   flex-grow: 1;
   height: 100%;
   overflow-y: auto;
+  text-align: left;
   @include no-scrollbars;
 }
 
-.codeContainer {
+.line-number {
+  display: table-cell;
+  text-align: right;
+  padding-right: 1em;
+  user-select: none;
+  opacity: 0.5;
+}
+
+.line-content {
+  display: table-cell;
+}
+
+.code-container {
   :global {
     pre {
       display: flex;
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
       background: $color-primary;
-      padding-top: 15px !important;
-      padding-bottom: 15px !important;
-      padding-left: 60px !important;
+      padding: 15px;
+      margin: 0;
       @include no-scrollbars;
       /* preparing for hiding line numbers on md-down */
       @include md-down {
         padding-left: 20px !important;
       }
-    }
-
-    code {
-      flex-grow: 1;
-      display: block;
-      text-shadow: none !important;
-      padding-right: 15px !important;
-
-      font-family: Roboto Mono, sans-serif !important;
-      font-size: 14px;
-      line-height: 24px;
-      color: #e2e2e2 !important;
-      &[class='language-diff'] {
+      &[class*='language-diff'] {
         .deleted {
           color: #dd4a68;
         }
@@ -40,7 +38,7 @@
           color: #c3e88d;
         }
       }
-      &[class='language-html'] {
+      &[class*='language-html'] {
         .tag {
           color: #00cdff;
         }
@@ -53,7 +51,20 @@
       }
     }
 
+    code {
+      flex-grow: 1;
+      display: block;
+      text-shadow: none;
+      font-family: $font-family-secondary;
+      font-size: $font-size-code;
+      line-height: $line-height-code;
+      color: #e2e2e2;
+    }
+
     .token {
+      &-line {
+        display: table-row;
+      }
       &.keyword {
         color: #00cdff;
       }
@@ -86,32 +97,5 @@
         color: $color-tertiary !important;
       }
     }
-
-    .line-numbers-rows {
-      left: -40px !important;
-      width: auto !important;
-      letter-spacing: 0 !important;
-      border-right: none !important;
-      /* hiding line numbers on md-down */
-      @include md-down {
-        display: none;
-      }
-
-      span {
-        &:before {
-          font-family: $font-family-secondary !important;
-          font-weight: 300;
-          color: $color-additional-1 !important;
-          padding-right: 0 !important;
-        }
-      }
-    }
-  }
-}
-
-// to override existing padding settings in case of no line numbers required
-.no-line-numbers {
-  pre {
-    padding-left: 20px !important;
   }
 }
