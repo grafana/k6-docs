@@ -12,8 +12,11 @@ blockquote {
   p {
     margin: 0;
   }
-  span[class='code-inline'] {
-    background-color: $color-additional-2;
+  & span[class='code-inline'] {
+    background: $color-additional-2;
+  }
+  & div[class^='with-copy-button'] {
+    margin-top: 15px;
   }
 }
 

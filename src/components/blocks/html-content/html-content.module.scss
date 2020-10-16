@@ -70,12 +70,6 @@
     }
   }
 
-  p code,
-  ol code {
-    font-family: $font-family-secondary;
-    padding: 3px 5px 2px;
-  }
-
   table {
     border: 1px solid $color-additional-2;
     border-collapse: collapse;
@@ -103,12 +97,6 @@
       line-height: $line-height-sm;
       vertical-align: baseline;
       line-height: 25px;
-
-      code {
-        font-size: $font-size-code;
-        color: $color-accent-primary;
-        font-family: $font-family-secondary;
-      }
     }
   }
   & > * + * {
