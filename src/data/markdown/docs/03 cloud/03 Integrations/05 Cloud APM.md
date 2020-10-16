@@ -41,11 +41,8 @@ The `metrics` parameter allows you to specify built-in and custom metrics to be 
 - iterations
 - vus
 
-<Blockquote mod="warning">
 
-A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
-
-</Blockquote>
+> A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
 
 If you want to export metrics with more granularity, consider using a lower number for the `resample_rate`, like 1.
 

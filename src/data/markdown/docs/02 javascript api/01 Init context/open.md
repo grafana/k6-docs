@@ -11,7 +11,7 @@ Opens a file, reading all its contents into memory for use in the script. Favour
 
 #### Function only available in "init context"
 
-This is a function that can only be called from the init context (aka `init code`), code in the global context that is, outside of the main export default function { ... }.
+This is a function that can only be called from the init context (aka **init code**), code in the global context that is, outside of the main export default function { ... }.
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
