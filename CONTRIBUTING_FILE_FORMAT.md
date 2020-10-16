@@ -326,6 +326,31 @@ See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothi
 
     </CodeGroup>
 
+#### State control
+
+Large code blocks (>400px) by default have a collapsed state, i.e. have a max-height prop of `400px` and user can change their behavior via toggler:
+
+![Code Block States](internal-images/code-block-states.png)
+
+If you are using `CodeGroup` wrapper you can specify the initial state of code blocks via `isInitiallyExpanded` prop which works very similarly to the other available props:
+
+    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]} isInitiallyExpanded=[true, false, false]>
+
+    ```javascript
+    // a lot of lines of important code
+    ```
+
+    ```javascript
+    // a lot of lines of not so important code
+    ```
+
+    ```javascript
+    // a lot of lines of not so important code
+    ```
+
+
+    </CodeGroup>
+
 ## Table data
 
 In md file it should look like this to be formatted as a table. You could use online markdown tables generator to simplify the process – [https://www.tablesgenerator.com/text_tables](https://www.tablesgenerator.com/text_tables)
