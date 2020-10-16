@@ -5,29 +5,29 @@ excerpt: ''
 
 You can also make k6 output detailed statistics in a CSV format by using the `--out`/`-o` option for `k6 run`, like this:
 
-<div class="code-group" data-props='{"labels": ["CLI"]}'>
+<CodeGroup labels={["CLI"]}>
 
 ```shell
 $ k6 run --out csv=my_test_result.csv script.js
 ```
 
-</div>
+</CodeGroup>
 
 Or if you want to get the result gzipped, like this:
 
-<div class="code-group" data-props='{"labels": ["CLI"]}'>
+<CodeGroup labels={["CLI"]}>
 
 ```shell
 $ k6 run --out csv=my_test_result.gz script.js
 ```
 
-</div>
+</CodeGroup>
 
 ## CSV format
 
 The CSV result file will contain lines like these:
 
-<div class="code-group" data-props='{"labels": ["Output"]}'>
+<CodeGroup labels={["Output"]}>
 
 ```csv
 metric_name,timestamp,metric_value,check,error,error_code,group,method,name,proto,scenario,status,subproto,tls_version,url,extra_tags
@@ -49,10 +49,9 @@ iteration_duration,1595325561,1449.049580,,,,,,,,default,,,,,
 iterations,1595325561,1.000000,,,,,,,,default,,,,,
 ```
 
-</div>
+</CodeGroup>
 
 Each entry in the report represents a metric `metric_name` along with its value `metric_value` at time `timestamp`. If there's an error, then the `error` along with the `error_code` fields will be populated.
-
 
 ## See also
 

@@ -16,13 +16,13 @@ See the [arrival rate](#arrival-rate) section for details.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option            | Type    | Description                                                                             | Default |
-| ----------------- | ------- | --------------------------------------------------------------------------------------- | ------- |
+| Option             | Type    | Description                                                                             | Default |
+| ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
 | `stages*`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
 | `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
-| `startRate`       | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
-| `timeUnit`        | string  | Period of time to apply the `startRate` the `stages` `target` value.                    | `"1s"`  |
-| `maxVUs`          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| `startRate`        | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
+| `timeUnit`         | string  | Period of time to apply the `startRate` the `stages` `target` value.                    | `"1s"`  |
+| `maxVUs`           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 ## When to use
 
@@ -33,7 +33,7 @@ would like to ramp the number of iterations up or down during specific periods o
 
 In this example, we'll execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
 
-<div class="code-group" data-props='{"labels": [ "ramping-arr-rate.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -60,4 +60,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

@@ -36,13 +36,13 @@ If you are integrating k6 into your CI pipeline, we recommend using one of the t
 
 You can forego using a token and use your k6 cloud email/password credentials by entering the following command into your terminal:
 
-<div class="code-group" data-props='{ "labels": ["Authenticate with email/password"] }'>
+<CodeGroup labels={["Authenticate with email/password"]}>
 
 ```shell
 k6 login cloud
 ```
 
-</div>
+</CodeGroup>
 
 This will login to your account, fetch (and create of necessary) your k6 cloud API authentication token, and save it to a [k6 configuration file](#using-config-file).
 
@@ -50,13 +50,13 @@ This will login to your account, fetch (and create of necessary) your k6 cloud A
 
 If you're a Google/GitHub Single Sign-On (SSO) user or if you have a use case where using your k6 cloud account credentials is not appropriate you can choose to enter your k6 cloud API authentication token directly by entering the following command into your terminal:
 
-<div class="code-group" data-props='{"labels": ["Using API token"]}'>
+<CodeGroup labels={["Using API token"]}>
 
 ```shell
 k6 login cloud --token YOUR_API_AUTH_TOKEN
 ```
 
-</div>
+</CodeGroup>
 
 ## API Token as an environment variables
 
@@ -66,7 +66,7 @@ You can also authenticate with your k6 cloud API authentication token via enviro
 
 You can also directly add your k6 cloud API authentication token to a configuration file. Either in the default path that k6 will look for it by default:
 
-<div class="code-group" data-props='{"labels": ["Linux", "MacOS", "Windows"], "lineNumbers": [true, true, true]}'>
+<CodeGroup labels={["Linux", "MacOS", "Windows"]} lineNumbers={[true, true, true]}>
 
 ```shell
 ${HOME}/.config/loadimpact/k6/config.json
@@ -80,13 +80,13 @@ ${HOME}/Library/Application Support/LoadImpact/k6/config.json
 C:\Users\&lt;User&gt;\AppData\Roaming\loadimpact\k6\config.json
 ```
 
-</div>
+</CodeGroup>
 
 or by specifying the `-c/--config PATH/TO/CONFIG_FILE` CLI flag.
 
 When your k6 cloud API authentication token has been added to the config file, it should look something like this (removing any other config options from the file):
 
-<div class="code-group" data-props='{"labels": ["API token in JSON"]}'>
+<CodeGroup labels={["API token in JSON"]}>
 
 ```json
 {
@@ -98,4 +98,4 @@ When your k6 cloud API authentication token has been added to the config file, i
 }
 ```
 
-</div>
+</CodeGroup>

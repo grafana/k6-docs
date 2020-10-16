@@ -11,7 +11,7 @@ The following examples take a set of arguments, shown in the function documentat
 
 ### Azure Active Directory
 
-<div class="code-group" data-props='{ "labels": ["azure.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["azure.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -25,7 +25,13 @@ import http from 'k6/http';
  * @param  {string} scope - Space-separated list of scopes (permissions) that are already given consent to by admin
  * @param  {string} resource - Either a resource ID (as string) or an object containing username and password
  */
-export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, resource) {
+export function authenticateUsingAzure(
+  tenantId,
+  clientId,
+  clientSecret,
+  scope,
+  resource,
+) {
   let url;
   const requestBody = {
     client_id: clientId,
@@ -56,11 +62,11 @@ export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, 
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Okta
 
-<div class="code-group" data-props='{"labels": ["okta.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["okta.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -75,7 +81,14 @@ import http from 'k6/http';
  * @param  {string} scope - Space-separated list of scopes
  * @param  {string|object} resource - Either a resource ID (as string) or an object containing username and password
  */
-export function authenticateUsingOkta(oktaDomain, authServerId, clientId, clientSecret, scope, resource) {
+export function authenticateUsingOkta(
+  oktaDomain,
+  authServerId,
+  clientId,
+  clientSecret,
+  scope,
+  resource,
+) {
   if (authServerId === 'undefined' || authServerId == '') {
     authServerId = 'default';
   }
@@ -86,7 +99,9 @@ export function authenticateUsingOkta(oktaDomain, authServerId, clientId, client
   if (typeof resource == 'string') {
     requestBody['grant_type'] = 'client_credentials';
 
-    const encodedCredentials = encoding.b64encode(`${clientId}:${clientSecret}`);
+    const encodedCredentials = encoding.b64encode(
+      `${clientId}:${clientSecret}`,
+    );
     const params = {
       auth: 'basic',
       headers: {
@@ -115,6 +130,6 @@ export function authenticateUsingOkta(oktaDomain, authServerId, clientId, client
 }
 ```
 
-</div>
+</CodeGroup>
 
 For a detailed example, please visit this article: [How to Load Test OAuth secured APIs with k6?](https://k6.io/blog/how-to-load-test-oauth-secured-apis-with-k6)

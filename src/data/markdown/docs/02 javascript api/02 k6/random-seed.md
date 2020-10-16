@@ -13,7 +13,7 @@ Set seed to get a reproducible pseudo-random number using `Math.random`.
 
 Use `randomSeed` to get the same random number in all the iterations.
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { randomSeed } from 'k6';
@@ -30,4 +30,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

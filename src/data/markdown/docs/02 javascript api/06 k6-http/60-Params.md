@@ -21,7 +21,7 @@ _Params_ is an object used by the http.\* methods that generate HTTP requests. _
 
 _A k6 script that will make an HTTP request with a custom HTTP header and tag results data with a specific tag_
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -37,13 +37,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Example using http.batch() with Params
 
 Here is another example using [http.batch()](/javascript-api/k6-http/batch-requests) with a `Params` argument:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -65,13 +65,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Example of Digest Authentication
 
 Here is one example of how to use the `Params` to Digest Authentication.
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -93,12 +93,12 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 Example how to overwrite discardResponseBodies:
 
 ### Example of overwrite discardResponseBodies
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -115,4 +115,4 @@ export function setup() {
 }
 ```
 
-</div>
+</CodeGroup>

@@ -3,27 +3,25 @@ title: 'CookieJar.cookiesForUrl(url)'
 excerpt: ''
 ---
 
-| Parameter | Type     | Description                                                                                                                                                                                                                                                                |
-| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url       | string   | The URL for which to get cookies.                                                                                                                                                                                                                                          |
-
+| Parameter | Type   | Description                       |
+| --------- | ------ | --------------------------------- |
+| url       | string | The URL for which to get cookies. |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                                                                   |
+| ------ | ----------------------------------------------------------------------------- |
 | object | Object of cookies where the key is the cookie name and the value is an array. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let res = http.get(
     'https://httpbin.org/cookies/set?my_cookie=hello%20world',
     { redirects: 0 },
@@ -31,10 +29,10 @@ export default function() {
   let jar = http.cookieJar();
   let cookies = jar.cookiesForURL('http://httpbin.org/');
   check(res, {
-    "has cookie 'my_cookie'": r => cookies.my_cookie.length > 0,
-    'cookie has correct value': r => cookies.my_cookie[0] === 'hello world',
+    "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
+    'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
   });
 }
 ```
 
-</div>
+</CodeGroup>

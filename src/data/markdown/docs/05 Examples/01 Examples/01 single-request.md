@@ -4,7 +4,7 @@ excerpt: 'Example of one HTTP GET request'
 draft: 'false'
 ---
 
-<div class="code-group" data-props='{ "labels": ["single-request.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["single-request.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -29,7 +29,7 @@ export const options = {
   },
 };
 
-export default function() {
+export default function () {
   // our HTTP request, note that we are saving the response to res, which can be accessed later
 
   const res = http.get('http://test.k6.io');
@@ -37,10 +37,10 @@ export default function() {
   sleep(1);
 
   const checkRes = check(res, {
-    'status is 200': r => r.status === 200,
-    'response body': r => r.body.indexOf('Feel free to browse') !== -1,
+    'status is 200': (r) => r.status === 200,
+    'response body': (r) => r.body.indexOf('Feel free to browse') !== -1,
   });
 }
 ```
 
-</div>
+</CodeGroup>

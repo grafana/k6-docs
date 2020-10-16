@@ -286,7 +286,7 @@ Headers sent with all requests:
 
 Header Example:
 
-<div class="code-group" data-props='{"labels": ["Example Headers"]}'>
+<CodeGroup labels={["Example Headers"]}>
 
 ```json
 X-k6cloud-ID: 19c5d426-3b4d-43c3-8277-37ad7d457430
@@ -294,7 +294,7 @@ X-k6cloud-Event: test.started
 User-Agent: K6CloudWebHook
 ```
 
-</div>
+</CodeGroup>
 
 The body of the request is a JSON structure created by populating the chosen
 notification template with values relevant to the event.

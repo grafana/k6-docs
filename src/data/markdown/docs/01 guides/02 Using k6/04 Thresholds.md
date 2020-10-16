@@ -19,7 +19,7 @@ Thresholds are a essential for [load-testing automation](/testing-guides/automat
 
 Here is a sample script that specifies two thresholds, one using a custom [Rate metric](/javascript-api/k6-metrics/rate), and one using a standard `http_req_duration` metric.
 
-<div class="code-group" data-props='{"labels": ["threshold.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import http from 'k6/http';
@@ -40,7 +40,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The `failed requests` threshold specifies that we want our load test to be considered a failure
 (resulting in k6 exiting with a non-zero exit code) if 10% or more of requests resulted in the server
@@ -66,7 +66,7 @@ The quickest way to start with thresholds is to use the [standard, built-in k6 m
 
 Here are a few copy-paste examples that you can start using right away.
 
-<div class="code-group" data-props='{"labels": ["threshold-request-duration.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import http from 'k6/http';
@@ -85,11 +85,11 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Multiple thresholds on a single metric
 
-<div class="code-group" data-props='{"labels": ["threshold-request-duration.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import http from 'k6/http';
@@ -108,11 +108,11 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Threshold on group duration
 
-<div class="code-group" data-props='{"labels": ["threshold-group-duration.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold-group-duration.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -156,7 +156,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
@@ -164,7 +164,7 @@ You can find more specific threshold examples on the [Counter](/javascript-api/k
 
 Thresholds can be specified in a short or full format.
 
-<div class="code-group" data-props='{"labels": ["threshold-options.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
 ```js
 export let options = {
@@ -175,7 +175,7 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 The above declaration inside a k6 script means that there will be a threshold configured for
 the metric `metric_name1`. To determine if the threshold has failed or passed, the string `'threshold_expression'`
@@ -203,7 +203,7 @@ Each of the four metric types included in k6 provide its own set of aggregation 
 Here is a (slightly contrived) sample script that uses all different types of metrics, and sets
 different types of thresholds for them:
 
-<div class="code-group" data-props='{"labels": ["thresholds-all.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -236,7 +236,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 We have these thresholds:
 
@@ -269,7 +269,7 @@ export let options = {
 
 And here's a full example.
 
-<div class="code-group" data-props='{"labels": ["thresholds-on-submetrics.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["thresholds-on-submetrics.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -310,14 +310,14 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Aborting a test when a threshold is crossed
 
 If you want to abort a test as soon as a threshold is crossed, before the test has completed,
 there's an extended threshold specification format that looks like this:
 
-<div class="code-group" data-props='{"labels": ["threshold-abort.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["threshold-abort.js"]} lineNumbers={[true]}>
 
 ```js
 export let options = {
@@ -327,7 +327,7 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 As you can see in the example above the threshold specification has been extended to alternatively
 support a JS object with parameters to control the abort behavior. The fields are as follows:
@@ -351,7 +351,7 @@ If you only use `checks` to verify that things work as expected, you will not be
 
 It can often be useful to combine `checks` and `thresholds`, to get the best of both:
 
-<div class="code-group" data-props='{"labels": ["check_and_fail.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["check_and_fail.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -377,13 +377,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics) - establishing that the rate of successful checks should be higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
 
-<div class="code-group" data-props='{"labels": [""], "lineNumbers": [true]}'>
+<CodeGroup labels={[""]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -418,7 +418,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Thresholds in k6 Cloud Results
 

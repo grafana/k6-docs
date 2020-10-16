@@ -1,27 +1,26 @@
 ---
-title: "Selection.contents()"
-excerpt: ""
+title: 'Selection.contents()'
+excerpt: ''
 ---
+
 Get the children of each element in the set of matched elements, including text and comment nodes.
 Mimics [jquery.contents](https://api.jquery.com/contents/).
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection. |
-
+| Type                                           | Description |
+| ---------------------------------------------- | ----------- |
+| [Selection](/javascript-api/k6-html/selection) | Selection.  |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -42,13 +41,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('dt');
 
   console.log(sel.contents().text());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

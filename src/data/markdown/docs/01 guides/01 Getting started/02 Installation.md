@@ -6,18 +6,34 @@ title: 'Installation'
 
 ### Debian/Ubuntu
 
-<div class="code-group" data-props='{ "labels": [""] }'>
-
 ```shell
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install k6
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install k6
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install k6
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install k6
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install k6
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install k6
 ```
 
-</div>
-
-> ### ⚠️ If you are behind a firewall or proxy
+> #### ⚠️ If you are behind a firewall or proxy
 >
 > There have been reports of users being unable to download the key from Ubuntu's key-server using `apt-key`
 > command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
@@ -29,25 +45,21 @@ sudo apt-get install k6
 
 ### Red Hat/CentOS
 
-<div class="code-group" data-props='{ "labels": [""] }'>
-
 ```shell
 wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
 sudo mv bintray-loadimpact-rpm.repo /etc/yum.repos.d/
 sudo yum install k6
 ```
 
-</div>
-
 ## Mac (brew)
 
-<div class="code-group" data-props='{ "labels": ["Brew"] }'>
+<CodeGroup labels={['Brew']}>
 
 ```shell
 brew install k6
 ```
 
-</div>
+</CodeGroup>
 
 ## Windows (MSI installer)
 
@@ -60,10 +72,10 @@ Install the binary in your `PATH` to run **k6** from any location.
 
 ## Docker
 
-<div class="code-group" data-props='{"labels": ["Docker"]}'>
+<CodeGroup labels={['Docker']}>
 
 ```shell
 docker pull loadimpact/k6
 ```
 
-</div>
+</CodeGroup>

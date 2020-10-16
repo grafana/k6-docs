@@ -1,6 +1,6 @@
 ---
-title: "Usage reports"
-excerpt: ""
+title: 'Usage reports'
+excerpt: ''
 ---
 
 By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting the environment variable `K6_NO_USAGE_REPORT` or by adding the option `--no-usage-report` when executing k6.
@@ -19,7 +19,7 @@ This info is sent to an HTTP server that collects statistics on k6 usage.
 
 For those interested, here is the actual Go [code](https://github.com/loadimpact/k6/blob/master/cmd/run.go) that generates and sends the usage report:
 
-<div class="code-group" data-props='{"labels": ["snippet from run.go"], "lineNumbers": [true]}'>
+<CodeGroup labels={["snippet from run.go"]} lineNumbers={[true]}>
 
 ```go
   // If the user hasn't opted out: report usage.
@@ -59,4 +59,4 @@ For those interested, here is the actual Go [code](https://github.com/loadimpact
   }
 ```
 
-</div>
+</CodeGroup>

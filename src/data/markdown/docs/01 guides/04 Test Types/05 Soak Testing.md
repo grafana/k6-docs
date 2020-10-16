@@ -42,7 +42,7 @@ Some errors are related to time, and not to the total number of requests execute
 
 Here's a sample test configuration.
 
-<div class="code-group" data-props='{"labels": ["sample-soak-test.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -70,7 +70,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The VU chart of a Soak Test should look similar to this:
 ![Soak Test Configuration](./images/soak-test.png)

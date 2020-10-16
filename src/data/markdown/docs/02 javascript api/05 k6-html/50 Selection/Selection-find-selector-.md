@@ -12,19 +12,19 @@ Mimics [jquery.find](https://api.jquery.com/find/)
 
 ### Returns
 
-| Type                                          | Description       |
-| --------------------------------------------- | ----------------- |
+| Type                                           | Description       |
+| ---------------------------------------------- | ----------------- |
 | [Selection](/javascript-api/k6-html/selection) | Selection object. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   const res = http.get('https://k6.io');
   const doc = parseHTML(res.body);
 
@@ -33,4 +33,4 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>

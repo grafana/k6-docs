@@ -13,11 +13,11 @@ amount of time. This executor is equivalent to the global `stages` option.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option               | Type    | Description                                                                                    | Default |
-| -------------------- | ------- | ---------------------------------------------------------------------------------------------- | ------- |
-| `stages*`           | array   | Array of objects that specify the target number of VUs to ramp up or down to.                   | `[]`    |
-| `startVUs`           | integer | Number of VUs to run at test start.                                                            | `1`     |
-| `gracefulRampDown`   | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
+| Option             | Type    | Description                                                                                    | Default |
+| ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |
+| `stages*`          | array   | Array of objects that specify the target number of VUs to ramp up or down to.                  | `[]`    |
+| `startVUs`         | integer | Number of VUs to run at test start.                                                            | `1`     |
+| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
 
 ## When to use
 
@@ -29,7 +29,7 @@ of time.
 In this example, we'll run a two-stage test, ramping up from 0 to 100 VUs for 5 seconds, and down
 to 0 VUs over 5 seconds.
 
-<div class="code-group" data-props='{"labels": [ "ramping-vus.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "ramping-vus.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -54,7 +54,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Note the setting of `gracefulRampDown` to 0 seconds, which could cause some iterations to be
 interrupted during the ramp down stage.

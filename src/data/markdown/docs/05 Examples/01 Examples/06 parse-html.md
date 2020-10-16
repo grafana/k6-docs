@@ -1,43 +1,39 @@
 ---
-title: "Parse HTML"
-excerpt: "Scripting examples parsing HTML content."
+title: 'Parse HTML'
+excerpt: 'Scripting examples parsing HTML content.'
 ---
-
 
 Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
 
-| Name | Type | Description |
-|------|------|-------------|
-| [Selection](/javascript-api/k6-html/selection) | Class | A jQuery-like API for accessing HTML DOM elements. |
-| [Element](/javascript-api/k6-html/element)   | Class | An HTML DOM element as returned by the Selection API. |
+| Name                                                    | Type     | Description                                           |
+| ------------------------------------------------------- | -------- | ----------------------------------------------------- |
+| [Selection](/javascript-api/k6-html/selection)          | Class    | A jQuery-like API for accessing HTML DOM elements.    |
+| [Element](/javascript-api/k6-html/element)              | Class    | An HTML DOM element as returned by the Selection API. |
 | [parseHTML(src)](/javascript-api/k6-html/parsehtml-src) | function | Parse an HTML string and populate a Selection object. |
 
-
-
-<div class="code-group" data-props='{ "labels": ["Select.find"], "lineNumbers": [true] }'>
+<CodeGroup labels={["Select.find"]} lineNumbers={[true]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import http from "k6/http";
+import { parseHTML } from 'k6/html';
+import http from 'k6/http';
 
-export default function() {
-  const res = http.get("https://k6.io");
-  const doc = parseHTML(res.body);  // equivalent to res.html()
+export default function () {
+  const res = http.get('https://k6.io');
+  const doc = parseHTML(res.body); // equivalent to res.html()
   const pageTitle = doc.find('head title').text();
   const langAttr = doc.find('html').attr('lang');
-};
+}
 ```
-</div>
 
+</CodeGroup>
 
-
-<div class="code-group" data-props='{ "labels": ["Element "], "lineNumbers": [true] }'>
+<CodeGroup labels={["Element "]} lineNumbers={[true]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">Value term 1</dt>
@@ -58,6 +54,7 @@ export default function() {
   console.log(el2.textContent());
 
   sleep(1);
-};
+}
 ```
-</div>
+
+</CodeGroup>

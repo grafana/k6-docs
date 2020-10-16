@@ -13,7 +13,7 @@ and allows the user to successively add more string data to be hashed, and to ex
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import crypto from 'k6/crypto';
@@ -27,7 +27,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code sample should produce this in its output:
 

@@ -11,16 +11,15 @@ Set a cookie in the jar by specifying url, name, value and some other optional s
 | value              | string | Cookie value                                                                                |
 | options (optional) | object | Specific cookie settings: `domain`, `path`, `expires`, `max_age`, `secure` and `http_only`. |
 
-
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
 import { check } from 'k6';
 
-export default function() {
+export default function () {
   let jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
     domain: 'httpbin.org',
@@ -30,12 +29,12 @@ export default function() {
   });
   let res = http.get('https://httpbin.org/cookies');
   check(res, {
-    'has status 200': r => r.status === 200,
-    "has cookie 'my_cookie'": r => r.json().cookies.my_cookie !== null,
-    'cookie has correct value': r =>
+    'has status 200': (r) => r.status === 200,
+    "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
+    'cookie has correct value': (r) =>
       r.json().cookies.my_cookie == 'hello world',
   });
 }
 ```
 
-</div>
+</CodeGroup>

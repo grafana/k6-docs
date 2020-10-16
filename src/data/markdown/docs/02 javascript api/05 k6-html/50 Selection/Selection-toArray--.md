@@ -1,28 +1,26 @@
 ---
-title: "Selection.toArray()"
-excerpt: ""
+title: 'Selection.toArray()'
+excerpt: ''
 ---
+
 Retrieve all the elements contained in the Selection, as an array.
 Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
-
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                                    | Description                 |
+| ------------------------------------------------------- | --------------------------- |
 | Array of [Selection](/javascript-api/k6-html/selection) | Array of Selection objects. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -43,12 +41,16 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-  doc.find('dl').children().toArray().forEach(function(item) {
-    console.log(item.text());
-  });
+  doc
+    .find('dl')
+    .children()
+    .toArray()
+    .forEach(function (item) {
+      console.log(item.text());
+    });
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

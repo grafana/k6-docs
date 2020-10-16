@@ -1,36 +1,33 @@
 ---
-title: "Selection.is(selector)"
-excerpt: ""
+title: 'Selection.is(selector)'
+excerpt: ''
 ---
+
 Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.
 Mimics [jquery.is](https://api.jquery.com/is/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector | function | A function used as a test for each element in the set |
-| selector | string | A string containing a selector expression to match elements against. |
-| selector | [Selection](/javascript-api/k6-html/selection) | A selection. |
-
+| Parameter | Type                                           | Description                                                          |
+| --------- | ---------------------------------------------- | -------------------------------------------------------------------- |
+| selector  | function                                       | A function used as a test for each element in the set                |
+| selector  | string                                         | A string containing a selector expression to match elements against. |
+| selector  | [Selection](/javascript-api/k6-html/selection) | A selection.                                                         |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description           |
+| ---------------------------------------------- | --------------------- |
 | [Selection](/javascript-api/k6-html/selection) | The filter selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -54,21 +51,19 @@ export default function() {
 
   const els = doc.find('dl').children();
 
-
   result = els.is('dd');
   console.log(result);
 
-  result = els.is(function(idx, el) {
+  result = els.is(function (idx, el) {
     return el.text() === 'hola';
   });
   console.log(result);
-
 
   result = els.is(els.first());
   console.log(result);
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

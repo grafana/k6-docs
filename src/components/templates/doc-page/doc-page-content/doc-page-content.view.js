@@ -3,8 +3,7 @@ import { HtmlContent } from 'components/blocks/html-content';
 import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
-import { CodeInline } from 'components/shared/code';
-import { CodeGroup } from 'components/shared/code-group';
+import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import { HeadingLandmark } from 'components/shared/heading';
 import LdScript from 'components/shared/ld-script';
 import TableWrapper from 'components/shared/table-wrapper';
@@ -22,12 +21,8 @@ const componentsForNativeReplacement = {
   LdScript,
   Glossary,
   inlineCode: CodeInline,
-};
-
-const componentsForCustomReplacement = {
-  // order is important!
-  '.code-group': CodeGroup,
-  '.gatsby-highlight': CodeGroup,
+  pre: Code,
+  CodeGroup,
 };
 
 export const DocPageContent = ({ label, content, mod }) => {
@@ -48,7 +43,6 @@ export const DocPageContent = ({ label, content, mod }) => {
           >
             <HtmlContent
               content={content}
-              componentsForCustomReplacement={componentsForCustomReplacement}
               componentsForNativeReplacement={componentsForNativeReplacement}
               className={classNames(
                 styles.contentWrapper,

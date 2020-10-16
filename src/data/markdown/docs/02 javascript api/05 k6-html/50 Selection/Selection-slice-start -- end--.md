@@ -1,36 +1,33 @@
 ---
-title: "Selection.slice(start [, end])"
-excerpt: ""
+title: 'Selection.slice(start [, end])'
+excerpt: ''
 ---
+
 Reduce the set of matched elements to a subset specified by a range of indices.
 Mimics [jquery.slice](https://api.jquery.com/slice/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| start | Number | An integer indicating the 0-based position at which the elements begin to be selected. |
-| end | Number | An integer indicating the 0-based position at which the elements stop being selected. |
-| selector | [Selection](/javascript-api/k6-html/selection) | A selection. |
-
+| Parameter | Type                                           | Description                                                                            |
+| --------- | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| start     | Number                                         | An integer indicating the 0-based position at which the elements begin to be selected. |
+| end       | Number                                         | An integer indicating the 0-based position at which the elements stop being selected.  |
+| selector  | [Selection](/javascript-api/k6-html/selection) | A selection.                                                                           |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description        |
+| ---------------------------------------------- | ------------------ |
 | [Selection](/javascript-api/k6-html/selection) | The new selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -54,12 +51,10 @@ export default function() {
 
   console.log(els.slice(4).text());
 
-
   console.log(els.slice(2, 4).text());
 
-
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

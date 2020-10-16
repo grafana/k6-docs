@@ -1,28 +1,26 @@
 ---
-title: "Selection.first()"
-excerpt: ""
+title: 'Selection.first()'
+excerpt: ''
 ---
+
 Reduce the set of matched elements to the first in the set.
 Mimics [jquery.first](https://api.jquery.com/first/).
 
-
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description                         |
+| ---------------------------------------------- | ----------------------------------- |
 | [Selection](/javascript-api/k6-html/selection) | The first element of the Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -43,13 +41,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('dt');
 
   console.log(sel.first().html());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

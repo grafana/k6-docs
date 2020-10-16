@@ -19,7 +19,7 @@ Returns all tests within a specified project (if project is not specified then d
 | page             | integer | A page number within the paginated result set.                                                                                    | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
 | page_size        | integer | Number of results to return per page.                                                                                             | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -44,7 +44,7 @@ Returns all tests within a specified project (if project is not specified then d
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read test
 
@@ -56,7 +56,7 @@ Returns details of a test with the specified ID.
 | -------------- | ------- | --------------------------------------------- |
 | id             | integer | A unique integer value identifying this test. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -74,7 +74,7 @@ Returns details of a test with the specified ID.
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Update test
 
@@ -91,7 +91,7 @@ Partially updates a test in Load Impact. Note: only given fields will be updated
 | name                   | string | Name of the test.                                    |
 | script                 | string | k6 script that will be used when starting test runs. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -109,7 +109,7 @@ Partially updates a test in Load Impact. Note: only given fields will be updated
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Delete test
 
