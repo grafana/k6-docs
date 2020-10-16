@@ -102,10 +102,14 @@ Custom metrics will be reported at the end of a test. Here is how the output mig
 
 All metrics (both the _built-in_ ones and the custom ones) have a type. The four different metric types in k6 are:
 
-- [Counter](/javascript-api/k6-metrics/counter)
-- [Gauge](/javascript-api/k6-metrics/gauge)
-- [Rate](/javascript-api/k6-metrics/rate) and
-- [Trend](/javascript-api/k6-metrics/trend)
+| Metric type                                   | Description                                                                                              |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [Counter](/javascript-api/k6-metrics/counter) | A metric that cumulatively sums added values.                                                            |
+| [Gauge](/javascript-api/k6-metrics/gauge)     | A metric that stores the min, max and last values added to it.                                           |
+| [Rate](/javascript-api/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
+| [Trend](/javascript-api/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |
+
+All values added to a custom metric can optionally be [tagged](/using-k6/tags-and-groups) which can be useful when analysing the test results.
 
 ### Counter _(cumulative metric)_
 
