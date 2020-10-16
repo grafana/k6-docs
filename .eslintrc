@@ -64,7 +64,8 @@
           "templates",
           "styles",
           "svg",
-          "utils"
+          "utils",
+          "hooks"
         ]
       }
     ],

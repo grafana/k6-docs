@@ -1,32 +1,28 @@
-import React, { useRef } from 'react';
 import classNames from 'classnames';
-import { graphql } from 'gatsby';
-import { DocLayout } from 'layouts/doc-layout';
+import { HtmlContent } from 'components/blocks/html-content';
+import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
+import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
-import { Sticky, StickyContainer } from 'react-sticky';
-import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
-import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
-import SeoMetadata from 'utils/seo-metadata';
-import { HtmlContent } from 'components/blocks/html-content';
-import { styles as codeStyles } from 'components/shared/code';
-import CustomContentContainer from 'components/shared/custom-content-container';
-
-import { CodeGroup } from 'components/shared/code-group';
-import TableWrapper from 'components/shared/table-wrapper';
 import Blockquote from 'components/shared/blockquote';
-import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
+import { CodeGroup, Code, CodeInline } from 'components/shared/code';
+import CustomContentContainer from 'components/shared/custom-content-container';
+import TableWrapper from 'components/shared/table-wrapper';
+import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
+import { DocLayout } from 'layouts/doc-layout';
+import React, { useRef } from 'react';
+import { Sticky, StickyContainer } from 'react-sticky';
+import SeoMetadata from 'utils/seo-metadata';
 
 const componentsForNativeReplacement = {
   table: TableWrapper,
   blockquote: Blockquote,
   Blockquote,
-};
-
-const componentsForCustomReplacement = {
-  '.code-group': CodeGroup,
-  '.gatsby-highlight': CodeGroup,
+  inlineCode: CodeInline,
+  pre: Code,
+  CodeGroup,
 };
 
 const getContent = (nodes, sidebarTree) =>
@@ -41,16 +37,13 @@ const getContent = (nodes, sidebarTree) =>
           <h2>{title}</h2>
           <HtmlContent
             content={body}
-            componentsForCustomReplacement={componentsForCustomReplacement}
             componentsForNativeReplacement={componentsForNativeReplacement}
-            className={classNames(
-              docPageContent.contentWRapper,
-              codeStyles.docContainer,
-            )}
+            className={classNames(docPageContent.contentWrapper)}
           />
         </div>
       );
     }
+    return null;
   });
 
 export default function ({ data, pageContext: { sidebarTree, navLinks } }) {

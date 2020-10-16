@@ -65,12 +65,6 @@ const plugins = [
       extensions: ['.md'],
       gatsbyRemarkPlugins: [
         {
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            showLineNumbers: true,
-          },
-        },
-        {
           resolve: 'gatsby-remark-relative-images',
         },
         {

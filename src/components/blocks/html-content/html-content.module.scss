@@ -70,12 +70,6 @@
     }
   }
 
-  p code,
-  ol code {
-    font-family: $font-family-secondary;
-    padding: 3px 5px 2px;
-  }
-
   table {
     border: 1px solid $color-additional-2;
     border-collapse: collapse;
@@ -103,24 +97,7 @@
       line-height: $line-height-sm;
       vertical-align: baseline;
       line-height: 25px;
-
-      code {
-        font-size: $font-size-code;
-        color: $color-accent-primary;
-        font-family: $font-family-secondary;
-      }
     }
-  }
-  :not(pre) code[class='language-text'] {
-    background: $color-additional-3;
-    padding: 0 5px !important; // to fight another important @ code.module
-    color: $color-primary !important;
-    display: inline-block;
-    text-align: center;
-    border-radius: 0;
-    font-weight: normal;
-    font-size: $font-size-code;
-    line-height: $line-height-xs;
   }
   & > * + * {
     margin-top: 30px;
