@@ -218,9 +218,9 @@ And, as a result:
 
 ![internal-images/Untitled%207.png](internal-images/Untitled%207.png)
 
-If we want line numbers to be rendered, we shall add the wrapper and adjust our data-props to:
+If we want line numbers to be rendered, we shall add the wrapper and adjust our props to:
 
-    <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+    <CodeGroup labels={[]} lineNumbers={[true]}>
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
@@ -231,7 +231,7 @@ If we want line numbers to be rendered, we shall add the wrapper and adjust our 
     // tags.name="http://example.com/posts/${}"
     ```
 
-    </div>
+    </CodeGroup>
 
 Here you go:
 
@@ -239,9 +239,9 @@ Here you go:
 
 ### Headerfull
 
-Pretty much the same routine as with headerless ones, but one difference in data-props, labels field, but I bet, you already got that:
+Pretty much the same routine as with headerless ones, but with one difference in props, labels field, but I bet, you already got that:
 
-    <div class="code-group" data-props='{"labels": ["Nice code!"], "lineNumbers": [true]}'>
+    <CodeGroup labels={["Nice code!"]} lineNumbers={[true]}>
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
@@ -252,7 +252,7 @@ Pretty much the same routine as with headerless ones, but one difference in data
     // tags.name="http://example.com/posts/${}"
     ```
 
-    </div>
+    </CodeGroup>
 
 ![internal-images/Untitled%209.png](internal-images/Untitled%209.png)
 
@@ -260,7 +260,7 @@ Pretty much the same routine as with headerless ones, but one difference in data
 
 To be able to switch between different code tabs, we have to repeat the headerfull routine, but extend labels and md code blocks:
 
-    <div class="code-group" data-props='{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'>
+    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]}>
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
@@ -290,7 +290,7 @@ To be able to switch between different code tabs, we have to repeat the headerfu
     ```
 
 
-    </div>
+    </CodeGroup>
 
 ![internal-images/Untitled%2010.png](internal-images/Untitled%2010.png)
 
@@ -306,7 +306,7 @@ Line numbers are optional not for the whole code block, but for each tab. That i
 
 See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothing in `code-group` except code blocks, or you'll broke the page.
 
-    <div class="code-group" data-props='{"labels": ["Nice code!"], "lineNumbers": [true]}'>
+    <CodeGroup labels={["Nice code!"]} lineNumbers={[true]}>
 
     ```javascript
     for (var id = 1; id <= 100; id++) {
@@ -324,7 +324,7 @@ See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothi
 
     ```
 
-    </div>
+    </CodeGroup>
 
 ## Table data
 

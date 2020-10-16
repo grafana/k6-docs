@@ -17,7 +17,7 @@ To get k6 metrics into New Relic, k6 sends metrics to the New Relic StatsD integ
 
 Run the New Relic integration as a Docker container with this command:
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```shell
 docker run \
@@ -30,7 +30,7 @@ docker run \
   newrelic/nri-statsd:latest
 ```
 
-</div>
+</CodeGroup>
 
 Replace `<NR-ACCOUNT-ID>` with your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.) and `<NR-INSERT-API-KEY>` with your [New Relic Insert API Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register).
 
@@ -46,13 +46,13 @@ Everything provided in the command above is enough to send k6 performance metric
 
 Once the integration is running, run the k6 test and send the metrics to the integration with:
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```shell
 $ k6 run --out statsd script.js
 ```
 
-</div>
+</CodeGroup>
 
 The _required_ environment variables used in the above command are:
 
@@ -87,80 +87,80 @@ Here are some example NRQL queries you can easily copy and paste into widgets in
 
 **Number of Virtual Users**
 
-<div class="code-group" data-props='{"labels": ["Number of Virtual Users"]}'>
+<CodeGroup labels={["Number of Virtual Users"]}>
 
 ```sql
 SELECT latest(k6.vus) FROM Metric TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **90th Percentile Request Duration**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE percentile = 90 TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **Max, Median, and Average Request Duration**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **Rate of Requests**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **Data Sent and Data Received**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent' FROM Metric TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **Histogram bucketing Requests**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
 ```
 
-</div>
+</CodeGroup>
 
 **Change in the number of Requests**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERIES
 ```
 
-</div>
+</CodeGroup>
 
 **Scrolling List of all k6 Performance Metrics**
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```sql
 SELECT uniques(metricName) FROM Metric WHERE metricName LIKE 'k6%' LIMIT MAX
 ```
 
-</div>
+</CodeGroup>

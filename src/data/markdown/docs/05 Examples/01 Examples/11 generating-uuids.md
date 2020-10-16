@@ -20,37 +20,37 @@ For this to work, we first need to go through a few required steps:
    [Node.js](https://nodejs.org/en/download/) and [Browserify](http://browserify.org/)
 
 2. Install the `uuid` library:
-   <div class="code-group" data-props='{ "labels": [], "lineNumbers": [false] }'>
+   <CodeGroup labels={[]} lineNumbers={[false]}>
 
    ```shell
    $ npm install uuid@3.4.0
    ```
 
-   </div>
+   </CodeGroup>
 
 3. Run it through browserify:
-   <div class="code-group" data-props='{ "labels": [], "lineNumbers": [false] }'>
+   <CodeGroup labels={[]} lineNumbers={[false]}>
 
    ```shell
    $ browserify node_modules/uuid/index.js -s uuid > uuid.js
    ```
 
-   </div>
+   </CodeGroup>
 
 4. Move the `uuid.js` file to the same folder as your script file and you'll be able to import
    it into your test script:
 
-   <div class="code-group" data-props='{ "labels": [], "lineNumbers": [false] }'>
+   <CodeGroup labels={[]} lineNumbers={[false]}>
 
    ```js
    import uuid from "./uuid.js"`
    ```
 
-   </div>
+   </CodeGroup>
 
 Here's an example generating a v1 and v4 UUID:
 
-<div class="code-group" data-props='{ "labels": ["generate-uuids.js"], "lineNumbers": [false] }'>
+<CodeGroup labels={["generate-uuids.js"]} lineNumbers={[false]}>
 
 ```js
 import uuid from './uuid.js';
@@ -66,4 +66,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

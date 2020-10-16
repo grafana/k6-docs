@@ -14,7 +14,7 @@ completed its execution. Thus, in a closed model, the start rate, or arrival rat
 new VU iterations is tightly coupled with the iteration duration (that is, time from start
 to finish of the VU's `exec` function, by default the `export default function`):
 
-<div class="code-group" data-props='{"labels": [ "closed-model.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "closed-model.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -41,7 +41,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Running this script would result in something like:
 
@@ -80,7 +80,7 @@ from the iteration duration and the influence of the target system's response ti
 In k6, we've implemented this open model with our two "arrival rate" executors:
 [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
 
-<div class="code-group" data-props='{"labels": [ "open-model.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "open-model.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -106,7 +106,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Running this script would result in something like:
 

@@ -8,7 +8,7 @@ excerpt: ''
 When creating a new load test, the first thing you'll often do is define the HTTP requests that will be used to test
 your system. A simple example that just performs a GET request looks like this:
 
-<div class="code-group" data-props='{"labels": ["http_get.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["http_get.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -18,11 +18,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 A slightly more complex request might be e.g. a POST request to authenticate on a site/service:
 
-<div class="code-group" data-props='{"labels": ["http_post.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["http_post.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -44,7 +44,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Available methods
 
@@ -74,7 +74,7 @@ k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to yo
 
 Below you can see how a test result data point (the duration of an HTTP request) is logged, in JSON format, including the various tags mentioned above:
 
-<div class="code-group" data-props='{"labels": ["data_point.json"], "lineNumbers": [true]}'>
+<CodeGroup labels={["data_point.json"]} lineNumbers={[true]}>
 
 ```json
 {
@@ -94,7 +94,7 @@ Below you can see how a test result data point (the duration of an HTTP request)
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## URL Grouping
 
@@ -102,7 +102,7 @@ By default, requests report the name tag with the value of the request URL. For 
 introduce a large number of unique URLs in the metrics stream. The below code shows a situation when you'll access 100 different URLs but may want them
 all reported using one single metric:
 
-<div class="code-group" data-props='{"labels": ["grouping.js" ], "lineNumbers": [true]}'>
+<CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
 ```js
 for (var id = 1; id <= 100; id++) {
@@ -113,11 +113,11 @@ for (var id = 1; id <= 100; id++) {
 // tags.name=\"http://example.com/posts/2\",
 ```
 
-</div>
+</CodeGroup>
 
 You can aggregate data from dynamic URLs by explicitly setting a name tag:
 
-<div class="code-group" data-props='{"labels": ["explicit_tag.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
 ```js
 for (var id = 1; id <= 100; id++) {
@@ -130,11 +130,11 @@ for (var id = 1; id <= 100; id++) {
 // tags.name=\"PostsItemURL\",
 ```
 
-</div>
+</CodeGroup>
 
 Which would produce JSON output like the following:
 
-<div class="code-group" data-props='{"labels": [ ], "lineNumbers": [true]}'>
+<CodeGroup labels={[ ]} lineNumbers={[true]}>
 
 ```json
 {
@@ -172,13 +172,13 @@ Which would produce JSON output like the following:
 }
 ```
 
-</div>
+</CodeGroup>
 
 Note how the `name` is the same for the two data samples related to two different URLs. Filtering the results on tag `name: PostsItemURL` will give you a result set including all the data points from all the 100 different URLs.
 
 Additionally, you can use the `http.url` (v0.16.0) wrapper to set the name tag with a string template value:
 
-<div class="code-group" data-props='{"labels": [ ], "lineNumbers": [true]}'>
+<CodeGroup labels={[ ]} lineNumbers={[true]}>
 
 ```js
 for (var id = 1; id <= 100; id++) {
@@ -189,7 +189,7 @@ for (var id = 1; id <= 100; id++) {
 // tags.name="http://example.com/posts/${}",
 ```
 
-</div>
+</CodeGroup>
 
 ## Inside k6 Cloud Results
 

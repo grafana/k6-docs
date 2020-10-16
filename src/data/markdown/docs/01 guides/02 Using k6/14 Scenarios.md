@@ -28,7 +28,7 @@ Execution scenarios are primarily configured via the `scenarios` key of the expo
 in your test scripts. The key for each scenario can be an arbitrary, but unique, scenario name. It will
 appear in the result summary, tags, etc.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": "true"}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 export let options = {
@@ -53,7 +53,7 @@ export let options = {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Executors
 
@@ -76,7 +76,7 @@ Possible values for `executor` are the executor name separated by hyphens.
 
 | Option         | Type   | Description                                                                                                                                    | Default     |
 | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `executor*` ️  | string | Unique executor name. See the list of possible values in the [executors](#executors) section.                                      | -           |
+| `executor*` ️  | string | Unique executor name. See the list of possible values in the [executors](#executors) section.                                                  | -           |
 | `startTime`    | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                  | `"0s"`      |
 | `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. See the [gracefulStop](#graceful-stop-and-ramp-down) section. | `"30s"`     |
 | `exec`         | string | Name of exported JS function to execute.                                                                                                       | `"default"` |

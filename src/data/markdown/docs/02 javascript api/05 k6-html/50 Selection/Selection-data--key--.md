@@ -1,32 +1,31 @@
 ---
-title: "Selection.data([key])"
-excerpt: ""
+title: 'Selection.data([key])'
+excerpt: ''
 ---
+
 Return the value at the named data store for the first element in the set of matched elements.
 Mimics [jquery.data](https://api.jquery.com/data/)
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
+| Parameter      | Type   | Description                               |
+| -------------- | ------ | ----------------------------------------- |
 | key (optional) | string | A string naming the piece of data to set. |
-
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                        |
+| ------ | ---------------------------------- |
 | string | The value at the named data store. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
- const content = `
+export default function () {
+  const content = `
  <h1 data-test-id="data-value">Hola</h1>
   `;
 
@@ -38,7 +37,7 @@ export default function() {
   console.log(sel.data('testId'));
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

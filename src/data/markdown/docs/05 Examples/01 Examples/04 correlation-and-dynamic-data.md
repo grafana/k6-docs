@@ -28,7 +28,7 @@ and can be handled with a little bit of scripting.
 
 ### Extracting values/tokens from JSON response
 
-<div class="code-group" data-props='{ "labels": ["extract-json.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["extract-json.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -51,7 +51,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 **Relevant k6 APIs**:
 
@@ -68,7 +68,7 @@ appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/ja
 
 #### Extracting .NET ViewStates, CSRF tokens and other hidden input fields
 
-<div class="code-group" data-props='{ "labels": ["extract-from-hidden.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["extract-from-hidden.js"]} lineNumbers={[true]}>
 
 ```js
 import http from "k6/http";
@@ -95,7 +95,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 > ### ⚠️ Did you know?
 >

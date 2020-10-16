@@ -19,13 +19,13 @@ See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option              | Type    | Description                                                                               | Default |
-| ------------------- | ------- | ----------------------------------------------------------------------------------------- | ------- |
-| `duration*`        | string  | Total scenario duration (excluding `gracefulStop`).                                       | -       |
-| `rate*`            | integer | Number of iterations to execute each `timeUnit` period.                                   | -       |
-| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources.   | -       |
-| `timeUnit`          | string  | Period of time to apply the `rate` value.                                                 | `"1s"`  |
-| `maxVUs`            | integer | Maximum number of VUs to allow during the test run.                                       | -       |
+| Option             | Type    | Description                                                                             | Default |
+| ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
+| `duration*`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
+| `rate*`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
+| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
+| `timeUnit`         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
+| `maxVUs`           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 ## When to use
 
@@ -36,7 +36,7 @@ performance of the system under test.
 
 In this example, we'll execute a constant rate of 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs.
 
-<div class="code-group" data-props='{"labels": [ "constant-arr-rate.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -59,7 +59,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Note that in order to reliably achieve a fixed request rate, it's recommended to keep
 the function being executed very simple, with preferably only a single request call,

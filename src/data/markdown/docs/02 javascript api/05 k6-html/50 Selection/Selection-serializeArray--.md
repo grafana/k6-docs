@@ -1,28 +1,27 @@
 ---
-title: "Selection.serializeArray()"
-excerpt: ""
+title: 'Selection.serializeArray()'
+excerpt: ''
 ---
+
 Encode a set of form elements as an array of names and values (`[{ name: "name", value: "value" }, ...]`).
 Mimics [jquery.serializeArray](https://api.jquery.com/serializeArray/)
 
-
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type  | Description                                                     |
+| ----- | --------------------------------------------------------------- |
 | array | Array of names and values of the matched form or form elements. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
- const content = `
+export default function () {
+  const content = `
  <form><input name="username"></form>
   `;
 
@@ -33,7 +32,7 @@ export default function() {
   console.log(JSON.stringify(serialized)); // [{"name": "username", "value": ""}]
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

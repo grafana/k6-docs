@@ -1,6 +1,6 @@
 ---
-title: "SSL/TLS client certificates"
-excerpt: ""
+title: 'SSL/TLS client certificates'
+excerpt: ''
 ---
 
 Usually, when we are talking about TLS certificates we are referring to the mechanism by which
@@ -15,29 +15,27 @@ load the certificate and key from local files or embed them as strings in the sc
 
 To load a certificate and a key from local files you use the builtin `open(...)` function:
 
-
-<div class="code-group" data-props='{"labels": ["TLS client certificates from local certificate and key files"], "lineNumbers": [true]}'>
+<CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
+import http from 'k6/http';
 
 export let options = {
   tlsAuth: [
     {
-      domains: ["example.com"],
-      cert: open("./mycert.pem"),
-      key: open("./mycert-key.pem")
-    }
-  ]
+      domains: ['example.com'],
+      cert: open('./mycert.pem'),
+      key: open('./mycert-key.pem'),
+    },
+  ],
 };
 
-export default function() {
-    http.get("https://example.com/");
+export default function () {
+  http.get('https://example.com/');
 }
 ```
 
-</div>
-
+</CodeGroup>
 
 ## Loading certificate and key from embedded strings
 
@@ -49,10 +47,10 @@ for multi-line strings):
 >
 > The partial certificate and key data in the above example were generated for this particular example, they're not real or in-use anywhere.
 
-<div class="code-group" data-props='{"labels": ["TLS client certificates from local certificate and key files"], "lineNumbers": [true]}'>
+<CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
+import http from 'k6/http';
 
 const CERT = `-----BEGIN CERTIFICATE-----
 MIIFgTCCA2kCAQEwDQYJKoZIhvcNAQEFBQAwgYExCzAJBgNVBAYTAlNFMRcwFQYD
@@ -73,19 +71,18 @@ HO/dQr6a7DhRu2lLI9Sc983NwRqDKICZQQ/+gqWk8BgQZ1yI9O4AYkzywzAEk3py
 -----END RSA PRIVATE KEY-----`;
 
 export let options = {
-    tlsAuth: [
-      {
-        domains: [ "example.com" ],
-        cert: CERT,
-        key: KEY
-      }
-  ]
+  tlsAuth: [
+    {
+      domains: ['example.com'],
+      cert: CERT,
+      key: KEY,
+    },
+  ],
 };
 
-export default function() {
-    http.get("https://example.com/");
+export default function () {
+  http.get('https://example.com/');
 }
-
 ```
 
-</div>
+</CodeGroup>

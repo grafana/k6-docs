@@ -13,7 +13,7 @@ _FileData_ is an object for wrapping data representing a file when doing [multip
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { sleep } from 'k6';
@@ -30,4 +30,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

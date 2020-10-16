@@ -36,7 +36,7 @@ Then, within the modal window, enter the email address and select a role for the
 
 ## Specify a projectID
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```javascript
 export let options = {
@@ -54,4 +54,4 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>

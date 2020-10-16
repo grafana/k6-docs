@@ -1,36 +1,33 @@
 ---
-title: "Selection.filter(selector)"
-excerpt: ""
+title: 'Selection.filter(selector)'
+excerpt: ''
 ---
+
 Reduce the set of matched elements to those that match the selector or pass the function's test.
 Mimics [jquery.filter](https://api.jquery.com/filter/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector | function | A function used as a test for each element in the set. |
-| selector | string | A string containing a selector expression to match elements against. |
-| selector | [Selection](/javascript-api/k6-html/selection) | A selection to match elements against. |
-
+| Parameter | Type                                           | Description                                                          |
+| --------- | ---------------------------------------------- | -------------------------------------------------------------------- |
+| selector  | function                                       | A function used as a test for each element in the set.               |
+| selector  | string                                         | A string containing a selector expression to match elements against. |
+| selector  | [Selection](/javascript-api/k6-html/selection) | A selection to match elements against.                               |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description           |
+| ---------------------------------------------- | --------------------- |
 | [Selection](/javascript-api/k6-html/selection) | The filter selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -55,7 +52,7 @@ export default function() {
   sel = els.filter('#term-2');
   console.log(sel.text());
 
-  sel = els.filter(function(idx, el) {
+  sel = els.filter(function (idx, el) {
     return el.text() === 'definition 3-a';
   });
   console.log(sel.text());
@@ -63,9 +60,8 @@ export default function() {
   sel = els.filter(doc.find('dl dt#term-1'));
   console.log(sel.text());
 
-
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

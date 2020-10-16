@@ -18,7 +18,7 @@ You can also find practical usage examples in
 
 **GET** `http://localhost:6565/v1/status`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -42,13 +42,13 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Update Status
 
 **PATCH** `http://localhost:6565/v1/status`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X PATCH \
@@ -83,7 +83,7 @@ curl -X PATCH \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint lets you pause/resume a running test and set the number of `vus` and `vus-max`
 during the test.
@@ -92,7 +92,7 @@ during the test.
 
 **GET** `http://localhost:6565/v1/metrics`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -319,7 +319,7 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint will give you all the metrics in the current time. You can see more details on all
 metrics available and how to create new ones in [Metrics](/using-k6/metrics).
@@ -328,7 +328,7 @@ metrics available and how to create new ones in [Metrics](/using-k6/metrics).
 
 **GET** `http://localhost:6565/v1/metrics/id`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -358,7 +358,7 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint will give you details for the given metric in the current time.
 
@@ -368,7 +368,7 @@ You can see more on all metrics available and how to create new ones in [Metrics
 
 **GET** `http://localhost:6565/v1/groups`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -425,7 +425,7 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint returns all groups available on the test.
 
@@ -435,7 +435,7 @@ For more details on how to create groups please go to [Tags and Groups](/using-k
 
 **GET** `http://localhost:6565/v1/groups/id`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -468,7 +468,7 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint returns the Group with the given ID.
 
@@ -478,7 +478,7 @@ For more details on how to create groups, please go to [Tags and Groups](/using-
 
 **GET** `http://localhost:6565/v1/setup`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X GET \
@@ -500,7 +500,7 @@ curl -X GET \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint returns the current JSON-encoded setup data.
 
@@ -510,7 +510,7 @@ For more detail about the setup stage please go to [Test life cycle](/using-k6/t
 
 **PUT** `http://localhost:6565/v1/setup`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X POST \
@@ -532,7 +532,7 @@ curl -X POST \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint executes the Setup stage and returns the result.
 
@@ -542,7 +542,7 @@ For more detail about the setup stage please go to [Test life cycle](/using-k6/t
 
 **PATCH** `http://localhost:6565/v1/setup`
 
-<div class="code-group" data-props='{"labels": ["cURL Request", "Response"]}'>
+<CodeGroup labels={["cURL Request", "Response"]}>
 
 ```bash
 curl -X PUT \
@@ -577,7 +577,7 @@ curl -X PUT \
 }
 ```
 
-</div>
+</CodeGroup>
 
 This endpoint parses the JSON request body and sets the result as Setup data.
 

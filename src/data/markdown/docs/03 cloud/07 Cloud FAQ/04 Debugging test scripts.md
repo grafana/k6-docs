@@ -19,13 +19,13 @@ Debugging locally is beneficial for two reasons:
 1. Tests that run in or stream to our cloud will count against any limits you may have
 2. Execution is slower when streaming or executing in the cloud. We want debugging to be a fast iterative process.
 
-<div class="code-group" data-props='{"labels": ["Example:"]}'>
+<CodeGroup labels={["Example:"]}>
 
 ```C
 k6 run myScript.js
 ```
 
-</div>
+</CodeGroup>
 
 When debugging, you'll likely be making many changes as you work through your scripts to ensure they work as expected. The data sent or run from the cloud won't be of much value, so just keep it local until you need to run a larger test.
 
@@ -33,13 +33,13 @@ When debugging, you'll likely be making many changes as you work through your sc
 
 It's likely that you've configured Virtual Users and/or duration in your script. adding the flags `-i 1 -u 1` will instruct k6 to execute 1 iteration with 1 Virtual User.
 
-<div class="code-group" data-props='{"labels": ["Example:"]}'>
+<CodeGroup labels={["Example:"]}>
 
 ```C
 k6 run myScript.js -i 1 -u 1
 ```
 
-</div>
+</CodeGroup>
 
 **Note**: 1 Virtual User and 1 iteration is also the default execution for k6. If you have not defined any VUs or iterations in your test, k6 will execute with 1.
 
@@ -47,13 +47,13 @@ k6 run myScript.js -i 1 -u 1
 
 Sometimes you need to understand more details about the requests being sent and response received. Using `--http-debug` as a flag allows you to do just that. You can also print full response bodies by using `--http-debug="full"`
 
-<div class="code-group" data-props='{"labels": ["Example:"]}'>
+<CodeGroup labels={["Example:"]}>
 
 ```C
 k6 run myScript.js --http-debug="full"
 ```
 
-</div>
+</CodeGroup>
 
 **Note**: If your test script has a large number of HTTP requests, this will produce a large output.
 
@@ -63,11 +63,11 @@ Sometimes it's just easier to print some information to the terminal window. Fee
 
 To take the above a step further, consider the following snippet of code. We are making a GET request, saving the response to `res` and then logging the complete response object. Now we can examine it to find exactly what we may be looking for to adapt our test script.
 
-<div class="code-group" data-props='{"labels": ["Example:"]}'>
+<CodeGroup labels={["Example:"]}>
 
 ```JavaScript
 let res = http.get("http://httpbin.test.k6.io/json");
  console.log(JSON.stringify(res));
 ```
 
-</div>
+</CodeGroup>

@@ -1,33 +1,30 @@
 ---
-title: "Selection.next([selector])"
-excerpt: ""
+title: 'Selection.next([selector])'
+excerpt: ''
 ---
+
 Get the immediately following sibling of each element in the set of matched elements
 Mimics [jquery.next](https://api.jquery.com/next/).
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
+| Parameter           | Type   | Description                                                          |
+| ------------------- | ------ | -------------------------------------------------------------------- |
 | selector (optional) | string | A string containing a selector expression to match elements against. |
-
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
 | [Selection](/javascript-api/k6-html/selection) | A Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <ul>
   <li>list item 1</li>
@@ -39,13 +36,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('li.third-item').next();
 
   console.log(sel.html());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

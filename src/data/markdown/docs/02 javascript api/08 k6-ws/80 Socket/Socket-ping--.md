@@ -1,22 +1,21 @@
 ---
-title: "Socket.ping()"
+title: 'Socket.ping()'
 ---
 
 Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.
 
-
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import ws from 'k6/ws';
 
-export default function() {
+export default function () {
   var url = 'ws://echo.websocket.org';
-  var response = ws.connect(url, null, function(socket) {
-    socket.on('open', function() {
-      socket.on('pong', function() {
+  var response = ws.connect(url, null, function (socket) {
+    socket.on('open', function () {
+      socket.on('pong', function () {
         // As required by the spec, when the ping is received, the recipient must send back a pong.
         console.log('connection is alive');
       });
@@ -27,4 +26,4 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>

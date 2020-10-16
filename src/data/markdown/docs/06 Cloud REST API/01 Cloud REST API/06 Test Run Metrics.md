@@ -23,7 +23,7 @@ Some of the fields contained in the response are:
 | --------------- | ------- | ---------------------------------------------------- |
 | test_run_id     | integer | Returns metrics associated with a given test_run_id. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -48,7 +48,7 @@ Some of the fields contained in the response are:
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read metric
 
@@ -69,7 +69,7 @@ Returns details of a metric with the specified ID.
 
 <!-- vale on -->
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -102,7 +102,7 @@ Returns details of a metric with the specified ID.
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read series data
 
@@ -118,7 +118,7 @@ List metrics endpoint.
 | test_run_id      | integer | Specify test run id.  |                                                                                          |
 | ids[]            | string  | Specify metric id(s). | `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}&ids[]={metric_id_2}` |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -140,7 +140,7 @@ List metrics endpoint.
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## List thresholds
 
@@ -153,7 +153,7 @@ Returns all thresholds (and related metrics) for a test run.
 | test_run_id     | integer | Returns thresholds associated with a given test_run_id. |                                                                                                    |
 | ids[]           | integer | Specify threshold id(s).                                | `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}&ids[]={threshold_id_2}` |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -193,7 +193,7 @@ Returns all thresholds (and related metrics) for a test run.
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read threshold
 
@@ -206,7 +206,7 @@ Returns details of a threshold with the specified ID.
 | test_run_id     | integer | ID of the test run.  |
 | id              | integer | ID of the threshold. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -230,7 +230,7 @@ Returns details of a threshold with the specified ID.
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read test run overview
 
@@ -242,7 +242,7 @@ Returns an overview of the test run which includes numbers of URLs, thresholds, 
 | --------------- | ------- | ------------------------------------------------- |
 | test_run_id     | integer | A unique integer value identifying this test run. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -266,7 +266,7 @@ Returns an overview of the test run which includes numbers of URLs, thresholds, 
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Export test run metrics
 
@@ -278,7 +278,7 @@ Exports metric data for test run in CSV format. URL to the file is available in 
 | -------------- | ------- | ------------------------------------------------- |
 | test_run_id    | integer | A unique integer value identifying this test run. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -291,4 +291,4 @@ Exports metric data for test run in CSV format. URL to the file is available in 
 }
 ```
 
-</div>
+</CodeGroup>

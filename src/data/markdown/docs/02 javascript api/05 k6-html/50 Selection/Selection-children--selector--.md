@@ -1,32 +1,30 @@
 ---
-title: "Selection.children([selector])"
-excerpt: ""
+title: 'Selection.children([selector])'
+excerpt: ''
 ---
+
 Get the children of each element in the set of matched elements, optionally filtered by a selector.
 Mimics [jquery.children](https://api.jquery.com/children/)
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
+| Parameter           | Type   | Description                                                          |
+| ------------------- | ------ | -------------------------------------------------------------------- |
 | selector (optional) | string | A string containing a selector expression to match elements against. |
-
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description             |
+| ---------------------------------------------- | ----------------------- |
 | [Selection](/javascript-api/k6-html/selection) | The children Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -52,7 +50,7 @@ export default function() {
   console.log(sel.children('dt').size());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

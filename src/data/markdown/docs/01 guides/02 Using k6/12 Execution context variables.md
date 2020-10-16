@@ -10,24 +10,24 @@ for each VU.
 When the `duration` option is specified, k6 will continuously run the test script for each VU
 until the `duration` amount of time has elapsed.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run --vus 10 --duration 30s script.js
 ```
 
-</div>
+</CodeGroup>
 
 Alternatively, you could set the `iterations` option to specify the number of complete loops of
 the test script k6 will execute for each VU.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 $ k6 run --vus 10 --iterations 100 script.js
 ```
 
-</div>
+</CodeGroup>
 
 ## \_\_VU and \_\_ITER
 
@@ -59,7 +59,7 @@ after the completion of the iteration.
 
 ## Examples
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -72,13 +72,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Different test behaviors and parameterizations can be accomplished by making use of the
 execution context variables. A typical use case would be a load test simulating different users
 performing a login flow.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -96,4 +96,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

@@ -20,7 +20,7 @@ Well, it at least _partially_ solves it, since you still have TCP congestion con
 
 When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would. You can check what protocol was used for a particular request by looking at the `proto` property of the response object.
 
-<div class="code-group" data-props='{"labels": ["Check if protocol used for request is HTTP/2.0"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Check if protocol used for request is HTTP/2.0"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -35,7 +35,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 For more information on what values the r.proto field can have, check out:
 

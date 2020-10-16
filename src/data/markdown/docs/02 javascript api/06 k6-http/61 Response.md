@@ -48,7 +48,7 @@ Note that in the case of redirects, all the information in the Response object w
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { check } from 'k6';
@@ -68,6 +68,6 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 _A k6 script that will make an HTTP request and print all HTTP response headers_

@@ -1,6 +1,6 @@
 ---
-title: "Data uploads with k6 Cloud"
-excerpt: "How to execute a k6 Cloud test that will upload a data file to the System Under Test(SUT)"
+title: 'Data uploads with k6 Cloud'
+excerpt: 'How to execute a k6 Cloud test that will upload a data file to the System Under Test(SUT)'
 ---
 
 ## Background
@@ -13,14 +13,13 @@ In order to upload a file needed for your test to execute you will need to insta
 
 For detailed instructions and the different options, read more on [running cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
 
-
 ## Including a data file in your k6 test script
 
 first option would be to **Use the open() scripting API to open a CSV/JSON/TXT file:**
 
 more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
-<div class="code-group" data-props='{"labels": ["users.json"], "lineNumbers": [false]}'>
+<CodeGroup labels={["users.json"]} lineNumbers={[false]}>
 
 ```json
 [
@@ -39,10 +38,9 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 ]
 ```
 
-</div>
+</CodeGroup>
 
-
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import { sleep } from "k6";
@@ -54,11 +52,11 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 another possibility is to **Put the data in a JS file and import it as a module:**
 
-<div class="code-group" data-props='{"labels": ["userData.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["userData.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 export let users = [
@@ -77,12 +75,11 @@ export let users = [
 ];
 ```
 
-</div>
+</CodeGroup>
 
 **Main Script:**
 
-
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import { sleep } from "k6";
@@ -93,7 +90,7 @@ export default function() {
   sleep(3);
 }
 ```
-</div>
 
+</CodeGroup>
 
 For more information on data uploads in k6 read [data uploads](/examples/examples/data-uploads).

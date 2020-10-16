@@ -1,32 +1,30 @@
 ---
-title: "Selection.parentsUntil([selector], [filter])"
+title: 'Selection.parentsUntil([selector], [filter])'
 ---
+
 Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.
 Mimics [jquery.parentsUntil](https://api.jquery.com/parentsUntil/)
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector (optional) | string \| [Selection](/javascript-api/k6-html/selection) \| `null`  | A selector expression or object to match elements against. |
-| filter (optional) | string \| `null` | A selector expression to filter matched elements. |
-
+| Parameter           | Type                                                               | Description                                                |
+| ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| selector (optional) | string \| [Selection](/javascript-api/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
+| filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
 | [Selection](/javascript-api/k6-html/selection) | A Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
 <dl>
   <dt id="term-1">term 1</dt>
@@ -54,7 +52,7 @@ export default function() {
   console.log(selFilter.size());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

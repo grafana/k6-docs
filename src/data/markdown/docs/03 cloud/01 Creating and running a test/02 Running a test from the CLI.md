@@ -22,7 +22,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 3. Authenticate to k6 Cloud from the CLI. Log in using your username and password or your [API token](https://app.k6.io/account/api-token).
 
-   <div class="code-group" data-props='{"labels": ["Log in with username and password", "Log in with the API Token"]}'>
+   <CodeGroup labels={["Log in with username and password", "Log in with the API Token"]}>
 
    ```shell
    $ k6 login cloud
@@ -32,13 +32,13 @@ Reasons for triggering cloud tests from the k6 CLI include:
    $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
    ```
 
-   </div>
+   </CodeGroup>
 
    `k6 login` stores your API Token in a local config file to authenticate to k6 Cloud when running cloud commands.
 
 4. Run your test in the cloud.
 
-   <div class="code-group" data-props='{"labels": ["CLI", "Docker"]}'>
+   <CodeGroup labels={["CLI", "Docker"]}>
 
    ```shell
    $ k6 cloud script.js
@@ -75,11 +75,11 @@ Reasons for triggering cloud tests from the k6 CLI include:
    $ docker run -i -e ... -v "$PWD/script.js:/script.js" loadimpact/k6 cloud /script.js
    ```
 
-   </div>
+   </CodeGroup>
 
 5. You'll see k6 print some information and the URL of your test results.
 
- <div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
     ```shell
             /\      |‾‾|  /‾‾/  /‾/
@@ -93,7 +93,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
       output: https://app.k6.io/runs/TEST_RUN_ID
     ```
 
- </div>
+ </CodeGroup>
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
@@ -164,7 +164,7 @@ You have two options to pass the Project ID to k6:
 
 1. Specify it in the script options:
 
-   <div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": "[true]"}'>
+   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
    ```javascript
    export let options = {
@@ -176,7 +176,7 @@ You have two options to pass the Project ID to k6:
    };
    ```
 
-   </div>
+   </CodeGroup>
 
 2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running the test.
 
@@ -199,7 +199,7 @@ For example, you can filter the results for a particular load zone on the k6 Clo
 
 Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
-<div class="code-group" data-props='{"labels": ["Threshold based on a cloud execution tag"]}'>
+<CodeGroup labels={["Threshold based on a cloud execution tag"]}>
 
 ```js
 import http from 'k6/http';
@@ -225,7 +225,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Environment variables
 
@@ -235,7 +235,7 @@ With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environme
 
 For example, given the script below, which reads the `MY_HOSTNAME` environment variable.
 
-<div class="code-group" data-props='{"labels": ["Environment variables"]}'>
+<CodeGroup labels={["Environment variables"]}>
 
 ```javascript
 import { check, sleep } from 'k6';
@@ -250,7 +250,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 You'd execute it using the command like:
 
@@ -270,7 +270,7 @@ When running in the k6 Cloud there will be three additional environment variable
 
 You can read the values of these variables in your k6 script as usual.
 
-<div class="code-group" data-props='{"labels": ["Reading injected environment variables"]}'>
+<CodeGroup labels={["Reading injected environment variables"]}>
 
 ```js
 export let options = {
@@ -294,7 +294,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Differences between local and cloud execution
 

@@ -8,7 +8,7 @@ excerpt: ''
 Let's start by running a simple local script. Copy the code below, paste it into your
 favourite editor, and save it as "script.js":
 
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -20,11 +20,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Then run k6 using this command:
 
-<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
+<CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```shell
 $ k6 run script.js
@@ -44,13 +44,13 @@ $ docker run -i loadimpact/k6 run - <script.js
 $ cat script.js | docker run -i loadimpact/k6 run -
 ```
 
-</div>
+</CodeGroup>
 
 ## Adding more VUs
 
 Now we'll try running a load test with more than 1 virtual user and a slightly longer duration:
 
-<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
+<CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```shell
 k6 run --vus 10 --duration 30s script.js
@@ -64,7 +64,7 @@ docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
 cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s -
 ```
 
-</div>
+</CodeGroup>
 
 _Running a 30-second, 10-VU load test_
 
@@ -75,7 +75,7 @@ which allows you to break larger tests into smaller pieces, or make reusable pie
 Scripts must contain, at the very least, a `default` function - this defines the entry point for
 your VUs, similar to the `main()` function in many other languages:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```javascript
 export default function () {
@@ -83,7 +83,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### The init context and the default function
 
@@ -93,7 +93,7 @@ but code inside and outside your default function can do different things.
 Code _inside_ `default` is called "VU code", and is run over and over for as long as the test is
 running. Code _outside_ of it is called "init code", and is run only once per VU.
 
-<div class="code-group" data-props='{"labels": [""]}'>
+<CodeGroup labels={[""]}>
 
 ```js
 // init code
@@ -104,7 +104,7 @@ export default function( {
 
 ```
 
-</div>
+</CodeGroup>
 
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
 to do - with a few important exceptions: you can't load anything from your local filesystem, or
@@ -117,7 +117,7 @@ Read more about the different [life cycle stages of a k6 test](/using-k6/test-li
 If you want to avoid having to type `--vus 10` and `--duration 30s` all the time, you can include
 those settings inside your JavaScript file also:
 
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -132,11 +132,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Then you just run the script without those parameters on the command line:
 
-<div class="code-group" data-props='{"labels": ["CLI", "Docker", "Docker in Win PowerShell"]}'>
+<CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```shell
 $ k6 run script.js
@@ -150,14 +150,14 @@ $ docker run -i loadimpact/k6 run - <script.js
 C:\ cat script.js | docker run -i loadimpact/k6 run -
 ```
 
-</div>
+</CodeGroup>
 
 ## Stages: ramping up/down VUs
 
 You can also have the VU level ramp up and down during the test. The `options.stages` property
 allows you to configure ramping behaviour.
 
-<div class="code-group" data-props='{"labels": ["stages.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["stages.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -178,7 +178,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 This can also be accomplished with more advanced configuration using
 [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
@@ -195,12 +195,12 @@ One of the goals with k6 is to support running a test in the three execution mod
 
 For running cloud tests from the CLI, you must first register a k6 Cloud account and then log into your account via the CLI. Then, you only have to pass your existing script to the `k6 cloud` command.
 
-<div class="code-group" data-props='{"labels": ["Running a cloud test"]}'>
+<CodeGroup labels={["Running a cloud test"]}>
 
 ```shell
 $ k6 cloud script.js
 ```
 
-</div>
+</CodeGroup>
 
 For detailed instructions and the different options, read more on [running cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
