@@ -10,7 +10,11 @@ const Blockquote = ({ children, mod = 'default' }) => {
       warning: 'warning!',
       default: '',
     };
-    return kickers[mod] ? <span>{kickers[mod]}</span> : kickers[mod];
+    return kickers[mod] ? (
+      <span className="kicker">{kickers[mod]}</span>
+    ) : (
+      kickers[mod]
+    );
   };
   return (
     <blockquote
