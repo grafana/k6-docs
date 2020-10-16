@@ -2,23 +2,15 @@ import classNames from 'classnames';
 import { WithCopyButton } from 'components/shared/with-copy-button';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import PropTypes from 'prop-types';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import styles from './code.module.scss';
 
 const Code = ({ children, showLineNumbers }) => {
   if (!children) return null;
-  const codeContainerRef = useRef(null);
-  const [codeToCopy, setCodeToCopy] = useState('');
 
-  useLayoutEffect(() => {
-    if (codeContainerRef.current) {
-      setCodeToCopy(codeContainerRef.current.textContent);
-    }
-  }, [codeContainerRef]);
-
-  return codeToCopy ? (
-    <WithCopyButton dataToCopy={codeToCopy}>
+  return (
+    <WithCopyButton dataToCopy={children.props.children}>
       <Highlight
         {...defaultProps}
         code={children.props.children}
@@ -52,13 +44,6 @@ const Code = ({ children, showLineNumbers }) => {
         )}
       </Highlight>
     </WithCopyButton>
-  ) : (
-    <div
-      style={{ position: 'absolute', visibility: 'hidden' }}
-      ref={codeContainerRef}
-    >
-      {children.props.children}
-    </div>
   );
 };
 
