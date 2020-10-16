@@ -13,7 +13,7 @@ The k6 Cloud will pre-process your data, and you can visualize and analyze the r
 
 Assuming you have installed k6, the first step is to log in to k6 Cloud. You can use your [API token](https://app.k6.io/account/api-token) or username and password:
 
-<div class="code-group" data-props='{"labels": ["Log in to k6 Cloud", "Log in with username and password"]}'>
+<CodeGroup labels={["Log in to k6 Cloud", "Log in with username and password"]}>
 
 ```shell
 $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
@@ -23,33 +23,33 @@ $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
 $ k6 login cloud
 ```
 
-</div>
+</CodeGroup>
 
 **2 - Run the tests and upload the results**
 
 Now, k6 will authenticate you against the k6 Cloud, and you can use the `--out` option to send the k6 results to the k6 Cloud as:
 
-<div class="code-group" data-props='{"labels": ["Upload results to the k6 Cloud"]}'>
+<CodeGroup labels={["Upload results to the k6 Cloud"]}>
 
 ```shell
 $ k6 run --out cloud script.js
 ```
 
-</div>
+</CodeGroup>
 
 Alternatively, you could skip the `k6 login` command when using your [API token](https://app.k6.io/account/api-token) with the `k6 run` command as:
 
-<div class="code-group" data-props='{"labels": ["Upload results to the k6 Cloud using K6_CLOUD_TOKEN"]}'>
+<CodeGroup labels={["Upload results to the k6 Cloud using K6_CLOUD_TOKEN"]}>
 
 ```shell
 $ K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> k6 run --out cloud script.js
 ```
 
-</div>
+</CodeGroup>
 
 After running the command, the console shows an URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 execution: local
@@ -57,7 +57,7 @@ execution: local
     script: script.js
 ```
 
-</div>
+</CodeGroup>
 
 ![k6 Cloud Test Results](./images/Cloud/k6-cloud-results.png)
 

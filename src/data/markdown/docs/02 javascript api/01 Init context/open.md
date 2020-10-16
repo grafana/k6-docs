@@ -30,7 +30,7 @@ See example further down on this page. For more in-depth description see [Runnin
 | -------------- | ---------------------------------------------------------------------------------------- |
 | string / bytes | The contents of the file, read as text or bytes (if `b` has been specified as the mode). |
 
-<div class="code-group" data-props='{"labels": ["users.json"]}'>
+<CodeGroup labels={["users.json"]}>
 
 ```json
 [
@@ -49,9 +49,9 @@ See example further down on this page. For more in-depth description see [Runnin
 ]
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Loading JSON data to parameterize test"]}'>
+<CodeGroup labels={["Loading JSON data to parameterize test"]}>
 
 ```js
 import { sleep } from 'k6';
@@ -65,9 +65,9 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Loading a binary file and POSTing it as a multipart request"]}'>
+<CodeGroup labels={["Loading a binary file and POSTing it as a multipart request"]}>
 
 ```js
 import http from 'k6/http';
@@ -85,4 +85,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

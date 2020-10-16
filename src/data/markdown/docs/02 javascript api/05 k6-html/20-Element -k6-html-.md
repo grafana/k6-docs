@@ -102,7 +102,7 @@ Additionally, Element can provide more methods depending on the Element type.
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { parseHTML } from 'k6/html';
@@ -132,9 +132,9 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { parseHTML } from 'k6/html';
@@ -156,4 +156,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

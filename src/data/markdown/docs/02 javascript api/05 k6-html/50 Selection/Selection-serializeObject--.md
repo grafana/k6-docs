@@ -1,26 +1,26 @@
 ---
-title: "Selection.serializeObject()"
-excerpt: ""
+title: 'Selection.serializeObject()'
+excerpt: ''
 ---
+
 Encode a set of form elements as an object (`{ "inputName": "value", "checkboxName": "value" }`).
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                                                                                             |
+| ------ | ------------------------------------------------------------------------------------------------------- |
 | object | Object representation of the matched form or form elements, key is field name and value is field value. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
- const content = `
+export default function () {
+  const content = `
  <form><input name="username"></form>
   `;
 
@@ -31,7 +31,7 @@ export default function() {
   console.log(JSON.stringify(serialized)); // {"username": ""}
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

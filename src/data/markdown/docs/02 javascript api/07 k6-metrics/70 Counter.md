@@ -8,8 +8,8 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                                             | Description                        |
-| -------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Method                                                                                  | Description                        |
+| --------------------------------------------------------------------------------------- | ---------------------------------- |
 | [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
@@ -22,7 +22,7 @@ For example:
 
 ### Examples
 
-<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Counter } from 'k6/metrics';
@@ -35,9 +35,9 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Simple Threshold usage"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Simple Threshold usage"]} lineNumbers={[true]}>
 
 ```javaScript
 import http from "k6/http";
@@ -54,9 +54,9 @@ export default function() {
 };
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Advanced Thresholds"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Advanced Thresholds"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Counter } from 'k6/metrics';
@@ -95,4 +95,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

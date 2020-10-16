@@ -18,7 +18,7 @@ filter your test results.
 Groups are optional, and it allows you to “group” your load script. Groups can be nested,
 allowing you the BDD-style of testing.
 
-<div class="code-group" data-props='{"labels": ["groups.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 
 ```js
 import { group } from 'k6';
@@ -35,7 +35,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Your test results will be grouped based on your group names for easy visualization. Each
 execution of the supplied `group()` function also emits a `group_duration`
@@ -93,7 +93,7 @@ can be tagged:
 - custom metrics
 - requests
 
-<div class="code-group" data-props='{"labels": ["tagging-example.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["tagging-example.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -122,7 +122,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Test wide tags
 
@@ -130,7 +130,7 @@ Besides attaching tags on requests, checks and custom metrics you can set test w
 will be set across all metrics. You can either set the tags on the CLI using one or more
 `--tag NAME=VALUE` flags or in the script:
 
-<div class="code-group" data-props='{"labels": ["test-wide-tags.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
 
 ```js
 export let options = {
@@ -140,11 +140,11 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 ## Tags in results output
 
-<div class="code-group" data-props='{"labels": ["output.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["output.js"]} lineNumbers={[true]}>
 
 ```json
 {
@@ -175,7 +175,7 @@ export let options = {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Read more about the [k6 results output syntax](/getting-started/results-output/json) to
 see how tags affect your test result output.

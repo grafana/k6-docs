@@ -13,7 +13,7 @@ Comparing HTTP based tests to WebSocket ones, there are some differences in the 
 
 The basic structure of a WebSocket test looks like this:
 
-<div class="code-group" data-props='{"labels": ["Basic structure of WebSocket-based tests"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Basic structure of WebSocket-based tests"]} lineNumbers={[true]}>
 
 ```javascript
 import ws from 'k6/ws';
@@ -33,7 +33,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 As you can see above the [connect()](/javascript-api/k6-ws/connect-url-params-callback) method takes a "run" function as its third parameter, and that function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter. The run function forms the basis of the asynchronous event loop.
 
@@ -43,7 +43,7 @@ It will be called immediately when the WebSocket connection is created, execute 
 
 To catch errors that can happen during the life of a WebSocket connection you attach a handler to the "error" event, as is illustrated below:
 
-<div class="code-group" data-props='{"labels": ["Error handling in WebSocket tests"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Error handling in WebSocket tests"]} lineNumbers={[true]}>
 
 ```javascript
   import ws from "k6/ws";
@@ -69,13 +69,13 @@ To catch errors that can happen during the life of a WebSocket connection you at
   }
 ```
 
-</div>
+</CodeGroup>
 
 ## Timers
 
 If you want to schedule a recurring action you can use the [socket.setInterval](/javascript-api/k6-ws/socket#section-socketsetinterval) function to specify a function that should be called with a particular interval.
 
-<div class="code-group" data-props='{"labels": ["Timers in WebSocket tests"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Timers in WebSocket tests"]} lineNumbers={[true]}>
 
 ```javascript
 import ws from 'k6/ws';
@@ -104,14 +104,14 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Timeouts
 
 You can add a timeout to the WebSocket connection by passing a handler function as well as the
 timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay) function.
 
-<div class="code-group" data-props='{"labels": ["Timeouts in WebSocket tests"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Timeouts in WebSocket tests"]} lineNumbers={[true]}>
 
 ```javascript
 import ws from 'k6/ws';
@@ -135,7 +135,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The timeout in the above code will close down the WebSocket connection after 2 seconds.
 
@@ -143,7 +143,7 @@ The timeout in the above code will close down the WebSocket connection after 2 s
 
 You can attach multiple handler functions to an event as the code below illustrates.
 
-<div class="code-group" data-props='{"labels": ["Multiple event handlers in WebSocket tests"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Multiple event handlers in WebSocket tests"]} lineNumbers={[true]}>
 
 ```javascript
 import ws from 'k6/ws';
@@ -189,4 +189,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

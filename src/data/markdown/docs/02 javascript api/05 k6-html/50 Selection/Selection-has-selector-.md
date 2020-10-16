@@ -1,33 +1,30 @@
 ---
-title: "Selection.has(selector)"
-excerpt: ""
+title: 'Selection.has(selector)'
+excerpt: ''
 ---
+
 Reduce the set of matched elements to those that have a descendant that matches the selector.
 Mimics [jquery.has](https://api.jquery.com/has/).
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector | string | A string containing a selector expression to match elements against. |
-
+| Parameter | Type   | Description                                                          |
+| --------- | ------ | -------------------------------------------------------------------- |
+| selector  | string | A string containing a selector expression to match elements against. |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
 | [Selection](/javascript-api/k6-html/selection) | A Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
+export default function () {
   const content = `
  <ul>
   <li>list item 1</li>
@@ -43,13 +40,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-
   const sel = doc.find('li').has('ul');
 
   console.log(sel.html());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

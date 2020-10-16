@@ -17,7 +17,7 @@ When k6 displays the results to `stdout`, it will show the k6 logo and the follo
 
 ### Test details
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 execution: local
@@ -28,7 +28,7 @@ duration: 1m0s, iterations: -
     vus: 100,  max: 100
 ```
 
-</div>
+</CodeGroup>
 
 - `execution: local` the k6 execution mode (local or cloud).
 - `output: -` the output of the test results. The default is `stdout`.
@@ -46,7 +46,7 @@ The test summary provides a general overview of your test result. The summary pr
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 data_received..............: 148 MB 2.5 MB/s
@@ -65,7 +65,7 @@ vus........................: 100    min=100 max=100
 vus_max....................: 100    min=100 max=100
 ```
 
-</div>
+</CodeGroup>
 
 > To learn more about the metrics k6 collects and reports, read the [Metrics guide](/using-k6/metrics).
 
@@ -73,23 +73,23 @@ vus_max....................: 100    min=100 max=100
 
 [Trend metrics](/using-k6/metrics#metric-types) collect trend statistics (min/max/avg/percentiles) for a series of values. On stdout they are printed like this:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s    p(90)=164.2ms  p(95)=177.75ms
 ```
 
-</div>
+</CodeGroup>
 
 You could use the [summary-trend-stats](/using-k6/options#summary-trend-stats) option to change the stats reported for Trend metrics.
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 $ k6 run --summary-trend-stats="avg,p(99)" script.js
 ```
 
-</div>
+</CodeGroup>
 
 ## Output plugins
 
@@ -113,7 +113,7 @@ The list of output plugins are:
 
 You can simultaneously send metrics to several outputs by using the CLI `--out` flag multiple times, for example:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 $ k6 run \
@@ -121,7 +121,7 @@ $ k6 run \
     --out influxdb=http://localhost:8086/k6
 ```
 
-</div>
+</CodeGroup>
 
 ## Summary export
 
@@ -129,12 +129,12 @@ Additionally, the `k6 run` command can export the end-of-test summary report to 
 
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
 
-<div class="code-group" data-props='{"labels": [] }'>
+<CodeGroup labels={[]}>
 
 ```shell
 $ k6 run --summary-export=export.json script.js
 ```
 
-</div>
+</CodeGroup>
 
 > Read more about the summary on the [JSON plugin documentation](/results-visualization/json#summary-export)

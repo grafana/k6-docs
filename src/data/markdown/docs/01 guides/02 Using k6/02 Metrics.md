@@ -45,7 +45,7 @@ _built-in_ metrics will only be generated when/if HTTP requests are made:
 
 If you want to access the timing information from an individual HTTP request, the _built-in_ HTTP timing metrics are also available in the [HTTP Response](/javascript-api/k6-http/response) object:
 
-<div class="code-group" data-props='{"labels": ["timings.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["timings.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -55,7 +55,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/response) object containing:
 
@@ -77,7 +77,7 @@ In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/respon
 
 You can also create your own metrics, that are reported at the end of a load test, just like HTTP timings:
 
-<div class="code-group" data-props='{"labels": ["trend.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -91,7 +91,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code will create a Trend metric named “waiting_time” and referred to in the code using the variable name myTrend.
 Custom metrics will be reported at the end of a test. Here is how the output might look:
@@ -113,7 +113,7 @@ All values added to a custom metric can optionally be [tagged](/using-k6/tags-an
 
 ### Counter _(cumulative metric)_
 
-<div class="code-group" data-props='{"labels": ["counter.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["counter.js"]} lineNumbers={[true]}>
 
 ```js
 import { Counter } from 'k6/metrics';
@@ -126,7 +126,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code will generate the following output:
 
@@ -138,7 +138,7 @@ Note that there is currently no way of accessing the value of any custom metric 
 
 ### Gauge _(keep the latest value only)_
 
-<div class="code-group" data-props='{"labels": ["gauge.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["gauge.js"]} lineNumbers={[true]}>
 
 ```js
 import { Gauge } from 'k6/metrics';
@@ -152,7 +152,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code will result in an output like this:
 ![gauge output](images/Metrics/gauge-output.png)
@@ -161,7 +161,7 @@ The value of `my_gauge` will be 2 at the end of the test. As with the Counter me
 
 ### Trend _(collect trend statistics (min/max/avg/percentiles) for a series of values)_
 
-<div class="code-group" data-props='{"labels": ["trend.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
 
 ```js
 import { Trend } from 'k6/metrics';
@@ -174,7 +174,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code will make k6 print output like this:
 
@@ -185,7 +185,7 @@ By default, k6 will print average, min, max, median, 90th percentile, and 95th p
 
 ### Rate _(keeps track of the percentage of values in a series that are non-zero)_
 
-<div class="code-group" data-props='{"labels": ["rate.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["rate.js"]} lineNumbers={[true]}>
 
 ```js
 import { Rate } from 'k6/metrics';
@@ -200,7 +200,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above code will make k6 print output like this:
 ![rate output](images/Metrics/rate-output.png)

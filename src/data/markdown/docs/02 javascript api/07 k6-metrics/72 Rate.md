@@ -8,8 +8,8 @@ _Rate_ is an object for representing a custom metric keeping track of the percen
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                                      | Description                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------- |
+| Method                                                                           | Description                     |
+| -------------------------------------------------------------------------------- | ------------------------------- |
 | [Rate.add(value, [tags])](/javascript-api/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
 
 ## Rate usage in Thresholds
@@ -24,7 +24,7 @@ The value of the `rate` variable ranges between `0.00` and `1.00`.
 
 ### Examples
 
-<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Rate } from 'k6/metrics';
@@ -39,9 +39,9 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Usage in Thresholds"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Usage in Thresholds"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Rate } from 'k6/metrics';
@@ -70,4 +70,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

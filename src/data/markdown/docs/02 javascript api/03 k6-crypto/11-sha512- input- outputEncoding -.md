@@ -1,13 +1,13 @@
 ---
 title: 'sha512( input, outputEncoding )'
-description: "Use SHA-512 to hash an input string."
+description: 'Use SHA-512 to hash an input string.'
 ---
 
 Use [sha512](https://golang.org/pkg/crypto/sha512/) to hash an input string.
 
-| Parameter      | Type   | Description                                                                           |
-| -------------- | ------ | ------------------------------------------------------------------------------------- |
-| input          | string | The input string to hash.                                           |
+| Parameter      | Type   | Description                                                                          |
+| -------------- | ------ | ------------------------------------------------------------------------------------ |
+| input          | string | The input string to hash.                                                            |
 | outputEncoding | string | Describes what type of encoding to use for the hash value. Can be "base64" or "hex". |
 
 ### Returns
@@ -18,18 +18,18 @@ Use [sha512](https://golang.org/pkg/crypto/sha512/) to hash an input string.
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import crypto from 'k6/crypto';
 
-export default function() {
+export default function () {
   let hash = crypto.sha512('hello world!', 'hex');
   console.log(hash);
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above script should result in the following being printed during execution:
 

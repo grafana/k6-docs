@@ -1,27 +1,25 @@
 ---
-title: "Selection.each(fn)"
-excerpt: ""
+title: 'Selection.each(fn)'
+excerpt: ''
 ---
+
 Iterate over a [Selection](/javascript-api/k6-html/selection), executing a function for each matched element.
 Mimics [jquery.each](https://api.jquery.com/each/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| fn | function | A function to iterate all the Elements of the Collection. |
-
+| Parameter | Type     | Description                                               |
+| --------- | -------- | --------------------------------------------------------- |
+| fn        | function | A function to iterate all the Elements of the Collection. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -41,12 +39,12 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-  doc.find('dl').each(function(idx, el) {
+  doc.find('dl').each(function (idx, el) {
     console.log(el.innerHTML());
   });
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

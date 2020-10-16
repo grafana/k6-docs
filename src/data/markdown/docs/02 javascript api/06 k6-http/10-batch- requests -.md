@@ -26,7 +26,7 @@ When each request is specified as an array, the order of the arguments for each 
 
 ### Example with request as an array
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -49,11 +49,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Example batching three URLs for parallel fetching
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -76,13 +76,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ### Example with request objects
 
 You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/k6-http/params) object to the request:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -116,7 +116,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 _Note that the requests in the example above may happen in any order, or simultaneously. When running requests in batches, there is no guarantee that e.g. req1 will happen before req2 or req3_
 
@@ -124,7 +124,7 @@ _Note that the requests in the example above may happen in any order, or simulta
 
 Finally, you can also send in named requests by using an object instead of an array as the parameter to http.batch(). In the following example we do this, and we also show that it is possible to mix string URLs and request objects
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import http from 'k6/http';
@@ -148,4 +148,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

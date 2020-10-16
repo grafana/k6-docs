@@ -20,25 +20,25 @@ Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import crypto from 'k6/crypto';
 
-export default function() {
+export default function () {
   let hash = crypto.hmac('sha256', 'mysecret', 'hello world!', 'hex');
   console.log(hash);
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above script should result in the following being printed during execution:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```bash
 INFO[0000] 893a72d8cab129e5ba85aea4599fd53f59bfe652cff4098a3780313228d8c20f
 ```
 
-</div>
+</CodeGroup>

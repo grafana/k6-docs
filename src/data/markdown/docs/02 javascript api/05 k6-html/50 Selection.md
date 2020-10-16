@@ -51,7 +51,7 @@ Selections have a jQuery-compatible API, but with two caveats:
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { parseHTML } from 'k6/html';
@@ -65,4 +65,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

@@ -29,7 +29,7 @@ Starting with k6 v0.27.0, there are some [tricks that can be used to better hand
 
 ## From a JSON file
 
-<div class="code-group" data-props='{ "labels": ["data.json"], "lineNumbers": [true] }'>
+<CodeGroup labels={["data.json"]} lineNumbers={[true]}>
 
 ```json
 {
@@ -40,9 +40,9 @@ Starting with k6 v0.27.0, there are some [tricks that can be used to better hand
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{ "labels": ["parse-json.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["parse-json.js"]} lineNumbers={[true]}>
 
 ```javascript
 const data = JSON.parse(open('./data.json'));
@@ -53,7 +53,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## From a CSV file
 
@@ -62,7 +62,7 @@ library called [Papa Parse](https://www.papaparse.com/).
 
 You can download the library and import it locally like this:
 
-<div class="code-group" data-props='{ "labels": ["papaparse-local-import.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["papaparse-local-import.js"]} lineNumbers={[true]}>
 
 ```javascript
 import papaparse from './papaparse.js';
@@ -74,11 +74,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
 
-<div class="code-group" data-props='{ "labels": ["papaparse-remote-import.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["papaparse-remote-import.js"]} lineNumbers={[true]}>
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
@@ -91,12 +91,12 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Here's an example using Papa Parse to parse a CSV file of username/password pairs and using that
 data to login to the test.k6.io test site:
 
-<div class="code-group" data-props='{ "labels": ["parse-csv.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["parse-csv.js"]} lineNumbers={[true]}>
 
 ```javascript
 /*  Where contents of data.csv is:
@@ -140,7 +140,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 <br/>
 
@@ -151,7 +151,7 @@ to share memory between VUs, the `__VU` variable is now defined during the init
 context which means that we can split the data between the VUs during initialization
 and not have multiple copies of it during the test run.
 
-<div class="code-group" data-props='{ "labels": ["parse-json-big.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["parse-json-big.js"]} lineNumbers={[true]}>
 
 ```javascript
 var splits = 100; // in how many parts are we going to split the data
@@ -173,7 +173,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 With 100k lines like:
 
@@ -188,7 +188,7 @@ Playing with the value for `splits` will give a different balance between memory
 
 A second approach using another technique will be to pre-split the data in different files and load and parse only the one for each VU.
 
-<div class="code-group" data-props='{ "labels": ["parse-csv-many.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["parse-csv-many.js"]} lineNumbers={[true]}>
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
@@ -222,7 +222,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The files have 10k lines and are in total 128kb. Running 100VUs with this script takes around 2GB, while running the same with a single file takes upwards of 15GBs.
 

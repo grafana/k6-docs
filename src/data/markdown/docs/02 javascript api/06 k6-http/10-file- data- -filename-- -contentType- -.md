@@ -1,6 +1,6 @@
 ---
-title: "file( data, [filename], [contentType] )"
-description: "Create a file object that is used for building multi-part requests."
+title: 'file( data, [filename], [contentType] )'
+description: 'Create a file object that is used for building multi-part requests.'
 ---
 
 Create a file object that is used for building [Multipart requests (file uploads)](/using-k6/multipart-requests-file-uploads).
@@ -11,16 +11,15 @@ Create a file object that is used for building [Multipart requests (file uploads
 | filename    | string         | The filename to specify for this field (or "part") of the multipart request.     |
 | contentType | string         | The content type to specify for this field (or "part") of the multipart request. |
 
-
 ### Returns
 
-| Type     | Description                                                        |
-| -------- | ------------------------------------------------------------------ |
+| Type                                         | Description        |
+| -------------------------------------------- | ------------------ |
 | [FileData](/javascript-api/k6-http/filedata) | A FileData object. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import { sleep } from 'k6';
@@ -29,7 +28,7 @@ import http from 'k6/http';
 
 let binFile = open('/path/to/file.bin', 'b');
 
-export default function() {
+export default function () {
   let f = http.file(binFile, 'test.bin');
   console.log(md5(f.data, 'hex'));
   console.log(f.filename);
@@ -37,4 +36,4 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>

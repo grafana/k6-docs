@@ -1,34 +1,31 @@
 ---
-title: "Selection.get(index)"
-excerpt: ""
+title: 'Selection.get(index)'
+excerpt: ''
 ---
+
 Retrieve the Element matched by the selector.
 Mimics [jquery.get](https://api.jquery.com/get/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| index | Number | A zero-based integer indicating which element to retrieve. |
-
+| Parameter | Type   | Description                                                |
+| --------- | ------ | ---------------------------------------------------------- |
+| index     | Number | A zero-based integer indicating which element to retrieve. |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type    | Description                          |
+| ------- | ------------------------------------ |
 | Element | The Element matched by the selector. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -54,7 +51,7 @@ export default function() {
   console.log(sel.get(1).innerHTML());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

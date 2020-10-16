@@ -40,7 +40,7 @@ The unit of these variables and functions are all in milliseconds.
 
 ### Examples
 
-<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Trend } from 'k6/metrics';
@@ -53,9 +53,9 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["Usage in Thresholds"], "lineNumbers": [true]}'>
+<CodeGroup labels={["Usage in Thresholds"]} lineNumbers={[true]}>
 
 ```javaScript
 import { Trend } from 'k6/metrics';
@@ -82,4 +82,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

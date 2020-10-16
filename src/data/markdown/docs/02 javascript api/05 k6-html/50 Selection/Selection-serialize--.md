@@ -1,27 +1,27 @@
 ---
-title: "Selection.serialize()"
-excerpt: ""
+title: 'Selection.serialize()'
+excerpt: ''
 ---
+
 Encode a set of form elements as a string in standard URL-encoded notation for submission.
 Mimics [jquery.serialize](https://api.jquery.com/serialize/)
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                                                          |
+| ------ | -------------------------------------------------------------------- |
 | string | The URL-encoded representation of the matched form or form elements. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
- const content = `
+export default function () {
+  const content = `
  <form><input name="username"></form>
   `;
 
@@ -32,7 +32,7 @@ export default function() {
   console.log(serialized); // "username="
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

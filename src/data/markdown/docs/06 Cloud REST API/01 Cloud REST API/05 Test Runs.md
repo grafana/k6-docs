@@ -14,7 +14,7 @@ Starts a test-run in the k6 cloud. It uses the specified test ID, previously ret
 | -------------- | ------- | --------------------------------------------- |
 | id             | integer | A unique integer value identifying this test. |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -47,7 +47,7 @@ Starts a test-run in the k6 cloud. It uses the specified test ID, previously ret
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Read test run
 
@@ -96,7 +96,7 @@ Returns details of a test run with the specified ID. The response contains sever
 | --------------- | ------ | ------------------------------------- | ------------------------------------------------------------ |
 | \$select        | string | Specify a subset of fields to return. | `/loadtests/v2/runs/1?$select=id,test_id,run_status,created` |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -133,7 +133,7 @@ Returns details of a test run with the specified ID. The response contains sever
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## List test runs
 
@@ -148,7 +148,7 @@ Returns test runs for a particular test.
 | ids[]           | integer | Specify a subset test runs to return. | `/loadtests/v2/runs?$test_id=1&ids[]=1&ids[]=3`                      |
 | public_id       | string  | Get a test run by public_id.          | `/loadtests/v2/runs?public_id={public_id}`                           |
 
-<div class="code-group" data-props='{"labels": ["Response"]}'>
+<CodeGroup labels={["Response"]}>
 
 ```json
 {
@@ -189,4 +189,4 @@ Returns test runs for a particular test.
 }
 ```
 
-</div>
+</CodeGroup>

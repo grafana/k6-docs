@@ -1,6 +1,6 @@
 ---
-title: "createHash( algorithm )"
-description: "Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way."
+title: 'createHash( algorithm )'
+description: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 ---
 
 Creates a hashing object that can then be fed with data repeatedly, and from which you can extract a hash digest whenever you want.
@@ -11,18 +11,18 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 ### Returns
 
-| Type   | Description                                              |
-| ------ | -------------------------------------------------------- |
+| Type   | Description                                          |
+| ------ | ---------------------------------------------------- |
 | object | A [Hasher](/javascript-api/k6-crypto/hasher) object. |
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
 import crypto from 'k6/crypto';
 
-export default function() {
+export default function () {
   console.log(crypto.sha256('hello world!', 'hex'));
   let hasher = crypto.createHash('sha256');
   hasher.update('hello ');
@@ -31,7 +31,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 The above script should result in the following being printed during execution:
 

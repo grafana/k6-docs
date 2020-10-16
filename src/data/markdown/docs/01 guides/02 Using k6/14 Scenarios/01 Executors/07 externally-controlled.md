@@ -20,11 +20,11 @@ maximum VUs will only affect the externally controlled executor.
 In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
 also adds the following options:
 
-| Option     | Type    | Description                                         | Default |
-| ---------- | ------- | --------------------------------------------------- | ------- |
+| Option      | Type    | Description                                         | Default |
+| ----------- | ------- | --------------------------------------------------- | ------- |
 | `duration*` | string  | Total test duration.                                | -       |
-| `vus`      | integer | Number of VUs to run concurrently.                  | -       |
-| `maxVUs`   | integer | Maximum number of VUs to allow during the test run. | -       |
+| `vus`       | integer | Number of VUs to run concurrently.                  | -       |
+| `maxVUs`    | integer | Maximum number of VUs to allow during the test run. | -       |
 
 ## When to use
 
@@ -38,7 +38,7 @@ locally with `k6 run`.
 In this example, we'll execute a test controllable at runtime, starting with 0 VUs up to
 a maximum of 50, and a total duration of 10 minutes.
 
-<div class="code-group" data-props='{"labels": [ "externally-controlled.js" ], "lineNumbers": "true"}'>
+<CodeGroup labels={[ "externally-controlled.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -60,4 +60,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

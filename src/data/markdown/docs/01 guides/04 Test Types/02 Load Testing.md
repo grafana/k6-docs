@@ -36,7 +36,7 @@ therefore it's recommended to configure the load test with the high load in mind
 Note, this test has one simple threshold. The response time for 99% requests must be below 1.5 seconds.
 Thresholds are a way of ensuring that your system is meeting the performance goals you set for it.
 
-<div class="code-group" data-props='{"labels": ["sample-load-test.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -81,7 +81,7 @@ export default () => {
 };
 ```
 
-</div>
+</CodeGroup>
 
 This is a rather simple script that authenticates the user, and retrieves list of objects.
 If you would like to see a more comprehensive test that makes use of groups, checks, thresholds,
@@ -108,7 +108,7 @@ to 100 users during the peak hours of operation, then ramp-down back to normal l
 
 Make sure you don't go over your normal number of VUs - that's not load testing, it's [stress testing](/test-types/stress-testing).
 
-<div class="code-group" data-props='{"labels": ["ramp-up-scenario.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
 
 ```javascript
 export let options = {
@@ -127,7 +127,7 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 The VU chart for the above configuration should look like this:
 

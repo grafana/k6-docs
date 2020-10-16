@@ -11,7 +11,7 @@ that is good to be aware of.
 
 Given the following script:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
 import http from "k6/http";
@@ -21,11 +21,11 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 If we run it using `k6 run --http-debug script.js` we get output that looks like this:
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```shell
           /\      |‾‾|  /‾‾/  /‾/
@@ -89,6 +89,6 @@ X-Xss-Protection: 1; mode=block
 
 ```
 
-</div>
+</CodeGroup>
 
 If we want to get the full response body printed as well we run the script with `k6 run --http-debug="full" script.js` instead.

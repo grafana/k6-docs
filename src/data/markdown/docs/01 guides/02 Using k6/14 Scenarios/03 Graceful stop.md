@@ -16,7 +16,7 @@ of this property is `30s`.
 
 ## Example
 
-<div class="code-group" data-props='{"labels": [ "graceful-stop.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "graceful-stop.js" ]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -39,7 +39,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 Running this script would result in something like:
 

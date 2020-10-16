@@ -1,20 +1,19 @@
 ---
-title: "HTML Forms"
-excerpt: "Scripting example on how to handle HTML forms in a k6 test."
+title: 'HTML Forms'
+excerpt: 'Scripting example on how to handle HTML forms in a k6 test.'
 ---
 
 Scripting example on how to handle HTML forms.
 
 In many cases using the [Selection](/javascript-api/k6-html/selection) API (jQuery API clone) to interact with HTML data is enough, but for some use cases, like with forms, we can make things easier providing a higher-level API like the [Response.submitForm( [params] )](/javascript-api/k6-http/response/response-submitform-params) API.
 
-
-<div class="code-group" data-props='{ "labels": ["submit-form.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["submit-form.js"]} lineNumbers={[true]}>
 
 ```js
-import http from "k6/http";
-import {sleep} from "k6";
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-export default function() {
+export default function () {
   // Request page containing a form
   let res = http.get('https://httpbin.org/forms/post');
 
@@ -27,9 +26,10 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 **Relevant k6 APIs**:
+
 - [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params)
 - [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find-selector)
   (the [jQuery Selector API](http://api.jquery.com/category/selectors/) docs are also a good

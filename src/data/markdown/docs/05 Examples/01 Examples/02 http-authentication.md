@@ -7,7 +7,7 @@ Scripting examples on how to use different authentication or authorization metho
 
 ## Basic authentication
 
-<div class="code-group" data-props='{ "labels": ["basic-auth.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["basic-auth.js"]} lineNumbers={[true]}>
 
 ```js
 import encoding from 'k6/encoding';
@@ -57,11 +57,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Digest authentication
 
-<div class="code-group" data-props='{ "labels": ["digest-auth.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["digest-auth.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -89,11 +89,11 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## NTLM authentication
 
-<div class="code-group" data-props='{ "labels": ["ntlm-auth.js"], "lineNumbers": [true] }'>
+<CodeGroup labels={["ntlm-auth.js"]} lineNumbers={[true]}>
 
 ```js
 import http from 'k6/http';
@@ -109,7 +109,7 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## AWS Signature v4 authentication
 
@@ -124,34 +124,34 @@ For this to work, we first need to do the following:
    and [Browserify](http://browserify.org/)
 2. Install the `awsv4.js` library:
 
-   <div class="code-group" data-props='{ "labels": [""], "lineNumbers": [false] }'>
+   <CodeGroup labels={[""]} lineNumbers={[false]}>
 
    ```shell
    $ npm install aws4
    ```
 
-   </div>
+   </CodeGroup>
 
 3. Run it through browserify:
 
-   <div class="code-group" data-props='{ "labels": [""], "lineNumbers": [false] }'>
+   <CodeGroup labels={[""]} lineNumbers={[false]}>
 
    ```shell
     $ browserify node_modules/aws4/aws4.js -s aws4 > aws4.js
    ```
 
-   </div>
+   </CodeGroup>
 
 4. Move the `aws4.js` file to the same folder as your script file and you'll be able to import
    it into your test script:
 
-   <div class="code-group" data-props='{ "labels": [""], "lineNumbers": [false] }'>
+   <CodeGroup labels={[""]} lineNumbers={[false]}>
 
    ```js
    import aws4 from "./aws4.js"`
    ```
 
-   </div>
+   </CodeGroup>
 
 Here's an example script to list all the regions available in EC2. Note that the AWS access key
 and secret key needs to be provided through [environment variables](/using-k6/environment-variables).
@@ -162,7 +162,7 @@ and secret key needs to be provided through [environment variables](/using-k6/en
 > implemented in pure JS (including crypto APIs) it will be quite heavy on CPU and memory hungry
 > when run with more than just a few VUs.
 
-<div class="code-group" data-props='{ "labels": ["awsv4-auth.js"], "lineNumbers": [false] }'>
+<CodeGroup labels={["awsv4-auth.js"]} lineNumbers={[false]}>
 
 ```js
 import http from 'k6/http';
@@ -200,4 +200,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>

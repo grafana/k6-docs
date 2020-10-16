@@ -1,34 +1,31 @@
 ---
-title: "Selection.map(fn)"
-excerpt: ""
+title: 'Selection.map(fn)'
+excerpt: ''
 ---
+
 Pass each element in the current matched set through a function, producing a new Array containing the return values.
 Mimics [jquery.each](https://api.jquery.com/each/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| fn | function | A function to iterate all the Elements of the Collection. |
-
+| Parameter | Type     | Description                                               |
+| --------- | -------- | --------------------------------------------------------- |
+| fn        | function | A function to iterate all the Elements of the Collection. |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type  | Description                             |
+| ----- | --------------------------------------- |
 | Array | The array containing the return values. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -48,14 +45,17 @@ export default function() {
   `;
   const doc = parseHTML(content);
 
-  const newEls = doc.find('dl').children().map(function(idx, el) {
-    return 'hola ' + el.text();
-  });
+  const newEls = doc
+    .find('dl')
+    .children()
+    .map(function (idx, el) {
+      return 'hola ' + el.text();
+    });
 
   console.log(newEls);
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

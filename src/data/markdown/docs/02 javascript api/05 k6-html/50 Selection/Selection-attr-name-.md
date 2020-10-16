@@ -1,36 +1,34 @@
 ---
-title: "Selection.attr(name)"
-excerpt: ""
+title: 'Selection.attr(name)'
+excerpt: ''
 ---
+
 Get the value of an attribute for the first element in the Selection.
 Mimics [jquery.attr](https://api.jquery.com/attr/)
 
-
-| Parameter | Type | Description |
-| ----------| ---- | ----------- |
-| name | string | The name of the attribute to get |
-
+| Parameter | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| name      | string | The name of the attribute to get |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type   | Description                |
+| ------ | -------------------------- |
 | string | The value of the attribute |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import http from "k6/http";
+import { parseHTML } from 'k6/html';
+import http from 'k6/http';
 
-export default function() {
-  const res = http.get("https://k6.io");
+export default function () {
+  const res = http.get('https://k6.io');
   const doc = parseHTML(res.body);
   const langAttr = doc.find('html').attr('lang');
-};
+}
 ```
 
-</div>
+</CodeGroup>

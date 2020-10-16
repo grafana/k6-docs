@@ -11,7 +11,7 @@ Currently two modes are available:
 
 ## Base
 
-<div class="code-group" data-props='{"labels": ["CLI Parameter", "Environment Variable"]}'>
+<CodeGroup labels={["CLI Parameter", "Environment Variable"]}>
 
 ```shell
 $ k6 run --compatibility-mode=base script.js
@@ -21,7 +21,7 @@ $ k6 run --compatibility-mode=base script.js
 $ K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
-</div>
+</CodeGroup>
 
 Pure Golang JavaScript VM supporting ES5.1+. Use this mode if your scripts are already written
 using only ES5.1 features, or were previously transformed by [Babel](https://babeljs.io/),
@@ -36,7 +36,7 @@ transformation outside of k6.
 
 ### Basic Example
 
-<div class="code-group" data-props='{"labels": [ "base-example.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "base-example.js" ]} lineNumbers={[true]}>
 
 ```js
 var http = require('k6/http');
@@ -53,7 +53,7 @@ module.exports.default = function () {
 };
 ```
 
-</div>
+</CodeGroup>
 
 > ### ⚠️ About require()
 >
@@ -67,7 +67,7 @@ module.exports.default = function () {
 
 ### Advanced Example
 
-<div class="code-group" data-props='{"labels": [ "advanced-example.js" ], "lineNumbers": "[true]"}'>
+<CodeGroup labels={[ "advanced-example.js" ]} lineNumbers={[true]}>
 
 ```js
 var http = require('k6/http');
@@ -101,11 +101,11 @@ module.exports.default = function () {
 };
 ```
 
-</div>
+</CodeGroup>
 
 ## Extended
 
-<div class="code-group" data-props='{"labels": ["CLI Parameter", "Environment Variable"]}'>
+<CodeGroup labels={["CLI Parameter", "Environment Variable"]}>
 
 ```shell
 $ k6 run --compatibility-mode=extended script.js
@@ -115,7 +115,7 @@ $ k6 run --compatibility-mode=extended script.js
 $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 ```
 
-</div>
+</CodeGroup>
 
 Transforms scripts to ES5.1 using Babel with ES2015 preset, and loads
 [core.js](https://github.com/zloirock/core-js) v2 polyfills. This is
@@ -128,7 +128,7 @@ There's a substantial difference in performance between both modes, as shown by
 [GNU time](https://www.gnu.org/software/time/) below, especially when running tests with a large
 number of VUs:
 
-<div class="code-group" data-props='{"labels": ["Base Mode", "Extended Mode"]}'>
+<CodeGroup labels={["Base Mode", "Extended Mode"]}>
 
 ```shell
 $ /usr/bin/time -v k6 run \
@@ -194,4 +194,4 @@ Page size (bytes): 4096
 Exit status: 0
 ```
 
-</div>
+</CodeGroup>

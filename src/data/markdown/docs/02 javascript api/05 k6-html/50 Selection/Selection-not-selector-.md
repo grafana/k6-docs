@@ -1,35 +1,32 @@
 ---
-title: "Selection.not(selector)"
-excerpt: ""
+title: 'Selection.not(selector)'
+excerpt: ''
 ---
+
 Remove elements from the set of matched elements.
 Mimics [jquery.not](https://api.jquery.com/not/)
 
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| selector | string | A string containing a selector expression to match elements against. |
-| selector | function | A function used as a test for each element in the set. |
-
+| Parameter | Type     | Description                                                          |
+| --------- | -------- | -------------------------------------------------------------------- |
+| selector  | string   | A string containing a selector expression to match elements against. |
+| selector  | function | A function used as a test for each element in the set.               |
 
 ### Returns
 
-| Type | Description |
-| ---- | ----------- |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
 | [Selection](/javascript-api/k6-html/selection) | A Selection. |
-
 
 ### Example
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```js
-import {parseHTML} from "k6/html";
-import {sleep} from "k6";
+import { parseHTML } from 'k6/html';
+import { sleep } from 'k6';
 
-export default function() {
-
- const content = `
+export default function () {
+  const content = `
 <dl>
   <dt id="term-1">term 1</dt>
   <dd>definition 1-a</dd>
@@ -50,17 +47,16 @@ export default function() {
   const doc = parseHTML(content);
   let sel = doc.find('dl').children();
 
-
   console.log(sel.not('dt').size());
 
-  sel = sel.not(function(idx, item) {
+  sel = sel.not(function (idx, item) {
     return item.text().startsWith('definition');
   });
 
   console.log(sel.size());
 
   sleep(1);
-};
+}
 ```
 
-</div>
+</CodeGroup>

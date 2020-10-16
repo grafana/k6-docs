@@ -8,7 +8,6 @@ import styles from './code.module.scss';
 
 const Code = ({ children, showLineNumbers }) => {
   if (!children) return null;
-  console.log(children);
   const codeContainerRef = useRef(null);
   const [codeToCopy, setCodeToCopy] = useState('');
 

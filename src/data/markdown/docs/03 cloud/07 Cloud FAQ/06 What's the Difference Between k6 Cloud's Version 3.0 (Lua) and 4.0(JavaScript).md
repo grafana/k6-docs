@@ -41,7 +41,7 @@ In the 3.0 product you compose one or more user scenarios into a separate entity
 
 In the 4.0 product the equivalent configuration options are specified in the script itself:
 
-<div class="code-group" data-props='{"labels": ["k6 Cloud V4 options:"]}'>
+<CodeGroup labels={["k6 Cloud V4 options:"]}>
 
 ```JavaScript
 export let options = {
@@ -70,7 +70,7 @@ export let options = {
 };
 ```
 
-</div>
+</CodeGroup>
 
 ---
 
@@ -86,9 +86,9 @@ On highest level there are some differences to be aware of before we continue on
 
 In Lua all the available functionality is loaded by default, APIs can be called right away without explicit loading/importing, while In JS you need to explicitly import the builtin modules and APIs that you want to use:
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 http.get("https://test.k6.io/")
 client.sleep(3)
 ```
@@ -102,15 +102,15 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Scope of VU code
 
 In Lua VUs execute the script from top to bottom over and over, while in JS VUs execute the global scope (aka "init code") once to initialize, and then executes the "main function" (`export default function`) over and over:
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 // The VU code is the same as global scope, and gets run over and over by a VU
 client.sleep(3)
 ```
@@ -122,7 +122,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Converting Lua APIs to JS APIs
 
@@ -130,9 +130,9 @@ export default function() {
 
 Below you have examples on how to have a VU sleep or think for a specific amount of time (in the example below for 3 seconds), pausing the VU execution:
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 client.sleep(3.0)
 ```
 
@@ -143,15 +143,15 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Making requests
 
 To make HTTP requests there are a number of different Lua APIs available. In the end they're all wrappers around the `http.request_batch()` API. Below you can see a comparison for Lua and JS:
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 -- Send a single GET request
 http.get("https://httpbin.org/")
 -- Send a single POST request
@@ -178,7 +178,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 See the [HTTP API](/using-k6/http-requests) docs for k6 for more information and examples.
 
@@ -186,9 +186,9 @@ See the [HTTP API](/using-k6/http-requests) docs for k6 for more information and
 
 In the 3.0 product there's a concept of pages. Lua code in between calls to `http.page_start()` and `http.page_end()` will be measured to provide a page load times in the results. The equivalent in JS would be to use [`Groups`](/using-k6/tags-and-groups#groups):
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 http.page_start("My page")
 http.get("https://httpbin.org/")
 http.request_batch({
@@ -211,7 +211,7 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Data store
 
@@ -221,19 +221,19 @@ In the 4.0 product there's no specific concept of a datastore, but in k6 you hav
 
 Both of the examples below can be run with:
 
-<div class="code-group" data-props='{"labels": []}'>
+<CodeGroup labels={[]}>
 
 ```shell
 k6 run --vus 3 --iterations 3 script.js
 ```
 
-</div>
+</CodeGroup>
 
 ## Use the open() scripting API to open a CSV/JSON/TXT file:
 
 more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
-<div class="code-group" data-props='{"labels": ["users.json"], "lineNumbers": [false]}'>
+<CodeGroup labels={["users.json"]} lineNumbers={[false]}>
 
 ```json
 [
@@ -252,9 +252,9 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 ]
 ```
 
-</div>
+</CodeGroup>
 
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import { sleep } from "k6";
@@ -266,11 +266,11 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Put the data in a JS file and import it as a module:
 
-<div class="code-group" data-props='{"labels": ["userData.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["userData.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 export let users = [
@@ -289,11 +289,11 @@ export let users = [
 ];
 ```
 
-</div>
+</CodeGroup>
 
 ## Main Script:
 
-<div class="code-group" data-props='{"labels": ["script.js"], "lineNumbers": [true]}'>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```JavaScript
 import { sleep } from "k6";
@@ -305,15 +305,15 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 ## Custom metrics
 
 Beyond the standard metrics collected by the 3.0 product you can also collect custom metrics using the `results.custom_metric()` API in the example below. The equivalent in JS would be to use the [`Trend`](/javascript-api/k6-metrics/trend) custom metric:
 
-<div class="code-group" data-props='{"labels": ["Lua", "JavaScript"], "lineNumbers": [false]}'>
+<CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```lua linenos
+```text
 -- Track the time-to-first-byte (TTFB)
 local res = http.get("https://httpbin.org/")
 result.custom_metric("time_to_first_byte", res.time_to_first_byte)
@@ -332,6 +332,6 @@ export default function() {
 }
 ```
 
-</div>
+</CodeGroup>
 
 For more information, see our docs on [custom metrics](/using-k6/metrics#custom-metrics) (Additional metrics for `Counter`, `Gauge` and `Rate` are available beyond the `Trend` one used above).
