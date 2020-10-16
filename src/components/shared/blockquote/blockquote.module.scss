@@ -22,7 +22,7 @@ blockquote {
 
 blockquote.doc-blockquote-warning {
   border-left: 2px solid $color-error;
-  span {
+  span[class='kicker'] {
     display: block;
     text-transform: uppercase;
     font-size: $font-size-xs;
