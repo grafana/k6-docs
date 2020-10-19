@@ -23,6 +23,16 @@ const processMdxEntry = ({ children: [entry] }) => {
     // avoid pushing empty records
     return [];
   }
+  /* @TODO: remove if clause after cloud rest api docs will be ported ,
+   * avoid indexing this section for a while to avoid
+   * search user's confusion
+   */
+  if (/cloud rest api/i.test(fileAbsolutePath)) {
+    // eslint-disable-next-line no-console
+    console.log('exluded from algolia indecies pages:', fileAbsolutePath);
+    return [];
+  }
+
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
   // cut the last piece (the actual name of a file) to match the generation
   // in node
