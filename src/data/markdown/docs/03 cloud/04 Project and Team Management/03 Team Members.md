@@ -3,13 +3,10 @@ title: 'Team Members'
 excerpt: 'Guide on inviting Team Members to your k6 account for collaboration'
 ---
 
-<Blockquote mod="warning">
 
-<b>Team Members must specify a `projectID`</b>
-
-Invited Team members must specify a `projectID` in `options.ext.loadimpact.projectID` of the options object of their test in order to use the subscription of the organization they have been invited to.
-
-</Blockquote>
+> <b>Team Members must specify a `projectID`</b>
+> 
+> Invited Team members must specify a `projectID` in `options.ext.loadimpact.projectID` of the options object of their test in order to use the subscription of the organization they have been invited to.
 
 ## Background
 

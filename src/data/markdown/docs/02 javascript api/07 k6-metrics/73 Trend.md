@@ -32,14 +32,11 @@ The unit of these variables and functions are all in milliseconds.
 - `p(50) < 200` // half of requests must finish within 200ms.
 - `max < 3000` // the slowest request must finish within 3s.
 
-<Blockquote mod="warning">
 
-#### ⚠️ Don't use `min` and `max` in thresholds
+> #### ⚠️ Don't use `min` and `max` in thresholds
+> We don't recommend using `min` and `max` for specifying thresholds because these
+> values represent outliers. Use percentiles instead.
 
-We don't recommend using `min` and `max` for specifying thresholds because these
-values represent outliers. Use percentiles instead.
-
-</Blockquote>
 
 ### Examples
 
