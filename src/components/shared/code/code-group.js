@@ -10,24 +10,22 @@ const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
   const randomKey = getRandomKey();
   return (
     <div className={styles.wrapper}>
-      {labels && labels.length ? (
-        <div className={styles.header}>
-          {labels.map((label, i) => (
-            <div
-              key={`lb-${i}`}
-              className={`${styles.codeTab} ${
-                i === currentIndex ? styles.codeTab_active : ''
-              }`}
-              onClick={() => setCurrentIndex(i)}
-              onKeyPress={() => setCurrentIndex(i)}
-              role={'button'}
-              tabIndex={i}
-            >
-              {label}
-            </div>
-          ))}
-        </div>
-      ) : null}
+      <div className={styles.header}>
+        {labels.map((label, i) => (
+          <div
+            key={`lb-${i}`}
+            className={`${styles.codeTab} ${
+              i === currentIndex ? styles.codeTab_active : ''
+            }`}
+            onClick={() => setCurrentIndex(i)}
+            onKeyPress={() => setCurrentIndex(i)}
+            role={'button'}
+            tabIndex={i}
+          >
+            {label}
+          </div>
+        ))}
+      </div>
       <style>
         {`.${styles.itemsContainer}.${randomKey} > div:nth-child(${
           currentIndex + 1
