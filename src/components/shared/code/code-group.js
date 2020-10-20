@@ -5,7 +5,7 @@ import { getRandomKey } from 'utils';
 import Code from './code';
 import styles from './code-group.module.scss';
 
-const CodeGroup = ({ children, labels, lineNumbers }) => {
+const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const randomKey = getRandomKey();
   return (
@@ -35,7 +35,11 @@ const CodeGroup = ({ children, labels, lineNumbers }) => {
       </style>
       <div className={`${styles.itemsContainer} ${randomKey}`}>
         {React.Children.map(children, (child, i) => (
-          <Code showLineNumbers={lineNumbers[i]} key={i}>
+          <Code
+            showLineNumbers={lineNumbers[i]}
+            key={i}
+            showHeightToggler={heightTogglers[i]}
+          >
             {child.props.children}
           </Code>
         ))}
@@ -48,12 +52,14 @@ CodeGroup.propTypes = {
   children: PropTypes.node,
   labels: PropTypes.arrayOf(PropTypes.string),
   lineNumbers: PropTypes.arrayOf(PropTypes.bool),
+  heightTogglers: PropTypes.arrayOf(PropTypes.bool),
 };
 
 CodeGroup.defaultProps = {
   children: null,
   labels: [],
   lineNumbers: [],
+  heightTogglers: [],
 };
 
 export default CodeGroup;

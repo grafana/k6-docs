@@ -326,26 +326,28 @@ See _'Then do this?'_ text line between tabs? **You can not do that**. Put nothi
 
     </CodeGroup>
 
-#### State control
+#### Height control
 
-Large code blocks (>400px) by default have a collapsed state, i.e. have a max-height prop of `400px` and user can change their behavior via toggler:
+You can provide large code blocks (>400px, ~20 LoC) with expand/collapse toggler that will allow users to control code block's height.
 
 ![Code Block States](internal-images/code-block-states.png)
 
-If you are using `CodeGroup` wrapper you can specify the initial state of code blocks via `isInitiallyExpanded` prop which works very similarly to the other available props:
+Prop `heightTogglers` passed to `CodeGroup` component makes it possible, which works very similar to `labels` and `lineNumbers` props:
 
-    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]} isInitiallyExpanded=[true, false, false]>
+    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]} heightTogglers=[true, false, false]>
 
     ```javascript
-    // a lot of lines of important code
+    // a lot of lines of code,
+    // maxHeight of this code block will be set to `400px`
+    // and a toggler will appear
     ```
 
     ```javascript
-    // a lot of lines of not so important code
+    // a lot of lines of code, default behavior
     ```
 
     ```javascript
-    // a lot of lines of not so important code
+    // a lot of lines of code, default behavior
     ```
 
 
