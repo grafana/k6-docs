@@ -1,37 +1,41 @@
 import classNames from 'classnames';
 import { WithCopyButton } from 'components/shared/with-copy-button';
+import { useCodeBlockHeightToggler } from 'hooks';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import styles from './code.module.scss';
 
-const Code = ({ children, showLineNumbers, isInitiallyExpanded }) => {
-  if (!children) return null;
-  const [isExpanded, setIsExpanded] = useState(true);
-  const [height, setHeight] = useState('100%');
-  const containerRef = useRef(null);
-  const toggleHandler = () => setIsExpanded((prev) => !prev);
+const DEFAULT_HEIGHT = `100%`;
+const MAX_HEIGHT = 400;
 
-  useEffect(() => {
-    if (containerRef?.current) {
-      const computedHeight = containerRef.current.offsetHeight;
-      if (computedHeight > 420) {
-        setHeight(computedHeight);
-      }
-    }
-    if (!isInitiallyExpanded) {
-      setIsExpanded(false);
-    }
-  }, [containerRef]);
+const Code = ({ children, showLineNumbers, showHeightToggler }) => {
+  if (!children) return null;
+
+  const containerRef = useRef(null);
+
+  const { toggleHandler, height, isExpanded } = useCodeBlockHeightToggler({
+    ref: containerRef,
+    defaultHeight: DEFAULT_HEIGHT,
+    maxHeight: MAX_HEIGHT,
+    isEnabled: showHeightToggler,
+  });
 
   let toggler = null;
-  if (height !== '100%') {
+  let containerStyles = {};
+  // if `height` isn't equla default height,
+  // code blocks fits the height requirements
+  // for toggler to be shown
+  if (height !== DEFAULT_HEIGHT) {
     toggler = (
       <button className={styles.toggler} type="button" onClick={toggleHandler}>
         {isExpanded ? 'Collapse' : 'Expand'}
       </button>
     );
+    containerStyles = {
+      maxHeight: isExpanded ? height : `${MAX_HEIGHT}px`,
+    };
   }
 
   return (
@@ -45,10 +49,7 @@ const Code = ({ children, showLineNumbers, isInitiallyExpanded }) => {
           <pre
             className={classNames(className, styles.code, styles.codeContainer)}
             ref={containerRef}
-            style={{
-              transition: 'max-height .2s ease',
-              maxHeight: isExpanded ? height : '400px',
-            }}
+            style={containerStyles}
           >
             <code className={styles.code}>
               {tokens.map((line, i) => {
@@ -81,13 +82,13 @@ const Code = ({ children, showLineNumbers, isInitiallyExpanded }) => {
 Code.propTypes = {
   children: PropTypes.node,
   showLineNumbers: PropTypes.bool,
-  isInitiallyExpanded: PropTypes.bool,
+  showHeightToggler: PropTypes.bool,
 };
 
 Code.defaultProps = {
   children: null,
   showLineNumbers: false,
-  isInitiallyExpanded: false,
+  showHeightToggler: false,
 };
 
 export default Code;
