@@ -21,7 +21,7 @@ Here is a sample script that specifies two thresholds, one using a custom [Rate 
 
 <CodeGroup labels={["threshold.js"]} lineNumbers={[true]}>
 
-```JavaScript
+```javascript
 import http from 'k6/http';
 import { Rate } from 'k6/metrics';
 
@@ -30,11 +30,11 @@ const myFailRate = new Rate('failed requests');
 export let options = {
   thresholds: {
     'failed requests': ['rate<0.1'], // threshold on a custom metric
-    'http_req_duration': ['p(95)<500']  // threshold on a standard metric
-  }
+    http_req_duration: ['p(95)<500'], // threshold on a standard metric
+  },
 };
 
-export default function() {
+export default function () {
   let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
   myFailRate.add(res.status !== 200);
 }
@@ -68,18 +68,18 @@ Here are a few copy-paste examples that you can start using right away.
 
 <CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
-```JavaScript
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 
 export let options = {
   thresholds: {
     // 90% of requests must finish within 400ms.
-    'http_req_duration': ['p(90) < 400'],
-  }
+    http_req_duration: ['p(90) < 400'],
+  },
 };
 
-export default function() {
+export default function () {
   let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
   sleep(1);
 }
@@ -91,18 +91,18 @@ export default function() {
 
 <CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
-```JavaScript
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 
 export let options = {
   thresholds: {
     // 90% of requests must finish within 400ms, 95% within 800, and 99.9% within 2s.
-    'http_req_duration': ['p(90) < 400', 'p(95) < 800', 'p(99.9) < 2000'],
-  }
+    http_req_duration: ['p(90) < 400', 'p(95) < 800', 'p(99.9) < 2000'],
+  },
 };
 
-export default function() {
+export default function () {
   let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
   sleep(1);
 }
@@ -166,7 +166,7 @@ Thresholds can be specified in a short or full format.
 
 <CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   thresholds: {
     metric_name1: [ 'threshold_expression', ... ], // short format
@@ -205,7 +205,7 @@ different types of thresholds for them:
 
 <CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { Trend, Rate, Counter, Gauge } from 'k6/metrics';
 import { sleep } from 'k6';
@@ -319,7 +319,7 @@ there's an extended threshold specification format that looks like this:
 
 <CodeGroup labels={["threshold-abort.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   thresholds: {
     metric_name: [ { threshold: string, abortOnFail: boolean, delayAbortEval: string }, ... ],
@@ -353,7 +353,7 @@ It can often be useful to combine `checks` and `thresholds`, to get the best of 
 
 <CodeGroup labels={["check_and_fail.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
@@ -385,7 +385,7 @@ Additionally, you can use `tags` on checks if you want to define a threshold bas
 
 <CodeGroup labels={[""]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 

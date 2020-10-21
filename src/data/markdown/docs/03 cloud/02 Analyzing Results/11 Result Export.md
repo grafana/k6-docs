@@ -11,7 +11,7 @@ The CSV data has the following columns of data:
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 "time","metric","group_id","response_time","url","method","status","count","load_zone","tags"
 ```
 

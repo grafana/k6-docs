@@ -8,7 +8,7 @@ Close the WebSocket connection.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 
 export default function () {

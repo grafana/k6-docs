@@ -18,7 +18,7 @@ of this property is `30s`.
 
 <CodeGroup labels={[ "graceful-stop.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

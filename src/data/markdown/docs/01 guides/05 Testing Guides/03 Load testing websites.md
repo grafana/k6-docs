@@ -135,7 +135,7 @@ For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) an
 
 <CodeGroup labels={["Parsing HTML content"]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 

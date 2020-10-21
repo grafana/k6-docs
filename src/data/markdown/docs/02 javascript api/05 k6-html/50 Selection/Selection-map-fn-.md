@@ -20,7 +20,7 @@ Mimics [jquery.each](https://api.jquery.com/each/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

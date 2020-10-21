@@ -7,7 +7,7 @@ k6 can also push the metrics to a [StatsD](https://github.com/statsd/statsd) ser
 
 <CodeGroup labels={["StatsD"]}>
 
-```shell
+```bash
 $ k6 run --out statsd script.js
 ```
 

@@ -16,7 +16,7 @@ Mimics [jquery.size](https://api.jquery.com/size/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

@@ -19,7 +19,7 @@ Run the Datadog Agent service as a Docker container with this command:
 
 <CodeGroup labels={[""]}>
 
-```shell
+```bash
 DOCKER_CONTENT_TRUST=1 \
 docker run -d \
     --name datadog \
@@ -55,7 +55,7 @@ Once the Datadog Agent service is running, run the k6 test and send the metrics 
 
 <CodeGroup labels={[""]}>
 
-```shell
+```bash
 $ k6 run --out datadog script.js
 ```
 

@@ -17,11 +17,11 @@ Full installation instructions are available in [the InfluxDB docs](https://docs
 
 <CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
-```shell
+```bash
 $ sudo apt install influxdb
 ```
 
-```shell
+```bash
 $ brew install influxdb
 ```
 
@@ -34,11 +34,11 @@ the `--out` (`-o`) switch:
 
 <CodeGroup labels={["Linux & MacOS", "Docker"]}>
 
-```shell
+```bash
 $ k6 run --out influxdb=http://localhost:8086/myk6db script.js
 ```
 
-```shell
+```bash
 $ docker run -i loadimpact/k6 run --out influxdb=http://localhost:8086/myk6db - <script.js
 ```
 
@@ -57,11 +57,11 @@ Full installation instructions are available in [the Grafana docs](http://docs.g
 
 <CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
-```shell
+```bash
 $ sudo apt install grafana
 ```
 
-```shell
+```bash
 $ brew install grafana
 ```
 
@@ -114,7 +114,7 @@ To make all the above even simpler, we have created a docker-compose setup that 
 Make sure you have at least docker-compose version v1.12.0 installed.
 You just need to do the following:
 
-```shell
+```bash
 $ git clone 'https://github.com/loadimpact/k6'
 $ cd k6
 $ docker-compose up -d \

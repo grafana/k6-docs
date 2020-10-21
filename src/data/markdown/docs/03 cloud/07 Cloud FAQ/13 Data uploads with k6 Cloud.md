@@ -42,10 +42,10 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-```JavaScript
-import { sleep } from "k6";
-const users = JSON.parse(open("./users.json"));
-export default function() {
+```javascript
+import { sleep } from 'k6';
+const users = JSON.parse(open('./users.json'));
+export default function () {
   let user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
@@ -58,20 +58,20 @@ another possibility is to **Put the data in a JS file and import it as a module:
 
 <CodeGroup labels={["userData.js"]} lineNumbers={[true]}>
 
-```JavaScript
+```javascript
 export let users = [
   {
-    "username": "user1",
-    "password": "password1"
+    username: 'user1',
+    password: 'password1',
   },
   {
-    "username": "user2",
-    "password": "password2"
+    username: 'user2',
+    password: 'password2',
   },
   {
-    "username": "user3",
-    "password": "password3"
-  }
+    username: 'user3',
+    password: 'password3',
+  },
 ];
 ```
 
@@ -81,10 +81,10 @@ export let users = [
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-```JavaScript
-import { sleep } from "k6";
-import { users } from "./userData.js"
-export default function() {
+```javascript
+import { sleep } from 'k6';
+import { users } from './userData.js';
+export default function () {
   let user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);

@@ -15,7 +15,7 @@ Fetching two different pages with a 0-30 second random sleep in between:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
 

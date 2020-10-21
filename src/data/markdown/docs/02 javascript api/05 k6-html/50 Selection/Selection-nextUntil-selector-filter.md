@@ -20,7 +20,7 @@ Mimics [jquery.nextUntil](https://api.jquery.com/nextUntil/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

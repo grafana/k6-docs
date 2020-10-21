@@ -19,7 +19,7 @@ Return an array with a number of cryptographically random bytes. It will either 
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {

@@ -7,7 +7,7 @@ excerpt: 'Scripting example on how to test websocket APIs.'
 
 <CodeGroup labels={["websocket-example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
 

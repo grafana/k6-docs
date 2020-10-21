@@ -1,6 +1,6 @@
 ---
-title: "Amazon CloudWatch"
-excerpt: "The Amazon CloudWatch is a monitoring and observability solution. In this article, we will show you how to send metrics from k6 to Amazon CloudWatch and later visualize them."
+title: 'Amazon CloudWatch'
+excerpt: 'The Amazon CloudWatch is a monitoring and observability solution. In this article, we will show you how to send metrics from k6 to Amazon CloudWatch and later visualize them.'
 ---
 
 k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html), which is effectively a StatsD integration. These metrics can then be visualized in dashboards.
@@ -19,44 +19,44 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 2. Download the CloudWatch Agent package suitable for your operating system. For example, on Debian 10 (Buster), we've used the following link. For other operating systems, please refer to this [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
 
-    ```bash
-    $ wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
-    ```
+   ```bash
+   $ wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
+   ```
 
 3. Install the package:
 
-    ```bash
-    $ sudo dpkg -i amazon-cloudwatch-agent.deb
-    ```
+   ```bash
+   $ sudo dpkg -i amazon-cloudwatch-agent.deb
+   ```
 
-4. Configure the agent to receive data from k6. For this, create a file called "*/opt/aws/amazon-cloudwatch-agent/etc/statsd.json*" and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
+4. Configure the agent to receive data from k6. For this, create a file called "_/opt/aws/amazon-cloudwatch-agent/etc/statsd.json_" and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
 
-    ```js
-    {
-        "metrics": {
-            "namespace": "k6",
-            "metrics_collected": {
-                "statsd": {
-                    "service_address": ":8125",
-                    "metrics_collection_interval": 5,
-                    "metrics_aggregation_interval": 0
-                }
-            }
-        }
-    }
-    ```
+   ```javascript
+   {
+       "metrics": {
+           "namespace": "k6",
+           "metrics_collected": {
+               "statsd": {
+                   "service_address": ":8125",
+                   "metrics_collection_interval": 5,
+                   "metrics_aggregation_interval": 0
+               }
+           }
+       }
+   }
+   ```
 
 5. Run the following command to start the agent:
 
-    ```bash
-    $ sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
-    ```
+   ```bash
+   $ sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
+   ```
 
 6. You can check the status of the agent using the following command:
 
-    ```bash
-    $ amazon-cloudwatch-agent-ctl -a status
-    ```
+   ```bash
+   $ amazon-cloudwatch-agent-ctl -a status
+   ```
 
 ## Run the k6 test
 
@@ -68,12 +68,12 @@ $ k6 run --out statsd script.js
 
 The following options can be configured as environment variables, depending on the agent's configuration:
 
-| Name  | Value |
-| ------------- | ------------- |
-| `K6_STATSD_ADDR` | Address of the statsd service, currently only UDP is supported. The default value is `localhost:8125`. |
-| `K6_STATSD_NAMESPACE` | The namespace used as a prefix for all the metric names. The default value is `k6`. |
-| `K6_STATSD_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`. |
-| `K6_STATSD_BUFFER_SIZE` | The buffer size. The default value is `20`. |
+| Name                      | Value                                                                                                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `K6_STATSD_ADDR`          | Address of the statsd service, currently only UDP is supported. The default value is `localhost:8125`. |
+| `K6_STATSD_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6`.                    |
+| `K6_STATSD_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                  |
+| `K6_STATSD_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                            |
 
 ## Visualize k6 metrics in Amazon CloudWatch
 

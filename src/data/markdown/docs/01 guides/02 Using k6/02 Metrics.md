@@ -47,7 +47,7 @@ If you want to access the timing information from an individual HTTP request, th
 
 <CodeGroup labels={["timings.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 export default function () {
   var res = http.get('http://httpbin.org');
@@ -79,7 +79,7 @@ You can also create your own metrics, that are reported at the end of a load tes
 
 <CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 
@@ -115,7 +115,7 @@ All values added to a custom metric can optionally be [tagged](/using-k6/tags-an
 
 <CodeGroup labels={["counter.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { Counter } from 'k6/metrics';
 
 let myCounter = new Counter('my_counter');
@@ -140,7 +140,7 @@ Note that there is currently no way of accessing the value of any custom metric 
 
 <CodeGroup labels={["gauge.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { Gauge } from 'k6/metrics';
 
 let myGauge = new Gauge('my_gauge');
@@ -163,7 +163,7 @@ The value of `my_gauge` will be 2 at the end of the test. As with the Counter me
 
 <CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { Trend } from 'k6/metrics';
 
 let myTrend = new Trend('my_trend');
@@ -187,7 +187,7 @@ By default, k6 will print average, min, max, median, 90th percentile, and 95th p
 
 <CodeGroup labels={["rate.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { Rate } from 'k6/metrics';
 
 let myRate = new Rate('my_rate');

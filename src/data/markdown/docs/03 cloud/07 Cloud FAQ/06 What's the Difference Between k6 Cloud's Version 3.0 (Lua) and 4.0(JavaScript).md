@@ -43,30 +43,30 @@ In the 4.0 product the equivalent configuration options are specified in the scr
 
 <CodeGroup labels={["k6 Cloud V4 options:"]}>
 
-```JavaScript
+```javascript
 export let options = {
-    // Stages represents the traffic ramping profile that will be used in the test,
-    // controlling the VU concurrency throughout the duration of the test
-    'stages': [
-        // Linear ramp-up from 0 to 50 VUs for 60s
-        { 'target': 50, 'duration': '60s' },
+  // Stages represents the traffic ramping profile that will be used in the test,
+  // controlling the VU concurrency throughout the duration of the test
+  stages: [
+    // Linear ramp-up from 0 to 50 VUs for 60s
+    { target: 50, duration: '60s' },
 
-        // Stay constant at 50 VUs for 60s
-        { 'target': 50, 'duration': '60s' },
+    // Stay constant at 50 VUs for 60s
+    { target: 50, duration: '60s' },
 
-        // Linear ramp-down from 50 to 0 VUs for 60s
-        { 'target': 0, 'duration': '60s' }
-    ],
+    // Linear ramp-down from 50 to 0 VUs for 60s
+    { target: 0, duration: '60s' },
+  ],
 
-    // Use thresholds to set your metric targets, thresholds are used to pass/fail tests
-    // and for controlling automatic test termination
-    thresholds: {
-        // Add a threshold mark test as failed is 95th percentile of overall response time goes above 500ms
-        'http_req_duration': 'p(95)<500',
+  // Use thresholds to set your metric targets, thresholds are used to pass/fail tests
+  // and for controlling automatic test termination
+  thresholds: {
+    // Add a threshold mark test as failed is 95th percentile of overall response time goes above 500ms
+    http_req_duration: 'p(95)<500',
 
-        // Add another threshold to fail and abort the test if the threshold hits 1s
-        'http_req_duration': {'trigger': 'p(95)<1000', 'abortOnFail': true}
-    }
+    // Add another threshold to fail and abort the test if the threshold hits 1s
+    http_req_duration: { trigger: 'p(95)<1000', abortOnFail: true },
+  },
 };
 ```
 
@@ -88,16 +88,16 @@ In Lua all the available functionality is loaded by default, APIs can be called 
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 http.get("https://test.k6.io/")
 client.sleep(3)
 ```
 
-```JavaScript
-import {sleep} from "k6";
-import http from "k6/http";
-export default function() {
-  http.get("https://test.k6.io/");
+```javascript
+import { sleep } from 'k6';
+import http from 'k6/http';
+export default function () {
+  http.get('https://test.k6.io/');
   sleep(3);
 }
 ```
@@ -110,14 +110,14 @@ In Lua VUs execute the script from top to bottom over and over, while in JS VUs 
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 // The VU code is the same as global scope, and gets run over and over by a VU
 client.sleep(3)
 ```
 
-```JavaScript
+```javascript
 // Imports and other global scope code
-export default function() {
+export default function () {
   // The VU code, that gets run over and over by a VU
 }
 ```
@@ -132,13 +132,13 @@ Below you have examples on how to have a VU sleep or think for a specific amount
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 client.sleep(3.0)
 ```
 
-```Java
-import {sleep} from "k6";
-export default function() {
+```javascript
+import { sleep } from 'k6';
+export default function () {
   sleep(3);
 }
 ```
@@ -151,7 +151,7 @@ To make HTTP requests there are a number of different Lua APIs available. In the
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 -- Send a single GET request
 http.get("https://httpbin.org/")
 -- Send a single POST request
@@ -163,17 +163,17 @@ http.request_batch({
 })
 ```
 
-```JavaScript
-import http from "k6/http";
-export default function() {
+```javascript
+import http from 'k6/http';
+export default function () {
   // Send a single GET request
-  http.get("https://httpbin.org/");
+  http.get('https://httpbin.org/');
   // Send a single POST request
-  http.post("https://httpbin.org", "key=val&key2=val");
+  http.post('https://httpbin.org', 'key=val&key2=val');
   // Send several requests in parallel
   http.batch([
-    "https://httpbin.org/",
-    { method: "POST", url: "https://httpbin.org/", body: "key=val&key2=val" }
+    'https://httpbin.org/',
+    { method: 'POST', url: 'https://httpbin.org/', body: 'key=val&key2=val' },
   ]);
 }
 ```
@@ -188,7 +188,7 @@ In the 3.0 product there's a concept of pages. Lua code in between calls to `htt
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 http.page_start("My page")
 http.get("https://httpbin.org/")
 http.request_batch({
@@ -198,15 +198,12 @@ http.request_batch({
 http.page_end("My page")
 ```
 
-```JavaScript
-import http from "k6/http";
-export default function() {
-  group("My page", function() {
-    http.get("https://httpbin.org/");
-    http.batch([
-      "https://httpbin.org/",
-      "https://httpbin.org/get",
-    ]);
+```javascript
+import http from 'k6/http';
+export default function () {
+  group('My page', function () {
+    http.get('https://httpbin.org/');
+    http.batch(['https://httpbin.org/', 'https://httpbin.org/get']);
   });
 }
 ```
@@ -223,7 +220,7 @@ Both of the examples below can be run with:
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 k6 run --vus 3 --iterations 3 script.js
 ```
 
@@ -256,10 +253,10 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-```JavaScript
-import { sleep } from "k6";
-const users = JSON.parse(open("./users.json"));
-export default function() {
+```javascript
+import { sleep } from 'k6';
+const users = JSON.parse(open('./users.json'));
+export default function () {
   let user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
@@ -272,20 +269,20 @@ export default function() {
 
 <CodeGroup labels={["userData.js"]} lineNumbers={[true]}>
 
-```JavaScript
+```javascript
 export let users = [
   {
-    "username": "user1",
-    "password": "password1"
+    username: 'user1',
+    password: 'password1',
   },
   {
-    "username": "user2",
-    "password": "password2"
+    username: 'user2',
+    password: 'password2',
   },
   {
-    "username": "user3",
-    "password": "password3"
-  }
+    username: 'user3',
+    password: 'password3',
+  },
 ];
 ```
 
@@ -295,10 +292,10 @@ export let users = [
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-```JavaScript
-import { sleep } from "k6";
-import { users } from "./userData.js"
-export default function() {
+```javascript
+import { sleep } from 'k6';
+import { users } from './userData.js';
+export default function () {
   let user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
@@ -313,20 +310,20 @@ Beyond the standard metrics collected by the 3.0 product you can also collect cu
 
 <CodeGroup labels={["Lua", "JavaScript"]} lineNumbers={[false]}>
 
-```text
+```plain
 -- Track the time-to-first-byte (TTFB)
 local res = http.get("https://httpbin.org/")
 result.custom_metric("time_to_first_byte", res.time_to_first_byte)
 ```
 
-```JavaScript
-import {group} from "k6";
-import http from "k6/http";
-import {Trend} from "k6/metrics";
-let ttfbMetric = new Trend("time_to_first_byte");
-export default function() {
-  group("My page", function() {
-    let res = http.get("https://httpbin.org/");
+```javascript
+import { group } from 'k6';
+import http from 'k6/http';
+import { Trend } from 'k6/metrics';
+let ttfbMetric = new Trend('time_to_first_byte');
+export default function () {
+  group('My page', function () {
+    let res = http.get('https://httpbin.org/');
     ttfbMetric.add(res.timings.waiting);
   });
 }

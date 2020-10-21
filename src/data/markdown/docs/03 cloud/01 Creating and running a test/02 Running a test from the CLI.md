@@ -24,11 +24,11 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    <CodeGroup labels={["Log in with username and password", "Log in with the API Token"]}>
 
-   ```shell
+   ```bash
    $ k6 login cloud
    ```
 
-   ```shell
+   ```bash
    $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
    ```
 
@@ -40,11 +40,11 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    <CodeGroup labels={["CLI", "Docker"]}>
 
-   ```shell
+   ```bash
    $ k6 cloud script.js
    ```
 
-   ```shell
+   ```bash
    # Note the difference in specifying the `K6_CLOUD_TOKEN` environment variable
    # using the `docker run -e` option.
 
@@ -81,7 +81,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 <CodeGroup labels={[""]}>
 
-    ```shell
+    ```bash
             /\      |‾‾|  /‾‾/  /‾/
         /\  /  \     |  |_/  /  / /
       /  \/    \    |      |  /  ‾‾\
@@ -201,7 +201,7 @@ Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-me
 
 <CodeGroup labels={["Threshold based on a cloud execution tag"]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {
@@ -254,7 +254,7 @@ export default function () {
 
 You'd execute it using the command like:
 
-```shell
+```bash
 $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
 
@@ -272,7 +272,7 @@ You can read the values of these variables in your k6 script as usual.
 
 <CodeGroup labels={["Reading injected environment variables"]}>
 
-```js
+```javascript
 export let options = {
   vus: 50,
   duration: '30s',

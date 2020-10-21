@@ -5,7 +5,7 @@ excerpt: 'This example covers the usage of different k6 APIs for API load testin
 
 <CodeGroup labels={["advanced-example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, group, sleep, fail } from 'k6';
 

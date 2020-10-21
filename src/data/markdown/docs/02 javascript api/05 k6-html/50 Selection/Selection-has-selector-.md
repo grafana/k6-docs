@@ -20,7 +20,7 @@ Mimics [jquery.has](https://api.jquery.com/has/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

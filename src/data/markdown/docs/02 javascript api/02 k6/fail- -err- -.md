@@ -18,7 +18,7 @@ Aborting the current script iteration if a check fails:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, fail } from 'k6';
 

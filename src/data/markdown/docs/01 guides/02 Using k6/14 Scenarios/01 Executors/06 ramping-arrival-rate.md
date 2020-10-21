@@ -35,7 +35,7 @@ In this example, we'll execute a variable RPS test, starting at 50, ramping up t
 
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

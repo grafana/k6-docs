@@ -16,7 +16,7 @@ Mimics [jquery.serializeArray](https://api.jquery.com/serializeArray/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

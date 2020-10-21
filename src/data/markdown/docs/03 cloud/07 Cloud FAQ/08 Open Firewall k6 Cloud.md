@@ -27,15 +27,17 @@ You can add custom HTTP headers to any request in your script. You'll need to ad
 
 <CodeGroup labels={["Custom headers"]}>
 
-```JavaScript
-import http from "k6/http";
+```javascript
+import http from 'k6/http';
 
-export default function() {
-  var url = "http://test.k6.io/login";
-  var payload = JSON.stringify({ email: "aaa", password: "bbb" });
-  var params =  { headers: { "Content-Type": "application/json" , "Myheader": "TOKEN_STRING"} }
+export default function () {
+  var url = 'http://test.k6.io/login';
+  var payload = JSON.stringify({ email: 'aaa', password: 'bbb' });
+  var params = {
+    headers: { 'Content-Type': 'application/json', Myheader: 'TOKEN_STRING' },
+  };
   http.post(url, payload, params);
-};
+}
 ```
 
 </CodeGroup>
@@ -44,10 +46,10 @@ If you're not dependent on having the simulated users in your load test to be a 
 
 <CodeGroup labels={["User agent option"]}>
 
-```JavaScript
+```javascript
 // Set a custom User Agent globally in your test options.
 export let options = {
-  userAgent: "MyK6UserAgentString/1.0"
+  userAgent: 'MyK6UserAgentString/1.0',
 };
 ```
 
@@ -57,10 +59,10 @@ You might also use query parameters, if it doesn't interfere with the functional
 
 <CodeGroup labels={["Query parameters"]}>
 
-```JavaScript
+```javascript
 // Add query parameters to your requests with a unique piece of data
-export default function() {
-  http.get("http://test.k6.io/?firewall_token=TOKEN_STRING");
+export default function () {
+  http.get('http://test.k6.io/?firewall_token=TOKEN_STRING');
 }
 ```
 
@@ -70,16 +72,16 @@ Another option would be to request content from a certain hostname that is not i
 
 <CodeGroup labels={["Query parameters"]}>
 
-```JavaScript
+```javascript
 // In your options, map your a unique/unused/secret hostname to the IP of the server.
 export let options = {
   hosts: {
-    "https://very_difficult.to.guess.hostname.com": "1.2.3.4"
-  }
+    'https://very_difficult.to.guess.hostname.com': '1.2.3.4',
+  },
 };
 // Make your requests to that hostname
-export default function() {
-  http.get("https://very_difficult.to.guess.hostname.com/");
+export default function () {
+  http.get('https://very_difficult.to.guess.hostname.com/');
 }
 ```
 

@@ -21,7 +21,7 @@ In Visual Studio Code, [IntelliSense](https://code.visualstudio.com/docs/editor/
 
 A way to configure IntelliSense in VS Code to recognize the [k6 JavaScript API](/javascript-api) is to install the k6 Types with a package manager. For example:
 
-```shell
+```bash
 # create a `package.json` file
 $ npm init --yes
 

@@ -41,14 +41,13 @@ The `metrics` parameter allows you to specify built-in and custom metrics to be 
 - iterations
 - vus
 
-
 > A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
 
 If you want to export metrics with more granularity, consider using a lower number for the `resample_rate`, like 1.
 
 The `apm` key (inside `ext.loadimpact`) accepts a list of APM configurations (objects). Exporting metrics to APM platforms will be simultaneous and near real-time. Also, there is a 2nd pass (of metrics exports), at the end of each test run, that ensures data reliability and accuracy. Please note that the data exported in real-time may appear incorrect until the test is finished.
 
-```js
+```javascript
 export let options = {
   ext: {
     loadimpact: {

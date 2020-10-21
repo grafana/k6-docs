@@ -19,7 +19,7 @@ Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selectio
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 

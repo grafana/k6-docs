@@ -38,7 +38,7 @@ In this example, we'll execute a constant rate of 200 RPS for 1 minute, allowing
 
 <CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

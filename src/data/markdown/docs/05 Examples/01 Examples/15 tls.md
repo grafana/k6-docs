@@ -7,7 +7,7 @@ excerpt: |
 
 <CodeGroup labels={["tls-example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

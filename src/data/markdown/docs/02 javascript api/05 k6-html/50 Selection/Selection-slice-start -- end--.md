@@ -22,7 +22,7 @@ Mimics [jquery.slice](https://api.jquery.com/slice/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

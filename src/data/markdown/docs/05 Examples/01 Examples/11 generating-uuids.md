@@ -22,7 +22,7 @@ For this to work, we first need to go through a few required steps:
 2. Install the `uuid` library:
    <CodeGroup labels={[]} lineNumbers={[false]}>
 
-   ```shell
+   ```bash
    $ npm install uuid@3.4.0
    ```
 
@@ -31,7 +31,7 @@ For this to work, we first need to go through a few required steps:
 3. Run it through browserify:
    <CodeGroup labels={[]} lineNumbers={[false]}>
 
-   ```shell
+   ```bash
    $ browserify node_modules/uuid/index.js -s uuid > uuid.js
    ```
 
@@ -42,7 +42,7 @@ For this to work, we first need to go through a few required steps:
 
    <CodeGroup labels={[]} lineNumbers={[false]}>
 
-   ```js
+   ```javascript
    import uuid from "./uuid.js"`
    ```
 
@@ -52,7 +52,7 @@ Here's an example generating a v1 and v4 UUID:
 
 <CodeGroup labels={["generate-uuids.js"]} lineNumbers={[false]}>
 
-```js
+```javascript
 import uuid from './uuid.js';
 
 export default function () {

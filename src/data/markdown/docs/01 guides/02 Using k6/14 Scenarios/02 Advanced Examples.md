@@ -12,7 +12,7 @@ Note the use of `startTime`, and different `exec` functions for each scenario.
 
 <CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {
@@ -56,7 +56,7 @@ can also be done per scenario, which would apply them to other
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { fail } from 'k6';
 
@@ -108,7 +108,7 @@ A test with 3 scenarios, each with different `exec` functions, tags and environm
 
 <CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

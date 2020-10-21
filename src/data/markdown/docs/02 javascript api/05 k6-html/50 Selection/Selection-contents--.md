@@ -16,7 +16,7 @@ Mimics [jquery.contents](https://api.jquery.com/contents/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

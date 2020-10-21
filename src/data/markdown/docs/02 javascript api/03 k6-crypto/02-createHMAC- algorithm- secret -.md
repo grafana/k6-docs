@@ -36,7 +36,7 @@ export default function () {
 
 The above script should result in the following being printed during execution:
 
-```shell
+```bash
 INFO[0000] 82f669c8fde13aef6d6977257588dc4953dfac505428f8fd6b52e19cd96d7ea5
 INFO[0000] 82f669c8fde13aef6d6977257588dc4953dfac505428f8fd6b52e19cd96d7ea5
 ```

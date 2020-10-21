@@ -16,7 +16,7 @@ Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

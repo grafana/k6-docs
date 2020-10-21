@@ -7,7 +7,7 @@ You can also make k6 output detailed statistics in JSON format by using the `--o
 
 <CodeGroup labels={["CLI"]}>
 
-```shell
+```bash
 $ k6 run --out json=my_test_result.json script.js
 ```
 
@@ -60,7 +60,7 @@ You can quickly create [filters][jq_filters_url] to return a particular metric o
 
 <CodeGroup labels={["Filters"]}>
 
-```shell
+```bash
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200")' myscript-output.json
 ```
 
@@ -70,7 +70,7 @@ And calculate an aggregated value of any metric:
 
 <CodeGroup labels={["Average"]}>
 
-```shell
+```bash
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s 'add/length'
 ```
 
@@ -78,7 +78,7 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 
 <CodeGroup labels={["Min"]}>
 
-```shell
+```bash
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s min
 ```
 
@@ -86,7 +86,7 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 
 <CodeGroup labels={["Max"]}>
 
-```shell
+```bash
 $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tags.status >= "200") | .data.value' myscript-output.json | jq -s max
 ```
 
@@ -108,11 +108,11 @@ This is useful to get the aggregated test results in a machine-readable format, 
 
 <CodeGroup labels={[ "stdout", "Other output"]}>
 
-```shell
+```bash
 $ k6 run --summary-export=export.json script.js
 ```
 
-```shell
+```bash
 # you can use the `summary-export` option with other output (Kafka, Datadog, Cloud, InfluxDB, JSON...)
 $ k6 run --summary-export=export.json --out datadog script.js
 ```

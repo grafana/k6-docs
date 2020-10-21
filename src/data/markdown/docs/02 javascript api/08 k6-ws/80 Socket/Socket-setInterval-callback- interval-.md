@@ -13,7 +13,7 @@ Call a function repeatedly, while the WebSocket connection is open.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
 

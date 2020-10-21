@@ -25,7 +25,7 @@ For example:
 
 <CodeGroup labels={["gauge-metric.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { Gauge } from 'k6/metrics';
 
 var myGauge = new Gauge('my_gauge');
@@ -41,7 +41,7 @@ export default function () {
 
 <CodeGroup labels={["gauge-threshold.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { Gauge } from 'k6/metrics';

@@ -15,7 +15,7 @@ Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selec
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {

@@ -18,7 +18,7 @@ These modules are provided through the k6 core, and gives access to the function
 into k6. This could, for instance, be the `http` client used for making requests against the
 system under test. For a full list of built-in modules, see [the API documentation](/javascript-api).
 
-```js
+```javascript
 import http from 'k6/http';
 ```
 
@@ -29,14 +29,14 @@ or absolute filesystem paths. For a module residing in the local filesystem to b
 with k6, the module itself may only use relative or absolute filesystem imports to access it's
 dependencies.
 
-```js
+```javascript
 //helpers.js
 export function someHelper() {
   ...
 }
 ```
 
-```js
+```javascript
 //my-test.js
 import { someHelper } from './helpers.js';
 
@@ -52,7 +52,7 @@ from any publicly accessible web server. The imported modules will be downloaded
 runtime, making it extremely important to **make sure the code is legit and trusted before including
 it in a test script**.
 
-```js
+```javascript
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.0.0/index.js';
 
 export default function () {
@@ -85,7 +85,7 @@ In a javascript project running NodeJS, modules are imported using either `impor
 using the node module resolution algorithm. This means that the developer can import modules
 by name, without providing the full filesystem path to the module. For instance:
 
-```js
+```javascript
 import { ClassInAModule } from 'cool-module';
 ```
 
@@ -178,7 +178,7 @@ Once these packages have been added, the next step will be to set up a `webpack.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 const path = require('path');
 
 module.exports = {
@@ -215,7 +215,7 @@ been exhausted. For instance:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 // login.test.js
 
 import { SomeService } from './some.service.js';
@@ -229,7 +229,7 @@ and
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 // some.service.js
 
 import * as lodash from 'lodash';
@@ -334,7 +334,7 @@ For example, say you have the following structure on your host machine:
 
 <CodeGroup labels={["index.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { hello_world } from './modules/module.js';
 
 export default function () {
@@ -346,7 +346,7 @@ export default function () {
 
 <CodeGroup labels={["./modules/module.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export function hello_world() {
   console.log('Hello world');
 }
@@ -358,7 +358,7 @@ To run index.js and make the modules available for import we execute the followi
 
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
-```shell
+```bash
 $ docker run -v /home/k6/example/src:/src -i loadimpact/k6 run /src/index.js
 ```
 

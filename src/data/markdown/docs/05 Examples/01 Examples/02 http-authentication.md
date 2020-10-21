@@ -9,7 +9,7 @@ Scripting examples on how to use different authentication or authorization metho
 
 <CodeGroup labels={["basic-auth.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import encoding from 'k6/encoding';
 import http from 'k6/http';
 import { check } from 'k6';
@@ -63,7 +63,7 @@ export default function () {
 
 <CodeGroup labels={["digest-auth.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -95,7 +95,7 @@ export default function () {
 
 <CodeGroup labels={["ntlm-auth.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 const username = 'user';
@@ -126,7 +126,7 @@ For this to work, we first need to do the following:
 
    <CodeGroup labels={[""]} lineNumbers={[false]}>
 
-   ```shell
+   ```bash
    $ npm install aws4
    ```
 
@@ -136,7 +136,7 @@ For this to work, we first need to do the following:
 
    <CodeGroup labels={[""]} lineNumbers={[false]}>
 
-   ```shell
+   ```bash
     $ browserify node_modules/aws4/aws4.js -s aws4 > aws4.js
    ```
 
@@ -147,7 +147,7 @@ For this to work, we first need to do the following:
 
    <CodeGroup labels={[""]} lineNumbers={[false]}>
 
-   ```js
+   ```javascript
    import aws4 from "./aws4.js"`
    ```
 
@@ -164,7 +164,7 @@ and secret key needs to be provided through [environment variables](/using-k6/en
 
 <CodeGroup labels={["awsv4-auth.js"]} lineNumbers={[false]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

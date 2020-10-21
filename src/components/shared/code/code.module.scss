@@ -58,11 +58,12 @@
           color: #c3e88d;
         }
       }
-      &[class*='language-html'] {
+      &[class*='language-markup'] {
         .tag {
           color: #00cdff;
         }
-        .attr-name {
+        .attr-name,
+        .prolog {
           color: rgb(195, 232, 141);
         }
         .attr-value {
@@ -104,12 +105,12 @@
       }
 
       &.operator {
-        background-color: transparent !important;
-        color: rgb(181, 181, 181) !important;
+        background-color: transparent;
+        color: rgb(181, 181, 181);
       }
 
       &.constant {
-        color: $color-accent-secondary !important;
+        color: $color-accent-secondary;
       }
 
       &.function {
@@ -117,7 +118,10 @@
       }
 
       &.punctuation {
-        color: $color-tertiary !important;
+        color: $color-tertiary;
+      }
+      &.regex {
+        color: #dd4a68;
       }
     }
   }

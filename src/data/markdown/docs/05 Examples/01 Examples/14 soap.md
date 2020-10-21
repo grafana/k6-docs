@@ -10,7 +10,7 @@ can still easily load test a SOAP-based API by crafting SOAP messages and using 
 
 <CodeGroup labels={["soap-example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 

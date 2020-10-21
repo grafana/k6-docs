@@ -50,7 +50,7 @@ Note that in the case of redirects, all the information in the Response object w
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { check } from 'k6';
 import http from 'k6/http';
 

@@ -34,15 +34,15 @@ An environment variable could, for example, be specified like this on the comman
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: Powershell"]} lineNumbers={[false]}>
 
-```shell
+```bash
 $ MY_HOSTNAME=test.k6.io k6 run script.js
 ```
 
-```powershell
+```bash
 c:\\k6> set MY_HOSTNAME=\"test.k6.io\"\nc:\\k6> k6 run script.js
 ```
 
-```powershell
+```bash
 c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
 ```
 
@@ -52,7 +52,7 @@ or using an `-e` CLI flag (which will be the same for all platforms):
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 ```
 
@@ -62,7 +62,7 @@ The environment variable could then be used as follows in a script:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { check, sleep } from 'k6';
 import http from 'k6/http';
 

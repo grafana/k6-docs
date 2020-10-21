@@ -110,7 +110,7 @@ k6 run --vus 10 --duration 30s loadtest.js
 
 2 - The options of the script file.
 
-```js
+```javascript
 export let options = {
   vus: 10,
   duration: '30s',
@@ -137,7 +137,7 @@ You have two options to skip third-party requests in your k6 script.
 
 In Chrome, you can use the DevTools Network Filter to select only particular domains. The Filter input accepts a Regex to match multiple domains.
 
-```shell
+```bash
 /loadimpact.com|cloudfront.net/
 ```
 

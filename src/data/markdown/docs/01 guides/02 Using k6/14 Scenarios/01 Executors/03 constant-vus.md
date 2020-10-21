@@ -28,7 +28,7 @@ In this example, we'll run 10 VUs constantly for a duration 45 minutes.
 
 <CodeGroup labels={[ "constant-vus.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

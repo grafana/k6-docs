@@ -19,7 +19,7 @@ When k6 displays the results to `stdout`, it will show the k6 logo and the follo
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 execution: local
     output: -
     script: script.js
@@ -48,7 +48,7 @@ The test summary provides a general overview of your test result. The summary pr
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 data_received..............: 148 MB 2.5 MB/s
 data_sent..................: 1.0 MB 17 kB/s
 http_req_blocked...........: avg=1.92ms   min=1µs      med=5µs      max=288.73ms p(90)=11µs     p(95)=17µs
@@ -75,7 +75,7 @@ vus_max....................: 100    min=100 max=100
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s    p(90)=164.2ms  p(95)=177.75ms
 ```
 
@@ -85,7 +85,7 @@ You could use the [summary-trend-stats](/using-k6/options#summary-trend-stats) o
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 run --summary-trend-stats="avg,p(99)" script.js
 ```
 
@@ -115,7 +115,7 @@ You can simultaneously send metrics to several outputs by using the CLI `--out` 
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 run \
     --out json=test.json \
     --out influxdb=http://localhost:8086/k6
@@ -131,7 +131,7 @@ This is useful to get the aggregated test results in a machine-readable format, 
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 run --summary-export=export.json script.js
 ```
 

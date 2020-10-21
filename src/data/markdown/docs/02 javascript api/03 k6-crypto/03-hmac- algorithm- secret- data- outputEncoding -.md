@@ -22,7 +22,7 @@ Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {

@@ -26,11 +26,11 @@ Then run k6 using this command:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
-```shell
+```bash
 $ k6 run script.js
 ```
 
-```shell
+```bash
 # When using the `k6` docker image, you can't just give the script name since
 # the script file will not be available to the container as it runs. Instead
 # you must tell k6 to read `stdin` by passing the file name as `-`. Then you
@@ -40,7 +40,7 @@ $ k6 run script.js
 $ docker run -i loadimpact/k6 run - <script.js
 ```
 
-```shell
+```bash
 $ cat script.js | docker run -i loadimpact/k6 run -
 ```
 
@@ -52,15 +52,15 @@ Now we'll try running a load test with more than 1 virtual user and a slightly l
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
-```shell
+```bash
 k6 run --vus 10 --duration 30s script.js
 ```
 
-```shell
+```bash
 docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
 ```
 
-```shell
+```bash
 cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s -
 ```
 
@@ -95,7 +95,7 @@ running. Code _outside_ of it is called "init code", and is run only once per VU
 
 <CodeGroup labels={[""]}>
 
-```js
+```javascript
 // init code
 
 export default function( {
@@ -138,15 +138,15 @@ Then you just run the script without those parameters on the command line:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
-```shell
+```bash
 $ k6 run script.js
 ```
 
-```shell
+```bash
 $ docker run -i loadimpact/k6 run - <script.js
 ```
 
-```shell
+```bash
 C:\ cat script.js | docker run -i loadimpact/k6 run -
 ```
 
@@ -197,7 +197,7 @@ For running cloud tests from the CLI, you must first register a k6 Cloud account
 
 <CodeGroup labels={["Running a cloud test"]}>
 
-```shell
+```bash
 $ k6 cloud script.js
 ```
 

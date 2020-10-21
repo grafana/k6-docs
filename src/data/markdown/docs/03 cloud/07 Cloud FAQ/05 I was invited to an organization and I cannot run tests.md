@@ -27,14 +27,14 @@ If you are using k6 to trigger tests from the command line, you will need to spe
 
 <CodeGroup labels={["Example:"]}>
 
-```JavaScript
+```javascript
 export let options = {
-    ext: {
-        loadimpact: {
-            projectID: 123456
-        }
-    }
-}
+  ext: {
+    loadimpact: {
+      projectID: 123456,
+    },
+  },
+};
 ```
 
 </CodeGroup>

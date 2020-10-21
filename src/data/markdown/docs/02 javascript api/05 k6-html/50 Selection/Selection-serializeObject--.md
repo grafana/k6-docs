@@ -15,7 +15,7 @@ Encode a set of form elements as an object (`{ "inputName": "value", "checkboxNa
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

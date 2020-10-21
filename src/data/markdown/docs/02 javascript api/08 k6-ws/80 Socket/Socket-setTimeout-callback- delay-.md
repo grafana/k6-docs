@@ -13,7 +13,7 @@ Call a function at a later time, if the WebSocket connection is still open then.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 import { sleep } from 'k6';
 

@@ -172,7 +172,7 @@ sudo nano /Library/LaunchDaemons/limit.maxfiles.plist
 
 This will open a text editor inside your terminal window where you will be prompted to provide your user password and then paste the following:
 
-```xml
+```markup
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -208,7 +208,7 @@ sudo nano /Library/LaunchDaemons/limit.maxproc.plist
 
 Again, after prompted for your password, you can paste the following and save and close with `Control + X`
 
-```xml
+```markup
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple/DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
  <plist version="1.0">

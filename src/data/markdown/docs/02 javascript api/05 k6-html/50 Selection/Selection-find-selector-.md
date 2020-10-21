@@ -20,7 +20,7 @@ Mimics [jquery.find](https://api.jquery.com/find/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 
