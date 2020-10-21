@@ -32,7 +32,7 @@ a maximum duration of 1 hour and 30 minutes.
 
 <CodeGroup labels={[ "per-vu-iters.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

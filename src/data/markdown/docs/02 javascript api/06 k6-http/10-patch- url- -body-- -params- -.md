@@ -19,7 +19,7 @@ description: 'Issue an HTTP PATCH request.'
 
 <CodeGroup labels={[], lineNumbers=[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {

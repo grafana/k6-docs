@@ -10,7 +10,7 @@ your system. A simple example that just performs a GET request looks like this:
 
 <CodeGroup labels={["http_get.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {
@@ -104,7 +104,7 @@ all reported using one single metric:
 
 <CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 for (var id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`);
 }
@@ -119,7 +119,7 @@ You can aggregate data from dynamic URLs by explicitly setting a name tag:
 
 <CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 for (var id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`, {
     tags: { name: 'PostsItemURL' },
@@ -180,7 +180,7 @@ Additionally, you can use the `http.url` (v0.16.0) wrapper to set the name tag w
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
-```js
+```javascript
 for (var id = 1; id <= 100; id++) {
   http.get(http.url`http://example.com/posts/${id}`);
 }

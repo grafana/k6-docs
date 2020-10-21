@@ -28,7 +28,7 @@ When each request is specified as an array, the order of the arguments for each 
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -55,7 +55,7 @@ export default function () {
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -84,7 +84,7 @@ You can also use objects to hold information about a request. Here is an example
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -126,7 +126,7 @@ Finally, you can also send in named requests by using an object instead of an ar
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

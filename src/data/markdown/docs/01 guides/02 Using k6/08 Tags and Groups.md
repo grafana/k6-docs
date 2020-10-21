@@ -20,7 +20,7 @@ allowing you the BDD-style of testing.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { group } from 'k6';
 
 export default function () {
@@ -95,7 +95,7 @@ can be tagged:
 
 <CodeGroup labels={["tagging-example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 import { check } from 'k6';
@@ -132,7 +132,7 @@ will be set across all metrics. You can either set the tags on the CLI using one
 
 <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   tags: {
     name: 'value',

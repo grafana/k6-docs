@@ -40,7 +40,7 @@ a maximum of 50, and a total duration of 10 minutes.
 
 <CodeGroup labels={[ "externally-controlled.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

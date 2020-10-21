@@ -14,7 +14,7 @@ This example shows how to track data sent and received for an individual URL.
 
 <CodeGroup labels={[""]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { Counter } from 'k6/metrics';

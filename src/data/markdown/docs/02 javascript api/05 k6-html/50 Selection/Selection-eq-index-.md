@@ -20,7 +20,7 @@ Mimics [jquery.eq](https://api.jquery.com/eq/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

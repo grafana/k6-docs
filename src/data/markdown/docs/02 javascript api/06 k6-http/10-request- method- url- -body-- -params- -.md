@@ -22,7 +22,7 @@ Using http.request() to issue a POST request, logging in to an e-commerce site:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {

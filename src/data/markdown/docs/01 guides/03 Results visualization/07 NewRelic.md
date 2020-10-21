@@ -19,7 +19,7 @@ Run the New Relic integration as a Docker container with this command:
 
 <CodeGroup labels={[""]}>
 
-```shell
+```bash
 docker run \
   -d --restart unless-stopped \
   --name newrelic-statsd \
@@ -48,7 +48,7 @@ Once the integration is running, run the k6 test and send the metrics to the int
 
 <CodeGroup labels={[""]}>
 
-```shell
+```bash
 $ k6 run --out statsd script.js
 ```
 
@@ -89,7 +89,7 @@ Here are some example NRQL queries you can easily copy and paste into widgets in
 
 <CodeGroup labels={["Number of Virtual Users"]}>
 
-```sql
+```plain
 SELECT latest(k6.vus) FROM Metric TIMESERIES
 ```
 
@@ -99,7 +99,7 @@ SELECT latest(k6.vus) FROM Metric TIMESERIES
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE percentile = 90 TIMESERIES
 ```
 
@@ -109,7 +109,7 @@ SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE per
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_duration.median) AS 'Median', average(k6.http_req_duration.mean) AS 'Avg' FROM Metric TIMESERIES
 ```
 
@@ -119,7 +119,7 @@ SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
 ```
 
@@ -129,7 +129,7 @@ SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent' FROM Metric TIMESERIES
 ```
 
@@ -139,7 +139,7 @@ SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
 ```
 
@@ -149,7 +149,7 @@ SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERIES
 ```
 
@@ -159,7 +159,7 @@ SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERI
 
 <CodeGroup labels={[""]}>
 
-```sql
+```plain
 SELECT uniques(metricName) FROM Metric WHERE metricName LIKE 'k6%' LIMIT MAX
 ```
 

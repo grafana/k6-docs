@@ -30,7 +30,7 @@ and can be handled with a little bit of scripting.
 
 <CodeGroup labels={["extract-json.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -70,7 +70,7 @@ appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/ja
 
 <CodeGroup labels={["extract-from-hidden.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from "k6/http";
 import {sleep} from "k6";
 

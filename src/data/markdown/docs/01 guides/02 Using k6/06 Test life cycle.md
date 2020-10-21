@@ -8,7 +8,7 @@ Throughout the documentation, you will also see us referring to it as "init code
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
-```js
+```javascript
 // 1. init code
 
 export function setup() {
@@ -33,7 +33,7 @@ for your VUs, similar to the `main()` function in many other languages:
 
 <CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export default function () {
   // do things here...
 }
@@ -111,7 +111,7 @@ Again, let's have a look at the basic structure of a k6 test:
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
-```js
+```javascript
 // 1. init code
 
 export function setup() {
@@ -145,7 +145,7 @@ Here's an example of doing just that, passing some data from setup to VU and tea
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export function setup() {
   return { v: 1 };
 }
@@ -169,7 +169,7 @@ stages:
 
 <CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
-```js
+```javascript
 export function setup() {
   let res = http.get('https://httpbin.org/get');
   return { data: res.json() };
@@ -197,7 +197,7 @@ It is possible to skip the execution of setup and teardown stages using the two 
 
 <CodeGroup labels={["Skipping setup/teardown execution"]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --no-setup --no-teardown ...
 ```
 

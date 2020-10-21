@@ -13,7 +13,7 @@ The following examples take a set of arguments, shown in the function documentat
 
 <CodeGroup labels={["azure.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 /**
@@ -68,7 +68,7 @@ export function authenticateUsingAzure(
 
 <CodeGroup labels={["okta.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 /**

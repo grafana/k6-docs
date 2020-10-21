@@ -7,7 +7,7 @@ You can also make k6 output detailed statistics in a CSV format by using the `--
 
 <CodeGroup labels={["CLI"]}>
 
-```shell
+```bash
 $ k6 run --out csv=my_test_result.csv script.js
 ```
 
@@ -17,7 +17,7 @@ Or if you want to get the result gzipped, like this:
 
 <CodeGroup labels={["CLI"]}>
 
-```shell
+```bash
 $ k6 run --out csv=my_test_result.gz script.js
 ```
 
@@ -29,7 +29,7 @@ The CSV result file will contain lines like these:
 
 <CodeGroup labels={["Output"]}>
 
-```csv
+```plain
 metric_name,timestamp,metric_value,check,error,error_code,group,method,name,proto,scenario,status,subproto,tls_version,url,extra_tags
 http_reqs,1595325560,1.000000,,,,,GET,http://test.k6.io,HTTP/1.1,default,200,,,http://test.k6.io,
 http_req_duration,1595325560,221.899000,,,,,GET,http://test.k6.io,HTTP/1.1,default,200,,,http://test.k6.io,

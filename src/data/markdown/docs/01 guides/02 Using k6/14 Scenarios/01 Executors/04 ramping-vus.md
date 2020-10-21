@@ -31,7 +31,7 @@ to 0 VUs over 5 seconds.
 
 <CodeGroup labels={[ "ramping-vus.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

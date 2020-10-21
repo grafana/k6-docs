@@ -9,7 +9,7 @@ In many cases using the [Selection](/javascript-api/k6-html/selection) API (jQue
 
 <CodeGroup labels={["submit-form.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

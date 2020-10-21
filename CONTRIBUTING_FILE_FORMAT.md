@@ -296,6 +296,22 @@ To be able to switch between different code tabs, we have to repeat the headerfu
 
 ### Notes on code blocks
 
+#### Languages
+
+There is a curated list of available languages that you should use when working with code blocks:
+
+1. `bash` covers all terminal code
+2. `javascript` for blocks with JS code
+3. `json` for JSON structures
+4. `diff` for showing diffs
+5. `markup` covers html and xml
+6. `go` for Go code
+7. `plain` for everything else, plain unhighlighted text
+
+Every other language, including languages from list but with grammar or case mistakes will be rendered as a `plain` by default.
+
+Let us know if there is necessity to bring highlight support for another language.
+
 #### Line numbers
 
     '{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'

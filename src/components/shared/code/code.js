@@ -7,8 +7,26 @@ import React, { useRef } from 'react';
 
 import styles from './code.module.scss';
 
+const SUPPORTED_LANGS = [
+  'bash',
+  'javascript',
+  'json',
+  'markup',
+  'go',
+  'plain',
+  'diff',
+];
 const DEFAULT_HEIGHT = `100%`;
 const MAX_HEIGHT = 400;
+
+const getLanguageDeclaration = (str) => {
+  if (!str) return 'plain';
+  const lang = str.split('-')[1];
+  if (SUPPORTED_LANGS.includes(lang)) {
+    return lang;
+  }
+  return 'plain';
+};
 
 const Code = ({ children, showLineNumbers, showHeightToggler }) => {
   if (!children) return null;
@@ -43,7 +61,7 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
       <Highlight
         {...defaultProps}
         code={children.props.children}
-        language={children.props.className?.split('-')?.[1] ?? 'plain'}
+        language={getLanguageDeclaration(children?.props?.className)}
       >
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <pre

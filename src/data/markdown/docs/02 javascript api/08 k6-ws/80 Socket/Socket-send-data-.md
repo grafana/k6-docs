@@ -13,7 +13,7 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 
 export default function () {

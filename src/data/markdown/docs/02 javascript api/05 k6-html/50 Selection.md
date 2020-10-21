@@ -53,7 +53,7 @@ Selections have a jQuery-compatible API, but with two caveats:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 

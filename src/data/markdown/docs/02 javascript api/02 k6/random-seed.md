@@ -15,7 +15,7 @@ Use `randomSeed` to get the same random number in all the iterations.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { randomSeed } from 'k6';
 
 export const options = {

@@ -19,7 +19,7 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {

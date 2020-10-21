@@ -12,7 +12,7 @@ until the `duration` amount of time has elapsed.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --vus 10 --duration 30s script.js
 ```
 
@@ -23,7 +23,7 @@ the test script k6 will execute for each VU.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --vus 10 --iterations 100 script.js
 ```
 
@@ -61,7 +61,7 @@ after the completion of the iteration.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 
@@ -80,7 +80,7 @@ performing a login flow.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

@@ -21,7 +21,7 @@ This method takes an object argument where the following properties can be set:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {

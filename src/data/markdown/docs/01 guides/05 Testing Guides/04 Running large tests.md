@@ -153,7 +153,7 @@ k6 will use about 50-85% of memory in comparison to running the original script.
 
 You can tell k6 to not process the body of the response by setting `discardResponseBodies` in the options object like this:
 
-```js
+```javascript
 export let options = {
   discardResponseBodies: true,
 };

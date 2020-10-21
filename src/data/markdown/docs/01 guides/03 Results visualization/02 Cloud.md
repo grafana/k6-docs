@@ -15,11 +15,11 @@ Assuming you have installed k6, the first step is to log in to k6 Cloud. You can
 
 <CodeGroup labels={["Log in to k6 Cloud", "Log in with username and password"]}>
 
-```shell
+```bash
 $ k6 login cloud --token <YOUR_K6_CLOUD_API_TOKEN>
 ```
 
-```shell
+```bash
 $ k6 login cloud
 ```
 
@@ -31,7 +31,7 @@ Now, k6 will authenticate you against the k6 Cloud, and you can use the `--out` 
 
 <CodeGroup labels={["Upload results to the k6 Cloud"]}>
 
-```shell
+```bash
 $ k6 run --out cloud script.js
 ```
 
@@ -41,7 +41,7 @@ Alternatively, you could skip the `k6 login` command when using your [API token]
 
 <CodeGroup labels={["Upload results to the k6 Cloud using K6_CLOUD_TOKEN"]}>
 
-```shell
+```bash
 $ K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> k6 run --out cloud script.js
 ```
 
@@ -51,7 +51,7 @@ After running the command, the console shows an URL. Copy this URL and paste it 
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 execution: local
     output: cloud (https://app.k6.io/runs/721751)
     script: script.js

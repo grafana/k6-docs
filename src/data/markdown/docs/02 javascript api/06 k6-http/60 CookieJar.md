@@ -14,7 +14,7 @@ _CookieJar_ is an object for storing cookies, set by the server and/or added by 
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

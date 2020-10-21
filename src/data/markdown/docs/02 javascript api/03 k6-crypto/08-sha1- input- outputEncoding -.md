@@ -20,7 +20,7 @@ Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash an input string.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {
@@ -33,6 +33,6 @@ export default function () {
 
 The above script should result in the following being printed during execution:
 
-```shell
+```bash
 INFO[0000] 430ce34d020724ed75a196dfc2ad67c77772d169
 ```

@@ -74,7 +74,7 @@ The following JS snippet shows how to specify options in the script:
 
 <CodeGroup labels={["example.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {
@@ -133,7 +133,7 @@ Or set some of the previous options via environment variables and command-line f
 
 <CodeGroup labels={["Bash"]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run ~/script.js
 
 $ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
@@ -161,7 +161,7 @@ done and a slot opens. Available in both the `k6 run` and the `k6 cloud` command
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   batch: 15,
 };
@@ -183,7 +183,7 @@ done and a slot opens. This will not run more request in parallel then the value
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   batchPerHost: 5,
 };
@@ -201,7 +201,7 @@ Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` comm
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   blacklistIPs: ['10.0.0.0/8'],
 };
@@ -221,7 +221,7 @@ Read about the different modes on the [JavaScript Compatibility Mode documentati
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 run --compatibility-mode=base script.js
 ```
 
@@ -255,7 +255,7 @@ more reliable test results.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   discardResponseBodies: true,
 };
@@ -274,7 +274,7 @@ VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` comma
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   duration: '3m',
 };
@@ -296,7 +296,7 @@ logically grouped for trending and comparison) when streaming results to
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   ext: {
     loadimpact: {
@@ -353,7 +353,7 @@ From v0.28.0 it is also supported to redirect only from certain ports and/or to 
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
@@ -380,7 +380,7 @@ Read more [here](/using-k6/http-debugging).
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   httpDebug: 'full',
 };
@@ -399,7 +399,7 @@ commands.
 
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --include-system-env-vars ~/script.js
 ```
 
@@ -417,7 +417,7 @@ Available in `k6 run` and `k6 cloud` commands
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   insecureSkipTLSVerify: true,
 };
@@ -440,7 +440,7 @@ the default `maxDuration` is 10 minutes when using iterations with the cloud ser
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   iterations: 10,
 };
@@ -452,7 +452,7 @@ Or, to run 10 VUs 10 times each:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   vus: 10,
   iterations: 100,
@@ -472,7 +472,7 @@ run completion. Available in the `k6 run` command.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   linger: true,
 };
@@ -512,7 +512,7 @@ The possible keys with their meanings and default values:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --log-output=stdout script.js
 ```
 
@@ -549,7 +549,7 @@ erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   maxRedirects: 10,
 };
@@ -569,7 +569,7 @@ the remainder of the time until the specified minimum duration is reached.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   minIterationDuration: '10s',
 };
@@ -588,7 +588,7 @@ Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   noConnectionReuse: true,
 };
@@ -607,7 +607,7 @@ it's enabled, saved cookies will be persisted across VU iterations.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   noCookiesReset: true,
 };
@@ -625,7 +625,7 @@ Disables threshold execution. Available in the `k6 run` command.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --no-thresholds ~/script.js
 ```
 
@@ -644,7 +644,7 @@ learn more, have a look at the [Usage reports](/misc/usage-reports) documentatio
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   noUsageReport: true,
 };
@@ -663,7 +663,7 @@ of a VU. Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   noVUConnectionReuse: true,
 };
@@ -682,7 +682,7 @@ a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   paused: true,
 };
@@ -702,7 +702,7 @@ specified multiple times. Available in `k6 run` command.
 
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 ```
 
@@ -719,7 +719,7 @@ and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   rps: 500,
 };
@@ -747,7 +747,7 @@ Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   scenarios: {
     my_api_scenario: {
@@ -778,7 +778,7 @@ Specify how long the `setup()` function is allow to run before it's terminated a
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   setupTimeout: '30s',
 };
@@ -797,7 +797,7 @@ ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` c
 
 <CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
 
-```js
+```javascript
 // The following config would have k6 ramping up from 1 to 10 VUs for 3 minutes,
 // then staying flat at 10 VUs for 5 minutes, then ramping up from 10 to 35 VUs
 // over the next 10 minutes before finally ramping down to 0 VUs for another
@@ -813,7 +813,7 @@ export let options = {
 };
 ```
 
-```shell
+```bash
 $ k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
 
 # or...
@@ -840,7 +840,7 @@ Available in the `k6 run` command.
 
 <CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run --summary-export export.json ~/script.js
 
 # or...
@@ -862,7 +862,7 @@ Add/override environment variable with VAR=value. Available in `k6 run` and `k6 
 
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run -e FOO=bar ~/script.js
 ```
 
@@ -881,7 +881,7 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   systemTags: ['status', 'method', 'url'],
 };
@@ -900,7 +900,7 @@ in `k6 run` command.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   summaryTrendStats: ['avg', 'p(95)'],
 };
@@ -920,7 +920,7 @@ tag. Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   tags: {
     name: 'value',
@@ -941,7 +941,7 @@ fails.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   teardownTimeout: '30s',
 };
@@ -961,7 +961,7 @@ at the [Thresholds](/using-k6/thresholds) documentation. Available in `k6 run` c
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   thresholds: {
     http_req_duration: ['avg<100', 'p(95)<200'],
@@ -983,7 +983,7 @@ Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   throw: true,
 };
@@ -1002,7 +1002,7 @@ which host(s)/domain(s) the given client certificate is valid for.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   tlsAuth: [
     {
@@ -1027,7 +1027,7 @@ For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   tlsCipherSuites: [
     'TLS_RSA_WITH_RC4_128_SHA',
@@ -1049,7 +1049,7 @@ server, or an object specifying the "min" and "max" versions allowed to be used.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   tlsVersion: 'tls1.2',
 };
@@ -1077,7 +1077,7 @@ requests. Available in `k6 run` and `k6 cloud` commands
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
@@ -1096,7 +1096,7 @@ the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   vus: 10,
 };
@@ -1121,7 +1121,7 @@ is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cl
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   vusMax: 10,
 };

@@ -18,7 +18,7 @@ Let's say that you normally execute a test using:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run script.js
 ```
 
@@ -31,7 +31,7 @@ into a tar file:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 archive script.js
 ```
 
@@ -48,7 +48,7 @@ files you can execute:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 $ k6 run archive.tar
 ```
 
@@ -100,7 +100,7 @@ of the files:
 
 <CodeGroup labels={["Sample test structure"]} lineNumbers={[true]}>
 
-```shell
+```bash
 /home/johndoe/tests/api-test $ tree
 .
 ├── utils
@@ -125,7 +125,7 @@ this:
 
 <CodeGroup labels={["Structure of archive.tar"]} lineNumbers={[true]}>
 
-```shell
+```bash
 ├-- data
 ├-- files
 |   └-- home

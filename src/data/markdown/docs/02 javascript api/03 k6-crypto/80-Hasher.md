@@ -15,7 +15,7 @@ and allows the user to successively add more string data to be hashed, and to ex
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {

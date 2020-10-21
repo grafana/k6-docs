@@ -20,7 +20,7 @@ Run code inside a group. Groups are used to organize results in a test.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { group, check } from 'k6';
 import http from 'k6/http';
 

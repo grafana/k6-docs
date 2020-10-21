@@ -33,7 +33,7 @@ in a subsequent request to the server we include the cookie in the `cookies` req
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {
@@ -53,7 +53,7 @@ default there's a per-VU cookie jar we can interact with to set and inspect cook
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {
@@ -72,7 +72,7 @@ You can also specify that a cookie should be overridden if already part of the p
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -107,7 +107,7 @@ the response object:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -153,7 +153,7 @@ To see which cookies are set, and stored in the cookie jar, for a particular URL
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -185,7 +185,7 @@ cookie jar. An example:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -216,7 +216,7 @@ cookie jar on a per-request basis. An example:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -254,7 +254,7 @@ export default function () {
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 // Example showing two methods how to log all cookies (with attributes) from a HTTP response.
 import http from 'k6/http';
 

@@ -17,7 +17,7 @@ excerpt: ''
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

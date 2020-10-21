@@ -16,7 +16,7 @@ Mimics [jquery.first](https://api.jquery.com/first/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

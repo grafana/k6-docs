@@ -30,7 +30,7 @@ appear in the result summary, tags, etc.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```js
+```javascript
 export let options = {
   scenarios: {
     example_scenario: {

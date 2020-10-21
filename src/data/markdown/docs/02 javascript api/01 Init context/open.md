@@ -53,7 +53,7 @@ See example further down on this page. For more in-depth description see [Runnin
 
 <CodeGroup labels={["Loading JSON data to parameterize test"]}>
 
-```js
+```javascript
 import { sleep } from 'k6';
 
 const users = JSON.parse(open('./users.json'));
@@ -69,7 +69,7 @@ export default function () {
 
 <CodeGroup labels={["Loading a binary file and POSTing it as a multipart request"]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

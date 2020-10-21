@@ -16,7 +16,7 @@ cases where access to read and manipulate cookies are required.
 
 <CodeGroup labels={["access-cookie.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, group } from 'k6';
 
@@ -50,7 +50,7 @@ export default function () {
 
 <CodeGroup labels={["log-all-cookies.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 // Example showing two methods how to log all cookies (with attributes) from a HTTP response.
 
 import http from 'k6/http';
@@ -87,7 +87,7 @@ you'd do something like this:
 
 <CodeGroup labels={["set-cookie-in-jar.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

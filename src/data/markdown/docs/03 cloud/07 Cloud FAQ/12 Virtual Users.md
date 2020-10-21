@@ -33,7 +33,7 @@ Calculating the number of virtual users can be done by using this formula:
 
 <CodeGroup labels={["Formula for calculating the number of VUs needed"]}>
 
-```text
+```plain
 VUs = (hourly sessions * average session duration in seconds)/3600
 ```
 

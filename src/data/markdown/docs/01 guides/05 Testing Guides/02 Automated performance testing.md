@@ -104,7 +104,7 @@ Every step in an automation pipeline either passes or fails. As mentioned in [Kn
 
 A basic threshold on the 95th percentile of the response time metric looks like this:
 
-```js
+```javascript
 export let options = {
   thresholds: {
     // fail the test if 95th percentile response goes above 500ms
@@ -115,7 +115,7 @@ export let options = {
 
 You can setup thresholds on any metric in k6 and you can have multiple thresholds per metric. You can also optionally specify that a threshold should immediately abort a test if the threshold is reached. Adding that to the example above would look like this:
 
-```js
+```javascript
 export let options = {
   thresholds: {
     // fail and abort the test if 95th percentile response goes above 500ms
@@ -144,7 +144,7 @@ k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes
 
 If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool. Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
 
-```shell
+```bash
 k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
 ```
 
@@ -166,7 +166,7 @@ A rule of thumb is that the shorter the "VU iteration duration" the more frequen
 
 A quick re-cap of the [test life cycle](/using-k6/test-life-cycle) article:
 
-```js
+```javascript
 export default function () {
   // k6 will execute this default function in a loop for every VU
   // for the duration of the test run.
@@ -226,7 +226,7 @@ There’s no builtin notification mechanism in k6 OSS, so you’d have to send a
 
 For Slack you need to first [setup an incoming webhook](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
 
-```js
+```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
 
@@ -257,7 +257,7 @@ export function teardown(data) {
 
 For Microsoft Teams you need to first [setup an incoming webhook connector](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

@@ -29,7 +29,7 @@ Using `check()` to verify that an HTTP response code was 200 and that body was 1
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

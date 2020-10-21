@@ -6,7 +6,7 @@ title: 'Installation'
 
 ### Debian/Ubuntu
 
-```shell
+```bash
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update
@@ -19,13 +19,13 @@ sudo apt-get install k6
 > command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
 > alternative approach instead:
 >
-> ```shell
+> ```bash
 > wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
 > ```
 
 ### Red Hat/CentOS
 
-```shell
+```bash
 wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
 sudo mv bintray-loadimpact-rpm.repo /etc/yum.repos.d/
 sudo yum install k6
@@ -35,7 +35,7 @@ sudo yum install k6
 
 <CodeGroup labels={['Brew']}>
 
-```shell
+```bash
 brew install k6
 ```
 
@@ -54,7 +54,7 @@ Install the binary in your `PATH` to run **k6** from any location.
 
 <CodeGroup labels={['Docker']}>
 
-```shell
+```bash
 docker pull loadimpact/k6
 ```
 

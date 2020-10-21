@@ -13,7 +13,7 @@ for example:
 
 <CodeGroup labels={["check.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { check } from 'k6';
 import http from 'k6/http';
 
@@ -39,7 +39,7 @@ You may also add multiple checks within a single check() statement, like this:
 
 <CodeGroup labels={["checks.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { check } from 'k6';
 import http from 'k6/http';
 
@@ -68,7 +68,7 @@ get what you want:
 
 <CodeGroup labels={["check_thresholds.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate } from 'k6/metrics';

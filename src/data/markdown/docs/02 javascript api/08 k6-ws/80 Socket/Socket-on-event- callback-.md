@@ -22,7 +22,7 @@ Set up callback functions for various events on the WebSocket connection. Multip
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 import { check } from 'k6';
 

@@ -20,7 +20,7 @@ Mimics [jquery.prev](https://api.jquery.com/prev/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

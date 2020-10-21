@@ -20,7 +20,7 @@ Use [ripemd160](https://godoc.org/golang.org/x/crypto/ripemd160) to hash an inpu
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import crypto from 'k6/crypto';
 
 export default function () {
@@ -33,6 +33,6 @@ export default function () {
 
 The above script should result in the following being printed during execution:
 
-```shell
+```bash
 INFO[0000] dffd03137b3a333d5754813399a5f437acd694e5
 ```

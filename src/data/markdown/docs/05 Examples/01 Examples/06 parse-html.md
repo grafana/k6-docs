@@ -13,7 +13,7 @@ Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
 
 <CodeGroup labels={["Select.find"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 
@@ -29,7 +29,7 @@ export default function () {
 
 <CodeGroup labels={["Element "]} lineNumbers={[true]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

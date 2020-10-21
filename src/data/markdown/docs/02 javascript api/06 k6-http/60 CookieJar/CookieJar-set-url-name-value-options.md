@@ -15,7 +15,7 @@ Set a cookie in the jar by specifying url, name, value and some other optional s
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 

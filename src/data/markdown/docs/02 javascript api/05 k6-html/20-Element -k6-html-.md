@@ -104,7 +104,7 @@ Additionally, Element can provide more methods depending on the Element type.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 
@@ -136,7 +136,7 @@ export default function () {
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

@@ -13,11 +13,11 @@ Currently two modes are available:
 
 <CodeGroup labels={["CLI Parameter", "Environment Variable"]}>
 
-```shell
+```bash
 $ k6 run --compatibility-mode=base script.js
 ```
 
-```shell
+```bash
 $ K6_COMPATIBILITY_MODE=base k6 run script.js
 ```
 
@@ -38,7 +38,7 @@ transformation outside of k6.
 
 <CodeGroup labels={[ "base-example.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 var http = require('k6/http');
 var k6 = require('k6');
 
@@ -69,7 +69,7 @@ module.exports.default = function () {
 
 <CodeGroup labels={[ "advanced-example.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 var http = require('k6/http');
 var metrics = require('k6/metrics');
 var k6 = require('k6');
@@ -107,11 +107,11 @@ module.exports.default = function () {
 
 <CodeGroup labels={["CLI Parameter", "Environment Variable"]}>
 
-```shell
+```bash
 $ k6 run --compatibility-mode=extended script.js
 ```
 
-```shell
+```bash
 $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 ```
 
@@ -130,7 +130,7 @@ number of VUs:
 
 <CodeGroup labels={["Base Mode", "Extended Mode"]}>
 
-```shell
+```bash
 $ /usr/bin/time -v k6 run \
     --compatibility-mode=base \
     --vus 3500 \
@@ -162,7 +162,7 @@ Page size (bytes): 4096
 Exit status: 0
 ```
 
-```shell
+```bash
 $ /usr/bin/time -v k6 run \
     --compatibility-mode=extended \
     --vus 3500 \

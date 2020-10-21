@@ -8,7 +8,7 @@ Send a ping. Ping messages can be used to verify that the remote endpoint is res
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import ws from 'k6/ws';
 
 export default function () {

@@ -22,7 +22,7 @@ Mimics [jquery.is](https://api.jquery.com/is/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

@@ -34,7 +34,7 @@ In this example, we'll execute 200 total iterations shared by 10 VUs with a maxi
 
 <CodeGroup labels={[ "shared-iters.js" ]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export let options = {

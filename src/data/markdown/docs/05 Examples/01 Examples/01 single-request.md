@@ -6,7 +6,7 @@ draft: 'false'
 
 <CodeGroup labels={["single-request.js"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { Counter } from 'k6/metrics';

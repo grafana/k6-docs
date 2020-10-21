@@ -24,7 +24,7 @@ Below is a simple example showing how to load the contents of a local file `data
 
 <CodeGroup labels={["Loading a local JSON file using open()"]} lineNumbers={[true]}>
 
-```js
+```javascript
 const data = JSON.parse(open('./data.json'));
 
 export default function () {
@@ -38,7 +38,7 @@ If you want to open a binary file you need to pass in `"b"` as the second argume
 
 <CodeGroup labels={["Loading a binary file using open()"]} lineNumbers={[true]}>
 
-```js
+```javascript
 const binFile = open("./image.png", "b");
 
 export default function() {
@@ -56,7 +56,7 @@ below):
 
 <CodeGroup labels={["POST upload example"]} lineNumbers={[true]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
 

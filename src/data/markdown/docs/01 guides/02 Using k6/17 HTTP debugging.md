@@ -13,7 +13,7 @@ Given the following script:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
 import http from "k6/http";
 
 export default function() {
@@ -27,7 +27,7 @@ If we run it using `k6 run --http-debug script.js` we get output that looks like
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
-```shell
+```bash
           /\      |‾‾|  /‾‾/  /‾/
      /\  /  \     |  |_/  /  / /
     /  \/    \    |      |  /  ‾‾\

@@ -16,7 +16,7 @@ Mimics [jquery.last](https://api.jquery.com/last/).
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import { sleep } from 'k6';
 

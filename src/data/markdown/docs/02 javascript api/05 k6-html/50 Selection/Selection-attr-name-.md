@@ -20,7 +20,7 @@ Mimics [jquery.attr](https://api.jquery.com/attr/)
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { parseHTML } from 'k6/html';
 import http from 'k6/http';
 

@@ -21,7 +21,7 @@ Debugging locally is beneficial for two reasons:
 
 <CodeGroup labels={["Example:"]}>
 
-```C
+```bash
 k6 run myScript.js
 ```
 
@@ -35,7 +35,7 @@ It's likely that you've configured Virtual Users and/or duration in your script.
 
 <CodeGroup labels={["Example:"]}>
 
-```C
+```bash
 k6 run myScript.js -i 1 -u 1
 ```
 
@@ -49,7 +49,7 @@ Sometimes you need to understand more details about the requests being sent and 
 
 <CodeGroup labels={["Example:"]}>
 
-```C
+```bash
 k6 run myScript.js --http-debug="full"
 ```
 
@@ -65,9 +65,9 @@ To take the above a step further, consider the following snippet of code. We are
 
 <CodeGroup labels={["Example:"]}>
 
-```JavaScript
-let res = http.get("http://httpbin.test.k6.io/json");
- console.log(JSON.stringify(res));
+```javascript
+let res = http.get('http://httpbin.test.k6.io/json');
+console.log(JSON.stringify(res));
 ```
 
 </CodeGroup>

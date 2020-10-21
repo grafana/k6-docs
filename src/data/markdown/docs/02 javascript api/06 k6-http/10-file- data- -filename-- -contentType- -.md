@@ -21,7 +21,7 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { sleep } from 'k6';
 import { md5 } from 'k6/crypto';
 import http from 'k6/http';

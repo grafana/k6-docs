@@ -23,7 +23,7 @@ _A k6 script that will make an HTTP request with a custom HTTP header and tag re
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {
@@ -45,7 +45,7 @@ Here is another example using [http.batch()](/javascript-api/k6-http/batch-reque
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 let url1 = 'https://api.k6.io/v3/account/me';
@@ -73,7 +73,7 @@ Here is one example of how to use the `Params` to Digest Authentication.
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 import { check } from 'k6';
 
@@ -100,7 +100,7 @@ Example how to overwrite discardResponseBodies:
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import http from 'k6/http';
 
 export var options = { discardResponseBodies: true };

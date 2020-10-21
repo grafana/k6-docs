@@ -13,7 +13,7 @@ You can configure the broker (or multiple ones), topic and message format direct
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 run --out kafka=brokers=broker_host:8000,topic=k6
 ```
 
@@ -23,7 +23,7 @@ or if you want multiple brokers:
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 --out kafka=brokers={broker1,broker2},topic=k6,format=json
 ```
 
@@ -33,7 +33,7 @@ You can also specify the message `format` k6 will use. By default, it will be th
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb
 ```
 
@@ -43,7 +43,7 @@ You can even modify some of the `format` settings such as `tagsAsFields`:
 
 <CodeGroup labels={[]}>
 
-```shell
+```bash
 $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb,influxdb.tagsAsFields={url,myCustomTag}
 ```
 

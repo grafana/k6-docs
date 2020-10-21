@@ -20,7 +20,7 @@ Decode the passed base64 encoded `input` string into the unencoded original stri
 
 <CodeGroup labels={[]}>
 
-```js
+```javascript
 import { check } from 'k6';
 import encoding from 'k6/encoding';
 

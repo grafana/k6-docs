@@ -29,7 +29,7 @@ Using this command, you can run your load test script and put load on your API. 
 
 Suppose you want to load test your login endpoint to see how many requests it can handle concurrently. This is the type you write to achieve that.
 
-```js
+```javascript
 import http from 'k6/http';
 
 export default function () {
@@ -65,7 +65,7 @@ In the following example, you see four consecutive [HTTP requests](/using-k6/htt
 
 As you can see, this is a fairly normal, yet simple, user flow that tries to mimic the user behavior while using our mobile App or website. For the sake of simplicity, only four requests has been shown, but you can easily add additional requests to be able to have a more realistic user experience. This way you can test the flow of your users' navigation in your application or platform. This is the point that distinguishes k6 from most of the currently available load testing tools, in that it can be used to test realistic user flows, instead of just relying on hammering a set of endpoints.<!-- The [open source load testing tool review 2020](https://blog.loadimpact.com/comparing-best-open-source-load-testing-tools) blog post goes into details of all the open source load testing tools available today, and tries to dig deep into their pros and cons, performance and developer experience. This is particularly important, because it gives you a more holistic view of the user experience and your system's performance under load, while hammering gives you a more narrow view of your system. -->
 
-```js
+```javascript
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
