@@ -66,7 +66,7 @@ export function authenticateUsingAzure(
 
 ### Okta
 
-<CodeGroup labels={["okta.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["Okta-test.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';

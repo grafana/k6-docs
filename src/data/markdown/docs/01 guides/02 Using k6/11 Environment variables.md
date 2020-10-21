@@ -32,7 +32,7 @@ variables when running scripts by using `--include-system-env-vars=false`.
 
 An environment variable could, for example, be specified like this on the command line:
 
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: Powershell"]} lineNumbers={[false]}>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
 $ MY_HOSTNAME=test.k6.io k6 run script.js
