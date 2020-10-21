@@ -18,7 +18,7 @@ You want to run a smoke test to:
 Here's a relatively simple smoke test script to get you started. You can copy it, change a few URLs and start testing in no time.
 If you would like to see more comprehensive script, check out our [example section](/examples).
 
-<CodeGroup labels={["sample-smoke-test.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["sample-smoke-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```javascript
 import http from 'k6/http';

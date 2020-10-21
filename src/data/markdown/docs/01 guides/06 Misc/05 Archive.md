@@ -164,7 +164,7 @@ Breaking down the file structure we get:
 
 **_scripts_** contains the full original directory tree of all `import`'ed JS dependencies.
 
-<CodeGroup labels={["metadata.json"]} lineNumbers={[true]}>
+<CodeGroup labels={["metadata.json"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```json
 {

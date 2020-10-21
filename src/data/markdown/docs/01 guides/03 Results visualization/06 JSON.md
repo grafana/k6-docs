@@ -121,7 +121,7 @@ $ k6 run --summary-export=export.json --out datadog script.js
 
 The format of the summary is like:
 
-<CodeGroup labels={[ "export.json" ]}>
+<CodeGroup labels={[ "export.json" ]} heightTogglers={[true]}>
 
 ```json
 {

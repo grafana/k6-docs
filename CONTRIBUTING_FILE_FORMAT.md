@@ -350,7 +350,7 @@ You can provide large code blocks (>400px, ~20 LoC) with expand/collapse toggler
 
 Prop `heightTogglers` passed to `CodeGroup` component makes it possible, which works very similar to `labels` and `lineNumbers` props:
 
-    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]} heightTogglers=[true, false, false]>
+    <CodeGroup labels={["Nice code!", "This one is better", "Oh my.."]} lineNumbers={[true, true, true]} heightTogglers={[true, false, false]}>
 
     ```javascript
     // a lot of lines of code,

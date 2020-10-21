@@ -42,7 +42,7 @@ Some errors are related to time, and not to the total number of requests execute
 
 Here's a sample test configuration.
 
-<CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```javascript
 import http from 'k6/http';

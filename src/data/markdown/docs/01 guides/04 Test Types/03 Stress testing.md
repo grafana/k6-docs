@@ -49,7 +49,7 @@ You can easily create a stress test in k6 by properly configuring the `options` 
 Remember, the point of this test is to gradually push your APIs beyond its breaking point.
 It's probably the easiest to start with an example.
 
-<CodeGroup labels={["API stress test k6 example"]} lineNumbers={[true]}>
+<CodeGroup labels={["API stress test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -162,7 +162,7 @@ Success or failure of a spike test depends on your expectations. Systems general
 
 Here's an example script configuration for a spike test.
 
-<CodeGroup labels={["Spike test k6 example"]} lineNumbers={[true]}>
+<CodeGroup labels={["Spike test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```javascript
 import http from 'k6/http';

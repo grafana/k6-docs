@@ -36,7 +36,7 @@ therefore it's recommended to configure the load test with the high load in mind
 Note, this test has one simple threshold. The response time for 99% requests must be below 1.5 seconds.
 Thresholds are a way of ensuring that your system is meeting the performance goals you set for it.
 
-<CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
 ```javascript
 import http from 'k6/http';
