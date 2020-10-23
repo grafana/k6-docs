@@ -91,13 +91,13 @@ Returns details of a metric with the specified ID.
   },
   "k6-group": {
     "id": "223813452fd767e624ba9ee6c78bde91",
-    "name": "page_1 - http://test.loadimpact.com/"
+    "name": "page_1 - http://test.k6.io/"
   },
   "k6-url": {
     "id": "81414ab976a1985f59b321d6b745d2c2",
     "method": "GET",
     "status": 200,
-    "url": "http://test.loadimpact.com/"
+    "url": "http://test.k6.io/"
   }
 }
 ```
