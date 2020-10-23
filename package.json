@@ -56,6 +56,7 @@
     "gatsby-transformer-sharp": "^2.5.17",
     "node-sass": "^4.14.1",
     "prism-react-renderer": "^1.1.1",
+    "prop-types": "^15.7.2",
     "qs": "^6.9.1",
     "react": "^16.10.2",
     "react-clipboard.js": "^2.0.16",
