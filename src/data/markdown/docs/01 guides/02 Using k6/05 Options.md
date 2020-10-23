@@ -21,7 +21,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
-| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications                        |
+| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
@@ -408,7 +408,8 @@ $ k6 run --include-system-env-vars ~/script.js
 ### Insecure Skip TLS Verify
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
-would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
+would otherwise be done to establish trust in a server provided TLS certificate will be ignored. 
+This is only about connections created by VU code such as http requests.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env                           | CLI                          | Code / Config file      | Default |
