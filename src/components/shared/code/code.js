@@ -57,11 +57,11 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
   }
 
   return (
-    <WithCopyButton dataToCopy={children.props.children}>
+    <WithCopyButton dataToCopy={children.props?.children}>
       <Highlight
         {...defaultProps}
-        code={children.props.children}
-        language={getLanguageDeclaration(children?.props?.className)}
+        code={children.props?.children}
+        language={getLanguageDeclaration(children.props?.className)}
       >
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <pre

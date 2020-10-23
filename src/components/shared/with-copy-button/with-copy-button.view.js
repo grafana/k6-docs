@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import Clipboard from 'react-clipboard.js';
 
@@ -27,4 +28,17 @@ export const WithCopyButton = ({
       </Clipboard>
     </div>
   );
+};
+
+WithCopyButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  dataToCopy: PropTypes.string,
+  wrapperLabel: PropTypes.string,
+  copyButtonLabel: PropTypes.string,
+};
+
+WithCopyButton.defaultProps = {
+  dataToCopy: '',
+  wrapperLabel: '',
+  copyButtonLabel: '',
 };
