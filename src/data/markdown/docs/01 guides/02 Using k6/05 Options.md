@@ -409,7 +409,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored. 
-This is only about connections created by VU code such as http requests.
+This only applies to connections created by VU code, such as http requests.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env                           | CLI                          | Code / Config file      | Default |
