@@ -42,7 +42,8 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
 
   let toggler = null;
   let containerStyles = {};
-  // if `height` isn't equla default height,
+  let overlayStyles = { height: 0 };
+  // if `height` isn't equal default height,
   // code blocks fits the height requirements
   // for toggler to be shown
   if (height !== DEFAULT_HEIGHT) {
@@ -53,6 +54,10 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
     );
     containerStyles = {
       maxHeight: isExpanded ? height : `${MAX_HEIGHT}px`,
+      overflowY: 'hidden',
+    };
+    overlayStyles = {
+      height: isExpanded ? 0 : undefined,
     };
   }
 
@@ -92,6 +97,7 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
           </pre>
         )}
       </Highlight>
+      <div className={styles.overlay} style={overlayStyles} />
       {toggler}
     </WithCopyButton>
   );
