@@ -1,9 +1,9 @@
 name: Pull Request CI
 
 env:
-  PATH_PREFIX: /docs/pull-requests/${{ github.ref }}
+  PATH_PREFIX: /docs/${{ github.ref }}
   GATSBY_DEFAULT_MAIN_URL: https://staging.k6.io
-  GATSBY_DEFAULT_DOC_URL: https://staging.k6.io/docs/pull-requests/${{ github.ref }}
+  GATSBY_DEFAULT_DOC_URL: https://mdr-ci.staging.k6.io/docs/${{ github.ref }}
   GATSBY_DEFAULT_BLOG_URL: https://k6.io/blog
   GATSBY_DEFAULT_APP_URL: https://app.staging.k6.io
 
@@ -67,13 +67,13 @@ jobs:
         env:
           AWS_S3_BUCKET: ${{ secrets.PR_CI_AWS_S3_BUCKET }}
           SOURCE_DIR: public/
-          DEST_DIR: docs/pull-requests/${{ github.ref }}
+          DEST_DIR: docs/${{ github.ref }}
 
       - name: Invalidate Cloudfront
         uses: chetan/invalidate-cloudfront-action@v1.2
         env:
           DISTRIBUTION: ${{ secrets.PR_CI_CLOUDFRONT_DISTRIBUTION_ID }}
-          PATHS: '/docs/pull-requests/*'
+          PATHS: '/docs/*'
 
       - name: Post published URL to PR
         if: github.event.action == 'opened'
