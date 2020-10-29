@@ -226,7 +226,6 @@ if (process.env.BUCKET_NAME) {
     options: {
       bucketName: process.env.BUCKET_NAME,
       region: process.env.BUCKET_REGION,
-      retainObjectsPatterns: ['pull-requests/**/*'],
       protocol: 'https',
       hostname: isProduction ? 'k6.io' : 'staging.k6.io',
     },
