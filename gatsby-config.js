@@ -9,7 +9,7 @@ const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
 const isStaging = mainURL === 'https://staging.k6.io/docs';
 
-const shouldAnnouncementBannerBeShown = true;
+const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
   'gatsby-plugin-react-helmet',
