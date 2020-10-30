@@ -393,7 +393,7 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
   createRedirect({
     fromPath: '/using-k6/archives-for-bundling-sharing-a-test',
-    toPath: '/misc/archive',
+    toPath: '/misc/archive-command',
     isPermanent: true,
   });
   createRedirect({
