@@ -7,7 +7,7 @@ require('dotenv').config({
 
 const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
-const isStaging = mainURL === 'https://staging.k6.io/docs';
+const isStaging = mainURL.startsWith('https://staging.k6.io');
 
 const shouldAnnouncementBannerBeShown = false;
 
@@ -276,7 +276,7 @@ if (process.env.BUCKET_NAME) {
 }
 
 module.exports = {
-  pathPrefix: `/docs`,
+  pathPrefix: process.env.PATH_PREFIX || `/docs`,
 
   siteMetadata: {
     siteTitle:
