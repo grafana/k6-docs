@@ -1070,7 +1070,8 @@ export let options = {
 ### User Agent
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
-requests. Available in `k6 run` and `k6 cloud` commands
+requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
+Available in `k6 run` and `k6 cloud` commands
 
 | Env             | CLI            | Code / Config file | Default                                                               |
 | --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
