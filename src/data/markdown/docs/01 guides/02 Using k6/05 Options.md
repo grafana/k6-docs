@@ -958,7 +958,7 @@ Available in the `k6 run` command.
 | ------------------- | ----------------------------- | ------------------ | ------- |
 | `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                | `null`  |
 
-<CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
 ```bash
 $ k6 run --summary-export export.json ~/script.js
