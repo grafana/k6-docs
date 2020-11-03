@@ -15,6 +15,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
+| [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
 | [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
@@ -263,6 +264,62 @@ export let options = {
 
 </CodeGroup>
 
+### DNS
+
+> _New in v0.29.0_
+
+This is a composite option that provides control of DNS resolution behavior with
+configuration for cache expiration (TTL), IP selection strategy and IP version
+preference.
+
+Note that DNS resolution is done only on new HTTP connections, and by default k6
+will try to reuse connections if HTTP keep-alive is supported. To force a certain
+DNS behavior consider enabling the [`noConnectionReuse`](#no-connection-reuse)
+option in your tests.
+
+
+| Env      | CLI     | Code / Config file | Default                                  |
+| ---------| --------| -------------------| ---------------------------------------- |
+| `K6_DNS` | `--dns` | `dns`              | `ttl=5m,select=random,policy=preferIPv4` |
+
+Possible `ttl` values are:
+- `0`: no caching at all - each request will trigger a new DNS lookup.
+- `inf`: cache any resolved IPs for the duration of the test run.
+- any time duration like `60s`, `5m30s`, `10m`, `2h`, etc.; if no unit is specified (e.g. `ttl=3000`), k6 assumes milliseconds.
+
+Possible `select` values are:
+- `first`: always pick the first resolved IP.
+- `random`: pick a random IP for every new connection.
+- `roundRobin`: iterate sequentially over the resolved IPs.
+
+Possible `policy` values are:
+- `preferIPv4`: return an IPv4 address if available, otherwise fall back to IPv6.
+- `preferIPv6`: return an IPv6 address if available, otherwise fall back to IPv4.
+- `onlyIPv4`: only use IPv4 addresses even if an IPv6 address is returned.
+- `onlyIPv6`: only use IPv6 addresses even if an IPv4 address is returned.
+- `any`: no preference, return any address.
+
+Here are some configuration examples:
+
+```bash
+k6 run --dns "ttl=inf,select=first,policy=any" script.js # this is the old k6 behavior
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior
+```
+
+<CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  dns: {
+    ttl: '1m',
+    select: 'roundRobin',
+    policy: 'any'
+  }
+}
+```
+
+</CodeGroup>
+
 ### Duration
 
 A string specifying the total duration a test run should be run for. During this time each
@@ -408,7 +465,7 @@ $ k6 run --include-system-env-vars ~/script.js
 ### Insecure Skip TLS Verify
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
-would otherwise be done to establish trust in a server provided TLS certificate will be ignored. 
+would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
 This only applies to connections created by VU code, such as http requests.
 Available in `k6 run` and `k6 cloud` commands
 
