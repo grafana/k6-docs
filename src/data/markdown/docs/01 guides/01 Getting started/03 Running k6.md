@@ -27,7 +27,7 @@ Then run k6 using this command:
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
 
 ```bash
@@ -37,11 +37,11 @@ $ k6 run script.js
 # pipe the actual file into the container with `<` or equivalent. This will
 # cause the file to be redirected into the container and be read by k6.
 
-$ docker run -i loadimpact/k6 run - <script.js
+docker run -i loadimpact/k6 run - <script.js
 ```
 
 ```bash
-$ cat script.js | docker run -i loadimpact/k6 run -
+cat script.js | docker run -i loadimpact/k6 run -
 ```
 
 </CodeGroup>
@@ -139,11 +139,11 @@ Then you just run the script without those parameters on the command line:
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```bash
-$ k6 run script.js
+k6 run script.js
 ```
 
 ```bash
-$ docker run -i loadimpact/k6 run - <script.js
+docker run -i loadimpact/k6 run - <script.js
 ```
 
 ```bash
@@ -198,7 +198,7 @@ For running cloud tests from the CLI, you must first register a k6 Cloud account
 <CodeGroup labels={["Running a cloud test"]}>
 
 ```bash
-$ k6 cloud script.js
+k6 cloud script.js
 ```
 
 </CodeGroup>
