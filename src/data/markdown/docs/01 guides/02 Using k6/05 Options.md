@@ -12,6 +12,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
+| [Block hostnames](#block-hostnames)                       | Block hostnames from being called                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
@@ -206,6 +207,38 @@ Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` comm
 export let options = {
   blacklistIPs: ['10.0.0.0/8'],
 };
+```
+
+</CodeGroup>
+
+
+
+### Block Hostnames
+
+Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
+`*` at the beginning such as `*.example.com` that will match anything before that such as
+`test.example.com` and `test.test.example.com`.
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_BLOCK_HOSTNAMES` | `--block-hostnames` | `blockHostnames`   | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  blockHostnames: ["test.k6.io" , "*.example.com"],
+};
+```
+
+</CodeGroup>
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 ```
 
 </CodeGroup>
