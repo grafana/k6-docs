@@ -26,6 +26,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
+| [Local IPs](#local-ips)                                   | A list of IPs,IP ranges and CIDRs from which VUs will make requests                 |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
 | [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
@@ -567,6 +568,29 @@ run completion. Available in the `k6 run` command.
 export let options = {
   linger: true,
 };
+```
+
+</CodeGroup>
+
+### Local IPs
+
+A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
+given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
+configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
+IPs don't include the first and last IP as they are reserved for referring to the network itself and
+the broadcast address respectively.
+
+Available in the `k6 run` command.
+
+| Env            | CLI              | Code / Config file | Default |
+| -------------- | ---------------- | ------------------ | ------- |
+| `K6_LOCAL_IPS` | `--local-ips`    | N/A                | N/A     |
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
 ```
 
 </CodeGroup>
