@@ -7,7 +7,6 @@ require('dotenv').config({
 
 const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
 const isProduction = mainURL === 'https://k6.io/docs';
-const isStaging = mainURL.startsWith('https://staging.k6.io');
 
 const shouldAnnouncementBannerBeShown = false;
 
@@ -81,24 +80,6 @@ const plugins = [
           },
         },
       ],
-    },
-  },
-  {
-    resolve: 'gatsby-plugin-sentry',
-    options: {
-      dsn:
-        'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
-      // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-      environment: isProduction ? 'production' : 'staging',
-      enabled: isProduction || isStaging,
-      ignoreErrors: [
-        // that's a real bug we have, but I'm ignoring it for now.
-        'getBoundingClientRect',
-        "Cannot read property 'getBoundingClientRect' of undefined",
-        "TypeError: undefined is not an object (evaluating 'n.content.getBoundingClientRect')",
-        'n.content is undefined', // same as above.
-      ],
-      denyUrls: [],
     },
   },
   {
@@ -259,6 +240,15 @@ if (isProduction) {
       head: false,
       cookieDomain: 'k6.io',
       allowLinker: true,
+    },
+  });
+
+  plugins.push({
+    resolve: '@sentry/gatsby',
+    options: {
+      dsn:
+        'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
+      environment: 'production',
     },
   });
 }
