@@ -89,7 +89,7 @@ const plugins = [
       dsn:
         'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
       // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-      environment: process.env.NODE_ENV,
+      environment: isProduction ? 'production' : 'staging',
       enabled: isProduction || isStaging,
       ignoreErrors: [
         // that's a real bug we have, but I'm ignoring it for now.
