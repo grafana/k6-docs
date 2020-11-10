@@ -306,7 +306,9 @@ export let options = {
 
 This is a composite option that provides control of DNS resolution behavior with
 configuration for cache expiration (TTL), IP selection strategy and IP version
-preference.
+preference. The TTL field in the DNS record is currently not read by k6, so the
+`ttl` option allows manual control over this behavior, albeit as a fixed value
+for the duration of the test run.
 
 Note that DNS resolution is done only on new HTTP connections, and by default k6
 will try to reuse connections if HTTP keep-alive is supported. To force a certain
