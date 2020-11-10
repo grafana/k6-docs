@@ -26,7 +26,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
-| [Local IPs](#local-ips)                                   | A list of IPs,IP ranges and CIDRs from which VUs will make requests                 |
+| [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
 | [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
@@ -216,6 +216,8 @@ export let options = {
 
 ### Block Hostnames
 
+> _New in v0.29.0_
+
 Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
 `*` at the beginning such as `*.example.com` that will match anything before that such as
 `test.example.com` and `test.test.example.com`.
@@ -327,17 +329,17 @@ Possible `select` values are:
 - `roundRobin`: iterate sequentially over the resolved IPs.
 
 Possible `policy` values are:
-- `preferIPv4`: return an IPv4 address if available, otherwise fall back to IPv6.
-- `preferIPv6`: return an IPv6 address if available, otherwise fall back to IPv4.
-- `onlyIPv4`: only use IPv4 addresses even if an IPv6 address is returned.
-- `onlyIPv6`: only use IPv6 addresses even if an IPv4 address is returned.
-- `any`: no preference, return any address.
+- `preferIPv4`: use IPv4 addresses, if available, otherwise fall back to IPv6.
+- `preferIPv6`: use IPv6 addresses, if available, otherwise fall back to IPv4.
+- `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
+- `onlyIPv6`: only use IPv6 addresses, ignore any IPv4 ones.
+- `any`: no preference, use all addresses.
 
 Here are some configuration examples:
 
 ```bash
-k6 run --dns "ttl=inf,select=first,policy=any" script.js # this is the old k6 behavior
-K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior
+k6 run --dns "ttl=inf,select=first,policy=any" script.js # the old k6 behavior before v0.29.0
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior from v0.29.0
 ```
 
 <CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
@@ -579,6 +581,8 @@ given out to VUs. This option doesn't change anything on the OS level so the IPs
 configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
 IPs don't include the first and last IP as they are reserved for referring to the network itself and
 the broadcast address respectively.
+
+This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC-1>,<IP-from-first-NIC-2>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
 
 Available in the `k6 run` command.
 
