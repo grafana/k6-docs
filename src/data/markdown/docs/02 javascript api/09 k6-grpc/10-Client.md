@@ -19,15 +19,22 @@ title: Client
 
 ```js
 import grpc from "k6/net/grpc";
-import { check } from "k6";
 
-const client = new grpc.Client();
-client.load([], "language_service.proto")
+let client = new grpc.Client();
+// Download addsvc.proto for https://grpcb.in/, located at:
+// https://raw.githubusercontent.com/moul/pb/master/addsvc/addsvc.proto
+// and put it in the current folder ("./" is an optional import path).
+client.load(["./"], "addsvc.proto")
 
 export default () => {
-    client.connect("language.googleapis.com:443")
-    const response = client.invoke("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
-    check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
+    client.connect("grpcb.in:9001", { timeout: "5s" });
+
+    let response = client.invoke("addsvc.Add/Sum", {
+        a: 1,
+        b: 2
+    })
+    console.log(response.message.v) // should print 3
+
     client.close()
 }
 ```
