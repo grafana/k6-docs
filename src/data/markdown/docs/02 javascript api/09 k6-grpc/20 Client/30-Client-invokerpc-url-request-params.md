@@ -1,5 +1,5 @@
 ---
-title: "Client.invokeRPC(url, request [,params])"
+title: "Client.invoke(url, request [,params])"
 ---
 
 Invokes an unary RPC request to the given method.
@@ -26,18 +26,18 @@ error will be thrown.
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 import { check } from "k6";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "routeguide.proto")
 
 export default () => {
     client.connect("localhost:10000", { plaintext: true })
-    const response = client.invokeRPC("main.RouteGuide/GetFeature", {
+    const response = client.invoke("main.RouteGuide/GetFeature", {
         latitude: 410248224,
         longitude: -747127767,
-    }); 
+    });
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
     console.log(response.message.name)
     // output: 3 Hasta Way, Newton, NJ 07860, USA

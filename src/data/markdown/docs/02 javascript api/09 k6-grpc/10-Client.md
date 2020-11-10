@@ -4,13 +4,13 @@ title: Client
 
 `Client` is a gRPC client that can interact with a gRPC server.
 
->  ⚠️ **Note**: Only unary RPCs are currently supported, ie. there is no support for client, server or bidirectional streaming. 
+>  ⚠️ **Note**: Only unary RPCs are currently supported, ie. there is no support for client, server or bidirectional streaming.
 
 | Method | Description |
 |--------|-------------|
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-grpc/client/client-load-importpaths----protofiles) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
-| [Client.connect(address [,params])](/javascript-api/k6-grpc/client/client-connect-address-params) | Open's a connection to the given gRPC server. |
-| [Client.invokeRPC(url, request [,params])](/javascript-api/k6-grpc/client/client-invokerpc-url-request-params) | Makes a unary RPC for the given service/method and returns a [Response](/javascript-api/k6-grpc/response). |
+| [Client.connect(address [,params])](/javascript-api/k6-grpc/client/client-connect-address-params) | Opens a connection to the given gRPC server. |
+| [Client.invoke(url, request [,params])](/javascript-api/k6-grpc/client/client-invokerpc-url-request-params) | Makes a unary RPC for the given service/method and returns a [Response](/javascript-api/k6-grpc/response). |
 
 
 ### Examples
@@ -18,15 +18,15 @@ title: Client
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 import { check } from "k6";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "language_service.proto")
 
 export default () => {
     client.connect("language.googleapis.com:443")
-    const response = client.invokeRPC("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
+    const response = client.invoke("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
     client.close()
 }
@@ -37,10 +37,10 @@ export default () => {
 <div class="code-group" data-props='{"labels": ["Authorization"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 import { check } from "k6";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "authorization.proto", "route_guide.proto")
 
 export function setup() {
@@ -59,7 +59,7 @@ export default (token) => {
     const headers = {
         authorization: `bearer ${token}`,
     }
-    const response = client.invokeRPC("google.cloud.route.v1.RoutingService/GetFeature", {
+    const response = client.invoke("google.cloud.route.v1.RoutingService/GetFeature", {
         latitude: 410248224,
         longitude: -747127767
 
@@ -74,17 +74,17 @@ export default (token) => {
 <div class="code-group" data-props='{"labels": ["Single connection"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 import { check } from "k6";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "language_service.proto")
 
 export default () => {
     if (__ITER == 0) {
         client.connect("language.googleapis.com:443")
     }
-    const response = client.invokeRPC("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
+    const response = client.invoke("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
     // Do NOT close the client
 }

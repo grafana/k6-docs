@@ -1,20 +1,16 @@
 ---
-title: "k6/grpc"
+title: "k6/net/grpc"
 excerpt: "k6 gRPC API"
 ---
 
-The k6/grpc modules provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
-
-| Function | Description |
-|----------|-------------|
-| [newClient()](/javascript-api/k6-grpc/newclient) | Creates a new [Client](/javascript-api/k6-grpc/client) that can be used to connect and make RPCs to a gRPC server. |
+The `k6/net/grpc` module, added in k6 v0.29.0, provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
 | Class/Method | Description |
 |--------------|-------------|
 | [Client](/javascript-api/k6-grpc/client) | gRPC client used for making RPC calls to a gRPC Server |
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-grpc/client/client-load-importpaths----protofiles) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
 | [Client.connect(address [,params])](/javascript-api/k6-grpc/client/client-connect-address-params) | Connects to a given gRPC service. |
-| [Client.invokeRPC(url, request [,params])](/javascript-api/k6-grpc/client/client-invokerpc-url-request-params) | Makes a unary RPC for the given service/method and returns a [Response](/javascript-api/k6-grpc/response). |
+| [Client.invoke(url, request [,params])](/javascript-api/k6-grpc/client/client-invokerpc-url-request-params) | Makes a unary RPC for the given service/method and returns a [Response](/javascript-api/k6-grpc/response). |
 | [Client.close()]() | Close the connection to the gRPC service. |
 | [Params](/javascript-api/k6-grpc/params) | RPC Request specific options. |
 | [Response](/javascript-api/k6-grpc/response) | Returned by RPC requests. |

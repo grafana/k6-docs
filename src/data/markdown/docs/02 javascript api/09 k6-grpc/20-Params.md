@@ -8,7 +8,7 @@ title: "Params"
 |------|------|-------------|
 | `Params.headers` | object | Object with key-value pairs representing custom headers the user would like to add to the request. |
 | `Params.tags` | object | Key-value pairs where the keys are names of tags and the values are tag values. Response time metrics generated as a result of the request will have these tags added to them, allowing the user to filter out those results specifically, when looking at results data. |
-| `Params.timeout` | number | Request timeout to use in milliseconds. Default timeout is 60000ms (60 seconds). |
+| `Params.timeout` | number | Request timeout to use. Default timeout is 60 seconds (`"60s"`). |
 
 
 ### Example of custom metadata headers and tags
@@ -16,9 +16,9 @@ title: "Params"
 <div class="code-group" data-props='{"labels": []}'>
 
 ```js
-import http from "k6/http";
+import grpc from "k6/net/grpc";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "route_guide.proto")
 
 export default function () {
@@ -30,7 +30,7 @@ export default function () {
     headers: { "x-my-header": "k6test" },
     tags: { k6test: "yes" },
   };
-  const response = client.invokeRPC("main.RouteGuide/GetFeature", req, params)
+  const response = client.invoke("main.RouteGuide/GetFeature", req, params)
 }
 ```
 

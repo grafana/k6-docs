@@ -2,8 +2,7 @@
 title: "Client.connect(address [,params])"
 ---
 
-Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be
-called during `init` cycle.
+Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](/using-k6/test-life-cycle).
 
 See [Client.close()]() to close the connection.
 
@@ -31,9 +30,9 @@ See [Client.close()]() to close the connection.
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 
 export default () => {
     client.connect("localhost:8080");
@@ -44,9 +43,9 @@ export default () => {
 <div class="code-group" data-props='{"labels": ["Insecure connection"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 
 export default () => {
     client.connect("localhost:8080", { plaintext: true });

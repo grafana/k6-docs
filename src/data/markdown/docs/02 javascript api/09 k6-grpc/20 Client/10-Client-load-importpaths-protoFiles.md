@@ -2,10 +2,9 @@
 title: "Client.load(importPaths, ...protoFiles)"
 ---
 
-Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct
-request and repsonse data structures for the RPC schema. 
+Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and repsonse data structures for the RPC schema.
 
-Must be called within the `init` cycle.
+Must be called within the [`init` phase](/using-k6/test-life-cycle).
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -33,9 +32,9 @@ Must be called within the `init` cycle.
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load([], "language_service.proto")
 ```
 
@@ -44,9 +43,9 @@ client.load([], "language_service.proto")
 <div class="code-group" data-props='{"labels": ["More complex"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 client.load(
     ["../googleapis/google"],
     "../googleapis/google/spanner/admin/instance/v1/spanner_instance_admin.proto",
@@ -60,10 +59,10 @@ client.load(
 <div class="code-group" data-props='{"labels": ["MethodInfo"], "lineNumbers": [true]}'>
 
 ```js
-import ws from "k6/grpc";
+import grpc from "k6/net/grpc";
 import { check } from "k6";
 
-const client = grpc.newClient();
+const client = new grpc.Client();
 const methodInfoList = client.load([], "language_service.proto");
 
 export default () => {
@@ -73,7 +72,7 @@ export default () => {
 
     methodInfo.forEach(m => {
         if (!m.isClientStream && !m.isServerStream) {
-            const resp = client.invokeRPC(m.fullMethod, {});
+            const resp = client.invoke(m.fullMethod, {});
             check(resp, { "status is InvalidArgument": (r) => r && r.status === grpc.StatusInvalidArgument });
         }
     });
