@@ -11,12 +11,6 @@ See [Client.close()]() to close the connection.
 | address | string | The address of the gRPC server. Should be in the form: `host:port` with no protocol prefix eg. `grpc.k6.io:443`. The host must be a literal IP address, or a host name that can be resolved to IP addresses.  The port must be a literal port number or a service name eg. `:443` or `:https`. If the host is a literal IPv6 address it must be enclosed in square brackets, as in `[2001:db8::1]:80` or `[fe80::1%zone]:80`. |
 | params (optional) | object | [ConnectParams](#connectparams) object containing additional connect parameters. |
 
-### Returns
-
-| Type | Description |
-|------|-------------|
-| bool | If a connection was successful return `true`, otherwise `false`.
-
 
 ## ConnectParams
 
