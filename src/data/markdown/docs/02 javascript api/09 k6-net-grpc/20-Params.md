@@ -15,7 +15,7 @@ title: "Params"
 
 <div class="code-group" data-props='{"labels": []}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();

@@ -15,7 +15,7 @@ Must be called within the [`init` phase](/using-k6/test-life-cycle).
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();
@@ -26,7 +26,7 @@ client.load([], "language_service.proto")
 
 <div class="code-group" data-props='{"labels": ["More complex"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();

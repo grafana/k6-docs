@@ -10,14 +10,14 @@ title: Client
 |--------|-------------|
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-net-grpc/client/client-load-importpaths----protofiles) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
 | [Client.connect(address [,params])](/javascript-api/k6-net-grpc/client/client-connect-address-params) | Opens a connection to the given gRPC server. |
-| [Client.invoke(url, request [,params])](/javascript-api/k6-net-grpc/client/client-invoke-url-request-params) | Makes a unary RPC for the given service/method and returns a [Response](/javascript-api/k6-net-grpc/response). |
+| [Client.invoke(url, request [,params])](/javascript-api/k6-net-grpc/client/client-invoke-url-request-params) | Makes an unary RPC for the given service/method and returns a [Response](/javascript-api/k6-net-grpc/response). |
 
 
 ### Examples
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 let client = new grpc.Client();
@@ -43,7 +43,7 @@ export default () => {
 
 <div class="code-group" data-props='{"labels": ["Authorization"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 import { check } from "k6";
 
@@ -80,7 +80,7 @@ export default (token) => {
 
 <div class="code-group" data-props='{"labels": ["Single connection"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 import { check } from "k6";
 
