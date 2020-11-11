@@ -12,7 +12,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
-| [Block hostnames](#block-hostnames)                       | Block hostnames from being called                                                   |
+| [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
@@ -331,8 +331,8 @@ Possible `select` values are:
 - `roundRobin`: iterate sequentially over the resolved IPs.
 
 Possible `policy` values are:
-- `preferIPv4`: use IPv4 addresses, if available, otherwise fall back to IPv6.
-- `preferIPv6`: use IPv6 addresses, if available, otherwise fall back to IPv4.
+- `preferIPv4`: use IPv4 addresses if available, otherwise fall back to IPv6.
+- `preferIPv6`: use IPv6 addresses if available, otherwise fall back to IPv4.
 - `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
 - `onlyIPv6`: only use IPv6 addresses, ignore any IPv4 ones.
 - `any`: no preference, use all addresses.
@@ -584,7 +584,7 @@ configured on the OS level in order for k6 to be able to use them. Also IPv4 CID
 IPs don't include the first and last IP as they are reserved for referring to the network itself and
 the broadcast address respectively.
 
-This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC-1>,<IP-from-first-NIC-2>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
+This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC>,<IP-from-second-NIC>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
 
 Available in the `k6 run` command.
 

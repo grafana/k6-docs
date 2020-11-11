@@ -2,7 +2,7 @@
 title: "Params"
 ---
 
-*Params* is an object used by the gRPC methods that generate RPC requests. *Params* contains request-specific options like e.g. headers that should be inserted into the request.
+*Params* is an object used by the gRPC methods that generate RPC requests. *Params* contains request-specific options like headers that should be inserted into the request.
 
 | Name | Type | Description |
 |------|------|-------------|

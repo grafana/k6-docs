@@ -26,7 +26,7 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 | `StatusOK` | OK is returned on success. |
 | `StatusCanceled` | Canceled indicates the operation was canceled (typically by the caller). |
 | `StatusUnknown` | Unknown error. |
-| `StatusInvalidArgument` | InvalidArgument indicates client specified an invalid argument. |
+| `StatusInvalidArgument` | InvalidArgument indicates the client specified an invalid argument. |
 | `StatusDeadlineExceeded` | DeadlineExceeded means operation expired before completion. |
 | `StatusNotFound` | NotFound means some requested entity (e.g., file or directory) was not found. |
 | `StatusAlreadyExists` | AlreadyExists means an attempt to create an entity failed because one already exists. |
@@ -36,8 +36,7 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 | `StatusAborted` | Aborted indicates the operation was aborted, typically due to a concurrency issue like sequencer check failures, transaction aborts, etc. |
 | `StatusOutOfRange` | OutOfRange means operation was attempted past the valid range. E.g., seeking or reading past end of file. |
 | `StatusUnimplemented` | Unimplemented indicates operation is not implemented or not supported/enabled in this service. |
-| `StatusInternal` | Internal errors. Means some invariants expected by underlying system has been broken. If you see one of these errors, something is very broken. |
+| `StatusInternal` | Internal errors. Means some invariants expected by the underlying system have been broken. |
 | `StatusUnavailable` | Unavailable indicates the service is currently unavailable. This is a most likely a transient condition and may be corrected by retrying with a backoff. Note that it is not always safe to retry non-idempotent operations. |
 | `StatusDataLoss` | DataLoss indicates unrecoverable data loss or corruption. |
 | `StatusUnauthenticated` | Unauthenticated indicates the request does not have valid authentication credentials for the operation. |
-
