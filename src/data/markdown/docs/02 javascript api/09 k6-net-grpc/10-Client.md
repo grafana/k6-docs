@@ -4,7 +4,7 @@ title: Client
 
 `Client` is a gRPC client that can interact with a gRPC server.
 
->  ⚠️ **Note**: Only unary RPCs are currently supported, ie. there is no support for client, server or bidirectional streaming.
+>  ⚠️ **Note**: Only unary RPCs are currently supported, i.e. there is no support for client, server or bidirectional streaming.
 
 | Method | Description |
 |--------|-------------|

@@ -1,9 +1,11 @@
 (?i)aws
 (?i)boolean
+(?i)bool
 (?i)browserify
 (?i)config
 (?i)css
 (?i)goja
+(?i)grpc
 (?i)grafana
 (?i)hmac
 (?i)html

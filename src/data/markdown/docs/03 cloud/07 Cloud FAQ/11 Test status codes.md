@@ -62,7 +62,7 @@ A test which was aborted by the user. Tests aborted by user count against your t
 
 ## Aborted (by system)
 
-A test that was aborted by the system. These tests typically abort due to a fatal error occurring. If the test fails before launch, there may be an underlying issue with the Load Zone, unrelated to k6. If the test aborts during execution, it may be due to overutilization of the Load Generators. In this case, we suggest you look at the CPU and Memory utilization and add or increase sleep times. You may also want to set the option `discardRepsonseBodies` to `true`, to lower memory pressure.
+A test that was aborted by the system. These tests typically abort due to a fatal error occurring. If the test fails before launch, there may be an underlying issue with the Load Zone, unrelated to k6. If the test aborts during execution, it may be due to overutilization of the Load Generators. In this case, we suggest you look at the CPU and Memory utilization and add or increase sleep times. You may also want to set the option `discardResponseBodies` to `true`, to lower memory pressure.
 
 ## Aborted (script error)
 

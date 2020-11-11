@@ -2,7 +2,7 @@
 title: "Client.load(importPaths, ...protoFiles)"
 ---
 
-Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and repsonse data structures for the RPC schema.
+Loads and parses the protocol buffer descriptors so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.
 
 Must be called within the [`init` phase](/using-k6/test-life-cycle).
 
