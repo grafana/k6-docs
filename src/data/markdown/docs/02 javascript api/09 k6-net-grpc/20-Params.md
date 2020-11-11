@@ -19,7 +19,7 @@ title: "Params"
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();
-client.load([], "route_guide.proto")
+client.load([], "route_guide.proto");
 
 export default function () {
   const req = {
@@ -30,7 +30,7 @@ export default function () {
     headers: { "x-my-header": "k6test" },
     tags: { k6test: "yes" },
   };
-  const response = client.invoke("main.RouteGuide/GetFeature", req, params)
+  const response = client.invoke("main.RouteGuide/GetFeature", req, params);
 }
 ```
 

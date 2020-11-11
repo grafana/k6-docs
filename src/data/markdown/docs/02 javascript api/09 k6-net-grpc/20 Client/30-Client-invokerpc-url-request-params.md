@@ -30,16 +30,16 @@ import grpc from "k6/net/grpc";
 import { check } from "k6";
 
 const client = new grpc.Client();
-client.load([], "routeguide.proto")
+client.load([], "routeguide.proto");
 
 export default () => {
-    client.connect("localhost:10000", { plaintext: true })
+    client.connect("localhost:10000", { plaintext: true });
     const response = client.invoke("main.RouteGuide/GetFeature", {
         latitude: 410248224,
         longitude: -747127767,
     });
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
-    console.log(response.message.name)
+    console.log(response.message.name);
     // output: 3 Hasta Way, Newton, NJ 07860, USA
 
     client.close()

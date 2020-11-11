@@ -48,7 +48,7 @@ import grpc from "k6/net/grpc";
 import { check } from "k6";
 
 const client = new grpc.Client();
-client.load([], "authorization.proto", "route_guide.proto")
+client.load([], "authorization.proto", "route_guide.proto");
 
 export function setup() {
     client.connect("auth.googleapis.com:443");
