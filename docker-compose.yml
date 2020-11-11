@@ -3,7 +3,7 @@ version: "3.7"
 services:
   web:
     build: .
-    command: sh -c "yarn --pure-lockfile && yarn develop -H 0.0.0.0"
+    command: sh -c "npm ci && npm run develop --host=0.0.0.0"
     ports:
       - "8100:8000"
     volumes:
