@@ -23,8 +23,8 @@ import grpc from "k6/net/grpc";
 let client = new grpc.Client();
 // Download addsvc.proto for https://grpcb.in/, located at:
 // https://raw.githubusercontent.com/moul/pb/master/addsvc/addsvc.proto
-// and put it in the current folder ("./" is an optional import path).
-client.load(["./"], "addsvc.proto")
+// and put it in the same folder as this script.
+client.load(null, "addsvc.proto");
 
 export default () => {
     client.connect("grpcb.in:9001", { timeout: "5s" });
@@ -32,10 +32,10 @@ export default () => {
     let response = client.invoke("addsvc.Add/Sum", {
         a: 1,
         b: 2
-    })
-    console.log(response.message.v) // should print 3
+    });
+    console.log(response.message.v); // should print 3
 
-    client.close()
+    client.close();
 }
 ```
 
@@ -62,17 +62,17 @@ export function setup() {
 }
 
 export default (token) => {
-    client.connect("route.googleapis.com:443")
+    client.connect("route.googleapis.com:443");
     const headers = {
         authorization: `bearer ${token}`,
-    }
+    };
     const response = client.invoke("google.cloud.route.v1.RoutingService/GetFeature", {
         latitude: 410248224,
         longitude: -747127767
 
-    }, { headers })
+    }, { headers });
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
-    client.close()
+    client.close();
 }
 ```
 
@@ -85,13 +85,13 @@ import grpc from "k6/net/grpc";
 import { check } from "k6";
 
 const client = new grpc.Client();
-client.load([], "language_service.proto")
+client.load([], "language_service.proto");
 
 export default () => {
     if (__ITER == 0) {
-        client.connect("language.googleapis.com:443")
+        client.connect("language.googleapis.com:443");
     }
-    const response = client.invoke("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {})
+    const response = client.invoke("google.cloud.language.v1.LanguageService/AnalyzeSentiment", {});
     check(response, { "status is OK": (r) => r && r.status === grpc.StatusOK });
     // Do NOT close the client
 }

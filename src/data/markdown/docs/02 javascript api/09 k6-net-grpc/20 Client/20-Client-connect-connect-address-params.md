@@ -23,7 +23,7 @@ See [Client.close()]() to close the connection.
 
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();
@@ -36,7 +36,7 @@ export default () => {
 
 <div class="code-group" data-props='{"labels": ["Insecure connection"], "lineNumbers": [true]}'>
 
-```js
+```javascript
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();

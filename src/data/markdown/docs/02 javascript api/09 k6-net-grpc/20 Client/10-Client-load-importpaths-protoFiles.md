@@ -19,7 +19,7 @@ Must be called within the [`init` phase](/using-k6/test-life-cycle).
 import grpc from "k6/net/grpc";
 
 const client = new grpc.Client();
-client.load([], "language_service.proto")
+client.load([], "language_service.proto");
 ```
 
 </div>
@@ -32,9 +32,9 @@ import grpc from "k6/net/grpc";
 const client = new grpc.Client();
 client.load(
     ["../googleapis/google"],
-    "../googleapis/google/spanner/admin/instance/v1/spanner_instance_admin.proto",
-    "../googleapis/google/spanner/admin/database/v1/spanner_database_admin.proto",
-    "../googleapis/google/spanner/v1/spanner.proto",
+    "spanner/admin/instance/v1/spanner_instance_admin.proto",
+    "spanner/admin/database/v1/spanner_database_admin.proto",
+    "spanner/v1/spanner.proto",
 );
 ```
 
