@@ -17,7 +17,7 @@ See [Client.close()]() to close the connection.
 | Name | Type | Description |
 |------|------|-------------|
 | `ConnectParams.plaintext` | bool | If `true` will connect to the gRPC server using plaintext ie. insecure. Defaults to `false` ie. secure via TLS. |
-| `ConnectParams.timeout` | number | Connection timeout to use in milliseconds. Default timeout is 60000ms (60 seconds). |
+| `ConnectParams.timeout` | number | Connection timeout to use. Default timeout is `"60s"` (60 seconds). |
 
 ### Examples
 
