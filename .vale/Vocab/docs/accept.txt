@@ -37,6 +37,7 @@
 [wW]ebpack
 alice
 async
+backoff
 browserified
 browserlist
 bundler
@@ -81,6 +82,7 @@ Ops
 Palo
 Paulo
 performant
+plaintext
 polyfill
 polyfills
 proto
