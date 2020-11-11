@@ -16,8 +16,8 @@ docker-compose  up -d --build
 ```
 
 Note that starting up the docker takes several minutes, during which the
-website will not be accessible. Use `docker-compose log -f web` to track
-progress. 
+website will not be accessible. Use `docker-compose logs -f web` to track
+progress.
 
 Then visit http://localhost:8100
 
@@ -36,7 +36,7 @@ cd k6-docs
 npm install
 ```
 
-Running manually: 
+Running manually:
 
 ```bash
 npm start
@@ -55,6 +55,6 @@ All tags created using the format `vN.N.N`, for instance `v0.0.1`, will result i
 ## Contributing
 
 Documentation articles are markdown files structured under the
-[`src/data/markdown/docs`](src/data/markdown/docs) folder. 
+[`src/data/markdown/docs`](src/data/markdown/docs) folder.
 
 The markdown files support a few custom extensions explained on the [File Format Guide](CONTRIBUTING_FILE_FORMAT.md).

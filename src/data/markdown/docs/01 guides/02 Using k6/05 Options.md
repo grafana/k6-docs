@@ -12,9 +12,11 @@ Options allow you to configure how k6 will behave during test execution.
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
+| [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
+| [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
 | [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
@@ -24,6 +26,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
+| [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
 | [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
@@ -209,6 +212,40 @@ export let options = {
 
 </CodeGroup>
 
+
+
+### Block Hostnames
+
+> _New in v0.29.0_
+
+Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
+`*` at the beginning such as `*.example.com` that will match anything before that such as
+`test.example.com` and `test.test.example.com`.
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_BLOCK_HOSTNAMES` | `--block-hostnames` | `blockHostnames`   | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  blockHostnames: ["test.k6.io" , "*.example.com"],
+};
+```
+
+</CodeGroup>
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
+```
+
+</CodeGroup>
+
 ### Compatibility Mode
 
 Support running scripts with different ECMAScript compatibility modes.
@@ -259,6 +296,64 @@ more reliable test results.
 export let options = {
   discardResponseBodies: true,
 };
+```
+
+</CodeGroup>
+
+### DNS
+
+> _New in v0.29.0_
+
+This is a composite option that provides control of DNS resolution behavior with
+configuration for cache expiration (TTL), IP selection strategy and IP version
+preference. The TTL field in the DNS record is currently not read by k6, so the
+`ttl` option allows manual control over this behavior, albeit as a fixed value
+for the duration of the test run.
+
+Note that DNS resolution is done only on new HTTP connections, and by default k6
+will try to reuse connections if HTTP keep-alive is supported. To force a certain
+DNS behavior consider enabling the [`noConnectionReuse`](#no-connection-reuse)
+option in your tests.
+
+
+| Env      | CLI     | Code / Config file | Default                                  |
+| ---------| --------| -------------------| ---------------------------------------- |
+| `K6_DNS` | `--dns` | `dns`              | `ttl=5m,select=random,policy=preferIPv4` |
+
+Possible `ttl` values are:
+- `0`: no caching at all - each request will trigger a new DNS lookup.
+- `inf`: cache any resolved IPs for the duration of the test run.
+- any time duration like `60s`, `5m30s`, `10m`, `2h`, etc.; if no unit is specified (e.g. `ttl=3000`), k6 assumes milliseconds.
+
+Possible `select` values are:
+- `first`: always pick the first resolved IP.
+- `random`: pick a random IP for every new connection.
+- `roundRobin`: iterate sequentially over the resolved IPs.
+
+Possible `policy` values are:
+- `preferIPv4`: use IPv4 addresses if available, otherwise fall back to IPv6.
+- `preferIPv6`: use IPv6 addresses if available, otherwise fall back to IPv4.
+- `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
+- `onlyIPv6`: only use IPv6 addresses, ignore any IPv4 ones.
+- `any`: no preference, use all addresses.
+
+Here are some configuration examples:
+
+```bash
+k6 run --dns "ttl=inf,select=first,policy=any" script.js # the old k6 behavior before v0.29.0
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior from v0.29.0
+```
+
+<CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  dns: {
+    ttl: '1m',
+    select: 'roundRobin',
+    policy: 'any'
+  }
+}
 ```
 
 </CodeGroup>
@@ -408,7 +503,7 @@ $ k6 run --include-system-env-vars ~/script.js
 ### Insecure Skip TLS Verify
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
-would otherwise be done to establish trust in a server provided TLS certificate will be ignored. 
+would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
 This only applies to connections created by VU code, such as http requests.
 Available in `k6 run` and `k6 cloud` commands
 
@@ -481,6 +576,31 @@ export let options = {
 
 </CodeGroup>
 
+### Local IPs
+
+A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
+given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
+configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
+IPs don't include the first and last IP as they are reserved for referring to the network itself and
+the broadcast address respectively.
+
+This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC>,<IP-from-second-NIC>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
+
+Available in the `k6 run` command.
+
+| Env            | CLI              | Code / Config file | Default |
+| -------------- | ---------------- | ------------------ | ------- |
+| `K6_LOCAL_IPS` | `--local-ips`    | N/A                | N/A     |
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
+```
+
+</CodeGroup>
+
 ### Log output
 
 This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
@@ -500,6 +620,7 @@ The possible keys with their meanings and default values:
 | key               | meaning                                                                                                                                                                                | default value                            |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | `nothing`         | the endpoint to which to send logs                                                                                                                                                     | `http://127.0.0.1:3100/loki/api/v1/push` |
+| allowedLabels     | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]`  | N/A                                      |
 | label.`labelName` | adds an additional label with the provided key and value to each message                                                                                                               | N/A                                      |
 | limit             | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped                                                           | 100                                      |
 | level             | the minimal level of a message so it's send to loki                                                                                                                                    | all                                      |
@@ -839,7 +960,7 @@ Available in the `k6 run` command.
 | ------------------- | ----------------------------- | ------------------ | ------- |
 | `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                | `null`  |
 
-<CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
 ```bash
 $ k6 run --summary-export export.json ~/script.js
@@ -1070,7 +1191,8 @@ export let options = {
 ### User Agent
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
-requests. Available in `k6 run` and `k6 cloud` commands
+requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
+Available in `k6 run` and `k6 cloud` commands
 
 | Env             | CLI            | Code / Config file | Default                                                               |
 | --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
