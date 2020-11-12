@@ -4,7 +4,7 @@ title: "Client.connect(address [,params])"
 
 Opens a connection to a gRPC server; will block until a connection is made or a connection error is thrown. Cannot be called during the [`init` phase](/using-k6/test-life-cycle).
 
-See [Client.close()]() to close the connection.
+See [Client.close()](/javascript-api/k6-net-grpc/client/client-close) to close the connection.
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
