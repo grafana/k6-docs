@@ -76,7 +76,8 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
           >
             <code className={styles.code}>
               {tokens.map((line, i) => {
-                if (line[0].empty) return null;
+                // remove last empty line that gets addded by default
+                if (i + 1 === tokens.length && line[0].empty) return null;
                 return (
                   <div {...getLineProps({ line, key: i })} style={undefined}>
                     {showLineNumbers && (
