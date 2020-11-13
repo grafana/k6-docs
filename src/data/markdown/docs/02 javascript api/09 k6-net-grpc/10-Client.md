@@ -11,6 +11,7 @@ title: Client
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-net-grpc/client/client-load-importpaths----protofiles) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
 | [Client.connect(address [,params])](/javascript-api/k6-net-grpc/client/client-connect-address-params) | Opens a connection to the given gRPC server. |
 | [Client.invoke(url, request [,params])](/javascript-api/k6-net-grpc/client/client-invoke-url-request-params) | Makes an unary RPC for the given service/method and returns a [Response](/javascript-api/k6-net-grpc/response). |
+| [Client.close()](/javascript-api/k6-net-grpc/client/client-close) | Close the connection to the gRPC service. |
 
 
 ### Examples
