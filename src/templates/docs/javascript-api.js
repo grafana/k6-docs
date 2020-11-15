@@ -32,7 +32,7 @@ const getContent = (nodes, sidebarTree) =>
       frontmatter: { title },
       body,
     } = entity;
-    if (title.replace('/', '-') in sidebarTree.children) {
+    if (title.replace(/\//g, '-') in sidebarTree.children) {
       return (
         <div key={id} className={jsApiStyles.moduleWrapper}>
           <h2>{title}</h2>
