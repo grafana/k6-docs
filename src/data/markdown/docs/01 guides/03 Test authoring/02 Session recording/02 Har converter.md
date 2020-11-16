@@ -4,7 +4,7 @@ excerpt: ''
 ---
 
 
-The HAR converter is an alternative to the [Browser recorder](/test-authoring/session-recording/browser-recorder) to generate a k6 script from an user session. It uses a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>) as input to base your k6 script.
+The HAR converter is an alternative to the [Browser recorder](/test-authoring/session-recording/browser-recorder). It generates a k6 script based on the HTTP requests included on a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 
 > HAR is a file format used by all the browsers and various tools to export the recorded HTTP requests.
 
