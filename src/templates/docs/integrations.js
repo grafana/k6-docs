@@ -237,18 +237,18 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               linksData={[
                 {
                   picture: k6AuthoringImgData,
-                  title: 'Browser Recorder',
-                  description: 'Record a user journey to base your k6 test.',
-                  url:
-                    'https://k6.io/docs/using-k6/session-recording-har-support',
-                },
-                {
-                  picture: k6AuthoringImgData,
                   title: 'Test Builder',
                   description:
                     'Inspired in Postman API Builder. Web UI to generate a k6 test quickly.',
                   url:
-                    'https://k6.io/docs/cloud/creating-and-running-a-test/test-builder',
+                    'https://k6.io/docs/test-authoring/codeless-test-builder',
+                },
+                {
+                  picture: k6AuthoringImgData,
+                  title: 'Browser Recorder',
+                  description: 'Record a user journey to base your k6 test.',
+                  url:
+                    'https://k6.io/docs/test-authoring/session-recording/browser-recorder',
                 },
               ]}
             />

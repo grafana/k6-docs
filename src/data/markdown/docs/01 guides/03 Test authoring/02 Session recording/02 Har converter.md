@@ -1,30 +1,21 @@
 ---
-title: 'Session recording / HAR support'
+title: 'HAR converter'
 excerpt: ''
 ---
 
-In terms of load testing, recording usually refers to the process of creating a load test from the recording of a user session. The process looks like:
 
-1. Record a user or API session.
-2. Convert the recorded session into a test.
-3. Run the test.
+The HAR converter is an alternative to the [Browser recorder](/test-authoring/session-recording/browser-recorder) to generate a k6 script from an user session. It uses a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>) as input to base your k6 script.
 
-While not exclusive, it is common to use the recording when testing complex scenarios of websites or mobile applications. If you have to create a performance test that simulates a scenario with dozens or hundreds of requests, the recording could help you to be more productive in creating your test.
+> HAR is a file format used by all the browsers and various tools to export the recorded HTTP requests.
 
-Recording allows seeing the sequence of requests and parameters of the session instead of having to figure them out. Additionally, you could use the recorded information to auto-generate your test instead of building it from scratch.
+The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS tool. Unlike the Browser Recorder, it **does not require a k6 Cloud user** to generate the k6 script.
 
-k6 does not have built-in functionality to record user or API sessions, but it allows to auto-generate a k6 script via an [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>); HAR is a file format used by all the browsers and various tools to export the recorded HTTP requests.
-
-In k6, the process looks like:
+When using the HAR converter, the process looks like:
 
 1. Record a HAR file using your browser or tool of choice.
 2. Use the **har-to-k6 converter** to generate a k6 test from the HAR file.
-3. Update the auto-generated k6 test.
+3. Update the auto-generated k6 test in your text editor or IDE.
 4. Use **k6** to run the test.
-
-> The auto-generation of the test is a great option to add to your toolbox. It’s common practice for advanced user flows that generate many sophisticated HTTP requests, or for helping testers to identify the format of the requests.
->
-> The recording avoids writing advanced tests from scratch, saving you time building your performance tests.
 
 ## 1. Record a HAR file
 
@@ -46,7 +37,7 @@ Here are the basic steps you need to take to make a recording in Chrome:
 6. Enter the URL of your site and start doing whatever you'd like your simulated load test users to be doing.
 7. When done, right-click on the list of URLs in Chrome developer tools and choose "Save as HAR with content".
 
-![Save HAR for load testing](./images/Session-recording-HAR-support/session_recorder_save_as_har.png)
+![Save HAR for load testing](./images/session_recorder_save_as_har.png)
 
 It's good to have in consideration the following best practices to record a user session:
 
@@ -141,13 +132,13 @@ In Chrome, you can use the DevTools Network Filter to select only particular dom
 /loadimpact.com|cloudfront.net/
 ```
 
-![Save HAR filter domain using regex](./images/Session-recording-HAR-support/session_recorder_filter_domain.png)
+![Save HAR filter domain using regex](./images/session_recorder_filter_domain.png)
 
 After filtering your selected domains, you can download the HAR file as described in the first step of this tutorial, and the HAR file will only include the requests to the selected domains.
 
 If you don’t know all the domains to filter, it is beneficial to use the query language of the Network Filter. Just input `domain:` in the filter to see all the different domains recorded by the Network Panel.
 
-![Save HAR filter domain list](./images/Session-recording-HAR-support/session_recorder_filter_domain_list.png)
+![Save HAR filter domain list](./images/session_recorder_filter_domain_list.png)
 
 ### Correlate dynamic data
 
@@ -171,6 +162,6 @@ $ k6 run loadtest.js
 
 For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
 
-## Recording in the k6 Cloud Service
+## See also
 
-If you are a user of the k6 Cloud Service, you can directly upload HAR files through the web UI or [use a Chrome extension](/cloud/creating-and-running-a-test/recording-a-test-script) to create a script while recording a browsing session.
+- [Browser recorder](/test-authoring/session-recording/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
