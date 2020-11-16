@@ -17,7 +17,7 @@ const processMdxEntry = ({ children: [entry] }) => {
     fileAbsolutePath,
     mdxAST,
     objectID,
-    frontmatter: { title, redirect },
+    frontmatter: { title, redirect, slug: customSlug },
   } = entry;
   if (redirect) {
     // avoid pushing empty records
@@ -41,13 +41,15 @@ const processMdxEntry = ({ children: [entry] }) => {
     .slice(0, -1)
     .join('/');
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
-  const slug = compose(
-    noTrailingSlash,
-    dedupePath,
-    removeGuidesAndRedirectWelcome,
-    unorderify,
-    slugify,
-  )(path);
+  const slug =
+    customSlug ||
+    compose(
+      noTrailingSlash,
+      dedupePath,
+      removeGuidesAndRedirectWelcome,
+      unorderify,
+      slugify,
+    )(path);
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
@@ -86,6 +88,7 @@ const docPagesQuery = `{
         frontmatter {
           title
           redirect
+          slug
         }
         mdxAST
         fileAbsolutePath
