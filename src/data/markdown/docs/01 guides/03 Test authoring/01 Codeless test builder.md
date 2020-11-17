@@ -8,6 +8,8 @@ Based on your inputs, we will automatically generate the proper required JavaScr
 execute the test within the app or from the command line. Use the Test Builder to help
 speed up your scripting efforts.
 
+![k6 Test Builder](images/test-builder.png)
+
 > ### HAR Import
 >
 > The test builder also accepts importing a HAR file. When creating your HAR file, you

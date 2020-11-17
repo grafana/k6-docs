@@ -127,8 +127,11 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     vscodeImg: {
       childImageSharp: { fixed: vscodeImgData },
     },
-    k6AuthoringImg: {
-      childImageSharp: { fixed: k6AuthoringImgData },
+    browserRecorderImg: {
+      childImageSharp: { fixed: browserRecorderImgData },
+    },
+    testBuilderImg: {
+      childImageSharp: { fixed: testBuilderImgData },
     },
     harImg: {
       childImageSharp: { fixed: harImgData },
@@ -171,8 +174,17 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
           }
         }
       }
-      k6AuthoringImg: file(
-        absolutePath: { regex: "/images/doc-integrations/k6/" }
+      testBuilderImg: file(
+        absolutePath: { regex: "/images/doc-integrations/test-builder/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      browserRecorderImg: file(
+        absolutePath: { regex: "/images/doc-integrations/browser-recorder/" }
       ) {
         childImageSharp {
           fixed(width: 60, height: 60, cropFocus: CENTER) {
@@ -236,7 +248,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               subtitle={'Codeless tools to speed up the test creation.'}
               linksData={[
                 {
-                  picture: k6AuthoringImgData,
+                  picture: testBuilderImgData,
                   title: 'Test Builder',
                   description:
                     'Inspired in Postman API Builder. Web UI to generate a k6 test quickly.',
@@ -244,7 +256,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     'https://k6.io/docs/test-authoring/codeless-test-builder',
                 },
                 {
-                  picture: k6AuthoringImgData,
+                  picture: browserRecorderImgData,
                   title: 'Browser Recorder',
                   description: 'Record a user journey to base your k6 test.',
                   url:
