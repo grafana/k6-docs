@@ -1,9 +1,7 @@
 ---
-title: 'Scheduling Tests'
+title: 'Scheduling tests'
 excerpt: 'A guide on how to schedule your load tests to run in the future or on a schedule within the k6 Cloud Web UI.'
 ---
-
-## Background
 
 It's not always feasible to be able to trigger a test to run when you need it. The scheduling option in k6 Cloud allows you to configure a test to execute at a particular time, and on a regular interval, if needed.
 

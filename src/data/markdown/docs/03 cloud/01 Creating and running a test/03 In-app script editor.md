@@ -3,6 +3,10 @@ title: 'In-app script editor'
 excerpt: 'How to use the k6 in-app script editor'
 ---
 
+The in-app script is designed to allow you to quickly write and mock up test scripts right within the web app. We believe most users will quickly graduate to using k6 as a CLI and their IDE of choice locally. However, organizational security rules vary from organization to organization and some may not be able to install a program without review from their security team. The script editor allows you to utilize just about all features of k6 right within the web app.
+
+Use the script editor as a stepping stone, if needed, before you move to running [cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
+
 <Blockquote mod="warning">
 
 #### Limitations of the in-app editor
@@ -13,11 +17,7 @@ must trigger your test using the CLI.
 
 </Blockquote>
 
-## Background
-
-The in-app script is designed to allow you to quickly write and mock up test scripts right within the web app. We believe most users will quickly graduate to using k6 as a CLI and their IDE of choice locally. However, organizational security rules vary from organization to organization and some may not be able to install a program without review from their security team. The script editor allows you to utilize just about all features of k6 right within the web app.
-
-Use the script editor as a stepping stone, if needed, before you move to running tests from the command line.
+![k6 Cloud web script editor](./images/in-app-script-editor.png)
 
 ## Usage
 
