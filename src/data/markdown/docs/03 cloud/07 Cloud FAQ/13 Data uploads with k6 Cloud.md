@@ -93,4 +93,4 @@ export default function () {
 
 </CodeGroup>
 
-For more information on data uploads in k6 read [data uploads](/examples/examples/data-uploads).
+For more information on data uploads in k6 read [data uploads](/examples/data-uploads).
