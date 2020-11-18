@@ -3,75 +3,67 @@ title: 'Codeless Test Builder'
 excerpt: ''
 ---
 
-The k6 Test Builder allows you to utilize a graphical interface to create a test script.
-Based on your inputs, we will automatically generate the proper required JavaScript to
-execute the test within the app or from the command line. Use the Test Builder to help
-speed up your scripting efforts.
+The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.
+
+Based on your inputs, the test builder will automatically generate the k6 script for you. Then, you could copy the script and [run the test from the CLI](/getting-started/running-k6).
+
+> **Note**: you need a [k6 Cloud](/cloud) account to use the Test Builder. However, it is **free to use**, and you do not need an active paid subscription to utilize this feature.
+
+Although we strongly believe in a scriptable/code-based tool to get the most of your performance testing. A GUI based tool like the Test Builder could benefit you:
+
+- Speeding up the test creation.
+- Instructing with the [k6 API](/javascript-api).
+- Collaborating with non-coders into the test creation.
 
 ![k6 Test Builder](images/test-builder.png)
 
-> ### HAR Import
->
-> The test builder also accepts importing a HAR file. When creating your HAR file, you
-> should filter out third party requests and be mindful of your session length. Too many
-> requests as a result of a long journey or third party requests will be overwhelming.
+## Instructions
 
-## Test Builder Configuration
+1 - [Login](https://app.k6.io/account/login) into the k6 Cloud.
 
-The top configuration section allows to:
+2 - On the sidebar menu, click the [Create New Test](https://app.k6.io/tests/new) button.
 
-- `Create` (save) or `Create and Run` your test
-- Give your test a meaningful name
-- Import a HAR file
-- Configure ramping, VUs, and duration
+3 - Select `Test builder`.
 
-To input a HAR file, simply click on `IMPORT HAR` on the right, and select your file to be converted.
-We will automatically populate the Test Builder with your requests, including any `Headers` sent.
-You are able to modify/delete various parts of the requests to meet your requirements.
+![k6 Test Builder](images/k6-create-new-test.png)
 
-![Test Builder Configuration](images/test-builder-config.png)
+4 - Now, you can start building your k6 test using the graphical interface.
 
-## Test Builder Requests
+![k6 Test Builder](images/test-builder.png)
 
-Whether you are importing a HAR file or starting from a blank slate, the `REQUESTS` section
-allows you to explicitly control requests, the data sent with them, and even save data from the response.
 
-Requests will be listed in order on the left. You can reorganize requests by clicking and dragging.
-You can also duplicate or delete requests when hovering over a specific request.
-To add a new request, click `ADD REQUEST`. Your test will execute in the order of these requests.
+## Test builder options
 
-To modify requests, move over to the right side of the `REQUESTS` section. You are able to:
+We are continuously improving and adding new capabilities to the test builder. A few of the most relevant options are:
 
-- Give your request a name to better describe it.
-- Change the `HTTP METHOD` by using the drop down pre-populated with `GET`.
-- Change the URL/Endpoint (This is predefine as `http://test.k6.io/` for example purposes)
-- Specify Headers (If you have imported a HAR file, we will include some Headers here)
-- Specify Query Parameters
-- Create Checks
-- Capture a variable (Helpful for dealing with dynamic data, such as authentication tokens)
-- For POST/PUT/PATCH, you can also specify a request body (JSON, Text, or File Content)
+**Test configuration**
 
-> ### Examples
->
-> We also include some examples of common actions. This is accessible by using the
-> `Test builder examples` drop down in the title bar of the section. Use these for
-> inspiration and guidance as you use the test builder.
-> <br/>
->
-> **NOTE:** Choosing one of the examples will replace the current requests in the Test Builder.
+- Configure ramping (aka [stages](/using-k6/options#stages)) using VUs and duration.
+- Configure [load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones) to run from the k6 Cloud.
 
-![Test Builder Requests](images/test-builder-requests.png)
+**HTTP Requests**
 
-## Test Builder Script
+- Add a request and name it for better description.
+- Change the URL/Endpoint.
+- Change the `HTTP METHOD` using the drop down menu.
+- Specify Headers.
+- Specify Query Parameters.
+- Specify a request body (JSON, Text, or File Content) for POST/PUT/PATCH requests.
+- Reorganize requests by clicking and dragging.
+- Duplicate or delete requests when hovering over a specific request.
 
-After you have completed building your requests. You can click on the `</>` in the
-top right corner of the title bar to view the script we have generated for you.
+**k6 API**
 
-This script is syntactically correct and may be used run right from the web app.
-You may wish to copy it to your local IDE to place in version control, parameterize data,
-or add more business logic. It's highly recommended to add some Thresholds.
+- Define the [thresholds](/using-k6/thresholds) of your test.
+- Add a [check](/javascript-api/k6/check-val-sets-tags) on a request response.
+- Add [sleep](/javascript-api/k6/sleep-t) time between requests.
+- Add a [group](/javascript-api/k6/group-name-fn) to the test.
 
-If this is your first time using the Test Builder or k6. We recommend taking a moment to
-familiarize yourself with the generated script and how the different parts relate to inputs.
-For example, the option object reflects your configuration, names of requests are comments above the
-actual requests, checks are implemented with requests, and more.
+**And more**
+
+- Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/session-recording/browser-recorder).
+- Populate the test builder with the requests included in a [HAR file](https://en.wikipedia.org/wiki/HAR_(file_format)).
+- Capture a variable when dealing with dynamic data, such as authentication tokens.
+- Show examples for better onboarding.
+- Toggle the view mode to see or copy the generated k6 script.
+- Run the test on the k6 Cloud.
