@@ -10,8 +10,7 @@ hideFromSidebar: false
 > existing scripts and configurations will continue to work as before. For a list of breaking changes,
 > see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0).
 
-Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled, allowing
-k6 scenarios enable configuring how VUs and iterations are scheduled, making it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
+Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
 
 - Multiple scenarios can be declared in the same script, and each one can
   independently execute a different JavaScript function, which makes organizing tests easier
