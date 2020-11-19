@@ -14,7 +14,7 @@ At this moment, the browser recorder functionality is tightly coupled to the [k6
 >
 > It is important to know you **do not need an active paid subscription** to use the browser recorder. 
 > 
-> Any user can copy the script from the [k6 Cloud editor](/cloud/creating-and-running-a-test/in-app-script-editor) to edit and run the test locally using the `k6 run` command. 
+> Any user can copy the script from the [k6 Cloud editor](/cloud/creating-and-running-a-test/script-editor) to edit and run the test locally using the `k6 run` command. 
 > 
 > _This integration has allowed us to benefit from the capabilities of the k6 Cloud web app. In the future, we plan to make the extensions operational without having a k6 Cloud account_.
 
@@ -79,7 +79,7 @@ Depending on the type of testing, you might need to change different aspects of 
 > #### Things to consider
 >
 > - The auto-generated script sets [discardResponseBodies](/using-k6/options#discard-response-bodies) to `true`. This configuration will discard all response bodies.
-> - The browser extension will not record other tabs or pop up windows. If you need to capture this information, you should try the [HAR converter](/test-authoring/session-recording/har-converter).
+> - The browser extension will not record other tabs or pop up windows. If you need to capture this information, you should try the [HAR converter](/test-authoring/recording-a-session/har-converter).
 
 6 - **Run the test** locally or in the k6 Cloud.
 

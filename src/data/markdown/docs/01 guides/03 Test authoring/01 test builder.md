@@ -1,5 +1,5 @@
 ---
-title: 'Codeless Test Builder'
+title: 'Test builder'
 excerpt: ''
 ---
 
@@ -7,9 +7,9 @@ The k6 Test Builder allows you to utilize a graphical interface to create a k6 t
 
 Based on your inputs, the test builder will automatically generate the k6 script for you. Then, you could copy the script and [run the test from the CLI](/getting-started/running-k6).
 
-> **Note**: you need a [k6 Cloud](/cloud) account to use the Test Builder. However, it is **free to use**, and you do not need an active paid subscription to utilize this feature.
+> **Note**: you need a [k6 Cloud](/cloud) account to use the test builder. However, it is **free to use**, and you do not need an active paid subscription to utilize this feature.
 
-Although we strongly believe in a scriptable/code-based tool to get the most of your performance testing. A GUI based tool like the Test Builder could benefit you:
+Although we strongly believe in a scriptable/code-based tool to get the most of your performance testing. A GUI based tool like the test builder could benefit you:
 
 - Speeding up the test creation.
 - Instructing with the [k6 API](/javascript-api).
@@ -61,7 +61,7 @@ We are continuously improving and adding new capabilities to the test builder. A
 
 **And more**
 
-- Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/session-recording/browser-recorder).
+- Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
 - Populate the test builder with the requests included in a [HAR file](https://en.wikipedia.org/wiki/HAR_(file_format)).
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
 - Show examples for better onboarding.

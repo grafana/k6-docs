@@ -88,9 +88,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Link>{' '}
                       and{' '}
                       <Link
-                        to={
-                          '/cloud/creating-and-running-a-test/in-app-script-editor'
-                        }
+                        to={'/cloud/creating-and-running-a-test/script-editor'}
                       >
                         Script Editor
                       </Link>
