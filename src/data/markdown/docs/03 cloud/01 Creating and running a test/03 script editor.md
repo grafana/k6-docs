@@ -1,6 +1,6 @@
 ---
 title: 'Script editor'
-excerpt: 'How to use the k6 web script editor'
+excerpt: 'How to use the script editor in the k6 Cloud'
 ---
 
 The script editor is designed to allow you to quickly write and mock up test scripts right within the web app. 

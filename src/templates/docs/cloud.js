@@ -98,10 +98,10 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       <Link to={'/using-k6/cloud-execution'}>CLI</Link> and{' '}
                       <Link
                         to={
-                          '/cloud/creating-and-running-a-test/recording-a-test-script'
+                          '/test-authoring/recording-a-session/browser-recorder'
                         }
                       >
-                        Browser Session Recorder
+                        Browser Recorder
                       </Link>
                       .
                     </Trait>

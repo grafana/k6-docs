@@ -10,7 +10,7 @@ k6 is, at its core, a **Code-based testing tool**. Besides, the k6 ecosystem pro
 In k6, you could create a test using various tools:
 
 - Your own text editor or IDE
-- [Script editor](/cloud/creating-and-running-a-test/script-editor)
+- [Script editor in the k6 Cloud](/cloud/creating-and-running-a-test/script-editor)
 - [Test builder](/test-authoring/test-builder)
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder)
 - [Converters](/integrations#converters): JMeter, Postman and Swagger
