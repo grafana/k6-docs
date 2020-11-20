@@ -68,6 +68,12 @@ These libraries can either be downloaded and included with the test project or l
 
 ## Bundling node modules
 
+> #### ⚠️ Limited compatibility
+>
+> k6 is not NodeJS, nor is it a browser. Packages that rely on APIs provided by NodeJS, for
+> instance the `os` and `fs` modules, will not work in k6. The same goes for browser-specific
+> APIs like the `window` object.
+
 The steps of this tutorial are as follows:
 
 - [Setting up the bundler](#setting-up-the-bundler)
