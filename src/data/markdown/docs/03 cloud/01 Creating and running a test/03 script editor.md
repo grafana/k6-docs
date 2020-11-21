@@ -3,7 +3,7 @@ title: 'Script editor'
 excerpt: 'How to use the script editor in the k6 Cloud'
 ---
 
-The script editor is designed to allow you to quickly write and mock up test scripts right within the web app. 
+The script editor is designed to allow you to quickly write test scripts from within the web app. 
 
 We believe most users will quickly graduate to using k6 as a CLI and their IDE of choice locally. However, organizational security rules vary from organization to organization and some may not be able to install a program without review from their security team. The script editor allows you to utilize just about all features of k6 right within the web app.
 
