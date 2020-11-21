@@ -6,7 +6,7 @@ excerpt: ''
 
 The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder). It generates a k6 script based on the HTTP requests included on a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 
-> HAR is a file format used by all the browsers and various tools to export the recorded HTTP requests.
+> HAR is a file format used by all major browsers and various other tools to export recorded HTTP requests.
 
 The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS tool. Unlike the Browser Recorder, it **does not require a k6 Cloud user** to generate the k6 script.
 
