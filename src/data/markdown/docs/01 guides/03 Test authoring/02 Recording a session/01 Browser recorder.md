@@ -37,7 +37,7 @@ Open the extension by clicking the k6 logo, and press "Start recording" to begin
 - Browse like a user would
 - Take natural pauses that users would take to consume page content
 - Focus on the most common use cases, rather than all the possible use cases
-- Take note of pages where forms/logins occur, you will likely need to complete some scripting there
+- Take note of pages where forms/logins occur, you will likely need to do some additional scripting here to make it use dynamic values.
 
 **Do NOT**
 
