@@ -21,7 +21,7 @@ The browser recorder functionality is powered by the [k6 Cloud](/cloud). When th
 
 The browser recorder allows you to generate the bulk of your test scripts simply by browsing like a user would on your site or web app. The script created gives you a foundation which you can further edit, as required.
 
-The recorder will capture everything – every single HTTP(s) request being loaded into the browser as you click – including ads, images, documents, etc., so you get a far more accurate read of what’s going on. Just press “record”, start browsing and when complete, the script will automatically upload to your k6 Cloud account.
+The recorder will capture everything – every single HTTP(s) request being loaded into the browser as you click – including ads, images, documents, etc., so you get a far more accurate read of what’s going on. Just press “record”, start browsing and when complete, the script will automatically get saved to your k6 Cloud account.
 
 
 ## Instructions
