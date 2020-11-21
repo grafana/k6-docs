@@ -17,10 +17,9 @@ In k6, you could create a test using various tools:
 
 ## Running a cloud test
 
-After creating your test, you might want to debug it locally or run it on the cloud. The cloud test will be launched from the geographic location/s - selected in your test - on the k6 Cloud infrastructure. 
+After creating your test, you might want to debug it locally or run it on the cloud. Cloud tests will be executed from the geographic location/s you've selected in your test, on k6 Cloud infrastructure. 
 
 If you want to run a cloud test, there are two main places where you could start it:
 
 - In the **k6 Cloud web app**, using the [script editor](/cloud/creating-and-running-a-test/script-editor), [test builder](/test-authoring/test-builder), or re-running a listed test.
 - In the **k6 CLI**, [running the k6 cloud command](/creating-and-running-a-test/cloud-tests-from-the-cli).
-
