@@ -10,11 +10,9 @@ The browser recorder allows generating a k6 script based on a web session. It is
 
 The browser recorder functionality is powered by the [k6 Cloud](/cloud). When the user finalizes the recording of the session, the extension will upload the auto-generated k6 test into the k6 Cloud account.
 
-> #### Note
->
-> **You do not need an active paid subscription to use the browser recorder. **
+> **Note**: the recorder is **free to use** and you do not need an active k6 Cloud subscription to utilize it.
 > 
-> Any user can copy the script from the [k6 Cloud editor](/cloud/creating-and-running-a-test/script-editor) to edit or run the test locally using the `k6 run` command. In the future, we plan to make the extensions operational without having a k6 Cloud account_.
+> Any user can copy the script from the [script editor](/cloud/creating-and-running-a-test/script-editor) to edit or run the test locally using the `k6 run` command. In the future, we plan to make this feature operational without having a k6 Cloud account.
 
 
 ### How it works
