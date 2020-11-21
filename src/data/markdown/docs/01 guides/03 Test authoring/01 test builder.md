@@ -9,7 +9,7 @@ Based on your input, the test builder will automatically generate the k6 script 
 
 > **Note**: you need a [k6 Cloud](/cloud) account to use the test builder. However, it is **free to use**, and you do not need an active paid subscription to utilize this feature.
 
-Although we strongly believe in a scriptable/code-based tool to get the most of your performance testing. A GUI based tool like the test builder could benefit you:
+Although we strongly believe that scriptable/code-based tools will help you get the most out of your performance testing efforts, a GUI-based tool like the test builder could benefit you in:
 
 - Speeding up the test creation.
 - Instructing with the [k6 API](/javascript-api).
