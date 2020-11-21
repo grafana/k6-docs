@@ -4,11 +4,16 @@ import React from 'react';
 
 import styles from './external-links-dashboard.module.scss';
 
-export const ExternalLinksDashboard = ({ dashboardTitle, linksData }) => (
+export const ExternalLinksDashboard = ({
+  dashboardTitle,
+  subtitle,
+  linksData,
+}) => (
   <div className={`container ${styles.wrapper}`}>
     <Heading tag={'h2'} size={'lg'}>
       {dashboardTitle}
     </Heading>
+    {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
     <ul className={styles.dashboard}>
       {linksData.map(({ picture, title, description, url }, i) => (
         <li className={styles.linkWrapper} key={`exb-${i}`}>

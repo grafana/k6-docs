@@ -528,6 +528,36 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/javascript-api/k6-html',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/using-k6/session-recording-har-support',
+    toPath: '/test-authoring/recording-a-session',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/test-builder',
+    toPath: '/test-authoring/test-builder',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/in-app-script-editor',
+    toPath: '/cloud/creating-and-running-a-test/script-editor',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/recording-a-test-script',
+    toPath: '/test-authoring/recording-a-session/browser-recorder',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/docs/cloud/creating-and-running-a-test/converters',
+    toPath: '/integrations',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {

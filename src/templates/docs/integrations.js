@@ -127,6 +127,12 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     vscodeImg: {
       childImageSharp: { fixed: vscodeImgData },
     },
+    browserRecorderImg: {
+      childImageSharp: { fixed: browserRecorderImgData },
+    },
+    testBuilderImg: {
+      childImageSharp: { fixed: testBuilderImgData },
+    },
     harImg: {
       childImageSharp: { fixed: harImgData },
     },
@@ -161,6 +167,24 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       }
       vscodeImg: file(
         absolutePath: { regex: "/images/doc-integrations/vscode/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      testBuilderImg: file(
+        absolutePath: { regex: "/images/doc-integrations/test-builder/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      browserRecorderImg: file(
+        absolutePath: { regex: "/images/doc-integrations/browser-recorder/" }
       ) {
         childImageSharp {
           fixed(width: 60, height: 60, cropFocus: CENTER) {
@@ -220,7 +244,51 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
         <StickyContainer>
           <div ref={contentContainerRef} className={stickyContainerClasses}>
             <ExternalLinksDashboard
+              dashboardTitle={'Test authoring'}
+              subtitle={'Codeless tools to speed up the test creation.'}
+              linksData={[
+                {
+                  picture: testBuilderImgData,
+                  title: 'Test Builder',
+                  description:
+                    'Inspired in Postman API Builder. Codeless UI tool to generate a k6 test quickly.',
+                  url: 'https://k6.io/docs/test-authoring/test-builder',
+                },
+                {
+                  picture: browserRecorderImgData,
+                  title: 'Browser Recorder',
+                  description: 'Record a user journey to base your k6 test.',
+                  url:
+                    'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder',
+                },
+              ]}
+            />
+            <ExternalLinksDashboard
+              dashboardTitle={'IDE extensions'}
+              subtitle={
+                'Code k6 scripts in your IDE of choice. Empower your development workflow with IDE extensions.'
+              }
+              linksData={[
+                {
+                  picture: vscodeImgData,
+                  title: 'Visual Studio Code Extension',
+                  description:
+                    'Execute VS Code commands to run a k6 test of your current file.',
+                  url:
+                    'https://marketplace.visualstudio.com/items?itemName=k6.k6',
+                },
+                {
+                  picture: vscodeImgData,
+                  title: 'IntelliSense',
+                  description:
+                    'Get code autocompletion and in-context documentation.',
+                  url: 'https://k6.io/docs/misc/intellisense',
+                },
+              ]}
+            />
+            <ExternalLinksDashboard
               dashboardTitle={'Converters'}
+              subtitle={'Generate a k6 script quickly from an existing file.'}
               linksData={[
                 {
                   picture: harImgData,
@@ -252,30 +320,8 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             />
             <DocIconsRow
               title={'Result store and visualization'}
-              subtitle={
-                'k6 can output its test result data to different sources:'
-              }
+              subtitle={'k6 can output test results to various backends.'}
               iconsData={iconsDataSet1}
-            />
-            <ExternalLinksDashboard
-              dashboardTitle={'IDE'}
-              linksData={[
-                {
-                  picture: vscodeImgData,
-                  title: 'Visual Studio Code Extension',
-                  description:
-                    'Execute VS Code commands to run a k6 test of your current file.',
-                  url:
-                    'https://marketplace.visualstudio.com/items?itemName=k6.k6',
-                },
-                {
-                  picture: vscodeImgData,
-                  title: 'IntelliSense',
-                  description:
-                    'Get code autocompletion and in-context documentation.',
-                  url: 'https://k6.io/docs/misc/intellisense',
-                },
-              ]}
             />
             <DocIconsRow
               title={'Continuous Integration and Continuous Delivery'}
