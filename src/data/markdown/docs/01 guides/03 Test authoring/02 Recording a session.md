@@ -15,5 +15,5 @@ Suppose you have to create a performance test simulating a user journey with doz
 
 k6 provides two mechanism to generate a k6 script from a recorded user session:
 
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder): to generate a k6 script from a browser session. Available on [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
+- [Browser recorder](/test-authoring/recording-a-session/browser-recorder) generates a k6 script from a browser session. Available on [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
 - [HAR converter](/test-authoring/recording-a-session/har-converter) generates a k6 script from the requests included in a HAR file.
