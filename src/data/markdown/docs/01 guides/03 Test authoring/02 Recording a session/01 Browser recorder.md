@@ -61,7 +61,7 @@ Save the recorded script in any of your projects.
 If any **third party requests** are made during the recording, those requests will be filtered out by default because: 
 
 - These third-party requests will skew the percentiles of your performance results.
-- You may have no ability to impact the performance of the third-party service
+- You may not have the ability to impact the performance of third-party services
 - The load test may violate the terms of service contract that you have with the provider.
 
 If you want to include some of the requests in the _third party list_, simply deselect the ones you want to include, then hit save.
