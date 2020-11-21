@@ -5,7 +5,7 @@ excerpt: ''
 
 The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.
 
-Based on your inputs, the test builder will automatically generate the k6 script for you. Then, you could copy the script and [run the test from the CLI](/getting-started/running-k6).
+Based on your input, the test builder will automatically generate the k6 script for you. Once done, you can copy the script and [run the test from the CLI](/getting-started/running-k6).
 
 > **Note**: you need a [k6 Cloud](/cloud) account to use the test builder. However, it is **free to use**, and you do not need an active paid subscription to utilize this feature.
 
