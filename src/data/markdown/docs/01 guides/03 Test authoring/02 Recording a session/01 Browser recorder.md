@@ -4,7 +4,7 @@ excerpt: ''
 ---
 
 
-The browser recorder allows generating a k6 script based on a web session. It is available as [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
+The browser recorder allows generating a k6 script based on a web session. It is available as extensions for [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
 
 ### k6 Cloud integration
 
