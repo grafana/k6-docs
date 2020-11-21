@@ -12,7 +12,7 @@ Based on your input, the test builder will automatically generate the k6 script 
 Although we strongly believe that scriptable/code-based tools will help you get the most out of your performance testing efforts, a GUI-based tool like the test builder could benefit you in:
 
 - Speeding up the test creation.
-- Learning the [k6 API](/javascript-api).
+- Learning quickly the [k6 API](/javascript-api).
 - Collaborating on building tests with non-coders.
 
 ![k6 Test Builder](images/test-builder.png)
