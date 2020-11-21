@@ -13,7 +13,7 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 
 - Speeding up the test creation.
 - Learning the [k6 API](/javascript-api).
-- Streamlining the collaboration building tests with non-coders.
+- Collaborating on building tests with non-coders.
 
 ![k6 Test Builder](images/test-builder.png)
 
