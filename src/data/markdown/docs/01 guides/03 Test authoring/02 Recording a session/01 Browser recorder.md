@@ -12,11 +12,9 @@ The browser recorder functionality is powered by the [k6 Cloud](/cloud). When th
 
 > #### Note
 >
-> It is important to know you **do not need an active paid subscription** to use the browser recorder. 
+> **You do not need an active paid subscription to use the browser recorder. **
 > 
-> Any user can copy the script from the [k6 Cloud editor](/cloud/creating-and-running-a-test/script-editor) to edit and run the test locally using the `k6 run` command. 
-> 
-> _This integration has allowed us to benefit from the capabilities of the k6 Cloud web app. In the future, we plan to make the extensions operational without having a k6 Cloud account_.
+> Any user can copy the script from the [k6 Cloud editor](/cloud/creating-and-running-a-test/script-editor) to edit or run the test locally using the `k6 run` command. In the future, we plan to make the extensions operational without having a k6 Cloud account_.
 
 
 ### How it works
