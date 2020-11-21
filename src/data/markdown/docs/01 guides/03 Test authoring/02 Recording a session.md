@@ -11,7 +11,7 @@ In load testing, _recording_ usually refers to the process of creating a load te
 
 While not exclusive, it is common to use recordings while testing complex scenarios on websites or mobile applications. Recording allows seeing the sequence of requests and parameters of the session, helping testers quickly build out complex chains of requests.
 
-Suppose you have to create a performance test simulating a user journey with dozens or hundreds of requests. In that case, the recording avoids writing it from scratch - helping you be more productive in developing this type of test.
+Suppose you have to create a performance test simulating a user journey with dozens or hundreds of requests. In that case, the recording avoids writing it from scratch.
 
 k6 provides two mechanism to generate a k6 script from a recorded user session:
 
