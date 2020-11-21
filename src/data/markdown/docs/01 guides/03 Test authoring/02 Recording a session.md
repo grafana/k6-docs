@@ -3,7 +3,7 @@ title: 'Recording a session'
 excerpt: ''
 ---
 
-In terms of load testing, recording usually refers to the process of creating a load test from the recording of a user session. The process looks like:
+In load testing, _recording_ usually refers to the process of creating a load test from the recording of a user session. The process consists of three steps:
 
 1. Record a user or API session.
 2. Convert the recorded session into a test.
@@ -17,5 +17,4 @@ k6 provides two mechanism to generate a k6 script from a recorded user session:
 
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder): to generate a k6 script from a browser session. Available on [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
 - [HAR converter](/test-authoring/recording-a-session/har-converter): to generate a k6 script from the requests included on a HAR file.
-
 
