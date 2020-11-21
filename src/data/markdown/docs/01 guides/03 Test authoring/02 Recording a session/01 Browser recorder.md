@@ -8,7 +8,7 @@ The browser recorder allows generating a k6 script based on a web session. It is
 
 ### k6 Cloud integration
 
-At this moment, the browser recorder functionality is tightly coupled to the [k6 Cloud](/cloud). When the user finalizes the recording of the session, the extension will upload the auto-generated k6 test into the k6 Cloud account.
+The browser recorder functionality is powered by the [k6 Cloud](/cloud). When the user finalizes the recording of the session, the extension will upload the auto-generated k6 test into the k6 Cloud account.
 
 > #### Note
 >
