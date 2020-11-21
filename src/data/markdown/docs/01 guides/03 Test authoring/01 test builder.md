@@ -32,7 +32,7 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 ![k6 Test Builder](images/test-builder.png)
 
 
-## Test builder options
+## Test builder features
 
 We are continuously improving and adding new capabilities to the test builder. A few of the most relevant options are:
 
