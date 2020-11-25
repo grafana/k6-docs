@@ -7,10 +7,10 @@ title: 'Installation'
 ### Debian/Ubuntu
 
 ```bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install k6
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+$ echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+$ sudo apt-get update
+$ sudo apt-get install k6
 ```
 
 > #### ⚠️ If you are behind a firewall or proxy
@@ -20,15 +20,15 @@ sudo apt-get install k6
 > alternative approach instead:
 >
 > ```bash
-> wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+> $ wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
 > ```
 
 ### Red Hat/CentOS
 
 ```bash
-wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
-sudo mv bintray-loadimpact-rpm.repo /etc/yum.repos.d/
-sudo yum install k6
+$ wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
+$ sudo mv bintray-loadimpact-rpm.repo /etc/yum.repos.d/
+$ sudo yum install k6
 ```
 
 ## Mac (brew)
@@ -36,7 +36,7 @@ sudo yum install k6
 <CodeGroup labels={['Brew']}>
 
 ```bash
-brew install k6
+$ brew install k6
 ```
 
 </CodeGroup>
@@ -55,7 +55,7 @@ Install the binary in your `PATH` to run **k6** from any location.
 <CodeGroup labels={['Docker']}>
 
 ```bash
-docker pull loadimpact/k6
+$ docker pull loadimpact/k6
 ```
 
 </CodeGroup>

@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { getRandomKey } from 'utils';
 
 import Code from './code';
 import styles from './code-group.module.scss';
 
 const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const randomKey = getRandomKey();
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -26,21 +24,18 @@ const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
           </div>
         ))}
       </div>
-      <style>
-        {`.${styles.itemsContainer}.${randomKey} > div:nth-child(${
-          currentIndex + 1
-        }) { display: block; }`}
-      </style>
-      <div className={`${styles.itemsContainer} ${randomKey}`}>
-        {React.Children.map(children, (child, i) => (
-          <Code
-            showLineNumbers={lineNumbers[i]}
-            key={i}
-            showHeightToggler={heightTogglers[i]}
-          >
-            {child.props.children}
-          </Code>
-        ))}
+      <div className={`${styles.itemsContainer}`}>
+        {React.Children.map(children, (child, i) =>
+          i === currentIndex ? (
+            <Code
+              showLineNumbers={lineNumbers[i]}
+              key={i}
+              showHeightToggler={heightTogglers[i]}
+            >
+              {child.props.children}
+            </Code>
+          ) : null,
+        )}
       </div>
     </div>
   );

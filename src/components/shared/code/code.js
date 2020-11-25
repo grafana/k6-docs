@@ -61,12 +61,20 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
     };
   }
 
+  const declaredLang = getLanguageDeclaration(children.props?.className);
+  let copyBtnContent =
+    children.props?.children ?? 'Sorry, nothing to copy here';
+
+  if (declaredLang === 'bash') {
+    copyBtnContent = copyBtnContent.replace(/^\$\s/gm, '');
+  }
+
   return (
-    <WithCopyButton dataToCopy={children.props?.children}>
+    <WithCopyButton dataToCopy={copyBtnContent}>
       <Highlight
         {...defaultProps}
         code={children.props?.children}
-        language={getLanguageDeclaration(children.props?.className)}
+        language={declaredLang}
       >
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <pre
@@ -84,12 +92,17 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
                       <span className={styles.lineNumber}>{i + 1}</span>
                     )}
                     <span className={styles.lineContent}>
-                      {line.map((token, key) => (
-                        <span
-                          {...getTokenProps({ token, key })}
-                          style={undefined}
-                        />
-                      ))}
+                      {line.map((token, key) => {
+                        return (
+                          <span
+                            {...getTokenProps({
+                              token,
+                              key,
+                            })}
+                            style={undefined}
+                          />
+                        );
+                      })}
                     </span>
                   </div>
                 );
