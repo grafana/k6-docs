@@ -128,7 +128,6 @@ export let options = {
 | name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
 | projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                           |
 | distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed. The keys are string labels that will be injected as [environment variables](/using-k6/environment-variables) on the appropriate nodes (matching the `loadZone`): `__ENV["someDefaultLabel"]` |
-
 | staticIPs (boolean) | Optional. `false` by default | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test. |
 
 ### List of supported load zones
