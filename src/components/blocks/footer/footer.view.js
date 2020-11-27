@@ -69,9 +69,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={`${main}/unit-testing-for-performance`}
+                      href={'https://calendly.com/k6cloud/'}
                     >
-                      Unit testing for performance
+                      Schedule a Cloud Demo
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
@@ -114,6 +114,14 @@ export const Footer = () => (
                     <Link className={styles.navColumnLink} to={'/integrations'}>
                       Integrations
                     </Link>
+                  </li>
+                  <li className={styles.navColumnItem}>
+                    <a
+                      className={styles.navColumnLink}
+                      href={`${main}/unit-testing-for-performance`}
+                    >
+                      Unit testing for performance
+                    </a>
                   </li>
                 </ul>
               </div>
