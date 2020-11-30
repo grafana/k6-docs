@@ -5,6 +5,29 @@
 // container for default export (node-specific action)
 const utils = {};
 
+const omit = (names, obj) => {
+  const result = {};
+
+  Object.values(obj).forEach((prop) => {
+    if (names.includes(prop)) return;
+    Object.assign(result[prop], obj[prop]);
+  });
+
+  return result;
+};
+
+const pick = (names, obj) => {
+  const result = {};
+
+  Object.values(obj).forEach((prop) => {
+    if (names.includes(prop)) {
+      Object.assign(result[prop], obj[prop]);
+    }
+  });
+
+  return result;
+};
+
 // transforms path-like strings into slugs
 // slugify(path: String) -> String
 const slugify = (path) =>
@@ -184,6 +207,12 @@ Object.defineProperties(utils, {
   },
   whenElementAvailable: {
     value: whenElementAvailable,
+  },
+  pick: {
+    value: pick,
+  },
+  omit: {
+    value: omit,
   },
 });
 
