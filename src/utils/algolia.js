@@ -1,16 +1,18 @@
 const chunk = require('chunk-text');
 
 const {
-  unorderify,
   slugify,
   stripDirectoryPath,
   compose,
-  noTrailingSlash,
-  dedupePath,
-  removeGuidesAndRedirectWelcome,
   mdxAstToPlainText,
   flat,
 } = require('./utils');
+const {
+  unorderify,
+  noTrailingSlash,
+  dedupePath,
+  removeGuidesAndRedirectWelcome,
+} = require('./utils.node');
 
 const processMdxEntry = ({ children: [entry] }) => {
   const {

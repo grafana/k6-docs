@@ -1,23 +1,26 @@
 const Path = require('path');
 
 const {
-  pathCollisionDetector,
   slugify,
+  compose,
+  childrenToList,
+  stripDirectoryPath,
+} = require('./src/utils/utils');
+const {
+  pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
-  stripDirectoryPath,
-  compose,
   getChildSidebar,
   unorderify,
   getDocSection,
   buildBreadcrumbs,
-  childrenToList,
-  noTrailingSlash,
   removeGuides,
   dedupePath,
   removeGuidesAndRedirectWelcome,
-} = require('./src/utils/utils');
+  noTrailingSlash,
+} = require('./src/utils/utils.node');
 
+/* constants */
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
