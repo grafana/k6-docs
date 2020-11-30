@@ -23,7 +23,7 @@ const {
 
 /* constants */
 // default 'en' is not included
-// const SUPPORTED_LOCALES = ['es'];
+const SUPPORTED_LOCALES = ['es'];
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
@@ -102,7 +102,7 @@ function getSupplementaryPagesProps({
         ].includes(s.toLowerCase()),
     )
     .flatMap((section) => {
-      childrenToList(getSidebar(section).children).map(({ name }) => {
+      return childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
         const breadcrumbs = compose(
           buildBreadcrumbs,
@@ -303,15 +303,16 @@ async function createDocPages({ nodes, sidebar, actions, reporter }) {
   const getSidebar = getChildSidebar(sidebar);
 
   // create data for rendering docs navigation
-  const topLevelNames = Object.keys(sidebar.children);
+  const topLevelNames = Object.keys(sidebar.children).filter(
+    (child) => !SUPPORTED_LOCALES.includes(child),
+  );
 
   const topLevelLinks = topLevelNames
-    .filter((item) => item !== 'Cloud REST API')
-    .map((item) => ({
-      label: item === 'cloud' ? 'Cloud Docs' : item.toUpperCase(),
-      to: item === 'guides' ? `/` : `/${slugify(item)}`,
-    }))
-    .filter(Boolean);
+    .filter((name) => name !== 'Cloud REST API')
+    .map((name) => ({
+      label: name === 'cloud' ? 'Cloud Docs' : name.toUpperCase(),
+      to: name === 'guides' ? `/` : `/${slugify(name)}`,
+    }));
 
   getDocPagesProps({
     nodes,
@@ -333,7 +334,7 @@ async function createDocPages({ nodes, sidebar, actions, reporter }) {
         getSidebar,
       }),
     )
-    .map(actions.createPage);
+    .map((pageProps) => actions.createPage(pageProps));
 }
 
 const createRedirects = ({ actions, pathPrefix }) => {
