@@ -1,3 +1,5 @@
+TEST
+
 # k6 Documentation
 ![Staging](https://github.com/loadimpact/k6-docs/workflows/Staging/badge.svg)
 ![Production](https://github.com/loadimpact/k6-docs/workflows/Production/badge.svg)
