@@ -30,6 +30,7 @@ Define constants to distinguish between [gRPC Response](/javascript-api/k6-net-g
 
 ```javascript
 import grpc from 'k6/net/grpc';
+import { check } from 'k6';
 
 const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');
