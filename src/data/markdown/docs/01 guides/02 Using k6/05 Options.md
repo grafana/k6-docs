@@ -999,7 +999,7 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version`, `scenario` |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`, `check`,`error`,`tls_version`,`scenario`,`service`,`rpc_type` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
