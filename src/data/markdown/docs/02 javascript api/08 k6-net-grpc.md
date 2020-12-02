@@ -28,6 +28,7 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 
 ```javascript
 import grpc from 'k6/net/grpc';
+import { check } from 'k6';
 
 const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');
