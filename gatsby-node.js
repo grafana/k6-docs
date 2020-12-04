@@ -558,6 +558,12 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/integrations',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
+    toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
