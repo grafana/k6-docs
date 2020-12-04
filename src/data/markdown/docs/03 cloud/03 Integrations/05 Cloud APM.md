@@ -7,45 +7,28 @@ k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling 
 
 ## Supported APM Providers
 
-Currently, the following platforms are supported:
+Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the provider is a key passed to the APM configuration object and its value should match the providers listed below:
 
-| Provider  | URL(s)                                                 |
-| --------- | ------------------------------------------------------ |
-| datadog   | [https://www.datadoghq.com](https://www.datadoghq.com) |
-| datadogeu | [https://www.datadoghq.eu](https://www.datadoghq.eu)   |
+| Provider     | URL(s)                                                                         | Supported Regions                                                                |
+| ------------ | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| datadog      | [DataDog](https://www.datadoghq.com)                                           | Non-EU countries                                                                 |
+| datadogeu    | [DataDog EU](https://www.datadoghq.eu)                                         | EU countries                                                                     |
+| azuremonitor | [Microsoft Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/) | [Azure supported regions](/cloud/integrations/cloud-apm/microsoft-azure-monitor) |
 
 This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
 
 ## Cloud APM Configuration
 
-For maximum flexibility, the APM export functionality is configured on the test-run level. The required parameters should be specified in `options.ext.loadimpact.apm` (See [extension options](/using-k6/options#extension-options) for more information). The configuration parameters are as follows:
+For maximum flexibility, the APM export functionality is configured on the test-run level. The required parameters should be specified in `options.ext.loadimpact.apm` (See [extension options](/using-k6/options#extension-options) for more information).
 
-| Name                      | Description                                                                                                                                            |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `provider`                | Any APM provider name available in the [supported APM provider](#supported-apm-providers)'s table.                                                     |
-| `api_key`                 | The `api_key` provided by the APM platforms.                                                                                                           |
-| `app_key`                 | The `app_key` provided by the APM platforms, if applicable.                                                                                            |
-| `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                    |
-| `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
-| `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
-| `include_test_run_id`     | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                        |
+Each provider has a separate set of configuration parameters. Therefore you need to visit your desired provider's page:
 
-**Note**: This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `api_key` and an `app_key` on Datadog. Note that the `api_key` and `app_key` for `datadog` won't work on `datadogeu`.
+| Providers          | Platform page                                                                    |
+| ------------------ | -------------------------------------------------------------------------------- |
+| datadog, datadogeu | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 |
+| azuremonitor       | [Microsoft Azure Monitor](/cloud/integrations/cloud-apm/microsoft-azure-monitor) |
 
-The `metrics` parameter allows you to specify built-in and custom metrics to be exported to the APM provider. By default, only the basic [metrics](/using-k6/metrics) listed below are exported. These defaults also match the [official k6 dashboard for Datadog](https://docs.datadoghq.com/integrations/k6/), which you can read more about on [visualization of metrics in Datadog](/results-visualization/datadog#visualize-in-datadog).
-
-- data_sent
-- data_received
-- http_req_duration
-- http_reqs
-- iterations
-- vus
-
-> A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
-
-If you want to export metrics with more granularity, consider using a lower number for the `resample_rate`, like 1.
-
-The `apm` key (inside `ext.loadimpact`) accepts a list of APM configurations (objects). Exporting metrics to APM platforms will be simultaneous and near real-time. Also, there is a 2nd pass (of metrics exports), at the end of each test run, that ensures data reliability and accuracy. Please note that the data exported in real-time may appear incorrect until the test is finished.
+Common configuration parameters for all providers are as follows:
 
 ```javascript
 export let options = {
@@ -53,12 +36,18 @@ export let options = {
     loadimpact: {
       apm: [
           {
-              provider: "datadog",
-              api_key: "<Datadog Provided API key>",
-              app_key: "<Datadog Provided App key>",
+              provider: "<first provider>",
+              // provider-specific configurations
               metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
               include_default_metrics: true,
-              include_test_run_id: false
+              include_test_run_id: true
+          },
+          {
+              provider: "<second provider>",
+              // provider-specific configurations
+              metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+              include_default_metrics: true,
+              include_test_run_id: true
           },
       ]
     },
@@ -66,14 +55,26 @@ export let options = {
 };
 ```
 
-Make sure to meet the following requirements, otherwise, we can't guarantee a working metrics export:
+Here's what each key means:
 
-1. If you use custom metrics in your script, remember to add them to the `metrics` array, otherwise, those metrics won't be automatically exported.
-2. If you want to export built-in metrics that are not listed above, you can include them in the `metrics` array.
-3. If the APM configuration has errors, (e.g. invalid provider, wrong credentials, etc) the configuration will be ignored, and the test will be executed without the APM functionality.
-4. If you provide invalid metrics to the `metrics` field, the test will continue, but the metrics export(s) will not include the invalid metric.
-5. The metrics defined in `metrics` are case-sensitive.
-6. The [official k6 dashboard on Datadog](https://docs.datadoghq.com/integrations/k6/) gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `include_test_run_id` to `true`.
+1. `provider` is the name of the APM platform.
+2. `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed above.
+3. `metrics` is the array of custom metrics you want to export from your test run, if you want.
+4. `include_default_metrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `include_default_metrics` key enabled makes the configuration object to combine built-in and custom metrics.
+5. `include_test_run_id` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
+
+As you see in the configuration object above, there is an array containing two different objects under the `apm` key. This means that you can send metrics to multiple APM providers, provided that you have them enabled in your subscription. Please [contact us](https://k6.io/contact) if you want multiple providers to be able to your test run at the same time.
+
+## Built-in Metrics
+
+The following built-in metrics are enabled by default, and are exported to the APM platform of your choice. They can also be disabled by setting the `include_default_metrics` key to `false`. If you disable default metrics, you will need to specify an array of metrics using the `metrics` key.
+
+- data_sent
+- data_received
+- http_req_duration
+- http_reqs
+- iterations
+- vus
 
 ## Limitations
 
