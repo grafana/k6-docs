@@ -564,6 +564,12 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/what-is-data-retention',
+    toPath: '/cloud/billing-user-menu/data-retention',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
