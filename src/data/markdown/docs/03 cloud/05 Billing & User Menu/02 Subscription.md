@@ -23,4 +23,4 @@ To downgrade your subscription, you may select a new plan at any time. We will b
 
 ## Cancelation / Data Retention
 
-You may cancel your online subscription at any time through the web app. When canceling you are able to opt into Data Retention to save your result data longer term / between projects. If you do not choose data retention all test result data is deleted 7 days after your subscription expires. When canceling you may use your plan through the end of the current period.
+You may cancel your online subscription at any time through the web app. When canceling you are able to opt into [Data Retention](/cloud/billing-user-menu/data-retention) to save your result data longer term / between projects. If you do not choose data retention all test result data is deleted 7 days after your subscription expires. When canceling you may use your plan through the end of the current period.
