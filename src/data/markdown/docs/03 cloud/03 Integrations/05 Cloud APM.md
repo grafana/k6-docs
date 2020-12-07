@@ -9,10 +9,10 @@ k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling 
 
 Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the provider is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
 
-| Provider           | Platform page                                                                    | Supported Regions                                                                                  |
-| ------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| datadog, datadogeu | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | Rest of the world, EU countries                                                                    |
-| azuremonitor       | [Microsoft Azure Monitor](/cloud/integrations/cloud-apm/microsoft-azure-monitor) | [Azure supported regions](/cloud/integrations/cloud-apm/microsoft-azure-monitor#supported-regions) |
+| Provider               | Platform page                                                                    | Supported Regions                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `datadog`, `datadogeu` | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | Rest of the world, EU countries                                                                    |
+| `azuremonitor`         | [Microsoft Azure Monitor](/cloud/integrations/cloud-apm/microsoft-azure-monitor) | [Azure supported regions](/cloud/integrations/cloud-apm/microsoft-azure-monitor#supported-regions) |
 
 This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
 

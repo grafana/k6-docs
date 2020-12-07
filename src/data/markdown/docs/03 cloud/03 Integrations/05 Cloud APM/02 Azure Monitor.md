@@ -55,12 +55,12 @@ export let options = {
 
 These are the supported regions for Azure Monitor integration:
 
-| Geographic Region    | Supported Azure Region(s)                                                                                              |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **US and Canada**    | westcentralus<br/>westus2<br/>northcentralus<br/>southcentralus<br/>centralus<br/>canadacentral<br/>eastus<br/>eastus2 |
-| **Europe**           | northeurope<br/>westeurope<br/>uksouth<br/>francecentral                                                               |
-| **Africa**           | southafricanorth                                                                                                       |
-| **Asia & Australia** | centralindia<br/>australiaeast<br/>japaneast<br/>southeastasia<br/>eastasia<br/>koreacentral                           |
+| Geographic Region    | Supported Azure Region(s)                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **US and Canada**    | `westcentralus`<br/>`westus2`<br/>`northcentralus`<br/>`southcentralus`<br/>`centralus`<br/>`canadacentral`<br/>`eastus`<br/>`eastus2` |
+| **Europe**           | `northeurope`<br/>`westeurope`<br/>`uksouth`<br/>`francecentral`                                                                       |
+| **Africa**           | `southafricanorth`                                                                                                                     |
+| **Asia & Australia** | `centralindia`<br/>`australiaeast`<br/>`japaneast`<br/>`southeastasia`<br/>`eastasia`<br/>`koreacentral`                               |
 
 ## Azure Monitor Setup
 
