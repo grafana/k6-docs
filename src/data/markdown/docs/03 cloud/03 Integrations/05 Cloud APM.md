@@ -50,7 +50,7 @@ export let options = {
 Here's what each key means:
 
 1. `provider` is the name of the APM platform.
-2. `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed above.
+2. `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed in their respective platform pages.
 3. `metrics` is the array of custom metrics you want to export from your test run, if you want.
 4. `include_default_metrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `include_default_metrics` key enabled makes the configuration object to combine built-in and custom metrics.
 5. `include_test_run_id` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.

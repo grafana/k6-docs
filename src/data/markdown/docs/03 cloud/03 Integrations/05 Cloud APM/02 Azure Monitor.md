@@ -7,21 +7,20 @@ excerpt: 'How to export metrics from k6 Cloud to Microsoft Azure Monitor'
 
 The configuration parameters for sending metrics to Microsoft Azure Monitor are as follows:
 
-| Name                      | Description                                                                                                                                                 |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                             |
-| `tenant_id`               | The `tenant_id` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                   |
-| `client_id`               | The `client_id` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                 |
-| `client_secret`           | The `client_secret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations. |
-| `azure_region`            | The `azure_region` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM.             |
-| `subscription_id`         | The `subscription_id` can be viewed in the subscriptions section of Azure portal.                                                                           |
-| `resource_group_name`     | The `resource_group_name` can be viewed in the resource groups section of Azure portal. It should match the `subscription_id`.                              |
-| `insights_app_name`       | The `insights_app_name` can be viewed in the application insights section of Azure portal. It should match the `resource_group_name`.                       |
-| `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                         |
-| `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                     |
-| `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10.      |
-| `include_test_run_id`     | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                             |
-
+| Name                      | Description                                                                                                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
+| `tenant_id`               | The `tenant_id` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                  |
+| `client_id`               | The `client_id` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                |
+| `client_secret`           | The `client_secret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                |
+| `azure_region`            | The `azure_region` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM.                                            |
+| `subscription_id`         | The `subscription_id` can be viewed in the subscriptions section of Azure portal.                                                                                                          |
+| `resource_group_name`     | The `resource_group_name` can be viewed in the resource groups section of Azure portal. It should match the `subscription_id`.                                                             |
+| `insights_app_name`       | The `insights_app_name` can be viewed in the application insights section of Azure portal. It should match the `resource_group_name`.                                                      |
+| `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                                                        |
+| `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
+| `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 60 and constant, because Azure Monitor re-aggregates all metrics to 60 seconds by default. |
+| `include_test_run_id`     | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                                                            |
 
 ## Example Configuration Object
 
@@ -81,13 +80,13 @@ For sending custom metrics from your test run Azure Monitor, follow these instru
 5. Go to your resource group and assign "Monitoring Metrics Publisher" role to the user and the service principal.
 
     ![Resource group's access controls](images/rg-access-controls.png)
-6. Create a log analytics workspace.
+6. Create a log analytics workspace. The region is chosen here, so make note of it.
 
     ![Log analytics workspace](images/azure-log-analytics-workspace.png)
-7. Create an app under application insights with your log analytics workspace. The regions is chosen here, so make note of it.
+7. Create an app under application insights with your log analytics workspace. The region should match the log analytics workspace.
 
     ![Application insights](images/azure-application-insights.png)
-8. Start your test run with the parameters you've extracted from the steps above.
-9.  Your metrics will be exported to Microsoft Azure with a 3~4 minutes delay. You can view them on metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in metric dropdown.
+8. Start your test run with the parameters you've extracted from the steps 1-6.
+9. Your metrics will be exported to Microsoft Azure Monitor with a 3~4 minutes delay. You can view them on metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in metric dropdown. If you didn't see the results, try to narrow down the time range to last 30 minutes or less.
 
     ![Azure Monitor metrics](images/azure-monitor.png)
