@@ -3,27 +3,23 @@ title: 'I was invited to an organization and I cannot run tests'
 excerpt: 'How to correctly specify/choose a correct project to run your tests in k6'
 ---
 
-## Purpose
-
-The Organizations, Projects, and Team Member functionality enables account administrators to organize and control access to their k6 account and subscription for collaboration purposes. However, newly invited members, not being familiar with this structure, sometimes ask us questions or get stuck when trying to run tests.
-
-For example:
-
 > I was invited to an organization with a subscription. However, When I try to run tests, I get an error that my subscription doesn't have enough Virtual Users/exceeds the duration/uses too many load zones. Our subscription allows for the test I want to run. What is wrong and how do I fix this?
 
-It's important to note that every user in k6 is an owner of organization. Organizations can contain multiple Projects. Each Project can contain multiple tests. k6 subscriptions are associated with an Organization. In almost all cases, this error is a result of trying to run a test in an Organization without a subscription (likely your own default organization).
+If you encounter a similar situation, probably, the problem is that you run the test from a different organization with another subscription.
 
-## How do I change my Organization to fix this?
+This situation often happens because when you register your account, the k6 Cloud automatically creates a "personal" default organization for you. In this case, you might have two organizations; your "personal" organization and the invited organization. 
 
-## In the web interface
+By default, tests run from your "personal" organization.
 
-If you are running tests from the web interface, you will need to use the menu in the left side bar, to select a project within the organization with a subscription. The ogranization can be changed from the dropdown User menu in the top left corner. In the image below, our user is a member of two organizations, "LoadImpact" and "Second Organization". In this example "LoadImpact" is our primary organization associated with the users account and "Second Organization" is one which the user has been invited to. In order to run tests using the subscription that was purchased and associated with "Second Organization" we would need to select a Project associated with it. Once you have selected the Project, the project ID will be displayed below the project name in your main overview (top left). You can simply click the copy button next to it.
+**How do I change the organization to fix this?**
 
-![Select a project](images/05-team-member-org-id/projects-in-app.png)
+If you run tests from the web interface, you will need to use the User menu - on the top of the left sidebar- to select a project within the desired organization.
 
-## From the command line
+![Select a project](images/05-team-member-org-id/project-dashboard.png)
 
-If you are using k6 to trigger tests from the command line, you will need to specify, in your test configuration, the project that should be used to run a test. By default, k6 will use the default Organization and default Project associated with a users account. In order to do this, the `projectID` must be set as a [test configuration option](/using-k6/options) within the `ext` object of your script.
+If you run tests from the k6 CLI, you will need to set the `projectID` in the test script. 
+
+To do this, copy the project ID from the top left corner of the project dashboard (see image above) and set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options).
 
 <CodeGroup labels={["Example:"]}>
 
@@ -38,3 +34,5 @@ export let options = {
 ```
 
 </CodeGroup>
+
+Read more about managing [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects).
