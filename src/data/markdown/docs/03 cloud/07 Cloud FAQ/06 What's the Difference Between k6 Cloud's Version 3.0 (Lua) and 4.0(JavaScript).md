@@ -1,6 +1,7 @@
 ---
 title: "What's the Difference Between LoadImpact's Version 3.0 (Lua) and k6 Cloud 4.0(JavaScript)"
 excerpt: 'A brief overview of the differences between LoadImpact 3.0 (Lua) and k6 Cloud 4.0 (JS/k6) products'
+hideFromSidebar: true
 ---
 
 ## Purpose

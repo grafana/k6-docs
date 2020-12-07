@@ -554,8 +554,71 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/docs/cloud/creating-and-running-a-test/converters',
+    fromPath: '/cloud/creating-and-running-a-test/converters',
     toPath: '/integrations',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/integrations/ci',
+    toPath: '/integrations',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
+    toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/what-is-data-retention',
+    toPath: '/cloud/billing-user-menu/data-retention',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/pricing-faq',
+    toPath: '/cloud/cloud-faq/pricing-questions',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath:
+      '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath:
+      '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath:
+      '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/test-status-codes',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/what-are-vus-virtual-users',
+    toPath: '/cloud/cloud-faq/general-questions',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/data-uploads-with-k6-cloud',
+    toPath: '/cloud/cloud-faq/general-questions',
     isPermanent: true,
   });
 };

@@ -170,6 +170,20 @@ A **test script** is the actual code you run as part of your test run, as well a
 
 Virtual Users, although emulated by k6 itself, can be used to mimic the behavior of a real user.
 
-VUs typically perform requests at a much higher rate than regular users. Because of this, there is seldom any need for anywhere near as many virtual users as the actual user target.
+**Virtual Users in context of Web Apps/Websites**
 
-For additional details, see [What are virtual users?](/cloud/cloud-faq/what-are-vus-virtual-users).
+Virtual Users are designed to act and behave like real users/browsers would. That is, they are capable of making multiple network connections in parallel, just like a real user in a browser would. When using a [http.batch](/using-k6/options#batch) request, HTTP requests are sent in parallel. For further information, refer to the article about [load testing websites](/testing-guides/load-testing-websites).
+
+<CodeGroup labels={["Formula for calculating the number of VUs needed"]}>
+
+```plain
+VUs = (hourly sessions * average session duration in seconds)/3600
+```
+
+</CodeGroup>
+
+Read more about using this formula in the [tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
+
+**Virtual Users in context of APIs**
+
+When testing individual API endpoints, you can take advantage of each VU making multiple requests each to produce requests per second(rps) a factor higher than your VU count. e.g. Your test may be stable with each VU making 10 rps each. If you wanted to reach 1000 RPS, you may only need 100 VUs in that case. For more information on testing APIs, please refer to our article [API Load Testing](/testing-guides/api-load-testing).
