@@ -10,8 +10,8 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 | Name                      | Description                                                                                                                                            |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                        |
-| `api_key`                 | The `api_key` provided by the APM platforms.                                                                                                           |
-| `app_key`                 | The `app_key` provided by the APM platforms, if applicable.                                                                                            |
+| `api_key`                 | The `api_key` provided by DataDog.                                                                                                                     |
+| `app_key`                 | The `app_key` provided by DataDog.                                                                                                                     |
 | `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                    |
 | `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
 | `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
@@ -42,31 +42,20 @@ export let options = {
   ext: {
     loadimpact: {
       apm: [
-          {
-              provider: "datadog",
-              api_key: "<Datadog Provided API key>",
-              app_key: "<Datadog Provided App key>",
-              metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-              include_default_metrics: true,
-              include_test_run_id: false
-          },
+        {
+          provider: "datadog",
+          api_key: "<Datadog Provided API key>",
+          app_key: "<Datadog Provided App key>",
+          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          include_default_metrics: true,
+          include_test_run_id: false
+        },
       ]
     },
   },
 };
 ```
 
-## Best Practices
-
-Make sure to meet the following requirements, otherwise, we can't guarantee a working metrics export:
-
-1. If you use custom metrics in your script, remember to add them to the `metrics` array, otherwise, those metrics won't be automatically exported.
-2. If you want to export built-in metrics that are not listed above, you can include them in the `metrics` array.
-3. If the APM configuration has errors, (e.g. invalid provider, wrong credentials, etc) the configuration will be ignored, and the test will be executed without the APM functionality.
-4. If you provide invalid metrics to the `metrics` field, the test will continue, but the metrics export(s) will not include the invalid metric.
-5. The metrics defined in `metrics` are case-sensitive.
-6. The [official k6 dashboard on Datadog](https://docs.datadoghq.com/integrations/k6/) gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `include_test_run_id` to `true`.
-
-## DataDog Configuration
+## DataDog Setup
 
 This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `api_key` and an `app_key` on Datadog. Note that the `api_key` and `app_key` for `datadog` won't work on `datadogeu`.

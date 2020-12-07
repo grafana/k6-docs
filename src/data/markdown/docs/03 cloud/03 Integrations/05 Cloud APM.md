@@ -7,26 +7,18 @@ k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling 
 
 ## Supported APM Providers
 
-Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the provider is a key passed to the APM configuration object and its value should match the providers listed below:
+Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the provider is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
 
-| Provider     | URL(s)                                                                         | Supported Regions                                                                |
-| ------------ | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| datadog      | [DataDog](https://www.datadoghq.com)                                           | Non-EU countries                                                                 |
-| datadogeu    | [DataDog EU](https://www.datadoghq.eu)                                         | EU countries                                                                     |
-| azuremonitor | [Microsoft Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/) | [Azure supported regions](/cloud/integrations/cloud-apm/microsoft-azure-monitor) |
+| Provider           | Platform page                                                                    | Supported Regions                                                                                  |
+| ------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| datadog, datadogeu | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | Rest of the world, EU countries                                                                    |
+| azuremonitor       | [Microsoft Azure Monitor](/cloud/integrations/cloud-apm/microsoft-azure-monitor) | [Azure supported regions](/cloud/integrations/cloud-apm/microsoft-azure-monitor#supported-regions) |
 
 This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
 
-## Cloud APM Configuration
+## Configuration Parameters
 
 For maximum flexibility, the APM export functionality is configured on the test-run level. The required parameters should be specified in `options.ext.loadimpact.apm` (See [extension options](/using-k6/options#extension-options) for more information).
-
-Each provider has a separate set of configuration parameters. Therefore you need to visit your desired provider's page:
-
-| Providers          | Platform page                                                                    |
-| ------------------ | -------------------------------------------------------------------------------- |
-| datadog, datadogeu | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 |
-| azuremonitor       | [Microsoft Azure Monitor](/cloud/integrations/cloud-apm/microsoft-azure-monitor) |
 
 Common configuration parameters for all providers are as follows:
 
@@ -35,20 +27,20 @@ export let options = {
   ext: {
     loadimpact: {
       apm: [
-          {
-              provider: "<first provider>",
-              // provider-specific configurations
-              metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-              include_default_metrics: true,
-              include_test_run_id: true
-          },
-          {
-              provider: "<second provider>",
-              // provider-specific configurations
-              metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-              include_default_metrics: true,
-              include_test_run_id: true
-          },
+        {
+          provider: "<first provider>",
+          // provider-specific configurations
+          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          include_default_metrics: true,
+          include_test_run_id: true
+        },
+        {
+          provider: "<second provider>",
+          // provider-specific configurations
+          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          include_default_metrics: true,
+          include_test_run_id: true
+        },
       ]
     },
   },
@@ -75,6 +67,17 @@ The following built-in metrics are enabled by default, and are exported to the A
 - http_reqs
 - iterations
 - vus
+
+## Requirements
+
+Make sure to meet the following requirements, otherwise, we can't guarantee a working metrics export:
+
+1. If you use custom metrics in your script, remember to add them to the `metrics` array, otherwise, those metrics won't be automatically exported.
+2. If you want to export built-in metrics that are not listed above, you can include them in the `metrics` array.
+3. If the APM configuration has errors, (e.g. invalid provider, wrong credentials, etc) the configuration will be ignored, and the test will be executed without the APM functionality.
+4. If you provide invalid metrics to the `metrics` field, the test will continue, but the metrics export(s) will not include the invalid metric.
+5. The metrics defined in `metrics` are case-sensitive.
+6. Each APM provider gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `include_test_run_id` to `true`.
 
 ## Limitations
 
