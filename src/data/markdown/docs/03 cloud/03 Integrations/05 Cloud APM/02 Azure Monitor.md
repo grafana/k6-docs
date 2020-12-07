@@ -64,7 +64,7 @@ These are the supported regions for Azure Monitor integration:
 
 ## Azure Monitor Setup
 
-There are a number of steps to configure Azure Monitor for sending custom metrics from your test run:
+For sending custom metrics from your test run Azure Monitor, follow these instructions:
 
 1. You should have a active subscription on Azure to be able to proceed. Take note of your subscription ID for the configuration object.
 
