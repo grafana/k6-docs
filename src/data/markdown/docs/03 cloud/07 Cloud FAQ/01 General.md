@@ -43,6 +43,8 @@ The zone codes are mapped as follows:
 
 </Glossary>
 
+----
+
 ### What is the best way to debug my load test scripts?
 
 Debugging helps to ensure your code produces the expected results.  While there is a [script editor](/cloud/creating-and-running-a-test/script-editor) built into the k6 web application, it has limited debugging abilities. 
@@ -103,6 +105,8 @@ console.log(JSON.stringify(res));
 
 </CodeGroup>
 
+----
+
 ### I was invited to an organization and I cannot run tests
 
 > I was invited to an organization with a subscription. However, When I try to run tests, I get an error that my subscription doesn't have enough Virtual Users/exceeds the duration/uses too many load zones. Our subscription allows for the test I want to run. What is wrong and how do I fix this?
@@ -139,9 +143,13 @@ export let options = {
 
 Read more about managing [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects).
 
+----
+
 ### What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?
 
 Read more [here](/cloud/cloud-faq/whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud-4-0-javascript).
+
+----
 
 ### How to open a firewall to k6 Cloud service for cloud tests?
 
@@ -220,6 +228,8 @@ export default function () {
 
 This last solution requires that your firewall terminates SSL traffic, otherwise it will not see the Host header in unencrypted form. You could also use unencrypted HTTP, but get a bit less security.
 
+----
+
 ### Test status codes
 
 Below the list of test statuses in k6 along with the code returned. The code returned here is different than what is returned by k6.
@@ -268,10 +278,6 @@ A test which is actively making HTTP(s) or websocket requests
 
 A test which has finished running. If thresholds were used, no thresholds have failed.
 
----
-
-When a does not finish as expected, you the test will have one of the following statues.
-
 ### Timed Out
 
 A test which has not received or sent any information for a long time
@@ -303,13 +309,19 @@ A test that has exceeded one or more of the following limits:
 
 If your test has too many groups, please reduce their number. If your test has too many metrics, please use URL grouping to combine similar URLs. You should also remove external requests from your test script. Each URL captured will account for 7 individual metrics that we keep track of. External requests can quickly produce a large number of metrics that aren't helpful to the understanding performance of the System Under Test.
 
+---
+
 ### What are VUs (Virtual Users)?
 
 Virtual Users (VUs) mimics the behavior of a real user. They are used to perform separate and concurrent executions of your test script, making HTTP(s) and WebSocket requests against a webpage or API. Read more [here](/misc/glossary#virtual-users).
 
+---
+
 ### How many VUs can be run from the same Dedicated IP?
 
 We run a maximum of 300 VUs from a Dedicated IP. If you want to run a 1000 VU test from Dedicated IPs you'll need at least 4 IPs. If you want to run a 5000 VU test from Dedicated IPs you need at least 17 IPs.
+
+---
 
 ### Data uploads with k6 Cloud
 
