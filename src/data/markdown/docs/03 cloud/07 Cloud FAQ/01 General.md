@@ -3,6 +3,8 @@ title: 'General questions'
 excerpt: 'Frequently asked questions about k6 Cloud'
 ---
 
+## FAQ
+
 - [What IP addresses are used by the k6 Cloud?](#what-ip-addresses-are-used-by-the-k6-cloud)
 - [What is the best way to debug my load test scripts?](#what-is-the-best-way-to-debug-my-load-test-scripts)
 - [I was invited to an organization and I cannot run tests](#i-was-invited-to-an-organization-and-i-cannot-run-tests)
@@ -10,6 +12,7 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 - [How to open a firewall to k6 Cloud service for cloud tests?](#how-to-open-a-firewall-to-k6-cloud-service-for-cloud-tests)
 - [Test status codes](#test-status-codes)
 - [What are VUs (Virtual Users)?](#what-are-vus-virtual-users)
+- [How many VUs can be run from the same Dedicated IP?](#how-many-vus-can-be-run-from-the-same-dedicated-ip)
 - [Data uploads with k6 Cloud](#data-uploads-with-k6-cloud)
 - [Pricing FAQ](/cloud/cloud-faq/pricing-questions)
 
@@ -239,7 +242,7 @@ Below the list of test statuses in k6 along with the code returned. The code ret
 </Glossary>
 
 
-Every successful test, will go through the following statuses. The time from Created -> Running, is typically very short and hardly noticeable as you use the platform.
+Every successful test, will go through the following statuses. The time from `Created` -> `Running`, is typically very short and hardly noticeable as you use the platform.
 
 ### Created
 
@@ -303,6 +306,10 @@ If your test has too many groups, please reduce their number. If your test has t
 ### What are VUs (Virtual Users)?
 
 Virtual Users (VUs) mimics the behavior of a real user. They are used to perform separate and concurrent executions of your test script, making HTTP(s) and WebSocket requests against a webpage or API. Read more [here](/misc/glossary#virtual-users).
+
+### How many VUs can be run from the same Dedicated IP?
+
+We run a maximum of 300 VUs from a Dedicated IP. If you want to run a 1000 VU test from Dedicated IPs you'll need at least 4 IPs. If you want to run a 5000 VU test from Dedicated IPs you need at least 17 IPs.
 
 ### Data uploads with k6 Cloud
 

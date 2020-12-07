@@ -5,6 +5,7 @@ excerpt: 'Frequently asked questions about k6 cloud pricing and subscriptions'
 
 This document contains some of our most frequently asked questions about [Pricing](https://k6.io/pricing). If your question isn't answered here, please contact [support](mailto:support@k6.io).
 
+## FAQ
 
 - [Does k6 have a concept of VU Hours?](#does-k6-have-a-concept-of-vu-hours)
 - [What tests count against my monthly limit?](#what-tests-count-against-my-monthly-limit) 
