@@ -554,7 +554,13 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/docs/cloud/creating-and-running-a-test/converters',
+    fromPath: '/cloud/creating-and-running-a-test/converters',
+    toPath: '/integrations',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/integrations/ci',
     toPath: '/integrations',
     isPermanent: true,
   });
