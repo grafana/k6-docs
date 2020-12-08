@@ -28,7 +28,7 @@ before retrying.
 
 ## Manual Installation
 
-This uses port `8000` by default.
+In node 12.x:
 
 ```bash
 git clone git@github.com:loadimpact/k6-docs.git
