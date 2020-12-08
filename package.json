@@ -1,5 +1,8 @@
 {
   "name": "k6-docs",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "",
   "version": "0.1.0",
   "private": true,

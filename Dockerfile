@@ -1,5 +1,5 @@
 # base image
-FROM node:10-slim
+FROM node:12-slim
 RUN apt-get update && apt-get install python build-essential -y
 WORKDIR /app
 
