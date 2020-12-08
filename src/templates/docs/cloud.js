@@ -78,7 +78,15 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                 <div className={'row'}>
                   <div className={'col-lg-6 traits'}>
                     <Trait>
-                      Run larger tests from multiple geographic locations.
+                      Scale tests from{' '}
+                      <Link
+                        to={
+                          '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones'
+                        }
+                      >
+                        multiple locations
+                      </Link>
+                      .
                     </Trait>
                     <Trait>
                       <Link
@@ -119,19 +127,34 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Link>
                       .
                     </Trait>
+                    <Trait>
+                      <Link
+                        to={'/cloud/project-and-team-management/team-members'}
+                      >
+                        Team members
+                      </Link>{' '}
+                      and{' '}
+                      <Link to={'/cloud/project-and-team-management/projects'}>
+                        Projects
+                      </Link>
+                      .
+                    </Trait>
                   </div>
 
                   <div className={'col-lg-6 traits'}>
                     <Trait>
+                      <Link to={'/cloud/analyzing-results/overview'}>
+                        Premium test result visualization
+                      </Link>
+                      .
+                    </Trait>
+                    <Trait>
+                      Get actionable{' '}
                       <Link
                         to={'/cloud/analyzing-results/performance-insights'}
                       >
                         Performance Insights
                       </Link>{' '}
-                      and{' '}
-                      <Link to={'/cloud/analyzing-results/overview'}>
-                        Premium test result visualization
-                      </Link>
                       .
                     </Trait>
                     <Trait>
@@ -147,20 +170,13 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       .
                     </Trait>
                     <Trait>
-                      <Link to={'/cloud/analyzing-results/result-export'}>
-                        Export results
-                      </Link>
-                      .
-                    </Trait>
-                    <Trait>
-                      <Link
-                        to={'/cloud/project-and-team-management/team-members'}
-                      >
-                        Team members
+                      Export results to{' '}
+                      <Link to={'/cloud/integrations/cloud-apm'}>
+                        APM platforms
                       </Link>{' '}
                       and{' '}
-                      <Link to={'/cloud/project-and-team-management/projects'}>
-                        Projects
+                      <Link to={'/cloud/analyzing-results/result-export'}>
+                        CSV files
                       </Link>
                       .
                     </Trait>
