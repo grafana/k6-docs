@@ -1,11 +1,11 @@
 ---
-title: 'Microsoft Azure Monitor'
-excerpt: 'How to export metrics from k6 Cloud to Microsoft Azure Monitor'
+title: 'Azure Monitor'
+excerpt: 'How to export metrics from k6 Cloud to Azure Monitor'
 ---
 
 ## Configuration Parameters
 
-The configuration parameters for sending metrics to Microsoft Azure Monitor are as follows:
+The configuration parameters for sending metrics to Azure Monitor are as follows:
 
 | Name                      | Description                                                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -87,6 +87,6 @@ For sending custom metrics from your test run Azure Monitor, follow these instru
 
     ![Application insights](images/azure-application-insights.png)
 8. Start your test run with the parameters you've extracted from the steps 1-6.
-9. Your metrics will be exported to Microsoft Azure Monitor with a 3~4 minutes delay. You can view them on metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in metric dropdown. If you didn't see the results, try to narrow down the time range to last 30 minutes or less.
+9. Your metrics will be exported to Azure Monitor with a 3~4 minutes delay. You can view them on metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in metric dropdown. If you didn't see the results, try to narrow down the time range to last 30 minutes or less.
 
     ![Azure Monitor metrics](images/azure-monitor.png)
