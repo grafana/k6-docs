@@ -19,7 +19,7 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | `insightsAppName`       | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.                                                          |
 | `metrics`               | List of built-in and custom metrics to be exported.                                                                                                                                        |
 | `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
-| `resample_rate`         | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 60 and constant, because Azure Monitor re-aggregates all metrics to 60 seconds by default. |
+| `resampleRate`          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 60 and constant, because Azure Monitor re-aggregates all metrics to 60 seconds by default. |
 | `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                                                            |
 
 ## Example Configuration Object

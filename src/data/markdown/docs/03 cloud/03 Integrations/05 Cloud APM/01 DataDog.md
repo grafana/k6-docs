@@ -14,7 +14,7 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 | `appKey`                | The `appKey` provided by DataDog.                                                                                                                      |
 | `metrics`               | List of built-in and custom metrics to be exported.                                                                                                    |
 | `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
-| `resample_rate`         | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+| `resampleRate`          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
 | `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                        |
 
 
@@ -29,7 +29,7 @@ The `metrics` parameter allows you to specify built-in and custom metrics to be 
 
 > A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `includeDefaultMetrics` to false.
 
-If you want to export metrics with more granularity, consider using a lower number for the `resample_rate`, like 1.
+If you want to export metrics with more granularity, consider using a lower number for the `resampleRate`, like 1.
 
 The `apm` key (inside `ext.loadimpact`) accepts a list of APM configurations (objects). Exporting metrics to APM platforms will be simultaneous and near real-time. Also, there is a 2nd pass (of metrics exports), at the end of each test run, that ensures data reliability and accuracy. Please note that the data exported in real-time may appear incorrect until the test is finished.
 
