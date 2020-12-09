@@ -14,8 +14,8 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | `clientId`                | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                 |
 | `clientSecret`            | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                 |
 | `azureRegion`             | The `azureRegion` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM. Default is `eastus`.                        |
-| `subscription_id`         | The `subscription_id` can be viewed in the subscriptions section of Azure portal.                                                                                                          |
-| `resource_group_name`     | The `resource_group_name` can be viewed in the resource groups section of Azure portal. It should match the `subscription_id`.                                                             |
+| `subscriptionId`          | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                                                                                                           |
+| `resource_group_name`     | The `resource_group_name` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.                                                              |
 | `insights_app_name`       | The `insights_app_name` can be viewed in the application insights section of Azure portal. It should match the `resource_group_name`.                                                      |
 | `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                                                        |
 | `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
@@ -37,7 +37,7 @@ export let options = {
           clientId: "<Application (client) ID>",
           clientSecret: "<Client secret>",
           azureRegion: "<Region>",
-          subscription_id: "<Subscription ID>",
+          subscriptionId: "<Subscription ID>",
           resource_group_name: "<Resource Group Name>",
           insights_app_name: "<Application Insights Name>",
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
