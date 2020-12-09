@@ -11,7 +11,7 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
 | `tenantId`                | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                   |
-| `client_id`               | The `client_id` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                |
+| `clientId`                | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                 |
 | `client_secret`           | The `client_secret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                |
 | `azure_region`            | The `azure_region` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM.                                            |
 | `subscription_id`         | The `subscription_id` can be viewed in the subscriptions section of Azure portal.                                                                                                          |
@@ -34,7 +34,7 @@ export let options = {
         {
           provider: "azuremonitor",
           tenantId: "<Directory (tenant) ID>",
-          client_id: "<Application (client) ID>",
+          clientId: "<Application (client) ID>",
           client_secret: "<Client secret>",
           azure_region: "<Region>",
           subscription_id: "<Subscription ID>",
