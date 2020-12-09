@@ -10,7 +10,7 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | Name                      | Description                                                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
-| `tenant_id`               | The `tenant_id` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                  |
+| `tenantId`                | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                   |
 | `client_id`               | The `client_id` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                |
 | `client_secret`           | The `client_secret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                |
 | `azure_region`            | The `azure_region` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM.                                            |
@@ -33,7 +33,7 @@ export let options = {
       apm: [
         {
           provider: "azuremonitor",
-          tenant_id: "<Directory (tenant) ID>",
+          tenantId: "<Directory (tenant) ID>",
           client_id: "<Application (client) ID>",
           client_secret: "<Client secret>",
           azure_region: "<Region>",
