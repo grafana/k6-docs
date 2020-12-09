@@ -41,7 +41,7 @@ $ docker run -i loadimpact/k6 run - <script.js
 ```
 
 ```bash
-$ cat script.js | docker run -i loadimpact/k6 run -
+PS C:\> cat script.js | docker run -i loadimpact/k6 run -
 ```
 
 </CodeGroup>
@@ -53,15 +53,15 @@ Now we'll try running a load test with more than 1 virtual user and a slightly l
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
 ```bash
-k6 run --vus 10 --duration 30s script.js
+$ k6 run --vus 10 --duration 30s script.js
 ```
 
 ```bash
-docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
+$ docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
 ```
 
 ```bash
-cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s -
+PS C:\> cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s -
 ```
 
 </CodeGroup>
@@ -147,7 +147,7 @@ $ docker run -i loadimpact/k6 run - <script.js
 ```
 
 ```bash
-C:\ cat script.js | docker run -i loadimpact/k6 run -
+PS C:\> cat script.js | docker run -i loadimpact/k6 run -
 ```
 
 </CodeGroup>
