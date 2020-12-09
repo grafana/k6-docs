@@ -16,7 +16,7 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | `azureRegion`             | The `azureRegion` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM. Default is `eastus`.                        |
 | `subscriptionId`          | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                                                                                                           |
 | `resourceGroupName`       | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.                                                                |
-| `insights_app_name`       | The `insights_app_name` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.                                                        |
+| `insightsAppName`         | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.                                                          |
 | `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                                                        |
 | `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
 | `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 60 and constant, because Azure Monitor re-aggregates all metrics to 60 seconds by default. |
@@ -39,7 +39,7 @@ export let options = {
           azureRegion: "<Region>",
           subscriptionId: "<Subscription ID>",
           resourceGroupName: "<Resource Group Name>",
-          insights_app_name: "<Application Insights Name>",
+          insightsAppName: "<Application Insights Name>",
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           include_default_metrics: true,
           include_test_run_id: false
