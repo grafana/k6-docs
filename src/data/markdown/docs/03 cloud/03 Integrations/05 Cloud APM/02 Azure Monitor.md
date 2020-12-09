@@ -12,7 +12,7 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
 | `tenantId`                | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                   |
 | `clientId`                | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                 |
-| `client_secret`           | The `client_secret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                |
+| `clientSecret`            | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                 |
 | `azure_region`            | The `azure_region` you've created your Azure configurations. The [supported regions](#supported-regions) listed below can be used in Cloud APM.                                            |
 | `subscription_id`         | The `subscription_id` can be viewed in the subscriptions section of Azure portal.                                                                                                          |
 | `resource_group_name`     | The `resource_group_name` can be viewed in the resource groups section of Azure portal. It should match the `subscription_id`.                                                             |
@@ -35,7 +35,7 @@ export let options = {
           provider: "azuremonitor",
           tenantId: "<Directory (tenant) ID>",
           clientId: "<Application (client) ID>",
-          client_secret: "<Client secret>",
+          clientSecret: "<Client secret>",
           azure_region: "<Region>",
           subscription_id: "<Subscription ID>",
           resource_group_name: "<Resource Group Name>",
