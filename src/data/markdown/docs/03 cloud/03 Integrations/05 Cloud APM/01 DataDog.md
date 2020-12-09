@@ -11,7 +11,7 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                        |
 | `apiKey`                  | The `apiKey` provided by DataDog.                                                                                                                      |
-| `app_key`                 | The `app_key` provided by DataDog.                                                                                                                     |
+| `appKey`                  | The `appKey` provided by DataDog.                                                                                                                      |
 | `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                    |
 | `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
 | `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
@@ -45,7 +45,7 @@ export let options = {
         {
           provider: "datadog",
           apiKey: "<Datadog Provided API key>",
-          app_key: "<Datadog Provided App key>",
+          appKey: "<Datadog Provided App key>",
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           include_default_metrics: true,
           include_test_run_id: false
@@ -58,4 +58,4 @@ export let options = {
 
 ## DataDog Setup
 
-This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `apiKey` and an `app_key` on Datadog. Note that the `apiKey` and `app_key` for `datadog` won't work on `datadogeu`.
+This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `apiKey` and an `appKey` on Datadog. Note that the `apiKey` and `appKey` for `datadog` won't work on `datadogeu`.
