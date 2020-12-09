@@ -31,14 +31,14 @@ export let options = {
           provider: "<first provider>",
           // provider-specific configurations
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          include_default_metrics: true,
+          includeDefaultMetrics: true,
           include_test_run_id: true
         },
         {
           provider: "<second provider>",
           // provider-specific configurations
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          include_default_metrics: true,
+          includeDefaultMetrics: true,
           include_test_run_id: true
         },
       ]
@@ -52,14 +52,14 @@ Here's what each key means:
 1. `provider` is the name of the APM platform.
 2. `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed in their respective platform pages.
 3. `metrics` is the array of custom metrics you want to export from your test run, if you want.
-4. `include_default_metrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `include_default_metrics` key enabled makes the configuration object to combine built-in and custom metrics.
+4. `includeDefaultMetrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `includeDefaultMetrics` key enabled makes the configuration object to combine built-in and custom metrics.
 5. `include_test_run_id` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
 
 As you see in the configuration object above, there is an array containing two different objects under the `apm` key. This means that you can send metrics to multiple APM providers, provided that you have them enabled in your subscription. Please [contact us](https://k6.io/contact) if you want multiple providers to be able to your test run at the same time.
 
 ## Built-in Metrics
 
-The following built-in metrics are enabled by default, and are exported to the APM platform of your choice. They can also be disabled by setting the `include_default_metrics` key to `false`. If you disable default metrics, you will need to specify an array of metrics using the `metrics` key.
+The following built-in metrics are enabled by default, and are exported to the APM platform of your choice. They can also be disabled by setting the `includeDefaultMetrics` key to `false`. If you disable default metrics, you will need to specify an array of metrics using the `metrics` key.
 
 - data_sent
 - data_received

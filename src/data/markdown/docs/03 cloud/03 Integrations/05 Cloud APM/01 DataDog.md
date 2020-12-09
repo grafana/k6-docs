@@ -7,15 +7,15 @@ excerpt: 'How to export metrics from k6 Cloud to DataDog'
 
 The configuration parameters for sending metrics to DataDog and its EU counterpart are as follows:
 
-| Name                      | Description                                                                                                                                            |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `provider`                | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                        |
-| `apiKey`                  | The `apiKey` provided by DataDog.                                                                                                                      |
-| `appKey`                  | The `appKey` provided by DataDog.                                                                                                                      |
-| `metrics`                 | List of built-in and custom metrics to be exported.                                                                                                    |
-| `include_default_metrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
-| `resample_rate`           | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
-| `include_test_run_id`     | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                        |
+| Name                    | Description                                                                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `provider`              | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                        |
+| `apiKey`                | The `apiKey` provided by DataDog.                                                                                                                      |
+| `appKey`                | The `appKey` provided by DataDog.                                                                                                                      |
+| `metrics`               | List of built-in and custom metrics to be exported.                                                                                                    |
+| `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
+| `resample_rate`         | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+| `include_test_run_id`   | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                        |
 
 
 The `metrics` parameter allows you to specify built-in and custom metrics to be exported to the APM provider. By default, only the basic [metrics](/using-k6/metrics) listed below are exported. These defaults also match the [official k6 dashboard for Datadog](https://docs.datadoghq.com/integrations/k6/), which you can read more about on [visualization of metrics in Datadog](/results-visualization/datadog#visualize-in-datadog).
@@ -27,7 +27,7 @@ The `metrics` parameter allows you to specify built-in and custom metrics to be 
 - iterations
 - vus
 
-> A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `include_default_metrics` to false.
+> A typical use case is to only export custom metrics defined in the script. To do that you should specify the names of your custom metrics in the `metrics` parameter, and set `includeDefaultMetrics` to false.
 
 If you want to export metrics with more granularity, consider using a lower number for the `resample_rate`, like 1.
 
@@ -47,7 +47,7 @@ export let options = {
           apiKey: "<Datadog Provided API key>",
           appKey: "<Datadog Provided App key>",
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          include_default_metrics: true,
+          includeDefaultMetrics: true,
           include_test_run_id: false
         },
       ]
