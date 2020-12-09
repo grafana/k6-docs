@@ -32,14 +32,14 @@ export let options = {
           // provider-specific configurations
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
-          include_test_run_id: true
+          includeTestRunId: true
         },
         {
           provider: "<second provider>",
           // provider-specific configurations
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
-          include_test_run_id: true
+          includeTestRunId: true
         },
       ]
     },
@@ -53,7 +53,7 @@ Here's what each key means:
 2. `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed in their respective platform pages.
 3. `metrics` is the array of custom metrics you want to export from your test run, if you want.
 4. `includeDefaultMetrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `includeDefaultMetrics` key enabled makes the configuration object to combine built-in and custom metrics.
-5. `include_test_run_id` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
+5. `includeTestRunId` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
 
 As you see in the configuration object above, there is an array containing two different objects under the `apm` key. This means that you can send metrics to multiple APM providers, provided that you have them enabled in your subscription. Please [contact us](https://k6.io/contact) if you want multiple providers to be able to your test run at the same time.
 
@@ -77,7 +77,7 @@ Make sure to meet the following requirements, otherwise, we can't guarantee a wo
 3. If the APM configuration has errors, (e.g. invalid provider, wrong credentials, etc) the configuration will be ignored, and the test will be executed without the APM functionality.
 4. If you provide invalid metrics to the `metrics` field, the test will continue, but the metrics export(s) will not include the invalid metric.
 5. The metrics defined in `metrics` are case-sensitive.
-6. Each APM provider gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `include_test_run_id` to `true`.
+6. Each APM provider gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `includeTestRunId` to `true`.
 
 ## Limitations
 
