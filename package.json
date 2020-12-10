@@ -68,7 +68,6 @@
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.2.0",
     "react-sticky": "^6.0.3",
-    "sharp": "^0.26.3",
     "yarn": "^1.22.10"
   },
   "devDependencies": {

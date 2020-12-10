@@ -13,6 +13,6 @@ WORKDIR /app
 
 COPY package*.json /app/
 
-RUN npm cache clean --force && npm install sharp --unsafe-perm && npm install
+RUN npm install
 
 COPY . /app/

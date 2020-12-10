@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     command: gatsby develop --host=0.0.0.0
     ports:
-      - 8000:8000
+      - 8100:8000
     volumes:
       - /app/node_modules
       - .:/app
