@@ -14,6 +14,11 @@
     line-height: $line-height-base;
   }
 
+  hr {
+    border-top: 1px solid $color-additional-2;
+    border-style: ridge;
+  }
+
   strong {
     font-weight: 500;
   }
