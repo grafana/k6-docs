@@ -2,13 +2,15 @@ version: "3.7"
 
 services:
   web:
-    build: .
-    command: sh -c "npm ci && npm run develop --host=0.0.0.0"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: gatsby develop --host=0.0.0.0
     ports:
-      - "8100:8000"
+      - 8000:8000
     volumes:
+      - /app/node_modules
       - .:/app
-      - web_node_modules:/app/node_modules
-
-volumes:
-  web_node_modules:
+    environment:
+      - NODE_ENV=development
+      - GATSBY_WEBPACK_PUBLICPATH=/
