@@ -332,6 +332,10 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               }
               linksData={[
                 {
+                  title: 'Tutorial: Creating a k6 extension',
+                  url: 'https://k6.io/blog/extending-k6-with-xk6',
+                },
+                {
                   title: 'xk6-chaos',
                   description: 'An extension for running chaos experiments.',
                   url: 'https://github.com/simskij/xk6-chaos',
