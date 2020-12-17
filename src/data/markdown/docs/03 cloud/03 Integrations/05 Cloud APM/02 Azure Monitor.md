@@ -22,6 +22,12 @@ The configuration parameters for sending metrics to Azure Monitor are as follows
 | `resampleRate`          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 60 and constant, because Azure Monitor re-aggregates all metrics to 60 seconds by default. |
 | `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                                                            |
 
+<Blockquote mod="warning">
+
+As of Jan. 2021, all keys on the configuration parameters object are in camel case. So, please update your test run script(s).
+
+</Blockquote>
+
 ## Example Configuration Object
 
 All the above configuration parameters are passed like this in your test run.

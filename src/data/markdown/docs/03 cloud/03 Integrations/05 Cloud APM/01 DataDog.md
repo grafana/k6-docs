@@ -17,6 +17,11 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 | `resampleRate`          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
 | `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                        |
 
+<Blockquote mod="warning">
+
+As of Jan. 2021, all keys on the configuration parameters object are in camel case. So, please update your test run script(s).
+
+</Blockquote>
 
 The `metrics` parameter allows you to specify built-in and custom metrics to be exported to the APM provider. By default, only the basic [metrics](/using-k6/metrics) listed below are exported. These defaults also match the [official k6 dashboard for Datadog](https://docs.datadoghq.com/integrations/k6/), which you can read more about on [visualization of metrics in Datadog](/results-visualization/datadog#visualize-in-datadog).
 
