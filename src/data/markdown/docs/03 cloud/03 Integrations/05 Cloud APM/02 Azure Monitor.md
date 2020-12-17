@@ -65,7 +65,7 @@ These are the supported regions for Azure Monitor integration:
 
 For sending custom metrics from your test run Azure Monitor, follow these instructions:
 
-1. You should have a active subscription on Azure to be able to proceed. Take note of your subscription ID for the configuration object.
+1. Make sure you have an active subscription on Azure. Take note of your subscription ID for the configuration object.
 
     ![Azure subscriptions](images/azure-subscriptions.png)
 2. Create a resource group under your active subscription.
