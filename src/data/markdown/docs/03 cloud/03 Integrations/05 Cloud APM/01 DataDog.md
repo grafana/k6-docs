@@ -12,6 +12,7 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 | `provider`              | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                        |
 | `apiKey`                | The `apiKey` provided by DataDog.                                                                                                                      |
 | `appKey`                | The `appKey` provided by DataDog.                                                                                                                      |
+| `region`                | The `region` supported by DataDog. The [supported regions](#supported-regions) listed below can be used in Cloud APM. Default is `us`.                 |
 | `metrics`               | List of built-in and custom metrics to be exported.                                                                                                    |
 | `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                |
 | `resampleRate`          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
@@ -19,7 +20,7 @@ The configuration parameters for sending metrics to DataDog and its EU counterpa
 
 <Blockquote mod="warning">
 
-As of Jan. 2021, all keys on the configuration parameters object are in camel case. So, please update your test run script(s).
+As of Jan. 2021, all keys on the configuration parameters object are in camel case. So, please update your test run script(s). Also, the `datadogeu` provider is now set using `region` key.
 
 </Blockquote>
 
@@ -63,6 +64,16 @@ export let options = {
 };
 ```
 
+
+## Supported Regions
+
+These are the supported regions for DataDog integration:
+
+| Geographic Region     | Supported DataDog Region(s) |
+| --------------------- | --------------------------- |
+| **Europe**            | `eu`                        |
+| **Rest of the world** | `us` (default)              |
+
 ## DataDog Setup
 
-This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `apiKey` and an `appKey` on Datadog. Note that the `apiKey` and `appKey` for `datadog` won't work on `datadogeu`.
+This [guide](https://docs.datadoghq.com/account_management/api-app-keys/) will walk you through creating an `apiKey` and an `appKey` on Datadog. Note that the `apiKey` and `appKey` for different regions of `datadog` won't work on other regions.
