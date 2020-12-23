@@ -498,20 +498,6 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-http/response/response-clicklink-params',
-    toPath:
-      '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/response/response-submitform-params',
-    toPath:
-      '/javascript-api/k6-http/response-k6-http/response-submitform-params',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/using-k6/cloud-execution',
     toPath: '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli',
     isPermanent: true,
