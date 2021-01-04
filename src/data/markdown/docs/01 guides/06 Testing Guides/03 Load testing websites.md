@@ -108,7 +108,7 @@ Load tests should mimic user journeys as closely as possible. These user journey
 
 The process of creating this type of load test could be tedious. But the recording of a user session could facilitate the job of starting the test creation for you.
 
-Check out the [Session Recording guide](/using-k6/session-recording-har-support) to learn more about how to auto-generate your load test from a user session.
+Check out the [Session Recording guide](/test-authoring/recording-a-session) to learn more about how to auto-generate your load test from a user session.
 
 ### Do not include third-party requests
 
