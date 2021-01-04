@@ -119,6 +119,12 @@
       "description": "How to track data sent and received for an individual URL.",
       "url": "",
       "to": "/examples/track-transmitted-data-per-url"
+    },
+    {
+      "title": "Construct URLs with query parameters",
+      "description": "How to use URL and URLSearchParams APIs to construct URLs.",
+      "url": "",
+      "to": "/examples/urls-with-query-parameters"
     }
   ],
   "tutorials": [
