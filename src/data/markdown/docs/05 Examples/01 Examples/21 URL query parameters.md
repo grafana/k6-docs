@@ -28,6 +28,7 @@ export default function () {
 </CodeGroup>
 
 <!-- vale off -->
+
 | Name                  | Type        | Description                                                                                                                                                  |
 | --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | URLSearchParams(init) | Constructor | `init` Optional: One of [USVString, sequence of pairs or record ]                                                                                            |
@@ -44,6 +45,7 @@ export default function () {
 | search                | Property    | A USVString indicating the URL's parameter string; if any parameters are provided, this string includes all of them, beginning with the leading ? character. |
 | searchParams          | Property    | A [URLSearchParams](#urlsearchparams) object which can be used to access the individual query parameters found in search.                                    |
 | username              | Property    | A USVString containing the username specified before the domain name.                                                                                        |
+
 <!-- vale on -->
 
 ## URLSearchParams
@@ -55,14 +57,15 @@ import { URLSearchParams } from 'https://jslib.k6.io/url/1.0.0/index.js';
 import http from 'k6/http';
 
 export default function () {
-  const searchParams = new URLSearchParams({
-    utm_medium: 'organic',
-    utm_source: 'test',
-    multiple: ['foo', 'bar'],
-  });
+  const searchParams = new URLSearchParams([
+    ['utm_medium', 'organic'],
+    ['utm_source', 'test'],
+    ['multiple', 'foo'],
+    ['multiple', 'bar'],
+  ]);
 
-  const res = http.get(`${'https://k6.io'}?${serachParams.toString()}`);
-  // https://k6.io?utm_medium=organic&utm_source=test&multiple=foo%2Cbar
+  const res = http.get(`${'https://k6.io'}?${searchParams.toString()}`);
+  // https://k6.io?utm_medium=organic&utm_source=test&multiple=foo&multiple=bar
 }
 ```
 
