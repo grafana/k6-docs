@@ -27,6 +27,7 @@ export default function () {
 
 </CodeGroup>
 
+<!-- vale off -->
 | Name                  | Type        | Description                                                                                                                                                  |
 | --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | URLSearchParams(init) | Constructor | `init` Optional: One of [USVString, sequence of pairs or record ]                                                                                            |
@@ -43,6 +44,7 @@ export default function () {
 | search                | Property    | A USVString indicating the URL's parameter string; if any parameters are provided, this string includes all of them, beginning with the leading ? character. |
 | searchParams          | Property    | A [URLSearchParams](#urlsearchparams) object which can be used to access the individual query parameters found in search.                                    |
 | username              | Property    | A USVString containing the username specified before the domain name.                                                                                        |
+<!-- vale on -->
 
 ## URLSearchParams
 
