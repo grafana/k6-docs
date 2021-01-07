@@ -138,7 +138,7 @@ export default function () {
 
 Historically, there are two types of categories of load testing tools: scriptable and non-scriptable. Non-scriptable tools generate requests to one or multiple endpoints without any correlation between the requests providing the option to define a constant request rate to hit an endpoint. On the other hand, scriptable tools are usually designed to facilitate user flow testing, thus providing the option to configure the number of virtual users to set up the load of your test. k6 belongs to this category.
 
-The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. The k6 execution engine was completely revamped and now includes support for different [executors](/using-k6/scenarios#executors) in each scenario. Earlier k6 versions didn't have support for natively generating a constant request rate, which led to a [workaround solution](https://k6.io/blog/how-to-generate-a-constant-request-rate-in-k6). Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api) with no boilerplate code.
+The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. The k6 execution engine was completely revamped and now includes support for different [executors](/using-k6/scenarios#executors) in each scenario. Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api).
 
 ## Test creation
 
