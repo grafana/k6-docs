@@ -140,7 +140,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       .
                     </Trait>
                     <Trait>
-                      Project performance with{' '}
+                      See team and testing activity with{' '}
                       <Link
                         to={'/cloud/project-and-team-management/usage-reports'}
                       >

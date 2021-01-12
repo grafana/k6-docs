@@ -3,13 +3,9 @@ title: 'Usage Reports'
 excerpt: 'Discover valuable information about your company testing'
 ---
 
-## Background
+Usage report helps you keep track of everything happening in your team’s project and quickly follow the activity of your performance testing projects.
 
-
-
-## Usage reports UI
-
-The usage reports page can be found in the left menu under the **Manage** section.
+The page can be found in the left menu under the **Manage** section.
 
 ![Full UI](images/05-Usage-Reports/menu.png)
 
@@ -26,15 +22,16 @@ Here are statistics for each individual project.
 
 ![Full UI](images/05-Usage-Reports/full-ui.jpg)
 
-| Column                       | Description                                                                                     |
-| ---------------------------- | ----------------------------------------------------------------------------------------------- |
-| **Project**                  | The project for which the stats to the right are collected from.                                |
-| **Total test runs**          | Total count of test runs started.                                                               |
-| **Test fail rate**           | The rate of failed tests in the project. <br/><small>*What does failed test mean?</small> |
-| **Total test runs duration** | Cumulative sum of time spent running tests.                                                     |
-| **Most recent test run**     | Link to the most recent test run in the project.                                                |
-| **Contributors**             | All members that have either created or started tests in the project                            |
-> \***How do I know which tests add to the fail rate statistic?**
-> - Test was aborted by any of the following statuses (Aborted by system, Aborted by limit, Aborted by threshold, Aborted by timeout)
-> - The test ran to completion but there were failing thresholds (specified by the user).<br/>[Read how to add thresholds to your tests]().
+| Column                       | Description                                                                           |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| **Project**                  | The project for which the stats to the right are collected from.                      |
+| **Total test runs**          | Total count of test runs started.                                                     |
+| **Test fail rate**           | The rate of failed tests in the project. <br/><small>\*What is a failed test?</small> |
+| **Total test runs duration** | Cumulative sum of time spent running tests.                                           |
+| **Most recent test run**     | Link to the most recent test run in the project.                                      |
+| **Contributors**             | All members that have either created or started tests in the project                  |
 
+> \***Which tests add to the fail rate statistic?**
+>
+> - The test was aborted by any of the following statuses (Aborted by system, Aborted by limit, Aborted by threshold, Aborted by timeout)
+> - The test ran to completion but there were failing thresholds (specified by the user).<br/>[Read how to add thresholds to your tests](/using-k6/thresholds).
