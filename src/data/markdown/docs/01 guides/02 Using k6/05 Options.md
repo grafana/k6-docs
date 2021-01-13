@@ -757,7 +757,7 @@ $ k6 run --no-thresholds ~/script.js
 
 A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
 track how often people use it. If this option is set to true, no usage report will be made. To
-learn more, have a look at the [Usage reports](/misc/usage-reports) documentation. Available in
+learn more, have a look at the [Usage reports](/misc/usage-collection) documentation. Available in
 `k6 run` commands.
 
 | Env                  | CLI                 | Code / Config file | Default |

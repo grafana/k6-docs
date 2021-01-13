@@ -89,5 +89,5 @@ behavior of k6:
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `K6_CLOUD_HOST`      | A URL to connect to, when the --out=cloud results output option is specified.                                          |
 | `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the cloud service, when the --cloud results output option is specified. |
-| `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-reports).                                                           |
+| `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-collection).                                                        |
 | `K6_OUT`             | Specify results output, same as --out command-line option.                                                             |

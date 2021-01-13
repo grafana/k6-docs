@@ -607,6 +607,11 @@ const createRedirects = ({ actions, pathPrefix }) => {
     toPath: '/cloud/cloud-faq/general-questions',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/misc/usage-reports',
+    toPath: '/misc/usage-collection',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
