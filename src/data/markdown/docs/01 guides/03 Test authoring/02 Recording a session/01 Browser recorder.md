@@ -72,11 +72,6 @@ Depending on the type of testing, you might need to change different aspects of 
 - Changing the [load options](/using-k6/options). The default is a 12 min ramp-up test.
 - Handling [correlation and dynamic data](/examples/correlation-and-dynamic-data).
 
-> #### Things to consider
->
-> - The auto-generated script sets [discardResponseBodies](/using-k6/options#discard-response-bodies) to `true`. This configuration will discard all response bodies.
-> - The browser extension will not record other tabs or pop up windows. If you need to capture this information, you should try the [HAR converter](/test-authoring/recording-a-session/har-converter).
-
 6 - **Run the test** locally or in the k6 Cloud.
 
 If you want to run a cloud test from the k6 Cloud UI, press `Run` to start the test.
@@ -84,3 +79,37 @@ If you want to run a cloud test from the k6 Cloud UI, press `Run` to start the t
 If you want to use the k6 CLI to run a local or cloud test, copy the generated script to your local text editor and execute the `k6 run` or `k6 cloud` command to start the test. 
 
 For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
+
+## Troubleshooting
+
+** Response bodies are discarded by default **
+
+The auto-generated script sets [discardResponseBodies](/using-k6/options#discard-response-bodies) to `true`. This configuration will discard all response bodies to require less memory during the test execution.
+
+```javascript
+export let options = {
+  discardResponseBodies: true,
+};
+```
+
+
+You can change the value `discardResponseBodies` to `false`. But if your test needs to handle the response of one or a few requests, we recommend enabling only the response of the desired requests using the `responseType` parameter.
+
+
+```javascript
+  const res = http.get('https://httpbin.org/get',  {responseType: 'text'});
+  console.log(res.body);
+```
+
+
+** The browser extension will not record other tabs or pop up windows **
+
+If you need to capture this information, you should use the [HAR converter](/test-authoring/recording-a-session/har-converter).
+
+> The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.
+
+** Having problems recording a request? **
+
+If you have a problem recording a request, we recommend you to try the [HAR converter](/test-authoring/recording-a-session/har-converter).
+
+The browser recorder uses the HAR converter logic to generate the k6 script. If the error persists with the HAR converter, please [report a new issue](https://github.com/loadimpact/har-to-k6/issues) providing detailed information about the problem.
