@@ -139,6 +139,15 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Link>
                       .
                     </Trait>
+                    <Trait>
+                      See team and testing activity with{' '}
+                      <Link
+                        to={'/cloud/project-and-team-management/usage-reports'}
+                      >
+                        Usage reports
+                      </Link>
+                      .
+                    </Trait>
                   </div>
 
                   <div className={'col-lg-6 traits'}>
