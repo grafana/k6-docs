@@ -234,7 +234,7 @@ export default function () {
     'https://httpbin.org/cookies',
     'my_cookie',
     'hello world',
-    cookeOptions,
+    cookieOptions,
   );
 
   // Override per-VU jar with local jar for the following request
