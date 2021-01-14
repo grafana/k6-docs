@@ -757,7 +757,7 @@ $ k6 run --no-thresholds ~/script.js
 
 A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
 track how often people use it. If this option is set to true, no usage report will be made. To
-learn more, have a look at the [Usage reports](/misc/usage-reports) documentation. Available in
+learn more, have a look at the [Usage reports](/misc/usage-collection) documentation. Available in
 `k6 run` commands.
 
 | Env                  | CLI                 | Code / Config file | Default |
@@ -992,14 +992,14 @@ $ k6 run -e FOO=bar ~/script.js
 
 ### System Tags
 
-Specify which [System Tags](/using-k6/tags-and-groups#section-system-tags) will be in the collected
+Specify which [System Tags](/using-k6/tags-and-groups#system-tags) will be in the collected
 metrics. Some collectors like the `cloud` one may require that certain system tags be used.
 You can specify the tags as an array from the JS scripts or as a comma-separated list via the
 CLI. Available in `k6 run` and `k6 cloud` commands
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`, `subproto`, `status`, `method`, `url`, `name`, `group`, `check`, `error`, `tls_version`, `scenario` |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`, `check`,`error`,`tls_version`,`scenario`,`service`,`rpc_type` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

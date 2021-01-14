@@ -123,6 +123,14 @@ export const Footer = () => (
                       Unit testing for performance
                     </a>
                   </li>
+                  <li className={styles.navColumnItem}>
+                    <a
+                      className={styles.navColumnLink}
+                      href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
+                    >
+                      White Paper
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div className={'col-lg-3 col-sm-6 col-12'}>

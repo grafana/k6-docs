@@ -118,12 +118,6 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const contentContainerRef = useRef(null);
 
   const {
-    graphqlImg: {
-      childImageSharp: { fixed: graphqlImgData },
-    },
-    azureImg: {
-      childImageSharp: { fixed: azureImgData },
-    },
     vscodeImg: {
       childImageSharp: { fixed: vscodeImgData },
     },
@@ -332,47 +326,56 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               iconsData={iconsDataSet2}
             />
             <ExternalLinksDashboard
-              dashboardTitle={'Grafana dashboards'}
+              dashboardTitle={'k6 Extensions'}
+              subtitle={
+                'Extend the functionality of k6 using Go code and import them as JS modules in your k6 script.'
+              }
               linksData={[
                 {
-                  title: 'dcadwallader',
-                  url: 'https://grafana.com/grafana/dashboards/2587',
+                  title: 'Tutorial: Creating a k6 extension',
+                  url: 'https://k6.io/blog/extending-k6-with-xk6',
                 },
                 {
-                  title: 'Stian Øvrevåge',
-                  url: 'https://grafana.com/grafana/dashboards/4411',
+                  title: 'xk6-chaos',
+                  description: 'An extension for running chaos experiments.',
+                  url: 'https://github.com/simskij/xk6-chaos',
                 },
                 {
-                  title: 'cyaiox',
-                  url: 'https://grafana.com/grafana/dashboards/8156',
+                  title: 'xk6-datadog',
+                  description: 'An extension for querying Datadog metrics.',
+                  url: 'https://github.com/dgzlopes/xk6-datadog',
                 },
                 {
-                  title: 'smockvavelsky',
-                  url: 'https://grafana.com/grafana/dashboards/10553',
-                },
-                {
-                  title: 'k m',
-                  url: 'https://grafana.com/grafana/dashboards/10660',
-                },
-              ]}
-            />
-            <ExternalLinksDashboard
-              dashboardTitle={'Community integrations'}
-              linksData={[
-                {
-                  picture: graphqlImgData,
-                  title: 'easygraphql-load-tester',
+                  title: 'xk6-kafka',
                   description:
-                    'Create queries from your GraphQL schema to use with your favorite load testing package.',
-                  url: 'https://github.com/EasyGraphQL/easygraphql-load-tester',
+                    'Produce and consume Kafka messages in Avro format.',
+                  url: 'https://github.com/mostafa/xk6-kafka',
                 },
                 {
-                  picture: azureImgData,
-                  title: 'k6ToAzure',
+                  title: 'xk6-notification',
+                  description: 'A Slack and Teams notification library.',
+                  url: 'https://github.com/dgzlopes/xk6-notification',
+                },
+                {
+                  title: 'xk6-redis',
+                  description: 'Redis client.',
+                  url: 'https://github.com/dgzlopes/xk6-redis',
+                },
+                {
+                  title: 'xk6-sql',
                   description:
-                    'Takes output JSON from k6 (k6.io) and pushes into Azure Log Analytics.',
-                  url:
-                    'https://github.com/benc-uk/smilr/blob/master/azure/load-test-reports/k6ToAzure.js',
+                    'A SQL extension to test against PostgreSQL, MySQL and SQLite.',
+                  url: 'https://github.com/imiric/xk6-sql',
+                },
+                {
+                  title: 'xk6-url',
+                  description: 'An extension for parsing and normalizing URLs.',
+                  url: 'https://github.com/dgzlopes/xk6-url',
+                },
+                {
+                  title: 'xk6-zmq',
+                  description: 'A ZeroMQ client.',
+                  url: 'https://github.com/dgzlopes/xk6-zmq',
                 },
               ]}
             />

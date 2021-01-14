@@ -3,9 +3,9 @@ title: 'Cloud'
 excerpt: ''
 ---
 
-Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), you can also stream your test results in real-time to the [k6 Cloud](/cloud).
+Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), you can also run a test locally and stream the results to the [k6 Cloud](/cloud).
 
-The k6 Cloud will pre-process your data, and you can visualize and analyze the results on the web app.
+When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
 ## Instructions
 
@@ -61,8 +61,15 @@ execution: local
 
 ![k6 Cloud Test Results](./images/Cloud/k6-cloud-results.png)
 
+> When you send the results to the k6 Cloud, data will be continuously streamed to the cloud. While this happens the state of the test run will be marked as `Running`. A test run that ran its course will be marked `Finished`. The run state has nothing to do with the test passing any thresholds, only that the test itself is operating correctly.
+> 
+> If you deliberately abort your test (e.g. by pressing _Ctrl-C_), it will still be considered `Finished`. You can still look and analyze the test data you streamed so far. The test will just have run shorter than originally planned.
+> 
+> Another possibility would be if you lose network connection with the k6 Cloud while your test is running. In that case the k6 Cloud will patiently wait for you to reconnect. In the meanwhile your test's run state will continue to appear as `Running` on the web app.
+> 
+> If no reconnection happens, the k6 Cloud will time out after two minutes of no data, setting the run state to `Timed out`. You can still analyze a timed out test but you'll of course only have access to as much data as was streamed before the network issue.
+
 ## See also
 
 - [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
 - [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
-- [Cloud test run status - Uploading results](/cloud/cloud-faq/test-status-codes#uploading-results)

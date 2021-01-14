@@ -17,7 +17,7 @@ The breadcrumb menu allows to quickly navigate between the latest runs of the te
 
 ![Test result navigation](./images/01-Overview/test-run-navigation.png)
 
-Additionally, you can see metadata about the current test. Status, Duration, VUs, Regions used, and who started a test. To the write, you have various buttons and menus to let you re-run, share, compare, configure, or delete your test.
+Additionally, you can see metadata about the current test. Status, Duration, VUs, Regions used, and who started a test. To the right, you have various buttons and menus to let you re-run, share, compare, configure, or delete your test.
 
 ![Test result metadata](./images/01-Overview/test-metadata.png)
 

@@ -257,6 +257,7 @@ if (process.env.BUCKET_NAME) {
   plugins.push({
     resolve: `gatsby-plugin-s3`,
     options: {
+      generateRedirectObjectsForPermanentRedirects: true,
       bucketName: process.env.BUCKET_NAME,
       region: process.env.BUCKET_REGION,
       protocol: 'https',

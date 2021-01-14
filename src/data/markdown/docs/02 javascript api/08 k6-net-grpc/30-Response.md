@@ -16,6 +16,7 @@ title: "Response"
 
 ```javascript
 import grpc from 'k6/net/grpc';
+import { check } from 'k6';
 
 const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');

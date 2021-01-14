@@ -36,7 +36,7 @@ Adding indexes or assigning additional memory may help.
 We recommend you to configure your soak test at about 80% capacity of your system.
 If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
 
-The duration of a stress test should be measured in hours. We recommend you to start with a 1 hour test,
+The duration of a soak test should be measured in hours. We recommend you to start with a 1 hour test,
 and once successful extend it to several hours.
 Some errors are related to time, and not to the total number of requests executed.
 

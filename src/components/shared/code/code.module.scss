@@ -86,6 +86,7 @@
     .token {
       &-line {
         display: table-row;
+        height: 25px; //$font-size-code * $line-height-code
       }
       &.comment {
         opacity: 0.5;

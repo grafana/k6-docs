@@ -18,3 +18,9 @@ used for a transaction though, which requires an extra step.
 
 [WebSockets](/using-k6/protocols/websockets) is a little bit different, the structure of the
 test and the VU lifecycle is different.
+
+k6 v0.29.0 introduced [xk6](https://k6.io/blog/extending-k6-with-xk6) allowing the community 
+to build k6 extensions and therefore add support for additional protocols. 
+
+k6 community contributed extensions for SQL, Kafka, ZeroMQ, Redis, and other protocols. 
+Full list can be found on [GitHub](https://github.com/topics/xk6). 

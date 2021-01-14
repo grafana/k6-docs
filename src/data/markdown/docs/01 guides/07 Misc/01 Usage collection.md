@@ -1,5 +1,5 @@
 ---
-title: 'Usage reports'
+title: 'Usage collection'
 excerpt: ''
 ---
 

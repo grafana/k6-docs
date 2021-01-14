@@ -560,18 +560,6 @@ const createRedirects = ({ actions, pathPrefix }) => {
       isPermanent: true,
     },
     {
-      fromPath: '/javascript-api/k6-http/response/response-clicklink-params',
-      toPath:
-        '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
-      isPermanent: true,
-    },
-    {
-      fromPath: '/javascript-api/k6-http/response/response-submitform-params',
-      toPath:
-        '/javascript-api/k6-http/response-k6-http/response-submitform-params',
-      isPermanent: true,
-    },
-    {
       fromPath: '/using-k6/cloud-execution',
       toPath: '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli',
       isPermanent: true,
@@ -607,8 +595,72 @@ const createRedirects = ({ actions, pathPrefix }) => {
       isPermanent: true,
     },
     {
-      fromPath: '/docs/cloud/creating-and-running-a-test/converters',
+      fromPath: '/cloud/creating-and-running-a-test/converters',
       toPath: '/integrations',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/integrations/ci',
+      toPath: '/integrations',
+      isPermanent: true,
+    },
+    {
+      fromPath:
+        '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
+      toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/what-is-data-retention',
+      toPath: '/cloud/billing-user-menu/data-retention',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/pricing-faq',
+      toPath: '/cloud/cloud-faq/pricing-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath:
+        '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath:
+        '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath:
+        '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/test-status-codes',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/what-are-vus-virtual-users',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/cloud/cloud-faq/data-uploads-with-k6-cloud',
+      toPath: '/cloud/cloud-faq/general-questions',
+      isPermanent: true,
+    },
+    {
+      fromPath: '/misc/usage-reports',
+      toPath: '/misc/usage-collection',
       isPermanent: true,
     },
   ].map(createRedirect);

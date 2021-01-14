@@ -119,6 +119,12 @@
       "description": "How to track data sent and received for an individual URL.",
       "url": "",
       "to": "/examples/track-transmitted-data-per-url"
+    },
+    {
+      "title": "Construct URLs with query parameters",
+      "description": "How to use URL and URLSearchParams APIs to construct URLs.",
+      "url": "",
+      "to": "/examples/urls-with-query-parameters"
     }
   ],
   "tutorials": [
@@ -175,6 +181,12 @@
       "description": "This article takes a look at the k6 pause/resume/scale/stats/status commands, and how to use them to control and query a remote k6 instance running a test.",
       "to": "",
       "url": "https://k6.io/blog/how-to-control-a-live-k6-test"
+    },
+    {
+      "title": "Creating a k6 extension",
+      "description": "This short tutorial will walk you through the steps to build a k6 extension for Redis and use it in your k6 test.",
+      "to": "",
+      "url": "https://k6.io/blog/extending-k6-with-xk6"
     }
   ]
 }
