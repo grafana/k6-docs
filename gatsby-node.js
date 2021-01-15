@@ -354,20 +354,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
-    isPermanent: true,
-  });
-  createRedirect({
     fromPath: '/javascript-api/k6-metrics/gauge-k6-metrics',
     toPath: '/javascript-api/k6-metrics/gauge',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags',
     isPermanent: true,
   });
   createRedirect({
@@ -376,19 +364,8 @@ const createRedirects = ({ actions, pathPrefix }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/rate/rate-add-value-tags',
-    isPermanent: true,
-  });
-  createRedirect({
     fromPath: '/javascript-api/k6-metrics/trend-k6-metrics',
     toPath: '/javascript-api/k6-metrics/trend',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags',
     isPermanent: true,
   });
   createRedirect({
@@ -465,27 +442,29 @@ const createRedirects = ({ actions, pathPrefix }) => {
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
-    toPath:
+    fromPath:
       '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
+    fromPath:
+      '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/rate/rate-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags',
+    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/rate/rate-add-value-tags',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
+    fromPath:
+      '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
+    toPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags',
     isPermanent: true,
   });
 
