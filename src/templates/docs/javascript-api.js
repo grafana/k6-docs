@@ -57,6 +57,7 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
+
   return (
     <DocLayout
       sidebarTree={sidebarTree}

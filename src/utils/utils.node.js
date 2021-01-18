@@ -1,8 +1,9 @@
 /* gatsby-node.js specific helper functions */
+const { translations } = require('./path-translations');
 const { slugify } = require('./utils');
 
 // default 'en' is not included
-const SUPPORTED_LOCALES = ['es'];
+const SUPPORTED_LOCALES = ['es', 'en'];
 
 // create a container;
 const utils = {};
@@ -46,8 +47,22 @@ const buildFileTree = (nodeBuilder) => {
   const addNode = (path, name, meta = {}) => {
     let parent = root;
     const parts = path.split('/');
+
+    const locale = SUPPORTED_LOCALES.find((loc) => parts.includes(loc)) || 'en';
+
     parts.push(name);
     parts.forEach((part) => {
+      if (
+        parent.children === undefined ||
+        parent.children[part] === undefined
+      ) {
+        // add translated folder name to meta.title for each node in tree
+        const translatedName =
+          translations[part] !== undefined && locale !== 'en'
+            ? translations[part][locale]
+            : part;
+        parent.children[part] = nodeBuilder(part, { title: translatedName });
+      }
       parent.children[part] = parent.children[part] || nodeBuilder(part);
       parent = parent.children[part];
     });

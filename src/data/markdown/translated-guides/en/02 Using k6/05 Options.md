@@ -1,0 +1,1253 @@
+---
+title: 'Options'
+excerpt: ''
+---
+
+Options allow you to configure how k6 will behave during test execution.
+
+## List of Options
+
+| Option                                                    | Description                                                                         |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
+| [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
+| [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
+| [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
+| [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
+| [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
+| [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
+| [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
+| [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
+| [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
+| [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
+| [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
+| [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
+| [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
+| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
+| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
+| [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
+| [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
+| [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
+| [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
+| [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
+| [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
+| [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
+| [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
+| [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
+| [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
+| [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
+| [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
+| [Results Output](#results-output)                         | Specify the results output                                                          |
+| [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
+| [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
+| [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
+| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down          |
+| [Summary export](#summary-export)                         | Output the end-of-test summary report to a JSON file                                |
+| [Supply Env Var](#supply-env-var)                         | Add/override environment variable with VAR=value                                    |
+| [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
+| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
+| [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
+| [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
+| [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
+| [Throw](#throw)                                           | A boolean specifying whether to throw errors on failed HTTP requests                |
+| [TLS Auth](#tls-auth)                                     | A list of TLS client certificate configuration objects                              |
+| [TLS Cipher Suites](#tls-cipher-suites)                   | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
+| [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
+| [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
+| [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
+| [VUs Max](#vus-max)                                       | A number specifying max number of virtual users                                     |
+
+## Using Options
+
+Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line
+flags, environment variables or via a config file.
+
+The order of precedence is: defaults < config file < exported script options < environment
+variables < command-line flags. Options from each subsequent level can be used to overwrite the
+options from the previous levels, with the CLI flags having the highest priority.
+
+For example, you can define the duration in 4 different ways:
+
+- set the `duration: "10s"` option in the config file
+- set the `duration: "10s"` option in the script
+- define `K6_DURATION` as an environment variable
+- use the command-line flag `-d 10s`
+
+The following JS snippet shows how to specify options in the script:
+
+<CodeGroup labels={["example.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+
+export let options = {
+  hosts: { 'test.k6.io': '1.2.3.4' },
+  stages: [
+    { duration: '1m', target: 10 },
+    { duration: '1m', target: 20 },
+    { duration: '1m', target: 0 },
+  ],
+  thresholds: { http_req_duration: ['avg<100', 'p(95)<200'] },
+  noConnectionReuse: true,
+  userAgent: 'MyK6UserAgentString/1.0',
+};
+
+export default function () {
+  http.get('http://test.k6.io/');
+}
+```
+
+</CodeGroup>
+
+You can also set the same options through a config file:
+
+<CodeGroup labels={["config.json"]} lineNumbers={[true]}>
+
+```json
+{
+  "hosts": {
+    "test.k6.io": "1.2.3.4"
+  },
+  "stages": [
+    {
+      "duration": "1m",
+      "target": 10
+    },
+    {
+      "duration": "1m",
+      "target": 30
+    },
+    {
+      "duration": "1m",
+      "target": 0
+    }
+  ],
+  "thresholds": {
+    "http_req_duration": ["avg<100", "p(95)<200"]
+  },
+  "noConnectionReuse": true,
+  "userAgent": "MyK6UserAgentString/1.0"
+}
+```
+
+</CodeGroup>
+
+Or set some of the previous options via environment variables and command-line flags:
+
+<CodeGroup labels={["Bash"]} lineNumbers={[true]}>
+
+```bash
+$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run ~/script.js
+
+$ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
+```
+
+</CodeGroup>
+
+<br/>
+
+Below, you'll find details on all available options that can be specified within a script. It also
+documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
+and `k6 cloud ...` that can be used to override options specified in the code.
+
+### Batch
+
+The maximum number of simultaneous/parallel connections in total that an
+[`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
+`batch()` call that you've given 20 URLs to and `--batch` is set to 15, then the VU will make 15
+requests right away in parallel and queue the rest, executing them as soon as a previous request is
+done and a slot opens. Available in both the `k6 run` and the `k6 cloud` commands
+
+| Env        | CLI       | Code / Config file | Default |
+| ---------- | --------- | ------------------ | ------- |
+| `K6_BATCH` | `--batch` | `batch`            | `20`    |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  batch: 15,
+};
+```
+
+</CodeGroup>
+
+### Batch per host
+
+The maximum number of simultaneous/parallel connections for the same hostname that an
+[`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
+`batch()` call that you've given 20 URLs to the _same_ hostname and `--batch-per-host` is set to 5, then the VU will make 5
+requests right away in parallel and queue the rest, executing them as soon as a previous request is
+done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
+
+| Env                 | CLI                | Code / Config file | Default |
+| ------------------- | ------------------ | ------------------ | ------- |
+| `K6_BATCH_PER_HOST` | `--batch-per-host` | `batchPerHost`     | `6`     |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  batchPerHost: 5,
+};
+```
+
+</CodeGroup>
+
+### Blacklist IPs
+
+Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
+
+| Env                | CLI              | Code / Config file | Default |
+| ------------------ | ---------------- | ------------------ | ------- |
+| `K6_BLACKLIST_IPS` | `--blacklist-ip` | `blacklistIPs`     | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  blacklistIPs: ['10.0.0.0/8'],
+};
+```
+
+</CodeGroup>
+
+
+
+### Block Hostnames
+
+> _New in v0.29.0_
+
+Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
+`*` at the beginning such as `*.example.com` that will match anything before that such as
+`test.example.com` and `test.test.example.com`.
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_BLOCK_HOSTNAMES` | `--block-hostnames` | `blockHostnames`   | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  blockHostnames: ["test.k6.io" , "*.example.com"],
+};
+```
+
+</CodeGroup>
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
+```
+
+</CodeGroup>
+
+### Compatibility Mode
+
+Support running scripts with different ECMAScript compatibility modes.
+
+Read about the different modes on the [JavaScript Compatibility Mode documentation](/using-k6/javascript-compatibility-mode).
+
+| Env                     | CLI                    | Code / Config file | Default      |
+| ----------------------- | ---------------------- | ------------------ | ------------ |
+| `K6_COMPATIBILITY_MODE` | `--compatibility-mode` | N/A                | `"extended"` |
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --compatibility-mode=base script.js
+```
+
+</CodeGroup>
+
+### Config
+
+Specify the config file in JSON format to read the `options` values. If the config file is not
+specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular
+directory for configuration files on the operating system.
+
+For example in Linux/BSDs, it will look for `config.json` inside `${HOME}/.config/loadimpact/k6`.
+Available in `k6 run` and `k6 cloud` commands
+
+| Env | CLI                            | Code / Config file | Default |
+| --- | ------------------------------ | ------------------ | ------- |
+| N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
+
+### Discard Response Bodies
+
+Specify if response bodies should be discarded by changing the default value of
+[responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
+to `true` and then only for the requests where the response body is needed for scripting
+to set [responseType](/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
+required and the amount of GC - reducing the load on the testing machine, and probably producing
+more reliable test results.
+
+| Env                          | CLI                         | Code / Config file      | Default |
+| ---------------------------- | --------------------------- | ----------------------- | ------- |
+| `K6_DISCARD_RESPONSE_BODIES` | `--discard-response-bodies` | `discardResponseBodies` | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  discardResponseBodies: true,
+};
+```
+
+</CodeGroup>
+
+### DNS
+
+> _New in v0.29.0_
+
+This is a composite option that provides control of DNS resolution behavior with
+configuration for cache expiration (TTL), IP selection strategy and IP version
+preference. The TTL field in the DNS record is currently not read by k6, so the
+`ttl` option allows manual control over this behavior, albeit as a fixed value
+for the duration of the test run.
+
+Note that DNS resolution is done only on new HTTP connections, and by default k6
+will try to reuse connections if HTTP keep-alive is supported. To force a certain
+DNS behavior consider enabling the [`noConnectionReuse`](#no-connection-reuse)
+option in your tests.
+
+
+| Env      | CLI     | Code / Config file | Default                                  |
+| ---------| --------| -------------------| ---------------------------------------- |
+| `K6_DNS` | `--dns` | `dns`              | `ttl=5m,select=random,policy=preferIPv4` |
+
+Possible `ttl` values are:
+- `0`: no caching at all - each request will trigger a new DNS lookup.
+- `inf`: cache any resolved IPs for the duration of the test run.
+- any time duration like `60s`, `5m30s`, `10m`, `2h`, etc.; if no unit is specified (e.g. `ttl=3000`), k6 assumes milliseconds.
+
+Possible `select` values are:
+- `first`: always pick the first resolved IP.
+- `random`: pick a random IP for every new connection.
+- `roundRobin`: iterate sequentially over the resolved IPs.
+
+Possible `policy` values are:
+- `preferIPv4`: use IPv4 addresses if available, otherwise fall back to IPv6.
+- `preferIPv6`: use IPv6 addresses if available, otherwise fall back to IPv4.
+- `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
+- `onlyIPv6`: only use IPv6 addresses, ignore any IPv4 ones.
+- `any`: no preference, use all addresses.
+
+Here are some configuration examples:
+
+```bash
+k6 run --dns "ttl=inf,select=first,policy=any" script.js # the old k6 behavior before v0.29.0
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior from v0.29.0
+```
+
+<CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  dns: {
+    ttl: '1m',
+    select: 'roundRobin',
+    policy: 'any'
+  }
+}
+```
+
+</CodeGroup>
+
+### Duration
+
+A string specifying the total duration a test run should be run for. During this time each
+VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
+
+| Env           | CLI                | Code / Config file | Default |
+| ------------- | ------------------ | ------------------ | ------- |
+| `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  duration: '3m',
+};
+```
+
+</CodeGroup>
+
+### Extension Options
+
+An object used to set configuration options for third-party collectors, like plugins.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| N/A | N/A | `ext`              | `null`  |
+
+This is an example of how to specify the test name (test runs/executions with the same name will be
+logically grouped for trending and comparison) when streaming results to
+[k6 Cloud Performance Insights](/cloud/analyzing-results/performance-insights).
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      name: 'My test name',
+    },
+  },
+};
+```
+
+</CodeGroup>
+
+### Execution Segment
+
+> _New in v0.27.0_
+
+These options specify how to partition the test run and which segment to run.
+If defined, k6 will scale the number of VUs and iterations to be run for that
+segment, which is useful in distributed execution. Available in `k6 run` and
+`k6 cloud` commands.
+
+| Env | CLI                            | Code / Config file         | Default |
+| --- | ------------------------------ | -------------------------- | ------- |
+| N/A | `--execution-segment`          | `executionSegment`         | `"0:1"` |
+| N/A | `--execution-segment-sequence` | `executionSegmentSequence` | `"0,1"` |
+
+For example, to run 25% of a test, you would specify `--execution-segment '25%'`,
+which would be equivalent to `--execution-segment '0:1/4'`, i.e. run the first
+1/4 of the test.
+To ensure that each instance executes a specific segment, also specify the full
+segment sequence, e.g. `--execution-segment-sequence '0,1/4,1/2,1'`.
+This way one instance could run with `--execution-segment '0:1/4'`, another with
+`--execution-segment '1/4:1/2'`, etc. and there would be no overlap between them.
+
+In v0.27.0 this distinction is not very important, but it will be required
+in future versions when support for test data partitioning is added.
+
+<!-- TODO: Add more examples, link to a standalone page? -->
+
+### Hosts
+
+An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
+Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
+up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
+
+From v0.28.0 it is also supported to redirect only from certain ports and/or to certain ports.
+
+> #### ⚠️ Keep in mind!
+>
+> This does not modify the actual HTTP `Host` header, but rather where it will be routed.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| N/A | N/A | `hosts`            | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  hosts: {
+    'test.k6.io': '1.2.3.4',
+    'test.k6.io:443': '1.2.3.4:8443',
+  },
+};
+```
+
+</CodeGroup>
+
+With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
+it port unless it's port is `443` which will be redirected to port `8443`.
+
+### HTTP Debug
+
+Log all HTTP requests and responses. Excludes body by default, to include body use
+`--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
+
+Read more [here](/using-k6/http-debugging).
+
+| Env             | CLI                                     | Code / Config file | Default |
+| --------------- | --------------------------------------- | ------------------ | ------- |
+| `K6_HTTP_DEBUG` | `--http-debug`,<br/>`--http-debug=full` | `httpDebug`        | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  httpDebug: 'full',
+};
+```
+
+</CodeGroup>
+
+### Include System Env Vars
+
+Pass the real system environment variables to the runtime. Available in `k6 run` and `k6 cloud`
+commands.
+
+| Env | CLI                         | Code / Config file | Default                                                                                              |
+| --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
+| N/A | `--include-system-env-vars` | N/A                | `true` for `k6 run`, but `false` for all other commands to prevent inadvertent sensitive data leaks. |
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --include-system-env-vars ~/script.js
+```
+
+</CodeGroup>
+
+### Insecure Skip TLS Verify
+
+A boolean, true or false. When this option is enabled (set to true), all of the verifications that
+would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
+This only applies to connections created by VU code, such as http requests.
+Available in `k6 run` and `k6 cloud` commands
+
+| Env                           | CLI                          | Code / Config file      | Default |
+| ----------------------------- | ---------------------------- | ----------------------- | ------- |
+| `K6_INSECURE_SKIP_TLS_VERIFY` | `--insecure-skip-tls-verify` | `insecureSkipTLSVerify` | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  insecureSkipTLSVerify: true,
+};
+```
+
+</CodeGroup>
+
+### Iterations
+
+A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
+a duration of time during which the script would run in a loop.
+\*Note: The number of iterations
+is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
+`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed,
+the default `maxDuration` is 10 minutes when using iterations with the cloud service.
+
+| Env             | CLI                  | Code / Config file | Default |
+| --------------- | -------------------- | ------------------ | ------- |
+| `K6_ITERATIONS` | `--iterations`, `-i` | `iterations`       | `1`     |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  iterations: 10,
+};
+```
+
+</CodeGroup>
+
+Or, to run 10 VUs 10 times each:
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  vus: 10,
+  iterations: 100,
+};
+```
+
+</CodeGroup>
+
+### Linger
+
+A boolean, true or false, specifying whether the k6 process should linger around after test
+run completion. Available in the `k6 run` command.
+
+| Env         | CLI              | Code / Config file | Default |
+| ----------- | ---------------- | ------------------ | ------- |
+| `K6_LINGER` | `--linger`, `-l` | `linger`           | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  linger: true,
+};
+```
+
+</CodeGroup>
+
+### Local IPs
+
+A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
+given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
+configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
+IPs don't include the first and last IP as they are reserved for referring to the network itself and
+the broadcast address respectively.
+
+This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC>,<IP-from-second-NIC>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
+
+Available in the `k6 run` command.
+
+| Env            | CLI              | Code / Config file | Default |
+| -------------- | ---------------- | ------------------ | ------- |
+| `K6_LOCAL_IPS` | `--local-ips`    | N/A                | N/A     |
+
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
+```
+
+</CodeGroup>
+
+### Log output
+
+This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
+
+Possible values are:
+
+- none - disable
+- stdout - send to the standard output
+- stderr - send to the standard error output (this is the default)
+- loki - send logs to a loki server
+
+The loki can additionally be configured as follows:
+`loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`
+Where all but the url in the beginning are not required.
+The possible keys with their meanings and default values:
+
+| key               | meaning                                                                                                                                                                                | default value                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `nothing`         | the endpoint to which to send logs                                                                                                                                                     | `http://127.0.0.1:3100/loki/api/v1/push` |
+| allowedLabels     | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]`  | N/A                                      |
+| label.`labelName` | adds an additional label with the provided key and value to each message                                                                                                               | N/A                                      |
+| limit             | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped                                                           | 100                                      |
+| level             | the minimal level of a message so it's send to loki                                                                                                                                    | all                                      |
+| pushPeriod        | at what period to send log lines                                                                                                                                                       | 1s                                       |
+| profile           | whether to print some info about performance of the sending to loki                                                                                                                    | false                                    |
+| msgMaxSize        | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576                                  |
+
+| Env             | CLI            | Code / Config file | Default  |
+| --------------- | -------------- | ------------------ | -------- |
+| `K6_LOG_OUTPUT` | `--log-output` | N/A                | `stderr` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --log-output=stdout script.js
+```
+
+</CodeGroup>
+
+### LogFormat
+
+A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
+
+- `json`: print all the debug information in JSON format.
+
+- `raw`: print only the log message.
+
+| Env            | CLI                 | Code / Config file | Default |
+| -------------- | ------------------- | ------------------ | ------- |
+| `K6_LOGFORMAT` | `--logformat`, `-f` | N/A                |         |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --logformat raw test.js
+```
+
+</CodeGroup>
+
+### Max Redirects
+
+The maximum number of HTTP redirects that k6 will follow before giving up on a request and
+erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_MAX_REDIRECTS` | `--max-redirects` | `maxRedirects`     | `10`    |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  maxRedirects: 10,
+};
+```
+
+</CodeGroup>
+
+### Minimum Iteration Duration
+
+Specifies the minimum duration for every single execution (i.e. iteration) of the default
+function should be. Any iterations that are shorter than it will cause that VU to sleep for
+the remainder of the time until the specified minimum duration is reached.
+
+| Env                         | CLI                        | Code / Config file     | Default        |
+| --------------------------- | -------------------------- | ---------------------- | -------------- |
+| `K6_MIN_ITERATION_DURATION` | `--min-iteration-duration` | `minIterationDuration` | `0` (disabled) |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  minIterationDuration: '10s',
+};
+```
+
+</CodeGroup>
+
+### No Connection Reuse
+
+A boolean, true or false, specifying whether k6 should disable keep-alive connections.
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env                      | CLI                     | Code / Config file  | Default |
+| ------------------------ | ----------------------- | ------------------- | ------- |
+| `K6_NO_CONNECTION_REUSE` | `--no-connection-reuse` | `noConnectionReuse` | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  noConnectionReuse: true,
+};
+```
+
+</CodeGroup>
+
+### No Cookies Reset
+
+This disables the default behavior of resetting the cookie jar after each VU iteration. If
+it's enabled, saved cookies will be persisted across VU iterations.
+
+| Env                   | CLI | Code / Config file | Default |
+| --------------------- | --- | ------------------ | ------- |
+| `K6_NO_COOKIES_RESET` | N/A | `noCookiesReset`   | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  noCookiesReset: true,
+};
+```
+
+</CodeGroup>
+
+### No Thresholds
+
+Disables threshold execution. Available in the `k6 run` command.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_THRESHOLDS` | `--no-thresholds` | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-thresholds ~/script.js
+```
+
+</CodeGroup>
+
+### No Usage Report
+
+A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
+track how often people use it. If this option is set to true, no usage report will be made. To
+learn more, have a look at the [Usage reports](/misc/usage-collection) documentation. Available in
+`k6 run` commands.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`    | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  noUsageReport: true,
+};
+```
+
+</CodeGroup>
+
+### No VU Connection Reuse
+
+A boolean, true or false, specifying whether k6 should reuse TCP connections between iterations
+of a VU. Available in `k6 run` and `k6 cloud` commands.
+
+| Env                         | CLI                        | Code / Config file    | Default |
+| --------------------------- | -------------------------- | --------------------- | ------- |
+| `K6_NO_VU_CONNECTION_REUSE` | `--no-vu-connection-reuse` | `noVUConnectionReuse` | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  noVUConnectionReuse: true,
+};
+```
+
+</CodeGroup>
+
+### Paused
+
+A boolean, true or false, specifying whether the test should start in a paused state. To resume
+a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud` commands.
+
+| Env         | CLI              | Code / Config file | Default |
+| ----------- | ---------------- | ------------------ | ------- |
+| `K6_PAUSED` | `--paused`, `-p` | `paused`           | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  paused: true,
+};
+```
+
+</CodeGroup>
+
+### Results Output
+
+Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
+on all output plugins available and how to configure them. Since version 0.21, this option can be
+specified multiple times. Available in `k6 run` command.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| N/A | `--out`, `-o` | N/A                | `null`  |
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --out influxdb=http://localhost:8086/k6 script.js
+```
+
+</CodeGroup>
+
+### RPS
+
+The maximum number of requests to make per second, in total across all VUs. Available in `k6 run`
+and `k6 cloud` commands.
+
+| Env      | CLI     | Code / Config file | Default         |
+| -------- | ------- | ------------------ | --------------- |
+| `K6_RPS` | `--rps` | `rps`              | `0` (unlimited) |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  rps: 500,
+};
+```
+
+</CodeGroup>
+
+> #### Considerations when running in the cloud
+>
+> The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
+
+### Scenarios
+
+Define one or more execution patterns, with various VU and iteration scheduling
+settings, running different exported functions (besides `default`!), using different
+environment variables, tags, and more.
+
+See the [Scenarios](/using-k6/scenarios) article for details and more examples.
+
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| N/A | N/A | `scenarios`        | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  scenarios: {
+    my_api_scenario: {
+      // arbitrary scenario name
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '5s', target: 100 },
+        { duration: '5s', target: 0 },
+      ],
+      gracefulRampDown: '10s',
+      env: { MYVAR: 'example' },
+      tags: { my_tag: 'example' },
+    },
+  },
+};
+```
+
+</CodeGroup>
+
+### Setup Timeout
+
+Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
+
+| Env                | CLI | Code / Config file | Default |
+| ------------------ | --- | ------------------ | ------- |
+| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"10s"` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  setupTimeout: '30s',
+};
+```
+
+</CodeGroup>
+
+### Stages
+
+A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
+ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands,
+
+| Env         | CLI                                                     | Code / Config file | Default                        |
+| ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
+| `K6_STAGES` | `--stage <duration>:<target>`, `-s <duration>:<target>` | `stages`           | Based on `vus` and `duration`. |
+
+<CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
+
+```javascript
+// The following config would have k6 ramping up from 1 to 10 VUs for 3 minutes,
+// then staying flat at 10 VUs for 5 minutes, then ramping up from 10 to 35 VUs
+// over the next 10 minutes before finally ramping down to 0 VUs for another
+// 3 minutes.
+
+export let options = {
+  stages: [
+    { duration: '3m', target: 10 },
+    { duration: '5m', target: 10 },
+    { duration: '10m', target: 35 },
+    { duration: '3m', target: 0 },
+  ],
+};
+```
+
+```bash
+$ k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+
+# or...
+
+$ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
+```
+
+</CodeGroup>
+
+### Summary export
+
+> _New in v0.26.0_
+
+Output the end-of-test summary report to a JSON file that includes
+data for all test metrics, checks and thresholds. This is useful to
+get the aggregated test results in a machine-readable format, for
+integration with dashboards, external alerts, etc.
+
+Available in the `k6 run` command.
+
+| Env                 | CLI                           | Code / Config file | Default |
+| ------------------- | ----------------------------- | ------------------ | ------- |
+| `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                | `null`  |
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --summary-export export.json ~/script.js
+
+# or...
+
+$ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
+```
+
+</CodeGroup>
+
+See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
+
+### Supply Env Var
+
+Add/override environment variable with VAR=value. Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| N/A | `--env`, `-e` | N/A                | `null`  |
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run -e FOO=bar ~/script.js
+```
+
+</CodeGroup>
+
+### System Tags
+
+Specify which [System Tags](/using-k6/tags-and-groups#system-tags) will be in the collected
+metrics. Some collectors like the `cloud` one may require that certain system tags be used.
+You can specify the tags as an array from the JS scripts or as a comma-separated list via the
+CLI. Available in `k6 run` and `k6 cloud` commands
+
+| Env              | CLI             | Code / Config file | Default                                                                                                      |
+| ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`, `check`,`error`,`tls_version`,`scenario`,`service`,`rpc_type` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  systemTags: ['status', 'method', 'url'],
+};
+```
+
+</CodeGroup>
+
+### Summary Trend Stats
+
+Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
+in `k6 run` command.
+
+| Env                      | CLI                     | Code / Config file  | Default |
+| ------------------------ | ----------------------- | ------------------- | ------- |
+| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  summaryTrendStats: ['avg', 'p(95)'],
+};
+```
+
+</CodeGroup>
+
+### Tags
+
+Specify tags that should be set test wide across all metrics. If a tag with the same name has
+been specified on a request, check or custom metrics it will have precedence over a test wide
+tag. Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI                | Code / Config file | Default |
+| --- | ------------------ | ------------------ | ------- |
+| N/A | `--tag NAME=VALUE` | `tags`             | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  tags: {
+    name: 'value',
+  },
+};
+```
+
+</CodeGroup>
+
+### Teardown Timeout
+
+Specify how long the `teardown()` function is allowed to run before it's terminated and the test
+fails.
+
+| Env                   | CLI | Code / Config file | Default |
+| --------------------- | --- | ------------------ | ------- |
+| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"10s"` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  teardownTimeout: '30s',
+};
+```
+
+</CodeGroup>
+
+### Thresholds
+
+A collection of threshold specifications to configure under what condition(s) a test is considered
+successful or not, when it has passed or failed, based on metric data. To learn more, have a look
+at the [Thresholds](/using-k6/thresholds) documentation. Available in `k6 run` commands.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| N/A | N/A | `thresholds`       | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  thresholds: {
+    http_req_duration: ['avg<100', 'p(95)<200'],
+    'http_req_connecting{cdnAsset:true}': ['p(95)<100'],
+  },
+};
+```
+
+</CodeGroup>
+
+### Throw
+
+A boolean, true or false, specifying whether to throw errors on failed HTTP requests or not.
+Available in `k6 run` and `k6 cloud` commands.
+
+| Env        | CLI             | Code / Config file | Default |
+| ---------- | --------------- | ------------------ | ------- |
+| `K6_THROW` | `--throw`, `-w` | `throw`            | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  throw: true,
+};
+```
+
+</CodeGroup>
+
+### TLS Auth
+
+A list of TLS client certificate configuration objects. Each object needs to specify for
+which host(s)/domain(s) the given client certificate is valid for.
+
+| Env | CLI | Code / Config file | Default |
+| --- | --- | ------------------ | ------- |
+| N/A | N/A | `tlsAuth`          | `null`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  tlsAuth: [
+    {
+      domains: ['example.com'],
+      cert: open('mycert.pem'),
+      key: open('mycert-key.pem'),
+    },
+  ],
+};
+```
+
+</CodeGroup>
+
+### TLS Cipher Suites
+
+A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
+For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
+
+| Env | CLI | Code / Config file | Default                   |
+| --- | --- | ------------------ | ------------------------- |
+| N/A | N/A | `tlsCipherSuites`  | `null` (Allow all suites) |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  tlsCipherSuites: [
+    'TLS_RSA_WITH_RC4_128_SHA',
+    'TLS_RSA_WITH_AES_128_GCM_SHA256',
+  ],
+};
+```
+
+</CodeGroup>
+
+### TLS Version
+
+Either a string representing the only SSL/TLS version allowed to be used in interactions with a
+server, or an object specifying the "min" and "max" versions allowed to be used.
+
+| Env | CLI | Code / Config file | Default                     |
+| --- | --- | ------------------ | --------------------------- |
+| N/A | N/A | `tlsVersion`       | `null` (Allow all versions) |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  tlsVersion: 'tls1.2',
+};
+
+// or...
+
+export let options = {
+  tlsVersion: {
+    min: 'ssl3.0',
+    max: 'tls1.2',
+  },
+};
+```
+
+</CodeGroup>
+
+### User Agent
+
+A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
+requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
+Available in `k6 run` and `k6 cloud` commands
+
+| Env             | CLI            | Code / Config file | Default                                                               |
+| --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
+| `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `k6/0.27.0 (https://k6.io/)` (depending on the version you're using)` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  userAgent: 'MyK6UserAgentString/1.0',
+};
+```
+
+</CodeGroup>
+
+### VUs
+
+A number specifying the number of VUs to run concurrently. If you'd like more control look at
+the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
+
+| Env      | CLI           | Code / Config file | Default |
+| -------- | ------------- | ------------------ | ------- |
+| `K6_VUS` | `--vus`, `-u` | `vus`              | `1`     |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  vus: 10,
+};
+```
+
+</CodeGroup>
+
+### VUs Max
+
+> #### ⚠️ Keep in mind!
+>
+> This option was deprecated in k6 version 0.27.0.
+
+A number specifying max number of virtual users, if more than `vus`. This option is typically
+used when the intent is to dynamically scale the amount of VUs up and down during the test using
+the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
+is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
+
+| Env          | CLI           | Code / Config file | Default         |
+| ------------ | ------------- | ------------------ | --------------- |
+| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  vusMax: 10,
+};
+```
+
+</CodeGroup>

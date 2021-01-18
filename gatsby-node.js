@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 const Path = require('path');
 
+const { translations } = require('./src/utils/path-translations');
 const {
   slugify,
   compose,
@@ -39,7 +40,46 @@ const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
   return redirect;
 };
 
-function generateSidebar({ nodes }) {
+// path + title
+const getSlug = (relativeDirectory, title, type = 'guides') => {
+  const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
+  const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+  const slug = compose(
+    noTrailingSlash,
+    dedupePath,
+    removeGuides,
+    unorderify,
+    slugify,
+  )(path);
+
+  return slug;
+};
+// translated path + title
+const getTranslatedSlug = (
+  relativeDirectory,
+  title,
+  locale = 'es',
+  type = 'guides',
+) => {
+  const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
+  const path = unorderify(strippedDirectory);
+  const translatedPath = path
+    .split('/')
+    .map((part) =>
+      translations[part] !== undefined ? translations[part][locale] : part,
+    )
+    .join('/');
+
+  const slug = compose(
+    noTrailingSlash,
+    dedupePath,
+    slugify,
+  )(`${translatedPath}/${unorderify(title.replace(/\//g, '-'))}`);
+
+  return slug;
+};
+
+function generateSidebar({ nodes, type = 'docs' }) {
   const sidebarTreeBuilder = buildFileTree(buildFileTreeNode);
 
   nodes.forEach(({ name, relativeDirectory, children: [remarkNode] }) => {
@@ -52,13 +92,24 @@ function generateSidebar({ nodes }) {
     if ((draft === 'true' && isProduction) || hideFromSidebar) return;
 
     // titles like k6/html treated like paths otherwise
-    const path = `/${stripDirectoryPath(
-      relativeDirectory,
-      'docs',
-    )}/${title.replace(/\//g, '-')}`;
+    let path = unorderify(
+      `/${stripDirectoryPath(relativeDirectory, type)}/${title.replace(
+        /\//g,
+        '-',
+      )}`,
+    );
+
+    if (type === 'guides' && path.startsWith('/es/')) {
+      path = unorderify(path)
+        .split('/')
+        .map((item) =>
+          translations[item] !== undefined ? translations[item].es : item,
+        )
+        .join('/');
+    }
 
     sidebarTreeBuilder.addNode(
-      unorderify(stripDirectoryPath(relativeDirectory, 'docs')),
+      unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
         path:
@@ -67,7 +118,6 @@ function generateSidebar({ nodes }) {
             noTrailingSlash,
             removeGuidesAndRedirectWelcome,
             dedupePath,
-            unorderify,
             slugify,
           )(path),
         title,
@@ -154,6 +204,7 @@ function getTopLevelPagesProps({
         // skip page creation if there is already a page with identical url
         return false;
       }
+
       return {
         path: slug === 'guides' ? `/` : `/${slug}`,
         component: Path.resolve(`./src/templates/docs/${slug}.js`),
@@ -238,18 +289,130 @@ function getDocPagesProps({
 
       const isLocalizedPage = strippedDirectory.startsWith('es/');
 
+      if (isLocalizedPage) {
+        return false;
+      }
+
       const docSection = compose(
         getDocSection,
         removeLocaleFromPath,
         unorderify,
       )(strippedDirectory);
 
-      const sidebarTree = isLocalizedPage
-        ? getSidebar(docSection, 'es')
-        : getSidebar(docSection);
+      const sidebarTree = getSidebar(docSection);
 
       return {
         path: slug,
+        component: Path.resolve('./src/templates/doc-page.js'),
+        context: {
+          remarkNode: extendedRemarkNode,
+          sidebarTree,
+          breadcrumbs: breadcrumbs.filter(
+            (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+          ),
+          navLinks: topLevelLinks,
+        },
+      };
+    })
+    .filter(Boolean);
+}
+
+function getGuidesPagesProps({
+  nodesGuides,
+  reporter,
+  topLevelLinks,
+  pathCollisionDetectorInstance,
+  getGuidesSidebar,
+}) {
+  // creating actual docs pages
+  return nodesGuides
+    .map(({ relativeDirectory, children: [remarkNode], name }) => {
+      const strippedDirectory = relativeDirectory.replace(
+        /^.*guides\/(.*)$/,
+        '$1',
+      );
+      // for debuggin purpose in case there are errors in md/html syntax
+      if (typeof remarkNode === 'undefined') {
+        reporter.warn(
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
+            ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      if (typeof remarkNode.frontmatter === 'undefined') {
+        reporter.warn(
+          `\nFrontmatter data is missing, unable to generate the page. Check the following file:\n\n ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      const {
+        frontmatter,
+        frontmatter: { title, redirect, draft, slug: customSlug },
+      } = remarkNode;
+      // if there is a value in redirect field, skip page creation
+      // OR there is draft flag and mode is prod
+      if ((draft === 'true' && isProduction) || redirect) {
+        return false;
+      }
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+
+      const shouldTranslate = strippedDirectory.startsWith('es/');
+
+      const slug = shouldTranslate
+        ? getTranslatedSlug(relativeDirectory, title, 'es', 'guides')
+        : getSlug(relativeDirectory, title, 'guides');
+
+      const pageSlug = customSlug || slug;
+
+      // path collision check
+      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+        // skip the page creation if there is already a page with identical url
+        return false;
+      }
+
+      // generate breadcrumbs
+      let breadcrumbs = compose(
+        buildBreadcrumbs,
+        dedupePath,
+        removeGuides,
+        unorderify,
+      )(path);
+
+      if (shouldTranslate) {
+        const translatedPath = unorderify(path)
+          .split('/')
+          .map((item) =>
+            translations[item] !== undefined ? translations[item].es : item,
+          )
+          .join('/');
+
+        breadcrumbs = compose(
+          buildBreadcrumbs,
+          dedupePath,
+          removeGuides,
+        )(translatedPath);
+      }
+
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...frontmatter,
+          slug,
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          ),
+        },
+      };
+
+      const isLocalizedPage = strippedDirectory.startsWith('es/');
+
+      const sidebarTree = isLocalizedPage
+        ? getGuidesSidebar('es')
+        : getGuidesSidebar('en');
+
+      return {
+        path: pageSlug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           remarkNode: extendedRemarkNode,
@@ -304,12 +467,62 @@ async function fetchDocPagesData(graphql) {
   return nodes;
 }
 
-async function createDocPages({ nodes, sidebar, actions, reporter }) {
+async function fetchGuidesPagesData(graphql) {
+  const {
+    data: {
+      allFile: { nodes },
+    },
+  } = await graphql(
+    `
+      query guidesPagesQuery {
+        allFile(
+          filter: {
+            ext: { in: [".md"] }
+            relativeDirectory: { regex: "/translated-guides/" }
+          }
+          sort: { fields: absolutePath, order: ASC }
+        ) {
+          nodes {
+            name
+            relativeDirectory
+            children {
+              ... on Mdx {
+                body
+                frontmatter {
+                  title
+                  slug
+                  head_title
+                  excerpt
+                  redirect
+                  hideFromSidebar
+                  draft
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+  return nodes;
+}
+
+async function createDocPages({
+  nodes,
+  nodesGuides,
+  sidebar,
+  guidesSidebar,
+  actions,
+  reporter,
+}) {
   // initiating path collision checker
   const pathCollisionDetectorInstance = pathCollisionDetector(reporter.warn);
 
   // local helper function that uses currying, expects one more arg
   const getSidebar = getChildSidebar(sidebar);
+
+  // local helper function that uses currying, expects one more arg
+  const getGuidesSidebar = getChildSidebar(guidesSidebar);
 
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children).filter(
@@ -331,6 +544,13 @@ async function createDocPages({ nodes, sidebar, actions, reporter }) {
     getSidebar,
   })
     .concat(
+      getGuidesPagesProps({
+        nodesGuides,
+        reporter,
+        topLevelLinks,
+        pathCollisionDetectorInstance,
+        getGuidesSidebar,
+      }),
       getTopLevelPagesProps({
         topLevelNames,
         topLevelLinks,
@@ -677,8 +897,20 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
 exports.createPages = async (options) => {
   const pagesData = await fetchDocPagesData(options.graphql);
+  const guidesData = await fetchGuidesPagesData(options.graphql);
+
   const sidebar = generateSidebar({ nodes: pagesData });
-  await createDocPages({ ...options, nodes: pagesData, sidebar });
+  const guidesSidebar = generateSidebar({ nodes: guidesData, type: 'guides' });
+
+  console.log('GUIDES SIDE', guidesSidebar);
+
+  await createDocPages({
+    ...options,
+    nodes: pagesData,
+    nodesGuides: guidesData,
+    sidebar,
+    guidesSidebar,
+  });
   await createRedirects(options);
 };
 
