@@ -1,6 +1,9 @@
 /* gatsby-node.js specific helper functions */
 const { slugify } = require('./utils');
 
+// default 'en' is not included
+const SUPPORTED_LOCALES = ['es'];
+
 // create a container;
 const utils = {};
 
@@ -76,10 +79,21 @@ const unorderify = (str, nameOnly = false) => {
 // getDocSection(str: String) -> String
 const getDocSection = (str) => str.replace(/^(.*?)\/.*$/, '$1');
 
+const removeLocaleFromPath = (str) => {
+  let res = str;
+  SUPPORTED_LOCALES.forEach((locale) => {
+    if (str.startsWith(`${locale}/`)) {
+      res = str.replace(`${locale}/`, '');
+    }
+  });
+  return res;
+};
+
 // extracts a certain part of a sidebar which
 // which root key matches passed child
 // getChildSidebar(sidebar: Object -> child: String) -> Object
-const getChildSidebar = (sidebar) => (child) => sidebar.children[child];
+const getChildSidebar = (sidebar) => (child, locale = null) =>
+  locale ? sidebar.children[locale].children[child] : sidebar.children[child];
 
 // accepts a logger (reporter, console.log)
 // and returns a set of functions
@@ -119,7 +133,8 @@ const pathCollisionDetector = (logger) => {
 };
 
 // guides category is the root: / or /docs in prod, so we removing that part
-const removeGuides = (path) => path.replace(/guides\//i, '');
+const removeGuides = (path) =>
+  path.replace(/guides\//i, '').replace(/guías\//i, '');
 
 // removes duplicates from path, e.g.
 // examples/examples -> examples
@@ -129,7 +144,9 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 // difference from removeGuides: this one is for sidebar links processing and
 // the former is for creatingPages
 const removeGuidesAndRedirectWelcome = (path) =>
-  path.replace(/guides\/(getting-started\/welcome)?/i, '');
+  path
+    .replace(/guides\/(getting-started\/welcome)?/i, '')
+    .replace(/guías\/(empezando\/bienvenido)?/i, '');
 
 // ensures that no trailing slash is left
 const noTrailingSlash = (path) =>
@@ -168,6 +185,12 @@ Object.defineProperties(utils, {
   },
   pathCollisionDetector: {
     value: pathCollisionDetector,
+  },
+  SUPPORTED_LOCALES: {
+    value: SUPPORTED_LOCALES,
+  },
+  removeLocaleFromPath: {
+    value: removeLocaleFromPath,
   },
 });
 

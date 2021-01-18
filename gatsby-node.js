@@ -8,6 +8,8 @@ const {
   stripDirectoryPath,
 } = require('./src/utils/utils');
 const {
+  SUPPORTED_LOCALES,
+  removeLocaleFromPath,
   pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
@@ -22,8 +24,6 @@ const {
 } = require('./src/utils/utils.node');
 
 /* constants */
-// default 'en' is not included
-const SUPPORTED_LOCALES = ['es'];
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
@@ -236,18 +236,27 @@ function getDocPagesProps({
         },
       };
 
+      const isLocalizedPage = strippedDirectory.startsWith('es/');
+
+      const docSection = compose(
+        getDocSection,
+        removeLocaleFromPath,
+        unorderify,
+      )(strippedDirectory);
+
+      const sidebarTree = isLocalizedPage
+        ? getSidebar(docSection, 'es')
+        : getSidebar(docSection);
+
       return {
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           remarkNode: extendedRemarkNode,
-          // dynamically evaluate which part of the sidebar tree are going to be used
-          sidebarTree: compose(
-            getSidebar,
-            getDocSection,
-            unorderify,
-          )(strippedDirectory),
-          breadcrumbs,
+          sidebarTree,
+          breadcrumbs: breadcrumbs.filter(
+            (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+          ),
           navLinks: topLevelLinks,
         },
       };

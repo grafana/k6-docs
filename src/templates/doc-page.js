@@ -25,6 +25,7 @@ export default function (props) {
       slug: frontmatter.slug,
     },
   };
+
   return (
     <DocLayout
       pageMetadata={pageMetadata}
