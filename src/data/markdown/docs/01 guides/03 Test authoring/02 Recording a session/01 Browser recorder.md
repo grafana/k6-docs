@@ -82,26 +82,6 @@ For learning more about running k6, check out the [Running k6 guide](/getting-st
 
 ## Troubleshooting
 
-** Response bodies are discarded by default **
-
-The auto-generated script sets [discardResponseBodies](/using-k6/options#discard-response-bodies) to `true`. This configuration will discard all response bodies to require less memory during the test execution.
-
-```javascript
-export let options = {
-  discardResponseBodies: true,
-};
-```
-
-
-You can change the value `discardResponseBodies` to `false`. But if your test needs to handle the response of one or a few requests, we recommend enabling only the response of the desired requests using the `responseType` parameter.
-
-
-```javascript
-  const res = http.get('https://httpbin.org/get',  {responseType: 'text'});
-  console.log(res.body);
-```
-
-
 ** The browser extension will not record other tabs or pop up windows **
 
 If you need to capture this information, you should use the [HAR converter](/test-authoring/recording-a-session/har-converter).
