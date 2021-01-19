@@ -106,10 +106,10 @@ You can change the value `discardResponseBodies` to `false`. But if your test ne
 
 If you need to capture this information, you should use the [HAR converter](/test-authoring/recording-a-session/har-converter).
 
-> The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.
+> The HAR converter is an alternative to the browser recorder. It generates a k6 script based on the HTTP requests included in a HAR file.
 
 ** Having problems recording a request? **
 
 If you have a problem recording a request, we recommend you to try the [HAR converter](/test-authoring/recording-a-session/har-converter).
 
-The browser recorder uses the HAR converter logic to generate the k6 script. If the error persists with the HAR converter, please [report a new issue](https://github.com/loadimpact/har-to-k6/issues) providing detailed information about the problem.
+The browser recorder uses the HAR converter to generate a k6 script. If the error persists with the HAR converter, please [report a new issue](https://github.com/loadimpact/har-to-k6/issues) providing detailed information about the problem.
