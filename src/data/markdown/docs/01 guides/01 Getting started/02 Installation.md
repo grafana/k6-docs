@@ -43,7 +43,7 @@ $ brew install k6
 
 ## Windows (MSI installer)
 
-Download the k6 installer from [here](https://dl.bintray.com/loadimpact/windows/k6-v0.29.0-amd64.msi)
+Download the k6 installer from [here](https://dl.bintray.com/loadimpact/windows/k6-v0.30.0-amd64.msi).
 
 ## Binaries
 
