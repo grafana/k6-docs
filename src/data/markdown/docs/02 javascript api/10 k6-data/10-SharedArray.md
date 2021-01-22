@@ -2,10 +2,10 @@
 title: SharedArray
 ---
 
-`SharedArray` is an array-like object that shares the underlying memory between VUs. It constructor
+`SharedArray` is an array-like object that shares the underlying memory between VUs. Its constructor
 takes a name for the `SharedArray` and a function which needs to return an array object itself. The
-function will be executed only once and it's result will be then be saved in memory once and copies
-of the elements will be given when requested. The name is needed as VUs are completely separate js
+function will be executed only once and its result will then be saved in memory once and copies
+of the elements will be given when requested. The name is needed as VUs are completely separate JS
 VMs and k6 needs some way to identify the `SharedArray`s that it needs to return. 
 
 This does mean that you can have multiple such ones and even only load some of them for given VUs, although that is
@@ -16,7 +16,7 @@ communicate between VUs using it.
 
 Supported operations include:
 1. getting the number of elements with `length`
-2. getting an element by it's index using the normal syntax `array[index]`
+2. getting an element by its index using the normal syntax `array[index]`
 3. using `for-of` loops
 
 Which means that for the most part if you currently have an array data structure that you want to
