@@ -3,11 +3,11 @@ title: 'patch( url, [body], [params] )'
 description: 'Issue an HTTP PATCH request.'
 ---
 
-| Parameter         | Type            | Description                                                                              |
-| ----------------- | --------------- | ---------------------------------------------------------------------------------------- |
-| url               | string          | Request URL (e.g. `http://example.com`).                                                 |
-| body (optional)   | string / object | Request body; objects will be `x-www-form-urlencoded`.                                   |
-| params (optional) | object          | [Params](/javascript-api/k6-http/params) object containing additional request parameters |
+| Parameter         | Type                          | Description                                                                              |
+| ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
+| url               | string                        | Request URL (e.g. `http://example.com`).                                                 |
+| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                   |
+| params (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters |
 
 ### Returns
 
@@ -22,8 +22,9 @@ description: 'Issue an HTTP PATCH request.'
 ```javascript
 import http from 'k6/http';
 
+const url = 'https://httpbin.test.k6.io/patch';
+
 export default function () {
-  const url = 'https://httpbin.org/patch';
   const headers = { 'Content-Type': 'application/json' };
   const data = { name: 'Bert' };
 
