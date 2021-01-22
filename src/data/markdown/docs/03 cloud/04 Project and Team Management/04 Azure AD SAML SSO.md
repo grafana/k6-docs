@@ -3,6 +3,8 @@ title: 'Azure AD SAML SSO'
 excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 ---
 
+> ⭐️ SAML SSO is available on Enterprise plans.
+
 ## Background
 
 Federated authentication is a must to virtually all organizations beyond a certain size. Microsoft's Active Directory product has been a long time gold standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud integrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.

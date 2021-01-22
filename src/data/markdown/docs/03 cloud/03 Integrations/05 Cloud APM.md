@@ -5,6 +5,8 @@ excerpt: 'How to export metrics from k6 Cloud to APM platforms'
 
 k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling users to export metrics from a running test in near real-time to their preferred [APM](https://en.wikipedia.org/wiki/Application_performance_management) platform(s).
 
+> ⭐️ APM integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
+
 ## Supported APM Providers
 
 Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the `provider` is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
@@ -83,12 +85,3 @@ For the metric export to function properly, you have to fulfill the following:
 
 1. APM data export is supported for tests that are up to 1 hour long. Longer tests are currently not supported.
 2. The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed.
-
-## Feature Availability
-
-This feature is only available for certain subscriptions:
-
-- Trial
-- Monthly Pro
-- Annual Team/Pro
-- Enterprise
