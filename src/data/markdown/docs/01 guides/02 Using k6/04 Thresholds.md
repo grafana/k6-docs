@@ -338,10 +338,31 @@ support a JS object with parameters to control the abort behavior. The fields ar
 | abortOnFail    | boolean | Whether to abort the test if the threshold is evaluated to false before the test has completed.                                                                                                                           |
 | delayAbortEval | string  | If you want to delay the evaluation of the threshold for some time, to allow for some metric samples to be collected, you can specify the amount of time to delay using relative time strings like `10s`, `1m` and so on. |
 
-> ### ⚠️ Evaluation delay in the cloud
+Here is an example:
+
+<CodeGroup labels={["abort-on-fail-threshold.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+
+export let options = {
+  vus: 30,
+  duration: '2m',
+  thresholds: {
+    http_req_duration: [{threshold: 'p(99) < 10', abortOnFail: true}]
+  },
+};
+
+export default function () {
+  http.get('https://test-api.k6.io/public/crocodiles/1/');
+}
+```
+
+</CodeGroup>
+
+> **⚠️ Evaluation delay in the cloud**
 >
-> When k6 runs in the cloud, thresholds are evaluated every 60 seconds, therefore the "abortOnFail"
-> feature may be delayed by up to 60 seconds.
+> When k6 runs in the cloud, thresholds are evaluated every 60 seconds, therefore the "abortOnFail" feature may be delayed by up to 60 seconds.
 
 ## Failing a load test using checks
 
