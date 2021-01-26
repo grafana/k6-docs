@@ -14,7 +14,7 @@ Some reasons include, but are not limited to:
 
 You have the ability to schedule any tests that currently exists in your k6 Cloud account that has been executed on our cloud service (you can not schedule a locally run test through the web UI). You may also schedule tests that you create within the web UI after saving your configuration.
 
-There are two places from where you can schedule a test:
+Schedules can be set up from two different places:
 
 ### 1. Schedules overview page
 
