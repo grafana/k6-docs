@@ -79,27 +79,27 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 5. You'll see k6 print some information and the URL of your test results.
 
-<CodeGroup labels={[""]}>
+    <CodeGroup labels={[""]}>
 
     ```bash
             /\      |‾‾|  /‾‾/  /‾/
-        /\  /  \     |  |_/  /  / /
+       /\  /  \     |  |_/  /  / /
       /  \/    \    |      |  /  ‾‾\
-      /          \   |  |‾\  \ | (_) |
+     /          \   |  |‾\  \ | (_) |
     / __________ \  |__|  \__\ \___/ .io
 
-      execution: cloud
-      script: test.js
-      output: https://app.k6.io/runs/TEST_RUN_ID
+    execution: cloud
+    script: test.js
+    output: https://app.k6.io/runs/TEST_RUN_ID
     ```
 
- </CodeGroup>
+    </CodeGroup>
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
+    ![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
 
-Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
+    Learn more about test results on [Analyzing Results](/cloud/analyzing-results/overview).
 
 ## Cloud execution options
 
@@ -132,25 +132,23 @@ export let options = {
 
 ### List of supported load zones
 
-| Location              | ID                    |
-| --------------------- | --------------------- |
-| Tokyo                 | `amazon:jp:tokyo`     |
-| Seoul                 | `amazon:kr:seoul`     |
-| Mumbai                | `amazon:in:mumbai`    |
-| Singapore             | `amazon:sg:singapore` |
-| Sydney                | `amazon:au:sydney`    |
-| Montreal              | `amazon:ca:montreal`  |
-| Frankfurt             | `amazon:de:frankfurt` |
-| Ireland               | `amazon:ie:dublin`    |
-| London                | `amazon:gb:london`    |
-| Paris                 | `amazon:fr:paris`     |
-| Stockholm             | `amazon:se:stockholm` |
-| N. Virginia (Default) | `amazon:us:ashburn`   |
-| Ohio                  | `amazon:us:columbus`  |
-| N. California         | `amazon:us:palo alto` |
-| Oregon                | `amazon:us:portland`  |
-| Hong Kong             | `amazon:cn:hong kong` |
-| São Paulo             | `amazon:br:sao paulo` |
+- Asia Pacific (Hong Kong) `amazon:cn:hong kong`
+- Asia Pacific (Mumbai) `amazon:in:mumbai`                
+- Asia Pacific (Seoul) `amazon:kr:seoul`                 
+- Asia Pacific (Singapore) `amazon:sg:singapore`        
+- Asia Pacific (Sydney) `amazon:au:sydney`                
+- Asia Pacific (Tokyo) `amazon:jp:tokyo`               
+- Canada (Montreal) `amazon:ca:montreal`             
+- Europe (Frankfurt) `amazon:de:frankfurt`             
+- Europe (Ireland)  `amazon:ie:dublin`             
+- Europe (London) `amazon:gb:london`    
+- Europe (Paris)  `amazon:fr:paris`     
+- Europe (Stockholm) `amazon:se:stockholm`
+- South America (São Paulo) `amazon:br:sao paulo` 
+- US West (N. California) `amazon:us:palo alto`
+- US West (Oregon) `amazon:us:portland`
+- US East (N. Virginia) - **DEFAULT** `amazon:us:ashburn` 
+- US East (Ohio) `amazon:us:columbus`
 
 ### Running tests under a different project than your default one
 
@@ -244,7 +242,7 @@ import { check, sleep } from 'k6';
 import http from 'k6/http';
 
 export default function () {
-  var r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
+  let r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
   check(r, {
     'status is 200': (r) => r.status === 200,
   });
@@ -257,7 +255,7 @@ export default function () {
 You'd execute it using the command like:
 
 ```bash
-$ k6 run -e MY_HOSTNAME=test.k6.io script.js
+$ k6 cloud -e MY_HOSTNAME=test.k6.io script.js
 ```
 
 ### Injected environment variables on the cloud execution
