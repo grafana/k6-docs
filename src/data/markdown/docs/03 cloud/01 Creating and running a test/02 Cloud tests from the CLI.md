@@ -127,28 +127,8 @@ export let options = {
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
 | projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                           |
-| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed. The keys are string labels that will be injected as [environment variables](/using-k6/environment-variables) on the appropriate nodes (matching the `loadZone`): `__ENV["someDefaultLabel"]` |
+| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution). |
 | staticIPs (boolean) | Optional. `false` by default | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test. |
-
-### List of supported load zones
-
-- Asia Pacific (Hong Kong) `amazon:cn:hong kong`
-- Asia Pacific (Mumbai) `amazon:in:mumbai`                
-- Asia Pacific (Seoul) `amazon:kr:seoul`                 
-- Asia Pacific (Singapore) `amazon:sg:singapore`        
-- Asia Pacific (Sydney) `amazon:au:sydney`                
-- Asia Pacific (Tokyo) `amazon:jp:tokyo`               
-- Canada (Montreal) `amazon:ca:montreal`             
-- Europe (Frankfurt) `amazon:de:frankfurt`             
-- Europe (Ireland)  `amazon:ie:dublin`             
-- Europe (London) `amazon:gb:london`    
-- Europe (Paris)  `amazon:fr:paris`     
-- Europe (Stockholm) `amazon:se:stockholm`
-- South America (São Paulo) `amazon:br:sao paulo` 
-- US West (N. California) `amazon:us:palo alto`
-- US West (Oregon) `amazon:us:portland`
-- US East (N. Virginia) - **DEFAULT** `amazon:us:ashburn` 
-- US East (Ohio) `amazon:us:columbus`
 
 ### Running tests under a different project than your default one
 
@@ -179,6 +159,29 @@ You have two options to pass the Project ID to k6:
    </CodeGroup>
 
 2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running the test.
+
+## Load zones
+
+<div id="list-of-supported-load-zones">Here the list of supported AWS cloud regions: </div>
+
+- Asia Pacific (Hong Kong) `amazon:cn:hong kong`
+- Asia Pacific (Mumbai) `amazon:in:mumbai`
+- Asia Pacific (Seoul) `amazon:kr:seoul`
+- Asia Pacific (Singapore) `amazon:sg:singapore`
+- Asia Pacific (Sydney) `amazon:au:sydney`
+- Asia Pacific (Tokyo) `amazon:jp:tokyo`
+- Canada (Montreal) `amazon:ca:montreal`
+- Europe (Frankfurt) `amazon:de:frankfurt`
+- Europe (Ireland)  `amazon:ie:dublin`
+- Europe (London) `amazon:gb:london`
+- Europe (Paris)  `amazon:fr:paris`
+- Europe (Stockholm) `amazon:se:stockholm`
+- South America (São Paulo) `amazon:br:sao paulo`
+- US West (N. California) `amazon:us:palo alto`
+- US West (Oregon) `amazon:us:portland`
+- US East (N. Virginia) - **DEFAULT** `amazon:us:ashburn`
+- US East (Ohio) `amazon:us:columbus`
+
 
 ## Cloud execution tags
 
