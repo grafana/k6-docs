@@ -5,6 +5,7 @@
 (?i)config
 (?i)css
 (?i)goja
+(?i)golang
 (?i)grpc
 (?i)grafana
 (?i)hmac
