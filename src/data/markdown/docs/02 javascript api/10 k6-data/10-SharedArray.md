@@ -42,3 +42,66 @@ export default () => {
 ```
 
 </div>
+
+## Performance characteristics
+
+As the `SharedArray` is keeping the data marshalled as JSON and unmarshal elements when requested it
+does:
+
+1. take additional time to unmarshal JSONs
+2. generate objects that then need to be garbage collected
+
+This in general should be unnoticeable compared to whatever you are doing with the data, but might
+mean that for small sets of data it is better to not use `SharedArray`, although your mileage may
+vary.
+
+As an example the following script:
+
+<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+
+```javascript
+import {check} from "k6";
+import http from "k6/http";
+import {SharedArray} from "k6/data"
+
+var n = parseInt(__ENV.N)
+function generateArray() {
+    var arr = new Array(n);
+    for (var i = 0; i< n; i++){
+        arr[i] = {"something": "something else" +i, "password": "12314561" }
+    }
+    return arr
+}
+
+var data;
+if (__ENV.SHARED === "true") {
+  data = new SharedArray("my data", generateArray);
+} else {
+  data = generateArray();
+}
+
+export default function () {
+    var iterationData = data[Math.floor(Math.random() * data.length)];
+    var res = http.post("https://httpbin.test.k6.io/anything", JSON.stringify(iterationData), {headers: {"Content-type": "application/json"}})
+    check(res, {"status 200": (r) => r.status === 200})
+}
+```
+
+</div>
+
+Which was ran with v0.30.0 and 100 VUs started to even out the CPU usage around 10k elements, but also was using 1/3 of the memory. At 100k `SharedArray` was the clear winner, while for lower numbers it is possible that not using it will help with performance.
+
+| data lines | shared | wall time | CPU %    | mem usage   | http requests |
+| ---        | ---    | ---       | ---      |  ----       | ---           |
+| 100        | true   | 2:02:50   | 86-90%   | 509-517MB   | 90248-92979   |
+| 100        | false  | 2:02:50   | 76-80%   | 512-533MB   | 92534-94666   |
+| 1000       | true   | 2:03:00   | 86-92%   | 509-519MB   | 92007-95234   |
+| 1000       | false  | 2:02:60   | 78-80%   | 621-630MB   | 92814-94526   |
+| 10000      | true   | 2:02:70   | 88-95%   | 515-523MB   | 92936-94997   |
+| 10000      | false  | 2:03:80   | 81-85%   | 1650-1675MB | 92339-95083   |
+| 100000     | true   | 2:04:50   | 89-91%   | 528-531MB   | 92274-93987   |
+| 100000     | false  | 2:15:00   | 115-123% | 8.9-9.5GB   | 90416-94817   |
+
+The cpu/mem data comes from using `/usr/bin/time` and the raw data can be find [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb)
+
+This numbers are purely illustrative as if the script is doing more with an element that it gets from the `SharedArray`, or an output is in use, or it gets multiple elements, or - all of those things add up so, while `SharedArray` has some CPU usage it might turn out that it will be negligible in a given situation with just 10 elements or more problematic then the memory usage for a 100k elements. So if in doubt you should probably run some benchmarks.
