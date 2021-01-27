@@ -102,6 +102,6 @@ Which was ran with v0.30.0 and 100 VUs started to even out the CPU usage around 
 | 100000     | true   | 2:04:50   | 89-91%   | 528-531MB   | 92274-93987   |
 | 100000     | false  | 2:15:00   | 115-123% | 8.9-9.5GB   | 90416-94817   |
 
-The cpu/mem data comes from using `/usr/bin/time` and the raw data can be find [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb)
+The CPU/memory data comes from using `/usr/bin/time` and the raw data can be find [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb)
 
 This numbers are purely illustrative as if the script is doing more with an element that it gets from the `SharedArray`, or an output is in use, or it gets multiple elements, or - all of those things add up so, while `SharedArray` has some CPU usage it might turn out that it will be negligible in a given situation with just 10 elements or more problematic then the memory usage for a 100k elements. So if in doubt you should probably run some benchmarks.
