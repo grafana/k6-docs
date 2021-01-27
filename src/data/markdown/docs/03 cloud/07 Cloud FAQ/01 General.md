@@ -31,9 +31,12 @@ The zone codes are mapped as follows:
 - `us-west-1`: Palo Alto
 - `us-west-2`: Portland
 - `ca-central-1`: Montreal
-- `eu-west-1`: Dublin
+- `eu-north-1`: Stockholm
 - `eu-central-1`:  Frankfurt
+- `eu-west-1`: Dublin
 - `eu-west-2`:  London
+- `eu-west-3`:  Paris
+- `ap-east-1`: Hong Kong
 - `ap-northeast-1`: Tokyo
 - `ap-northeast-2`: Seoul
 - `ap-southeast-1`: Singapore
