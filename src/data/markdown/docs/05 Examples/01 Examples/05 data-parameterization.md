@@ -17,20 +17,18 @@ This will, in turn, make your test more realistic.
 <Blockquote mod="warning">
 
 Each VU in k6 is a separate JS VM so in order to not have multiple copies of the whole data file
-[SharedArray](/javascript-api/k6-data/sharedarray) was added. It does have overhead in accessing elements compared to a normal non shared
-array, but the difference is negligible compared to the time it takes to make requests. And is
-especially not comparable as not using it with big files basically means k6 will be using too much
-memory to run. Which might lead to your script not being able to run at all or aborting in the
-middle.
+[SharedArray](/javascript-api/k6-data/sharedarray) was added. It does have some CPU overhead in accessing elements compared to a normal non shared
+array, but the difference is negligible compared to the time it takes to make requests. This becomes
+even less of an issue compared to not using it with large files, as k6 would otherwise use too much memory to run, which might lead to your script not being able to run at all or aborting in the middle if the system resources are exhausted.
 
-For example, the Cloud service allots 8GB of memory for every 300VUs. So if you are files are big
+For example, the Cloud service allocates 8GB of memory for every 300 VUs. So if your files are large
 enough and you are not using [SharedArray](/javascript-api/k6-data/sharedarray), that might mean that your script will run out of memory at
-some point. Additionally even if there is enough memory, k6 has a garbage collector(as it's written
+some point. Additionally even if there is enough memory, k6 has a garbage collector (as it's written
 in golang) and it will walk through all accessible objects (including JS ones) and figure out which
 need to be garbage collected. For big JS arrays copied hundreds of times this adds quite a lot of
 additional work.
 
-A note on performance characteristics of `SharedArray` can be found within it's [API documentation](/javascript-api/k6/data/sharedarray#performance-characteristics).
+A note on performance characteristics of `SharedArray` can be found within its [API documentation](/javascript-api/k6/data/sharedarray#performance-characteristics).
 
 </Blockquote>
 
@@ -53,7 +51,7 @@ A note on performance characteristics of `SharedArray` can be found within it's 
 
 ```javascript
 import { SharedArray } from "k6/data";
-// not using ShareArray here will mean that the code in the function call (that is what loads and
+// not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the json) will be executed per each VU which also means that there will be a complete copy
 // per each VU
 const data = new SharedArray("some data name", function() { return JSON.parse(open('./data.json')); });
@@ -78,7 +76,7 @@ You can download the library and import it locally like this:
 ```javascript
 import papaparse from './papaparse.js';
 import { SharedArray } from "k6/data";
-// not using ShareArray here will mean that the code in the function call (that is what loads and
+// not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
 const csvData = new SharedArray("another data name", function() {
@@ -101,7 +99,7 @@ Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 import { SharedArray } from "k6/data";
 
-// not using ShareArray here will mean that the code in the function call (that is what loads and
+// not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
 const csvData = new SharedArray("another data name", function() {
@@ -132,7 +130,7 @@ import { check, sleep } from 'k6';
 import { SharedArray } from 'k6/data'
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 
-// not using ShareArray here will mean that the code in the function call (that is what loads and
+// not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
 const csvData = new SharedArray("another data name", function() {
@@ -177,7 +175,7 @@ export default function () {
 
 See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.
 
-## Old hacks
+## Old workarounds
 
 The following section is here for historical reasons as it was the only way to lower the memory
 usage of k6 prior to v0.30.0 but after v0.27.0, but still have access to a lot of parameterization data

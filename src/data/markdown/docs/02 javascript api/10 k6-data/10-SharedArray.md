@@ -45,11 +45,8 @@ export default () => {
 
 ## Performance characteristics
 
-As the `SharedArray` is keeping the data marshalled as JSON and unmarshal elements when requested it
-does:
-
-1. take additional time to unmarshal JSONs
-2. generate objects that then need to be garbage collected
+As the `SharedArray` is keeping the data marshalled as JSON and unmarshals elements when requested it
+does take additional time to unmarshal JSONs and generate objects that then need to be garbage collected.
 
 This in general should be unnoticeable compared to whatever you are doing with the data, but might
 mean that for small sets of data it is better to not use `SharedArray`, although your mileage may
@@ -102,6 +99,6 @@ Which was ran with v0.30.0 and 100 VUs started to even out the CPU usage around 
 | 100000     | true   | 2:04:50   | 89-91%   | 528-531MB   | 92274-93987   |
 | 100000     | false  | 2:15:00   | 115-123% | 8.9-9.5GB   | 90416-94817   |
 
-The CPU/memory data comes from using `/usr/bin/time` and the raw data can be find [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb)
+The CPU/memory data comes from using `/usr/bin/time` and the raw data can be found [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb).
 
-This numbers are purely illustrative as if the script is doing more with an element that it gets from the `SharedArray`, or an output is in use, or it gets multiple elements, or - all of those things add up so, while `SharedArray` has some CPU usage it might turn out that it will be negligible in a given situation with just 10 elements or more problematic then the memory usage for a 100k elements. So if in doubt you should probably run some benchmarks.
+These numbers are purely illustrative as the performance can be affected by any additional processing of the element retrieved from the `SharedArray`, or if an output is in use, or it gets multiple elements, etc. While `SharedArray` has some CPU usage it might turn out that it will be negligible in a given situation with just 10 elements or more problematic than the memory usage for a 100k elements. So if in doubt you should probably run some benchmarks and decide which tradeoffs are more important for your use case.
