@@ -28,7 +28,7 @@ in golang) and it will walk through all accessible objects (including JS ones) a
 need to be garbage collected. For big JS arrays copied hundreds of times this adds quite a lot of
 additional work.
 
-A note on performance characteristics of `SharedArray` can be found within its [API documentation](/javascript-api/k6/data/sharedarray#performance-characteristics).
+A note on performance characteristics of `SharedArray` can be found within its [API documentation](/javascript-api/k6-data/sharedarray#performance-characteristics).
 
 </Blockquote>
 
