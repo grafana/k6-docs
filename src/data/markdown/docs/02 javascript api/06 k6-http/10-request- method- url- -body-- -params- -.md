@@ -3,12 +3,12 @@ title: 'request( method, url, [body], [params] )'
 description: 'Issue any type of HTTP request.'
 ---
 
-| Parameter         | Type            | Description                                                                               |
-| ----------------- | --------------- | ----------------------------------------------------------------------------------------- |
-| method            | string          | Request method (e.g. `POST`). Note, the method must be uppercase.                         |
-| url               | string          | Request URL (e.g. `http://example.com`).                                                  |
-| body (optional)   | string / object | Request body; objects will be `x-www-form-urlencoded`.                                    |
-| params (optional) | object          | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type                          | Description                                                                               |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| method            | string                        | Request method (e.g. `POST`). Note, the method must be uppercase.                         |
+| url               | string                        | Request URL (e.g. `http://example.com`).                                                  |
+| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                    |
+| params (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
@@ -18,27 +18,27 @@ description: 'Issue any type of HTTP request.'
 
 ### Example
 
-Using http.request() to issue a POST request, logging in to an e-commerce site:
+Using http.request() to issue a POST request:
 
 <CodeGroup labels={[]}>
 
 ```javascript
 import http from 'k6/http';
 
+const url = 'https://httpbin.test.k6.io/post';
+
 export default function () {
-  const url = 'https://httpbin.org/post';
-  let headers = { 'Content-Type': 'application/json' };
   let data = { name: 'Bert' };
 
-  let res = http.request('POST', url, JSON.stringify(data), {
-    headers: headers,
-  });
-  console.log(JSON.parse(res.body).json.name);
+  // Using a JSON string as body
+  let res = http.request('POST', url, JSON.stringify(data),
+                         { headers: { 'Content-Type': 'application/json' } });
+  console.log(res.json().json.name); // Bert
 
-  headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
-
-  res = http.request('POST', url, data, { headers: headers });
-  console.log(JSON.parse(res.body).form.name);
+  // Using an object as body, the headers will automatically include
+  // 'Content-Type: application/x-www-form-urlencoded'.
+  res = http.request('POST', url, data);
+  console.log(res.json().form.name); // Bert
 }
 ```
 
