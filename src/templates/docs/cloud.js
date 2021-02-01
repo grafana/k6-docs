@@ -70,9 +70,11 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                 </ul>
                 <blockquote>
                   We want you to spend time building and maintaining
-                  well-performing applications. Don’t saddle your team with the
-                  additional maintenance burden of your load testing
-                  infrastructure.
+                  well-performing applications. Don’t saddle your team with the{' '}
+                  <a href="https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution">
+                    additional maintenance burden
+                  </a>{' '}
+                  of your load testing infrastructure.
                 </blockquote>
                 <h2>Cloud Features</h2>
                 <div className={'row'}>

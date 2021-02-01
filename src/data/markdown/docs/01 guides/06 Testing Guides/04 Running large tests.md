@@ -460,11 +460,9 @@ However - at this moment - the distributed execution mode of k6 is not entirely 
 
 ## Large-scale tests in k6 Cloud
 
-Building a load testing infrastructure to support running large-scale distributed tests is a challenging engineering project.
+[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running large-scale tests, amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me).
 
-[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running this type of testing. Amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me), our cloud platform will prevent your engineering team from building and maintaining the software and infrastructure of your load testing solution.
-
-Rolling your own or buying a load testing solution is a decision to consider that depends on your project, the type of testing, your team's expertise, organization's aspects, etc. If you aren't sure which solution is a better fit for your project, reach us on the [Community Forum](https://community.k6.io/) or to the [Cloud Support team](https://k6.io/contact) to help you with your questions.
+If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
 ## See also
 
@@ -472,3 +470,4 @@ Rolling your own or buying a load testing solution is a decision to consider tha
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
 - [k6 Cloud Pricing - soak and large-scale tests](https://k6.io/pricing#larger-tests)
+- [White paper: what to consider when building or buying a load testing solution](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)
