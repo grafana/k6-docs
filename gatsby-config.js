@@ -32,7 +32,7 @@ const plugins = [
       short_name: 'k6',
       start_url: '/',
       background_color: '#fff',
-      theme_color: '',
+      theme_color: '#BADA55',
       display: 'minimal-ui',
       icon: './src/images/favicon.png',
     },
