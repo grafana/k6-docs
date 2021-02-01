@@ -59,19 +59,21 @@ Options allow you to configure how k6 will behave during test execution.
 
 ## Using Options
 
-Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line
-flags, environment variables or via a config file.
+Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line flags, environment variables or via a config file. The order of precedence is as follows:
 
-The order of precedence is: defaults < config file < exported script options < environment
-variables < command-line flags. Options from each subsequent level can be used to overwrite the
-options from the previous levels, with the CLI flags having the highest priority.
+<!-- THIS FOLLOWING QUOTED TEXT SHOULD BE REPLACED WITH A FLOWCHART -->
+<!-- ![Order of Precedence](./images/order-of-precedence.png) -->
+
+> **command-line flags > environment variables > exported script options > config file > defaults**
+
+Options from each level will overwrite the options from the next level, with the command-line flags having the highest precedence.
 
 For example, you can define the duration in 4 different ways:
 
-- set the `duration: "10s"` option in the config file
-- set the `duration: "10s"` option in the script
-- define `K6_DURATION` as an environment variable
-- use the command-line flag `-d 10s`
+- Set the `duration: "10s"` option in the config file
+- Set the `duration: "10s"` option in the script
+- Define `K6_DURATION` as an environment variable
+- Use the `--duration 10s` command-line flag: *overwrites all the above*.
 
 The following JS snippet shows how to specify options in the script:
 
@@ -266,16 +268,21 @@ $ k6 run --compatibility-mode=base script.js
 
 ### Config
 
-Specify the config file in JSON format to read the `options` values. If the config file is not
-specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular
-directory for configuration files on the operating system.
+Specify the config file in JSON format to read the `options` values. If the config file is not specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system. Default config locations on different operating systems are:
 
-For example in Linux/BSDs, it will look for `config.json` inside `${HOME}/.config/loadimpact/k6`.
-Available in `k6 run` and `k6 cloud` commands
+|OS|Default Config Path|
+|---|---|
+|Unix-based|`${HOME}/.config/loadimpact/k6/config.json`|
+|macOS|`${HOME}/Library/Application Support/loadimpact/k6/config.json`|
+|Windows|`%AppData%/loadimpact/k6/config.json`|
+
+Available in `k6 run` and `k6 cloud` commands:
 
 | Env | CLI                            | Code / Config file | Default |
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
+
+An example of a config file is available [here](/using-k6/options#config-json)
 
 ### Discard Response Bodies
 
