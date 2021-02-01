@@ -1,9 +1,9 @@
 ---
 title: 'Data Uploads'
-excerpt: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test(SUT).'
+excerpt: 'Scripting examples on how to execute a load test that will upload a file to the System Under Test (SUT).'
 ---
 
-Example to execute a load test that will upload a file to the System Under Test(SUT).
+Example to execute a load test that will upload a file to the System Under Test (SUT).
 
 ## The open() function
 
