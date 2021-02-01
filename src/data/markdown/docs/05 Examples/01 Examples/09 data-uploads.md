@@ -86,3 +86,52 @@ and sent.
 
 - [open(filePath, [mode])](/javascript-api/init-context/open-filepath-mode)
 - [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file-data-filename-contenttype)
+
+
+## Advanced multipart request
+
+The previous multipart request example has some limitations:
+
+- It's not possible to assemble the parts in a specific order, because of the
+  unordered nature of JS objects when they're converted to Golang maps, which k6 uses internally.
+  Uploading files in a specific order is a requirement for some APIs (e.g. AWS S3).
+- It's not possible to upload multiple files as part of the same form field, because
+  JS object keys must be unique.
+
+To address this we suggest using the [`FormData` polyfill for k6](https://jslib.k6.io/formdata/0.0.1/index.js).
+
+Here's an example of uploading several binary files and a text file using the polyfill:
+
+<CodeGroup labels={["Advanced multipart request example"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import { check } from 'k6';
+import { FormData } from 'https://jslib.k6.io/formdata/0.0.1/index.js';
+
+const img1 = open('/path/to/image1.png', 'b');
+const img2 = open('/path/to/image2.jpg', 'b');
+const txt = open('/path/to/text.txt');
+
+export default function() {
+  const fd = new FormData();
+  fd.append('images', http.file(img1, 'image1.png', 'image/png'));
+  fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
+  fd.append('text', http.file(txt, 'text.txt', 'text/plain'));
+
+  const res = http.post('https://httpbin.test.k6.io/post', fd.body(),
+    { headers: { 'Content-Type': 'multipart/form-data; boundary=' + fd.boundary }});
+  check(res, {
+    'is status 200': (r) => r.status === 200,
+  });
+}
+```
+
+</CodeGroup>
+
+Note that:
+
+- Both binary files will be uploaded under the `images` form field, and the text file
+  will appear last in the request under the `text` form field.
+- It's required to specify the multipart boundary in the `Content-Type` header,
+  so you must assemble the header manually as shown.
