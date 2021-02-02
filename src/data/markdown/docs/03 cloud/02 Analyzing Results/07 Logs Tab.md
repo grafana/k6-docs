@@ -18,6 +18,8 @@ The k6 API supports the following console logging methods:
 - `console.warn()`
 - `console.error()`
 
+> **Note**: `console.debug()` will only log output when running k6 with the **`-v/--verbose`** flag.
+
 Logs can aid you in troubleshooting your test execution. But they should NOT replace the functionality of other k6 APIs.
 
 For example, it is often an **anti-pattern** to use `logs` to:
