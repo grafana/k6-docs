@@ -3,7 +3,9 @@ title: 'FileData'
 description: 'Used for wrapping data representing a file when doing multipart requests (file uploads).'
 ---
 
-_FileData_ is an object for wrapping data representing a file when doing [multipart requests (file uploads)](/using-k6/multipart-requests-file-uploads). You create it by calling [http.file( data, [filename], [contentType] )](/javascript-api/k6-http/file-data-filename-contenttype).
+_FileData_ is an object for wrapping data representing a file when doing
+[multipart requests (file uploads)](/examples/data-uploads#multipart-request-uploading-a-file).
+You create it by calling [http.file( data, [filename], [contentType] )](/javascript-api/k6-http/file-data-filename-contenttype).
 
 | Name                  | Type           | Description                                                       |
 | --------------------- | -------------- | ----------------------------------------------------------------- |
