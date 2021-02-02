@@ -287,12 +287,6 @@ function getDocPagesProps({
         },
       };
 
-      const isLocalizedPage = strippedDirectory.startsWith('es/');
-
-      if (isLocalizedPage) {
-        return false;
-      }
-
       const docSection = compose(
         getDocSection,
         removeLocaleFromPath,
@@ -393,6 +387,37 @@ function getGuidesPagesProps({
         )(translatedPath);
       }
 
+      // @TODO: update if other languages are added
+      const isLocalizedPage = strippedDirectory.startsWith('es/');
+
+      const sidebarTree = isLocalizedPage
+        ? getGuidesSidebar('es')
+        : getGuidesSidebar('en');
+
+      // find translations of page
+      const filePath = unorderify(
+        stripDirectoryPath(relativeDirectory, 'guides'),
+        // remove locale prefix
+      ).slice(3);
+
+      const treeReducer = (subtree, currentNode) => {
+        console.log('REDUCER', filePath, 'CURRENT', currentNode, subtree);
+        return subtree.children[currentNode];
+      };
+
+      console.log('filepath', filePath);
+      const englishVersion = [...filePath.split('/'), unorderify(name)].reduce(
+        treeReducer,
+        getGuidesSidebar('en'),
+      ).meta;
+
+      const spanishVersion = [...filePath.split('/'), unorderify(name)].reduce(
+        treeReducer,
+        getGuidesSidebar('es'),
+      ).meta;
+
+      console.log('ENG', englishVersion, 'ESP', spanishVersion);
+
       const extendedRemarkNode = {
         ...remarkNode,
         frontmatter: {
@@ -402,14 +427,12 @@ function getGuidesPagesProps({
           fileOrigin: encodeURI(
             `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
           ),
+          translations: {
+            en: englishVersion,
+            es: spanishVersion,
+          },
         },
       };
-
-      const isLocalizedPage = strippedDirectory.startsWith('es/');
-
-      const sidebarTree = isLocalizedPage
-        ? getGuidesSidebar('es')
-        : getGuidesSidebar('en');
 
       return {
         path: pageSlug,
