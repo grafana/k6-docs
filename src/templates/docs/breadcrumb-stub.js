@@ -10,6 +10,7 @@ export default function (props) {
   const {
     pageContext: { sidebarTree, breadcrumbs, navLinks, title, directChildren },
   } = props;
+
   return (
     <DocLayout sidebarTree={sidebarTree} navLinks={navLinks}>
       <div className={`${styles.container}`}>
@@ -20,14 +21,14 @@ export default function (props) {
             <li key={`bcl-${i}`}>
               {meta.redirect ? (
                 <a href={meta.redirect} className={'link'}>
-                  {name}
+                  {meta.title ? meta.title : name}
                 </a>
               ) : (
                 <Link
                   to={`${meta.path || slugify(`/${name}`)}`}
                   className={'link'}
                 >
-                  {name}
+                  {meta.title ? meta.title : name}
                 </Link>
               )}
             </li>

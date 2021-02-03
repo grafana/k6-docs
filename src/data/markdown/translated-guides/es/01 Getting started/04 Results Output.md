@@ -1,5 +1,5 @@
 ---
-title: 'Results output'
+title: 'Salida de resultados'
 excerpt: ''
 ---
 

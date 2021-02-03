@@ -1,5 +1,5 @@
 ---
-title: 'Running k6'
+title: 'Ejecución de k6'
 excerpt: ''
 ---
 
@@ -98,10 +98,9 @@ running. Code _outside_ of it is called "init code", and is run only once per VU
 ```javascript
 // init code
 
-export default function() {
+export default function () {
   // vu code
 }
-
 ```
 
 </CodeGroup>

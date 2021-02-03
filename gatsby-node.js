@@ -133,6 +133,7 @@ function getSupplementaryPagesProps({
   topLevelNames,
   topLevelLinks,
   getSidebar,
+  getGuidesSidebar,
 }) {
   const notFoundProps = {
     path: '/404',
@@ -177,7 +178,40 @@ function getSupplementaryPagesProps({
         };
       });
     });
-  return stubPagesProps.concat(notFoundProps);
+
+  const stubGuidesPagesProps = ['en', 'es'].flatMap((section) => {
+    return childrenToList(getGuidesSidebar(section).children).map(
+      ({ name, meta }) => {
+        const path = `${section}/${meta.title}`;
+        const breadcrumbs = compose(
+          buildBreadcrumbs,
+          dedupePath,
+          removeGuides,
+        )(path);
+
+        return {
+          path: compose(
+            noTrailingSlash,
+            dedupePath,
+            removeGuides,
+            slugify,
+          )(path),
+          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
+          context: {
+            sidebarTree: getGuidesSidebar(section),
+            breadcrumbs: breadcrumbs.filter(
+              (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+            ),
+            title: meta.title,
+            navLinks: topLevelLinks,
+            directChildren: getGuidesSidebar(section).children[name].children,
+          },
+        };
+      },
+    );
+  });
+
+  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
 }
 
 function getTopLevelPagesProps({
@@ -584,6 +618,7 @@ async function createDocPages({
         topLevelNames,
         topLevelLinks,
         getSidebar,
+        getGuidesSidebar,
       }),
     )
     .map((pageProps) => actions.createPage(pageProps));

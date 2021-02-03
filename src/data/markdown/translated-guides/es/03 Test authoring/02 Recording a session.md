@@ -1,5 +1,5 @@
 ---
-title: 'Recording a session'
+title: 'Grabar una sesión'
 excerpt: ''
 ---
 

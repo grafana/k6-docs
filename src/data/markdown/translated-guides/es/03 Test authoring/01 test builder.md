@@ -1,5 +1,5 @@
 ---
-title: 'Test builder'
+title: 'Constructor de pruebas'
 excerpt: ''
 ---
 
@@ -31,7 +31,6 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 
 ![k6 Test Builder](images/test-builder.png)
 
-
 ## Test builder features
 
 We are continuously improving and adding new capabilities to the test builder. A few of the most prominent features are:
@@ -62,7 +61,7 @@ We are continuously improving and adding new capabilities to the test builder. A
 **And more**
 
 - Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
-- Populate the test builder with the requests included in a [HAR file](https://en.wikipedia.org/wiki/HAR_(file_format)).
+- Populate the test builder with the requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
 - Show examples for better onboarding.
 - Toggle the view mode to see or copy the generated k6 script.

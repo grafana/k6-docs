@@ -1,8 +1,7 @@
 ---
-title: 'HAR converter'
+title: 'HAR convertidor'
 excerpt: ''
 ---
-
 
 The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder). It generates a k6 script based on the HTTP requests included on a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 
