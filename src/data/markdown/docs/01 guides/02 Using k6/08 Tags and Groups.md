@@ -24,13 +24,14 @@ allowing you the BDD-style of testing.
 import { group } from 'k6';
 
 export default function () {
-  group('user flow: returning user', function () {
-    group('visit homepage', function () {
-      // load homepage resources
-    });
-    group('login', function () {
-      // perform login
-    });
+  group('add several products to the shopping cart', function () {
+    // ...
+  });
+  group('go to login and authenticate', function () {
+    // ...
+  });
+  group('checkout process', function () {
+    // ...
   });
 }
 ```
@@ -42,6 +43,37 @@ execution of the supplied `group()` function also emits a `group_duration`
 [metric](/using-k6/metrics) that contains the total time it took to execute that group
 function. This, combined with the metric tags described below, enables very flexible performance
 monitoring of different groups in your test suite.
+
+**Group anti-pattern**
+
+It is often an anti-pattern to wrap each individual request within a group.
+
+<CodeGroup labels={["group-antipattern.js"]} lineNumbers={[true]}>
+
+```javascript
+// reconsider this type of code
+group('get post', function () {
+   http.get(`http://example.com/posts/${id}`);
+});
+group('list posts', function () {
+   let res = http.get(`http://example.com/posts`);
+   check(res, {
+     'is status 200': (r) => r.status === 200,
+   });
+});
+```
+
+</CodeGroup>
+
+Groups were designed to help you visualize the various parts of a large test. 
+If your code looks like the example above, consider the following alternatives:
+
+- For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
+- To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
+- To reuse common logic or organize your code better, create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
+
+
+
 
 ## Tags
 
