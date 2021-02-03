@@ -15,6 +15,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
+import { localizedMessages } from 'utils/guides-translations';
 import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 
@@ -24,7 +25,14 @@ const pageInfo = {
     'This documentation will help you go from a total beginner to a seasoned k6 expert!',
 };
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export const I18nContext = React.createContext(null);
+export const useI18n = () => {
+  return React.useContext(I18nContext);
+};
+
+export default function ({
+  pageContext: { sidebarTree, navLinks, locale = 'en' },
+}) {
   useScrollToAnchor();
 
   const pageMetadata = SeoMetadata.guides;
@@ -34,45 +42,60 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     docPageContent.contentWrapper,
   );
 
-  return (
-    <DocLayout
-      sidebarTree={sidebarTree}
-      navLinks={navLinks}
-      pageMetadata={pageMetadata}
-    >
-      <PageInfo {...pageInfo} />
-      <div className={classNames(docPageContent.inner)}>
-        <StickyContainer>
-          <div ref={contentContainerRef} className={stickyContainerClasses}>
-            <Quickstart />
-            <WhatIs />
-            <Features />
-            <UseCases />
-            <Manifesto />
-            <K6DoesNot />
-            <Cloud
-              title={'Looking for k6 Cloud?'}
-              btnLink={`${docs}/cloud`}
-              isExternal
-              btnTarget={'_self'}
-              btnText={'Cloud docs'}
-              description={
-                'A tailored SaaS service to bring your team together into load testing.'
-              }
-            />
-          </div>
+  const i18nContextValue = React.useMemo(() => {
+    return {
+      locale,
+      t: (key) => {
+        const msgLocalized = localizedMessages[locale][key];
+        if (msgLocalized) {
+          return msgLocalized;
+        }
+        return localizedMessages.en[key];
+      },
+    };
+  }, [locale]);
 
-          <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            {({ style }) => (
-              <TableOfContents
-                style={style}
-                contentContainerRef={contentContainerRef}
-                shouldMakeReplacement
+  return (
+    <I18nContext.Provider value={i18nContextValue}>
+      <DocLayout
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
+        pageMetadata={pageMetadata}
+      >
+        <PageInfo {...pageInfo} />
+        <div className={classNames(docPageContent.inner)}>
+          <StickyContainer>
+            <div ref={contentContainerRef} className={stickyContainerClasses}>
+              <Quickstart />
+              <WhatIs />
+              <Features />
+              <UseCases />
+              <Manifesto />
+              <K6DoesNot />
+              <Cloud
+                title={'Looking for k6 Cloud?'}
+                btnLink={`${docs}/cloud`}
+                isExternal
+                btnTarget={'_self'}
+                btnText={'Cloud docs'}
+                description={
+                  'A tailored SaaS service to bring your team together into load testing.'
+                }
               />
-            )}
-          </Sticky>
-        </StickyContainer>
-      </div>
-    </DocLayout>
+            </div>
+
+            <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
+              {({ style }) => (
+                <TableOfContents
+                  style={style}
+                  contentContainerRef={contentContainerRef}
+                  shouldMakeReplacement
+                />
+              )}
+            </Sticky>
+          </StickyContainer>
+        </div>
+      </DocLayout>
+    </I18nContext.Provider>
   );
 }

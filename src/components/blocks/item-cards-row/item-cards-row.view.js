@@ -9,7 +9,7 @@ import * as React from 'react';
 
 import styles from './item-cards-row.module.scss';
 
-export const ItemCardsRow = ({ blockTitle, cardsData, label }) => (
+export const ItemCardsRow = ({ blockTitle, cardsData, label, linkText }) => (
   <section className={`container ${styles.container}`}>
     <Heading tag={'h2'} size={'lg'} className={styles.title}>
       {blockTitle}
@@ -26,7 +26,7 @@ export const ItemCardsRow = ({ blockTitle, cardsData, label }) => (
               <div className={itemCardStyles.text}>{text}</div>
             </div>
             <div className={classNames(itemCardStyles.footer, styles.footer)}>
-              <div className={itemCardStyles.link}>Read more</div>
+              <div className={itemCardStyles.link}>{linkText}</div>
             </div>
           </ItemCard>
         </div>

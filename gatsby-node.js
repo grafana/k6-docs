@@ -218,6 +218,7 @@ function getTopLevelPagesProps({
   topLevelNames,
   topLevelLinks,
   getSidebar,
+  getGuidesSidebar,
   pathCollisionDetectorInstance,
 }) {
   // generating pages currently presented in templates/docs/ folder
@@ -248,6 +249,17 @@ function getTopLevelPagesProps({
         },
       };
     })
+    .concat(
+      ['en', 'es'].map((locale) => ({
+        path: locale === 'en' ? 'en/guides' : 'es/guías',
+        component: Path.resolve(`./src/templates/docs/guides.js`),
+        context: {
+          sidebarTree: getGuidesSidebar(locale),
+          navLinks: topLevelLinks,
+          locale,
+        },
+      })),
+    )
     .filter(Boolean);
 }
 
@@ -435,11 +447,9 @@ function getGuidesPagesProps({
       ).slice(3);
 
       const treeReducer = (subtree, currentNode) => {
-        console.log('REDUCER', filePath, 'CURRENT', currentNode, subtree);
         return subtree.children[currentNode];
       };
 
-      console.log('filepath', filePath);
       const englishVersion = [...filePath.split('/'), unorderify(name)].reduce(
         treeReducer,
         getGuidesSidebar('en'),
@@ -449,8 +459,6 @@ function getGuidesPagesProps({
         treeReducer,
         getGuidesSidebar('es'),
       ).meta;
-
-      console.log('ENG', englishVersion, 'ESP', spanishVersion);
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -612,6 +620,7 @@ async function createDocPages({
         topLevelNames,
         topLevelLinks,
         getSidebar,
+        getGuidesSidebar,
         pathCollisionDetectorInstance,
       }),
       getSupplementaryPagesProps({
