@@ -24,15 +24,20 @@ Run code inside a group. Groups are used to organize results in a test.
 import { group } from 'k6';
 
 export default function () {
+
+  group('visit product listing page', function () {
+    // ...
+  });
   group('add several products to the shopping cart', function () {
     // ...
   });
-  group('go to login and authenticate', function () {
+  group('go to login page and authenticate', function () {
     // ...
   });
   group('checkout process', function () {
     // ...
   });
+
 }
 }
 ```
