@@ -191,6 +191,7 @@ const SidebarNode = (props) => {
 
 export const DocLayout = ({
   pageMetadata,
+  pageTranslations = null,
   sidebarTree,
   navLinks: links,
   children,
@@ -209,7 +210,7 @@ export const DocLayout = ({
 
   return (
     <div className={styles.wrapper}>
-      <SEO {...pageMetadata} />
+      <SEO pageTranslations={pageTranslations} {...pageMetadata} />
 
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>

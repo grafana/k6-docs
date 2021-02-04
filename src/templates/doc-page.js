@@ -34,6 +34,7 @@ export default function (props) {
       pageMetadata={pageMetadata}
       sidebarTree={sidebarTree}
       navLinks={navLinks}
+      pageTranslations={frontmatter.translations}
     >
       <div className={`${styles.container}`}>
         <Breadcrumbs items={breadcrumbs} />

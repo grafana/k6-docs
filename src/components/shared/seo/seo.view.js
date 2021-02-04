@@ -7,6 +7,7 @@ import { docs } from 'utils/urls';
 export const SEO = ({
   data: { title, description, image, slug } = {},
   facebook,
+  pageTranslations = {},
 } = {}) => {
   const {
     site: {
@@ -37,7 +38,6 @@ export const SEO = ({
   const currentDescription = description || siteDescription;
   const currentUrl = slug ? `${docs}/${slug}` : docs;
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
-
   return (
     <Helmet
       title={currentTitle}
@@ -58,6 +58,30 @@ export const SEO = ({
       {/* Twitter Card tags */}
       <meta name={'twitter:card'} content={'summary'} />
       <meta name={'twitter:creator'} content={authorTwitterAccount} />
+
+      {/* SEO for localized pages */}
+      {/* rel should be declared after href https://github.com/nfl/react-helmet/issues/279 */}
+      {pageTranslations && pageTranslations.en !== undefined && (
+        <link
+          hrefLang="en"
+          href={`${siteUrl}/docs${pageTranslations.en.path}`}
+          rel="alternate"
+        />
+      )}
+      {pageTranslations && pageTranslations.es !== undefined && (
+        <link
+          hrefLang="es"
+          href={`${siteUrl}/docs${pageTranslations.es.path}`}
+          rel="alternate"
+        />
+      )}
+      {pageTranslations && (
+        <link
+          hrefLang="x-default"
+          href={`${siteUrl}/${currentUrl}`}
+          rel="alternate"
+        />
+      )}
     </Helmet>
   );
 };
