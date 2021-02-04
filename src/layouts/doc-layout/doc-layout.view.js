@@ -10,6 +10,7 @@ import { MobileNav } from 'components/blocks/mobile-nav';
 import CookieConsent from 'components/shared/cookie-consent';
 import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
+import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
 import { Link, navigate, withPrefix } from 'gatsby';
@@ -195,6 +196,7 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
+  locale,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -207,6 +209,34 @@ export const DocLayout = ({
   }, [isMobileNavVisible]);
 
   useEffect(() => setShowFooter(!isInIFrame()), []);
+
+  console.log('translations', pageTranslations);
+
+  const languageChangeHandler = (lang) => {
+    const curLang = localStorage.getItem('k6-doc-locale');
+    localStorage.setItem('k6-doc-locale', lang);
+    if (
+      curLang &&
+      lang !== curLang &&
+      pageTranslations &&
+      pageTranslations[lang]
+    ) {
+      console.log('translate', curLang, '->', lang, 'redirect');
+      navigate(pageTranslations[lang].path);
+    }
+  };
+
+  React.useEffect(() => {
+    const curLang = localStorage.getItem('k6-doc-locale');
+    if (
+      pageTranslations &&
+      curLang &&
+      pageTranslations[curLang] &&
+      locale !== curLang
+    ) {
+      navigate(pageTranslations[curLang].path);
+    }
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -265,6 +295,7 @@ export const DocLayout = ({
           <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
             <HeaderNav links={links} />
           </div>
+          <LanguageSwitcher onLanguageChange={languageChangeHandler} />
           <div className={'d-md-none col-12 d-flex justify-content-end'}>
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>

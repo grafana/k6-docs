@@ -14,6 +14,7 @@ export default function (props) {
       sidebarTree,
       navLinks,
       breadcrumbs,
+      locale = 'en',
     },
   } = props;
   useScrollToAnchor();
@@ -26,8 +27,8 @@ export default function (props) {
     },
   };
 
-  console.log('Sidebar', sidebarTree);
-  console.log('TRANSLATIONS', frontmatter.translations);
+  // console.log('Sidebar', sidebarTree);
+  // console.log('TRANSLATIONS', frontmatter.translations);
 
   return (
     <DocLayout
@@ -35,6 +36,7 @@ export default function (props) {
       sidebarTree={sidebarTree}
       navLinks={navLinks}
       pageTranslations={frontmatter.translations}
+      locale={locale}
     >
       <div className={`${styles.container}`}>
         <Breadcrumbs items={breadcrumbs} />

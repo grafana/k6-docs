@@ -55,12 +55,26 @@ export default function ({
     };
   }, [locale]);
 
+  // @TODO: update later
+  const guidesTranslations = {
+    en: {
+      path: '/en/guides',
+      title: 'Guides',
+    },
+    es: {
+      path: '/es/guías',
+      title: 'Guías',
+    },
+  };
+
   return (
     <I18nContext.Provider value={i18nContextValue}>
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        locale={locale}
+        pageTranslations={guidesTranslations}
       >
         <PageInfo {...pageInfo} />
         <div className={classNames(docPageContent.inner)}>

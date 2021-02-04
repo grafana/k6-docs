@@ -8,11 +8,18 @@ import { childrenToList, slugify } from 'utils';
 
 export default function (props) {
   const {
-    pageContext: { sidebarTree, breadcrumbs, navLinks, title, directChildren },
+    pageContext: {
+      sidebarTree,
+      breadcrumbs,
+      navLinks,
+      title,
+      directChildren,
+      locale,
+    },
   } = props;
 
   return (
-    <DocLayout sidebarTree={sidebarTree} navLinks={navLinks}>
+    <DocLayout sidebarTree={sidebarTree} navLinks={navLinks} locale={locale}>
       <div className={`${styles.container}`}>
         <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
         <Heading className={styles.title}>{title}</Heading>

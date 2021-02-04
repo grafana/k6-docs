@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+
+  & > * :not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.locale-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  color: $color-primary;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-accent-primary;
+  }
+
+  &-active {
+    color: $color-accent-primary;
+    font-weight: 500;
+  }
+}
