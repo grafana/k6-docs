@@ -29,6 +29,8 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
+const DISABLE_I18N = isProduction;
+
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
@@ -179,39 +181,49 @@ function getSupplementaryPagesProps({
       });
     });
 
-  const stubGuidesPagesProps = ['en', 'es'].flatMap((section) => {
-    return childrenToList(getGuidesSidebar(section).children).map(
-      ({ name, meta }) => {
-        const path = `${section}/${meta.title}`;
-        const breadcrumbs = compose(
-          buildBreadcrumbs,
-          dedupePath,
-          removeGuides,
-        )(path);
+  const stubGuidesPagesProps = DISABLE_I18N
+    ? []
+    : SUPPORTED_LOCALES.flatMap((locale) => {
+        return childrenToList(getGuidesSidebar(locale).children).map(
+          ({ name, meta }) => {
+            const path = `${locale}/${meta.title}`;
+            const breadcrumbs = compose(
+              buildBreadcrumbs,
+              dedupePath,
+              removeGuides,
+            )(path);
 
-        return {
-          path: compose(
-            noTrailingSlash,
-            dedupePath,
-            removeGuides,
-            slugify,
-          )(path),
-          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
-          context: {
-            sidebarTree: getGuidesSidebar(section),
-            breadcrumbs: breadcrumbs.filter(
-              (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
-            ),
-            title: meta.title,
-            navLinks: topLevelLinks,
-            directChildren: getGuidesSidebar(section).children[name].children,
+            return {
+              path: compose(
+                noTrailingSlash,
+                dedupePath,
+                removeGuides,
+                slugify,
+              )(path),
+              component: Path.resolve(
+                './src/templates/docs/breadcrumb-stub.js',
+              ),
+              context: {
+                sidebarTree: getGuidesSidebar(locale),
+                breadcrumbs: breadcrumbs.filter(
+                  (item) =>
+                    !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+                ),
+                title: meta.title,
+                navLinks: topLevelLinks,
+                directChildren: getGuidesSidebar(locale).children[name]
+                  .children,
+                locale,
+              },
+            };
           },
-        };
-      },
-    );
-  });
+        );
+      });
 
-  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
+  return stubPagesProps.concat(
+    notFoundProps,
+    DISABLE_I18N ? [] : stubGuidesPagesProps,
+  );
 }
 
 function getTopLevelPagesProps({
@@ -250,15 +262,17 @@ function getTopLevelPagesProps({
       };
     })
     .concat(
-      ['en', 'es'].map((locale) => ({
-        path: locale === 'en' ? 'en/guides' : 'es/guías',
-        component: Path.resolve(`./src/templates/docs/guides.js`),
-        context: {
-          sidebarTree: getGuidesSidebar(locale),
-          navLinks: topLevelLinks,
-          locale,
-        },
-      })),
+      DISABLE_I18N
+        ? []
+        : SUPPORTED_LOCALES.map((locale) => ({
+            path: locale === 'en' ? 'en/guides' : 'es/guías',
+            component: Path.resolve(`./src/templates/docs/guides.js`),
+            context: {
+              sidebarTree: getGuidesSidebar(locale),
+              navLinks: topLevelLinks,
+              locale,
+            },
+          })),
     )
     .filter(Boolean);
 }
@@ -347,9 +361,7 @@ function getDocPagesProps({
         context: {
           remarkNode: extendedRemarkNode,
           sidebarTree,
-          breadcrumbs: breadcrumbs.filter(
-            (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
-          ),
+          breadcrumbs,
           navLinks: topLevelLinks,
         },
       };
@@ -486,6 +498,7 @@ function getGuidesPagesProps({
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
           ),
           navLinks: topLevelLinks,
+          locale: isLocalizedPage ? 'es' : 'en',
         },
       };
     })
@@ -590,9 +603,7 @@ async function createDocPages({
   const getGuidesSidebar = getChildSidebar(guidesSidebar);
 
   // create data for rendering docs navigation
-  const topLevelNames = Object.keys(sidebar.children).filter(
-    (child) => !SUPPORTED_LOCALES.includes(child),
-  );
+  const topLevelNames = Object.keys(sidebar.children);
 
   const topLevelLinks = topLevelNames
     .filter((name) => name !== 'Cloud REST API')
@@ -609,13 +620,15 @@ async function createDocPages({
     getSidebar,
   })
     .concat(
-      getGuidesPagesProps({
-        nodesGuides,
-        reporter,
-        topLevelLinks,
-        pathCollisionDetectorInstance,
-        getGuidesSidebar,
-      }),
+      DISABLE_I18N
+        ? []
+        : getGuidesPagesProps({
+            nodesGuides,
+            reporter,
+            topLevelLinks,
+            pathCollisionDetectorInstance,
+            getGuidesSidebar,
+          }),
       getTopLevelPagesProps({
         topLevelNames,
         topLevelLinks,
@@ -964,12 +977,14 @@ const createRedirects = ({ actions, pathPrefix }) => {
 
 exports.createPages = async (options) => {
   const pagesData = await fetchDocPagesData(options.graphql);
-  const guidesData = await fetchGuidesPagesData(options.graphql);
+  const guidesData = DISABLE_I18N
+    ? null
+    : await fetchGuidesPagesData(options.graphql);
 
   const sidebar = generateSidebar({ nodes: pagesData });
-  const guidesSidebar = generateSidebar({ nodes: guidesData, type: 'guides' });
-
-  console.log('GUIDES SIDE', guidesSidebar);
+  const guidesSidebar = DISABLE_I18N
+    ? null
+    : generateSidebar({ nodes: guidesData, type: 'guides' });
 
   await createDocPages({
     ...options,
