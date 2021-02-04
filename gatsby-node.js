@@ -10,7 +10,6 @@ const {
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
-  removeLocaleFromPath,
   pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
@@ -22,6 +21,7 @@ const {
   dedupePath,
   removeGuidesAndRedirectWelcome,
   noTrailingSlash,
+  removeEnPrefix,
 } = require('./src/utils/utils.node');
 
 /* constants */
@@ -47,6 +47,7 @@ const getSlug = (relativeDirectory, title, type = 'guides') => {
   const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
   const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
   const slug = compose(
+    removeEnPrefix,
     noTrailingSlash,
     dedupePath,
     removeGuides,
@@ -73,12 +74,18 @@ const getTranslatedSlug = (
     .join('/');
 
   const slug = compose(
+    removeEnPrefix,
     noTrailingSlash,
     dedupePath,
     slugify,
   )(`${translatedPath}/${unorderify(title.replace(/\//g, '-'))}`);
 
   return slug;
+};
+
+const GUIDES_TOP_LEVEL_LINKS = {
+  label: 'guides',
+  to: '/',
 };
 
 function generateSidebar({ nodes, type = 'docs' }) {
@@ -117,6 +124,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
         path:
           slug ||
           compose(
+            removeEnPrefix,
             noTrailingSlash,
             removeGuidesAndRedirectWelcome,
             dedupePath,
@@ -164,6 +172,7 @@ function getSupplementaryPagesProps({
         )(path);
         return {
           path: compose(
+            removeEnPrefix,
             noTrailingSlash,
             dedupePath,
             removeGuides,
@@ -174,7 +183,7 @@ function getSupplementaryPagesProps({
             sidebarTree: getSidebar(section),
             breadcrumbs,
             title: name,
-            navLinks: topLevelLinks,
+            navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
             directChildren: getSidebar(section).children[name].children,
           },
         };
@@ -198,6 +207,7 @@ function getSupplementaryPagesProps({
 
             return {
               path: compose(
+                removeEnPrefix,
                 noTrailingSlash,
                 dedupePath,
                 removeGuides,
@@ -213,7 +223,7 @@ function getSupplementaryPagesProps({
                     !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
                 ),
                 title: meta.title,
-                navLinks: topLevelLinks,
+                navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
                 directChildren: getGuidesSidebar(locale).children[name]
                   .children,
                 locale,
@@ -264,7 +274,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/${slug}.js`),
         context: {
           sidebarTree: getSidebar(name),
-          navLinks: topLevelLinks,
+          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
         },
       };
     })
@@ -272,11 +282,11 @@ function getTopLevelPagesProps({
       DISABLE_I18N
         ? []
         : SUPPORTED_LOCALES.map((locale) => ({
-            path: locale === 'en' ? 'en/guides' : 'es/guías',
+            path: locale === 'en' ? '/' : 'es/',
             component: Path.resolve(`./src/templates/docs/guides.js`),
             context: {
               sidebarTree: getGuidesSidebar(locale),
-              navLinks: topLevelLinks,
+              navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
               locale,
             },
           })),
@@ -322,6 +332,7 @@ function getDocPagesProps({
       const slug =
         customSlug ||
         compose(
+          removeEnPrefix,
           noTrailingSlash,
           dedupePath,
           removeGuides,
@@ -354,11 +365,7 @@ function getDocPagesProps({
         },
       };
 
-      const docSection = compose(
-        getDocSection,
-        removeLocaleFromPath,
-        unorderify,
-      )(strippedDirectory);
+      const docSection = compose(getDocSection, unorderify)(strippedDirectory);
 
       const sidebarTree = getSidebar(docSection);
 
@@ -369,7 +376,7 @@ function getDocPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: topLevelLinks,
+          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
         },
       };
     })
@@ -504,7 +511,7 @@ function getGuidesPagesProps({
           breadcrumbs: breadcrumbs.filter(
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
           ),
-          navLinks: topLevelLinks,
+          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
           locale: isLocalizedPage ? 'es' : 'en',
         },
       };

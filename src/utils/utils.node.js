@@ -69,6 +69,8 @@ const buildFileTree = (nodeBuilder) => {
         // add translated path to meta.path for each node
         currentPath = compose(
           // eslint-disable-next-line no-use-before-define
+          removeEnPrefix,
+          // eslint-disable-next-line no-use-before-define
           removeGuidesAndRedirectWelcome,
           // eslint-disable-next-line no-use-before-define
           dedupePath,
@@ -110,16 +112,6 @@ const unorderify = (str, nameOnly = false) => {
 // 'docs'; e.g. /whatever/some-more -> whatever
 // getDocSection(str: String) -> String
 const getDocSection = (str) => str.replace(/^(.*?)\/.*$/, '$1');
-
-const removeLocaleFromPath = (str) => {
-  let res = str;
-  SUPPORTED_LOCALES.forEach((locale) => {
-    if (str.startsWith(`${locale}/`)) {
-      res = str.replace(`${locale}/`, '');
-    }
-  });
-  return res;
-};
 
 // extracts a certain part of a sidebar which
 // which root key matches passed child
@@ -167,6 +159,9 @@ const pathCollisionDetector = (logger) => {
 // guides category is the root: / or /docs in prod, so we removing that part
 const removeGuides = (path) =>
   path.replace(/guides\//i, '').replace(/guías\//i, '');
+
+// english pages are the root: / or /docs in prod, so we remove that part
+const removeEnPrefix = (path) => path.replace(/en\//i, '');
 
 // removes duplicates from path, e.g.
 // examples/examples -> examples
@@ -224,8 +219,8 @@ Object.defineProperties(utils, {
   DEFAULT_LOCALE: {
     value: DEFAULT_LOCALE,
   },
-  removeLocaleFromPath: {
-    value: removeLocaleFromPath,
+  removeEnPrefix: {
+    value: removeEnPrefix,
   },
 });
 

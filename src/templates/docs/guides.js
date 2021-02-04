@@ -58,11 +58,11 @@ export default function ({
   // @TODO: update later
   const guidesTranslations = {
     en: {
-      path: '/en/guides',
+      path: '/',
       title: 'Guides',
     },
     es: {
-      path: '/es/guías',
+      path: '/es',
       title: 'Guías',
     },
   };
