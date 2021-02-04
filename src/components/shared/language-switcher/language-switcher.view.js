@@ -1,16 +1,16 @@
 import classNames from 'classnames/bind';
 import React from 'react';
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from 'utils/utils.node';
 
 import styles from './language-switcher.module.scss';
-
-const SUPPORTED_LOCALES = ['en', 'es'];
 
 const cx = classNames.bind(styles);
 
 export const LanguageSwitcher = (props) => {
   const { onLanguageChange, className } = props;
 
-  const selectedLocale = localStorage.getItem('k6-doc-locale') || 'en';
+  const selectedLocale =
+    localStorage.getItem('k6-doc-locale') || DEFAULT_LOCALE;
 
   return (
     <div className={cx('wrapper', className)}>

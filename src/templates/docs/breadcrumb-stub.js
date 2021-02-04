@@ -15,11 +15,17 @@ export default function (props) {
       title,
       directChildren,
       locale,
+      translations = null,
     },
   } = props;
 
   return (
-    <DocLayout sidebarTree={sidebarTree} navLinks={navLinks} locale={locale}>
+    <DocLayout
+      sidebarTree={sidebarTree}
+      navLinks={navLinks}
+      locale={locale}
+      pageTranslations={translations}
+    >
       <div className={`${styles.container}`}>
         <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
         <Heading className={styles.title}>{title}</Heading>

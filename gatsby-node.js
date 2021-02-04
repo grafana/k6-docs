@@ -193,6 +193,9 @@ function getSupplementaryPagesProps({
               removeGuides,
             )(path);
 
+            const englishVersion = getGuidesSidebar('en').children[name].meta;
+            const spanishVersion = getGuidesSidebar('es').children[name].meta;
+
             return {
               path: compose(
                 noTrailingSlash,
@@ -214,6 +217,10 @@ function getSupplementaryPagesProps({
                 directChildren: getGuidesSidebar(locale).children[name]
                   .children,
                 locale,
+                translations: {
+                  en: englishVersion,
+                  es: spanishVersion,
+                },
               },
             };
           },

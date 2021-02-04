@@ -1,9 +1,10 @@
 /* gatsby-node.js specific helper functions */
 const { translations } = require('./path-translations');
-const { slugify } = require('./utils');
+const { slugify, compose } = require('./utils');
 
 // default 'en' is not included
 const SUPPORTED_LOCALES = ['es', 'en'];
+const DEFAULT_LOCALE = 'en';
 
 // create a container;
 const utils = {};
@@ -51,6 +52,9 @@ const buildFileTree = (nodeBuilder) => {
     const locale = SUPPORTED_LOCALES.find((loc) => parts.includes(loc)) || 'en';
 
     parts.push(name);
+
+    let currentPath = '';
+
     parts.forEach((part) => {
       if (
         parent.children === undefined ||
@@ -61,7 +65,20 @@ const buildFileTree = (nodeBuilder) => {
           translations[part] !== undefined && locale !== 'en'
             ? translations[part][locale]
             : part;
-        parent.children[part] = nodeBuilder(part, { title: translatedName });
+
+        // add translated path to meta.path for each node
+        currentPath = compose(
+          // eslint-disable-next-line no-use-before-define
+          removeGuidesAndRedirectWelcome,
+          // eslint-disable-next-line no-use-before-define
+          dedupePath,
+          slugify,
+        )(`${currentPath}/${translatedName}`);
+
+        parent.children[part] = nodeBuilder(part, {
+          title: translatedName,
+          path: currentPath,
+        });
       }
       parent.children[part] = parent.children[part] || nodeBuilder(part);
       parent = parent.children[part];
@@ -203,6 +220,9 @@ Object.defineProperties(utils, {
   },
   SUPPORTED_LOCALES: {
     value: SUPPORTED_LOCALES,
+  },
+  DEFAULT_LOCALE: {
+    value: DEFAULT_LOCALE,
   },
   removeLocaleFromPath: {
     value: removeLocaleFromPath,
