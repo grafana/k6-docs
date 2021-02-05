@@ -21,31 +21,34 @@ Run code inside a group. Groups are used to organize results in a test.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { group, check } from 'k6';
-import http from 'k6/http';
+import { group } from 'k6';
 
 export default function () {
-  group('my user scenario', function () {
-    group('front page', function () {
-      let res = http.get('https://k6.io');
-      check(res, {
-        'status code is 200': (res) => res.status == 200,
-      });
-    });
-    group('features page', function () {
-      let res = http.get('https://k6.io/features');
-      check(res, {
-        'status code is 200': (res) => res.status == 200,
-        'h1 message is correct': (res) =>
-          res.html('h1').text().startsWith('Simple yet realistic load testing'),
-      });
-    });
+
+  group('visit product listing page', function () {
+    // ...
   });
+  group('add several products to the shopping cart', function () {
+    // ...
+  });
+  group('visit login page', function () {
+    // ...
+  });
+  group('authenticate', function () {
+    // ...
+  });
+  group('checkout process', function () {
+    // ...
+  });
+
+}
 }
 ```
 
 </CodeGroup>
 
-The above code will produce output like shown on the screenshot below,
-with check results presented separately depending on which group they were executed in:
-![](images/groups.png)
+The above code will present the results separately depending on the group execution.
+
+Learn more on [Groups and Tags](/using-k6/tags-and-groups).
+
+

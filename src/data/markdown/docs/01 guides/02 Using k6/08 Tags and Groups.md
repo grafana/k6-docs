@@ -15,8 +15,10 @@ filter your test results.
 
 ## Groups
 
-Groups are optional, and it allows you to “group” your load script. Groups can be nested,
-allowing you the BDD-style of testing.
+
+Groups are optional, and it allows you to “group” a large load script to help you with the test result analysis. Groups can be nested, allowing you the BDD-style of testing.
+
+For example, you could use groups to organize multiple requests due to loading a page or executing a user action.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 
@@ -24,24 +26,65 @@ allowing you the BDD-style of testing.
 import { group } from 'k6';
 
 export default function () {
-  group('user flow: returning user', function () {
-    group('visit homepage', function () {
-      // load homepage resources
-    });
-    group('login', function () {
-      // perform login
-    });
+
+  group('visit product listing page', function () {
+    // ...
   });
+  group('add several products to the shopping cart', function () {
+    // ...
+  });
+  group('visit login page', function () {
+    // ...
+  });
+  group('authenticate', function () {
+    // ...
+  });
+  group('checkout process', function () {
+    // ...
+  });
+
 }
 ```
 
 </CodeGroup>
 
-Your test results will be grouped based on your group names for easy visualization. Each
-execution of the supplied `group()` function also emits a `group_duration`
-[metric](/using-k6/metrics) that contains the total time it took to execute that group
-function. This, combined with the metric tags described below, enables very flexible performance
-monitoring of different groups in your test suite.
+Groups do the following tasks internally:
+
+- For each `group()` function, k6 emits a [group_duration metric](/using-k6/metrics) that contains the total time to execute the group function. 
+
+- When a taggable resource: checks, requests, or custom metrics runs within a group, k6 will set the tag `group` with the current group name. Read more about it in [Tags](/using-k6/tags-and-groups#tags).
+
+Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize better the results of more complex tests. Check out how they work in your [k6 result output](/integrations#result-store-and-visualization).
+
+**Discouraged use cases**
+
+Wrapping each individual request within a group might add boilerplate code and be unnecessary.
+
+<CodeGroup labels={["group-antipattern.js"]} lineNumbers={[true]}>
+
+```javascript
+// reconsider this type of code
+group('get post', function () {
+   http.get(`http://example.com/posts/${id}`);
+});
+group('list posts', function () {
+   let res = http.get(`http://example.com/posts`);
+   check(res, {
+     'is status 200': (r) => r.status === 200,
+   });
+});
+```
+
+</CodeGroup>
+
+If your code looks like the example above, consider the following alternatives to write cleaner code:
+
+- For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
+- To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
+- To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
+- If you need to model advanced user patterns, check out [Scenarios](/using-k6/scenarios). 
+
+
 
 ## Tags
 
