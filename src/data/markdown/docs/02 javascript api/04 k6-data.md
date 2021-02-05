@@ -3,7 +3,7 @@ title: "k6/data"
 excerpt: "k6 data API"
 ---
 
-The data module provides helpers to work with data.
+The data module, added in k6 v0.30.0, provides helpers to work with data.
 
 | Class/Method | Description |
 | ----- | ----------- |
