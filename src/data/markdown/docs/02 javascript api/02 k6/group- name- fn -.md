@@ -31,7 +31,10 @@ export default function () {
   group('add several products to the shopping cart', function () {
     // ...
   });
-  group('go to login page and authenticate', function () {
+  group('visit login page', function () {
+    // ...
+  });
+  group('authenticate', function () {
     // ...
   });
   group('checkout process', function () {

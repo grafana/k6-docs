@@ -15,8 +15,10 @@ filter your test results.
 
 ## Groups
 
-Groups are optional, and it allows you to “group” your load script. Groups can be nested,
-allowing you the BDD-style of testing.
+
+Groups are optional, and it allows you to “group” a large load script to help you with the test result analysis. Groups can be nested, allowing you the BDD-style of testing.
+
+For example, you could use groups to organize multiple requests due to loading a page or executing a user action.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 
@@ -31,7 +33,10 @@ export default function () {
   group('add several products to the shopping cart', function () {
     // ...
   });
-  group('go to login page and authenticate', function () {
+  group('visit login page', function () {
+    // ...
+  });
+  group('authenticate', function () {
     // ...
   });
   group('checkout process', function () {
@@ -43,15 +48,17 @@ export default function () {
 
 </CodeGroup>
 
-Your test results will be grouped based on your group names for easy visualization. Each
-execution of the supplied `group()` function also emits a `group_duration`
-[metric](/using-k6/metrics) that contains the total time it took to execute that group
-function. This, combined with the metric tags described below, enables very flexible performance
-monitoring of different groups in your test suite.
+Groups do the following tasks internally:
+
+- For each `group()` function, k6 emits a [group_duration metric](/using-k6/metrics) that contains the total time to execute the group function. 
+
+- When a taggable resource: checks, requests, or custom metrics runs within a group, k6 will set the tag `group` with the current group name. Read more about it in [Tags](/using-k6/tags-and-groups#tags).
+
+Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize better the results of more complex tests. Check out how they work in your [k6 result output](/integrations#result-store-and-visualization).
 
 **Discouraged use cases**
 
-Be aware that wrapping each individual request within a group might add boilerplate code and be unnecessary.
+Wrapping each individual request within a group might add boilerplate code and be unnecessary.
 
 <CodeGroup labels={["group-antipattern.js"]} lineNumbers={[true]}>
 
@@ -70,7 +77,6 @@ group('list posts', function () {
 
 </CodeGroup>
 
-Groups were designed to help you visualize the various parts of a large test. 
 If your code looks like the example above, consider the following alternatives to write cleaner code:
 
 - For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
