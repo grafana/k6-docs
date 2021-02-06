@@ -24,7 +24,7 @@ For example:
 
 <CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Counter } from 'k6/metrics';
 
 var myCounter = new Counter('my_counter');
@@ -39,7 +39,7 @@ export default function() {
 
 <CodeGroup labels={["Simple Threshold usage"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import http from "k6/http";
 import { Counter } from "k6/metrics";
 
@@ -58,7 +58,7 @@ export default function() {
 
 <CodeGroup labels={["Advanced Thresholds"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Counter } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
