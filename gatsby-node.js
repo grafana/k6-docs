@@ -199,6 +199,7 @@ function getSupplementaryPagesProps({
             const path = `${locale}/${meta.title}`;
             const breadcrumbs = compose(
               buildBreadcrumbs,
+              removeEnPrefix,
               dedupePath,
               removeGuides,
             )(path);
@@ -440,6 +441,7 @@ function getGuidesPagesProps({
       // generate breadcrumbs
       let breadcrumbs = compose(
         buildBreadcrumbs,
+        removeEnPrefix,
         dedupePath,
         removeGuides,
         unorderify,
@@ -455,6 +457,7 @@ function getGuidesPagesProps({
 
         breadcrumbs = compose(
           buildBreadcrumbs,
+          removeEnPrefix,
           dedupePath,
           removeGuides,
         )(translatedPath);
