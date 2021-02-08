@@ -29,14 +29,9 @@ const translations = {
   'Recording a session': {
     es: 'Grabar una sesión',
   },
+  Misc: {
+    es: 'Misc',
+  },
 };
 
-const pathTranslations = {};
-
-Object.defineProperties(pathTranslations, {
-  translations: {
-    value: translations,
-  },
-});
-
-module.exports = pathTranslations;
+module.exports = { translations };

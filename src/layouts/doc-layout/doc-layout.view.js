@@ -174,16 +174,22 @@ const SidebarNode = (props) => {
   };
 
   return (
-    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}>
-      {nodes[nodeType()]()}
-      {!!Object.keys(children).length && isActive && (
-        <div className={styles.sidebarNodeChildren}>
-          {childrenToList(children).map((node) => (
-            <SidebarNode node={node} key={node.name} />
-          ))}
+    <>
+      {!meta.hideFromSidebar && (
+        <div
+          className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}
+        >
+          {nodes[nodeType()]()}
+          {!!Object.keys(children).length && isActive && (
+            <div className={styles.sidebarNodeChildren}>
+              {childrenToList(children).map((node) => (
+                <SidebarNode node={node} key={node.name} />
+              ))}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

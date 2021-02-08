@@ -98,7 +98,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
 
     // skip altogether if this content has draft flag
     // OR hideFromSidebar
-    if ((draft === 'true' && isProduction) || hideFromSidebar) return;
+    if (draft === 'true' && isProduction) return;
 
     // titles like k6/html treated like paths otherwise
     let path = unorderify(
@@ -132,6 +132,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
           )(path),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
+        hideFromSidebar: hideFromSidebar || false,
       },
     );
   });
@@ -472,7 +473,10 @@ function getGuidesPagesProps({
         // remove locale prefix
       ).slice(3);
 
+      console.log('filePath', filePath);
+
       const treeReducer = (subtree, currentNode) => {
+        console.log('REDUCER', subtree, currentNode);
         return subtree.children[currentNode];
       };
 
