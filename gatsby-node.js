@@ -19,7 +19,7 @@ const {
   buildBreadcrumbs,
   removeGuides,
   dedupePath,
-  removeGuidesAndRedirectWelcome,
+  redirectWelcome,
   noTrailingSlash,
   removeEnPrefix,
 } = require('./src/utils/utils.node');
@@ -126,7 +126,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
           compose(
             removeEnPrefix,
             noTrailingSlash,
-            removeGuidesAndRedirectWelcome,
+            redirectWelcome,
             dedupePath,
             slugify,
           )(path),

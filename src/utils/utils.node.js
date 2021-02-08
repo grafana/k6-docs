@@ -62,37 +62,45 @@ const buildFileTree = (nodeBuilder) => {
       ) {
         // add translated folder name to meta.title for each node in tree
         const translatedName =
-          translations[part] !== undefined && locale !== 'en'
+          translations[part] !== undefined && locale !== DEFAULT_LOCALE
             ? translations[part][locale]
             : part;
 
-        // add translated path to meta.path for each node
-        currentPath = compose(
-          // eslint-disable-next-line no-use-before-define
-          removeEnPrefix,
-          // eslint-disable-next-line no-use-before-define
-          removeGuidesAndRedirectWelcome,
-          // eslint-disable-next-line no-use-before-define
-          dedupePath,
-          slugify,
-        )(`${currentPath}/${translatedName}`);
+        // add translated path to meta.path for each node, ignore /en path
+
+        currentPath =
+          part === DEFAULT_LOCALE
+            ? '/'
+            : compose(
+                // eslint-disable-next-line no-use-before-define
+                removeEnPrefix,
+                // eslint-disable-next-line no-use-before-define
+                redirectWelcome,
+                // eslint-disable-next-line no-use-before-define
+                dedupePath,
+                slugify,
+              )(`${currentPath}/${translatedName}`);
 
         parent.children[part] = nodeBuilder(part, {
           title: translatedName,
           path: currentPath,
         });
       } else {
-        // if node is in the tree already - just update current path
-        currentPath = compose(
-          // eslint-disable-next-line no-use-before-define
-          removeEnPrefix,
-          // eslint-disable-next-line no-use-before-define
-          removeGuidesAndRedirectWelcome,
-          // eslint-disable-next-line no-use-before-define
-          dedupePath,
-          slugify,
-        )(`${currentPath}/${part}`);
+        // if node is in the tree already, just update current path
+        currentPath =
+          part === DEFAULT_LOCALE
+            ? '/'
+            : compose(
+                // eslint-disable-next-line no-use-before-define
+                removeEnPrefix,
+                // eslint-disable-next-line no-use-before-define
+                redirectWelcome,
+                // eslint-disable-next-line no-use-before-define
+                dedupePath,
+                slugify,
+              )(`${currentPath}/${part}`);
       }
+
       parent.children[part] = parent.children[part] || nodeBuilder(part);
       parent = parent.children[part];
     });
@@ -172,7 +180,13 @@ const removeGuides = (path) =>
   path.replace(/guides\//i, '').replace(/guías\//i, '');
 
 // english pages are the root: / or /docs in prod, so we remove that part
-const removeEnPrefix = (path) => path.replace(/en\//i, '');
+const removeEnPrefix = (path) => {
+  if (path === '/en') {
+    return '/';
+  }
+
+  return path.replace(/en\//i, '');
+};
 
 // removes duplicates from path, e.g.
 // examples/examples -> examples
@@ -181,10 +195,10 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 // no /guides route; welcome is redirecting to the root path
 // difference from removeGuides: this one is for sidebar links processing and
 // the former is for creatingPages
-const removeGuidesAndRedirectWelcome = (path) =>
+const redirectWelcome = (path) =>
   path
-    .replace(/guides\/(getting-started\/welcome)?/i, '')
-    .replace(/guías\/(empezando\/bienvenido)?/i, '');
+    .replace(/getting-started\/welcome/i, '')
+    .replace(/empezando\/bienvenido/i, '');
 
 // ensures that no trailing slash is left
 const noTrailingSlash = (path) =>
@@ -194,8 +208,8 @@ Object.defineProperties(utils, {
   noTrailingSlash: {
     value: noTrailingSlash,
   },
-  removeGuidesAndRedirectWelcome: {
-    value: removeGuidesAndRedirectWelcome,
+  redirectWelcome: {
+    value: redirectWelcome,
   },
   dedupePath: {
     value: dedupePath,

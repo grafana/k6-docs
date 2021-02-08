@@ -125,7 +125,7 @@ const SidebarNode = (props) => {
     const doesPathMatchLocation =
       maybePrefixedPath === window.location.pathname;
     const isPathLocationPart =
-      meta.path === '/'
+      meta.path === '/' || meta.path === '/es'
         ? false
         : window.location.pathname.startsWith(`${maybePrefixedPath}/`) ||
           window.location.pathname.startsWith(
