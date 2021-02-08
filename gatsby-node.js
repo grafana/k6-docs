@@ -85,8 +85,22 @@ const getTranslatedSlug = (
 
 const GUIDES_TOP_LEVEL_LINKS = {
   label: 'guides',
-  to: '/',
+  variants: {
+    en: {
+      label: 'guides',
+      to: '/',
+    },
+    es: {
+      label: 'guías',
+      to: '/es',
+    },
+  },
 };
+
+const generateTopLevelLinks = (topLevelLinks) => [
+  GUIDES_TOP_LEVEL_LINKS,
+  ...topLevelLinks,
+];
 
 function generateSidebar({ nodes, type = 'docs' }) {
   const sidebarTreeBuilder = buildFileTree(buildFileTreeNode);
@@ -184,7 +198,7 @@ function getSupplementaryPagesProps({
             sidebarTree: getSidebar(section),
             breadcrumbs,
             title: name,
-            navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+            navLinks: generateTopLevelLinks(topLevelLinks),
             directChildren: getSidebar(section).children[name].children,
           },
         };
@@ -225,7 +239,7 @@ function getSupplementaryPagesProps({
                     !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
                 ),
                 title: meta.title,
-                navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+                navLinks: generateTopLevelLinks(topLevelLinks),
                 directChildren: getGuidesSidebar(locale).children[name]
                   .children,
                 locale,
@@ -276,7 +290,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/${slug}.js`),
         context: {
           sidebarTree: getSidebar(name),
-          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+          navLinks: generateTopLevelLinks(topLevelLinks),
         },
       };
     })
@@ -288,7 +302,7 @@ function getTopLevelPagesProps({
             component: Path.resolve(`./src/templates/docs/guides.js`),
             context: {
               sidebarTree: getGuidesSidebar(locale),
-              navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+              navLinks: generateTopLevelLinks(topLevelLinks),
               locale,
             },
           })),
@@ -378,7 +392,7 @@ function getDocPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+          navLinks: generateTopLevelLinks(topLevelLinks),
         },
       };
     })
@@ -515,7 +529,7 @@ function getGuidesPagesProps({
           breadcrumbs: breadcrumbs.filter(
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
           ),
-          navLinks: topLevelLinks.concat([GUIDES_TOP_LEVEL_LINKS]),
+          navLinks: generateTopLevelLinks(topLevelLinks),
           locale: isLocalizedPage ? 'es' : 'en',
         },
       };

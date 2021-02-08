@@ -87,27 +87,38 @@ const Single = ({ to, label, sections }) => {
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
 
+  const locale = localStorage.getItem('k6-doc-locale') || 'en';
+
   return (
     <nav>
       <ul className={styles.list}>
-        {links.map(({ label, to, submenu }) => (
-          <li
-            className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
-            key={label + to}
-          >
-            {submenu ? (
-              <Submenu label={label} submenu={submenu} />
-            ) : (
-              <Single
-                label={label}
-                to={to}
-                sections={links
-                  .filter((item) => item.to !== '/')
-                  .map((item) => withPrefix(item.to))}
-              />
-            )}
-          </li>
-        ))}
+        {links.map((link) => {
+          // eslint-disable-next-line prefer-const
+          let { label, to, submenu } = link;
+
+          if (label === 'guides') {
+            label = link.variants[locale].label;
+            to = link.variants[locale].to;
+          }
+          return (
+            <li
+              className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
+              key={label + to}
+            >
+              {submenu ? (
+                <Submenu label={label} submenu={submenu} />
+              ) : (
+                <Single
+                  label={label}
+                  to={to}
+                  sections={links
+                    .filter((item) => item.to !== '/')
+                    .map((item) => withPrefix(item.to))}
+                />
+              )}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
