@@ -1,6 +1,6 @@
 # k6 Documentation
-![Staging](https://github.com/loadimpact/k6-docs/workflows/Staging/badge.svg)
-![Production](https://github.com/loadimpact/k6-docs/workflows/Production/badge.svg)
+![Staging](https://github.com/k6io/docs/workflows/Staging/badge.svg)
+![Production](https://github.com/k6io/docs/workflows/Production/badge.svg)
 
 This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
 
@@ -9,8 +9,8 @@ This repo contains the source code of the [k6 documentation](https://k6.io/docs/
 This uses `docker-compose` and port `8100`.
 
 ```shell
-git clone git@github.com:loadimpact/k6-docs.git
-cd k6-docs
+git clone git@github.com:k6io/docs.git
+cd docs
 
 docker-compose  up -d --build
 ```
@@ -31,8 +31,8 @@ before retrying.
 In node 12.x:
 
 ```bash
-git clone git@github.com:loadimpact/k6-docs.git
-cd k6-docs
+git clone git@github.com:k6io/docs.git
+cd docs
 npm install
 ```
 
@@ -50,7 +50,7 @@ Visit http://localhost:8000
 All pull requests merged to `master` will result in an automatic deployment to the staging environment.
 
 ### To production
-All tags created using the format `vN.N.N`, for instance `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/loadimpact/k6-docs/releases
+All tags created using the format `vN.N.N`, for instance `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/k6io/docs/releases
 
 ## Contributing
 

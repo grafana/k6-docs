@@ -423,7 +423,7 @@ This is a component that represents a common pattern of external link decoration
 
 ![external-card-result](./internal-images/external-link-card-sample.png)
 
-Currently, this component is absent in k6-docs repo, though could be added anytime the need arises.
+Currently, this component is absent in docs repo, though could be added anytime the need arises.
 
 ## Custom
 
@@ -437,4 +437,4 @@ The rest of elements you could write as you would in native md. It includes `p`,
 
 ## Additional information
 
-Check out the [project Wiki](https://github.com/loadimpact/k6-docs/wiki) for additional information
+Check out the [project Wiki](https://github.com/k6io/docs/wiki) for additional information

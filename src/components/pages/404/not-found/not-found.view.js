@@ -22,7 +22,7 @@ export const NotFound = () => (
             </p>
             <Button
               className={styles.button}
-              href={'https://github.com/loadimpact/k6-docs'}
+              href={'https://github.com/k6io/docs'}
               tag={'a'}
               cursor
             >

@@ -174,7 +174,7 @@ async function createDocPages({ graphql, actions, reporter }) {
         slug,
         // injection of a link to an article in git repo
         fileOrigin: encodeURI(
-          `https://github.com/loadimpact/k6-docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
         ),
       },
     };
