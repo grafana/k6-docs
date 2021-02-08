@@ -473,10 +473,7 @@ function getGuidesPagesProps({
         // remove locale prefix
       ).slice(3);
 
-      console.log('filePath', filePath);
-
       const treeReducer = (subtree, currentNode) => {
-        console.log('REDUCER', subtree, currentNode);
         return subtree.children[currentNode];
       };
 

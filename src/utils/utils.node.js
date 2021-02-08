@@ -81,6 +81,17 @@ const buildFileTree = (nodeBuilder) => {
           title: translatedName,
           path: currentPath,
         });
+      } else {
+        // if node is in the tree already - just update current path
+        currentPath = compose(
+          // eslint-disable-next-line no-use-before-define
+          removeEnPrefix,
+          // eslint-disable-next-line no-use-before-define
+          removeGuidesAndRedirectWelcome,
+          // eslint-disable-next-line no-use-before-define
+          dedupePath,
+          slugify,
+        )(`${currentPath}/${part}`);
       }
       parent.children[part] = parent.children[part] || nodeBuilder(part);
       parent = parent.children[part];
