@@ -42,7 +42,7 @@ Open the extension by clicking the k6 logo, and press "Start recording" to begin
 - Visit every page in one journey
 - Click every possible option
 - Navigate as fast as you can
-- Navigate away your actual site or application
+- Navigate away from your actual site or application
 
 ![Step 2](./images/Recording-a-test-script/step-2.png)
 
