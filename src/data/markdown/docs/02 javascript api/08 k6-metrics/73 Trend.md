@@ -42,7 +42,7 @@ The unit of these variables and functions are all in milliseconds.
 
 <CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Trend } from 'k6/metrics';
 
 var myTrend = new Trend('my_trend');
@@ -57,7 +57,7 @@ export default function() {
 
 <CodeGroup labels={["Usage in Thresholds"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Trend } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';

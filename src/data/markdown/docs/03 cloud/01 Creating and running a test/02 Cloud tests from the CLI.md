@@ -79,27 +79,27 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 5. You'll see k6 print some information and the URL of your test results.
 
-<CodeGroup labels={[""]}>
+    <CodeGroup labels={[""]}>
 
     ```bash
             /\      |‾‾|  /‾‾/  /‾/
-        /\  /  \     |  |_/  /  / /
+       /\  /  \     |  |_/  /  / /
       /  \/    \    |      |  /  ‾‾\
-      /          \   |  |‾\  \ | (_) |
+     /          \   |  |‾\  \ | (_) |
     / __________ \  |__|  \__\ \___/ .io
 
-      execution: cloud
-      script: test.js
-      output: https://app.k6.io/runs/TEST_RUN_ID
+    execution: cloud
+    script: test.js
+    output: https://app.k6.io/runs/TEST_RUN_ID
     ```
 
- </CodeGroup>
+    </CodeGroup>
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
+    ![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
 
-Learn more about the different test result sections on the [k6 Cloud Results docs](/cloud/analyzing-results/overview).
+    Learn more about test results on [Analyzing Results](/cloud/analyzing-results/overview).
 
 ## Cloud execution options
 
@@ -127,30 +127,8 @@ export let options = {
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
 | projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                           |
-| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed. The keys are string labels that will be injected as [environment variables](/using-k6/environment-variables) on the appropriate nodes (matching the `loadZone`): `__ENV["someDefaultLabel"]` |
+| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution). |
 | staticIPs (boolean) | Optional. `false` by default | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test. |
-
-### List of supported load zones
-
-| Location              | ID                    |
-| --------------------- | --------------------- |
-| Tokyo                 | `amazon:jp:tokyo`     |
-| Seoul                 | `amazon:kr:seoul`     |
-| Mumbai                | `amazon:in:mumbai`    |
-| Singapore             | `amazon:sg:singapore` |
-| Sydney                | `amazon:au:sydney`    |
-| Montreal              | `amazon:ca:montreal`  |
-| Frankfurt             | `amazon:de:frankfurt` |
-| Ireland               | `amazon:ie:dublin`    |
-| London                | `amazon:gb:london`    |
-| Paris                 | `amazon:fr:paris`     |
-| Stockholm             | `amazon:se:stockholm` |
-| N. Virginia (Default) | `amazon:us:ashburn`   |
-| Ohio                  | `amazon:us:columbus`  |
-| N. California         | `amazon:us:palo alto` |
-| Oregon                | `amazon:us:portland`  |
-| Hong Kong             | `amazon:cn:hong kong` |
-| São Paulo             | `amazon:br:sao paulo` |
 
 ### Running tests under a different project than your default one
 
@@ -181,6 +159,29 @@ You have two options to pass the Project ID to k6:
    </CodeGroup>
 
 2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running the test.
+
+## Load zones
+
+<div id="list-of-supported-load-zones">Here the list of supported AWS cloud regions: </div>
+
+- Asia Pacific (Hong Kong) `amazon:cn:hong kong`
+- Asia Pacific (Mumbai) `amazon:in:mumbai`
+- Asia Pacific (Seoul) `amazon:kr:seoul`
+- Asia Pacific (Singapore) `amazon:sg:singapore`
+- Asia Pacific (Sydney) `amazon:au:sydney`
+- Asia Pacific (Tokyo) `amazon:jp:tokyo`
+- Canada (Montreal) `amazon:ca:montreal`
+- Europe (Frankfurt) `amazon:de:frankfurt`
+- Europe (Ireland)  `amazon:ie:dublin`
+- Europe (London) `amazon:gb:london`
+- Europe (Paris)  `amazon:fr:paris`
+- Europe (Stockholm) `amazon:se:stockholm`
+- South America (São Paulo) `amazon:br:sao paulo`
+- US West (N. California) `amazon:us:palo alto`
+- US West (Oregon) `amazon:us:portland`
+- US East (N. Virginia) - **DEFAULT** `amazon:us:ashburn`
+- US East (Ohio) `amazon:us:columbus`
+
 
 ## Cloud execution tags
 
@@ -244,7 +245,7 @@ import { check, sleep } from 'k6';
 import http from 'k6/http';
 
 export default function () {
-  var r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
+  let r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
   check(r, {
     'status is 200': (r) => r.status === 200,
   });
@@ -257,7 +258,7 @@ export default function () {
 You'd execute it using the command like:
 
 ```bash
-$ k6 run -e MY_HOSTNAME=test.k6.io script.js
+$ k6 cloud -e MY_HOSTNAME=test.k6.io script.js
 ```
 
 ### Injected environment variables on the cloud execution

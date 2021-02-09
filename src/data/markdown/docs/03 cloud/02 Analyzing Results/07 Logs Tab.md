@@ -6,9 +6,7 @@ excerpt: 'The Logs tab allows you to view console logs'
 
 ## Logging
 
-> ⚠️ **New in v0.28.0**
->
-> This feature is new as of version `0.28.0` and is currently in Beta.
+> This feature is available since k6 `0.28.0`.
 
 When developing a load test, it's often useful to print messages for debugging purposes.
 
@@ -19,6 +17,8 @@ The k6 API supports the following console logging methods:
 - `console.debug()`
 - `console.warn()`
 - `console.error()`
+
+> **Note**: `console.debug()` will only log output when running k6 with the `-v/--verbose` flag.
 
 Logs can aid you in troubleshooting your test execution. But they should NOT replace the functionality of other k6 APIs.
 

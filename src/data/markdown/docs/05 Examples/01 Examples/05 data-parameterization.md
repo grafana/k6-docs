@@ -16,14 +16,19 @@ This will, in turn, make your test more realistic.
 
 <Blockquote mod="warning">
 
-#### ⚠️ Strive to keep the data files small
+Each VU in k6 is a separate JS VM so in order to not have multiple copies of the whole data file
+[SharedArray](/javascript-api/k6-data/sharedarray) was added. It does have some CPU overhead in accessing elements compared to a normal non shared
+array, but the difference is negligible compared to the time it takes to make requests. This becomes
+even less of an issue compared to not using it with large files, as k6 would otherwise use too much memory to run, which might lead to your script not being able to run at all or aborting in the middle if the system resources are exhausted.
 
-Each VU in k6 will have its separate copy of the data file.
-If your script uses 300 VUs, there will be 300 copies of the data file in memory.
-Cloud service allots 8GB of memory for every 300VUs.
-When executing cloud tests, make sure your data files aren't exceeding this limit or your test run may get aborted.
+For example, the Cloud service allocates 8GB of memory for every 300 VUs. So if your files are large
+enough and you are not using [SharedArray](/javascript-api/k6-data/sharedarray), that might mean that your script will run out of memory at
+some point. Additionally even if there is enough memory, k6 has a garbage collector (as it's written
+in golang) and it will walk through all accessible objects (including JS ones) and figure out which
+need to be garbage collected. For big JS arrays copied hundreds of times this adds quite a lot of
+additional work.
 
-Starting with k6 v0.27.0, there are some [tricks that can be used to better handle bigger data files](#handling-bigger-data-files).
+A note on performance characteristics of `SharedArray` can be found within its [API documentation](/javascript-api/k6-data/sharedarray#performance-characteristics).
 
 </Blockquote>
 
@@ -45,11 +50,15 @@ Starting with k6 v0.27.0, there are some [tricks that can be used to better hand
 <CodeGroup labels={["parse-json.js"]} lineNumbers={[true]}>
 
 ```javascript
-const data = JSON.parse(open('./data.json'));
+import { SharedArray } from "k6/data";
+// not using SharedArray here will mean that the code in the function call (that is what loads and
+// parses the json) will be executed per each VU which also means that there will be a complete copy
+// per each VU
+const data = new SharedArray("some data name", function() { return JSON.parse(open('./data.json')).users; });
 
 export default function () {
-  let user = data.users[0];
-  console.log(data.users[0].username);
+  let user = data[0];
+  console.log(data[0].username);
 }
 ```
 
@@ -66,8 +75,14 @@ You can download the library and import it locally like this:
 
 ```javascript
 import papaparse from './papaparse.js';
-
-const csvData = papaparse.parse(open('./data.csv'), { header: true });
+import { SharedArray } from "k6/data";
+// not using SharedArray here will mean that the code in the function call (that is what loads and
+// parses the csv) will be executed per each VU which also means that there will be a complete copy
+// per each VU
+const csvData = new SharedArray("another data name", function() {
+    // Load CSV file and parse it using Papa Parse
+    return papaparse.parse(open('./data.csv'), { header: true }).data;
+});
 
 export default function () {
   // ...
@@ -82,9 +97,15 @@ Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
+import { SharedArray } from "k6/data";
 
-// Load CSV file and parse it using Papa Parse
-const csvData = papaparse.parse(open('./data.csv'), { header: true });
+// not using SharedArray here will mean that the code in the function call (that is what loads and
+// parses the csv) will be executed per each VU which also means that there will be a complete copy
+// per each VU
+const csvData = new SharedArray("another data name", function() {
+    // Load CSV file and parse it using Papa Parse
+    return papaparse.parse(open('./data.csv'), { header: true }).data;
+});
 
 export default function () {
   // ...
@@ -100,26 +121,31 @@ data to login to the test.k6.io test site:
 
 ```javascript
 /*  Where contents of data.csv is:
-
-    username,password
-    admin,123
-    test_user,1234
+username,password
+admin,123
+test_user,1234
 */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import { SharedArray } from 'k6/data'
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 
-// Load CSV file and parse it using Papa Parse
-const csvData = papaparse.parse(open('./data.csv'), { header: true }).data;
+// not using SharedArray here will mean that the code in the function call (that is what loads and
+// parses the csv) will be executed per each VU which also means that there will be a complete copy
+// per each VU
+const csvData = new SharedArray("another data name", function() {
+    // Load CSV file and parse it using Papa Parse
+    return papaparse.parse(open('./data.csv'), { header: true }).data;
+});
 
 export default function () {
   // Now you can use the CSV data in your test logic below.
   // Below are some examples of how you can access the CSV data.
 
   // Loop through all username/password pairs
-  csvData.forEach((userPwdPair) => {
+  for (var userPwdPair of csvData) {
     console.log(JSON.stringify(userPwdPair));
-  });
+  }
 
   // Pick a random username/password pair
   let randomUser = csvData[Math.floor(Math.random() * csvData.length)];
@@ -129,6 +155,7 @@ export default function () {
     login: randomUser.username,
     password: randomUser.password,
   };
+  console.log('Random user: ', JSON.stringify(params));
 
   let res = http.post('https://test.k6.io/login.php', params);
   check(res, {
@@ -144,12 +171,22 @@ export default function () {
 
 <br/>
 
-## Handling bigger data files
+## Generating data
 
-In k6 version v0.27.0, while there is still no way
-to share memory between VUs, the `__VU` variable is now defined during the init
-context which means that we can split the data between the VUs during initialization
-and not have multiple copies of it during the test run.
+See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.
+
+## Old workarounds
+
+The following section is here for historical reasons as it was the only way to lower the memory
+usage of k6 prior to v0.30.0 but after v0.27.0, but still have access to a lot of parameterization data
+with some caveats. All of the below should probably not be used as [SharedArray](/javascript-api/k6-data/sharedarray) should be sufficient.
+
+After k6 version v0.27.0, while there was still no way
+to share memory between VUs, the `__VU` variable was now defined during the init
+context which means that we could split the data between the VUs during initialization
+and not have multiple copies of it during the test run. This is not useful now that [SharedArray](/javascript-api/k6-data/sharedarray)
+exists. Combining both will likely not bring any more performance benefit then using just the
+[SharedArray](/javascript-api/k6-data/sharedarray).
 
 <CodeGroup labels={["parse-json-big.js"]} lineNumbers={[true]}>
 
@@ -227,7 +264,3 @@ export default function () {
 The files have 10k lines and are in total 128kb. Running 100VUs with this script takes around 2GB, while running the same with a single file takes upwards of 15GBs.
 
 Either approach works for both JSON and CSV files and they can be combined, as that will probably reduce the memory pressure during the initialization even further.
-
-## Generating data
-
-See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.

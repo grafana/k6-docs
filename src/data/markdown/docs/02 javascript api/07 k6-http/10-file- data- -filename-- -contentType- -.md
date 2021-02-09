@@ -3,7 +3,7 @@ title: 'file( data, [filename], [contentType] )'
 description: 'Create a file object that is used for building multi-part requests.'
 ---
 
-Create a file object that is used for building [Multipart requests (file uploads)](/using-k6/multipart-requests-file-uploads).
+Create a file object that is used for building [Multipart requests (file uploads)](/examples/data-uploads#multipart-request-uploading-a-file).
 
 | Parameter   | Type           | Description                                                                      |
 | ----------- | -------------- | -------------------------------------------------------------------------------- |

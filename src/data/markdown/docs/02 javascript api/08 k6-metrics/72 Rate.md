@@ -26,7 +26,7 @@ The value of the `rate` variable ranges between `0.00` and `1.00`.
 
 <CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Rate } from 'k6/metrics';
 
 var myRate = new Rate('my_rate');
@@ -43,7 +43,7 @@ export default function() {
 
 <CodeGroup labels={["Usage in Thresholds"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Rate } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';

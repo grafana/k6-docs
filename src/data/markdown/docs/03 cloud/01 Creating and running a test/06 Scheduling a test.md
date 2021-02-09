@@ -14,14 +14,47 @@ Some reasons include, but are not limited to:
 
 You have the ability to schedule any tests that currently exists in your k6 Cloud account that has been executed on our cloud service (you can not schedule a locally run test through the web UI). You may also schedule tests that you create within the web UI after saving your configuration.
 
-You can schedule any of your tests from the page with the performance trending graph as shown below. This is helpful if you have triggered a cloud test from the command line and want to automatically run it regularly (without using a CI tool)
+Schedules can be set up from two different places:
 
-![Scheduling](./images/Scheduling-a-test/scheduling.png)
+### 1. Schedules overview page
+
+Located in the left menu under **Manage section** you will find **Scheduled tests** option.
+![Schedules page link](./images/Scheduling-a-test/schedules-page-link.png)
+
+On this page you can quickly find and edit all test schedules that have been created in your organization.<br/>
+You are also able to create a new schedule for any of your projects and cloud tests directly from this page.
+
+![Schedules page](./images/Scheduling-a-test/schedules-page.png)
+
+Simply press **Add schedule** on the top right then follow the steps:
+
+1. Select a project and test.
+2. Set a _start date and time_
+3. Should the test repeat to run multiple times?
+4. When you are done with the configuration, save the schedule by clicking **Save schedule**.<br/>
+   If all went well, you should be seeing your newly created test schedule in the list of schedules.
+
+### 2. Test overview page
+To get to a test overview page, click the name of any of your cloud tests.
+![Navigate to test overview page](./images/Scheduling-a-test/goto-test-overview-page.png)
+
+Here you will find an icon that resembles a calender, next to it a link with the text **Set up schedule**.<br/>
+Click **Set up schedule** and you will be presented with the steps to configure your schedule.
+![Test overview page](./images/Scheduling-a-test/test-overview-page.png)
+
+<!-- Scheduling is a great tool for re-running  -->
+
+> ⭐ **Pro Tip**
+> [trigger a cloud test from the CLI](/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) then set up a schedule from the cloud app to re-run the test on a regular interval.
+
 
 ## Scheduling options
 
-In both cases, after clicking "Schedule" you are presented with the following options. You are able to run a test now or at a later date. You can also set the execution to repeat on an Hourly, Daily, Weekly, or Monthly interval. You can also control how long the test will run for, either after a set number of occurrences, or after a certain date. The granularity for controlling this is high, so do explore the options.
+In both cases, you are presented with the following options.
+- Ability to run a test **now** or at a **later date**.
+- Set the execution to repeat on an **Hourly**, **Daily**, **Weekly**, or **Monthly interval**.
+- Control how many times the test will run for, _a set number of occurrences_, _stop after a certain date_. The granularity for controlling this is high, so do explore the options.
 
-![Scheduling options](./images/Scheduling-a-test/schedule-options.png)
+![Schedule configuration](./images/Scheduling-a-test/schedule-configuration.png)
 
 Finally - we do recommend setting up [notifications](/cloud/integrations/notifications) and [thresholds](/using-k6/thresholds) to complete an automated loop. Schedule your test to run and get notified if the test has passed or failed.

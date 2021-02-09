@@ -31,9 +31,12 @@ The zone codes are mapped as follows:
 - `us-west-1`: Palo Alto
 - `us-west-2`: Portland
 - `ca-central-1`: Montreal
-- `eu-west-1`: Dublin
+- `eu-north-1`: Stockholm
 - `eu-central-1`:  Frankfurt
+- `eu-west-1`: Dublin
 - `eu-west-2`:  London
+- `eu-west-3`:  Paris
+- `ap-east-1`: Hong Kong
 - `ap-northeast-1`: Tokyo
 - `ap-northeast-2`: Seoul
 - `ap-southeast-1`: Singapore
@@ -319,7 +322,21 @@ Virtual Users (VUs) mimics the behavior of a real user. They are used to perform
 
 ### How many VUs can be run from the same Dedicated IP?
 
-We run a maximum of 300 VUs from a Dedicated IP. If you want to run a 1000 VU test from Dedicated IPs you'll need at least 4 IPs. If you want to run a 5000 VU test from Dedicated IPs you need at least 17 IPs.
+We have 3 tiers of hardware for load-generation. The tier we choose depends on the number of VUs allocated to a load zone.
+
+- Tier 1 is used when there are 1-999 VUs in a load zone
+- Tier 2 is used when there are 1000-4001 VUs in a load zone
+- Tier 3 is used when there are more than 4001 VUs in a load zone
+
+- Tier 1 server handles up to 300VUs
+- Tier 2 server handles up to 1200VUs
+- Tier 3 server handles up to 5000VUs
+
+Regardless of the tier, the amount of resources (CPU, Memory, Network) per VU is the same.
+
+For example, if you start a test with 900VUs, we will use 3x Tier 1 servers. That means that the traffic generated from our service will be coming from 3 IPs.
+
+If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 server. If the same test is started in 2 load zones, there will be 500VUs per load zone and 4x Tier 1 servers will be used.
 
 ---
 

@@ -3,7 +3,10 @@ title: 'Usage Reports'
 excerpt: 'Discover valuable information about your company testing'
 ---
 
+
 Usage report helps you keep track of everything happening in your team’s project and quickly follow the activity of your performance testing projects.
+
+> ⭐️ Usage reports are available on annual Pro and Enterprise plans.
 
 The page can be found in the left menu under the **Manage** section.
 
