@@ -187,3 +187,24 @@ a.sidebar-link {
     margin: 0 auto;
   }
 }
+
+.languageSwitcher {
+  margin-right: 0;
+  margin-left: auto;
+
+  @include md-down {
+    position: absolute;
+    top: 20px;
+    right: 0;
+  }
+
+  @include sm-down {
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 270px);
+  }
+
+  @include xs-down {
+    left: 20px;
+  }
+}

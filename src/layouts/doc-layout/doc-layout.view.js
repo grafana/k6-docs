@@ -299,7 +299,10 @@ export const DocLayout = ({
           <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
             <HeaderNav links={links} />
           </div>
-          <LanguageSwitcher onLanguageChange={languageChangeHandler} />
+          <LanguageSwitcher
+            onLanguageChange={languageChangeHandler}
+            className={styles.languageSwitcher}
+          />
           <div className={'d-md-none col-12 d-flex justify-content-end'}>
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
