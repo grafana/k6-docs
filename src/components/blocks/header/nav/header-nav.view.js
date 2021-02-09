@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useLocale } from 'contexts/locale-provider';
 import { Link, withPrefix } from 'gatsby';
 import React from 'react';
 
@@ -87,7 +88,7 @@ const Single = ({ to, label, sections }) => {
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
 
-  const locale = localStorage.getItem('k6-doc-locale') || 'en';
+  const { locale } = useLocale();
 
   return (
     <nav>

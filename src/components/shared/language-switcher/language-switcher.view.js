@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
+import { useLocale } from 'contexts/locale-provider';
 import React from 'react';
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from 'utils/utils.node';
+import { SUPPORTED_LOCALES } from 'utils/utils.node';
 
 import styles from './language-switcher.module.scss';
 
@@ -9,21 +10,20 @@ const cx = classNames.bind(styles);
 export const LanguageSwitcher = (props) => {
   const { onLanguageChange, className } = props;
 
-  const selectedLocale =
-    localStorage.getItem('k6-doc-locale') || DEFAULT_LOCALE;
+  const { locale } = useLocale();
 
   return (
     <div className={cx('wrapper', className)}>
-      {SUPPORTED_LOCALES.map((locale) => (
+      {SUPPORTED_LOCALES.map((lang) => (
         <button
           key={locale}
           type="button"
           className={`${styles.localeButton} ${
-            locale === selectedLocale && styles.localeButtonActive
+            lang === locale && styles.localeButtonActive
           }`}
-          onClick={() => onLanguageChange(locale)}
+          onClick={() => onLanguageChange(lang)}
         >
-          {locale}
+          {lang}
         </button>
       ))}
     </div>

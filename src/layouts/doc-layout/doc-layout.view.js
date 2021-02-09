@@ -219,8 +219,6 @@ export const DocLayout = ({
 
   useEffect(() => setShowFooter(!isInIFrame()), []);
 
-  console.log('translations', pageTranslations);
-
   const languageChangeHandler = (lang) => {
     setLocale(lang);
     if (
@@ -229,7 +227,6 @@ export const DocLayout = ({
       pageTranslations &&
       pageTranslations[lang]
     ) {
-      console.log('translate', urlLocale, '->', lang, 'redirect');
       navigate(pageTranslations[lang].path);
     }
   };
