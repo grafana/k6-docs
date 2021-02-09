@@ -1,33 +1,45 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 
 export const LocaleContext = React.createContext(null);
 export const useLocale = () => {
-  return React.useContext(LocaleContext);
+  return useContext(LocaleContext);
 };
 
 export default function LocaleProvider({ urlLocale = 'en', children }) {
-  const [curLocale, setCurLocale] = useState('en');
-  const [isClientSide, setIsClientSide] = useState(false);
+  const curLocaleRef = useRef(urlLocale);
+  const [renderKey, setRenderKey] = useState({});
 
   useEffect(() => {
-    setIsClientSide(true);
-    // run on client side only
-    const localeFromLS = localStorage.getItem('k6-doc-locale');
-    setCurLocale(localeFromLS || urlLocale);
+    if (
+      typeof localStorage !== 'undefined' &&
+      !localStorage.getItem('k6-doc-locale')
+    ) {
+      localStorage.setItem('k6-doc-locale', urlLocale);
+    }
+
+    const localeFromLS =
+      typeof localStorage !== 'undefined'
+        ? localStorage.getItem('k6-doc-locale')
+        : urlLocale;
+
+    curLocaleRef.current = localeFromLS || urlLocale;
   }, []);
 
   const localeContextValue = useMemo(() => {
     return {
-      locale: curLocale,
+      get locale() {
+        return curLocaleRef.current;
+      },
       urlLocale,
       setLocale: (locale) => {
-        if (isClientSide) {
+        if (typeof localStorage !== 'undefined') {
           localStorage.setItem('k6-doc-locale', locale);
         }
-        setCurLocale(locale);
+        curLocaleRef.current = locale;
+        setRenderKey({});
       },
     };
-  }, [curLocale, urlLocale]);
+  }, [renderKey, urlLocale]);
 
   return (
     <LocaleContext.Provider value={localeContextValue}>
