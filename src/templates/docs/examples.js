@@ -8,6 +8,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
+import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
@@ -40,38 +41,40 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     docPageContent.contentWrapper,
   );
   return (
-    <DocLayout
-      sidebarTree={sidebarTree}
-      navLinks={navLinks}
-      pageMetadata={pageMetadata}
-    >
-      <PageInfo
-        title={'Examples & Tutorials'}
-        description={
-          'This section lists a few of the most common k6 code examples and popular tutorials.'
-        }
-      />
-      <div className={`${docPageContent.inner} `}>
-        <StickyContainer>
-          <div ref={contentContainerRef} className={stickyContainerClasses}>
-            <DocLinksBlock title={'Examples'} links={examplesBlockLinks} />
-            <DocLinksBlock
-              title={'Tutorials'}
-              links={tutorialsBlockLinks}
-              last
-            />
-          </div>
-          <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-            {({ style }) => (
-              <TableOfContents
-                style={style}
-                contentContainerRef={contentContainerRef}
-                shouldMakeReplacement
+    <LocaleProvider>
+      <DocLayout
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
+        pageMetadata={pageMetadata}
+      >
+        <PageInfo
+          title={'Examples & Tutorials'}
+          description={
+            'This section lists a few of the most common k6 code examples and popular tutorials.'
+          }
+        />
+        <div className={`${docPageContent.inner} `}>
+          <StickyContainer>
+            <div ref={contentContainerRef} className={stickyContainerClasses}>
+              <DocLinksBlock title={'Examples'} links={examplesBlockLinks} />
+              <DocLinksBlock
+                title={'Tutorials'}
+                links={tutorialsBlockLinks}
+                last
               />
-            )}
-          </Sticky>
-        </StickyContainer>
-      </div>
-    </DocLayout>
+            </div>
+            <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
+              {({ style }) => (
+                <TableOfContents
+                  style={style}
+                  contentContainerRef={contentContainerRef}
+                  shouldMakeReplacement
+                />
+              )}
+            </Sticky>
+          </StickyContainer>
+        </div>
+      </DocLayout>
+    </LocaleProvider>
   );
 }

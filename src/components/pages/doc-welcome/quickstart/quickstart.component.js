@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useI18n } from '../../../../templates/docs/guides';
+import { useI18n } from '../../../../templates/docs/i18n-provider';
 import { ItemCardsRow } from '../../../blocks/item-cards-row';
 
 import styles from './quickstart.module.scss';
 
 export const Quickstart = () => {
   const { t } = useI18n();
-
+  console.log(t('welcome.quickstart.title'));
   const quickstart = {
     blockTitle: t('welcome.quickstart.title'),
     cardsData: [

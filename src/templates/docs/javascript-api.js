@@ -14,6 +14,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
+import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 
 const componentsForNativeReplacement = {
@@ -59,36 +60,38 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
   );
 
   return (
-    <DocLayout
-      sidebarTree={sidebarTree}
-      navLinks={navLinks}
-      pageMetadata={pageMetadata}
-    >
-      <PageInfo
-        title={'JavaScript API'}
-        description={'Welcome to the k6 JavaScript API documentation.'}
-      />
-      <div className={docPageContent.inner}>
-        <StickyContainer>
-          <div ref={contentContainerRef} className={stickyContainerClasses}>
-            <div className={`${htmlStyles.wrapper}`}>
-              <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
-                {content}
-              </CustomContentContainer>
+    <LocaleProvider>
+      <DocLayout
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
+        pageMetadata={pageMetadata}
+      >
+        <PageInfo
+          title={'JavaScript API'}
+          description={'Welcome to the k6 JavaScript API documentation.'}
+        />
+        <div className={docPageContent.inner}>
+          <StickyContainer>
+            <div ref={contentContainerRef} className={stickyContainerClasses}>
+              <div className={`${htmlStyles.wrapper}`}>
+                <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
+                  {content}
+                </CustomContentContainer>
+              </div>
             </div>
-          </div>
-          <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            {({ style }) => (
-              <TableOfContents
-                style={style}
-                contentContainerRef={contentContainerRef}
-                shouldMakeReplacement
-              />
-            )}
-          </Sticky>
-        </StickyContainer>
-      </div>
-    </DocLayout>
+            <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
+              {({ style }) => (
+                <TableOfContents
+                  style={style}
+                  contentContainerRef={contentContainerRef}
+                  shouldMakeReplacement
+                />
+              )}
+            </Sticky>
+          </StickyContainer>
+        </div>
+      </DocLayout>
+    </LocaleProvider>
   );
 }
 

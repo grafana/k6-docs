@@ -6,6 +6,7 @@ import styles from 'components/templates/doc-page/doc-page.module.scss';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
+import LocaleProvider from 'templates/docs/locale-provider';
 
 export default function (props) {
   const {
@@ -31,21 +32,23 @@ export default function (props) {
   // console.log('TRANSLATIONS', frontmatter.translations);
 
   return (
-    <DocLayout
-      pageMetadata={pageMetadata}
-      sidebarTree={sidebarTree}
-      navLinks={navLinks}
-      pageTranslations={frontmatter.translations}
-      locale={locale}
-    >
-      <div className={`${styles.container}`}>
-        <Breadcrumbs items={breadcrumbs} />
-        <DocPageTitleGroup
-          title={frontmatter.title}
-          articleSrc={frontmatter.fileOrigin}
-        />
-        <DocPageContent label={codeStyles.codeContainer} content={body} />
-      </div>
-    </DocLayout>
+    <LocaleProvider urlLocale={locale}>
+      <DocLayout
+        pageMetadata={pageMetadata}
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
+        pageTranslations={frontmatter.translations}
+        locale={locale}
+      >
+        <div className={`${styles.container}`}>
+          <Breadcrumbs items={breadcrumbs} />
+          <DocPageTitleGroup
+            title={frontmatter.title}
+            articleSrc={frontmatter.fileOrigin}
+          />
+          <DocPageContent label={codeStyles.codeContainer} content={body} />
+        </div>
+      </DocLayout>
+    </LocaleProvider>
   );
 }

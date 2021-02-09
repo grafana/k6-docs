@@ -20,6 +20,7 @@ import {
   CookiesProvider,
   CookieBannerUniversal,
 } from 'react-cookie-banner';
+import { useLocale } from 'templates/docs/locale-provider';
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
@@ -203,10 +204,11 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
-  locale,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
+  const { locale, urlLocale, setLocale } = useLocale();
+
   useEffect(() => {
     if (isMobileNavVisible) {
       document.querySelector('html').style.overflow = 'hidden';
@@ -220,28 +222,26 @@ export const DocLayout = ({
   console.log('translations', pageTranslations);
 
   const languageChangeHandler = (lang) => {
-    const curLang = localStorage.getItem('k6-doc-locale');
-    localStorage.setItem('k6-doc-locale', lang);
+    setLocale(lang);
     if (
-      curLang &&
-      lang !== curLang &&
+      urlLocale &&
+      lang !== urlLocale &&
       pageTranslations &&
       pageTranslations[lang]
     ) {
-      console.log('translate', curLang, '->', lang, 'redirect');
+      console.log('translate', urlLocale, '->', lang, 'redirect');
       navigate(pageTranslations[lang].path);
     }
   };
 
   React.useEffect(() => {
-    const curLang = localStorage.getItem('k6-doc-locale');
     if (
       pageTranslations &&
-      curLang &&
-      pageTranslations[curLang] &&
-      locale !== curLang
+      locale &&
+      pageTranslations[locale] &&
+      locale !== urlLocale
     ) {
-      navigate(pageTranslations[curLang].path);
+      navigate(pageTranslations[locale].path);
     }
   }, []);
 
