@@ -32,6 +32,24 @@ const translations = {
   Misc: {
     es: 'Misc',
   },
+  'Using k6': {
+    es: 'Usando k6',
+  },
+  'Results visualization': {
+    es: 'Visualización de resultados',
+  },
+  'Test Types': {
+    es: 'Tipos de prueba',
+  },
+  'Testing Guides': {
+    es: 'Guías de prueba',
+  },
+  Protocols: {
+    es: 'Protocols',
+  },
+  Scenarios: {
+    es: 'Escenarios',
+  },
 };
 
 module.exports = { translations };
