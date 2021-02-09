@@ -16,7 +16,7 @@ export const LanguageSwitcher = (props) => {
     <div className={cx('wrapper', className)}>
       {SUPPORTED_LOCALES.map((lang) => (
         <button
-          key={locale}
+          key={lang}
           type="button"
           className={`${styles.localeButton} ${
             lang === locale && styles.localeButtonActive
