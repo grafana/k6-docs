@@ -1,10 +1,18 @@
 import { Heading } from 'components/shared/heading';
+import { useLocale } from 'contexts/locale-provider';
 import React from 'react';
 
 import styles from './doc-page-title-group.module.scss';
 import Pencil from './svg/pencil-icon.inline.svg';
 
+const SUGGEST_EDIT_TRANSLATIONS = {
+  en: 'suggest edits',
+  es: 'sugerir editar',
+};
+
 export const DocPageTitleGroup = ({ title, articleSrc }) => {
+  const { locale } = useLocale();
+
   return (
     <div className={styles.wrapper}>
       <Heading className={styles.title}>{title}</Heading>
@@ -15,7 +23,7 @@ export const DocPageTitleGroup = ({ title, articleSrc }) => {
         rel={'noreferrer'}
       >
         <Pencil />
-        suggest edits
+        {SUGGEST_EDIT_TRANSLATIONS[locale]}
       </a>
     </div>
   );
