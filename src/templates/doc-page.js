@@ -3,10 +3,10 @@ import { styles as codeStyles } from 'components/shared/code';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
 import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
+import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
-import LocaleProvider from 'templates/docs/locale-provider';
 
 export default function (props) {
   const {

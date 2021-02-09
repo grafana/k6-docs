@@ -7,6 +7,7 @@ import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import CustomContentContainer from 'components/shared/custom-content-container';
 // styles
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import LocaleProvider from 'contexts/locale-provider';
 import { useStaticQuery, graphql } from 'gatsby';
 // eslint-disable-next-line import/no-unresolved
 import { useScrollToAnchor } from 'hooks';
@@ -29,7 +30,6 @@ import K6 from 'svg/k6.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
-import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
 

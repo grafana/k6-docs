@@ -9,12 +9,12 @@ import { CodeGroup, Code, CodeInline } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
 import TableWrapper from 'components/shared/table-wrapper';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import LocaleProvider from 'contexts/locale-provider';
 import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
-import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 
 const componentsForNativeReplacement = {

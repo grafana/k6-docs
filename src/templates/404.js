@@ -1,7 +1,7 @@
 import { NotFound } from 'components/pages/404/not-found';
+import LocaleProvider from 'contexts/locale-provider';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
-import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {

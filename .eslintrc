@@ -65,7 +65,8 @@
           "styles",
           "svg",
           "templates",
-          "utils"
+          "utils",
+          "contexts",
         ]
       }
     ],

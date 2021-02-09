@@ -15,13 +15,12 @@ export default function I18nProvider({ children }) {
     return {
       t: (key) => {
         let msgLocalized = localizedMessages[locale][key];
-        console.log(key, locale, msgLocalized);
         if (!msgLocalized) {
           console.warn(`i18n/[${locale}]: no localized message for ${key}`);
           msgLocalized = localizedMessages.en[key];
           if (!msgLocalized) {
             console.error(`i18n: no English message for ${key}`);
-            msgLocalized = '';
+            msgLocalized = '???';
           }
         }
         return msgLocalized;

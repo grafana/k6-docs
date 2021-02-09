@@ -13,6 +13,7 @@ import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
+import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import React, { useLayoutEffect, useState, useEffect } from 'react';
 import {
@@ -20,7 +21,6 @@ import {
   CookiesProvider,
   CookieBannerUniversal,
 } from 'react-cookie-banner';
-import { useLocale } from 'templates/docs/locale-provider';
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';

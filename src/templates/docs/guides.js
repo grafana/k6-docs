@@ -11,12 +11,12 @@ import {
 import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import I18nProvider from 'contexts/i18n-provider';
+import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
-import I18nProvider from 'templates/docs/i18n-provider';
-import LocaleProvider from 'templates/docs/locale-provider';
 import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 

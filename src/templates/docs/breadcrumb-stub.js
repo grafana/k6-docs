@@ -1,10 +1,10 @@
 import { Heading } from 'components/shared/heading';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
+import LocaleProvider from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
-import LocaleProvider from 'templates/docs/locale-provider';
 import { childrenToList, slugify } from 'utils';
 
 export default function (props) {
