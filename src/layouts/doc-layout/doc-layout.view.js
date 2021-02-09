@@ -209,6 +209,8 @@ export const DocLayout = ({
   const [showFooter, setShowFooter] = useState(true);
   const { locale, urlLocale, setLocale } = useLocale();
 
+  console.log('TRANSLATIONS', pageTranslations);
+
   useEffect(() => {
     if (isMobileNavVisible) {
       document.querySelector('html').style.overflow = 'hidden';
@@ -231,16 +233,20 @@ export const DocLayout = ({
     }
   };
 
+  const location = typeof window !== 'undefined' ? window.pathname : '';
+
   React.useEffect(() => {
+    console.log('RED EF', { locale, urlLocale });
     if (
       pageTranslations &&
       locale &&
       pageTranslations[locale] &&
       locale !== urlLocale
     ) {
+      console.log('NAVIGATE', urlLocale, 'TO', locale);
       navigate(pageTranslations[locale].path);
     }
-  }, []);
+  }, [location]);
 
   return (
     <div className={styles.wrapper}>

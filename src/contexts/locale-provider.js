@@ -6,32 +6,38 @@ export const useLocale = () => {
 };
 
 export default function LocaleProvider({ urlLocale = 'en', children }) {
-  const curLocaleRef = useRef(urlLocale);
+  const initLocale =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('k6-doc-locale')
+      : urlLocale;
+  const curLocaleRef = useRef(initLocale);
   const [renderKey, setRenderKey] = useState({});
 
+  console.log('LocaleProvider.render', { locale: curLocaleRef.current });
+
   useEffect(() => {
+    console.log('LocaleProvider', { urlLocale });
     if (
       typeof localStorage !== 'undefined' &&
       !localStorage.getItem('k6-doc-locale')
     ) {
+      console.log('LocaleProvider', 'setting LS');
       localStorage.setItem('k6-doc-locale', urlLocale);
     }
-
-    const localeFromLS =
-      typeof localStorage !== 'undefined'
-        ? localStorage.getItem('k6-doc-locale')
-        : urlLocale;
-
-    curLocaleRef.current = localeFromLS || urlLocale;
-  }, []);
+  }, [urlLocale]);
 
   const localeContextValue = useMemo(() => {
     return {
       get locale() {
+        console.log('localeContextValue.get', { locale: curLocaleRef.current });
         return curLocaleRef.current;
       },
       urlLocale,
       setLocale: (locale) => {
+        console.log('localeContextValue.set', {
+          locale,
+          curLocale: curLocaleRef.current,
+        });
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('k6-doc-locale', locale);
         }
