@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 export const LocaleContext = React.createContext(null);
 export const useLocale = () => {
@@ -6,15 +6,24 @@ export const useLocale = () => {
 };
 
 export default function LocaleProvider({ urlLocale = 'en', children }) {
-  const localeFromLS = localStorage.getItem('k6-doc-locale');
-  const [curLocale, setCurLocale] = React.useState(localeFromLS || urlLocale);
+  const [curLocale, setCurLocale] = useState('en');
+  const [isClientSide, setIsClientSide] = useState(false);
 
-  const localeContextValue = React.useMemo(() => {
+  useEffect(() => {
+    setIsClientSide(true);
+    // run on client side only
+    const localeFromLS = localStorage.getItem('k6-doc-locale');
+    setCurLocale(localeFromLS || urlLocale);
+  }, []);
+
+  const localeContextValue = useMemo(() => {
     return {
       locale: curLocale,
       urlLocale,
       setLocale: (locale) => {
-        localStorage.setItem('k6-doc-locale', locale);
+        if (isClientSide) {
+          localStorage.setItem('k6-doc-locale', locale);
+        }
         setCurLocale(locale);
       },
     };

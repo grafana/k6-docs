@@ -28,9 +28,6 @@ export default function (props) {
     },
   };
 
-  console.log('Sidebar', sidebarTree);
-  // console.log('TRANSLATIONS', frontmatter.translations);
-
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
