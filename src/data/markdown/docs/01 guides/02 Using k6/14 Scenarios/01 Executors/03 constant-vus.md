@@ -6,7 +6,7 @@ excerpt: ''
 ## Description
 
 A fixed number of VUs execute as many iterations as possible for a specified amount
-of time. This executor is equivalent to the global `vus` and `duration` options.
+of time. This executor is equivalent to the global [vus](/using-k6/options#vus) and [duration](/using-k6/options#duration) options.
 
 ## Options
 
