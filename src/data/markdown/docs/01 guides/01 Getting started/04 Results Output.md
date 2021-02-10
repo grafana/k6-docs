@@ -3,7 +3,7 @@ title: 'Results output'
 excerpt: ''
 ---
 
-By default, the `k6 run` command prints runtime information and general results to `stdout`.
+By default, the `k6 run` command prints runtime information and a general results summary to [`stdout`](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)).
 
 ## Standard output
 
@@ -13,38 +13,42 @@ When k6 displays the results to `stdout`, it will show the k6 logo and the follo
 
 - Test details: general test information and load options.
 - Progress bar: test status and how much time has passed.
-- Test summary: the test results (after test completion).
+- [Test summary](/results-visualization/end-of-test-summary): the test results (after test completion). Since k6 v0.30.0, it is possible to completely customize the output and redirect it to a file. It is also possible to save arbitrary files with machine-readable versions of the summary, like JSON, XML (e.g. JUnit, XUnit, etc.), or even nicely-formatted HTML reports meant for humans! For more details, see the [`handleSummary()` docs](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 ### Test details
 
 <CodeGroup labels={[]}>
 
 ```bash
-execution: local
-    output: -
-    script: script.js
+  execution: local
+     script: path/to/script.js
+     output: -
 
-duration: 1m0s, iterations: -
-    vus: 100,  max: 100
+  scenarios: (100.00%) 1 scenario, 50 max VUs, 5m30s max duration (incl. graceful stop):
+           * default: Up to 50 looping VUs for 5m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
 ```
 
 </CodeGroup>
 
-- `execution: local` the k6 execution mode (local or cloud).
-- `output: -` the output of the test results. The default is `stdout`.
-- `script: script.js` shows the name of the script that is being executed.
-- `duration: 1m0s` the test run [duration](/using-k6/options#duration).
-- `iterations: -` the total number of VU [iterations](https://k6.io/docs/using-k6/options#iterations).
-- `vus: 100` the initial number of VUs that test will start running.
-- `max: 100` the maximum number of VUs that the test will scale.
+- `execution: local` shows the k6 execution mode (local or cloud).
+- `output: -` is the [output](/getting-started/results-output#external-outputs) of the granular test results. By default, no output is used, only the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is shown.
+- `script: path/to/script.js` shows the name of the script file that is being executed.
+- `scenarios: ...` is a summary of the [scenarios](/using-k6/scenarios) that will be executed this test run and some overview information:
+  - `(100.00%)` is the used [execution segment](/using-k6/options#execution-segment)
+  - `50 max VUs` tells us up to how many [VUs (virtual users)](/misc/glossary#virtual-users) will be used across all scenarios.
+  - `5m30s max duration` is the maximum time the script will take to run, including any [graceful stop](/using-k6/scenarios/graceful-stop) times.
+- `* default: ...` describes the only scenario for this test run. In this case it's a scenario with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus), specified via the [`stages` shortcut option](/using-k6/options#stages) instead of using the [`scenarios` long-form option](/using-k6/options#scenarios).
 
-### Test summary
+### End-of-test summary report
 
 The test summary provides a general overview of your test result. The summary prints to `stdout` the status of:
 
 - [Built-in metrics](/using-k6/metrics#built-in-metrics) and [custom metrics](/using-k6/metrics#custom-metrics).
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
+
+As of k6 v0.30.0, it's possible to completely customize the summary shown to `stdout`, redirect it to a file, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+
 
 <CodeGroup labels={[]}>
 
@@ -81,21 +85,29 @@ http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s   
 
 </CodeGroup>
 
-You could use the [summary-trend-stats](/using-k6/options#summary-trend-stats) option to change the stats reported for Trend metrics.
+You could use the [`summaryTrendStats` option](/using-k6/options#summary-trend-stats) to change the stats reported for `Trend` metrics. You can also make k6 display time values with a fixed time unit (seconds, milliseconds or microseconds) via the [`summaryTimeUnit` option](/using-k6/options#summary-time-unit). And, as mentioned above, you can completely customize the whole report via the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --summary-trend-stats="avg,p(99)" script.js
+$ k6 run --summary-trend-stats="min,avg,med,p(99),p(99.9),max,count" --summary-time-unit=ms  script.js
 ```
 
 </CodeGroup>
 
-## Output plugins
+### Summary export
 
-k6 can send more granular result data to different outputs to integrate and visualize k6 metrics on other platforms.
+Additionally, the `k6 run` command can export the end-of-test summary report to a JSON file that includes all of the data above. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
 
-The list of output plugins are:
+This was first possible in k6 v0.26.0 with the [`--summary-export` flag](/using-k6/options#summary-export), though its use is now discouraged (see why [here](/results-visualization/end-of-test-summary#summary-export-to-a-json-file)).
+
+Instead, starting with k6 v0.30.0, the use of the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback) is recommended, since it allows completely customizing the end-of-test summary and exporting the summary report data in any desired format (e.g. JSON, CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.).
+
+## External outputs
+
+If the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is insufficient, k6 can send more granular result data to different external outputs, to integrate and visualize k6 metrics on other platforms.
+
+The available built-in outputs are:
 
 | Plugin                                                        | Usage                   |
 | ------------------------------------------------------------- | ----------------------- |
@@ -122,19 +134,3 @@ $ k6 run \
 ```
 
 </CodeGroup>
-
-## Summary export
-
-Additionally, the `k6 run` command can export the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
-
-This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
-
-<CodeGroup labels={[]}>
-
-```bash
-$ k6 run --summary-export=export.json script.js
-```
-
-</CodeGroup>
-
-> Read more about the summary on the [JSON plugin documentation](/results-visualization/json#summary-export)
