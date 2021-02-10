@@ -222,7 +222,7 @@ export let options = {
 
 </CodeGroup>
 
-Read more about the [k6 results output syntax](/getting-started/results-output/json) to
+Read more about the [k6 results output syntax](/results-visualization/json) to
 see how tags affect your test result output.
 
 ## Tags and Groups in k6 Cloud Results
