@@ -17,14 +17,14 @@ Options allow you to configure how k6 will behave during test execution.
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
 | [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
-| [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
+| [Duration](#duration)                                     | A string specifying the total duration of the test run; ; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
 | [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
-| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
+| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
@@ -41,9 +41,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
-| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down          |
-| [Summary export](#summary-export)                         | Output the end-of-test summary report to a JSON file                                |
-| [Supply Env Var](#supply-env-var)                         | Add/override environment variable with VAR=value                                    |
+| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
 | [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
 | [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
 | [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
@@ -370,6 +368,8 @@ export let options = {
 A string specifying the total duration a test run should be run for. During this time each
 VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
 
+Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus).
+
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
 | `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
@@ -378,6 +378,7 @@ VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` comma
 
 ```javascript
 export let options = {
+  vus: 100,
   duration: '3m',
 };
 ```
@@ -530,12 +531,14 @@ export let options = {
 
 ### Iterations
 
-A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
-a duration of time during which the script would run in a loop.
-\*Note: The number of iterations
-is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
-`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed,
-the default `maxDuration` is 10 minutes when using iterations with the cloud service.
+An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud` commands.
+
+Together with the [`vus` option](#vus), `iterations` is a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations).
+
+By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
+
+**Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
+
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -545,6 +548,7 @@ the default `maxDuration` is 10 minutes when using iterations with the cloud ser
 
 ```javascript
 export let options = {
+  vus: 5,
   iterations: 10,
 };
 ```
@@ -918,7 +922,9 @@ export let options = {
 ### Stages
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
-ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands,
+ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands.
+
+It is a shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -1217,8 +1223,9 @@ export let options = {
 
 ### VUs
 
-A number specifying the number of VUs to run concurrently. If you'd like more control look at
-the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
+An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#options) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/using-k6/scenarios).
+
+Available in `k6 run` and `k6 cloud` commands.
 
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
@@ -1229,6 +1236,7 @@ the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
 ```javascript
 export let options = {
   vus: 10,
+  duration: '1h',
 };
 ```
 
