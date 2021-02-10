@@ -48,7 +48,7 @@ c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
 
 </CodeGroup>
 
-or using an `-e` CLI flag (which will be the same for all platforms):
+or using an [`-e` / `--env` CLI flag](/using-k6/options#supply-environment-variables) (which will be the same for all platforms):
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

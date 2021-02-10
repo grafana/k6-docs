@@ -42,6 +42,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
 | [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
+| [Supply Environment Variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                    |
 | [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
 | [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
 | [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
@@ -139,7 +140,7 @@ Or set some of the previous options via environment variables and command-line f
 ```bash
 $ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run ~/script.js
 
-$ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
+$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
 ```
 
 </CodeGroup>
@@ -493,8 +494,7 @@ export let options = {
 
 ### Include System Env Vars
 
-Pass the real system environment variables to the runtime. Available in `k6 run` and `k6 cloud`
-commands.
+Pass the real system [environment variables](/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
 
 | Env | CLI                         | Code / Config file | Default                                                                                              |
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -990,9 +990,11 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
 
-### Supply Env Var
+### Supply environment variables
 
-Add/override environment variable with VAR=value. Available in `k6 run` and `k6 cloud` commands.
+Add/override an [environment variable](/using-k6/environment-variables) with `VAR=value`. Available in `k6 run` and `k6 cloud` commands.
+
+To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
