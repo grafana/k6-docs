@@ -218,7 +218,7 @@ For more information, refer to [the post on the k6 community forum](https://comm
 
 ### URL grouping
 
-By default, k6 will print runtime information and general results to standard output, `stdout`, while the test is running, and will also print a summary after the test has ended. It may output more granular result data using special output plugins, one of them being [JSON output](/getting-started/results-output/json). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
+By default, k6 will print runtime information and general results to standard output, `stdout`, while the test is running, and will also print a summary after the test has ended. It may output more granular result data using special output modules, one of them being [JSON output](/getting-started/results-output/json). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
 
 Sometimes you need to make lots of similar API requests to read or create many resources of the same type. As shown in the following example, a 100 posts will be fetched with unique requests. Each of these requests will create a metric and will have the full URL inside the metric. This poses a problem for data aggregation, either on our cloud platform or on your own API load testing stack. The problem is that all the metrics for each of these URLs will be separate and they'll be aggregated individually, because they are different in their `id` field. It also creates a lot of unnecessary records in the output.
 

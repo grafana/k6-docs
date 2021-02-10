@@ -33,6 +33,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
+| [No Summary](#no-summary)                                 | Disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
 | [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
 | [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
@@ -44,7 +45,9 @@ Options allow you to configure how k6 will behave during test execution.
 | [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
 | [Supply Environment Variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                    |
 | [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
-| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
+| [Summary Export](#summary-export)                         | Output the [end-of-test summary](/results-visualization/end-of-test-summary) report to a JSON file (discouraged, use [handleSummary()](/results-visualization/end-of-test-summary#handlesummary-callback) instead) |
+| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                     |
+| [Summary Time Unit](#summary-time-unit)                   | Time unit to be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                      |
 | [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
 | [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
 | [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
@@ -748,6 +751,22 @@ export let options = {
 
 </CodeGroup>
 
+### No Summary
+
+Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation. Since k6 v0.30.0, that includes disabling the calling of [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`. Available in the `k6 run` command.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_SUMMARY`    | `--no-summary`    | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-summary ~/script.js
+```
+
+</CodeGroup>
+
 ### No Thresholds
 
 Disables threshold execution. Available in the `k6 run` command.
@@ -826,7 +845,7 @@ export let options = {
 ### Results Output
 
 Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
-on all output plugins available and how to configure them. Since version 0.21, this option can be
+on all built-in output modules available and how to configure them. Since version 0.21, this option can be
 specified multiple times. Available in `k6 run` command.
 
 | Env | CLI           | Code / Config file | Default |
@@ -965,10 +984,9 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 
 > _New in v0.26.0_
 
-Output the end-of-test summary report to a JSON file that includes
-data for all test metrics, checks and thresholds. This is useful to
-get the aggregated test results in a machine-readable format, for
-integration with dashboards, external alerts, etc.
+Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
+
+Starting with k6 v0.30.0, while this feature is not deprecated yet, its usage is discouraged, see the explanation why [here](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1029,21 +1047,51 @@ export let options = {
 
 </CodeGroup>
 
-### Summary Trend Stats
+### Summary Time Unit
 
-Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
-in `k6 run` command.
+Define which time unit will be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
 
-| Env                      | CLI                     | Code / Config file  | Default |
-| ------------------------ | ----------------------- | ------------------- | ------- |
-| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `null`  |
+| Env                    | CLI                   | Code / Config file  | Default |
+| ---------------------- | --------------------- | ------------------- | ------- |
+| `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`   | `null`  |
+
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
 export let options = {
-  summaryTrendStats: ['avg', 'p(95)'],
+  summaryTimeUnit: 'ms',
 };
+```
+
+</CodeGroup>
+
+
+### Summary Trend Stats
+
+Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count` (since k6 v0.26.0), as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback) introduced in k6 v0.30.0.
+
+
+| Env                      | CLI                     | Code / Config file  | Default                        |
+| ------------------------ | ----------------------- | ------------------- | ------------------------------ |
+| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `avg,min,med,max,p(90),p(95)`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'p(99.99)', 'count'],
+};
+```
+
+</CodeGroup>
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
 
 </CodeGroup>
