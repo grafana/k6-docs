@@ -19,6 +19,7 @@
 (?i)tcp
 (?i)teardown
 (?i)tls
+(?i)txt
 (?i)url
 (?i)uuid
 (?i)vm
@@ -94,6 +95,7 @@ rollouts
 rollup
 Scorigami
 scriptable
+sharded
 smockvavelsky
 Solaris
 Souders

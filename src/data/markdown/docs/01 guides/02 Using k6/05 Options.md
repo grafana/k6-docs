@@ -38,7 +38,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
 | [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
 | [Results Output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
+| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
 | [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
@@ -53,7 +53,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
 | [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [VUs Max](#vus-max)                                       | A number specifying max number of virtual users                                     |
+| [VUs Max](#vus-max)                                       | **DEPRECATED** |
 
 ## Using Options
 
@@ -843,8 +843,11 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 ### RPS
 
-The maximum number of requests to make per second, in total across all VUs. Available in `k6 run`
-and `k6 cloud` commands.
+The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
+
+> #### ⚠️ Keep in mind!
+>
+> This option has some caveats and is difficult to use correctly, so its usage is somewhat discouraged. For example, in the cloud/distributed execution, this option affects every k6 instance independently, i.e. it is not sharded like VUs are. We strongly recommend the use of [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
 
 | Env      | CLI     | Code / Config file | Default         |
 | -------- | ------- | ------------------ | --------------- |
@@ -1246,23 +1249,8 @@ export let options = {
 
 > #### ⚠️ Keep in mind!
 >
-> This option was deprecated in k6 version 0.27.0.
-
-A number specifying max number of virtual users, if more than `vus`. This option is typically
-used when the intent is to dynamically scale the amount of VUs up and down during the test using
-the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
-is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
+> This option was deprecated in k6 version 0.27.0. See [scenarios](/using-k6/scenarios) and the [externally controlled executor](/using-k6/scenarios/executors/externally-controlled) instead.
 
 | Env          | CLI           | Code / Config file | Default         |
 | ------------ | ------------- | ------------------ | --------------- |
 | `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
-
-<CodeGroup labels={[]} lineNumbers={[true]}>
-
-```javascript
-export let options = {
-  vusMax: 10,
-};
-```
-
-</CodeGroup>
