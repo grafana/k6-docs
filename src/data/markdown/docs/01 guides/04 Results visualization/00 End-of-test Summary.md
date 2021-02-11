@@ -46,7 +46,7 @@ A few options can affect how this report behaves:
 
 ## Summary export to a JSON file
 
-Since k6 v0.26.0, k6 has had the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) for local test runs. It exports some of the summary report data to a JSON file format.
+Since version 0.26.0 k6 has had the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) for local test runs. It exports some of the summary report data to a JSON file format.
 
 Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered. Threshold values are also somewhat unintuitive - they signify whether the threshold has been crossed. So, `true` is the "bad" threshold value, i.e. when the threshold has failed, and `false` is the "good" value...
 
@@ -174,7 +174,7 @@ To get an idea how `data` would look like in your specific test run, just add `r
         "http_req_duration{staticAsset:yes}": { // sub-metric from threshold
             "contains": "time",
             "values": {
-                // actual keys depend depend on summaryTrendStats
+                // actual keys depend on summaryTrendStats
                 "min": 135.092841,
                 "avg": 283.67766343333335,
                 "max": 846.198634,
