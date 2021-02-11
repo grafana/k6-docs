@@ -3,13 +3,15 @@ title: 'Results output'
 excerpt: ''
 ---
 
-By default, the `k6 run` command prints runtime information and a general results summary to [`stdout`](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)).
+`k6 run` has two different ways of showing the results of a load test. By default, we show an [aggregated summary report](/getting-started/results-output#end-of-test-summary-report) at the end of the test. This report is [customizable](/results-visualization/end-of-test-summary#handlesummary-callback), but by default features a general overview of all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks) and [thresholds](/using-k6/thresholds) in the load test, as well as aggregated values for all [built-in](/using-k6/metrics#built-in-metrics) and [custom](/using-k6/metrics#custom-metrics) metrics used in the test run.
+
+If the aggregated metric measurements are not enough and something more fine-grained is needed, k6 also supports streaming the raw metric values to one or more external outputs (e.g. [InfluxDB](/results-visualization/influxdb-+-grafana), [Kafka](/results-visualization/apache-kafka), [StatsD](/results-visualization/statsd), etc.) while the test is running. The raw results can also be sent to our managed [k6 cloud](/results-visualization/cloud) service (e.g. when you want to test an environment behind a firewall) and they can be exported as a [CSV](/results-visualization/csv) or [JSON](/results-visualization/json) file for later processing. All [supported built-in outputs are listed below](/getting-started/results-output#external-outputs).
 
 ## Standard output
 
 ![k6 results - console/stdout output](./images/k6-results-stdout.png)
 
-When k6 displays the results to `stdout`, it will show the k6 logo and the following test information:
+When k6 displays the results to [`stdout`](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)), it will show the k6 logo and the following test information:
 
 - Test details: general test information and load options.
 - Progress bar: test status and how much time has passed.
@@ -41,13 +43,13 @@ When k6 displays the results to `stdout`, it will show the k6 logo and the follo
 
 ### End-of-test summary report
 
-The test summary provides a general overview of your test result. The summary prints to `stdout` the status of:
+The [test summary](/results-visualization/end-of-test-summary) provides a general overview of your test results. By default, the summary prints to `stdout` the status of all:
 
-- [Built-in metrics](/using-k6/metrics#built-in-metrics) and [custom metrics](/using-k6/metrics#custom-metrics).
+- Aggregated values for the [built-in metrics](/using-k6/metrics#built-in-metrics) and [custom metrics](/using-k6/metrics#custom-metrics).
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
 
-As of k6 v0.30.0, it's possible to completely customize the summary shown to `stdout`, redirect it to a file, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+As of k6 v0.30.0, it's possible to completely customize the summary shown to `stdout`, redirect it to a file or `stderr`, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 <CodeGroup labels={[]}>
@@ -107,7 +109,7 @@ Instead, starting with k6 v0.30.0, the use of the [`handleSummary()` callback](/
 
 If the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is insufficient, k6 can send more granular result data to different external outputs, to integrate and visualize k6 metrics on other platforms.
 
-The available built-in outputs are:
+The available built-in outputs currently are:
 
 | Plugin                                                        | Usage                   |
 | ------------------------------------------------------------- | ----------------------- |
