@@ -41,7 +41,7 @@ When k6 displays the results to [`stdout`](https://en.wikipedia.org/wiki/Standar
   - `5m30s max duration` is the maximum time the script will take to run, including any [graceful stop](/using-k6/scenarios/graceful-stop) times.
 - `* default: ...` describes the only scenario for this test run. In this case it's a scenario with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus), specified via the [`stages` shortcut option](/using-k6/options#stages) instead of using the [`scenarios` long-form option](/using-k6/options#scenarios).
 
-### End-of-test summary report
+## End-of-test summary report
 
 The [test summary](/results-visualization/end-of-test-summary) provides a general overview of your test results. By default, the summary prints to `stdout` the status of all:
 
@@ -123,7 +123,7 @@ The available built-in outputs currently are:
 | [New Relic](/results-visualization/new-relic)                 | `k6 run --out statsd`   |
 | [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
 
-## Multiple outputs
+### Multiple outputs
 
 You can simultaneously send metrics to several outputs by using the CLI `--out` flag multiple times, for example:
 
