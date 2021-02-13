@@ -9,10 +9,10 @@ import OpenIcon from './svg/open.inline.svg';
 import Slack from './svg/slack.inline.svg';
 
 const CHAT_ONLY_PATHS = [
-  '/cloud',
-  '/cloud/',
-  '/docs/cloud',
-  '/docs/cloud/',
+//  '/cloud',
+//  '/cloud/',
+//  '/docs/cloud',
+//  '/docs/cloud/',
   '/pricing',
   '/pricing/',
 ];
@@ -53,8 +53,8 @@ const HelperWidget = () => {
     }
   }, [shouldRender]);
 
-  const handleCloudClick = () => {
-    if (driftReady) {
+  const handleCloudClick = (disableDrift = true) => {
+    if (!disableDrift && driftReady) {
       window.drift.api.sidebar.open();
       setDefaultWidgetIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
@@ -68,7 +68,7 @@ const HelperWidget = () => {
       window.location.pathname.includes(path),
     );
     if (showChatOnly) {
-      handleCloudClick();
+      handleCloudClick(false);
     } else {
       setDefaultWidgetIsOpen(true);
       document.addEventListener('click', widgetClickOutside);
@@ -112,7 +112,7 @@ const HelperWidget = () => {
             <li className={styles.listItem}>
               <button type="button" onClick={handleCloudClick}>
                 <Cloud />
-                Cloud support chat
+                Cloud support
               </button>
             </li>
           </ul>
