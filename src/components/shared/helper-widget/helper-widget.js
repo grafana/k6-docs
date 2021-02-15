@@ -9,10 +9,10 @@ import OpenIcon from './svg/open.inline.svg';
 import Slack from './svg/slack.inline.svg';
 
 const CHAT_ONLY_PATHS = [
-//  '/cloud',
-//  '/cloud/',
-//  '/docs/cloud',
-//  '/docs/cloud/',
+  //  '/cloud',
+  //  '/cloud/',
+  //  '/docs/cloud',
+  //  '/docs/cloud/',
   '/pricing',
   '/pricing/',
 ];
