@@ -59,7 +59,9 @@ const HelperWidget = () => {
       setDefaultWidgetIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
     } else {
-      window.location.assign(`${process.env.GATSBY_DEFAULT_MAIN_URL}/contact#contact-options`);
+      window.location.assign(
+        `${process.env.GATSBY_DEFAULT_MAIN_URL}/contact#contact-options`,
+      );
     }
   };
   // handlers
