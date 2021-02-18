@@ -286,6 +286,10 @@ Available in `k6 run` and `k6 cloud` commands:
 
 An example of a config file is available [here](/using-k6/options#config-json)
 
+> #### ⚠️ Keep in mind!
+>
+> When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
+
 ### Discard Response Bodies
 
 Specify if response bodies should be discarded by changing the default value of
