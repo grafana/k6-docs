@@ -11,6 +11,7 @@ This uses `docker-compose` and port `8100`.
 ```shell
 git clone git@github.com:k6io/docs.git
 cd docs
+cp .env.example .env.development
 
 docker-compose  up -d --build
 ```
