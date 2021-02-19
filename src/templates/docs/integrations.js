@@ -121,6 +121,12 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     vscodeImg: {
       childImageSharp: { fixed: vscodeImgData },
     },
+    intellijImg: {
+      childImageSharp: { fixed: intellijImgData },
+    },
+    javascriptImg: {
+      childImageSharp: { fixed: javascriptImgData },
+    },
     browserRecorderImg: {
       childImageSharp: { fixed: browserRecorderImgData },
     },
@@ -161,6 +167,24 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
       }
       vscodeImg: file(
         absolutePath: { regex: "/images/doc-integrations/vscode/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      intellijImg: file(
+        absolutePath: { regex: "/images/doc-integrations/intellij/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      javascriptImg: file(
+        absolutePath: { regex: "/images/doc-integrations/javascript/" }
       ) {
         childImageSharp {
           fixed(width: 60, height: 60, cropFocus: CENTER) {
@@ -266,13 +290,18 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                 {
                   picture: vscodeImgData,
                   title: 'Visual Studio Code Extension',
-                  description:
-                    'Execute VS Code commands to run a k6 test of your current file.',
+                  description: 'Run k6 tests from VS Code.',
                   url:
                     'https://marketplace.visualstudio.com/items?itemName=k6.k6',
                 },
                 {
-                  picture: vscodeImgData,
+                  picture: intellijImgData,
+                  title: 'IntelliJ IDEA',
+                  description: 'Run k6 tests from IntelliJ IDEs.',
+                  url: 'https://plugins.jetbrains.com/plugin/16141-k6',
+                },
+                {
+                  picture: javascriptImgData,
                   title: 'IntelliSense',
                   description:
                     'Get code autocompletion and in-context documentation.',
