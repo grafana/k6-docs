@@ -251,6 +251,10 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
+          <LanguageSwitcher
+            onLanguageChange={languageChangeHandler}
+            className={styles.languageSwitcher}
+          />
         </div>
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
@@ -301,10 +305,6 @@ export const DocLayout = ({
           <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
             <HeaderNav links={links} />
           </div>
-          <LanguageSwitcher
-            onLanguageChange={languageChangeHandler}
-            className={styles.languageSwitcher}
-          />
           <div className={'d-md-none col-12 d-flex justify-content-end'}>
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
@@ -316,6 +316,13 @@ export const DocLayout = ({
               <MobileNavMenu
                 sidebarTree={sidebarTree}
                 links={links.map(({ to }) => to)}
+              />
+              <LanguageSwitcher
+                onLanguageChange={languageChangeHandler}
+                className={classNames(
+                  styles.languageSwitcher,
+                  styles.languageSwitcherMobile,
+                )}
               />
             </div>
           </div>
