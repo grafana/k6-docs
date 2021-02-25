@@ -118,9 +118,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={`${main}/unit-testing-for-performance`}
+                      href={`${main}/deliver-fast-and-reliable-digital-experiences-with-k6`}
                     >
-                      Unit testing for performance
+                      Not a developer. Why k6?
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
@@ -128,7 +128,7 @@ export const Footer = () => (
                       className={styles.navColumnLink}
                       href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
                     >
-                      White Paper
+                      Build vs Buy
                     </a>
                   </li>
                 </ul>
