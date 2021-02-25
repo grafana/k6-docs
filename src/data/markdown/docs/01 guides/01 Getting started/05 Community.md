@@ -20,7 +20,7 @@ Use [Stack Overflow](https://stackoverflow.com/questions/tagged/k6) to ask code-
 encountered a particular error. Start out by searching using the `k6` tag, and if
 you find no prior answers, just create a new question using the `k6` and `load-testing` tags.
 
-If you'd rather get your question answered live, or if you want to hear more about how others use k6, tune in to our [k6 Office Hours](https://www.youtube.com/playlist?list=PLJdv3RhAQXNE1TFXn2pp9h_Ul1q_kJrEZ), livestreamed on YouTube every Friday at 17:00 CET (11:00 EST, 21:30 IST).
+If you'd rather get your question answered live, or if you want to hear more about how others use k6, tune in to our [k6 Office Hours](https://www.youtube.com/c/k6test/live), livestreamed on YouTube every Friday at 17:00 CET (11:00 EST / 21:30 IST).
 
 ## Feature Requests and Ideas
 
