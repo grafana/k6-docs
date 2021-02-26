@@ -1,15 +1,15 @@
 ---
-title: 'toEqual( expectedValue )'
-description: 'Use toEqual to compare values.'
+title: 'and( value )'
+description: ''
 ---
 
-`toEqual(expectedValue)` should be called in the chain after the `t.expect()`
+`and(value)` works the same as `expect(value)`, but can be used to chain multiple tests together.
 
 
 
 | Parameter      | Type   | Description                                                                          |
 | -------------- | ------ | ------------------------------------------------------------------------------------ |
-| expectedValue  | any    | The expected value |
+| value          | any    | The value to be compared |
 
 
 ### Returns
@@ -31,7 +31,9 @@ export default function testSuite() {
   test('Basic API test', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
-    t.expect(response.status).toEqual(200);
+    t.expect(response.status).as("response status").toEqual(200)
+      .and(response).toHaveValidJson()
+      .and(response.json().length).as("number of crocs").toBeGreaterThan(5);
   })
 }
 ```

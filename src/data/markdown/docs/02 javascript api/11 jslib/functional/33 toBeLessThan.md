@@ -1,9 +1,9 @@
 ---
-title: 'test( name, function )'
-description: 'Groups test cases.'
+title: 'toBeLessThan( expectedValue )'
+description: 'Use toBeLessThan to compare values.'
 ---
 
-`toEqual(expectedValue)` should be called in the chain after the `t.expect()`
+`toBeLessThan(expectedValue)` should be called in the chain after the `t.expect()`
 
 
 
@@ -29,9 +29,10 @@ import http from 'k6/http';
 export default function testSuite() {
 
   test('Basic API test', (t) => {
-    let response = http.get("https://test-api.k6.io/public/crocodiles")
+    t.expect(5).toBeLessThan(6); // true
+    t.expect(5).toBeLessThan(5); // false
+    t.expect(5).toBeLessThan(5); // false
 
-    t.expect(response.status).toEqual(200);
   })
 }
 ```
