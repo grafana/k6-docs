@@ -1,5 +1,5 @@
 ---
-title: 'toBeTruthy( expectedValue )'
+title: 'toBeTruthy()'
 description: 'Use toBeTruthy to check that the value is truthy.'
 ---
 

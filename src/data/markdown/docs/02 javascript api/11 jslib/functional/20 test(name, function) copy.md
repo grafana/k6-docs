@@ -14,9 +14,9 @@ description: 'Groups test cases.'
 
 ### Returns
 
-| Type   | Description                     |
-| ------ | ------------------------------- |
-| Funk   | Funk object |
+| Type    | Description                     |
+| ------- | ------------------------------- |
+| bool    | Returns true when all checks within the test() body were successful, otherwise false. |
 
 ### Example
 
@@ -32,8 +32,8 @@ export default function testSuite() {
     // t.expect(1).toEqual(1)
   })
 
-  test('Basic API test', (t) => {
-
+  test('Another test', (t) => {
+    // test body
   })
 
 }
