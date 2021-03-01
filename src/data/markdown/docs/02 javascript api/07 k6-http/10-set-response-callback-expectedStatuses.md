@@ -31,6 +31,9 @@ as well. By default requests with status codes between 200 and 399 are considere
 Setting the callback to `null` disables the tagging with `expected_response` and the emitting of
 `http_req_failed`, effectively reverting to the behaviour prior to v0.31.0.
 
+It is recommended that if a per request responseCallback is used with the Params it is actually
+defined once and used instead of creating it on each request.
+
 ### Example
 
 <CodeGroup labels={["setResponseCallback-test.js"]}>
@@ -40,12 +43,14 @@ import http from 'k6/http';
 
 http.setResponseCallback(http.expectedStatuses({min: 200, max: 300}));
 
+var only300Callback = http.expectedStatuses(300);
+
 export default () => {
   // this will use the default response callback and be marked as successful
   http.get("https://httpbin.test.k6.io/status/200");
 
   // this will be marked as a failed request as it won't get the expected status code of 300
-  http.get("https://httpbin.test.k6.io/status/200", {responseCallback: http.expectedStatuses(300)});
+  http.get("https://httpbin.test.k6.io/status/200", {responseCallback: only300Callback});
 
   http.setResponseCallback(http.expectedStatuses(301));
   // from here on for this VU only the 301 status code will be succesful so on the next iteration of
