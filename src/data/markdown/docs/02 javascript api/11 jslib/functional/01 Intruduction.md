@@ -8,7 +8,23 @@ The design of the `functional` library was inspired by Jest. If you already know
 The `functional` library is built on top the built-in `check` and `group` k6 APIs.
 
 
-Let's get started by writing a test for a hypothetical http API that should return '200 OK' response. 
+## Installation
+There's nothing to install. This library is hosted on jslib and can be imported in the k6 script directly.
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+```
+
+</CodeGroup>
+
+Alternativelt you can use a copy of this file, stored locally.
+
+## Simple example
+
+Let's get started by writing a test for a hypothetical http API that should return a JSON array of objects. 
+
 First, create a `mytest.js` k6 script file.
 
 
@@ -40,9 +56,36 @@ When you run this test with `k6 run mytest.js` the result should look similar to
 
 This basic example is not very exciting, because the same result can be achieved with `group` and `check`, so let's move on to more interesting examples.
 
-### Chain of checks.
+### Chain of checks
 
-When writing integration tests and performance test, it's often necessary to execute conditional checks. For example, you may want to inspect JSON body only when the http response is 200. If it's 500, there's probably no JSON in the response.
+When writing integration tests and performance test, it's often necessary to execute conditional checks. For example, you may want to inspect JSON body only when the http response is 200. If it's 500, there's probably no JSON in the response so there's not need to check for it.
 
-It's possible to chain checks using the `.and()` function.
+It's possible to chain checks using the `.and()` function as shown below.
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+import http from 'k6/http';
+
+export default function testSuite() {
+
+  test('Fetch a list of public crocodiles', (t) => {
+    let response = http.get("https://test-api.k6.io/public/crocodiles")
+
+    t.expect(response.status).as("response status").toEqual(200)
+      .and(response).toHaveValidJson()
+      .and(response.json().length).as("number of crocs").toBeGreaterThan(5);
+  })
+} 
+```
+
+</CodeGroup>
+
+When you run this test with `k6 run mytest.js` the result should look similar to this:
+
+
+The above script should result in the following being printed after execution:
+
+![functional.js sample output](./images/functional.js-sample-output.png)
 

@@ -37,3 +37,15 @@ export default function() {
 ```
 
 </CodeGroup>
+
+The complete list of supported librariers can be viewed on [jslib.k6.io](https://jslib.k6.io). 
+
+## Versioning
+
+```
+https://jslib.k6.io/library-name/version/index.js
+```
+
+Note, that libraries have versions. For example "functional.js" library currently has v0.0.1, v0.0.2 and v0.0.3. When using a library, you will have to choose a specific version. 
+
+We recommend that you use the last version available at the time of writing your k6 scripts. 

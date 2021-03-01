@@ -3,37 +3,34 @@ title: "functional"
 excerpt: "Functional testing with k6"
 ---
 
-The `functional` module is an external JavaScript library that provides APIs to simplify functional testing with k6.
+The `functional` module is an external JavaScript library that provides APIs to simplify functional testing in k6.
 
-The library can be imported directly from [jslib.k6.io](https://jslib.k6.io/)
+<Blockquote mod='warning'>
+
+#### This library is rapidly evolving
+
+This library is stable enough to be useful, but pay attention to the new versions released in jslib.k6.io. 
+
+This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
+
+</Blockquote>
 
 
-### Example
+See [getting started with functional.js](/javascript-api/jslib/functional/getting-started-with-functional-js) for usage examples.
 
-<CodeGroup labels={[]}>
+More advanced examples can be found in the [examples section](/examples/functional-testing)
 
-```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
-import http from 'k6/http';
 
-export default function testSuite() {
-
-  test('Fetch a list of public crocodiles', (t) => {
-    let response = http.get("https://test-api.k6.io/public/crocodiles")
-
-    t.expect(response.status).as("response status").toEqual(200)
-      .and(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(4); 
-  })
-
-}
-```
-
-</CodeGroup>
-
-The above script should result in the following being printed after execution:
-
-![functional.js sample output](./functional/images/functional.js-sample-output.png)
-
-// TODO: add link to more advanced examples
-
+| Function | Description |
+| -------- | ----------- |
+| [test(name, function)](/javascript-api/jslib/functional/)  | Entry point for creating tests.  |
+| [expect(value)](/javascript-api/jslib/functional/)  | expect(value) sets the value to be used in comparison by the next function in the chain |
+| [and(value)](/javascript-api/jslib/functional/)  | and(value) is similar to expect(value), but can be used in a chain. |
+| [as(alias)](/javascript-api/jslib/functional/)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
+| [toBeTruthy()](/javascript-api/jslib/functional/)  | Use `.toBeTruthy` when you don't care what a value is and you want to ensure a value is true in a boolean context.  |
+| [toEqual(value)](/javascript-api/jslib/functional/)  | The `.toEqual(expectedValue)` is similar to `===`    |
+| [toBeGreaterThan(expectedValue)](/javascript-api/jslib/functional/)  | Use to verify that `received` > `expected` |
+| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/functional/)  | Use to verify that `received` >= `expected` |
+| [toBeLessThan(expectedValue)](/javascript-api/jslib/functional/)  | Use to verify that `received` < `expected` |
+| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/functional/)  | Use to verify that `received` <= `expected` |
+| [toBeBetween(from, to)](/javascript-api/jslib/functional/)  | Use to verify that expected value is within range. |

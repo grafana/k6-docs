@@ -1,6 +1,6 @@
 ---
 title: 'expect( value )'
-description: ''
+description: 'sets the value to be used in comparison.'
 ---
 
 `expect(value)` sets the value to be used in comparison.
