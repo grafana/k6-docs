@@ -684,6 +684,7 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/getting-started/welcome',
     toPath: '/',
+    redirectInBrowser: true,
     isPermanent: true,
   });
   createRedirect({
