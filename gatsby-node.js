@@ -277,13 +277,12 @@ async function createDocPages({ graphql, actions, reporter }) {
     });
 }
 
-const createRedirects = ({ actions, pathPrefix }) => {
+const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: `${pathPrefix}/getting-started/welcome`,
-    toPath: pathPrefix || `/`,
-    redirectInBrowser: true,
+    fromPath: '/getting-started/welcome',
+    toPath: '/',
     isPermanent: true,
   });
   createRedirect({

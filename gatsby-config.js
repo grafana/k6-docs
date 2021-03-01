@@ -147,6 +147,7 @@ const plugins = [
         '/404',
         '/404.html',
         '/offline-plugin-app-shell-fallback',
+        '/getting-started/welcome',
       ],
       serialize: ({ site, allSitePage }) =>
         allSitePage.edges.map((edge) => {
