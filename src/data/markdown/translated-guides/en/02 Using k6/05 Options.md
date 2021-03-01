@@ -17,14 +17,14 @@ Options allow you to configure how k6 will behave during test execution.
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
 | [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
-| [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
+| [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
 | [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
-| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
+| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
 | [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
@@ -33,19 +33,21 @@ Options allow you to configure how k6 will behave during test execution.
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
+| [No Summary](#no-summary)                                 | Disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
 | [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
 | [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
 | [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
 | [Results Output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
+| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
-| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down          |
-| [Summary export](#summary-export)                         | Output the end-of-test summary report to a JSON file                                |
-| [Supply Env Var](#supply-env-var)                         | Add/override environment variable with VAR=value                                    |
+| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
+| [Supply Environment Variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                    |
 | [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
-| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
+| [Summary Export](#summary-export)                         | Output the [end-of-test summary](/results-visualization/end-of-test-summary) report to a JSON file (discouraged, use [handleSummary()](/results-visualization/end-of-test-summary#handlesummary-callback) instead) |
+| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                     |
+| [Summary Time Unit](#summary-time-unit)                   | Time unit to be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                      |
 | [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
 | [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
 | [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
@@ -55,7 +57,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
 | [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [VUs Max](#vus-max)                                       | A number specifying max number of virtual users                                     |
+| [VUs Max](#vus-max)                                       | **DEPRECATED** |
 
 ## Using Options
 
@@ -141,7 +143,7 @@ Or set some of the previous options via environment variables and command-line f
 ```bash
 $ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run ~/script.js
 
-$ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
+$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
 ```
 
 </CodeGroup>
@@ -284,6 +286,10 @@ Available in `k6 run` and `k6 cloud` commands:
 
 An example of a config file is available [here](/using-k6/options#config-json)
 
+> #### ⚠️ Keep in mind!
+>
+> When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
+
 ### Discard Response Bodies
 
 Specify if response bodies should be discarded by changing the default value of
@@ -370,6 +376,8 @@ export let options = {
 A string specifying the total duration a test run should be run for. During this time each
 VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
 
+Together with the [`vus` option](#vus), `duration` is a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus).
+
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
 | `K6_DURATION` | `--duration`, `-d` | `duration`         | `null`  |
@@ -378,6 +386,7 @@ VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` comma
 
 ```javascript
 export let options = {
+  vus: 100,
   duration: '3m',
 };
 ```
@@ -492,8 +501,7 @@ export let options = {
 
 ### Include System Env Vars
 
-Pass the real system environment variables to the runtime. Available in `k6 run` and `k6 cloud`
-commands.
+Pass the real system [environment variables](/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
 
 | Env | CLI                         | Code / Config file | Default                                                                                              |
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -530,12 +538,14 @@ export let options = {
 
 ### Iterations
 
-A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
-a duration of time during which the script would run in a loop.
-\*Note: The number of iterations
-is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
-`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed,
-the default `maxDuration` is 10 minutes when using iterations with the cloud service.
+An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud` commands.
+
+Together with the [`vus` option](#vus), `iterations` is a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations).
+
+By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
+
+**Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
+
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -545,6 +555,7 @@ the default `maxDuration` is 10 minutes when using iterations with the cloud ser
 
 ```javascript
 export let options = {
+  vus: 5,
   iterations: 10,
 };
 ```
@@ -744,6 +755,22 @@ export let options = {
 
 </CodeGroup>
 
+### No Summary
+
+Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation. Since k6 v0.30.0, that includes disabling the calling of [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`. Available in the `k6 run` command.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_SUMMARY`    | `--no-summary`    | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-summary ~/script.js
+```
+
+</CodeGroup>
+
 ### No Thresholds
 
 Disables threshold execution. Available in the `k6 run` command.
@@ -822,7 +849,7 @@ export let options = {
 ### Results Output
 
 Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
-on all output plugins available and how to configure them. Since version 0.21, this option can be
+on all built-in output modules available and how to configure them. Since version 0.21, this option can be
 specified multiple times. Available in `k6 run` command.
 
 | Env | CLI           | Code / Config file | Default |
@@ -839,8 +866,11 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 ### RPS
 
-The maximum number of requests to make per second, in total across all VUs. Available in `k6 run`
-and `k6 cloud` commands.
+The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
+
+> #### ⚠️ Keep in mind!
+>
+> This option has some caveats and is difficult to use correctly, so its usage is somewhat discouraged. For example, in the cloud/distributed execution, this option affects every k6 instance independently, i.e. it is not sharded like VUs are. We strongly recommend the use of [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
 
 | Env      | CLI     | Code / Config file | Default         |
 | -------- | ------- | ------------------ | --------------- |
@@ -918,7 +948,9 @@ export let options = {
 ### Stages
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
-ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands,
+ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands.
+
+It is a shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus). If used together with the [VUs](#vus) option, the `vus` value is used as the `startVUs` option of the executor.
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -956,10 +988,9 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 
 > _New in v0.26.0_
 
-Output the end-of-test summary report to a JSON file that includes
-data for all test metrics, checks and thresholds. This is useful to
-get the aggregated test results in a machine-readable format, for
-integration with dashboards, external alerts, etc.
+Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
+
+Starting with k6 v0.30.0, while this feature is not deprecated yet, its usage is discouraged, see the explanation why [here](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -981,9 +1012,11 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
 
-### Supply Env Var
+### Supply environment variables
 
-Add/override environment variable with VAR=value. Available in `k6 run` and `k6 cloud` commands.
+Add/override an [environment variable](/using-k6/environment-variables) with `VAR=value`. Available in `k6 run` and `k6 cloud` commands.
+
+To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -1018,21 +1051,51 @@ export let options = {
 
 </CodeGroup>
 
-### Summary Trend Stats
+### Summary Time Unit
 
-Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
-in `k6 run` command.
+Define which time unit will be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
 
-| Env                      | CLI                     | Code / Config file  | Default |
-| ------------------------ | ----------------------- | ------------------- | ------- |
-| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `null`  |
+| Env                    | CLI                   | Code / Config file  | Default |
+| ---------------------- | --------------------- | ------------------- | ------- |
+| `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`   | `null`  |
+
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
 export let options = {
-  summaryTrendStats: ['avg', 'p(95)'],
+  summaryTimeUnit: 'ms',
 };
+```
+
+</CodeGroup>
+
+
+### Summary Trend Stats
+
+Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count` (since k6 v0.26.0), as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback) introduced in k6 v0.30.0.
+
+
+| Env                      | CLI                     | Code / Config file  | Default                        |
+| ------------------------ | ----------------------- | ------------------- | ------------------------------ |
+| `K6_SUMMARY_TREND_STATS` | `--summary-trend-stats` | `summaryTrendStats` | `avg,min,med,max,p(90),p(95)`  |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'p(99.99)', 'count'],
+};
+```
+
+</CodeGroup>
+
+<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
 
 </CodeGroup>
@@ -1217,8 +1280,9 @@ export let options = {
 
 ### VUs
 
-A number specifying the number of VUs to run concurrently. If you'd like more control look at
-the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
+An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#options) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/using-k6/scenarios).
+
+Available in `k6 run` and `k6 cloud` commands.
 
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
@@ -1229,6 +1293,7 @@ the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
 ```javascript
 export let options = {
   vus: 10,
+  duration: '1h',
 };
 ```
 
@@ -1238,23 +1303,8 @@ export let options = {
 
 > #### ⚠️ Keep in mind!
 >
-> This option was deprecated in k6 version 0.27.0.
-
-A number specifying max number of virtual users, if more than `vus`. This option is typically
-used when the intent is to dynamically scale the amount of VUs up and down during the test using
-the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
-is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
+> This option was deprecated in k6 version 0.27.0. See [scenarios](/using-k6/scenarios) and the [externally controlled executor](/using-k6/scenarios/executors/externally-controlled) instead.
 
 | Env          | CLI           | Code / Config file | Default         |
 | ------------ | ------------- | ------------------ | --------------- |
 | `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
-
-<CodeGroup labels={[]} lineNumbers={[true]}>
-
-```javascript
-export let options = {
-  vusMax: 10,
-};
-```
-
-</CodeGroup>

@@ -15,7 +15,7 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 
 ## Trend usage in Thresholds
 
-When `Trend` is used in a threshold expression, there are a range of variables that can be used.
+When `Trend` is used in a [threshold expression](/using-k6/thresholds), there are a range of variables that can be used.
 
 - `avg` for average
 - `min` for minimum

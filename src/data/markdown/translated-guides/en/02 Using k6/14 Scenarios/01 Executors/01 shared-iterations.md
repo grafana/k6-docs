@@ -5,12 +5,9 @@ excerpt: ''
 
 ## Description
 
-A fixed number of iterations are "shared" between a number of VUs, and the test ends
-once all iterations are executed. This executor is equivalent to the global `vus` and
-`iterations` options.
+A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed. This executor is equivalent to the global [vus](/using-k6/options#vus) and [iterations](/using-k6/options#iterations) shortcut options.
 
-Note that iterations aren't fairly distributed with this executor, and a VU that
-executes faster will complete more iterations than others.
+Note that iterations aren't fairly distributed with this executor, and a VU that executes faster will complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
 
 ## Options
 

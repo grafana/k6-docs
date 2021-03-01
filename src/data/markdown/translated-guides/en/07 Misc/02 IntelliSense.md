@@ -3,13 +3,7 @@ title: 'IntelliSense'
 excerpt: ''
 ---
 
-IntelliSense refers to code editing features like **intelligent code completion** and **quick access to documentation**. These features can significantly improve the developer experience and productivity when working on k6 scripts in your editor of choice.
-
-k6 has its [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) that you can configure with your editor to unlock code editing features.
-
-## Visual Studio Code
-
-In Visual Studio Code, [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) can provide with:
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) refers to code editing features like **intelligent code completion** and **quick access to documentation**. These features can significantly improve the developer experience and productivity when working on k6 scripts in your editor of choice. Notable features are:
 
 - Auto-completion of k6 functions, methods, and classes.
 - Auto imports of k6 modules.
@@ -17,9 +11,11 @@ In Visual Studio Code, [IntelliSense](https://code.visualstudio.com/docs/editor/
 
 ![](./images/intellisense-k6-demo.gif)
 
-### Setup
+## VS Code & IntelliJ
 
-A way to configure IntelliSense in VS Code to recognize the [k6 JavaScript API](/javascript-api) is to install the k6 Types with a package manager. For example:
+k6 has its [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) that you can configure with your editor to unlock code editing features.
+
+In Visual Studio Code and IntelliJ IDEA Ultimate, you can configure IntelliSense to recognize the [k6 JavaScript API](/javascript-api) by installing the k6 Types with a package manager.
 
 ```bash
 # create a `package.json` file
@@ -32,4 +28,5 @@ $ npm install --save-dev @types/k6
 ## See also
 
 - [Visual Studio Code - k6 Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6)
+- [IntelliJ IDEA - k6 Plugin](https://plugins.jetbrains.com/plugin/16141-k6)
 - [TypeScript Editor Support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)

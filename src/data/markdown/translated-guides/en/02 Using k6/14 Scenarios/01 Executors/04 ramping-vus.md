@@ -6,7 +6,7 @@ excerpt: ''
 ## Description
 
 A variable number of VUs execute as many iterations as possible for a specified
-amount of time. This executor is equivalent to the global `stages` option.
+amount of time. This executor is equivalent to the global [stages](/using-k6/options#stages) option.
 
 ## Options
 

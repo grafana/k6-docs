@@ -678,18 +678,17 @@ async function createDocPages({
     .map((pageProps) => actions.createPage(pageProps));
 }
 
-const createRedirects = ({ actions, pathPrefix }) => {
+const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: `${pathPrefix}/getting-started/welcome`,
-    toPath: pathPrefix || `/`,
-    redirectInBrowser: true,
+    fromPath: '/getting-started/welcome',
+    toPath: '/',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: `${pathPrefix}/es/empezando/bienvenido`,
-    toPath: `${pathPrefix}/es` || `/es`,
+    fromPath: '/es/empezando/bienvenido',
+    toPath: '/es',
     redirectInBrowser: true,
     isPermanent: true,
   });

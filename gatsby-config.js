@@ -120,8 +120,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-sass',
     options: {
-      includePaths: ['src/styles/variables.scss', 'src/styles/mixins.scss'],
-      data:
+      additionalData:
         '@import "./src/styles/variables.scss", "./src/styles/mixins.scss";',
     },
   },
@@ -154,6 +153,8 @@ const plugins = [
         '/404',
         '/404.html',
         '/offline-plugin-app-shell-fallback',
+        '/getting-started/welcome',
+        '/docs/getting-started/welcome',
       ],
       serialize: ({ site, allSitePage }) =>
         allSitePage.edges.map((edge) => {
