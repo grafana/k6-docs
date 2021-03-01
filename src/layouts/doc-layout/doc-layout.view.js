@@ -251,10 +251,12 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
-          <LanguageSwitcher
-            onLanguageChange={languageChangeHandler}
-            className={styles.languageSwitcher}
-          />
+          {pageTranslations && (
+            <LanguageSwitcher
+              onLanguageChange={languageChangeHandler}
+              className={styles.languageSwitcher}
+            />
+          )}
         </div>
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
