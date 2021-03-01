@@ -27,11 +27,17 @@ const pageInfo = {
 };
 
 function GuidesContent({
+  path,
   pageContext: { sidebarTree, navLinks, locale = 'en' },
 }) {
   useScrollToAnchor();
 
-  const pageMetadata = SeoMetadata.guides;
+  const pageMetadata = {
+    data: {
+      ...SeoMetadata.guides.data,
+      slug: path.slice(1),
+    },
+  };
   const contentContainerRef = useRef(null);
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
