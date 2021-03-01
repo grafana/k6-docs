@@ -39,6 +39,8 @@ export const SEO = ({
   const currentUrl = slug ? `${docs}/${slug}` : docs;
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
+  console.log('SLUG', slug, 'TITLE', title);
+
   return (
     <>
       {slug && slug.startsWith('es/') && (

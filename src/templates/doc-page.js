@@ -10,6 +10,7 @@ import React from 'react';
 
 export default function (props) {
   const {
+    path,
     pageContext: {
       remarkNode: { body, frontmatter },
       sidebarTree,
@@ -24,7 +25,7 @@ export default function (props) {
     data: {
       title: frontmatter.head_title || frontmatter.title,
       description: frontmatter.excerpt,
-      slug: frontmatter.slug,
+      slug: frontmatter.slug ? frontmatter.slug : path.slice(1),
     },
   };
 

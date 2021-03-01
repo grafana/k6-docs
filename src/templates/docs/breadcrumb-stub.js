@@ -9,6 +9,7 @@ import { childrenToList, slugify } from 'utils';
 
 export default function (props) {
   const {
+    path,
     pageContext: {
       sidebarTree,
       breadcrumbs,
@@ -20,6 +21,15 @@ export default function (props) {
     },
   } = props;
 
+  const pageMetadata = {
+    data: {
+      title,
+      // remove leading slash
+      slug: path.slice(1),
+    },
+  };
+
+  console.log('STUB', path, pageMetadata);
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
@@ -27,6 +37,7 @@ export default function (props) {
         navLinks={navLinks}
         locale={locale}
         pageTranslations={translations}
+        pageMetadata={pageMetadata}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
