@@ -86,9 +86,9 @@ export default function () {
 
 </div>
 
-Which was ran with v0.31.0 and 100 VUs. As can be seen there isn't much of a difference at lower
-number of data lines, and it can be argued that before around 1k there is little benefit in memory
-usage. But also there is little to no difference in CPU usage as well. At 10k and above the memory
+Which was ran with v0.31.0 and 100 VUs. As can be seen from the table below, there isn't much of a difference at lower
+numbers of data lines - up until around 1000 data lines there is little benefit in memory
+usage. But also there is little to no difference in CPU usage as well. At 10k and above, the memory
 savings start to heavily translate to CPU ones.
 
 | data lines | shared | wall time | CPU %    | MEM usage   | http requests |
