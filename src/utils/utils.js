@@ -1,6 +1,7 @@
 /*
  * General utility functions
  */
+const { latinizeCharacters } = require('./latinize-characters');
 
 // container for default export (node-specific action)
 const utils = {};
@@ -28,6 +29,10 @@ const pick = (names, obj) => {
   return result;
 };
 
+// replaces accented characters with latin characters
+const latinizeCharacter = (char) =>
+  latinizeCharacters[char] ? latinizeCharacters[char] : char;
+
 // transforms path-like strings into slugs
 // slugify(path: String) -> String
 const slugify = (path) =>
@@ -36,6 +41,7 @@ const slugify = (path) =>
     .replace(/[\s-;:!?&,()[\]]{1,}/g, '-')
     .replace(/[%@~`'"]/g, '')
     .replace(/(-{1,})?(\.md)?$/, '') // removes parts like "*-.md" or "*.md" or "-" postfix
+    .replace(/[^A-Za-z0-9]/g, latinizeCharacter)
     .replace(/(\/)-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
