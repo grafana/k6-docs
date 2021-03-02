@@ -15,9 +15,9 @@ also adds the following options:
 
 | Option        | Type    | Description                                                                        | Default |
 | ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
-| `vus`         | integer | Number of VUs to run concurrently.                                                 | `1`     |
-| `iterations`  | integer | Number of `exec` function iterations to be executed by each VU.                    | `1`     |
-| `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+| vus         | integer | Number of VUs to run concurrently.                                                 | `1`     |
+| iterations  | integer | Number of `exec` function iterations to be executed by each VU.                    | `1`     |
+| maxDuration | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
 ## When to use
 
