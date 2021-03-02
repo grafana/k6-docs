@@ -86,10 +86,7 @@ export default function () {
 
 </div>
 
-Which was ran with v0.31.0 and 100 VUs. As can be seen from the table below, there isn't much of a difference at lower
-numbers of data lines - up until around 1000 data lines there is little benefit in memory
-usage. But also there is little to no difference in CPU usage as well. At 10k and above, the memory
-savings start to heavily translate to CPU ones.
+Which was ran with v0.31.0 and 100 VUs. As can be seen from the table below, there isn't much of a difference at lower numbers of data lines - up until around 1000 data lines there is little benefit in memory usage. But also there is little to no difference in CPU usage as well. At 10k and above, the memory savings start to heavily translate to CPU ones.
 
 | data lines | shared | wall time | CPU %    | MEM usage   | http requests |
 | ---        | ---    | ---       | ---      |  ----       | ---           |
@@ -102,8 +99,7 @@ savings start to heavily translate to CPU ones.
 | 100000     | true   | 2:02:20   | 78-79%   | 238-275MB   | 98103-98540   |
 | 100000     | false  | 2:14:00   | 120-124% | 8.3-9.1GB   | 96003-97802   |
 
-In v0.30.0 the difference in CPU usage at lower numbers was around 10-15%, but it also started to
-even out at around 10k data lines and was a clear winner at 100k.
+In v0.30.0 the difference in CPU usage at lower numbers was around 10-15%, but it also started to even out at around 10k data lines and was a clear winner at 100k.
 
 The CPU/memory data comes from using `/usr/bin/time` and the raw data can be found [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb).
 
