@@ -5,7 +5,7 @@ description: 'generates a responseCallback to check status codes'
 
 > ### 🎉 New in v0.31.0
 
-Returns a callback to be used with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback) to mark responses as expected based only on their status codes
+Returns a callback to be used with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback) to mark responses as expected based only on their status codes.
 
 
 | Parameter | Type            | Description                                                      |
@@ -25,7 +25,7 @@ import http from 'k6/http';
 http.setResponseCallback(http.expectedStatuses(406, 500, {min: 200, max: 204}, 302, {min: 305, max: 405}));
 
 export default () => {
-  // this one will actually be marked as failed as it doesn't matche any of the above listed status
+  // this one will actually be marked as failed as it doesn't match any of the above listed status
   // codes
   http.get("https://httpbin.test.k6.io/status/205");
 };

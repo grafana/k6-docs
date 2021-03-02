@@ -45,8 +45,8 @@ export default () => {
   http.get("https://httpbin.test.k6.io/status/200", {responseCallback: only300Callback});
 
   http.setResponseCallback(http.expectedStatuses(301));
-  // from here on for this VU only the 301 status code will be succesful so on the next iteration of
-  // the VU the first one request will be marked as failure
+  // from here on for this VU only the 301 status code will be successful so on the next iteration of
+  // the VU the first request will be marked as failure
 };
 ```
 
