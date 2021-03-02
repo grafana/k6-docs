@@ -86,18 +86,24 @@ export default function () {
 
 </div>
 
-Which was ran with v0.30.0 and 100 VUs started to even out the CPU usage around 10k elements, but also was using 1/3 of the memory. At 100k `SharedArray` was the clear winner, while for lower numbers it is possible that not using it will help with performance.
+Which was ran with v0.31.0 and 100 VUs. As can be seen there isn't much of a difference at lower
+number of data lines, and it can be argued that before around 1k there is little benefit in memory
+usage. But also there is little to no difference in CPU usage as well. At 10k and above the memory
+savings start to heavily translate to CPU ones.
 
-| data lines | shared | wall time | CPU %    | mem usage   | http requests |
+| data lines | shared | wall time | CPU %    | MEM usage   | http requests |
 | ---        | ---    | ---       | ---      |  ----       | ---           |
-| 100        | true   | 2:02:50   | 86-90%   | 509-517MB   | 90248-92979   |
-| 100        | false  | 2:02:50   | 76-80%   | 512-533MB   | 92534-94666   |
-| 1000       | true   | 2:03:00   | 86-92%   | 509-519MB   | 92007-95234   |
-| 1000       | false  | 2:02:60   | 78-80%   | 621-630MB   | 92814-94526   |
-| 10000      | true   | 2:02:70   | 88-95%   | 515-523MB   | 92936-94997   |
-| 10000      | false  | 2:03:80   | 81-85%   | 1650-1675MB | 92339-95083   |
-| 100000     | true   | 2:04:50   | 89-91%   | 528-531MB   | 92274-93987   |
-| 100000     | false  | 2:15:00   | 115-123% | 8.9-9.5GB   | 90416-94817   |
+| 100        | true   | 2:01:70   | 70-79%   | 213-217MB   | 92191-98837   |
+| 100        | false  | 2:01:80   | 74-75%   | 224-232MB   | 96851-98643   |
+| 1000       | true   | 2:01:60   | 74-79%   | 209-216MB   | 98251-98806   |
+| 1000       | false  | 2:01:90   | 75-77%   | 333-339MB   | 98069-98951   |
+| 10000      | true   | 2:01:70   | 78-79%   | 213-217MB   | 97953-98735   |
+| 10000      | false  | 2:03:00   | 80-83%   | 1364-1400MB | 96816-98852   |
+| 100000     | true   | 2:02:20   | 78-79%   | 238-275MB   | 98103-98540   |
+| 100000     | false  | 2:14:00   | 120-124% | 8.3-9.1GB   | 96003-97802   |
+
+In v0.30.0 the difference in CPU usage at lower numbers was around 10-15%, but it also started to
+even out at around 10k data lines and was a clear winner at 100k.
 
 The CPU/memory data comes from using `/usr/bin/time` and the raw data can be found [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb).
 
