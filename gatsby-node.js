@@ -10,6 +10,7 @@ const {
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
   pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
@@ -42,10 +43,45 @@ const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
   return redirect;
 };
 
-// path + title
-const getSlug = (relativeDirectory, title, type = 'guides') => {
-  const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
-  const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+const getPageTranslations = (relativeDirectory, name, getGuidesSidebar) => {
+  const treeReducer = (subtree, currentNode) => {
+    if (
+      !subtree ||
+      typeof subtree.children === 'undefined' ||
+      typeof subtree.children[currentNode] === 'undefined'
+    ) {
+      return null;
+    }
+    return subtree.children[currentNode];
+  };
+
+  const pageTranslations = {};
+
+  const filePath = unorderify(
+    stripDirectoryPath(relativeDirectory, 'guides'),
+    // remove locale prefix
+  ).slice(3);
+
+  SUPPORTED_LOCALES.forEach((locale) => {
+    const translation =
+      [...filePath.split('/'), unorderify(name)].reduce(
+        treeReducer,
+        getGuidesSidebar(locale),
+      )?.meta || null;
+
+    if (translation) {
+      pageTranslations[locale] = translation;
+    } else {
+      console.log(
+        `No ${locale} translation found for ${relativeDirectory}/${name}`,
+      );
+    }
+  });
+
+  return pageTranslations;
+};
+
+const getSlug = (path) => {
   const slug = compose(
     removeEnPrefix,
     noTrailingSlash,
@@ -218,8 +254,21 @@ function getSupplementaryPagesProps({
               removeGuides,
             )(path);
 
-            const englishVersion = getGuidesSidebar('en').children[name].meta;
-            const spanishVersion = getGuidesSidebar('es').children[name].meta;
+            const pageTranslations = {};
+            SUPPORTED_LOCALES.forEach((locale) => {
+              if (
+                typeof getGuidesSidebar(locale).children[name] !==
+                  'undefined' &&
+                typeof getGuidesSidebar(locale).children[name].meta !==
+                  'undefined'
+              ) {
+                pageTranslations[locale] = getGuidesSidebar(locale).children[
+                  name
+                ].meta;
+              } else {
+                console.log(`No ${locale} translation found for ${name}`);
+              }
+            });
 
             return {
               path: compose(
@@ -243,10 +292,7 @@ function getSupplementaryPagesProps({
                 directChildren: getGuidesSidebar(locale).children[name]
                   .children,
                 locale,
-                translations: {
-                  en: englishVersion,
-                  es: spanishVersion,
-                },
+                translations: pageTranslations,
               },
             };
           },
@@ -320,7 +366,6 @@ function getDocPagesProps({
   // creating actual docs pages
   return nodes
     .map(({ relativeDirectory, children: [remarkNode], name }) => {
-      const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
@@ -344,17 +389,11 @@ function getDocPagesProps({
       if ((draft === 'true' && isProduction) || redirect) {
         return false;
       }
+
+      const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
-      const slug =
-        customSlug ||
-        compose(
-          removeEnPrefix,
-          noTrailingSlash,
-          dedupePath,
-          removeGuides,
-          unorderify,
-          slugify,
-        )(path);
+
+      const slug = customSlug || getSlug(path);
       // path collision check
       if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
         // skip the page creation if there is already a page with identical url
@@ -438,11 +477,15 @@ function getGuidesPagesProps({
       }
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
-      const shouldTranslate = strippedDirectory.startsWith('es/');
+      const pageLocale =
+        SUPPORTED_LOCALES.find((locale) =>
+          strippedDirectory.startsWith(`${locale}/`),
+        ) || DEFAULT_LOCALE;
 
-      const slug = shouldTranslate
-        ? getTranslatedSlug(relativeDirectory, title, 'es', 'guides')
-        : getSlug(relativeDirectory, title, 'guides');
+      const slug =
+        pageLocale === DEFAULT_LOCALE
+          ? getSlug(path)
+          : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
 
       const pageSlug = customSlug || slug;
 
@@ -461,7 +504,7 @@ function getGuidesPagesProps({
         unorderify,
       )(path);
 
-      if (shouldTranslate) {
+      if (pageLocale !== DEFAULT_LOCALE) {
         const translatedPath = unorderify(path)
           .split('/')
           .map((item) =>
@@ -477,32 +520,13 @@ function getGuidesPagesProps({
         )(translatedPath);
       }
 
-      // @TODO: update if other languages are added
-      const isLocalizedPage = strippedDirectory.startsWith('es/');
+      const sidebarTree = getGuidesSidebar(pageLocale);
 
-      const sidebarTree = isLocalizedPage
-        ? getGuidesSidebar('es')
-        : getGuidesSidebar('en');
-
-      // find translations of page
-      const filePath = unorderify(
-        stripDirectoryPath(relativeDirectory, 'guides'),
-        // remove locale prefix
-      ).slice(3);
-
-      const treeReducer = (subtree, currentNode) => {
-        return subtree.children[currentNode];
-      };
-
-      const englishVersion = [...filePath.split('/'), unorderify(name)].reduce(
-        treeReducer,
-        getGuidesSidebar('en'),
-      ).meta;
-
-      const spanishVersion = [...filePath.split('/'), unorderify(name)].reduce(
-        treeReducer,
-        getGuidesSidebar('es'),
-      ).meta;
+      const pageTranslations = getPageTranslations(
+        relativeDirectory,
+        name,
+        getGuidesSidebar,
+      );
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -513,10 +537,7 @@ function getGuidesPagesProps({
           fileOrigin: encodeURI(
             `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
           ),
-          translations: {
-            en: englishVersion,
-            es: spanishVersion,
-          },
+          translations: pageTranslations,
         },
       };
 
@@ -530,7 +551,7 @@ function getGuidesPagesProps({
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
           ),
           navLinks: generateTopLevelLinks(topLevelLinks),
-          locale: isLocalizedPage ? 'es' : 'en',
+          locale: pageLocale,
         },
       };
     })

@@ -1,5 +1,5 @@
 ---
-title: Scenarios
+title: Escenarios
 excerpt: ''
 hideFromSidebar: false
 ---
