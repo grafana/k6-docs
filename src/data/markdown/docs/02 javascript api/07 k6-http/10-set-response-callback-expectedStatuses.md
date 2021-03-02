@@ -7,16 +7,12 @@ description: 'set responseCallback to mark responses as expected'
 
 Set the response callback to be called to determine if a response was expected/successful or not.
 
-The result of this is that requests will be tagged with `expected_response` `"true"` or `"false"` and
-`http_req_failed` will be emitted with the reverse. This does include all redirects so if for a
-request only 200 is the expected response and there is 301 redirect before that, the redirect will
-be marked as failed as only status code 200 was marked as expected.
+The result of this is that requests will be tagged with `expected_response` `"true"` or `"false"` and `http_req_failed` will be emitted with the reverse. This does include all redirects so if for a request only 200 is the expected response and there is 301 redirect before that, the redirect will be marked as failed as only status code 200 was marked as expected.
 
 #### Exceptions
 
 Due to implementation specifics:
-- Requests with authentication `digest` are always expected to first get 401 and then to get w/e was
-  defined.
+- Requests with authentication `digest` are always expected to first get 401 and then to get w/e was defined.
 - Requests with authentication `ntlm` will let a 401 status code, but also let it not be 401
 
 
@@ -24,15 +20,11 @@ Due to implementation specifics:
 | --------- | --------------- | ---------------------------------------------------------------- |
 | callback  | [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) | an object returned from [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) |
 
-Currently only the very special [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses)
-objects are supported but in the future it is planned that a javascript callback will be supported
-as well. By default requests with status codes between 200 and 399 are considered "expected".
+Currently only the very special [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) objects are supported but in the future it is planned that a javascript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
 
-Setting the callback to `null` disables the tagging with `expected_response` and the emitting of
-`http_req_failed`, effectively reverting to the behaviour prior to v0.31.0.
+Setting the callback to `null` disables the tagging with `expected_response` and the emitting of `http_req_failed`, effectively reverting to the behaviour prior to v0.31.0.
 
-It is recommended that if a per request responseCallback is used with the Params it is actually
-defined once and used instead of creating it on each request.
+It is recommended that if a per request responseCallback is used with the [Params](/javascript-api/k6-http/params) it is actually defined once and used instead of creating it on each request.
 
 ### Example
 
