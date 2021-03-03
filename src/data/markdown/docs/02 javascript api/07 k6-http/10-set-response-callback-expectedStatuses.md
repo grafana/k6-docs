@@ -13,7 +13,7 @@ The result of this is that requests will be tagged with `expected_response` `"tr
 
 Due to implementation specifics:
 - Requests with authentication `digest` are always expected to first get 401 and then to get whatever was specified.
-- Requests with authentication `ntlm` will let a 401 status code, but also let it not be 401
+- Requests with authentication `ntlm` will let a 401 status code on the first request as well as anything defined by `expectedStatuses`
 
 
 | Parameter | Type            | Description                                                      |
