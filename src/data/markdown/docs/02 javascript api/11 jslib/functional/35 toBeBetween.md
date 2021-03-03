@@ -1,6 +1,6 @@
 ---
 title: 'toBeBetween(from, to)'
-description: 'Use toBeLessThanOrEqual to compare values.'
+description: 'Use toBeBetween(from, to) to check if numeric value is within range.'
 ---
 
 `toBeBetween(from, to)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 

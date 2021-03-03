@@ -1,6 +1,6 @@
 ---
 title: 'toEqual( expectedValue )'
-description: 'Use toEqual to compare values.'
+description: 'Use to verify that received === expected'
 ---
 
 `toEqual(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 

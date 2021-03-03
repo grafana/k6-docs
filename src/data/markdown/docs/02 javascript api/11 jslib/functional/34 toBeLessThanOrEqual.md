@@ -1,6 +1,6 @@
 ---
 title: 'toBeLessThanOrEqual( expectedValue )'
-description: 'Use toBeLessThanOrEqual to compare values.'
+description: 'Use to verify that received <= expected'
 ---
 
 `toBeLessThanOrEqual(expectedValue)` should be called in the chain after the `t.expect()`

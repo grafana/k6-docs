@@ -1,9 +1,9 @@
 ---
 title: 'Error handling'
-description: 'How to handle errors.'
+description: 'How to handle errors in functional.js.'
 ---
 
-When executing performance test, you should expect errors. 
+When executing a performance test or integration test, you should expect errors. The the system under test crashes, you don't want your script code to 
 
 `functional` library is designed to make it easy to write test scripts that are resilient to failing SUT (System under test). 
 

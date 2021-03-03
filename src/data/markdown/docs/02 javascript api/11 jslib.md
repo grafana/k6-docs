@@ -6,6 +6,13 @@ excerpt: "External JavaScript libraries for k6"
 The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](https://k6.io/docs/using-k6/modules#remote-http-s-modules) in k6 scripts.  
 
 
+| Library | Description |
+| -------- | ----------- |
+| [functional](/javascript-api/jslib/functional)  | Micro-framework for writing tests in a style of Jest or Ava.  |
+| [httpx](/javascript-api/jslib/httpx)  | Wrapper around the http that simplifies session handling |
+| -  | Documentation for other libraries will be added shortly. |
+
+
 
 ### Example
 
@@ -38,7 +45,7 @@ export default function() {
 
 </CodeGroup>
 
-The complete list of supported librariers can be viewed on [jslib.k6.io](https://jslib.k6.io). 
+The complete list of supported libraries can be viewed on [jslib.k6.io](https://jslib.k6.io).
 
 ## Versioning
 
@@ -46,6 +53,10 @@ The complete list of supported librariers can be viewed on [jslib.k6.io](https:/
 https://jslib.k6.io/library-name/version/index.js
 ```
 
-Note, that libraries have versions. For example "functional.js" library currently has v0.0.1, v0.0.2 and v0.0.3. When using a library, you will have to choose a specific version. 
+Libraries hosted on jslib have versions. For example "functional.js" library currently has v0.0.1 and v0.0.2. 
 
-We recommend that you use the last version available at the time of writing your k6 scripts. 
+We recommend that you use the last version available at the time of writing your k6 scripts. Older versions will continue to be hosted on jslib, so you don't have to worry about your scripts breaking.
+
+This documentation is for the last version of these libraries. If the examples documented here don't work, please check that you are using the latest version.
+
+If you don't want to depend on jslib or want to make modifications to the code, you can download the libraries and use them locally.

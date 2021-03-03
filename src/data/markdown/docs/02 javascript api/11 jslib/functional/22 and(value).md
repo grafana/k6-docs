@@ -1,6 +1,6 @@
 ---
-title: 'and( value )'
-description: ''
+title: 'and(value)'
+description: 'and(value) is similar to expect(value), but can be used in a chain.'
 ---
 
 `and(value)` works the same as `expect(value)`, but can be used to chain multiple tests together.

@@ -1,6 +1,6 @@
 ---
 title: 'toBeTruthy()'
-description: 'Use toBeTruthy to check that the value is truthy.'
+description: 'Use toBeTruthy() to check that the value is truthy.'
 ---
 
 `toBeTruthy()` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 

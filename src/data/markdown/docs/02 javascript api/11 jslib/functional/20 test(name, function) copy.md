@@ -1,6 +1,6 @@
 ---
 title: 'test( name, function )'
-description: 'Groups test cases.'
+description: 'Entry point for creating tests.. Groups test cases.'
 ---
 
 `test(name, function)` creates a group
