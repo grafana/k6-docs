@@ -18,7 +18,6 @@ const {
   unorderify,
   getDocSection,
   buildBreadcrumbs,
-  removeGuides,
   dedupePath,
   redirectWelcome,
   noTrailingSlash,
@@ -86,7 +85,6 @@ const getSlug = (path) => {
     removeEnPrefix,
     noTrailingSlash,
     dedupePath,
-    removeGuides,
     unorderify,
     slugify,
   )(path);
@@ -217,17 +215,12 @@ function getSupplementaryPagesProps({
     .flatMap((section) => {
       return childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = compose(
-          buildBreadcrumbs,
-          dedupePath,
-          removeGuides,
-        )(path);
+        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
         return {
           path: compose(
             removeEnPrefix,
             noTrailingSlash,
             dedupePath,
-            removeGuides,
             slugify,
           )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
@@ -252,7 +245,6 @@ function getSupplementaryPagesProps({
               buildBreadcrumbs,
               removeEnPrefix,
               dedupePath,
-              removeGuides,
             )(path);
 
             const pageTranslations = {};
@@ -276,7 +268,6 @@ function getSupplementaryPagesProps({
                 removeEnPrefix,
                 noTrailingSlash,
                 dedupePath,
-                removeGuides,
                 slugify,
               )(path),
               component: Path.resolve(
@@ -405,7 +396,6 @@ function getDocPagesProps({
       const breadcrumbs = compose(
         buildBreadcrumbs,
         dedupePath,
-        removeGuides,
         unorderify,
       )(path);
 
@@ -501,7 +491,6 @@ function getGuidesPagesProps({
         buildBreadcrumbs,
         removeEnPrefix,
         dedupePath,
-        removeGuides,
         unorderify,
       )(path);
 
@@ -515,7 +504,6 @@ function getGuidesPagesProps({
           buildBreadcrumbs,
           removeEnPrefix,
           dedupePath,
-          removeGuides,
         )(translatedPath);
       }
 

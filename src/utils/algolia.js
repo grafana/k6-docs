@@ -8,12 +8,7 @@ const {
   mdxAstToPlainText,
   flat,
 } = require('./utils');
-const {
-  unorderify,
-  noTrailingSlash,
-  dedupePath,
-  // removeGuidesAndRedirectWelcome,
-} = require('./utils.node');
+const { unorderify, noTrailingSlash, dedupePath } = require('./utils.node');
 
 const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const {
@@ -54,13 +49,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
   const slug =
     customSlug ||
-    compose(
-      noTrailingSlash,
-      dedupePath,
-      // removeGuidesAndRedirectWelcome,
-      unorderify,
-      slugify,
-    )(path);
+    compose(noTrailingSlash, dedupePath, unorderify, slugify)(path);
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
