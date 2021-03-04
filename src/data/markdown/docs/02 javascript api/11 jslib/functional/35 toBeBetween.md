@@ -5,8 +5,9 @@ description: 'Use toBeBetween(from, to) to check if numeric value is within rang
 
 `toBeBetween(from, to)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
-When `toBeBetween(from, to)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
+`toBeBetween(from, to)` is equivalent to `value >= from && value <= to`
 
+When `toBeBetween(from, to)` evaluates to false, the chain is broken, and the test case is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
 
 
 | Parameter      | Type   | Description                                                                          |
@@ -34,21 +35,18 @@ export default function testSuite() {
   test('Basic API test', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
-    t.expect(response.status).as("response status").toBeBetween(200, 299)
-      .and(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(5);
+    t.expect(response.status).as("response status").toBeBetween(200, 299);
   })
 }
 ```
+
+</CodeGroup>
 
 When you run this test with `k6 run mytest.js` the result should look similar to this:
 
 ```
 █ Basic API test
   ✓ response status is between 200 - 299
-  ✓ https://test-api.k6.io/public/crocodiles has valid json response
-  ✓ number of crocs is greater than 5
 ```
 
-</CodeGroup>
  

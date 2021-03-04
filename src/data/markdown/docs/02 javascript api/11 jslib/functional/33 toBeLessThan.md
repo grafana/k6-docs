@@ -3,7 +3,11 @@ title: 'toBeLessThan( expectedValue )'
 description: 'Use to verify that `received < expected`'
 ---
 
-`toBeLessThan(expectedValue)` should be called in the chain after the `t.expect()`
+`toBeLessThan(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+
+`toBeLessThan` is equivalent to `received < expected`
+
+When `toBeLessThan(expectedValue)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 
@@ -31,7 +35,7 @@ export default function testSuite() {
   test('Basic API test', (t) => {
     t.expect(5).toBeLessThan(6); // true
     t.expect(5).toBeLessThan(5); // false
-    t.expect(5).toBeLessThan(5); // false
+    t.expect(5).toBeLessThan(5); // false. Won't execute because previous statement was false
 
   })
 }

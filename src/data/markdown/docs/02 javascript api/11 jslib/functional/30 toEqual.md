@@ -4,8 +4,10 @@ description: 'Use to verify that received === expected'
 ---
 
 `toEqual(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
-When `toEqual(expectedValue)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
 
+`toEqual` is equivalent to `received === expected`
+
+When `toEqual(expectedValue)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 | Parameter      | Type   | Description                                                                          |
@@ -17,7 +19,7 @@ When `toEqual(expectedValue)` evaluates to false, the chain is broken, and the t
 
 | Type   | Description                     |
 | ------ | ------------------------------- |
-| Funk   | Funk object or raises exception |
+| Funk   | Funk object |
 
 ### Example
 
@@ -32,8 +34,8 @@ export default function testSuite() {
   test('Basic API test', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
-    t.expect(response.status).toEqual(200)
-     .and(response.proto).toEqual("HTTP/2.0");
+    t.expect(response.status).toEqual(200);
+    t.expect(response.proto).toEqual("HTTP/2.0");
   })
 }
 ```

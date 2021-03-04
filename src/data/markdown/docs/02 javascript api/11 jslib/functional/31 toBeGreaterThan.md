@@ -3,8 +3,11 @@ title: 'toBeGreaterThan( expectedValue )'
 description: 'Use to verify that received > expected'
 ---
 
-`toBeGreaterThan(expectedValue)` should be called in the chain after the `t.expect()`
+`toBeGreaterThan(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
+`toBeGreaterThan` is equivalent to `received > expected`
+
+When `toBeGreaterThan(expectedValue)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 | Parameter      | Type   | Description                                                                          |
@@ -31,7 +34,7 @@ export default function testSuite() {
   test('Basic API test', (t) => {
     t.expect(5).toBeGreaterThan(4); // true
     t.expect(5).toBeGreaterThan(5); // false
-    t.expect(5).toBeGreaterThan(6); // false
+    t.expect(5).toBeGreaterThan(6); // false. Won't execute because previous statement was false
   })
 }
 ```
