@@ -1,4 +1,4 @@
-const latinizeCharacters = {
+const latinizedCharacters = {
   Á: 'A',
   á: 'a',
   É: 'E',
@@ -15,4 +15,4 @@ const latinizeCharacters = {
   ü: 'u',
 };
 
-module.exports = { latinizeCharacters };
+module.exports = { latinizedCharacters };

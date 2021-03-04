@@ -1,4 +1,4 @@
-const translations = {
+const pathTranslations = {
   guides: {
     es: 'guías',
   },
@@ -52,4 +52,4 @@ const translations = {
   },
 };
 
-module.exports = { translations };
+module.exports = { pathTranslations };

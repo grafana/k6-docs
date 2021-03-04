@@ -1,6 +1,5 @@
 /* gatsby-node.js specific helper functions */
-const { translations } = require('./path-translations');
-const { slugify, compose } = require('./utils');
+const { slugify, compose, translatePathPart } = require('./utils');
 
 // default 'en' is not included
 const SUPPORTED_LOCALES = ['es', 'en'];
@@ -49,7 +48,8 @@ const buildFileTree = (nodeBuilder) => {
     let parent = root;
     const parts = path.split('/');
 
-    const locale = SUPPORTED_LOCALES.find((loc) => parts.includes(loc)) || 'en';
+    const locale =
+      SUPPORTED_LOCALES.find((loc) => parts.includes(loc)) || DEFAULT_LOCALE;
 
     parts.push(name);
 
@@ -61,13 +61,9 @@ const buildFileTree = (nodeBuilder) => {
         parent.children[part] === undefined
       ) {
         // add translated folder name to meta.title for each node in tree
-        const translatedName =
-          translations[part] !== undefined && locale !== DEFAULT_LOCALE
-            ? translations[part][locale]
-            : part;
+        const translatedName = translatePathPart(part, locale);
 
         // add translated path to meta.path for each node, ignore /en path
-
         currentPath =
           part === DEFAULT_LOCALE
             ? '/'

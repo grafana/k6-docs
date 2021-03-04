@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 const Path = require('path');
 
-const { translations } = require('./src/utils/path-translations');
 const {
   slugify,
   compose,
   childrenToList,
   stripDirectoryPath,
+  translatePathPart,
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
@@ -104,9 +104,7 @@ const getTranslatedSlug = (
   const path = unorderify(strippedDirectory);
   const translatedPath = path
     .split('/')
-    .map((part) =>
-      translations[part] !== undefined ? translations[part][locale] : part,
-    )
+    .map((part) => translatePathPart(part, locale))
     .join('/');
 
   const slug = compose(
@@ -158,12 +156,14 @@ function generateSidebar({ nodes, type = 'docs' }) {
       )}`,
     );
 
-    if (type === 'guides' && path.startsWith('/es/')) {
+    const pageLocale =
+      SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
+      DEFAULT_LOCALE;
+
+    if (type === 'guides' && pageLocale !== DEFAULT_LOCALE) {
       path = unorderify(path)
         .split('/')
-        .map((item) =>
-          translations[item] !== undefined ? translations[item].es : item,
-        )
+        .map((item) => translatePathPart(item, pageLocale))
         .join('/');
     }
 
@@ -507,9 +507,7 @@ function getGuidesPagesProps({
       if (pageLocale !== DEFAULT_LOCALE) {
         const translatedPath = unorderify(path)
           .split('/')
-          .map((item) =>
-            translations[item] !== undefined ? translations[item].es : item,
-          )
+          .map((item) => translatePathPart(item, pageLocale))
           .join('/');
 
         breadcrumbs = compose(
