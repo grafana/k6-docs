@@ -1,14 +1,13 @@
 /* eslint-disable no-useless-escape */
 const chunk = require('chunk-text');
 
+const { stripDirectoryPath, mdxAstToPlainText, flat } = require('./utils');
 const {
-  slugify,
-  stripDirectoryPath,
-  compose,
-  mdxAstToPlainText,
-  flat,
-} = require('./utils');
-const { unorderify, noTrailingSlash, dedupePath } = require('./utils.node');
+  getSlug,
+  getTranslatedSlug,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+} = require('./utils.node');
 
 const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const {
@@ -43,13 +42,21 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const cutStrippedDirectory = strippedDirectory
     .split('/')
     // remove en/ prefix from slug
-    .filter((part) => part !== 'en')
+    // .filter((part) => part !== 'en')
     .slice(0, -1)
     .join('/');
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
+
+  const pageLocale =
+    SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
+    DEFAULT_LOCALE;
+
   const slug =
-    customSlug ||
-    compose(noTrailingSlash, dedupePath, unorderify, slugify)(path);
+    pageLocale === DEFAULT_LOCALE
+      ? getSlug(path)
+      : getTranslatedSlug(cutStrippedDirectory, title, pageLocale, 'guides');
+
+  const pageSlug = customSlug || slug;
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
@@ -58,7 +65,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
     cache[pointer] = {
       title,
       objectID: `${objectID}-${pointer}`,
-      slug,
+      slug: pageSlug,
       content: chunks[pointer],
     };
   }

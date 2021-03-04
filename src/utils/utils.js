@@ -2,7 +2,6 @@
  * General utility functions
  */
 const { latinizedCharacters } = require('./latinized-characters');
-const { pathTranslations } = require('./path-translations');
 
 // container for default export (node-specific action)
 const utils = {};
@@ -28,17 +27,6 @@ const pick = (names, obj) => {
   });
 
   return result;
-};
-
-const translatePathPart = (item, locale) => {
-  if (
-    typeof pathTranslations[item] !== 'undefined' &&
-    typeof pathTranslations[item][locale] !== 'undefined'
-  ) {
-    return pathTranslations[item][locale];
-  }
-
-  return item;
 };
 
 // replaces accented characters with latin characters
@@ -233,9 +221,6 @@ Object.defineProperties(utils, {
   },
   omit: {
     value: omit,
-  },
-  translatePathPart: {
-    value: translatePathPart,
   },
 });
 

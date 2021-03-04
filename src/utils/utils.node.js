@@ -1,12 +1,29 @@
 /* gatsby-node.js specific helper functions */
-const { slugify, compose, translatePathPart } = require('./utils');
+const { pathTranslations } = require('./path-translations');
+const { slugify, compose, stripDirectoryPath } = require('./utils');
 
-// default 'en' is not included
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
 
 // create a container;
 const utils = {};
+
+const translatePathPart = (item, locale) => {
+  if (
+    typeof pathTranslations[item] !== 'undefined' &&
+    typeof pathTranslations[item][locale] !== 'undefined'
+  ) {
+    return pathTranslations[item][locale];
+  }
+  return item;
+};
+
+// translates all parts of path to selected locale using path-translations.js
+const translatePath = (path, locale) =>
+  path
+    .split('/')
+    .map((part) => translatePathPart(part, locale))
+    .join('/');
 
 // buildBreadcrumbs(path: String) -> Array<Object>
 const buildBreadcrumbs = (path) => {
@@ -171,10 +188,6 @@ const pathCollisionDetector = (logger) => {
   };
 };
 
-// guides category is the root: / or /docs in prod, so we removing that part
-const removeGuides = (path) =>
-  path.replace(/guides\//i, '').replace(/guías\//i, '');
-
 // english pages are the root: / or /docs in prod, so we remove that part
 const removeEnPrefix = (path) => {
   if (path === '/en') {
@@ -188,9 +201,8 @@ const removeEnPrefix = (path) => {
 // examples/examples -> examples
 const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 
-// no /guides route; welcome is redirecting to the root path
-// difference from removeGuides: this one is for sidebar links processing and
-// the former is for creatingPages
+// welcome is redirecting to the root path
+// for sidebar links processing
 const redirectWelcome = (path) =>
   path
     .replace(/getting-started\/welcome/i, '')
@@ -199,6 +211,40 @@ const redirectWelcome = (path) =>
 // ensures that no trailing slash is left
 const noTrailingSlash = (path) =>
   path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
+
+const getSlug = (path) => {
+  const slug = compose(
+    removeEnPrefix,
+    noTrailingSlash,
+    dedupePath,
+    unorderify,
+    slugify,
+  )(path);
+
+  return slug;
+};
+
+// translated path + title
+const getTranslatedSlug = (
+  relativeDirectory,
+  title,
+  locale = 'es',
+  type = 'guides',
+) => {
+  const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
+  const path = unorderify(strippedDirectory);
+  const translatedPath = translatePath(path, locale);
+
+  const slug = compose(
+    removeEnPrefix,
+    redirectWelcome,
+    noTrailingSlash,
+    dedupePath,
+    slugify,
+  )(`${translatedPath}/${unorderify(title.replace(/\//g, '-'))}`);
+
+  return slug;
+};
 
 Object.defineProperties(utils, {
   noTrailingSlash: {
@@ -218,9 +264,6 @@ Object.defineProperties(utils, {
   },
   buildFileTree: {
     value: buildFileTree,
-  },
-  removeGuides: {
-    value: removeGuides,
   },
   unorderify: {
     value: unorderify,
@@ -242,6 +285,18 @@ Object.defineProperties(utils, {
   },
   removeEnPrefix: {
     value: removeEnPrefix,
+  },
+  translatePathPart: {
+    value: translatePathPart,
+  },
+  translatePath: {
+    value: translatePath,
+  },
+  getSlug: {
+    value: getSlug,
+  },
+  getTranslatedSlug: {
+    value: getTranslatedSlug,
   },
 });
 

@@ -6,7 +6,6 @@ const {
   compose,
   childrenToList,
   stripDirectoryPath,
-  translatePathPart,
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
@@ -19,9 +18,11 @@ const {
   getDocSection,
   buildBreadcrumbs,
   dedupePath,
-  redirectWelcome,
   noTrailingSlash,
   removeEnPrefix,
+  translatePath,
+  getSlug,
+  getTranslatedSlug,
 } = require('./src/utils/utils.node');
 
 /* constants */
@@ -80,41 +81,6 @@ const getPageTranslations = (relativeDirectory, name, getGuidesSidebar) => {
   return pageTranslations;
 };
 
-const getSlug = (path) => {
-  const slug = compose(
-    removeEnPrefix,
-    noTrailingSlash,
-    dedupePath,
-    unorderify,
-    slugify,
-  )(path);
-
-  return slug;
-};
-// translated path + title
-const getTranslatedSlug = (
-  relativeDirectory,
-  title,
-  locale = 'es',
-  type = 'guides',
-) => {
-  const strippedDirectory = stripDirectoryPath(relativeDirectory, type);
-  const path = unorderify(strippedDirectory);
-  const translatedPath = path
-    .split('/')
-    .map((part) => translatePathPart(part, locale))
-    .join('/');
-
-  const slug = compose(
-    removeEnPrefix,
-    noTrailingSlash,
-    dedupePath,
-    slugify,
-  )(`${translatedPath}/${unorderify(title.replace(/\//g, '-'))}`);
-
-  return slug;
-};
-
 const GUIDES_TOP_LEVEL_LINKS = {
   label: 'guides',
   variants: {
@@ -147,37 +113,31 @@ function generateSidebar({ nodes, type = 'docs' }) {
     if (draft === 'true' && isProduction) return;
 
     // titles like k6/html treated like paths otherwise
-    let path = unorderify(
-      `/${stripDirectoryPath(relativeDirectory, type)}/${title.replace(
-        /\//g,
-        '-',
-      )}`,
-    );
+    const translatedPath = `${stripDirectoryPath(
+      relativeDirectory,
+      type,
+    )}/${title.replace(/\//g, '-')}`;
 
     const pageLocale =
-      SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
-      DEFAULT_LOCALE;
+      SUPPORTED_LOCALES.find((locale) =>
+        translatedPath.startsWith(`${locale}/`),
+      ) || DEFAULT_LOCALE;
 
-    if (type === 'guides' && pageLocale !== DEFAULT_LOCALE) {
-      path = unorderify(path)
-        .split('/')
-        .map((item) => translatePathPart(item, pageLocale))
-        .join('/');
-    }
+    const pageSlug =
+      pageLocale === DEFAULT_LOCALE
+        ? `/${getSlug(translatedPath)}`
+        : `/${getTranslatedSlug(
+            relativeDirectory,
+            title,
+            pageLocale,
+            'guides',
+          )}`;
 
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path:
-          slug ||
-          compose(
-            removeEnPrefix,
-            noTrailingSlash,
-            redirectWelcome,
-            dedupePath,
-            slugify,
-          )(path),
+        path: slug || pageSlug,
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         hideFromSidebar: hideFromSidebar || false,
@@ -336,7 +296,7 @@ function getTopLevelPagesProps({
       DISABLE_I18N
         ? []
         : SUPPORTED_LOCALES.map((locale) => ({
-            path: locale === 'en' ? '/' : 'es/',
+            path: locale === 'en' ? '/' : `${locale}/`,
             component: Path.resolve(`./src/templates/docs/guides.js`),
             context: {
               sidebarTree: getGuidesSidebar(locale),
@@ -495,10 +455,7 @@ function getGuidesPagesProps({
       )(path);
 
       if (pageLocale !== DEFAULT_LOCALE) {
-        const translatedPath = unorderify(path)
-          .split('/')
-          .map((item) => translatePathPart(item, pageLocale))
-          .join('/');
+        const translatedPath = translatePath(unorderify(path), pageLocale);
 
         breadcrumbs = compose(
           buildBreadcrumbs,
