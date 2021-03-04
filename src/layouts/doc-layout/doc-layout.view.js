@@ -168,7 +168,7 @@ const SidebarNode = (props) => {
     if (meta.redirect) {
       return 'externalLink';
     }
-    if (meta.path) {
+    if (meta.isActiveSidebarLink) {
       return 'internalLink';
     }
     return 'text';
@@ -261,7 +261,7 @@ export const DocLayout = ({
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
-              {sectionNode.meta.path ? (
+              {sectionNode.meta.isActiveSidebarLink ? (
                 <Heading
                   className={styles.sidebarSectionTitle}
                   size={'sm'}

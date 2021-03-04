@@ -183,6 +183,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         hideFromSidebar: hideFromSidebar || false,
+        isActiveSidebarLink: true,
       },
     );
   });
