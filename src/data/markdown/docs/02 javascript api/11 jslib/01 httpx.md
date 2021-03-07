@@ -4,12 +4,11 @@ excerpt: "httpx is a wrapper library around the native k6 http module"
 ---
 
 The `httpx` module is an external JavaScript library that wraps around the native [k6/http](/javascript-api/k6-http) module. 
-It a http client with features that are not yet available in the native module.
+It's a http client with features that are not yet available in the native module.
  - ability to set set http options globally (such as timeout)
- - ability to set default headers that will be used for all requests
- - ability to execute a custom callback after the response is received
+ - ability to set default tags and headers that will be used for all requests
  - more user-friendly arguments to request functions (get, post, put take the same arguments)
- - set baseURL 
+
 
 
 httpx module integrates well with functional library. 
