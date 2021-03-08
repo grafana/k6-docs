@@ -41,7 +41,12 @@ const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
   return redirect;
 };
 
-const getPageTranslations = (relativeDirectory, name, getGuidesSidebar) => {
+const getPageTranslations = (
+  relativeDirectory,
+  name,
+  getGuidesSidebar,
+  reporter,
+) => {
   const treeReducer = (subtree, currentNode) => {
     if (
       !subtree ||
@@ -70,7 +75,7 @@ const getPageTranslations = (relativeDirectory, name, getGuidesSidebar) => {
     if (translation) {
       pageTranslations[locale] = translation;
     } else {
-      console.log(
+      reporter.warn(
         `No ${locale} translation found for ${relativeDirectory}/${name}`,
       );
     }
@@ -148,6 +153,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
 }
 
 function getSupplementaryPagesProps({
+  reporter,
   topLevelNames,
   topLevelLinks,
   getSidebar,
@@ -213,7 +219,7 @@ function getSupplementaryPagesProps({
               name
             ].meta;
           } else {
-            console.log(`No ${locale} translation found for ${name}`);
+            reporter.warn(`No ${locale} translation found for ${name}`);
           }
         });
 
@@ -455,6 +461,7 @@ function getGuidesPagesProps({
         relativeDirectory,
         name,
         getGuidesSidebar,
+        reporter,
       );
 
       const extendedRemarkNode = {
@@ -621,6 +628,7 @@ async function createDocPages({
         topLevelLinks,
         getSidebar,
         getGuidesSidebar,
+        reporter,
       }),
     )
     .map((pageProps) => actions.createPage(pageProps));
