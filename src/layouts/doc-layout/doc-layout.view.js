@@ -251,6 +251,9 @@ export const DocLayout = ({
     }
   }, [location]);
 
+  const showLanguageToggle =
+    !I18N_CONFIG.hideLanguageToggle && !!pageTranslations;
+
   return (
     <div className={styles.wrapper}>
       <SEO pageTranslations={pageTranslations} {...pageMetadata} />
@@ -258,7 +261,7 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
-          {pageTranslations && urlLocale === 'es' && (
+          {showLanguageToggle && (
             <LanguageSwitcher
               onLanguageChange={languageChangeHandler}
               className={styles.languageSwitcher}
@@ -326,7 +329,7 @@ export const DocLayout = ({
                 sidebarTree={sidebarTree}
                 links={links.map(({ to }) => to)}
               />
-              {pageTranslations && urlLocale === 'es' && (
+              {showLanguageToggle && (
                 <LanguageSwitcher
                   onLanguageChange={languageChangeHandler}
                   className={classNames(

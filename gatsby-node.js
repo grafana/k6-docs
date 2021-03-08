@@ -30,8 +30,6 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
-const DISABLE_I18N = isProduction;
-
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
@@ -195,66 +193,55 @@ function getSupplementaryPagesProps({
       });
     });
 
-  const stubGuidesPagesProps = DISABLE_I18N
-    ? []
-    : SUPPORTED_LOCALES.flatMap((locale) => {
-        return childrenToList(getGuidesSidebar(locale).children).map(
-          ({ name, meta }) => {
-            const path = `${locale}/${meta.title}`;
-            const breadcrumbs = compose(
-              buildBreadcrumbs,
-              removeEnPrefix,
-              dedupePath,
-            )(path);
+  const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) => {
+    return childrenToList(getGuidesSidebar(locale).children).map(
+      ({ name, meta }) => {
+        const path = `${locale}/${meta.title}`;
+        const breadcrumbs = compose(
+          buildBreadcrumbs,
+          removeEnPrefix,
+          dedupePath,
+        )(path);
 
-            const pageTranslations = {};
-            SUPPORTED_LOCALES.forEach((locale) => {
-              if (
-                typeof getGuidesSidebar(locale).children[name] !==
-                  'undefined' &&
-                typeof getGuidesSidebar(locale).children[name].meta !==
-                  'undefined'
-              ) {
-                pageTranslations[locale] = getGuidesSidebar(locale).children[
-                  name
-                ].meta;
-              } else {
-                console.log(`No ${locale} translation found for ${name}`);
-              }
-            });
+        const pageTranslations = {};
+        SUPPORTED_LOCALES.forEach((locale) => {
+          if (
+            typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
+            typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
+          ) {
+            pageTranslations[locale] = getGuidesSidebar(locale).children[
+              name
+            ].meta;
+          } else {
+            console.log(`No ${locale} translation found for ${name}`);
+          }
+        });
 
-            return {
-              path: compose(
-                removeEnPrefix,
-                noTrailingSlash,
-                dedupePath,
-                slugify,
-              )(path),
-              component: Path.resolve(
-                './src/templates/docs/breadcrumb-stub.js',
-              ),
-              context: {
-                sidebarTree: getGuidesSidebar(locale),
-                breadcrumbs: breadcrumbs.filter(
-                  (item) =>
-                    !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
-                ),
-                title: meta.title,
-                navLinks: generateTopLevelLinks(topLevelLinks),
-                directChildren: getGuidesSidebar(locale).children[name]
-                  .children,
-                locale,
-                translations: pageTranslations,
-              },
-            };
+        return {
+          path: compose(
+            removeEnPrefix,
+            noTrailingSlash,
+            dedupePath,
+            slugify,
+          )(path),
+          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
+          context: {
+            sidebarTree: getGuidesSidebar(locale),
+            breadcrumbs: breadcrumbs.filter(
+              (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+            ),
+            title: meta.title,
+            navLinks: generateTopLevelLinks(topLevelLinks),
+            directChildren: getGuidesSidebar(locale).children[name].children,
+            locale,
+            translations: pageTranslations,
           },
-        );
-      });
+        };
+      },
+    );
+  });
 
-  return stubPagesProps.concat(
-    notFoundProps,
-    DISABLE_I18N ? [] : stubGuidesPagesProps,
-  );
+  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
 }
 
 function getTopLevelPagesProps({
@@ -293,17 +280,15 @@ function getTopLevelPagesProps({
       };
     })
     .concat(
-      DISABLE_I18N
-        ? []
-        : SUPPORTED_LOCALES.map((locale) => ({
-            path: locale === 'en' ? '/' : `/${locale}`,
-            component: Path.resolve(`./src/templates/docs/guides.js`),
-            context: {
-              sidebarTree: getGuidesSidebar(locale),
-              navLinks: generateTopLevelLinks(topLevelLinks),
-              locale,
-            },
-          })),
+      SUPPORTED_LOCALES.map((locale) => ({
+        path: locale === 'en' ? '/' : `/${locale}`,
+        component: Path.resolve(`./src/templates/docs/guides.js`),
+        context: {
+          sidebarTree: getGuidesSidebar(locale),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+          locale,
+        },
+      })),
     )
     .filter(Boolean);
 }
@@ -617,15 +602,13 @@ async function createDocPages({
     getSidebar,
   })
     .concat(
-      DISABLE_I18N
-        ? []
-        : getGuidesPagesProps({
-            nodesGuides,
-            reporter,
-            topLevelLinks,
-            pathCollisionDetectorInstance,
-            getGuidesSidebar,
-          }),
+      getGuidesPagesProps({
+        nodesGuides,
+        reporter,
+        topLevelLinks,
+        pathCollisionDetectorInstance,
+        getGuidesSidebar,
+      }),
       getTopLevelPagesProps({
         topLevelNames,
         topLevelLinks,
@@ -967,14 +950,10 @@ const createRedirects = ({ actions }) => {
 
 exports.createPages = async (options) => {
   const pagesData = await fetchDocPagesData(options.graphql);
-  const guidesData = DISABLE_I18N
-    ? null
-    : await fetchGuidesPagesData(options.graphql);
+  const guidesData = await fetchGuidesPagesData(options.graphql);
 
   const sidebar = generateSidebar({ nodes: pagesData });
-  const guidesSidebar = DISABLE_I18N
-    ? null
-    : generateSidebar({ nodes: guidesData, type: 'guides' });
+  const guidesSidebar = generateSidebar({ nodes: guidesData, type: 'guides' });
 
   await createDocPages({
     ...options,
