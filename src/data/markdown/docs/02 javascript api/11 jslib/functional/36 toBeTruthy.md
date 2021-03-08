@@ -3,9 +3,9 @@ title: 'toBeTruthy()'
 description: 'Use toBeTruthy() to check that the value is truthy.'
 ---
 
-`toBeTruthy()` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+`toBeTruthy()` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
-When `toBeTruthy()` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
+When `toBeTruthy()` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 ### Returns

@@ -173,5 +173,5 @@ export default function testSuite() {
 </CodeGroup>
 
 
-Discusison about functional testing can be found on the [community forum](https://community.k6.io/t/report-for-functional-test/574/2)
+Discussion about functional testing can be found on the [community forum](https://community.k6.io/t/report-for-functional-test/574/2)
 

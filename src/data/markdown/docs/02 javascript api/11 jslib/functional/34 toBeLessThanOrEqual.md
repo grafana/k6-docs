@@ -3,7 +3,7 @@ title: 'toBeLessThanOrEqual( expectedValue )'
 description: 'Use to verify that received <= expected'
 ---
 
-`toBeLessThanOrEqual(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+`toBeLessThanOrEqual(expectedValue)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeLessThanOrEqual` is equivalent to `received <= expected`
 

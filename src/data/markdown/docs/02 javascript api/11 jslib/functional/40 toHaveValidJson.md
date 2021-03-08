@@ -5,7 +5,7 @@ description: 'Use .expect(response).toHaveValidJson() to check that HTTP respons
 
 `toHaveValidJson()` validates that the http response has valid JSON body. It must be called in the chain after the `t.expect(response)` or `.and(response)`. 
 
-When `toHaveValidJson()` returns false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
+When `toHaveValidJson()` returns false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 ### Returns

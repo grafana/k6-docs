@@ -3,7 +3,7 @@ title: 'toBeGreaterThan( expectedValue )'
 description: 'Use to verify that received > expected'
 ---
 
-`toBeGreaterThan(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+`toBeGreaterThan(expectedValue)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeGreaterThan` is equivalent to `received > expected`
 

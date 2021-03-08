@@ -35,4 +35,4 @@ More advanced examples can be found in the [examples section](/examples/function
 | [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/functional/tobelessthanorequal-expectedvalue)  | Use to verify that `received` <= `expected` |
 | [toBeBetween(from, to)](/javascript-api/jslib/functional/tobebetween-from-to)  | Use to verify that expected value is within range. |
 | [toBeTruthy()](/javascript-api/jslib/functional/tobetruthy)  | Use `.toBeTruthy` when you don't care what a value is and you want to ensure a value is true in a boolean context.  | 
-| [toHaveValidJson()](/javascript-api/jslib/functional/tohavevalidjson)  | Use to verify that the http response has balid JSON body. |
+| [toHaveValidJson()](/javascript-api/jslib/functional/tohavevalidjson)  | Use to verify that the http response has a valid JSON body. |

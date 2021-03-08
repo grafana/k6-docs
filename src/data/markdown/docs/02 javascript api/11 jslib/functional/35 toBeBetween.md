@@ -3,7 +3,7 @@ title: 'toBeBetween(from, to)'
 description: 'Use toBeBetween(from, to) to check if numeric value is within range.'
 ---
 
-`toBeBetween(from, to)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+`toBeBetween(from, to)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeBetween(from, to)` is equivalent to `value >= from && value <= to`
 

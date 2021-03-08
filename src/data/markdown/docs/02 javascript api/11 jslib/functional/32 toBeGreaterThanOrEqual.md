@@ -3,12 +3,11 @@ title: 'toBeGreaterThanOrEqual( expectedValue )'
 description: 'Use to verify that received >= expected'
 ---
 
-`toBeGreaterThanOrEqual(expectedValue)` is a comparison function that evalues to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
+`toBeGreaterThanOrEqual(expectedValue)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeGreaterThanOrEqual` is equivalent to `received >= expected`
 
 When `toBeGreaterThanOrEqual(expectedValue)` evaluates to false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
-
 
 
 | Parameter      | Type   | Description                                                                          |
