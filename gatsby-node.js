@@ -296,7 +296,7 @@ function getTopLevelPagesProps({
       DISABLE_I18N
         ? []
         : SUPPORTED_LOCALES.map((locale) => ({
-            path: locale === 'en' ? '/' : `${locale}/`,
+            path: locale === 'en' ? '/' : `/${locale}`,
             component: Path.resolve(`./src/templates/docs/guides.js`),
             context: {
               sidebarTree: getGuidesSidebar(locale),

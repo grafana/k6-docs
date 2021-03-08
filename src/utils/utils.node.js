@@ -237,7 +237,6 @@ const getTranslatedSlug = (
 
   const slug = compose(
     removeEnPrefix,
-    redirectWelcome,
     noTrailingSlash,
     dedupePath,
     slugify,

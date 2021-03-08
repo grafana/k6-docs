@@ -23,6 +23,7 @@ import {
 } from 'react-cookie-banner';
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
+import { I18N_CONFIG } from 'utils/i18n-config';
 import { main, app } from 'utils/urls';
 
 import styles from './doc-layout.module.scss';
@@ -233,7 +234,13 @@ export const DocLayout = ({
 
   const location = typeof window !== 'undefined' ? window.pathname : '';
 
+  // if another language was selected and current page has a translated version in that language,
+  // redirect to it
   React.useEffect(() => {
+    if (I18N_CONFIG.disableRedirectToSelectedLanguage) {
+      return;
+    }
+
     if (
       pageTranslations &&
       locale &&
@@ -251,7 +258,7 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
-          {pageTranslations && (
+          {pageTranslations && urlLocale === 'es' && (
             <LanguageSwitcher
               onLanguageChange={languageChangeHandler}
               className={styles.languageSwitcher}
@@ -319,13 +326,15 @@ export const DocLayout = ({
                 sidebarTree={sidebarTree}
                 links={links.map(({ to }) => to)}
               />
-              <LanguageSwitcher
-                onLanguageChange={languageChangeHandler}
-                className={classNames(
-                  styles.languageSwitcher,
-                  styles.languageSwitcherMobile,
-                )}
-              />
+              {pageTranslations && urlLocale === 'es' && (
+                <LanguageSwitcher
+                  onLanguageChange={languageChangeHandler}
+                  className={classNames(
+                    styles.languageSwitcher,
+                    styles.languageSwitcherMobile,
+                  )}
+                />
+              )}
             </div>
           </div>
         </Header>
