@@ -7,7 +7,7 @@ description: 'Use toBeBetween(from, to) to check if numeric value is within rang
 
 `toBeBetween(from, to)` is equivalent to `value >= from && value <= to`
 
-When `toBeBetween(from, to)` evaluates to false, the chain is broken, and the test case is marked as failed. When the chain is broken, further checks inside of the `test` are ommitted. 
+When `toBeBetween(from, to)` evaluates to false, the chain is broken, and the test case is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 
 
 
 | Parameter      | Type   | Description                                                                          |
