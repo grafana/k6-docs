@@ -29,7 +29,6 @@ export default function (props) {
     },
   };
 
-  console.log('STUB', path, pageMetadata);
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
