@@ -164,7 +164,7 @@ function getSupplementaryPagesProps({
     component: Path.resolve(`./src/templates/404.js`),
     context: {
       sidebarTree: getSidebar('guides'),
-      navLinks: topLevelLinks,
+      navLinks: generateTopLevelLinks(topLevelLinks),
     },
   };
   const stubPagesProps = topLevelNames
@@ -478,7 +478,7 @@ function getGuidesPagesProps({
       };
 
       return {
-        path: pageSlug,
+        path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           remarkNode: extendedRemarkNode,

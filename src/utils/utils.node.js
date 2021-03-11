@@ -190,10 +190,6 @@ const pathCollisionDetector = (logger) => {
 
 // english pages are the root: / or /docs in prod, so we remove that part
 const removeEnPrefix = (path) => {
-  if (path === '/en') {
-    return '/';
-  }
-
   return path.replace(/en\//i, '');
 };
 
@@ -205,7 +201,7 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 // for sidebar links processing
 const redirectWelcome = (path) =>
   path
-    .replace(/getting-started\/welcome/i, '')
+    .replace(/en\/getting-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 // ensures that no trailing slash is left
@@ -216,6 +212,7 @@ const getSlug = (path) => {
   const slug = compose(
     removeEnPrefix,
     noTrailingSlash,
+    redirectWelcome,
     dedupePath,
     unorderify,
     slugify,
@@ -236,8 +233,8 @@ const getTranslatedSlug = (
   const translatedPath = translatePath(path, locale);
 
   const slug = compose(
-    removeEnPrefix,
     noTrailingSlash,
+    redirectWelcome,
     dedupePath,
     slugify,
   )(`${translatedPath}/${unorderify(title.replace(/\//g, '-'))}`);
