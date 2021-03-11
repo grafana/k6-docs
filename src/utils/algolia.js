@@ -30,6 +30,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
     return [];
   }
 
+  // disable sending spanish content to Algolia
   if (/\/es\//i.test(fileAbsolutePath)) {
     // eslint-disable-next-line no-console
     console.log('exluded ES page from algolia indecies:', fileAbsolutePath);
@@ -37,12 +38,9 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   }
 
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, kind);
-  // cut the last piece (the actual name of a file) to match the generation
-  // in node
+  // cut the last piece (the actual name of a file) to match the generation in node
   const cutStrippedDirectory = strippedDirectory
     .split('/')
-    // remove en/ prefix from slug
-    // .filter((part) => part !== 'en')
     .slice(0, -1)
     .join('/');
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
