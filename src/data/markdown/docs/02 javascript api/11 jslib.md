@@ -8,7 +8,7 @@ The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript l
 
 | Library | Description |
 | -------- | ----------- |
-| [functional](/javascript-api/jslib/functional)  | Micro-framework for writing tests in a style of Jest or Ava.  |
+| [functional](/javascript-api/jslib/functional)  | Micro-framework for writing tests in a style of Jest or ava.  |
 | [httpx](/javascript-api/jslib/httpx)  | Wrapper around the http that simplifies session handling |
 | -  | Documentation for other libraries will be added shortly. |
 

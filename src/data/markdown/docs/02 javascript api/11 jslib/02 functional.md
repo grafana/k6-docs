@@ -4,7 +4,7 @@ excerpt: "Functional testing with k6"
 ---
 
 The `functional` module is an external JavaScript library that provides APIs to simplify functional testing in k6. 
-This library is inspired by Ava, Jest and Jasmine. 
+This library is inspired by ava, Jest and Jasmine. 
 
 <Blockquote mod='warning'>
 

@@ -3,7 +3,7 @@ title: 'Getting started with functional.js'
 description: 'Introduction to functional testing in k6.'
 ---
 
-The design of the `functional` library was inspired by Ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
+The design of the `functional` library was inspired by ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
 
 The `functional` library is built on top of the built-in `check` and `group` k6 APIs.
 
