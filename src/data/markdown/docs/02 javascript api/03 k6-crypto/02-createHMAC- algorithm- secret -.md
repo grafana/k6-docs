@@ -8,7 +8,7 @@ Creates a HMAC hashing object that can then be fed with data repeatedly, and fro
 | Parameter |  Type  | Description                                                                                                                         |
 | --------- | :----: | :---------------------------------------------------------------------------------------------------------------------------------- |
 | algorithm | string | The hashing algorithm to use. One of `md4`, `md5`, `sha1`, `sha256`, `sha384`, `sha512`, `sha512_224`, `sha512_256` or `ripemd160`. |
-| secret    | string | A shared secret used to sign the data.                                                                                              |
+| secret    | string / ArrayBuffer | A shared secret used to sign the data.                                                                                |
 
 ### Returns
 
