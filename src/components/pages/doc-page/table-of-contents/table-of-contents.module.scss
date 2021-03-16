@@ -20,34 +20,55 @@
 .anchor-wrapper {
   padding: 0;
   margin: 0;
-  box-shadow: $light-block-shadow;
+  //box-shadow: $light-block-shadow;
   display: flex;
   flex-flow: column;
-  border: 1px solid $color-additional-2;
+  //border: 1px solid $color-additional-2;
   list-style: none;
 }
 
 .anchor-box {
   &:not(:last-child) {
-    border-bottom: 1px solid $color-additional-2;
+    //border-bottom: 1px solid $color-additional-2;
   }
   display: flex;
   align-items: center;
-  min-height: 50px;
+  // min-height: 50px;
+
+  & > * {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
-.anchor {
+.h2 {
   text-decoration: none;
-  font-size: $font-size-base;
-  line-height: 20px;
-  color: $color-secondary;
-  transition: all 0.3s ease;
-  display: inline-block;
-  width: 100%;
-  padding: 15px 20px;
-  &_active {
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
+  font-weight: 500;
+  transition: color 0.3s;
+
+  &:hover {
     color: $color-accent-primary;
   }
+}
+
+.h3 {
+  box-sizing: border-box;
+  padding-left: 15px;
+  display: block;
+  text-decoration: none;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
+  transition: color 0.3s;
+
   &:hover {
     color: $color-accent-primary;
   }
