@@ -17,14 +17,14 @@ The following _built-in_ metrics will **always** be collected by k6:
 
 | Metric Name          | Type    | Description                                                                                                                                                                                                     |
 | -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vus`                | Gauge   | Current number of active virtual users                                                                                                                                                                          |
-| `vus_max`            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level)                                                                |
-| `iterations`         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function).                                                                                                         |
-| `iteration_duration` | Trend   | The time it took to complete one full iteration of the default/main function.                                                                                                                                   |
-| `dropped_iterations` | Counter | Introduced in k6 v0.27.0, the number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
-| `data_received`      | Counter | The amount of received data. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                 |
-| `data_sent`          | Counter | The amount of data sent. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                     |
-| `checks`             | Rate    | The rate of successful checks.                                                                                                                                                                                  |
+| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                          |
+| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level)                                                                |
+| iterations         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function).                                                                                                         |
+| iteration_duration | Trend   | The time it took to complete one full iteration of the default/main function.                                                                                                                                   |
+| dropped_iterations | Counter | Introduced in k6 v0.27.0, the number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
+| data_received      | Counter | The amount of received data. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                 |
+| data_sent          | Counter | The amount of data sent. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                     |
+| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                  |
 
 ## HTTP-specific built-in metrics
 
@@ -32,14 +32,15 @@ _built-in_ metrics will only be generated when/if HTTP requests are made:
 
 | Metric Name                | Type    | Description                                                                                                                                                                                                                                  |
 | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `http_reqs`                | Counter | How many HTTP requests has k6 generated, in total.                                                                                                                                                                                           |
-| `http_req_blocked`         | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
-| `http_req_connecting`      | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
-| `http_req_tls_handshaking` | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
-| `http_req_sending`         | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
-| `http_req_waiting`         | Trend   | Time spent waiting for response from remote host (a.k.a. \"time to first byte\", or \"TTFB\"). `float`                                                                                                                                       |
-| `http_req_receiving`       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
-| `http_req_duration`        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
+| http_reqs                | Counter | How many HTTP requests has k6 generated, in total.                                                                                                                                                                                           |
+| http_req_blocked         | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
+| http_req_connecting      | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
+| http_req_tls_handshaking | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
+| http_req_sending         | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
+| http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. \"time to first byte\", or \"TTFB\"). `float`                                                                                                                                       |
+| http_req_receiving       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
+| http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
+| http_req_failed <sup>(≥ v0.31)</sup> | Rate |  The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback). | 
 
 ### Accessing HTTP timings from a script
 
@@ -61,17 +62,17 @@ In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/respon
 
 | Property                      | Description                                                           |
 | ----------------------------- | --------------------------------------------------------------------- |
-| `res.body`                    | `string` containing the HTTP response body                            |
-| `res.headers`                 | `object` containing header-name/header-value pairs                    |
-| `res.status`                  | `integer` containing HTTP response code received from server          |
-| `res.timings`                 | `object` containing HTTP timing information for the request in **ms** |
-| `res.timings.blocked`         | = `http_req_blocked`                                                  |
-| `res.timings.connecting`      | = `http_req_connecting`                                               |
-| `res.timings.tls_handshaking` | = `http_req_tls_handshaking`                                          |
-| `res.timings.sending`         | = `http_req_sending`                                                  |
-| `res.timings.waiting`         | = `http_req_waiting`                                                  |
-| `res.timings.receiving`       | = `http_req_receiving`                                                |
-| `res.timings.duration`        | = `http_req_duration`                                                 |
+| res.body                    | `string` containing the HTTP response body                            |
+| res.headers                 | `object` containing header-name/header-value pairs                    |
+| res.status                  | `integer` containing HTTP response code received from server          |
+| res.timings                 | `object` containing HTTP timing information for the request in **ms** |
+| res.timings.blocked         | = `http_req_blocked`                                                  |
+| res.timings.connecting      | = `http_req_connecting`                                               |
+| res.timings.tls_handshaking | = `http_req_tls_handshaking`                                          |
+| res.timings.sending         | = `http_req_sending`                                                  |
+| res.timings.waiting         | = `http_req_waiting`                                                  |
+| res.timings.receiving       | = `http_req_receiving`                                                |
+| res.timings.duration        | = `http_req_duration`                                                 |
 
 ## Custom metrics
 
