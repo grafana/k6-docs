@@ -65,7 +65,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
             {({ style }) => (
               <TableOfContents
-                style={style}
+                style={{ ...style, left: 350 }}
                 contentContainerRef={contentContainerRef}
                 shouldMakeReplacement
               />

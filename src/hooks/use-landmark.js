@@ -8,7 +8,7 @@ const useLandmark = ({ containerRef, markSelector }, deps = []) => {
       // get all marks of a parent
       const allMarks = containerRef.current.querySelectorAll(markSelector);
       setLinks(
-        Array.from(allMarks).map(({ id, innerText }) => ({
+        Array.from(allMarks).map(({ id, innerText, tagName }) => ({
           title: innerText,
           anchor: `#${
             id ||
@@ -18,6 +18,7 @@ const useLandmark = ({ containerRef, markSelector }, deps = []) => {
               .replace(/^-*/g, '')
               .replace(/-*$/g, '')
           }`,
+          tagName,
         })),
       );
     }
