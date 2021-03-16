@@ -71,7 +71,7 @@ k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to yo
 | group   | When the request runs inside a [group](/javascript-api/k6/group-name-fn), the tag value is the group name.  Default is empty.               |
 | name   | Defaults to URL requested                  |
 | method | Request method (`GET`, `POST`, `PUT` etc.) |
-| scenario   | When the request runs inside a [scenario](/using-k6/scenarios), the tag value is the scenario name.  Default is empty.               |
+| scenario   | When the request runs inside a [scenario](/using-k6/scenarios), the tag value is the scenario name.  Default is `default`.               |
 | status | response status                            |
 | url    | defaults to URL requested                  |
 
@@ -91,7 +91,7 @@ Below you can see how a test result data point (the duration of an HTTP request)
       "group": "",
       "method": "GET",
       "name": "http://test.k6.io",
-      "scenario": "",
+      "scenario": "default",
       "status": "200",
       "url": "http://test.k6.io"
     }
