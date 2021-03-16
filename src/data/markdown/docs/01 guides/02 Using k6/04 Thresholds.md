@@ -53,7 +53,7 @@ When executing that script, k6 will output something similar to this:
 ```
 </CodeGroup>
 
-- In the above case, criteria for both thresholds were met. The whole load test is considered
+- In the above case, the criteria for both thresholds were met. The whole load test is considered
   to be a `pass`, which means that k6 will exit with exit code zero.
 
 - If any of the thresholds had failed, the little green checkmark <span style="color:green; font-weight:bold">✓</span> next to the threshold name
