@@ -7,11 +7,11 @@ _FileData_ is an object for wrapping data representing a file when doing
 [multipart requests (file uploads)](/examples/data-uploads#multipart-request-uploading-a-file).
 You create it by calling [http.file( data, [filename], [contentType] )](/javascript-api/k6-http/file-data-filename-contenttype).
 
-| Name                  | Type                 | Description                                                              |
-| --------------------- | -------------------- | ------------------------------------------------------------------------ |
-| FileData.data         | string / ArrayBuffer | File data as string or an `ArrayBuffer` object.                          |
-| FileData.content_type | string               | The content type that will be specified in the multipart request.        |
-| FileData.filename     | string               | The filename that will be specified in the multipart request.            |
+| Name                  | Type                         | Description                                                              |
+| --------------------- | ---------------------------- | ------------------------------------------------------------------------ |
+| FileData.data         | string / Array / ArrayBuffer | File data as string, array of numbers, or an `ArrayBuffer` object.       |
+| FileData.content_type | string                       | The content type that will be specified in the multipart request.        |
+| FileData.filename     | string                       | The filename that will be specified in the multipart request.            |
 
 ### Example
 

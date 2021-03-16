@@ -26,9 +26,9 @@ See example further down on this page. For more in-depth description see [Runnin
 
 ### Returns
 
-| Type           | Description                                                                              |
-| -------------- | ---------------------------------------------------------------------------------------- |
-| string / bytes | The contents of the file, read as text or bytes (if `b` has been specified as the mode). |
+| Type           | Description                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| string / Array | The contents of the file, returned as string or array of numbers (if `b` was specified as the mode). |
 
 <CodeGroup labels={["users.json"]}>
 
