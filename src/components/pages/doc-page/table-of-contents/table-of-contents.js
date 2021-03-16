@@ -7,7 +7,8 @@ import styles from './table-of-contents.module.scss';
 
 const components = {
   h2: HeadingLandmark('h2'),
-  h3: HeadingLandmark('h3'),
+  // uncomment the next line to add h3 to ToC
+  // h3: HeadingLandmark('h3'),
 };
 
 const TableOfContents = forwardRef(
@@ -23,7 +24,7 @@ const TableOfContents = forwardRef(
     const links = useLandmark(
       {
         containerRef: contentContainerRef,
-        markSelector: 'h2, h3',
+        markSelector: 'h2', // replace to 'h2, h3' to include h3 in ToC
       },
       [],
     );

@@ -5,6 +5,9 @@
   display: flex;
   justify-content: flex-end;
   padding-top: 15px;
+
+  margin-right: -30px;
+
   @include lg-down {
     display: none;
   }

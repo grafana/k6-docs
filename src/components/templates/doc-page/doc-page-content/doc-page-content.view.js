@@ -55,7 +55,7 @@ export const DocPageContent = ({ label, content, mod }) => {
           <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
             {({ style }) => (
               <TableOfContents
-                style={style}
+                style={{ ...style, left: 350 }}
                 contentContainerRef={contentContainerRef}
               />
             )}
