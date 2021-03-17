@@ -117,9 +117,9 @@ $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 
 </CodeGroup>
 
-In case of syntax/parsing error, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers. 
+In case of syntax/parsing errors, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers. 
 
-Up to v0.31.0 it also include [core.js](https://github.com/zloirock/core-js) v2 and even more babel plugins. The core-js added around 2mb per VU of memory usage and some of the transformations (generators, async/await) of babel were not useful as they were still not enough for k6 to just work with those features. So up to this using `compatibility-mode` `base` was a significant improvement on memory usage which also translated to some CPU gains.  
+Until v0.31.0 it also included [core.js](https://github.com/zloirock/core-js) v2 and even more Babel plugins. The core-js added around 2mb per VU of memory usage and some of the transformations (generators, async/await) of Babel were not useful as they were still not enough for k6 to just work with those features. So up to this using `compatibility-mode` `base` was a significant improvement on memory usage which also translated to some CPU gains.
 
 ## Performance Comparison
 
