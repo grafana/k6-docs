@@ -48,17 +48,17 @@ This test code is fragile to failing SUT because the first `check` does not prev
 It's possible to rewrite this code to be less fragile, but that will make it longer and less readable. 
 
 Error handling of this type happens automatically when using the `functional.js` library.
-When the first `expect` fails, the remaining checks in the chain are not executed, and the test is marked as failed — the execution proceeds to the next `test()` instead of restarting from the top.
+When the first `expect` fails, the remaining checks in the chain are not executed, and the test is marked as failed — the execution proceeds to the next `describe()` instead of restarting from the top.
 
 
 <CodeGroup labels={["Resilient code written using functional.js"]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import http from 'k6/http';
 
 export default function() {
-  test('Fetch a list of public crocodiles', (t) => {
+  describe('Fetch a list of public crocodiles', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
     t.expect(response.status).as("response status").toEqual(200)

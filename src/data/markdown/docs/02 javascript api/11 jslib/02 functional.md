@@ -24,7 +24,7 @@ More advanced examples can be found in the [examples section](/examples/function
 
 | Function | Description |
 | -------- | ----------- |
-| [test(name, function)](/javascript-api/jslib/functional/test-name-function)  | Entry point for creating tests.  |
+| [describe(name, function)](/javascript-api/jslib/functional/describe-name-function)  | Entry point for creating tests. |
 | [expect(value)](/javascript-api/jslib/functional/expect-value)  | expect(value) sets the value to be used in comparison by the next function in the chain |
 | [and(value)](/javascript-api/jslib/functional/and-value)  | and(value) is similar to expect(value), but can be used in a chain. |
 | [as(alias)](/javascript-api/jslib/functional/as-string)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |

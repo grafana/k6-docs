@@ -30,7 +30,7 @@ This documentation is for the last version only. If you discover that some of th
 <CodeGroup labels={["httpx session used together with functional library"]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.1/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
 import { randomIntBetween, 
          randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
@@ -49,7 +49,7 @@ let session = new Httpx({
 
 export default function testSuite() {
 
-  test(`Create a test user ${USERNAME}`, (t) => {
+  describe(`Create a test user ${USERNAME}`, (t) => {
 
     let resp = session.post(`/user/register/`, {
       first_name: 'Crocodile',
@@ -64,7 +64,7 @@ export default function testSuite() {
 
   &&
 
-  test(`Authenticate the new user ${USERNAME}`, (t) => {
+  describe(`Authenticate the new user ${USERNAME}`, (t) => {
 
     let resp = session.post(`/auth/token/login/`, {
       username: USERNAME,
@@ -83,7 +83,7 @@ export default function testSuite() {
 
   &&
 
-  test('Create a new crocodile', (t) => {
+  describe('Create a new crocodile', (t) => {
     let payload = {
       name: `Croc Name`,
       sex: randomItem(["M", "F"]),

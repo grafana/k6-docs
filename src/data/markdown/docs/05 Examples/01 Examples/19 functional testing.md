@@ -9,7 +9,7 @@ k6 is well suited for functional testing
 
 ### Most basic integration test
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.1/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
 export let options = {
@@ -24,8 +24,8 @@ let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
 export default function testSuite() {
 
-  test('Fetch a list of public crocodiles', (t) => {
-    let response = session.get("/public/crocodiles")
+  describe('Fetch a list of public crocodiles', (t) => {
+    let response = session.get("/public/crocodiles");
 
     t.expect(response.status).as("response status").toEqual(200)
       .and(response).toHaveValidJson()
@@ -43,8 +43,8 @@ This test goes through several steps. It creates a new user account, authenticat
 <CodeGroup labels={[]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.1/index.js';
-import { Httpx, Request, Get, Post } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
+import { Httpx, Request, Get, Post } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
 import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
 
 export let options = {
@@ -62,7 +62,7 @@ let session = new Httpx({baseURL: 'https://test-api.k6.io'});
 
 export default function testSuite() {
 
-  test('01. Fetch public crocs', (t) => {
+  describe('01. Fetch public crocs', (t) => {
     let responses = session.batch([
       new Get('/public/crocodiles/1/'),
       new Get('/public/crocodiles/2/'),
@@ -81,7 +81,7 @@ export default function testSuite() {
 
   &&
 
-  test(`02. Create a test user ${USERNAME}`, (t) => {
+  describe(`02. Create a test user ${USERNAME}`, (t) => {
 
     let resp = session.post(`/user/register/`, {
       first_name: 'Crocodile',
@@ -96,7 +96,7 @@ export default function testSuite() {
 
   &&
 
-  test(`03. Authenticate the new user ${USERNAME}`, (t) => {
+  describe(`03. Authenticate the new user ${USERNAME}`, (t) => {
 
     let resp = session.post(`/auth/token/login/`, {
       username: USERNAME,
@@ -115,7 +115,7 @@ export default function testSuite() {
 
   &&
 
-  test('04. Create a new crocodile', (t) => {
+  describe('04. Create a new crocodile', (t) => {
     let payload = {
       name: `Croc Name`,
       sex: randomItem(["M", "F"]),
@@ -132,7 +132,7 @@ export default function testSuite() {
 
   &&
 
-  test('05. Fetch private crocs', (t) => {
+  describe('05. Fetch private crocs', (t) => {
 
     let response = session.get('/my/crocodiles/');
 
@@ -143,7 +143,7 @@ export default function testSuite() {
 
   &&
 
-  test('06. Update the croc', (t) => {
+  describe('06. Update the croc', (t) => {
     let payload = {
       name: `New name`,
     };
@@ -160,7 +160,7 @@ export default function testSuite() {
 
   &&
 
-  test('07. Delete the croc', (t) => {
+  describe('07. Delete the croc', (t) => {
 
     let resp = session.delete(`/my/crocodiles/${session.newCrocId}/`);
 

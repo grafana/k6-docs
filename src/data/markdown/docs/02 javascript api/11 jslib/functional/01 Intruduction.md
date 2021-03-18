@@ -14,7 +14,7 @@ There's nothing to install. This library is hosted on jslib and can be imported 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 ```
 
 </CodeGroup>
@@ -31,11 +31,11 @@ First, create a `mytest.js` k6 script file.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-  test('Basic API test', (t) => {
+  describe('Basic API test', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
     t.expect(response.status).as("API status code").toEqual(200);
@@ -65,12 +65,12 @@ It's possible to chain checks using the `.and()` function, as shown below.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { test } from 'https://jslib.k6.io/functional/0.0.2/index.js';
+import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
 
-  test('Fetch a list of public crocodiles', (t) => {
+  describe('Fetch a list of public crocodiles', (t) => {
     let response = http.get("https://test-api.k6.io/public/crocodiles")
 
     t.expect(response.status).as("response status").toEqual(200)
