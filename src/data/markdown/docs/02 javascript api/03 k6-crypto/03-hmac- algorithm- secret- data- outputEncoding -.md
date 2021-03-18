@@ -8,14 +8,14 @@ Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
 | Parameter      |  Type  | Description                                                                                                                         |
 | -------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- |
 | algorithm      | string | The hashing algorithm to use. One of `md4`, `md5`, `sha1`, `sha256`, `sha384`, `sha512`, `sha512_224`, `sha512_256` or `ripemd160`. |
-| secret         | string / ArrayBuffer | A shared secret used to sign the data.                                                                                              |
-| data           | string / ArrayBuffer | The data to sign.                                                                                                                   |
+| secret         | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | A shared secret used to sign the data.   |
+| data           | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | The data to sign. |
 | outputEncoding | string | Describes the type of encoding to use for the hash value. Can be "base64", "base64url", "base64rawurl", "hex" or "binary". |
 
 ### Returns
 
-| Type           | Description                                    |
-| -------------- | ------------------------------                 |
+| Type           | Description |
+| -------------- | ----------- |
 | string / Array | The hash digest as string (for "base64", "base64url", "base64rawurl", "hex" `outputEncoding`) or raw array of integers (for "binary" `outputEncoding`). |
 
 

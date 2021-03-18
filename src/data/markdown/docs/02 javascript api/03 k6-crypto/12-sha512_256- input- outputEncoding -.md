@@ -7,13 +7,13 @@ Use [sha512_256](https://golang.org/pkg/crypto/sha512/) to hash input data.
 
 | Parameter      | Type                 | Description                                       |
 | -------------- | -------------------- | --------------------------------------------------|
-| input          | string / ArrayBuffer | The input string or `ArrayBuffer` object to hash. |
+| input          | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | The input string or `ArrayBuffer` object to hash. |
 | outputEncoding | string               | Describes the type of encoding to use for the hash value. Can be "base64", "base64url", "base64rawurl", "hex" or "binary". |
 
 ### Returns
 
-| Type           | Description                                    |
-| -------------- | ------------------------------                 |
+| Type           | Description |
+| -------------- | ----------- |
 | string / Array | The hash digest as string (for "base64", "base64url", "base64rawurl", "hex" `outputEncoding`) or raw array of integers (for "binary" `outputEncoding`). |
 
 
