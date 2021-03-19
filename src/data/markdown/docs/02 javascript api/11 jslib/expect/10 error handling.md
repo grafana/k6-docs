@@ -73,7 +73,7 @@ export default function() {
 
 # Handling exceptions
 
-Sometimes it's hard to predict the way SUT can fail. For those cases, the `expect` library catched any exceptions thrown inside of `describe()` body, and records it as a failed condition.
+Sometimes it's hard to predict the way SUT can fail. For those cases, the `expect` library caught any exceptions thrown inside of `describe()` body, and records it as a failed condition.
 
 <CodeGroup labels={[]}>
 

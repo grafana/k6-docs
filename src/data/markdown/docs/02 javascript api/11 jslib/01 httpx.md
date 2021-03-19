@@ -27,13 +27,12 @@ This documentation is for the last version only. If you discover that some of th
 
 ### Example
 
-<CodeGroup labels={["httpx session used together with expect library"]}>
+<CodeGroup labels={["httpx session"]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
-import { randomIntBetween, 
-         randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
+import { fail } from 'k6';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
+import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
 
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`;  // random email address
 const PASSWORD = 'superCroc2021';
@@ -49,54 +48,48 @@ let session = new Httpx({
 
 export default function testSuite() {
 
-  describe(`Create a test user ${USERNAME}`, (t) => {
+  let registrationResp = session.post(`/user/register/`, {
+    first_name: 'Crocodile',
+    last_name: 'Owner',
+    username: USERNAME,
+    password: PASSWORD,
+  });
 
-    let resp = session.post(`/user/register/`, {
-      first_name: 'Crocodile',
-      last_name: 'Owner',
-      username: USERNAME,
-      password: PASSWORD,
-    });
+  if (registrationResp.status !== 201){
+    fail("registration failed")
+  }
 
-    t.expect(resp.status).as("status").toEqual(201)
-      .and(resp).toHaveValidJson();
-  })
+  let loginResp = session.post(`/auth/token/login/`, {
+    username: USERNAME,
+    password: PASSWORD
+  });
 
-  &&
+  if(loginResp.status !== 200){
+    fail("Authentication failed");
+  }
 
-  describe(`Authenticate the new user ${USERNAME}`, (t) => {
+  let authToken = loginResp.json('access');
 
-    let resp = session.post(`/auth/token/login/`, {
-      username: USERNAME,
-      password: PASSWORD
-    });
+  // set the authorization header on the session for the subsequent requests.
+  session.addHeader('Authorization', `Bearer ${authToken}`);
 
-    t.expect(resp.status).as("Auth status").toBeBetween(200, 204)
-      .and(resp).toHaveValidJson()
-      .and(resp.json('access')).as("auth token").toBeTruthy();
+  let payload = {
+    name: `Croc Name`,
+    sex: "M",
+    date_of_birth: '2019-01-01',
+  };
 
-    let authToken = resp.json('access');
-    // set the authorization header on the session for the subsequent requests.
-    session.addHeader('Authorization', `Bearer ${authToken}`);
+  // this request uses the Authorization header set above.
+  let respCreateCrocodile = session.post(`/my/crocodiles/`, payload);
 
-  })
-
-  &&
-
-  describe('Create a new crocodile', (t) => {
-    let payload = {
-      name: `Croc Name`,
-      sex: randomItem(["M", "F"]),
-      date_of_birth: '2019-01-01',
-    };
-
-    let resp = session.post(`/my/crocodiles/`, payload);
-
-    t.expect(resp.status).as("Croc creation status").toEqual(201)
-      .and(resp).toHaveValidJson();
-  })
-
+  if(respCreateCrocodile.status !== 201){
+    fail("Crocodile creation failed");
+  }
+  else{
+    console.log("New crocodile created");
+  }
 }
+
 ```
 
 </CodeGroup>
