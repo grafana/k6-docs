@@ -1,11 +1,11 @@
 ---
-title: 'Error handling.'
-description: 'How to handle errors in functional.js.'
+title: 'Failing on first error'
+description: 'Abort the test on first error'
 ---
 
 When executing a performance or integration test, you should expect that your system under test may crash. If this happens, your test should print useful information rather than stack traces caused by unexpected HTTP responses. 
 
-`functional` library is designed to make it easy to write test scripts that are resilient to failing SUT (System under test). 
+`expect` library is designed to make it easy to write test scripts that are resilient to failing SUT (System Under Test). 
 
 It's not uncommon for performance testers to write fragile code that assumes the http response will contain expected data. 
 
@@ -47,14 +47,14 @@ In this example, the system was overloaded, and the load balancer returned a 503
 This test code is fragile to failing SUT because the first `check` does not prevent the second check from executing. 
 It's possible to rewrite this code to be less fragile, but that will make it longer and less readable. 
 
-Error handling of this type happens automatically when using the `functional.js` library.
+Error handling of this type happens automatically when using the `expect.js` library.
 When the first `expect` fails, the remaining checks in the chain are not executed, and the test is marked as failed — the execution proceeds to the next `describe()` instead of restarting from the top.
 
 
-<CodeGroup labels={["Resilient code written using functional.js"]}>
+<CodeGroup labels={["Resilient code written using expect.js"]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
+import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function() {
@@ -70,4 +70,29 @@ export default function() {
 ```
 
 </CodeGroup>
+
+# Handling exceptions
+
+Sometimes it's hard to predict the way SUT can fail. For those cases, the `expect` library catched any exceptions thrown inside of `describe()` body, and records it as a failed condition.
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
+import http from 'k6/http';
+
+export default function testSuite() {
+
+  describe('Executing test against a Shaky SUT', (t) => {
+    throw("Something entirely unexpected happened");
+  });
+}
+```
+
+</CodeGroup>
+
+Execution of this script should print the following output.
+
+
+![output](./images/exception-handling.png)
 

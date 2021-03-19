@@ -11,7 +11,7 @@ It's a http client with features that are not yet available in the native module
 
 
 
-httpx module integrates well with functional library. 
+httpx module integrates well with expect library. 
 
 
 <Blockquote mod='warning'>
@@ -27,11 +27,11 @@ This documentation is for the last version only. If you discover that some of th
 
 ### Example
 
-<CodeGroup labels={["httpx session used together with functional library"]}>
+<CodeGroup labels={["httpx session used together with expect library"]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
+import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 import { randomIntBetween, 
          randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
 

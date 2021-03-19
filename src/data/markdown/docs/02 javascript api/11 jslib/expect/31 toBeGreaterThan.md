@@ -26,7 +26,7 @@ When `toBeGreaterThan(expectedValue)` evaluates to false, the chain is broken, a
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
+import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {

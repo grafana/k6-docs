@@ -8,7 +8,7 @@ The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript l
 
 | Library | Description |
 | -------- | ----------- |
-| [functional](/javascript-api/jslib/functional)  | Micro-framework for writing tests in a style of Jest or ava.  |
+| [expect](/javascript-api/jslib/expect)  | Micro-framework for writing tests in a style of Jest or ava.  |
 | [httpx](/javascript-api/jslib/httpx)  | Wrapper around the http that simplifies session handling |
 | -  | Documentation for other libraries will be added shortly. |
 
@@ -53,7 +53,7 @@ The complete list of supported libraries can be viewed on [jslib.k6.io](https://
 https://jslib.k6.io/library-name/version/index.js
 ```
 
-Libraries hosted on jslib have versions. For example "functional.js" library currently has v0.0.1 and v0.0.2. 
+Libraries hosted on jslib have versions. For example "httpx.js" library currently has v0.0.1, v0.0.2 and v0.0.3. 
 
 We recommend that you use the last version available at the time of writing your k6 scripts. Older versions will continue to be hosted on jslib, so you don't have to worry about your scripts breaking.
 

@@ -23,7 +23,7 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 
 ```javascript
 import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
+import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 
 let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
