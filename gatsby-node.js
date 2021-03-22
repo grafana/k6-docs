@@ -66,11 +66,16 @@ const getPageTranslations = (
   ).slice(3);
 
   SUPPORTED_LOCALES.forEach((locale) => {
-    const translation =
-      [...filePath.split('/'), unorderify(name)].reduce(
-        treeReducer,
-        getGuidesSidebar(locale),
-      )?.meta || null;
+    let translation = [...filePath.split('/'), unorderify(name)].reduce(
+      treeReducer,
+      getGuidesSidebar(locale),
+    );
+
+    if (translation && translation.meta) {
+      translation = translation.meta;
+    } else {
+      translation = null;
+    }
 
     if (translation) {
       pageTranslations[locale] = translation;
