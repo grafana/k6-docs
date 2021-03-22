@@ -98,7 +98,7 @@ The previous multipart request example has some limitations:
 - It's not possible to upload multiple files as part of the same form field, because
   JS object keys must be unique.
 
-To address this we suggest using the [`FormData` polyfill for k6](https://jslib.k6.io/formdata/0.0.1/index.js).
+To address this we suggest using the [`FormData` polyfill for k6](https://jslib.k6.io/formdata/0.0.2/index.js).
 
 Here's an example of uploading several binary files and a text file using the polyfill:
 
@@ -107,7 +107,7 @@ Here's an example of uploading several binary files and a text file using the po
 ```javascript
 import http from 'k6/http';
 import { check } from 'k6';
-import { FormData } from 'https://jslib.k6.io/formdata/0.0.1/index.js';
+import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
 
 const img1 = open('/path/to/image1.png', 'b');
 const img2 = open('/path/to/image2.jpg', 'b');
@@ -115,6 +115,8 @@ const txt = open('/path/to/text.txt');
 
 export default function() {
   const fd = new FormData();
+  fd.append('someTextField', 'someValue');
+  fd.append('anotherTextField', 'anotherValue');
   fd.append('images', http.file(img1, 'image1.png', 'image/png'));
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
   fd.append('text', http.file(txt, 'text.txt', 'text/plain'));

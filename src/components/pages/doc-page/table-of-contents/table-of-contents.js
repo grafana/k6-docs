@@ -7,6 +7,8 @@ import styles from './table-of-contents.module.scss';
 
 const components = {
   h2: HeadingLandmark('h2'),
+  // uncomment the next line to add h3 to ToC
+  // h3: HeadingLandmark('h3'),
 };
 
 const TableOfContents = forwardRef(
@@ -22,7 +24,7 @@ const TableOfContents = forwardRef(
     const links = useLandmark(
       {
         containerRef: contentContainerRef,
-        markSelector: 'h2',
+        markSelector: 'h2', // replace to 'h2, h3' to include h3 in ToC
       },
       [],
     );
@@ -53,10 +55,14 @@ const TableOfContents = forwardRef(
       >
         <nav className={`${styles.anchorBar} ${label ?? ''}`}>
           <ul className={styles.anchorWrapper}>
-            {links.map(({ title, anchor }, i) => (
+            {links.map(({ title, anchor, tagName }, i) => (
               <li className={styles.anchorBox} key={`al-${i}`}>
                 <a
-                  className={classNames(styles.anchor)}
+                  className={
+                    tagName === 'H2'
+                      ? classNames(styles.h2)
+                      : classNames(styles.h3)
+                  }
                   href={`${anchor}`}
                   onClick={(e) => handleAnchorClick(e, anchor)}
                 >

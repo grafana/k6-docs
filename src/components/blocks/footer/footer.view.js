@@ -106,11 +106,6 @@ export const Footer = () => (
                     </Link>
                   </li>
                   <li className={styles.navColumnItem}>
-                    <Link className={styles.navColumnLink} to={'/examples'}>
-                      Examples & Tutorials
-                    </Link>
-                  </li>
-                  <li className={styles.navColumnItem}>
                     <Link className={styles.navColumnLink} to={'/integrations'}>
                       Integrations
                     </Link>
@@ -129,6 +124,14 @@ export const Footer = () => (
                       href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
                     >
                       Build vs Buy
+                    </a>
+                  </li>
+                  <li className={styles.navColumnItem}>
+                    <a
+                      className={styles.navColumnLink}
+                      href={`${main}/resource-library`}
+                    >
+                      Resource library
                     </a>
                   </li>
                 </ul>

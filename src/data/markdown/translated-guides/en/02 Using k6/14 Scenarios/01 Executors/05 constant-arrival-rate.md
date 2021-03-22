@@ -21,11 +21,11 @@ also adds the following options:
 
 | Option             | Type    | Description                                                                             | Default |
 | ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
-| `duration*`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
-| `rate*`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
-| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
-| `timeUnit`         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| `maxVUs`           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| duration<sup>(required)</sup>        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
+| rate<sup>(required)</sup>            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
+| preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
+| timeUnit         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
+| maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
 ## When to use
 

@@ -954,6 +954,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/misc/usage-collection',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/using-k6/using-node-modules',
+    toPath: '/using-k6/modules',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {

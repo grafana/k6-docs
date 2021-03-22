@@ -67,8 +67,11 @@ k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to yo
 
 | Name   | Description                                |
 | ------ | ------------------------------------------ |
+| expected_response <sup>(≥ v0.31)</sup>  | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
+| group   | When the request runs inside a [group](/javascript-api/k6/group-name-fn), the tag value is the group name.  Default is empty.               |
 | name   | Defaults to URL requested                  |
 | method | Request method (`GET`, `POST`, `PUT` etc.) |
+| scenario   | When the request runs inside a [scenario](/using-k6/scenarios), the tag value is the scenario name.  Default is `default`.               |
 | status | response status                            |
 | url    | defaults to URL requested                  |
 
@@ -84,9 +87,11 @@ Below you can see how a test result data point (the duration of an HTTP request)
     "time": "2017-06-02T23:10:29.52444541+02:00",
     "value": 586.831127,
     "tags": {
+      "expected_response": "true",
       "group": "",
       "method": "GET",
       "name": "http://test.k6.io",
+      "scenario": "default",
       "status": "200",
       "url": "http://test.k6.io"
     }
@@ -144,7 +149,6 @@ Which would produce JSON output like the following:
         "time":"2017-06-02T23:10:29.52444541+02:00",
         "value":586.831127,
         "tags": {
-            "group":"",
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
@@ -162,7 +166,6 @@ Which would produce JSON output like the following:
         "time":"2017-06-02T23:10:29.58582529+02:00",
         "value":580.839273,
         "tags": {
-            "group":"",
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
@@ -176,7 +179,7 @@ Which would produce JSON output like the following:
 
 Note how the `name` is the same for the two data samples related to two different URLs. Filtering the results on tag `name: PostsItemURL` will give you a result set including all the data points from all the 100 different URLs.
 
-Additionally, you can use the `http.url` (v0.16.0) wrapper to set the name tag with a string template value:
+Additionally, you can use the `http.url` wrapper to set the name tag with a string template value:
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 

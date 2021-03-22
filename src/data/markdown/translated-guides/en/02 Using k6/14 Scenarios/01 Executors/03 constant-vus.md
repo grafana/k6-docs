@@ -15,8 +15,8 @@ also adds the following options:
 
 | Option      | Type    | Description                                         | Default |
 | ----------- | ------- | --------------------------------------------------- | ------- |
-| `duration*` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
-| `vus`       | integer | Number of VUs to run concurrently.                  | `1`     |
+| duration<sup>(required)</sup> | string  | Total scenario duration (excluding `gracefulStop`). | -       |
+| vus       | integer | Number of VUs to run concurrently.                  | `1`     |
 
 ## When to use
 
