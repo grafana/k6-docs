@@ -21,8 +21,7 @@ export default function I18nProvider({ children }) {
           console.warn(`i18n/[${locale}]: no localized message for ${key}`);
           msgLocalized = localizedMessages.en[key];
           if (!msgLocalized) {
-            console.error(`i18n: no English message for ${key}`);
-            msgLocalized = '???';
+            throw new Error(`i18n: no English message for ${key}`);
           }
         }
         return msgLocalized;
