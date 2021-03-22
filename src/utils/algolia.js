@@ -30,7 +30,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
     return [];
   }
 
-  // disable sending spanish content to Algolia
+  // @TODO: remove to enable sending spanish content to Algolia
   if (/\/es\//i.test(fileAbsolutePath)) {
     // eslint-disable-next-line no-console
     console.log('exluded ES page from algolia indecies:', fileAbsolutePath);

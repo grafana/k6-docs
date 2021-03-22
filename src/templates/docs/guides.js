@@ -44,7 +44,7 @@ function GuidesContent({
     docPageContent.contentWrapper,
   );
 
-  // @TODO: update later
+  // @TODO: update if more languages are added
   const guidesTranslations = {
     en: {
       path: '/',
