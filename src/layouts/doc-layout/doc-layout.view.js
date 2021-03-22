@@ -15,6 +15,7 @@ import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
+import { I18N_CONFIG } from 'i18n/i18n-config';
 import React, { useLayoutEffect, useState, useEffect } from 'react';
 import {
   Cookies,
@@ -23,7 +24,6 @@ import {
 } from 'react-cookie-banner';
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
-import { I18N_CONFIG } from 'utils/i18n-config';
 import { main, app } from 'utils/urls';
 
 import styles from './doc-layout.module.scss';

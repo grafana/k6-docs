@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 const chunk = require('chunk-text');
+const { I18N_CONFIG } = require('i18n/i18n-config');
 
 const { stripDirectoryPath, mdxAstToPlainText, flat } = require('./utils');
 const {
@@ -31,10 +32,12 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   }
 
   // @TODO: remove to enable sending spanish content to Algolia
-  if (/\/es\//i.test(fileAbsolutePath)) {
-    // eslint-disable-next-line no-console
-    console.log('exluded ES page from algolia indecies:', fileAbsolutePath);
-    return [];
+  if (I18N_CONFIG.hideEsFromAlgoliaSearch) {
+    if (/\/es\//i.test(fileAbsolutePath)) {
+      // eslint-disable-next-line no-console
+      console.log('exluded ES page from algolia indecies:', fileAbsolutePath);
+      return [];
+    }
   }
 
   const strippedDirectory = stripDirectoryPath(fileAbsolutePath, kind);

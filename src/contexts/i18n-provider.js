@@ -1,5 +1,5 @@
+import { localizedMessages } from 'i18n/guides-translations';
 import React from 'react';
-import { localizedMessages } from 'utils/guides-translations';
 
 import { useLocale } from './locale-provider';
 

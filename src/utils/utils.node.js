@@ -1,5 +1,6 @@
 /* gatsby-node.js specific helper functions */
-const { pathTranslations } = require('./path-translations');
+const { pathTranslations } = require('../i18n/path-translations');
+
 const { slugify, compose, stripDirectoryPath } = require('./utils');
 
 const SUPPORTED_LOCALES = ['es', 'en'];

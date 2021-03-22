@@ -67,6 +67,7 @@
           "templates",
           "utils",
           "contexts",
+          "i18n",
         ]
       }
     ],
