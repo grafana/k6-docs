@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { I18N_CONFIG } from 'i18n/i18n-config';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createMetaImagePath } from 'utils';
@@ -41,9 +42,11 @@ export const SEO = ({
 
   return (
     <>
-      {slug && (slug.startsWith('es/') || slug === 'es') && (
-        <Helmet meta={[{ name: 'robots', content: 'noindex' }]} />
-      )}
+      {I18N_CONFIG.hideEsFromRobots &&
+        slug &&
+        (slug.startsWith('es/') || slug === 'es') && (
+          <Helmet meta={[{ name: 'robots', content: 'noindex' }]} />
+        )}
       <Helmet
         title={currentTitle}
         htmlAttributes={{
