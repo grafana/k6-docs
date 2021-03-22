@@ -11,6 +11,8 @@ export const useI18n = () => {
 export default function I18nProvider({ children }) {
   const { locale } = useLocale();
 
+  console.log('i18n locale', locale);
+
   const i18nContextValue = React.useMemo(() => {
     return {
       t: (key) => {

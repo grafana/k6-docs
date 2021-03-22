@@ -1,28 +1,26 @@
 import { Heading } from 'components/shared/heading';
+import { useI18n } from 'contexts/i18n-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 
 import styles from './use-cases.module.scss';
 
 export const UseCases = () => {
+  const { t } = useI18n();
   return (
     <section className={`container ${styles.container}`}>
       <Heading tag={'h2'} size={'lg'} className={styles.title}>
-        Use cases
+        {t('welcome.use-cases.title')}
       </Heading>
-      <p>
-        k6 users are typically Developers, QA Engineers, and DevOps. They use k6
-        for testing the performance of APIs, microservices, and websites. Common
-        k6 use cases are:
-      </p>
+      <p>{t('welcome.use-cases.description')}</p>
       <ul>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
-            Load Testing
+            {t('welcome.use-cases.load-testing.title')}
           </Heading>
           <p>
-            k6 is optimized for minimal consumption of system resources. It’s a
-            high-performance tool designed for running tests with high load (
+            {t('welcome.use-cases.load-testing.description1')}
+            {' ('}
             <Link
               className={'link'}
               to="/test-types/stress-testing#spike-testing-in-k6"
@@ -37,23 +35,24 @@ export const UseCases = () => {
             <Link className={'link'} to="/test-types/soak-testing">
               soak tests
             </Link>
-            ) in pre-production and QA environments.
+            {') '}
+            {t('welcome.use-cases.load-testing.description2')}
           </p>
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
-            Performance monitoring
+            {t('welcome.use-cases.performance-monitoring.title')}
           </Heading>
           <p>
-            k6 provides great primitives for{' '}
+            {t('welcome.use-cases.performance-monitoring.description1')}{' '}
             <Link
               className={'link'}
               to="/testing-guides/automated-performance-testing"
             >
-              performance testing automation
+              {t('welcome.use-cases.performance-monitoring.testing-automation')}
             </Link>
-            . You could run tests with a small amount of load to continuously
-            monitor the performance of your production environment.
+            {'. '}
+            {t('welcome.use-cases.performance-monitoring.description2')}
           </p>
         </li>
       </ul>

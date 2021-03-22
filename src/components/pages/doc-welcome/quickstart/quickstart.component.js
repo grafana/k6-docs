@@ -1,6 +1,6 @@
+import { useI18n } from 'contexts/i18n-provider';
 import React from 'react';
 
-import { useI18n } from '../../../../contexts/i18n-provider';
 import { ItemCardsRow } from '../../../blocks/item-cards-row';
 
 import styles from './quickstart.module.scss';

@@ -1,43 +1,45 @@
 import { Heading } from 'components/shared/heading';
 import { Trait } from 'components/shared/trait';
+import { useI18n } from 'contexts/i18n-provider';
 import { Link } from 'gatsby';
-import * as React from 'react';
+import React from 'react';
 
 import styles from './doc-welcome-features.module.scss';
 
-export const Features = () => (
-  <section className={`container ${styles.container}`}>
-    <Heading tag={'h2'} size={'lg'} className={styles.title}>
-      Key features
-    </Heading>
-    <p>
-      k6 is packed with features, which you can learn all about in the
-      documentation. Key features include:
-    </p>
+export const Features = () => {
+  const { t } = useI18n();
 
-    <div className={'row'}>
-      <div className="col-md-12">
-        <Trait className={styles.trait}>
-          CLI tool with developer-friendly APIs.
-        </Trait>
+  return (
+    <section className={`container ${styles.container}`}>
+      <Heading tag={'h2'} size={'lg'} className={styles.title}>
+        {t('welcome.features.title')}
+      </Heading>
+      <p>{t('welcome.features.description')}</p>
 
-        <Trait className={styles.trait}>
-          Scripting in JavaScript ES2015/ES6 - with support for{' '}
-          <Link className={'link'} to="/using-k6/modules">
-            local and remote modules
-          </Link>
-        </Trait>
-        <Trait className={styles.trait}>
-          <Link className={'link'} to="/using-k6/checks">
-            Checks
-          </Link>{' '}
-          and{' '}
-          <Link className={'link'} to="/using-k6/thresholds">
-            Thresholds
-          </Link>{' '}
-          - for goal-oriented, automation-friendly load testing
-        </Trait>
+      <div className={'row'}>
+        <div className="col-md-12">
+          <Trait className={styles.trait}>
+            {t('welcome.features.cli-tool')}
+          </Trait>
+
+          <Trait className={styles.trait}>
+            {t('welcome.features.scripting')}{' '}
+            <Link className={'link'} to="/using-k6/modules">
+              {t('welcome.features.modules')}
+            </Link>
+          </Trait>
+          <Trait className={styles.trait}>
+            <Link className={'link'} to="/using-k6/checks">
+              {t('welcome.features.checks')}
+            </Link>{' '}
+            {t('welcome.features.and')}{' '}
+            <Link className={'link'} to="/using-k6/thresholds">
+              {t('welcome.features.thresholds')}
+            </Link>{' '}
+            {t('welcome.features.testing')}
+          </Trait>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
