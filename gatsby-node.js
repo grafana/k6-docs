@@ -86,16 +86,7 @@ const getPageTranslations = (
 
 const GUIDES_TOP_LEVEL_LINKS = {
   label: 'guides',
-  variants: {
-    en: {
-      label: 'guides',
-      to: '/',
-    },
-    es: {
-      label: 'guías',
-      to: '/es',
-    },
-  },
+  to: '/',
 };
 
 const generateTopLevelLinks = (topLevelLinks) => [

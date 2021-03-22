@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useLocale } from 'contexts/locale-provider';
 import { Link, withPrefix } from 'gatsby';
 import React from 'react';
 
@@ -88,8 +87,6 @@ const Single = ({ to, label, sections }) => {
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
 
-  const { locale } = useLocale();
-
   return (
     <nav>
       <ul className={styles.list}>
@@ -97,10 +94,6 @@ export const HeaderNav = ({ links }) => {
           // eslint-disable-next-line prefer-const
           let { label, to, submenu } = link;
 
-          if (label === 'guides') {
-            label = link.variants[locale].label;
-            to = link.variants[locale].to;
-          }
           return (
             <li
               className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}

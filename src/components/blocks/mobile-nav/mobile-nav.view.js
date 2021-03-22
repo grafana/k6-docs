@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { useLocale } from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 import Logo from 'svg/logo.inline.svg';
@@ -7,8 +6,6 @@ import Logo from 'svg/logo.inline.svg';
 import styles from './mobile-nav.module.scss';
 
 export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => {
-  const { locale } = useLocale();
-
   return (
     <div
       className={classNames(styles.wrapper, {
@@ -40,10 +37,6 @@ export const MobileNav = ({ links, isVisible, onCloseButtonClick }) => {
             // eslint-disable-next-line prefer-const
             let { label, to } = link;
 
-            if (label === 'guides') {
-              label = link.variants[locale].label;
-              to = link.variants[locale].to;
-            }
             return (
               <li className={styles.listItem} key={label || to}>
                 <Link className={styles.listLink} to={to}>
