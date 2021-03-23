@@ -13,11 +13,8 @@ $ sudo apt-get update
 $ sudo apt-get install k6
 ```
 
-> #### ⚠️ If you are behind a firewall or proxy
->
-> There have been reports of users being unable to download the key from Ubuntu's key-server using `apt-key`
-> command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
-> alternative approach instead:
+> #### ⚠️ En caso de usar un firewall o un proxy
+> Usted debe tener en cuenta que algunos usuarios han reportado que no pueden descargar la clave del servidor de Ubuntu usando el comando `apt-key`, debido a que los firewalls o los proxies bloquean las solicitudes. Si usted está presentando este problema, puede intentar hacerlo de la siguiente manera: 
 >
 > ```bash
 > $ wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
@@ -43,12 +40,11 @@ $ brew install k6
 
 ## Windows (MSI installer)
 
-Download the k6 installer from [here](https://dl.bintray.com/loadimpact/windows/k6-v0.29.0-amd64.msi)
+Para instalarlo en Windows, descargue desde [el archivo k6](https://dl.bintray.com/loadimpact/windows/k6-v0.31.1-amd64.msi)
 
 ## Binaries
 
-Grab a prebuilt binary from our <a href="https://github.com/loadimpact/k6/releases">Releases page</a>.
-Install the binary in your `PATH` to run **k6** from any location.
+Toma un binario preconstruido de nuestra <a href="https://github.com/loadimpact/k6/releases">página de releases</a>. Instala el binario en el PATH de tu máquina, de esta manera puede ejecutar el archivo `k6` desde cualquier lugar.
 
 ## Docker
 

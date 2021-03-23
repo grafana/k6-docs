@@ -1,21 +1,23 @@
 ---
 title: 'Salida de resultados'
-excerpt: ''
 ---
 
-By default, the `k6 run` command prints runtime information and general results to `stdout`.
+De manera predeterminada, el comando `k6 run` imprime la información del tiempo de ejecución y los resultados generales en `stdout`.
 
-## Standard output
+## Salida estándar
+
 
 ![k6 results - console/stdout output](./images/k6-results-stdout.png)
 
-When k6 displays the results to `stdout`, it will show the k6 logo and the following test information:
+Cuando k6 muestre los resultados en `stdout`, se mostrará el logotipo de k6 y la siguiente información de la prueba:
 
-- Test details: general test information and load options.
-- Progress bar: test status and how much time has passed.
-- Test summary: the test results (after test completion).
+- Detalles de la prueba: información general de la prueba y opciones de carga.
+- Barra de progreso: estado de la prueba y el tiempo transcurrido.
+- Resumen de la prueba: los resultados de la prueba (tras la finalización).
 
-### Test details
+
+### Detalles de la prueba
+
 
 <CodeGroup labels={[]}>
 
@@ -30,21 +32,23 @@ duration: 1m0s, iterations: -
 
 </CodeGroup>
 
-- `execution: local` the k6 execution mode (local or cloud).
-- `output: -` the output of the test results. The default is `stdout`.
-- `script: script.js` shows the name of the script that is being executed.
-- `duration: 1m0s` the test run [duration](/using-k6/options#duration).
-- `iterations: -` the total number of VU [iterations](https://k6.io/docs/using-k6/options#iterations).
-- `vus: 100` the initial number of VUs that test will start running.
-- `max: 100` the maximum number of VUs that the test will scale.
+- Ejecución  local:  el modo de ejecución de k6 (local o en la nube).
+- Salida:  la salida de los resultados de la prueba. El valor por defecto es stdout.
+- Script: script.js muestra el nombre del script que se está ejecutando.
+- Duración: 1m0s la duración de la ejecución de la prueba.
+- Iteraciones: el número total de iteraciones de los VU.
+- VUs: El número inicial de los VUs que la prueba comenzará a ejecutar es 100. 
+- max: 100 es el número máximo de VUs que escalará la prueba.
 
-### Test summary
+
+### Resumen de la prueba
+
 
 The test summary provides a general overview of your test result. The summary prints to `stdout` the status of:
 
-- [Built-in metrics](/using-k6/metrics#built-in-metrics) and [custom metrics](/using-k6/metrics#custom-metrics).
+- [Métricas incorporadas](/using-k6/metrics#built-in-metrics) y [métricas personalizadas](/using-k6/metrics#custom-metrics).
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
-- [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
+- [Grupos](/using-k6/tags-and-groups#groups) y [etiquetas](/using-k6/tags-and-groups#tags).
 
 <CodeGroup labels={[]}>
 
@@ -67,11 +71,11 @@ vus_max....................: 100    min=100 max=100
 
 </CodeGroup>
 
-> To learn more about the metrics k6 collects and reports, read the [Metrics guide](/using-k6/metrics).
+> Para saber más sobre las métricas que recolecta e informa k6, lea la [guía de las métricas.](/using-k6/metrics).
 
-**Output of trend metrics**
+**Salida de las métricas de tendencia**
 
-[Trend metrics](/using-k6/metrics#metric-types) collect trend statistics (min/max/avg/percentiles) for a series of values. On stdout they are printed like this:
+[Métricas de tendencia](/using-k6/metrics#metric-types) recogen las estadísticas de tendencia (min/max/avg/percentiles) de una serie de valores. En stdout se imprimen de la siguiente manera:
 
 <CodeGroup labels={[]}>
 
@@ -81,7 +85,7 @@ http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s   
 
 </CodeGroup>
 
-You could use the [summary-trend-stats](/using-k6/options#summary-trend-stats) option to change the stats reported for Trend metrics.
+Puede utilizar la opción [summary-trend-stats](/using-k6/options#summary-trend-stats) para cambiar las estadísticas reportadas a las métricas de tendencia.
 
 <CodeGroup labels={[]}>
 
@@ -91,11 +95,11 @@ $ k6 run --summary-trend-stats="avg,p(99)" script.js
 
 </CodeGroup>
 
-## Output plugins
+## Plugins de salida
 
-k6 can send more granular result data to different outputs to integrate and visualize k6 metrics on other platforms.
+k6 puede enviar datos de resultados más granulares a diferentes salidas para integrar y visualizar las métricas de k6 en otras plataformas.
+La lista de plugins de salida son los siguientes:
 
-The list of output plugins are:
 
 | Plugin                                                        | Usage                   |
 | ------------------------------------------------------------- | ----------------------- |
@@ -109,9 +113,9 @@ The list of output plugins are:
 | [New Relic](/results-visualization/new-relic)                 | `k6 run --out statsd`   |
 | [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
 
-## Multiple outputs
+## Salidas múltiples
 
-You can simultaneously send metrics to several outputs by using the CLI `--out` flag multiple times, for example:
+Puede enviar simultáneamente métricas a varias salidas utilizando el indicador CLI `--out` varias veces, por ejemplo:
 
 <CodeGroup labels={[]}>
 
@@ -123,11 +127,12 @@ $ k6 run \
 
 </CodeGroup>
 
-## Summary export
+## Exportando el resumen
 
-Additionally, the `k6 run` command can export the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
+Además, el comando `k6 run` puede exportar el informe de resumen de fin de prueba a un archivo JSON que incluye los datos de todas las métricas, comprobaciones y umbrales de la prueba.
 
-This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
+Esto es útil para obtener los resultados agregados de la prueba en un formato legible por la máquina, para la integración con paneles de control, alertas externas, entre otros.
+
 
 <CodeGroup labels={[]}>
 
@@ -137,4 +142,4 @@ $ k6 run --summary-export=export.json script.js
 
 </CodeGroup>
 
-> Read more about the summary on the [JSON plugin documentation](/results-visualization/json#summary-export)
+> Lea más información acerca del resumen, en la [documentación del plugin de JSON](/results-visualization/json#summary-export)

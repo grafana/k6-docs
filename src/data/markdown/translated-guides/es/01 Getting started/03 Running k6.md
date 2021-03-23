@@ -1,12 +1,10 @@
 ---
 title: 'Ejecución de k6'
-excerpt: ''
 ---
 
-## Running local tests
+## Ejecutando los tests localmente
 
-Let's start by running a simple local script. Copy the code below, paste it into your
-favourite editor, and save it as "script.js":
+Primeramente vamos a comenzar corriendo el script de manera local. Copie el siguiente código,  pégalo en tu editor favorito y luego guarda el script como: "script.js":
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -22,7 +20,7 @@ export default function () {
 
 </CodeGroup>
 
-Then run k6 using this command:
+Luego ejecute el archivo K6 usando el siguiente comando:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -31,11 +29,7 @@ $ k6 run script.js
 ```
 
 ```bash
-# When using the `k6` docker image, you can't just give the script name since
-# the script file will not be available to the container as it runs. Instead
-# you must tell k6 to read `stdin` by passing the file name as `-`. Then you
-# pipe the actual file into the container with `<` or equivalent. This will
-# cause the file to be redirected into the container and be read by k6.
+# Al usar la imagen del docker "k6", no se puede simplemente especificar el nombre del archivo, ya que el archivo no estará disponible para el contenedor(docker) mientras este se ejecuta. En su lugar debe decirle a K6 que lea "STDIN" pasando el nombre del archivo como "-". Luego ponga el archivo en el contenedor con `<` o el equivalente. Esto hará que el archivo sea redirigido al contenedor y sea leído por k6.
 
 $ docker run -i loadimpact/k6 run - <script.js
 ```
@@ -46,9 +40,10 @@ PS C:\> cat script.js | docker run -i loadimpact/k6 run -
 
 </CodeGroup>
 
-## Adding more VUs
+## Agregando más usuarios virtuales (VUs)
 
-Now we'll try running a load test with more than 1 virtual user and a slightly longer duration:
+
+Ahora vamos a ejecutar una prueba de carga con más de un usuario y una duración mayor:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -66,14 +61,11 @@ PS C:\> cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s 
 
 </CodeGroup>
 
-_Running a 30-second, 10-VU load test_
+_Ejecutando una prueba de carga de 10 usuarios en 30 segundos_
 
-k6 works with the concept of virtual users (VUs), which run scripts - they're essentially
-glorified, parallel `while(true)` loops. Scripts are written using JavaScript, as ES6 modules,
-which allows you to break larger tests into smaller pieces, or make reusable pieces as you like.
+k6 funciona usando el concepto de usuarios virtuales (VUs), los cuales ejecutan los scripts en paralelo mientras que sea verdadero `while(true)`. Los scripts son desarrollados usando JavaScript, como módulos ES6, lo cual permite separar pruebas grandes en pequeñas porciones de prueba, o reutilizar estas porciones de prueba.
 
-Scripts must contain, at the very least, a `default` function - this defines the entry point for
-your VUs, similar to the `main()` function in many other languages:
+Los scripts deben contener al menos una función predeterminada, que defina los puntos de entrada para los VUs, similar a la función `main()` de otros lenguajes: 
 
 <CodeGroup labels={[]}>
 
@@ -85,13 +77,11 @@ export default function () {
 
 </CodeGroup>
 
-### The init context and the default function
+### El contexto de inicio y la función predeterminada
 
-"Why not just run my script normally, from top to bottom", you might ask - the answer is: we do,
-but code inside and outside your default function can do different things.
 
-Code _inside_ `default` is called "VU code", and is run over and over for as long as the test is
-running. Code _outside_ of it is called "init code", and is run only once per VU.
+Nos podemos preguntar, ¿Por qué no ejecutar mi script normalmente, desde el inicio hasta el final?. La respuesta es: Sí, se puede hacer, pero el código dentro y fuera de la función predeterminada puede hacer cosas diferentes.
+El código predeterminado de adentro es llamado “VU Code”, y se ejecuta una y otra vez mientras el test está ejecutándose. El código de afuera es comúnmente llamado “init Code” y se ejecuta una vez por VU.
 
 <CodeGroup labels={[""]}>
 
@@ -105,16 +95,13 @@ export default function () {
 
 </CodeGroup>
 
-VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
-to do - with a few important exceptions: you can't load anything from your local filesystem, or
-import any other modules. This all has to be done from init-code.
+El “VU Code” puede hacer peticiones HTTP, proveer métricas, y generalmente hace todo lo que se espera en una prueba de carga, no puede cargar nada desde su sistema de archivos local ni importar ningún otro módulo. Todo esto debe hacerse desde el “init Code”.
+Lea más acerca de diferentes etapas del [ciclo de vida de una prueba k6](/using-k6/test-life-cycle)
 
-Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
-## Using options
+## Usando las opciones 
 
-If you want to avoid having to type `--vus 10` and `--duration 30s` all the time, you can include
-those settings inside your JavaScript file also:
+Si quiere evitar escribir `--vus 10` y `--duration 30s` todo el tiempo, también puede incluir estas configuraciones dentro de su archivo JavaScript.
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -133,7 +120,7 @@ export default function () {
 
 </CodeGroup>
 
-Then you just run the script without those parameters on the command line:
+Luego solo ejecute el script con esos parámetros por  línea de comando. 
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -151,10 +138,9 @@ PS C:\> cat script.js | docker run -i loadimpact/k6 run -
 
 </CodeGroup>
 
-## Stages: ramping up/down VUs
+## Escenarios: Periodo de subida/bajada de los VUs 
 
-You can also have the VU level ramp up and down during the test. The `options.stages` property
-allows you to configure ramping behaviour.
+Además puede tener el nivel de periodo de subida (ramp up)  y de bajada (ramp down) de los VU durante la prueba. La propiedad `options.stages` te permite configurar el comportamiento de los periodos de subida y bajada.
 
 <CodeGroup labels={["stages.js"]} lineNumbers={[true]}>
 
@@ -179,20 +165,17 @@ export default function () {
 
 </CodeGroup>
 
-This can also be accomplished with more advanced configuration using
-[scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+Esto también se puede lograr con una configuración más avanzada utilizando [escenarios](/using-k6/scenarios) y el ejecutor `ramping-vus`.
 
-## Running cloud tests
+## Ejecutando las pruebas en la nube
 
-k6 supports three execution modes to run your k6 tests:
+k6 soporta tres modelos de ejecución para ejecutar los tests:
+- [Local](#running-local-tests): En tu máquina local o en un servidor de Integración continua (CI server) 
+- [Cloud](/cloud):  En la infraestructura de la nube administrada por K6 Cloud
+- Clustered: En más de una máquina administrada por usted. [No está soportado aun](https://github.com/loadimpact/k6/issues/140).
 
-- [Local](#running-local-tests): on your local machine or a CI server.
-- [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
-- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/loadimpact/k6/issues/140).
-
-One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script.
-
-For running cloud tests from the CLI, you must first register a k6 Cloud account and then log into your account via the CLI. Then, you only have to pass your existing script to the `k6 cloud` command.
+Uno de los objetivos de K6 es permitir la ejecución de las pruebas en tres modelos de ejecución sin hacer modificaciones en el script . 
+Para ejecutar las pruebas en la nube desde la interfaz de línea de comando (CLI), debe primero crear una cuenta en K6 Cloud e iniciar sesión con su cuenta usando CLI. Luego debe pasar su script al comando `k6 cloud`. 
 
 <CodeGroup labels={["Running a cloud test"]}>
 
@@ -202,4 +185,4 @@ $ k6 cloud script.js
 
 </CodeGroup>
 
-For detailed instructions and the different options, read more on [running cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
+Para instrucciones más detalladas y otras opciones, puede encontrar más información en [ejecución de pruebas en la nube desde CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
