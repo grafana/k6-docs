@@ -1,24 +1,18 @@
 ---
-title: 'Tags and Groups'
+title: 'Tags y Groups'
 excerpt: ''
 ---
 
-The analysis of your load results is a required step to find performance issues; a load test
-usually targets a service involving different subsystems and resources, making it hard to find
-the issue/s degrading your performance.
-
-k6 provides two scripting APIs to help you during the analysis and easily visualize, sort and
-filter your test results.
-
-- Groups: organize your load script around common logic.
-- Tags: categorize your checks, thresholds, custom metrics and requests with tags for in-depth filtering.
+El análisis de los resultados de la carga es un paso necesario para encontrar los problemas de rendimiento; una prueba de carga suele tener como objetivo un servicio que implica diferentes subsistemas y recursos, lo que hace difícil encontrar el/los problemas que degradan su rendimiento.
+ 
+k6 proporciona dos APIs de scripting para ayudarle durante el análisis y visualizar, ordenar y  filtrar fácilmente los resultados de sus pruebas.
+ 
+- Grupos (groups): organice su script de carga en torno a una lógica común.
+- Etiquetas (tags): clasifique sus Checks, Thresholds, métricas personalizadas y solicitudes con etiquetas para un filtrado en profundidad.
 
 ## Groups
 
-
-Groups are optional, and it allows you to “group” a large load script to help you with the test result analysis. Groups can be nested, allowing you the BDD-style of testing.
-
-For example, you could use groups to organize multiple requests due to loading a page or executing a user action.
+Los grupos son opcionales, y permiten "agrupar" su script de carga. Los grupos pueden ser anidados, y permiten el estilo BDD de pruebas.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 
@@ -88,50 +82,48 @@ If your code looks like the example above, consider the following alternatives t
 
 ## Tags
 
-Tags are a simple and powerful way to categorize your k6 entities for later results filtering.
-
-k6 provides two types of tags:
-
-- User-defined tags: the ones you've added when writing your script.
-- System tags: tags automatically assigned by k6.
+Las etiquetas (tags) son una forma sencilla y potente de clasificar las entidades de k6 para el posterior filtrado de resultados.
+ 
+k6 proporciona dos tipos de etiquetas:
+ 
+- Tags definidas por el usuario: las que usted ha añadido al escribir su script.
+- Tags del sistema: etiquetas asignadas automáticamente por k6.
+ 
 
 ### System tags
 
-Currently, k6 automatically creates the following tags by default:
+Actualmente, k6 crea automáticamente las siguientes etiquetas por defecto:
 
-| Tag           | Description                                                                                                                                                                       |
+| Tag           | Descripción                                                                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `proto`       | the used protocol name (e.g. `HTTP/1.1`)                                                                                                                                          |
-| `subproto`    | the subprotocol name (used by websockets)                                                                                                                                         |
-| `status`      | the HTTP status code (e.g. `200`, `404`, etc.)                                                                                                                                    |
-| `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                                   |
-| `url`         | the HTTP request URL                                                                                                                                                              |
-| `name`        | the HTTP [request name](/using-k6/http-requests#url-grouping)                                                                                                                     |
-| `group`       | the full [group](#groups) path                                                                                                                                                    |
-| `check`       | the [Check](/using-k6/checks) name                                                                                                                                                |
-| `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                                |
-| `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
-| `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
-| `scenario`    | the name of the scenario where the metric was emitted                                                                                                                             |
-| `service`     | the RPC service name for gRPC                                                                                                                                                     |
-| `rpc_type`    | one of `unary`, `server_streaming`, `client_streaming` or `bidirectional_streaming` for gRPC. *Note:*  only `unary` requests are currently supported.                             |
+| `proto`       | El nombre del protocolo utilizado (por ejemplo, HTTP/1.1)                                                                                                                                          |
+| `subproto`    | El nombre del sub protocolo (utilizado por los websockets)                                                                                                                                         |
+| `status`      | El código de estado HTTP (por ejemplo, 200, 404, etc.)                                                                                                                                    |
+| `method`      | El método HTTP (por ejemplo, GET, POST, etc.) o el nombre del método RPC para gRPC                                                                                                   |
+| `url`         | URL de la petición HTTP                                                                                                                                                              |
+| `name`        | Nombre de la petición HTTP                                                                                                                     |
+| `group`       | Ruta completa del grupo                                                                                                                                                    |
+| `check`       | Nombre del check                                                                                                                                                |
+| `error`       | Un string con un mensaje de error no HTTP (por ejemplo, un error de red o de DNS)                                                                                                                |
+| `error_code`  | añadido en la versión v0.24.0 de k6, se trata de un número único para los distintos tipos de error; puede encontrar una lista de los códigos de error actuales en la página de Códigos de error |
+| `tls_version` | La versión del TLS                                                                                                                                    |
+| `scenario`    | Nombre del escenario donde se emitió la métrica                                                                                                                             |
+| `service`     | Nombre del servicio RPC para gRPC                                                                                                                                                     |
+| `rpc_type`    | Una de las opciones unarias, server_streaming, client_streaming o bidirectional_streaming para gRPC. Nota: actualmente sólo se admiten peticiones unarias.                             |
 
-If you choose, you could disable some of the above tags by using the `systemTags`
-[option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
-may require that certain tags be present. Also, you can enable some additional system tags, if
-you need them:
+Si lo desea, puede deshabilitar algunas de las etiquetas anteriores utilizando la opción systemTags, sólo tenga en cuenta que algunos recolectores de datos (por ejemplo, la nube) pueden requerir que ciertas etiquetas estén presentes. Además, puedes habilitar algunas etiquetas adicionales del sistema, si las necesitas:
+
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `vu`          | the ID of the virtual user that executed the request                                                                              |
-| `iter`        | the iteration number                                                                                                              |
-| `ip`          | The IP address of the remote server                                                                                               |
-| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
+| `vu`          | el ID del VU que ejecutó la solicitud |
+| `iter`        | el número de iteración                                                                                                              |
+| `ip`          | La dirección IP del servidor remoto                                                                                               |
+| `ocsp_status` | el estado del Protocolo de Estado de los Certificados en Línea (OCSP) HTTPS |
 
-### User-defined tags
+### Etiquetas definidas por el usuario
 
-User-defined tags allow you to categorize k6 entities based on your logic. The following entities
-can be tagged:
+Las etiquetas definidas por el usuario le permiten categorizar las entidades de k6 basándose en su lógica. Las siguientes entidades pueden ser etiquetadas:
 
 - checks
 - thresholds
@@ -169,11 +161,9 @@ export default function () {
 
 </CodeGroup>
 
-## Test wide tags
+## Etiquetas a lo largo de la prueba
 
-Besides attaching tags on requests, checks and custom metrics you can set test wide tags that
-will be set across all metrics. You can either set the tags on the CLI using one or more
-`--tag NAME=VALUE` flags or in the script:
+Además de adjuntar etiquetas a las solicitudes, comprobaciones y métricas personalizadas, puede establecer etiquetas para toda la prueba que se aplicarán a todas las métricas. Puede establecer las etiquetas en la CLI utilizando uno o más indicadores `--tag NAME=VALUE` o en el script:
 
 <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
 
@@ -187,7 +177,8 @@ export let options = {
 
 </CodeGroup>
 
-## Tags in results output
+## Etiquetas en los resultados de salida
+
 
 <CodeGroup labels={["output.js"]} lineNumbers={[true]}>
 
@@ -222,18 +213,15 @@ export let options = {
 
 </CodeGroup>
 
-Read more about the [k6 results output syntax](/getting-started/results-output/json) to
-see how tags affect your test result output.
+Lea más sobre la sintaxis de la [salida de resultados](/getting-started/results-output/json) de k6 para ver cómo las etiquetas afectan a la salida de los resultados de las pruebas.
 
-## Tags and Groups in k6 Cloud Results
+## Tags y Groups en k6 Cloud
 
-In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups
-in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
+En k6 Cloud Results se pueden ver grupos en las pestañas de resultados.
+ 
+Cuando se utilizan grupos, Checks y las solicitudes HTTP pueden verse por grupos, como se muestra a continuación. Puede cambiar entre el diseño de grupo y el de lista cambiando la selección de "ver como" en la parte superior derecha.
 
-When using Groups, [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http-requests)
-can be viewed by group, as shown below. You can switch between the group and list layout by changing the "view as"
-selection in the top right.
 
 ![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
 
-Additionally you can filter the results by tags in the [analysis tab](/cloud/analyzing-results/analysis-tab).
+Además, puede filtrar los resultados por etiquetas en la [pestaña de análisi](/cloud/analyzing-results/analysis-tab).

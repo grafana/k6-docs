@@ -1,12 +1,11 @@
 ---
-title: 'HTTP Requests'
+title: 'Peticiones HTTP'
 excerpt: ''
 ---
 
-## Making HTTP Requests
+## Haciendo peticiones HTTP
 
-When creating a new load test, the first thing you'll often do is define the HTTP requests that will be used to test
-your system. A simple example that just performs a GET request looks like this:
+Al crear una nueva prueba de carga, lo primero que se suele hacer es definir las peticiones HTTP que se utilizarán para probar el sistema. Un ejemplo sencillo que sólo realiza una petición de tipo GET es el siguiente:
 
 <CodeGroup labels={["http_get.js"]} lineNumbers={[true]}>
 
@@ -20,7 +19,7 @@ export default function () {
 
 </CodeGroup>
 
-A slightly more complex request might be e.g. a POST request to authenticate on a site/service:
+Una solicitud algo más compleja podría ser por ejemplo, una solicitud POST para autenticarse en un sitio web o servicio:
 
 <CodeGroup labels={["http_post.js"]} lineNumbers={[true]}>
 
@@ -48,31 +47,31 @@ export default function () {
 
 ## Available methods
 
-Use the [http module](/javascript-api/k6-http) to perform all kinds of HTTP requests in your load tests.
+Utilice el [módulo http](/javascript-api/k6-http) para realizar todo tipo de peticiones HTTP en sus pruebas de carga.
 
-| Name                                                                | Value                                                                     |
+| Nombre                                                                | Descripción                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [batch()](/javascript-api/k6-http/batch-requests)                   | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
-| [del()](/javascript-api/k6-http/del-url-body-params)                | Issue an HTTP DELETE request.                                             |
-| [get()](/javascript-api/k6-http/get-url-params)                     | Issue an HTTP GET request.                                                |
-| [options()](/javascript-api/k6-http/options-url-body-params)        | Issue an HTTP OPTIONS request.                                            |
-| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Issue an HTTP PATCH request.                                              |
-| [post()](/javascript-api/k6-http/post-url-body-params)              | Issue an HTTP POST request.                                               |
-| [put()](/javascript-api/k6-http/put-url-body-params)                | Issue an HTTP PUT request.                                                |
-| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue any type of HTTP request.                                           |
+| [batch()](/javascript-api/k6-http/batch-requests)                   | Emitir múltiples peticiones HTTP en paralelo (como suelen hacer, por ejemplo, los navegadores).|
+| [del()](/javascript-api/k6-http/del-url-body-params)                | Emitir una solicitud HTTP DELETE.                                             |
+| [get()](/javascript-api/k6-http/get-url-params)                     | Emitir una solicitud HTTP GET.                                                |
+| [options()](/javascript-api/k6-http/options-url-body-params)        | Emitir una solicitud HTTP OPTIONS.                                            |
+| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Emitir una solicitud HTTP PATCH.                                              |
+| [post()](/javascript-api/k6-http/post-url-body-params)              | Emitir una solicitud HTTP POST.                                               |
+| [put()](/javascript-api/k6-http/put-url-body-params)                | Emitir una solicitud HTTP PUT.                                                |
+| [request()](/javascript-api/k6-http/request-method-url-body-params) | Emitir una solicitud HTTP.                                           |
 
-## HTTP Request Tags
+## Tags en las solicitudes HTTP 
 
-k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to your HTTP requests. These tags allow you to filter your results during analysis.
+k6 aplicará automáticamente [etiquetas (tags)](/using-k6/tags-and-groups#section-tags) a sus peticiones HTTP. Estas etiquetas le permiten filtrar sus resultados durante el análisis.
 
-| Name   | Description                                |
+| Nombre   | Descripción                                |
 | ------ | ------------------------------------------ |
-| name   | Defaults to URL requested                  |
-| method | Request method (`GET`, `POST`, `PUT` etc.) |
-| status | response status                            |
-| url    | defaults to URL requested                  |
+| name   | Por defecto será la URL solicitada                  |
+| method | Métodos de la solicitud (GET,POST,PUT, entre otros) |
+| status | Estatus de la respuesta                            |
+| url    | URL de la solicitud                  |
 
-Below you can see how a test result data point (the duration of an HTTP request) is logged, in JSON format, including the various tags mentioned above:
+A continuación puede se ver cómo se registra un valor de la métrica HTTP (la duración de una solicitud HTTP), en formato JSON, incluyendo las diversas etiquetas mencionadas anteriormente:
 
 <CodeGroup labels={["data_point.json"]} lineNumbers={[true]}>
 
@@ -84,9 +83,11 @@ Below you can see how a test result data point (the duration of an HTTP request)
     "time": "2017-06-02T23:10:29.52444541+02:00",
     "value": 586.831127,
     "tags": {
+      "expected_response": "true",
       "group": "",
       "method": "GET",
       "name": "http://test.k6.io",
+      "scenario": "default",
       "status": "200",
       "url": "http://test.k6.io"
     }
@@ -96,11 +97,9 @@ Below you can see how a test result data point (the duration of an HTTP request)
 
 </CodeGroup>
 
-## URL Grouping
+## Agrupamiento de las URLs
 
-By default, requests report the name tag with the value of the request URL. For URLs that contain dynamic parts, this might not be desirable since it can
-introduce a large number of unique URLs in the metrics stream. The below code shows a situation when you'll access 100 different URLs but may want them
-all reported using one single metric:
+Por defecto, las peticiones informan el nombre de la etiqueta con el valor de la URL de la petición. Para las URLs que contienen partes dinámicas, esto puede no ser deseable ya que puede introducir un gran número de URLs únicas en el flujo de métricas. El siguiente código muestra una situación en la que se accede a 100 URLs diferentes pero se desea que todas ellas se reporten usando una sola métrica:
 
 <CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
@@ -115,7 +114,7 @@ for (var id = 1; id <= 100; id++) {
 
 </CodeGroup>
 
-You can aggregate data from dynamic URLs by explicitly setting a name tag:
+Puede agregar datos de URLs dinámicas estableciendo explícitamente una etiqueta de nombre:
 
 <CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
@@ -132,7 +131,7 @@ for (var id = 1; id <= 100; id++) {
 
 </CodeGroup>
 
-Which would produce JSON output like the following:
+Lo que produciría una salida JSON como la siguiente:
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
@@ -144,7 +143,6 @@ Which would produce JSON output like the following:
         "time":"2017-06-02T23:10:29.52444541+02:00",
         "value":586.831127,
         "tags": {
-            "group":"",
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
@@ -152,9 +150,7 @@ Which would produce JSON output like the following:
         }
     }
 }
-
 // and
-
 {
     "type":"Point",
     "metric":"http_req_duration",
@@ -162,7 +158,6 @@ Which would produce JSON output like the following:
         "time":"2017-06-02T23:10:29.58582529+02:00",
         "value":580.839273,
         "tags": {
-            "group":"",
             "method":"GET",
             "name":"PostsItemURL",
             "status":"200",
@@ -174,9 +169,10 @@ Which would produce JSON output like the following:
 
 </CodeGroup>
 
-Note how the `name` is the same for the two data samples related to two different URLs. Filtering the results on tag `name: PostsItemURL` will give you a result set including all the data points from all the 100 different URLs.
 
-Additionally, you can use the `http.url` (v0.16.0) wrapper to set the name tag with a string template value:
+Observe cómo el `name` es el mismo para las dos muestras de datos relacionadas con dos URLs diferentes. Si filtramos los resultados por el nombre de la etiqueta (`name: PostsItemURL`), obtendremos un conjunto de resultados que incluye todos los puntos de datos de las 100 URL diferentes.
+
+Además, también puede utilizar el “wrapper”  `http.url` para establecer el nombre de la etiqueta con un valor determinado:
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
@@ -191,8 +187,9 @@ for (var id = 1; id <= 100; id++) {
 
 </CodeGroup>
 
-## Inside k6 Cloud Results
+## Resultados en k6 Cloud
 
-[k6 Cloud Results's HTTP Table](/cloud/analyzing-results/http-tab) will show all the requests, on an aggregated level per URL.
+
+La [tabla HTTP de k6 Cloud Results](/cloud/analyzing-results/http-tab) mostrará todas las peticiones, a nivel agregado por URL.
 
 ![k6 Cloud URL table](./images/HTTP-requests/cloud-insights-http-tab.png)

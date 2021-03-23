@@ -1,81 +1,81 @@
 ---
-title: 'Options'
+title: 'Opciones'
 excerpt: ''
 ---
 
-Options allow you to configure how k6 will behave during test execution.
+Las opciones le permiten configurar cómo se comportará k6 durante la ejecución de la prueba.
 
-## List of Options
+## Lista de opciones 
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
-| [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
-| [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
-| [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
-| [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
-| [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
-| [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
-| [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
-| [Duration](#duration)                                     | A string specifying the total duration a test run should be run for                 |
-| [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
-| [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
-| [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
-| [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
-| [Include System Env Vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
-| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
-| [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script           |
-| [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
-| [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
-| [Log Output](#log-output)                                 | Configuration about where logs from k6 should be send                               |
-| [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
-| [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
-| [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
-| [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
-| [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
-| [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
-| [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
-| [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
-| [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
-| [Results Output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second                                   |
-| [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
-| [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
-| [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down          |
-| [Summary export](#summary-export)                         | Output the end-of-test summary report to a JSON file                                |
-| [Supply Env Var](#supply-env-var)                         | Add/override environment variable with VAR=value                                    |
-| [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
-| [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics                                                      |
-| [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
-| [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
-| [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
-| [Throw](#throw)                                           | A boolean specifying whether to throw errors on failed HTTP requests                |
-| [TLS Auth](#tls-auth)                                     | A list of TLS client certificate configuration objects                              |
-| [TLS Cipher Suites](#tls-cipher-suites)                   | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
-| [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
-| [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
-| [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [VUs Max](#vus-max)                                       | A number specifying max number of virtual users                                     |
+| [Batch](#batch)                                           | Número máximo de conexiones simultáneas de una llamada http.batch()
+                     |
+| [Batch per host](#batch-per-host)                         | Número máximo de conexiones simultáneas de una llamada http.batch() para un host          |
+| [Blacklist IPs](#blacklist-ips)                           | Blacklist de rangos de IP para no ser llamados                                               |
+| [Block hostnames](#block-hostnames)                       | Bloquear cualquier petición a nombres de host específicos                                                   |
+| [Compatibility Mode](#compatibility-mode)                 | Soporta la ejecución de scripts con diferentes modos de ECMAScript                             |
+| [Config](#config)                                         | Especificar el archivo de configuración en formato JSON para leer los valores de las opciones                   |
+| [Discard Response Bodies](#discard-response-bodies)       | Especificar si los cuerpos de respuesta deben ser descartados                                      |
+| [DNS](#dns)                                               | Configurar el comportamiento de la resolución DNS                                                   |
+| [Duration](#duration)                                     | Una cadena que especifica la duración total de la ejecución de una prueba                 |
+| [Execution Segment](#execution-segment)                   | Limitar la ejecución a un segmento de la prueba total                                      |
+| [Extension Options](#extension-options)                   | Un objeto utilizado para establecer las opciones de configuración de los recolectores de terceros              |
+| [Hosts](#hosts)                                           | Un objeto con anulaciones de la resolución DNS                                          |
+| [HTTP Debug](#http-debug)                                 | Logear todas las peticiones y respuestas HTTP                                                 |
+| [Include System Env Vars](#include-system-env-vars)       | Pasar las variables de entorno del sistema real al tiempo de ejecución                           |
+| [Insecure Skip TLS Verify](#insecure-skip-tls-verify)     | Un booleano que especifica si se deben ignorar las verificaciones TLS para las conexiones VU     |
+| [Iterations](#iterations)                                 | Un número que especifica un número fijo de iteraciones a ejecutar el script           |
+| [Linger](#linger)                                         | Un booleano que especifica si k6 debe permanecer tras la finalización de la ejecución de la prueba      |
+| [Local IPs](#local-ips)                                   | Una lista de IPs locales, rangos de IPs y CIDRs desde los que las VUs harán peticiones                 |
+| [Log Output](#log-output)                                 | Configuración sobre dónde deben enviarse los registros de k6                               |
+| [LogFormat](#logformat)                                   | Especificar el formato de la salida de los logs                                                |
+| [Max Redirects](#max-redirects)                           | El número máximo de redirecciones HTTP que seguirá k6                            |
+| [Minimum Iteration Duration](#minimum-iteration-duration) | Especificar la duración mínima de cada ejecución                             |
+| [No Connection Reuse](#no-connection-reuse)               | Un booleano que especifica si k6 debe desactivar las conexiones keep-alive               |
+| [No Cookies Reset](#no-cookies-reset)                     | Esto desactiva el restablecimiento del tarro de galletas después de cada iteración de la VU                      |
+| [No Thresholds](#no-thresholds)                           | Desactiva la ejecución de Thresholds                                                        |
+| [No Usage Report](#no-usage-report)                       | Un booleano que especifica si k6 debe enviar un informe de uso                          |
+| [No VU Connection Reuse](#no-vu-connection-reuse)         | Un booleano que especifica si k6 debe reutilizar las conexiones TCP                        |
+| [Paused](#paused)                                         | Un booleano que especifica si la prueba debe comenzar en estado de pausa                |
+| [Results Output](#results-output)                         | Especifica la salida de resultados                                                          |
+| [RPS](#rps)                                               | El número máximo de peticiones a realizar por segundo                                   |
+| [Scenarios](#scenarios)                                   | Definir escenarios de ejecución avanzados                                                 |
+| [Setup Timeout](#setup-timeout)                           | Especificar el tiempo de ejecución de la función `setup()` antes de su finalización      |
+| [Stages](#stages)                                         | Una lista de objetos que especifican el número objetivo de VUs para subir o bajar          |
+| [Summary export](#summary-export)                         | Guarda el informe de resumen de fin de prueba en un archivo JSON                                |
+| [Supply Env Var](#supply-env-var)                         | Añadir/sustituir la variable de entorno con VAR=valor                                    |
+| [System Tags](#system-tags)                               | Especificar qué etiquetas del sistema estarán en las métricas recogidas                          |
+| [Summary Trend Stats](#summary-trend-stats)               | Definir las estadísticas de las métricas de tendencia                                                      |
+| [Tags](#tags)                                             | Especificar `tags` que deben establecerse en todas las métricas de la prueba
 
-## Using Options
+                        |
+| [Teardown Timeout](#teardown-timeout)                     | Especifica el tiempo de ejecución de la función `teardown()` antes de su finalización   |
+| [Thresholds](#thresholds)                                 | Configurar bajo qué condiciones una prueba tiene éxito o no                         |
+| [Throw](#throw)                                           | Un booleano que especifica si se lanzan errores en las peticiones HTTP fallidas                |
+| [TLS Auth](#tls-auth)                                     | Una lista de objetos de configuración del certificado de cliente TLS                              |
+| [TLS Cipher Suites](#tls-cipher-suites)                   | Una lista de suites de cifrado que se pueden utilizar en las interacciones SSL/TLS con un servidor |
+| [TLS Version](#tls-version)                               | String u objeto que representa la única versión SSL/TLS permitida                      |
+| [User Agent](#user-agent)                                 | Un string que especifica la cabecera User-Agent al enviar solicitudes HTTP                |
+| [VUs](#vus)                                               | Un número que especifica el número de VUs que se ejecutan simultáneamente                           |
+| [VUs Max](#vus-max)                                       | Un número que especifica el número máximo de usuarios virtuales                                     |
 
-Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line flags, environment variables or via a config file. The order of precedence is as follows:
+## Usando las opciones
 
-<!-- THIS FOLLOWING QUOTED TEXT SHOULD BE REPLACED WITH A FLOWCHART -->
-<!-- ![Order of Precedence](./images/order-of-precedence.png) -->
+Las opciones pueden formar parte del código de los scripts para que puedan ser controladas por la versión. También se pueden especificar con flags de línea de comandos, variables de entorno o a través de un archivo de configuración. El orden de precedencia es el siguiente:
 
 > **command-line flags > environment variables > exported script options > config file > defaults**
 
-Options from each level will overwrite the options from the next level, with the command-line flags having the highest precedence.
+Las opciones de cada nivel sobre escribirán las opciones del nivel siguiente, teniendo las flags de la línea de comandos la mayor precedencia.
 
-For example, you can define the duration in 4 different ways:
+Por ejemplo, se puede definir la duración de 4 maneras diferentes:
 
-- Set the `duration: "10s"` option in the config file
-- Set the `duration: "10s"` option in the script
-- Define `K6_DURATION` as an environment variable
-- Use the `--duration 10s` command-line flag: *overwrites all the above*.
+- Establecer la `duration: 10s` en el archivo de configuración
+- Establezca la opción de `duration: 10s` en el script
+- Definir `K6_DURATION` cómo variable de entorno
+- Utilizar la flag de línea de comandos `--duration 10s` sobrescribe todo lo anterior.
 
-The following JS snippet shows how to specify options in the script:
+El siguiente fragmento de JS muestra cómo especificar las opciones en el script:
 
 <CodeGroup labels={["example.js"]} lineNumbers={[true]}>
 
@@ -101,7 +101,7 @@ export default function () {
 
 </CodeGroup>
 
-You can also set the same options through a config file:
+También puede establecer las mismas opciones a través de un archivo de configuración:
 
 <CodeGroup labels={["config.json"]} lineNumbers={[true]}>
 
@@ -134,7 +134,7 @@ You can also set the same options through a config file:
 
 </CodeGroup>
 
-Or set some of the previous options via environment variables and command-line flags:
+O establecer algunas de las opciones anteriores a través de variables de entorno y flags de línea de comandos:
 
 <CodeGroup labels={["Bash"]} lineNumbers={[true]}>
 
@@ -148,17 +148,11 @@ $ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.
 
 <br/>
 
-Below, you'll find details on all available options that can be specified within a script. It also
-documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
-and `k6 cloud ...` that can be used to override options specified in the code.
+A continuación, encontrará detalles sobre todas las opciones disponibles que se pueden especificar dentro de un script. También se documenta la flag de la línea de comandos equivalente, las variables de entorno o la opción al ejecutar `k6 run ...` y `k6 cloud ...` que pueden utilizarse para anular las opciones especificadas en el código.
 
 ### Batch
 
-The maximum number of simultaneous/parallel connections in total that an
-[`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
-`batch()` call that you've given 20 URLs to and `--batch` is set to 15, then the VU will make 15
-requests right away in parallel and queue the rest, executing them as soon as a previous request is
-done and a slot opens. Available in both the `k6 run` and the `k6 cloud` commands
+El número máximo de conexiones simultáneas/paralelas en total que puede hacer una llamada `http.batch()` en una VU. Si tienes una llamada `batch()` a la que has dado 20 URLs y --batch está establecido en 15, entonces la VU hará 15 peticiones de inmediato en paralelo y pondrá en cola el resto, ejecutándose tan pronto como una petición anterior haya terminado y se abra un hueco.
 
 | Env        | CLI       | Code / Config file | Default |
 | ---------- | --------- | ------------------ | ------- |
@@ -176,11 +170,7 @@ export let options = {
 
 ### Batch per host
 
-The maximum number of simultaneous/parallel connections for the same hostname that an
-[`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
-`batch()` call that you've given 20 URLs to the _same_ hostname and `--batch-per-host` is set to 5, then the VU will make 5
-requests right away in parallel and queue the rest, executing them as soon as a previous request is
-done and a slot opens. This will not run more request in parallel then the value of `batch`. Available in both the `k6 run` and the `k6 cloud` commands
+El número máximo de conexiones simultáneas/paralelas para el mismo nombre de host que puede hacer una llamada http.batch() en una VU. Si tiene una llamada a batch() a la que le ha dado 20 URLs para el mismo nombre de host y --batch-per-host está establecido en 5, entonces la VU hará 5 peticiones de inmediato en paralelo y pondrá en cola el resto, ejecutándose tan pronto como una petición anterior haya terminado y se abra un hueco. Esto no ejecutará más peticiones en paralelo que el valor del lote.
 
 | Env                 | CLI                | Code / Config file | Default |
 | ------------------- | ------------------ | ------------------ | ------- |
@@ -198,7 +188,7 @@ export let options = {
 
 ### Blacklist IPs
 
-Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
+Blacklist de IP para no ser llamados. 
 
 | Env                | CLI              | Code / Config file | Default |
 | ------------------ | ---------------- | ------------------ | ------- |
@@ -218,12 +208,7 @@ export let options = {
 
 ### Block Hostnames
 
-> _New in v0.29.0_
-
-Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
-`*` at the beginning such as `*.example.com` that will match anything before that such as
-`test.example.com` and `test.test.example.com`.
-Available in `k6 run` and `k6 cloud` commands.
+Bloquea los nombres de host basándose en una lista de cadenas de coincidencia glob. La cadena de coincidencia de patrones puede tener un solo `*` al principio, como `*.example.com`, que coincidirá con cualquier cosa antes de eso, como `test.example.com` y `test.test.example.com`.
 
 | Env                  | CLI                 | Code / Config file | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
@@ -250,9 +235,9 @@ $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 
 ### Compatibility Mode
 
-Support running scripts with different ECMAScript compatibility modes.
+Soporta la ejecución de scripts con diferentes modos de compatibilidad con ECMAScript.
 
-Read about the different modes on the [JavaScript Compatibility Mode documentation](/using-k6/javascript-compatibility-mode).
+Lea más sobre los diferentes [modos de compatibilidad con JavaScript](/using-k6/javascript-compatibility-mode).
 
 | Env                     | CLI                    | Code / Config file | Default      |
 | ----------------------- | ---------------------- | ------------------ | ------------ |
@@ -268,7 +253,7 @@ $ k6 run --compatibility-mode=base script.js
 
 ### Config
 
-Specify the config file in JSON format to read the `options` values. If the config file is not specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system. Default config locations on different operating systems are:
+Especifica el archivo config, k6 buscará `config.json` en el directorio loadimpact/k6 dentro del directorio habitual de archivos de configuración del sistema operativo. Las ubicaciones de configuración por defecto en los diferentes sistemas operativos son:
 
 |OS|Default Config Path|
 |---|---|
@@ -282,16 +267,11 @@ Available in `k6 run` and `k6 cloud` commands:
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
-An example of a config file is available [here](/using-k6/options#config-json)
+Puede encontrar un ejemplo de archivo de configuración disponible [aquí](/using-k6/options#config-json).
 
 ### Discard Response Bodies
 
-Specify if response bodies should be discarded by changing the default value of
-[responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
-to `true` and then only for the requests where the response body is needed for scripting
-to set [responseType](/javascript-api/k6-http/params) to `text` or `binary`. Lessens the amount of memory
-required and the amount of GC - reducing the load on the testing machine, and probably producing
-more reliable test results.
+Especifica si los cuerpos de respuesta deben ser descartados cambiando el valor por defecto del tipo de respuesta a none para todas las peticiones HTTP. Se recomienda que se establezca en true y entonces sólo para las peticiones en las que el cuerpo de la respuesta es necesario para el scripting para establecer el tipo de respuesta a text o binary. Reduce la cantidad de memoria requerida y la cantidad de GC - reduciendo la carga en la máquina de pruebas, y probablemente produciendo resultados de pruebas más fiables.
 
 | Env                          | CLI                         | Code / Config file      | Default |
 | ---------------------------- | --------------------------- | ----------------------- | ------- |
@@ -309,42 +289,38 @@ export let options = {
 
 ### DNS
 
-> _New in v0.29.0_
+> _Nuevo en v0.29.0_
 
-This is a composite option that provides control of DNS resolution behavior with
-configuration for cache expiration (TTL), IP selection strategy and IP version
-preference. The TTL field in the DNS record is currently not read by k6, so the
-`ttl` option allows manual control over this behavior, albeit as a fixed value
-for the duration of the test run.
+Esta es una opción compuesta que proporciona el control del comportamiento de la resolución DNS con la configuración de la expiración de la cache (TTL), la estrategia de selección de IP y la preferencia de la versión de IP. El campo TTL en el registro DNS actualmente no es leído por k6, por lo que la opción ttl permite el control manual de este comportamiento, aunque como un valor fijo para la duración de la ejecución de la prueba.
 
-Note that DNS resolution is done only on new HTTP connections, and by default k6
-will try to reuse connections if HTTP keep-alive is supported. To force a certain
-DNS behavior consider enabling the [`noConnectionReuse`](#no-connection-reuse)
-option in your tests.
-
+Tenga en cuenta que la resolución de DNS se realiza sólo en las nuevas conexiones HTTP, y por defecto k6 intentará reutilizar las conexiones si HTTP keep-alive está soportado. Para forzar un determinado comportamiento de DNS considere habilitar la opción [`noConnectionReuse`](#no-connection-reuse) en sus pruebas.
 
 | Env      | CLI     | Code / Config file | Default                                  |
 | ---------| --------| -------------------| ---------------------------------------- |
 | `K6_DNS` | `--dns` | `dns`              | `ttl=5m,select=random,policy=preferIPv4` |
 
-Possible `ttl` values are:
-- `0`: no caching at all - each request will trigger a new DNS lookup.
-- `inf`: cache any resolved IPs for the duration of the test run.
-- any time duration like `60s`, `5m30s`, `10m`, `2h`, etc.; if no unit is specified (e.g. `ttl=3000`), k6 assumes milliseconds.
+Los posibles valores de ttl son:
 
-Possible `select` values are:
-- `first`: always pick the first resolved IP.
-- `random`: pick a random IP for every new connection.
-- `roundRobin`: iterate sequentially over the resolved IPs.
+- 0: no se almacena en caché en absoluto - cada petición desencadenará una nueva búsqueda de DNS.
+- inf: se almacena en caché cualquier IP resuelta durante la duración de la prueba.
+cualquier duración de tiempo como 60s, 5m30s, 10m, 2h, etc.; si no se especifica ninguna unidad (por ejemplo, ttl=3000), k6 asume milisegundos.
 
-Possible `policy` values are:
-- `preferIPv4`: use IPv4 addresses if available, otherwise fall back to IPv6.
-- `preferIPv6`: use IPv6 addresses if available, otherwise fall back to IPv4.
-- `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
-- `onlyIPv6`: only use IPv6 addresses, ignore any IPv4 ones.
-- `any`: no preference, use all addresses.
+Los posibles valores de select son:
 
-Here are some configuration examples:
+- first: elige siempre la primera IP resuelta.
+- random: elige una IP aleatoria para cada nueva conexión.
+- roundRobin: iterar secuencialmente sobre las IPs resueltas.
+
+Los posibles valores de policy son:
+
+- preferIPv4: utiliza direcciones IPv4 si están disponibles, en caso contrario, volver a IPv6.
+- preferIPv6: utiliza direcciones IPv6 si están disponibles, en caso contrario, volver a IPv4.
+- onlyIPv4: sólo utiliza direcciones IPv4, ignora las IPv6.
+- onlyIPv6: sólo utiliza direcciones IPv6, ignora las IPv4.
+- any: no hay preferencia, utiliza todas las direcciones.
+
+He aquí algunos ejemplos de configuración:
+
 
 ```bash
 k6 run --dns "ttl=inf,select=first,policy=any" script.js # the old k6 behavior before v0.29.0
@@ -367,8 +343,9 @@ export let options = {
 
 ### Duration
 
-A string specifying the total duration a test run should be run for. During this time each
-VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
+Una cadena que especifica la duración total de la ejecución de una prueba. Durante este tiempo, cada VU ejecutará el script en un bucle.
+
+Junto con la opción vus, la duración es un atajo para un escenario único con un ejecutor de VUs constante.
 
 | Env           | CLI                | Code / Config file | Default |
 | ------------- | ------------------ | ------------------ | ------- |
@@ -386,15 +363,13 @@ export let options = {
 
 ### Extension Options
 
-An object used to set configuration options for third-party collectors, like plugins.
+Un objeto utilizado para establecer las opciones de configuración de los colectores de terceros, como los plugins.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
 | N/A | N/A | `ext`              | `null`  |
 
-This is an example of how to specify the test name (test runs/executions with the same name will be
-logically grouped for trending and comparison) when streaming results to
-[k6 Cloud Performance Insights](/cloud/analyzing-results/performance-insights).
+Este es un ejemplo de cómo especificar el nombre de la prueba (las ejecuciones de la prueba con el mismo nombre se agruparán lógicamente para las tendencias y la comparación) al transmitir los resultados a [k6 Cloud Performance Insights](/cloud/analyzing-results/performance-insights).
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -412,42 +387,23 @@ export let options = {
 
 ### Execution Segment
 
-> _New in v0.27.0_
-
-These options specify how to partition the test run and which segment to run.
-If defined, k6 will scale the number of VUs and iterations to be run for that
-segment, which is useful in distributed execution. Available in `k6 run` and
-`k6 cloud` commands.
+Estas opciones especifican cómo dividir la ejecución de la prueba y qué segmento ejecutar. Si se definen, K6 escalará el número de VUs e iteraciones a ejecutar para ese segmento, lo cual es útil en la ejecución distribuida.
 
 | Env | CLI                            | Code / Config file         | Default |
 | --- | ------------------------------ | -------------------------- | ------- |
 | N/A | `--execution-segment`          | `executionSegment`         | `"0:1"` |
 | N/A | `--execution-segment-sequence` | `executionSegmentSequence` | `"0,1"` |
 
-For example, to run 25% of a test, you would specify `--execution-segment '25%'`,
-which would be equivalent to `--execution-segment '0:1/4'`, i.e. run the first
-1/4 of the test.
-To ensure that each instance executes a specific segment, also specify the full
-segment sequence, e.g. `--execution-segment-sequence '0,1/4,1/2,1'`.
-This way one instance could run with `--execution-segment '0:1/4'`, another with
-`--execution-segment '1/4:1/2'`, etc. and there would be no overlap between them.
-
-In v0.27.0 this distinction is not very important, but it will be required
-in future versions when support for test data partitioning is added.
-
-<!-- TODO: Add more examples, link to a standalone page? -->
 
 ### Hosts
 
-An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
-Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
-up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
+Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\\Windows\\System32\\drivers\\etc\\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
 
-From v0.28.0 it is also supported to redirect only from certain ports and/or to certain ports.
+A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo desde ciertos puertos y/o hacia ciertos puertos.
 
-> #### ⚠️ Keep in mind!
+> #### ⚠️ Tenga en cuenta que!
 >
-> This does not modify the actual HTTP `Host` header, but rather where it will be routed.
+> Esto no modifica la cabecera HTTP Host propiamente dicha, sino hacia dónde se dirigirá. 
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -466,15 +422,13 @@ export let options = {
 
 </CodeGroup>
 
-With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
-it port unless it's port is `443` which will be redirected to port `8443`.
+Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4` sin cambiar su puerto a menos que su puerto sea `443` que será redirigido al puerto `8443`.
 
 ### HTTP Debug
 
-Log all HTTP requests and responses. Excludes body by default, to include body use
-`--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
+Registra todas las peticiones y respuestas HTTP. Excluye el cuerpo por defecto, para incluir el cuerpo use `--http-debug=full`. 
 
-Read more [here](/using-k6/http-debugging).
+Lea más [aquí](/using-k6/http-debugging).
 
 | Env             | CLI                                     | Code / Config file | Default |
 | --------------- | --------------------------------------- | ------------------ | ------- |
@@ -492,12 +446,11 @@ export let options = {
 
 ### Include System Env Vars
 
-Pass the real system environment variables to the runtime. Available in `k6 run` and `k6 cloud`
-commands.
+Pasa las variables del entorno del sistema real al tiempo de ejecución.
 
 | Env | CLI                         | Code / Config file | Default                                                                                              |
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
-| N/A | `--include-system-env-vars` | N/A                | `true` for `k6 run`, but `false` for all other commands to prevent inadvertent sensitive data leaks. |
+| N/A | `--include-system-env-vars` | N/A                | `true` para k6 run, pero `false` para todos los demás comandos para evitar la filtración inadvertida de datos sensibles. |
 
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
@@ -509,10 +462,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 ### Insecure Skip TLS Verify
 
-A boolean, true or false. When this option is enabled (set to true), all of the verifications that
-would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
-This only applies to connections created by VU code, such as http requests.
-Available in `k6 run` and `k6 cloud` commands
+Un booleano, verdadero o falso. Cuando esta opción está habilitada (establecida en true), todas las verificaciones que de otro modo se harían para establecer la confianza en un certificado TLS proporcionado por el servidor serán ignoradas. Esto sólo se aplica a las conexiones creadas por el código de la VU, como las solicitudes http.
 
 | Env                           | CLI                          | Code / Config file      | Default |
 | ----------------------------- | ---------------------------- | ----------------------- | ------- |
@@ -530,12 +480,13 @@ export let options = {
 
 ### Iterations
 
-A number specifying a fixed number of iterations to execute of the script, as opposed to specifying
-a duration of time during which the script would run in a loop.
-\*Note: The number of iterations
-is split between all VUs. Available in the `k6 run` and since v0.27.0 in the
-`k6 cloud` command as well. Tests that utilize the cloud require a duration as "infinite" tests are not allowed,
-the default `maxDuration` is 10 minutes when using iterations with the cloud service.
+Un valor entero, que especifica el número total de iteraciones de la función por defecto que se ejecutará en prueba, en lugar de especificar una duración de tiempo durante la cual el script se ejecutará en un bucle.
+
+Junto con la opción vus, iterations es un atajo para un único escenario con un ejecutor de iteraciones compartido.
+
+Por defecto, la duración máxima de un escenario de iteraciones compartidas es de 10 minutos. Puedes ajustar ese tiempo a través de la opción maxDuration del escenario, o especificando también la opción de acceso directo global duration.
+Tenga en cuenta que las iteraciones no se distribuyen equitativamente con esta opción, y un VU que se ejecute más rápido completará más iteraciones que otras. Cada VU intentará completar tantas iteraciones como sea posible, "tomándolas" del número total de iteraciones de la prueba. Así, dependiendo de los tiempos de iteración, algunas VUs pueden completar más iteraciones que otras. Si quiere garantizar que cada VU completará un número específico y fijo de iteraciones, utilice el ejecutor de iteraciones por VU.
+
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -551,7 +502,7 @@ export let options = {
 
 </CodeGroup>
 
-Or, to run 10 VUs 10 times each:
+O, para ejecutar 10 VUs 10 veces cada una:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -566,8 +517,8 @@ export let options = {
 
 ### Linger
 
-A boolean, true or false, specifying whether the k6 process should linger around after test
-run completion. Available in the `k6 run` command.
+Un booleano, verdadero o falso, que especifica si el proceso k6 debe permanecer después de la finalización de la prueba. Disponible en el comando de ejecución `k6 run`.
+
 
 | Env         | CLI              | Code / Config file | Default |
 | ----------- | ---------------- | ------------------ | ------- |
@@ -585,15 +536,11 @@ export let options = {
 
 ### Local IPs
 
-A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
-given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
-configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
-IPs don't include the first and last IP as they are reserved for referring to the network itself and
-the broadcast address respectively.
+Una lista de IPs, rangos de IPs y CIDRs desde los que las VUs harán peticiones. Las IPs serán entregadas secuencialmente a las VUs. Esta opción no cambia nada a nivel del SO, por lo que las IPs deben estar ya configuradas a nivel del SO para que k6 pueda utilizarlas. También los CIDRs IPv4 con más de 2 IPs no incluyen la primera y la última IP ya que están reservadas para referirse a la propia red y a la dirección de difusión respectivamente.
 
-This option can be used for splitting the network traffic from k6 between multiple network cards, thus potentially increasing the available network throughput. For example, if you have 2 NICs, you can run k6 with `--local-ips="<IP-from-first-NIC>,<IP-from-second-NIC>"` to balance the traffic equally between them - half of the VUs will use the first IP and the other half will use the second. This can scale to any number of NICs, and you can repeat some local IPs to give them more traffic. For example, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` will split VUs between 3 different source IPs in a 25%:25%:50% ratio.
+Esta opción puede utilizarse para dividir el tráfico de red de k6 entre varias tarjetas de red, aumentando así potencialmente el rendimiento de red disponible. Por ejemplo, si tiene 2 NICs, puede ejecutar k6 con `--local-ips="<IP-del-primer-NIC>,<IP-del-segundo-NIC>"` para equilibrar el tráfico de forma equitativa entre ellos - la mitad de los VUs utilizarán la primera IP y la otra mitad la segunda. Esto puede escalar a cualquier número de NICs, y puede repetir algunas IPs locales para darles más tráfico. Por ejemplo, `--local-ips="<IP1>,<IP2>,<IP3>,<IP3>"` dividirá los VUs entre 3 IPs de origen diferentes en una proporción `25%:25%:50%`.
 
-Available in the `k6 run` command.
+Disponible en el comando de ejecución `k6 run`.
 
 | Env            | CLI              | Code / Config file | Default |
 | -------------- | ---------------- | ------------------ | ------- |
@@ -610,30 +557,27 @@ $ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
 
 ### Log output
 
-This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
+Esta opción especifica a dónde enviar los registros y otra configuración conectada a ella. Está disponible en el comando de ejecución `k6 run`.
 
-Possible values are:
+Los valores posibles son:
+- none - deshabilitar
+- stdout - enviar a la salida estándar
+- stderr - enviar a la salida de error estándar (este es el valor por defecto)
+- loki - envía los registros a un servidor loki
 
-- none - disable
-- stdout - send to the standard output
-- stderr - send to the standard error output (this is the default)
-- loki - send logs to a loki server
+El servidor loki puede configurarse adicionalmente de la siguiente manera: `loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`, donde todo, excepto la url del principio, no es necesario. Las posibles claves con sus significados y valores por defecto:
 
-The loki can additionally be configured as follows:
-`loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`
-Where all but the url in the beginning are not required.
-The possible keys with their meanings and default values:
 
 | key               | meaning                                                                                                                                                                                | default value                            |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `nothing`         | the endpoint to which to send logs                                                                                                                                                     | `http://127.0.0.1:3100/loki/api/v1/push` |
-| allowedLabels     | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]`  | N/A                                      |
-| label.`labelName` | adds an additional label with the provided key and value to each message                                                                                                               | N/A                                      |
-| limit             | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped                                                           | 100                                      |
-| level             | the minimal level of a message so it's send to loki                                                                                                                                    | all                                      |
-| pushPeriod        | at what period to send log lines                                                                                                                                                       | 1s                                       |
-| profile           | whether to print some info about performance of the sending to loki                                                                                                                    | false                                    |
-| msgMaxSize        | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576                                  |
+| `nothing`         | el endpoint  al cual se enviarán los registros                                                                                                                                                    | `http://127.0.0.1:3100/loki/api/v1/push` |
+| allowedLabels     | si se establece k6 sólo enviará las etiquetas proporcionadas como tales y todas las demás se añadirán al mensaje en la forma `clave=valor`. El valor de la opción tiene la forma `[label1,label2]`  | N/A                                      |
+| label.`labelName` | añade una etiqueta adicional con la clave y el valor proporcionados a cada mensaje                                                                                                               | N/A                                      |
+| limit             | el límite de mensajes por pushPeriod, se envía un registro adicional cuando se alcanza el límite, registrando cuántos registros se han dejado caer                                                           | 100                                      |
+| level             | el nivel mínimo de un mensaje para que sea enviado a loki                                                                                                                                    | all                                      |
+| pushPeriod        | a qué hora enviar las líneas de registro                                                                                                                                                       | 1s                                       |
+| profile           | si imprimir alguna información sobre el rendimiento del envío a loki                                                                                                                    | false                                    |
+| msgMaxSize        | cuántos símbolos puede haber como máximo en un mensaje. Los mensajes más grandes perderán la mitad del mensaje con unos pocos caracteres adicionales que explican cuántos caracteres se han eliminado. | 1048576                                  |
 
 | Env             | CLI            | Code / Config file | Default  |
 | --------------- | -------------- | ------------------ | -------- |
@@ -649,11 +593,11 @@ $ k6 run --log-output=stdout script.js
 
 ### LogFormat
 
-A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
+Un valor que especifica el formato del registro. Por defecto, k6 incluye información extra de depuración como la fecha y el nivel de registro. Las otras opciones disponibles son:
 
-- `json`: print all the debug information in JSON format.
+- json: imprime toda la información de depuración en formato JSON.
+- raw: imprime sólo el mensaje de registro.
 
-- `raw`: print only the log message.
 
 | Env            | CLI                 | Code / Config file | Default |
 | -------------- | ------------------- | ------------------ | ------- |
@@ -669,8 +613,7 @@ $ k6 run --logformat raw test.js
 
 ### Max Redirects
 
-The maximum number of HTTP redirects that k6 will follow before giving up on a request and
-erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
+El número máximo de redirecciones HTTP que k6 seguirá antes de abandonar una solicitud y dar un error.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -688,9 +631,7 @@ export let options = {
 
 ### Minimum Iteration Duration
 
-Specifies the minimum duration for every single execution (i.e. iteration) of the default
-function should be. Any iterations that are shorter than it will cause that VU to sleep for
-the remainder of the time until the specified minimum duration is reached.
+Especifica la duración mínima que debe tener cada una de las ejecuciones (es decir, iteraciones) de la función por defecto. Cualquier iteración que sea más corta que ella hará que ese VU duerma durante el tiempo restante hasta que se alcance la duración mínima especificada.
 
 | Env                         | CLI                        | Code / Config file     | Default        |
 | --------------------------- | -------------------------- | ---------------------- | -------------- |
@@ -708,8 +649,7 @@ export let options = {
 
 ### No Connection Reuse
 
-A boolean, true or false, specifying whether k6 should disable keep-alive connections.
-Available in `k6 run` and `k6 cloud` commands.
+Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexiones keep-alive. 
 
 | Env                      | CLI                     | Code / Config file  | Default |
 | ------------------------ | ----------------------- | ------------------- | ------- |
@@ -727,8 +667,7 @@ export let options = {
 
 ### No Cookies Reset
 
-This disables the default behavior of resetting the cookie jar after each VU iteration. If
-it's enabled, saved cookies will be persisted across VU iterations.
+Esto deshabilita el comportamiento por defecto de restablecer el tarro de cookies después de cada iteración del VU. Si se habilita, las cookies guardadas se mantendrán a través de las iteraciones del VU.
 
 | Env                   | CLI | Code / Config file | Default |
 | --------------------- | --- | ------------------ | ------- |
@@ -746,7 +685,7 @@ export let options = {
 
 ### No Thresholds
 
-Disables threshold execution. Available in the `k6 run` command.
+Desactiva la ejecución de Thresholds.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -762,10 +701,7 @@ $ k6 run --no-thresholds ~/script.js
 
 ### No Usage Report
 
-A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
-track how often people use it. If this option is set to true, no usage report will be made. To
-learn more, have a look at the [Usage reports](/misc/usage-collection) documentation. Available in
-`k6 run` commands.
+Un booleano, verdadero o falso. Por defecto, k6 envía un informe de uso cada vez que se ejecuta, para que podamos hacer un seguimiento de la frecuencia de uso. Si esta opción se establece como verdadera, no se realizará ningún informe de uso. Para saber más, eche un vistazo a la documentación sobre los [informes de uso](/misc/usage-collection). Disponible en `k6 run`.
 
 | Env                  | CLI                 | Code / Config file | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
@@ -783,8 +719,8 @@ export let options = {
 
 ### No VU Connection Reuse
 
-A boolean, true or false, specifying whether k6 should reuse TCP connections between iterations
-of a VU. Available in `k6 run` and `k6 cloud` commands.
+Un booleano, verdadero o falso, que especifica si k6 debe reutilizar las conexiones TCP entre las iteraciones de un VU.
+
 
 | Env                         | CLI                        | Code / Config file    | Default |
 | --------------------------- | -------------------------- | --------------------- | ------- |
@@ -802,8 +738,7 @@ export let options = {
 
 ### Paused
 
-A boolean, true or false, specifying whether the test should start in a paused state. To resume
-a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud` commands.
+Un booleano, verdadero o falso, que especifica si la prueba debe comenzar en un estado de pausa. Para reanudar un estado de pausa se utilizará el comando k6 resume.
 
 | Env         | CLI              | Code / Config file | Default |
 | ----------- | ---------------- | ------------------ | ------- |
@@ -821,9 +756,8 @@ export let options = {
 
 ### Results Output
 
-Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
-on all output plugins available and how to configure them. Since version 0.21, this option can be
-specified multiple times. Available in `k6 run` command.
+Especifique la salida de resultados. Por favor, vaya a [Salida de resultados](/getting-started/results-output) para más información sobre todos los módulos de salida disponibles y cómo configurarlos. Disponible en el comando de ejecución `k6 run`.
+
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -839,8 +773,8 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 ### RPS
 
-The maximum number of requests to make per second, in total across all VUs. Available in `k6 run`
-and `k6 cloud` commands.
+El número máximo de peticiones a realizar por segundo, en total en todas los VUs.
+
 
 | Env      | CLI     | Code / Config file | Default         |
 | -------- | ------- | ------------------ | --------------- |
@@ -856,19 +790,13 @@ export let options = {
 
 </CodeGroup>
 
-> #### Considerations when running in the cloud
->
-> The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
+> Esta opción tiene algunas advertencias y es difícil de utilizar correctamente, por lo que se desaconseja su uso. Por ejemplo, en la ejecución en `k6 Cloud` o distribuida, esta opción afecta a cada instancia de k6 de forma independiente, es decir, no está fragmentada como los VU. Recomendamos encarecidamente el uso de [Scenarios](#scenarios) para simular un RPS constante en lugar de esta opción.
 
 ### Scenarios
 
-Define one or more execution patterns, with various VU and iteration scheduling
-settings, running different exported functions (besides `default`!), using different
-environment variables, tags, and more.
+Defina uno o más patrones de ejecución, con varias configuraciones de programación de VU e iteraciones, ejecutando diferentes funciones exportadas (¡además de las predeterminadas!), utilizando diferentes variables de entorno, etiquetas y más.
+Consulte el artículo [Escenarios](/using-k6/scenarios) para obtener detalles y más ejemplos.
 
-See the [Scenarios](/using-k6/scenarios) article for details and more examples.
-
-Available in `k6 run` and `k6 cloud` commands.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -899,7 +827,7 @@ export let options = {
 
 ### Setup Timeout
 
-Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
+Especifica el tiempo que se permite ejecutar la función `setup()` antes de que se termine y la prueba falle.
 
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
@@ -917,8 +845,9 @@ export let options = {
 
 ### Stages
 
-A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
-ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands,
+Una lista de VU `{ target: ..., duration: ... }` que especifican el número objetivo de VUs para aumentar o disminuir durante un período específico.
+
+Es una opción de acceso directo para un escenario único con un ejecutor de VUs en rampa. Si se utiliza junto con la opción VUs, el valor vus se utiliza como la opción startVUs del ejecutor.
 
 | Env         | CLI                                                     | Code / Config file | Default                        |
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
@@ -954,14 +883,10 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 
 ### Summary export
 
-> _New in v0.26.0_
+Guarde el informe de resumen de fin de prueba en un archivo JSON que incluya los datos de todas las métricas, comprobaciones y umbrales de la prueba. Esto es útil para obtener los resultados agregados de las pruebas en un formato legible por la máquina, para la integración con paneles de control, alertas externas, tuberías de CI, etc.
 
-Output the end-of-test summary report to a JSON file that includes
-data for all test metrics, checks and thresholds. This is useful to
-get the aggregated test results in a machine-readable format, for
-integration with dashboards, external alerts, etc.
+A partir de k6 v0.30.0, aunque esta característica no está obsoleta todavía, se desaconseja su uso, vea la explicación del porqué aquí. Para una mejor y más flexible exportación de JSON, así como la exportación de los datos del resumen a diferentes formatos (por ejemplo, JUnit/XUnit/etc. XML, HTML, .txt) y una completa personalización del resumen, vea el nuevo callback handleSummary().
 
-Available in the `k6 run` command.
 
 | Env                 | CLI                           | Code / Config file | Default |
 | ------------------- | ----------------------------- | ------------------ | ------- |
@@ -979,11 +904,13 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 </CodeGroup>
 
-See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
+Vea un archivo de ejemplo en la [página de resultados](https://k6.io/docs/getting-started/results-output#summary-export) page.
 
 ### Supply Env Var
 
-Add/override environment variable with VAR=value. Available in `k6 run` and `k6 cloud` commands.
+Añade o sustituye una variable de entorno con VAR=valor.
+
+Para que las variables de entorno del sistema estén disponibles en el script de k6 a través de __ENV, utilice la opción --include-system-env-vars.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -999,10 +926,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 ### System Tags
 
-Specify which [System Tags](/using-k6/tags-and-groups#system-tags) will be in the collected
-metrics. Some collectors like the `cloud` one may require that certain system tags be used.
-You can specify the tags as an array from the JS scripts or as a comma-separated list via the
-CLI. Available in `k6 run` and `k6 cloud` commands
+Especifique qué [Tags](/using-k6/tags-and-groups#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI. 
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -1020,8 +944,10 @@ export let options = {
 
 ### Summary Trend Stats
 
-Define stats for trend metrics (response times), one or more as `avg,p(95),...`. Available
-in `k6 run` command.
+Defina qué estadísticas de las métricas de tendencia (por ejemplo, tiempos de respuesta, duraciones de grupo/de iteración, etc.) se mostrarán en el resumen de fin de prueba. Los valores posibles incluyen avg (media), med (mediana), min, max, count (desde k6 v0.26.0), así como valores de percentil arbitrarios (por ejemplo, p(95), p(99), p(99.99), etc.).
+
+Para una mayor personalización del resumen y la exportación del mismo en varios formatos (por ejemplo, JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), véase la nueva llamada de retorno handleSummary() introducida en k6 v0.30.0.
+
 
 | Env                      | CLI                     | Code / Config file  | Default |
 | ------------------------ | ----------------------- | ------------------- | ------- |
@@ -1039,9 +965,7 @@ export let options = {
 
 ### Tags
 
-Specify tags that should be set test wide across all metrics. If a tag with the same name has
-been specified on a request, check or custom metrics it will have precedence over a test wide
-tag. Available in `k6 run` and `k6 cloud` commands.
+Especifique las etiquetas que deben establecerse a nivel de prueba en todas las métricas. Si se ha especificado una etiqueta con el mismo nombre en una solicitud, una comprobación o una métrica personalizada, tendrá prioridad sobre una etiqueta de prueba.
 
 | Env | CLI                | Code / Config file | Default |
 | --- | ------------------ | ------------------ | ------- |
@@ -1061,8 +985,8 @@ export let options = {
 
 ### Teardown Timeout
 
-Specify how long the `teardown()` function is allowed to run before it's terminated and the test
-fails.
+Especifica cuánto tiempo se permite que se ejecute la función `teardown()` antes de que se termine y la prueba falle.
+
 
 | Env                   | CLI | Code / Config file | Default |
 | --------------------- | --- | ------------------ | ------- |
@@ -1080,9 +1004,7 @@ export let options = {
 
 ### Thresholds
 
-A collection of threshold specifications to configure under what condition(s) a test is considered
-successful or not, when it has passed or failed, based on metric data. To learn more, have a look
-at the [Thresholds](/using-k6/thresholds) documentation. Available in `k6 run` commands.
+Una colección de especificaciones de umbrales para configurar bajo qué condición(es) se considera que una prueba ha tenido éxito o no, cuando ha pasado o fallado, basándose en los datos métricos. Para obtener más información, consulte la documentación sobre [Thresholds](/using-k6/thresholds).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1103,8 +1025,7 @@ export let options = {
 
 ### Throw
 
-A boolean, true or false, specifying whether to throw errors on failed HTTP requests or not.
-Available in `k6 run` and `k6 cloud` commands.
+Un booleano, verdadero o falso, que especifica si se lanzan errores en las peticiones HTTP fallidas o no. 
 
 | Env        | CLI             | Code / Config file | Default |
 | ---------- | --------------- | ------------------ | ------- |
@@ -1122,8 +1043,7 @@ export let options = {
 
 ### TLS Auth
 
-A list of TLS client certificate configuration objects. Each object needs to specify for
-which host(s)/domain(s) the given client certificate is valid for.
+Una lista de objetos de configuración de certificados de cliente TLS. Cada objeto debe especificar para qué host(es)/dominio(s) es válido el certificado de cliente dado.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1147,8 +1067,7 @@ export let options = {
 
 ### TLS Cipher Suites
 
-A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
-For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
+Una lista de suites de cifrado permitidas para ser utilizadas por en las interacciones SSL/TLS con un servidor. Para una lista completa de cifrados disponibles, vaya [aquí](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
@@ -1197,9 +1116,7 @@ export let options = {
 
 ### User Agent
 
-A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
-requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
-Available in `k6 run` and `k6 cloud` commands
+Una cadena que especifica la cadena de agente de usuario a utilizar en las cabeceras User-Agent cuando se envían peticiones HTTP. Si se establece como una cadena vacía no se enviará una cabecera User-Agent desde la v0.29.0.
 
 | Env             | CLI            | Code / Config file | Default                                                               |
 | --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
@@ -1217,8 +1134,7 @@ export let options = {
 
 ### VUs
 
-A number specifying the number of VUs to run concurrently. If you'd like more control look at
-the [`stages`](#stages) option. Available in `k6 run` and `k6 cloud` commands.
+Un valor entero que especifica el número de VUs a ejecutar simultáneamente, utilizado junto con las opciones de iteraciones o duración. Si desea un mayor control, consulte la opción de [stages](#stages) o [scenarios](#scenarios).
 
 | Env      | CLI           | Code / Config file | Default |
 | -------- | ------------- | ------------------ | ------- |
@@ -1238,12 +1154,7 @@ export let options = {
 
 > #### ⚠️ Keep in mind!
 >
-> This option was deprecated in k6 version 0.27.0.
-
-A number specifying max number of virtual users, if more than `vus`. This option is typically
-used when the intent is to dynamically scale the amount of VUs up and down during the test using
-the `k6 scale` command. Since instantiating a VU is an expensive operation in k6 this option
-is used to pre-allocate `vusMax` number of VUs. Available in `k6 run` and `k6 cloud` commands.
+> Esta opción quedó obsoleta en la versión 0.27.0 de k6. Véase en su lugar los escenarios y el ejecutor controlado externamente.
 
 | Env          | CLI           | Code / Config file | Default         |
 | ------------ | ------------- | ------------------ | --------------- |

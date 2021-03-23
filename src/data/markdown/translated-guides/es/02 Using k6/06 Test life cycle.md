@@ -1,10 +1,9 @@
 ---
-title: 'Test life cycle'
+title: 'Etapas de un test'
 excerpt: ''
 ---
 
-The four distinct life cycle stages in a k6 test are "init", "setup", "VU" and "teardown"
-Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
+Las cuatro etapas del ciclo de vida de una prueba en k6 son "init", "setup", "VU" y "teardown". A lo largo de la documentación, usted podrá notar que nos referimos a ellas como "init code", "VU code", etc.
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
@@ -26,10 +25,10 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## Init and VU stages
+## Etapas Init y VU
 
-Scripts must contain, at the very least, a `default` function - this defines the entry point
-for your VUs, similar to the `main()` function in many other languages:
+
+Los scripts deben contener como mínimo, una `default` función la cual define el punto de entrada para los VUs, la misma sería similar a la función `main()` como en muchos otros lenguajes:
 
 <CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
 
@@ -41,33 +40,17 @@ export default function () {
 
 </CodeGroup>
 
-_"Why not just run my script normally, from top to bottom"_, you might ask - the answer is: we
-do, but code **inside** and **outside** your `default` function can do different things.
+Nos podemos preguntar, ¿Por qué no ejecutar mi script normalmente, desde el inicio hasta el final?. La respuesta es: Sí, se puede hacer, pero el código dentro y fuera de la función predeterminada puede hacer cosas diferentes.
 
-Code inside `default` is called "VU code", and is run over and over for as long as the test is
-running. Code outside of it is called "init code", and is run only once per VU.
+El código predeterminado de adentro es llamado “VU Code”, y se ejecuta una y otra vez mientras el test está ejecutándose. El código de afuera es comúnmente llamado “init Code” y se ejecuta una vez por VU.
+ 
+El “VU Code” puede hacer peticiones HTTP, proveer métricas, y generalmente hace todo lo que se espera en una prueba de carga, no puede cargar nada desde su sistema de archivos local ni importar ningún otro módulo. Todo esto debe hacerse desde el “init Code”.
+ 
+Tenemos dos razones para ello. La primera es, por supuesto, el rendimiento.
+Si lees un archivo del disco en cada iteración del script, sería sumamente lento; incluso si guardas en el caché el contenido del archivo y cualquier módulo importado, esto significa que la primera ejecución del script sería mucho más lenta que todas las demás. Peor aún, si tienes un script que importa o carga cosas basadas en otras cosas que sólo pueden conocerse en el tiempo de ejecución, tendrías iteraciones lentas cada vez que cargues algo nuevo.
+Pero hay otra razón más interesante. Al forzar todas las importaciones y lecturas de archivos en el contexto init, hacemos posible un importante objetivo de diseño; soportar tres modos de ejecución diferentes sin necesidad de que modifiques tus scripts; ejecución local, en la nube y en clúster. En el caso de la ejecución en la nube y en clúster, sabemos qué archivos se necesitarán, por lo que distribuimos sólo esos archivos. Sabemos qué módulos se importarán, por lo que podemos agruparlos desde el principio. Y, relacionado con el punto de rendimiento anterior, los otros nodos ni siquiera necesitan sistemas de archivos con capacidad de escritura: todo puede mantenerse en memoria.
+Como ventaja adicional, puede utilizar esto para reutilizar los datos entre las iteraciones (pero sólo para el mismo VU):
 
-VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load
-test to do - with a few important exceptions: you can't load anything from your local filesystem,
-or import any other modules. This all has to be done from the init code.
-
-We have two reasons for this. The first is, of course: performance.
-
-If you read a file from disk on every single script iteration, it'd be needlessly slow; even
-if you cache the contents of the file and any imported modules, it'd mean the _first run_ of the
-script would be much slower than all the others. Worse yet, if you have a script that imports
-or loads things based on things that can only be known at runtime, you'd get slow iterations
-thrown in every time you load something new.
-
-But there's another, more interesting reason. By forcing all imports and file reads into the
-init context, we make an important design goal possible; we want to support three different
-execution modes without the need for you to modify your scripts; local, cloud and clustered
-execution. In the case of cloud and clustered execution we know which files will be needed, so
-we distribute only those files. We know which modules will be imported, so we can bundle them
-up from the get-go. And, tying into the performance point above, the other nodes don't even
-need writable filesystems - everything can be kept in-memory.
-
-As an added bonus, you can use this to reuse data between iterations (but only for the same VU):
 
 <CodeGroup labels={[]}>
 
@@ -81,33 +64,20 @@ export default function () {
 
 </CodeGroup>
 
-## The default function life-cycle
+## Función default
 
-A VU will execute the default function from start to end in sequence. Nothing out of the ordinary
-so far, but here's the important part; once the VU reaches the end of the default function it will
-loop back to the start and execute the code all over.
+Un VU ejecutará la función por defecto desde el principio hasta el final en secuencia. Nada fuera de lo común hasta ahora, pero aquí está la parte importante; una vez que el VU llega al final de la función por defecto, hará un bucle de vuelta al principio y ejecutará el código de nuevo.
+Como parte de este proceso de "reinicio", la VU se restablece. Las cookies se borran y las conexiones TCP pueden ser eliminadas, dependiendo de las opciones de configuración de la prueba.
 
-As part of this "restart" process, the VU is reset. Cookies are cleared and TCP connections
-might be torn down, depending on your test configuration options.
+> Asegúrese de utilizar las sentencias `sleep()` para medir el ritmo de sus VUs adecuadamente. Una cantidad apropiada de tiempo de espera al final de la función predeterminada es a menudo necesaria para simular adecuadamente a un usuario leyendo el contenido de una página. Si no tiene una sentencia sleep() al final de la función predeterminada su VU podría ser más "agresivo" de lo que había planeado.
+> El VU sin ningún `sleep()` es similar a un usuario que constantemente presiona F5 para refrescar la página.
 
-> Make sure to use `sleep()` statements to pace your VUs properly. An appropriate amount of
-> sleep/think time at the end of the default function is often needed to properly simulate a
-> user reading content on a page. If you don't have a `sleep()` statement at the end of
-> the default function your VU might be more "aggressive" than you've planned.
->
-> VU without any `sleep()` is akin to a user who constantly presses F5 to refresh the page.
 
-## Setup and teardown stages
+## Etapas Setup y Teardown
 
-Beyond the required init and VU stages, which is code run for each VU, k6 also supports test-wide
-setup and teardown stages, like many other testing frameworks and tools. The `setup` and
-`teardown` functions, like the `default` function, needs to be exported functions. But unlike
-the `default` function `setup` and `teardown` are only called once for a test. `setup` is called
-at the beginning of the test, after the init stage but before the VU stage (`default` function),
-and `teardown` is called at the end of a test, after the VU stage (`default` function). Therefore,
-VU number is 0 while executing the `setup` and `teardown` functions.
+Más allá de las etapas requeridas init y VU, las cuales son el código que se ejecuta para cada VU, K6 también soporta las etapas de `setup` y `teardown` a nivel de prueba, como muchos otros frameworks y herramientas de prueba. Las funciones de `setup` y `teardown`, como la función `default`, necesitan ser funciones exportadas. Pero a diferencia de la función `default`, `setup` y `teardown` sólo se llaman una vez por prueba, setup se llama al principio de la prueba, después de la etapa init pero antes de la etapa VU (función por defecto), y teardown se llama al final de una prueba, después de la etapa VU (función por defecto). Por lo tanto, el número de VU es 0 mientras se ejecutan las funciones setup y teardown.
 
-Again, let's have a look at the basic structure of a k6 test:
+De nuevo, veamos la estructura básica de una prueba k6:
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
@@ -129,19 +99,13 @@ export function teardown(data) {
 
 </CodeGroup>
 
-You might have noticed the function signature of the `default` function and `teardown` function
-takes an argument, which we here refer to as `data`.
+Habrás notado que la firma de la función predeterminadas y la función de teardown toman un argumento, al que aquí nos referimos como datos.
 
-This `data` will be whatever is returned in the `setup` function, so a mechanism for passing data
-from the setup stage to the subsequent VU and teardown stages in a way that, again, is compatible
-with our goal of supporting local, cloud and clustered execution modes without requiring script
-changes when switching between them. (it might or might not be the same node that runs the setup
-and teardown stages in the cloud or clustered execution mode).
+Estos datos serán lo que devuelva la función de setup, así que es un mecanismo para pasar los datos de la etapa de configuración a las etapas posteriores de VU y teardown de una manera que, de nuevo, sea compatible con nuestro objetivo de soportar los modos de ejecución local, k6 Cloud y en clúster sin requerir cambios de script al cambiar entre ellos. (puede o no ser el mismo nodo el que ejecute las etapas de setup y teardown en el modo de ejecución en la nube o en cluster).
+ 
+Para soportar todos esos modos, sólo se pueden pasar datos (por ejemplo, JSON) entre setup() y las otras etapas, cualquier otra función pasada será descartada.
 
-To support all of those modes, only data (i.e. JSON) can be passed between `setup()` and the
-other stages, any passed functions will be stripped.
-
-Here's an example of doing just that, passing some data from setup to VU and teardown stages:
+Este es un ejemplo de cómo hacerlo, pasando algunos datos de las etapas de setup a VU y teardown:
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
@@ -163,9 +127,7 @@ export function teardown(data) {
 
 </CodeGroup>
 
-A big difference between the init stage and setup/teardown stages is that you have the full k6
-API available in the latter, you can for example make HTTP requests in the setup and teardown
-stages:
+Una gran diferencia entre la etapa init y la de setup/teardown es que en esta última tienes disponible toda la API de k6, puedes por ejemplo hacer peticiones HTTP en las etapas de setup y teardown:
 
 <CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
@@ -186,14 +148,12 @@ export default function (data) {
 
 </CodeGroup>
 
-Note that any requests made in the setup and teardown stages will be counted in the end-of-test
-summary. Those requests will be tagged appropriately with the `::setup` and `::teardown` values
-for the `group` metric tag, so that you can filter them in JSON output or InfluxDB.
+Tenga en cuenta que las solicitudes realizadas en las etapas de setup y teardown se contarán en el resumen final de la prueba. Dichas solicitudes serán etiquetadas adecuadamente con los valores  `::setup` y `::teardown` para la etiqueta de métrica de grupo, de modo que pueda filtrarse en la respuesta del JSON o en InfluxDB.
 
-## Skip setup and teardown execution
+## Omitir la ejecución de setup y teardown
 
-It is possible to skip the execution of setup and teardown stages using the two options `--no-setup` and
-`--no-teardown` respectively.
+
+Es posible omitir la ejecución de las etapas de setup y teardown utilizando las dos opciones `--no-setup` y `--no-teardown` respectivamente.
 
 <CodeGroup labels={["Skipping setup/teardown execution"]} lineNumbers={[true]}>
 

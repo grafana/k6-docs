@@ -48,7 +48,7 @@ The test summary provides a general overview of your test result. The summary pr
 
 - [Métricas incorporadas](/using-k6/metrics#built-in-metrics) y [métricas personalizadas](/using-k6/metrics#custom-metrics).
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
-- [Grupos](/using-k6/tags-and-groups#groups) y [etiquetas](/using-k6/tags-and-groups#tags).
+- [Groups](/using-k6/tags-and-groups#groups) y [Tags](/using-k6/tags-and-groups#tags).
 
 <CodeGroup labels={[]}>
 
