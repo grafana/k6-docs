@@ -1,5 +1,5 @@
 ---
-title: 'CookieJar.cookiesForUrl(url)'
+title: 'CookieJar.cookiesForURL(url)'
 excerpt: ''
 ---
 
