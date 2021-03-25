@@ -1,11 +1,25 @@
 ---
 title: 'Result Export'
-excerpt: 'Structure for the CSV export for cloud results'
+excerpt: 'Exporting k6 Cloud test results. CSV format and PDF reports'
 ---
 
-Test result data can be exported after a test has finished and data processing complete. To do so, use the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right of a test result and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
+Test result data can be exported after a test has finished and data processing complete in various formats:
+- [PDF report](#generate-pdf-report): to share the performance results with managers and executives.
+- [CSV format](#export-as-csv): to analyze the test result metrics deeper on your own.
 
-## Structure of the CSV data
+If you want to know other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
+
+## Generate PDF report
+
+To generate a PDF report from a test result, visit the test result, click the options menu - triple-dot button **⫶** in the top right  - and select `Generate PDF summary`. After a few seconds, the browser will prompt you to download the PDF summary report.
+
+The PDF report is an executive summary of the test result's most relevant metrics and performance data. A complete PDF example can be found [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
+
+![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report.png)
+
+## Export as CSV
+
+To export the test result as CSV, visit the test result, click the options menu - triple-dot button **⫶** in the top right  - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
 
 The CSV data has the following columns of data:
 
@@ -30,8 +44,8 @@ Here's example data, units (where necessary) and description of each field prese
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
 | `count`         | 1.0                              | number         | Number of samples that this data point represents (if > 1 `response_time` is an aggregate value).                                         |
 | `load_zone`     | amazon:us:ashburn                | string         | The load zone where the request(s) was made from.                                                                                         |
-| `tags`          | staticAsset=true                 | string         | Pipe (`                                                                                                                                   | `) separated list of `name=value` tags as specified for the request in the script. |
+| `tags`          | staticAsset=true                 | string         | Pipe separated list of `name=value` tags as specified for the request in the script. |
 
-### Future
 
-The exported CSV file currently only contains data from the primary HTTP response time metric (`http_req_duration`). In the future we'll expand the export feature with more HTTP data, WebSocket data, Checks data, Thresholds data as well as Custom metrics data.
+> **Note**
+> The exported CSV file currently only contains data from the primary HTTP response time metric (`http_req_duration`). In the future we'll expand the export feature with more HTTP data, WebSocket data, Checks data, Thresholds data as well as Custom metrics data.
