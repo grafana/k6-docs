@@ -21,9 +21,16 @@ import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 
 const pageInfo = {
-  title: 'Welcome to the k6 documentation',
-  description:
-    'This documentation will help you go from a total beginner to a seasoned k6 expert!',
+  en: {
+    title: 'Welcome to the k6 documentation',
+    description:
+      'This documentation will help you go from a total beginner to a seasoned k6 expert!',
+  },
+  es: {
+    title: 'Bienvenido a la documentación de k6',
+    description:
+      'Esta documentación le ayudará a pasar de ser un principiante a un experto en k6.',
+  },
 };
 
 function GuidesContent({
@@ -64,7 +71,7 @@ function GuidesContent({
       locale={locale}
       pageTranslations={guidesTranslations}
     >
-      <PageInfo {...pageInfo} />
+      <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
         <StickyContainer>
           <div ref={contentContainerRef} className={stickyContainerClasses}>
@@ -74,16 +81,18 @@ function GuidesContent({
             <UseCases />
             <Manifesto />
             <K6DoesNot />
-            <Cloud
-              title={'Looking for k6 Cloud?'}
-              btnLink={`${docs}/cloud`}
-              isExternal
-              btnTarget={'_self'}
-              btnText={'Cloud docs'}
-              description={
-                'A tailored SaaS service to bring your team together into load testing.'
-              }
-            />
+            {locale === 'en' && (
+              <Cloud
+                title={'Looking for k6 Cloud?'}
+                btnLink={`${docs}/cloud`}
+                isExternal
+                btnTarget={'_self'}
+                btnText={'Cloud docs'}
+                description={
+                  'A tailored SaaS service to bring your team together into load testing.'
+                }
+              />
+            )}
           </div>
 
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
