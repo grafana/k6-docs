@@ -224,4 +224,4 @@ Cuando se utilizan grupos, Checks y las solicitudes HTTP pueden verse por grupos
 
 ![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
 
-Además, puede filtrar los resultados por etiquetas en la [pestaña de análisi](/cloud/analyzing-results/analysis-tab).
+Además, puede filtrar los resultados por etiquetas en la [pestaña de análisis](/cloud/analyzing-results/analysis-tab).
