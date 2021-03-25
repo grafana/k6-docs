@@ -3,13 +3,13 @@ title: 'Apache Kafka'
 excerpt: ''
 ---
 
-[Apache Kafka](https://kafka.apache.org) is a stream-processing platform for handling real-time data.
+[Apache Kafka](https://kafka.apache.org) es una plataforma de procesamiento de flujos para manejar datos en tiempo real.
 
-When running a test, k6 can send the metrics in real-time to Kafka.
+Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a Kafka.
 
-## Instructions
+## Instrucciones
 
-You can configure the broker (or multiple ones), topic and message format directly from the command line parameter like this:
+Puedes configurar el broker (o varios), el topic y el formato de los mensajes directamente desde la línea de comandos:
 
 <CodeGroup labels={[]}>
 
@@ -19,7 +19,7 @@ $ k6 run --out kafka=brokers=broker_host:8000,topic=k6
 
 </CodeGroup>
 
-or if you want multiple brokers:
+o si quieres configurar varios corredores puedes hacerlo de la siguiente manera:
 
 <CodeGroup labels={[]}>
 
@@ -29,7 +29,7 @@ $ k6 --out kafka=brokers={broker1,broker2},topic=k6,format=json
 
 </CodeGroup>
 
-You can also specify the message `format` k6 will use. By default, it will be the same as the JSON output, but you can also use the InfluxDB line protocol for direct "consumption" by InfluxDB:
+También puede especificar el formato de mensaje que utilizará k6. Por defecto, será el mismo que la salida del JSON, pero también puede utilizar el protocolo de línea de InfluxDB para el "consumo" directo de InfluxDB:
 
 <CodeGroup labels={[]}>
 
@@ -39,7 +39,7 @@ $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb
 
 </CodeGroup>
 
-You can even modify some of the `format` settings such as `tagsAsFields`:
+Incluso puede modificar algunos de los ajustes de formato como `tagsAsFields`:
 
 <CodeGroup labels={[]}>
 
@@ -49,6 +49,7 @@ $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb,influxdb.tag
 
 </CodeGroup>
 
-## See also
+## Véase también
+
 
 - [Integrating k6 with Apache Kafka](https://k6.io/blog/integrating-k6-with-apache-kafka)

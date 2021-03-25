@@ -1,35 +1,36 @@
 ---
 title: 'Amazon CloudWatch'
-excerpt: 'The Amazon CloudWatch is a monitoring and observability solution. In this article, we will show you how to send metrics from k6 to Amazon CloudWatch and later visualize them.'
+excerpt: 'Esta guía cubre la ejecución de la integración de k6 con CloudWatch y la visualización de los resultados.'
 ---
 
-k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html), which is effectively a StatsD integration. These metrics can then be visualized in dashboards.
+k6 puede enviar los datos de las métricas a [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) a través del [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html), que es efectivamente una integración de StatsD. Estas métricas pueden ser visualizadas en paneles de control.
 
-This guide covers running the CloudWatch integration and visualizing the results:
+Esta guía cubre la ejecución de la integración de CloudWatch y la visualización de los resultados:
 
-- Run the CloudWatch agent
-- Run the k6 test
-- Visualize k6 metrics in Amazon CloudWatch
+- Ejecutar el agente de CloudWatch
+- Ejecutar la prueba con k6
+- Visualizar las métricas de k6 en Amazon CloudWatch
+
 
 ## Run the CloudWatch agent
 
-We presume that you already have a machine that supports both running k6 and CloudWatch agent, which either runs a flavor of GNU/Linux or Windows. Just go ahead and [download](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html) the suitable CloudWatch agent version for your operating system.
+Suponemos que ya tiene una máquina que soporta tanto la ejecución de k6 como del agente de  CloudWatch, que se ejecuta en un entorno de GNU/Linux o Windows. Simplemente [descargue](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html) la versión del agente CloudWatch adecuada para su sistema operativo.
 
-1. Create an [IAM role](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html) to be able to send metrics to CloudWatch via the agent. Then, if you are running on Amazon EC2, just [attach](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) the role to your EC2 instance, so that you can be able to send metrics to CloudWatch. Otherwise, if you are running on-premises servers, follow this [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html#install-CloudWatch-Agent-iam_user-first).
+1. Cree un rol en [IAM role](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html) para poder enviar métricas a CloudWatch a través del agente. A continuación, si está ejecutando en Amazon EC2, sólo tiene que [adjuntar](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) el rol a su instancia EC2, para poder enviar métricas a CloudWatch. De lo contrario, si está ejecutando servidores locales, lea la siguiente [guía](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html#install-CloudWatch-Agent-iam_user-first).
 
-2. Download the CloudWatch Agent package suitable for your operating system. For example, on Debian 10 (Buster), we've used the following link. For other operating systems, please refer to this [guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
+2. Descargue el paquete del agente de CloudWatch adecuado para su sistema operativo. Por ejemplo, en Debian 10 (Buster), hemos utilizado el siguiente enlace. Para otros sistemas operativos, consulte esta [guía](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html):
 
    ```bash
    $ wget https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
    ```
 
-3. Install the package:
+3. Instala el paquete:
 
    ```bash
    $ sudo dpkg -i amazon-cloudwatch-agent.deb
    ```
 
-4. Configure the agent to receive data from k6. For this, create a file called "_/opt/aws/amazon-cloudwatch-agent/etc/statsd.json_" and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
+4. Configure el agente para recibir datos desde k6. Para ello, crea un fichero llamado "/opt/aws/amazon-cloudwatch-agent/etc/statsd.json" y pega el siguiente objeto de configuración JSON. Esta configuración significa que el agente escuchará en el puerto número 8125, que es el número de puerto por defecto para k6 y StatsD. El intervalo para recoger las métricas es de 5 segundos y no son agregadas, ya que necesitamos los datos en bruto más tarde en CloudWatch.
 
    ```javascript
    {
@@ -46,43 +47,43 @@ We presume that you already have a machine that supports both running k6 and Clo
    }
    ```
 
-5. Run the following command to start the agent:
+5. Ejecute el siguiente comando para iniciar el agente:
 
    ```bash
    $ sudo amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/statsd.json
    ```
 
-6. You can check the status of the agent using the following command:
+6. Puede comprobar el estado del agente mediante el siguiente comando:
 
    ```bash
    $ amazon-cloudwatch-agent-ctl -a status
    ```
 
-## Run the k6 test
+## Ejecutar la prueba con k6
 
-Once the agent is running, [install](/getting-started/installation) k6 and [run](/getting-started/running-k6) the test, so that the metrics gets sent to the agent with the following command:
+Una vez que el agente esté funcionando correctamente, [instale](/getting-started/installation) k6 y [ejecute](/getting-started/running-k6)  la prueba, para que las métricas sean enviadas al agente mediante el siguiente comando:
 
 ```bash
 $ k6 run --out statsd script.js
 ```
 
-The following options can be configured as environment variables, depending on the agent's configuration:
+Las siguientes opciones pueden ser configuradas como variables de entorno, dependiendo de la configuración del agente:
 
-| Name                      | Value                                                                                                  |
+| Nombre                      | Valor                                                                                                  |
 | ------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `K6_STATSD_ADDR`          | Address of the statsd service, currently only UDP is supported. The default value is `localhost:8125`. |
-| `K6_STATSD_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6`.                    |
-| `K6_STATSD_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                  |
-| `K6_STATSD_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                            |
+| `K6_STATSD_ADDR`          | Dirección del servicio statsd, actualmente sólo se admite UDP. El valor por defecto es localhost:8125. |
+| `K6_STATSD_NAMESPACE`     | El espacio de nombres utilizado como prefijo para todos los nombres de las métricas. El valor por defecto es k6.                    |
+| `K6_STATSD_PUSH_INTERVAL` | Configure la frecuencia con la que se envían los datos. El valor por defecto es 1s.                                  |
+| `K6_STATSD_BUFFER_SIZE`   | Establezca la frecuencia con la que se envían los datos. El valor por defecto es 1s.                                                            |
 
-## Visualize k6 metrics in Amazon CloudWatch
+## Visualizar las métricas de k6 en Amazon CloudWatch
 
-Visualization of the exported metrics to CloudWatch is done by creating a dashboard and selecting desired metrics to be displayed.
+La visualización de las métricas exportadas a CloudWatch se realiza creando un panel de control y seleccionando las métricas deseadas para ser mostradas.
 
 ![List of k6 metrics](./images/CloudWatch/cloudwatch-k6-metrics.png)
 
-Here's an example dashboard we've created to visualize the test results.
+Este es un ejemplo del dashboard que hemos creado para visualizar los resultados de las pruebas.
 
 ![k6 Dashboard on Amazon CloudWatch](./images/CloudWatch/cloudwatch-k6-dashboard.png)
 
-The above dashboard is exported as JSON and is available [here](https://github.com/k6io/example-cloudwatch-dashboards).
+El dashboard que se muestra en la imagen anterior se exporta como JSON y está disponible [aquí](https://github.com/k6io/example-cloudwatch-dashboards).

@@ -1,9 +1,10 @@
 ---
-title: 'End-of-test Summary'
-excerpt: 'By default, k6 prints a summary report containing the aggregated results at the end of the test. Since k6 v0.30.0, the new `handleSummary()` callback allows the report to be completely customized, including the generation and saving of JSON, HTML, XML (e.g. JUnit), etc. reports to files.'
+title: 'Resumen del final de la prueba'
+excerpt: 'Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en stdout que contiene una visión general de los resultados de la prueba.'
 ---
 
-By default, at the end of every local test run, k6 prints a summary report to `stdout` that contains a general overview of your test results. It includes aggregated values for all [built-in](/using-k6/metrics#built-in-metrics) and [custom](/using-k6/metrics#custom-metrics) metrics and sub-metrics, [thresholds](/using-k6/thresholds), [groups](/using-k6/tags-and-groups#groups), and [checks](/using-k6/checks). It can look somewhat like this:
+Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en stdout que contiene una visión general de los resultados de la prueba. Incluye los valores agregados de todas las métricas y submétricas [incorporadas](/using-k6/metrics#built-in-metrics) y [propias](/using-k6/metrics#custom-metrics), [thresholds](/using-k6/thresholds), [groups](/using-k6/tags-and-groups#groups), y [checks](/using-k6/checks). Puede tener un aspecto similar al siguiente:
+
 
 <CodeGroup labels={[]}>
 
@@ -39,28 +40,31 @@ By default, at the end of every local test run, k6 prints a summary report to `s
 
 </CodeGroup>
 
-A few options can affect how this report behaves:
-- The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) allows you to define which stats for [Trend metrics](/javascript-api/k6-metrics/trend) will be calculated and shown.
-- The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed time unit for _all_ time values in the summary.
-- [`no-summary`](/using-k6/options#no-summary) completely disables the report generation. Since k6 v0.30.0 that includes `--summary-export` and `handleSummary()` (see below).
+Algunas opciones pueden afectar al comportamiento de este informe:
 
-## Summary export to a JSON file
+- La opción [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) le permite definir qué estadísticas de las métricas de tendencia se calcularán y mostrarán.
+- La opción [`--summary-time-unit` option](/using-k6/options#summary-time-unit) obliga a k6 a utilizar una unidad de tiempo fija para todos los valores de tiempo en el resumen.
+- La opción [`no-summary`](/using-k6/options#no-summary) desactiva completamente la generación de informes. Disponible desde la versión de k6  v0.30.0 que incluye `--summary-export` y `handleSummary()`.
 
-Since version 0.26.0 k6 has had the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) for local test runs. It exports some of the summary report data to a JSON file format.
 
-Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered. Threshold values are also somewhat unintuitive - they signify whether the threshold has been crossed. So, `true` is the "bad" threshold value, i.e. when the threshold has failed, and `false` is the "good" value...
+## Exportación de un resumen a un archivo JSON
 
-We couldn't change the `--summary-export` data format because it would have broken backwards compatibility in a feature that people depended on in CI, so it still works how it used to. However, in k6 v0.30.0, we introduced `handleSummary()` - a new and better way to make JSON exports of the summary data, as well as any other format (CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.) that may be required. We strongly recommend everyone to use `handleSummary()` instead of `--summary-export`. For more details, see the next section in this document...
+Desde la versión 0.26.0 k6 se tiene [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) para las ejecuciones de pruebas locales. Esta opción exporta algunos de los datos del informe de resumen a un formato de archivo JSON.
+
+Desafortunadamente, el formato exportado es algo limitado y tiene algunas peculiaridades confusas. Por ejemplo, los grupos y las comprobaciones no están ordenados. Los valores de los umbrales también son algo poco intuitivos: indican si se ha superado el umbral. Así, true es el valor de umbral "malo", es decir, cuando el umbral ha fallado, y false es el valor "bueno"...
+
+No podemos cambiar el formato de datos `--summary-export` porque habría roto la compatibilidad anterior con características de la que los usuarios dependían en CI, así que sigue funcionando como antes. Sin embargo, en la versión de k6 v0.30.0, se introdujo `handleSummary()`  una nueva y mejor manera de hacer exportaciones JSON de los datos de resumen, así como cualquier otro formato (CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.) que pueda ser necesario. Recomendamos encarecidamente a todos que utilicen `handleSummary()` en lugar de `--summary-export`. Para más detalles, consulte la siguiente sección de este documento…
+
 
 ## handleSummary() callback
 
-Starting with k6 v0.30.0, users can now completely customize the end-of-test summary report!
+¡A partir de la versión v0.30.0, los usuarios pueden ahora personalizar completamente el informe de resumen de fin de prueba!
 
-You can now `export` a function called `handleSummary()` and k6 will call it at the end of the test run, even after [`teardown()`](/docs/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` will be called with a JS object containing the same information that is used to generate the end-of-test summary and `--summary-export`, and allows users to completely customize how the end-of-test summary looks like.
+Ahora puede exportar una función llamada `handleSummary()` y k6 la llamará al final de la ejecución de la prueba, incluso después de [`teardown()`](/docs/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` será llamada con un objeto JS que contiene la misma información que se utiliza para generar el resumen de fin de prueba y `--summary-export`, y permite a los usuarios personalizar completamente el aspecto del resumen de fin de prueba.
 
-Besides customizing the end-of-test CLI summary (if `handleSummary()` is exported, k6 will not print the default), you can also transform the summary data to various machine or human-readable formats and save it to files. This allows the creation of JS helper functions that generate JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. files from the summary data.
+Además de personalizar el resumen CLI de fin de prueba (si se exporta `handleSummary()`, k6 no imprimirá el predeterminado), también puede transformar los datos del resumen a varios formatos legibles por la máquina o por el ser humano y guardarlos en archivos. Esto permite la creación de funciones de ayuda JS que generan archivos JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. a partir de los datos del resumen.
 
-You can also send the generated reports to a remote server by making an HTTP request with them (or using any of the other protocols k6 already supports)! Here's a simple example:
+¡También puede enviar los informes generados a un servidor remoto haciendo una petición HTTP con ellos (o usando cualquiera de los otros protocolos que k6 ya soporta)! He aquí un ejemplo sencillo:
 
 
 <CodeGroup labels={["handleSummary() demo"]} lineNumbers={[true]}>
@@ -95,15 +99,15 @@ export function handleSummary(data) {
 
 </CodeGroup>
 
+k6 espera que `handleSummary()` retorne un mapa como el siguiente `{key1: value1, key2: value2, ...}`. Los valores pueden ser un `string` o un `ArrayBuffer`, y representan el contenido de forma resumida del informe generado. Las claves deben ser cadenas y determinan dónde se mostrará o guardará el contenido:
 
-k6 expects `handleSummary()` to return a `{key1: value1, key2: value2, ...}` map. The values can be a `string` or `ArrayBuffer`, and represent the generated summary report contents. The keys should be strings and determine where the contents will be displayed or saved:
-- `stdout` for [standard output](https://en.wikipedia.org/wiki/Standard_streams)
-- `stderr` for standard error,
-- or any relative or absolute path to a file on the system (which will be overwritten)
+- `stdout` para la salida estándar
+- `stderr` para el error estándar,
+- o cualquier ruta relativa o absoluta a un archivo del sistema (que se sobrescribirá)
 
-The format of the `data` parameter is similar but not identical to the data format of `--summary-export`. The format of `--summary-export` remains unchanged, for backwards compatibility, but the data format for this new k6 feature was made more extensible and had some of the ambiguities and issues from the previous format fixed.
+El formato del parámetro de datos es similar pero no idéntico al formato de datos de `--summary-export`. El formato de `--summary-export` se mantiene sin cambios, por compatibilidad con versiones anteriores, pero el formato de datos para esta nueva función de k6 se ha hecho más extensible y se han corregido algunas de las ambigüedades y problemas del formato anterior.
 
-To get an idea how `data` would look like in your specific test run, just add `return { 'raw-data.json': JSON.stringify(data)};` in your `handleSummary()` function and inspect the resulting `raw-data.json` file. Here's a very abridged example of how it might look like:
+Para tener una mejor idea de cómo se verían los datos en una prueba específica, sólo agrega return `{'raw-data.json': JSON.stringify(data)}`; en su función handleSummary() e inspeccione el archivo `raw-data.json` resultante. Este es un ejemplo muy abreviado de cómo podría ser:
 
 <CodeGroup labels={["data passed to handleSummary()"]} lineNumbers={[true]}>
 
@@ -195,4 +199,4 @@ To get an idea how `data` would look like in your specific test run, just add `r
 
 </CodeGroup>
 
-This feature is only available for local `k6 run` tests for now, though we plan to support [`k6 cloud`](https://k6.io/docs/cloud) tests eventually. And, as mentioned in the snippet above, the JS helper functions that transform the summary in various formats are far from final, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for updates. Or, better yet, submit PRs with improvements and more transformations at https://github.com/loadimpact/jslib.k6.io
+Esta característica sólo está disponible para las pruebas de ejecución locales de k6 hasta el momento, aunque planeamos soportar las pruebas en k6 Cloud eventualmente. Y, como se menciona en el fragmento anterior, las funciones de ayuda JS que transforman el resumen en varios formatos están lejos de ser definitivas, así que mantén un ojo en jslib.k6.io para las actualizaciones. O, mejor aún, envía PRs con mejoras y más transformaciones en https://github.com/loadimpact/jslib.k6.io

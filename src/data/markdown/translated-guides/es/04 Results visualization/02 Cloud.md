@@ -3,15 +3,16 @@ title: 'Cloud'
 excerpt: ''
 ---
 
-Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), you can also run a test locally and stream the results to the [k6 Cloud](/cloud).
+Además de [ejecutar pruebas en k6 Cloud](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli),  también puede ejecutar una prueba localmente y subir los resultados al [k6 Cloud](/cloud).
 
-When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.
+Al transmitir los resultados a la nube de k6, la máquina donde se ejecuta el comando CLI de k6 ejecuta la prueba y sube los resultados a la nube de k6. A continuación, podrá visualizar y analizar los resultados en la aplicación web en tiempo real.
 
-## Instructions
+## Instrucciones
 
-**1 (Optional) - Log in to the k6 Cloud**
 
-Assuming you have installed k6, the first step is to log in to k6 Cloud. You can use your [API token](https://app.k6.io/account/api-token) or username and password:
+**1 - (Opcional) Iniciar sesión en k6 Cloud**
+
+Suponiendo que haya instalado k6, el primer paso es iniciar sesión en k6 Cloud. Puede utilizar su [token de API](https://app.k6.io/account/api-token) o su nombre de usuario y contraseña:
 
 <CodeGroup labels={["Log in to k6 Cloud", "Log in with username and password"]}>
 
@@ -25,9 +26,9 @@ $ k6 login cloud
 
 </CodeGroup>
 
-**2 - Run the tests and upload the results**
+**2 - Ejecutar las pruebas y subir los resultados**
 
-Now, k6 will authenticate you against the k6 Cloud, and you can use the `--out` option to send the k6 results to the k6 Cloud as:
+Ahora, k6 te verificará las credenciales contra k6 Cloud, y puedes usar la opción `--out` para enviar los resultados a k6 Cloud como:
 
 <CodeGroup labels={["Upload results to the k6 Cloud"]}>
 
@@ -37,7 +38,7 @@ $ k6 run --out cloud script.js
 
 </CodeGroup>
 
-Alternatively, you could skip the `k6 login` command when using your [API token](https://app.k6.io/account/api-token) with the `k6 run` command as:
+Como alternativa, puede omitir el comando de inicio de sesión `k6 login` cuando utilice su [API token](https://app.k6.io/account/api-token) con el comando de ejecución `k6 run` como:
 
 <CodeGroup labels={["Upload results to the k6 Cloud using K6_CLOUD_TOKEN"]}>
 
@@ -47,7 +48,7 @@ $ K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> k6 run --out cloud script.js
 
 </CodeGroup>
 
-After running the command, the console shows an URL. Copy this URL and paste it in your browser's address bar to visualize the test results.
+Después de ejecutar el comando, la consola muestra una URL. Copie esta URL y pégala en la barra de direcciones de su navegador para visualizar los resultados de la prueba.
 
 <CodeGroup labels={[]}>
 
@@ -61,15 +62,12 @@ execution: local
 
 ![k6 Cloud Test Results](./images/Cloud/k6-cloud-results.png)
 
-> When you send the results to the k6 Cloud, data will be continuously streamed to the cloud. While this happens the state of the test run will be marked as `Running`. A test run that ran its course will be marked `Finished`. The run state has nothing to do with the test passing any thresholds, only that the test itself is operating correctly.
-> 
-> If you deliberately abort your test (e.g. by pressing _Ctrl-C_), it will still be considered `Finished`. You can still look and analyze the test data you streamed so far. The test will just have run shorter than originally planned.
-> 
-> Another possibility would be if you lose network connection with the k6 Cloud while your test is running. In that case the k6 Cloud will patiently wait for you to reconnect. In the meanwhile your test's run state will continue to appear as `Running` on the web app.
-> 
-> If no reconnection happens, the k6 Cloud will time out after two minutes of no data, setting the run state to `Timed out`. You can still analyze a timed out test but you'll of course only have access to as much data as was streamed before the network issue.
+> Cuando envíe los resultados a k6 Cloud, los datos se enviarán continuamente. Mientras esto sucede, el estado de la ejecución de la prueba se marcará como En ejecución. Una prueba que haya finalizado su curso se marcará como Finalizada. El estado de ejecución no tiene nada que ver con que la prueba haya superado algún Threshold, sólo con que la prueba en sí esté funcionando correctamente.
+> Si aborta deliberadamente la prueba (por ejemplo, pulsando Ctrl-C), ésta seguirá considerándose Finalizada. Todavía puede ver y analizar los datos de la prueba que ha transmitido hasta ahora. Simplemente, la prueba habrá durado menos de lo previsto originalmente.
+> Otra posibilidad sería que perdiera la conexión de red con  k6 Cloud mientras la prueba se está ejecutando. En ese caso,  k6 Cloud esperará hasta que se vuelva a conectar. Mientras tanto, el estado de ejecución de su prueba seguirá apareciendo como "Running" en la aplicación web.
+> Si no se produce la reconexión,  k6 Cloud expirará después de dos minutos sin datos, estableciendo el estado de ejecución como Timed out. Podrá seguir analizando una prueba que haya expirada, pero, por supuesto, sólo tendrá acceso a los datos que se hayan transmitido antes del problema de la red.
 
-## See also
+## Véase también
 
 - [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
 - [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
