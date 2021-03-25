@@ -1,53 +1,43 @@
 ---
 title: 'Stress testing'
-head_title: 'What is Stress Testing? How to create a Stress Test in k6'
-excerpt: 'Stress and Spike Tests are types of performance tests that are concerned with assessing the limits of your system and stability under extreme conditions. Let’s see two examples.'
+excerpt: 'El propósito de las pruebas de estrés es evaluar la disponibilidad y la estabilidad del sistema bajo una carga pesada.
+.'
 ---
 
-Stress testing is one of many different types of load testing.
+Las pruebas de estrés (stress test) son uno de los diferentes tipos de pruebas de carga.
 
-While [load testing](/test-types/load-testing) is primarily concerned with assessing the systems performance,
-the purpose of stress testing is to assess the availability and stability of the system under heavy load.
+Mientras que las pruebas de carga se ocupan principalmente de evaluar el rendimiento de los sistemas, el propósito de las pruebas de estrés es evaluar la disponibilidad y la estabilidad del sistema bajo una carga pesada.
 
-> ## What is stress testing?
+
+> ## ¿Qué es la prueba de  Estrés?
 >
-> Stress Testing is a type of load testing used to determine the limits of the system.
-> The purpose of this test is to verify the stability and reliability of the system under **extreme conditions**.
+> La prueba de estrés es un tipo de prueba de carga que se utiliza para determinar los límites del sistema. El objetivo de esta prueba es verificar la estabilidad y fiabilidad del sistema en condiciones extremas.
 
-To execute a proper stress test, you need a tool to push the system over its normal operations, to its limits, and _beyond the breaking point_.
+Para realizar una prueba de estrés adecuada, se necesita una herramienta que lleve al sistema más allá de sus operaciones normales, hasta sus límites y más allá del punto de ruptura.
+Normalmente se quiere hacer una prueba de estrés de una API o de un sitio web para
+- determinar cómo se comportará su sistema en condiciones extremas.
+- determinar cuál es la capacidad máxima de su sistema en términos de usuarios o rendimiento.
+- determinar el punto de ruptura de su sistema y su modo de fallo.
+- determinar si su sistema se recuperará sin intervención manual una vez finalizada la prueba de resistencia.
+ 
+Cuando se realizan pruebas de estrés, usted va a configurar la prueba para incluir más usuarios concurrentes o generar un rendimiento más alto que:
+- Lo que su aplicación normalmente ve.
+- Lo que crees que será capaz de manejar.
 
-You typically want to stress test an API or website to:
+Es importante tener en cuenta que una prueba de estrés no significa que vayas a sobrecargar el sistema inmediatamente - eso es una prueba de pico, vamos a cubrirlo en un minuto.
 
-1. determine how your system will behave under extreme conditions.
-2. determine what is the maximum capacity of your system in terms of users or throughput.
-3. determine the breaking point of your system and its failure mode.
-4. determine if your system will recover without manual intervention after the stress test is over.
+Una prueba de estrés debe ser configurada en muchos pasos graduales, cada paso incrementando la carga concurrente del sistema.
 
-When stress testing, you're going to configure the test to include more concurrent users or generate higher throughput than:
+Un ejemplo clásico de la necesidad de realizar pruebas de estrés es el "Black Friday" o el "Cyber Monday", dos días al año que generan varias veces el tráfico normal para muchos sitios web.
 
-1. your application typically sees.
-2. you think it will be able to handle.
+Una prueba de estrés puede consistir en sólo un par de pasos o en muchos, como se ve en el ejemplo siguiente. Independientemente del número de pasos que incluya, recuerde que este tipo de prueba consiste en averiguar lo que ocurre cuando se empujan los límites de rendimiento de su sistema, así que no se preocupe por ser demasiado agresivo.
 
-It's important to note that a stress test does not mean you're going to overwhelm the system
-immediately — that's a [spike test](#spike-testing), we're going to cover it in a minute.
+Dicho esto, probablemente no quieras ejecutar esta prueba contra tu entorno de producción. Recomendamos ejecutar una prueba de estrés en un entorno UAT o de ensayo.
 
-A stress test should be configured in many gradual steps, each step increasing the concurrent load of the system.
 
-A classic example of a need for stress testing is "Black Friday" or "Cyber Monday" - two days each
-year that generates multiple times the normal traffic for many websites.
+## Pruebas de stress para APIs en K6
 
-A stress test can be only a couple of steps, or it can be many, as you see in the example below.
-No matter how many steps you include, just remember this type of test is about finding out what
-happens when pushing the performance limits of your system — so don’t worry about being too aggressive.
-
-With this said, you probably don't want to run this test against your production environment.
-We recommend running a stress test in a UAT or staging environment.
-
-## API stress test in k6
-
-You can easily create a stress test in k6 by properly configuring the `options` object.
-Remember, the point of this test is to gradually push your APIs beyond its breaking point.
-It's probably the easiest to start with an example.
+Usted puede crear fácilmente una prueba de estrés en k6 configurando adecuadamente el objeto de opciones. Recuerde, el punto de esta prueba es empujar gradualmente sus APIs más allá de su punto de ruptura. Probablemente lo más fácil es empezar con un ejemplo.
 
 <CodeGroup labels={["API stress test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -105,62 +95,49 @@ export default function () {
 
 </CodeGroup>
 
-The VU chart of a stress test should look similar to this:
+El gráfico de VU de una prueba de esfuerzo debería tener un aspecto similar a este:
+
 ![Virtual user chart of an API stress test](./images/stress-test.png)
 
-This configuration increases the load by 100 users every 2 minutes and stays at this level for
-5 minutes. We have also included a recovery stage at the end, where the system is gradually
-decreasing the load to 0.
+Esta configuración aumenta la carga en 100 usuarios cada 2 minutos y se mantiene en este nivel durante 5 minutos. También hemos incluido una etapa de recuperación al final, en la que el sistema disminuye gradualmente la carga hasta llegar a 0.
 
-If your infrastructure is configured to auto-scale, this test will help you to determine:
+Si su infraestructura está configurada para el autoescalado, esta prueba le ayudará a determinar
 
-1. How quickly the auto-scaling mechanisms react to increased load.
-2. Are there any failures during the scaling events.
+- La rapidez con la que los mecanismos de autoescalado reaccionan al aumento de la carga.
+- Si hay fallos durante los eventos de escalado.
 
-The point of the recovery stage is to determine if the system can serve requests once the load
-decreases to a normal level. If you are testing auto-scaling, you may want to scale down in steps
-as well to determine if the down-scaling is working.
+El objetivo de la etapa de recuperación es determinar si el sistema puede servir peticiones una vez que la carga disminuye a un nivel normal. Si está probando el autoescalado, es posible que quiera reducir la escala en pasos también para determinar si la reducción de la escala está funcionando.
+
 
 ## Spike testing
 
-Spike test is a variation of a stress test, but it does not gradually increase the load,
-instead it spikes to extreme load over a very short window of time.
-While a stress test allows the SUT (System Under Test) to gradually scale up its
-infrastructure, a spike test does not.
+La prueba de picos (spike test) es una variante de la prueba de estrés, pero no aumenta gradualmente la carga, sino que alcanza una carga extrema en un periodo de tiempo muy corto. Mientras que una prueba de estrés permite al SUT (sistema bajo prueba) escalar gradualmente su infraestructura, una prueba de picos no lo hace.
 
-> ### What is spike testing?
+> ### ¿Qué es la prueba de Spike (picos)?
 >
-> Spike testing is a type of stress testing that immediately overwhelms the system with an extreme surge of load.
+> La prueba de picos es un tipo de prueba de estrés que abruma inmediatamente el sistema con un aumento extremo de la carga.
 
-You want to execute a spike test to:
+Usted quiere ejecutar una prueba de pico para:
 
-1. Determine how your system will perform under a sudden surge of traffic.
-2. Determine if your system will recover once the traffic has subsided.
+- Determinar cómo funcionará su sistema ante un aumento repentino del tráfico.
+- Determinar si su sistema se recuperará una vez que el tráfico haya disminuido.
 
-A classic need for a spike testing is if you've bought advertising on a big television event,
-such as the Super Bowl or a popular singing competition.
+Una necesidad clásica de una prueba de pico es si ha comprado publicidad en un gran evento televisivo, como la Super Bowl o un concurso de canto popular.
 
-You’re expecting a large number of people to see your advertisement and immediately visit your website,
-which can end with disastrous results if you haven't tested for this scenario and made
-performance optimizations in advance.
+Esperas que un gran número de personas vean tu anuncio y visiten inmediatamente tu sitio web, lo que puede acabar con resultados desastrosos si no has hecho pruebas para este escenario y has optimizado el rendimiento de antemano.
 
-Another typical example is a "HackerNews hug of death" - someone links to your website on one
-of the popular internet forums such as HackerNews or Reddit which makes thousands of people visit
-your system at the same time.
+Otro ejemplo típico es el "HackerNews hug of death": alguien enlaza a su sitio web en uno de los foros de Internet más populares, como HackerNews o Reddit, lo que hace que miles de personas visiten su sistema al mismo tiempo.
 
-Success or failure of a spike test depends on your expectations. Systems generally react in 4 different ways:
+El éxito o el fracaso de una prueba de picos depende de sus expectativas. Los sistemas suelen reaccionar de 4 maneras diferentes:
 
-1. Excellent: system performance is not degraded during the surge of traffic.
-   Response time is similar during low traffic and high traffic.
-2. Good: Response time is slower, but the system does not produce any errors.
-   All requests are handled.
-3. Poor: System produces errors during the surge of traffic, but recovers to normal after the
-   traffic subsides.
-4. Bad: System crashes, and does not recover after the traffic has subsided.
+- Excelente: el rendimiento del sistema no se degrada durante el aumento del tráfico. El tiempo de respuesta es similar durante el bajo tráfico y el alto tráfico.
+- Bueno: El tiempo de respuesta es más lento, pero el sistema no produce errores. Se atienden todas las solicitudes.
+- Pobre: el sistema produce errores durante la oleada de tráfico, pero se recupera a la normalidad después de que el tráfico disminuye.
+- Mal: El sistema se bloquea y no se recupera después de que el tráfico haya disminuido.
 
-## Spike testing in k6
+## Spike testing en k6
 
-Here's an example script configuration for a spike test.
+He aquí un ejemplo de configuración de script para una prueba de picos.
 
 <CodeGroup labels={["Spike test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -215,27 +192,22 @@ export default function () {
 
 </CodeGroup>
 
-The VU chart of a spike test should look similar to this:
+El gráfico VU de una prueba de picos debería tener un aspecto similar a este:
 ![Virtual user chart of a spike test](./images/spike-test.png)
 
-Note, the test starts with a period of 1 minute of low load, a quick spike to very high load, followed by a recovery period of low load.
+Tenga en cuenta que la prueba comienza con un período de 1 minuto de carga baja, un pico rápido de carga muy alta, seguido de un período de recuperación de carga baja.
 
-Remember that the point of this test is to suddenly overwhelm the system. Don't be afraid to increase the number of VUs beyond your worst-case prediction.
-Depending on your needs, you may want to extend the recovery stage to 10+ minutes to see when the system finally recovers.
+Recuerde que el objetivo de esta prueba es sobrecargar repentinamente el sistema. No tenga miedo de aumentar el número de VUs más allá de su peor predicción. Dependiendo de sus necesidades, puede querer extender la etapa de recuperación a más de 10 minutos para ver cuando el sistema finalmente se recupera.
 
-## Conclusions
 
-Stress and spike testing help to prepare you for the extreme conditions your system will
-inevitably encounter in production.
+## Conclusiones
 
-Preparing for inevitable is a sign of maturity for a technical organization. Stress testing not
-only makes your system more reliable but also decreases the stress level of your Ops and Dev teams.
+Las pruebas de estrés y de pico ayudan a prepararse para las condiciones extremas que inevitablemente encontrará su sistema en producción.
 
-Once your system has is stress-proof, you may want to run a [soak test](/test-types/soak-testing) to see if other reliability
-issues don't surface over an extended period.
+Prepararse para lo inevitable es un signo de madurez para una organización técnica. Las pruebas de estrés no sólo hacen que su sistema sea más fiable, sino que también disminuyen el nivel de estrés de sus equipos de operaciones y desarrollo.
 
-## See also
+Una vez que su sistema es a prueba de estrés, es posible que desee ejecutar una “Soak Test” para ver si otros problemas de fiabilidad no surgen durante un período prolongado.
 
-- [Running large tests](/testing-guides/running-large-tests)
+## Vea también
 
-<LdScript script='{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "What is stress testing?", "acceptedAnswer": { "@type": "Answer", "text": "Stress Testing is a type of load testing used to determine the limits of the system. The purpose of this test is to verify the stability and reliability of the system under <b>extreme conditions</b>." } }, { "@type": "Question", "name": "What is spike testing?", "acceptedAnswer": { "@type": "Answer", "text": "Spike testing is a type of stress testing that immediately overwhelms the system with an extreme surge of load." } }] }'/>
+- [Ejecución de pruebas a gran escala](/testing-guides/running-large-tests)

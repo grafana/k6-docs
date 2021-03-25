@@ -1,34 +1,28 @@
 ---
-title: 'Introduction'
-excerpt: 'Guide to test types'
+title: 'Introducción'
+excerpt: 'Guía de tipos de tests'
 ---
 
-It is possible to perform many types of tests using k6, each type serving a different purpose.
+Es posible realizar muchos tipos de pruebas con k6, cada uno de los cuales son usado para un propósito diferente.
 
 ![Types of performance tests](./images/test-types.png)
 
-Each test type is designed to give you different insights about your system.
+Cada tipo de prueba está diseñado para proporcionarle diferentes conocimientos sobre su sistema.
 
-[Smoke Test's](/test-types/smoke-testing) role is to verify that your System can handle
-minimal load, without any problems.
+[Smoke Test (Prueba de humo)](/test-types/smoke-testing) verifica que su sistema puede manejar una carga mínima, sin ningún problema.
 
-[Load Test](/test-types/load-testing) is primarily concerned with assessing the performance
-of your system in terms of concurrent users or requests per second.
+[Load Test (Prueba de carga)](/test-types/load-testing)  se ocupa principalmente de evaluar el rendimiento de su sistema en términos de usuarios concurrentes o solicitudes por segundo.
 
-[Stress Test](/test-types/stress-testing) and [Spike testing](/test-types/stress-testing#spike-testing-in-k6)
-are concerned with assessing the limits of your system and stability under extreme conditions.
+[Stress Test (Pruebas de stress)](/test-types/stress-testing) y [Spike testing (Pruebas de Pico)](/test-types/stress-testing#spike-testing-in-k6) se ocupan de evaluar los límites de su sistema y la estabilidad en condiciones extremas.
 
-[Soak Test](/test-types/soak-testing) tells you about reliability and performance of your
-system over the extended period of time.
+[Soak Test (Pruebas de inmersión)](/test-types/soak-testing) le informa sobre la fiabilidad y el rendimiento de su sistema durante un periodo de tiempo prolongado.
 
-The important thing to understand is that each test can be performed with the same test script.
-You can write one script and perform all the above tests with it. The only thing that changes is
-the test configuration, the logic stays the same.
+Lo importante es entender que cada prueba se puede realizar con el mismo script de prueba. Puedes escribir un script y realizar todas las pruebas anteriores con él. Lo único que cambia es la configuración de la prueba, la lógica permanece igual.
 
-Different test types will teach you different things about your system and give you the insight
-needed to understand or optimize performance.
+Los diferentes tipos de pruebas le enseñarán diferentes cosas sobre su sistema y le darán la información necesaria para entender y optimizar el rendimiento.
 
-Start with a [Smoke test](/test-types/smoke-testing) and see how easy it is to get your first load test running!
+Comience con [Smoke test](/test-types/smoke-testing) y vea lo fácil que es hacer su primera prueba de carga.
+
 
 <!--
  Note that performance, stability, and reliability, while related, are 3 different goals.
