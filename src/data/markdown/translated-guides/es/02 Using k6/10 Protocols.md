@@ -1,26 +1,19 @@
 ---
-title: "Protocols"
+title: "Protocolos"
 excerpt: ""
 ---
-Out of the box k6 comes with support for the following protocols:
+Por defecto, k6 viene con suporte para los siguientes protocolos:
 
 * HTTP/1.1
 * [HTTP/2](/using-k6/protocols/http-2)
 * [WebSockets](/using-k6/protocols/websockets)
 * [gRPC](/using-k6/protocols/grpc)
 
-k6 will use HTTP/1.1 by default when it contacts a server. If, after connection, the server
-reports to k6 that it supports [HTTP/2](/using-k6/protocols/http-2), k6 will upgrade the
-connection to HTTP/2 instead. This is all automatic - both the use of HTTP/1.1 initially and
-the potential protocol upgrade, and you don't have to do anything special when using k6 to
-enable either HTTP/1.1 or HTTP/2. You might want to verify which protocol is actually being
-used for a transaction though, which requires an extra step.
 
-[WebSockets](/using-k6/protocols/websockets) is a little bit different, the structure of the
-test and the VU lifecycle is different.
+k6 utilizará HTTP/1.1 por defecto cuando contacte con un servidor. Si, tras la conexión, el servidor informa a k6 de que soporta HTTP/2, k6 actualizará la conexión a HTTP/2 en su lugar. Todo esto es automático - tanto el uso de HTTP/1.1 inicialmente como la potencial actualización del protocolo, y no tiene que hacer nada especial al usar k6 para activar HTTP/1.1 o HTTP/2. Sin embargo, es posible que desee verificar qué protocolo se está utilizando realmente para una transacción, lo que requiere un paso adicional.
 
-k6 v0.29.0 introduced [xk6](https://k6.io/blog/extending-k6-with-xk6) allowing the community 
-to build k6 extensions and therefore add support for additional protocols. 
+[WebSockets](/using-k6/protocols/websockets) es un poco diferente, la estructura de la prueba y el ciclo de vida de los VU es diferente.
 
-k6 community contributed extensions for SQL, Kafka, ZeroMQ, Redis, and other protocols. 
-Full list can be found on [GitHub](https://github.com/topics/xk6). 
+k6 v0.29.0 introdujo [xk6](https://k6.io/blog/extending-k6-with-xk6) permitiendo a la comunidad construir extensiones de k6 y por tanto añadir soporte para protocolos adicionales.
+
+La comunidad k6 contribuyó con extensiones para SQL, Kafka, ZeroMQ, Redis y otros protocolos. La lista completa se puede encontrar en [GitHub](https://github.com/topics/xk6).

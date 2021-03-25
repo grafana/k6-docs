@@ -1,14 +1,11 @@
 ---
-title: 'Execution context variables'
+title: 'Variables de contexto'
 excerpt: ''
 ---
 
-[The "Running k6" tutorial](/getting-started/running-k6) describes how k6 runs a test script for a specified
-number of Virtual Users (VUs) and duration of time or a fixed number of iterations
-for each VU.
+[El tutorial "Ejecución de k6"](/getting-started/running-k6)  describe cómo k6 ejecuta un script de prueba para un número especificado de Usuarios Virtuales (VUs) y una duración de tiempo o un número fijo de iteraciones para cada VU.
 
-When the `duration` option is specified, k6 will continuously run the test script for each VU
-until the `duration` amount of time has elapsed.
+Cuando se especifica la opción de duración, k6 ejecutará continuamente el script de prueba para cada VU hasta que la cantidad de tiempo de duración haya transcurrido.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -18,8 +15,7 @@ $ k6 run --vus 10 --duration 30s script.js
 
 </CodeGroup>
 
-Alternatively, you could set the `iterations` option to specify the number of complete loops of
-the test script k6 will execute for each VU.
+Alternativamente, puede establecer la opción `iterations` para especificar el número de bucles completos del script de prueba que k6 ejecutará para cada VU.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -31,31 +27,23 @@ $ k6 run --vus 10 --iterations 100 script.js
 
 ## \_\_VU and \_\_ITER
 
-**\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes
-available to the test script.
+__VU y __ITER son variables globales con información del contexto de ejecución que k6 pone a disposición del script de prueba.
 
 ### \_\_ITER
 
-A numeric counter with the current iteration number for a specific VU. Zero-based.
+Un contador numérico con el número de iteración actual para un VU específico. Basado en cero.
 
 ### \_\_VU
 
-Current VU number. The value is assigned incrementally for each new VU instance. One-based.
-However, VU number is 0 while executing the setup and teardown functions.
+Número actual de la VU. El valor se asigna de forma incremental para cada nueva instancia de VU. Se basa en uno. Sin embargo, el número de VU es 0 mientras se ejecutan las funciones de `setup` y `teardown`.
 
-> ### ⚠️ Additional context information available in the k6 Cloud
+> ### ⚠️ Información de contexto adicional disponible en k6 Cloud
 >
-> If you are running a test in [k6 Cloud](/cloud) you will have additional
-> [environment variables](/using-k6/environment-variables) that will tell you on which server, load zone
-> and distribution of the test you are currently executing. You can read more about them
-> [here](/using-k6/environment-variables)
+> Si está ejecutando una prueba en k6 Cloud tendrá variables de entorno adicionales que le indicarán en qué servidor, zona de carga y distribución de la prueba se está ejecutando actualmente. Puede leer más sobre ellas [aquí](/using-k6/environment-variables).
 
-## k6 Test Coordinator
+## Coordinador de Pruebas k6
 
-k6 Virtual Users are concurrent, they will continuously execute through their script until the
-test is over or they hit their iteration limit (if you set one as described above). When you ramp
-up more Virtual Users, k6 will start new ones at that time. When you ramp down, k6 will stop them
-after the completion of the iteration.
+Los Usuarios Virtuales de k6 son concurrentes, se ejecutarán continuamente a través de su script hasta que la prueba termine o lleguen a su límite de iteración (si usted establece uno como se describió anteriormente). Cuando usted aumenta el número de Usuarios Virtuales, k6 iniciará otros nuevos en ese momento. Cuando se reduzca el número de usuarios virtuales, k6 los detendrá al finalizar la iteración.
 
 ## Examples
 
@@ -74,9 +62,7 @@ export default function () {
 
 </CodeGroup>
 
-Different test behaviors and parameterizations can be accomplished by making use of the
-execution context variables. A typical use case would be a load test simulating different users
-performing a login flow.
+Se pueden lograr diferentes comportamientos de prueba y parametrizaciones haciendo uso de las variables de contexto de ejecución. Un caso de uso típico sería una prueba de carga que simula diferentes usuarios realizando un flujo de inicio de sesión.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

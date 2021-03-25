@@ -4,28 +4,17 @@ excerpt: ''
 hideFromSidebar: false
 ---
 
-> ### 🎉 New in v0.27.0
->
-> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority of users,
-> existing scripts and configurations will continue to work as before. For a list of breaking changes,
-> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0).
+Los escenarios nos permiten realizar configuraciones a profundidad sobre cómo los VUs y las iteraciones son programadas. Esto hace posible modelar diversos patrones de tráfico en las pruebas de carga. Los beneficios de usar escenarios incluyen:
 
-Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
+- Se pueden declarar múltiples escenarios en el mismo script, y cada uno de ellos puede ejecutar independientemente una función JavaScript diferente, lo que hace que la organización de las pruebas sea más fácil y flexible.
+- Cada escenario puede utilizar un patrón de programación de VUs en distintas iteraciones, llevado a cabo por un ejecutor diseñado a tal efecto. Esto permite modelar patrones de ejecución avanzados que pueden simular mejor el tráfico del mundo real.
+- Pueden configurarse para que se ejecuten en secuencia o en paralelo, o en cualquier combinación de ambas.
+- Se pueden establecer diferentes variables de entorno y etiquetas métricas por escenario.
 
-- Multiple scenarios can be declared in the same script, and each one can
-  independently execute a different JavaScript function, which makes organizing tests easier
-  and more flexible.
-- Every scenario can use a distinct VU and iteration scheduling pattern,
-  powered by a purpose-built [executor](#executors). This enables modeling
-  of advanced execution patterns which can better simulate real-world traffic.
-- They can be configured to run in sequence or parallel, or in any mix of the two.
-- Different environment variables and metric tags can be set per scenario.
+## Configuración
 
-## Configuration
 
-Execution scenarios are primarily configured via the `scenarios` key of the exported `options` object
-in your test scripts. The key for each scenario can be an arbitrary, but unique, scenario name. It will
-appear in the result summary, tags, etc.
+Los escenarios de ejecución son principalmente configurados a través de la clave `scenarios` de `options`. La clave de cada escenario puede ser un nombre de escenario arbitrario, pero debe ser único. Este aparecerá en el resumen de resultados, etiquetas, entre otros.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -56,28 +45,29 @@ export let options = {
 
 ## Executors
 
-[Executors](/using-k6/scenarios/executors) are the workhorses of the k6 execution engine. Each one schedules VUs and iterations differently, and you'll choose one depending on the type
-of traffic you want to model to test your services.
+[Executors](/using-k6/scenarios/executors) son los workhorses del motor de ejecución de k6. Cada uno programa los VUs y las iteraciones de forma diferente, y usted podrá elegir uno dependiendo del tipo de tráfico que quiera modelar para probar sus servicios.
+ 
+Los posibles valores para los `executor` son los siguientes: 
 
-Possible values for `executor` are the executor name separated by hyphens.
 
-| Name                                                                         | Value                   | Description                                                                                                                                        |
-| ---------------------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Shared iterations](/using-k6/scenarios/executors/shared-iterations)         | `shared-iterations`     | A fixed amount of iterations are<br/> "shared" between a number of VUs.                                                                            |
-| [Per VU iterations](/using-k6/scenarios/executors/per-vu-iterations)         | `per-vu-iterations`     | Each VU executes an exact number of iterations.                                                                                                    |
-| [Constant VUs](/using-k6/scenarios/executors/constant-vus)                   | `constant-vus`          | A fixed number of VUs execute as many<br/> iterations as possible for a specified amount of time.                                                  |
-| [Ramping VUs](/using-k6/scenarios/executors/ramping-vus)                     | `ramping-vus`           | A variable number of VUs execute as many<br/> iterations as possible for a specified amount of time.                                               |
-| [Constant Arrival Rate](/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | A fixed number of iterations are executed<br/> in a specified period of time.                                                                      |
-| [Ramping Arrival Rate](/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | A variable number of iterations are <br/> executed in a specified period of time.                                                                  |
-| [Externally Controlled](/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Control and scale execution at runtime<br/> via [k6's REST API](/misc/k6-rest-api) or the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
 
-## Common options
+| Nombre           | Valor | Descripción                                                            |
+| ---------------- | ----------------------- | ---------------------------------------------------- |
+| [Shared iterations](/using-k6/scenarios/executors/shared-iterations)         | `shared-iterations`     | Una cantidad fija de iteraciones que son "compartidas" entre un número de VUs.                                                                            |
+| [Per VU iterations](/using-k6/scenarios/executors/per-vu-iterations)         | `per-vu-iterations`     | Cada VU ejecuta un número exacto de iteraciones.                                                                                                    |
+| [Constant VUs](/using-k6/scenarios/executors/constant-vus)                   | `constant-vus`          | Un número fijo de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                                  |
+| [Ramping VUs](/using-k6/scenarios/executors/ramping-vus)                     | `ramping-vus`           | Un número variable de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                               |
+| [Constant Arrival Rate](/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado.                                                                      |
+| [Ramping Arrival Rate](/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | Se ejecuta un número variable de iteraciones, ejecutadas en un periodo de tiempo determinado.                                          |
+| [Externally Controlled](/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Controla y escala la ejecución en runtime a través  [k6's REST API](/misc/k6-rest-api) o [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
 
-| Option         | Type   | Description                                                                                                                                    | Default     |
+## Opciones comunes
+
+| Opción         | Tipo   | Descripción                                                                                                                                    | Default     |
 | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `executor*` ️  | string | Unique executor name. See the list of possible values in the [executors](#executors) section.                                                  | -           |
-| `startTime`    | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                  | `"0s"`      |
-| `gracefulStop` | string | Time to wait for iterations to finish executing before stopping them forcefully. See the [gracefulStop](#graceful-stop-and-ramp-down) section. | `"30s"`     |
-| `exec`         | string | Name of exported JS function to execute.                                                                                                       | `"default"` |
-| `env`          | object | Environment variables specific to this scenario.                                                                                               | `{}`        |
-| `tags`         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |
+| `executor*` ️  | string | Nombre único del ejecutor. Consulte la lista de valores posibles en la sección de [executors](#executors) section.                                                  | -           |
+| `startTime`    | string | Desplazamiento de tiempo desde el inicio de la prueba, en el que este escenario debe comenzar a ejecutarse.                                                  | `"0s"`      |
+| `gracefulStop` | string | Tiempo para esperar a que las iteraciones terminen de ejecutarse antes de detenerlas forzosamente. Véase la sección [gracefulStop](#graceful-stop-and-ramp-down). | `"30s"`     |
+| `exec`         | string | Nombre de la función JS exportada a ejecutar.                                                                                                       | `"default"` |
+| `env`          | object | Variables de entorno específicas para este escenario.                                                                                               | `{}`        |
+| `tags`         | object | [Tags](/using-k6/tags-and-groups) específicas para este escenario. | `{}`        |

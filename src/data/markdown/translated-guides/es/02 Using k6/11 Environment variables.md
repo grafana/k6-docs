@@ -1,36 +1,26 @@
 ---
-title: 'Environment variables'
+title: 'Variables de entorno'
 excerpt: ''
 ---
 
-## k6 and environment variables
+## k6 y las variables de entorno
 
-Environment variables can be used with k6 in two ways:
+Las variables de entorno se pueden utilizar con k6 de dos maneras:
 
-- You can access any environment variables from your k6 script code, and use this to supply your
-  VUs with configuration information.
-- A couple of environment variables are automatically read by k6 on startup, affecting its behavior.
+- Puede acceder a cualquier variable de entorno desde su código de script de k6, y usar esto para suministrar a sus VUs información de configuración.
+- Un par de variables de entorno son leídas automáticamente por k6 al iniciarse, afectando su comportamiento.
 
-## Accessing environment variables from a script
 
-A lot of the time, scripts will only need minor tweaking to be reusable in different
-contexts. Rather than having to create several separate scripts for these different
-contexts or environments, you can use environment variables to make parts of your
-script tweakable.
+## Accediendo a las variables de entorno desde un script
 
-In k6, the environment variables are exposed through a global `__ENV` variable, a JS
-object. The source of the environment variables can be twofold. They could come from
-the local system and/or be explicitly passed to k6 using one or more `-e NAME=VALUE`
-CLI flags.
+Muchas veces, los scripts sólo necesitarán pequeños ajustes para ser reutilizables en diferentes contextos. En lugar de tener que crear varios scripts separados para estos diferentes contextos o entornos, puedes utilizar variables de entorno para hacer que partes de tu script sean modificables.
 
-The primary difference between the two is that only `k6 run` passes the actual system
-environment variables to the script code by default, while `k6 archive`, `k6 cloud` and
-`k6 inspect` do not. So unless you explicitly specify `--include-system-env-vars`, only
-the variables passed using the `-e` CLI flag will be persisted when creating an archive
-(`k6 archive script.js`). You can also disable the default passing of system environment
-variables when running scripts by using `--include-system-env-vars=false`.
+En k6, las variables de entorno se exponen a través de una variable global `__ENV`, un objeto JS. El origen de las variables de entorno puede ser doble. Pueden venir del sistema local y/o ser pasadas explícitamente a k6 usando una o más banderas CLI `-e NAME=VALUE`.
 
-An environment variable could, for example, be specified like this on the command line:
+La principal diferencia entre ambos es que sólo `k6 run` pasa las variables de entorno del sistema al código del script por defecto, mientras que `k6 archive`, `k6 cloud` y `k6 inspect` no lo hacen. Por lo tanto, a menos que especifique explícitamente `--include-system-env-vars`, sólo las variables pasadas usando la bandera `-e` CLI se mantendrán al crear un archivo (`k6 archive script.js`). También puede desactivar el paso por defecto de las variables del entorno del sistema cuando se ejecutan los scripts utilizando `--include-system-env-vars=false`.
+
+Una variable de entorno podría, por ejemplo, especificarse así en la línea de comandos:
+
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -48,7 +38,7 @@ c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
 
 </CodeGroup>
 
-or using an `-e` CLI flag (which will be the same for all platforms):
+o utilizando una flag `-e` CLI (que será la misma para todas las plataformas):
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -58,7 +48,7 @@ $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 
 </CodeGroup>
 
-The environment variable could then be used as follows in a script:
+La variable de entorno podría usarse de la siguiente manera en un script:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -77,17 +67,15 @@ export default function () {
 
 </CodeGroup>
 
-Environment variables specified with the `-e` CLI flag takes precedence over (overwrite) actual
-system environment variables with the same name.
+Las variables de entorno especificadas con el indicador `-e` de la CLI tienen prioridad sobre (sobrescriben) las variables de entorno reales del sistema con el mismo nombre.
 
-## Environment variables k6 will read automatically
+## Las variables de entorno que k6 leerá automáticamente
 
-k6 will also try to read some specific environment variables that the user can set to change the
-behavior of k6:
+k6 también intentará leer algunas variables de entorno específicas que el usuario puede establecer para cambiar el comportamiento de k6:
 
-| Name                 | Description                                                                                                            |
+| Nombre                 | Descripción                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_HOST`      | A URL to connect to, when the --out=cloud results output option is specified.                                          |
-| `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the cloud service, when the --cloud results output option is specified. |
-| `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-collection).                                                        |
-| `K6_OUT`             | Specify results output, same as --out command-line option.                                                             |
+| `K6_CLOUD_HOST`      | Una URL a la que conectarse, cuando se especifica la opción de salida de resultados `--out=cloud`.                                          |
+| `K6_CLOUD_TOKEN`     | Un token de autenticación para utilizar en las llamadas a la API del servicio en la nube, cuando se especifica la opción de salida de resultados `--cloud`. |
+| `K6_NO_USAGE_REPORT` | Defina esto para desactivar los [informes de uso.](/misc/usage-collection).                                                        |
+| `K6_OUT`             | Especifica la salida de resultados, igual que la opción de línea de comandos `--out`.                                                             |

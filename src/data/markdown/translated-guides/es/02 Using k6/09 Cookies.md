@@ -3,33 +3,21 @@ title: 'Cookies'
 excerpt: ''
 ---
 
-HTTP Cookies are used by web sites and apps to store pieces of stateful information on the user's
-device. A server tells the client, via a `Set-Cookie` HTTP header, what information it wants to be
-stored on the user's machine.
+Las cookies HTTP son utilizadas por los sitios web y las aplicaciones para almacenar piezas de información de estado en el dispositivo del usuario. Un servidor indica al cliente, a través de una cabecera HTTP `Set-Cookie`, qué información quiere que se almacene en la máquina del usuario.
 
-The user's browser will store the cookie data and associate it with the hostname of the server,
-and for each subsequent request to that hostname, it will include the stored cookie data in a
-`Cookie` header.
+El navegador del usuario almacenará los datos de la cookie y los asociará con el nombre de host del servidor, y para cada solicitud posterior a ese nombre de host, incluirá los datos de la cookie almacenados en una cabecera `Cookie`.
 
-You can then control more specific rules for when cookie data should be sent or not, including
-limiting it to specific subdomains of the domain or a specific path. It's also possible to set an
-expiry date on the cookie and tell the browser only to send it over encrypted (SSL/TLS)
-connections.
+A continuación, puede controlar reglas más específicas sobre cuándo deben enviarse o no los datos de la cookie, incluyendo la limitación a subdominios específicos del dominio o a una ruta específica. También es posible establecer una fecha de caducidad en la cookie y decirle al navegador que sólo la envíe a través de conexiones cifradas (SSL/TLS).
 
-## Cookies with k6
+## Cookies en k6
 
-For most intents and purposes k6 will transparently manage the receiving, storage and sending of
-cookies as described above, so that testing of your cookie-based web site or app will just work
-without you having to do anything special.
+En la mayoría de los casos, K6 gestionará de forma transparente la recepción, el almacenamiento y el envío de cookies, tal y como se ha descrito anteriormente, de modo que las pruebas de su sitio web o aplicación basados en cookies funcionarán sin que usted tenga que hacer nada especial.
 
-In some use cases, you might desire more control over the cookies. In k6 you have two
-options, [either to directly manipulate HTTP headers](/javascript-api/k6-http/params),
-or use the more ergonomic cookie API. We will go through the latter below.
+En algunos casos de uso, puede desear un mayor control sobre las cookies. En k6 tienes dos opciones, o bien [manipular directamente las cabeceras HTTP](/javascript-api/k6-http/params), o utilizar la más ergonómica API de cookies. A continuación veremos esto último.
 
-## Setting simple cookies
+## Simple configuración de las cookies
 
-To simulate that a cookie has previously been set by a browser and is now supposed to be included
-in a subsequent request to the server we include the cookie in the `cookies` request parameter:
+Para simular que una cookie ha sido previamente establecida por un navegador y ahora se supone que se incluye en una solicitud posterior al servidor, incluimos la cookie en el parámetro de solicitud de `cookies`:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -47,9 +35,7 @@ export default function () {
 
 </CodeGroup>
 
-This will only apply the cookie for the request in question, but will not be sent for any
-subsequent requests. If you want to do that you have to add the cookie to a cookie jar, and by
-default there's a per-VU cookie jar we can interact with to set and inspect cookies:
+Esto sólo aplicará la cookie para la solicitud en cuestión, pero no se enviará para las solicitudes posteriores. Si quieres hacer esto tienes que añadir la cookie a un cookies jar, y por defecto hay un cookies jar  por VU,  con el que podemos interactuar para establecer e inspeccionar las cookies:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -65,10 +51,9 @@ export default function () {
 
 </CodeGroup>
 
-The per-VU cookie jar stores all cookies received from the server in a `Set-Cookie` header. You
-can also create "local cookie jars" that overrides the per-VU cookie jar, but more on that in a bit.
+El cookies jar  por VU almacena todas las cookies recibidas del servidor en una cabecera `Set-Cookie`. También puede crear "cookies jar locales" que anulen el cookies jar por VU, pero puede encontrar más sobre esto más adelante.
 
-You can also specify that a cookie should be overridden if already part of the per-VU cookie jar:
+También se puede especificar que una cookie debe ser anulada si ya forma parte del cookie jar por VU:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -100,10 +85,9 @@ export default function () {
 
 </CodeGroup>
 
-## Accessing cookies
+## Accediendo a las cookies
 
-To see which cookies were set for a particular response we can look in the `cookies` property of
-the response object:
+Para ver qué cookies se establecieron para una respuesta en particular podemos mirar en la propiedad `cookies` del objeto respuesta:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -126,30 +110,27 @@ export default function () {
 
 </CodeGroup>
 
-The response object's `cookies` property is a map where the key is the cookie name and the value
-is an array of response cookie objects (see below for description). It is an array to support
-multiple cookies having the same name (but different `domain` and/or `path` attributes), which
-is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
+La propiedad `cookies` del objeto de respuesta es un mapa en el que la clave es el nombre de la cookie y el valor es un array de objetos cookie de respuesta (ver más abajo la descripción).  Es un array para soportar múltiples cookies que tengan el mismo nombre (pero diferentes atributos `domain` y/o `path`), lo cual es parte de la [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 
-## Properties of a response cookie object
+## Propiedades de un objeto de cookie de respuesta
 
-A response cookie object contains the following properties:
+Un objeto cookie de respuesta contiene las siguientes propiedades:
 
-| Property  | Type      | Description                                                                                                   |
+| Propiedad  | Tipo      | Descripción                                                                                                   |
 | --------- | --------- | ------------------------------------------------------------------------------------------------------------- |
-| name      | `string`  | the name of the cookie                                                                                        |
-| value     | `string`  | the value of the cookie                                                                                       |
-| domain    | `string`  | domain deciding what hostnames this cookie should be sent to                                                  |
-| path      | `string`  | limiting the cookie to only be sent if the path of the request matches this value                             |
-| expires   | `string`  | when the cookie expires, this needs to be in the RFC1123 format looking like: `Mon, 02 Jan 2006 15:04:05 MST` |
-| max_age   | `number`  | used for the same purpose as expires but defined as the number of seconds a cookie will be valid              |
-| secure    | `boolean` | if true, the cookie will only be sent over an encrypted (SSL/TLS) connection                                  |
-| http_only | `boolean` | if true, the cookie would not be exposed to JavaScript in a browser environment                               |
+| name      | `string`  | el nombre de la cookie
+                                                                                        |
+| value     | `string`  | el valor de la cookie                                                                                       |
+| domain    | `string`  | dominio que decide a qué nombres de host debe enviarse esta cookie                                                  |
+| path      | `string`  | limitar el envío de la cookie sólo si la ruta de la solicitud coincide con este valor                             |
+| expires   | `string`  | cuando la cookie expira, esto tiene que estar en el formato RFC1123 con un aspecto similar: `Lun, 02 Ene 2006 15:04:05 MST` |
+| max_age   | `number`  | se utiliza para el mismo propósito que expira pero se define como el número de segundos que una cookie será válida              |
+| secure    | `boolean` | si es verdadero, la cookie sólo se enviará a través de una conexión cifrada (SSL/TLS)                                  |
+| http_only | `boolean` | si es verdadero, la cookie no se expondrá a JavaScript en un entorno de navegador                               |
 
-## Inspecting a cookie in the jar
+## Inspeccionando una cookie en el  jar
 
-To see which cookies are set, and stored in the cookie jar, for a particular URL we can use the
-`cookieForURL()` method of the cookie jar object:
+Para ver qué cookies están establecidas, y almacenadas en el cookies jar, para una URL en particular podemos utilizar el método `cookieForURL()` del objeto cookies jar:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -173,15 +154,11 @@ export default function () {
 
 </CodeGroup>
 
-The `cookies` object returned by the jar's `cookiesForURL()` method is a map where the key is the
-cookie name and the value is an array of cookie values (strings). It is an array to support
-multiple cookies having the same name (but different `domain` and/or `path` attributes), which
-is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
+El objeto `cookies` devuelto por el método `cookiesForURL()` del jar es un mapa donde la clave es el nombre de la cookie y el valor es un array de valores de cookies (strings). Es un array para soportar múltiples cookies que tengan el mismo nombre (pero diferentes atributos `domain` y/o `path`), lo cual es parte de la [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 
-## Setting advanced cookies with attributes
+## Configurando las cookies avanzadas con los atributos
 
-To set cookies that more tightly controls the behavior of the cookie we must add the cookie to a
-cookie jar. An example:
+Para establecer cookies que controlen de forma más estricta el comportamiento de la cookie debemos añadir la cookie a un cookies jar. Un ejemplo:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -209,10 +186,9 @@ export default function () {
 
 </CodeGroup>
 
-## Local cookie jars
+## Jar de cookies local
 
-Besides the per-VU cookie jar you can also create local cookie jars that can override the per-VU
-cookie jar on a per-request basis. An example:
+Además del cookies jar por VU, también puede crear el jar de cookies locales que pueden anular el jar de cookies de VU por solicitud. Un ejemplo:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -250,7 +226,7 @@ export default function () {
 
 </CodeGroup>
 
-## Examples
+## Ejemplos
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
