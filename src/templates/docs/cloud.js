@@ -196,7 +196,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       <Link to={'/cloud/analyzing-results/result-export'}>
                         CSV
                       </Link>{' '}
-                      or generate{' '}
+                      and generate{' '}
                       <Link to={'/cloud/analyzing-results/result-export'}>
                         PDF reports
                       </Link>
