@@ -4,8 +4,7 @@ excerpt: ''
 hideFromSidebar: true
 ---
 
-It's not always things work as expected. For those cases there's a handy CLI flag, `--http-debug`,
-that is good to be aware of.
+No siempre las cosas funcionan como esperamos. En esos casos tenemos un flag CLI muy útil, `--http-debug`, que es bueno tener en cuenta.
 
 ## Example
 
@@ -23,7 +22,7 @@ export default function() {
 
 </CodeGroup>
 
-If we run it using `k6 run --http-debug script.js` we get output that looks like this:
+Si lo ejecutamos usando `k6 run --http-debug script.js` obtenemos una salida parecida a esta:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -91,4 +90,4 @@ X-Xss-Protection: 1; mode=block
 
 </CodeGroup>
 
-If we want to get the full response body printed as well we run the script with `k6 run --http-debug="full" script.js` instead.
+Si queremos que se imprima también el cuerpo completo de la respuesta, ejecutamos el script con `k6 run --http-debug="full" script.js` en su lugar.

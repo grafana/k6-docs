@@ -3,82 +3,92 @@ title: 'Grabador de navegador'
 excerpt: ''
 ---
 
-The browser recorder allows generating a k6 script based on a web session. It is available as extensions for [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
+El grabador del navegador (browser recorder) permite generar un script de k6 basado en una sesión web. Actualmente está disponible como extensión para [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) y [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
 
-### k6 Cloud integration
+### Integración con k6 Cloud
 
-The browser recorder functionality is powered by the [k6 Cloud](/cloud). When the user finalizes the recording of the session, the extension will upload the auto-generated k6 test into the k6 Cloud account.
+La funcionalidad del grabador del navegador se alimenta de k6 Cloud. Cuando el usuario finaliza la grabación de la sesión, la extensión subirá automáticamente la prueba a la cuenta de k6 Cloud.
 
-> **Note**: the recorder is **free to use** and you do not need an active k6 Cloud subscription to utilize it.
->
-> Any user can copy the script from the [script editor](/cloud/creating-and-running-a-test/script-editor) to edit or run the test locally using the `k6 run` command. In the future, we plan to make this feature operational without having a k6 Cloud account.
+> **Nota**: El grabador es de uso gratuito y no se necesita una suscripción activa a k6 Cloud para utilizarlo.
+> 
+> Cualquier usuario puede copiar el script desde el editor de scripts para editarlo o ejecutar la prueba localmente utilizando el comando k6 run. Para versiones futuras, planeamos hacer que esta característica sea operativa sin tener una cuenta de k6 Cloud.
 
-### How it works
+### ¿Cómo funciona?
 
-The browser recorder allows you to generate the bulk of your test scripts simply by browsing like a user would on your site or web app. The script created gives you a foundation which you can further edit, as required.
+El grabador del navegador le permite generar la mayor parte de sus scripts de prueba simplemente navegando como lo haría un usuario en su sitio o aplicación web. El script creado le proporciona una base que puede editar posteriormente, según sea necesario.
 
-The recorder will capture everything – every single HTTP(s) request being loaded into the browser as you click – including ads, images, documents, etc., so you get a far more accurate read of what’s going on. Just press “record”, start browsing and when complete, the script will automatically get saved to your k6 Cloud account.
+El grabador capturará cada una de las peticiones HTTP(s) que se cargan en el navegador mientras hace clic incluyendo anuncios, imágenes, documentos, entre otros; de modo que se obtiene una lectura mucho más precisa de lo que está sucediendo. Sólo debes seleccionar la opción"grabar", y empezar a navegar, una vez completado, el script se guardará automáticamente en la cuenta de k6 Cloud.
 
-## Instructions
+## Instrucciones
 
-1 - **Install** the [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
+1 - **Instalar** la extensión de [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) o [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
 
-2 - **Start a recording**
+2 - **Iniciar una grabación**
 
-Open the extension by clicking the k6 logo, and press "Start recording" to begin recording the current browser tab. It's good to have in consideration the following best practices to record a user session:
+Abra la extensión haciendo clic en el logotipo de k6 y luego seleccione la opción "Iniciar grabación" para comenzar a grabar la pestaña actual del navegador. Es bueno tener en cuenta las siguientes buenas prácticas para grabar una sesión de usuario:
 
-**Do**
+## Qué hacer
+- Navegar como lo haría un usuario.
+- Tomar las pausas que normalmente los usuarios harían para consumir el contenido de una página.
+- Ponga atención en los casos de uso más comunes, en lugar de todos los casos de uso posibles.
+- Tome nota de las páginas en las que se producen formularios o registros, es probable que tenga que hacer algunas secuencias de comandos adicionales para hacer que utilice valores dinámicos.
 
-- Browse like a user would
-- Take natural pauses that users would take to consume page content
-- Focus on the most common use cases, rather than all the possible use cases
-- Take note of pages where forms/logins occur, you will likely need to do some additional scripting here to make it use dynamic values.
+## Qué no hacer
+- Visitar todas las páginas en una sola vez
+- Hacer clic en todas las opciones posibles
+- Navegar tan rápido como pueda
+- Navegar fuera del sitio o aplicación actual
 
-**Do not**
-
-- Visit every page in one journey
-- Click every possible option
-- Navigate as fast as you can
-- Navigate away your actual site or application
 
 ![Step 2](./images/Recording-a-test-script/step-2.png)
 
-3 - **Stop the recording**
+3 - **Detener la grabación**
 
-When done, press "Stop recording", you'll be taken to the app to review the recorded test script
+Cuando haya terminado, haga clic en la opción "Stop recording", luego será redireccionado a la aplicación para revisar el script de prueba grabado.
 
 ![Step 3](./images/Recording-a-test-script/step-3.png)
 
-4 - **Save your test script**
+4 - **Guarde su script de prueba**
 
-Save the recorded script in any of your projects.
+Guarde el script grabado en cualquiera de sus proyectos.
 
-If any **third party requests** are made during the recording, those requests will be filtered out by default because:
+Si se realizan peticiones de terceros durante la grabación, esas peticiones se filtraran por defecto porque:
+- Estas solicitudes de terceros desvirtúan los porcentajes de sus resultados de rendimiento.
+- Es posible que no tenga la capacidad de influir en el rendimiento de los servicios de terceros
+- La prueba de carga puede violar los términos del contrato de servicio que tiene con el proveedor.
 
-- These third-party requests will skew the percentiles of your performance results.
-- You may not have the ability to impact the performance of third-party services
-- The load test may violate the terms of service contract that you have with the provider.
+Si quiere incluir algunas de las solicitudes en la lista de terceros, simplemente selecciona las que quiera incluir, y luego pulse guardar.
 
-If you want to include some of the requests in the _third party list_, simply deselect the ones you want to include, then hit save.
 
 ![Step 4](./images/Recording-a-test-script/step-4.png)
 
-5 - **Edit your script** as necessary.
+5 - **Edite su script** según sea necesario
 
-Depending on the type of testing, you might need to change different aspects of the script. The most usual changes are:
+Dependiendo del tipo de prueba, es posible que tenga que cambiar diferentes aspectos del script. Los cambios más habituales son
+- Cambiar las [opciones de carga](/using-k6/options). El valor por defecto es una prueba con ramp-up de 12 minutos.
+- Manejar la [correlación y los datos dinámicos](/examples/correlation-and-dynamic-data).
 
-- Changing the [load options](/using-k6/options). The default is a 12 min ramp-up test.
-- Handling [correlation and dynamic data](/examples/correlation-and-dynamic-data).
+6 - **Ejecute la prueba** localmente o en k6 Cloud
 
-> #### Things to consider
->
-> - The auto-generated script sets [discardResponseBodies](/using-k6/options#discard-response-bodies) to `true`. This configuration will discard all response bodies.
-> - The browser extension will not record other tabs or pop up windows. If you need to capture this information, you should try the [HAR converter](/test-authoring/recording-a-session/har-converter).
+Si desea ejecutar una prueba en la nube desde la interfaz de usuario de k6 Cloud, haga clic en la opción Ejecutar para iniciar la prueba.
 
-6 - **Run the test** locally or in the k6 Cloud.
+Si desea utilizar la CLI (command-line interface) de k6 para ejecutar una prueba local o k6 Cloud, copie el script generado en su editor de texto local y ejecute el comando `k6 run` o `k6 cloud` para iniciar la prueba.
 
-If you want to run a cloud test from the k6 Cloud UI, press `Run` to start the test.
+Para obtener más información sobre la ejecución de k6, consulte la [guía Ejecución de k6](/getting-started/running-k6).
 
-If you want to use the k6 CLI to run a local or cloud test, copy the generated script to your local text editor and execute the `k6 run` or `k6 cloud` command to start the test.
+## Solución de problemas
 
-For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
+La extensión del navegador no registra otras pestañas o ventanas emergentes 
+
+Si necesita capturar esta información, debe utilizar el convertidor HAR.
+
+> El convertidor HAR es una alternativa al grabador del navegador. Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo de tipo HAR.
+
+### ¿Tiene problemas para registrar una solicitud?
+
+Si tiene problemas para registrar una solicitud, le recomendamos que pruebe el convertidor HAR.
+
+El grabador del navegador utiliza el convertidor HAR para generar un script de k6. Si el error persiste con el [har-to-k6 converter](https://github.com/loadimpact/har-to-k6), comunique una nueva incidencia proporcionando información detallada sobre el problema.
+
+
+

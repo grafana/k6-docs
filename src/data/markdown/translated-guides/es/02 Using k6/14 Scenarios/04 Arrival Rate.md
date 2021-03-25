@@ -4,15 +4,9 @@ title: 'Arrival rate'
 
 ## Closed Model
 
-> In a closed model, the execution time of each iteration dictates the actual
-> number of iterations executed in your test, as the next iteration won't be started
-> until the previous one is completed.
+> En un modelo cerrado, el tiempo de ejecución de cada iteración dicta el número real de iteraciones ejecutadas en su prueba, ya que la siguiente iteración no se iniciará hasta que la anterior se haya completado.
 
-Prior to v0.27.0, k6 only supported a closed model for the simulation of new VU arrivals.
-In this closed model, a new VU iteration only starts when a VU's previous iteration has
-completed its execution. Thus, in a closed model, the start rate, or arrival rate, of
-new VU iterations is tightly coupled with the iteration duration (that is, time from start
-to finish of the VU's `exec` function, by default the `export default function`):
+Antes de la versión 0.27.0, k6 sólo admitía un modelo cerrado para la simulación de la llegada de nuevos VU. En este modelo cerrado, una nueva iteración del VU sólo comienza cuando la iteración anterior del VU ha completado su ejecución. Por lo tanto, en un modelo cerrado, la tasa de inicio, o tasa de llegada, de las nuevas iteraciones del VU está estrechamente vinculada a la duración de la iteración (es decir, el tiempo desde el inicio hasta el final de la función de ejecución del VU, por defecto la función de exportación por defecto):
 
 <CodeGroup labels={[ "closed-model.js" ]} lineNumbers={[true]}>
 
@@ -43,7 +37,7 @@ export default function () {
 
 </CodeGroup>
 
-Running this script would result in something like:
+La ejecución de este script daría como resultado algo así:
 
 ```bash
 
@@ -52,33 +46,26 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ```
 
-## Drawbacks of using the closed model
+## Inconvenientes de la utilización del modelo cerrado
 
-This tight coupling between the VU iteration duration and start of new VU iterations
-in effect means that the target system can influence the throughput of the test, via
-its response time. Slower response times means longer iterations and a lower arrival
-rate of new iterations, and vice versa for faster response times.
+Este estrecho vínculo entre la duración de la iteración del VU y el inicio de las nuevas iteraciones del  VU significa, en efecto, que el sistema objetivo puede influir en el rendimiento de la prueba, a través de su tiempo de respuesta. Un tiempo de respuesta más lento significa iteraciones más largas y una menor tasa de llegada de nuevas iteraciones, y viceversa para tiempos de respuesta más rápidos.
+ 
+En otras palabras, cuando el sistema objetivo está sometido a estrés y empieza a responder más lentamente, una prueba de carga de modelo cerrado se hará la "buena" y esperará, lo que dará lugar a un aumento de la duración de las iteraciones y a una disminución de la tasa de llegada (Arrival Rate) de nuevas iteraciones del VU.
+ 
+Esto no es ideal cuando el objetivo es simular una determinada tasa de llegada de nuevas VUs, o más generalmente el rendimiento (por ejemplo, peticiones por segundo).
 
-In other words, when the target system is being stressed and starts to respond more
-slowly a closed model load test will play "nice" and wait, resulting in increased
-iteration durations and a tapering off of the arrival rate of new VU iterations.
-
-This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
-or more generally throughput (e.g. requests per second).
 
 ## Open model
 
-> Compared to the closed model, the open model decouples VU iterations from
-> the actual iteration duration. The response times of the target system are no longer
-> influencing the load being put on the target system.
+> En comparación con el modelo cerrado, el modelo abierto desvincula las iteraciones de la VU de la duración real de la iteración. Los tiempos de respuesta del sistema objetivo ya no influyen en la carga que se aplica al sistema objetivo.
+ 
 
-To fix this problem we use an open model, decoupling the start of new VU iterations
-from the iteration duration and the influence of the target system's response time.
+Para solucionar este problema utilizamos un modelo abierto, desvinculando el inicio de nuevas iteraciones de la VU de la duración de la iteración y de la influencia del tiempo de respuesta del sistema objetivo.
 
 ![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
 
-In k6, we've implemented this open model with our two "arrival rate" executors:
-[constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
+
+En k6, hemos implementado este modelo abierto con nuestros dos executors de "tasa de llegada (Arrival Rate)" [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
 
 <CodeGroup labels={[ "open-model.js" ]} lineNumbers={[true]}>
 
@@ -108,7 +95,7 @@ export default function () {
 
 </CodeGroup>
 
-Running this script would result in something like:
+La ejecución de este script daría como resultado algo así:
 
 ```bash
 running (1m09.3s), 000/011 VUs, 60 complete and 0 interrupted iterations

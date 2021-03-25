@@ -3,17 +3,19 @@ title: 'Grabar una sesión'
 excerpt: ''
 ---
 
-In load testing, _recording_ usually refers to the process of creating a load test from the recording of a user session. The process consists of three steps:
+En las pruebas de carga, la grabación suele referirse al proceso de creación de una prueba de carga a partir de la grabación de una sesión de usuario. El proceso consta de tres pasos:
 
-1. Record a user or API session.
-2. Convert the recorded session into a test.
-3. Run the test.
+1. Grabar una sesión de un usuario o de una API.
+2. Convertir la sesión grabada en una prueba.
+3. Ejecutar la prueba.
 
-While not exclusive, it is common to use recordings while testing complex scenarios on websites or mobile applications. Recording allows seeing the sequence of requests and parameters of the session, helping testers quickly build out complex chains of requests.
+Aunque no es exclusivo, es habitual utilizar grabaciones mientras se prueban escenarios complejos en sitios web o aplicaciones móviles. La grabación permite ver la secuencia de peticiones y los parámetros de la sesión, lo que ayuda a los probadores a construir rápidamente complejas cadenas de peticiones.
 
-Suppose you have to create a performance test simulating a user journey with dozens or hundreds of requests. In that case, the recording avoids writing it from scratch.
+Supongamos que hay que crear una prueba de rendimiento que simula el comportamiento de un usuario con docenas o cientos de peticiones. En ese caso, la grabación evita escribir la prueba desde cero.
 
-k6 provides two mechanism to generate a k6 script from a recorded user session:
+k6 proporciona dos mecanismos para generar un script a partir de una sesión de usuario grabada:
 
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder) generates a k6 script from a browser session. Available on [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
-- [HAR converter](/test-authoring/recording-a-session/har-converter) generates a k6 script from the requests included in a HAR file.
+- [Browser recorder](/test-authoring/recording-a-session/browser-recorder) genera un script de k6 a partir de una sesión del navegador. Disponible en
+ [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) y [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
+- [HAR converter](/test-authoring/recording-a-session/har-converter) genera un script de k6 a partir de las peticiones incluidas en un archivo de tipo HAR.
+ 

@@ -1,31 +1,23 @@
 ---
-title: 'Online Certificate Status Protocol (OCSP)'
+title: 'Protocolo de estado de los certificados en línea (OCSP)'
 excerpt: ''
 ---
 
-## What is OCSP?
+## ¿Qué es OCSP?
 
-Online Certificate Status Protocol (OCSP) is a protocol that web browsers and clients can use
-to check the status of an issued TLS certificate with a Certificate Authority (CA), making sure
-it has not been revoked for whatever purpose.
 
-This can be done in different ways, putting the burden on different parties:
+El Protocolo de Estado de Certificados en Línea (OCSP) es un protocolo que los navegadores web y los clientes pueden utilizar para comprobar el estado de un certificado TLS emitido con una Autoridad de Certificación (CA), asegurándose de que no ha sido revocado por cualquier motivo.
 
-- The browser/client: talk to the CA (or by CA entrusted OCSP responder) with OCSP. One downside
-  with this approach is that the CA's servers need to be available which might not always be the case.
+Esto puede hacerse de diferentes maneras, poniendo la carga en diferentes partes:
 
-- The browser vendor: maintain a regularly updated list of certificate revocations by talking to
-  the CAs (or by CA entrusted OCSP responder) and then distributing this list to the browsers
-  running on users' machines.
-- The server side: the server handles the interaction with the CA (or by CA entrusted OCSP
-  responder), caching the results of the periodic updates and including a "stapled response"
-  (referred to as OCSP stapling) in the TLS connection setup with the browser/client.
+- El navegador/cliente: hablar con la CA (o por el respondedor OCSP confiado por la CA) con OCSP. Uno de los inconvenientes de este enfoque es que los servidores de la CA deben estar disponibles, lo que puede no ser siempre el caso.
+- El proveedor de navegadores: mantener una lista actualizada regularmente de revocaciones de certificados hablando con las CAs (o por el respondedor OCSP confiado por la CA) y luego distribuyendo esta lista a los navegadores que se ejecutan en las máquinas de los usuarios.
+- El lado del servidor: el servidor se encarga de la interacción con la CA (o por el respondedor OCSP encomendado por la CA), almacenando en caché los resultados de las actualizaciones periódicas e incluyendo una "respuesta engrapada" (denominada engrapado OCSP) en la configuración de la conexión TLS con el navegador/cliente.
+
 
 ## OCSP with k6
 
-At the moment k6 supports OCSP stapling, receiving and parsing a stapled response as part of
-the TLS connection setup. The OCSP response information is available on the `ocsp.stapled_response`
-property of the response object.
+Actualmente k6 soporta el grapado OCSP, recibiendo y analizando una respuesta grapada como parte de la configuración de la conexión TLS. La información de la respuesta OCSP está disponible en la propiedad `ocsp.stapled_response` del objeto de respuesta.
 
 <CodeGroup labels={["OCSP stapled response properties example"]} lineNumbers={[true]}>
 
@@ -45,25 +37,26 @@ export default function () {
 
 ## Properties of an OCSP object
 
-The OCSP `ocsp` object contains the following properties:
+El objeto OCSP contiene las siguientes propiedades:
 
-| Key                 | Type   | Description                                                                                                                                                                           |
+| Llave                 | Tipo   | Descripción                                                                                                                                                                           |
 | ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `status`            | string | the status of the certificate, see possible values below                                                                                                                              |
-| `revocation_reason` | string | the reason for revocation of the certificate (if that is the status), see possible values below                                                                                       |
-| `produced_at`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this OCSP stapled response was signed by CA (or by CA entrusted OCSP responder)          |
-| `this_update`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time at which the status being indicated was known to be correct                                   |
-| `next_update`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this OCSP stapled response will be refreshed with CA (or by CA entrusted OCSP responder) |
-| `revoked_at`        | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this certificate was revoked (if that is the status)                                     |
+| `status`            | string | el estado del certificado, véanse los valores posibles a continuación
+                                                                                                                              |
+| `revocation_reason` | string | el motivo de la revocación del certificado (si ese es el estado), véanse los posibles valores a continuación                                                                                       |
+| `produced_at`       | number | número de milisegundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC, que representa el momento en que esta respuesta engrapada OCSP fue firmada por la CA (o por el respondedor OCSP encargado por la CA)          |
+| `this_update`       | number | número de milisegundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC, que representa el momento en el que se sabe que el estado indicado es correcto                                   |
+| `next_update`       | number | número de milisegundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC, que representa el momento en que esta respuesta engrapada OCSP se actualizará con la CA (o por el respondedor OCSP encargado por la CA) |
+| `revoked_at`        | number | número de milisegundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC, que representa el momento en que este certificado fue revocado (si ese es el estado)                                     |
 
-### Possible values for `status`:
+### Posibles valores para `status`:
 
 - `http.OCSP_STATUS_GOOD`
 - `http.OCSP_STATUS_REVOKED`
 - `http.OCSP_STATUS_UNKNOWN`
 - `http.OCSP_STATUS_SERVER_FAILED`
 
-### Possible values for `revocation_reason`:
+### Posibles valores para `revocation_reason`:
 
 - `http.OCSP_REASON_UNSPECIFIED`
 - `http.OCSP_REASON_KEY_COMPROMISE`

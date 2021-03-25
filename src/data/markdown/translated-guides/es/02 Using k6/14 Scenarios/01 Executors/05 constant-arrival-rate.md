@@ -5,36 +5,29 @@ excerpt: ''
 
 ## Description
 
-A fixed number of iterations are executed in a specified period of time.
-Since iteration execution time can vary because of test logic or the
-system-under-test responding more slowly, this executor will try to compensate
-by running a variable number of VUs&mdash;including potentially initializing more in the middle
-of the test&mdash;in order to meet the configured iteration rate. This approach is
-useful for a more accurate representation of RPS, for example.
+Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado. Dado que el tiempo de ejecución de la iteración puede variar debido a la lógica de la prueba o a que el sistema bajo prueba responda más lentamente, este ejecutor intentará compensar ejecutando un número variable de VUs incluyendo la posibilidad de inicializar más en medio de la prueba para cumplir con la tasa de iteración configurada. Este enfoque es útil para una representación más precisa de RPS, por ejemplo.
 
-See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
+Consulte [arrival rate](/using-k6/scenarios/arrival-rate) para más detalles.
 
-## Options
+## Opciones
 
-In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
-also adds the following options:
+Además de las opciones de configuración comunes, este ejecutor también añade las siguientes opciones:
 
 | Option             | Type    | Description                                                                             | Default |
 | ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
-| `duration*`        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
-| `rate*`            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
-| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
-| `timeUnit`         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| `maxVUs`           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| `duration*`        | string  | Duración total del escenario (excluyendo gracefulStop).| -       |
+| `rate*`            | integer | Número de iteraciones a ejecutar en cada periodo de timeUnit.                                 | -       |
+| `preAllocatedVUs*` | integer | Número de VUs a pre asignar antes del inicio de la prueba para preservar los recursos del tiempo de ejecución. | -       |
+| `timeUnit`         | string  | Periodo de tiempo para aplicar el valor de la tasa.                                               | `"1s"`  |
+| `maxVUs`           | integer | Número máximo de VUs a permitir durante la ejecución de la prueba.                                     | -       |
 
-## When to use
+## Cuando usarlo
 
-When you want to maintain a constant number of requests without being affected by the
-performance of the system under test.
+Cuando se quiere mantener un número constante de peticiones sin que se vea afectado el rendimiento del sistema bajo prueba.
 
-## Examples
+## Ejemplo
 
-In this example, we'll execute a constant rate of 200 RPS for 1 minute, allowing k6 to dynamically schedule up to 100 VUs.
+En este ejemplo, ejecutaremos una tasa constante de 200 RPS durante 1 minuto, permitiendo a k6 programar dinámicamente hasta 100 VUs.
 
 <CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -61,6 +54,4 @@ export default function () {
 
 </CodeGroup>
 
-Note that in order to reliably achieve a fixed request rate, it's recommended to keep
-the function being executed very simple, with preferably only a single request call,
-and no additional processing or `sleep()` calls.
+Tenga en cuenta que para lograr de forma fiable una tasa de peticiones fija, se recomienda mantener la función que se ejecuta muy simple, con preferiblemente una sola llamada de petición, y sin procesamiento adicional o llamadas a `sleep()`.

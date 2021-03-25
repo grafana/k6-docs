@@ -5,29 +5,25 @@ excerpt: ''
 
 ## Description
 
-A variable number of VUs execute as many iterations as possible for a specified
-amount of time. This executor is equivalent to the global `stages` option.
+Un número variable de VUs que se ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.
 
-## Options
+## Opciones
 
-In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
-also adds the following options:
+Además de las opciones de configuración comunes, este ejecutor también añade las siguientes opciones:
 
 | Option             | Type    | Description                                                                                    | Default |
 | ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |
-| `stages*`          | array   | Array of objects that specify the target number of VUs to ramp up or down to.                  | `[]`    |
-| `startVUs`         | integer | Number of VUs to run at test start.                                                            | `1`     |
-| `gracefulRampDown` | string  | Time to wait for an already started iteration to finish before stopping it during a ramp down. | `"30s"` |
+| `stages*`          | array   | Matriz de objetos que especifican el número objetivo de VUs para subir o bajar.                  | `[]`    |
+| `startVUs`         | integer | Número de VUs a ejecutar al inicio de la prueba.                                                            | `1`     |
+| `gracefulRampDown` | string  | Tiempo para esperar a que termine una iteración ya iniciada antes de detenerla durante una rampa de descenso. | `"30s"` |
 
-## When to use
+## Cuando usarlo
 
-This executor is a good fit if you need VUs to ramp up or down during specific periods
-of time.
+Este ejecutor es una buena opción si necesita que las VUs aumenten o disminuyan durante períodos específicos de tiempo.
 
-## Example
+## Ejemplo
 
-In this example, we'll run a two-stage test, ramping up from 0 to 100 VUs for 5 seconds, and down
-to 0 VUs over 5 seconds.
+En este ejemplo, realizaremos una prueba en dos etapas, subiendo de 0 a 100 VUs durante 5 segundos, y bajando a 0 VUs durante 5 segundos.
 
 <CodeGroup labels={[ "ramping-vus.js" ]} lineNumbers={[true]}>
 

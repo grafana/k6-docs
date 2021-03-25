@@ -3,35 +3,32 @@ title: 'Ramping arrival rate'
 excerpt: ''
 ---
 
-## Description
+## Descripción
 
-A variable number of iterations are executed in a specified period of time. This is
-similar to the ramping VUs executor, but for iterations instead, and k6 will attempt
-to dynamically change the number of VUs to achieve the configured iteration rate.
+Se ejecuta un número variable de iteraciones en un periodo de tiempo determinado. Este es similar al ejecutor de VUs en rampa, pero para iteraciones en su lugar, y k6 intentará cambiar dinámicamente el número de VUs para alcanzar la tasa de iteración configurada.
 
 See the [arrival rate](#arrival-rate) section for details.
 
-## Options
+## Opciones
 
-In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
-also adds the following options:
+Además de las opciones de configuración comunes, este ejecutor también añade las siguientes opciones:
 
 | Option             | Type    | Description                                                                             | Default |
 | ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
-| `stages*`          | array   | Array of objects that specify the target number of iterations to ramp up or down to.    | `[]`    |
-| `preAllocatedVUs*` | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
-| `startRate`        | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
-| `timeUnit`         | string  | Period of time to apply the `startRate` the `stages` `target` value.                    | `"1s"`  |
-| `maxVUs`           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| `stages*`          | array   | Matriz de objetos que especifican el número objetivo de VUs para subir o bajar.    | `[]`    |
+| `preAllocatedVUs*` | integer | Número de VUs a pre asignar antes del inicio de la prueba para preservar los recursos del tiempo de ejecución. | -       |
+| `startRate`        | integer | Número de iteraciones a ejecutar en cada periodo timeUnit al inicio de la prueba.                   | `0`     |
+| `timeUnit`         | string  | Periodo de tiempo para aplicar el valor de la tasa.                      | `"1s"`  |
+| `maxVUs`           | integer | Número máximo de VUs a permitir durante la ejecución de la prueba.                                     | -       |
 
-## When to use
+## Cuando usarlo
 
-If you need your tests to not be affected by the system-under-test's performance, and
-would like to ramp the number of iterations up or down during specific periods of time.
+Si necesita que sus pruebas no se vean afectadas por el rendimiento del sistema bajo prueba, y desea aumentar o disminuir el número de iteraciones durante períodos de tiempo específicos.
+ 
 
-## Examples
+## Ejemplo
 
-In this example, we'll execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
+En este ejemplo, ejecutaremos una prueba de RPS variable, comenzando en 50, subiendo a 200 y luego volviendo a 0, durante un período de 1 minuto.
 
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 

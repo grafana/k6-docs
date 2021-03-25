@@ -3,22 +3,20 @@ title: 'HTTP/2'
 excerpt: ''
 ---
 
-## Overview
+HTTP/2.0 es la última versión del protocolo HTTP e introduce algunas mejoras importantes en comparación con su predecesor. La principal es la introducción de un protocolo de hilo binario con flujos multiplexados a través de una única conexión TCP. Esto resuelve un antiguo problema de rendimiento de HTTP/1.1, [el bloqueo de cabecera](https://en.wikipedia.org/wiki/Head-of-line_blocking).
 
-HTTP/2.0 is the latest version of the HTTP protocol and introduces some major improvements compared to its predecessor. Chiefly of which is the introduction of a binary wire protocol with multiplexed streams over a single TCP connection. This solves a long-standing performance issue with HTTP/1.1, [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
+Bueno, al menos lo resuelve parcialmente, ya que todavía hay mecanismos de control de la congestión TCP que interfieren con la naturaleza independiente prevista de los flujos multiplexados en los casos de paquetes perdidos/atrapados y de retransmisión/remontaje. La solución completa es ejecutar HTTP/2.0 sobre UDP, que es lo que Google implementó con QUIC.
 
-Well, it at least _partially_ solves it, since you still have TCP congestion control mechanisms interfering with the intended independent nature of the multiplexed streams in cases of lost/dropped packets and retransmission/reassembly. The full solution is to run HTTP/2.0 over UDP, which is what Google implemented with [QUIC](https://en.wikipedia.org/wiki/QUIC).
+## Características adicionales de HTTP/2.0
 
-## Additional features of HTTP/2.0
+- Compresión integrada de las cabeceras HTTP
+- Push del servidor
+- Canalización de solicitudes
+- Priorización de solicitudes
 
-- Builtin compression of HTTP headers
-- Server push
-- PipelininG of requests
-- Prioritization of requests
+## HTTP/2 con k6
 
-## Load testing HTTP/2 with k6
-
-When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would. You can check what protocol was used for a particular request by looking at the `proto` property of the response object.
+Cuando realizas peticiones HTTP en k6, éste actualiza automáticamente la conexión a HTTP/2.0 si el servidor lo soporta, al igual que lo haría tu navegador web. Puedes comprobar qué protocolo se ha utilizado para una petición concreta mirando la propiedad `proto` del objeto de respuesta.
 
 <CodeGroup labels={["Check if protocol used for request is HTTP/2.0"]} lineNumbers={[true]}>
 
@@ -37,7 +35,7 @@ export default function () {
 
 </CodeGroup>
 
-For more information on what values the r.proto field can have, check out:
+Para más información sobre los valores que puede tener el campo `r.proto`, consulte la siguiente documentación: 
 
 - [k6 HTTP](/javascript-api/k6-http/response)
 - https://http2.github.io/http2-spec/#versioning

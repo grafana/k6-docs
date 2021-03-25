@@ -1,14 +1,12 @@
 ---
-title: 'Advanced Examples'
+title: 'Ejemplos avanzados'
 ---
 
-## Using multiple scenarios
+## Usando escenarios múltiples
 
-This configuration will first execute a scenario where 50 VUs will try to run as many iterations
-as possible for 30 seconds. It will then transition to the next scenario, executing 100 iterations
-per VU for a maximum duration of 1 minute.
+Esta configuración ejecutará primero un escenario en el que 50 VUs intentarán ejecutar el mayor número de iteraciones posible durante 30 segundos. A continuación, pasará al siguiente escenario, ejecutando 100 iteraciones por VU durante una duración máxima de 1 minuto.
 
-Note the use of `startTime`, and different `exec` functions for each scenario.
+Nótese el uso de `startTime`, y diferentes funciones `exec` para cada escenario.
 
 <CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
@@ -48,11 +46,10 @@ export function news() {
 
 </CodeGroup>
 
-## Different environment variables and tags per scenario.
+## Diferentes variables de entorno y etiquetas por escenario
 
-In the previous example we set tags on individual HTTP request metrics, but this
-can also be done per scenario, which would apply them to other
-[taggable](https://k6.io/docs/using-k6/tags-and-groups#tags) objects as well.
+En el ejemplo anterior establecimos etiquetas en métricas individuales de solicitudes HTTP, pero esto también puede hacerse por escenario, lo que las aplicaría también a otros objetos [etiquetables (tags)](https://k6.io/docs/using-k6/tags-and-groups#tags).
+
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
 
@@ -97,14 +94,9 @@ export function news() {
 
 </CodeGroup>
 
-Note that by default a `scenario` tag with the name of the scenario as value is
-applied to all metrics in each scenario, which can be used in thresholds and
-simplifies filtering metrics when using [result outputs](/getting-started/results-output).
-This can be disabled with the [`--system-tags` option](/using-k6/options#system-tags).
+Tenga en cuenta que, por defecto, se aplica una etiqueta de `scenario` con el nombre del escenario como valor a todas las métricas de cada escenario, lo que puede utilizarse en Thresholds y simplifica el filtrado de las métricas. Esto puede desactivarse con la opción `--system-tags`.
 
-## Multiple exec functions, tags, environment variables, and thresholds
-
-A test with 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
+## Multiple funciones exec, tags, variables de entorno, y thresholds
 
 <CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
 

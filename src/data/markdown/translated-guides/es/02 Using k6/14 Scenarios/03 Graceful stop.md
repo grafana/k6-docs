@@ -3,18 +3,13 @@ title: 'Graceful stop'
 excerpt: ''
 ---
 
-Prior to v0.27.0, k6 would interrupt any iterations in progress when the test duration was reached
-or when scaling down VUs with the stages option. In some cases this would lead to skewed metrics
-and unexpected test results. Starting with v0.27.0, this behavior can be controlled through the
-`gracefulStop` and `gracefulRampDown` options.
+Antes de la versión 0.27.0, k6 interrumpía cualquier iteración en curso cuando se alcanzaba la duración de la prueba o cuando se reducían los VU con la opción de etapas. En algunos casos esto podría llevar a métricas sesgadas y resultados de pruebas inesperadas. A partir de la versión 0.27.0, este comportamiento puede controlarse mediante las opciones `gracefulStop` y `gracefulRampDown`.
 
-## Description
+## Descripción
 
-This option is available for all executors except `externally-controlled` and allows the
-user to specify a duration to wait before forcefully interrupting them. The default value
-of this property is `30s`.
+Esta opción está disponible para todos los `executors`, excepto `externally-controlled` y permite al usuario especificar una duración para esperar antes de interrumpirlos forzosamente. El valor por defecto de esta propiedad es de 30s.
 
-## Example
+## Ejemplo
 
 <CodeGroup labels={[ "graceful-stop.js" ]} lineNumbers={[true]}>
 
@@ -41,19 +36,15 @@ export default function () {
 
 </CodeGroup>
 
-Running this script would result in something like:
+La ejecución de este script daría como resultado algo así:
 
 ```bash
 running (13.0s), 000/100 VUs, 349 complete and 23 interrupted iterations
 contacts ✓ [======================================] 100 VUs  10s
 ```
 
-Notice that even though the total test duration is 10s, the actual execution time was 13s
-because of `gracefulStop`, giving the VUs a 3s additional time to complete iterations in progress. 23
-of the iterations currently in progress did not complete within this window and was therefore interrupted.
+Nótese que aunque la duración total de la prueba es de 10s, el tiempo real de ejecución fue de 13s debido a `gracefulStop`, dando a las VUs un tiempo adicional de 3s para completar las iteraciones en curso. 23 de las iteraciones en curso no se completaron dentro de esta ventana y, por lo tanto, se interrumpieron.
 
-## Additional Information
+## Información adicional
 
-A similar option exists for the [ramping-vus](/using-k6/scenarios/executors/ramping-vus) executor: `gracefulRampDown`. This
-specifies the time k6 should wait for any iterations in progress to finish before
-VUs are returned to the global pool during a ramp down period defined in `stages`.
+Existe una opción similar para el [ramping-vus](/using-k6/scenarios/executors/ramping-vus) executor: `gracefulRampDown`. Esto especifica el tiempo que k6 debe esperar para que cualquier iteración en progreso termine antes de que las VUs sean devueltas al pool global durante un período de rampa de descenso definido en `stages`.

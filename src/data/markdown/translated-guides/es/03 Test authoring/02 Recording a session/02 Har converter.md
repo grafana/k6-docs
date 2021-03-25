@@ -1,24 +1,24 @@
 ---
-title: 'HAR convertidor'
+title: 'HAR converter'
 excerpt: ''
 ---
 
-The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder). It generates a k6 script based on the HTTP requests included on a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
+El convertidor HAR es una alternativa al [grabador del navegador (Browser recorder)](/test-authoring/recording-a-session/browser-recorder). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.
 
-> HAR is a file format used by all major browsers and various other tools to export recorded HTTP requests.
+> HAR es un formato de archivo utilizado por los principales navegadores y otras herramientas para exportar las peticiones HTTP registradas.
 
-The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS tool. Unlike the Browser Recorder, it **does not require a k6 Cloud user** to generate the k6 script.
+El [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) es una herramienta de NodeJS. A diferencia del grabador del navegador, no se requiere una cuenta de k6 Cloud para generar el script de k6.
+Cuando se utiliza el convertidor HAR, el proceso es similar a:
 
-When using the HAR converter, the process looks like:
+1. Grabar un archivo HAR usando su navegador o herramienta de elección.
+2. Utilizar el convertidor har-to-k6 para generar una prueba en k6 a partir de un archivo HAR.
+3. Actualizar la prueba de k6 autogenerada en su editor de texto o IDE.
+4. Utilizar k6 para ejecutar la prueba.
 
-1. Record a HAR file using your browser or tool of choice.
-2. Use the **har-to-k6 converter** to generate a k6 test from the HAR file.
-3. Update the auto-generated k6 test in your text editor or IDE.
-4. Use **k6** to run the test.
 
-## 1. Record a HAR file
+## 1. Grabar un archivo HAR
 
-Multiple browsers and tools can be used to export HTTP traffic in a HAR format. A few popular ones are:
+Se pueden utilizar múltiples navegadores y herramientas para exportar el tráfico HTTP en formato HAR. Algunos de los más populares son los siguientes:
 
 - [Chrome](https://www.google.com/chrome/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/)
@@ -26,79 +26,85 @@ Multiple browsers and tools can be used to export HTTP traffic in a HAR format. 
 - [Charles recording proxy](http://www.charlesproxy.com/)(HTTP proxy/recorder)
 - [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
 
-Here are the basic steps you need to take to make a recording in Chrome:
+A continuación se describen los pasos básicos que se deben seguir para realizar una grabación usando el navegador Chrome:
 
-1. Open a new incognito window in Chrome (not really necessary, but using an incognito window means you won't be sending a lot of cookies, etc that might have been saved by your browser).
-2. Open up Chrome developer tools (press F12)
-3. Click the "Network" tab
-4. Check out that the recording button (round button) is activated (red color).
-5. Click the "Preserve log" checkbox if you want to make a recording of several successive page loads.
-6. Enter the URL of your site and start doing whatever you'd like your simulated load test users to be doing.
-7. When done, right-click on the list of URLs in Chrome developer tools and choose "Save as HAR with content".
+1. Abra una nueva ventana de incógnito en Chrome (no es necesario, pero usar una ventana de incógnito significa que no se enviaran las cookies, entre otros; que podrían haber sido guardadas por tu navegador).
+2. Abra las herramientas de desarrollo de Chrome (Pulsa la tecla F12)
+3. Haga clic en la pestaña "Red".
+4. Comprueba que el botón de grabación (botón redondo) está activado (color rojo).
+5. Haga clic en la casilla "Conservar registro" si quieres hacer una grabación de varias cargas de páginas sucesivas.
+6. Introduce la URL del sitio y puedes empezar a simular el comportamiento de los usuarios de la prueba de carga simulada.
+7. Una vez terminado, haga clic derecho en la lista de URLs en las herramientas para desarrolladores de Chrome y escoja la opción "Guardar como HAR con contenido".
 
 ![Save HAR for load testing](./images/session_recorder_save_as_har.png)
 
-It's good to have in consideration the following best practices to record a user session:
+Es bueno tener en cuenta las siguientes buenas prácticas para grabar una sesión de usuario:
 
-## Do
+## Qué hacer
+- Navegar como lo haría un usuario
+- Tomar las pausas naturales que los usuarios harían para consumir el contenido de la página
+- Concéntrese en los casos de uso más comunes, en lugar de todos los casos de uso posibles
+- Tomar nota de las páginas en las que se producen formularios o inicios de sesión, ya que es probable que tenga que completar algunas secuencias de comandos.
 
-- Browse like a user would
-- Take natural pauses that users would take to consume page content
-- Focus on the most common use cases, rather than all the possible use cases
-- Take note of pages where forms/logins occur, you will likely need to complete some scripting there
+## Qué no hacer
+- Visitar todas las páginas de una sola vez
+- Hacer clic en todas las opciones posibles
+- Navegar tan rápido como sea posible
+- Navegar lejos de su sitio o aplicación actual
 
-## Do NOT
 
-- Visit every page in one journey
-- Click every possible option
-- Navigate as fast as you can
-- Navigate away your actual site or application
+## 2. Convertir el archivo HAR en un script de k6
 
-## 2. Convert the HAR file to a k6 script
 
-The [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) is a NodeJS tool that can convert a HAR file (browser session) into a k6 script.
+El [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) es una herramienta de NodeJS que puede convertir un archivo HAR (sesión del navegador) en un script de k6.
 
-**Install the har-to-k6 converter**
+**Instalar el convertidor har-to-k6**
 
-A prerequisite is to have installed NodeJS (version >=11.0.0). To install the converter, you can use `npm`:
+Un requisito previo es tener instalado NodeJS (versión: 11.0.0 o mayor). Para instalar el convertidor, puedes utilizar npm:
+
 
 ```bash
 $ npm install -g har-to-k6
 ```
 
-For other installation options, check out the [har-to-k6 installation instructions](https://github.com/loadimpact/har-to-k6#installation).
+Para otras opciones de instalación, consulte las instrucciones de [instalación de har-to-k6](https://github.com/loadimpact/har-to-k6#installation).
 
-**Run the convert command**
+**Ejecute el comando de conversión**
 
-Now, you can run the converter to generate a k6 script from a HAR file:
+Ahora, puede ejecutar el convertidor para generar un script de k6 a partir de un archivo HAR:
+
 
 ```bash
 $ har-to-k6 myfile.har -o loadtest.js
 ```
 
-The above command will auto-generate a k6 script for you. It will read the HAR file (_myfile.har_) and convert it into a k6 test (_loadtest.js_).
+El comando anterior generará automáticamente un script de k6. Leerá el archivo HAR (myfile.har) y lo convertirá en una prueba de k6 (loadtest.js).
 
-## 3. Modify the auto-generated k6 script
+## 3. Modificar el script k6 autogenerado
 
-In the previous step, the converter did create a k6 script for testing. Now, you should evaluate if you have to change any part of the k6 script. Depending on your use case, you might need to modify some of the following aspects:
+En el paso anterior, el convertidor ha creado un script de k6 para probarlo. Ahora, debe evaluar si tiene que cambiar alguna parte del script de k6. Dependiendo de su caso de uso, es posible que tenga que modificar algunos de los siguientes aspectos:
 
-- Configure the load options
-- Remove third-party content
-- Correlate dynamic data
+- Configurar las opciones de carga
+- Eliminar el contenido de terceros
+- Correlacionar los datos dinámicos
 
-### Configure the load options
 
-At this moment, k6 has auto-generated a “functional” test, a test that by default will run with one “Virtual User” for one “Iteration”.
+### Configurar las opciones de carga
 
-It’s time for you to configure the “load” options of your performance tests. k6 allows configuring in several ways:
 
-1 - As CLI arguments while running the test:
+En este momento, K6 ha autogenerado una prueba "funcional", una prueba que por defecto se ejecutará con un VU "Usuario Virtual" durante una "Iteración".
+
+Es hora de que configure las opciones de "carga" de sus pruebas de rendimiento. k6 le permite configurarlas de varias maneras:
+
+1 - Como argumentos CLI mientras se ejecuta el test:
+
 
 ```bash
 k6 run --vus 10 --duration 30s loadtest.js
 ```
 
-2 - The options of the script file.
+2 - Las opciones del archivo de script.
+
 
 ```javascript
 export let options = {
@@ -107,25 +113,22 @@ export let options = {
 };
 ```
 
-To learn more information about how to configure the load options, read the [Adding more VUs guide](/getting-started/running-k6#adding-more-vus) and the [Options guide](/using-k6/options).
+Para obtener más información sobre cómo configurar las opciones de carg, puede leer la guía [Añadir más VUs](/getting-started/running-k6#adding-more-vus) y [Options](/using-k6/options).
 
-### Remove third-party content
+### Eliminar el contenido de terceros
 
-If you are recording a user session of a website, by default, you will record all the HTTP requests, including requests from third-party tools used on your website — for example, Analytics tools, Facebook, Twitter, Support Widgets, CDNs and many more.
+Si está grabando una sesión de usuario de un sitio web, por defecto, grabará todas las peticiones HTTP, incluyendo las peticiones de herramientas de terceros utilizadas en su sitio web - por ejemplo, herramientas de Analytics, Facebook, Twitter, Widgets de soporte, CDNs y muchas más.
 
-You should remove these third party requests because:
+Se deben eliminar estas solicitudes de terceros ya que:
+- Estas peticiones de terceros desvirtúan los porcentajes de sus resultados de rendimiento.
+- Es posible que no pueda influir en el rendimiento del servicio de terceros.
+- La prueba de carga puede violar los términos del contrato de servicio que tiene con el proveedor.
 
-- These third-party requests will skew the percentiles of your performance results.
-- You may have no ability to impact the performance of the third-party service
-- The load test may violate the terms of service contract that you have with the provider.
+Tiene dos opciones para omitir las solicitudes de terceros en su script de k6.
+1 - Editar el script de k6 autogenerado y eliminar una a una las peticiones a servicios de terceros.
+2 - Descargar un archivo HAR con sólo las peticiones a los dominios seleccionados.
 
-You have two options to skip third-party requests in your k6 script.
-
-1 - Edit the auto-generate k6 script and remove one by one the requests to third-party services.
-
-2 - Download a HAR file with only requests to the selected domains.
-
-In Chrome, you can use the DevTools Network Filter to select only particular domains. The Filter input accepts a Regex to match multiple domains.
+En Chrome, puede utilizar el filtro de red de DevTools para seleccionar sólo determinados dominios. La entrada del filtro acepta una Regex para coincidir con múltiples dominios.
 
 ```bash
 /loadimpact.com|cloudfront.net/
@@ -133,34 +136,35 @@ In Chrome, you can use the DevTools Network Filter to select only particular dom
 
 ![Save HAR filter domain using regex](./images/session_recorder_filter_domain.png)
 
-After filtering your selected domains, you can download the HAR file as described in the first step of this tutorial, and the HAR file will only include the requests to the selected domains.
+Después de filtrar los dominios seleccionados, puede descargar el archivo HAR como se describe en el primer paso de este tutorial, y el archivo HAR sólo incluirá las peticiones a los dominios seleccionados.
 
-If you don’t know all the domains to filter, it is beneficial to use the query language of the Network Filter. Just input `domain:` in the filter to see all the different domains recorded by the Network Panel.
+Si no conoce todos los dominios a filtrar, es beneficioso utilizar el lenguaje de consulta del Filtro de Red. Basta con introducir domain: en el filtro para ver todos los diferentes dominios registrados por el Panel de Red.
 
 ![Save HAR filter domain list](./images/session_recorder_filter_domain_list.png)
 
-### Correlate dynamic data
+### Correlacionar los datos dinámicos
 
-In a load testing, **correlation** means extracting one or more values from the response of one request and then reusing them in subsequent requests. Often times this could be getting a token or some sort of ID necessary to fulfill a sequence of steps in a user journey
 
-The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.
+En una prueba de carga, la correlación significa extraer uno o más valores de la respuesta de una solicitud y luego reutilizarlos en solicitudes posteriores. A menudo, esto podría ser obtener un token o algún tipo de ID necesario para cumplir con una secuencia de pasos de un usuario
 
-To run your load test correctly, you may need to replace the hard coded data with dynamic data that k6 gets from previous requests. For example, tokens will expire quickly and it is one of the most common things that users will correlate from a recorded session.
+El archivo HAR registrado puede incluir datos dinámicos utilizados en su sitio por ejemplo:  IDs, tokens CSRF, VIEWSTATE, wpnonce, y otros valores dinámicos que serán convertidos en el script de k6.
 
-[Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
+Para ejecutar su prueba de carga correctamente, es posible que tenga que reemplazar los datos codificados con datos dinámicos que obtiene de las solicitudes anteriores. Por ejemplo, los tokens expiran rápidamente y es una de las cosas más comunes que los usuarios correlacionan de una sesión registrada.
 
-## 4. Run the test
+[Aquí](/examples/correlation-and-dynamic-data) podrás encontrar algunos ejemplos que utilizan la API de k6 para correlacionar datos dinámicos.
 
-Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](/getting-started/installation).
+## 4. Ejecute la prueba
 
-Execute the `k6 run` command to run your k6 script:
+Ahora, puede ejecutar su prueba de carga con k6. Si aún no ha instalado k6, por favor, siga las [instrucciones de instalación de k6](/getting-started/installation).
+Ejecute el comando `k6 run` para ejecutar su script de k6:
+
 
 ```bash
 $ k6 run loadtest.js
 ```
 
-For learning more about running k6, check out the [Running k6 guide](/getting-started/running-k6).
+Para saber más sobre la ejecución de k6, consulte la [guía de ejecución de k6](/getting-started/running-k6).
 
-## See also
+## Vea también
 
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
+- [Grabador del navegador (Browser recorder)](/test-authoring/recording-a-session/browser-recorder): Extensiones de Chrome y Firefox para generar un script de k6 a partir de una sesión del navegador.

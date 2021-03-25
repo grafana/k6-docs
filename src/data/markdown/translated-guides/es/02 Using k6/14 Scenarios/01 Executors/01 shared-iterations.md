@@ -3,34 +3,31 @@ title: 'Shared iterations'
 excerpt: ''
 ---
 
-## Description
+## Descripción
 
-A fixed number of iterations are "shared" between a number of VUs, and the test ends
-once all iterations are executed. This executor is equivalent to the global `vus` and
-`iterations` options.
+Un número fijo de iteraciones se "comparte" entre un número de VUs, y la prueba termina una vez que se ejecutan todas las iteraciones. Este ejecutor es equivalente a las opciones globales de VUs e iteraciones.
+ 
+Tenga en cuenta que las iteraciones no se distribuyen equitativamente con este ejecutor, y un VU que se ejecute más rápido completará más iteraciones que otras.
 
-Note that iterations aren't fairly distributed with this executor, and a VU that
-executes faster will complete more iterations than others.
 
-## Options
+## Opciones
 
-In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
-also adds the following options:
+Además de las opciones de configuración comunes, este ejecutor también añade las siguientes opciones:
 
 | Option        | Type    | Description                                                                        | Default |
 | ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
-| `vus`         | integer | Number of VUs to run concurrently.                                                 | `1`     |
-| `iterations`  | integer | Total number of script iterations to execute across all VUs.                       | `1`     |
-| `maxDuration` | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
+| `vus`         | integer | Número de VUs que se ejecutan simultáneamente.                                                 | `1`     |
+| `iterations`  | integer | Número total de iteraciones de un script al ejecutar en todas las VUs.                       | `1`     |
+| `maxDuration` | string  | Duración máxima del escenario antes de que se detenga forzosamente (excluyendo `gracefulStop`). | `"10m"` |
 
-### When to use
+### Cuando usarlo
+ 
+Este ejecutor es adecuado cuando se desea una cantidad específica de VUs para completar un número fijo de iteraciones totales, y la cantidad de iteraciones por VU no es importante.
+ 
+## Ejemplo
+ 
+En este ejemplo, ejecutaremos 200 iteraciones totales compartidas por 10 VUs con una duración máxima de 10 segundos
 
-This executor is suitable when you want a specific amount of VUs to complete a fixed
-number of total iterations, and the amount of iterations per VU is not important.
-
-## Example
-
-In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds
 
 <CodeGroup labels={[ "shared-iters.js" ]} lineNumbers={[true]}>
 

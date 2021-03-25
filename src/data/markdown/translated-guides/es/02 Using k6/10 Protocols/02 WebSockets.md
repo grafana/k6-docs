@@ -3,15 +3,13 @@ title: 'WebSockets'
 excerpt: ''
 ---
 
-## Overview
+[WebSocket](https://en.wikipedia.org/wiki/WebSocket) es un protocolo que proporciona canales de comunicación full-duplex a través de una única conexión TCP. Es comúnmente utilizado por las aplicaciones de una sola página (SPA), y en cierta medida por las aplicaciones móviles, para añadir funcionalidad basada en el servidor, lo que suele suponer una mejora del rendimiento respecto a las soluciones basadas en el sondeo.
 
-[WebSocket](https://en.wikipedia.org/wiki/WebSocket) is a protocol that provides full-duplex communication channels over a single TCP connection. It is commonly used by single-page apps (SPAs), and to some extent mobile apps, to add server-push based functionality, which usually means a performance improvement over polling based solutions.
+## Pruebas de carga de WebSockets con k6
 
-## Load testing WebSockets with k6
+Comparando las pruebas basadas en HTTP con las de WebSocket, hay algunas diferencias en la estructura y el funcionamiento interno. La principal diferencia es que, en lugar de ejecutar continuamente un bucle de la función principal `(export default function() { ... })` una y otra vez, cada VU está ahora configurada para ejecutar un bucle de eventos asíncrono.
 
-Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over an over, each VU is now setup to run an asynchronous event loop.
-
-The basic structure of a WebSocket test looks like this:
+La estructura básica de una prueba WebSocket se parece a esto:
 
 <CodeGroup labels={["Basic structure of WebSocket-based tests"]} lineNumbers={[true]}>
 
@@ -35,13 +33,13 @@ export default function () {
 
 </CodeGroup>
 
-As you can see above the [connect()](/javascript-api/k6-ws/connect-url-params-callback) method takes a "run" function as its third parameter, and that function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter. The run function forms the basis of the asynchronous event loop.
+Como puedes ver arriba el método [connect()](/javascript-api/k6-ws/connect-url-params-callback) toma una función "run" como su tercer parámetro, y esa función debe aceptar un objeto [Socket](/javascript-api/k6-ws/socket) como su único parámetro. La función "run" forma la base del bucle de eventos asíncrono.
 
-It will be called immediately when the WebSocket connection is created, execute all code inside it (usually code to set up event handlers), and then block until the WebSocket connection is closed (by the remote host or by using [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
+Será llamada inmediatamente cuando se cree la conexión WebSocket, ejecutará todo el código dentro de ella (normalmente código para configurar los manejadores de eventos), y luego bloqueará hasta que la conexión WebSocket sea cerrada (por el host remoto o usando [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
 
-## Error handling
+## Manejo de errores
 
-To catch errors that can happen during the life of a WebSocket connection you attach a handler to the "error" event, as is illustrated below:
+Para capturar los errores que pueden ocurrir durante la vida de una conexión WebSocket se adjunta un manejador al evento "error", como se ilustra a continuación:
 
 <CodeGroup labels={["Error handling in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -73,7 +71,7 @@ To catch errors that can happen during the life of a WebSocket connection you at
 
 ## Timers
 
-If you want to schedule a recurring action you can use the [socket.setInterval](/javascript-api/k6-ws/socket#section-socketsetinterval) function to specify a function that should be called with a particular interval.
+Si quieres programar una acción recurrente puedes utilizar la función [socket.setInterval](/javascript-api/k6-ws/socket#section-socketsetinterval) para especificar una función que debe ser llamada con un intervalo determinado.
 
 <CodeGroup labels={["Timers in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -108,8 +106,7 @@ export default function () {
 
 ## Timeouts
 
-You can add a timeout to the WebSocket connection by passing a handler function as well as the
-timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay) function.
+Se puede añadir un tiempo de espera a la conexión WebSocket pasando una función manejadora así como el valor del tiempo de espera (en milisegundos) a la función [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay).
 
 <CodeGroup labels={["Timeouts in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -137,11 +134,12 @@ export default function () {
 
 </CodeGroup>
 
-The timeout in the above code will close down the WebSocket connection after 2 seconds.
+El tiempo de espera en el código anterior cerrará la conexión WebSocket después de 2 segundos.
 
-## Multiple event handlers
+## Múltiples manejadores de eventos
 
-You can attach multiple handler functions to an event as the code below illustrates.
+
+Puede adjuntar múltiples funciones de control a un evento, como ilustra el código siguiente.
 
 <CodeGroup labels={["Multiple event handlers in WebSocket tests"]} lineNumbers={[true]}>
 

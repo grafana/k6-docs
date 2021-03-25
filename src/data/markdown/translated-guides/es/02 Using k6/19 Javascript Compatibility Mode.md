@@ -4,10 +4,9 @@ excerpt: ''
 hideFromSidebar: true
 ---
 
-As of v0.26, k6 supports running test scripts with different ECMAScript compatibility modes using the
-`run --compatibility-mode` CLI option or `K6_COMPATIBILITY_MODE` environment variable.
+k6 soporta la ejecución de scripts de prueba con diferentes modos de compatibilidad de ECMAScript utilizando la opción CLI run `--compatibility-mode` o la variable de entorno `K6_COMPATIBILITY_MODE`.
 
-Currently two modes are available:
+Actualmente hay dos modos disponibles:
 
 ## Base
 
@@ -23,18 +22,11 @@ $ K6_COMPATIBILITY_MODE=base k6 run script.js
 
 </CodeGroup>
 
-Pure Golang JavaScript VM supporting ES5.1+. Use this mode if your scripts are already written
-using only ES5.1 features, or were previously transformed by [Babel](https://babeljs.io/),
-to reduce startup time, RAM usage and improve performance. See the [k6-es6 project](https://github.com/k6io/k6-es6)
-for an example [Webpack](https://webpack.js.org/) setup that does this
-transformation outside of k6.
+VM JavaScript puro de Golang que soporta ES5.1+. Utilice este modo si sus scripts ya están escritos utilizando sólo las características de ES5.1, o fueron previamente transformados por Babel, para reducir el tiempo de inicio, el uso de RAM y mejorar el rendimiento. Consulte el [proyecto k6-es6](https://github.com/k6io/k6-es6) para ver un ejemplo de configuración de Webpack que realiza esta transformación fuera de k6.
 
-> ### ⚠️ Disclaimer
->
-> Your mileage may vary while running `--compatibility-mode=base` and also importing external dependencies. For instance,
-> `xml2js` and `cheerio` currently do not work, while `lodash` does.
 
-### Basic Example
+### Ejemplo básico
+
 
 <CodeGroup labels={[ "base-example.js" ]} lineNumbers={[true]}>
 
@@ -55,17 +47,11 @@ module.exports.default = function () {
 
 </CodeGroup>
 
-> ### ⚠️ About require()
->
-> Note that `require()` is a custom k6 implementation of module
-> loading, which doesn't behave in the same way as the
-> [require() call in Node.js](https://nodejs.org/api/modules.html#modules_require_id).
-> Specifically, it only handles loading of built-in k6 modules,
-> scripts on the local filesystem, and remote scripts over HTTP(S),
-> but it does _not_ support the
-> [Node.js module resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together).
+> ### ⚠️ Sobre require()
+> 
+> Tenga en cuenta que `require()` es una implementación personalizada de k6 para la carga de módulos, que no se comporta de la misma manera que la llamada require() en Node.js. Específicamente, sólo maneja la carga de módulos incorporados en k6, scripts en el sistema de archivos local, y scripts remotos a través de HTTP(S), pero no soporta el algoritmo de resolución de módulos de Node.js.
 
-### Advanced Example
+### Ejemplo avanzado
 
 <CodeGroup labels={[ "advanced-example.js" ]} lineNumbers={[true]}>
 
@@ -117,16 +103,11 @@ $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 
 </CodeGroup>
 
-Transforms scripts to ES5.1 using Babel with ES2015 preset, and loads
-[core.js](https://github.com/zloirock/core-js) v2 polyfills. This is
-the default mode, providing greater JavaScript compatibility, at the
-expense of startup time, RAM usage and performance.
+Transforma los scripts a ES5.1 utilizando Babel con el preajuste ES2015. Este es el modo por defecto, proporcionando una mayor compatibilidad con JavaScript, a expensas del tiempo de inicio, el uso de RAM y el rendimiento.
 
-## Performance Comparison
+## Comparación de rendimiento
 
-There's a substantial difference in performance between both modes, as shown by
-[GNU time](https://www.gnu.org/software/time/) below, especially when running tests with a large
-number of VUs:
+Hay una diferencia sustancial en el rendimiento entre ambos modos, como se muestra en el tiempo de GNU a continuación, especialmente cuando se ejecutan pruebas con un gran número de VUs:
 
 <CodeGroup labels={["Base Mode", "Extended Mode"]}>
 

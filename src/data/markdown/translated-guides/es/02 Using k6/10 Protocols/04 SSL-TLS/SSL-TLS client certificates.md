@@ -1,19 +1,15 @@
 ---
-title: 'SSL/TLS client certificates'
+title: 'Certificados del cliente SSL/TLS'
 excerpt: ''
 ---
 
-Usually, when we are talking about TLS certificates we are referring to the mechanism by which
-clients authenticate servers. The reverse, servers authenticating clients, is also supported by
-both TLS and k6.
+Normalmente, cuando hablamos de certificados TLS nos referimos al mecanismo por el que los clientes identifican a los servidores. Lo contrario, es decir, que los servidores identifiquen a los clientes, también es soportado tanto por TLS como por k6.
 
-To use client certificates you specify global [configuration options](/using-k6/options) that
-tell k6 how to map a public certificate and private key to the domains they are valid for. You can
-load the certificate and key from local files or embed them as strings in the script.
+Para utilizar los certificados de cliente se especifican las [opciones de configuración global](/using-k6/options) que indican a k6 cómo asignar un certificado público y una clave privada a los dominios para los que son válidos. Puedes cargar el certificado y la clave desde archivos locales o incrustarlos como cadenas en el script.
 
-## Loading a certificate and a key from local files
+## Cargar un certificado y una clave desde archivos locales
 
-To load a certificate and a key from local files you use the builtin `open(...)` function:
+Para cargar un certificado y una clave desde archivos locales se utiliza la función incorporada `open()`:
 
 <CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 
@@ -37,15 +33,13 @@ export default function () {
 
 </CodeGroup>
 
-## Loading certificate and key from embedded strings
+## Cargar el certificado y la clave de las cadenas incrustadas
 
-To load certificate and key from embedded strings (note the use of
-[template literals](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Template_literals)
-for multi-line strings):
+Para cargar el certificado y la clave a partir de cadenas incrustadas (tenga en cuenta el uso de [template literals](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Template_literals) para los strings de varias líneas):
 
-> ### ⚠️ Certificate and key used in the example
+> ### ⚠️ Certificado y clave utilizados en el ejemplo
 >
-> The partial certificate and key data in the above example were generated for this particular example, they're not real or in-use anywhere.
+> Los datos parciales del certificado y la clave en el ejemplo anterior fueron generados para este ejemplo en particular, no son reales ni están en uso en ningún lugar.
 
 <CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 

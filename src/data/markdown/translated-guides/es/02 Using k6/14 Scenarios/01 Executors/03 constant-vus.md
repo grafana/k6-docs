@@ -3,28 +3,27 @@ title: 'Constant VUs'
 excerpt: ''
 ---
 
-## Description
+## Descripción
 
-A fixed number of VUs execute as many iterations as possible for a specified amount
-of time. This executor is equivalent to the global `vus` and `duration` options.
 
-## Options
+Un número fijo de VUs que ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a las opciones globales `vus` y `duration`.
 
-In addition to the [common configuration options](/using-k6/scenarios#common-options) this executor
-also adds the following options:
+## Opciones
+
+Además de las opciones de configuración comunes, este ejecutor también añade las siguientes opciones:
 
 | Option      | Type    | Description                                         | Default |
 | ----------- | ------- | --------------------------------------------------- | ------- |
-| `duration*` | string  | Total scenario duration (excluding `gracefulStop`). | -       |
-| `vus`       | integer | Number of VUs to run concurrently.                  | `1`     |
+| `duration*` | string  | Duración total del escenario (excluyendo gracefulStop). | -       |
+| `vus`       | integer | Número de VUs que se ejecutan simultáneamente.      | `1`     |
 
-## When to use
+## Cuando usarlo
 
-Use this executor if you need a specific amount of VUs to run for a certain amount of time.
+Utilice este ejecutor si necesita que una cantidad específica de VUs se ejecuten durante un tiempo determinado.
 
-## Example
+## Ejemplo
 
-In this example, we'll run 10 VUs constantly for a duration 45 minutes.
+En este ejemplo, ejecutaremos 10 VUs constantemente durante una duración de 45 minutos.
 
 <CodeGroup labels={[ "constant-vus.js" ]} lineNumbers={[true]}>
 

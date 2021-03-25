@@ -3,66 +3,66 @@ title: 'Constructor de pruebas'
 excerpt: ''
 ---
 
-The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.
+El constructor de pruebas (Test Builder) permite utilizar una interfaz gráfica para crear una prueba.
 
-Based on your input, the test builder will automatically generate the k6 script for you. Once done, you can copy the script and [run the test from the CLI](/getting-started/running-k6).
+Basándose en los datos de entrada, el constructor de pruebas le generará automáticamente el script. Una vez hecho esto, puede copiar el script y [ejecutar la prueba desde la CLI (command line interface) ](/getting-started/running-k6).
 
-> **Note**: you need a [k6 Cloud](/cloud) account to use the test builder. However, it is **free to use**, and you do not need an active subscription to utilize this feature.
+> **Nota**: Es necesario tener una cuenta de k6 Cloud para utilizar el constructor de pruebas. Sin embargo, su uso es gratuito y por lo tanto no necesita una suscripción activa para utilizar esta función.
 
-Although we strongly believe that scriptable/code-based tools will help you get the most out of your performance testing efforts, a GUI-based tool like the test builder could benefit you in:
+Aunque creemos firmemente que las herramientas basadas en scripts o códigos le ayudarán a sacar el máximo provecho de sus esfuerzos en las pruebas de rendimiento, una herramienta basada en la interfaz gráfica de usuario como el constructor de pruebas podría beneficiar en:
 
-- Speeding up the test creation.
-- Learning quickly the [k6 API](/javascript-api).
-- Collaborating on building tests with non-coders.
+- Acelerar la creación de pruebas.
+- Aprender rápidamente sobre la [API de k6](/javascript-api).
+- Colaborar en la construcción de pruebas con otras personas que no codifican.
+
 
 ![k6 Test Builder](images/test-builder.png)
 
-## Instructions
+## Instrucciones
 
-1 - [Login](https://app.k6.io/account/login) into the k6 Cloud.
 
-2 - On the sidebar menu, click the [Create New Test](https://app.k6.io/tests/new) button.
+1 - [Inicie sesión](https://app.k6.io/account/login) en k6 Cloud.
 
-3 - Select `Test builder`.
+2 -  En el menú de la barra lateral, haga clic en la opción [Create New Test](https://app.k6.io/tests/new) button.
+
+3 - Seleccione `Test builder`.
 
 ![k6 Test Builder](images/k6-create-new-test.png)
 
-4 - Now, you can start building your k6 test using the graphical interface.
+4 - Ahora, puede empezar a construir su prueba con k6 utilizando la interfaz gráfica.
 
 ![k6 Test Builder](images/test-builder.png)
 
-## Test builder features
+## Características
 
-We are continuously improving and adding new capabilities to the test builder. A few of the most prominent features are:
+Continuamente mejoramos y añadimos nuevas características al generador de pruebas. Algunas de las características más destacadas son las siguientes:
 
-**Test configuration**
+**Configuración de pruebas**
+- Configurar el ramping(aka [stages](/using-k6/options#stages)) usando VUs y la duración.
+- Configurar las [zonas de carga](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones) para ejecutarlo desde k6 Cloud.
 
-- Configure ramping (aka [stages](/using-k6/options#stages)) using VUs and duration.
-- Configure [load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones) to run from the k6 Cloud.
 
-**HTTP Requests**
+**Solicitudes HTTP**
+- Añadir una solicitud y nombrarla para una mejor descripción.
+- Cambiar la URL/Endpoint.
+- Cambiar el método HTTP utilizando el menú desplegable.
+- Especificar las cabeceras.
+- Especificar los parámetros de consulta.
+- Especificar el body de la solicitud (JSON, texto o contenido del archivo) para las solicitudes POST/PUT/PATCH.
+- Reorganizar las peticiones haciendo clic y arrastrando.
+- Duplicar o eliminar solicitudes al pasar el mouse por encima de una solicitud específica.
 
-- Add a request and name it for better description.
-- Change the URL/Endpoint.
-- Change the `HTTP METHOD` using the drop down menu.
-- Specify Headers.
-- Specify Query Parameters.
-- Specify a request body (JSON, Text, or File Content) for POST/PUT/PATCH requests.
-- Reorganize requests by clicking and dragging.
-- Duplicate or delete requests when hovering over a specific request.
 
-**k6 API**
+**API de k6**
+- Define [thresholds](/using-k6/thresholds).
+- Añada [checks](/javascript-api/k6/check-val-sets-tags).
+- Añada [sleep](/javascript-api/k6/sleep-t).
+- Añada [group](/javascript-api/k6/group-name-fn).
 
-- Define the [thresholds](/using-k6/thresholds) of your test.
-- Add a [check](/javascript-api/k6/check-val-sets-tags) on a request response.
-- Add [sleep](/javascript-api/k6/sleep-t) time between requests.
-- Add a [group](/javascript-api/k6/group-name-fn) to the test.
-
-**And more**
-
-- Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
-- Populate the test builder with the requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
-- Capture a variable when dealing with dynamic data, such as authentication tokens.
-- Show examples for better onboarding.
-- Toggle the view mode to see or copy the generated k6 script.
-- Run the test on the k6 Cloud.
+**Algunas otras características**
+- Rellenar el constructor de pruebas con las peticiones grabadas utilizando el [grabador del navegador](/test-authoring/recording-a-session/browser-recorder).
+- Rellenar el constructor de pruebas con las peticiones incluidas en un [archivo HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
+- Capturar una variable cuando se trata de datos dinámicos, como los tokens de autenticación.
+- Mostrar ejemplos para un mejor entendimiento.
+- Cambiar el modo de visualización para ver o copiar el script de k6 generado.
+- Ejecute la prueba en k6 Cloud.

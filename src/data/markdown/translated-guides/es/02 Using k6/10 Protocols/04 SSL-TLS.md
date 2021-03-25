@@ -3,31 +3,23 @@ title: 'SSL/TLS'
 excerpt: ''
 ---
 
-Transport Layer Security (TLS), the successor of Secure Socket Layer (SSL), is the mechanism through
-which encrypted connections can be established between clients and servers on the web and through
-which data can flow with integrity intact.
+La Seguridad de la Capa de Transporte (TLS), sucesora de la Capa de Conexión Segura (SSL), es el mecanismo a través del cual se pueden establecer conexiones cifradas entre clientes y servidores en la web y a través del cual los datos pueden fluir con integridad intacta.
 
-Simplified, TLS is made possible by using a Public Key Infrastructure (PKI) involving private
-cryptographic keys, certificates of ownership (public, signed with private key) and certificate
-authorities (CAs, issuing and asserting the validity of issued certificates).
+Simplificado, TLS es posible gracias a la utilización de una Infraestructura de Clave Pública (PKI) que implica claves criptográficas privadas, certificados de propiedad (públicos, firmados con clave privada) y autoridades de certificación (CAs, que emiten y afirman la validez de los certificados emitidos).
 
-The entire system is dependent on the functioning operation of the CAs, that the cryptographic keys
-they use to sign certificates of ownership to site/domain owners are kept secret. It is also
-dependent on the site/domain owners' ability to keep their private cryptographic key secret.
+Todo el sistema depende del funcionamiento de las CA, de que las claves criptográficas que utilizan para firmar certificados de propiedad a los propietarios de sitios/dominios se mantengan en secreto. También depende de la capacidad de los propietarios de sitios/dominios para mantener en secreto su clave criptográfica privada.
 
-If they fail to do so, they have to report this to the CA that issued the certificate so that the
-CA can revoke it, and by doing so letting browsers and other clients know of the changes through
-the Online Certificate Status Protocol (OCSP).
+Si no lo hacen, tienen que informar de ello a la CA que emitió el certificado para que ésta pueda revocar y, al hacerlo, informar a los navegadores y otros clientes de los cambios a través del Protocolo de Estado de los Certificados en Línea (OCSP).
 
-## TLS in k6
 
-By default and without any special configuration k6 will connect and talk to servers over TLS -
-You just need to make sure that your request URLs are specified with the `https` scheme.
+## TLS en k6
 
-The following TLS functionality supported by k6 is worth talking about in more detail:
+Por defecto y sin ninguna configuración especial k6 se conectará y hablará con los servidores a través de TLS - Sólo tiene que asegurarse de que sus URLs de petición se especifican con el esquema https.
 
-- [TLS client certificates](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates)
-- [TLS version and ciphers](/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers) (restricting as
-  well as checking what was used for a HTTP request by checking response object properties)
-- [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp)
+Vale la pena hablar con más detalle de la siguiente funcionalidad TLS soportada por k6:
+
+
+- [Certificados del cliente SSL/TLS](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates)
+- [Versiones SSL/TLS y cifrados](/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers) (restricción y comprobación de lo que se ha utilizado para una solicitud HTTP mediante la comprobación de las propiedades del objeto de respuesta)
+- [Protocolo de estado de los certificados en línea (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp)
 - [Response.timings.tls_handshaking](/javascript-api/k6-http/response)
