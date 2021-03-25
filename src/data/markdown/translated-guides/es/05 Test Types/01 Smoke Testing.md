@@ -1,22 +1,19 @@
 ---
 title: "Smoke testing"
-head_title: 'What is Smoke Testing? How to create a Smoke Test in k6'
-excerpt: "Smoke test is a regular load test, configured for minimal load. You want to run a smoke test as a sanity check every time you write a new
-script or modify an existing script. Let’s see an example."
+excerpt: "La prueba de humo es una prueba de carga regular, configurada para una carga mínima."
 ---
 
-Smoke test is a regular load test, configured for minimal load.
-You want to run a smoke test as a sanity check every time you write a new script or modify an existing script.
+La smoke test (prueba de humo) es una prueba de carga regular, configurada para una carga mínima. Usted quiere ejecutar una prueba de humo como una comprobación de cordura cada vez que escribe un nuevo script o modifica un script existente.
 
-You want to run a smoke test to:
+Usted quiere ejecutar una prueba de humo para:
 
-1.  Verify that your test script doesn't have errors.
-2.  Verify that your system doesn't throw any errors when under minimal load.
+1. Verificar que su script de prueba no tenga errores.
+2. Verificar que su sistema no arroja ningún error cuando está bajo carga mínima.
 
-## Smoke testing in k6
 
-Here's a relatively simple smoke test script to get you started. You can copy it, change a few URLs and start testing in no time.
-If you would like to see more comprehensive script, check out our [example section](/examples).
+## Smoke testing en k6
+
+Aquí hay un script de prueba de humo relativamente simple para empezar. Puedes copiarlo, cambiar algunas URLs y empezar a hacer pruebas en poco tiempo. Si desea ver un script más completo, consulte nuestra sección de [ejemplos](/examples).
 
 <CodeGroup labels={["sample-smoke-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -62,13 +59,12 @@ export default () => {
 
 </CodeGroup>
 
-The VU chart of a smoke test should look similar to this. You want to use only 1 or 2 VUs.
+El gráfico de VU de una prueba de humo debe ser similar a esto. Es conveniente utilizar solo 1 o 2 VU.
 ![Smoke test VU chart](./images/smoke-test.png)
 
-If your smoke test produced any errors, you must either correct the script or fix your environment
-before you can continue.
+Si su prueba de humo produjo algún error, debe corregir el script o arreglar su entorno antes de poder continuar.
 
-The k6 output should look similar to this:
+La salida de k6 debe ser similar a esta:
 ![Smoke test Terminal Output](./images/smoke-test-terminal-output.png)
 
-Once your smoke test shows 0 errors, as on the screenshot above, you can go to the next step and execute a [load test](/test-types/load-testing) to assess the performance of your system.
+Una vez que su prueba de humo muestra 0 errores, como en la captura de pantalla anterior, puede ir al siguiente paso y ejecutar un [load test](/test-types/load-testing) para evaluar el rendimiento de su sistema.

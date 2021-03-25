@@ -1,46 +1,36 @@
 ---
 title: 'Soak testing'
-head_title: 'What is Soak Testing? How to create a Soak Test in k6'
-excerpt: 'A Soak Test is a type of Performance Test that tells you about the reliability and performance of your system over an extended period of time. Let’s see an example.'
+excerpt: 'El soak test descubre los problemas de rendimiento y fiabilidad derivados de un sistema sometido a presión durante un periodo prolongado.'
 ---
 
-While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
-[stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a long time.
+Mientras que las [pruebas de carga (load tests)](/test-types/load-testing) se centran principalmente en la evaluación del rendimiento, y las [pruebas de estrés (stress tests)](/test-types/stress-testing) en la estabilidad del sistema en condiciones extremas, las soak Tests (Pruebas de inmersión) se centran en la fiabilidad a largo plazo.
 
-The soak test uncovers performance and reliability issues stemming from a system being under
-pressure for an extended period.
+El soak test descubre los problemas de rendimiento y fiabilidad derivados de un sistema sometido a presión durante un periodo prolongado.
 
-Reliability issues typically relate to bugs, memory leaks, insufficient storage quotas,
-incorrect configuration or infrastructure failures. Performance issues typically relate to
-incorrect database tuning, memory leaks, resource leaks or a large amount of data.
+Los problemas de fiabilidad suelen estar relacionados con errores, fugas de memoria, cuotas de almacenamiento insuficientes, configuración incorrecta o fallos de infraestructura. Los problemas de rendimiento suelen estar relacionados con un ajuste incorrecto de la base de datos, fugas de memoria, fugas de recursos o una gran cantidad de datos.
 
-With soak test you can simulate days worth of traffic in only a few hours.
+Con el soak test se puede simular el tráfico de varios días en sólo unas horas.
 
-You typically run this test to:
+Normalmente se realiza esta prueba para:
 
-- Verify that your system doesn't suffer from bugs or memory leaks, which result in a crash or
-  restart after several hours of operation.
-- Verify that expected application restarts don't lose requests.
-- Find bugs related to race-conditions that appear sporadically.
-- Make sure your database doesn't exhaust the allotted storage space and stops.
-- Make sure your logs don't exhaust the allotted disk storage.
-- Make sure the external services you depend on don't stop working after a certain amount of
-  requests are executed.
+- Verificar que su sistema no sufre fallos o fugas de memoria, que provocan un fallo o un reinicio tras varias horas de funcionamiento.
+- Verificar que los reinicios esperados de la aplicación no pierden peticiones.
+- Encontrar errores relacionados con las condiciones de carrera que aparecen esporádicamente.
+- Asegúrese de que su base de datos no agota el espacio de almacenamiento asignado y se detiene.
+- Asegúrese de que sus registros no agotan el espacio de almacenamiento en disco asignado.
+- Asegúrese de que los servicios externos de los que depende no dejan de funcionar después de que se ejecute una determinada cantidad de peticiones.
 
-You may discover that the performance of your application was much better at the beginning of the
-test in comparison to the end. This typically happens if your database is not properly tuned.
-Adding indexes or assigning additional memory may help.
+Puede descubrir que el rendimiento de su aplicación era mucho mejor al principio de la prueba en comparación con el final. Esto suele ocurrir si su base de datos no está bien ajustada. Añadir índices o asignar memoria adicional puede ayudar.
 
-## Soak testing in k6
 
-We recommend you to configure your soak test at about 80% capacity of your system.
-If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
+## Soak testing en k6
 
-The duration of a soak test should be measured in hours. We recommend you to start with a 1 hour test,
-and once successful extend it to several hours.
-Some errors are related to time, and not to the total number of requests executed.
+Le recomendamos que configure su soak test a un 80% de la capacidad de su sistema. Si su sistema puede manejar un máximo de 500 usuarios simultáneos, debería configurar su soak test a 400 VUs.
 
-Here's a sample test configuration.
+La duración de un soak test debe medirse en horas. Le recomendamos que comience con una prueba de 1 hora y, una vez que tenga éxito, la amplíe a varias horas. Algunos errores están relacionados con el tiempo, y no con el número total de peticiones ejecutadas.
+
+He aquí un ejemplo de configuración de la prueba.
+
 
 <CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -72,39 +62,30 @@ export default function () {
 
 </CodeGroup>
 
-The VU chart of a Soak Test should look similar to this:
+El gráfico VU de un Soak Test debería tener un aspecto similar al siguiente:
 ![Soak Test Configuration](./images/soak-test.png)
 
 <Blockquote mod="warning">
 
-#### Make a cost estimate before starting a soak test
+#### Realice una estimación de costes antes de iniciar un soak test
 
-Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
+El soak test puede simular días o semanas de tráfico normal en unas pocas horas. Esto significa que sus costes de infraestructura y de proveedores pueden ser significativos.
 
-If you are testing a website, you should consider excluding your CDN from the test.
+Si está probando un sitio web, debería considerar excluir su CDN de la prueba.
 
-If your system makes use of external services, you may want to calculate the cost before you start the test.
+Si su sistema hace uso de servicios externos, es posible que quiera calcular el coste antes de comenzar la prueba.
 
 </Blockquote>
 
-## When to do soak testing?
+## Cuando hacer soak testing?
 
-Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.
+Estas pruebas le ayudan a descubrir los errores y problemas de fiabilidad que surgen durante un período prolongado. Muchos sistemas complejos tienen fallos de este tipo.
 
-You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.
+Deberías ejecutar estas pruebas después de que las pruebas de carga estándar hayan tenido éxito, y de que tu sistema se haya encontrado estable al ejecutar una prueba de estrés.
 
-Soak testing is the last major step on the road to building reliable systems.
+Soak Testing son el último gran paso en el camino hacia la construcción de sistemas fiables.
 
-## See also
 
-- [Running large tests](/testing-guides/running-large-tests)
+## Vea también
 
-<LdScript script='{
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [{
-"@type": "Question",
-"name": "When to do soak testing?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p><p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p><p>Soak testing is the last major step on the road to building reliable systems.</p>"}}]}' />
+- [Ejecución de pruebas a gran escala](/testing-guides/running-large-tests)

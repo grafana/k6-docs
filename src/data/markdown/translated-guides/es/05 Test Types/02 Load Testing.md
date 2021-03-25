@@ -1,40 +1,34 @@
 ---
 title: 'Load testing'
-head_title: 'What is Load Testing? How to create a Load Test in k6'
-excerpt: 'A Load Test is a type of Performance Test that is primarily concerned with assessing the performance of your system in terms of concurrent users or requests per second. Let’s see an example.'
+excerpt: 'Las pruebas de carga se ocupan principalmente de evaluar el rendimiento actual de su sistema en términos de usuarios concurrentes o solicitudes por segundo.'
 ---
 
-Load Testing is primarily concerned with assessing the current performance of your system in terms
-of concurrent users or requests per second.
+Las pruebas de carga (load test) se ocupan principalmente de evaluar el rendimiento actual de su sistema en términos de usuarios concurrentes o solicitudes por segundo.
+
+Cuando quiera entender si su sistema está cumpliendo los objetivos de rendimiento, este es el tipo de prueba que ejecutará.
+
 
 When you want to understand if your system is meeting the performance goals, this is the type of test you'll run.
 
-> #### What is Load Testing
+> #### Qué es la prueba de carga
 >
-> Load Testing is a type of Performance Testing used to
-> determine a system's behavior under both normal and peak conditions.
->
-> Load Testing is used to ensure that the application performs satisfactorily
-> when many users access it at the same time.
+> Las Pruebas de Carga son un tipo de Pruebas de Rendimiento utilizadas para determinar el comportamiento de un sistema tanto en condiciones normales como en condiciones de pico.
+> Las Pruebas de Carga se utilizan para asegurar que la aplicación funciona satisfactoriamente cuando muchos usuarios acceden a ella al mismo tiempo.
 
-You should run Load Test to:
 
-1.  Assess the current performance of your system under typical and peak load.
-2.  Make sure you are continuously meeting the performance standards as you make changes to your system (code and infrastructure).
+Debe ejecutar la prueba de carga para:
 
-You probably have some understanding about the amount of traffic your system is seeing on average and during peak hours.
-This information will be useful when deciding what your performance goals should be, in other words,
-how to configure the [performance thresholds](/using-k6/thresholds).
+1 - Evaluar el rendimiento actual de su sistema bajo carga típica y máxima.
+2 - Asegurarse de que cumple continuamente los estándares de rendimiento a medida que realiza cambios en su sistema (código e infraestructura).
 
-Let's say you're seeing around 60 concurrent users on average and 100 users during the peak hours of operation.
+Es probable que tenga algún conocimiento sobre la cantidad de tráfico que su sistema está viendo en promedio y durante las horas pico. Esta información será útil a la hora de decidir cuáles deben ser sus objetivos de rendimiento, es decir, cómo configurar [thresholds de rendimiento](/using-k6/thresholds).
 
-It's probably important to you to meet the performance goals both during normal hours and peak hours,
-therefore it's recommended to configure the load test with the high load in mind - 100 users in this case.
+Digamos que estás viendo alrededor de 60 usuarios concurrentes en promedio y 100 usuarios durante las horas pico de operación.
+Probablemente sea importante para usted cumplir los objetivos de rendimiento tanto en horas normales como en horas punta, por lo que se recomienda configurar la prueba de carga teniendo en cuenta la carga alta: 100 usuarios en este caso
 
-## Load Testing in k6
+## Prueba de carga en k6
 
-Note, this test has one simple threshold. The response time for 99% requests must be below 1.5 seconds.
-Thresholds are a way of ensuring that your system is meeting the performance goals you set for it.
+Tenga en cuenta que esta prueba tiene un Threshold simple. El tiempo de respuesta para el 99% de las peticiones debe ser inferior a 1,5 segundos. Thresholds son una forma de asegurar que su sistema está cumpliendo con los objetivos de rendimiento que usted estableció para él.
 
 <CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -83,30 +77,26 @@ export default () => {
 
 </CodeGroup>
 
-This is a rather simple script that authenticates the user, and retrieves list of objects.
-If you would like to see a more comprehensive test that makes use of groups, checks, thresholds,
-helper functions, see our [examples section](/examples).
+Este es un script bastante simple que autentifica al usuario, y recupera la lista de objetos. Si desea ver una prueba más completa que haga uso de groups, Checks, Thresholds y funciones de ayuda, consulte nuestra sección de ejemplos.
 
-The VU chart of a typical load test looks similar to this
+El gráfico VU de una prueba de carga típica es similar a esto:
+
 ![Load Test VU chart](./images/load-test.png)
 
-Note that the number of users starts at 0, and slowly ramps up to the nominal value, where it stays for an extended period of time.
-The ramp down stage is optional.
+Obsérvese que el número de usuarios comienza en 0, y sube lentamente hasta el valor nominal, donde se mantiene durante un largo periodo de tiempo. La etapa de rampa descendente es opcional.
 
-We recommend you to always include a ramp-up stage in all your Load Tests because:
+Le recomendamos que incluya siempre una etapa de rampa ascendente en todas sus pruebas de carga porque
+- permite un precalentamiento del sistema o que este se autoescale para manejar el tráfico.
+- le permite comparar el tiempo de respuesta entre las etapas de carga baja y carga nominal.
+- si ejecuta una prueba de carga utilizando el servicio de nube SaaS, permite que las alertas de rendimiento automatizadas comprendan mejor el comportamiento normal de su sistema.
 
-- it allows your system to warm up or auto scale to handle the traffic
-- it allows you to compare the response time between the low-load and nominal-load stages.
-- If you run a load test using the SaaS cloud service, it allows the automated performance alerts to
-  better understand the normal behaviour of your system.
 
-## Load Testing scenario - simulating a normal day
+## Escenario de la prueba de carga: simulación de un día normal
 
-You may also go one step further and configure the load test to resemble more closely your normal and peak conditions.
-In that case you could configure the load test to stay at 60 users for most of the day, and ramp-up
-to 100 users during the peak hours of operation, then ramp-down back to normal load.
 
-Make sure you don't go over your normal number of VUs - that's not load testing, it's [stress testing](/test-types/stress-testing).
+
+También puede ir un paso más allá y configurar la prueba de carga para que se asemeje más a sus condiciones normales y de pico. En ese caso, podría configurar la prueba de carga para que se mantenga en 60 usuarios durante la mayor parte del día, y que aumente a 100 usuarios durante las horas de mayor actividad, para luego disminuir a la carga normal.
+Asegúrese de no sobrepasar su número normal de VUs - eso no es una prueba de carga, es una [prueba de estrés (stress test)](/test-types/stress-testing).
 
 <CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
 
@@ -133,28 +123,21 @@ The VU chart for the above configuration should look like this:
 
 ![Load Test VU chart](./images/load-test-2.png)
 
-k6 is very flexible in simulating the ramp-up/ramp-down scenarios.
+k6 es muy flexible a la hora de simular los escenarios de subida/bajada.
 
-### Note about performance thresholds
+### Nota sobre thresholds
 
-Whenever you are load testing, you have some expectations in mind.
+Siempre que se realizan pruebas de carga, se tienen en cuenta algunas expectativas.
 
-Typical expectations are:
+Las expectativas típicas son:
+- El 99% de las peticiones deben terminar en 5 segundos.
+- El 95% de las solicitudes deben finalizar en 1 segundo.
+- El 99% de los usuarios debería poder iniciar sesión con éxito en el primer intento.
 
-- 99% of requests should finish within 5 seconds.
-- 95% of requests should finish within 1 second.
-- 99% users should be able to login successfully on the first try
+Thresholds son una forma de describir sus expectativas de manera formal, y evaluar automáticamente esas expectativas en cada prueba. Una vez configurados, verás una métrica de Pasa/Falla para cada Threshold, y sabrás inmediatamente si tu sistema cumple tus expectativas sin necesidad de analizar los resultados en detalle.
 
-Performance thresholds are a way to describe your expectations in a formal way, and automatically
-evaluate those expectations on each test run.
-Once you have configured the thresholds you'll see a Pass/Fail metric for each threshold,
-and you will know immediately if your system fulfills your expectations without analyzing the results in details.
-
-> #### Start small
+> #### Comience con algo pequeño
 >
-> If this is your first time running load tests, start small. Your application and infrastructure
-> might not be as rock solid as you think. We've had thousands of users run load tests that quickly
-> crashed their applications (or staging environments).
+> Si es la primera vez que ejecuta pruebas de carga, empiece con algo pequeño. Es posible que su aplicación e infraestructura no sean tan sólidas como cree. Hemos tenido miles de usuarios que han ejecutado pruebas de carga que rápidamente colapsaron sus aplicaciones (o entornos de ensayo).
 
-If your system crashes under a load test, it means that your load test has morphed into a [stress test](/test-types/stress-testing),
-which is the next type we're covering.
+Si su sistema se bloquea bajo una prueba de carga, significa que su prueba de carga se ha transformado en una [prueba de estrés (stress test)](/test-types/stress-testing), que es el siguiente tipo que vamos a tratar.
