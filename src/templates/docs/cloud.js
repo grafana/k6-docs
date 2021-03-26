@@ -191,13 +191,24 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        Export results to{' '}
+                        Integrate results with{' '}
                         <Link to={'/cloud/integrations/cloud-apm'}>
                           APM platforms
                         </Link>{' '}
                         and{' '}
+                        <Link to={'/cloud/integrations/grafana-plugin'}>
+                          Grafana
+                        </Link>
+                        .
+                      </Trait>
+                      <Trait>
+                        Export results to{' '}
                         <Link to={'/cloud/analyzing-results/result-export'}>
-                          CSV files
+                          CSV
+                        </Link>{' '}
+                        and generate{' '}
+                        <Link to={'/cloud/analyzing-results/result-export'}>
+                          PDF reports
                         </Link>
                         .
                       </Trait>

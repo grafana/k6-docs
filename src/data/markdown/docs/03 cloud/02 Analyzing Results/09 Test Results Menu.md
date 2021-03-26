@@ -7,9 +7,13 @@ The Test Results menu allows you to take some more actions on your specific test
 
 ![Test Results Menu](./images/08-Test-Results-Menu/test-results-menu.png)
 
+## Generate PDF summary
+
+The PDF report is an executive summary of the test result's most relevant metrics and performance data. Read more to this [documentation](/cloud/analyzing-results/result-export#generate-pdf-report)
+
 ## Export data
 
-Starts a data export. For more information on the structure of the export, please refer to this [documentation](/cloud/analyzing-results/result-export)
+Starts a data export. For more information on the structure of the export, please refer to this [documentation](/cloud/analyzing-results/result-export#export-as-csv)
 
 ## Share test results
 
