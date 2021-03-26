@@ -3,7 +3,7 @@ title: 'Soak testing'
 excerpt: 'El soak test descubre los problemas de rendimiento y fiabilidad derivados de un sistema sometido a presión durante un periodo prolongado.'
 ---
 
-Mientras que las [pruebas de carga (load tests)](/test-types/load-testing) se centran principalmente en la evaluación del rendimiento, y las [pruebas de estrés (stress tests)](/test-types/stress-testing) en la estabilidad del sistema en condiciones extremas, las soak Tests (Pruebas de inmersión) se centran en la fiabilidad a largo plazo.
+Mientras que las [pruebas de carga (load tests)](/test-types/load-testing) se centran principalmente en la evaluación del rendimiento, y las [pruebas de estrés (stress tests)](/test-types/stress-testing) en la estabilidad del sistema en condiciones extremas, las soak Tests (Pruebas de durabilidad) se centran en la fiabilidad a largo plazo.
 
 El soak test descubre los problemas de rendimiento y fiabilidad derivados de un sistema sometido a presión durante un periodo prolongado.
 

@@ -1,21 +1,22 @@
 ---
 title: 'New Relic'
-excerpt: 'The New Relic integration allows visualizing load test results and correlation with your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
+excerpt: 'La integración de k6 con New Relic permite visualizar los resultados de tests de pruebas de k6 en NewRelic y correlacionarlos con las otras métricas almacenadas en tu New Relic.'
 ---
 
-k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualized in dashboards and shared with others, used to compare load impact with system performance, and alert on metrics too.
+k6 puede enviar los datos de telemetría a [New Relic](https://newrelic.com/) a través de la integración de New Relic [StatsD](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Dentro de New Relic puede encontrar sus datos de rendimiento de k6 junto con los datos de sus usuarios reales y el rendimiento del lado del servidor. Estos datos pueden ser visualizados en los dashboards y ser compartidos con otros usuarios, además pueden ser utilizados para comparar el impacto de la carga con el rendimiento del sistema, y también alertar sobre las métricas.
 
-This guide covers running the New Relic integration:
+Esta guía cubre la ejecución de la integración de New Relic:
 
-- Run the New Relic StatsD integration
-- Run the k6 test
-- Visualize k6 telemetry in New Relic
+- Ejecutar la integración de New Relic StatsD
+- Ejecutar la prueba con k6
+- Visualizar la telemetría de k6 en New Relic
 
-## Run the New Relic StatsD integration
+## Ejecutar la integración de New Relic StatsD
 
-To get k6 metrics into New Relic, k6 sends metrics to the New Relic StatsD integration which will take care of collecting, aggregate, format and send the telemetry to the New Relic Telemetry Data Platform. You can run this with or without a New Relic agent.
+Para obtener las métricas de k6 en New Relic, k6 envía las métricas a la integración New Relic StatsD que se encargará de recopilar, agregar, formatear y enviar la telemetría a la plataforma de datos de telemetría de New Relic. Puede ejecutar esto con o sin un agente de New Relic.
 
-Run the New Relic integration as a Docker container with this command:
+Ejecute la integración de New Relic como un contenedor Docker con el siguiente comando:
+
 
 <CodeGroup labels={[""]}>
 
@@ -32,19 +33,19 @@ docker run \
 
 </CodeGroup>
 
-Replace `<NR-ACCOUNT-ID>` with your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.) and `<NR-INSERT-API-KEY>` with your [New Relic Insert API Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register).
+Reemplace `<NR-ACCOUNT-ID>` con su [ID de cuenta de New Relic](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.) y `<NR-INSERT-API-KEY>` con su [clave de API de New Relic Insert](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register).
 
-If your account is hosted in the New Relic EU region, then also add this to the above command: `-e NR_EU_REGION=true \`
+Si su cuenta está alojada en la región de la UE de New Relic, añada también esto al comando anterior: `-e NR_EU_REGION=true \`.
 
-### About the New Relic integration
+### Acerca de la integración de New Relic
 
-The New Relic StatsD integration installed above can run standalone. Installing a New Relic agent is optional.
+La integración de New Relic StatsD instalada anteriormente puede funcionar de forma independiente. La instalación de un agente de New Relic es opcional.
 
-Everything provided in the command above is enough to send k6 performance metrics to New Relic. You can optionally however [add further configuration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#configure), [further define metrics and their formats](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#metric-format) (you can however do this on the New Relic side configuration), [add custom tags](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#add-tags), and [create alerts](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#alerts). This is covered in the optional table below.
+Todo lo proporcionado en el comando anterior es suficiente para enviar las métricas de rendimiento de k6 a New Relic. Sin embargo, opcionalmente puede [añadir más configuración](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#configure), [definir más métricas y sus formatos](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#metric-format) (sin embargo, puede hacer esto en la configuración del lado de New Relic), [añadir etiquetas personalizadas](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#add-tags) y [crear alertas](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#alerts). Esto está cubierto en la tabla opcional de abajo.
 
-## Run the k6 test
+## Ejecutar la prueba con k6
 
-Once the integration is running, run the k6 test and send the metrics to the integration with:
+Una vez que la integración esté lista, ejecute la prueba con k6 y envíe las métricas a la integración con el siguiente comando:
 
 <CodeGroup labels={[""]}>
 
@@ -54,38 +55,40 @@ $ k6 run --out statsd script.js
 
 </CodeGroup>
 
-The _required_ environment variables used in the above command are:
+Las variables de entorno necesarias utilizadas en el comando anterior son:
 
-| Name            | Value                                                                                                                                                                                                                                                       |
+| Nombre            | Valor                                                                                                                                                                                                                                                       |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NR_ACCOUNT_ID` | The Account ID used in New Relic You can find your account ID [here](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.).                        |
-| `NR_API_KEY`    | The Insert API Key for your New Relic account to send k6 telemetry to the account ID specified above. You can generate an Insert API key [here](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register). |
+| `NR_ACCOUNT_ID` | El ID de la cuenta utilizado en New Relic. Puede encontrar su ID de la cuenta [aquí](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id#:~:text=If%20you%20have%20a%20single,account%20ID%20is%20displayed%20there.).                        |
+| `NR_API_KEY`    | La clave del API de su cuenta de New Relic para enviar la telemetría de k6 al ID de la cuenta especificado anteriormente. Puede generar una clave del API de inserción [aquí](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/introduction-event-api#register). |
 
-_Optional_ environment variables you can use:
+Variables de entorno opcionales que puede utilizar:
 
-| Name             | Value                                                                                                                                                                                                                                                                 |
+| Nombre             | Valor                                                                                                                                                                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `NR_EU_REGION`   | Setting this to `true` tells the integration your account is housed in the New Relic EU region.                                                                                                                                                                       |
-| `TAGS`           | Setting tags in key:value format separated by a space lets you further understand your data in New Relic. For example identifying different test runs or machines running the tests. In the docker command add: `-e TAGS="k6Test:myExampleTest someKey:someValue" \`. |
-| `NR_LOG_METRICS` | Setting this to `true` activates verbose logging for the integration.                                                                                                                                                                                                 |
+| `NR_EU_REGION`   | Si se establece como verdadero, se indica a la integración que su cuenta está alojada en la región de New Relic EU.       |
+| `TAGS`           | Establecer las etiquetas en el formato clave:valor separadas por un espacio le permite comprender mejor sus datos en New Relic. Por ejemplo, identificar diferentes ejecuciones de prueba o máquinas que ejecuten las pruebas. En el comando docker añada: -e TAGS="k6Test:myExampleTest someKey:someValue" \N-. |
+| `NR_LOG_METRICS` | Si se establece como verdadero, se activa el registro detallado de la integración.                                        |
 
-## Visualisation in New Relic
+## Visualización en New Relic
 
-As your k6 test is running, k6 is sending performance metrics to the New Relic StatsD integration which in turn is sending these metrics to the New Relic Telemetry Data Platform. These will be prefixed with `k6.` so you can identify them.
+A medida que su prueba de k6 se ejecuta, k6 envía métricas de rendimiento a la integración con New Relic StatsD, que a su vez envía estas métricas a la plataforma de datos de telemetría de New Relic. Éstas llevarán el prefijo `k6.` para que pueda identificarlas.
 
-![k6 metrics as seen in the New Relic data explorer](images/NewRelic/new-relic-data-explorer.png)
+![k6 métricas en New Relic data explorer](images/NewRelic/new-relic-data-explorer.png)
 
-You can visualize the metrics sent from this integration in the [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) in the top right of New Relic (_query your data_).
+Puedes visualizar las métricas enviadas desde esta integración en [data explorer](https://docs.newrelic.com/docs/insights/use-insights-ui/explore-data/metric-explorer-search-chart-metrics-sent-new-relic-agents) en la parte superior derecha de New Relic (consulta tus datos).
 
-![Sample New Relic k6 dashboard](images/NewRelic/new-relic-dashboard.png)
 
-You can also add these metrics to [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) and [alert on k6 metrics](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions).
+![Ejemplo New Relic k6 dashboard](images/NewRelic/new-relic-dashboard.png)
 
-### Example NRQL Queries
+También puede añadir estas métricas a los [dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-new-relic-one-dashboards) y [alertar](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-conditions/create-nrql-alert-conditions) sobre las métricas de k6.
 
-Here are some example NRQL queries you can easily copy and paste into widgets in a New Relic dashboard, you can however stick with the [chart builder](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder). Find all your k6 Metrics under the metrics tab, prefixed with `k6.`
+### Ejemplo de las consultas NRQL
 
-**Number of Virtual Users**
+A continuación se muestran algunos ejemplos de consultas NRQL que puedes copiar y pegar fácilmente en los widgets de un dashboard de New Relic, sin embargo, puedes seguir con el [constructor de gráficos](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder). Encuentre todas sus métricas de k6 en la pestaña de métricas, con el prefijo `k6.`.
+
+
+**Número de usuarios virtuales**
 
 <CodeGroup labels={["Number of Virtual Users"]}>
 
@@ -95,7 +98,7 @@ SELECT latest(k6.vus) FROM Metric TIMESERIES
 
 </CodeGroup>
 
-**90th Percentile Request Duration**
+**Percentil 90 -  Duración de la solicitud**
 
 <CodeGroup labels={[""]}>
 
@@ -105,7 +108,7 @@ SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE per
 
 </CodeGroup>
 
-**Max, Median, and Average Request Duration**
+**Duración máxima, mediana y media de las solicitudes**
 
 <CodeGroup labels={[""]}>
 
@@ -115,7 +118,7 @@ SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_
 
 </CodeGroup>
 
-**Rate of Requests**
+**Tasa de solicitudes**
 
 <CodeGroup labels={[""]}>
 
@@ -125,7 +128,7 @@ SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
 
 </CodeGroup>
 
-**Data Sent and Data Received**
+**Datos enviados y datos recibidos**
 
 <CodeGroup labels={[""]}>
 
@@ -135,7 +138,7 @@ SELECT sum(k6.data_received) as 'Data Received', max(k6.data_sent) AS 'Data Sent
 
 </CodeGroup>
 
-**Histogram bucketing Requests**
+**Histograma de solicitudes**
 
 <CodeGroup labels={[""]}>
 
@@ -145,7 +148,7 @@ SELECT histogram(`k6.http_reqs`, 80, 20) FROM Metric
 
 </CodeGroup>
 
-**Change in the number of Requests**
+**Cambio en el número de solicitudes**
 
 <CodeGroup labels={[""]}>
 
@@ -155,7 +158,7 @@ SELECT derivative(k6.http_reqs, 30 seconds) AS 'Rate /reqs' FROM Metric TIMESERI
 
 </CodeGroup>
 
-**Scrolling List of all k6 Performance Metrics**
+**Lista desplegable de todas las métricas de rendimiento de k6**
 
 <CodeGroup labels={[""]}>
 

@@ -3,7 +3,7 @@ title: 'CSV'
 excerpt: ''
 ---
 
-You can also make k6 output detailed statistics in a CSV format by using the `--out`/`-o` option for `k6 run`, like this:
+También puede hacer que k6 emita estadísticas detalladas en formato CSV utilizando la opción `--out/-o` con `k6 run`, de la siguiente manera:
 
 <CodeGroup labels={["CLI"]}>
 
@@ -13,7 +13,7 @@ $ k6 run --out csv=my_test_result.csv script.js
 
 </CodeGroup>
 
-Or if you want to get the result gzipped, like this:
+O si quieres obtener el resultado comprimido, puede ejecutar el siguiente comando:
 
 <CodeGroup labels={["CLI"]}>
 
@@ -23,9 +23,9 @@ $ k6 run --out csv=my_test_result.gz script.js
 
 </CodeGroup>
 
-## CSV format
+## Formato CSV
 
-The CSV result file will contain lines like these:
+El archivo de resultados CSV contendrá líneas como éstas:
 
 <CodeGroup labels={["Output"]}>
 
@@ -51,9 +51,9 @@ iterations,1595325561,1.000000,,,,,,,,default,,,,,
 
 </CodeGroup>
 
-Each entry in the report represents a metric `metric_name` along with its value `metric_value` at time `timestamp`. If there's an error, then the `error` along with the `error_code` fields will be populated.
+Cada entrada en el informe representa una métrica `metric_name` junto con su valor `metric_value` en el tiempo `timestamp`. Si hay un error, se rellenará el error junto con los campos `error_code`.
 
-## See also
+## Véase también
 
-- [Metrics](/using-k6/metrics)
-- [Error codes](https://k6.io/docs/javascript-api/error-codes)
+- [Métricas](/using-k6/metrics)
+- [Error codes](/javascript-api/error-codes)

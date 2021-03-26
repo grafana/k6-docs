@@ -3,7 +3,7 @@ title: 'JSON'
 excerpt: ''
 ---
 
-You can also make k6 output detailed statistics in JSON format by using the `--out/-o` option for `k6 run`, like this:
+También puede hacer que k6 emita estadísticas detalladas en formato JSON utilizando la opción `--out/-o` con `k6 run`:
 
 <CodeGroup labels={["CLI"]}>
 
@@ -13,9 +13,9 @@ $ k6 run --out json=my_test_result.json script.js
 
 </CodeGroup>
 
-## JSON format
+## Formato JSON
 
-The JSON file will contain lines like these:
+El archivo JSON contendrá líneas como las que se describen a continuación:
 
 <CodeGroup labels={["Output"]}>
 
@@ -28,35 +28,39 @@ The JSON file will contain lines like these:
 
 </CodeGroup>
 
-Each line will either contain information about a metric, or log a data point (sample) for a metric. Lines consist of three items:
+Cada línea contendrá información sobre una métrica o registrará una serie de datos (muestra) para una métrica. Las líneas constan de tres elementos:
 
-- `type` - can have the values [Metric](#metric) or [Point](#point) where `Metric` means the line is declaring a metric, and `Point` is an actual data point (sample) for a metric.
-- `data` - is a dictionary that contains lots of stuff, varying depending on the `"type"` above.
-- `metric` - the name of the metric.
+- type - puede tener los valores Metric o Point donde Metric significa que en la línea se está declarando una métrica, y Point es un punto de datos real (muestra) para una métrica.
+- data - es un diccionario que contiene una serie de elementos, que varían según el "type".
+- metric - el nombre de la métrica.
 
-### Metric
 
-This line contains information about the nature of a metric. Here, `"data"` will contain the following:
+### Métricas
 
-- `"type"` - the metric type ("gauge", "rate", "counter" or "trend")
-- `"contains"` - information on the type of data collected (can e.g. be "time" for timing metrics)
-- `"tainted"` - has this metric caused a threshold to fail?
-- `"threshold"` - are there any thresholds attached to this metric?
-- `"submetrics"` - any derived metrics created as a result of adding a threshold using tags.
+Esta línea contiene información sobre la naturaleza de una métrica. Aquí, "data" contendrá la siguiente información: 
+
+- "type" - el tipo de métrica: ("gauge", "rate", "counter" o "trend")
+- "contains" - información sobre el tipo de datos recogidos (puede ser, por ejemplo, "time" para las métricas de tiempo)
+- "tainted" - ¿ha hecho esta métrica que falle un umbral?
+- "threshold" - ¿Hay algún umbral asociado a esta métrica?
+- "submetrics" - cualquier métrica derivada, creada como resultado de la adición de un umbral mediante etiquetas.
+
 
 ### Point
 
-This line contains actual data samples. Here, `"data"` will contain these fields:
+Esta línea contiene muestras de datos reales. Aquí, "data" contendrá estos campos:
 
-- `"time"` - timestamp when the sample was collected
-- `"value"` - the actual data sample; time values are in milliseconds
-- `"tags"` - dictionary with tagname-tagvalue pairs that can be used when filtering results data
+- "time" - marca el tiempo de cuando se recogió la muestra
+- "value" - la muestra de datos real; los valores de tiempo están en milisegundos
+- "tags" - diccionario con pares de nombre de la etiqueta y valor de la etiqueta que pueden utilizarse al filtrar los datos de los resultados
 
-## Processing JSON output
 
-We recommend using [jq][jq_url] to process the k6 JSON output. [jq][jq_url] is a lightweight and flexible command-line JSON processor.
+## Procesando la salida JSON
 
-You can quickly create [filters][jq_filters_url] to return a particular metric of the JSON file:
+
+Recomendamos utilizar [jq][jq_url] para procesar la salida del JSON de k6. [jq][jq_url] es un procesador JSON de línea de comandos ligero y flexible.
+Puede crear rápidamente [filters][jq_filters_url] para devolver una métrica particular del archivo JSON:
+
 
 <CodeGroup labels={["Filters"]}>
 
@@ -66,7 +70,7 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 
 </CodeGroup>
 
-And calculate an aggregated value of any metric:
+Y calcular un valor agregado de cualquier métrica:
 
 <CodeGroup labels={["Average"]}>
 
@@ -92,19 +96,18 @@ $ jq '. | select(.type=="Point" and .metric == "http_req_duration" and .data.tag
 
 </CodeGroup>
 
-For more advanced cases, check out the [jq Manual][jq_manual_url]
+
+Para casos más avanzados, consulte el [Manual de jq][jq_manual_url]
 
 [jq_url]: https://stedolan.github.io/jq/ 'jq_url'
 [jq_filters_url]: https://stedolan.github.io/jq/manual/#Basicfilters 'jq_filters_url'
 [jq_manual_url]: https://stedolan.github.io/jq/manual/ 'jq_manual_url'
 
-## Summary export
+## Exportar los datos del resumen
 
 > _New in v0.26.0_
 
-The `--summary-export` option of the `k6 run` command can export the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
-
-This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
+Si no está interesado en cada una de las mediciones de las métricas individuales y, en cambio, desea ver sólo los datos agregados, exportar los datos del resumen de fin de la prueba a un archivo JSON puede ser una mejor opción que utilizar la salida JSON descrita en este documento. Para más detalles, consulte `--export-summary` y `handleSummary()` en la documentación del resumen de fin de la prueba.
 
 <CodeGroup labels={[ "stdout", "Other output"]}>
 
@@ -119,7 +122,7 @@ $ k6 run --summary-export=export.json --out datadog script.js
 
 </CodeGroup>
 
-The format of the summary is like:
+El formato del fichero sería de la siguiente forma:
 
 <CodeGroup labels={[ "export.json" ]} heightTogglers={[true]}>
 
@@ -242,6 +245,6 @@ The format of the summary is like:
 
 </CodeGroup>
 
-## See also
+## Véase también
 
-- [Metrics](/using-k6/metrics)
+- [Métricas](/using-k6/metrics)

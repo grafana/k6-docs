@@ -1,21 +1,23 @@
 ---
 title: 'Datadog'
-excerpt: 'The Datadog integration allows visualizing load test results and correlating performance testing metrics in Datadog.'
+excerpt: 'La integración de k6 con Datadog permite visualizar y correlacionar las métricas de pruebas de rendimiento con otras métricas monitorizadas en Datadog'
 ---
 
-k6 can send performance testing metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
+k6 puede enviar métricas de pruebas de rendimiento a [Datadog](https://www.datadoghq.com/). Esto permite visualizar y correlacionar las métricas de pruebas de rendimiento con otras métricas monitorizadas en Datadog.
 
-This article outlines the instructions of the Datadog integration:
+Este artículo describe las instrucciones de la integración con Datadog:
 
-- Run the Datadog Agent
-- Run the k6 test
-- Visualize in Datadog
+- Ejecutar el agente de Datadog
+- Ejecutar la prueba con k6
+- Visualizar en Datadog
 
-## Run the Datadog Agent
 
-To get k6 metrics into Datadog, k6 sends metrics through the Datadog Agent, which collects, aggregates, and forwards the metrics to the Datadog platform.
+## Ejecute el agente Datadog
 
-Run the Datadog Agent service as a Docker container with this command:
+Para obtener las métricas de k6 en Datadog, k6 envía las métricas a través del Datadog Agent, que recoge, agrega y reenvía las métricas a la plataforma Datadog.
+
+Ejecute el servicio Datadog Agent como un contenedor Docker con este comando:
+
 
 <CodeGroup labels={[""]}>
 
@@ -35,23 +37,24 @@ docker run -d \
 
 </CodeGroup>
 
-Replace `<YOUR_DATADOG_API_KEY>` with your [Datadog API key](https://app.datadoghq.com/account/settings#api).
-
-If your account is registered with Datadog EU, change the value of `DD_SITE` to `datadoghq.eu`.
+Reemplace `<YOUR_DATADOG_API_KEY>` con su [clave API de Datadog](https://app.datadoghq.com/account/settings#api).
+Si su cuenta está registrada en Datadog EU, cambie el valor de `DD_SITE` a `datadoghq.eu`.
 
 <blockquote>
-For additional information, read the <a href="https://docs.datadoghq.com/agent/docker/">Datadog Docker Agent documentation</a>.
+Para obtener información adicional, lea la <a href="https://docs.datadoghq.com/agent/docker/">documentación de Datadog Docker Agent</a>.
 </blockquote>
 
 ### DogStatsD
 
-The Datadog agent includes the [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd/) service to collect and aggregate metrics. DogStatsD implements the [StatsD](https://github.com/etsy/statsd) protocol with some extensions. For example, [DogStatsD tagging](https://docs.datadoghq.com/tagging/) allows to collect k6 metrics with tags to distinguish between requests for different URLs, response statuses, groups, etc.
+El agente Datadog incluye el servicio [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd/) para recoger y agregar métricas. DogStatsD implementa el protocolo [StatsD](https://github.com/etsy/statsd) con algunas extensiones. Por ejemplo, el [etiquetado de DogStatsD](https://docs.datadoghq.com/tagging/) permite recopilar métricas de k6 con etiquetas para distinguir entre solicitudes de diferentes URLs, estatus de la respuesta, grupos, etc.
 
-The instruction above runs the `DogStatsD` service in a [Docker container](https://docs.datadoghq.com/developers/dogstatsd/?tab=containeragent#agent), but it's also possible to run it either as [Host Agent](https://docs.datadoghq.com/developers/dogstatsd/?tab=hostagent#agent), [Kubernetes](https://docs.datadoghq.com/developers/dogstatsd/?tab=kubernetes#agent), and [Helm](https://docs.datadoghq.com/developers/dogstatsd/?tab=helm#agent).
+La instrucción anterior ejecuta el servicio `DogStatsD` en un [contenedor Docker](https://docs.datadoghq.com/developers/dogstatsd/?tab=containeragent#agent), pero también es posible ejecutarlo como [Host Agent](https://docs.datadoghq.com/developers/dogstatsd/?tab=hostagent#agent), [Kubernetes](https://docs.datadoghq.com/developers/dogstatsd/?tab=kubernetes#agent), and [Helm](https://docs.datadoghq.com/developers/dogstatsd/?tab=helm#agent).
 
-## Run the k6 test
 
-Once the Datadog Agent service is running, run the k6 test and send the metrics to the Agent with:
+## Ejecutar el test k6
+
+
+Una vez que el servicio de Datadog Agent está funcionando, ejecute la prueba con k6 y envíe las métricas al Agent con:
 
 <CodeGroup labels={[""]}>
 
@@ -61,38 +64,38 @@ $ k6 run --out datadog script.js
 
 </CodeGroup>
 
-The environment variables for the command are:
+Las variables de entorno para el comando son:
 
-| Name                       | Value                                                                                                                             |
+| Nombre                       | Valor                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `K6_DATADOG_ADDR`          | Address of the DogsStatsD service, currently only UDP is supported. The default value is `localhost:8125`.                        |
-| `K6_DATADOG_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6.`                                               |
-| `K6_DATADOG_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                                             |
-| `K6_DATADOG_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                                                       |
-| `K6_DATADOG_TAG_BLACKLIST` | This is a comma-separated list of tags that should NOT be sent to Datadog. For example, "tag1, tag2". The default value is empty. |
+| `K6_DATADOG_ADDR`          | Dirección del servicio DogsStatsD, actualmente sólo se admite UDP. El valor por defecto es `localhost:8125`.                        |
+| `K6_DATADOG_NAMESPACE`     | El espacio de nombres utilizado como prefijo para todos los nombres de las métricas. El valor por defecto es `k6.`                                               |
+| `K6_DATADOG_PUSH_INTERVAL` | Configure la frecuencia con la que se envían los lotes de datos. El valor por defecto es `1s`.                                                             |
+| `K6_DATADOG_BUFFER_SIZE`   | El tamaño del buffer. El valor por defecto es `20`.                                                                                       |
+| `K6_DATADOG_TAG_BLACKLIST` | Es una lista separada por comas de las etiquetas que NO deben enviarse a Datadog. Por ejemplo, "tag1, tag2". El valor por defecto es vacío. |
 
-## Visualize in Datadog
+## Visualización en Datadog
 
-While running the test, k6 sends metrics periodically to Datadog. By default, these metrics have `k6.` as the name prefix.
+Mientras se ejecuta la prueba, k6 envía métricas periódicamente a Datadog. Por defecto, estas métricas tienen el prefijo k6 como nombre.
 
-You can visualize k6 metrics in real-time with the [metrics explorer](https://docs.datadoghq.com/metrics/explorer/), [monitors](https://docs.datadoghq.com/monitors/), or [custom dashboards](https://docs.datadoghq.com/graphing/dashboards/).
+Puede visualizar las métricas de k6 en tiempo real con el [explorador de métricas](https://docs.datadoghq.com/metrics/explorer/), [monitores](https://docs.datadoghq.com/monitors/), o [dashboards personalizados](https://docs.datadoghq.com/graphing/dashboards/).
 
-![Datadog visualizing performance testing metrics](./images/DataDog/datadog-performance-testing-metrics.png)
+![Datadog visualizando métricas de rendimiento](./images/DataDog/datadog-performance-testing-metrics.png)
 
 <blockquote>
 
-To learn more about all the types of k6 metrics, read the [k6 Metrics guide](/using-k6/metrics)
+Para saber más sobre todos los tipos de métricas de k6, lea la guía de [métricas de k6](/using-k6/metrics).
 
 </blockquote>
 
-The first time Datadog detects the `k6.http_reqs` metric, the k6 integration tile is installed automatically, and the default k6 dashboard is added to your dashboard list.
+La primera vez que Datadog detecta la métrica `k6.http_reqs`, la integración de k6 se instala automáticamente, y el panel de control de k6 por defecto se añade a su lista de paneles.
 
-![k6 Datadog Dashboard](./images/DataDog/k6-datadog-dashboard.png)
+![Datadog Dashboard - k6 Pruebas de carga](./images/DataDog/k6-datadog-dashboard.png)
 
-Optionally, you can install the k6 integration tile following these instructions:
+Opcionalmente, puede instalar la integración de k6 siguiendo estas instrucciones:
 
-1. Log in to `Datadog`.
-2. From the sidebar menu, choose `Integrations` > `Integrations`.
-3. Search for `k6`, then select the `k6` integration.
-4. Click on the `Configuration` tab option.
-5. Scroll down and click on the `Install integration` button.
+1. Inicie sesión en `Datadog`.
+2. En el menú de la barra lateral, seleccione `Integrations` > `Integrations`.
+3. Busque `k6`, luego seleccione la integración con `k6`.
+4. Haga clic en la opción de la pestaña `Configuration`.
+5. Haga scroll hasta abajo y haga clic en el botón `Install integration`.

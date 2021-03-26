@@ -9,19 +9,19 @@ Es posible realizar muchos tipos de pruebas con k6, cada uno de los cuales son u
 
 Cada tipo de prueba está diseñado para proporcionarle diferentes conocimientos sobre su sistema.
 
-[Smoke Test (Prueba de humo)](/test-types/smoke-testing) verifica que su sistema puede manejar una carga mínima, sin ningún problema.
+[Smoke Test (Prueba de Humo)](/test-types/smoke-testing): verifica que su sistema puede manejar una carga mínima, sin ningún problema.
 
-[Load Test (Prueba de carga)](/test-types/load-testing)  se ocupa principalmente de evaluar el rendimiento de su sistema en términos de usuarios concurrentes o solicitudes por segundo.
+[Load Test (Prueba de Carga)](/test-types/load-testing): se ocupa principalmente de evaluar el rendimiento de su sistema en términos de usuarios concurrentes o solicitudes por segundo.
 
-[Stress Test (Pruebas de stress)](/test-types/stress-testing) y [Spike testing (Pruebas de Pico)](/test-types/stress-testing#spike-testing-in-k6) se ocupan de evaluar los límites de su sistema y la estabilidad en condiciones extremas.
+[Stress Test (Prueba de Estrés)](/test-types/stress-testing) y [Spike testing (Prueba de Pico)](/test-types/stress-testing#spike-testing-in-k6): se ocupan de evaluar los límites de su sistema y la estabilidad en condiciones extremas.
 
-[Soak Test (Pruebas de inmersión)](/test-types/soak-testing) le informa sobre la fiabilidad y el rendimiento de su sistema durante un periodo de tiempo prolongado.
+[Soak Test (Prueba de Resistencia)](/test-types/soak-testing): le informa sobre la fiabilidad y el rendimiento de su sistema durante un periodo de tiempo prolongado.
 
 Lo importante es entender que cada prueba se puede realizar con el mismo script de prueba. Puedes escribir un script y realizar todas las pruebas anteriores con él. Lo único que cambia es la configuración de la prueba, la lógica permanece igual.
 
 Los diferentes tipos de pruebas le enseñarán diferentes cosas sobre su sistema y le darán la información necesaria para entender y optimizar el rendimiento.
 
-Comience con [Smoke test](/test-types/smoke-testing) y vea lo fácil que es hacer su primera prueba de carga.
+Comience con [Smoke test (Prueba de Humo)](/test-types/smoke-testing) y vea lo fácil que es hacer su primera prueba de carga.
 
 
 <!--

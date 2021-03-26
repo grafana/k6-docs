@@ -3,17 +3,17 @@ title: 'InfluxDB + Grafana'
 excerpt: ''
 ---
 
-You can use [Grafana](https://grafana.com/grafana/) for visualization of your k6 metrics.
+Puedes utilizar [Grafana](https://grafana.com/grafana/) para visualizar las métricas de k6.
 
-The first step is to upload your test result metrics to a storage backend. And next, configure Grafana to fetch the data from your backend to visualize the test results.
+El primer paso es subir las métricas de los resultados de las pruebas a un backend de almacenamiento. Y a continuación, configurar Grafana para obtener los datos de su backend para visualizar los resultados de las pruebas.
 
-This tutorial shows how to upload the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
+Este tutorial muestra cómo subir las métricas de los resultados de las pruebas a una instancia de [InfluxDB](https://github.com/influxdata/influxdb) y configurar Grafana para consultar las [métricas de k6](/using-k6/metrics) desde InfluxDB.
 
 ![Grafana Visualization](./images/InfluxDB-Grafana/grafana-visualization.png)
 
-## Installing InfluxDB
+## Instalando InfluxDB
 
-Full installation instructions are available in [the InfluxDB docs](https://docs.influxdata.com/influxdb/v1.2/introduction/installation/).
+Las instrucciones completas de instalación están disponibles en los [documentación de InfluxDB](https://docs.influxdata.com/influxdb/v1.2/introduction/installation/).
 
 <CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
@@ -27,10 +27,9 @@ $ brew install influxdb
 
 </CodeGroup>
 
-## Run the test and upload the results to InfluxDB
+## Ejecutar la prueba y subir los resultados a InfluxDB
 
-k6 has built-in support for outputting results data directly to an InfluxDB database using
-the `--out` (`-o`) switch:
+k6 tiene soporte incorporado para la salida de datos de resultados directamente a una base de datos InfluxDB utilizando el interruptor `--out` (`-o`):
 
 <CodeGroup labels={["Linux & MacOS", "Docker"]}>
 
@@ -44,16 +43,14 @@ $ docker run -i loadimpact/k6 run --out influxdb=http://localhost:8086/myk6db - 
 
 </CodeGroup>
 
-The above command line makes k6 connect to a local influxdb instance, and send the results from
-the test to a database named `myk6db`. If this database does not exist, k6 will create it
-automatically.
+La línea de comando anterior hace que k6 se conecte a una instancia local de influxdb, y envíe los resultados de la prueba a una base de datos llamada `myk6db`. Si esta base de datos no existe, k6 la creará automáticamente.
 
-Once you have k6 results in your InfluxDB database, you can then use Grafana to
-create results visualizations.
+Una vez que tengas los resultados de k6 en tu base de datos InfluxDB, puedes usar Grafana para crear visualizaciones de resultados.
 
-## Install Grafana
+## Instalar Grafana
 
-Full installation instructions are available in [the Grafana docs](http://docs.grafana.org/installation/).
+
+Las instrucciones completas de instalación están disponibles en la [documentación de Grafana](http://docs.grafana.org/installation/).
 
 <CodeGroup labels={["Linux (Debian/Ubuntu)", "macOS"]}>
 
@@ -67,31 +64,28 @@ $ brew install grafana
 
 </CodeGroup>
 
-After the installation, you should have an InfluxDB server running on localhost, listening on port 8086,
-and a Grafana server on `http://localhost:3000`. Now, we show two different ways to visualize your k6 metrics:
+Después de la instalación, deberías tener un servidor InfluxDB corriendo en localhost, escuchando en el puerto 886, y un servidor Grafana en `http://localhost:3000`. Ahora, mostramos dos formas diferentes de visualizar tus métricas k6:
 
-- [Custom Grafana dashboard](#custom-grafana-dashboard)
+- Dashboards personalizados en Grafana
+- Dashboards preconfigurados en Grafana
 
-- [Preconfigured Grafana dashboards](#preconfigured-grafana-dashboards)
+## Dashboards personalizados en Grafana
 
-## Custom Grafana dashboard
-
-- Open `http://localhost:3000` (or wherever your Grafana installation is located) in your browser.
-- Create a data source:
+- Abra http://localhost:3000 (o donde se encuentre su instalación de Grafana) en su navegador.
+- `Create a data source`:
   ![Create Data Source](./images/InfluxDB-Grafana/grafana-create-data-source.png)
-- Now create a dashboard. Here is the newly created dashboard:
+- Ahora `Create a dashboard`. Aquí está el panel de control recién creado:
   ![Create Dashboard](./images/InfluxDB-Grafana/grafana-new-dashboard.png)
-- Click `Graph` to create a new graph panel:
+- Haga clic en `Graph` para crear un nuevo panel gráfico:
   ![Create Graph Panel](./images/InfluxDB-Grafana/grafana-new-graph-panel.png)
-- Click the `Panel title` and then `Edit` to set up the graph panel:
+- Haga clic en el título del Panel y luego en `Edit` para configurar el panel de gráficos:
   ![Edit Graph Panel](./images/InfluxDB-Grafana/grafana-configure-graph-panel.png)
-- Set the panel data source to your `myk6db` database and click the `SELECT mean(value)...`
-  statement to edit the metric:
+- Establezca la fuente de datos del panel en su base de datos `myk6db` y haga clic en la sentencia `SELECT mean(value)...` para editar la métrica:
   ![Edit metric](./images/InfluxDB-Grafana/grafana-edit-metric.png)
 
-## Preconfigured Grafana dashboards
+## Dashboards preconfigurados en Grafana
 
-Here we will list pre-made Grafana dashboard configurations contributed by users, for use with k6.
+Aquí vamos a listar las configuraciones de cuadros de mando de Grafana pre-hechos aportados por los usuarios, para su uso con k6.
 
 - [dcadwallader](https://grafana.com/grafana/dashboards/2587)
 - [Stian Øvrevåge](https://grafana.com/grafana/dashboards/4411)
@@ -99,20 +93,22 @@ Here we will list pre-made Grafana dashboard configurations contributed by users
 - [smockvavelsky](https://grafana.com/grafana/dashboards/10553)
 - [k m](https://grafana.com/grafana/dashboards/10660)
 
-To enable a contributed Grafana dashboard is simple: you just choose to "import" a dashboard in the Grafana UI and then specify the ID number of the dashboard you want, see [http://docs.grafana.org/reference/export_import](http://docs.grafana.org/reference/export_import) for more details.
+
+Habilitar un dashboard colaborativo de Grafana es sencillo: sólo tienes que elegir "import" un dashboard en la interfaz de usuario de Grafana y, a continuación, especificar el número de identificación del dashboard que deseas, puede consultar [http://docs.grafana.org/reference/export_import](http://docs.grafana.org/reference/export_import) para obtener más detalles.
+
 
 ![](./images/InfluxDB-Grafana/grafana-dave.png)
 
-### Using our docker-compose setup
+### Usando nuestra configuración de docker-compose
 
-To make all the above even simpler, we have created a docker-compose setup that will:
+Para hacer todo lo anterior aún más simple, hemos creado una configuración docker-compose que:
 
-- Start a Docker container with InfluxDB
-- Start a Docker container with Grafana
-- Make available a k6 container that you can use to run load tests
+- Iniciar un contenedor Docker con InfluxDB
+- Iniciar un contenedor Docker con Grafana
+- Poner a disposición un contenedor k6 que puede utilizar para ejecutar pruebas de carga
 
-Make sure you have at least docker-compose version v1.12.0 installed.
-You just need to do the following:
+Asegúrate de tener instalada al menos la versión v1.12.0 de docker-compose. Sólo tienes que hacer lo siguiente:
+
 
 ```bash
 $ git clone 'https://github.com/loadimpact/k6'
@@ -125,21 +121,21 @@ $ docker-compose run -v \
     k6 run /scripts/es6sample.js
 ```
 
-Now you should be able to connect to localhost on port 3000 with your browser and access the
-Grafana installation in the Docker container.
+Ahora deberías poder conectarte al localhost con el puerto 3000 usando tu navegador y acceder a la instalación de Grafana en el contenedor Docker.
 
-## InfluxDB options
+## Opciones de InfluxDB
 
-When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can configure other InfluxDB options passing these environment variables:
+Al subir los resultados de k6 a InfluxDB (`k6 run --out influxdb=`), puede configurar otras opciones de InfluxDB pasando estas variables de entorno:
 
-| InfluxDB Options             | Description                                                                                                                                                                                                                                                                                                                                                                                          | Default |
+| Opciones de InfluxDB             | Descripción
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `K6_INFLUXDB_USERNAME`       | InfluxDB username, optional                                                                                                                                                                                                                                                                                                                                                                          |         |
-| `K6_INFLUXDB_PASSWORD`       | InfluxDB user password                                                                                                                                                                                                                                                                                                                                                                               |         |
-| `K6_INFLUXDB_INSECURE`       | If `true`, it will skip https certificate verification                                                                                                                                                                                                                                                                                                                                               | `false` |
-| `K6_INFLUXDB_TAGS_AS_FIELDS` | A comma-separated string to set k6 metrics as non-indexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field integer. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int` |         |
+| `K6_INFLUXDB_USERNAME`       | Nombre de usuario de InfluxDB, opcional
+                                                                                                                                                                                                                                                                                                                                                                          |         |
+| `K6_INFLUXDB_PASSWORD`       | Contraseña del usuario de InfluxDB                                                                                                                                                                                                                                                                                                                                                                               |         |
+| `K6_INFLUXDB_INSECURE`       | Si es verdadero, omitirá la verificación del certificado https                                                                                                                                                                                                                                                                                                                                               | `false` |
+| `K6_INFLUXDB_TAGS_AS_FIELDS` |  Un string separado por comas para establecer las métricas de k6 como [campos no indexables](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (en lugar de etiquetas). Se puede especificar un tipo opcional usando `:type` como en `vu:int` que hará que el campo sea entero. Los tipos de campo posibles son `int`, `bool`, `float` y `string`, que es el predeterminado. Ejemplo: `vu:int,iter:int,url:string,event_time:int` |         |
 
-## See also
+## Véase también
 
 - [Tutorial about using k6 with InfluxDB and Grafana](https://k6.io/blog/k6-loves-grafana/)
 - [Comparison of k6 test result visualizations](https://k6.io/blog/comparison-of-k6-test-result-visualizations)
