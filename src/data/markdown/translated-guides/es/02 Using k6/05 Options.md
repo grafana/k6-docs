@@ -34,6 +34,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Especificar la duración mínima de cada ejecución                             |
 | [No Connection Reuse](#no-connection-reuse)               | Un booleano que especifica si k6 debe desactivar las conexiones keep-alive               |
 | [No Cookies Reset](#no-cookies-reset)                     | Esto desactiva el restablecimiento del tarro de galletas después de cada iteración de la VU                      |
+| [No Summary](#no-summary)                                 | Desactiva el [resumen de fin de test](/results-visualization/end-of-test-summary)                  |
 | [No Thresholds](#no-thresholds)                           | Desactiva la ejecución de Thresholds                                                        |
 | [No Usage Report](#no-usage-report)                       | Un booleano que especifica si k6 debe enviar un informe de uso                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | Un booleano que especifica si k6 debe reutilizar las conexiones TCP                        |
@@ -46,6 +47,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [Summary export](#summary-export)                         | Guarda el informe de resumen de fin de prueba en un archivo JSON                                |
 | [Supply Env Var](#supply-env-var)                         | Añadir/sustituir la variable de entorno con VAR=valor                                    |
 | [System Tags](#system-tags)                               | Especificar qué etiquetas del sistema estarán en las métricas recogidas                          |
+| [Summary Time Unit](#summary-time-unit)                   | Unidad de tiempo para todos los valores del [resumen del fin de test](/results-visualization/end-of-test-summary)                                                      |
 | [Summary Trend Stats](#summary-trend-stats)               | Definir las estadísticas de las métricas de tendencia                                                      |
 | [Tags](#tags)                                             | Especificar `tags` que deben establecerse en todas las métricas de la prueba
 
@@ -683,6 +685,22 @@ export let options = {
 
 </CodeGroup>
 
+### No Summary
+
+Desactiva el [end-of-test summary](/results-visualization/end-of-test-summary) generation. Desde v0.30.0, k6 incluye [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_SUMMARY`    | `--no-summary`    | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-summary ~/script.js
+```
+
+</CodeGroup>
+
 ### No Thresholds
 
 Desactiva la ejecución de Thresholds.
@@ -942,6 +960,25 @@ export let options = {
 
 </CodeGroup>
 
+### Summary Time Unit
+
+Define la unidad de tiempo en [ resumen de fin de tests](/results-visualization/end-of-test-summary). Lo valores posibles son `s` (segundos), `ms` (milisegundos) y `us` (microsegundos). Si no es especificado, k6 usará la unidad más apropiada para cada valor.
+
+| Env                    | CLI                   | Code / Config file  | Default |
+| ---------------------- | --------------------- | ------------------- | ------- |
+| `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`   | `null`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  summaryTimeUnit: 'ms',
+};
+```
+
+</CodeGroup>
+
 ### Summary Trend Stats
 
 Defina qué estadísticas de las métricas de tendencia (por ejemplo, tiempos de respuesta, duraciones de grupo/de iteración, etc.) se mostrarán en el resumen de fin de prueba. Los valores posibles incluyen avg (media), med (mediana), min, max, count (desde k6 v0.26.0), así como valores de percentil arbitrarios (por ejemplo, p(95), p(99), p(99.99), etc.).
@@ -1152,7 +1189,7 @@ export let options = {
 
 ### VUs Max
 
-> #### ⚠️ Keep in mind!
+> #### ⚠️ Ten en cuenta!
 >
 > Esta opción quedó obsoleta en la versión 0.27.0 de k6. Véase en su lugar los escenarios y el ejecutor controlado externamente.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Peticiones HTTP'
-excerpt: ''
+excerpt: 'Utilice el módulo http para realizar todo tipo de peticiones HTTP en sus pruebas de carga'
 ---
 
 ## Haciendo peticiones HTTP
@@ -66,8 +66,11 @@ k6 aplicará automáticamente [etiquetas (tags)](/using-k6/tags-and-groups#secti
 
 | Nombre   | Descripción                                |
 | ------ | ------------------------------------------ |
+| expected_response <sup>(≥ v0.31)</sup>  | Por defecto, cuando el valor de  `response.status` está entre 200 y 399, el valor es `true`. Cambia el compartamiento por defecto mediante [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
+| group   | Cuando una petición se ejecutan dentro de un [group](/javascript-api/k6/group-name-fn), el valor es el nombre del grupo. Por defecto está vacío.    |
 | name   | Por defecto será la URL solicitada                  |
 | method | Métodos de la solicitud (GET,POST,PUT, entre otros) |
+| scenario   | Cuando una petición se ejecutan dentro de un [scenario](/using-k6/scenarios), el valor es el nombre del grupo. Por defecto está vacío. |
 | status | Estatus de la respuesta                            |
 | url    | URL de la solicitud                  |
 
@@ -87,7 +90,7 @@ A continuación puede se ver cómo se registra un valor de la métrica HTTP (la 
       "group": "",
       "method": "GET",
       "name": "http://test.k6.io",
-      "scenario": "default",
+      "scenario": "",
       "status": "200",
       "url": "http://test.k6.io"
     }

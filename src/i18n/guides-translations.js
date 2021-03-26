@@ -94,7 +94,7 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.title': 'Resultados',
     'welcome.quickstart.results-output.text':
       'Aprende a aprovechar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
-    'welcome.what-is.title': '¿Qué es K6?',
+    'welcome.what-is.title': '¿Qué es k6?',
     'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga centrada en el desarrollador, gratuita y de código abierto, creada para hacer de las pruebas de rendimiento una experiencia productiva y agradable.`,
     'welcome.what-is.description2': `Con k6, podrá detectar problemas de rendimiento en una etapa temprana, lo que le permitirá crear sistemas resistentes y aplicaciones robustas.`,
     'welcome.features.title': 'Características principales',
@@ -136,7 +136,7 @@ export const localizedMessages = {
       'La experiencia de los desarrolladores es muy importante',
     'welcome.manifesto.bullet5':
       'Pruebas de carga en un entorno de pre-producción',
-    'welcome.k6-does-not.title': '¿Qué no hace K6?',
+    'welcome.k6-does-not.title': '¿Qué no hace k6?',
     'welcome.k6-does-not.description':
       'k6 es una herramienta de pruebas de carga de alto rendimiento, que se puede programar en JavaScript. El diseño de la arquitectura para tener estas capacidades trae algunas compensaciones:',
     'welcome.k6-does-not.browser.title': 'No se ejecuta en un navegador',

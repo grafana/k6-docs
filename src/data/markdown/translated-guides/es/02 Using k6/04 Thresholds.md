@@ -1,11 +1,11 @@
 ---
 title: 'Thresholds'
-excerpt: ''
+excerpt: 'Thresholds es una funcionalidad que permite definir las expectativas de rendimiento del sistema sometido a prueba. Thresholds establecen el criterio por el cual un test se considera correcto o un error.'
 ---
 
 ## ¿Qué es un Threshold?
 
-Thresholds son un criterio de aprobado/desaprobado que se utiliza para especificar las expectativas de rendimiento del sistema sometido a prueba.
+Thresholds es una funcionalidad que permite definir las expectativas de rendimiento del sistema sometido a prueba. Thresholds establecen el criterio por el cual un test se considera correcto o un error.
 
 Ejemplos de expectativas (Thresholds):
 
@@ -13,43 +13,51 @@ Ejemplos de expectativas (Thresholds):
 - El tiempo de respuesta para el 95% de las solicitudes debe ser inferior a 200ms.
 - El tiempo de respuesta para el 99% de las solicitudes debe ser inferior a 400 ms.
 - El punto final específico debe responder siempre antes de 300ms.
+- Cualquier condición en una [métrica personalizada](/using-k6/metrics#custom-metrics).
 
 Thresholds analizan las métricas de rendimiento y determinan el resultado final de la prueba (pasa/no pasa). Thresholds son esenciales para la [automatización de las pruebas de carga](/testing-guides/automated-performance-testing).
 
-A continuación se muestra un script de ejemplo que especifica dos thresholds, uno que utiliza una [métrica Rate](/javascript-api/k6-metrics/rate) y otro que utiliza una métrica estándar de `http_req_duration`.
+
+A continuación se muestra un script de ejemplo que especifica dos thresholds, un evaluando la tasa de errores de peticiones HTTP (`http_req_failed`) y una que usa el percentil del tiempo de reqspuesta de todas las peticiones ( `http_req_duration`).
 
 <CodeGroup labels={["threshold.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
-import { Rate } from 'k6/metrics';
-
-const myFailRate = new Rate('failed requests');
 
 export let options = {
   thresholds: {
-    'failed requests': ['rate<0.1'], // threshold on a custom metric
-    http_req_duration: ['p(95)<500'], // threshold on a standard metric
+    http_req_failed: ['rate<0.01'],   // http errors should be less than 1% 
+    http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
   },
 };
 
 export default function () {
-  let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  myFailRate.add(res.status !== 200);
+  http.get('https://test-api.k6.io/public/crocodiles/1/');
 }
 ```
 
 </CodeGroup>
 
-El threshold de peticiones fallidas, específica que queremos que nuestra prueba de carga se considere un fracaso (que resulte en que k6 salga con un código de salida distinto de cero) si el 10% o más de las peticiones resultan en que el servidor devuelva algo más que una respuesta 200. El threshold `http_req_duration` especifica que el 95% de las peticiones deben completarse en 500ms.
+Cuando se ejecute el test anterior, el resultado de k6 es similar a:
 
-En otras palabras, usted especifica el criterio de aprobación cuando define su threshold, y si esa expresión se evalúa como falsa al final de la prueba, toda la prueba se considerará como un fracaso.
+
+<CodeGroup labels={["threshold-output"]} lineNumbers={[false]}>
+
+```bash
+   ✓ http_req_duration..............: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
+       { expected_response:true }...: avg=151.06ms min=151.06ms med=151.06ms max=151.06ms p(90)=151.06ms p(95)=151.06ms
+   ✓ http_req_failed................: 0.00%  ✓ 0 ✗ 1
+```
+</CodeGroup>
+
+El threshold de peticiones fallidas, específica que queremos que nuestra prueba de carga se considere un fracaso (que resulte en que k6 salga con un código de salida distinto de cero) si el 10% o más de las peticiones resultan en error. El threshold `http_req_duration` especifica que el 95% de las peticiones deben completarse en 200ms.
 
 Al ejecutar ese script, k6 mostrará algo similar a esto:
 
 - En el caso anterior, se han cumplido los criterios de ambos thresholds. Se considera que toda la prueba de carga es un pass, lo que significa que k6 saldrá con el código de salida cero.
 
-- Si alguno de los thresholds ha fallado, la marca de verificación de color verde ✓ junto al nombre del threshold (`failed requests`, `http_req_duration`) se mostrara con una cruz de color rojo ✗ en su lugar, y k6 debera generar un código de salida distinto de cero.
+- Si alguno de los thresholds ha fallado, la marca de verificación de color verde <span style="color:green; font-weight:bold">✓</span> junto al nombre del threshold (`http_req_failed`, `http_req_duration`) se mostrara con una cruz de color rojo <span style="color:red; font-weight:bold">✗</span> en su lugar, y k6 debera generar un código de salida distinto de cero.
 
 ## Copiar y pegar ejemplos de Thresholds
 
@@ -70,6 +78,28 @@ export let options = {
 
 export default function () {
   let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  sleep(1);
+}
+```
+
+</CodeGroup>
+
+<CodeGroup labels={["threshold-error-rate.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export let options = {
+  thresholds: {
+    // During the whole test execution, the error rate must be lower than 1%.
+    // `http_req_failed` metric is available since v0.31.0
+    http_req_failed: ['rate<0.01'],
+  },
+};
+
+export default function () {
+  http.get('https://test-api.k6.io/public/crocodiles/1/');
   sleep(1);
 }
 ```
