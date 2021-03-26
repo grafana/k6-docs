@@ -9,8 +9,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Batch](#batch)                                           | Número máximo de conexiones simultáneas de una llamada http.batch()
-                     |
+| [Batch](#batch)                                           | Número máximo de conexiones simultáneas de una llamada http.batch() |
 | [Batch per host](#batch-per-host)                         | Número máximo de conexiones simultáneas de una llamada http.batch() para un host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist de rangos de IP para no ser llamados                                               |
 | [Block hostnames](#block-hostnames)                       | Bloquear cualquier petición a nombres de host específicos                                                   |
