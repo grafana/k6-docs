@@ -3,23 +3,19 @@ title: 'IntelliSense'
 excerpt: ''
 ---
 
-IntelliSense refers to code editing features like **intelligent code completion** and **quick access to documentation**. These features can significantly improve the developer experience and productivity when working on k6 scripts in your editor of choice.
+IntelliSense se refiere a las características de edición de código como la finalización inteligente de código y el acceso rápido a la documentación. Estas características pueden mejorar significativamente la experiencia del desarrollador y la productividad cuando se trabaja con scripts de k6 en su editor de elección. Las características más destacadas son las siguientes:
 
-k6 has its [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) that you can configure with your editor to unlock code editing features.
-
-## Visual Studio Code
-
-In Visual Studio Code, [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) can provide with:
-
-- Auto-completion of k6 functions, methods, and classes.
-- Auto imports of k6 modules.
-- Access to k6 documentation when writing and hovering code.
+- Autocompletado de funciones, métodos y clases de k6.
+- Importación automática de módulos k6.
+- Acceso a la documentación de k6 cuando se escribe y cuando deslizas el mouse por encima del código.
 
 ![](./images/intellisense-k6-demo.gif)
 
-### Setup
+## VS Code e IntelliJ
 
-A way to configure IntelliSense in VS Code to recognize the [k6 JavaScript API](/javascript-api) is to install the k6 Types with a package manager. For example:
+k6 tiene un [TypeScript Type Definition](https://www.npmjs.com/package/@types/k6) que puedes configurar con tu editor para desbloquear las funciones de edición de código.
+
+En Visual Studio Code e IntelliJ IDEA Ultimate, puedes configurar IntelliSense para que reconozca la API JavaScript de k6 instalando los tipos de k6 con un gestor de paquetes.
 
 ```bash
 # create a `package.json` file
@@ -29,7 +25,8 @@ $ npm init --yes
 $ npm install --save-dev @types/k6
 ```
 
-## See also
+## Véase también
 
 - [Visual Studio Code - k6 Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6)
+- [IntelliJ IDEA - k6 Plugin](https://plugins.jetbrains.com/plugin/16141-k6)
 - [TypeScript Editor Support](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support)

@@ -3,7 +3,7 @@ title: Glosario
 excerpt: |
 ---
 
-When discussing complex topics, it is usually a good idea to define a clear, shared terminology to ensure that we leave as little room as possible for misunderstandings. Below, you'll find a list of terms commonly used within the k6 project and what we mean when we use them.
+Cuando estamos presentando temas complejos, suele ser una buena idea definir una terminología clara y compartida para garantizar el menor espacio posible para los malentendidos. A continuación, encontrará una lista de términos de uso común en el proyecto k6.
 
 <Glossary>
 
@@ -42,139 +42,138 @@ When discussing complex topics, it is usually a good idea to define a clear, sha
 
 ### Correlation
 
-**Correlation** is a term used for describing the process of capturing dynamic data, received from the system under test, for reuse in subsequent requests. A common use case for correlation is retrieving and reusing a session id, or token, throughout the whole lifetime of a [virtual user](#virtual-user).
+La correlación es el proceso que captura los datos dinámicos, recibidos por sistema bajo prueba, para su reutilización en solicitudes posteriores. Un caso de uso común para la correlación es la recuperación y reutilización de un identificador de sesión, o token, durante toda la vida de un usuario virtual (VU).
 
 ### Dynamic Data
 
-**Dynamic data** is data that might, or will, change between test runs. Common examples are order ids, session tokens or timestamps.
+Los datos dinámicos son aquellos valores que pueden cambiar en las pruebas. Algunos ejemplos más comunes son los identificadores de pedidos, los tokens de sesión o timestamps.
 
 ### Endurance Testing
 
-**Endurance testing** is a synonym for [soak testing](#soak-test).
+Estas pruebas son un sinónimo de las pruebas de resistencia.
 
 ### Goja
 
-**Goja** is a JavaScript runtime, purely written in go, that emphasizes standard compliance and performance. We use goja to allow for test scripting without having to compromise speed, efficiency or reliability, which would have been the case using NodeJS. For more details, see the [Goja repository on GitHub](https://github.com/dop251/goja).
+Goja es el tiempo de ejecución de JavaScript, escrito exclusivamente en go, este hace énfasis en el cumplimiento de las normas y el rendimiento. Utilizamos Goja para permitir la creación de scripts de pruebas sin tener que comprometer la velocidad, la eficiencia o la fiabilidad, lo que habría sido el caso de utilizar NodeJS. Para más detalles, puede consultar el repositorio de Goja en GitHub.
 
 ### Horizontal Scalability
 
-**Horizontal Scalability** is a trait describing to what degree a system under test’s performance and capacity may be increased by adding more nodes (servers or computers for instance).
+Es un rasgo que describe hasta qué punto el rendimiento y la capacidad de un sistema bajo prueba pueden aumentarse añadiendo más nodos (ejemplo: servidores u ordenadores).
 
 ### HTTP Archive
 
-An **HTTP Archive**, or **HAR file**, is a file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/loadimpact/har-to-k6). For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).
+Un archivo HTTP, o archivo HAR, son archivos que contienen registros de las interacciones de un navegador con el sistema bajo prueba. Todas las transacciones incluidas se almacenan como texto con formato JSON. Estos archivos pueden utilizarse para generar scripts de prueba utilizando, por ejemplo, el convertidor har-to-k6. Para más detalles, puede consultar la especificación HAR 1.2.
 
 ### Iteration
 
-An iteration is an execution of the `default function`, or scenario `exec` function.
+Una iteración es una ejecución de la función por defecto (default function), o de la función escenario (exec).
+Puede calcular las iteraciones a través de todos los VU (como hace el ejecutor de iteraciones compartido), o por VU (como las iteraciones por VU).
 
-You can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)).
 
 ### k6 Cloud
 
-**k6 Cloud** is the common name for the entire cloud product, which is composed of both k6 Cloud Execution and k6 Cloud Test Results.
+k6 Cloud es el nombre común para todo el producto de la nube, que se compone tanto de la ejecución en la nube (k6 Cloud Execution) como de los resultados de la prueba en la nube (k6 Cloud Test Results).
 
 ### Load Test
 
-A **load test** is a type of test used to assess the performance of the system under test in terms of concurrent users or requests per second. See [Load Testing](/test-types/load-testing).
+Una prueba de carga es un tipo de prueba que se utiliza para evaluar el rendimiento del sistema bajo prueba en términos de usuarios concurrentes o peticiones por segundo.
 
 ### Metric
 
-A **metric** is a calculation that, using measurements, serves as an indicator of how the system under test performs under a given condition.
+Una métrica es un cálculo que, mediante mediciones, sirve como indicador del rendimiento del sistema bajo prueba en una condición determinada.
 
 ### Parameterization
 
-**Parameterization** refers to the process of building a test in such a way that the values used throughout the test might be changed without having to change the actual test script.
+La parametrización se refiere al proceso de construcción de una prueba de tal manera que los valores utilizados a lo largo de la prueba pueden ser cambiados sin tener que cambiar el script de prueba real.
 
 ### Performance Threshold
 
-A **performance threshold** describes the limits of what is considered acceptable values for a metric produced by a performance test. In many ways, this is similar to an [SLO](#service-level-objective), although a performance threshold only concerns itself with a single metric.
+Describe los límites de lo que se considera valores aceptables para una métrica producida por una prueba de rendimiento. En muchos sentidos, es similar a un SLO (Service-level Objective), aunque un umbral de rendimiento sólo se refiere a una única métrica.
 
 ### Reliability
 
-**Reliability** is a trait used to describe a system under test’s ability to produce reliable results consecutively, even under pressure.
+La fiabilidad es un rasgo utilizado para describir la capacidad de un sistema sometido a prueba para producir resultados fiables de forma consecutiva, incluso bajo presión.
 
 ### Requests per Second
 
-**Requests per Second**, or **RPS**, is the rate at which requests are executed against the system under test.
+Las peticiones por segundo, o RPS, es la velocidad en la que se ejecutan las solicitudes contra el sistema bajo prueba.
 
 ### Saturation
 
-**Saturation** is reached when the system under test is fully utilized and hence, unable to handle any additional requests.
+La saturación se alcanza cuando el sistema bajo prueba está totalmente utilizado y, por lo tanto, es incapaz de manejar cualquier solicitud adicional
 
 ### Scalability
 
-**Scalability** is a trait used to describe to what degree a system under test’s performance or capacity may be increased by adding additional resources. See [Vertical scalability](#vertical-scalability) and [Horizontal scalability](#horizontal-scalability).
+La escalabilidad es un rasgo que se utiliza para describir hasta qué punto el rendimiento o la capacidad de un sistema bajo prueba puede aumentarse añadiendo recursos adicionales. Véase: Escalabilidad vertical y Escalabilidad horizontal.
 
 ### Service-level Agreement
 
-A **service-level agreement**, or **SLA** is an agreement made between the one providing the service and someone, often a user of the service, promising that the availability of the service will meet a certain level during a certain period.
+Un acuerdo de nivel de servicio, o SLA (Service Level Agreement), es un acuerdo hecho entre el que proporciona el servicio y otro individuo, a menudo un usuario del servicio, prometiendo que la disponibilidad del servicio cumplirá un cierto nivel durante un período determinado.
 
-If the service provider fails to deliver on that promise, some kind of penalty is usually applied, like a partial or full refund, or monetary compensation.
+Si el proveedor del servicio no cumple esa promesa, se suele aplicar algún tipo de penalización, como un reembolso parcial o total, o una compensación monetaria.
 
 ### Service-level Indicator
 
-A **service-level indicator**, or **SLI** is the metric we use to measure whether a service meets the [service-level objective (SLO)](#service-level-objective). While doing performance monitoring this could, for instance, be the number of successful requests against the service during a specified period.
+Un indicador de nivel de servicio, o SLI, es la métrica que utilizamos para medir si un servicio cumple el objetivo de nivel de servicio (SLO). Cuando se hace un seguimiento del rendimiento, este podría ser, por ejemplo, el número de solicitudes exitosas contra el servicio durante un período determinado
 
 ### Service-level Objective
 
-A **service-level objective**, or **SLO** is an actual target, either internal or part of the [service-level agreement (SLA)](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's deemed stable.
+Un objetivo de nivel de servicio, o SLO, es un objetivo real, ya sea interno o parte del acuerdo de nivel de servicio (SLA), para la disponibilidad del servicio. Suele expresarse en forma de porcentaje (por ejemplo: 99,2%). Si el servicio cumple o supera este objetivo, se considera estable.
 
 ### Smoke test
 
-A **smoke test** is a type of test used to verify that the system under test can handle a minimal amount of load without any issues. It’s commonly used as a first step, to ensure that everything works as intended under optimal conditions, before advancing to any of the other performance test types. See [Smoke Testing](/test-types/smoke-testing).
+Una prueba de humo es un tipo de prueba que se utiliza para verificar que el sistema bajo prueba puede manejar una cantidad mínima de carga sin ningún problema. Se suele utilizar como primer paso, para garantizar que todo funciona como está previsto en condiciones óptimas, antes de pasar a hacer otros tipos de pruebas de rendimiento.
 
 ### Soak test
 
-A **soak test** is a type of test used to uncover performance and reliability issues stemming from a system being under pressure for an extended period. See [Soak Testing](/test-types/soak-testing).
+Es un tipo de prueba que se utiliza para descubrir problemas de rendimiento y fiabilidad derivados de que un sistema esté bajo presión durante un período prolongado.
 
 ### Stability
 
-**Stability** is a trait used to describe a system under test’s ability to withstand failures and erroneous behavior under normal usage.
+La estabilidad es un rasgo que se utiliza para describir la capacidad de un sistema sometido a prueba para soportar fallos y comportamientos erróneos en condiciones normales de uso.
 
 ### Stress test
 
-A **stress test** is a type of test used to identify the limits of what the system under test is capable of handling in terms of load. See [Stress Testing](/test-types/stress-testing).
+Una prueba de estrés es un tipo de prueba que se utiliza para identificar los límites de lo que el sistema bajo prueba es capaz de manejar en términos de carga. 
 
 ### System under test
 
-**System under test** refers to the actual piece of software that we're currently testing. This could be an API, a website, infrastructure, or any combination of these.
+El sistema bajo prueba se refiere a la pieza real de software que estamos probando. Puede tratarse de una API, sitio web,infraestructura o una combinación de ellos.
 
 ### Test Configuration
 
-The options object of a test script or configuration parameters passed via the CLI. See [Options](/using-k6/options).
+El objeto de opciones de un script de prueba o los parámetros de configuración pasados a través de la CLI.
 
 ### Test Run
 
-An individual execution of a test script. See [Running k6](/getting-started/running-k6).
+Una ejecución individual de un script de prueba. 
 
 ### Test Script
 
-A **test script** is the actual code you run as part of your test run, as well as any (or at least most) of the configuration needed to run the code. It defines how the test will behave as well as what requests will be made. See the [Single Request example](https://k6.io/docs/examples/single-request).
+Un script de prueba es el código real que se ejecuta como parte de la prueba, así como cualquier configuración necesaria para ejecutar el código. Define cómo se comportará la prueba y qué peticiones se harán.
 
 ### User Journey
 
-**User journey** is used to describe a sequence of actions taken by either a real or simulated user.
+Se utiliza para describir una secuencia de acciones realizadas por un usuario real o simulado.
 
 ### User Scenario
 
-**User Scenario** is a synonym for [user journey](#user-journey).
+El escenario del usuario es sinónimo de recorrido de usuario.
 
 ### Vertical Scalability
 
-**Vertical scalability** is a trait describing to what degree a system under test’s performance or capacity may be increased by adding more hardware resources to a node (RAM, cores, bandwidth, etc.).
+La escalabilidad vertical es un rasgo que describe hasta qué punto se puede aumentar el rendimiento o la capacidad de un sistema bajo prueba añadiendo más recursos de hardware a un nodo (RAM, núcleos, ancho de banda, etc.).
 
 ### Virtual Users
 
-**Virtual Users**, or **VUs** are used to perform separate and concurrent executions of your test script. They can make HTTP(s) and WebSocket requests against a webpage or API.
+Los usuarios virtuales, o VUs, se utilizan para realizar ejecuciones separadas y concurrentes de su script de prueba. Pueden realizar peticiones HTTP(s) y WebSocket contra una página web o API.
+Los VU, aunque emulados por el propio k6, pueden utilizarse para imitar el comportamiento de un usuario real.
 
-Virtual Users, although emulated by k6 itself, can be used to mimic the behavior of a real user.
+**Usuarios virtuales en el contexto de las aplicaciones web/sitios web**
 
-**Virtual Users in context of Web Apps/Websites**
+Los usuarios virtuales están diseñados para actuar y comportarse como lo harían los usuarios o navegadores reales. Es decir, son capaces de realizar múltiples conexiones de red en paralelo, al igual que lo haría un usuario real en un navegador. Cuando se utiliza una petición http.batch, las peticiones HTTP se envían en paralelo. Para más información, consulte el artículo sobre las pruebas de carga de los sitios web.
 
-Virtual Users are designed to act and behave like real users/browsers would. That is, they are capable of making multiple network connections in parallel, just like a real user in a browser would. When using a [http.batch](/using-k6/options#batch) request, HTTP requests are sent in parallel. For further information, refer to the article about [load testing websites](/testing-guides/load-testing-websites).
-
-<CodeGroup labels={["Formula for calculating the number of VUs needed"]}>
+<CodeGroup labels={["Calcular el número de VU con Google Analytics"]}>
 
 ```plain
 VUs = (hourly sessions * average session duration in seconds)/3600
@@ -182,8 +181,8 @@ VUs = (hourly sessions * average session duration in seconds)/3600
 
 </CodeGroup>
 
-Read more about using this formula in the [tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
+Lea más sobre el uso de esta fórmula en el [tutorial para calcular el número de VU con Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
 
-**Virtual Users in context of APIs**
+**Para obtener más información sobre las pruebas de las API, consulte nuestro artículo**
 
-When testing individual API endpoints, you can take advantage of each VU making multiple requests each to produce requests per second(rps) a factor higher than your VU count. e.g. Your test may be stable with each VU making 10 rps each. If you wanted to reach 1000 RPS, you may only need 100 VUs in that case. For more information on testing APIs, please refer to our article [API Load Testing](/testing-guides/api-load-testing).
+Cuando realice las pruebas a  las API individuales, puede aprovechar que cada VU hace varias peticiones cada una para producir peticiones por segundo (rps) un factor superior a su recuento de VU. Por ejemplo, su prueba puede ser estable con cada VU haciendo 10 rps cada una. Si quieres alcanzar 1000 RPS, puede que sólo necesites 100 VUs en ese caso.

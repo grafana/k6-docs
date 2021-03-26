@@ -1,23 +1,25 @@
 ---
-title: 'Colección de uso'
+title: 'Recopilación de datos de uso'
 excerpt: ''
 ---
 
-By default, k6 sends a usage report each time it is run, so that we can track how often people use it. This report can be turned off by setting the environment variable `K6_NO_USAGE_REPORT` or by adding the option `--no-usage-report` when executing k6.
 
-The usage report does not contain any information about what you are testing. The contents are the following:
+Por defecto, k6 envía un reporte de uso cada vez que se ejecuta una prueba, para que podamos hacer un seguimiento de la frecuencia de uso. Este informe puede desactivarse estableciendo la variable de entorno `K6_NO_USAGE_REPORT` o añadiendo la opción `--no-usage-report` al ejecutar k6.
 
-- The k6 version (string, e.g. "0.17.2")
-- Max VUs configured (number)
-- Test duration (number)
-- Total stages duration (number)
-- VU iterations configured (number)
-- The running program's operating system target (`darwin`, `freebsd`, `linux`...)
-- The running program's architecture target (386, amd64, arm, s390x...)
+El reporte de uso no contiene ninguna información sobre lo que se está probando. Solamente contiene la siguiente información:
 
-This info is sent to an HTTP server that collects statistics on k6 usage.
+- La versión de k6 (string, por ejemplo, "0.17.2")
+- Cantidad de VUs máximos configurados (número)
+- Duración de la prueba (número)
+- Duración total de los escenarios (número)
+- Iteraciones de los VU configurados (número)
+- El sistema operativo del programa en ejecución (darwin, freebsd, linux...)
+- La arquitectura del programa en ejecución (386, amd64, arm, s390x...)
 
-For those interested, here is the actual Go [code](https://github.com/loadimpact/k6/blob/master/cmd/run.go) that generates and sends the usage report:
+Esta información se envía a un servidor HTTP que recoge estadísticas sobre el uso de k6.
+
+Para los que estén interesados en esto, aquí dejamos plasmado el [código Go](https://github.com/loadimpact/k6/blob/master/cmd/run.go) que genera y envía el reporte de uso:
+
 
 <CodeGroup labels={["snippet from run.go"]} lineNumbers={[true]}>
 
