@@ -125,8 +125,8 @@ export const localizedMessages = {
       'automatización de pruebas de rendimiento',
     'welcome.use-cases.performance-monitoring.description2':
       'Puedes ejecutar pruebas con una pequeña cantidad de carga para supervisar continuamente el rendimiento de su entorno de producción.',
-    'welcome.manifesto.title': 'Manifiesto de pruebas de carga',
-    'welcome.manifesto.description': `Nuestro manifiesto de pruebas de carga es el resultado de muchos años de arduo trabajo, haciendo pruebas de rendimiento y de carga. Lo hemos creado para ser usado como una guía, ayudándole a conseguir su prueba de rendimiento en el camino correcto.`,
+    'welcome.manifesto.title': 'Manifiesto',
+    'welcome.manifesto.description': `Nuestro manifiesto es el resultado de muchos años de trabajo haciendo pruebas de rendimiento y de carga. Lo hemos creado para ser usado como una guía de cómo hacer pruebas de rendimiento.`,
     'welcome.manifesto.bullet1': 'Una prueba sencilla es mejor que no hacerla',
     'welcome.manifesto.bullet2':
       'Las pruebas de carga deben estar orientadas a los objetivos',
