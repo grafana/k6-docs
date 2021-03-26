@@ -1,81 +1,79 @@
 ---
-title: 'Load testing websites'
-head_title: 'How to Load Test a Website: The k6 Guide'
-excerpt: 'Do you know how many users your site can handle? This guide answers the WHY and WHEN you should load test your website and gives you the best practices for load testing websites or web apps with k6. Let’s get started.'
+title: 'Pruebas de carga a sitios web'
+excerpt: 'Esta guía proporciona orientación y recomendaciones para empezar, crear escenarios de usuario y evitar los errores más comunes para probar la carga de un sitio web.'
 ---
 
-Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle appropriately.
+Una mala experiencia de usuario repercute en el negocio. Esta es la razón por la que usted podría querer saber cuántos usuarios concurrentes puede manejar su sitio web apropiadamente.
 
-Load testing helps you simulate those users to asses your system performance and know if your website or web app meets your goals.
+Las pruebas de carga le ayudan a simular esos usuarios para evaluar el rendimiento de su sistema y saber si su sitio o aplicación web cumple con sus objetivos.
 
-This guide provides guidance and recommendations to get started, creating user scenarios, and avoiding common pitfalls to load test a website.
+Esta guía proporciona orientación y recomendaciones para empezar, crear escenarios de usuario y evitar los errores más comunes para probar la carga de un sitio web.
 
-## Factors that affect website performance
+## Factores que afectan al rendimiento del sitio web
 
-On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
+En un sitio web, el rendimiento es una parte crucial de la experiencia de usuario. A menudo se mide por el tiempo de respuesta para visualizar o interactuar con alguna información. Los dos principales factores que afectan el tiempo de respuesta de la experiencia del usuario son:
 
 - Frontend
 - Backend
 
-Frontend performance focuses on browser metrics like rendering time, interactive time, loading time, among others.
+El rendimiento del frontend se centra en las métricas del navegador como el tiempo de renderizado, el tiempo interactivo, el tiempo de carga, entre otros.
 
-Backend performance, on the other hand, focuses mostly on the server response time and the amount of returned errors.
+El rendimiento del backend, por otro lado, se centra principalmente en el tiempo de respuesta del servidor y la cantidad de errores devueltos.
 
-Which one is more important? It depends! In general terms, the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states:
+¿Cuál es más importante? Depende. En términos generales, la [regla de oro del rendimiento](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) plantea lo siguiente:
 
-> 80-90% of the end-user response time is spent on the frontend.
+> Entre el 80 y el 90% del tiempo de respuesta del usuario final se emplea en el frontend.
 
-But this is not necessarily accurate.
+Pero esto no es necesariamente exacto.
 
-With an increasing amount of visits to your website, the frontend response time remains roughly the same. Still, when your system struggles with the increased concurrency, the **backend time might grow exponentially with the rise of concurrent users**.
+Con una cantidad creciente de visitas a su sitio web, el tiempo de respuesta del frontend se mantiene más o menos igual. Sin embargo, cuando su sistema se enfrenta al aumento de la concurrencia, el **tiempo del backend puede crecer exponencialmente con el aumento de usuarios concurrentes**.
 
-The following chart illustrates this situation:
+El siguiente gráfico ilustra esta situación:
 
-![Frontend time vs Backend time with increasing amount of website visitors](./images/Frontend-Backend-LoadTesting.png)
+![Frontend tiempo vs Backend tiempo cuando crece el número de visitantes](./images/Frontend-Backend-LoadTesting.png)
 
-## When to load test a website?
+## ¿Cuándo hay que probar la carga de un sitio web?
 
-In short, whenever you are concerned about the **availability and scalability of your website**.
+En resumen, siempre que le sea preocupante la **disponibilidad y la escalabilidad de su sitio web**.
 
-If you have a very low number of users, backend performance won't likely be an issue. Spend your time optimizing the frontend.
+Si tiene un número muy bajo de usuarios, el rendimiento del backend no será probablemente un problema. Puedes dedicar tu tiempo a optimizar el frontend.
 
-But as the number of users grows, you should start spending more time improving and testing the performance of your backend. In the [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/), Steve Souders pointed out that:
+Pero a medida que el número de usuarios crece, deberías empezar a dedicar más tiempo a mejorar y probar el rendimiento de tu backend. En la [regla de oro del rendimiento](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/), Steve Souders señaló que:
 
-> If you’re worried about availability and scalability, focus on the backend.
+> Si te preocupa la disponibilidad y la escalabilidad, céntrate en el backend.
 
-### Browser metrics and load testing
+### Métricas del navegador y pruebas de carga
 
-When testing how your system behaves with some concurrent users, browser metrics are, in most cases, less useful.
+Cuando se prueba cómo se comporta el sistema con algunos usuarios concurrentes, las métricas del navegador son, en la mayoría de los casos, menos útiles.
 
-Because each browser runs independently, the number of concurrent users in a load test will not affect browser metrics like rendering time.
+Dado que cada navegador se ejecuta de forma independiente, el número de usuarios concurrentes en una prueba de carga no afectará a las métricas del navegador, como el tiempo de renderizado.
 
-## Load testing a website
+## Prueba de carga a un sitio web
 
-A load test focuses on testing the **performance of the requests to your backend**. The two most fundamental aspects to analyze are the **server response time** and the number of **returned errors**.
+Una prueba de carga se centra en comprobar **el rendimiento de las peticiones a su backend**. Los dos aspectos fundamentales a analizar son el **tiempo de respuesta** del servidor y el **número de errores**.
 
-For example, a load test simulating hundreds of concurrent users could validate that:
+Por ejemplo, una prueba de carga que simule cientos de usuarios concurrentes podría validar que:
 
-- Your server doesn't respond with errors.
-- The response time for 95% of your users should be below 400ms.
-- The response time of your images must always be below 600ms.
+- El servidor no responde con errores.
+- El tiempo de respuesta para el 95% de sus usuarios debe ser inferior a 400ms.
+- El tiempo de respuesta de sus imágenes debe ser siempre inferior a 600ms.
 
-Below, some common recommendations that you could consider when load testing a website:
+A continuación, algunas recomendaciones comunes que podría tener en cuenta a la hora de probar la carga de un sitio web:
 
-### Decide what to test first
+### Decida qué probar primero
 
-We recommend you to consider performance testing an iterative and continuous process.
+Le recomendamos que considere las pruebas de rendimiento como un proceso iterativo y continuo.
 
-You start small by testing, evaluating, and iterating frequently.
+Se empieza por la parte más pequeña, probando, evaluando e iterando con frecuencia.
 
-> Start small and simple, make sure you get something out of the testing first, then expand the test suite and add more complexity until you feel that you’ve reached the point where more effort spent on realism will not give enough return on your invested time.
->
-> [Simple testing is better than no testing](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
+> Comience con algo pequeño y sencillo, asegúrese de obtener algún resultado de las pruebas primero, luego amplíe el conjunto de pruebas y añade más complejidad hasta que sienta que ha llegado al punto en el que un mayor esfuerzo invertido en realidad no dará suficiente rendimiento a su tiempo invertido.
+> [Las pruebas sencillas son mejores que la ausencia de pruebas](https://k6.io/our-beliefs#simple-testing-is-better-than-no-testing)
 
-The first thing is to decide what to load test. On the one hand, you could test your **critical services**, the most valuable to your business, and have the most significant risks. On the other hand, test the most **frequent user journeys**.
+Lo primero es decidir qué pruebas de carga realizar. Por un lado, podrías probar tus servicios críticos, los más valiosos para tu negocio, y que tienen los riesgos más importantes. Por otro lado, probar los recorridos más frecuentes de los usuarios.
 
-With this information, it’s time to analyze the frequency of usage, business value, performance risks, and any other critical performance aspect of your organization to help you deciding what to load test first.
+Con esta información, es el momento de analizar la frecuencia de uso, el valor del negocio, los riesgos de rendimiento y cualquier otro aspecto crítico de rendimiento de su organización para ayudarle a decidir qué probar primero.
 
-Next, you should decide what [types of load tests](/test-types/introduction) to run. Check out the following articles to learn more:
+A continuación, debe decidir qué tipos de pruebas de carga ejecutar. Consulte los siguientes artículos para obtener más información:
 
 - [Smoke test](/test-types/smoke-testing)
 - [Load test](/test-types/load-testing)
@@ -83,55 +81,55 @@ Next, you should decide what [types of load tests](/test-types/introduction) to 
 - [Spike test](/test-types/stress-testing#spike-testing)
 - [Soak test](/test-types/soak-testing)
 
-### Calculate the number of concurrent users
+### Calcular el número de usuarios concurrentes
 
-You could define your load tests based on the observation of your normal and peak traffic levels, and use this formula to determine the number of VUs to specify in your load tests:
+Podría definir sus pruebas de carga basándose en la observación de sus niveles de tráfico normal y de pico, y utilizar esta fórmula para determinar el número de VUs a especificar en sus pruebas de carga:
 
-> VUs = (hourly sessions \* average session duration in seconds)/3600
+> VUs = (sesiones por hora * duración media de la sesión en segundos)/3600
 >
-> - hourly sessions = Number of sessions per hour
-> - average session duration = Average time between the first and last request of each user
+> - sesiones por hora = Número de sesiones por hora
+> - duración media de la sesión = Tiempo medio entre la primera y la última solicitud de cada usuario
 
-Refer to [Determining Concurrent Users in Your Load Tests](https://k6.io/blog/monthly-visits-concurrent-users) to learn how to calculate the formula using Google Analytics.
+Consulte la sección [Determinación de usuarios concurrentes en sus pruebas de carga](https://k6.io/blog/monthly-visits-concurrent-users) para aprender a calcular la fórmula utilizando Google Analytics.
 
-### Load test your website in pre-production.
+### Pruebe la carga de su sitio web pre-producción
 
-We recommend to <a href="https://k6.io/our-beliefs#load-test-in-a-pre-production-environment">Load test in a pre-production environment</a> that mimics the production environment as closely as possible.
+Recomendamos realizar las [pruebas de carga en un entorno pre-producción](https://k6.io/our-beliefs#load-test-in-a-pre-production-environment) que imite lo más posible el entorno de producción.
 
-Testing regularly in a pre-production environment allows assessing the performance of your website over time and catch performance regressions before they reach production.
+Probar regularmente en un entorno de pre-producción permite evaluar el rendimiento de su sitio web a lo largo del tiempo y detectar regresiones de rendimiento antes de que lleguen a producción.
 
-Load testing a website in pre-production allows breaking your systems without worrying about the interruption of your service. Load testing in production is risky, but if your processes and team are mature, you could run your load tests in production as part of your [chaos experiments](https://principlesofchaos.org/). Sometimes it is the best way to get a picture of the real world.
+Las pruebas de carga de un sitio web en pre-producción permiten probar sus sistemas sin preocuparse por la interrupción de su servicio. Las pruebas de carga en producción son arriesgadas, pero si sus procesos y su equipo están maduros, podría ejecutar sus pruebas de carga en producción como parte de sus experimentos de caos. A veces es la mejor manera de obtener una imagen del mundo real.
 
-### Start recording your user journey
+### Comience a grabar el recorrido del usuario
 
-Load tests should mimic user journeys as closely as possible. These user journeys, aka user scenarios, generally involve complex actions in a logical flow (dozens or hundreds of requests).
+Las pruebas de carga deben imitar los flujos de los usuarios lo más fielmente posible. Estos flujos, también conocidos como escenarios de los usuarios, generalmente implican acciones complejas en un flujo lógico (docenas o cientos de solicitudes).
 
-The process of creating this type of load test could be tedious. But the recording of a user session could facilitate the job of starting the test creation for you.
+El proceso de creación de este tipo de pruebas de carga podría ser engorroso. Pero la grabación de una sesión de usuario podría facilitarle el trabajo de iniciar la creación de la prueba.
 
-Check out the [Session Recording guide](/test-authoring/recording-a-session) to learn more about how to auto-generate your load test from a user session.
+Consulte la [guía de grabación de sesiones](/test-authoring/recording-a-session) para obtener más información sobre cómo autogenerar su prueba de carga a partir de una sesión de usuario.
 
-### Do not include third-party requests
+### No incluya solicitudes de terceros
 
-You may have various external requests happening for a normal visitor on your site — for example, Analytics tools, Social Networks, Widgets, etc.
+Es posible que un visitante normal en su sitio tenga varias solicitudes externas, por ejemplo, herramientas de análisis, redes sociales, widgets, etc.
 
-While these requests do impact the user experience on the frontend, they have no impact on the performance of your system on your backend. We highly recommend removing all third party requests from your test script for the following reasons:
+Mientras que estas peticiones tienen un impacto en la experiencia del usuario en el frontend, no tienen ningún impacto en el rendimiento de su sistema en el backend. Recomendamos encarecidamente eliminar todas las solicitudes de terceros de su script de prueba por las siguientes razones:
 
-- Third-party requests have no impact on your backend performance.
-- Third parties may throttle requests, skewing your results.
-- Third parties add a lot of noise to your test result data which makes understanding results harder.
-- It may be against the TOS with the third party to run a test against their system.
+- Las solicitudes de terceros no tienen ningún impacto en el rendimiento de su backend.
+- Los terceros pueden acelerar las solicitudes, sesgando los resultados.
+- Los terceros añaden mucho ruido a los datos de los resultados de las pruebas, lo que dificulta su comprensión.
+- Puede ir en contra de las condiciones de servicio de un tercero el realizar una prueba con su sistema.
 
-### Do not include your CDN assets
+### No incluya sus recursos de CDN
 
-You should consider your CDN as a third-party provider and do not include CDN requests in your load tests because of the reasons explained previously. Additionally, load testing a CDN may cost you money.
+Debe considerar su CDN como un proveedor externo y no incluir las solicitudes de CDN en sus pruebas de carga por las razones explicadas anteriormente. Además, las pruebas de carga de una CDN pueden tener un coste.
 
-But there are also valid cases to test your CDN in case you want to understand something about your CDN provider.
+Pero también hay casos válidos para probar su CDN en caso de que quiera entender algo sobre su proveedor de CDN.
 
-### Parsing HTML content
+### Análisis del contenido HTML
 
-When testing web sites it's common that you have to interact with HTML to submit forms, extract data, check for existence of elements or text etc.
+Cuando se prueban sitios web es común que se tenga que interactuar con HTML para enviar formularios, extraer datos, comprobar la existencia de elementos o texto, etc.
 
-For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) and the [Selection](/javascript-api/k6-html/selection) API that contains more or less all of the [jQuery API](http://api.jquery.com/) that makes sense in the context of k6.
+Por esa razón k6 tiene el [parseHTML](/javascript-api/k6-html/parsehtml-src) y el [Selection](/javascript-api/k6-html/selection) API que contiene más o menos todo el API de jQuery que tiene sentido en el contexto de k6.
 
 <CodeGroup labels={["Parsing HTML content"]}>
 
@@ -149,18 +147,18 @@ export default function () {
 
 </CodeGroup>
 
-For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
+Para enviar un formulario, consulte [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
 
-### Tag different types of resources
+### Etiquetar diferentes tipos de recursos
 
-By default, the standard metrics of a load testing tool -- for example, the response time metric will aggregate the values of all the website requests. But you might want to see the results of these metrics filtered by the type of resources:
+Por defecto, las métricas estandarizadas de una herramienta de pruebas de carga por ejemplo, la métrica del tiempo de respuesta agrega los valores de todas las peticiones del sitio web. Pero es posible que quiera ver los resultados de estas métricas filtrados por el tipo de recursos:
 
-- 95th percentile response time of all the images.
-- 99th percentile response time of all the API requests.
+- Percentil 95 del tiempo de respuesta de todas las imágenes.
+- Percentil 99 del tiempo de respuesta de todas las peticiones de la API.
 
-Different types of resources could behave very differently and could make **meaningless the value of the aggregated metrics**.
+Los diferentes tipos de recursos podrían comportarse de forma muy diferente y podrían hacer que el valor de las métricas agregadas no tuviera sentido.
 
-If you might want to filter your metrics based on different types of requests, consider using the [tagging feature](/using-k6/tags-and-groups#tags).
+Si desea filtrar sus métricas en función de los diferentes tipos de solicitudes, considere la posibilidad de utilizar la función de [etiquetado (tags)](/using-k6/tags-and-groups#tags).
 
 <CodeGroup labels={[]}>
 
@@ -170,10 +168,9 @@ http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 
 </CodeGroup>
 
-### Group the different webpages
+### Agrupar las diferentes páginas web
 
-[Groups](/using-k6/tags-and-groups#groups) help you organize your load test around a common logic.
-When a load test simulates a user scenario visiting multiple pages, it is a good practice to set up a group for each webpage to organize your load test and facilitate the visualization of your test results.
+[Groups](/using-k6/tags-and-groups#groups) ayudan a organizar su prueba de carga en torno a una lógica común. Cuando una prueba de carga simula un escenario de un usuario que visita varias páginas, es una buena práctica configurar un grupo para cada página web para organizar su prueba de carga y facilitar la visualización de los resultados de su prueba.
 
 <CodeGroup labels={[]}>
 
@@ -188,13 +185,10 @@ group('login page', function () {
 
 </CodeGroup>
 
-## See also
+## Véase también
 
-- [Test types](/test-types/introduction)
-- [k6 does not run in a browser](/#what-k6-does-not)
-- [Session recording guide](/using-k6/session-recording-har-support)
+- [k6 no ejecuta un navegador](/#what-k6-does-not)
+- [Guía de grabación de sesiones ](/using-k6/session-recording-har-support)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
 - Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)
-
-<LdScript script='{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "When to load test a website?", "acceptedAnswer": { "@type": "Answer", "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p><p>If you have a very low number of users, backend performance won&apos;t likely be an issue. Spend your time optimizing the frontend.</p><p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"}}]}' />

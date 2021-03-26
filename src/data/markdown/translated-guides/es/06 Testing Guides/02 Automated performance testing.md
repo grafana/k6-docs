@@ -1,108 +1,85 @@
 ---
-title: 'Automated performance testing'
-head_title: 'How to Automate Performance Testing: The k6 Guide'
-excerpt: 'Automation is a hot topic in the testing community. This guide answers the WHY and HOW of Performance Testing Automation and gives you 6 steps to automate your performance tests.'
+title: 'Automatización de pruebas de rendimiento'
+excerpt: 'Esta guía pretende establecer los pasos y las mejores prácticas para lograr su objetivo de automatizar las pruebas de rendimiento.'
 ---
 
 import {IntegrationsCiIconBlock} from 'templates/docs/integrations'
 
-Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always straightforward. Especially if you don’t already have a lot of experience in performance engineering.
+La automatización, un tema importante en la comunidad de pruebas en general y una especie de santo grial, es el objetivo final para muchas organizaciones cuando se trata de entender el rendimiento en el tiempo. Sin embargo, no siempre es fácil saber por dónde empezar, qué herramienta elegir o cómo conseguirlo. Sobre todo si no se tiene mucha experiencia en ingeniería de rendimiento.
 
-This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.
+Esta guía pretende establecer los pasos y las mejores prácticas para lograr su objetivo de automatizar las pruebas de rendimiento.
 
-## Why to automate performance tests?
+## ¿Por qué se deben automatizar las pruebas de rendimiento? 
 
-Let’s start by examining why you would consider automating your performance tests. To do that we need to revisit why we run performance tests in the first place:
+Comencemos por examinar por qué considerarías la automatización de tus pruebas de rendimiento. Para ello, tenemos que revisar por qué ejecutamos las pruebas de rendimiento en primer lugar:
 
-- **Avoid launch failures** leading to a missed opportunity window and wasted investments, e.g. your app or site crashing during a high-profile product launch event.
-- **Avoid bad user experiences** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to non responsive app or website.
-- **Avoid performance regressions** as new code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
+- Evitar los fracasos de lanzamiento que conducen a una ventana de oportunidad perdida y a inversiones desperdiciadas, por ejemplo, que su aplicación o sitio se bloquee durante un evento de lanzamiento de un producto de alto perfil.
+- Evitar que las malas experiencias de los usuarios lleven a los visitantes y clientes a irse con la competencia, y que en última instancia se pierdan ingresos, por ejemplo, la pérdida de clientes que tanto costó ganar debido a que la aplicación o el sitio web no son responsive.
+- Evitar regresiones en el rendimiento a medida que los nuevos cambios de código se despliegan en su sistema de producción y se ponen delante de los usuarios finales. Este es el objetivo principal de esta guía.
 
-From here, the decision to go for automated testing is hopefully straightforward:
+A partir de aquí, la decisión de optar por las pruebas automatizadas es, con suerte, sencilla:
 
-- **Shifting performance testing left**, making sure it happens as close to development as possible, giving developers an early feedback loop for performance matters.
-- **Adding performance regression checks** to your Continuous Integration and Delivery (CI/CD) pipelines.
+- Desplazar las pruebas de rendimiento hacia la izquierda, asegurándose de que se realicen lo más cerca posible del desarrollo, proporcionando a los desarrolladores un bucle de retroalimentación temprana para cuestiones de rendimiento.
+- Añadir comprobaciones de regresión de rendimiento a sus conductos de integración y entrega continuas (CI/CD).
 
-Of course not [all types of performance tests](/test-types/introduction) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance over time of A and B of course.
+Por supuesto, no todos los tipos de pruebas de rendimiento son adecuados para la automatización, las pruebas de rendimiento de tipo A/B es uno de esos tipos de pruebas de rendimiento donde probablemente no tiene mucho sentido automatizar, a menos que usted esté apuntando a comparar el rendimiento en el tiempo de A y B, por supuesto.
 
-## Know your goals
+## Conozca sus objetivos
 
-Besides the step of creating a test case itself, the most important step to ensure a successful performance testing automation project is to spell out your goals. What metrics, and values (in absolute terms; "response times should be less than 500ms", and not just "response times should not be slow"), are important to you, your team and the business.
+Además del paso de crear un caso de prueba en sí mismo, el paso más importante para asegurar un proyecto de automatización de pruebas de rendimiento exitoso es detallar sus objetivos. Qué métricas y valores (en términos absolutos; "los tiempos de respuesta deben ser inferiores a 500 ms", y no sólo "los tiempos de respuesta no deben ser lentos"), son importantes para usted, su equipo y la empresa.
 
-If you have established [Service Level Agreements (SLAs)](https://en.wikipedia.org/wiki/Service-level_agreement) in place with your customers, or just [Service Level Objectives (SLOs)](https://en.wikipedia.org/wiki/Service-level_objective) and [Service Level Indicators (SLIs)](https://en.wikipedia.org/wiki/Service_level_indicator) defined internally, then that’s a great starting point. If not, then it’s a great opportunity to bring stakeholders together and discuss what goals you should have defined to drive a performance culture.
+Si ha establecido [Acuerdos de Nivel de Servicio (SLA)](https://en.wikipedia.org/wiki/Service-level_agreement) con sus clientes, o simplemente [Objetivos de Nivel de Servicio (SLO)](https://en.wikipedia.org/wiki/Service-level_objective) e [Indicadores de Nivel de Servicio (SLI)](https://en.wikipedia.org/wiki/Service_level_indicator) definidos internamente, entonces es un gran punto de partida. Si no es así, es una gran oportunidad para reunir a las partes interesadas y discutir qué objetivos debería haber definido para impulsar una cultura de rendimiento.
 
-Starting with the results of a baseline test is another good way to find a starting point for your goals. A baseline test is a test run with a single or very few <abbr title="Virtual Users">VUs</abbr> that you know your system can handle without breaking a sweat. The idea being that you'll get some real numbers on where your system is at in terms of latency and response time. Important to make sure that your baseline test is not resulting in any unwanted errors and is functionally accurate.
+Empezar con los resultados de una prueba de referencia es otra buena manera de encontrar un punto de partida para sus objetivos. Una prueba de referencia es una prueba realizada con una solo o muy pocos VUs donde sabes que tu sistema lo puede manejar sin problemas. La idea es que usted obtenga algunos números reales sobre dónde está su sistema en términos de latencia y tiempo de respuesta. Es importante asegurarse de que la prueba de referencia no produce errores no deseados y es funcionalmente precisa.
 
-From the perspective of human perceptive abilities, the following guidance points from [Nielsen Norman Group](https://www.nngroup.com/articles/response-times-3-important-limits/) might be of help when deciding on what latency and response time to aim for:
+Desde el punto de vista de la capacidad de percepción humana, los siguientes puntos de orientación de [Nielsen Norman Group](https://www.nngroup.com/articles/response-times-3-important-limits/) pueden ser de ayuda a la hora de decidir a qué latencia y tiempo de respuesta hay que aspirar:
 
-> - **0.1 second** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.
-> - **1.0 second** is about the limit for the user's flow of thought to stay uninterrupted, even though the user will notice the delay. Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.
-> - **10 seconds** is about the limit for keeping the user's attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish, so they should be given feedback indicating when the computer expects to be done. Feedback during the delay is especially important if the response time is likely to be highly variable, since users will then not know what to expect.
+> - 0,1 segundos es el límite para que el usuario sienta que el sistema reacciona de forma instantánea, lo que significa que no es necesario ningún tipo de respuesta especial, excepto la visualización del resultado.
+> - 1,0 segundo es el límite para que el flujo de pensamiento del usuario permanezca ininterrumpido, aunque el usuario notará el retraso. Normalmente, no es necesaria ninguna información especial durante los retrasos superiores a 0,1 pero inferiores a 1,0 segundos, pero el usuario pierde la sensación de operar directamente con los datos.
+> - 10 segundos es el límite para mantener la atención del usuario en el diálogo. En el caso de retrasos más largos, los usuarios querrán realizar otras tareas mientras esperan a que el ordenador termine, por lo que deben recibir una retroalimentación que les indique cuándo espera el ordenador que terminen. La retroalimentación durante el retraso es especialmente importante si el tiempo de respuesta puede ser muy variable, ya que entonces los usuarios no sabrán qué esperar.
 
-Once your goals are clear, you need to codify them as [thresholds](/using-k6/thresholds) which is the mechanism by which you specify pass/fail criteria in k6. More on that below.
+Una vez que los objetivos están claros, hay que codificarlos como [Thresholds](/using-k6/thresholds), que es el mecanismo por el que se especifican los criterios de aprobado/reprobado en k6. Más adelante se habla de ello.
 
-## How to automate performance testing
+## ¿Cómo automatizar las pruebas de performance?
 
-Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is very simple with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
+Una vez que sus objetivos están claros, puede empezar a introducir las pruebas de carga en sus pipelines de automatización. Ejecutar pruebas de carga desde un sistema de integración continua (CI) es muy sencillo con k6. 
 
-- [Why to automate performance tests?](#why-to-automate-performance-tests)
-- [Know your goals](#know-your-goals)
-- [How to automate performance testing](#how-to-automate-performance-testing)
-- [1. Installation of k6](#installation-of-k6)
-- [2. Create a test](#create-a-test)
-- [3. Pass/fail criteria](#passfail-criteria)
-- [4. Local vs Cloud execution](#local-vs-cloud-execution)
-  - [Authenticating with k6 Cloud](#authenticating-with-k6-cloud)
-- [5. Test frequency](#test-frequency)
-  - [VU iteration duration](#vu-iteration-duration)
-  - [Branching strategy](#branching-strategy)
-  - [Pre-production test environment](#pre-production-test-environment)
-  - [Guidance](#guidance)
-- [6. Notifications](#notifications)
-  - [For k6 OSS](#for-k6-oss)
-  - [For k6 cloud](#for-k6-cloud)
-- [See also](#see-also)
+## 1. Instalación de k6
 
-We'll have a closer look at these general steps in more detail below.
+El primer paso para integrar las pruebas de carga en su CI es encontrar e instalar una herramienta de pruebas de rendimiento.
 
-## 1. Installation of k6
+Hemos construido k6 para la automatización. Es una herramienta CLI que puede integrarse fácilmente.
+La instalación de k6 se puede hacer de tres maneras diferentes:
 
-The first step to integrating load testing in your CI is to find and install a performance testing tool.
+Usando uno de los gestores de paquetes específicos del sistema operativo
+Extrayendo la imagen Docker
+Descargando el binario para su sistema operativo
+Consulte las instrucciones de instalación completas para obtener más información.
 
-We built k6 for automation. It's a CLI tool that can integrate easily into your tech stack.
+Además, también tenemos disponibles guías para [instalar k6 en herramientas CI específicas](/integrations#continuous-integration-and-continuous-delivery).
 
-Installing k6 can be done in three different ways:
+## 2. Crear una prueba
 
-- Using one of the OS specific package managers
-- Pulling the Docker image
-- Downloading the binary for your OS
+Si aún no ha creado casos de prueba para su sistema, le sugerimos que lea una de nuestras guías para crear pruebas para sitios web y APIs/microservicios:
 
-See the full [installation instructions](/getting-started/installation) for more information.
+- [Guía de pruebas para sitios web](/testing-guides/load-testing-websites)
+- [Guía de pruebas de API](/testing-guides/api-load-testing)
 
-Additionally, we also have available [guides for installing k6 in specific CI tools](/integrations#continuous-integration-and-continuous-delivery).
+En general, cuando se crean casos de prueba, la regla de oro es empezar con algo pequeño y luego ampliarlo desde ese punto de partida. Identifique las transacciones más críticas para el negocio en su sistema y escriba casos de prueba que cubran esa parte del sistema.
 
-## 2. Create a test
+**Control de versiones de los archivos de prueba**
 
-If you haven’t already created test cases for your system, then we suggest having a read through one of our guides for creating tests for websites and APIs/microservices:
-
-- [Website testing guide](/testing-guides/load-testing-websites)
-- [API testing guide](/testing-guides/api-load-testing)
-
-In general, when creating test cases the golden rule is to start small and then expanding from that initial starting point. Identify the most business critical transactions in your system and write test cases covering that part of the system.
-
-**Version control test files**
-
-One of the best practices that we advise users and customers to adopt is version controlling load tests, preferably alongside application code like other types of tests. In our experience this will lead to a higher likeliness of tests being maintained as the application evolves. It also affords you all the usual benefits of version controlling your code.
+Una de las mejores prácticas que aconsejamos a los usuarios y clientes es el control de las versiones de las pruebas de carga, preferiblemente junto con el código de la aplicación, al igual que otros tipos de pruebas. Según nuestra experiencia, así se consigue una mayor probabilidad de que las pruebas se mantengan a medida que la aplicación evoluciona. Además, ofrece todas las ventajas habituales del control de versiones del código.
 
 **Modules**
 
-Once you’ve gained enough experience with test creation, we strongly advise you to [modularize your tests](/using-k6/modules) to make them common logic/patterns reusable across members of your team and different performance tests.
+Una vez que haya adquirido suficiente experiencia en la creación de pruebas, le aconsejamos encarecidamente que [moduralize sus pruebas](/using-k6/modules) para que la lógica/patrones comunes sean reutilizables entre los miembros de su equipo y las diferentes pruebas de rendimiento.
 
-## 3. Pass/fail criteria
+## 3. Criterios para éxito/fallo
 
-Every step in an automation pipeline either passes or fails. As mentioned in [Know your goals](/testing-guides/automated-performance-testing#know-your-goals), the mechanism by which k6 decides whether a test has passed or failed is called [thresholds](/using-k6/thresholds). Without your goals codified as thresholds there's no way for k6 to actually know if your test should be considered a success or failure.
+Cada paso en una línea de automatización pasa o falla. Como se mencionó en `Conozca sus objetivos`, el mecanismo por el cual k6 decide si una prueba ha pasado o fallado se llama [Thresholds](/using-k6/thresholds). Sin sus objetivos codificados como umbrales no hay manera de que k6 sepa realmente si su prueba debe ser considerada un éxito o un fracaso.
 
-A basic threshold on the 95th percentile of the response time metric looks like this:
+Un Thresholds básico en el percentil 95 de la métrica del tiempo de respuesta tiene este aspecto:
 
 ```javascript
 export let options = {
@@ -113,7 +90,7 @@ export let options = {
 };
 ```
 
-You can setup thresholds on any metric in k6 and you can have multiple thresholds per metric. You can also optionally specify that a threshold should immediately abort a test if the threshold is reached. Adding that to the example above would look like this:
+Puede configurar umbrales en cualquier métrica en k6 y puede tener múltiples Thresholds por métrica. También puede especificar opcionalmente que un Threshold debe abortar inmediatamente una prueba si se alcanza un determinado umbral. Añadiendo esto al ejemplo anterior quedaría así:
 
 ```javascript
 export let options = {
@@ -127,44 +104,48 @@ export let options = {
 };
 ```
 
-If the test ends with one or more failed thresholds k6 will exit with a non-zero exit code signalling to the CI tool that the load test step failed, halting the build/pipeline from progressing further, and hopefully notifying you so you can take corrective action, but more on notifications further down below.
+Si la prueba termina con uno o más Thresholds fallidos, k6 saldrá con un código de salida distinto de cero, indicando a la herramienta de CI que el paso de la prueba de carga ha fallado, deteniendo el progreso de la construcción / línea de producción y, notificándole para que pueda tomar medidas correctivas, más adelante se habla de las notificaciones.
 
-## 4. Local vs Cloud execution
+
+## 4. Ejecución local vs k6 Cloud
+
+k6 soporta tanto el modo de ejecución local (`k6 run ...`) como el de ejecución en el cloud (`k6 cloud ...`). En el modo de ejecución local k6 generará todo el tráfico desde la máquina donde se está ejecutando. En CI esto sería los servidores de construcción. Cuando se ejecuta una prueba localmente, opcionalmente puede transmitir los resultados a k6 Cloud para su almacenamiento y visualización (`k6 run -o cloud ...`). En el modo de ejecución en k6 Cloud, k6 agrupará y enviará el archivo de prueba JS principal, y todos los archivos dependientes, a k6 Cloud como un archivo para su ejecución en la infraestructura de la nube gestionada por nuestro servicio k6 Cloud. Los diferentes modos de ejecución son apropiados para diferentes casos de uso. A continuación se ofrecen algunas orientaciones generales:
 
 k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes. In local execution mode k6 will generate all the traffic from the machine where it's being run. In CI this would be the build servers. When executing a test locally, you can optionally stream the results to k6 Cloud for storage and visualization (`k6 run -o cloud ...`). In cloud execution mode k6 will instead bundle up and send the main JS test file, and all dependent files, to k6 Cloud as an archive for execution on cloud infrastructure managed by our k6 Cloud service. The different modes of execution are appropriate for different use cases. Some general guidance follows:
 
-| Use case                                                                                                                                                      | Execution mode  |
+| Caso de uso                                                                                                                                                      | Modo de ejecución  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                     | Local execution |
-| The target system is behind a firewall and not accessible from the public Internet                                                                            | Local execution |
-| Can't ensure consistent dedicated resources locally for load test, e.g. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
-| Need to run test from multiple geographic locations in a test                                                                                                 | Cloud execution |
+| Prueba de carga con <1000 VUs en una máquina con recursos dedicados consistentes                                                       | Ejecución local |
+| El sistema de destino está detrás de un cortafuegos y no es accesible desde la Internet pública                                    | Ejecución local |
+| No se pueden asegurar recursos dedicados consistentes localmente para la prueba de carga, por ejemplo, si su herramienta CI está ejecutando trabajos en máquinas/contenedores con diferentes cantidades de recursos | Ejecución k6 Cloud |
+| Necesidad de ejecutar la prueba desde múltiples ubicaciones geográficas en una prueba                                                | Ejecución k6 Cloud |
 
-### Authenticating with k6 Cloud
+### Autenticación con k6 Cloud
 
-If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool. Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
+Si decide utilizar el servicio k6 Cloud, ya sea para transmitir los resultados con la ejecución local (`k6 run -o cloud ...`) o a través de la ejecución en la nube, tendrá que autenticarse con k6 Cloud. La forma recomendada de hacerlo es estableciendo la variable de entorno `K6_CLOUD_TOKEN` en su herramienta CI. Alternativamente, usted puede pasar su token al comando `k6 login cloud`  así:
 
 ```bash
 k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
 ```
 
-Get your k6 Cloud token from the [account settings page](https://app.k6.io/account/token).
+Obtenga su token de k6 Cloud en la [página de configuración de la cuenta](https://app.k6.io/account/token).
 
-## 5. Test frequency
+## 5. Frecuencia de las pruebas
 
-The boring, but true, answer to the question of how often you should run load tests is that "it depends". It depends on a number of parameters. How often is your application changing? Do you need many or few VUs to generate the necessary load? How long is one full cycle of a VU iteration? etc. Testing a full user journey or just a single API endpoint or website page has different implications on the answer as well.
+Una respuesta un tanto aburrida, pero cierta, a la pregunta de con qué frecuencia se deben realizar las pruebas de carga es que "depende". Depende de una serie de parámetros. ¿Con qué frecuencia cambia su aplicación? ¿Necesita muchos o pocos VU para generar la carga necesaria? ¿Cuánto dura un ciclo completo de una iteración de VU? entre otros. Probar un recorrido completo del usuario o sólo un endpoint de la API o una página del sitio web también tiene diferentes implicaciones en la respuesta.
 
-Consider these three factors when picking the best solution for you:
+Tenga en cuenta estos tres factores a la hora de elegir la mejor solución para usted:
 
-- VU iteration duration
-- Your branching strategy
-- Pre-production test environment
+- Duración de la iteración del VU
+- Su estrategia de ramificación
+- Entorno de prueba de pre-producción
 
-### VU iteration duration
+### Duración de la iteración de los VU
 
-A rule of thumb is that the shorter the "VU iteration duration" the more frequent you _can_ run your tests without introducing long delays in the development cycle feedback loop, or blocking your team mates' deployments from access to shared pre-production environments.
+Una regla general es que cuanto más corta sea la "duración de la iteración de la VU", más frecuente será la ejecución de las pruebas sin introducir largos retrasos en el ciclo de retroalimentación del desarrollo, ni bloquear el acceso de los compañeros de equipo a los entornos de preproducción compartidos.
 
-A quick re-cap of the [test life cycle](/using-k6/test-life-cycle) article:
+Una rápida recapitulación del artículo sobre el [ciclo de vida de las pruebas](/using-k6/test-life-cycle):
+
 
 ```javascript
 export default function () {
@@ -175,56 +156,55 @@ export default function () {
 }
 ```
 
-You can find the VU iteration duration in the k6 terminal output:
+Puede encontrar la duración de la iteración de los VU en la salida del terminal de k6:
 
 ![VI uteration duration in k6 terminal output](images/vu-iteration-duration-k6-cli.png)
 
-### Branching strategy
+### Estrategia de ramificación
 
-Another important aspect to consider is your team's version control branching policy. If you are strict with keeping feature branches separate from you main team-wide development branch, and you have per-feature test environments, then you can also generally run load tests with a higher frequency than if your builds are competing for exclusive access to a shared pre-production environment.
+Otro aspecto importante a tener en cuenta es la política de ramificación del control de versiones de su equipo. Si eres estricto en mantener las ramas de características separadas de la rama principal de desarrollo de todo el equipo, y tienes entornos de prueba por característica, entonces también puedes ejecutar generalmente las pruebas de carga con una frecuencia más alta que si tus construcciones están compitiendo por el acceso exclusivo a un entorno compartido de pre-producción.
 
-It's also important to consider that load test might not need to run at the same frequency as unit or functional tests. Running load tests could just as well be run as part of Pull/Merge Request creation or when a feature branch gets merged into the main team-wide development branch. Both of these setup variants can be achieved with most CI tools.
+También es importante tener en cuenta que las pruebas de carga podrían no necesitar ejecutarse con la misma frecuencia que las pruebas unitarias o funcionales. La ejecución de las pruebas de carga podría ejecutarse también como parte de la creación de una solicitud de fusión o cuando una rama de características se fusiona con la rama de desarrollo principal de todo el equipo. Ambas variantes de configuración se pueden lograr con la mayoría de las herramientas de CI.
 
-### Pre-production test environment
+### Entorno de prueba de pre-producción
 
-As touched upon in the previous section, on branching strategy, the test environment is the third point to consider. We point out "pre-production" specifically as that is the best practices when it comes to load testing. If your team is at the maturity level of running chaos experiments in productionn then fine, run load test in production as well. If not, stick to pre-production.
+omo se ha comentado en la sección anterior, sobre la estrategia de ramificación, el entorno de pruebas es el tercer punto a tener en cuenta. Señalamos "pre-producción" específicamente ya que son las mejores prácticas cuando se trata de pruebas de carga. Si su equipo está en el nivel de madurez de ejecutar experimentos de caos en producción, entonces bien, ejecute la prueba de carga en producción también. Si no es así, limítese al entorno de pre-producción.
 
-Things to consider with your test environment:
+Detalles a tener en cuenta con su entorno de pruebas:
+- Asegúrese de que no hay otro tráfico que golpea el mismo entorno de prueba como su prueba
+- Asegúrese de que el sistema tiene una cantidad adecuada de datos en cualquier base de datos a la que se accede como resultado del tráfico de prueba
+- Asegúrese de que las bases de datos sólo contienen datos de prueba, y no datos de producción reales
 
-- Make sure there's no other traffic hitting the same test environment as your test
-- Make sure the system has an adequate amount of data in any database that is being accessed as a result of the test traffic
-- Make sure databases only contains test data, and not real production data
+### Orientación
 
-### Guidance
+De forma general, nuestra recomendación es la siguiente, desglosada por la duración de la iteración de la VU:
 
-Generalized, our recommendation is as follows, broken down by VU iteration duration:
-
-| VU iteration duration | Test frequency         | Trigger mechanism                                                            |
+| Duración de las iteraciones de los VU | Frecuencia de las pruebas         | Mecanismo del trigger                                                            |
 | --------------------- | ---------------------- | ---------------------------------------------------------------------------- |
-| <10s                  | On every commit        | Commit push                                                                  |
-| <60s                  | Daily/Nightly          | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >60s                  | Couple of times a week | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >5min                 | Once a week            | Scheduling, Pull/Merge Requests or when merging into main development branch |
+| <10s                  | En cada commit        | Commit push                                                                  |
+| <60s                  | Diaria/ cada noche          | Schedule, Pull/Merge Requests o cuando se fusiona en la rama principal de desarrollo |
+| >60s                  | Algunas veces a la semana | Schedule, Pull/Merge Requests o cuando se fusiona en la rama principal de desarrollo |
+| >5min                 | Una vez por semana            | Schedule, Pull/Merge Requests o cuando se fusiona en la rama principal de desarrollo |
 
 **Scheduling**
 
-Besides triggering tests based on commit events, we also often see users and customers use [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) or CI tool equivalent mechanisms for running tests on off-hours or at a particular cadence.
+Además de desencadenar pruebas basadas en eventos de commit, también vemos a menudo que los usuarios y clientes utilizan mecanismos equivalentes a las herramientas de [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) o CI para ejecutar pruebas en horas no laborables o con una frecuencia determinada.
 
-If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/creating-and-running-a-test/scheduling-tests) to trigger tests at a frequency of your choosing.
+Si utiliza k6 Cloud, puede utilizar la [función de scheduling](/cloud/creating-and-running-a-test/scheduling-tests) para configurar la ejecución de las pruebas con la frecuencia que desee.
 
-**Load test suite**
+**Conjunto de pruebas de carga**
 
-Do you need to run your full load test suite on every commit? Probably not, but in any case should not be the initial ambition. Repeating the advice from earlier in the guide, start small and expand from there. Start by evaluating the most business critical transactions/journeys you have in your system and start by automating those.
+¿Es necesario ejecutar el conjunto de pruebas de carga completo en cada confirmación? Probablemente no, pero en cualquier caso no debería ser la ambición inicial. Repitiendo el consejo de la guía anterior, empiece con algo pequeño y amplíe a partir de ahí. Comience por evaluar las transacciones/viajes más críticos para el negocio que tiene en su sistema y empiece por automatizarlos.
 
-## 6. Notifications
+## 6. Notificaciones
 
-Once you have your load tests integrated into a CI pipeline you should make sure you’re also getting notified whenever a build/pipeline fails. You might already get notification via email, Slack, Microsoft Teams or Webhook through your CI tool, but if not you can set it up as follows.
+Una vez que tengas tus pruebas de carga integradas en un pipeline de CI, deberías asegurarte de que también recibes notificaciones cada vez que una construcción/pipeline falla. Es posible que ya recibas notificaciones por correo electrónico, Slack, Microsoft Teams o Webhook a través de tu herramienta de CI, pero si no es así puedes configurarlo de la siguiente manera.
 
-### For k6 OSS
+### Para k6 OSS
 
-There’s no builtin notification mechanism in k6 OSS, so you’d have to send a notification from the test script. One way to achieve this is by sending a notification event request to Slack or Microsoft Teams.
+No hay un mecanismo de notificación incorporado en k6 OSS, por lo que tendrá que enviar una notificación desde el script de prueba. Una forma de conseguirlo es enviando una solicitud de evento de notificación a Slack o Microsoft Teams.
 
-For Slack you need to first [setup an incoming webhook](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+Para Slack necesitas primero [configurar un webhook de entrada](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Una vez configurado se obtiene una URL de webhook que se especifica como destino de la solicitud POST en la función de teardown:
 
 ```javascript
 import { sleep } from 'k6';
@@ -255,7 +235,7 @@ export function teardown(data) {
 }
 ```
 
-For Microsoft Teams you need to first [setup an incoming webhook connector](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+En el caso de Microsoft Teams, primero hay que [configurar un conector de webhooks entrantes](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Una vez configurado, se obtiene una URL de webhook que se especifica como destino de la solicitud POST en la función de teardown:
 
 ```javascript
 import http from 'k6/http';
@@ -288,14 +268,12 @@ export function teardown(data) {
 }
 ```
 
-### For k6 cloud
+### Para k6 cloud
 
-If you’re running your cloud tests - in the web app - you can configure these [notifications](/cloud/integrations/notifications): Slack, Webhook, and Microsoft Teams.
+Si está ejecutando sus pruebas en la nube, en la aplicación web, puede configurar estas [notificaciones](/cloud/integrations/notifications): Slack, Webhook y Microsoft Teams.
 
-## See also
+## Véase también
 
-We have written CI tool specific guides following the steps mentioned above:
+Hemos escrito guías específicas para las herramientas de CI siguiendo los pasos mencionados anteriormente:
 
 <IntegrationsCiIconBlock />
-
-<LdScript script='{"@context": "http://schema.org", "@type": "HowTo", "name": "How to automate performance testing", "description": "Automation is the end-goal for many organizations when it comes to understanding performance over time. This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.", "step": [{ "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#installation-of-k6", "name": "Installation of k6", "text": "Install k6 on the machine running the CI jobs." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#create-a-test", "name": "Create a test", "text": "Create and store the test files in version control, alongside application code." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#pass-fail-criteria", "name": "Pass/fail criteria", "text": "Codify pass/fail criteria that can fail your tests when run in CI." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#local-vs-cloud-execution", "name": "Local vs Cloud execution", "text": "Decide what type of tests to run." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#test-frequency", "name": "Test frequency", "text": "Decide how often to run tests." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#notifications", "name": "Notifications", "text": "Get notified when your tests fail." }]}'/>

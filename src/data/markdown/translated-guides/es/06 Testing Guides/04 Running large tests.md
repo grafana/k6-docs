@@ -1,22 +1,22 @@
 ---
-title: 'Running large tests'
-excerpt: 'How to run large-scale k6 tests without distributed-execution'
+title: 'Pruebas a gran escala'
+excerpt: 'Cómo lanzar una prueba k6 a gran escala en una sola máquina sin necesidad de una ejecución distribuida'
 ---
 
-This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution.
+Este documento explica cómo lanzar una prueba k6 a gran escala en una sola máquina sin necesidad de una ejecución distribuida.
 
-The common misconception of many load testers is that [distributed execution](#distributed-execution) (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
+El error más común de muchos probadores de carga es que la ejecución distribuida (capacidad de lanzar una prueba de carga en múltiples máquinas) es necesaria para generar una gran carga. Este no es el caso de k6.
 
-k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine.
-A single instance of k6 is often enough to generate load of 30.000-40.000 simultaneous users (VUs). This amount of VUs can generate upwards of 300,000 requests per second (RPS).
+k6 es diferente de muchas otras herramientas de pruebas de carga en la forma en que maneja los recursos de hardware. Un solo proceso de k6 utilizará eficientemente todos los núcleos de la CPU en una máquina generadora de carga. Una sola instancia de k6 suele ser suficiente para generar una carga de 30.000 - 40.000 usuarios simultáneos (VUs). Esta cantidad de VUs puede generar más de 300.000 peticiones por segundo (RPS).
 
-Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 will likely be sufficient for your needs.
+A menos que necesite más de 100.000 - 300.000 peticiones por segundo (6 - 12M de peticiones por minuto), una sola instancia de k6 será probablemente suficiente para sus necesidades.
 
-Below we will explore what hardware and considerations are needed for generating different levels of load.
+A continuación exploraremos qué hardware y consideraciones se necesitan para generar diferentes niveles de carga.
 
-## OS fine-tuning
 
-The following OS changes allow k6 to use the **full network capacity** of the machine for maximum performance.
+## Optimización del Sistem Operativo
+
+Los siguientes cambios en el sistema operativo permiten a k6 utilizar toda la capacidad de red de la máquina para obtener el máximo rendimiento.
 
 ```bash
 sysctl -w net.ipv4.ip_local_port_range="1024 65535"
@@ -25,48 +25,38 @@ sysctl -w net.ipv4.tcp_timestamps=1
 ulimit -n 250000
 ```
 
-These commands enable reusing network connections, increase the limit of network connections, and range of local ports.
+Estos comandos permiten reutilizar las conexiones de red, aumentar el límite de conexiones de red y el rango de puertos locales.
 
-To apply these changes, you can either paste these commands as a root user before running a k6 test or change the configuration files in your operating system.
+Para aplicar estos cambios, puedes pegar estos comandos como usuario root antes de ejecutar una prueba k6 o cambiar los archivos de configuración en tu sistema operativo.
 
-For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine-tuning OS" article](/misc/fine-tuning-os).
+Para obtener información detallada sobre estos ajustes, las instrucciones de macOS y cómo hacerlos permanentes, consulta nuestro artículo ["Ajuste del sistema operativo"](/misc/fine-tuning-os).
 
-## Hardware considerations
+## Consideraciones sobre el hardware
 
-### Network
+### Red
 
-Network throughput of the machine is an important consideration when running large tests.
-Many AWS EC2 machines come with 1Gbit/s connection which may limit the amount of load k6 can generate.
+El rendimiento de la red de la máquina es una consideración importante cuando se ejecutan grandes pruebas. Muchas máquinas AWS EC2 vienen con una conexión de 1 Gbit/s que puede limitar la cantidad de carga que k6 puede generar.
 
-When running the test, you can use `iftop` in the terminal to view in real-time the amount of network traffic generated.
-If the traffic is constant at 1Gbit/s, your test is probably limited by the network card. Consider upgrading to a different EC2 instance.
+Cuando se ejecuta la prueba, se puede utilizar `iftop` en el terminal para ver en tiempo real la cantidad de tráfico de red generado. Si el tráfico es constante a 1Gbit/s, su prueba está probablemente limitada por la tarjeta de red. Considere la posibilidad de actualizar a una instancia EC2 diferente.
 
 ### CPU
 
-Unlike many other load testing tools, k6 is heavily multi-threaded. It will effectively use all available CPU cores.
+A diferencia de muchas otras herramientas de pruebas de carga, k6 es fuertemente multihilo. Utilizará efectivamente todos los núcleos disponibles de la CPU.
 
-The amount of CPU you need depends on your test files (sometimes called test script).
-Regardless of the test file, you can assume that large tests require a significant amount of CPU power.
-We recommend that you size the machine to have at least 20% idle cycles (up to 80% used by k6, 20% idle).
-If k6 uses 100% to generate load, it won't have enough CPU to measure the responses correctly.
-This may cause the result metrics to have a much larger response time than in reality.
+La cantidad de CPU que necesita depende de sus archivos de prueba (a veces llamados script de prueba). Independientemente del archivo de prueba, puede asumir que las pruebas grandes requieren una cantidad significativa de CPU. Le recomendamos que dimensione la máquina para tener al menos un 20% de ciclos de inactividad (hasta un 80% utilizado por k6, 20% de inactividad). Si k6 utiliza el 100% para generar carga, no tendrá suficiente CPU para medir las respuestas correctamente. Esto puede hacer que las métricas de resultados tengan un tiempo de respuesta mucho mayor que en la realidad.
 
-### Memory
+### Memoria
 
-k6 likes memory, but [it isn't as greedy as other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage).
-Memory consumption heavily depends on your test scenarios. To estimate the memory requirement of your test,
-run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs.
+A k6 le gusta la memoria, pero no es tan codicioso como [otras herramientas de pruebas de carga](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage). El consumo de memoria depende en gran medida de sus escenarios de prueba. Para estimar el requerimiento de memoria de su prueba, ejecute la prueba en su máquina de desarrollo con 100 VUs y multiplique la memoria consumida por el número objetivo de VUs.
 
-Simple tests will use ~1-5MB per VU. (1000VUs = 1-5GB).
-Tests that are using file uploads can consume tens of megabytes per VU.
+Las pruebas sencillas utilizarán entre 1 y 5 MB por VU. (1000VUs = 1-5GB). Las pruebas que utilizan cargas de archivos pueden consumir decenas de megabytes por VU.
 
-## General advice
+## Consejos generales
 
-### Make your test code resilient
 
-When running large stress tests, your script can't assume anything about the HTTP response.
-Often performance tests are written with a "happy path" in mind.
-For example, a "happy path" check like the one below is something that we see in k6 often.
+### Haga que su código de prueba sea resistente
+
+Cuando se ejecutan grandes pruebas de estrés, su script no puede asumir nada sobre la respuesta HTTP. A menudo, las pruebas de rendimiento se escriben con una "ruta feliz" en mente. Por ejemplo, una comprobación de "camino feliz" como la siguiente es algo que vemos en k6 a menudo.
 
 ```javascript
 let checkRes = check(res, {
@@ -74,17 +64,15 @@ let checkRes = check(res, {
 });
 ```
 
-Code like this runs fine when the system under test (SUT) is not overloaded and returns proper responses.
-When the system starts to fail, the above check won't work as expected.
+Un código como éste funciona bien cuando el sistema bajo prueba (SUT) no está sobrecargado y devuelve respuestas adecuadas. Cuando el sistema empieza a fallar, la comprobación anterior no funciona como se espera.
 
-The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if server is failing.
-In such case, the check itself won't work as expected and error similar to the one below will be returned:
+El problema aquí es que la comprobación asume que siempre hay un cuerpo en una respuesta. El r.body puede no existir si el servidor está fallando. En tal caso, la comprobación no funcionará como se espera y se devolverá un error similar al que se muestra a continuación:
 
 ```bash
 ERRO[0625] TypeError: Cannot read property 'length' of undefined
 ```
 
-To fix this issue your checks must be resilient to any response type. This change will fix the above problem.
+Para solucionar este problema sus comprobaciones deben ser resistentes a cualquier tipo de respuesta. Este cambio solucionará el problema anterior.
 
 <CodeGroup labels={["resilient check"]}>
 
@@ -96,42 +84,31 @@ let checkRes = check(res, {
 
 </CodeGroup>
 
-### Monitor the load generator server
+### Monitorizar el servidor generador de carga
 
-If you are running a test for the first time, it's a good idea to keep an eye on the available resources while the test is running.
-The easiest way to do so is to SSH to the server with 3 sessions:
+Si está ejecutando una prueba por primera vez, una buena idea es mantener un ojo en los recursos disponibles mientras se ejecuta la prueba. La forma más fácil de hacerlo es conectarse por SSH al servidor con 3 sesiones:
 
-1. To run k6
-2. To monitor CPU and memory
-3. To monitor the network
+1. Para ejecutar k6
+2. Para monitorizar la CPU y la memoria
+3. Para monitorizar la red
 
-For monitoring CPU and memory we recommend [htop](https://en.wikipedia.org/wiki/Htop).
-For monitoring network, we recommend [iftop](https://en.wikipedia.org/wiki/Iftop)
+Para monitorizar la CPU y la memoria recomendamos [htop](https://en.wikipedia.org/wiki/Htop). Para monitorear la red, recomendamos [iftop](https://en.wikipedia.org/wiki/Iftop).
 
-Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
+Aquí hay una captura de pantalla de 3 sesiones de terminal mostrando k6, iftop y htop.
+
 ![k6 iftop htop](./images/large-scale-testing-3-terminals.png)
 
-## k6 Options
+## Opciones de k6
 
-The k6 settings listed below will unlock additional performance benefits when running large tests.
+Las opciones de k6 que se enumeran a continuación permitirán obtener ventajas de rendimiento adicionales cuando se ejecuten pruebas de gran envergadura.
 
 ### --compatibility-mode=base
 
-If you are pushing the limits of the hardware, this is the most impactful k6 setting you can enable.
+Si se está llegando a los límites del hardware, esta es la configuración de k6 más importante que se puede activar. Este ajuste desactiva el traslado interno de Babel de ES6 a ES5.1+ y la inclusión de la biblioteca corejs. Para obtener el mejor rendimiento de k6, es mejor transpilar los scripts fuera de k6 usando webpack.
 
-This setting disables the internal [Babel](https://babeljs.io/) transpilation from ES6 to ES5.1+ and inclusion of [corejs](https://github.com/zloirock/core-js) library.
+En el repositorio [k6-hardware-benchmark](https://github.com/loadimpact/k6-hardware-benchmark), hemos preparado un esquema de traslado eficiente que produce código ES5.1 de alto rendimiento para k6.
 
-> #### Some background
->
-> k6 at its core executes ECMAScript 5.1 code. Most k6 script examples and documentation is written in ECMAScript 6+.
-> By default, k6 transpiles ES6+ code to ES5.1 using babel and loads corejs to enable commonly used APIs.
-> This works very well for 99% of use cases, but it adds significant overheard with large tests.
-
-To get the best performance out of k6, it's best to transpile the scripts outside of k6 using webpack.
-
-In [k6-hardware-benchmark](https://github.com/loadimpact/k6-hardware-benchmark) repository, we have prepared an efficient transpilation scheme that produces performant ES5.1 code for k6.
-
-Use it like this:
+Puedes utilizarlo de la siguiente manera:
 
 ```bash
 git clone https://github.com/loadimpact/k6-hardware-benchmark/
@@ -141,17 +118,17 @@ yarn run to-es5 someplace/yourscript.js
 # your ES5 script is in someplace/yourscript.es5.js
 ```
 
-Once your code is transpiled, run it like this:
+Una vez que tu código esté transpilado, puede ejecutarlo de la siguiente manera:
 
 ```bash
 k6 run -o cloud --compatibility-mode=base someplace/yourscript.es5.js
 ```
 
-k6 will use about 50-85% of memory in comparison to running the original script. It will also reduce the CPU load, and significantly decrease startup time.
+k6 utilizará alrededor del 50-85% de la memoria en comparación con la ejecución del script original. También reducirá la carga de la CPU, y disminuirá significativamente el tiempo de arranque.
 
 ### discardResponseBodies
 
-You can tell k6 to not process the body of the response by setting `discardResponseBodies` in the options object like this:
+Puede decirle a k6 que no procese el cuerpo de la respuesta estableciendo `discardResponseBodies` en el objeto de opciones de la siguiente manera:
 
 ```javascript
 export let options = {
@@ -159,16 +136,11 @@ export let options = {
 };
 ```
 
-k6 by default loads the response body of the request into memory. This causes much higher memory consumption and often is completely unnecessary.
-If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
+k6 por defecto carga el cuerpo de la respuesta de la solicitud en la memoria. Esto provoca un consumo de memoria mucho mayor y a menudo es completamente innecesario. Si necesita el cuerpo de la respuesta para algunas peticiones puede establecer [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
 
 ### --no-thresholds --no-summary
 
-If you are running a local test and streaming results to the cloud (`k6 run -o cloud`), you may want to disable the terminal summary
-and local threshold calculation because thresholds and summary will be displayed in the cloud.
-This will save you some memory and CPU cycles.
-
-Here are all the mentioned flags, all in one:
+Si está ejecutando una prueba local y transmitiendo los resultados a la nube (k6 run -o cloud), es posible que desee desactivar el resumen de la terminal y el cálculo del umbral local, ya que los umbrales y el resumen se mostrarán en la nube. Esto le ahorrará algo de memoria y ciclos de CPU.
 
 ```bash
 k6 run scripts/website.es5.js \
@@ -180,55 +152,53 @@ k6 run scripts/website.es5.js \
   --no-summary \
 ```
 
-### Remove unnecessary checks, groups and custom metrics
+### Eliminar comprobaciones, grupos y métricas personalizadas innecesarias
 
-If everything else has failed and you are trying to squeeze more performance out of the hardware,
-you can consider optimizing the code of the load test itself.
+Si todo lo demás ha fallado y está tratando de exprimir más el rendimiento del hardware, puede considerar la posibilidad de optimizar el código de la propia prueba de carga.
 
-**Checks and groups**
+**Checks y groups**
 
-k6 records the result of every individual check and group separately. If you are using many checks and groups, you may consider removing them to boost performance.
+k6 registra el resultado de cada Check y Group por separado. Si está utilizando muchos Checks y Groups, puede considerar eliminarlas para aumentar el rendimiento.
 
-**Custom metrics**
+**Métricas personalizadas**
 
-Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) are recorded separately. Consider minimizing the usage of custom metrics.
+Al igual que las comprobaciones, los valores de las métricas personalizadas (Trend, Counter, Gauge and Rate) se registran por separado. Considere minimizar el uso de las métricas personalizadas.
 
-**Thresholds with abortOnFail**
+**Thresholds con abortOnFail**
 
-If you have configured [abortOnFail thresholds](https://k6.io/docs/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
+Si ha configurado [abortOnFail thresholds](https://k6.io/docs/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 necesita evaluar el resultado constantemente para verificar que no se ha superado el Threshold. Considere la posibilidad de eliminar esta configuración.
 
-## File upload testing
+## Pruebas de carga de archivos
 
-Special considerations must be taken when testing file uploads.
+Hay que tener en cuenta consideraciones especiales a la hora de probar la carga de archivos.
 
-### Network throughput
+### Rendimiento de la red
 
-The network throughput of the load generator machine, as well as the SUT will likely be the bottleneck.
+El rendimiento de la red de la máquina generadora de carga, así como del SUT, será probablemente el cuello de botella.
 
-### Memory
+### Memoria
 
-k6 needs a significant amount of memory when uploading files, as every VU is independent and has its own memory.
+k6 necesita una cantidad significativa de memoria al cargar archivos, ya que cada VU es independiente y tiene su propia memoria.
 
-### Data transfer costs
+### Costes de transferencia de datos
 
-k6 can upload a large amount of data in a very short period of time. Make sure you understand the data transfer costs before commencing a large scale test.
+k6 puede cargar una gran cantidad de datos en un periodo de tiempo muy corto. Asegúrese de conocer los costes de transferencia de datos antes de iniciar una prueba a gran escala.
 
-[Outbound Data Transfer is expensive in AWS EC2](https://www.cloudmanagementinsider.com/data-transfer-costs-everything-you-need-to-know/). The price ranges between $0.08 to $0.20 per GB depending on the region.
-If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB, therefore, costs about $80. Long-running test can cost several hundreds of dollars in data transfer alone.
+La transferencia de datos salientes es cara en AWS EC2. El precio oscila entre 0,08$ y 0,20$ por GB dependiendo de la región. Si utiliza la región más barata, el coste es de unos 0,08 dólares por GB. Subir 1TB, por tanto, cuesta unos 80 dólares. Una prueba de larga duración puede costar varios cientos de dólares sólo en transferencia de datos.
 
-### EC2 costs
+### Costes de EC2
 
-The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour. 
-Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.  
-Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
+Las instancias de AWS EC2 son relativamente baratas. Incluso la instancia más grande que hemos utilizado en este benchmark (m5.24xlarge) sólo cuesta 4,6 dólares por hora. Asegúrate de apagar los servidores generadores de carga una vez que hayas terminado con tus pruebas. El servidor EC2 olvidado costará 3312 dólares al mes.
+Consejo: a menudo es posible lanzar "instancias puntuales" del mismo hardware por un 10-20% del coste.
 
-## Errors
 
-If you run into errors during the execution, it's good to understand if they were caused by the load generator or by the failing SUT.
+## Errores
+
+Si te encuentras con errores durante la ejecución, es bueno entender si fueron causados por el generador de carga o por que el servicio siendo testeado falla.
 
 ### read: connection reset by peer
 
-Error similar to this one is caused by the target system resetting the TCP connection. This happens when the Load balancer or the server itself isn't able to handle the traffic.
+Un error similar a éste es causado por el sistema de destino que restablece la conexión TCP. Esto sucede cuando el balanceador de carga o el propio servidor no son capaces de manejar el tráfico.
 
 ```bash
 WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72.209:35288->63.32.205.136:80: read: connection reset by peer"
@@ -236,7 +206,7 @@ WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72
 
 ### context deadline exceeded
 
-Error like this happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
+Este tipo de error se produce cuando k6 ha podido enviar una petición, pero el sistema de destino no ha respondido a tiempo. El tiempo de espera por defecto en k6 es de 60 segundos. Si su sistema no produce la respuesta en este plazo, aparecerá este error.
 
 ```bash
 WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exceeded"
@@ -244,7 +214,7 @@ WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exce
 
 ### dial tcp 52.18.24.222:80: i/o timeout
 
-This is a similar error to the one above, but in this case, k6 wasn't even able to make a request. The target system isn't able to establish a connection.
+Este es un error similar al anterior, pero en este caso, k6 ni siquiera fue capaz de hacer una petición. El sistema de destino no es capaz de establecer una conexión.
 
 ```bash
 WARN[0057] Request Failed     error="Get http://pawel.staging.loadimpact.com/static/logo.svg?url=v3: dial tcp 52.18.24.222:80: i/o timeout"
@@ -252,47 +222,38 @@ WARN[0057] Request Failed     error="Get http://pawel.staging.loadimpact.com/sta
 
 ### socket: too many open files
 
-This error means that the load-generator machine isn't able to open TCP sockets because it reached the limit of open file descriptors.
-Make sure that your limit is set sufficiently high `ulimit -n 250000` should be enough for anyone :tm:
+Este error significa que la máquina generadora de carga no es capaz de abrir sockets TCP porque ha alcanzado el límite de archivo abiertos. Asegúrese de que su límite está configurado lo suficientemente alto `ulimit -n 250000` debería ser suficiente para cualquiera :tm:
 
 ```bash
 WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=6: dial tcp 99.81.83.131:80: socket: too many open files"
 ```
 
-Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
-If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
+Nota: usted debe decidir qué nivel de errores es aceptable. A gran escala, siempre hay algunos errores. Si se realizan 50M de peticiones con 100 fallos, este es generalmente un buen resultado (0,00002% de errores).
 
-## Benchmarking k6 on AWS
+## Benchmarking k6 en AWS
 
-We have executed a few large tests on different EC2 machines to see how much load k6 can generate.
-Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
-The limit to this scalability is in the number of open connections. A single Linux machine can open up to `65 535` sockets per IP.
-This means that maximum of 65k requests can be executed simultaneously on a single machine.
-The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000.
+Hemos ejecutado algunas pruebas grandes en diferentes máquinas EC2 para ver cuánta carga puede generar k6. Nuestra observación general es que k6 escala proporcionalmente al hardware. Una máquina 2 veces más grande es capaz de generar 2 veces más tráfico. El límite de esta escalabilidad está en el número de conexiones abiertas. Una sola máquina Linux puede abrir hasta 65 535 sockets por IP. Esto significa que un máximo de 65k peticiones pueden ser ejecutadas simultáneamente en una sola máquina. El límite de RPS depende del tiempo de respuesta del SUT. Si las respuestas se entregan en 100 ms, el límite de RPS es de 650 000.
 
 ### Real-life test of a website.
 
-Testing the theoretical limits is fun, but that's not the point of this benchmark.
-The point of this benchmark is to give users an indication of how much traffic k6 can generate when executing complicated, real-life tests.
-For this purpose, we have written a rather heavy [real-life website test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/website.js) that uses almost all k6 features.
+Probar los límites teóricos es divertido, pero ese no es el objetivo de este benchmark. El punto de este benchmark es dar a los usuarios una indicación de cuánto tráfico puede generar k6 al ejecutar pruebas complicadas de la vida real. Para ello, hemos escrito una [prueba](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/website.js) de un sitio web de la vida real bastante pesado que utiliza casi todas las características de k6.
 
-Setup:
+Configuración:
 
-- All tests were executed on AWS EC2 instances
-- The "discardResponseBodies" recommendation was NOT used. (results would be better with this setting).
-- Scripts used for testing are available in the `/scripts` directory. The results are reproducible
-- k6 v0.26.2 was used
-- Note: the target system (test.k6.io) was running on a large cluster to boost performance.
-- Note: the target system (test.k6.io) is a slow-ish PHP website, not optimized for performance - a static website would be much quicker.
+- Todas las pruebas se ejecutaron en instancias de AWS EC2
+- NO se utilizó la recomendación "discardResponseBodies". (los resultados serían mejores con esta configuración).
+- Los scripts utilizados para las pruebas están disponibles en el directorio /scripts. Los resultados son reproducibles se utilizó k6 v0.26.2
+- Nota: el sistema de destino (test.k6.io) se ejecutó en un gran clúster para aumentar el rendimiento.
+- Nota: el sistema de destino (test.k6.io) es un sitio web PHP lento, no optimizado para el rendimiento; un sitio web estático sería mucho más rápido.
 
-The "website.js" test file uses a wide range of k6 features to make the test emulate a real usage of k6. This is not a test rigged for performance - quite the opposite.
-This test uses plenty of custom metrics, checks, parametrization, batches, thresholds and groups. It's a heavy test that should represent well the "real life" use case.
+El archivo de prueba "website.js" utiliza una amplia gama de características de k6 para que la prueba emule un uso real de k6. No se trata de una prueba manipulada para el rendimiento, sino todo lo contrario. Esta prueba utiliza un montón de métricas personalizadas, Checks, parametrización, http.batch, Thresholds y Groups. Es una prueba pesada que debería representar bien un caso real.
 
-**> AWS m5.large EC2 server**
+**> Servidor AWS m5.large EC2**
 
-The `m5.large` instance has 8GB of RAM and 2 CPU cores.
+La instancia `m5.large` tiene 8GB de RAM y 2 núcleos de CPU.
 
-The following command was used to execute the test
+El siguiente comando fue utilizado para ejecutar la prueba
+
 
 ```bash
 k6 run scripts/website.es5.js \
@@ -304,7 +265,7 @@ k6 run scripts/website.es5.js \
  --no-summary
 ```
 
-Results
+Resultados
 
 - Maximum VUS reached: 6000
 - Memory used: 6.09 GB (out of 8.0)
@@ -327,7 +288,7 @@ k6 run scripts/website.es5.js \
 
 ```
 
-Results
+Resultados
 
 - Maximum VUS reached: 20.000
 - Memory used: 20.1 GB (out of 61.4)
@@ -338,7 +299,8 @@ Results
 **> AWS m5.24xlarge**
 
 The m5.24xlarge has 384GB of RAM and 96 CPU cores.
-NOTE: sleep has been reduced to 1s instead of 5s to produce more requests.
+NOTA: el tiempo de espera se ha reducido a 1s en lugar de 5s para producir más peticiones.
+
 
 ```bash
 k6 run scripts/website.es5.js  \
@@ -350,7 +312,7 @@ k6 run scripts/website.es5.js  \
    --no-summary
 ```
 
-Results
+Resultados
 
 - Maximum VUS reached: 30.000
 - Memory used: ~120 GB (out of 370 available)
@@ -358,11 +320,10 @@ Results
 - Peak RPS: ~61.500.
 - `sleep(1)` in each iteration.
 
-### Testing for RPS
+### Pruebas de RPS
 
-As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
-To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately, our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS.
-Much higher numbers are possible for faster systems.
+
+Como se dijo al principio, k6 puede producir muchas peticiones muy rápidamente, especialmente si el sistema de destino responde de manera rápida. Para probar el límite de RPS de nuestra aplicación hemos escrito una [prueba optimizada para RPS](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Desafortunadamente, nuestro sistema de destino test.k6.io es una aplicación PHP bastante lenta. Sin embargo, utilizando 30k VUs hemos alcanzado 188.000 RPS. Los números mucho más altos son posibles para sistemas más rápidos.
 
 **> AWS m5.24xlarge**
 
@@ -383,15 +344,16 @@ Results
 - CPU load (avg): 80 (out of 96.0).
 - Peak RPS: ~188.500.
 
-### Testing for data transfer
+### Pruebas de transferencia de datos
 
-k6 can utilize the available network bandwidth when uploading files, but it needs plenty of memory to do so.
+k6 puede utilizar el ancho de banda de la red disponible cuando sube archivos, pero necesita mucha memoria para hacerlo.
 
-Please read the warning about the cost of data transfer in AWS before commencing a large scale test.
+Por favor, lea la advertencia sobre el coste de la transferencia de datos en AWS antes de comenzar una prueba a gran escala.
+
 
 **> AWS m5.24xlarge**
 
-To test the network throughput we have written a [file uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs.
+Para probar el rendimiento de la red hemos escrito un [script de carga de archivos](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). Hemos ejecutado esta prueba durante sólo 1 minuto para minimizar los costes de transferencia de datos. En 1 minuto, k6 consiguió transferir 36 GB de datos con 1000 VUs.
 
 ```bash
 k6 run scripts/file-upload.es5.js \
@@ -411,19 +373,18 @@ Results
 - Network throughput reached **4.7Gbit/s**
 - Data transferred: 36GB.
 
-Note: each VU in k6 is completely independent, and therefore it doesn't share any memory with other VUs.
-1000VUs uploading 26MB file need as much as 81GB of RAM since each VU holds the copy of the file in memory.
+Nota: cada VU en k6 es completamente independiente, por lo que no comparte ninguna memoria con otros VU. 1000 VUs cargando un archivo de 26MB necesitan hasta 81GB de RAM ya que cada VU mantiene la copia del archivo en la memoria.
 
 ## Distributed execution
 
-In load testing, distributed execution refers to running a load test distributed across multiple machines.
+En las pruebas de carga, la ejecución distribuida se refiere a la ejecución de una prueba de carga distribuida en varias máquinas.
 
-Users often look for the distributed execution mode to run large-scale tests. Although we have shown that a single k6 instance can generate enormous load, distributed execution is necessary to:
+Los usuarios suelen buscar el modo de ejecución distribuida para ejecutar pruebas a gran escala. Aunque hemos demostrado que una sola instancia de k6 puede generar una carga enorme, la ejecución distribuida es necesaria para:
 
-- Simulate load from multiple locations simultaneously.
-- Scale the load of your test beyond what a single machine can handle.
+- Simular la carga desde múltiples ubicaciones simultáneamente.
+- Escalar la carga de su prueba más allá de lo que puede soportar una sola máquina.
 
-In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/options#execution-segment) option. For example:
+En k6, puede dividir la carga de una prueba entre varias instancias de k6 utilizando la opción [execution-segment](/using-k6/options#execution-segment). Por ejemplo:
 
 <CodeGroup labels={["Two machines", "Three machines", "Four machines"]}>
 
@@ -450,21 +411,23 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 </CodeGroup>
 
-However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
+Sin embargo -en este momento  el modo de ejecución distribuido de k6 no es del todo funcional. Las limitaciones actuales son:
 
-- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution.
-- Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
-- k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
+- k6 no proporciona un coordinador de pruebas o instancia maestra para coordinar la ejecución distribuida de la prueba. Como alternativa, se puede utilizar la API REST de k6 y --paused para sincronizar la ejecución de las múltiples instancias de k6.
+- Cada instancia de k6 evalúa los umbrales de forma independiente, excluyendo los resultados de las otras instancias de k6. Si desea desactivar la ejecución de umbrales, utilice --no-thresholds.
+- k6 informa de las métricas individualmente para cada instancia. Dependiendo de cómo almacene los resultados de las pruebas de carga, tendrá que agregar algunas métricas para calcularlas correctamente.
 
-> The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/loadimpact/k6/issues/140) on GitHub.
 
-## Large-scale tests in k6 Cloud
+> El objetivo de k6 es apoyar una solución nativa de código abierto para la [ejecución distribuida](https://github.com/loadimpact/k6/issues/140). Si quieres seguir el progreso, suscríbete al tema de ejecución distribuida en GitHub.
 
-[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running large-scale tests, amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me).
+## Pruebas a gran escala en k6 Cloud
 
-If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
+[k6 Cloud](https://k6.io/cloud) nuestra oferta comercial proporciona una solución instantánea para ejecutar pruebas a gran escala, entre otras [ventajas](https://k6.io/docs/cloud#how-can-it-help-me).
 
-## See also
+Si no está seguro de qué solución, OSS o Cloud, se ajusta mejor a su proyecto, le recomendamos que lea el [siguiente artículo](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)h para saber más sobre los riesgos y las características a tener en cuenta a la hora de crear una solución escalable.
+
+
+## Véase también
 
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
