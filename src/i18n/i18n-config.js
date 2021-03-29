@@ -1,7 +1,7 @@
 const I18N_CONFIG = {
-  disableRedirectToSelectedLanguage: true,
+  disableRedirectToSelectedLanguage: false,
   hideEsFromAlgoliaSearch: true,
-  hideLanguageToggle: true,
+  hideLanguageToggle: false,
   hideEsFromRobots: true,
 };
 
