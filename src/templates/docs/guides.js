@@ -41,7 +41,9 @@ function GuidesContent({
 
   const pageMetadata = {
     data: {
-      ...SeoMetadata.guides.data,
+      ...(locale === 'es'
+        ? SeoMetadata.guidesES.data
+        : SeoMetadata.guides.data),
       slug: path.slice(1),
     },
   };
