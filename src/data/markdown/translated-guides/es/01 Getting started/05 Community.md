@@ -1,14 +1,14 @@
 ---
 title: 'Comunidad'
-excerpt: ''
+excerpt: 'Información sobre dónde puede hacer sus preguntas acerca de k6, debatir sobre k6 y cómo podría contribuir al proyecto'
 ---
 
-En esta página, encontrará información sobre dónde puede hacer sus preguntas acerca de K6, debatir sobre K6 y cómo podría contribuir al proyecto.
-Antes de comenzar, le recomendamos que lea nuestro [Código de Conducta](https://github.com/loadimpact/k6/blob/master/CODE_OF_CONDUCT.md). K6 ha adoptado el [Pacto de Colaboradores](https://www.contributor-covenant.org/) y esperamos que todos los miembros de la comunidad lo cumplan.
+En esta página, encontrará información sobre dónde puede hacer sus preguntas acerca de k6, debatir sobre k6 y cómo podría contribuir al proyecto.
+Antes de comenzar, le recomendamos que lea nuestro [Código de Conducta](https://github.com/loadimpact/k6/blob/master/CODE_OF_CONDUCT.md). k6 ha adoptado el [Pacto de Colaboradores](https://www.contributor-covenant.org/) y esperamos que todos los miembros de la comunidad lo cumplan.
 
-## Preguntas y Debates
+## Preguntas y debates
 
-El [foro de la comunidad](https://community.k6.io/) es el canal de soporte principal de la comunidad K6. Es el lugar para debatir funcionalidades, hacer recomendaciones y responder preguntas.
+El [foro de la comunidad](https://community.k6.io/) es el canal de soporte principal de la comunidad k6. Es el lugar para debatir funcionalidades, hacer recomendaciones y responder preguntas.
 
 Use [Stack Overflow](https://stackoverflow.com/questions/tagged/k6) para hacer preguntas a nivel de código o si encontró un error en particular. Puede comenzar a buscar usando la etiqueta `k6`, y si no encuentra una respuesta a su pregunta, puede crear una nueva pregunta usando las etiquetas `k6` y  `load-testing` (prueba de carga).
 
@@ -25,7 +25,7 @@ Si encuentra algún error en K6, puede [reportarnos el problema](https://github.
 
 Si ha encontrado un error en la documentación, puedes hacernos saber en el canal `#documentation` en [Slack](https://k6.io/slack/).
 
-## Contributing
+## Contribuyendo
 
 ¿Está interesado en contribuir al proyecto k6? ¡Estamos muy emocionados de tenerte! 🥳 Puede contribuir al proyecto de varias formas. A continuación encontrarás algunas ideas:
 - Informar errores y nuevos requerimientos.
@@ -35,14 +35,14 @@ Si ha encontrado un error en la documentación, puedes hacernos saber en el cana
 Háganos saber por Slack si desea dar una charla o conferencia y de esa manera nosotros podemos ver cómo ayudarlo. 
 
 
-## Cheat Sheet/ Hoja de trucos
+## Cheat Sheet (Hoja de resumen)
 
 
 | Tipo de pregunta                           | Canal                                                                                                                                               |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ¿Cómo puedo?                                  | [Stack Overflow](https://stackoverflow.com), use the tags `k6`, `javascript`, and `load-testing`.<br/> The [Community Forum](https://community.k6.io) |
+| ¿Cómo puedo?                                  | [Stack Overflow](https://stackoverflow.com), usa las etiquetas `k6`, `javascript`, y `load-testing`.<br/> El [Foro de la comunidad](https://community.k6.io) |
 | Tengo un error, porque?                      | [Stack Overflow](https://stackoverflow.com)                                                                                                           |
-| Tengo un error y estoy seguro que es un bug   | [File an issue](https://github.com/loadimpact/k6/issues)                                                                                              |
+| Tengo un error y estoy seguro que es un bug   | [Crea un issue en GitHub](https://github.com/loadimpact/k6/issues)                                                                                              |
 | ¿Por qué lo haces? ¿Cuándo lo harás?                 | [Slack](https://k6.io/slack/)                                                                                                                         |
-| Quiero contribuir/ayudar al desarrollo | Start here, then proceed to [Slack](https://k6.io/slack/) and [issues](https://github.com/loadimpact/k6/issues)                                       |
-| Quiero escribir o dar una charla sobre k6    | Reach us on [Slack](https://k6.io/slack/) to see how we can help you                                                                                  |
+| Quiero contribuir/ayudar al desarrollo | Empieza en la documentación, luego visita [Slack](https://k6.io/slack/) y [GitHub issues](https://github.com/loadimpact/k6/issues)                                       |
+| Quiero escribir o dar una charla sobre k6    | Conecta en [Slack](https://k6.io/slack/) para ver cómo podemos ayudarte                                                                                  |
