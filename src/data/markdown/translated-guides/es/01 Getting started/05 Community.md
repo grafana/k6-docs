@@ -12,11 +12,11 @@ El [foro de la comunidad](https://community.k6.io/) es el canal de soporte princ
 
 Use [Stack Overflow](https://stackoverflow.com/questions/tagged/k6) para hacer preguntas a nivel de código o si encontró un error en particular. Puede comenzar a buscar usando la etiqueta `k6`, y si no encuentra una respuesta a su pregunta, puede crear una nueva pregunta usando las etiquetas `k6` y  `load-testing` (prueba de carga).
 
-## Solicitud de nuevos requerimientos e ideas 
+## Solicitar nuevas funcionalidades 
 
-El [foro de la comunidad](https://community.k6.io/) es un buen lugar para debatir. Puede iniciar una conversación si desea debatir una idea, requerimientos, arquitectura o buenas prácticas.
+El [foro de la comunidad](https://community.k6.io/) es un buen lugar para debatir ideas y nuevas funcionalidades.
 
-Si ya tiene una idea bien formulada de una solicitud de un requerimiento nuevo, le recomendamos que cree un nuevo issue (error), en caso de que no exista uno creado anteriormente.
+En cambio, si tiene una idea bien razonada y detallada para una nueva funcionalidad, le recomendamos que cree una [nuevo issue en GitHub](https://github.com/k6io/k6), en caso de que no exista uno creado anteriormente.
 
 ## Reporte de errores
 

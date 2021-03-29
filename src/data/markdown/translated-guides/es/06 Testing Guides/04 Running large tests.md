@@ -41,7 +41,7 @@ Cuando se ejecuta la prueba, se puede utilizar `iftop` en el terminal para ver e
 
 ### CPU
 
-A diferencia de muchas otras herramientas de pruebas de carga, k6 es fuertemente multihilo. Utilizará efectivamente todos los núcleos disponibles de la CPU.
+A diferencia de muchas otras herramientas de pruebas de carga, k6 es una herramienta multihilo. Utilizará efectivamente todos los núcleos disponibles de la CPU simultáneamente.
 
 La cantidad de CPU que necesita depende de sus archivos de prueba (a veces llamados script de prueba). Independientemente del archivo de prueba, puede asumir que las pruebas grandes requieren una cantidad significativa de CPU. Le recomendamos que dimensione la máquina para tener al menos un 20% de ciclos de inactividad (hasta un 80% utilizado por k6, 20% de inactividad). Si k6 utiliza el 100% para generar carga, no tendrá suficiente CPU para medir las respuestas correctamente. Esto puede hacer que las métricas de resultados tengan un tiempo de respuesta mucho mayor que en la realidad.
 

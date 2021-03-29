@@ -54,7 +54,7 @@ Estas pruebas son un sinónimo de las pruebas de resistencia.
 
 ### Goja
 
-Goja es el tiempo de ejecución de JavaScript, escrito exclusivamente en go, este hace énfasis en el cumplimiento de las normas y el rendimiento. Utilizamos Goja para permitir la creación de scripts de pruebas sin tener que comprometer la velocidad, la eficiencia o la fiabilidad, lo que habría sido el caso de utilizar NodeJS. Para más detalles, puede consultar el repositorio de Goja en GitHub.
+Goja es el motor para ejecutar código en JavaScript, escrito exclusivamente en Go para mejor el rendimiento del sistema. Utilizamos Goja para permitir la creación de scripts de pruebas sin tener que comprometer la velocidad, la eficiencia o la fiabilidad, lo que habría sido en el caso de utilizar NodeJS. Para más detalles, puede consultar el repositorio de Goja en GitHub.
 
 ### Horizontal Scalability
 

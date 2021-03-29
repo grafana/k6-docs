@@ -40,7 +40,7 @@ export default function () {
 
 </CodeGroup>
 
-Nos podemos preguntar, ¿Por qué no ejecutar mi script normalmente, desde el inicio hasta el final?. La respuesta es: Sí, se puede hacer, pero el código dentro y fuera de la función predeterminada puede hacer cosas diferentes.
+Nos podemos preguntar, ¿Por qué no ejecutar mi script normalmente, desde el inicio hasta el final? La respuesta es: Sí, se puede hacer, pero el código dentro y fuera de la función predeterminada puede hacer cosas diferentes.
 
 El código predeterminado de adentro es llamado “VU Code”, y se ejecuta una y otra vez mientras el test está ejecutándose. El código de afuera es comúnmente llamado “init Code” y se ejecuta una vez por VU.
  
