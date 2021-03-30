@@ -11,9 +11,11 @@ const {
   DEFAULT_LOCALE,
 } = require('./utils.node');
 
-const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
+const processMdxEntry = (
+  { children: [entry], relativeDirectory },
+  kind = 'docs',
+) => {
   const {
-    fileAbsolutePath,
     mdxAST,
     objectID,
     frontmatter: { title, redirect, slug: customSlug },
@@ -26,28 +28,24 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
    * avoid indexing this section for a while to avoid
    * search user's confusion
    */
-  if (/cloud rest api/i.test(fileAbsolutePath)) {
+  if (/cloud rest api/i.test(relativeDirectory)) {
     // eslint-disable-next-line no-console
-    console.log('exluded from algolia indecies pages:', fileAbsolutePath);
+    console.log('exluded from algolia indecies pages:', relativeDirectory);
     return [];
   }
 
   // @TODO: remove to enable sending spanish content to Algolia
   if (I18N_CONFIG.hideEsFromAlgoliaSearch) {
-    if (/\/es\//i.test(fileAbsolutePath)) {
+    if (/\/es\//i.test(relativeDirectory)) {
       // eslint-disable-next-line no-console
-      console.log('exluded ES page from algolia indecies:', fileAbsolutePath);
+      console.log('exluded ES page from algolia indecies:', relativeDirectory);
       return [];
     }
   }
 
-  const strippedDirectory = stripDirectoryPath(fileAbsolutePath, kind);
+  const strippedDirectory = stripDirectoryPath(relativeDirectory, kind);
   // cut the last piece (the actual name of a file) to match the generation in node
-  const cutStrippedDirectory = strippedDirectory
-    .split('/')
-    .slice(0, -1)
-    .join('/');
-  const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
+  const path = `/${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
   const pageLocale =
     SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
@@ -56,7 +54,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const slug =
     pageLocale === DEFAULT_LOCALE
       ? getSlug(path)
-      : getTranslatedSlug(cutStrippedDirectory, title, pageLocale, 'guides');
+      : getTranslatedSlug(strippedDirectory, title, pageLocale, 'guides');
 
   const pageSlug = customSlug || slug;
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
@@ -67,7 +65,7 @@ const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
     cache[pointer] = {
       title,
       objectID: `${objectID}-${pointer}`,
-      slug: pageSlug,
+      slug: pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
       content: chunks[pointer],
     };
   }
@@ -88,9 +86,10 @@ const flatten = (arr, kind = 'docs') => {
 // main query
 const docPagesQuery = `{
   docPages: allFile(
-    filter: { absolutePath: { regex: "/\/docs\//" }, ext:{in: [".md"]} }
+    filter: { relativeDirectory: { regex: "/\/docs\//" }, ext:{in: [".md"]} }
   ) {
     nodes {
+      relativeDirectory
       children {
         ... on Mdx {
         objectID: id
@@ -100,7 +99,6 @@ const docPagesQuery = `{
           slug
         }
         mdxAST
-        fileAbsolutePath
       }
     }
   }
@@ -110,9 +108,10 @@ const docPagesQuery = `{
 // translated guides
 const guidesPagesQuery = `{
   guidesPages: allFile(
-    filter: { absolutePath: { regex: "/\/translated-guides\//" }, ext:{in: [".md"]} }
+    filter: { relativeDirectory: { regex: "/\/translated-guides\//" }, ext:{in: [".md"]} }
   ) {
     nodes {
+      relativeDirectory
       children {
         ... on Mdx {
         objectID: id
@@ -122,7 +121,6 @@ const guidesPagesQuery = `{
           slug
         }
         mdxAST
-        fileAbsolutePath
       }
     }
   }
@@ -136,7 +134,7 @@ const settings = {
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'test-setup';
 
 const queries = [
   {
