@@ -1,8 +1,8 @@
 const I18N_CONFIG = {
   disableRedirectToSelectedLanguage: false,
-  hideEsFromAlgoliaSearch: true,
+  hideEsFromAlgoliaSearch: false,
   hideLanguageToggle: false,
-  hideEsFromRobots: true,
+  hideEsFromRobots: false,
 };
 
 module.exports = { I18N_CONFIG };
