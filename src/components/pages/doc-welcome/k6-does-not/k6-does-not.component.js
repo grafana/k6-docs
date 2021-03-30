@@ -1,60 +1,57 @@
 import { Heading } from 'components/shared/heading';
+import { useI18n } from 'contexts/i18n-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 
 import styles from './k6-does-not.module.scss';
 
-export const K6DoesNot = () => (
-  <section className={`container ${styles.container}`}>
-    <Heading tag={'h2'} size={'lg'} className={styles.title}>
-      What k6 does not
-    </Heading>
-    <p>
-      k6 is a high-performing load testing tool, scriptable in JavaScript. The
-      architectural design to have these capabilities brings some trade-offs:
-    </p>
-    <ul>
-      <li>
-        <Heading tag={'h3'} size={'md'} className={styles.title}>
-          Does not run in a browser
-        </Heading>
-        <p>
-          As a result, k6 does not render webpages the same way a browser does.
-          This also means that libraries relying on browser APIs won&apos;t be
-          compatible. By skipping the browser, the consumption of system
-          resources are dramatically decreased, making the tool significantly
-          more performant.
-        </p>
-        <p>
-          k6 can still be used for{' '}
-          <Link className={'link'} to="/testing-guides/load-testing-websites">
-            load testing websites
-          </Link>
-          . You can even run a test from a{' '}
-          <Link className={'link'} to="/using-k6/session-recording-har-support">
-            recorded user session
-          </Link>
-          .
-        </p>
-      </li>
-      <li>
-        <Heading tag={'h3'} size={'md'} className={styles.title}>
-          Does not run in NodeJS
-        </Heading>
-        <p>
-          JavaScript is not generally well suited for high performance. To
-          achieve maximum performance, the tool itself is written in Go,
-          embedding a JavaScript runtime allowing for easy test scripting.
-        </p>
-        <p>
-          If you want to import npm modules or libraries using NodeJS APIs, you
-          can{' '}
-          <Link className={'link'} to="/using-k6/modules#bundling-node-modules">
-            bundle npm modules with webpack
-          </Link>{' '}
-          and import them in your tests.
-        </p>
-      </li>
-    </ul>
-  </section>
-);
+export const K6DoesNot = () => {
+  const { t } = useI18n();
+
+  return (
+    <section className={`container ${styles.container}`}>
+      <Heading tag={'h2'} size={'lg'} className={styles.title}>
+        {t('welcome.k6-does-not.title')}
+      </Heading>
+      <p>{t('welcome.k6-does-not.description')}</p>
+      <ul>
+        <li>
+          <Heading tag={'h3'} size={'md'} className={styles.title}>
+            {t('welcome.k6-does-not.browser.title')}
+          </Heading>
+          <p>{t('welcome.k6-does-not.browser.description')}</p>
+          <p>
+            {t('welcome.k6-does-not.browser.testing.text')}{' '}
+            <Link className={'link'} to="/testing-guides/load-testing-websites">
+              {t('welcome.k6-does-not.browser.testing.link')}
+            </Link>
+            . {t('welcome.k6-does-not.browser.recorded-session.text')}{' '}
+            <Link
+              className={'link'}
+              to="/using-k6/session-recording-har-support"
+            >
+              {t('welcome.k6-does-not.browser.recorded-session.link')}
+            </Link>
+            .
+          </p>
+        </li>
+        <li>
+          <Heading tag={'h3'} size={'md'} className={styles.title}>
+            {t('welcome.k6-does-not.nodejs.title')}
+          </Heading>
+          <p>{t('welcome.k6-does-not.nodejs.description')}</p>
+          <p>
+            {t('welcome.k6-does-not.nodejs.import.text1')}{' '}
+            <Link
+              className={'link'}
+              to="/using-k6/modules#bundling-node-modules"
+            >
+              {t('welcome.k6-does-not.nodejs.import.link')}
+            </Link>{' '}
+            {t('welcome.k6-does-not.nodejs.import.text2')}
+          </p>
+        </li>
+      </ul>
+    </section>
+  );
+};

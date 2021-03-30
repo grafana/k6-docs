@@ -1,23 +1,31 @@
+/* eslint-disable max-len */
 const Path = require('path');
 
 const {
-  pathCollisionDetector,
   slugify,
+  compose,
+  childrenToList,
+  stripDirectoryPath,
+} = require('./src/utils/utils');
+const {
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+  pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
-  stripDirectoryPath,
-  compose,
   getChildSidebar,
   unorderify,
   getDocSection,
   buildBreadcrumbs,
-  childrenToList,
-  noTrailingSlash,
-  removeGuides,
   dedupePath,
-  removeGuidesAndRedirectWelcome,
-} = require('./src/utils/utils');
+  noTrailingSlash,
+  removeEnPrefix,
+  translatePath,
+  getSlug,
+  getTranslatedSlug,
+} = require('./src/utils/utils.node');
 
+/* constants */
 // auxilary flag to determine the environment (staging/prod)
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
@@ -33,42 +41,65 @@ const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
   return redirect;
 };
 
-async function createDocPages({ graphql, actions, reporter }) {
-  // initiating path collision checker
-  const pathCollisionDetectorInstance = pathCollisionDetector(reporter.warn);
-  const {
-    data: {
-      allFile: { nodes },
-    },
-  } = await graphql(`
-    query docPagesQuery {
-      allFile(
-        filter: { ext: { in: [".md"] }, relativeDirectory: { regex: "/docs/" } }
-        sort: { fields: absolutePath, order: ASC }
-      ) {
-        nodes {
-          name
-          relativeDirectory
-          children {
-            ... on Mdx {
-              body
-              frontmatter {
-                title
-                slug
-                head_title
-                excerpt
-                redirect
-                hideFromSidebar
-                draft
-              }
-            }
-          }
-        }
-      }
+const getPageTranslations = (
+  relativeDirectory,
+  name,
+  getGuidesSidebar,
+  reporter,
+) => {
+  const treeReducer = (subtree, currentNode) => {
+    if (
+      !subtree ||
+      typeof subtree.children === 'undefined' ||
+      typeof subtree.children[currentNode] === 'undefined'
+    ) {
+      return null;
     }
-  `);
+    return subtree.children[currentNode];
+  };
 
-  // Build a tree for a sidebar
+  const pageTranslations = {};
+
+  const filePath = unorderify(
+    stripDirectoryPath(relativeDirectory, 'guides'),
+    // remove locale prefix
+  ).slice(3);
+
+  SUPPORTED_LOCALES.forEach((locale) => {
+    let translation = [...filePath.split('/'), unorderify(name)].reduce(
+      treeReducer,
+      getGuidesSidebar(locale),
+    );
+
+    if (translation && translation.meta) {
+      translation = translation.meta;
+    } else {
+      translation = null;
+    }
+
+    if (translation) {
+      pageTranslations[locale] = translation;
+    } else {
+      reporter.warn(
+        `No ${locale} translation found for ${relativeDirectory}/${name}`,
+      );
+    }
+  });
+
+  return pageTranslations;
+};
+
+const GUIDES_TOP_LEVEL_LINKS = {
+  label: 'guides',
+  to: '/',
+};
+
+const generateTopLevelLinks = (topLevelLinks) => [
+  GUIDES_TOP_LEVEL_LINKS,
+  ...topLevelLinks,
+];
+
+function generateSidebar({ nodes, type = 'docs' }) {
   const sidebarTreeBuilder = buildFileTree(buildFileTreeNode);
 
   nodes.forEach(({ name, relativeDirectory, children: [remarkNode] }) => {
@@ -78,168 +109,61 @@ async function createDocPages({ graphql, actions, reporter }) {
 
     // skip altogether if this content has draft flag
     // OR hideFromSidebar
-    if ((draft === 'true' && isProduction) || hideFromSidebar) return;
+    if (draft === 'true' && isProduction) return;
 
     // titles like k6/html treated like paths otherwise
-    const path = `/${stripDirectoryPath(
+    const translatedPath = `${stripDirectoryPath(
       relativeDirectory,
-      'docs',
+      type,
     )}/${title.replace(/\//g, '-')}`;
 
+    const pageLocale =
+      SUPPORTED_LOCALES.find((locale) =>
+        translatedPath.startsWith(`${locale}/`),
+      ) || DEFAULT_LOCALE;
+
+    const pageSlug =
+      pageLocale === DEFAULT_LOCALE
+        ? `/${getSlug(translatedPath)}`
+        : `/${getTranslatedSlug(
+            relativeDirectory,
+            title,
+            pageLocale,
+            'guides',
+          )}`;
+
     sidebarTreeBuilder.addNode(
-      unorderify(stripDirectoryPath(relativeDirectory, 'docs')),
+      unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path:
-          slug ||
-          compose(
-            noTrailingSlash,
-            removeGuidesAndRedirectWelcome,
-            dedupePath,
-            unorderify,
-            slugify,
-          )(path),
+        path: slug || pageSlug,
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
+        hideFromSidebar: hideFromSidebar || false,
+        isActiveSidebarLink: true,
       },
     );
   });
 
-  // tree representation of a data/markdown/docs folder
-  const sidebar = sidebarTreeBuilder.getTree();
+  return sidebarTreeBuilder.getTree();
+}
 
-  // local helper function that uses carrying, expects one more arg
-  const getSidebar = getChildSidebar(sidebar);
-  const docPageNav = Object.keys(sidebar.children);
-
-  // create data for rendering docs navigation
-  const docPageNavLinks = docPageNav
-    .filter((item) => item !== 'Cloud REST API')
-    .map((item) => ({
-      label: item === 'cloud' ? 'Cloud Docs' : item.toUpperCase(),
-      to: item === 'guides' ? `/` : `/${slugify(item)}`,
-    }))
-    .filter(Boolean);
-
-  // creating actual docs pages
-  nodes.forEach(({ relativeDirectory, children: [remarkNode], name }) => {
-    const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
-    // for debuggin purpose in case there are errors in md/html syntax
-    if (typeof remarkNode === 'undefined') {
-      reporter.warn(
-        `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-          ${relativeDirectory}/${name}`,
-      );
-      return;
-    }
-    if (typeof remarkNode.frontmatter === 'undefined') {
-      reporter.warn(
-        `\nFrontmatter data is missing, unable to generate. Check the following file:\n\n ${relativeDirectory}/${name}`,
-      );
-    }
-    const {
-      frontmatter,
-      frontmatter: { title, redirect, draft, slug: customSlug },
-    } = remarkNode;
-    // if there is a value in redirect field, skip page creation
-    // OR there is draft flag and mode is prod
-    if ((draft === 'true' && isProduction) || redirect) {
-      return;
-    }
-    const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
-    const slug =
-      customSlug ||
-      compose(
-        noTrailingSlash,
-        dedupePath,
-        removeGuides,
-        unorderify,
-        slugify,
-      )(path);
-    // path collision check
-    if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
-      // skip the page creation if there is already a page with identical url
-      return;
-    }
-    const breadcrumbs = compose(
-      buildBreadcrumbs,
-      dedupePath,
-      removeGuides,
-      unorderify,
-    )(path);
-    const extendedRemarkNode = {
-      ...remarkNode,
-      frontmatter: {
-        ...frontmatter,
-        slug,
-        // injection of a link to an article in git repo
-        fileOrigin: encodeURI(
-          `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
-        ),
-      },
-    };
-
-    actions.createPage({
-      path: slug,
-      component: Path.resolve('./src/templates/doc-page.js'),
-      context: {
-        remarkNode: extendedRemarkNode,
-        // dynamically evaluate which part of the sidebar tree are going to be used
-        sidebarTree: compose(
-          getSidebar,
-          getDocSection,
-          unorderify,
-        )(strippedDirectory),
-        breadcrumbs,
-        navLinks: docPageNavLinks,
-      },
-    });
-  });
-
-  // generating pages currently presented in templates/docs/ folder
-  // for the exception of Cloud REST API
-  docPageNav.forEach((item) => {
-    const slug = slugify(item);
-    // manually exclude from top navigation cloud rest api section
-    if (slug === 'cloud-rest-api') {
-      return;
-    }
-    // path collision check
-    if (
-      !pathCollisionDetectorInstance
-        .add({ path: slug, name: `${slug}.js` })
-        .isUnique()
-    ) {
-      // skip the page creation if there is already a page with identical url
-      return;
-    }
-    actions.createPage({
-      path: slug === 'guides' ? `/` : `/${slug}`,
-      component: Path.resolve(`./src/templates/docs/${slug}.js`),
-      context: {
-        sidebarTree: getSidebar(item),
-        navLinks: docPageNavLinks,
-      },
-    });
-  });
-
-  // generating custom 404
-  actions.createPage({
+function getSupplementaryPagesProps({
+  reporter,
+  topLevelNames,
+  topLevelLinks,
+  getSidebar,
+  getGuidesSidebar,
+}) {
+  const notFoundProps = {
     path: '/404',
     component: Path.resolve(`./src/templates/404.js`),
     context: {
       sidebarTree: getSidebar('guides'),
-      navLinks: docPageNavLinks,
+      navLinks: generateTopLevelLinks(topLevelLinks),
     },
-  });
-
-  // generating a bunch of breadcrumbs stubs for top level non-links categories
-
-  // ! attention: filtering here because of unplanned
-  // case with actual pages for top level
-  // sidebar sections. Removing breadcrumbs stub
-  // generation manually.
-  docPageNav
+  };
+  const stubPagesProps = topLevelNames
     .filter(
       (s) =>
         ![
@@ -248,20 +172,15 @@ async function createDocPages({ graphql, actions, reporter }) {
           isProduction ? 'cloud rest api' : '',
         ].includes(s.toLowerCase()),
     )
-    .forEach((section) => {
-      childrenToList(getSidebar(section).children).forEach(({ name }) => {
+    .flatMap((section) => {
+      return childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = compose(
-          buildBreadcrumbs,
-          dedupePath,
-          removeGuides,
-        )(path);
-        actions.createPage({
+        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+        return {
           path: compose(
+            removeEnPrefix,
             noTrailingSlash,
             dedupePath,
-
-            removeGuides,
             slugify,
           )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
@@ -269,12 +188,446 @@ async function createDocPages({ graphql, actions, reporter }) {
             sidebarTree: getSidebar(section),
             breadcrumbs,
             title: name,
-            navLinks: docPageNavLinks,
+            navLinks: generateTopLevelLinks(topLevelLinks),
             directChildren: getSidebar(section).children[name].children,
           },
-        });
+        };
       });
     });
+
+  const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) => {
+    return childrenToList(getGuidesSidebar(locale).children).map(
+      ({ name, meta }) => {
+        const path = `${locale}/${meta.title}`;
+        const breadcrumbs = compose(
+          buildBreadcrumbs,
+          removeEnPrefix,
+          dedupePath,
+        )(path);
+
+        const pageTranslations = {};
+        SUPPORTED_LOCALES.forEach((locale) => {
+          if (
+            typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
+            typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
+          ) {
+            pageTranslations[locale] = getGuidesSidebar(locale).children[
+              name
+            ].meta;
+          } else {
+            reporter.warn(`No ${locale} translation found for ${name}`);
+          }
+        });
+
+        return {
+          path: compose(
+            removeEnPrefix,
+            noTrailingSlash,
+            dedupePath,
+            slugify,
+          )(path),
+          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
+          context: {
+            sidebarTree: getGuidesSidebar(locale),
+            breadcrumbs: breadcrumbs.filter(
+              (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+            ),
+            title: meta.title,
+            navLinks: generateTopLevelLinks(topLevelLinks),
+            directChildren: getGuidesSidebar(locale).children[name].children,
+            locale,
+            translations: pageTranslations,
+          },
+        };
+      },
+    );
+  });
+
+  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
+}
+
+function getTopLevelPagesProps({
+  topLevelNames,
+  topLevelLinks,
+  getSidebar,
+  getGuidesSidebar,
+  pathCollisionDetectorInstance,
+}) {
+  // generating pages currently presented in templates/docs/ folder
+  // for the exception of Cloud REST API
+  return topLevelNames
+    .map((name) => {
+      const slug = slugify(name);
+      // manually exclude from top navigation cloud rest api section
+      if (slug === 'cloud-rest-api') {
+        return false;
+      }
+      // path collision check
+      if (
+        !pathCollisionDetectorInstance
+          .add({ path: slug, name: `${slug}.js` })
+          .isUnique()
+      ) {
+        // skip page creation if there is already a page with identical url
+        return false;
+      }
+
+      return {
+        path: slug === 'guides' ? `/` : `/${slug}`,
+        component: Path.resolve(`./src/templates/docs/${slug}.js`),
+        context: {
+          sidebarTree: getSidebar(name),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      };
+    })
+    .concat(
+      SUPPORTED_LOCALES.map((locale) => ({
+        path: locale === 'en' ? '/' : `/${locale}`,
+        component: Path.resolve(`./src/templates/docs/guides.js`),
+        context: {
+          sidebarTree: getGuidesSidebar(locale),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+          locale,
+        },
+      })),
+    )
+    .filter(Boolean);
+}
+
+function getDocPagesProps({
+  nodes,
+  reporter,
+  topLevelLinks,
+  getSidebar,
+  pathCollisionDetectorInstance,
+}) {
+  // creating actual docs pages
+  return nodes
+    .map(({ relativeDirectory, children: [remarkNode], name }) => {
+      // for debuggin purpose in case there are errors in md/html syntax
+      if (typeof remarkNode === 'undefined') {
+        reporter.warn(
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
+            ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      if (typeof remarkNode.frontmatter === 'undefined') {
+        reporter.warn(
+          `\nFrontmatter data is missing, unable to generate the page. Check the following file:\n\n ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      const {
+        frontmatter,
+        frontmatter: { title, redirect, draft, slug: customSlug },
+      } = remarkNode;
+      // if there is a value in redirect field, skip page creation
+      // OR there is draft flag and mode is prod
+      if ((draft === 'true' && isProduction) || redirect) {
+        return false;
+      }
+
+      const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+
+      const slug = customSlug || getSlug(path);
+      // path collision check
+      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+        // skip the page creation if there is already a page with identical url
+        return false;
+      }
+
+      // generate breadcrumbs
+      const breadcrumbs = compose(
+        buildBreadcrumbs,
+        dedupePath,
+        unorderify,
+      )(path);
+
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...frontmatter,
+          slug,
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          ),
+        },
+      };
+
+      const docSection = compose(getDocSection, unorderify)(strippedDirectory);
+
+      const sidebarTree = getSidebar(docSection);
+
+      return {
+        path: slug,
+        component: Path.resolve('./src/templates/doc-page.js'),
+        context: {
+          remarkNode: extendedRemarkNode,
+          sidebarTree,
+          breadcrumbs,
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      };
+    })
+    .filter(Boolean);
+}
+
+function getGuidesPagesProps({
+  nodesGuides,
+  reporter,
+  topLevelLinks,
+  pathCollisionDetectorInstance,
+  getGuidesSidebar,
+}) {
+  // creating actual docs pages
+  return nodesGuides
+    .map(({ relativeDirectory, children: [remarkNode], name }) => {
+      const strippedDirectory = relativeDirectory.replace(
+        /^.*guides\/(.*)$/,
+        '$1',
+      );
+      // for debuggin purpose in case there are errors in md/html syntax
+      if (typeof remarkNode === 'undefined') {
+        reporter.warn(
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
+            ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      if (typeof remarkNode.frontmatter === 'undefined') {
+        reporter.warn(
+          `\nFrontmatter data is missing, unable to generate the page. Check the following file:\n\n ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      const {
+        frontmatter,
+        frontmatter: { title, redirect, draft, slug: customSlug },
+      } = remarkNode;
+      // if there is a value in redirect field, skip page creation
+      // OR there is draft flag and mode is prod
+      if ((draft === 'true' && isProduction) || redirect) {
+        return false;
+      }
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
+
+      const pageLocale =
+        SUPPORTED_LOCALES.find((locale) =>
+          strippedDirectory.startsWith(`${locale}/`),
+        ) || DEFAULT_LOCALE;
+
+      const slug =
+        pageLocale === DEFAULT_LOCALE
+          ? getSlug(path)
+          : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
+
+      const pageSlug = customSlug || slug;
+
+      // path collision check
+      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+        // skip the page creation if there is already a page with identical url
+        return false;
+      }
+
+      // generate breadcrumbs
+      let breadcrumbs = compose(
+        buildBreadcrumbs,
+        removeEnPrefix,
+        dedupePath,
+        unorderify,
+      )(path);
+
+      if (pageLocale !== DEFAULT_LOCALE) {
+        const translatedPath = translatePath(unorderify(path), pageLocale);
+
+        breadcrumbs = compose(
+          buildBreadcrumbs,
+          removeEnPrefix,
+          dedupePath,
+        )(translatedPath);
+      }
+
+      const sidebarTree = getGuidesSidebar(pageLocale);
+
+      const pageTranslations = getPageTranslations(
+        relativeDirectory,
+        name,
+        getGuidesSidebar,
+        reporter,
+      );
+
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...frontmatter,
+          slug,
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          ),
+          translations: pageTranslations,
+        },
+      };
+
+      return {
+        path: pageSlug || '/',
+        component: Path.resolve('./src/templates/doc-page.js'),
+        context: {
+          remarkNode: extendedRemarkNode,
+          sidebarTree,
+          breadcrumbs: breadcrumbs.filter(
+            (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+          ),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+          locale: pageLocale,
+        },
+      };
+    })
+    .filter(Boolean);
+}
+
+async function fetchDocPagesData(graphql) {
+  const {
+    data: {
+      allFile: { nodes },
+    },
+  } = await graphql(
+    `
+      query docPagesQuery {
+        allFile(
+          filter: {
+            ext: { in: [".md"] }
+            relativeDirectory: { regex: "/docs/" }
+          }
+          sort: { fields: absolutePath, order: ASC }
+        ) {
+          nodes {
+            name
+            relativeDirectory
+            children {
+              ... on Mdx {
+                body
+                frontmatter {
+                  title
+                  slug
+                  head_title
+                  excerpt
+                  redirect
+                  hideFromSidebar
+                  draft
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+  return nodes;
+}
+
+async function fetchGuidesPagesData(graphql) {
+  const {
+    data: {
+      allFile: { nodes },
+    },
+  } = await graphql(
+    `
+      query guidesPagesQuery {
+        allFile(
+          filter: {
+            ext: { in: [".md"] }
+            relativeDirectory: { regex: "/translated-guides/" }
+          }
+          sort: { fields: absolutePath, order: ASC }
+        ) {
+          nodes {
+            name
+            relativeDirectory
+            children {
+              ... on Mdx {
+                body
+                frontmatter {
+                  title
+                  slug
+                  head_title
+                  excerpt
+                  redirect
+                  hideFromSidebar
+                  draft
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+  return nodes;
+}
+
+async function createDocPages({
+  nodes,
+  nodesGuides,
+  sidebar,
+  guidesSidebar,
+  actions,
+  reporter,
+}) {
+  // initiating path collision checker
+  const pathCollisionDetectorInstance = pathCollisionDetector(reporter.warn);
+
+  // local helper function that uses currying, expects one more arg
+  const getSidebar = getChildSidebar(sidebar);
+
+  // local helper function that uses currying, expects one more arg
+  const getGuidesSidebar = getChildSidebar(guidesSidebar);
+
+  // create data for rendering docs navigation
+  const topLevelNames = Object.keys(sidebar.children);
+
+  const topLevelLinks = topLevelNames
+    .filter((name) => name !== 'Cloud REST API')
+    .map((name) => ({
+      label: name === 'cloud' ? 'Cloud Docs' : name.toUpperCase(),
+      to: name === 'guides' ? `/` : `/${slugify(name)}`,
+    }));
+
+  getDocPagesProps({
+    nodes,
+    reporter,
+    topLevelLinks,
+    pathCollisionDetectorInstance,
+    getSidebar,
+  })
+    .concat(
+      getGuidesPagesProps({
+        nodesGuides,
+        reporter,
+        topLevelLinks,
+        pathCollisionDetectorInstance,
+        getGuidesSidebar,
+      }),
+      getTopLevelPagesProps({
+        topLevelNames,
+        topLevelLinks,
+        getSidebar,
+        getGuidesSidebar,
+        pathCollisionDetectorInstance,
+      }),
+      getSupplementaryPagesProps({
+        topLevelNames,
+        topLevelLinks,
+        getSidebar,
+        getGuidesSidebar,
+        reporter,
+      }),
+    )
+    .map((pageProps) => actions.createPage(pageProps));
 }
 
 const createRedirects = ({ actions }) => {
@@ -283,6 +636,13 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/getting-started/welcome',
     toPath: '/',
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/es/empezando/bienvenido',
+    toPath: '/es',
+    redirectInBrowser: true,
     isPermanent: true,
   });
   createRedirect({
@@ -598,7 +958,19 @@ const createRedirects = ({ actions }) => {
 };
 
 exports.createPages = async (options) => {
-  await createDocPages(options);
+  const pagesData = await fetchDocPagesData(options.graphql);
+  const guidesData = await fetchGuidesPagesData(options.graphql);
+
+  const sidebar = generateSidebar({ nodes: pagesData });
+  const guidesSidebar = generateSidebar({ nodes: guidesData, type: 'guides' });
+
+  await createDocPages({
+    ...options,
+    nodes: pagesData,
+    nodesGuides: guidesData,
+    sidebar,
+    guidesSidebar,
+  });
   await createRedirects(options);
 };
 

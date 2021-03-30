@@ -65,7 +65,9 @@
           "styles",
           "svg",
           "templates",
-          "utils"
+          "utils",
+          "contexts",
+          "i18n",
         ]
       }
     ],

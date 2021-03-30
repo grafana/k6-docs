@@ -90,24 +90,29 @@ export const HeaderNav = ({ links }) => {
   return (
     <nav>
       <ul className={styles.list}>
-        {links.map(({ label, to, submenu }) => (
-          <li
-            className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
-            key={label + to}
-          >
-            {submenu ? (
-              <Submenu label={label} submenu={submenu} />
-            ) : (
-              <Single
-                label={label}
-                to={to}
-                sections={links
-                  .filter((item) => item.to !== '/')
-                  .map((item) => withPrefix(item.to))}
-              />
-            )}
-          </li>
-        ))}
+        {links.map((link) => {
+          // eslint-disable-next-line prefer-const
+          let { label, to, submenu } = link;
+
+          return (
+            <li
+              className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
+              key={label + to}
+            >
+              {submenu ? (
+                <Submenu label={label} submenu={submenu} />
+              ) : (
+                <Single
+                  label={label}
+                  to={to}
+                  sections={links
+                    .filter((item) => item.to !== '/')
+                    .map((item) => withPrefix(item.to))}
+                />
+              )}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

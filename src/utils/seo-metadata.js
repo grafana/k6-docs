@@ -37,6 +37,14 @@ export default {
         'The k6 Documentation helps you to use k6 to get your performance testing on the right track. Learn more about load and performance testing. Get started in minutes.',
     },
   },
+  guidesES: {
+    data: {
+      title:
+        'Documentación de k6 - Herramienta Open Source de Pruebas de Carga',
+      description:
+        'La documentación de k6 le ayudará a ejecutar sus pruebas de rendimiento correctamente. Aprenda y comience rápidamente a efectuar sus tests de carga y rendimiento',
+    },
+  },
   integrations: {
     data: {
       title: 'k6 Integrations',

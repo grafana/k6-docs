@@ -10,9 +10,12 @@ import { MobileNav } from 'components/blocks/mobile-nav';
 import CookieConsent from 'components/shared/cookie-consent';
 import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
+import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
+import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
+import { I18N_CONFIG } from 'i18n/i18n-config';
 import React, { useLayoutEffect, useState, useEffect } from 'react';
 import {
   Cookies,
@@ -119,11 +122,12 @@ const SidebarNode = (props) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const maybePrefixedPath = withPrefix(meta.path);
+    // need to encode URI to correctly compare Spanish special characters
+    const maybePrefixedPath = encodeURI(withPrefix(meta.path));
     const doesPathMatchLocation =
       maybePrefixedPath === window.location.pathname;
     const isPathLocationPart =
-      meta.path === '/'
+      meta.path === '/' || meta.path === '/es'
         ? false
         : window.location.pathname.startsWith(`${maybePrefixedPath}/`) ||
           window.location.pathname.startsWith(
@@ -165,23 +169,29 @@ const SidebarNode = (props) => {
     if (meta.redirect) {
       return 'externalLink';
     }
-    if (meta.path) {
+    if (meta.isActiveSidebarLink) {
       return 'internalLink';
     }
     return 'text';
   };
 
   return (
-    <div className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}>
-      {nodes[nodeType()]()}
-      {!!Object.keys(children).length && isActive && (
-        <div className={styles.sidebarNodeChildren}>
-          {childrenToList(children).map((node) => (
-            <SidebarNode node={node} key={node.name} />
-          ))}
+    <>
+      {!meta.hideFromSidebar && (
+        <div
+          className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}
+        >
+          {nodes[nodeType()]()}
+          {!!Object.keys(children).length && isActive && (
+            <div className={styles.sidebarNodeChildren}>
+              {childrenToList(children).map((node) => (
+                <SidebarNode node={node} key={node.name} />
+              ))}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
@@ -191,12 +201,15 @@ const SidebarNode = (props) => {
 
 export const DocLayout = ({
   pageMetadata,
+  pageTranslations = null,
   sidebarTree,
   navLinks: links,
   children,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
+  const { locale, urlLocale, setLocale } = useLocale();
+
   useEffect(() => {
     if (isMobileNavVisible) {
       document.querySelector('html').style.overflow = 'hidden';
@@ -207,18 +220,58 @@ export const DocLayout = ({
 
   useEffect(() => setShowFooter(!isInIFrame()), []);
 
+  const languageChangeHandler = (lang) => {
+    setLocale(lang);
+    if (
+      urlLocale &&
+      lang !== urlLocale &&
+      pageTranslations &&
+      pageTranslations[lang]
+    ) {
+      navigate(pageTranslations[lang].path);
+    }
+  };
+
+  const location = typeof window !== 'undefined' ? window.pathname : '';
+
+  // if another language was selected and current page has a translated version in that language,
+  // redirect to it
+  React.useEffect(() => {
+    if (I18N_CONFIG.disableRedirectToSelectedLanguage) {
+      return;
+    }
+
+    if (
+      pageTranslations &&
+      locale &&
+      pageTranslations[locale] &&
+      locale !== urlLocale
+    ) {
+      navigate(pageTranslations[locale].path);
+    }
+  }, [location]);
+
+  const showLanguageToggle =
+    !I18N_CONFIG.hideLanguageToggle && !!pageTranslations;
+
   return (
     <div className={styles.wrapper}>
-      <SEO {...pageMetadata} />
+      <SEO pageTranslations={pageTranslations} {...pageMetadata} />
 
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
+          {showLanguageToggle && (
+            <LanguageSwitcher
+              onLanguageChange={languageChangeHandler}
+              className={styles.languageSwitcher}
+            />
+          )}
         </div>
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
-              {sectionNode.meta.path ? (
+              {sectionNode.meta.isActiveSidebarLink ? (
                 <Heading
                   className={styles.sidebarSectionTitle}
                   size={'sm'}
@@ -276,6 +329,15 @@ export const DocLayout = ({
                 sidebarTree={sidebarTree}
                 links={links.map(({ to }) => to)}
               />
+              {showLanguageToggle && (
+                <LanguageSwitcher
+                  onLanguageChange={languageChangeHandler}
+                  className={classNames(
+                    styles.languageSwitcher,
+                    styles.languageSwitcherMobile,
+                  )}
+                />
+              )}
             </div>
           </div>
         </Header>

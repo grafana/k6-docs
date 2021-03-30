@@ -33,7 +33,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
-| [No Summary](#no-summary)                                 | Disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
+| [no summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
 | [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
 | [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |

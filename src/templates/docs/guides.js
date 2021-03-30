@@ -11,6 +11,8 @@ import {
 import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import I18nProvider from 'contexts/i18n-provider';
+import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
@@ -19,28 +21,59 @@ import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 
 const pageInfo = {
-  title: 'Welcome to the k6 documentation',
-  description:
-    'This documentation will help you go from a total beginner to a seasoned k6 expert!',
+  en: {
+    title: 'Welcome to the k6 documentation',
+    description:
+      'This documentation will help you go from a total beginner to a seasoned k6 expert!',
+  },
+  es: {
+    title: 'Bienvenido a la documentación de k6',
+    description:
+      'Esta documentación le ayudará a pasar de ser un principiante a un experto en k6.',
+  },
 };
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+function GuidesContent({
+  path,
+  pageContext: { sidebarTree, navLinks, locale = 'en' },
+}) {
   useScrollToAnchor();
 
-  const pageMetadata = SeoMetadata.guides;
+  const pageMetadata = {
+    data: {
+      ...(locale === 'es'
+        ? SeoMetadata.guidesES.data
+        : SeoMetadata.guides.data),
+      slug: path.slice(1),
+    },
+  };
   const contentContainerRef = useRef(null);
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
 
+  // @TODO: update if more languages are added
+  const guidesTranslations = {
+    en: {
+      path: '/',
+      title: 'Guides',
+    },
+    es: {
+      path: '/es',
+      title: 'Guías',
+    },
+  };
+
   return (
     <DocLayout
       sidebarTree={sidebarTree}
       navLinks={navLinks}
       pageMetadata={pageMetadata}
+      locale={locale}
+      pageTranslations={guidesTranslations}
     >
-      <PageInfo {...pageInfo} />
+      <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
         <StickyContainer>
           <div ref={contentContainerRef} className={stickyContainerClasses}>
@@ -50,16 +83,18 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
             <UseCases />
             <Manifesto />
             <K6DoesNot />
-            <Cloud
-              title={'Looking for k6 Cloud?'}
-              btnLink={`${docs}/cloud`}
-              isExternal
-              btnTarget={'_self'}
-              btnText={'Cloud docs'}
-              description={
-                'A tailored SaaS service to bring your team together into load testing.'
-              }
-            />
+            {locale === 'en' && (
+              <Cloud
+                title={'Looking for k6 Cloud?'}
+                btnLink={`${docs}/cloud`}
+                isExternal
+                btnTarget={'_self'}
+                btnText={'Cloud docs'}
+                description={
+                  'A tailored SaaS service to bring your team together into load testing.'
+                }
+              />
+            )}
           </div>
 
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
@@ -74,5 +109,19 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
         </StickyContainer>
       </div>
     </DocLayout>
+  );
+}
+
+export default function (props) {
+  const {
+    pageContext: { locale = 'en' },
+  } = props;
+
+  return (
+    <LocaleProvider urlLocale={locale}>
+      <I18nProvider>
+        <GuidesContent {...props} />
+      </I18nProvider>
+    </LocaleProvider>
   );
 }

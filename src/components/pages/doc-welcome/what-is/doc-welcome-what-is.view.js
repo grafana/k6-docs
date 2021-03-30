@@ -1,23 +1,18 @@
 import { Heading } from 'components/shared/heading';
-import * as React from 'react';
+import { useI18n } from 'contexts/i18n-provider';
+import React from 'react';
 
 import styles from './doc-welcome-what-is.module.scss';
 
 export const WhatIs = () => {
+  const { t } = useI18n();
   return (
     <section className={`container ${styles.container}`}>
       <Heading tag={'h2'} size={'lg'} className={styles.title}>
-        What is k6?
+        {t('welcome.what-is.title')}
       </Heading>
-      <p className={styles.description}>
-        k6 is a developer-centric, free and open-source load testing tool built
-        for making performance testing a productive and enjoyable experience.
-      </p>
-      <p className={styles.description}>
-        Using k6, you&apos;ll be able to catch performance regression and
-        problems earlier, allowing you to build resilient systems and robust
-        applications.
-      </p>
+      <p className={styles.description}>{t('welcome.what-is.description1')}</p>
+      <p className={styles.description}>{t('welcome.what-is.description2')}</p>
     </section>
   );
 };

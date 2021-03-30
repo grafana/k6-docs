@@ -9,6 +9,7 @@ import { CodeGroup, Code, CodeInline } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
 import TableWrapper from 'components/shared/table-wrapper';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
+import LocaleProvider from 'contexts/locale-provider';
 import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
@@ -57,37 +58,40 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
+
   return (
-    <DocLayout
-      sidebarTree={sidebarTree}
-      navLinks={navLinks}
-      pageMetadata={pageMetadata}
-    >
-      <PageInfo
-        title={'JavaScript API'}
-        description={'Welcome to the k6 JavaScript API documentation.'}
-      />
-      <div className={docPageContent.inner}>
-        <StickyContainer>
-          <div ref={contentContainerRef} className={stickyContainerClasses}>
-            <div className={`${htmlStyles.wrapper}`}>
-              <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
-                {content}
-              </CustomContentContainer>
+    <LocaleProvider>
+      <DocLayout
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
+        pageMetadata={pageMetadata}
+      >
+        <PageInfo
+          title={'JavaScript API'}
+          description={'Welcome to the k6 JavaScript API documentation.'}
+        />
+        <div className={docPageContent.inner}>
+          <StickyContainer>
+            <div ref={contentContainerRef} className={stickyContainerClasses}>
+              <div className={`${htmlStyles.wrapper}`}>
+                <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
+                  {content}
+                </CustomContentContainer>
+              </div>
             </div>
-          </div>
-          <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            {({ style }) => (
-              <TableOfContents
-                style={{ ...style, left: 350 }}
-                contentContainerRef={contentContainerRef}
-                shouldMakeReplacement
-              />
-            )}
-          </Sticky>
-        </StickyContainer>
-      </div>
-    </DocLayout>
+            <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
+              {({ style }) => (
+                <TableOfContents
+                  style={{ ...style, left: 350 }}
+                  contentContainerRef={contentContainerRef}
+                  shouldMakeReplacement
+                />
+              )}
+            </Sticky>
+          </StickyContainer>
+        </div>
+      </DocLayout>
+    </LocaleProvider>
   );
 }
 

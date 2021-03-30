@@ -17,7 +17,7 @@
     "predevelop": "test -f ./.env.development || cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
     "lint": "eslint src/",
-    "lint:prose": " vale --glob='*.md' ./src/data/markdown",
+    "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
     "lint:fix": "eslint src/ --fix",
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",

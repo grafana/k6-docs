@@ -1,18 +1,17 @@
+/* eslint-disable no-useless-escape */
 const chunk = require('chunk-text');
 
-const {
-  unorderify,
-  slugify,
-  stripDirectoryPath,
-  compose,
-  noTrailingSlash,
-  dedupePath,
-  removeGuidesAndRedirectWelcome,
-  mdxAstToPlainText,
-  flat,
-} = require('./utils');
+const { I18N_CONFIG } = require('../i18n/i18n-config');
 
-const processMdxEntry = ({ children: [entry] }) => {
+const { stripDirectoryPath, mdxAstToPlainText, flat } = require('./utils');
+const {
+  getSlug,
+  getTranslatedSlug,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+} = require('./utils.node');
+
+const processMdxEntry = ({ children: [entry] }, kind = 'docs') => {
   const {
     fileAbsolutePath,
     mdxAST,
@@ -33,23 +32,33 @@ const processMdxEntry = ({ children: [entry] }) => {
     return [];
   }
 
-  const strippedDirectory = stripDirectoryPath(fileAbsolutePath, 'docs');
-  // cut the last piece (the actual name of a file) to match the generation
-  // in node
+  // @TODO: remove to enable sending spanish content to Algolia
+  if (I18N_CONFIG.hideEsFromAlgoliaSearch) {
+    if (/\/es\//i.test(fileAbsolutePath)) {
+      // eslint-disable-next-line no-console
+      console.log('exluded ES page from algolia indecies:', fileAbsolutePath);
+      return [];
+    }
+  }
+
+  const strippedDirectory = stripDirectoryPath(fileAbsolutePath, kind);
+  // cut the last piece (the actual name of a file) to match the generation in node
   const cutStrippedDirectory = strippedDirectory
     .split('/')
     .slice(0, -1)
     .join('/');
   const path = `/${cutStrippedDirectory}/${title.replace(/\//g, '-')}`;
+
+  const pageLocale =
+    SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
+    DEFAULT_LOCALE;
+
   const slug =
-    customSlug ||
-    compose(
-      noTrailingSlash,
-      dedupePath,
-      removeGuidesAndRedirectWelcome,
-      unorderify,
-      slugify,
-    )(path);
+    pageLocale === DEFAULT_LOCALE
+      ? getSlug(path)
+      : getTranslatedSlug(cutStrippedDirectory, title, pageLocale, 'guides');
+
+  const pageSlug = customSlug || slug;
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
   let pointer = chunks.length;
   const cache = new Array(pointer);
@@ -58,7 +67,7 @@ const processMdxEntry = ({ children: [entry] }) => {
     cache[pointer] = {
       title,
       objectID: `${objectID}-${pointer}`,
-      slug,
+      slug: pageSlug,
       content: chunks[pointer],
     };
   }
@@ -66,12 +75,12 @@ const processMdxEntry = ({ children: [entry] }) => {
 };
 
 // auxilary flattening fn
-const flatten = (arr) => {
+const flatten = (arr, kind = 'docs') => {
   let pointer = arr.length;
   const cache = new Array(pointer);
   // eslint-disable-next-line no-plusplus
   while (pointer--) {
-    cache[pointer] = processMdxEntry(arr[pointer]);
+    cache[pointer] = processMdxEntry(arr[pointer], kind);
   }
   return flat(cache);
 };
@@ -79,7 +88,29 @@ const flatten = (arr) => {
 // main query
 const docPagesQuery = `{
   docPages: allFile(
-    filter: { absolutePath: { regex: "/docs/" }, ext:{in: [".md"]} }
+    filter: { absolutePath: { regex: "/\/docs\//" }, ext:{in: [".md"]} }
+  ) {
+    nodes {
+      children {
+        ... on Mdx {
+        objectID: id
+        frontmatter {
+          title
+          redirect
+          slug
+        }
+        mdxAST
+        fileAbsolutePath
+      }
+    }
+  }
+}
+}`;
+
+// translated guides
+const guidesPagesQuery = `{
+  guidesPages: allFile(
+    filter: { absolutePath: { regex: "/\/translated-guides\//" }, ext:{in: [".md"]} }
   ) {
     nodes {
       children {
@@ -111,6 +142,12 @@ const queries = [
   {
     query: docPagesQuery,
     transformer: ({ data }) => flatten(data.docPages.nodes),
+    indexName,
+    settings,
+  },
+  {
+    query: guidesPagesQuery,
+    transformer: ({ data }) => flatten(data.guidesPages.nodes, 'guides'),
     indexName,
     settings,
   },
