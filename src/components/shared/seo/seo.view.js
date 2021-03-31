@@ -40,14 +40,35 @@ export const SEO = ({
   const currentUrl = slug ? `${docs}/${slug}` : docs;
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
-  const hrefLangRelAttributeHash = {
-    en: 'alternate',
-    es: 'alternate',
+  const hrefLangAttributes = {
+    en: { rel: 'alternate', href: `${siteUrl}/docs` },
+    es: { rel: 'alternate', href: `${siteUrl}/docs` },
   };
+
+  if (pageTranslations) {
+    let esPathname = pageTranslations.es.path;
+    let enPathname = pageTranslations.en.path;
+
+    if (esPathname.endsWith('/')) {
+      // gatsby-plugin-react-helmet-canonical-urls.noTrailingSlash
+      esPathname = esPathname.substring(0, esPathname.length - 1);
+    }
+    if (enPathname.endsWith('/')) {
+      // gatsby-plugin-react-helmet-canonical-urls.noTrailingSlash
+      enPathname = enPathname.substring(0, enPathname.length - 1);
+    }
+    hrefLangAttributes.es.href += esPathname;
+    hrefLangAttributes.en.href += enPathname;
+
+    // if  no pageTranslations, we must enable `gatsby-plugin-react-helmet-canonical-urls`
+  }
+
+  // we have to setup the `canonical` URL with `hreflang`.
+  // we must do it here because `gatsby-plugin-react-helmet-canonical-urls` does not cover this case
   if (slug && (slug.startsWith('es/') || slug === 'es')) {
-    hrefLangRelAttributeHash.es = 'canonical';
+    hrefLangAttributes.es.rel = 'canonical';
   } else {
-    hrefLangRelAttributeHash.en = 'canonical';
+    hrefLangAttributes.en.rel = 'canonical';
   }
 
   return (
@@ -82,21 +103,21 @@ export const SEO = ({
         {pageTranslations && pageTranslations.en !== undefined && (
           <link
             hrefLang="en"
-            href={`${siteUrl}/docs${pageTranslations.en.path}`}
-            rel={`${hrefLangRelAttributeHash.en}`}
+            href={`${hrefLangAttributes.en.href}`}
+            rel={`${hrefLangAttributes.en.rel}`}
           />
         )}
         {pageTranslations && pageTranslations.es !== undefined && (
           <link
             hrefLang="es"
-            href={`${siteUrl}/docs${pageTranslations.es.path}`}
-            rel={`${hrefLangRelAttributeHash.es}`}
+            href={`${hrefLangAttributes.es.href}`}
+            rel={`${hrefLangAttributes.es.rel}`}
           />
         )}
         {pageTranslations && (
           <link
             hrefLang="x-default"
-            href={`${siteUrl}/docs${pageTranslations.en.path}`}
+            href={`${hrefLangAttributes.en.href}`}
             rel="alternate"
           />
         )}
