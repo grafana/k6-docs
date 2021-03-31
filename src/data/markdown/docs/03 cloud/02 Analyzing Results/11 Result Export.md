@@ -11,7 +11,9 @@ If you want to know other methods to analyze your test results, check out the k6
 
 ## Generate PDF report
 
-To generate a PDF report from a test result, visit the test result, click the options menu - triple-dot button **⫶** in the top right  - and select `Generate PDF summary`. After a few seconds, the browser will prompt you to download the PDF summary report.
+> ⭐️ The PDF report is available on annual Pro and Enterprise plans.
+
+To generate a PDF report from a test result, visit the test result, click the options menu - triple-dot button **⫶** in the top right - and select `Generate PDF summary`. After a few seconds, the browser will prompt you to download the PDF summary report.
 
 The PDF report is an executive summary of the test result's most relevant metrics and performance data. A complete PDF example can be found [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
 
