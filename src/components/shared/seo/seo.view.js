@@ -86,7 +86,7 @@ export const SEO = ({
         {pageTranslations && (
           <link
             hrefLang="x-default"
-            href={`${siteUrl}/${currentUrl}`}
+            href={`${siteUrl}/docs${pageTranslations.en.path}`}
             rel="alternate"
           />
         )}
