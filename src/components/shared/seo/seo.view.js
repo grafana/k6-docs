@@ -40,6 +40,16 @@ export const SEO = ({
   const currentUrl = slug ? `${docs}/${slug}` : docs;
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
+  const hrefLangRelAttributeHash = {
+    en: 'alternate',
+    es: 'alternate',
+  };
+  if (slug && (slug.startsWith('es/') || slug === 'es')) {
+    hrefLangRelAttributeHash.es = 'canonical';
+  } else {
+    hrefLangRelAttributeHash.en = 'canonical';
+  }
+
   return (
     <>
       {I18N_CONFIG.hideEsFromRobots &&
@@ -73,14 +83,14 @@ export const SEO = ({
           <link
             hrefLang="en"
             href={`${siteUrl}/docs${pageTranslations.en.path}`}
-            rel="alternate"
+            rel={`${hrefLangRelAttributeHash.en}`}
           />
         )}
         {pageTranslations && pageTranslations.es !== undefined && (
           <link
             hrefLang="es"
             href={`${siteUrl}/docs${pageTranslations.es.path}`}
-            rel="alternate"
+            rel={`${hrefLangRelAttributeHash.es}`}
           />
         )}
         {pageTranslations && (

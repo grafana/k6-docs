@@ -12,13 +12,6 @@ const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
   'gatsby-plugin-react-helmet',
-  {
-    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-    options: {
-      siteUrl: process.env.GATSBY_DEFAULT_MAIN_URL,
-      noTrailingSlash: true,
-    },
-  },
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
   'gatsby-plugin-catch-links',
@@ -167,6 +160,17 @@ if (process.env.GATSBY_DRIFT_API) {
     resolve: 'local-plugin-drift',
     options: {
       appId: process.env.GATSBY_DRIFT_API,
+    },
+  });
+}
+
+const autoCanonicalURL = false;
+if (autoCanonicalURL) {
+  plugins.push({
+    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+    options: {
+      siteUrl: process.env.GATSBY_DEFAULT_MAIN_URL,
+      noTrailingSlash: true,
     },
   });
 }
