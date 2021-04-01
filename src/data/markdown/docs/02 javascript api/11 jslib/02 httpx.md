@@ -9,20 +9,21 @@ It's a http client with features that are not yet available in the native module
  - ability to set default tags and headers that will be used for all requests
  - more user-friendly arguments to request functions (get, post, put take the same arguments)
 
-
-
 httpx module integrates well with expect library. 
-
 
 <Blockquote mod='warning'>
 
 #### This library is in active development
 
-This library is stable enough to be useful, but pay attention to the new versions released in jslib.k6.io. 
+This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io). 
 
 This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
 
 </Blockquote>
+
+Source code available on [GitHub](https://github.com/k6io/k6-jslib-httpx). 
+
+Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-httpx/issues).
 
 
 ### Example
