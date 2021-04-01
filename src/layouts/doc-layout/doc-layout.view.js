@@ -247,7 +247,7 @@ export const DocLayout = ({
       pageTranslations[locale] &&
       locale !== urlLocale
     ) {
-      navigate(pageTranslations[locale].path);
+      navigate(pageTranslations[locale].path, { replace: true });
     }
   }, [location]);
 
