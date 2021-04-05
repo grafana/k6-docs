@@ -15,7 +15,6 @@ const plugins = [
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
   'gatsby-plugin-catch-links',
-  'gatsby-plugin-remove-trailing-slashes',
   'gatsby-plugin-resolve-src',
   'gatsby-transformer-json',
   {
@@ -170,7 +169,8 @@ if (autoCanonicalURL) {
     resolve: `gatsby-plugin-react-helmet-canonical-urls`,
     options: {
       siteUrl: process.env.GATSBY_DEFAULT_MAIN_URL,
-      noTrailingSlash: true,
+      noHash: true,
+      noQueryString: true,
     },
   });
 }
