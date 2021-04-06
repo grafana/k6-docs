@@ -1,9 +1,9 @@
 ---
-title: 'delete(url, [body], [params])'
-description: 'httpx.delete makes DELETE requests'
+title: 'head(url, [body], [params])'
+description: 'httpx.head makes HEAD requests'
 ---
 
-`session.delete(url, body, params)` makes a DELETE request. Only the first parameter is required. Body is discouraged. 
+`session.head(url, body, params)` makes a HEAD request. Only the first parameter is required
 
 
 | Parameter      | Type   | Description                                                                          |
@@ -32,7 +32,8 @@ let session = new Httpx({
 });
 
 export default function testSuite() {
-  let resp = session.delete(`/delete`);
+  let resp = session.head(`/head`);
+	console.log(resp.status)
 }
 
 ```
