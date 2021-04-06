@@ -5,9 +5,11 @@ excerpt: "A collection of small utility functions useful during load testing wit
 
 The `utils` module contains number of small utility functions useful in every day load testing. 
 
-Source code available on [GitHub](https://github.com/k6io/k6-jslib-utils). 
+> ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-utils). 
+> Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-utils/issues).
 
-Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-utils/issues).
+
+
 
 
 | Function | Description |

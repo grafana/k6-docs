@@ -10,8 +10,10 @@ This library is especially useful for:
  - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
  - Load testing, where the failures of the System Under Test need to be robustly collected for analysis
 
+> ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-expect). 
+> Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-expect/issues).
 
-<Blockquote mod='warning'>
+<Blockquote mod='info'>
 
 #### This library is rapidly evolving.
 
@@ -20,11 +22,6 @@ This library is stable enough to be useful, but pay attention to the new version
 This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
 
 </Blockquote>
-
-Source code available on [GitHub](https://github.com/k6io/k6-jslib-expect). 
-
-Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-expect/issues).
-
 
 ## Installation
 There's nothing to install. This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in the k6 script directly.
