@@ -75,7 +75,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     We want you to spend time building and maintaining
                     well-performing applications. Don’t saddle your team with
                     the{' '}
-                    <a href="https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution">
+                    <a href="https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution/">
                       additional maintenance burden
                     </a>{' '}
                     of your load testing infrastructure.
@@ -96,9 +96,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Trait>
                       <Trait>
                         <Link
-                          to={
-                            '/cloud/creating-and-running-a-test/test-builder/'
-                          }
+                          to={'/cloud/creating-and-running-a-test/test-builder'}
                         >
                           Test Builder
                         </Link>{' '}
@@ -157,7 +155,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         See team and testing activity with{' '}
                         <Link
                           to={
-                            '/cloud/project-and-team-management/usage-reports'
+                            '/cloud/project-and-team-management/usage-reports/'
                           }
                         >
                           Usage reports
