@@ -23,16 +23,16 @@ export const UseCases = () => {
             {' ('}
             <Link
               className={'link'}
-              to="/test-types/stress-testing#spike-testing-in-k6"
+              to="/test-types/stress-testing#spike-testing-in-k6/"
             >
               spike
             </Link>
             ,{' '}
-            <Link className={'link'} to="/test-types/stress-testing">
+            <Link className={'link'} to="/test-types/stress-testing/">
               stress
             </Link>
             ,{' '}
-            <Link className={'link'} to="/test-types/soak-testing">
+            <Link className={'link'} to="/test-types/soak-testing/">
               soak tests
             </Link>
             {') '}
@@ -47,7 +47,7 @@ export const UseCases = () => {
             {t('welcome.use-cases.performance-monitoring.description1')}{' '}
             <Link
               className={'link'}
-              to="/testing-guides/automated-performance-testing"
+              to="/testing-guides/automated-performance-testing/"
             >
               {t('welcome.use-cases.performance-monitoring.testing-automation')}
             </Link>

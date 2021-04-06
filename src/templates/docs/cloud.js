@@ -87,7 +87,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         Scale tests from{' '}
                         <Link
                           to={
-                            '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones'
+                            '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#list-of-supported-load-zones'
                           }
                         >
                           multiple locations
@@ -96,14 +96,16 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Trait>
                       <Trait>
                         <Link
-                          to={'/cloud/creating-and-running-a-test/test-builder'}
+                          to={
+                            '/cloud/creating-and-running-a-test/test-builder/'
+                          }
                         >
                           Test Builder
                         </Link>{' '}
                         and{' '}
                         <Link
                           to={
-                            '/cloud/creating-and-running-a-test/script-editor'
+                            '/cloud/creating-and-running-a-test/script-editor/'
                           }
                         >
                           Script Editor
@@ -114,7 +116,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         <Link to={'/using-k6/cloud-execution'}>CLI</Link> and{' '}
                         <Link
                           to={
-                            '/test-authoring/recording-a-session/browser-recorder'
+                            '/test-authoring/recording-a-session/browser-recorder/'
                           }
                         >
                           Browser Recorder
@@ -124,26 +126,28 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       <Trait>
                         <Link
                           to={
-                            '/cloud/creating-and-running-a-test/scheduling-tests'
+                            '/cloud/creating-and-running-a-test/scheduling-tests/'
                           }
                         >
                           Scheduling
                         </Link>{' '}
                         and{' '}
-                        <Link to={'/cloud/integrations/notifications'}>
+                        <Link to={'/cloud/integrations/notifications/'}>
                           Notifications
                         </Link>
                         .
                       </Trait>
                       <Trait>
                         <Link
-                          to={'/cloud/project-and-team-management/team-members'}
+                          to={
+                            '/cloud/project-and-team-management/team-members/'
+                          }
                         >
                           Team members
                         </Link>{' '}
                         and{' '}
                         <Link
-                          to={'/cloud/project-and-team-management/projects'}
+                          to={'/cloud/project-and-team-management/projects/'}
                         >
                           Projects
                         </Link>
@@ -164,7 +168,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
 
                     <div className={'col-lg-6 traits'}>
                       <Trait>
-                        <Link to={'/cloud/analyzing-results/overview'}>
+                        <Link to={'/cloud/analyzing-results/overview/'}>
                           Premium test result visualization
                         </Link>
                         .
@@ -172,19 +176,19 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       <Trait>
                         Get actionable{' '}
                         <Link
-                          to={'/cloud/analyzing-results/performance-insights'}
+                          to={'/cloud/analyzing-results/performance-insights/'}
                         >
                           Performance Insights
                         </Link>{' '}
                         .
                       </Trait>
                       <Trait>
-                        <Link to={'/cloud/analyzing-results/test-comparison'}>
+                        <Link to={'/cloud/analyzing-results/test-comparison/'}>
                           Compare tests{' '}
                         </Link>{' '}
                         and{' '}
                         <Link
-                          to={'/cloud/analyzing-results/performance-trending'}
+                          to={'/cloud/analyzing-results/performance-trending/'}
                         >
                           performance trends
                         </Link>
@@ -192,28 +196,30 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                       </Trait>
                       <Trait>
                         Integrate results with{' '}
-                        <Link to={'/cloud/integrations/cloud-apm'}>
+                        <Link to={'/cloud/integrations/cloud-apm/'}>
                           APM platforms
                         </Link>{' '}
                         and{' '}
-                        <Link to={'/cloud/integrations/grafana-plugin'}>
+                        <Link to={'/cloud/integrations/grafana-plugin/'}>
                           Grafana
                         </Link>
                         .
                       </Trait>
                       <Trait>
                         Export results to{' '}
-                        <Link to={'/cloud/analyzing-results/result-export'}>
+                        <Link to={'/cloud/analyzing-results/result-export/'}>
                           CSV
                         </Link>{' '}
                         and generate{' '}
-                        <Link to={'/cloud/analyzing-results/result-export'}>
+                        <Link to={'/cloud/analyzing-results/result-export/'}>
                           PDF reports
                         </Link>
                         .
                       </Trait>
                       <Trait>
-                        <Link to={'/cloud/analyzing-results/test-results-menu'}>
+                        <Link
+                          to={'/cloud/analyzing-results/test-results-menu/'}
+                        >
                           Create notes and share results
                         </Link>
                         .
