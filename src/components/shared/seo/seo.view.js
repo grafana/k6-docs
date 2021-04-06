@@ -49,13 +49,13 @@ export const SEO = ({
     let esPathname = pageTranslations.es.path;
     let enPathname = pageTranslations.en.path;
 
-    if (esPathname.endsWith('/')) {
-      // gatsby-plugin-react-helmet-canonical-urls.noTrailingSlash
-      esPathname = esPathname.substring(0, esPathname.length - 1);
+    if (!esPathname.endsWith('/')) {
+      // make sure each link has trailing slash
+      esPathname = `${esPathname}/`;
     }
-    if (enPathname.endsWith('/')) {
-      // gatsby-plugin-react-helmet-canonical-urls.noTrailingSlash
-      enPathname = enPathname.substring(0, enPathname.length - 1);
+    if (!enPathname.endsWith('/')) {
+      // make sure each link has trailing slash
+      enPathname = `${enPathname}/`;
     }
     hrefLangAttributes.es.href += esPathname;
     hrefLangAttributes.en.href += enPathname;

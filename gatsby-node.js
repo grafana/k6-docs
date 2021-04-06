@@ -18,7 +18,7 @@ const {
   getDocSection,
   buildBreadcrumbs,
   dedupePath,
-  noTrailingSlash,
+  addTrailingSlash,
   removeEnPrefix,
   translatePath,
   getSlug,
@@ -179,7 +179,7 @@ function getSupplementaryPagesProps({
         return {
           path: compose(
             removeEnPrefix,
-            noTrailingSlash,
+            addTrailingSlash,
             dedupePath,
             slugify,
           )(path),
@@ -222,7 +222,7 @@ function getSupplementaryPagesProps({
         return {
           path: compose(
             removeEnPrefix,
-            noTrailingSlash,
+            addTrailingSlash,
             dedupePath,
             slugify,
           )(path),
@@ -230,7 +230,8 @@ function getSupplementaryPagesProps({
           context: {
             sidebarTree: getGuidesSidebar(locale),
             breadcrumbs: breadcrumbs.filter(
-              (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+              (item) =>
+                !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
             ),
             title: meta.title,
             navLinks: generateTopLevelLinks(topLevelLinks),
@@ -273,7 +274,7 @@ function getTopLevelPagesProps({
       }
 
       return {
-        path: slug === 'guides' ? `/` : `/${slug}`,
+        path: slug === 'guides' ? `/` : `/${slug}/`,
         component: Path.resolve(`./src/templates/docs/${slug}.js`),
         context: {
           sidebarTree: getSidebar(name),
@@ -283,7 +284,7 @@ function getTopLevelPagesProps({
     })
     .concat(
       SUPPORTED_LOCALES.map((locale) => ({
-        path: locale === 'en' ? '/' : `/${locale}`,
+        path: locale === 'en' ? '/' : `/${locale}/`,
         component: Path.resolve(`./src/templates/docs/guides.js`),
         context: {
           sidebarTree: getGuidesSidebar(locale),
@@ -332,7 +333,7 @@ function getDocPagesProps({
       const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
-      const slug = customSlug || getSlug(path);
+      const slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
       // path collision check
       if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
         // skip the page creation if there is already a page with identical url
@@ -425,7 +426,7 @@ function getGuidesPagesProps({
           ? getSlug(path)
           : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
 
-      const pageSlug = customSlug || slug;
+      const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
 
       // path collision check
       if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
@@ -480,7 +481,7 @@ function getGuidesPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs: breadcrumbs.filter(
-            (item) => !SUPPORTED_LOCALES.includes(item.path.replace('/', '')),
+            (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
           navLinks: generateTopLevelLinks(topLevelLinks),
           locale: pageLocale,
@@ -594,7 +595,7 @@ async function createDocPages({
     .filter((name) => name !== 'Cloud REST API')
     .map((name) => ({
       label: name === 'cloud' ? 'Cloud Docs' : name.toUpperCase(),
-      to: name === 'guides' ? `/` : `/${slugify(name)}`,
+      to: name === 'guides' ? `/` : `/${slugify(name)}/`,
     }));
 
   getDocPagesProps({
@@ -634,14 +635,14 @@ const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: '/getting-started/welcome',
+    fromPath: '/getting-started/welcome/',
     toPath: '/',
     redirectInBrowser: true,
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/es/empezando/bienvenido',
-    toPath: '/es',
+    fromPath: '/es/empezando/bienvenido/',
+    toPath: '/es/',
     redirectInBrowser: true,
     isPermanent: true,
   });
