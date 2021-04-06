@@ -9,6 +9,13 @@ const DEFAULT_LOCALE = 'en';
 // create a container;
 const utils = {};
 
+// ensures that no trailing slash is left
+const noTrailingSlash = (path) =>
+  path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
+
+// ensures that path has a trailing slash
+const addTrailingSlash = (path) => path.replace(/\/$|$/, `/`);
+
 const translatePathPart = (item, locale) => {
   if (
     typeof pathTranslations[item] !== 'undefined' &&
@@ -44,7 +51,7 @@ const buildBreadcrumbs = (path) => {
     }
     return {
       name,
-      path: slug,
+      path: addTrailingSlash(slug),
     };
   });
 };
@@ -205,14 +212,10 @@ const redirectWelcome = (path) =>
     .replace(/en\/getting-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
-// ensures that no trailing slash is left
-const noTrailingSlash = (path) =>
-  path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
-
 const getSlug = (path) => {
   const slug = compose(
     removeEnPrefix,
-    noTrailingSlash,
+    addTrailingSlash,
     redirectWelcome,
     dedupePath,
     unorderify,
@@ -234,7 +237,7 @@ const getTranslatedSlug = (
   const translatedPath = translatePath(path, locale);
 
   const slug = compose(
-    noTrailingSlash,
+    addTrailingSlash,
     redirectWelcome,
     dedupePath,
     slugify,
@@ -244,6 +247,9 @@ const getTranslatedSlug = (
 };
 
 Object.defineProperties(utils, {
+  addTrailingSlash: {
+    value: addTrailingSlash,
+  },
   noTrailingSlash: {
     value: noTrailingSlash,
   },

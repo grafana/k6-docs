@@ -24,16 +24,16 @@ export const Features = () => {
 
           <Trait className={styles.trait}>
             {t('welcome.features.scripting')}{' '}
-            <Link className={'link'} to="/using-k6/modules">
+            <Link className={'link'} to="/using-k6/modules/">
               {t('welcome.features.modules')}
             </Link>
           </Trait>
           <Trait className={styles.trait}>
-            <Link className={'link'} to="/using-k6/checks">
+            <Link className={'link'} to="/using-k6/checks/">
               {t('welcome.features.checks')}
             </Link>{' '}
             {t('welcome.features.and')}{' '}
-            <Link className={'link'} to="/using-k6/thresholds">
+            <Link className={'link'} to="/using-k6/thresholds/">
               {t('welcome.features.thresholds')}
             </Link>{' '}
             {t('welcome.features.testing')}

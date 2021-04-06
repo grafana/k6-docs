@@ -272,14 +272,14 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     title: 'Test Builder',
                     description:
                       'Inspired in Postman API Builder. Codeless UI tool to generate a k6 test quickly.',
-                    url: 'https://k6.io/docs/test-authoring/test-builder',
+                    url: 'https://k6.io/docs/test-authoring/test-builder/',
                   },
                   {
                     picture: browserRecorderImgData,
                     title: 'Browser Recorder',
                     description: 'Record a user journey to base your k6 test.',
                     url:
-                      'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder',
+                      'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/',
                   },
                 ]}
               />
@@ -307,7 +307,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     title: 'IntelliSense',
                     description:
                       'Get code autocompletion and in-context documentation.',
-                    url: 'https://k6.io/docs/misc/intellisense',
+                    url: 'https://k6.io/docs/misc/intellisense/',
                   },
                 ]}
               />

@@ -60,7 +60,7 @@ function GuidesContent({
       title: 'Guides',
     },
     es: {
-      path: '/es',
+      path: '/es/',
       title: 'Guías',
     },
   };

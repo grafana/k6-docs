@@ -9,7 +9,7 @@ export const Cloud = (props) => {
     isExternal,
     btnText,
     btnTarget,
-    btnLink = '/cloud',
+    btnLink = '/cloud/',
   } = props;
   const {
     file: {

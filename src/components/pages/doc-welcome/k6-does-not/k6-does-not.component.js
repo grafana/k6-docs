@@ -22,13 +22,16 @@ export const K6DoesNot = () => {
           <p>{t('welcome.k6-does-not.browser.description')}</p>
           <p>
             {t('welcome.k6-does-not.browser.testing.text')}{' '}
-            <Link className={'link'} to="/testing-guides/load-testing-websites">
+            <Link
+              className={'link'}
+              to="/testing-guides/load-testing-websites/"
+            >
               {t('welcome.k6-does-not.browser.testing.link')}
             </Link>
             . {t('welcome.k6-does-not.browser.recorded-session.text')}{' '}
             <Link
               className={'link'}
-              to="/using-k6/session-recording-har-support"
+              to="/using-k6/session-recording-har-support/"
             >
               {t('welcome.k6-does-not.browser.recorded-session.link')}
             </Link>
@@ -44,7 +47,7 @@ export const K6DoesNot = () => {
             {t('welcome.k6-does-not.nodejs.import.text1')}{' '}
             <Link
               className={'link'}
-              to="/using-k6/modules#bundling-node-modules"
+              to="/using-k6/modules/#bundling-node-modules"
             >
               {t('welcome.k6-does-not.nodejs.import.link')}
             </Link>{' '}
