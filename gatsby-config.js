@@ -163,7 +163,8 @@ if (process.env.GATSBY_DRIFT_API) {
   });
 }
 
-const autoCanonicalURL = false;
+// when `canonical` URL is finally fixed, add this to the plugin list
+const autoCanonicalURL = true;
 if (autoCanonicalURL) {
   plugins.push({
     resolve: `gatsby-plugin-react-helmet-canonical-urls`,

@@ -41,34 +41,23 @@ export const SEO = ({
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
   const hrefLangAttributes = {
-    en: { rel: 'alternate', href: `${siteUrl}/docs` },
-    es: { rel: 'alternate', href: `${siteUrl}/docs` },
+    en: { href: `${siteUrl}/docs` },
+    es: { href: `${siteUrl}/docs` },
   };
 
   if (pageTranslations) {
     let esPathname = pageTranslations.es.path;
     let enPathname = pageTranslations.en.path;
 
+    // make sure each link has trailing slash
     if (!esPathname.endsWith('/')) {
-      // make sure each link has trailing slash
       esPathname = `${esPathname}/`;
     }
     if (!enPathname.endsWith('/')) {
-      // make sure each link has trailing slash
       enPathname = `${enPathname}/`;
     }
     hrefLangAttributes.es.href += esPathname;
     hrefLangAttributes.en.href += enPathname;
-
-    // if  no pageTranslations, we must enable `gatsby-plugin-react-helmet-canonical-urls`
-  }
-
-  // we have to setup the `canonical` URL with `hreflang`.
-  // we must do it here because `gatsby-plugin-react-helmet-canonical-urls` does not cover this case
-  if (slug && (slug.startsWith('es/') || slug === 'es')) {
-    hrefLangAttributes.es.rel = 'canonical';
-  } else {
-    hrefLangAttributes.en.rel = 'canonical';
   }
 
   return (
@@ -104,14 +93,14 @@ export const SEO = ({
           <link
             hrefLang="en"
             href={`${hrefLangAttributes.en.href}`}
-            rel={`${hrefLangAttributes.en.rel}`}
+            rel="alternate"
           />
         )}
         {pageTranslations && pageTranslations.es !== undefined && (
           <link
             hrefLang="es"
             href={`${hrefLangAttributes.es.href}`}
-            rel={`${hrefLangAttributes.es.rel}`}
+            rel="alternate"
           />
         )}
         {pageTranslations && (
