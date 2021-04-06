@@ -1,9 +1,9 @@
 ---
-title: 'delete(url, [body], [params])'
-description: 'httpx.delete makes DELETE requests'
+title: 'options(url, [body], [params])'
+description: 'httpx.options makes OPTIONS requests'
 ---
 
-`session.delete(url, body, params)` makes a DELETE request. Only the first parameter is required. Body is discouraged. 
+`session.options(url, body, params)` makes an OPTIONS request. Only the first parameter is required
 
 
 | Parameter      | Type   | Description                                                                          |
@@ -32,7 +32,8 @@ let session = new Httpx({
 });
 
 export default function testSuite() {
-  let resp = session.delete(`/delete`);
+  let resp = session.options(`/options`);
+	console.log(resp.status)
 }
 
 ```

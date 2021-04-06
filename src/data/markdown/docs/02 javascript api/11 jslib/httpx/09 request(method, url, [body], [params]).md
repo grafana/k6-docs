@@ -28,7 +28,7 @@ Consider using specific methods for making common requests ([get](/javascript-ap
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 
 let session = new Httpx({
     baseURL: 'https://httpbin.test.k6.io', 
