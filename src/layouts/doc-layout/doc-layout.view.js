@@ -122,14 +122,13 @@ const SidebarNode = (props) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    // need to encode URI to correctly compare Spanish special characters
-    const maybePrefixedPath = encodeURI(withPrefix(meta.path));
+    const maybePrefixedPath = withPrefix(meta.path);
     const doesPathMatchLocation =
       maybePrefixedPath === window.location.pathname;
     const isPathLocationPart =
       meta.path === '/' || meta.path === '/es'
         ? false
-        : window.location.pathname.startsWith(`${maybePrefixedPath}/`) ||
+        : window.location.pathname.startsWith(`${maybePrefixedPath}`) ||
           window.location.pathname.startsWith(
             `${maybePrefixedPath
               .split('/')
