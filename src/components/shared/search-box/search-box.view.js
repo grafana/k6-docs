@@ -1,10 +1,12 @@
 import algoliasearch from 'algoliasearch/lite';
 import classNames from 'classnames';
 import { Heading } from 'components/shared/heading';
+import { useLocale } from 'contexts/locale-provider';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   InstantSearch,
   Index,
+  Configure,
   connectStateResults,
   connectHits,
 } from 'react-instantsearch-dom';
@@ -65,6 +67,9 @@ export const SearchBox = ({ inputLabel, indices }) => {
   ) {
     return null;
   }
+
+  const { locale } = useLocale();
+
   const rootRef = useRef(null);
   const [query, setQuery] = useState('');
   const [focus, setFocus] = useState(false);
@@ -85,6 +90,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
         placeholder={'Search'}
         showReset
       >
+        <Configure filters={locale} />
         <Input
           label={inputLabel}
           queryLength={query.length}
