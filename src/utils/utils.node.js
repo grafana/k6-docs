@@ -198,7 +198,10 @@ const pathCollisionDetector = (logger) => {
 
 // english pages are the root: / or /docs in prod, so we remove that part
 const removeEnPrefix = (path) => {
-  return path.replace(/en\//i, '');
+  if (path.startsWith('en/')) {
+    return path.replace(/en\//i, '/');
+  }
+  return path.replace(/\/en\//i, '/');
 };
 
 // removes duplicates from path, e.g.
