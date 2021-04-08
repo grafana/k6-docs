@@ -51,6 +51,15 @@ const processMdxEntry = (
     SUPPORTED_LOCALES.find((locale) => path.startsWith(`/${locale}/`)) ||
     DEFAULT_LOCALE;
 
+  const isNotGuidesPage = !(path.startsWith('/en/') || path.startsWith('/es/'));
+
+  let pageTags = [pageLocale];
+
+  // non-guides page should searchable in both ES and EN
+  if (isNotGuidesPage) {
+    pageTags = ['en', 'es'];
+  }
+
   const slug =
     pageLocale === DEFAULT_LOCALE
       ? getSlug(path)
@@ -67,6 +76,7 @@ const processMdxEntry = (
       objectID: `${objectID}-${pointer}`,
       slug: pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
       content: chunks[pointer],
+      _tags: pageTags,
     };
   }
   return cache;
@@ -134,7 +144,7 @@ const settings = {
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'test-setup';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'k6_docs';
 
 const queries = [
   {
