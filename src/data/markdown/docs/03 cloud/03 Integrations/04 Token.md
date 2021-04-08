@@ -78,7 +78,7 @@ When your k6 cloud API authentication token has been added to the config file, i
 
 ```json
 {
-    "collectors" {
+    "collectors": {
         "cloud": {
             "token": "YOUR_API_AUTH_TOKEN"
         }
