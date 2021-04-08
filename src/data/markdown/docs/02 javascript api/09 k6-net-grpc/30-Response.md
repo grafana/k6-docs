@@ -1,5 +1,6 @@
 ---
 title: "Response"
+excerpt: 'The response object of a gRPC request.'
 ---
 
 | Name | Type | Description |

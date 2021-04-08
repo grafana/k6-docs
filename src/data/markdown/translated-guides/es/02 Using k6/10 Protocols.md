@@ -1,6 +1,6 @@
 ---
 title: "Protocolos"
-excerpt: ""
+excerpt: "Por defecto, k6 viene con suporte para los siguientes protocolos: HTTP/1.1, HTTP/2, WebSockets y gRPC. k6 soporta otros protocols por medio de Extensiones/Plugins."
 ---
 Por defecto, k6 viene con suporte para los siguientes protocolos:
 

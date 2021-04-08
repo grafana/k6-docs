@@ -1,6 +1,7 @@
 ---
 title: 'group( name, fn )'
 description: 'Runs code inside a group. Used to organize results in a test.'
+excerpt: 'Runs code inside a group. Used to organize results in a test.'
 ---
 
 Run code inside a group. Groups are used to organize results in a test.

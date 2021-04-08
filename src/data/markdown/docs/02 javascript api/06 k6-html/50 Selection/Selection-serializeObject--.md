@@ -1,6 +1,6 @@
 ---
 title: 'Selection.serializeObject()'
-excerpt: ''
+excerpt: 'Encode a set of form elements as an object.'
 ---
 
 Encode a set of form elements as an object (`{ "inputName": "value", "checkboxName": "value" }`).

@@ -1,6 +1,7 @@
 ---
 title: 'addTag( key, value )'
 description: 'adds a tag to the session'
+excerpt: 'adds a tag to the session'
 ---
 
 

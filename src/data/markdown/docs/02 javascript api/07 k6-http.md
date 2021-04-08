@@ -1,5 +1,6 @@
 ---
 title: 'k6/http'
+excerpt: 'The k6/http module contains functionality for performing HTTP transactions.'
 ---
 
 The k6/http module contains functionality for performing HTTP transactions.

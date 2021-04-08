@@ -1,6 +1,6 @@
 ---
 title: 'Cloud'
-excerpt: ''
+excerpt: 'Al transmitir los resultados a la nube de k6, la máquina donde se ejecuta el comando CLI de k6 ejecuta la prueba y sube los resultados a la nube de k6. A continuación, podrá visualizar y analizar los resultados en la aplicación web en tiempo real.'
 ---
 
 Además de [ejecutar pruebas en k6 Cloud](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli),  también puede ejecutar una prueba localmente y subir los resultados al [k6 Cloud](/cloud).

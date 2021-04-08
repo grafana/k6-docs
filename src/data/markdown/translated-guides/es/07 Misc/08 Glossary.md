@@ -1,6 +1,6 @@
 ---
 title: Glosario
-excerpt: |
+excerpt: 'A continuación, encontrará una lista de términos de uso común en el proyecto k6.'
 ---
 
 Cuando estamos presentando temas complejos, suele ser una buena idea definir una terminología clara y compartida para garantizar el menor espacio posible para los malentendidos. A continuación, encontrará una lista de términos de uso común en el proyecto k6.

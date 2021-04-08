@@ -1,6 +1,6 @@
 ---
 title: 'Browser recorder'
-excerpt: ''
+excerpt: 'The browser recorder allows generating a k6 script based on a web session. It is available as extensions for Chrome and Firefox.'
 ---
 
 

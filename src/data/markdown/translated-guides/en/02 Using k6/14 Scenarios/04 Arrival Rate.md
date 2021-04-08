@@ -1,5 +1,6 @@
 ---
 title: 'Arrival rate'
+excerpt: 'In k6, we have implemented this open model with our two arrival rate executors: constant-arrival-rate and ramping-arrival-rate.'
 ---
 
 ## Closed Model

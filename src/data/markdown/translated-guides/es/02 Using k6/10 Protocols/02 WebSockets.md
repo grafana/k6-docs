@@ -1,6 +1,6 @@
 ---
 title: 'WebSockets'
-excerpt: ''
+excerpt: 'Comparando las pruebas basadas en HTTP con las de WebSocket, hay algunas diferencias en la estructura y el funcionamiento interno de k6.'
 ---
 
 [WebSocket](https://en.wikipedia.org/wiki/WebSocket) es un protocolo que proporciona canales de comunicación full-duplex a través de una única conexión TCP. Es comúnmente utilizado por las aplicaciones de una sola página (SPA), y en cierta medida por las aplicaciones móviles, para añadir funcionalidad basada en el servidor, lo que suele suponer una mejora del rendimiento respecto a las soluciones basadas en el sondeo.

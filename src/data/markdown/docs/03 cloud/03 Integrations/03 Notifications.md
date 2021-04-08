@@ -1,6 +1,6 @@
 ---
 title: 'Notifications'
-excerpt: ''
+excerpt: 'Notifications allow third-party services to be notified via Webhook when various test-related events of your choice happen in your organizations/projects.'
 ---
 
 Notifications allow third-party services to be notified via

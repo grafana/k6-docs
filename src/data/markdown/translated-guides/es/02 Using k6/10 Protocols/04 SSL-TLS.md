@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS'
-excerpt: ''
+excerpt: 'Por defecto y sin ninguna configuración especial k6 se conectará y hablará con los servidores a través de TLS - Sólo tiene que asegurarse de que sus URLs de petición se especifican con el esquema https.'
 ---
 
 La Seguridad de la Capa de Transporte (TLS), sucesora de la Capa de Conexión Segura (SSL), es el mecanismo a través del cual se pueden establecer conexiones cifradas entre clientes y servidores en la web y a través del cual los datos pueden fluir con integridad intacta.

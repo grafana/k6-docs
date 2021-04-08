@@ -1,6 +1,6 @@
 ---
 title: 'Selection.size()'
-excerpt: ''
+excerpt: 'Return the number of elements in the Selection.'
 ---
 
 Return the number of elements in the Selection.

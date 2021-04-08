@@ -1,6 +1,6 @@
 ---
 title: 'Response.submitForm( [params] )'
-excerpt: ''
+excerpt: 'Fill in and submit form found in HTML of response.'
 ---
 
 Fill in and submit form found in HTML of response. By default it will look for the first `form` tag in the HTML, but this can be overridden using the `formSelector` option. To set/override the form fields you set properties of an object in the `fields` option.

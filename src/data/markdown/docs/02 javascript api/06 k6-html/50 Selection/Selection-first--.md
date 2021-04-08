@@ -1,6 +1,6 @@
 ---
 title: 'Selection.first()'
-excerpt: ''
+excerpt: 'Reduce the set of matched elements to the first in the set.'
 ---
 
 Reduce the set of matched elements to the first in the set.

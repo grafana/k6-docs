@@ -1,6 +1,7 @@
 ---
 title: 'Selection.next([selector])'
-excerpt: ''
+excerpt: 'Get the immediately following sibling of each element in the set of matched elements
+Mimics jquery.next.'
 ---
 
 Get the immediately following sibling of each element in the set of matched elements

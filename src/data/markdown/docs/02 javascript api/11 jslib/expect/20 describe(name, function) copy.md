@@ -1,6 +1,7 @@
 ---
 title: 'describe( name, function )'
 description: 'Entry point for creating test cases.'
+excerpt: 'Entry point for creating test cases.'
 ---
 
 

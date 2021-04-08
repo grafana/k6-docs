@@ -1,12 +1,12 @@
 ---
 title: 'Checks'
-excerpt: ''
+excerpt: 'Checks son aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe.'
 ---
 
 ## ¿Qué es un check?
 
 
-`Checks` son como las aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe. Echa un vistazo a [Thresholds](/using-k6/thresholds) para una forma de detener la ejecución. `Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
+`Checks` son aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe. Echa un vistazo a [Thresholds](/using-k6/thresholds) para una forma de detener la ejecución. `Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
 
 <CodeGroup labels={["check.js"]} lineNumbers={[true]}>
 

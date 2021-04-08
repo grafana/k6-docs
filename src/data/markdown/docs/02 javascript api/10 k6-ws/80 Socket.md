@@ -1,5 +1,6 @@
 ---
 title: 'Socket'
+excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 ---
 
 `Socket` is a WebSocket client to interact with a WebSocket connection. You can use it to listen various events happening on the WebSocket connection and send messages to the server. Additionally, you can use socket.setTimeout() and socket.setInterval() to execute code in the background, or repeatedly, while the WebSocket connection is open.

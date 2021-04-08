@@ -1,5 +1,6 @@
 ---
 title: "Rate.add(value, [tags])"
+excerpt: 'Set the value of the Rate metric.'
 ---
 
 Set the value of the `Rate` metric.

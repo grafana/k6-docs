@@ -1,9 +1,9 @@
 ---
 title: 'Error Codes'
-excerpt: ''
+excerpt: 'Error codes are unique numbers that can be used to identify and handle different application and network errors more easily.'
 ---
 
-Error codes, introduced in k6 0.24.0, are unique numbers that can be used to identify and handle different application and network errors more easily. For the moment, these error codes are applicable only for errors that happen during HTTP requests, but they will be reused and extended to support other protocols in future k6 releases.
+Error codes are unique numbers that can be used to identify and handle different application and network errors more easily. For the moment, these error codes are applicable only for errors that happen during HTTP requests, but they will be reused and extended to support other protocols in future k6 releases.
 
 When an error occurs, its code is determined and returned as both the `error_code` field of the [`http.Response`](/javascript-api/k6-http/response) object, and also attached as the `error_code` [tag](/using-k6/tags-and-groups) to any [metrics](/using-k6/metrics) associated with that request. Additionally, for more details, the `error` metric tag and `http.Response` field will still contain the actual string error message.
 

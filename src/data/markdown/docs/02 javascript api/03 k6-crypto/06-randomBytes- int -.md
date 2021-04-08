@@ -1,6 +1,7 @@
 ---
 title: 'randomBytes( int )'
 description: 'randomBytes.'
+excerpt: 'randomBytes.'
 ---
 
 Return an array with a number of cryptographically random bytes. It will either return exactly the amount of bytes requested or will throw an exception if something went wrong.

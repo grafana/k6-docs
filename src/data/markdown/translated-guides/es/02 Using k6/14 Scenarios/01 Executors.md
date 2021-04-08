@@ -1,5 +1,6 @@
 ---
 title: 'Executors'
+excerpt: 'Executors son los caballos de batalla del motor de ejecución k6. Cada uno programa los VUs y las iteraciones de forma diferente, y usted elegirá uno dependiendo del tipo de tráfico que quiera modelar para probar sus servicios.'
 ---
 
 [Executors](/using-k6/scenarios/executors) son los caballos de batalla del motor de ejecución k6. Cada uno programa los VUs y las iteraciones de forma diferente, y usted elegirá uno dependiendo del tipo de tráfico que quiera modelar para probar sus servicios.

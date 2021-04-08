@@ -1,6 +1,7 @@
 ---
 title: 'randomString(length)'
 description: 'Random string'
+excerpt: 'Random string'
 ---
 
 Function returns a random string of a given length.

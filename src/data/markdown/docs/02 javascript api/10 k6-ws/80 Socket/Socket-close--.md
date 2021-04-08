@@ -1,5 +1,6 @@
 ---
 title: 'Socket.close()'
+excerpt: 'Close the WebSocket connection.'
 ---
 
 Close the WebSocket connection.

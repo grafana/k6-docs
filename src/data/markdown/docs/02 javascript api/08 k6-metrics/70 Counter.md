@@ -1,5 +1,6 @@
 ---
 title: 'Counter'
+excerpt: 'Counter is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.'
 ---
 
 _Counter_ is an object for representing a custom cumulative counter metric. It is one of the four custom metric types.

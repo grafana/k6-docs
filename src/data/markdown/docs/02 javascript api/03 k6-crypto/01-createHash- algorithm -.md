@@ -1,6 +1,7 @@
 ---
 title: 'createHash( algorithm )'
 description: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
+excerpt: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
 ---
 
 Creates a hashing object that can then be fed with data repeatedly, and from which you can extract a hash digest whenever you want.

@@ -1,6 +1,6 @@
 ---
 title: 'Apache Kafka'
-excerpt: ''
+excerpt: 'When running a test, k6 can send the metrics in real-time to Kafka. Apache Kafka is a stream-processing platform for handling real-time data.'
 ---
 
 [Apache Kafka](https://kafka.apache.org) is a stream-processing platform for handling real-time data.

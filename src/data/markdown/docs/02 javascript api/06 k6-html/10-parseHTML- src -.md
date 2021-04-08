@@ -1,6 +1,7 @@
 ---
 title: 'parseHTML( src )'
 description: 'Parse an HTML string and populate a Selection object.'
+excerpt: 'Parse an HTML string and populate a Selection object.'
 ---
 
 Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selection) object.

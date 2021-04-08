@@ -1,6 +1,7 @@
 ---
 title: 'b64encode( input, [encoding] )'
 description: 'Encode data in base64.'
+excerpt: 'Encode data in base64.'
 ---
 
 | Parameter           | Type   | Description                                                              |

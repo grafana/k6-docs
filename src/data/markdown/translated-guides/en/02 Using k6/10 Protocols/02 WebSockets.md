@@ -1,6 +1,6 @@
 ---
 title: 'WebSockets'
-excerpt: ''
+excerpt: 'Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings of k6.'
 ---
 
 ## Overview

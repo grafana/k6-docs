@@ -1,6 +1,7 @@
 ---
 title: 'FileData'
 description: 'Used for wrapping data representing a file when doing multipart requests (file uploads).'
+excerpt: 'Used for wrapping data representing a file when doing multipart requests (file uploads).'
 ---
 
 _FileData_ is an object for wrapping data representing a file when doing

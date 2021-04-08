@@ -1,5 +1,6 @@
 ---
 title: 'Gauge'
+excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 ---
 
 _Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/javascript-api/k6-metrics).

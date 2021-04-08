@@ -1,6 +1,7 @@
 ---
 title: 'addHeader( key, value )'
 description: 'adds a header to the session'
+excerpt: 'adds a header to the session'
 ---
 
 

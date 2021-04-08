@@ -1,6 +1,6 @@
 ---
 title: 'Ramping VUs'
-excerpt: ''
+excerpt: 'Un número variable de VUs que se ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.'
 ---
 
 ## Description

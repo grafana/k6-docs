@@ -1,6 +1,7 @@
 ---
 title: 'patch(url, [body], [params])'
 description: 'httpx.patch makes PATCH requests'
+excerpt: 'httpx.patch makes PATCH requests'
 ---
 
 `session.patch(url, body, params)` makes a PATCH request. Only the first parameter is required

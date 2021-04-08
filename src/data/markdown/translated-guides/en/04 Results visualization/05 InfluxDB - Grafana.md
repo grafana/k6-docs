@@ -1,6 +1,6 @@
 ---
 title: 'InfluxDB + Grafana'
-excerpt: ''
+excerpt: 'This tutorial shows how to upload the test result metrics to an InfluxDB instance and configure Grafana to query the k6 metrics from InfluxDB.'
 ---
 
 You can use [Grafana](https://grafana.com/grafana/) for visualization of your k6 metrics.

@@ -1,6 +1,6 @@
 ---
 title: 'Shared iterations'
-excerpt: ''
+excerpt: 'Un número fijo de iteraciones se "comparte" entre un número de VUs, y la prueba termina una vez que se ejecutan todas las iteraciones.'
 ---
 
 ## Descripción

@@ -1,6 +1,6 @@
 ---
 title: 'gRPC'
-excerpt: ''
+excerpt: 'gRPC is a lightweight open-source RPC framework. Starting with k6 v0.29.0, we support unary gRPC requests.'
 ---
 
 ## Overview

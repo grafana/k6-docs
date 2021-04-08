@@ -1,6 +1,6 @@
 ---
 title: 'Protocolo de estado de los certificados en línea (OCSP)'
-excerpt: ''
+excerpt: 'El Protocolo de Estado de Certificados en Línea (OCSP) es un protocolo que los navegadores web y los clientes pueden utilizar para comprobar el estado de un certificado TLS emitido con una Autoridad de Certificación (CA).'
 ---
 
 ## ¿Qué es OCSP?

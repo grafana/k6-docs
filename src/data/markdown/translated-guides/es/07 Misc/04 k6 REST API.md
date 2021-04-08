@@ -1,6 +1,7 @@
 ---
 title: 'k6 REST API'
-excerpt: ''
+excerpt: 'With this API you can see and control different execution aspects like number of VUs, Max
+VUs, pause or resume the test, list groups, set and get the setup data and so on.'
 hideFromSidebar: true
 ---
 

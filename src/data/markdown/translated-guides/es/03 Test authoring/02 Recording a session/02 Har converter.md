@@ -1,6 +1,6 @@
 ---
 title: 'HAR converter'
-excerpt: ''
+excerpt: 'El convertidor HAR es una alternativa al grabador del navegador (Browser recorder). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.'
 ---
 
 El convertidor HAR es una alternativa al [grabador del navegador (Browser recorder)](/test-authoring/recording-a-session/browser-recorder). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.

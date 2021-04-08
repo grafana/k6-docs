@@ -1,6 +1,6 @@
 ---
 title: 'Graceful stop'
-excerpt: ''
+excerpt: 'Esta opción está disponible para todos los `executors`, excepto `externally-controlled` y permite al usuario especificar una duración para esperar antes de interrumpirlos forzosamente.'
 ---
 
 Antes de la versión 0.27.0, k6 interrumpía cualquier iteración en curso cuando se alcanzaba la duración de la prueba o cuando se reducían los VU con la opción de etapas. En algunos casos esto podría llevar a métricas sesgadas y resultados de pruebas inesperadas. A partir de la versión 0.27.0, este comportamiento puede controlarse mediante las opciones `gracefulStop` y `gracefulRampDown`.

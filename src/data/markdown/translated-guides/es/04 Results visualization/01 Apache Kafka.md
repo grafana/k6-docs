@@ -1,6 +1,6 @@
 ---
 title: 'Apache Kafka'
-excerpt: ''
+excerpt: 'Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a Kafka.'
 ---
 
 [Apache Kafka](https://kafka.apache.org) es una plataforma de procesamiento de flujos para manejar datos en tiempo real.

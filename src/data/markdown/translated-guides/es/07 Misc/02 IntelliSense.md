@@ -1,6 +1,6 @@
 ---
 title: 'IntelliSense'
-excerpt: ''
+excerpt: 'k6 tiene un TypeScript Type Definition que puedes configurar con tu editor para desbloquear las funciones de edición de código.'
 ---
 
 IntelliSense se refiere a las características de edición de código como la finalización inteligente de código y el acceso rápido a la documentación. Estas características pueden mejorar significativamente la experiencia del desarrollador y la productividad cuando se trabaja con scripts de k6 en su editor de elección. Las características más destacadas son las siguientes:

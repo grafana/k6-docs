@@ -1,6 +1,6 @@
 ---
 title: 'CookieJar.cookiesForURL(url)'
-excerpt: ''
+excerpt: 'Get bbject of cookies where the key is the cookie name and the value is an array.'
 ---
 
 | Parameter | Type   | Description                       |

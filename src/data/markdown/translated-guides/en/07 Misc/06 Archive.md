@@ -1,6 +1,6 @@
 ---
 title: 'Archive Command'
-excerpt: ''
+excerpt: 'A k6 archive is simply a tar file with all files needed to execute a k6 test.'
 ---
 
 ## What is an archive?

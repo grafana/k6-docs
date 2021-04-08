@@ -1,6 +1,6 @@
 ---
 title: 'Ramping arrival rate'
-excerpt: ''
+excerpt: 'A variable number of iterations are executed in a specified period of time.'
 ---
 
 ## Description

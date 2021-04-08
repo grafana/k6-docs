@@ -1,6 +1,7 @@
 ---
 title: 'batch( requests )'
 description: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
+excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to do).'
 ---
 
 Batch multiple HTTP requests together, to issue them in parallel over multiple TCP connections.

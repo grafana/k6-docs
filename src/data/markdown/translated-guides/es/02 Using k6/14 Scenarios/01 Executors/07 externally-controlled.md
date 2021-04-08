@@ -1,11 +1,11 @@
 ---
 title: 'Externally controlled'
-excerpt: ''
+excerpt: 'Controla y escala la ejecución en tiempo de ejecución a través de REST API o CLI.'
 ---
 
 ## Descripción
 
-Controla y escala la ejecución en tiempo de ejecución a través d2 [k6's REST API](/misc/k6-rest-api) o [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
+Controla y escala la ejecución en tiempo de ejecución a través de [k6's REST API](/misc/k6-rest-api) o [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
 Anteriormente, los comandos CLI de `pause`, `resume`, y `scale` se utilizaban para controlar globalmente la ejecución de k6. Este ejecutor hace el mismo trabajo proporcionando una mejor API que se puede utilizar para controlar la ejecución de k6 en tiempo de ejecución.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Optimizar el Sistema Operativo'
-excerpt: ''
+excerpt: 'En este artículo le mostraremos cómo inspeccionar los límites impuestos por el SO de su sistema, ajustarlos y escalarlos para pruebas más grandes.'
 ---
 
 Algunos usuarios, al ejecutar sus scripts de prueba localmente, se encuentran con límites en su sistema operativo que les impiden realizar el número necesario de peticiones para completar la prueba. Este límite suele manifestarse en forma de error por tener demasiados Archivos Abiertos **Too Many Open Files**. Estos límites, si no se modifican, pueden ser un grave cuello de botella si se decide ejecutar una prueba algo más grande o complicada localmente en su máquina.

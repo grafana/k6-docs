@@ -1,6 +1,7 @@
 ---
 title: 'expect( value )'
 description: 'expect(value) sets the value to be used in comparison by the next function in the chain.'
+excerpt: 'expect(value) sets the value to be used in comparison by the next function in the chain.'
 ---
 
 `expect(value)` sets the value to be used in comparison by the next function in the chain.

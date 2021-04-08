@@ -1,6 +1,6 @@
 ---
 title: 'Selection.find(selector)'
-excerpt: ''
+excerpt: 'Find the selection descendants, filtered by a selector.'
 ---
 
 Find the selection descendants, filtered by a selector. It returns a [Selection](/javascript-api/k6-html/selection) object.

@@ -1,6 +1,7 @@
 ---
 title: 'fail( [err] )'
 description: 'Throws an error, failing and aborting the current VU script iteration immediately.'
+excerpt: 'Throws an error, failing and aborting the current VU script iteration immediately.'
 ---
 
 Immediately throw an error, aborting the current script iteration.

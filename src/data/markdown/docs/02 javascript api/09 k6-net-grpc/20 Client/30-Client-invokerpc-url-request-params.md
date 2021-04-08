@@ -1,5 +1,6 @@
 ---
 title: "Client.invoke(url, request [,params])"
+excerpt: 'Invokes an unary RPC request to the given method.'
 ---
 
 Invokes an unary RPC request to the given method.

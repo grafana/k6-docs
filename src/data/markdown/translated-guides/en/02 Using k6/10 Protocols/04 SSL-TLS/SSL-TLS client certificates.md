@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS client certificates'
-excerpt: ''
+excerpt: 'To use client certificates you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
 ---
 
 Usually, when we are talking about TLS certificates we are referring to the mechanism by which

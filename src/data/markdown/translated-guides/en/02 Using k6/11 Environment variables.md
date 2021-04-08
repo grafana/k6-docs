@@ -1,6 +1,6 @@
 ---
 title: 'Environment variables'
-excerpt: ''
+excerpt: 'You can access any environment variables from your k6 script code, and use this to supply your VUs with configuration information.'
 ---
 
 ## k6 and environment variables

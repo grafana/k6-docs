@@ -1,5 +1,6 @@
 ---
 title: 'Ejecución de k6'
+excerpt: 'Empieza ejecutando un test sencillo. Detallamos las opciones básicas para ejecutar los tests de carga o distintos modos de ejecución de k6.'
 ---
 
 ## Ejecutando los tests localmente

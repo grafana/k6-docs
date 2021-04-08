@@ -1,6 +1,6 @@
 ---
 title: Scenarios
-excerpt: ''
+excerpt: 'Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests.'
 hideFromSidebar: false
 ---
 

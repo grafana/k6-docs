@@ -1,6 +1,6 @@
 ---
 title: 'Selection.html()'
-excerpt: ''
+excerpt: 'Get the HTML contents of the first element in the set of matched elements.'
 ---
 
 Get the HTML contents of the first element in the set of matched elements.

@@ -1,6 +1,7 @@
 ---
 title: 'Tags and Groups'
-excerpt: ''
+excerpt: 'k6 provides the Tags and Groups APIs to help you during the analysis and easily visualize, sort and
+filter your test results.'
 ---
 
 The analysis of your load results is a required step to find performance issues; a load test

@@ -1,6 +1,6 @@
 ---
 title: Community
-excerpt: ''
+excerpt: 'On this page, you will find information about where you can ask your k6 questions, discuss about k6 and how you could contribute to the project.'
 ---
 
 On this page, you will find information about where you can ask your k6 questions,

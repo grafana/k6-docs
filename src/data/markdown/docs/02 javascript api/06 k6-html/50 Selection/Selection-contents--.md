@@ -1,6 +1,6 @@
 ---
 title: 'Selection.contents()'
-excerpt: ''
+excerpt: 'Get the children of each element in the set of matched elements, including text and comment nodes.'
 ---
 
 Get the children of each element in the set of matched elements, including text and comment nodes.

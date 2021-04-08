@@ -1,6 +1,7 @@
 ---
 title: 'clearTag( name )'
 description: 'removes tag from the session'
+excerpt: 'removes tag from the session'
 ---
 
 

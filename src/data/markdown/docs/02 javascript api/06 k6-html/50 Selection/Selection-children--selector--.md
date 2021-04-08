@@ -1,6 +1,6 @@
 ---
 title: 'Selection.children([selector])'
-excerpt: ''
+excerpt: 'Get the children of each element in the set of matched elements, optionally filtered by a selector.'
 ---
 
 Get the children of each element in the set of matched elements, optionally filtered by a selector.

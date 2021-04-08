@@ -1,6 +1,6 @@
 ---
 title: 'Recopilación de datos de uso'
-excerpt: ''
+excerpt: 'Por defecto, k6 envía un reporte de uso cada vez que se ejecuta una prueba, para que podamos hacer un seguimiento de la frecuencia de uso. Este informe puede desactivarse.'
 ---
 
 

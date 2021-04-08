@@ -1,6 +1,6 @@
 ---
 title: Escenarios
-excerpt: ''
+excerpt: 'Los escenarios nos permiten realizar configuraciones a profundidad sobre cómo los VUs y las iteraciones son programadas.'
 hideFromSidebar: false
 ---
 

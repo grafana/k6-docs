@@ -1,6 +1,6 @@
 ---
 title: 'HTTP/2'
-excerpt: ''
+excerpt: 'Cuando realizas peticiones HTTP en k6, éste actualiza automáticamente la conexión a HTTP/2.0 si el servidor lo soporta, al igual que lo haría tu navegador web.'
 ---
 
 HTTP/2.0 es la última versión del protocolo HTTP e introduce algunas mejoras importantes en comparación con su predecesor. La principal es la introducción de un protocolo de hilo binario con flujos multiplexados a través de una única conexión TCP. Esto resuelve un antiguo problema de rendimiento de HTTP/1.1, [el bloqueo de cabecera](https://en.wikipedia.org/wiki/Head-of-line_blocking).

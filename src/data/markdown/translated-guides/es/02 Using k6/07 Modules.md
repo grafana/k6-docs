@@ -1,6 +1,6 @@
 ---
 title: 'Módulos'
-excerpt: ''
+excerpt: 'Al escribir scripts de prueba, es común importar diferentes módulos, o parte de ellos, para utilizarlos a lo largo del script. En k6, es posible importar tres tipos diferentes de módulos.'
 ---
 
 ## Importando módulos

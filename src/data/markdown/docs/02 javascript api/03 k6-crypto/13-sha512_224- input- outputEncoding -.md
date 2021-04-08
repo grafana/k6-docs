@@ -1,6 +1,7 @@
 ---
 title: 'sha512_224( input, outputEncoding )'
 description: 'Use SHA-512/224 to hash input data.'
+excerpt: 'Use SHA-512/224 to hash input data.'
 ---
 
 Use [sha512_224](https://golang.org/pkg/crypto/sha512/) to hash input data.

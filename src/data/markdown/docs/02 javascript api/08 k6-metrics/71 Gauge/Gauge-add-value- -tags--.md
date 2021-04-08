@@ -1,5 +1,6 @@
 ---
 title: "Gauge.add(value, [tags])"
+excerpt: 'Set the value of the Gauge metric.'
 ---
 
 Set the value of the `Gauge` metric.

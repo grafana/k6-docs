@@ -1,6 +1,6 @@
 ---
 title: 'Selection.filter(selector)'
-excerpt: ''
+excerpt: 'Reduce the set of matched elements to those that match the selector or pass the function test.'
 ---
 
 Reduce the set of matched elements to those that match the selector or pass the function's test.

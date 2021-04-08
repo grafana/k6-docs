@@ -1,6 +1,7 @@
 ---
 title: 'uuidv4()'
 description: 'uuid v4 function'
+excerpt: 'uuid v4 function'
 ---
 
 Function returns a random uuid v4 in a string form.

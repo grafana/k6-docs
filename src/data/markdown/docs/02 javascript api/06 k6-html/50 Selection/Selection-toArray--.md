@@ -1,6 +1,6 @@
 ---
 title: 'Selection.toArray()'
-excerpt: ''
+excerpt: 'Retrieve all the elements contained in the Selection, as an array.'
 ---
 
 Retrieve all the elements contained in the Selection, as an array.

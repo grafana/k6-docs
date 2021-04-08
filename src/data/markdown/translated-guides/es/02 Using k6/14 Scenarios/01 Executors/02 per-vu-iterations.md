@@ -1,6 +1,6 @@
 ---
 title: 'Per VU iterations'
-excerpt: ''
+excerpt: 'Cada VU ejecuta un número exacto de iteraciones. El número total de iteraciones completadas será VUs * iteraciones.'
 ---
 
 ## Descripción

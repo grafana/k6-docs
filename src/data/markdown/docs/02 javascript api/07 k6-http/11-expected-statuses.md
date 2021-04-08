@@ -1,6 +1,7 @@
 ---
 title: 'expectedStatuses( statuses )'
 description: 'generates a responseCallback to check status codes'
+excerpt: 'generates a responseCallback to check status codes'
 ---
 
 > ### 🎉 New in v0.31.0

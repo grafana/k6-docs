@@ -1,6 +1,6 @@
 ---
 title: 'Selection.eq(index)'
-excerpt: ''
+excerpt: 'Reduce the set of matched elements to the one at the specified index.'
 ---
 
 Reduce the set of matched elements to the one at the specified index.

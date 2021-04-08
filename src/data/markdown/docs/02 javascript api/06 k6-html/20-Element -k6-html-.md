@@ -1,6 +1,7 @@
 ---
 title: 'Element'
 description: 'An HTML DOM element as returned by the Selection API.'
+excerpt: 'An HTML DOM element as returned by the Selection API.'
 ---
 
 Represents a DOM element matched by a [Selection](/javascript-api/k6-html/selection),

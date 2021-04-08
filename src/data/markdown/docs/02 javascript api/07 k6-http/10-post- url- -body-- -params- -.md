@@ -1,6 +1,7 @@
 ---
 title: 'post( url, [body], [params] )'
 description: 'Issue an HTTP POST request.'
+excerpt: 'Issue an HTTP POST request.'
 ---
 
 | Parameter           | Type                          | Description                                                                              |

@@ -1,6 +1,6 @@
 ---
 title: 'Ramping VUs'
-excerpt: ''
+excerpt: 'A variable number of VUs execute as many iterations as possible for a specified amount of time.'
 ---
 
 ## Description

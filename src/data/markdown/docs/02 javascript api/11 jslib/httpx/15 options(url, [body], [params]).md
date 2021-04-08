@@ -1,6 +1,7 @@
 ---
 title: 'options(url, [body], [params])'
 description: 'httpx.options makes OPTIONS requests'
+excerpt: 'httpx.options makes OPTIONS requests'
 ---
 
 `session.options(url, body, params)` makes an OPTIONS request. Only the first parameter is required

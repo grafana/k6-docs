@@ -1,6 +1,6 @@
 ---
 title: 'Test builder'
-excerpt: ''
+excerpt: 'The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.'
 ---
 
 The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.

@@ -1,6 +1,6 @@
 ---
 title: JavaScript Compatibility Mode
-excerpt: ''
+excerpt: 'k6 soporta la ejecución de scripts de prueba con diferentes modos de compatibilidad de ECMAScript utilizando la opción CLI run `--compatibility-mode`'
 hideFromSidebar: true
 ---
 

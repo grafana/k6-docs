@@ -1,6 +1,6 @@
 ---
 title: 'Selection.slice(start [, end])'
-excerpt: ''
+excerpt: 'Reduce the set of matched elements to a subset specified by a range of indices.'
 ---
 
 Reduce the set of matched elements to a subset specified by a range of indices.

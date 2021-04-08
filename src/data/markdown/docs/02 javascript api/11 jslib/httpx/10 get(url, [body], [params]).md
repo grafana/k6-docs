@@ -1,6 +1,7 @@
 ---
 title: 'get(url, [body], [params])'
 description: 'httpx.get makes GET requests'
+excerpt: 'httpx.get makes GET requests'
 ---
 
 `session.get(url, body, params)` makes a GET request. Only the URL parameter is required

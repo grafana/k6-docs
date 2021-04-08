@@ -1,6 +1,7 @@
 ---
 title: 'Response'
 description: 'Returned by the http.* methods that generate HTTP requests.'
+excerpt: 'Returned by the http.* methods that generate HTTP requests.'
 ---
 
 Response is used by the http.\* methods that generate HTTP request. Those methods return one (or more, in the case of `http.batch()`) Response objects that contain HTTP response contents and performance timing measurements.

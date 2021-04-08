@@ -1,6 +1,7 @@
 ---
 title: 'as( string )'
 description: 'as(alias) sets a textual representation of the value passed to expect or and.'
+excerpt: 'as(alias) sets a textual representation of the value passed to expect or and.'
 ---
 
 

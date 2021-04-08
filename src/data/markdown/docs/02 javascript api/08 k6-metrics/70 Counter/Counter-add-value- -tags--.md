@@ -1,5 +1,6 @@
 ---
 title: "Counter.add(value, [tags])"
+excerpt: 'Add a value to the Counter metric.'
 ---
 
 Add a value to the `Counter` metric.

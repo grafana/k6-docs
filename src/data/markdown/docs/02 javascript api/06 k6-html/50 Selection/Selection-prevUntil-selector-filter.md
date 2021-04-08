@@ -1,5 +1,6 @@
 ---
 title: 'Selection.prevUntil([selector], [filter])'
+excerpt: 'Get all preceding siblings of each element up to but not including the element matched by the selector.'
 ---
 
 Get all preceding siblings of each element up to but not including the element matched by the selector.

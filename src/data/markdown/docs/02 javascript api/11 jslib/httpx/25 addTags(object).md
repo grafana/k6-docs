@@ -1,6 +1,7 @@
 ---
 title: 'addTags( object )'
 description: 'adds multiple tags to the session'
+excerpt: 'adds multiple tags to the session'
 ---
 
 

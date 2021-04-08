@@ -1,5 +1,6 @@
 ---
 title: 'Arrival rate'
+excerpt: 'En k6, hemos implementado este modelo abierto con nuestros dos executors de tasa de llegada (Arrival Rate).'
 ---
 
 ## Closed Model

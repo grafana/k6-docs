@@ -1,6 +1,6 @@
 ---
 title: 'Constructor de pruebas'
-excerpt: ''
+excerpt: 'El constructor de pruebas (Test Builder) permite utilizar una interfaz gráfica para crear una prueba.'
 ---
 
 El constructor de pruebas (Test Builder) permite utilizar una interfaz gráfica para crear una prueba.

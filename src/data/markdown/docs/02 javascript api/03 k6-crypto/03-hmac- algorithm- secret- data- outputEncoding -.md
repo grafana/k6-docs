@@ -1,6 +1,7 @@
 ---
 title: 'hmac( algorithm, secret, data, outputEncoding )'
 description: 'Use HMAC to sign input data.'
+excerpt: 'Use HMAC to sign input data.'
 ---
 
 Use [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) to sign a piece of data using a shared secret.

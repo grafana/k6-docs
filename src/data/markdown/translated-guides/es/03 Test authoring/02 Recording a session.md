@@ -1,6 +1,6 @@
 ---
 title: 'Grabar una sesión'
-excerpt: ''
+excerpt: 'En las pruebas de carga, la grabación suele referirse al proceso de creación de una prueba de carga a partir de la grabación de una sesión de usuario.'
 ---
 
 En las pruebas de carga, la grabación suele referirse al proceso de creación de una prueba de carga a partir de la grabación de una sesión de usuario. El proceso consta de tres pasos:

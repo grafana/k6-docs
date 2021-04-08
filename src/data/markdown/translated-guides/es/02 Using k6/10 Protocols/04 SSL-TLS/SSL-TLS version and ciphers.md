@@ -1,6 +1,6 @@
 ---
 title: 'Versiones SSL/TLS y cifrados'
-excerpt: ''
+excerpt: 'Para soportar las pruebas de configuraciones específicas de los clientes, k6 le permite establecer una versión específica o un rango de versiones de SSL/TLS que deben ser permitidas para una conexión, así como qué suites de cifrado están permitidas para ser utilizadas en esa conexión.'
 ---
 
 Para soportar las pruebas de configuraciones específicas de los clientes, k6 le permite establecer una versión específica o un rango de versiones de SSL/TLS que deben ser permitidas para una conexión, así como qué suites de cifrado están permitidas para ser utilizadas en esa conexión.

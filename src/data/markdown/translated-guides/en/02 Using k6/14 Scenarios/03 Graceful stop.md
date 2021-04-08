@@ -1,6 +1,6 @@
 ---
 title: 'Graceful stop'
-excerpt: ''
+excerpt: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
 ---
 
 Prior to v0.27.0, k6 would interrupt any iterations in progress when the test duration was reached

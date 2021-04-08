@@ -1,6 +1,7 @@
 ---
 title: 'get( url, [params] )'
 description: 'Issue an HTTP GET request.'
+excerpt: 'Issue an HTTP GET request.'
 ---
 
 Make a GET request.

@@ -1,6 +1,6 @@
 ---
 title: 'Selection.data([key])'
-excerpt: ''
+excerpt: 'Return the value at the named data store for the first element in the set of matched elements.'
 ---
 
 Return the value at the named data store for the first element in the set of matched elements.

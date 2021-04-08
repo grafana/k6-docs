@@ -1,6 +1,7 @@
 ---
 title: 'b64decode( input, [encoding] )'
 description: 'Base64 decode a string.'
+excerpt: 'Base64 decode a string.'
 ---
 
 Decode the passed base64 encoded `input` string into the unencoded original string.

@@ -1,6 +1,6 @@
 ---
 title: 'Test authoring'
-excerpt: ''
+excerpt: 'k6 ecosystem provides a set of codeless tools to speed up the test creation and facilitate collaboration across different roles.'
 ---
 
 In testing, authoring refers to the test creation process. 

@@ -1,6 +1,6 @@
 ---
 title: 'Cookies'
-excerpt: ''
+excerpt: 'En la mayoría de los casos, k6 gestionará de forma transparente la recepción, el almacenamiento y el envío de cookies.'
 ---
 
 Las cookies HTTP son utilizadas por los sitios web y las aplicaciones para almacenar piezas de información de estado en el dispositivo del usuario. Un servidor indica al cliente, a través de una cabecera HTTP `Set-Cookie`, qué información quiere que se almacene en la máquina del usuario.
@@ -11,7 +11,7 @@ A continuación, puede controlar reglas más específicas sobre cuándo deben en
 
 ## Cookies en k6
 
-En la mayoría de los casos, K6 gestionará de forma transparente la recepción, el almacenamiento y el envío de cookies, tal y como se ha descrito anteriormente, de modo que las pruebas de su sitio web o aplicación basados en cookies funcionarán sin que usted tenga que hacer nada especial.
+En la mayoría de los casos, k6 gestionará de forma transparente la recepción, el almacenamiento y el envío de cookies, tal y como se ha descrito anteriormente, de modo que las pruebas de su sitio web o aplicación basados en cookies funcionarán sin que usted tenga que hacer nada especial.
 
 En algunos casos de uso, puede desear un mayor control sobre las cookies. En k6 tienes dos opciones, o bien [manipular directamente las cabeceras HTTP](/javascript-api/k6-http/params), o utilizar la más ergonómica API de cookies. A continuación veremos esto último.
 

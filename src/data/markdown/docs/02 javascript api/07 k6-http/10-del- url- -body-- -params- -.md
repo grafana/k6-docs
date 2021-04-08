@@ -1,6 +1,7 @@
 ---
 title: 'del( url, [body], [params] )'
 description: 'Issue an HTTP DELETE request.'
+excerpt: 'Issue an HTTP DELETE request.'
 ---
 
 Make a DELETE request.

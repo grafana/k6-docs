@@ -2,6 +2,7 @@
 title: 'cookieJar()'
 slug: '/javascript-api/k6-http/cookiejar-method'
 description: 'Get active HTTP Cookie jar.'
+excerpt: 'Get active HTTP Cookie jar.'
 ---
 
 Get the active cookie jar.

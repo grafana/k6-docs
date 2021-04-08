@@ -1,6 +1,6 @@
 ---
 title: 'JSON'
-excerpt: ''
+excerpt: 'También puede hacer que k6 emita estadísticas detalladas en formato JSON utilizando la opción -o'
 ---
 
 También puede hacer que k6 emita estadísticas detalladas en formato JSON utilizando la opción `--out/-o` con `k6 run`:

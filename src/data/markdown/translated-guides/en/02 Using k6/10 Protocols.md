@@ -1,6 +1,6 @@
 ---
 title: "Protocols"
-excerpt: ""
+excerpt: "Out of the box k6 comes with support for a few protocols: HTTP / WebSockets / gRPC / ..."
 ---
 Out of the box k6 comes with support for the following protocols:
 

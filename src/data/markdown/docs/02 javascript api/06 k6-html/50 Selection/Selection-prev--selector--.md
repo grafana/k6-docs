@@ -1,6 +1,6 @@
 ---
 title: 'Selection.prev([selector])'
-excerpt: ''
+excerpt: 'Get the immediately preceding sibling of each element in the set of matched elements.'
 ---
 
 Get the immediately preceding sibling of each element in the set of matched elements.

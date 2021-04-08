@@ -1,6 +1,6 @@
 ---
 title: 'Selection.map(fn)'
-excerpt: ''
+excerpt: 'Pass each element in the current matched set through a function, producing a new Array containing the return values.'
 ---
 
 Pass each element in the current matched set through a function, producing a new Array containing the return values.

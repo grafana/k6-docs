@@ -1,5 +1,6 @@
 ---
-title: "Constants"
+title: 'Constants'
+excerpt: 'Define constants to distinguish between gRPC Response'
 ---
 
 Define constants to distinguish between [gRPC Response](/javascript-api/k6-net-grpc/response) statuses.

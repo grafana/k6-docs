@@ -1,5 +1,6 @@
 ---
 title: 'Selection.nextAll([selector])'
+excerpt: 'Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.'
 ---
 
 Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.

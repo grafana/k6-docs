@@ -1,6 +1,7 @@
 ---
 title: 'check( val, sets, [tags] )'
 description: 'Runs one or more checks on a value and generates a pass/fail result but does not throw errors or otherwise interrupt execution upon failure.'
+excerpt: 'Runs one or more checks on a value and generates a pass/fail result but does not throw errors or otherwise interrupt execution upon failure.'
 ---
 
 Run checks on a value. A check is a test condition that can give a truthy or

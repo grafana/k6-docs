@@ -1,6 +1,6 @@
 ---
 title: 'Grabador de navegador'
-excerpt: ''
+excerpt: 'El grabador del navegador (browser recorder) permite generar un script de k6 basado en una sesión web.'
 ---
 
 El grabador del navegador (browser recorder) permite generar un script de k6 basado en una sesión web. Actualmente está disponible como extensión para [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) y [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).

@@ -1,6 +1,7 @@
 ---
 title: 'Online Certificate Status Protocol (OCSP)'
-excerpt: ''
+excerpt: 'k6 supports OCSP stapling, receiving and parsing a stapled response as part of
+the TLS connection setup.'
 ---
 
 ## What is OCSP?

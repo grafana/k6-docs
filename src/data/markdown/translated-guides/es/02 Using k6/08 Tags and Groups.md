@@ -1,6 +1,6 @@
 ---
 title: 'Tags y Groups'
-excerpt: ''
+excerpt: 'k6 proporciona Tags y Groups para ayudarle durante el análisis y visualizar, ordenar y  filtrar fácilmente los resultados de sus pruebas.'
 ---
 
 El análisis de los resultados de la carga es un paso necesario para encontrar los problemas de rendimiento; una prueba de carga suele tener como objetivo un servicio que implica diferentes subsistemas y recursos, lo que hace difícil encontrar el/los problemas que degradan su rendimiento.

@@ -1,5 +1,6 @@
 ---
 title: SharedArray
+excerpt: 'SharedArray is an array-like object that shares the underlying memory between VUs.'
 ---
 
 `SharedArray` is an array-like object that shares the underlying memory between VUs. Its constructor takes a name for the `SharedArray` and a function which needs to return an array object itself. The function will be executed only once and its result will then be saved in memory once and copies of the elements will be given when requested. The name is needed as VUs are completely separate JS VMs and k6 needs some way to identify the `SharedArray`s that it needs to return.

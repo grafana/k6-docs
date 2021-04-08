@@ -1,6 +1,7 @@
 ---
 title: 'Params'
 description: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
+excerpt: 'Used for setting various HTTP request-specific parameters such as headers, cookies, etc.'
 ---
 
 _Params_ is an object used by the http.\* methods that generate HTTP requests. _Params_ contains request-specific options like e.g. HTTP headers that should be inserted into the request.

@@ -1,6 +1,6 @@
 ---
 title: 'Fine tuning OS'
-excerpt: ''
+excerpt: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
 ---
 
 A number of users while running their test scripts locally will run into limits within their OS which would prevent them from making the necessary number of requests to complete the test. This limit usually manifests itself in a form of **Too Many Open Files** error. These limits, if unchanged, can be a severe bottleneck if you choose to run a somewhat bigger or complicated test locally on your machine.

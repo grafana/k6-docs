@@ -1,6 +1,6 @@
 ---
 title: 'Constant VUs'
-excerpt: ''
+excerpt: 'Un número fijo de VUs que ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a las opciones globales `vus` y `duration`.'
 ---
 
 ## Descripción

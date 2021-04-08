@@ -1,5 +1,6 @@
 ---
 title: 'Instalación'
+excerpt: 'Instrucciones para installar k6 en Linux, Mac, or Windows. Usa Docker o los binarios de k6.'
 ---
 
 ## Linux

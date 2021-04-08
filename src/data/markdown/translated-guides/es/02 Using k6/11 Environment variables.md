@@ -1,6 +1,6 @@
 ---
 title: 'Variables de entorno'
-excerpt: ''
+excerpt: 'Puede acceder a cualquier variable de entorno desde su código de script de k6, y usar esto para suministrar a sus VUs información de configuración.'
 ---
 
 ## k6 y las variables de entorno

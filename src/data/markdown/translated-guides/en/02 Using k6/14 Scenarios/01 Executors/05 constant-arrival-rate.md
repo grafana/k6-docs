@@ -1,6 +1,6 @@
 ---
 title: 'Constant arrival rate'
-excerpt: ''
+excerpt: 'A fixed number of iterations are executed in a specified period of time.'
 ---
 
 ## Description

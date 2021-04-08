@@ -1,6 +1,7 @@
 ---
 title: 'put(url, [body], [params])'
 description: 'httpx.put makes PUT requests'
+excerpt: 'httpx.put makes PUT requests'
 ---
 
 `session.put(url, body, params)` makes a PUT request. Only the first parameter is required

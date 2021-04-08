@@ -1,6 +1,6 @@
 ---
 title: 'Response.html()'
-excerpt: ''
+excerpt: 'Parses response as HTML and populate a Selection.'
 ---
 
 Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selection) object.

@@ -1,6 +1,6 @@
 ---
 title: 'Recording a session'
-excerpt: ''
+excerpt: 'In load testing, recording usually refers to the process of creating a load test from the recording of a user session.'
 ---
 
 In load testing, _recording_ usually refers to the process of creating a load test from the recording of a user session. The process consists of three steps:

@@ -1,5 +1,6 @@
 ---
 title: 'Advanced Examples'
+excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios, different environment variables and tags per scenario.'
 ---
 
 ## Using multiple scenarios

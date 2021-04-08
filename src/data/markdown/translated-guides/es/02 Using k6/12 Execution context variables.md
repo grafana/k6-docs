@@ -1,6 +1,6 @@
 ---
 title: 'Variables de contexto'
-excerpt: ''
+excerpt: 'VU y ITER son variables globales con información del contexto de ejecución que k6 pone a disposición del script de prueba.'
 ---
 
 [El tutorial "Ejecución de k6"](/getting-started/running-k6)  describe cómo k6 ejecuta un script de prueba para un número especificado de Usuarios Virtuales (VUs) y una duración de tiempo o un número fijo de iteraciones para cada VU.

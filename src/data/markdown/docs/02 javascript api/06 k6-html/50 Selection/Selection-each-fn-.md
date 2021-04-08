@@ -1,6 +1,6 @@
 ---
 title: 'Selection.each(fn)'
-excerpt: ''
+excerpt: 'Iterate over a Selection, executing a function for each matched element.'
 ---
 
 Iterate over a [Selection](/javascript-api/k6-html/selection), executing a function for each matched element.

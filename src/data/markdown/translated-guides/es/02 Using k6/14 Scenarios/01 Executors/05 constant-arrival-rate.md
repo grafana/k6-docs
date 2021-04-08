@@ -1,6 +1,6 @@
 ---
 title: 'Constant arrival rate'
-excerpt: ''
+excerpt: 'Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado.'
 ---
 
 ## Description

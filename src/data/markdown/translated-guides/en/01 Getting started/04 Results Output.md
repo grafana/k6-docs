@@ -1,6 +1,6 @@
 ---
 title: 'Results output'
-excerpt: ''
+excerpt: 'k6 run has two different ways of showing the results of a load test. By default, we show an aggregated summary report at the end of the test. k6 also supports streaming the raw metric values to one or more external outputs.'
 ---
 
 `k6 run` has two different ways of showing the results of a load test. By default, we show an [aggregated summary report](/getting-started/results-output#end-of-test-summary-report) at the end of the test. This report is [customizable](/results-visualization/end-of-test-summary#handlesummary-callback), but by default features a general overview of all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks) and [thresholds](/using-k6/thresholds) in the load test, as well as aggregated values for all [built-in](/using-k6/metrics#built-in-metrics) and [custom](/using-k6/metrics#custom-metrics) metrics used in the test run.

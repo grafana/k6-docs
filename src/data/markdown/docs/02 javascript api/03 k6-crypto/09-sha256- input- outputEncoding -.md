@@ -1,6 +1,7 @@
 ---
 title: 'sha256( input, outputEncoding )'
 description: 'Use SHA-256 to hash input data.'
+excerpt: 'Use SHA-256 to hash input data.'
 ---
 
 Use [sha256](https://golang.org/pkg/crypto/sha256/) to hash input data.

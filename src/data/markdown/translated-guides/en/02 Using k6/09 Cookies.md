@@ -1,6 +1,6 @@
 ---
 title: 'Cookies'
-excerpt: ''
+excerpt: 'k6 will transparently manage the receiving, storage and sending of cookies as described above, so that testing of your cookie-based web site or app will just work.'
 ---
 
 HTTP Cookies are used by web sites and apps to store pieces of stateful information on the user's

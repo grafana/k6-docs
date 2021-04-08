@@ -1,6 +1,6 @@
 ---
 title: 'SSL/TLS'
-excerpt: ''
+excerpt: 'By default and without any special configuration k6 will connect and talk to servers over TLS - You just need to make sure that your request URLs are specified with the https scheme.'
 ---
 
 Transport Layer Security (TLS), the successor of Secure Socket Layer (SSL), is the mechanism through

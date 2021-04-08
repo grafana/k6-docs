@@ -1,6 +1,6 @@
 ---
 title: 'HTTP Requests'
-excerpt: ''
+excerpt: 'When creating a new load test, the first thing you often do is define the HTTP requests that will be used to test your system.'
 ---
 
 ## Making HTTP Requests

@@ -1,6 +1,7 @@
 ---
 title: 'md5( input, outputEncoding )'
 description: 'Use MD5 to hash input data.'
+excerpt: 'Use MD5 to hash input data.'
 ---
 
 Use [md5](https://golang.org/pkg/crypto/md5/) to hash input data.

@@ -1,6 +1,7 @@
 ---
 title: 'Selection'
 description: 'A jQuery-like API for accessing HTML DOM elements.'
+excerpt: 'A jQuery-like API for accessing HTML DOM elements.'
 ---
 
 Represents a set of nodes in a DOM tree.

@@ -1,6 +1,6 @@
 ---
 title: 'Opciones'
-excerpt: ''
+excerpt: 'Las opciones le permiten configurar cómo se comportará k6 durante la ejecución de la prueba.'
 ---
 
 Las opciones le permiten configurar cómo se comportará k6 durante la ejecución de la prueba.

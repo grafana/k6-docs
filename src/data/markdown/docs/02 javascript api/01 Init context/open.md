@@ -2,7 +2,7 @@
 head_title: 'JavaScript API: open'
 title: 'open( filePath, [mode] )'
 description: 'Opens a file and reads all the contents into memory.'
-excerpt: ''
+excerpt: 'Opens a file and reads all the contents into memory.'
 ---
 
 Opens a file, reading all its contents into memory for use in the script. Favourably used to parameterize tests with data from CSV/JSON files etc.

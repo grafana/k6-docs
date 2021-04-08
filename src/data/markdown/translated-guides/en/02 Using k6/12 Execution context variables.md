@@ -1,6 +1,6 @@
 ---
 title: 'Execution context variables'
-excerpt: ''
+excerpt: '__VU and __ITER are both global variables with execution context information that k6 makes available to the test script.'
 ---
 
 [The "Running k6" tutorial](/getting-started/running-k6) describes how k6 runs a test script for a specified

@@ -1,5 +1,6 @@
 ---
 title: "Trend.add(value, [tags])"
+excerpt: 'Add a value to the Trend metric.'
 ---
 
 Add a value to the `Trend` metric.

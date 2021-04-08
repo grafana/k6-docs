@@ -1,6 +1,7 @@
 ---
 title: 'ripemd160( input, outputEncoding )'
 description: 'Use RIPEMD-160 to hash input data.'
+excerpt: 'Use RIPEMD-160 to hash input data.'
 ---
 
 Use [ripemd160](https://pkg.go.dev/golang.org/x/crypto/ripemd160) to hash input data.

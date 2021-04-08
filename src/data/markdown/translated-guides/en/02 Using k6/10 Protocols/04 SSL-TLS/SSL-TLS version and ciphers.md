@@ -1,6 +1,7 @@
 ---
 title: 'SSL/TLS version and ciphers'
-excerpt: ''
+excerpt: 'To support testing specific client configurations k6 allows you to set a specific version or range
+of versions of SSL/TLS that should be allowed for a connection.'
 ---
 
 To support testing specific client configurations k6 allows you to set a specific version or range

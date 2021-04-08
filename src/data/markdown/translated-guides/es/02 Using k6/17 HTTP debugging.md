@@ -1,6 +1,6 @@
 ---
 title: 'HTTP debugging'
-excerpt: ''
+excerpt: 'No siempre las cosas funcionan como esperamos. En esos casos tenemos el flag CLI --http-debug'
 hideFromSidebar: true
 ---
 

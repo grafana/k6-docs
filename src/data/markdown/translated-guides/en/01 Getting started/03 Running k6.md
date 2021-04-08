@@ -1,6 +1,6 @@
 ---
 title: 'Running k6'
-excerpt: ''
+excerpt: 'Start running a simple local test. Check out the basic load options or execution modes.'
 ---
 
 ## Running local tests

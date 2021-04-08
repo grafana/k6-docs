@@ -1,6 +1,6 @@
 ---
 title: Glossary
-excerpt: |
+excerpt: 'Find a list of terms commonly used within the k6 project and what we mean when we use them.'
 ---
 
 When discussing complex topics, it is usually a good idea to define a clear, shared terminology to ensure that we leave as little room as possible for misunderstandings. Below, you'll find a list of terms commonly used within the k6 project and what we mean when we use them.

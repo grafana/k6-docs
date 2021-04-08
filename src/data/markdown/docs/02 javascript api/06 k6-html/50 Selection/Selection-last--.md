@@ -1,6 +1,6 @@
 ---
 title: 'Selection.last()'
-excerpt: ''
+excerpt: 'Reduce the set of matched elements to the final one in the set.'
 ---
 
 Reduce the set of matched elements to the final one in the set.

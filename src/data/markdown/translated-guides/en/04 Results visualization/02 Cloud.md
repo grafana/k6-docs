@@ -1,6 +1,6 @@
 ---
 title: 'Cloud'
-excerpt: ''
+excerpt: 'When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.'
 ---
 
 Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), you can also run a test locally and stream the results to the [k6 Cloud](/cloud).

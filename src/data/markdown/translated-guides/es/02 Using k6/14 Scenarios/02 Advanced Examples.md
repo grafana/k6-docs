@@ -1,5 +1,6 @@
 ---
 title: 'Ejemplos avanzados'
+excerpt: 'Usando escenarios múltiples y casos avanzados.'
 ---
 
 ## Usando escenarios múltiples

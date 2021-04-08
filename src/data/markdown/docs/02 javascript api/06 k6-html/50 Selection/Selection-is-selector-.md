@@ -1,6 +1,6 @@
 ---
 title: 'Selection.is(selector)'
-excerpt: ''
+excerpt: 'Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.'
 ---
 
 Check the current matched set of elements against a selector or element and return true if at least one of these elements matches the given arguments.

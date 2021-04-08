@@ -1,5 +1,6 @@
 ---
 title: 'Socket.send(data)'
+excerpt: 'Send a data string through the connection. Binary data is not currently supported.'
 ---
 
 Send a data string through the connection. Binary data is not currently supported.

@@ -1,6 +1,6 @@
 ---
 title: 'Response.clickLink( [params] )'
-excerpt: ''
+excerpt: 'Create and make a request corresponding to a link, found in the HTML of response, being clicked.'
 ---
 
 Create and make a request corresponding to a link, found in the HTML of response, being clicked. By default it will look for the first `a` tag with a `href` attribute in the HTML, but this can be overridden using the `selector` option.

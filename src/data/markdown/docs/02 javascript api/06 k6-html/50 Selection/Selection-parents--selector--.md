@@ -1,6 +1,6 @@
 ---
 title: 'Selection.parents([selector])'
-excerpt: ''
+excerpt: 'Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.'
 ---
 
 Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.

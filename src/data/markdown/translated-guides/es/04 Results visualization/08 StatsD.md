@@ -1,6 +1,6 @@
 ---
 title: 'StatsD'
-excerpt: ''
+excerpt: 'k6 también puede mostrar las métricas con un servicio StatsD.'
 ---
 
 k6 también puede mostrar las métricas con un servicio [StatsD](https://github.com/statsd/statsd) como se muestra a continuación:

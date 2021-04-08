@@ -1,6 +1,7 @@
 ---
 title: 'sha1( input, outputEncoding )'
 description: 'Use SHA-1 to hash input data.'
+excerpt: 'Use SHA-1 to hash input data.'
 ---
 
 Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash input data.

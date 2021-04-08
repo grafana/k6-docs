@@ -1,5 +1,6 @@
 ---
 title: 'Salida de resultados'
+excerpt: 'De manera predeterminada, el comando k6 run imprime la información del tiempo de ejecución y los resultados generales en stdout.'
 ---
 
 De manera predeterminada, el comando `k6 run` imprime la información del tiempo de ejecución y los resultados generales en `stdout`.

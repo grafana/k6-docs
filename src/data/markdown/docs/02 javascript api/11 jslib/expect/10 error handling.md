@@ -1,6 +1,7 @@
 ---
 title: 'Error handling in expect.js'
 description: 'How to handle errors in expect.js.'
+excerpt: 'How to handle errors in expect.js.'
 ---
 
 When executing a performance or integration test, you should expect that your system under test may crash. If this happens, your test should print useful information rather than stack traces caused by unexpected HTTP responses. 

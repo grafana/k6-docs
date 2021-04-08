@@ -1,6 +1,6 @@
 ---
 title: 'Archivo Command'
-excerpt: ''
+excerpt: 'Un archivo en k6 es simplemente un archivo tar con todos los archivos necesarios para ejecutar una prueba k6.'
 ---
 
 ## ¿Qué es un archivo?

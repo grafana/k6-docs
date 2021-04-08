@@ -1,6 +1,7 @@
 ---
 title: 'setResponseCallback( callback )'
 description: 'set responseCallback to mark responses as expected'
+excerpt: 'set responseCallback to mark responses as expected'
 ---
 
 > ### 🎉 New in v0.31.0

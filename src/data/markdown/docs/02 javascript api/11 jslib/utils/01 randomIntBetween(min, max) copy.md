@@ -1,6 +1,7 @@
 ---
 title: 'randomIntBetween(min, max)'
 description: 'Random integer'
+excerpt: 'Random integer'
 ---
 
 Function returns a random number between the specified range. The returned value is no lower than (and may possibly equal) min, and is no bigger than (and may possibly equal) max.

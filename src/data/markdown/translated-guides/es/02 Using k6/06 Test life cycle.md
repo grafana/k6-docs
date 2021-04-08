@@ -1,6 +1,6 @@
 ---
 title: 'Etapas de un test'
-excerpt: ''
+excerpt: 'Las cuatro etapas del ciclo de vida de una prueba en k6 son "init", "setup", "VU" y "teardown".'
 ---
 
 Las cuatro etapas del ciclo de vida de una prueba en k6 son "init", "setup", "VU" y "teardown". A lo largo de la documentación, usted podrá notar que nos referimos a ellas como "init code", "VU code", etc.
