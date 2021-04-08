@@ -7,7 +7,7 @@ excerpt: 'Se ejecuta un número variable de iteraciones en un periodo de tiempo 
 
 Se ejecuta un número variable de iteraciones en un periodo de tiempo determinado. Este es similar al ejecutor de VUs en rampa, pero para iteraciones en su lugar, y k6 intentará cambiar dinámicamente el número de VUs para alcanzar la tasa de iteración configurada.
 
-See the [arrival rate](#arrival-rate) section for details.
+See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
 ## Opciones
 
@@ -24,7 +24,7 @@ Además de las opciones de configuración comunes, este ejecutor también añade
 ## Cuando usarlo
 
 Si necesita que sus pruebas no se vean afectadas por el rendimiento del sistema bajo prueba, y desea aumentar o disminuir el número de iteraciones durante períodos de tiempo específicos.
- 
+
 
 ## Ejemplo
 

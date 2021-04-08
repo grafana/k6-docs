@@ -9,7 +9,7 @@ A variable number of iterations are executed in a specified period of time. This
 similar to the ramping VUs executor, but for iterations instead, and k6 will attempt
 to dynamically change the number of VUs to achieve the configured iteration rate.
 
-See the [arrival rate](#arrival-rate) section for details.
+See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
 ## Options
 
