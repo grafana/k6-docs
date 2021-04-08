@@ -29,10 +29,7 @@ export const K6DoesNot = () => {
               {t('welcome.k6-does-not.browser.testing.link')}
             </Link>
             . {t('welcome.k6-does-not.browser.recorded-session.text')}{' '}
-            <Link
-              className={'link'}
-              to="/using-k6/session-recording-har-support/"
-            >
+            <Link className={'link'} to="/test-authoring/recording-a-session/">
               {t('welcome.k6-does-not.browser.recorded-session.link')}
             </Link>
             .
