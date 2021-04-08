@@ -56,7 +56,7 @@ We couldn't change the `--summary-export` data format because it would have brok
 
 Starting with k6 v0.30.0, users can now completely customize the end-of-test summary report!
 
-You can now `export` a function called `handleSummary()` and k6 will call it at the end of the test run, even after [`teardown()`](/docs/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` will be called with a JS object containing the same information that is used to generate the end-of-test summary and `--summary-export`, and allows users to completely customize how the end-of-test summary looks like.
+You can now `export` a function called `handleSummary()` and k6 will call it at the end of the test run, even after [`teardown()`](/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` will be called with a JS object containing the same information that is used to generate the end-of-test summary and `--summary-export`, and allows users to completely customize how the end-of-test summary looks like.
 
 Besides customizing the end-of-test CLI summary (if `handleSummary()` is exported, k6 will not print the default), you can also transform the summary data to various machine or human-readable formats and save it to files. This allows the creation of JS helper functions that generate JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. files from the summary data.
 

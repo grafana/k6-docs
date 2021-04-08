@@ -60,7 +60,7 @@ No podemos cambiar el formato de datos `--summary-export` porque habría roto la
 
 ¡A partir de la versión v0.30.0, los usuarios pueden ahora personalizar completamente el informe de resumen de fin de prueba!
 
-Ahora puede exportar una función llamada `handleSummary()` y k6 la llamará al final de la ejecución de la prueba, incluso después de [`teardown()`](/docs/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` será llamada con un objeto JS que contiene la misma información que se utiliza para generar el resumen de fin de prueba y `--summary-export`, y permite a los usuarios personalizar completamente el aspecto del resumen de fin de prueba.
+Ahora puede exportar una función llamada `handleSummary()` y k6 la llamará al final de la ejecución de la prueba, incluso después de [`teardown()`](/using-k6/test-life-cycle#setup-and-teardown-stages). `handleSummary()` será llamada con un objeto JS que contiene la misma información que se utiliza para generar el resumen de fin de prueba y `--summary-export`, y permite a los usuarios personalizar completamente el aspecto del resumen de fin de prueba.
 
 Además de personalizar el resumen CLI de fin de prueba (si se exporta `handleSummary()`, k6 no imprimirá el predeterminado), también puede transformar los datos del resumen a varios formatos legibles por la máquina o por el ser humano y guardarlos en archivos. Esto permite la creación de funciones de ayuda JS que generan archivos JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. a partir de los datos del resumen.
 

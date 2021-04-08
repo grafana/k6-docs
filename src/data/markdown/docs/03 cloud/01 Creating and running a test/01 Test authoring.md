@@ -22,4 +22,4 @@ After creating your test, you might want to debug it locally or run it on the cl
 If you want to run a cloud test, there are two main places where you could start it:
 
 - In the **k6 Cloud web app**, using the [script editor](/cloud/creating-and-running-a-test/script-editor), [test builder](/test-authoring/test-builder), or re-running a listed test.
-- In the **k6 CLI**, [running the k6 cloud command](/creating-and-running-a-test/cloud-tests-from-the-cli).
+- In the **k6 CLI**, [running the k6 cloud command](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).

@@ -45,7 +45,7 @@ Click **Set up schedule** and you will be presented with the steps to configure 
 <!-- Scheduling is a great tool for re-running  -->
 
 > ⭐ **Pro Tip**
-> [trigger a cloud test from the CLI](/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) then set up a schedule from the cloud app to re-run the test on a regular interval.
+> [trigger a cloud test from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) then set up a schedule from the cloud app to re-run the test on a regular interval.
 
 
 ## Scheduling options
