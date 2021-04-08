@@ -317,6 +317,15 @@ export const DocLayout = ({
             <HeaderNav links={links} />
           </div>
           <div className={'d-md-none col-12 d-flex justify-content-end'}>
+            {showLanguageToggle && (
+              <LanguageSwitcher
+                onLanguageChange={languageChangeHandler}
+                className={classNames(
+                  styles.languageSwitcher,
+                  styles.languageSwitcherMobile,
+                )}
+              />
+            )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
           <div className={`col-xl-4 col-12 ${styles.searchBox}`}>
@@ -328,15 +337,6 @@ export const DocLayout = ({
                 sidebarTree={sidebarTree}
                 links={links.map(({ to }) => to)}
               />
-              {showLanguageToggle && (
-                <LanguageSwitcher
-                  onLanguageChange={languageChangeHandler}
-                  className={classNames(
-                    styles.languageSwitcher,
-                    styles.languageSwitcherMobile,
-                  )}
-                />
-              )}
             </div>
           </div>
         </Header>
