@@ -956,6 +956,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/using-k6/modules/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/logs-tab/',
+    toPath: '/cloud/analyzing-results/logs/',
+    isPermanent: true,
+  });
 };
 
 exports.createPages = async (options) => {
