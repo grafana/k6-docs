@@ -93,12 +93,12 @@ export const SearchBox = ({ inputLabel, indices }) => {
         <Configure filters={locale} />
         <Input
           label={inputLabel}
-          queryLength={query.length}
+          queryLength={query?.length || 0}
           onFocus={() => setFocus(true)}
         />
         <div
           className={classNames(styles.hitsWrapper, {
-            [styles.hitsWrapper_show]: query.length > 0 && focus,
+            [styles.hitsWrapper_show]: query && query.length > 0 && focus,
           })}
         >
           {indices.map(({ name, hitComp }) => (
