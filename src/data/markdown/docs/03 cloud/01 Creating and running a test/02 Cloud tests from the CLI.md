@@ -118,6 +118,7 @@ export let options = {
         distributionLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
         distributionLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
       },
+      note: 'Anything that may be worth noting about your test.',
     },
   },
 };
@@ -127,8 +128,9 @@ export let options = {
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
 | projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project in which the test is assigned in the k6 Cloud UI. By default, the default project of the user default organization.                                                                                           |
-| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution). |
-| staticIPs (boolean) | Optional. `false` by default | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test. |
+| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution).               |
+| staticIPs (boolean)   | Optional. `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                                       |
+| note (string)         | Optional. Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test. |
 
 ### Running tests under a different project than your default one
 
