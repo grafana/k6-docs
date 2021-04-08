@@ -199,7 +199,7 @@ const pathCollisionDetector = (logger) => {
 // english pages are the root: / or /docs in prod, so we remove that part
 const removeEnPrefix = (path) => {
   if (path.startsWith('en/')) {
-    return path.replace(/en\//i, '/');
+    return path.replace(/en\//i, '');
   }
   return path.replace(/\/en\//i, '/');
 };
