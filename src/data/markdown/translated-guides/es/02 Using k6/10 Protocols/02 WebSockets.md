@@ -1,5 +1,6 @@
 ---
 title: 'WebSockets'
+head_title: 'Pruebas de cargas a Websockets'
 excerpt: 'Comparando las pruebas basadas en HTTP con las de WebSocket, hay algunas diferencias en la estructura y el funcionamiento interno de k6.'
 ---
 

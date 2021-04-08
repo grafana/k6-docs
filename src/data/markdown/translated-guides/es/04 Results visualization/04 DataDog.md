@@ -1,5 +1,6 @@
 ---
 title: 'Datadog'
+head_title: 'Pruebas de carga con Datadog'
 excerpt: 'La integración de k6 con Datadog permite visualizar y correlacionar las métricas de pruebas de rendimiento con otras métricas monitorizadas en Datadog'
 ---
 

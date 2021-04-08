@@ -1,7 +1,8 @@
 ---
 title: 'request(method, url, [body], [params])'
-description: 'httpx.get makes GET requests'
-excerpt: 'httpx.get makes GET requests'
+head_title: 'httpx.request()'
+description: 'Generic method for making arbitrary HTTP requests'
+excerpt: 'Generic method for making arbitrary HTTP requests'
 ---
 
 Generic method for making arbitrary HTTP requests. 

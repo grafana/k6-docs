@@ -1,5 +1,6 @@
 ---
 title: 'post(url, [body], [params])'
+head_title: 'httpx.post'
 description: 'httpx.post makes POST requests'
 excerpt: 'httpx.post makes POST requests'
 ---

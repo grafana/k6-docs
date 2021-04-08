@@ -1,5 +1,6 @@
 ---
 title: 'Websockets'
+head_title: 'Websocket example'
 excerpt: 'Scripting example on how to test websocket APIs.'
 ---
 

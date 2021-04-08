@@ -1,5 +1,6 @@
 ---
 title: "Params"
+head_title: 'gRPC.params'
 excerpt: 'Params is an object used by the gRPC methods that generate RPC requests.'
 ---
 

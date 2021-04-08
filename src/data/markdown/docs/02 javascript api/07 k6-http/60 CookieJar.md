@@ -1,5 +1,6 @@
 ---
 title: 'CookieJar'
+head_title: 'CookieJar object'
 description: 'Used for storing cookies, set by the server and/or added by the client.'
 excerpt: 'Used for storing cookies, set by the server and/or added by the client.'
 ---

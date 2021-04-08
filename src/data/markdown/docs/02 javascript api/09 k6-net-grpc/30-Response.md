@@ -1,5 +1,6 @@
 ---
 title: "Response"
+head_title: 'gRPC.Response'
 excerpt: 'The response object of a gRPC request.'
 ---
 

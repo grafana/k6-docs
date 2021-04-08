@@ -1,5 +1,6 @@
 ---
 title: 'Test authoring'
+head_title: 'Test authoring in k6 Cloud'
 excerpt: 'k6 ecosystem provides a set of codeless tools to speed up the test creation and facilitate collaboration across different roles.'
 ---
 
