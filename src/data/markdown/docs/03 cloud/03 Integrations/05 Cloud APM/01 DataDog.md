@@ -1,5 +1,6 @@
 ---
 title: 'DataDog'
+head_title: 'Datadog integration with k6 Cloud'
 excerpt: 'How to export metrics from k6 Cloud to DataDog'
 ---
 

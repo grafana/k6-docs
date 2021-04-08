@@ -24,6 +24,7 @@ export default function (props) {
   const pageMetadata = {
     data: {
       title,
+      description: ' ',
       // remove leading slash
       slug: path.slice(1),
     },
