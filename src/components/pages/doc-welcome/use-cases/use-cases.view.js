@@ -1,5 +1,6 @@
 import { Heading } from 'components/shared/heading';
 import { useI18n } from 'contexts/i18n-provider';
+import { useLocale } from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 
@@ -7,6 +8,7 @@ import styles from './use-cases.module.scss';
 
 export const UseCases = () => {
   const { t } = useI18n();
+  const { urlLocale } = useLocale();
   return (
     <section className={`container ${styles.container}`}>
       <Heading tag={'h2'} size={'lg'} className={styles.title}>
@@ -23,16 +25,34 @@ export const UseCases = () => {
             {' ('}
             <Link
               className={'link'}
-              to="/test-types/stress-testing#spike-testing-in-k6/"
+              to={
+                urlLocale === 'es'
+                  ? '/es/tipos-de-prueba/stress-testing/#spike-testing'
+                  : '/test-types/stress-testing#spike-testing-in-k6'
+              }
             >
               spike
             </Link>
             ,{' '}
-            <Link className={'link'} to="/test-types/stress-testing/">
+            <Link
+              className={'link'}
+              to={
+                urlLocale === 'es'
+                  ? '/es/tipos-de-prueba/stress-testing/'
+                  : '/test-types/stress-testing/'
+              }
+            >
               stress
             </Link>
             ,{' '}
-            <Link className={'link'} to="/test-types/soak-testing/">
+            <Link
+              className={'link'}
+              to={
+                urlLocale === 'es'
+                  ? '/es/tipos-de-prueba/soak-testing/'
+                  : '/test-types/soak-testing/'
+              }
+            >
               soak tests
             </Link>
             {') '}
@@ -47,7 +67,11 @@ export const UseCases = () => {
             {t('welcome.use-cases.performance-monitoring.description1')}{' '}
             <Link
               className={'link'}
-              to="/testing-guides/automated-performance-testing/"
+              to={
+                urlLocale === 'es'
+                  ? '/es/guias-de-prueba/automatizacion-de-pruebas-de-rendimiento/'
+                  : '/testing-guides/automated-performance-testing/'
+              }
             >
               {t('welcome.use-cases.performance-monitoring.testing-automation')}
             </Link>

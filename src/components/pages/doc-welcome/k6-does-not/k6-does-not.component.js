@@ -1,5 +1,6 @@
 import { Heading } from 'components/shared/heading';
 import { useI18n } from 'contexts/i18n-provider';
+import { useLocale } from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 
@@ -7,6 +8,7 @@ import styles from './k6-does-not.module.scss';
 
 export const K6DoesNot = () => {
   const { t } = useI18n();
+  const { urlLocale } = useLocale();
 
   return (
     <section className={`container ${styles.container}`}>
@@ -24,12 +26,23 @@ export const K6DoesNot = () => {
             {t('welcome.k6-does-not.browser.testing.text')}{' '}
             <Link
               className={'link'}
-              to="/testing-guides/load-testing-websites/"
+              to={
+                urlLocale === 'es'
+                  ? '/es/guias-de-prueba/pruebas-de-carga-a-sitios-web/'
+                  : '/testing-guides/load-testing-websites/'
+              }
             >
               {t('welcome.k6-does-not.browser.testing.link')}
             </Link>
             . {t('welcome.k6-does-not.browser.recorded-session.text')}{' '}
-            <Link className={'link'} to="/test-authoring/recording-a-session/">
+            <Link
+              className={'link'}
+              to={
+                urlLocale === 'es'
+                  ? '/es/creacion-de-pruebas/grabar-una-sesion/'
+                  : '/test-authoring/recording-a-session/'
+              }
+            >
               {t('welcome.k6-does-not.browser.recorded-session.link')}
             </Link>
             .
@@ -44,7 +57,11 @@ export const K6DoesNot = () => {
             {t('welcome.k6-does-not.nodejs.import.text1')}{' '}
             <Link
               className={'link'}
-              to="/using-k6/modules/#bundling-node-modules"
+              to={
+                urlLocale === 'es'
+                  ? '/es/usando-k6/modulos/#bundling-node-modules'
+                  : '/using-k6/modules/#bundling-node-modules'
+              }
             >
               {t('welcome.k6-does-not.nodejs.import.link')}
             </Link>{' '}
