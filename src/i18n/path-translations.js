@@ -45,7 +45,7 @@ const pathTranslations = {
     es: 'Guías de prueba',
   },
   Protocols: {
-    es: 'Protocols',
+    es: 'Protocolos',
   },
   Scenarios: {
     es: 'Escenarios',
