@@ -77,5 +77,5 @@ k6 también intentará leer algunas variables de entorno específicas que el usu
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `K6_CLOUD_HOST`      | Una URL a la que conectarse, cuando se especifica la opción de salida de resultados `--out=cloud`.                                          |
 | `K6_CLOUD_TOKEN`     | Un token de autenticación para utilizar en las llamadas a la API del servicio en la nube, cuando se especifica la opción de salida de resultados `--cloud`. |
-| `K6_NO_USAGE_REPORT` | Defina esto para desactivar los [informes de uso.](/misc/usage-collection).                                                        |
+| `K6_NO_USAGE_REPORT` | Defina esto para desactivar los [informes de uso.](/es/misc/recopilacion-de-datos-de-uso/).                                                        |
 | `K6_OUT`             | Especifica la salida de resultados, igual que la opción de línea de comandos `--out`.                                                             |

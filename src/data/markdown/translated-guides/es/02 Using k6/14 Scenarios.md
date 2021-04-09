@@ -45,7 +45,7 @@ export let options = {
 
 ## Executors
 
-[Executors](/using-k6/scenarios/executors) son los workhorses del motor de ejecución de k6. Cada uno programa los VUs y las iteraciones de forma diferente, y usted podrá elegir uno dependiendo del tipo de tráfico que quiera modelar para probar sus servicios.
+[Executors](/es/usando-k6/escenarios/executors/) son los workhorses del motor de ejecución de k6. Cada uno programa los VUs y las iteraciones de forma diferente, y usted podrá elegir uno dependiendo del tipo de tráfico que quiera modelar para probar sus servicios.
  
 Los posibles valores para los `executor` son los siguientes: 
 
@@ -53,13 +53,13 @@ Los posibles valores para los `executor` son los siguientes:
 
 | Nombre           | Valor | Descripción                                                            |
 | ---------------- | ----------------------- | ---------------------------------------------------- |
-| [Shared iterations](/using-k6/scenarios/executors/shared-iterations)         | `shared-iterations`     | Una cantidad fija de iteraciones que son "compartidas" entre un número de VUs.                                                                            |
-| [Per VU iterations](/using-k6/scenarios/executors/per-vu-iterations)         | `per-vu-iterations`     | Cada VU ejecuta un número exacto de iteraciones.                                                                                                    |
-| [Constant VUs](/using-k6/scenarios/executors/constant-vus)                   | `constant-vus`          | Un número fijo de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                                  |
-| [Ramping VUs](/using-k6/scenarios/executors/ramping-vus)                     | `ramping-vus`           | Un número variable de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                               |
-| [Constant Arrival Rate](/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado.                                                                      |
-| [Ramping Arrival Rate](/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | Se ejecuta un número variable de iteraciones, ejecutadas en un periodo de tiempo determinado.                                          |
-| [Externally Controlled](/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Controla y escala la ejecución en runtime a través  [k6's REST API](/misc/k6-rest-api) o [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
+| [Shared iterations](/es/usando-k6/escenarios/executors/shared-iterations/)         | `shared-iterations`     | Una cantidad fija de iteraciones que son "compartidas" entre un número de VUs.                                                                            |
+| [Per VU iterations](/es/usando-k6/escenarios/executors/per-vu-iterations/)         | `per-vu-iterations`     | Cada VU ejecuta un número exacto de iteraciones.                                                                                                    |
+| [Constant VUs](/es/usando-k6/escenarios/executors/constant-vus/)                   | `constant-vus`          | Un número fijo de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                                  |
+| [Ramping VUs](/es/usando-k6/escenarios/executors/ramping-vus/)                     | `ramping-vus`           | Un número variable de VUs que ejecuta una cantidad de iteraciones determinada, durante un tiempo determinado.                                               |
+| [Constant Arrival Rate](/es/usando-k6/escenarios/executors/constant-arrival-rate/) | `constant-arrival-rate` | Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado.                                                                      |
+| [Ramping Arrival Rate](/es/usando-k6/escenarios/executors/ramping-arrival-rate/)   | `ramping-arrival-rate`  | Se ejecuta un número variable de iteraciones, ejecutadas en un periodo de tiempo determinado.                                          |
+| [Externally Controlled](/es/usando-k6/escenarios/executors/externally-controlled/) | `externally-controlled` | Controla y escala la ejecución en runtime a través  [k6's REST API](/misc/k6-rest-api) o [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
 
 ## Opciones comunes
 
@@ -70,4 +70,4 @@ Los posibles valores para los `executor` son los siguientes:
 | `gracefulStop` | string | Tiempo para esperar a que las iteraciones terminen de ejecutarse antes de detenerlas forzosamente. Véase la sección [gracefulStop](#graceful-stop-and-ramp-down). | `"30s"`     |
 | `exec`         | string | Nombre de la función JS exportada a ejecutar.                                                                                                       | `"default"` |
 | `env`          | object | Variables de entorno específicas para este escenario.                                                                                               | `{}`        |
-| `tags`         | object | [Tags](/using-k6/tags-and-groups) específicas para este escenario. | `{}`        |
+| `tags`         | object | [Tags](/es/usando-k6/tags-y-groups/) específicas para este escenario. | `{}`        |

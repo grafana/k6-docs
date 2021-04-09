@@ -15,7 +15,7 @@ Supongamos que hay que crear una prueba de rendimiento que simula el comportamie
 
 k6 proporciona dos mecanismos para generar un script a partir de una sesión de usuario grabada:
 
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder) genera un script de k6 a partir de una sesión del navegador. Disponible en
+- [Browser recorder](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/) genera un script de k6 a partir de una sesión del navegador. Disponible en
  [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) y [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
-- [HAR converter](/test-authoring/recording-a-session/har-converter) genera un script de k6 a partir de las peticiones incluidas en un archivo de tipo HAR.
+- [HAR converter](/es/creacion-de-pruebas/grabar-una-sesion/har-converter/) genera un script de k6 a partir de las peticiones incluidas en un archivo de tipo HAR.
  

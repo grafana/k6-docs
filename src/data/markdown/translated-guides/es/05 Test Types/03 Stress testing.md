@@ -210,4 +210,4 @@ Una vez que su sistema es a prueba de estrés, es posible que desee ejecutar una
 
 ## Vea también
 
-- [Ejecución de pruebas a gran escala](/testing-guides/running-large-tests)
+- [Ejecución de pruebas a gran escala](/es/guias-de-prueba/pruebas-a-gran-escala/)

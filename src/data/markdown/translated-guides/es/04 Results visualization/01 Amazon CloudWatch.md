@@ -61,7 +61,7 @@ Suponemos que ya tiene una máquina que soporta tanto la ejecución de k6 como d
 
 ## Ejecutar la prueba con k6
 
-Una vez que el agente esté funcionando correctamente, [instale](/getting-started/installation) k6 y [ejecute](/getting-started/running-k6)  la prueba, para que las métricas sean enviadas al agente mediante el siguiente comando:
+Una vez que el agente esté funcionando correctamente, [instale](/es/empezando/instalacion/) k6 y [ejecute](/es/empezando/ejecucion-de-k6/)  la prueba, para que las métricas sean enviadas al agente mediante el siguiente comando:
 
 ```bash
 $ k6 run --out statsd script.js

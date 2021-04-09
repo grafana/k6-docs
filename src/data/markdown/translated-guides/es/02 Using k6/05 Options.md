@@ -33,7 +33,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Especificar la duración mínima de cada ejecución                             |
 | [No Connection Reuse](#no-connection-reuse)               | Un booleano que especifica si k6 debe desactivar las conexiones keep-alive               |
 | [No Cookies Reset](#no-cookies-reset)                     | Esto desactiva el restablecimiento del tarro de galletas después de cada iteración de la VU                      |
-| [No Summary](#no-summary)                                 | Desactiva el [resumen de fin de test](/results-visualization/end-of-test-summary)                  |
+| [No Summary](#no-summary)                                 | Desactiva el [resumen de fin de test](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/)                  |
 | [No Thresholds](#no-thresholds)                           | Desactiva la ejecución de Thresholds                                                        |
 | [No Usage Report](#no-usage-report)                       | Un booleano que especifica si k6 debe enviar un informe de uso                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | Un booleano que especifica si k6 debe reutilizar las conexiones TCP                        |
@@ -46,11 +46,9 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [Summary export](#summary-export)                         | Guarda el informe de resumen de fin de prueba en un archivo JSON                                |
 | [Supply Env Var](#supply-env-var)                         | Añadir/sustituir la variable de entorno con VAR=valor                                    |
 | [System Tags](#system-tags)                               | Especificar qué etiquetas del sistema estarán en las métricas recogidas                          |
-| [Summary Time Unit](#summary-time-unit)                   | Unidad de tiempo para todos los valores del [resumen del fin de test](/results-visualization/end-of-test-summary)                                                      |
-| [Summary Trend Stats](#summary-trend-stats)               | Definir las estadísticas de las métricas de tendencia                                                      |
-| [Tags](#tags)                                             | Especificar `tags` que deben establecerse en todas las métricas de la prueba
-
-                        |
+| [Summary Time Unit](#summary-time-unit)                   | Unidad de tiempo para todos los valores del [resumen del fin de test](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/)                                                      |
+| [Summary Trend Stats](#summary-trend-stats)               | Definir las estadísticas de las métricas de tendencia                 |
+| [Tags](#tags)                                             | Especificar `tags` que deben establecerse en todas las métricas de la prueba |
 | [Teardown Timeout](#teardown-timeout)                     | Especifica el tiempo de ejecución de la función `teardown()` antes de su finalización   |
 | [Thresholds](#thresholds)                                 | Configurar bajo qué condiciones una prueba tiene éxito o no                         |
 | [Throw](#throw)                                           | Un booleano que especifica si se lanzan errores en las peticiones HTTP fallidas                |
@@ -238,7 +236,7 @@ $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 
 Soporta la ejecución de scripts con diferentes modos de compatibilidad con ECMAScript.
 
-Lea más sobre los diferentes [modos de compatibilidad con JavaScript](/using-k6/javascript-compatibility-mode).
+Lea más sobre los diferentes [modos de compatibilidad con JavaScript](/es/usando-k6/javascript-compatibility-mode/).
 
 | Env                     | CLI                    | Code / Config file | Default      |
 | ----------------------- | ---------------------- | ------------------ | ------------ |
@@ -429,7 +427,7 @@ Con el código anterior cualquier petición hecha a `test.k6.io` será redirigid
 
 Registra todas las peticiones y respuestas HTTP. Excluye el cuerpo por defecto, para incluir el cuerpo use `--http-debug=full`. 
 
-Lea más [aquí](/using-k6/http-debugging).
+Lea más [aquí](/es/usando-k6/http-debugging/).
 
 | Env             | CLI                                     | Code / Config file | Default |
 | --------------- | --------------------------------------- | ------------------ | ------- |
@@ -686,7 +684,7 @@ export let options = {
 
 ### No Summary
 
-Desactiva el [end-of-test summary](/results-visualization/end-of-test-summary) generation. Desde v0.30.0, k6 incluye [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`.
+Desactiva el [end-of-test summary](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/) generation. Desde v0.30.0, k6 incluye [`handleSummary()`](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/#handlesummary-callback) and `--summary-export`.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -773,7 +771,7 @@ export let options = {
 
 ### Results Output
 
-Especifique la salida de resultados. Por favor, vaya a [Salida de resultados](/getting-started/results-output) para más información sobre todos los módulos de salida disponibles y cómo configurarlos. Disponible en el comando de ejecución `k6 run`.
+Especifique la salida de resultados. Por favor, vaya a [Salida de resultados](/es/empezando/salida-de-resultados/) para más información sobre todos los módulos de salida disponibles y cómo configurarlos. Disponible en el comando de ejecución `k6 run`.
 
 
 | Env | CLI           | Code / Config file | Default |
@@ -812,7 +810,7 @@ export let options = {
 ### Scenarios
 
 Defina uno o más patrones de ejecución, con varias configuraciones de programación de VU e iteraciones, ejecutando diferentes funciones exportadas (¡además de las predeterminadas!), utilizando diferentes variables de entorno, etiquetas y más.
-Consulte el artículo [Escenarios](/using-k6/scenarios) para obtener detalles y más ejemplos.
+Consulte el artículo [Escenarios](/es/usando-k6/escenarios/) para obtener detalles y más ejemplos.
 
 
 | Env | CLI | Code / Config file | Default |
@@ -921,7 +919,7 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 </CodeGroup>
 
-Vea un archivo de ejemplo en la [página de resultados](https://k6.io/docs/getting-started/results-output#summary-export) page.
+Vea un archivo de ejemplo en la [página de resultados](/es/empezando/salida-de-resultados/#exportando-el-resumen) page.
 
 ### Supply Env Var
 
@@ -943,7 +941,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 ### System Tags
 
-Especifique qué [Tags](/using-k6/tags-and-groups#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI. 
+Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI. 
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -961,7 +959,7 @@ export let options = {
 
 ### Summary Time Unit
 
-Define la unidad de tiempo en [ resumen de fin de tests](/results-visualization/end-of-test-summary). Lo valores posibles son `s` (segundos), `ms` (milisegundos) y `us` (microsegundos). Si no es especificado, k6 usará la unidad más apropiada para cada valor.
+Define la unidad de tiempo en [ resumen de fin de tests](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/). Lo valores posibles son `s` (segundos), `ms` (milisegundos) y `us` (microsegundos). Si no es especificado, k6 usará la unidad más apropiada para cada valor.
 
 | Env                    | CLI                   | Code / Config file  | Default |
 | ---------------------- | --------------------- | ------------------- | ------- |
@@ -1040,7 +1038,7 @@ export let options = {
 
 ### Thresholds
 
-Una colección de especificaciones de umbrales para configurar bajo qué condición(es) se considera que una prueba ha tenido éxito o no, cuando ha pasado o fallado, basándose en los datos métricos. Para obtener más información, consulte la documentación sobre [Thresholds](/using-k6/thresholds).
+Una colección de especificaciones de umbrales para configurar bajo qué condición(es) se considera que una prueba ha tenido éxito o no, cuando ha pasado o fallado, basándose en los datos métricos. Para obtener más información, consulte la documentación sobre [Thresholds](/es/usando-k6/thresholds/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |

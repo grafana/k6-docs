@@ -66,7 +66,7 @@ Para solucionar este problema utilizamos un modelo abierto, desvinculando el ini
 ![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
 
 
-En k6, hemos implementado este modelo abierto con nuestros dos executors de "tasa de llegada (Arrival Rate)" [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
+En k6, hemos implementado este modelo abierto con nuestros dos executors de "tasa de llegada (Arrival Rate)" [constant-arrival-rate](/es/usando-k6/escenarios/executors/constant-arrival-rate/) and [ramping-arrival-rate](/es/usando-k6/escenarios/executors/ramping-arrival-rate/):
 
 <CodeGroup labels={[ "open-model.js" ]} lineNumbers={[true]}>
 

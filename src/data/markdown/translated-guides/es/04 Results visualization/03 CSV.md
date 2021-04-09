@@ -55,5 +55,5 @@ Cada entrada en el informe representa una métrica `metric_name` junto con su va
 
 ## Véase también
 
-- [Métricas](/using-k6/metrics)
+- [Métricas](/es/usando-k6/metricas/)
 - [Error codes](/javascript-api/error-codes)

@@ -3,7 +3,7 @@ title: 'Resumen del final de la prueba'
 excerpt: 'Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en stdout que contiene una visión general de los resultados de la prueba.'
 ---
 
-Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en stdout que contiene una visión general de los resultados de la prueba. Incluye los valores agregados de todas las métricas y submétricas [incorporadas](/using-k6/metrics#built-in-metrics) y [propias](/using-k6/metrics#custom-metrics), [thresholds](/using-k6/thresholds), [groups](/using-k6/tags-and-groups#groups), y [checks](/using-k6/checks). Puede tener un aspecto similar al siguiente:
+Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en stdout que contiene una visión general de los resultados de la prueba. Incluye los valores agregados de todas las métricas y submétricas [incorporadas](/es/usando-k6/metricas/#metricas-incorporadas) y [propias](/es/usando-k6/metricas/#metricas-personalizadas), [thresholds](/es/usando-k6/thresholds/), [groups](/es/usando-k6/tags-y-groups/#groups), y [checks](/es/usando-k6/checks/). Puede tener un aspecto similar al siguiente:
 
 
 <CodeGroup labels={[]}>
@@ -42,14 +42,14 @@ Por defecto, al final de cada prueba local, k6 imprime un informe de resumen en 
 
 Algunas opciones pueden afectar al comportamiento de este informe:
 
-- La opción [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) le permite definir qué estadísticas de las métricas de tendencia se calcularán y mostrarán.
-- La opción [`--summary-time-unit` option](/using-k6/options#summary-time-unit) obliga a k6 a utilizar una unidad de tiempo fija para todos los valores de tiempo en el resumen.
-- La opción [`no-summary`](/using-k6/options#no-summary) desactiva completamente la generación de informes. Disponible desde la versión de k6  v0.30.0 que incluye `--summary-export` y `handleSummary()`.
+- La opción [`--summary-trend-stats` option](/es/usando-k6/opciones/#summary-trend-stats) le permite definir qué estadísticas de las métricas de tendencia se calcularán y mostrarán.
+- La opción [`--summary-time-unit` option](/es/usando-k6/opciones/#summary-time-unit) obliga a k6 a utilizar una unidad de tiempo fija para todos los valores de tiempo en el resumen.
+- La opción [`no-summary`](/es/usando-k6/opciones/#no-summary) desactiva completamente la generación de informes. Disponible desde la versión de k6  v0.30.0 que incluye `--summary-export` y `handleSummary()`.
 
 
 ## Exportación de un resumen a un archivo JSON
 
-Desde la versión 0.26.0 k6 se tiene [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) para las ejecuciones de pruebas locales. Esta opción exporta algunos de los datos del informe de resumen a un formato de archivo JSON.
+Desde la versión 0.26.0 k6 se tiene [`--summary-export=path/to/file.json` option](/es/usando-k6/opciones/#summary-export) para las ejecuciones de pruebas locales. Esta opción exporta algunos de los datos del informe de resumen a un formato de archivo JSON.
 
 Desafortunadamente, el formato exportado es algo limitado y tiene algunas peculiaridades confusas. Por ejemplo, los grupos y las comprobaciones no están ordenados. Los valores de los umbrales también son algo poco intuitivos: indican si se ha superado el umbral. Así, true es el valor de umbral "malo", es decir, cuando el umbral ha fallado, y false es el valor "bueno"...
 

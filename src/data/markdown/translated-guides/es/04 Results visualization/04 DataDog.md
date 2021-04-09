@@ -85,7 +85,7 @@ Puede visualizar las métricas de k6 en tiempo real con el [explorador de métri
 
 <blockquote>
 
-Para saber más sobre todos los tipos de métricas de k6, lea la guía de [métricas de k6](/using-k6/metrics).
+Para saber más sobre todos los tipos de métricas de k6, lea la guía de [métricas de k6](/es/usando-k6/metricas/).
 
 </blockquote>
 

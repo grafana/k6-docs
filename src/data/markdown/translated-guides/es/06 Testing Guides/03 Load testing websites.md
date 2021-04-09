@@ -75,11 +75,11 @@ Con esta información, es el momento de analizar la frecuencia de uso, el valor 
 
 A continuación, debe decidir qué tipos de pruebas de carga ejecutar. Consulte los siguientes artículos para obtener más información:
 
-- [Smoke test](/test-types/smoke-testing)
-- [Load test](/test-types/load-testing)
-- [Stress test](/test-types/stress-testing)
-- [Spike test](/test-types/stress-testing#spike-testing)
-- [Soak test](/test-types/soak-testing)
+- [Smoke test](/es/tipos-de-prueba/smoke-testing)
+- [Load test](/es/tipos-de-prueba/load-testing)
+- [Stress test](/es/tipos-de-prueba/stress-testing)
+- [Spike test](/es/tipos-de-prueba/stress-testing#spike-testing)
+- [Soak test](/es/tipos-de-prueba/soak-testing)
 
 ### Calcular el número de usuarios concurrentes
 
@@ -106,7 +106,7 @@ Las pruebas de carga deben imitar los flujos de los usuarios lo más fielmente p
 
 El proceso de creación de este tipo de pruebas de carga podría ser engorroso. Pero la grabación de una sesión de usuario podría facilitarle el trabajo de iniciar la creación de la prueba.
 
-Consulte la [guía de grabación de sesiones](/test-authoring/recording-a-session) para obtener más información sobre cómo autogenerar su prueba de carga a partir de una sesión de usuario.
+Consulte la [guía de grabación de sesiones](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/) para obtener más información sobre cómo autogenerar su prueba de carga a partir de una sesión de usuario.
 
 ### No incluya solicitudes de terceros
 
@@ -158,7 +158,7 @@ Por defecto, las métricas estandarizadas de una herramienta de pruebas de carga
 
 Los diferentes tipos de recursos podrían comportarse de forma muy diferente y podrían hacer que el valor de las métricas agregadas no tuviera sentido.
 
-Si desea filtrar sus métricas en función de los diferentes tipos de solicitudes, considere la posibilidad de utilizar la función de [etiquetado (tags)](/using-k6/tags-and-groups#tags).
+Si desea filtrar sus métricas en función de los diferentes tipos de solicitudes, considere la posibilidad de utilizar la función de [etiquetado (tags)](/es/usando-k6/tags-y-groups/#tags).
 
 <CodeGroup labels={[]}>
 
@@ -170,7 +170,7 @@ http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 
 ### Agrupar las diferentes páginas web
 
-[Groups](/using-k6/tags-and-groups#groups) ayudan a organizar su prueba de carga en torno a una lógica común. Cuando una prueba de carga simula un escenario de un usuario que visita varias páginas, es una buena práctica configurar un grupo para cada página web para organizar su prueba de carga y facilitar la visualización de los resultados de su prueba.
+[Groups](/es/usando-k6/tags-y-groups/#groups) ayudan a organizar su prueba de carga en torno a una lógica común. Cuando una prueba de carga simula un escenario de un usuario que visita varias páginas, es una buena práctica configurar un grupo para cada página web para organizar su prueba de carga y facilitar la visualización de los resultados de su prueba.
 
 <CodeGroup labels={[]}>
 
@@ -187,8 +187,8 @@ group('login page', function () {
 
 ## Véase también
 
-- [k6 no ejecuta un navegador](/#what-k6-does-not)
-- [Guía de grabación de sesiones ](/using-k6/session-recording-har-support)
+- [k6 no ejecuta un navegador](/#¿que-no-hace-k6)
+- [Guía de grabación de sesiones ](/es/creacion-de-pruebas/grabar-una-sesion/)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
 - Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)

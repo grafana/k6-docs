@@ -21,7 +21,7 @@ Debe ejecutar la prueba de carga para:
 1 - Evaluar el rendimiento actual de su sistema bajo carga típica y máxima.
 2 - Asegurarse de que cumple continuamente los estándares de rendimiento a medida que realiza cambios en su sistema (código e infraestructura).
 
-Es probable que tenga algún conocimiento sobre la cantidad de tráfico que su sistema está viendo en promedio y durante las horas pico. Esta información será útil a la hora de decidir cuáles deben ser sus objetivos de rendimiento, es decir, cómo configurar [thresholds de rendimiento](/using-k6/thresholds).
+Es probable que tenga algún conocimiento sobre la cantidad de tráfico que su sistema está viendo en promedio y durante las horas pico. Esta información será útil a la hora de decidir cuáles deben ser sus objetivos de rendimiento, es decir, cómo configurar [thresholds de rendimiento](/es/usando-k6/thresholds/).
 
 Digamos que estás viendo alrededor de 60 usuarios concurrentes en promedio y 100 usuarios durante las horas pico de operación.
 Probablemente sea importante para usted cumplir los objetivos de rendimiento tanto en horas normales como en horas punta, por lo que se recomienda configurar la prueba de carga teniendo en cuenta la carga alta: 100 usuarios en este caso
@@ -96,7 +96,7 @@ Le recomendamos que incluya siempre una etapa de rampa ascendente en todas sus p
 
 
 También puede ir un paso más allá y configurar la prueba de carga para que se asemeje más a sus condiciones normales y de pico. En ese caso, podría configurar la prueba de carga para que se mantenga en 60 usuarios durante la mayor parte del día, y que aumente a 100 usuarios durante las horas de mayor actividad, para luego disminuir a la carga normal.
-Asegúrese de no sobrepasar su número normal de VUs - eso no es una prueba de carga, es una [prueba de estrés (stress test)](/test-types/stress-testing).
+Asegúrese de no sobrepasar su número normal de VUs - eso no es una prueba de carga, es una [prueba de estrés (stress test)](/es/tipos-de-prueba/stress-testing).
 
 <CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
 
@@ -140,4 +140,4 @@ Thresholds son una forma de describir sus expectativas de manera formal, y evalu
 >
 > Si es la primera vez que ejecuta pruebas de carga, empiece con algo pequeño. Es posible que su aplicación e infraestructura no sean tan sólidas como cree. Hemos tenido miles de usuarios que han ejecutado pruebas de carga que rápidamente colapsaron sus aplicaciones (o entornos de ensayo).
 
-Si su sistema se bloquea bajo una prueba de carga, significa que su prueba de carga se ha transformado en una [prueba de estrés (stress test)](/test-types/stress-testing), que es el siguiente tipo que vamos a tratar.
+Si su sistema se bloquea bajo una prueba de carga, significa que su prueba de carga se ha transformado en una [prueba de estrés (stress test)](/es/tipos-de-prueba/stress-testing), que es el siguiente tipo que vamos a tratar.

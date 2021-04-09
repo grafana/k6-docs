@@ -62,7 +62,7 @@ Utilice el [módulo http](/javascript-api/k6-http) para realizar todo tipo de pe
 
 ## Tags en las solicitudes HTTP 
 
-k6 aplicará automáticamente [etiquetas (tags)](/using-k6/tags-and-groups#section-tags) a sus peticiones HTTP. Estas etiquetas le permiten filtrar sus resultados durante el análisis.
+k6 aplicará automáticamente [etiquetas (tags)](/es/usando-k6/tags-y-groups/#system-tags) a sus peticiones HTTP. Estas etiquetas le permiten filtrar sus resultados durante el análisis.
 
 | Nombre   | Descripción                                |
 | ------ | ------------------------------------------ |
@@ -70,7 +70,7 @@ k6 aplicará automáticamente [etiquetas (tags)](/using-k6/tags-and-groups#secti
 | group   | Cuando una petición se ejecutan dentro de un [group](/javascript-api/k6/group-name-fn), el valor es el nombre del grupo. Por defecto está vacío.    |
 | name   | Por defecto será la URL solicitada                  |
 | method | Métodos de la solicitud (GET,POST,PUT, entre otros) |
-| scenario   | Cuando una petición se ejecutan dentro de un [scenario](/using-k6/scenarios), el valor es el nombre del grupo. Por defecto está vacío. |
+| scenario   | Cuando una petición se ejecutan dentro de un [scenario](/es/usando-k6/escenarios/), el valor es el nombre del grupo. Por defecto está vacío. |
 | status | Estatus de la respuesta                            |
 | url    | URL de la solicitud                  |
 

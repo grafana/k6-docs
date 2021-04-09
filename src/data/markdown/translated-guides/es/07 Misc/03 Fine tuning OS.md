@@ -305,7 +305,7 @@ Dependiendo de la prueba particular de k6: número máximo de VUs utilizadas, n�
 
 Como referencia, cuente que cada instancia de VU requiere entre 1MB y 5MB de RAM, dependiendo de la complejidad de su script y sus dependencias. Esto es aproximadamente entre `GB y 5GB de RAM del sistema requerido para una prueba de 1.000 VU, así que asegúrese de que hay suficiente RAM física disponible para satisfacer las demandas de su prueba.
 
-Si necesita disminuir el uso de RAM, puede utilizar la opción `--compatibility-mode=base`. Más información en [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode).
+Si necesita disminuir el uso de RAM, puede utilizar la opción `--compatibility-mode=base`. Más información en [JavaScript Compatibility Mode](/es/usando-k6/javascript-compatibility-mode/).
 
 ### Memoria virtual
 
@@ -333,5 +333,5 @@ Por ejemplo, puede configurar su aplicación para que se ejecute en los puertos 
 
 ## Véase también
 
-- [Ejecución de pruebas a gran escala](/testing-guides/running-large-tests)
-- [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
+- [Ejecución de pruebas a gran escala](/es/guias-de-prueba/pruebas-a-gran-escala/)
+- [JavaScript Compatibility Mode](/es/usando-k6/javascript-compatibility-mode/)
