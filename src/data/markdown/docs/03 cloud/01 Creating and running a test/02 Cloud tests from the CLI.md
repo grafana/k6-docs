@@ -97,7 +97,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
 6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
 
-    ![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/cloud-insights-results.png 'k6 Cloud Test Results')
+    ![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/api-testing.png 'k6 Cloud Test Results')
 
     Learn more about test results on [Analyzing Results](/cloud/analyzing-results/overview).
 
