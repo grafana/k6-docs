@@ -16,7 +16,7 @@ tests and/or configure them into your Continuous Integration (CI) pipeline.
 > **Note:** Notifications are configured per organization by the organization's
 > owner or an admin member.
 
-k6 supports three different integration options: _Slack_, _Microsoft Teams_ and
+k6 supports four different integration options: _Slack_, _Microsoft Teams_ and
 your own _Custom Webhook_ or _Custom Email_. Each option can also be customized freely 
 if our default is not exactly what you need.
 
@@ -106,24 +106,27 @@ Instead of using webhooks you can have k6.io send you an email.
 1. Decide which email or emails to receive the notification.
 2. From the k6 web app, select `Notifications` from the left menu bar. From there,
    select to setup _Email_.
-3. In the `addresses` field, enter the email address or -addresses that should receive the
-   notification. Separate multiple emails by commas.
-4. Select an `email subject`. This is useful if you want to filter
+3. In the `Recipients` field select your organization's member emails from a dropdown or 
+   alternatively enter the email address or addresses that should receive the
+   notification. Separate multiple emails by commas or spaces.
+4. Enter `Subject`. This is useful if you want to filter
    and organize notifications in your email program.
-4. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
+5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
    You can find descriptions of the available events [below](#supported-notification-events).
-5. Optionally, give your notification a name to separate different notifications.
-6. Optionally, select a `Template` to start from. The default is a simple
+6. Optionally, give your notification a name to separate different notifications.
+7. Optionally, select a `Template` to start from. The default _Email Template_ is a simple
    HTML-enhanced email template with human-readable test results. You can edit this to your liking.
 8. Press `Save` and fix any eventual errors reported.
 9. Once Saving completes correctly, go back to `Configure` the notification you
    just created and click the `Send test event` button. This sends a dummy
    message to your email address/addresses. All the context fields in your template will be filled
    with mock values to make sure it works.
-9. Fix any errors reported by sending the test event. Make sure to also
+10. Fix any errors reported by sending the test event. Make sure to also
    double-check so that you get the expected value-type for every field on the
    receiving end (if there was a typo in the variable-name some may just be
    left empty without giving an explicit error).
+
+![Email Setup example](./images/03-Notifications/email-setup.png)
 
 ## Supported Notification events
 
