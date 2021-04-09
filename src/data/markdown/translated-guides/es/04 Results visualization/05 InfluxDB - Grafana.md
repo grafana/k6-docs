@@ -7,7 +7,7 @@ Puedes utilizar [Grafana](https://grafana.com/grafana/) para visualizar las mét
 
 El primer paso es subir las métricas de los resultados de las pruebas a un backend de almacenamiento. Y a continuación, configurar Grafana para obtener los datos de su backend para visualizar los resultados de las pruebas.
 
-Este tutorial muestra cómo subir las métricas de los resultados de las pruebas a una instancia de [InfluxDB](https://github.com/influxdata/influxdb) y configurar Grafana para consultar las [métricas de k6](/using-k6/metrics) desde InfluxDB.
+Este tutorial muestra cómo subir las métricas de los resultados de las pruebas a una instancia de [InfluxDB](https://github.com/influxdata/influxdb) y configurar Grafana para consultar las [métricas de k6](/es/usando-k6/metricas/) desde InfluxDB.
 
 ![Grafana Visualization](./images/InfluxDB-Grafana/grafana-visualization.png)
 

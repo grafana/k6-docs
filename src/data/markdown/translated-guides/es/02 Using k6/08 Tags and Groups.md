@@ -44,9 +44,9 @@ export default function () {
 
 Groups do the following tasks internally:
 
-- For each `group()` function, k6 emits a [group_duration metric](/using-k6/metrics) that contains the total time to execute the group function. 
+- For each `group()` function, k6 emits a [group_duration metric](/es/usando-k6/metricas/) that contains the total time to execute the group function. 
 
-- When a taggable resource: checks, requests, or custom metrics runs within a group, k6 will set the tag `group` with the current group name. Read more about it in [Tags](/using-k6/tags-and-groups#tags).
+- When a taggable resource: checks, requests, or custom metrics runs within a group, k6 will set the tag `group` with the current group name. Read more about it in [Tags](/es/usando-k6/tags-y-groups/#tags).
 
 Both options, the `group_duration` metric and `group tagging`, could help you analyze and visualize better the results of more complex tests. Check out how they work in your [k6 result output](/integrations#result-store-and-visualization).
 
@@ -73,10 +73,10 @@ group('list posts', function () {
 
 If your code looks like the example above, consider the following alternatives to write cleaner code:
 
-- For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
-- To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
-- To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
-- If you need to model advanced user patterns, check out [Scenarios](/using-k6/scenarios). 
+- For dynamic URLs, use the [URL grouping feature](/es/usando-k6/peticiones-http/#agrupamiento-de-las-urls).
+- To provide a meaningful name to your request, set the value of [tags.name](/es/usando-k6/peticiones-http/#tags-en-las-solicitudes-http).
+- To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/es/usando-k6/modulos/#usando-los-modulos-locales-con-un-docker) and import it into the test script.
+- If you need to model advanced user patterns, check out [Scenarios](/es/usando-k6/escenarios/). 
 
 
 
@@ -213,7 +213,7 @@ export let options = {
 
 </CodeGroup>
 
-Lea más sobre la sintaxis de la [salida de resultados](/getting-started/results-output/json) de k6 para ver cómo las etiquetas afectan a la salida de los resultados de las pruebas.
+Lea más sobre la sintaxis de la [salida de resultados](/es/visualizacion-de-resultados/json/) de k6 para ver cómo las etiquetas afectan a la salida de los resultados de las pruebas.
 
 ## Tags y Groups en k6 Cloud
 

@@ -38,7 +38,7 @@ Desde el punto de vista de la capacidad de percepción humana, los siguientes pu
 > - 1,0 segundo es el límite para que el flujo de pensamiento del usuario permanezca ininterrumpido, aunque el usuario notará el retraso. Normalmente, no es necesaria ninguna información especial durante los retrasos superiores a 0,1 pero inferiores a 1,0 segundos, pero el usuario pierde la sensación de operar directamente con los datos.
 > - 10 segundos es el límite para mantener la atención del usuario en el diálogo. En el caso de retrasos más largos, los usuarios querrán realizar otras tareas mientras esperan a que el ordenador termine, por lo que deben recibir una retroalimentación que les indique cuándo espera el ordenador que terminen. La retroalimentación durante el retraso es especialmente importante si el tiempo de respuesta puede ser muy variable, ya que entonces los usuarios no sabrán qué esperar.
 
-Una vez que los objetivos están claros, hay que codificarlos como [Thresholds](/using-k6/thresholds), que es el mecanismo por el que se especifican los criterios de aprobado/reprobado en k6. Más adelante se habla de ello.
+Una vez que los objetivos están claros, hay que codificarlos como [Thresholds](/es/usando-k6/thresholds/), que es el mecanismo por el que se especifican los criterios de aprobado/reprobado en k6. Más adelante se habla de ello.
 
 ## ¿Cómo automatizar las pruebas de performance?
 
@@ -62,8 +62,8 @@ Además, también tenemos disponibles guías para [instalar k6 en herramientas C
 
 Si aún no ha creado casos de prueba para su sistema, le sugerimos que lea una de nuestras guías para crear pruebas para sitios web y APIs/microservicios:
 
-- [Guía de pruebas para sitios web](/testing-guides/load-testing-websites)
-- [Guía de pruebas de API](/testing-guides/api-load-testing)
+- [Guía de pruebas para sitios web](/es/guias-de-prueba/pruebas-de-carga-a-sitios-web/)
+- [Guía de pruebas de API](/es/guias-de-prueba/pruebas-de-carga-para-apis/)
 
 En general, cuando se crean casos de prueba, la regla de oro es empezar con algo pequeño y luego ampliarlo desde ese punto de partida. Identifique las transacciones más críticas para el negocio en su sistema y escriba casos de prueba que cubran esa parte del sistema.
 
@@ -73,11 +73,11 @@ Una de las mejores prácticas que aconsejamos a los usuarios y clientes es el co
 
 **Modules**
 
-Una vez que haya adquirido suficiente experiencia en la creación de pruebas, le aconsejamos encarecidamente que [moduralize sus pruebas](/using-k6/modules) para que la lógica/patrones comunes sean reutilizables entre los miembros de su equipo y las diferentes pruebas de rendimiento.
+Una vez que haya adquirido suficiente experiencia en la creación de pruebas, le aconsejamos encarecidamente que [moduralize sus pruebas](/es/usando-k6/modulos/) para que la lógica/patrones comunes sean reutilizables entre los miembros de su equipo y las diferentes pruebas de rendimiento.
 
 ## 3. Criterios para éxito/fallo
 
-Cada paso en una línea de automatización pasa o falla. Como se mencionó en `Conozca sus objetivos`, el mecanismo por el cual k6 decide si una prueba ha pasado o fallado se llama [Thresholds](/using-k6/thresholds). Sin sus objetivos codificados como umbrales no hay manera de que k6 sepa realmente si su prueba debe ser considerada un éxito o un fracaso.
+Cada paso en una línea de automatización pasa o falla. Como se mencionó en `Conozca sus objetivos`, el mecanismo por el cual k6 decide si una prueba ha pasado o fallado se llama [Thresholds](/es/usando-k6/modulos/). Sin sus objetivos codificados como umbrales no hay manera de que k6 sepa realmente si su prueba debe ser considerada un éxito o un fracaso.
 
 Un Thresholds básico en el percentil 95 de la métrica del tiempo de respuesta tiene este aspecto:
 
@@ -144,7 +144,7 @@ Tenga en cuenta estos tres factores a la hora de elegir la mejor solución para 
 
 Una regla general es que cuanto más corta sea la "duración de la iteración de la VU", más frecuente será la ejecución de las pruebas sin introducir largos retrasos en el ciclo de retroalimentación del desarrollo, ni bloquear el acceso de los compañeros de equipo a los entornos de preproducción compartidos.
 
-Una rápida recapitulación del artículo sobre el [ciclo de vida de las pruebas](/using-k6/test-life-cycle):
+Una rápida recapitulación del artículo sobre el [ciclo de vida de las pruebas](/es/usando-k6/etapas-de-un-test/):
 
 
 ```javascript

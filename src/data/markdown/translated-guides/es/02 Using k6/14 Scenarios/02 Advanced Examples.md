@@ -49,7 +49,7 @@ export function news() {
 
 ## Diferentes variables de entorno y etiquetas por escenario
 
-En el ejemplo anterior establecimos etiquetas en métricas individuales de solicitudes HTTP, pero esto también puede hacerse por escenario, lo que las aplicaría también a otros objetos [etiquetables (tags)](https://k6.io/docs/using-k6/tags-and-groups#tags).
+En el ejemplo anterior establecimos etiquetas en métricas individuales de solicitudes HTTP, pero esto también puede hacerse por escenario, lo que las aplicaría también a otros objetos [etiquetables (tags)](/es/usando-k6/tags-y-groups/#tags).
 
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>

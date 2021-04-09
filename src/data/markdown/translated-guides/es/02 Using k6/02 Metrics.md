@@ -112,9 +112,9 @@ Todas las métricas (tanto las incorporadas como las personalizadas) tienen un t
 | [Rate](/javascript-api/k6-metrics/rate)       | Una métrica que registra el porcentaje de valores añadidos que son distintos de cero.                                  |
 | [Trend](/javascript-api/k6-metrics/trend)     | Una métrica que permite calcular estadísticas sobre los valores añadidos (mínimo, máximo, media y percentiles).. |
 
-All values added to a custom metric can optionally be [tagged](/using-k6/tags-and-groups) which can be useful when analysing the test results.
+All values added to a custom metric can optionally be [tagged](/es/usando-k6/tags-y-groups/) which can be useful when analysing the test results.
 
-Todos los valores añadidos a una métrica personalizada pueden ser opcionalmente [etiquetados (tags)](/using-k6/tags-and-groups), lo que puede ser útil al analizar los resultados de las pruebas.
+Todos los valores añadidos a una métrica personalizada pueden ser opcionalmente [etiquetados (tags)](/es/usando-k6/tags-y-groups/), lo que puede ser útil al analizar los resultados de las pruebas.
 
 ### Counter (métrica acumulativa)
 

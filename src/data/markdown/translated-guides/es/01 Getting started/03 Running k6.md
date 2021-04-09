@@ -97,7 +97,7 @@ export default function () {
 </CodeGroup>
 
 El “VU Code” puede hacer peticiones HTTP, proveer métricas, y generalmente hace todo lo que se espera en una prueba de carga, no puede cargar nada desde su sistema de archivos local ni importar ningún otro módulo. Todo esto debe hacerse desde el “init Code”.
-Lea más acerca de diferentes etapas del [ciclo de vida de una prueba k6](/using-k6/test-life-cycle)
+Lea más acerca de diferentes etapas del [ciclo de vida de una prueba k6](/es/usando-k6/etapas-de-un-test/)
 
 
 ## Usando las opciones 
@@ -166,7 +166,7 @@ export default function () {
 
 </CodeGroup>
 
-Esto también se puede lograr con una configuración más avanzada utilizando [escenarios](/using-k6/scenarios) y el ejecutor `ramping-vus`.
+Esto también se puede lograr con una configuración más avanzada utilizando [escenarios](/es/usando-k6/escenarios/) y el ejecutor `ramping-vus`.
 
 ## Ejecutando las pruebas en la nube
 

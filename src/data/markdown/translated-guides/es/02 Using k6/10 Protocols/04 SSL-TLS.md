@@ -19,7 +19,7 @@ Por defecto y sin ninguna configuración especial k6 se conectará y hablará co
 Vale la pena hablar con más detalle de la siguiente funcionalidad TLS soportada por k6:
 
 
-- [Certificados del cliente SSL/TLS](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates)
-- [Versiones SSL/TLS y cifrados](/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers) (restricción y comprobación de lo que se ha utilizado para una solicitud HTTP mediante la comprobación de las propiedades del objeto de respuesta)
-- [Protocolo de estado de los certificados en línea (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp)
+- [Certificados del cliente SSL/TLS](/es/usando-k6/protocolos/ssl-tls/certificados-del-cliente-ssl-tls/)
+- [Versiones SSL/TLS y cifrados](/es/usando-k6/protocolos/ssl-tls/versiones-ssl-tls-y-cifrados/) (restricción y comprobación de lo que se ha utilizado para una solicitud HTTP mediante la comprobación de las propiedades del objeto de respuesta)
+- [Protocolo de estado de los certificados en línea (OCSP)](/es/usando-k6/protocolos/ssl-tls/protocolo-de-estado-de-los-certificados-en-linea-ocsp/)
 - [Response.timings.tls_handshaking](/javascript-api/k6-http/response)

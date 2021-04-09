@@ -47,9 +47,9 @@ duration: 1m0s, iterations: -
 
 The test summary provides a general overview of your test result. The summary prints to `stdout` the status of:
 
-- [Métricas incorporadas](/using-k6/metrics#built-in-metrics) y [métricas personalizadas](/using-k6/metrics#custom-metrics).
-- [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
-- [Groups](/using-k6/tags-and-groups#groups) y [Tags](/using-k6/tags-and-groups#tags).
+- [Métricas incorporadas](/es/usando-k6/metricas/#metricas-incorporadas) y [métricas personalizadas](/es/usando-k6/metricas/#metricas-personalizadas).
+- [Checks](/es/usando-k6/checks/) and [thresholds](/es/usando-k6/thresholds/).
+- [Groups](/es/usando-k6/tags-y-groups/#groups) y [Tags](/es/usando-k6/tags-y-groups/#tags).
 
 <CodeGroup labels={[]}>
 
@@ -76,7 +76,7 @@ vus_max....................: 100    min=100 max=100
 
 **Salida de las métricas de tendencia**
 
-[Métricas de tendencia](/using-k6/metrics#metric-types) recogen las estadísticas de tendencia (min/max/avg/percentiles) de una serie de valores. En stdout se imprimen de la siguiente manera:
+[Métricas de tendencia](/es/usando-k6/metricas/#tipos-de-metricas) recogen las estadísticas de tendencia (min/max/avg/percentiles) de una serie de valores. En stdout se imprimen de la siguiente manera:
 
 <CodeGroup labels={[]}>
 
@@ -86,7 +86,7 @@ http_req_duration..........: avg=143.14ms min=112.87ms med=136.03ms max=1.18s   
 
 </CodeGroup>
 
-Puede utilizar la opción [summary-trend-stats](/using-k6/options#summary-trend-stats) para cambiar las estadísticas reportadas a las métricas de tendencia.
+Puede utilizar la opción [summary-trend-stats](/es/usando-k6/opciones/#summary-trend-stats) para cambiar las estadísticas reportadas a las métricas de tendencia.
 
 <CodeGroup labels={[]}>
 
@@ -104,15 +104,15 @@ La lista de plugins de salida son los siguientes:
 
 | Plugin                                                        | Usage                   |
 | ------------------------------------------------------------- | ----------------------- |
-| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch) | `k6 run --out statsd`   |
-| [Apache Kafka](/results-visualization/apache-kafka)           | `k6 run --out kafka`    |
-| [Cloud](/results-visualization/cloud)                         | `k6 run --out cloud`    |
-| [CSV](/results-visualization/csv)                             | `k6 run --out csv`      |
-| [Datadog](/results-visualization/datadog)                     | `k6 run --out datadog`  |
-| [InfluxDB](/results-visualization/influxdb-+-grafana)         | `k6 run --out influxdb` |
-| [JSON](/results-visualization/json)                           | `k6 run --out json`     |
-| [New Relic](/results-visualization/new-relic)                 | `k6 run --out statsd`   |
-| [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
+| [Amazon CloudWatch](/es/visualizacion-de-resultados/amazon-cloudwatch/) | `k6 run --out statsd`   |
+| [Apache Kafka](/es/visualizacion-de-resultados/apache-kafka/)           | `k6 run --out kafka`    |
+| [Cloud](/es/visualizacion-de-resultados/cloud/)                         | `k6 run --out cloud`    |
+| [CSV](/es/visualizacion-de-resultados/csv/)                             | `k6 run --out csv`      |
+| [Datadog](/es/visualizacion-de-resultados/datadog/)                     | `k6 run --out datadog`  |
+| [InfluxDB](/es/visualizacion-de-resultados/influxdb-+-grafana/)         | `k6 run --out influxdb` |
+| [JSON](/es/visualizacion-de-resultados/json/)                           | `k6 run --out json`     |
+| [New Relic](/es/visualizacion-de-resultados/new-relic/)                 | `k6 run --out statsd`   |
+| [StatsD](/es/visualizacion-de-resultados/statsd/)                       | `k6 run --out statsd`   |
 
 ## Salidas múltiples
 
@@ -143,4 +143,4 @@ $ k6 run --summary-export=export.json script.js
 
 </CodeGroup>
 
-> Lea más información acerca del resumen, en la [documentación del plugin de JSON](/results-visualization/json#summary-export)
+> Lea más información acerca del resumen, en la [documentación del plugin de JSON](/es/visualizacion-de-resultados/json/#exportar-los-datos-del-resumen)

@@ -13,9 +13,9 @@ Ejemplos de expectativas (Thresholds):
 - El tiempo de respuesta para el 95% de las solicitudes debe ser inferior a 200ms.
 - El tiempo de respuesta para el 99% de las solicitudes debe ser inferior a 400 ms.
 - El punto final específico debe responder siempre antes de 300ms.
-- Cualquier condición en una [métrica personalizada](/using-k6/metrics#custom-metrics).
+- Cualquier condición en una [métrica personalizada](/es/usando-k6/metricas/#metricas-personalizadas).
 
-Thresholds analizan las métricas de rendimiento y determinan el resultado final de la prueba (pasa/no pasa). Thresholds son esenciales para la [automatización de las pruebas de carga](/testing-guides/automated-performance-testing).
+Thresholds analizan las métricas de rendimiento y determinan el resultado final de la prueba (pasa/no pasa). Thresholds son esenciales para la [automatización de las pruebas de carga](/es/guias-de-prueba/automatizacion-de-pruebas-de-rendimiento/).
 
 
 A continuación se muestra un script de ejemplo que especifica dos thresholds, un evaluando la tasa de errores de peticiones HTTP (`http_req_failed`) y una que usa el percentil del tiempo de reqspuesta de todas las peticiones ( `http_req_duration`).

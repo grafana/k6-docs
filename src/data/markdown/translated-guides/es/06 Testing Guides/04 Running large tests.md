@@ -29,7 +29,7 @@ Estos comandos permiten reutilizar las conexiones de red, aumentar el límite de
 
 Para aplicar estos cambios, puedes pegar estos comandos como usuario root antes de ejecutar una prueba k6 o cambiar los archivos de configuración en tu sistema operativo.
 
-Para obtener información detallada sobre estos ajustes, las instrucciones de macOS y cómo hacerlos permanentes, consulta nuestro artículo ["Ajuste del sistema operativo"](/misc/fine-tuning-os).
+Para obtener información detallada sobre estos ajustes, las instrucciones de macOS y cómo hacerlos permanentes, consulta nuestro artículo ["Ajuste del sistema operativo"](/es/misc/optimizar-el-sistema-operativo/).
 
 ## Consideraciones sobre el hardware
 
@@ -384,7 +384,7 @@ Los usuarios suelen buscar el modo de ejecución distribuida para ejecutar prueb
 - Simular la carga desde múltiples ubicaciones simultáneamente.
 - Escalar la carga de su prueba más allá de lo que puede soportar una sola máquina.
 
-En k6, puede dividir la carga de una prueba entre varias instancias de k6 utilizando la opción [execution-segment](/using-k6/options#execution-segment). Por ejemplo:
+En k6, puede dividir la carga de una prueba entre varias instancias de k6 utilizando la opción [execution-segment](/es/usando-k6/opciones/#execution-segment). Por ejemplo:
 
 <CodeGroup labels={["Two machines", "Three machines", "Four machines"]}>
 
@@ -422,15 +422,15 @@ Sin embargo -en este momento  el modo de ejecución distribuido de k6 no es del 
 
 ## Pruebas a gran escala en k6 Cloud
 
-[k6 Cloud](https://k6.io/cloud) nuestra oferta comercial proporciona una solución instantánea para ejecutar pruebas a gran escala, entre otras [ventajas](https://k6.io/docs/cloud#how-can-it-help-me).
+[k6 Cloud](https://k6.io/cloud) nuestra oferta comercial proporciona una solución instantánea para ejecutar pruebas a gran escala, entre otras [ventajas](/cloud#how-can-it-help-me).
 
 Si no está seguro de qué solución, OSS o Cloud, se ajusta mejor a su proyecto, le recomendamos que lea el [siguiente artículo](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)h para saber más sobre los riesgos y las características a tener en cuenta a la hora de crear una solución escalable.
 
 
 ## Véase también
 
-- [Fine tuning OS](/misc/fine-tuning-os)
-- [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
+- [Fine tuning OS](/es/misc/optimizar-el-sistema-operativo)
+- [JavaScript Compatibility Mode](/es/usando-k6/javascript-compatibility-mode/)
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
 - [k6 Cloud Pricing - soak and large-scale tests](https://k6.io/pricing#larger-tests)
 - [White paper: what to consider when building or buying a load testing solution](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)

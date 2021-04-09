@@ -5,7 +5,7 @@ excerpt: 'Para utilizar los certificados de cliente se especifican las opciones 
 
 Normalmente, cuando hablamos de certificados TLS nos referimos al mecanismo por el que los clientes identifican a los servidores. Lo contrario, es decir, que los servidores identifiquen a los clientes, también es soportado tanto por TLS como por k6.
 
-Para utilizar los certificados de cliente se especifican las [opciones de configuración global](/using-k6/options) que indican a k6 cómo asignar un certificado público y una clave privada a los dominios para los que son válidos. Puedes cargar el certificado y la clave desde archivos locales o incrustarlos como cadenas en el script.
+Para utilizar los certificados de cliente se especifican las [opciones de configuración global](/es/usando-k6/opciones/) que indican a k6 cómo asignar un certificado público y una clave privada a los dominios para los que son válidos. Puedes cargar el certificado y la clave desde archivos locales o incrustarlos como cadenas en el script.
 
 ## Cargar un certificado y una clave desde archivos locales
 

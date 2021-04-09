@@ -47,4 +47,4 @@ Nótese que aunque la duración total de la prueba es de 10s, el tiempo real de 
 
 ## Información adicional
 
-Existe una opción similar para el [ramping-vus](/using-k6/scenarios/executors/ramping-vus) executor: `gracefulRampDown`. Esto especifica el tiempo que k6 debe esperar para que cualquier iteración en progreso termine antes de que las VUs sean devueltas al pool global durante un período de rampa de descenso definido en `stages`.
+Existe una opción similar para el [ramping-vus](/es/usando-k6/escenarios/executors/ramping-vus/) executor: `gracefulRampDown`. Esto especifica el tiempo que k6 debe esperar para que cualquier iteración en progreso termine antes de que las VUs sean devueltas al pool global durante un período de rampa de descenso definido en `stages`.

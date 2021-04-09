@@ -7,7 +7,7 @@ excerpt: 'Se ejecuta un número fijo de iteraciones en un periodo de tiempo dete
 
 Se ejecuta un número fijo de iteraciones en un periodo de tiempo determinado. Dado que el tiempo de ejecución de la iteración puede variar debido a la lógica de la prueba o a que el sistema bajo prueba responda más lentamente, este ejecutor intentará compensar ejecutando un número variable de VUs incluyendo la posibilidad de inicializar más en medio de la prueba para cumplir con la tasa de iteración configurada. Este enfoque es útil para una representación más precisa de RPS, por ejemplo.
 
-Consulte [arrival rate](/using-k6/scenarios/arrival-rate) para más detalles.
+Consulte [arrival rate](/es/usando-k6/escenarios/arrival-rate/) para más detalles.
 
 ## Opciones
 

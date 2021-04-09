@@ -3,7 +3,7 @@ title: 'HAR converter'
 excerpt: 'El convertidor HAR es una alternativa al grabador del navegador (Browser recorder). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.'
 ---
 
-El convertidor HAR es una alternativa al [grabador del navegador (Browser recorder)](/test-authoring/recording-a-session/browser-recorder). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.
+El convertidor HAR es una alternativa al [grabador del navegador (Browser recorder)](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/). Genera un script de k6 basado en las peticiones HTTP incluidas en un archivo HAR.
 
 > HAR es un formato de archivo utilizado por los principales navegadores y otras herramientas para exportar las peticiones HTTP registradas.
 
@@ -113,7 +113,7 @@ export let options = {
 };
 ```
 
-Para obtener más información sobre cómo configurar las opciones de carg, puede leer la guía [Añadir más VUs](/getting-started/running-k6#adding-more-vus) y [Options](/using-k6/options).
+Para obtener más información sobre cómo configurar las opciones de carg, puede leer la guía [Añadir más VUs](/es/empezando/ejecucion-de-k6/#agregando-mas-usuarios-virtuales-vus) y [Options](/es/usando-k6/opciones/).
 
 ### Eliminar el contenido de terceros
 
@@ -155,7 +155,7 @@ Para ejecutar su prueba de carga correctamente, es posible que tenga que reempla
 
 ## 4. Ejecute la prueba
 
-Ahora, puede ejecutar su prueba de carga con k6. Si aún no ha instalado k6, por favor, siga las [instrucciones de instalación de k6](/getting-started/installation).
+Ahora, puede ejecutar su prueba de carga con k6. Si aún no ha instalado k6, por favor, siga las [instrucciones de instalación de k6](/es/empezando/instalacion/).
 Ejecute el comando `k6 run` para ejecutar su script de k6:
 
 
@@ -163,8 +163,8 @@ Ejecute el comando `k6 run` para ejecutar su script de k6:
 $ k6 run loadtest.js
 ```
 
-Para saber más sobre la ejecución de k6, consulte la [guía de ejecución de k6](/getting-started/running-k6).
+Para saber más sobre la ejecución de k6, consulte la [guía de ejecución de k6](/es/empezando/ejecucion-de-k6/).
 
 ## Vea también
 
-- [Grabador del navegador (Browser recorder)](/test-authoring/recording-a-session/browser-recorder): Extensiones de Chrome y Firefox para generar un script de k6 a partir de una sesión del navegador.
+- [Grabador del navegador (Browser recorder)](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/): Extensiones de Chrome y Firefox para generar un script de k6 a partir de una sesión del navegador.

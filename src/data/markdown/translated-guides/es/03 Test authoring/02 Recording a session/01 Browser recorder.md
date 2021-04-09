@@ -65,7 +65,7 @@ Si quiere incluir algunas de las solicitudes en la lista de terceros, simplement
 5 - **Edite su script** según sea necesario
 
 Dependiendo del tipo de prueba, es posible que tenga que cambiar diferentes aspectos del script. Los cambios más habituales son
-- Cambiar las [opciones de carga](/using-k6/options). El valor por defecto es una prueba con ramp-up de 12 minutos.
+- Cambiar las [opciones de carga](/es/usando-k6/opciones/). El valor por defecto es una prueba con ramp-up de 12 minutos.
 - Manejar la [correlación y los datos dinámicos](/examples/correlation-and-dynamic-data).
 
 6 - **Ejecute la prueba** localmente o en k6 Cloud
@@ -74,7 +74,7 @@ Si desea ejecutar una prueba en la nube desde la interfaz de usuario de k6 Cloud
 
 Si desea utilizar la CLI (command-line interface) de k6 para ejecutar una prueba local o k6 Cloud, copie el script generado en su editor de texto local y ejecute el comando `k6 run` o `k6 cloud` para iniciar la prueba.
 
-Para obtener más información sobre la ejecución de k6, consulte la [guía Ejecución de k6](/getting-started/running-k6).
+Para obtener más información sobre la ejecución de k6, consulte la [guía Ejecución de k6](/es/empezando/ejecucion-de-k6/).
 
 ## Solución de problemas
 

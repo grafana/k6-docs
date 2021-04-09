@@ -247,4 +247,4 @@ El formato del fichero sería de la siguiente forma:
 
 ## Véase también
 
-- [Métricas](/using-k6/metrics)
+- [Métricas](/es/usando-k6/metricas/)

@@ -22,7 +22,7 @@ Los binarios de k6 están disponibles para varias plataformas, por lo que ya no 
 $ k6 run script.js
 ```
 
-Usando este comando, puede ejecutar su script de prueba de carga y agregarle carga a el API. Como ya estás en la documentación, asegúrate de buscar los detalles que se adapten a tu caso de uso. Para darte un ejemplo, echa un vistazo al siguiente script, tomado de la sección [Peticiones HTTP](/using-k6/http-requests) de la documentación. Utiliza la [API k6/http](/javascript-api/k6-http) para realizar una solicitud de prueba de carga. Puedes jugar fácilmente con el ejemplo para crear tu propio script. Las siguientes secciones describen cómo hacer una prueba de carga, ya sea forzando un endpoint o probando el flujo de usuarios (escenario).
+Usando este comando, puede ejecutar su script de prueba de carga y agregarle carga a el API. Como ya estás en la documentación, asegúrate de buscar los detalles que se adapten a tu caso de uso. Para darte un ejemplo, echa un vistazo al siguiente script, tomado de la sección [Peticiones HTTP](/es/usando-k6/peticiones-http/) de la documentación. Utiliza la [API k6/http](/javascript-api/k6-http) para realizar una solicitud de prueba de carga. Puedes jugar fácilmente con el ejemplo para crear tu propio script. Las siguientes secciones describen cómo hacer una prueba de carga, ya sea forzando un endpoint o probando el flujo de usuarios (escenario).
 
 ### Benchmarking un endpoint
 
@@ -138,7 +138,7 @@ export default function () {
 
 Históricamente, hay dos tipos de categorías de herramientas de pruebas de carga: con script y sin script. Las herramientas que no dependen de un script generan peticiones a uno o varios endpoints sin ninguna correlación entre las peticiones, proporcionando la opción de definir una tasa de peticiones constante para llegar a un endpoint. Por otro lado, las herramientas que dependen de un script suelen estar diseñadas para facilitar las pruebas de flujo de usuarios, proporcionando así la opción de configurar el número de usuarios virtuales para establecer la carga de su prueba. k6 pertenece a esta categoría.
 
-k6 se incluye la función de [scenarios](/using-k6/scenarios), donde se pueden configurar múltiples escenarios y modelar diferentes patrones de tráfico. El motor de ejecución de k6 ha sido completamente renovado y ahora incluye soporte para diferentes [executors](/using-k6/scenarios#executors) en cada escenario. Ahora puede utilizar el ejecutor de tasa de llegada constante para [generar una tasa de solicitud constante](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api).
+k6 se incluye la función de [scenarios](/es/usando-k6/escenarios/), donde se pueden configurar múltiples escenarios y modelar diferentes patrones de tráfico. El motor de ejecución de k6 ha sido completamente renovado y ahora incluye soporte para diferentes [executors](/es/usando-k6/escenarios/executors/) en cada escenario. Ahora puede utilizar el ejecutor de tasa de llegada constante para [generar una tasa de solicitud constante](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api).
 
 ## Creación de las pruebas
 
@@ -174,12 +174,12 @@ Swagger/OpenAPI es una buena manera de diseñar, documentar y probar tus APIs. H
 
 **HAR-to-k6**
 
-Los archivos HAR son registros de navegación grabados que pueden exportarse como archivos y reproducirse posteriormente. La especificación de los archivos HAR define el formato del archivo, que es básicamente un archivo JSON con varios objetos que contienen peticiones a diferentes recursos. Este archivo se puede convertir en un script de k6 utilizando la herramienta [HAR-to-k6](https://github.com/loadimpact/har-to-k6). Dado que los archivos HAR contienen peticiones a cada uno de los recursos que el navegador obtiene, no se recomienda utilizar el script convertido intacto, sino que se recomienda revisarlo para eliminar las peticiones innecesarias a las CDN de prueba de carga y otros archivos estáticos. Generalmente, grabar las sesiones de los usuarios no suele ser la mejor manera de hacer pruebas de carga de las APIs, ya que crea más elementos que las peticiones reales y se utiliza más para [probar la carga de un sitio web](/testing-guides/load-testing-websites). No obstante, puedes aprovecharlo, pero debes tener cuidado, ya que podría llevarte a probar sistemas no relacionados con tu API.
+Los archivos HAR son registros de navegación grabados que pueden exportarse como archivos y reproducirse posteriormente. La especificación de los archivos HAR define el formato del archivo, que es básicamente un archivo JSON con varios objetos que contienen peticiones a diferentes recursos. Este archivo se puede convertir en un script de k6 utilizando la herramienta [HAR-to-k6](https://github.com/loadimpact/har-to-k6). Dado que los archivos HAR contienen peticiones a cada uno de los recursos que el navegador obtiene, no se recomienda utilizar el script convertido intacto, sino que se recomienda revisarlo para eliminar las peticiones innecesarias a las CDN de prueba de carga y otros archivos estáticos. Generalmente, grabar las sesiones de los usuarios no suele ser la mejor manera de hacer pruebas de carga de las APIs, ya que crea más elementos que las peticiones reales y se utiliza más para [probar la carga de un sitio web](/es/guias-de-prueba/pruebas-de-carga-a-sitios-web/). No obstante, puedes aprovecharlo, pero debes tener cuidado, ya que podría llevarte a probar sistemas no relacionados con tu API.
 
 
 **Fiddler-to-k6**
 
-Originalmente llamado [FiddlerToLoadImpact](https://github.com/loadimpact/FiddlerToLoadImpact), puede ser usado para exportar tus grabaciones de fiddler a un script de k6. Obviamente, necesitas tener Fiddler instalado para que funcione. Esta herramienta también crea grabaciones HAR, así que lo mismo ocurre con esto, en el sentido de que no es apto para las pruebas de carga de las APIs, sino que está hecho para las pruebas de carga del sitio web, así que tenga esto en cuenta. Para más información, consulte la [guía de grabación de sesiones](/using-k6/session-recording-har-support).
+Originalmente llamado [FiddlerToLoadImpact](https://github.com/loadimpact/FiddlerToLoadImpact), puede ser usado para exportar tus grabaciones de fiddler a un script de k6. Obviamente, necesitas tener Fiddler instalado para que funcione. Esta herramienta también crea grabaciones HAR, así que lo mismo ocurre con esto, en el sentido de que no es apto para las pruebas de carga de las APIs, sino que está hecho para las pruebas de carga del sitio web, así que tenga esto en cuenta. Para más información, consulte la [guía de grabación de sesiones](/es/creacion-de-pruebas/grabar-una-sesion/).
 
 ## Diferentes tipos de pruebas de carga para las APIs
 
@@ -187,23 +187,23 @@ Como hemos estado mostrando en la introducción, es crucial hacer pruebas de API
 
 Puede hacer pruebas de API de múltiples maneras, cada una de ellas pertenece a un tipo de prueba particular y produce un tipo de carga diferente.
 
-- [Smoke test](/test-types/smoke-testing)
-- [Load test](/test-types/load-testing)
-- [Stress test](/test-types/stress-testing)
-- [Spike test](/test-types/stress-testing#spike-testing)
-- [Soak test](/test-types/soak-testing)
+- [Smoke test](/es/tipos-de-prueba/smoke-testing/)
+- [Load test](/es/tipos-de-prueba/load-testing)
+- [Stress test](/es/tipos-de-prueba/stress-testing)
+- [Spike test](/es/tipos-de-prueba/stress-testing#spike-testing)
+- [Soak test](/es/tipos-de-prueba/soak-testing)
 
 ## Consideraciones sobre las pruebas de carga de la API
 
 ### Identifique sus objetivos
 
-Tener un objetivo claro es de suma importancia a la hora de ejecutar una prueba de carga en sus APIs. Al igual que el tipo de prueba de carga que desea utilizar, también debe identificar sus objetivos para esperar resultados correctos. Por ejemplo, no puede esperar que el API funcione muy bien bajo una carga pesada, si solo realiza una prueba de humo. Por lo tanto, debe establecer objetivos bien definidos y ajustar su prueba de carga para satisfacer sus expectativas. Por lo general, sus objetivos son cumplir con los niveles de servicios (SLO), que pueden estar definidos en un acuerdo de nivel de servicio (SLA), formal o informalmente, entre usted y la otra parte, por ejemplo, sus usuarios. Afortunadamente, estos umbrales pueden ser probados utilizando k6, que tiene un rico conjunto de métricas incorporadas y personalizadas, que pueden ser probadas con [Thresholds](/using-k6/thresholds). Antes de escribir y eventualmente ejecutar su prueba, reserve algún tiempo para pensar en sus SLOs y luego trate de diseñar su prueba, para que cumpla con sus requisitos y las expectativas de sus clientes.
+Tener un objetivo claro es de suma importancia a la hora de ejecutar una prueba de carga en sus APIs. Al igual que el tipo de prueba de carga que desea utilizar, también debe identificar sus objetivos para esperar resultados correctos. Por ejemplo, no puede esperar que el API funcione muy bien bajo una carga pesada, si solo realiza una prueba de humo. Por lo tanto, debe establecer objetivos bien definidos y ajustar su prueba de carga para satisfacer sus expectativas. Por lo general, sus objetivos son cumplir con los niveles de servicios (SLO), que pueden estar definidos en un acuerdo de nivel de servicio (SLA), formal o informalmente, entre usted y la otra parte, por ejemplo, sus usuarios. Afortunadamente, estos umbrales pueden ser probados utilizando k6, que tiene un rico conjunto de métricas incorporadas y personalizadas, que pueden ser probadas con [Thresholds](/es/usando-k6/thresholds/). Antes de escribir y eventualmente ejecutar su prueba, reserve algún tiempo para pensar en sus SLOs y luego trate de diseñar su prueba, para que cumpla con sus requisitos y las expectativas de sus clientes.
 
 ### Empezar poco a poco y construir el  script 
 
 Es importante tener un conjunto predefinido de objetivos y expectativas, pero no es bueno intentar cumplirlos todos a la vez. Cuanto mayor sea tu lista de objetivos, menos probable será tu capacidad de hacer las cosas bien a la primera. Así que empieza por lo pequeño, por ejemplo, escribe y ejecuta una prueba para uno o dos endpoints de la API. Intenta experimentar con diferentes configuraciones y entornos, luego puedes basarte en eso y ejecutar grandes pruebas que abarquen varias horas y tengan miles de usuarios virtuales y cientos de miles de peticiones por segundo
 
-Los ejemplos muy sencillos de la sección [ejecutando k6](https://k6.io/docs/getting-started/running-k6).
+Los ejemplos muy sencillos de la sección [ejecutando k6](/es/empezando/ejecucion-de-k6/).
 
 ### Correlación y parametrización de datos
 
@@ -219,7 +219,7 @@ Para más información, consulte el [post en el foro de la comunidad de k6](http
 
 ### Agrupación de las URLs
 
-Por defecto, k6 imprimirá la información del tiempo de ejecución y los resultados generales a la salida estándar, `stdout`, mientras la prueba se esté ejecutando, y también imprimirá un resumen después de que la prueba haya terminado. Puede dar salida a datos de resultados más granulares utilizando módulos de salida especiales, uno de ellos es la [salida JSON](/getting-started/results-output/json). El contenido de los registros en la salida incluye muchas piezas de información útil como varias métricas y algunas de esas métricas incluyen la URL de las peticiones que ha realizado.
+Por defecto, k6 imprimirá la información del tiempo de ejecución y los resultados generales a la salida estándar, `stdout`, mientras la prueba se esté ejecutando, y también imprimirá un resumen después de que la prueba haya terminado. Puede dar salida a datos de resultados más granulares utilizando módulos de salida especiales, uno de ellos es la [salida JSON](/es/visualizacion-de-resultados/json/). El contenido de los registros en la salida incluye muchas piezas de información útil como varias métricas y algunas de esas métricas incluyen la URL de las peticiones que ha realizado.
 
 A veces es necesario hacer muchas peticiones de APIs similares para leer o crear muchos recursos del mismo tipo. Como se muestra en el siguiente ejemplo, se obtendrán 100 entradas con peticiones únicas. Cada una de estas peticiones creará una métrica y tendrá la URL completa dentro de la métrica. Esto plantea un problema para la agregación de datos, ya sea en nuestra plataforma en la nube o en su propia pila de pruebas de carga de la API. El problema es que todas las métricas para cada una de estas URLs estarán separadas y serán agregadas individualmente, porque son diferentes en su campo de id. También crea varios registros innecesarios en la salida.
 
@@ -232,7 +232,7 @@ for (var id = 1; id <= 100; id++) {
 // tags.name="http://example.com/posts/2",
 ```
 
-Hay una forma de evitar la creación de muchas métricas para la misma URL. Se llama [agrupación de URLs](/using-k6/http-requests#section-url-grouping), y al usarla evitarás crear métricas separadas para la misma URL. Se trata simplemente de utilizar una etiqueta que debes añadir a los [parámetros](/javascript-api/k6-http/params) de tus peticiones.
+Hay una forma de evitar la creación de muchas métricas para la misma URL. Se llama [agrupación de URLs](/es/usando-k6/peticiones-http/#agrupamiento-de-las-urls), y al usarla evitarás crear métricas separadas para la misma URL. Se trata simplemente de utilizar una etiqueta que debes añadir a los [parámetros](/javascript-api/k6-http/params) de tus peticiones.
 
 ```javascript
 for (var id = 1; id <= 100; id++) {

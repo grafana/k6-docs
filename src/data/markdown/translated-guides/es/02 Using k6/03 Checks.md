@@ -6,7 +6,7 @@ excerpt: 'Checks son aserciones, pero difieren en que no detienen la ejecución,
 ## ¿Qué es un check?
 
 
-`Checks` son aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe. Echa un vistazo a [Thresholds](/using-k6/thresholds) para una forma de detener la ejecución. `Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
+`Checks` son aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe. Echa un vistazo a [Thresholds](/es/usando-k6/thresholds/) para una forma de detener la ejecución. `Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
 
 <CodeGroup labels={["check.js"]} lineNumbers={[true]}>
 
@@ -57,7 +57,7 @@ export default function () {
 
 Una cosa importante que hay que entender con respecto a las comprobaciones es que una comprobación fallida no fallará toda la prueba de carga.
 
-Las comprobaciones ayudan a mantener el código organizado y fácil de leer, pero cuando se ejecuta una prueba de carga en un conjunto de pruebas de CI es posible que desee comprobar las condiciones de error que fallan toda la prueba de carga. En este caso, es posible que desee combinar `Checks` con [thresholds](/using-k6/thresholds) para obtener lo que desea:
+Las comprobaciones ayudan a mantener el código organizado y fácil de leer, pero cuando se ejecuta una prueba de carga en un conjunto de pruebas de CI es posible que desee comprobar las condiciones de error que fallan toda la prueba de carga. En este caso, es posible que desee combinar `Checks` con [thresholds](/es/usando-k6/thresholds/) para obtener lo que desea:
 
 <CodeGroup labels={["check_thresholds.js"]} lineNumbers={[true]}>
 

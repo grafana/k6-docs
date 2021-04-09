@@ -21,7 +21,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-Ahora bien, si sustituye `k6 run` por `k6 archive`, k6 ejecutará la fase de [inicio del código](/using-k6/test-life-cycle) para determinar qué archivos JS se están importando y qué archivos de datos se están [open()](/javascript-api/init-context/open-filepath-mode) y agrupa todos los archivos en un archivo tar:
+Ahora bien, si sustituye `k6 run` por `k6 archive`, k6 ejecutará la fase de [inicio del código](/es/usando-k6/etapas-de-un-test/) para determinar qué archivos JS se están importando y qué archivos de datos se están [open()](/javascript-api/init-context/open-filepath-mode) y agrupa todos los archivos en un archivo tar:
 
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
@@ -65,7 +65,7 @@ k6 ofrece un servicio comercial para ejecutar pruebas de carga a gran escala y d
 
 ### Ejecución en clúster  (_futuro_)
 
-En el futuro (véase nuestra [hoja de ruta](https://github.com/loadimpact/k6/wiki/Roadmap)) k6 soportará un modo de ejecución en clúster que permitirá la ejecución de pruebas en más de un nodo. Este modo de ejecución también es probable que haga uso de la funcionalidad de archivo para distribuir los archivos de prueba a todos los nodos participantes.
+En el futuro (véase nuestro [Roadmap](https://github.com/loadimpact/k6/wiki/Roadmap)) k6 soportará un modo de ejecución en clúster que permitirá la ejecución de pruebas en más de un nodo. Este modo de ejecución también es probable que haga uso de la funcionalidad de archivo para distribuir los archivos de prueba a todos los nodos participantes.
 
 ## Contenido de un fichero de archivo
 

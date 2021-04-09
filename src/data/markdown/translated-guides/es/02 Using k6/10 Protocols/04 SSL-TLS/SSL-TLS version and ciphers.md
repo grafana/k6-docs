@@ -7,7 +7,7 @@ Para soportar las pruebas de configuraciones específicas de los clientes, k6 le
 
 ## Limiting SSL/TLS version
 
-Limitar las versiones de SSL/TLS que k6 podrá utilizar durante una prueba es una [opción de configuración global](/using-k6/options). Puede elegir limitar a una versión específica:
+Limitar las versiones de SSL/TLS que k6 podrá utilizar durante una prueba es una [opción de configuración global](/es/usando-k6/opciones/). Puede elegir limitar a una versión específica:
 
 <CodeGroup labels={["Limiting to a specific SSL/TLS version"]} lineNumbers={[true]}>
 
@@ -57,7 +57,7 @@ A continuación se muestra la lista de versiones de SSL/TLS disponibles entre la
 
 ## Limitación de los conjuntos de cifrado
 
-La limitación de los conjuntos de cifrado que k6 puede utilizar durante una prueba es una [opción de configuración global](/using-k6/options). Usted elige una lista de cifrados permitidos:
+La limitación de los conjuntos de cifrado que k6 puede utilizar durante una prueba es una [opción de configuración global](/es/usando-k6/opciones/). Usted elige una lista de cifrados permitidos:
 
 <CodeGroup labels={["Limiting cipher suites"]} lineNumbers={[true]}>
 

@@ -5,7 +5,7 @@ excerpt: 'El constructor de pruebas (Test Builder) permite utilizar una interfaz
 
 El constructor de pruebas (Test Builder) permite utilizar una interfaz gráfica para crear una prueba.
 
-Basándose en los datos de entrada, el constructor de pruebas le generará automáticamente el script. Una vez hecho esto, puede copiar el script y [ejecutar la prueba desde la CLI (command line interface) ](/getting-started/running-k6).
+Basándose en los datos de entrada, el constructor de pruebas le generará automáticamente el script. Una vez hecho esto, puede copiar el script y [ejecutar la prueba desde la CLI (command line interface) ](/es/empezando/ejecucion-de-k6/).
 
 > **Nota**: Es necesario tener una cuenta de k6 Cloud para utilizar el constructor de pruebas. Sin embargo, su uso es gratuito y por lo tanto no necesita una suscripción activa para utilizar esta función.
 
@@ -38,7 +38,7 @@ Aunque creemos firmemente que las herramientas basadas en scripts o códigos le 
 Continuamente mejoramos y añadimos nuevas características al generador de pruebas. Algunas de las características más destacadas son las siguientes:
 
 **Configuración de pruebas**
-- Configurar el ramping(aka [stages](/using-k6/options#stages)) usando VUs y la duración.
+- Configurar el ramping(aka [stages](/es/usando-k6/opciones/#stages)) usando VUs y la duración.
 - Configurar las [zonas de carga](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones) para ejecutarlo desde k6 Cloud.
 
 
@@ -54,13 +54,13 @@ Continuamente mejoramos y añadimos nuevas características al generador de prue
 
 
 **API de k6**
-- Define [thresholds](/using-k6/thresholds).
+- Define [thresholds](/es/usando-k6/thresholds/).
 - Añada [checks](/javascript-api/k6/check-val-sets-tags).
 - Añada [sleep](/javascript-api/k6/sleep-t).
 - Añada [group](/javascript-api/k6/group-name-fn).
 
 **Algunas otras características**
-- Rellenar el constructor de pruebas con las peticiones grabadas utilizando el [grabador del navegador](/test-authoring/recording-a-session/browser-recorder).
+- Rellenar el constructor de pruebas con las peticiones grabadas utilizando el [grabador del navegador](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/).
 - Rellenar el constructor de pruebas con las peticiones incluidas en un [archivo HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 - Capturar una variable cuando se trata de datos dinámicos, como los tokens de autenticación.
 - Mostrar ejemplos para un mejor entendimiento.

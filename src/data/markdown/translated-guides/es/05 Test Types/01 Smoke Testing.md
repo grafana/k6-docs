@@ -67,4 +67,4 @@ Si su prueba de humo produjo algún error, debe corregir el script o arreglar su
 La salida de k6 debe ser similar a esta:
 ![Smoke test Terminal Output](./images/smoke-test-terminal-output.png)
 
-Una vez que su prueba de humo muestra 0 errores, como en la captura de pantalla anterior, puede ir al siguiente paso y ejecutar un [load test](/test-types/load-testing) para evaluar el rendimiento de su sistema.
+Una vez que su prueba de humo muestra 0 errores, como en la captura de pantalla anterior, puede ir al siguiente paso y ejecutar un [load test](/es/tipos-de-prueba/load-testing/) para evaluar el rendimiento de su sistema.
