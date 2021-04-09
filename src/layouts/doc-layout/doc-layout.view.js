@@ -233,20 +233,10 @@ export const DocLayout = ({
 
   const location = typeof window !== 'undefined' ? window.pathname : '';
 
-  // if another language was selected and current page has a translated version in that language,
-  // redirect to it
+  // if user opens a page in a different language from what was chosen, save new language
   React.useEffect(() => {
-    if (I18N_CONFIG.disableRedirectToSelectedLanguage) {
-      return;
-    }
-
-    if (
-      pageTranslations &&
-      locale &&
-      pageTranslations[locale] &&
-      locale !== urlLocale
-    ) {
-      navigate(pageTranslations[locale].path, { replace: true });
+    if (locale && locale !== urlLocale) {
+      setLocale(urlLocale);
     }
   }, [location]);
 
