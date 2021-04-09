@@ -7,7 +7,7 @@ excerpt: 'The Analysis tab allows you to compare and correlate data from your k6
 
 The Analysis Tab allow you to gather all interesting data points from your test to compare and correlate. Any metrics you that you click on `ADD CHART TO ANALYSIS` will show up here. In our example below, we've added some metrics from the previous three articles in this section. The number in the tab, will show how many metrics have been added, for quick reference.
 
-By default the comparison chart will be blank, we've added VUs and response time from the `ADD NEW METRIC` button in the top right corner. Clicking on this button will open a modal for you to add more metrics:
+By default the comparison chart will contain VUs, Response time, Request rate and Failed requests metrics. `ADD NEW METRIC` button, located in the top right corner, will open a modal which will let you add more metrics:
 
 ![Add Metric Modal](./images/06-Analysis-Tab/add-metric-modal.png)
 

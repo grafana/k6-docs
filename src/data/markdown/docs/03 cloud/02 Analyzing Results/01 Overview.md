@@ -27,7 +27,7 @@ The Performance Overview section displays high level data for your test. If the 
 
 ![Performance overview of a running test](images/01-Overview/running-performance-overview.png)
 
-After the test has finished the section is updated to show HTTP failures and peak RPS in place of Active VUs and current RPS. If any Performance Alerts have been detected, we will also display that information to you. In this test, our automated algorithms did not find any problems.
+After the test has finished the section is updated to show peak RPS in place of current RPS and Active VUs are hidden. If any Performance Alerts have been detected, we will also display that information to you. In this test, our automated algorithms did not find any problems.
 
 ![Performance overview of a finished test](images/01-Overview/finished-performance-overview.png)
 
