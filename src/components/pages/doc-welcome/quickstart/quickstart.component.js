@@ -33,7 +33,7 @@ export const Quickstart = () => {
         to:
           urlLocale === 'es'
             ? '/es/empezando/instalacion/'
-            : '/getting-started/salida-de-resultados/',
+            : '/getting-started/results-output/',
         title: `⏱ ${t('welcome.quickstart.results-output.title')}`,
         text: t('welcome.quickstart.results-output.text'),
       },
