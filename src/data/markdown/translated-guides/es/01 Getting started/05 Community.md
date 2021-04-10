@@ -6,6 +6,10 @@ excerpt: 'Información sobre dónde puede hacer sus preguntas acerca de k6, deba
 En esta página, encontrará información sobre dónde puede hacer sus preguntas acerca de k6, debatir sobre k6 y cómo podría contribuir al proyecto.
 Antes de comenzar, le recomendamos que lea nuestro [Código de Conducta](https://github.com/loadimpact/k6/blob/master/CODE_OF_CONDUCT.md). k6 ha adoptado el [Pacto de Colaboradores](https://www.contributor-covenant.org/) y esperamos que todos los miembros de la comunidad lo cumplan.
 
+## Comunidad hispanohablante
+
+Si quieres conocer a otros miembros de la comunidad hispanohablante, te animamos a unirte al canal `#lang-spanish` en [Slack](https://k6.io/slack). Ten en cuenta que el equipo de k6 sólo proporciona soporte en inglés. Si necesitas algún tipo de ayuda en Español, pregunta en `#lang-spanish`.
+
 ## Preguntas y debates
 
 El [foro de la comunidad](https://community.k6.io/) es el canal de soporte principal de la comunidad k6. Es el lugar para debatir funcionalidades, hacer recomendaciones y responder preguntas.
