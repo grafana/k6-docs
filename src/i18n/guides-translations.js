@@ -82,21 +82,21 @@ export const localizedMessages = {
     'welcome.k6-does-not.nodejs.import.text2': 'and import them in your tests.',
   },
   es: {
-    'read-more': 'Lee mas',
+    'read-more': 'Leer más',
     'suggest-edits': 'Sugerir ediciones',
     'welcome.quickstart.title': 'Guía rápida ',
     'welcome.quickstart.installation.title': 'Instalación',
     'welcome.quickstart.installation.text':
-      'Ponlo en marcha en un abrir y cerrar de ojos, utilizando un gestor de paquetes, un instalador autónomo o con la imagen del docker oficial.',
+      'Ponlo en marcha en un abrir y cerrar de ojos, utilizando un gestor de paquetes, un instalador autónomo o con la imagen de docker oficial.',
     'welcome.quickstart.running-k6.title': 'Ejecutando k6',
     'welcome.quickstart.running-k6.text':
       'Escriba y ejecute su primera prueba de carga localmente usando javascript y la api de k6, añadiendo múltiples usuarios virtuales, Checks y tipos de carga.',
     'welcome.quickstart.results-output.title': 'Resultados',
     'welcome.quickstart.results-output.text':
-      'Aprende a aprovechar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
+      'Aprende a utilizar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
     'welcome.what-is.title': '¿Qué es k6?',
-    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga centrada en el desarrollador, gratuita y de código abierto, creada para hacer de las pruebas de rendimiento una experiencia productiva y agradable.`,
-    'welcome.what-is.description2': `Con k6, podrá detectar problemas de rendimiento en una etapa temprana, lo que le permitirá crear sistemas resistentes y aplicaciones robustas.`,
+    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga centrada en el desarrollador, gratuita y de código abierto, creada para crear y ejecutar eficientemente las pruebas de rendimiento.`,
+    'welcome.what-is.description2': `Con k6, podrá detectar problemas de rendimiento en una etapa temprana, lo que le permitirá crear aplicaciones más robustas y servicios resistentes a los fallos.`,
     'welcome.features.title': 'Características principales',
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
@@ -104,12 +104,12 @@ export const localizedMessages = {
       'Herramienta CLI con APIs amigables para el desarrollador.',
     'welcome.features.scripting':
       'Scripting en JavaScript ES2015/ES6, con soporte para módulos locales y remotos.',
-    'welcome.features.modules': 'Modulos locales and remotos',
+    'welcome.features.modules': 'Módulos locales and remotos',
     'welcome.features.checks': 'Checks',
     'welcome.features.and': 'y',
     'welcome.features.thresholds': 'Thresholds',
     'welcome.features.testing':
-      '-  para pruebas de carga orientadas en los objetivos y de fácil automatización.',
+      '-  para pruebas de carga orientadas a objetivos y de fácil automatización.',
     'welcome.use-cases.title': 'Casos de uso',
     'welcome.use-cases.description': `Los usuarios de k6 suelen ser desarrolladores, ingenieros de control de calidad y DevOps. Ellos utilizan k6 para probar el rendimiento de las APIs, los microservicios y los sitios web. Los casos de uso más comunes de k6 son:`,
     'welcome.use-cases.load-testing.title': 'Pruebas de carga',
