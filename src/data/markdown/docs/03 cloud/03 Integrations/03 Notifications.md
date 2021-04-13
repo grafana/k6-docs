@@ -109,12 +109,12 @@ Instead of using webhooks you can have k6.io send you an email.
 3. In the `Recipients` field select your organization's member emails from a dropdown or 
    alternatively enter the email address or addresses that should receive the
    notification. Separate multiple emails by commas or spaces.
-4. Enter `Subject`. This is useful if you want to filter
+4. Enter `Email Subject`. This is useful if you want to filter
    and organize notifications in your email program.
 5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
    You can find descriptions of the available events [below](#supported-notification-events).
 6. Optionally, give your notification a name to separate different notifications.
-7. Optionally, select a `Template` to start from. The default _Email Template_ is a simple
+7. Optionally, select a `Template` to start from. The default _Email notification_ is a simple
    HTML-enhanced email template with human-readable test results. You can edit this to your liking.
 8. Press `Save` and fix any eventual errors reported.
 9. Once Saving completes correctly, go back to `Configure` the notification you
