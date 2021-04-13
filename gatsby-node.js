@@ -122,7 +122,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
         translatedPath.startsWith(`${locale}/`),
       ) || DEFAULT_LOCALE;
 
-    const pageSlug =
+    let pageSlug =
       pageLocale === DEFAULT_LOCALE
         ? `/${getSlug(translatedPath)}`
         : `/${getTranslatedSlug(
@@ -131,6 +131,10 @@ function generateSidebar({ nodes, type = 'docs' }) {
             pageLocale,
             'guides',
           )}`;
+
+    if (pageSlug === '//') {
+      pageSlug = '/';
+    }
 
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),
