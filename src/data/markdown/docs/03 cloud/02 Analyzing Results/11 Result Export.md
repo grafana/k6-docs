@@ -4,6 +4,7 @@ excerpt: 'Exporting k6 Cloud test results. CSV format and PDF reports'
 ---
 
 Test result data can be exported after a test has finished and data processing complete in various formats:
+
 - [PDF report](#generate-pdf-report): to share the performance results with managers and executives.
 - [CSV format](#export-as-csv): to analyze the test result metrics deeper on your own.
 
@@ -13,15 +14,27 @@ If you want to know other methods to analyze your test results, check out the k6
 
 > ⭐️ The PDF report is available on annual Pro and Enterprise plans.
 
-To generate a PDF report from a test result, visit the test result, click the options menu - triple-dot button **⫶** in the top right - and select `Generate PDF summary`. After a few seconds, the browser will prompt you to download the PDF summary report.
-
-The PDF report is an executive summary of the test result's most relevant metrics and performance data. A complete PDF example can be found [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
+The PDF report is an executive summary of the test result's most relevant metrics and performance data. To get an idea of the report looks, you can download an example [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report.png)
 
+To generate a PDF report from a test result visit the test result, open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right and select `Generate PDF summary`. This will take you to an editor where you can customize the summary.
+
+### Adding or removing metrics
+
+By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a wide variety of pre-defined metrics that can be included.
+
+![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
+
+### Generating the final PDF
+
+Once you've finished editing the summary, you can click the `Generate PDF` button in the top right of the editor. This will open up a progress dialog and after a few moments, the browser will prompt you to download the PDF summary report.
+
+> **Note:** It is important that you do not navigate away or refresh the page while the PDF is being generated. The time it takes to generate the PDF is dependent on the amount of data that needs to be included, so it may take a minute if you test includes e.g. many load zones.
+
 ## Export as CSV
 
-To export the test result as CSV, visit the test result, click the options menu - triple-dot button **⫶** in the top right  - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
+To export the test result as CSV, visit the test result, open the [test results menu]() - triple-dot button **⫶** in the top right - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
 
 The CSV data has the following columns of data:
 
@@ -46,8 +59,7 @@ Here's example data, units (where necessary) and description of each field prese
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
 | `count`         | 1.0                              | number         | Number of samples that this data point represents (if > 1 `response_time` is an aggregate value).                                         |
 | `load_zone`     | amazon:us:ashburn                | string         | The load zone where the request(s) was made from.                                                                                         |
-| `tags`          | staticAsset=true                 | string         | Pipe separated list of `name=value` tags as specified for the request in the script. |
+| `tags`          | staticAsset=true                 | string         | Pipe separated list of `name=value` tags as specified for the request in the script.                                                      |
 
-
-> **Note**
+> **Note:**
 > The exported CSV file currently only contains data from the primary HTTP response time metric (`http_req_duration`). In the future we'll expand the export feature with more HTTP data, WebSocket data, Checks data, Thresholds data as well as Custom metrics data.
