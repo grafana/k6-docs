@@ -18,23 +18,23 @@ The PDF report is an executive summary of the test result's most relevant metric
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report.png)
 
-To generate a PDF report from a test result visit the test result, open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right and select `Generate PDF summary`. This will take you to an editor where you can customize the summary.
+To generate a PDF report from a test result, visit the test result, open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right and select `Generate PDF summary`. This will take you to an editor where you can customize the summary.
 
 ### Adding or removing metrics
 
-By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a wide variety of pre-defined metrics that can be included.
+By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a variety of pre-defined metrics that can be included.
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
 
 ### Generating the final PDF
 
-Once you've finished editing the summary, you can click the `Generate PDF` button in the top right of the editor. This will open up a progress dialog and after a few moments, the browser will prompt you to download the PDF summary report.
+Once you've finished editing the summary, you can click the `Generate PDF` button in the top right of the editor. This will open up a progress dialog and, after a few moments, the browser will prompt you to download the PDF summary report.
 
 > **Note:** It is important that you do not navigate away or refresh the page while the PDF is being generated. The time it takes to generate the PDF is dependent on the amount of data that needs to be included, so it may take a minute if you test includes e.g. many load zones.
 
 ## Export as CSV
 
-To export the test result as CSV, visit the test result, open the [test results menu]() - triple-dot button **⫶** in the top right - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
+To export the test result as CSV, visit the test result, , click the options menu - triple-dot button **⫶** in the top right - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
 
 The CSV data has the following columns of data:
 
