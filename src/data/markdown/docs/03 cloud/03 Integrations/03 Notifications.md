@@ -4,7 +4,8 @@ excerpt: 'Notifications allow third-party services to be notified via Webhook wh
 ---
 
 Notifications allow third-party services to be notified via
-[Webhook](https://en.wikipedia.org/wiki/Webhook) when various test-related
+[Webhook](https://en.wikipedia.org/wiki/Webhook) or [Email](https://en.wikipedia.org/wiki/Email) 
+when various test-related
 events of your choice happen in your organizations/projects. Commonly monitored
 events are if a test is aborted unexpectedly or if it fails a
 [check](/using-k6/checks) or [threshold](/using-k6/thresholds).
@@ -15,9 +16,9 @@ tests and/or configure them into your Continuous Integration (CI) pipeline.
 > **Note:** Notifications are configured per organization by the organization's
 > owner or an admin member.
 
-k6 supports three different integration options: _Slack_, _Microsoft Teams_ and
-your own _Custom Webhook_. Each can also be customized freely if our default
-is not exactly what you need.
+k6 supports four different integration options: _Slack_, _Microsoft Teams_ and
+your own _Custom Webhook_ or _Custom Email_. Each option can also be customized freely 
+if our default is not exactly what you need.
 
 ![k6 Notifications](./images/03-Notifications/notification-type-selection.png)
 
@@ -28,7 +29,7 @@ is not exactly what you need.
 1. From Slack, add a Custom Integration and select _Incoming WebHook_ app.
 2. Select or create a channel and copy Slack's generated WebHook URL.
 3. From the k6 web app, select `Notifications` from the left menu bar. From
-   there, select to setup Slack.
+   there, select to setup _Slack_.
 4. Add Slack's WebHook URL into the `Webhook URL` input field.
 5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
    You can find descriptions of the available events [below](#supported-notification-events).
@@ -50,7 +51,7 @@ collaboration in office 365.
 
 1. Figure out the webhook URL for your Microsoft Team setup.
 2. From the k6 web app, select `Notifications` from the left menu bar. From there,
-   select to setup Microsoft Teams.
+   select to setup _Microsoft Teams_.
 3. Add The Teams URL into the `Webhook URL` input field.
 4. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
    You can find descriptions of the available events [below](#supported-notification-events).
@@ -76,7 +77,7 @@ customized directly in the k6 app.
    may be an idea to first try with some free online service that provides temporary
    URLs for webhook debugging, like [webhook.site](https://webhook.site/).
 2. From the k6 web app, select `Notifications` from the left menu bar. From there,
-   select to setup a Custom Webhook.
+   select to setup a _Custom Webhook_.
 3. Add your URL in the `Webhook URL` input field.
 4. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
    You can find descriptions of the available events [below](#supported-notification-events).
@@ -97,6 +98,35 @@ customized directly in the k6 app.
     left empty without giving an explicit error).
 
 ![MSTeams Setup example](./images/03-Notifications/custom-webhook-setup.png)
+
+## Adding a Custom Email notification
+
+Instead of using webhooks you can have k6.io send you an email.
+
+1. Decide which email or emails to receive the notification.
+2. From the k6 web app, select `Notifications` from the left menu bar. From there,
+   select to setup _Email_.
+3. In the `Recipients` field select your organization's member emails from a dropdown or 
+   alternatively enter the email address or addresses that should receive the
+   notification. Separate multiple emails by commas or spaces.
+4. Enter `Email Subject`. This is useful if you want to filter
+   and organize notifications in your email program.
+5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
+   You can find descriptions of the available events [below](#supported-notification-events).
+6. Optionally, give your notification a name to separate different notifications.
+7. Optionally, select a `Template` to start from. The default _Email notification_ is a simple
+   HTML-enhanced email template with human-readable test results. You can edit this to your liking.
+8. Press `Save` and fix any eventual errors reported.
+9. Once Saving completes correctly, go back to `Configure` the notification you
+   just created and click the `Send test event` button. This sends a dummy
+   message to your email address/addresses. All the context fields in your template will be filled
+   with mock values to make sure it works.
+10. Fix any errors reported by sending the test event. Make sure to also
+   double-check so that you get the expected value-type for every field on the
+   receiving end (if there was a typo in the variable-name some may just be
+   left empty without giving an explicit error).
+
+![Email Setup example](./images/03-Notifications/email-setup.png)
 
 ## Supported Notification events
 

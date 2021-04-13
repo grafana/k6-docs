@@ -290,7 +290,8 @@ export function teardown(data) {
 
 ### For k6 cloud
 
-If you’re running your cloud tests - in the web app - you can configure these [notifications](/cloud/integrations/notifications): Slack, Webhook, and Microsoft Teams.
+If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/integrations/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
+
 
 ## See also
 
