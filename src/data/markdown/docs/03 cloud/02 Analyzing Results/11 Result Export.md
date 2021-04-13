@@ -10,7 +10,7 @@ Test result data can be exported after a test has finished and data processing c
 
 If you want to know other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
 
-## Generate PDF report
+## Generate PDF Report
 
 > ⭐️ The PDF report is available on annual Pro and Enterprise plans.
 
@@ -18,19 +18,27 @@ The PDF report is an executive summary of the test result's most relevant metric
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report.png)
 
-To generate a PDF report from a test result, visit the test result, open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right and select `Generate PDF summary`. This will take you to an editor where you can customize the summary.
+### Opening the Editor
 
-### Adding or removing metrics
+To generate a PDF summary, do the following:
+
+1. Navigate to the test result you want to generate a summary of.
+2. Open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right.
+3. Select the `Generate PDF summary` option.
+
+This will take you to an editor where you can customize and download the summary.
+
+### Adding or Removing Metrics
 
 By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a variety of pre-defined metrics that can be included.
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
 
-### Generating the final PDF
+### Generating the PDF
 
 Once you've finished editing the summary, you can click the `Generate PDF` button in the top right of the editor. This will open up a progress dialog and, after a few moments, the browser will prompt you to download the PDF summary report.
 
-> **Note:** It is important that you do not navigate away or refresh the page while the PDF is being generated. The time it takes to generate the PDF is dependent on the amount of data that needs to be included, so it may take a minute if you test includes e.g. many load zones.
+> **Note:** It is important that you do not refresh or navigate away from the page while the PDF is being generated. The time it takes to generate the PDF is dependent on the amount of data that needs to be included, so it may take a minute if your test includes many load zones, for instance.
 
 ## Export as CSV
 
