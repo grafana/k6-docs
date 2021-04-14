@@ -651,320 +651,121 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/k6-http/cookiejar-k6-http',
-    toPath: '/javascript-api/k6-http/cookiejar/',
+    fromPath: '/cloud/analyzing-results/logs-tab/',
+    toPath: '/cloud/analyzing-results/logs/',
     isPermanent: true,
   });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url',
-    toPath: '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options',
-    toPath:
-      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
-    toPath:
-      '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/filedata-k6-http',
-    toPath: '/javascript-api/k6-http/filedata/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/params-k6-http',
-    toPath: '/javascript-api/k6-http/params/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/response-k6-http',
-    toPath: '/javascript-api/k6-http/response/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/response-k6-http/response-clicklink-params',
-    toPath: '/javascript-api/k6-http/response/response-clicklink-params/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/response-k6-http/response-html',
-    toPath: '/javascript-api/k6-http/response/response-html/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-http/response-k6-http/response-json-selector',
-    toPath: '/javascript-api/k6-http/response/response-json-selector/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/response-k6-http/response-submitform-params',
-    toPath: '/javascript-api/k6-http/response/response-submitform-params/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-metrics/counter-k6-metrics',
-    toPath: '/javascript-api/k6-metrics/counter/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-metrics/gauge-k6-metrics',
-    toPath: '/javascript-api/k6-metrics/gauge/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics',
-    toPath: '/javascript-api/k6-metrics/rate/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/javascript-api/k6-metrics/trend-k6-metrics',
-    toPath: '/javascript-api/k6-metrics/trend/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/archives-for-bundling-sharing-a-test',
-    toPath: '/misc/archive-command/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/ssl-tls',
-    toPath: '/using-k6/protocols/ssl-tls/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp',
-    toPath:
-      '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/ssl-tls/ssl-tls-client-certificates',
-    toPath: '/using-k6/protocols/ssl-tls/ssl-tls-client-certificates/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/ssl-tls/ssl-tls-version-and-ciphers',
-    toPath: '/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/using-k6/multipart-requests-file-uploads',
-    toPath: '/examples/data-uploads/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/getting-started/results-output/apache-kafka',
-    toPath: '/results-visualization/apache-kafka/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/getting-started/results-output/cloud',
-    toPath: '/results-visualization/cloud/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/results-visualization/k6-cloud-test-results',
-    toPath: '/results-visualization/cloud/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/getting-started/results-output/datadog',
-    toPath: '/results-visualization/datadog/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/getting-started/results-output/influxdb',
-    toPath: '/results-visualization/influxdb-+-grafana/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/getting-started/results-output/json',
-    toPath: '/results-visualization/json/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/getting-started/results-output/statsd',
-    toPath: '/results-visualization/statsd/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/counter/counter-add-value-tags/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/gauge/gauge-add-value-tags/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/rate/rate-add-value-tags/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags',
-    toPath: '/javascript-api/k6-metrics/trend/trend-add-value-tags/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath:
-      '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options',
-    toPath:
-      '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/using-k6/cloud-execution',
-    toPath: '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/using-k6/html/working-with-html-forms',
-    toPath: '/examples/html-forms/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/using-k6/html',
-    toPath: '/javascript-api/k6-html/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/using-k6/session-recording-har-support',
-    toPath: '/test-authoring/recording-a-session/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/creating-and-running-a-test/test-builder',
-    toPath: '/test-authoring/test-builder/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/creating-and-running-a-test/in-app-script-editor',
-    toPath: '/cloud/creating-and-running-a-test/script-editor/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/creating-and-running-a-test/recording-a-test-script',
-    toPath: '/test-authoring/recording-a-session/browser-recorder/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/creating-and-running-a-test/converters',
-    toPath: '/integrations/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/integrations/ci',
-    toPath: '/integrations/',
-    isPermanent: true,
-  });
-
   createRedirect({
     fromPath: '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
     toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
     isPermanent: true,
   });
 
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/what-is-data-retention',
-    toPath: '/cloud/billing-user-menu/data-retention/',
-    isPermanent: true,
-  });
+  const redirects = {
+    '/javascript-api/k6-http/cookiejar-k6-http':
+      '/javascript-api/k6-http/cookiejar/',
+    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url':
+      '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url/',
+    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options':
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options/',
+    '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options':
+      '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options/',
+    '/javascript-api/k6-http/filedata-k6-http':
+      '/javascript-api/k6-http/filedata/',
+    '/javascript-api/k6-http/params-k6-http': '/javascript-api/k6-http/params/',
+    '/javascript-api/k6-http/response-k6-http':
+      '/javascript-api/k6-http/response/',
+    '/javascript-api/k6-http/response-k6-http/response-clicklink-params':
+      '/javascript-api/k6-http/response/response-clicklink-params/',
+    '/javascript-api/k6-http/response-k6-http/response-html':
+      '/javascript-api/k6-http/response/response-html/',
+    '/javascript-api/k6-http/response-k6-http/response-json-selector':
+      '/javascript-api/k6-http/response/response-json-selector/',
+    '/javascript-api/k6-http/response-k6-http/response-submitform-params':
+      '/javascript-api/k6-http/response/response-submitform-params/',
+    '/javascript-api/k6-metrics/counter-k6-metrics':
+      '/javascript-api/k6-metrics/counter/',
+    '/javascript-api/k6-metrics/gauge-k6-metrics':
+      '/javascript-api/k6-metrics/gauge/',
+    '/javascript-api/k6-metrics/rate-k6-metrics':
+      '/javascript-api/k6-metrics/rate/',
+    '/javascript-api/k6-metrics/trend-k6-metrics':
+      '/javascript-api/k6-metrics/trend/',
+    '/using-k6/archives-for-bundling-sharing-a-test': '/misc/archive-command/',
+    '/using-k6/ssl-tls': '/using-k6/protocols/ssl-tls/',
+    '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp':
+      '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp/',
+    '/using-k6/ssl-tls/ssl-tls-client-certificates':
+      '/using-k6/protocols/ssl-tls/ssl-tls-client-certificates/',
+    '/using-k6/ssl-tls/ssl-tls-version-and-ciphers':
+      '/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/',
+    '/using-k6/multipart-requests-file-uploads': '/examples/data-uploads/',
+    '/getting-started/results-output/apache-kafka':
+      '/results-visualization/apache-kafka/',
+    '/getting-started/results-output/cloud': '/results-visualization/cloud/',
+    '/results-visualization/k6-cloud-test-results':
+      '/results-visualization/cloud/',
+    '/getting-started/results-output/datadog':
+      '/results-visualization/datadog/',
+    '/getting-started/results-output/influxdb':
+      '/results-visualization/influxdb-+-grafana/',
+    '/getting-started/results-output/json': '/results-visualization/json/',
+    '/getting-started/results-output/statsd': '/results-visualization/statsd/',
+    '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags':
+      '/javascript-api/k6-metrics/counter/counter-add-value-tags/',
+    '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags':
+      '/javascript-api/k6-metrics/gauge/gauge-add-value-tags/',
+    '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags':
+      '/javascript-api/k6-metrics/rate/rate-add-value-tags/',
+    '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags':
+      '/javascript-api/k6-metrics/trend/trend-add-value-tags/',
+    '/using-k6/cloud-execution':
+      '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/',
+    '/using-k6/html/working-with-html-forms': '/examples/html-forms/',
+    '/using-k6/html': '/javascript-api/k6-html/',
+    '/using-k6/session-recording-har-support':
+      '/test-authoring/recording-a-session/',
+    '/cloud/creating-and-running-a-test/test-builder':
+      '/test-authoring/test-builder/',
+    '/cloud/creating-and-running-a-test/in-app-script-editor':
+      '/cloud/creating-and-running-a-test/script-editor/',
+    '/cloud/creating-and-running-a-test/recording-a-test-script':
+      '/test-authoring/recording-a-session/browser-recorder/',
+    '/cloud/creating-and-running-a-test/converters': '/integrations/',
+    '/cloud/integrations/ci': '/integrations/',
+    '/cloud/cloud-faq/what-is-data-retention':
+      '/cloud/billing-user-menu/data-retention/',
+    '/cloud/cloud-faq/pricing-faq': '/cloud/cloud-faq/pricing-questions/',
+    '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud':
+      '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts':
+      '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests':
+      '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests':
+      '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/test-status-codes': '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/what-are-vus-virtual-users':
+      '/cloud/cloud-faq/general-questions/',
+    '/cloud/cloud-faq/data-uploads-with-k6-cloud':
+      '/cloud/cloud-faq/general-questions/',
+    '/misc/usage-reports': '/misc/usage-collection/',
+    '/using-k6/using-node-modules': '/using-k6/modules/',
+  };
 
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/pricing-faq',
-    toPath: '/cloud/cloud-faq/pricing-questions/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath:
-      '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/test-status-codes',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/what-are-vus-virtual-users',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/cloud/cloud-faq/data-uploads-with-k6-cloud',
-    toPath: '/cloud/cloud-faq/general-questions/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/misc/usage-reports',
-    toPath: '/misc/usage-collection/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/using-k6/using-node-modules',
-    toPath: '/using-k6/modules/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/cloud/analyzing-results/logs-tab/',
-    toPath: '/cloud/analyzing-results/logs/',
-    isPermanent: true,
-  });
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of Object.entries(redirects)) {
+    createRedirect({
+      fromPath: `${key}`,
+      toPath: `${value}`,
+      isPermanent: true,
+    });
+    createRedirect({
+      fromPath: `${key}/`,
+      toPath: `${value}`,
+      isPermanent: true,
+    });
+  }
 };
 
 exports.createPages = async (options) => {
