@@ -766,6 +766,47 @@ const createRedirects = ({ actions }) => {
       isPermanent: true,
     });
   }
+
+  // all redirects docs.k6.io
+  [
+    '/selection-findselector/',
+    '/selection-attrname/',
+    '/selection-getindex/',
+    '/selection-nextselector/',
+    '/selection-nextallselector/',
+    '/selection-prevallselector/',
+    '/selection-parentselector/',
+    '/selection-parentsselector/',
+    '/selection-prevuntilselector/',
+    '/selection-nextuntilselector/',
+    '/selection-parentsuntilselector/',
+    '/selection-childrenselector/',
+    '/selection/',
+  ].forEach((item) => {
+    createRedirect({
+      fromPath: `/javascript-api/k6-html/selection${item}`,
+      toPath: '/javascript-api/k6-html/selection/',
+      isPermanent: true,
+    });
+  });
+
+  [
+    '/md4-input-outputencoding/',
+    '/md5-input-outputencoding/',
+    '/sha1-input-outputencoding/',
+    '/sha256-input-outputencoding/',
+    '/sha384-input-outputencoding/',
+    '/sha512-input-outputencoding/',
+    '/sha512_224-input-outputencoding/',
+    '/sha512_256-input-outputencoding/',
+    '/ripemd160-input-outputencoding/',
+  ].forEach((item) => {
+    createRedirect({
+      fromPath: `/javascript-api/6-crypto/hmac${item}`,
+      toPath: '/javascript-api/k6-crypto/',
+      isPermanent: true,
+    });
+  });
 };
 
 exports.createPages = async (options) => {
