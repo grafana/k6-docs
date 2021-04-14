@@ -70,7 +70,7 @@ export const SEO = ({
       <Helmet
         title={currentTitle}
         htmlAttributes={{
-          lang: slug.startsWith('es/') ? 'es' : siteLanguage,
+          lang: slug && slug.startsWith('es/') ? 'es' : siteLanguage,
           prefix: 'og: http://ogp.me/ns#',
         }}
       >
