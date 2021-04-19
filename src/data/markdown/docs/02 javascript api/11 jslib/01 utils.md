@@ -18,7 +18,7 @@ The `utils` module contains number of small utility functions useful in every da
 | [randomItem(array)](/javascript-api/jslib/utils/randomitem-array)  | Random item from a given array |
 | [randomString(length)](/javascript-api/jslib/utils/randomstring-length)  | Random string of a given length |
 | [uuidv4()](/javascript-api/jslib/utils/uuidv4)  | Random UUID v4 in a string representation |
-
+| [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween)  | Extract a string between two surrounding strings |
 
 
 ## Simple example
@@ -32,7 +32,8 @@ import http from 'k6/http';
 import { randomIntBetween, 
          randomString,
          randomItem,
-         uuidv4 } from "./src/utils.js";
+         uuidv4,
+         findBetween } from "./src/utils.js";
 
 export default function() {
 
@@ -42,6 +43,10 @@ export default function() {
     username: `user_${randomString(10)}@example.com`,  // random email address,
     password: uuidv4() // random password in form of uuid
   });
+
+  // find a string between two strings to grab the username:
+  let username = findBetween(res.body, '"username":"', '"');
+  console.log('username from response: ' + username);
 
   sleep(randomIntBetween(1, 5)); // sleep between 1 and 5 seconds.
 }
