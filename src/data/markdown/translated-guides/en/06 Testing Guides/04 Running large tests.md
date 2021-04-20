@@ -129,12 +129,12 @@ This setting disables the internal [Babel](https://babeljs.io/) transpilation fr
 
 To get the best performance out of k6, it's best to transpile the scripts outside of k6 using webpack.
 
-In [k6-hardware-benchmark](https://github.com/loadimpact/k6-hardware-benchmark) repository, we have prepared an efficient transpilation scheme that produces performant ES5.1 code for k6.
+In [k6-hardware-benchmark](https://github.com/k6io/k6-hardware-benchmark) repository, we have prepared an efficient transpilation scheme that produces performant ES5.1 code for k6.
 
 Use it like this:
 
 ```bash
-git clone https://github.com/loadimpact/k6-hardware-benchmark/
+git clone https://github.com/k6io/k6-hardware-benchmark/
 cd k6-hardware-benchmark
 yarn install
 yarn run to-es5 someplace/yourscript.js
@@ -274,7 +274,7 @@ The RPS limit depends on the response time of the SUT. If responses are delivere
 
 Testing the theoretical limits is fun, but that's not the point of this benchmark.
 The point of this benchmark is to give users an indication of how much traffic k6 can generate when executing complicated, real-life tests.
-For this purpose, we have written a rather heavy [real-life website test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/website.js) that uses almost all k6 features.
+For this purpose, we have written a rather heavy [real-life website test](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/website.js) that uses almost all k6 features.
 
 Setup:
 
@@ -361,7 +361,7 @@ Results
 ### Testing for RPS
 
 As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
-To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately, our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS.
+To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately, our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS.
 Much higher numbers are possible for faster systems.
 
 **> AWS m5.24xlarge**
@@ -391,7 +391,7 @@ Please read the warning about the cost of data transfer in AWS before commencing
 
 **> AWS m5.24xlarge**
 
-To test the network throughput we have written a [file uploading script](https://github.com/loadimpact/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs.
+To test the network throughput we have written a [file uploading script](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs.
 
 ```bash
 k6 run scripts/file-upload.es5.js \
@@ -458,7 +458,7 @@ However - at this moment - the distributed execution mode of k6 is not entirely 
 
 With the limitations mentioned above, we built a [kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **k8s cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
 
-> The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/loadimpact/k6/issues/140) on GitHub.
+> The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/k6io/k6/issues/140) on GitHub.
 
 ## Large-scale tests in k6 Cloud
 

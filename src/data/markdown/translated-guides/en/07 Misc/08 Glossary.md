@@ -62,7 +62,7 @@ When discussing complex topics, it is usually a good idea to define a clear, sha
 
 ### HTTP Archive
 
-An **HTTP Archive**, or **HAR file**, is a file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/loadimpact/har-to-k6). For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).
+An **HTTP Archive**, or **HAR file**, is a file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/k6io/har-to-k6). For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).
 
 ### Iteration
 

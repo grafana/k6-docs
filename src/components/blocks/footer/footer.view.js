@@ -22,7 +22,7 @@ export const Footer = () => (
             </Link>
             <div className={styles.social}>
               <a
-                href={'https://github.com/loadimpact/k6'}
+                href={'https://github.com/k6io/k6'}
                 className={styles.socialIcon}
               >
                 <GithubLogo />
@@ -163,7 +163,7 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={'https://github.com/loadimpact'}
+                      href={'https://github.com/k6io'}
                     >
                       Github
                     </a>

@@ -40,7 +40,7 @@ This code will work fine as long as SUT (System Under Test) returns correct resp
 ERRO[0001] GoError: cannot parse json due to an error at line 1, character 2 , error: invalid character '<' looking for beginning of value
 running at reflect.methodValueCall (native)
 default at gotMoreThan5Crocs (file:///home/user/happy-path-check.js:7:68(5))
-  at github.com/loadimpact/k6/js/common.Bind.func1 (native)
+  at github.com/k6io/k6/js/common.Bind.func1 (native)
   at file:///home/user/happy-path-check.js:5:22(17)  executor=per-vu-iterations scenario=default source=stacktrace
 ```
 

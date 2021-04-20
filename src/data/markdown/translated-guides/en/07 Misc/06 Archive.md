@@ -82,7 +82,7 @@ load generators for execution.
 
 ### Clustered Execution (_future_)
 
-In the future (see [our roadmap](https://github.com/loadimpact/k6/wiki/Roadmap)) k6 will
+In the future (see [our roadmap](https://github.com/k6io/k6/wiki/Roadmap)) k6 will
 support a clustered execution mode that will enable tests to be run across more than one
 node. This mode of execution is also likely to make use of the archive functionality to
 distribute the test files to all participating nodes.

@@ -7,7 +7,7 @@ El convertidor HAR es una alternativa al [grabador del navegador (Browser record
 
 > HAR es un formato de archivo utilizado por los principales navegadores y otras herramientas para exportar las peticiones HTTP registradas.
 
-El [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) es una herramienta de NodeJS. A diferencia del grabador del navegador, no se requiere una cuenta de k6 Cloud para generar el script de k6.
+El [har-to-k6 converter](https://github.com/k6io/har-to-k6) es una herramienta de NodeJS. A diferencia del grabador del navegador, no se requiere una cuenta de k6 Cloud para generar el script de k6.
 Cuando se utiliza el convertidor HAR, el proceso es similar a:
 
 1. Grabar un archivo HAR usando su navegador o herramienta de elección.
@@ -56,7 +56,7 @@ Es bueno tener en cuenta las siguientes buenas prácticas para grabar una sesió
 ## 2. Convertir el archivo HAR en un script de k6
 
 
-El [har-to-k6 converter](https://github.com/loadimpact/har-to-k6) es una herramienta de NodeJS que puede convertir un archivo HAR (sesión del navegador) en un script de k6.
+El [har-to-k6 converter](https://github.com/k6io/har-to-k6) es una herramienta de NodeJS que puede convertir un archivo HAR (sesión del navegador) en un script de k6.
 
 **Instalar el convertidor har-to-k6**
 
@@ -67,7 +67,7 @@ Un requisito previo es tener instalado NodeJS (versión: 11.0.0 o mayor). Para i
 $ npm install -g har-to-k6
 ```
 
-Para otras opciones de instalación, consulte las instrucciones de [instalación de har-to-k6](https://github.com/loadimpact/har-to-k6#installation).
+Para otras opciones de instalación, consulte las instrucciones de [instalación de har-to-k6](https://github.com/k6io/har-to-k6#installation).
 
 **Ejecute el comando de conversión**
 

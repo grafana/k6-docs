@@ -18,7 +18,7 @@ El reporte de uso no contiene ninguna información sobre lo que se está proband
 
 Esta información se envía a un servidor HTTP que recoge estadísticas sobre el uso de k6.
 
-Para los que estén interesados en esto, aquí dejamos plasmado el [código Go](https://github.com/loadimpact/k6/blob/master/cmd/run.go) que genera y envía el reporte de uso:
+Para los que estén interesados en esto, aquí dejamos plasmado el [código Go](https://github.com/k6io/k6/blob/master/cmd/run.go) que genera y envía el reporte de uso:
 
 
 <CodeGroup labels={["snippet from run.go"]} lineNumbers={[true]}>

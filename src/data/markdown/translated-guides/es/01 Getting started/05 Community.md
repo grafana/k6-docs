@@ -4,7 +4,7 @@ excerpt: 'Información sobre dónde puede hacer sus preguntas acerca de k6, deba
 ---
 
 En esta página, encontrará información sobre dónde puede hacer sus preguntas acerca de k6, debatir sobre k6 y cómo podría contribuir al proyecto.
-Antes de comenzar, le recomendamos que lea nuestro [Código de Conducta](https://github.com/loadimpact/k6/blob/master/CODE_OF_CONDUCT.md). k6 ha adoptado el [Pacto de Colaboradores](https://www.contributor-covenant.org/) y esperamos que todos los miembros de la comunidad lo cumplan.
+Antes de comenzar, le recomendamos que lea nuestro [Código de Conducta](https://github.com/k6io/k6/blob/master/CODE_OF_CONDUCT.md). k6 ha adoptado el [Pacto de Colaboradores](https://www.contributor-covenant.org/) y esperamos que todos los miembros de la comunidad lo cumplan.
 
 ## Comunidad hispanohablante
 
@@ -25,7 +25,7 @@ En cambio, si tiene una idea bien razonada y detallada para una nueva funcionali
 ## Reporte de errores
 
 
-Si encuentra algún error en K6, puede [reportarnos el problema](https://github.com/loadimpact/k6/issues). Primeramente debe asegurarse de que el error no haya sido reportado anteriormente.
+Si encuentra algún error en K6, puede [reportarnos el problema](https://github.com/k6io/k6/issues). Primeramente debe asegurarse de que el error no haya sido reportado anteriormente.
 
 Si ha encontrado un error en la documentación, puedes hacernos saber en el canal `#documentation` en [Slack](https://k6.io/slack/).
 
@@ -46,7 +46,7 @@ Háganos saber por Slack si desea dar una charla o conferencia y de esa manera n
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ¿Cómo puedo?                                  | [Stack Overflow](https://stackoverflow.com), usa las etiquetas `k6`, `javascript`, y `load-testing`.<br/> El [Foro de la comunidad](https://community.k6.io) |
 | Tengo un error, porque?                      | [Stack Overflow](https://stackoverflow.com)                                                                                                           |
-| Tengo un error y estoy seguro que es un bug   | [Crea un issue en GitHub](https://github.com/loadimpact/k6/issues)                                                                                              |
+| Tengo un error y estoy seguro que es un bug   | [Crea un issue en GitHub](https://github.com/k6io/k6/issues)                                                                                              |
 | ¿Por qué lo haces? ¿Cuándo lo harás?                 | [Slack](https://k6.io/slack/)                                                                                                                         |
-| Quiero contribuir/ayudar al desarrollo | Empieza en la documentación, luego visita [Slack](https://k6.io/slack/) y [GitHub issues](https://github.com/loadimpact/k6/issues)                                       |
+| Quiero contribuir/ayudar al desarrollo | Empieza en la documentación, luego visita [Slack](https://k6.io/slack/) y [GitHub issues](https://github.com/k6io/k6/issues)                                       |
 | Quiero escribir o dar una charla sobre k6    | Conecta en [Slack](https://k6.io/slack/) para ver cómo podemos ayudarte                                                                                  |
