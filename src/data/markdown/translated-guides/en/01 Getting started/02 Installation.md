@@ -8,55 +8,83 @@ excerpt: 'Instructions to install k6 in Linux, Mac, Windows. Use the Docker cont
 ### Debian/Ubuntu
 
 ```bash
-$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-$ echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+$ echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
 $ sudo apt-get update
 $ sudo apt-get install k6
 ```
 
 > #### ⚠️ If you are behind a firewall or proxy
 >
-> There have been reports of users being unable to download the key from Ubuntu's key-server using `apt-key`
-> command due to firewalls or proxies blocking their requests. If you experience this issue, you may try this
-> alternative approach instead:
+> There have been reports of users being unable to download the key from Ubuntu's
+> keyserver using the `apt-key` command due to firewalls or proxies blocking their
+> requests. If you experience this issue, you may try this alternative approach
+> instead:
 >
 > ```bash
-> $ wget -q -O - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+> $ curl -s https://dl.k6.io/key.gpg | sudo apt-key add -
 > ```
+>
+> Then confirm that the key with the above ID is shown in the output of `sudo apt-key list`.
 
-### Red Hat/CentOS
+
+### Fedora/CentOS
+
+Using `dnf` or `yum` on older versions:
 
 ```bash
-$ wget https://bintray.com/loadimpact/rpm/rpm -O bintray-loadimpact-rpm.repo
-$ sudo mv bintray-loadimpact-rpm.repo /etc/yum.repos.d/
-$ sudo yum install k6
+$ sudo dnf install https://dl.k6.io/rpm/repo.rpm
+$ sudo dnf install k6
 ```
 
-## Mac (brew)
+CentOS versions older than 8 don't support the PGP V4 signature we use, so you'll need to disable the verification by installing k6 with:
+```bash
+$ sudo yum install --nogpgcheck k6
+```
 
-<CodeGroup labels={['Brew']}>
+> #### ⚠️ Note about Bintray
+>
+> The Bintray k6 repositories will [stop working after May 1st, 2021](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)
+> and you should switch to our own repositories following the instructions above.
+>
+> On Debian/Ubuntu you can remove the Bintray repository with:
+> ```bash
+> $ sudo sed -i '/dl\.bintray\.com\/loadimpact\/deb/d' /etc/apt/sources.list
+> $ sudo apt-key del 379CE192D401AB61
+> $ sudo apt-get update
+> ```
+>
+> And on Fedora/CentOS with:
+> ```bash
+> $ sudo rm /etc/yum.repos.d/bintray-loadimpact-rpm.repo
+> ```
+
+
+## macOS
+
+Using [Homebrew](https://brew.sh/):
 
 ```bash
 $ brew install k6
 ```
 
-</CodeGroup>
+## Windows
 
-## Windows (MSI installer)
+If you use the [Chocolatey package manager](https://chocolatey.org/) you can install the unofficial k6 package with:
 
-Download the k6 installer from [here](https://dl.bintray.com/loadimpact/windows/k6-v0.31.1-amd64.msi).
+```
+choco install k6
+```
+
+Otherwise you can manually download and install the [latest official `.msi` package](https://dl.k6.io/msi/k6-latest-amd64.msi).
 
 ## Binaries
 
-Grab a prebuilt binary from our <a href="https://github.com/loadimpact/k6/releases">Releases page</a>.
-Install the binary in your `PATH` to run **k6** from any location.
+Download a prebuilt binary from our [Releases page](https://github.com/loadimpact/k6/releases),
+and place it in your `PATH` to run `k6` from any location.
 
 ## Docker
-
-<CodeGroup labels={['Docker']}>
 
 ```bash
 $ docker pull loadimpact/k6
 ```
-
-</CodeGroup>
