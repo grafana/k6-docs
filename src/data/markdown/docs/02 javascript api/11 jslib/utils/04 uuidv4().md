@@ -18,7 +18,7 @@ Function returns a random uuid v4 in a string form.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { uuidv4 } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
+import { uuidv4 } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export default function() {
   let randomUUID = uuidv4();

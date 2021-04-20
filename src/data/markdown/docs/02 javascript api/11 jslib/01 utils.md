@@ -33,7 +33,7 @@ import { randomIntBetween,
          randomString,
          randomItem,
          uuidv4,
-         findBetween } from "./src/utils.js";
+         findBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export default function() {
 
