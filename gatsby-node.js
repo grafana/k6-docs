@@ -307,7 +307,17 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/ecosystem.js`),
         context: {
           sidebarTree: {
-            children: [],
+            children: {},
+          },
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+      {
+        path: `/ecosystem/bundle-builder/`,
+        component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
+        context: {
+          sidebarTree: {
+            children: {},
           },
           navLinks: generateTopLevelLinks(topLevelLinks),
         },

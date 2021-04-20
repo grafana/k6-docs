@@ -1,0 +1,34 @@
+.container {
+  @include doc-section-spacing;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.code {
+  background-color: $color-primary;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  margin: 0 0 20px;
+}
+
+.trait {
+  margin-left: 20px;
+}
+
+.trait + .trait {
+  margin-top: 8px;
+}

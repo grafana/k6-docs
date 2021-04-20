@@ -1,4 +1,4 @@
-import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
+import { ExtensionSelection } from 'components/pages/doc-ecosystem/extension-selection';
 import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -92,13 +92,15 @@ export default function ({ pageContext: { navLinks } }) {
         pageMetadata={pageMetadata}
       >
         <PageInfo
-          title={'Discovery'}
-          description={`Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec proin urna, fusce vitae et eget sed enim, quam. 
-          Sed aliquet molestie nec tincidunt habitasse erat enim platea.`}
+          title={'Bundle Builder'}
+          description={`Easily create your own bespoke k6 binary 
+          with all the extensions you want to run using the bundle builder 
+          and xk6. Just select all the extensions you want to use, 
+          and copy the command below. The resulting binary then be used 
+          to leverage all the extensions you're picked in your test, at the same time.`}
         />
         <div className={`${docPageContent.inner} `}>
-          <ExtensionsList />
+          <ExtensionSelection />
         </div>
       </DocLayout>
     </LocaleProvider>
