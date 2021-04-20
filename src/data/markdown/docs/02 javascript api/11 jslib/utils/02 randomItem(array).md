@@ -23,7 +23,7 @@ Function returns a random item from an array.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
+import { randomItem } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 let names = ['John', 'Jane', 'Bert', 'Ed'];
 

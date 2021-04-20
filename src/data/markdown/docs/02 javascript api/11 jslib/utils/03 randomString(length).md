@@ -23,7 +23,7 @@ Function returns a random string of a given length.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { randomString } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
+import { randomString } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export default function() {
   let randomName = randomString(8);

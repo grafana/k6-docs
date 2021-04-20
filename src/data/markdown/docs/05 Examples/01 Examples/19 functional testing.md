@@ -45,7 +45,7 @@ This test goes through several steps. It creates a new user account, authenticat
 ```javascript
 import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
 import { Httpx, Request, Get, Post } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
-import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
+import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export let options = {
   thresholds: {
