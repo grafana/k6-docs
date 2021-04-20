@@ -18,7 +18,7 @@ The `utils` module contains number of small utility functions useful in every da
 | [randomItem(array)](/javascript-api/jslib/utils/randomitem-array)  | Random item from a given array |
 | [randomString(length)](/javascript-api/jslib/utils/randomstring-length)  | Random string of a given length |
 | [uuidv4()](/javascript-api/jslib/utils/uuidv4)  | Random UUID v4 in a string representation |
-| [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween)  | Extract a string between two surrounding strings |
+| [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween-content-left-right)  | Extract a string between two surrounding strings |
 
 
 ## Simple example
