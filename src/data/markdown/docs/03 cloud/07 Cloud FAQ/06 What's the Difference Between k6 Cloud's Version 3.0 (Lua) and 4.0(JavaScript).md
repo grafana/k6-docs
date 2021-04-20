@@ -24,7 +24,7 @@ A big difference is in the workflow that you can accomplish with each respective
 
 The 3.0 product is completely cloud based, user scenarios and test configuration are created/edited and stored in the LoadImpact cloud service, and running tests is also done exclusively from the cloud. This also means the target system that is being tested needs to be accessible from the public Internet.
 
-With the 4.0 product we've opened up the platform in two important ways. First, the core load testing software, [k6](https://github.com/loadimpact/k6), is now an open source tool, and secondly it can be used both [on-premise](/getting-started/running-k6) as well as from the k6 Cloud service via our [cloud execution](/using-k6/cloud-execution) functionality. The user scenarios and test configuration has been merged into one, it's now all just JavaScript code, so very version control friendly.
+With the 4.0 product we've opened up the platform in two important ways. First, the core load testing software, [k6](https://github.com/k6io/k6), is now an open source tool, and secondly it can be used both [on-premise](/getting-started/running-k6) as well as from the k6 Cloud service via our [cloud execution](/using-k6/cloud-execution) functionality. The user scenarios and test configuration has been merged into one, it's now all just JavaScript code, so very version control friendly.
 
 This brings us to an important difference, in the 4.0 product you're responsible for storing and version controlling your tests (the JavaScript combining user scenario and test configuration), and the k6 Cloud service can provide you with result storage, visualization and trending, as well as geographically distributed cloud execution of tests.
 

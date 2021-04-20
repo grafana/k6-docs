@@ -195,4 +195,4 @@ To get an idea how `data` would look like in your specific test run, just add `r
 
 </CodeGroup>
 
-This feature is only available for local `k6 run` tests for now, though we plan to support [`k6 cloud`](https://k6.io/docs/cloud) tests eventually. And, as mentioned in the snippet above, the JS helper functions that transform the summary in various formats are far from final, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for updates. Or, better yet, submit PRs with improvements and more transformations at https://github.com/loadimpact/jslib.k6.io
+This feature is only available for local `k6 run` tests for now, though we plan to support [`k6 cloud`](https://k6.io/docs/cloud) tests eventually. And, as mentioned in the snippet above, the JS helper functions that transform the summary in various formats are far from final, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for updates. Or, better yet, submit PRs with improvements and more transformations at https://github.com/k6io/jslib.k6.io

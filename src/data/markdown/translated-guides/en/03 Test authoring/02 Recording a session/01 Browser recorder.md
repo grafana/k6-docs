@@ -92,4 +92,4 @@ If you need to capture this information, you should use the [HAR converter](/tes
 
 If you have a problem recording a request, we recommend you to try the [HAR converter](/test-authoring/recording-a-session/har-converter).
 
-The browser recorder uses the HAR converter to generate a k6 script. If the error persists with the HAR converter, please [report a new issue](https://github.com/loadimpact/har-to-k6/issues) providing detailed information about the problem.
+The browser recorder uses the HAR converter to generate a k6 script. If the error persists with the HAR converter, please [report a new issue](https://github.com/k6io/har-to-k6/issues) providing detailed information about the problem.

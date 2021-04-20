@@ -199,4 +199,4 @@ Para tener una mejor idea de cómo se verían los datos en una prueba específic
 
 </CodeGroup>
 
-Esta característica sólo está disponible para las pruebas de ejecución locales de k6 hasta el momento, aunque planeamos soportar las pruebas en k6 Cloud eventualmente. Y, como se menciona en el fragmento anterior, las funciones de ayuda JS que transforman el resumen en varios formatos están lejos de ser definitivas, así que mantén un ojo en jslib.k6.io para las actualizaciones. O, mejor aún, envía PRs con mejoras y más transformaciones en https://github.com/loadimpact/jslib.k6.io
+Esta característica sólo está disponible para las pruebas de ejecución locales de k6 hasta el momento, aunque planeamos soportar las pruebas en k6 Cloud eventualmente. Y, como se menciona en el fragmento anterior, las funciones de ayuda JS que transforman el resumen en varios formatos están lejos de ser definitivas, así que mantén un ojo en jslib.k6.io para las actualizaciones. O, mejor aún, envía PRs con mejoras y más transformaciones en https://github.com/k6io/jslib.k6.io

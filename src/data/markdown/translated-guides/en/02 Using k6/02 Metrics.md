@@ -7,7 +7,7 @@ This section covers the important aspect of metrics management in k6. How and wh
 
 ## Built-in metrics
 
-The _built-in_ metrics are the ones you can see output to stdout when you run the simplest possible k6 test, e.g. `k6 run github.com/loadimpact/k6/samples/http_get.js` which will output something like the below:
+The _built-in_ metrics are the ones you can see output to stdout when you run the simplest possible k6 test, e.g. `k6 run github.com/k6io/k6/samples/http_get.js` which will output something like the below:
 
 ![output-to-stdout](images/Metrics/output-to-stdout.png)
 

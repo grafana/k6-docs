@@ -8,7 +8,7 @@ hideFromSidebar: false
 >
 > This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority of users,
 > existing scripts and configurations will continue to work as before. For a list of breaking changes,
-> see the [k6 v0.27.0 release notes](https://github.com/loadimpact/k6/releases/tag/v0.27.0).
+> see the [k6 v0.27.0 release notes](https://github.com/k6io/k6/releases/tag/v0.27.0).
 
 Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
 

@@ -76,7 +76,8 @@ Si no, puede descargar e instalar [el más reciente paquete oficial `.msi`](http
 
 ## Binarios
 
-Descarga un binario preconstruido de nuestra [página de releases](https://github.com/loadimpact/k6/releases), y colócalo en el `PATH` de tu sistema. De esta manera puede ejecutar `k6` desde cualquier lugar.
+Descarga un binario preconstruido de nuestra [página de releases](https://github.com/k6io/k6/releases), y colócalo en el `PATH` de tu sistema. De esta manera puede ejecutar `k6` desde cualquier lugar.
+
 
 ## Docker
 

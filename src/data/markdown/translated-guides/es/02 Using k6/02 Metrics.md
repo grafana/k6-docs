@@ -7,7 +7,7 @@ Esta sección cubre el importante aspecto de la gestión de métricas en k6. Có
 
 ## Métricas incorporadas
 
-Las métricas incorporadas son las que puedes ver en la salida stdout cuando ejecutas la prueba k6 más simple posible, por ejemplo, `k6 run github.com/loadimpact/k6/samples/http_get.js` que mostrará algo como lo siguiente:
+Las métricas incorporadas son las que puedes ver en la salida stdout cuando ejecutas la prueba k6 más simple posible, por ejemplo, `k6 run github.com/k6io/k6/samples/http_get.js` que mostrará algo como lo siguiente:
 
 ![output-to-stdout](images/Metrics/output-to-stdout.png)
 

@@ -6,7 +6,7 @@ excerpt: 'On this page, you will find information about where you can ask your k
 On this page, you will find information about where you can ask your k6 questions,
 discuss about k6 and how you could contribute to the project.
 
-Before we start, please read our [Code of Conduct](https://github.com/loadimpact/k6/blob/master/CODE_OF_CONDUCT.md).
+Before we start, please read our [Code of Conduct](https://github.com/k6io/k6/blob/master/CODE_OF_CONDUCT.md).
 k6 has adopted the [Contributor Covenant](https://www.contributor-covenant.org/), and we expect all
 community members to adhere to it.
 
@@ -33,7 +33,7 @@ a new issue, if there isn’t an open one already.
 
 ## Reporting bugs
 
-If you find a bug in k6, [file an issue](https://github.com/loadimpact/k6/issues).
+If you find a bug in k6, [file an issue](https://github.com/k6io/k6/issues).
 Please search that it hasn’t previously reported.
 
 If you have found a bug on this documentation site, please let us know in the `#documentation`
@@ -58,7 +58,7 @@ You can contribute to the project in multiple ways. You'll find some ideas below
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | How do I?                                  | [Stack Overflow](https://stackoverflow.com), use the tags `k6`, `javascript`, and `load-testing`.<br/> The [Community Forum](https://community.k6.io) |
 | I got this error, why?                     | [Stack Overflow](https://stackoverflow.com)                                                                                                           |
-| I got this error and I'm sure it's a bug   | [File an issue](https://github.com/loadimpact/k6/issues)                                                                                              |
+| I got this error and I'm sure it's a bug   | [File an issue](https://github.com/k6io/k6/issues)                                                                                              |
 | Why do you? When will you?                 | [Slack](https://k6.io/slack/)                                                                                                                         |
-| I want to contribute/help with development | Start here, then proceed to [Slack](https://k6.io/slack/) and [issues](https://github.com/loadimpact/k6/issues)                                       |
+| I want to contribute/help with development | Start here, then proceed to [Slack](https://k6.io/slack/) and [issues](https://github.com/k6io/k6/issues)                                       |
 | I want to write or give a talk about k6    | Reach us on [Slack](https://k6.io/slack/) to see how we can help you                                                                                  |

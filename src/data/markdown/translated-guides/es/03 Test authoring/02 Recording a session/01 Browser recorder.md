@@ -88,7 +88,7 @@ Si necesita capturar esta información, debe utilizar el convertidor HAR.
 
 Si tiene problemas para registrar una solicitud, le recomendamos que pruebe el convertidor HAR.
 
-El grabador del navegador utiliza el convertidor HAR para generar un script de k6. Si el error persiste con el [har-to-k6 converter](https://github.com/loadimpact/har-to-k6), comunique una nueva incidencia proporcionando información detallada sobre el problema.
+El grabador del navegador utiliza el convertidor HAR para generar un script de k6. Si el error persiste con el [har-to-k6 converter](https://github.com/k6io/har-to-k6), comunique una nueva incidencia proporcionando información detallada sobre el problema.
 
 
 

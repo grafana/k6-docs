@@ -80,7 +80,7 @@ Otherwise you can manually download and install the [latest official `.msi` pack
 
 ## Binaries
 
-Download a prebuilt binary from our [Releases page](https://github.com/loadimpact/k6/releases),
+Download a prebuilt binary from our [Releases page](https://github.com/k6io/k6/releases),
 and place it in your `PATH` to run `k6` from any location.
 
 ## Docker

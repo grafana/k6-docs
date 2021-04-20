@@ -196,7 +196,7 @@ if (
 
 if (shouldAnnouncementBannerBeShown) {
   // See more on how it works:
-  // https://github.com/loadimpact/new.k6.io/pull/102
+  // https://github.com/k6io/new.k6.io/pull/102
   const options = {
     banner: {
       componentPath: path.join(

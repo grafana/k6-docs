@@ -319,19 +319,19 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                     picture: harImgData,
                     title: 'HAR-to-k6',
                     description: 'Convert a HAR file to k6 script.',
-                    url: 'https://github.com/loadimpact/har-to-k6',
+                    url: 'https://github.com/k6io/har-to-k6',
                   },
                   {
                     picture: jmeterImgData,
                     title: 'JMeter-to-k6',
                     description: 'Convert a JMeter .jmx file to k6 script.',
-                    url: 'https://github.com/loadimpact/jmeter-to-k6',
+                    url: 'https://github.com/k6io/jmeter-to-k6',
                   },
                   {
                     picture: postmanImgData,
                     title: 'Postman-to-k6',
                     description: 'Convert a Postman collection to k6 script.',
-                    url: 'https://github.com/loadimpact/postman-to-k6',
+                    url: 'https://github.com/k6io/postman-to-k6',
                   },
                   {
                     picture: swaggerImgData,
