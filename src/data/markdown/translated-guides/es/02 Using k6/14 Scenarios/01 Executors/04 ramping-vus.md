@@ -1,11 +1,11 @@
 ---
 title: 'Ramping VUs'
-excerpt: 'Un número variable de VUs que se ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.'
+excerpt: 'Un número variable de VUs que ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.'
 ---
 
 ## Description
 
-Un número variable de VUs que se ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.
+Un número variable de VUs que ejecutan tantas iteraciones como sea posible durante un tiempo determinado. Este ejecutor es equivalente a la opción global `stages`.
 
 ## Opciones
 
@@ -15,11 +15,11 @@ Además de las opciones de configuración comunes, este ejecutor también añade
 | ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |
 | `stages*`          | array   | Matriz de objetos que especifican el número objetivo de VUs para subir o bajar.                  | `[]`    |
 | `startVUs`         | integer | Número de VUs a ejecutar al inicio de la prueba.                                                            | `1`     |
-| `gracefulRampDown` | string  | Tiempo para esperar a que termine una iteración ya iniciada antes de detenerla durante una rampa de descenso. | `"30s"` |
+| `gracefulRampDown` | string  | Tiempo para esperar a que termine una iteración ya iniciada antes de detenerla durante la etapa de descenso. | `"30s"` |
 
 ## Cuando usarlo
 
-Este ejecutor es una buena opción si necesita que las VUs aumenten o disminuyan durante períodos específicos de tiempo.
+Este ejecutor es una buena opción si se necesita que los VUs aumenten o disminuyan durante períodos específicos de tiempo.
 
 ## Ejemplo
 
@@ -52,5 +52,4 @@ export default function () {
 
 </CodeGroup>
 
-Note the setting of `gracefulRampDown` to 0 seconds, which could cause some iterations to be
-interrupted during the ramp down stage.
+Note que la opción `gracefulRampDown` a 0 segundos, podría causar que algunas iteraciones sean interrumpidas durante la etapa de descenso.
