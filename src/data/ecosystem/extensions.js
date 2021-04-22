@@ -25,7 +25,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-chaos',
@@ -39,7 +39,7 @@ const extensions = [
       url: 'https://github.com/simskij',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-sql',
@@ -54,7 +54,7 @@ const extensions = [
       url: 'https://github.com/imiric',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-redis',
@@ -68,7 +68,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-say',
@@ -82,7 +82,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-distributed-tracing',
@@ -96,7 +96,7 @@ const extensions = [
       url: '',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-zmq',
@@ -110,7 +110,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-datadog',
@@ -124,7 +124,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-exec',
@@ -138,7 +138,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-interpret',
@@ -152,7 +152,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-sqs',
@@ -166,7 +166,7 @@ const extensions = [
       url: 'https://github.com/mridehalgh',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-file',
@@ -180,7 +180,7 @@ const extensions = [
       url: 'https://github.com/avitalique',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-wamp',
@@ -194,7 +194,7 @@ const extensions = [
       url: 'https://github.com/vvarp',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-mqtt',
@@ -208,7 +208,7 @@ const extensions = [
       url: 'https://github.com/pmalhaire',
     },
     official: false,
-    categories: ['', ''],
+    categories: ['Clients'],
   },
   {
     name: 'xk6-kv',
@@ -222,7 +222,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-url',
@@ -236,7 +236,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-kubernetes-jobs',
@@ -250,7 +250,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-remote-write',
@@ -264,7 +264,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-influxdbv2',
@@ -278,7 +278,7 @@ const extensions = [
       url: 'https://github.com/li-zhixin',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-pubsub',
@@ -292,7 +292,7 @@ const extensions = [
       url: 'https://github.com/olvod',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-mllp',
@@ -306,7 +306,7 @@ const extensions = [
       url: 'https://github.com/gjergjsheldija',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-encoding',
@@ -320,7 +320,7 @@ const extensions = [
       url: 'https://github.com/MStoykov',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
   {
     name: 'xk6-counter',
@@ -334,7 +334,7 @@ const extensions = [
       url: 'https://github.com/MStoykov',
     },
     official: false,
-    categories: ['', ''],
+    categories: [],
   },
 ];
 
