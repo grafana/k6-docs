@@ -60,4 +60,9 @@ Visit http://localhost:8000
 All pull requests merged to `master` will result in an automatic deployment to the staging environment.
 
 ### To production
+
+>  #### ⚠️ Versions
+>  
+> Versions follow the same major and minor as github.com/k6io/k6. When cutting a new release of the docs between k6 releases, only increment the patch digit(s).
+
 All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/k6io/docs/releases
