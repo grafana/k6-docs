@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { CheckboxField } from 'components/shared/checkbox-field';
 import React from 'react';
 
@@ -10,8 +11,17 @@ export const ExtensionCard = ({
   isChecked = false,
   onCheckboxClick = () => {},
 }) => {
+  const Wrapper = hasCheckbox
+    ? 'div'
+    : ({ className, children }) => (
+        // eslint-disable-next-line react/jsx-indent
+        <a href={extension.url} className={classNames(styles.link, className)}>
+          {children}
+        </a>
+      );
+
   return (
-    <div className={styles.wrapper}>
+    <Wrapper className={styles.wrapper}>
       {hasCheckbox && (
         <div className={styles.checkbox}>
           <CheckboxField
@@ -25,16 +35,10 @@ export const ExtensionCard = ({
         <WheelIcon />
       </div>
       <div className={styles.content}>
-        {hasCheckbox ? (
-          <span className={styles.name}>{extension.name}</span>
-        ) : (
-          <a href={extension.url} className={styles.link}>
-            <span className={styles.name}>{extension.name}</span>
-          </a>
-        )}
+        <span className={styles.name}>{extension.name}</span>
         <span className={styles.author}>by {extension.author.name}</span>
         <span className={styles.description}>{extension.description}</span>
       </div>
-    </div>
+    </Wrapper>
   );
 };
