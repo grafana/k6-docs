@@ -25,9 +25,13 @@ export const ExtensionCard = ({
         <WheelIcon />
       </div>
       <div className={styles.content}>
-        <a href={extension.url} className={styles.name}>
-          {extension.name}
-        </a>
+        {hasCheckbox ? (
+          <span className={styles.name}>{extension.name}</span>
+        ) : (
+          <a href={extension.url} className={styles.link}>
+            <span className={styles.name}>{extension.name}</span>
+          </a>
+        )}
         <span className={styles.author}>by {extension.author.name}</span>
         <span className={styles.description}>{extension.description}</span>
       </div>

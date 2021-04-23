@@ -51,7 +51,6 @@ export default function ({ pageContext: { navLinks } }) {
   return (
     <LocaleProvider>
       <DocLayout
-        // sidebarTree={sidebarTree}
         sidebarTree={bundleBuilderSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
@@ -64,6 +63,7 @@ export default function ({ pageContext: { navLinks } }) {
           and copy the command below. The resulting binary then be used 
           to leverage all the extensions you're picked in your test, at the same time.`}
           variant="wide"
+          className="container"
         />
         <div className={`${docPageContent.inner} `}>
           <ExtensionSelection />

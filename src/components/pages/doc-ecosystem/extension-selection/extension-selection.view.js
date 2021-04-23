@@ -1,43 +1,66 @@
-import { Code } from 'components/shared/code';
 import { ExtensionCard } from 'components/shared/extension-card';
+import { WithCopyButton } from 'components/shared/with-copy-button';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
 import React, { useState } from 'react';
 
 import styles from './extension-selection.module.scss';
 
 export const ExtensionSelection = () => {
-  const [selected, setSelected] = useState(
-    Array(EXTENSIONS_DATA.length).fill(false),
-  );
+  const [selected, setSelected] = useState([]);
 
-  const handleCheckboxClick = (index) => {
-    const newSelected = [...selected];
-    newSelected[index] = !selected[index];
-    setSelected(newSelected);
+  const handleCheckboxClick = (url) => {
+    const urlWithoutPrefix = url.replace('https://', '');
+
+    if (selected.includes.urlWithoutPrefix) {
+      setSelected(selected.filter((item) => item !== urlWithoutPrefix));
+    } else {
+      setSelected([...selected, urlWithoutPrefix]);
+    }
   };
 
   // TODO: always use most recent k6 version
-  let code = '$ xk6 build v0.31.0';
-  EXTENSIONS_DATA.forEach((extension, index) => {
-    if (selected[index]) {
-      code += ` --with ${extension.url.replace('https://', '')}`;
+  let code = '';
+  selected.forEach((url) => {
+    if (code === '') {
+      code += '$ xk6 build v0.31.0';
     }
+    code += ` --with ${url}`;
   });
 
   return (
-    <section className={`container ${styles.container}`}>
-      <div className={styles.code}>
-        <Code>
-          <span>{code}</span>
-        </Code>
-      </div>
-      <div className={styles.list}>
-        {EXTENSIONS_DATA.map((extension, index) => (
+    <section className={styles.container}>
+      {code !== '' && (
+        <div className={styles.selection}>
+          <WithCopyButton
+            dataToCopy={code.replace(/^\$\s/gm, '')}
+            copyButtonLabel={styles.copy}
+          >
+            <div className={styles.codeWrapper}>
+              <span className={styles.code}>{code}</span>
+            </div>
+          </WithCopyButton>
+          <div className={styles.actions}>
+            <span className={styles.selected}>
+              <span className={styles.number}>{selected.length}</span> extension
+              {selected.length > 1 ? 's' : ''} selected
+            </span>
+            <button
+              className={styles.clear}
+              type="button"
+              onClick={() => setSelected([])}
+            >
+              clear
+            </button>
+          </div>
+        </div>
+      )}
+      <div className={`container ${styles.list}`}>
+        {EXTENSIONS_DATA.map((extension) => (
           <ExtensionCard
             key={extension.name}
             extension={extension}
-            isChecked={selected[index]}
-            onCheckboxClick={() => handleCheckboxClick(index)}
+            isChecked={selected.includes(extension.url.replace('https://', ''))}
+            onCheckboxClick={() => handleCheckboxClick(extension.url)}
             hasCheckbox
           />
         ))}
