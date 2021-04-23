@@ -1,5 +1,5 @@
 import { ExtensionSelection } from 'components/pages/doc-ecosystem/extension-selection';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
+import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
@@ -63,6 +63,7 @@ export default function ({ pageContext: { navLinks } }) {
           and xk6. Just select all the extensions you want to use, 
           and copy the command below. The resulting binary then be used 
           to leverage all the extensions you're picked in your test, at the same time.`}
+          variant="wide"
         />
         <div className={`${docPageContent.inner} `}>
           <ExtensionSelection />

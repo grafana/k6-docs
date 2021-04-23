@@ -1,5 +1,5 @@
 import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
+import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
@@ -105,6 +105,7 @@ export default function ({ location, pageContext: { navLinks } }) {
           description={`Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Donec proin urna, fusce vitae et eget sed enim, quam. 
           Sed aliquet molestie nec tincidunt habitasse erat enim platea.`}
+          variant="wide"
         />
         <div className={`${docPageContent.inner} `}>
           <ExtensionsList category={category} />

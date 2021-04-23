@@ -7,6 +7,16 @@
   @include sm-down {
     margin-top: 230px;
   }
+
+  &.wide {
+    & .title {
+      max-width: 100%;
+    }
+
+    & .description {
+      max-width: 100%;
+    }
+  }
 }
 
 .title {

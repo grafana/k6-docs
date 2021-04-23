@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { DocIconsRow } from 'components/pages/doc-integrations/doc-icons-row';
 import { ExternalLinksDashboard } from 'components/pages/doc-integrations/external-links-dashboard';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
 import CustomContentContainer from 'components/shared/custom-content-container';
+import { PageInfo } from 'components/shared/page-info';
 // styles
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
