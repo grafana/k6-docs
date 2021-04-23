@@ -1,12 +1,29 @@
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 import styles from './extension-selection.module.scss';
 
 export const ExtensionSelection = () => {
   const [selected, setSelected] = useState([]);
+  const [version, setVersion] = useState('v0.31.0');
+
+  const fetchLatestVersion = async (callback) => {
+    try {
+      const res = await fetch(
+        'https://api.github.com/repositories/54400687/releases/latest',
+      ).then((res) => res.json());
+      callback(res.tag_name);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Unable to fetch git version');
+    }
+  };
+
+  useLayoutEffect(() => {
+    fetchLatestVersion(setVersion);
+  }, []);
 
   const handleCheckboxClick = (url) => {
     const urlWithoutPrefix = url.replace('https://', '');
@@ -22,7 +39,7 @@ export const ExtensionSelection = () => {
   let code = '';
   selected.forEach((url) => {
     if (code === '') {
-      code += '$ xk6 build v0.31.0';
+      code += `$ xk6 build ${version}`;
     }
     code += ` --with ${url}`;
   });
