@@ -4,10 +4,18 @@ import React from 'react';
 
 import styles from './extensions-list.module.scss';
 
-export const ExtensionsList = () => {
+export const ExtensionsList = ({ category }) => {
+  let extensions;
+  if (category === 'All') {
+    extensions = EXTENSIONS_DATA;
+  } else {
+    extensions = EXTENSIONS_DATA.filter((extension) =>
+      extension.categories.includes(category),
+    );
+  }
   return (
     <section className={`container ${styles.container}`}>
-      {EXTENSIONS_DATA.map((extension) => (
+      {extensions.map((extension) => (
         <ExtensionCard key={extension.name} extension={extension} />
       ))}
     </section>

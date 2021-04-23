@@ -6,6 +6,10 @@ const { latinizedCharacters } = require('./latinized-characters');
 // container for default export (node-specific action)
 const utils = {};
 
+const capitalize = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 const omit = (names, obj) => {
   const result = {};
 
@@ -221,6 +225,9 @@ Object.defineProperties(utils, {
   },
   omit: {
     value: omit,
+  },
+  capitalize: {
+    value: capitalize,
   },
 });
 

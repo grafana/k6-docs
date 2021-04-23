@@ -5,12 +5,16 @@ import LocaleProvider from 'contexts/locale-provider';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
+import queryString from 'query-string';
 import React from 'react';
+import { capitalize } from 'utils';
 import SeoMetadata from 'utils/seo-metadata';
 
 let CATEGORIES = new Set();
 EXTENSIONS_DATA.forEach((extension) => {
-  extension.categories.forEach((category) => CATEGORIES.add(category));
+  extension.categories.forEach((category) =>
+    CATEGORIES.add(category.toLowerCase()),
+  );
 });
 
 CATEGORIES = Array.from(CATEGORIES).sort();
@@ -49,33 +53,6 @@ const ecosystemSidebar = {
         },
       },
     },
-    // Types: {
-    //   name: 'types',
-    //   meta: {
-    //     title: 'Types',
-    //     path: '/ecosystem/',
-    //   },
-    //   children: {
-    //     Extensions: {
-    //       name: 'Extensions',
-    //       meta: {
-    //         title: 'Extensions',
-    //         isActiveSidebarLink: true,
-    //         path: '/ecosystem/?type=extensions',
-    //       },
-    //       children: {},
-    //     },
-    //     'Reporting Templates': {
-    //       name: 'Reporting Templates',
-    //       meta: {
-    //         title: 'Reporting Templates',
-    //         isActiveSidebarLink: true,
-    //         path: '/ecosystem/?type=reporting-templates',
-    //       },
-    //       children: {},
-    //     },
-    //   },
-    // },
     Category: {
       name: 'Category',
       meta: {
@@ -98,10 +75,10 @@ const ecosystemSidebar = {
 };
 
 CATEGORIES.forEach((category) => {
-  ecosystemSidebar.children.Category.children[category] = {
-    name: category,
+  ecosystemSidebar.children.Category.children[capitalize(category)] = {
+    name: capitalize(category),
     meta: {
-      title: category,
+      title: capitalize(category),
       isActiveSidebarLink: true,
       path: `/ecosystem/?category=${category}`,
     },
@@ -109,14 +86,16 @@ CATEGORIES.forEach((category) => {
   };
 });
 
-export default function ({ pageContext: { navLinks } }) {
+export default function ({ location, pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.ecosystem;
+
+  const queryParams = queryString.parse(location.search);
+  const category = queryParams?.category || 'All';
 
   return (
     <LocaleProvider>
       <DocLayout
-        // sidebarTree={sidebarTree}
         sidebarTree={ecosystemSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
@@ -128,7 +107,7 @@ export default function ({ pageContext: { navLinks } }) {
           Sed aliquet molestie nec tincidunt habitasse erat enim platea.`}
         />
         <div className={`${docPageContent.inner} `}>
-          <ExtensionsList />
+          <ExtensionsList category={category} />
         </div>
       </DocLayout>
     </LocaleProvider>
