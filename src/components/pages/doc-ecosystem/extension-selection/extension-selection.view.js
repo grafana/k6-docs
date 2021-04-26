@@ -28,7 +28,7 @@ export const ExtensionSelection = () => {
   const handleCheckboxClick = (url) => {
     const urlWithoutPrefix = url.replace('https://', '');
 
-    if (selected.includes.urlWithoutPrefix) {
+    if (selected.includes(urlWithoutPrefix)) {
       setSelected(selected.filter((item) => item !== urlWithoutPrefix));
     } else {
       setSelected([...selected, urlWithoutPrefix]);

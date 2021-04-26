@@ -11,14 +11,25 @@ export const ExtensionCard = ({
   isChecked = false,
   onCheckboxClick = () => {},
 }) => {
-  const Wrapper = hasCheckbox
-    ? 'div'
-    : ({ className, children }) => (
-        // eslint-disable-next-line react/jsx-indent
-        <a href={extension.url} className={classNames(styles.link, className)}>
+  const Wrapper = ({ className, children }) => {
+    if (hasCheckbox) {
+      return (
+        <button
+          type="button"
+          className={classNames(styles.withCheckbox, className)}
+          onClick={onCheckboxClick}
+        >
           {children}
-        </a>
+        </button>
       );
+    }
+    return (
+      // eslint-disable-next-line react/jsx-indent
+      <a href={extension.url} className={className}>
+        {children}
+      </a>
+    );
+  };
 
   return (
     <Wrapper className={styles.wrapper}>
