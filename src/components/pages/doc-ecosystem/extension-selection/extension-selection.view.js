@@ -71,7 +71,9 @@ export const ExtensionSelection = () => {
         </div>
       )}
       <div className={`container ${styles.list}`}>
-        {EXTENSIONS_DATA.map((extension) => (
+        {EXTENSIONS_DATA.sort((item1, item2) =>
+          item1.name > item2.name ? 1 : -1,
+        ).map((extension) => (
           <ExtensionCard
             key={extension.name}
             extension={extension}

@@ -7,11 +7,13 @@ import styles from './extensions-list.module.scss';
 export const ExtensionsList = ({ category }) => {
   let extensions;
   if (category === 'All') {
-    extensions = EXTENSIONS_DATA;
-  } else {
-    extensions = EXTENSIONS_DATA.filter((extension) =>
-      extension.categories.includes(category),
+    extensions = EXTENSIONS_DATA.sort((item1, item2) =>
+      item1.name > item2.name ? 1 : -1,
     );
+  } else {
+    extensions = EXTENSIONS_DATA.sort((item1, item2) =>
+      item1.name > item2.name ? 1 : -1,
+    ).filter((extension) => extension.categories.includes(category));
   }
   return (
     <section className={`container ${styles.container}`}>
