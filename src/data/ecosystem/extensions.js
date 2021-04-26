@@ -80,8 +80,8 @@ const extensions = [
     url: 'https://github.com/k6io/xk6-distributed-tracing',
     logo: '',
     author: {
-      name: '',
-      url: '',
+      name: 'k6',
+      url: 'https://github.com/k6io',
     },
     official: false,
     categories: [],
@@ -150,8 +150,6 @@ const extensions = [
     name: 'xk6-file',
     description: 'k6 extension for writing files.',
     url: 'https://github.com/avitalique/xk6-file',
-    docs: '',
-    issues: '',
     logo: '',
     author: {
       name: 'Vitali Asheichyk',

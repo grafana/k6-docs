@@ -102,9 +102,21 @@ export default function ({ location, pageContext: { navLinks } }) {
       >
         <PageInfo
           title={'Discovery'}
-          description={`Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec proin urna, fusce vitae et eget sed enim, quam. 
-          Sed aliquet molestie nec tincidunt habitasse erat enim platea.`}
+          description={`<span>
+                The extension ecosystem enables developers and testers to extend
+                k6 to cover use casesnot supported natively in the core. Explore
+                the endless possibilities of k6 using extensions from the table
+                below.
+              </span>
+              <br />
+              <br/>
+              <span>
+                Ready to put together your own bespoke k6 binary containing the
+                features you need? Head over to the
+                <a href="/ecosystem/bundle-builder/">bundle builder</a> to
+                get started!
+              </span>
+            `}
           variant="wide"
         />
         <div className={`${docPageContent.inner} `}>

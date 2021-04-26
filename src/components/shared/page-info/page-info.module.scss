@@ -45,4 +45,15 @@
   @include lg-down {
     max-width: 100%;
   }
+
+  & a {
+    color: $color-accent-primary;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

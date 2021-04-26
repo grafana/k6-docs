@@ -31,7 +31,7 @@ export const PageInfo = ({
 
 PageInfo.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['default', 'wide']),
   breadcrumbs: PropTypes.arrayOf(
@@ -43,6 +43,7 @@ PageInfo.propTypes = {
 };
 
 PageInfo.defaultProps = {
+  description: '',
   className: '',
   variant: 'default',
   breadcrumbs: null,
