@@ -9,11 +9,9 @@ of versions of SSL/TLS that should be allowed for a connection, as well as which
 allowed to be used on that connection.
 
 
-<Blockquote mod="warning">
-
-Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
-
-</Blockquote>
+> #### ⚠️ Reg. ciphers and TLS 1.3
+>
+> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
 
 ## Limiting SSL/TLS version
 
