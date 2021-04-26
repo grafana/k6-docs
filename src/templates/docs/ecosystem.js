@@ -1,5 +1,5 @@
+import { EcosystemTitleGroup } from 'components/pages/doc-ecosystem/ecosystem-title-group';
 import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
-import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
@@ -100,7 +100,7 @@ export default function ({ location, pageContext: { navLinks } }) {
         navLinks={navLinks}
         pageMetadata={pageMetadata}
       >
-        <PageInfo
+        <EcosystemTitleGroup
           title={'Discovery'}
           description={`<span>
                 The extension ecosystem enables developers and testers to extend
@@ -117,7 +117,6 @@ export default function ({ location, pageContext: { navLinks } }) {
                 get started!
               </span>
             `}
-          variant="wide"
         />
         <div className={`${docPageContent.inner} `}>
           <ExtensionsList category={category} />
