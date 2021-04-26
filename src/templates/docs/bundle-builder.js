@@ -44,6 +44,17 @@ const bundleBuilderSidebar = {
   },
 };
 
+const breadcrumbs = [
+  {
+    name: 'Ecosystem',
+    path: '/ecosystem/',
+  },
+  {
+    name: 'Bundle builder',
+    path: '/ecosystem/bundle-builder/',
+  },
+];
+
 export default function ({ pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.ecosystem;
@@ -64,6 +75,7 @@ export default function ({ pageContext: { navLinks } }) {
           to leverage all the extensions you're picked in your test, at the same time.`}
           variant="wide"
           className="container"
+          breadcrumbs={breadcrumbs}
         />
         <div className={`${docPageContent.inner} `}>
           <ExtensionSelection />

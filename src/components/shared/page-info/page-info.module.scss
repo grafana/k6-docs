@@ -17,6 +17,12 @@
       max-width: 100%;
     }
   }
+
+  &.withBreadcrumbs {
+    & .title {
+      margin-top: 15px;
+    }
+  }
 }
 
 .title {
