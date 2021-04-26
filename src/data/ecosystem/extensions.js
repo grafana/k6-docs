@@ -3,7 +3,8 @@ const extensions = [
     name: 'xk6-kafka',
     description: 'Load test Apache Kafka. With support for Avro messages',
     url: 'https://github.com/mostafa/xk6-kafka',
-    logo: 'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png',
+    logo:
+      'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png',
     author: {
       name: 'Mostafa Moradian',
       url: 'https://github.com/mostafa',
@@ -27,7 +28,8 @@ const extensions = [
     name: 'xk6-chaos',
     description: 'xk6 extension for running chaos experiments with k6 💣',
     url: 'https://github.com/simskij/xk6-chaos',
-    logo: 'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png',
+    logo:
+      'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png',
     author: {
       name: 'Simon Aronsson',
       url: 'https://github.com/simskij',
