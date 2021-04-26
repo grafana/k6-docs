@@ -27,7 +27,7 @@ const extensions = [
     name: 'xk6-chaos',
     description: 'xk6 extension for running chaos experiments with k6 💣',
     url: 'https://github.com/simskij/xk6-chaos',
-    logo: '',
+    logo: 'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png',
     author: {
       name: 'Simon Aronsson',
       url: 'https://github.com/simskij',
