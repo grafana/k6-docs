@@ -1213,11 +1213,9 @@ export let options = {
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-<Blockquote mod="warning">
-
-Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
-
-</Blockquote>
+> #### ⚠️ Keep in mind!
+>
+> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
