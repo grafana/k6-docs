@@ -121,7 +121,12 @@ const SidebarNode = (props) => {
   } = props;
   const [isActive, setIsActive] = useState(false);
 
+  const search = typeof window === 'undefined' ? '' : window.location.search;
+
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     const maybePrefixedPath = withPrefix(meta.path);
     let doesPathMatchLocation = maybePrefixedPath === window.location.pathname;
     const isPathLocationPart =
@@ -139,16 +144,13 @@ const SidebarNode = (props) => {
     // handle ecosystem category filters
     let doesMatchEcosystemCategory = false;
     if (meta.path.startsWith('/ecosystem/')) {
-      if (window.location.search) {
-        if (
-          window.location.pathname + window.location.search ===
-          maybePrefixedPath
-        ) {
+      if (search) {
+        if (window.location.pathname + search === maybePrefixedPath) {
           doesMatchEcosystemCategory = true;
         }
 
         // if category is selected then "All" is not active
-        if (meta.path === '/ecosystem/') {
+        if (meta.path === '/ecosystem/' && meta.title !== 'Discovery') {
           doesPathMatchLocation = false;
         }
       }
@@ -157,7 +159,7 @@ const SidebarNode = (props) => {
     setIsActive(
       doesPathMatchLocation || isPathLocationPart || doesMatchEcosystemCategory,
     );
-  }, [window.location.search]);
+  }, [search]);
 
   const hasSubMenu = Object.keys(children).length;
 
