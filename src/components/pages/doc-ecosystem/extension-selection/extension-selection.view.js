@@ -36,11 +36,8 @@ export const ExtensionSelection = () => {
   };
 
   // TODO: always use most recent k6 version
-  let code = '';
+  let code = `$ xk6 build ${version}`;
   selected.forEach((url) => {
-    if (code === '') {
-      code += `$ xk6 build ${version}`;
-    }
     code += ` --with ${url}`;
   });
 
@@ -59,15 +56,17 @@ export const ExtensionSelection = () => {
           <div className={styles.actions}>
             <span className={styles.selected}>
               <span className={styles.number}>{selected.length}</span> extension
-              {selected.length > 1 ? 's' : ''} selected
+              {selected.length === 1 ? '' : 's'} selected
             </span>
-            <button
-              className={styles.clear}
-              type="button"
-              onClick={() => setSelected([])}
-            >
-              clear
-            </button>
+            {selected.length > 0 && (
+              <button
+                className={styles.clear}
+                type="button"
+                onClick={() => setSelected([])}
+              >
+                clear
+              </button>
+            )}
           </div>
         </div>
       )}
