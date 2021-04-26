@@ -8,6 +8,13 @@ To support testing specific client configurations k6 allows you to set a specifi
 of versions of SSL/TLS that should be allowed for a connection, as well as which cipher suites are
 allowed to be used on that connection.
 
+
+<Blockquote mod="warning">
+
+Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
+
+</Blockquote>
+
 ## Limiting SSL/TLS version
 
 Limiting the SSL/TLS versions that k6 will be allowed to use during a test is a global
