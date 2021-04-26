@@ -70,6 +70,13 @@
     height: 29px;
   }
 
+  img {
+    width: auto;
+    max-width: 70%;
+    max-height: 70%;
+    height: auto;
+  }
+
   @include sm-down {
     display: none;
   }

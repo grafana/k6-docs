@@ -43,7 +43,11 @@ export const ExtensionCard = ({
         </div>
       )}
       <div className={styles.imageWrapper}>
-        <WheelIcon />
+        {extension.logo ? (
+          <img src={extension.logo} alt={extension.name} />
+        ) : (
+          <WheelIcon />
+        )}
       </div>
       <div className={styles.content}>
         <span className={styles.name}>{extension.name}</span>
