@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { PageInfo } from 'components/pages/doc-welcome';
 import { CtaDoc } from 'components/shared/cta-doc';
+import { PageInfo } from 'components/shared/page-info';
 import { Trait } from 'components/shared/trait';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';

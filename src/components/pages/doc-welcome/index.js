@@ -1,7 +1,6 @@
 export * from './cloud';
 export * from './features';
 export * from './help';
-export * from '../../shared/page-info';
 export * from './quickstart';
 export * from './showcase';
 export * from './what-is';
