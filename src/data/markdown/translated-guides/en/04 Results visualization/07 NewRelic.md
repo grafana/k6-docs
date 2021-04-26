@@ -36,23 +36,6 @@ Replace `<NR-ACCOUNT-ID>` with your [New Relic Account ID](https://docs.newrelic
 
 If your account is hosted in the New Relic EU region, then also add this to the above command: `-e NR_EU_REGION=true \`
 
-### About the New Relic integration
-
-The New Relic StatsD integration installed above can run standalone. Installing a New Relic agent is optional.
-
-Everything provided in the command above is enough to send k6 performance metrics to New Relic. You can optionally however [add further configuration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#configure), [further define metrics and their formats](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#metric-format) (you can however do this on the New Relic side configuration), [add custom tags](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#add-tags), and [create alerts](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#alerts). This is covered in the optional table below.
-
-## Run the k6 test
-
-Once the integration is running, run the k6 test and send the metrics to the integration with:
-
-<CodeGroup labels={[""]}>
-
-```bash
-$ k6 run --out statsd script.js
-```
-
-</CodeGroup>
 
 The _required_ environment variables used in the above command are:
 
@@ -68,6 +51,25 @@ _Optional_ environment variables you can use:
 | `NR_EU_REGION`   | Setting this to `true` tells the integration your account is housed in the New Relic EU region.                                                                                                                                                                       |
 | `TAGS`           | Setting tags in key:value format separated by a space lets you further understand your data in New Relic. For example identifying different test runs or machines running the tests. In the docker command add: `-e TAGS="k6Test:myExampleTest someKey:someValue" \`. |
 | `NR_LOG_METRICS` | Setting this to `true` activates verbose logging for the integration.                                                                                                                                                                                                 |
+### About the New Relic integration
+
+The New Relic StatsD integration installed above can run standalone. Installing a New Relic agent is optional.
+
+Everything provided in the command above is enough to send k6 performance metrics to New Relic. You can optionally however [add further configuration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#configure), [further define metrics and their formats](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#metric-format) (you can however do this on the New Relic side configuration), [add custom tags](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#add-tags), and [create alerts](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2#alerts). This is covered in the optional table below.
+
+## Run the k6 test
+
+Once the integration is running, run the k6 test and send the metrics to the integration with:
+
+<CodeGroup labels={[""]}>
+
+```bash
+$ K6_STATSD_ENABLE_TAGS=true 6 run --out statsd script.js
+```
+
+</CodeGroup>
+
+Please look at [StatsD](/results-visualization/statsd) output page for configuration options.
 
 ## Visualisation in New Relic
 
