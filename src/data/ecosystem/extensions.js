@@ -3,7 +3,7 @@ const extensions = [
     name: 'xk6-kafka',
     description: 'Load test Apache Kafka. With support for Avro messages',
     url: 'https://github.com/mostafa/xk6-kafka',
-    logo: '',
+    logo: 'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png',
     author: {
       name: 'Mostafa Moradian',
       url: 'https://github.com/mostafa',
