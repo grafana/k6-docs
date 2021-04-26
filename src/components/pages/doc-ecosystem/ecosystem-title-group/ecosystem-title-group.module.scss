@@ -1,6 +1,15 @@
 .wrapper {
   position: relative;
   max-width: calc(100% - 325px);
+
+  @include lg-down {
+    max-width: 100%;
+  }
+
+  @include sm-down {
+    max-width: 540px;
+    margin: 0 auto;
+  }
 }
 
 .edit-link {
@@ -30,13 +39,23 @@
       transition: 0.3s ease;
     }
   }
+
   @include lg-down {
-    position: initial;
+    position: static;
     top: unset;
     right: unset;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     transform: unset;
+
+    &.low {
+      top: unset;
+    }
   }
+
+  @include sm-down {
+    margin-left: 20px;
+  }
+
   &:hover {
     color: $color-accent-primary;
     svg {

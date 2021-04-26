@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   max-width: 1600px;
+  width: 100vw;
 }
 
 .sidebar-header {
@@ -181,17 +182,20 @@ a.sidebar-link {
   position: relative;
   margin: 0 50px;
   max-width: 1175px;
-  width: 100%;
+  width: calc(100% - 370px);
   display: flex;
   flex-direction: column;
   @include lg-down {
     max-width: calc(100% - 330px); // respecting sidebar width and margins
+    width: calc(100% - 330px);
   }
   @include md-down {
     max-width: calc(100% - 240px); // respecting sidebar width and margins
+    width: calc(100% - 240px);
     margin: 0 25px;
   }
   @include sm-down {
+    width: 100%;
     max-width: 100%;
     margin: 0 auto;
   }

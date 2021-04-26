@@ -50,7 +50,7 @@
 
 .checkbox {
   position: absolute;
-  top: 0;
+  top: 7px;
   right: 0;
 }
 
@@ -69,6 +69,10 @@
     width: 29px;
     height: 29px;
   }
+
+  @include sm-down {
+    display: none;
+  }
 }
 
 .content {
@@ -78,6 +82,7 @@
 }
 
 .name {
+  padding-right: 30px;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
   font-weight: 700;

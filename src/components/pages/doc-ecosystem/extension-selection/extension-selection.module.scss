@@ -27,6 +27,22 @@
 
   padding-bottom: 20px;
   border-bottom: 1px solid $color-additional-2;
+
+  @include md-down {
+    margin-left: -20px;
+    margin-right: -20px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include sm-down {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .codeWrapper {
