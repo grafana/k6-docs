@@ -358,56 +358,17 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
               />
               <ExternalLinksDashboard
                 dashboardTitle={'k6 Extensions'}
-                subtitle={
-                  'Extend the functionality of k6 using Go code and import them as JS modules in your k6 script.'
-                }
+                subtitle={`Use k6 extensions to further extend the possible use cases of k6. 
+                  Extensions are written in go and then made available as JavaScript modules
+                  for you to utilise in your test scripts.`}
                 linksData={[
                   {
-                    title: 'Tutorial: Creating a k6 extension',
+                    title: 'Explore the growing ecosystem of k6 extensions',
+                    url: 'https://k6.io/docs/ecosystem/',
+                  },
+                  {
+                    title: 'Learn how to create your own k6 extensions',
                     url: 'https://k6.io/blog/extending-k6-with-xk6',
-                  },
-                  {
-                    title: 'xk6-chaos',
-                    description: 'An extension for running chaos experiments.',
-                    url: 'https://github.com/simskij/xk6-chaos',
-                  },
-                  {
-                    title: 'xk6-datadog',
-                    description: 'An extension for querying Datadog metrics.',
-                    url: 'https://github.com/dgzlopes/xk6-datadog',
-                  },
-                  {
-                    title: 'xk6-kafka',
-                    description:
-                      'Produce and consume Kafka messages in Avro format.',
-                    url: 'https://github.com/mostafa/xk6-kafka',
-                  },
-                  {
-                    title: 'xk6-notification',
-                    description: 'A Slack and Teams notification library.',
-                    url: 'https://github.com/dgzlopes/xk6-notification',
-                  },
-                  {
-                    title: 'xk6-redis',
-                    description: 'Redis client.',
-                    url: 'https://github.com/dgzlopes/xk6-redis',
-                  },
-                  {
-                    title: 'xk6-sql',
-                    description:
-                      'A SQL extension to test against PostgreSQL, MySQL and SQLite.',
-                    url: 'https://github.com/imiric/xk6-sql',
-                  },
-                  {
-                    title: 'xk6-url',
-                    description:
-                      'An extension for parsing and normalizing URLs.',
-                    url: 'https://github.com/dgzlopes/xk6-url',
-                  },
-                  {
-                    title: 'xk6-zmq',
-                    description: 'A ZeroMQ client.',
-                    url: 'https://github.com/dgzlopes/xk6-zmq',
                   },
                 ]}
               />
