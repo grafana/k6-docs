@@ -74,7 +74,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
   {
     name: 'xk6-distributed-tracing',
@@ -86,7 +86,7 @@ const extensions = [
       url: 'https://github.com/k6io',
     },
     official: true,
-    categories: [ 'Observability' ],
+    categories: ['Observability'],
   },
   {
     name: 'xk6-zmq',
@@ -122,7 +122,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
   {
     name: 'xk6-interpret',
@@ -134,7 +134,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
   {
     name: 'xk6-sqs',
@@ -194,7 +194,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Data' ],
+    categories: ['Data'],
   },
   {
     name: 'xk6-url',
@@ -206,7 +206,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
   {
     name: 'xk6-kubernetes-jobs',
@@ -218,7 +218,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Containers' ],
+    categories: ['Containers'],
   },
   {
     name: 'xk6-remote-write',
@@ -230,7 +230,7 @@ const extensions = [
       url: 'https://github.com/dgzlopes',
     },
     official: false,
-    categories: [ 'Observability' ],
+    categories: ['Observability'],
   },
   {
     name: 'xk6-influxdbv2',
@@ -242,7 +242,7 @@ const extensions = [
       url: 'https://github.com/li-zhixin',
     },
     official: false,
-    categories: [ 'Data' ],
+    categories: ['Data'],
   },
   {
     name: 'xk6-pubsub',
@@ -254,7 +254,7 @@ const extensions = [
       url: 'https://github.com/olvod',
     },
     official: false,
-    categories: [ 'Messaging' ],
+    categories: ['Messaging'],
   },
   {
     name: 'xk6-mllp',
@@ -266,7 +266,7 @@ const extensions = [
       url: 'https://github.com/gjergjsheldija',
     },
     official: false,
-    categories: [ 'Messaging' ],
+    categories: ['Messaging'],
   },
   {
     name: 'xk6-encoding',
@@ -278,7 +278,7 @@ const extensions = [
       url: 'https://github.com/MStoykov',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
   {
     name: 'xk6-counter',
@@ -290,7 +290,7 @@ const extensions = [
       url: 'https://github.com/MStoykov',
     },
     official: false,
-    categories: [ 'Misc' ],
+    categories: ['Misc'],
   },
 ];
 
