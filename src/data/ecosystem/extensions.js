@@ -85,7 +85,7 @@ const extensions = [
       name: 'k6',
       url: 'https://github.com/k6io',
     },
-    official: false,
+    official: true,
     categories: [ 'Observability' ],
   },
   {
