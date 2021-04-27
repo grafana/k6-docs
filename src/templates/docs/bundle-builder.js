@@ -77,9 +77,8 @@ export default function ({ pageContext: { navLinks } }) {
           </span>
           <br/>
           <br/>
-          <span>Want learn more about how xk6 works or how to create your own extension?</span>
-          <br/>
-          <span>Check out the <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
+          <span>Want learn more about how xk6 works or how to create your own extension? 
+          Check out the <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
           </span>`}
           className="container"
           breadcrumbs={breadcrumbs}

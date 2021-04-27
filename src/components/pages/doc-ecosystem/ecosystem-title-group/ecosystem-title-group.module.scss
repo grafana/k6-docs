@@ -1,10 +1,6 @@
 .wrapper {
   position: relative;
-  max-width: calc(100% - 325px);
-
-  @include lg-down {
-    max-width: 100%;
-  }
+  max-width: 100%;
 
   @include sm-down {
     max-width: 540px;
@@ -14,9 +10,8 @@
 
 .edit-link {
   position: absolute;
-  right: -50px;
-  top: 165px;
-  transform: translateX(100%);
+  right: 10px;
+  top: 115px;
   font-size: $font-size-xs;
   text-transform: uppercase;
   font-weight: 600;
@@ -28,7 +23,7 @@
   align-items: center;
 
   &.low {
-    top: 195px;
+    top: 150px;
   }
 
   svg {
