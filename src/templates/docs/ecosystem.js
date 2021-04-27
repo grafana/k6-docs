@@ -7,6 +7,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { capitalize } from 'utils';
 import SeoMetadata from 'utils/seo-metadata';
 
@@ -53,38 +54,40 @@ const ecosystemSidebar = {
         },
       },
     },
-    Category: {
-      name: 'Category',
-      meta: {
-        title: 'Category',
-        path: '/ecosystem/',
-      },
-      children: {
-        All: {
-          name: 'All',
-          meta: {
-            title: 'All',
-            isActiveSidebarLink: true,
-            path: '/ecosystem/',
-          },
-          children: {},
-        },
-      },
-    },
+    // @TODO: uncomment to enable category filters
+    // Category: {
+    //   name: 'Category',
+    //   meta: {
+    //     title: 'Category',
+    //     path: '/ecosystem/',
+    //   },
+    //   children: {
+    //     All: {
+    //       name: 'All',
+    //       meta: {
+    //         title: 'All',
+    //         isActiveSidebarLink: true,
+    //         path: '/ecosystem/',
+    //       },
+    //       children: {},
+    //     },
+    //   },
+    // },
   },
 };
 
-CATEGORIES.forEach((category) => {
-  ecosystemSidebar.children.Category.children[capitalize(category)] = {
-    name: capitalize(category),
-    meta: {
-      title: capitalize(category),
-      isActiveSidebarLink: true,
-      path: `/ecosystem/?category=${category}`,
-    },
-    children: {},
-  };
-});
+// @TODO: uncomment to enable category filters
+// CATEGORIES.forEach((category) => {
+//   ecosystemSidebar.children.Category.children[capitalize(category)] = {
+//     name: capitalize(category),
+//     meta: {
+//       title: capitalize(category),
+//       isActiveSidebarLink: true,
+//       path: `/ecosystem/?category=${category}`,
+//     },
+//     children: {},
+//   };
+// });
 
 export default function ({ location, pageContext: { navLinks } }) {
   useScrollToAnchor();
