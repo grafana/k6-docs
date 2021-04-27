@@ -42,7 +42,12 @@ export const ExtensionCard = ({
           />
         </div>
       )}
-      <div className={styles.imageWrapper}>
+      <div
+        className={classNames(
+          styles.imageWrapper,
+          extension?.isLogoLarge && styles.cover,
+        )}
+      >
         {extension.logo ? (
           <img src={extension.logo} alt={extension.name} />
         ) : (

@@ -31,6 +31,7 @@ const extensions = [
     url: 'https://github.com/simskij/xk6-chaos',
     logo:
       'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true',
+    isLogoLarge: true,
     author: {
       name: 'Simon Aronsson',
       url: 'https://github.com/simskij',
