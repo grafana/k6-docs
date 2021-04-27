@@ -16,6 +16,12 @@ export default {
         'This page provides the documentation of the k6 JavaScript API.',
     },
   },
+  ecosystem: {
+    data: {
+      title: 'k6 Ecosystem',
+      description: 'The k6 Ecosystem is a directory with k6 extensions',
+    },
+  },
   examples: {
     data: {
       title: 'k6 Examples & Tutorials',

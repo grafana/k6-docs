@@ -97,6 +97,10 @@ const GUIDES_TOP_LEVEL_LINKS = {
 const generateTopLevelLinks = (topLevelLinks) => [
   GUIDES_TOP_LEVEL_LINKS,
   ...topLevelLinks,
+  {
+    label: 'ecosystem',
+    to: '/ecosystem/',
+  },
 ];
 
 function generateSidebar({ nodes, type = 'docs' }) {
@@ -297,6 +301,28 @@ function getTopLevelPagesProps({
         },
       })),
     )
+    .concat([
+      {
+        path: `/ecosystem/`,
+        component: Path.resolve(`./src/templates/docs/ecosystem.js`),
+        context: {
+          sidebarTree: {
+            children: {},
+          },
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+      {
+        path: `/ecosystem/bundle-builder/`,
+        component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
+        context: {
+          sidebarTree: {
+            children: {},
+          },
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+    ])
     .filter(Boolean);
 }
 

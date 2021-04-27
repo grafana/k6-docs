@@ -1,9 +1,9 @@
 import { Heading } from 'components/shared/heading';
 import { useLocale } from 'contexts/locale-provider';
 import React from 'react';
+import Pencil from 'svg/pencil-icon.inline.svg';
 
 import styles from './doc-page-title-group.module.scss';
-import Pencil from './svg/pencil-icon.inline.svg';
 
 const SUGGEST_EDIT_TRANSLATIONS = {
   en: 'suggest edits',

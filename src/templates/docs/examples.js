@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { DocLinksBlock } from 'components/pages/doc-examples/doc-links-block';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { PageInfo } from 'components/pages/doc-welcome/page-info';
+import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql, useStaticQuery } from 'gatsby';

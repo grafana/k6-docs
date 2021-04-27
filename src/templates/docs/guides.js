@@ -3,13 +3,13 @@ import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import {
   Cloud,
   Features,
-  PageInfo,
   Manifesto,
   Quickstart,
   WhatIs,
 } from 'components/pages/doc-welcome';
 import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
+import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import I18nProvider from 'contexts/i18n-provider';
 import LocaleProvider from 'contexts/locale-provider';

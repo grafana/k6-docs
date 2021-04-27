@@ -1,0 +1,124 @@
+.container {
+  @include doc-section-spacing;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selection {
+  box-sizing: border-box;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  background-color: $color-tertiary;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  margin-top: -20px;
+  margin-left: -50px;
+  margin-right: -50px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color-additional-2;
+
+  @include md-down {
+    margin-left: -20px;
+    margin-right: -20px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include sm-down {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.codeWrapper {
+  position: relative;
+  max-width: 100%;
+  height: 55px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: $color-primary;
+
+  &::before {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    width: 70px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: $color-primary;
+  }
+}
+
+.code {
+  max-width: calc(100% - 70px);
+  height: 100%;
+  display: inline-block;
+
+  overflow-y: auto;
+  overflow-x: scroll;
+  text-align: left;
+  @include no-scrollbars;
+  padding: 15px;
+
+  text-shadow: none;
+  font-family: $font-family-secondary;
+  font-size: $font-size-code;
+  line-height: $line-height-code;
+  color: #e2e2e2;
+  white-space: nowrap;
+}
+
+.copy {
+  z-index: 3;
+  top: 17px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+}
+
+.selected {
+  margin-right: 20px;
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
+
+  & .number {
+    font-weight: 700;
+  }
+}
+
+.clear {
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
+  font-weight: 500;
+  transition: color 0.3s;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-accent-primary;
+  }
+}

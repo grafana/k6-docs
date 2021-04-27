@@ -9,4 +9,5 @@ export {
   compose,
   whenElementAvailable,
   isInIFrame,
+  capitalize,
 } from './utils';

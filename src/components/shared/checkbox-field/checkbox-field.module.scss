@@ -14,17 +14,15 @@
   cursor: pointer;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     border: 1px solid $color-secondary;
     color: $color-accent-primary;
     background: #fff;
     position: absolute;
     left: 0;
-    text-align: center;
-    transition: 0.3s;
   }
 
   &:hover:before {
@@ -33,7 +31,9 @@
 }
 
 .input:checked + label:before {
-  content: url("./svg/checkmark.svg");
+  content: url('./svg/checkmark.svg');
+  padding-left: 4px;
+  padding-top: 1px;
   background: $color-accent-primary;
   border: 1px solid $color-accent-primary;
 }

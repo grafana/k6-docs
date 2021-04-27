@@ -7,6 +7,22 @@
   @include sm-down {
     margin-top: 230px;
   }
+
+  &.wide {
+    & .title {
+      max-width: 100%;
+    }
+
+    & .description {
+      max-width: 100%;
+    }
+  }
+
+  &.withBreadcrumbs {
+    & .title {
+      margin-top: 15px;
+    }
+  }
 }
 
 .title {
@@ -28,5 +44,16 @@
   }
   @include lg-down {
     max-width: 100%;
+  }
+
+  & a {
+    color: $color-accent-primary;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

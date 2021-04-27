@@ -1,0 +1,62 @@
+.wrapper {
+  position: relative;
+  max-width: 100%;
+
+  @include sm-down {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+.edit-link {
+  position: absolute;
+  right: 10px;
+  top: 115px;
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: $color-primary;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+
+  &.low {
+    top: 150px;
+  }
+
+  svg {
+    width: 18px;
+    height: auto;
+    margin-right: 10px;
+    path {
+      transition: 0.3s ease;
+    }
+  }
+
+  @include lg-down {
+    position: static;
+    top: unset;
+    right: unset;
+    margin-bottom: 30px;
+    transform: unset;
+
+    &.low {
+      top: unset;
+    }
+  }
+
+  @include sm-down {
+    margin-left: 20px;
+  }
+
+  &:hover {
+    color: $color-accent-primary;
+    svg {
+      path {
+        fill: $color-accent-primary;
+      }
+    }
+  }
+}

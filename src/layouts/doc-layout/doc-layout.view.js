@@ -121,12 +121,16 @@ const SidebarNode = (props) => {
   } = props;
   const [isActive, setIsActive] = useState(false);
 
+  const search = typeof window === 'undefined' ? '' : window.location.search;
+
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     const maybePrefixedPath = withPrefix(meta.path);
-    const doesPathMatchLocation =
-      maybePrefixedPath === window.location.pathname;
+    let doesPathMatchLocation = maybePrefixedPath === window.location.pathname;
     const isPathLocationPart =
-      meta.path === '/' || meta.path === '/es/'
+      meta.path === '/' || meta.path === '/es/' || meta.path === '/ecosystem/'
         ? false
         : window.location.pathname.startsWith(`${maybePrefixedPath}`) ||
           window.location.pathname.startsWith(
@@ -136,8 +140,26 @@ const SidebarNode = (props) => {
               .concat(slugify(name))
               .join('/')}/`,
           );
-    setIsActive(doesPathMatchLocation || isPathLocationPart);
-  }, []);
+
+    // handle ecosystem category filters
+    let doesMatchEcosystemCategory = false;
+    if (meta.path.startsWith('/ecosystem/')) {
+      if (search) {
+        if (window.location.pathname + search === maybePrefixedPath) {
+          doesMatchEcosystemCategory = true;
+        }
+
+        // if category is selected then "All" is not active
+        if (meta.path === '/ecosystem/' && meta.title !== 'Discovery') {
+          doesPathMatchLocation = false;
+        }
+      }
+    }
+
+    setIsActive(
+      doesPathMatchLocation || isPathLocationPart || doesMatchEcosystemCategory,
+    );
+  }, [search]);
 
   const hasSubMenu = Object.keys(children).length;
 
