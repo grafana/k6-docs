@@ -68,12 +68,19 @@ export default function ({ pageContext: { navLinks } }) {
       >
         <EcosystemTitleGroup
           title={'Bundle Builder'}
-          description={`Easily create your own bespoke k6 binary 
+          description={`<span>
+          Easily create your own bespoke k6 binary 
           with all the extensions you want to run using the bundle builder 
           and xk6. Just select all the extensions you want to use, 
           and copy the command below. The resulting binary then be used 
-          to leverage all the extensions you're picked in your test, at the same time.`}
-          variant="wide"
+          to leverage all the extensions you're picked in your test, at the same time.
+          </span>
+          <br/>
+          <br/>
+          <span>Want learn more about how xk6 works or how to create your own extension?</span>
+          <br/>
+          <span>Check out the <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
+          </span>`}
           className="container"
           breadcrumbs={breadcrumbs}
         />
