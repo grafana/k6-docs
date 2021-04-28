@@ -42,6 +42,10 @@ With that in mind, there are a number of non-performance related reasons for err
 
 This alert is raised because our Smart Results algorithms need at least 100 complete VU iterations of training data plus an additional 15 seconds to produce meaningful output. Your test did not complete the 100 VU iterations necessary for the training data. We recommend increasing the test duration to get the full benefits of Performance Insights.
 
+## Duration Too Short
+
+Similarly to `Not Enough Training Data`, this alert is raised because our system does not have enough training data to produce meaningful results. More than 100 complete VU iterations were detected but duration needs to be extended in order to analyze data.
+
 ## Test Health and Informational Performance Insights
 
 Test Health Performance Insights are alerts that intend to highlight test or script related issues. These issues, if not addressed, can either skew your results or make result analysis harder to parse through. These alerts are often quickly solved through changes in the test script or test configuration.
@@ -50,7 +54,7 @@ Test Health Performance Insights are alerts that intend to highlight test or scr
 
 ## Third Party Content
 
-**This is an best practice alert, we strongly recommend you remove third party requests from your test**
+**This is a best practice alert, we strongly recommend you remove third party requests from your test**
 
 This alert is raised when we detect many different domains in a test. This is typically caused by your test script containing requests to 3rd party resources such as CDNs, social media scripts, analytic tools, etc. It's recommended to remove third party requests as it may violate the terms of service of that third party, that third party may throttle your requests skewing the percentiles of your results, or you may have no ability to impact performance of that third party.
 
@@ -61,7 +65,7 @@ _Special Notes:_
 
 ## Too Many URLs
 
-**This is an best practice alert, we strongly recommend you aggregate dynamic URLs as it will make analysis easier**
+**This is a best practice alert, we strongly recommend you aggregate dynamic URLs as it will make analysis easier**
 
 This alert is raised when we detect more than 500 unique URLs in your test results. This is commonly caused by a URL that contains a query parameter or other ID that is unique per iteration. e.g. tokens, session IDs, etc.
 
@@ -93,7 +97,7 @@ More on [URL Grouping](/using-k6/http-requests#url-grouping)
 
 ## Too Many Groups
 
-**This is an best practice alert, we recommend reviewing how you use the [Group name](/javascript-api/k6/group-name-fn) in your test script.**
+**This is a best practice alert, we recommend reviewing how you use the [Group name](/javascript-api/k6/group-name-fn) in your test script.**
 
 This alert is raised when we <b>detect a high number of groups</b> in your test script. The most common reason for this alert is an incorrect usage of the [Group name](/javascript-api/k6/group-name-fn) using it for aggregating different HTTP requests, or within a loop statement. When aggregating URLs, please use the name tag.
 
@@ -119,6 +123,37 @@ export default function () {
 </CodeGroup>
 
 If you want to group multiple HTTP requests, we suggest you use the [URL grouping](/using-k6/http-requests#url-grouping) feature of k6 to aggregate data into a single URL metric.
+
+## Too Many Metrics
+
+**This is a best practice alert, we strongly recommend reviewing how you specify and use [metrics](/using-k6/metrics/).**
+
+This alert is raised when we <b>detect a high number of metrics</b> in your test script. Considering k6 can generate two types of metrics (built-in and custom), you should check if your script contains too many unique URL or generates custom metrics in a loop.
+
+Having too many metrics in a single test is considered an anti-pattern because it makes result analysis difficult.
+
+The following example shows how custom metrics can be misused:
+
+<CodeGroup labels={["Using custom metrics to count successful requests"]}>
+
+```javascript
+import { Counter } from "k6/metrics";
+
+let successCounts = []
+for (let id = 1; id <= 1000; id++) {
+  successCounts.push(new Counter(`successCount_${id}`));
+}
+for (let id = 1; id <= 1000; id++) {
+  let response = http.get(`http://test.k6.io/?ts=${id}`);
+  successCounts[i].add(response.status === 200);
+}
+// k6 can count responses by status codes on its own.
+// Additionally, URLs should be grouped as it's shown 
+// in Too Many URLs alert example.
+```
+
+</CodeGroup>
+
 
 ## High Load Generator CPU Usage
 
@@ -152,3 +187,80 @@ Possible fixes:
 
 - Utilize the test option `discardResponseBodies` to throw away the response body by Default
   - Use `responseType:` to capture the responseBodies you may require
+  
+## Disabling Specific Performance Insights
+
+It is possible to prevent one or more insights from showing up when executing load tests. This can be done by using `ext.loadimpct.insights` object in the `options`:
+
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      insights: {
+        disabled: ['http_load_throughput_limit', 'health_high_loadgen_cpu_usage'],
+      },
+    },
+  },
+};
+```
+
+When `disabled` array is provided, all insights in it will be skipped when displaying result analysis. In contrast, you can provide a list of **enabled** insights which excludes all other insights from analysis.
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      insights: {
+        enabled: ['http_load_high_http_failure_rate'],
+      },
+    },
+  },
+};
+```
+
+In the above example only one insight will potentially be shown (given the script executes with a high HTTP failure rate).
+
+It is also possible to enable/disable multiple insights by their category (also called "set"). To achieve this, specify the `enabledSets`/`disabledSets` array in the `insights` object.
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      insights: {
+        enabledSets: ['http_load'],
+      },
+    },
+  },
+};
+```
+
+Or alternatively:
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      insights: {
+        disabledSets: ['best_practice', 'health'],
+      },
+    },
+  },
+};
+```
+
+For all insights and their identifiers see the table below:
+
+| Name                             | Identifier                               | Set Identifier  |
+|----------------------------------|------------------------------------------|-----------------|
+| Throughput Limit                 | `http_load_throughput_limit`             | `http_load`     |
+| Increased HTTP failure rate      | `http_load_increased_http_failure_rate`  | `http_load`     |
+| High HTTP failure rate           | `http_load_high_http_failure_rate`       | `http_load`     |
+| Not Enough Training Data         | `best_practice_not_enough_training_data` | `best_practice` |
+| Duration Too Short               | `best_practice_duration_too_short`       | `best_practice` |
+| Third Party Content              | `best_practice_third_party_content`      | `best_practice` |
+| Too Many URLs                    | `best_practice_too_many_urls`            | `best_practice` |
+| Too Many Groups                  | `best_practice_too_many_groups`          | `best_practice` |
+| Too Many Metrics                 | `best_practice_too_many_metrics`         | `best_practice` |
+| High Load Generator CPU Usage    | `health_high_loadgen_cpu_usage`          | `health`        |
+| High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        |
