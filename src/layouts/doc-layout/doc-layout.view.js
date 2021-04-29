@@ -13,6 +13,7 @@ import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
+import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
@@ -223,6 +224,7 @@ const SidebarNode = (props) => {
 export const DocLayout = ({
   pageMetadata,
   pageTranslations = null,
+  version,
   sidebarTree,
   navLinks: links,
   children,
@@ -265,6 +267,8 @@ export const DocLayout = ({
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle && !!pageTranslations;
 
+  console.log('page meta', pageMetadata);
+
   return (
     <div className={styles.wrapper}>
       <SEO pageTranslations={pageTranslations} {...pageMetadata} />
@@ -276,6 +280,12 @@ export const DocLayout = ({
             <LanguageSwitcher
               onLanguageChange={languageChangeHandler}
               className={styles.languageSwitcher}
+            />
+          )}
+          {!!version && (
+            <VersionSwitcher
+              currentVersion={version}
+              className={styles.versionSwitcher}
             />
           )}
         </div>

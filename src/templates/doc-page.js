@@ -7,6 +7,7 @@ import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
+import { LATEST_VERSION } from 'utils/utils.node';
 
 export default function (props) {
   const {
@@ -17,6 +18,7 @@ export default function (props) {
       navLinks,
       breadcrumbs,
       locale = 'en',
+      version,
     },
   } = props;
   useScrollToAnchor();
@@ -29,6 +31,9 @@ export default function (props) {
     },
   };
 
+  const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
+  console.log('js api', isJsAPIPage);
+
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
@@ -37,6 +42,7 @@ export default function (props) {
         navLinks={navLinks}
         pageTranslations={frontmatter.translations}
         locale={locale}
+        version={isJsAPIPage ? version || LATEST_VERSION : null}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} />

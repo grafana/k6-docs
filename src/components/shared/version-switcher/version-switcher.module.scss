@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.current {
+  position: relative;
+  cursor: pointer;
+  color: $color-accent-primary;
+  font-size: 12px;
+  font-weight: 500;
+
+  &::before {
+    position: absolute;
+    content: '';
+    right: -16px;
+    top: 11px;
+    border-top: 4px solid $color-additional-1;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  &-open {
+    &::before {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.menu {
+  z-index: 10;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: -14px;
+
+  &-item {
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    padding: 10px 15px;
+    color: $color-primary;
+    font-size: 12px;
+    line-height: 15.36px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-additional-2;
+    }
+
+    @include hover-supported {
+      color: $color-accent-primary;
+    }
+
+    &-active {
+      color: $color-accent-primary;
+      font-weight: 500;
+    }
+  }
+}
