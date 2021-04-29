@@ -21,19 +21,19 @@ const bundleBuilderSidebar = {
         path: '/ecosystem/',
       },
       children: {
-        Discovery: {
-          name: 'Discovery',
+        Explore: {
+          name: 'Explore',
           meta: {
-            title: 'Discovery',
+            title: 'Explore',
             isActiveSidebarLink: true,
             path: '/ecosystem/',
           },
           children: {},
         },
-        'Bundle Builder': {
-          name: 'Bundle Builder',
+        'Build Bundle': {
+          name: 'Build Bundle',
           meta: {
-            title: 'Bundle Builder',
+            title: 'Build Bundle',
             isActiveSidebarLink: true,
             path: '/ecosystem/bundle-builder/',
           },
@@ -50,7 +50,7 @@ const breadcrumbs = [
     path: '/ecosystem/',
   },
   {
-    name: 'Bundle builder',
+    name: 'Build Bundle',
     path: '/ecosystem/bundle-builder/',
   },
 ];
@@ -67,22 +67,26 @@ export default function ({ pageContext: { navLinks } }) {
         pageMetadata={pageMetadata}
       >
         <EcosystemTitleGroup
-          title={'Bundle Builder'}
-          description={`<span>
-          Easily create your own bespoke k6 binary 
-          with all the extensions you want to run using the bundle builder 
-          and xk6. Just select all the extensions you want to use, 
-          and copy the command below. The resulting binary then be used 
-          to leverage all the extensions you're picked in your test, at the same time.
-          </span>
-          <br/>
-          <br/>
-          <span>Want learn more about how xk6 works or how to create your own extension? 
-          Check out the <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
-          </span>`}
+          title={'Build Bundle'}
+          description={``}
           className="container"
           breadcrumbs={breadcrumbs}
         />
+        <div>
+          <span>
+            Easily create your own bespoke k6 binary with all the extensions you
+            want to run using the bundle builder and xk6. Just select all the
+            extensions you want to use, and copy the command below. The
+            resulting binary will then allow you to use all the extensions
+            you&apos;ve picked in your test scripts.
+          </span>
+          <br />
+          <span>
+            Want learn more about how xk6 works or how to create your own
+            extension? Check out the{' '}
+            <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
+          </span>
+        </div>
         <div className={`${docPageContent.inner} `}>
           <ExtensionSelection />
         </div>
