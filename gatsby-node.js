@@ -10,6 +10,7 @@ const {
 const {
   SUPPORTED_LOCALES,
   DEFAULT_LOCALE,
+  SUPPORTED_VERSIONS,
   pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
@@ -140,6 +141,14 @@ function generateSidebar({ nodes, type = 'docs' }) {
       pageSlug = '/';
     }
 
+    // @TODO: for latest versions remove version prefix (to make .md links work)
+    if (type === 'javascript-api') {
+      pageSlug = `/javascript-api${pageSlug}`;
+    }
+    //   console.log(relativeDirectory, title);
+    //   console.log('SLUG', pageSlug, '\n');
+    // }
+
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
@@ -162,6 +171,7 @@ function getSupplementaryPagesProps({
   topLevelLinks,
   getSidebar,
   getGuidesSidebar,
+  getJavascriptAPISidebar,
 }) {
   const notFoundProps = {
     path: '/404',
@@ -252,7 +262,34 @@ function getSupplementaryPagesProps({
     );
   });
 
-  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
+  const stubJsAPIPagesProps = SUPPORTED_VERSIONS.flatMap((version) => {
+    return childrenToList(getJavascriptAPISidebar(version).children).map(
+      ({ name, meta }) => {
+        const path = `${version}/javascript-api/${meta.title}`;
+        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+
+        return {
+          path: compose(addTrailingSlash, dedupePath, slugify)(path),
+          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
+          context: {
+            sidebarTree: getJavascriptAPISidebar(version),
+            breadcrumbs,
+            title: meta.title,
+            navLinks: generateTopLevelLinks(topLevelLinks),
+            directChildren: getJavascriptAPISidebar(version).children[name]
+              .children,
+            version,
+          },
+        };
+      },
+    );
+  });
+
+  return stubPagesProps.concat(
+    notFoundProps,
+    stubGuidesPagesProps,
+    stubJsAPIPagesProps,
+  );
 }
 
 function getTopLevelPagesProps({
@@ -261,6 +298,7 @@ function getTopLevelPagesProps({
   getSidebar,
   getGuidesSidebar,
   pathCollisionDetectorInstance,
+  getJavascriptAPISidebar,
 }) {
   // generating pages currently presented in templates/docs/ folder
   // for the exception of Cloud REST API
@@ -323,6 +361,16 @@ function getTopLevelPagesProps({
         },
       },
     ])
+    .concat(
+      SUPPORTED_VERSIONS.map((version) => ({
+        path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+        component: Path.resolve(`./src/templates/docs/javascript-api.js`),
+        context: {
+          sidebarTree: getJavascriptAPISidebar(version),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      })),
+    )
     .filter(Boolean);
 }
 
@@ -521,6 +569,105 @@ function getGuidesPagesProps({
     .filter(Boolean);
 }
 
+function getJsAPIVersionedPagesProps({
+  nodesJsAPI,
+  reporter,
+  topLevelLinks,
+  pathCollisionDetectorInstance,
+  getJavascriptAPISidebar,
+}) {
+  // creating actual docs pages
+  return nodesJsAPI
+    .map(({ relativeDirectory, children: [remarkNode], name }) => {
+      const strippedDirectory = relativeDirectory.replace(
+        /^.*js-api\/(.*)$/,
+        '$1',
+      );
+      // for debuggin purpose in case there are errors in md/html syntax
+      if (typeof remarkNode === 'undefined') {
+        reporter.warn(
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
+            ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      if (typeof remarkNode.frontmatter === 'undefined') {
+        reporter.warn(
+          `\nFrontmatter data is missing, unable to generate the page. Check the following file:\n\n ${relativeDirectory}/${name}`,
+        );
+        return false;
+      }
+      const {
+        frontmatter,
+        frontmatter: { title, redirect, draft, slug: customSlug },
+      } = remarkNode;
+      // if there is a value in redirect field, skip page creation
+      // OR there is draft flag and mode is prod
+      if ((draft === 'true' && isProduction) || redirect) {
+        return false;
+      }
+      const path = `javascript-api/${strippedDirectory}/${title.replace(
+        /\//g,
+        '-',
+      )}`;
+
+      const pageVersion = SUPPORTED_VERSIONS.find((version) =>
+        strippedDirectory.startsWith(`${version}/`),
+      );
+
+      const slug = getSlug(path);
+
+      const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
+
+      // path collision check
+      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+        // skip the page creation if there is already a page with identical url
+        return false;
+      }
+
+      const sidebarTree = getJavascriptAPISidebar(pageVersion);
+
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...frontmatter,
+          slug,
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+          ),
+        },
+      };
+
+      let breadcrumbs = compose(buildBreadcrumbs, dedupePath, unorderify)(path);
+      breadcrumbs = breadcrumbs.map((item) =>
+        SUPPORTED_VERSIONS.includes(item.name)
+          ? {
+              path: item.path,
+              name: 'Javascript API',
+            }
+          : item,
+      );
+
+      breadcrumbs = breadcrumbs.filter(
+        (item) => item.path !== '/' && item.path !== '/javascript-api/',
+      );
+
+      return {
+        path: pageSlug || '/',
+        component: Path.resolve('./src/templates/doc-page.js'),
+        context: {
+          remarkNode: extendedRemarkNode,
+          sidebarTree,
+          breadcrumbs,
+          navLinks: generateTopLevelLinks(topLevelLinks),
+          version: pageVersion,
+        },
+      };
+    })
+    .filter(Boolean);
+}
+
 async function fetchDocPagesData(graphql) {
   const {
     data: {
@@ -601,11 +748,53 @@ async function fetchGuidesPagesData(graphql) {
   return nodes;
 }
 
+async function fetchJavascriptAPIPagesData(graphql) {
+  const {
+    data: {
+      allFile: { nodes },
+    },
+  } = await graphql(
+    `
+      query guidesPagesQuery {
+        allFile(
+          filter: {
+            ext: { in: [".md"] }
+            relativeDirectory: { regex: "/versioned-js-api/" }
+          }
+          sort: { fields: absolutePath, order: ASC }
+        ) {
+          nodes {
+            name
+            relativeDirectory
+            children {
+              ... on Mdx {
+                body
+                frontmatter {
+                  title
+                  slug
+                  head_title
+                  excerpt
+                  redirect
+                  hideFromSidebar
+                  draft
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+  return nodes;
+}
+
 async function createDocPages({
   nodes,
   nodesGuides,
   sidebar,
   guidesSidebar,
+  nodesJsAPI,
+  javascriptAPISidebar,
   actions,
   reporter,
 }) {
@@ -617,6 +806,8 @@ async function createDocPages({
 
   // local helper function that uses currying, expects one more arg
   const getGuidesSidebar = getChildSidebar(guidesSidebar);
+
+  const getJavascriptAPISidebar = getChildSidebar(javascriptAPISidebar);
 
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children);
@@ -643,11 +834,19 @@ async function createDocPages({
         pathCollisionDetectorInstance,
         getGuidesSidebar,
       }),
+      getJsAPIVersionedPagesProps({
+        nodesJsAPI,
+        reporter,
+        topLevelLinks,
+        pathCollisionDetectorInstance,
+        getJavascriptAPISidebar,
+      }),
       getTopLevelPagesProps({
         topLevelNames,
         topLevelLinks,
         getSidebar,
         getGuidesSidebar,
+        getJavascriptAPISidebar,
         pathCollisionDetectorInstance,
       }),
       getSupplementaryPagesProps({
@@ -655,6 +854,7 @@ async function createDocPages({
         topLevelLinks,
         getSidebar,
         getGuidesSidebar,
+        getJavascriptAPISidebar,
         reporter,
       }),
     )
@@ -838,9 +1038,14 @@ const createRedirects = ({ actions }) => {
 exports.createPages = async (options) => {
   const pagesData = await fetchDocPagesData(options.graphql);
   const guidesData = await fetchGuidesPagesData(options.graphql);
+  const javascriptAPIData = await fetchJavascriptAPIPagesData(options.graphql);
 
   const sidebar = generateSidebar({ nodes: pagesData });
   const guidesSidebar = generateSidebar({ nodes: guidesData, type: 'guides' });
+  const javascriptAPISidebar = generateSidebar({
+    nodes: javascriptAPIData,
+    type: 'javascript-api',
+  });
 
   await createDocPages({
     ...options,
@@ -848,6 +1053,8 @@ exports.createPages = async (options) => {
     nodesGuides: guidesData,
     sidebar,
     guidesSidebar,
+    nodesJsAPI: javascriptAPIData,
+    javascriptAPISidebar,
   });
   await createRedirects(options);
 };

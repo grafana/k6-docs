@@ -6,6 +6,9 @@ const { slugify, compose, stripDirectoryPath } = require('./utils');
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
 
+const SUPPORTED_VERSIONS = ['v.0.30', 'v.0.29'];
+const LATEST_VERSION = 'v.0.31';
+
 // create a container;
 const utils = {};
 
@@ -303,6 +306,12 @@ Object.defineProperties(utils, {
   },
   getTranslatedSlug: {
     value: getTranslatedSlug,
+  },
+  SUPPORTED_VERSIONS: {
+    value: SUPPORTED_VERSIONS,
+  },
+  LATEST_VERSION: {
+    value: LATEST_VERSION,
   },
 });
 
