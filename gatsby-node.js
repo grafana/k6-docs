@@ -89,18 +89,17 @@ const getPageTranslations = (
   return pageTranslations;
 };
 
-const GUIDES_TOP_LEVEL_LINKS = {
-  label: 'guides',
-  to: '/',
-};
-
 const generateTopLevelLinks = (topLevelLinks) => [
-  GUIDES_TOP_LEVEL_LINKS,
-  ...topLevelLinks,
+  {
+    label: 'guides',
+    to: '/',
+  },
+  ...topLevelLinks.slice(0, 3),
   {
     label: 'ecosystem',
     to: '/ecosystem/',
   },
+  ...topLevelLinks.slice(3, topLevelLinks.length),
 ];
 
 function generateSidebar({ nodes, type = 'docs' }) {
