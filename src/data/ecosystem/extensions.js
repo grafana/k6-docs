@@ -17,7 +17,8 @@ const extensions = [
     name: 'xk6-notification',
     description: 'A k6 extension for creating notifications.',
     url: 'https://github.com/dgzlopes/xk6-notification',
-    logo: '',
+    logo:
+      'https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true',
     author: {
       name: 'Daniel González',
       url: 'https://github.com/dgzlopes',
