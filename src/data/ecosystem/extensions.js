@@ -1,4 +1,22 @@
 /* eslint-disable max-len */
+
+/*
+    
+    Thank you for your interest in contributing an extension to the k6 ecosystem! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧
+
+    To make the process of getting your extension accepted as fast as possible, make sure
+    you fill out all of the fields in the list below (except logo, which is optional).
+    
+    The list is currently alphabetized, so it
+    doesn't matter where in the list you place your entry.
+
+    For an extension to be merged, we require the following:
+
+    1. The readme contains one or more usage examples, showing the basics of how to use the extension.
+    2. The repository has the xk6 label
+    3. The readme contains Links to any other relevant documentation a user might need.
+    
+ */
 const extensions = [
   {
     name: 'xk6-kafka',
