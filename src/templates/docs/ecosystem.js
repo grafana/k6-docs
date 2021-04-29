@@ -157,8 +157,13 @@ export default function ({ location, pageContext: { navLinks } }) {
           <span>
             Ready to put together your own bespoke k6 binary containing the
             features you need? Head over to the{' '}
-            <a href="/ecosystem/bundle-builder/">bundle builder</a> to get
-            started!
+            <a
+              className={docPageContent.link}
+              href="/ecosystem/bundle-builder/"
+            >
+              bundle builder
+            </a>{' '}
+            to get started!
           </span>
         </div>
         <div className={`${docPageContent.inner} `}>

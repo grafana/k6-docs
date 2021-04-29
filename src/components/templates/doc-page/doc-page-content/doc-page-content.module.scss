@@ -39,3 +39,14 @@
     position: unset;
   }
 }
+
+.link {
+  color: $color-accent-primary;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
