@@ -3,6 +3,7 @@ import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
+import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
@@ -157,12 +158,12 @@ export default function ({ location, pageContext: { navLinks } }) {
           <span>
             Ready to put together your own bespoke k6 binary containing the
             features you need? Head over to the{' '}
-            <a
+            <Link
               className={docPageContent.link}
-              href="/ecosystem/bundle-builder/"
+              to={'/ecosystem/bundle-builder/'}
             >
               bundle builder
-            </a>{' '}
+            </Link>{' '}
             to get started!
           </span>
         </div>
