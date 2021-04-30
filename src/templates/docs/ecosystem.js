@@ -141,7 +141,7 @@ export default function ({ location, pageContext: { navLinks } }) {
         <div className={`${docPageContent.inner}`}>
           <span>
             The extension ecosystem enables developers and testers to extend k6
-            to cover use casesnot supported natively in the core. Explore the
+            to cover use cases not supported natively in the core. Explore the
             endless possibilities of k6 using extensions from the table below.
             Common use cases include:
           </span>
