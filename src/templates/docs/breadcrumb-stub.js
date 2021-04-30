@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
 import { childrenToList, slugify } from 'utils';
+import { LATEST_VERSION } from 'utils/utils.node';
 
 export default function (props) {
   const {
@@ -18,6 +19,7 @@ export default function (props) {
       directChildren,
       locale,
       translations = null,
+      version,
     },
   } = props;
 
@@ -30,6 +32,8 @@ export default function (props) {
     },
   };
 
+  const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
+
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
@@ -38,6 +42,7 @@ export default function (props) {
         locale={locale}
         pageTranslations={translations}
         pageMetadata={pageMetadata}
+        version={isJsAPIPage ? version || LATEST_VERSION : null}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />

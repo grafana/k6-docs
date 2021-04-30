@@ -16,6 +16,7 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
+import { LATEST_VERSION } from 'utils/utils.node';
 
 const componentsForNativeReplacement = {
   table: TableWrapper,
@@ -48,7 +49,10 @@ const getContent = (nodes, sidebarTree) =>
     return null;
   });
 
-export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
+export default function ({
+  data,
+  pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
+}) {
   const content = getContent(data.allFile.nodes, sidebarTree);
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
@@ -65,6 +69,7 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        version={version}
       >
         <PageInfo
           title={'JavaScript API'}

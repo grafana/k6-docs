@@ -368,6 +368,7 @@ function getTopLevelPagesProps({
         context: {
           sidebarTree: getJavascriptAPISidebar(version),
           navLinks: generateTopLevelLinks(topLevelLinks),
+          version,
         },
       })),
     )

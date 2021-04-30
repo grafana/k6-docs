@@ -7,6 +7,9 @@
 
 .current {
   position: relative;
+  border: none;
+  outline: none;
+  background-color: transparent;
   cursor: pointer;
   color: $color-accent-primary;
   font-size: 12px;
@@ -16,7 +19,7 @@
     position: absolute;
     content: '';
     right: -16px;
-    top: 11px;
+    top: 7px;
     border-top: 4px solid $color-additional-1;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -33,7 +36,7 @@
   z-index: 10;
   position: absolute;
   top: calc(100% + 10px);
-  left: -14px;
+  left: -10px;
 
   &-item {
     border: none;

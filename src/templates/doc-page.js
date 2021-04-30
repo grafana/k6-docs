@@ -32,7 +32,6 @@ export default function (props) {
   };
 
   const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
-  console.log('js api', isJsAPIPage);
 
   return (
     <LocaleProvider urlLocale={locale}>
