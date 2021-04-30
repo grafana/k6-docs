@@ -141,13 +141,9 @@ function generateSidebar({ nodes, type = 'docs' }) {
       pageSlug = '/';
     }
 
-    // @TODO: for latest versions remove version prefix (to make .md links work)
     if (type === 'javascript-api') {
       pageSlug = `/javascript-api${pageSlug}`;
     }
-    //   console.log(relativeDirectory, title);
-    //   console.log('SLUG', pageSlug, '\n');
-    // }
 
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),

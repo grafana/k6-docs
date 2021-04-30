@@ -6,7 +6,16 @@ const { slugify, compose, stripDirectoryPath } = require('./utils');
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
 
-const SUPPORTED_VERSIONS = ['v.0.30', 'v.0.29'];
+const SUPPORTED_VERSIONS = [
+  'v.0.30',
+  'v.0.29',
+  'v.0.28',
+  'v.0.27',
+  'v.0.26',
+  'v.0.25',
+  'v.0.24',
+  'v.0.23',
+];
 const LATEST_VERSION = 'v.0.31';
 
 // create a container;

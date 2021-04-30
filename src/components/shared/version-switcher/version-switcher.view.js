@@ -20,7 +20,8 @@ export const VersionSwitcher = ({
       return;
     }
 
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname.replace('docs/', '');
+
     let newPath;
 
     if (currentVersion === LATEST_VERSION) {

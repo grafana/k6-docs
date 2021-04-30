@@ -267,8 +267,6 @@ export const DocLayout = ({
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle && !!pageTranslations;
 
-  console.log('page meta', pageMetadata);
-
   return (
     <div className={styles.wrapper}>
       <SEO pageTranslations={pageTranslations} {...pageMetadata} />
