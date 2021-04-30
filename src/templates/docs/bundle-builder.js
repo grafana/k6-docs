@@ -7,42 +7,45 @@ import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
-const bundleBuilderSidebar = {
-  name: 'ecosystem',
-  meta: {
-    title: 'Ecosystem',
-    path: '/ecosystem/',
-  },
-  children: {
-    Ecosystem: {
-      name: 'ecosystem',
-      meta: {
-        title: 'Ecosystem',
-        path: '/ecosystem/',
-      },
-      children: {
-        Explore: {
-          name: 'Explore',
-          meta: {
-            title: 'Explore',
-            isActiveSidebarLink: true,
-            path: '/ecosystem/',
-          },
-          children: {},
-        },
-        'Build Bundle': {
-          name: 'Build Bundle',
-          meta: {
-            title: 'Build Bundle',
-            isActiveSidebarLink: true,
-            path: '/ecosystem/bundle-builder/',
-          },
-          children: {},
-        },
-      },
-    },
-  },
-};
+import { ecosystemSidebar } from './ecosystem';
+
+const bundleBuilderSidebar = ecosystemSidebar;
+// {
+//   name: 'ecosystem',
+//   meta: {
+//     title: 'Ecosystem',
+//     path: '/ecosystem/',
+//   },
+//   children: {
+//     Ecosystem: {
+//       name: 'ecosystem',
+//       meta: {
+//         title: 'Ecosystem',
+//         path: '/ecosystem/',
+//       },
+//       children: {
+//         Explore: {
+//           name: 'Explore',
+//           meta: {
+//             title: 'Explore',
+//             isActiveSidebarLink: true,
+//             path: '/ecosystem/',
+//           },
+//           children: {},
+//         },
+//         'Build Bundle': {
+//           name: 'Build Bundle',
+//           meta: {
+//             title: 'Build Bundle',
+//             isActiveSidebarLink: true,
+//             path: '/ecosystem/bundle-builder/',
+//           },
+//           children: {},
+//         },
+//       },
+//     },
+//   },
+// };
 
 const breadcrumbs = [
   {
