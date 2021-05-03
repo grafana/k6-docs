@@ -26,7 +26,7 @@ you run your test, meaning you'll need to handle the extraction of this data fro
 to include it in subsequent requests. This issue is fairly common with any site that has forms
 and can be handled with a little bit of scripting.
 
-### Extracting values/tokens from JSON response
+### Extracting values/tokens from a JSON response
 
 <CodeGroup labels={["extract-json.js"]} lineNumbers={[true]}>
 
@@ -108,3 +108,38 @@ export default function() {
 - [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find-selector) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
   docs are also a good resource on what possible selector queries can be made)
 - [Selection.attr(name)](/javascript-api/k6-html/selection/selection-attr-name)
+
+### Generic extraction of values/tokens
+
+Sometimes, responses may be neither JSON nor HTML, in which case the above extraction methods would not apply. In these situations, you would likely want to operate directly on the `Response.body` string using a simple function capable of extracting a string at some known location. This is typically achieved by looking for the string "boundaries" immediately before (left) and after (right) the value needing extraction.
+
+The [jslib](/javascript-api/jslib/) [utils](/javascript-api/jslib/utils/) library contains an example of this kind of function, called [findBetween](/javascript-api/jslib/utils/findbetween-content-left-right). The function makes use of JavaScript's built-in [String.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) and therefore does not depend on the use of potentially expensive regular expression operations.
+
+#### Extracting a value/token using findBetween
+
+<CodeGroup labels={["extract-findBetween.js"]} lineNumbers={[true]}>
+
+```javascript
+import { findBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { check } from 'k6';
+import http from 'k6/http';
+
+export default function() {
+  // This request returns XML:
+  const res = http.get('https://httpbin.test.k6.io/xml');
+
+  // Use findBetween to extract the first title encountered:
+  const title = findBetween(res.body, '<title>', '</title>');
+
+  check(title, {
+    'title is correct': (t) => t === 'Wake up to WonderWidgets!'
+  });
+}
+```
+
+</CodeGroup>
+
+**Relevant k6 APIs**:
+
+- [Response.body](/javascript-api/k6-http/response)
+- [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween-content-left-right)
