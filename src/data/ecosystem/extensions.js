@@ -311,6 +311,30 @@ const extensions = [
     official: false,
     categories: ['Misc'],
   },
+  {
+    name: 'xk6-docker',
+    description: 'A k6 extension for Docker.',
+    url: 'https://github.com/k6io/xk6-docker',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Containers'],
+  },
+  {
+    name: 'xk6-ssh',
+    description: 'A k6 extension for SSH.',
+    url: 'https://github.com/k6io/xk6-ssh',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
 ];
 
 export default extensions;
