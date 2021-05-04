@@ -96,9 +96,8 @@ export default function () {
 ```
 
 </CodeGroup>
-Example how to overwrite discardResponseBodies:
 
-### Example of overwrite discardResponseBodies
+### Example of overriding discardResponseBodies
 
 <CodeGroup labels={[]}>
 
@@ -108,7 +107,7 @@ import http from 'k6/http';
 export var options = { discardResponseBodies: true };
 export default function () {}
 export function setup() {
-  // Get 10 random bytes in as an array of ints/bytes, without the responseType the body will be null
+  // Get 10 random bytes as an array of ints/bytes, without the responseType the body will be null
   const response = http.get('https://httpbin.org/bytes/10', {
     responseType: 'binary',
   });
