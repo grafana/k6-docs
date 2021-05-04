@@ -101,14 +101,6 @@ export let options = {
 };
 ```
 
-<Blockquote mod='info'>
-
-#### `X-License-Key` as query parameter
-
-In the above example, the `X-License-Key` is passed as `credentials.token`, instead it can be used as a query parameter. So, you can specify `https://metric-api.newrelic.com/prometheus/v1/write?X-License-Key=<YOUR_LICENSE_KEY>&prometheus_server=<YOUR_DATA_SOURCE_NAME>` as your `remoteWriteURL` for both URL and authentication.
-
-</Blockquote>
-
 ### Prometheus Remote Write Setup on Grafana Cloud
 
 For sending custom metrics from your test run to Grafana Cloud's Prometheus remote write integration, follow the [instructions](https://grafana.com/docs/grafana-cloud/metrics/prometheus/#sending-data-from-prometheus) on their documentation.
