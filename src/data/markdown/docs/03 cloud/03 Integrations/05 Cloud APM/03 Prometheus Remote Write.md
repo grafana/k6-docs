@@ -30,8 +30,8 @@ Currently only bearer token and HTTP basic authentication mechanisms are support
 
 ```javascript
 credentials: {
-    username: "<username>",
-    password: "<password>"
+  username: "<username>",
+  password: "<password>"
 }
 ```
 
@@ -43,7 +43,7 @@ credentials: {
 
 ```javascript
 credentials: {
-    token: "<token>"
+  token: "<token>"
 }
 ```
 
@@ -60,7 +60,7 @@ export let options = {
           provider: "prometheus",
           remoteWriteURL: "<Remote Write URL>", // This can include query-string parameters
           credentials: {
-              token: "<token>" // Optional
+            token: "<token>" // Optional
           },
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
@@ -78,27 +78,7 @@ For sending custom metrics from your test run to New Relic's Prometheus remote w
 
 The `prometheus_server` parameter should be included in the `remoteWriteURL` configuration parameter. The bearer token can be included either as `credentials.token` (APM configuration parameter) or as part of the `remoteWriteURL` using the `X-License-Key` parameter, as mentioned in their documentation.
 
-So an example configuration for New Relic might look like this, if you use `X-License-Key` in your `remoteWriteURL`:
-
-```javascript
-export let options = {
-  ext: {
-    loadimpact: {
-      apm: [
-        {
-          provider: "prometheus",
-          remoteWriteURL: "https://metric-api.newrelic.com/prometheus/v1/write?X-License-Key=<YOUR_LICENSE_KEY>&prometheus_server=<YOUR_DATA_SOURCE_NAME>",
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          includeDefaultMetrics: true,
-          includeTestRunId: false
-        },
-      ]
-    },
-  },
-};
-```
-
-The `X-License-Key` can also be used as `credentials.token`, as shown below:
+So an example configuration for New Relic might look like this, with `X-License-Key` used as `token` in `credentials` would be:
 
 ```javascript
 export let options = {
@@ -109,7 +89,45 @@ export let options = {
           provider: "prometheus",
           remoteWriteURL: "https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=<YOUR_DATA_SOURCE_NAME>",
           credentials: {
-              token: "<YOUR_LICENSE_KEY>"
+            token: "<YOUR_LICENSE_KEY>"
+          },
+          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          includeDefaultMetrics: true,
+          includeTestRunId: false
+        },
+      ]
+    },
+  },
+};
+```
+
+<Blockquote mod='info'>
+
+#### `X-License-Key` as query parameter
+
+In the above example, the `X-License-Key` is passed as `credentials.token`, instead it can be used as a query parameter. So, you can specify `https://metric-api.newrelic.com/prometheus/v1/write?X-License-Key=<YOUR_LICENSE_KEY>&prometheus_server=<YOUR_DATA_SOURCE_NAME>` as your `remoteWriteURL` for both URL and authentication.
+
+</Blockquote>
+
+### Prometheus Remote Write Setup on Grafana Cloud
+
+For sending custom metrics from your test run to Grafana Cloud's Prometheus remote write integration, follow the [instructions](https://grafana.com/docs/grafana-cloud/metrics/prometheus/#sending-data-from-prometheus) on their documentation.
+
+As also mentioned in their documentation, you can find the `remoteWriteURL`, username and password for your metrics endpoint by clicking on `Details` in the Prometheus card of the Grafana [Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/). When you are [creating an API key](https://grafana.com/docs/grafana-cloud/cloud-portal/create-api-key/) on Grafana Cloud Portal to be used as password, make sure to use `MetricsPublisher` as role.
+
+An example configuration for Grafana Cloud might look like this:
+
+```javascript
+export let options = {
+  ext: {
+    loadimpact: {
+      apm: [
+        {
+          provider: "prometheus",
+          remoteWriteURL: "https://prometheus-us-central1.grafana.net/api/prom/push",
+          credentials: {
+            username: "<Your Metrics instance ID>",
+            password: "<Your Grafana.com API Key>"
           },
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
