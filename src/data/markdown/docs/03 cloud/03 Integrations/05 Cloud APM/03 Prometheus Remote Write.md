@@ -72,7 +72,7 @@ export let options = {
 };
 ```
 
-## Prometheus Remote Write Setup on New Relic
+## New Relic Setup
 
 For sending custom metrics from your test run to New Relic's Prometheus remote write integration, follow the [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) on their documentation.
 
@@ -101,7 +101,7 @@ export let options = {
 };
 ```
 
-### Prometheus Remote Write Setup on Grafana Cloud
+## Grafana Cloud Setup
 
 For sending custom metrics from your test run to Grafana Cloud's Prometheus remote write integration, follow the [instructions](https://grafana.com/docs/grafana-cloud/metrics/prometheus/#sending-data-from-prometheus) on their documentation.
 
