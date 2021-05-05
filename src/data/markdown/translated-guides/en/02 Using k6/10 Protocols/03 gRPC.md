@@ -13,4 +13,4 @@ faster to transmit and more compact. In the benchmarks we've seen between gRPC a
 gRPC has proved to be a lot faster than it's more traditional counterpart. The messages and services
 used for gRPC are described in `.proto` files, containing [Protocol Buffers](https://en.wikipedia.org/wiki/Protocol_Buffers) (protobuf) definitions.
 
-Starting with k6 v0.29.0, we support unary gRPC requests via the [k6/net/grpc](/javascript-api/k6-net-grpc) built-in module.
+Starting with k6 v0.29.0, we support unary gRPC requests via the [k6/net/grpc](/javascript-api/k6-net-grpc) built-in module. For further information, read more on [our tutorial about performance testing gRPC services](https://k6.io/blog/performance-testing-grpc-services/).

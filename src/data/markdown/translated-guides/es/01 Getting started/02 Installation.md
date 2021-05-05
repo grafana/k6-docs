@@ -7,6 +7,14 @@ excerpt: 'Instrucciones para installar k6 en Linux, Mac, or Windows. Usa Docker 
 
 ### Debian/Ubuntu
 
+> #### 🧠 Si usas una imagen que le falte  `ca-certificates` o `gnupg2`
+> 
+> Necesitas instalar primero esos paquetes con añadiendo el comando:
+> 
+> ```bash
+> $ sudo apt-get update && apt-get install ca-certificates gnupg2 -y
+> ```
+
 ```bash
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
 $ echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
