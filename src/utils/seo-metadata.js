@@ -23,6 +23,13 @@ export default {
         'The extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.',
     },
   },
+  'bundle-builder': {
+    data: {
+      title: 'k6 Bundle Builder',
+      description:
+        'Easily create your own bespoke k6 binary with all the extensions you want to run using the bundle builder and xk6.',
+    },
+  },
   examples: {
     data: {
       title: 'k6 Examples & Tutorials',

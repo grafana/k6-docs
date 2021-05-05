@@ -60,7 +60,7 @@ const breadcrumbs = [
 
 export default function ({ pageContext: { navLinks } }) {
   useScrollToAnchor();
-  const pageMetadata = SeoMetadata.ecosystem;
+  const pageMetadata = SeoMetadata['bundle-builder'];
 
   return (
     <LocaleProvider>
