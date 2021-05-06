@@ -30,9 +30,31 @@ This will take you to an editor where you can customize and download the summary
 
 ### Adding or Removing Metrics
 
-By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a variety of pre-defined metrics that can be included.
+By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a variety of predefined metrics that can be included.
 
-![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
+![Adding or Removing Metrics - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
+
+### Summarizing the Results
+
+#### Editing
+
+![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_edit_text.png)
+
+Each section in the summary comes with a predefined text. You can edit this text by clicking on the edit icon or by clicking on the text itself.
+
+When you are satisfied with your changes, simply click outside the text editor to save your changes. If you want to cancel and revert your changes, you can click the cancel icon next to the editor or use the ESC key on your keyboard.
+
+#### Formatting
+
+![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_text_formatting.png)
+
+You can apply formatting to your text by selecting the text you want to format and choosing the appropriate formatting from the popup. It's also possible to use the following keyboard shortcuts to apply formatting:
+
+| Shortcut            | Format                                                    |
+| ------------------- | --------------------------------------------------------- |
+| Ctrl / &#x2318; + B | **Bold**                                                  |
+| Ctrl / &#x2318; + I | _Italic_                                                  |
+| Ctrl / &#x2318; + U | <span style="text-decoration: underline">Underline</span> |
 
 ### Generating the PDF
 
