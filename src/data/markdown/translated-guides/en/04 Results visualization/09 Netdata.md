@@ -1,6 +1,6 @@
 ---
-title: 'Datadog'
-excerpt: 'The Datadog integration allows visualizing load test results and correlating performance testing metrics in Datadog.'
+title: 'Netdata'
+excerpt: 'The Netdata integration allows visualizing load test results with zero configuration, in seconds'
 ---
 
 K6 can send performance testing metrics to [Netdata](https://netdata.cloud). This enables the user to start monitoring it's K6 experiments right away, as Netdata is a monitoring tool with:
@@ -19,9 +19,7 @@ Alternatively, you can read more about installing and running Netdata in our [do
 
 ## Setup Netdata for K6
 
-??
-
-You don't need to do anything really. Netdata runs a fully functional [StatsD]() server by default and we have included a default configuration file for k6 metrics. 
+Netdata runs a fully functional [StatsD](https://learn.netdata.cloud/docs/agent/collectors/statsd.plugin) server by default and we have included a default configuration file for k6 metrics. 
 
 ## Run the k6 test
 
