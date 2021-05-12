@@ -397,7 +397,8 @@ const extensions = [
   },
   {
     name: 'xk6-jose',
-    description: 'A k6 extension for Javascript Object Signing and Encryption (JOSE) standards.',
+    description:
+      'A k6 extension for Javascript Object Signing and Encryption (JOSE) standards.',
     url: 'https://github.com/szkiba/xk6-jose',
     logo: '',
     author: {
