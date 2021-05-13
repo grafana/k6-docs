@@ -62,18 +62,16 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 Once the agent is running, [install](/getting-started/installation) k6 and [run](/getting-started/running-k6) the test, so that the metrics gets sent to the agent with the following command:
 
+<CodeGroup labels={[]}>
+
+
 ```bash
-$ k6 run --out statsd script.js
+$ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
 ```
 
-The following options can be configured as environment variables, depending on the agent's configuration:
+</CodeGroup>
 
-| Name                      | Value                                                                                                  |
-| ------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `K6_STATSD_ADDR`          | Address of the statsd service, currently only UDP is supported. The default value is `localhost:8125`. |
-| `K6_STATSD_NAMESPACE`     | The namespace used as a prefix for all the metric names. The default value is `k6`.                    |
-| `K6_STATSD_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                  |
-| `K6_STATSD_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                            |
+Please look at [StatsD](/results-visualization/statsd) output page for configuration options.
 
 ## Visualize k6 metrics in Amazon CloudWatch
 

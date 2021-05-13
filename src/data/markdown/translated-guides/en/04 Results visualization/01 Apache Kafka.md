@@ -3,6 +3,12 @@ title: 'Apache Kafka'
 excerpt: 'When running a test, k6 can send the metrics in real-time to Kafka. Apache Kafka is a stream-processing platform for handling real-time data.'
 ---
 
+<Blockquote mod="warning">
+
+The Kafka result output is deprecated. Please use the [output extension](https://github.com/k6io/xk6-output-kafka) instead.
+
+</Blockquote>
+
 [Apache Kafka](https://kafka.apache.org) is a stream-processing platform for handling real-time data.
 
 When running a test, k6 can send the metrics in real-time to Kafka.
