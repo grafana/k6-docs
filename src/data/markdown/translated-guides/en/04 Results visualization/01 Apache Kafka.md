@@ -5,7 +5,7 @@ excerpt: 'When running a test, k6 can send the metrics in real-time to Kafka. Ap
 
 <Blockquote mod="warning">
 
-The kafka result output is deprecated please use the [output extension](https://github.com/k6io/xk6-output-kafka)
+The Kafka result output is deprecated. Please use the [output extension](https://github.com/k6io/xk6-output-kafka) instead.
 
 </Blockquote>
 

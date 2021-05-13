@@ -69,7 +69,7 @@ $ K6_STATSD_ENABLE_TAGS=true 6 run --out statsd script.js
 
 </CodeGroup>
 
-Please look at [StatsD](/results-visualization/statsd) output page for configuration options.
+Please look at the [StatsD](/results-visualization/statsd) output page for configuration options.
 
 ## Visualisation in New Relic
 

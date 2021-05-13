@@ -22,4 +22,4 @@ The following options can be configured:
 | `K6_STATSD_PUSH_INTERVAL` | Configure how often data batches are sent. The default value is `1s`.                                  |
 | `K6_STATSD_BUFFER_SIZE`   | The buffer size. The default value is `20`.                                                            |
 | `K6_STATSD_ENABLE_TAGS`   | If `true` enables sending tags. `false` by default as old versions of statsd, prior to v0.9.0 did not support tags. |
-| `K6_STATSD_TAG_BLOCKLIST` | This is a comma-separated list of tags that should NOT be sent to statsd. For example, "tag1, tag2". The default value is empty. |
+| `K6_STATSD_TAG_BLOCKLIST` | This is a comma-separated list of tags that should NOT be sent to statsd. For example, "tag1,tag2". The default value is empty. |
