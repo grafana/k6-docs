@@ -716,6 +716,8 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/k6-metrics/rate/',
     '/javascript-api/k6-metrics/trend-k6-metrics':
       '/javascript-api/k6-metrics/trend/',
+    '/javascript-api/k6-encoding/b64decode-input-encoding/':
+      '/javascript-api/k6-encoding/b64decode-input-encoding-format/',
     '/using-k6/archives-for-bundling-sharing-a-test': '/misc/archive-command/',
     '/using-k6/ssl-tls': '/using-k6/protocols/ssl-tls/',
     '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp':

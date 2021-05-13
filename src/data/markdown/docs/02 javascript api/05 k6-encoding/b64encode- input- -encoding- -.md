@@ -28,8 +28,7 @@ export default function () {
   let enc = 'aGVsbG8gd29ybGQ=';
   let buf = new Uint8Array([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]).buffer;
   check(null, {
-    'is encoding correct': () => encoding.b64encode(str) === enc,
-    'is decoding correct': () => encoding.b64decode(enc) === str,
+    'is encoding string correct': () => encoding.b64encode(str) === enc,
     'is encoding ArrayBuffer correct': () => encoding.b64encode(buf) === enc,
   });
 }
