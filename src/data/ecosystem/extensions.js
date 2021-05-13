@@ -290,7 +290,7 @@ const extensions = [
   {
     name: 'xk6-encoding',
     description: '',
-    url: 'https://github.com/MStoykov/xk6-encoding',
+    url: 'https://github.com/mstoykov/xk6-encoding',
     logo: '',
     author: {
       name: 'Mihail Stoykov',
@@ -302,7 +302,7 @@ const extensions = [
   {
     name: 'xk6-counter',
     description: '',
-    url: 'https://github.com/MStoykov/xk6-counter',
+    url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
       name: 'Mihail Stoykov',
