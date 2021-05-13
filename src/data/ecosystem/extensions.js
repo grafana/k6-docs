@@ -335,6 +335,91 @@ const extensions = [
     official: false,
     categories: ['Misc'],
   },
+  {
+    name: 'xk6-yaml',
+    description: 'A k6 extension for encode and decode YAML values.',
+    url: 'https://github.com/szkiba/xk6-yaml',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-toml',
+    description: 'A k6 extension for encode and decode TOML values.',
+    url: 'https://github.com/szkiba/xk6-toml',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-csv',
+    description: 'A k6 extension for parse CSV values.',
+    url: 'https://github.com/szkiba/xk6-csv',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-ansible-vault',
+    description: 'A k6 extension for encrypt and decrypt Ansible Valult.',
+    url: 'https://github.com/szkiba/xk6-ansible-vault',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-crypto',
+    description: 'A k6 extension for using extended crypto functions.',
+    url: 'https://github.com/szkiba/xk6-crypto',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
+  {
+    name: 'xk6-jose',
+    description:
+      'A k6 extension for Javascript Object Signing and Encryption (JOSE) standards.',
+    url: 'https://github.com/szkiba/xk6-jose',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
+  {
+    name: 'xk6-prometheus',
+    description: 'A k6 output extension implements Prometheus HTTP exporter.',
+    url: 'https://github.com/szkiba/xk6-prometheus',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Reporting', 'Observability'],
+  },
 ];
 
 export default extensions;
