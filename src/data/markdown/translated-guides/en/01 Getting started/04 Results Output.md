@@ -120,6 +120,7 @@ The available built-in outputs currently are:
 | [Datadog](/results-visualization/datadog)                     | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`  |
 | [InfluxDB](/results-visualization/influxdb-+-grafana)         | `k6 run --out influxdb` |
 | [JSON](/results-visualization/json)                           | `k6 run --out json`     |
+| [Netdata](/results-visualization/netdata)                     | `k6 run --out statsd`   |
 | [New Relic](/results-visualization/new-relic)                 | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`   |
 | [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
 
