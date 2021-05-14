@@ -14,7 +14,7 @@ excerpt: 'Instructions to install k6 in Linux, Mac, Windows. Use the Docker cont
 > packages with the following command:
 > 
 > ```bash
-> $ sudo apt-get update && apt-get install ca-certificates gnupg2 -y
+> $ sudo apt-get update && sudo apt-get install ca-certificates gnupg2 -y
 > ```
 
 ```bash
