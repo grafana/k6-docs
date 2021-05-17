@@ -609,7 +609,7 @@ function getJsAPIVersionedPagesProps({
       )}`;
 
       const pageVersion = SUPPORTED_VERSIONS.find((version) =>
-        strippedDirectory.startsWith(`${version}/`),
+        strippedDirectory.startsWith(version),
       );
 
       const slug = getSlug(path);
@@ -617,7 +617,9 @@ function getJsAPIVersionedPagesProps({
       const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
 
       // path collision check
-      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+      if (
+        !pathCollisionDetectorInstance.add({ path: pageSlug, name }).isUnique()
+      ) {
         // skip the page creation if there is already a page with identical url
         return false;
       }
@@ -636,7 +638,8 @@ function getJsAPIVersionedPagesProps({
         },
       };
 
-      let breadcrumbs = compose(buildBreadcrumbs, dedupePath, unorderify)(path);
+      const pathForBreadcrumbs = compose(dedupePath, unorderify)(path);
+      let breadcrumbs = buildBreadcrumbs(pathForBreadcrumbs, true);
       breadcrumbs = breadcrumbs.map((item) =>
         SUPPORTED_VERSIONS.includes(item.name)
           ? {
@@ -649,6 +652,10 @@ function getJsAPIVersionedPagesProps({
       breadcrumbs = breadcrumbs.filter(
         (item) => item.path !== '/' && item.path !== '/javascript-api/',
       );
+
+      if (strippedDirectory.startsWith('v0.30/07 k6-http')) {
+        console.log('DIR', strippedDirectory, 'PATH', path, 'BR', breadcrumbs);
+      }
 
       return {
         path: pageSlug || '/',

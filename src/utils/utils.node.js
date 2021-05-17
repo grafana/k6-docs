@@ -37,7 +37,7 @@ const translatePath = (path, locale) =>
     .join('/');
 
 // buildBreadcrumbs(path: String) -> Array<Object>
-const buildBreadcrumbs = (path) => {
+const buildBreadcrumbs = (path, versioned = false) => {
   let accumulatedPath = '';
   return path.split('/').map((part, i) => {
     accumulatedPath += `/${part}`;
@@ -48,6 +48,8 @@ const buildBreadcrumbs = (path) => {
         ? 'Javascript API'
         : part.slice(0, 1).toUpperCase() + part.slice(1);
     } else if (i === 1) {
+      name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
+    } else if (i === 2 && versioned) {
       name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
     } else {
       name = part;
