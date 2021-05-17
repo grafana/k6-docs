@@ -46,18 +46,24 @@ export const SEO = ({
   };
 
   if (pageTranslations) {
-    let esPathname = pageTranslations.es.path;
-    let enPathname = pageTranslations.en.path;
+    if (pageTranslations.es) {
+      let esPathname = pageTranslations.es.path;
+      // make sure each link has trailing slash
+      if (!esPathname.endsWith('/')) {
+        esPathname = `${esPathname}/`;
+      }
+      hrefLangAttributes.es.href += esPathname;
+    }
 
-    // make sure each link has trailing slash
-    if (!esPathname.endsWith('/')) {
-      esPathname = `${esPathname}/`;
+    if (pageTranslations.en) {
+      let enPathname = pageTranslations.en.path;
+      // make sure each link has trailing slash
+      if (!enPathname.endsWith('/')) {
+        enPathname = `${enPathname}/`;
+      }
+
+      hrefLangAttributes.en.href += enPathname;
     }
-    if (!enPathname.endsWith('/')) {
-      enPathname = `${enPathname}/`;
-    }
-    hrefLangAttributes.es.href += esPathname;
-    hrefLangAttributes.en.href += enPathname;
   }
 
   return (
@@ -96,14 +102,14 @@ export const SEO = ({
             rel="alternate"
           />
         )}
-        {pageTranslations && pageTranslations.es !== undefined && (
+        {pageTranslations && pageTranslations.es && (
           <link
             hrefLang="es"
             href={`${hrefLangAttributes.es.href}`}
             rel="alternate"
           />
         )}
-        {pageTranslations && (
+        {pageTranslations && pageTranslations.en && (
           <link
             hrefLang="x-default"
             href={`${hrefLangAttributes.en.href}`}
