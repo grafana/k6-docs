@@ -1,11 +1,8 @@
 import classNames from 'classnames';
 import { navigate } from 'gatsby';
 import React, { useState } from 'react';
-import {
-  SUPPORTED_VERSIONS,
-  LATEST_VERSION,
-  addTrailingSlash,
-} from 'utils/utils.node';
+import { addTrailingSlash } from 'utils/utils.node';
+import { SUPPORTED_VERSIONS, LATEST_VERSION } from 'utils/versioning';
 
 import styles from './version-switcher.module.scss';
 

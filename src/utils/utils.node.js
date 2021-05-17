@@ -2,12 +2,10 @@
 const { pathTranslations } = require('../i18n/path-translations');
 
 const { slugify, compose, stripDirectoryPath } = require('./utils');
+const { SUPPORTED_VERSIONS, LATEST_VERSION } = require('./versioning');
 
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
-
-const SUPPORTED_VERSIONS = ['v0.30'];
-const LATEST_VERSION = 'v0.31';
 
 // create a container;
 const utils = {};

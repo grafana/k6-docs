@@ -10,7 +10,6 @@ const {
 const {
   SUPPORTED_LOCALES,
   DEFAULT_LOCALE,
-  SUPPORTED_VERSIONS,
   pathCollisionDetector,
   buildFileTree,
   buildFileTreeNode,
@@ -25,6 +24,7 @@ const {
   getSlug,
   getTranslatedSlug,
 } = require('./src/utils/utils.node');
+const { SUPPORTED_VERSIONS } = require('./src/utils/versioning');
 
 /* constants */
 // auxilary flag to determine the environment (staging/prod)
