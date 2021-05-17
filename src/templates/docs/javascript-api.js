@@ -70,6 +70,7 @@ export default function ({
         navLinks={navLinks}
         pageMetadata={pageMetadata}
         version={version}
+        path="/javascript-api/"
       >
         <PageInfo
           title={'JavaScript API'}

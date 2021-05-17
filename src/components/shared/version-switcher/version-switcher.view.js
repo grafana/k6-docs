@@ -11,6 +11,7 @@ import styles from './version-switcher.module.scss';
 
 export const VersionSwitcher = ({
   currentVersion = LATEST_VERSION,
+  path,
   className,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ export const VersionSwitcher = ({
       return;
     }
 
-    const currentPath = window.location.pathname.replace('docs/', '');
+    const currentPath = path;
 
     let newPath;
 

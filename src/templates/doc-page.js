@@ -42,6 +42,7 @@ export default function (props) {
         pageTranslations={frontmatter.translations}
         locale={locale}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
+        path={path}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} />

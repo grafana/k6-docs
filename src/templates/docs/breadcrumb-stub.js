@@ -43,6 +43,7 @@ export default function (props) {
         pageTranslations={translations}
         pageMetadata={pageMetadata}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
+        path={path}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />

@@ -228,6 +228,7 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
+  path,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -284,6 +285,7 @@ export const DocLayout = ({
             <VersionSwitcher
               currentVersion={version}
               className={styles.versionSwitcher}
+              path={path}
             />
           )}
         </div>
