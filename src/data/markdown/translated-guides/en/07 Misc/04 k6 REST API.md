@@ -540,7 +540,7 @@ For more detail about the setup stage please go to [Test life cycle](/using-k6/t
 
 ## Update Setup
 
-**PATCH** `http://localhost:6565/v1/setup`
+**PUT** `http://localhost:6565/v1/setup`
 
 <CodeGroup labels={["cURL Request", "Response"]}>
 
