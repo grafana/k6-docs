@@ -8,7 +8,7 @@ import { docs } from 'utils/urls';
 export const SEO = ({
   data: { title, description, image, slug } = {},
   facebook,
-  pageTranslations = {},
+  pageTranslations = null,
 } = {}) => {
   const {
     site: {
@@ -35,9 +35,10 @@ export const SEO = ({
       }
     }
   `);
+
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
-  const currentUrl = slug ? `${docs}/${slug}` : docs;
+  const currentUrl = slug && slug !== '*' ? `${docs}/${slug}` : docs;
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
   const hrefLangAttributes = {

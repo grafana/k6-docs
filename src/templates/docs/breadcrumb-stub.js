@@ -9,7 +9,6 @@ import { childrenToList, slugify } from 'utils';
 
 export default function (props) {
   const {
-    path,
     pageContext: {
       sidebarTree,
       breadcrumbs,
@@ -25,8 +24,6 @@ export default function (props) {
     data: {
       title,
       description: ' ',
-      // remove leading slash
-      slug: path.slice(1),
     },
   };
 

@@ -34,7 +34,6 @@ const pageInfo = {
 };
 
 function GuidesContent({
-  path,
   pageContext: { sidebarTree, navLinks, locale = 'en' },
 }) {
   useScrollToAnchor();
@@ -44,7 +43,7 @@ function GuidesContent({
       ...(locale === 'es'
         ? SeoMetadata.guidesES.data
         : SeoMetadata.guides.data),
-      slug: path.slice(1),
+      slug: locale === 'es' ? 'es/' : '',
     },
   };
   const contentContainerRef = useRef(null);
