@@ -8,7 +8,7 @@ export const VersionBanner = ({ version, path }) => (
     <div className={'container'}>
       <div className={styles.inner}>
         <span className={styles.message}>
-          This is archived documentation for <b>{version}</b>. Go to the{' '}
+          ⚠️ This is archived documentation for <b>{version}</b>. Go to the{' '}
           <Link
             className={'link'}
             to={path.replace(
