@@ -1,3 +1,1 @@
-import VersionBanner from './version-banner';
-
-export default VersionBanner;
+export { VersionBanner } from './version-banner';

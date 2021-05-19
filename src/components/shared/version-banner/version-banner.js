@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles from './version-banner.module.scss';
 
-const VersionBanner = ({ version, path }) => (
+export const VersionBanner = ({ version, path }) => (
   <div className={styles.wrapper}>
     <div className={'container'}>
       <div className={styles.inner}>
@@ -23,5 +23,3 @@ const VersionBanner = ({ version, path }) => (
     </div>
   </div>
 );
-
-export default VersionBanner;

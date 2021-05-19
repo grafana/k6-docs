@@ -13,7 +13,7 @@ import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
-import VersionBanner from 'components/shared/version-banner';
+import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
