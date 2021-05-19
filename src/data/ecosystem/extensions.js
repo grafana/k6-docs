@@ -422,7 +422,7 @@ const extensions = [
   },
   {
     name: 'xk6-cache',
-    description: 
+    description:
       'A k6 extension enables vendoring remote HTTP modules to single source control friendly file.',
     url: 'https://github.com/szkiba/xk6-cache',
     logo: '',
