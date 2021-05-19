@@ -652,10 +652,6 @@ function getJsAPIVersionedPagesProps({
         (item) => item.path !== '/' && item.path !== '/javascript-api/',
       );
 
-      if (strippedDirectory.startsWith('v0.30/07 k6-http')) {
-        console.log('DIR', strippedDirectory, 'PATH', path, 'BR', breadcrumbs);
-      }
-
       return {
         path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
