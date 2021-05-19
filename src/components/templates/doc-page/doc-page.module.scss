@@ -16,6 +16,14 @@
     width: 100%;
     padding: 0 20px;
   }
+
+  &.versioned {
+    margin-top: 165px;
+
+    @include sm-down {
+      margin-top: 240px;
+    }
+  }
 }
 
 .main-doc-content {

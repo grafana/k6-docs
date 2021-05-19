@@ -75,6 +75,7 @@ export default function ({
         <PageInfo
           title={'JavaScript API'}
           description={'Welcome to the k6 JavaScript API documentation.'}
+          className={version !== LATEST_VERSION && jsApiStyles.info}
         />
         <div className={docPageContent.inner}>
           <StickyContainer>

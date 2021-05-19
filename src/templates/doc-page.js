@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
 import { styles as codeStyles } from 'components/shared/code';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
@@ -44,7 +45,12 @@ export default function (props) {
         version={isJsAPIPage ? version || LATEST_VERSION : null}
         path={path}
       >
-        <div className={`${styles.container}`}>
+        <div
+          className={classNames(
+            styles.container,
+            version && version !== LATEST_VERSION && styles.versioned,
+          )}
+        >
           <Breadcrumbs items={breadcrumbs} />
           <DocPageTitleGroup
             title={frontmatter.title}
