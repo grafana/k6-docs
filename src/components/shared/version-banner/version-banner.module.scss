@@ -1,0 +1,15 @@
+.wrapper {
+  position: absolute;
+  width: 100%;
+  top: 85px;
+  background: $color-warning;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: $color-tertiary;
+  border: 1px solid $color-warning-border;
+}
+.message {
+  color: $color-primary;
+}

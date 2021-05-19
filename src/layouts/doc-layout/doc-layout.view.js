@@ -13,6 +13,7 @@ import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
+import VersionBanner from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
@@ -26,6 +27,7 @@ import {
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
+import { LATEST_VERSION } from 'utils/versioning';
 
 import styles from './doc-layout.module.scss';
 
@@ -362,6 +364,9 @@ export const DocLayout = ({
             </div>
           </div>
         </Header>
+        {version && version !== LATEST_VERSION && (
+          <VersionBanner version={version} path={path} />
+        )}
 
         {children}
         <MobileNav
