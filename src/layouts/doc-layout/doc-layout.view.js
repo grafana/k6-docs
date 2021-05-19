@@ -350,6 +350,16 @@ export const DocLayout = ({
                 )}
               />
             )}
+            {!!version && (
+              <VersionSwitcher
+                currentVersion={version}
+                className={classNames(
+                  styles.versionSwitcher,
+                  styles.versionSwitcherMobile,
+                )}
+                path={path}
+              />
+            )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
           <div className={`col-xl-4 col-12 ${styles.searchBox}`}>
