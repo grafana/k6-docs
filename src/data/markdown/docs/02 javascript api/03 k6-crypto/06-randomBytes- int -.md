@@ -4,17 +4,17 @@ description: 'randomBytes.'
 excerpt: 'randomBytes.'
 ---
 
-Return an array with a number of cryptographically random bytes. It will either return exactly the amount of bytes requested or will throw an exception if something went wrong.
+Return an ArrayBuffer object with a number of cryptographically random bytes. It will either return exactly the amount of bytes requested or will throw an exception if something went wrong.
 
-| Parameter | Type    | Description                       |
-| --------- | ------- | --------------------------------- |
-| int       | integer | The length of the returned array. |
+| Parameter | Type    | Description                             |
+| --------- | ------- | --------------------------------------- |
+| int       | integer | The length of the returned ArrayBuffer. |
 
 ### Returns
 
-| Type  | Description                                   |
-| ----- | --------------------------------------------- |
-| Array | An array with cryptographically random bytes. |
+| Type        | Description                                         |
+| ----------- | --------------------------------------------------- |
+| ArrayBuffer | An ArrayBuffer with cryptographically random bytes. |
 
 ### Example
 
@@ -25,7 +25,8 @@ import crypto from 'k6/crypto';
 
 export default function () {
   const bytes = crypto.randomBytes(42);
-  console.log(bytes);
+  const view = new Uint8Array(bytes);
+  console.log(view); // 156,71,245,191,56,...
 }
 ```
 

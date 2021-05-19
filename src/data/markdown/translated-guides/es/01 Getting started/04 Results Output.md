@@ -111,6 +111,7 @@ La lista de plugins de salida son los siguientes:
 | [Datadog](/es/visualizacion-de-resultados/datadog/)                     | `k6 run --out datadog`  |
 | [InfluxDB](/es/visualizacion-de-resultados/influxdb-+-grafana/)         | `k6 run --out influxdb` |
 | [JSON](/es/visualizacion-de-resultados/json/)                           | `k6 run --out json`     |
+| [Netdata](/es/visualizacion-de-resultados/netdata)                     | `k6 run --out statsd`   |
 | [New Relic](/es/visualizacion-de-resultados/new-relic/)                 | `k6 run --out statsd`   |
 | [StatsD](/es/visualizacion-de-resultados/statsd/)                       | `k6 run --out statsd`   |
 

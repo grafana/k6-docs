@@ -1,4 +1,22 @@
 /* eslint-disable max-len */
+
+/*
+    
+    Thank you for your interest in contributing an extension to the k6 ecosystem! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧
+
+    To make the process of getting your extension accepted as fast as possible, make sure
+    you fill out all of the fields in the list below (except logo, which is optional).
+    
+    The list is currently alphabetized, so it
+    doesn't matter where in the list you place your entry.
+
+    For an extension to be merged, we require the following:
+
+    1. The readme contains one or more usage examples, showing the basics of how to use the extension.
+    2. The repository has the xk6 label
+    3. The readme contains Links to any other relevant documentation a user might need.
+    
+ */
 const extensions = [
   {
     name: 'xk6-kafka',
@@ -17,7 +35,8 @@ const extensions = [
     name: 'xk6-notification',
     description: 'A k6 extension for creating notifications.',
     url: 'https://github.com/dgzlopes/xk6-notification',
-    logo: '',
+    logo:
+      'https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true',
     author: {
       name: 'Daniel González',
       url: 'https://github.com/dgzlopes',
@@ -271,7 +290,7 @@ const extensions = [
   {
     name: 'xk6-encoding',
     description: '',
-    url: 'https://github.com/MStoykov/xk6-encoding',
+    url: 'https://github.com/mstoykov/xk6-encoding',
     logo: '',
     author: {
       name: 'Mihail Stoykov',
@@ -283,7 +302,7 @@ const extensions = [
   {
     name: 'xk6-counter',
     description: '',
-    url: 'https://github.com/MStoykov/xk6-counter',
+    url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
       name: 'Mihail Stoykov',
@@ -291,6 +310,115 @@ const extensions = [
     },
     official: false,
     categories: ['Misc'],
+  },
+  {
+    name: 'xk6-docker',
+    description: 'A k6 extension for Docker.',
+    url: 'https://github.com/k6io/xk6-docker',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Containers'],
+  },
+  {
+    name: 'xk6-ssh',
+    description: 'A k6 extension for SSH.',
+    url: 'https://github.com/k6io/xk6-ssh',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
+  {
+    name: 'xk6-yaml',
+    description: 'A k6 extension for encode and decode YAML values.',
+    url: 'https://github.com/szkiba/xk6-yaml',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-toml',
+    description: 'A k6 extension for encode and decode TOML values.',
+    url: 'https://github.com/szkiba/xk6-toml',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-csv',
+    description: 'A k6 extension for parse CSV values.',
+    url: 'https://github.com/szkiba/xk6-csv',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-ansible-vault',
+    description: 'A k6 extension for encrypt and decrypt Ansible Valult.',
+    url: 'https://github.com/szkiba/xk6-ansible-vault',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
+  {
+    name: 'xk6-crypto',
+    description: 'A k6 extension for using extended crypto functions.',
+    url: 'https://github.com/szkiba/xk6-crypto',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
+  {
+    name: 'xk6-jose',
+    description:
+      'A k6 extension for Javascript Object Signing and Encryption (JOSE) standards.',
+    url: 'https://github.com/szkiba/xk6-jose',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
+  {
+    name: 'xk6-prometheus',
+    description: 'A k6 output extension implements Prometheus HTTP exporter.',
+    url: 'https://github.com/szkiba/xk6-prometheus',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Reporting', 'Observability'],
   },
 ];
 

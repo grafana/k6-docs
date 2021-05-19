@@ -19,7 +19,15 @@ export default {
   ecosystem: {
     data: {
       title: 'k6 Ecosystem',
-      description: 'The k6 Ecosystem is a directory with k6 extensions',
+      description:
+        'The extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.',
+    },
+  },
+  'bundle-builder': {
+    data: {
+      title: 'k6 Bundle Builder',
+      description:
+        'Easily create your own bespoke k6 binary with all the extensions you want to run using the bundle builder and xk6.',
     },
   },
   examples: {

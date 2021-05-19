@@ -47,6 +47,7 @@ Capitan
 corejs
 cron
 crypto
+Ctrl
 Cyber
 datastore
 datetime

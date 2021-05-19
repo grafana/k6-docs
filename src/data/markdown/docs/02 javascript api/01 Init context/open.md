@@ -5,7 +5,7 @@ description: 'Opens a file and reads all the contents into memory.'
 excerpt: 'Opens a file and reads all the contents into memory.'
 ---
 
-Opens a file, reading all its contents into memory for use in the script. 
+Opens a file, reading all its contents into memory for use in the script.
 
 > #### Use [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV and JSON files
 > `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
@@ -30,9 +30,15 @@ See example further down on this page. For more in-depth description see [Runnin
 
 ### Returns
 
-| Type           | Description           |
-| -------------- | ----------------------|
-| string / Array | The contents of the file, returned as string or array of numbers (if `b` was specified as the mode). |
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| string / ArrayBuffer | The contents of the file, returned as string or ArrayBuffer (if `b` was specified as the mode). |
+
+> #### Breaking change in v0.32.0
+> Since k6 v0.32.0 `open(..., 'b')` returns an ArrayBuffer object instead of an array of numbers (bytes).
+> If you need to manipulate the binary data you'll need to wrap the ArrayBuffer
+> object in a [typed array view](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays).
+
 
 <CodeGroup labels={["users.json"]}>
 
@@ -59,18 +65,19 @@ See example further down on this page. For more in-depth description see [Runnin
 
 ```javascript
 import { SharedArray } from "k6/data";
+import { sleep } from "k6";
 
-var data = new SharedArray("users", function() {
-    // here you can open files, and then do additional processing or generate the array with data dynamically
-    var f = JSON.parse(open("./users.json")).;
-    return f; // f must be an array[]
+var data = new SharedArray("users", function () {
+  // here you can open files, and then do additional processing or generate the array with data dynamically
+  var f = JSON.parse(open("./users.json"));
+  return f; // f must be an array[]
 });
 
 export default () => {
-  var randomUser = data[Math.floor(Math.random() * data.length)]
-  console.log(`${user.username}, ${user.password}`);
+  var randomUser = data[Math.floor(Math.random() * data.length)];
+  console.log(`${randomUser.username}, ${randomUser.password}`);
   sleep(3);
-}
+};
 ```
 
 </CodeGroup>

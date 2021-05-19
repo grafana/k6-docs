@@ -268,7 +268,10 @@ export const DocLayout = ({
   }, [location]);
 
   const showLanguageToggle =
-    !I18N_CONFIG.hideLanguageToggle && !!pageTranslations;
+    !I18N_CONFIG.hideLanguageToggle &&
+    !!pageTranslations &&
+    pageTranslations.en &&
+    pageTranslations.es;
 
   return (
     <div className={styles.wrapper}>

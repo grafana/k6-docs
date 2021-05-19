@@ -7,7 +7,7 @@ import styles from './extension-selection.module.scss';
 
 export const ExtensionSelection = () => {
   const [selected, setSelected] = useState([]);
-  const [version, setVersion] = useState('v0.31.0');
+  const [version, setVersion] = useState(null);
 
   const fetchLatestVersion = async (callback) => {
     try {
@@ -35,7 +35,6 @@ export const ExtensionSelection = () => {
     }
   };
 
-  // TODO: always use most recent k6 version
   let code = `$ xk6 build ${version}`;
   selected.forEach((url) => {
     code += ` --with ${url}`;
@@ -43,7 +42,7 @@ export const ExtensionSelection = () => {
 
   return (
     <section className={styles.container}>
-      {code !== '' && (
+      {!!version && (
         <div className={styles.selection}>
           <WithCopyButton
             dataToCopy={code.replace(/^\$\s/gm, '')}

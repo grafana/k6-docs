@@ -111,16 +111,17 @@ If the aggregated [end-of-test summary](/results-visualization/end-of-test-summa
 
 The available built-in outputs currently are:
 
-| Plugin                                                        | Usage                   |
+| Output                                                        | Usage                   |
 | ------------------------------------------------------------- | ----------------------- |
-| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch) | `k6 run --out statsd`   |
-| [Apache Kafka](/results-visualization/apache-kafka)           | `k6 run --out kafka`    |
+| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch) | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`   |
+| [Apache Kafka](/results-visualization/apache-kafka)<sup>deprecated</sup>           | `k6 run --out kafka`    |
 | [Cloud](/results-visualization/cloud)                         | `k6 run --out cloud`    |
 | [CSV](/results-visualization/csv)                             | `k6 run --out csv`      |
-| [Datadog](/results-visualization/datadog)                     | `k6 run --out datadog`  |
+| [Datadog](/results-visualization/datadog)                     | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`  |
 | [InfluxDB](/results-visualization/influxdb-+-grafana)         | `k6 run --out influxdb` |
 | [JSON](/results-visualization/json)                           | `k6 run --out json`     |
-| [New Relic](/results-visualization/new-relic)                 | `k6 run --out statsd`   |
+| [Netdata](/results-visualization/netdata)                     | `k6 run --out statsd`   |
+| [New Relic](/results-visualization/new-relic)                 | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`   |
 | [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
 
 ### Multiple outputs

@@ -10,7 +10,7 @@ import { LATEST_VERSION } from 'utils/utils.node';
 
 export default function (props) {
   const {
-    path = '',
+    path,
     pageContext: {
       sidebarTree,
       breadcrumbs,
@@ -27,12 +27,10 @@ export default function (props) {
     data: {
       title,
       description: ' ',
-      // remove leading slash
-      slug: path.slice(1),
     },
   };
 
-  const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
+  const isJsAPIPage = path ? path.indexOf('/javascript-api/') >= 0 : false;
 
   return (
     <LocaleProvider urlLocale={locale}>

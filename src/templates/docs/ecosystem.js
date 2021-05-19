@@ -3,6 +3,7 @@ import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import EXTENSIONS_DATA from 'data/ecosystem/extensions';
+import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
@@ -20,7 +21,7 @@ EXTENSIONS_DATA.forEach((extension) => {
 
 CATEGORIES = Array.from(CATEGORIES).sort();
 
-const ecosystemSidebar = {
+export const ecosystemSidebar = {
   name: 'ecosystem',
   meta: {
     title: 'Ecosystem',
@@ -34,21 +35,39 @@ const ecosystemSidebar = {
         path: '/ecosystem/',
       },
       children: {
-        Discovery: {
-          name: 'Discovery',
+        Explore: {
+          name: 'Explore',
           meta: {
-            title: 'Discovery',
+            title: 'Explore',
             isActiveSidebarLink: true,
             path: '/ecosystem/',
           },
           children: {},
         },
-        'Bundle Builder': {
-          name: 'Bundle Builder',
+        'Build Bundle': {
+          name: 'Build Bundle',
           meta: {
-            title: 'Bundle Builder',
+            title: 'Build Bundle',
             isActiveSidebarLink: true,
             path: '/ecosystem/bundle-builder/',
+          },
+          children: {},
+        },
+      },
+    },
+    Guides: {
+      name: 'guides',
+      meta: {
+        title: 'Guides',
+        path: '/ecosystem/',
+      },
+      children: {
+        GetStarted: {
+          name: 'Get started with xk6',
+          meta: {
+            title: 'Get started with xk6',
+            isActiveSidebarLink: true,
+            path: 'https://k6.io/blog/extending-k6-with-xk6',
           },
           children: {},
         },
@@ -89,6 +108,17 @@ const ecosystemSidebar = {
 //   };
 // });
 
+const breadcrumbs = [
+  {
+    name: 'Ecosystem',
+    path: '/ecosystem/',
+  },
+  {
+    name: 'Explore',
+    path: '/ecosystem/',
+  },
+];
+
 export default function ({ location, pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.ecosystem;
@@ -104,23 +134,39 @@ export default function ({ location, pageContext: { navLinks } }) {
         pageMetadata={pageMetadata}
       >
         <EcosystemTitleGroup
-          title={'Discovery'}
-          description={`<span>
-                The extension ecosystem enables developers and testers to extend
-                k6 to cover use casesnot supported natively in the core. Explore
-                the endless possibilities of k6 using extensions from the table
-                below.
-              </span>
-              <br />
-              <br/>
-              <span>
-                Ready to put together your own bespoke k6 binary containing the
-                features you need? Head over to the
-                <a href="/ecosystem/bundle-builder/">bundle builder</a> to
-                get started!
-              </span>
-            `}
+          title={'Explore'}
+          description={''}
+          breadcrumbs={breadcrumbs}
         />
+        <div className={`${docPageContent.inner}`}>
+          <span>
+            The extension ecosystem enables developers and testers to extend k6
+            to cover use cases not supported natively in the core. Explore the
+            endless possibilities of k6 using extensions from the table below.
+            Common use cases include:
+          </span>
+          <ul>
+            <li>Adding support for testing new protocols</li>
+            <li>
+              Using clients to communicate with other systems in your test, or
+            </li>
+            <li>
+              Making an expensive part of your test more performant by writing
+              it in Go and consuming it from your tests using JavaScript
+            </li>
+          </ul>
+          <span>
+            Ready to put together your own bespoke k6 binary containing the
+            features you need? Head over to the{' '}
+            <Link
+              className={docPageContent.link}
+              to={'/ecosystem/bundle-builder/'}
+            >
+              bundle builder
+            </Link>{' '}
+            to get started!
+          </span>
+        </div>
         <div className={`${docPageContent.inner} `}>
           <ExtensionsList category={category} />
         </div>

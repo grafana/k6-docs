@@ -3,6 +3,12 @@ title: 'Apache Kafka'
 excerpt: 'Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a Kafka.'
 ---
 
+<Blockquote mod="warning">
+
+Esta opción no está soportada actualmente. Por favor, use la siguiente [extension](https://github.com/k6io/xk6-output-kafka).
+
+</Blockquote>
+
 [Apache Kafka](https://kafka.apache.org) es una plataforma de procesamiento de flujos para manejar datos en tiempo real.
 
 Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a Kafka.

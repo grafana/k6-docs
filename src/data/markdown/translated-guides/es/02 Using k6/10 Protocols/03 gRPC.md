@@ -7,4 +7,4 @@ excerpt: 'A partir de k6 v0.29.0, soportamos peticiones gRPC unarias a través d
 
 En comparación con JSON, que se transmite como texto legible por humanos, gRPC es binario, por lo que es más rápido de transmitir y más compacto. En los benchmarks que hemos visto entre gRPC y REST basado en JSON, gRPC ha demostrado ser mucho más rápido que su contraparte más tradicional. Los mensajes y servicios utilizados por gRPC se describen en archivos `.proto`, que contienen definiciones de búferes de protocolo (protobuf).
 
-A partir de k6 v0.29.0, soportamos peticiones gRPC unarias a través del módulo incorporado [k6/net/grpc](/javascript-api/k6-net-grpc).
+A partir de k6 v0.29.0, soportamos peticiones gRPC unarias a través del módulo incorporado [k6/net/grpc](/javascript-api/k6-net-grpc). Para más información, visita nuestro [tutorial sobre gRPC y pruebas de rendimiento con k6](https://k6.io/blog/es/performance-testing-grpc-services/).

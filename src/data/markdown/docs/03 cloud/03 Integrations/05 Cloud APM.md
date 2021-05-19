@@ -11,10 +11,11 @@ k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling 
 
 Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the `provider` is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
 
-| Provider       | Platform page                                                | Supported Regions                                                                        |
-| -------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `datadog`      | [DataDog](/cloud/integrations/cloud-apm/datadog)             | [DataDog supported regions](/cloud/integrations/cloud-apm/datadog#supported-regions)     |
-| `azuremonitor` | [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor) | [Azure supported regions](/cloud/integrations/cloud-apm/azure-monitor#supported-regions) |
+| Provider       | Platform page                                                                    | Supported Regions                                                                        |
+| -------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `datadog`      | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | [DataDog supported regions](/cloud/integrations/cloud-apm/datadog#supported-regions)     |
+| `azuremonitor` | [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)                     | [Azure supported regions](/cloud/integrations/cloud-apm/azure-monitor#supported-regions) |
+| `prometheus`   | [Prometheus Remote Write](/cloud/integrations/cloud-apm/prometheus-remote-write) | Not applicable                                                                           |
 
 This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
 
@@ -83,5 +84,6 @@ For the metric export to function properly, you have to fulfill the following:
 
 ## Limitations
 
-1. APM data export is supported for tests that are up to 1 hour long. Longer tests are currently not supported.
-2. The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed.
+1. APM data export is supported for tests that are up to 1 hour long (3600 seconds plus 30 seconds of `gracefulStop`). Longer tests are currently not supported.
+2. The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed. The Prometheus Remote Write integration doesn't have a 2nd pass export.
+3. Duplicate APM configuration parameters of the same provider is not allowed. For example, you cannot export metrics to two Prometheus Remote Write servers at the same time. This also applies to the other providers.
