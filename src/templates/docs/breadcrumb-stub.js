@@ -10,7 +10,7 @@ import { LATEST_VERSION } from 'utils/utils.node';
 
 export default function (props) {
   const {
-    path,
+    path = '',
     pageContext: {
       sidebarTree,
       breadcrumbs,
