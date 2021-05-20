@@ -378,7 +378,7 @@ export const DocLayout = ({
           </div>
         </Header>
         {version && version !== LATEST_VERSION && (
-          <VersionBanner version={version} path={path} />
+          <VersionBanner version={version} />
         )}
 
         {children}
