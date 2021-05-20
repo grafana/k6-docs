@@ -130,3 +130,5 @@ export let options = {
   },
 };
 ```
+
+![Grafana Cloud metrics explorer](images/grafana-cloud.png)
