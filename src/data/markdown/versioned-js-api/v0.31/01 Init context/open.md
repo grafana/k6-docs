@@ -59,18 +59,19 @@ See example further down on this page. For more in-depth description see [Runnin
 
 ```javascript
 import { SharedArray } from "k6/data";
+import { sleep } from "k6";
 
-var data = new SharedArray("users", function() {
-    // here you can open files, and then do additional processing or generate the array with data dynamically
-    var f = JSON.parse(open("./users.json")).;
-    return f; // f must be an array[]
+var data = new SharedArray("users", function () {
+  // here you can open files, and then do additional processing or generate the array with data dynamically
+  var f = JSON.parse(open("./users.json"));
+  return f; // f must be an array[]
 });
 
 export default () => {
-  var randomUser = data[Math.floor(Math.random() * data.length)]
-  console.log(`${user.username}, ${user.password}`);
+  var randomUser = data[Math.floor(Math.random() * data.length)];
+  console.log(`${randomUser.username}, ${randomUser.password}`);
   sleep(3);
-}
+};
 ```
 
 </CodeGroup>

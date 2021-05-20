@@ -1,6 +1,6 @@
 ---
 title: 'cookieJar()'
-slug: '/javascript-api/v0-30/k6-http/cookiejar-method'
+slug: '/javascript-api/k6-http/cookiejar-method'
 description: 'Get active HTTP Cookie jar.'
 excerpt: 'Get active HTTP Cookie jar.'
 ---
