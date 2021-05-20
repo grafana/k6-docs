@@ -14,6 +14,8 @@ Send binary data through the connection.
 <CodeGroup labels={[]}>
 
 ```javascript
+import ws from 'k6/ws';
+
 const binFile = open('./file.pdf', 'b');
 
 export default function () {
