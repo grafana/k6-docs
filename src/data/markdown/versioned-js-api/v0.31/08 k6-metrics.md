@@ -9,7 +9,7 @@ All values added to a custom metric can optionally be [tagged](/using-k6/tags-an
 
 | Metric type                                   | Description                                                                                              |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [Counter](/javascript-api/k6-metrics/counter) | A metric that cumulatively sums added values.                                                            |
-| [Gauge](/javascript-api/k6-metrics/gauge)     | A metric that stores the min, max and last values added to it.                                           |
-| [Rate](/javascript-api/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
-| [Trend](/javascript-api/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |
+| [Counter](/javascript-api/v0-31/k6-metrics/counter) | A metric that cumulatively sums added values.                                                            |
+| [Gauge](/javascript-api/v0-31/k6-metrics/gauge)     | A metric that stores the min, max and last values added to it.                                           |
+| [Rate](/javascript-api/v0-31/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
+| [Trend](/javascript-api/v0-31/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |

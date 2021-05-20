@@ -14,7 +14,7 @@ Mimics [jquery.parents](https://api.jquery.com/parents/).
 
 | Type                                           | Description  |
 | ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | A Selection. |
 
 ### Example
 

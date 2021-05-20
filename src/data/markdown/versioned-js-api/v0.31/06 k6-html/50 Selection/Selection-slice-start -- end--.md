@@ -10,13 +10,13 @@ Mimics [jquery.slice](https://api.jquery.com/slice/)
 | --------- | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
 | start     | Number                                         | An integer indicating the 0-based position at which the elements begin to be selected. |
 | end       | Number                                         | An integer indicating the 0-based position at which the elements stop being selected.  |
-| selector  | [Selection](/javascript-api/k6-html/selection) | A selection.                                                                           |
+| selector  | [Selection](/javascript-api/v0-31/k6-html/selection) | A selection.                                                                           |
 
 ### Returns
 
 | Type                                           | Description        |
 | ---------------------------------------------- | ------------------ |
-| [Selection](/javascript-api/k6-html/selection) | The new selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | The new selection. |
 
 ### Example
 

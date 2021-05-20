@@ -14,7 +14,7 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 | Type   | Description                                          |
 | ------ | ---------------------------------------------------- |
-| object | A [Hasher](/javascript-api/k6-crypto/hasher) object. |
+| object | A [Hasher](/javascript-api/v0-31/k6-crypto/hasher) object. |
 
 ### Example
 

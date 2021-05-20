@@ -7,22 +7,22 @@ excerpt: 'Generic method for making arbitrary HTTP requests'
 
 Generic method for making arbitrary HTTP requests. 
 
-Consider using specific methods for making common requests ([get](/javascript-api/jslib/httpx/get-url-body-params), [post](/javascript-api/jslib/httpx/post-url-body-params), [put](/javascript-api/jslib/httpx/put-url-body-params), [patch](/javascript-api/jslib/httpx/patch-url-body-params))
+Consider using specific methods for making common requests ([get](/javascript-api/v0-31/jslib/httpx/get-url-body-params), [post](/javascript-api/v0-31/jslib/httpx/post-url-body-params), [put](/javascript-api/v0-31/jslib/httpx/put-url-body-params), [patch](/javascript-api/v0-31/jslib/httpx/patch-url-body-params))
 
 
 | Parameter      | Type   | Description                                                                          |
 | -------------- | ------ | ------------------------------------------------------------------------------------ |
 | method  | string    | HTTP method. Note, the method must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc) |
 | url  | string    | HTTP URL. If baseURL is set, provide only path. |
-| body (optional) | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body. |
-| params (optional) | null or object {} | Additional [parameters](/javascript-api/k6-http/params) for this specific request. |
+| body (optional) | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/v0-31/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body. |
+| params (optional) | null or object {} | Additional [parameters](/javascript-api/v0-31/k6-http/params) for this specific request. |
 
 
 ### Returns
 
 | Type                                         | Description           |
 | -------------------------------------------- | --------------------- |
-| [Response](/javascript-api/k6-http/response) | HTTP [Response](/javascript-api/k6-http/response) object. |
+| [Response](/javascript-api/v0-31/k6-http/response) | HTTP [Response](/javascript-api/v0-31/k6-http/response) object. |
 
 
 ### Example

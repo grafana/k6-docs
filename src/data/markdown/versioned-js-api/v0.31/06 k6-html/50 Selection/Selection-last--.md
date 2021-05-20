@@ -10,7 +10,7 @@ Mimics [jquery.last](https://api.jquery.com/last/).
 
 | Type                                           | Description                         |
 | ---------------------------------------------- | ----------------------------------- |
-| [Selection](/javascript-api/k6-html/selection) | The final element of the Selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | The final element of the Selection. |
 
 ### Example
 

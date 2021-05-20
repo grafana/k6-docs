@@ -7,5 +7,5 @@ encoding/decoding as defined by [RFC4648](https://tools.ietf.org/html/rfc4648).
 
 | Function | Description |
 | -------- | ----------- |
-| [b64decode(input, [encoding])](/javascript-api/k6-encoding/b64decode-input-encoding) | Base64 decode a string. |
-| [b64encode(input, [encoding])](/javascript-api/k6-encoding/b64encode-input-encoding)  | 	Base64 encode a string. |
+| [b64decode(input, [encoding])](/javascript-api/v0-31/k6-encoding/b64decode-input-encoding) | Base64 decode a string. |
+| [b64encode(input, [encoding])](/javascript-api/v0-31/k6-encoding/b64encode-input-encoding)  | 	Base64 encode a string. |

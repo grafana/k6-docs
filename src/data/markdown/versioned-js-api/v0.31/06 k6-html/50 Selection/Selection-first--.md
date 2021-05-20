@@ -10,7 +10,7 @@ Mimics [jquery.first](https://api.jquery.com/first/).
 
 | Type                                           | Description                         |
 | ---------------------------------------------- | ----------------------------------- |
-| [Selection](/javascript-api/k6-html/selection) | The first element of the Selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | The first element of the Selection. |
 
 ### Example
 

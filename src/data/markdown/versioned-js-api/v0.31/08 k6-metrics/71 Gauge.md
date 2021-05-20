@@ -3,7 +3,7 @@ title: 'Gauge'
 excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 ---
 
-_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/javascript-api/k6-metrics).
+_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/javascript-api/v0-31/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |
@@ -12,7 +12,7 @@ _Gauge_ is an object for representing a custom metric holding only the latest va
 
 | Method                                                                            | Description                                                                |
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Gauge.add(value, [tags])](/javascript-api/k6-metrics/gauge/gauge-add-value-tags) | Add a value to the gauge metric. Only the latest value added will be kept. |
+| [Gauge.add(value, [tags])](/javascript-api/v0-31/k6-metrics/gauge/gauge-add-value-tags) | Add a value to the gauge metric. Only the latest value added will be kept. |
 
 ## Gauge usage in Thresholds
 

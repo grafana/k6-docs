@@ -10,13 +10,13 @@ Mimics [jquery.filter](https://api.jquery.com/filter/)
 | --------- | ---------------------------------------------- | -------------------------------------------------------------------- |
 | selector  | function                                       | A function used as a test for each element in the set.               |
 | selector  | string                                         | A string containing a selector expression to match elements against. |
-| selector  | [Selection](/javascript-api/k6-html/selection) | A selection to match elements against.                               |
+| selector  | [Selection](/javascript-api/v0-31/k6-html/selection) | A selection to match elements against.                               |
 
 ### Returns
 
 | Type                                           | Description           |
 | ---------------------------------------------- | --------------------- |
-| [Selection](/javascript-api/k6-html/selection) | The filter selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | The filter selection. |
 
 ### Example
 

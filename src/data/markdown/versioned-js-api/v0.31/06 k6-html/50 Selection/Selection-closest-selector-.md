@@ -14,7 +14,7 @@ Mimics [jquery.closest](https://api.jquery.com/closest/)
 
 | Type                                           | Description |
 | ---------------------------------------------- | ----------- |
-| [Selection](/javascript-api/k6-html/selection) | Selection.  |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | Selection.  |
 
 ### Example
 

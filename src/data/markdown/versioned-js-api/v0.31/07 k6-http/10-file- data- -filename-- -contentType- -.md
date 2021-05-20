@@ -16,7 +16,7 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 | Type                                         | Description        |
 | -------------------------------------------- | ------------------ |
-| [FileData](/javascript-api/k6-http/filedata) | A FileData object. |
+| [FileData](/javascript-api/v0-31/k6-http/filedata) | A FileData object. |
 
 ### Example
 

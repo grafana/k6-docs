@@ -7,4 +7,4 @@ The data module, added in k6 v0.30.0, provides helpers to work with data.
 
 | Class/Method | Description |
 | ----- | ----------- |
-| [SharedArray](/javascript-api/k6-data/sharedarray) | read-only array like structure that shares memory between VUs |
+| [SharedArray](/javascript-api/v0-31/k6-data/sharedarray) | read-only array like structure that shares memory between VUs |

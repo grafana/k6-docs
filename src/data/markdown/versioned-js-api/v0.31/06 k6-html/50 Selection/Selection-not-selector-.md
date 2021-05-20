@@ -15,7 +15,7 @@ Mimics [jquery.not](https://api.jquery.com/not/)
 
 | Type                                           | Description  |
 | ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/k6-html/selection) | A Selection. |
+| [Selection](/javascript-api/v0-31/k6-html/selection) | A Selection. |
 
 ### Example
 

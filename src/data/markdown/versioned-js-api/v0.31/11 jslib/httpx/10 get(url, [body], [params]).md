@@ -10,14 +10,14 @@ excerpt: 'httpx.get makes GET requests'
 | Parameter      | Type   | Description                                                                          |
 | -------------- | ------ | ------------------------------------------------------------------------------------ |
 | url  | string    | HTTP URL. If baseURL is set, provide only path. |
-| body (optional) | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Set to `null` to omit the body. |
-| params (optional) | null or object {} | Additional [parameters](/javascript-api/k6-http/params) for this specific request. |
+| body (optional) | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/v0-31/k6-data/sharedarray) | Set to `null` to omit the body. |
+| params (optional) | null or object {} | Additional [parameters](/javascript-api/v0-31/k6-http/params) for this specific request. |
 
 ### Returns
 
 | Type                                         | Description           |
 | -------------------------------------------- | --------------------- |
-| [Response](/javascript-api/k6-http/response) | HTTP [Response](/javascript-api/k6-http/response) object. |
+| [Response](/javascript-api/v0-31/k6-http/response) | HTTP [Response](/javascript-api/v0-31/k6-http/response) object. |
 
 ### Example
 

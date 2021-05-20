@@ -10,7 +10,7 @@ Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
 | Type                                                    | Description                 |
 | ------------------------------------------------------- | --------------------------- |
-| Array of [Selection](/javascript-api/k6-html/selection) | Array of Selection objects. |
+| Array of [Selection](/javascript-api/v0-31/k6-html/selection) | Array of Selection objects. |
 
 ### Example
 
