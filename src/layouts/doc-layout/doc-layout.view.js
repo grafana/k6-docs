@@ -275,7 +275,11 @@ export const DocLayout = ({
 
   return (
     <div className={styles.wrapper}>
-      <SEO pageTranslations={pageTranslations} {...pageMetadata} />
+      <SEO
+        pageTranslations={pageTranslations}
+        pageVersions={pageVersions}
+        {...pageMetadata}
+      />
 
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
