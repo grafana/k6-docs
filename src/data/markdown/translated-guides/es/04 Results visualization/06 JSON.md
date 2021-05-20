@@ -22,7 +22,7 @@ El archivo JSON contendrá líneas como las que se describen a continuación:
 ```json
 {"type":"Metric","data":{"type":"gauge","contains":"default","tainted":null,"thresholds":[],"submetrics":null},"metric":"vus"}
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.625742514+02:00","value":5,"tags":null},"metric":"vus"}
-{"type":"Metric","data":{"type":"trend","contains":"time","tainted":null,"thresholds":["avg\u003c1000"],"submetrics":null},"metric":"http_req_duration"}
+{"type":"Metric","data":{"type":"trend","contains":"time","tainted":null,"thresholds":["avg<1000"],"submetrics":null},"metric":"http_req_duration"}
 {"type":"Point","data":{"time":"2017-05-09T14:34:45.239531499+02:00","value":459.865729,"tags":{"group":"::my group::json","method":"GET","status":"200","url":"https://httpbin.org/get"}},"metric":"http_req_duration"}
 ```
 
@@ -37,7 +37,7 @@ Cada línea contendrá información sobre una métrica o registrará una serie d
 
 ### Métricas
 
-Esta línea contiene información sobre la naturaleza de una métrica. Aquí, "data" contendrá la siguiente información: 
+Esta línea contiene información sobre la naturaleza de una métrica. Aquí, "data" contendrá la siguiente información:
 
 - "type" - el tipo de métrica: ("gauge", "rate", "counter" o "trend")
 - "contains" - información sobre el tipo de datos recogidos (puede ser, por ejemplo, "time" para las métricas de tiempo)
