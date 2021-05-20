@@ -20,6 +20,7 @@ export default function (props) {
       breadcrumbs,
       locale = 'en',
       version,
+      pageVersions = null,
     },
   } = props;
   useScrollToAnchor();
@@ -43,6 +44,7 @@ export default function (props) {
         pageTranslations={frontmatter.translations}
         locale={locale}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
+        pageVersions={pageVersions}
         path={path}
       >
         <div

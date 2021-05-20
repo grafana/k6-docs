@@ -24,7 +24,10 @@ const {
   getSlug,
   getTranslatedSlug,
 } = require('./src/utils/utils.node');
-const { SUPPORTED_VERSIONS } = require('./src/utils/versioning');
+const {
+  SUPPORTED_VERSIONS,
+  LATEST_VERSION,
+} = require('./src/utils/versioning');
 
 /* constants */
 // auxilary flag to determine the environment (staging/prod)
@@ -88,6 +91,69 @@ const getPageTranslations = (
   });
 
   return pageTranslations;
+};
+
+const getPageVersions = (
+  getSidebar,
+  getJavascriptAPISidebar,
+  relativeDirectory,
+  name,
+  currentVersion = null,
+) => {
+  const treeReducer = (subtree, currentNode) => {
+    if (
+      !subtree ||
+      typeof subtree.children === 'undefined' ||
+      typeof subtree.children[currentNode] === 'undefined'
+    ) {
+      return null;
+    }
+    return subtree.children[currentNode];
+  };
+
+  let filePath = unorderify(
+    stripDirectoryPath(relativeDirectory, 'javascript-api'),
+    // @TODO: maybe better use current version
+    // remove version prefix
+  ).slice(currentVersion ? currentVersion.length + 1 : 0);
+
+  if (!currentVersion) {
+    filePath = unorderify(
+      stripDirectoryPath(relativeDirectory, 'docs'),
+    ).replace('javascript api/', '');
+  }
+
+  const pageVersions = {};
+
+  SUPPORTED_VERSIONS.forEach((version) => {
+    let versionedPath = [...filePath.split('/'), unorderify(name)].reduce(
+      treeReducer,
+      getJavascriptAPISidebar(version),
+    );
+
+    if (versionedPath && versionedPath.meta) {
+      versionedPath = versionedPath.meta;
+    } else {
+      versionedPath = null;
+    }
+
+    if (versionedPath) {
+      pageVersions[version] = versionedPath;
+    }
+  });
+
+  // that's for latest only
+  const latestVersion = [...filePath.split('/'), unorderify(name)].reduce(
+    treeReducer,
+    // TODO: check if it's a correct sidebar node
+    getSidebar('javascript api'),
+  );
+
+  if (latestVersion && latestVersion.meta) {
+    pageVersions[LATEST_VERSION] = latestVersion.meta;
+  }
+
+  return pageVersions;
 };
 
 const generateTopLevelLinks = (topLevelLinks) => [
@@ -166,7 +232,6 @@ function getSupplementaryPagesProps({
   topLevelLinks,
   getSidebar,
   getGuidesSidebar,
-  getJavascriptAPISidebar,
 }) {
   const notFoundProps = {
     path: '/404',
@@ -189,6 +254,7 @@ function getSupplementaryPagesProps({
       return childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
         const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+
         return {
           path: compose(
             removeEnPrefix,
@@ -257,34 +323,7 @@ function getSupplementaryPagesProps({
     );
   });
 
-  const stubJsAPIPagesProps = SUPPORTED_VERSIONS.flatMap((version) => {
-    return childrenToList(getJavascriptAPISidebar(version).children).map(
-      ({ name, meta }) => {
-        const path = `${version}/javascript-api/${meta.title}`;
-        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
-
-        return {
-          path: compose(addTrailingSlash, dedupePath, slugify)(path),
-          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
-          context: {
-            sidebarTree: getJavascriptAPISidebar(version),
-            breadcrumbs,
-            title: meta.title,
-            navLinks: generateTopLevelLinks(topLevelLinks),
-            directChildren: getJavascriptAPISidebar(version).children[name]
-              .children,
-            version,
-          },
-        };
-      },
-    );
-  });
-
-  return stubPagesProps.concat(
-    notFoundProps,
-    stubGuidesPagesProps,
-    stubJsAPIPagesProps,
-  );
+  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
 }
 
 function getTopLevelPagesProps({
@@ -375,6 +414,7 @@ function getDocPagesProps({
   reporter,
   topLevelLinks,
   getSidebar,
+  getJavascriptAPISidebar,
   pathCollisionDetectorInstance,
 }) {
   // creating actual docs pages
@@ -437,6 +477,17 @@ function getDocPagesProps({
 
       const sidebarTree = getSidebar(docSection);
 
+      let pageVersions = null;
+
+      if (slug.startsWith('javascript-api/')) {
+        pageVersions = getPageVersions(
+          getSidebar,
+          getJavascriptAPISidebar,
+          relativeDirectory,
+          name,
+        );
+      }
+
       return {
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
@@ -445,6 +496,7 @@ function getDocPagesProps({
           sidebarTree,
           breadcrumbs,
           navLinks: generateTopLevelLinks(topLevelLinks),
+          pageVersions,
         },
       };
     })
@@ -571,6 +623,7 @@ function getJsAPIVersionedPagesProps({
   topLevelLinks,
   pathCollisionDetectorInstance,
   getJavascriptAPISidebar,
+  getSidebar,
 }) {
   // creating actual docs pages
   return nodesJsAPI
@@ -652,6 +705,14 @@ function getJsAPIVersionedPagesProps({
         (item) => item.path !== '/' && item.path !== '/javascript-api/',
       );
 
+      const pageVersions = getPageVersions(
+        getSidebar,
+        getJavascriptAPISidebar,
+        relativeDirectory,
+        name,
+        pageVersion,
+      );
+
       return {
         path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
@@ -661,6 +722,7 @@ function getJsAPIVersionedPagesProps({
           breadcrumbs,
           navLinks: generateTopLevelLinks(topLevelLinks),
           version: pageVersion,
+          pageVersions,
         },
       };
     })
@@ -824,6 +886,7 @@ async function createDocPages({
     topLevelLinks,
     pathCollisionDetectorInstance,
     getSidebar,
+    getJavascriptAPISidebar,
   })
     .concat(
       getGuidesPagesProps({
@@ -839,6 +902,7 @@ async function createDocPages({
         topLevelLinks,
         pathCollisionDetectorInstance,
         getJavascriptAPISidebar,
+        getSidebar,
       }),
       getTopLevelPagesProps({
         topLevelNames,

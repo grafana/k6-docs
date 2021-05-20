@@ -16,7 +16,7 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
-import { LATEST_VERSION } from 'utils/utils.node';
+import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
 
 const componentsForNativeReplacement = {
   table: TableWrapper,
@@ -63,6 +63,14 @@ export default function ({
     docPageContent.contentWrapper,
   );
 
+  const pageVersions = {};
+  pageVersions[LATEST_VERSION] = { path: '/javascript-api/' };
+  SUPPORTED_VERSIONS.forEach((version) => {
+    pageVersions[version] = {
+      path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+    };
+  });
+
   return (
     <LocaleProvider>
       <DocLayout
@@ -71,6 +79,7 @@ export default function ({
         pageMetadata={pageMetadata}
         version={version}
         path="/javascript-api/"
+        pageVersions={pageVersions}
       >
         <PageInfo
           title={'JavaScript API'}

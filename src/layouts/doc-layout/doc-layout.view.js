@@ -230,7 +230,7 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
-  path,
+  pageVersions = null,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -289,8 +289,8 @@ export const DocLayout = ({
           {!!version && (
             <VersionSwitcher
               currentVersion={version}
+              versions={pageVersions}
               className={styles.versionSwitcher}
-              path={path}
             />
           )}
         </div>
@@ -356,11 +356,11 @@ export const DocLayout = ({
             {!!version && (
               <VersionSwitcher
                 currentVersion={version}
+                versions={pageVersions}
                 className={classNames(
                   styles.versionSwitcher,
                   styles.versionSwitcherMobile,
                 )}
-                path={path}
               />
             )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
@@ -378,7 +378,7 @@ export const DocLayout = ({
           </div>
         </Header>
         {version && version !== LATEST_VERSION && (
-          <VersionBanner version={version} />
+          <VersionBanner version={version} versions={pageVersions} />
         )}
 
         {children}
