@@ -13,6 +13,8 @@ import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
 import { SEO } from 'components/shared/seo';
+import { VersionBanner } from 'components/shared/version-banner';
+import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
@@ -25,6 +27,7 @@ import {
 import { childrenToList, slugify, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
+import { LATEST_VERSION } from 'utils/versioning';
 
 import styles from './doc-layout.module.scss';
 
@@ -223,9 +226,11 @@ const SidebarNode = (props) => {
 export const DocLayout = ({
   pageMetadata,
   pageTranslations = null,
+  version,
   sidebarTree,
   navLinks: links,
   children,
+  pageVersions = null,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -270,7 +275,11 @@ export const DocLayout = ({
 
   return (
     <div className={styles.wrapper}>
-      <SEO pageTranslations={pageTranslations} {...pageMetadata} />
+      <SEO
+        pageTranslations={pageTranslations}
+        pageVersions={pageVersions}
+        {...pageMetadata}
+      />
 
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
@@ -279,6 +288,13 @@ export const DocLayout = ({
             <LanguageSwitcher
               onLanguageChange={languageChangeHandler}
               className={styles.languageSwitcher}
+            />
+          )}
+          {!!version && (
+            <VersionSwitcher
+              currentVersion={version}
+              versions={pageVersions}
+              className={styles.versionSwitcher}
             />
           )}
         </div>
@@ -341,6 +357,16 @@ export const DocLayout = ({
                 )}
               />
             )}
+            {!!version && (
+              <VersionSwitcher
+                currentVersion={version}
+                versions={pageVersions}
+                className={classNames(
+                  styles.versionSwitcher,
+                  styles.versionSwitcherMobile,
+                )}
+              />
+            )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
           <div className={`col-xl-4 col-12 ${styles.searchBox}`}>
@@ -355,6 +381,9 @@ export const DocLayout = ({
             </div>
           </div>
         </Header>
+        {version && version !== LATEST_VERSION && (
+          <VersionBanner version={version} versions={pageVersions} />
+        )}
 
         {children}
         <MobileNav

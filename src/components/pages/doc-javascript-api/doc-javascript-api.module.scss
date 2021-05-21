@@ -18,3 +18,11 @@
     margin-top: 5px;
   }
 }
+
+.info {
+  margin-top: 165px;
+
+  @include sm-down {
+    margin-top: 240px;
+  }
+}

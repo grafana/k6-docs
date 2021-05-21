@@ -76,6 +76,8 @@ const stripDirectoryPath = (str, type) => {
       return str.replace(/^.*docs\/(.*)$/, '$1');
     case 'guides':
       return str.replace(/^.*guides\/(.*)$/, '$1');
+    case 'javascript-api':
+      return str.replace(/^.*js-api\/(.*)$/, '$1');
     case 'post':
       return str.replace(/(.*)(\d{4}-\d{2}-\d{2}.*)(\/.*\.\w+$)/, '$2');
     default:

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
 import { styles as codeStyles } from 'components/shared/code';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
@@ -7,6 +8,7 @@ import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
+import { LATEST_VERSION } from 'utils/utils.node';
 
 export default function (props) {
   const {
@@ -17,6 +19,8 @@ export default function (props) {
       navLinks,
       breadcrumbs,
       locale = 'en',
+      version,
+      pageVersions = null,
     },
   } = props;
   useScrollToAnchor();
@@ -29,6 +33,8 @@ export default function (props) {
     },
   };
 
+  const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
+
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
@@ -37,8 +43,16 @@ export default function (props) {
         navLinks={navLinks}
         pageTranslations={frontmatter.translations}
         locale={locale}
+        version={isJsAPIPage ? version || LATEST_VERSION : null}
+        pageVersions={pageVersions}
+        path={path}
       >
-        <div className={`${styles.container}`}>
+        <div
+          className={classNames(
+            styles.container,
+            version && version !== LATEST_VERSION && styles.versioned,
+          )}
+        >
           <Breadcrumbs items={breadcrumbs} />
           <DocPageTitleGroup
             title={frontmatter.title}

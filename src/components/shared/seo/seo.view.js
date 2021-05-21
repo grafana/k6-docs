@@ -4,11 +4,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createMetaImagePath } from 'utils';
 import { docs } from 'utils/urls';
+import { LATEST_VERSION } from 'utils/versioning';
 
 export const SEO = ({
   data: { title, description, image, slug } = {},
   facebook,
   pageTranslations = null,
+  pageVersions = null,
 } = {}) => {
   const {
     site: {
@@ -39,6 +41,13 @@ export const SEO = ({
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
   const currentUrl = slug && slug !== '*' ? `${docs}/${slug}` : docs;
+
+  let versionedCanonicalUrl = currentUrl;
+  // set canonical path to latest version URL if it's available
+  if (pageVersions && typeof pageVersions[LATEST_VERSION] !== 'undefined') {
+    versionedCanonicalUrl = `${docs}${pageVersions[LATEST_VERSION].path}`;
+  }
+
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
 
   const hrefLangAttributes = {
@@ -93,6 +102,9 @@ export const SEO = ({
         {/* Twitter Card tags */}
         <meta name={'twitter:card'} content={'summary'} />
         <meta name={'twitter:creator'} content={authorTwitterAccount} />
+
+        {/* Canonical links for versioned pages */}
+        <link href={versionedCanonicalUrl} rel="canonical" />
 
         {/* SEO for localized pages */}
         {/* rel should be declared after href https://github.com/nfl/react-helmet/issues/279 */}

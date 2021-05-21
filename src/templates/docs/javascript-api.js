@@ -16,6 +16,7 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
+import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
 
 const componentsForNativeReplacement = {
   table: TableWrapper,
@@ -48,7 +49,10 @@ const getContent = (nodes, sidebarTree) =>
     return null;
   });
 
-export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
+export default function ({
+  data,
+  pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
+}) {
   const content = getContent(data.allFile.nodes, sidebarTree);
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
@@ -59,16 +63,28 @@ export default function ({ data, pageContext: { sidebarTree, navLinks } }) {
     docPageContent.contentWrapper,
   );
 
+  const pageVersions = {};
+  pageVersions[LATEST_VERSION] = { path: '/javascript-api/' };
+  SUPPORTED_VERSIONS.forEach((version) => {
+    pageVersions[version] = {
+      path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+    };
+  });
+
   return (
     <LocaleProvider>
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        version={version}
+        path="/javascript-api/"
+        pageVersions={pageVersions}
       >
         <PageInfo
           title={'JavaScript API'}
           description={'Welcome to the k6 JavaScript API documentation.'}
+          className={classNames(version !== LATEST_VERSION && jsApiStyles.info)}
         />
         <div className={docPageContent.inner}>
           <StickyContainer>
