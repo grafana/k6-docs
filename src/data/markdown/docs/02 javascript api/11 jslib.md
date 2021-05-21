@@ -48,7 +48,7 @@ export default function() {
 
 The complete list of supported libraries can be viewed on [jslib.k6.io](https://jslib.k6.io).
 
-## Versioning
+### Versioning
 
 ```
 https://jslib.k6.io/library-name/version/index.js
