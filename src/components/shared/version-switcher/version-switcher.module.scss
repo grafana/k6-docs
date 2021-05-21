@@ -35,24 +35,21 @@
 .menu {
   z-index: 10;
   position: absolute;
-  top: calc(100% + 10px);
-  left: -10px;
+  top: calc(100% + 5px);
+  left: -8px;
+  background-color: $color-additional-3;
 
   &-item {
     border: none;
     outline: none;
     background-color: transparent;
 
-    padding: 10px 15px;
+    padding: 5px 15px;
     color: $color-primary;
     font-size: 12px;
     line-height: 15.36px;
     font-weight: 500;
     cursor: pointer;
-
-    &:not(:last-child) {
-      border-bottom: 1px solid $color-additional-2;
-    }
 
     @include hover-supported {
       color: $color-accent-primary;
