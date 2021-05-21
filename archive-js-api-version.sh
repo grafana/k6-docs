@@ -9,7 +9,7 @@ cd src/data/markdown
 mkdir ./versioned-js-api/$VERSION
 
 # copy content of docs/javascript api to the version folder
-rsync -r --exclude=.DS_Store ./docs/02\ javascript\ api/ ./versioned-js-api/$VERSION
+cp -r ./docs/02\ javascript\ api/ ./versioned-js-api/$VERSION
 
 # replace internal links for javascript-api section (/javascript-api/ => /javascript-api/v0-XX/)
-find ./versioned-js-api/$VERSION -type f -exec sed -i "" -e "s/\/javascript-api\//\/javascript-api\/${VERSION_FORMATTED}\//g" {} \;
+find ./versioned-js-api/$VERSION -type f -iname \*.md -exec sed -i "" -e "s/\/javascript-api\//\/javascript-api\/${VERSION_FORMATTED}\//g" {} \;
