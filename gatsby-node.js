@@ -391,11 +391,14 @@ function getTopLevelPagesProps({
     .concat(
       SUPPORTED_VERSIONS.map((version) => ({
         path: `/javascript-api/${version.replace(/\./g, '-')}/`,
-        component: Path.resolve(`./src/templates/docs/javascript-api.js`),
+        component: Path.resolve(
+          `./src/templates/docs/versioned-javascript-api.js`,
+        ),
         context: {
           sidebarTree: getJavascriptAPISidebar(version),
           navLinks: generateTopLevelLinks(topLevelLinks),
           version,
+          versionRegex: `/${version}/`,
         },
       })),
     )
