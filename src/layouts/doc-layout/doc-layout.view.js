@@ -230,7 +230,7 @@ export const DocLayout = ({
   sidebarTree,
   navLinks: links,
   children,
-  pageVersions = null,
+  pageVersions = {},
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);

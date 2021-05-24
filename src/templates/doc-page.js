@@ -33,7 +33,8 @@ export default function (props) {
     },
   };
 
-  const isJsAPIPage = path.indexOf('/javascript-api/') >= 0;
+  const isJsAPIPage =
+    sidebarTree.name === 'javascript api' || typeof version !== 'undefined';
 
   return (
     <LocaleProvider urlLocale={locale}>

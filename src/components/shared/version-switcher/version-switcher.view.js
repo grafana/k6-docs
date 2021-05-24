@@ -13,7 +13,10 @@ export const VersionSwitcher = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const availableVersions = Object.keys(versions).sort().reverse();
+  const availableVersions =
+    !!versions && typeof versions !== 'undefined'
+      ? Object.keys(versions).sort().reverse()
+      : [];
 
   const handleVersionChange = (newVersion) => {
     if (typeof window === 'undefined') {
