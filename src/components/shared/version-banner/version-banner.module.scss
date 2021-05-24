@@ -3,6 +3,10 @@
   width: 100%;
   top: 85px;
 
+  @include lg-down {
+    top: 135px;
+  }
+
   @include sm-down {
     display: flex;
     align-items: center;

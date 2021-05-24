@@ -22,6 +22,10 @@
 .info {
   margin-top: 165px;
 
+  @include lg-down {
+    margin-top: 205px;
+  }
+
   @include sm-down {
     margin-top: 240px;
   }
