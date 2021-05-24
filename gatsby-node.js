@@ -113,41 +113,34 @@ const getPageVersions = (
 
   let filePath = unorderify(
     stripDirectoryPath(relativeDirectory, 'javascript-api'),
-    // @TODO: maybe better use current version
     // remove version prefix
   ).slice(currentVersion ? currentVersion.length + 1 : 0);
 
   if (!currentVersion) {
-    filePath = unorderify(
-      stripDirectoryPath(relativeDirectory, 'docs'),
-    ).replace('javascript api/', '');
+    filePath = unorderify(stripDirectoryPath(relativeDirectory, 'docs'))
+      .replace('javascript api/', '')
+      // for pages like /k6-crypto, k6-data etc
+      .replace('javascript api', '');
   }
 
   const pageVersions = {};
 
   SUPPORTED_VERSIONS.forEach((version) => {
-    let versionedPath = [...filePath.split('/'), unorderify(name)].reduce(
-      treeReducer,
-      getJavascriptAPISidebar(version),
-    );
+    const versionedPath = (filePath === ''
+      ? [unorderify(name)]
+      : [...filePath.split('/'), unorderify(name)]
+    ).reduce(treeReducer, getJavascriptAPISidebar(version));
 
     if (versionedPath && versionedPath.meta) {
-      versionedPath = versionedPath.meta;
-    } else {
-      versionedPath = null;
-    }
-
-    if (versionedPath) {
-      pageVersions[version] = versionedPath;
+      pageVersions[version] = versionedPath.meta;
     }
   });
 
-  // that's for latest only
-  const latestVersion = [...filePath.split('/'), unorderify(name)].reduce(
-    treeReducer,
-    // TODO: check if it's a correct sidebar node
-    getSidebar('javascript api'),
-  );
+  // find latest version link
+  const latestVersion = (filePath === ''
+    ? [unorderify(name)]
+    : [...filePath.split('/'), unorderify(name)]
+  ).reduce(treeReducer, getSidebar('javascript api'));
 
   if (latestVersion && latestVersion.meta) {
     pageVersions[LATEST_VERSION] = latestVersion.meta;
