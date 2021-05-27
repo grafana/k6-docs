@@ -9,9 +9,8 @@ k6 is well suited for functional testing
 
 ### Most basic integration test
 ```javascript
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
-
+import { describe } from 'https://jslib.k6.io/expect/0.0.5/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 export let options = {
   thresholds: {
     checks: [{ threshold: 'rate == 1.00', abortOnFail: true }],
@@ -19,19 +18,14 @@ export let options = {
   vus: 1,
   iterations: 1,
 };
-
 let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
-
 export default function testSuite() {
-
   describe('Fetch a list of public crocodiles', (t) => {
     let response = session.get("/public/crocodiles");
-
     t.expect(response.status).as("response status").toEqual(200)
       .and(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(4); 
+      .and(response.json().length).as("number of crocs").toBeGreaterThan(4);
   })
-
 }
 ```
 
@@ -43,8 +37,8 @@ This test goes through several steps. It creates a new user account, authenticat
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/functional/0.0.3/index.js';
-import { Httpx, Request, Get, Post } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
+import { describe } from 'https://jslib.k6.io/expect/0.0.5/index.js';
+import { Httpx, Request, Get, Post } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export let options = {

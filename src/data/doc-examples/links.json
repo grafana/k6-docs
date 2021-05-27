@@ -74,7 +74,7 @@
     },
     {
       "title": "Websockets",
-      "description": "Scripting example on how to test websocket APIs.",
+      "description": "Scripting example on how to test WebSocket APIs.",
       "url": "",
       "to": "/examples/websockets"
     },
@@ -110,8 +110,8 @@
     },
     {
       "title": "Functional testing",
-      "description": "Use checks and thresholds for unit testing.",
-      "url": "https://community.k6.io/t/report-for-functional-test/574/2",
+      "description": "Use expect library for integration testing.",
+      "url": "/examples/functional-testing/",
       "to": ""
     },
     {
