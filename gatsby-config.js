@@ -154,14 +154,6 @@ const plugins = [
     },
   },
 ];
-if (process.env.GATSBY_DRIFT_API) {
-  plugins.push({
-    resolve: 'local-plugin-drift',
-    options: {
-      appId: process.env.GATSBY_DRIFT_API,
-    },
-  });
-}
 
 // when `canonical` URL is finally fixed, add this to the plugin list
 const autoCanonicalURL = true;

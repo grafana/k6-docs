@@ -20,7 +20,6 @@ env:
   GATSBY_DEFAULT_BLOG_URL: https://${{ secrets.PROD_CI_MAIN_URL }}/blog
   GATSBY_DEFAULT_DOC_URL: https://${{ secrets.PROD_CI_MAIN_URL }}/docs
   GATSBY_DEFAULT_MAIN_URL: https://${{ secrets.PROD_CI_MAIN_URL }}
-  GATSBY_DRIFT_API: ${{ secrets.PROD_CI_GATSBY_DRIFT_API }}
   GATSBY_GOOGLE_API_KEY: ${{ secrets.PROD_CI_GATSBY_GOOGLE_API_KEY }}
 
 jobs:
