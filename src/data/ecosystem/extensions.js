@@ -433,6 +433,18 @@ const extensions = [
     official: false,
     categories: ['Misc'],
   },
+  {
+    name: 'xk6-mock',
+    description: 'A k6 extension that enables mocking HTTP(S) servers.',
+    url: 'https://github.com/szkiba/xk6-mock',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
 ];
 
 export default extensions;
