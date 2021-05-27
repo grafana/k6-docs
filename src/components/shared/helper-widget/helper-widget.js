@@ -50,6 +50,8 @@ const HelperWidget = () => {
           console.log(err);
           setShouldRender(true);
         });
+    } else {
+      setShouldRender(true);
     }
   }, [shouldRender]);
 
