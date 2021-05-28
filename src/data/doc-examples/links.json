@@ -111,8 +111,8 @@
     {
       "title": "Functional testing",
       "description": "Use expect library for integration testing.",
-      "url": "/examples/functional-testing/",
-      "to": ""
+      "url": "",
+      "to": "/examples/functional-testing/"
     },
     {
       "title": "Track transmitted data per URL",
