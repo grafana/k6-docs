@@ -445,6 +445,18 @@ const extensions = [
     official: false,
     categories: ['Misc'],
   },
+  {
+    name: 'xk6-dotenv',
+    description: 'A k6 extension that loads env vars from a .env file',
+    url: 'https://github.com/szkiba/xk6-dotenv',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Misc'],
+  },
 ];
 
 export default extensions;
