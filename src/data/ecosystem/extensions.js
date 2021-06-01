@@ -457,6 +457,18 @@ const extensions = [
     official: false,
     categories: ['Misc'],
   },
+  {
+    name: 'xk6-faker',
+    description: 'A k6 extension for random fake data generation.',
+    url: 'https://github.com/szkiba/xk6-faker',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Data'],
+  },
 ];
 
 export default extensions;
