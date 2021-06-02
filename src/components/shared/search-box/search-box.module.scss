@@ -107,7 +107,7 @@
   @include lg-down {
     width: 100%;
   }
-  &_show {
+  &.show {
     display: grid;
   }
   li {
@@ -213,7 +213,7 @@
     border-right-color: transparent;
     border-bottom-color: transparent;
   }
-  &_open {
+  &.open {
     &:after {
       transform: translateY(100%) rotate(45deg);
     }

@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './doc-links-block.module.scss';
 
 export const DocLinksBlock = ({ title, links, last }) => (
-  <div className={`container ${styles.wrapper} ${last && styles.wrapper_last}`}>
+  <div className={`container ${styles.wrapper} ${last && styles.last}`}>
     <Heading className={styles.title} tag={'h2'} size={'lg'}>
       {title}
     </Heading>

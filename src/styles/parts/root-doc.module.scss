@@ -15,7 +15,7 @@
     max-width: calc(
       100% - 325px
     ); // preserving the spacing and width in adaptive
-    &_beliefs {
+    &.beliefs {
       max-width: calc(100% - 400px);
     }
     @include lg-down {

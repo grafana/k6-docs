@@ -9,9 +9,7 @@ export const ItemCard = (props) => {
 
   return (
     <Component
-      className={`${styles.wrapper} ${label} ${
-        lifted ? styles.wrapper_lifted : ''
-      }`}
+      className={`${styles.wrapper} ${label} ${lifted ? styles.lifted : ''}`}
       {...rest}
     >
       {!noBorderOnHover && (

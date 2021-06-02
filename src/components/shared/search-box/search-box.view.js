@@ -98,7 +98,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
         />
         <div
           className={classNames(styles.hitsWrapper, {
-            [styles.hitsWrapper_show]: query && query.length > 0 && focus,
+            [styles.show]: query && query.length > 0 && focus,
           })}
         >
           {indices.map(({ name, hitComp }) => (
@@ -127,7 +127,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
                 type={'button'}
                 onClick={() => setAllResultsShown(!allResultsShown)}
                 className={classNames('link', styles.toggleResultsBtn, {
-                  [styles.toggleResultsBtn_open]: allResultsShown,
+                  [styles.open]: allResultsShown,
                 })}
               >
                 Show {allResultsShown ? 'less' : 'more'}

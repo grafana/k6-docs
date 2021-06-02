@@ -4,7 +4,7 @@
 .inner {
   position: relative;
   @include doc-section-spacing;
-  &_spaced {
+  &.spaced {
     margin-top: 135px;
     @include doc-section-spacing;
     @include lg-down {
@@ -21,7 +21,7 @@
 
 .main-doc-content {
   max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
-  &_beliefs {
+  &.beliefs {
     max-width: calc(100% - 400px);
   }
   @include lg-down {
@@ -32,7 +32,7 @@
 .content-wrapper {
   position: relative;
   z-index: 2; // otherwise navbar in its sticky mode closes main content for interactions
-  &_beliefs {
+  &.beliefs {
     padding-bottom: 0;
   }
   @include lg-down {

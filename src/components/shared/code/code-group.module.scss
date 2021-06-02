@@ -39,8 +39,9 @@
   &:focus {
     outline: none;
   }
+
+  &.active {
+  color: #fff;
 }
 
-.code-tab_active {
-  color: #fff;
 }

@@ -13,7 +13,7 @@ const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
           <div
             key={`lb-${i}`}
             className={`${styles.codeTab} ${
-              i === currentIndex ? styles.codeTab_active : ''
+              i === currentIndex ? styles.active : ''
             }`}
             onClick={() => setCurrentIndex(i)}
             onKeyPress={() => setCurrentIndex(i)}

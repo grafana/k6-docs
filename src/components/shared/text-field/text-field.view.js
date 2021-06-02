@@ -13,7 +13,7 @@ export const TextField = ({
 }) => {
   const wrapperClassName = classNames(
     styles.wrapper,
-    { [styles.wrapper_invalid]: isInvalid === true },
+    { [styles.invalid]: isInvalid === true },
     className,
   );
 

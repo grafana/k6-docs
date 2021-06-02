@@ -5,40 +5,38 @@ import React from 'react';
 import styles from './header-nav.module.scss';
 
 // aux
-const Submenu = ({ label, submenu }) => {
-  return (
-    <>
-      <span
-        className={classNames(styles.submenuTitle, styles.link, {
-          [styles.link_active]: submenu.some(
-            ({ to: path }) =>
-              typeof window !== 'undefined' &&
-              window.location.pathname.replace(/\/?$/, '') === path,
-          ),
-        })}
-      >
-        {label}
-      </span>
-      <div className={styles.submenuWrapper}>
-        <ul className={styles.submenu}>
-          {submenu.map((item, i) => (
-            <li key={`si-${i}`} className={styles.submenuItem}>
-              {item.to.startsWith('/') ? (
-                <Link className={styles.link} to={item.to}>
-                  {item.label}
-                </Link>
-              ) : (
-                <a className={styles.link} href={item.to}>
-                  {item.label}
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
-  );
-};
+const Submenu = ({ label, submenu }) => (
+  <>
+    <span
+      className={classNames(styles.submenuTitle, styles.link, {
+        [styles.active]: submenu.some(
+          ({ to: path }) =>
+            typeof window !== 'undefined' &&
+            window.location.pathname.replace(/\/?$/, '') === path,
+        ),
+      })}
+    >
+      {label}
+    </span>
+    <div className={styles.submenuWrapper}>
+      <ul className={styles.submenu}>
+        {submenu.map((item, i) => (
+          <li key={`si-${i}`} className={styles.submenuItem}>
+            {item.to.startsWith('/') ? (
+              <Link className={styles.link} to={item.to}>
+                {item.label}
+              </Link>
+            ) : (
+              <a className={styles.link} href={item.to}>
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </>
+);
 
 const Single = ({ to, label, sections }) => {
   let Component = null;
@@ -52,7 +50,7 @@ const Single = ({ to, label, sections }) => {
       <Link
         className={styles.link}
         to={to}
-        activeClassName={styles.link_active}
+        activeClassName={styles.active}
         partiallyActive={guidesPartiallyActive}
       >
         {label}
@@ -68,7 +66,7 @@ const Single = ({ to, label, sections }) => {
       <Link
         className={styles.link}
         to={to}
-        activeClassName={styles.link_active}
+        activeClassName={styles.active}
         partiallyActive={isPartiallyActive}
       >
         {label}

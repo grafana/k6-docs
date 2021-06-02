@@ -49,7 +49,7 @@ const TableOfContents = forwardRef(
       <div
         style={style}
         className={`${styles.anchorBarWrapper} ${
-          !links.length && styles.anchorBarWrapper__hidden
+          !links.length && styles.hidden
         }`}
         ref={ref}
       >

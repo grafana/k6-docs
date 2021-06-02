@@ -8,7 +8,7 @@ export const Trait = (props) => {
   return (
     <div
       className={`${styles.wrapper} ${
-        disadvantage ? styles.wrapper_disadvantage : ''
+        disadvantage ? styles.disadvantage : ''
       } ${className}`}
     >
       {children}

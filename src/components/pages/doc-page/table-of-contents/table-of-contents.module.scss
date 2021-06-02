@@ -11,7 +11,7 @@
   @include lg-down {
     display: none;
   }
-  &__hidden {
+  &.hidden {
     visibility: hidden;
   }
 }

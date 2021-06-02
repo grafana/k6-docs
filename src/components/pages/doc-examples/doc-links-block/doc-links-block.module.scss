@@ -1,6 +1,6 @@
 .wrapper {
   @include doc-section-spacing;
-  &_last {
+  &.last {
     padding-bottom: 0;
   }
 }
