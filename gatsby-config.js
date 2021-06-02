@@ -114,6 +114,13 @@ const plugins = [
     options: {
       additionalData:
         '@import "./src/styles/variables.scss", "./src/styles/mixins.scss";',
+      useResolveUrlLoader: true,
+      cssLoaderOptions: {
+        modules: {
+          namedExport: false,
+          exportLocalsConvention: 'camelCase',
+        },
+      },
     },
   },
   {

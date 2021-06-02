@@ -76,7 +76,6 @@
     "jsx-a11y/html-has-lang": 0, // We use react-helmet for that
     "jsx-a11y/control-has-associated-label": 0,
     "mdx/no-jsx-html-comments": "error",
-    "mdx/no-unescaped-entities": "error",
     "mdx/no-unused-expressions": "error"
   },
   "extends": ["airbnb", "plugin:mdx/recommended", "prettier"],
