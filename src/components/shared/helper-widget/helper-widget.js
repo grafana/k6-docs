@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 
 import styles from './helper-widget.module.scss';
 // icons
@@ -21,12 +22,12 @@ const HelperWidget = () => {
   // states
   const [shouldRender, setShouldRender] = useState(false);
   const [driftReady, setDriftReady] = useState(false);
-  const [defaultWidgetIsOpen, setDefaultWidgetIsOpen] = useState(false);
+  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(3);
 
   const widgetClickOutside = (e) => {
     const widget = document.getElementById('custom-drift-widget-container');
     if (!widget.contains(e.target)) {
-      setDefaultWidgetIsOpen(false);
+      setIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
     }
   };
@@ -58,7 +59,7 @@ const HelperWidget = () => {
   const handleCloudClick = (disableDrift = true) => {
     if (!disableDrift && driftReady) {
       window.drift.api.sidebar.open();
-      setDefaultWidgetIsOpen(false);
+      setIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
     } else {
       window.location.assign(
@@ -74,61 +75,58 @@ const HelperWidget = () => {
     if (showChatOnly) {
       handleCloudClick(false);
     } else {
-      setDefaultWidgetIsOpen(true);
+      setIsOpen(true);
       document.addEventListener('click', widgetClickOutside);
     }
   };
   const handleCloseClick = () => {
-    if (defaultWidgetIsOpen) {
-      setDefaultWidgetIsOpen(false);
+    if (isOpen) {
+      setIsOpen(false);
       document.removeEventListener('click', widgetClickOutside);
     }
   };
   return shouldRender ? (
     <div className={styles.wrapper} id={'custom-drift-widget-container'}>
       <div className={styles.menuWrapper}>
-        {!defaultWidgetIsOpen && (
-          <button
-            className={styles.button}
-            type="button"
-            onClick={handleOpenClick}
-          >
-            <OpenIcon />
-          </button>
-        )}
-        {defaultWidgetIsOpen && (
+        <button
+          className={styles.button}
+          type={'button'}
+          onClick={!isOpen ? handleOpenClick : handleCloseClick}
+          {...buttonProps}
+        >
+          {!isOpen ? <OpenIcon /> : <CloseIcon />}
+        </button>
+        {isOpen && (
           <ul className={styles.list}>
             <li className={styles.listItem}>
               <p className={styles.title}>Have a question?</p>
             </li>
             <li className={styles.listItem}>
-              <a href={'https://community.k6.io/'}>
+              <a {...itemProps[0]} href={'https://community.k6.io/'}>
                 <Message />
                 Community forum
               </a>
             </li>
             <li className={styles.listItem}>
-              <a href={`${process.env.GATSBY_DEFAULT_MAIN_URL}/slack`}>
+              <a
+                {...itemProps[1]}
+                href={`${process.env.GATSBY_DEFAULT_MAIN_URL}/slack`}
+              >
                 <Slack />
                 Community Slack
               </a>
             </li>
             <li className={styles.listItem}>
-              <button type="button" onClick={handleCloudClick}>
+              <button
+                {...itemProps[2]}
+                type="button"
+                onClick={handleCloudClick}
+              >
                 <Cloud />
                 Cloud support
               </button>
             </li>
           </ul>
-        )}
-        {defaultWidgetIsOpen && (
-          <button
-            className={styles.button}
-            type="button"
-            onClick={handleCloseClick}
-          >
-            <CloseIcon />
-          </button>
         )}
       </div>
     </div>
