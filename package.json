@@ -29,9 +29,9 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@sentry/gatsby": "^5.27.3",
-    "algoliasearch": "^4.5.1",
+    "algoliasearch": "^4.9.1",
     "classnames": "^2.3.1",
-    "date-fns": "^2.16.1",
+    "date-fns": "^2.22.1",
     "dateformat": "^4.5.1",
     "dotenv": "^10.0.0",
     "gatsby": "^3.6.2",
@@ -59,8 +59,8 @@
     "gatsby-transformer-sharp": "^3.6.0",
     "prism-react-renderer": "^1.2.1",
     "prop-types": "^15.7.2",
-    "qs": "^6.9.1",
-    "query-string": "^6.14.0",
+    "qs": "^6.10.1",
+    "query-string": "^7.0.0",
     "react": "^17.0.2",
     "react-clipboard.js": "^2.0.16",
     "react-cookie-banner": "^4.1.0",
@@ -86,7 +86,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "husky": "^6.0.0",
-    "lint-staged": "^10.4.0",
+    "lint-staged": "^11.0.0",
     "wait-on": "^5.3.0"
   }
 }

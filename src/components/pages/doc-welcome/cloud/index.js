@@ -1,1 +1,1 @@
-export * from './cloud.view.js';
+export * from './cloud.view';

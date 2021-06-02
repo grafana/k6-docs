@@ -6,6 +6,7 @@
   },
   "rules": {
     "prettier/prettier": ["error"],
+    "arrow-body-style": "warn",
     "camelcase": 0,
     "object-curly-newline": 0,
     "operator-linebreak": 0,
@@ -80,7 +81,15 @@
   },
   "extends": ["airbnb", "plugin:mdx/recommended", "prettier"],
   "plugins": ["prettier"],
-  "parserOptions": {
-    "extensions": [".md", ".mdx"]
-  }
+  "overrides": [
+    {
+      "files": ["*.mdx" ,"*.md"],
+      "parser": "eslint-mdx", // enable `eslint-mdx` manually if it does not work
+      "extends": ["plugin:mdx/recommended"],
+      "rules": {
+        "prettier/prettier": 0,
+        "max-len": 0,
+      }
+    }
+  ]
 }
