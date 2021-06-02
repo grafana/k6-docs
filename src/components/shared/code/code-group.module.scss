@@ -29,6 +29,7 @@
   font-size: $font-size-sm;
   line-height: $font-size-sm;
   cursor: pointer;
+  outline-color: $color-accent-secondary;
   @include xs-down {
     flex: 1;
   }
@@ -36,12 +37,7 @@
   &:not(:last-child) {
     border-right: 1px solid rgba($color-tertiary, 0.05);
   }
-  &:focus {
-    outline: none;
-  }
-
   &.active {
-  color: #fff;
-}
-
+    color: #fff;
+  }
 }

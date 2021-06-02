@@ -9,9 +9,9 @@
 .button {
   background: transparent;
   appearance: none;
-  outline: none;
   border: none;
   padding: 0;
+  order: 1;
   &:hover {
     cursor: pointer;
   }
@@ -46,7 +46,6 @@
 .list-item a,
 .list-item button {
   appearance: none;
-  outline: none;
   text-decoration: none;
   display: flex;
   font-size: $font-size-xs;

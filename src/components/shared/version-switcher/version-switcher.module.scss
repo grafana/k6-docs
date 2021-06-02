@@ -8,7 +8,6 @@
 .current {
   position: relative;
   border: none;
-  outline: none;
   background-color: transparent;
   cursor: pointer;
   color: $color-accent-primary;
@@ -41,7 +40,6 @@
 
   &-item {
     border: none;
-    outline: none;
     background-color: transparent;
 
     padding: 5px 15px;

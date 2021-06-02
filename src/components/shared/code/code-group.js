@@ -15,10 +15,10 @@ const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
             className={`${styles.codeTab} ${
               i === currentIndex ? styles.active : ''
             }`}
-            onClick={() => setCurrentIndex(i)}
-            onKeyPress={() => setCurrentIndex(i)}
+            tabIndex={'0'}
             role={'button'}
-            tabIndex={i}
+            onClick={() => setCurrentIndex(i)}
+            onKeyDown={() => setCurrentIndex(i)}
           >
             {label}
           </div>
