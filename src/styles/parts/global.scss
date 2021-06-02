@@ -50,13 +50,13 @@ button,
 input,
 img,
 video {
-  outline: none;
+  outline-color: $color-accent-secondary;
   &:-moz-focusring {
-    outline: none;
+    outline-color: $color-accent-secondary;
     border: none;
   }
   &:-moz-focus-inner {
-    outline: none;
+    outline-color: $color-accent-secondary;
     border: none;
   }
 }
@@ -67,7 +67,6 @@ video {
   color: $color-accent-primary;
   font-weight: 500;
   transition: 0.3s all;
-  outline: none;
   font-size: inherit;
   line-height: inherit;
   cursor: pointer;
