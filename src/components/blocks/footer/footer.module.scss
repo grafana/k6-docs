@@ -5,6 +5,8 @@
   overflow-x: hidden;
   margin-top: auto;
   padding: 40px 0;
+  padding-left: 7px;
+  margin-left: -3px; // avoid case when the outline of logos is hidden
   .year {
     @include md-down {
       margin-left: -12px;
