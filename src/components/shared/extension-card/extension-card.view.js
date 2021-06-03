@@ -39,6 +39,7 @@ export const ExtensionCard = ({
             id={extension.name}
             checked={isChecked}
             onChange={onCheckboxClick}
+            accessible={false}
           />
         </div>
       )}

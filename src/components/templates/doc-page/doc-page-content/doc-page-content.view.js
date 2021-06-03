@@ -30,7 +30,7 @@ export const DocPageContent = ({ label, content, mod }) => {
   return (
     <div
       className={classNames(styles.wrapper, {
-        [styles.wrapper_beliefs]: mod === 'beliefs',
+        [styles.beliefs]: mod === 'beliefs',
       })}
     >
       <div className={`${styles.inner}`}>
@@ -38,7 +38,7 @@ export const DocPageContent = ({ label, content, mod }) => {
           <div
             ref={contentContainerRef}
             className={classNames(styles.mainDocContent, {
-              [styles.mainDocContent_beliefs]: mod === 'beliefs',
+              [styles.beliefs]: mod === 'beliefs',
             })}
           >
             <HtmlContent
@@ -46,7 +46,7 @@ export const DocPageContent = ({ label, content, mod }) => {
               componentsForNativeReplacement={componentsForNativeReplacement}
               className={classNames(
                 styles.contentWrapper,
-                { [styles.contentWrapper_beliefs]: mod === 'beliefs' },
+                { [styles.beliefs]: mod === 'beliefs' },
                 label,
               )}
             />

@@ -41,7 +41,6 @@
   opacity: 1;
   transition: all 0.3s;
   border: none;
-  outline: none;
   cursor: pointer;
   background: transparent;
   &.inactive {
@@ -107,7 +106,7 @@
   @include lg-down {
     width: 100%;
   }
-  &_show {
+  &.show {
     display: grid;
   }
   li {
@@ -192,7 +191,6 @@
 }
 
 .toggle-results-btn {
-  outline: none;
   appearance: none;
   border: none;
   padding: 0 0 1px 0;
@@ -213,7 +211,7 @@
     border-right-color: transparent;
     border-bottom-color: transparent;
   }
-  &_open {
+  &.open {
     &:after {
       transform: translateY(100%) rotate(45deg);
     }

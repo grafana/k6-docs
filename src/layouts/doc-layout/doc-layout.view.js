@@ -175,7 +175,7 @@ const SidebarNode = (props) => {
     internalLink: () => (
       <Link
         className={`${styles.sidebarNodeTitle} ${
-          isActive ? styles.sidebarNodeTitle_active : ''
+          isActive ? styles.active : ''
         }`}
         to={meta.path}
       >
@@ -308,7 +308,7 @@ export const DocLayout = ({
                   tag={'h2'}
                 >
                   <Link
-                    className={`link ${styles.sidebarSectionTitle_link}`}
+                    className={`link ${styles.sidebarSectionTitleLink}`}
                     to={sectionNode.meta.path}
                   >
                     {sectionNode.meta.title || sectionNode.name}

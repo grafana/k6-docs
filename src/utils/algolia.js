@@ -1,8 +1,7 @@
 /* eslint-disable no-useless-escape */
-const chunk = require('chunk-text');
-
 const { I18N_CONFIG } = require('../i18n/i18n-config');
 
+const chunk = require('./chunk-text');
 const { stripDirectoryPath, mdxAstToPlainText, flat } = require('./utils');
 const {
   getSlug,

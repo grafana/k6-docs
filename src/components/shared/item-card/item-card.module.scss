@@ -29,7 +29,7 @@
     }
   }
 
-  &_lifted {
+  &.lifted {
     top: -50px;
 
     @include sm-down {

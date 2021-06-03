@@ -24,7 +24,7 @@
     box-shadow: 0 0 5px rgba($color-accent-primary, 0.25);
   }
 
-  &_invalid {
+  &.invalid {
     border-color: $color-error;
     box-shadow: 0 0 5px rgba($color-error, 0.25);
 

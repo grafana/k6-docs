@@ -12,7 +12,7 @@
   transition: 0.3s;
   visibility: hidden;
 
-  &_visible {
+  &.visible {
     opacity: 1;
     visibility: visible;
   }

@@ -75,20 +75,25 @@ export default function ({ pageContext: { navLinks } }) {
           className="container"
           breadcrumbs={breadcrumbs}
         />
-        <div>
-          <span>
+        <div className={docPageContent.inner}>
+          <p>
             Easily create your own bespoke k6 binary with all the extensions you
             want to run using the bundle builder and xk6. Just select all the
             extensions you want to use, and copy the command below. The
             resulting binary will then allow you to use all the extensions
             you&apos;ve picked in your test scripts.
-          </span>
-          <br />
-          <span>
+          </p>
+          <p>
             Want learn more about how xk6 works or how to create your own
             extension? Check out the{' '}
-            <a href="https://k6.io/blog/extending-k6-with-xk6/">tutorial</a>.
-          </span>
+            <a
+              className={docPageContent.link}
+              href="https://k6.io/blog/extending-k6-with-xk6/"
+            >
+              tutorial
+            </a>
+            .
+          </p>
         </div>
         <div className={`${docPageContent.inner} `}>
           <ExtensionSelection />

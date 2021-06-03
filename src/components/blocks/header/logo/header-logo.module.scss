@@ -1,7 +1,7 @@
 .wrapper {
   display: inline-block;
   vertical-align: top;
-  &_doc {
+  &.doc {
     position: relative;
     span {
       position: absolute;
