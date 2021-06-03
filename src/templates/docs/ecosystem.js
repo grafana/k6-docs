@@ -138,7 +138,7 @@ export default function ({ location, pageContext: { navLinks } }) {
           description={''}
           breadcrumbs={breadcrumbs}
         />
-        <div className={`${docPageContent.inner}`}>
+        <div className={docPageContent.inner}>
           <span>
             The extension ecosystem enables developers and testers to extend k6
             to cover use cases not supported natively in the core. Explore the
@@ -167,7 +167,7 @@ export default function ({ location, pageContext: { navLinks } }) {
             to get started!
           </span>
         </div>
-        <div className={`${docPageContent.inner} `}>
+        <div className={docPageContent.inner}>
           <ExtensionsList category={category} />
         </div>
       </DocLayout>
