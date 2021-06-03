@@ -1,5 +1,7 @@
 .container {
   margin-bottom: 60px;
+
+  @include list-style;
 }
 
 .title {
