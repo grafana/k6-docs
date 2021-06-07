@@ -49,7 +49,7 @@ You can contribute to the project in multiple ways. You'll find some ideas below
   it's usually a good idea to discuss your approach in the issue before you start writing
   code. We have issues labeled as good first issue that have a limited scope.
 - Blog about k6. Contact us on [Slack](https://k6.io/slack/) if you would like your post to
-  be promoted. It's also nice if you mention `@k6` if you publish any links on twitter.
+  be promoted. It's also nice if you mention `@k6_io` if you publish any links on twitter.
 - Give a talk about k6. Let us know on [Slack](https://k6.io/slack/) to see how we may help you.
 
 ## Cheat Sheet
