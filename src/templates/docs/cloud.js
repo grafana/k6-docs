@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
+import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { CtaDoc } from 'components/shared/cta-doc';
 import { PageInfo } from 'components/shared/page-info';
@@ -14,6 +15,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import { isInIFrame } from 'utils';
 import SeoMetadata from 'utils/seo-metadata';
 import { app } from 'utils/urls';
+import { flattenSidebarTree } from 'utils/utils';
 
 export default function ({ pageContext: { sidebarTree, navLinks } }) {
   const [showFooter, setShowFooter] = useState(true);
@@ -27,6 +29,8 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
+
+  const flatSidebar = flattenSidebarTree(sidebarTree);
 
   return (
     <LocaleProvider>
@@ -237,6 +241,11 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                 />
               )}
             </div>
+            <DocPageNavigation
+              prev={null}
+              next={flatSidebar[0]}
+              variant="top-level"
+            />
             <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
               {({ style }) => (
                 <TableOfContents

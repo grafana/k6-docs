@@ -6,9 +6,7 @@ const { latinizedCharacters } = require('./latinized-characters');
 // container for default export (node-specific action)
 const utils = {};
 
-const capitalize = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const omit = (names, obj) => {
   const result = {};
@@ -180,6 +178,35 @@ const mdxAstToPlainText = (ast) => {
   return $toString(ast);
 };
 
+/* returns preorder traversal of sidebar tree,
+ignores top-level children and hidden pages */
+const flattenSidebarTree = (sidebar) => {
+  const flatTree = [];
+  const processNode = (node) => {
+    if (node.children) {
+      const keys = Object.keys(node.children);
+      keys.forEach((key) => {
+        // ignore pages that are hidden from sidebar
+        if (
+          node.children[key].meta.hideFromSidebar ||
+          node.children[key].meta.redirect
+        ) {
+          return;
+        }
+        flatTree.push({
+          title: node.children[key].meta.title,
+          path: node.children[key].meta.path,
+        });
+        processNode(node.children[key]);
+      });
+    }
+  };
+
+  const keys = Object.keys(sidebar.children);
+  keys.forEach((key) => processNode(sidebar.children[key]));
+  return flatTree;
+};
+
 // es5 tricky alternative to .flat
 // !warninng: support only 1 level deep
 // eslint-disable-next-line prefer-spread
@@ -230,6 +257,9 @@ Object.defineProperties(utils, {
   },
   capitalize: {
     value: capitalize,
+  },
+  flattenSidebarTree: {
+    value: flattenSidebarTree,
   },
 });
 

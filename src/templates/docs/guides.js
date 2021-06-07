@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import {
   Cloud,
@@ -19,6 +20,7 @@ import React, { useRef } from 'react';
 import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
+import { flattenSidebarTree } from 'utils/utils';
 
 const pageInfo = {
   en: {
@@ -64,6 +66,8 @@ function GuidesContent({
     },
   };
 
+  const flatSidebar = flattenSidebarTree(sidebarTree);
+
   return (
     <DocLayout
       sidebarTree={sidebarTree}
@@ -95,6 +99,11 @@ function GuidesContent({
               />
             )}
           </div>
+          <DocPageNavigation
+            prev={null}
+            next={flatSidebar[1]}
+            variant="top-level"
+          />
 
           <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
             {({ style }) => (
