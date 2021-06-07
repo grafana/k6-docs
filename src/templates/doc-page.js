@@ -9,30 +9,8 @@ import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
+import { flattenSidebarTree } from 'utils/utils';
 import { LATEST_VERSION } from 'utils/utils.node';
-
-const flattenTree = (sidebar) => {
-  const flat = [];
-  const processNode = (node) => {
-    if (node.children) {
-      const keys = Object.keys(node.children);
-      keys.forEach((key) => {
-        if (node.children[key].meta.hideFromSidebar) {
-          return;
-        }
-        flat.push({
-          title: node.children[key].meta.title,
-          path: node.children[key].meta.path,
-        });
-        processNode(node.children[key]);
-      });
-    }
-  };
-
-  const keys = Object.keys(sidebar.children);
-  keys.forEach((key) => processNode(sidebar.children[key]));
-  return flat;
-};
 
 export default function (props) {
   const {
@@ -63,12 +41,13 @@ export default function (props) {
   let prev = null;
   let next = null;
 
+  // only get prev and next articles for Guides and Cloud sections
   if (
     sidebarTree.name === 'cloud' ||
     sidebarTree.name === 'es' ||
     sidebarTree.name === 'en'
   ) {
-    const flatSidebar = flattenTree(sidebarTree);
+    const flatSidebar = flattenSidebarTree(sidebarTree);
     const currentIndex = flatSidebar.findIndex(
       (elem) => elem.path === `/${frontmatter.slug}`,
     );
