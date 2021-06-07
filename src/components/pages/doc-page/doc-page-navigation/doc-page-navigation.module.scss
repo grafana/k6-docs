@@ -7,10 +7,17 @@
   max-width: calc(100% - 325px);
 
   @include lg-down {
-    max-width: calc(100% - 240px);
+    max-width: 100%;
   }
   @include md-down {
     max-width: 100%;
+  }
+
+  @include xs-down {
+    flex-direction: column;
+    & > *:first-child {
+      margin-bottom: 30px;
+    }
   }
 
   &.top-level {
@@ -25,7 +32,7 @@
   align-items: flex-end;
   flex-direction: column;
   cursor: pointer;
-  padding-right: 36px;
+  padding-right: 32px;
   margin-left: auto;
 
   text-decoration: none;
@@ -43,7 +50,7 @@
     margin-left: 0;
     margin-right: auto;
     padding-right: 0;
-    padding-left: 36px;
+    padding-left: 32px;
     & svg {
       transform: rotate(180deg) translateY(50%);
       right: auto;
