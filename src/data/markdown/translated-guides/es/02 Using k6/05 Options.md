@@ -5,7 +5,7 @@ excerpt: 'Las opciones le permiten configurar cómo se comportará k6 durante la
 
 Las opciones le permiten configurar cómo se comportará k6 durante la ejecución de la prueba.
 
-## Lista de opciones 
+## Lista de opciones
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -187,7 +187,7 @@ export let options = {
 
 ### Blacklist IPs
 
-Blacklist de IP para no ser llamados. 
+Blacklist de IP para no ser llamados.
 
 | Env                | CLI              | Code / Config file | Default |
 | ------------------ | ---------------- | ------------------ | ------- |
@@ -402,7 +402,7 @@ A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo 
 
 > #### ⚠️ Tenga en cuenta que!
 >
-> Esto no modifica la cabecera HTTP Host propiamente dicha, sino hacia dónde se dirigirá. 
+> Esto no modifica la cabecera HTTP Host propiamente dicha, sino hacia dónde se dirigirá.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -425,7 +425,7 @@ Con el código anterior cualquier petición hecha a `test.k6.io` será redirigid
 
 ### HTTP Debug
 
-Registra todas las peticiones y respuestas HTTP. Excluye el cuerpo por defecto, para incluir el cuerpo use `--http-debug=full`. 
+Registra todas las peticiones y respuestas HTTP. Excluye el cuerpo por defecto, para incluir el cuerpo use `--http-debug=full`.
 
 Lea más [aquí](/es/usando-k6/http-debugging/).
 
@@ -648,7 +648,7 @@ export let options = {
 
 ### No Connection Reuse
 
-Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexiones keep-alive. 
+Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexiones keep-alive.
 
 | Env                      | CLI                     | Code / Config file  | Default |
 | ------------------------ | ----------------------- | ------------------- | ------- |
@@ -718,19 +718,21 @@ $ k6 run --no-thresholds ~/script.js
 
 Un booleano, verdadero o falso. Por defecto, k6 envía un informe de uso cada vez que se ejecuta, para que podamos hacer un seguimiento de la frecuencia de uso. Si esta opción se establece como verdadera, no se realizará ningún informe de uso. Para saber más, eche un vistazo a la documentación sobre los [informes de uso](/misc/usage-collection). Disponible en `k6 run`.
 
-| Env                  | CLI                 | Code / Config file | Default |
+| Env                  | CLI                 | Config file        | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
-| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`    | `false` |
+| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`\*  | `false` |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
 
-```javascript
-export let options = {
-  noUsageReport: true,
-};
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --no-usage-report ~/script.js
 ```
 
 </CodeGroup>
+
+\* Note que esta opción no puede ser especificada en el script, pero sí en un archivo de configuración.
+
 
 ### No VU Connection Reuse
 
@@ -941,7 +943,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 ### System Tags
 
-Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI. 
+Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI.
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -1059,7 +1061,7 @@ export let options = {
 
 ### Throw
 
-Un booleano, verdadero o falso, que especifica si se lanzan errores en las peticiones HTTP fallidas o no. 
+Un booleano, verdadero o falso, que especifica si se lanzan errores en las peticiones HTTP fallidas o no.
 
 | Env        | CLI             | Code / Config file | Default |
 | ---------- | --------------- | ------------------ | ------- |

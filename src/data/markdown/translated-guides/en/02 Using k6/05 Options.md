@@ -794,19 +794,20 @@ track how often people use it. If this option is set to true, no usage report wi
 learn more, have a look at the [Usage reports](/misc/usage-collection) documentation. Available in
 `k6 run` commands.
 
-| Env                  | CLI                 | Code / Config file | Default |
+| Env                  | CLI                 | Config file        | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
-| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`    | `false` |
+| `K6_NO_USAGE_REPORT` | `--no-usage-report` | `noUsageReport`\*  | `false` |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
-```javascript
-export let options = {
-  noUsageReport: true,
-};
+```bash
+$ k6 run --no-usage-report ~/script.js
 ```
 
 </CodeGroup>
+
+\* Note that this option is not supported in the exported script options, but can be specified in a configuration file.
+
 
 ### No VU Connection Reuse
 
