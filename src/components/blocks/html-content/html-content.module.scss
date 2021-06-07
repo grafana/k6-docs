@@ -25,35 +25,10 @@
 
   ul,
   ol {
-    padding-left: 45px;
-    @include xs-down {
-      padding-left: 30px;
-    }
+    margin: 0;
   }
 
-  li {
-    counter-increment: li;
-  }
-
-  ol {
-    counter-reset: item;
-    list-style: none;
-
-    li {
-      position: relative;
-
-      &:before {
-        content: counters(item, '.') ' ';
-        counter-increment: item;
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-weight: 500;
-        transform: translate(-100%, 0);
-        padding-right: 10px;
-      }
-    }
-  }
+  @include list-style;
 
   img {
     width: 100%;
