@@ -187,7 +187,10 @@ const flattenSidebarTree = (sidebar) => {
       const keys = Object.keys(node.children);
       keys.forEach((key) => {
         // ignore pages that are hidden from sidebar
-        if (node.children[key].meta.hideFromSidebar) {
+        if (
+          node.children[key].meta.hideFromSidebar ||
+          node.children[key].meta.redirect
+        ) {
           return;
         }
         flatTree.push({
