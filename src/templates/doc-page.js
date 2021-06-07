@@ -55,6 +55,12 @@ export default function (props) {
     if (currentIndex > 0) {
       prev = flatSidebar[currentIndex - 1];
     }
+    if (currentIndex === 0 && sidebarTree.name === 'cloud') {
+      prev = {
+        title: 'Cloud docs',
+        path: '/cloud/',
+      };
+    }
     if (currentIndex < flatSidebar.length - 1) {
       next = flatSidebar[currentIndex + 1];
     }

@@ -15,8 +15,8 @@ const NavigationButton = ({ type, title, path }) => (
   </Link>
 );
 
-export const DocPageNavigation = ({ prev, next }) => (
-  <div className={styles.wrapper}>
+export const DocPageNavigation = ({ prev, next, variant = 'default' }) => (
+  <div className={cx('wrapper', variant === 'top-level' && 'top-level')}>
     {prev && (
       <NavigationButton type="previous" title={prev.title} path={prev.path} />
     )}

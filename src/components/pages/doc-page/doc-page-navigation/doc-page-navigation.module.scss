@@ -1,21 +1,28 @@
 .wrapper {
+  margin-top: -10px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: space-between;
 
   max-width: calc(100% - 325px);
-  margin: 15px 0 50px;
+
   @include lg-down {
     max-width: calc(100% - 240px);
-    flex-flow: column-reverse;
   }
   @include md-down {
     max-width: 100%;
+  }
+
+  &.top-level {
+    margin-top: 50px;
+    padding-bottom: 0;
   }
 }
 
 .item {
   position: relative;
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
   cursor: pointer;
   padding-right: 36px;
@@ -32,6 +39,7 @@
   }
 
   &.prev {
+    align-items: flex-start;
     margin-left: 0;
     margin-right: auto;
     padding-right: 0;
