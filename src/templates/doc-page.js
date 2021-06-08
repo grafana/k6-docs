@@ -61,7 +61,7 @@ export default function (props) {
         path: '/cloud/',
       };
     }
-    if (currentIndex < flatSidebar.length - 1 && currentIndex > 0) {
+    if (currentIndex < flatSidebar.length - 1 && currentIndex >= 0) {
       next = flatSidebar[currentIndex + 1];
     }
   }
