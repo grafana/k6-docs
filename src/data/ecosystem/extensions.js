@@ -469,6 +469,19 @@ const extensions = [
     official: false,
     categories: ['Data'],
   },
+  {
+    name: 'xk6-dashboard',
+    description:
+      'A k6 extension that enables creating web based metrics dashboard for k6.',
+    url: 'https://github.com/szkiba/xk6-dashboard',
+    logo: '',
+    author: {
+      name: 'Iván Szkiba',
+      url: 'https://github.com/szkiba',
+    },
+    official: false,
+    categories: ['Reporting', 'Observability'],
+  },
 ];
 
 export default extensions;
