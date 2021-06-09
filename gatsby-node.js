@@ -34,6 +34,14 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
+const numberOfVersionsForBuild = process.env.JS_API_VERSIONS_TO_BUILD || null;
+let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
+if (!isProduction && numberOfVersionsForBuild) {
+  SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
+    .reverse()
+    .slice(0, Math.max(numberOfVersionsForBuild - 1, 0));
+}
+
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
@@ -243,8 +251,8 @@ function getSupplementaryPagesProps({
           isProduction ? 'cloud rest api' : '',
         ].includes(s.toLowerCase()),
     )
-    .flatMap((section) => {
-      return childrenToList(getSidebar(section).children).map(({ name }) => {
+    .flatMap((section) =>
+      childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
         const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
 
@@ -264,57 +272,54 @@ function getSupplementaryPagesProps({
             directChildren: getSidebar(section).children[name].children,
           },
         };
-      });
-    });
-
-  const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) => {
-    return childrenToList(getGuidesSidebar(locale).children).map(
-      ({ name, meta }) => {
-        const path = `${locale}/${meta.title}`;
-        const breadcrumbs = compose(
-          buildBreadcrumbs,
-          removeEnPrefix,
-          dedupePath,
-        )(path);
-
-        const pageTranslations = {};
-        SUPPORTED_LOCALES.forEach((locale) => {
-          if (
-            typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
-            typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
-          ) {
-            pageTranslations[locale] = getGuidesSidebar(locale).children[
-              name
-            ].meta;
-          } else {
-            reporter.warn(`No ${locale} translation found for ${name}`);
-          }
-        });
-
-        return {
-          path: compose(
-            removeEnPrefix,
-            addTrailingSlash,
-            dedupePath,
-            slugify,
-          )(path),
-          component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
-          context: {
-            sidebarTree: getGuidesSidebar(locale),
-            breadcrumbs: breadcrumbs.filter(
-              (item) =>
-                !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
-            ),
-            title: meta.title,
-            navLinks: generateTopLevelLinks(topLevelLinks),
-            directChildren: getGuidesSidebar(locale).children[name].children,
-            locale,
-            translations: pageTranslations,
-          },
-        };
-      },
+      }),
     );
-  });
+
+  const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) =>
+    childrenToList(getGuidesSidebar(locale).children).map(({ name, meta }) => {
+      const path = `${locale}/${meta.title}`;
+      const breadcrumbs = compose(
+        buildBreadcrumbs,
+        removeEnPrefix,
+        dedupePath,
+      )(path);
+
+      const pageTranslations = {};
+      SUPPORTED_LOCALES.forEach((locale) => {
+        if (
+          typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
+          typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
+        ) {
+          pageTranslations[locale] = getGuidesSidebar(locale).children[
+            name
+          ].meta;
+        } else {
+          reporter.warn(`No ${locale} translation found for ${name}`);
+        }
+      });
+
+      return {
+        path: compose(
+          removeEnPrefix,
+          addTrailingSlash,
+          dedupePath,
+          slugify,
+        )(path),
+        component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
+        context: {
+          sidebarTree: getGuidesSidebar(locale),
+          breadcrumbs: breadcrumbs.filter(
+            (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
+          ),
+          title: meta.title,
+          navLinks: generateTopLevelLinks(topLevelLinks),
+          directChildren: getGuidesSidebar(locale).children[name].children,
+          locale,
+          translations: pageTranslations,
+        },
+      };
+    }),
+  );
 
   return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
 }
@@ -389,7 +394,7 @@ function getTopLevelPagesProps({
       },
     ])
     .concat(
-      SUPPORTED_VERSIONS.map((version) => ({
+      SUPPORTED_VERSIONS_FOR_BUILD.map((version) => ({
         path: `/javascript-api/${version.replace(/\./g, '-')}/`,
         component: Path.resolve(
           `./src/templates/docs/versioned-javascript-api.js`,
@@ -659,6 +664,13 @@ function getJsAPIVersionedPagesProps({
       const pageVersion = SUPPORTED_VERSIONS.find((version) =>
         strippedDirectory.startsWith(version),
       );
+
+      if (
+        !isProduction &&
+        !SUPPORTED_VERSIONS_FOR_BUILD.includes(pageVersion)
+      ) {
+        return null;
+      }
 
       const slug = getSlug(path);
 

@@ -6,6 +6,7 @@ env:
   GATSBY_DEFAULT_DOC_URL: https://mdr-ci.staging.k6.io/docs/${{ github.ref }}
   GATSBY_DEFAULT_BLOG_URL: https://k6.io/blog
   GATSBY_DEFAULT_APP_URL: https://app.staging.k6.io
+  JS_API_VERSIONS_TO_BUILD: 2
 
 on:
   pull_request:
