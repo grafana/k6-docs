@@ -3,4 +3,10 @@ const SUPPORTED_VERSIONS = ['v0.31'];
 /** latest version number for URLs without version prefix */
 const LATEST_VERSION = 'v0.32';
 
-module.exports = { SUPPORTED_VERSIONS, LATEST_VERSION };
+const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
+
+module.exports = {
+  SUPPORTED_VERSIONS,
+  LATEST_VERSION,
+  DEFAULT_JS_API_VERSIONS_TO_BUILD,
+};

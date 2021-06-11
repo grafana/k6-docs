@@ -27,6 +27,7 @@ const {
 const {
   SUPPORTED_VERSIONS,
   LATEST_VERSION,
+  DEFAULT_JS_API_VERSIONS_TO_BUILD,
 } = require('./src/utils/versioning');
 
 /* constants */
@@ -34,12 +35,13 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
-const numberOfVersionsForBuild = process.env.JS_API_VERSIONS_TO_BUILD || null;
+const jsApiVersionsToBuild =
+  process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
 let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
-if (!isProduction && numberOfVersionsForBuild) {
+if (!isProduction && jsApiVersionsToBuild) {
   SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
     .reverse()
-    .slice(0, Math.max(numberOfVersionsForBuild - 1, 0));
+    .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
 }
 
 // @TODO: remove this after the porting of cloud rest api
