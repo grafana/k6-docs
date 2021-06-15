@@ -393,17 +393,19 @@ export const DocLayout = ({
         />
         {showFooter && <Footer />}
       </main>
-      <CookiesProvider cookies={cookies}>
-        <CookieBannerUniversal
-          dismissOnScroll={false}
-          dismissOnClick={false}
-          cookiePath={'/'}
-          disableStyle
-          cookie={'user-has-accepted-cookies'}
-        >
-          {(onAccept) => <CookieConsent onAccept={onAccept} />}
-        </CookieBannerUniversal>
-      </CookiesProvider>
+      <div>
+        <CookiesProvider cookies={cookies}>
+          <CookieBannerUniversal
+            dismissOnScroll={false}
+            dismissOnClick={false}
+            cookiePath={'/'}
+            disableStyle
+            cookie={'user-has-accepted-cookies'}
+          >
+            {(onAccept) => <CookieConsent onAccept={onAccept} />}
+          </CookieBannerUniversal>
+        </CookiesProvider>
+      </div>
       <HelperWidget />
     </div>
   );

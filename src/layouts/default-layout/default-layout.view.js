@@ -99,16 +99,18 @@ export const DefaultLayout = ({ pageMetadata, children }) => {
         onCloseButtonClick={() => setIsMobileNavVisible(false)}
       />
       <Footer />
-      <CookiesProvider cookies={cookies}>
-        <CookieBannerUniversal
-          dismissOnScroll={false}
-          dismissOnClick={false}
-          disableStyle
-          cookie={'user-has-accepted-cookies'}
-        >
-          {(onAccept) => <CookieConsent onAccept={onAccept} />}
-        </CookieBannerUniversal>
-      </CookiesProvider>
+      <div>
+        <CookiesProvider cookies={cookies}>
+          <CookieBannerUniversal
+            dismissOnScroll={false}
+            dismissOnClick={false}
+            disableStyle
+            cookie={'user-has-accepted-cookies'}
+          >
+            {(onAccept) => <CookieConsent onAccept={onAccept} />}
+          </CookieBannerUniversal>
+        </CookiesProvider>
+      </div>
       <HelperWidget />
     </>
   );
