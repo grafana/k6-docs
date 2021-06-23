@@ -19,6 +19,8 @@ filter your test results.
 
 Groups are optional, and it allows you to “group” a large load script to help you with the test result analysis. Groups can be nested, allowing you the BDD-style of testing.
 
+This makes all metrics emitted in a group to have the tag `group` with a value of all group names wrapping it separated by '::' (two colons). There is also a default/root group with the name '' (empty string) which means that if you just have a single group named 'cool requests' the actual value of the `group` tag will be `::cool requests`.
+
 For example, you could use groups to organize multiple requests due to loading a page or executing a user action.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
@@ -108,7 +110,7 @@ Currently, k6 automatically creates the following tags by default:
 | `method`      | the HTTP method name (e.g. `GET`, `POST`, etc.) or the RPC method name for gRPC                                                                                                   |
 | `url`         | the HTTP request URL                                                                                                                                                              |
 | `name`        | the HTTP [request name](/using-k6/http-requests#url-grouping)                                                                                                                     |
-| `group`       | the full [group](#groups) path                                                                                                                                                    |
+| `group`       | the full [group](#groups) path, see explanation above for the specific of it's value                                                                                              |
 | `check`       | the [Check](/using-k6/checks) name                                                                                                                                                |
 | `error`       | a string with a non-HTTP error message (e.g. network or DNS error)                                                                                                                |
 | `error_code`  | added in k6 v0.24.0, this is a number that is unique for different error types; a list of current error codes can be found at the [Error Codes](/javascript-api/error-codes) page |
