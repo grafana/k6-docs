@@ -138,34 +138,24 @@ export default function () {
 ```javascript
 import http from 'k6/http';
 import { group, sleep } from 'k6';
-import { Trend } from 'k6/metrics';
-
-let groupDuration = Trend('groupDuration');
 
 export let options = {
   thresholds: {
-    'groupDuration{groupName:individualRequests}': ['avg < 200'],
-    'groupDuration{groupName:batchRequests}': ['avg < 200'],
+    'group_duration{group:::individualRequests}': ['avg < 200'],
+    'group_duration{group:::batchRequests}': ['avg < 200'],
   },
   vus: 1,
   duration: '10s',
 };
 
-function groupWithDurationMetric(name, group_function) {
-  let start = new Date();
-  group(name, group_function);
-  let end = new Date();
-  groupDuration.add(end - start, { groupName: name });
-}
-
 export default function () {
-  groupWithDurationMetric('individualRequests', function () {
+  group('individualRequests', function () {
     http.get('https://test-api.k6.io/public/crocodiles/1/');
     http.get('https://test-api.k6.io/public/crocodiles/2/');
     http.get('https://test-api.k6.io/public/crocodiles/3/');
   });
 
-  groupWithDurationMetric('batchRequests', function () {
+  group('batchRequests', function () {
     http.batch([
       ['GET', `https://test-api.k6.io/public/crocodiles/1/`],
       ['GET', `https://test-api.k6.io/public/crocodiles/2/`],
