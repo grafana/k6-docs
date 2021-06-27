@@ -64,7 +64,7 @@ Once the integration is running, run the k6 test and send the metrics to the int
 <CodeGroup labels={[""]}>
 
 ```bash
-$ K6_STATSD_ENABLE_TAGS=true 6 run --out statsd script.js
+$ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
 ```
 
 </CodeGroup>
