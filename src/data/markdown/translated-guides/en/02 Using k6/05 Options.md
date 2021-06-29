@@ -699,8 +699,8 @@ export let options = {
 
 ### Minimum Iteration Duration
 
-Specifies the minimum duration for every single execution (i.e. iteration) of the default
-function should be. Any iterations that are shorter than it will cause that VU to sleep for
+Specifies the minimum duration of every single execution (i.e. iteration) of the `default`
+function. Any iterations that are shorter than this value will cause that VU to sleep for
 the remainder of the time until the specified minimum duration is reached.
 
 | Env                         | CLI                        | Code / Config file     | Default        |
