@@ -1,7 +1,7 @@
 /** version number for which documentation is available (except for the latest version) */
-const SUPPORTED_VERSIONS = ['v0.31'];
+const SUPPORTED_VERSIONS = ['v0.31', 'v0.32'];
 /** latest version number for URLs without version prefix */
-const LATEST_VERSION = 'v0.32';
+const LATEST_VERSION = 'v0.33';
 
 const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
 
