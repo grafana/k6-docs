@@ -21,6 +21,8 @@ The following specific error codes are currently defined:
 
 - 1000: A generic error that isn't any of the ones listed below.
 - 1010: A non-TCP network error - this is a place holder there is no error currently known to trigger it.
+- 1020: An invalid URL was specified.
+- 1050: The HTTP request has timed out.
 - 1100: A generic DNS error that isn't any of the ones listed below.
 - 1101: No IP for the provided host was found.
 - 1110: Blacklisted IP was resolved or a connection to such was tried to be established.

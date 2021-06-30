@@ -40,7 +40,7 @@ _built-in_ metrics will only be generated when/if HTTP requests are made:
 | http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. \"time to first byte\", or \"TTFB\"). `float`                                                                                                                                       |
 | http_req_receiving       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
 | http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
-| http_req_failed <sup>(≥ v0.31)</sup> | Rate |  The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback). | 
+| http_req_failed <sup>(≥ v0.31)</sup> | Rate |  The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback). |
 
 ### Accessing HTTP timings from a script
 
@@ -89,12 +89,14 @@ let myTrend = new Trend('waiting_time');
 export default function () {
   let r = http.get('https://httpbin.org');
   myTrend.add(r.timings.waiting);
+  console.log(myTrend.name);  // waiting_time
 }
 ```
 
 </CodeGroup>
 
-The above code will create a Trend metric named “waiting_time” and referred to in the code using the variable name myTrend.
+The above code will create a Trend metric named “waiting_time” and referred to in the code using the variable name `myTrend`.
+
 Custom metrics will be reported at the end of a test. Here is how the output might look:
 
 ![custom metrics](images/Metrics/custom-metrics.png)
