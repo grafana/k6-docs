@@ -24,7 +24,7 @@ import {
   CookiesProvider,
   CookieBannerUniversal,
 } from 'react-cookie-banner';
-import { childrenToList, slugify, isInIFrame } from 'utils';
+import { childrenToList, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
@@ -130,25 +130,24 @@ const SidebarNode = (props) => {
     if (typeof window === 'undefined') {
       return;
     }
+
     const maybePrefixedPath = withPrefix(meta.path);
-    let doesPathMatchLocation = maybePrefixedPath === window.location.pathname;
+    const pathname = window.location.pathname.endsWith('/')
+      ? window.location.pathname
+      : `${window.location.pathname}/`;
+
+    let doesPathMatchLocation = maybePrefixedPath === pathname;
+
     const isPathLocationPart =
       meta.path === '/' || meta.path === '/es/' || meta.path === '/ecosystem/'
         ? false
-        : window.location.pathname.startsWith(`${maybePrefixedPath}`) ||
-          window.location.pathname.startsWith(
-            `${maybePrefixedPath
-              .split('/')
-              .slice(0, -1)
-              .concat(slugify(name))
-              .join('/')}/`,
-          );
+        : pathname.startsWith(maybePrefixedPath);
 
     // handle ecosystem category filters
     let doesMatchEcosystemCategory = false;
     if (meta.path.startsWith('/ecosystem/')) {
       if (search) {
-        if (window.location.pathname + search === maybePrefixedPath) {
+        if (pathname + search === maybePrefixedPath) {
           doesMatchEcosystemCategory = true;
         }
 
