@@ -15,7 +15,7 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 - Learning quickly the [k6 API](/javascript-api).
 - Collaborating on building tests with non-coders.
 
-![k6 Test Builder](images/test-builder-ui.png)
+![k6 Test Builder](images/test-builder.png)
 
 ## Instructions
 
@@ -29,7 +29,7 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 
 4 - Now, you can start building your k6 test using the graphical interface.
 
-![k6 Test Builder](images/test-builder-ui.png)
+![k6 Test Builder](images/test-builder.png)
 
 ## Test builder features
 
