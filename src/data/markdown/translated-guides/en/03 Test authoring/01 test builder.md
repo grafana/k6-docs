@@ -51,7 +51,7 @@ Control the number of VUs (Virtual Users) throughout the test, including ramp up
 **Thresholds**
 
 Thresholds are global pass/fail criteria that you can configure k6 to use, that can act on any result metrics.  
-Read more in depths about thresholds [here](/using-k6/thresholds/).
+Read more in depth about thresholds [here](/using-k6/thresholds/).
 
 ![Test Builder - Thresholds UI](images/thresholds.png)
 
