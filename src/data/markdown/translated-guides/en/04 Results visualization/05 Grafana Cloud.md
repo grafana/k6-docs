@@ -15,8 +15,8 @@ While this article focuses on Grafana Cloud, any remote-write capable Prometheus
 
 ## Prerequisites
 
-- Telegraf
-- Grafana Cloud Prometheus
+- [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/)
+- [Grafana Cloud Prometheus](https://grafana.com/products/cloud/features/#cloud-metrics)
 - Credentials for the `/api/prom/push` endpoint
 
 ## Configuration
