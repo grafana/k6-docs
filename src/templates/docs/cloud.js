@@ -99,9 +99,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        <Link
-                          to={'/cloud/creating-and-running-a-test/test-builder'}
-                        >
+                        <Link to={'/test-authoring/test-builder'}>
                           Test Builder
                         </Link>{' '}
                         and{' '}
