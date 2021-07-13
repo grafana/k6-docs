@@ -25,7 +25,7 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 
 3 - Select `Test builder`.
 
-![k6 Test Builder](images/k6-create-new-test.png)
+![k6 Test Builder](images/create-new-test.png)
 
 4 - Now, you can start building your k6 test using the graphical interface.
 
