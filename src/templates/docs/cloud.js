@@ -99,7 +99,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        <Link to={'/test-authoring/test-builder'}>
+                        <Link to={'/test-authoring/test-builder/'}>
                           Test Builder
                         </Link>{' '}
                         and{' '}
@@ -113,7 +113,7 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        <Link to={'/using-k6/cloud-execution'}>CLI</Link> and{' '}
+                        <Link to={'/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/'}>CLI</Link> and{' '}
                         <Link
                           to={
                             '/test-authoring/recording-a-session/browser-recorder/'
