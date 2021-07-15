@@ -113,7 +113,14 @@ export default function ({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        <Link to={'/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/'}>CLI</Link> and{' '}
+                        <Link
+                          to={
+                            '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/'
+                          }
+                        >
+                          CLI
+                        </Link>{' '}
+                        and{' '}
                         <Link
                           to={
                             '/test-authoring/recording-a-session/browser-recorder/'
