@@ -58,6 +58,8 @@ $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 
 </CodeGroup>
 
+Note: This can *not* be used to configure k6 with environment variables as listed on the [options](/using-k6/options) page. In other words `-e K6_ITERATIONS=120` will *not* configure the script [iteratons](/using-k6/options#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
+
 The environment variable could then be used as follows in a script:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
