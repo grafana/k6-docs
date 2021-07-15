@@ -1015,9 +1015,11 @@ See an example file on the [Results Output](https://k6.io/docs/getting-started/r
 
 ### Supply environment variables
 
-Add/override an [environment variable](/using-k6/environment-variables) with `VAR=value`. Available in `k6 run` and `k6 cloud` commands.
+Add/override an [environment variable](/using-k6/environment-variables) with `VAR=value`in a k6 script. Available in `k6 run` and `k6 cloud` commands.
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
+
+Note: This can *not* be used to configure k6 with environment variables as listed on this page. In other words `-e K6_ITERATIONS=120` will *not* configure the script [iteratons](#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
