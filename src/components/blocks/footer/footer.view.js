@@ -97,12 +97,12 @@ export const Footer = () => (
                 <ul className={styles.navColumnList}>
                   <li className={styles.navColumnItem}>
                     <a className={styles.navColumnLink} href={`${docs}`}>
-                      k6 docs
+                      k6 Docs
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
                     <Link className={styles.navColumnLink} to={'/cloud'}>
-                      Cloud docs
+                      Cloud Docs
                     </Link>
                   </li>
                   <li className={styles.navColumnItem}>
@@ -121,17 +121,17 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
+                      href={`${main}/collaborative-load-testing-for-modern-engineering-teams/`}
                     >
-                      Build vs Buy
+                      Collaborative Load Testing
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={`${main}/resource-library`}
+                      href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution/`}
                     >
-                      Resource library
+                      Build vs Buy
                     </a>
                   </li>
                 </ul>
