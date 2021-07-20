@@ -6,6 +6,7 @@ const {
   compose,
   childrenToList,
   stripDirectoryPath,
+  dotifyVersion,
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
@@ -37,7 +38,9 @@ const isProduction =
 
 const jsApiVersionsToBuild =
   process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
+
 let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
+
 if (!isProduction && jsApiVersionsToBuild) {
   SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
     .reverse()
@@ -343,6 +346,10 @@ function getTopLevelPagesProps({
       if (slug === 'cloud-rest-api') {
         return false;
       }
+      // manually exclude js api versions as well
+      if (/v\d\.\d{2}/.test(slug)) {
+        return false;
+      }
       // path collision check
       if (
         !pathCollisionDetectorInstance
@@ -397,7 +404,7 @@ function getTopLevelPagesProps({
     ])
     .concat(
       SUPPORTED_VERSIONS_FOR_BUILD.map((version) => ({
-        path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+        path: `/${version}/javascript-api`,
         component: Path.resolve(
           `./src/templates/docs/versioned-javascript-api.js`,
         ),
@@ -631,10 +638,7 @@ function getJsAPIVersionedPagesProps({
   // creating actual docs pages
   return nodesJsAPI
     .map(({ relativeDirectory, children: [remarkNode], name }) => {
-      const strippedDirectory = relativeDirectory.replace(
-        /^.*js-api\/(.*)$/,
-        '$1',
-      );
+      const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
@@ -658,7 +662,7 @@ function getJsAPIVersionedPagesProps({
       if ((draft === 'true' && isProduction) || redirect) {
         return false;
       }
-      const path = `javascript-api/${strippedDirectory}/${title.replace(
+      const path = `${strippedDirectory}/javascript-api/${title.replace(
         /\//g,
         '-',
       )}`;
@@ -674,7 +678,7 @@ function getJsAPIVersionedPagesProps({
         return null;
       }
 
-      const slug = getSlug(path);
+      const slug = compose(dotifyVersion, getSlug)(path);
 
       const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
 
@@ -722,7 +726,7 @@ function getJsAPIVersionedPagesProps({
         name,
         pageVersion,
       );
-
+      console.log({ pageSlug, strippedDirectory });
       return {
         path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
@@ -750,7 +754,7 @@ async function fetchDocPagesData(graphql) {
         allFile(
           filter: {
             ext: { in: [".md"] }
-            relativeDirectory: { regex: "/docs/" }
+            relativeDirectory: { regex: "/docs/(?!vd).*/" }
           }
           sort: { fields: absolutePath, order: ASC }
         ) {
@@ -830,7 +834,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
         allFile(
           filter: {
             ext: { in: [".md"] }
-            relativeDirectory: { regex: "/versioned-js-api/" }
+            relativeDirectory: { regex: "/docs/v.*/" }
           }
           sort: { fields: absolutePath, order: ASC }
         ) {
@@ -881,7 +885,12 @@ async function createDocPages({
   const getJavascriptAPISidebar = getChildSidebar(javascriptAPISidebar);
 
   // create data for rendering docs navigation
-  const topLevelNames = Object.keys(sidebar.children);
+  const topLevelNames = Object.keys(sidebar.children).filter(
+    // lil precaution to
+    // prevent versioned apis from getting
+    // to header nav
+    (name) => !/v\d\.\d{2}/.test(name),
+  );
 
   const topLevelLinks = topLevelNames
     .filter((name) => name !== 'Cloud REST API')

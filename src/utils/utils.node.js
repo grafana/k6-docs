@@ -12,7 +12,7 @@ const utils = {};
 
 // ensures that no trailing slash is left
 const noTrailingSlash = (path) =>
-  path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
+  path === '/' ? path : path.replace(/(.+)\/$/, '$1');
 
 // ensures that path has a trailing slash
 const addTrailingSlash = (path) => path.replace(/\/$|$/, `/`);
@@ -218,8 +218,8 @@ const redirectWelcome = (path) =>
     .replace(/en\/getting-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
-const getSlug = (path) => {
-  const slug = compose(
+const getSlug = (path) =>
+  compose(
     removeEnPrefix,
     addTrailingSlash,
     redirectWelcome,
@@ -227,9 +227,6 @@ const getSlug = (path) => {
     unorderify,
     slugify,
   )(path);
-
-  return slug;
-};
 
 // translated path + title
 const getTranslatedSlug = (

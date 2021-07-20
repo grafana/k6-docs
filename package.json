@@ -22,7 +22,8 @@
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",
     "check:blc": "wait-on tcp:8000 && blc http://localhost:8000 -rof",
-    "archive-version": "./archive-js-api-version.sh",
+    "archive-version": "./scripts/archive-js-api-version.sh",
+    "get-versions": "node ./scripts/get-js-api-versions.js",
     "prepare": "husky install"
   },
   "dependencies": {

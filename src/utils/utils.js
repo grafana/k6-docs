@@ -47,6 +47,10 @@ const slugify = (path) =>
     .replace(/(\/)-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
+// turns dashes replaced with slugify
+// back to dots if passed string is a version
+const dotifyVersion = (str) => str.replace(/(v\d)-(\d{2})/, '$1.$2');
+
 // takes a nested object with file nodes and returns an array of values;
 // childrenToList(children: Object) -> Array
 const childrenToList = (children) => Object.values(children);
@@ -213,6 +217,9 @@ const flattenSidebarTree = (sidebar) => {
 const flat = (arrays) => [].concat.apply([], arrays);
 
 Object.defineProperties(utils, {
+  dotifyVersion: {
+    value: dotifyVersion,
+  },
   mdxAstToPlainText: {
     value: mdxAstToPlainText,
   },
