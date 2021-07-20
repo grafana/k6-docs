@@ -1,4 +1,5 @@
 export {
+  anchorify,
   slugify,
   childrenToList,
   trimToLengthWithEllipsis,
