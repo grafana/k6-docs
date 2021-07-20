@@ -26,7 +26,7 @@ import Gitlab from 'svg/gitlab.inline.svg';
 import Grafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
-import K6 from 'svg/k6.inline.svg';
+import K6 from 'svg/logo.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
