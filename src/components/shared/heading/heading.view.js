@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { slugify } from 'utils';
+import { anchorify } from 'utils';
 
 import styles from './heading.module.scss';
 import AnchorIcon from './svg/anchor.inline.svg';
@@ -28,23 +28,10 @@ export const HeadingLandmark = (Tag) => ({ children }) => {
   const textContent = Array.isArray(children)
     ? getPlainText(children)
     : children;
+  const anchor = `${anchorify(textContent)}`;
   return (
-    <Tag
-      className={styles.markHeading}
-      id={`${slugify(textContent)
-        .replace(/\//g, '-')
-        .replace(/^\d+/g, '')
-        .replace(/^-*/g, '')
-        .replace(/-*$/g, '')}`}
-    >
-      <a
-        className={'anchor-icon'}
-        href={`#${slugify(textContent)
-          .replace(/\//g, '-')
-          .replace(/^\d+/g, '')
-          .replace(/^-*/g, '')
-          .replace(/-*$/g, '')}`}
-      >
+    <Tag className={styles.markHeading} id={anchor}>
+      <a className={'anchor-icon'} href={`#${anchor}`}>
         <AnchorIcon />
       </a>
       {children}

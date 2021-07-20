@@ -47,6 +47,15 @@ const slugify = (path) =>
     .replace(/(\/)-{1,}/g, '$1') // removed '-' prefix from any path part
     .replace(/\./g, '-'); // replace dots with '-' after we removed extension
 
+// slugify derivation, makes
+// anchor strings sane
+const anchorify = (str) =>
+  slugify(str)
+    .replace(/[=\\]/g, '-')
+    .replace(/^\d+/g, '')
+    .replace(/^-*/g, '')
+    .replace(/-*$/g, '');
+
 // takes a nested object with file nodes and returns an array of values;
 // childrenToList(children: Object) -> Array
 const childrenToList = (children) => Object.values(children);
@@ -213,6 +222,9 @@ const flattenSidebarTree = (sidebar) => {
 const flat = (arrays) => [].concat.apply([], arrays);
 
 Object.defineProperties(utils, {
+  anchorify: {
+    value: anchorify,
+  },
   mdxAstToPlainText: {
     value: mdxAstToPlainText,
   },
