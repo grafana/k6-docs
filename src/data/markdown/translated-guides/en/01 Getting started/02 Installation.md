@@ -54,7 +54,7 @@ $ sudo yum install --nogpgcheck k6
 
 > #### ⚠️ Note about Bintray
 >
-> The Bintray k6 repositories will [stop working after May 1st, 2021](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)
+> The Bintray k6 repositories [stopped working May 1st, 2021](https://k6.io/blog/sunsetting-bintray/)
 > and you should switch to our own repositories following the instructions above.
 >
 > On Debian/Ubuntu you can remove the Bintray repository with:
