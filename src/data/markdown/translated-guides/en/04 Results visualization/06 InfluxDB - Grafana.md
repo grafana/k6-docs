@@ -91,13 +91,7 @@ and a Grafana server on `http://localhost:3000`. Now, we show two different ways
 
 ## Preconfigured Grafana dashboards
 
-Here we will list pre-made Grafana dashboard configurations contributed by users, for use with k6.
-
-- [dcadwallader](https://grafana.com/grafana/dashboards/2587)
-- [Stian Øvrevåge](https://grafana.com/grafana/dashboards/4411)
-- [cyaiox](https://grafana.com/grafana/dashboards/8156)
-- [smockvavelsky](https://grafana.com/grafana/dashboards/10553)
-- [k m](https://grafana.com/grafana/dashboards/10660)
+You can find a list of Grafana dashboard configurations contributed by users, specifically for use with k6, at [grafana.com](https://grafana.com/grafana/dashboards?search=k6).
 
 To enable a contributed Grafana dashboard is simple: you just choose to "import" a dashboard in the Grafana UI and then specify the ID number of the dashboard you want, see [http://docs.grafana.org/reference/export_import](http://docs.grafana.org/reference/export_import) for more details.
 
