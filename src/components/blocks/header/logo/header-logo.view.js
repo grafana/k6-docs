@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useLocale } from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import React from 'react';
-import Logo from 'svg/logo.inline.svg';
+import Logo from 'svg/logo-with-grafana-labs.inline.svg';
 import { main } from 'utils/urls';
 
 import styles from './header-logo.module.scss';

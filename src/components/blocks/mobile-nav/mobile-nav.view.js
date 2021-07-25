@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import React from 'react';
-import Logo from 'svg/logo.inline.svg';
+import Logo from 'svg/logo-with-grafana-labs.inline.svg';
 
 import styles from './mobile-nav.module.scss';
 
