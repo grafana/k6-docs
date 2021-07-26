@@ -10,14 +10,11 @@ const useLandmark = ({ containerRef, markSelector }, deps = []) => {
       setLinks(
         Array.from(allMarks).map(({ id, innerText, tagName }) => ({
           title: innerText,
-          anchor: `#${
-            id ||
-            slugify(innerText)
-              .replace(/\//g, '-')
-              .replace(/^\d+/g, '')
-              .replace(/^-*/g, '')
-              .replace(/-*$/g, '')
-          }`,
+          anchor: `#${slugify(id || innerText)
+            .replace(/\//g, '-')
+            .replace(/^\d+/g, '')
+            .replace(/^-*/g, '')
+            .replace(/-*$/g, '')}`,
           tagName,
         })),
       );
