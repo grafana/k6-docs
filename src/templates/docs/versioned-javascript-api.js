@@ -4,7 +4,12 @@ import htmlStyles from 'components/blocks/html-content/html-content.module.scss'
 import jsApiStyles from 'components/pages/doc-javascript-api/doc-javascript-api.module.scss';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
-import { CodeGroup, Code, CodeInline } from 'components/shared/code';
+import {
+  CodeGroup,
+  Code,
+  CodeInline,
+  styles as codeStyles,
+} from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
 import { PageInfo } from 'components/shared/page-info';
 import TableWrapper from 'components/shared/table-wrapper';
@@ -61,6 +66,7 @@ export default function ({
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
+    codeStyles.codeContainer,
   );
 
   const pageVersions = {};

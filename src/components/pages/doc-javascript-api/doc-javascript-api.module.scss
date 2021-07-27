@@ -6,7 +6,7 @@
       }
     }
   }
-  & div + div {
+  & .module-wrapper + .module-wrapper {
     margin-top: 50px;
   }
   & * + ul,
