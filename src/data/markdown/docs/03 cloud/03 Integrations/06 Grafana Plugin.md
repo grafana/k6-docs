@@ -3,7 +3,7 @@ title: 'Grafana Plugin'
 excerpt: 'View your k6 Cloud Test Results in Grafana'
 ---
 
-The [k6 Cloud Grafana Data Source Plugin](https://grafana.com/grafana/plugins/grafana-k6cloud-datasource/) allows you to view your **test results stored in k6 Cloud** in [Grafana](https://grafana.com/grafana/). 
+The [k6 Cloud Grafana Data Source Plugin](https://grafana.com/grafana/plugins/grafana-k6cloud-datasource/) allows you to view your test results stored in k6 Cloud in [Grafana](https://grafana.com/grafana/). 
 
 ![k6 Cloud Grafana Data Source Plugin](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_dashboard.png)
 
