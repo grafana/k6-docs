@@ -51,7 +51,7 @@ const slugify = (path) =>
 // anchor strings sane
 const anchorify = (str) =>
   slugify(str)
-    .replace(/[=\\]/g, '-')
+    .replace(/[=/]/g, '-')
     .replace(/^\d+/g, '')
     .replace(/^-*/g, '')
     .replace(/-*$/g, '');

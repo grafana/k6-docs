@@ -10,7 +10,7 @@ const useLandmark = ({ containerRef, markSelector }, deps = []) => {
       setLinks(
         Array.from(allMarks).map(({ id, innerText, tagName }) => ({
           title: innerText,
-          anchor: `#${id || anchorify(innerText)}`,
+          anchor: `#${anchorify(id || innerText)}`,
           tagName,
         })),
       );
