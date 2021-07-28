@@ -16,13 +16,23 @@ Using Grafana Cloud Prometheus, you can send your k6 metrics into [Grafana Cloud
 
 ## Configuration
 
-If you do not have a Grafana Cloud account, you can sign up [here](https://grafana.com/products/cloud/). The free plan includes 10,000 Prometheus metrics.
+If you do not have a Grafana Cloud account, you can sign up [here](https://grafana.com/products/cloud/). The free plan includes 10,000 Prometheus series.
 
-Now, we configure and run telegraf to collect the k6 metrics and forward them - using the Prometheus Remote Write endpoint - to Grafana Cloud Prometheus.
+Now, you need the URL, username and password of your Grafana Cloud Prometheus instance to configure the integration. 
+
+Log in to Grafana.com and visit the [Cloud Portal](https://grafana.com/docs/grafana-cloud/what-are/cloud-portal/). Click on the `Details` button of your Prometheus service.
+
+![Grafana Cloud Portal](./images/GrafanaCloud/grafana_cloud_portal.png)
+
+Copy the URL of the Remote Write Endpoint and the Username / Instance ID. Create and copy an API key of `MetricsPublisher` role that will be used as password.
+
+![Create API Key](./images/GrafanaCloud/create_api_key_metrics_publisher.png)
+
+Next, we configure and run telegraf. Telegraf will collect the k6 metrics and forward them - using the Prometheus Remote Write endpoint - to Grafana Cloud Prometheus.
 
 To install telegraf, follow the [official Telegraf documentation](https://docs.influxdata.com/telegraf).
 
-Edit your `telegraf.conf` file using the example below. The example only requires you to change the username, password, and URL of the HTTP output to match your Prometheus settings.
+Edit your `telegraf.conf` file using the example below. The example only requires you to change the username, password, and URL of the HTTP output to match your Grafana Cloud Prometheus settings.
 
 <CodeGroup labels={["telegraf.conf"]} lineNumbers={[true]}>
 
@@ -44,8 +54,8 @@ Edit your `telegraf.conf` file using the example below. The example only require
 [[outputs.http]]
   url = "https://prometheus-us-central1.grafana.net/api/prom/push" # <--
   method = "POST"
-  username = "YOUR-GRAFANA-CLOUD-PROMETHEUS-USERNAME" # <--
-  password = "YOUR-GRAFANA-CLOUD-PROMETHEUS-TOKEN"    # <--
+  username = "Prometheus username or Instance ID" # <--
+  password = "Grafana API Key (MetricsPublisher role)"    # <--
   data_format = "prometheusremotewrite"
 
 [outputs.http.headers]
@@ -71,7 +81,7 @@ telegraf -config $PATH/telegraf.conf
 
 > An example repository using Docker to run Telegraf is available on GitHub at [https://github.com/k6io/example-k6-to-grafana-cloud](https://github.com/k6io/example-k6-to-grafana-cloud). 
 
-## Usage
+## Run the test
 
 When telegraf is running, you can execute your k6 test and configure k6 to output the metrics to the telegraf instance. Telegraf will forward the k6 metrics to your Grafana Cloud Prometheus.
 
@@ -82,3 +92,9 @@ $ k6 run --out influxdb=http://my-telegraf-host:8186 my-test.js
 # if telegraf is running on the same host and port 8186:
 $ k6 run --out influxdb my-test.js
 ```
+
+## Explore k6 metrics
+
+In Grafana Cloud, click on the Explore icon on the menu bar, and choose the Prometheus data source from the dropdown in the top left. In the query field, query k6 metrics to explore your testing results.
+
+![Explore k6 metrics in Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics.png)
