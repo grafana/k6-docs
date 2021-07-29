@@ -26,41 +26,8 @@
   display: inline-block;
   vertical-align: top;
   position: relative;
-  span {
-    position: absolute;
-    right: -10px;
-    top: 50%;
-    font-size: 12px;
-    color: $color-accent-primary;
-    border-radius: 2px;
-    background-color: rgba($color-accent-primary, 0.1);
-    line-height: 1;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding: 2px 5px;
-    transform: translate(100%, -50%);
-    text-align: center;
-  }
-  @include lg-down {
-    span {
-      bottom: -10px;
-      top: unset;
-      right: 0;
-      left: 0;
-      transform: translate(0, 100%);
-    }
-  }
-
   @include xs-down {
     margin-bottom: 25px;
-    span {
-      bottom: unset;
-      top: 50%;
-      left: unset;
-      right: -10px;
-      transform: translate(100%, -50%);
-    }
   }
 }
 
@@ -132,10 +99,26 @@
   text-decoration: none;
   color: $color-primary;
   transition: 0.3s;
+  position: relative;
 
   &:hover {
     color: $color-accent-primary;
   }
+}
+
+.badge {
+  position: absolute;
+  top: 15%;
+  right: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-tertiary;
+  font-size: 7px;
+  background-color: $color-accent-primary;
 }
 
 .text {
@@ -176,8 +159,12 @@
   margin: 47px -5px -5px -5px;
   display: flex;
   flex-wrap: wrap;
+  max-width: 135px;
   > * {
     padding: 5px;
+  }
+  @include md-down {
+    max-width: unset;
   }
   @include xs-down {
     margin-top: 0;
