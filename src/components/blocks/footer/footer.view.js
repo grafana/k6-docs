@@ -5,10 +5,16 @@ import { blog, main, docs } from 'utils/urls';
 
 import styles from './footer.module.scss';
 import GithubLogo from './svg/github.inline.svg';
+import LinkedinLogo from './svg/linkedin.inline.svg';
 import SlackLogo from './svg/slack.inline.svg';
 import TwitterLogo from './svg/twitter.inline.svg';
+import YoutubeLogo from './svg/youtube.inline.svg';
 
 import './footer.scss';
+
+const Badge = ({ children }) => (
+  <span className={styles.badge}>{children}</span>
+);
 
 export const Footer = () => (
   <footer className={styles.wrapper}>
@@ -18,7 +24,6 @@ export const Footer = () => (
           <div className={`col-md-2 col-12 `}>
             <Link className={`${styles.logoWrapper}`} to={`/`}>
               <Logo className={styles.logo} />
-              <span>docs</span>
             </Link>
             <div className={styles.social}>
               <a
@@ -37,6 +42,22 @@ export const Footer = () => (
               <a className={styles.socialIcon} href={`${main}/slack`}>
                 {' '}
                 <SlackLogo />
+              </a>
+              <a
+                className={styles.socialIcon}
+                href={
+                  'https://www.youtube.com/channel/UC8ryLdIbmkVJq4Zt613oZPQ'
+                }
+              >
+                {' '}
+                <YoutubeLogo />
+              </a>
+              <a
+                className={styles.socialIcon}
+                href={'https://www.linkedin.com/company/k6io'}
+              >
+                {' '}
+                <LinkedinLogo />
               </a>
             </div>
           </div>
@@ -210,6 +231,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a className={styles.navColumnLink} href={`${main}/jobs`}>
                       Jobs
+                      {!!process.env.GATSBY_JOB_COUNTER && (
+                        <Badge>{process.env.GATSBY_JOB_COUNTER}</Badge>
+                      )}
                     </a>
                   </li>
                 </ul>
