@@ -67,7 +67,7 @@ Como puede ver, este es un flujo de usuario bastante normal, aunque simple, que 
 
 ```javascript
 import http from 'k6/http';
-import { check, sleep } from 'k6';
+import { check, group, sleep } from 'k6';
 
 let options = {
   vus: 1000,
