@@ -167,7 +167,11 @@ const SidebarNode = (props) => {
 
   const nodes = {
     externalLink: () => (
-      <a className={styles.sidebarNodeTitle} href={meta.redirect}>
+      <a
+        className={styles.sidebarNodeTitle}
+        href={meta.redirect}
+        target={meta.redirectTarget ? meta.redirectTarget : '_self'}
+      >
         {meta.title}
       </a>
     ),

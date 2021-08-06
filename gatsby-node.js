@@ -177,7 +177,14 @@ function generateSidebar({ nodes, type = 'docs' }) {
 
   nodes.forEach(({ name, relativeDirectory, children: [remarkNode] }) => {
     const {
-      frontmatter: { title, redirect, hideFromSidebar, draft, slug },
+      frontmatter: {
+        title,
+        redirect,
+        redirectTarget,
+        hideFromSidebar,
+        draft,
+        slug,
+      },
     } = remarkNode;
 
     // skip altogether if this content has draft flag
@@ -220,6 +227,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
         path: slug || pageSlug,
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
+        redirectTarget,
         hideFromSidebar: hideFromSidebar || false,
         isActiveSidebarLink: true,
       },
@@ -766,6 +774,7 @@ async function fetchDocPagesData(graphql) {
                   head_title
                   excerpt
                   redirect
+                  redirectTarget
                   hideFromSidebar
                   draft
                 }
@@ -806,6 +815,7 @@ async function fetchGuidesPagesData(graphql) {
                   head_title
                   excerpt
                   redirect
+                  redirectTarget
                   hideFromSidebar
                   draft
                 }
@@ -846,6 +856,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   head_title
                   excerpt
                   redirect
+                  redirectTarget
                   hideFromSidebar
                   draft
                 }
@@ -957,6 +968,16 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
     toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/getting-started/community/',
+    toPath: 'https://k6.io/community/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/es/empezando/comunidad/',
+    toPath: 'https://k6.io/community/',
     isPermanent: true,
   });
 

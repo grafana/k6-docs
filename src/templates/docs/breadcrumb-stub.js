@@ -50,7 +50,11 @@ export default function (props) {
             {childrenToList(directChildren).map(({ meta, name }, i) => (
               <li key={`bcl-${i}`}>
                 {meta.redirect ? (
-                  <a href={meta.redirect} className={'link'}>
+                  <a
+                    href={meta.redirect}
+                    className={'link'}
+                    target={meta.redirectTarget ? meta.redirectTarget : '_self'}
+                  >
                     {meta.title ? meta.title : name}
                   </a>
                 ) : (
