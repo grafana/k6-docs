@@ -161,12 +161,12 @@ export const Footer = () => (
                 <h3 className={styles.navColumnTitle}>Community</h3>
                 <ul className={styles.navColumnList}>
                   <li className={styles.navColumnItem}>
-                    <Link
+                    <a
                       className={styles.navColumnLink}
-                      to={'/getting-started/community'}
+                      href={`${main}/community/`}
                     >
                       Engage
-                    </Link>
+                    </a>
                   </li>
                   <li className={styles.navColumnItem}>
                     <a
