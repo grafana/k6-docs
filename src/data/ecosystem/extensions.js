@@ -228,6 +228,18 @@ const extensions = [
     categories: ['Misc'],
   },
   {
+    name: 'xk6-kubernetes',
+    description: 'A k6 extension for interacting with Kubernetes clusters while testing',
+    url: 'https://github.com/grafana/xk6-kubernetes',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Containers'],
+  },
+  {
     name: 'xk6-kubernetes-jobs',
     description: 'A k6 extension to interact with Kubernetes jobs.',
     url: 'https://github.com/dgzlopes/xk6-kubernetes-jobs',
@@ -382,6 +394,18 @@ const extensions = [
     },
     official: false,
     categories: ['Data'],
+  },
+  {
+    name: 'xk6-amqp',
+    description: 'AMQP xk6 plugin. Tested with RabbitMQ',
+    url: 'https://github.com/grafana/xk6-amqp',
+    logo: '',
+    author: {
+      name: 'Alexey Kuznetsov',
+      url: 'https://github.com/lxkuz',
+    },
+    official: false,
+    categories: ['Messaging'],
   },
   {
     name: 'xk6-crypto',
