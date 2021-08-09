@@ -15,6 +15,8 @@
   </defs>
   <path d="M0 50V20h440l20-20h40l20 20h20l20-20h80l20 20h40l20 20h60l40-40h40l20 20h40l20-20h20l20 20h220l20 20h140l20-20h220l20-20h80l20 20h20l20-20h40l40 40h360v10" fill="#F9F8FC"/>
   <use xlink:href="#a" stroke="#ece8f1"/>
-  <rect y="-8" width="100%" height="58" fill="url(#b)" mask="url(#c)"
-        style="animation:footer-background-line-animation 9s linear infinite"/>
+  <rect y="-8" x="0" width="100%" height="58" fill="url(#b)" mask="url(#c)">
+        <animate attributeName="x" from="0" to="2200" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="width" from="450px" to="450px" dur="9s" repeatCount="indefinite"/>
+  </rect> 
 </svg>
