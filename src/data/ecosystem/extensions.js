@@ -229,7 +229,7 @@ const extensions = [
   },
   {
     name: 'xk6-kubernetes',
-    description: 'A k6 extension for interacting with Kubernetes clusters while testing',
+    description: 'A k6 extension for interacting with Kubernetes clusters',
     url: 'https://github.com/grafana/xk6-kubernetes',
     logo: '',
     author: {
