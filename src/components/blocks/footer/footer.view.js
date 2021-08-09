@@ -142,9 +142,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={`${main}/collaborative-load-testing-for-modern-engineering-teams/`}
+                      href={`${main}/modern-load-testing-for-engineering-teams/`}
                     >
-                      Collaborative Load Testing
+                      Modern Load Testing
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
