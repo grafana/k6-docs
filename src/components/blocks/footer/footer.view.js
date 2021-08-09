@@ -5,7 +5,9 @@ import { blog, main, docs } from 'utils/urls';
 
 import styles from './footer.module.scss';
 import GithubLogo from './svg/github.inline.svg';
+import HeartIcon from './svg/heart-purple.inline.svg';
 import LinkedinLogo from './svg/linkedin.inline.svg';
+import MeetupLogo from './svg/meetup.inline.svg';
 import SlackLogo from './svg/slack.inline.svg';
 import TwitterLogo from './svg/twitter.inline.svg';
 import YoutubeLogo from './svg/youtube.inline.svg';
@@ -14,6 +16,12 @@ import './footer.scss';
 
 const Badge = ({ children }) => (
   <span className={styles.badge}>{children}</span>
+);
+
+const Heart = () => (
+  <span className={styles.heart} role="img" aria-label="heart">
+    <HeartIcon />
+  </span>
 );
 
 export const Footer = () => (
@@ -58,6 +66,13 @@ export const Footer = () => (
               >
                 {' '}
                 <LinkedinLogo />
+              </a>
+              <a
+                className={styles.socialIcon}
+                href={'https://www.meetup.com/k6-load-testing/ '}
+              >
+                {' '}
+                <MeetupLogo />
               </a>
             </div>
           </div>
@@ -165,7 +180,7 @@ export const Footer = () => (
                       className={styles.navColumnLink}
                       href={`${main}/community/`}
                     >
-                      Engage
+                      Engage <Heart />
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
