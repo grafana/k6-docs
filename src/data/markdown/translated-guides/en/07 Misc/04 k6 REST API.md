@@ -595,13 +595,13 @@ curl -X PATCH \
   http://localhost:6565/v1/status \
   -H 'Content-Type: application/json' \
   -d '{
-	"data": {
-	  "type": "status",
-	  "id": "default",
-	  "attributes": {
-	    "stopped": true
-	    }
-	}
+    "data": {
+      "type": "status",
+       "id": "default",
+       "attributes": {
+        "stopped": true
+       }
+    }
 }'
 ```
 
