@@ -6,8 +6,8 @@ hideFromSidebar: true
 ---
 
 When k6 starts, it spins up an HTTP server with a REST API that can be used to control some
-parameters of the test execution. By default, that server listens on `localhost:6565`, but
-that can be modified by the `--address` CLI flag.
+parameters of the test execution. By default, that server listens on `localhost:6565`;
+this can be modified by the `--address` CLI flag.
 
 With this API you can see and control different execution aspects like number of VUs, Max
 VUs, pause or resume the test, list groups, set and get the setup data and so on.
@@ -583,3 +583,39 @@ curl -X PUT \
 This endpoint parses the JSON request body and sets the result as Setup data.
 
 For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+
+## Modify Setup
+
+**PATCH** `http://localhost:6565/v1/status`
+
+<CodeGroup labels={["cURL Request", "Response"]}>
+
+```bash
+curl -X PATCH \
+	http://localhost:6565/v1/status \
+	-H 'Content-Type': application/json' \
+	-d '{
+		"data": {
+			"type": "status",
+			"id": "default",
+			"attributes": {
+				"stopped": true
+	       }
+	   }
+}'
+```
+
+```json
+{
+  "data": {
+    "type": "status",
+    "id": "default",
+    "attributes": {
+      "stopped": true
+    }
+  }
+}
+```	
+</CodeGroup>
+
+This endpoint parses the JSON request body and updates the setup data in-place. This can also be done for a running test. The example above exemplifies how to stop a test from the API.
