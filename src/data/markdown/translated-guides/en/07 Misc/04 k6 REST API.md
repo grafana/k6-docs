@@ -582,3 +582,41 @@ curl -X PUT \
 This endpoint parses the JSON request body and sets the result as Setup data.
 
 For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+
+## Modify Setup
+
+**PATCH** `http://localhost:6565/v1/status`
+
+<CodeGroup labels={["cURL Request", "Response"]}>
+
+```bash
+curl -X PATCH \
+	http://localhost:6565/v1/status \
+	-H 'Content-Type': application/json' \
+	-d '{
+		"data": {
+			"type": "status",
+			"id": "default",
+			"attributes": {
+				"stopped": true
+	       }
+	   }
+}'
+```
+
+```json
+{
+  "data": {
+    "type": "status",
+    "id": "default",
+    "attributes": {
+      "stopped": true
+    }
+  }
+}
+```
+</CodeGroup>
+
+This endpoint parses the JSON request body and updates the setup data in-place.
+This can also be done for a running test. The example above exemplifies how to
+stop a test from the API.

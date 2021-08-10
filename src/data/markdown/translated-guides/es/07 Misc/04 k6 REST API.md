@@ -615,7 +615,9 @@ curl -X PATCH \
     }
   }
 }
-```	
+```
 </CodeGroup>
 
-This endpoint parses the JSON request body and updates the setup data in-place. This can also be done for a running test. The example above exemplifies how to stop a test from the API.
+This endpoint parses the JSON request body and updates the setup data in-place.
+This can also be done for a running test. The example above exemplifies how to
+stop a test from the API.
