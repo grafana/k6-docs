@@ -413,7 +413,7 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 Sin embargo -en este momento  el modo de ejecución distribuido de k6 no es del todo funcional. Las limitaciones actuales son:
 
-- k6 no proporciona un coordinador de pruebas o instancia maestra para coordinar la ejecución distribuida de la prueba. Como alternativa, se puede utilizar la API REST de k6 y --paused para sincronizar la ejecución de las múltiples instancias de k6.
+- k6 no proporciona un coordinador de pruebas o instancia maestra para coordinar la ejecución distribuida de la prueba. Como alternativa, se puede utilizar la [API REST de k6](/misc/k6-rest-api) y --paused para sincronizar la ejecución de las múltiples instancias de k6.
 - Cada instancia de k6 evalúa los umbrales de forma independiente, excluyendo los resultados de las otras instancias de k6. Si desea desactivar la ejecución de umbrales, utilice --no-thresholds.
 - k6 informa de las métricas individualmente para cada instancia. Dependiendo de cómo almacene los resultados de las pruebas de carga, tendrá que agregar algunas métricas para calcularlas correctamente.
 
