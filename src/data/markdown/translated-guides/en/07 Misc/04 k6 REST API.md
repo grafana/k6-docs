@@ -1,6 +1,8 @@
 ---
 title: 'k6 REST API'
-excerpt: ''
+excerpt: 'With this API you can see and control different execution aspects like
+number of VUs, Max VUs, pause or resume the test, list groups, set and get the
+setup data and more.'
 hideFromSidebar: true
 ---
 
@@ -582,3 +584,39 @@ curl -X PUT \
 This endpoint parses the JSON request body and sets the result as Setup data.
 
 For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+
+## Stop Test
+
+**PATCH** `http://localhost:6565/v1/status`
+
+<CodeGroup labels={["cURL Request", "Response"]}>
+
+```bash
+curl -X PATCH \
+  http://localhost:6565/v1/status \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "data": {
+      "type": "status",
+       "id": "default",
+       "attributes": {
+        "stopped": true
+       }
+    }
+}'
+```
+
+```json
+{
+  "data": {
+    "type": "status",
+    "id": "default",
+    "attributes": {
+      "stopped": true
+    }
+  }
+}
+```
+</CodeGroup>
+
+This call parses the JSON request body to update the status and stop a running test.
