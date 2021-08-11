@@ -3,6 +3,7 @@ title: 'k6 REST API'
 excerpt: 'With this API you can see and control different execution aspects like
 number of VUs, Max VUs, pause or resume the test, list groups, set and get the
 setup data and more.'
+hideFromSidebar: true
 ---
 
 When k6 starts, it spins up an HTTP server with a REST API that can be used to control some
