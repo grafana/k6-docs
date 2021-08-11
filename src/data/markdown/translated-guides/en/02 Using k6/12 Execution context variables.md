@@ -41,21 +41,20 @@ A numeric counter with the current iteration number for a specific VU. Zero-base
 
 Current VU number in use. The value is assigned incrementally for each new VU instance, starting from one. The variable will be 0 while executing the setup and teardown functions.
 
-It's important to remember that this value is shown _per server instance running you test_. How many servers we use depends on the size of your test and how you spread it across different load zones. So for a larger test, the value of `__VU` will likely not reflect the actual _total_ number of VUs in your test at a given moment.
+### ⚠️ To note when running in the k6 Cloud
 
-- For tests using **1-999** VUs per load zone, we use server instances that handle 300 VU's per machine. So for a 900 VU test using one load zone, there will be three instances and the value of `__VU` will vary from 1-300 per machine.
-- For tests using **1000-4001** VUs per load zone, we use server instances that handle 1200 VUs per machine. So for a 1000 VU, 1-load-zone test, your `__VU` value will go all the way to 1000.
+When you run your tests in the [k6 Cloud](/cloud) you will have additional [environment variables](/using-k6/environment-variables) that will tell you on which server, load zone and distribution of the test you are currently executing. You can read more about them [here](/using-k6/environment-variables). 
+
+The **\_\_VU** environment variable may also behave differently while running a test in the cloud. This is because the **\_\_VU** value is shown _per server instance running you test_. How many servers we use depends on the size of your test and how you spread it across different load zones. So for a larger test, the value of **\_\_VU** will likely not reflect the actual _total_ number of VUs in your test at a given moment.
+
+- For tests using **1-999** VUs per load zone, we use server instances that handle 300 VU's per machine. So for a 900 VU test using one load zone, there will be three instances and the value of **\_\_VU** will vary from 1-300 per machine.
+- For tests using **1000-4001** VUs per load zone, we use server instances that handle 1200 VUs per machine. So for a 1000 VU, 1-load-zone test, your **\_\_VU** value will go all the way to 1000.
 - For tests with **>4001** VUs per load zone, we use instances that handle 5000 VUs per machine.
 
-As an example, if you run a 1000 VU test evenly distributed over two load zones, there are 500 VUs per load zone. Since this is in the 1-999 VU bracket, we'll use server instances that handle 300VUs apiece. This means 2 instances per load zone and your individual `__VU` values will thus vary from 1 to 250.
+> Note that these are the _defaults_. If you have specific requirements, please contact k6 support for a custom solution.
 
+As an example, if you run a 1000 VU test evenly distributed over two load zones, there are 500 VUs per load zone. Since this is in the 1-999 VU bracket, we'll use server instances that handle 300VUs apiece. This means 2 instances per load zone and your individual **\_\_VU** values will thus vary from 1 to 250.
 
-> ### ⚠️ Additional context information available in the k6 Cloud
->
-> If you are running a test in [k6 Cloud](/cloud) you will have additional
-> [environment variables](/using-k6/environment-variables) that will tell you on which server, load zone
-> and distribution of the test you are currently executing. You can read more about them
-> [here](/using-k6/environment-variables)
 
 ## k6 Test Coordinator
 
