@@ -17,7 +17,7 @@ import SeoMetadata from 'utils/seo-metadata';
 import { app } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
   const [showFooter, setShowFooter] = useState(true);
   const contentContainerRef = useRef(null);
   useEffect(() => setShowFooter(!isInIFrame()), []);

@@ -23,7 +23,8 @@ import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
-import Grafana from 'svg/influxdb-grafana.inline.svg';
+import Grafana from 'svg/grafana.inline.svg';
+import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
 import K6 from 'svg/logo.inline.svg';
@@ -61,6 +62,11 @@ const iconsDataSet1 = [
   },
   {
     Icon: Grafana,
+    name: 'Grafana Cloud',
+    to: '/results-visualization/grafana-cloud/',
+  },
+  {
+    Icon: InfluxGrafana,
     name: 'InfluxDB + Grafana',
     to: '/results-visualization/influxdb-+-grafana',
   },
@@ -114,7 +120,9 @@ const iconsDataSet2 = [
   },
 ];
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export default function Integrations({
+  pageContext: { sidebarTree, navLinks },
+}) {
   const pageMetadata = SeoMetadata.integrations;
   const contentContainerRef = useRef(null);
 

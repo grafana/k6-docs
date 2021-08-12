@@ -58,7 +58,7 @@ const breadcrumbs = [
   },
 ];
 
-export default function ({ pageContext: { navLinks } }) {
+export default function BundleBuilderPage({ pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata['bundle-builder'];
 
