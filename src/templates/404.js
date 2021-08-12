@@ -4,7 +4,9 @@ import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export default function NotFoundPage({
+  pageContext: { sidebarTree, navLinks },
+}) {
   const pageMetadata = SeoMetadata[404];
   return (
     <LocaleProvider>

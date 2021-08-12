@@ -54,7 +54,7 @@ const getContent = (nodes, sidebarTree) =>
     return null;
   });
 
-export default function ({
+export default function VersionedJavascriptAPI({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
 }) {

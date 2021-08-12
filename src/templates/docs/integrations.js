@@ -120,7 +120,9 @@ const iconsDataSet2 = [
   },
 ];
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export default function Integrations({
+  pageContext: { sidebarTree, navLinks },
+}) {
   const pageMetadata = SeoMetadata.integrations;
   const contentContainerRef = useRef(null);
 

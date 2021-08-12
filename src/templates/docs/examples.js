@@ -11,7 +11,7 @@ import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 
-export default function ({ pageContext: { sidebarTree, navLinks } }) {
+export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
   useScrollToAnchor();
   const contentContainerRef = useRef(null);
   const pageMetadata = SeoMetadata.examples;

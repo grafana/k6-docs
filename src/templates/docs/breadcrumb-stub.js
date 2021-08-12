@@ -8,7 +8,7 @@ import React from 'react';
 import { childrenToList, slugify } from 'utils';
 import { LATEST_VERSION } from 'utils/utils.node';
 
-export default function (props) {
+export default function BreadcrumbsStubPage(props) {
   const {
     path,
     pageContext: {

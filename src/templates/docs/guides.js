@@ -120,7 +120,7 @@ function GuidesContent({
   );
 }
 
-export default function (props) {
+export default function Guides(props) {
   const {
     pageContext: { locale = 'en' },
   } = props;
