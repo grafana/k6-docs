@@ -338,6 +338,8 @@ For example, if you start a test with 900VUs, we will use 3x Tier 1 servers. Tha
 
 If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 server. If the same test is started in 2 load zones, there will be 500VUs per load zone and 4x Tier 1 servers will be used.
 
+> Note that these are the _defaults_. If your tests have specific requirements, please contact k6 support for a custom solution.
+
 ---
 
 ### Data uploads with k6 Cloud
