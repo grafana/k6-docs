@@ -1,6 +1,6 @@
 # k6 Documentation
-![Staging](https://github.com/k6io/docs/workflows/Staging/badge.svg)
-![Production](https://github.com/k6io/docs/workflows/Production/badge.svg)
+![Staging](https://github.com/grafana/k6-docs/workflows/Staging/badge.svg)
+![Production](https://github.com/grafana/k6-docs/workflows/Production/badge.svg)
 
 This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
 
@@ -8,19 +8,19 @@ This repo contains the source code of the [k6 documentation](https://k6.io/docs/
 
 For small changes and spelling fixes, we recommend using the GitHub UI because the markdown files are relatively easy to edit.
 
-For larger contributions, consider running the project locally to see how the changes look like before making a pull request. 
+For larger contributions, consider running the project locally to see how the changes look like before making a pull request.
 
 Markdown files for the documentation are located in [`src/data/markdown/docs`](src/data/markdown/docs) folder. The URL structure is generated based on the folder structure and file names.
 
-The markdown files support a few custom extensions explained on the [File Format Guide](CONTRIBUTING_FILE_FORMAT.md). 
+The markdown files support a few custom extensions explained on the [File Format Guide](CONTRIBUTING_FILE_FORMAT.md).
 
 ## Install and run in Docker
 
 This uses `docker-compose` and port `8100`.
 
 ```shell
-git clone git@github.com:k6io/docs.git
-cd docs
+git clone git@github.com:grafana/k6-docs.git
+cd k6-docs
 cp .env.example .env.development
 
 docker-compose  up -d --build
@@ -36,12 +36,12 @@ Then visit http://localhost:8100
 
 
 ## Manual Installation
-If you prefer not to use Docker, you can install the project locally. 
+If you prefer not to use Docker, you can install the project locally.
 Node 12.x is required.
 
 ```bash
-git clone git@github.com:k6io/docs.git
-cd docs
+git clone git@github.com:grafana/k6-docs.git
+cd k6-docs
 # nvm use 12.0.0
 npm install  # or yarn install
 ```
@@ -62,7 +62,7 @@ All pull requests merged to `master` will result in an automatic deployment to t
 ### To production
 
 >  #### ⚠️ Versions
->  
-> Versions follow the same major and minor as github.com/k6io/k6. When cutting a new release of the docs between k6 releases, only increment the patch digit(s).
+>
+> Versions follow the same major and minor as github.com/grafana/k6. When cutting a new release of the docs between k6 releases, only increment the patch digit(s).
 
-All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/k6io/docs/releases
+All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/grafana/k6-docs/releases
