@@ -43,9 +43,9 @@ Current VU number in use. The value is assigned incrementally for each new VU in
 
 > ### ⚠️ Running in the k6 Cloud
 >
->When you run your tests in the [k6 Cloud](/cloud), the **\_\_VU** value you get will be per server/load generator. You can read the details in the (cloud docs)[/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip].
+>When you run your tests in the [k6 Cloud](/cloud), the **\_\_VU** value you get will be per server/load generator. You can read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
 >
->In k6-cloud you will also have additional [environment variables](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#environment-variables) that will tell you on which server, load zone and distribution of the test you are currently executing.
+>In k6 Cloud you will also have additional [environment variables](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#environment-variables) that will tell you on which server, load zone and distribution of the test you are currently executing.
 
 
 ## k6 Test Coordinator
