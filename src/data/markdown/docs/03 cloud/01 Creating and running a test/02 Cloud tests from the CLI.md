@@ -317,3 +317,7 @@ of your test, it will execute from one or more cloud servers, but the
 setup and teardown will only execute from one server, so execute once
 for each test run. There's no guarantee though that the same cloud server
 that executed the `setup()` will execute the `teardown()`.
+       
+### Disable cloud logs
+       
+When running cloud tests from the CLI, you will get cloud log output printed to the terminal. You can disable this either by passing `--show-logs=false` as an option to `k6` or by setting an environment variable `K6_SHOW_CLOUD_LOGS=false`. 
