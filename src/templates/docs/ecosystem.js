@@ -119,7 +119,7 @@ const breadcrumbs = [
   },
 ];
 
-export default function ({ location, pageContext: { navLinks } }) {
+export default function Ecosystem({ location, pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.ecosystem;
 

@@ -12,25 +12,23 @@ export const EcosystemTitleGroup = ({
   title,
   description,
   breadcrumbs = null,
-}) => {
-  return (
-    <div className={styles.wrapper}>
-      <PageInfo
-        title={title}
-        description={description}
-        variant="wide"
-        className="container"
-        breadcrumbs={breadcrumbs}
-      />
-      <a
-        className={classNames(styles.editLink, breadcrumbs && styles.low)}
-        href={EXTENSIONS_HREF}
-        target={'_blank'}
-        rel={'noreferrer'}
-      >
-        <Pencil />
-        Add your own extension
-      </a>
-    </div>
-  );
-};
+}) => (
+  <div className={styles.wrapper}>
+    <PageInfo
+      title={title}
+      description={description}
+      variant="wide"
+      className="container"
+      breadcrumbs={breadcrumbs}
+    />
+    <a
+      className={classNames(styles.editLink, breadcrumbs && styles.low)}
+      href={EXTENSIONS_HREF}
+      target={'_blank'}
+      rel={'noreferrer'}
+    >
+      <Pencil />
+      Add your own extension
+    </a>
+  </div>
+);

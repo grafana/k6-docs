@@ -92,17 +92,15 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
                       <span className={styles.lineNumber}>{i + 1}</span>
                     )}
                     <span className={styles.lineContent}>
-                      {line.map((token, key) => {
-                        return (
-                          <span
-                            {...getTokenProps({
-                              token,
-                              key,
-                            })}
-                            style={undefined}
-                          />
-                        );
-                      })}
+                      {line.map((token, key) => (
+                        <span
+                          {...getTokenProps({
+                            token,
+                            key,
+                          })}
+                          style={undefined}
+                        />
+                      ))}
                     </span>
                   </div>
                 );

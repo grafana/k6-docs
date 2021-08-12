@@ -12,7 +12,7 @@ import React from 'react';
 import { flattenSidebarTree } from 'utils/utils';
 import { LATEST_VERSION } from 'utils/utils.node';
 
-export default function (props) {
+export default function DocPage(props) {
   const {
     path,
     pageContext: {

@@ -2,9 +2,7 @@ import { I18N_CONFIG } from 'i18n/i18n-config';
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 
 export const LocaleContext = React.createContext(null);
-export const useLocale = () => {
-  return useContext(LocaleContext);
-};
+export const useLocale = () => useContext(LocaleContext);
 
 export default function LocaleProvider({ urlLocale = 'en', children }) {
   let initLocale =
@@ -31,8 +29,8 @@ export default function LocaleProvider({ urlLocale = 'en', children }) {
     }
   }, [urlLocale]);
 
-  const localeContextValue = useMemo(() => {
-    return {
+  const localeContextValue = useMemo(
+    () => ({
       get locale() {
         return curLocaleRef.current;
       },
@@ -44,8 +42,9 @@ export default function LocaleProvider({ urlLocale = 'en', children }) {
         curLocaleRef.current = locale;
         setRenderKey({});
       },
-    };
-  }, [renderKey, urlLocale]);
+    }),
+    [renderKey, urlLocale],
+  );
 
   return (
     <LocaleContext.Provider value={localeContextValue}>

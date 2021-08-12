@@ -11,19 +11,17 @@ const getClassNames = (docLayout) =>
     styles.bottomLinkColumn,
   );
 
-export const FooterColumn = ({ title, items, docLayout }) => {
-  return (
-    <div className={`${getClassNames(docLayout)}`}>
-      <h3 className={styles.navColumnTitle}>{title}</h3>
-      <ul className={styles.navColumnList}>
-        {items.map((item) => (
-          <li className={styles.navColumnItem}>
-            <a className={styles.navColumnLink} href={`${item.url}`}>
-              {item.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+export const FooterColumn = ({ title, items, docLayout }) => (
+  <div className={`${getClassNames(docLayout)}`}>
+    <h3 className={styles.navColumnTitle}>{title}</h3>
+    <ul className={styles.navColumnList}>
+      {items.map((item) => (
+        <li className={styles.navColumnItem}>
+          <a className={styles.navColumnLink} href={`${item.url}`}>
+            {item.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
