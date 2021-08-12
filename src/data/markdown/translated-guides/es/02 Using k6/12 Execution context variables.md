@@ -37,6 +37,12 @@ Un contador numérico con el número de iteración actual para un VU específico
 
 Número actual de la VU. El valor se asigna de forma incremental para cada nueva instancia de VU. Se basa en uno. Sin embargo, el número de VU es 0 mientras se ejecutan las funciones de `setup` y `teardown`.
 
+> ### ⚠️ Ejecutando tests en k6 Cloud
+>
+>El valor **\_\_VU** cuando se ejecuté el test en k6 Cloud será por servidor/generador de carga. Puedes leer los detalles en la [documentación](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
+>
+>En k6 Cloud existen nuevas [variables de entorno](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#environment-variables) que especifican el servidor, zona de carga  y distribución.
+
 > ### ⚠️ Información de contexto adicional disponible en k6 Cloud
 >
 > Si está ejecutando una prueba en k6 Cloud tendrá variables de entorno adicionales que le indicarán en qué servidor, zona de carga y distribución de la prueba se está ejecutando actualmente. Puede leer más sobre ellas [aquí](/es/usando-k6/variables-de-entorno/).
