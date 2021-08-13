@@ -13,23 +13,23 @@ The Thresholds page can be found in the **Manage** section of the left menu.
 It can be broken down into:
 
 **Filtering section**<br/>
-This is where you can narrow down the results by filtering by: `projects`, `status` and `time period`.
+This is where you can narrow down the results by filtering by: `Projects`, `Status` and `Period`.
 
 **Overview section**<br/>
 In this section you see the overview numbers of all your organization's thresholds.
 
 **Threshold listing**<br/>
-Here are the thresholds and their accompanying data, listed by test and project.
+Here are the thresholds and their accompanying data.
 
 | Column        | Description                                                                                                                                                                                                                       |
 | --------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Status**    | Current status of the threshold as per its last test run indicated by a checkmark <span style="color:green; font-weight:bold">✓</span> or cross <span style="color:red; font-weight:bold">✗</span> for pass or fail respectively. |
 | **Threshold** | Threshold metric name and criteria.                                                                                                                                                                                               |
 | **Project**   | The project to which the threshold test belongs to.                                                                                                                                                                               |
-| **Test**      | The test of the thresholds.                                                                                                                                                                                                       |
+| **Test**      | The name of the test of the threshold with a link to its most recent run.                                                                                                                                                         |
 | **Last run**  | The time the test was last run .                                                                                                                                                                                                  |
 | **Fail rate** | The number of threshold failures vs. the number of times the test of the threshold has been run.                                                                                                                                  |
-| **History**   | History chart that visualizes the threshold result for the last 10 test runs.                                                                                                                                                     |
+| **History**   | History chart that visualizes the threshold results for the last 10 test runs.                                                                                                                                                    |
 
 ## See Also
 
