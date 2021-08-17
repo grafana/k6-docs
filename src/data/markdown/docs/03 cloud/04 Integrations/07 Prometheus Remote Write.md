@@ -72,7 +72,6 @@ export let options = {
 };
 ```
 
-## New Relic Setup
 
 For sending custom metrics from your test run to New Relic's Prometheus Remote Write integration, follow the [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) in their documentation.
 
