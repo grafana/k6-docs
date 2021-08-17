@@ -153,7 +153,7 @@ C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" scrip
 ```
 
 ```bash
-PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 -run script.js
+PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
 
 PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
@@ -969,7 +969,7 @@ It is a shortcut option for a single [scenario](/using-k6/scenarios) with a [ram
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
 | `K6_STAGES` | `--stage <duration>:<target>`, `-s <duration>:<target>` | `stages`           | Based on `vus` and `duration`. |
 
-<CodeGroup labels={["Code", "Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[true]}>
+<CodeGroup labels={["Code", "Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```javascript
 // The following config would have k6 ramping up from 1 to 10 VUs for 3 minutes,
@@ -988,28 +988,28 @@ export let options = {
 ```
 
 ```bash
-$ k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+$ k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-$ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
+$ K6_STAGES="5s:10,5m:20,10s:5" k6 run script.js
 ```
 
 ```bash
-C:\k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+C:\k6> k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-C:\k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run ~/script.js
+C:\k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run script.js
 
 ```
 
 ```bash
-C:\k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+C:\k6> k6 run --stage 5s:10,5m:20,10s:5 script.js
 
 # or...
 
-C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run ~/script.js
+C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 ```
 
@@ -1029,14 +1029,32 @@ Available in the `k6 run` command.
 | ------------------- | ----------------------------- | ------------------ | ------- |
 | `K6_SUMMARY_EXPORT` | `--summary-export <filename>` | N/A                | `null`  |
 
-<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --summary-export export.json ~/script.js
+$ k6 run --summary-export export.json script.js
 
 # or...
 
-$ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
+$ K6_SUMMARY_EXPORT="export.json" k6 run script.js
+```
+
+```bash
+C:\k6> k6 run --summary-export export.json script.js
+
+# or...
+
+C:\k6> set "K6_SUMMARY_EXPORT=export.json" && k6 run script.js
+
+```
+
+```bash
+C:\k6> k6 run --summary-export export.json script.js
+
+# or...
+
+C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
+
 ```
 
 </CodeGroup>
