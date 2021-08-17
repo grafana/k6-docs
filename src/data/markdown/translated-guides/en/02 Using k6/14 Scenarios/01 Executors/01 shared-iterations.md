@@ -20,7 +20,7 @@ also adds the following options:
 | iterations  | integer | Total number of script iterations to execute across all VUs.                       | `1`     |
 | maxDuration | string  | Maximum scenario duration before it's forcibly stopped (excluding `gracefulStop`). | `"10m"` |
 
-### When to use
+## When to use
 
 This executor is suitable when you want a specific amount of VUs to complete a fixed
 number of total iterations, and the amount of iterations per VU is not important.
