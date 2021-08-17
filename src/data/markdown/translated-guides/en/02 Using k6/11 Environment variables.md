@@ -39,11 +39,11 @@ $ MY_HOSTNAME=test.k6.io k6 run script.js
 ```
 
 ```bash
-c:\\k6> set MY_HOSTNAME=\"test.k6.io\"\nc:\\k6> k6 run script.js
+c:\\k6> set "MY_HOSTNAME=test.k6.io" && k6 run script.js
 ```
 
 ```bash
-c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
+c:\\k6> $env:MY_HOSTNAME = "test.k6.io" ; k6 run script.js
 ```
 
 </CodeGroup>

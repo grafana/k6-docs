@@ -138,12 +138,24 @@ You can also set the same options through a config file:
 
 Or set some of the previous options via environment variables and command-line flags:
 
-<CodeGroup labels={["Bash"]} lineNumbers={[true]}>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run ~/script.js
+$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
 
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.js
+$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+```
+
+```bash
+c:\\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
+
+c:\\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+```
+
+```bash
+c:\\k6> $env:K6_NO_CONNECTION_REUSE=true ; $env:K6_USER_AGENT="MyK6UserAgentString/1.0" ; k6 -run script.js
+
+c:\\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 </CodeGroup>
@@ -507,7 +519,7 @@ Pass the real system [environment variables](/using-k6/environment-variables) to
 | --- | --------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
 | N/A | `--include-system-env-vars` | N/A                | `true` for `k6 run`, but `false` for all other commands to prevent inadvertent sensitive data leaks. |
 
-<CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
+<CodeGroup labels={["Shell" ]} lineNumbers={[false]}>
 
 ```bash
 $ k6 run --include-system-env-vars ~/script.js
@@ -957,7 +969,7 @@ It is a shortcut option for a single [scenario](/using-k6/scenarios) with a [ram
 | ----------- | ------------------------------------------------------- | ------------------ | ------------------------------ |
 | `K6_STAGES` | `--stage <duration>:<target>`, `-s <duration>:<target>` | `stages`           | Based on `vus` and `duration`. |
 
-<CodeGroup labels={["Code", "Shell"]} lineNumbers={[true]}>
+<CodeGroup labels={["Code", "Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[true]}>
 
 ```javascript
 // The following config would have k6 ramping up from 1 to 10 VUs for 3 minutes,
@@ -981,6 +993,24 @@ $ k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
 # or...
 
 $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
+```
+
+```bash
+c://k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+
+# or...
+
+c://k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run ~/script.js
+
+```
+
+```bash
+c://k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+
+# or...
+
+c://k6> $env:K6_STAGES="5s:10,5m:20,10s:5" ; k6 run ~/script.js
+
 ```
 
 </CodeGroup>
