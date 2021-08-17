@@ -20,7 +20,7 @@ Además de las opciones de configuración comunes, este ejecutor también añade
 | `iterations`  | integer | Número total de iteraciones de un script al ejecutar en todas las VUs.                       | `1`     |
 | `maxDuration` | string  | Duración máxima del escenario antes de que se detenga forzosamente (excluyendo `gracefulStop`). | `"10m"` |
 
-### Cuando usarlo
+## Cuando usarlo
  
 Este ejecutor es adecuado cuando se desea una cantidad específica de VUs para completar un número fijo de iteraciones totales, y la cantidad de iteraciones por VU no es importante.
  
