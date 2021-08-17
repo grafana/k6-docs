@@ -147,15 +147,15 @@ $ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```bash
-c:\\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
+C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
 
-c:\\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```bash
-c:\\k6> $env:K6_NO_CONNECTION_REUSE=true ; $env:K6_USER_AGENT="MyK6UserAgentString/1.0" ; k6 -run script.js
+PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 -run script.js
 
-c:\\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 </CodeGroup>
@@ -996,20 +996,20 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 ```
 
 ```bash
-c://k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+C:\k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
 
 # or...
 
-c://k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run ~/script.js
+C:\k6> set "K6_STAGES=5s:10,5m:20,10s:5" && k6 run ~/script.js
 
 ```
 
 ```bash
-c://k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
+C:\k6> k6 run --stage 5s:10,5m:20,10s:5 ~/script.js
 
 # or...
 
-c://k6> $env:K6_STAGES="5s:10,5m:20,10s:5" ; k6 run ~/script.js
+C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run ~/script.js
 
 ```
 
