@@ -9,19 +9,35 @@ k6 Cloud supports exporting metrics to APM platforms, enabling users to export m
 
 ## Supported APM Providers
 
-Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the `provider` is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
+As you'll see in each platform's respective section, the `provider` is a key passed to the APM configuration object and its value should match the providers listed below. Also, each platform has a separate set of configuration parameters. Therefore you need to visit your platform's page:
 
-| Provider       | Platform page                                                                    | Supported Regions                                                                        |
+| Provider       | Platform pages                                                                    | Supported Regions                                                                        |
 | -------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `datadog`      | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | [DataDog supported regions](/cloud/integrations/cloud-apm/datadog#supported-regions)     |
 | `azuremonitor` | [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)                     | [Azure supported regions](/cloud/integrations/cloud-apm/azure-monitor#supported-regions) |
-| `prometheus`   | [Prometheus Remote Write](/cloud/integrations/cloud-apm/prometheus-remote-write) | Not applicable                                                                           |
+| `prometheus`   | [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)<br/>[New Relic](/cloud/integrations/cloud-apm/new-relic) | Not applicable                                                                           |
 
 This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like to see a particular integration.
 
-## Configuration Parameters
+## Configuration
 
-To increase flexibility, the APM export functionality is configured on the test-run level. The required parameters should be specified in `options.ext.loadimpact.apm` (See [extension options](/using-k6/options#extension-options) for more information).
+To increase flexibility, the APM export functionality is configured on the test-run level. There are two ways in which you can set up your provider - via K6 Cloud app or by specifying required parameters in `options.ext.loadimpact.apm` in your script (See [extension options](/using-k6/options#extension-options) for more information).
+
+### Configuration via K6 Cloud app
+
+Locate the page in the left menu under the **Manage** section.
+
+![Manage Menu UI](images/05-Cloud-APM/cloud-app-manage-menu.png)
+
+On this page you will be able to select your platform and enter the configuration parameters. You can find more detailed information about each provider's configuration on it's respective [platform page](/cloud/integrations/cloud-apm/#supported-apm-providers).
+
+![Cloud APM - Page UI](images/05-Cloud-APM/cloud-app-apm-page.png)
+
+After you have set up your provider you will be able to enable it via [Test builder](/test-authoring/test-builder).
+
+![Test Builder - Cloud APM UI](images/05-Cloud-APM/cloud-app-testbuilder-apm.png)
+
+### Configuration via script
 
 Common configuration parameters for all providers are as follows:
 
