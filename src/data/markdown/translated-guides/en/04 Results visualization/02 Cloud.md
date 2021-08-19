@@ -89,7 +89,7 @@ data, setting the run state to `Timed out`. You can still analyze a timed out
 test but you'll of course only have access to as much data as was streamed
 before the network issue.
 
-# Advanced settings
+## Advanced settings
 
 There are a few special [environment variables](/using-k6/environment-variables)
 specifically for controlling k6 when streaming with `k6 -o cloud`.
