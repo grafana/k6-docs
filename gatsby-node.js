@@ -49,7 +49,7 @@ const formatSectionName = (name) => {
     return 'Javascript API';
   }
 
-  return `${name[0].toUpperCase()}${name.slice[1]}`;
+  return `${name[0].toUpperCase()}${name.slice(1)}`;
 };
 
 // @TODO: remove this after the porting of cloud rest api
