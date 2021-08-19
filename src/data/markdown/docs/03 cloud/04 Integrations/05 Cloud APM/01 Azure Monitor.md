@@ -78,12 +78,13 @@ export let options = {
 
 Supported regions for Azure Monitor integration are:
 
-| Geographic Region    | Supported Azure Region(s)                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **US and Canada**    | `westcentralus`<br/>`westus2`<br/>`northcentralus`<br/>`southcentralus`<br/>`centralus`<br/>`canadacentral`<br/>`eastus` (default)<br/>`eastus2` |
-| **Europe**           | `northeurope`<br/>`westeurope`<br/>`uksouth`<br/>`francecentral`                                                                                 |
-| **Africa**           | `southafricanorth`                                                                                                                               |
-| **Asia & Australia** | `centralindia`<br/>`australiaeast`<br/>`japaneast`<br/>`southeastasia`<br/>`eastasia`<br/>`koreacentral`                                         |
+| Geographic Region | Supported Azure Region(s)                                                                                                                                                                        |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Africa**        | `southafricanorth`<br/>`southafricawest`                                                                                                                                                         |
+| **America**       | `brazilsouth`<br/>`canadacentral`<br/>`canadaeast`<br/>`centralus`<br/>`eastus` (default)<br/>`eastus2`<br/>`northcentralus`<br/>`southcentralus`<br/>`westcentralus`<br/>`westus`<br/>`westus2` |
+| **Asia**          | `centralindia`<br/>`eastasia`<br/>`japaneast`<br/>`japanwest`<br/>`koreacentral`<br/>`koreasouth`<br/>`southeastasia`<br/>`southlindia`<br/>`uaecentral`</br>`uaenorth`<br/>`westindia`          |
+| **Australia**     | `australiacentral`<br/>`australiacentral2`<br/>`australiaeast`<br/>`australiasoutheast`                                                                                                          |
+| **Europe**        | `francecentral`<br/>`francesouth`<br/>`northeurope`<br/>`uksouth`<br/>`ukwest`<br/>`westeurope`                                                                                                  |
 
 ## Azure Monitor Setup
 
