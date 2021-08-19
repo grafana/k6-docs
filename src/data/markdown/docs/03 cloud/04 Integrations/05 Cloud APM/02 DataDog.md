@@ -4,6 +4,25 @@ head_title: 'Datadog integration with k6 Cloud'
 excerpt: 'How to export metrics from k6 Cloud to DataDog'
 ---
 
+You can set up DataDog integration via [K6 Cloud app](/cloud/integrations/cloud-apm/datadog#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/datadog#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/datadog#example-configuration-object).
+
+Follow [DataDog Setup](/cloud/integrations/cloud-apm/datadog#datadog-setup) to receive your `apiKey` and `appKey`.
+
+## Configuration via K6 Cloud app
+
+Locate the page in the left menu under the **Manage** section and select **DataDog**.
+
+![Manage Menu UI](../images/05-Cloud-APM/cloud-app-manage-menu.png)
+
+You will be greeted with the following form. For more information on input fields see [configuration parameters](/cloud/integrations/cloud-apm/datadog#configuration-parameters).
+
+![Cloud APM - DataDog Form UI](images/datadog-cloud-app-form.png)
+
+After you have saved your configuration you will be able to select it in [Test builder](/test-authoring/test-builder).
+
+![Cloud APM - DataDog Test Builder UI](images/datadog-cloud-app-testbuilder.png)
+
+
 ## Configuration Parameters
 
 The configuration parameters for sending metrics to DataDog and its EU counterpart are as follows:
