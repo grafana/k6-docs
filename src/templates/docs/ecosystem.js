@@ -132,6 +132,7 @@ export default function Ecosystem({ location, pageContext: { navLinks } }) {
         sidebarTree={ecosystemSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        sectionName="Ecosystem"
       >
         <EcosystemTitleGroup
           title={'Explore'}

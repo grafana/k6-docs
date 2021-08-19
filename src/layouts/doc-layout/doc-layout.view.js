@@ -234,6 +234,7 @@ export const DocLayout = ({
   navLinks: links,
   children,
   pageVersions = {},
+  sectionName = null,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -301,6 +302,9 @@ export const DocLayout = ({
             />
           )}
         </div>
+        {sidebarTree && sectionName && (
+          <span className={styles.sidebarTitle}>{sectionName}</span>
+        )}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>

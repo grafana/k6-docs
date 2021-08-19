@@ -46,6 +46,7 @@ export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        sectionName="Examples"
       >
         <PageInfo
           title={'Examples & Tutorials'}

@@ -86,6 +86,7 @@ export default function JavascriptAPI({
         version={version}
         path="/javascript-api/"
         pageVersions={pageVersions}
+        sectionName="Javascript API"
       >
         <PageInfo
           title={'JavaScript API'}
