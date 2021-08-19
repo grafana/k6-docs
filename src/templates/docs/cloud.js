@@ -38,6 +38,7 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        sectionName="Cloud"
       >
         <PageInfo title={'k6 Cloud documentation'} />
         <div className={`${docPageContent.inner}`}>

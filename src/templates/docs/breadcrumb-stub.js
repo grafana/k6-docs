@@ -20,6 +20,7 @@ export default function BreadcrumbsStubPage(props) {
       locale,
       translations = null,
       version,
+      sectionName,
     },
   } = props;
 
@@ -42,6 +43,7 @@ export default function BreadcrumbsStubPage(props) {
         pageMetadata={pageMetadata}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
         path={path}
+        sectionName={sectionName}
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
