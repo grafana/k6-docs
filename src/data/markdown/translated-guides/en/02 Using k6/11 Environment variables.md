@@ -84,8 +84,9 @@ system environment variables with the same name.
 
 ## Environment variables k6 will read automatically
 
-k6 will also try to read some specific environment variables that the user can set to change the
-behavior of k6:
+k6 will also try to read some specific environment variables that the user can
+set to change the behavior of k6. These must be supplied to k6 at the system level
+(so not using `-e` or `--env`).
 
 | Name                 | Description                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
