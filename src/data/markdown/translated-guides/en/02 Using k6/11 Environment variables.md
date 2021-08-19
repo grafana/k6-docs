@@ -93,3 +93,12 @@ behavior of k6:
 | `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the cloud service, when the --cloud results output option is specified. |
 | `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-collection).                                                        |
 | `K6_OUT`             | Specify results output, same as --out command-line option.                                                             |
+
+k6 also allows proxying via its use of [Golang's standard http library](https://pkg.go.dev/net/http#ProxyFromEnvironment).
+This is useful e.g. when wanting to send data to [k6 cloud](/cloud) from a k6 running inside a restricted network.
+
+| Name                 | Description                                                          |
+| -------------------- | ---------------------------------------------------------------------|
+| `HTTP_PROXY`         | Given either as complete URL or as `host:port` for HTTP requests.    |
+| `HTTPS_PROXY`        | Given either as complete URL or as `host:port` for HTTPS requests.   |
+| `NO_PROXY`           | Don't use any proxy for requests.                                    |
