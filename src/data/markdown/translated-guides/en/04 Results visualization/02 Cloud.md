@@ -122,7 +122,7 @@ order to not lose potentially important testing information.
 
 > When running a test entirely in the cloud with `k6 cloud`, `k6` will always
 > aggregate. For that case the aggregation settings are however set by the
-> cloud infrastructure are not controllable from the CLI.
+> cloud infrastructure and are not controllable from the CLI.
 
 ## See also
 
