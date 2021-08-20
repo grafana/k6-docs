@@ -10,8 +10,6 @@ Usage report helps you keep track of everything happening in your team’s proje
 
 The page can be found in the left menu under the **Manage** section.
 
-![Full UI](images/05-Usage-Reports/menu.png)
-
 On this page you will be presented with both organization and project statistics, lets break down what we are looking at.
 
 **Section highlighted in green**<br/>
@@ -23,7 +21,7 @@ This section presents overview statistics for your organization.
 **Section highlighted in yellow**<br/>
 Here are statistics for each individual project.
 
-![Full UI](images/05-Usage-Reports/full-ui.jpg)
+![Full UI](images/Usage-Reports/full-ui.jpg)
 
 | Column                       | Description                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------------- |

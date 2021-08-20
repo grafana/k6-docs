@@ -1,5 +1,5 @@
 ---
-title: 'Scheduling tests'
+title: 'Scheduled tests'
 excerpt: 'A guide on how to schedule your load tests to run in the future or on a schedule within the k6 Cloud Web UI.'
 ---
 
@@ -19,7 +19,6 @@ Schedules can be set up from two different places:
 ### 1. Schedules overview page
 
 Located in the left menu under **Manage section** you will find **Scheduled tests** option.
-![Schedules page link](./images/Scheduling-a-test/schedules-page-link.png)
 
 On this page you can quickly find and edit all test schedules that have been created in your organization.<br/>
 You are also able to create a new schedule for any of your projects and cloud tests directly from this page.
@@ -57,4 +56,4 @@ In both cases, you are presented with the following options.
 
 ![Schedule configuration](./images/Scheduling-a-test/schedule-configuration.png)
 
-Finally - we do recommend setting up [notifications](/cloud/integrations/notifications) and [thresholds](/using-k6/thresholds) to complete an automated loop. Schedule your test to run and get notified if the test has passed or failed.
+Finally - we do recommend setting up [notifications](/cloud/manage/notifications) and [thresholds](/using-k6/thresholds) to complete an automated loop. Schedule your test to run and get notified if the test has passed or failed.

@@ -20,7 +20,7 @@ k6 supports four different integration options: _Slack_, _Microsoft Teams_ and
 your own _Custom Webhook_ or _Custom Email_. Each option can also be customized freely 
 if our default is not exactly what you need.
 
-![k6 Notifications](./images/03-Notifications/notification-type-selection.png)
+![k6 Notifications](./images/Notifications/notification-type-selection.png)
 
 ## Adding a Slack notification
 
@@ -37,7 +37,7 @@ if our default is not exactly what you need.
 7. Press `Save`. If you now go back to `Configure` the notification you just created, you'll see a
    `Send test event` button. Use that to send a dummy message and to make sure it works.
 
-![Slack Setup example](./images/03-Notifications/slack-setup.png)
+![Slack Setup example](./images/Notifications/slack-setup.png)
 
 > By pressing the _toggle advanced mode_ button you can view and customize exactly what will be
 > sent to Slack. Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
@@ -59,7 +59,7 @@ collaboration in office 365.
 6. Press `Save`. If you now go back to `Configure` the notification you just created, you'll see a
    `Send test event` button. Use that to send a dummy message and make sure it works.
 
-![MSTeams Setup example](./images/03-Notifications/ms-teams-setup.png)
+![MSTeams Setup example](./images/Notifications/ms-teams-setup.png)
 
 > By pressing the _toggle advanced mode_ button you can view and customize
 > exactly what will be sent to Microsoft Teams. Read more about it in the
@@ -97,7 +97,7 @@ customized directly in the k6 app.
     receiving end (if there was a typo in the variable-name some may just be
     left empty without giving an explicit error).
 
-![MSTeams Setup example](./images/03-Notifications/custom-webhook-setup.png)
+![MSTeams Setup example](./images/Notifications/custom-webhook-setup.png)
 
 ## Adding a Custom Email notification
 
@@ -126,7 +126,7 @@ Instead of using webhooks you can have k6.io send you an email.
    receiving end (if there was a typo in the variable-name some may just be
    left empty without giving an explicit error).
 
-![Email Setup example](./images/03-Notifications/email-setup.png)
+![Email Setup example](./images/Notifications/email-setup.png)
 
 ## Supported Notification events
 

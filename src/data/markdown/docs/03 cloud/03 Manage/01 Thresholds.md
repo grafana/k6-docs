@@ -8,7 +8,7 @@ You can easily find the tests with failing thresholds, which project they belong
 
 The Thresholds page can be found in the **Manage** section of the left menu.
 
-![Full UI](images/06-Thresholds/full-ui.png)
+![Full UI](images/Thresholds/full-ui.png)
 
 It can be broken down into:
 

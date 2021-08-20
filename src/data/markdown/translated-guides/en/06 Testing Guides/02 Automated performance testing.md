@@ -210,7 +210,7 @@ Generalized, our recommendation is as follows, broken down by VU iteration durat
 
 Besides triggering tests based on commit events, we also often see users and customers use [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) or CI tool equivalent mechanisms for running tests on off-hours or at a particular cadence.
 
-If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/creating-and-running-a-test/scheduling-tests) to trigger tests at a frequency of your choosing.
+If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/manage/scheduled-tests) to trigger tests at a frequency of your choosing.
 
 **Load test suite**
 
@@ -290,7 +290,7 @@ export function teardown(data) {
 
 ### For k6 cloud
 
-If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/integrations/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
+If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/manage/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
 
 
 ## See also

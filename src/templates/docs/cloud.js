@@ -132,15 +132,11 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                         .
                       </Trait>
                       <Trait>
-                        <Link
-                          to={
-                            '/cloud/creating-and-running-a-test/scheduling-tests/'
-                          }
-                        >
+                        <Link to={'/cloud/manage/scheduled-tests/'}>
                           Scheduling
                         </Link>{' '}
                         and{' '}
-                        <Link to={'/cloud/integrations/notifications/'}>
+                        <Link to={'/cloud/manage/notifications/'}>
                           Notifications
                         </Link>
                         .
@@ -163,11 +159,7 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       </Trait>
                       <Trait>
                         See team and testing activity with{' '}
-                        <Link
-                          to={
-                            '/cloud/project-and-team-management/usage-reports/'
-                          }
-                        >
+                        <Link to={'/cloud/manage/usage-reports/'}>
                           Usage reports
                         </Link>
                         .
