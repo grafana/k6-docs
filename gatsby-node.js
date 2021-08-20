@@ -999,6 +999,27 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/cloud/project-and-team-management/usage-reports/',
+    toPath: '/cloud/manage/usage-reports/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/integrations/notifications/',
+    toPath: '/cloud/manage/notifications/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/project-and-team-management/thresholds/',
+    toPath: '/cloud/manage/thresholds/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/scheduling-tests/',
+    toPath: '/cloud/manage/scheduled-tests/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',

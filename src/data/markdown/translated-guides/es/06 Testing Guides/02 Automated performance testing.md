@@ -190,7 +190,7 @@ De forma general, nuestra recomendación es la siguiente, desglosada por la dura
 
 Además de desencadenar pruebas basadas en eventos de commit, también vemos a menudo que los usuarios y clientes utilizan mecanismos equivalentes a las herramientas de [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) o CI para ejecutar pruebas en horas no laborables o con una frecuencia determinada.
 
-Si utiliza k6 Cloud, puede utilizar la [función de scheduling](/cloud/creating-and-running-a-test/scheduling-tests) para configurar la ejecución de las pruebas con la frecuencia que desee.
+Si utiliza k6 Cloud, puede utilizar la [función de scheduling](/cloud/manage/scheduled-tests) para configurar la ejecución de las pruebas con la frecuencia que desee.
 
 **Conjunto de pruebas de carga**
 
@@ -270,7 +270,7 @@ export function teardown(data) {
 
 ### Para k6 cloud
 
-Si está ejecutando sus pruebas en la nube, en la aplicación web, puede configurar estas [notificaciones](/cloud/integrations/notifications): Slack, Webhook y Microsoft Teams.
+Si está ejecutando sus pruebas en la nube, en la aplicación web, puede configurar estas [notificaciones](/cloud/manage/notifications): Slack, Webhook y Microsoft Teams.
 
 ## Véase también
 
