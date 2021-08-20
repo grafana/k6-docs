@@ -867,7 +867,7 @@ specified multiple times. Available in `k6 run` command.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
-| N/A | `--out`, `-o` | N/A                | `null`  |
+| `K6_OUT` | `--out`, `-o` | N/A                | `null`  |
 
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
