@@ -3,11 +3,11 @@ title: 'Azure Monitor'
 excerpt: 'How to export metrics from k6 Cloud to Azure Monitor'
 ---
 
-You can set up Azure Monitor integration via [k6 cloud app](/cloud/integrations/cloud-apm/azure-monitor#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/azure-monitor#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/azure-monitor#example-configuration-object).
+You can set up Azure Monitor integration via [k6 Cloud app](/cloud/integrations/cloud-apm/azure-monitor#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/azure-monitor#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/azure-monitor#example-configuration-object).
 
 To get custom metrics from your test runs into Azure Monitor follow the [Azure Monitor Setup](/cloud/integrations/cloud-apm/azure-monitor#azure-monitor-setup).
 
-## Configuration via k6 cloud app
+## Configuration via k6 Cloud app
 
 Locate the page in the left menu under the **Manage** section and select **Azure Monitor**.
 

@@ -4,11 +4,11 @@ head_title: 'Datadog integration with k6 Cloud'
 excerpt: 'How to export metrics from k6 Cloud to DataDog'
 ---
 
-You can set up DataDog integration via [k6 cloud app](/cloud/integrations/cloud-apm/datadog#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/datadog#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/datadog#example-configuration-object).
+You can set up DataDog integration via [k6 Cloud app](/cloud/integrations/cloud-apm/datadog#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/datadog#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/datadog#example-configuration-object).
 
 Follow [DataDog Setup](/cloud/integrations/cloud-apm/datadog#datadog-setup) to receive your `apiKey` and `appKey`.
 
-## Configuration via k6 cloud app
+## Configuration via k6 Cloud app
 
 Locate the page in the left menu under the **Manage** section and select **DataDog**.
 
