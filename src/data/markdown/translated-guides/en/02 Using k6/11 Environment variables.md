@@ -84,14 +84,14 @@ system environment variables with the same name.
 
 ## Environment variables k6 will read automatically
 
-k6 will also try to read some specific environment variables that the user can
-set to change the behavior of k6. These must be supplied to k6 at the system level
-(so not using `-e` or `--env`).
+k6 will read some specific environment variables to customize its operation.
+These must be supplied to k6 at the shell level (so they _cannot_ be [passed
+via -e or --env][envvarsref]).
 
 | Name                 | Description                                                                                                            |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_HOST`      | A URL to connect to, when the --out=cloud results output option is specified.                                          |
-| `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the cloud service, when the --cloud results output option is specified. |
+| `K6_CLOUD_HOST`      | A URL to connect to when the `--out=cloud` results output option is specified.                                          |
+| `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the k6 cloud service, both for [streaming results to][k6ingest] and for [running tests in](/cloud) the k6 cloud. |
 | `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-collection).                                                        |
 | `K6_OUT`             | Specify results output, same as --out command-line option.                                                             |
 
@@ -100,6 +100,11 @@ This is useful e.g. when wanting to send data to [k6 cloud](/cloud) from a k6 ru
 
 | Name                 | Description                                                          |
 | -------------------- | ---------------------------------------------------------------------|
-| `HTTP_PROXY`         | Given either as complete URL or as `host:port` for HTTP requests.    |
-| `HTTPS_PROXY`        | Given either as complete URL or as `host:port` for HTTPS requests.   |
-| `NO_PROXY`           | Don't use any proxy for requests.                                    |
+| `HTTP_PROXY`         | Proxy address (URL or `host:port`) to use for HTTP requests, unless overridden by `NO_PROXY`.    |
+| `HTTPS_PROXY`        | Proxy address (URL or `host:port`) to use for HTTPS requests, unless overridden by `NO_PROXY`.   |
+| `NO_PROXY`           | Hosts that should bypass proxies. This is a comma-separated string of IP addresses and/or host names. See [the httpproxy docs][httpproxyconfig] for more info. Example: `"1.2.3.4, 2.3.4.5:80, myhost.com"`.|
+
+
+[k6ingest]: /results-visualization/cloud/
+[envvarsref]: /using-k6/options/#supply-environment-variables
+[httpproxyconfig]: https://pkg.go.dev/golang.org/x/net/http/httpproxy#Config
