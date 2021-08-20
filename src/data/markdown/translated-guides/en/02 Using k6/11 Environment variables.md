@@ -102,7 +102,7 @@ This is useful e.g. when wanting to send data to [k6 cloud](/cloud) from a k6 ru
 | -------------------- | ---------------------------------------------------------------------|
 | `HTTP_PROXY`         | Proxy address (URL or `host:port`) to use for HTTP requests, unless overridden by `NO_PROXY`.    |
 | `HTTPS_PROXY`        | Proxy address (URL or `host:port`) to use for HTTPS requests, unless overridden by `NO_PROXY`.   |
-| `NO_PROXY`           | Hosts that should bypass proxies. This is a comma-separated string of IP addresses and/or host names. See [the httpproxy docs][httpproxyconfig] for more info. Example: `"1.2.3.4, 2.3.4.5:80, myhost.com"`.|
+| `NO_PROXY`           | Hosts that should bypass proxies. This is a comma-separated string of IP addresses and/or host names. See [the httpproxy docs][httpproxyconfig] for more info. Example: `"1.2.3.4,2.3.4.5:80,myhost.com"`.|
 
 
 [k6ingest]: /results-visualization/cloud/
