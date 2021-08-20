@@ -1,4 +1,4 @@
 ---
-title: 'Control a live k6 test'
-redirect: 'https://k6.io/blog/how-to-control-a-live-k6-test'
+title: 'Debugging Using a Web Proxy'
+redirect: 'https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/'
 ---

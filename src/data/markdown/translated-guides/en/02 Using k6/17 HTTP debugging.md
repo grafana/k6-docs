@@ -4,8 +4,10 @@ excerpt: 'It is not always things work as expected. For those cases there is a h
 hideFromSidebar: true
 ---
 
-It's not always things work as expected. For those cases there's a handy CLI flag, `--http-debug`,
-that is good to be aware of.
+It's not always things work as expected. For those cases, enabling the [--http-debug](/using-k6/options/#http-debug) option will log HTTP requests and responses to help you debugging the script.
+
+- `--http-debug` logs the HTTP requests and responses, skipping the body.
+- `--http-debug="full"` logs the HTTP requests and responses, including the full body.
 
 ## Example
 
@@ -91,4 +93,7 @@ X-Xss-Protection: 1; mode=block
 
 </CodeGroup>
 
-If we want to get the full response body printed as well we run the script with `k6 run --http-debug="full" script.js` instead.
+
+## See also
+
+- [Debugging Using a Web Proxy](https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/)
