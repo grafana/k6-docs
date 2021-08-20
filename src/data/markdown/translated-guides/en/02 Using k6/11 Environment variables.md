@@ -3,13 +3,12 @@ title: 'Environment variables'
 excerpt: 'You can access any environment variables from your k6 script code, and use this to supply your VUs with configuration information.'
 ---
 
-## k6 and environment variables
-
 Environment variables can be used with k6 in two ways:
+
+- You can pass some [k6 Options](/using-k6/options) as environment variables to affect k6's behavior. 
 
 - You can access any environment variables from your k6 script code, and use this to supply your
   VUs with configuration information.
-- A couple of environment variables are automatically read by k6 on startup, affecting its behavior.
 
 ## Accessing environment variables from a script
 
@@ -81,15 +80,3 @@ export default function () {
 
 Environment variables specified with the `-e` CLI flag takes precedence over (overwrite) actual
 system environment variables with the same name.
-
-## Environment variables k6 will read automatically
-
-k6 will also try to read some specific environment variables that the user can set to change the
-behavior of k6:
-
-| Name                 | Description                                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_HOST`      | A URL to connect to, when the --out=cloud results output option is specified.                                          |
-| `K6_CLOUD_TOKEN`     | An authentication token to use in API calls to the cloud service, when the --cloud results output option is specified. |
-| `K6_NO_USAGE_REPORT` | Define this to disable [usage reports](/misc/usage-collection).                                                        |
-| `K6_OUT`             | Specify results output, same as --out command-line option.                                                             |
