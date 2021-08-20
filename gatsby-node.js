@@ -44,6 +44,14 @@ if (!isProduction && jsApiVersionsToBuild) {
     .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
 }
 
+const formatSectionName = (name) => {
+  if (name === 'javascript api') {
+    return 'Javascript API';
+  }
+
+  return `${name[0].toUpperCase()}${name.slice(1)}`;
+};
+
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
@@ -276,6 +284,7 @@ function getSupplementaryPagesProps({
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
             sidebarTree: getSidebar(section),
+            sectionName: formatSectionName(section),
             breadcrumbs,
             title: name,
             navLinks: generateTopLevelLinks(topLevelLinks),
@@ -318,6 +327,7 @@ function getSupplementaryPagesProps({
         component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
         context: {
           sidebarTree: getGuidesSidebar(locale),
+          sectionName: 'Guides',
           breadcrumbs: breadcrumbs.filter(
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
@@ -365,6 +375,7 @@ function getTopLevelPagesProps({
         path: slug === 'guides' ? `/` : `/${slug}/`,
         component: Path.resolve(`./src/templates/docs/${slug}.js`),
         context: {
+          sectionName: formatSectionName(name),
           sidebarTree: getSidebar(name),
           navLinks: generateTopLevelLinks(topLevelLinks),
         },
@@ -378,6 +389,7 @@ function getTopLevelPagesProps({
           sidebarTree: getGuidesSidebar(locale),
           navLinks: generateTopLevelLinks(topLevelLinks),
           locale,
+          sectionName: 'Guides',
         },
       })),
     )
@@ -386,6 +398,7 @@ function getTopLevelPagesProps({
         path: `/ecosystem/`,
         component: Path.resolve(`./src/templates/docs/ecosystem.js`),
         context: {
+          sectionName: 'Ecosystem',
           sidebarTree: {
             children: {},
           },
@@ -396,6 +409,7 @@ function getTopLevelPagesProps({
         path: `/ecosystem/bundle-builder/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
+          sectionName: 'Ecosystem',
           sidebarTree: {
             children: {},
           },
@@ -410,6 +424,7 @@ function getTopLevelPagesProps({
           `./src/templates/docs/versioned-javascript-api.js`,
         ),
         context: {
+          sectionName: 'Javascript API',
           sidebarTree: getJavascriptAPISidebar(version),
           navLinks: generateTopLevelLinks(topLevelLinks),
           version,
@@ -503,6 +518,7 @@ function getDocPagesProps({
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
+          sectionName: formatSectionName(docSection),
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
@@ -615,6 +631,7 @@ function getGuidesPagesProps({
         path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
+          sectionName: 'Guides',
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs: breadcrumbs.filter(
@@ -735,6 +752,7 @@ function getJsAPIVersionedPagesProps({
         path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
+          sectionName: 'Javascript API',
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,

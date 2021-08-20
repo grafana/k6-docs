@@ -77,6 +77,22 @@
   }
 }
 
+.sidebar-title {
+  display: inline-block;
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
+  font-weight: 700;
+  color: $color-secondary;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include lg-down {
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+  }
+}
+
 .sidebar-section {
   padding: 20px;
   border-bottom: 1px solid $color-additional-2;

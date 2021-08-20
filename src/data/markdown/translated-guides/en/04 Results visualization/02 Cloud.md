@@ -7,6 +7,14 @@ Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-fro
 
 When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
+> ### ⚠️ Streaming _to_ Cloud vs Running _in_ Cloud
+> Don't confuse `k6 --out cloud script.js` (what this page is about) with `k6
+> cloud script.js`. While the former means that you run `k6` locally and stream
+> the result to the cloud, the latter means that you upload your
+> script to [k6 cloud](/cloud) and tell the cloud infrastructure to run the
+> entire test for you. In this case you'll only see status updates in your CLI,
+> but in all cases you'll be able to see your test results at https://k6.io.
+
 ## Instructions
 
 **1 (Optional) - Log in to the k6 Cloud**
@@ -61,15 +69,65 @@ execution: local
 
 ![k6 Cloud Test Results](./images/Cloud/k6-cloud-results.png)
 
-> When you send the results to the k6 Cloud, data will be continuously streamed to the cloud. While this happens the state of the test run will be marked as `Running`. A test run that ran its course will be marked `Finished`. The run state has nothing to do with the test passing any thresholds, only that the test itself is operating correctly.
-> 
-> If you deliberately abort your test (e.g. by pressing _Ctrl-C_), it will still be considered `Finished`. You can still look and analyze the test data you streamed so far. The test will just have run shorter than originally planned.
-> 
-> Another possibility would be if you lose network connection with the k6 Cloud while your test is running. In that case the k6 Cloud will patiently wait for you to reconnect. In the meanwhile your test's run state will continue to appear as `Running` on the web app.
-> 
-> If no reconnection happens, the k6 Cloud will time out after two minutes of no data, setting the run state to `Timed out`. You can still analyze a timed out test but you'll of course only have access to as much data as was streamed before the network issue.
+When you send the results to the k6 Cloud with `k6-out`, data will be
+continuously streamed to the cloud. While this happens the state of the test run
+will be marked as `Running`. A test run that ran its course will be marked
+`Finished`. The run state has nothing to do with the test passing any
+thresholds, only that the test itself is operating correctly.
+
+If you deliberately abort your test (e.g. by pressing _Ctrl-C_), your test will
+end up as `Aborted by User`. You can still look and analyze the test data you
+streamed so far. The test will just have run shorter than originally planned.
+
+Another possibility would be if you lose network connection with the k6 Cloud
+while your test is running. In that case the k6 Cloud will patiently wait for
+you to reconnect. In the meanwhile your test's run state will continue to
+appear as `Running` on the web app.
+
+If no reconnection happens, the k6 Cloud will time out after two minutes of no
+data, setting the run state to `Timed out`. You can still analyze a timed out
+test but you'll of course only have access to as much data as was streamed
+before the network issue.
+
+## Advanced settings
+
+There are a few special [environment variables](/using-k6/environment-variables)
+specifically for controlling k6 when streaming with `k6 -o cloud`.
+
+When streaming, k6 will collect all data and send it to the cloud in batches.
+
+| Name | Description |
+| ---- | ----------- |
+| `K6_CLOUD_METRIC_PUSH_INTERVAL`               | How often to send data to the k6 cloud (default `'6s'`).                                        |
+
+k6 can also _aggregate_ the data it sends to the k6 cloud each batch. This
+reduces the amount of data sent to the cloud. Aggregation is disabled by
+default.
+
+When using aggregation, k6 will collect incoming test data into time-buckets.
+For each data-type collected in such a bucket, it will figure out the dispersion
+(by default the [interquartile range][iqr]) around the median value.
+Outlier-data far outside the lower and upper quartiles are not aggregated in
+order to not lose potentially important testing information.
+
+| Name                                          | Description                                                                                              |
+|---------------------------------------------- |----------------------------------------------------------------------------------------------------------|
+| `K6_CLOUD_AGGREGATION_PERIOD`                 | >0s to activate aggregation (default disabled, `'3s'` is a good example to try) |
+| `K6_CLOUD_AGGREGATION_CALC_INTERVAL`          | How often new data will be aggregated (default `'3s'`).                                                    |
+| `K6_CLOUD_AGGREGATION_WAIT_PERIOD`            | How long to wait for period samples to accumulate before aggregating them (default `'5s'`).                |
+| `K6_CLOUD_AGGREGATION_MIN_SAMPLES`            | If fewer samples than this arrived in interval, skip aggregation (default `100`).                          |
+| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_RADIUS`     | Outlier sampling from median to use for Q1 and Q3 quartiles (fraction) (default `0.25` (i.e. [IQR][iqr])). |
+| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_LOWER` | How many quartiles below the lower quartile are treated as non-aggregatable outliers (default `1.5`)                            |
+| `K6_CLOUD_AGGREGATION_OUTLIER_IQR_COEF_UPPER` | How many quartiles above the upper quartile are treated as non-aggregatable outliers (default `1.3`)                            |
+
+> When running a test entirely in the cloud with `k6 cloud`, `k6` will always
+> aggregate. For that case the aggregation settings are however set by the
+> cloud infrastructure and are not controllable from the CLI.
 
 ## See also
 
 - [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
 - [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)
+
+
+[iqr]: https://en.wikipedia.org/wiki/Interquartile_range

@@ -266,6 +266,7 @@ export default function Integrations({
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        sectionName="Integrations"
       >
         <PageInfo title={'Integrations & Tools'} description={''} />
         <div className={`${docPageContent.inner} `}>

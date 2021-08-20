@@ -75,6 +75,7 @@ function GuidesContent({
       pageMetadata={pageMetadata}
       locale={locale}
       pageTranslations={guidesTranslations}
+      sectionName="Guides"
     >
       <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>

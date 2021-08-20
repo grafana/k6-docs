@@ -68,6 +68,7 @@ export default function BundleBuilderPage({ pageContext: { navLinks } }) {
         sidebarTree={bundleBuilderSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
+        sectionName="Ecosystem"
       >
         <EcosystemTitleGroup
           title={'Build Bundle'}

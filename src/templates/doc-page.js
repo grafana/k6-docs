@@ -23,6 +23,7 @@ export default function DocPage(props) {
       locale = 'en',
       version,
       pageVersions = null,
+      sectionName,
     },
   } = props;
   useScrollToAnchor();
@@ -77,6 +78,7 @@ export default function DocPage(props) {
         version={isJsAPIPage ? version || LATEST_VERSION : null}
         pageVersions={pageVersions}
         path={frontmatter.slug}
+        sectionName={sectionName}
       >
         <div
           className={classNames(

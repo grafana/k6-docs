@@ -6,6 +6,12 @@ excerpt: 'Suspends VU execution for the specified duration.'
 
 Suspend VU execution for the specified duration.
 
+`sleep` is the primary means of introducing delays in your script. These delays aim to represent the time it would take a real user to parse a page before proceeding to the next page, commonly referred to as "think time". Without `sleep` statements, a script will run as quickly as the system it runs on allows it, as well as by how fast the server(s) it communicates with responds (because k6 executes HTTP requests synchronously).
+
+Unless you are stress testing and want each VU to execute as many requests per second as possible, you should aim to include `sleep` statements throughout the script in order to relate your VUs activity to that of real users.
+
+Ideally, you would also feed in a randomized pause duration as that further encourages natural concurrency to develop.
+
 | Parameter | Type   | Description           |
 | --------- | ------ | --------------------- |
 | t         | number | Duration, in seconds. |

@@ -234,6 +234,7 @@ export const DocLayout = ({
   navLinks: links,
   children,
   pageVersions = {},
+  sectionName = null,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -301,31 +302,37 @@ export const DocLayout = ({
             />
           )}
         </div>
+        {sidebarTree && sectionName && (
+          <span className={styles.sidebarTitle}>{sectionName}</span>
+        )}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
-              {sectionNode.meta.isActiveSidebarLink ? (
-                <Heading
-                  className={styles.sidebarSectionTitle}
-                  size={'sm'}
-                  tag={'h2'}
-                >
-                  <Link
-                    className={`link ${styles.sidebarSectionTitleLink}`}
-                    to={sectionNode.meta.path}
+              {sectionNode.meta.title !== sectionName &&
+                sectionNode.meta.isActiveSidebarLink && (
+                  <Heading
+                    className={styles.sidebarSectionTitle}
+                    size={'sm'}
+                    tag={'h2'}
+                  >
+                    <Link
+                      className={`link ${styles.sidebarSectionTitleLink}`}
+                      to={sectionNode.meta.path}
+                    >
+                      {sectionNode.meta.title || sectionNode.name}
+                    </Link>
+                  </Heading>
+                )}
+              {sectionNode.meta.title !== sectionName &&
+                !sectionNode.meta.isActiveSidebarLink && (
+                  <Heading
+                    className={styles.sidebarSectionTitle}
+                    size={'sm'}
+                    tag={'h2'}
                   >
                     {sectionNode.meta.title || sectionNode.name}
-                  </Link>
-                </Heading>
-              ) : (
-                <Heading
-                  className={styles.sidebarSectionTitle}
-                  size={'sm'}
-                  tag={'h2'}
-                >
-                  {sectionNode.meta.title || sectionNode.name}
-                </Heading>
-              )}
+                  </Heading>
+                )}
               <div>
                 {childrenToList(sectionNode.children).map((node) => (
                   <SidebarNode node={node} key={node.name} />
