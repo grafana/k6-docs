@@ -3,11 +3,11 @@ title: 'New Relic'
 excerpt: 'How to export metrics from k6 Cloud to New Relic'
 ---
 
-You can set up New Relic integration via [K6 Cloud app](/cloud/integrations/cloud-apm/new-relic#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/new-relic#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/new-relic#example-configuration-object).
+You can set up New Relic integration via [k6 cloud app](/cloud/integrations/cloud-apm/new-relic#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/new-relic#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/new-relic#example-configuration-object).
 
 To get custom metrics from your test runs into New Relic follow the [New Relic Setup](/cloud/integrations/cloud-apm/new-relic#new-relic-setup).
 
-## Configuration via K6 Cloud app
+## Configuration via k6 cloud app
 
 Locate the page in the left menu under the **Manage** section and select **New Relic**.
 

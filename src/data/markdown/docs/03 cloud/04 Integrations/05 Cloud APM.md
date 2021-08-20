@@ -21,9 +21,9 @@ This list will be expanded in the future. Please [contact us](https://k6.io/cont
 
 ## Configuration
 
-To increase flexibility, the APM export functionality is configured on the test-run level. You can set up your provider via [K6 Cloud app](/cloud/integrations/cloud-apm/#configuration-via-k6-cloud-app) or by specifying required parameters in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/#configuration-via-script) (See [extension options](/using-k6/options#extension-options) for more information).
+To increase flexibility, the APM export functionality is configured on the test-run level. You can set up your provider via [k6 cloud app](/cloud/integrations/cloud-apm/#configuration-via-k6-cloud-app) or by specifying required parameters in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/#configuration-via-script) (See [extension options](/using-k6/options#extension-options) for more information).
 
-## Configuration via K6 Cloud app
+## Configuration via k6 cloud app
 
 Locate the page in the left menu under the **Manage** section.
 

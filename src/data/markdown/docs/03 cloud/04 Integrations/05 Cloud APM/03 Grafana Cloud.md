@@ -3,11 +3,11 @@ title: 'Grafana Cloud'
 excerpt: 'How to export metrics from k6 Cloud to Grafana Cloud'
 ---
 
-You can set up Grafana Cloud integration via [K6 Cloud app](/cloud/integrations/cloud-apm/grafana-cloud#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/grafana-cloud#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/grafana-cloud#example-configuration-object).
+You can set up Grafana Cloud integration via [k6 cloud app](/cloud/integrations/cloud-apm/grafana-cloud#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/grafana-cloud#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/grafana-cloud#example-configuration-object).
 
 To get custom metrics from your test runs into Grafana Cloud follow the [Grafana Cloud Setup](/cloud/integrations/cloud-apm/grafana-cloud#grafana-cloud-setup).
 
-## Configuration via K6 Cloud app
+## Configuration via k6 cloud app
 
 Locate the page in the left menu under the **Manage** section and select **Grafana Cloud**.
 
