@@ -7,6 +7,13 @@ Además de [ejecutar pruebas en k6 Cloud](/cloud/creating-and-running-a-test/clo
 
 Al transmitir los resultados a la nube de k6, la máquina donde se ejecuta el comando CLI de k6 ejecuta la prueba y sube los resultados a la nube de k6. A continuación, podrá visualizar y analizar los resultados en la aplicación web en tiempo real.
 
+> ### ⚠️ Streaming o Exportando resultados al k6 Cloud vs Ejecutando en k6 Cloud
+> Por favor, no confunda `k6 --out cloud script.js` con `k6 cloud script.js` . 
+> 
+> El primero se refiere a ejecutar el test localmente y exportar los resultados a k6 Cloud. 
+> El segundo se refiere a ejecutar el test completamente en la infrastructura de k6 Cloud.  
+> En ambos casos podrás ver los resultados en https://app.k6.io
+
 ## Instrucciones
 
 

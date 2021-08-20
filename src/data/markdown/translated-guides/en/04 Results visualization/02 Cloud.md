@@ -13,7 +13,7 @@ When streaming the results to the k6 Cloud, the machine - where you execute the 
 > the result to the cloud, the latter means that you upload your
 > script to [k6 cloud](/cloud) and tell the cloud infrastructure to run the
 > entire test for you. In this case you'll only see status updates in your CLI,
-> but in all cases you'll be able to see your test results at https://k6.io.
+> but in all cases you'll be able to see your test results at https://app.k6.io.
 
 ## Instructions
 
