@@ -24,3 +24,17 @@ Here are some ways we have seen users utilize Projects to stay organized:
 If you are using the CLI to trigger your tests, you will need to specify a `projectID` in order to use the correct subscription and organize your results in the correct project. You will need to get the project ID from the top left corner of the dashboard:
 
 ![Test result navigation](images/02-Projects/projectID.png)
+
+Then, modify your script to add the project ID within the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options):
+
+```js
+export const options = {
+    ext: {
+        loadimpact: {
+            projectID: 3479144,
+        },
+    },
+};
+```
+
+When you [run the script in the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), the results will be saved within the k6 Cloud project you specified.
