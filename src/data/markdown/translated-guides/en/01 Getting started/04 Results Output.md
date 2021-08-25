@@ -107,26 +107,37 @@ Instead, starting with k6 v0.30.0, the use of the [`handleSummary()` callback](/
 
 ## External outputs
 
-If the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is insufficient, k6 can send more granular result data to different external outputs, to integrate and visualize k6 metrics on other platforms.
+If the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is insufficient, you can integrate and visualize k6 metrics on other platforms. Use the `--out` flag to send more granular result data to an external output.
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --out statsd script.js
+```
+
+</CodeGroup>
 
 The available built-in outputs currently are:
 
-| Output                                                        | Usage                   |
-| ------------------------------------------------------------- | ----------------------- |
-| [Amazon CloudWatch](/results-visualization/amazon-cloudwatch) | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`   |
-| [Apache Kafka](/results-visualization/apache-kafka)<sup>deprecated</sup>           | `k6 run --out kafka`    |
-| [Cloud](/results-visualization/cloud)                         | `k6 run --out cloud`    |
-| [CSV](/results-visualization/csv)                             | `k6 run --out csv`      |
-| [Datadog](/results-visualization/datadog)                     | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`  |
-| [InfluxDB](/results-visualization/influxdb-+-grafana)         | `k6 run --out influxdb` |
-| [JSON](/results-visualization/json)                           | `k6 run --out json`     |
-| [Netdata](/results-visualization/netdata)                     | `k6 run --out statsd`   |
-| [New Relic](/results-visualization/new-relic)                 | `K6_STATSD_ENABLE_TAGS=true k6 run --out statsd`   |
-| [StatsD](/results-visualization/statsd)                       | `k6 run --out statsd`   |
+<Glossary>
+
+  - [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)
+  - [Apache Kafka](/results-visualization/apache-kafka)<sup>deprecated</sup>
+  - [Cloud](/results-visualization/cloud)
+  - [CSV](/results-visualization/csv)
+  - [Datadog](/results-visualization/datadog)
+  - [Grafana Cloud / Prometheus](/results-visualization/grafana-cloud)
+  - [InfluxDB](/results-visualization/influxdb-+-grafana)
+  - [JSON](/results-visualization/json)
+  - [Netdata](/results-visualization/netdata)
+  - [New Relic](/results-visualization/new-relic)
+  - [StatsD](/results-visualization/statsd) 
+
+</Glossary>
 
 ### Multiple outputs
 
-You can simultaneously send metrics to several outputs by using the CLI `--out` flag multiple times, for example:
+You can also send metrics simultaneously to several outputs, using the CLI `--out` flag multiple times.
 
 <CodeGroup labels={[]}>
 

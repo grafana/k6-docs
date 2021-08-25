@@ -99,23 +99,35 @@ $ k6 run --summary-trend-stats="avg,p(99)" script.js
 ## Plugins de salida
 
 k6 puede enviar datos de resultados más granulares a diferentes salidas para integrar y visualizar las métricas de k6 en otras plataformas.
+
+<CodeGroup labels={[]}>
+
+```bash
+$ k6 run --out statsd script.js
+```
+
+</CodeGroup>
+
 La lista de plugins de salida son los siguientes:
 
+<Glossary>
 
-| Plugin                                                        | Usage                   |
-| ------------------------------------------------------------- | ----------------------- |
-| [Amazon CloudWatch](/es/visualizacion-de-resultados/amazon-cloudwatch/) | `k6 run --out statsd`   |
-| [Apache Kafka](/es/visualizacion-de-resultados/apache-kafka/)           | `k6 run --out kafka`    |
-| [Cloud](/es/visualizacion-de-resultados/cloud/)                         | `k6 run --out cloud`    |
-| [CSV](/es/visualizacion-de-resultados/csv/)                             | `k6 run --out csv`      |
-| [Datadog](/es/visualizacion-de-resultados/datadog/)                     | `k6 run --out datadog`  |
-| [InfluxDB](/es/visualizacion-de-resultados/influxdb-+-grafana/)         | `k6 run --out influxdb` |
-| [JSON](/es/visualizacion-de-resultados/json/)                           | `k6 run --out json`     |
-| [Netdata](/es/visualizacion-de-resultados/netdata)                     | `k6 run --out statsd`   |
-| [New Relic](/es/visualizacion-de-resultados/new-relic/)                 | `k6 run --out statsd`   |
-| [StatsD](/es/visualizacion-de-resultados/statsd/)                       | `k6 run --out statsd`   |
+  - [Amazon CloudWatch](/es/visualizacion-de-resultados/amazon-cloudwatch)
+  - [Apache Kafka](/es/visualizacion-de-resultados/apache-kafka)<sup>deprecated</sup>
+  - [Cloud](/es/visualizacion-de-resultados/cloud)
+  - [CSV](/es/visualizacion-de-resultados/csv)
+  - [Datadog](/es/visualizacion-de-resultados/datadog)
+  - [Grafana Cloud / Prometheus](/es/visualizacion-de-resultados/grafana-cloud)
+  - [InfluxDB](/es/visualizacion-de-resultados/influxdb-+-grafana)
+  - [JSON](/es/visualizacion-de-resultados/json)
+  - [Netdata](/es/visualizacion-de-resultados/netdata)
+  - [New Relic](/es/visualizacion-de-resultados/new-relic)
+  - [StatsD](/es/visualizacion-de-resultados/statsd) 
 
-## Salidas múltiples
+</Glossary>
+
+
+### Salidas múltiples
 
 Puede enviar simultáneamente métricas a varias salidas utilizando el indicador CLI `--out` varias veces, por ejemplo:
 
