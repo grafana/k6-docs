@@ -12,7 +12,7 @@ With the Prometheus integration, you can:
 - Correlate testing results with other system metrics collected with Prometheus.
 
 
-We currently offer similar integrations with cloud APM solutions: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor/), [DataDog](/cloud/integrations/cloud-apm/datadog/), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud/), and [New Relic](/cloud/integrations/cloud-apm/new-relic/). If you use any of these solutions, we recommend starting to integrate your APM solution first.
+We currently offer similar integrations with Cloud APM solutions: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor/), [DataDog](/cloud/integrations/cloud-apm/datadog/), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud/), and [New Relic](/cloud/integrations/cloud-apm/new-relic/). If you use any of these solutions, we recommend starting to integrate your APM solution first.
 
 
 
