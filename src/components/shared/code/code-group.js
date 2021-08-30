@@ -37,7 +37,7 @@ const CodeGroup = ({
               showLineNumbers={lineNumbers[i]}
               key={i}
               showHeightToggler={heightTogglers[i]}
-              showCopyButton={showCopyButton}
+              showCopyButton={showCopyButton[i]}
             >
               {child.props.children}
             </Code>
@@ -53,7 +53,7 @@ CodeGroup.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string),
   lineNumbers: PropTypes.arrayOf(PropTypes.bool),
   heightTogglers: PropTypes.arrayOf(PropTypes.bool),
-  showCopyButton: PropTypes.bool,
+  showCopyButton: PropTypes.arrayOf(PropTypes.bool),
 };
 
 CodeGroup.defaultProps = {
@@ -61,7 +61,7 @@ CodeGroup.defaultProps = {
   labels: [],
   lineNumbers: [],
   heightTogglers: [],
-  showCopyButton: true,
+  showCopyButton: [],
 };
 
 export default CodeGroup;
