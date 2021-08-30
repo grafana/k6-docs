@@ -8,9 +8,9 @@ Mimics [jquery.contents](https://api.jquery.com/contents/).
 
 ### Returns
 
-| Type                                           | Description |
-| ---------------------------------------------- | ----------- |
-| [Selection](/javascript-api/v0-31/k6-html/selection) | Selection.  |
+| Type                                                 | Description |
+| ---------------------------------------------------- | ----------- |
+| [Selection](/javascript-api/v0.31/k6-html/selection) | Selection.  |
 
 ### Example
 

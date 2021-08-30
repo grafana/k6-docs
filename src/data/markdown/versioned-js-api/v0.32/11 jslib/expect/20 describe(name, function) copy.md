@@ -4,27 +4,23 @@ description: 'Entry point for creating test cases.'
 excerpt: 'Entry point for creating test cases.'
 ---
 
-
-To declare a new test case you call the `describe(name, function)` function. Provide the required name and implementation function. 
-Names should be unique within the script, otherwise, the test cases will to be grouped. 
+To declare a new test case you call the `describe(name, function)` function. Provide the required name and implementation function.
+Names should be unique within the script, otherwise, the test cases will to be grouped.
 
 Note: The first argument of the implementation function should be named `t`.
 
-Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/v0-32/k6/group-name-fn). 
+Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/v0.32/k6/group-name-fn).
 
-
-
-| Parameter      | Type   | Description                                                                          |
-| -------------- | ------ | ------------------------------------------------------------------------------------ |
-| name  | string    | Test case name |
-| function  | function    | The function to be executed |
-
+| Parameter | Type     | Description                 |
+| --------- | -------- | --------------------------- |
+| name      | string   | Test case name              |
+| function  | function | The function to be executed |
 
 ### Returns
 
-| Type    | Description                     |
-| ------- | ------------------------------- |
-| bool    | Returns true when all `expect` and `and` conditions within the `describe()` body were successful, and no unhandled exceptions were raised, otherwise false. |
+| Type | Description                                                                                                                                                 |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bool | Returns true when all `expect` and `and` conditions within the `describe()` body were successful, and no unhandled exceptions were raised, otherwise false. |
 
 ### Example
 
@@ -35,15 +31,14 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-
   let success1 = describe('Basic test', (t) => {
-    t.expect(1).toEqual(1)
-  })
+    t.expect(1).toEqual(1);
+  });
 
   console.log(success1); // true
 
   let success2 = describe('Another test', (t) => {
-    throw("Something entirely unexpected happened");
+    throw 'Something entirely unexpected happened';
   });
 
   console.log(success2); // false
@@ -53,7 +48,6 @@ export default function testSuite() {
   });
 
   console.log(success3); // false
-
 }
 ```
 
@@ -61,6 +55,4 @@ export default function testSuite() {
 
 Execution of this script should print the following output.
 
-
 ![output](./images/test-output.png)
-

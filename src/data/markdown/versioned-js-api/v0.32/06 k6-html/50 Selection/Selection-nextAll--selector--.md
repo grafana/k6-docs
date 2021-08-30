@@ -12,9 +12,9 @@ Mimics [jquery.nextAll](https://api.jquery.com/nextAll/).
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/v0-32/k6-html/selection) | A Selection. |
+| Type                                                 | Description  |
+| ---------------------------------------------------- | ------------ |
+| [Selection](/javascript-api/v0.32/k6-html/selection) | A Selection. |
 
 ### Example
 

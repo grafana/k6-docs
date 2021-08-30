@@ -6,16 +6,16 @@ excerpt: 'Get the ancestors of each element in the current set of matched elemen
 Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.
 Mimics [jquery.parentsUntil](https://api.jquery.com/parentsUntil/)
 
-| Parameter           | Type                                                               | Description                                                |
-| ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
-| selector (optional) | string \| [Selection](/javascript-api/v0-31/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
-| filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
+| Parameter           | Type                                                                     | Description                                                |
+| ------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| selector (optional) | string \| [Selection](/javascript-api/v0.31/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
+| filter (optional)   | string \| `null`                                                         | A selector expression to filter matched elements.          |
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/v0-31/k6-html/selection) | A Selection. |
+| Type                                                 | Description  |
+| ---------------------------------------------------- | ------------ |
+| [Selection](/javascript-api/v0.31/k6-html/selection) | A Selection. |
 
 ### Example
 

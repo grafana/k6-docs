@@ -6,16 +6,16 @@ excerpt: 'Get all following siblings of each element in the set of matched eleme
 Get all following siblings of each element up to but not including the element matched by the selector.
 Mimics [jquery.nextUntil](https://api.jquery.com/nextUntil/)
 
-| Parameter           | Type                                                               | Description                                                |
-| ------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------- |
-| selector (optional) | string \| [Selection](/javascript-api/v0-31/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
-| filter (optional)   | string \| `null`                                                   | A selector expression to filter matched elements.          |
+| Parameter           | Type                                                                     | Description                                                |
+| ------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| selector (optional) | string \| [Selection](/javascript-api/v0.31/k6-html/selection) \| `null` | A selector expression or object to match elements against. |
+| filter (optional)   | string \| `null`                                                         | A selector expression to filter matched elements.          |
 
 ### Returns
 
-| Type                                           | Description  |
-| ---------------------------------------------- | ------------ |
-| [Selection](/javascript-api/v0-31/k6-html/selection) | A Selection. |
+| Type                                                 | Description  |
+| ---------------------------------------------------- | ------------ |
+| [Selection](/javascript-api/v0.31/k6-html/selection) | A Selection. |
 
 ### Example
 

@@ -3,15 +3,15 @@ title: 'Rate'
 excerpt: 'Rate is an object for representing a custom metric keeping track of the percentage of added values that are non-zero.'
 ---
 
-_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/javascript-api/v0-31/k6-metrics).
+_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/javascript-api/v0.31/k6-metrics).
 
 | Parameter | Type   | Description                    |
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                           | Description                     |
-| -------------------------------------------------------------------------------- | ------------------------------- |
-| [Rate.add(value, [tags])](/javascript-api/v0-31/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
+| Method                                                                                 | Description                     |
+| -------------------------------------------------------------------------------------- | ------------------------------- |
+| [Rate.add(value, [tags])](/javascript-api/v0.31/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
 
 ## Rate usage in Thresholds
 
@@ -32,7 +32,7 @@ import { Rate } from 'k6/metrics';
 
 var myRate = new Rate('my_rate');
 
-export default function() {
+export default function () {
   myRate.add(true);
   myRate.add(false);
   myRate.add(1);
@@ -55,11 +55,11 @@ export let options = {
   vus: 1,
   duration: '5m',
   thresholds: {
-    'errorRate': [
+    errorRate: [
       // more than 10% of errors will abort the test
-      { threshold: 'rate < 0.1', abortOnFail: true, delayAbortEval: '1m' }
-    ]
-  }
+      { threshold: 'rate < 0.1', abortOnFail: true, delayAbortEval: '1m' },
+    ],
+  },
 };
 
 export default function () {

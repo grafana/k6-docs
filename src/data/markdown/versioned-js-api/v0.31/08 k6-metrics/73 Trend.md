@@ -3,16 +3,16 @@ title: 'Trend'
 excerpt: 'Trend is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles)'
 ---
 
-_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [custom metrics](/javascript-api/v0-31/k6-metrics).
+_Trend_ is an object for representing a custom metric that allows for calculating different statistics on the added values (min, max, average or percentiles). It is one of the four [custom metrics](/javascript-api/v0.31/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                            | Description                      |
-| --------------------------------------------------------------------------------- | -------------------------------- |
-| [Trend.add(value, [tags])](/javascript-api/v0-31/k6-metrics/trend/trend-add-value-tags) | Add a value to the trend metric. |
+| Method                                                                                  | Description                      |
+| --------------------------------------------------------------------------------------- | -------------------------------- |
+| [Trend.add(value, [tags])](/javascript-api/v0.31/k6-metrics/trend/trend-add-value-tags) | Add a value to the trend metric. |
 
 ## Trend usage in Thresholds
 
@@ -33,11 +33,10 @@ The unit of these variables and functions are all in milliseconds.
 - `p(50) < 200` // half of requests must finish within 200ms.
 - `max < 3000` // the slowest request must finish within 3s.
 
-
 > #### ⚠️ Don't use `min` and `max` in thresholds
+>
 > We don't recommend using `min` and `max` for specifying thresholds because these
 > values represent outliers. Use percentiles instead.
-
 
 ### Examples
 
@@ -48,7 +47,7 @@ import { Trend } from 'k6/metrics';
 
 var myTrend = new Trend('my_trend');
 
-export default function() {
+export default function () {
   myTrend.add(1);
   myTrend.add(2, { tag1: 'value', tag2: 'value2' });
 }
@@ -69,14 +68,15 @@ export let options = {
   vus: 1,
   duration: '1m',
   thresholds: {
-    'serverWaitingTimeOnLogin': [
-      'p(95) < 200',
-    ],
-  }
+    serverWaitingTimeOnLogin: ['p(95) < 200'],
+  },
 };
 
 export default function () {
-  let resp = http.post('https://test-api.k6.io/auth/token/login/', { username: 'test-user', 'password': 'supersecure' });
+  let resp = http.post('https://test-api.k6.io/auth/token/login/', {
+    username: 'test-user',
+    password: 'supersecure',
+  });
 
   serverWaitingTimeOnLogin.add(resp.timings.waiting);
   sleep(1);

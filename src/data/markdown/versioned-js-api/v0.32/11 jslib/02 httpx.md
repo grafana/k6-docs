@@ -1,52 +1,48 @@
 ---
-title: "httpx"
-excerpt: "httpx is a wrapper library around the native k6 http module"
+title: 'httpx'
+excerpt: 'httpx is a wrapper library around the native k6 http module'
 ---
 
-The `httpx` module is an external JavaScript library that wraps around the native [k6/http](/javascript-api/v0-32/k6-http) module. 
+The `httpx` module is an external JavaScript library that wraps around the native [k6/http](/javascript-api/v0.32/k6-http) module.
 It's a http client with features that are not yet available in the native module.
- - ability to set http options globally (such as timeout)
- - ability to set default tags and headers that will be used for all requests
- - more user-friendly arguments to request functions (get, post, put take the same arguments)
 
-httpx module integrates well with expect library. 
+- ability to set http options globally (such as timeout)
+- ability to set default tags and headers that will be used for all requests
+- more user-friendly arguments to request functions (get, post, put take the same arguments)
 
-> ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-httpx). . 
+httpx module integrates well with expect library.
+
+> ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-httpx). .
 > Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-httpx/issues).
-
 
 <Blockquote mod='info'>
 
 #### This library is in active development
 
-This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io). 
+This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io).
 
 This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
 
 </Blockquote>
 
-
 ### Methods
 
-| Function | Description |
-| -------- | ----------- |
-| [request(method, url, [body], [params])](/javascript-api/v0-32/jslib/httpx/request-method-url-body-params)  | Generic method for making arbitrary HTTP requests. |
-| [get(url, [body], [params])](/javascript-api/v0-32/jslib/httpx/get-url-body-params)  | Makes GET request |
-| [post(url, [body], [params])](/javascript-api/v0-32/jslib/httpx/post-url-body-params)  | Makes POST request |
-| [put(url, [body], [params])](/javascript-api/v0-32/jslib/httpx/put-url-body-params)  | Makes PUT request |
-| [patch(url, [body], [params])](/javascript-api/v0-32/jslib/httpx/patch-url-body-params)  | Makes PATCH request |
-| [delete(url, [body], [params])](/javascript-api/v0-32/jslib/httpx/delete-url-body-params)  | Makes DELETE request |
-| [batch(requests)](/javascript-api/v0-32/jslib/httpx/batch-requests)  | Batch multiple HTTP requests together, to issue them in parallel. |
-| [setBaseUrl(url)](/javascript-api/v0-32/jslib/httpx/setbaseurl-url)  | Sets the base URL for the session |
-| [addHeader(key, value)](/javascript-api/v0-32/jslib/httpx/addheader-key-value)  | Adds a header to the session |
-| [addHeaders(object)](/javascript-api/v0-32/jslib/httpx/addheaders-object)  | Adds multiple headers to the session |
-| [clearHeader(name)](/javascript-api/v0-32/jslib/httpx/clearheader-name)  | Removes header from the session |
-| [addTag(key, value)](/javascript-api/v0-32/jslib/httpx/addtag-key-value)  | Adds a tag to the session |
-| [addTags(object)](/javascript-api/v0-32/jslib/httpx/addtags-object)  | Adds multiple tags to the session |
-| [clearTag(name)](/javascript-api/v0-32/jslib/httpx/cleartag-name)  | Removes tag from the session |
-
-
-
+| Function                                                                                                   | Description                                                       |
+| ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [request(method, url, [body], [params])](/javascript-api/v0.32/jslib/httpx/request-method-url-body-params) | Generic method for making arbitrary HTTP requests.                |
+| [get(url, [body], [params])](/javascript-api/v0.32/jslib/httpx/get-url-body-params)                        | Makes GET request                                                 |
+| [post(url, [body], [params])](/javascript-api/v0.32/jslib/httpx/post-url-body-params)                      | Makes POST request                                                |
+| [put(url, [body], [params])](/javascript-api/v0.32/jslib/httpx/put-url-body-params)                        | Makes PUT request                                                 |
+| [patch(url, [body], [params])](/javascript-api/v0.32/jslib/httpx/patch-url-body-params)                    | Makes PATCH request                                               |
+| [delete(url, [body], [params])](/javascript-api/v0.32/jslib/httpx/delete-url-body-params)                  | Makes DELETE request                                              |
+| [batch(requests)](/javascript-api/v0.32/jslib/httpx/batch-requests)                                        | Batch multiple HTTP requests together, to issue them in parallel. |
+| [setBaseUrl(url)](/javascript-api/v0.32/jslib/httpx/setbaseurl-url)                                        | Sets the base URL for the session                                 |
+| [addHeader(key, value)](/javascript-api/v0.32/jslib/httpx/addheader-key-value)                             | Adds a header to the session                                      |
+| [addHeaders(object)](/javascript-api/v0.32/jslib/httpx/addheaders-object)                                  | Adds multiple headers to the session                              |
+| [clearHeader(name)](/javascript-api/v0.32/jslib/httpx/clearheader-name)                                    | Removes header from the session                                   |
+| [addTag(key, value)](/javascript-api/v0.32/jslib/httpx/addtag-key-value)                                   | Adds a tag to the session                                         |
+| [addTags(object)](/javascript-api/v0.32/jslib/httpx/addtags-object)                                        | Adds multiple tags to the session                                 |
+| [clearTag(name)](/javascript-api/v0.32/jslib/httpx/cleartag-name)                                          | Removes tag from the session                                      |
 
 ### Example
 
@@ -55,22 +51,21 @@ This documentation is for the last version only. If you discover that some of th
 ```javascript
 import { fail } from 'k6';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
-import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
-const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`;  // random email address
+const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // random email address
 const PASSWORD = 'superCroc2021';
 
 let session = new Httpx({
-    baseURL: 'https://test-api.k6.io', 
-    headers: {
-        'User-Agent': "My custom user agent",
-        "Content-Type": 'application/x-www-form-urlencoded' 
-    },
-    timeout: 20000 // 20s timeout.
+  baseURL: 'https://test-api.k6.io',
+  headers: {
+    'User-Agent': 'My custom user agent',
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-
   let registrationResp = session.post(`/user/register/`, {
     first_name: 'Crocodile',
     last_name: 'Owner',
@@ -78,17 +73,17 @@ export default function testSuite() {
     password: PASSWORD,
   });
 
-  if (registrationResp.status !== 201){
-    fail("registration failed")
+  if (registrationResp.status !== 201) {
+    fail('registration failed');
   }
 
   let loginResp = session.post(`/auth/token/login/`, {
     username: USERNAME,
-    password: PASSWORD
+    password: PASSWORD,
   });
 
-  if(loginResp.status !== 200){
-    fail("Authentication failed");
+  if (loginResp.status !== 200) {
+    fail('Authentication failed');
   }
 
   let authToken = loginResp.json('access');
@@ -98,21 +93,19 @@ export default function testSuite() {
 
   let payload = {
     name: `Croc Name`,
-    sex: "M",
+    sex: 'M',
     date_of_birth: '2019-01-01',
   };
 
   // this request uses the Authorization header set above.
   let respCreateCrocodile = session.post(`/my/crocodiles/`, payload);
 
-  if(respCreateCrocodile.status !== 201){
-    fail("Crocodile creation failed");
-  }
-  else{
-    console.log("New crocodile created");
+  if (respCreateCrocodile.status !== 201) {
+    fail('Crocodile creation failed');
+  } else {
+    console.log('New crocodile created');
   }
 }
-
 ```
 
 </CodeGroup>

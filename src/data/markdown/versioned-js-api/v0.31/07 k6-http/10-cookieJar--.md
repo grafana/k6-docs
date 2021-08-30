@@ -1,15 +1,15 @@
 ---
 title: 'cookieJar()'
-slug: '/javascript-api/v0-31/k6-http/cookiejar-method'
+slug: '/javascript-api/v0.31/k6-http/cookiejar-method'
 description: 'Get active HTTP Cookie jar.'
 excerpt: 'Get active HTTP Cookie jar.'
 ---
 
 Get the active cookie jar.
 
-| Type                                           | Description         |
-| ---------------------------------------------- | ------------------- |
-| [CookieJar](/javascript-api/v0-31/k6-http/cookiejar) | A CookieJar object. |
+| Type                                                 | Description         |
+| ---------------------------------------------------- | ------------------- |
+| [CookieJar](/javascript-api/v0.31/k6-http/cookiejar) | A CookieJar object. |
 
 ### Example
 

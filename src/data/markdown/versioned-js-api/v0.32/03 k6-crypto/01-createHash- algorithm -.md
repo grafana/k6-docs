@@ -12,9 +12,9 @@ Creates a hashing object that can then be fed with data repeatedly, and from whi
 
 ### Returns
 
-| Type   | Description                                          |
-| ------ | ---------------------------------------------------- |
-| object | A [Hasher](/javascript-api/v0-32/k6-crypto/hasher) object. |
+| Type   | Description                                                |
+| ------ | ---------------------------------------------------------- |
+| object | A [Hasher](/javascript-api/v0.32/k6-crypto/hasher) object. |
 
 ### Example
 

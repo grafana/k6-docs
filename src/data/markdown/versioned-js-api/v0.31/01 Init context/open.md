@@ -5,11 +5,12 @@ description: 'Opens a file and reads all the contents into memory.'
 excerpt: 'Opens a file and reads all the contents into memory.'
 ---
 
-Opens a file, reading all its contents into memory for use in the script. 
+Opens a file, reading all its contents into memory for use in the script.
 
-> #### Use [SharedArray](/javascript-api/v0-31/k6-data/sharedarray/) for CSV and JSON files
+> #### Use [SharedArray](/javascript-api/v0.31/k6-data/sharedarray/) for CSV and JSON files
+>
 > `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
-> To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/v0-31/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
+> To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/v0.31/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
 
 <blockquote mod='warning'>
 
@@ -23,15 +24,15 @@ See example further down on this page. For more in-depth description see [Runnin
 
 </blockquote>
 
-| Parameter | Type   | Description        |
-| --------- | ------ | ------------------ |
+| Parameter | Type   | Description                                                                                                                                       |
+| --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | filePath  | string | The path to the file, absolute or relative, that will be read into memory. The file will only be loaded once, even when running with several VUs. |
-| mode      | string | By default the contents of the file is read as text, but if you specify `b` the file will be read as binary data instead.   |
+| mode      | string | By default the contents of the file is read as text, but if you specify `b` the file will be read as binary data instead.                         |
 
 ### Returns
 
-| Type           | Description           |
-| -------------- | ----------------------|
+| Type           | Description                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
 | string / Array | The contents of the file, returned as string or array of numbers (if `b` was specified as the mode). |
 
 <CodeGroup labels={["users.json"]}>
@@ -58,12 +59,12 @@ See example further down on this page. For more in-depth description see [Runnin
 <CodeGroup labels={["Loading JSON data with SharedArray to parameterize test"]}>
 
 ```javascript
-import { SharedArray } from "k6/data";
-import { sleep } from "k6";
+import { SharedArray } from 'k6/data';
+import { sleep } from 'k6';
 
-var data = new SharedArray("users", function () {
+var data = new SharedArray('users', function () {
   // here you can open files, and then do additional processing or generate the array with data dynamically
-  var f = JSON.parse(open("./users.json"));
+  var f = JSON.parse(open('./users.json'));
   return f; // f must be an array[]
 });
 

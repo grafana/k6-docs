@@ -8,9 +8,9 @@ Mimics [jquery.first](https://api.jquery.com/first/).
 
 ### Returns
 
-| Type                                           | Description                         |
-| ---------------------------------------------- | ----------------------------------- |
-| [Selection](/javascript-api/v0-32/k6-html/selection) | The first element of the Selection. |
+| Type                                                 | Description                         |
+| ---------------------------------------------------- | ----------------------------------- |
+| [Selection](/javascript-api/v0.32/k6-html/selection) | The first element of the Selection. |
 
 ### Example
 

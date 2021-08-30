@@ -11,20 +11,20 @@ Calling connect will block the VU finalization until the WebSocket connection is
 The following events can close the connection:
 
 - remote host close event.
-- [Socket.close()](/javascript-api/v0-32/k6-ws/socket/socket-close).
+- [Socket.close()](/javascript-api/v0.32/k6-ws/socket/socket-close).
 - k6 VU interruption based on test configuration or CLI commands.
 
-| Parameter | Type     | Description                                                                                                                                                                                                                                                              |
-| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                            |
-| params    | object   | [Params](/javascript-api/v0-32/k6-http/params) object containing additional request parameters.                                                                                                                                                                                |
-| callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](/javascript-api/v0-32/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
+| Parameter | Type     | Description                                                                                                                                                                                                                                                                    |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| url       | string   | Request URL (e.g. "ws://echo.websocket.org").                                                                                                                                                                                                                                  |
+| params    | object   | [Params](/javascript-api/v0.32/k6-http/params) object containing additional request parameters.                                                                                                                                                                                |
+| callback  | function | The callback function that will be called when the WebSocket connection is initiated. A [Socket](/javascript-api/v0.32/k6-ws/socket) object will be passed to the function, and this object can be used to set up callbacks etc when things happen on the WebSocket connection |
 
 ### Returns
 
-| Type                                         | Description           |
-| -------------------------------------------- | --------------------- |
-| [Response](/javascript-api/v0-32/k6-http/response) | HTTP Response object. |
+| Type                                               | Description           |
+| -------------------------------------------------- | --------------------- |
+| [Response](/javascript-api/v0.32/k6-http/response) | HTTP Response object. |
 
 ### Example
 
