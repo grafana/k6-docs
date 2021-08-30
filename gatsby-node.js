@@ -6,6 +6,7 @@ const {
   compose,
   childrenToList,
   stripDirectoryPath,
+  dotifyVersion,
 } = require('./src/utils/utils');
 const {
   SUPPORTED_LOCALES,
@@ -232,7 +233,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: slug || pageSlug,
+        path: slug || dotifyVersion(pageSlug),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -419,7 +420,7 @@ function getTopLevelPagesProps({
     ])
     .concat(
       SUPPORTED_VERSIONS_FOR_BUILD.map((version) => ({
-        path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+        path: `/javascript-api/${version}/`,
         component: Path.resolve(
           `./src/templates/docs/versioned-javascript-api.js`,
         ),
@@ -726,6 +727,7 @@ function getJsAPIVersionedPagesProps({
       };
 
       const pathForBreadcrumbs = compose(dedupePath, unorderify)(path);
+
       let breadcrumbs = buildBreadcrumbs(pathForBreadcrumbs, true);
       breadcrumbs = breadcrumbs.map((item) =>
         SUPPORTED_VERSIONS.includes(item.name)
@@ -749,7 +751,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: pageSlug || '/',
+        path: dotifyVersion(pageSlug) || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
