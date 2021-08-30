@@ -3,13 +3,13 @@ title: 'Response.html()'
 excerpt: 'Parses response as HTML and populate a Selection.'
 ---
 
-Parses response as HTML and populate a [Selection](/v0.32/javascript-api/k6-html/selection) object.
+Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selection) object.
 
 ### Returns
 
-| Type                                                 | Description        |
-| ---------------------------------------------------- | ------------------ |
-| [Selection](/v0.32/javascript-api/k6-html/selection) | A Selection object |
+| Type                                           | Description        |
+| ---------------------------------------------- | ------------------ |
+| [Selection](/javascript-api/k6-html/selection) | A Selection object |
 
 ### Example
 

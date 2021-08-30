@@ -8,13 +8,13 @@ The `utils` module contains number of small utility functions useful in every da
 > ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-utils).
 > Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-utils/issues).
 
-| Function                                                                                              | Description                                      |
-| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [randomIntBetween(min, max)](/v0.32/javascript-api/jslib/utils/randomintbetween-min-max)              | Random integer in a given range                  |
-| [randomItem(array)](/v0.32/javascript-api/jslib/utils/randomitem-array)                               | Random item from a given array                   |
-| [randomString(length)](/v0.32/javascript-api/jslib/utils/randomstring-length)                         | Random string of a given length                  |
-| [uuidv4()](/v0.32/javascript-api/jslib/utils/uuidv4)                                                  | Random UUID v4 in a string representation        |
-| [findBetween(content, left, right)](/v0.32/javascript-api/jslib/utils/findbetween-content-left-right) | Extract a string between two surrounding strings |
+| Function                                                                                        | Description                                      |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [randomIntBetween(min, max)](/javascript-api/jslib/utils/randomintbetween-min-max)              | Random integer in a given range                  |
+| [randomItem(array)](/javascript-api/jslib/utils/randomitem-array)                               | Random item from a given array                   |
+| [randomString(length)](/javascript-api/jslib/utils/randomstring-length)                         | Random string of a given length                  |
+| [uuidv4()](/javascript-api/jslib/utils/uuidv4)                                                  | Random UUID v4 in a string representation        |
+| [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween-content-left-right) | Extract a string between two surrounding strings |
 
 ## Simple example
 

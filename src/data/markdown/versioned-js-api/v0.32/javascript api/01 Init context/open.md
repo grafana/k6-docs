@@ -7,10 +7,10 @@ excerpt: 'Opens a file and reads all the contents into memory.'
 
 Opens a file, reading all its contents into memory for use in the script.
 
-> #### Use [SharedArray](/v0.32/javascript-api/k6-data/sharedarray/) for CSV and JSON files
+> #### Use [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV and JSON files
 >
 > `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
-> To reduce the memory consumption, we strongly advise the usage of [SharedArray](/v0.32/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
+> To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
 
 <blockquote mod='warning'>
 

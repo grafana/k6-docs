@@ -8,6 +8,6 @@ access to a few functions not accessible during main script execution (aka
 "VU context" or "VU code"). For a more detailed description see
 [Running k6](/getting-started/running-k6#section-the-init-context-and-the-default-function).
 
-| Function                                                                          | Description                                          |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| [open( filePath, [mode] )](/v0.31/javascript-api/init-context/open-filepath-mode) | Opens a file and reads all the contents into memory. |
+| Function                                                                    | Description                                          |
+| --------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [open( filePath, [mode] )](/javascript-api/init-context/open-filepath-mode) | Opens a file and reads all the contents into memory. |

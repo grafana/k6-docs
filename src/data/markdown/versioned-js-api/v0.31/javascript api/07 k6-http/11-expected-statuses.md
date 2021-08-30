@@ -6,7 +6,7 @@ excerpt: 'generates a responseCallback to check status codes'
 
 > ### 🎉 New in v0.31.0
 
-Returns a callback to be used with [setResponseCallback](/v0.31/javascript-api/k6-http/setresponsecallback-callback) to mark responses as expected based only on their status codes.
+Returns a callback to be used with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback) to mark responses as expected based only on their status codes.
 
 | Parameter | Type            | Description                                                                                                    |
 | --------- | --------------- | -------------------------------------------------------------------------------------------------------------- |

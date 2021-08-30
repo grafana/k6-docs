@@ -13,9 +13,9 @@ Mimics [jquery.next](https://api.jquery.com/next/).
 
 ### Returns
 
-| Type                                                 | Description  |
-| ---------------------------------------------------- | ------------ |
-| [Selection](/v0.31/javascript-api/k6-html/selection) | A Selection. |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
+| [Selection](/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

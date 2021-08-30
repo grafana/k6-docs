@@ -34,4 +34,4 @@ export default function () {
 
 </CodeGroup>
 
-- See also [Socket.send(data)](/v0.32/javascript-api/k6-ws/socket/socket-send-data)
+- See also [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send-data)

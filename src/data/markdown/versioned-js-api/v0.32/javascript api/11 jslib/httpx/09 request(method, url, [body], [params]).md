@@ -7,20 +7,20 @@ excerpt: 'Generic method for making arbitrary HTTP requests'
 
 Generic method for making arbitrary HTTP requests.
 
-Consider using specific methods for making common requests ([get](/v0.32/javascript-api/jslib/httpx/get-url-body-params), [post](/v0.32/javascript-api/jslib/httpx/post-url-body-params), [put](/v0.32/javascript-api/jslib/httpx/put-url-body-params), [patch](/v0.32/javascript-api/jslib/httpx/patch-url-body-params))
+Consider using specific methods for making common requests ([get](/javascript-api/jslib/httpx/get-url-body-params), [post](/javascript-api/jslib/httpx/post-url-body-params), [put](/javascript-api/jslib/httpx/put-url-body-params), [patch](/javascript-api/jslib/httpx/patch-url-body-params))
 
-| Parameter         | Type                                                                                            | Description                                                                                 |
-| ----------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| method            | string                                                                                          | HTTP method. Note, the method must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc) |
-| url               | string                                                                                          | HTTP URL. If baseURL is set, provide only path.                                             |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/v0.32/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.      |
-| params (optional) | null or object {}                                                                               | Additional [parameters](/v0.32/javascript-api/k6-http/params) for this specific request.    |
+| Parameter         | Type                                                                                      | Description                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| method            | string                                                                                    | HTTP method. Note, the method must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc) |
+| url               | string                                                                                    | HTTP URL. If baseURL is set, provide only path.                                             |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.      |
+| params (optional) | null or object {}                                                                         | Additional [parameters](/javascript-api/k6-http/params) for this specific request.          |
 
 ### Returns
 
-| Type                                               | Description                                                     |
-| -------------------------------------------------- | --------------------------------------------------------------- |
-| [Response](/v0.32/javascript-api/k6-http/response) | HTTP [Response](/v0.32/javascript-api/k6-http/response) object. |
+| Type                                         | Description                                               |
+| -------------------------------------------- | --------------------------------------------------------- |
+| [Response](/javascript-api/k6-http/response) | HTTP [Response](/javascript-api/k6-http/response) object. |
 
 ### Example
 

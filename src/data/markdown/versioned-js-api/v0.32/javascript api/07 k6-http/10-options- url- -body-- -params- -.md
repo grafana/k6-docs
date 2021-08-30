@@ -4,17 +4,17 @@ description: 'Issue an HTTP OPTIONS request.'
 excerpt: 'Issue an HTTP OPTIONS request.'
 ---
 
-| Parameter         | Type                          | Description                                                                                     |
-| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------- |
-| url               | string                        | Request URL (e.g. `http://example.com`).                                                        |
-| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                          |
-| params (optional) | object                        | [Params](/v0.32/javascript-api/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type                          | Description                                                                               |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| url               | string                        | Request URL (e.g. `http://example.com`).                                                  |
+| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                    |
+| params (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
-| Type     | Description                                                     |
-| -------- | --------------------------------------------------------------- |
-| Response | HTTP [Response](/v0.32/javascript-api/k6-http/response) object. |
+| Type     | Description                                               |
+| -------- | --------------------------------------------------------- |
+| Response | HTTP [Response](/javascript-api/k6-http/response) object. |
 
 ### Example
 
