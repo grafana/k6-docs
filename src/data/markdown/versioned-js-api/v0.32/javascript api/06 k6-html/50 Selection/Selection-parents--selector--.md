@@ -12,9 +12,9 @@ Mimics [jquery.parents](https://api.jquery.com/parents/).
 
 ### Returns
 
-| Type                                                 | Description  |
-| ---------------------------------------------------- | ------------ |
-| [Selection](/v0.32/javascript-api/k6-html/selection) | A Selection. |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
+| [Selection](/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

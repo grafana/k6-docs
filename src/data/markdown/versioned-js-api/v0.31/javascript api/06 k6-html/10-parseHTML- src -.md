@@ -4,7 +4,7 @@ description: 'Parse an HTML string and populate a Selection object.'
 excerpt: 'Parse an HTML string and populate a Selection object.'
 ---
 
-Parse an HTML string and populate a [Selection](/v0.31/javascript-api/k6-html/selection) object.
+Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selection) object.
 
 | Parameter | Type   | Description  |
 | --------- | ------ | ------------ |
@@ -12,9 +12,9 @@ Parse an HTML string and populate a [Selection](/v0.31/javascript-api/k6-html/se
 
 ### Returns
 
-| Type                                                 | Description         |
-| ---------------------------------------------------- | ------------------- |
-| [Selection](/v0.31/javascript-api/k6-html/selection) | A Selection object. |
+| Type                                           | Description         |
+| ---------------------------------------------- | ------------------- |
+| [Selection](/javascript-api/k6-html/selection) | A Selection object. |
 
 ### Example
 

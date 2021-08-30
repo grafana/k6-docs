@@ -6,11 +6,11 @@ excerpt: 'findBetween function'
 
 Function that returns a string from between two other strings.
 
-| Parameter | Type   | Description                                                                                                    |
-| --------- | ------ | -------------------------------------------------------------------------------------------------------------- |
-| content   | string | The string to search through (e.g. [Response.body](https://k6.io/docs/v0.32/javascript-api/k6-http/response/)) |
-| left      | string | The string immediately before the value to be extracted                                                        |
-| right     | string | The string immediately after the value to be extracted                                                         |
+| Parameter | Type   | Description                                                                                              |
+| --------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| content   | string | The string to search through (e.g. [Response.body](https://k6.io/docs/javascript-api/k6-http/response/)) |
+| left      | string | The string immediately before the value to be extracted                                                  |
+| right     | string | The string immediately after the value to be extracted                                                   |
 
 ### Returns
 

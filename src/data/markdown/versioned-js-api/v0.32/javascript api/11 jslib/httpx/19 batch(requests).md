@@ -14,9 +14,9 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 
 ### Returns
 
-| Type  | Description                                                                     |
-| ----- | ------------------------------------------------------------------------------- |
-| array | An array containing [Response](/v0.32/javascript-api/k6-http/response) objects. |
+| Type  | Description                                                               |
+| ----- | ------------------------------------------------------------------------- |
+| array | An array containing [Response](/javascript-api/k6-http/response) objects. |
 
 ### Example
 

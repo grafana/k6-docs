@@ -5,28 +5,28 @@ excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 
 `Socket` is a WebSocket client to interact with a WebSocket connection. You can use it to listen various events happening on the WebSocket connection and send messages to the server. Additionally, you can use socket.setTimeout() and socket.setInterval() to execute code in the background, or repeatedly, while the WebSocket connection is open.
 
-| Method                                                                                                            | Description                                                                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Socket.close()](/v0.32/javascript-api/k6-ws/socket/socket-close)                                                 | Close the WebSocket connection.                                                                                                                                                |
-| [Socket.on(event, callback)](/v0.32/javascript-api/k6-ws/socket/socket-on-event-callback)                         | Set up an event listener on the connection for any of the following events:<br />- open<br />- binaryMessage<br />- message<br />- ping<br />- pong<br />- close<br />- error. |
-| [Socket.ping()](/v0.32/javascript-api/k6-ws/socket/socket-ping)                                                   | Send a ping.                                                                                                                                                                   |
-| [Socket.send(data)](/v0.32/javascript-api/k6-ws/socket/socket-send-data)                                          | Send string data.                                                                                                                                                              |
-| [Socket.sendBinary(data)](/v0.32/javascript-api/k6-ws/socket/socket-sendbinary-data)                              | Send binary data.                                                                                                                                                              |
-| [Socket.setInterval(callback, interval)](/v0.32/javascript-api/k6-ws/socket/socket-setinterval-callback-interval) | Call a function repeatedly at certain intervals, while the connection is open.                                                                                                 |
-| [Socket.setTimeout(callback, period)](/v0.32/javascript-api/k6-ws/socket/socket-settimeout-callback-delay)        | Call a function with a delay, if the connection is open.                                                                                                                       |
+| Method                                                                                                      | Description                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Socket.close()](/javascript-api/k6-ws/socket/socket-close)                                                 | Close the WebSocket connection.                                                                                                                                                |
+| [Socket.on(event, callback)](/javascript-api/k6-ws/socket/socket-on-event-callback)                         | Set up an event listener on the connection for any of the following events:<br />- open<br />- binaryMessage<br />- message<br />- ping<br />- pong<br />- close<br />- error. |
+| [Socket.ping()](/javascript-api/k6-ws/socket/socket-ping)                                                   | Send a ping.                                                                                                                                                                   |
+| [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send-data)                                          | Send string data.                                                                                                                                                              |
+| [Socket.sendBinary(data)](/javascript-api/k6-ws/socket/socket-sendbinary-data)                              | Send binary data.                                                                                                                                                              |
+| [Socket.setInterval(callback, interval)](/javascript-api/k6-ws/socket/socket-setinterval-callback-interval) | Call a function repeatedly at certain intervals, while the connection is open.                                                                                                 |
+| [Socket.setTimeout(callback, period)](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay)        | Call a function with a delay, if the connection is open.                                                                                                                       |
 
 ### WebSocket built-in metrics
 
 `k6` will automatically collect some metrics when interacting with a WebSocket service through the `k6/ws` API.
 
-| Metric name         | Type    | Description                                                                                                                      |
-| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| ws_connecting       | Trend   | Total duration for the WebSocket connection request.                                                                             |
-| ws_session_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution.                     |
-| ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                                      |
-| ws_ping             | Trend   | Duration between a ping request and its pong reception                                                                           |
-| ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/v0.32/javascript-api/k6-ws/socket/socket-send-data)                   |
-| ws_msgs_received    | Counter | Total number of received messages [Socket.on('message', callback)](/v0.32/javascript-api/k6-ws/socket/socket-on-event-callback). |
+| Metric name         | Type    | Description                                                                                                                |
+| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
+| ws_connecting       | Trend   | Total duration for the WebSocket connection request.                                                                       |
+| ws_session_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution.               |
+| ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                                |
+| ws_ping             | Trend   | Duration between a ping request and its pong reception                                                                     |
+| ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send-data)                   |
+| ws_msgs_received    | Counter | Total number of received messages [Socket.on('message', callback)](/javascript-api/k6-ws/socket/socket-on-event-callback). |
 
 Check out the [Results output article](/getting-started/results-output) for more information about how to process the metric information.
 

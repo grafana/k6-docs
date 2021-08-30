@@ -3,7 +3,7 @@ title: 'Constants'
 excerpt: 'Define constants to distinguish between gRPC Response'
 ---
 
-Define constants to distinguish between [gRPC Response](/v0.32/javascript-api/k6-net-grpc/response) statuses.
+Define constants to distinguish between [gRPC Response](/javascript-api/k6-net-grpc/response) statuses.
 
 | Constant                   | Description                                                                                                                                                                                                                  |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

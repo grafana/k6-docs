@@ -17,15 +17,15 @@ Due to implementation specifics:
 - Requests with authentication `digest` are always expected to first get 401 and then to get whatever was specified.
 - Requests with authentication `ntlm` will let a 401 status code on the first request as well as anything defined by `expectedStatuses`
 
-| Parameter | Type                                                                        | Description                                                                                         |
-| --------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| callback  | [expectedStatuses](/v0.32/javascript-api/k6-http/expectedstatuses-statuses) | an object returned from [expectedStatuses](/v0.32/javascript-api/k6-http/expectedstatuses-statuses) |
+| Parameter | Type                                                                  | Description                                                                                   |
+| --------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| callback  | [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) | an object returned from [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) |
 
-Currently only the very special [expectedStatuses](/v0.32/javascript-api/k6-http/expectedstatuses-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
+Currently only the very special [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
 
 Setting the callback to `null` disables the tagging with `expected_response` and the emitting of `http_req_failed`, effectively reverting to the behaviour prior to v0.31.0.
 
-It is recommended that if a per request responseCallback is used with [Params](/v0.32/javascript-api/k6-http/params) it is actually defined once and used instead of creating it on each request.
+It is recommended that if a per request responseCallback is used with [Params](/javascript-api/k6-http/params) it is actually defined once and used instead of creating it on each request.
 
 ### Example
 

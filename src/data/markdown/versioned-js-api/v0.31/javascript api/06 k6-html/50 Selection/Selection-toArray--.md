@@ -8,9 +8,9 @@ Mimics [jquery.toArray](https://api.jquery.com/toArray/).
 
 ### Returns
 
-| Type                                                          | Description                 |
-| ------------------------------------------------------------- | --------------------------- |
-| Array of [Selection](/v0.31/javascript-api/k6-html/selection) | Array of Selection objects. |
+| Type                                                    | Description                 |
+| ------------------------------------------------------- | --------------------------- |
+| Array of [Selection](/javascript-api/k6-html/selection) | Array of Selection objects. |
 
 ### Example
 

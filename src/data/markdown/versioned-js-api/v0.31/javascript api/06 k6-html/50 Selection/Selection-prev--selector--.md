@@ -12,9 +12,9 @@ Mimics [jquery.prev](https://api.jquery.com/prev/).
 
 ### Returns
 
-| Type                                                 | Description  |
-| ---------------------------------------------------- | ------------ |
-| [Selection](/v0.31/javascript-api/k6-html/selection) | A Selection. |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
+| [Selection](/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

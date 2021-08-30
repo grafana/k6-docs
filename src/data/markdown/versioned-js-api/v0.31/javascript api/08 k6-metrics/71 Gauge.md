@@ -3,16 +3,16 @@ title: 'Gauge'
 excerpt: 'Gauge is an object for representing a custom metric holding only the latest value added.'
 ---
 
-_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/v0.31/javascript-api/k6-metrics).
+_Gauge_ is an object for representing a custom metric holding only the latest value added. It is one of the four [custom metrics](/javascript-api/k6-metrics).
 
 | Parameter | Type    | Description                                                                                         |
 | --------- | ------- | --------------------------------------------------------------------------------------------------- |
 | `name`    | string  | The name of the custom metric.                                                                      |
 | `isTime`  | boolean | A boolean indicating whether the values added to the metric are time values or just untyped values. |
 
-| Method                                                                                  | Description                                                                |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [Gauge.add(value, [tags])](/v0.31/javascript-api/k6-metrics/gauge/gauge-add-value-tags) | Add a value to the gauge metric. Only the latest value added will be kept. |
+| Method                                                                            | Description                                                                |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [Gauge.add(value, [tags])](/javascript-api/k6-metrics/gauge/gauge-add-value-tags) | Add a value to the gauge metric. Only the latest value added will be kept. |
 
 ## Gauge usage in Thresholds
 

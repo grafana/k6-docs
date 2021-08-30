@@ -13,9 +13,9 @@ Creates a HMAC hashing object that can then be fed with data repeatedly, and fro
 
 ### Returns
 
-| Type   | Description                                                |
-| ------ | :--------------------------------------------------------- |
-| object | A [Hasher](/v0.32/javascript-api/k6-crypto/hasher) object. |
+| Type   | Description                                          |
+| ------ | :--------------------------------------------------- |
+| object | A [Hasher](/javascript-api/k6-crypto/hasher) object. |
 
 ### Example
 

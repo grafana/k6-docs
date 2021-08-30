@@ -9,9 +9,9 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                                        | Description                        |
-| --------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [Counter.add(value, [tags])](/v0.32/javascript-api/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
+| Method                                                                                  | Description                        |
+| --------------------------------------------------------------------------------------- | ---------------------------------- |
+| [Counter.add(value, [tags])](/javascript-api/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
 

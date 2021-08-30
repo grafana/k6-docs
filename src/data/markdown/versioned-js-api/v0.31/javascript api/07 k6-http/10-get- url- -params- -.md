@@ -6,16 +6,16 @@ excerpt: 'Issue an HTTP GET request.'
 
 Make a GET request.
 
-| Parameter         | Type   | Description                                                                                     |
-| ----------------- | ------ | ----------------------------------------------------------------------------------------------- |
-| url               | string | Request URL (e.g. `http://example.com`).                                                        |
-| params (optional) | object | [Params](/v0.31/javascript-api/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type   | Description                                                                               |
+| ----------------- | ------ | ----------------------------------------------------------------------------------------- |
+| url               | string | Request URL (e.g. `http://example.com`).                                                  |
+| params (optional) | object | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
-| Type                                               | Description           |
-| -------------------------------------------------- | --------------------- |
-| [Response](/v0.31/javascript-api/k6-http/response) | HTTP Response object. |
+| Type                                         | Description           |
+| -------------------------------------------- | --------------------- |
+| [Response](/javascript-api/k6-http/response) | HTTP Response object. |
 
 ### Example fetching a URL
 

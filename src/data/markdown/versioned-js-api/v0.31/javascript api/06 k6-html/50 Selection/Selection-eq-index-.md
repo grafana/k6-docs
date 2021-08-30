@@ -12,9 +12,9 @@ Mimics [jquery.eq](https://api.jquery.com/eq/).
 
 ### Returns
 
-| Type                                                 | Description  |
-| ---------------------------------------------------- | ------------ |
-| [Selection](/v0.31/javascript-api/k6-html/selection) | A Selection. |
+| Type                                           | Description  |
+| ---------------------------------------------- | ------------ |
+| [Selection](/javascript-api/k6-html/selection) | A Selection. |
 
 ### Example
 

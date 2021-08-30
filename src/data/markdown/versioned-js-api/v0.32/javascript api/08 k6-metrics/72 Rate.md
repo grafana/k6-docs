@@ -3,15 +3,15 @@ title: 'Rate'
 excerpt: 'Rate is an object for representing a custom metric keeping track of the percentage of added values that are non-zero.'
 ---
 
-_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/v0.32/javascript-api/k6-metrics).
+_Rate_ is an object for representing a custom metric keeping track of the percentage of added values that are non-zero. It is one of the four [custom metrics](/javascript-api/k6-metrics).
 
 | Parameter | Type   | Description                    |
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                                 | Description                     |
-| -------------------------------------------------------------------------------------- | ------------------------------- |
-| [Rate.add(value, [tags])](/v0.32/javascript-api/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
+| Method                                                                           | Description                     |
+| -------------------------------------------------------------------------------- | ------------------------------- |
+| [Rate.add(value, [tags])](/javascript-api/k6-metrics/rate/rate-add-value-tags) ] | Add a value to the rate metric. |
 
 ## Rate usage in Thresholds
 

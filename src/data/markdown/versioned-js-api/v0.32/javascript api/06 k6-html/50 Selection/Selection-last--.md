@@ -8,9 +8,9 @@ Mimics [jquery.last](https://api.jquery.com/last/).
 
 ### Returns
 
-| Type                                                 | Description                         |
-| ---------------------------------------------------- | ----------------------------------- |
-| [Selection](/v0.32/javascript-api/k6-html/selection) | The final element of the Selection. |
+| Type                                           | Description                         |
+| ---------------------------------------------- | ----------------------------------- |
+| [Selection](/javascript-api/k6-html/selection) | The final element of the Selection. |
 
 ### Example
 

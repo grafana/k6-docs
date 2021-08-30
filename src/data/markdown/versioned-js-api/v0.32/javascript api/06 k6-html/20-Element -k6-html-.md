@@ -4,54 +4,54 @@ description: 'An HTML DOM element as returned by the Selection API.'
 excerpt: 'An HTML DOM element as returned by the Selection API.'
 ---
 
-Represents a DOM element matched by a [Selection](/v0.32/javascript-api/k6-html/selection),
+Represents a DOM element matched by a [Selection](/javascript-api/k6-html/selection),
 and provides an API to inspect the element content.
 
-Use [Selection.get(index)](/v0.32/javascript-api/k6-html/selection/selection-get-index) to return an Element object.
+Use [Selection.get(index)](/javascript-api/k6-html/selection/selection-get-index) to return an Element object.
 
 The Element object provides a similar API to the [DOM Element API](https://developer.mozilla.org/en-US/Web/API/Element) to retrieve element information.
 
-| Method                 | Description                                                                                                                            |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| nodeName               | The name of the element.                                                                                                               |
-| nodeType               | The type of the element.                                                                                                               |
-| nodeValue              | The element value.                                                                                                                     |
-| id                     | The id of the element.                                                                                                                 |
-| innerHTML              | Is a DOMString representing the markup of the element's content.                                                                       |
-| textContent            | The element content.                                                                                                                   |
-| ownerDocument          | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| attributes             | An array of attributes.                                                                                                                |
-| firstChild             | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| lastChild              | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| childElementCount      | The number of children elements.                                                                                                       |
-| firstElementChild      | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| lastElementChild       | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| previousSibling        | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| nextSibling            | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| previousElementSibling | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| nextElementSibling     | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| parentElement          | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| parentNode             | [Element](/v0.32/javascript-api/k6-html/element)                                                                                       |
-| childNodes             | Array of [Element](/v0.32/javascript-api/k6-html/element)                                                                              |
-| children               | Array of [Element](/v0.32/javascript-api/k6-html/element)                                                                              |
-| classList              | An array of class names.                                                                                                               |
-| className              | The class name string                                                                                                                  |
-| lang                   | The value of the lang attribute.                                                                                                       |
-| toString               | The element string representation.                                                                                                     |
-| hasAttribute           | Boolean                                                                                                                                |
-| getAttribute           | getAttributeNode                                                                                                                       |
-| hasAttributes          | Boolean                                                                                                                                |
-| hasChildNodes          | Boolean                                                                                                                                |
-| isSameNode             | Boolean                                                                                                                                |
-| isEqualNode            | Boolean                                                                                                                                |
-| getElementsByClassName | Return an array of [Element](/v0.32/javascript-api/k6-html/element).                                                                   |
-| getElementsByTagName   | Return an array of [Element](/v0.32/javascript-api/k6-html/element).                                                                   |
-| querySelector          | Returns the first [Element](/v0.32/javascript-api/k6-html/element) which matches the specified selector string relative to the element |
-| querySelectorAll       | Returns all the [Element](/v0.32/javascript-api/k6-html/element) which matches the specified selector string relative to the element   |
-| contains               |                                                                                                                                        |
-| matches                | Returns a Boolean indicating whether or not the element would be selected by the specified selector string                             |
-| namespaceURI           | The namespace URI of the element.                                                                                                      |
-| isDefaultNamespace     | Returns a Boolean indicating whether the element has the default namespace.                                                            |
+| Method                 | Description                                                                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| nodeName               | The name of the element.                                                                                                         |
+| nodeType               | The type of the element.                                                                                                         |
+| nodeValue              | The element value.                                                                                                               |
+| id                     | The id of the element.                                                                                                           |
+| innerHTML              | Is a DOMString representing the markup of the element's content.                                                                 |
+| textContent            | The element content.                                                                                                             |
+| ownerDocument          | [Element](/javascript-api/k6-html/element)                                                                                       |
+| attributes             | An array of attributes.                                                                                                          |
+| firstChild             | [Element](/javascript-api/k6-html/element)                                                                                       |
+| lastChild              | [Element](/javascript-api/k6-html/element)                                                                                       |
+| childElementCount      | The number of children elements.                                                                                                 |
+| firstElementChild      | [Element](/javascript-api/k6-html/element)                                                                                       |
+| lastElementChild       | [Element](/javascript-api/k6-html/element)                                                                                       |
+| previousSibling        | [Element](/javascript-api/k6-html/element)                                                                                       |
+| nextSibling            | [Element](/javascript-api/k6-html/element)                                                                                       |
+| previousElementSibling | [Element](/javascript-api/k6-html/element)                                                                                       |
+| nextElementSibling     | [Element](/javascript-api/k6-html/element)                                                                                       |
+| parentElement          | [Element](/javascript-api/k6-html/element)                                                                                       |
+| parentNode             | [Element](/javascript-api/k6-html/element)                                                                                       |
+| childNodes             | Array of [Element](/javascript-api/k6-html/element)                                                                              |
+| children               | Array of [Element](/javascript-api/k6-html/element)                                                                              |
+| classList              | An array of class names.                                                                                                         |
+| className              | The class name string                                                                                                            |
+| lang                   | The value of the lang attribute.                                                                                                 |
+| toString               | The element string representation.                                                                                               |
+| hasAttribute           | Boolean                                                                                                                          |
+| getAttribute           | getAttributeNode                                                                                                                 |
+| hasAttributes          | Boolean                                                                                                                          |
+| hasChildNodes          | Boolean                                                                                                                          |
+| isSameNode             | Boolean                                                                                                                          |
+| isEqualNode            | Boolean                                                                                                                          |
+| getElementsByClassName | Return an array of [Element](/javascript-api/k6-html/element).                                                                   |
+| getElementsByTagName   | Return an array of [Element](/javascript-api/k6-html/element).                                                                   |
+| querySelector          | Returns the first [Element](/javascript-api/k6-html/element) which matches the specified selector string relative to the element |
+| querySelectorAll       | Returns all the [Element](/javascript-api/k6-html/element) which matches the specified selector string relative to the element   |
+| contains               |                                                                                                                                  |
+| matches                | Returns a Boolean indicating whether or not the element would be selected by the specified selector string                       |
+| namespaceURI           | The namespace URI of the element.                                                                                                |
+| isDefaultNamespace     | Returns a Boolean indicating whether the element has the default namespace.                                                      |
 
 Additionally, Element can provide more methods depending on the Element type.
 
