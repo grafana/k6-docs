@@ -312,6 +312,12 @@ Every other language, including languages from list but with grammar or case mis
 
 Let us know if there is necessity to bring highlight support for another language.
 
+#### Copy button
+
+    '<CodeGroup labels={["CLI", "Docker"]} showCopyButton={[false, true]}>'
+
+showCopyButton: whether to show or hide the `copy` button.  Default is true.
+
 #### Line numbers
 
     '{"labels": ["Nice code!", "This one is better", "Oh my.."], "lineNumbers": [true, true, true]}'
