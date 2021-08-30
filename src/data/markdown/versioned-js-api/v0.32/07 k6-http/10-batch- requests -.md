@@ -14,16 +14,16 @@ When each request is specified as an array, the order of the arguments for each 
 
 ### Returns
 
-| Type   | Description                                                                                                                                                                                                                   |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object | An object containing [Response](/javascript-api/v0-32/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is a normal object with string keys when named requests are used (see below). |
+| Type   | Description                                                                                                                                                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| object | An object containing [Response](/javascript-api/v0.32/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is a normal object with string keys when named requests are used (see below). |
 
-| Position | Name              | Type             | Description                                                                                                                 |
-| -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| 1        | method            | string           | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
-| 2        | url               | string           | Mandatory. The URL to request.                                                                                              |
+| Position | Name              | Type                          | Description                                                                                                                 |
+| -------- | ----------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1        | method            | string                        | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
+| 2        | url               | string                        | Mandatory. The URL to request.                                                                                              |
 | 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
-| 4        | params (optional) | object           | [Params](/javascript-api/v0-32/k6-http/params) like auth, custom headers and tags.                                                |
+| 4        | params (optional) | object                        | [Params](/javascript-api/v0.32/k6-http/params) like auth, custom headers and tags.                                          |
 
 ### Example with request as an array
 
@@ -81,7 +81,7 @@ export default function () {
 
 ### Example with request objects
 
-You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/v0-32/k6-http/params) object to the request:
+You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/v0.32/k6-http/params) object to the request:
 
 <CodeGroup labels={[]}>
 

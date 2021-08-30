@@ -12,9 +12,9 @@ Mimics [jquery.closest](https://api.jquery.com/closest/)
 
 ### Returns
 
-| Type                                           | Description |
-| ---------------------------------------------- | ----------- |
-| [Selection](/javascript-api/v0-31/k6-html/selection) | Selection.  |
+| Type                                                 | Description |
+| ---------------------------------------------------- | ----------- |
+| [Selection](/javascript-api/v0.31/k6-html/selection) | Selection.  |
 
 ### Example
 

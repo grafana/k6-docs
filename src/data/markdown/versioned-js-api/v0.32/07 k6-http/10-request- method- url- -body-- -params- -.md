@@ -4,18 +4,18 @@ description: 'Issue any type of HTTP request.'
 excerpt: 'Issue any type of HTTP request.'
 ---
 
-| Parameter         | Type                          | Description                                                                               |
-| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| method            | string                        | Request method (e.g. `POST`). Note, the method must be uppercase.                         |
-| url               | string                        | Request URL (e.g. `http://example.com`).                                                  |
-| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                    |
-| params (optional) | object                        | [Params](/javascript-api/v0-32/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type                          | Description                                                                                     |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------- |
+| method            | string                        | Request method (e.g. `POST`). Note, the method must be uppercase.                               |
+| url               | string                        | Request URL (e.g. `http://example.com`).                                                        |
+| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                          |
+| params (optional) | object                        | [Params](/javascript-api/v0.32/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
-| Type     | Description                                               |
-| -------- | --------------------------------------------------------- |
-| Response | HTTP [Response](/javascript-api/v0-32/k6-http/response) object. |
+| Type     | Description                                                     |
+| -------- | --------------------------------------------------------------- |
+| Response | HTTP [Response](/javascript-api/v0.32/k6-http/response) object. |
 
 ### Example
 
@@ -32,8 +32,9 @@ export default function () {
   let data = { name: 'Bert' };
 
   // Using a JSON string as body
-  let res = http.request('POST', url, JSON.stringify(data),
-                         { headers: { 'Content-Type': 'application/json' } });
+  let res = http.request('POST', url, JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json' },
+  });
   console.log(res.json().json.name); // Bert
 
   // Using an object as body, the headers will automatically include

@@ -9,9 +9,9 @@ _Counter_ is an object for representing a custom cumulative counter metric. It i
 | --------- | ------ | ------------------------------ |
 | `name`    | string | The name of the custom metric. |
 
-| Method                                                                                  | Description                        |
-| --------------------------------------------------------------------------------------- | ---------------------------------- |
-| [Counter.add(value, [tags])](/javascript-api/v0-31/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
+| Method                                                                                        | Description                        |
+| --------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [Counter.add(value, [tags])](/javascript-api/v0.31/k6-metrics/counter/counter-add-value-tags) | Add a value to the counter metric. |
 
 ## Counter usage in Thresholds
 
@@ -30,7 +30,7 @@ import { Counter } from 'k6/metrics';
 
 var myCounter = new Counter('my_counter');
 
-export default function() {
+export default function () {
   myCounter.add(1);
   myCounter.add(2, { tag1: 'myValue', tag2: 'myValue2' });
 }
@@ -41,18 +41,18 @@ export default function() {
 <CodeGroup labels={["Simple Threshold usage"]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
-import { Counter } from "k6/metrics";
+import http from 'k6/http';
+import { Counter } from 'k6/metrics';
 
-let CounterErrors = new Counter("Errors");
+let CounterErrors = new Counter('Errors');
 
-export let options = { thresholds: { "Errors": ["count<100"] } };
+export let options = { thresholds: { Errors: ['count<100'] } };
 
-export default function() {
+export default function () {
   let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  let contentOK = res.json("name") === 'Bert';
+  let contentOK = res.json('name') === 'Bert';
   CounterErrors.add(!contentOK);
-};
+}
 ```
 
 </CodeGroup>
@@ -70,20 +70,23 @@ export let options = {
   vus: 1,
   duration: '1m',
   thresholds: {
-    'error_counter': [
+    error_counter: [
       'count < 10', // 10 or fewer total errors are tolerated
     ],
-    'error_counter{errorType:authError}': [ // Threshold on a sub-metric (tagged values)
+    'error_counter{errorType:authError}': [
+      // Threshold on a sub-metric (tagged values)
       'count <= 2', // max 2 authentication errors are tolerated
-    ]
-  }
+    ],
+  },
 };
 
 export default function () {
-  let auth_resp = http.post('https://test-api.k6.io/auth/token/login/',
-                            {username: 'test-user', 'password': 'supersecure'});
+  let auth_resp = http.post('https://test-api.k6.io/auth/token/login/', {
+    username: 'test-user',
+    password: 'supersecure',
+  });
 
-  if (auth_resp.status >= 400){
+  if (auth_resp.status >= 400) {
     allErrors.add(1, { errorType: 'authError' }); // tagged value creates submetric (useful for making thresholds specific)
   }
 

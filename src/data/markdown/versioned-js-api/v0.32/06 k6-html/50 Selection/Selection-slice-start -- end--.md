@@ -6,17 +6,17 @@ excerpt: 'Reduce the set of matched elements to a subset specified by a range of
 Reduce the set of matched elements to a subset specified by a range of indices.
 Mimics [jquery.slice](https://api.jquery.com/slice/)
 
-| Parameter | Type                                           | Description                                                                            |
-| --------- | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
-| start     | Number                                         | An integer indicating the 0-based position at which the elements begin to be selected. |
-| end       | Number                                         | An integer indicating the 0-based position at which the elements stop being selected.  |
-| selector  | [Selection](/javascript-api/v0-32/k6-html/selection) | A selection.                                                                           |
+| Parameter | Type                                                 | Description                                                                            |
+| --------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| start     | Number                                               | An integer indicating the 0-based position at which the elements begin to be selected. |
+| end       | Number                                               | An integer indicating the 0-based position at which the elements stop being selected.  |
+| selector  | [Selection](/javascript-api/v0.32/k6-html/selection) | A selection.                                                                           |
 
 ### Returns
 
-| Type                                           | Description        |
-| ---------------------------------------------- | ------------------ |
-| [Selection](/javascript-api/v0-32/k6-html/selection) | The new selection. |
+| Type                                                 | Description        |
+| ---------------------------------------------------- | ------------------ |
+| [Selection](/javascript-api/v0.32/k6-html/selection) | The new selection. |
 
 ### Example
 

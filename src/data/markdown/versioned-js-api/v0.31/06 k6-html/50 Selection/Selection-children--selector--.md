@@ -12,9 +12,9 @@ Mimics [jquery.children](https://api.jquery.com/children/)
 
 ### Returns
 
-| Type                                           | Description             |
-| ---------------------------------------------- | ----------------------- |
-| [Selection](/javascript-api/v0-31/k6-html/selection) | The children Selection. |
+| Type                                                 | Description             |
+| ---------------------------------------------------- | ----------------------- |
+| [Selection](/javascript-api/v0.31/k6-html/selection) | The children Selection. |
 
 ### Example
 

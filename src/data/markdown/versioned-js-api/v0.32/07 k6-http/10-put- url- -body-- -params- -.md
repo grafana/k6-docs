@@ -4,17 +4,17 @@ description: 'Issue an HTTP PUT request.'
 excerpt: 'Issue an HTTP PUT request.'
 ---
 
-| Parameter         | Type                          | Description                                                                               |
-| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| url               | string                        | Request URL (e.g. `http://example.com`).                                                  |
-| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                    |
-| params (optional) | object                        | [Params](/javascript-api/v0-32/k6-http/params) object containing additional request parameters. |
+| Parameter         | Type                          | Description                                                                                     |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------- |
+| url               | string                        | Request URL (e.g. `http://example.com`).                                                        |
+| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                          |
+| params (optional) | object                        | [Params](/javascript-api/v0.32/k6-http/params) object containing additional request parameters. |
 
 ### Returns
 
-| Type     | Description                                               |
-| -------- | --------------------------------------------------------- |
-| Response | HTTP [Response](/javascript-api/v0-32/k6-http/response) object. |
+| Type     | Description                                                     |
+| -------- | --------------------------------------------------------------- |
+| Response | HTTP [Response](/javascript-api/v0.32/k6-http/response) object. |
 
 ### Example
 

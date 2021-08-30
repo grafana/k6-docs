@@ -4,17 +4,17 @@ description: 'Issue an HTTP POST request.'
 excerpt: 'Issue an HTTP POST request.'
 ---
 
-| Parameter           | Type                          | Description                                                                              |
-| ------------------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
-| `url`               | string                        | Request URL (e.g. `http://example.com`).                                                 |
-| `body`              | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                   |
-| `params` (optional) | object                        | [Params](/javascript-api/v0-31/k6-http/params) object containing additional request parameters |
+| Parameter           | Type                          | Description                                                                                    |
+| ------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------- |
+| `url`               | string                        | Request URL (e.g. `http://example.com`).                                                       |
+| `body`              | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                         |
+| `params` (optional) | object                        | [Params](/javascript-api/v0.31/k6-http/params) object containing additional request parameters |
 
 ### Returns
 
-| Type       | Description                                               |
-| ---------- | --------------------------------------------------------- |
-| `Response` | HTTP [Response](/javascript-api/v0-31/k6-http/response) object. |
+| Type       | Description                                                     |
+| ---------- | --------------------------------------------------------------- |
+| `Response` | HTTP [Response](/javascript-api/v0.31/k6-http/response) object. |
 
 ### Example
 
@@ -30,8 +30,9 @@ export default function () {
   let data = { name: 'Bert' };
 
   // Using a JSON string as body
-  let res = http.post(url, JSON.stringify(data),
-                      { headers: { 'Content-Type': 'application/json' } });
+  let res = http.post(url, JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json' },
+  });
   console.log(res.json().json.name); // Bert
 
   // Using an object as body, the headers will automatically include
@@ -41,12 +42,12 @@ export default function () {
 
   // Using a binary array as body. Make sure to open() the file as binary
   // (with the 'b' argument).
-  http.post(url, logoBin, { headers: { 'Content-Type': 'image/png' }});
+  http.post(url, logoBin, { headers: { 'Content-Type': 'image/png' } });
 
   // Using an ArrayBuffer as body. Make sure to pass the underlying ArrayBuffer
   // instance to http.post(), and not the TypedArray view.
   data = new Uint8Array([104, 101, 108, 108, 111]);
-  http.post(url, data.buffer, { headers: { 'Content-Type': 'image/png' }});
+  http.post(url, data.buffer, { headers: { 'Content-Type': 'image/png' } });
 }
 ```
 

@@ -6,16 +6,16 @@ excerpt: 'Create an HMAC hashing object, allowing the user to add data to hash m
 
 Creates a HMAC hashing object that can then be fed with data repeatedly, and from which you can extract a signed hash digest whenever you want.
 
-| Parameter |  Type  | Description                                                                                                                         |
-| --------- | :----: | :---------------------------------------------------------------------------------------------------------------------------------- |
-| algorithm | string | The hashing algorithm to use. One of `md4`, `md5`, `sha1`, `sha256`, `sha384`, `sha512`, `sha512_224`, `sha512_256` or `ripemd160`. |
-| secret    | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | A shared secret used to sign the data.                                                                                |
+| Parameter |                    Type                     | Description                                                                                                                         |
+| --------- | :-----------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------- |
+| algorithm |                   string                    | The hashing algorithm to use. One of `md4`, `md5`, `sha1`, `sha256`, `sha384`, `sha512`, `sha512_224`, `sha512_256` or `ripemd160`. |
+| secret    | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | A shared secret used to sign the data.                                                                                              |
 
 ### Returns
 
-| Type   | Description                                          |
-| ------ | :--------------------------------------------------- |
-| object | A [Hasher](/javascript-api/v0-31/k6-crypto/hasher) object. |
+| Type   | Description                                                |
+| ------ | :--------------------------------------------------------- |
+| object | A [Hasher](/javascript-api/v0.31/k6-crypto/hasher) object. |
 
 ### Example
 

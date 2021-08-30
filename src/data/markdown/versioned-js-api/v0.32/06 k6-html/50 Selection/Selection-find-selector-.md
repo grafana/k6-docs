@@ -3,7 +3,7 @@ title: 'Selection.find(selector)'
 excerpt: 'Find the selection descendants, filtered by a selector.'
 ---
 
-Find the selection descendants, filtered by a selector. It returns a [Selection](/javascript-api/v0-32/k6-html/selection) object.
+Find the selection descendants, filtered by a selector. It returns a [Selection](/javascript-api/v0.32/k6-html/selection) object.
 Mimics [jquery.find](https://api.jquery.com/find/)
 
 | Parameter | Type   | Description                                                          |
@@ -12,9 +12,9 @@ Mimics [jquery.find](https://api.jquery.com/find/)
 
 ### Returns
 
-| Type                                           | Description       |
-| ---------------------------------------------- | ----------------- |
-| [Selection](/javascript-api/v0-32/k6-html/selection) | Selection object. |
+| Type                                                 | Description       |
+| ---------------------------------------------------- | ----------------- |
+| [Selection](/javascript-api/v0.32/k6-html/selection) | Selection object. |
 
 ### Example
 
