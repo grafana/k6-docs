@@ -136,11 +136,13 @@ const getPageVersions = (
   ).slice(currentVersion ? currentVersion.length + 1 : 0);
 
   if (!currentVersion) {
-    filePath = unorderify(stripDirectoryPath(relativeDirectory, 'docs'))
-      .replace('javascript api/', '')
-      // for pages like /k6-crypto, k6-data etc
-      .replace('javascript api', '');
+    filePath = unorderify(stripDirectoryPath(relativeDirectory, 'docs'));
   }
+
+  filePath = filePath
+    .replace('javascript api/', '')
+    // for pages like /k6-crypto, k6-data etc
+    .replace('javascript api', '');
 
   const pageVersions = {};
 
@@ -148,7 +150,10 @@ const getPageVersions = (
     const versionedPath = (filePath === ''
       ? [unorderify(name)]
       : [...filePath.split('/'), unorderify(name)]
-    ).reduce(treeReducer, getJavascriptAPISidebar(version));
+    ).reduce(
+      treeReducer,
+      getJavascriptAPISidebar(version).children['javascript api'],
+    );
 
     if (versionedPath && versionedPath.meta) {
       pageVersions[version] = versionedPath.meta;
@@ -223,10 +228,6 @@ function generateSidebar({ nodes, type = 'docs' }) {
 
     if (pageSlug === '//') {
       pageSlug = '/';
-    }
-
-    if (type === 'javascript-api') {
-      pageSlug = `/javascript-api${pageSlug}`;
     }
 
     sidebarTreeBuilder.addNode(
@@ -420,16 +421,19 @@ function getTopLevelPagesProps({
     ])
     .concat(
       SUPPORTED_VERSIONS_FOR_BUILD.map((version) => ({
-        path: `/javascript-api/${version}/`,
+        path: `/${version}/javascript-api/`,
         component: Path.resolve(
           `./src/templates/docs/versioned-javascript-api.js`,
         ),
         context: {
           sectionName: 'Javascript API',
-          sidebarTree: getJavascriptAPISidebar(version),
+          sidebarTree: getJavascriptAPISidebar(version).children[
+            'javascript api'
+          ],
           navLinks: generateTopLevelLinks(topLevelLinks),
           version,
-          versionRegex: `/${version}/`,
+          // eslint-disable-next-line no-useless-escape
+          versionRegex: `/${version}\/javascript api/`,
         },
       })),
     )
@@ -684,10 +688,7 @@ function getJsAPIVersionedPagesProps({
       if ((draft === 'true' && isProduction) || redirect) {
         return false;
       }
-      const path = `javascript-api/${strippedDirectory}/${title.replace(
-        /\//g,
-        '-',
-      )}`;
+      const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
       const pageVersion = SUPPORTED_VERSIONS.find((version) =>
         strippedDirectory.startsWith(version),
@@ -712,7 +713,9 @@ function getJsAPIVersionedPagesProps({
         return false;
       }
 
-      const sidebarTree = getJavascriptAPISidebar(pageVersion);
+      const sidebarTree = getJavascriptAPISidebar(pageVersion).children[
+        'javascript api'
+      ];
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -730,7 +733,7 @@ function getJsAPIVersionedPagesProps({
 
       let breadcrumbs = buildBreadcrumbs(pathForBreadcrumbs, true);
       breadcrumbs = breadcrumbs.map((item) =>
-        SUPPORTED_VERSIONS.includes(item.name)
+        item.path.endsWith(`/javascript-api/`)
           ? {
               path: item.path,
               name: 'Javascript API',
@@ -739,7 +742,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       breadcrumbs = breadcrumbs.filter(
-        (item) => item.path !== '/' && item.path !== '/javascript-api/',
+        (item) => item.path !== '/' && item.path !== `/${pageVersion}/`,
       );
 
       const pageVersions = getPageVersions(
