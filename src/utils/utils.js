@@ -221,6 +221,10 @@ const flattenSidebarTree = (sidebar) => {
 // eslint-disable-next-line prefer-spread
 const flat = (arrays) => [].concat.apply([], arrays);
 
+// turns dashes replaced with slugify
+// back to dots if passed string is a version
+const dotifyVersion = (str) => str.replace(/(v\d)-(\d{2})/, '$1.$2');
+
 Object.defineProperties(utils, {
   anchorify: {
     value: anchorify,
@@ -272,6 +276,9 @@ Object.defineProperties(utils, {
   },
   flattenSidebarTree: {
     value: flattenSidebarTree,
+  },
+  dotifyVersion: {
+    value: dotifyVersion,
   },
 });
 

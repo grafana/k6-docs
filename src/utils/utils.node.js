@@ -1,7 +1,12 @@
 /* gatsby-node.js specific helper functions */
 const { pathTranslations } = require('../i18n/path-translations');
 
-const { slugify, compose, stripDirectoryPath } = require('./utils');
+const {
+  slugify,
+  compose,
+  stripDirectoryPath,
+  dotifyVersion,
+} = require('./utils');
 const { SUPPORTED_VERSIONS, LATEST_VERSION } = require('./versioning');
 
 const SUPPORTED_LOCALES = ['es', 'en'];
@@ -54,7 +59,7 @@ const buildBreadcrumbs = (path, versioned = false) => {
     }
     return {
       name,
-      path: addTrailingSlash(slug),
+      path: dotifyVersion(addTrailingSlash(slug)),
     };
   });
 };

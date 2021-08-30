@@ -73,7 +73,7 @@ export default function VersionedJavascriptAPI({
   pageVersions[LATEST_VERSION] = { path: '/javascript-api/' };
   SUPPORTED_VERSIONS.forEach((version) => {
     pageVersions[version] = {
-      path: `/javascript-api/${version.replace(/\./g, '-')}/`,
+      path: `/javascript-api/${version}/`,
     };
   });
 
