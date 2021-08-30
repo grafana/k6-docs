@@ -29,29 +29,32 @@ For the password, create and copy an API key of `MetricsPublisher` role.
 
 Now, you can set the URL, username, and password on the k6 Cloud to authorize exporting k6 Cloud metrics to your Prometheus instance.
 
-## k6 Cloud configuration
+## k6 Cloud test configuration
 
-You can configure the Grafana Cloud settings using two options: the [test builder](#configuration-via-test-builder) or [k6 script](#configuration-via-k6-script). 
+You can configure the Grafana Cloud settings using two preferred options for creating a k6 test: the [test builder](#configuration-via-test-builder) or [k6 script](#configuration-via-k6-script). 
 
-The settings are configured on the test level; each test needs the Grafana Cloud settings to export the metrics of their test runs.
+The settings are configured on the test level; each test will need the Grafana Cloud settings to export the metrics of their test runs.
 
 ### Configuration via test builder
 
-First, you have to enable the Grafana Cloud integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the APM list.
+First, you have to enable the Grafana Cloud integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the list.
 
 ![Cloud APM - Grafana Cloud Form UI](images/grafana-cloud-app-form.png)
 
 In this form, set the URL, username, and password that you copied previously.  For more information on the other input fields, see [configuration parameters](#configuration-parameters).
 
-Save the Grafana Cloud configuration for the current organization. Now, you can use the [test builder](/test-authoring/test-builder) to enable the integration for a new or existing test on the organization.
+Save the Grafana Cloud configuration for the current organization. 
+
+Now, you can use the [test builder](/test-authoring/test-builder) to enable the integration for a new or existing test on the organization.
 
 ![Cloud APM - Grafana Cloud Test Builder UI](images/grafana-cloud-app-testbuilder.png)
 
+
 ### Configuration via k6 script
 
-The configuration parameters for sending metrics to Grafana Cloud are as follows:
+If you script your k6 tests, you can configure the Cloud APM settings using the `apm` option. 
 
-An example configuration for Grafana Cloud might look like this:
+The parameters to export the k6 metrics to a Grafana Cloud Prometheus instance are as follows:
 
 ```javascript
 export let options = {
@@ -60,11 +63,12 @@ export let options = {
       apm: [
         {
           provider: "prometheus",
-          remoteWriteURL: "https://prometheus-us-central1.grafana.net/api/prom/push",
+          remoteWriteURL: "<Remote Write URL>", 
           credentials: {
-            username: "<Your Metrics instance ID>",
-            password: "<Your Grafana.com API Key>"
+            username: "<Prometheus Username / Instance ID>",
+            password: "<Grafana Cloud API key of type MetricsPublisher>"
           },
+          // optional parameters
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
           includeTestRunId: false
@@ -79,18 +83,24 @@ export let options = {
 
 | Name                    | Description                                                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `provider`              | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
-| `remoteWriteURL`        | The `remoteWriteURL` provided by Grafana Cloud.                                                                                                |
-| `credentials`           | The `credentials` provided by Grafana Cloud. The object consists of `username` (metric instance ID) and `password` (Grafana.com API Key) |
-| `metrics`               | List of built-in and custom metrics to be exported.                                                                                                                                        |
-| `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
-| `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                                                            |
+| provider<sup>(required)</sup>            | For this integration, the value must be `prometheus`.
+| remoteWriteURL<sup>(required)</sup>        | URL of the Prometheus remote write endpoint. <br/> For example: `https://prometheus-us-central1.grafana.net/api/prom/push`.                                                                                                |
+| credentials<sup>(required)</sup>         | The credentials to authenticate with the Grafana Cloud Prometheus instance. The required parameters are: <br/> - username: the Prometheus username or instance ID. <br/> - password: a Grafana Cloud API key of type `MetricsPublisher`. |
+| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
+| metrics               | List of built-in and custom metrics to export. <br/> Metric names are validated against the [Prometheus metric name conventions](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)—ignoring nonconforming metrics.                                      |
+| includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
+| resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
 
 
 ## Run the cloud test
 
-  ![Grafana Cloud metrics explorer](images/grafana-cloud.png)
+Once you have set up the Grafana Cloud settings in the test, you can run a cloud test as usual. The k6 Cloud will continuously export the test results metrics to the Prometheus endpoint during the test execution.
 
+To test the integration, use the Prometheus query field to find k6 metrics. 
+
+  ![Grafana Cloud metrics explorer](images/grafana_cloud_explore_k6_metrics.png)
+
+You can now start using all Grafana visualization capabilities for the k6 metrics. And correlate k6 metrics with other metrics of your systems to get better insights into what happens during your tests. 
 
 ## See also
 
