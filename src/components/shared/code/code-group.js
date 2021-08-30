@@ -4,7 +4,13 @@ import React, { useState } from 'react';
 import Code from './code';
 import styles from './code-group.module.scss';
 
-const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
+const CodeGroup = ({
+  children,
+  labels,
+  lineNumbers,
+  heightTogglers,
+  showCopyButton,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div className={styles.wrapper}>
@@ -31,6 +37,7 @@ const CodeGroup = ({ children, labels, lineNumbers, heightTogglers }) => {
               showLineNumbers={lineNumbers[i]}
               key={i}
               showHeightToggler={heightTogglers[i]}
+              showCopyButton={showCopyButton}
             >
               {child.props.children}
             </Code>
@@ -46,6 +53,7 @@ CodeGroup.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string),
   lineNumbers: PropTypes.arrayOf(PropTypes.bool),
   heightTogglers: PropTypes.arrayOf(PropTypes.bool),
+  showCopyButton: PropTypes.bool,
 };
 
 CodeGroup.defaultProps = {
@@ -53,6 +61,7 @@ CodeGroup.defaultProps = {
   labels: [],
   lineNumbers: [],
   heightTogglers: [],
+  showCopyButton: true,
 };
 
 export default CodeGroup;
