@@ -6,6 +6,7 @@ import Blockquote from 'components/shared/blockquote';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import { HeadingLandmark } from 'components/shared/heading';
 import LdScript from 'components/shared/ld-script';
+import { Link } from 'components/shared/link';
 import TableWrapper from 'components/shared/table-wrapper';
 import React, { useRef } from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -25,7 +26,7 @@ const componentsForNativeReplacement = {
   CodeGroup,
 };
 
-export const DocPageContent = ({ label, content, mod }) => {
+export const DocPageContent = ({ label, content, mod, version }) => {
   const contentContainerRef = useRef(null);
   return (
     <div
@@ -43,7 +44,10 @@ export const DocPageContent = ({ label, content, mod }) => {
           >
             <HtmlContent
               content={content}
-              componentsForNativeReplacement={componentsForNativeReplacement}
+              componentsForNativeReplacement={{
+                ...componentsForNativeReplacement,
+                a: Link(version),
+              }}
               className={classNames(
                 styles.contentWrapper,
                 { [styles.beliefs]: mod === 'beliefs' },

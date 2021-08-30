@@ -11,6 +11,7 @@ import {
   styles as codeStyles,
 } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
+import { Link } from 'components/shared/link';
 import { PageInfo } from 'components/shared/page-info';
 import TableWrapper from 'components/shared/table-wrapper';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
@@ -32,7 +33,7 @@ const componentsForNativeReplacement = {
   CodeGroup,
 };
 
-const getContent = (nodes, sidebarTree) =>
+const getContent = (nodes, sidebarTree, version) =>
   // eslint-disable-next-line array-callback-return,consistent-return
   nodes.map(({ id, children: [entity] }) => {
     const {
@@ -45,7 +46,10 @@ const getContent = (nodes, sidebarTree) =>
           <h2>{title}</h2>
           <HtmlContent
             content={body}
-            componentsForNativeReplacement={componentsForNativeReplacement}
+            componentsForNativeReplacement={{
+              ...componentsForNativeReplacement,
+              a: Link(version),
+            }}
             className={classNames(docPageContent.contentWrapper)}
           />
         </div>
@@ -58,7 +62,7 @@ export default function VersionedJavascriptAPI({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
 }) {
-  const content = getContent(data.allFile.nodes, sidebarTree);
+  const content = getContent(data.allFile.nodes, sidebarTree, version);
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
