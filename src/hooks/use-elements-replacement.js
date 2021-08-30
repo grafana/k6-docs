@@ -35,6 +35,7 @@ const useElementsReplacement = (
               labels={componentProps?.labels}
               lineNumbers={componentProps?.lineNumbers}
               noWrapper={selector === '.gatsby-highlight'}
+              href={componentProps?.href}
             >
               {isTextOnly && content}
             </Component>,

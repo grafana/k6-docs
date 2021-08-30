@@ -21,7 +21,7 @@ export default function DocPage(props) {
       navLinks,
       breadcrumbs,
       locale = 'en',
-      version,
+      version = null,
       pageVersions = null,
       sectionName,
     },
@@ -91,7 +91,11 @@ export default function DocPage(props) {
             title={frontmatter.title}
             articleSrc={frontmatter.fileOrigin}
           />
-          <DocPageContent label={codeStyles.codeContainer} content={body} />
+          <DocPageContent
+            label={codeStyles.codeContainer}
+            content={body}
+            version={version}
+          />
           {(prev || next) && <DocPageNavigation prev={prev} next={next} />}
         </div>
       </DocLayout>
