@@ -28,7 +28,12 @@ const getLanguageDeclaration = (str) => {
   return 'plain';
 };
 
-const Code = ({ children, showLineNumbers, showHeightToggler }) => {
+const Code = ({
+  children,
+  showLineNumbers,
+  showHeightToggler,
+  showCopyButton,
+}) => {
   if (!children) return null;
 
   const containerRef = useRef(null);
@@ -69,8 +74,17 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
     copyBtnContent = copyBtnContent.replace(/^\$\s/gm, '');
   }
 
+  const Wrapper = ({ children }) => (
+    <>
+      {showCopyButton && (
+        <WithCopyButton dataToCopy={copyBtnContent}>{children}</WithCopyButton>
+      )}
+      {!showCopyButton && <>{children}</>}
+    </>
+  );
+
   return (
-    <WithCopyButton dataToCopy={copyBtnContent}>
+    <Wrapper>
       <Highlight
         {...defaultProps}
         code={children.props?.children}
@@ -111,7 +125,7 @@ const Code = ({ children, showLineNumbers, showHeightToggler }) => {
       </Highlight>
       <div className={styles.overlay} style={overlayStyles} />
       {toggler}
-    </WithCopyButton>
+    </Wrapper>
   );
 };
 
@@ -119,12 +133,14 @@ Code.propTypes = {
   children: PropTypes.node,
   showLineNumbers: PropTypes.bool,
   showHeightToggler: PropTypes.bool,
+  showCopyButton: PropTypes.bool,
 };
 
 Code.defaultProps = {
   children: null,
   showLineNumbers: false,
   showHeightToggler: false,
+  showCopyButton: true,
 };
 
 export default Code;
