@@ -17,7 +17,7 @@ We currently offer similar integrations with Cloud APM solutions: [Azure Monitor
 
 
 
-> ⭐️  &nbsp;Prometheus remote write and [APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
+> ⭐️  &nbsp;Prometheus remote write and [Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
 ## Configuration Parameters
 

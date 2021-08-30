@@ -18,7 +18,7 @@ Cloud tests can export their metrics in near real-time to various APM platforms,
 _Additionally, k6 Cloud supports exporting metrics to [Prometheus](/cloud/integrations/prometheus-remote-write/) instances using the remote write feature._ 
 
 
-> ⭐️ &nbsp;APM integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
+> ⭐️ &nbsp;Cloud APM integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
 ## Configuration
 
