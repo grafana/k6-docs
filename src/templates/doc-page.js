@@ -36,8 +36,7 @@ export default function DocPage(props) {
     },
   };
 
-  const isJsAPIPage =
-    sidebarTree.name === 'javascript api' || typeof version !== 'undefined';
+  const isJsAPIPage = sidebarTree.name === 'javascript api' || !!version;
 
   let prev = null;
   let next = null;

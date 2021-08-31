@@ -2,8 +2,8 @@ import React from 'react';
 
 export const Link = (version) => ({ href, children, ...otherProps }) => {
   const newHref =
-    version && href.startsWith('/javascript-api/')
-      ? `/${version}${href}`
+    version && href.includes('/javascript-api/')
+      ? href.replace('/javascript-api/', `/${version}/javascript-api/`)
       : href;
 
   return (
