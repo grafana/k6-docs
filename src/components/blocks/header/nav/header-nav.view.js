@@ -45,13 +45,30 @@ const Single = ({ to, label, sections }) => {
       typeof window !== 'undefined' &&
       !sections.some((sectionUrl) =>
         window.location.pathname.startsWith(sectionUrl),
-      );
+      ) &&
+      !/v\d\.\d{2}\/javascript-api/.test(window.location.pathname);
     Component = (
       <Link
         className={styles.link}
         to={to}
         activeClassName={styles.active}
         partiallyActive={guidesPartiallyActive}
+      >
+        {label}
+      </Link>
+    );
+    return Component;
+  }
+  if (
+    to === '/javascript-api/' &&
+    typeof window !== 'undefined' &&
+    /v\d\.\d{2}\/javascript-api/.test(window.location.pathname)
+  ) {
+    Component = (
+      <Link
+        className={classNames(styles.link, styles.active)}
+        to={to}
+        activeClassName={styles.active}
       >
         {label}
       </Link>
