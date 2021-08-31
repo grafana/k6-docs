@@ -124,6 +124,7 @@ export let options = {
 | resourceGroupName<sup>(required)</sup>     | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.          |
 | insightsAppName<sup>(required)</sup>       | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.     |
 | azureRegion           | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.   |
+| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
 | metrics               | List of built-in and custom metrics to export.                            |
 | includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
