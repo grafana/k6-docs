@@ -22,7 +22,9 @@ Once you have the license key, you have to launch a Prometheus instance and set 
 
 ## k6 Cloud test configuration
 
-You have to set up the New Relic settings for each test that you want to export its test result metrics when running the test.
+You have to enable the New Relic integration for each test that you want to export its test result metrics.
+
+Once you have set up the New Relic settings in the test, you can run a cloud test as usual. When running the cloud test, the k6 Cloud will continuously send the test results metrics to New Relic.
 
 Currently, there are two options to set up the Cloud APM settings in the test:
 
@@ -74,10 +76,6 @@ export let options = {
   },
 };
 ```
-
-
-An example configuration for New Relic might look like this, with `X-License-Key` used as `token` in `credentials` would be:
-
 
 ### Configuration parameters
 
