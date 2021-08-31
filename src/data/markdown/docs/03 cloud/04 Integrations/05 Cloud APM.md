@@ -25,7 +25,7 @@ _Additionally, k6 Cloud supports exporting metrics to [Prometheus](/cloud/integr
 The APM export functionality is configured on the test level; each test has to set up its APM settings to export the metrics of their test runs. 
 
 - You can configure a test to export to multiple different APM providers.
-- You can configure the APM settings in the **Test builder** or **k6 Script**.
+- You can configure the APM settings using the k6 Cloud app and test builder or scripting the k6 test.
 
 For more detailed instructions, refer to the documentation of your APM: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor), [DataDog](/cloud/integrations/cloud-apm/datadog), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud), or [New Relic](/cloud/integrations/cloud-apm/new-relic).
 
