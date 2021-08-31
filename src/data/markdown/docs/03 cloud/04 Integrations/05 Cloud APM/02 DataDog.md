@@ -83,8 +83,6 @@ export let options = {
 
 ### Configuration parameters
 
-The configuration parameters for sending metrics to DataDog and its EU counterpart are as follows:
-
 | Name                    | Description                                                                                                                                            |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | provider<sup>(required)</sup>              | For this integration, the value must be `datadog`.   |
