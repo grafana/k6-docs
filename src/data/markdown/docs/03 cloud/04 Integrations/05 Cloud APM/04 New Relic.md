@@ -3,40 +3,52 @@ title: 'New Relic'
 excerpt: 'How to export metrics from k6 Cloud to New Relic'
 ---
 
-You can set up New Relic integration via [k6 Cloud app](/cloud/integrations/cloud-apm/new-relic#configuration-via-k6-cloud-app) or by specifying [required parameters](/cloud/integrations/cloud-apm/new-relic#configuration-parameters) in `options.ext.loadimpact.apm` in your [script](/cloud/integrations/cloud-apm/new-relic#example-configuration-object).
+With this integration, you can export test result metrics from the k6 Cloud to the New Relic's Data Platform to explore your k6 metrics using [New Relic](https://newrelic.com/).
 
-To get custom metrics from your test runs into New Relic follow the [New Relic Setup](/cloud/integrations/cloud-apm/new-relic#new-relic-setup).
+> ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
-## Configuration via k6 Cloud app
+## Set up Prometheus remote write integration in New Relic
 
-Locate the page in the left menu under the **Manage** section and select **New Relic**.
+With New Relic, you can set up a Prometheus remote write instance to collect data. k6 Cloud can export test result metrics to this Prometheus instance to flow data into New Relic. 
 
-![Manage Menu UI](../images/05-Cloud-APM/cloud-app-manage-menu.png)
+To set up the New Relic integration on the k6 Cloud, you need the following settings from New Relic:
 
-You will be greeted with the following form. For more information on input fields see [configuration parameters](/cloud/integrations/cloud-apm/new-relic#configuration-parameters).
+- License Key
+- Prometheus remote write URL
+
+The integration needs a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) to authenticate and authorize the k6 Cloud for ingesting data.
+
+Once you have the license key, you have to launch a Prometheus instance and set up the remote write integration in New Relic. Follow these [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/).
+
+## k6 Cloud test configuration
+
+You have to set up the New Relic settings for each test that you want to export its test result metrics when running the test.
+
+Currently, there are two options to set up the Cloud APM settings in the test:
+
+- [Using the test builder](#configuration-using-the-test-builder)
+- [Scripting the k6 test](#configuration-in-the-k6-script)  
+
+
+### Configuration using the test builder
+
+First, you have to enable the New Relic integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `New Relic` from the list.
 
 ![Cloud APM - New Relic Form UI](images/newrelic-cloud-app-form.png)
 
-After you have saved your configuration you will be able to select it in [Test builder](/test-authoring/test-builder).
+In this form, set the URL, license key that you copied previously from New Relic.  For more information on the other input fields, see [configuration parameters](#configuration-parameters).
+
+Save the New Relic configuration for the current organization. 
+
+Now, you can use the [test builder](/test-authoring/test-builder) to enable the integration for a new or existing test on the organization.
 
 ![Cloud APM - New Relic Test Builder UI](images/newrelic-cloud-app-testbuilder.png)
 
-## Configuration Parameters
+### Configuration in the k6 script
 
-The configuration parameters for sending metrics to New Relic are as follows:
+If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script. 
 
-| Name                    | Description                                                                                                                                                                                |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `provider`              | Any APM provider name available in the [supported APM provider](/cloud/integrations/cloud-apm#supported-apm-providers)'s table.                                                            |
-| `remoteWriteURL`        | The `remoteWriteURL` provided by New Relic. The `prometheus_server` parameter should be included in the configuration parameter. The bearer token can be included using the `X-License-Key` parameter. |
-| `credentials`           | The `credentials` provided by New Relic. The object consists of `token` property which should be specified with the Bearer token if `X-License-Key` is not specified in `remoteWriteURL` parameter. |
-| `metrics`               | List of built-in and custom metrics to be exported.                                                                                                                                        |
-| `includeDefaultMetrics` | If set, the export will include the default metrics. Default is `true`.                                                                                                                    |
-| `includeTestRunId`      | If set, the `test_run_id` will be exported per each metric as an extra tag. Default is `false`.                                                                                            |
-
-## Example Configuration Object
-
-An example configuration for New Relic might look like this, with `X-License-Key` used as `token` in `credentials` would be:
+The parameters to export the k6 metrics to New Relic are as follows:
 
 ```javascript
 export let options = {
@@ -45,10 +57,14 @@ export let options = {
       apm: [
         {
           provider: "prometheus",
-          remoteWriteURL: "https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=<YOUR_DATA_SOURCE_NAME>",
+          remoteWriteURL: "https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=<YOUR_DATA_SOURCE_NAME>" 
+
+          // optional when `remoteWriteURL` includes the `X-License-Key` query param
           credentials: {
             token: "<YOUR_LICENSE_KEY>"
           },
+
+          // optional parameters
           metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
           includeDefaultMetrics: true,
           includeTestRunId: false
@@ -59,8 +75,24 @@ export let options = {
 };
 ```
 
-## New Relic Setup
 
-For sending custom metrics from your test run to New Relic's Prometheus remote write integration, follow the [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) on their documentation.
+An example configuration for New Relic might look like this, with `X-License-Key` used as `token` in `credentials` would be:
 
-The `prometheus_server` parameter should be included in the `remoteWriteURL` configuration parameter. The bearer token can be included either as `credentials.token` (APM configuration parameter) or as part of the `remoteWriteURL` using the `X-License-Key` parameter, as mentioned in their documentation.
+
+### Configuration parameters
+
+| Name                    | Description                                                                                                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| provider<sup>(required)</sup>            | For this integration, the value must be `prometheus`.
+| remoteWriteURL<sup>(required)</sup>       | URL of the Prometheus remote write endpoint.  <br/> The `prometheus_server` query param must be included. The license key can optionally be included using the `X-License-Key` query param. |
+| credentials           | The credentials to authenticate with New Relic. It has a `token` parameter to set the license key. <br/> The `credentials` parameter is optional when the license key is passed via the `X-License-Key` query param on the `remoteWriteURL` parameter. |
+| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
+| metrics               | List of built-in and custom metrics to export. <br/> Metric names are validated against the [Prometheus metric name conventions](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)—ignoring nonconforming metrics.                                      |
+| includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
+| resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+
+
+### See also
+
+- [New Relic: Set up your Prometheus remote write integration](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/)
+- [Cloud APM](/cloud/integrations/cloud-apm/)

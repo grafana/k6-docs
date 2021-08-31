@@ -1020,6 +1020,11 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   createRedirect({
+    fromPath: '/cloud/integrations/cloud-apm/prometheus-remote-write/',
+    toPath: '/cloud/integrations/prometheus-remote-write/',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/cloud/creating-and-running-a-test/scheduling-tests/',
     toPath: '/cloud/manage/scheduled-tests/',
     isPermanent: true,
