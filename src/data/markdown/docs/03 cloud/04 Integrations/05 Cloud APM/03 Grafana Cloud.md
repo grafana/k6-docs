@@ -33,7 +33,7 @@ Now, you can set the URL, username, and password on the k6 Cloud to authorize ex
 
 You have to set up the Grafana Cloud settings for each test that you want to export its test result metrics when running the test.
 
-There are two options to set up the Cloud APM settings in the test:
+Currently, there are two options to set up the Cloud APM settings in the test:
 
 - [Using the test builder](#configuration-using-the-test-builder)
 - [Scripting the k6 test](#configuration-in-the-k6-script)  
