@@ -31,11 +31,16 @@ Now, you can set the URL, username, and password on the k6 Cloud to authorize ex
 
 ## k6 Cloud test configuration
 
-You can configure the Grafana Cloud settings using two preferred options for creating a k6 test: the [test builder](#configuration-via-test-builder) or [k6 script](#configuration-via-k6-script). 
+You have to set up the Grafana Cloud settings for each test that you want to export its test result metrics when running the test.
 
-The settings are configured on the test level; each test will need the Grafana Cloud settings to export the metrics of their test runs.
+There are two options to set up the Cloud APM settings in the test:
 
-### Configuration via test builder
+- [Using the test builder](#configuration-using-the-test-builder)
+- [Scripting the k6 test](#configuration-in-the-k6-script)  
+
+
+
+### Configuration using the test builder
 
 First, you have to enable the Grafana Cloud integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the list.
 
@@ -50,9 +55,9 @@ Now, you can use the [test builder](/test-authoring/test-builder) to enable the 
 ![Cloud APM - Grafana Cloud Test Builder UI](images/grafana-cloud-app-testbuilder.png)
 
 
-### Configuration via k6 script
+### Configuration in the k6 script
 
-If you script your k6 tests, you can configure the Cloud APM settings using the `apm` option. 
+If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script. 
 
 The parameters to export the k6 metrics to a Grafana Cloud Prometheus instance are as follows:
 
