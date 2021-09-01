@@ -64,7 +64,7 @@ Currently, there are two options to set up the Cloud APM settings in the test:
 
 ### Configuration using the test builder
 
-First, you have to enable the Azure Monitor integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Azure Monitor` from the list.
+First, you have to configure the Azure Monitor settings for an organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Azure Monitor` from the list.
 
 ![Cloud APM - Azure Monitor Form UI](images/azure-monitor-cloud-app-form.png)
 
@@ -72,7 +72,9 @@ In this form, set the parameters that you copied in the previous steps.  For mor
 
 Save the Azure Monitor configuration for the current organization. 
 
-Now, you can use the [test builder](/test-authoring/test-builder) to enable the integration for a new or existing test on the organization.
+Note that configuring the Azure Monitor settings for an organization does not enable the integration. You have to enable it manually for each test using the [test builder](/test-authoring/test-builder).
+
+Now, create a new test with the test builder or select an existing test previously created using the test builder. Click the `Cloud APM option` on the test builder sidebar to enable the integration for the test.
 
 ![Cloud APM - Azure Monitor Test Builder UI](images/azure-monitor-cloud-app-testbuilder.png)
 

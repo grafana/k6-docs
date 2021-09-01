@@ -42,7 +42,7 @@ Currently, there are two options to set up the Cloud APM settings in the test:
 
 ### Configuration using the test builder
 
-First, you have to enable the Grafana Cloud integration into your organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the list.
+you have to configure the Grafana Cloud integration for an organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the list.
 
 ![Cloud APM - Grafana Cloud Form UI](images/grafana-cloud-app-form.png)
 
@@ -50,7 +50,9 @@ In this form, set the URL, username, and password that you copied previously.  F
 
 Save the Grafana Cloud configuration for the current organization. 
 
-Now, you can use the [test builder](/test-authoring/test-builder) to enable the integration for a new or existing test on the organization.
+Note that configuring the Grafana Cloud settings for an organization does not enable the integration. You have to enable it manually for each test using the [test builder](/test-authoring/test-builder).
+
+Now, create a new test with the test builder or select a test - previously created with the test builder. Click the `Cloud APM` option on the test builder sidebar to enable the integration for the test.
 
 ![Cloud APM - Grafana Cloud Test Builder UI](images/grafana-cloud-app-testbuilder.png)
 
