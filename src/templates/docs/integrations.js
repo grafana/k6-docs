@@ -29,6 +29,7 @@ import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
 import K6 from 'svg/logo.inline.svg';
+import Netdata from 'svg/netdata.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
@@ -37,14 +38,14 @@ import { blog, main } from 'utils/urls';
 
 const iconsDataSet1 = [
   {
-    Icon: Kafka,
-    name: 'Apache Kafka',
-    to: '/results-visualization/apache-kafka',
-  },
-  {
     Icon: CloudWatch,
     name: 'Amazon CloudWatch',
     to: '/results-visualization/amazon-cloudwatch',
+  },
+  {
+    Icon: Kafka,
+    name: 'Apache Kafka',
+    to: '/results-visualization/apache-kafka',
   },
   {
     Icon: K6,
@@ -75,6 +76,11 @@ const iconsDataSet1 = [
     Icon: Json,
     name: 'JSON file',
     to: '/results-visualization/json',
+  },
+  {
+    Icon: Netdata,
+    name: 'Netdata',
+    to: '/results-visualization/netdata',
   },
   {
     Icon: NewRelic,
