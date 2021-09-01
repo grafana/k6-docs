@@ -23,6 +23,7 @@ import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
+import GoogleCloudBuild from 'svg/google-cloud-build.inline.svg';
 import Grafana from 'svg/grafana.inline.svg';
 import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
@@ -91,32 +92,37 @@ const iconsDataSet2 = [
   {
     Icon: Azure,
     name: 'Azure Pipelines',
-    link: `${blog}/integrating-load-testing-with-azure-pipelines`,
+    link: `${blog}/integrating-load-testing-with-azure-pipelines/`,
   },
   {
     Icon: CircleCI,
     name: 'CircleCI',
-    link: `${blog}/integrating-load-testing-with-circleci`,
+    link: `${blog}/integrating-load-testing-with-circleci/`,
   },
   {
     Icon: GitHub,
     name: 'GitHub Actions',
-    link: `${blog}/load-testing-using-github-actions`,
+    link: `${blog}/load-testing-using-github-actions/`,
   },
   {
     Icon: Gitlab,
     name: 'GitLab',
-    link: `${blog}/integrating-load-testing-with-gitlab`,
+    link: `${blog}/integrating-load-testing-with-gitlab/`,
+  },
+  {
+    Icon: GoogleCloudBuild,
+    name: 'Google Cloud Build',
+    link: `${blog}/integrating-k6-with-google-cloud-build/`,
   },
   {
     Icon: Jenkins,
     name: 'Jenkins',
-    link: `${blog}/integrating-load-testing-with-jenkins`,
+    link: `${blog}/integrating-load-testing-with-jenkins/`,
   },
   {
     Icon: TeamCity,
     name: 'TeamCity',
-    link: `${blog}/load-testing-using-teamcity-and-k6`,
+    link: `${blog}/load-testing-using-teamcity-and-k6/`,
   },
 ];
 
