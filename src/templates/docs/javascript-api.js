@@ -118,12 +118,15 @@ export default function JavascriptAPI({
   );
 }
 
+// on regex origin: /02 ... /
+// is required to distinguish from
+// versioned js api docs
 export const query = graphql`
   query IndexQuery {
     allFile(
       filter: {
         ext: { in: [".md"] }
-        relativeDirectory: { regex: "/javascript api/" }
+        relativeDirectory: { regex: "/02 javascript api/" }
       }
       sort: { fields: absolutePath, order: ASC }
     ) {
