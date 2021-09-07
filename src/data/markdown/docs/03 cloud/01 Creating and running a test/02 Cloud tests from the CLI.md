@@ -134,9 +134,9 @@ export let options = {
 
 ### Running tests under a different project than your default one
 
-By default tests and test runs will be created and run under your default project, in your default organization.
+As a rule, tests and test runs will be created and run under your default project, in your default organization.
 
-To create and run tests under a different project, whether under your default organization or one you've been invited to, you have to pass the `Project ID` to k6.
+To create and run tests under a different project, like one you've been invited to, you have to pass the `Project ID` to k6.
 
 Select the project on the sidebar menu and you will find the `Project ID` in the header of the Project Dashboard page.
 
@@ -160,7 +160,7 @@ You have two options to pass the Project ID to k6:
 
    </CodeGroup>
 
-2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running the test.
+2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
 
 ## Load zones
 
