@@ -8,7 +8,7 @@ excerpt: 'The Logs tab allows you to view console logs'
 
 > This feature is available since k6 `0.28.0`.
 
-When developing a load test, it's often useful to print messages for debugging purposes.
+When developing a load test, it's often useful to print messages for the purpose of debugging.
 
 The k6 API supports the following console logging methods:
 
@@ -33,7 +33,7 @@ For example, it is often an **anti-pattern** to use `logs` to:
 >
 > When your script is ready, execute the test on the k6 Cloud with the `k6 cloud` command.
 
-## Logs Tab
+## Cloud Results: Logs Tab
 
 The Logs Tab allows you to view and filter log messages in the Cloud Results page.
 
@@ -67,7 +67,7 @@ Logs are intended to help you in finding script issues and debugging execution a
 For this reason, the cloud logs have some limitations:
 
 - The logs are deleted 3 days after the test execution.
-- The number of log lines is limited to 10 messages per second per server. If this limit is crossed, a warning messages appears showing the number of discarded log lines.
+- The number of log lines is limited to 10 messages per second per server. If this limit is crossed, a warning message appears showing the number of discarded log lines.
 
 ![Cloud Logs Tab Drop Message](./images/11-Cloud-Logs/cloud-logs-output-drop-messages.png)
 
@@ -80,5 +80,3 @@ When running cloud tests using the CLI (`k6 cloud`), k6 will print cloud logs on
 ![Cloud Logs Tab in CLI](./images/11-Cloud-Logs/cloud-logs-cli-output.png)
 
 If you don't want the cloud logs to be printed on the terminal, add the `--show-logs=false` argument.
-
-Next, [Test Comparison](/cloud/analyzing-results/test-comparison)
