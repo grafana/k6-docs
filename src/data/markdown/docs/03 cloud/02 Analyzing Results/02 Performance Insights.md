@@ -27,14 +27,14 @@ This alert is raised when a period of elevated HTTP errors has been detected (10
 The total number of HTTP(s) errors is higher than 15% during the first 100 completed script iterations.
 
 Errors that occur early on are typically not considered to be performance related. Our algorithms also have not detected an increase in the error rate as load has increased.
-With that in mind, there are a number of non-performance related reasons for errors, which includes, but is not limited to:
+With that in mind, there are a number of non-performance related reasons for errors, including, but not limited to:
 
 - You're making invalid requests:
-  - Invalid URLs, e.g. with a typo in it or a hostname that is not in the public DNS system.
-  - Missing required headers, e.g. authentication/authorization headers or user-agent.
-  - Sending the wrong body data.
-- You're trying to test a system that's behind a firewall.
-- You're hitting a rate limit.
+  - Invalid URLs, e.g. with a typo in it or a hostname that is not in the public DNS system
+  - Missing required headers, e.g. authentication/authorization headers or user-agent
+  - Sending the wrong body data
+- You're trying to test a system that's behind a firewall
+- You're hitting a rate limit
 
 **Note:** Failed responses are often returned much faster than successful responses.
 
@@ -56,7 +56,7 @@ Test Health Performance Insights are alerts that intend to highlight test or scr
 
 **This is a best practice alert, we strongly recommend you remove third party requests from your test**
 
-This alert is raised when we detect many different domains in a test. This is typically caused by your test script containing requests to 3rd party resources such as CDNs, social media scripts, analytic tools, etc. It's recommended to remove third party requests as it may violate the terms of service of that third party, that third party may throttle your requests skewing the percentiles of your results, or you may have no ability to impact performance of that third party.
+This alert is raised when we detect many different domains in a test. This is typically caused by your test script containing requests to 3rd party resources such as CDNs, social media scripts, analytics tools, etc. It's recommended to remove third party requests as it may violate the terms of service of that third party, that third party may throttle your requests skewing the percentiles of your results, or you may have no ability to impact performance of that third party.
 
 _Special Notes:_
 
@@ -164,12 +164,12 @@ This alert is raised when we detect high utilization of the load generator CPU d
 - Lack of sleep times in your scripts
   - Sleep times help with pacing and emulating real user behaviour
 - High RPS per VU
-  - When testing API endpoints you may configure your test to aggressively request an endpoint.
+  - When testing API endpoints you may configure your test to aggressively request an endpoint
 - Large number of requests in a single request batch
   - Requests made in a request batch will be made in parallel up to the default or defined limits
 - Large amounts of data are returned in responses resulting in high memory utilization
-  - When the memory of the load generator reaches near total consumption, the garbage collection efforts of the Load Generator can cause increase CPU utilization.
-- A JavaScript exception is being thrown early in VU execution. This results in an endless restart loop until all CPU cycles are consumed.
+  - When the memory of the load generator reaches near total consumption, the garbage collection efforts of the Load Generator can cause increase CPU utilization
+- A JavaScript exception is being thrown early in VU execution. This results in an endless restart loop until all CPU cycles are consumed
 
 Possible fixes:
 
