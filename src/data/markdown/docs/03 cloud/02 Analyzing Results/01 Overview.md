@@ -23,11 +23,11 @@ Additionally, you can see metadata about the current test. Status, Duration, VUs
 
 ## Performance Overview
 
-The Performance Overview section displays high level data for your test. If the test is running live metrics are displayed.
+The Performance Overview section displays high level data for your test. While the test is running live metrics are displayed.
 
 ![Performance overview of a running test](images/01-Overview/running-performance-overview.png)
 
-After the test has finished the section is updated to show peak RPS in place of current RPS and Active VUs are hidden. If any Performance Alerts have been detected, we will also display that information to you. In this test, our automated algorithms did not find any problems.
+After the test has finished the section is updated to show peak RPS in place of current RPS and Active VUs are hidden. If any Performance Alerts have been detected, we will also display that information to you. In this test, our algorithms did not find any problems.
 
 ![Performance overview of a finished test](images/01-Overview/finished-performance-overview.png)
 
@@ -36,19 +36,19 @@ The first signal of a good or bad result will generally be in the Performance Ov
 Typical signs of a good result:
 
 - Response time has a flat trend for the duration of the test
-- Request rates follow the same ramping pattern as Virtual Users(if VUs increase, so does request rate)
+- Request rates follow the same ramping pattern as Virtual Users (if VUs increase, so does the request rate)
 
-Typical signs of a performance issue/bottleneck
+Typical signs of a performance issue/bottleneck:
 
 - Response times rise during the test
 - Response times rise, then quickly bottom out and stay flat
 - Request rates do not rise with VUs (and response times start to increase)
 
-This is not an all inclusive list. You should use these patterns as a first indicator of good or bad performance of your test.
+This is a non-exhaustive list. You should use these patterns as a first indicator of good or bad performance of your test.
 
 ## Result Tabs
 
-The result tabs allow you to dig into the specific result data sets from your test. We present the following tabs to organize your result data:
+The Result tabs allow you to dig into the specific result data sets from your test. We present the following tabs to organize your result data:
 
 | Tab Name   | Definition                                                                      | Add to analysis? | Sorting                 |
 | ---------- | ------------------------------------------------------------------------------- | ---------------- | ----------------------- |
@@ -59,30 +59,24 @@ The result tabs allow you to dig into the specific result data sets from your te
 | Analysis   | Tab used to compare data for analysis                                           | N/A              | N/A                     |
 | Script     | Script used to run your test (k6 cloud tests only)                              | N/A              | N/A                     |
 
-These tabs let you dig into your test data in a visual and error-driven way. You are able to click on any metric to expand a graph to dig deeper. You can also add these graphs to the Analysis tab. This allows you to look for interesting correlations in your result data. Within each tab note the &#10003; or &#10005; next to the individual metrics if failures were encountered. In the example below, we have two checks with failures which are clearly apparent.
+These tabs let you dig into your test data in a visual and error-driven way. You are able to click on any metric to expand a graph and dig deeper. You can also add these graphs to the Analysis tab. This allows you to look for interesting correlations in your result data. Within each tab note the &#10003; or &#10005; next to the individual metrics if failures were encountered. In the example below, we have two checks with apparent failures.
 
 ![Checks tab with a failing check](images/01-Overview/checks-tab-with-failures.png)
 
-Refer to these articles for more specific information on:
-
-- [Thresholds](/cloud/analyzing-results/threshold-tab)
-- [Checks](/cloud/analyzing-results/checks-tab)
-- [HTTP Table](/cloud/analyzing-results/http-tab)
-
 ## Analysis
 
-The analysis tab enables you to analyze and compare metrics. This is helpful for viewing very specific pieces of your data and finding correlations. Added metrics will first appear as a small chart. You can change your aggregation or select Filters to visualize the data in different ways. Finally, you can use the + to add the data to the large chart for comparison.
+The Analysis tab enables you to analyze and compare metrics. This is helpful for viewing very specific pieces of your data and finding correlations. Added metrics will first appear as a small chart. You can change your aggregation or select Filters to visualize the data in different ways. Finally, you can use the `+` to add the data to the large chart for comparison.
 
-Here are some general tips to consider when adding metrics and using this tab.
+Here are some general tips to consider when adding metrics and using this tab:
 
-- Ensure that VUs and Request rate follow the same trend.
+- Ensure that VUs and Request rate follow the same trend
 - Add and compare interesting requests from the HTTP and Websocket tabs to compare with other metrics
-- Add the load generator CPU and Memory consumption metrics to ensure they are not saturated (metrics only available for tests run in the cloud)
+- Add the load generator CPU and Memory consumption metrics to ensure they are not saturated (metrics are only available for tests run in the cloud)
 - Add thresholds that have been exceeded
 - Add checks that have failures
 - Add metrics for endpoints that you have specific SLAs/SLOs on
 
-The above list is not meant to be all inclusive, rather a starting point in helping you dig into performance related issues so you can identify them.
+The above list is meant as a starting point in helping you identify performance related issues.
 
 ## See Also
 
