@@ -4,7 +4,7 @@ excerpt: 'Your entire organization’s thresholds in one place'
 ---
 
 The Thresholds page helps you track and manage all your organization’s thresholds.
-You can easily find the tests with failing thresholds, which project they belong to, what the thresholds current status and history is, and if there are patterns that need your attention.
+You can easily find tests with failing thresholds, check which project they belong to, their current status and history, and if there are patterns that need your attention.
 
 The Thresholds page can be found in the **Manage** section of the left menu.
 
@@ -33,4 +33,4 @@ Here are the thresholds and their accompanying data.
 
 ## See Also
 
-For more information about thresholds and how to use them in your tests, please refer to our documentation - [What are thresholds?](/using-k6/thresholds/#what-are-thresholdss)
+For more [information about thresholds](/using-k6/thresholds/#what-are-thresholdss) and how to use them in your tests, please refer to our documentation.
