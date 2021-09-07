@@ -64,7 +64,7 @@ Once you've finished editing the summary, you can click the `Generate PDF` butto
 
 ## Export as CSV
 
-To export the test result as CSV, visit the test result, , click the options menu - triple-dot button **⫶** in the top right - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
+To export the test result as CSV, visit the test result, click the options menu - the three dots in the top right - and select `Export Data`. The data will be exported as a `.tar.gz` file with a `.csv` contained inside.
 
 The CSV data has the following columns of data:
 
