@@ -9,11 +9,11 @@ The Test Results menu allows you to take some more actions on your specific test
 
 ## Generate PDF summary
 
-The PDF report is an executive summary of the test result's most relevant metrics and performance data. Read more to this [documentation](/cloud/analyzing-results/result-export#generate-pdf-report)
+The PDF report is an executive summary of the test result's most relevant metrics and performance data. For more information, please refer to our [documentation on Result Export](/cloud/analyzing-results/result-export#generate-pdf-report).
 
 ## Export data
 
-Starts a data export. For more information on the structure of the export, please refer to this [documentation](/cloud/analyzing-results/result-export#export-as-csv)
+Starts a data export. For more information on the structure of the export, please refer to the [documentation](/cloud/analyzing-results/result-export#export-as-csv).
 
 ## Share test results
 
@@ -23,7 +23,7 @@ Generates a URL that you can use to share test results.
 
 #### Test Result Sharing URL
 
-The generated URL does not require a user to be authenticated to view. If you want to share sensitive results, considering add users as [Team Members](/cloud/project-and-team-management/team-members) instead.
+The generated URL does not require a user to be authenticated to view. If you want to share sensitive results, consider adding users as [Team Members](/cloud/project-and-team-management/team-members) instead.
 
 **Note**: The URL is not generated until after you choose the option to share.
 
@@ -37,7 +37,7 @@ Deletes the current test result.
 
 <Blockquote mod="warning">
 
-#### Test Deletion is not reversible
+#### Test deletion is not reversible
 
 </Blockquote>
 
