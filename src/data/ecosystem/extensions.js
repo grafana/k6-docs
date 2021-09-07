@@ -506,6 +506,19 @@ const extensions = [
     official: false,
     categories: ['Reporting', 'Observability'],
   },
+  {
+    name: 'xk6-cable',
+    description:
+      'A k6 extension for testing Action Cable and AnyCable functionality.',
+    url: 'https://github.com/anycable/xk6-cable',
+    logo: '',
+    author: {
+      name: 'Evil Martians',
+      url: 'https://github.com/evilmartians',
+    },
+    official: false,
+    categories: ['Messaging'],
+  },
 ];
 
 export default extensions;
