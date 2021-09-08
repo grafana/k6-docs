@@ -3,27 +3,54 @@ title: 'Cloud APM'
 excerpt: 'How to export metrics from k6 Cloud to APM platforms'
 ---
 
-k6 Cloud supports exporting metrics to APM platforms, enabling users to export metrics from a running test to their preferred [APM](https://en.wikipedia.org/wiki/Application_performance_management) platform(s) in near real-time.
+Cloud tests can export their metrics in near real-time to various APM platforms, allowing you to correlate and query testing metrics with other system metrics on your APM of choice:
 
-> ⭐️ APM integrations are available on Pro and Enterprise plans, as well as on the annual Team plan and Trial.
+<Glossary>
 
-## Supported APM Providers
+- [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)
+- [DataDog](/cloud/integrations/cloud-apm/datadog)
+- [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
+- [New Relic](/cloud/integrations/cloud-apm/new-relic)
 
-Each supported APM platform is called a provider in Cloud APM. As you'll see in each platform's respective section, the `provider` is a key passed to the APM configuration object and its value should match the providers listed below. Also, each provider has a separate set of configuration parameters. Therefore you need to visit your provider's page:
+</Glossary>
 
-| Provider       | Platform page                                                                    | Supported Regions                                                                        |
-| -------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `datadog`      | [DataDog](/cloud/integrations/cloud-apm/datadog)                                 | [DataDog supported regions](/cloud/integrations/cloud-apm/datadog#supported-regions)     |
-| `azuremonitor` | [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)                     | [Azure supported regions](/cloud/integrations/cloud-apm/azure-monitor#supported-regions) |
-| `prometheus`   | [Prometheus Remote Write](/cloud/integrations/cloud-apm/prometheus-remote-write) | Not applicable                                                                           |
 
-This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like to see a particular integration.
+_Additionally, k6 Cloud supports exporting metrics to [Prometheus](/cloud/integrations/prometheus-remote-write/) instances using the remote write feature._ 
 
-## Configuration Parameters
 
-To increase flexibility, the APM export functionality is configured on the test-run level. The required parameters should be specified in `options.ext.loadimpact.apm` (See [extension options](/using-k6/options#extension-options) for more information).
+> ⭐️ &nbsp;Cloud APM integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
-Common configuration parameters for all providers are as follows:
+## Configuration
+
+The APM export functionality is configured on the test level; each test has to set up its APM settings to export the metrics of their test runs. 
+
+- You can configure a test to export to multiple different APM providers.
+- You can configure the APM settings using the k6 Cloud app and test builder or scripting the k6 test.
+
+For more detailed instructions, refer to the documentation of your APM: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor), [DataDog](/cloud/integrations/cloud-apm/datadog), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud), or [New Relic](/cloud/integrations/cloud-apm/new-relic).
+
+
+## Default APM Metrics
+
+By default, the APM integrations only export a subset of k6 metrics - the default APM metrics. 
+
+The `includeDefaultMetrics` option in the k6 script controls whether to export the default APM metrics or not. The default APM metrics are:
+
+| Metric Name          | Type    | Description                                                                                                                                                                                                     |
+| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| vus                | Gauge   | Current number of active virtual users                                       |
+| iterations         | Counter | The aggregate number of times the VUs in the test have executed the JS script. |
+| data_received      | Counter | The amount of received data.                                                                   |
+| data_sent          | Counter | The amount of data sent.                                                                       |
+| http_reqs                | Counter | How many HTTP requests has k6 generated, in total.                 |
+| http_req_duration        | Trend   | Total time for the request.  `float` |
+
+
+If you are not familiar with the different types of k6 metrics, we recommend reading the [Metrics page](/using-k6/metrics/).
+
+> By default, the integration only send these metrics to avoid unexpected costs with your APM provider. APM providers charges based on the number of stored metrics, and a load test can generate a massive amount of metrics. 
+
+If you need to select the metrics to export, use the `metrics` option.  In the k6 script, you can set both options - `includeDefaultMetrics` and `metrics` - as follows:
 
 ```javascript
 export let options = {
@@ -31,18 +58,13 @@ export let options = {
     loadimpact: {
       apm: [
         {
-          provider: "<first provider>",
-          // provider-specific configurations
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          includeDefaultMetrics: true,
-          includeTestRunId: true
-        },
-        {
-          provider: "<second provider>",
-          // provider-specific configurations
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
-          includeDefaultMetrics: true,
-          includeTestRunId: true
+          provider: "your-provider",
+
+          // Whether it exports the default APM metrics. Default is true.
+          includeDefaultMetrics: false,
+          // List of built-in and custom metrics to export. Default is empty.
+          metrics: ["vus", "http_req_duration", "http_req_sending", "my_rate", "my_gauge", ...],
+          //....
         },
       ]
     },
@@ -50,40 +72,10 @@ export let options = {
 };
 ```
 
-Here's what each key means:
+## Considerations
 
-- `provider` is the name of the APM platform.
-- `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed in their respective platform pages.
-- `metrics` is the array of custom metrics you want to export from your test run (optional).
-- `includeDefaultMetrics` should be set if you want built-in metrics to be included in your export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `includeDefaultMetrics` key enabled makes the configuration object to combine built-in and custom metrics.
-- `includeTestRunId` should be set if you want to have the test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
-
-As you see in the configuration object above, there is an array containing two different objects under the `apm` key. This means that you can send metrics to multiple APM providers, provided that you have them enabled in your subscription. Please [contact us](https://k6.io/contact) if you want multiple providers to be able to your test run at the same time.
-
-## Built-in Metrics
-
-The following built-in metrics are enabled by default, and are exported to the APM platform of your choice. They can also be disabled by setting the `includeDefaultMetrics` key to `false`. If you disable default metrics, you will need to specify an array of metrics using the `metrics` key.
-
-- data_sent
-- data_received
-- http_req_duration
-- http_reqs
-- iterations
-- vus
-
-## Requirements
-
-For the metric export to function properly, you have to fulfill the following:
-
-- If you use custom metrics in your script, remember to add them to the `metrics` array, otherwise, those metrics won't be automatically exported.
-- If you want to export built-in metrics that are not listed above, you can include them in the `metrics` array.
+- APM data export is supported for tests that are up to 1 hour long (3600 seconds plus 30 seconds of `gracefulStop`). Longer tests are currently not supported.
 - If the APM configuration has errors, (e.g. invalid provider, wrong credentials, etc) the configuration will be ignored, and the test will be executed without the APM functionality.
-- If you provide invalid metrics to the `metrics` field, the test will continue, but the metrics export(s) will not include the invalid metric.
-- The metrics defined in `metrics` are case-sensitive.
-- Each APM provider gives you the ability to filter metrics based on `test_run_id`, but we don't export `test_run_id` as an extra tag by default. If you want to export it, you should set `includeTestRunId` to `true`.
+- The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed. The Prometheus Remote Write integration doesn't have a 2nd pass export.
+- Duplicate APM configuration parameters of the same provider is not allowed. For example, you cannot export metrics to two Prometheus Remote Write servers at the same time. This also applies to the other providers.
 
-## Limitations
-
-1. APM data export is supported for tests that are up to 1 hour long (3600 seconds plus 30 seconds of `gracefulStop`). Longer tests are currently not supported.
-2. The data exported in near real-time may appear incorrect until the test is finished and the 2nd pass export has completed. The Prometheus Remote Write integration doesn't have a 2nd pass export.
-3. Duplicate APM configuration parameters of the same provider is not allowed. For example, you cannot export metrics to two Prometheus Remote Write servers at the same time. This also applies to the other providers.
