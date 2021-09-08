@@ -4,7 +4,7 @@ excerpt: 'Explanation of organizations and the hierarchy in the k6 web app'
 ---
 
 
-> **Runing tests in another Organization**
+> **Running tests in another Organization**
 > 
 > If you have been invited to another organization as a Team Member, you must specify a projectID in `ext.loadimpact.projectID` in order to use that organization's subscription to run your test.
 
@@ -27,8 +27,3 @@ If you have been invited to another user's Organization, you will have access ba
 Please refer to the following diagram to visualize the relationship of different aspects of the web application
 
 ![Hierarchy](./images/01-Organizations/organization-hierarchy-diagram.png)
-
-## See also
-
-- [Projects](/cloud/project-and-team-management/projects)
-- [Team Members](/cloud/project-and-team-management/team-members)
