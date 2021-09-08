@@ -3,9 +3,9 @@ title: 'Cloud APM'
 excerpt: 'How to export metrics from k6 Cloud to APM platforms'
 ---
 
-k6 Cloud platform supports exporting metrics to APM platforms, thereby enabling users to export metrics from a running test in near real-time to their preferred [APM](https://en.wikipedia.org/wiki/Application_performance_management) platform(s).
+k6 Cloud supports exporting metrics to APM platforms, enabling users to export metrics from a running test to their preferred [APM](https://en.wikipedia.org/wiki/Application_performance_management) platform(s) in near real-time.
 
-> ⭐️ APM integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
+> ⭐️ APM integrations are available on Pro and Enterprise plans, as well as on the annual Team plan and Trial.
 
 ## Supported APM Providers
 
@@ -17,7 +17,7 @@ Each supported APM platform is called a provider in Cloud APM. As you'll see in 
 | `azuremonitor` | [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)                     | [Azure supported regions](/cloud/integrations/cloud-apm/azure-monitor#supported-regions) |
 | `prometheus`   | [Prometheus Remote Write](/cloud/integrations/cloud-apm/prometheus-remote-write) | Not applicable                                                                           |
 
-This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like an integration that isn't currently listed.
+This list will be expanded in the future. Please [contact us](https://k6.io/contact) if you would like to see a particular integration.
 
 ## Configuration Parameters
 
@@ -54,9 +54,9 @@ Here's what each key means:
 
 - `provider` is the name of the APM platform.
 - `// provider-specific configurations` is the respective configuration parameters for your APM provider, which are listed in their respective platform pages.
-- `metrics` is the array of custom metrics you want to export from your test run, if you want.
-- `includeDefaultMetrics` should be set if you want built-in metrics to be included in you export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `includeDefaultMetrics` key enabled makes the configuration object to combine built-in and custom metrics.
-- `includeTestRunId` should be set if you want to have test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
+- `metrics` is the array of custom metrics you want to export from your test run (optional).
+- `includeDefaultMetrics` should be set if you want built-in metrics to be included in your export. Otherwise only the keys in `metrics` will be exported. This is enabled by default, which means the `metrics` key is populated with built-in metrics. Passing custom metrics to the `metrics` key and having `includeDefaultMetrics` key enabled makes the configuration object to combine built-in and custom metrics.
+- `includeTestRunId` should be set if you want to have the test run ID as a tag/label in your metrics export. Because it increases the number of metrics recorded by each APM provider, hence increased costs, it is disabled (`false`) by default.
 
 As you see in the configuration object above, there is an array containing two different objects under the `apm` key. This means that you can send metrics to multiple APM providers, provided that you have them enabled in your subscription. Please [contact us](https://k6.io/contact) if you want multiple providers to be able to your test run at the same time.
 
