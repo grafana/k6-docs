@@ -58,7 +58,7 @@ export let options = {
 
 ## Supported Regions
 
-These are the supported regions for Azure Monitor integration:
+Supported regions for Azure Monitor integration are:
 
 | Geographic Region    | Supported Azure Region(s)                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -86,13 +86,13 @@ For sending custom metrics from your test run to Azure Monitor, follow these ins
 5. Go to your resource group and assign "Monitoring Metrics Publisher" role to the user and the service principal.
 
     ![Resource group's access controls](images/rg-access-controls.png)
-6. Create a log analytics workspace. The region is chosen here, so make note of it.
+6. Create a log analytics workspace. The region is chosen here, so take note of it.
 
     ![Log analytics workspace](images/azure-log-analytics-workspace.png)
 7. Create an app under application insights with your log analytics workspace. The region should match the log analytics workspace.
 
     ![Application insights](images/azure-application-insights.png)
 8. Start your test run with the parameters you've extracted from the steps 1-6.
-9. Your metrics will be exported to Azure Monitor with a 3~4 minutes delay. You can view them on metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in metric dropdown. If you didn't see the results, try to narrow down the time range to last 30 minutes or less.
+9. Your metrics will be exported to Azure Monitor with a 3~4 minutes delay. You can view them on the metrics section of the Azure Monitor. Just choose application insights name as scope, k6 as metrics namespace and your metrics (and their associated aggregation methods) will be shown in the metric dropdown. If you don't see the results, try to narrow down the time range to last 30 minutes or less.
 
     ![Azure Monitor metrics](images/azure-monitor.png)
