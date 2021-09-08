@@ -74,7 +74,7 @@ export let options = {
 
 ## New Relic Setup
 
-For sending custom metrics from your test run to New Relic's Prometheus remote write integration, follow the [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) on their documentation.
+For sending custom metrics from your test run to New Relic's Prometheus Remote Write integration, follow the [instructions](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) in their documentation.
 
 The `prometheus_server` parameter should be included in the `remoteWriteURL` configuration parameter. The bearer token can be included either as `credentials.token` (APM configuration parameter) or as part of the `remoteWriteURL` using the `X-License-Key` parameter, as mentioned in their documentation.
 
@@ -103,9 +103,9 @@ export let options = {
 
 ## Grafana Cloud Setup
 
-For sending custom metrics from your test run to Grafana Cloud's Prometheus remote write integration, follow the [instructions](https://grafana.com/docs/grafana-cloud/metrics/prometheus/#sending-data-from-prometheus) on their documentation.
+For sending custom metrics from your test run to Grafana Cloud's Prometheus Remote Write integration, follow the [instructions](https://grafana.com/docs/grafana-cloud/metrics/prometheus/#sending-data-from-prometheus) in their documentation.
 
-As also mentioned in their documentation, you can find the `remoteWriteURL`, username and password for your metrics endpoint by clicking on `Details` in the Prometheus card of the Grafana [Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/). When you are [creating an API key](https://grafana.com/docs/grafana-cloud/cloud-portal/create-api-key/) on Grafana Cloud Portal to be used as password, make sure to use `MetricsPublisher` as role.
+As also mentioned in their documentation, you can find the `remoteWriteURL`, username and password for your metrics endpoint by clicking on `Details` in the Prometheus card of the Grafana [Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/). When you [create an API key](https://grafana.com/docs/grafana-cloud/cloud-portal/create-api-key/) on the Grafana Cloud Portal to be used as password, make sure to use `MetricsPublisher` as role.
 
 An example configuration for Grafana Cloud might look like this:
 
