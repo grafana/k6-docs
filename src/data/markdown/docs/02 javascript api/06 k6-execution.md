@@ -76,7 +76,7 @@ import { SharedArray } from "k6/data";
 var items = 10;
 var data = new SharedArray("mydata", function() {
   var arr = new Array(items);
-  for (var i = 0; i  items; i++) {
+  for (var i = 0; i < items; i++) {
     arr[i] = {"foo": "item" + i, "bar": "12345678"}
   }
   return arr;
@@ -86,7 +86,7 @@ export const options = {
   scenarios: {
     "use-all-the-data": {
       executor: "shared-iterations",
-      vus: 100,
+      vus: 3,
       iterations: data.length, // here you can also multiply so it goes through it multiple times
       maxDuration: "1h" // this will need to be big enough so that all the iterations can happen if that is what is wanted
     }
