@@ -35,7 +35,7 @@ locally with `k6 run`.
 
 ## Examples
 
-In this example, we'll execute a test controllable at runtime, starting with 0 VUs up to
+In this example, we'll execute a test controllable at runtime, starting with 10 VUs up to
 a maximum of 50, and a total duration of 10 minutes.
 
 <CodeGroup labels={[ "externally-controlled.js" ]} lineNumbers={[true]}>
@@ -48,7 +48,7 @@ export let options = {
   scenarios: {
     contacts: {
       executor: 'externally-controlled',
-      vus: 0,
+      vus: 10,
       maxVUs: 50,
       duration: '10m',
     },
@@ -59,5 +59,7 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
+
+Once the test has started, it can be externally controlled with the `pause`, `resume`, and `scale` CLI commands.
 
 </CodeGroup>
