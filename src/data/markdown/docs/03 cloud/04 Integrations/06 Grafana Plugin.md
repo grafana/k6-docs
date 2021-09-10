@@ -37,13 +37,13 @@ Copy your [k6 Cloud Token](/cloud/integrations/token) and paste it into the API 
 
 ## Import the k6 Cloud dashboards 
 
-The k6 Cloud data source includes two dashboards that can be imported from the Dashboards tab.
+The k6 Cloud data source includes two dashboards. Import both from the Dashboards tab.
 
 ![k6 Cloud Grafana Data Source Dashboards](./images/06-Grafana-Plugin/k6_cloud_grafana_import_dashboard.png)
 
 ## Visualize the k6 Cloud test results 
 
-After importing the k6 dashboard, select a k6 dashboard to find a test across all your k6 projects and visualize the test results in Grafana.
+You can now select a k6 dashboard to find a test across all your k6 projects and visualize the test results in Grafana.
 
 ![k6 Cloud Test Listing Dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_list_dashboard.png)
 
