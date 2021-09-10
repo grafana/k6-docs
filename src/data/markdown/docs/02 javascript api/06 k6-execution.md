@@ -34,7 +34,7 @@ The module has a default export that has the following keys: `scenario`, `instan
 >
 > All unique identifiers are sequentially generated starting from a base of zero (iterations) or one (VU IDs). In distributed/cloud test runs, the test-wide iteration numbers and VU identifiers are still going to be unique across instances, though there might be gaps in the sequences when, for example, some instances execute faster iterations than others or allocate more VUs mid-test.
 
-### Scenario
+## scenario
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | name                | string  | The assigned name of the running scenario.                                |
@@ -44,7 +44,7 @@ The module has a default export that has the following keys: `scenario`, `instan
 | iterationInInstance | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the current instance. |
 | iterationInTest     | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the entire test. It is unique in all k6 execution modes - in local, cloud and distributed/segmented test runs. However, while every instance will get non-overlapping index values in cloud/distributed tests, they might iterate over them at different speeds, so the values won't be sequential across them. |
 
-### Instance
+## instance
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | iterationsInterrupted                | integer  | The number of prematurely interrupted iterations in the current instance. |
@@ -53,7 +53,7 @@ The module has a default export that has the following keys: `scenario`, `instan
 | vusInitialized           | integer | The number of currently initialized VUs.                                                                           |
 | currentTestRunDuration            | float   | The time passed from the start of the current test run in milliseconds.                    |
 
-### VU
+## vu 
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | iterationInInstance | integer | The identifier of the iteration in the current instance.                                                                 |
