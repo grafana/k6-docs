@@ -31,7 +31,7 @@ Importante: este es el único ejecutor que no está soportado en k6 Cloud, sólo
 
 ## Ejemplo
 
-En este ejemplo, ejecutaremos una prueba controlable en tiempo de ejecución, comenzando con 0 VUs hasta un máximo de 50, y una duración total de 10 minutos.
+En este ejemplo, ejecutaremos una prueba controlable en tiempo de ejecución, comenzando con 10 VUs hasta un máximo de 50, y una duración total de 10 minutos.
 
 <CodeGroup labels={[ "externally-controlled.js" ]} lineNumbers={[true]}>
 
@@ -43,7 +43,7 @@ export let options = {
   scenarios: {
     contacts: {
       executor: 'externally-controlled',
-      vus: 0,
+      vus: 10,
       maxVUs: 50,
       duration: '10m',
     },
