@@ -4,6 +4,7 @@ import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
+import Collapsible from 'components/shared/collapsible';
 import { HeadingLandmark } from 'components/shared/heading';
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
@@ -24,6 +25,7 @@ const componentsForNativeReplacement = {
   inlineCode: CodeInline,
   pre: Code,
   CodeGroup,
+  Collapsible,
 };
 
 export const DocPageContent = ({ label, content, mod, version }) => {
