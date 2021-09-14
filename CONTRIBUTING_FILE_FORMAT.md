@@ -316,7 +316,7 @@ Let us know if there is necessity to bring highlight support for another languag
 
     '<CodeGroup labels={["CLI", "Docker"]} showCopyButton={[false, true]}>'
 
-showCopyButton: whether to show or hide the `copy` button.  Default is true.
+showCopyButton: whether to show or hide the `copy` button. Default is true.
 
 #### Line numbers
 
@@ -403,6 +403,32 @@ Result:
 ```
 
 As you can see, the `LdScript` expects a sole prop `script` of type string of JSON-LD data, which it will render appropriately on its own.
+
+## Collapsible
+
+Collapsible accordion elements that allow to expand and collapse content by clicking on them. Could be used to hide content that is not immediately relevant to the user.
+
+To add a collapsible to your article, use the following syntax in the `.md` file:
+
+```md
+<!-- other content -->
+
+<Collapsible title="Collapsible title">
+<!-- the content that will expand/collapse -->
+</Collapsible>
+
+<!-- other content -->
+```
+
+The result:
+![collapsible-collapsed](./internal-images/collapsible-collapsed.png)
+
+After clicking on the `+` button the content becomes visible:
+![collapsible-expanded](./internal-images/collapsible-expanded.png)
+
+The `Collapsible` expects a string `title` and some content.
+
+If you want the component to be expanded by default, use optional`isOpen` prop and set it to `true`: `<Collapsible title="Collapsible title" isOpen="true">`.
 
 ## External Link Card (Blog only)
 

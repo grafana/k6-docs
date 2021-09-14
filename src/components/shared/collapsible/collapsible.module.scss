@@ -42,6 +42,11 @@
     animation: borderFadeOut 0.3s;
     border-bottom-color: $color-additional-2;
   }
+
+  @include md-down {
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+  }
 }
 
 .button {
