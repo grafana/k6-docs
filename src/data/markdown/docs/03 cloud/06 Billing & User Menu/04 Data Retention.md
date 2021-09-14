@@ -26,6 +26,16 @@ You can select a single test run per test as a baseline test. The purpose of thi
 
 ![Set as baseline](images/04-data-retention/set-as-baseline.png)
 
+## Save test result
+
+In addition to saving tests as baseline, each premium k6 Cloud subscription will allow you to save a number of your results of a number of tests indefinitely. The number of saved tests attached to the subscription will depend on the subscription level. Once you save test it will populate 1 of the available slots for saving, removing that test run from the saved tests list in your UI (Manage section on the left hand side menu) will open a slot for a new test run to be saved.
+
+The difference to save as baseline feature is that saved tests are not limited by 1 test run per test.
+
+In order to mark a test run as saved, use the three dot menu in the top right corner of your test run and click `Save test result`
+
+![Save test result](images/04-data-retention/save-test-result.png)
+
 ## Can I export my data
 
 Yes, you can export your test results. Read more [here](/cloud/analyzing-results/result-export).
