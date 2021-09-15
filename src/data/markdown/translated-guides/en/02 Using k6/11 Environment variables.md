@@ -43,7 +43,7 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 </CodeGroup>
 
-The same script will now run 10 virtual users for a duration of 10 seconds, resulting in about 70 iteration loops. Take note you must prefix `K6_` in the environment variable name in order for k6 to evaluate it as a **option parameters**.
+The same script will now run 10 virtual users for a duration of 10 seconds. Take note you must prefix `K6_` in the environment variable name in order for k6 to evaluate it as a **option parameters**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each option.
 
 ## 2. Passing System Environment Variables to Script Code
 
