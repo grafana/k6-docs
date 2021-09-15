@@ -17,6 +17,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 // icons
 import CloudWatch from 'svg/amazon-cloudwatch.inline.svg';
 import Kafka from 'svg/apache-kafka.inline.svg';
+import AWSCodeBuild from 'svg/aws-codebuild.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
 import CSV from 'svg/csv.inline.svg';
@@ -95,6 +96,11 @@ const iconsDataSet1 = [
 ];
 
 const iconsDataSet2 = [
+  {
+    Icon: AWSCodeBuild,
+    name: 'AWS CodeBuild',
+    link: `${blog}/integrating-k6-with-aws-codebuild/`,
+  },
   {
     Icon: Azure,
     name: 'Azure Pipelines',
