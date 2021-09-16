@@ -94,7 +94,7 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 </CodeGroup>
 
-As demonstrated above, you will need to prefix `K6_` in the environment variable name in order for k6 to evaluate it as an **option parameter**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each option.
+As demonstrated above, you will need to prefix `K6_` in the environment variable name in order for k6 to evaluate it as an **option parameter**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each [option](/using-k6/options/#list-of-options).
 
 Note that when you use multiple ways to define options for a script, there's an [order of precedence](https://k6.io/docs/using-k6/options#using-options) that is used to determine which option is actually used. To ensure you are always working with the highest precedence, always use command-line flags instead of environment variables:
 
