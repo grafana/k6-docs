@@ -5,12 +5,12 @@ excerpt: 'You can access any environment variables from your k6 script code, and
 
 A lot of the time, scripts will only need minor tweaking to be reusable in different contexts. Rather than having to create several separate scripts for these different contexts or environments, you can use environment variables to make parts of your script tweakable.
 
-There are two main ways of passing environment variables in k6:
+You can use environment variables for two main purposes:
 
-1. Using `-e` CLI flag
-2. Using [k6 Options](/using-k6/options) environment variables
+1. Passing environment variables to the k6 Script
+2. Configure [k6 Options](/using-k6/options) with environment variables
 
-## Setting Environment Variables using `-e` CLI flag
+## Passing environment variables to the k6 Script
 
 In k6, the environment variables are exposed through a global `__ENV` variable, a JS object. For reference, see the script example below:
 
@@ -58,11 +58,11 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 > #### ⚠️ Warning
 >
-> This option is NOT recommended due to the risk of uploading unnecessary and sensitive environment variables to the cloud. Hence, by default, passing system environment variables does not work for `k6 archive`, `k6 cloud` and `k6 inspect`. You can override this mode by explicitly specifying [`--include-system-env-vars`](https://k6.io/docs/using-k6/options/#include-system-env-vars).
+> By default, passing system environment variables does not work for `k6 archive`, `k6 cloud` and `k6 inspect`. It is a security measure to avoid the risk of uploading sensitive data to k6 Cloud. You can override this mode by explicitly specifying [`--include-system-env-vars`](https://k6.io/docs/using-k6/options/#include-system-env-vars).
 
 </Collapsible>
 
-## k6 Options Environment Variables
+## Configure k6 options with environment variables
 
 k6 [options](/using-k6/options) can be configured by passing environment variables. Consider the following basic test script:
 
@@ -76,7 +76,7 @@ export default function () {
 }
 ```
 
-By default, running the above script locally will execute a single iteration using one virtual user(VU). We can modify the **default behavior** by passing along [k6 Options](/using-k6/options) as environment variables:
+By default, running the above script locally will execute a single iteration using one virtual user(VU). We can modify the **default behavior** by passing along [k6 options](/using-k6/options) as environment variables. For example, we can configure the script to run 10 virtual users for a duration of 10 seconds:
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -94,9 +94,9 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 </CodeGroup>
 
-The same script will now run 10 virtual users for a duration of 10 seconds. Take note you must prefix `K6_` in the environment variable name in order for k6 to evaluate it as a **option parameters**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each option.
+As demonstrated above, you will need to prefix `K6_` in the environment variable name in order for k6 to evaluate it as an **option parameter**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each option.
 
-Take note that when you use multiple ways to define options for a script, there's an [order of precedence](https://k6.io/docs/using-k6/options#using-options) that is used to determine which option is actually used. To ensure you are always working with the highest precedence, always use command-line flags instead of environment variables:
+Note that when you use multiple ways to define options for a script, there's an [order of precedence](https://k6.io/docs/using-k6/options#using-options) that is used to determine which option is actually used. To ensure you are always working with the highest precedence, always use command-line flags instead of environment variables:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
