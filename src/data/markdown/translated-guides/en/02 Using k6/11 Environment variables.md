@@ -56,9 +56,9 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 </CodeGroup>
 
-> #### ⚠️ Warning
->
-> By default, passing system environment variables does not work for `k6 archive`, `k6 cloud` and `k6 inspect`. It is a security measure to avoid the risk of uploading sensitive data to k6 Cloud. You can override this mode by explicitly specifying [`--include-system-env-vars`](/using-k6/options/#include-system-env-vars).
+#### ⚠️ Warning
+
+By default, passing system environment variables does not work for `k6 archive`, `k6 cloud` and `k6 inspect`. It is a security measure to avoid the risk of uploading sensitive data to k6 Cloud. You can override this mode by explicitly specifying [--include-system-env-vars](/using-k6/options/#include-system-env-vars).
 
 </Collapsible>
 
