@@ -13,6 +13,7 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 - [Test status codes](#test-status-codes)
 - [What are VUs (Virtual Users)?](#what-are-vus-virtual-users)
 - [How many VUs can be run from the same Dedicated IP?](#how-many-vus-can-be-run-from-the-same-dedicated-ip)
+- [Why am I receiving Max concurrency reached error message and how do I get rid of it?](#Max-concurrency-reached-error-message)
 - [Data uploads with k6 Cloud](#data-uploads-with-k6-cloud)
 - [Pricing FAQ](/cloud/cloud-faq/pricing-questions)
 
@@ -339,6 +340,21 @@ For example, if you start a test with 900VUs, we will use 3x Tier 1 servers. Tha
 If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 server. If the same test is started in 2 load zones, there will be 500VUs per load zone and 4x Tier 1 servers will be used.
 
 > Note that these are the _defaults_. If your tests have specific requirements, please contact k6 support for a custom solution.
+
+---
+
+### Max concurrency reached error message
+
+> **What is concurrency?**: In the context of the k6 Cloud, concurrency is the ability to execute more than one test run simultaneously. The number of tests you can run concurrently is defined by your k6 Cloud subscription. In case you would need to increase this parameter on your subscription, please contact our support team.
+
+In addition to increasing concurrency directly on your subscription, you can set the concurrency limit policy on your organization. This policy will dictate the behaviour of the k6 Cloud when the concurrency limit is reached. There are 2 options:
+
+- queue test: once the concurrency limit is reached and a new test run is initiated, this test run will be queued for execution and started once a slot is opened. (A queued test will automatically timeout if no slot is made available in 6 hours)
+- abort test: once the concurrency limit is reached and a new test run is initiated, this test run will be automatically aborted - this is the default behaviour set on your organization
+
+Please note that in order to change the concurrency limit policy you will need to be the owner of the organization. The policy can be changed if you navigate to your user menu (top left hand side of the screen) > Organization settings > Settings:
+
+![Concurrency limit polict](./images/01-concurrency-limit-policy.png)
 
 ---
 
