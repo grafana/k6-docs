@@ -13,7 +13,7 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 - [Test status codes](#test-status-codes)
 - [What are VUs (Virtual Users)?](#what-are-vus-virtual-users)
 - [How many VUs can be run from the same Dedicated IP?](#how-many-vus-can-be-run-from-the-same-dedicated-ip)
-- [Why am I receiving Max concurrency reached error message and how do I get rid of it?](#Max-concurrency-reached-error-message)
+- [Why am I receiving Max concurrency reached error message and how do I get rid of it?](#max-concurrency-reached-error-message)
 - [Data uploads with k6 Cloud](#data-uploads-with-k6-cloud)
 - [Pricing FAQ](/cloud/cloud-faq/pricing-questions)
 
@@ -345,16 +345,16 @@ If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 se
 
 ### Max concurrency reached error message
 
-> **What is concurrency?**: In the context of the k6 Cloud, concurrency is the ability to execute more than one test run simultaneously. The number of tests you can run concurrently is defined by your k6 Cloud subscription. In case you would need to increase this parameter on your subscription, please contact our support team.
+> **What is concurrency?**  In the context of the k6 Cloud, concurrency is the ability to execute more than one test run simultaneously. Your k6 Cloud subscription defines the maximum number of concurrent test runs. If you need to increase this limit, please contact our support team.
 
-In addition to increasing concurrency directly on your subscription, you can set the concurrency limit policy on your organization. This policy will dictate the behaviour of the k6 Cloud when the concurrency limit is reached. There are 2 options:
+Additionally, you can change the concurrency limit policy that defines how the k6 Cloud acts when the organization reaches the limit and a new test run is triggered.  Two options are available:
 
-- queue test: once the concurrency limit is reached and a new test run is initiated, this test run will be queued for execution and started once a slot is opened. (A queued test will automatically timeout if no slot is made available in 6 hours)
-- abort test: once the concurrency limit is reached and a new test run is initiated, this test run will be automatically aborted - this is the default behaviour set on your organization
+- `Abort test`: the new test run will be automatically aborted. This is the default option. 
+- `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours.
 
-Please note that in order to change the concurrency limit policy you will need to be the owner of the organization. The policy can be changed if you navigate to your user menu (top left hand side of the screen) > Organization settings > Settings:
+Note that to change the concurrency limit policy, you must be the organization owner. You can change the policy navigating your user menu (top-left side of the screen) > Organization settings > Settings:
 
-![Concurrency limit polict](./images/01-concurrency-limit-policy.png)
+![Concurrency limit policy](./images/01-concurrency-limit-policy.png)
 
 ---
 
