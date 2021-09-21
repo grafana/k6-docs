@@ -61,7 +61,7 @@ const extensions = [
   {
     name: 'xk6-sql',
     description:
-      'k6 Plugin to Load Test SQL Servers (PostgreSQL, MySQL and SQLite3 for now)',
+      'k6 extension to Load Test SQL Servers (PostgreSQL, MySQL and SQLite3 for now).',
     url: 'https://github.com/imiric/xk6-sql',
     logo: '',
     author: {
@@ -301,7 +301,7 @@ const extensions = [
   },
   {
     name: 'xk6-encoding',
-    description: '',
+    description: 'Enables k6 tests to comfortably parse CSV values.',
     url: 'https://github.com/mstoykov/xk6-encoding',
     logo: '',
     author: {
@@ -313,7 +313,7 @@ const extensions = [
   },
   {
     name: 'xk6-counter',
-    description: '',
+    description: 'Implements a singular local counter that goes up. Returns the current value before increasing it.',
     url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
@@ -397,7 +397,7 @@ const extensions = [
   },
   {
     name: 'xk6-amqp',
-    description: 'AMQP xk6 plugin. Tested with RabbitMQ',
+    description: 'AMQP xk6 plugin. Tested with RabbitMQ.',
     url: 'https://github.com/grafana/xk6-amqp',
     logo: '',
     author: {
@@ -471,7 +471,7 @@ const extensions = [
   },
   {
     name: 'xk6-dotenv',
-    description: 'A k6 extension that loads env vars from a .env file',
+    description: 'A k6 extension that loads env vars from a .env file.',
     url: 'https://github.com/szkiba/xk6-dotenv',
     logo: '',
     author: {
