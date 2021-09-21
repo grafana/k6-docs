@@ -313,7 +313,8 @@ const extensions = [
   },
   {
     name: 'xk6-counter',
-    description: 'Implements a singular local counter that goes up. Returns the current value before increasing it.',
+    description:
+      'Implements a singular local counter that goes up. Returns the current value before increasing it.',
     url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
