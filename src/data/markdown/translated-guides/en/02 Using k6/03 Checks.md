@@ -92,7 +92,7 @@ default ✓ [======================================] 1 VUs  00m00.6s/10m0s  1/1 
 > #### About Failing Checks
 >
 > When a check fails, the script will continue executing successfully and will not return a 'failed' exit status.
-> If you need the whole test to fail based on the results of a check, you'll need to [combine checks with thresholds](https://k6.io/docs/using-k6/thresholds/#failing-a-load-test-using-checks).
+> If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](https://k6.io/docs/using-k6/thresholds/#failing-a-load-test-using-checks).
 > This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
 ## Checks in k6 Cloud Results
@@ -104,7 +104,7 @@ at given points in the test. You can also add the check to the analysis tab, for
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
-## See Also
+## See also
 
-- [Tags](/using-k6/tags-and-groups/#tags)
+- [Check Javascript API](/javascript-api/k6/check-val-sets-tags/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
