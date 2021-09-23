@@ -104,6 +104,7 @@ at given points in the test. You can also add the check to the analysis tab, for
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
-> #### 📖 More Information
->
-> To learn more about Checks, checkout the [Checks API](/javascript-api/k6/check-val-sets-tags)
+## See Also
+
+- [Tags](/using-k6/tags-and-groups/#tags)
+- [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

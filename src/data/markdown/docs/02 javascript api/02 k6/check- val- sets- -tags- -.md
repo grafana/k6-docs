@@ -44,17 +44,17 @@ export default function () {
 
 </CodeGroup>
 
-Using `check()` with a custom tag to verify that an HTTP response code was 200 and that body was 1234 bytes:
+Using `check()` with a custom tag to verify that an HTTP response code was 200 and that body was 1234 bytes. The `checkOutput` can be used for any condition in your script logic:
 
 <CodeGroup labels={[]}>
 
 ```javascript
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, fail } from 'k6';
 
 export default function () {
   let res = http.get('http://httpbin.org');
-  check(
+  let checkOutput = check(
     res,
     {
       'response code was 200': (res) => res.status == 200,
@@ -70,8 +70,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-### See Also
-
-- [Tags](/using-k6/tags-and-groups/#tags)
-- [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
