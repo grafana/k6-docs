@@ -15,7 +15,7 @@ The _built-in_ metrics are the ones you can see output to stdout when you run th
 import http from 'k6/http';
 
 export default function () {
-  const response = http.get('https://test-api.k6.io/');
+  http.get('https://test-api.k6.io/');
 }
 ```
 
