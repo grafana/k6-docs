@@ -24,9 +24,27 @@ Failure conditions can then instead be controlled by thresholds, for more power 
 | ------- | ------------------------------------------------------- |
 | boolean | `true` if all checks have succeeded, `false` otherwise. |
 
-### Example
+### Examples
 
-Using `check()` to verify that an HTTP response code was 200 and that body was 1234 bytes:
+Using `check()` to verify that an HTTP response code was 200:
+
+<CodeGroup labels={[]}>
+
+```javascript
+import http from 'k6/http';
+import { check } from 'k6';
+
+export default function () {
+  let res = http.get('http://httpbin.org');
+  check(res, {
+    'response code was 200': (res) => res.status == 200,
+  });
+}
+```
+
+</CodeGroup>
+
+Using `check()` with a custom tag to verify that an HTTP response code was 200 and that body was 1234 bytes:
 
 <CodeGroup labels={[]}>
 
@@ -48,3 +66,8 @@ export default function () {
 ```
 
 </CodeGroup>
+
+### See Also
+
+- [Tags](/using-k6/tags-and-groups/#tags)
+- [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
