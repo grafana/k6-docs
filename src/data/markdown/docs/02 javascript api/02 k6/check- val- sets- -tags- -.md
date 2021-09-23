@@ -24,9 +24,9 @@ Failure conditions can then instead be controlled by thresholds, for more power 
 | ------- | ------------------------------------------------------- |
 | boolean | `true` if all checks have succeeded, `false` otherwise. |
 
-### Example
+### Examples
 
-Using `check()` to verify that an HTTP response code was 200 and that body was 1234 bytes:
+Using `check()` to verify that an HTTP response code was 200:
 
 <CodeGroup labels={[]}>
 
@@ -38,8 +38,34 @@ export default function () {
   let res = http.get('http://httpbin.org');
   check(res, {
     'response code was 200': (res) => res.status == 200,
-    'body size was 1234 bytes': (res) => res.body.length == 1234,
   });
+}
+```
+
+</CodeGroup>
+
+Using `check()` with a custom tag to verify that an HTTP response code was 200 and that body was 1234 bytes. The `checkOutput` can be used for any condition in your script logic:
+
+<CodeGroup labels={[]}>
+
+```javascript
+import http from 'k6/http';
+import { check, fail } from 'k6';
+
+export default function () {
+  let res = http.get('http://httpbin.org');
+  let checkOutput = check(
+    res,
+    {
+      'response code was 200': (res) => res.status == 200,
+      'body size was 1234 bytes': (res) => res.body.length == 1234,
+    },
+    { myTag: "I'm a tag" },
+  );
+
+  if (!checkOutput) {
+    fail('unexpected response');
+  }
 }
 ```
 
