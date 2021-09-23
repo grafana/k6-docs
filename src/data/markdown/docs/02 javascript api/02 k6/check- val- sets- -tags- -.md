@@ -62,6 +62,10 @@ export default function () {
     },
     { myTag: "I'm a tag" },
   );
+
+  if (!checkOutput) {
+    fail('unexpected response');
+  }
 }
 ```
 
