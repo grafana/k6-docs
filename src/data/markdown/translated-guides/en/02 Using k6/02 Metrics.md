@@ -26,7 +26,7 @@ Running the above script will output something like below:
 <CodeGroup labels={["output"]} lineNumbers={[false]}>
 
 ```bash
-k6 run http_get.js
+$ k6 run script.js
 
           /\      |‾‾| /‾‾/   /‾‾/
      /\  /  \     |  |/  /   /  /
@@ -98,7 +98,15 @@ _built-in_ metrics will only be generated when/if HTTP requests are made:
 
 ### Accessing HTTP timings from a script
 
-If you want to access the timing information from an individual HTTP request, the _built-in_ HTTP timing metrics are also available in the [HTTP Response](/javascript-api/k6-http/response) object:
+If you want to access the timing information from an individual HTTP request in the k6, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`:
+
+- blocked: equals to `http_req_blocked`.
+- connecting: equals to `http_req_connecting`.
+- tls_handshaking: equals to `http_req_tls_handshaking`.
+- sending: equals to  `http_req_sending`.
+- waiting: equals to `http_req_waiting`.
+- receiving: equals to `http_req_receiving`.
+- duration: equals to `http_req_duration`.
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -113,35 +121,14 @@ export default function () {
 
 </CodeGroup>
 
-In the above snippet, `res` is an [HTTP Response](/javascript-api/k6-http/response) object containing:
-
-| Property                    | Description                                                           |
-| --------------------------- | --------------------------------------------------------------------- |
-| res.body                    | `string` containing the HTTP response body                            |
-| res.headers                 | `object` containing header-name/header-value pairs                    |
-| res.status                  | `integer` containing HTTP response code received from server          |
-| res.timings                 | `object` containing HTTP timing information for the request in **ms** |
-| res.timings.blocked         | = `http_req_blocked`                                                  |
-| res.timings.connecting      | = `http_req_connecting`                                               |
-| res.timings.tls_handshaking | = `http_req_tls_handshaking`                                          |
-| res.timings.sending         | = `http_req_sending`                                                  |
-| res.timings.waiting         | = `http_req_waiting`                                                  |
-| res.timings.receiving       | = `http_req_receiving`                                                |
-| res.timings.duration        | = `http_req_duration`                                                 |
-
 Below is the expected (partial) output:
 
-<CodeGroup labels={["timings-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run timings.js
+$ k6 run script.js
 
-...
-INFO[0001] Response time was 337.962473 ms               source=console
-
-running (00m00.7s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.7s/10m0s  1/1 iters, 1 per VU
-...
+  INFO[0001] Response time was 337.962473 ms               source=console
 ```
 
 </CodeGroup>
@@ -171,17 +158,18 @@ The above code will create a Trend metric named “waiting_time” and referred 
 
 Custom metrics will be reported at the end of a test. Here is how the output might look:
 
-<CodeGroup labels={["trend-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run trend.js
+$ k6 run script.js
 
-...
-INFO[0001] waiting_time                                  source=console
+  ...
+  INFO[0001] waiting_time                                  source=console
 
-running (00m01.1s), 0/1 VUs, 1 complete and 0 interrupted iterations
-...
-waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
+  ...
+  iteration_duration.............: avg=1.15s    min=1.15s    med=1.15s    max=1.15s    p(90)=1.15s    p(95)=1.15s   
+  iterations.....................: 1     0.864973/s
+  waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
 ```
 
 </CodeGroup>
@@ -201,7 +189,7 @@ All values added to a custom metric can optionally be [tagged](/using-k6/tags-an
 
 ### Counter _(cumulative metric)_
 
-<CodeGroup labels={["counter.js"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[true]}>
 
 ```javascript
 import { Counter } from 'k6/metrics';
@@ -218,21 +206,15 @@ export default function () {
 
 The above code will generate the following output:
 
-<CodeGroup labels={["counter-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run counter.js
+$ k6 run script.js
 
-...
-running (00m00.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
-
-     data_received........: 0 B 0 B/s
-     data_sent............: 0 B 0 B/s
-     iteration_duration...: avg=16.48µs min=16.48µs med=16.48µs max=16.48µs p(90)=16.48µs p(95)=16.48µs
-     iterations...........: 1   1327.67919/s
-     my_counter...........: 3   3983.037571/s
-...
+  ...
+  iteration_duration...: avg=16.48µs min=16.48µs med=16.48µs max=16.48µs p(90)=16.48µs p(95)=16.48µs
+  iterations...........: 1   1327.67919/s
+  my_counter...........: 3   3983.037571/s
 ```
 
 </CodeGroup>
@@ -261,21 +243,15 @@ export default function () {
 
 The above code will result in an output like this:
 
-<CodeGroup labels={["gauge-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run gauge.js
+$ k6 run script.js
 
-...
-running (00m00.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
-
-     data_received........: 0 B 0 B/s
-     data_sent............: 0 B 0 B/s
-     iteration_duration...: avg=21.74µs min=21.74µs med=21.74µs max=21.74µs p(90)=21.74µs p(95)=21.74µs
-     iterations...........: 1   1293.475322/s
-     my_gauge.............: 2   min=1         max=3
-...
+  ...
+  iteration_duration...: avg=21.74µs min=21.74µs med=21.74µs max=21.74µs p(90)=21.74µs p(95)=21.74µs
+  iterations...........: 1   1293.475322/s
+  my_gauge.............: 2   min=1         max=3
 ```
 
 </CodeGroup>
@@ -284,7 +260,7 @@ The value of `my_gauge` will be 2 at the end of the test. As with the Counter me
 
 ### Trend _(collect trend statistics (min/max/avg/percentiles) for a series of values)_
 
-<CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[true]}>
 
 ```javascript
 import { Trend } from 'k6/metrics';
@@ -301,21 +277,15 @@ export default function () {
 
 The above code will make k6 print output like this:
 
-<CodeGroup labels={["trend-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run trend.js
+$ k6 run script.js
 
-...
-running (00m00.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
-
-     data_received........: 0 B 0 B/s
-     data_sent............: 0 B 0 B/s
-     iteration_duration...: avg=20.78µs min=20.78µs med=20.78µs max=20.78µs p(90)=20.78µs p(95)=20.78µs
-     iterations...........: 1   1217.544821/s
-     my_trend.............: avg=1.5     min=1       med=1.5     max=2       p(90)=1.9     p(95)=1.95
-...
+  ...
+  iteration_duration...: avg=20.78µs min=20.78µs med=20.78µs max=20.78µs p(90)=20.78µs p(95)=20.78µs
+  iterations...........: 1   1217.544821/s
+  my_trend.............: avg=1.5     min=1       med=1.5     max=2       p(90)=1.9     p(95)=1.95
 ```
 
 </CodeGroup>
@@ -344,21 +314,15 @@ export default function () {
 
 The above code will make k6 print output like this:
 
-<CodeGroup labels={["rate-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run rate.js
+$ k6 run script.js
 
-...
-running (00m00.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
-
-     data_received........: 0 B    0 B/s
-     data_sent............: 0 B    0 B/s
-     iteration_duration...: avg=22.12µs min=22.12µs med=22.12µs max=22.12µs p(90)=22.12µs p(95)=22.12µs
-     iterations...........: 1      1384.362792/s
-     my_rate..............: 50.00% ✓ 2           ✗ 2
-...
+  ...
+  iteration_duration...: avg=22.12µs min=22.12µs med=22.12µs max=22.12µs p(90)=22.12µs p(95)=22.12µs
+  iterations...........: 1      1384.362792/s
+  my_rate..............: 50.00% ✓ 2           ✗ 2
 ```
 
 </CodeGroup>

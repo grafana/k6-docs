@@ -31,20 +31,17 @@ In the above example, one check was specified but you can add as many as you nee
 [`check()`](/javascript-api/k6/check-val-sets-tags). When the above script is run you can see
 how k6 displays the results of the check calls in the following output:
 
-<CodeGroup labels={["check-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run script.js
+$ k6 run script.js
 
-...
-running (00m01.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m01.0s/10m0s  1/1 iters, 1 per VU
+  ...
+    ✓ is status 200
 
-     ✓ is status 200
-
-     checks.........................: 100.00% ✓ 1        ✗ 0
-     data_received..................: 11 kB   12 kB/s
-...
+  ...
+  checks.........................: 100.00% ✓ 1        ✗ 0
+  data_received..................: 11 kB   12 kB/s
 ```
 
 </CodeGroup>
@@ -70,21 +67,18 @@ export default function () {
 
 </CodeGroup>
 
-<CodeGroup labels={["checks-output"]} lineNumbers={[false]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```bash
-k6 run checks.js
+$ k6 run checks.js
 
-...
-running (00m00.6s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [======================================] 1 VUs  00m00.6s/10m0s  1/1 iters, 1 per VU
+  ...
+    ✓ is status 200
+    ✓ body size is 11,105 bytes
 
-     ✓ is status 200
-     ✓ body size is 11,105 bytes
-
-     checks.........................: 100.00% ✓ 2        ✗ 0
-     data_received..................: 11 kB   20 kB/s
-...
+  ...
+  checks.........................: 100.00% ✓ 2        ✗ 0
+  data_received..................: 11 kB   20 kB/s
 ```
 
 </CodeGroup>
