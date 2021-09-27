@@ -146,7 +146,7 @@ It is possible to create a test, and eventually run it in k6, in multiple ways. 
 
 ![Our tools](./images/our-tools.png)
 
-As is evident in the above diagram, there are four different tools to help onboard existing users into k6. The best way is to make your own custom script, but you can use our converters to help you with generating script out of your existing postman collections, swagger specification documents, fiddler and [HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>) recordings.
+As is evident in the above diagram, there are four different tools to help onboard existing users into k6. The best way is to make your own custom script, but you can use our converters to help you with generating script out of your existing postman collections, swagger specification documents, and [HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>) recordings.
 
 ### Write your own script
 
@@ -173,10 +173,6 @@ Swagger/OpenAPI is a good way to design, document and test your APIs. We have bu
 **HAR-to-k6**
 
 HAR files are recorded browser logs that can be exported as an archive and later replayed. [HAR files specification](https://w3c.github.io/web-performance/specs/HAR/Overview.html) defines the format of the file, which is basically a JSON file with various objects containing requests to different resources. This file can be converted to k6 script using the [HAR-to-k6](https://github.com/k6io/har-to-k6) tool. Since HAR files contain requests to every single resource that the browser fetches, it is not recommended to use the converted script intact, rather revise it to remove extra unneeded requests to load test CDNs and other static files. Generally, recording users' sessions is not usually the best way to do API load testing, since it creates more noise than real requests and it is used more for [load testing a website](/testing-guides/load-testing-websites). Nevertheless, you can take advantage of it, but beware of what you are doing, since it could misguide you to test systems not related to your API.
-
-**Fiddler-to-k6**
-
-Originally called [FiddlerToLoadImpact](https://github.com/k6io/FiddlerToLoadImpact), it can be used to export your fiddler recordings into a k6 script. Obviously, you need to have Fiddler installed, for it to work. This tool also creates HAR recordings, so the same holds true for this, in that, it is not fit for API load testing, rather made for website load testing, so beware! For more information, refer to [session recording](/using-k6/session-recording-har-support) guide.
 
 ## Different types of API load testing
 
