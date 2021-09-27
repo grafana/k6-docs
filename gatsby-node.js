@@ -234,7 +234,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: slug || dotifyVersion(pageSlug),
+        path: slug ? addTrailingSlash(slug) : dotifyVersion(pageSlug),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
