@@ -47,9 +47,13 @@ export default function DocPage(props) {
     sidebarTree.name === 'es' ||
     sidebarTree.name === 'en'
   ) {
+    const slugWithSlash = frontmatter.slug.startsWith('/')
+      ? frontmatter.slug
+      : `/${frontmatter.slug}`;
     const flatSidebar = flattenSidebarTree(sidebarTree);
+
     const currentIndex = flatSidebar.findIndex(
-      (elem) => elem.path === `/${frontmatter.slug}`,
+      (elem) => elem.path === slugWithSlash,
     );
 
     if (currentIndex > 0) {
