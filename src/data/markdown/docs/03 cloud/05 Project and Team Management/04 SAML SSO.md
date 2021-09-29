@@ -7,21 +7,38 @@ excerpt: 'Guide on setting up a SAML SSO Identity Provider with k6 Cloud'
 
 ## What is SAML?
 
-Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an Identity Provider (e.g. Azure AD) and a Service Provider (e.g. k6 Cloud). The SAML SSO eases provisioning, management and access of users from a single identity provider, e.g. Okta, Azure AD or others, to multiple service providers.
+Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an Identity Provider (e.g. Azure AD) and a Service Provider (i.e. k6 Cloud). The SAML SSO eases provisioning, management and access of users from a single identity provider, e.g. Okta, Azure AD or others, to multiple service providers.
 
 k6 Cloud makes use of SAML single sign-on (SSO) to facilitate provisioning of new users into the app and later giving them access to various organization(s) and projects, and in turn load tests and test runs.
+
+> __Note__
+>
+> The SAML 2.0 standard allows k6 Cloud to work practically with any SAML 2.0 identity provider, not just the ones documented here.
 
 Read more over at Wikipedia about [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) and [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0).
 
 ## IdP and SP setup
 
-To setup SAML SSO for your organization, some requirements should be satisfied and some steps should be taken on your IdP and on k6 Cloud. Assuming you already have admin access to your IdP and the k6 Cloud, this is the usual process to enable SAML SSO for your organization on k6 Cloud:
+To setup SAML SSO for your organization, some requirements should be satisfied and some steps should be taken on your IdP and on k6 Cloud. Assuming you already have admin access to your IdP and the k6 Cloud, this is the usual process checklist to enable SAML SSO for your organization on k6 Cloud:
 
 1. Install or setup the SAML SSO application on your IdP.
 2. Provide the "IdP Metadata URL" to the customer success team.
 3. Update the application on the IdP with the provided token from the customer success team.
-4. Assign users to the IdP application.
-5. Optionally choose default projects for newly provisioned users to land in on k6 Cloud.
+4. Optionally request to enforce SAML SSO on all existing and new users. This effectively disables username/password authentication for all users, even the owner.
+5. Assign users to the IdP application.
+6. Optionally choose default projects for newly provisioned users to land in on k6 Cloud.
+7. Users can now be provisioned to k6 Cloud once they have access to and click on the application icon on the IdP.
+
+> __Note__
+>
+> Once SAML SSO is enabled on the k6 Cloud for your organization, you must not invite team members through the k6 Cloud web app, rather they should use these following methods to be provisioned and to sign in:
+>
+> 1. Username/password and SAML SSO (mixed):
+>   This is limited to the owner and the users created in advance via invitation with username/password.
+> 2. SAML SSO:
+>   All new users should be solely created via SAML SSO provisioning.
+>
+> ⚠️ User invitation via k6 Cloud web app doesn't work with SAML SSO.
 
 ## Supported IdPs
 
@@ -46,8 +63,3 @@ As you can see below, the default project is already selected:
 3. From the drop-down you can choose the default project(s) newly provisioned users will be assigned, then click on update button:
 ![SAML SSO update default projects](images/04-SAML-SSO/saml-sso-update-default-project.png)
 4. Now the users assigned to the IdP application can sign in to k6 Cloud and they'll be automatically added to the specified project(s) in step 3 with __project read/write__ permissions.
-
-
-> ⚠️ __Note__
-> 
-> You must not invite team members through the k6 Cloud web app. Rather team members must SSO into k6 Cloud for account provisioning to happen.
