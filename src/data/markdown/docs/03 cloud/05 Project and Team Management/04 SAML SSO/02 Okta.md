@@ -11,7 +11,7 @@ Okta is a well-known identity and access management service that provides means 
 
 To setup Okta SAML SSO based authentication to k6 Cloud you must have:
 
-1. A [Team plan](https://k6.io/pricing) or above and the SAML SSO add-on(\$), alternatively be on an Enterprise plan.
+1. An [Enterprise plan](https://k6.io/pricing) or a plan with the SAML SSO add-on.
 2. An [Okta Subscription with SSO Integrations](https://www.okta.com/pricing/).
 
 ## Configuration
