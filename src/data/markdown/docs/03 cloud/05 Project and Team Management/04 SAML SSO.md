@@ -29,14 +29,16 @@ To setup SAML SSO for your organization, some requirements should be satisfied a
 6. Optionally choose default projects for newly provisioned users to land in on k6 Cloud.
 7. Users can now be provisioned to k6 Cloud once they have access to and click on the application icon on the IdP.
 
-> ⚠️ __Invite users via k6 Cloud web app doesn't work with SAML SSO__
+> __Note__
 >
 > Once SAML SSO is enabled on the k6 Cloud for your organization, you must not invite team members through the k6 Cloud web app, rather they should use these following methods to be provisioned and to sign in:
-> 
-> - Username/password and SAML SSO (mixed):<br/>
+>
+> 1. Username/password and SAML SSO (mixed):
 >   This is limited to the owner and the users created in advance via invitation with username/password.
-> - SAML SSO:<br/>
+> 2. SAML SSO:
 >   All new users should be solely created via SAML SSO provisioning.
+>
+> ⚠️ User invitation via k6 Cloud web app doesn't work with SAML SSO.
 
 ## Supported IdPs
 
