@@ -5,8 +5,6 @@ excerpt: 'Guide on setting up Okta to act as a SAML SSO IdP with k6 Cloud'
 
 > ⭐️ SAML SSO is available on Enterprise plans.
 
-## Background
-
 Okta is a well-known identity and access management service that provides means for provisioning and user management all in a single place. k6 Cloud integrates with Okta to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
 
 ## Prerequisites
@@ -35,3 +33,7 @@ To setup Okta SAML SSO based authentication to k6 Cloud you must have:
 ![k6 Cloud application assignments](images/02-Okta/okta-k6-cloud-app-assignments.png)
 9. The app will appear on the users' dashboard and when they click on the app icon, they will be redirected to k6 Cloud app and will be provisioned the first time or signed in the second time on. Upon provisioning, they will be automatically assigned to the default project(s) with __project read/write__ permissions.
 ![Okta user dashboard](images/02-Okta/okta-user-dashboard.png)
+
+## See also
+
+- [Project and Team Management / SAML SSO](/cloud/project-and-team-management/saml-sso/)

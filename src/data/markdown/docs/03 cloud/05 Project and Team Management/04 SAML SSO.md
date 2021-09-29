@@ -47,4 +47,7 @@ As you can see below, the default project is already selected:
 ![SAML SSO update default projects](images/04-SAML-SSO/saml-sso-update-default-project.png)
 4. Now the users assigned to the IdP application can sign in to k6 Cloud and they'll be automatically added to the specified project(s) in step 3 with __project read/write__ permissions.
 
-Note: You must __not__ invite team members through the k6 Cloud web app. Rather _team members must SSO into k6 Cloud for account provisioning to happen_.
+
+> ⚠️ __Note__
+> 
+> You must not invite team members through the k6 Cloud web app. Rather team members must SSO into k6 Cloud for account provisioning to happen.

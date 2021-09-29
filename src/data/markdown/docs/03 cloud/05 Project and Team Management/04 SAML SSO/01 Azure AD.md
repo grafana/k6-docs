@@ -5,9 +5,7 @@ excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 
 > ⭐️ SAML SSO is available on Enterprise plans.
 
-## Background
-
-Federated authentication is a must to virtually all organizations beyond a certain size. Microsoft's Active Directory product has been a long time gold standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud integrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
+Microsoft's Active Directory has been a long time the standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud integrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
 
 ## Prerequisites
 
@@ -92,3 +90,7 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 15. Once you've gotten confirmation from k6 Cloud support that your account is ready we advise you to test the integration by clicking the "Test" button in Azure AD:
 
     ![Azure AD Test SSO](images/01-Azure-AD/azure-ad-test-sso.png)
+
+## See also
+
+- [Project and Team Management / SAML SSO](/cloud/project-and-team-management/saml-sso/)
