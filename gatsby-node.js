@@ -1029,6 +1029,12 @@ const createRedirects = ({ actions }) => {
     toPath: '/cloud/manage/scheduled-tests/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/cloud/project-and-team-management/azure-ad-saml-sso/',
+    toPath: '/cloud/project-and-team-management/saml-sso/azure-ad/',
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':

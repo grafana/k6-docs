@@ -37,6 +37,7 @@
 [nN]amespace
 [pP]ipelining
 [wW]ebpack
+Okta
 alice
 async
 backoff
