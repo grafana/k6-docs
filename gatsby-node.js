@@ -499,7 +499,7 @@ function getDocPagesProps({
           slug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
-            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+            `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
           ),
         },
       };
@@ -626,7 +626,7 @@ function getGuidesPagesProps({
           slug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
-            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+            `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
           ),
           translations: pageTranslations,
         },
@@ -724,7 +724,7 @@ function getJsAPIVersionedPagesProps({
           slug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
-            `https://github.com/k6io/docs/blob/master/src/data/${relativeDirectory}/${name}.md`,
+            `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
           ),
         },
       };

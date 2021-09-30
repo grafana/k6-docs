@@ -6,7 +6,7 @@ import Pencil from 'svg/pencil-icon.inline.svg';
 import styles from './ecosystem-title-group.module.scss';
 
 const EXTENSIONS_HREF =
-  'https://github.com/k6io/docs/blob/master/src/data/ecosystem/extensions.js';
+  'https://github.com/grafana/k6-docs/blob/main/src/data/ecosystem/extensions.js';
 
 export const EcosystemTitleGroup = ({
   title,
