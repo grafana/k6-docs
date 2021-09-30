@@ -26,7 +26,7 @@ Log in to Grafana.com and visit the [Cloud Portal](https://grafana.com/docs/graf
 
 Copy the URL of the Remote Write Endpoint and the Username / Instance ID. Create and copy an API key of `MetricsPublisher` role that will be used as password.
 
-![Create API Key](./images/GrafanaCloud/create_api_key_metrics_publisher.png)
+![Create API Key](./images/GrafanaCloud/grafana_cloud_create_api_key_metrics_publisher.png)
 
 Next, we configure and run telegraf. Telegraf will collect the k6 metrics and forward them - using the Prometheus Remote Write endpoint - to Grafana Cloud Prometheus.
 
