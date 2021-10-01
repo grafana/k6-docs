@@ -38,6 +38,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [No Usage Report](#no-usage-report)                       | Un booleano que especifica si k6 debe enviar un informe de uso                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | Un booleano que especifica si k6 debe reutilizar las conexiones TCP                        |
 | [Paused](#paused)                                         | Un booleano que especifica si la prueba debe comenzar en estado de pausa                |
+| [Quiet](#quiet)                                           | Un booleano que especifica si mostrar la barra de progreso del test en el terminal       |
 | [Results Output](#results-output)                         | Especifica la salida de resultados                                                          |
 | [RPS](#rps)                                               | El número máximo de peticiones a realizar por segundo                                   |
 | [Scenarios](#scenarios)                                   | Definir escenarios de ejecución avanzados                                                 |
@@ -767,6 +768,22 @@ Un booleano, verdadero o falso, que especifica si la prueba debe comenzar en un 
 export let options = {
   paused: true,
 };
+```
+
+</CodeGroup>
+
+### Quiet
+
+Un booleano, verdadero o falso, que deshabilita la barra de progreso en la salida del terminal. Disponible en los commands `k6 run` y `k6 cloud`.
+
+| Env         | CLI              | Code / Config file | Default |
+| ----------- | ---------------- | ------------------ | ------- |
+| `K6_QUIET`  | `--quiet`, `-q`  | `quiet`            | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run script.js -d 20s --quiet
 ```
 
 </CodeGroup>
