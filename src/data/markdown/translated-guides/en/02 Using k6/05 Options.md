@@ -103,7 +103,9 @@ export default function () {
 
 </CodeGroup>
 
+<div id="config-json-example">
 You can also set the same options through a config file:
+</div>
 
 <CodeGroup labels={["config.json"]} lineNumbers={[true]}>
 
@@ -296,7 +298,7 @@ Available in `k6 run` and `k6 cloud` commands:
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
-An example of a config file is available [here](/using-k6/options#config-json)
+An example of a config file is available [here](/using-k6/options#config-json-example)
 
 > #### ⚠️ Keep in mind!
 >
