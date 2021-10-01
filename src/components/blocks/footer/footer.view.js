@@ -105,6 +105,14 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
+                      href={`${main}/oss-vs-cloud`}
+                    >
+                      Open Source vs Cloud
+                    </a>
+                  </li>
+                  <li className={styles.navColumnItem}>
+                    <a
+                      className={styles.navColumnLink}
                       href={'https://calendly.com/k6cloud/'}
                     >
                       Schedule a Cloud Demo
