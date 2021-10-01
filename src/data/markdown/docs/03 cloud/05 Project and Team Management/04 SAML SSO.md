@@ -40,6 +40,7 @@ To setup SAML SSO for your organization, some requirements should be satisfied a
 >   All new users should be solely created via SAML SSO provisioning.
 >
 > 💡 __What is SAML SSO provisioning?__
+> 
 > SAML SSO provisioning is the first time a user signs in to k6 Cloud web app via SAML SSO from their IdP dashboard. This process causes the user to be created, joined to its organization and assigned to the default project(s). After this process the user can use IdP- and SP-initiated SAML SSO.
 
 ## Supported IdPs
