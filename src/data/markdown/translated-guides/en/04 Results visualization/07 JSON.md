@@ -3,7 +3,7 @@ title: 'JSON'
 excerpt: 'You can also make k6 output detailed statistics in JSON format by using the --out option.'
 ---
 
-You can also make k6 output detailed statistics in JSON format by using the `--out/-o` option for `k6 run`, like this:
+You can also make k6 output detailed statistics in JSON format by using the `--out`/`-o` option for `k6 run`, like this:
 
 <CodeGroup labels={["CLI", "Docker"]}>
 
@@ -16,6 +16,25 @@ $ docker run -it --rm \
     -v <scriptdir>:/scripts \
     -v <outputdir>:/jsonoutput \
     loadimpact/k6 run --out json=/jsonoutput/my_test_result.json /scripts/script.js
+
+# Note that the docker user must have permission to write to <outputdir>!
+```
+
+</CodeGroup>
+
+Or if you want to get the result gzipped, like this:
+
+<CodeGroup labels={["CLI", "Docker"]}>
+
+```bash
+$ k6 run --out json=my_test_result.gz script.js
+```
+
+```bash
+$ docker run -it --rm \
+    -v <scriptdir>:/scripts \
+    -v <outputdir>:/jsonoutput \
+    loadimpact/k6 run --out json=/jsonoutput/my_test_result.gz /scripts/script.js
 
 # Note that the docker user must have permission to write to <outputdir>!
 ```
