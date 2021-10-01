@@ -38,6 +38,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
 | [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
+| [Quiet](#quiet)                                           | A boolean specifying whether to show the progress update in the console or not      |
 | [Results Output](#results-output)                         | Specify the results output                                                          |
 | [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
@@ -857,6 +858,22 @@ a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 
 export let options = {
   paused: true,
 };
+```
+
+</CodeGroup>
+
+### Quiet
+
+A boolean, true or false, that disables the progress update bar on the console output. Available in `k6 run` and `k6 cloud` commands.
+
+| Env         | CLI              | Code / Config file | Default |
+| ----------- | ---------------- | ------------------ | ------- |
+| `K6_QUIET`  | `--quiet`, `-q`  | `quiet`            | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run script.js -d 20s --quiet
 ```
 
 </CodeGroup>
