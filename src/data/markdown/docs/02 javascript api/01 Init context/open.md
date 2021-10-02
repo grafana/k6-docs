@@ -19,14 +19,14 @@ This is a function that can only be called from the init context (aka **init cod
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
-See example further down on this page. For more in-depth description see [Running k6](/getting-started/running-k6).
+See the example further down on this page. For a more in-depth description, see [Running k6](/getting-started/running-k6).
 
 </blockquote>
 
 | Parameter | Type   | Description        |
 | --------- | ------ | ------------------ |
 | filePath  | string | The path to the file, absolute or relative, that will be read into memory. The file will only be loaded once, even when running with several VUs. |
-| mode      | string | By default the contents of the file is read as text, but if you specify `b` the file will be read as binary data instead.   |
+| mode      | string | By default, the contents of the file are read as text, but if you specify `b`, the file will be read as binary data instead.   |
 
 ### Returns
 
@@ -36,7 +36,7 @@ See example further down on this page. For more in-depth description see [Runnin
 
 > #### Breaking change in v0.32.0
 > Since k6 v0.32.0 `open(..., 'b')` returns an ArrayBuffer object instead of an array of numbers (bytes).
-> If you need to manipulate the binary data you'll need to wrap the ArrayBuffer
+> If you need to manipulate the binary data, you'll need to wrap the ArrayBuffer
 > object in a [typed array view](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays).
 
 
