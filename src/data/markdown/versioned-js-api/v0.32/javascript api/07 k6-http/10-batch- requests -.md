@@ -36,7 +36,7 @@ import { check } from 'k6';
 export default function () {
   let responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
-    ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
+    ['GET', 'https://test.k6.io/static/css/site.css', null, { tags: { ctype: 'css' } }],
     [
       'GET',
       'https://test.k6.io/images/logo.png',
@@ -63,7 +63,7 @@ import { check } from 'k6';
 export default function () {
   let responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
-    ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
+    ['GET', 'https://test.k6.io/static/css/site.css', null, { tags: { ctype: 'css' } }],
     [
       'GET',
       'https://test.k6.io/images/logo.png',
