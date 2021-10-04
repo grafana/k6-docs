@@ -160,6 +160,9 @@ the [Ecosystem page](/ecosystem) and the [`xk6` topic on GitHub](https://github.
 For example, if a system you need support for can be tested with a generic protocol
 like MQTT, prefer using [xk6-mqtt](https://github.com/pmalhaire/xk6-mqtt)
 instead of creating an extension that uses some custom protocol.
+Also, prefer to write a pure JavaScript library that can be used in k6 if you can
+avoid writing an extension in Go, since a JS library will be better supported and
+likely easier to write and reuse than an extension.
 
 Next, you should decide the type of extension you need. A JavaScript extension is a
 good fit if you want to extend the JS functionality of your script, or add support
