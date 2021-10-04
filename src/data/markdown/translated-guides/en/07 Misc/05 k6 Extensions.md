@@ -25,8 +25,8 @@ open source tool has been possible in one of two ways:
   vision of the project.
 
 To address these issues and allow the community to more easily adapt k6 to fit their
-needs, [k6 v0.29.0](https://github.com/k6io/k6/releases/tag/v0.29.0) introduced
-the [xk6 framework](https://github.com/k6io/xk6) and the concept of k6 extensions.
+needs, we released the [xk6 framework](https://github.com/k6io/xk6) and the concept
+of k6 extensions.
 
 
 ## What are k6 extensions?
@@ -58,9 +58,9 @@ Its main features are:
 
 ### Extension types
 
-The initial version of xk6 released in v0.29.0 supported only JavaScript extensions,
-but since then we've added support for Output extensions, and are considering
-expanding this to other areas of k6 as well.
+The initial version of xk6 supported only JavaScript extensions, but since then we've
+added support for Output extensions, and are considering expanding this to other
+areas of k6 as well.
 
 The currently supported extension types are:
 
