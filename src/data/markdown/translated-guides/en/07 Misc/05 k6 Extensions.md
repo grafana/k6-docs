@@ -2,6 +2,8 @@
 title: 'k6 Extensions'
 ---
 
+> *Since v0.29.0 (JavaScript extensions) and v0.31.0 (Output extensions)*
+
 Traditionally, extending k6 with custom functionality that isn't available in the
 open source tool has been possible in one of two ways:
 
