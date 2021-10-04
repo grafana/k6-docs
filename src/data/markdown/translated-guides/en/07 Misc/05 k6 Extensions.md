@@ -269,9 +269,9 @@ func (*Compare) XComparator() *Comparator {
   argument will be passed the `Context` instance used internally in k6,
   which has attached some useful objects for inspecting the internal execution
   state, such as
-  [`lib.State`](https://github.com/grafana/k6/blob/v0.33.0/lib/state.go#L43)
-  or VU state, [`lib.ExecutionState`](https://github.com/grafana/k6/blob/v0.33.0/lib/execution.go#L142),
-  and the [`goja.Runtime`](https://github.com/dop251/goja/blob/705acef95ba3654f89c969d9e792ac5f49215350/runtime.go#L162) instance
+  [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State)
+  or VU state, [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState),
+  and the [`goja.Runtime`](https://pkg.go.dev/github.com/dop251/goja#Runtime) instance
   the VU is using to execute the script.
   This feature is used extensively in the
   [`xk6-execution`](https://github.com/grafana/xk6-execution) extension.
@@ -289,8 +289,8 @@ func (*Compare) XComparator() *Comparator {
 - Any heavy initialization should be done in the [`init`
   context](/javascript-api/init-context/)...
 - Custom metric emission can be done by creating new metrics using
-  [`stats.New()`](https://github.com/grafana/k6/blob/v0.33.0/stats/stats.go#L449)
-  and emitting them using [`stats.PushIfNotDone()`](https://github.com/grafana/k6/blob/v0.33.0/stats/stats.go#L429).
+  [`stats.New()`](https://pkg.go.dev/go.k6.io/k6/stats#New)
+  and emitting them using [`stats.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/stats#PushIfNotDone).
   For an example of this see the [`xk6-remote-write` extension](https://github.com/dgzlopes/xk6-remote-write).
 
 
@@ -300,7 +300,7 @@ Output extensions are similarly written, but have a different API and performanc
 considerations.
 
 The core of an Output extension is a struct that implements the [`output.Output`
-interface](https://github.com/grafana/k6/blob/v0.33.0/output/types.go#L57). For example:
+interface](https://pkg.go.dev/go.k6.io/k6/output#Output). For example:
 
 <CodeGroup labels={["log.go"]} lineNumbers={[false]}>
 
@@ -363,7 +363,7 @@ func (*Logger) Stop() error {
 Notice a couple of things:
 
 - The module initializer `New()` receives an instance of
-  [`output.Params`](https://github.com/grafana/k6/blob/v0.33.0/output/types.go#L36).
+  [`output.Params`](https://pkg.go.dev/go.k6.io/k6/output#Params).
   With this object the extension can access the output-specific configuration,
   interfaces to the filesystem, synchronized stdout and stderr, and more.
 - `AddMetricSamples` in this example simply writes to stdout. In a real-world
@@ -374,18 +374,18 @@ Notice a couple of things:
 #### Additional features
 
 - Output structs can optionally implement additional interfaces that allows them to
-  [receive thresholds](https://github.com/grafana/k6/blob/v0.33.0/output/types.go#L79),
-  [test run status updates](https://github.com/grafana/k6/blob/v0.33.0/output/types.go#L94)
-  or [interrupt a test run](https://github.com/grafana/k6/blob/v0.33.0/output/types.go#L88).
+  [receive thresholds](https://pkg.go.dev/go.k6.io/k6/output#WithThresholds),
+  [test run status updates](https://pkg.go.dev/go.k6.io/k6/output#WithRunStatusUpdates)
+  or [interrupt a test run](https://pkg.go.dev/go.k6.io/k6/output#WithTestRunStop).
 - Because output implementations typically need to process large amounts of data that
   k6 produces and dispatch it to another system, we've provided a couple of helper
   structs you can use in your extensions:
-  [`output.SampleBuffer`](https://github.com/grafana/k6/blob/v0.33.0/output/helpers.go#L35)
+  [`output.SampleBuffer`](https://pkg.go.dev/go.k6.io/k6/output#SampleBuffer)
   is a thread-safe buffer for metric samples to help with memory management and
-  [`output.PeriodicFlusher`](https://github.com/grafana/k6/blob/v0.33.0/output/helpers.go#L75)
+  [`output.PeriodicFlusher`](https://pkg.go.dev/go.k6.io/k6/output#PeriodicFlusher)
   will periodically run a function which is useful for flushing or dispatching the
   buffered samples.
-  For usage examples see the [`statsd` output](https://github.com/k6io/k6/blob/v0.33.0/output/statsd/output.go#L55).
+  For usage examples see the [`statsd` output](https://pkg.go.dev/go.k6.io/k6/output/statsd).
 
 
 ## Supported modes of execution
