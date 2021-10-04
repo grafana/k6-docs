@@ -386,3 +386,15 @@ Notice a couple of things:
   will periodically run a function which is useful for flushing or dispatching the
   buffered samples.
   For usage examples see the [`statsd` output](https://github.com/k6io/k6/blob/v0.33.0/output/statsd/output.go#L55).
+
+
+## Supported modes of execution
+
+xk6 and the examples above work great for local execution, i.e. running a
+script with a binary built by xk6 on your own infrastructure. Custom k6 binaries are
+also supported by the [k6 Kubernetes operator](https://github.com/grafana/k6-operator#using-extensions).
+
+They're currently not supported in [k6 Cloud](https://k6.io/docs/cloud/), but adding support
+is on our roadmap. However, it is possible to run a binary built with xk6 and send
+metrics produced by extension code to the Cloud using the
+[`cloud` output](https://k6.io/docs/results-visualization/cloud/).
