@@ -866,9 +866,9 @@ export let options = {
 
 A boolean, true or false, that disables the progress update bar on the console output. Available in `k6 run` and `k6 cloud` commands.
 
-| Env         | CLI              | Code / Config file | Default |
-| ----------- | ---------------- | ------------------ | ------- |
-| `K6_QUIET`  | `--quiet`, `-q`  | `quiet`            | `false` |
+| Env | CLI              | Code / Config file | Default |
+| --- | ---------------- | ------------------ | ------- |
+| N/A | `--quiet`, `-q`  | N/A                | `false` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

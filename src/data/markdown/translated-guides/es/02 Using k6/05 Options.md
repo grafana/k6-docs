@@ -776,9 +776,9 @@ export let options = {
 
 Un booleano, verdadero o falso, que deshabilita la barra de progreso en la salida del terminal. Disponible en los commands `k6 run` y `k6 cloud`.
 
-| Env         | CLI              | Code / Config file | Default |
-| ----------- | ---------------- | ------------------ | ------- |
-| `K6_QUIET`  | `--quiet`, `-q`  | `quiet`            | `false` |
+| Env | CLI              | Code / Config file | Default |
+| --- | ---------------- | ------------------ | ------- |
+| N/A | `--quiet`, `-q`  | N/A                | `false` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
