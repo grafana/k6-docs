@@ -63,21 +63,13 @@ export const UseCases = () => {
           <Heading tag={'h3'} size={'md'} className={styles.title}>
             {t('welcome.use-cases.performance-monitoring.title')}
           </Heading>
-          <p>
-            {t('welcome.use-cases.performance-monitoring.description1')}{' '}
-            <Link
-              className={'link'}
-              to={
-                urlLocale === 'es'
-                  ? '/es/guias-de-prueba/automatizacion-de-pruebas-de-rendimiento/'
-                  : '/testing-guides/automated-performance-testing/'
-              }
-            >
-              {t('welcome.use-cases.performance-monitoring.testing-automation')}
-            </Link>
-            {'. '}
-            {t('welcome.use-cases.performance-monitoring.description2')}
-          </p>
+          <p>{t('welcome.use-cases.performance-monitoring.description')}</p>
+        </li>
+        <li>
+          <Heading tag={'h3'} size={'md'} className={styles.title}>
+            {t('welcome.use-cases.chaos-testing.title')}
+          </Heading>
+          <p>{t('welcome.use-cases.chaos-testing.description')}</p>
         </li>
       </ul>
     </section>
