@@ -7,8 +7,8 @@ k6 v0.34.0 introduced the capability to get information about the current test e
 
 The `k6/execution` module provides the test execution information with the following three properties:
 
-- [scenario](#scenario)
 - [instance](#instance)
+- [scenario](#scenario)
 - [vu](#vu)
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
@@ -36,6 +36,20 @@ export default function() {
 >
 > All unique identifiers are sequentially generated starting from a base of zero (iterations) or one (VU IDs). In distributed/cloud test runs, the test-wide iteration numbers and VU identifiers are still going to be unique across instances, though there might be gaps in the sequences when, for example, some instances execute faster iterations than others or allocate more VUs mid-test.
 
+
+### instance
+
+The instance object provides information associated with the load generator instance. When running a cloud/distributed test with multiple load generator instances, the values of the following properties can differ across instances.
+
+
+| Field                  | Type    | Description                                                              |
+|------------------------|---------|--------------------------------------------------------------------------|
+| iterationsInterrupted  | integer | The number of prematurely interrupted iterations in the current instance. |
+| iterationsCompleted    | integer | The number of completed iterations in the current instance. |
+| vusActive              | integer | The number of active VUs. |
+| vusInitialized         | integer | The number of currently initialized VUs. |
+| currentTestRunDuration | float   | The time passed from the start of the current test run in milliseconds. |
+
 ### scenario
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
@@ -46,14 +60,6 @@ export default function() {
 | iterationInInstance | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the current instance. |
 | iterationInTest     | integer | The unique and zero-based sequential number of the current iteration in the scenario. It is unique in all k6 execution modes - in local, cloud and distributed/segmented test runs. However, while every instance will get non-overlapping index values in cloud/distributed tests, they might iterate over them at different speeds, so the values won't be sequential across them. |
 
-### instance
-| Field                  | Type    | Description                                                              |
-|------------------------|---------|--------------------------------------------------------------------------|
-| iterationsInterrupted  | integer | The number of prematurely interrupted iterations in the current instance. |
-| iterationsCompleted    | integer | The number of completed iterations in the current instance. |
-| vusActive              | integer | The number of active VUs. |
-| vusInitialized         | integer | The number of currently initialized VUs. |
-| currentTestRunDuration | float   | The time passed from the start of the current test run in milliseconds. |
 
 ### vu 
 | Field               | Type    | Description                                                              |
