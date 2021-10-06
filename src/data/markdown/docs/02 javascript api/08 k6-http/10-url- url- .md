@@ -1,10 +1,10 @@
 ---
 title: 'url( url )'
-description: 'Creates a URL with a name tag (used in URL grouping).'
-excerpt: 'Creates a URL with a name tag (used in URL grouping).'
+description: 'Creates a URL with a name tag.'
+excerpt: 'Creates a URL with a name tag.'
 ---
 
-URLs that contain dynamic parts can introduce a large number of unique URLs in the metrics stream. To remedy this issue you can use `http.url` to set a consistent name tag in your requests.
+URLs that contain dynamic parts can introduce a large number of unique URLs in the metrics stream. To remedy this issue you can use `http.url` to set a consistent name tag in your requests. Read more on [URL Grouping](/using-k6/http-requests#url-grouping).
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
