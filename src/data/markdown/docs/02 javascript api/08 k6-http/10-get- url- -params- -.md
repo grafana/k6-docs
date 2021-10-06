@@ -8,7 +8,7 @@ Make a GET request.
 
 | Parameter         | Type   | Description                                                                               |
 | ----------------- | ------ | ----------------------------------------------------------------------------------------- |
-| url               | string | Request URL (e.g. `http://example.com`).                                                  |
+| url               | string / [HTTP URL](/javascript-api/k6-http/url-url#returns) | Request URL (e.g. `http://example.com`).      |
 | params (optional) | object | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
