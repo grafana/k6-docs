@@ -174,23 +174,19 @@ need to use and things to consider while developing will be different in each ca
 
 ### Writing a new JavaScript extension
 
-A good starting point for using xk6 and writing a JS extension is the [xk6
-introductory article](https://k6.io/blog/extending-k6-with-xk6), but we'll cover
-some of the details here.
-
-JavaScript extensions consist of a main module struct that exposes methods that
-can be called from a k6 test script. For example:
+A simple JavaScript extension consists of a main module struct that exposes
+methods that can be called from a k6 test script. For example:
 
 <!-- TODO: A better trivial example? -->
 
-<CodeGroup labels={["compare.go"]} lineNumbers={[false]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```go
 package compare
 
 type Compare struct{}
 
-func (*Compare) IsGreater(int a, b) bool {
+func (*Compare) IsGreater(a, b int) bool {
 	return a > b
 }
 ```
@@ -200,7 +196,7 @@ func (*Compare) IsGreater(int a, b) bool {
 In order to use this from k6 test scripts we need to register the module
 by adding the following:
 
-<CodeGroup labels={["compare.go"]} lineNumbers={[false]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```go
 import "go.k6.io/k6/js/modules"
@@ -215,6 +211,28 @@ func init() {
 Note that all k6 extensions should have the `k6/x/` prefix and the short name
 must be unique among all extensions built in the same k6 binary.
 
+The final extension code will look like so:
+
+<CodeGroup labels={["compare.go"]} lineNumbers={[true]}>
+
+```go
+package compare
+
+import "go.k6.io/k6/js/modules"
+
+func init() {
+	modules.Register("k6/x/compare", new(Compare))
+}
+
+type Compare struct{}
+
+func (*Compare) IsGreater(a, b int) bool {
+	return a > b
+}
+```
+
+</CodeGroup>
+
 We can then build a k6 binary with this extension by running
 `xk6 build --with xk6-compare=.`. In this case `xk6-compare` is the
 Go module name passed to `go mod init`, but in a real-world scenario
@@ -224,7 +242,7 @@ Finally we can use the extension in a test script:
 
 <CodeGroup labels={["test.js"]} lineNumbers={[true]}>
 
-```go
+```javascript
 import compare from 'k6/x/compare';
 
 export default function () {
@@ -237,27 +255,29 @@ export default function () {
 And run the test with `./k6 run test.js`, which should output `INFO[0000] true`.
 
 
-#### Additional features
+#### Notable features
 
 The k6 Go-JS bridge has a few features we should highlight:
 
 - Go method names will be converted from Pascal case to Camel case when
   accessed in JS, as in the example above: `IsGreater` becomes `isGreater`.
 
-<!-- FIXME: Markdown magic to escape backticks in Go struct tags? <pre> doesn't work... -->
 - Similarly, Go field names will be converted from Pascal case to Snake case.
-  For example, the struct field `SomeField string` is accessible in JS
-  as the `some_field` object property. This behavior is configurable with the
-  `js` struct tag, so this can be changed with <code>SomeField string &grave;js:"someField"&grave;</code>
+  For example, the struct field `SomeField string` will be accessible in JS as
+  the `some_field` object property. This behavior is configurable with the `js`
+  struct tag, so this can be changed with
+  <code>SomeField string &grave;js:"someField"&grave;</code>
   or the field can be hidden with `js:"-"`.
 
-- Method names prefixed with `X` are interpreted as constructors in JS,
-  and will support the `new` operator.
+- Methods with a name is prefixed with `X` will be transformed to JS
+  constructors, and will support the `new` operator.
   For example, defining the following method on the above struct:
 
-<CodeGroup labels={["compare.go"]} lineNumbers={[false]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```go
+type Comparator struct{}
+
 func (*Compare) XComparator() *Comparator {
 	return &Comparator{}
 }
@@ -268,18 +288,192 @@ func (*Compare) XComparator() *Comparator {
   Would allow creating a `Comparator` instance in JS with `new compare.Comparator()`,
   which is a bit more idiomatic to JS.
 
-- Methods that specify `context.Context` or `*context.Context` as the first
-  argument will be passed the `Context` instance used internally in k6,
-  which has attached some useful objects for inspecting the internal execution
-  state, such as
-  [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State)
-  or VU state, [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState),
-  and the [`goja.Runtime`](https://pkg.go.dev/github.com/dop251/goja#Runtime) instance
-  the VU is using to execute the script.
-  This feature is used extensively in the
-  [`xk6-execution`](https://github.com/grafana/xk6-execution) extension.
 
-<!-- TODO: Mention common.Bind() here? HasModuleInstancePerVU? -->
+#### Advanced JavaScript extension
+
+> ℹ️ **Note**
+>
+> The internal JavaScript module API is currently (October 2021) in a state of
+> flux. The traditional approach of initializing JS modules involves calling
+> [`common.Bind()`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/common#Bind)
+> on any objects that need to be exposed to JS. This method has a few technical
+> issues we want to improve, and also isn't flexible enough to implement
+> new features like giving extensions access to internal k6 objects.
+> Starting from v0.32.0 we've introduced a new approach for writing
+> JS modules and is the method we'll be describing below. While this new API
+> is recommended for new modules and extensions, note that it's still in
+> development and might change while it's being stabilized.
+
+If your extension requires access to internal k6 objects to, for example,
+inspect the state of the test during execution, we will need to make some
+slightly more complicated changes to the above example.
+
+Our main `Compare` struct should implement the
+[`modules.Instance` interface](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#Instance)
+and embed
+[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#InstanceCore)
+in order to access internal k6 objects such as:
+- [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State): the VU state with
+  values like the VU ID and iteration number.
+- [`goja.Runtime`](https://pkg.go.dev/github.com/dop251/goja#Runtime): the
+  JavaScript runtime used by the VU.
+- a global `context.Context` which contains other interesting objects like
+  [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState).
+
+Additionally there should be a root module implementation of the
+[`modules.IsModuleV2` interface](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#IsModuleV2)
+that will serve as a factory of `Compare` instances for each VU. Note that this
+can have memory implications depending on the size of your module.
+
+Here's how that would look like:
+
+<CodeGroup labels={["compare-advanced.go"]} lineNumbers={[true]}>
+
+```go
+package compare
+
+import "go.k6.io/k6/js/modules"
+
+func init() {
+	modules.Register("k6/x/compare", New())
+}
+
+type (
+	// RootModule is the global module instance that will create Compare
+	// instances for each VU.
+	RootModule struct{}
+
+	// Compare represents an instance of the JS module.
+	Compare struct {
+		// InstanceCore provides some useful methods for accessing internal k6
+		// objects like the global context, VU state and goja runtime.
+		modules.InstanceCore
+	}
+)
+
+// Ensure the interfaces are implemented correctly.
+var (
+	_ modules.Instance   = &Compare{}
+	_ modules.IsModuleV2 = &RootModule{}
+)
+
+// New returns a pointer to a new RootModule instance.
+func New() *RootModule {
+	return &RootModule{}
+}
+
+// NewModuleInstance implements the modules.IsModuleV2 interface and returns
+// a new instance for each VU.
+func (*RootModule) NewModuleInstance(m modules.InstanceCore) modules.Instance {
+	return &Compare{InstanceCore: m}
+}
+
+// GetExports implements the modules.Instance interface and returns the exports
+// of the JS module.
+func (c *Compare) GetExports() modules.Exports {
+	return modules.Exports{Default: c}
+}
+
+// IsGreater returns true if a is greater than b, false otherwise.
+func (*Compare) IsGreater(a, b int) bool {
+	return a > b
+}
+```
+
+</CodeGroup>
+
+Currently this module isn't taking advantage of the methods provided by
+[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#InstanceCore)
+because our simple example extension doesn't require it, but here is
+a contrived example of how that could be done:
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```go
+type InternalState struct {
+	ActiveVUs       int64 `js:"activeVUs"`
+	Iteration       int64
+	VUID            uint64     `js:"vuID"`
+	VUIDFromRuntime goja.Value `js:"vuIDFromRuntime"`
+}
+
+func (c *Compare) GetInternalState() *InternalState {
+	state := c.GetState()
+	ctx := c.GetContext()
+	es := lib.GetExecutionState(ctx)
+	rt := c.GetRuntime()
+
+	return &InternalState{
+		VUID:            state.VUID,
+		VUIDFromRuntime: rt.Get("__VU"),
+		Iteration:       state.Iteration,
+		ActiveVUs:       es.GetCurrentlyActiveVUsCount(),
+	}
+}
+```
+
+</CodeGroup>
+
+Running a script like:
+
+<CodeGroup labels={["test.js"]} lineNumbers={[true]}>
+
+```javascript
+import compare from 'k6/x/compare';
+
+export default function () {
+  const state = compare.getInternalState();
+  console.log(`Active VUs: ${state.activeVUs}
+Iteration: ${state.iteration}
+VU ID: ${state.vuID}
+VU ID from runtime: ${state.vuIDFromRuntime}`);
+}
+```
+
+</CodeGroup>
+
+Should output:
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+INFO[0000] Active VUs: 1
+Iteration: 0
+VU ID: 1
+VU ID from runtime: 1  source=console
+```
+
+</CodeGroup>
+
+> ℹ️ **Note**
+>
+> For a more extensive usage example of this API, take a look at the
+> [`k6/execution`](https://github.com/grafana/k6/blob/v0.34.1/js/modules/k6/execution/execution.go)
+> module.
+
+Notice that the JavaScript runtime will transparently convert Go types like
+`int64` to their JS equivalent. For complex types where this is not
+possible your script might fail with a `TypeError` and you will need to convert
+your object to a [`goja.Object`](https://pkg.go.dev/github.com/dop251/goja#Object) or [`goja.Value`](https://pkg.go.dev/github.com/dop251/goja#Value).
+
+For example:
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```go
+type Comparator struct{}
+
+func (*Compare) XComparator(call goja.ConstructorCall, rt *goja.Runtime) *goja.Object {
+	return rt.ToValue(&Comparator{}).ToObject(rt)
+}
+```
+
+</CodeGroup>
+
+This also demonstrates the native constructors feature from goja, where methods
+with this signature will be transformed to JS constructors, and also have
+the benefit of receiving the `goja.Runtime`, which is an alternative way
+to access it in addition to the `GetRuntime()` method shown above.
 
 
 #### Things to keep in mind
@@ -300,8 +494,8 @@ func (*Compare) XComparator() *Comparator {
 
 ### Writing a new Output extension
 
-Output extensions are similarly written, but have a different API and performance
-considerations.
+Output extensions are written similarly to JavaScript extensions, but have a
+different API and performance considerations.
 
 The core of an Output extension is a struct that implements the [`output.Output`
 interface](https://pkg.go.dev/go.k6.io/k6/output#Output). For example:
