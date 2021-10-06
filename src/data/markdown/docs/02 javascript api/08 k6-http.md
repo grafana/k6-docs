@@ -17,6 +17,7 @@ The k6/http module contains functionality for performing HTTP transactions.
 | [post( url, [body], [params] )](/javascript-api/k6-http/post-url-body-params)  | Issue an HTTP POST request. |
 | [put( url, [body], [params] )](/javascript-api/k6-http/put-url-body-params)  | Issue an HTTP PUT request. |
 | [request( method, url, [body], [params] )](/javascript-api/k6-http/request-method-url-body-params)  | Issue any type of HTTP request. |
+| [url( url )](/javascript-api/k6-http/url-url) | Creates a URL with a name tag. Read more on [URL Grouping](/using-k6/http-requests#url-grouping). |
 | [setResponseCallback(expectedStatuses)](/javascript-api/k6-http/setresponsecallback-callback)  | Sets a response callback to mark responses as expected. |
 | [expectedStatuses( statusCodes )](/javascript-api/k6-http/expectedstatuses-statuses)  | Create a callback for setResponseCallback that checks status codes. |
 

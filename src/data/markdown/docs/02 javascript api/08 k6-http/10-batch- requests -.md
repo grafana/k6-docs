@@ -12,18 +12,19 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 
 When each request is specified as an array, the order of the arguments for each request is as follows:
 
+| Position | Name              | Type             | Description                                                                                                                 |
+| -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1        | method            | string           | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
+| 2        | url               | string / [HTTP URL](/javascript-api/k6-http/url-url#returns)  | Mandatory. The URL to request.                                                                                              |
+| 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
+| 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
+
+
 ### Returns
 
 | Type   | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| object | An object containing [Response](/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is a normal object with string keys when named requests are used (see below). |
-
-| Position | Name              | Type             | Description                                                                                                                 |
-| -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| 1        | method            | string           | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
-| 2        | url               | string           | Mandatory. The URL to request.                                                                                              |
-| 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
-| 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
+| object | The returned object contains [Response](/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is an ordinary object with string keys when named requests are used (see below). |
 
 ### Example with request as an array
 
