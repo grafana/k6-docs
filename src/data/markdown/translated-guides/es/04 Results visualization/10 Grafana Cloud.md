@@ -32,7 +32,6 @@ A continuación, configuramos y ejecutamos telegraf. Telegraf recopilará las m�
 Para instalar telegraf, siga las [Documentación Oficial de Telegraf](https://docs.influxdata.com/telegraf).
 
 Edite su archivo `telegraf.conf` usando el siguiente ejemplo. El ejemplo solo requiere que cambie el nombre de usuario, la contraseña y la URL de la salida HTTP para que coincida con su configuración de Grafana Cloud Prometheus.
-<CodeGroup labels={["telegraf.conf"]} lineNumbers={[true]}>
 
 ```toml
 [agent]
