@@ -348,6 +348,8 @@ type (
 		// InstanceCore provides some useful methods for accessing internal k6
 		// objects like the global context, VU state and goja runtime.
 		modules.InstanceCore
+		// Comparator is the exported module instance.
+		*Comparator
 	}
 )
 
@@ -365,18 +367,21 @@ func New() *RootModule {
 // NewModuleInstance implements the modules.IsModuleV2 interface and returns
 // a new instance for each VU.
 func (*RootModule) NewModuleInstance(m modules.InstanceCore) modules.Instance {
-	return &Compare{InstanceCore: m}
+	return &Compare{InstanceCore: m, Comparator: &Comparator{}}
+}
+
+// Comparator is the exported module instance.
+type Comparator struct{}
+
+// IsGreater returns true if a is greater than b, or false otherwise.
+func (*Comparator) IsGreater(a, b int) bool {
+	return a > b
 }
 
 // GetExports implements the modules.Instance interface and returns the exports
 // of the JS module.
 func (c *Compare) GetExports() modules.Exports {
-	return modules.Exports{Default: c}
-}
-
-// IsGreater returns true if a is greater than b, false otherwise.
-func (*Compare) IsGreater(a, b int) bool {
-	return a > b
+	return modules.Exports{Default: c.Comparator}
 }
 ```
 
