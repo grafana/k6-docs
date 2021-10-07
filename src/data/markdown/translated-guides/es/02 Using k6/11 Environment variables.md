@@ -3,24 +3,41 @@ title: 'Variables de entorno'
 excerpt: 'Puede acceder a cualquier variable de entorno desde su código de script de k6, y usar esto para suministrar a sus VUs información de configuración.'
 ---
 
-## k6 y las variables de entorno
+La mayoría de las veces los scripts solo necesitarán ajustes menores para que sean reutilizables en diferentes contextos. En lugar de tener que crear varios scripts separados para estos diferentes contextos o entornos puede usar variables de entorno para hacer que algunas partes de su script se puedan modificar.
 
-Las variables de entorno se pueden utilizar con k6 de dos maneras:
+Puede usar variables de entorno para dos propósitos principales:
 
-- Puede acceder a cualquier variable de entorno desde su código de script de k6, y usar esto para suministrar a sus VUs información de configuración.
-- Un par de variables de entorno son leídas automáticamente por k6 al iniciarse, afectando su comportamiento.
+1. Pasar variables de entorno al script k6
+2. Configurar [k6 Options](/using-k6/options) con variables de entorno
 
 
-## Accediendo a las variables de entorno desde un script
+## Pasando variables de entorno al script k6
 
-Muchas veces, los scripts sólo necesitarán pequeños ajustes para ser reutilizables en diferentes contextos. En lugar de tener que crear varios scripts separados para estos diferentes contextos o entornos, puedes utilizar variables de entorno para hacer que partes de tu script sean modificables.
+En k6, las variables de entorno se exponen a través de una variable global `__ENV`, un objeto JS. Como referencia, consulte el ejemplo de secuencia de comandos a continuación:
 
-En k6, las variables de entorno se exponen a través de una variable global `__ENV`, un objeto JS. El origen de las variables de entorno puede ser doble. Pueden venir del sistema local y/o ser pasadas explícitamente a k6 usando una o más banderas CLI `-e NAME=VALUE`.
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-La principal diferencia entre ambos es que sólo `k6 run` pasa las variables de entorno del sistema al código del script por defecto, mientras que `k6 archive`, `k6 cloud` y `k6 inspect` no lo hacen. Por lo tanto, a menos que especifique explícitamente `--include-system-env-vars`, sólo las variables pasadas usando la bandera `-e` CLI se mantendrán al crear un archivo (`k6 archive script.js`). También puede desactivar el paso por defecto de las variables del entorno del sistema cuando se ejecutan los scripts utilizando `--include-system-env-vars=false`.
+export default function () {
+  const res = http.get(`http://${__ENV.MY_HOSTNAME}/`);
+  sleep(1);
+}
+```
+La opción recomendada de pasar variables de entorno a su secuencia de comandos de prueba es utilizar una o más  [`-e` / `--env` CLI flags](/using-k6/options#supply-environment-variables)(este comando funciona igual para todas las plataformas):
 
-Una variable de entorno podría, por ejemplo, especificarse así en la línea de comandos:
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
+```bash
+$ k6 run -e MY_HOSTNAME=test.k6.io script.js
+```
+</CodeGroup>
+
+** Nota **: Esto _no_ se puede utilizar para configurar k6 con las variables de entorno que se enumeran en la [options](/using-k6/options)página. En otras palabras `-e K6_ITERATIONS=120` _no_ configurará el script [iterations](/using-k6/options#iterations) solo proporcionará `__ENV.K6_ITERATIONS` al script, a diferencia de `K6_ITERATIONS=120 k6 run script.js`.
+
+<Collapsible title="Uso de variables de entorno del sistema">
+  
+Una segunda opción para pasar variables de entorno es obtenerlas del sistema local.
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -29,53 +46,61 @@ $ MY_HOSTNAME=test.k6.io k6 run script.js
 ```
 
 ```bash
-c:\\k6> set MY_HOSTNAME=\"test.k6.io\"\nc:\\k6> k6 run script.js
+C:\k6> set "MY_HOSTNAME=test.k6.io" && k6 run script.js
 ```
 
 ```bash
-c:\\k6> $env:MY_HOSTNAME = \"test.k6.io\"\nc:\\k6> k6 run script.js
+PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 ```
 
 </CodeGroup>
 
-o utilizando una flag `-e` CLI (que será la misma para todas las plataformas):
+#### ⚠️ Advertencia
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+Por defecto, pasar variables de entorno del sistema no funciona para `k6 archive`,` k6 cloud` y `k6 inspect`. Es una medida de seguridad para evitar el riesgo de subir datos sensibles a k6 Cloud. Puede anular este modo especificando explícitamente [--include-system-env-vars] (/ using-k6 / options / # include-system-env-vars).
+  
+</Collapsible>
 
-```bash
-$ k6 run -e MY_HOSTNAME=test.k6.io script.js
-```
+## Configurar las opciones de k6 con variables de entorno
 
-</CodeGroup>
-
-La variable de entorno podría usarse de la siguiente manera en un script:
-
-<CodeGroup labels={[]} lineNumbers={[true]}>
+k6 [opciones] (/ using-k6 / options) se puede configurar pasando variables de entorno. Considere la siguiente secuencia de comandos de prueba básica:
 
 ```javascript
-import { check, sleep } from 'k6';
 import http from 'k6/http';
+import { sleep } from 'k6';
 
 export default function () {
-  var r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
-  check(r, {
-    'status is 200': (r) => r.status === 200,
-  });
-  sleep(5);
+  const res = http.get('https://test.k6.io');
+  sleep(1);
 }
+```
+De forma predeterminada, la ejecución del script anterior de forma local ejecutará una única iteración utilizando un usuario virtual (VU). Podemos modificar el ** comportamiento predeterminado ** pasando [k6 options] (/ using-k6 / options) como variables de entorno. Por ejemplo, podemos configurar el script para ejecutar 10 usuarios virtuales por una duración de 10 segundos:
+
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_VUS=10 K6_DURATION=10s k6 run script.js
+```
+
+```bash
+C:\k6> set "K6_VUS=10 K6_DURATION=10s" && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 ```
 
 </CodeGroup>
 
-Las variables de entorno especificadas con el indicador `-e` de la CLI tienen prioridad sobre (sobrescriben) las variables de entorno reales del sistema con el mismo nombre.
+Como se demostró anteriormente, deberá agregar el prefijo `K6_` en el nombre de la variable de entorno para que k6 lo evalúe como un ** parámetro de opción **. Sin embargo, tenga en cuenta que no todas las opciones son compatibles como variables de entorno. Puede confirmar consultando la documentación de cada [option] (/ using-k6 / options / # list-of-options).
 
-## Las variables de entorno que k6 leerá automáticamente
+Tenga en cuenta que cuando usa varias formas de definir opciones para un script, hay un [orden de precedencia] (/ using-k6 / options # using-options) que se usa para determinar qué opción se usa realmente. Para asegurarse de que siempre está trabajando con la mayor prioridad, siempre use marcas de línea de comandos en lugar de variables de entorno:
 
-k6 también intentará leer algunas variables de entorno específicas que el usuario puede establecer para cambiar el comportamiento de k6:
+<CodeGroup labels={[]} lineNumbers={[true]}>
 
-| Nombre                 | Descripción                                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUD_HOST`      | Una URL a la que conectarse, cuando se especifica la opción de salida de resultados `--out=cloud`.                                          |
-| `K6_CLOUD_TOKEN`     | Un token de autenticación para utilizar en las llamadas a la API del servicio en la nube, cuando se especifica la opción de salida de resultados `--cloud`. |
-| `K6_NO_USAGE_REPORT` | Defina esto para desactivar los [informes de uso.](/es/misc/recopilacion-de-datos-de-uso/).                                                        |
-| `K6_OUT`             | Especifica la salida de resultados, igual que la opción de línea de comandos `--out`.                                                             |
+```bash
+$ k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
+```
+
+</CodeGroup>
+
