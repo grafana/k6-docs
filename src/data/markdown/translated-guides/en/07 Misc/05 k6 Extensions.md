@@ -265,9 +265,9 @@ The k6 Go-JS bridge has a few features we should highlight:
 - Similarly, Go field names will be converted from Pascal case to Snake case.
   For example, the struct field `SomeField string` will be accessible in JS as
   the `some_field` object property. This behavior is configurable with the `js`
-  struct tag, so this can be changed with
-  <code>SomeField string &grave;js:"someField"&grave;</code>
-  or the field can be hidden with `js:"-"`.
+  struct tag, so this can be changed
+  with <CodeInline>SomeField string &grave;js:"someField"&grave;</CodeInline>
+  or the field can be hidden with <CodeInline>&grave;js:"-"&grave;</CodeInline>.
 
 - Methods with a name prefixed with `X` will be transformed to JS
   constructors, and will support the `new` operator.
