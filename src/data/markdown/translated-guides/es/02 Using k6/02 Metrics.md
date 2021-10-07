@@ -21,8 +21,6 @@ export default function () {
 
 </CodeGroup>
 
-<CodeGroup labels={["output"]} lineNumbers={[false]}>
-
 ```bash
 $ k6 run script.js
 
