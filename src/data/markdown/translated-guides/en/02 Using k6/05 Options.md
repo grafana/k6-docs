@@ -9,6 +9,7 @@ Options allow you to configure how k6 will behave during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Address](#address)                                       | Address of the API server                                                           |
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
@@ -47,6 +48,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup Timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
+| [Show Logs](#show-logs)                                   | A boolean specifying whether the cloud logs are printed out to the terminal         |
 | [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
 | [Supply Environment Variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                    |
 | [System Tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
@@ -172,6 +174,22 @@ PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" sc
 Below, you'll find details on all available options that can be specified within a script. It also
 documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
 and `k6 cloud ...` that can be used to override options specified in the code.
+
+### Address
+
+Address of the API server. When executing scripts with `k6 run` an HTTP server with a REST API is spun up, which can be used to control some of the parameters of the test execution. By default, the server listens on `localhost:6565`. Read more on [k6 REST API](/misc/k6-rest-api).
+
+| Env | CLI               | Code / Config file | Default          |
+| --- | ----------------- | ------------------ | ---------------- |
+| N/A | `--address`, `-a` | N/A                | `localhost:6565` |
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --address "localhost:3000" script.js
+```
+
+</CodeGroup>
 
 ### Batch
 
@@ -318,7 +336,7 @@ Redirects logs logged by `console` methods to the provided output file. Availabl
 | `K6_CONSOLE_OUTPUT` | `--console-output` | N/A                | `null`  |
 
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ k6 run --console-output "loadtest.log" script.js
@@ -494,7 +512,7 @@ This option allows you to exit early and let the script run in the background. A
 | -------------------- | ------------------- | ------------------ | ------- |
 | `K6_EXIT_ON_RUNNING` | `--exit-on-running` | N/A                | `false` |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ k6 cloud --exit-on-running script.js
@@ -835,7 +853,7 @@ A boolean specifying whether `setup()` function should be run. Available in `k6 
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_NO_SETUP`      | `--no-setup`      | N/A                | `false` |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ k6 run --no-setup script.js
@@ -851,7 +869,7 @@ A boolean specifying whether `teardown()` function should be run. Available in `
 | ------------------ | ----------------- | ------------------ | ------- |
 | `K6_NO_TEARDOWN`   | `--no-teardown`   | N/A                | `false` |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ k6 run --no-teardown script.js
@@ -1049,6 +1067,24 @@ export let options = {
 ```
 
 </CodeGroup>
+
+### Show Logs
+
+A boolean specifying whether the cloud logs are printed out to the terminal. Available in `k6 cloud` command.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| N/A | `--show-logs` | N/A                | `true`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --show-logs=false script.js
+```
+
+</CodeGroup>
+
 
 ### Stages
 
