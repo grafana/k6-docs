@@ -203,11 +203,11 @@ This feature is only available for local `k6 run` tests for now, though we plan 
 
 ### Summary export to a JSON file
 
-Since version 0.26.0 k6 has had the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) for local test runs. It exports some of the summary report data to a JSON file format.
+k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) to export some of the summary report data to a JSON file format.
 
-Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered. Threshold values are also somewhat unintuitive - they signify whether the threshold has been crossed. So, `true` is the "bad" threshold value, i.e. when the threshold has failed, and `false` is the "good" value...
+Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered, and threshold values are unintuitive - `true` indicates the threshold has failed, and `false` that succeeded.
 
-We couldn't change the `--summary-export` data format because it would have broken backwards compatibility in a feature that people depended on in CI, so it still works how it used to. However, in k6 v0.30.0, we introduced `handleSummary()` - a new and better way to make JSON exports of the summary data, as well as any other format (CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.) that may be required. We strongly recommend everyone to use `handleSummary()` instead of `--summary-export`. For more details, see the next section in this document...
+We couldn't change the `--summary-export` data format because it would have broken backwardbackward compatibility in a feature that people depended on their CI pipelines. Since k6 v0.30.0, the recommended approach to export to a JSON file is to use the [`handleSummary()` callback](#handlesummary-callback). The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
 
