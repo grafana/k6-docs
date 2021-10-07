@@ -20,6 +20,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
 | [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
+| [Exit On Running](#exit-on-running)                       | Exits when test reaches the running status                                          |
 | [Extension Options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP Debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
@@ -480,6 +481,26 @@ In v0.27.0 this distinction is not very important, but it will be required
 in future versions when support for test data partitioning is added.
 
 <!-- TODO: Add more examples, link to a standalone page? -->
+
+### Exit On Running
+
+A boolean, specifying whether the script should exit once the test status reaches `running`.
+When running scripts with `k6 cloud` by default scripts will run until the test reaches a finalized status.
+This could be problematic in certain environments (think of Continuous Integration and Delivery pipelines),
+since you'd need to wait until the test ends up in a finalized state. 
+This option allows you to exit early and let the script run in the background. Available in `k6 cloud` command.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_EXIT_ON_RUNNING` | `--exit-on-running` | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 cloud --exit-on-running script.js
+```
+
+</CodeGroup>
 
 ### Hosts
 
