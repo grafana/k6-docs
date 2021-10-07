@@ -15,6 +15,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
+| [Console Output](#console-output)                         | Redirects logs logged by `console` methods to the provided output file              |
 | [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
 | [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
 | [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
@@ -306,6 +307,23 @@ An example of a config file is available [here](/using-k6/options#config-json-ex
 > #### ⚠️ Keep in mind!
 >
 > When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
+
+### Console Output
+
+Redirects logs logged by `console` methods to the provided output file. Available in `k6 cloud` and `k6 run` commands.
+
+| Env                 | CLI                | Code / Config file | Default |
+| ---                 | -------------------| ------------------ | ------- |
+| `K6_CONSOLE_OUTPUT` | `--console-output` | N/A                | `null`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --console-output "loadtest.log" script.js
+```
+
+</CodeGroup>
 
 ### Discard Response Bodies
 
@@ -799,7 +817,7 @@ A boolean specifying whether `setup()` function should be run. Available in `k6 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --no-setup ~/script.js
+$ k6 run --no-setup script.js
 ```
 
 </CodeGroup>
@@ -815,7 +833,7 @@ A boolean specifying whether `teardown()` function should be run. Available in `
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --no-teardown ~/script.js
+$ k6 run --no-teardown script.js
 ```
 
 </CodeGroup>
