@@ -295,7 +295,7 @@ func (*Compare) XComparator() *Comparator {
 >
 > The internal JavaScript module API is currently (October 2021) in a state of
 > flux. The traditional approach of initializing JS modules involves calling
-> [`common.Bind()`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/common#Bind)
+> [`common.Bind()`](https://pkg.go.dev/go.k6.io/k6/js/common#Bind)
 > on any objects that need to be exposed to JS. This method has a few technical
 > issues we want to improve, and also isn't flexible enough to implement
 > new features like giving extensions access to internal k6 objects.
@@ -309,9 +309,9 @@ inspect the state of the test during execution, we will need to make some
 slightly more complicated changes to the above example.
 
 Our main `Compare` struct should implement the
-[`modules.Instance` interface](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#Instance)
+[`modules.Instance` interface](https://pkg.go.dev/go.k6.io/k6/js/modules#Instance)
 and embed
-[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#InstanceCore)
+[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6/js/modules#InstanceCore)
 in order to access internal k6 objects such as:
 - [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State): the VU state with
   values like the VU ID and iteration number.
@@ -321,7 +321,7 @@ in order to access internal k6 objects such as:
   [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState).
 
 Additionally there should be a root module implementation of the
-[`modules.IsModuleV2` interface](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#IsModuleV2)
+[`modules.IsModuleV2` interface](https://pkg.go.dev/go.k6.io/k6/js/modules#IsModuleV2)
 that will serve as a factory of `Compare` instances for each VU. Note that this
 can have memory implications depending on the size of your module.
 
@@ -388,7 +388,7 @@ func (c *Compare) GetExports() modules.Exports {
 </CodeGroup>
 
 Currently this module isn't taking advantage of the methods provided by
-[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6@v0.34.1/js/modules#InstanceCore)
+[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6/js/modules#InstanceCore)
 because our simple example extension doesn't require it, but here is
 a contrived example of how that could be done:
 
