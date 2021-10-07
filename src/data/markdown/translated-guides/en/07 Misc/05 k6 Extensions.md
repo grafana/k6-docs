@@ -269,7 +269,7 @@ The k6 Go-JS bridge has a few features we should highlight:
   <code>SomeField string &grave;js:"someField"&grave;</code>
   or the field can be hidden with `js:"-"`.
 
-- Methods with a name is prefixed with `X` will be transformed to JS
+- Methods with a name prefixed with `X` will be transformed to JS
   constructors, and will support the `new` operator.
   For example, defining the following method on the above struct:
 
