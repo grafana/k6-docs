@@ -34,6 +34,8 @@ Options allow you to configure how k6 will behave during test execution.
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
 | [no summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
+| [No Setup](#no-setup)                                     | A boolean specifying whether `setup()` function should be run                       |
+| [No Teardown](#no-teardown)                               | A boolean specifying whether `teardown()` function should be run                    |
 | [No Thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
 | [No Usage Report](#no-usage-report)                       | A boolean specifying whether k6 should send a usage report                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | A boolean specifying whether k6 should reuse TCP connections                        |
@@ -782,6 +784,38 @@ Disables [end-of-test summary](/results-visualization/end-of-test-summary) gener
 
 ```bash
 $ k6 run --no-summary ~/script.js
+```
+
+</CodeGroup>
+
+### No Setup
+
+A boolean specifying whether `setup()` function should be run. Available in `k6 cloud` and `k6 run` commands.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_SETUP`      | `--no-setup`      | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-setup ~/script.js
+```
+
+</CodeGroup>
+
+### No Teardown
+
+A boolean specifying whether `teardown()` function should be run. Available in `k6 cloud` and `k6 run` commands.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_TEARDOWN`   | `--no-teardown`   | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --no-teardown ~/script.js
 ```
 
 </CodeGroup>
