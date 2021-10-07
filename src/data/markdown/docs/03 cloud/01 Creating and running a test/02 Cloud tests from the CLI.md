@@ -232,38 +232,8 @@ export default function () {
 
 </CodeGroup>
 
-## Environment variables
 
-[Environment variables](/using-k6/environment-variables) set in the local terminal before executing k6 won't be forwarded to the k6 cloud service, and thus won't be available to your script when executing in the cloud.
-
-With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environment variables like `-e KEY=VALUE` or `--env KEY=VALUE`.
-
-For example, given the script below, which reads the `MY_HOSTNAME` environment variable.
-
-<CodeGroup labels={["Environment variables"]}>
-
-```javascript
-import { check, sleep } from 'k6';
-import http from 'k6/http';
-
-export default function () {
-  let r = http.get(`http://${__ENV.MY_HOSTNAME}/`);
-  check(r, {
-    'status is 200': (r) => r.status === 200,
-  });
-  sleep(5);
-}
-```
-
-</CodeGroup>
-
-You'd execute it using the command like:
-
-```bash
-$ k6 cloud -e MY_HOSTNAME=test.k6.io script.js
-```
-
-### Injected environment variables on the cloud execution
+## Cloud environment variables
 
 When running in the k6 Cloud there will be three additional environment variables that can be used to find out in which load zone, server instance, and distribution label the given script is currently running.
 
@@ -321,3 +291,7 @@ that executed the `setup()` will execute the `teardown()`.
 ### Disable cloud logs
        
 When running cloud tests from the CLI, you will get cloud log output printed to the terminal. You can disable this either by passing `--show-logs=false` as an option to `k6` or by setting an environment variable `K6_SHOW_CLOUD_LOGS=false`. 
+
+### System environment variables
+
+Environment variables set in the local terminal before executing k6 won't be forwarded to the k6 cloud service, and thus won't be available to your script when executing in the cloud. With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environment variables like `-e KEY=VALUE` or `--env KEY=VALUE`. Read more about this on [environment variables](/using-k6/environment-variables).
