@@ -26,6 +26,7 @@ const componentsForNativeReplacement = {
   pre: Code,
   CodeGroup,
   Collapsible,
+  CodeInline,
 };
 
 export const DocPageContent = ({ label, content, mod, version }) => {
