@@ -1484,9 +1484,9 @@ export let options = {
 
 A boolean specifying whether verbose logging is enabled. Available in `k6 run` and `k6 cloud` commands.
 
-| Env | CLI          | Code / Config file  | Default |
-| --- | ------------ | ------------------- | ------- |
-| N/A | `--verbose`  | N/A                 | `false` |
+| Env | CLI                | Code / Config file  | Default |
+| --- | ------------------ | ------------------- | ------- |
+| N/A | `--verbose`, `-v`  | N/A                 | `false` |
 
 
 <CodeGroup labels={[]} lineNumbers={[false]}>
