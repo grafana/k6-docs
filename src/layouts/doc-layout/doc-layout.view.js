@@ -139,27 +139,29 @@ const SidebarNode = (props) => {
     let doesPathMatchLocation = maybePrefixedPath === pathname;
 
     const isPathLocationPart =
-      meta.path === '/' || meta.path === '/es/' || meta.path === '/ecosystem/'
+      meta.path === '/' || meta.path === '/es/' || meta.path === '/extensions/'
         ? false
         : pathname.startsWith(maybePrefixedPath);
 
-    // handle ecosystem category filters
-    let doesMatchEcosystemCategory = false;
-    if (meta.path.startsWith('/ecosystem/')) {
+    // handle extensions category filters
+    let doesMatchExtensionsCategory = false;
+    if (meta.path.startsWith('/extensions/')) {
       if (search) {
         if (pathname + search === maybePrefixedPath) {
-          doesMatchEcosystemCategory = true;
+          doesMatchExtensionsCategory = true;
         }
 
         // if category is selected then "All" is not active
-        if (meta.path === '/ecosystem/' && meta.title !== 'Discovery') {
+        if (meta.path === '/extensions/' && meta.title !== 'Discovery') {
           doesPathMatchLocation = false;
         }
       }
     }
 
     setIsActive(
-      doesPathMatchLocation || isPathLocationPart || doesMatchEcosystemCategory,
+      doesPathMatchLocation ||
+        isPathLocationPart ||
+        doesMatchExtensionsCategory,
     );
   }, [search]);
 

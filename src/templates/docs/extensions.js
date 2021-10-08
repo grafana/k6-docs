@@ -1,8 +1,8 @@
-import { EcosystemTitleGroup } from 'components/pages/doc-ecosystem/ecosystem-title-group';
-import { ExtensionsList } from 'components/pages/doc-ecosystem/extensions-list';
+import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list';
+import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
-import EXTENSIONS_DATA from 'data/ecosystem/extensions';
+import EXTENSIONS_DATA from 'data/extensions/extensions';
 import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
@@ -21,18 +21,18 @@ EXTENSIONS_DATA.forEach((extension) => {
 
 CATEGORIES = Array.from(CATEGORIES).sort();
 
-export const ecosystemSidebar = {
-  name: 'ecosystem',
+export const extensionsSidebar = {
+  name: 'extensions',
   meta: {
-    title: 'Ecosystem',
-    path: '/ecosystem/',
+    title: 'Extensions',
+    path: '/extensions/',
   },
   children: {
-    Ecosystem: {
-      name: 'ecosystem',
+    Extensions: {
+      name: 'extensions',
       meta: {
-        title: 'Ecosystem',
-        path: '/ecosystem/',
+        title: 'Extensions',
+        path: '/extensions/',
       },
       children: {
         Explore: {
@@ -40,7 +40,7 @@ export const ecosystemSidebar = {
           meta: {
             title: 'Explore',
             isActiveSidebarLink: true,
-            path: '/ecosystem/',
+            path: '/extensions/',
           },
           children: {},
         },
@@ -49,7 +49,7 @@ export const ecosystemSidebar = {
           meta: {
             title: 'Build Bundle',
             isActiveSidebarLink: true,
-            path: '/ecosystem/bundle-builder/',
+            path: '/extensions/bundle-builder/',
           },
           children: {},
         },
@@ -59,7 +59,7 @@ export const ecosystemSidebar = {
       name: 'guides',
       meta: {
         title: 'Guides',
-        path: '/ecosystem/',
+        path: '/extensions/',
       },
       children: {
         GetStarted: {
@@ -78,7 +78,7 @@ export const ecosystemSidebar = {
     //   name: 'Category',
     //   meta: {
     //     title: 'Category',
-    //     path: '/ecosystem/',
+    //     path: '/extensions/',
     //   },
     //   children: {
     //     All: {
@@ -86,7 +86,7 @@ export const ecosystemSidebar = {
     //       meta: {
     //         title: 'All',
     //         isActiveSidebarLink: true,
-    //         path: '/ecosystem/',
+    //         path: '/extensions/',
     //       },
     //       children: {},
     //     },
@@ -97,12 +97,12 @@ export const ecosystemSidebar = {
 
 // @TODO: uncomment to enable category filters
 // CATEGORIES.forEach((category) => {
-//   ecosystemSidebar.children.Category.children[capitalize(category)] = {
+//   extensionsSidebar.children.Category.children[capitalize(category)] = {
 //     name: capitalize(category),
 //     meta: {
 //       title: capitalize(category),
 //       isActiveSidebarLink: true,
-//       path: `/ecosystem/?category=${category}`,
+//       path: `/extensions/?category=${category}`,
 //     },
 //     children: {},
 //   };
@@ -110,18 +110,18 @@ export const ecosystemSidebar = {
 
 const breadcrumbs = [
   {
-    name: 'Ecosystem',
-    path: '/ecosystem/',
+    name: 'Extensions',
+    path: '/extensions/',
   },
   {
     name: 'Explore',
-    path: '/ecosystem/',
+    path: '/extensions/',
   },
 ];
 
-export default function Ecosystem({ location, pageContext: { navLinks } }) {
+export default function Extensions({ location, pageContext: { navLinks } }) {
   useScrollToAnchor();
-  const pageMetadata = SeoMetadata.ecosystem;
+  const pageMetadata = SeoMetadata.extensions;
 
   const queryParams = queryString.parse(location.search);
   const category = queryParams?.category || 'All';
@@ -129,12 +129,12 @@ export default function Ecosystem({ location, pageContext: { navLinks } }) {
   return (
     <LocaleProvider>
       <DocLayout
-        sidebarTree={ecosystemSidebar}
+        sidebarTree={extensionsSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
-        sectionName="Ecosystem"
+        sectionName="Extensions"
       >
-        <EcosystemTitleGroup
+        <ExtensionsTitleGroup
           title={'Explore'}
           description={''}
           breadcrumbs={breadcrumbs}
@@ -161,7 +161,7 @@ export default function Ecosystem({ location, pageContext: { navLinks } }) {
             features you need? Head over to the{' '}
             <Link
               className={docPageContent.link}
-              to={'/ecosystem/bundle-builder/'}
+              to={'/extensions/bundle-builder/'}
             >
               bundle builder
             </Link>{' '}

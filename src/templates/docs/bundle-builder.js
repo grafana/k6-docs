@@ -1,5 +1,5 @@
-import { EcosystemTitleGroup } from 'components/pages/doc-ecosystem/ecosystem-title-group';
-import { ExtensionSelection } from 'components/pages/doc-ecosystem/extension-selection';
+import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
+import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
@@ -7,54 +7,18 @@ import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
-import { ecosystemSidebar } from './ecosystem';
+import { extensionsSidebar } from './extensions';
 
-const bundleBuilderSidebar = ecosystemSidebar;
-// {
-//   name: 'ecosystem',
-//   meta: {
-//     title: 'Ecosystem',
-//     path: '/ecosystem/',
-//   },
-//   children: {
-//     Ecosystem: {
-//       name: 'ecosystem',
-//       meta: {
-//         title: 'Ecosystem',
-//         path: '/ecosystem/',
-//       },
-//       children: {
-//         Explore: {
-//           name: 'Explore',
-//           meta: {
-//             title: 'Explore',
-//             isActiveSidebarLink: true,
-//             path: '/ecosystem/',
-//           },
-//           children: {},
-//         },
-//         'Build Bundle': {
-//           name: 'Build Bundle',
-//           meta: {
-//             title: 'Build Bundle',
-//             isActiveSidebarLink: true,
-//             path: '/ecosystem/bundle-builder/',
-//           },
-//           children: {},
-//         },
-//       },
-//     },
-//   },
-// };
+const bundleBuilderSidebar = extensionsSidebar;
 
 const breadcrumbs = [
   {
-    name: 'Ecosystem',
-    path: '/ecosystem/',
+    name: 'Extensions',
+    path: '/extensions/',
   },
   {
     name: 'Build Bundle',
-    path: '/ecosystem/bundle-builder/',
+    path: '/extensions/bundle-builder/',
   },
 ];
 
@@ -68,9 +32,9 @@ export default function BundleBuilderPage({ pageContext: { navLinks } }) {
         sidebarTree={bundleBuilderSidebar}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
-        sectionName="Ecosystem"
+        sectionName="Extensions"
       >
-        <EcosystemTitleGroup
+        <ExtensionsTitleGroup
           title={'Build Bundle'}
           description={``}
           className="container"

@@ -1,6 +1,6 @@
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
-import EXTENSIONS_DATA from 'data/ecosystem/extensions';
+import EXTENSIONS_DATA from 'data/extensions/extensions';
 import React, { useState, useLayoutEffect } from 'react';
 
 import styles from './extension-selection.module.scss';

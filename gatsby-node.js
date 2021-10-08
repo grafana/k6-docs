@@ -180,8 +180,8 @@ const generateTopLevelLinks = (topLevelLinks) => [
   },
   ...topLevelLinks.slice(0, 3),
   {
-    label: 'ecosystem',
-    to: '/ecosystem/',
+    label: 'extensions',
+    to: '/extensions/',
   },
   ...topLevelLinks.slice(3, topLevelLinks.length),
 ];
@@ -397,10 +397,10 @@ function getTopLevelPagesProps({
     )
     .concat([
       {
-        path: `/ecosystem/`,
-        component: Path.resolve(`./src/templates/docs/ecosystem.js`),
+        path: `/extensions/`,
+        component: Path.resolve(`./src/templates/docs/extensions.js`),
         context: {
-          sectionName: 'Ecosystem',
+          sectionName: 'Extensions',
           sidebarTree: {
             children: {},
           },
@@ -408,10 +408,10 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/ecosystem/bundle-builder/`,
+        path: `/extensions/bundle-builder/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
-          sectionName: 'Ecosystem',
+          sectionName: 'Extensions',
           sidebarTree: {
             children: {},
           },

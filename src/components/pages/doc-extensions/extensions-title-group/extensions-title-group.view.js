@@ -3,12 +3,12 @@ import { PageInfo } from 'components/shared/page-info';
 import React from 'react';
 import Pencil from 'svg/pencil-icon.inline.svg';
 
-import styles from './ecosystem-title-group.module.scss';
+import styles from './extensions-title-group.module.scss';
 
 const EXTENSIONS_HREF =
-  'https://github.com/grafana/k6-docs/blob/main/src/data/ecosystem/extensions.js';
+  'https://github.com/grafana/k6-docs/blob/main/src/data/extensions/extensions.js';
 
-export const EcosystemTitleGroup = ({
+export const ExtensionsTitleGroup = ({
   title,
   description,
   breadcrumbs = null,
