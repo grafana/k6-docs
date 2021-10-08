@@ -16,9 +16,9 @@ export default {
         'This page provides the documentation of the k6 JavaScript API.',
     },
   },
-  ecosystem: {
+  extensions: {
     data: {
-      title: 'k6 Ecosystem',
+      title: 'k6 Extensions',
       description:
         'The extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.',
     },

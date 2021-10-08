@@ -1,5 +1,5 @@
 import { ExtensionCard } from 'components/shared/extension-card';
-import EXTENSIONS_DATA from 'data/ecosystem/extensions';
+import EXTENSIONS_DATA from 'data/extensions/extensions';
 import React from 'react';
 
 import styles from './extensions-list.module.scss';

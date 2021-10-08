@@ -9,16 +9,19 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Address](#address)                                       | Dirección del servidor para la REST API                                                           |
 | [Batch](#batch)                                           | Número máximo de conexiones simultáneas de una llamada http.batch() |
 | [Batch per host](#batch-per-host)                         | Número máximo de conexiones simultáneas de una llamada http.batch() para un host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist de rangos de IP para no ser llamados                                               |
 | [Block hostnames](#block-hostnames)                       | Bloquear cualquier petición a nombres de host específicos                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Soporta la ejecución de scripts con diferentes modos de ECMAScript                             |
 | [Config](#config)                                         | Especificar el archivo de configuración en formato JSON para leer los valores de las opciones                   |
+| [Console Output](#console-output) | Redirecciona logs de la consola a un fichero |
 | [Discard Response Bodies](#discard-response-bodies)       | Especificar si los cuerpos de respuesta deben ser descartados                                      |
 | [DNS](#dns)                                               | Configurar el comportamiento de la resolución DNS                                                   |
 | [Duration](#duration)                                     | Una cadena que especifica la duración total de la ejecución de una prueba                 |
 | [Execution Segment](#execution-segment)                   | Limitar la ejecución a un segmento de la prueba total                                      |
+| [Exit On Running](#exit-on-running) | Acaba cuando el test finaliza el estado ejecutándose |
 | [Extension Options](#extension-options)                   | Un objeto utilizado para establecer las opciones de configuración de los recolectores de terceros              |
 | [Hosts](#hosts)                                           | Un objeto con anulaciones de la resolución DNS                                          |
 | [HTTP Debug](#http-debug)                                 | Logear todas las peticiones y respuestas HTTP                                                 |
@@ -31,9 +34,12 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [LogFormat](#logformat)                                   | Especificar el formato de la salida de los logs                                                |
 | [Max Redirects](#max-redirects)                           | El número máximo de redirecciones HTTP que seguirá k6                            |
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Especificar la duración mínima de cada ejecución                             |
+| [No Color](#no-color) | Especifica si el color de la salida en el terminal está deshabilitado |
 | [No Connection Reuse](#no-connection-reuse)               | Un booleano que especifica si k6 debe desactivar las conexiones keep-alive               |
 | [No Cookies Reset](#no-cookies-reset)                     | Esto desactiva el restablecimiento del tarro de galletas después de cada iteración de la VU                      |
 | [No Summary](#no-summary)                                 | Desactiva el [resumen de fin de test](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/)                  |
+| [No Setup](#no-setup)                                     | Un booleano indicando si la función `setup()` está deshabilitada                       |
+| [No Teardown](#no-teardown)                               | Un booleano indicando si la función `teardown()` está deshabilitada                    |
 | [No Thresholds](#no-thresholds)                           | Desactiva la ejecución de Thresholds                                                        |
 | [No Usage Report](#no-usage-report)                       | Un booleano que especifica si k6 debe enviar un informe de uso                          |
 | [No VU Connection Reuse](#no-vu-connection-reuse)         | Un booleano que especifica si k6 debe reutilizar las conexiones TCP                        |
@@ -43,6 +49,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [RPS](#rps)                                               | El número máximo de peticiones a realizar por segundo                                   |
 | [Scenarios](#scenarios)                                   | Definir escenarios de ejecución avanzados                                                 |
 | [Setup Timeout](#setup-timeout)                           | Especificar el tiempo de ejecución de la función `setup()` antes de su finalización      |
+| [Show Logs](#show-logs) | Un boleano especificando si los logs de cloud son mostrados en el terminal |
 | [Stages](#stages)                                         | Una lista de objetos que especifican el número objetivo de VUs para subir o bajar          |
 | [Summary export](#summary-export)                         | Guarda el informe de resumen de fin de prueba en un archivo JSON                                |
 | [Supply Env Var](#supply-env-var)                         | Añadir/sustituir la variable de entorno con VAR=valor                                    |
@@ -57,6 +64,7 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [TLS Cipher Suites](#tls-cipher-suites)                   | Una lista de suites de cifrado que se pueden utilizar en las interacciones SSL/TLS con un servidor |
 | [TLS Version](#tls-version)                               | String u objeto que representa la única versión SSL/TLS permitida                      |
 | [User Agent](#user-agent)                                 | Un string que especifica la cabecera User-Agent al enviar solicitudes HTTP                |
+| [Verbose](#verbose) | Un boleando especifiando si el logging verboso está habilidado |
 | [VUs](#vus)                                               | Un número que especifica el número de VUs que se ejecutan simultáneamente                           |
 | [VUs Max](#vus-max)                                       | Un número que especifica el número máximo de usuarios virtuales                                     |
 
@@ -149,6 +157,23 @@ $ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.
 <br/>
 
 A continuación, encontrará detalles sobre todas las opciones disponibles que se pueden especificar dentro de un script. También se documenta la flag de la línea de comandos equivalente, las variables de entorno o la opción al ejecutar `k6 run ...` y `k6 cloud ...` que pueden utilizarse para anular las opciones especificadas en el código.
+
+### Address
+
+Dirección del API server. Cuando ejecutas  `k6 run` un servidor HTTP con la API REST se inicia,
+lo cual puede ser usado para controlar la ejecución del test. Lee más en [k6 REST API](/misc/k6-rest-api).
+
+| Env | CLI               | Code / Config file | Default          |
+| --- | ----------------- | ------------------ | ---------------- |
+| N/A | `--address`, `-a` | N/A                | `localhost:6565` |
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --address "localhost:3000" script.js
+```
+
+</CodeGroup>
 
 ### Batch
 
@@ -268,6 +293,23 @@ Available in `k6 run` and `k6 cloud` commands:
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
 Puede encontrar un ejemplo de archivo de configuración disponible [aquí](/using-k6/options#config-json).
+
+### Console Output
+
+Redirecciona logs del terminal a un fichero. Disponible en los comandos `k6 cloud` y `k6 run`.
+
+| Env                 | CLI                | Code / Config file | Default |
+| ---                 | -------------------| ------------------ | ------- |
+| `K6_CONSOLE_OUTPUT` | `--console-output` | N/A                | `null`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --console-output "loadtest.log" script.js
+```
+
+</CodeGroup>
 
 ### Discard Response Bodies
 
@@ -394,6 +436,22 @@ Estas opciones especifican cómo dividir la ejecución de la prueba y qué segme
 | N/A | `--execution-segment`          | `executionSegment`         | `"0:1"` |
 | N/A | `--execution-segment-sequence` | `executionSegmentSequence` | `"0,1"` |
 
+
+### Exit On Running
+
+Un boleano indicando si el comando debe salir cuando el test empieza a ejecutarse - estado `running`. Disponible en el comando `k6 cloud`.
+
+| Env                  | CLI                 | Code / Config file | Default |
+| -------------------- | ------------------- | ------------------ | ------- |
+| `K6_EXIT_ON_RUNNING` | `--exit-on-running` | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --exit-on-running script.js
+```
+
+</CodeGroup>
 
 ### Hosts
 
@@ -647,6 +705,23 @@ export let options = {
 
 </CodeGroup>
 
+### No Color
+
+Especifica si el color de la salida en el terminal está deshabilitado. Disponible en los comandos `k6 run` y `k6 cloud`.
+
+| Env | CLI          | Code / Config file  | Default |
+| --- | ------------ | ------------------- | ------- |
+| N/A | `--no-color` | N/A                 | `false` |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --no-color script.js
+```
+
+</CodeGroup>
+
 ### No Connection Reuse
 
 Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexiones keep-alive.
@@ -695,6 +770,38 @@ Desactiva el [end-of-test summary](/es/visualizacion-de-resultados/resumen-del-f
 
 ```bash
 $ k6 run --no-summary ~/script.js
+```
+
+</CodeGroup>
+
+### No Setup
+
+Especifica si la función `setup()` debe ejecutarse. Disponible en los comandos `k6 cloud` y `k6 run`.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_SETUP`      | `--no-setup`      | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --no-setup script.js
+```
+
+</CodeGroup>
+
+### No Teardown
+
+Especifica si la función `teardown()` debe ejecutarse. Disponible en los comandos `k6 cloud` y `k6 run`.
+
+| Env                | CLI               | Code / Config file | Default |
+| ------------------ | ----------------- | ------------------ | ------- |
+| `K6_NO_TEARDOWN`   | `--no-teardown`   | N/A                | `false` |
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --no-teardown script.js
 ```
 
 </CodeGroup>
@@ -873,6 +980,23 @@ Especifica el tiempo que se permite ejecutar la función `setup()` antes de que 
 export let options = {
   setupTimeout: '30s',
 };
+```
+
+</CodeGroup>
+
+### Show Logs
+
+Especifica si los logs de cloud se muestran en el terminal. Disponible en el comando `k6 cloud`.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| N/A | `--show-logs` | N/A                | `true`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --show-logs=false script.js
 ```
 
 </CodeGroup>
@@ -1181,6 +1305,23 @@ Una cadena que especifica la cadena de agente de usuario a utilizar en las cabec
 export let options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
+```
+
+</CodeGroup>
+
+### Verbose
+
+Especifica si el modo verboso del logging está habilitado. Disponible en los comandos `k6 run` y `k6 cloud`.
+
+| Env | CLI                | Code / Config file  | Default |
+| --- | ------------------ | ------------------- | ------- |
+| N/A | `--verbose`, `-v`  | N/A                 | `false` |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --verbose script.js
 ```
 
 </CodeGroup>

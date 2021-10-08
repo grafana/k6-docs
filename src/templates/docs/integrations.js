@@ -397,7 +397,7 @@ export default function Integrations({
                 linksData={[
                   {
                     title: 'Explore the growing ecosystem of k6 extensions',
-                    url: 'https://k6.io/docs/ecosystem/',
+                    url: 'https://k6.io/docs/extensions/',
                   },
                   {
                     title: 'Learn how to create your own k6 extensions',
