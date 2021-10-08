@@ -1030,6 +1030,16 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   createRedirect({
+    fromPath: '/ecosystem/',
+    toPath: '/extensions/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/ecosystem/bundle-builder/',
+    toPath: '/extensions/bundle-builder/',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/cloud/project-and-team-management/azure-ad-saml-sso/',
     toPath: '/cloud/project-and-team-management/saml-sso/azure-ad/',
     redirectInBrowser: true,
