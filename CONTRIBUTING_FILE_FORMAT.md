@@ -195,6 +195,11 @@ and you are good to go!
 
 ![internal-images/Untitled%206.png](internal-images/Untitled%206.png)
 
+If your code contains backticks, use `<CodeInline>` wrapper instead:
+
+    Hide a field with <CodeInline>`js: "-"`</CodeInline>
+
+
 ### Headerless
 
 We are going to write them a bit differently, half-native md:
