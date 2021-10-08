@@ -34,6 +34,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [LogFormat](#logformat)                                   | Specify the format of the log output                                                |
 | [Max Redirects](#max-redirects)                           | The maximum number of HTTP redirects that k6 will follow                            |
 | [Minimum Iteration Duration](#minimum-iteration-duration) | Specify the minimum duration for every single execution                             |
+| [No Color](#no-color)                                     | A boolean specifying whether colored output is disabled                             |
 | [No Connection Reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No Cookies Reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
 | [no summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
@@ -63,6 +64,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [TLS Cipher Suites](#tls-cipher-suites)                   | A list of cipher suites allowed to be used by in SSL/TLS interactions with a server |
 | [TLS Version](#tls-version)                               | String or object representing the only SSL/TLS version allowed                      |
 | [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
+| [Verbose](#verbose)                                       | A boolean specifying whether verbose logging is enabled                             |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
 | [VUs Max](#vus-max)                                       | **DEPRECATED** |
 
@@ -791,6 +793,23 @@ export let options = {
 
 </CodeGroup>
 
+### No Color
+
+A boolean specifying whether colored output is disabled. Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI          | Code / Config file  | Default |
+| --- | ------------ | ------------------- | ------- |
+| N/A | `--no-color` | N/A                 | `false` |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --no-color script.js
+```
+
+</CodeGroup>
+
 ### No Connection Reuse
 
 A boolean, true or false, specifying whether k6 should disable keep-alive connections.
@@ -1457,6 +1476,23 @@ Available in `k6 run` and `k6 cloud` commands
 export let options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
+```
+
+</CodeGroup>
+
+### Verbose
+
+A boolean specifying whether verbose logging is enabled. Available in `k6 run` and `k6 cloud` commands.
+
+| Env | CLI          | Code / Config file  | Default |
+| --- | ------------ | ------------------- | ------- |
+| N/A | `--verbose`  | N/A                 | `false` |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 run --verbose script.js
 ```
 
 </CodeGroup>
