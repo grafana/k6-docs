@@ -9,7 +9,7 @@ Options allow you to configure how k6 will behave during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Address](#address)                                       | Address of the API server                                                           |
+| [Address](#address)                                       | Address of the REST API server                                                           |
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
