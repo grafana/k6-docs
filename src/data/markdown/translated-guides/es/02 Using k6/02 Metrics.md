@@ -1,6 +1,6 @@
 ---
 title: 'Métricas'
-extracto: 'Esta sección cubre el aspecto importante de la gestión de métricas en k6. Cómo y qué tipo de métricas recopila k6 automáticamente (_built-in_ metrics) y qué métricas personalizadas puede hacer que k6 recopile. '
+excerpt: 'Esta sección cubre el aspecto importante de la gestión de métricas en k6. Cómo y qué tipo de métricas recopila k6 automáticamente (_built-in_ metrics) y qué métricas personalizadas puede hacer que k6 recopile. '
 ---
 
 Esta sección cubre el aspecto importante de la gestión de métricas en k6. Cómo y qué tipo de métricas recopila k6 automáticamente (_built-in_ metrics) y qué métricas personalizadas puede hacer que k6 recopile.
@@ -9,7 +9,6 @@ Esta sección cubre el aspecto importante de la gestión de métricas en k6. Có
 
 Las métricas _built-in_ son las que puede ver la salida a stdout cuando ejecuta la prueba k6 más simple posible:
 
-<CodeGroup lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
@@ -19,7 +18,6 @@ export default function () {
 }
 ```
 
-</CodeGroup>
 
 ```bash
 $ k6 run script.js
@@ -59,11 +57,9 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
      vus_max........................: 1     min=1      max=1
 ```
 
-</CodeGroup>
+Todas las `http_req_...` que están después de ellas son métricas _built-in_ que se escriben en stdout al final de una prueba.
 
-Todas las http_req_...` las líneas y las que están después de ellas son métricas _built-in_ que se escriben en stdout al final de una prueba.
-
-Las siguientes métricas _built-in_ serán ** siempre ** recopiladas por k6:
+Las siguientes métricas _built-in_ serán siempre recopiladas por k6:
 
 Nombre de métrica                          | Tipo    | Descripción                                                                                                                                                                   |
 | ------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -146,13 +142,11 @@ export default function () {
 }
 ```
 
-</CodeGroup>
 
 El código anterior creará una métrica de tendencia denominada "tiempo_de_espera" y se hará referencia en el código mediante el nombre de variable `myTrend`.
 
 Las métricas personalizadas se informarán al final de una prueba. Así es como se vería la salida:
 
-<CodeGroup lineNumbers={[false]}>
 
 ```bash
 $ k6 run script.js
@@ -166,7 +160,6 @@ $ k6 run script.js
   waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
 ```
 
-</CodeGroup>
 
 ## Tipos de métricas
 
@@ -183,7 +176,7 @@ Opcionalmente, todos los valores agregados a una métrica personalizada pueden s
 
 ### Contador _(métrica acumulativa)_
 
-<CodeGroup lineNumbers={[true]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Counter } from 'k6/metrics';
@@ -219,7 +212,7 @@ Tenga en cuenta que actualmente no hay forma de acceder al valor de ninguna mét
 
 ### Gauge _ (mantener solo el último valor) _
 
-<CodeGroup lineNumbers={[true]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Gauge } from 'k6/metrics';
@@ -254,7 +247,7 @@ El valor de `my_gauge` será 2 al final de la prueba. Al igual que con la métri
 
 ### Trend _(recopilar estadísticas de tendencias (mínimo / máximo / promedio / percentiles) para una serie de valores)_
 
-<CodeGroup lineNumbers={[true]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Trend } from 'k6/metrics';
@@ -289,7 +282,7 @@ De forma predeterminada, k6 imprimirá promedio, mínimo, máximo, mediano, perc
 
 ### Rate _ (realiza un seguimiento del porcentaje de valores en una serie que no son cero) _
 
-<CodeGroup lineNumbers={[true]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Rate } from 'k6/metrics';
