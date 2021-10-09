@@ -1,37 +1,39 @@
 ---
 title: 'Grafana Cloud'
-excerpt: >
-  Este tutorial muestra cómo cargar las métricas de los resultados de la prueba en Grafana Cloud con Grafana Cloud Prometheus y Telegraf'
+excerpt: 'This tutorial shows how to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and Telegraf'
 ---
 
-Con Grafana Cloud Prometheus, puedes enviar tus k6 métricas dentro [Grafana Cloud](https://grafana.com/products/cloud/) para visualizar mejor los resultados de sus pruebas, lo que le permite correlacionar las métricas k6 con otras métricas de sus servicios supervisados mediante Grafana.
+Using Grafana Cloud Prometheus, you can send your k6 metrics into [Grafana Cloud](https://grafana.com/products/cloud/) to better visualize your testing results, enabling you to correlate k6 metrics with other metrics of your monitored services using Grafana.
 
-> Mientras este artículo se centra en Grafana Cloud, cualquier instalación de Prometheus con capacidad de escritura remota es compatible con este enfoque.
+> While this article focuses on Grafana Cloud, any remote-write capable Prometheus installation is compatible with this approach.
 
-## Prerrequisitos
+## Prerequisites
 
 - [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/)
 - [Grafana Cloud Prometheus](https://grafana.com/products/cloud/features/#cloud-metrics)
-- Credenciales para el `/api/prom/push` endpoint
+- Credentials for the `/api/prom/push` endpoint
 
-## Configuración
+## Configuration
 
-Si no tiene una cuenta de Grafana Cloud, puede registrarse [aquí](https://grafana.com/products/cloud/). El plan gratuito incluye 10,000 series Prometheus.
+If you do not have a Grafana Cloud account, you can sign up [here](https://grafana.com/products/cloud/). The free plan includes 10,000 Prometheus series.
 
-Ahora, necesita la URL, el nombre de usuario y la contraseña de su instancia de Grafana Cloud Prometheus para configurar la integración.
+Now, you need the URL, username and password of your Grafana Cloud Prometheus instance to configure the integration. 
 
-Inicie sesión en Grafana.com y visite el [Cloud Portal](https://grafana.com/docs/grafana-cloud/what-are/cloud-portal/). Haga clic en el botón `Details` de su servicio Prometheus.
+Log in to Grafana.com and visit the [Cloud Portal](https://grafana.com/docs/grafana-cloud/what-are/cloud-portal/). Click on the `Details` button of your Prometheus service.
+
 ![Grafana Cloud Portal](./images/GrafanaCloud/grafana_cloud_portal.png)
 
-Copie la URL del Remote Write Endpoint y el Username / Instance ID. Crea y copia un API key de `MetricsPublisher` role que se utilizará como contraseña.
+Copy the URL of the Remote Write Endpoint and the Username / Instance ID. Create and copy an API key of `MetricsPublisher` role that will be used as password.
 
-![Crea API Key](./images/GrafanaCloud/grafana_cloud_create_api_key_metrics_publisher.png)
+![Create API Key](./images/GrafanaCloud/grafana_cloud_create_api_key_metrics_publisher.png)
 
-A continuación, configuramos y ejecutamos telegraf. Telegraf recopilará las métricas k6 y las reenviará, utilizando el Prometheus Remote Write endpoint - to Grafana Cloud Prometheus.
+Next, we configure and run telegraf. Telegraf will collect the k6 metrics and forward them - using the Prometheus Remote Write endpoint - to Grafana Cloud Prometheus.
 
-Para instalar telegraf, siga las [Documentación Oficial de Telegraf](https://docs.influxdata.com/telegraf).
+To install telegraf, follow the [official Telegraf documentation](https://docs.influxdata.com/telegraf).
 
-Edite su archivo `telegraf.conf` usando el siguiente ejemplo. El ejemplo solo requiere que cambie el nombre de usuario, la contraseña y la URL de la salida HTTP para que coincida con su configuración de Grafana Cloud Prometheus.
+Edit your `telegraf.conf` file using the example below. The example only requires you to change the username, password, and URL of the HTTP output to match your Grafana Cloud Prometheus settings.
+
+<CodeGroup labels={["telegraf.conf"]} lineNumbers={[true]}>
 
 ```toml
 [agent]
@@ -70,27 +72,28 @@ Edite su archivo `telegraf.conf` usando el siguiente ejemplo. El ejemplo solo re
 
 </CodeGroup>
 
-Ahora puede ejecutar la instancia de Telegraf de la siguiente manera:
-  
+You can now run the Telegraf instance as follow:
+
 ```bash
 telegraf -config $PATH/telegraf.conf
 ```
 
-> Un repositorio de ejemplo que usa Docker para ejecutar Telegraf está disponible enGitHub at [https://github.com/k6io/example-k6-to-grafana-cloud](https://github.com/k6io/example-k6-to-grafana-cloud). 
+> An example repository using Docker to run Telegraf is available on GitHub at [https://github.com/k6io/example-k6-to-grafana-cloud](https://github.com/k6io/example-k6-to-grafana-cloud). 
 
-## Ejecutar test
+## Run the test
 
-Cuando se está ejecutando telegraf, puede ejecutar su prueba k6 y configurar k6 para generar las métricas en la instancia de telegraf. Telegraf enviará las métricas k6 a su Grafana Cloud Prometheus.
+When telegraf is running, you can execute your k6 test and configure k6 to output the metrics to the telegraf instance. Telegraf will forward the k6 metrics to your Grafana Cloud Prometheus.
 
-  ```bash
-# si telegraf se está ejecutando en otra máquina
+```bash
+# if telegraf is running on another machine
 $ k6 run --out influxdb=http://my-telegraf-host:8186 my-test.js
 
-# si Telegraf se ejecuta en el mismo host y puerta 8186:
+# if telegraf is running on the same host and port 8186:
 $ k6 run --out influxdb my-test.js
 ```
 
-## Explore las métricas de k6
-  
-En Grafana Cloud, haga clic en el icono Explorar en la barra de menú y elija la fuente de datos de Prometheus en el menú desplegable en la parte superior izquierda. En el campo de consulta, consulta las métricas k6 para explorar los resultados de tus tests.
-![Explore las métricas de k6 en Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics.png)
+## Explore k6 metrics
+
+In Grafana Cloud, click on the Explore icon on the menu bar, and choose the Prometheus data source from the dropdown in the top left. In the query field, query k6 metrics to explore your testing results.
+
+![Explore k6 metrics in Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics.png)
