@@ -198,8 +198,14 @@ function generateSidebar({ nodes, type = 'docs' }) {
         hideFromSidebar,
         draft,
         slug,
+        shouldCreatePage,
       },
     } = remarkNode;
+
+    // skip md files that we don't generate pages for
+    if (shouldCreatePage === false) {
+      return;
+    }
 
     // skip altogether if this content has draft flag
     // OR hideFromSidebar
@@ -434,6 +440,8 @@ function getTopLevelPagesProps({
           version,
           // eslint-disable-next-line no-useless-escape
           versionRegex: `/${version}\/javascript api/`,
+          // eslint-disable-next-line no-useless-escape
+          alternativeVersionRegex: `/${version}\/javascript api\/alternative main modules/`,
         },
       })),
     )
@@ -467,8 +475,19 @@ function getDocPagesProps({
       }
       const {
         frontmatter,
-        frontmatter: { title, redirect, draft, slug: customSlug },
+        frontmatter: {
+          title,
+          redirect,
+          draft,
+          slug: customSlug,
+          shouldCreatePage,
+        },
       } = remarkNode;
+
+      if (shouldCreatePage === false) {
+        return false;
+      }
+
       // if there is a value in redirect field, skip page creation
       // OR there is draft flag and mode is prod
       if ((draft === 'true' && isProduction) || redirect) {
@@ -681,11 +700,22 @@ function getJsAPIVersionedPagesProps({
       }
       const {
         frontmatter,
-        frontmatter: { title, redirect, draft, slug: customSlug },
+        frontmatter: {
+          title,
+          redirect,
+          draft,
+          slug: customSlug,
+          shouldCreatePage,
+        },
       } = remarkNode;
+
       // if there is a value in redirect field, skip page creation
       // OR there is draft flag and mode is prod
-      if ((draft === 'true' && isProduction) || redirect) {
+      if (
+        (draft === 'true' && isProduction) ||
+        redirect ||
+        shouldCreatePage === false
+      ) {
         return false;
       }
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
@@ -800,6 +830,7 @@ async function fetchDocPagesData(graphql) {
                   redirectTarget
                   hideFromSidebar
                   draft
+                  shouldCreatePage
                 }
               }
             }
@@ -841,6 +872,7 @@ async function fetchGuidesPagesData(graphql) {
                   redirectTarget
                   hideFromSidebar
                   draft
+                  shouldCreatePage
                 }
               }
             }
@@ -882,6 +914,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   redirectTarget
                   hideFromSidebar
                   draft
+                  shouldCreatePage
                 }
               }
             }
@@ -1249,6 +1282,11 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'slug',
       value: node.frontmatter.slug || '',
+    });
+    createNodeField({
+      node,
+      name: 'shouldCreatePage',
+      value: node.frontmatter.shouldCreatePage || true,
     });
   }
 };

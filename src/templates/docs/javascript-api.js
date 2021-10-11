@@ -32,7 +32,7 @@ const componentsForNativeReplacement = {
   CodeGroup,
 };
 
-const getContent = (nodes, sidebarTree) =>
+const getContent = (nodes, alternativeNodes, sidebarTree) =>
   // eslint-disable-next-line array-callback-return,consistent-return
   nodes.map(({ id, children: [entity] }) => {
     const {
@@ -40,6 +40,25 @@ const getContent = (nodes, sidebarTree) =>
       body,
     } = entity;
     if (title.replace(/\//g, '-') in sidebarTree.children) {
+      // try find alternative content
+      const alternativeNode = alternativeNodes.find(
+        (item) => item.children[0].frontmatter.title === title,
+      );
+
+      // if alternative content exists, render it
+      if (typeof alternativeNode !== 'undefined') {
+        return (
+          <div key={id} className={jsApiStyles.moduleWrapper}>
+            <h2>{title}</h2>
+            <HtmlContent
+              content={alternativeNode.children[0].body}
+              componentsForNativeReplacement={componentsForNativeReplacement}
+              className={classNames(docPageContent.contentWrapper)}
+            />
+          </div>
+        );
+      }
+
       return (
         <div key={id} className={jsApiStyles.moduleWrapper}>
           <h2>{title}</h2>
@@ -58,7 +77,11 @@ export default function JavascriptAPI({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
 }) {
-  const content = getContent(data.allFile.nodes, sidebarTree);
+  const content = getContent(
+    data.content.nodes,
+    data.alternativeContent.nodes,
+    sidebarTree,
+  );
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
@@ -123,10 +146,33 @@ export default function JavascriptAPI({
 // versioned js api docs
 export const query = graphql`
   query IndexQuery {
-    allFile(
+    content: allFile(
       filter: {
         ext: { in: [".md"] }
         relativeDirectory: { regex: "/02 javascript api/" }
+      }
+      sort: { fields: absolutePath, order: ASC }
+    ) {
+      nodes {
+        id
+        relativeDirectory
+        children {
+          ... on Mdx {
+            body
+            frontmatter {
+              title
+              description
+            }
+          }
+        }
+      }
+    }
+    alternativeContent: allFile(
+      filter: {
+        ext: { in: [".md"] }
+        relativeDirectory: {
+          regex: "/02 javascript api/alternative main modules/"
+        }
       }
       sort: { fields: absolutePath, order: ASC }
     ) {
