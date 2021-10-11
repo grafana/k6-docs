@@ -47,6 +47,10 @@
     &:hover {
       border-bottom: 1px solid rgba($color-accent-primary, 0.5);
     }
+
+    & > span[class='code-inline'] {
+      color: $color-accent-primary;
+    }
   }
 
   table {
