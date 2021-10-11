@@ -22,8 +22,7 @@ const extensions = [
     name: 'xk6-kafka',
     description: 'Load test Apache Kafka. With support for Avro messages',
     url: 'https://github.com/mostafa/xk6-kafka',
-    logo:
-      'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png?raw=true',
+    logo: 'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png?raw=true',
     author: {
       name: 'Mostafa Moradian',
       url: 'https://github.com/mostafa',
@@ -35,8 +34,7 @@ const extensions = [
     name: 'xk6-notification',
     description: 'A k6 extension for creating notifications.',
     url: 'https://github.com/dgzlopes/xk6-notification',
-    logo:
-      'https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true',
+    logo: 'https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true',
     author: {
       name: 'Daniel González',
       url: 'https://github.com/dgzlopes',
@@ -48,8 +46,7 @@ const extensions = [
     name: 'xk6-chaos',
     description: 'xk6 extension for running chaos experiments with k6 💣',
     url: 'https://github.com/simskij/xk6-chaos',
-    logo:
-      'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true',
+    logo: 'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true',
     isLogoLarge: true,
     author: {
       name: 'Simon Aronsson',
@@ -252,9 +249,10 @@ const extensions = [
     categories: ['Containers'],
   },
   {
-    name: 'xk6-remote-write',
-    description: 'A k6 extension for Prometheus Remote Write.',
-    url: 'https://github.com/dgzlopes/xk6-remote-write',
+    name: 'xk6-client-prometheus-remote',
+    description:
+      'A k6 extension for testing the performance of Promethrus Remote Write.',
+    url: 'https://github.com/grafana/xk6-client-prometheus-remote',
     logo: '',
     author: {
       name: 'Daniel González',
