@@ -81,7 +81,7 @@ const processMdxEntry = (
   return cache;
 };
 
-// auxilary flattening fn
+// auxiliary flattening fn
 const flatten = (arr, kind = 'docs') => {
   let pointer = arr.length;
   const cache = new Array(pointer);

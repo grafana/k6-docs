@@ -32,7 +32,7 @@ const {
 } = require('./src/utils/versioning');
 
 /* constants */
-// auxilary flag to determine the environment (staging/prod)
+// auxiliary flag to determine the environment (staging/prod)
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
