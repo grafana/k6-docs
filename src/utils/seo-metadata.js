@@ -20,7 +20,7 @@ export default {
     data: {
       title: 'k6 Extensions',
       description:
-        'The extension ecosystem enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.',
+        'The extension eextensions enables developers and testers to extend k6 to cover use cases not supported natively in the core. Explore the endless possibilities of k6 and xk6.',
     },
   },
   'bundle-builder': {
