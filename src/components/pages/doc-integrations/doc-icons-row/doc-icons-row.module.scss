@@ -12,9 +12,14 @@
 .icons-container {
   list-style-type: none;
   padding: 0;
+  padding-left: 0 !important;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+
+  & > li:before {
+    display: none;
+  }
 }
 
 .icon-wrapper {
