@@ -254,7 +254,7 @@ const extensions = [
   {
     name: 'xk6-client-prometheus-remote',
     description:
-      'A k6 extension for testing the performance of Promethrus Remote Write.',
+      'A k6 extension for testing the performance of Prometheus Remote Write.',
     url: 'https://github.com/grafana/xk6-client-prometheus-remote',
     logo: '',
     author: {
