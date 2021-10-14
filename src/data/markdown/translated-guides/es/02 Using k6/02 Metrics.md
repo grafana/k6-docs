@@ -1,56 +1,110 @@
 ---
 title: 'Métricas'
-excerpt: 'Esta sección cubre el importante aspecto de la gestión de métricas en k6. Cómo y qué tipo de métricas monitoriza k6 automáticamente (métricas incorporadas), y qué métricas personalizadas puede hacer que k6 monitorize.'
+excerpt: 'Esta sección cubre el aspecto importante de la gestión de métricas en k6. Cómo y qué tipo de métricas recopila k6 automáticamente (_built-in_ metrics) y qué métricas personalizadas puede hacer que k6 recopile. '
 ---
 
-Esta sección cubre el importante aspecto de la gestión de métricas en k6. Cómo y qué tipo de métricas monitoriza k6 automáticamente (métricas incorporadas), y qué métricas personalizadas puede hacer que k6 monitorize.
+Esta sección cubre el aspecto importante de la gestión de métricas en k6. Cómo y qué tipo de métricas recopila k6 automáticamente (_built-in_ metrics) y qué métricas personalizadas puede hacer que k6 recopile.
 
-## Métricas incorporadas
+## Métricas integradas
 
-Las métricas incorporadas son las que puedes ver en la salida stdout cuando ejecutas la prueba k6 más simple posible, por ejemplo, `k6 run github.com/k6io/k6/samples/http_get.js` que mostrará algo como lo siguiente:
+Las métricas _built-in_ son las que puede ver la salida a stdout cuando ejecuta la prueba k6 más simple posible:
 
-![output-to-stdout](images/Metrics/output-to-stdout.png)
-
-Todas las líneas `http_req_...` y las otras que siguen después son métricas incorporadas que se escriben en `stdout` al final de una prueba.
-
-
-Las siguientes métricas incorporadas **siempre** serán recogidas por k6:
-
-| Nombre de la métrica          | Tipo    | Descripción                                                                                                                                                                                                     |
-| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| vus                | Gauge   | Número actual de usuarios virtuales activos                                                                                                                                                                          |
-| vus_max            | Gauge   | Número máximo posible de usuarios virtuales (los recursos de la VU están preasignados, para garantizar que el rendimiento no se vea afectado al aumentar el nivel de carga)                                                                |
-| iterations         | Counter | El número agregado de veces que las VUs en la prueba han ejecutado el script JS (la función `default`)                                                                                                         |
-| iteration_duration | Trend   | El tiempo que se tarda en completar una iteración completa de la función default/main.                                                                                                                                   |
-| dropped_iterations | Counter | Introducido en k6 v0.27.0, el número de iteraciones que no pudieron iniciarse debido a la falta de VUs (para los ejecutores de tasa de llegada) o a la falta de tiempo (debido a la duración máxima expirada en los ejecutores basados en la iteración) |
-| data_received      | Counter | La cantidad de datos recibidos. Lea este [ejemplo](/examples/track-transmitted-data-per-url) para monitorizar los datos de una URL individual.                                                                                 |
-| data_sent          | Counter | La cantidad de datos enviados. Lea este [ejemplo](/examples/track-transmitted-data-per-url) para monitorizar los datos de una URL individual.                                                                                     |
-| checks             | Rate    | El porcentaje de Checks exitosos.                                                                                                                                                                                  |
-
-## Métricas integradas específicas de HTTP
-
-Las métricas incorporadas sólo se generarán cuando/si se realizan peticiones HTTP:
-
-| Nombre de la métrica          | Tipo    | Descripción                                                                                                                                                                                                     |
-| -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| http_reqs                | Counter | Cuántas peticiones HTTP ha generado k6, en total.                                                                                                                                                                                           |
-| http_req_blocked         | Trend   | Tiempo de bloqueo (espera de una ranura de conexión TCP libre) antes de iniciar la solicitud. `float`                                                                                                                                           |
-| http_req_connecting      | Trend   | Tiempo de establecimiento de la conexión TCP con el host remoto. `float`                                                                                                                                                                           |
-| http_req_tls_handshaking | Trend   | Tiempo de la sesión TLS de handshaking con el host remoto.                                                                                                                                                                                          |
-| http_req_sending         | Trend   | Tiempo de envío de datos al host remoto. `float`                                                                                                                                                                                          |
-| http_req_waiting         | Trend   | Tiempo de espera de la respuesta del host remoto (también conocido como "tiempo hasta el primer byte", o "TTFB\"). `float`                                                                                                                                       |
-| http_req_receiving       | Trend   | Tiempo de recepción de datos de respuesta del host remoto. `float`                                                                                                                                                                             |
-| http_req_duration        | Trend   | Tiempo total de la solicitud. Es igual a `http_req_sending +  http_req_waiting +  http_req_receiving` (es decir, cuánto tiempo ha tardado el servidor remoto en procesar la solicitud y responder, sin los tiempos de búsqueda/conexión de DNS iniciales). `float` |
-| http_req_failed <sup>(≥ v0.31)</sup> | Rate |  La tasa de peticiones erróneas acorde a [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback). |
-
-### Acceso a los tiempos de HTTP desde un script
-
-Si desea acceder a la información de tiempo de una solicitud HTTP individual, las métricas de tiempo HTTP incorporadas también están disponibles en el objeto [HTTP Response](/javascript-api/k6-http/response):
-
-<CodeGroup labels={["timings.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
+
+export default function () {
+  http.get('https://test-api.k6.io/');
+}
+```
+
+
+```bash
+$ k6 run script.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: http_get.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+           * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+
+running (00m03.8s), 0/1 VUs, 1 complete and 0 interrupted iterations
+default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 iters, 1 per VU
+
+     data_received..................: 22 kB 5.7 kB/s
+     data_sent......................: 742 B 198 B/s
+     http_req_blocked...............: avg=1.05s    min=1.05s    med=1.05s    max=1.05s    p(90)=1.05s    p(95)=1.05s
+     http_req_connecting............: avg=334.26ms min=334.26ms med=334.26ms max=334.26ms p(90)=334.26ms p(95)=334.26ms
+     http_req_duration..............: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
+       { expected_response:true }...: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
+     http_req_failed................: 0.00% ✓ 0        ✗ 1
+     http_req_receiving.............: avg=112.41µs min=112.41µs med=112.41µs max=112.41µs p(90)=112.41µs p(95)=112.41µs
+     http_req_sending...............: avg=294.48µs min=294.48µs med=294.48µs max=294.48µs p(90)=294.48µs p(95)=294.48µs
+     http_req_tls_handshaking.......: avg=700.6ms  min=700.6ms  med=700.6ms  max=700.6ms  p(90)=700.6ms  p(95)=700.6ms
+     http_req_waiting...............: avg=2.7s     min=2.7s     med=2.7s     max=2.7s     p(90)=2.7s     p(95)=2.7s
+     http_reqs......................: 1     0.266167/s
+     iteration_duration.............: avg=3.75s    min=3.75s    med=3.75s    max=3.75s    p(90)=3.75s    p(95)=3.75s
+     iterations.....................: 1     0.266167/s
+     vus............................: 1     min=1      max=1
+     vus_max........................: 1     min=1      max=1
+```
+
+Todas las `http_req_...` que están después de ellas son métricas _built-in_ que se escriben en stdout al final de una prueba.
+
+Las siguientes métricas _built-in_ serán siempre recopiladas por k6:
+
+Nombre de métrica                          | Tipo    | Descripción                                                                                                                                                                   |
+| ------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| vus                | Gauge   | Número actual de usuarios virtuales activos                                                                                 |
+| vus_max            | Gauge   | Número máximo posible de usuarios virtuales (los recursos de VU están preasignados para garantizar que el rendimiento no se vea afectado al escalar el nivel de carga)                                                 |
+| iterations         | Counter | El número total de veces que las VU de la prueba han ejecutado el script JS (la función "default").                                                 |
+| iteration_duration | Trend   | El tiempo que tardó en completar una iteración completa de la función predeterminada / principal.                                                                                  |
+| dropped_iterations | Counter | Introducido en k6 v0.27.0, el número de iteraciones que no se pudieron iniciar debido a la falta de VU (para los ejecutores de tasa de llegada) o falta de tiempo (debido a maxDuration expirado en los ejecutores basados en iteraciones). |
+| data_received      | Counter | La cantidad de datos recibidos. Lea [este ejemplo] (/ examples / track-stored-data-per-url) para rastrear los datos de una URL individual.                                                    |
+| data_sent          | Counter | La cantidad de datos enviados. Lea [este ejemplo] (/ examples / track-stored-data-per-url) para rastrear los datos de una URL individual.                                                                                  |
+| checks             | Rate    | La tasa de controles exitosos.                                                                                 |
+
+## Métricas integradas específicas de HTTP
+
+Las métricas _built-in_ solo se generarán cuando / si se realizan solicitudes HTTP:
+
+Nombre de métrica                          | Tipo    | Descripción                                                                                                                                                                                                                                  |
+| ------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| http_reqs                            | Counter | Cuántas solicitudes HTTP ha generado k6, en total.                                                                                                                                                                                           |
+| http_req_blocked                     | Trend   | Tiempo pasado bloqueado (esperando una ranura de conexión TCP libre) antes de iniciar la solicitud. `float`                                                                                                                                |
+| http_req_connecting                  | Trend   | Tiempo empleado en establecer una conexión TCP con el host remoto. `float`                                                                                                                                                                           |
+| http_req_tls_handshaking             | Trend   | Tiempo dedicado a la sesión de protocolo de enlace TLS con el host remoto                                                                                                                                |
+| http_req_sending                     | Trend   | Tiempo empleado en enviar datos al host remoto. `float`                                                                                                                                 |
+| http_req_waiting                     | Trend   | Tiempo dedicado a la espera de respuesta del host remoto (a.k.a. \"time to first byte\", o \"TTFB\"). `float`                                                                                                                                       |
+| http_req_receiving                   | Trend   | Tiempo empleado en recibir datos de respuesta del host remoto. `float`                                                                                                                                                                             |
+| http_req_duration                    | Trend   | Tiempo total de la solicitud. Es igual a `http_req_sending + http_req_waiting + http_req_receiving` (es decir, cuánto tiempo tardó el servidor remoto en procesar la solicitud y responder, sin el DNS inicial lookup/connection times). `float` |
+| http_req_failed <sup>(≥ v0.31)</sup> | Rate    | La tasa de solicitudes fallidas según [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
+
+### Accediendo a los tiempos HTTP desde un script
+
+Si desea acceder a la información de tiempo de una solicitud HTTP individual en el k6, el objeto [Response.timings] (/ javascript-api / k6-http / response) proporciona el tiempo dedicado a las diversas fases en `ms`:
+
+- blocked: equals to `http_req_blocked`.
+- connecting: equals to `http_req_connecting`.
+- tls_handshaking: equals to `http_req_tls_handshaking`.
+- sending: equals to  `http_req_sending`.
+- waiting: equals to `http_req_waiting`.
+- receiving: equals to `http_req_receiving`.
+- duration: equals to `http_req_duration`.
+
+<CodeGroup lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+
 export default function () {
   var res = http.get('http://httpbin.org');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
@@ -59,27 +113,21 @@ export default function () {
 
 </CodeGroup>
 
-En el fragmento anterior, `res` es un objeto [HTTP Response](/javascript-api/k6-http/response) que contiene:
+A continuación se muestra la salida esperada (parcial):
 
-| Propiedad                      | Descripción                                                           |
-| ----------------------------- | --------------------------------------------------------------------- |
-| res.body                    | `string` que contiene el cuerpo de la respuesta HTTP                            |
-| res.headers                 | `object`  que contiene pares de nombres de cabecera/valores de cabecera |
-| res.status                  | `integer` que contiene el código de respuesta HTTP recibido del servidor |
-| res.timings                 | `object` que contiene información de tiempo HTTP para la solicitud en `ms` |
-| res.timings.blocked         | = `http_req_blocked`                                                  |
-| res.timings.connecting      | = `http_req_connecting`                                               |
-| res.timings.tls_handshaking | = `http_req_tls_handshaking`                                          |
-| res.timings.sending         | = `http_req_sending`                                                  |
-| res.timings.waiting         | = `http_req_waiting`                                                  |
-| res.timings.receiving       | = `http_req_receiving`                                                |
-| res.timings.duration        | = `http_req_duration`                                                 |
+<CodeGroup lineNumbers={[false]}>
+
+```bash
+$ k6 run script.js
+
+  INFO[0001] Response time was 337.962473 ms               source=console
+```
+
+</CodeGroup>
 
 ## Métricas personalizadas
 
-También puede crear sus propias métricas, que se reportan al final de una prueba de carga, al igual que los tiempos HTTP:
-
-<CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
+También puede crear sus propias métricas, que se informan al final de una prueba de carga, al igual que los tiempos HTTP:
 
 ```javascript
 import http from 'k6/http';
@@ -90,35 +138,45 @@ let myTrend = new Trend('waiting_time');
 export default function () {
   let r = http.get('https://httpbin.org');
   myTrend.add(r.timings.waiting);
+  console.log(myTrend.name); // waiting_time
 }
 ```
 
-</CodeGroup>
 
-El código anterior creará una métrica de tendencia llamada "waiting_time" y se referirá a ella en el código utilizando el nombre de variable myTrend. Las métricas personalizadas serán reportadas al final de una prueba. Así es como podría verse la salida:
+El código anterior creará una métrica de tendencia denominada "tiempo_de_espera" y se hará referencia en el código mediante el nombre de variable `myTrend`.
 
-![custom metrics](images/Metrics/custom-metrics.png)
+Las métricas personalizadas se informarán al final de una prueba. Así es como se vería la salida:
+
+
+```bash
+$ k6 run script.js
+
+  ...
+  INFO[0001] waiting_time                                  source=console
+
+  ...
+  iteration_duration.............: avg=1.15s    min=1.15s    med=1.15s    max=1.15s    p(90)=1.15s    p(95)=1.15s   
+  iterations.....................: 1     0.864973/s
+  waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
+```
+
 
 ## Tipos de métricas
 
-
 Todas las métricas (tanto las incorporadas como las personalizadas) tienen un tipo. Los cuatro tipos de métricas diferentes en k6 son:
 
-| Metric type                                   | Description                                                                                              |
+| Nombre de métrica                                   | Descripción                                                                                              |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [Counter](/javascript-api/k6-metrics/counter) | Una métrica que suma los valores añadidos de forma acumulativa.
-                                                           |
-| [Gauge](/javascript-api/k6-metrics/gauge)     | Una métrica que almacena los valores mínimos, máximos y últimos añadidos.                                           |
-| [Rate](/javascript-api/k6-metrics/rate)       | Una métrica que registra el porcentaje de valores añadidos que son distintos de cero.                                  |
-| [Trend](/javascript-api/k6-metrics/trend)     | Una métrica que permite calcular estadísticas sobre los valores añadidos (mínimo, máximo, media y percentiles).. |
+| [Counter](/javascript-api/k6-metrics/counter) | Métrica que suma valores agregados de manera acumulativa.                                                |
+| [Gauge](/javascript-api/k6-metrics/gauge)     | Métrica que almacena los valores mínimo, máximo y último que se le agregan.                              |
+| [Rate](/javascript-api/k6-metrics/rate)       | Métrica que rastrea el porcentaje de valores agregados que no son cero.                                  |
+| [Trend](/javascript-api/k6-metrics/trend)     | Métrica que calcula estadísticas sobre los valores agregados (mínimo, máximo, promedio y percentiles).   |
 
-All values added to a custom metric can optionally be [tagged](/es/usando-k6/tags-y-groups/) which can be useful when analysing the test results.
+Opcionalmente, todos los valores agregados a una métrica personalizada pueden ser [tagged] (/ using-k6 / tags-and-groups), lo que puede ser útil al analizar los resultados de la prueba.
 
-Todos los valores añadidos a una métrica personalizada pueden ser opcionalmente [etiquetados (tags)](/es/usando-k6/tags-y-groups/), lo que puede ser útil al analizar los resultados de las pruebas.
+### Contador _(métrica acumulativa)_
 
-### Counter (métrica acumulativa)
-
-<CodeGroup labels={["counter.js"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Counter } from 'k6/metrics';
@@ -135,16 +193,26 @@ export default function () {
 
 El código anterior generará la siguiente salida:
 
-![counter output](images/Metrics/counter-output.png)
+<CodeGroup lineNumbers={[false]}>
 
-El valor de `my_counter` será 3 (si se ejecuta una sola iteración, es decir, sin especificar --iterations o --duration).
- 
-Tenga en cuenta que actualmente no hay forma de acceder al valor de ninguna métrica personalizada desde JavaScript. Tenga en cuenta también que los contadores que tienen valor cero (0) al final de una prueba son un caso especial - NO se imprimirán en el resumen del stdout.
+```bash
+$ k6 run script.js
 
-### Gauge (mantenga sólo el último valor)
+  ...
+  iteration_duration...: avg=16.48µs min=16.48µs med=16.48µs max=16.48µs p(90)=16.48µs p(95)=16.48µs
+  iterations...........: 1   1327.67919/s
+  my_counter...........: 3   3983.037571/s
+```
 
+</CodeGroup>
 
-<CodeGroup labels={["gauge.js"]} lineNumbers={[true]}>
+El valor de `my_counter` será 3 (si lo ejecuta una sola iteración, es decir, sin especificar --iterations o --duration).
+
+Tenga en cuenta que actualmente no hay forma de acceder al valor de ninguna métrica personalizada desde JavaScript. Tenga en cuenta también que los contadores que tienen valor cero (`0`) al final de una prueba son un caso especial: ** NO ** se imprimirán en el resumen de salida estándar.
+
+### Gauge _ (mantener solo el último valor) _
+
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Gauge } from 'k6/metrics';
@@ -160,15 +228,26 @@ export default function () {
 
 </CodeGroup>
 
-El código anterior dará como resultado una salida como ésta:
+El código anterior generará la siguiente salida:
 
-![gauge output](images/Metrics/gauge-output.png)
+<CodeGroup lineNumbers={[false]}>
 
-El valor de `my_gauge` será 2 al final de la prueba. Al igual que con la métrica Counter anterior, un Gauge con valor cero (0) NO se imprimirá en el resumen stdout al final de la prueba.
+```bash
+$ k6 run script.js
 
-### Trend (recolecta las estadísticas de la tendencia (mín/máx/avg/percentiles) para una serie de valores)
+  ...
+  iteration_duration...: avg=21.74µs min=21.74µs med=21.74µs max=21.74µs p(90)=21.74µs p(95)=21.74µs
+  iterations...........: 1   1293.475322/s
+  my_gauge.............: 2   min=1         max=3
+```
 
-<CodeGroup labels={["trend.js"]} lineNumbers={[true]}>
+</CodeGroup>
+
+El valor de `my_gauge` será 2 al final de la prueba. Al igual que con la métrica Contador anterior, un indicador con valor cero (`0`) ** NO ** se imprimirá en el resumen de salida estándar al final de la prueba.
+
+### Trend _(recopilar estadísticas de tendencias (mínimo / máximo / promedio / percentiles) para una serie de valores)_
+
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Trend } from 'k6/metrics';
@@ -185,14 +264,25 @@ export default function () {
 
 El código anterior hará que k6 imprima una salida como esta:
 
-![trend output](images/Metrics/trend-output.png)
+<CodeGroup lineNumbers={[false]}>
 
-Una métrica de tendencia es un contenedor que contiene un conjunto de valores de muestra, y al que podemos pedirle que imprima estadísticas (mínimo, máximo, media, mediana o percentiles) sobre esas muestras. Por defecto, k6 imprimirá la media, el mínimo, el máximo, la mediana, el percentil 90 y el percentil 95.
+```bash
+$ k6 run script.js
 
-### Rate (realiza el tracking de la cuenta del porcentaje de valores de una serie que son distintos de cero)
+  ...
+  iteration_duration...: avg=20.78µs min=20.78µs med=20.78µs max=20.78µs p(90)=20.78µs p(95)=20.78µs
+  iterations...........: 1   1217.544821/s
+  my_trend.............: avg=1.5     min=1       med=1.5     max=2       p(90)=1.9     p(95)=1.95
+```
 
+</CodeGroup>
 
-<CodeGroup labels={["rate.js"]} lineNumbers={[true]}>
+Una métrica de tendencia es un contenedor que contiene un conjunto de valores de muestra y al que podemos pedir que genere estadísticas (mínimo, máximo, promedio, mediana o percentiles) sobre esas muestras.
+De forma predeterminada, k6 imprimirá promedio, mínimo, máximo, mediano, percentil 90 y percentil 95.
+
+### Rate _ (realiza un seguimiento del porcentaje de valores en una serie que no son cero) _
+
+<CodeGroup lineNumbers={[false]}>
 
 ```javascript
 import { Rate } from 'k6/metrics';
@@ -211,16 +301,31 @@ export default function () {
 
 El código anterior hará que k6 imprima una salida como esta:
 
-![rate output](images/Metrics/rate-output.png)
+<CodeGroup lineNumbers={[false]}>
 
-El valor de `my_rate` al final de la prueba será del 50%, lo que indica que la mitad de los valores añadidos a la métrica eran distintos de cero.
+```bash
+$ k6 run script.js
+
+  ...
+  iteration_duration...: avg=22.12µs min=22.12µs med=22.12µs max=22.12µs p(90)=22.12µs p(95)=22.12µs
+  iterations...........: 1      1384.362792/s
+  my_rate..............: 50.00% ✓ 2           ✗ 2
+```
+
+</CodeGroup>
+
+El valor de "my_rate" al final de la prueba será del 50%, lo que indica que la mitad de los valores
+agregados a la métrica eran distintos de cero.
 
 ### Notas
 
-- las métricas personalizadas sólo se recogen de los hilos de la VU al final de una iteración de la VU, lo que significa que para los scripts de larga duración, es posible que no vea ninguna métrica personalizada hasta que haya pasado un tiempo de la prueba.
+- las métricas personalizadas solo se recopilan de los subprocesos de VU al final de una iteración de VU, lo que significa que
+  en el caso de los scripts de ejecución prolongada, es posible que no vea ninguna métrica personalizada hasta un tiempo después de la prueba.
 
-## Gráficos métricos en k6 Resultados de la nube
+## Gráficos métricos en k6 Cloud Results
 
-Si utiliza k6 Cloud, tendrá acceso a todas las métricas de las pruebas en la [pestaña Analysis](/cloud/analyzing-results/analysis-tab). Puede utilizar esta pestaña para analizar y comparar más a fondo los datos de los resultados de las pruebas, para buscar correlaciones significativas en sus datos.
+Si usa [k6 resultados en cloud] (/cloud/analyzing-results/overview), tiene acceso a todas las pruebas
+métricas dentro de la [Analysis Tab](/cloud/analyzing-results/analysis-tab). Puede utilizar esta tab para analizar y analizar más a fondo
+compare los datos de los resultados de las pruebas para buscar correlaciones significativas en sus datos.
 
 ![k6 Cloud Analysis Tab](images/Metrics/cloud-insights-analysis-tab.png)

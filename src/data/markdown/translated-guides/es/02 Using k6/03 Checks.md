@@ -5,35 +5,13 @@ excerpt: 'Checks son aserciones, pero difieren en que no detienen la ejecución,
 
 ## ¿Qué es un check?
 
+Las [checks] (/javascript-api/k6/check-val-sets-tags/) son como afirmaciones, pero se diferencian en que no detienen la ejecución. En su lugar, almacenan el resultado de la verificación, pasa o no pasa, y deja que continúe la ejecución del script. Eche un vistazo a [thresholds] (/using-k6/thresholds) para encontrar una forma de detener la ejecución de una prueba basada en comprobaciones.
 
-`Checks` son aserciones, pero difieren en que no detienen la ejecución, en su lugar, sólo almacenan el resultado de la comprobación, pase o no, y dejan que la ejecución del script continúe. Echa un vistazo a [Thresholds](/es/usando-k6/thresholds/) para una forma de detener la ejecución. `Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
+### Verifica el código de respuesta HTTP devuelto
 
-<CodeGroup labels={["check.js"]} lineNumbers={[true]}>
+`Checks` son excelentes para codificar aserciones relacionadas con peticiones/respuestas HTTP, asegurándose de que el código de respuesta es 2xx, por ejemplo:
 
-```javascript
-import { check } from 'k6';
-import http from 'k6/http';
-
-export default function () {
-  let res = http.get('http://test.k6.io/');
-  check(res, {
-    'is status 200': (r) => r.status === 200,
-  });
-}
-```
-
-</CodeGroup>
-
-En el ejemplo anterior, se especificó una comprobación, pero puede añadir tantas como necesite en una llamada a [`check()`](/javascript-api/k6/check-val-sets-tags). Cuando se ejecuta el script anterior se puede ver cómo k6 muestra los resultados de las llamadas de comprobación en la siguiente salida:
-
-![salida check](images/Checks/check-output.png)
-
-En la salida anterior puede ver que nuestra comprobación "is status 200" tuvo éxito el 100% de las veces que fue llamada.
-
-También puede añadir múltiples comprobaciones dentro de una única sentencia check(), como esta:
-
-
-<CodeGroup labels={["checks.js"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[true]}>
 
 ```javascript
 import { check } from 'k6';
@@ -43,63 +21,128 @@ export default function () {
   let res = http.get('http://test.k6.io/');
   check(res, {
     'is status 200': (r) => r.status === 200,
-    'body size is 1176 bytes': (r) => r.body.length == 1176,
   });
 }
 ```
 
 </CodeGroup>
 
-![multiple checks output](images/Checks/multiple-checks-output.png)
+### Verifique el texto en el cuerpo de la respuesta devuelto
 
-## Usando los checks en los entornos CI
+A veces, incluso una respuesta HTTP 200 puede contener un mensaje de error. En estas situaciones, considere agregar una marca para verificar el cuerpo de la respuesta, como este:
 
-
-Una cosa importante que hay que entender con respecto a las comprobaciones es que una comprobación fallida no fallará toda la prueba de carga.
-
-Las comprobaciones ayudan a mantener el código organizado y fácil de leer, pero cuando se ejecuta una prueba de carga en un conjunto de pruebas de CI es posible que desee comprobar las condiciones de error que fallan toda la prueba de carga. En este caso, es posible que desee combinar `Checks` con [thresholds](/es/usando-k6/thresholds/) para obtener lo que desea:
-
-<CodeGroup labels={["check_thresholds.js"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[true]}>
 
 ```javascript
-import http from 'k6/http';
 import { check } from 'k6';
-import { Rate } from 'k6/metrics';
-
-export let errorRate = new Rate('errors');
-export let options = {
-  thresholds: {
-    errors: ['rate<0.1'], // <10% errors
-  },
-};
+import http from 'k6/http';
 
 export default function () {
-  const res = http.get('http://httpbin.org');
-  const result = check(res, {
-    'status is 200': (r) => r.status == 200,
+  let res = http.get('http://test.k6.io/');
+  check(res, {
+    'verify homepage text': (r) => r.body.includes("Collection of simple web-pages suitable for load testing"),
   });
-
-  errorRate.add(!result);
 }
 ```
 
 </CodeGroup>
 
-El script anterior declara una métrica personalizada de Rate (llamada "errores") para mantener la información sobre los errores que hemos visto durante la prueba, luego utiliza un `Threshold` en esa métrica personalizada para fallar la prueba cuando encuentra demasiados errores. Si sustituimos la URL "http://httpbin.org" por una que genere un error, k6 saldrá con un valor de salida distinto de cero, indicando un resultado FAIL a, por ejemplo, un sistema CI que lo haya ejecutado:
+### Verifica el tamaño de respuesta del body
 
-![threshold results](images/Checks/threshold-results.png)
+Si desea verificar que la respuesta a una solicitud que envía k6 es de cierto tamaño, puede usar una verificación para eso como esta:
 
-Como puede ver arriba, el código de salida generado por k6 después de esta ejecución fue 99. Cualquier código de salida distinto de cero es comúnmente interpretado por los shells de Un*x, los servidores de CI y los sistemas de monitorización como un "fallo".
+<CodeGroup lineNumbers={[true]}>
 
-Observe también que utilizamos el valor de retorno de `check()` para decidir si incrementamos nuestra tasa de error. Cuando alguna de las condiciones de comprobación dentro de una llamada a `check()` falla, `check()` devuelve false, lo que hará que se incremente la tasa de error. Sólo si todas las condiciones de comprobación pasan, `check()` devolverá true.
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
 
-Consulte [check()](/javascript-api/k6/check-val-sets-tags) en la referencia de la API de scripts para obtener más detalles sobre su funcionamiento.
+export default function () {
+  let res = http.get('http://test.k6.io/');
+  check(res, {
+    'body size is 11,105 bytes': (r) => r.body.length == 11105,
+  });
+}
+```
 
-## Comprobaciones en los resultados de k6 Cloud
+</CodeGroup>
 
+### Verificar salida
 
-En k6 Cloud Results, Checks están disponibles en su propia pestaña para su análisis.
+Cuando ejecuta un script que incluye verificaciones, puede ver el resultado de las llamadas de verificación en el siguiente resultado:
 
-Aquí podemos ver rápidamente qué comprobaciones están fallando, y al hacer clic en cualquier comprobación, ver el recuento de pases/fallos en determinados puntos de la prueba. También se puede añadir la comprobación a la pestaña de análisis, para su posterior comparación con otras métricas.
+<CodeGroup lineNumbers={[false]}>
 
-![Pestaña de Checks en k6 Cloud](./images/Checks/cloud-insights-checks-tab.png)
+```bash
+$ k6 run script.js
+
+  ...
+    ✓ is status 200
+
+  ...
+  checks.........................: 100.00% ✓ 1        ✗ 0
+  data_received..................: 11 kB   12 kB/s
+```
+
+</CodeGroup>
+
+En el resultado anterior, puede ver que nuestra verificación "es el estado 200" fue exitosa el 100% de las veces que se llamó.
+
+### Agregar varios checks
+
+También puede agregar múltiples checks dentro de una sola declaración [check ()] (/javascript-api/k6/check-val-sets-tags), como esta:
+
+<CodeGroup lineNumbers={[true]}>
+
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+
+export default function () {
+  let res = http.get('http://test.k6.io/');
+  check(res, {
+    'is status 200': (r) => r.status === 200,
+    'body size is 11,105 bytes': (r) => r.body.length == 11105,
+  });
+}
+```
+
+</CodeGroup>
+
+Cuando se ejecuta esta prueba, la salida se verá así:
+
+<CodeGroup lineNumbers={[false]}>
+
+```bash
+$ k6 run checks.js
+
+  ...
+    ✓ is status 200
+    ✓ body size is 11,105 bytes
+
+  ...
+  checks.........................: 100.00% ✓ 2        ✗ 0
+  data_received..................: 11 kB   20 kB/s
+```
+
+</CodeGroup>
+
+> #### Acerca de los checks fallidos
+>
+> Cuando falla una verificación, el script continuará ejecutándose con éxito y no devolverá un estado de salida "fallido".
+> Si necesita que toda la prueba falle según los resultados de una verificación, debe [combinar checks con thresholds] (https://k6.io/docs/using-k6/thresholds/#failing-a-load-test-using-checks).
+> Esto es particularmente útil en contextos específicos, como la integración de k6 en sus canalizaciones de CI o la recepción de alertas al programar sus pruebas de rendimiento.
+
+## Checks en los resultados de k6 Cloud
+
+En [k6 Resultados en la cloud](/cloud/analyzing-results/overview) `Checks` están disponibles en su [propia tab](/cloud/analyzing-results/checks-tab) para su análisis.
+
+Aquí podemos ver rápidamente qué checks fallan y, al hacer clic en cualquier check, ver el recuento de aprobados/fallidos
+en determinados puntos de teste. También puede agregar la verificación a la tab de análisis, para una mayor comparación con otras métricas.
+
+![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
+
+## Ver también
+
+- [API de JavaScript](/javascript-api/k6/check-val-sets-tags/)
+- [Fallo en una prueba de carga usando checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
