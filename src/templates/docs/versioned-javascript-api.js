@@ -35,12 +35,17 @@ const componentsForNativeReplacement = {
 
 const getContent = (nodes, alternativeNodes, sidebarTree, version) =>
   // eslint-disable-next-line array-callback-return,consistent-return
-  nodes.map(({ id, children: [entity] }) => {
+  nodes.map(({ id, relativeDirectory, children: [entity] }) => {
     const {
       frontmatter: { title },
       body,
     } = entity;
     if (title.replace(/\//g, '-') in sidebarTree.children) {
+      // skip found alternative content to avoid rendering it twice
+      if (relativeDirectory.endsWith('/alternative main modules')) {
+        return null;
+      }
+
       // try find alternative content
       const alternativeNode = alternativeNodes.find(
         (item) => item.children[0].frontmatter.title === title,
