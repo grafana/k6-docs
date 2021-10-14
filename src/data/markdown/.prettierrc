@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "quoteProps": "consistent",
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "options": {
+        "parser": "babel"
+      }
+    }
+  ]
+}
