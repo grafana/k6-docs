@@ -68,8 +68,8 @@ Nombre de métrica                          | Tipo    | Descripción            
 | iterations         | Counter | El número total de veces que las VU de la prueba han ejecutado el script JS (la función "default").                                                 |
 | iteration_duration | Trend   | El tiempo que tardó en completar una iteración completa de la función predeterminada / principal.                                                                                  |
 | dropped_iterations | Counter | Introducido en k6 v0.27.0, el número de iteraciones que no se pudieron iniciar debido a la falta de VU (para los ejecutores de tasa de llegada) o falta de tiempo (debido a maxDuration expirado en los ejecutores basados en iteraciones). |
-| data_received      | Counter | La cantidad de datos recibidos. Lea [este ejemplo] (/ examples / track-stored-data-per-url) para rastrear los datos de una URL individual.                                                    |
-| data_sent          | Counter | La cantidad de datos enviados. Lea [este ejemplo] (/ examples / track-stored-data-per-url) para rastrear los datos de una URL individual.                                                                                  |
+| data_received      | Counter | La cantidad de datos recibidos. Lea [este ejemplo](/examples/track-stored-data-per-url) para rastrear los datos de una URL individual.                                                    |
+| data_sent          | Counter | La cantidad de datos enviados. Lea [este ejemplo](/examples/track-stored-data-per-url) para rastrear los datos de una URL individual.                                                                                  |
 | checks             | Rate    | La tasa de controles exitosos.                                                                                 |
 
 ## Métricas integradas específicas de HTTP
@@ -90,7 +90,7 @@ Nombre de métrica                          | Tipo    | Descripción            
 
 ### Accediendo a los tiempos HTTP desde un script
 
-Si desea acceder a la información de tiempo de una solicitud HTTP individual en el k6, el objeto [Response.timings] (/ javascript-api / k6-http / response) proporciona el tiempo dedicado a las diversas fases en `ms`:
+Si desea acceder a la información de tiempo de una solicitud HTTP individual en el k6, el objeto [Response.timings](/javascript-api/k6-http/response) proporciona el tiempo dedicado a las diversas fases en `ms`:
 
 - blocked: equals to `http_req_blocked`.
 - connecting: equals to `http_req_connecting`.
@@ -172,7 +172,7 @@ Todas las métricas (tanto las incorporadas como las personalizadas) tienen un t
 | [Rate](/javascript-api/k6-metrics/rate)       | Métrica que rastrea el porcentaje de valores agregados que no son cero.                                  |
 | [Trend](/javascript-api/k6-metrics/trend)     | Métrica que calcula estadísticas sobre los valores agregados (mínimo, máximo, promedio y percentiles).   |
 
-Opcionalmente, todos los valores agregados a una métrica personalizada pueden ser [tagged] (/ using-k6 / tags-and-groups), lo que puede ser útil al analizar los resultados de la prueba.
+Opcionalmente, todos los valores agregados a una métrica personalizada pueden ser [tagged](/using-k6/tags-and-groups), lo que puede ser útil al analizar los resultados de la prueba.
 
 ### Contador _(métrica acumulativa)_
 
@@ -324,7 +324,7 @@ agregados a la métrica eran distintos de cero.
 
 ## Gráficos métricos en k6 Cloud Results
 
-Si usa [k6 resultados en cloud] (/cloud/analyzing-results/overview), tiene acceso a todas las pruebas
+Si usa [k6 resultados en cloud](/cloud/analyzing-results/overview), tiene acceso a todas las pruebas
 métricas dentro de la [Analysis Tab](/cloud/analyzing-results/analysis-tab). Puede utilizar esta tab para analizar y analizar más a fondo
 compare los datos de los resultados de las pruebas para buscar correlaciones significativas en sus datos.
 

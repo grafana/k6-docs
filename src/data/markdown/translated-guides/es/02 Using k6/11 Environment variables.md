@@ -57,13 +57,13 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 #### ⚠️ Advertencia
 
-Por defecto, pasar variables de entorno del sistema no funciona para `k6 archive`,` k6 cloud` y `k6 inspect`. Es una medida de seguridad para evitar el riesgo de subir datos sensibles a k6 Cloud. Puede anular este modo especificando explícitamente [--include-system-env-vars] (/ using-k6 / options / # include-system-env-vars).
+Por defecto, pasar variables de entorno del sistema no funciona para `k6 archive`,` k6 cloud` y `k6 inspect`. Es una medida de seguridad para evitar el riesgo de subir datos sensibles a k6 Cloud. Puede anular este modo especificando explícitamente [--include-system-env-vars](/using-k6/options/#include-system-env-vars).
   
 </Collapsible>
 
 ## Configurar las opciones de k6 con variables de entorno
 
-k6 [opciones] (/ using-k6 / options) se puede configurar pasando variables de entorno. Considere la siguiente secuencia de comandos de prueba básica:
+k6 [opciones](/using-k6/options) se puede configurar pasando variables de entorno. Considere la siguiente secuencia de comandos de prueba básica:
 
 ```javascript
 import http from 'k6/http';
@@ -74,7 +74,7 @@ export default function () {
   sleep(1);
 }
 ```
-De forma predeterminada, la ejecución del script anterior de forma local ejecutará una única iteración utilizando un usuario virtual (VU). Podemos modificar el ** comportamiento predeterminado ** pasando [k6 options] (/ using-k6 / options) como variables de entorno. Por ejemplo, podemos configurar el script para ejecutar 10 usuarios virtuales por una duración de 10 segundos:
+De forma predeterminada, la ejecución del script anterior de forma local ejecutará una única iteración utilizando un usuario virtual (VU). Podemos modificar el ** comportamiento predeterminado ** pasando [k6 options](/using-k6/options) como variables de entorno. Por ejemplo, podemos configurar el script para ejecutar 10 usuarios virtuales por una duración de 10 segundos:
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -92,9 +92,9 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 </CodeGroup>
 
-Como se demostró anteriormente, deberá agregar el prefijo `K6_` en el nombre de la variable de entorno para que k6 lo evalúe como un ** parámetro de opción **. Sin embargo, tenga en cuenta que no todas las opciones son compatibles como variables de entorno. Puede confirmar consultando la documentación de cada [option] (/ using-k6 / options / # list-of-options).
+Como se demostró anteriormente, deberá agregar el prefijo `K6_` en el nombre de la variable de entorno para que k6 lo evalúe como un ** parámetro de opción **. Sin embargo, tenga en cuenta que no todas las opciones son compatibles como variables de entorno. Puede confirmar consultando la documentación de cada [option](/using-k6/options/#list-of-options).
 
-Tenga en cuenta que cuando usa varias formas de definir opciones para un script, hay un [orden de precedencia] (/ using-k6 / options # using-options) que se usa para determinar qué opción se usa realmente. Para asegurarse de que siempre está trabajando con la mayor prioridad, siempre use marcas de línea de comandos en lugar de variables de entorno:
+Tenga en cuenta que cuando usa varias formas de definir opciones para un script, hay un [orden de precedencia](/using-k6/options#using-options) que se usa para determinar qué opción se usa realmente. Para asegurarse de que siempre está trabajando con la mayor prioridad, siempre use marcas de línea de comandos en lugar de variables de entorno:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
