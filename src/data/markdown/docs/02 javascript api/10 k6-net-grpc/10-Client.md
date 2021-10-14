@@ -1,7 +1,6 @@
 ---
 title: Client
 excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
-shouldCreatePage: true
 ---
 
 `Client` is a gRPC client that can interact with a gRPC server.
