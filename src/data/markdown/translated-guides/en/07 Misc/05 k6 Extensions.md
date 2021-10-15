@@ -151,6 +151,10 @@ could be executed which might not have the extensions built-in. This is only the
 on Linux and macOS, as Windows shells will execute the binary in the current
 directory first.
 
+Also note that because of the way xk6 works, vendored dependencies (the `vendor`
+directory created by `go mod vendor`) will **not** be taken into account when
+building a binary, and you don't need to commit them to the extension repository.
+
 
 ## Writing a new extension
 
