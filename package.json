@@ -94,5 +94,8 @@
     "lint-staged": "^11.0.0",
     "prettier": "^2.4.1",
     "wait-on": "^5.3.0"
+  },
+  "lint-staged": {
+    "*.md": "./node_modules/.bin/eslint --fix -c ./src/data/markdown/.eslintrc.js"
   }
 }
