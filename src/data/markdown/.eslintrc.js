@@ -33,6 +33,13 @@ module.exports = {
         'arrow-body-style': ['error', 'as-needed'],
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
         'prefer-const': 'error',
+        'no-restricted-syntax': [
+          'error',
+          {
+            selector: 'AwaitExpression',
+            message: 'async/await is not supported',
+          },
+        ],
       },
     },
   ],
@@ -41,5 +48,6 @@ module.exports = {
     __VU: 'readonly',
     __ENV: 'readonly',
     __ITER: 'readonly',
+    Promise: 'off',
   },
 };
