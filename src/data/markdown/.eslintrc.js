@@ -32,6 +32,7 @@ module.exports = {
         'use-isnan': 'error',
         'arrow-body-style': ['error', 'as-needed'],
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+        'prefer-const': 'error',
       },
     },
   ],
