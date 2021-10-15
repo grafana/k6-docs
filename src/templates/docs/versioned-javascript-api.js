@@ -33,14 +33,41 @@ const componentsForNativeReplacement = {
   CodeGroup,
 };
 
-const getContent = (nodes, sidebarTree, version) =>
+const getContent = (nodes, alternativeNodes, sidebarTree, version) =>
   // eslint-disable-next-line array-callback-return,consistent-return
-  nodes.map(({ id, children: [entity] }) => {
+  nodes.map(({ id, relativeDirectory, children: [entity] }) => {
     const {
       frontmatter: { title },
       body,
     } = entity;
     if (title.replace(/\//g, '-') in sidebarTree.children) {
+      // skip found alternative content to avoid rendering it twice
+      if (relativeDirectory.endsWith('/alternative main modules')) {
+        return null;
+      }
+
+      // try find alternative content
+      const alternativeNode = alternativeNodes.find(
+        (item) => item.children[0].frontmatter.title === title,
+      );
+
+      // if alternative content exists, render it
+      if (typeof alternativeNode !== 'undefined') {
+        return (
+          <div key={id} className={jsApiStyles.moduleWrapper}>
+            <h2>{title}</h2>
+            <HtmlContent
+              content={alternativeNode.children[0].body}
+              componentsForNativeReplacement={{
+                ...componentsForNativeReplacement,
+                a: Link(version),
+              }}
+              className={classNames(docPageContent.contentWrapper)}
+            />
+          </div>
+        );
+      }
+
       return (
         <div key={id} className={jsApiStyles.moduleWrapper}>
           <h2>{title}</h2>
@@ -62,7 +89,12 @@ export default function VersionedJavascriptAPI({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
 }) {
-  const content = getContent(data.allFile.nodes, sidebarTree, version);
+  const content = getContent(
+    data.content.nodes,
+    data.alternativeContent.nodes,
+    sidebarTree,
+    version,
+  );
   const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
@@ -123,11 +155,35 @@ export default function VersionedJavascriptAPI({
 }
 
 export const query = graphql`
-  query IndexVersionedQuery($versionRegex: String!) {
-    allFile(
+  query IndexVersionedQuery(
+    $versionRegex: String!
+    $alternativeVersionRegex: String!
+  ) {
+    content: allFile(
       filter: {
         ext: { in: [".md"] }
         relativeDirectory: { regex: $versionRegex }
+      }
+      sort: { fields: absolutePath, order: ASC }
+    ) {
+      nodes {
+        id
+        relativeDirectory
+        children {
+          ... on Mdx {
+            body
+            frontmatter {
+              title
+              description
+            }
+          }
+        }
+      }
+    }
+    alternativeContent: allFile(
+      filter: {
+        ext: { in: [".md"] }
+        relativeDirectory: { regex: $alternativeVersionRegex }
       }
       sort: { fields: absolutePath, order: ASC }
     ) {
