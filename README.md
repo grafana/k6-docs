@@ -42,7 +42,8 @@ Node 12.x is required.
 ```bash
 git clone git@github.com:grafana/k6-docs.git
 cd k6-docs
-# nvm use 12.0.0
+cp .env.example .env.development
+# nvm use .  # to activate the right node version
 npm install  # or yarn install
 ```
 
