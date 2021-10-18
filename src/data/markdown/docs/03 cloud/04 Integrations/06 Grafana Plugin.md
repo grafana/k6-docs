@@ -43,7 +43,7 @@ plugins:
 
 If you want to configure other settings at this point, you can use [this sample values.yaml file](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml) as a guide. When you're done, save the file locally.
 
-Add the Grafana Helm Charts repo to Helm:
+Add the Grafana Helm Charts repository to Helm:
 
 ```bash
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -83,3 +83,7 @@ The k6 Cloud Test Run Result dashboard displays metrics for the selected test. Y
 
 ![k6 Cloud Test Result Dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_dashboard.png)
 
+## See also
+
+- [Demo of installing the k6 Cloud Grafana data source plugin on Grafana Cloud](https://www.youtube.com/watch?v=tFsIgbqXbxM&t=1662s), from the _Intro to load testing with k6 and Grafana_ webinar (video)
+- [How to install and use the k6 Cloud Grafana data source plugin](https://youtu.be/Q2oihIg9Zjg) (video)
