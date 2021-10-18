@@ -2,6 +2,7 @@
   "singleQuote": true,
   "quoteProps": "consistent",
   "trailingComma": "es5",
+  "printWidth": 100,
   "overrides": [
     {
       "files": ["**/*.md"],

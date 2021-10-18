@@ -30,7 +30,6 @@ module.exports = {
         'no-dupe-else-if': 'error',
         'no-var': 'error',
         'use-isnan': 'error',
-        'arrow-body-style': ['error', 'as-needed'],
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
         'prefer-const': 'error',
         'no-restricted-syntax': [
