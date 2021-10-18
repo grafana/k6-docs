@@ -37,16 +37,20 @@ Then visit http://localhost:8100
 
 ## Manual Installation
 If you prefer not to use Docker, you can install the project locally.
-Node 12.x is required.
+
+Requirements:
+- NodeJS version higher than 12.13.0
+- npm or yarn
+
+Clone the project and install dependencies:
 
 ```bash
 git clone git@github.com:grafana/k6-docs.git
 cd k6-docs
-# nvm use 12.0.0
 npm install  # or yarn install
 ```
 
-Running manually:
+Run the docs locally:
 
 ```bash
 npm start  # or yarn start
