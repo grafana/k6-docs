@@ -127,8 +127,10 @@ const createMetaImagePath = (image, defaultSiteUrl, defaultImage) => {
 };
 
 // basic compose function
-const compose = (...fns) => (...args) =>
-  fns.reduceRight((res, fn) => [fn.call(null, ...res)], args)[0];
+const compose =
+  (...fns) =>
+  (...args) =>
+    fns.reduceRight((res, fn) => [fn.call(null, ...res)], args)[0];
 
 // this function takes CSSSelector and callback which
 // is being executed as soon as passed selector matches DOM element

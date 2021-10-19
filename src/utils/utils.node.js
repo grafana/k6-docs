@@ -164,8 +164,10 @@ const getDocSection = (str) => str.replace(/^(.*?)\/.*$/, '$1');
 // extracts a certain part of a sidebar which
 // which root key matches passed child
 // getChildSidebar(sidebar: Object -> child: String) -> Object
-const getChildSidebar = (sidebar) => (child, locale = null) =>
-  locale ? sidebar.children[locale].children[child] : sidebar.children[child];
+const getChildSidebar =
+  (sidebar) =>
+  (child, locale = null) =>
+    locale ? sidebar.children[locale].children[child] : sidebar.children[child];
 
 // accepts a logger (reporter, console.log)
 // and returns a set of functions

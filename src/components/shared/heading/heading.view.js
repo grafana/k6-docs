@@ -22,19 +22,21 @@ export const Heading = ({ className, id, tag = 'h1', size, children }) => {
   );
 };
 
-export const HeadingLandmark = (Tag) => ({ children }) => {
-  const getPlainText = (arr) =>
-    arr.reduce((acc, cur) => acc.concat(cur.props?.children ?? cur), '');
-  const textContent = Array.isArray(children)
-    ? getPlainText(children)
-    : children;
-  const anchor = `${anchorify(textContent)}`;
-  return (
-    <Tag className={styles.markHeading} id={anchor}>
-      <a className={'anchor-icon'} href={`#${anchor}`}>
-        <AnchorIcon />
-      </a>
-      {children}
-    </Tag>
-  );
-};
+export const HeadingLandmark =
+  (Tag) =>
+  ({ children }) => {
+    const getPlainText = (arr) =>
+      arr.reduce((acc, cur) => acc.concat(cur.props?.children ?? cur), '');
+    const textContent = Array.isArray(children)
+      ? getPlainText(children)
+      : children;
+    const anchor = `${anchorify(textContent)}`;
+    return (
+      <Tag className={styles.markHeading} id={anchor}>
+        <a className={'anchor-icon'} href={`#${anchor}`}>
+          <AnchorIcon />
+        </a>
+        {children}
+      </Tag>
+    );
+  };

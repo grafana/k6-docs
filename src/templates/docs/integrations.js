@@ -311,8 +311,7 @@ export default function Integrations({
                     picture: browserRecorderImgData,
                     title: 'Browser Recorder',
                     description: 'Record a user journey to base your k6 test.',
-                    url:
-                      'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/',
+                    url: 'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/',
                   },
                 ]}
               />
@@ -326,8 +325,7 @@ export default function Integrations({
                     picture: vscodeImgData,
                     title: 'Visual Studio Code Extension',
                     description: 'Run k6 tests from VS Code.',
-                    url:
-                      'https://marketplace.visualstudio.com/items?itemName=k6.k6',
+                    url: 'https://marketplace.visualstudio.com/items?itemName=k6.k6',
                   },
                   {
                     picture: intellijImgData,
@@ -371,8 +369,7 @@ export default function Integrations({
                     title: 'OpenAPI generator',
                     description:
                       'Convert Swagger/OpenAPI specification to k6 script.',
-                    url:
-                      'https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6',
+                    url: 'https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6',
                   },
                 ]}
               />

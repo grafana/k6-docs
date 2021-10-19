@@ -11,8 +11,7 @@ import styles from './doc-welcome-whats-new.module.scss';
 export const WhatsNew = () => {
   const item = {
     title: 'Documentation for our integration',
-    text:
-      'Our <strong>integration</strong> is now documented in our main docs!',
+    text: 'Our <strong>integration</strong> is now documented in our main docs!',
     date: new Date(2019, 6, 28),
   };
 

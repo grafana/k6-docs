@@ -16,9 +16,11 @@
     "deploy": "./scripts/gatsby-s3-workaround.sh prepare && gatsby-plugin-s3 deploy --yes && ./scripts/cloudfront-invalidate.sh && ./scripts/gatsby-s3-workaround.sh revert",
     "predevelop": "test -f ./.env.development || cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
-    "lint": "eslint src/",
+    "lint": "eslint src/ -c .eslintrc",
     "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
-    "lint:fix": "eslint src/ --fix",
+    "lint:fix": "eslint src/ --fix -c .eslintrc",
+    "lint:examples": "./node_modules/.bin/eslint src/data/markdown",
+    "lint:examples:fix": "./node_modules/.bin/eslint src/data/markdown --fix",
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",
     "check:blc": "wait-on tcp:8000 && blc http://localhost:8000 -rof",
@@ -79,15 +81,21 @@
     "babel-loader": "^8.2.2",
     "broken-link-checker": "^0.7.8",
     "concurrently": "^5.3.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-mdx": "^1.13.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
+    "prettier": "^2.4.1",
     "wait-on": "^5.3.0"
+  },
+  "lint-staged": {
+    "*.md": "./node_modules/.bin/eslint -c ./src/data/markdown/.eslintrc.js"
   }
 }
