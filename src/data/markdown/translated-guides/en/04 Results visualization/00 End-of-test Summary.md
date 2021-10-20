@@ -70,21 +70,21 @@ export const options = { vus: 5, iterations: 10 };
 import { jUnit, textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 
 export function handleSummary(data) {
-    console.log('Preparing the end-of-test summary...');
+  console.log('Preparing the end-of-test summary...');
 
-    // Send the results to some remote server or trigger a hook
-    let resp = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(data));
-    if (resp.status != 200) {
-        console.error('Could not send summary, got status ' + resp.status);
-    }
+  // Send the results to some remote server or trigger a hook
+  const resp = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(data));
+  if (resp.status != 200) {
+    console.error('Could not send summary, got status ' + resp.status);
+  }
 
-    return {
-        'stdout': textSummary(data, { indent: ' ', enableColors: true}), // Show the text summary to stdout...
-        '../path/to/junit.xml': jUnit(data), // but also transform it and save it as a JUnit XML...
-        'other/path/to/summary.json': JSON.stringify(data), // and a JSON with all the details...
-        // And any other JS transformation of the data you can think of,
-        // you can write your own JS helpers to transform the summary data however you like!
-    }
+  return {
+    'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout...
+    '../path/to/junit.xml': jUnit(data), // but also transform it and save it as a JUnit XML...
+    'other/path/to/summary.json': JSON.stringify(data), // and a JSON with all the details...
+    // And any other JS transformation of the data you can think of,
+    // you can write your own JS helpers to transform the summary data however you like!
+  };
 }
 ```
 
@@ -102,7 +102,7 @@ To get an idea how `data` would look like in your specific test run, just add `r
 
 <CodeGroup labels={["data passed to handleSummary()"]} lineNumbers={[true]}>
 
-```javascript
+```json
 {
     "root_group": {
         "path": "",

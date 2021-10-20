@@ -31,19 +31,19 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-  let success1 = describe('Basic test', (t) => {
+  const success1 = describe('Basic test', (t) => {
     t.expect(1).toEqual(1);
   });
 
   console.log(success1); // true
 
-  let success2 = describe('Another test', (t) => {
+  const success2 = describe('Another test', (t) => {
     throw 'Something entirely unexpected happened';
   });
 
   console.log(success2); // false
 
-  let success3 = describe('Yet another test', (t) => {
+  const success3 = describe('Yet another test', (t) => {
     t.expect(true).toEqual(false);
   });
 

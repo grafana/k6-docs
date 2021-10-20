@@ -20,7 +20,7 @@ To load a certificate and a key from local files you use the builtin `open(...)`
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   tlsAuth: [
     {
       domains: ['example.com'],
@@ -70,7 +70,7 @@ X7/Jy01JXn83LuWdpaPAKU+B42BLP0IGXt5CocPms07HOdtJ/wm2zwHTyfjn9vu+
 HO/dQr6a7DhRu2lLI9Sc983NwRqDKICZQQ/+gqWk8BgQZ1yI9O4AYkzywzAEk3py
 -----END RSA PRIVATE KEY-----`;
 
-export let options = {
+export const options = {
   tlsAuth: [
     {
       domains: ['example.com'],

@@ -16,17 +16,18 @@ The `k6/execution` module provides the test execution information with the follo
 ```javascript
 import exec from 'k6/execution';
 
-var options = {
+const options = {
   scenarios: {
-    'myscenario': { // this will be the returned name
+    myscenario: {
+      // this will be the returned name
       executor: 'shared-iterations',
-      maxDuration: '30m'
-    }
-  }
-}
+      maxDuration: '30m',
+    },
+  },
+};
 
-export default function() {
-  console.log(exec.scenario.name) // myscenario 
+export default function () {
+  console.log(exec.scenario.name); // myscenario
 }
 ```
 
@@ -78,32 +79,32 @@ The `scenario.iterationInTest` field can be used for this case. Let's show an ex
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
 
 ```javascript
-import exec from "k6/execution";
-import { SharedArray } from "k6/data";
+import exec from 'k6/execution';
+import { SharedArray } from 'k6/data';
 
-var items = 10;
-var data = new SharedArray("mydata", function() {
-  var arr = new Array(items);
-  for (var i = 0; i < items; i++) {
-    arr[i] = {"foo": "item" + i, "bar": "12345678"}
+const items = 10;
+const data = new SharedArray('mydata', function () {
+  const arr = new Array(items);
+  for (let i = 0; i < items; i++) {
+    arr[i] = { foo: 'item' + i, bar: '12345678' };
   }
   return arr;
 });
 
 export const options = {
   scenarios: {
-    "use-all-the-data": {
-      executor: "shared-iterations",
+    'use-all-the-data': {
+      executor: 'shared-iterations',
       vus: 3,
       iterations: data.length, // here you can also multiply so it goes through it multiple times
-      maxDuration: "1h" // this will need to be big enough so that all the iterations can happen if that is what is wanted
-    }
-  }
-}
+      maxDuration: '1h', // this will need to be big enough so that all the iterations can happen if that is what is wanted
+    },
+  },
+};
 
-export default function() {
-  var item = data[exec.scenario.iterationInTest];
-  console.log('my item:', item)
+export default function () {
+  const item = data[exec.scenario.iterationInTest];
+  console.log('my item:', item);
 }
 ```
 
@@ -117,14 +118,14 @@ The `startTime` property from the `scenario` object can be used to time operatio
 ```javascript
 import exec from 'k6/execution';
 
-export default function() {
+export default function () {
   // do some long operations
-  ...	
-  console.log("step1 took:", new Date() - new Date(exec.scenario.startTime))
-	
+  // ...
+  console.log('step1 took:', new Date() - new Date(exec.scenario.startTime));
+
   // some more long operations
-  ...
-  console.log("step2 took:", new Date() - new Date(exec.scenario.startTime))
+  //...
+  console.log('step2 took:', new Date() - new Date(exec.scenario.startTime));
 }
 ```
 
@@ -138,19 +139,19 @@ The `name` property can be used for executing the logic based on which script is
 ```javascript
 import exec from 'k6/execution';
 
-var options = {
+const options = {
   scenarios: {
     'the-first': {
-	...
+      // ...
     },
     'the-second': {
-	...
-    }
-  }
+      // ...
+    },
+  },
 };
 
-export default function() {
-  if (exec.scenario.name == "the-first") {
+export default function () {
+  if (exec.scenario.name == 'the-first') {
     // do some logic during this scenario
   } else {
     // do some other logic in the others

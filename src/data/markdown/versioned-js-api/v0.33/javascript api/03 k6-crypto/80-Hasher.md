@@ -21,7 +21,7 @@ import crypto from 'k6/crypto';
 
 export default function () {
   console.log(crypto.sha256('hello world!', 'hex'));
-  let hasher = crypto.createHash('sha256');
+  const hasher = crypto.createHash('sha256');
   hasher.update('hello ');
   hasher.update('world!');
   console.log(hasher.digest('hex'));

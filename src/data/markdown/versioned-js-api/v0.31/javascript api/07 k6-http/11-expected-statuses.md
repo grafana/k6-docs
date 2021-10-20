@@ -26,7 +26,7 @@ http.setResponseCallback(
   http.expectedStatuses(406, 500, { min: 200, max: 204 }, 302, {
     min: 305,
     max: 405,
-  }),
+  })
 );
 
 export default () => {

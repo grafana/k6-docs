@@ -53,20 +53,20 @@ If you are not familiar with the different types of k6 metrics, we recommend rea
 If you need to select the metrics to export, use the `metrics` option.  In the k6 script, you can set both options - `includeDefaultMetrics` and `metrics` - as follows:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "your-provider",
+          provider: 'your-provider',
 
           // Whether it exports the default APM metrics. Default is true.
           includeDefaultMetrics: false,
           // List of built-in and custom metrics to export. Default is empty.
-          metrics: ["vus", "http_req_duration", "http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['vus', 'http_req_duration', 'http_req_sending', 'my_rate', 'my_gauge'], //...
           //....
         },
-      ]
+      ],
     },
   },
 };

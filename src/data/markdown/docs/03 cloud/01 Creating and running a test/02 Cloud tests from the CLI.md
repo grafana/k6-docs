@@ -108,7 +108,7 @@ All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the s
 Optionally, you can define some cloud options in your k6 script.
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       name: 'Hello k6 cloud!',
@@ -149,7 +149,7 @@ You have two options to pass the Project ID to k6:
    <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
    ```javascript
-   export let options = {
+   export const options = {
      ext: {
        loadimpact: {
          projectID: 123456,
@@ -209,7 +209,7 @@ Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-me
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   vus: 50,
   duration: '30s',
   thresholds: {
@@ -248,7 +248,7 @@ You can read the values of these variables in your k6 script as usual.
 <CodeGroup labels={["Reading injected environment variables"]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 50,
   duration: '30s',
   ext: {

@@ -163,6 +163,7 @@ Si desea filtrar sus métricas en función de los diferentes tipos de solicitude
 <CodeGroup labels={[]}>
 
 ```javascript
+import http from 'k6/http';
 http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 ```
 
@@ -175,6 +176,8 @@ http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 <CodeGroup labels={[]}>
 
 ```javascript
+import { group } from 'k6';
+
 group('visit homepage', function () {
   // load homepage resources
 });

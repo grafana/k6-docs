@@ -18,8 +18,8 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 import ws from 'k6/ws';
 
 export default function () {
-  var url = 'ws://echo.websocket.org';
-  var response = ws.connect(url, null, function (socket) {
+  const url = 'ws://echo.websocket.org';
+  const response = ws.connect(url, null, function (socket) {
     socket.on('open', function () {
       socket.send('my-message');
       socket.send(JSON.stringify({ data: 'hola' }));

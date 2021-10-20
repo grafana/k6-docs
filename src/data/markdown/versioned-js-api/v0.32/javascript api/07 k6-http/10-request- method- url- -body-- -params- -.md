@@ -29,7 +29,7 @@ import http from 'k6/http';
 const url = 'https://httpbin.test.k6.io/post';
 
 export default function () {
-  let data = { name: 'Bert' };
+  const data = { name: 'Bert' };
 
   // Using a JSON string as body
   let res = http.request('POST', url, JSON.stringify(data), {

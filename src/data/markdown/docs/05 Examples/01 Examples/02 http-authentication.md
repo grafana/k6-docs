@@ -42,10 +42,7 @@ export default function () {
     },
   };
 
-  res = http.get(
-    `http://httpbin.org/basic-auth/${username}/${password}`,
-    options,
-  );
+  res = http.get(`http://httpbin.org/basic-auth/${username}/${password}`, options);
 
   // Verify response (checking the echoed data from the httpbin.org
   // basic auth test API endpoint)
@@ -76,7 +73,7 @@ export default function () {
   const credentials = `${username}:${password}`;
   const res = http.get(
     `http://${credentials}@httpbin.org/digest-auth/auth/${username}/${password}`,
-    { auth: 'digest' },
+    { auth: 'digest' }
   );
 
   // Verify response (checking the echoed data from the httpbin.org digest auth
@@ -105,7 +102,7 @@ export default function () {
   // Passing username and password as part of URL and then specifying
   // "ntlm" as auth type will do the trick!
   const credentials = `${username}:${password}`;
-  let res = http.get(`http://${credentials}@example.com/`, { auth: 'ntlm' });
+  const res = http.get(`http://${credentials}@example.com/`, { auth: 'ntlm' });
 }
 ```
 
@@ -148,7 +145,7 @@ For this to work, we first need to do the following:
    <CodeGroup labels={[""]} lineNumbers={[false]}>
 
    ```javascript
-   import aws4 from "./aws4.js"`
+   import aws4 from './aws4.js';
    ```
 
    </CodeGroup>
@@ -184,12 +181,12 @@ export default function () {
       service: 'ec2',
       path: '/?Action=DescribeRegions&Version=2014-06-15',
     },
-    AWS_CREDS,
+    AWS_CREDS
   );
 
   // Make the actual request to the AWS API including the
   // "Authorization" header with the signature
-  let res = http.get(`https://${signed.hostname}${signed.path}`, {
+  const res = http.get(`https://${signed.hostname}${signed.path}`, {
     headers: signed.headers,
   });
 

@@ -41,7 +41,7 @@ In this example, we'll execute a constant rate of 200 RPS for 1 minute, allowing
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {

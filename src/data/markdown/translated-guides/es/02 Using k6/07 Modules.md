@@ -28,7 +28,7 @@ Estos módulos se almacenan en el sistema de archivos local y se accede a ellos 
 ```javascript
 //helpers.js
 export function someHelper() {
-  ...
+  // ...
 }
 ```
 

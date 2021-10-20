@@ -31,8 +31,8 @@ VM JavaScript puro de Golang que soporta ES5.1+. Utilice este modo si sus script
 <CodeGroup labels={[ "base-example.js" ]} lineNumbers={[true]}>
 
 ```javascript
-var http = require('k6/http');
-var k6 = require('k6');
+const http = require('k6/http');
+const k6 = require('k6');
 
 module.exports.options = {
   vus: 10,
@@ -56,9 +56,9 @@ module.exports.default = function () {
 <CodeGroup labels={[ "advanced-example.js" ]} lineNumbers={[true]}>
 
 ```javascript
-var http = require('k6/http');
-var metrics = require('k6/metrics');
-var k6 = require('k6');
+const http = require('k6/http');
+const metrics = require('k6/metrics');
+const k6 = require('k6');
 
 module.exports.options = {
   stages: [
@@ -71,11 +71,11 @@ module.exports.options = {
   },
 };
 
-var myFailRate = new metrics.Rate('failed requests');
+const myFailRate = new metrics.Rate('failed requests');
 
 module.exports.default = function () {
-  var res = http.get('https://httpbin.test.k6.io/');
-  var checkRes = k6.check(res, {
+  const res = http.get('https://httpbin.test.k6.io/');
+  const checkRes = k6.check(res, {
     'status was 200': function (r) {
       return r.status == 200;
     },

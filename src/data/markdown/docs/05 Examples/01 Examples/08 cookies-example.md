@@ -22,16 +22,14 @@ import { check, group } from 'k6';
 
 export default function () {
   // Since this request redirects the `res.cookies` property won't contain the cookies
-  let res = http.get(
-    'http://httpbin.org/cookies/set?name1=value1&name2=value2',
-  );
+  const res = http.get('http://httpbin.org/cookies/set?name1=value1&name2=value2');
   check(res, {
     'status is 200': (r) => r.status === 200,
   });
 
   // Make sure cookies have been added to VU cookie jar
-  let vuJar = http.cookieJar();
-  let cookiesForURL = vuJar.cookiesForURL(res.url);
+  const vuJar = http.cookieJar();
+  const cookiesForURL = vuJar.cookiesForURL(res.url);
   check(null, {
     "vu jar has cookie 'name1'": () => cookiesForURL.name1.length > 0,
     "vu jar has cookie 'name2'": () => cookiesForURL.name2.length > 0,
@@ -59,15 +57,15 @@ function logCookie(cookie) {
   // Here we log the name and value of the cookie along with additional attributes.
   // For full list of attributes see: https://k6.io/docs/using-k6/cookies#properties-of-a-response-cookie-object
   console.log(
-    `${cookie.name}: ${cookie.value}\n\tdomain: ${cookie.domain}\n\tpath: ${cookie.path}\n\texpires: ${cookie.expires}\n\thttpOnly: ${cookie.http_only}`,
+    `${cookie.name}: ${cookie.value}\n\tdomain: ${cookie.domain}\n\tpath: ${cookie.path}\n\texpires: ${cookie.expires}\n\thttpOnly: ${cookie.http_only}`
   );
 }
 
 export default function () {
-  let res = http.get('https://www.google.com/');
+  const res = http.get('https://www.google.com/');
 
   // Method 1: Use for-loop and check for non-inherited properties
-  for (var name in res.cookies) {
+  for (const name in res.cookies) {
     if (res.cookies.hasOwnProperty(name) !== undefined) {
       logCookie(res.cookies[name][0]);
     }
@@ -95,7 +93,7 @@ export default function () {
   // Get VU cookie jar and add a cookie to it providing the parameters
   // that a request must match (domain, path, HTTPS or not etc.)
   // to have the cookie attached to it when sent to the server.
-  let jar = http.cookieJar();
+  const jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
     domain: 'httpbin.org',
     path: '/cookies',
@@ -106,12 +104,11 @@ export default function () {
   // As the following request is matching the above cookie in terms of domain,
   // path, HTTPS (secure) and will happen within the specified "age" limit, the
   // cookie will be attached to this request.
-  let res = http.get('https://httpbin.org/cookies');
+  const res = http.get('https://httpbin.org/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
-    'cookie has correct value': (r) =>
-      r.json().cookies.my_cookie == 'hello world',
+    'cookie has correct value': (r) => r.json().cookies.my_cookie == 'hello world',
   });
 }
 ```

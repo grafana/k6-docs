@@ -55,25 +55,26 @@ If you script your k6 tests, you can also configure the Cloud APM settings using
 The parameters to export the k6 metrics to New Relic are as follows:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "prometheus",
-          remoteWriteURL: "https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=<YOUR_DATA_SOURCE_NAME>" 
+          provider: 'prometheus',
+          remoteWriteURL:
+            'https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=<YOUR_DATA_SOURCE_NAME>',
 
           // optional when `remoteWriteURL` includes the `X-License-Key` query param
           credentials: {
-            token: "<YOUR_LICENSE_KEY>"
+            token: '<YOUR_LICENSE_KEY>',
           },
 
           // optional parameters
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
           includeDefaultMetrics: true,
-          includeTestRunId: false
+          includeTestRunId: false,
         },
-      ]
+      ],
     },
   },
 };

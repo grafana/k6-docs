@@ -29,7 +29,7 @@ For example:
 ```javascript
 import { Gauge } from 'k6/metrics';
 
-var myGauge = new Gauge('my_gauge');
+const myGauge = new Gauge('my_gauge');
 
 export default function () {
   myGauge.add(3);
@@ -47,16 +47,16 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 import { Gauge } from 'k6/metrics';
 
-let GaugeContentSize = new Gauge('ContentSize');
+const GaugeContentSize = new Gauge('ContentSize');
 
-export let options = {
+export const options = {
   thresholds: {
     ContentSize: ['value<4000'],
   },
 };
 
 export default function () {
-  let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
   GaugeContentSize.add(res.body.length);
   sleep(1);
 }

@@ -165,6 +165,7 @@ If you might want to filter your metrics based on different types of requests, c
 <CodeGroup labels={[]}>
 
 ```javascript
+import http from 'k6/http';
 http.get('http://myweb.com/images/logo.png', { tags: { assets: 'image' } });
 ```
 
@@ -178,6 +179,8 @@ When a load test simulates a user scenario visiting multiple pages, it is a good
 <CodeGroup labels={[]}>
 
 ```javascript
+import { group } from 'k6';
+
 group('visit homepage', function () {
   // load homepage resources
 });

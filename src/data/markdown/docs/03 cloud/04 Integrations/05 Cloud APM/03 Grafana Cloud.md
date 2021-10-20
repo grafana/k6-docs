@@ -64,23 +64,23 @@ If you script your k6 tests, you can also configure the Cloud APM settings using
 The parameters to export the k6 metrics to a Grafana Cloud Prometheus instance are as follows:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "prometheus",
-          remoteWriteURL: "<Remote Write URL>", 
+          provider: 'prometheus',
+          remoteWriteURL: '<Remote Write URL>',
           credentials: {
-            username: "<Prometheus Username / Instance ID>",
-            password: "<Grafana Cloud API key of type MetricsPublisher>"
+            username: '<Prometheus Username / Instance ID>',
+            password: '<Grafana Cloud API key of type MetricsPublisher>',
           },
           // optional parameters
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
           includeDefaultMetrics: true,
-          includeTestRunId: false
+          includeTestRunId: false,
         },
-      ]
+      ],
     },
   },
 };

@@ -19,7 +19,7 @@ Get the active cookie jar.
 import http from 'k6/http';
 
 export default function () {
-  let jar = http.cookieJar();
+  const jar = http.cookieJar();
 }
 ```
 

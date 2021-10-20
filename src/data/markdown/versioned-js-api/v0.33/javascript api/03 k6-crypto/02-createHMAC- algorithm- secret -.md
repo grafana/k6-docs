@@ -26,7 +26,7 @@ import crypto from 'k6/crypto';
 
 export default function () {
   console.log(crypto.hmac('sha256', 'a secret', 'my data', 'hex'));
-  let hasher = crypto.createHMAC('sha256', 'a secret');
+  const hasher = crypto.createHMAC('sha256', 'a secret');
   hasher.update('my ');
   hasher.update('data');
   console.log(hasher.digest('hex'));

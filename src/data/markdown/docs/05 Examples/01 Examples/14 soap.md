@@ -25,10 +25,10 @@ const soapReqBody = `
 
 export default function () {
   // When making a SOAP POST request we must not forget to set the content type to text/xml
-  let res = http.post(
+  const res = http.post(
     'http://www.holidaywebservice.com/HolidayService_v2/HolidayService2.asmx',
     soapReqBody,
-    { headers: { 'Content-Type': 'text/xml' } },
+    { headers: { 'Content-Type': 'text/xml' } }
   );
 
   // Make sure the response is correct

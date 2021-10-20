@@ -25,18 +25,18 @@ Which means that for the most part if you currently have an array data structure
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```javascript
-import { SharedArray } from "k6/data";
+import { SharedArray } from 'k6/data';
 
-var data = new SharedArray("some name", function() {
-    // here you can open files, and then do additional processing on them or just generate the data dynamically
-    var f = JSON.parse(open("./somefile.json")).;
-    return f; // f must be an array
+const data = new SharedArray('some name', function () {
+  // here you can open files, and then do additional processing on them or just generate the data dynamically
+  const f = JSON.parse(open('./somefile.json'));
+  return f; // f must be an array
 });
 
 export default () => {
-    var element = data[Math.floor(Math.random() * data.length)]
-    // do something with element
-}
+  const element = data[Math.floor(Math.random() * data.length)];
+  // do something with element
+};
 ```
 
 </div>
@@ -52,30 +52,32 @@ As an example the following script:
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```javascript
-import {check} from "k6";
-import http from "k6/http";
-import {SharedArray} from "k6/data"
+import { check } from 'k6';
+import http from 'k6/http';
+import { SharedArray } from 'k6/data';
 
-var n = parseInt(__ENV.N)
+const n = parseInt(__ENV.N);
 function generateArray() {
-    var arr = new Array(n);
-    for (var i = 0; i< n; i++){
-        arr[i] = {"something": "something else" +i, "password": "12314561" }
-    }
-    return arr
+  const arr = new Array(n);
+  for (let i = 0; i < n; i++) {
+    arr[i] = { something: 'something else' + i, password: '12314561' };
+  }
+  return arr;
 }
 
-var data;
-if (__ENV.SHARED === "true") {
-  data = new SharedArray("my data", generateArray);
+let data;
+if (__ENV.SHARED === 'true') {
+  data = new SharedArray('my data', generateArray);
 } else {
   data = generateArray();
 }
 
 export default function () {
-    var iterationData = data[Math.floor(Math.random() * data.length)];
-    var res = http.post("https://httpbin.test.k6.io/anything", JSON.stringify(iterationData), {headers: {"Content-type": "application/json"}})
-    check(res, {"status 200": (r) => r.status === 200})
+  const iterationData = data[Math.floor(Math.random() * data.length)];
+  const res = http.post('https://httpbin.test.k6.io/anything', JSON.stringify(iterationData), {
+    headers: { 'Content-type': 'application/json' },
+  });
+  check(res, { 'status 200': (r) => r.status === 200 });
 }
 ```
 

@@ -19,10 +19,10 @@ import ws from 'k6/ws';
 import { check } from 'k6';
 
 export default function () {
-  var url = 'ws://echo.websocket.org';
-  var params = { tags: { my_tag: 'hello' } };
+  const url = 'ws://echo.websocket.org';
+  const params = { tags: { my_tag: 'hello' } };
 
-  var res = ws.connect(url, params, function (socket) {
+  const res = ws.connect(url, params, function (socket) {
     socket.on('open', function open() {
       console.log('connected');
 

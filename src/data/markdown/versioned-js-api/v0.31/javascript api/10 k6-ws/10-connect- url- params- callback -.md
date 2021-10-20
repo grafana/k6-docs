@@ -34,8 +34,8 @@ The following events can close the connection:
 import ws from 'k6/ws';
 
 export default function () {
-  var url = 'ws://echo.websocket.org';
-  var resp = ws.connect(url, null, function (socket) {
+  const url = 'ws://echo.websocket.org';
+  const resp = ws.connect(url, null, function (socket) {
     socket.on('open', function () {
       console.log('WebSocket connection established!');
       socket.close();

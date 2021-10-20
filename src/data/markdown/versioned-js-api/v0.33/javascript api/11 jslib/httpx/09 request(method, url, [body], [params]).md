@@ -32,17 +32,17 @@ Consider using specific methods for making common requests ([get](/javascript-ap
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 
-let session = new Httpx({
-    baseURL: 'https://httpbin.test.k6.io', 
-    timeout: 20000 // 20s timeout.
+const session = new Httpx({
+  baseURL: 'https://httpbin.test.k6.io',
+  timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-  let resp_get = session.request('GET', `/status/200`);
-  let resp_post = session.request('POST', `/status/200`, {'key': 'value'});
-  let resp_put = session.request('PUT', `/status/200`, {'key': 'value'});
-  let resp_patch = session.request('PATCH', `/status/200`, {'key': 'value'});
-  let resp_delete = session.request('DELETE', `/status/200`);
+  const resp_get = session.request('GET', `/status/200`);
+  const resp_post = session.request('POST', `/status/200`, { key: 'value' });
+  const resp_put = session.request('PUT', `/status/200`, { key: 'value' });
+  const resp_patch = session.request('PATCH', `/status/200`, { key: 'value' });
+  const resp_delete = session.request('DELETE', `/status/200`);
 }
 ```
 

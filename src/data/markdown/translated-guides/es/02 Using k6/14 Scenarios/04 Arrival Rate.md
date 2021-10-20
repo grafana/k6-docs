@@ -14,7 +14,7 @@ Antes de la versión 0.27.0, k6 sólo admitía un modelo cerrado para la simulac
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   scenarios: {
     closed_model: {
       executor: 'constant-vus',
@@ -73,7 +73,7 @@ En k6, hemos implementado este modelo abierto con nuestros dos executors de "tas
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   scenarios: {
     open_model: {
       executor: 'constant-arrival-rate',

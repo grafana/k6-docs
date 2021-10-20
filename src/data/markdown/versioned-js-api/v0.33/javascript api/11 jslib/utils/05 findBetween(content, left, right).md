@@ -24,9 +24,9 @@ Function that returns a string from between two other strings.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { findBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { findBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
-export default function() {
+export default function () {
   const response = '<div class="message">Login successful!</div>';
 
   const message = findBetween(response, '<div class="message">', '</div>');

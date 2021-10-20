@@ -90,7 +90,7 @@ El siguiente fragmento de JS muestra cómo especificar las opciones en el script
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   hosts: { 'test.k6.io': '1.2.3.4' },
   stages: [
     { duration: '1m', target: 10 },
@@ -186,7 +186,7 @@ El número máximo de conexiones simultáneas/paralelas en total que puede hacer
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   batch: 15,
 };
 ```
@@ -204,7 +204,7 @@ El número máximo de conexiones simultáneas/paralelas para el mismo nombre de 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   batchPerHost: 5,
 };
 ```
@@ -222,7 +222,7 @@ Blacklist de IP para no ser llamados.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   blacklistIPs: ['10.0.0.0/8'],
 };
 ```
@@ -242,8 +242,8 @@ Bloquea los nombres de host basándose en una lista de cadenas de coincidencia g
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
-  blockHostnames: ["test.k6.io" , "*.example.com"],
+export const options = {
+  blockHostnames: ['test.k6.io', '*.example.com'],
 };
 ```
 
@@ -322,7 +322,7 @@ Especifica si los cuerpos de respuesta deben ser descartados cambiando el valor 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   discardResponseBodies: true,
 };
 ```
@@ -372,13 +372,13 @@ K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default
 <CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   dns: {
     ttl: '1m',
     select: 'roundRobin',
-    policy: 'any'
-  }
-}
+    policy: 'any',
+  },
+};
 ```
 
 </CodeGroup>
@@ -396,7 +396,7 @@ Junto con la opción vus, la duración es un atajo para un escenario único con 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   duration: '3m',
 };
 ```
@@ -416,7 +416,7 @@ Este es un ejemplo de cómo especificar el nombre de la prueba (las ejecuciones 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       name: 'My test name',
@@ -470,7 +470,7 @@ A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
@@ -495,7 +495,7 @@ Lea más [aquí](/es/usando-k6/http-debugging/).
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   httpDebug: 'full',
 };
 ```
@@ -529,7 +529,7 @@ Un booleano, verdadero o falso. Cuando esta opción está habilitada (establecid
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   insecureSkipTLSVerify: true,
 };
 ```
@@ -553,7 +553,7 @@ Tenga en cuenta que las iteraciones no se distribuyen equitativamente con esta o
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   iterations: 10,
 };
 ```
@@ -565,7 +565,7 @@ O, para ejecutar 10 VUs 10 veces cada una:
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 10,
   iterations: 100,
 };
@@ -585,7 +585,7 @@ Un booleano, verdadero o falso, que especifica si el proceso k6 debe permanecer 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   linger: true,
 };
 ```
@@ -680,7 +680,7 @@ El número máximo de redirecciones HTTP que k6 seguirá antes de abandonar una 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   maxRedirects: 10,
 };
 ```
@@ -698,7 +698,7 @@ Especifica la duración mínima que debe tener cada una de las ejecuciones (es d
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   minIterationDuration: '10s',
 };
 ```
@@ -733,7 +733,7 @@ Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexio
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noConnectionReuse: true,
 };
 ```
@@ -751,7 +751,7 @@ Esto deshabilita el comportamiento por defecto de restablecer el tarro de cookie
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noCookiesReset: true,
 };
 ```
@@ -854,7 +854,7 @@ Un booleano, verdadero o falso, que especifica si k6 debe reutilizar las conexio
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noVUConnectionReuse: true,
 };
 ```
@@ -872,7 +872,7 @@ Un booleano, verdadero o falso, que especifica si la prueba debe comenzar en un 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   paused: true,
 };
 ```
@@ -924,7 +924,7 @@ El número máximo de peticiones a realizar por segundo, en total en todas los V
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   rps: 500,
 };
 ```
@@ -946,7 +946,7 @@ Consulte el artículo [Escenarios](/es/usando-k6/escenarios/) para obtener detal
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   scenarios: {
     my_api_scenario: {
       // arbitrary scenario name
@@ -977,7 +977,7 @@ Especifica el tiempo que se permite ejecutar la función `setup()` antes de que 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   setupTimeout: '30s',
 };
 ```
@@ -1019,7 +1019,7 @@ Es una opción de acceso directo para un escenario único con un ejecutor de VUs
 // over the next 10 minutes before finally ramping down to 0 VUs for another
 // 3 minutes.
 
-export let options = {
+export const options = {
   stages: [
     { duration: '3m', target: 10 },
     { duration: '5m', target: 10 },
@@ -1093,7 +1093,7 @@ Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema es
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   systemTags: ['status', 'method', 'url'],
 };
 ```
@@ -1112,7 +1112,7 @@ Define la unidad de tiempo en [ resumen de fin de tests](/es/visualizacion-de-re
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   summaryTimeUnit: 'ms',
 };
 ```
@@ -1133,7 +1133,7 @@ Para una mayor personalización del resumen y la exportación del mismo en vario
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   summaryTrendStats: ['avg', 'p(95)'],
 };
 ```
@@ -1151,7 +1151,7 @@ Especifique las etiquetas que deben establecerse a nivel de prueba en todas las 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tags: {
     name: 'value',
   },
@@ -1172,7 +1172,7 @@ Especifica cuánto tiempo se permite que se ejecute la función `teardown()` ant
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   teardownTimeout: '30s',
 };
 ```
@@ -1190,9 +1190,9 @@ Una colección de especificaciones de umbrales para configurar bajo qué condici
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
-    http_req_duration: ['avg<100', 'p(95)<200'],
+    'http_req_duration': ['avg<100', 'p(95)<200'],
     'http_req_connecting{cdnAsset:true}': ['p(95)<100'],
   },
 };
@@ -1211,7 +1211,7 @@ Un booleano, verdadero o falso, que especifica si se lanzan errores en las petic
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   throw: true,
 };
 ```
@@ -1229,7 +1229,7 @@ Una lista de objetos de configuración de certificados de cliente TLS. Cada obje
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tlsAuth: [
     {
       domains: ['example.com'],
@@ -1253,11 +1253,8 @@ Una lista de suites de cifrado permitidas para ser utilizadas por en las interac
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
-  tlsCipherSuites: [
-    'TLS_RSA_WITH_RC4_128_SHA',
-    'TLS_RSA_WITH_AES_128_GCM_SHA256',
-  ],
+export const options = {
+  tlsCipherSuites: ['TLS_RSA_WITH_RC4_128_SHA', 'TLS_RSA_WITH_AES_128_GCM_SHA256'],
 };
 ```
 
@@ -1281,7 +1278,7 @@ export let options = {
 
 // or...
 
-export let options = {
+options = {
   tlsVersion: {
     min: 'ssl3.0',
     max: 'tls1.2',
@@ -1302,7 +1299,7 @@ Una cadena que especifica la cadena de agente de usuario a utilizar en las cabec
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
 ```
@@ -1337,7 +1334,7 @@ Un valor entero que especifica el número de VUs a ejecutar simultáneamente, ut
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 10,
 };
 ```
@@ -1357,7 +1354,7 @@ export let options = {
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vusMax: 10,
 };
 ```

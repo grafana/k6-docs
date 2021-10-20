@@ -19,7 +19,7 @@ Los escenarios de ejecución son principalmente configurados a través de la cla
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   scenarios: {
     example_scenario: {
       // name of the executor to use
@@ -36,9 +36,11 @@ export let options = {
       iterations: 200,
       maxDuration: '10s',
     },
-    another_scenario: { ... }
-  }
-}
+    another_scenario: {
+      /*...*/
+    },
+  },
+};
 ```
 
 </CodeGroup>

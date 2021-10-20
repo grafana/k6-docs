@@ -11,21 +11,26 @@ k6 is well suited for functional testing
 ```javascript
 import { describe } from 'https://jslib.k6.io/expect/0.0.5/index.js';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
-export let options = {
+export const options = {
   thresholds: {
     checks: [{ threshold: 'rate == 1.00', abortOnFail: true }],
   },
   vus: 1,
   iterations: 1,
 };
-let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 export default function testSuite() {
   describe('Fetch a list of public crocodiles', (t) => {
-    let response = session.get("/public/crocodiles");
-    t.expect(response.status).as("response status").toEqual(200)
-      .and(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(4);
-  })
+    const response = session.get('/public/crocodiles');
+    t.expect(response.status)
+      .as('response status')
+      .toEqual(200)
+      .and(response)
+      .toHaveValidJson()
+      .and(response.json().length)
+      .as('number of crocs')
+      .toBeGreaterThan(4);
+  });
 }
 ```
 
@@ -35,6 +40,8 @@ This test goes through several steps. It creates a new user account, authenticat
 
 
 <CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
 
 ```javascript
 import { describe } from 'https://jslib.k6.io/expect/0.0.5/index.js';
@@ -168,4 +175,3 @@ export default function testSuite() {
 
 
 Discussion about functional testing can be found on the [community forum](https://community.k6.io/t/report-for-functional-test/574/2)
-

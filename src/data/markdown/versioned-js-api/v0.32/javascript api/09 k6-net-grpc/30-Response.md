@@ -18,7 +18,7 @@ excerpt: 'The response object of a gRPC request.'
 
 ```javascript
 import grpc from 'k6/net/grpc';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 
 const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');

@@ -20,7 +20,7 @@ to finish of the VU's `exec` function, by default the `export default function`)
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   scenarios: {
     closed_model: {
       executor: 'constant-vus',
@@ -86,7 +86,7 @@ In k6, we've implemented this open model with our two "arrival rate" executors:
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   scenarios: {
     open_model: {
       executor: 'constant-arrival-rate',

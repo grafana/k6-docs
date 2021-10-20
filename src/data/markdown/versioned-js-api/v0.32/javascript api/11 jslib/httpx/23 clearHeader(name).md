@@ -17,12 +17,12 @@ excerpt: 'removes header from the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx({headers: {'Authorization': 'token1'}});
+const session = new Httpx({ headers: { Authorization: 'token1' } });
 
 session.clearHeader('Authorization'); // removes header set in the constructor
 
 export default function () {
-  session.get('https://test-api.k6.io/public/crocodiles/1/'); 
+  session.get('https://test-api.k6.io/public/crocodiles/1/');
 }
 ```
 

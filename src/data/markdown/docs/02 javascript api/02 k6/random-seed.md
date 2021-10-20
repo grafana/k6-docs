@@ -26,7 +26,7 @@ export const options = {
 
 export default function () {
   randomSeed(123456789);
-  let rnd = Math.random();
+  const rnd = Math.random();
   console.log(rnd);
 }
 ```

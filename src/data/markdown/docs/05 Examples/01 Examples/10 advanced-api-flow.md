@@ -9,10 +9,10 @@ excerpt: 'This example covers the usage of different k6 APIs for API load testin
 import http from 'k6/http';
 import { check, group, sleep, fail } from 'k6';
 
-export let options = {
+export const options = {
   stages: [{ target: 70, duration: '30s' }],
   thresholds: {
-    http_req_duration: ['p(95)<500', 'p(99)<1500'],
+    'http_req_duration': ['p(95)<500', 'p(99)<1500'],
     'http_req_duration{name:PublicCrocs}': ['avg<400'],
     'http_req_duration{name:Create}': ['avg<600', 'max<1000'],
   },
@@ -31,7 +31,7 @@ const BASE_URL = 'https://test-api.k6.io';
 
 export function setup() {
   // register a new user and authenticate via a Bearer token.
-  let res = http.post(`${BASE_URL}/user/register/`, {
+  const res = http.post(`${BASE_URL}/user/register/`, {
     first_name: 'Crocodile',
     last_name: 'Owner',
     username: USERNAME,
@@ -40,12 +40,12 @@ export function setup() {
 
   check(res, { 'created user': (r) => r.status === 201 });
 
-  let loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
+  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
     username: USERNAME,
     password: PASSWORD,
   });
 
-  let authToken = loginRes.json('access');
+  const authToken = loginRes.json('access');
   check(authToken, { 'logged in successfully': () => authToken !== '' });
 
   return authToken;
@@ -61,37 +61,17 @@ export default (authToken) => {
       {
         name: 'PrivateCrocs',
       },
-      tag,
+      tag
     ),
   });
 
   group('Public endpoints', () => {
     // call some public endpoints in a batch
-    let responses = http.batch([
-      [
-        'GET',
-        `${BASE_URL}/public/crocodiles/1/`,
-        null,
-        { tags: { name: 'PublicCrocs' } },
-      ],
-      [
-        'GET',
-        `${BASE_URL}/public/crocodiles/2/`,
-        null,
-        { tags: { name: 'PublicCrocs' } },
-      ],
-      [
-        'GET',
-        `${BASE_URL}/public/crocodiles/3/`,
-        null,
-        { tags: { name: 'PublicCrocs' } },
-      ],
-      [
-        'GET',
-        `${BASE_URL}/public/crocodiles/4/`,
-        null,
-        { tags: { name: 'PublicCrocs' } },
-      ],
+    const responses = http.batch([
+      ['GET', `${BASE_URL}/public/crocodiles/1/`, null, { tags: { name: 'PublicCrocs' } }],
+      ['GET', `${BASE_URL}/public/crocodiles/2/`, null, { tags: { name: 'PublicCrocs' } }],
+      ['GET', `${BASE_URL}/public/crocodiles/3/`, null, { tags: { name: 'PublicCrocs' } }],
+      ['GET', `${BASE_URL}/public/crocodiles/4/`, null, { tags: { name: 'PublicCrocs' } }],
     ]);
 
     const ages = Object.values(responses).map((res) => res.json('age'));
@@ -112,11 +92,7 @@ export default (authToken) => {
         date_of_birth: '2001-01-01',
       };
 
-      const res = http.post(
-        URL,
-        payload,
-        requestConfigWithTag({ name: 'Create' }),
-      );
+      const res = http.post(URL, payload, requestConfigWithTag({ name: 'Create' }));
 
       if (check(res, { 'Croc created correctly': (r) => r.status === 201 })) {
         URL = `${URL}${res.json('id')}/`;
@@ -128,11 +104,7 @@ export default (authToken) => {
 
     group('Update croc', () => {
       const payload = { name: 'New name' };
-      const res = http.patch(
-        URL,
-        payload,
-        requestConfigWithTag({ name: 'Update' }),
-      );
+      const res = http.patch(URL, payload, requestConfigWithTag({ name: 'Update' }));
       const isSuccessfulUpdate = check(res, {
         'Update worked': () => res.status === 200,
         'Updated name is correct': () => res.json('name') === 'New name',
@@ -144,11 +116,7 @@ export default (authToken) => {
       }
     });
 
-    const delRes = http.del(
-      URL,
-      null,
-      requestConfigWithTag({ name: 'Delete' }),
-    );
+    const delRes = http.del(URL, null, requestConfigWithTag({ name: 'Delete' }));
 
     const isSuccessfulDelete = check(null, {
       'Croc was deleted correctly': () => delRes.status === 204,

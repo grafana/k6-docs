@@ -86,28 +86,28 @@ If you script your k6 tests, you can also configure the Cloud APM settings using
 The parameters to export the k6 metrics to Azure Monitor are as follows:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "azuremonitor",
+          provider: 'azuremonitor',
 
-          tenantId: "<Directory (tenant) ID>",
-          clientId: "<Application (client) ID>",
-          clientSecret: "<Client secret>",
-          subscriptionId: "<Subscription ID>",
-          resourceGroupName: "<Resource Group Name>",
-          insightsAppName: "<Application Insights Name>",
+          tenantId: '<Directory (tenant) ID>',
+          clientId: '<Application (client) ID>',
+          clientSecret: '<Client secret>',
+          subscriptionId: '<Subscription ID>',
+          resourceGroupName: '<Resource Group Name>',
+          insightsAppName: '<Application Insights Name>',
           // optional
-          azureRegion: "<Region>",
+          azureRegion: '<Region>',
 
           // optional
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
           includeDefaultMetrics: true,
-          includeTestRunId: false
+          includeTestRunId: false,
         },
-      ]
+      ],
     },
   },
 };

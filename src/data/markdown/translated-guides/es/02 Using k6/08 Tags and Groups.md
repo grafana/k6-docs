@@ -20,7 +20,6 @@ Los grupos son opcionales, y permiten "agrupar" su script de carga. Los grupos p
 import { group } from 'k6';
 
 export default function () {
-
   group('visit product listing page', function () {
     // ...
   });
@@ -36,7 +35,6 @@ export default function () {
   group('checkout process', function () {
     // ...
   });
-
 }
 ```
 
@@ -57,15 +55,20 @@ Wrapping each individual request within a group might add boilerplate code and b
 <CodeGroup labels={["group-antipattern.js"]} lineNumbers={[true]}>
 
 ```javascript
+import { group, check } from 'k6';
+import http from 'k6/http';
+
+const id = 10;
+
 // reconsider this type of code
 group('get post', function () {
-   http.get(`http://example.com/posts/${id}`);
+  http.get(`http://example.com/posts/${id}`);
 });
 group('list posts', function () {
-   let res = http.get(`http://example.com/posts`);
-   check(res, {
-     'is status 200': (r) => r.status === 200,
-   });
+  const res = http.get(`http://example.com/posts`);
+  check(res, {
+    'is status 200': (r) => r.status === 200,
+  });
 });
 ```
 
@@ -137,22 +140,18 @@ import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 import { check } from 'k6';
 
-let myTrend = new Trend('my_trend');
+const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  let res = http.get('http://httpbin.org/', {
+  const res = http.get('http://httpbin.org/', {
     tags: {
       my_tag: "I'm a tag",
     },
   });
 
   // Add tag to check
-  check(
-    res,
-    { 'status is 200': (r) => r.status === 200 },
-    { my_tag: "I'm a tag" },
-  );
+  check(res, { 'status is 200': (r) => r.status === 200 }, { my_tag: "I'm a tag" });
 
   // Add tag to custom metric
   myTrend.add(res.timings.connecting, { my_tag: "I'm a tag" });
@@ -168,7 +167,7 @@ Además de adjuntar etiquetas a las solicitudes, comprobaciones y métricas pers
 <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tags: {
     name: 'value',
   },

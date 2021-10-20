@@ -55,7 +55,7 @@ Como ventaja adicional, puede utilizar esto para reutilizar los datos entre las 
 <CodeGroup labels={[]}>
 
 ```javascript
-var counter = 0;
+let counter = 0;
 
 export default function () {
   counter++;
@@ -132,8 +132,10 @@ Una gran diferencia entre la etapa init y la de setup/teardown es que en esta ú
 <CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
 ```javascript
+import http from 'k6/http';
+
 export function setup() {
-  let res = http.get('https://httpbin.org/get');
+  const res = http.get('https://httpbin.org/get');
   return { data: res.json() };
 }
 

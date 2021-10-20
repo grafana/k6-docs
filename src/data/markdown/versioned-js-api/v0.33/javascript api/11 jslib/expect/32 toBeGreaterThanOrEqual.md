@@ -31,12 +31,11 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-
   describe('Basic API test', (t) => {
     t.expect(5).toBeGreaterThanOrEqual(4); // true
     t.expect(5).toBeGreaterThanOrEqual(5); // true
     t.expect(5).toBeGreaterThanOrEqual(6); // false
-  })
+  });
 }
 ```
 

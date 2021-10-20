@@ -61,23 +61,23 @@ If you script your k6 tests, you can also configure the Cloud APM settings using
 The parameters to export the k6 metrics to DataDog are as follows:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "datadog",
-          apiKey: "<Datadog Provided API key>",
-          appKey: "<Datadog Provided App key>",
+          provider: 'datadog',
+          apiKey: '<Datadog Provided API key>',
+          appKey: '<Datadog Provided App key>',
 
           // optional parameters
           region: 'us',
 
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
           includeDefaultMetrics: true,
-          includeTestRunId: false
+          includeTestRunId: false,
         },
-      ]
+      ],
     },
   },
 };

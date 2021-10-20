@@ -50,14 +50,16 @@ A note on performance characteristics of `SharedArray` can be found within its [
 <CodeGroup labels={["parse-json.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { SharedArray } from "k6/data";
+import { SharedArray } from 'k6/data';
 // not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the json) will be executed per each VU which also means that there will be a complete copy
 // per each VU
-const data = new SharedArray("some data name", function() { return JSON.parse(open('./data.json')).users; });
+const data = new SharedArray('some data name', function () {
+  return JSON.parse(open('./data.json')).users;
+});
 
 export default function () {
-  let user = data[0];
+  const user = data[0];
   console.log(data[0].username);
 }
 ```
@@ -75,13 +77,13 @@ You can download the library and import it locally like this:
 
 ```javascript
 import papaparse from './papaparse.js';
-import { SharedArray } from "k6/data";
+import { SharedArray } from 'k6/data';
 // not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
-const csvData = new SharedArray("another data name", function() {
-    // Load CSV file and parse it using Papa Parse
-    return papaparse.parse(open('./data.csv'), { header: true }).data;
+const csvData = new SharedArray('another data name', function () {
+  // Load CSV file and parse it using Papa Parse
+  return papaparse.parse(open('./data.csv'), { header: true }).data;
 });
 
 export default function () {
@@ -97,14 +99,14 @@ Or you can grab it directly from [jslib.k6.io](https://jslib.k6.io/) like this.
 
 ```javascript
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
-import { SharedArray } from "k6/data";
+import { SharedArray } from 'k6/data';
 
 // not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
-const csvData = new SharedArray("another data name", function() {
-    // Load CSV file and parse it using Papa Parse
-    return papaparse.parse(open('./data.csv'), { header: true }).data;
+const csvData = new SharedArray('another data name', function () {
+  // Load CSV file and parse it using Papa Parse
+  return papaparse.parse(open('./data.csv'), { header: true }).data;
 });
 
 export default function () {
@@ -127,15 +129,15 @@ test_user,1234
 */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-import { SharedArray } from 'k6/data'
+import { SharedArray } from 'k6/data';
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 
 // not using SharedArray here will mean that the code in the function call (that is what loads and
 // parses the csv) will be executed per each VU which also means that there will be a complete copy
 // per each VU
-const csvData = new SharedArray("another data name", function() {
-    // Load CSV file and parse it using Papa Parse
-    return papaparse.parse(open('./data.csv'), { header: true }).data;
+const csvData = new SharedArray('another data name', function () {
+  // Load CSV file and parse it using Papa Parse
+  return papaparse.parse(open('./data.csv'), { header: true }).data;
 });
 
 export default function () {
@@ -143,12 +145,12 @@ export default function () {
   // Below are some examples of how you can access the CSV data.
 
   // Loop through all username/password pairs
-  for (var userPwdPair of csvData) {
+  for (const userPwdPair of csvData) {
     console.log(JSON.stringify(userPwdPair));
   }
 
   // Pick a random username/password pair
-  let randomUser = csvData[Math.floor(Math.random() * csvData.length)];
+  const randomUser = csvData[Math.floor(Math.random() * csvData.length)];
   console.log('Random user: ', JSON.stringify(randomUser));
 
   const params = {
@@ -157,10 +159,9 @@ export default function () {
   };
   console.log('Random user: ', JSON.stringify(params));
 
-  let res = http.post('https://test.k6.io/login.php', params);
+  const res = http.post('https://test.k6.io/login.php', params);
   check(res, {
-    'login succeeded': (r) =>
-      r.status === 200 && r.body.indexOf('successfully authorized') !== -1,
+    'login succeeded': (r) => r.status === 200 && r.body.indexOf('successfully authorized') !== -1,
   });
 
   sleep(1);
@@ -191,18 +192,16 @@ exists. Combining both will likely not bring any more performance benefit then u
 <CodeGroup labels={["parse-json-big.js"]} lineNumbers={[true]}>
 
 ```javascript
-var splits = 100; // in how many parts are we going to split the data
+const splits = 100; // in how many parts are we going to split the data
+let data = [];
 
 if (__VU == 0) {
   open('./data.json'); // we just open it so it is available in the cloud or if we do k6 archive
 } else {
-  var data = (function () {
-    // separate function in order to not leak all the data in the main scope
-    var all_data = JSON.parse(open('./data.json')); // we load and parse the data in one go, no need for temp variables
-    var part_size = all_data.length / splits;
-    var index = part_size * (__VU % splits);
-    return all_data.slice(index, index + part_size);
-  })();
+  const all_data = JSON.parse(open('./data.json')); // we load and parse the data in one go, no need for temp variables
+  const part_size = all_data.length / splits;
+  const index = part_size * (__VU % splits);
+  data = all_data.slice(index, index + part_size);
 }
 
 export default function () {
@@ -231,7 +230,7 @@ A second approach using another technique will be to pre-split the data in diffe
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 import { sleep } from 'k6';
 
-let dataFiles = [
+const dataFiles = [
   './data1.csv',
   './data2.csv',
   './data3.csv',
@@ -243,7 +242,7 @@ let dataFiles = [
   './data9.csv',
   './data10.csv',
 ];
-var csvData;
+let csvData;
 if (__VU == 0) {
   // workaround to collect all files for the cloud execution
   for (let i = 0; i < dataFiles.length; i++) {

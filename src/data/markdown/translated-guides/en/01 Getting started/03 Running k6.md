@@ -98,10 +98,9 @@ running. Code _outside_ of it is called "init code", and is run only once per VU
 ```javascript
 // init code
 
-export default function() {
+export default function () {
   // vu code
 }
-
 ```
 
 </CodeGroup>
@@ -122,7 +121,7 @@ those settings inside your JavaScript file also:
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
-export let options = {
+export const options = {
   vus: 10,
   duration: '30s',
 };
@@ -163,7 +162,7 @@ allows you to configure ramping behaviour.
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-export let options = {
+export const options = {
   stages: [
     { duration: '30s', target: 20 },
     { duration: '1m30s', target: 10 },
@@ -172,7 +171,7 @@ export let options = {
 };
 
 export default function () {
-  let res = http.get('https://httpbin.org/');
+  const res = http.get('https://httpbin.org/');
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }

@@ -103,7 +103,9 @@ Also, `logging methods` can print any message to the console. In the cloud, the 
 <CodeGroup labels={[""]}>
 
 ```javascript
-let res = http.get('http://httpbin.test.k6.io/json');
+import http from 'k6/http';
+
+const res = http.get('http://httpbin.test.k6.io/json');
 console.log(JSON.stringify(res));
 ```
 
@@ -134,7 +136,7 @@ To do this, copy the project ID from the top left corner of the project dashboar
 <CodeGroup labels={["Example:"]}>
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       projectID: 123456,
@@ -174,10 +176,10 @@ To open your firewall to k6 cloud traffic, you have multiple options.
 import http from 'k6/http';
 
 export default function () {
-  var url = 'http://test.k6.io/login';
-  var payload = JSON.stringify({ email: 'aaa', password: 'bbb' });
-  var params = {
-    headers: { 'Content-Type': 'application/json', Myheader: 'TOKEN_STRING' },
+  const url = 'http://test.k6.io/login';
+  const payload = JSON.stringify({ email: 'aaa', password: 'bbb' });
+  const params = {
+    headers: { 'Content-Type': 'application/json', 'Myheader': 'TOKEN_STRING' },
   };
   http.post(url, payload, params);
 }
@@ -191,7 +193,7 @@ export default function () {
 
 ```javascript
 // Set a custom User Agent globally in your test options.
-export let options = {
+export const options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
 ```
@@ -203,6 +205,8 @@ export let options = {
 <CodeGroup labels={["Query parameters"]}>
 
 ```javascript
+import http from 'k6/http';
+
 // Add query parameters to your requests with a unique piece of data
 export default function () {
   http.get('http://test.k6.io/?firewall_token=TOKEN_STRING');
@@ -216,8 +220,10 @@ export default function () {
 <CodeGroup labels={["Query parameters"]}>
 
 ```javascript
+import http from 'k6/http';
+
 // In your options, map your a unique/unused/secret hostname to the IP of the server.
-export let options = {
+export const options = {
   hosts: {
     'https://very_difficult.to.guess.hostname.com': '1.2.3.4',
   },

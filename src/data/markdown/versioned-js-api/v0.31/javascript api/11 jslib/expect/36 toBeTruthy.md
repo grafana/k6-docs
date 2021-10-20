@@ -24,22 +24,21 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-
   describe('Basic test', (t) => {
     t.expect(1).toBeTruthy(); // true
-    t.expect("hello").toBeTruthy(); // true
+    t.expect('hello').toBeTruthy(); // true
     t.expect(3.14).toBeTruthy(); // true
     t.expect([]).toBeTruthy(); // true
     t.expect({}).toBeTruthy(); // true
     t.expect(true).toBeTruthy(); // true
-    t.expect("1").toBeTruthy(); // true
+    t.expect('1').toBeTruthy(); // true
 
     t.expect(0).toBeTruthy(); // false
     t.expect(undefined).toBeTruthy(); // false
     t.expect(NaN).toBeTruthy(); // false
     t.expect(false).toBeTruthy(); // false
-    t.expect("").toBeTruthy(); // false
-  })
+    t.expect('').toBeTruthy(); // false
+  });
 }
 ```
 

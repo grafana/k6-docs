@@ -16,7 +16,7 @@ Note the use of `startTime`, and different `exec` functions for each scenario.
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
@@ -61,7 +61,7 @@ can also be done per scenario, which would apply them to other
 import http from 'k6/http';
 import { fail } from 'k6';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
@@ -113,7 +113,7 @@ A test with 3 scenarios, each with different `exec` functions, tags and environm
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   scenarios: {
     my_web_test: {
       // some arbitrary scenario name

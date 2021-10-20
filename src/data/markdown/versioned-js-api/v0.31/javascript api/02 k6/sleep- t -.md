@@ -36,7 +36,7 @@ Using the [k6-utils](https://jslib.k6.io/k6-utils/) library to specify a range b
 ```javascript
 import { sleep } from 'k6';
 import http from 'k6/http';
-import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
 export default function () {
   http.get('https://k6.io');

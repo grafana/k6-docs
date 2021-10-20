@@ -14,7 +14,7 @@ Nótese el uso de `startTime`, y diferentes funciones `exec` para cada escenario
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
@@ -58,7 +58,7 @@ En el ejemplo anterior establecimos etiquetas en métricas individuales de solic
 import http from 'k6/http';
 import { fail } from 'k6';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
@@ -105,7 +105,7 @@ Tenga en cuenta que, por defecto, se aplica una etiqueta de `scenario` con el no
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   scenarios: {
     my_web_test: {
       // some arbitrary scenario name

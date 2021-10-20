@@ -42,14 +42,14 @@ Thresholds are a way of ensuring that your system is meeting the performance goa
 import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 
-export let options = {
+export const options = {
   stages: [
     { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
     { duration: '10m', target: 100 }, // stay at 100 users for 10 minutes
     { duration: '5m', target: 0 }, // ramp-down to 0 users
   ],
   thresholds: {
-    http_req_duration: ['p(99)<1500'], // 99% of requests must complete below 1.5s
+    'http_req_duration': ['p(99)<1500'], // 99% of requests must complete below 1.5s
     'logged in successfully': ['p(99)<1500'], // 99% of requests must complete below 1.5s
   },
 };
@@ -59,7 +59,7 @@ const USERNAME = 'TestUser';
 const PASSWORD = 'SuperCroc2020';
 
 export default () => {
-  let loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
+  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
     username: USERNAME,
     password: PASSWORD,
   });
@@ -68,13 +68,13 @@ export default () => {
     'logged in successfully': (resp) => resp.json('access') !== '',
   });
 
-  let authHeaders = {
+  const authHeaders = {
     headers: {
       Authorization: `Bearer ${loginRes.json('access')}`,
     },
   };
 
-  let myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
+  const myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
   check(myObjects, { 'retrieved crocodiles': (obj) => obj.length > 0 });
 
   sleep(1);
@@ -111,7 +111,7 @@ Make sure you don't go over your normal number of VUs - that's not load testing,
 <CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   stages: [
     { duration: '5m', target: 60 }, // simulate ramp-up of traffic from 1 to 60 users over 5 minutes.
     { duration: '10m', target: 60 }, // stay at 60 users for 10 minutes

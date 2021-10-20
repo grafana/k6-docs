@@ -36,12 +36,12 @@ import { check } from 'k6';
 
 export default function () {
   // Make a request that returns some JSON data
-  let res = http.get('https://httpbin.org/json');
+  const res = http.get('https://httpbin.org/json');
 
   // Extract data from that JSON data by first parsing it
   // using a call to "json()" and then accessing properties by
   // navigating the JSON data as a JS object with dot notation.
-  let slide1 = res.json().slideshow.slides[0];
+  const slide1 = res.json().slideshow.slides[0];
   check(slide1, {
     'slide 1 has correct title': (s) => s.title === 'Wake up to WonderWidgets!',
     'slide 1 has correct type': (s) => s.type === 'all',
@@ -71,27 +71,26 @@ appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/ja
 <CodeGroup labels={["extract-from-hidden.js"]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
-import {sleep} from "k6";
+import http from 'k6/http';
+import { sleep } from 'k6';
 
-export default function() {
+export default function () {
+  // Request the page containing a form and save the response. This gives you access
+  //to the response object, `res`.
+  const res = http.get('https://test.k6.io/my_messages.php', { responseType: 'text' });
 
-    // Request the page containing a form and save the response. This gives you access
-    //to the response object, `res`.
-    const res = http.get("https://test.k6.io/my_messages.php", {"responseType": "text"});
+  // Query the HTML for an input field named "redir". We want the value or "redir"
+  const elem = res.html().find('input[name=redir]');
 
-    // Query the HTML for an input field named "redir". We want the value or "redir"
-    const elem = res.html().find('input[name=redir]');
+  // Get the value of the attribute "value" and save it to a variable
+  const val = elem.attr('value');
 
-    // Get the value of the attribute "value" and save it to a variable
-    const val = elem.attr('value');
+  // Now you can concatenate this extracted value in subsequent requests that require it.
+  // ...
+  // console.log() works when executing k6 scripts locally and is handy for debugging purposes
+  console.log('The value of the hidden field redir is: ' + val);
 
-    // Now you can concatenate this extracted value in subsequent requests that require it.
-    ...
-    // console.log() works when executing k6 scripts locally and is handy for debugging purposes
-    console.log("The value of the hidden field redir is: " + val);
-
-    sleep(1);
+  sleep(1);
 }
 ```
 
@@ -124,7 +123,7 @@ import { findBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 import { check } from 'k6';
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   // This request returns XML:
   const res = http.get('https://httpbin.test.k6.io/xml');
 
@@ -132,7 +131,7 @@ export default function() {
   const title = findBetween(res.body, '<title>', '</title>');
 
   check(title, {
-    'title is correct': (t) => t === 'Wake up to WonderWidgets!'
+    'title is correct': (t) => t === 'Wake up to WonderWidgets!',
   });
 }
 ```

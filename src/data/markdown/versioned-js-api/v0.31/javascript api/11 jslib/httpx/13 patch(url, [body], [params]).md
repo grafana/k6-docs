@@ -26,13 +26,13 @@ excerpt: 'httpx.patch makes PATCH requests'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 
-let session = new Httpx({
+const session = new Httpx({
   baseURL: 'https://httpbin.test.k6.io',
   timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-  let resp = session.patch(`/patch`, {
+  const resp = session.patch(`/patch`, {
     first_name: 'Mr',
     last_name: 'Croco',
     username: 'my user',

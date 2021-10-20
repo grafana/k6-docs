@@ -35,7 +35,7 @@ a maximum duration of 1 hour and 30 minutes.
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {

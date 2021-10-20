@@ -54,13 +54,10 @@ client.load([], 'authorization.proto', 'route_guide.proto');
 
 export function setup() {
   client.connect('auth.googleapis.com:443');
-  const resp = client.invoke(
-    'google.cloud.authorization.v1.AuthService/GetAccessToken',
-    {
-      username: 'john.smith@k6.io',
-      password: 'its-a-secret',
-    }
-  );
+  const resp = client.invoke('google.cloud.authorization.v1.AuthService/GetAccessToken', {
+    username: 'john.smith@k6.io',
+    password: 'its-a-secret',
+  });
   client.close();
   return resp.message.accessToken;
 }
@@ -98,10 +95,7 @@ export default () => {
   if (__ITER == 0) {
     client.connect('language.googleapis.com:443');
   }
-  const response = client.invoke(
-    'google.cloud.language.v1.LanguageService/AnalyzeSentiment',
-    {}
-  );
+  const response = client.invoke('google.cloud.language.v1.LanguageService/AnalyzeSentiment', {});
   check(response, { 'status is OK': (r) => r && r.status === grpc.StatusOK });
   // Do NOT close the client
 };

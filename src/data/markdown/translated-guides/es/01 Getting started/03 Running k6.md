@@ -109,7 +109,7 @@ Si quiere evitar escribir `--vus 10` y `--duration 30s` todo el tiempo, también
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
-export let options = {
+export const options = {
   vus: 10,
   duration: '30s',
 };
@@ -149,7 +149,7 @@ Además puede tener el nivel de periodo de subida (ramp up)  y de bajada (ramp d
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-export let options = {
+export const options = {
   stages: [
     { duration: '30s', target: 20 },
     { duration: '1m30s', target: 10 },
@@ -158,7 +158,7 @@ export let options = {
 };
 
 export default function () {
-  let res = http.get('https://httpbin.org/');
+  const res = http.get('https://httpbin.org/');
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }

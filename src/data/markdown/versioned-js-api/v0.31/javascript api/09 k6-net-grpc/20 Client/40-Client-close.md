@@ -10,14 +10,14 @@ Close the connection to the gRPC service. Tear down all underlying connections.
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```javascript
-import grpc from "k6/net/grpc";
+import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');
 
 export default () => {
-    client.connect("localhost:8080");
-    client.close();
-}
+  client.connect('localhost:8080');
+  client.close();
+};
 ```
 </div>

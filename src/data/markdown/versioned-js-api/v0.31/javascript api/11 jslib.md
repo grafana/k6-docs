@@ -19,11 +19,7 @@ The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript l
 ```javascript
 import { check, sleep } from 'k6';
 import jsonpath from 'https://jslib.k6.io/jsonpath/1.0.2/index.js';
-import {
-  randomIntBetween,
-  randomItem,
-  uuidv4,
-} from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { randomIntBetween, randomItem, uuidv4 } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
 const testData = {
   user: {

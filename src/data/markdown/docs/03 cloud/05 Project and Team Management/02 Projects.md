@@ -29,11 +29,11 @@ Then, modify your script to add the project ID to the [Cloud execution options](
 
 ```js
 export const options = {
-    ext: {
-        loadimpact: {
-            projectID: 3479144,
-        },
+  ext: {
+    loadimpact: {
+      projectID: 3479144,
     },
+  },
 };
 ```
 

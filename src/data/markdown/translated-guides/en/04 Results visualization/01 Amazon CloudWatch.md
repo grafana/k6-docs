@@ -31,7 +31,7 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 4. Configure the agent to receive data from k6. For this, create a file called "_/opt/aws/amazon-cloudwatch-agent/etc/statsd.json_" and paste the following JSON config object into it. This configuration means that the agent would listen on port number 8125, which is the default port number for k6 and StatsD. The interval for collecting metrics is 5 seconds and we don't aggregate them, since we need the raw data later in CloudWatch.
 
-   ```javascript
+   ```json
    {
        "metrics": {
            "namespace": "k6",

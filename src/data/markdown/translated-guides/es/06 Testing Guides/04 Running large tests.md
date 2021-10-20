@@ -59,7 +59,11 @@ Las pruebas sencillas utilizarán entre 1 y 5 MB por VU. (1000VUs = 1-5GB). Las 
 Cuando se ejecutan grandes pruebas de estrés, su script no puede asumir nada sobre la respuesta HTTP. A menudo, las pruebas de rendimiento se escriben con una "ruta feliz" en mente. Por ejemplo, una comprobación de "camino feliz" como la siguiente es algo que vemos en k6 a menudo.
 
 ```javascript
-let checkRes = check(res, {
+import { check } from 'k6';
+import http from 'k6/http';
+
+const res = http.get('https://test.k6.io');
+const checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body.length === 11026,
 });
 ```
@@ -77,7 +81,11 @@ Para solucionar este problema sus comprobaciones deben ser resistentes a cualqui
 <CodeGroup labels={["resilient check"]}>
 
 ```javascript
-let checkRes = check(res, {
+import { check } from 'k6';
+import http from 'k6/http';
+
+const res = http.get('https://test.k6.io');
+const checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body && r.body.length === 11026,
 });
 ```
@@ -131,7 +139,7 @@ k6 utilizará alrededor del 50-85% de la memoria en comparación con la ejecuci�
 Puede decirle a k6 que no procese el cuerpo de la respuesta estableciendo `discardResponseBodies` en el objeto de opciones de la siguiente manera:
 
 ```javascript
-export let options = {
+export const options = {
   discardResponseBodies: true,
 };
 ```

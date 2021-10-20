@@ -28,9 +28,9 @@ For example:
 ```javascript
 import { Counter } from 'k6/metrics';
 
-var myCounter = new Counter('my_counter');
+const myCounter = new Counter('my_counter');
 
-export default function() {
+export default function () {
   myCounter.add(1);
   myCounter.add(2, { tag1: 'myValue', tag2: 'myValue2' });
 }
@@ -41,18 +41,18 @@ export default function() {
 <CodeGroup labels={["Simple Threshold usage"]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
-import { Counter } from "k6/metrics";
+import http from 'k6/http';
+import { Counter } from 'k6/metrics';
 
-let CounterErrors = new Counter("Errors");
+const CounterErrors = new Counter('Errors');
 
-export let options = { thresholds: { "Errors": ["count<100"] } };
+export const options = { thresholds: { Errors: ['count<100'] } };
 
-export default function() {
-  let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  let contentOK = res.json("name") === 'Bert';
+export default function () {
+  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const contentOK = res.json('name') === 'Bert';
   CounterErrors.add(!contentOK);
-};
+}
 ```
 
 </CodeGroup>
@@ -64,30 +64,33 @@ import { Counter } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-let allErrors = new Counter('error_counter');
+const allErrors = new Counter('error_counter');
 
-export let options = {
+export const options = {
   vus: 1,
   duration: '1m',
   thresholds: {
     'error_counter': [
       'count < 10', // 10 or fewer total errors are tolerated
     ],
-    'error_counter{errorType:authError}': [ // Threshold on a sub-metric (tagged values)
+    'error_counter{errorType:authError}': [
+      // Threshold on a sub-metric (tagged values)
       'count <= 2', // max 2 authentication errors are tolerated
-    ]
-  }
+    ],
+  },
 };
 
 export default function () {
-  let auth_resp = http.post('https://test-api.k6.io/auth/token/login/',
-                            {username: 'test-user', 'password': 'supersecure'});
+  const auth_resp = http.post('https://test-api.k6.io/auth/token/login/', {
+    username: 'test-user',
+    password: 'supersecure',
+  });
 
-  if (auth_resp.status >= 400){
+  if (auth_resp.status >= 400) {
     allErrors.add(1, { errorType: 'authError' }); // tagged value creates submetric (useful for making thresholds specific)
   }
 
-  let other_resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const other_resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
   if (other_resp.status >= 400) {
     allErrors.add(1); // untagged value
   }

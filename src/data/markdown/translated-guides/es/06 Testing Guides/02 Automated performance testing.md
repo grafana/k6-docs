@@ -82,7 +82,7 @@ Cada paso en una línea de automatización pasa o falla. Como se mencionó en `C
 Un Thresholds básico en el percentil 95 de la métrica del tiempo de respuesta tiene este aspecto:
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
     // fail the test if 95th percentile response goes above 500ms
     http_req_duration: ['p(95)<500'],
@@ -93,13 +93,11 @@ export let options = {
 Puede configurar umbrales en cualquier métrica en k6 y puede tener múltiples Thresholds por métrica. También puede especificar opcionalmente que un Threshold debe abortar inmediatamente una prueba si se alcanza un determinado umbral. Añadiendo esto al ejemplo anterior quedaría así:
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
     // fail and abort the test if 95th percentile response goes above 500ms
     // delay the threshold evaluation for 1 min to gather enought data
-    http_req_duration: [
-      { threshold: 'p(95)<500', abortOnFail: true, delayAbortEval: '1min' },
-    ],
+    http_req_duration: [{ threshold: 'p(95)<500', abortOnFail: true, delayAbortEval: '1min' }],
   },
 };
 ```
@@ -210,7 +208,7 @@ Para Slack necesitas primero [configurar un webhook de entrada](https://slack.co
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   thresholds: {
     // fail the test if 95th percentile response goes above 500ms
     http_req_duration: ['p(95)<500'],
@@ -224,14 +222,12 @@ export default function () {
 
 export function teardown(data) {
   // send notification request to Slack API
-  let event = {
+  const event = {
     text: 'My test just finished!',
   };
-  let res = http.post(
-    'https://hooks.slack.com/services/...',
-    JSON.stringify(event),
-    { headers: { 'Content-Type': 'application/json' } },
-  );
+  const res = http.post('https://hooks.slack.com/services/...', JSON.stringify(event), {
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 ```
 
@@ -241,7 +237,7 @@ En el caso de Microsoft Teams, primero hay que [configurar un conector de webhoo
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   thresholds: {
     // fail the test if 95th percentile response goes above 500ms
     http_req_duration: ['p(95)<500'],
@@ -257,14 +253,12 @@ export default function () {
 
 export function teardown(data) {
   // send notification request to Microsoft Teams API
-  let event = {
+  const event = {
     text: 'My test just finished!',
   };
-  let res = http.post(
-    'https://outlook.office.com/webhook/...',
-    JSON.stringify(event),
-    { headers: { 'Content-Type': 'application/json' } },
-  );
+  const res = http.post('https://outlook.office.com/webhook/...', JSON.stringify(event), {
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 ```
 

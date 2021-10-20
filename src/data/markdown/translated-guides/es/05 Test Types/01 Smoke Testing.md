@@ -21,7 +21,7 @@ Aquí hay un script de prueba de humo relativamente simple para empezar. Puedes 
 import http from 'k6/http';
 import { check, group, sleep, fail } from 'k6';
 
-export let options = {
+export const options = {
   vus: 1, // 1 user looping for 1 minute
   duration: '1m',
 
@@ -35,7 +35,7 @@ const USERNAME = 'TestUser';
 const PASSWORD = 'SuperCroc2020';
 
 export default () => {
-  let loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
+  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
     username: USERNAME,
     password: PASSWORD,
   });
@@ -44,13 +44,13 @@ export default () => {
     'logged in successfully': (resp) => resp.json('access') !== '',
   });
 
-  let authHeaders = {
+  const authHeaders = {
     headers: {
       Authorization: `Bearer ${loginRes.json('access')}`,
     },
   };
 
-  let myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
+  const myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
   check(myObjects, { 'retrieved crocodiles': (obj) => obj.length > 0 });
 
   sleep(1);

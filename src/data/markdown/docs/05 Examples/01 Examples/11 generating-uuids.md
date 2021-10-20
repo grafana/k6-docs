@@ -43,7 +43,7 @@ For this to work, we first need to go through a few required steps:
    <CodeGroup labels={[]} lineNumbers={[false]}>
 
    ```javascript
-   import uuid from "./uuid.js"`
+   import uuid from './uuid.js';
    ```
 
    </CodeGroup>
@@ -57,11 +57,11 @@ import uuid from './uuid.js';
 
 export default function () {
   // Generate a UUID v1
-  let uuid1 = uuid.v1();
+  const uuid1 = uuid.v1();
   console.log(uuid1);
 
   // Generate a UUID v4
-  let uuid4 = uuid.v4();
+  const uuid4 = uuid.v4();
   console.log(uuid4);
 }
 ```

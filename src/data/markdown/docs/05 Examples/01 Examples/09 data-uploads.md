@@ -39,10 +39,10 @@ If you want to open a binary file you need to pass in `"b"` as the second argume
 <CodeGroup labels={["Loading a binary file using open()"]} lineNumbers={[true]}>
 
 ```javascript
-const binFile = open("./image.png", "b");
+const binFile = open('./image.png', 'b');
 
-export default function() {
-    ...
+export default function () {
+  //...
 }
 ```
 
@@ -60,15 +60,15 @@ below):
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-let binFile = open('/path/to/file.bin', 'b');
+const binFile = open('/path/to/file.bin', 'b');
 
 export default function () {
-  var data = {
+  const data = {
     field: 'this is a standard form field',
     file: http.file(binFile, 'test.bin'),
   };
 
-  var res = http.post('https://example.com/upload', data);
+  const res = http.post('https://example.com/upload', data);
   sleep(3);
 }
 ```
@@ -113,7 +113,7 @@ const img1 = open('/path/to/image1.png', 'b');
 const img2 = open('/path/to/image2.jpg', 'b');
 const txt = open('/path/to/text.txt');
 
-export default function() {
+export default function () {
   const fd = new FormData();
   fd.append('someTextField', 'someValue');
   fd.append('anotherTextField', 'anotherValue');
@@ -121,8 +121,9 @@ export default function() {
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
   fd.append('text', http.file(txt, 'text.txt', 'text/plain'));
 
-  const res = http.post('https://httpbin.test.k6.io/post', fd.body(),
-    { headers: { 'Content-Type': 'multipart/form-data; boundary=' + fd.boundary }});
+  const res = http.post('https://httpbin.test.k6.io/post', fd.body(), {
+    headers: { 'Content-Type': 'multipart/form-data; boundary=' + fd.boundary },
+  });
   check(res, {
     'is status 200': (r) => r.status === 200,
   });

@@ -36,7 +36,7 @@ import http from 'k6/http';
 
 http.setResponseCallback(http.expectedStatuses({ min: 200, max: 300 }));
 
-var only300Callback = http.expectedStatuses(300);
+const only300Callback = http.expectedStatuses(300);
 
 export default () => {
   // this will use the default response callback and be marked as successful
