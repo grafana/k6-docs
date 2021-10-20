@@ -34,15 +34,10 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let responses = http.batch([
+  const responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
     ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
-    [
-      'GET',
-      'https://test.k6.io/images/logo.png',
-      null,
-      { tags: { ctype: 'images' } },
-    ],
+    ['GET', 'https://test.k6.io/images/logo.png', null, { tags: { ctype: 'images' } }],
   ]);
   check(responses[0], {
     'main page status was 200': (res) => res.status === 200,
@@ -61,15 +56,10 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let responses = http.batch([
+  const responses = http.batch([
     ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
     ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
-    [
-      'GET',
-      'https://test.k6.io/images/logo.png',
-      null,
-      { tags: { ctype: 'images' } },
-    ],
+    ['GET', 'https://test.k6.io/images/logo.png', null, { tags: { ctype: 'images' } }],
   ]);
   check(responses[0], {
     'main page status was 200': (res) => res.status === 200,
@@ -90,15 +80,15 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let req1 = {
+  const req1 = {
     method: 'GET',
     url: 'https://httpbin.org/get',
   };
-  let req2 = {
+  const req2 = {
     method: 'GET',
     url: 'https://test.k6.io',
   };
-  let req3 = {
+  const req3 = {
     method: 'POST',
     url: 'https://httpbin.org/post',
     body: {
@@ -108,7 +98,7 @@ export default function () {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     },
   };
-  let responses = http.batch([req1, req2, req3]);
+  const responses = http.batch([req1, req2, req3]);
   // httpbin.org should return our POST data in the response body, so
   // we check the third response object to see that the POST worked.
   check(responses[2], {
@@ -132,7 +122,7 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let requests = {
+  const requests = {
     'front page': 'https://k6.io',
     'features page': {
       method: 'GET',
@@ -140,7 +130,7 @@ export default function () {
       params: { headers: { 'User-Agent': 'k6' } },
     },
   };
-  let responses = http.batch(requests);
+  const responses = http.batch(requests);
   // when accessing results, we use the name of the request as index
   // in order to find the corresponding Response object
   check(responses['front page'], {

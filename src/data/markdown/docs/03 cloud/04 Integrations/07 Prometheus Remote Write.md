@@ -29,23 +29,23 @@ The parameters for sending metrics to a Prometheus Remote Write instance are as 
 
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
-          provider: "prometheus",
-          remoteWriteURL: "<Remote Write URL>", 
+          provider: 'prometheus',
+          remoteWriteURL: '<Remote Write URL>',
           // optional parameters
           credentials: {
-            token: "<token>"
+            token: '<token>',
           },
           includeDefaultMetrics: true,
-          metrics: ["http_req_sending", "my_rate", "my_gauge", ...],
+          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], //...other options,
           includeTestRunId: false,
-          resampleRate: 3
+          resampleRate: 3,
         },
-      ]
+      ],
     },
   },
 };
@@ -68,26 +68,21 @@ Currently, the integration only supports bearer token and HTTP basic authenticat
 
 #### HTTP basic authentication
 
-```javascript
-
+```json
 credentials: {
   // The username in HTTP basic authentication
   username: "<username>",
   // The password in HTTP basic authentication
   password: "<password>"
 }
-
 ```
 
 #### Bearer token authentication
-
-```javascript
-
+```json
 credentials: {
   // The bearer token without the prefix/type
   token: "<token>"
 }
-
 ```
 
 ## Run the cloud test

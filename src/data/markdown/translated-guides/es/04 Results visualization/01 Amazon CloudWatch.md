@@ -32,7 +32,7 @@ Suponemos que ya tiene una máquina que soporta tanto la ejecución de k6 como d
 
 4. Configure el agente para recibir datos desde k6. Para ello, crea un fichero llamado "/opt/aws/amazon-cloudwatch-agent/etc/statsd.json" y pega el siguiente objeto de configuración JSON. Esta configuración significa que el agente escuchará en el puerto número 8125, que es el número de puerto por defecto para k6 y StatsD. El intervalo para recoger las métricas es de 5 segundos y no son agregadas, ya que necesitamos los datos en bruto más tarde en CloudWatch.
 
-   ```javascript
+   ```json
    {
        "metrics": {
            "namespace": "k6",

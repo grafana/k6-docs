@@ -27,10 +27,10 @@ import { sleep } from 'k6';
 import { md5 } from 'k6/crypto';
 import http from 'k6/http';
 
-let binFile = open('/path/to/file.bin', 'b');
+const binFile = open('/path/to/file.bin', 'b');
 
 export default function () {
-  let f = http.file(binFile, 'test.bin');
+  const f = http.file(binFile, 'test.bin');
   console.log(md5(f.data, 'hex'));
   console.log(f.filename);
   console.log(f.content_type);

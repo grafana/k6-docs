@@ -34,7 +34,7 @@ En este ejemplo, ejecutaremos 200 iteraciones totales compartidas por 10 VUs con
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {

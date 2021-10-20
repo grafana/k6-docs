@@ -30,9 +30,9 @@ The value of the `rate` variable ranges between `0.00` and `1.00`.
 ```javascript
 import { Rate } from 'k6/metrics';
 
-var myRate = new Rate('my_rate');
+const myRate = new Rate('my_rate');
 
-export default function() {
+export default function () {
   myRate.add(true);
   myRate.add(false);
   myRate.add(1);
@@ -49,21 +49,21 @@ import { Rate } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-let errorRate = new Rate('errorRate');
+const errorRate = new Rate('errorRate');
 
-export let options = {
+export const options = {
   vus: 1,
   duration: '5m',
   thresholds: {
-    'errorRate': [
+    errorRate: [
       // more than 10% of errors will abort the test
-      { threshold: 'rate < 0.1', abortOnFail: true, delayAbortEval: '1m' }
-    ]
-  }
+      { threshold: 'rate < 0.1', abortOnFail: true, delayAbortEval: '1m' },
+    ],
+  },
 };
 
 export default function () {
-  let resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const resp = http.get('https://test-api.k6.io/public/crocodiles/1/');
 
   errorRate.add(resp.status >= 400);
 

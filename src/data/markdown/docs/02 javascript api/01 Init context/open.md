@@ -64,17 +64,17 @@ See the example further down on this page. For a more in-depth description, see 
 <CodeGroup labels={["Loading JSON data with SharedArray to parameterize test"]}>
 
 ```javascript
-import { SharedArray } from "k6/data";
-import { sleep } from "k6";
+import { SharedArray } from 'k6/data';
+import { sleep } from 'k6';
 
-var data = new SharedArray("users", function () {
+const data = new SharedArray('users', function () {
   // here you can open files, and then do additional processing or generate the array with data dynamically
-  var f = JSON.parse(open("./users.json"));
+  const f = JSON.parse(open('./users.json'));
   return f; // f must be an array[]
 });
 
 export default () => {
-  var randomUser = data[Math.floor(Math.random() * data.length)];
+  const randomUser = data[Math.floor(Math.random() * data.length)];
   console.log(`${randomUser.username}, ${randomUser.password}`);
   sleep(3);
 };
@@ -90,7 +90,7 @@ import { sleep } from 'k6';
 const users = JSON.parse(open('./users.json')); // consider using SharedArray for large files
 
 export default function () {
-  let user = users[__VU - 1];
+  const user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
 }
@@ -104,14 +104,14 @@ export default function () {
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-let binFile = open('/path/to/file.bin', 'b');
+const binFile = open('/path/to/file.bin', 'b');
 
 export default function () {
-  var data = {
+  const data = {
     field: 'this is a standard form field',
     file: http.file(binFile, 'test.bin'),
   };
-  var res = http.post('https://example.com/upload', data);
+  const res = http.post('https://example.com/upload', data);
   sleep(3);
 }
 ```

@@ -25,9 +25,9 @@ Function returns a random number between the specified range. The returned value
 
 ```javascript
 import { sleep } from 'k6';
-import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
-export default function() {
+export default function () {
   // code ...
 
   sleep(randomIntBetween(1, 5)); // sleep between 1 and 5 seconds.

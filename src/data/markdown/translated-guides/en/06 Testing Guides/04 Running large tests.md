@@ -69,7 +69,11 @@ Often performance tests are written with a "happy path" in mind.
 For example, a "happy path" check like the one below is something that we see in k6 often.
 
 ```javascript
-let checkRes = check(res, {
+import { check } from 'k6';
+import http from 'k6/http';
+
+const res = http.get('https://test.k6.io');
+const checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body.length === 11026,
 });
 ```
@@ -89,7 +93,11 @@ To fix this issue your checks must be resilient to any response type. This chang
 <CodeGroup labels={["resilient check"]}>
 
 ```javascript
-let checkRes = check(res, {
+import { check } from 'k6';
+import http from 'k6/http';
+
+const res = http.get('https://test.k6.io');
+const checkRes = check(res, {
   'Homepage body size is 11026 bytes': (r) => r.body && r.body.length === 11026,
 });
 ```
@@ -154,7 +162,7 @@ k6 will use about 50-85% of memory in comparison to running the original script.
 You can tell k6 to not process the body of the response by setting `discardResponseBodies` in the options object like this:
 
 ```javascript
-export let options = {
+export const options = {
   discardResponseBodies: true,
 };
 ```

@@ -106,7 +106,7 @@ Si desea acceder a la información de tiempo de una solicitud HTTP individual en
 import http from 'k6/http';
 
 export default function () {
-  var res = http.get('http://httpbin.org');
+  const res = http.get('http://httpbin.org');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
 }
 ```
@@ -133,10 +133,10 @@ También puede crear sus propias métricas, que se informan al final de una prue
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 
-let myTrend = new Trend('waiting_time');
+const myTrend = new Trend('waiting_time');
 
 export default function () {
-  let r = http.get('https://httpbin.org');
+  const r = http.get('https://httpbin.org');
   myTrend.add(r.timings.waiting);
   console.log(myTrend.name); // waiting_time
 }
@@ -181,7 +181,7 @@ Opcionalmente, todos los valores agregados a una métrica personalizada pueden s
 ```javascript
 import { Counter } from 'k6/metrics';
 
-let myCounter = new Counter('my_counter');
+const myCounter = new Counter('my_counter');
 
 export default function () {
   myCounter.add(1);
@@ -217,7 +217,7 @@ Tenga en cuenta que actualmente no hay forma de acceder al valor de ninguna mét
 ```javascript
 import { Gauge } from 'k6/metrics';
 
-let myGauge = new Gauge('my_gauge');
+const myGauge = new Gauge('my_gauge');
 
 export default function () {
   myGauge.add(3);
@@ -252,7 +252,7 @@ El valor de `my_gauge` será 2 al final de la prueba. Al igual que con la métri
 ```javascript
 import { Trend } from 'k6/metrics';
 
-let myTrend = new Trend('my_trend');
+const myTrend = new Trend('my_trend');
 
 export default function () {
   myTrend.add(1);
@@ -287,7 +287,7 @@ De forma predeterminada, k6 imprimirá promedio, mínimo, máximo, mediano, perc
 ```javascript
 import { Rate } from 'k6/metrics';
 
-let myRate = new Rate('my_rate');
+const myRate = new Rate('my_rate');
 
 export default function () {
   myRate.add(true);

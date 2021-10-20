@@ -29,13 +29,13 @@ _A k6 script that will make an HTTP request with a custom HTTP header and tag re
 import http from 'k6/http';
 
 export default function () {
-  let params = {
+  const params = {
     cookies: { my_cookie: 'value' },
     headers: { 'X-MyHeader': 'k6test' },
     redirects: 5,
     tags: { k6test: 'yes' },
   };
-  let res = http.get('https://k6.io', params);
+  const res = http.get('https://k6.io', params);
 }
 ```
 
@@ -50,17 +50,16 @@ Here is another example using [http.batch()](/javascript-api/k6-http/batch-reque
 ```javascript
 import http from 'k6/http';
 
-let url1 = 'https://api.k6.io/v3/account/me';
-let url2 = 'http://httpbin.org/get';
-let apiToken =
-  'f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195';
-let requestHeaders = {
+const url1 = 'https://api.k6.io/v3/account/me';
+const url2 = 'http://httpbin.org/get';
+const apiToken = 'f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195';
+const requestHeaders = {
   'User-Agent': 'k6',
-  Authorization: 'Token ' + apiToken,
+  'Authorization': 'Token ' + apiToken,
 };
 
 export default function () {
-  let res = http.batch([
+  const res = http.batch([
     { method: 'GET', url: url1, params: { headers: requestHeaders } },
     { method: 'GET', url: url2 },
   ]);
@@ -81,10 +80,9 @@ import { check } from 'k6';
 
 export default function () {
   // Passing username and password as part of URL plus the auth option will authenticate using HTTP Digest authentication
-  let res = http.get(
-    'http://user:passwd@httpbin.org/digest-auth/auth/user/passwd',
-    { auth: 'digest' },
-  );
+  const res = http.get('http://user:passwd@httpbin.org/digest-auth/auth/user/passwd', {
+    auth: 'digest',
+  });
 
   // Verify response
   check(res, {
@@ -104,7 +102,7 @@ export default function () {
 ```javascript
 import http from 'k6/http';
 
-export var options = { discardResponseBodies: true };
+export const options = { discardResponseBodies: true };
 export default function () {}
 export function setup() {
   // Get 10 random bytes as an ArrayBuffer. Without the responseType the body
@@ -114,7 +112,7 @@ export function setup() {
   });
   // response.body is an ArrayBuffer, so wrap it in a typed array view to access
   // its elements.
-  let bodyView = new Uint8Array(response.body);
+  const bodyView = new Uint8Array(response.body);
   // This will output something like `176,61,15,66,233,98,223,196,43,1`
   console.log(bodyView);
 }

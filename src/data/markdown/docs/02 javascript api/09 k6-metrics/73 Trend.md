@@ -46,9 +46,9 @@ The unit of these variables and functions are all in milliseconds.
 ```javascript
 import { Trend } from 'k6/metrics';
 
-var myTrend = new Trend('my_trend');
+const myTrend = new Trend('my_trend');
 
-export default function() {
+export default function () {
   myTrend.add(1);
   myTrend.add(2, { tag1: 'value', tag2: 'value2' });
 }
@@ -63,20 +63,21 @@ import { Trend } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-let serverWaitingTimeOnLogin = new Trend('serverWaitingTimeOnLogin', true);
+const serverWaitingTimeOnLogin = new Trend('serverWaitingTimeOnLogin', true);
 
-export let options = {
+export const options = {
   vus: 1,
   duration: '1m',
   thresholds: {
-    'serverWaitingTimeOnLogin': [
-      'p(95) < 200',
-    ],
-  }
+    serverWaitingTimeOnLogin: ['p(95) < 200'],
+  },
 };
 
 export default function () {
-  let resp = http.post('https://test-api.k6.io/auth/token/login/', { username: 'test-user', 'password': 'supersecure' });
+  const resp = http.post('https://test-api.k6.io/auth/token/login/', {
+    username: 'test-user',
+    password: 'supersecure',
+  });
 
   serverWaitingTimeOnLogin.add(resp.timings.waiting);
   sleep(1);

@@ -25,9 +25,9 @@ A continuación se muestra un script de ejemplo que especifica dos thresholds, u
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   thresholds: {
-    http_req_failed: ['rate<0.01'],   // http errors should be less than 1% 
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
   },
 };
@@ -69,7 +69,7 @@ La forma más rápida de empezar con los thresholds es utilizar las métricas es
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   thresholds: {
     // 90% of requests must finish within 400ms.
     http_req_duration: ['p(90) < 400'],
@@ -77,7 +77,7 @@ export let options = {
 };
 
 export default function () {
-  let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
   sleep(1);
 }
 ```
@@ -90,7 +90,7 @@ export default function () {
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   thresholds: {
     // During the whole test execution, the error rate must be lower than 1%.
     // `http_req_failed` metric is available since v0.31.0
@@ -115,7 +115,7 @@ export default function () {
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   thresholds: {
     // 90% of requests must finish within 400ms, 95% within 800, and 99.9% within 2s.
     http_req_duration: ['p(90) < 400', 'p(95) < 800', 'p(99.9) < 2000'],
@@ -123,7 +123,7 @@ export let options = {
 };
 
 export default function () {
-  let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
   sleep(1);
 }
 ```
@@ -138,7 +138,7 @@ export default function () {
 import http from 'k6/http';
 import { group, sleep } from 'k6';
 
-export let options = {
+export const options = {
   thresholds: {
     'group_duration{group:::individualRequests}': ['avg < 200'],
     'group_duration{group:::batchRequests}': ['avg < 200'],
@@ -175,11 +175,17 @@ Los thresholds pueden especificarse en formato corto o completo.
 <CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
-    metric_name1: [ 'threshold_expression', ... ], // short format
-    metric_name1: [ { threshold: 'threshold_expression', abortOnFail: boolean, delayAbortEval: string }, ], // full format
-  }
+    metric_name1: ['threshold_expression' /* ...*/], // short format
+    metric_name1: [
+      {
+        threshold: 'threshold_expression',
+        abortOnFail: true, // boolean
+        delayAbortEval: '10s', // string
+      },
+    ], // full format
+  },
 };
 ```
 
@@ -216,22 +222,22 @@ import http from 'k6/http';
 import { Trend, Rate, Counter, Gauge } from 'k6/metrics';
 import { sleep } from 'k6';
 
-export let TrendRTT = new Trend('RTT');
-export let RateContentOK = new Rate('Content OK');
-export let GaugeContentSize = new Gauge('ContentSize');
-export let CounterErrors = new Counter('Errors');
-export let options = {
+export const TrendRTT = new Trend('RTT');
+export const RateContentOK = new Rate('Content OK');
+export const GaugeContentSize = new Gauge('ContentSize');
+export const CounterErrors = new Counter('Errors');
+export const options = {
   thresholds: {
-    RTT: ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
+    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
     'Content OK': ['rate>0.95'],
-    ContentSize: ['value<4000'],
-    Errors: ['count<100'],
+    'ContentSize': ['value<4000'],
+    'Errors': ['count<100'],
   },
 };
 
 export default function () {
-  let res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  let contentOK = res.json('name') === 'Bert';
+  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const contentOK = res.json('name') === 'Bert';
 
   TrendRTT.add(res.timings.duration);
   RateContentOK.add(contentOK);
@@ -263,7 +269,7 @@ Tenemos estos thresholds:
 A menudo es útil especificar thresholds sólo en una única URL o en una etiqueta específica. En k6, las solicitudes etiquetadas crean sub métricas que pueden utilizarse en los thresholds, como se muestra a continuación.
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
     'metric_name{tag_name:tag_value}': ['threshold_expression'],
   },
@@ -279,7 +285,7 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 import { Rate } from 'k6/metrics';
 
-export let options = {
+export const options = {
   thresholds: {
     'http_req_duration{type:API}': ['p(95)<500'], // threshold on API requests only
     'http_req_duration{type:staticContent}': ['p(95)<200'], // threshold on static content only
@@ -287,20 +293,15 @@ export let options = {
 };
 
 export default function () {
-  let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/', {
+  const res1 = http.get('https://test-api.k6.io/public/crocodiles/1/', {
     tags: { type: 'API' },
   });
-  let res2 = http.get('https://test-api.k6.io/public/crocodiles/2/', {
+  const res2 = http.get('https://test-api.k6.io/public/crocodiles/2/', {
     tags: { type: 'API' },
   });
 
-  let responses = http.batch([
-    [
-      'GET',
-      'https://test-api.k6.io/static/favicon.ico',
-      null,
-      { tags: { type: 'staticContent' } },
-    ],
+  const responses = http.batch([
+    ['GET', 'https://test-api.k6.io/static/favicon.ico', null, { tags: { type: 'staticContent' } }],
     [
       'GET',
       'https://test-api.k6.io/static/css/site.css',
@@ -323,10 +324,17 @@ Si desea abortar una prueba en cuanto se cruza un threshold, antes de que la pru
 <CodeGroup labels={["threshold-abort.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
-    metric_name: [ { threshold: string, abortOnFail: boolean, delayAbortEval: string }, ... ],
-  }
+    metric_name: [
+      {
+        threshold: 'p(99) < 10', // string
+        abortOnFail: true, // boolean
+        delayAbortEval: '10s', // string
+        /*...*/
+      },
+    ],
+  },
 };
 ```
 
@@ -347,11 +355,11 @@ A continuación un ejemplo:
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   vus: 30,
   duration: '2m',
   thresholds: {
-    http_req_duration: [{threshold: 'p(99) < 10', abortOnFail: true}]
+    http_req_duration: [{ threshold: 'p(99) < 10', abortOnFail: true }],
   },
 };
 
@@ -380,7 +388,7 @@ A menudo puede ser útil combinar checks y thresholds, para obtener lo mejor de 
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-export let options = {
+export const options = {
   vus: 50,
   duration: '10s',
   thresholds: {
@@ -413,7 +421,7 @@ Además, puede utilizar etiquetas en los controles si desea definir un threshold
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-export let options = {
+export const options = {
   vus: 50,
   duration: '10s',
   thresholds: {
@@ -435,7 +443,7 @@ export default function () {
     {
       'status is 200': (r) => r.status == 200,
     },
-    { myTag: 'hola' },
+    { myTag: 'hola' }
   );
 
   sleep(1);

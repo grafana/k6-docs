@@ -25,25 +25,25 @@ See [Client.close()](/javascript-api/k6-net-grpc/client/client-close) to close t
 <div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
 
 ```javascript
-import grpc from "k6/net/grpc";
+import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
 
 export default () => {
-    client.connect("localhost:8080");
-}
+  client.connect('localhost:8080');
+};
 ```
 </div>
 
 <div class="code-group" data-props='{"labels": ["Insecure connection"], "lineNumbers": [true]}'>
 
 ```javascript
-import grpc from "k6/net/grpc";
+import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
 
 export default () => {
-    client.connect("localhost:8080", { plaintext: true });
-}
+  client.connect('localhost:8080', { plaintext: true });
+};
 ```
 </div>

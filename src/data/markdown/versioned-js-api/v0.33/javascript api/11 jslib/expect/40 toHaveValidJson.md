@@ -25,11 +25,14 @@ import http from 'k6/http';
 
 export default function testSuite() {
   describe('Basic test', (t) => {
-    let response = http.get("https://test-api.k6.io/public/crocodiles")
-    
-    t.expect(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(5);
-  })
+    const response = http.get('https://test-api.k6.io/public/crocodiles');
+
+    t.expect(response)
+      .toHaveValidJson()
+      .and(response.json().length)
+      .as('number of crocs')
+      .toBeGreaterThan(5);
+  });
 }
 ```
 

@@ -77,8 +77,7 @@ export default function () {
   });
 
   check(res, {
-    'cookie has correct value': (r) =>
-      r.cookies.my_cookie[0].value === 'hello world 2',
+    'cookie has correct value': (r) => r.cookies.my_cookie[0].value === 'hello world 2',
   });
 }
 ```
@@ -96,14 +95,10 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get(
-    'https://httpbin.org/cookies/set?my_cookie=hello%20world',
-    { redirects: 0 },
-  );
+  const res = http.get('https://httpbin.org/cookies/set?my_cookie=hello%20world', { redirects: 0 });
   check(res, {
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie.length > 0,
-    'cookie has correct value': (r) =>
-      r.cookies.my_cookie[0].value === 'hello world',
+    'cookie has correct value': (r) => r.cookies.my_cookie[0].value === 'hello world',
   });
 }
 ```
@@ -139,12 +134,9 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let res = http.get(
-    'https://httpbin.org/cookies/set?my_cookie=hello%20world',
-    { redirects: 0 },
-  );
-  let jar = http.cookieJar();
-  let cookies = jar.cookiesForURL('http://httpbin.org/');
+  const res = http.get('https://httpbin.org/cookies/set?my_cookie=hello%20world', { redirects: 0 });
+  const jar = http.cookieJar();
+  const cookies = jar.cookiesForURL('http://httpbin.org/');
   check(res, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
@@ -167,19 +159,18 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let jar = http.cookieJar();
+  const jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
     domain: 'httpbin.org',
     path: '/cookies',
     secure: true,
     max_age: 600,
   });
-  let res = http.get('https://httpbin.org/cookies');
+  const res = http.get('https://httpbin.org/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
-    'cookie has correct value': (r) =>
-      r.cookies.my_cookie[0].value == 'hello world',
+    'cookie has correct value': (r) => r.cookies.my_cookie[0].value == 'hello world',
   });
 }
 ```
@@ -206,20 +197,14 @@ export default function () {
     secure: true,
     max_age: 600,
   };
-  jar.set(
-    'https://httpbin.org/cookies',
-    'my_cookie',
-    'hello world',
-    cookieOptions,
-  );
+  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', cookieOptions);
 
   // Override per-VU jar with local jar for the following request
-  let res = http.get('https://httpbin.org/cookies', { jar });
+  const res = http.get('https://httpbin.org/cookies', { jar });
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
-    'cookie has correct value': (r) =>
-      r.cookies.my_cookie[0].value == 'hello world',
+    'cookie has correct value': (r) => r.cookies.my_cookie[0].value == 'hello world',
   });
 }
 ```
@@ -248,10 +233,10 @@ function logCookie(c) {
   console.log(output);
 }
 export default function () {
-  let res = http.get('https://www.google.com/');
+  const res = http.get('https://www.google.com/');
 
   // Method 1: Use for-loop and check for non-inherited properties
-  for (var name in res.cookies) {
+  for (const name in res.cookies) {
     if (res.cookies.hasOwnProperty(name) !== undefined) {
       logCookie(res.cookies[name][0]);
     }

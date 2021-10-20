@@ -25,7 +25,6 @@ Run code inside a group. Groups are used to organize results in a test.
 import { group } from 'k6';
 
 export default function () {
-
   group('visit product listing page', function () {
     // ...
   });
@@ -41,8 +40,6 @@ export default function () {
   group('checkout process', function () {
     // ...
   });
-
-}
 }
 ```
 

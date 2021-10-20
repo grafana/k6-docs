@@ -56,7 +56,7 @@ import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // random email address
 const PASSWORD = 'superCroc2021';
 
-let session = new Httpx({
+const session = new Httpx({
   baseURL: 'https://test-api.k6.io',
   headers: {
     'User-Agent': 'My custom user agent',
@@ -66,7 +66,7 @@ let session = new Httpx({
 });
 
 export default function testSuite() {
-  let registrationResp = session.post(`/user/register/`, {
+  const registrationResp = session.post(`/user/register/`, {
     first_name: 'Crocodile',
     last_name: 'Owner',
     username: USERNAME,
@@ -77,7 +77,7 @@ export default function testSuite() {
     fail('registration failed');
   }
 
-  let loginResp = session.post(`/auth/token/login/`, {
+  const loginResp = session.post(`/auth/token/login/`, {
     username: USERNAME,
     password: PASSWORD,
   });
@@ -86,19 +86,19 @@ export default function testSuite() {
     fail('Authentication failed');
   }
 
-  let authToken = loginResp.json('access');
+  const authToken = loginResp.json('access');
 
   // set the authorization header on the session for the subsequent requests.
   session.addHeader('Authorization', `Bearer ${authToken}`);
 
-  let payload = {
+  const payload = {
     name: `Croc Name`,
     sex: 'M',
     date_of_birth: '2019-01-01',
   };
 
   // this request uses the Authorization header set above.
-  let respCreateCrocodile = session.post(`/my/crocodiles/`, payload);
+  const respCreateCrocodile = session.post(`/my/crocodiles/`, payload);
 
   if (respCreateCrocodile.status !== 201) {
     fail('Crocodile creation failed');

@@ -17,16 +17,16 @@ excerpt: 'adds multiple headers to the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx();
+const session = new Httpx();
 
 session.addHeaders({
   'Authorization': 'token1',
-  'User-Agent': "My custom user agent",
-  "Content-Type": 'application/x-www-form-urlencoded' 
+  'User-Agent': 'My custom user agent',
+  'Content-Type': 'application/x-www-form-urlencoded',
 });
 
 export default function () {
-  session.get('https://test-api.k6.io/public/crocodiles/1/'); 
+  session.get('https://test-api.k6.io/public/crocodiles/1/');
 }
 ```
 

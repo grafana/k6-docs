@@ -18,12 +18,12 @@ excerpt: 'adds a header to the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx({baseURL: 'https://test-api.k6.io'});
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
 session.addHeader('Authorization', 'token1');
 
 export default function () {
-  session.get('/public/crocodiles/1/'); 
+  session.get('/public/crocodiles/1/');
 }
 ```
 

@@ -23,13 +23,13 @@ Function returns a random item from an array.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { randomItem } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { randomItem } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
 
-let names = ['John', 'Jane', 'Bert', 'Ed'];
+const names = ['John', 'Jane', 'Bert', 'Ed'];
 
-export default function() {
-  let randomName = randomItem(names);
-  console.log(`Hello, my name is ${randomName}`)
+export default function () {
+  const randomName = randomItem(names);
+  console.log(`Hello, my name is ${randomName}`);
 }
 ```
 

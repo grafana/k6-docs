@@ -19,12 +19,12 @@ import ws from 'k6/ws';
 const binFile = open('./file.pdf', 'b');
 
 export default function () {
-  ws.connect('http://wshost/', function(socket) {
-    socket.on('open', function() {
+  ws.connect('http://wshost/', function (socket) {
+    socket.on('open', function () {
       socket.sendBinary(binFile);
     });
 
-    socket.on('binaryMessage', function(msg) {
+    socket.on('binaryMessage', function (msg) {
       // msg is an ArrayBuffer, so we can wrap it in a typed array directly.
       new Uint8Array(msg);
     });

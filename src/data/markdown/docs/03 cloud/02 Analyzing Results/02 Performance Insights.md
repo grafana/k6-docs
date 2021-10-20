@@ -74,7 +74,9 @@ In the following example, our query parameter would produce large number of URL 
 <CodeGroup labels={["Using a name tag to aggregate URLs"]}>
 
 ```javascript
-for (var id = 1; id <= 600; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 600; id++) {
   http.get(`http://test.k6.io/?ts=${id}`);
 }
 // But you can group all these URL metrics together
@@ -82,7 +84,7 @@ for (var id = 1; id <= 600; id++) {
 // making it easier for you to interpret the data.
 // Note that you must use the name tag for grouping.
 
-for (var id = 1; id <= 600; id++) {
+for (let id = 1; id <= 600; id++) {
   http.get(`http://test.k6.io/?ts=${id}`, {
     tags: { name: 'test.k6.io?ts' },
   });
@@ -137,18 +139,19 @@ The following example shows how custom metrics can be misused:
 <CodeGroup labels={["Using custom metrics to count successful requests"]}>
 
 ```javascript
-import { Counter } from "k6/metrics";
+import { Counter } from 'k6/metrics';
+import http from 'k6/http';
 
-let successCounts = []
+const successCounts = [];
 for (let id = 1; id <= 1000; id++) {
   successCounts.push(new Counter(`successCount_${id}`));
 }
 for (let id = 1; id <= 1000; id++) {
-  let response = http.get(`http://test.k6.io/?ts=${id}`);
-  successCounts[i].add(response.status === 200);
+  const response = http.get(`http://test.k6.io/?ts=${id}`);
+  successCounts[id].add(response.status === 200);
 }
 // k6 can count responses by status codes on its own.
-// Additionally, URLs should be grouped as it's shown 
+// Additionally, URLs should be grouped as it's shown
 // in Too Many URLs alert example.
 ```
 
@@ -194,7 +197,7 @@ It is possible to prevent one or more insights from showing up when executing lo
 
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       insights: {
@@ -208,7 +211,7 @@ export let options = {
 When `disabled` array is provided, all insights in it will be skipped when displaying result analysis. In contrast, you can provide a list of **enabled** insights which excludes all other insights from analysis.
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       insights: {
@@ -224,7 +227,7 @@ In the above example only one insight will potentially be shown (given the scrip
 It is also possible to enable/disable multiple insights by their category (also called "set"). To achieve this, specify the `enabledSets`/`disabledSets` array in the `insights` object.
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       insights: {
@@ -238,7 +241,7 @@ export let options = {
 Or alternatively:
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       insights: {

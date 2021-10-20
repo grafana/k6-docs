@@ -16,7 +16,7 @@ Esta opción está disponible para todos los `executors`, excepto `externally-co
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     contacts: {
@@ -29,7 +29,7 @@ export let options = {
 };
 
 export default function () {
-  let delay = Math.floor(Math.random() * 5) + 1;
+  const delay = Math.floor(Math.random() * 5) + 1;
   http.get(`https://httpbin.test.k6.io/delay/${delay}`);
 }
 ```

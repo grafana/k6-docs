@@ -27,13 +27,13 @@ Una solicitud algo más compleja podría ser por ejemplo, una solicitud POST par
 import http from 'k6/http';
 
 export default function () {
-  var url = 'http://test.k6.io/login';
-  var payload = JSON.stringify({
+  const url = 'http://test.k6.io/login';
+  const payload = JSON.stringify({
     email: 'aaa',
     password: 'bbb',
   });
 
-  var params = {
+  const params = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -107,7 +107,9 @@ Por defecto, las peticiones informan el nombre de la etiqueta con el valor de la
 <CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`);
 }
 
@@ -122,7 +124,9 @@ Puede agregar datos de URLs dinámicas estableciendo explícitamente una etiquet
 <CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`, {
     tags: { name: 'PostsItemURL' },
   });
@@ -180,7 +184,9 @@ Además, también puede utilizar el “wrapper”  `http.url` para establecer el
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(http.url`http://example.com/posts/${id}`);
 }
 

@@ -17,12 +17,12 @@ excerpt: 'removes tag from the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx({tags: {'tagName': 'tagValue'}});
+const session = new Httpx({ tags: { tagName: 'tagValue' } });
 
 session.clearTag('tagName'); // removes tag set in the constructor
 
 export default function () {
-  session.get('https://test-api.k6.io/public/crocodiles/1/'); 
+  session.get('https://test-api.k6.io/public/crocodiles/1/');
 }
 ```
 

@@ -24,7 +24,7 @@ URLs that contain dynamic parts can introduce a large number of unique URLs in t
 import http from 'k6/http';
 
 export default function () {
-  for (var id = 1; id <= 100; id++) {
+  for (let id = 1; id <= 100; id++) {
     // tags.name="https://test.k6.io?id=${}",
     http.get(http.url`https://test.k6.io?id=${id}`);
   }

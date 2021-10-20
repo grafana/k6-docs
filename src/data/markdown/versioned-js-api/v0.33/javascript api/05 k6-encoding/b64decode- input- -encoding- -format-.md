@@ -32,19 +32,19 @@ import { check } from 'k6';
 import encoding from 'k6/encoding';
 
 export default function () {
-  let str = 'hello world';
-  let enc = 'aGVsbG8gd29ybGQ=';
-  let expBin = new Uint8Array([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]);
+  const str = 'hello world';
+  const enc = 'aGVsbG8gd29ybGQ=';
+  const expBin = new Uint8Array([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]);
   check(null, {
     'is decoding to string correct': () => encoding.b64decode(enc, 'std', 's') === str,
     'is decoding to ArrayBuffer correct': () => {
-      let decBin = new Uint8Array(encoding.b64decode(enc));
+      const decBin = new Uint8Array(encoding.b64decode(enc));
       if (decBin.length != expBin.length) return false;
-      for (let i=0; i<decBin.length; i++) {
+      for (let i = 0; i < decBin.length; i++) {
         if (decBin[i] !== expBin[i]) return false;
       }
       return true;
-    }
+    },
   });
 }
 ```

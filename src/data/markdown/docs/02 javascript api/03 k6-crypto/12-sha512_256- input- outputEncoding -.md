@@ -28,7 +28,7 @@ import crypto from 'k6/crypto';
 export default function () {
   let hash = crypto.sha512_256('hello world!', 'hex');
   console.log(hash);
-  let binArray = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33];
+  const binArray = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33];
   hash = crypto.sha512_256(new Uint8Array(binArray).buffer, 'hex');
   console.log(hash);
 }

@@ -33,13 +33,13 @@ Suppose you want to load test your login endpoint to see how many requests it ca
 import http from 'k6/http';
 
 export default function () {
-  var url = 'http://api.yourplatform.com/login';
-  var payload = JSON.stringify({
+  const url = 'http://api.yourplatform.com/login';
+  const payload = JSON.stringify({
     email: 'johndoe@example.com',
     password: 'PASSWORD',
   });
 
-  var params = {
+  const params = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -69,7 +69,7 @@ As you can see, this is a fairly normal, yet simple, user flow that tries to mim
 import http from 'k6/http';
 import { check, group, sleep } from 'k6';
 
-let options = {
+const options = {
   vus: 1000,
   duration: '600s',
 };
@@ -80,7 +80,7 @@ export default function () {
     username: 'user_' + __ITER,
     password: 'PASSWORD',
   });
-  let params = {
+  const params = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -91,11 +91,7 @@ export default function () {
 
   group('simple user journey', (_) => {
     // Login request
-    let login_response = http.post(
-      'http://api.yourplatform.com/v2/login',
-      body,
-      params,
-    );
+    const login_response = http.post('http://api.yourplatform.com/v2/login', body, params);
     check(login_response, {
       'is status 200': (r) => r.status === 200,
       'is api key present': (r) => r.json().hasOwnProperty('api_key'),
@@ -105,9 +101,9 @@ export default function () {
 
     // Get user profile request
     params.tags.name = 'get-user-profile';
-    let user_profile_response = http.get(
+    const user_profile_response = http.get(
       'http://api.yourplatform.com/v2/users/user_' + __ITER + '/profile',
-      params,
+      params
     );
     sleep(SLEEP_DURATION);
 
@@ -116,19 +112,16 @@ export default function () {
       first_name: 'user_' + __ITER,
     });
     params.tags.name = 'update-user-profile';
-    let update_profile_response = http.post(
+    const update_profile_response = http.post(
       'http://api.yourplatform.com/v2/users/user_' + __ITER + '/profile',
       body,
-      params,
+      params
     );
     sleep(SLEEP_DURATION);
 
     // Logout request
     params.tags.name = 'logout';
-    let logout_response = http.get(
-      'http://api.yourplatform.com/v2/logout',
-      params,
-    );
+    const logout_response = http.get('http://api.yourplatform.com/v2/logout', params);
     sleep(SLEEP_DURATION);
   });
 }
@@ -219,7 +212,9 @@ By default, k6 will print runtime information and general results to standard ou
 Sometimes you need to make lots of similar API requests to read or create many resources of the same type. As shown in the following example, a 100 posts will be fetched with unique requests. Each of these requests will create a metric and will have the full URL inside the metric. This poses a problem for data aggregation, either on our cloud platform or on your own API load testing stack. The problem is that all the metrics for each of these URLs will be separate and they'll be aggregated individually, because they are different in their `id` field. It also creates a lot of unnecessary records in the output.
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`);
 }
 
@@ -230,7 +225,9 @@ for (var id = 1; id <= 100; id++) {
 There's a way to prevent creating a lot of metrics for the same URL. It's called [URL grouping](/using-k6/http-requests#section-url-grouping), and by using it you'll avoid creating separate metrics for the same URL. It is just a matter of using a tag that you should add to your requests' [parameters](/javascript-api/k6-http/params).
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`, {
     tags: { name: 'PostsItemURL' },
   });

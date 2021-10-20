@@ -29,8 +29,9 @@ En este ejemplo, ejecutaremos 10 VUs constantemente durante una duración de 45 
 
 ```javascript
 import http from 'k6/http';
+import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
   scenarios: {
     my_awesome_api_test: {

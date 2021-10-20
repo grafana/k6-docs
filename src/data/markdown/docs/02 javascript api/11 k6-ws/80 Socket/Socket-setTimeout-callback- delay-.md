@@ -20,8 +20,8 @@ import { sleep } from 'k6';
 
 export default function () {
   console.log('T0: Script started');
-  var url = 'ws://echo.websocket.org';
-  var response = ws.connect(url, null, function (socket) {
+  const url = 'ws://echo.websocket.org';
+  const response = ws.connect(url, null, function (socket) {
     console.log('T0: Entered WebSockets run loop');
     socket.setTimeout(function () {
       console.log('T0+1: This is printed');

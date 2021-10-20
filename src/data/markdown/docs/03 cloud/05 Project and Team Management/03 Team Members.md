@@ -39,7 +39,7 @@ Then, within the modal window, enter their email address and select a role for t
 <CodeGroup labels={[]}>
 
 ```javascript
-export let options = {
+export const options = {
   // Truncated for brevity
   ext: {
     loadimpact: {

@@ -21,19 +21,18 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  let jar = http.cookieJar();
+  const jar = http.cookieJar();
   jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
     domain: 'httpbin.org',
     path: '/cookies',
     secure: true,
     max_age: 600,
   });
-  let res = http.get('https://httpbin.org/cookies');
+  const res = http.get('https://httpbin.org/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
-    'cookie has correct value': (r) =>
-      r.json().cookies.my_cookie == 'hello world',
+    'cookie has correct value': (r) => r.json().cookies.my_cookie == 'hello world',
   });
 }
 ```

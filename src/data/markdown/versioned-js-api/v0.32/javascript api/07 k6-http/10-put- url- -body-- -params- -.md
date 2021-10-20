@@ -29,7 +29,7 @@ export default function () {
   const headers = { 'Content-Type': 'application/json' };
   const data = { name: 'Bert' };
 
-  let res = http.put(url, JSON.stringify(data), { headers: headers });
+  const res = http.put(url, JSON.stringify(data), { headers: headers });
 
   console.log(JSON.parse(res.body).json.name);
 }

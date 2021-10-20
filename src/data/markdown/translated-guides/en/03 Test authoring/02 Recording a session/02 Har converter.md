@@ -102,7 +102,7 @@ k6 run --vus 10 --duration 30s loadtest.js
 2 - The options of the script file.
 
 ```javascript
-export let options = {
+export const options = {
   vus: 10,
   duration: '30s',
 };

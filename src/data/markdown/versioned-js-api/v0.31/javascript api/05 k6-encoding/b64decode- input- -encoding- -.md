@@ -26,8 +26,8 @@ import { check } from 'k6';
 import encoding from 'k6/encoding';
 
 export default function () {
-  let str = 'hello world';
-  let enc = 'aGVsbG8gd29ybGQ=';
+  const str = 'hello world';
+  const enc = 'aGVsbG8gd29ybGQ=';
   check(null, {
     'is encoding correct': () => encoding.b64encode(str) === enc,
     'is decoding correct': () => encoding.b64decode(enc) === str,

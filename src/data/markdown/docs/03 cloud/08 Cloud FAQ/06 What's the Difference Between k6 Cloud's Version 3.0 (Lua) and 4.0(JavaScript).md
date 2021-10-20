@@ -45,7 +45,7 @@ In the 4.0 product the equivalent configuration options are specified in the scr
 <CodeGroup labels={["k6 Cloud V4 options:"]}>
 
 ```javascript
-export let options = {
+export const options = {
   // Stages represents the traffic ramping profile that will be used in the test,
   // controlling the VU concurrency throughout the duration of the test
   stages: [
@@ -201,6 +201,8 @@ http.page_end("My page")
 
 ```javascript
 import http from 'k6/http';
+import { group } from 'k6';
+
 export default function () {
   group('My page', function () {
     http.get('https://httpbin.org/');
@@ -258,7 +260,7 @@ more info here: [open](/javascript-api/init-context/open-filepath-mode)
 import { sleep } from 'k6';
 const users = JSON.parse(open('./users.json'));
 export default function () {
-  let user = users[__VU - 1];
+  const user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
 }
@@ -271,7 +273,7 @@ export default function () {
 <CodeGroup labels={["userData.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let users = [
+export const users = [
   {
     username: 'user1',
     password: 'password1',
@@ -297,7 +299,7 @@ export let users = [
 import { sleep } from 'k6';
 import { users } from './userData.js';
 export default function () {
-  let user = users[__VU - 1];
+  const user = users[__VU - 1];
   console.log(`${user.username}, ${user.password}`);
   sleep(3);
 }
@@ -321,10 +323,10 @@ result.custom_metric("time_to_first_byte", res.time_to_first_byte)
 import { group } from 'k6';
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
-let ttfbMetric = new Trend('time_to_first_byte');
+const ttfbMetric = new Trend('time_to_first_byte');
 export default function () {
   group('My page', function () {
-    let res = http.get('https://httpbin.org/');
+    const res = http.get('https://httpbin.org/');
     ttfbMetric.add(res.timings.waiting);
   });
 }

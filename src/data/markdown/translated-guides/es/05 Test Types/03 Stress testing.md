@@ -45,7 +45,7 @@ Usted puede crear fácilmente una prueba de estrés en k6 configurando adecuadam
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   stages: [
     { duration: '2m', target: 100 }, // below normal load
     { duration: '5m', target: 100 },
@@ -62,31 +62,11 @@ export let options = {
 export default function () {
   const BASE_URL = 'https://test-api.k6.io'; // make sure this is not production
 
-  let responses = http.batch([
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/1/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/2/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/3/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/4/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
+  const responses = http.batch([
+    ['GET', `${BASE_URL}/public/crocodiles/1/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/2/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/3/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/4/`, null, { tags: { name: 'PublicCrocs' } }],
   ]);
 
   sleep(1);
@@ -145,7 +125,7 @@ He aquí un ejemplo de configuración de script para una prueba de picos.
 import http from 'k6/http';
 import { sleep } from 'k6';
 
-export let options = {
+export const options = {
   stages: [
     { duration: '10s', target: 100 }, // below normal load
     { duration: '1m', target: 100 },
@@ -159,31 +139,11 @@ export let options = {
 export default function () {
   const BASE_URL = 'https://test-api.k6.io'; // make sure this is not production
 
-  let responses = http.batch([
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/1/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/2/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/3/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
-    [
-      'GET',
-      `${BASE_URL}/public/crocodiles/4/`,
-      null,
-      { tags: { name: 'PublicCrocs' } },
-    ],
+  const responses = http.batch([
+    ['GET', `${BASE_URL}/public/crocodiles/1/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/2/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/3/`, null, { tags: { name: 'PublicCrocs' } }],
+    ['GET', `${BASE_URL}/public/crocodiles/4/`, null, { tags: { name: 'PublicCrocs' } }],
   ]);
 
   sleep(1);

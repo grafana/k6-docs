@@ -18,10 +18,10 @@ excerpt: 'Params is an object used by the gRPC methods that generate RPC request
 <div class="code-group" data-props='{"labels": []}'>
 
 ```javascript
-import grpc from "k6/net/grpc";
+import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
-client.load([], "route_guide.proto");
+client.load([], 'route_guide.proto');
 
 export default function () {
   const req = {
@@ -29,10 +29,10 @@ export default function () {
     longitude: -747127767,
   };
   const params = {
-    headers: { "x-my-header": "k6test" },
-    tags: { k6test: "yes" },
+    headers: { 'x-my-header': 'k6test' },
+    tags: { k6test: 'yes' },
   };
-  const response = client.invoke("main.RouteGuide/GetFeature", req, params);
+  const response = client.invoke('main.RouteGuide/GetFeature', req, params);
 }
 ```
 

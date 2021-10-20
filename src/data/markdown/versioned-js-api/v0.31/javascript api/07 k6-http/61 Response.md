@@ -57,8 +57,8 @@ import { check } from 'k6';
 import http from 'k6/http';
 
 export default function () {
-  let res = http.get('https://k6.io');
-  for (var p in res.headers) {
+  const res = http.get('https://k6.io');
+  for (const p in res.headers) {
     if (res.headers.hasOwnProperty(p)) {
       console.log(p + ' : ' + res.headers[p]);
     }

@@ -14,7 +14,7 @@ Limitar las versiones de SSL/TLS que k6 podrá utilizar durante una prueba es un
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   tlsVersion: http.TLS_1_2,
 };
 
@@ -32,7 +32,7 @@ o elegir aceptar un rango de versiones de SSL/TLS:
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   tlsVersion: {
     min: http.SSL_3_0,
     max: http.TLS_1_2,
@@ -65,10 +65,7 @@ La limitación de los conjuntos de cifrado que k6 puede utilizar durante una pru
 import http from 'k6/http';
 
 export const options = {
-  tlsCipherSuites: [
-    'TLS_RSA_WITH_RC4_128_SHA',
-    'TLS_RSA_WITH_AES_128_GCM_SHA256',
-  ],
+  tlsCipherSuites: ['TLS_RSA_WITH_RC4_128_SHA', 'TLS_RSA_WITH_AES_128_GCM_SHA256'],
 };
 
 export default function () {
@@ -92,8 +89,7 @@ export default function () {
   const res = http.get('https://sha256.badssl.com');
   check(res, {
     'is TLSv1.2': (r) => r.tls_version === http.TLS_1_2,
-    'is sha256 cipher suite': (r) =>
-      r.tls_cipher_suite === 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256',
+    'is sha256 cipher suite': (r) => r.tls_cipher_suite === 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256',
   });
 }
 ```

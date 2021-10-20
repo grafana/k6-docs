@@ -18,13 +18,13 @@ excerpt: 'adds a tag to the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx({baseURL: 'https://test-api.k6.io'});
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
 session.addTag('tagName', 'tagValue');
 session.addTag('AnotherTagName', 'tagValue2');
 
 export default function () {
-  session.get('/public/crocodiles/1/'); 
+  session.get('/public/crocodiles/1/');
 }
 ```
 

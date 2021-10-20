@@ -19,9 +19,9 @@ Parses response as HTML and populate a [Selection](/javascript-api/k6-html/selec
 import http from 'k6/http';
 
 export default function () {
-  let res = http.get('https://stackoverflow.com');
+  const res = http.get('https://stackoverflow.com');
 
-  let doc = res.html();
+  const doc = res.html();
   doc
     .find('link')
     .toArray()

@@ -18,15 +18,15 @@ Fragile code is most clearly demonstrated with an example.
 import { check, group } from 'k6';
 import http from 'k6/http';
 
-export default function() {
-  group("Fetch a list of public crocodiles", () => {
-    let res = http.get("https://test-api.k6.io/public/crocodiles");
+export default function () {
+  group('Fetch a list of public crocodiles', () => {
+    const res = http.get('https://test-api.k6.io/public/crocodiles');
 
     check(res, {
       'is status 200': (r) => r.status === 200,
       'got more than 5 crocs': (r) => r.json().length > 5,
     });
-  })
+  });
   // more code here
 }
 ```
@@ -58,16 +58,21 @@ When the first `expect` fails, the remaining checks in the chain are not execute
 import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   describe('Fetch a list of public crocodiles', (t) => {
-    let response = http.get("https://test-api.k6.io/public/crocodiles")
+    const response = http.get('https://test-api.k6.io/public/crocodiles');
 
-    t.expect(response.status).as("response status").toEqual(200)
-      .and(response).toHaveValidJson()
-      .and(response.json().length).as("number of crocs").toBeGreaterThan(5);
-  })
+    t.expect(response.status)
+      .as('response status')
+      .toEqual(200)
+      .and(response)
+      .toHaveValidJson()
+      .and(response.json().length)
+      .as('number of crocs')
+      .toBeGreaterThan(5);
+  });
   // more code here
-} 
+}
 ```
 
 </CodeGroup>
@@ -83,9 +88,8 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-
   describe('Executing test against a Shaky SUT', (t) => {
-    throw("Something entirely unexpected happened");
+    throw 'Something entirely unexpected happened';
   });
 }
 ```

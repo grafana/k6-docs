@@ -45,7 +45,7 @@ The unit of these variables and functions are all in milliseconds.
 ```javascript
 import { Trend } from 'k6/metrics';
 
-var myTrend = new Trend('my_trend');
+const myTrend = new Trend('my_trend');
 
 export default function () {
   myTrend.add(1);
@@ -62,9 +62,9 @@ import { Trend } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
 
-let serverWaitingTimeOnLogin = new Trend('serverWaitingTimeOnLogin', true);
+const serverWaitingTimeOnLogin = new Trend('serverWaitingTimeOnLogin', true);
 
-export let options = {
+export const options = {
   vus: 1,
   duration: '1m',
   thresholds: {
@@ -73,7 +73,7 @@ export let options = {
 };
 
 export default function () {
-  let resp = http.post('https://test-api.k6.io/auth/token/login/', {
+  const resp = http.post('https://test-api.k6.io/auth/token/login/', {
     username: 'test-user',
     password: 'supersecure',
   });

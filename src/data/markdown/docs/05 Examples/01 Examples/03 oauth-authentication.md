@@ -25,13 +25,7 @@ import http from 'k6/http';
  * @param  {string} scope - Space-separated list of scopes (permissions) that are already given consent to by admin
  * @param  {string} resource - Either a resource ID (as string) or an object containing username and password
  */
-export function authenticateUsingAzure(
-  tenantId,
-  clientId,
-  clientSecret,
-  scope,
-  resource,
-) {
+export function authenticateUsingAzure(tenantId, clientId, clientSecret, scope, resource) {
   let url;
   const requestBody = {
     client_id: clientId,
@@ -56,7 +50,7 @@ export function authenticateUsingAzure(
     throw 'resource should be either a string or an object containing username and password';
   }
 
-  let response = http.post(url, requestBody);
+  const response = http.post(url, requestBody);
 
   return response.json();
 }
@@ -70,6 +64,7 @@ export function authenticateUsingAzure(
 
 ```javascript
 import http from 'k6/http';
+import encoding from 'k6/encoding';
 
 /**
  * Authenticate using OAuth against Okta
@@ -87,21 +82,19 @@ export function authenticateUsingOkta(
   clientId,
   clientSecret,
   scope,
-  resource,
+  resource
 ) {
   if (authServerId === 'undefined' || authServerId == '') {
     authServerId = 'default';
   }
-  let url = `https://${oktaDomain}/oauth2/${authServerId}/v1/token`;
+  const url = `https://${oktaDomain}/oauth2/${authServerId}/v1/token`;
   const requestBody = { scope: scope };
   let response;
 
   if (typeof resource == 'string') {
     requestBody['grant_type'] = 'client_credentials';
 
-    const encodedCredentials = encoding.b64encode(
-      `${clientId}:${clientSecret}`,
-    );
+    const encodedCredentials = encoding.b64encode(`${clientId}:${clientSecret}`);
     const params = {
       auth: 'basic',
       headers: {

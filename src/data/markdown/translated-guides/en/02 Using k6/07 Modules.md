@@ -33,7 +33,7 @@ dependencies.
 ```javascript
 //helpers.js
 export function someHelper() {
-  ...
+  // ...
 }
 ```
 

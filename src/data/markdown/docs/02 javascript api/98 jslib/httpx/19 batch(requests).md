@@ -27,24 +27,31 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
 import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 
-let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
 export default function () {
-
   describe('01. Fetch public crocodiles all at once', (t) => {
-    let responses = session.batch([
-      new Get('/public/crocodiles/1/'),
-      new Get('/public/crocodiles/2/'),
-      new Get('/public/crocodiles/3/'),
-      new Get('/public/crocodiles/4/'),
-    ], {
-      tags: {name: 'PublicCrocs'}
-    });
+    const responses = session.batch(
+      [
+        new Get('/public/crocodiles/1/'),
+        new Get('/public/crocodiles/2/'),
+        new Get('/public/crocodiles/3/'),
+        new Get('/public/crocodiles/4/'),
+      ],
+      {
+        tags: { name: 'PublicCrocs' },
+      }
+    );
 
-    responses.forEach(response => {
-      t.expect(response.status).as("response status").toEqual(200)
-        .and(response).toHaveValidJson()
-        .and(response.json('age')).as('croc age').toBeGreaterThan(7);
+    responses.forEach((response) => {
+      t.expect(response.status)
+        .as('response status')
+        .toEqual(200)
+        .and(response)
+        .toHaveValidJson()
+        .and(response.json('age'))
+        .as('croc age')
+        .toBeGreaterThan(7);
     });
   });
 }

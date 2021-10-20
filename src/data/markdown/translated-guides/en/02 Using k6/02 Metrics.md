@@ -114,7 +114,7 @@ If you want to access the timing information from an individual HTTP request in 
 import http from 'k6/http';
 
 export default function () {
-  var res = http.get('http://httpbin.org');
+  const res = http.get('http://httpbin.org');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
 }
 ```
@@ -143,10 +143,10 @@ You can also create your own metrics, that are reported at the end of a load tes
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 
-let myTrend = new Trend('waiting_time');
+const myTrend = new Trend('waiting_time');
 
 export default function () {
-  let r = http.get('https://httpbin.org');
+  const r = http.get('https://httpbin.org');
   myTrend.add(r.timings.waiting);
   console.log(myTrend.name); // waiting_time
 }
@@ -194,7 +194,7 @@ All values added to a custom metric can optionally be [tagged](/using-k6/tags-an
 ```javascript
 import { Counter } from 'k6/metrics';
 
-let myCounter = new Counter('my_counter');
+const myCounter = new Counter('my_counter');
 
 export default function () {
   myCounter.add(1);
@@ -230,7 +230,7 @@ Note that there is currently no way of accessing the value of any custom metric 
 ```javascript
 import { Gauge } from 'k6/metrics';
 
-let myGauge = new Gauge('my_gauge');
+const myGauge = new Gauge('my_gauge');
 
 export default function () {
   myGauge.add(3);
@@ -265,7 +265,7 @@ The value of `my_gauge` will be 2 at the end of the test. As with the Counter me
 ```javascript
 import { Trend } from 'k6/metrics';
 
-let myTrend = new Trend('my_trend');
+const myTrend = new Trend('my_trend');
 
 export default function () {
   myTrend.add(1);
@@ -300,7 +300,7 @@ By default, k6 will print average, min, max, median, 90th percentile, and 95th p
 ```javascript
 import { Rate } from 'k6/metrics';
 
-let myRate = new Rate('my_rate');
+const myRate = new Rate('my_rate');
 
 export default function () {
   myRate.add(true);

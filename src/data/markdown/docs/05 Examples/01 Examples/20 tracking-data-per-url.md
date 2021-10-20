@@ -21,15 +21,15 @@ import { Counter } from 'k6/metrics';
 
 // Two custom metrics to track data sent and received. We will tag data points added with the corresponding URL
 // so we can filter these metrics down to see the data for individual URLs and set threshold across all or per-URL as well.
-export let epDataSent = new Counter('endpoint_data_sent');
-export let epDataRecv = new Counter('endpoint_data_recv');
+export const epDataSent = new Counter('endpoint_data_sent');
+export const epDataRecv = new Counter('endpoint_data_recv');
 
-export let options = {
+export const options = {
   duration: '10s',
   vus: 10,
   thresholds: {
     // We can setup thresholds on these custom metrics, "count" means bytes in this case.
-    endpoint_data_sent: ['count < 2048'],
+    'endpoint_data_sent': ['count < 2048'],
 
     // The above threshold would look at all data points added to the custom metric.
     // If we want to only consider data points for a particular URL/endpoint we can filter by URL.
@@ -39,10 +39,7 @@ export let options = {
 };
 
 function sizeOfHeaders(hdrs) {
-  return Object.keys(hdrs).reduce(
-    (sum, key) => sum + key.length + hdrs[key].length,
-    0,
-  );
+  return Object.keys(hdrs).reduce((sum, key) => sum + key.length + hdrs[key].length, 0);
 }
 
 function trackDataMetricsPerURL(res) {

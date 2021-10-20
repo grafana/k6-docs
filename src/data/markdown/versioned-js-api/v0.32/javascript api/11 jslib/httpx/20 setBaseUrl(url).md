@@ -17,7 +17,7 @@ excerpt: 'sets the base URL for the session'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
 
-let session = new Httpx();
+const session = new Httpx();
 
 session.setBaseUrl('https://test-api.k6.io');
 

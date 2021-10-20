@@ -28,13 +28,13 @@ A slightly more complex request might be e.g. a POST request to authenticate on 
 import http from 'k6/http';
 
 export default function () {
-  var url = 'http://test.k6.io/login';
-  var payload = JSON.stringify({
+  const url = 'http://test.k6.io/login';
+  const payload = JSON.stringify({
     email: 'aaa',
     password: 'bbb',
   });
 
-  var params = {
+  const params = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -110,7 +110,9 @@ all reported using one single metric:
 <CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`);
 }
 
@@ -125,7 +127,9 @@ You can aggregate data from dynamic URLs by explicitly setting a name tag:
 <CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(`http://example.com/posts/${id}`, {
     tags: { name: 'PostsItemURL' },
   });
@@ -184,7 +188,9 @@ Additionally, you can use the `http.url` wrapper to set the name tag with a stri
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
 ```javascript
-for (var id = 1; id <= 100; id++) {
+import http from 'k6/http';
+
+for (let id = 1; id <= 100; id++) {
   http.get(http.url`http://example.com/posts/${id}`);
 }
 

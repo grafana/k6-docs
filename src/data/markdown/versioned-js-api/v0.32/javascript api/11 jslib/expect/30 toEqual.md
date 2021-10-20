@@ -31,13 +31,12 @@ import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
 
 export default function testSuite() {
-
   describe('Basic API test', (t) => {
-    let response = http.get("https://test-api.k6.io/public/crocodiles")
+    const response = http.get('https://test-api.k6.io/public/crocodiles');
 
     t.expect(response.status).toEqual(200);
-    t.expect(response.proto).toEqual("HTTP/2.0");
-  })
+    t.expect(response.proto).toEqual('HTTP/2.0');
+  });
 }
 ```
 

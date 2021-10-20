@@ -27,16 +27,15 @@ excerpt: 'httpx.head makes HEAD requests'
 ```javascript
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
 
-let session = new Httpx({
-    baseURL: 'https://httpbin.test.k6.io', 
-    timeout: 20000 // 20s timeout.
+const session = new Httpx({
+  baseURL: 'https://httpbin.test.k6.io',
+  timeout: 20000, // 20s timeout.
 });
 
 export default function testSuite() {
-  let resp = session.head(`/head`);
-	console.log(resp.status)
+  const resp = session.head(`/head`);
+  console.log(resp.status);
 }
-
 ```
 
 </CodeGroup>

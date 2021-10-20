@@ -72,7 +72,7 @@ As an added bonus, you can use this to reuse data between iterations (but only f
 <CodeGroup labels={[]}>
 
 ```javascript
-var counter = 0;
+let counter = 0;
 
 export default function () {
   counter++;
@@ -170,8 +170,10 @@ stages:
 <CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
 ```javascript
+import http from 'k6/http';
+
 export function setup() {
-  let res = http.get('https://httpbin.org/get');
+  const res = http.get('https://httpbin.org/get');
   return { data: res.json() };
 }
 

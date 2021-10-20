@@ -93,7 +93,7 @@ The following JS snippet shows how to specify options in the script:
 ```javascript
 import http from 'k6/http';
 
-export let options = {
+export const options = {
   hosts: { 'test.k6.io': '1.2.3.4' },
   stages: [
     { duration: '1m', target: 10 },
@@ -210,7 +210,7 @@ done and a slot opens. Available in both the `k6 run` and the `k6 cloud` command
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   batch: 15,
 };
 ```
@@ -232,7 +232,7 @@ done and a slot opens. This will not run more request in parallel then the value
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   batchPerHost: 5,
 };
 ```
@@ -250,7 +250,7 @@ Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` comm
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   blacklistIPs: ['10.0.0.0/8'],
 };
 ```
@@ -275,8 +275,8 @@ Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
-  blockHostnames: ["test.k6.io" , "*.example.com"],
+export const options = {
+  blockHostnames: ['test.k6.io', '*.example.com'],
 };
 ```
 
@@ -364,7 +364,7 @@ more reliable test results.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   discardResponseBodies: true,
 };
 ```
@@ -418,13 +418,13 @@ K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default
 <CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   dns: {
     ttl: '1m',
     select: 'roundRobin',
-    policy: 'any'
-  }
-}
+    policy: 'any',
+  },
+};
 ```
 
 </CodeGroup>
@@ -443,7 +443,7 @@ Together with the [`vus` option](#vus), `duration` is a shortcut for a single [s
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 100,
   duration: '3m',
 };
@@ -466,7 +466,7 @@ logically grouped for trending and comparison) when streaming results to
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   ext: {
     loadimpact: {
       name: 'My test name',
@@ -543,7 +543,7 @@ From v0.28.0 it is also supported to redirect only from certain ports and/or to 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
@@ -570,7 +570,7 @@ Read more [here](/using-k6/http-debugging).
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   httpDebug: 'full',
 };
 ```
@@ -607,7 +607,7 @@ Available in `k6 run` and `k6 cloud` commands
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   insecureSkipTLSVerify: true,
 };
 ```
@@ -632,7 +632,7 @@ By default, the maximum duration of a `shared-iterations` scenario is 10 minutes
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 5,
   iterations: 10,
 };
@@ -645,7 +645,7 @@ Or, to run 10 VUs 10 times each:
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 10,
   iterations: 100,
 };
@@ -665,7 +665,7 @@ run completion. Available in the `k6 run` command.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   linger: true,
 };
 ```
@@ -768,7 +768,7 @@ erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   maxRedirects: 10,
 };
 ```
@@ -788,7 +788,7 @@ the remainder of the time until the specified minimum duration is reached.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   minIterationDuration: '10s',
 };
 ```
@@ -824,7 +824,7 @@ Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noConnectionReuse: true,
 };
 ```
@@ -843,7 +843,7 @@ it's enabled, saved cookies will be persisted across VU iterations.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noCookiesReset: true,
 };
 ```
@@ -948,7 +948,7 @@ of a VU. Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   noVUConnectionReuse: true,
 };
 ```
@@ -967,7 +967,7 @@ a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   paused: true,
 };
 ```
@@ -1023,7 +1023,7 @@ The maximum number of requests to make per second, in total across all VUs. Avai
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   rps: 500,
 };
 ```
@@ -1051,7 +1051,7 @@ Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   scenarios: {
     my_api_scenario: {
       // arbitrary scenario name
@@ -1082,7 +1082,7 @@ Specify how long the `setup()` function is allow to run before it's terminated a
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   setupTimeout: '30s',
 };
 ```
@@ -1126,7 +1126,7 @@ It is a shortcut option for a single [scenario](/using-k6/scenarios) with a [ram
 // over the next 10 minutes before finally ramping down to 0 VUs for another
 // 3 minutes.
 
-export let options = {
+export const options = {
   stages: [
     { duration: '3m', target: 10 },
     { duration: '5m', target: 10 },
@@ -1244,7 +1244,7 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   systemTags: ['status', 'method', 'url'],
 };
 ```
@@ -1263,7 +1263,7 @@ Define which time unit will be used for _all_ time values in the [end-of-test su
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   summaryTimeUnit: 'ms',
 };
 ```
@@ -1285,7 +1285,7 @@ For further summary customization and exporting the summary in various formats (
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'p(99.99)', 'count'],
 };
 ```
@@ -1313,7 +1313,7 @@ tag. Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tags: {
     name: 'value',
   },
@@ -1334,7 +1334,7 @@ fails.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   teardownTimeout: '30s',
 };
 ```
@@ -1354,9 +1354,9 @@ at the [Thresholds](/using-k6/thresholds) documentation. Available in `k6 run` c
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
-    http_req_duration: ['avg<100', 'p(95)<200'],
+    'http_req_duration': ['avg<100', 'p(95)<200'],
     'http_req_connecting{cdnAsset:true}': ['p(95)<100'],
   },
 };
@@ -1376,7 +1376,7 @@ Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   throw: true,
 };
 ```
@@ -1395,7 +1395,7 @@ which host(s)/domain(s) the given client certificate is valid for.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tlsAuth: [
     {
       domains: ['example.com'],
@@ -1424,11 +1424,8 @@ For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
-  tlsCipherSuites: [
-    'TLS_RSA_WITH_RC4_128_SHA',
-    'TLS_RSA_WITH_AES_128_GCM_SHA256',
-  ],
+export const options = {
+  tlsCipherSuites: ['TLS_RSA_WITH_RC4_128_SHA', 'TLS_RSA_WITH_AES_128_GCM_SHA256'],
 };
 ```
 
@@ -1452,7 +1449,7 @@ export let options = {
 
 // or...
 
-export let options = {
+options = {
   tlsVersion: {
     min: 'ssl3.0',
     max: 'tls1.2',
@@ -1475,7 +1472,7 @@ Available in `k6 run` and `k6 cloud` commands
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   userAgent: 'MyK6UserAgentString/1.0',
 };
 ```
@@ -1512,7 +1509,7 @@ Available in `k6 run` and `k6 cloud` commands.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   vus: 10,
   duration: '1h',
 };
