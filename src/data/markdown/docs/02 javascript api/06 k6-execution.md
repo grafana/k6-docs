@@ -40,8 +40,7 @@ export default function () {
 
 ### instance
 
-The instance object provides information associated with the load generator instance. When running a cloud/distributed test with multiple load generator instances, the values of the following properties can differ across instances.
-
+The instance object provides information associated with the load generator instance. You can think of it as the current running k6 process, which will likely be a single process if you are running k6 on your local machine. When running a cloud/distributed test with multiple load generator instances, the values of the following properties can differ across instances.
 
 | Field                  | Type    | Description                                                              |
 |------------------------|---------|--------------------------------------------------------------------------|
@@ -52,6 +51,9 @@ The instance object provides information associated with the load generator inst
 | currentTestRunDuration | float   | The time passed from the start of the current test run in milliseconds. |
 
 ### scenario
+
+Meta information and execution details about the current running [scenario](/using-k6/scenarios).
+
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | name                | string  | The assigned name of the running scenario. |
@@ -63,6 +65,9 @@ The instance object provides information associated with the load generator inst
 
 
 ### vu 
+
+Meta information and execution details about the current vu and iteration.
+
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | iterationInInstance | integer | The identifier of the iteration in the current instance. |
@@ -70,13 +75,16 @@ The instance object provides information associated with the load generator inst
 | idInInstance        | integer | The identifier of the VU across the instance. |
 | idInTest            | integer | The globally unique (across the whole test run) identifier of the VU. |
 
-### Examples and use cases
-**Get unique data once**
-A common use case is getting a unique and incremental index for accessing a dataset's item only once per test.
+## Examples and use cases
 
-The `scenario.iterationInTest` field can be used for this case. Let's show an example:
+### Getting unique data once
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+The `scenario.iterationInTest` property can be used for getting a unique and incremental index for accessing a dataset's item only once per test.
+
+> **Note**:
+> This is a common use case for data parameterization, you can find more examples [here](/examples/data-parameterization#retrieving-unique-data). 
+
+<CodeGroup labels={["get-unique-data.js"]} lineNumbers={[true]}>
 
 ```javascript
 import exec from 'k6/execution';
@@ -108,12 +116,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-**Timing operations**
+### Timing operations
+
 The `startTime` property from the `scenario` object can be used to time operations.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+<CodeGroup labels={["timing-operations.js"]} lineNumbers={[true]}>
 
 ```javascript
 import exec from 'k6/execution';
@@ -121,20 +130,23 @@ import exec from 'k6/execution';
 export default function () {
   // do some long operations
   // ...
-  console.log('step1 took:', new Date() - new Date(exec.scenario.startTime));
+  console.log(`step1: scenario ran for ${new Date() - new Date(exec.scenario.startTime)}ms`);
 
   // some more long operations
   //...
-  console.log('step2 took:', new Date() - new Date(exec.scenario.startTime));
+  console.log(`step2: scenario ran for ${new Date() - new Date(exec.scenario.startTime)}ms`);
 }
 ```
 
-</div>
+</CodeGroup>
 
-**Script naming**
+### Script naming
 The `name` property can be used for executing the logic based on which script is currently running.
 
-<div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
+> **Tip**: 
+> If you need to run [multiple scenarios](/using-k6/scenarios/advanced-examples/#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
+
+<CodeGroup labels={["script-naming.js"]} lineNumbers={[true]}>
 
 ```javascript
 import exec from 'k6/execution';
@@ -151,7 +163,7 @@ const options = {
 };
 
 export default function () {
-  if (exec.scenario.name == 'the-first') {
+  if (exec.scenario.name === 'the-first') {
     // do some logic during this scenario
   } else {
     // do some other logic in the others
@@ -159,4 +171,4 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
