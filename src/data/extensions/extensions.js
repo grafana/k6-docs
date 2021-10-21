@@ -237,18 +237,6 @@ const extensions = [
     categories: ['Containers'],
   },
   {
-    name: 'xk6-kubernetes-jobs',
-    description: 'A k6 extension to interact with Kubernetes jobs.',
-    url: 'https://github.com/dgzlopes/xk6-kubernetes-jobs',
-    logo: '',
-    author: {
-      name: 'Daniel González',
-      url: 'https://github.com/dgzlopes',
-    },
-    official: false,
-    categories: ['Containers'],
-  },
-  {
     name: 'xk6-client-prometheus-remote',
     description:
       'A k6 extension for testing the performance of Prometheus Remote Write.',
