@@ -94,11 +94,7 @@ const getPageTranslations = (
       getGuidesSidebar(locale),
     );
 
-    if (translation && translation.meta) {
-      translation = translation.meta;
-    } else {
-      translation = null;
-    }
+    translation = translation && translation.meta ? translation.meta : null;
 
     if (translation) {
       pageTranslations[locale] = translation;
