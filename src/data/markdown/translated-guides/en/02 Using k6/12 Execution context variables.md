@@ -43,9 +43,11 @@ You can measure how much time was spent for specific functions or parts of your 
 import { scenario } from 'k6/execution';
 
 // Long running function
-const runSomeHeavyOperation = () => {/*...*/};
+const runSomeHeavyOperation = () => {
+  /*...*/
+};
 
-export default function() {
+export default function () {
   runSomeHeavyOperation();
   console.log(`${new Date() - new Date(scenario.startTime)} ms to run`);
 }
@@ -63,7 +65,7 @@ A common use case is getting a unique and incremental index for accessing a data
 import { scenario } from 'k6/execution';
 import { SharedArray } from 'k6/data';
 
-const data = new SharedArray('data', function() {
+const data = new SharedArray('data', function () {
   const items = [];
   for (let i = 0; i < 100; i++) {
     items.push({ id: i });
@@ -77,12 +79,12 @@ export const options = {
       executor: 'shared-iterations',
       vus: 3,
       iterations: data.length, // can multiply so we iterate multiple times
-      maxDuration: '1h' // has to be big enough so that all iterations go through if needed
-    }
-  }
-}
+      maxDuration: '1h', // has to be big enough so that all iterations go through if needed
+    },
+  },
+};
 
-export default function() {
+export default function () {
   console.log('my item:', JSON.stringify(data[scenario.iterationInTest]));
 }
 ```
@@ -98,23 +100,23 @@ You can use scenario names to execute different code blocks.
 ```javascript
 import { scenario } from 'k6/execution';
 
-export let options = {
+export const options = {
   scenarios: {
     'the-first': {
       executor: 'per-vu-iterations',
       vus: 1,
-      iterations: 10
+      iterations: 10,
     },
     'the-second': {
       executor: 'per-vu-iterations',
       vus: 1,
-      iterations: 10
+      iterations: 10,
     },
-  }
+  },
 };
 
-export default function() {
-  if (scenario.name == "the-first") {
+export default function () {
+  if (scenario.name == 'the-first') {
     // do some logic during this scenario
     console.log('the first scenario');
   } else {
