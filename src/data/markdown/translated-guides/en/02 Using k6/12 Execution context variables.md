@@ -59,6 +59,11 @@ export default function () {
 
 A common use case is getting a unique and incremental index for accessing a datasets item only once per test.
 
+> ### ⚠️ Multiple scenarios
+>
+> `scenario.iterationInTest` property is unique __per scenario__, not the overall test.
+> That means if you have multiple scenarios in your test you might need to split your data per scenario.
+
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
