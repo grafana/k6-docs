@@ -116,7 +116,7 @@ export const options = {
 };
 
 export default function () {
-  if (scenario.name == 'the-first') {
+  if (scenario.name === 'the-first') {
     // do some logic during this scenario
     console.log('the first scenario');
   } else {
