@@ -33,9 +33,8 @@ If you're running tests in k6 Cloud you will also have additional environment va
 You can find more details and examples [here](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
 
 <br />
-<Collapsible title="__VU and __ITER (discouraged)">
+<Collapsible title="__VU and __ITER (discouraged)" tag="h2">
 
-## \_\_VU and \_\_ITER (discouraged)
 ⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
 
 ### \_\_ITER
