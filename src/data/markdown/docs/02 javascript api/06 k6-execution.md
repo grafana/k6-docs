@@ -79,44 +79,7 @@ Meta information and execution details about the current vu and iteration.
 
 ### Getting unique data once
 
-The `scenario.iterationInTest` property can be used for getting a unique and incremental index for accessing a dataset's item only once per test.
-
-> **Note**:
-> This is a common use case for data parameterization, you can find more examples [here](/examples/data-parameterization#retrieving-unique-data). 
-
-<CodeGroup labels={["get-unique-data.js"]} lineNumbers={[true]}>
-
-```javascript
-import exec from 'k6/execution';
-import { SharedArray } from 'k6/data';
-
-const items = 10;
-const data = new SharedArray('mydata', function () {
-  const arr = new Array(items);
-  for (let i = 0; i < items; i++) {
-    arr[i] = { foo: 'item' + i, bar: '12345678' };
-  }
-  return arr;
-});
-
-export const options = {
-  scenarios: {
-    'use-all-the-data': {
-      executor: 'shared-iterations',
-      vus: 3,
-      iterations: data.length, // here you can also multiply so it goes through it multiple times
-      maxDuration: '1h', // this will need to be big enough so that all the iterations can happen if that is what is wanted
-    },
-  },
-};
-
-export default function () {
-  const item = data[exec.scenario.iterationInTest];
-  console.log('my item:', item);
-}
-```
-
-</CodeGroup>
+This is a common use case for data parameterization, you can read the [examples](/examples/data-parameterization#retrieving-unique-data) using `scenario.iterationInTest` and `vu.idInTest`.
 
 ### Timing operations
 

@@ -3,18 +3,13 @@ title: 'Execution context variables'
 excerpt: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
 ---
 
-> ### ✨ Execution API (since v0.34.0)
->
-> k6 v0.34.0 introduced [k6/execution](/javascript-api/k6-execution) module. 
-> If you are using an earlier version of k6, where the module is not available,
-> refer to [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
 
 In certain use cases information about the current test execution state inside your test scripts can be really useful.
-The [k6/execution](/javascript-api/k6-execution) module exposes various details about the current execution state, such as _the name of the currently executed scenario_ or _how many VUs are currently active_ and many more.
 
 ## k6/execution
 
-The [k6/execution](/javascript-api/k6-execution) module provides test execution information via three properties:
+The [k6/execution](/javascript-api/k6-execution) module exposes various details about the current execution state, such as _the name of the currently executed scenario_ or _how many VUs are currently active_ and many more. The module provides test execution information via three properties:
+
 
 | Property                                           | Description                                                                  |
 | -------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -22,10 +17,13 @@ The [k6/execution](/javascript-api/k6-execution) module provides test execution 
 | [scenario](/javascript-api/k6-execution/#scenario) | Meta information and execution details about the current running scenario    |
 | [vu](/javascript-api/k6-execution/#vu)             | Meta information and execution details about the current vu and iteration    |
 
+> k6 v0.34.0 introduced **k6/execution** module. 
+> If you are using an earlier version of k6, where the module is not available,
+> refer to [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
 
 ## Examples and use cases
 
-- [Getting unique data once](/javascript-api/k6-execution/#getting-unique-data-once)
+- [Getting unique data once](/examples/data-parameterization#retrieving-unique-data)
 - [Timing operations](/javascript-api/k6-execution/#timing-operations)
 - [Executing different code blocks](/javascript-api/k6-execution/#script-naming)
 
