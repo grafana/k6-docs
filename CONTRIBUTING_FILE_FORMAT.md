@@ -435,6 +435,8 @@ The `Collapsible` expects a string `title` and some content.
 
 If you want the component to be expanded by default, use optional`isOpen` prop and set it to `true`: `<Collapsible title="Collapsible title" isOpen="true">`.
 
+If you want the component title to be displayed in the Table of Contents, please set `tag` prop to `h2`: `<Collapsible title="Collapsible title added to ToC" tag="h2">`.
+
 ## External Link Card (Blog only)
 
 This is a component that represents a common pattern of external link decoration. Here is how you would use it:

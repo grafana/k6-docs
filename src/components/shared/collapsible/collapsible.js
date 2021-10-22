@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import styles from './collapsible.module.scss';
 
-const Collapsible = ({ children, title, isOpen }) => {
+const Collapsible = ({ children, title, isOpen, tag: Tag }) => {
   const [isExpanded, setIsExpanded] = useState(isOpen);
   const collapsibleRef = useRef(null);
 
@@ -64,7 +64,7 @@ const Collapsible = ({ children, title, isOpen }) => {
           [styles.expanded]: isExpanded,
         })}
       >
-        {title}
+        {Tag ? <Tag>{title}</Tag> : <>{title}</>}
         <button
           type="button"
           className={styles.button}
@@ -82,6 +82,7 @@ Collapsible.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
   isOpen: PropTypes.bool,
+  tag: PropTypes.string,
 };
 
 Collapsible.defaultProps = {
