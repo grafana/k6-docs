@@ -27,15 +27,9 @@ The [k6/execution](/javascript-api/k6-execution) module exposes various details 
 - [Timing operations](/javascript-api/k6-execution/#timing-operations)
 - [Executing different code blocks](/javascript-api/k6-execution/#script-naming)
 
-## k6 Cloud environment variables
-
-If you're running tests in k6 Cloud you will also have additional environment variables that will tell you on which server, load zone and distribution of the test you are currently executing.
-You can find more details and examples [here](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
-
-<br />
-<Collapsible title="__VU and __ITER (discouraged)">
-
 ## \_\_VU and \_\_ITER (discouraged)
+<Collapsible title="__VU and __ITER">
+
 ⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
 
 ### \_\_ITER
@@ -88,3 +82,8 @@ export default function () {
 </CodeGroup>
 
 </Collapsible>
+
+## k6 Cloud environment variables
+
+If you're running tests in k6 Cloud you will also have additional environment variables that will tell you on which server, load zone and distribution of the test you are currently executing.
+You can find more details and examples [here](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
