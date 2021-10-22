@@ -27,8 +27,7 @@ The [k6/execution](/javascript-api/k6-execution) module exposes various details 
 - [Timing operations](/javascript-api/k6-execution/#timing-operations)
 - [Executing different code blocks](/javascript-api/k6-execution/#script-naming)
 
-## \_\_VU and \_\_ITER (discouraged)
-<Collapsible title="__VU and __ITER">
+<Collapsible title="_VU and _ITER (discouraged)" tag="h2">
 
 ⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
 
