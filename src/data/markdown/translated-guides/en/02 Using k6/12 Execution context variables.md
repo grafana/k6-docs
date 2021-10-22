@@ -1,41 +1,44 @@
 ---
 title: 'Execution context variables'
-excerpt: '__VU and __ITER are both global variables with execution context information that k6 makes available to the test script.'
+excerpt: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
 ---
 
 > ### ✨ Execution API (since v0.34.0)
 >
-> The [k6/execution](/javascript-api/k6-execution) module exports an idiomatic alternative for getting the same values as \_\_VU and \_\_ITER and some other information about the execution state.
+> k6 v0.34.0 introduced [k6/execution](/javascript-api/k6-execution) module. 
+> If you are using an earlier version of k6, where the module is not available,
+> refer to [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
 
-[The "Running k6" tutorial](/getting-started/running-k6) describes how k6 runs a test script for a specified
-number of Virtual Users (VUs) and duration of time or a fixed number of iterations
-for each VU.
+In certain use cases information about the current test execution state inside your test scripts can be really useful.
+The [k6/execution](/javascript-api/k6-execution) module exposes various details about the current execution state, such as _the name of the currently executed scenario_ or _how many VUs are currently active_ and many more.
 
-When the `duration` option is specified, k6 will continuously run the test script for each VU
-until the `duration` amount of time has elapsed.
+## k6/execution
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+The [k6/execution](/javascript-api/k6-execution) module provides test execution information via three properties:
 
-```bash
-$ k6 run --vus 10 --duration 30s script.js
-```
+| Property                                           | Description                                                                  |
+| -------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [instance](/javascript-api/k6-execution/#instance) | Meta information and execution details on the currently running k6 instance  |
+| [scenario](/javascript-api/k6-execution/#scenario) | Meta information and execution details about the current running scenario    |
+| [vu](/javascript-api/k6-execution/#vu)             | Meta information and execution details about the current vu and iteration    |
 
-</CodeGroup>
 
-Alternatively, you could set the `iterations` option to specify the number of complete loops of
-the test script k6 will execute for each VU.
+## Examples and use cases
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+- [Getting unique data once](/javascript-api/k6-execution/#getting-unique-data-once)
+- [Timing operations](/javascript-api/k6-execution/#timing-operations)
+- [Executing different code blocks](/javascript-api/k6-execution/#script-naming)
 
-```bash
-$ k6 run --vus 10 --iterations 100 script.js
-```
+## k6 Cloud environment variables
 
-</CodeGroup>
+If you're running tests in k6 Cloud you will also have additional environment variables that will tell you on which server, load zone and distribution of the test you are currently executing.
+You can find more details and examples [here](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
 
-## \_\_VU and \_\_ITER
+<br />
+<Collapsible title="__VU and __ITER (discouraged)">
 
-**\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
+## \_\_VU and \_\_ITER (discouraged)
+⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
 
 ### \_\_ITER
 
@@ -45,27 +48,17 @@ A numeric counter with the current iteration number for a specific VU. Zero-base
 
 Current VU number in use. The value is assigned incrementally for each new VU instance, starting from one. The variable will be 0 while executing the setup and teardown functions.
 
-> ### ⚠️ Running in the k6 Cloud
->
->When you run your tests in the [k6 Cloud](/cloud), the **\_\_VU** value you get will be per server/load generator. You can read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
->
->In k6 Cloud you will also have additional [environment variables](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#environment-variables) that will tell you on which server, load zone and distribution of the test you are currently executing.
+### Running in the k6 Cloud
 
-## k6 Test Coordinator
+When you run your tests in the [k6 Cloud](/cloud), the **\_\_VU** value you get will be per server/load generator. You can read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
 
-k6 Virtual Users are concurrent, they will continuously execute through their script until the
-test is over or they hit their iteration limit (if you set one as described above). When you ramp
-up more Virtual Users, k6 will start new ones at that time. When you ramp down, k6 will stop them
-after the completion of the iteration.
-
-## Examples
+### Examples
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
-
 export default function () {
   http.get('http://test.k6.io');
   console.log(`VU: ${__VU}  -  ITER: ${__ITER}`);
@@ -84,7 +77,6 @@ performing a login flow.
 ```javascript
 import http from 'k6/http';
 import { sleep } from 'k6';
-
 export default function () {
   const email = `user+${__VU}@mail.com`;
   const payload = JSON.stringify({ email: email, password: 'test' });
@@ -92,9 +84,9 @@ export default function () {
   http.post('http://test.k6.io/login', payload, params);
   console.log(email);
   // .. continue the user flow
-
   sleep(1);
 }
 ```
-
 </CodeGroup>
+
+</Collapsible>
