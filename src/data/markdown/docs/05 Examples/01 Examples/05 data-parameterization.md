@@ -179,7 +179,6 @@ It is often a requirement not to use the same data more than once in a test. Wit
 > `scenario.iterationInTest` property is unique __per scenario__, not the overall test.
 > That means if you have multiple scenarios in your test you might need to split your data per scenario.
 
-
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
@@ -205,6 +204,42 @@ export default function () {
   // this is unique even in the cloud
   const user = data[scenario.iterationInTest];
   console.log(`user: ${JSON.stringify(user)}`);
+}
+```
+
+</CodeGroup>
+
+Alternatively, if your use case requires using a unique data set per VU, you could leverage a property called `vu.idInTest`.
+
+In the following example we're going to be using `per-vu-iterations` executor to ensure that every VU completes
+a fixed amount of iterations.
+
+<CodeGroup>
+
+```javascript
+import { sleep } from 'k6';
+import { SharedArray } from 'k6/data';
+import { vu } from 'k6/execution';
+
+const users = new SharedArray('users', function () {
+  return JSON.parse(open('users.json'));
+});
+
+export const options = {
+  scenarios: {
+    login: {
+      executor: 'per-vu-iterations',
+      vus: users.length,
+      iterations: 20,
+      maxDuration: '1h30m',
+    },
+  },
+};
+
+export default function () {
+  // VU identifiers are one-based and arrays are zero-based, thus we need - 1
+  console.log(`Users name: ${users[vu.idInTest - 1].name}`);
+  sleep(1);
 }
 ```
 
