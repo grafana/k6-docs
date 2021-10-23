@@ -1,4 +1,4 @@
 ---
 title: 'GitHub Actions'
-redirect: 'https://k6.io/blog/load-testing-using-github-actions'
+redirect: '../blog/load-testing-using-github-actions'
 ---
