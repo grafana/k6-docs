@@ -14,7 +14,7 @@
     "start": "npm run develop --host=0.0.0.0",
     "serve": "gatsby serve --prefix-paths",
     "deploy": "./scripts/gatsby-s3-workaround.sh prepare && gatsby-plugin-s3 deploy --yes && ./scripts/cloudfront-invalidate.sh && ./scripts/gatsby-s3-workaround.sh revert",
-    "predevelop": "test -f ./.env.development || cp ./.env.example ./.env.development",
+    "predevelop": "shx test -f ./.env.development || shx cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
     "lint": "eslint src/ -c .eslintrc",
     "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
