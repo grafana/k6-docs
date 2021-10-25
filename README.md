@@ -61,7 +61,7 @@ Visit http://localhost:8000
 ## Deployment
 
 ### To staging
-All pull requests merged to `master` will result in an automatic deployment to the staging environment.
+All pull requests merged to `main` will result in an automatic deployment to the staging environment.
 
 ### To production
 
