@@ -33,8 +33,8 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 **Bug fixes**
 
 - Use the `POST` HTTP request method instead of `GET` for pushing logs to Loki. [#2100](https://github.com/grafana/k6/pull/2100)
--  Encode the [`blacklistIPs` option](https://k6.io/docs/using-k6/options/#blacklist-ips) using the CIDR notation in JSON. [#2083](https://github.com/grafana/k6/pull/2083)
--  `ext.loadimpact` option has the same precedence as the script configuration during the consolidation process. [#2099](https://github.com/grafana/k6/pull/2099)
+- Encode the [`blacklistIPs` option](https://k6.io/docs/using-k6/options/#blacklist-ips) using the CIDR notation in JSON. [#2083](https://github.com/grafana/k6/pull/2083)
+- `ext.loadimpact` option has the same precedence as the script configuration during the consolidation process. [#2099](https://github.com/grafana/k6/pull/2099)
 - The WebSocket connection used for tailing logs from the k6 Cloud is reestablished in the case of an unexpected error. [#2090](https://github.com/grafana/k6/pull/2090).
 
 See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.34.0) for details.
@@ -68,6 +68,8 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 - A potential (harmless) data race could have been caused by an unintentional copying of a data struct ([#2067](https://github.com/k6io/k6/pull/2067)).
 - The segmentation of small `ramping-arrival-rate` scenarios was not optimal ([#1863](https://github.com/k6io/k6/pull/1863#discussion_r655352623)).
 
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.33.0) for details.
+
 ## v0.32.0
 
 `2021-5-12`
@@ -79,12 +81,12 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 - Considerable performance improvements for arrival rate executors ([#1955](https://github.com/k6io/k6/pull/1955)).
 - Updating the majority of our dependencies and sunsetting some.
 - `ArrayBuffer` is now supported in all JS APIs dealing with binary data, including in WebSocket messages ([#1841](https://github.com/k6io/k6/pull/1841)).
-- Official arm64 releases for macOS and Linux ([#2000](https://github.com/k6io/k6/pull/2000))
+- Official arm64 releases for macOS and Linux ([#2000](https://github.com/k6io/k6/pull/2000)).
 
 **Breaking changes**
-- Support for `ArrayBuffer` in all k6 JS APIs ([#1841](https://github.com/k6io/k6/pull/1841))
-- Deprecating official 32-bit binary releases ([#2000](https://github.com/k6io/k6/pull/2000))
-- Moved repo and renamed k6 Go module paths to `go.k6.io/k6` ([#2010](https://github.com/k6io/k6/pull/2010))
+- Support for `ArrayBuffer` in all k6 JS APIs ([#1841](https://github.com/k6io/k6/pull/1841)).
+- Deprecating official 32-bit binary releases ([#2000](https://github.com/k6io/k6/pull/2000)).
+- Moved repo and renamed k6 Go module paths to `go.k6.io/k6` ([#2010](https://github.com/k6io/k6/pull/2010)).
 - New `.deb` and `.rpm` repositories, now located at [dl.k6.io](https://dl.k6.io/), use the updated [installation instructions](https://k6.io/docs/getting-started/installation/) to transition to them.
 
 **Bug fixes**
@@ -93,6 +95,7 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 - Fix Kafka output not being usable with the InfluxDB format after v0.31.0 changes ([#1914](https://github.com/k6io/k6/pull/1914)).
 - Error out with a user friendly message if `ramping-vus` executor would've not run a single iteration instead of just doing nothing ([#1942](https://github.com/k6io/k6/pull/1942)).
 
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.32.0) for details.
 
 ## v0.31.1
 
@@ -110,64 +113,133 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 - Marking requests as failed ([#1856](https://github.com/loadimpact/k6/pull/1856))
 
 **Bug fixes**
-- Execution: Aborting a test during VU initialization (e.g. with `^C`) will now properly propagate to any used outputs ([#1869](https://github.com/loadimpact/k6/pull/1869)).
-- Execution: A race condition between the Engine and the outputs' finalization code was fixed, ensuring that all metrics are properly emitted before exiting ([#1869](https://github.com/loadimpact/k6/pull/1869)).
-- Execution: Another race condition in the Engine was fixed, which may have resulted in the end-of-test summary missing some of the last test metric data ([#1888](https://github.com/loadimpact/k6/pull/1888)).
-- Cloud: the test name is now properly validated and will raise an error if not set via the `ext.loadimpact.name` JS option or config, or the `K6_CLOUD_NAME` environment variable ([#1870](https://github.com/loadimpact/k6/pull/1870)).
-- JS: Babel is now also run on compilation errors, which improves support of some obscure language features ([#1861](https://github.com/loadimpact/k6/pull/1861)).
-- JS: `SharedArray` introduced in v0.30.0 can now be iterated with [`forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) ([#1848](https://github.com/loadimpact/k6/pull/1848)).
+- Aborting a test during VU initialization (e.g. with `^C`) will now properly propagate to any used outputs ([#1869](https://github.com/loadimpact/k6/pull/1869)).
+- A race condition between the Engine and the outputs' finalization code was fixed, ensuring that all metrics are properly emitted before exiting ([#1869](https://github.com/loadimpact/k6/pull/1869)).
+- Another race condition in the Engine was fixed, which may have resulted in the end-of-test summary missing some of the last test metric data ([#1888](https://github.com/loadimpact/k6/pull/1888)).
+- The test name is now properly validated and will raise an error if not set via the `ext.loadimpact.name` JS option or config, or the `K6_CLOUD_NAME` environment variable ([#1870](https://github.com/loadimpact/k6/pull/1870)).
+- Babel is now also run on compilation errors, which improves support of some obscure language features ([#1861](https://github.com/loadimpact/k6/pull/1861)).
+- `SharedArray` introduced in v0.30.0 can now be iterated with [`forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) ([#1848](https://github.com/loadimpact/k6/pull/1848)).
+
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.31.0) for details.
 
 ## v0.30.0
 
-`2021-9-9`
+`2021-1-20`
 
 **Features and enhancements**
+- Share memory between VUs using read-only arrays ([#1739](https://github.com/loadimpact/k6/pull/1739)).
+- Support a `handleSummary()` callback at the end of the test ([#1768](https://github.com/loadimpact/k6/pull/1768)).
+- 
 
 **Breaking changes**
+- `--no-summary` now also disables `--summary-export` ([#1768](https://github.com/loadimpact/k6/pull/1768)). You can recreate the previous behavior of `k6 run --no-summary --summary-export=summary.json script.js` by having an empty exported `handleSummary()` function in your script (so that the default text summary is not shown by k6) and executing only `k6 run --summary-export=summary.json script.js`. Or omitting `--summary-export` as well and using `handleSummary()` as shown above.
+- Integer values for `duration` and similar time values in the exported script `options` and environment variables are now treated as milliseconds. This was previously undefined behavior, but instead of k6 erroring out, it silently accepted and treated such values as nanoseconds ([#1738](https://github.com/loadimpact/k6/pull/1738)).
+- Added `WORKDIR /home/k6` to our official `Dockerfile` ([#1794](https://github.com/loadimpact/k6/pull/1794)).
 
 **Bug fixes**
+- Updated the `golang.org/x/crypto` and `golang.org/x/net` dependencies, which should have resolved some corner case issues with HTTP/2 connections, since k6 depends on `golang.org/x/net/http2` ([#1734](https://github.com/loadimpact/k6/pull/1734)).
+- Fixed issues with `blockHostnames` that prevented zero-length matches for wildcards, as well as the explicit blocking of a domain and its sub-domain at the same time ([#1723](https://github.com/loadimpact/k6/pull/1723)).
+- If logs are streamed to a loki instance, k6 will now wait for them to finish being pushed before it exits - this will specifically mean that logs and errors in the init context will be propagated ([#1694](https://github.com/loadimpact/k6/pull/1694)).
+- Fixed the missing `host` value from [`http.Response.request.headers`](https://k6.io/docs/javascript-api/k6-http/response) when it was explicitly set in the HTTP request params ([#1744](https://github.com/loadimpact/k6/pull/1744)).
+- Fixed the lack of newline after `k6 login` password inputs ([#1749](https://github.com/loadimpact/k6/pull/1749)).
+- Fixed a panic in the [`html.Selection.slice()`](https://k6.io/docs/javascript-api/k6-html/selection/selection-slice-start-end) method ([#1756](https://github.com/loadimpact/k6/pull/1756)).
+- Fixed random ordering of groups and checks in the end-of-test summary, they should now be shown in the order of their occurrence ([#1788](https://github.com/loadimpact/k6/pull/1788)).
+- The value for `Rate` metrics in the `--summary-export` JSON file was was always `0`, regardless of the `pass/(pass+fail)` ratio ([#1768](https://github.com/loadimpact/k6/pull/1768)).
+
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.30.0) for details.
 
 ## v0.29.0
 
-`2021-9-9`
+`2020-11-11`
 
 **Features and enhancements**
+- Initial support for gRPC ([#1623](https://github.com/loadimpact/k6/pull/1623)).
+- New options for configuring DNS resolution ([#1612](https://github.com/loadimpact/k6/pull/1612)).
+- Support for Go extensions ([#1688](https://github.com/loadimpact/k6/pull/1688)).
+- Support for setting local IPs, potentially from multiple NICs ([#1682](https://github.com/loadimpact/k6/pull/1682)).
+- New option for blocking hostnames ([#1666](https://github.com/loadimpact/k6/pull/1666)).
 
 **Breaking changes**
+-  DNS resolution defaults were changed. If you want to use the old k6 behavior of always picking the first IP, no IPv4 preference, and caching DNS responses indefinitely, run k6 with `--dns="ttl=inf,select=first,policy=any"`.
 
 **Bug fixes**
+- [goja](https://github.com/dop251/goja), the JS runtime k6 uses, was updated to its latest version, to fix some issues with regular expressions after its previous update ([#1707](https://github.com/loadimpact/k6/pull/1707)).
+- Prevent loops with `--compatibility-mode=extended` when Babel can transpile the code but goja can't parse it ([#1651](https://github.com/loadimpact/k6/pull/1651)).
+- Fixed a bug that rarely caused a `context canceled` error message to be shown ([#1677](https://github.com/loadimpact/k6/pull/1677)).
+- Setting an empty `userAgent` option caused k6 to revert to the default Go `User-Agent` header value of `Go-http-client`. Now something like `--user-agent=''` will cause k6 to not send the `User-Agent` header at all ([#1695](https://github.com/loadimpact/k6/pull/1695)).
+- `k6 cloud -q` is now fixed to be similar to the `k6 run -q` behavior, but if the old behavior was wanted, something close to it can be recreated by using `k6 cloud --exit-on-running` ([#1702](https://github.com/loadimpact/k6/pull/1702)).
+
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.29.0) for details.
 
 ## v0.28.0
 
-`2021-9-9`
+`2020-9-21`
 
 **Features and enhancements**
+- Cloud execution logs ([#1599](https://github.com/loadimpact/k6/pull/1599)).
+- Pushing k6 logs to loki ([#1576](https://github.com/loadimpact/k6/pull/1576)).
+- Optional port to host mappings ([#1489](https://github.com/loadimpact/k6/pull/1489)).
+- Support for specifying data types to InfluxDB fields ([#1395](https://github.com/loadimpact/k6/pull/1395)).
+-  Support for automatic gzip-ing of the CSV output result ([#1566](https://github.com/loadimpact/k6/pull/1566)).
 
 **Breaking changes**
+- `k6 cloud` will now proxy execution logs back to the client machine. To disable this behavior, use `k6 cloud --show-logs=false`.
+- `--http-debug` request and response dumps are now emitted through the logging sub-system, to facilitate the cloud log proxying ([#1577](https://github.com/loadimpact/k6/pull/1577)).
 
 **Bug fixes**
+Network: IPv6 support was fixed as a part of the new `hosts` port mapping ([#1489](https://github.com/loadimpact/k6/pull/1489)).
+- Metrics: Fixed the wrong `name` metric tag for redirected requests ([#1474](https://github.com/loadimpact/k6/issues/1474)).
+- UI: Fixed a `divide by zero` panic caused by some unusual execution environments that present a TTY, but return `0` for the terminal size ([#1581](https://github.com/loadimpact/k6/pull/1581)).
+- Config: Fixed the parsing of `K6_DATADOG_TAG_BLACKLIST` ([#1602](https://github.com/loadimpact/k6/issues/1602)).
+- Config: Fixed marshaling of `tlsCipherSuites` and `tlsVersion` ([#1603](https://github.com/loadimpact/k6/pull/1603)).
+- WebSockets: Fixed a `ws.SetTimeout()` and `ws.SetInterval()` panic when float values were passed ([#1608](https://github.com/loadimpact/k6/pull/1608)).
 
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.28.0) for details.
 
 ## v0.27.1
 
-`2021-9-9`
-
-**Features and enhancements**
-
-**Breaking changes**
+`2020-7-30`
 
 **Bug fixes**
+- Resolving a panic (and some `k6 login` errors) when k6 was ran through git bash / Mintty on Windows ([#1559](https://github.com/loadimpact/k6/issues/1559)).
+
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.27.1) for details.
 
 ## v0.27.0
 
-`2021-9-9`
+`2020-7-14`
 
 **Features and enhancements**
+- New execution engine ([#1007](https://github.com/loadimpact/k6/pull/1007)).
 
 **Breaking changes**
+- Execution config options (`scenarios`, `stages`, `iterations`, `duration`) from "upper" config layers overwrite execution options from "lower" (i.e. CLI flags > environment variables > JS options > JSON options) config layers. 
+- Previously, if the `iterations` and `vus` script options were specified, but `duration` was not, the script could have ran practically indefinitely. From k6 v0.27.0, by default, if the specified iterations haven't finished, these scripts will abort after 10 minutes. 
+- Previously, all iterations were interruptible. Now all executors besides the `externally-controlled` one have a `gracefulStop` period of `30s` by default ([#898](https://github.com/loadimpact/k6/issues/898)). Additionally, the `ramping-vus` executor has a `gracefulRampDown` parameter that configures the ramp-down grace period.
+- Using different execution config options on the same level is now a configuration conflict error and will abort the script.([#812](https://github.com/loadimpact/k6/issues/812) & [#1058](https://github.com/loadimpact/k6/issues/1058)).
+- The k6 REST API for controlling script execution (i.e. the `k6 pause`, `k6 scale` commands) now only works when a `externally-controlled` executor is configured in the `scenarios` config. 
+- Previously, running a script with `k6 run --paused script.js` would have still executed the script's `setup()` function (if it was present and wasn't explicitly disabled with `--no-setup`) and paused immediately after. Now, k6 will pause before it executes `setup()`.
+- Previously, if you ramped down and ramped up VUs via `stages`, the `__VU` global variables would have been incremented on the ramp-ups. Now the max value of `__VU` across a test run will never exceed the number of initialized VUs.
+- The `vusMax` / `K6_VUS_MAX` / ` -m` / `--max` option is deprecated.
+- Tests with infinite duration are now only possible via the `externally-controlled` executor.
+- k6 will now exit with an error if `--address` is specified but the API server is unable to start. Previously this would've resulted in a warning message.
+- The format returned by `Date.prototype.toUTCString()` was changed from `Thu Jan 01 1970 00:00:00 GMT+0000 (UTC)` to `Thu, 01 Jan 1970 00:00:00 GMT`, aligned with the ECMAScript spec.
+- The default `setupTimeout` and `teardownTimeout` values were changed from 10s to 60s ([#1356](https://github.com/loadimpact/k6/pull/1356)).
 
 **Bug fixes**
+- Stop `--http-debug` from exiting k6 on request dump error ([#1402](https://github.com/loadimpact/k6/issues/1402)).
+- JSON output is now less noisy ([#1469](https://github.com/loadimpact/k6/issues/1469)).
+- k6 doesn't exit when using `iterations` with `stages` ([#812](https://github.com/loadimpact/k6/issues/812)).
+- Mismatch in check counts in the end-of-test summary ([#1033](https://github.com/loadimpact/k6/issues/1033)).
+- Better validation of `stages` ([#875](https://github.com/loadimpact/k6/issues/875)).
+- Rare panics in goja ([#867](https://github.com/loadimpact/k6/issues/867),[#1552](https://github.com/loadimpact/k6/issues/1552)).
+- Fix request timeout and wrong context used for pushing metrics ([#1260](https://github.com/loadimpact/k6/issues/1260)).
+- Fix sometimes skipping iterations with a `context cancelled` error when rapidly ramping up and down ([#1283](https://github.com/loadimpact/k6/issues/1283)).
+- Fix possible connection hanging when the main context is cancelled ([#1260](https://github.com/loadimpact/k6/issues/1542)).
+- Avoid leaking goroutines ([#1513](https://github.com/loadimpact/k6/issues/1513)).
+- Emit WS metrics as soon as possible instead of when the connection is closed ([#885](https://github.com/loadimpact/k6/issues/885)).
 
+See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.27.0) for details.
 
 ## Older releases
 
