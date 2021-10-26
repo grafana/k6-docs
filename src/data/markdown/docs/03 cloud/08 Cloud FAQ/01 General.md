@@ -84,32 +84,40 @@ k6 run test.js -i 1 -u 1
 
 For debugging, k6 also provides a few builtin options:
 
-- `--http-debug`
-- `console logging methods`
 
-[--http-debug](/using-k6/options#http-debug) prints all the requests and responses to the console. Read more [here](/using-k6/http-debugging).
+- [`--http-debug`](/using-k6/options#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
 
-<CodeGroup labels={[""]}>
+  <CodeGroup labels={[""]}>
 
-```bash
-k6 run test.js --http-debug="full"
-```
+  ```bash
+  k6 run test.js --http-debug="full"
+  ```
 
-</CodeGroup>
+  </CodeGroup>
 
 
-Also, `logging methods` can print any message to the console. In the cloud, the console logs are shown on the [Logs Tab](/cloud/analyzing-results/logs).
+- `Console logging methods` can print any message to the console. In the cloud, the console logs are shown on the [Logs Tab](/cloud/analyzing-results/logs).
 
-<CodeGroup labels={[""]}>
+  <CodeGroup labels={[""]}>
 
-```javascript
-import http from 'k6/http';
+  ```javascript
+  import http from 'k6/http';
 
-const res = http.get('http://httpbin.test.k6.io/json');
-console.log(JSON.stringify(res));
-```
+  const res = http.get('http://httpbin.test.k6.io/json');
+  console.log(JSON.stringify(res));
+  ```
 
-</CodeGroup>
+  </CodeGroup>
+
+  Note that you can also use the [`--console-output`](/using-k6/options/#console-output) option to redirect console logs to an output file.
+
+    <CodeGroup labels={[""]}>
+
+  ```bash
+  k6 run --console-output "loadtest.log" script.js
+  ```
+
+  </CodeGroup>
 
 ----
 
