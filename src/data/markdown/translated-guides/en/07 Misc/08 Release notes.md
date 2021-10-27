@@ -10,9 +10,9 @@ excerpt: 'On this page, you can find detailed notes that list everything include
 
 **Bug fixes**
 
-- Some [`k6/execution`](/javascript-api/k6-execution/) properties weren't usable with the externally-controlled executor. [#2132](https://github.com/grafana/k6/pull/2132)
-- Rest parameters were undefined when the functions also had an internal lambda. [#2131](https://github.com/grafana/k6/issues/2131)
-- `Response.json()` to not have a `length` property when the response was a JSON array. [#2133](https://github.com/grafana/k6/issues/2133)
+- Some [`k6/execution`](/javascript-api/k6-execution/) properties weren't usable with the externally-controlled executor ([#2132](https://github.com/grafana/k6/pull/2132)).
+- Rest parameters were undefined when the functions also had an internal lambda ([#2131](https://github.com/grafana/k6/issues/2131)).
+- `Response.json()` to not have a `length` property when the response was a JSON array ([#2133](https://github.com/grafana/k6/issues/2133)).
 
 See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.34.1) for details.
 
@@ -23,19 +23,19 @@ See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v
 **Features and enhancements**
 
 - Add [`k6/execution`](/javascre) API to get test execution information in your k6 scripts.
-- Warn Windows users on importing dependencies or opening files as absolute paths. [#2078](https://github.com/grafana/k6/pull/2078)
-- Pass setup data object into `handleSummary` callback. [#2103](https://github.com/grafana/k6/pull/2103)
+- Warn Windows users on importing dependencies or opening files as absolute paths ([#2078](https://github.com/grafana/k6/pull/2078)).
+- Pass setup data object into `handleSummary` callback  ([#2103](https://github.com/grafana/k6/pull/2103)).
 
 **Breaking changes**
 
-- The deprecated outputs Datadog and Kafka have been removed. [#2081](https://github.com/grafana/k6/pull/2081)
+- The deprecated outputs Datadog and Kafka have been removed ([#2081](https://github.com/grafana/k6/pull/2081)).
 
 **Bug fixes**
 
-- Use the `POST` HTTP request method instead of `GET` for pushing logs to Loki. [#2100](https://github.com/grafana/k6/pull/2100)
-- Encode the [`blacklistIPs` option](https://k6.io/docs/using-k6/options/#blacklist-ips) using the CIDR notation in JSON. [#2083](https://github.com/grafana/k6/pull/2083)
-- `ext.loadimpact` option has the same precedence as the script configuration during the consolidation process. [#2099](https://github.com/grafana/k6/pull/2099)
-- The WebSocket connection used for tailing logs from the k6 Cloud is reestablished in the case of an unexpected error. [#2090](https://github.com/grafana/k6/pull/2090).
+- Use the `POST` HTTP request method instead of `GET` for pushing logs to Loki ([#2100](https://github.com/grafana/k6/pull/2100)).
+- Encode the [`blacklistIPs` option](https://k6.io/docs/using-k6/options/#blacklist-ips) using the CIDR notation in JSON ([#2083](https://github.com/grafana/k6/pull/2083)).
+- `ext.loadimpact` option has the same precedence as the script configuration during the consolidation process ([#2099](https://github.com/grafana/k6/pull/2099)).
+- The WebSocket connection used for tailing logs from the k6 Cloud is reestablished in the case of an unexpected error ([#2090](https://github.com/grafana/k6/pull/2090)).
 
 See the [full GitHub release notes](https://github.com/grafana/k6/releases/tag/v0.34.0) for details.
 
