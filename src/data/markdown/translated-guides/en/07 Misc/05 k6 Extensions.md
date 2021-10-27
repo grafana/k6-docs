@@ -103,7 +103,7 @@ There are two ways in which xk6 can be used:
 <!-- at the same level now. :-/ -->
 ## Using xk6 to build a k6 binary
 
-You might have found a neat k6 extension on the [Ecosystem page](/ecosystem) or on
+You might have found a neat k6 extension on the [Extensions page](/extensions) or on
 [GitHub](https://github.com/topics/xk6) and wish to use it in your tests. Great! The
 process is relatively simple and we're working on simplifying it further for end
 users.
@@ -160,7 +160,7 @@ building a binary, and you don't need to commit them to the extension repository
 
 The first thing you should do before starting work on a new extension is to confirm
 that a similar extension doesn't already exist for your use case. Take a look at
-the [Ecosystem page](/ecosystem) and the [`xk6` topic on GitHub](https://github.com/topics/xk6).
+the [Extensions page](/extensions) and the [`xk6` topic on GitHub](https://github.com/topics/xk6).
 For example, if a system you need support for can be tested with a generic protocol
 like MQTT, prefer using [xk6-mqtt](https://github.com/pmalhaire/xk6-mqtt)
 instead of creating an extension that uses some custom protocol.
