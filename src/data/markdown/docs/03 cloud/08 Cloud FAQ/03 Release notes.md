@@ -55,6 +55,6 @@ excerpt: 'On this page, you can find the k6 Cloud changelog.'
 
 `2021-9-8`
 
-- [Cloud APM configuration](/cloud/integrations/cloud-apm/) via settings/testbuilder.
+- [Cloud APM configuration](/cloud/integrations/cloud-apm/) via settings and [TestBuilder](/test-authoring/test-builder).
 - Fix: persist dashboard order & search filters in url after browser refresh.
 - Fix: "UTC" timezone no longer displays a deprecation message.
