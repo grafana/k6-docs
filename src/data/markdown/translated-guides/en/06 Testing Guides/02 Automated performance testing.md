@@ -6,32 +6,32 @@ excerpt: 'Automation is a hot topic in the testing community. This guide answers
 
 import {IntegrationsCiIconBlock} from 'templates/docs/integrations'
 
-Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always straightforward. Especially if you don’t already have a lot of experience in performance engineering.
+Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always as straightforward. Especially if you don’t already have a lot of experience in performance engineering.
 
 This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.
 
-## Why to automate performance tests?
+## Why automate performance tests?
 
 Let’s start by examining why you would consider automating your performance tests. To do that we need to revisit why we run performance tests in the first place:
 
 - **Avoid launch failures** leading to a missed opportunity window and wasted investments, e.g. your app or site crashing during a high-profile product launch event.
-- **Avoid bad user experiences** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to non responsive app or website.
-- **Avoid performance regressions** as new code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
+- **Avoid bad user experience** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to a non responsive app or website.
+- **Avoid performance regressions** as code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
 
-From here, the decision to go for automated testing is hopefully straightforward:
+From here, the decision to go for automated testing is hopefully clear:
 
 - **Shifting performance testing left**, making sure it happens as close to development as possible, giving developers an early feedback loop for performance matters.
 - **Adding performance regression checks** to your Continuous Integration and Delivery (CI/CD) pipelines.
 
-Of course not [all types of performance tests](/test-types/introduction) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance over time of A and B of course.
+Of course not [all types of performance tests](/test-types/introduction) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance of A and B over time.
 
 ## Know your goals
 
-Besides the step of creating a test case itself, the most important step to ensure a successful performance testing automation project is to spell out your goals. What metrics, and values (in absolute terms; "response times should be less than 500ms", and not just "response times should not be slow"), are important to you, your team and the business.
+Besides creating a test case itself, the most important step to ensure a successful performance testing automation project is to document your goals. What metrics, and values (in absolute terms; "response times should be less than 500ms", and not "response times should not be slow"), are important to you, your team and the business.
 
 If you have established [Service Level Agreements (SLAs)](https://en.wikipedia.org/wiki/Service-level_agreement) in place with your customers, or just [Service Level Objectives (SLOs)](https://en.wikipedia.org/wiki/Service-level_objective) and [Service Level Indicators (SLIs)](https://en.wikipedia.org/wiki/Service_level_indicator) defined internally, then that’s a great starting point. If not, then it’s a great opportunity to bring stakeholders together and discuss what goals you should have defined to drive a performance culture.
 
-Starting with the results of a baseline test is another good way to find a starting point for your goals. A baseline test is a test run with a single or very few <abbr title="Virtual Users">VUs</abbr> that you know your system can handle without breaking a sweat. The idea being that you'll get some real numbers on where your system is at in terms of latency and response time. Important to make sure that your baseline test is not resulting in any unwanted errors and is functionally accurate.
+Starting with the results of a baseline test is another good way to find a starting point for your goals. A baseline test is a test run with a single or very few <abbr title="Virtual Users">VUs</abbr> that you know your system can handle without breaking a sweat. The idea being that you'll get some real numbers on where your system is at in terms of latency and response time. It's important to make sure that your baseline test is not resulting in any unwanted errors and is functionally accurate.
 
 From the perspective of human perceptive abilities, the following guidance points from [Nielsen Norman Group](https://www.nngroup.com/articles/response-times-3-important-limits/) might be of help when deciding on what latency and response time to aim for:
 
@@ -43,7 +43,7 @@ Once your goals are clear, you need to codify them as [thresholds](/using-k6/thr
 
 ## How to automate performance testing
 
-Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is very simple with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
+Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is easy with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
 
 - [Why to automate performance tests?](#why-to-automate-performance-tests)
 - [Know your goals](#know-your-goals)
@@ -185,7 +185,7 @@ It's also important to consider that load test might not need to run at the same
 
 ### Pre-production test environment
 
-As touched upon in the previous section, on branching strategy, the test environment is the third point to consider. We point out "pre-production" specifically as that is the best practices when it comes to load testing. If your team is at the maturity level of running chaos experiments in productionn then fine, run load test in production as well. If not, stick to pre-production.
+As touched upon in the previous section, on branching strategy, the test environment is the third point to consider. We point out "pre-production" specifically as that is the best practices when it comes to load testing. If your team is at the maturity level of running chaos experiments in production then fine, run load test in production as well. If not, stick to pre-production.
 
 Things to consider with your test environment:
 
