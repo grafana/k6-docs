@@ -84,6 +84,16 @@ Possible values for `executor` are the executor name separated by hyphens.
 | env          | object | Environment variables specific to this scenario.                                                                                               | `{}`        |
 | tags         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |
 
+
+## CLI Icons
+
+| Icon         |Description                                                                                                                                   | 
+| -------------- | ------------------------------------------------------------------------------------------- |
+| ↓ ️  |  End of regular execution as the graceful stop stage is reached.                                                 | 
+| ✓   |  Successful execution of scenario     | 
+| ✗ |  Interruption signal during graceful stop stage | 
+| •    |   Appears when scenario needs to wait before starting     
+
 ## Example
 
 The following script defines two minimal scenarios:
