@@ -5,7 +5,7 @@ excerpt: 'Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a
 
 <Blockquote mod="warning">
 
-Esta opción no está soportada actualmente. Por favor, use la siguiente [extension](https://github.com/k6io/xk6-output-kafka).
+Esta opción no está soportada actualmente. Por favor, use la siguiente [extension](https://github.com/grafana/xk6-output-kafka).
 
 </Blockquote>
 
