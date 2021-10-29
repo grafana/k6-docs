@@ -46,11 +46,11 @@ excerpt: 'On this page, you can find the k6 Cloud changelog.'
 
 ### v1.1.2 `(2021-9-1)`
 
-- The "Thresholds discoverability" tooltip won't be visible to new users.
+- The tooltip to announce the new Thresholds Dashboard won't be visible to new users.
 - Fix: enabled aggregation for iterations chart.
 - Fix: sudo mode checkbox not showing up on test runs table.
 - Fix: the contributors column overflowing improperly.
-- Fix: test run crashing when an invalid loadzone is present.
+- Fix: test run crashing when an invalid load generator zone is present.
 - Fix: the order of statistics on the TestBuilder -> Thresholds.
 
 ### v1.1.0 `(2021-8-17)`
