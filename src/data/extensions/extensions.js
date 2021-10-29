@@ -508,7 +508,8 @@ const extensions = [
   },
   {
     name: 'xk6-output-kafka',
-    description: 'A k6 output extension to export k6 results in real-time to Kafka.',
+    description:
+      'A k6 output extension to export k6 results in real-time to Kafka.',
     url: 'https://github.com/grafana/xk6-output-kafka',
     logo: '',
     author: {
