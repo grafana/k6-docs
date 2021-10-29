@@ -1,7 +1,7 @@
 ---
 title: Release notes
-head_title: k6 Cloud Release notes
-excerpt: 'On this page, you can find the k6 Cloud changelog.'
+head_title: k6 Cloud Release Notes
+excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
 ### v1.5.2 `(2021-10-22)`
