@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { Button } from 'components/shared/button';
 import { Heading } from 'components/shared/heading';
 import { format } from 'date-fns';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { trimToLengthWithEllipsis } from 'utils';
 
@@ -11,7 +11,7 @@ import styles from './featured-post-card.module.scss';
 const cx = classNames.bind(styles);
 
 export const FeaturedPostCard = ({
-  gatsbyImageData,
+  image,
   covertext,
   category,
   date,
@@ -23,9 +23,9 @@ export const FeaturedPostCard = ({
   <div className={`container ${styles.wrapper} ${label}`}>
     <div className={cx('postCardWrapper', 'doc')}>
       <div className={cx('imageCol')}>
-        {gatsbyImageData ? (
-          <Img
-            fluid={gatsbyImageData}
+        {image ? (
+          <GatsbyImage
+            image={image}
             alt={title}
             className={cx('image', 'doc')}
           />

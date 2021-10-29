@@ -14,6 +14,7 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
+  'gatsby-plugin-image',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-resolve-src',
   'gatsby-transformer-json',
@@ -202,8 +203,7 @@ if (shouldAnnouncementBannerBeShown) {
         __dirname,
         './src/components/shared/announcement-banner/announcement-banner.js',
       ),
-      text:
-        'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
+      text: 'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
       link: 'https://k6.io/docs/using-k6/scenarios',
       buttonText: 'Learn more',
     },
@@ -251,8 +251,7 @@ if (isProduction) {
   plugins.push({
     resolve: '@sentry/gatsby',
     options: {
-      dsn:
-        'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
+      dsn: 'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
       environment: 'production',
     },
   });

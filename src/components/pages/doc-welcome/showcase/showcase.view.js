@@ -2,6 +2,7 @@ import { FeaturedPostCard } from 'components/blocks/featured-post-card';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { getDateAndSlugFromPath } from 'utils';
+import { getImage } from 'gatsby-plugin-image';
 
 import styles from './showcase.module.scss';
 
@@ -16,19 +17,11 @@ export const Showcase = () => {
             frontmatter {
               cover {
                 childImageSharp {
-                  fluid(
-                    maxWidth: 540
-                    fit: CONTAIN
+                  gatsbyImageData(
+                    width: 540
                     quality: 100
-                    background: "rgb(255,255,255)"
-                  ) {
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                  }
+                    backgroundColor: "rgb(255,255,255)"
+                  )
                 }
               }
               category
@@ -53,9 +46,7 @@ export const Showcase = () => {
     return (
       <section className={`container ${styles.container}`}>
         <FeaturedPostCard
-          gatsbyImageData={
-            featuredPostData.frontmatter.cover.childImageSharp.fluid
-          }
+          image={getImage(featuredPostData.frontmatter.cover)}
           date={date}
           title={featuredPostData.frontmatter.title}
           url={slug}
