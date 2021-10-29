@@ -114,6 +114,7 @@ tbody
 tfoot
 thead
 tm
+tooltip
 transpile
 transpiled
 truthy
