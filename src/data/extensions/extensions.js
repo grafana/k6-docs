@@ -58,7 +58,7 @@ const extensions = [
   {
     name: 'xk6-sql',
     description:
-      'k6 extension to Load Test SQL Servers (PostgreSQL, MySQL and SQLite3 for now).',
+      'A k6 extension to Load Test SQL Servers (PostgreSQL, MySQL and SQLite3 for now).',
     url: 'https://github.com/imiric/xk6-sql',
     logo: '',
     author: {
@@ -166,7 +166,7 @@ const extensions = [
   },
   {
     name: 'xk6-file',
-    description: 'k6 extension for writing files.',
+    description: 'A k6 extension for writing files.',
     url: 'https://github.com/avitalique/xk6-file',
     logo: '',
     author: {
@@ -515,6 +515,18 @@ const extensions = [
     author: {
       name: 'Mihail Stoykov',
       url: 'https://github.com/MStoykov',
+    },
+    official: false,
+    categories: ['Reporting'],
+  },
+  {
+    name: 'xk6-output-timescaledb',
+    description: 'A k6 output extension to export k6 results to TimescaleDB.',
+    url: 'https://github.com/grafana/xk6-output-timescaledb',
+    logo: '',
+    author: {
+      name: '',
+      url: '',
     },
     official: false,
     categories: ['Reporting'],

@@ -57,7 +57,6 @@ export const ExtensionCard = ({
       </div>
       <div className={styles.content}>
         <span className={styles.name}>{extension.name}</span>
-        <span className={styles.author}>by {extension.author.name}</span>
         <span className={styles.description}>{extension.description}</span>
       </div>
     </Wrapper>
