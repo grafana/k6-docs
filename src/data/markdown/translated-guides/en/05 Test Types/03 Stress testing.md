@@ -4,7 +4,7 @@ head_title: 'What is Stress Testing? How to create a Stress Test in k6'
 excerpt: 'Stress and Spike Tests are types of performance tests that are concerned with assessing the limits of your system and stability under extreme conditions. Let’s see two examples.'
 ---
 
-Stress testing is one of many different types of load testing.
+Stress testing is one of the many different types of load testing.
 
 While [load testing](/test-types/load-testing) is primarily concerned with assessing the systems performance,
 the purpose of stress testing is to assess the availability and stability of the system under heavy load.
@@ -16,25 +16,25 @@ the purpose of stress testing is to assess the availability and stability of the
 
 To execute a proper stress test, you need a tool to push the system over its normal operations, to its limits, and _beyond the breaking point_.
 
-You typically want to stress test an API or website to:
+You typically want to stress test an API or website to determine:
 
-1. determine how your system will behave under extreme conditions.
-2. determine what is the maximum capacity of your system in terms of users or throughput.
-3. determine the breaking point of your system and its failure mode.
-4. determine if your system will recover without manual intervention after the stress test is over.
+1. How your system will behave under extreme conditions.
+2. What the maximum capacity of your system is in terms of users or throughput.
+3. The breaking point of your system and its failure mode.
+4. If your system will recover without manual intervention after the stress test is over.
 
 When stress testing, you're going to configure the test to include more concurrent users or generate higher throughput than:
 
-1. your application typically sees.
-2. you think it will be able to handle.
+1. Your application typically sees.
+2. You think it will be able to handle.
 
 It's important to note that a stress test does not mean you're going to overwhelm the system
-immediately — that's a [spike test](#spike-testing), we're going to cover it in a minute.
+immediately — that's a [spike test](#spike-testing), which we'll cover in a minute.
 
 A stress test should be configured in many gradual steps, each step increasing the concurrent load of the system.
 
 A classic example of a need for stress testing is "Black Friday" or "Cyber Monday" - two days each
-year that generates multiple times the normal traffic for many websites.
+year that generate multiple times the normal traffic for many websites.
 
 A stress test can be only a couple of steps, or it can be many, as you see in the example below.
 No matter how many steps you include, just remember this type of test is about finding out what
@@ -45,9 +45,9 @@ We recommend running a stress test in a UAT or staging environment.
 
 ## API stress test in k6
 
-You can easily create a stress test in k6 by properly configuring the `options` object.
+You can create a stress test in k6 by properly configuring the `options` object.
 Remember, the point of this test is to gradually push your APIs beyond its breaking point.
-It's probably the easiest to start with an example.
+Lets start with an example:
 
 <CodeGroup labels={["API stress test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -95,16 +95,16 @@ decreasing the load to 0.
 If your infrastructure is configured to auto-scale, this test will help you to determine:
 
 1. How quickly the auto-scaling mechanisms react to increased load.
-2. Are there any failures during the scaling events.
+2. If there are any failures during the scaling events.
 
 The point of the recovery stage is to determine if the system can serve requests once the load
 decreases to a normal level. If you are testing auto-scaling, you may want to scale down in steps
-as well to determine if the down-scaling is working.
+as well to determine if down-scaling is working as you expect it to.
 
 ## Spike testing
 
-Spike test is a variation of a stress test, but it does not gradually increase the load,
-instead it spikes to extreme load over a very short window of time.
+Spike testing is a variation of a stress testing, but it does not gradually increase the load.
+Instead it spikes to extreme load over a very short period of time.
 While a stress test allows the SUT (System Under Test) to gradually scale up its
 infrastructure, a spike test does not.
 
@@ -112,10 +112,10 @@ infrastructure, a spike test does not.
 >
 > Spike testing is a type of stress testing that immediately overwhelms the system with an extreme surge of load.
 
-You want to execute a spike test to:
+You want to execute a spike test to determine:
 
-1. Determine how your system will perform under a sudden surge of traffic.
-2. Determine if your system will recover once the traffic has subsided.
+1. How your system will perform under a sudden surge of traffic.
+2. If your system will recover once the traffic has subsided.
 
 A classic need for a spike testing is if you've bought advertising on a big television event,
 such as the Super Bowl or a popular singing competition.
@@ -126,7 +126,7 @@ performance optimizations in advance.
 
 Another typical example is a "HackerNews hug of death" - someone links to your website on one
 of the popular internet forums such as HackerNews or Reddit which makes thousands of people visit
-your system at the same time.
+your system at once.
 
 Success or failure of a spike test depends on your expectations. Systems generally react in 4 different ways:
 
@@ -140,7 +140,7 @@ Success or failure of a spike test depends on your expectations. Systems general
 
 ## Spike testing in k6
 
-Here's an example script configuration for a spike test.
+Here's an example script configuration for a spike test:
 
 <CodeGroup labels={["Spike test k6 example"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -188,7 +188,7 @@ Depending on your needs, you may want to extend the recovery stage to 10+ minute
 Stress and spike testing help to prepare you for the extreme conditions your system will
 inevitably encounter in production.
 
-Preparing for inevitable is a sign of maturity for a technical organization. Stress testing not
+Preparing for the inevitable is a sign of maturity for a technical organization. Stress testing not
 only makes your system more reliable but also decreases the stress level of your Ops and Dev teams.
 
 Once your system is stress-proof, you may want to run a [soak test](/test-types/soak-testing) to see if other reliability

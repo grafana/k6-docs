@@ -9,7 +9,7 @@ It is possible to perform many types of tests using k6, each type serving a diff
 
 Each test type is designed to give you different insights about your system.
 
-[Smoke Test's](/test-types/smoke-testing) role is to verify that your System can handle
+[Smoke Test's](/test-types/smoke-testing) role is to verify that your system can handle
 minimal load, without any problems.
 
 [Load Test](/test-types/load-testing) is primarily concerned with assessing the performance
@@ -19,7 +19,7 @@ of your system in terms of concurrent users or requests per second.
 are concerned with assessing the limits of your system and stability under extreme conditions.
 
 [Soak Test](/test-types/soak-testing) tells you about reliability and performance of your
-system over the extended period of time.
+system over an extended period of time.
 
 The important thing to understand is that each test can be performed with the same test script.
 You can write one script and perform all the above tests with it. The only thing that changes is

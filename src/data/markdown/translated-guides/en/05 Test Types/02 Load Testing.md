@@ -17,10 +17,10 @@ When you want to understand if your system is meeting the performance goals, thi
 > Load Testing is used to ensure that the application performs satisfactorily
 > when many users access it at the same time.
 
-You should run Load Test to:
+You should run a Load Test to:
 
 1.  Assess the current performance of your system under typical and peak load.
-2.  Make sure you are continuously meeting the performance standards as you make changes to your system (code and infrastructure).
+2.  Make sure you continue to meet the performance standards as you make changes to your system (code and infrastructure).
 
 You probably have some understanding about the amount of traffic your system is seeing on average and during peak hours.
 This information will be useful when deciding what your performance goals should be, in other words,
@@ -93,20 +93,20 @@ The VU chart of a typical load test looks similar to this
 Note that the number of users starts at 0, and slowly ramps up to the nominal value, where it stays for an extended period of time.
 The ramp down stage is optional.
 
-We recommend you to always include a ramp-up stage in all your Load Tests because:
+We recommend you to always include a ramp-up stage in all your load tests because:
 
-- it allows your system to warm up or auto scale to handle the traffic
-- it allows you to compare the response time between the low-load and nominal-load stages.
-- If you run a load test using the SaaS cloud service, it allows the automated performance alerts to
+- It allows your system to warm up or auto scale to handle the traffic.
+- It allows you to compare the response time between the low-load and nominal-load stages.
+- If you run a load test using our SaaS cloud service, it allows the automated performance alerts to
   better understand the normal behaviour of your system.
 
 ## Load Testing scenario - simulating a normal day
 
-You may also go one step further and configure the load test to resemble more closely your normal and peak conditions.
+You may also go one step further and configure the load test to resemble your normal and peak conditions more closely.
 In that case you could configure the load test to stay at 60 users for most of the day, and ramp-up
 to 100 users during the peak hours of operation, then ramp-down back to normal load.
 
-Make sure you don't go over your normal number of VUs - that's not load testing, it's [stress testing](/test-types/stress-testing).
+Make sure you don't go over your normal number of VUs - that's not load testing, but [stress testing](/test-types/stress-testing).
 
 <CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
 
@@ -143,12 +143,12 @@ Typical expectations are:
 
 - 99% of requests should finish within 5 seconds.
 - 95% of requests should finish within 1 second.
-- 99% users should be able to login successfully on the first try
+- 99% users should be able to login successfully on the first try.
 
 Performance thresholds are a way to describe your expectations in a formal way, and automatically
 evaluate those expectations on each test run.
 Once you have configured the thresholds you'll see a Pass/Fail metric for each threshold,
-and you will know immediately if your system fulfills your expectations without analyzing the results in details.
+and you will know immediately if your system fulfills your expectations without analyzing the results in detail.
 
 > #### Start small
 >
