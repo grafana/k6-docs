@@ -15,7 +15,7 @@ You want to run a smoke test to:
 
 ## Smoke testing in k6
 
-Here's a relatively simple smoke test script to get you started. You can copy it, change a few URLs and start testing in no time.
+Below you find a sample smoke test script to get you started. You can copy it, change the end points and start testing.
 If you would like to see more comprehensive script, check out our [example section](/examples).
 
 <CodeGroup labels={["sample-smoke-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
@@ -65,8 +65,8 @@ export default () => {
 The VU chart of a smoke test should look similar to this. You want to use only 1 or 2 VUs.
 ![Smoke test VU chart](./images/smoke-test.png)
 
-If your smoke test produced any errors, you must either correct the script or fix your environment
-before you can continue.
+If your smoke test produced any errors, you should either correct the script or fix your environment
+before you continue.
 
 The k6 output should look similar to this:
 ![Smoke test Terminal Output](./images/smoke-test-terminal-output.png)

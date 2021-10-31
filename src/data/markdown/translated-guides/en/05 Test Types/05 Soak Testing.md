@@ -5,16 +5,16 @@ excerpt: 'A Soak Test is a type of Performance Test that tells you about the rel
 ---
 
 While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
-[stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a long time.
+[stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a longer period of time.
 
-The soak test uncovers performance and reliability issues stemming from a system being under
+A soak test uncovers performance and reliability issues stemming from a system being under
 pressure for an extended period.
 
 Reliability issues typically relate to bugs, memory leaks, insufficient storage quotas,
 incorrect configuration or infrastructure failures. Performance issues typically relate to
 incorrect database tuning, memory leaks, resource leaks or a large amount of data.
 
-With soak test you can simulate days worth of traffic in only a few hours.
+With a soak test you can simulate days worth of traffic in only a few hours.
 
 You typically run this test to:
 
@@ -37,10 +37,10 @@ We recommend you to configure your soak test at about 80% capacity of your syste
 If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
 
 The duration of a soak test should be measured in hours. We recommend you to start with a 1 hour test,
-and once successful extend it to several hours.
+and once that one is successful, extend it to several hours.
 Some errors are related to time, and not to the total number of requests executed.
 
-Here's a sample test configuration.
+Here's a sample test configuration:
 
 <CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -79,7 +79,7 @@ The VU chart of a Soak Test should look similar to this:
 
 #### Make a cost estimate before starting a soak test
 
-Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
+Soak tests can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
 
 If you are testing a website, you should consider excluding your CDN from the test.
 
