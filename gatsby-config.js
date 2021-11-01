@@ -13,7 +13,15 @@ const shouldAnnouncementBannerBeShown = false;
 const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-transformer-sharp',
-  'gatsby-plugin-sharp',
+  {
+    resolve: 'gatsby-plugin-sharp',
+    options: {
+      defaults: {
+        quality: 90,
+        placeholder: 'none',
+      },
+    },
+  },
   'gatsby-plugin-image',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-resolve-src',
