@@ -20,7 +20,7 @@
 const extensions = [
   {
     name: 'xk6-kafka',
-    description: 'Load test Apache Kafka. With support for Avro messages',
+    description: 'Load-test Apache Kafka. Includes support for Avro messages',
     url: 'https://github.com/mostafa/xk6-kafka',
     logo: 'https://github.com/mostafa/xk6-kafka/blob/1259557afd378a5fe236e19c3d09bda401584ee6/assets/kafka-logo.png?raw=true',
     author: {
@@ -32,7 +32,7 @@ const extensions = [
   },
   {
     name: 'xk6-notification',
-    description: 'A k6 extension for creating notifications.',
+    description: 'Create notifications',
     url: 'https://github.com/dgzlopes/xk6-notification',
     logo: 'https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true',
     author: {
@@ -44,7 +44,7 @@ const extensions = [
   },
   {
     name: 'xk6-chaos',
-    description: 'xk6 extension for running chaos experiments with k6 💣',
+    description: 'Run chaos experiments 💣',
     url: 'https://github.com/simskij/xk6-chaos',
     logo: 'https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true',
     isLogoLarge: true,
@@ -58,7 +58,7 @@ const extensions = [
   {
     name: 'xk6-sql',
     description:
-      'A k6 extension to Load Test SQL Servers (PostgreSQL, MySQL and SQLite3 for now).',
+      'Load-test SQL Servers (PostgreSQL, MySQL and SQLite3 for now)',
     url: 'https://github.com/imiric/xk6-sql',
     logo: '',
     author: {
@@ -70,7 +70,7 @@ const extensions = [
   },
   {
     name: 'xk6-redis',
-    description: 'A k6 extension for Redis.',
+    description: 'Redis',
     url: 'https://github.com/dgzlopes/xk6-redis',
     logo: '',
     author: {
@@ -82,7 +82,7 @@ const extensions = [
   },
   {
     name: 'xk6-say',
-    description: 'A k6 extension to say hello.',
+    description: 'Say hello',
     url: 'https://github.com/dgzlopes/xk6-say',
     logo: '',
     author: {
@@ -94,7 +94,7 @@ const extensions = [
   },
   {
     name: 'xk6-distributed-tracing',
-    description: 'A k6 extension for distributed tracing.',
+    description: 'Distributed tracing',
     url: 'https://github.com/k6io/xk6-distributed-tracing',
     logo: '',
     author: {
@@ -106,7 +106,7 @@ const extensions = [
   },
   {
     name: 'xk6-zmq',
-    description: 'A k6 extension for ZeroMQ.',
+    description: 'ZeroMQ',
     url: 'https://github.com/dgzlopes/xk6-zmq',
     logo: '',
     author: {
@@ -118,7 +118,7 @@ const extensions = [
   },
   {
     name: 'xk6-datadog',
-    description: 'A k6 extension for querying Datadog metrics.',
+    description: 'Query Datadog metrics',
     url: 'https://github.com/dgzlopes/xk6-datadog',
     logo: '',
     author: {
@@ -130,7 +130,7 @@ const extensions = [
   },
   {
     name: 'xk6-exec',
-    description: 'A k6 extension for running external commands.',
+    description: 'Run external commands',
     url: 'https://github.com/k6io/xk6-exec',
     logo: '',
     author: {
@@ -142,7 +142,7 @@ const extensions = [
   },
   {
     name: 'xk6-interpret',
-    description: 'A k6 extension for interpreting Go code.',
+    description: 'Interpret Go code',
     url: 'https://github.com/dgzlopes/xk6-interpret',
     logo: '',
     author: {
@@ -154,7 +154,7 @@ const extensions = [
   },
   {
     name: 'xk6-sqs',
-    description: 'A k6 extension to produce to an SQS queue.',
+    description: 'Produce to an SQS queue',
     url: 'https://github.com/mridehalgh/xk6-sqs',
     logo: '',
     author: {
@@ -166,7 +166,7 @@ const extensions = [
   },
   {
     name: 'xk6-file',
-    description: 'A k6 extension for writing files.',
+    description: 'Write files',
     url: 'https://github.com/avitalique/xk6-file',
     logo: '',
     author: {
@@ -178,7 +178,7 @@ const extensions = [
   },
   {
     name: 'xk6-wamp',
-    description: 'A k6 extension that adds support for WAMP protocol.',
+    description: 'Add support for WAMP protocol',
     url: 'https://github.com/vvarp/xk6-wamp',
     logo: '',
     author: {
@@ -190,7 +190,7 @@ const extensions = [
   },
   {
     name: 'xk6-mqtt',
-    description: 'k6 mqtt extension',
+    description: 'mqtt extension',
     url: 'https://github.com/pmalhaire/xk6-mqtt',
     logo: '',
     author: {
@@ -202,7 +202,7 @@ const extensions = [
   },
   {
     name: 'xk6-kv',
-    description: 'A k6 extension to share key-value data between VUs.',
+    description: 'Share key-value data between VUs',
     url: 'https://github.com/dgzlopes/xk6-kv',
     logo: '',
     author: {
@@ -214,7 +214,7 @@ const extensions = [
   },
   {
     name: 'xk6-url',
-    description: 'A k6 extension for URL parsing and normalization.',
+    description: 'Parse and normalize URLs',
     url: 'https://github.com/dgzlopes/xk6-url',
     logo: '',
     author: {
@@ -226,7 +226,7 @@ const extensions = [
   },
   {
     name: 'xk6-kubernetes',
-    description: 'A k6 extension for interacting with Kubernetes clusters',
+    description: 'Interact with Kubernetes clusters',
     url: 'https://github.com/grafana/xk6-kubernetes',
     logo: '',
     author: {
@@ -238,8 +238,7 @@ const extensions = [
   },
   {
     name: 'xk6-client-prometheus-remote',
-    description:
-      'A k6 extension for testing the performance of Prometheus Remote Write.',
+    description: 'Test Prometheus Remote Write performance',
     url: 'https://github.com/grafana/xk6-client-prometheus-remote',
     logo: '',
     author: {
@@ -251,7 +250,7 @@ const extensions = [
   },
   {
     name: 'xk6-influxdbv2',
-    description: 'A k6 extension output to influxdb.',
+    description: 'A k6 extension output to influxdb',
     url: 'https://github.com/li-zhixin/xk6-influxdbv2',
     logo: '',
     author: {
@@ -263,7 +262,7 @@ const extensions = [
   },
   {
     name: 'xk6-pubsub',
-    description: 'A k6 extension for Google PubSub.',
+    description: 'Google PubSub',
     url: 'https://github.com/olvod/xk6-pubsub',
     logo: '',
     author: {
@@ -287,7 +286,7 @@ const extensions = [
   },
   {
     name: 'xk6-encoding',
-    description: 'Enables k6 tests to comfortably parse CSV values.',
+    description: 'Comfortably parse CSV values in tests',
     url: 'https://github.com/mstoykov/xk6-encoding',
     logo: '',
     author: {
@@ -299,8 +298,7 @@ const extensions = [
   },
   {
     name: 'xk6-counter',
-    description:
-      'Implements a singular local counter that goes up. Returns the current value before increasing it.',
+    description: 'Share and increment a counter between VUs',
     url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
@@ -312,7 +310,7 @@ const extensions = [
   },
   {
     name: 'xk6-docker',
-    description: 'A k6 extension for Docker.',
+    description: 'Docker',
     url: 'https://github.com/k6io/xk6-docker',
     logo: '',
     author: {
@@ -324,7 +322,7 @@ const extensions = [
   },
   {
     name: 'xk6-ssh',
-    description: 'A k6 extension for SSH.',
+    description: 'SSH',
     url: 'https://github.com/k6io/xk6-ssh',
     logo: '',
     author: {
@@ -336,7 +334,7 @@ const extensions = [
   },
   {
     name: 'xk6-yaml',
-    description: 'A k6 extension for encode and decode YAML values.',
+    description: 'Encode and decode YAML values',
     url: 'https://github.com/szkiba/xk6-yaml',
     logo: '',
     author: {
@@ -348,7 +346,7 @@ const extensions = [
   },
   {
     name: 'xk6-toml',
-    description: 'A k6 extension for encode and decode TOML values.',
+    description: 'Encode and decode TOML values',
     url: 'https://github.com/szkiba/xk6-toml',
     logo: '',
     author: {
@@ -360,7 +358,7 @@ const extensions = [
   },
   {
     name: 'xk6-csv',
-    description: 'A k6 extension for parse CSV values.',
+    description: 'Parse CSV values',
     url: 'https://github.com/szkiba/xk6-csv',
     logo: '',
     author: {
@@ -372,7 +370,7 @@ const extensions = [
   },
   {
     name: 'xk6-ansible-vault',
-    description: 'A k6 extension for encrypt and decrypt Ansible Valult.',
+    description: 'Encrypt and decrypt Ansible Vault',
     url: 'https://github.com/szkiba/xk6-ansible-vault',
     logo: '',
     author: {
@@ -384,7 +382,7 @@ const extensions = [
   },
   {
     name: 'xk6-amqp',
-    description: 'AMQP xk6 plugin. Tested with RabbitMQ.',
+    description: 'AMQP plugin, tested with RabbitMQ',
     url: 'https://github.com/grafana/xk6-amqp',
     logo: '',
     author: {
@@ -396,7 +394,7 @@ const extensions = [
   },
   {
     name: 'xk6-crypto',
-    description: 'A k6 extension for using extended crypto functions.',
+    description: 'Use extended crypto functions',
     url: 'https://github.com/szkiba/xk6-crypto',
     logo: '',
     author: {
@@ -408,8 +406,7 @@ const extensions = [
   },
   {
     name: 'xk6-jose',
-    description:
-      'A k6 extension for Javascript Object Signing and Encryption (JOSE) standards.',
+    description: 'Javascript Object Signing and Encryption (JOSE) standards',
     url: 'https://github.com/szkiba/xk6-jose',
     logo: '',
     author: {
@@ -421,7 +418,7 @@ const extensions = [
   },
   {
     name: 'xk6-prometheus',
-    description: 'A k6 output extension implements Prometheus HTTP exporter.',
+    description: 'Prometheus HTTP exporter',
     url: 'https://github.com/szkiba/xk6-prometheus',
     logo: '',
     author: {
@@ -434,7 +431,7 @@ const extensions = [
   {
     name: 'xk6-cache',
     description:
-      'A k6 extension that enables vendoring remote HTTP modules to a single source control friendly file.',
+      'Enable vendoring remote HTTP modules to a single source-control-friendly file',
     url: 'https://github.com/szkiba/xk6-cache',
     logo: '',
     author: {
@@ -446,7 +443,7 @@ const extensions = [
   },
   {
     name: 'xk6-mock',
-    description: 'A k6 extension that enables mocking HTTP(S) servers.',
+    description: 'Mock HTTP(S) servers',
     url: 'https://github.com/szkiba/xk6-mock',
     logo: '',
     author: {
@@ -458,7 +455,7 @@ const extensions = [
   },
   {
     name: 'xk6-dotenv',
-    description: 'A k6 extension that loads env vars from a .env file.',
+    description: 'Load env vars from a .env file',
     url: 'https://github.com/szkiba/xk6-dotenv',
     logo: '',
     author: {
@@ -470,7 +467,7 @@ const extensions = [
   },
   {
     name: 'xk6-faker',
-    description: 'A k6 extension for random fake data generation.',
+    description: 'Generate random fake data',
     url: 'https://github.com/szkiba/xk6-faker',
     logo: '',
     author: {
@@ -482,8 +479,7 @@ const extensions = [
   },
   {
     name: 'xk6-dashboard',
-    description:
-      'A k6 extension that enables creating web based metrics dashboard for k6.',
+    description: 'Create a web-based metrics dashboard',
     url: 'https://github.com/szkiba/xk6-dashboard',
     logo: '',
     author: {
@@ -495,8 +491,7 @@ const extensions = [
   },
   {
     name: 'xk6-cable',
-    description:
-      'A k6 extension for testing Action Cable and AnyCable functionality.',
+    description: 'Test Action Cable and AnyCable functionality',
     url: 'https://github.com/anycable/xk6-cable',
     logo: '',
     author: {
@@ -508,8 +503,7 @@ const extensions = [
   },
   {
     name: 'xk6-output-kafka',
-    description:
-      'A k6 output extension to export k6 results in real-time to Kafka.',
+    description: 'Export k6 results in real-time to Kafka',
     url: 'https://github.com/grafana/xk6-output-kafka',
     logo: '',
     author: {
@@ -521,7 +515,7 @@ const extensions = [
   },
   {
     name: 'xk6-output-timescaledb',
-    description: 'A k6 output extension to export k6 results to TimescaleDB.',
+    description: 'Export k6 results to TimescaleDB',
     url: 'https://github.com/grafana/xk6-output-timescaledb',
     logo: '',
     author: {
