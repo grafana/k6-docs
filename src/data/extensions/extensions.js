@@ -238,8 +238,7 @@ const extensions = [
   },
   {
     name: 'xk6-client-prometheus-remote',
-    description:
-      'Test Prometheus Remote Write performance',
+    description: 'Test Prometheus Remote Write performance',
     url: 'https://github.com/grafana/xk6-client-prometheus-remote',
     logo: '',
     author: {
@@ -299,8 +298,7 @@ const extensions = [
   },
   {
     name: 'xk6-counter',
-    description:
-      'Share and increment a counter between VUs',
+    description: 'Share and increment a counter between VUs',
     url: 'https://github.com/mstoykov/xk6-counter',
     logo: '',
     author: {
@@ -408,8 +406,7 @@ const extensions = [
   },
   {
     name: 'xk6-jose',
-    description:
-      'Javascript Object Signing and Encryption (JOSE) standards',
+    description: 'Javascript Object Signing and Encryption (JOSE) standards',
     url: 'https://github.com/szkiba/xk6-jose',
     logo: '',
     author: {
@@ -482,8 +479,7 @@ const extensions = [
   },
   {
     name: 'xk6-dashboard',
-    description:
-      'Create a web-based metrics dashboard',
+    description: 'Create a web-based metrics dashboard',
     url: 'https://github.com/szkiba/xk6-dashboard',
     logo: '',
     author: {
@@ -495,8 +491,7 @@ const extensions = [
   },
   {
     name: 'xk6-cable',
-    description:
-      'Test Action Cable and AnyCable functionality',
+    description: 'Test Action Cable and AnyCable functionality',
     url: 'https://github.com/anycable/xk6-cable',
     logo: '',
     author: {
@@ -508,8 +503,7 @@ const extensions = [
   },
   {
     name: 'xk6-output-kafka',
-    description:
-      'Export k6 results in real-time to Kafka',
+    description: 'Export k6 results in real-time to Kafka',
     url: 'https://github.com/grafana/xk6-output-kafka',
     logo: '',
     author: {
