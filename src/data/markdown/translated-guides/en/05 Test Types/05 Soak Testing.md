@@ -97,6 +97,7 @@ Soak testing is the last major step on the road to building reliable systems.
 
 ## See also
 
+- [Finding .NET Memory Leaks through Soak Testing](https://k6.io/blog/resolve-memory-leaks-with-soak-testing-and-k6/)
 - [Running large tests](/testing-guides/running-large-tests)
 
 <LdScript script='{

@@ -197,6 +197,7 @@ This feature is only available for local `k6 run` tests for now, though we plan 
 - [Using the JUnit output with Azure Test Plan](https://medium.com/microsoftazure/load-testing-with-azure-devops-and-k6-839be039b68a)
 - [Using the JUnit output with TestRail](https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck)
 - [handleSummary and custom Slack integration](https://medium.com/geekculture/k6-custom-slack-integration-metrics-are-the-magic-of-tests-527aaf613595)
+- [Reporting to Xray](https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6)
 - [HTML reporter](https://github.com/benc-uk/k6-reporter)
 
 <Collapsible title="Summary export to a JSON file (Discouraged)">
