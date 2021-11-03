@@ -1,9 +1,9 @@
 ---
 title: "k6/x/browser"
-excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 while supporting core k6 features"
+excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 while supporting core k6 features. You can now interact with the browser and collect frontend metrics as part of your k6 tests."
 ---
 
-[xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end testing to k6 while supporting core k6 features. You can now mix browser interactions and protocol-based requests in your k6 tests.
+[xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end testing to k6 while supporting core k6 features. You can now interact with the browser and collect frontend metrics as part of your k6 tests.
 
 <CodeGroup labels={[]}>
 
@@ -23,7 +23,19 @@ export default function () {
 
 </CodeGroup>
 
-## APIs
+## Installation
+
+xk6-browser was initially developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [xk6-browser API](#browser-apis) in your k6 tests.
+
+```bash
+# install xk6
+go install github.com/grafana/xk6/cmd/xk6@latest
+
+# build the k6 binary
+xk6 build --with github.com/grafana/xk6-browser
+```
+
+## Browser APIs
 
 `xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) to instrument and interact with the browser. The API aims for compability with the [Playwright API](https://playwright.dev/docs/api/class-playwright/):
 
