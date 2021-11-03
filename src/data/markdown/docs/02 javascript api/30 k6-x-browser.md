@@ -27,7 +27,6 @@ export default function () {
 
 `xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) to instrument and interact with the browser. The API aims for compability with the [Playwright API](https://playwright.dev/docs/api/class-playwright/):
 
-
 | Class | Support | Missing Playwright APIs |
 | - | :-: | - |
 | [Browser](/javascript-api/k6-x-browser/browser/) | ✅ | [`on()`](https://playwright.dev/docs/api/class-browser#browser-event-disconnected) (dependent on event-loop support in k6), [`startTracing()`](https://playwright.dev/docs/api/class-browser#browser-start-tracing), [`stopTracing()`](https://playwright.dev/docs/api/class-browser#browser-stop-tracing) |
