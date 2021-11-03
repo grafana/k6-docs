@@ -57,7 +57,7 @@ Meta information and execution details about the current running [scenario](/usi
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | name                | string  | The assigned name of the running scenario. |
-| executor            | string  | The name of the running [Executor](https://k6.io/docs/using-k6/scenarios/#executors) type. |
+| executor            | string  | The name of the running [Executor](/using-k6/scenarios/#executors) type. |
 | startTime           | integer | The Unix timestamp in milliseconds when the scenario started. |
 | progress            | float   | Percentage in a 0 to 1 interval of the scenario progress. |
 | iterationInInstance | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the current instance. |
@@ -74,6 +74,13 @@ Meta information and execution details about the current vu and iteration.
 | iterationInScenario | integer | The identifier of the iteration in the current scenario. |
 | idInInstance        | integer | The identifier of the VU across the instance. |
 | idInTest            | integer | The globally unique (across the whole test run) identifier of the VU. |
+| tags                | object  | The map that gives control over [VU's Tags](/using-k6/tags-and-groups/#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
+
+<Collapsible title="Setting vu.tags">
+Setting a Tag with the same key as a [system tag](/using-k6/options#system-tags) is allowed, but it requires attention to avoid unexpected results. Overwriting system tags will not throw an error, but in most cases will not actually change the value of the emitted metrics as expected. For example, trying to set the `url` tag value will not result in a changed tag value when `http.get()` is called, since the tag value is determined by the HTTP request itself. However, it will add the tag `url` to the metric samples emitted by a `check()` or `metric.add()`, which is probably not the desired behavior. On the other hand, setting the `name` tag will work as expected, since that was already supported for `http.*` methods, for the purposes of the [URL Grouping](/using-k6/http-requests/#url-grouping) feature.
+
+Not all the types are accepted as a tag value: k6 supports strings, numbers and boolean types. Under the hood, the `tags` object handles a Tag as a `String` key-value pair, so all the types will be implicitly converted into a string. If one of the denied types is used (e.g. Object or Array) and the [`throw` option](/using-k6/options/#throw) is set, an exception will be thrown. Otherwise, only a warning is printed and the tag value will be discarded.
+</Collapsible>
 
 ## Examples and use cases
 
@@ -131,6 +138,25 @@ export default function () {
   } else {
     // do some other logic in the others
   }
+}
+```
+
+</CodeGroup>
+
+### Tags
+The `vu.tags` property can be used for getting or setting [VU's tags](/using-k6/tags-and-groups/#tags).
+
+<CodeGroup labels={["tags-control.js"]} lineNumbers={[true]}>
+
+```javascript
+import exec from 'k6/execution';
+
+export default function () {
+  exec.vu.tags['mytag'] = 'value1';
+  exec.vu.tags['mytag2'] = 2;
+
+  // the metrics these HTTP requests emit will get tagged with `mytag` and `mytag2`:
+  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
 }
 ```
 
