@@ -431,7 +431,7 @@ export default function Integrations({
                   },
                   {
                     picture: testRailImgData,
-                    title: 'Test Rail',
+                    title: 'TestRail',
                     description: 'Introducing TestRail in your k6 tests',
                     url: 'https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck',
                   },
