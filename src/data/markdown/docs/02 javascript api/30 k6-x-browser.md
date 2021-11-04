@@ -41,6 +41,26 @@ xk6 build --with github.com/grafana/xk6-browser
 
 Note that because k6 does not run in NodeJS, an `xk6-browser` API will slightly differ from its Playwright counterpart.
 
+<Glossary>
+
+- 🚧  [Browser](/javascript-api/k6-x-browser/browser/)
+- 🚧  [BrowserContext](/javascript-api/k6-x-browser/browsercontext/)
+- 🚧  [BrowserType](/javascript-api/k6-x-browser/browsertype/)
+- 🚧  [ElementHandle](/javascript-api/k6-x-browser/elementhandle/)
+- 🚧  [Frame](/javascript-api/k6-x-browser/frame/)
+- ✅  [JSHandle](/javascript-api/k6-x-browser/jshandle)
+- ✅  [Keyboard](/javascript-api/k6-x-browser/keyboard)
+- ✅  [Mouse](/javascript-api/k6-x-browser/mouse/)
+- 🚧  [Page](/javascript-api/k6-x-browser/page/)
+- 🚧  [Request](/javascript-api/k6-x-browser/request/)
+- 🚧  [Response](/javascript-api/k6-x-browser/response/)
+- 🚧  [Browser](/javascript-api/k6-x-browser/browser/)
+- ✅  [Touchscreen](/javascript-api/k6-x-browser/touchscreen/)
+
+</Glossary>
+
+TODO: choose whether the above or below option, or any variance.
+
 | k6 Class |  Missing Playwright APIs |
 | - |  - |
 | [Browser](/javascript-api/k6-x-browser/browser/) | [`on()`](https://playwright.dev/docs/api/class-browser#browser-event-disconnected) (dependent on event-loop support in k6), [`startTracing()`](https://playwright.dev/docs/api/class-browser#browser-start-tracing), [`stopTracing()`](https://playwright.dev/docs/api/class-browser#browser-stop-tracing) |
@@ -74,7 +94,6 @@ The following Playwright APIs are not supported yet:
 - [Logger](https://playwright.dev/docs/api/class-logger) 
 - [Route](https://playwright.dev/docs/api/class-route)
 - [Selectors](https://playwright.dev/docs/api/class-selectors)
-- [Touchscreen](https://playwright.dev/docs/api/class-touchscreen)
 - [Tracing](https://playwright.dev/docs/api/class-tracing)
 - [Video](https://playwright.dev/docs/api/class-video)
 - [WebSocket](https://playwright.dev/docs/api/class-websocket)

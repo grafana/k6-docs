@@ -11,7 +11,7 @@ excerpt: "xk6-browser: Browser Class"
 > 
 > Note that k6 APIs are synchronous.
 
-### Supported APIs
+## Supported APIs
 
 | Method | Playwright Relevant Distintions |
 | - |  - |
@@ -22,10 +22,15 @@ excerpt: "xk6-browser: Browser Class"
 | [browser.newPage([options])](https://playwright.dev/docs/api/class-browser#browser-new-page) |   |
 | [browser.version()](https://playwright.dev/docs/api/class-browser#browser-version) |   |
 
+### Missing Playwright APIs
+
+- [on()](https://playwright.dev/docs/api/class-browsertype/#browser-type-connect): dependent on event-loop support in k6.
+- [startTracing()](https://playwright.dev/docs/api/class-browser#browser-start-tracing)
+- [stopTracing()](https://playwright.dev/docs/api/class-browser#browser-stop-tracing)
+
 🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
 
-### Example
-
+## Examples
 
 ```javascript
 import launcher from 'k6/x/browser';

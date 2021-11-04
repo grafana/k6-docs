@@ -11,7 +11,7 @@ excerpt: "xk6-browser: BrowserContext Class"
 > 
 > Note that k6 APIs are synchronous.
 
-### Supported APIs
+## Supported APIs
 
 | Method | Playwright Relevant Distintions |
 | - |  - |
@@ -22,10 +22,36 @@ excerpt: "xk6-browser: BrowserContext Class"
 | [browserContext.setDefaultNavigationTimeout(timeout)](https://playwright.dev/docs/api/class-browsercontext#browser-context-set-default-navigation-timeout) |   |
 | [browserContext.request](https://playwright.dev/docs/api/class-browsercontext#browser-context-request) |   |
 
+### Missing Playwright APIs
+
+<Glossary>
+
+- [addCookies()](https://playwright.dev/docs/api/class-browsercontext/#browsercontextaddcookiescookies)
+- [backgroundPages()](https://playwright.dev/docs/api/class-browsercontext#browser-context-background-pages)
+- [cookies()](https://playwright.dev/docs/api/class-browsercontext#browser-context-cookies)
+- [exposeBinding()](https://playwright.dev/docs/api/class-browsercontext#browser-context-expose-binding)
+- [exposeFunction()](https://playwright.dev/docs/api/class-browsercontext#browser-context-expose-function)
+- [newCDPSession()](https://playwright.dev/docs/api/class-browsercontext#browser-context-new-cdp-session)
+- [serviceWorkers()](https://playwright.dev/docs/api/class-browsercontext/#browser-context-service-workers)
+- [storageState()](https://playwright.dev/docs/api/class-browsercontext#browser-context-storage-state)
+- [tracing](https://playwright.dev/docs/api/class-browsercontext#browser-context-tracing)
+
+</Glossary>
+
+The next APIs depends on event-loop support in k6:
+
+<Glossary>
+
+- [on()](https://playwright.dev/docs/api/class-browsercontext/#browser-context-event-background-page)
+- [route()](https://playwright.dev/docs/api/class-browsercontext/#browser-context-route)
+- [unroute()](https://playwright.dev/docs/api/class-browsercontext#browser-context-unroute)
+- [waitForEvent()](https://playwright.dev/docs/api/class-browsercontext#browser-context-wait-for-event)
+
+</Glossary>
+
 🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
 
-### Example
-
+## Examples
 
 ```javascript
 import launcher from 'k6/x/browser';
