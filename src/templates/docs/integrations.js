@@ -406,19 +406,19 @@ export default function Integrations({
                 dashboardTitle={'Test management'}
                 linksData={[
                   {
-                    picture: azureTestImg,
+                    image: azureTestImg,
                     title: 'Azure Test Plan',
                     description: 'Load Testing with Azure DevOps and k6',
                     url: 'https://medium.com/microsoftazure/load-testing-with-azure-devops-and-k6-839be039b68a',
                   },
                   {
-                    picture: testRailImg,
+                    image: testRailImg,
                     title: 'TestRail',
                     description: 'Introducing TestRail in your k6 tests',
                     url: 'https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck',
                   },
                   {
-                    picture: xrayImg,
+                    image: xrayImg,
                     title: 'Xray',
                     description:
                       'Integrating with Xray. Validate test results in JIRA.',
