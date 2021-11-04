@@ -132,6 +132,8 @@ When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can co
 | `K6_INFLUXDB_PASSWORD`       | InfluxDB user password                                                                                                                                                                                                                                                                                                                                                                               |         |
 | `K6_INFLUXDB_INSECURE`       | If `true`, it will skip https certificate verification                                                                                                                                                                                                                                                                                                                                               | `false` |
 | `K6_INFLUXDB_TAGS_AS_FIELDS` | A comma-separated string to set k6 metrics as non-indexable [fields](https://docs.influxdata.com/influxdb/v1.8/concepts/glossary/#field) (instead of tags). An optional type can be specified using `:type` as in `vu:int` will make the field integer. The possible field types are `int`, `bool`, `float` and `string`, which is the default. Example: `vu:int,iter:int,url:string,event_time:int` |         |
+| `K6_INFLUXDB_PUSH_INTERVAL`     | The flush's frequency of the `k6` metrics. | `1s` |
+| `K6_INFLUXDB_CONCURRENT_WRITES` | Number of concurrent requests for flushing data. It is useful to not block the process when a request takes more than the expected time (more than push interval). | `4` |
 
 ## See also
 
