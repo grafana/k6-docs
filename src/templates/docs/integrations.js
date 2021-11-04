@@ -151,6 +151,15 @@ export default function Integrations({
   const contentContainerRef = useRef(null);
 
   const {
+    azureTestImg: {
+      childImageSharp: { fixed: azureTestImgData },
+    },
+    testRailImg: {
+      childImageSharp: { fixed: testRailImgData },
+    },
+    xrayImg: {
+      childImageSharp: { fixed: xrayImgData },
+    },
     vscodeImg: {
       childImageSharp: { fixed: vscodeImgData },
     },
@@ -192,6 +201,31 @@ export default function Integrations({
       azureImg: file(
         absolutePath: { regex: "/images/doc-integrations/azure/" }
       ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      azureTestImg: file(
+        absolutePath: { regex: "/images/doc-integrations/azuretest/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      testRailImg: file(
+        absolutePath: { regex: "/images/doc-integrations/testrail/" }
+      ) {
+        childImageSharp {
+          fixed(width: 60, height: 60, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+      xrayImg: file(absolutePath: { regex: "/images/doc-integrations/xray/" }) {
         childImageSharp {
           fixed(width: 60, height: 60, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
@@ -385,6 +419,30 @@ export default function Integrations({
                   'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
                 }
                 iconsData={iconsDataSet2}
+              />
+              <ExternalLinksDashboard
+                dashboardTitle={'Test management'}
+                linksData={[
+                  {
+                    picture: azureTestImgData,
+                    title: 'Azure Test Plan',
+                    description: 'Load Testing with Azure DevOps and k6',
+                    url: 'https://medium.com/microsoftazure/load-testing-with-azure-devops-and-k6-839be039b68a',
+                  },
+                  {
+                    picture: testRailImgData,
+                    title: 'Test Rail',
+                    description: 'Introducing TestRail in your k6 tests',
+                    url: 'https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck',
+                  },
+                  {
+                    picture: xrayImgData,
+                    title: 'Xray',
+                    description:
+                      'Integrating with Xray. Validate test results in JIRA.',
+                    url: 'https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6',
+                  },
+                ]}
               />
               <ExternalLinksDashboard
                 dashboardTitle={'k6 Extensions'}
