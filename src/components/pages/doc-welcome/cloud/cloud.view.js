@@ -11,24 +11,18 @@ export const Cloud = (props) => {
     btnTarget,
     btnLink = '/cloud/',
   } = props;
-  const {
-    file: {
-      childImageSharp: { fluid },
-    },
-  } = useStaticQuery(graphql`
+  const { file: image } = useStaticQuery(graphql`
     query cloudImageQuery {
       file(name: { eq: "cloud-promo@2x" }) {
         childImageSharp {
-          fluid(maxWidth: 370) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 370)
         }
       }
     }
   `);
   return (
     <CtaDoc
-      image={fluid}
+      image={image}
       title={title}
       description={description}
       btnText={btnText}

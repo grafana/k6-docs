@@ -118,7 +118,7 @@ const getCurrentCta = (ctaData, ctaType) => {
 const createMetaImagePath = (image, defaultSiteUrl, defaultImage) => {
   switch (typeof image) {
     case 'object':
-      return defaultSiteUrl + image.childImageSharp.fluid.src;
+      return defaultSiteUrl + image.childImageSharp.resize.src;
     case 'string':
       return defaultSiteUrl + image;
     default:

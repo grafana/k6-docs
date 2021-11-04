@@ -1,5 +1,5 @@
 import { Heading } from 'components/shared/heading';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import styles from './external-links-dashboard.module.scss';
@@ -15,11 +15,11 @@ export const ExternalLinksDashboard = ({
     </Heading>
     {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
     <ul className={styles.dashboard}>
-      {linksData.map(({ picture, title, description, url }, i) => (
+      {linksData.map(({ image, title, description, url }, i) => (
         <li className={styles.linkWrapper} key={`exb-${i}`}>
-          {picture && (
+          {image && (
             <div className={styles.pictureWrapper}>
-              <Img fixed={picture} />
+              <GatsbyImage image={getImage(image)} />
             </div>
           )}
           <div className={styles.content}>

@@ -4,7 +4,8 @@ import {
   ItemCard,
   styles as itemCardStyles,
 } from 'components/shared/item-card';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+
 import * as React from 'react';
 
 import styles from './item-cards-row.module.scss';
@@ -15,11 +16,13 @@ export const ItemCardsRow = ({ blockTitle, cardsData, label, linkText }) => (
       {blockTitle}
     </Heading>
     <div className={'row'}>
-      {cardsData.map(({ title, text, picture, ...rest }, i) => (
+      {cardsData.map(({ title, text, image, ...rest }, i) => (
         <div className={`col-md-4 ${label}`} key={`cardrow-${i}`}>
           <ItemCard {...rest} label={styles.itemCardWrapper}>
             <div className={itemCardStyles.content}>
-              {picture && <Img fluid={picture} className={styles.image} />}
+              {image && (
+                <GatsbyImage image={getImage(image)} className={styles.image} />
+              )}
               <Heading className={itemCardStyles.title} tag={'h3'} size={'md'}>
                 {title}
               </Heading>
