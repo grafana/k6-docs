@@ -120,7 +120,7 @@ Currently, k6 automatically creates the following tags by default:
 | `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
 | `scenario`    | the name of the scenario where the metric was emitted                                                                                                                             |
 | `service`     | the RPC service name for gRPC                                                                                                                                                     |
-| `rpc_type`    | one of `unary`, `server_streaming`, `client_streaming` or `bidirectional_streaming` for gRPC. *Note:*  only `unary` requests are currently supported.                             |
+| `expected_response` | "true" or "false" based on the [responseCallback](/javascript-api/k6-http/setresponsecallback-callback/) used, by default this checks that the status is 2xx or 3xx |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)

@@ -1239,7 +1239,7 @@ CLI. Available in `k6 run` and `k6 cloud` commands
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`, `check`,`error`,`tls_version`,`scenario`,`service`,`rpc_type`,`expected_response` |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`,`check`,`error`,`error_code`,`tls_version`,`scenario`,`service`,`expected_response` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

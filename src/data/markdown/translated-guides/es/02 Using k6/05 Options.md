@@ -1088,7 +1088,7 @@ Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema es
 
 | Env              | CLI             | Code / Config file | Default                                                                                                      |
 | ---------------- | --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`, `check`,`error`,`tls_version`,`scenario`,`service`,`rpc_type` |
+| `K6_SYSTEM_TAGS` | `--system-tags` | `systemTags`       | `proto`,`subproto`,`status`,`method`,`url`,`name`,`group`,`check`,`error`,`error_code`,`tls_version`,`scenario`,`service`,`expected_response` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
