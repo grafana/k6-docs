@@ -15,10 +15,10 @@ excerpt: "xk6-browser: BrowserType Class"
 
 | Method | Playwright Relevant Distintions |
 | - |  - |
-| [browserType.executablePath()](https://playwright.dev/docs/api/class-browsertype#browser-type-executable-path) |   |
-| [browserType.launch([options])](https://playwright.dev/docs/api/class-browsertype#browser-type-launch) |   |
-| [browserType.launchPersistentContext(userDataDir[, options])](https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context) |   |
-| [browserType.name()](https://playwright.dev/docs/api/class-browsertype#browser-type-name) |   |
+| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-executable-path" target="_blank" >browserType.executablePath()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch" target="_blank" >browserType.launch([options])</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context" target="_blank" >browserType.launchPersistentContext(userDataDir[, options])</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-name" target="_blank" >browserType.name()</a> |   |
 
 ### Missing Playwright APIs
 
@@ -54,3 +54,23 @@ export default function () {
   browser.close();
 }
 ```
+
+### Browser APIs
+
+<Glossary>
+
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [BrowserContext](/javascript-api/k6-x-browser/browsercontext/)
+-  [BrowserType](/javascript-api/k6-x-browser/browsertype/)
+-  [ElementHandle](/javascript-api/k6-x-browser/elementhandle/)
+-  [Frame](/javascript-api/k6-x-browser/frame/)
+-  [JSHandle](/javascript-api/k6-x-browser/jshandle)
+-  [Keyboard](/javascript-api/k6-x-browser/keyboard)
+-  [Mouse](/javascript-api/k6-x-browser/mouse/)
+-  [Page](/javascript-api/k6-x-browser/page/)
+-  [Request](/javascript-api/k6-x-browser/request/)
+-  [Response](/javascript-api/k6-x-browser/response/)
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [Touchscreen](/javascript-api/k6-x-browser/touchscreen/)
+
+</Glossary>

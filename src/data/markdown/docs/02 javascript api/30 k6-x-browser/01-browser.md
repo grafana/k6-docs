@@ -15,12 +15,12 @@ excerpt: "xk6-browser: Browser Class"
 
 | Method | Playwright Relevant Distintions |
 | - |  - |
-| [browser.close()](https://playwright.dev/docs/api/class-browser#browser-close) |   |
-| [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts) |   |
-| [browser.isConnected()](https://playwright.dev/docs/api/class-browser#browser-is-connected) |   |
-| [browser.newContext([options])](https://playwright.dev/docs/api/class-browser#browser-new-context) |   |
-| [browser.newPage([options])](https://playwright.dev/docs/api/class-browser#browser-new-page) |   |
-| [browser.version()](https://playwright.dev/docs/api/class-browser#browser-version) |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-close" target="_blank" >browser.close()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-contexts" target="_blank" >browser.contexts()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-is-connected" target="_blank" >browser.isConnected()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-new-context" target="_blank" >browser.newContext([options])</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-new-page" target="_blank" >browser.newPage([options])</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-version" target="_blank" >browser.version()]</a> |   |
 
 ### Missing Playwright APIs
 
@@ -61,3 +61,23 @@ export default function () {
   browser.close();
 }
 ```
+
+### Browser APIs
+
+<Glossary>
+
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [BrowserContext](/javascript-api/k6-x-browser/browsercontext/)
+-  [BrowserType](/javascript-api/k6-x-browser/browsertype/)
+-  [ElementHandle](/javascript-api/k6-x-browser/elementhandle/)
+-  [Frame](/javascript-api/k6-x-browser/frame/)
+-  [JSHandle](/javascript-api/k6-x-browser/jshandle)
+-  [Keyboard](/javascript-api/k6-x-browser/keyboard)
+-  [Mouse](/javascript-api/k6-x-browser/mouse/)
+-  [Page](/javascript-api/k6-x-browser/page/)
+-  [Request](/javascript-api/k6-x-browser/request/)
+-  [Response](/javascript-api/k6-x-browser/response/)
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [Touchscreen](/javascript-api/k6-x-browser/touchscreen/)
+
+</Glossary>

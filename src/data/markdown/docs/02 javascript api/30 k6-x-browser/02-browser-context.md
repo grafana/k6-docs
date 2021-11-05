@@ -15,12 +15,12 @@ excerpt: "xk6-browser: BrowserContext Class"
 
 | Method | Playwright Relevant Distintions |
 | - |  - |
-| [browserContext.addInitScript(script[, arg])](https://playwright.dev/docs/api/class-browsercontext#browser-context-add-init-script) |   |
-| [browserContext.close()](https://playwright.dev/docs/api/class-browsercontext#browser-context-close) |   |
-| [browserContext.newPage()](https://playwright.dev/docs/api/class-browsercontext#browser-context-new-page) |   |
-| [browserContext.pages()](https://playwright.dev/docs/api/class-browsercontext#browser-context-pages) |   |
-| [browserContext.setDefaultNavigationTimeout(timeout)](https://playwright.dev/docs/api/class-browsercontext#browser-context-set-default-navigation-timeout) |   |
-| [browserContext.request](https://playwright.dev/docs/api/class-browsercontext#browser-context-request) |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-add-init-script" target="_blank">browserContext.addInitScript(script[, arg])</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-close" target="_blank" >browserContext.close()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-new-page" target="_blank" >browserContext.newPage()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-pages" target="_blank" >browserContext.pages()</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-default-navigation-timeout" target="_blank" >browserContext.setDefaultNavigationTimeout(timeout)</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-request" target="_blank" >browserContext.request</a> |   |
 
 ### Missing Playwright APIs
 
@@ -65,3 +65,23 @@ export default function () {
   browser.close();
 }
 ```
+
+### Browser APIs
+
+<Glossary>
+
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [BrowserContext](/javascript-api/k6-x-browser/browsercontext/)
+-  [BrowserType](/javascript-api/k6-x-browser/browsertype/)
+-  [ElementHandle](/javascript-api/k6-x-browser/elementhandle/)
+-  [Frame](/javascript-api/k6-x-browser/frame/)
+-  [JSHandle](/javascript-api/k6-x-browser/jshandle)
+-  [Keyboard](/javascript-api/k6-x-browser/keyboard)
+-  [Mouse](/javascript-api/k6-x-browser/mouse/)
+-  [Page](/javascript-api/k6-x-browser/page/)
+-  [Request](/javascript-api/k6-x-browser/request/)
+-  [Response](/javascript-api/k6-x-browser/response/)
+-  [Browser](/javascript-api/k6-x-browser/browser/)
+-  [Touchscreen](/javascript-api/k6-x-browser/touchscreen/)
+
+</Glossary>
