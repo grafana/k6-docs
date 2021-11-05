@@ -14,7 +14,7 @@ excerpt: "xk6-browser: ElementHandle Class"
 
 ## Supported APIs
 
-Support for the [`ElementHandle` Playwright API](https://playwright.dev/docs/api/class-elementhandle) except for the missing APIs listed above.
+Support for the [`ElementHandle` Playwright API](https://playwright.dev/docs/api/class-elementhandle) except for the missing APIs listed below.
 
 ### Missing Playwright APIs
 

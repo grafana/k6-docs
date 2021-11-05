@@ -13,7 +13,7 @@ excerpt: "xk6-browser: Frame Class"
 
 ## Supported APIs
 
-Support for the [`Frame` Playwright API](https://playwright.dev/docs/api/class-frame) except for the missing APIs listed above.
+Support for the [`Frame` Playwright API](https://playwright.dev/docs/api/class-frame) except for the following APIs:
 
 ### Missing Playwright APIs
 

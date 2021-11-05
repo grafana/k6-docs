@@ -13,7 +13,7 @@ excerpt: "xk6-browser: Page Class"
 
 ## Supported APIs
 
-Support for the [`Page` Playwright API](https://playwright.dev/docs/api/class-page) except for the missing APIs listed above.
+Support for the [`Page` Playwright API](https://playwright.dev/docs/api/class-page) except for the following APIs:
 
 ### Missing Playwright APIs
 

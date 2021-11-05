@@ -14,7 +14,7 @@ excerpt: "xk6-browser: Response Class"
 
 ## Supported APIs
 
-Support for the [`Response` Playwright API](https://playwright.dev/docs/api/class-response) except for the missing APIs listed above.
+Support for the [`Response` Playwright API](https://playwright.dev/docs/api/class-response) except for the following APIs:
 
 ### Missing Playwright APIs
 

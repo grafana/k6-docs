@@ -13,7 +13,7 @@ excerpt: "xk6-browser: Request Class"
 
 ## Supported APIs
 
-Support for the [`Request` Playwright API](https://playwright.dev/docs/api/class-request) except for the missing APIs listed above.
+Support for the [`Request` Playwright API](https://playwright.dev/docs/api/class-request) except for the following APIs:
 
 ### Missing Playwright APIs
 
