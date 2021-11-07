@@ -21,7 +21,7 @@ Support for the [`ElementHandle` Playwright API](https://playwright.dev/docs/api
 
 </Glossary>
 
-🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
+<BrowserWIP/>
 
 ## Examples
 

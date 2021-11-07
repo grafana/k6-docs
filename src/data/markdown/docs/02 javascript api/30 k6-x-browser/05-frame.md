@@ -23,6 +23,6 @@ Support for the [`Frame` Playwright API](https://playwright.dev/docs/api/class-f
 
 </Glossary>
 
-🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
+<BrowserWIP/>
 
 <BrowserClassList/>

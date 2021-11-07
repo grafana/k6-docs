@@ -22,7 +22,7 @@ excerpt: "xk6-browser: Browser Class"
 - [startTracing()](https://playwright.dev/docs/api/class-browser#browser-start-tracing)
 - [stopTracing()](https://playwright.dev/docs/api/class-browser#browser-stop-tracing)
 
-🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
+<BrowserWIP/>
 
 ## Examples
 

@@ -16,6 +16,6 @@ Support for the [`Request` Playwright API](https://playwright.dev/docs/api/class
 - [redirectedFrom()](https://playwright.dev/docs/api/class-request/#request-redirected-from)
 - [redirectedTo()](https://playwright.dev/docs/api/class-request/#request-redirected-to)
 
-🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
+<BrowserWIP/>
 
 <BrowserClassList/>

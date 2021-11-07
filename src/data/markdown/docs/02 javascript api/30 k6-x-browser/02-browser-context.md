@@ -43,7 +43,7 @@ The next APIs depends on event-loop support in k6:
 
 </Glossary>
 
-🚧 `xk6-browser` is in Beta - we are working to cover more Playwright APIs.
+<BrowserWIP/>
 
 ## Examples
 
