@@ -7,6 +7,7 @@ import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
 import { HeadingLandmark } from 'components/shared/heading';
 import BrowserCompatibility from 'components/shared/browser-compatibility';
+import BrowserClassList from 'components/shared/browser-class-list';
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
 import TableWrapper from 'components/shared/table-wrapper';
@@ -29,6 +30,7 @@ const componentsForNativeReplacement = {
   Collapsible,
   CodeInline,
   BrowserCompatibility,
+  BrowserClassList,
 };
 
 export const DocPageContent = ({ label, content, mod, version }) => {
