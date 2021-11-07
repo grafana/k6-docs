@@ -6,6 +6,9 @@ import Blockquote from 'components/shared/blockquote';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
 import { HeadingLandmark } from 'components/shared/heading';
+import BrowserCompatibility from 'components/shared/browser-compatibility';
+import BrowserClassList from 'components/shared/browser-class-list';
+import BrowserWIP from 'components/shared/browser-wip';
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
 import TableWrapper from 'components/shared/table-wrapper';
@@ -27,6 +30,9 @@ const componentsForNativeReplacement = {
   CodeGroup,
   Collapsible,
   CodeInline,
+  BrowserCompatibility,
+  BrowserClassList,
+  BrowserWIP,
 };
 
 export const DocPageContent = ({ label, content, mod, version }) => {
