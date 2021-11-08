@@ -525,6 +525,18 @@ const extensions = [
     official: false,
     categories: ['Reporting'],
   },
+  {
+    name: 'xk6-telegram',
+    description: 'Notification use telegram and get a message',
+    url: 'https://github.com/Maksimall89/xk6-telegram',
+    logo: '',
+    author: {
+      name: 'Maksimall89',
+      url: 'https://github.com/Maksimall89',
+    },
+    official: false,
+    categories: ['Reporting', 'Messaging'],
+  },
 ];
 
 export default extensions;
