@@ -81,18 +81,6 @@ const extensions = [
     categories: ['Data'],
   },
   {
-    name: 'xk6-say',
-    description: 'Say hello',
-    url: 'https://github.com/dgzlopes/xk6-say',
-    logo: '',
-    author: {
-      name: 'Daniel González',
-      url: 'https://github.com/dgzlopes',
-    },
-    official: false,
-    categories: ['Misc'],
-  },
-  {
     name: 'xk6-distributed-tracing',
     description: 'Distributed tracing',
     url: 'https://github.com/k6io/xk6-distributed-tracing',
@@ -527,7 +515,7 @@ const extensions = [
   },
   {
     name: 'xk6-telegram',
-    description: 'Notification use telegram and get a message',
+    description: 'Interact with Telegram Bots',
     url: 'https://github.com/Maksimall89/xk6-telegram',
     logo: '',
     author: {
