@@ -16,21 +16,16 @@ export const ExternalLinksDashboard = ({
     {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
     <ul className={styles.dashboard}>
       {linksData.map(({ image, title, description, url }, i) => (
-        <li className={styles.linkWrapper} key={`exb-${i}`}>
-          {image && (
-            <div className={styles.pictureWrapper}>
-              <GatsbyImage image={getImage(image)} />
-            </div>
-          )}
-          <div className={styles.content}>
+        <li key={`exb-${i}`}>
+          <a className={styles.link} href={url}>
+            {image && (
+              <div className={styles.pictureWrapper}>
+                <GatsbyImage image={getImage(image)} />
+              </div>
+            )}
             <p className={styles.linkTitle}>{title}</p>
             <p className={styles.linkDescription}>{description}</p>
-            <p className={styles.link}>
-              <a className={'link'} href={url}>
-                {url}
-              </a>
-            </p>
-          </div>
+          </a>
         </li>
       ))}
     </ul>

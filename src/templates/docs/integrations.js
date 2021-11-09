@@ -170,8 +170,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -181,8 +181,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -190,8 +190,8 @@ export default function Integrations({
       xrayImg: file(absolutePath: { regex: "/images/doc-integrations/xray/" }) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -201,8 +201,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -212,8 +212,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -223,8 +223,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -234,8 +234,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -245,8 +245,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -254,8 +254,8 @@ export default function Integrations({
       harImg: file(absolutePath: { regex: "/images/doc-integrations/har/" }) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -265,8 +265,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -276,8 +276,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -287,8 +287,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
