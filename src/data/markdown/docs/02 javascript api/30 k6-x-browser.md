@@ -9,7 +9,7 @@ excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 whi
     <strong>🚧 xk6-browser is in public <CodeInline>beta</CodeInline></strong>
   </p>
   <p>
-    Announced during ObservabilityCON 2021 on Nov 9th. We are currently focusing on fixing bugs and stability issues. Test reliability is our top goal. You're likely to run into bugs and instability issues when running tests using xk6-browser, we encourage you to <a href="https://github.com/grafana/xk6-browser/">report any issues that you find on Github</a>.
+    Announced during ObservabilityCON 2021 on Nov 9th. We are currently focusing on fixing bugs and stability issues. Test reliability is our top goal. You're likely to run into bugs and instability issues when running tests using xk6-browser, we encourage you to <a href="https://github.com/grafana/xk6-browser/">report any issues that you find on GitHub</a>.
   </p>
 </Blockquote>
 
@@ -39,11 +39,11 @@ xk6-browser is currently being developed as a [k6 extension](/extensions). You h
 
 ### Download a release binary
 
-The quickest way to get started is to [download a release binary from Github](https://github.com/grafana/xk6-browser/releases).
+The quickest way to get started is to [download a release binary from GitHub](https://github.com/grafana/xk6-browser/releases).
 
 ### Build from source
 
-If you're more adventurous or want to get the latest changes of xk6-browser, you can also build from source (just make sure you have a [Go toolchain](https://go101.org/article/go-toolchain.html) installed):
+If you're more adventurous or want to get the latest changes of xk6-browser, you can also build from source (just make sure you have a [Go Toolchain](https://go101.org/article/go-toolchain.html) installed):
 
 ```bash
 # install xk6
