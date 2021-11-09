@@ -50,7 +50,7 @@ xk6 will create the k6 binary in the local folder.
 
 ## Run the test
 
-Now, pass the Username, API key, and Remote Write Endpoint of the Grafana Cloud Prometheus Configuration to the k6 binary built with the extension as follow:
+Now, pass the Username, API key, and Remote Write Endpoint of the Grafana Cloud Prometheus Configuration to the k6 binary built with the extension as follows:
 
 ```bash
 K6_PROMETHEUS_USER=Your_Username \
