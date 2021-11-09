@@ -3,7 +3,7 @@ title: "k6/x/browser"
 shouldCreatePage: false
 ---
 
-[xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end testing to k6 while supporting core k6 features. You can now interact with the browser and collect frontend metrics as part of your k6 tests.
+[xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. You can now interact with the browser and collect frontend metrics as part of your k6 tests.
 
 | k6 Class |  Missing Playwright APIs |
 | - |  - |
