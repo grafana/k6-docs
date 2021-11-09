@@ -7,20 +7,28 @@ excerpt: "xk6-browser: Browser Class"
 
 ## Supported APIs
 
-| Method | Playwright Relevant Distintions |
+| Method | Playwright Relevant Distinctions |
 | - |  - |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-close" target="_blank" >browser.close()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-contexts" target="_blank" >browser.contexts()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-is-connected" target="_blank" >browser.isConnected()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-new-context" target="_blank" >browser.newContext([options])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-new-page" target="_blank" >browser.newPage([options])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browser#browser-version" target="_blank" >browser.version()]</a> |   |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-close" target="_blank" >browser.close()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-contexts" target="_blank" >browser.contexts()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-is-connected" target="_blank" >browser.isConnected()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-new-context" target="_blank" >browser.newContext([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-new-page" target="_blank" >browser.newPage([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-browser#browser-version" target="_blank" >browser.version()]</a> | - |
 
 ### Missing Playwright APIs
 
-- [on()](https://playwright.dev/docs/api/class-browsertype/#browser-type-connect): dependent on event-loop support in k6.
+- [newBrowserCDPSession()](https://playwright.dev/docs/api/class-browser#browser-new-browser-cdp-session)
 - [startTracing()](https://playwright.dev/docs/api/class-browser#browser-start-tracing)
 - [stopTracing()](https://playwright.dev/docs/api/class-browser#browser-stop-tracing)
+
+The following missing APIs depends on [event-loop support in k6](https://github.com/grafana/k6/issues/882):
+
+<Glossary>
+
+- [on()](https://playwright.dev/docs/api/class-browsertype/#browser-type-connect)
+
+</Glossary>
 
 <BrowserWIP/>
 

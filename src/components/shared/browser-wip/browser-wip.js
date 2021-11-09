@@ -3,7 +3,7 @@ import React from 'react';
 
 const BrowserWIP = () => (
   <p>
-    🚧 <CodeInline>xk6-browser</CodeInline> is in Beta - we are working to cover
+    🚧 xk6-browser is in <CodeInline>beta</CodeInline> - we are working to cover
     more Playwright APIs.
   </p>
 );

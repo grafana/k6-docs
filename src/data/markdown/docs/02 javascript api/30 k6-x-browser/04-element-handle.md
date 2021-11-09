@@ -16,7 +16,6 @@ Support for the [`ElementHandle` Playwright API](https://playwright.dev/docs/api
 
 - [$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector)
 - [$$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector-all)
-- [screenshot()](https://playwright.dev/docs/api/class-elementhandle#element-handle-screenshot)
 - [setInputFiles()](https://playwright.dev/docs/api/class-elementhandle#element-handle-set-input-files)
 
 </Glossary>
