@@ -237,15 +237,15 @@ const extensions = [
     categories: ['Observability'],
   },
   {
-    name: 'xk6-influxdbv2',
-    description: 'Export results to influxdb',
-    url: 'https://github.com/li-zhixin/xk6-influxdbv2',
+    name: 'xk6-output-influxdb',
+    description: 'Export results to InfluxDB v2',
+    url: 'https://github.com/grafana/xk6-output-influxdb',
     logo: '',
     author: {
-      name: 'li-zhixin',
-      url: 'https://github.com/li-zhixin',
+      name: '',
+      url: 'https://github.com/grafana',
     },
-    official: false,
+    official: true,
     categories: ['Data'],
   },
   {
