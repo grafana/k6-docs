@@ -7,7 +7,25 @@ excerpt: "xk6-browser: Frame Class"
 
 ## Supported APIs
 
-Support for the [`Frame` Playwright API](https://playwright.dev/docs/api/class-frame) except for the following APIs:
+| Method | Playwright Relevant Distinctions |
+| - |  - |
+| <a href="" target="_blank" >frame.$(selector[, options])</a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
+| <a href="" target="_blank" ></a> | - |
 
 ### Missing Playwright APIs
 
