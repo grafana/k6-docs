@@ -238,7 +238,7 @@ const extensions = [
   },
   {
     name: 'xk6-influxdbv2',
-    description: 'A k6 extension output to influxdb',
+    description: 'Export results to influxdb',
     url: 'https://github.com/li-zhixin/xk6-influxdbv2',
     logo: '',
     author: {
@@ -405,13 +405,13 @@ const extensions = [
     categories: ['Misc'],
   },
   {
-    name: 'xk6-prometheus',
-    description: 'Prometheus HTTP exporter',
-    url: 'https://github.com/szkiba/xk6-prometheus',
+    name: 'xk6-output-prometheus-remote',
+    description: 'Export results to Prometheus remote write endpoints',
+    url: 'https://github.com/grafana/xk6-output-prometheus-remote',
     logo: '',
     author: {
-      name: 'Iván Szkiba',
-      url: 'https://github.com/szkiba',
+      name: '',
+      url: 'https://github.com/grafana',
     },
     official: false,
     categories: ['Reporting', 'Observability'],
