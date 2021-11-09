@@ -7,11 +7,10 @@ excerpt: "xk6-browser: BrowserType Class"
 
 ## Supported APIs
 
-| Method | Playwright Relevant Distintions |
+| Method | Playwright Relevant Distinctions |
 | - |  - |
 | <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-executable-path" target="_blank" >browserType.executablePath()</a> |   |
 | <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch" target="_blank" >browserType.launch([options])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context" target="_blank" >browserType.launchPersistentContext(userDataDir[, options])</a> |   |
 | <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-name" target="_blank" >browserType.name()</a> |   |
 
 ### Missing Playwright APIs
