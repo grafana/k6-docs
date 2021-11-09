@@ -49,10 +49,6 @@ const links = [
     url: '/javascript-api/k6-x-browser/response/',
   },
   {
-    title: 'Browser',
-    url: '/javascript-api/k6-x-browser/browser/',
-  },
-  {
     title: 'Touchscreen',
     url: '/javascript-api/k6-x-browser/touchscreen/',
   },
@@ -63,7 +59,7 @@ const BrowserClassList = () => {
 
   return (
     <>
-      <Wrapper>Browser APIs</Wrapper>
+      <Wrapper>Browser-level APIs</Wrapper>
       <Glossary>
         <ul>
           {links.map(({ title, url }) => (
