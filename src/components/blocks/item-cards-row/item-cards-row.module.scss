@@ -6,6 +6,13 @@
   @include doc-section-spacing;
 }
 
+.subtitle {
+  margin-top: 10px;
+  color: $color-secondary;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+}
+
 .title {
   margin-bottom: 15px;
 }
