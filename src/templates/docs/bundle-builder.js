@@ -2,6 +2,7 @@ import { ExtensionSelection } from 'components/pages/doc-extensions/extension-se
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
+import { graphql, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
@@ -25,6 +26,27 @@ const breadcrumbs = [
 export default function BundleBuilderPage({ pageContext: { navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata['bundle-builder'];
+
+  const {
+    docExtensionsJson: { extensionsList },
+  } = useStaticQuery(graphql`
+    query extensionsBundleData {
+      docExtensionsJson {
+        extensionsList: extensions {
+          name
+          description
+          url
+          logo
+          official
+          categories
+          author {
+            name
+            url
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <LocaleProvider>
@@ -61,7 +83,7 @@ export default function BundleBuilderPage({ pageContext: { navLinks } }) {
           </p>
         </div>
         <div className={`${docPageContent.inner} `}>
-          <ExtensionSelection />
+          <ExtensionSelection data={extensionsList} />
         </div>
       </DocLayout>
     </LocaleProvider>

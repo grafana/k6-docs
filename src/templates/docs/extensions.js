@@ -2,24 +2,30 @@ import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list'
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
-import EXTENSIONS_DATA from 'data/extensions/extensions';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { capitalize } from 'utils';
 import SeoMetadata from 'utils/seo-metadata';
 
-let CATEGORIES = new Set();
-EXTENSIONS_DATA.forEach((extension) => {
-  extension.categories.forEach((category) =>
-    CATEGORIES.add(category.toLowerCase()),
-  );
-});
+/*
+    
+    Thank you for your interest in contributing an extension to the k6 ecosystem! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧
 
-CATEGORIES = Array.from(CATEGORIES).sort();
+    To make the process of getting your extension accepted as fast as possible, make sure
+    you fill out all of the fields in the list below (except logo, which is optional).
+    
+    The list is currently alphabetized, so it
+    doesn't matter where in the list you place your entry.
+
+    For an extension to be merged, we require the following:
+
+    1. The readme contains one or more usage examples, showing the basics of how to use the extension.
+    2. The repository has the xk6 label
+    3. The readme contains Links to any other relevant documentation a user might need.
+    
+ */
 
 export const extensionsSidebar = {
   name: 'extensions',
@@ -73,40 +79,8 @@ export const extensionsSidebar = {
         },
       },
     },
-    // @TODO: uncomment to enable category filters
-    // Category: {
-    //   name: 'Category',
-    //   meta: {
-    //     title: 'Category',
-    //     path: '/extensions/',
-    //   },
-    //   children: {
-    //     All: {
-    //       name: 'All',
-    //       meta: {
-    //         title: 'All',
-    //         isActiveSidebarLink: true,
-    //         path: '/extensions/',
-    //       },
-    //       children: {},
-    //     },
-    //   },
-    // },
   },
 };
-
-// @TODO: uncomment to enable category filters
-// CATEGORIES.forEach((category) => {
-//   extensionsSidebar.children.Category.children[capitalize(category)] = {
-//     name: capitalize(category),
-//     meta: {
-//       title: capitalize(category),
-//       isActiveSidebarLink: true,
-//       path: `/extensions/?category=${category}`,
-//     },
-//     children: {},
-//   };
-// });
 
 const breadcrumbs = [
   {
@@ -125,6 +99,27 @@ export default function Extensions({ location, pageContext: { navLinks } }) {
 
   const queryParams = queryString.parse(location.search);
   const category = queryParams?.category || 'All';
+
+  const {
+    docExtensionsJson: { extensionsList },
+  } = useStaticQuery(graphql`
+    query extensionsData {
+      docExtensionsJson {
+        extensionsList: extensions {
+          name
+          description
+          url
+          logo
+          official
+          categories
+          author {
+            name
+            url
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <LocaleProvider>
@@ -169,7 +164,7 @@ export default function Extensions({ location, pageContext: { navLinks } }) {
           </span>
         </div>
         <div className={docPageContent.inner}>
-          <ExtensionsList category={category} />
+          <ExtensionsList category={category} data={extensionsList} />
         </div>
       </DocLayout>
     </LocaleProvider>
