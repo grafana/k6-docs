@@ -4,6 +4,15 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v1.6.0 `(2021-11-9)`
+
+- The [exported CSV file](/cloud/analyzing-results/result-export/#export-as-csv) includes now all the test result data.
+- On the test result view, add the ability to download the script when it's too large to preview.
+- Add a button to tail logs in cloud logs view.
+- Change project member select dropdown to autocomplete component.
+- If a user is registered through the invitation of an organization, the user's default organization will be the invited organization.
+
+
 ### v1.5.2 `(2021-10-22)`
 
 - Fix: the script editor did not auto resize unless the window was resized.

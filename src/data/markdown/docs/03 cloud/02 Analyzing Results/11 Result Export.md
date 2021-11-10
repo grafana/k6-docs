@@ -90,6 +90,3 @@ Here's example data, units (where necessary) and description of each field prese
 | `count`         | 1.0                              | number         | Number of samples that this data point represents (if > 1 `response_time` is an aggregate value).                                         |
 | `load_zone`     | amazon:us:ashburn                | string         | The load zone where the request(s) was made from.                                                                                         |
 | `tags`          | staticAsset=true                 | string         | Pipe separated list of `name=value` tags as specified for the request in the script.                                                      |
-
-> **Note:**
-> The exported CSV file currently only contains data from the primary HTTP response time metric (`http_req_duration`). In the future we'll expand the export feature with more HTTP data, WebSocket data, Checks data, Thresholds data as well as Custom metrics data.
