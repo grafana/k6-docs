@@ -5,11 +5,11 @@ excerpt: 'The Prometheus integration that allows to send test results to any Pro
 
 k6 supports Prometheus Remote Write via [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) which allows sending test results to the endpoints supporting remote write [protocol](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit#). One option with this support is Prometheus itself; others can be found [here](https://prometheus.io/docs/operating/integrations/).
 
-## HOWTO
+## Instructions
 
 First, build a new k6 binary with the PRW extension, using [xk6 tool](https://k6.io/blog/extending-k6-with-xk6):
 
-<CodeGroup labels={["CLI"]}>
+<CodeGroup labels={[""]}>
 
 ```bash
 xk6 build --with github.com/grafana/xk6-output-prometheus-remote@latest
@@ -19,7 +19,7 @@ xk6 build --with github.com/grafana/xk6-output-prometheus-remote@latest
 
 Then run the test with the new binary as follows:
 
-<CodeGroup labels={["CLI"]}>
+<CodeGroup labels={[""]}>
 
 ```bash
 K6_PROMETHEUS_REMOTE_URL=http://localhost:9090/api/v1/write \
@@ -34,7 +34,7 @@ All metrics sent by the extension get the prefix `k6_` attached to their names. 
 
 If the remote write endpoint requires authentication, the following command can be used:
 
-<CodeGroup labels={["CLI"]}>
+<CodeGroup labels={[""]}>
 
 ```bash
 K6_PROMETHEUS_REMOTE_URL=https://localhost:9090/api/v1/write \
@@ -45,7 +45,7 @@ K6_PROMETHEUS_REMOTE_URL=https://localhost:9090/api/v1/write \
 
 </CodeGroup>
 
-## Supported options
+## Options
 
 Here is the full list of options that can be configured and passed to the extension:
 
