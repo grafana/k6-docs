@@ -68,3 +68,7 @@ Here is the full list of options that can be configured and passed to the extens
 | `K6_CA_CERT_FILE`                        | Location of the CA certificate file required by the endpoint. Optional. |
 | `K6_KEEP_TAGS`                           | Boolean option whether to send k6 tags as labels for each metric. The default value is `true`. |
 | `K6_KEEP_NAME_TAG`                       | Boolean option whether to add `name` k6 tag to labels for each metric. Note: see [HTTP Requests Tags](/using-k6/http-requests#http-request-tags) for explanation on values of `name` tag when HTTP requests are made. The default value is `false`. |
+
+## See also
+
+- [k6 metrics in Prometheus](https://k6.io/blog/k6-loves-prometheus/#the-mechanics-behind-metrics-crunching)
