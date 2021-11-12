@@ -33,6 +33,7 @@ import Json from 'svg/json.inline.svg';
 import K6 from 'svg/logo.inline.svg';
 import Netdata from 'svg/netdata.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
+import Prometheus from 'svg/prometheus.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
@@ -88,6 +89,11 @@ const iconsDataSet1 = [
     Icon: NewRelic,
     name: 'New Relic',
     to: '/results-visualization/new-relic',
+  },
+  {
+    Icon: Prometheus,
+    name: 'Prometheus',
+    to: '/results-visualization/prometheus',
   },
   {
     Icon: StatsD,
