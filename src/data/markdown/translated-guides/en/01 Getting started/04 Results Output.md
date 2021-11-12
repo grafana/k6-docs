@@ -131,7 +131,7 @@ The available built-in outputs currently are:
   - [JSON](/results-visualization/json)
   - [Netdata](/results-visualization/netdata)
   - [New Relic](/results-visualization/new-relic)
-  - [Prometheus Remote Write](/results-visualization/prometheus-remote-write) 
+  - [Prometheus](/results-visualization/prometheus) 
   - [StatsD](/results-visualization/statsd) 
 
 </Glossary>

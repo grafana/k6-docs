@@ -1,23 +1,31 @@
 ---
-title: 'Prometheus Remote Write'
-excerpt: 'The Prometheus integration that allows to send test results to any Prometheus Remote Write endpoint.'
+title: 'Prometheus'
+excerpt: 'The Prometheus integration allows to send test results to any Prometheus Remote Write endpoint.'
 ---
 
-k6 supports Prometheus Remote Write via [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) which allows sending test results to the endpoints supporting remote write [protocol](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit#). One option with this support is Prometheus itself; others can be found [here](https://prometheus.io/docs/operating/integrations/).
+k6 supports sending test result metrics to a Prometheus Remote Write endpoint via the [`xk6-output-prometheus-remote` extension](https://github.com/grafana/xk6-output-prometheus-remote).  One option with this support is storing the metrics in Prometheus; others can be found [here](https://prometheus.io/docs/operating/integrations/).
 
 ## Instructions
 
-First, build a new k6 binary with the PRW extension, using [xk6 tool](https://k6.io/blog/extending-k6-with-xk6):
+First, build a new k6 binary with the PRW extension, using [xk6](https://github.com/grafana/xk6):
 
 <CodeGroup labels={[""]}>
 
 ```bash
-xk6 build --with github.com/grafana/xk6-output-prometheus-remote@latest
+# Install xk6
+go install github.com/grafana/xk6/cmd/xk6@latest
+
+# build k6 binary
+xk6 build --with github.com/grafana/xk6-output-prometheus-remote
+
+... [INFO] Build environment ready
+... [INFO] Building k6
+... [INFO] Build complete: ./k6
 ```
 
 </CodeGroup>
 
-Then run the test with the new binary as follows:
+xk6 will create the k6 binary in the local folder. Then run the test with the new binary as follows:
 
 <CodeGroup labels={[""]}>
 

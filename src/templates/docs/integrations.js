@@ -91,7 +91,7 @@ const iconsDataSet1 = [
   {
     Icon: Prometheus,
     name: 'Prometheus',
-    to: '/results-visualization/prometheus-remote-write',
+    to: '/results-visualization/prometheus',
   },
   {
     Icon: StatsD,
