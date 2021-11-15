@@ -207,9 +207,9 @@ export const Footer = () => (
                   <li className={styles.navColumnItem}>
                     <a
                       className={styles.navColumnLink}
-                      href={'https://github.com/k6io'}
+                      href={'https://github.com/grafana?q=k6'}
                     >
-                      Github
+                      GitHub
                     </a>
                   </li>
                   <li className={styles.navColumnItem}>
