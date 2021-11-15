@@ -6,7 +6,7 @@ import Pencil from 'svg/pencil-icon.inline.svg';
 import styles from './extensions-title-group.module.scss';
 
 const EXTENSIONS_HREF =
-  'https://github.com/grafana/k6-docs/blob/main/src/data/extensions/extensions.js';
+  'https://github.com/grafana/k6-docs/blob/main/src/data/doc-extensions/extensions.json';
 
 export const ExtensionsTitleGroup = ({
   title,

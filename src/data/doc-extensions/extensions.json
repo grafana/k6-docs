@@ -1,6 +1,20 @@
 {
     "extensions": [
     {
+      "name": "xk6-browser",
+      "description": "Browser automation and end-to-end web testing",
+      "url": "https://github.com/grafana/xk6-browser",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "official": false,
+      "categories": [
+        "Browser"
+      ]
+    },
+    {
       "name": "xk6-kafka",
       "description": "Load-test Apache Kafka. Includes support for Avro messages",
       "url": "https://github.com/mostafa/xk6-kafka",
