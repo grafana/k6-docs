@@ -1,11 +1,10 @@
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
-import EXTENSIONS_DATA from 'data/extensions/extensions';
 import React, { useState, useLayoutEffect } from 'react';
 
 import styles from './extension-selection.module.scss';
 
-export const ExtensionSelection = () => {
+export const ExtensionSelection = ({ data }) => {
   const [selected, setSelected] = useState([]);
   const [version, setVersion] = useState(null);
 
@@ -70,17 +69,19 @@ export const ExtensionSelection = () => {
         </div>
       )}
       <div className={`container ${styles.list}`}>
-        {EXTENSIONS_DATA.sort((item1, item2) =>
-          item1.name > item2.name ? 1 : -1,
-        ).map((extension) => (
-          <ExtensionCard
-            key={extension.name}
-            extension={extension}
-            isChecked={selected.includes(extension.url.replace('https://', ''))}
-            onCheckboxClick={() => handleCheckboxClick(extension.url)}
-            hasCheckbox
-          />
-        ))}
+        {data
+          .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
+          .map((extension) => (
+            <ExtensionCard
+              key={extension.name}
+              extension={extension}
+              isChecked={selected.includes(
+                extension.url.replace('https://', ''),
+              )}
+              onCheckboxClick={() => handleCheckboxClick(extension.url)}
+              hasCheckbox
+            />
+          ))}
       </div>
     </section>
   );
