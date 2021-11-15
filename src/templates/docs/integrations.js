@@ -5,6 +5,7 @@ import { ExternalLinksDashboard } from 'components/pages/doc-integrations/extern
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import CustomContentContainer from 'components/shared/custom-content-container';
 import { PageInfo } from 'components/shared/page-info';
+import { ItemCardsRow } from 'components/blocks/item-cards-row';
 // styles
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -176,8 +177,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -187,8 +188,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -196,8 +197,8 @@ export default function Integrations({
       xrayImg: file(absolutePath: { regex: "/images/doc-integrations/xray/" }) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -207,8 +208,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -218,8 +219,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -229,8 +230,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -240,8 +241,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -251,8 +252,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -260,8 +261,8 @@ export default function Integrations({
       harImg: file(absolutePath: { regex: "/images/doc-integrations/har/" }) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -271,8 +272,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -282,8 +283,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -293,8 +294,8 @@ export default function Integrations({
       ) {
         childImageSharp {
           gatsbyImageData(
-            width: 60
-            height: 60
+            width: 44
+            height: 44
             transformOptions: { cropFocus: CENTER }
           )
         }
@@ -432,19 +433,22 @@ export default function Integrations({
                   },
                 ]}
               />
-              <ExternalLinksDashboard
-                dashboardTitle={'k6 Extensions'}
+              <ItemCardsRow
+                blockTitle="k6 Extensions"
                 subtitle={`Use k6 extensions to further extend the possible use cases of k6. 
-                  Extensions are written in go and then made available as JavaScript modules
-                  for you to utilise in your test scripts.`}
-                linksData={[
+                Extensions are written in go and then made available as JavaScript modules
+                for you to utilise in your test scripts.`}
+                linkText="Read more"
+                cardsData={[
                   {
+                    as: 'a',
                     title: 'Explore the growing ecosystem of k6 extensions',
-                    url: 'https://k6.io/docs/extensions/',
+                    href: 'https://k6.io/docs/extensions/',
                   },
                   {
+                    as: 'a',
                     title: 'Learn how to create your own k6 extensions',
-                    url: 'https://k6.io/blog/extending-k6-with-xk6',
+                    href: 'https://k6.io/blog/extending-k6-with-xk6',
                   },
                 ]}
               />
