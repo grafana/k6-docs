@@ -29,25 +29,6 @@
   }
 }
 
-.link {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  padding: 20px;
-  border: 1px solid $color-additional-2;
-
-  text-decoration: none;
-  color: $color-primary;
-
-  @include hover-supported {
-    .link-title {
-      color: $color-accent-primary;
-    }
-  }
-}
-
 .picture-wrapper {
   margin-bottom: 15px;
   @include sm-down {

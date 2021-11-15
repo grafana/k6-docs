@@ -1,4 +1,8 @@
 import { Heading } from 'components/shared/heading';
+import {
+  ItemCard,
+  styles as itemCardStyles,
+} from 'components/shared/item-card';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
@@ -17,15 +21,17 @@ export const ExternalLinksDashboard = ({
     <ul className={styles.dashboard}>
       {linksData.map(({ image, title, description, url }, i) => (
         <li key={`exb-${i}`}>
-          <a className={styles.link} href={url}>
-            {image && (
-              <div className={styles.pictureWrapper}>
-                <GatsbyImage image={getImage(image)} />
-              </div>
-            )}
-            <p className={styles.linkTitle}>{title}</p>
-            <p className={styles.linkDescription}>{description}</p>
-          </a>
+          <ItemCard as="a" href={url}>
+            <div className={itemCardStyles.content}>
+              {image && (
+                <div className={styles.pictureWrapper}>
+                  <GatsbyImage image={getImage(image)} />
+                </div>
+              )}
+              <p className={styles.linkTitle}>{title}</p>
+              <p className={styles.linkDescription}>{description}</p>
+            </div>
+          </ItemCard>
         </li>
       ))}
     </ul>
