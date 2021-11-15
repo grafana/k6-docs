@@ -112,3 +112,7 @@ docker pull loadimpact/k6
 Download a prebuilt binary from our [Releases page](https://github.com/k6io/k6/releases),
 and place it in your `PATH` to run `k6` from any location.
 
+## Using k6 extensions
+
+If you use one or more [k6 extensions](/extensions), you need a k6 binary built with your desired extension/s. Head over to the [bundle builder page](/extensions/bundle-builder/) to get started.
+
