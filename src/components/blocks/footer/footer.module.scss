@@ -191,3 +191,26 @@
     fill: $color-primary;
   }
 }
+
+.status {
+  display: flex;
+  align-items: flex-end;
+}
+
+.statusIndicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $color-success;
+  margin-left: 3.5px;
+  margin-bottom: 5px;
+
+  &.major,
+  &.critical {
+    background-color: $color-error;
+  }
+
+  &.minor {
+    background-color: $color-status-warning;
+  }
+}
