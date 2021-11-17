@@ -606,6 +606,20 @@
         "Reporting",
         "Messaging"
       ]
-    }
+    },
+    {
+      "name": "xk6-nats",
+      "description": "Provides NATS support for K6 tests",
+      "url": "https://github.com/ydarias/xk6-nats",
+      "logo": "",
+      "author": {
+        "name": "Yeray Darias Camacho",
+        "url": "https://github.com/ydarias"
+      },
+      "official": false,
+      "categories": [
+        "Messaging"
+      ]
+    },
   ]
 }
