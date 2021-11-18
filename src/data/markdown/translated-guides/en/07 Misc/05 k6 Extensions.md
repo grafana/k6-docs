@@ -314,8 +314,8 @@ slightly more complicated changes to the above example.
 
 Our main `Compare` struct should implement the
 [`modules.Instance` interface](https://pkg.go.dev/go.k6.io/k6/js/modules#Instance)
-and embed
-[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6/js/modules#InstanceCore)
+and get access to
+[`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU)
 in order to access internal k6 objects such as:
 - [`lib.State`](https://pkg.go.dev/go.k6.io/k6/lib#State): the VU state with
   values like the VU ID and iteration number.
@@ -325,7 +325,7 @@ in order to access internal k6 objects such as:
   [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState).
 
 Additionally there should be a root module implementation of the
-[`modules.IsModuleV2` interface](https://pkg.go.dev/go.k6.io/k6/js/modules#IsModuleV2)
+[`modules.Module` interface](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
 that will serve as a factory of `Compare` instances for each VU. Note that this
 can have memory implications depending on the size of your module.
 
@@ -349,9 +349,9 @@ type (
 
 	// Compare represents an instance of the JS module.
 	Compare struct {
-		// InstanceCore provides some useful methods for accessing internal k6
+		// modules.VU provides some useful methods for accessing internal k6
 		// objects like the global context, VU state and goja runtime.
-		modules.InstanceCore
+		vu modules.VU
 		// Comparator is the exported module instance.
 		*Comparator
 	}
@@ -359,8 +359,8 @@ type (
 
 // Ensure the interfaces are implemented correctly.
 var (
-	_ modules.Instance   = &Compare{}
-	_ modules.IsModuleV2 = &RootModule{}
+	_ modules.Instance = &Compare{}
+	_ modules.Module   = &RootModule{}
 )
 
 // New returns a pointer to a new RootModule instance.
@@ -368,23 +368,25 @@ func New() *RootModule {
 	return &RootModule{}
 }
 
-// NewModuleInstance implements the modules.IsModuleV2 interface and returns
+// NewModuleInstance implements the modules.Module interface and returns
 // a new instance for each VU.
-func (*RootModule) NewModuleInstance(m modules.InstanceCore) modules.Instance {
-	return &Compare{InstanceCore: m, Comparator: &Comparator{}}
+func (*RootModule) NewModuleInstance(vu modules.VU) modules.Instance {
+	return &Compare{vu: vu, Comparator: &Comparator{vu: vu}}
 }
 
 // Comparator is the exported module instance.
-type Comparator struct{}
+type Comparator struct{
+    vu modules.VU
+}
 
 // IsGreater returns true if a is greater than b, or false otherwise.
 func (*Comparator) IsGreater(a, b int) bool {
 	return a > b
 }
 
-// GetExports implements the modules.Instance interface and returns the exports
+// Exports implements the modules.Instance interface and returns the exports
 // of the JS module.
-func (c *Compare) GetExports() modules.Exports {
+func (c *Compare) Exports() modules.Exports {
 	return modules.Exports{Default: c.Comparator}
 }
 ```
@@ -392,7 +394,7 @@ func (c *Compare) GetExports() modules.Exports {
 </CodeGroup>
 
 Currently this module isn't taking advantage of the methods provided by
-[`modules.InstanceCore`](https://pkg.go.dev/go.k6.io/k6/js/modules#InstanceCore)
+[`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU)
 because our simple example extension doesn't require it, but here is
 a contrived example of how that could be done:
 
@@ -406,11 +408,11 @@ type InternalState struct {
 	VUIDFromRuntime goja.Value `js:"vuIDFromRuntime"`
 }
 
-func (c *Compare) GetInternalState() *InternalState {
-	state := c.GetState()
-	ctx := c.GetContext()
+func (c *Comparator) GetInternalState() *InternalState {
+	state := c.vu.State()
+	ctx := c.vu.Context()
 	es := lib.GetExecutionState(ctx)
-	rt := c.GetRuntime()
+	rt := c.vu.Runtime()
 
 	return &InternalState{
 		VUID:            state.VUID,
@@ -457,7 +459,7 @@ VU ID from runtime: 1  source=console
 > ℹ️ **Note**
 >
 > For a more extensive usage example of this API, take a look at the
-> [`k6/execution`](https://github.com/grafana/k6/blob/v0.34.1/js/modules/k6/execution/execution.go)
+> [`k6/execution`](https://github.com/grafana/k6/blob/v0.35.0/js/modules/k6/execution/execution.go)
 > module.
 
 Notice that the JavaScript runtime will transparently convert Go types like
