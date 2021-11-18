@@ -112,7 +112,7 @@ Actualmente, k6 crea automáticamente las siguientes etiquetas por defecto:
 | `tls_version` | La versión del TLS                                                                                                                                    |
 | `scenario`    | Nombre del escenario donde se emitió la métrica                                                                                                                             |
 | `service`     | Nombre del servicio RPC para gRPC                                                                                                                                                     |
-| `rpc_type`    | Una de las opciones unarias, server_streaming, client_streaming o bidirectional_streaming para gRPC. Nota: actualmente sólo se admiten peticiones unarias.                             |
+| `expected_response`    | [responseCallback](/javascript-api/k6-http/setresponsecallback-callback/) |
 
 Si lo desea, puede deshabilitar algunas de las etiquetas anteriores utilizando la opción systemTags, sólo tenga en cuenta que algunos recolectores de datos (por ejemplo, la nube) pueden requerir que ciertas etiquetas estén presentes. Además, puedes habilitar algunas etiquetas adicionales del sistema, si las necesitas:
 
