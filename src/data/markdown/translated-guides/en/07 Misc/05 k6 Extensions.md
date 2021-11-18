@@ -371,11 +371,13 @@ func New() *RootModule {
 // NewModuleInstance implements the modules.Module interface and returns
 // a new instance for each VU.
 func (*RootModule) NewModuleInstance(vu modules.VU) modules.Instance {
-	return &Compare{vu: vu, Comparator: &Comparator{}}
+	return &Compare{vu: vu, Comparator: &Comparator{vu: vu}}
 }
 
 // Comparator is the exported module instance.
-type Comparator struct{}
+type Comparator struct{
+    vu modules.VU
+}
 
 // IsGreater returns true if a is greater than b, or false otherwise.
 func (*Comparator) IsGreater(a, b int) bool {
@@ -406,11 +408,11 @@ type InternalState struct {
 	VUIDFromRuntime goja.Value `js:"vuIDFromRuntime"`
 }
 
-func (c *Compare) GetInternalState() *InternalState {
-	state := c.GetState()
-	ctx := c.GetContext()
+func (c *Comparator) GetInternalState() *InternalState {
+	state := c.vu.State()
+	ctx := c.vu.Context()
 	es := lib.GetExecutionState(ctx)
-	rt := c.GetRuntime()
+	rt := c.vu.Runtime()
 
 	return &InternalState{
 		VUID:            state.VUID,
