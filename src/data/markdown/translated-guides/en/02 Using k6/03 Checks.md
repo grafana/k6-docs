@@ -5,7 +5,7 @@ excerpt: 'Checks are like asserts but differ in that they do not halt the execut
 
 ## What is a check?
 
-[Checks](/javascript-api/k6/check-val-sets-tags/) are like assertions, but differ in that they don't halt the execution. Instead, they store the result of the check, pass or fail, and let the script execution continue. Take a look at [thresholds](/using-k6/thresholds) for a way to halt the execution of a test based on checks. 
+[Checks](/javascript-api/k6/check-val-sets-tags/) are like assertions, but differ in that they don't halt the execution. Instead, they store the result of the check, pass or fail, and let the script execution continue. Take a look at [thresholds](/using-k6/thresholds) for a way to halt the execution of a test based on checks.
 
 ### Check for HTTP response code returned
 
@@ -131,7 +131,7 @@ $ k6 run checks.js
 > #### About Failing Checks
 >
 > When a check fails, the script will continue executing successfully and will not return a 'failed' exit status.
-> If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](https://k6.io/docs/using-k6/thresholds/#failing-a-load-test-using-checks).
+> If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](/using-k6/thresholds/#failing-a-load-test-using-checks).
 > This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
 ## Checks in k6 Cloud Results

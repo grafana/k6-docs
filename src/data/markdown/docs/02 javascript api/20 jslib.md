@@ -3,7 +3,7 @@ title: "jslib"
 excerpt: "External JavaScript libraries for k6"
 ---
 
-The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](https://k6.io/docs/using-k6/modules#remote-http-s-modules) in k6 scripts.  
+The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](/using-k6/modules#remote-http-s-modules) in k6 scripts.
 
 
 | Library | Description |
@@ -52,7 +52,7 @@ The complete list of supported libraries can be viewed on [jslib.k6.io](https://
 https://jslib.k6.io/library-name/version/index.js
 ```
 
-Libraries hosted on jslib have versions. For example "httpx.js" library currently has v0.0.1, v0.0.2 and v0.0.3. 
+Libraries hosted on jslib have versions. For example "httpx.js" library currently has v0.0.1, v0.0.2 and v0.0.3.
 
 We recommend that you use the last version available at the time of writing your k6 scripts. Older versions will continue to be hosted on jslib, so you don't have to worry about your scripts breaking.
 

@@ -191,7 +191,7 @@ Before writing and eventually running your test, set aside some time to think ab
 
 It is important to have a predefined set of goals and expectations, but it's not good to try to meet them all at once. The bigger your list of goals, the less likely your ability to make things right the first time. So, start small, e.g. write and run a test for one or two API endpoints. Try to experiment with different settings and environments, then you can build upon that and execute large tests that span several hours and has thousands of virtual users and hundreds of thousands of requests per second.
 
-The very simple examples in the [running k6](https://k6.io/docs/getting-started/running-k6) section would give you a head start.
+The very simple examples in the [running k6](/getting-started/running-k6) section would give you a head start.
 
 ### Correlation and data parameterization
 

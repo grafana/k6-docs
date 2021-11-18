@@ -57,14 +57,14 @@ Meta information and execution details about the current running [scenario](/usi
 | Field               | Type    | Description                                                              |
 |---------------------|---------|--------------------------------------------------------------------------|
 | name                | string  | The assigned name of the running scenario. |
-| executor            | string  | The name of the running [Executor](https://k6.io/docs/using-k6/scenarios/#executors) type. |
+| executor            | string  | The name of the running [Executor](/using-k6/scenarios/#executors) type. |
 | startTime           | integer | The Unix timestamp in milliseconds when the scenario started. |
 | progress            | float   | Percentage in a 0 to 1 interval of the scenario progress. |
 | iterationInInstance | integer | The unique and zero-based sequential number of the current iteration in the scenario, across the current instance. |
 | iterationInTest     | integer | The unique and zero-based sequential number of the current iteration in the scenario. It is unique in all k6 execution modes - in local, cloud and distributed/segmented test runs. However, while every instance will get non-overlapping index values in cloud/distributed tests, they might iterate over them at different speeds, so the values won't be sequential across them. |
 
 
-### vu 
+### vu
 
 Meta information and execution details about the current vu and iteration.
 
@@ -106,7 +106,7 @@ export default function () {
 ### Script naming
 The `name` property can be used for executing the logic based on which script is currently running.
 
-> **Tip**: 
+> **Tip**:
 > If you need to run [multiple scenarios](/using-k6/scenarios/advanced-examples/#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
 
 <CodeGroup labels={["script-naming.js"]} lineNumbers={[true]}>

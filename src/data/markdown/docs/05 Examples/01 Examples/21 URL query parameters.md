@@ -3,7 +3,7 @@ title: 'URLs with query parameters'
 excerpt: 'Scripting examples using URL and URLSearchParams modules.'
 ---
 
-How to use **URL** and **URLSearchParams** imported from [jslib.k6.io](https://k6.io/docs/using-k6/modules#the-jslib-repository) to construct URLs with/without query parameters.
+How to use **URL** and **URLSearchParams** imported from [jslib.k6.io](/using-k6/modules#the-jslib-repository) to construct URLs with/without query parameters.
 
 ## URL
 

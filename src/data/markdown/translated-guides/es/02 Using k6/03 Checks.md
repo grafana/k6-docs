@@ -131,7 +131,7 @@ $ k6 run checks.js
 > #### Acerca de los checks fallidos
 >
 > Cuando falla una verificación, el script continuará ejecutándose con éxito y no devolverá un estado de salida "fallido".
-> Si necesita que toda la prueba falle según los resultados de una verificación, debe [combinar checks con thresholds](https://k6.io/docs/using-k6/thresholds/#failing-a-load-test-using-checks).
+> Si necesita que toda la prueba falle según los resultados de una verificación, debe [combinar checks con thresholds](/using-k6/thresholds/#failing-a-load-test-using-checks).
 > Esto es particularmente útil en contextos específicos, como la integración de k6 en sus canalizaciones de CI o la recepción de alertas al programar sus pruebas de rendimiento.
 
 ## Checks en los resultados de k6 Cloud

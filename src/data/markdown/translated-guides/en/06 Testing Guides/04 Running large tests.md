@@ -168,7 +168,7 @@ export const options = {
 ```
 
 k6 by default loads the response body of the request into memory. This causes much higher memory consumption and often is completely unnecessary.
-If you need response body for some requests you can set [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
+If you need response body for some requests you can set [Params.responseType](/javascript-api/k6-http/params).
 
 ### --no-thresholds --no-summary
 
@@ -203,7 +203,7 @@ Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) ar
 
 **Thresholds with abortOnFail**
 
-If you have configured [abortOnFail thresholds](https://k6.io/docs/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
+If you have configured [abortOnFail thresholds](/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
 
 ## File upload testing
 
@@ -226,8 +226,8 @@ If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB, th
 
 ### EC2 costs
 
-The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour. 
-Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.  
+The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour.
+Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.
 Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
 
 ## Errors
@@ -470,7 +470,7 @@ With the limitations mentioned above, we built a [kubernetes operator](https://g
 
 ## Large-scale tests in k6 Cloud
 
-[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running large-scale tests, amongst other [benefits](https://k6.io/docs/cloud#how-can-it-help-me).
+[k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running large-scale tests, amongst other [benefits](/cloud#how-can-it-help-me).
 
 If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 

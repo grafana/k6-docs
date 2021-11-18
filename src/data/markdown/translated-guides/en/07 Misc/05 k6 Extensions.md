@@ -603,7 +603,7 @@ xk6 and the examples above work great for local execution, i.e. running a
 script with a binary built by xk6 on your own infrastructure. Custom k6 binaries are
 also supported by the [k6 Kubernetes operator](https://github.com/grafana/k6-operator#using-extensions).
 
-They're currently not supported in [k6 Cloud](https://k6.io/docs/cloud/), but adding support
+They're currently not supported in [k6 Cloud](/cloud/), but adding support
 is on our roadmap. However, it is possible to run a binary built with xk6 and send
 metrics produced by extension code to the Cloud using the
-[`cloud` output](https://k6.io/docs/results-visualization/cloud/).
+[`cloud` output](/results-visualization/cloud/).
