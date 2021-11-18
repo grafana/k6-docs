@@ -509,7 +509,7 @@ in future versions when support for test data partitioning is added.
 A boolean, specifying whether the script should exit once the test status reaches `running`.
 When running scripts with `k6 cloud` by default scripts will run until the test reaches a finalized status.
 This could be problematic in certain environments (think of Continuous Integration and Delivery pipelines),
-since you'd need to wait until the test ends up in a finalized state. 
+since you'd need to wait until the test ends up in a finalized state.
 This option allows you to exit early and let the script run in the background. Available in `k6 cloud` command.
 
 | Env                  | CLI                 | Code / Config file | Default |
@@ -1366,7 +1366,11 @@ export const options = {
 
 ### Throw
 
-A boolean, true or false, specifying whether to throw errors on failed HTTP requests or not.
+A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
+ - failed [HTTP requests](/javascript-api/k6-http/)
+ - adding invalid values to [custom metrics](/using-k6/metrics/#custom-metrics)
+ - setting invalid [per-VU metric tags](/javascript-api/k6-execution/#tags)
+
 Available in `k6 run` and `k6 cloud` commands.
 
 | Env        | CLI             | Code / Config file | Default |
