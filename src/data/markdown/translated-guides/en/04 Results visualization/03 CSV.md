@@ -56,4 +56,4 @@ Each entry in the report represents a metric `metric_name` along with its value 
 ## See also
 
 - [Metrics](/using-k6/metrics)
-- [Error codes](https://k6.io/docs/javascript-api/error-codes)
+- [Error codes](/javascript-api/error-codes)

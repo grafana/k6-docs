@@ -3,7 +3,7 @@ title: 'jslib'
 excerpt: 'External JavaScript libraries for k6'
 ---
 
-The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](https://k6.io/docs/using-k6/modules#remote-http-s-modules) in k6 scripts.
+The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript libraries that can be [directly imported](/using-k6/modules#remote-http-s-modules) in k6 scripts.
 
 | Library                                | Description                                                  |
 | -------------------------------------- | ------------------------------------------------------------ |

@@ -150,7 +150,7 @@ An individual execution of a test script. See [Running k6](/getting-started/runn
 
 ### Test Script
 
-A **test script** is the actual code you run as part of your test run, as well as any (or at least most) of the configuration needed to run the code. It defines how the test will behave as well as what requests will be made. See the [Single Request example](https://k6.io/docs/examples/single-request).
+A **test script** is the actual code you run as part of your test run, as well as any (or at least most) of the configuration needed to run the code. It defines how the test will behave as well as what requests will be made. See the [Single Request example](/examples/single-request).
 
 ### User Journey
 

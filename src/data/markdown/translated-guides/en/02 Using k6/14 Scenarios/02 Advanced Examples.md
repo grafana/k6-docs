@@ -53,7 +53,7 @@ export function news() {
 
 In the previous example we set tags on individual HTTP request metrics, but this
 can also be done per scenario, which would apply them to other
-[taggable](https://k6.io/docs/using-k6/tags-and-groups#tags) objects as well.
+[taggable](/using-k6/tags-and-groups#tags) objects as well.
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
 

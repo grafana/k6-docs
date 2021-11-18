@@ -144,7 +144,7 @@ export const options = {
 };
 ```
 
-k6 por defecto carga el cuerpo de la respuesta de la solicitud en la memoria. Esto provoca un consumo de memoria mucho mayor y a menudo es completamente innecesario. Si necesita el cuerpo de la respuesta para algunas peticiones puede establecer [Params.responseType](https://k6.io/docs/javascript-api/k6-http/params).
+k6 por defecto carga el cuerpo de la respuesta de la solicitud en la memoria. Esto provoca un consumo de memoria mucho mayor y a menudo es completamente innecesario. Si necesita el cuerpo de la respuesta para algunas peticiones puede establecer [Params.responseType](/javascript-api/k6-http/params).
 
 ### --no-thresholds --no-summary
 
@@ -174,7 +174,7 @@ Al igual que las comprobaciones, los valores de las métricas personalizadas (Tr
 
 **Thresholds con abortOnFail**
 
-Si ha configurado [abortOnFail thresholds](https://k6.io/docs/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 necesita evaluar el resultado constantemente para verificar que no se ha superado el Threshold. Considere la posibilidad de eliminar esta configuración.
+Si ha configurado [abortOnFail thresholds](/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 necesita evaluar el resultado constantemente para verificar que no se ha superado el Threshold. Considere la posibilidad de eliminar esta configuración.
 
 ## Pruebas de carga de archivos
 

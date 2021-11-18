@@ -1208,7 +1208,7 @@ C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 
 </CodeGroup>
 
-See an example file on the [Results Output](https://k6.io/docs/getting-started/results-output#summary-export) page.
+See an example file on the [Results Output](/getting-started/results-output#summary-export) page.
 
 ### Supply environment variables
 
