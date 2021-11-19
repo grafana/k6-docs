@@ -166,7 +166,6 @@ export default function Integrations({
     harImg,
     postmanImg,
     swaggerImg,
-    jmeterImg,
     azureTestImg,
     testRailImg,
     xrayImg,
@@ -289,17 +288,6 @@ export default function Integrations({
           )
         }
       }
-      jmeterImg: file(
-        absolutePath: { regex: "/images/doc-integrations/jmeter/" }
-      ) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 44
-            height: 44
-            transformOptions: { cropFocus: CENTER }
-          )
-        }
-      }
     }
   `);
   useScrollToAnchor();
@@ -374,12 +362,6 @@ export default function Integrations({
                     title: 'HAR-to-k6',
                     description: 'Convert a HAR file to k6 script.',
                     url: 'https://github.com/k6io/har-to-k6',
-                  },
-                  {
-                    image: jmeterImg,
-                    title: 'JMeter-to-k6',
-                    description: 'Convert a JMeter .jmx file to k6 script.',
-                    url: 'https://github.com/k6io/jmeter-to-k6',
                   },
                   {
                     image: postmanImg,

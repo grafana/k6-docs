@@ -14,7 +14,7 @@ In k6, you can create a test in various ways, using:
 - [Script editor in the k6 Cloud](/cloud/creating-and-running-a-test/script-editor)
 - [Test builder](/test-authoring/test-builder)
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder)
-- [Converters](/integrations#converters): JMeter, Postman and Swagger
+- [Converters](/integrations#converters): HAR, Postman and Swagger
 
 ## Running a cloud test
 
