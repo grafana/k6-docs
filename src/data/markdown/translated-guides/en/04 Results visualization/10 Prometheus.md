@@ -13,7 +13,7 @@ First, build a new k6 binary with the PRW extension, using [xk6](https://github.
 
 ```bash
 # Install xk6
-go install github.com/grafana/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 
 # build k6 binary
 xk6 build --with github.com/grafana/xk6-output-prometheus-remote
