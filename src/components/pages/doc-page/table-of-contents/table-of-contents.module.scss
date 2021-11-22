@@ -8,6 +8,9 @@
 
   margin-right: -30px;
 
+  overflow-x: hidden;
+  overflow-y: scroll;
+
   @include lg-down {
     display: none;
   }
