@@ -35,8 +35,15 @@ const componentsForNativeReplacement = {
   BrowserWIP,
 };
 
-export const DocPageContent = ({ label, content, mod, version }) => {
+export const DocPageContent = ({
+  label,
+  content,
+  mod,
+  version,
+  hasGithubLink,
+}) => {
   const contentContainerRef = useRef(null);
+  console.log({ hasGithubLink });
   return (
     <div
       className={classNames(styles.wrapper, {
@@ -65,10 +72,14 @@ export const DocPageContent = ({ label, content, mod, version }) => {
             />
           </div>
 
-          <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
+          <Sticky
+            topOffset={!hasGithubLink ? -15 : 25}
+            bottomOffset={0}
+            disableCompensation
+          >
             {({ style }) => (
               <TableOfContents
-                style={{ ...style, left: 350 }}
+                style={{ ...style, left: 350, top: !hasGithubLink ? -15 : 25 }}
                 contentContainerRef={contentContainerRef}
               />
             )}
