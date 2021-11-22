@@ -43,7 +43,7 @@ export const DocPageContent = ({
   hasGithubLink,
 }) => {
   const contentContainerRef = useRef(null);
-  console.log({ hasGithubLink });
+
   return (
     <div
       className={classNames(styles.wrapper, {
@@ -79,7 +79,12 @@ export const DocPageContent = ({
           >
             {({ style }) => (
               <TableOfContents
-                style={{ ...style, left: 350, top: !hasGithubLink ? -15 : 25 }}
+                style={{
+                  ...style,
+                  left: 350,
+                  top: !hasGithubLink ? -15 : 25,
+                  maxHeight: '100vh',
+                }}
                 contentContainerRef={contentContainerRef}
               />
             )}
