@@ -33,6 +33,13 @@ const processMdxEntry = (
     return [];
   }
 
+  // hide alternative main modules
+  if (/alternative main modules/i.test(relativeDirectory)) {
+    // eslint-disable-next-line no-console
+    console.log('exluded from algolia indecies pages:', relativeDirectory);
+    return [];
+  }
+
   // @TODO: remove to enable sending spanish content to Algolia
   if (I18N_CONFIG.hideEsFromAlgoliaSearch) {
     if (/\/es\//i.test(relativeDirectory)) {
