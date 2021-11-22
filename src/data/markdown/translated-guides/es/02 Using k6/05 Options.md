@@ -5,8 +5,6 @@ excerpt: 'Las opciones le permiten configurar cómo se comportará k6 durante la
 
 Las opciones le permiten configurar cómo se comportará k6 durante la ejecución de la prueba.
 
-## Lista de opciones
-
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Address](#address)                                       | Dirección del servidor para la REST API                                                           |
@@ -158,7 +156,7 @@ $ k6 run ---no-connection-reuse --user-agent "MyK6UserAgentString/1.0" ~/script.
 
 A continuación, encontrará detalles sobre todas las opciones disponibles que se pueden especificar dentro de un script. También se documenta la flag de la línea de comandos equivalente, las variables de entorno o la opción al ejecutar `k6 run ...` y `k6 cloud ...` que pueden utilizarse para anular las opciones especificadas en el código.
 
-### Address
+## Address
 
 Dirección del API server. Cuando ejecutas  `k6 run` un servidor HTTP con la API REST se inicia,
 lo cual puede ser usado para controlar la ejecución del test. Lee más en [k6 REST API](/misc/k6-rest-api).
@@ -175,7 +173,7 @@ $ k6 run --address "localhost:3000" script.js
 
 </CodeGroup>
 
-### Batch
+## Batch
 
 El número máximo de conexiones simultáneas/paralelas en total que puede hacer una llamada `http.batch()` en una VU. Si tienes una llamada `batch()` a la que has dado 20 URLs y --batch está establecido en 15, entonces la VU hará 15 peticiones de inmediato en paralelo y pondrá en cola el resto, ejecutándose tan pronto como una petición anterior haya terminado y se abra un hueco.
 
@@ -193,7 +191,7 @@ export const options = {
 
 </CodeGroup>
 
-### Batch per host
+## Batch per host
 
 El número máximo de conexiones simultáneas/paralelas para el mismo nombre de host que puede hacer una llamada http.batch() en una VU. Si tiene una llamada a batch() a la que le ha dado 20 URLs para el mismo nombre de host y --batch-per-host está establecido en 5, entonces la VU hará 5 peticiones de inmediato en paralelo y pondrá en cola el resto, ejecutándose tan pronto como una petición anterior haya terminado y se abra un hueco. Esto no ejecutará más peticiones en paralelo que el valor del lote.
 
@@ -211,7 +209,7 @@ export const options = {
 
 </CodeGroup>
 
-### Blacklist IPs
+## Blacklist IPs
 
 Blacklist de IP para no ser llamados.
 
@@ -231,7 +229,7 @@ export const options = {
 
 
 
-### Block Hostnames
+## Block Hostnames
 
 Bloquea los nombres de host basándose en una lista de cadenas de coincidencia glob. La cadena de coincidencia de patrones puede tener un solo `*` al principio, como `*.example.com`, que coincidirá con cualquier cosa antes de eso, como `test.example.com` y `test.test.example.com`.
 
@@ -258,7 +256,7 @@ $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 
 </CodeGroup>
 
-### Compatibility Mode
+## Compatibility Mode
 
 Soporta la ejecución de scripts con diferentes modos de compatibilidad con ECMAScript.
 
@@ -276,7 +274,7 @@ $ k6 run --compatibility-mode=base script.js
 
 </CodeGroup>
 
-### Config
+## Config
 
 Especifica el archivo config, k6 buscará `config.json` en el directorio loadimpact/k6 dentro del directorio habitual de archivos de configuración del sistema operativo. Las ubicaciones de configuración por defecto en los diferentes sistemas operativos son:
 
@@ -294,7 +292,7 @@ Available in `k6 run` and `k6 cloud` commands:
 
 Puede encontrar un ejemplo de archivo de configuración disponible [aquí](/using-k6/options#config-json).
 
-### Console Output
+## Console Output
 
 Redirecciona logs del terminal a un fichero. Disponible en los comandos `k6 cloud` y `k6 run`.
 
@@ -311,7 +309,7 @@ $ k6 run --console-output "loadtest.log" script.js
 
 </CodeGroup>
 
-### Discard Response Bodies
+## Discard Response Bodies
 
 Especifica si los cuerpos de respuesta deben ser descartados cambiando el valor por defecto del tipo de respuesta a none para todas las peticiones HTTP. Se recomienda que se establezca en true y entonces sólo para las peticiones en las que el cuerpo de la respuesta es necesario para el scripting para establecer el tipo de respuesta a text o binary. Reduce la cantidad de memoria requerida y la cantidad de GC - reduciendo la carga en la máquina de pruebas, y probablemente produciendo resultados de pruebas más fiables.
 
@@ -329,7 +327,7 @@ export const options = {
 
 </CodeGroup>
 
-### DNS
+## DNS
 
 > _Nuevo en v0.29.0_
 
@@ -383,7 +381,7 @@ export const options = {
 
 </CodeGroup>
 
-### Duration
+## Duration
 
 Una cadena que especifica la duración total de la ejecución de una prueba. Durante este tiempo, cada VU ejecutará el script en un bucle.
 
@@ -403,7 +401,7 @@ export const options = {
 
 </CodeGroup>
 
-### Extension Options
+## Extension Options
 
 Un objeto utilizado para establecer las opciones de configuración de los colectores de terceros, como los plugins.
 
@@ -427,7 +425,7 @@ export const options = {
 
 </CodeGroup>
 
-### Execution Segment
+## Execution Segment
 
 Estas opciones especifican cómo dividir la ejecución de la prueba y qué segmento ejecutar. Si se definen, K6 escalará el número de VUs e iteraciones a ejecutar para ese segmento, lo cual es útil en la ejecución distribuida.
 
@@ -437,7 +435,7 @@ Estas opciones especifican cómo dividir la ejecución de la prueba y qué segme
 | N/A | `--execution-segment-sequence` | `executionSegmentSequence` | `"0,1"` |
 
 
-### Exit On Running
+## Exit On Running
 
 Un boleano indicando si el comando debe salir cuando el test empieza a ejecutarse - estado `running`. Disponible en el comando `k6 cloud`.
 
@@ -453,13 +451,13 @@ $ k6 cloud --exit-on-running script.js
 
 </CodeGroup>
 
-### Hosts
+## Hosts
 
 Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\\Windows\\System32\\drivers\\etc\\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
 
 A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo desde ciertos puertos y/o hacia ciertos puertos.
 
-> #### ⚠️ Tenga en cuenta que!
+> ### ⚠️ Tenga en cuenta que!
 >
 > Esto no modifica la cabecera HTTP Host propiamente dicha, sino hacia dónde se dirigirá.
 
@@ -482,7 +480,7 @@ export const options = {
 
 Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4` sin cambiar su puerto a menos que su puerto sea `443` que será redirigido al puerto `8443`.
 
-### HTTP Debug
+## HTTP Debug
 
 Registra todas las peticiones y respuestas HTTP. Excluye el cuerpo por defecto, para incluir el cuerpo use `--http-debug=full`.
 
@@ -502,7 +500,7 @@ export const options = {
 
 </CodeGroup>
 
-### Include System Env Vars
+## Include System Env Vars
 
 Pasa las variables del entorno del sistema real al tiempo de ejecución.
 
@@ -518,7 +516,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 </CodeGroup>
 
-### Insecure Skip TLS Verify
+## Insecure Skip TLS Verify
 
 Un booleano, verdadero o falso. Cuando esta opción está habilitada (establecida en true), todas las verificaciones que de otro modo se harían para establecer la confianza en un certificado TLS proporcionado por el servidor serán ignoradas. Esto sólo se aplica a las conexiones creadas por el código de la VU, como las solicitudes http.
 
@@ -536,7 +534,7 @@ export const options = {
 
 </CodeGroup>
 
-### Iterations
+## Iterations
 
 Un valor entero, que especifica el número total de iteraciones de la función por defecto que se ejecutará en prueba, en lugar de especificar una duración de tiempo durante la cual el script se ejecutará en un bucle.
 
@@ -573,7 +571,7 @@ export const options = {
 
 </CodeGroup>
 
-### Linger
+## Linger
 
 Un booleano, verdadero o falso, que especifica si el proceso k6 debe permanecer después de la finalización de la prueba. Disponible en el comando de ejecución `k6 run`.
 
@@ -592,7 +590,7 @@ export const options = {
 
 </CodeGroup>
 
-### Local IPs
+## Local IPs
 
 Una lista de IPs, rangos de IPs y CIDRs desde los que las VUs harán peticiones. Las IPs serán entregadas secuencialmente a las VUs. Esta opción no cambia nada a nivel del SO, por lo que las IPs deben estar ya configuradas a nivel del SO para que k6 pueda utilizarlas. También los CIDRs IPv4 con más de 2 IPs no incluyen la primera y la última IP ya que están reservadas para referirse a la propia red y a la dirección de difusión respectivamente.
 
@@ -613,7 +611,7 @@ $ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
 
 </CodeGroup>
 
-### Log output
+## Log output
 
 Esta opción especifica a dónde enviar los registros y otra configuración conectada a ella. Está disponible en el comando de ejecución `k6 run`.
 
@@ -649,7 +647,7 @@ $ k6 run --log-output=stdout script.js
 
 </CodeGroup>
 
-### LogFormat
+## LogFormat
 
 Un valor que especifica el formato del registro. Por defecto, k6 incluye información extra de depuración como la fecha y el nivel de registro. Las otras opciones disponibles son:
 
@@ -669,7 +667,7 @@ $ k6 run --logformat raw test.js
 
 </CodeGroup>
 
-### Max Redirects
+## Max Redirects
 
 El número máximo de redirecciones HTTP que k6 seguirá antes de abandonar una solicitud y dar un error.
 
@@ -687,7 +685,7 @@ export const options = {
 
 </CodeGroup>
 
-### Minimum Iteration Duration
+## Minimum Iteration Duration
 
 Especifica la duración mínima que debe tener cada una de las ejecuciones (es decir, iteraciones) de la función `default`. Cualquier iteración que sea más corta que este valor hará que ese VU duerma durante el tiempo restante hasta que se alcance la duración mínima especificada.
 
@@ -705,7 +703,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Color
+## No Color
 
 Especifica si el color de la salida en el terminal está deshabilitado. Disponible en los comandos `k6 run` y `k6 cloud`.
 
@@ -722,7 +720,7 @@ $ k6 run --no-color script.js
 
 </CodeGroup>
 
-### No Connection Reuse
+## No Connection Reuse
 
 Un booleano, verdadero o falso, que especifica si k6 debe desactivar las conexiones keep-alive.
 
@@ -740,7 +738,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Cookies Reset
+## No Cookies Reset
 
 Esto deshabilita el comportamiento por defecto de restablecer el tarro de cookies después de cada iteración del VU. Si se habilita, las cookies guardadas se mantendrán a través de las iteraciones del VU.
 
@@ -758,7 +756,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Summary
+## No Summary
 
 Desactiva el [end-of-test summary](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/) generation. Desde v0.30.0, k6 incluye [`handleSummary()`](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/#handlesummary-callback) and `--summary-export`.
 
@@ -774,7 +772,7 @@ $ k6 run --no-summary ~/script.js
 
 </CodeGroup>
 
-### No Setup
+## No Setup
 
 Especifica si la función `setup()` debe ejecutarse. Disponible en los comandos `k6 cloud` y `k6 run`.
 
@@ -790,7 +788,7 @@ $ k6 run --no-setup script.js
 
 </CodeGroup>
 
-### No Teardown
+## No Teardown
 
 Especifica si la función `teardown()` debe ejecutarse. Disponible en los comandos `k6 cloud` y `k6 run`.
 
@@ -806,7 +804,7 @@ $ k6 run --no-teardown script.js
 
 </CodeGroup>
 
-### No Thresholds
+## No Thresholds
 
 Desactiva la ejecución de Thresholds.
 
@@ -822,7 +820,7 @@ $ k6 run --no-thresholds ~/script.js
 
 </CodeGroup>
 
-### No Usage Report
+## No Usage Report
 
 Un booleano, verdadero o falso. Por defecto, k6 envía un informe de uso cada vez que se ejecuta, para que podamos hacer un seguimiento de la frecuencia de uso. Si esta opción se establece como verdadera, no se realizará ningún informe de uso. Para saber más, eche un vistazo a la documentación sobre los [informes de uso](/misc/usage-collection). Disponible en `k6 run`.
 
@@ -842,7 +840,7 @@ $ k6 run --no-usage-report ~/script.js
 \* Note que esta opción no puede ser especificada en el script, pero sí en un archivo de configuración.
 
 
-### No VU Connection Reuse
+## No VU Connection Reuse
 
 Un booleano, verdadero o falso, que especifica si k6 debe reutilizar las conexiones TCP entre las iteraciones de un VU.
 
@@ -861,7 +859,7 @@ export const options = {
 
 </CodeGroup>
 
-### Paused
+## Paused
 
 Un booleano, verdadero o falso, que especifica si la prueba debe comenzar en un estado de pausa. Para reanudar un estado de pausa se utilizará el comando k6 resume.
 
@@ -879,7 +877,7 @@ export const options = {
 
 </CodeGroup>
 
-### Quiet
+## Quiet
 
 Un booleano, verdadero o falso, que deshabilita la barra de progreso en la salida del terminal. Disponible en los commands `k6 run` y `k6 cloud`.
 
@@ -895,7 +893,7 @@ $ k6 run script.js -d 20s --quiet
 
 </CodeGroup>
 
-### Results Output
+## Results Output
 
 Especifique la salida de resultados. Por favor, vaya a [Salida de resultados](/es/empezando/salida-de-resultados/) para más información sobre todos los módulos de salida disponibles y cómo configurarlos. Disponible en el comando de ejecución `k6 run`.
 
@@ -912,7 +910,7 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 </CodeGroup>
 
-### RPS
+## RPS
 
 El número máximo de peticiones a realizar por segundo, en total en todas los VUs.
 
@@ -933,7 +931,7 @@ export const options = {
 
 > Esta opción tiene algunas advertencias y es difícil de utilizar correctamente, por lo que se desaconseja su uso. Por ejemplo, en la ejecución en `k6 Cloud` o distribuida, esta opción afecta a cada instancia de k6 de forma independiente, es decir, no está fragmentada como los VU. Recomendamos encarecidamente el uso de [Scenarios](#scenarios) para simular un RPS constante en lugar de esta opción.
 
-### Scenarios
+## Scenarios
 
 Defina uno o más patrones de ejecución, con varias configuraciones de programación de VU e iteraciones, ejecutando diferentes funciones exportadas (¡además de las predeterminadas!), utilizando diferentes variables de entorno, etiquetas y más.
 Consulte el artículo [Escenarios](/es/usando-k6/escenarios/) para obtener detalles y más ejemplos.
@@ -966,7 +964,7 @@ export const options = {
 
 </CodeGroup>
 
-### Setup Timeout
+## Setup Timeout
 
 Especifica el tiempo que se permite ejecutar la función `setup()` antes de que se termine y la prueba falle.
 
@@ -984,7 +982,7 @@ export const options = {
 
 </CodeGroup>
 
-### Show Logs
+## Show Logs
 
 Especifica si los logs de cloud se muestran en el terminal. Disponible en el comando `k6 cloud`.
 
@@ -1001,7 +999,7 @@ $ k6 cloud --show-logs=false script.js
 
 </CodeGroup>
 
-### Stages
+## Stages
 
 Una lista de VU `{ target: ..., duration: ... }` que especifican el número objetivo de VUs para aumentar o disminuir durante un período específico.
 
@@ -1039,7 +1037,7 @@ $ K6_STAGES="5s:10,5m:20,10s:5" k6 run ~/script.js
 
 </CodeGroup>
 
-### Summary export
+## Summary export
 
 Guarde el informe de resumen de fin de prueba en un archivo JSON que incluya los datos de todas las métricas, comprobaciones y umbrales de la prueba. Esto es útil para obtener los resultados agregados de las pruebas en un formato legible por la máquina, para la integración con paneles de control, alertas externas, tuberías de CI, etc.
 
@@ -1064,7 +1062,7 @@ $ K6_SUMMARY_EXPORT="export.json" k6 run ~/script.js
 
 Vea un archivo de ejemplo en la [página de resultados](/es/empezando/salida-de-resultados/#exportando-el-resumen) page.
 
-### Supply Env Var
+## Supply Env Var
 
 Añade o sustituye una variable de entorno con VAR=valor.
 
@@ -1082,7 +1080,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 </CodeGroup>
 
-### System Tags
+## System Tags
 
 Especifique qué [Tags](/es/usando-k6/tags-y-groups/#system-tags) del sistema estarán en las métricas recopiladas. Algunos recopiladores, como el de la nube, pueden requerir que se utilicen determinadas etiquetas del sistema. Puede especificar las etiquetas como un array desde los scripts JS o como una lista separada por comas a través de la CLI.
 
@@ -1100,7 +1098,7 @@ export const options = {
 
 </CodeGroup>
 
-### Summary Time Unit
+## Summary Time Unit
 
 Define la unidad de tiempo en [ resumen de fin de tests](/es/visualizacion-de-resultados/resumen-del-final-de-la-prueba/). Lo valores posibles son `s` (segundos), `ms` (milisegundos) y `us` (microsegundos). Si no es especificado, k6 usará la unidad más apropiada para cada valor.
 
@@ -1119,7 +1117,7 @@ export const options = {
 
 </CodeGroup>
 
-### Summary Trend Stats
+## Summary Trend Stats
 
 Defina qué estadísticas de las métricas de tendencia (por ejemplo, tiempos de respuesta, duraciones de grupo/de iteración, etc.) se mostrarán en el resumen de fin de prueba. Los valores posibles incluyen avg (media), med (mediana), min, max, count (desde k6 v0.26.0), así como valores de percentil arbitrarios (por ejemplo, p(95), p(99), p(99.99), etc.).
 
@@ -1140,7 +1138,7 @@ export const options = {
 
 </CodeGroup>
 
-### Tags
+## Tags
 
 Especifique las etiquetas que deben establecerse a nivel de prueba en todas las métricas. Si se ha especificado una etiqueta con el mismo nombre en una solicitud, una comprobación o una métrica personalizada, tendrá prioridad sobre una etiqueta de prueba.
 
@@ -1160,7 +1158,7 @@ export const options = {
 
 </CodeGroup>
 
-### Teardown Timeout
+## Teardown Timeout
 
 Especifica cuánto tiempo se permite que se ejecute la función `teardown()` antes de que se termine y la prueba falle.
 
@@ -1179,7 +1177,7 @@ export const options = {
 
 </CodeGroup>
 
-### Thresholds
+## Thresholds
 
 Una colección de especificaciones de umbrales para configurar bajo qué condición(es) se considera que una prueba ha tenido éxito o no, cuando ha pasado o fallado, basándose en los datos métricos. Para obtener más información, consulte la documentación sobre [Thresholds](/es/usando-k6/thresholds/).
 
@@ -1200,7 +1198,7 @@ export const options = {
 
 </CodeGroup>
 
-### Throw
+## Throw
 
 Un booleano, verdadero o falso, que especifica si se lanzan errores en las peticiones HTTP fallidas o no.
 
@@ -1218,7 +1216,7 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Auth
+## TLS Auth
 
 Una lista de objetos de configuración de certificados de cliente TLS. Cada objeto debe especificar para qué host(es)/dominio(s) es válido el certificado de cliente dado.
 
@@ -1242,7 +1240,7 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Cipher Suites
+## TLS Cipher Suites
 
 Una lista de suites de cifrado permitidas para ser utilizadas por en las interacciones SSL/TLS con un servidor. Para una lista completa de cifrados disponibles, vaya [aquí](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
@@ -1260,7 +1258,7 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Version
+## TLS Version
 
 Either a string representing the only SSL/TLS version allowed to be used in interactions with a
 server, or an object specifying the "min" and "max" versions allowed to be used.
@@ -1288,7 +1286,7 @@ options = {
 
 </CodeGroup>
 
-### User Agent
+## User Agent
 
 Una cadena que especifica la cadena de agente de usuario a utilizar en las cabeceras User-Agent cuando se envían peticiones HTTP. Si se establece como una cadena vacía no se enviará una cabecera User-Agent desde la v0.29.0.
 
@@ -1306,7 +1304,7 @@ export const options = {
 
 </CodeGroup>
 
-### Verbose
+## Verbose
 
 Especifica si el modo verboso del logging está habilitado. Disponible en los comandos `k6 run` y `k6 cloud`.
 
@@ -1323,7 +1321,7 @@ $ k6 run --verbose script.js
 
 </CodeGroup>
 
-### VUs
+## VUs
 
 Un valor entero que especifica el número de VUs a ejecutar simultáneamente, utilizado junto con las opciones de iteraciones o duración. Si desea un mayor control, consulte la opción de [stages](#stages) o [scenarios](#scenarios).
 
@@ -1341,9 +1339,9 @@ export const options = {
 
 </CodeGroup>
 
-### VUs Max
+## VUs Max
 
-> #### ⚠️ Ten en cuenta!
+> ### ⚠️ Ten en cuenta!
 >
 > Esta opción quedó obsoleta en la versión 0.27.0 de k6. Véase en su lugar los escenarios y el ejecutor controlado externamente.
 

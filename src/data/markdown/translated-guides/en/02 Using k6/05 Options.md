@@ -5,8 +5,6 @@ excerpt: 'Options allow you to configure how k6 will behave during test executio
 
 Options allow you to configure how k6 will behave during test execution.
 
-## List of Options
-
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Address](#address)                                       | Address of the REST API server                                                           |
@@ -177,7 +175,7 @@ Below, you'll find details on all available options that can be specified within
 documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
 and `k6 cloud ...` that can be used to override options specified in the code.
 
-### Address
+## Address
 
 Address of the API server. When executing scripts with `k6 run` an HTTP server with a REST API is spun up,
 which can be used to control some of the parameters of the test execution.
@@ -195,7 +193,7 @@ $ k6 run --address "localhost:3000" script.js
 
 </CodeGroup>
 
-### Batch
+## Batch
 
 The maximum number of simultaneous/parallel connections in total that an
 [`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
@@ -217,7 +215,7 @@ export const options = {
 
 </CodeGroup>
 
-### Batch per host
+## Batch per host
 
 The maximum number of simultaneous/parallel connections for the same hostname that an
 [`http.batch()`](/javascript-api/k6-http/batch-requests) call in a VU can make. If you have a
@@ -239,7 +237,7 @@ export const options = {
 
 </CodeGroup>
 
-### Blacklist IPs
+## Blacklist IPs
 
 Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
 
@@ -259,7 +257,7 @@ export const options = {
 
 
 
-### Block Hostnames
+## Block Hostnames
 
 > _New in v0.29.0_
 
@@ -291,7 +289,7 @@ $ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 
 </CodeGroup>
 
-### Compatibility Mode
+## Compatibility Mode
 
 Support running scripts with different ECMAScript compatibility modes.
 
@@ -309,7 +307,7 @@ $ k6 run --compatibility-mode=base script.js
 
 </CodeGroup>
 
-### Config
+## Config
 
 Specify the config file in JSON format to read the `options` values. If the config file is not specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system. Default config locations on different operating systems are:
 
@@ -327,11 +325,11 @@ Available in `k6 run` and `k6 cloud` commands:
 
 An example of a config file is available [here](/using-k6/options#config-json-example)
 
-> #### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind!
 >
 > When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
 
-### Console Output
+## Console Output
 
 Redirects logs logged by `console` methods to the provided output file. Available in `k6 cloud` and `k6 run` commands.
 
@@ -348,7 +346,7 @@ $ k6 run --console-output "loadtest.log" script.js
 
 </CodeGroup>
 
-### Discard Response Bodies
+## Discard Response Bodies
 
 Specify if response bodies should be discarded by changing the default value of
 [responseType](/javascript-api/k6-http/params) to `none` for all HTTP requests. Highly recommended to be set
@@ -371,7 +369,7 @@ export const options = {
 
 </CodeGroup>
 
-### DNS
+## DNS
 
 > _New in v0.29.0_
 
@@ -429,7 +427,7 @@ export const options = {
 
 </CodeGroup>
 
-### Duration
+## Duration
 
 A string specifying the total duration a test run should be run for. During this time each
 VU will execute the script in a loop. Available in `k6 run` and `k6 cloud` commands.
@@ -451,7 +449,7 @@ export const options = {
 
 </CodeGroup>
 
-### Extension Options
+## Extension Options
 
 An object used to set configuration options for third-party collectors, like plugins.
 
@@ -477,7 +475,7 @@ export const options = {
 
 </CodeGroup>
 
-### Execution Segment
+## Execution Segment
 
 > _New in v0.27.0_
 
@@ -504,7 +502,7 @@ in future versions when support for test data partitioning is added.
 
 <!-- TODO: Add more examples, link to a standalone page? -->
 
-### Exit On Running
+## Exit On Running
 
 A boolean, specifying whether the script should exit once the test status reaches `running`.
 When running scripts with `k6 cloud` by default scripts will run until the test reaches a finalized status.
@@ -524,7 +522,7 @@ $ k6 cloud --exit-on-running script.js
 
 </CodeGroup>
 
-### Hosts
+## Hosts
 
 An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
 Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
@@ -532,7 +530,7 @@ up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
 From v0.28.0 it is also supported to redirect only from certain ports and/or to certain ports.
 
-> #### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind!
 >
 > This does not modify the actual HTTP `Host` header, but rather where it will be routed.
 
@@ -556,7 +554,7 @@ export const options = {
 With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
 it port unless it's port is `443` which will be redirected to port `8443`.
 
-### HTTP Debug
+## HTTP Debug
 
 Log all HTTP requests and responses. Excludes body by default, to include body use
 `--http-debug=full`. Available in `k6 run` and `k6 cloud` commands.
@@ -577,7 +575,7 @@ export const options = {
 
 </CodeGroup>
 
-### Include System Env Vars
+## Include System Env Vars
 
 Pass the real system [environment variables](/using-k6/environment-variables) to the runtime. Available in `k6 run` and `k6 cloud` commands.
 
@@ -593,7 +591,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 </CodeGroup>
 
-### Insecure Skip TLS Verify
+## Insecure Skip TLS Verify
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
@@ -614,7 +612,7 @@ export const options = {
 
 </CodeGroup>
 
-### Iterations
+## Iterations
 
 An integer value, specifying the total number of iterations of the `default` function to execute in the test run, as opposed to specifying a duration of time during which the script would run in a loop. Available both in the `k6 run` and `k6 cloud` commands.
 
@@ -653,7 +651,7 @@ export const options = {
 
 </CodeGroup>
 
-### Linger
+## Linger
 
 A boolean, true or false, specifying whether the k6 process should linger around after test
 run completion. Available in the `k6 run` command.
@@ -672,7 +670,7 @@ export const options = {
 
 </CodeGroup>
 
-### Local IPs
+## Local IPs
 
 A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
 given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
@@ -697,7 +695,7 @@ $ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
 
 </CodeGroup>
 
-### Log output
+## Log output
 
 This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
 
@@ -736,7 +734,7 @@ $ k6 run --log-output=stdout script.js
 
 </CodeGroup>
 
-### LogFormat
+## LogFormat
 
 A value specifying the log format. By default, k6 includes extra debug information like date and log level. The other options available are:
 
@@ -756,7 +754,7 @@ $ k6 run --logformat raw test.js
 
 </CodeGroup>
 
-### Max Redirects
+## Max Redirects
 
 The maximum number of HTTP redirects that k6 will follow before giving up on a request and
 erroring out. Available in both the `k6 run` and the `k6 cloud` commands.
@@ -775,7 +773,7 @@ export const options = {
 
 </CodeGroup>
 
-### Minimum Iteration Duration
+## Minimum Iteration Duration
 
 Specifies the minimum duration of every single execution (i.e. iteration) of the `default`
 function. Any iterations that are shorter than this value will cause that VU to sleep for
@@ -795,7 +793,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Color
+## No Color
 
 A boolean specifying whether colored output is disabled. Available in `k6 run` and `k6 cloud` commands.
 
@@ -812,7 +810,7 @@ $ k6 run --no-color script.js
 
 </CodeGroup>
 
-### No Connection Reuse
+## No Connection Reuse
 
 A boolean, true or false, specifying whether k6 should disable keep-alive connections.
 Available in `k6 run` and `k6 cloud` commands.
@@ -831,7 +829,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Cookies Reset
+## No Cookies Reset
 
 This disables the default behavior of resetting the cookie jar after each VU iteration. If
 it's enabled, saved cookies will be persisted across VU iterations.
@@ -850,7 +848,7 @@ export const options = {
 
 </CodeGroup>
 
-### No Summary
+## No Summary
 
 Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation. Since k6 v0.30.0, that includes disabling the calling of [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`. Available in the `k6 run` command.
 
@@ -866,7 +864,7 @@ $ k6 run --no-summary ~/script.js
 
 </CodeGroup>
 
-### No Setup
+## No Setup
 
 A boolean specifying whether `setup()` function should be run. Available in `k6 cloud` and `k6 run` commands.
 
@@ -882,7 +880,7 @@ $ k6 run --no-setup script.js
 
 </CodeGroup>
 
-### No Teardown
+## No Teardown
 
 A boolean specifying whether `teardown()` function should be run. Available in `k6 cloud` and `k6 run` commands.
 
@@ -898,7 +896,7 @@ $ k6 run --no-teardown script.js
 
 </CodeGroup>
 
-### No Thresholds
+## No Thresholds
 
 Disables threshold execution. Available in the `k6 run` command.
 
@@ -914,7 +912,7 @@ $ k6 run --no-thresholds ~/script.js
 
 </CodeGroup>
 
-### No Usage Report
+## No Usage Report
 
 A boolean, true or false. By default, k6 sends a usage report each time it is run, so that we can
 track how often people use it. If this option is set to true, no usage report will be made. To
@@ -936,7 +934,7 @@ $ k6 run --no-usage-report ~/script.js
 \* Note that this option is not supported in the exported script options, but can be specified in a configuration file.
 
 
-### No VU Connection Reuse
+## No VU Connection Reuse
 
 A boolean, true or false, specifying whether k6 should reuse TCP connections between iterations
 of a VU. Available in `k6 run` and `k6 cloud` commands.
@@ -955,7 +953,7 @@ export const options = {
 
 </CodeGroup>
 
-### Paused
+## Paused
 
 A boolean, true or false, specifying whether the test should start in a paused state. To resume
 a paused state you'd use the `k6 resume` command. Available in `k6 run` and `k6 cloud` commands.
@@ -974,7 +972,7 @@ export const options = {
 
 </CodeGroup>
 
-### Quiet
+## Quiet
 
 A boolean, true or false, that disables the progress update bar on the console output. Available in `k6 run` and `k6 cloud` commands.
 
@@ -990,7 +988,7 @@ $ k6 run script.js -d 20s --quiet
 
 </CodeGroup>
 
-### Results Output
+## Results Output
 
 Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
 on all built-in output modules available and how to configure them. Since version 0.21, this option can be
@@ -1008,11 +1006,11 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 </CodeGroup>
 
-### RPS
+## RPS
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-> #### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind!
 >
 > This option has some caveats and is difficult to use correctly, so its usage is somewhat discouraged. For example, in the cloud/distributed execution, this option affects every k6 instance independently, i.e. it is not sharded like VUs are. We strongly recommend the use of [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
 
@@ -1030,11 +1028,11 @@ export const options = {
 
 </CodeGroup>
 
-> #### Considerations when running in the cloud
+> ### Considerations when running in the cloud
 >
 > The option is set per load generator which means that the value you set in the options object of your test script will be multiplied by the number of load generators your test run is using. At the moment we are hosting 300 VUs per load generator instance. In practice that means that if you set the option for 100 rps, and run a test with 1000 VUs, you will spin up 4 load gen instances and effective rps limit of your test run will be 400
 
-### Scenarios
+## Scenarios
 
 Define one or more execution patterns, with various VU and iteration scheduling
 settings, running different exported functions (besides `default`!), using different
@@ -1071,7 +1069,7 @@ export const options = {
 
 </CodeGroup>
 
-### Setup Timeout
+## Setup Timeout
 
 Specify how long the `setup()` function is allow to run before it's terminated and the test fails.
 
@@ -1089,7 +1087,7 @@ export const options = {
 
 </CodeGroup>
 
-### Show Logs
+## Show Logs
 
 A boolean specifying whether the cloud logs are printed out to the terminal. Available in `k6 cloud` command.
 
@@ -1107,7 +1105,7 @@ $ k6 cloud --show-logs=false script.js
 </CodeGroup>
 
 
-### Stages
+## Stages
 
 A list of VU `{ target: ..., duration: ... }` objects that specify the target number of VUs to
 ramp up or down to for a specific period. Available in `k6 run` and `k6 cloud` commands.
@@ -1164,7 +1162,7 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 </CodeGroup>
 
-### Summary export
+## Summary export
 
 > _New in v0.26.0_
 
@@ -1210,7 +1208,7 @@ C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 
 See an example file on the [Results Output](/getting-started/results-output#summary-export) page.
 
-### Supply environment variables
+## Supply environment variables
 
 Add/override an [environment variable](/using-k6/environment-variables) with `VAR=value`in a k6 script. Available in `k6 run` and `k6 cloud` commands.
 
@@ -1230,7 +1228,7 @@ $ k6 run -e FOO=bar ~/script.js
 
 </CodeGroup>
 
-### System Tags
+## System Tags
 
 Specify which [System Tags](/using-k6/tags-and-groups#system-tags) will be in the collected
 metrics. Some collectors like the `cloud` one may require that certain system tags be used.
@@ -1251,7 +1249,7 @@ export const options = {
 
 </CodeGroup>
 
-### Summary Time Unit
+## Summary Time Unit
 
 Define which time unit will be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
 
@@ -1271,7 +1269,7 @@ export const options = {
 </CodeGroup>
 
 
-### Summary Trend Stats
+## Summary Trend Stats
 
 Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count` (since k6 v0.26.0), as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
@@ -1300,7 +1298,7 @@ $ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./
 
 </CodeGroup>
 
-### Tags
+## Tags
 
 Specify tags that should be set test wide across all metrics. If a tag with the same name has
 been specified on a request, check or custom metrics it will have precedence over a test wide
@@ -1322,7 +1320,7 @@ export const options = {
 
 </CodeGroup>
 
-### Teardown Timeout
+## Teardown Timeout
 
 Specify how long the `teardown()` function is allowed to run before it's terminated and the test
 fails.
@@ -1341,7 +1339,7 @@ export const options = {
 
 </CodeGroup>
 
-### Thresholds
+## Thresholds
 
 A collection of threshold specifications to configure under what condition(s) a test is considered
 successful or not, when it has passed or failed, based on metric data. To learn more, have a look
@@ -1364,7 +1362,7 @@ export const options = {
 
 </CodeGroup>
 
-### Throw
+## Throw
 
 A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
  - failed [HTTP requests](/javascript-api/k6-http/)
@@ -1387,7 +1385,7 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Auth
+## TLS Auth
 
 A list of TLS client certificate configuration objects. Each object needs to specify for
 which host(s)/domain(s) the given client certificate is valid for.
@@ -1412,12 +1410,12 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Cipher Suites
+## TLS Cipher Suites
 
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-> #### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind!
 >
 > Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
 
@@ -1435,7 +1433,7 @@ export const options = {
 
 </CodeGroup>
 
-### TLS Version
+## TLS Version
 
 Either a string representing the only SSL/TLS version allowed to be used in interactions with a
 server, or an object specifying the "min" and "max" versions allowed to be used.
@@ -1463,7 +1461,7 @@ options = {
 
 </CodeGroup>
 
-### User Agent
+## User Agent
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
 requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
@@ -1483,7 +1481,7 @@ export const options = {
 
 </CodeGroup>
 
-### Verbose
+## Verbose
 
 A boolean specifying whether verbose logging is enabled. Available in `k6 run` and `k6 cloud` commands.
 
@@ -1500,7 +1498,7 @@ $ k6 run --verbose script.js
 
 </CodeGroup>
 
-### VUs
+## VUs
 
 An integer value specifying the number of VUs to run concurrently, used together with the [iterations](#iterations) or [duration](#options) options. If you'd like more control look at the [`stages`](#stages) option or [scenarios](/using-k6/scenarios).
 
@@ -1521,9 +1519,9 @@ export const options = {
 
 </CodeGroup>
 
-### VUs Max
+## VUs Max
 
-> #### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind!
 >
 > This option was deprecated in k6 version 0.27.0. See [scenarios](/using-k6/scenarios) and the [externally controlled executor](/using-k6/scenarios/executors/externally-controlled) instead.
 
