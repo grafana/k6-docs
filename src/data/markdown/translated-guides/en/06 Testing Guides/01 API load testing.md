@@ -153,7 +153,7 @@ The postman-to-k6 converter produces non-idiomatic k6 scripts, because it uses a
 
 **Postman-to-k6**
 
-Postman is a good and easy to use tool for API testing. It can group requests into collections and you can export/import them easily. Yet, there is an easy way to create your own k6 script out of your existing Postman exported collections. We have a [postman-to-k6](https://github.com/k6io/postman-to-k6) tool that can convert your Postman exported collections. This tool also converts your Postman scripts written with the help of the [Postman Scripting API](https://learning.postman.com/docs/postman/scripts/postman-sandbox-api-reference/) and includes a wrapper for its API and related libraries. Read more at the article [Load Testing Your API with Postman](https://k6.io/blog/load-testing-with-postman-collections).
+Postman is a good and easy to use tool for API testing. It can group requests into collections and you can export/import them easily. Yet, there is an easy way to create your own k6 script out of your existing Postman exported collections. We have a [postman-to-k6](https://github.com/apideck-libraries/postman-to-k6) tool that can convert your Postman exported collections. This tool also converts your Postman scripts written with the help of the [Postman Scripting API](https://learning.postman.com/docs/postman/scripts/postman-sandbox-api-reference/) and includes a wrapper for its API and related libraries. Read more at the article [Load Testing Your API with Postman](https://k6.io/blog/load-testing-with-postman-collections).
 
 ![Postman export collection](./images/postman-export.png)
 

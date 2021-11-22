@@ -367,7 +367,7 @@ export default function Integrations({
                     image: postmanImg,
                     title: 'Postman-to-k6',
                     description: 'Convert a Postman collection to k6 script.',
-                    url: 'https://github.com/k6io/postman-to-k6',
+                    url: 'https://github.com/apideck-libraries/postman-to-k6',
                   },
                   {
                     image: swaggerImg,
