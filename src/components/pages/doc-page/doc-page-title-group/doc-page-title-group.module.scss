@@ -81,6 +81,9 @@
 
   & svg {
     margin-right: 10px;
+    fill: #333;
+    width: 18px;
+    height: 18px;
   }
 
   @include lg-down {

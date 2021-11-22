@@ -2,7 +2,7 @@ import { Heading } from 'components/shared/heading';
 import { useLocale } from 'contexts/locale-provider';
 import React from 'react';
 import Pencil from 'svg/pencil-icon.inline.svg';
-import IconLink from 'svg/link.inline.svg';
+import GithubIcon from 'svg/github.inline.svg';
 
 import styles from './doc-page-title-group.module.scss';
 
@@ -18,7 +18,7 @@ const GithubLink = ({ githubUrl, githubTitle }) => (
     rel="noreferrer"
     className={styles.githubLink}
   >
-    <IconLink />
+    <GithubIcon />
     {githubTitle}
   </a>
 );
