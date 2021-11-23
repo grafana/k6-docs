@@ -1,42 +1,24 @@
 import classNames from 'classnames/bind';
 import { Link, withPrefix } from 'gatsby';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ItemWithSubmenu } from '../item-with-submenu/item-with-submenu.view';
 
 import styles from './header-nav.module.scss';
 
-// aux
-const Submenu = ({ label, submenu }) => (
-  <>
-    <span
-      className={classNames(styles.submenuTitle, styles.link, {
-        [styles.active]: submenu.some(
-          ({ to: path }) =>
-            typeof window !== 'undefined' &&
-            window.location.pathname.replace(/\/?$/, '') === path,
-        ),
-      })}
-    >
-      {label}
-    </span>
-    <div className={styles.submenuWrapper}>
-      <ul className={styles.submenu}>
-        {submenu.map((item, i) => (
-          <li key={`si-${i}`} className={styles.submenuItem}>
-            {item.to.startsWith('/') ? (
-              <Link className={styles.link} to={item.to}>
-                {item.label}
-              </Link>
-            ) : (
-              <a className={styles.link} href={item.to}>
-                {item.label}
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </>
-);
+// local helper function for imitating Link activeClassName behavior
+const isActiveLink = (path) => {
+  let isActiveLink = false;
+  // check if window object is defined (we are in browser)
+  if (typeof window !== 'undefined') {
+    // extracting last pieceof path for flexibility
+    const givenPath = path.replace(/.*(\/.+?)$/, '$1');
+    // getting the same piece from window and removing possible trailing slash
+    const actualPath = window.location.pathname.replace(/\/$/, '');
+    // comparing them
+    isActiveLink = givenPath === actualPath;
+  }
+  return isActiveLink;
+};
 
 const Single = ({ to, label, sections }) => {
   let Component = null;
@@ -102,6 +84,13 @@ const Single = ({ to, label, sections }) => {
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
 
+  const [shouldBeHighlighted, setShouldBeHighlighted] = useState({
+    check: () => false,
+  });
+  useEffect(() => {
+    setShouldBeHighlighted({ check: isActiveLink });
+  }, []);
+
   return (
     <nav>
       <ul className={styles.list}>
@@ -110,12 +99,13 @@ export const HeaderNav = ({ links }) => {
           let { label, to, submenu } = link;
 
           return (
-            <li
-              className={cx('item', 'itemDoc', { withSubmenu: !!submenu })}
-              key={label + to}
-            >
+            <li className={cx('item', 'itemDoc')} key={label + to}>
               {submenu ? (
-                <Submenu label={label} submenu={submenu} />
+                <ItemWithSubmenu
+                  label={label}
+                  submenu={submenu}
+                  shouldBeHighlighted={shouldBeHighlighted}
+                />
               ) : (
                 <Single
                   label={label}

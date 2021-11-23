@@ -147,9 +147,10 @@ const getPageVersions = (
   const pageVersions = {};
 
   SUPPORTED_VERSIONS.forEach((version) => {
-    const versionedPath = (filePath === ''
-      ? [unorderify(name)]
-      : [...filePath.split('/'), unorderify(name)]
+    const versionedPath = (
+      filePath === ''
+        ? [unorderify(name)]
+        : [...filePath.split('/'), unorderify(name)]
     ).reduce(
       treeReducer,
       getJavascriptAPISidebar(version).children['javascript api'],
@@ -161,9 +162,10 @@ const getPageVersions = (
   });
 
   // find latest version link
-  const latestVersion = (filePath === ''
-    ? [unorderify(name)]
-    : [...filePath.split('/'), unorderify(name)]
+  const latestVersion = (
+    filePath === ''
+      ? [unorderify(name)]
+      : [...filePath.split('/'), unorderify(name)]
   ).reduce(treeReducer, getSidebar('javascript api'));
 
   if (latestVersion && latestVersion.meta) {
@@ -178,7 +180,15 @@ const generateTopLevelLinks = (topLevelLinks) => [
     label: 'guides',
     to: '/',
   },
-  ...topLevelLinks.slice(0, 3),
+  {
+    label: 'JAVASCRIPT API',
+    submenu: [
+      { label: 'k6', to: `/javascript-api/` },
+      { label: 'xk6-browser', to: `/javascript-api/k6-x-browser/` },
+      { label: 'jslib', to: `/javascript-api/jslib/` },
+    ],
+  },
+  ...topLevelLinks.slice(1, 3),
   {
     label: 'extensions',
     to: '/extensions/',
@@ -317,9 +327,8 @@ function getSupplementaryPagesProps({
           typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
           typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
         ) {
-          pageTranslations[locale] = getGuidesSidebar(locale).children[
-            name
-          ].meta;
+          pageTranslations[locale] =
+            getGuidesSidebar(locale).children[name].meta;
         } else {
           reporter.warn(`No ${locale} translation found for ${name}`);
         }
@@ -433,9 +442,8 @@ function getTopLevelPagesProps({
         ),
         context: {
           sectionName: 'Javascript API',
-          sidebarTree: getJavascriptAPISidebar(version).children[
-            'javascript api'
-          ],
+          sidebarTree:
+            getJavascriptAPISidebar(version).children['javascript api'],
           navLinks: generateTopLevelLinks(topLevelLinks),
           version,
           // eslint-disable-next-line no-useless-escape
@@ -743,9 +751,8 @@ function getJsAPIVersionedPagesProps({
         return false;
       }
 
-      const sidebarTree = getJavascriptAPISidebar(pageVersion).children[
-        'javascript api'
-      ];
+      const sidebarTree =
+        getJavascriptAPISidebar(pageVersion).children['javascript api'];
 
       const extendedRemarkNode = {
         ...remarkNode,
