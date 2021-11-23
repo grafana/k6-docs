@@ -21,6 +21,7 @@ import Kafka from 'svg/apache-kafka.inline.svg';
 import AWSCodeBuild from 'svg/aws-codebuild.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import Bamboo from 'svg/bamboo.inline.svg';
+import Buddy from 'svg/buddy.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
@@ -118,6 +119,11 @@ const iconsDataSet2 = [
     Icon: Bamboo,
     name: 'Bamboo',
     link: `${blog}/integrating-k6-with-bamboo/`,
+  },
+  {
+    Icon: Buddy,
+    name: 'Buddy',
+    link: `${blog}/integrating-k6-with-buddy-devops/`,
   },
   {
     Icon: CircleCI,
