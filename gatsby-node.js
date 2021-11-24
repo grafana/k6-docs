@@ -24,6 +24,7 @@ const {
   translatePath,
   getSlug,
   getTranslatedSlug,
+  replacePathsInSidebarTree,
 } = require('./src/utils/utils.node');
 const {
   SUPPORTED_VERSIONS,
@@ -372,6 +373,7 @@ function getTopLevelPagesProps({
   // generating pages currently presented in templates/docs/ folder
   // for the exception of Cloud REST API
   return topLevelNames
+    .filter((item) => item !== 'jslib' && item !== 'k6-x-browser')
     .map((name) => {
       const slug = slugify(name);
       // manually exclude from top navigation cloud rest api section
@@ -505,7 +507,7 @@ function getDocPagesProps({
       const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
-      const slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
+      let slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
       // path collision check
       if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
         // skip the page creation if there is already a page with identical url
@@ -543,6 +545,26 @@ function getDocPagesProps({
           getJavascriptAPISidebar,
           relativeDirectory,
           name,
+        );
+      }
+
+      if (slug.startsWith('jslib/')) {
+        slug = `javascript-api/${slug}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/jslib',
+          '/javascript-api/jslib',
+        );
+      }
+
+      if (slug.startsWith('k6-x-browser/')) {
+        slug = `javascript-api/${slug}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/k6-x-browser',
+          '/javascript-api/k6-x-browser',
         );
       }
 
@@ -955,7 +977,9 @@ async function createDocPages({
   const getJavascriptAPISidebar = getChildSidebar(javascriptAPISidebar);
 
   // create data for rendering docs navigation
-  const topLevelNames = Object.keys(sidebar.children);
+  const topLevelNames = Object.keys(sidebar.children).filter(
+    (name) => name !== 'k6-x-browser' && name !== 'jslib',
+  );
 
   const topLevelLinks = topLevelNames
     .filter((name) => name !== 'Cloud REST API')

@@ -273,34 +273,6 @@ export const DocLayout = ({
     }
   }, [location]);
 
-  /* filter sidebar tree for JS api pages:
-  for xk6-browser/jslib subpages show only xk6-browser/jslib sidebar
-  hide xk6-browser and jslib from other pages' sidebar
-  */
-  if (typeof sidebarTree !== 'undefined') {
-    if (pageMetadata.data?.slug?.includes('javascript-api/k6-x-browser/')) {
-      // eslint-disable-next-line no-param-reassign
-      sidebarTree.children = {
-        'k6-x-browser': sidebarTree.children['k6-x-browser'],
-      };
-    } else if (pageMetadata.data?.slug?.includes('javascript-api/jslib/')) {
-      // eslint-disable-next-line no-param-reassign
-      sidebarTree.children = {
-        jslib: sidebarTree.children.jslib,
-      };
-    } else {
-      const sidebarKeys = Object.keys(sidebarTree.children).filter(
-        (item) => item !== 'jslib' && item !== 'k6-x-browser',
-      );
-      const newSidebarChildren = {};
-      sidebarKeys.forEach((item) => {
-        newSidebarChildren[item] = sidebarTree.children[item];
-      });
-      // eslint-disable-next-line no-param-reassign
-      sidebarTree.children = newSidebarChildren;
-    }
-  }
-
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle &&
     !!pageTranslations &&
