@@ -30,13 +30,13 @@ On the Password / API Key section, create and copy an API key of `MetricsPublish
 
 To output k6 metrics to Prometheus, you have to run a k6 version built with the [extension for Prometheus remote write](https://github.com/grafana/xk6-output-prometheus-remote).
 
-To build a k6 binary with an extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/); the following steps are:
+To build a k6 binary with the extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/); the following steps are:
 
 ```shell
 # Install xk6
-go install github.com/grafana/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 
-# build k6 binary
+# Build k6 binary
 xk6 build --with github.com/grafana/xk6-output-prometheus-remote
 
 ... [INFO] Build environment ready

@@ -7,15 +7,13 @@ k6 supports sending test result metrics to a Prometheus Remote Write endpoint vi
 
 ## Instructions
 
-First, build a new k6 binary with the PRW extension, using [xk6](https://github.com/grafana/xk6):
+To build a k6 binary with the PRW extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/); the following steps are:
 
-<CodeGroup labels={[""]}>
-
-```bash
+```shell
 # Install xk6
-go install github.com/grafana/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 
-# build k6 binary
+# Build k6 binary
 xk6 build --with github.com/grafana/xk6-output-prometheus-remote
 
 ... [INFO] Build environment ready
@@ -23,18 +21,18 @@ xk6 build --with github.com/grafana/xk6-output-prometheus-remote
 ... [INFO] Build complete: ./k6
 ```
 
-</CodeGroup>
+xk6 will create the k6 binary in the local folder. 
 
-xk6 will create the k6 binary in the local folder. Then run the test with the new binary as follows:
+> To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6). 
 
-<CodeGroup labels={[""]}>
+
+Then run the test with the new binary as follows:
+
 
 ```bash
 K6_PROMETHEUS_REMOTE_URL=http://localhost:9090/api/v1/write \
     ./k6 run script.js -o output-prometheus-remote
 ```
-
-</CodeGroup>
 
 All metrics sent by the extension get the prefix `k6_` attached to their names. In case of Prometheus, k6 metrics can be seen in its UI:
 

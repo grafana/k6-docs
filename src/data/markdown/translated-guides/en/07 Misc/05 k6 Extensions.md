@@ -114,13 +114,11 @@ updated and that `go version` returns the correct version.
 
 Then install xk6 with:
 
-<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ go install github.com/k6io/xk6/cmd/xk6@latest
+go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
-</CodeGroup>
 
 And confirm that `which xk6` on Linux/macOS or `where xk6` on Windows returns a
 valid path. Otherwise ensure that `$GOPATH` is correctly defined and that
@@ -130,15 +128,12 @@ valid path. Otherwise ensure that `$GOPATH` is correctly defined and that
 Once xk6 is installed, building a k6 binary with one or more extensions can be done
 with the following command:
 
-<CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
 $ xk6 build latest \
   --with github.com/imiric/xk6-sql \
   --with github.com/grafana/xk6-output-prometheus-remote
 ```
-
-</CodeGroup>
 
 This will build a `k6` binary in the current directory based on the most recently
 released k6 version, bundling a JavaScript and an Output extension. Now you can run a
