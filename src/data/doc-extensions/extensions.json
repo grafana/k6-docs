@@ -620,6 +620,20 @@
       "categories": [
         "Messaging"
       ]
-    }
+    },
+    {
+      "name": "xk6-playwright",
+      "description": "Browser automation and end-to-end web testing using Playwright",
+      "url": "https://github.com/wosp-io/xk6-playwright",
+      "logo": "",
+      "author": {
+        "name": "We Open Source Performance - Nick Vuono",
+        "url": "https://github.com/wosp-io"
+      },
+      "official": false,
+      "categories": [
+        "Browser"
+      ]
+    },
   ]
 }
