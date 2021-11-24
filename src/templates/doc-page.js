@@ -24,6 +24,8 @@ export default function DocPage(props) {
       version = null,
       pageVersions = null,
       sectionName,
+      githubUrl = null,
+      githubTitle = '',
     },
   } = props;
   useScrollToAnchor();
@@ -68,18 +70,6 @@ export default function DocPage(props) {
     if (currentIndex < flatSidebar.length - 1 && currentIndex >= 0) {
       next = flatSidebar[currentIndex + 1];
     }
-  }
-
-  let githubUrl = null;
-  let githubTitle = '';
-  if (frontmatter.slug.includes('javascript-api/jslib/')) {
-    githubUrl = 'https://github.com/grafana/jslib.k6.io';
-    githubTitle = 'jslib';
-  }
-
-  if (frontmatter.slug.includes('javascript-api/k6-x-browser/')) {
-    githubUrl = 'https://github.com/grafana/xk6-browser';
-    githubTitle = 'xk6-browser';
   }
 
   return (

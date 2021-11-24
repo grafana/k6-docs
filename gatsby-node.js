@@ -548,6 +548,12 @@ function getDocPagesProps({
         );
       }
 
+      // data for github button on the right
+      // currently we only show it for jslib and xk6-browser pages
+      let githubUrl = null;
+      let githubTitle = '';
+
+      // add prefix to jslib pages slugs and sidebar links
       if (slug.startsWith('jslib/')) {
         slug = `javascript-api/${slug}`;
 
@@ -556,8 +562,12 @@ function getDocPagesProps({
           '/jslib',
           '/javascript-api/jslib',
         );
+
+        githubUrl = 'https://github.com/grafana/jslib.k6.io';
+        githubTitle = 'jslib';
       }
 
+      // add prefix to xk6-browser pages slugs and sidebar links
       if (slug.startsWith('k6-x-browser/')) {
         slug = `javascript-api/${slug}`;
 
@@ -566,6 +576,9 @@ function getDocPagesProps({
           '/k6-x-browser',
           '/javascript-api/k6-x-browser',
         );
+
+        githubUrl = 'https://github.com/grafana/xk6-browser';
+        githubTitle = 'xk6-browser';
       }
 
       return {
@@ -578,6 +591,8 @@ function getDocPagesProps({
           breadcrumbs,
           navLinks: generateTopLevelLinks(topLevelLinks),
           pageVersions,
+          githubUrl,
+          githubTitle,
         },
       };
     })
