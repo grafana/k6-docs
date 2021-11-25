@@ -515,11 +515,7 @@ function getDocPagesProps({
       }
 
       // generate breadcrumbs
-      const breadcrumbs = compose(
-        buildBreadcrumbs,
-        dedupePath,
-        unorderify,
-      )(path);
+      let breadcrumbs = compose(buildBreadcrumbs, dedupePath, unorderify)(path);
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -565,6 +561,11 @@ function getDocPagesProps({
 
         githubUrl = 'https://github.com/grafana/jslib.k6.io';
         githubTitle = 'jslib';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          path: item.path.replace('/jslib', '/javascript-api/jslib'),
+        }));
       }
 
       // add prefix to xk6-browser pages slugs and sidebar links
@@ -579,6 +580,14 @@ function getDocPagesProps({
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
         githubTitle = 'xk6-browser';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          path: item.path.replace(
+            '/k6-x-browser',
+            '/javascript-api/k6-x-browser',
+          ),
+        }));
       }
 
       return {
