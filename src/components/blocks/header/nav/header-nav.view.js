@@ -5,17 +5,31 @@ import { ItemWithSubmenu } from '../item-with-submenu/item-with-submenu.view';
 
 import styles from './header-nav.module.scss';
 
-// local helper function for imitating Link activeClassName behavior
-const isActiveLink = (path) => {
+// local helper function for checking
+// if we should highlight javascript api link
+const isJsAPIActiveLink = (path) => {
   let isActiveLink = false;
   // check if window object is defined (we are in browser)
   if (typeof window !== 'undefined') {
-    // extracting last pieceof path for flexibility
-    const givenPath = path.replace(/.*(\/.+?)$/, '$1');
+    const givenPath = path.replace(/\/$/, '');
     // getting the same piece from window and removing possible trailing slash
     const actualPath = window.location.pathname.replace(/\/$/, '');
-    // comparing them
-    isActiveLink = givenPath === actualPath;
+
+    // avoid highlighting k6 api link if xk6-browser or jslib was selected
+    if (actualPath.includes('javascript-api/jslib')) {
+      isActiveLink =
+        givenPath.includes('javascript-api/jslib') &&
+        actualPath.includes(givenPath);
+    } else if (actualPath.includes('javascript-api/k6-x-browser')) {
+      isActiveLink =
+        givenPath.includes('javascript-api/k6-x-browser') &&
+        actualPath.includes(givenPath);
+    } else {
+      isActiveLink =
+        !givenPath.includes('javascript-api/k6-x-browser') &&
+        !givenPath.includes('javascript-api/jslib') &&
+        actualPath.includes(givenPath);
+    }
   }
   return isActiveLink;
 };
@@ -28,6 +42,7 @@ const Single = ({ to, label, sections }) => {
       !sections.some((sectionUrl) =>
         window.location.pathname.startsWith(sectionUrl),
       ) &&
+      !/(\/docs)?\/javascript-api/.test(window.location.pathname) &&
       !/v\d\.\d{2}\/javascript-api/.test(window.location.pathname);
     Component = (
       <Link
@@ -60,7 +75,8 @@ const Single = ({ to, label, sections }) => {
   if (to.startsWith('/')) {
     const isPartiallyActive =
       typeof window !== 'undefined' &&
-      !/(\/docs)?\/cloud-rest-api/.test(window.location.pathname);
+      !/(\/docs)?\/cloud-rest-api/.test(window.location.pathname) &&
+      !/v\d\.\d{2}\/javascript-api/.test(window.location.pathname);
     Component = (
       <Link
         className={styles.link}
@@ -88,7 +104,7 @@ export const HeaderNav = ({ links }) => {
     check: () => false,
   });
   useEffect(() => {
-    setShouldBeHighlighted({ check: isActiveLink });
+    setShouldBeHighlighted({ check: isJsAPIActiveLink });
   }, []);
 
   return (

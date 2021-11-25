@@ -12,7 +12,7 @@ export const ItemWithSubmenu = ({ label, submenu, shouldBeHighlighted }) => {
     <div className={styles.wrapper}>
       <span
         className={classNames(styles.submenuTitle, styles.link, {
-          [styles.linkActive]: submenu.some(({ to: path }) =>
+          [styles.active]: submenu.some(({ to: path }) =>
             shouldBeHighlighted.check(path),
           ),
         })}
@@ -40,7 +40,7 @@ export const ItemWithSubmenu = ({ label, submenu, shouldBeHighlighted }) => {
             >
               <Link
                 className={classNames(styles.link, {
-                  [styles.linkActive]: shouldBeHighlighted.check(item.to),
+                  [styles.active]: shouldBeHighlighted.check(item.to),
                 })}
                 to={item.to}
                 {...itemProps[i]}
