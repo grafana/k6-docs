@@ -25,6 +25,7 @@ import Buddy from 'svg/buddy.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
+import Flagger from 'svg/flagger.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
 import GoogleCloudBuild from 'svg/google-cloud-build.inline.svg';
@@ -129,6 +130,11 @@ const iconsDataSet2 = [
     Icon: CircleCI,
     name: 'CircleCI',
     link: `${blog}/integrating-load-testing-with-circleci/`,
+  },
+  {
+    Icon: Flagger,
+    name: 'Flagger',
+    link: 'https://docs.flagger.app/usage/webhooks#k6-load-tester',
   },
   {
     Icon: GitHub,
