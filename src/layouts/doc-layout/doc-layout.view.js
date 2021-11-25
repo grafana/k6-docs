@@ -399,7 +399,11 @@ export const DocLayout = ({
 
         {children}
         <MobileNav
-          links={links}
+          links={links.reduce(
+            (acc, cur) =>
+              cur.submenu ? acc.concat([...cur.submenu]) : acc.concat(cur),
+            [],
+          )}
           isVisible={isMobileNavVisible}
           onCloseButtonClick={() => setIsMobileNavVisible(false)}
         />
