@@ -153,11 +153,14 @@ const replacePathsInSidebarTree = (
   stringToReplace,
   replacementString,
 ) => {
-  if (tree?.meta?.path && tree.meta.path.startsWith(stringToReplace)) {
+  if (
+    typeof tree.meta !== 'undefined' &&
+    tree.meta.path.startsWith(stringToReplace)
+  ) {
     // eslint-disable-next-line no-param-reassign
     tree.meta.path = tree.meta.path.replace(stringToReplace, replacementString);
   }
-  if (tree?.children) {
+  if (typeof tree.children !== 'undefined') {
     const childrenKeys = Object.keys(tree.children);
     childrenKeys.forEach((item) => {
       replacePathsInSidebarTree(
