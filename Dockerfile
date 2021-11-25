@@ -5,9 +5,6 @@ EXPOSE 8000
 
 RUN apt-get update && apt-get install python build-essential -y
 
-
-RUN npm install -g gatsby-cli
-
 RUN mkdir /app
 WORKDIR /app
 
