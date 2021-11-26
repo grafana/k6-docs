@@ -20,13 +20,13 @@ const isJsAPIActiveLink = (path) => {
       isActiveLink =
         givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
-    } else if (actualPath.includes('javascript-api/k6-x-browser')) {
+    } else if (actualPath.includes('javascript-api/xk6-browser')) {
       isActiveLink =
-        givenPath.includes('javascript-api/k6-x-browser') &&
+        givenPath.includes('javascript-api/xk6-browser') &&
         actualPath.includes(givenPath);
     } else {
       isActiveLink =
-        !givenPath.includes('javascript-api/k6-x-browser') &&
+        !givenPath.includes('javascript-api/xk6-browser') &&
         !givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
     }

@@ -185,7 +185,7 @@ const generateTopLevelLinks = (topLevelLinks) => [
     label: 'JAVASCRIPT API',
     submenu: [
       { label: 'k6 API', to: `/javascript-api/` },
-      { label: 'xk6-browser', to: `/javascript-api/k6-x-browser/` },
+      { label: 'xk6-browser', to: `/javascript-api/xk6-browser/` },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
@@ -373,7 +373,7 @@ function getTopLevelPagesProps({
   // generating pages currently presented in templates/docs/ folder
   // for the exception of Cloud REST API
   return topLevelNames
-    .filter((item) => item !== 'jslib' && item !== 'k6-x-browser')
+    .filter((item) => item !== 'jslib' && item !== 'xk6-browser')
     .map((name) => {
       const slug = slugify(name);
       // manually exclude from top navigation cloud rest api section
@@ -569,13 +569,13 @@ function getDocPagesProps({
       }
 
       // add prefix to xk6-browser pages slugs and sidebar links
-      if (slug.startsWith('k6-x-browser/')) {
+      if (slug.startsWith('xk6-browser/')) {
         slug = `javascript-api/${slug}`;
 
         replacePathsInSidebarTree(
           sidebarTree,
-          '/k6-x-browser',
-          '/javascript-api/k6-x-browser',
+          '/xk6-browser',
+          '/javascript-api/xk6-browser',
         );
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
@@ -584,8 +584,8 @@ function getDocPagesProps({
         breadcrumbs = breadcrumbs.map((item) => ({
           ...item,
           path: item.path.replace(
-            '/k6-x-browser',
-            '/javascript-api/k6-x-browser',
+            '/xk6-browser',
+            '/javascript-api/xk6-browser',
           ),
         }));
       }
@@ -1002,7 +1002,7 @@ async function createDocPages({
 
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children).filter(
-    (name) => name !== 'k6-x-browser' && name !== 'jslib',
+    (name) => name !== 'xk6-browser' && name !== 'jslib',
   );
 
   const topLevelLinks = topLevelNames
@@ -1226,6 +1226,30 @@ const createRedirects = ({ actions }) => {
       '/cloud/cloud-faq/general-questions/',
     '/misc/usage-reports': '/misc/usage-collection/',
     '/using-k6/using-node-modules': '/using-k6/modules/',
+    '/javascript-api/k6-x-browser/': '/javascript-api/xk6-browser/',
+    '/javascript-api/k6-x-browser/browser/':
+      '/javascript-api/xk6-browser/browser/',
+    '/javascript-api/k6-x-browser/browsercontext/':
+      '/javascript-api/xk6-browser/browsercontext/',
+    '/javascript-api/k6-x-browser/browsertype/':
+      '/javascript-api/xk6-browser/browsertype/',
+    '/javascript-api/k6-x-browser/elementhandle/':
+      '/javascript-api/xk6-browser/elementhandle/',
+    '/javascript-api/k6-x-browser/frame/': '/javascript-api/xk6-browser/frame/',
+    '/javascript-api/k6-x-browser/jshandle/':
+      '/javascript-api/xk6-browser/jshandle/',
+    '/javascript-api/k6-x-browser/keyboard/':
+      '/javascript-api/xk6-browser/keyboard/',
+    '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
+    '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
+    '/javascript-api/k6-x-browser/request/':
+      '/javascript-api/xk6-browser/request/',
+    '/javascript-api/k6-x-browser/response/':
+      '/javascript-api/xk6-browser/response/',
+    '/javascript-api/k6-x-browser/touchscreen/':
+      '/javascript-api/xk6-browser/touchscreen/',
+    '/javascript-api/k6-x-browser/launcher/':
+      '/javascript-api/xk6-browser/launcher/',
   };
 
   // eslint-disable-next-line no-restricted-syntax
