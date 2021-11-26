@@ -38,39 +38,21 @@ export default function () {
 
 ## browserContext.addInitScript(script[, arg])
 
-hola
-
 ## browserContext.clearCookies()
-
-hola
 
 ## browserContext.clearPermissions()
 
-hola
-
 ## browserContext.grantPermissions(permissions[, options])
-
-hola
 
 ## browserContext.close()
 
-hola
-
 ## browserContext.newPage()
-
-hola
 
 ## browserContext.pages()
 
-hola
-
 ## browserContext.setDefaultNavigationTimeout(timeout)
 
-hola
-
 ## browserContext.setDefaultTimeout(timeout)
-
-hola
 
 ## browserContext.setGeolocation(geolocation)
 

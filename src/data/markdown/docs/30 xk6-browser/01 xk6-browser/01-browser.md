@@ -28,31 +28,17 @@ export default function () {
 - ❌ [browser.stopTracing()](#missing-playwright-apis)
 
 
-
-
 ## browser.close()
-
-hola is close
 
 ## browser.contexts()
 
-hola is contexts
-
 ## browser.isConnected()
-
-hola is connected
 
 ## browser.newContext([options])
 
-hola new context 
-
 ## browser.newPage([options])
 
-hola new page
-
 ## browser.version()
-
-hola version
 
 
 ### Missing Playwright APIs
