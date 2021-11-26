@@ -9,7 +9,7 @@ const BrowserCompatibility = () => (
       <strong>⚠️ Compatibility</strong>
     </p>
     <p>
-      The <Link to="/javascript-api/k6-x-browser/">xk6-browser API</Link> aims
+      The <Link to="/javascript-api/xk6-browser/">xk6-browser API</Link> aims
       for rough compatibility with the{' '}
       <a href="https://playwright.dev/docs/api/class-playwright">
         Playwright API for NodeJS

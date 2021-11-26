@@ -24,6 +24,7 @@ const {
   translatePath,
   getSlug,
   getTranslatedSlug,
+  replacePathsInSidebarTree,
 } = require('./src/utils/utils.node');
 const {
   SUPPORTED_VERSIONS,
@@ -147,9 +148,10 @@ const getPageVersions = (
   const pageVersions = {};
 
   SUPPORTED_VERSIONS.forEach((version) => {
-    const versionedPath = (filePath === ''
-      ? [unorderify(name)]
-      : [...filePath.split('/'), unorderify(name)]
+    const versionedPath = (
+      filePath === ''
+        ? [unorderify(name)]
+        : [...filePath.split('/'), unorderify(name)]
     ).reduce(
       treeReducer,
       getJavascriptAPISidebar(version).children['javascript api'],
@@ -161,9 +163,10 @@ const getPageVersions = (
   });
 
   // find latest version link
-  const latestVersion = (filePath === ''
-    ? [unorderify(name)]
-    : [...filePath.split('/'), unorderify(name)]
+  const latestVersion = (
+    filePath === ''
+      ? [unorderify(name)]
+      : [...filePath.split('/'), unorderify(name)]
   ).reduce(treeReducer, getSidebar('javascript api'));
 
   if (latestVersion && latestVersion.meta) {
@@ -178,7 +181,15 @@ const generateTopLevelLinks = (topLevelLinks) => [
     label: 'guides',
     to: '/',
   },
-  ...topLevelLinks.slice(0, 3),
+  {
+    label: 'JAVASCRIPT API',
+    submenu: [
+      { label: 'k6 API', to: `/javascript-api/` },
+      { label: 'xk6-browser', to: `/javascript-api/xk6-browser/` },
+      { label: 'jslib', to: `/javascript-api/jslib/` },
+    ],
+  },
+  ...topLevelLinks.slice(1, 3),
   {
     label: 'extensions',
     to: '/extensions/',
@@ -280,7 +291,19 @@ function getSupplementaryPagesProps({
     .flatMap((section) =>
       childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+        let breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+
+        // replace sidebar section name for k6 js api pages
+        let sectionName = formatSectionName(section);
+
+        if (path.startsWith('javascript-api/')) {
+          sectionName = 'k6 API';
+
+          breadcrumbs = breadcrumbs.map((item) => ({
+            ...item,
+            name: item.name === 'Javascript API' ? 'k6 API' : item.name,
+          }));
+        }
 
         return {
           path: compose(
@@ -292,7 +315,7 @@ function getSupplementaryPagesProps({
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
             sidebarTree: getSidebar(section),
-            sectionName: formatSectionName(section),
+            sectionName,
             breadcrumbs,
             title: name,
             navLinks: generateTopLevelLinks(topLevelLinks),
@@ -317,9 +340,8 @@ function getSupplementaryPagesProps({
           typeof getGuidesSidebar(locale).children[name] !== 'undefined' &&
           typeof getGuidesSidebar(locale).children[name].meta !== 'undefined'
         ) {
-          pageTranslations[locale] = getGuidesSidebar(locale).children[
-            name
-          ].meta;
+          pageTranslations[locale] =
+            getGuidesSidebar(locale).children[name].meta;
         } else {
           reporter.warn(`No ${locale} translation found for ${name}`);
         }
@@ -363,6 +385,7 @@ function getTopLevelPagesProps({
   // generating pages currently presented in templates/docs/ folder
   // for the exception of Cloud REST API
   return topLevelNames
+    .filter((item) => item !== 'jslib' && item !== 'xk6-browser')
     .map((name) => {
       const slug = slugify(name);
       // manually exclude from top navigation cloud rest api section
@@ -433,9 +456,8 @@ function getTopLevelPagesProps({
         ),
         context: {
           sectionName: 'Javascript API',
-          sidebarTree: getJavascriptAPISidebar(version).children[
-            'javascript api'
-          ],
+          sidebarTree:
+            getJavascriptAPISidebar(version).children['javascript api'],
           navLinks: generateTopLevelLinks(topLevelLinks),
           version,
           // eslint-disable-next-line no-useless-escape
@@ -497,7 +519,7 @@ function getDocPagesProps({
       const strippedDirectory = stripDirectoryPath(relativeDirectory, 'docs');
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
-      const slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
+      let slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
       // path collision check
       if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
         // skip the page creation if there is already a page with identical url
@@ -505,11 +527,7 @@ function getDocPagesProps({
       }
 
       // generate breadcrumbs
-      const breadcrumbs = compose(
-        buildBreadcrumbs,
-        dedupePath,
-        unorderify,
-      )(path);
+      let breadcrumbs = compose(buildBreadcrumbs, dedupePath, unorderify)(path);
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -538,16 +556,86 @@ function getDocPagesProps({
         );
       }
 
+      // replace sidebar section name for k6 js api pages
+      let sectionName = formatSectionName(docSection);
+
+      if (slug.startsWith('javascript-api/')) {
+        sectionName = 'k6 API';
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Javascript API' ? 'k6 API' : item.name,
+        }));
+      }
+
+      // data for github button on the right
+      // currently we only show it for jslib and xk6-browser pages
+      let githubUrl = null;
+      let githubTitle = '';
+
+      // add prefix to jslib pages slugs and sidebar links
+      if (slug.startsWith('jslib/')) {
+        slug = `javascript-api/${slug}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/jslib',
+          '/javascript-api/jslib',
+        );
+
+        githubUrl = 'https://github.com/grafana/jslib.k6.io';
+        githubTitle = 'jslib';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Jslib' ? 'jslib' : item.name,
+          path: item.path.replace('/jslib', '/javascript-api/jslib'),
+        }));
+      }
+
+      // add prefix to xk6-browser pages slugs and sidebar links
+      if (slug.startsWith('xk6-browser/')) {
+        slug = `javascript-api/${slug}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/xk6-browser',
+          '/javascript-api/xk6-browser',
+        );
+
+        githubUrl = 'https://github.com/grafana/xk6-browser';
+        githubTitle = 'xk6-browser';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Xk6-browser' ? 'xk6-browser' : item.name,
+          path: item.path.replace(
+            '/xk6-browser',
+            '/javascript-api/xk6-browser',
+          ),
+        }));
+      }
+
+      let hideBreadcrumbs = false;
+      if (
+        slug === 'javascript-api/jslib/' ||
+        slug === 'javascript-api/xk6-browser/'
+      ) {
+        hideBreadcrumbs = true;
+      }
+
       return {
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
-          sectionName: formatSectionName(docSection),
+          sectionName,
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
           navLinks: generateTopLevelLinks(topLevelLinks),
           pageVersions,
+          githubUrl,
+          githubTitle,
+          hideBreadcrumbs,
         },
       };
     })
@@ -743,9 +831,8 @@ function getJsAPIVersionedPagesProps({
         return false;
       }
 
-      const sidebarTree = getJavascriptAPISidebar(pageVersion).children[
-        'javascript api'
-      ];
+      const sidebarTree =
+        getJavascriptAPISidebar(pageVersion).children['javascript api'];
 
       const extendedRemarkNode = {
         ...remarkNode,
@@ -948,7 +1035,9 @@ async function createDocPages({
   const getJavascriptAPISidebar = getChildSidebar(javascriptAPISidebar);
 
   // create data for rendering docs navigation
-  const topLevelNames = Object.keys(sidebar.children);
+  const topLevelNames = Object.keys(sidebar.children).filter(
+    (name) => name !== 'xk6-browser' && name !== 'jslib',
+  );
 
   const topLevelLinks = topLevelNames
     .filter((name) => name !== 'Cloud REST API')
@@ -1171,6 +1260,30 @@ const createRedirects = ({ actions }) => {
       '/cloud/cloud-faq/general-questions/',
     '/misc/usage-reports': '/misc/usage-collection/',
     '/using-k6/using-node-modules': '/using-k6/modules/',
+    '/javascript-api/k6-x-browser/': '/javascript-api/xk6-browser/',
+    '/javascript-api/k6-x-browser/browser/':
+      '/javascript-api/xk6-browser/browser/',
+    '/javascript-api/k6-x-browser/browsercontext/':
+      '/javascript-api/xk6-browser/browsercontext/',
+    '/javascript-api/k6-x-browser/browsertype/':
+      '/javascript-api/xk6-browser/browsertype/',
+    '/javascript-api/k6-x-browser/elementhandle/':
+      '/javascript-api/xk6-browser/elementhandle/',
+    '/javascript-api/k6-x-browser/frame/': '/javascript-api/xk6-browser/frame/',
+    '/javascript-api/k6-x-browser/jshandle/':
+      '/javascript-api/xk6-browser/jshandle/',
+    '/javascript-api/k6-x-browser/keyboard/':
+      '/javascript-api/xk6-browser/keyboard/',
+    '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
+    '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
+    '/javascript-api/k6-x-browser/request/':
+      '/javascript-api/xk6-browser/request/',
+    '/javascript-api/k6-x-browser/response/':
+      '/javascript-api/xk6-browser/response/',
+    '/javascript-api/k6-x-browser/touchscreen/':
+      '/javascript-api/xk6-browser/touchscreen/',
+    '/javascript-api/k6-x-browser/launcher/':
+      '/javascript-api/xk6-browser/launcher/',
   };
 
   // eslint-disable-next-line no-restricted-syntax

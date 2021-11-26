@@ -24,6 +24,9 @@ export default function DocPage(props) {
       version = null,
       pageVersions = null,
       sectionName,
+      githubUrl = null,
+      githubTitle = '',
+      hideBreadcrumbs = false,
     },
   } = props;
   useScrollToAnchor();
@@ -70,18 +73,6 @@ export default function DocPage(props) {
     }
   }
 
-  let githubUrl = null;
-  let githubTitle = '';
-  if (frontmatter.slug.includes('javascript-api/jslib/')) {
-    githubUrl = 'https://github.com/grafana/jslib.k6.io';
-    githubTitle = 'jslib';
-  }
-
-  if (frontmatter.slug.includes('javascript-api/k6-x-browser/')) {
-    githubUrl = 'https://github.com/grafana/xk6-browser';
-    githubTitle = 'xk6-browser';
-  }
-
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
@@ -101,7 +92,7 @@ export default function DocPage(props) {
             version && version !== LATEST_VERSION && styles.versioned,
           )}
         >
-          <Breadcrumbs items={breadcrumbs} />
+          {!hideBreadcrumbs && <Breadcrumbs items={breadcrumbs} />}
           <DocPageTitleGroup
             title={frontmatter.title}
             articleSrc={frontmatter.fileOrigin}

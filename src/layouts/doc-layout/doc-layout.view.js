@@ -305,7 +305,11 @@ export const DocLayout = ({
           )}
         </div>
         {sidebarTree && sectionName && (
-          <span className={styles.sidebarTitle}>{sectionName}</span>
+          <span className={styles.sidebarTitle}>
+            {sectionName === 'Xk6-browser' || sectionName === 'Jslib'
+              ? sectionName.toLowerCase()
+              : sectionName}
+          </span>
         )}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
@@ -399,7 +403,11 @@ export const DocLayout = ({
 
         {children}
         <MobileNav
-          links={links}
+          links={links.reduce(
+            (acc, cur) =>
+              cur.submenu ? acc.concat([...cur.submenu]) : acc.concat(cur),
+            [],
+          )}
           isVisible={isMobileNavVisible}
           onCloseButtonClick={() => setIsMobileNavVisible(false)}
         />

@@ -146,6 +146,32 @@ const buildFileTree = (nodeBuilder) => {
   };
 };
 
+// takes a sidebar tree and replaces a substring
+// in all paths (inplace)
+const replacePathsInSidebarTree = (
+  tree,
+  stringToReplace,
+  replacementString,
+) => {
+  if (
+    typeof tree.meta !== 'undefined' &&
+    tree.meta.path.startsWith(stringToReplace)
+  ) {
+    // eslint-disable-next-line no-param-reassign
+    tree.meta.path = tree.meta.path.replace(stringToReplace, replacementString);
+  }
+  if (typeof tree.children !== 'undefined') {
+    const childrenKeys = Object.keys(tree.children);
+    childrenKeys.forEach((item) => {
+      replacePathsInSidebarTree(
+        tree.children[item],
+        stringToReplace,
+        replacementString,
+      );
+    });
+  }
+};
+
 // takes a string like 'docs/001-Directory/01-file' or just '001-Directory'
 // and removes all the order numbers like 'docs/Directory/file' or 'Directory'
 // unorderify(str: String, nameOnly?: Bool) -> String
@@ -313,6 +339,9 @@ Object.defineProperties(utils, {
   },
   getTranslatedSlug: {
     value: getTranslatedSlug,
+  },
+  replacePathsInSidebarTree: {
+    value: replacePathsInSidebarTree,
   },
   SUPPORTED_VERSIONS: {
     value: SUPPORTED_VERSIONS,
