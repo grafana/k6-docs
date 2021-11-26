@@ -291,13 +291,18 @@ function getSupplementaryPagesProps({
     .flatMap((section) =>
       childrenToList(getSidebar(section).children).map(({ name }) => {
         const path = `${section}/${name}`;
-        const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
+        let breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
 
         // replace sidebar section name for k6 js api pages
         let sectionName = formatSectionName(section);
 
         if (path.startsWith('javascript-api/')) {
           sectionName = 'k6 API';
+
+          breadcrumbs = breadcrumbs.map((item) => ({
+            ...item,
+            name: item.name === 'Javascript API' ? 'k6 API' : item.name,
+          }));
         }
 
         return {
@@ -556,6 +561,10 @@ function getDocPagesProps({
 
       if (slug.startsWith('javascript-api/')) {
         sectionName = 'k6 API';
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Javascript API' ? 'k6 API' : item.name,
+        }));
       }
 
       // data for github button on the right
