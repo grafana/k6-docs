@@ -19,7 +19,7 @@ See [Client.close()](/javascript-api/k6-net-grpc/client/client-close) to close t
 |------|------|-------------|
 | `ConnectParams.plaintext` | bool | If `true` will connect to the gRPC server using plaintext i.e. insecure. Defaults to `false` i.e. secure via TLS. |
 | `ConnectParams.reflect` | boolean | Whether to use the [gRPC server reflection protocol](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md) when connecting. |
-| `ConnectParams.timeout` | number | Connection timeout to use. Default timeout is `"60s"` (60 seconds). |
+| `ConnectParams.timeout` | string / number | Connection timeout to use. Default timeout is `"60s"`. <br/> The type can also be a number, in which case k6 interprets it as milliseconds, e.g., `60000` is equivalent to `"60s"`. |
 
 ### Examples
 
