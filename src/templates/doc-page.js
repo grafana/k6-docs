@@ -26,6 +26,7 @@ export default function DocPage(props) {
       sectionName,
       githubUrl = null,
       githubTitle = '',
+      hideBreadcrumbs = false,
     },
   } = props;
   useScrollToAnchor();
@@ -91,7 +92,7 @@ export default function DocPage(props) {
             version && version !== LATEST_VERSION && styles.versioned,
           )}
         >
-          <Breadcrumbs items={breadcrumbs} />
+          {!hideBreadcrumbs && <Breadcrumbs items={breadcrumbs} />}
           <DocPageTitleGroup
             title={frontmatter.title}
             articleSrc={frontmatter.fileOrigin}

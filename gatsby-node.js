@@ -615,6 +615,14 @@ function getDocPagesProps({
         }));
       }
 
+      let hideBreadcrumbs = false;
+      if (
+        slug === 'javascript-api/jslib/' ||
+        slug === 'javascript-api/xk6-browser/'
+      ) {
+        hideBreadcrumbs = true;
+      }
+
       return {
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
@@ -627,6 +635,7 @@ function getDocPagesProps({
           pageVersions,
           githubUrl,
           githubTitle,
+          hideBreadcrumbs,
         },
       };
     })
