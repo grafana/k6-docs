@@ -293,6 +293,13 @@ function getSupplementaryPagesProps({
         const path = `${section}/${name}`;
         const breadcrumbs = compose(buildBreadcrumbs, dedupePath)(path);
 
+        // replace sidebar section name for k6 js api pages
+        let sectionName = formatSectionName(section);
+
+        if (path.startsWith('javascript-api/')) {
+          sectionName = 'k6 API';
+        }
+
         return {
           path: compose(
             removeEnPrefix,
@@ -303,7 +310,7 @@ function getSupplementaryPagesProps({
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
             sidebarTree: getSidebar(section),
-            sectionName: formatSectionName(section),
+            sectionName,
             breadcrumbs,
             title: name,
             navLinks: generateTopLevelLinks(topLevelLinks),
@@ -544,6 +551,13 @@ function getDocPagesProps({
         );
       }
 
+      // replace sidebar section name for k6 js api pages
+      let sectionName = formatSectionName(docSection);
+
+      if (slug.startsWith('javascript-api/')) {
+        sectionName = 'k6 API';
+      }
+
       // data for github button on the right
       // currently we only show it for jslib and xk6-browser pages
       let githubUrl = null;
@@ -594,7 +608,7 @@ function getDocPagesProps({
         path: slug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
-          sectionName: formatSectionName(docSection),
+          sectionName,
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
