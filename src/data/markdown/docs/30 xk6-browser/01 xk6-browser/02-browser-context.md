@@ -5,26 +5,86 @@ excerpt: "xk6-browser: BrowserContext Class"
 
 <BrowserCompatibility/>
 
-## Supported APIs
+```javascript
+import launcher from 'k6/x/browser';
 
-| Method | Playwright Relevant Distinctions |
-| - |  - |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-add-init-script" target="_blank">browserContext.addInitScript(script[, arg])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-clear-cookies" target="_blank">browserContext.clearCookies()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-clear-permissions" target="_blank">browserContext.clearPermissions()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-grant-permissions" target="_blank">browserContext.grantPermissions(permissions[, options])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-close" target="_blank">browserContext.close()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-new-page" target="_blank">browserContext.newPage()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-pages" target="_blank">browserContext.pages()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-default-navigation-timeout" target="_blank">browserContext.setDefaultNavigationTimeout(timeout)</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-default-timeout" target="_blank">browserContext.setDefaultTimeout(timeout)</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-geolocation" target="_blank">browserContext.setGeolocation(geolocation)</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-http-credentials" target="_blank">browserContext.setHTTPCredentials(httpCredentials)</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-set-offline" target="_blank">browserContext.setOffline(offline)</a> |   |
+export default function () {
+  const browser = launcher.launch('chromium', { headless: false });
+  const context = browser.newContext();
+  const page = context.newPage();
+  page.goto('http://whatsmyuseragent.org/');
+  page.close();
+  browser.close();
+}
+```
 
-### Missing Playwright APIs
+
+
+- [browserContext.addInitScript(script[, arg])](#browsercontext-addinitscript-script-arg)
+- [browserContext.clearCookies()](#browsercontext-clearcookies)
+- [browserContext.clearPermissions()](#browsercontext-clearpermissions)
+- [browserContext.grantPermissions(permissions[, options])](#browsercontext-grantpermissions-permissions-options)
+- [browserContext.close()](#browsercontext-close)
+- [browserContext.newPage()](#browsercontext-newpage)
+- [browserContext.pages()](#browsercontext-pages)
+- [browserContext.setDefaultNavigationTimeout(timeout)](#browsercontext-setdefaultnavigationtimeout-timeout)
+- [browserContext.setDefaultTimeout(timeout)](#browsercontext-setdefaulttimeout-timeout)
+- [browserContext.setGeolocation(geolocation)](#browsercontext-setgeolocation-geolocation)
+- [browserContext.setHTTPCredentials(httpCredentials)](#browsercontext-sethttpcredentials-httpcredentials)
+- [browserContext.setOffline(offline)](#browsercontext-setoffline-offline)
+- [Missing Playwright APIs](#missing-playwright-apis)
+
+
+
+## browserContext.addInitScript(script[, arg])
+
+hola
+
+## browserContext.clearCookies()
+
+hola
+
+## browserContext.clearPermissions()
+
+hola
+
+## browserContext.grantPermissions(permissions[, options])
+
+hola
+
+## browserContext.close()
+
+hola
+
+## browserContext.newPage()
+
+hola
+
+## browserContext.pages()
+
+hola
+
+## browserContext.setDefaultNavigationTimeout(timeout)
+
+hola
+
+## browserContext.setDefaultTimeout(timeout)
+
+hola
+
+## browserContext.setGeolocation(geolocation)
+
+
+## browserContext.setHTTPCredentials(httpCredentials)
+
+
+## browserContext.setOffline(offline)
+
+
+## Missing Playwright APIs
 
 <Glossary>
+
 
 - [addCookies()](https://playwright.dev/docs/api/class-browsercontext/#browsercontextaddcookiescookies)
 - [backgroundPages()](https://playwright.dev/docs/api/class-browsercontext#browser-context-background-pages)
@@ -51,22 +111,3 @@ The following missing APIs depends on [event-loop support in k6](https://github.
 - [waitForEvent()](https://playwright.dev/docs/api/class-browsercontext#browser-context-wait-for-event)
 
 </Glossary>
-
-<BrowserWIP/>
-
-## Examples
-
-```javascript
-import launcher from 'k6/x/browser';
-
-export default function () {
-  const browser = launcher.launch('chromium', { headless: false });
-  const context = browser.newContext();
-  const page = context.newPage();
-  page.goto('http://whatsmyuseragent.org/');
-  page.close();
-  browser.close();
-}
-```
-
-<BrowserClassList/>
