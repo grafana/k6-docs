@@ -24,28 +24,10 @@ export const K6DoesNot = () => {
           <p>{t('welcome.k6-does-not.browser.description')}</p>
           <p>
             {t('welcome.k6-does-not.browser.testing.text')}{' '}
-            <Link
-              className={'link'}
-              to={
-                urlLocale === 'es'
-                  ? '/es/guias-de-prueba/pruebas-de-carga-a-sitios-web/'
-                  : '/testing-guides/load-testing-websites/'
-              }
-            >
+            <Link className={'link'} to={'/javascript-api/xk6-browser/'}>
               {t('welcome.k6-does-not.browser.testing.link')}
             </Link>
-            . {t('welcome.k6-does-not.browser.recorded-session.text')}{' '}
-            <Link
-              className={'link'}
-              to={
-                urlLocale === 'es'
-                  ? '/es/creacion-de-pruebas/grabar-una-sesion/'
-                  : '/test-authoring/recording-a-session/'
-              }
-            >
-              {t('welcome.k6-does-not.browser.recorded-session.link')}
-            </Link>
-            .
+            , {t('welcome.k6-does-not.browser.testing.text2')}.
           </p>
         </li>
         <li>

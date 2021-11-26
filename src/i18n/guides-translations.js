@@ -58,16 +58,12 @@ export const localizedMessages = {
     'welcome.k6-does-not.title': 'What k6 does not',
     'welcome.k6-does-not.description': `k6 is a high-performing load testing tool, scriptable in JavaScript. The
     architectural design to have these capabilities brings some trade-offs:`,
-    'welcome.k6-does-not.browser.title': 'Does not run in a browser',
-    'welcome.k6-does-not.browser.description': `As a result, k6 does not render webpages the same way a browser
-    does. This also means that libraries relying on browser APIs
-    won't be compatible. By skipping the browser, the consumption
-    of system resources are dramatically decreased, making the tool
-    significantly more performant.`,
-    'welcome.k6-does-not.browser.testing.text': 'k6 can still be used for',
-    'welcome.k6-does-not.browser.testing.link': 'load testing websites',
-    'welcome.k6-does-not.browser.recorded-session.text':
-      'You can even run a test from a',
+    'welcome.k6-does-not.browser.title': 'Does not run natively in a browser',
+    'welcome.k6-does-not.browser.description': `By default, k6 does not render web pages the same way a browser does. Browsers can consume significant system resources. Skipping the browser allows running more load within a single machine.`,
+    'welcome.k6-does-not.browser.testing.text': 'However, with',
+    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.text2':
+      'you can interact with real browsers and collect frontend metrics as part of your k6 tests',
     'welcome.k6-does-not.browser.recorded-session.link':
       'recorded user session',
     'welcome.k6-does-not.nodejs.title': 'Does not run in NodeJS',
@@ -135,16 +131,13 @@ export const localizedMessages = {
     'welcome.k6-does-not.title': '¿Qué no hace k6?',
     'welcome.k6-does-not.description':
       'k6 es una herramienta de pruebas de carga de alto rendimiento, que se puede programar en JavaScript. El diseño de la arquitectura para tener estas capacidades trae algunas compensaciones:',
-    'welcome.k6-does-not.browser.title': 'No se ejecuta en un navegador',
-    'welcome.k6-does-not.browser.description': `Como resultado, k6 no renderiza las páginas web de la misma manera que lo hace un navegador. Esto también significa que las bibliotecas que dependen de las APIs del navegador no serán compatibles. Al omitir el navegador, el consumo de recursos del sistema se reduce drásticamente, lo que hace que la herramienta tenga un rendimiento significativamente mayor.`,
-    'welcome.k6-does-not.browser.testing.text':
-      'k6 puede seguir utilizándose para',
-    'welcome.k6-does-not.browser.testing.link':
-      'realizar pruebas de carga de sitios web',
-    'welcome.k6-does-not.browser.recorded-session.text':
-      'Incluso puede ejecutar una prueba desde',
-    'welcome.k6-does-not.browser.recorded-session.link':
-      'una sesión de usuario grabada',
+    'welcome.k6-does-not.browser.title':
+      'No ejecuta nativamente en un navegador',
+    'welcome.k6-does-not.browser.description': `Por defecto, k6 no renderiza las páginas web de la misma manera que lo hace un navegado. Los navegadores pueden consumir muchos recursos del sistema. No usando el navegador, nos permite ejecutar tests de más carga en una misma máquina.`,
+    'welcome.k6-does-not.browser.testing.text': 'Sin embargo, con',
+    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.text2':
+      'puedes interactuar con navegadores reales y monitorizar métricas del frontend en tus tests de k6',
     'welcome.k6-does-not.nodejs.title': 'No se ejecuta en NodeJS',
     'welcome.k6-does-not.nodejs.description': `Por lo general, JavaScript no es adecuado para obtener un alto rendimiento. Para lograr el máximo rendimiento, la herramienta en sí está escrita en Go, incorporando un tiempo de ejecución de JavaScript que permite un fácil scripting de pruebas.`,
     'welcome.k6-does-not.nodejs.import.text1':
