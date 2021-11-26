@@ -306,7 +306,9 @@ export const DocLayout = ({
         </div>
         {sidebarTree && sectionName && (
           <span className={styles.sidebarTitle}>
-            {sectionName === 'Xk6-browser' ? 'xk6-browser' : sectionName}
+            {sectionName === 'Xk6-browser' || sectionName === 'Jslib'
+              ? sectionName.toLowerCase()
+              : sectionName}
           </span>
         )}
         {sidebarTree &&

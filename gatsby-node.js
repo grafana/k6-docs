@@ -587,6 +587,7 @@ function getDocPagesProps({
 
         breadcrumbs = breadcrumbs.map((item) => ({
           ...item,
+          name: item.name === 'Jslib' ? 'jslib' : item.name,
           path: item.path.replace('/jslib', '/javascript-api/jslib'),
         }));
       }
