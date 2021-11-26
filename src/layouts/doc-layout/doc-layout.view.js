@@ -305,7 +305,9 @@ export const DocLayout = ({
           )}
         </div>
         {sidebarTree && sectionName && (
-          <span className={styles.sidebarTitle}>{sectionName}</span>
+          <span className={styles.sidebarTitle}>
+            {sectionName === 'Xk6-browser' ? 'xk6-browser' : sectionName}
+          </span>
         )}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (

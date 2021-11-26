@@ -597,6 +597,7 @@ function getDocPagesProps({
 
         breadcrumbs = breadcrumbs.map((item) => ({
           ...item,
+          name: item.name === 'Xk6-browser' ? 'xk6-browser' : item.name,
           path: item.path.replace(
             '/xk6-browser',
             '/javascript-api/xk6-browser',
