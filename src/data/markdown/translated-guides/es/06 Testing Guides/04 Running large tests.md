@@ -112,27 +112,38 @@ Las opciones de k6 que se enumeran a continuación permitirán obtener ventajas 
 
 ### --compatibility-mode=base
 
-Si se está llegando a los límites del hardware, esta es la configuración de k6 más importante que se puede activar. Este ajuste desactiva el traslado interno de Babel de ES6 a ES5.1+ y la inclusión de la biblioteca corejs. Para obtener el mejor rendimiento de k6, es mejor transpilar los scripts fuera de k6 usando webpack.
+La opción más impactante para mejorar el rendimiento de k6 es usar [`--compatibility-mode=base`](/using-k6/options/#compatibility-mode) para deshabilitar la transpilación de [Babel](https://babeljs.io/)  y ejecutar un script en  ES5.1+.  
 
-En el repositorio [k6-hardware-benchmark](https://github.com/k6io/k6-hardware-benchmark), hemos preparado un esquema de traslado eficiente que produce código ES5.1 de alto rendimiento para k6.
 
-Puedes utilizarlo de la siguiente manera:
+```bash
+# compatibility-mode=base disables the Babel transpilation and the inclusion of corejs 
+k6 run --compatibility-mode=base yourscript.es5.js
+```
+
+> **Background**
+> 
+> La mayoría de los ejemplos de k6 están escritos en ES6+.
+> 
+> Por defecto, k6 transpila el código de  ES6+ a ES5.1 usando Babel y cargando la librería corejs para habilitar APIs comúnmente usadas. 
+> Ésto funciona bien para el 99% de los casos, pero añade una sobrecarga con test de carga grandes. 
+> 
+> Si ejecuta el script en ES5.1 en ves del original en ES6+, k6 puede usar un 50-85% de memoría y reducir significantemente la CPU y tiempo de inicio. 
+
+Puede usar [webpack](https://webpack.js.org/) para transpilar el script fuera de k6. Hemos preparado un [ejemplo webpack.config](https://github.com/grafana/k6-hardware-benchmark/blob/master/webpack.config.js) que transforma código en ES6+ a ES5.1 para k6. 
+
+Si usa el repositorio [k6-hardware-benchmark](https://github.com/k6io/k6-hardware-benchmark), puede usar las siguientes instrucciones: 
 
 ```bash
 git clone https://github.com/k6io/k6-hardware-benchmark/
 cd k6-hardware-benchmark
 yarn install
+
 yarn run to-es5 someplace/yourscript.js
-# your ES5 script is in someplace/yourscript.es5.js
+# builds the ES5 script in someplace/yourscript.es5.js
+
+k6 run --compatibility-mode=base someplace/yourscript.es5.js
 ```
 
-Una vez que tu código esté transpilado, puede ejecutarlo de la siguiente manera:
-
-```bash
-k6 run -o cloud --compatibility-mode=base someplace/yourscript.es5.js
-```
-
-k6 utilizará alrededor del 50-85% de la memoria en comparación con la ejecución del script original. También reducirá la carga de la CPU, y disminuirá significativamente el tiempo de arranque.
 
 ### discardResponseBodies
 
