@@ -10,7 +10,7 @@ excerpt: 'Params is an object used by the gRPC methods that generate RPC request
 |------|------|-------------|
 | `Params.headers` | object | Object with key-value pairs representing custom headers the user would like to add to the request. |
 | `Params.tags` | object | Key-value pairs where the keys are names of tags and the values are tag values. Response time metrics generated as a result of the request will have these tags added to them, allowing the user to filter out those results specifically, when looking at results data. |
-| `Params.timeout` | number | Request timeout to use. Default timeout is 60 seconds (`"60s"`). |
+| `Params.timeout` | string / number | Request timeout to use. Default timeout is 60 seconds (`"60s"`). <br/> The type can also be a number, in which case k6 interprets it as milliseconds, e.g., `60000` is equivalent to `"60s"`. |
 
 
 ### Example of custom metadata headers and tags
