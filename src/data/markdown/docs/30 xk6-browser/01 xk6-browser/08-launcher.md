@@ -3,7 +3,7 @@ title: "launcher"
 excerpt: "xk6-browser: launcher Object"
 ---
 
-This object can be used to launch or connect to Chromium, returning instances of [Browser](/javascript-api/k6-x-browser/browser/).
+This object can be used to launch or connect to Chromium, returning instances of [Browser](/javascript-api/xk6-browser/browser/).
 
 ## Examples
 

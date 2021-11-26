@@ -6,51 +6,51 @@ import { HeadingLandmark } from 'components/shared/heading';
 const links = [
   {
     title: 'Browser',
-    url: '/javascript-api/k6-x-browser/browser/',
+    url: '/javascript-api/xk6-browser/browser/',
   },
   {
     title: 'BrowserContext',
-    url: '/javascript-api/k6-x-browser/browsercontext/',
+    url: '/javascript-api/xk6-browser/browsercontext/',
   },
   {
     title: 'BrowserType',
-    url: '/javascript-api/k6-x-browser/browsertype/',
+    url: '/javascript-api/xk6-browser/browsertype/',
   },
   {
     title: 'ElementHandle',
-    url: '/javascript-api/k6-x-browser/elementhandle/',
+    url: '/javascript-api/xk6-browser/elementhandle/',
   },
   {
     title: 'Frame',
-    url: '/javascript-api/k6-x-browser/frame/',
+    url: '/javascript-api/xk6-browser/frame/',
   },
   {
     title: 'JSHandle',
-    url: '/javascript-api/k6-x-browser/jshandle',
+    url: '/javascript-api/xk6-browser/jshandle',
   },
   {
     title: 'Keyboard',
-    url: '/javascript-api/k6-x-browser/keyboard',
+    url: '/javascript-api/xk6-browser/keyboard',
   },
   {
     title: 'Mouse',
-    url: '/javascript-api/k6-x-browser/mouse/',
+    url: '/javascript-api/xk6-browser/mouse/',
   },
   {
     title: 'Page',
-    url: '/javascript-api/k6-x-browser/page/',
+    url: '/javascript-api/xk6-browser/page/',
   },
   {
     title: 'Request',
-    url: '/javascript-api/k6-x-browser/request/',
+    url: '/javascript-api/xk6-browser/request/',
   },
   {
     title: 'Response',
-    url: '/javascript-api/k6-x-browser/response/',
+    url: '/javascript-api/xk6-browser/response/',
   },
   {
     title: 'Touchscreen',
-    url: '/javascript-api/k6-x-browser/touchscreen/',
+    url: '/javascript-api/xk6-browser/touchscreen/',
   },
 ];
 
