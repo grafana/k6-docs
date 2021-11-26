@@ -119,7 +119,9 @@ export default function JavascriptAPI({
       >
         <PageInfo
           title={'k6 API'}
-          description={'Welcome to the k6 API documentation.'}
+          description={
+            'The list of k6 modules natively supported in your k6 scripts.'
+          }
           className={classNames(version !== LATEST_VERSION && jsApiStyles.info)}
         />
         <div className={docPageContent.inner}>
