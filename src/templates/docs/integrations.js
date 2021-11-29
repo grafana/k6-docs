@@ -436,17 +436,17 @@ export default function Integrations({
                 cardsData={[
                   {
                     as: 'a',
-                    title: 'Explore the growing ecosystem of k6 extensions',
+                    title: '🔎 Explore the k6 extensions ecosystem',
                     href: 'https://k6.io/docs/extensions/',
                   },
                   {
                     as: 'a',
-                    title: 'Learn more about k6 extensions',
+                    title: '📖 Learn more about k6 extensions',
                     href: 'https://k6.io/docs/extensions/guides/what-are-k6-extensions/',
                   },
                   {
                     as: 'a',
-                    title: 'How to create your first k6 extension',
+                    title: '🏗️ How to create your first k6 extension',
                     href: 'https://k6.io/docs/extensions/guides/create-an-extension/',
                   },
                 ]}
