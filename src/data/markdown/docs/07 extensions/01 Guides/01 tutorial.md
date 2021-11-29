@@ -89,12 +89,12 @@ and [xk6-output-prometheus-remote](https://github.com/grafana/xk6-output-prometh
 
 ## Getting started
 
-There are two ways in which xk6 can be used:
+xk6 frequent use cases are:
 
-- By k6 users that wish to enhance their tests with existing extensions. A
+- k6 users that wish to enhance their tests with existing extensions. A
   familiarity with the command line and Go is preferred, but not required.
 
-- By Go developers interested in creating their own k6 extension. They'll need to be
+- Go developers interested in creating their own k6 extension. They'll need to be
   familiar with both Go and JavaScript, understand how the k6 Go<->JS bridge works,
   and maintain a public repository for the extension that keeps up to date with any
   breaking API changes while xk6 is being stabilized.
