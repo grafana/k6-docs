@@ -194,7 +194,7 @@ const generateTopLevelLinks = (topLevelLinks) => [
     label: 'extensions',
     to: '/extensions/',
   },
-  ...topLevelLinks.slice(3, topLevelLinks.length),
+  ...topLevelLinks.slice(3, topLevelLinks.length - 1),
 ];
 
 function generateSidebar({ nodes, type = 'docs' }) {
@@ -264,6 +264,50 @@ function generateSidebar({ nodes, type = 'docs' }) {
   return sidebarTreeBuilder.getTree();
 }
 
+const getExtensionsPageSidebar = (sidebarTree) => {
+  const extensionsSidebar = {
+    name: 'extensions',
+    meta: {
+      title: 'Extensions',
+      path: '/extensions/',
+    },
+    children: {
+      Extensions: {
+        name: 'extensions',
+        meta: {
+          title: 'Extensions',
+          path: '/extensions/',
+        },
+        children: {
+          Explore: {
+            name: 'Explore',
+            meta: {
+              title: 'Explore',
+              isActiveSidebarLink: true,
+              path: '/extensions/',
+            },
+            children: {},
+          },
+          'Build Bundle': {
+            name: 'Build Bundle',
+            meta: {
+              title: 'Build Bundle',
+              isActiveSidebarLink: true,
+              path: '/extensions/bundle-builder/',
+            },
+            children: {},
+          },
+        },
+      },
+    },
+  };
+
+  return {
+    ...extensionsSidebar,
+    children: { ...extensionsSidebar.children, ...sidebarTree.children },
+  };
+};
+
 function getSupplementaryPagesProps({
   reporter,
   topLevelNames,
@@ -305,6 +349,12 @@ function getSupplementaryPagesProps({
           }));
         }
 
+        let sidebarTree = getSidebar(section);
+
+        if (path.startsWith('extensions/')) {
+          sidebarTree = getExtensionsPageSidebar(sidebarTree);
+        }
+
         return {
           path: compose(
             removeEnPrefix,
@@ -314,7 +364,7 @@ function getSupplementaryPagesProps({
           )(path),
           component: Path.resolve('./src/templates/docs/breadcrumb-stub.js'),
           context: {
-            sidebarTree: getSidebar(section),
+            sidebarTree,
             sectionName,
             breadcrumbs,
             title: name,
@@ -385,7 +435,10 @@ function getTopLevelPagesProps({
   // generating pages currently presented in templates/docs/ folder
   // for the exception of Cloud REST API
   return topLevelNames
-    .filter((item) => item !== 'jslib' && item !== 'xk6-browser')
+    .filter(
+      (item) =>
+        item !== 'jslib' && item !== 'xk6-browser' && item !== 'extensions',
+    )
     .map((name) => {
       const slug = slugify(name);
       // manually exclude from top navigation cloud rest api section
@@ -430,9 +483,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/extensions.js`),
         context: {
           sectionName: 'Extensions',
-          sidebarTree: {
-            children: {},
-          },
+          sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
           navLinks: generateTopLevelLinks(topLevelLinks),
         },
       },
@@ -441,9 +492,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
-          sidebarTree: {
-            children: {},
-          },
+          sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
           navLinks: generateTopLevelLinks(topLevelLinks),
         },
       },
@@ -543,7 +592,11 @@ function getDocPagesProps({
 
       const docSection = compose(getDocSection, unorderify)(strippedDirectory);
 
-      const sidebarTree = getSidebar(docSection);
+      let sidebarTree = getSidebar(docSection);
+
+      if (slug.startsWith('extensions/')) {
+        sidebarTree = getExtensionsPageSidebar(sidebarTree);
+      }
 
       let pageVersions = null;
 

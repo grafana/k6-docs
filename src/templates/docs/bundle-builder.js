@@ -8,10 +8,6 @@ import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
-import { extensionsSidebar } from './extensions';
-
-const bundleBuilderSidebar = extensionsSidebar;
-
 const breadcrumbs = [
   {
     name: 'Extensions',
@@ -23,7 +19,9 @@ const breadcrumbs = [
   },
 ];
 
-export default function BundleBuilderPage({ pageContext: { navLinks } }) {
+export default function BundleBuilderPage({
+  pageContext: { sidebarTree, navLinks },
+}) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata['bundle-builder'];
 
@@ -51,7 +49,7 @@ export default function BundleBuilderPage({ pageContext: { navLinks } }) {
   return (
     <LocaleProvider>
       <DocLayout
-        sidebarTree={bundleBuilderSidebar}
+        sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
         sectionName="Extensions"

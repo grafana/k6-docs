@@ -27,61 +27,6 @@ import SeoMetadata from 'utils/seo-metadata';
     
  */
 
-export const extensionsSidebar = {
-  name: 'extensions',
-  meta: {
-    title: 'Extensions',
-    path: '/extensions/',
-  },
-  children: {
-    Extensions: {
-      name: 'extensions',
-      meta: {
-        title: 'Extensions',
-        path: '/extensions/',
-      },
-      children: {
-        Explore: {
-          name: 'Explore',
-          meta: {
-            title: 'Explore',
-            isActiveSidebarLink: true,
-            path: '/extensions/',
-          },
-          children: {},
-        },
-        'Build Bundle': {
-          name: 'Build Bundle',
-          meta: {
-            title: 'Build Bundle',
-            isActiveSidebarLink: true,
-            path: '/extensions/bundle-builder/',
-          },
-          children: {},
-        },
-      },
-    },
-    Guides: {
-      name: 'guides',
-      meta: {
-        title: 'Guides',
-        path: '/extensions/',
-      },
-      children: {
-        GetStarted: {
-          name: 'Get started with xk6',
-          meta: {
-            title: 'Get started with xk6',
-            isActiveSidebarLink: true,
-            path: 'https://k6.io/blog/extending-k6-with-xk6',
-          },
-          children: {},
-        },
-      },
-    },
-  },
-};
-
 const breadcrumbs = [
   {
     name: 'Extensions',
@@ -93,7 +38,10 @@ const breadcrumbs = [
   },
 ];
 
-export default function Extensions({ location, pageContext: { navLinks } }) {
+export default function Extensions({
+  location,
+  pageContext: { sidebarTree, navLinks },
+}) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.extensions;
 
@@ -124,7 +72,7 @@ export default function Extensions({ location, pageContext: { navLinks } }) {
   return (
     <LocaleProvider>
       <DocLayout
-        sidebarTree={extensionsSidebar}
+        sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageMetadata={pageMetadata}
         sectionName="Extensions"
