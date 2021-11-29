@@ -441,8 +441,13 @@ export default function Integrations({
                   },
                   {
                     as: 'a',
-                    title: 'Learn how to create your own k6 extensions',
-                    href: 'https://k6.io/blog/extending-k6-with-xk6',
+                    title: 'Learn more about k6 extensions',
+                    href: 'https://k6.io/docs/extensions/guides/what-are-k6-extensions/',
+                  },
+                  {
+                    as: 'a',
+                    title: 'How to create your first k6 extension',
+                    href: 'https://k6.io/docs/extensions/guides/create-an-extension/',
                   },
                 ]}
               />
