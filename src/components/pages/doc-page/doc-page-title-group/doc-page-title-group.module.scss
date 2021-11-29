@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   position: relative;
+  z-index: 2;
   max-width: calc(100% - 325px);
   margin: 15px 0 50px;
   @include lg-down {
