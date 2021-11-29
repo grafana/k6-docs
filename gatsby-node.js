@@ -189,12 +189,13 @@ const generateTopLevelLinks = (topLevelLinks) => [
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
-  ...topLevelLinks.slice(1, 3),
+  ...topLevelLinks.filter(
+    (item) => item.label !== 'JAVASCRIPT API' && item.label !== 'EXAMPLES',
+  ),
   {
-    label: 'extensions',
-    to: '/extensions/',
+    label: 'examples',
+    to: '/examples/',
   },
-  ...topLevelLinks.slice(3, topLevelLinks.length - 1),
 ];
 
 function generateSidebar({ nodes, type = 'docs' }) {
