@@ -1215,6 +1215,13 @@ const createRedirects = ({ actions }) => {
     toPath: '/extensions/bundle-builder/',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/misc/k6-extensions/',
+    toPath: '/extensions/guides/getting-started/',
+    isPermanent: true,
+  });
+
   createRedirect({
     fromPath: '/cloud/project-and-team-management/azure-ad-saml-sso/',
     toPath: '/cloud/project-and-team-management/saml-sso/azure-ad/',
