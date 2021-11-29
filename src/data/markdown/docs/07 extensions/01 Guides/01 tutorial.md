@@ -1,5 +1,6 @@
 ---
-title: 'k6 Extensions'
+title: 'Getting started'
+excerpt: 'Performance testing without limits. This tutorial shows how start using k6 extensions and build your own extensions using xk6.'
 ---
 
 > *Since v0.29.0 (JavaScript extensions) and v0.31.0 (Output extensions)*
