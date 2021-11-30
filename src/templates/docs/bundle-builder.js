@@ -2,7 +2,7 @@ import { ExtensionSelection } from 'components/pages/doc-extensions/extension-se
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
@@ -71,12 +71,12 @@ export default function BundleBuilderPage({
           <p>
             Want learn more about how xk6 works or how to create your own
             extension? Check out the{' '}
-            <a
-              className={docPageContent.link}
-              href="https://k6.io/blog/extending-k6-with-xk6/"
+            <Link
+              to={'/extensions/guides/build-a-k6-binary-with-extensions/'}
+              class={docPageContent.link}
             >
               tutorial
-            </a>
+            </Link>
             .
           </p>
         </div>

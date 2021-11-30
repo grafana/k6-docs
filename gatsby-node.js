@@ -1218,7 +1218,13 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/misc/k6-extensions/',
-    toPath: '/extensions/guides/getting-started/',
+    toPath: '/extensions/guides/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/guides/getting-started/',
+    toPath: '/extensions/guides/',
     isPermanent: true,
   });
 
