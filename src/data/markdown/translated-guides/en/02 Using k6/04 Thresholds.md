@@ -173,30 +173,30 @@ You can find more specific threshold examples on the [Counter](/javascript-api/k
 
 ## Threshold Syntax
 
-Thresholds can be specified in a short or full format.
+A threshold requires at least one `threshold_expression` to be defined:
 
 <CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
 ```javascript
 export const options = {
   thresholds: {
-    metric_name1: ['threshold_expression' /* ...*/], // short format
-    metric_name1: [
+    metric_name1: [ 'threshold_expression', ... ], // short format
+    metric_name2: [
       {
         threshold: 'threshold_expression',
         abortOnFail: true, // boolean
         delayAbortEval: '10s', // string
       },
     ], // full format
-  },
+  }
 };
 ```
 
 </CodeGroup>
 
-The above declaration inside a k6 script means that there will be a threshold configured for
-the metric `metric_name1`. To determine if the threshold has failed or passed, the string `'threshold_expression'`
-will be evaluated. The `'threshold_expression'` must follow the following format.
+The above declaration inside a k6 script means that there will be thresholds configured for
+the metrics `metric_name1` and `metric_name2`. To determine if the threshold has failed or passed, the string `'threshold_expression'`
+will be evaluated. The `'threshold_expression'` must follow the following format:
 
 `aggregation_method operator value`
 
@@ -270,6 +270,23 @@ We have these thresholds:
   this metric is that the returned content must be smaller than 4000 bytes.
 - A counter metric that keeps track of the total number of times content returned was **not** OK.
   The success criteria here implies that content can't have been bad more than 99 times.
+
+**⚠️ Common mistake** Do not specify multiple thresholds for the same metric by repeating the same object key:
+
+<CodeGroup labels={["threshold-duplicate-mistake.js"]} lineNumbers={[true]}>
+
+```javascript
+export let options = {
+  thresholds: {
+    // avoid using the same metric more than once here
+    // metric_name: [ 'count<100' ],
+    // metric_name: [ 'rate<50' ],
+  }
+};
+```
+</CodeGroup>
+
+Since thresholds are defined as the properties of a JavaScript object, it's not possible to specify multiple ones with the same property name. Only the last one will remain and the rest will be **silently** ignored. You should specify them with an [array for the same key instead](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
 ## Thresholds on tags
 
