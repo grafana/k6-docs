@@ -4,6 +4,15 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v1.7.0 `(2021-11-23)`
+- Improve the script editor input and move it to breadcrumb.
+- Start email notification in simple mode, and add sensible defaults.
+- Show user-friendly error message when VU limit is exceeded.
+- Fix: redirect SAML SSO user to SAML SSO login.
+
+### v1.6.0 `(2021-11-17)`
+- General availability of [v0.35.0](https://github.com/grafana/k6/releases/tag/v0.35.0).
+
 ### v1.6.0 `(2021-11-9)`
 
 - The [exported CSV file](/cloud/analyzing-results/result-export/#export-as-csv) includes now all the test result data.
