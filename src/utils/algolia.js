@@ -66,10 +66,18 @@ const processMdxEntry = (
     pageTags = ['en', 'es'];
   }
 
-  const slug =
-    pageLocale === DEFAULT_LOCALE
-      ? getSlug(path)
-      : getTranslatedSlug(strippedDirectory, title, pageLocale, 'guides');
+  let slug = getSlug(path);
+  if (pageLocale !== DEFAULT_LOCALE) {
+    slug = getTranslatedSlug(strippedDirectory, title, pageLocale, 'guides');
+  }
+
+  if (slug.startsWith('/xk6-browser')) {
+    slug = `/javascript-api${slug}`;
+  }
+
+  if (slug.startsWith('/jslib')) {
+    slug = `/javascript-api${slug}`;
+  }
 
   const pageSlug = customSlug || slug;
   const chunks = chunk(mdxAstToPlainText(mdxAST), 300);
