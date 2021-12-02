@@ -9,7 +9,7 @@ Before k6 extensions, extending k6 with custom functionality that isn't availabl
 open-source tool has been possible in one of two ways:
 
 - By importing a JavaScript library. 
-- By forking the [k6 repository](https://github.com/k6io/k6) and doing the changes in Go.
+- By forking the [k6 repository](https://github.com/grafana/k6) and doing the changes in Go.
 
 Both methods have some drawbacks: 
 

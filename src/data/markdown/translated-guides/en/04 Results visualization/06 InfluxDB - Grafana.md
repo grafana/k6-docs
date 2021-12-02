@@ -109,7 +109,7 @@ Make sure you have at least docker-compose version v1.12.0 installed.
 You just need to do the following:
 
 ```bash
-$ git clone 'https://github.com/k6io/k6'
+$ git clone 'https://github.com/grafana/k6'
 $ cd k6
 $ docker-compose up -d \
     influxdb \

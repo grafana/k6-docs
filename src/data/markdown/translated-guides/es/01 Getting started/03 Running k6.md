@@ -173,7 +173,7 @@ Esto también se puede lograr con una configuración más avanzada utilizando [e
 k6 soporta tres modelos de ejecución para ejecutar los tests:
 - [Local](#running-local-tests): En tu máquina local o en un servidor de Integración continua (CI server) 
 - [Cloud](/cloud):  En la infraestructura de la nube administrada por K6 Cloud
-- Clustered: En más de una máquina administrada por usted. [No está soportado aun](https://github.com/k6io/k6/issues/140).
+- Clustered: En más de una máquina administrada por usted. [No está soportado aun](https://github.com/grafana/k6/issues/140).
 
 Uno de los objetivos de K6 es permitir la ejecución de las pruebas en tres modelos de ejecución sin hacer modificaciones en el script . 
 Para ejecutar las pruebas en la nube desde la interfaz de línea de comando (CLI), debe primero crear una cuenta en K6 Cloud e iniciar sesión con su cuenta usando CLI. Luego debe pasar su script al comando `k6 cloud`. 
