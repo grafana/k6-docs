@@ -52,7 +52,7 @@ docker pull loadimpact/k6
 
 ## Download the k6 binary
 
-Download a prebuilt binary from our [Releases page](https://github.com/k6io/k6/releases),
+Download a prebuilt binary from our [Releases page](https://github.com/grafana/k6/releases),
 and place it in your `PATH` to run `k6` from any location.
 
 ## Using k6 extensions

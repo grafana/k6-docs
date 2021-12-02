@@ -188,7 +188,7 @@ k6 supports three execution modes to run your k6 tests:
 
 - [Local](#running-local-tests): on your local machine or a CI server.
 - [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
-- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/k6io/k6/issues/140).
+- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/grafana/k6/issues/140).
 
 One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script.
 

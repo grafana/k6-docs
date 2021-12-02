@@ -17,7 +17,7 @@ The usage report does not contain any information about what you are testing. Th
 
 This info is sent to an HTTP server that collects statistics on k6 usage.
 
-For those interested, here is the actual Go [code](https://github.com/k6io/k6/blob/master/cmd/run.go) that generates and sends the usage report:
+For those interested, here is the actual Go [code](https://github.com/grafana/k6/blob/master/cmd/run.go) that generates and sends the usage report:
 
 <CodeGroup labels={["snippet from run.go"]} lineNumbers={[true]}>
 

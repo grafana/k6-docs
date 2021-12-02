@@ -54,7 +54,7 @@ export const Footer = () => {
               </Link>
               <div className={styles.social}>
                 <a
-                  href={'https://github.com/k6io/k6'}
+                  href={'https://github.com/grafana/k6'}
                   className={styles.socialIcon}
                 >
                   <GithubLogo />

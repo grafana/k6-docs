@@ -131,10 +131,10 @@ k6 run --compatibility-mode=base yourscript.es5.js
 
 Puede usar [webpack](https://webpack.js.org/) para transpilar el script fuera de k6. Hemos preparado un [ejemplo webpack.config](https://github.com/grafana/k6-hardware-benchmark/blob/master/webpack.config.js) que transforma código en ES6+ a ES5.1 para k6. 
 
-Si usa el repositorio [k6-hardware-benchmark](https://github.com/k6io/k6-hardware-benchmark), puede usar las siguientes instrucciones: 
+Si usa el repositorio [k6-hardware-benchmark](https://github.com/grafana/k6-hardware-benchmark), puede usar las siguientes instrucciones: 
 
 ```bash
-git clone https://github.com/k6io/k6-hardware-benchmark/
+git clone https://github.com/grafana/k6-hardware-benchmark/
 cd k6-hardware-benchmark
 yarn install
 
@@ -255,7 +255,7 @@ Hemos ejecutado algunas pruebas grandes en diferentes máquinas EC2 para ver cu�
 
 ### Real-life test of a website.
 
-Probar los límites teóricos es divertido, pero ese no es el objetivo de este benchmark. El punto de este benchmark es dar a los usuarios una indicación de cuánto tráfico puede generar k6 al ejecutar pruebas complicadas de la vida real. Para ello, hemos escrito una [prueba](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/website.js) de un sitio web de la vida real bastante pesado que utiliza casi todas las características de k6.
+Probar los límites teóricos es divertido, pero ese no es el objetivo de este benchmark. El punto de este benchmark es dar a los usuarios una indicación de cuánto tráfico puede generar k6 al ejecutar pruebas complicadas de la vida real. Para ello, hemos escrito una [prueba](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/website.js) de un sitio web de la vida real bastante pesado que utiliza casi todas las características de k6.
 
 Configuración:
 
@@ -342,7 +342,7 @@ Resultados
 ### Pruebas de RPS
 
 
-Como se dijo al principio, k6 puede producir muchas peticiones muy rápidamente, especialmente si el sistema de destino responde de manera rápida. Para probar el límite de RPS de nuestra aplicación hemos escrito una [prueba optimizada para RPS](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Desafortunadamente, nuestro sistema de destino test.k6.io es una aplicación PHP bastante lenta. Sin embargo, utilizando 30k VUs hemos alcanzado 188.000 RPS. Los números mucho más altos son posibles para sistemas más rápidos.
+Como se dijo al principio, k6 puede producir muchas peticiones muy rápidamente, especialmente si el sistema de destino responde de manera rápida. Para probar el límite de RPS de nuestra aplicación hemos escrito una [prueba optimizada para RPS](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Desafortunadamente, nuestro sistema de destino test.k6.io es una aplicación PHP bastante lenta. Sin embargo, utilizando 30k VUs hemos alcanzado 188.000 RPS. Los números mucho más altos son posibles para sistemas más rápidos.
 
 **> AWS m5.24xlarge**
 
@@ -372,7 +372,7 @@ Por favor, lea la advertencia sobre el coste de la transferencia de datos en AWS
 
 **> AWS m5.24xlarge**
 
-Para probar el rendimiento de la red hemos escrito un [script de carga de archivos](https://github.com/k6io/k6-hardware-benchmark/blob/master/scripts/file-upload.js). Hemos ejecutado esta prueba durante sólo 1 minuto para minimizar los costes de transferencia de datos. En 1 minuto, k6 consiguió transferir 36 GB de datos con 1000 VUs.
+Para probar el rendimiento de la red hemos escrito un [script de carga de archivos](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/file-upload.js). Hemos ejecutado esta prueba durante sólo 1 minuto para minimizar los costes de transferencia de datos. En 1 minuto, k6 consiguió transferir 36 GB de datos con 1000 VUs.
 
 ```bash
 k6 run scripts/file-upload.es5.js \
@@ -437,7 +437,7 @@ Sin embargo -en este momento  el modo de ejecución distribuido de k6 no es del 
 - k6 informa de las métricas individualmente para cada instancia. Dependiendo de cómo almacene los resultados de las pruebas de carga, tendrá que agregar algunas métricas para calcularlas correctamente.
 
 
-> El objetivo de k6 es apoyar una solución nativa de código abierto para la [ejecución distribuida](https://github.com/k6io/k6/issues/140). Si quieres seguir el progreso, suscríbete al tema de ejecución distribuida en GitHub.
+> El objetivo de k6 es apoyar una solución nativa de código abierto para la [ejecución distribuida](https://github.com/grafana/k6/issues/140). Si quieres seguir el progreso, suscríbete al tema de ejecución distribuida en GitHub.
 
 ## Pruebas a gran escala en k6 Cloud
 
