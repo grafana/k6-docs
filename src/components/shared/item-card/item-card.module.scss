@@ -8,6 +8,7 @@
   box-shadow: 0 1px 5px rgba($color-primary, 0.05);
   transition: 0.3s;
   overflow: hidden;
+  border: none;
 
   // to emulate the border
   // this complex emulation required for hover effect (see .circleWrapper and .circle in this file)
