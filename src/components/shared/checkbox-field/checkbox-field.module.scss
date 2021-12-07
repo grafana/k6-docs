@@ -32,8 +32,7 @@
 
 .input:checked + label:before {
   content: url('./svg/checkmark.svg');
-  padding-left: 4px;
-  padding-top: 1px;
+
   background: $color-accent-primary;
   border: 1px solid $color-accent-primary;
 }

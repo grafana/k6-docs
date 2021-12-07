@@ -17,7 +17,6 @@
   @include hover-supported {
     &:hover {
       box-shadow: 0 5px 10px rgba($color-primary, 0.05);
-      transform: translateY(-4px);
 
       .corner {
         opacity: 1;
@@ -26,6 +25,14 @@
       .circle-wrapper {
         display: block;
         opacity: 1;
+      }
+    }
+  }
+
+  &.lifted-on-hover {
+    @include hover-supported {
+      &:hover {
+        transform: translateY(-4px);
       }
     }
   }

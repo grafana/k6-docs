@@ -17,7 +17,7 @@ export const ExtensionCard = ({
     if (hasCheckbox) {
       return (
         <ItemCard
-          lifted={false}
+          liftOnHover={false}
           as="button"
           type="button"
           onClick={onCheckboxClick}
