@@ -649,6 +649,20 @@
         "Messaging",
         "Data"
       ]
+    },
+    {
+      "name": "xk6-tcp",
+      "description": "Send data to TCP port",
+      "url": "https://github.com/NAlexandrov/xk6-tcp",
+      "logo": "",
+      "author": {
+        "name": "Nikolay Alexandrov",
+        "url": "https://github.com/NAlexandrov"
+      },
+      "official": false,
+      "categories": [
+        "Messaging"
+      ]
     }
   ]
 }
