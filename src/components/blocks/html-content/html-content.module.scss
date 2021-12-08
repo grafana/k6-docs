@@ -96,4 +96,16 @@
   & * + li {
     margin-top: 5px;
   }
+
+  // margin between paragraphs, images and code blocks inside <li>
+  & li > * + p,
+  & li > * + div {
+    margin-top: 15px;
+  }
+
+  // margin after <li>s with complex children (paragraphs, images, code blocks)
+  & li > p:last-child,
+  & li > div:last-child {
+    margin-bottom: 25px;
+  }
 }
