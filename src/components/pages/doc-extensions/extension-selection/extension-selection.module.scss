@@ -8,8 +8,19 @@
 .list {
   width: 100%;
   margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 25px;
+  row-gap: 25px;
+
+  @include lg-down {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include md-down {
+    grid-template-columns: 1fr;
+  }
 }
 
 .selection {

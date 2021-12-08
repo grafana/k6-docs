@@ -8,6 +8,7 @@
   box-shadow: 0 1px 5px rgba($color-primary, 0.05);
   transition: 0.3s;
   overflow: hidden;
+  border: none;
 
   // to emulate the border
   // this complex emulation required for hover effect (see .circleWrapper and .circle in this file)
@@ -16,7 +17,6 @@
   @include hover-supported {
     &:hover {
       box-shadow: 0 5px 10px rgba($color-primary, 0.05);
-      transform: translateY(-4px);
 
       .corner {
         opacity: 1;
@@ -25,6 +25,14 @@
       .circle-wrapper {
         display: block;
         opacity: 1;
+      }
+    }
+  }
+
+  &.lifted-on-hover {
+    @include hover-supported {
+      &:hover {
+        transform: translateY(-4px);
       }
     }
   }

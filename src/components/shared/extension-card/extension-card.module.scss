@@ -1,21 +1,23 @@
 .wrapper {
   position: relative;
   display: flex;
-  width: calc((100% - 100px) / 3);
-  margin-bottom: 50px;
+  align-items: flex-start;
+  padding: 20px;
   text-decoration: none;
   color: $color-primary;
+  width: 100%;
+  background: $color-tertiary;
 
   &.withCheckbox {
-    border: none;
-    background-color: transparent;
     cursor: pointer;
-    text-align: left;
-  }
 
-  &:nth-child(3n + 1),
-  &:nth-child(3n + 2) {
-    margin-right: 50px;
+    & .name {
+      padding-right: 25px;
+    }
+
+    &.checked .name {
+      color: $color-accent-primary;
+    }
   }
 
   &:hover {
@@ -23,34 +25,12 @@
       color: $color-accent-primary;
     }
   }
-
-  @include lg-down {
-    width: calc((100% - 50px) / 2);
-    margin-bottom: 50px;
-
-    &:nth-child(3n + 1),
-    &:nth-child(3n + 2) {
-      margin-right: 0;
-    }
-
-    &:nth-child(2n + 1) {
-      margin-right: 50px;
-    }
-  }
-
-  @include md-down {
-    width: 100%;
-
-    &:nth-child(2n + 1) {
-      margin-right: 0;
-    }
-  }
 }
 
 .checkbox {
   position: absolute;
-  top: 7px;
-  right: 0;
+  top: 20px;
+  right: 20px;
 }
 
 .imageWrapper {
@@ -111,4 +91,5 @@
   font-size: $font-size-sm;
   line-height: $line-height-sm;
   margin-top: 10px;
+  text-align: left;
 }
