@@ -634,6 +634,21 @@
       "categories": [
         "Browser"
       ]
+    },
+    {
+      "name": "xk6-avro",
+      "description": "xk6-avro helps working with the Avro dataformat (parsing schema, transforming between binary&textual)",
+      "url": "https://github.com/xvzf/xk6-avro",
+      "logo": "",
+      "author": {
+        "name": "Matthias Riegler",
+        "url": "https://github.com/xvzf"
+      },
+      "official": false,
+      "categories": [
+        "Messaging",
+        "Data"
+      ]
     }
   ]
 }
