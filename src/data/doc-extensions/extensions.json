@@ -637,7 +637,7 @@
     },
     {
       "name": "xk6-avro",
-      "description": "xk6-avro helps working with the Avro dataformat (parsing schema, transforming between binary&textual)",
+      "description": "Work with messages using Avro data format",
       "url": "https://github.com/xvzf/xk6-avro",
       "logo": "",
       "author": {
