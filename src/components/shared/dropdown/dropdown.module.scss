@@ -14,21 +14,13 @@
   font-size: 12px;
   font-weight: 500;
 
-  &::before {
-    position: absolute;
-    content: '';
-    right: -16px;
-    top: 7px;
-    border-top: 4px solid $color-additional-1;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
+  &-open .icon {
+    transform: rotate(180deg);
   }
+}
 
-  &-open {
-    &::before {
-      transform: rotate(180deg);
-    }
-  }
+.icon {
+  margin-left: 5px;
 }
 
 .menu {
