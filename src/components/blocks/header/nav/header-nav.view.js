@@ -7,7 +7,7 @@ import styles from './header-nav.module.scss';
 
 // local helper function for checking
 // if we should highlight javascript api link
-const isJsAPIActiveLink = (path) => {
+export const isJsAPIActiveLink = (path) => {
   let isActiveLink = false;
   // check if window object is defined (we are in browser)
   if (typeof window !== 'undefined') {
@@ -34,7 +34,7 @@ const isJsAPIActiveLink = (path) => {
   return isActiveLink;
 };
 
-const Single = ({ to, label, sections }) => {
+export const Single = ({ to, label, sections }) => {
   let Component = null;
   if (to === '/') {
     const guidesPartiallyActive =
@@ -99,6 +99,8 @@ const Single = ({ to, label, sections }) => {
 
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
+
+  console.log(links);
 
   const [shouldBeHighlighted, setShouldBeHighlighted] = useState({
     check: () => false,
