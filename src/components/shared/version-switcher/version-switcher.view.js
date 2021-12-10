@@ -33,7 +33,7 @@ export const VersionSwitcher = ({
               SUPPORTED_VERSIONS_FOR_BUILD.includes(version) ||
               version === LATEST_VERSION,
           )
-      : [];
+      : [currentVersion];
 
   const handleVersionChange = (newVersion) => {
     if (typeof window === 'undefined') {
