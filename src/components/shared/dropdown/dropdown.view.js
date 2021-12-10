@@ -18,21 +18,25 @@ export const Dropdown = ({ currentOption, options, className, onChange }) => {
           isOpen ? styles.currentOpen : styles.currentClose,
         )}
       >
-        {currentOption && <span>{currentOption}</span>}
+        {currentOption && (
+          <span>
+            {options.find((item) => item.value === currentOption).label}
+          </span>
+        )}
         <ArrowIcon className={styles.icon} />
       </button>
       {isOpen && (
         <div className={styles.menu}>
           {options
-            .filter((option) => option !== currentOption)
+            .filter((option) => option.value !== currentOption)
             .map((option) => (
               <button
                 key={option}
                 type="button"
                 className={styles.menuItem}
-                onClick={() => onChange(option)}
+                onClick={() => onChange(option.value)}
               >
-                <span>{option}</span>
+                <span>{option.label}</span>
               </button>
             ))}
         </div>

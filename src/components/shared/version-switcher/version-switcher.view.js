@@ -45,7 +45,7 @@ export const VersionSwitcher = ({
   return (
     <Dropdown
       currentOption={currentVersion}
-      options={availableVersions}
+      options={availableVersions.map((item) => ({ label: item, value: item }))}
       onChange={handleVersionChange}
     />
   );

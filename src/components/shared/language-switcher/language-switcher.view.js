@@ -10,8 +10,11 @@ export const LanguageSwitcher = (props) => {
 
   return (
     <Dropdown
-      currentOption={locale.toUpperCase()}
-      options={SUPPORTED_LOCALES.map((item) => item.toUpperCase())}
+      currentOption={locale}
+      options={SUPPORTED_LOCALES.map((item) => ({
+        label: item.toUpperCase(),
+        value: item,
+      }))}
       onChange={onLanguageChange}
       className={className}
     />
