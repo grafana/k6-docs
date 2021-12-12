@@ -42,7 +42,7 @@ If you use the [Chocolatey package manager](https://chocolatey.org/) you can ins
 choco install k6
 ```
 
-or if you use the [Windows Package Manager](https://github.com/microsoft/winget-cli) you can install from the unofficial [k6 manifests](https://github.com/vedantmgoyal2009/winget-pkgs/tree/master/manifests/k/k6/k6) with:  
+or if you use the [Windows Package Manager](https://github.com/microsoft/winget-cli) you can install the official packages from the k6 manifests [(created by the community)](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/k6/k6) with:  
 
 ```
 winget install k6
