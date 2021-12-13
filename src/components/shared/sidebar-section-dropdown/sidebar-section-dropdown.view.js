@@ -1,48 +1,75 @@
-import classNames from 'classnames';
-import { Link, navigate, withPrefix } from 'gatsby';
-import {
-  isJsAPIActiveLink,
-  Single,
-} from 'components/blocks/header/nav/header-nav.view';
-import React, { useState, useEffect } from 'react';
+import classNames from 'classnames/bind';
+import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view';
+import { Link, withPrefix } from 'gatsby';
+import React, { useState } from 'react';
 
 import styles from './sidebar-section-dropdown.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ItemWithSubmenu = ({ label, submenu, shouldBeHighlighted }) => (
-  <>
-    <ul className={styles.submenu} role="menu">
-      {submenu.map((item, i) => (
-        <li
-          key={`si-${i}`}
-          className={styles.submenuItem}
-          role="menuitem"
-          tabIndex={i}
-        >
-          <Link
-            className={classNames(styles.link, {
-              [styles.active]: shouldBeHighlighted.check(item.to),
-            })}
-            to={item.to}
-          >
-            {item.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </>
-);
+const formatLabel = (label) => {
+  let newLabel = `${label[0].toUpperCase()}${label.substr(1).toLowerCase()}`;
+  newLabel = newLabel.replace('K6', 'k6');
+  newLabel = newLabel.replace('Xk6', 'xk6');
+  newLabel = newLabel.replace('api', 'API');
+  return newLabel;
+};
 
 export const SidebarSectionDropdown = ({ links, className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [shouldBeHighlighted, setShouldBeHighlighted] = useState({
-    check: () => false,
+  // flatten links
+  const flatLinks = [];
+  links.forEach((item) => {
+    flatLinks.push({
+      label: formatLabel(item.label),
+      to: withPrefix(item.to),
+      disabled: item.submenu,
+      isSubmenu: false,
+    });
+
+    if (item.submenu) {
+      item.submenu.forEach((submenuItem) => {
+        flatLinks.push({
+          label: formatLabel(submenuItem.label),
+          to: withPrefix(submenuItem.to),
+          isSubmenu: true,
+          disabled: false,
+        });
+      });
+    }
   });
-  useEffect(() => {
-    setShouldBeHighlighted({ check: isJsAPIActiveLink });
-  }, []);
+
+  const flatLinksWithoutGuides = flatLinks.filter((item) => item.to !== '/');
+  const jsApiLinks = flatLinks.filter(
+    (item) =>
+      item.isSubmenu &&
+      (/(\/docs)?\/javascript-api/.test(item.to) ||
+        /v\d\.\d{2}\/javascript-api/.test(item.to)),
+  );
+
+  let currentSection = flatLinks[0].label;
+
+  if (typeof window !== 'undefined') {
+    if (
+      /(\/docs)?\/javascript-api/.test(window.location.pathname) ||
+      /v\d\.\d{2}\/javascript-api/.test(window.location.pathname)
+    ) {
+      jsApiLinks.forEach((item) => {
+        if (isJsAPIActiveLink(item.to)) {
+          currentSection = item.label;
+        }
+      });
+    } else if (
+      flatLinksWithoutGuides.some(({ to }) =>
+        window.location.pathname.startsWith(to),
+      )
+    ) {
+      currentSection = flatLinksWithoutGuides.find(({ to }) =>
+        window.location.pathname.startsWith(to),
+      ).label;
+    }
+  }
 
   return (
     <div className={classNames(styles.wrapper, className)}>
@@ -54,34 +81,27 @@ export const SidebarSectionDropdown = ({ links, className }) => {
           isOpen ? styles.currentOpen : styles.currentClose,
         )}
       >
-        {/*currentVersion && <span>{currentVersion}</span>*/}
+        {currentSection && <span>{currentSection}</span>}
       </button>
       {isOpen && (
-        <ul className={styles.menu}>
-          {links.map((link) => {
-            // eslint-disable-next-line prefer-const
-            let { label, to, submenu } = link;
-
-            return (
-              <li className={cx('item', 'itemDoc')} key={label + to}>
-                {submenu ? (
-                  <ItemWithSubmenu
-                    label={label}
-                    submenu={submenu}
-                    shouldBeHighlighted={shouldBeHighlighted}
-                  />
-                ) : (
-                  <Single
-                    label={label}
-                    to={to}
-                    sections={links
-                      .filter((item) => item.to !== '/')
-                      .map((item) => withPrefix(item.to))}
-                  />
-                )}
-              </li>
-            );
-          })}
+        <ul className={cx('menu')}>
+          {flatLinks.map(({ label, to, disabled, isSubmenu }) => (
+            <li className={cx('item', isSubmenu && 'submenu')}>
+              {!disabled ? (
+                <Link
+                  className={cx('link', disabled && 'disabled')}
+                  to={to}
+                  activeClassName={styles.active}
+                >
+                  {label}
+                </Link>
+              ) : (
+                <span className={cx('link', disabled && 'disabled')}>
+                  {label}
+                </span>
+              )}
+            </li>
+          ))}
         </ul>
       )}
     </div>

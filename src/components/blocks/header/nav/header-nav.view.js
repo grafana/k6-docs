@@ -34,7 +34,7 @@ export const isJsAPIActiveLink = (path) => {
   return isActiveLink;
 };
 
-export const Single = ({ to, label, sections }) => {
+const Single = ({ to, label, sections }) => {
   let Component = null;
   if (to === '/') {
     const guidesPartiallyActive =
@@ -99,8 +99,6 @@ export const Single = ({ to, label, sections }) => {
 
 export const HeaderNav = ({ links }) => {
   const cx = classNames.bind(styles);
-
-  console.log(links);
 
   const [shouldBeHighlighted, setShouldBeHighlighted] = useState({
     check: () => false,

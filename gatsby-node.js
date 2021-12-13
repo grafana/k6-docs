@@ -191,6 +191,7 @@ const generateTopLevelLinks = (topLevelLinks) => [
   },
   {
     label: 'JAVASCRIPT API',
+    to: '/javascript-api/',
     submenu: [
       { label: 'k6 API', to: `/javascript-api/` },
       { label: 'xk6-browser', to: `/javascript-api/xk6-browser/` },

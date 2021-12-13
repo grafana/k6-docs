@@ -12,6 +12,7 @@ import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
+import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { SEO } from 'components/shared/seo';
 import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
@@ -304,13 +305,7 @@ export const DocLayout = ({
             />
           )}
         </div>
-        {sidebarTree && sectionName && (
-          <span className={styles.sidebarTitle}>
-            {sectionName === 'Xk6-browser' || sectionName === 'Jslib'
-              ? sectionName.toLowerCase()
-              : sectionName}
-          </span>
-        )}
+        {sidebarTree && <SidebarSectionDropdown links={links} />}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
