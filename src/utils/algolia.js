@@ -107,6 +107,23 @@ const flatten = (arr, kind = 'docs') => {
   return flat(cache);
 };
 
+// custom index entry for extensions page
+const processExtensions = (extensionsList) => {
+  const reducer = (prev, { name, description }) =>
+    [prev, name, description].join('\n');
+  const content = extensionsList.reduce(reducer, []);
+
+  return [
+    {
+      title: 'k6 Extensions',
+      objectID: 'explore-extensions-page',
+      slug: '/extensions/',
+      content,
+      _tags: ['en', 'es'],
+    },
+  ];
+};
+
 // main query
 const docPagesQuery = `{
   docPages: allFile(
@@ -151,6 +168,15 @@ const guidesPagesQuery = `{
 }
 }`;
 
+// extensions data
+const extensionsQuery = `{extensionsData: docExtensionsJson {
+        extensionsList: extensions {
+          name
+          description
+          url
+        }
+      }}`;
+
 // additional config
 const settings = {
   attributesToSnippet: ['content:20'],
@@ -170,6 +196,13 @@ const queries = [
   {
     query: guidesPagesQuery,
     transformer: ({ data }) => flatten(data.guidesPages.nodes, 'guides'),
+    indexName,
+    settings,
+  },
+  {
+    query: extensionsQuery,
+    transformer: ({ data }) =>
+      processExtensions(data.extensionsData.extensionsList),
     indexName,
     settings,
   },
