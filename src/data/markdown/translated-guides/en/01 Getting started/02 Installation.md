@@ -42,6 +42,12 @@ If you use the [Chocolatey package manager](https://chocolatey.org/) you can ins
 choco install k6
 ```
 
+or if you use the [Windows Package Manager](https://github.com/microsoft/winget-cli) you can install the official packages from the k6 manifests [(created by the community)](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/k6/k6) with:  
+
+```
+winget install k6
+```
+
 Otherwise you can manually download and install the [latest official `.msi` package](https://dl.k6.io/msi/k6-latest-amd64.msi).
 
 ## Docker
