@@ -37,6 +37,14 @@ const {
 const isProduction =
   process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
+const getVersionedCustomSlug = (slug, pageVersion) => {
+  if (pageVersion === LATEST_VERSION) {
+    return slug;
+  }
+
+  return `/${pageVersion}${slug}`;
+};
+
 const jsApiVersionsToBuild =
   process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
 let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
@@ -248,11 +256,20 @@ function generateSidebar({ nodes, type = 'docs' }) {
       pageSlug = '/';
     }
 
+    let customSlug = slug ? addTrailingSlash(slug) : null;
+
+    const pageVersion = SUPPORTED_VERSIONS.find((version) =>
+      translatedPath.startsWith(version),
+    );
+
+    if (pageVersion && customSlug) {
+      customSlug = getVersionedCustomSlug(customSlug, pageVersion);
+    }
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: slug ? addTrailingSlash(slug) : dotifyVersion(pageSlug),
+        path: customSlug || dotifyVersion(pageSlug),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -601,7 +618,10 @@ function getDocPagesProps({
 
       let pageVersions = null;
 
-      if (slug.startsWith('javascript-api/')) {
+      if (
+        slug.startsWith('javascript-api/') ||
+        slug.startsWith('/javascript-api/')
+      ) {
         pageVersions = getPageVersions(
           getSidebar,
           getJavascriptAPISidebar,
@@ -875,7 +895,9 @@ function getJsAPIVersionedPagesProps({
 
       const slug = getSlug(path);
 
-      const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
+      const pageSlug = customSlug
+        ? getVersionedCustomSlug(addTrailingSlash(customSlug), pageVersion)
+        : slug;
 
       // path collision check
       if (
