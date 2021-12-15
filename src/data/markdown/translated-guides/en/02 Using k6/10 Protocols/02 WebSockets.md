@@ -9,7 +9,7 @@ excerpt: 'Comparing HTTP based tests to WebSocket ones, there are some differenc
 
 ## Load testing WebSockets with k6
 
-Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over an over, each VU is now setup to run an asynchronous event loop.
+Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now setup to run an asynchronous event loop.
 
 The basic structure of a WebSocket test looks like this:
 
