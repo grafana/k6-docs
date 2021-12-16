@@ -43,25 +43,9 @@ The quickest way to get started is to [download a release binary from GitHub](ht
 
 ### Build from source
 
-If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build from source.
+If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build from source. 
 
-To build a k6 binary with the extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/); the following steps are:
-
-```bash
-# Install xk6
-go install go.k6.io/xk6/cmd/xk6@latest
-
-# Build the k6 binary
-xk6 build --with github.com/grafana/xk6-browser
-
-... [INFO] Build environment ready
-... [INFO] Building k6
-... [INFO] Build complete: ./k6
-```
-
-xk6 will create the k6 binary in the local folder. 
-
-> To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6). 
+<InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
 
 ## Browser-level APIs
 

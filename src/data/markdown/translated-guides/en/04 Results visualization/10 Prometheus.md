@@ -7,23 +7,7 @@ k6 supports sending test result metrics to a Prometheus Remote Write endpoint vi
 
 ## Instructions
 
-To build a k6 binary with the PRW extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/); the following steps are:
-
-```shell
-# Install xk6
-go install go.k6.io/xk6/cmd/xk6@latest
-
-# Build k6 binary
-xk6 build --with github.com/grafana/xk6-output-prometheus-remote
-
-... [INFO] Build environment ready
-... [INFO] Building k6
-... [INFO] Build complete: ./k6
-```
-
-xk6 will create the k6 binary in the local folder. 
-
-> To learn more about how to build custom k6 versions, check out [xk6](https://github.com/grafana/xk6). 
+<InstallationInstructions extensionUrl="github.com/grafana/xk6-output-prometheus-remote"/>
 
 
 Then run the test with the new binary as follows:
