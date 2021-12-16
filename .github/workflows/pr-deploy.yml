@@ -100,7 +100,7 @@ jobs:
     name: Deploy pull request
     runs-on: ubuntu-latest
     needs: [build]
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.PR_CI_AWS_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.PR_CI_AWS_SECRET_KEY }}
