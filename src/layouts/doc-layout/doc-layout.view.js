@@ -30,6 +30,8 @@ import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
 
+import ArrowLeft from './svg/arrow-left.inline.svg';
+
 import styles from './doc-layout.module.scss';
 
 const { indexName } = AlgoliaQueries[0];
@@ -209,9 +211,20 @@ const SidebarNode = (props) => {
     <>
       {!meta.hideFromSidebar && (
         <div
-          className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}
+          className={classNames(
+            styles.sidebarNode,
+            hasSubMenu && styles.sidebarNodeWithChildren,
+          )}
         >
           {nodes[nodeType()]()}
+          {hasSubMenu > 0 && (
+            <ArrowLeft
+              className={classNames(
+                styles.sidebarArrow,
+                isActive && styles.sidebarArrowActive,
+              )}
+            />
+          )}
           {!!Object.keys(children).length && isActive && (
             <div className={styles.sidebarNodeChildren}>
               {childrenToList(children).map((node) => (
@@ -291,19 +304,6 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
-          {showLanguageToggle && (
-            <LanguageSwitcher
-              onLanguageChange={languageChangeHandler}
-              className={styles.languageSwitcher}
-            />
-          )}
-          {!!version && (
-            <VersionSwitcher
-              currentVersion={version}
-              versions={pageVersions}
-              className={styles.versionSwitcher}
-            />
-          )}
         </div>
         {sidebarTree && <SidebarSectionDropdown links={links} />}
         {sidebarTree &&
@@ -355,8 +355,23 @@ export const DocLayout = ({
 
       <main className={styles.main}>
         <Header>
-          <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
+          <div className={'col-xl-8 col-lg-10 d-md-flex col-md-12 d-none'}>
             <HeaderNav links={links} />
+            <div className={styles.controls}>
+              {!!version && (
+                <VersionSwitcher
+                  currentVersion={version}
+                  versions={pageVersions}
+                  className={styles.versionSwitcher}
+                />
+              )}
+              {showLanguageToggle && (
+                <LanguageSwitcher
+                  onLanguageChange={languageChangeHandler}
+                  className={styles.languageSwitcher}
+                />
+              )}
+            </div>
           </div>
           <div className={'d-md-none col-12 d-flex justify-content-end'}>
             {showLanguageToggle && (

@@ -3,6 +3,8 @@ import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view'
 import { Link, withPrefix } from 'gatsby';
 import React, { useState } from 'react';
 
+import ArrowIcon from './svg/arrow.inline.svg';
+
 import styles from './sidebar-section-dropdown.module.scss';
 
 const cx = classNames.bind(styles);
@@ -73,37 +75,40 @@ export const SidebarSectionDropdown = ({ links, className }) => {
 
   return (
     <div className={classNames(styles.wrapper, className)}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        type="button"
-        className={classNames(
-          styles.current,
-          isOpen ? styles.currentOpen : styles.currentClose,
+      <div className={classNames(styles.dropdown, isOpen && styles.open)}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className={classNames(
+            styles.current,
+            isOpen ? styles.currentOpen : styles.currentClose,
+          )}
+        >
+          {currentSection && <span>{currentSection}</span>}
+          <ArrowIcon className={styles.icon} />
+        </button>
+        {isOpen && (
+          <ul className={cx('menu')}>
+            {flatLinks.map(({ label, to, disabled, isSubmenu }) => (
+              <li className={cx('item', isSubmenu && 'submenu')}>
+                {!disabled ? (
+                  <Link
+                    className={cx('link', disabled && 'disabled')}
+                    to={to}
+                    activeClassName={styles.active}
+                  >
+                    {label}
+                  </Link>
+                ) : (
+                  <span className={cx('link', disabled && 'disabled')}>
+                    {label}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
         )}
-      >
-        {currentSection && <span>{currentSection}</span>}
-      </button>
-      {isOpen && (
-        <ul className={cx('menu')}>
-          {flatLinks.map(({ label, to, disabled, isSubmenu }) => (
-            <li className={cx('item', isSubmenu && 'submenu')}>
-              {!disabled ? (
-                <Link
-                  className={cx('link', disabled && 'disabled')}
-                  to={to}
-                  activeClassName={styles.active}
-                >
-                  {label}
-                </Link>
-              ) : (
-                <span className={cx('link', disabled && 'disabled')}>
-                  {label}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      </div>
     </div>
   );
 };

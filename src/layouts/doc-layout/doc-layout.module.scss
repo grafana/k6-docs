@@ -5,6 +5,10 @@
   width: 100vw;
 }
 
+.controls {
+  margin-left: auto;
+}
+
 .sidebar-header {
   padding: 20px 20px 14px 20px;
   display: flex;
@@ -94,7 +98,7 @@
 }
 
 .sidebar-section {
-  padding: 20px;
+  padding: 15px 20px;
   border-bottom: 1px solid $color-additional-2;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
@@ -119,11 +123,14 @@
 
 // bumping specifity
 h2.sidebar-section-title {
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: 5px;
   text-align: start;
   text-transform: none;
-  color: $color-secondary;
+
+  // updated styles
+  font-weight: 500;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
 }
 
 .sidebar-section-title-link {
@@ -137,31 +144,8 @@ h2.sidebar-section-title {
   }
 }
 
-.sidebar-node-with-children > a {
-  &.active {
-    &:after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 4px 4px 4px;
-      border-color: transparent transparent #5a5c87 transparent;
-      display: inline-block;
-      margin-left: 5px;
-      vertical-align: middle;
-    }
-  }
-  &:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 4px 0 4px 4px;
-    border-color: transparent transparent transparent #5a5c87;
-    display: inline-block;
-    margin-left: 5px;
-    vertical-align: middle;
-  }
+.sidebar-node {
+  position: relative;
 }
 
 .sidebar-node-title {
@@ -174,7 +158,9 @@ h2.sidebar-section-title {
   transition: font-weight 0.3s;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
+
   margin-bottom: 5px;
+
   &:hover {
     color: $color-accent-primary;
   }
@@ -182,6 +168,18 @@ h2.sidebar-section-title {
   &.active {
     color: $color-accent-primary;
     font-weight: 500;
+  }
+
+  // updated styles
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  margin-left: 12px;
+  color: $color-secondary;
+
+  &.active {
+    color: $color-primary;
+    font-weight: 700;
   }
 }
 
@@ -192,6 +190,17 @@ h2.sidebar-section-title {
 a.sidebar-link {
   color: $color-accent-primary;
   font-weight: 500;
+}
+
+.sidebar-arrow {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  pointer-events: none;
+
+  &-active {
+    transform: rotate(90deg);
+  }
 }
 
 .main {
