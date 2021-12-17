@@ -173,6 +173,7 @@
   }
   @include md-down {
     max-width: unset;
+    margin-top: 20px;
   }
   @include xs-down {
     margin-top: 0;
