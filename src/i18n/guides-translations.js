@@ -14,10 +14,8 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.text':
       'Learn how to leverage the results output to gain actionable insight about your applications performance.',
     'welcome.what-is.title': 'What is k6?',
-    'welcome.what-is.description1': `k6 is a developer-centric, free and open-source load testing tool built
-    for making performance testing a productive and enjoyable experience.`,
-    'welcome.what-is.description2': `Using k6, you'll be able to catch performance regression and
-    problems earlier, allowing you to build resilient applications that scale.`,
+    'welcome.what-is.description1': `k6 is an open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.`,
+    'welcome.what-is.description2': `Using k6, you can test the reliability and performance of your systems and catch performance regressions and problems earlier. k6 will help you to build resilient and performant applications that scale.`,
     'welcome.features.title': 'Key features',
     'welcome.features.description':
       'k6 is packed with features, which you can learn all about in the documentation. Key features include:',
@@ -89,8 +87,8 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.text':
       'Aprende a utilizar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
     'welcome.what-is.title': '¿Qué es k6?',
-    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga centrada en el desarrollador, gratuita y de código abierto, creada para crear y ejecutar eficientemente las pruebas de rendimiento.`,
-    'welcome.what-is.description2': `Con k6, podrá detectar problemas de rendimiento en una etapa temprana, lo que le permitirá crear aplicaciones escalables y resistentes a los fallos.`,
+    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga de código libre que hace fácil y productivo a equipos de software testear el rendimiento de sus aplicaciones.`,
+    'welcome.what-is.description2': `Usando k6, puedes testear la fiabilidad y rendimiento de aplicaciones e identificar regresiones y errores más tempranamente. k6 te ayudará a construir aplicaciones rápidas y robustas que puedan escalar.`,
     'welcome.features.title': 'Características principales',
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
