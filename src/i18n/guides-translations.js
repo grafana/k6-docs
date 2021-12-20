@@ -16,6 +16,9 @@ export const localizedMessages = {
     'welcome.what-is.title': 'What is k6?',
     'welcome.what-is.description1': `k6 is an open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.`,
     'welcome.what-is.description2': `Using k6, you can test the reliability and performance of your systems and catch performance regressions and problems earlier. k6 will help you to build resilient and performant applications that scale.`,
+    'welcome.what-is.description3': `k6 is developed by `,
+    'welcome.what-is.description4': `Grafana Labs`,
+    'welcome.what-is.description5': ` and the community.`,
     'welcome.features.title': 'Key features',
     'welcome.features.description':
       'k6 is packed with features, which you can learn all about in the documentation. Key features include:',
@@ -87,8 +90,11 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.text':
       'Aprende a utilizar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
     'welcome.what-is.title': '¿Qué es k6?',
-    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga de código libre que hace fácil y productivo a equipos de software testear el rendimiento de sus aplicaciones.`,
-    'welcome.what-is.description2': `Usando k6, puedes testear la fiabilidad y rendimiento de aplicaciones e identificar regresiones y errores más tempranamente. k6 te ayudará a construir aplicaciones rápidas y robustas que puedan escalar.`,
+    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga de código libre que hace fácil a equipos de software testear el rendimiento de sus aplicaciones.`,
+    'welcome.what-is.description2': `Con k6, puedes testear la fiabilidad y rendimiento de aplicaciones e identificar regresiones y errores más tempranamente. k6 te ayudará a construir aplicaciones rápidas y robustas que puedan escalar.`,
+    'welcome.what-is.description3': `k6 es desarrollado por `,
+    'welcome.what-is.description4': `Grafana Labs`,
+    'welcome.what-is.description5': ` y la comunidad.`,
     'welcome.features.title': 'Características principales',
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
