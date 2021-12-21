@@ -123,7 +123,7 @@
 
 // bumping specifity
 h2.sidebar-section-title {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   text-align: start;
   text-transform: none;
 
@@ -131,6 +131,7 @@ h2.sidebar-section-title {
   font-weight: 500;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
+  color: $color-secondary;
 }
 
 .sidebar-section-title-link {
@@ -154,20 +155,20 @@ h2.sidebar-section-title {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: $color-primary;
+  color: $color-secondary;
   transition: font-weight 0.3s;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
 
   margin-bottom: 5px;
 
-  &:hover {
-    color: $color-accent-primary;
+  &.active {
+    color: $color-secondary;
+    font-weight: 700;
   }
 
-  &.active {
+  &:hover {
     color: $color-accent-primary;
-    font-weight: 500;
   }
 
   // updated styles
@@ -176,11 +177,6 @@ h2.sidebar-section-title {
   line-height: 20px;
   margin-left: 12px;
   color: $color-secondary;
-
-  &.active {
-    color: $color-primary;
-    font-weight: 700;
-  }
 }
 
 .sidebar-node-children {
