@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view';
-import { Link, withPrefix } from 'gatsby';
+import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
 import ArrowIcon from './svg/arrow.inline.svg';
@@ -25,7 +25,7 @@ export const SidebarSectionDropdown = ({ links, className }) => {
   links.forEach((item) => {
     flatLinks.push({
       label: formatLabel(item.label),
-      to: withPrefix(item.to),
+      to: item.to,
       disabled: item.submenu,
       isSubmenu: false,
     });
@@ -34,7 +34,7 @@ export const SidebarSectionDropdown = ({ links, className }) => {
       item.submenu.forEach((submenuItem) => {
         flatLinks.push({
           label: formatLabel(submenuItem.label),
-          to: withPrefix(submenuItem.to),
+          to: submenuItem.to,
           isSubmenu: true,
           disabled: false,
         });
@@ -64,11 +64,11 @@ export const SidebarSectionDropdown = ({ links, className }) => {
       });
     } else if (
       flatLinksWithoutGuides.some(({ to }) =>
-        window.location.pathname.startsWith(to),
+        window.location.pathname.includes(to),
       )
     ) {
       currentSection = flatLinksWithoutGuides.find(({ to }) =>
-        window.location.pathname.startsWith(to),
+        window.location.pathname.includes(to),
       ).label;
     }
   }
