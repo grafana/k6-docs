@@ -214,37 +214,3 @@ a.sidebar-link {
     margin: 0 auto;
   }
 }
-
-.languageSwitcher {
-  margin-right: 0;
-  margin-left: auto;
-
-  @include md-down {
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
-  &-mobile {
-    @include sm-down {
-      margin-top: 0;
-      margin-right: auto;
-    }
-  }
-}
-
-.versionSwitcher {
-  margin-right: 15px;
-  margin-left: auto;
-
-  @include md-down {
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
-  &-mobile {
-    @include sm-down {
-      margin-top: 0;
-      margin-right: auto;
-    }
-  }
-}

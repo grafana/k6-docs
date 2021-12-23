@@ -355,42 +355,28 @@ export const DocLayout = ({
 
       <main className={styles.main}>
         <Header>
-          <div className={'col-xl-8 col-lg-10 d-md-flex col-md-12 d-none'}>
+          <div className={'col-xl-8 col-lg-12 d-md-flex col-md-12 d-none'}>
             <HeaderNav links={links} />
             <div className={styles.controls}>
               {!!version && (
                 <VersionSwitcher
                   currentVersion={version}
                   versions={pageVersions}
-                  className={styles.versionSwitcher}
                 />
               )}
               {showLanguageToggle && (
-                <LanguageSwitcher
-                  onLanguageChange={languageChangeHandler}
-                  className={styles.languageSwitcher}
-                />
+                <LanguageSwitcher onLanguageChange={languageChangeHandler} />
               )}
             </div>
           </div>
-          <div className={'d-md-none col-12 d-flex justify-content-end'}>
+          <div className={'d-md-none col-12 d-flex justify-content-between'}>
             {showLanguageToggle && (
-              <LanguageSwitcher
-                onLanguageChange={languageChangeHandler}
-                className={classNames(
-                  styles.languageSwitcher,
-                  styles.languageSwitcherMobile,
-                )}
-              />
+              <LanguageSwitcher onLanguageChange={languageChangeHandler} />
             )}
             {!!version && (
               <VersionSwitcher
                 currentVersion={version}
                 versions={pageVersions}
-                className={classNames(
-                  styles.versionSwitcher,
-                  styles.versionSwitcherMobile,
-                )}
               />
             )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
