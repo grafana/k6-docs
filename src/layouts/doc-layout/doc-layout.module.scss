@@ -131,7 +131,7 @@ h2.sidebar-section-title {
   font-weight: 500;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
-  color: $color-secondary;
+  color: #ada8c6;
 }
 
 .sidebar-section-title-link {
@@ -140,7 +140,7 @@ h2.sidebar-section-title {
   transition: 0.3s ease;
   font-weight: 600;
   &:hover {
-    color: $color-secondary;
+    color: $color-accent-primary;
     border-color: rgba(90, 92, 135, 0.5);
   }
 }
@@ -155,7 +155,7 @@ h2.sidebar-section-title {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: $color-secondary;
+  color: $color-primary;
   transition: font-weight 0.3s;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
@@ -163,28 +163,21 @@ h2.sidebar-section-title {
   margin-bottom: 5px;
 
   &.active {
-    color: $color-secondary;
-    font-weight: 700;
+    color: $color-accent-primary;
+    font-weight: 500;
   }
 
   &:hover {
     color: $color-accent-primary;
   }
-
-  // updated styles
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 20px;
-  margin-left: 12px;
-  color: $color-secondary;
 }
 
 .sidebar-node-children {
-  padding-left: 10px;
+  padding-left: 12px;
 }
 
 a.sidebar-link {
-  color: $color-accent-primary;
+  color: $color-secondary;
   font-weight: 500;
 }
 

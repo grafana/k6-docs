@@ -24,13 +24,13 @@
   background-color: $color-additional-3;
   cursor: pointer;
   color: $color-secondary;
-  font-size: $font-size-base;
-  line-height: $line-height-lg;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
   font-weight: 500;
 
   text-align: left;
 
-  border: 1px solid $color-secondary;
+  border: 1px solid $color-additional-1;
 
   &-open {
     & .icon {
@@ -60,7 +60,7 @@
   list-style: none;
   padding: 10px 15px;
 
-  border: 1px solid $color-secondary;
+  border: 1px solid $color-additional-1;
   border-top-color: $color-additional-2;
 
   box-shadow: 0 1px 5px rgba(60, 60, 100, 0.3);

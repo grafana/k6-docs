@@ -317,7 +317,7 @@ export const DocLayout = ({
                     tag={'h2'}
                   >
                     <Link
-                      className={`link ${styles.sidebarSectionTitleLink}`}
+                      className={styles.sidebarSectionTitleLink}
                       to={sectionNode.meta.path}
                     >
                       {sectionNode.meta.title || sectionNode.name}
