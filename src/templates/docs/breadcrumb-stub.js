@@ -49,26 +49,31 @@ export default function BreadcrumbsStubPage(props) {
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
           <Heading className={styles.title}>{title}</Heading>
           <ul className={styles.sectionList}>
-            {childrenToList(directChildren).map(({ meta, name }, i) => (
-              <li key={`bcl-${i}`}>
-                {meta.redirect ? (
-                  <a
-                    href={meta.redirect}
-                    className={'link'}
-                    target={meta.redirectTarget ? meta.redirectTarget : '_self'}
-                  >
-                    {meta.title ? meta.title : name}
-                  </a>
-                ) : (
-                  <Link
-                    to={`${meta.path || slugify(`/${name}`)}`}
-                    className={'link'}
-                  >
-                    {meta.title ? meta.title : name}
-                  </Link>
-                )}
-              </li>
-            ))}
+            {childrenToList(directChildren).map(
+              ({ meta, name }, i) =>
+                !meta.hideFromSidebar && (
+                  <li key={`bcl-${i}`}>
+                    {meta.redirect ? (
+                      <a
+                        href={meta.redirect}
+                        className={'link'}
+                        target={
+                          meta.redirectTarget ? meta.redirectTarget : '_self'
+                        }
+                      >
+                        {meta.title ? meta.title : name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={`${meta.path || slugify(`/${name}`)}`}
+                        className={'link'}
+                      >
+                        {meta.title ? meta.title : name}
+                      </Link>
+                    )}
+                  </li>
+                ),
+            )}
           </ul>
         </div>
       </DocLayout>
