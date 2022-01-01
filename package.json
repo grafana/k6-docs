@@ -89,7 +89,7 @@
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-mdx": "^1.13.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.28.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.4.1",
