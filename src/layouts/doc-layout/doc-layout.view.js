@@ -334,7 +334,7 @@ export const DocLayout = ({
                     {sectionNode.meta.title || sectionNode.name}
                   </Heading>
                 )}
-              <div>
+              <div className={styles.sidebarNodeChildren}>
                 {childrenToList(sectionNode.children).map((node) => (
                   <SidebarNode node={node} key={node.name} />
                 ))}
