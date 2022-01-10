@@ -12,6 +12,7 @@ import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
+import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { SEO } from 'components/shared/seo';
 import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
@@ -28,6 +29,8 @@ import { childrenToList, isInIFrame } from 'utils';
 import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
+
+import ArrowLeft from './svg/arrow-left.inline.svg';
 
 import styles from './doc-layout.module.scss';
 
@@ -208,9 +211,20 @@ const SidebarNode = (props) => {
     <>
       {!meta.hideFromSidebar && (
         <div
-          className={hasSubMenu ? styles.sidebarNodeWithChildren : undefined}
+          className={classNames(
+            styles.sidebarNode,
+            hasSubMenu && styles.sidebarNodeWithChildren,
+          )}
         >
           {nodes[nodeType()]()}
+          {hasSubMenu > 0 && (
+            <ArrowLeft
+              className={classNames(
+                styles.sidebarArrow,
+                isActive && styles.sidebarArrowActive,
+              )}
+            />
+          )}
           {!!Object.keys(children).length && isActive && (
             <div className={styles.sidebarNodeChildren}>
               {childrenToList(children).map((node) => (
@@ -290,27 +304,8 @@ export const DocLayout = ({
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />
-          {showLanguageToggle && (
-            <LanguageSwitcher
-              onLanguageChange={languageChangeHandler}
-              className={styles.languageSwitcher}
-            />
-          )}
-          {!!version && (
-            <VersionSwitcher
-              currentVersion={version}
-              versions={pageVersions}
-              className={styles.versionSwitcher}
-            />
-          )}
         </div>
-        {sidebarTree && sectionName && (
-          <span className={styles.sidebarTitle}>
-            {sectionName === 'Xk6-browser' || sectionName === 'Jslib'
-              ? sectionName.toLowerCase()
-              : sectionName}
-          </span>
-        )}
+        {sidebarTree && <SidebarSectionDropdown links={links} />}
         {sidebarTree &&
           childrenToList(sidebarTree.children).map((sectionNode) => (
             <div className={styles.sidebarSection} key={sectionNode.name}>
@@ -322,7 +317,7 @@ export const DocLayout = ({
                     tag={'h2'}
                   >
                     <Link
-                      className={`link ${styles.sidebarSectionTitleLink}`}
+                      className={styles.sidebarSectionTitleLink}
                       to={sectionNode.meta.path}
                     >
                       {sectionNode.meta.title || sectionNode.name}
@@ -339,7 +334,7 @@ export const DocLayout = ({
                     {sectionNode.meta.title || sectionNode.name}
                   </Heading>
                 )}
-              <div>
+              <div className={styles.sidebarNodeChildren}>
                 {childrenToList(sectionNode.children).map((node) => (
                   <SidebarNode node={node} key={node.name} />
                 ))}
@@ -360,27 +355,28 @@ export const DocLayout = ({
 
       <main className={styles.main}>
         <Header>
-          <div className={'col-xl-8 col-lg-10 d-md-block col-md-12 d-none'}>
+          <div className={'col-xl-8 col-lg-12 d-md-flex col-md-12 d-none'}>
             <HeaderNav links={links} />
+            <div className={styles.controls}>
+              {!!version && (
+                <VersionSwitcher
+                  currentVersion={version}
+                  versions={pageVersions}
+                />
+              )}
+              {showLanguageToggle && (
+                <LanguageSwitcher onLanguageChange={languageChangeHandler} />
+              )}
+            </div>
           </div>
-          <div className={'d-md-none col-12 d-flex justify-content-end'}>
+          <div className={'d-md-none col-12 d-flex justify-content-between'}>
             {showLanguageToggle && (
-              <LanguageSwitcher
-                onLanguageChange={languageChangeHandler}
-                className={classNames(
-                  styles.languageSwitcher,
-                  styles.languageSwitcherMobile,
-                )}
-              />
+              <LanguageSwitcher onLanguageChange={languageChangeHandler} />
             )}
             {!!version && (
               <VersionSwitcher
                 currentVersion={version}
                 versions={pageVersions}
-                className={classNames(
-                  styles.versionSwitcher,
-                  styles.versionSwitcherMobile,
-                )}
               />
             )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />

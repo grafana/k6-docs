@@ -7,7 +7,7 @@ import styles from './header-nav.module.scss';
 
 // local helper function for checking
 // if we should highlight javascript api link
-const isJsAPIActiveLink = (path) => {
+export const isJsAPIActiveLink = (path) => {
   let isActiveLink = false;
   // check if window object is defined (we are in browser)
   if (typeof window !== 'undefined') {
