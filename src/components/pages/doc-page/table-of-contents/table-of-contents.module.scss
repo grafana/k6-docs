@@ -9,7 +9,7 @@
   margin-right: -30px;
 
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @include lg-down {
     display: none;
