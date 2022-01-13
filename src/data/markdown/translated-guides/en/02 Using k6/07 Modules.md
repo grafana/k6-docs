@@ -27,7 +27,7 @@ import http from 'k6/http';
 
 These modules are stored on the local filesystem, and accessed either through relative
 or absolute filesystem paths. For a module residing in the local filesystem to be compatible
-with k6, the module itself may only use relative or absolute filesystem imports to access it's
+with k6, the module itself may only use relative or absolute filesystem imports to access its
 dependencies.
 
 ```javascript
