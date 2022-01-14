@@ -40,6 +40,10 @@
     display: none;
   }
 }
+.header-nav {
+  // to display JS API nested menu above search
+  z-index: 1;
+}
 .search-box {
   padding-bottom: 5px;
 }

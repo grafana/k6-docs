@@ -1,7 +1,7 @@
 .container {
   margin-bottom: 47.5px;
   margin-top: 115px;
-  @include lg-down {
+  @include xl-down {
     margin-top: 160px;
   }
   @include sm-down {

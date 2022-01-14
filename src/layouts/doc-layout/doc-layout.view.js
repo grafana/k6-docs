@@ -355,7 +355,9 @@ export const DocLayout = ({
 
       <main className={styles.main}>
         <Header>
-          <div className={'col-xl-8 col-lg-12 d-md-flex col-md-12 d-none'}>
+          <div
+            className={`col-xxl-8 col-12 d-md-flex d-none ${styles.headerNav}`}
+          >
             <HeaderNav links={links} />
             <div className={styles.controls}>
               {!!version && (
@@ -381,7 +383,7 @@ export const DocLayout = ({
             )}
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
-          <div className={`col-xl-4 col-12 ${styles.searchBox}`}>
+          <div className={`col-xxl-4 col-12 ${styles.searchBox}`}>
             <SearchBox collapse indices={searchIndices} />
           </div>
           <div className={'d-md-none col-12'}>

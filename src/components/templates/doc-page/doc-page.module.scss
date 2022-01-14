@@ -1,6 +1,6 @@
 .container {
   margin-top: 115px;
-  @include lg-down {
+  @include xl-down {
     margin-top: 185px;
   }
   @include md-down {

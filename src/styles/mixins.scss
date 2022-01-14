@@ -1,3 +1,9 @@
+@mixin xl-down {
+  @media only screen and (max-width: $screen-xl-down) {
+    @content;
+  }
+}
+
 @mixin lg-down {
   @media only screen and (max-width: $screen-lg-down) {
     @content;
