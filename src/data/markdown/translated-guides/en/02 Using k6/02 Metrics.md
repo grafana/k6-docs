@@ -74,74 +74,12 @@ The following _built-in_ metrics will **always** be collected by k6:
 | vus                | Gauge   | Current number of active virtual users |
 | vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level) |
 | iterations         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function). |
-| iteration_duration | Trend   | The time it took to complete one full iteration. It includes the time spent in `setup` and `teardown` as well. See the [workaround](#workaround-to-calculate-iteration_duration-metric-only-for-a-scenario) in the example below, how to create a sub-metric for getting only the duration of the iteration's function for a specific scenario. |
+| iteration_duration | Trend   | The time it took to complete one full iteration. It includes the time spent in `setup` and `teardown` as well. Check out this [workaround](/using-k6/workaround-to-calculate-iteration_duration) to calculate the duration of the iteration's function for a specific scenario. |
 | dropped_iterations | Counter | Introduced in k6 v0.27.0, the number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
 | data_received      | Counter | The amount of received data. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
 | data_sent          | Counter | The amount of data sent. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
 | checks             | Rate    | The rate of successful checks. |
 
-<Collapsible title="Workaround to calculate iteration_duration metric only for a scenario" tag="h2">
-
-A common requested case is to track the `iteration_duration` metric without including time spent for `setup` and `teardown` functions.
-This feature is not yet available but a threshold on `iteration_duration` or any pre-existing metrics can be used as a workaround.
-
-It's based on the concept of creating thresholds for sub-metrics created by tags for the required scope and setting the criteria that always pass. It works with any enabled tags that already works with threshold, for example:
-* `iteration_duration{scenario:default}` generates a sub-metric collecting samples only for the default scenario's iteration. `scenario:default` is used because that's the internal k6 scenario name when we haven't specified `options. `scenarios` explicitly and are just using the execution shortcuts instead.
-* `iteration_duration{group:::setup}` or `iteration_duration{group:::teardown}` create sub-metrics collecting the duration only for `setup` and `teardown`. `k6` implicitly creates [groups](/using-k6/tags-and-groups#groups) for `setup` and `teardown`, and `::` is the group separator.
-* `http_req_duration{scenario:default}` can be useful as well for isolating executed long-running requests.
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import { sleep } from 'k6'
-import http from 'k6/http'
-
-export const options = {
-    vus: 1,
-    iterations: 1,
-    thresholds: {
-        'iteration_duration{scenario:default}': [`max>=0`],
-        'iteration_duration{group:::setup}': [`max>=0`],
-        'iteration_duration{group:::teardown}': [`max>=0`],
-        'http_req_duration{scenario:default}': [`max>=0`],
-    },
-}
-
-export function setup() {
-    http.get('http://httpbin.test.k6.io/delay/5');
-}
-
-export default function () {
-    http.get('http://test.k6.io/?where=default');
-    sleep(0.5);
-}
-
-export function teardown() {
-    http.get('http://httpbin.test.k6.io/delay/3');
-    sleep(5);
-}
-```
-
-</CodeGroup>
-
-Dedicated sub-metrics have been generated collecting samples only for the scope defined by thresholds:
-
-<CodeGroup lineNumbers={[false]}>
-
-```
-     http_req_duration..............: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
-       { expected_response:true }...: avg=1.48s    min=101.95ms med=148.4ms  max=5.22s    p(90)=4.21s    p(95)=4.71s
-     ✓ { scenario:default }.........: avg=148.4ms  min=103.1ms  med=148.4ms  max=193.7ms  p(90)=184.64ms p(95)=189.17ms
-
-     iteration_duration.............: avg=5.51s    min=1.61s    med=6.13s    max=8.81s    p(90)=8.27s    p(95)=8.54s
-     ✓ { group:::setup }............: avg=6.13s    min=6.13s    med=6.13s    max=6.13s    p(90)=6.13s    p(95)=6.13s
-     ✓ { group:::teardown }.........: avg=8.81s    min=8.81s    med=8.81s    max=8.81s    p(90)=8.81s    p(95)=8.81s
-     ✓ { scenario:default }.........: avg=1.61s    min=1.61s    med=1.61s    max=1.61s    p(90)=1.61s    p(95)=1.61s
-```
-
-</CodeGroup>
-
-</Collapsible>
 
 ## HTTP-specific built-in metrics
 
