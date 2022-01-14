@@ -208,7 +208,7 @@ k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#
 
 Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered, and threshold values are unintuitive - `true` indicates the threshold has failed, and `false` that succeeded.
 
-We couldn't change the `--summary-export` data format because it would have broken backwardbackward compatibility in a feature that people depended on their CI pipelines. Since k6 v0.30.0, the recommended approach to export to a JSON file is to use the [`handleSummary()` callback](#handlesummary-callback). The `--summary-export` option will likely be deprecated in the future.
+We couldn't change the `--summary-export` data format because it would have broken backward compatibility in a feature that people depended on their CI pipelines. Since k6 v0.30.0, the recommended approach to export to a JSON file is to use the [`handleSummary()` callback](#handlesummary-callback). The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
 
