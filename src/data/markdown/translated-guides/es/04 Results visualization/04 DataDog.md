@@ -4,6 +4,8 @@ head_title: 'Pruebas de carga con Datadog'
 excerpt: 'La integración de k6 con Datadog permite visualizar y correlacionar las métricas de pruebas de rendimiento con otras métricas monitorizadas en Datadog'
 ---
 
+> ⚠️ &nbsp; Para k6 Cloud tests, sigue las [instrucciones de k6 Cloud](/cloud/integrations/cloud-apm/datadog).
+
 k6 puede enviar métricas de pruebas de rendimiento a [Datadog](https://www.datadoghq.com/). Esto permite visualizar y correlacionar las métricas de pruebas de rendimiento con otras métricas monitorizadas en Datadog.
 
 Este artículo describe las instrucciones de la integración con Datadog:

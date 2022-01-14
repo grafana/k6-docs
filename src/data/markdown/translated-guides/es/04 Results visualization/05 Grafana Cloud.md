@@ -3,6 +3,8 @@ title: 'Grafana Cloud'
 excerpt: 'This tutorial shows how to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and Telegraf'
 ---
 
+> ⚠️ &nbsp; Para k6 Cloud tests, sigue las [instrucciones de k6 Cloud](/cloud/integrations/cloud-apm/grafana-cloud).
+
 Using Grafana Cloud Prometheus, you can send your k6 metrics into [Grafana Cloud](https://grafana.com/products/cloud/) to better visualize your testing results, enabling you to correlate k6 metrics with other metrics of your monitored services using Grafana.
 
 > While this article focuses on Grafana Cloud, any remote-write capable Prometheus installation is compatible with this approach.

@@ -3,6 +3,8 @@ title: 'New Relic'
 excerpt: 'The New Relic integration allows visualizing load test results and correlation with your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
 ---
 
+> ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/new-relic).
+
 k6 can send telemetry data to [New Relic](https://newrelic.com/) through the New Relic [StatsD integration](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/statsd-monitoring-integration-version-2). Within New Relic you can find your k6 performance data alongside your real users data and server side performance. This data can be visualized in dashboards and shared with others, used to compare load impact with system performance, and alert on metrics too.
 
 This guide covers running the New Relic integration:
