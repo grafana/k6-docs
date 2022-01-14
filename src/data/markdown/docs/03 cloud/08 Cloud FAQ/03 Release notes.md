@@ -4,6 +4,20 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v2.1.0 `(2022-1-12)`
+- Add support for new user role - project read only.
+
+### v2.0.0 `(2022-1-10)`
+- New Scenario UI.
+- New gRPC analysis panel on test result view.
+- Include Rome to timezone select component.
+- Reference the p95 response time on the `load_time` label.
+- Update integrations page.
+- Fix: Hide "Aborted by script error Edit Script button" for k6 to ingest tests.
+
+### Grafana k6 Cloud App `(2021-12-23)`
+- https://grafana.com/grafana/plugins/grafana-k6-app/
+
 ### v1.7.0 `(2021-11-23)`
 - Improve the script editor input and move it to breadcrumb.
 - Start email notification in simple mode, and add sensible defaults.
