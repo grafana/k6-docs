@@ -1252,6 +1252,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/cloud/project-and-team-management/team-members/',
+    toPath: '/cloud/project-and-team-management/members/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/cloud/project-and-team-management/azure-ad-saml-sso/',
     toPath: '/cloud/project-and-team-management/saml-sso/azure-ad/',
     redirectInBrowser: true,
