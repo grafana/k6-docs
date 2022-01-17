@@ -666,7 +666,7 @@
     },
     {
       "name": "xk6-stomp",
-      "description": "STOMP extension",
+      "description": "Client for STOMP protocol",
       "url": "https://github.com/walterwanderley/xk6-stomp",
       "logo": "",
       "author": {
