@@ -10,7 +10,7 @@ excerpt: 'Guide on inviting Team Members to your k6 account for collaboration'
 
 ## Roles
 
-In k6 Cloud app you can invite users to gain access to your organization, projects and subscriptions. There are currently two types of roles which you can assign when inviting a new member: [Admin](/cloud/project-and-team-management/members#admin) or [Project member](/cloud/project-and-team-management/members#project-member).
+In k6 Cloud app you can invite users to gain access to your organization, projects and subscriptions. There's currently two types of roles which you can assign when inviting a new member: [Admin](/cloud/project-and-team-management/members#admin) or [Project member](/cloud/project-and-team-management/members#project-member).
 
 ### Admin
 
