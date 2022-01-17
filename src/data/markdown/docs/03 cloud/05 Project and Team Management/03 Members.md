@@ -18,7 +18,7 @@ Users with this role will be able to see and edit all the projects under your or
 
 ### Project member
 
-This role is suitable for cases when you don't want to grant the ability to edit organization or project settings. You can choose what kind of access type you want to grant to your selected projects - [Read/Write](/cloud/project-and-team-management/members/#read-write) or [Read-Only](/cloud/project-and-team-management/members/#read-only).
+This role is suitable for cases when you don't want to grant the ability to edit organization or project settings. You can choose what kind of access type you want to grant to your selected projects - **Read/Write** or **Read-Only**.
 
 #### Read/Write
 
@@ -66,5 +66,5 @@ To add new project members click on `Invite members` button.
 
 Here you will be able to specify email addresses and the permission role you want to assign to your currently selected project.
 
-> `Role` field will only let you choose between [Read/Write](/cloud/project-and-team-management/members/#read-write) or [Read-Only](/cloud/project-and-team-management/members/#read-only)
+> `Role` field will only let you choose between **Read/Write** or **Read-Only**
 > access types, as this view operates under the context of the currently selected project. If you want to set a member as an admin please refer to [Members tab](/cloud/project-and-team-management/members/#members-tab) section.
