@@ -663,6 +663,21 @@
       "categories": [
         "Messaging"
       ]
+    },
+    {
+      "name": "xk6-stomp",
+      "description": "STOMP extension",
+      "url": "https://github.com/walterwanderley/xk6-stomp",
+      "logo": "",
+      "author": {
+        "name": "Walter Wanderley",
+        "url": "https://github.com/walterwanderley"
+      },
+      "official": false,
+      "categories": [
+        "Messaging",
+        "Protocol"
+      ]
     }
   ]
 }
