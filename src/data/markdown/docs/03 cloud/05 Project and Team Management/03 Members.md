@@ -18,7 +18,7 @@ Users with this role will be able to see and edit all the projects under your or
 
 ### Project member
 
-This role is suitable for cases when you don't want to grant the ability to edit organization or project settings. You can choose what kind of access type you want to grant to your selected projects - **Read/Write** or **Read-Only**.
+This role is suitable for cases when you don't want to grant the ability to edit organization or project settings. You can choose what kind of access type you want to grant to your selected projects - Read/Write or Read-Only.
 
 #### Read/Write
 
