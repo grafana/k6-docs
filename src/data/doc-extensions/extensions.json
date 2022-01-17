@@ -678,6 +678,21 @@
         "Messaging",
         "Protocol"
       ]
+    },
+    {
+      "name": "xk6-loki",
+      "description": "Client for load testing Loki",
+      "url": "https://github.com/grafana/xk6-loki",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": "https://github.com/grafana"
+      },
+      "official": false,
+      "categories": [
+        "Observability",
+        "Messaging"
+      ]
     }
   ]
 }
