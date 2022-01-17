@@ -35,7 +35,7 @@ For example, it is often an **anti-pattern** to use `logs` to:
 
 ## Cloud Results: Logs Tab
 
-The Logs Tab allows you to view and filter log messages in the Cloud Results page.
+The Logs Tab allows you to view, filter and query log messages in the Cloud Results page.
 
 ![Cloud Logs Tab](./images/11-Cloud-Logs/cloud-logs-output-messages.png)
 
@@ -59,6 +59,12 @@ Each JavaScript log statement has a severity level:
 You can filter messages by severity level and load zone. The load zone filter is only present when your test has been executed in two or more load zones.
 
 ![Cloud Logs Tab with Filter](./images/11-Cloud-Logs/cloud-logs-output-messages-with-filter.png)
+
+### Querying logs
+
+After a test run has finished running you can start querying the logs. The query will output messages that contain the string that you've specified in the input.
+
+![Cloud Logs Tab with Query](./images/11-Cloud-Logs/cloud-logs-output-messages-with-query.png)
 
 ## Logging limitations
 
