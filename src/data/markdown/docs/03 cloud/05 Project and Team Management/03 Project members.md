@@ -26,7 +26,7 @@ Read-Only access type gives a project member the ability only to view tests and 
 
 ## Managing project members
 
-There are two places in the k6 Cloud app where you can manage members - [Members tab](/cloud/project-and-team-management/project-members/#members-tab) under the **Organization settings** or through [Project settings](/cloud/project-and-team-management/project-members/#project-settings). 
+There's two places in the k6 Cloud app where you can manage members - [Members tab](/cloud/project-and-team-management/project-members/#members-tab) under the **Organization settings** or through [Project settings](/cloud/project-and-team-management/project-members/#project-settings). 
 
 ### Members tab
 
@@ -43,7 +43,7 @@ To add new project members click on `Invite new members` button.
 ![Invite members under members tab](images/03-Team-Members/invite-members-members-tab.png)
 
 Then, within the modal, enter email addresses and select what kind of permission role you want to assign.<br />
-There are two types of permission roles:
+There's two types of permission roles:
 
 - `Project member` - this role is suitable for cases when you don't want to grant the ability to edit organization or project settings. 
 You can choose what kind of access type you want to grant to your selected projects - [Read/Write](/cloud/project-and-team-management/project-members/#read-write) or [Read-Only](/cloud/project-and-team-management/project-members/#read-only).
