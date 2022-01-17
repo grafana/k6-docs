@@ -3,13 +3,9 @@ title: 'Projects'
 excerpt: 'Keep your tests and team members organized with projects, a filing system built into the k6 web app'
 ---
 
-## Background
-
-Projects are a way to stay organized within your account in k6. Projects are assigned on a per organization level. Organization owners and admins can invite users to be members of a project. Project members can be assigned to have either [Read/Write](/cloud/project-and-team-management/project-members/#read-write) or [Read-Only](/cloud/project-and-team-management/project-members/#read-only) access to a project.
-
 ## Using Projects
 
-Projects can be considered a filing system which you use to organize your tests. They are flexible enough to allow you to use them in a way that makes sense to you, but simple enough to not lose information in a deep nested structure.
+Projects can be considered a filing system which you use to organize your tests on a per organization level. They are flexible enough to allow you to use them in a way that makes sense to you, but simple enough to not lose information in a deep nested structure.
 
 Here are some ways we have seen users utilize Projects to stay organized:
 
@@ -18,6 +14,8 @@ Here are some ways we have seen users utilize Projects to stay organized:
 - Per brand: E-commerce customers may want to use projects per brand to stay organized
 - Per Customer: When dealing with custom software, you may wish to organize by customer to ensure each unique system is tested
 - Per Major Release: After your systems go through a major change, you may wish to create a new project to organize the most recent data
+
+> To learn more how to manage users on an organization or a project level check out [Members](/cloud/project-and-team-management/members).
 
 ## Running CLI Tests in a Specific Project
 

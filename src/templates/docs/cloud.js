@@ -143,11 +143,9 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       </Trait>
                       <Trait>
                         <Link
-                          to={
-                            '/cloud/project-and-team-management/project-members/'
-                          }
+                          to={'/cloud/project-and-team-management/members/'}
                         >
-                          Project members
+                          Members
                         </Link>{' '}
                         and{' '}
                         <Link

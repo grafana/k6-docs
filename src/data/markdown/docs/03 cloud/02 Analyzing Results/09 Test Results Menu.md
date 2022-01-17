@@ -23,7 +23,7 @@ Generates a URL that you can use to share test results.
 
 #### Test Result Sharing URL
 
-The generated URL does not require a user to be authenticated to view. If you want to share sensitive results, consider adding users as [Project Members](/cloud/project-and-team-management/project-members) instead.
+The generated URL does not require a user to be authenticated to view. If you want to share sensitive results, consider adding users as [Members](/cloud/project-and-team-management/members) instead.
 
 **Note**: The URL is not generated until after you choose the option to share.
 
