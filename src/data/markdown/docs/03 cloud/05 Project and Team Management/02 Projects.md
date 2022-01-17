@@ -5,7 +5,7 @@ excerpt: 'Keep your tests and team members organized with projects, a filing sys
 
 ## Background
 
-Projects are a way to stay organized within your account in k6. Projects are assigned on a per organization level. Organization owners and admins can invite users to be members of a project. Only Read/Write members can be explicitly restricted from accessing a project.
+Projects are a way to stay organized within your account in k6. Projects are assigned on a per organization level. Organization owners and admins can invite users to be members of a project. Project members can be assigned to have either [Read/Write](/cloud/project-and-team-management/project-members/#read-write) or [Read-Only](/cloud/project-and-team-management/project-members/#read-only) access to a project.
 
 ## Using Projects
 
@@ -27,7 +27,7 @@ If you are using the CLI to trigger your tests, you need to specify a `projectID
 
 Then, modify your script to add the project ID to the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options):
 
-```js
+```javascript
 export const options = {
   ext: {
     loadimpact: {

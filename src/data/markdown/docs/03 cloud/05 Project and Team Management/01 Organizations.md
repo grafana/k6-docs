@@ -14,7 +14,7 @@ Organizations are a hierarchical tier within k6. Organizations are owned by a si
 
 ## Using Organizations
 
-By default, all users have one Organization within their k6 account, this is automatically created and assigned during account registration. If you purchase a subscription, it is associated with the organization. As an organization owner, you may invite [Team Members](/cloud/project-and-team-management/team-members) as either Admins or Project Members. These users will be able to utilize the subscription and access projects in the organization.
+By default, all users have one Organization within their k6 account, this is automatically created and assigned during account registration. If you purchase a subscription, it is associated with the organization. As an organization owner, you may invite [Project Members](/cloud/project-and-team-management/project-members) as either Admins or Project Members. These users will be able to utilize the subscription and access projects in the organization.
 
 If you have been invited to another user's Organization, you will have access based on the role the owner assigned to you (Admin or Project Member). You may utilize the subscription associated with that Organization.
 
