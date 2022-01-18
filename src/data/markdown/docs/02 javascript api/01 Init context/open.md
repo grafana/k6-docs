@@ -21,6 +21,10 @@ By restricting it to the init context, we can easily determine what local files 
 
 See the example further down on this page. For a more in-depth description, see [Running k6](/getting-started/running-k6).
 
+#### Breaking change in v0.36.0
+
+Since k6 v0.36.0 we also restricted usage of the `open(...)` under the `__VU` condition. A code like `if (__VU >0) { const arr = open("./arr.json"); }` should cause an error.
+
 </blockquote>
 
 | Parameter | Type   | Description        |
