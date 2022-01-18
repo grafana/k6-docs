@@ -20,7 +20,7 @@ The organization's owner has unrestricted access to the organization data, setti
 
 ### Admin
 
-Admin users can see and edit all projects under the organization, manage members and change the majority of an organization's settings. Admins can assign/remove other admins but not change the owner.
+Admin users can see and edit all projects under the organization, manage members and change the majority of an organization's settings except for its name, subscriptions and billing information. Admins can assign/remove other admins but not change the owner.
 
 ### Project member
 
