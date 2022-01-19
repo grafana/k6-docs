@@ -27,22 +27,26 @@ The zone codes are mapped as follows:
 
 <Glossary>
 
+- `af-south-1`: Cape Town
+- `ap-east-1`: Hong Kong
+- `ap-northeast-1`: Tokyo
+- `ap-northeast-2`: Seoul
+- `ap-northeast-3`: Osaka
+- `ap-southeast-1`: Singapore
+- `ap-southeast-2`: Sydney
+- `ap-south-1`:  Mumbai
+- `ca-central-1`: Montreal
+- `eu-north-1`: Stockholm
+- `eu-central-1`:  Frankfurt
+- `eu-south-1`: Milan
+- `eu-west-1`: Dublin
+- `eu-west-2`:  London
+- `eu-west-3`:  Paris
+- `me-south-1`: Bahrain
 - `us-east1`: Ashburn
 - `us-east-2`: Columbus
 - `us-west-1`: Palo Alto
 - `us-west-2`: Portland
-- `ca-central-1`: Montreal
-- `eu-north-1`: Stockholm
-- `eu-central-1`:  Frankfurt
-- `eu-west-1`: Dublin
-- `eu-west-2`:  London
-- `eu-west-3`:  Paris
-- `ap-east-1`: Hong Kong
-- `ap-northeast-1`: Tokyo
-- `ap-northeast-2`: Seoul
-- `ap-southeast-1`: Singapore
-- `ap-southeast-2`: Sydney
-- `ap-south-1`:  Mumbai
 - `sa-east-1`: São Paulo
 
 </Glossary>

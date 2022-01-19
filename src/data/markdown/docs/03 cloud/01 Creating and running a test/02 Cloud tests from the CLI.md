@@ -166,8 +166,10 @@ You have two options to pass the Project ID to k6:
 
 <div id="list-of-supported-load-zones">Here the list of supported AWS cloud regions: </div>
 
+- Africa (Cape Town) `amazon:sa:cape town`
 - Asia Pacific (Hong Kong) `amazon:cn:hong kong`
 - Asia Pacific (Mumbai) `amazon:in:mumbai`
+- Asia Pacific (Osaka) `amazon:jp:osaka`
 - Asia Pacific (Seoul) `amazon:kr:seoul`
 - Asia Pacific (Singapore) `amazon:sg:singapore`
 - Asia Pacific (Sydney) `amazon:au:sydney`
@@ -176,8 +178,10 @@ You have two options to pass the Project ID to k6:
 - Europe (Frankfurt) `amazon:de:frankfurt`
 - Europe (Ireland)  `amazon:ie:dublin`
 - Europe (London) `amazon:gb:london`
+- Europe (Milan) `amazon:it:milan`
 - Europe (Paris)  `amazon:fr:paris`
 - Europe (Stockholm) `amazon:se:stockholm`
+- Middle East (Bahrain) `amazon:bh:bahrain`
 - South America (São Paulo) `amazon:br:sao paulo`
 - US West (N. California) `amazon:us:palo alto`
 - US West (Oregon) `amazon:us:portland`
