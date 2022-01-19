@@ -3,7 +3,7 @@ title: "expect"
 excerpt: "Functional testing and specifying robust expectations with k6"
 ---
 
-The `expect` module is a JavaScript library that simplifies specifying expecatation about the responses from the target system. The design of the `expect` library was inspired by ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
+The `expect` module is a JavaScript library that simplifies specifying expectations about the responses from the target system. The design of the `expect` library was inspired by ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
 
 This library is especially useful for:
  - Functional testing, where many asserts are needed
