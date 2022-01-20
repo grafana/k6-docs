@@ -9,6 +9,7 @@ The `k6/execution` module provides the test execution information with the follo
 
 - [instance](#instance)
 - [scenario](#scenario)
+- [test](#test)
 - [vu](#vu)
 
 <div class="code-group" data-props='{"labels": [], "lineNumbers": [true]}'>
@@ -42,8 +43,8 @@ export default function () {
 
 The instance object provides information associated with the load generator instance. You can think of it as the current running k6 process, which will likely be a single process if you are running k6 on your local machine. When running a cloud/distributed test with multiple load generator instances, the values of the following properties can differ across instances.
 
-| Field                  | Type    | Description                                                              |
-|------------------------|---------|--------------------------------------------------------------------------|
+| Property | Type | Description |
+|----------|------|-------------|
 | iterationsInterrupted  | integer | The number of prematurely interrupted iterations in the current instance. |
 | iterationsCompleted    | integer | The number of completed iterations in the current instance. |
 | vusActive              | integer | The number of active VUs. |
@@ -54,8 +55,8 @@ The instance object provides information associated with the load generator inst
 
 Meta information and execution details about the current running [scenario](/using-k6/scenarios).
 
-| Field               | Type    | Description                                                              |
-|---------------------|---------|--------------------------------------------------------------------------|
+| Property | Type | Description |
+|----------|------|-------------|
 | name                | string  | The assigned name of the running scenario. |
 | executor            | string  | The name of the running [Executor](/using-k6/scenarios/#executors) type. |
 | startTime           | integer | The Unix timestamp in milliseconds when the scenario started. |
@@ -64,12 +65,20 @@ Meta information and execution details about the current running [scenario](/usi
 | iterationInTest     | integer | The unique and zero-based sequential number of the current iteration in the scenario. It is unique in all k6 execution modes - in local, cloud and distributed/segmented test runs. However, while every instance will get non-overlapping index values in cloud/distributed tests, they might iterate over them at different speeds, so the values won't be sequential across them. |
 
 
+### test
+
+Control the test execution.
+
+| Property | Type | Description |
+|----------|------|-------------|
+| abort | function | It immediately aborts a k6 load test run with the exit code `108`. Aborting a test is fully supported in `k6 cloud`, preserving the same user experience for both local and cloud users. |
+
 ### vu 
 
 Meta information and execution details about the current vu and iteration.
 
-| Field               | Type    | Description                                                              |
-|---------------------|---------|--------------------------------------------------------------------------|
+| Property | Type | Description |
+|----------|------|-------------|
 | iterationInInstance | integer | The identifier of the iteration in the current instance. |
 | iterationInScenario | integer | The identifier of the iteration in the current scenario. |
 | idInInstance        | integer | The identifier of the VU across the instance. |
@@ -140,6 +149,38 @@ export default function () {
   } else {
     // do some other logic in the others
   }
+}
+```
+
+</CodeGroup>
+
+### Test Abort
+
+Aborting is possible during initialization:
+
+<CodeGroup labels={["init-abort.js"]} lineNumbers={[true]}>
+
+```javascript
+import exec from "k6/execution";
+exec.test.abort();
+```
+
+</CodeGroup>
+
+As well as inside the `default` function:
+
+<CodeGroup labels={["default-abort.js"]} lineNumbers={[true]}>
+
+```javascript
+import exec from "k6/execution";
+
+export default function() {
+  // Note that you can abort with a specific message too
+  exec.test.abort("this is the reason");
+}
+
+export function teardown() {
+  console.log("teardown will still be called after test.abort()");
 }
 ```
 
