@@ -87,6 +87,20 @@
       ]
     },
     {
+      "name": "xk6-redis",
+      "description": "Client for testing Redis",
+      "url": "https://github.com/grafana/xk6-redis",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": "https://github.com/grafana"
+      },
+      "official": false,
+      "categories": [
+        "Data"
+      ]
+    },
+    {
       "name": "xk6-distributed-tracing",
       "description": "Distributed tracing",
       "url": "https://github.com/k6io/xk6-distributed-tracing",
