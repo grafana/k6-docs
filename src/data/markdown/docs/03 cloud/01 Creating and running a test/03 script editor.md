@@ -23,7 +23,7 @@ must trigger your test using the CLI instead.
 
 ## Usage
 
-Usage of the script editor is straight forward and you can use it like any other editor. Note some of the built in functionality to aide you in scripting
+Usage of the script editor is straight forward and you can use it like any other editor. Note some of the built in functionality to aide you in scripting:
 
 - Built in examples
   - Clicking on any example from the drop down will launch a side by side window for you to use as guidance to adapt your script.
