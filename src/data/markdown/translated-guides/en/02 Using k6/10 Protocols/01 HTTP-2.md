@@ -13,7 +13,7 @@ Well, it at least _partially_ solves it, since you still have TCP congestion con
 
 - Builtin compression of HTTP headers
 - Server push
-- PipelininG of requests
+- Pipelining of requests
 - Prioritization of requests
 
 ## Load testing HTTP/2 with k6

@@ -8,7 +8,7 @@ Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-fro
 When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
 > ### ⚠️ Streaming _to_ Cloud vs Running _in_ Cloud
-> Don't confuse `k6 --out cloud script.js` (what this page is about) with `k6
+> Don't confuse `k6 run --out cloud script.js` (what this page is about) with `k6
 > cloud script.js`. While the former means that you run `k6` locally and stream
 > the result to the cloud, the latter means that you upload your
 > script to [k6 cloud](/cloud) and tell the cloud infrastructure to run the
