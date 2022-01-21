@@ -27,7 +27,7 @@ The Performance Overview section displays high level data for your test. While t
 
 ![Performance overview of a running test](images/01-Overview/running-performance-overview.png)
 
-After the test has finished the section is updated to no longer show stats that were ony relevant while monitoring a live test.
+After the test has finished the section is updated to no longer show stats that were only relevant while monitoring a live test.
 
 If there are any scenarios configured in the test script, a report with high level data for each individual scenario will show up right below the main performance overview chart. In this script there were no explicit scenarios configured.
 
