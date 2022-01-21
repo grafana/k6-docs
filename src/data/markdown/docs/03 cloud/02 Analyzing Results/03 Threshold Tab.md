@@ -9,8 +9,8 @@ The Threshold Tab allow you to visually inspect and analyze `Thresholds` in your
 
 Further within this tab, you are able to:
 
-- Easily see failing checks. In the example below, our `check_failure_rate` custom metric is failing. Take notice of the &#10003; or &#10005; on the left side of each row.
-- Expand a threshold to view its graph. In our example below, the expanded threshold is below the threshold of 100 ms
+- Easily see failing thresholds. In the example below we have filtered the list of thresholds to only show thresholds with names that include either "http" or "vus". Out of the thresholds that satisfies the filter criteria we can see that two are failing, `vus: value>100` and `http_reqs:count>10000`. Take notice of the &#10003; or &#10005; on the left side of each row.
+- Expand a threshold to view its graph. In our example below, the expanded thresholds calculated value is below the threshold of 100 ms.
 - Add the chart to the `Analysis Tab` for further correlation with other data
 
 ![Thresholds Tab](./images/03-Threshold-Tab/thresholds-tab.png)
