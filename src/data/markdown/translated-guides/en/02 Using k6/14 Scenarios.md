@@ -18,7 +18,7 @@ Scenarios allow us to make in-depth configurations to how VUs and iterations are
 - Every scenario can use a distinct VU and iteration scheduling pattern,
   powered by a purpose-built [executor](#executors). This enables modeling
   of advanced execution patterns which can better simulate real-world traffic.
-- They can be configured to run in sequence or parallel, or in any mix of the two.
+- They run independently, which means that they also by default run in parallel. But can be made somewhat sequential through setting `startTime` accordingly.
 - Different environment variables and metric tags can be set per scenario.
 
 ## Configuration
