@@ -690,7 +690,7 @@ Available in the `k6 run` command.
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --local-ips=192.168.20.12-192.168.20-15,192.168.10.0/27 script.js
+$ k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
 ```
 
 </CodeGroup>
