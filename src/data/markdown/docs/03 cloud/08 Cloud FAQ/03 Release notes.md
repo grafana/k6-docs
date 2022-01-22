@@ -4,6 +4,15 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v2.2.1 `(2022-1-21)`
+- Move position of the `Add to analysis` button for better visibility.
+- Fix: crash on schedules page after scheduling a new test.
+
+### v2.2.0 `(2022-1-20)`
+- The saved tests and scheduled tests pages provides a link to the test project.
+- Fix: changing aggregation method or load zone on test result analysis view.
+- Fix: the time range filter was not cleared properly. 
+
 ### v2.1.2 `(2022-1-18)`
 - New [load zone regions](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones): Bahrain, Cape Town, Milan, and Osaka.
 
