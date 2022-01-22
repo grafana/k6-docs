@@ -5,7 +5,7 @@ excerpt: 'An overview of using k6 Cloud Results as a premiere analysis tool'
 
 ## Background
 
-As part of the k6 Cloud offering, k6 Cloud Results enables you to visualize, store, analyze, and trend your test results. All tests that utilize k6 Clouds Results will be analyzed by our Performance Insights algorithms to detect patterns associated with performance issues.
+As part of the k6 Cloud offering, k6 Cloud Results enables you to visualize, store, analyze, and trend your test results. All tests that utilize k6 Clouds Results will be analyzed by our [Performance Insights](./02%20Performance%20Insights) algorithms to detect patterns associated with performance issues.
 
 As you continue to use k6 Cloud Results, we will also automatically create trending graphs so that you can keep track of how performance of your system changes over time. This is helpful for identifying creeping performance issues before they become larger problems.
 
@@ -27,7 +27,11 @@ The Performance Overview section displays high level data for your test. While t
 
 ![Performance overview of a running test](images/01-Overview/running-performance-overview.png)
 
-After the test has finished the section is updated to show peak RPS in place of current RPS and Active VUs are hidden. If any Performance Alerts have been detected, we will also display that information to you. In this test, our algorithms did not find any problems.
+After the test has finished the section is updated to no longer show stats that were only relevant while monitoring a live test.
+
+If there are any scenarios configured in the test script, a report with high level data for each individual scenario will show up right below the main performance overview chart. In this script there were no explicit scenarios configured.
+
+If any performance Insights have been detected, we will also display that information to you. In this test, our algorithms did not find any problems.
 
 ![Performance overview of a finished test](images/01-Overview/finished-performance-overview.png)
 
@@ -46,18 +50,29 @@ Typical signs of a performance issue/bottleneck:
 
 This is a non-exhaustive list. You should use these patterns as a first indicator of good or bad performance of your test.
 
+## Scenarios
+
+This section shows high level data for each individual scenario that was configured in the test script. The overview data is grouped per protocol to make comparison and analysis easier.\
+Here is an example of a test that was configured to generate traffic using HTTP, WebSocket and gRPC.
+
+![Performance overview of individual scenario](images/01-Overview/scenario-performance-overview.png)
+
+
+
 ## Result Tabs
 
 The Result tabs allow you to dig into the specific result data sets from your test. We present the following tabs to organize your result data:
 
-| Tab Name   | Definition                                                                      | Add to analysis? | Sorting                 |
-| ---------- | ------------------------------------------------------------------------------- | ---------------- | ----------------------- |
-| Thresholds | List of your Thresholds in the order they are defined in your script (if used). | Yes              | In order defined        |
-| Checks     | List of Checks, organized into Groups (if used).                                | Yes              | By group, or list (all) |
-| HTTP       | List of HTTP requests made, organized into Groups (if used).                    | Yes              | By group, or list (all) |
-| Websocket  | List of Websocket requests made, organized into groups (if used).               | Yes              | By group, or list (all) |
-| Analysis   | Tab used to compare data for analysis                                           | N/A              | N/A                     |
-| Script     | Script used to run your test (k6 cloud tests only)                              | N/A              | N/A                     |
+| Tab Name   | Definition                                                                                     | Add to analysis? | Filtering        | Sorting                 |
+| ---------- | ---------------------------------------------------------------------------------------------- | ---------------- | ---------------- | ----------------------- |
+| Thresholds | List of your Thresholds in the order they are defined in your script (if used).                | Yes              | Yes              | In order defined        |
+| Checks     | List of Checks, organized into Groups (if used).                                               | Yes              | Yes              | By scenario/group, or list (all) |
+| HTTP       | List of HTTP requests made, organized into Groups (if used).                                   | Yes              | Yes              | By scenario/group, or list (all) |
+| WebSocket  | List of Websocket requests made, organized into groups (if used).                              | Yes              | Yes              | By scenario/group, or list (all) |
+| gRPC       | List of invoked gRPC methods, organized into groups (if used).                                 | Yes              | Yes              | By scenario/group, or list (all) |
+| Analysis   | Tab used to compare data for analysis                                                          | N/A              | N/A              | N/A                     |
+| Script     | Script used to run your test (k6 cloud tests only)                                             | N/A              | N/A              | N/A                     |
+| Logs       | Logs that were generated by test script (see [docs for logs](/cloud/analyzing-results/logs/))  | N/A              | Yes              | N/A                     |
 
 These tabs let you dig into your test data in a visual and error-driven way. You are able to click on any metric to expand a graph and dig deeper. You can also add these graphs to the Analysis tab. This allows you to look for interesting correlations in your result data. Within each tab note the &#10003; or &#10005; next to the individual metrics if failures were encountered. In the example below, we have two checks with apparent failures.
 

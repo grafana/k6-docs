@@ -29,9 +29,15 @@ To compare two test runs, open up one of the test runs. Then select the test run
 
 ## Test comparison mode
 
-After you select a test you will be brought into comparison mode. While in this mode you will see two charts in the Performance Overview section and you're able to change the base and target test you are comparing. This allows you to quickly change between different test runs and visually see if there are any obvious performance differences.
+After you select a test you will be brought into comparison mode. When activating this mode you will notice that the layout of the Performance Overview section changed quite a bit. Controls for changing base and target test run has appeared, the overview chart now renders time series for the two compared test runs. Solid lines represent the base run and dashed lines represent the compare target. You will also notice that a chart legend appeared, this legend is interactive and allows one to toggle visibility for each individual time series, this can be helpful to reduce noise when analyzing the result.
 
 ![k6 Cloud Results: Performance overview comparison](./images/07-Test-Comparison/comparison-mode.png)
+
+## Scenario comparison
+
+If there were multiple scenarios configured in the test script, a performance overview for each individual scenario will be presented. If there are multiple different protocols used in the test script the overview data will be categorized by protocol to make comparison easier.
+
+![k6 Cloud Results: Performance overview comparison](./images/07-Test-Comparison/scenario-comparison.png)
 
 ## Thresholds tab test comparison
 
@@ -47,21 +53,9 @@ In the Checks tab, additional data is added to the table for the base and target
 
 ## HTTP tab test comparison
 
-In the HTTP tab, additional data is added to the table for the base and target test run. Here you can compare `Count`, `p95`, and `p99` metrics for individual HTTP requests.
+In the HTTP tab, additional data is added to the table for the base and target test run. Here you can compare `request count`, `avg, p95 response time` and other data for individual HTTP requests.
 
 Clicking on a row will also show two separate charts, one for each test run. You can also change aggregation of the data to add additional metrics, such as timing breakdown for each HTTP request.
 
 ![k6 Cloud Results: HTTP comparison](./images/07-Test-Comparison/http-comparison.png)
 
-<!---
-## Analysis tab comparison
-
-When you use the "Add this graph to analysis tab" action in the other tabs, two charts will be added to the analysis panel, one for each test run. Same goes if you add a metric via the "Add metric to visualize" button, you'll get two charts.
-
-<Blockquote mod="warning">
-
-<b>Only metrics from current test run can be added to comparison chart</b><br/>
-At this point metrics from the compared test run can't be added to the comparison chart.
-
-</Blockquote>
---->
