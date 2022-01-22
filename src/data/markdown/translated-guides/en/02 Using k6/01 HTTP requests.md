@@ -112,10 +112,11 @@ all reported using one single metric:
 ```javascript
 import http from 'k6/http';
 
-for (let id = 1; id <= 100; id++) {
-  http.get(`http://example.com/posts/${id}`);
+export default function() {
+  for (let id = 1; id <= 100; id++) {
+    http.get(`http://example.com/posts/${id}`);
+  }
 }
-
 // tags.name=\"http://example.com/posts/1\",
 // tags.name=\"http://example.com/posts/2\",
 ```
@@ -129,12 +130,13 @@ You can aggregate data from dynamic URLs by explicitly setting a name tag:
 ```javascript
 import http from 'k6/http';
 
-for (let id = 1; id <= 100; id++) {
-  http.get(`http://example.com/posts/${id}`, {
-    tags: { name: 'PostsItemURL' },
-  });
+export default function() {
+  for (let id = 1; id <= 100; id++) {
+    http.get(`http://example.com/posts/${id}`, {
+      tags: { name: 'PostsItemURL' },
+    });
+  }
 }
-
 // tags.name=\"PostsItemURL\",
 // tags.name=\"PostsItemURL\",
 ```
@@ -190,10 +192,11 @@ Additionally, you can use the `http.url` wrapper to set the name tag with a stri
 ```javascript
 import http from 'k6/http';
 
-for (let id = 1; id <= 100; id++) {
-  http.get(http.url`http://example.com/posts/${id}`);
+export default function() {
+  for (let id = 1; id <= 100; id++) {
+    http.get(http.url`http://example.com/posts/${id}`);
+  }
 }
-
 // tags.name="http://example.com/posts/${}",
 // tags.name="http://example.com/posts/${}",
 ```
