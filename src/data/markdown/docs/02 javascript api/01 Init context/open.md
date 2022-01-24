@@ -23,7 +23,7 @@ See the example further down on this page. For a more in-depth description, see 
 
 #### Breaking change in v0.36.0
 
-Since k6 v0.36.0 we also restricted usage of the `open(...)` under the `__VU` condition. A code like `if (__VU >0) { const arr = open("./arr.json"); }` should cause an error.
+Since k6 v0.36.0, VUs are now restricted to only `open()` files that were also opened in the [init context](https://k6.io/docs/using-k6/test-life-cycle/#init-and-vu-stages) of the first VU - the one that was initialized to get the exported `options` from the JS script (`__VU==0`). This means that the code like `if (__VU > 0) { const arr = open("./arr.json"); }` will result in an error.
 
 </blockquote>
 
