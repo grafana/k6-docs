@@ -71,7 +71,7 @@ Control the test execution.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| abort | function | It immediately aborts a k6 load test run with the exit code `108`. Aborting a test is fully supported in `k6 cloud`, preserving the same user experience for both local and cloud users. |
+| abort([String]) | function | It aborts the test run with the exit code `108`, and an optional string parameter can provide an error message. Aborting the test will not prevent the `teardown()` execution. |
 
 ### vu 
 
