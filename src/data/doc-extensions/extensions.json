@@ -61,7 +61,7 @@
     {
       "name": "xk6-sql",
       "description": "Load-test SQL Servers (PostgreSQL, MySQL and SQLite3 for now)",
-      "url": "https://github.com/imiric/xk6-sql",
+      "url": "https://github.com/grafana/xk6-sql",
       "logo": "",
       "author": {
         "name": "Ivan Mirić",
