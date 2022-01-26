@@ -14,7 +14,7 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.text':
       'Learn how to leverage the results output to gain actionable insight about your applications performance.',
     'welcome.what-is.title': 'What is k6?',
-    'welcome.what-is.description1': `k6 is an open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.`,
+    'welcome.what-is.description1': `Grafana k6 is an open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.`,
     'welcome.what-is.description2': `Using k6, you can test the reliability and performance of your systems and catch performance regressions and problems earlier. k6 will help you to build resilient and performant applications that scale.`,
     'welcome.what-is.description3': `k6 is developed by `,
     'welcome.what-is.description4': `Grafana Labs`,
@@ -90,7 +90,7 @@ export const localizedMessages = {
     'welcome.quickstart.results-output.text':
       'Aprende a utilizar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
     'welcome.what-is.title': '¿Qué es k6?',
-    'welcome.what-is.description1': `k6 es una herramienta de pruebas de carga de código libre que hace fácil a equipos de software testear el rendimiento de sus aplicaciones.`,
+    'welcome.what-is.description1': `Grafana k6 es una herramienta de pruebas de carga de código libre que hace fácil a equipos de software testear el rendimiento de sus aplicaciones.`,
     'welcome.what-is.description2': `Con k6, puedes testear la fiabilidad y rendimiento de aplicaciones e identificar regresiones y errores más tempranamente. k6 te ayudará a construir aplicaciones rápidas y robustas que puedan escalar.`,
     'welcome.what-is.description3': `k6 es desarrollado por `,
     'welcome.what-is.description4': `Grafana Labs`,
