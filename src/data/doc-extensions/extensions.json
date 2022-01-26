@@ -103,11 +103,11 @@
     {
       "name": "xk6-distributed-tracing",
       "description": "Distributed tracing",
-      "url": "https://github.com/k6io/xk6-distributed-tracing",
+      "url": "https://github.com/grafana/xk6-distributed-tracing",
       "logo": "",
       "author": {
-        "name": "k6",
-        "url": "https://github.com/k6io"
+        "name": "grafana",
+        "url": "https://github.com/grafana"
       },
       "official": true,
       "categories": [
@@ -145,7 +145,7 @@
     {
       "name": "xk6-exec",
       "description": "Run external commands",
-      "url": "https://github.com/k6io/xk6-exec",
+      "url": "https://github.com/grafana/xk6-exec",
       "logo": "",
       "author": {
         "name": "Daniel González",
@@ -355,7 +355,7 @@
     {
       "name": "xk6-docker",
       "description": "Docker",
-      "url": "https://github.com/k6io/xk6-docker",
+      "url": "https://github.com/grafana/xk6-docker",
       "logo": "",
       "author": {
         "name": "Alexey Kuznetsov",
@@ -369,7 +369,7 @@
     {
       "name": "xk6-ssh",
       "description": "SSH",
-      "url": "https://github.com/k6io/xk6-ssh",
+      "url": "https://github.com/grafana/xk6-ssh",
       "logo": "",
       "author": {
         "name": "Alexey Kuznetsov",
