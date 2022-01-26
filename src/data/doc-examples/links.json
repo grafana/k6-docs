@@ -125,6 +125,12 @@
       "description": "How to use URL and URLSearchParams APIs to construct URLs.",
       "url": "",
       "to": "/examples/urls-with-query-parameters"
+    },
+    {
+      "title": "Instant load increase",
+      "description": "How to instantly increase the number of VUs or iterations",
+      "url": "",
+      "to": "/examples/instant-load-increase/"
     }
   ],
   "tutorials": [
