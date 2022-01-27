@@ -42,12 +42,6 @@ Full list of available [load zones](/cloud/creating-and-running-a-test/cloud-tes
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-**Ramping VUs**
-
-Control the number of VUs (Virtual Users) throughout the test, including ramp up and ramp down phases.  
-
-![Test Builder - Ramping VUs UI](images/ramping-vus.png)
-
 **Cloud APM**
 
 Select where you want to export metrics from a running test in real-time.  
@@ -62,6 +56,18 @@ Read more in depth about thresholds [here](/using-k6/thresholds/).
 
 ![Test Builder - Thresholds UI](images/thresholds.png)
 
+## Scenarios
+
+Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests.
+
+**Options**
+
+- Change scenario name.
+- Change [Scenario executor](/using-k6/scenarios/executors).
+  - Specify executor options.
+- Set time offset since the start of the test, at which point this scenario should begin execution.
+- Set [graceful stop](/using-k6/scenarios/graceful-stop/).
+
 **Requests**
 
 - Add a request and name it for better description.
@@ -73,7 +79,9 @@ Read more in depth about thresholds [here](/using-k6/thresholds/).
 - Reorganize requests by clicking and dragging.
 - Duplicate or delete requests when hovering over a specific request.
 
-**k6 API**
+Find out more about [scenarios](/using-k6/scenarios) and the different kinds of [executors](/using-k6/scenarios/executors).
+
+## k6 API
 
 - Define the [thresholds](/using-k6/thresholds) of your test.
 - Control ramping [stages](/using-k6/options#stages).
