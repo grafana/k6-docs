@@ -64,7 +64,7 @@ You can create multiple scenarios in a test. For each scenario, configure its op
 - When the scenario begins its execution. The time offset since the start of the test.
 - The scenario [graceful stop](/using-k6/scenarios/graceful-stop/) option.
 
-![TODO Scenario](images/test-builder.png)
+![k6 Test Builder - Edit Scenario](images/scenario-options.png)
 
 Read more on the [scenarios documentation](/using-k6/scenarios).
 
@@ -80,7 +80,7 @@ Configure the requests that each scenario will execute. The test builder allows 
 - Reorganize requests by clicking and dragging.
 - Duplicate or delete requests.
 
-![TODO Requests](images/test-builder.png)
+![k6 Test Builder - Build Requests](images/scenario-requests.png)
 
 Read more on the [HTTP Requests documentation](/using-k6/http-requests/).
 
@@ -90,7 +90,7 @@ At any moment, you can toggle the `View` button (top-right corner) to `Script` m
 
 Check out the script to get familiar with the [k6 API](/javascript-api/) or to copy the script and edit it on your IDE of preference.
 
-![TODO View script](images/test-builder.png)
+![k6 Test Builder - Script view](images/script-view.png)
   
 ## More features
 
