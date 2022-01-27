@@ -17,83 +17,88 @@ Although we strongly believe that scriptable/code-based tools will help you get 
 
 ![k6 Test Builder](images/test-builder.png)
 
-## Instructions
+## Getting started
 
-1 - [Login](https://app.k6.io/account/login) into the k6 Cloud.
+1. [Login](https://app.k6.io/account/login) into the k6 Cloud.
 
-2 - On the sidebar menu, click the [Create New Test](https://app.k6.io/tests/new) button.
+2. On the sidebar menu, click the [Create New Test](https://app.k6.io/tests/new) button.
 
-3 - Select `Test builder`.
+3. Select `Test builder`.
 
-![k6 Test Builder](images/create-new-test.png)
+  ![k6 Test Builder](images/create-new-test.png)
 
-4 - Now, you can start building your k6 test using the graphical interface.
+4. Start building your k6 test using the graphical interface.
 
-![k6 Test Builder](images/test-builder.png)
-
-## Test builder features
-
-We are continuously improving and adding new capabilities to the test builder. A few of the most prominent features are:
-
-**Load zones**
+## Load zones
 
 Configure the geographical zones that the load test should be run from. Select **even** to distribute load equally across all zones, and **manual** to set the percentage of load for each zone chosen.  
-Full list of available [load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones).
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-**Thresholds**
+Check out the list of supported [load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones).
 
-Thresholds are global pass/fail criteria that you can configure k6 to use, that can act on any result metrics.  
-Read more in depth about thresholds [here](/using-k6/thresholds/).
+## Thresholds
+
+Set pass/fail criteria to specify the performance expectations of the system under test. You can set thresholds on any result metrics. 
 
 ![Test Builder - Thresholds UI](images/thresholds.png)
 
-**Cloud APM**
+Read more on the [thresholds documentation](/using-k6/thresholds/).
+
+## Cloud APM
 
 Select where you want to export metrics from a running test in real-time.  
-Find out how to set up your provider [here](/cloud/integrations/cloud-apm/).
 
 ![Test Builder - Cloud APM UI](images/cloud-apm.png)
 
+Read more on the [Cloud APM](/cloud/integrations/cloud-apm/).
+
 ## Scenarios
 
-Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests.
+Scenarios allow us to configure how VUs and iterations are scheduled to model diverse traffic patterns in load tests. 
 
-**Options**
+You can create multiple scenarios in a test. For each scenario, configure its options:
 
-- Change scenario name.
-- Change [Scenario executor](/using-k6/scenarios/executors).
-  - Specify executor options.
-- Set time offset since the start of the test, at which point this scenario should begin execution.
-- Set [graceful stop](/using-k6/scenarios/graceful-stop/).
+- The [scenario executor](/using-k6/scenarios/executors) and its particular configuration.
+- The scenario name.
+- When the scenario begins its execution. The time offset since the start of the test.
+- The scenario [graceful stop](/using-k6/scenarios/graceful-stop/) option.
 
-**Requests**
+![TODO Scenario](images/test-builder.png)
+
+Read more on the [scenarios documentation](/using-k6/scenarios).
+
+
+## Requests
+
+Configure the requests that each scenario will execute. The test builder allows to:
 
 - Add a request and name it for better description.
-- Change the URL/Endpoint.
-- Change the `HTTP METHOD` using the drop down menu.
-- Specify Headers.
-- Specify Query Parameters.
-- Specify a request body (JSON, Text, or File Content) for POST/PUT/PATCH requests.
+- Change the URL/Endpoint and `HTTP` method.
+- Specify Headers and Query Parameters.
+- Specify a request body (JSON, Text, or File Content).
 - Reorganize requests by clicking and dragging.
-- Duplicate or delete requests when hovering over a specific request.
+- Duplicate or delete requests.
 
-Find out more about [scenarios](/using-k6/scenarios) and the different kinds of [executors](/using-k6/scenarios/executors).
+![TODO Requests](images/test-builder.png)
 
-## k6 API
+Read more on the [HTTP Requests documentation](/using-k6/http-requests/).
 
-- Define the [thresholds](/using-k6/thresholds) of your test.
-- Control ramping [stages](/using-k6/options#stages).
+## View k6 script
+
+At any moment, you can toggle the `View` button (top-right corner) to `Script` mode and see the auto-generated k6 script. 
+
+Check out the script to get familiar with the [k6 API](/javascript-api/) or to copy the script and edit it on your IDE of preference.
+
+![TODO View script](images/test-builder.png)
+  
+## More features
+
 - Add a [check](/javascript-api/k6/check-val-sets-tags) on a request response.
 - Add [sleep](/javascript-api/k6/sleep-t) time between requests.
 - Add a [group](/javascript-api/k6/group-name-fn) to the test.
-
-**And more**
-
-- Populate the test builder with the recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
-- Populate the test builder with the requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
+- Import recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
+- Import requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
-- Show examples for better onboarding.
-- Toggle the view mode to see or copy the generated k6 script.
+- Show relevant examples.
 - Run the test on the k6 Cloud.
