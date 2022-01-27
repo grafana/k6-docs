@@ -4,6 +4,12 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.0.0 `(2022-1-27)`
+- Support for defining [k6 Scenarios](/using-k6/scenarios/) on the [TestBuilder](/test-authoring/test-builder/).
+- Improve the UI component to invite multiple users.
+- `alt/cmd` and click on a doc link opens in a new tab and not in in-app viewer.
+- Fix: labeling `static` assets on the test result view.
+
 ### v2.2.1 `(2022-1-21)`
 - Move position of the `Add to analysis` button for better visibility.
 - Fix: crash on schedules page after scheduling a new test.
