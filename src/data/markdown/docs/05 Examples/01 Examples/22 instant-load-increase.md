@@ -6,7 +6,7 @@ draft: 'false'
 
 One of the common usages of the loadtesting tools it's the so-called stepped arrival rate.
 
-In K6 we can achieve it with the following configuration.
+In k6 we can achieve it with the following configuration.
 
 Here's an example on how to instantly increase the number of iterations and hold them for a period of time.
 
