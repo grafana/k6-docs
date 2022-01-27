@@ -42,19 +42,19 @@ Full list of available [load zones](/cloud/creating-and-running-a-test/cloud-tes
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-**Cloud APM**
-
-Select where you want to export metrics from a running test in real-time.  
-Find out how to set up your provider [here](/cloud/integrations/cloud-apm/).
-
-![Test Builder - Cloud APM UI](images/cloud-apm.png)
-
 **Thresholds**
 
 Thresholds are global pass/fail criteria that you can configure k6 to use, that can act on any result metrics.  
 Read more in depth about thresholds [here](/using-k6/thresholds/).
 
 ![Test Builder - Thresholds UI](images/thresholds.png)
+
+**Cloud APM**
+
+Select where you want to export metrics from a running test in real-time.  
+Find out how to set up your provider [here](/cloud/integrations/cloud-apm/).
+
+![Test Builder - Cloud APM UI](images/cloud-apm.png)
 
 ## Scenarios
 
