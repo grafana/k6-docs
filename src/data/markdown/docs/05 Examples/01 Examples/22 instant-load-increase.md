@@ -4,7 +4,7 @@ excerpt: 'Scripting example on how to instantly increase the number of VUs or it
 draft: 'false'
 ---
 
-One of the common usages of the loadtesting tools it's the so-called stepped arrival rate.
+One of the common usages of load testing tools it's the so-called stepped arrival rate.
 
 In k6 we can achieve it with the following configuration.
 
