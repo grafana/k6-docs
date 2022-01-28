@@ -16,7 +16,7 @@ After the installation, log in to your Grafana instance, and check that the k6 i
 
 You now have to configure the k6 Cloud app data source to use the application. Installed data sources are available from the configuration section in the sidebar menu. Select 'Data sources' and then select the k6 Cloud app data source to go to the configuration page.
 
-![k6 datasource configuration](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_data_source_view.png)
+![k6 data source configuration](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_data_source_view.png)
 
 The k6 Cloud app needs your API token to connect to your k6 Cloud account. Head over to your [k6 Cloud API token](https://app.k6.io/account/api-token) and copy your API token. Paste the token into the 'API Token' field, select 'Save & test' to check that your token is valid and that you have a connection to the k6 Cloud.
 
