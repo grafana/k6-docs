@@ -108,21 +108,14 @@ const flatten = (arr, kind = 'docs') => {
 };
 
 // custom index entry for extensions page
-const processExtensions = (extensionsList) => {
-  const reducer = (prev, { name, description }) =>
-    [prev, name, description].join('\n');
-  const content = extensionsList.reduce(reducer, []);
-
-  return [
-    {
-      title: 'k6 Extensions',
-      objectID: 'explore-extensions-page',
-      slug: '/extensions/',
-      content,
-      _tags: ['en', 'es'],
-    },
-  ];
-};
+const processExtensions = (extensionsList) =>
+  extensionsList.map((extension) => ({
+    title: extension.name,
+    objectID: `extensions-${extension.name}`,
+    slug: '/extensions/',
+    content: extension.description,
+    _tags: ['en', 'es'],
+  }));
 
 // main query
 const docPagesQuery = `{
