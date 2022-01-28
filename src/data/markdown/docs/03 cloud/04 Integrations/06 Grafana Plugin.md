@@ -6,7 +6,7 @@ excerpt: 'View your k6 Cloud Test Results in Grafana'
 The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) makes your testing accessible with Grafana, allowing you to:
 * manage and visualize your k6 Cloud tests in Grafana.
 * add k6 visualizations to your existing Grafana dashboards.
-* correlate k6 metrics with other data observed with Grafana to find root causes quickly.
+* correlate k6 metrics with other metrics to find root causes quickly.
 
 ## Installing the k6 Cloud app
 
