@@ -3,87 +3,47 @@ title: 'Grafana Plugin'
 excerpt: 'View your k6 Cloud Test Results in Grafana'
 ---
 
-The [k6 Cloud Grafana Data Source Plugin](https://grafana.com/grafana/plugins/grafana-k6cloud-datasource/) allows you to view your test results stored in k6 Cloud in [Grafana](https://grafana.com/grafana/). It recreates dashboards you're already familiar with in k6 Cloud.
+The [k6 Cloud application plugin](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/grafana/) now allows you to:
+* manage and visualize cloud tests to make your testing accessible in Grafana
+* add k6 visualizations to your existing Grafana dashboards
+* correlate testing metrics with other system metrics to detect root causes
 
-![k6 Cloud Grafana Data Source Plugin](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_dashboard.png)
+## Installing the k6 Cloud app
 
-The way you install the plugin will vary depending on how you've installed your instance of Grafana. On this page, we'll show you how to install the plugin on a local Grafana instance, Grafana Cloud, and Grafana in a Kubernetes cluster.
+Installation using Grafana Cloud is done by selecting the 'Install plugin' button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This will automatically add the plugin to your Grafana instance. For local Grafana instances, follow the [grafana-cli instructions](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation).
 
-## Installing on a local Grafana instance 
+After the installation, log in to your Grafana instance, and check that the k6 icon appears in the sidebar menu.
 
-First, install the Grafana CLI. [Here are instructions to do that](https://grafana.com/plugins/grafana-k6cloud-datasource/?tab=installation). 
+You now have to configure the k6 Cloud app data source to use the application. Installed data sources are available from the configuration section in the sidebar menu. Select 'Data sources' and then select the k6 Cloud app data source to go to the configuration page.
 
-Then, execute the following command:
+![k6 datasource configuration](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_data_source_view.png)
 
-```bash
-grafana-cli plugins install grafana-k6cloud-datasource
-```
+The k6 Cloud app needs your API token to connect to your k6 Cloud account. Head over to your [k6 Cloud API token](https://app.k6.io/account/api-token) and copy your API token. Paste the token into the 'API Token' field, select 'Save & test' to check that your token is valid and that you have a connection to the k6 Cloud.
 
-Restart your Grafana server after installing the plugin.
+## Navigate cloud tests across various projects
 
-## Installing on Grafana Cloud
+The new k6 Cloud app for Grafana, like the k6 Cloud web app, provides a dashboard including all your tests for a particular project. This view will be familiar for k6 Cloud users. Here, you can select any project and navigate to any test or test runs.
 
-If you do not have a [Grafana Cloud](https://grafana.com/cloud) account, you can sign up for free [here](https://grafana.com/cloud/grafana).
+![k6 project overview](./images/06-Grafana-Plugin/k6_cloud_grafana_project_overview.png)
 
-Click on the `Install plugin` button on the [k6 Cloud Data Source page on Grafana.com](https://grafana.com/plugins/grafana-k6cloud-datasource/?tab=installation). 
+## Re-running cloud tests
 
-![Install k6 Cloud Grafana Plugin](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_install.png)
+The k6 Cloud app for Grafana is not only another visualization interface, but it will also provide additional features to interact with your testing. To begin with, the new application offers the possibility to launch an existing cloud test. Select the `Run test` button to start running the test on the k6 Cloud. You'll be able to visualize the test run immediately on Grafana.
 
-## Installing on Grafana in Kubernetes
+![k6 test overview](./images/06-Grafana-Plugin/k6_cloud_grafana_test_overview.png)
 
-The easiest way to install a plugin on Grafana in a Kubernetes cluster is to use the Helm Package Manager. You can [install Helm here](https://helm.sh/docs/intro/install/).
+## Enhanced visualizations of k6 results
 
-Create a file called `values.yaml` and copy the following into it:
-```yaml
-## Pass the plugins you want installed as a list.
-##
-plugins: 
-  - grafana-k6cloud-datasource
-```
+The k6 results view mirrors its counterpart on the k6 Cloud. In this first version, you'll find an overview of important performance testing metrics and the results of the most relevant k6 reports, such as [HTTP requests](https://k6.io/docs/using-k6/http-requests/), [thresholds](https://k6.io/docs/using-k6/thresholds/), and [checks](https://k6.io/docs/using-k6/checks/).
 
-If you want to configure other settings at this point, you can use [this sample values.yaml file](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml) as a guide. When you're done, save the file locally.
+![k6 test results](./images/06-Grafana-Plugin/k6_cloud_grafana_test_result.png)
 
-Add the Grafana Helm Charts repository to Helm:
+The k6 Cloud app for Grafana is still in beta. The k6 Cloud will currently support more features than the new app. If you want to visualize your test results on the k6 Cloud, you can select `Open in k6 Cloud` to jump quickly to the same page on the k6 Cloud and explore from there.
 
-```bash
-helm repo add grafana https://grafana.github.io/helm-charts
-```
+![k6 cloud test result visualization](./images/06-Grafana-Plugin/k6_cloud_testresult_visualization.png)
 
-Now, install Grafana, using the `values.yaml` file that you created earlier:
+## Correlate testing results with other metrics
 
-```bash
-helm install -f values.yaml grafana grafana/grafana
-```
+The k6 Cloud app makes it very easy to add relevant metrics from your test result to a Grafana dashboard. Next to each chart on the test results view, you will find a 'Copy to clipboard' button which lets you simply paste the exact same time series panel into any one of your dashboards! This feature allows you to visualize k6 metrics together with other metrics of your application or systems and bring QA data to any of your existing dashboards.
 
-## Configure the data source 
-
-To access your k6 Cloud test results, you need to configure your [k6 Cloud Token](/cloud/integrations/token) on the k6 Cloud Grafana data source. 
-
-From the Grafana UI, access the `Data sources` page (Settings > Data sources), search for the k6 Cloud Grafana data source, and select it.
-
-Copy your [k6 Cloud Token](https://app.k6.io/account/token) and paste it into the API Token field. Click the `Save & Test` button to verify that your token is valid and that the data source can connect to k6 Cloud.
-
-![Configure k6 Cloud Grafana Data Source Plugin](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_data_source_view.png)
-
-## Import the k6 Cloud dashboards 
-
-The k6 Cloud data source includes two dashboards. Import both from the Dashboards tab.
-
-![k6 Cloud Grafana Data Source Dashboards](./images/06-Grafana-Plugin/k6_cloud_grafana_import_dashboard.png)
-
-## Visualize the k6 Cloud test results 
-
-You can now select a k6 dashboard to find a test across all your k6 projects and visualize the test results in Grafana.
-
-The k6 Cloud Test Runs List dashboard displays all tests executed on k6 Cloud. Choose the appropriate values in the Organization, Project, and Test dropdown menus to find the tests you're looking for.
-
-![k6 Cloud Test Listing Dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_list_dashboard.png)
-
-The k6 Cloud Test Run Result dashboard displays metrics for the selected test. You can get to this dashboard by selecting it in Dashboards > Home within the Grafana UI or by clicking on a test from the k6 Cloud Test Runs List dashboard. You can also select the right test by choosing different options from the Organization, Project, Test, and Test Run dropdown menus.
-
-![k6 Cloud Test Result Dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_dashboard.png)
-
-## See also
-
-- [Demo of installing the k6 Cloud Grafana data source plugin on Grafana Cloud](https://www.youtube.com/watch?v=tFsIgbqXbxM&t=1662s), from the _Intro to load testing with k6 and Grafana_ webinar (video)
-- [How to install and use the k6 Cloud Grafana data source plugin](https://youtu.be/Q2oihIg9Zjg) (video)
+![k6 grafana dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_dashboard.png)
