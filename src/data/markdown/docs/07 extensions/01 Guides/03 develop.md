@@ -332,7 +332,7 @@ func (*Compare) XComparator(call goja.ConstructorCall, rt *goja.Runtime) *goja.O
 This also demonstrates the native constructors feature from goja, where methods
 with this signature will be transformed to JS constructors, and also have
 the benefit of receiving the `goja.Runtime`, which is an alternative way
-to access it in addition to the `GetRuntime()` method shown above.
+to access it in addition to the `Runtime()` method shown above.
 
 
 ### Things to keep in mind
