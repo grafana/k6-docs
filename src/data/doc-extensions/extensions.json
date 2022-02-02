@@ -707,6 +707,20 @@
         "Observability",
         "Messaging"
       ]
+    },
+    {
+      "name": "xk6-cognito",
+      "description": "Get a cognito access token using USER_SRP_AUTH flow",
+      "url": "https://github.com/tmieulet/xk6-cognito",
+      "logo": "",
+      "author": {
+        "name": "Timothée MIEULET",
+        "url": "https://github.com/tmieulet"
+      },
+      "official": false,
+      "categories": [
+        "Authentication"
+      ]
     }
   ]
 }
