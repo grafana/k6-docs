@@ -36,7 +36,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    `k6 login` stores your API Token in a local config file to authenticate to k6 Cloud when running cloud commands.
 
-4. Run your test in the cloud.
+4. Run your test in the cloud. (`k6 cloud` will upload your script and any dependencies to our cloud automatically) 
 
    <CodeGroup labels={["CLI", "Docker"]}>
 
