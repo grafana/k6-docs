@@ -132,6 +132,7 @@ The available built-in outputs currently are:
   - [Netdata](/results-visualization/netdata)
   - [New Relic](/results-visualization/new-relic)
   - [Prometheus](/results-visualization/prometheus) 
+  - [TimescaleDB](/results-visualization/timescaledb) 
   - [StatsD](/results-visualization/statsd) 
 
 </Glossary>

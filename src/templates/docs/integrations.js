@@ -37,6 +37,7 @@ import K6 from 'svg/logo.inline.svg';
 import Netdata from 'svg/netdata.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
 import Prometheus from 'svg/prometheus.inline.svg';
+import TimescaleDB from 'svg/timescaledb.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
 import SeoMetadata from 'utils/seo-metadata';
@@ -97,6 +98,11 @@ const iconsDataSet1 = [
     Icon: Prometheus,
     name: 'Prometheus',
     to: '/results-visualization/prometheus',
+  },
+  {
+    Icon: TimescaleDB,
+    name: 'TimescaleDB',
+    to: '/results-visualization/timescaledb',
   },
   {
     Icon: StatsD,
@@ -392,7 +398,9 @@ export default function Integrations({
               />
               <DocIconsRow
                 title={'Result store and visualization'}
-                subtitle={'k6 can output test results to various backends.'}
+                subtitle={
+                  'k6 can output test results in various formats and backends.'
+                }
                 iconsData={iconsDataSet1}
               />
               <DocIconsRow
