@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 
-import ArrowIcon from './svg/arrow.inline.svg';
-
 import styles from './dropdown.module.scss';
+import ArrowIcon from './svg/arrow.inline.svg';
 
 export const Dropdown = ({ currentOption, options, className, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
