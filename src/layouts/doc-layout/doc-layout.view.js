@@ -356,7 +356,7 @@ export const DocLayout = ({
       <main className={styles.main}>
         <Header>
           <div
-            className={`col-xxl-8 col-12 d-md-flex d-none ${styles.headerNav}`}
+            className={`col-xxl-8 col-12 d-md-flex align-items-center d-none ${styles.headerNav}`}
           >
             <HeaderNav links={links} />
             <div className={styles.controls}>
