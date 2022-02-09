@@ -699,7 +699,6 @@ $ k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
 
 This option specifies where to send logs to and another configuration connected to it. Available in the `k6 run` command.
 
-
 | Env             | CLI            | Code / Config file | Default  |
 | --------------- | -------------- | ------------------ | -------- |
 | `K6_LOG_OUTPUT` | `--log-output` | N/A                | `stderr` |
@@ -718,6 +717,7 @@ Possible values are:
 - stdout - send to the standard output
 - stderr - send to the standard error output (this is the default)
 - loki - send logs to a loki server
+- file - write logs to a file
 
 ### Loki
 
@@ -726,7 +726,7 @@ The loki can additionally be configured as follows:
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231
+$ k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
 ```
 
 </CodeGroup>
@@ -736,14 +736,32 @@ The possible keys with their meanings and default values:
 
 | key | description | default value |
 | --- | ----------- | ------------- |
-| `nothing`         | the endpoint to which to send logs | `http://127.0.0.1:3100/loki/api/v1/push` |
-| allowedLabels     | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]` | N/A |
+| `nothing` | the endpoint to which to send logs | `http://127.0.0.1:3100/loki/api/v1/push` |
+| allowedLabels | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]` | N/A |
 | label.`labelName` | adds an additional label with the provided key and value to each message | N/A |
-| limit             | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped | 100 |
-| level             | the minimal level of a message so it's send to loki | all |
-| pushPeriod        | at what period to send log lines | 1s |
-| profile           | whether to print some info about performance of the sending to loki | false |
-| msgMaxSize        | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576 |
+| limit | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped | 100 |
+| level | the minimal level of a message so it's send to loki | all |
+| pushPeriod | at what period to send log lines | 1s |
+| profile | whether to print some info about performance of the sending to loki | false |
+| msgMaxSize | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576 |
+
+### File
+
+The file can be configured as below, where an explicit file path is required:
+
+<CodeGroup labels={[]} lineNumbers={[true]}>
+
+```bash
+$ k6 run --log-output=file=./k6.log script.js
+```
+
+</CodeGroup>
+
+A valid file path is the unique mandatory field, the other optional fields listed below:
+
+| key | description | default value |
+| --- | ----------- | ------------- |
+| level | the minimal level of a message to write | all |
 
 ## LogFormat
 
