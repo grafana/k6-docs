@@ -37,11 +37,11 @@ $ k6 run script.js
 # pipe the actual file into the container with `<` or equivalent. This will
 # cause the file to be redirected into the container and be read by k6.
 
-$ docker run -i loadimpact/k6 run - <script.js
+$ docker run -i grafana/k6 run - <script.js
 ```
 
 ```bash
-PS C:\> cat script.js | docker run -i loadimpact/k6 run -
+PS C:\> cat script.js | docker run -i grafana/k6 run -
 ```
 
 </CodeGroup>
@@ -57,11 +57,11 @@ $ k6 run --vus 10 --duration 30s script.js
 ```
 
 ```bash
-$ docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
+$ docker run -i grafana/k6 run --vus 10 --duration 30s - <script.js
 ```
 
 ```bash
-PS C:\> cat script.js | docker run -i loadimpact/k6 run --vus 10 --duration 30s -
+PS C:\> cat script.js | docker run -i grafana/k6 run --vus 10 --duration 30s -
 ```
 
 </CodeGroup>
@@ -142,11 +142,11 @@ $ k6 run script.js
 ```
 
 ```bash
-$ docker run -i loadimpact/k6 run - <script.js
+$ docker run -i grafana/k6 run - <script.js
 ```
 
 ```bash
-PS C:\> cat script.js | docker run -i loadimpact/k6 run -
+PS C:\> cat script.js | docker run -i grafana/k6 run -
 ```
 
 </CodeGroup>

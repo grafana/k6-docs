@@ -71,7 +71,7 @@ Además de personalizar el resumen CLI de fin de prueba (si se exporta `handleSu
 
 ```javascript
 import http from 'k6/http';
-import k6example from 'https://raw.githubusercontent.com/loadimpact/k6/master/samples/thresholds_readme_example.js';
+import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
 export default k6example; // use some predefined example to generate some data
 export const options = { vus: 5, iterations: 10 };
 
