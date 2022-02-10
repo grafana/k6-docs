@@ -90,5 +90,5 @@ Descarga un binario preconstruido de nuestra [página de releases](https://githu
 ## Docker
 
 ```bash
-$ docker pull loadimpact/k6
+$ docker pull grafana/k6
 ```

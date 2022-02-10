@@ -116,7 +116,7 @@ Para ejecutar index.js y hacer que los módulos estén disponibles para su impor
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ docker run -v /home/k6/example/src:/src -i loadimpact/k6 run /src/index.js
+$ docker run -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
 ```
 
 </CodeGroup>

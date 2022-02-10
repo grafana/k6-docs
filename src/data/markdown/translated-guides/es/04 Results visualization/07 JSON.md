@@ -15,7 +15,7 @@ $ k6 run --out json=my_test_result.json script.js
 $ docker run -it --rm \
     -v <scriptdir>:/scripts \
     -v <outputdir>:/jsonoutput \
-    loadimpact/k6 run --out json=/jsonoutput/my_test_result.json /scripts/script.js
+    grafana/k6 run --out json=/jsonoutput/my_test_result.json /scripts/script.js
 
 # El usuario de docker debe tener permiso de escritura en <outputdir>!
 ```
@@ -34,7 +34,7 @@ $ k6 run --out json=my_test_result.gz script.js
 $ docker run -it --rm \
     -v <scriptdir>:/scripts \
     -v <outputdir>:/jsonoutput \
-    loadimpact/k6 run --out json=/jsonoutput/my_test_result.gz /scripts/script.js
+    grafana/k6 run --out json=/jsonoutput/my_test_result.gz /scripts/script.js
 
 # El usuario de docker debe tener permiso de escritura en <outputdir>!
 ```

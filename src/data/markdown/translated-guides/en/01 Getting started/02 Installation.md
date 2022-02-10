@@ -53,7 +53,7 @@ Otherwise you can manually download and install the [latest official `.msi` pack
 ## Docker
 
 ```bash
-docker pull loadimpact/k6
+docker pull grafana/k6
 ```
 
 ## Download the k6 binary
