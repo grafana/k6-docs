@@ -28,7 +28,7 @@ Which means that for the most part if you currently have an array data structure
 import { SharedArray } from 'k6/data';
 
 const data = new SharedArray('some name', function () {
-  // here you can open files, and then do additional processing on them or just generate the data dynamically
+  // it's important to open big files (generate a big amount of data) inside this function
   const f = JSON.parse(open('./somefile.json'));
   return f; // f must be an array
 });
