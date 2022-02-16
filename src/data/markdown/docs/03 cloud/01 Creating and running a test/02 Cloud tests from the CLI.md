@@ -185,8 +185,8 @@ You have two options to pass the Project ID to k6:
 - South America (São Paulo) `amazon:br:sao paulo`
 - US West (N. California) `amazon:us:palo alto`
 - US West (Oregon) `amazon:us:portland`
-- US East (N. Virginia) - **DEFAULT** `amazon:us:ashburn`
-- US East (Ohio) `amazon:us:columbus`
+- US East (N. Virginia) `amazon:us:ashburn`
+- US East (Ohio) - **DEFAULT** `amazon:us:columbus`
 
 
 ## Cloud execution tags
