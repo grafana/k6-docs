@@ -243,9 +243,17 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/oss-program`}
+                        href={`${main}/oss-program/`}
                       >
                         OSS Support Program
+                      </a>
+                    </li>
+                    <li className={styles.navColumnItem}>
+                      <a
+                        className={styles.navColumnLink}
+                        href={`${main}/k6-cloud-for-education/`}
+                      >
+                        k6 Cloud for Education
                       </a>
                     </li>
                   </ul>
