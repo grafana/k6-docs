@@ -761,7 +761,7 @@ A valid file path is the unique mandatory field, the other optional fields liste
 
 | key | description | default value |
 | --- | ----------- | ------------- |
-| level | the minimal level of a message to write | all |
+| level | the minimal level of a message to write out of (in ascending order): trace, debug, info, warning, error, fatal, panic | trace |
 
 ## LogFormat
 
