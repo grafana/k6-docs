@@ -1,10 +1,10 @@
 ---
 title: 'HTTP debugging'
-excerpt: 'It is not always things work as expected. For those cases there is a handy CLI flag, --http-debug, that is good to be aware of.'
+excerpt: 'Things don't always work as expected. For those cases there is a handy CLI flag, --http-debug, that is good to be aware of.'
 hideFromSidebar: true
 ---
 
-It's not always things work as expected. For those cases, enabling the [--http-debug](/using-k6/options/#http-debug) option will log HTTP requests and responses to help you debugging the script.
+Things don't always work as expected. For those cases, enabling the [--http-debug](/using-k6/options/#http-debug) option will log HTTP requests and responses to help you debugging the script.
 
 - `--http-debug` logs the HTTP requests and responses, skipping the body.
 - `--http-debug="full"` logs the HTTP requests and responses, including the full body.
