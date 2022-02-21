@@ -1,6 +1,6 @@
 ---
 title: 'HTTP debugging'
-excerpt: 'Things don't always work as expected. For those cases there is a handy CLI flag, --http-debug, that is good to be aware of.'
+excerpt: "Things don't always work as expected. For those cases there is a handy CLI flag, --http-debug, that is good to be aware of."
 hideFromSidebar: true
 ---
 
