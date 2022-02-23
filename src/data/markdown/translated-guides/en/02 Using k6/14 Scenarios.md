@@ -4,12 +4,6 @@ excerpt: 'Scenarios allow us to make in-depth configurations to how VUs and iter
 hideFromSidebar: false
 ---
 
-> ### 🎉 New in v0.27.0
->
-> This feature is new as of version 0.27.0. Usage of this feature is optional and for the vast majority of users,
-> existing scripts and configurations will continue to work as before. For a list of breaking changes,
-> see the [k6 v0.27.0 release notes](https://github.com/grafana/k6/releases/tag/v0.27.0).
-
 Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
 
 - Multiple scenarios can be declared in the same script, and each one can

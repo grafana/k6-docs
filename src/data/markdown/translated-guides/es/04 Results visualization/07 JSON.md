@@ -134,8 +134,6 @@ Para casos más avanzados, consulte el [Manual de jq][jq_manual_url]
 
 ## Exportar los datos del resumen
 
-> _New in v0.26.0_
-
 Si no está interesado en cada una de las mediciones de las métricas individuales y, en cambio, desea ver sólo los datos agregados, exportar los datos del resumen de fin de la prueba a un archivo JSON puede ser una mejor opción que utilizar la salida JSON descrita en este documento. Para más detalles, consulte `--export-summary` y `handleSummary()` en la documentación del resumen de fin de la prueba.
 
 <CodeGroup labels={[ "stdout", "Other output"]}>
