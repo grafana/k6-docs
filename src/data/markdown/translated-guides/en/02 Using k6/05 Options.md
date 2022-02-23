@@ -259,8 +259,6 @@ export const options = {
 
 ## Block Hostnames
 
-> _New in v0.29.0_
-
 Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
 `*` at the beginning such as `*.example.com` that will match anything before that such as
 `test.example.com` and `test.test.example.com`.
@@ -371,8 +369,6 @@ export const options = {
 
 ## DNS
 
-> _New in v0.29.0_
-
 This is a composite option that provides control of DNS resolution behavior with
 configuration for cache expiration (TTL), IP selection strategy and IP version
 preference. The TTL field in the DNS record is currently not read by k6, so the
@@ -476,8 +472,6 @@ export const options = {
 </CodeGroup>
 
 ## Execution Segment
-
-> _New in v0.27.0_
 
 These options specify how to partition the test run and which segment to run.
 If defined, k6 will scale the number of VUs and iterations to be run for that
@@ -1163,8 +1157,6 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 </CodeGroup>
 
 ## Summary export
-
-> _New in v0.26.0_
 
 Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
