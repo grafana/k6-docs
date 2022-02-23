@@ -61,7 +61,7 @@ ${HOME}/.config/loadimpact/k6/config.json
 ```
 
 ```
-${HOME}/Library/Application Support/LoadImpact/k6/config.json
+${HOME}/Library/Application Support/loadimpact/k6/config.json
 ```
 
 ```bash
