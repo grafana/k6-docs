@@ -4,6 +4,25 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.2.1 `(2022-2-24)`
+- When recording a session, preserve `postData.decoded` data to handle form values with `%` symbols.
+
+### v3.2.0 `(2022-2-22)`
+- Add the ability to preselect your default project on user settings.
+- Display CLI discoverability message in snackbar instead of tooltip.
+
+### v3.1.2 `(2022-2-17)`
+- Better alignment of items in comparison legend.
+- Fix: misaligned filter labels in expanded url row when using firefox.
+- Fix: wrong series color in performance overview chart when comparing.
+
+### v3.1.0 `(2022-2-9)`
+- Add visual distinction between the private and public load zones used in the test.
+
+### v3.0.1 `(2022-1-31)`
+- Fix: performance chart tooltip getting cropped in comparison mode.
+- Fix: PostDataNode would throw on “missing” data rather than to handle it.
+
 ### v3.0.0 `(2022-1-27)`
 - Support for defining [k6 Scenarios](/using-k6/scenarios/) on the [TestBuilder](/test-authoring/test-builder/).
 - Improve the UI component to invite multiple users.
