@@ -9,11 +9,11 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v3.2.0 `(2022-2-22)`
 - Add the ability to preselect your default project on user settings.
-- Display CLI discoverability message in snackbar instead of tooltip.
+- Display CLI discoverability message in a snackbar UI instead of a tooltip.
 
 ### v3.1.2 `(2022-2-17)`
 - Better alignment of items in comparison legend.
-- Fix: misaligned filter labels in expanded url row when using firefox.
+- Fix: misaligned filter labels in expanded url row when using `Firefox`.
 - Fix: wrong series color in performance overview chart when comparing.
 
 ### v3.1.0 `(2022-2-9)`

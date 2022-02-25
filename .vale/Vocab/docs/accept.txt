@@ -52,6 +52,7 @@ Ctrl
 Cyber
 datastore
 datetime
+discoverability
 dcadwallader
 deserialized
 Dev
@@ -100,6 +101,7 @@ Scorigami
 scriptable
 sharded
 smockvavelsky
+snackbar
 Solaris
 Souders
 src
