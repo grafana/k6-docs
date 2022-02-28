@@ -115,20 +115,6 @@
       ]
     },
     {
-      "name": "xk6-zmq",
-      "description": "ZeroMQ",
-      "url": "https://github.com/dgzlopes/xk6-zmq",
-      "logo": "",
-      "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
-      },
-      "official": false,
-      "categories": [
-        "Messaging"
-      ]
-    },
-    {
       "name": "xk6-datadog",
       "description": "Query Datadog metrics",
       "url": "https://github.com/dgzlopes/xk6-datadog",
