@@ -28,12 +28,13 @@ partition between VUs.
 ## Example
 
 In this example, we'll let 10 VUs execute 20 iterations _each_, for a total of 200 iterations, with
-a maximum duration of 1 hour and 30 minutes.
+a maximum duration of 30 seconds.
 
 <CodeGroup labels={[ "per-vu-iters.js" ]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
+import { sleep } from 'k6';
 
 export const options = {
   discardResponseBodies: true,
@@ -42,14 +43,32 @@ export const options = {
       executor: 'per-vu-iterations',
       vus: 10,
       iterations: 20,
-      maxDuration: '1h30m',
+      maxDuration: '30s',
     },
   },
 };
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
+  // We're injecting a processing pause for illustrative purposes only!
+  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  sleep(0.5);
 }
 ```
 
 </CodeGroup>
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Per VU Iterations](./images/per-vu-iterations.png)
+
+Based upon our test scenario inputs and results:
+
+* The number of VUs is fixed at 10 VUs which are initialized before beginning the test;
+* iterations are fixed at 200 iterations, `10 VUs * 20 iters each`;
+* maximum throughput of 20 iters/s is reached, but not maintained;
+* total duration of 9 seconds is slightly longer than [shared iterations](/using-k6/scenarios/executors/shared-iterations) due to lower efficiency;
+* because distribution of iterations is even amongst VUs, a _fast_ VU may finish early and be idle for the remainder of the test;
+* overall test duration lasts as long as the _slowest_ VU takes to complete 20 requests. 

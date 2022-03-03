@@ -23,16 +23,21 @@ also adds the following options:
 ## When to use
 
 This executor is suitable when you want a specific amount of VUs to complete a fixed
-number of total iterations, and the amount of iterations per VU is not important.
+number of total iterations, and the amount of iterations per VU is not important. This will be 
+the most _"efficient"_ use of VUs, therefore if **time to complete** a number of test iterations
+is your concern, this executor should perform best. 
+
+> An example use case could be to incorporate a quick performance test as part of the build cycle during development. As developers compile their changes, the test could be executed against the local code to help insure against performance regressions. This would be considered as part of _"shifting left"_; placing more emphasis on performance early in the development cycle when the _cost_ of the fix is lowest. 
 
 ## Example
 
-In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 10 seconds
+In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 30 seconds.
 
 <CodeGroup labels={[ "shared-iters.js" ]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
+import { sleep } from 'k6';
 
 export const options = {
   discardResponseBodies: true,
@@ -41,14 +46,31 @@ export const options = {
       executor: 'shared-iterations',
       vus: 10,
       iterations: 200,
-      maxDuration: '10s',
+      maxDuration: '30s',
     },
   },
 };
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
+  // We're injecting a processing pause for illustrative purposes only!
+  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  sleep(0.5);
 }
 ```
 
 </CodeGroup>
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Shared Iterations](./images/shared-iterations.png)
+
+Based upon our test scenario inputs and results:
+
+* Test is limited to a fixed number of 200 iterations;
+* number of VUs is fixed at 10 VUs which are initialized before beginning the test;
+* maximum throughput of 20 iters/s is maintained for a larger portion of the test;
+* the 8 second test duration will be the shortest of all executor methods;
+* we know the distribution of iterations may be skewed; one VU may have performed 50 iterations, whereas another may have only performed 10. 

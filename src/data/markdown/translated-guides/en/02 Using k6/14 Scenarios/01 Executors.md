@@ -3,7 +3,7 @@ title: 'Executors'
 excerpt: 'Executors are the workhorses of the k6 execution engine. Each one schedules VUs and iterations differently, and you choose one depending on the type of traffic you want to model to test your services'
 ---
 
-[Executors](/using-k6/scenarios/executors) are the workhorses of the k6 execution engine. Each one
+**Executors** are the workhorses of the k6 execution engine. Each one
 schedules VUs and iterations differently, and you'll choose one depending on the type of traffic you
 want to model to test your services.
 

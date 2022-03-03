@@ -24,7 +24,7 @@ Use this executor if you need a specific amount of VUs to run for a certain amou
 
 ## Example
 
-In this example, we'll run 10 VUs constantly for a duration 45 minutes.
+In this example, we'll run 10 VUs constantly for a duration 30 seconds.
 
 <CodeGroup labels={[ "constant-vus.js" ]} lineNumbers={[true]}>
 
@@ -35,18 +35,33 @@ import { sleep } from 'k6';
 export const options = {
   discardResponseBodies: true,
   scenarios: {
-    my_awesome_api_test: {
+    contacts: {
       executor: 'constant-vus',
       vus: 10,
-      duration: '45m',
+      duration: '30s',
     },
   },
 };
 
 export default function () {
-  http.get('https://test-api.k6.io/');
-  sleep(Math.random() * 3);
+  http.get('https://test.k6.io/contacts.php');
+  // We're injecting a processing pause for illustrative purposes only!
+  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  sleep(0.5);
 }
 ```
 
 </CodeGroup>
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Constant VUs](./images/constant-vus.png)
+
+Based upon our test scenario inputs and results:
+
+* The number of VUs is fixed at 10 VUs which are initialized before beginning the test;
+* test scenario runs for the specified 30 second duration; 
+* maximum throughput of 20 iters/s is reached and maintained for the majority of the test;
+* approximately 600 iterations performed in total, `30 seconds * 20 iters/s`.

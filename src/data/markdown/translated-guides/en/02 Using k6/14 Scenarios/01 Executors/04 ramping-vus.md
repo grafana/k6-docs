@@ -26,13 +26,14 @@ of time.
 
 ## Example
 
-In this example, we'll run a two-stage test, ramping up from 0 to 100 VUs for 5 seconds, and down
-to 0 VUs over 5 seconds.
+In this example, we'll run a two-stage test, ramping up from 0 to 10 VUs over 20 seconds, then down
+to 0 VUs over 10 seconds.
 
 <CodeGroup labels={[ "ramping-vus.js" ]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
+import { sleep } from 'k6';
 
 export const options = {
   discardResponseBodies: true,
@@ -41,8 +42,8 @@ export const options = {
       executor: 'ramping-vus',
       startVUs: 0,
       stages: [
-        { duration: '5s', target: 100 },
-        { duration: '5s', target: 0 },
+        { duration: '20s', target: 10 },
+        { duration: '10s', target: 0 },
       ],
       gracefulRampDown: '0s',
     },
@@ -51,10 +52,25 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
+  // We're injecting a processing pause for illustrative purposes only!
+  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  sleep(0.5);
 }
 ```
 
 </CodeGroup>
 
-Note the setting of `gracefulRampDown` to 0 seconds, which could cause some iterations to be
+> Note the setting of `gracefulRampDown` to 0 seconds, which could cause some iterations to be
 interrupted during the ramp down stage.
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Ramping VUs](./images/ramping-vus.png)
+
+Based upon our test scenario inputs and results:
+
+* The number of VUs are ramped up/down linearly over a fixed duration within their respective stage;
+* the sum of each stage duration defines the overall 30 second test duration;
+* total iterations will vary; our example performed ~300 iterations.

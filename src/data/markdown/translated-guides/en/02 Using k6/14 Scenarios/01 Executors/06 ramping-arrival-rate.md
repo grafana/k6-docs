@@ -31,7 +31,7 @@ would like to ramp the number of iterations up or down during specific periods o
 
 ## Examples
 
-In this example, we'll execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
+In this example, we'll run a two-stage test, ramping up the iteration rate from 10 to 70 iterations per second over a 20 second period, then down to 30 iterations per second over a 10 second period.
 
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -43,13 +43,13 @@ export const options = {
   scenarios: {
     contacts: {
       executor: 'ramping-arrival-rate',
-      startRate: 50,
+      startRate: 10,
       timeUnit: '1s',
-      preAllocatedVUs: 50,
-      maxVUs: 100,
+      preAllocatedVUs: 2,
+      maxVUs: 50,
       stages: [
-        { target: 200, duration: '30s' },
-        { target: 0, duration: '30s' },
+        { target: 70, duration: '20s' },
+        { target: 30, duration: '10s' },
       ],
     },
   },
@@ -61,3 +61,16 @@ export default function () {
 ```
 
 </CodeGroup>
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Ramping Arrival Rate](./images/ramping-arrival-rate.png)
+
+Based upon our test scenario inputs and results:
+
+* The iteration rate is ramped up/down linearly over a fixed duration within their respective stage;
+* optimal number of VUs to achieve the desired iteration rate is adjusted during test execution;
+* the sum of the stage durations defines the overall 30 second test duration;
+* total iterations will vary; our example perfomed ~1,300 iterations.
