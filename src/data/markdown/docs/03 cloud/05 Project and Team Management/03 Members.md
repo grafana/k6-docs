@@ -26,11 +26,11 @@ Admin users can see and edit all projects under the organization, manage members
 
 This role is suitable for cases when you don't want to grant the ability to edit organization or project settings. You can choose what kind of access type you want to grant to your selected projects - Read/Write or Read-Only.
 
-#### Read/Write
+<h4 id="readwrite">Read/Write</h4>
 
 Gives a project member the ability to create, edit, run and schedule tests in a particular project.
 
-#### Read-Only
+<h4 id="read-only">Read-Only</h4>
 
 Gives a project member the ability only to view tests and test runs in a particular project. They are not able to modify them in any way.
 
@@ -50,13 +50,15 @@ Under the **Members settings** you can invite new members to projects under your
 
 ![Members tab](images/03-Team-Members/members-tab.png)
 
-To add new members click on `Invite new members` button.
+Click on the `Invite new members` button to invite new members to the organization.
 
 ![Invite members under members tab](images/03-Team-Members/invite-members-members-tab.png)
 
-Then, within the modal, enter email addresses and select what kind of permission role you want to assign.<br />
+In this modal, you can invite new team members:
+- Entering one or multiple email addresses (supports a comma-separated list).
+- Selecting the organization role: [Admin](#admin) or [Project member](#project-member).
+- For `Project members`, selecting their projects and the project role: [Read/Write](#readwrite) or [Read-Only](#read-only).
 
-> `Role` field will let you choose between [Admin](/cloud/project-and-team-management/members#admin) or [Project member](/cloud/project-and-team-management/members#project-member) roles, as you are able to manage members throughout the whole currently selected organization.
 
 ### Project settings
 
@@ -68,11 +70,11 @@ In the **Project settings** view you can invite new members, change access level
 
 ![Project settings](images/03-Team-Members/project-settings.png)
 
-To add new project members click on `Invite members` button.
+Click on the `Invite members` button to invite members to the current project
 
 ![Invite members under project settings](images/03-Team-Members/invite-new-members-project-settings.png)
 
-Here you can specify email addresses and the permission role you want to assign to your currently selected project.
-
-> `Role` field will only let you choose between **Read/Write** or **Read-Only**
-> access types, as this view operates under the context of the currently selected project. If you want to set a member as an admin please refer to [Members settings](/cloud/project-and-team-management/members/#members-settings) section.
+In this modal, you can: 
+- Select existing organization members.
+- Enter one or multiple email addresses (supports a comma-separated list) to invite new members.
+- Select the member role in the selected project: [Read/Write](#readwrite) or [Read-Only](#read-only).
