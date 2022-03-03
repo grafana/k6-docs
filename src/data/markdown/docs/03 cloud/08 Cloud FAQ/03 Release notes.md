@@ -4,6 +4,15 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.3.1 `(2022-3-2)`
+- Fix: allow creating tests using [TestBuilder](/test-authoring/test-builder/) without an active subscription.
+
+### v3.3.0 `(2022-3-1)`
+- New UI to invite multiple users simultaneously.
+- Show the VUh counter on subscriptions view.
+- Fix: use the 95th percentile in test summary.
+- Fix:  ramping arrival rate validation on the [TestBuilder](/test-authoring/test-builder/).
+
 ### v3.2.1 `(2022-2-24)`
 - When recording a session, preserve `postData.decoded` data to handle form values with `%` symbols.
 
