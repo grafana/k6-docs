@@ -61,7 +61,9 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* The number of VUs is fixed at 10 VUs which are initialized before beginning the test;
-* test scenario runs for the specified 30 second duration; 
-* maximum throughput of 20 iters/s is reached and maintained for the majority of the test;
-* approximately 600 iterations performed in total, `30 seconds * 20 iters/s`.
+* The number of VUs is fixed at 10, and are initialized before the test begins;
+* overall test duration is fixed at the configured 30 second duration; 
+* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`; 
+* we see that the maximum throughput is reached and maintained for the majority of the test;
+* approximately 600 iterations are therefore performed in total, `30 seconds * 20 iters/s`.

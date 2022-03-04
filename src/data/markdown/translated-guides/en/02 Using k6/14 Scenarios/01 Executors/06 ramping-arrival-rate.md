@@ -70,7 +70,8 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* The iteration rate is ramped up/down linearly over a fixed duration within their respective stage;
-* optimal number of VUs to achieve the desired iteration rate is adjusted during test execution;
-* the sum of the stage durations defines the overall 30 second test duration;
-* total iterations will vary; our example perfomed ~1,300 iterations.
+* We've defined 2 stages for a total test duration of 30 seconds;
+* stage 1 ramps _up_ the iteration rate linearly from the `startRate` of 10 iters/s, to the target of 70 iters/s over a 20 second duration;
+* from the 70 iters/s at the end of stage 1, stage 2 then ramps _down_ the iteration rate linearly to the target rate of 30 iters/s over a 10 second duration;
+* changes to the iteration rate are performed by k6 adjusting the number of VUs as necessary from `preAllocatedVUs` to a maximum of `maxVUs`;
+* our example performed ~1,300 iterations over the course of the test.

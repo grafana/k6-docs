@@ -69,8 +69,10 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* Test is limited to a fixed number of 200 iterations;
-* number of VUs is fixed at 10 VUs which are initialized before beginning the test;
-* maximum throughput of 20 iters/s is maintained for a larger portion of the test;
+* Test is limited to a fixed number of 200 iterations of the `default` function;
+* the number of VUs is fixed to 10, and are initialized before the test begins;
+* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`; 
+* we then see that the maximum throughput is maintained for a larger portion of the test;
 * the 8 second test duration will be the shortest of all executor methods;
 * we know the distribution of iterations may be skewed; one VU may have performed 50 iterations, whereas another may have only performed 10. 

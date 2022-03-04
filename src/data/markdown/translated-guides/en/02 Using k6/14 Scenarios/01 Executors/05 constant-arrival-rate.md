@@ -80,5 +80,7 @@ Based upon our test scenario inputs and results:
 
 * The desired rate of 30 iterations every 1 second is achieved and maintained for the majority of the test;
 * test scenario runs for the specified 30 second duration;
-* optimal number of VUs to achieve the desired iteration rate is adjusted during test execution; actual ended up as 17 VUs;
-* total iterations will vary slightly; expected to be ~900 iterations (`30s * 30 iters/s`), actual for this test was 886 iterations.
+* starting with 2 VUs (as specified with `preAllocatedVUs`), k6 automatically adjusts the number of VUs to achieve the desired rate up to the `maxVUs`; for our test, this ended up as 17 VUs;
+* approximately 900 iterations are performed in total, `30s * 30 iters/s`.
+
+> As in our example, using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate as resources need to continually be allocated to achieve the rate.

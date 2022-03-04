@@ -71,6 +71,9 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* The number of VUs are ramped up/down linearly over a fixed duration within their respective stage;
-* the sum of each stage duration defines the overall 30 second test duration;
-* total iterations will vary; our example performed ~300 iterations.
+* We've defined 2 stages for a total test duration of 30 seconds;
+* stage 1 ramps _up_ VUs linearly from the `startVUs` of 0 to the target of 10 over a 20 second duration;
+* from the 10 VUs at the end of stage 1, stage 2 then ramps _down_ VUs linearly to the target of 0 over a 10 second duration;
+* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* as the number of VUs changes, the iteration rate directly correlates; each addition of a VU increases the rate by \~2 iters/s, whereas each subtraction of a VU reduces by \~2 iters/s;
+* our example performed ~300 iterations over the course of the test.
