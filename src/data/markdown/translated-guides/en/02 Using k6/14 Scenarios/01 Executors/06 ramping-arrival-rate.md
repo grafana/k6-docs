@@ -31,7 +31,7 @@ would like to ramp the number of iterations up or down during specific periods o
 
 ## Examples
 
-In this example, we'll execute a variable RPS test, starting at 50, ramping up to 200 and then back to 0, over a period of 1 minute.
+In this example, we'll run a two-stage test, ramping up the iteration rate from 10 to 70 iterations per second over a 20 second period, then down to 30 iterations per second over a 10 second period.
 
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -43,13 +43,13 @@ export const options = {
   scenarios: {
     contacts: {
       executor: 'ramping-arrival-rate',
-      startRate: 50,
+      startRate: 10,
       timeUnit: '1s',
-      preAllocatedVUs: 50,
-      maxVUs: 100,
+      preAllocatedVUs: 2,
+      maxVUs: 50,
       stages: [
-        { target: 200, duration: '30s' },
-        { target: 0, duration: '30s' },
+        { target: 70, duration: '20s' },
+        { target: 30, duration: '10s' },
       ],
     },
   },
@@ -61,3 +61,17 @@ export default function () {
 ```
 
 </CodeGroup>
+
+## Observations
+
+The following graph depicts the performance of the [example](#example) script:
+
+![Ramping Arrival Rate](./images/ramping-arrival-rate.png)
+
+Based upon our test scenario inputs and results:
+
+* We've defined 2 stages for a total test duration of 30 seconds;
+* stage 1 ramps _up_ the iteration rate linearly from the `startRate` of 10 iters/s, to the target of 70 iters/s over a 20 second duration;
+* from the 70 iters/s at the end of stage 1, stage 2 then ramps _down_ the iteration rate linearly to the target rate of 30 iters/s over a 10 second duration;
+* changes to the iteration rate are performed by k6 adjusting the number of VUs as necessary from `preAllocatedVUs` to a maximum of `maxVUs`;
+* our example performed ~1,300 iterations over the course of the test.
