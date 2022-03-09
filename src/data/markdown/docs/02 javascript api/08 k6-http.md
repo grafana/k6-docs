@@ -12,6 +12,7 @@ The k6/http module contains functionality for performing HTTP transactions.
 | [del( url, [body], [params] )](/javascript-api/k6-http/del-url-body-params)  | Issue an HTTP DELETE request. |
 | [file( data, [filename], [contentType] )](/javascript-api/k6-http/file-data-filename-contenttype)  | Create a file object that is used for building multi-part requests. |
 | [get( url, [params] )](/javascript-api/k6-http/get-url-params)  | Issue an HTTP GET request. |
+| [head( url, [params] )](/javascript-api/k6-http/head-url-params)  | Issue an HTTP HEAD request. |
 | [options( url, [body], [params] )](/javascript-api/k6-http/options-url-body-params)  | Issue an HTTP OPTIONS request. |
 | [patch( url, [body], [params] )](/javascript-api/k6-http/patch-url-body-params)  | Issue an HTTP PATCH request. |
 | [post( url, [body], [params] )](/javascript-api/k6-http/post-url-body-params)  | Issue an HTTP POST request. |
