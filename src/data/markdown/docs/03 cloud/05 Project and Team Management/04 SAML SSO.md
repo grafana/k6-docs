@@ -33,22 +33,26 @@ To setup SAML SSO for your organization, some requirements should be satisfied a
 > ⚠️ __Invite users via k6 Cloud web app doesn't work with SAML SSO__
 >
 > Once SAML SSO is enabled on the k6 Cloud for your organization, you must not invite team members through the k6 Cloud web app, rather they should use these following methods to be provisioned and to sign in:
-> 
+>
 > - Username/password and SAML SSO (mixed):<br/>
 >   This is limited to the owner and the users created in advance via invitation with username/password.
 > - SAML SSO:<br/>
 >   All new users should be solely created via SAML SSO provisioning.
 >
 > 💡 __What is SAML SSO provisioning?__
-> 
+>
 > SAML SSO provisioning is the first time a user signs in to k6 Cloud web app via SAML SSO from their IdP dashboard. This process causes the user to be created, joined to its organization and assigned to the default project(s). After this process the user can use IdP- and SP-initiated SAML SSO.
 
 ## Supported IdPs
 
-Currently the following IdPs are supported and setup instructions for each of them are provided on their own page.
+Currently the following IdPs are tested and supported. The setup instructions for each of them are provided on their own page.
 
-* [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad)
-* [Okta](/cloud/project-and-team-management/saml-sso/okta)
+- [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad)
+- [Okta](/cloud/project-and-team-management/saml-sso/okta)
+
+## Unsupported IdPs
+
+[Auth0](https://auth0.com/) is tested, but not supported, because it can't map [custom attributes](https://community.auth0.com/t/adding-custom-saml-attribute-when-auth0-is-idp/45691) in assertions.
 
 ## Assigning default project(s) to newly provisioned users
 
