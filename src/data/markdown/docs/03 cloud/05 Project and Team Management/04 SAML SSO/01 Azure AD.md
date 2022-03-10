@@ -16,27 +16,27 @@ To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:
 
 ## Configuration
 
-1.  Navigate to [https://portal.azure.com/](https://portal.azure.com/).
+1. Navigate to [https://portal.azure.com/](https://portal.azure.com/).
 
-2.  Log in to Azure and go to **"Azure Active Directory"** tab.
+2. Log in to Azure and go to **"Azure Active Directory"** tab.
 
-3.  Select the **"Enterprise applications"** service.
+3. Select the **"Enterprise applications"** service.
 
-4.  Click on the **"New application"** button.
+4. Click on the **"New application"** button.
 
-5.  Select **"Non-gallery application"**.
+5. Select **"Non-gallery application"**.
 
     ![Azure AD New Application Type](images/01-Azure-AD/azure-ad-new-application-type.png)
 
-6.  Give the application a name, e.g. **k6 Cloud**.
+6. Give the application a name, e.g. **k6 Cloud**.
 
-7.  Click **"Add"**.
+7. Click **"Add"**.
 
-8.  When your application has successfully been added, click **"Set up single sign on"** (or the equivalent "Single sign-on" link in the left menu):
+8. When your application has successfully been added, click **"Set up single sign on"** (or the equivalent "Single sign-on" link in the left menu):
 
     ![Azure AD Setup Single Sign-On](images/01-Azure-AD/azure-ad-setup-single-sign-on.png)
 
-9.  Click **"SAML"** to enable it:
+9. Click **"SAML"** to enable it:
 
     ![Azure AD Enable SAML](images/01-Azure-AD/azure-ad-enable-saml.png)
 
