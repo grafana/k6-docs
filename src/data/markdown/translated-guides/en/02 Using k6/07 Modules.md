@@ -366,7 +366,7 @@ To run index.js and make the modules available for import we execute the followi
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ docker run -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
+$ docker run --rm -v /home/k6/example/src:/src -i grafana/k6 run /src/index.js
 ```
 
 </CodeGroup>

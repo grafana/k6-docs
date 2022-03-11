@@ -22,7 +22,7 @@ Run the New Relic integration as a Docker container with this command:
 <CodeGroup labels={[""]}>
 
 ```bash
-docker run \
+docker run --rm \
   -d --restart unless-stopped \
   --name newrelic-statsd \
   -h $(hostname) \

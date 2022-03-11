@@ -14,7 +14,7 @@ Below are some examples on how to utilize the token to authenticate.
 
 > #### Docker Users
 >
-> If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 Cloud API authentication information is stored to is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag, e.g. `docker run -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json`.
+> If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 Cloud API authentication information is stored to is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag, e.g. `docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json`.
 
 > #### Integrating with CI
 >
