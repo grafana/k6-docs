@@ -70,3 +70,17 @@ As you can see below, the default project is already selected:
 3. From the drop-down you can choose the default project(s) newly provisioned users will be assigned, then click on update button:
 ![SAML SSO update default projects](images/04-SAML-SSO/saml-sso-update-default-project.png)
 4. Now the users assigned to the IdP application can sign in to k6 Cloud and they'll be automatically added to the specified project(s) in step 3 with __project read/write__ permissions.
+
+## Fine-grained users to projects assignment using teams
+
+For automatic assignment of users to the projects on k6 Cloud, you can make use of the teams feature. With teams you can map groups on [Okta](/cloud/project-and-team-management/saml-sso/okta) or [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) with your desired projects on k6 Cloud.
+
+Setting up teams has two steps:
+
+1. The IdP organization admin (customer) needs to create groups and join users to those groups. Then they should assign those groups to the `k6 Cloud` application for access. Next they should update attribute statement on the said application to relay the group name in the call to our platform upon sign-in.
+2. Your point of contact in our Customer Success team needs to create multiple custom entries that match the attribute name and group names as values. You need to provide group names (on [Okta](/cloud/project-and-team-management/saml-sso/okta#teams-setup)) or  the object ids of the groups (on [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad#teams-setup)) and the list of projects (on k6 Cloud) that you want to map users to to your point of contact.
+
+Each IdP platform has its own instructions for setting up groups, which are provided in their corresponding documentation:
+
+- [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad#teams-setup)
+- [Okta](/cloud/project-and-team-management/saml-sso/okta#teams-setup)
