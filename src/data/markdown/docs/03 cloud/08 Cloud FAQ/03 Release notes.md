@@ -4,6 +4,9 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.3.1.internal `(2022-3-14)`
+- [SAML SSO](/cloud/project-and-team-management/saml-sso/#auto-assigning-your-internal-teams-to-k6-projects) can automatically assign team members to one or multiple projects.
+
 ### v3.3.1 `(2022-3-2)`
 - Fix: allow creating tests using [TestBuilder](/test-authoring/test-builder/) without an active subscription.
 
