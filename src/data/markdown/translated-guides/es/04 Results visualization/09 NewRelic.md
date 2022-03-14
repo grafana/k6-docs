@@ -23,7 +23,7 @@ Ejecute la integración de New Relic como un contenedor Docker con el siguiente 
 <CodeGroup labels={[""]}>
 
 ```bash
-docker run \
+docker run --rm \
   -d --restart unless-stopped \
   --name newrelic-statsd \
   -h $(hostname) \

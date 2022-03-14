@@ -53,7 +53,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
    # Note the difference in specifying the `K6_CLOUD_TOKEN` environment variable
    # using the `docker run -e` option.
 
-   $ docker run -i -e K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> grafana/k6 cloud - <script.js
+   $ docker run --rm -i -e K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> grafana/k6 cloud - <script.js
 
    # When passing the script via stdin there is no way for the containerized k6 process
 
@@ -77,7 +77,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    # b) mount the local filesystem as a Docker volume:
 
-   $ docker run -i -e ... -v "$PWD/script.js:/script.js" grafana/k6 cloud /script.js
+   $ docker run --rm -i -e ... -v "$PWD/script.js:/script.js" grafana/k6 cloud /script.js
    ```
 
    </CodeGroup>

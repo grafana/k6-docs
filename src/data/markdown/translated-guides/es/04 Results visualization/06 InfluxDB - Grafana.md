@@ -38,7 +38,7 @@ $ k6 run --out influxdb=http://localhost:8086/myk6db script.js
 ```
 
 ```bash
-$ docker run -i grafana/k6 run --out influxdb=http://localhost:8086/myk6db - <script.js
+$ docker run --rm -i grafana/k6 run --out influxdb=http://localhost:8086/myk6db - <script.js
 ```
 
 </CodeGroup>

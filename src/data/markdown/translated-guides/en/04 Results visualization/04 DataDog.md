@@ -23,7 +23,7 @@ Run the Datadog Agent service as a Docker container with this command:
 
 ```bash
 DOCKER_CONTENT_TRUST=1 \
-docker run -d \
+docker run --rm -d \
     --name datadog \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     -v /proc/:/host/proc/:ro \
