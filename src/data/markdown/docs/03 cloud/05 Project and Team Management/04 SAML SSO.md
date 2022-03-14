@@ -71,14 +71,17 @@ As you can see below, the default project is already selected:
 ![SAML SSO update default projects](images/04-SAML-SSO/saml-sso-update-default-project.png)
 4. Now the users assigned to the IdP application can sign in to k6 Cloud and they'll be automatically added to the specified project(s) in step 3 with __project read/write__ permissions.
 
-## Fine-grained users to projects assignment using teams
+## Auto-assigning your internal teams to k6 projects
 
-For automatic assignment of users to the projects on k6 Cloud, you can make use of the teams feature. With teams you can map groups on [Okta](/cloud/project-and-team-management/saml-sso/okta) or [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) with your desired projects on k6 Cloud.
+The _Teams_ feature allows you to automatically assign all members of your internal teams (aka. [Okta](/cloud/project-and-team-management/saml-sso/okta) and [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) groups) to one or more [k6 Cloud projects](/cloud/project-and-team-management/projects/).
 
 Setting up teams has two steps:
 
-1. The IdP organization admin (customer) needs to create groups and join users to those groups. Then they should assign those groups to the `k6 Cloud` application for access. Next they should update attribute statement on the said application to relay the group name in the call to our platform upon sign-in.
-2. Your point of contact in our Customer Success team needs to create multiple custom entries that match the attribute name and group names as values. You need to provide group names (on [Okta](/cloud/project-and-team-management/saml-sso/okta#teams-setup)) or  the object ids of the groups (on [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad#teams-setup)) and the list of projects (on k6 Cloud) that you want to map users to your point of contact.
+1. You, or whomever is the IdP organization admin, should organize your internal teams into Okta/Azure _groups_. Make sure to give those groups access to the `k6 Cloud` application. Next they should update attribute statement on the said application to relay the group name in the call to our platform upon sign-in.
+2. Since mapping your teams to k6 projects is currently a manual process, you need to reach out to us via the Customer Success team for further setup. We will ask you for:
+
+- The Azure/Okta groups (or group ids).
+- To which k6 project ids you want to map each group (or group id).
 
 Each IdP platform has its own instructions for setting up groups, which are provided in their corresponding documentation:
 
