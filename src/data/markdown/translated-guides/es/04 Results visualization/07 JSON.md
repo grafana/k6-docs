@@ -27,7 +27,7 @@ O si quieres obtener el resultado comprimido, puede ejecutar el siguiente comand
 <CodeGroup labels={["CLI", "Docker"]}>
 
 ```bash
-$ k6 run --rm --out json=my_test_result.gz script.js
+$ k6 run --out json=my_test_result.gz script.js
 ```
 
 ```bash
