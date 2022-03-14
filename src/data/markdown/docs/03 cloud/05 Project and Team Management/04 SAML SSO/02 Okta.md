@@ -31,8 +31,25 @@ To setup Okta SAML SSO based authentication to k6 Cloud you must have:
 ![k6 Cloud application token](images/02-Okta/okta-k6-cloud-app-token.png)
 8. Now go to Assignments tab and assign the app to the users:
 ![k6 Cloud application assignments](images/02-Okta/okta-k6-cloud-app-assignments.png)
-9. The app will appear on the users' dashboard and when they click on the app icon, they will be redirected to k6 Cloud app and will be provisioned the first time or signed in the second time on. Upon provisioning, they will be automatically assigned to the default project(s) with __project read/write__ permissions.
+9. The app will appear on the users' dashboard and when they click on the app icon, they will be redirected to k6 Cloud app and will be provisioned the first time or signed in the second time on. Upon provisioning, they will be automatically assigned to the default project(s) with **project read/write** permissions.
 ![Okta user dashboard](images/02-Okta/okta-user-dashboard.png)
+
+## Teams setup
+
+Take the following steps to enable mapping of Okta groups with k6 Cloud projects:
+
+1. Go to **Directory** -> **Groups** and click on the **Add Group** button. Enter **Engineering** in the name field and hit **Save**.
+By default, all the people, aka. accounts, are added to the **Everyone** group, but you can create as many groups as you want and assign people to those groups. We'll need the group name later. Let's create an **Engineering** group and add some accounts. If you want to map multiple groups, you need to add a prefix, like **MyOrg_Engineering**, to the group name to be partially matched in step 4 with the **Contains** filter.
+    ![Okta add group](images/02-Okta/okta-add-group.png)
+2. Click on the **Engineering** group and click on the **Assign People** button. You can add as many users as you want to this group on a new page. After adding them, hit **Save**.
+3. You have two ways to assign these groups to the **k6 Cloud** application. Both do the same thing.
+   1. On the group page, you can click on the **Applications** tab and then click on the **Assign applications** button.
+   2. Go to **Applications** -> **Applications** and click on your **k6 Cloud** application. On the **Assignments** tab, you can click on the **Assign** dropdown button and choose **Assign to Groups**.
+4. Go to the **Sign On** tab on your **k6 Cloud** application. In **Settings**, click the **Edit** button on the top right corner of the settings frame.
+5. In the **SAML 2.0** frame, click on the tiny dropdown button called **Attributes (Optional)**. In the **Group Attribute Statements (optional)**, enter **team** (or **group**) in the name box, choose **Basic** as the name format and type in **Engineering** in the filter input box after choosing the **Equals** filter from the dropdown. Then hit **Save** at the bottom of the form. If you want to include multiple groups, choose the **Contains** filter and use prefixes for your group names, like **MyOrg_**, so it can match multiple groups.
+    ![Okta team setup](images/02-Okta/okta-team.png)
+6. Many groups can be added to the same **k6 Cloud** application on Okta, but the users will end up in their projects in k6 Cloud based on their group name. Joining users to the project(s) only happens on provisioning.
+7. Inform your point of contact of the exact group names (plus prefixes) and the list of projects on k6 Cloud you want the users from those groups to land on.
 
 ## See also
 
