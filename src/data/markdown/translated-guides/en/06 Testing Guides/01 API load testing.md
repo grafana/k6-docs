@@ -159,7 +159,9 @@ Postman is a good and easy to use tool for API testing. It can group requests in
 
 **OpenAPI-Generator**
 
-Swagger/OpenAPI is a good way to design, document and test your APIs. We have built a new OpenAPI generator in the [openapi-generator](https://github.com/k6io/openapi-generator) project, that takes in the Swagger/OpenAPI specification in JSON/YAML format and generates pure idiomatic k6 script. It is really easy to use, and there are various ways to [install](https://github.com/OpenAPITools/openapi-generator#1---installation) and use it. In order to get an idea of how it works, please have a look at our [Load Testing Your API with Swagger/OpenAPI and k6](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6) blog post.
+Swagger/OpenAPI is a good way to design, document, and test your APIs.
+We have built a new OpenAPI generator in the [openapi-generator](https://openapi-generator.tech/docs/generators/k6/) project that takes in the Swagger/OpenAPI specification in JSON/YAML format and generates pure idiomatic k6 script.
+It is really easy to use, and there are multiple ways to [install](https://github.com/OpenAPITools/openapi-generator#1---installation) and use it. To get an idea of how it works, take a look at our [Load Testing Your API with Swagger/OpenAPI and k6](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6) blog post.
 
 ### Converters for proxy recorders
 

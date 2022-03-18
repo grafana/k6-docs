@@ -161,7 +161,8 @@ Postman es una herramienta fácil de usar para las pruebas de la APIs. Puede agr
 
 **OpenAPI-Generator**
 
-Swagger/OpenAPI es una buena manera de diseñar, documentar y probar tus APIs. Hemos construido un nuevo generador de OpenAPI en el proyecto [openapi-generator](https://github.com/k6io/openapi-generator), que toma la especificación Swagger/OpenAPI en formato JSON/YAML y genera un script de k6 puramente idiomático. Es realmente fácil de usar, y hay varias formas de instalarlo y utilizarlo. Para tener una idea de cómo funciona, puede consultar nuestra entrada del blog: [Pruebas de carga para las APIs con Swagger/OpenAPI y k6](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6).
+Swagger/OpenAPI es una buena manera de diseñar, documentar y probar tus APIs.
+Hemos construido un nuevo generador de OpenAPI en el proyecto [openapi-generator](https://openapi-generator.tech/docs/generators/k6), que toma la especificación Swagger/OpenAPI en formato JSON/YAML y genera un script de k6 puramente idiomático. Es realmente fácil de usar, y hay varias formas de instalarlo y utilizarlo. Para tener una idea de cómo funciona, puede consultar nuestra entrada del blog: [Pruebas de carga para las APIs con Swagger/OpenAPI y k6](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6).
 
 ### Convertidores para grabadores proxy
 
