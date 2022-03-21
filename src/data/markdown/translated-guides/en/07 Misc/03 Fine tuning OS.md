@@ -196,7 +196,7 @@ This will open a text editor inside your terminal window where you will be promp
 </plist>
 ```
 
-Pressing `Control + X` will save the changes and exit the editor. By pasting and saving this we have introduced two different limitations to your maxfiles limit. The first one (64000) is a soft limit, which if reached, will prompt your Mac to prepare to stop allowing new file opens but still let them open. If the second one is reached (524288), a hard limit, you will again start seeing your old friend, the 'too many files open' error message.
+Pressing `Control + X` will save the changes and exit the editor. By pasting and saving this we have introduced two different limitations to your maxfiles limit. The first one (64000) is a soft limit, which if reached, will prompt your Mac to prepare to stop allowing new file opens but still let them open. If the second one is reached (524288), a hard limit, you will again start seeing your old friend, the 'too many open files' error message.
 
 We will use the same procedure to increase the processes limit next.
 
