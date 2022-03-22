@@ -3,16 +3,6 @@ title: "xk6-browser"
 excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 while supporting core k6 features. It allows you to interact with real browsers and collect frontend metrics as part of your k6 tests."
 ---
 
-<Blockquote>
-  <p>
-    {' '}
-    <strong>🚧 xk6-browser is in public <CodeInline>beta</CodeInline></strong>
-  </p>
-  <p>
-    Announced during ObservabilityCON 2021 on Nov 9th. We are currently focusing on fixing bugs and stability issues. Test reliability is our top goal. You're likely to run into bugs and instability issues when running tests using xk6-browser, we encourage you to <a href="https://github.com/grafana/xk6-browser/">report any issues that you find on GitHub</a>.
-  </p>
-</Blockquote>
-
 [xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level scripting APIs to interact with real browsers and collect frontend metrics as part of your k6 tests.
 
 <CodeGroup labels={[]}>
