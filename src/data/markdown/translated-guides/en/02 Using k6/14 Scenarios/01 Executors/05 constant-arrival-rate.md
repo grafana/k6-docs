@@ -1,15 +1,16 @@
 ---
 title: 'Constant arrival rate'
-excerpt: 'A fixed number of iterations are executed in a specified period of time.'
+excerpt: 'A fixed number of iterations are started in a specified period of time.'
 ---
 
 ## Description
 
-A fixed number of iterations are executed in a specified period of time.
-Since iteration execution time can vary because of test logic or the
+A fixed number of iterations are started in a specified period of time.
+This executor will continue to start iterations at the given rate as long as there are VUs
+available to run them. Since iteration execution time can vary because of test logic or the
 system-under-test responding more slowly, this executor will try to compensate
 by running a variable number of VUs&mdash;including potentially initializing more in the middle
-of the test&mdash;in order to meet the configured iteration rate. This approach is
+of the test&mdash;to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
 
 See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
@@ -22,8 +23,8 @@ also adds the following options:
 | Option             | Type    | Description                                                                             | Default |
 | ------------------ | ------- | --------------------------------------------------------------------------------------- | ------- |
 | duration<sup>(required)</sup>        | string  | Total scenario duration (excluding `gracefulStop`).                                     | -       |
-| rate<sup>(required)</sup>            | integer | Number of iterations to execute each `timeUnit` period.                                 | -       |
-| preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start in order to preserve runtime resources. | -       |
+| rate<sup>(required)</sup>            | integer | Number of iterations to start during each `timeUnit` period.                                 | -       |
+| preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start to preserve runtime resources. | -       |
 | timeUnit         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
 | maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
 
@@ -34,7 +35,7 @@ performance of the system under test.
 
 ## Examples
 
-In this example, we'll execute a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
+In this example, we'll start a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
 
 <CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -47,10 +48,22 @@ export const options = {
   scenarios: {
     contacts: {
       executor: 'constant-arrival-rate',
-      rate: 30,
-      timeUnit: '1s',
+
+      // Our test should last 30 seconds in total
       duration: '30s',
+
+      // It should start 30 iterations per `timeUnit`. Note that iterations starting points
+      // will be evenly spread across the `timeUnit` period.
+      rate: 30,
+
+      // It should start `rate` iterations per second
+      timeUnit: '1s',
+
+      // It should preallocate 2 VUs before starting the test
       preAllocatedVUs: 2,
+
+      // It is allowed to spin up to 50 maximum VUs in order to sustain the defined
+      // constant arrival rate.
       maxVUs: 50,
     },
   },
@@ -78,9 +91,9 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* The desired rate of 30 iterations every 1 second is achieved and maintained for the majority of the test;
-* test scenario runs for the specified 30 second duration;
-* starting with 2 VUs (as specified with `preAllocatedVUs`), k6 automatically adjusts the number of VUs to achieve the desired rate up to the `maxVUs`; for our test, this ended up as 17 VUs;
-* approximately 900 iterations are performed in total, `30s * 30 iters/s`.
+* The desired rate of 30 iterations started every 1 second is achieved and maintained for the majority of the test.
+* The test scenario runs for the specified 30 second duration.
+* Having started with 2 VUs (as specified by the `preAllocatedVUs` option), k6 automatically adjusts the number of VUs to achieve the desired rate, up to the `maxVUs`; for our test, this ended up as 17 VUs.
+* Exactly 900 iterations are started in total, `30s * 30 iters/s`.
 
-> As in our example, using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate as resources need to continually be allocated to achieve the rate.
+> As in our example, using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate, as resources need to continually be allocated to achieve the rate.
