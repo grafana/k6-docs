@@ -42,7 +42,7 @@ If you use the [Chocolatey package manager](https://chocolatey.org/) you can ins
 choco install k6
 ```
 
-or if you use the [Windows Package Manager](https://github.com/microsoft/winget-cli) you can install the official packages from the k6 manifests [(created by the community)](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/k6/k6) with:  
+or if you use the [Windows Package Manager](https://github.com/microsoft/winget-cli) you can install the official packages from the k6 manifests [(created by the community)](https://github.com/microsoft/winget-pkgs/tree/master/manifests/k/k6/k6) with:
 
 ```
 winget install k6
@@ -65,6 +65,6 @@ and place it in your `PATH` to run `k6` from any location.
 
 If you use one or more [k6 extensions](/extensions), you need a k6 binary built with your desired extension/s. Head over to the [bundle builder page](/extensions/bundle-builder/) to get started.
 
-## Troubleshooting 
+## Troubleshooting
 
 If the installation fails, check the [list of common installation issues](/getting-started/installation/troubleshooting/).

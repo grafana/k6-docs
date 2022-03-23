@@ -1,12 +1,21 @@
 ---
 title: 'Running k6'
-excerpt: 'Start running a simple local test. Check out the basic load options or execution modes.'
+excerpt: 'Follow this tutorial to learn how to run a test, add Virtual Users, increase the tests time, and customize a script to ramp users up and down.'
 ---
+
+To get started quickly, open your terminal and follow along.
+You'll learn how to:
+
+1. Run a test script.
+1. Increase the number of virtual users and the test's duration.
+1. Ramp users up and down over the course of the test.
+1. Outsource the script to the cloud, directly from your CLI.
+
 
 ## Running local tests
 
-Let's start by running a simple local script. Copy the code below, paste it into your
-favourite editor, and save it as "script.js":
+Let's start by running a simple local script.
+Copy the code below, paste it into your favorite editor, and save it as `script.js`:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -22,7 +31,7 @@ export default function () {
 
 </CodeGroup>
 
-Then run k6 using this command:
+Then, run k6 with this command:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -48,7 +57,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 ## Adding more VUs
 
-Now we'll try running a load test with more than 1 virtual user and a slightly longer duration:
+Now we'll try running a load test with more than one virtual user and a slightly longer duration:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -68,12 +77,14 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30
 
 _Running a 30-second, 10-VU load test_
 
-k6 works with the concept of virtual users (VUs), which run scripts - they're essentially
-glorified, parallel `while(true)` loops. Scripts are written using JavaScript, as ES6 modules,
-which allows you to break larger tests into smaller pieces, or make reusable pieces as you like.
+k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
+VUs are essentially
+glorified, parallel `while(true)` loops.
+Scripts are written using JavaScript, as ES6 modules,
+which allows you to break larger tests into smaller pieces or make reusable pieces as you like.
 
-Scripts must contain, at the very least, a `default` function - this defines the entry point for
-your VUs, similar to the `main()` function in many other languages:
+Scripts must contain, at the very least, a `default` function.
+This function defines the entry point for your VUs, similar to the `main()` function in many other languages:
 
 <CodeGroup labels={[]}>
 
@@ -87,11 +98,12 @@ export default function () {
 
 ### The init context and the default function
 
-"Why not just run my script normally, from top to bottom", you might ask - the answer is: we do,
-but code inside and outside your default function can do different things.
+You might ask: "Why not just run my script normally, from top to bottom?"  The answer is: we do, but code inside and outside your default function can do different things.
 
-Code _inside_ `default` is called "VU code", and is run over and over for as long as the test is
-running. Code _outside_ of it is called "init code", and is run only once per VU.
+Code _inside_ `default` is called *VU code*.
+It runs over and over for as long as the test is running.
+Code _outside_ of `default` is called *init code*.
+It is run only once per VU.
 
 <CodeGroup labels={[""]}>
 
@@ -106,15 +118,16 @@ export default function () {
 </CodeGroup>
 
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
-to do - with a few important exceptions: you can't load anything from your local filesystem, or
-import any other modules. This all has to be done from init-code.
+to do&mdash;with a few important exceptions: you can't load anything from your local filesystem, or
+import any other modules.
+Instead, do these from init-code.
 
 Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
 ## Using options
 
-If you want to avoid having to type `--vus 10` and `--duration 30s` all the time, you can include
-those settings inside your JavaScript file also:
+To avoid typing `--vus 10` and `--duration 30s` each time you run the script,
+you can include the options in your JavaScript file:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -133,7 +146,7 @@ export default function () {
 
 </CodeGroup>
 
-Then you just run the script without those parameters on the command line:
+Then, you can run the script without those options on the command line:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -153,8 +166,9 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 ## Stages: ramping up/down VUs
 
-You can also have the VU level ramp up and down during the test. The `options.stages` property
-allows you to configure ramping behaviour.
+You can also ramp the number of VUs up and down during the test.
+To configure ramping, use the `options.stages` property.
+
 
 <CodeGroup labels={["stages.js"]} lineNumbers={[true]}>
 
@@ -190,9 +204,11 @@ k6 supports three execution modes to run your k6 tests:
 - [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
 - Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/grafana/k6/issues/140).
 
-One of the goals with k6 is to support running a test in the three execution modes without making modifications to the script.
+One of the goals of k6 is to support running a test in the three execution modes without making modifications to the script.
 
-For running cloud tests from the CLI, you must first register a k6 Cloud account and then log into your account via the CLI. Then, you only have to pass your existing script to the `k6 cloud` command.
+To run cloud tests from the CLI, you must first register a k6 Cloud account.
+Then log in to your account via the CLI.
+After that, you have to pass only your existing script to the `k6 cloud` command.
 
 <CodeGroup labels={["Running a cloud test"]}>
 
@@ -202,4 +218,3 @@ $ k6 cloud script.js
 
 </CodeGroup>
 
-For detailed instructions and the different options, read more on [running cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).

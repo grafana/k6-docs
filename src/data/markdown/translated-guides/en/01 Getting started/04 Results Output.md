@@ -3,9 +3,18 @@ title: 'Results output'
 excerpt: 'k6 run has two different ways of showing the results of a load test. By default, we show an aggregated summary report at the end of the test. k6 also supports streaming the raw metric values to one or more external outputs.'
 ---
 
-`k6 run` has two different ways of showing the results of a load test. By default, we show an [aggregated summary report](/getting-started/results-output#end-of-test-summary-report) at the end of the test. This report is [customizable](/results-visualization/end-of-test-summary#handlesummary-callback), but by default features a general overview of all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks) and [thresholds](/using-k6/thresholds) in the load test, as well as aggregated values for all [built-in](/using-k6/metrics#built-in-metrics) and [custom](/using-k6/metrics#custom-metrics) metrics used in the test run.
+`k6 run` can show load-test results in two ways.
 
-If the aggregated metric measurements are not enough and something more fine-grained is needed, k6 also supports streaming the raw metric values to one or more external outputs (e.g. [InfluxDB](/results-visualization/influxdb-+-grafana), [Kafka](/results-visualization/apache-kafka), [StatsD](/results-visualization/statsd), etc.) while the test is running. The raw results can also be sent to our managed [k6 cloud](/results-visualization/cloud) service (e.g. when you want to test an environment behind a firewall) and they can be exported as a [CSV](/results-visualization/csv) or [JSON](/results-visualization/json) file for later processing. All [supported built-in outputs are listed below](/getting-started/results-output#external-outputs).
+By default, the command outputs an [aggregated summary report](/getting-started/results-output#end-of-test-summary-report) at the end of the test.
+You can [customize the contents of the report](/results-visualization/end-of-test-summary#handlesummary-callback).
+By default, it presents a general overview of all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks), and [thresholds](/using-k6/thresholds) in the load test.
+It also shows aggregated values for all the test's [built-in](/using-k6/metrics#built-in-metrics) and [custom](/using-k6/metrics#custom-metrics) metrics.
+
+If the aggregated metric measurements are not enough and something more fine-grained is needed, k6 also supports streaming the raw metric values to one or more external outputs (e.g. [InfluxDB](/results-visualization/influxdb-+-grafana), [Kafka](/results-visualization/apache-kafka), [StatsD](/results-visualization/statsd), etc.) while the test is running.
+You can also send the raw results to our managed [k6 cloud](/results-visualization/cloud) service (e.g. when you want to test an environment behind a firewall).
+These results can be exported as a [CSV](/results-visualization/csv) or [JSON](/results-visualization/json) file for later processing.
+
+The "External outputs" section lists [all supported built-in outputs](/getting-started/results-output#external-outputs).
 
 ## Standard output
 
@@ -131,9 +140,9 @@ The available built-in outputs currently are:
   - [JSON](/results-visualization/json)
   - [Netdata](/results-visualization/netdata)
   - [New Relic](/results-visualization/new-relic)
-  - [Prometheus](/results-visualization/prometheus) 
-  - [TimescaleDB](/results-visualization/timescaledb) 
-  - [StatsD](/results-visualization/statsd) 
+  - [Prometheus](/results-visualization/prometheus)
+  - [TimescaleDB](/results-visualization/timescaledb)
+  - [StatsD](/results-visualization/statsd)
 
 </Glossary>
 
