@@ -1,16 +1,11 @@
 ---
 title: 'Running k6'
-excerpt: 'Follow this tutorial to learn how to run a test, add Virtual Users, increase the tests time, and customize a script to ramp users up and down.'
+excerpt: 'Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.'
 ---
 
-To get started quickly, open your terminal and follow along.
-You'll learn how to:
+Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.
 
-1. Run a test script.
-1. Increase the number of virtual users and the test's duration.
-1. Ramp users up and down over the course of the test.
-1. Outsource the script to the cloud, directly from your CLI.
-
+You can also run the same tests on our cloud servers, directly from your terminal.
 
 ## Running local tests
 
