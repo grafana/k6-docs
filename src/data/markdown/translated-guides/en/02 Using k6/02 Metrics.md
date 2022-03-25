@@ -3,11 +3,11 @@ title: 'Metrics'
 excerpt: 'This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.'
 ---
 
-This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.
+This section covers the important aspects of metrics management in k6:  what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.
 
 ## Built-in metrics
 
-The _built-in_ metrics are the ones you can see output to stdout when you run the simplest possible k6 test:
+The _built-in_ metrics are the ones that are output to stdout when you run the simplest possible k6 test:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -21,7 +21,7 @@ export default function () {
 
 </CodeGroup>
 
-Running the above script will output something like below:
+Running the preceding script outputs something like this:
 
 <CodeGroup labels={["output"]} lineNumbers={[false]}>
 
@@ -65,9 +65,9 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 
 </CodeGroup>
 
-All the `http_req_...` lines and the ones after them are _built-in_ metrics that get written to stdout at the end of a test.
+In the preceding output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
 
-The following _built-in_ metrics will **always** be collected by k6:
+k6 always collects the following built-in metrics:
 
 | Metric Name | Type | Description |
 | ----------- | ---- | ----------- |
@@ -83,7 +83,7 @@ The following _built-in_ metrics will **always** be collected by k6:
 
 ## HTTP-specific built-in metrics
 
-_built-in_ metrics will only be generated when/if HTTP requests are made:
+These metrics are generated only when the test makes HTTP requests.
 
 | Metric Name                          | Type    | Description                                                                                                                                                                                                                                  |
 | ------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -122,7 +122,7 @@ export default function () {
 
 </CodeGroup>
 
-Below is the expected (partial) output:
+The expected (partial) output looks like this:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -136,7 +136,8 @@ $ k6 run script.js
 
 ## Custom metrics
 
-You can also create your own metrics, that are reported at the end of a load test, just like HTTP timings:
+You can also create custom metrics.
+They will be reported at the end of a load test, just like HTTP timings:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -155,9 +156,10 @@ export default function () {
 
 </CodeGroup>
 
-The above code will create a Trend metric named “waiting_time” and referred to in the code using the variable name `myTrend`.
+The preceding code creates a Trend metric called `waiting_time`.
+In the code, it's referred to with the variable name `myTrend`.
 
-Custom metrics will be reported at the end of a test. Here is how the output might look:
+Custom metrics are reported at the end of a test. Here is how the output might look:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -177,7 +179,7 @@ $ k6 run script.js
 
 ## Metric types
 
-All metrics (both the _built-in_ ones and the custom ones) have a type. The four different metric types in k6 are:
+All metrics (both built-in and custom) have a _type_. The four different metric types in k6 are:
 
 | Metric type                                   | Description                                                                                              |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -186,7 +188,8 @@ All metrics (both the _built-in_ ones and the custom ones) have a type. The four
 | [Rate](/javascript-api/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
 | [Trend](/javascript-api/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |
 
-All values added to a custom metric can optionally be [tagged](/using-k6/tags-and-groups) which can be useful when analysing the test results.
+You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
+This can be useful when analyzing test results.
 
 ### Counter _(cumulative metric)_
 
@@ -205,7 +208,7 @@ export default function () {
 
 </CodeGroup>
 
-The above code will generate the following output:
+The preceding code generates something like the following output:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -220,9 +223,11 @@ $ k6 run script.js
 
 </CodeGroup>
 
-The value of `my_counter` will be 3 (if you run it one single iteration - i.e. without specifying --iterations or --duration).
+The value of `my_counter` will be 3 (if you run it for one single iteration - i.e. without specifying `--iterations` or `--duration`).
 
-Note that there is currently no way of accessing the value of any custom metric from within JavaScript. Note also that counters that have value zero (`0`) at the end of a test are a special case - they will **NOT** be printed to the stdout summary.
+Note that there is currently no way to access the value of any custom metric from within JavaScript.
+Note also that counters that have a value of zero (`0`) at the end of a test are a special case.
+They will _NOT_ print to the stdout summary.
 
 ### Gauge _(keep the latest value only)_
 
@@ -242,7 +247,7 @@ export default function () {
 
 </CodeGroup>
 
-The above code will result in an output like this:
+The preceding code results in output like this:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -257,7 +262,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-The value of `my_gauge` will be 2 at the end of the test. As with the Counter metric above, a Gauge with value zero (`0`) will **NOT** be printed to the stdout summary at the end of the test.
+The value of `my_gauge` will be 2 at the end of the test. As with the Counter metric, a Gauge with value zero (`0`) will **NOT** be printed to the stdout summary at the end of the test.
 
 ### Trend _(collect trend statistics (min/max/avg/percentiles) for a series of values)_
 
@@ -276,7 +281,7 @@ export default function () {
 
 </CodeGroup>
 
-The above code will make k6 print output like this:
+The preceding code outputs something like this:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -291,8 +296,8 @@ $ k6 run script.js
 
 </CodeGroup>
 
-A trend metric is a container that holds a set of sample values, and which we can ask to output statistics (min, max, average, median or percentiles) about those samples.
-By default, k6 will print average, min, max, median, 90th percentile, and 95th percentile.
+A _trend metric_ is a container that holds a set of sample values, and which we can ask to output statistics (min, max, average, median or percentiles) about those samples.
+By default, k6 prints `average`, `min`, `max`, `median`, `90th percentile`, and `95th percentile`.
 
 ### Rate _(keeps track of the percentage of values in a series that are non-zero)_
 
@@ -313,7 +318,7 @@ export default function () {
 
 </CodeGroup>
 
-The above code will make k6 print output like this:
+The preceding code outputs something like this:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -333,13 +338,15 @@ added to the metric were non-zero.
 
 ### Notes
 
-- custom metrics are only collected from VU threads at the end of a VU iteration, which means that
-  for long-running scripts, you may not see any custom metrics until a while into the test.
+- custom metrics are only collected from VU threads at the end of a VU iteration.
+  This means that for long-running scripts, you may not see any custom metrics until the test runs a while.
 
 ## Metric graphs in k6 Cloud Results
 
-If you use [k6 Cloud Results](/cloud/analyzing-results/overview), you have access to all test
-metrics within the [Analysis Tab](/cloud/analyzing-results/analysis-tab). You can use this tab to further analyze and
-compare test result data, to look for meaningful correlations in your data.
+If you use [k6 Cloud Results](/cloud/analyzing-results/overview), you can access all test
+metrics within the [Analysis Tab](/cloud/analyzing-results/analysis-tab).
+You can use this tab to further analyze and compare test result data, to look for meaningful correlations in your data.
 
 ![k6 Cloud Analysis Tab](images/Metrics/cloud-insights-analysis-tab.png)
+
+
