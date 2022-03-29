@@ -182,6 +182,9 @@ export default function Integrations({
     browserRecorderImg,
     testBuilderImg,
     harImg,
+    steadybitImg,
+    k6Img,
+    chaostoolkitImg,
     postmanImg,
     swaggerImg,
     azureTestImg,
@@ -191,6 +194,39 @@ export default function Integrations({
     query stubImageQuery {
       azureTestImg: file(
         absolutePath: { regex: "/images/doc-integrations/azuretest/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      k6Img: file(
+        absolutePath: { regex: "/images/doc-integrations/k6squarelogo/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      chaostoolkitImg: file(
+        absolutePath: { regex: "/images/doc-integrations/chaostoolkit/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      steadybitImg: file(
+        absolutePath: { regex: "/images/doc-integrations/steadybit/" }
       ) {
         childImageSharp {
           gatsbyImageData(
@@ -410,6 +446,29 @@ export default function Integrations({
                   'By automating load testing with your CI / CD tools, you can quickly see when a code change has introduced a performance regression.'
                 }
                 iconsData={iconsDataSet2}
+              />
+              <ExternalLinksDashboard
+                dashboardTitle={'Chaos engineering'}
+                linksData={[
+                  {
+                    image: steadybitImg,
+                    title: 'Steadybit',
+                    description: 'Using k6 and Steadybit for chaos engineering',
+                    url: 'https://k6.io/blog/chaos-engineering-with-k6-and-steadybit',
+                  },
+                  {
+                    image: k6Img,
+                    title: 'xk6-chaos',
+                    description: 'A k6 extension to test k8s failures',
+                    url: 'https://github.com/grafana/xk6-chaos',
+                  },
+                  {
+                    image: chaostoolkitImg,
+                    title: 'ChaosToolkit',
+                    description: 'A collection of k6 actions and probes',
+                    url: 'http://chaostoolkit.org/drivers/k6/',
+                  },
+                ]}
               />
               <ExternalLinksDashboard
                 dashboardTitle={'Test management'}
