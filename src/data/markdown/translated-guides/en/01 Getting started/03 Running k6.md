@@ -3,9 +3,14 @@ title: 'Running k6'
 excerpt: 'Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.'
 ---
 
-Follow along to learn how to run a test, add virtual users, increase the test duration, and ramp the number of requests up and down as the test runs.
+Follow along to learn how to:
+1. Run a test.
+2. Add virtual users.
+3. Increase the test duration. 
+4. Ramp the number of requests up and down as the test runs.
 
-You can also run the same tests on our cloud servers, directly from your terminal.
+With these example snippets, you'll run the test with your machine's resources.
+But, if you have a cloud account, you can also use the `k6 cloud` command to outsource the test to our cloud servers. 
 
 ## Running local tests
 
@@ -52,7 +57,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 ## Adding more VUs
 
-Now we'll try running a load test with more than one virtual user and a slightly longer duration:
+Now let's run a load test with more than one virtual user and a longer duration:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -95,10 +100,10 @@ export default function () {
 
 You might ask: "Why not just run my script normally, from top to bottom?"  The answer is: we do, but code inside and outside your default function can do different things.
 
-Code _inside_ `default` is called *VU code*.
+Code _inside_ `default` is *VU code*.
 It runs over and over for as long as the test is running.
-Code _outside_ of `default` is called *init code*.
-It is run only once per VU.
+Code _outside_ of `default` is *init code*.
+It's run only once per VU.
 
 <CodeGroup labels={[""]}>
 
@@ -113,15 +118,18 @@ export default function () {
 </CodeGroup>
 
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
-to do&mdash;with a few important exceptions: you can't load anything from your local filesystem, or
-import any other modules.
+to do.
+There are a few important exceptions: you can't:
+* Load anything from your local filesystem
+* Import any other modules.
+
 Instead, do these from init-code.
 
 Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
 ## Using options
 
-To avoid typing `--vus 10` and `--duration 30s` each time you run the script,
+Instead of typing `--vus 10` and `--duration 30s` each time you run the script,
 you can include the options in your JavaScript file:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
@@ -141,7 +149,7 @@ export default function () {
 
 </CodeGroup>
 
-Then, you can run the script without those options on the command line:
+Then, run the script without those options on the command line:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -161,7 +169,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 ## Stages: ramping up/down VUs
 
-You can also ramp the number of VUs up and down during the test.
+You can ramp the number of VUs up and down during the test.
 To configure ramping, use the `options.stages` property.
 
 
@@ -188,22 +196,22 @@ export default function () {
 
 </CodeGroup>
 
-This can also be accomplished with more advanced configuration using
-[scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+To configure advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
 ## Running cloud tests
 
-k6 supports three execution modes to run your k6 tests:
+k6 supports three test-execution modes:
 
 - [Local](#running-local-tests): on your local machine or a CI server.
 - [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
 - Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/grafana/k6/issues/140).
 
-One of the goals of k6 is to support running a test in the three execution modes without making modifications to the script.
+k6 has a goal of letting you run a test in all three execution modes without modifying the script.
 
-To run cloud tests from the CLI, you must first register a k6 Cloud account.
-Then log in to your account via the CLI.
-After that, you have to pass only your existing script to the `k6 cloud` command.
+To run cloud tests from the CLI:
+1. Register a k6 Cloud account.
+2. Log in to your account via the CLI.
+3. Use the `k6 cloud` command to run the script you already have.
 
 <CodeGroup labels={["Running a cloud test"]}>
 
