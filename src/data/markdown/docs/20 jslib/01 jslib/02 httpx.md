@@ -55,7 +55,7 @@ This documentation is for the last version only. If you discover that some of th
 ```javascript
 import { fail } from 'k6';
 import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
-import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // random email address
 const PASSWORD = 'superCroc2021';

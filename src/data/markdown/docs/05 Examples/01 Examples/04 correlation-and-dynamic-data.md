@@ -119,7 +119,7 @@ The [jslib](/javascript-api/jslib/) [utils](/javascript-api/jslib/utils/) librar
 <CodeGroup labels={["extract-findBetween.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { findBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { findBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import { check } from 'k6';
 import http from 'k6/http';
 
