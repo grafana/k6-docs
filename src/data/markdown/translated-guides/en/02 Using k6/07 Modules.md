@@ -54,7 +54,7 @@ runtime, making it extremely important to **make sure the code is legit and trus
 it in a test script**.
 
 ```javascript
-import { randomItem } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 export default function () {
   randomItem();

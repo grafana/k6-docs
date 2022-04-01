@@ -18,10 +18,10 @@ export const options = {
   },
 };
 
-function randomString(length) {
-  const charset = 'abcdefghijklmnopqrstuvwxyz';
+function randomString(length, charset='') {
+  if (!charset) charset = 'abcdefghijklmnopqrstuvwxyz';
   let res = '';
-  while (length--) res += charset[(Math.random() * charset.length) | 0];
+  while (length--) res += charset[Math.random() * charset.length | 0];
   return res;
 }
 

@@ -46,7 +46,7 @@ export default function () {
 Se accede a estos módulos a través de HTTP(S), desde una fuente como el [k6 JSLib](#the-jslib-repository) o desde cualquier servidor web de acceso público. Los módulos importados serán descargados y ejecutados en tiempo de ejecución, por lo que es extremadamente importante asegurarse de que el código es legítimo y de confianza antes de incluirlo en un script de prueba.
 
 ```javascript
-import { randomItem } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 export default function () {
   randomItem();
