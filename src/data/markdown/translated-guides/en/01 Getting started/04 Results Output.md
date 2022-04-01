@@ -11,7 +11,7 @@ By default, when a test finishes, k6 provides an [_end-of-test summary report_](
 This report aggregates the test results, with information about all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks), and [thresholds](/using-k6/thresholds) in the load test.
 It also gives basic, summary statistics about each metric (e.g. mean, median, p95, etc).
 
-For fine-grained analysis, you can stream all the data that your test generates (e.g. all HTTP requests) to an __external output_.
+For fine-grained analysis, you can stream all the data that your test generates (e.g. all HTTP requests) to an _external output_.
 This output might be a structured file format, like CSV or JSON.
 But you could also stream to another program, like Datadog or Prometheus, or pipe results to our managed [k6 cloud](/result-visualization/cloud) service.
 The "External outputs" section lists [all supported built-in outputs](/getting-started/results-output#external-outputs).
