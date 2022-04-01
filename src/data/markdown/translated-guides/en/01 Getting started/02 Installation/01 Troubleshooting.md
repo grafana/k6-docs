@@ -6,7 +6,7 @@ excerpt: 'Instructions to fix the most common installation issues.'
 ## Distro lacks ca-certificates or gnupg2
 
 Some Linux distributions don't come bundled with the `ca-certificates` and `gnupg2` packages.
-If you use such a distribution, you'll need to install these packages:
+If you use such a distribution, you'll need to install them:
 
 ```bash
 sudo apt-get update && sudo apt-get install ca-certificates gnupg2 -y
