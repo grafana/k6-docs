@@ -309,7 +309,7 @@ export const Footer = () => {
       <div className={'container'}>
         <div className={'row'}>
           <div className={'col-md-2 col-sm-12 col-auto'}>
-            <p className={`${styles.text}`}>© 2021 Grafana Labs</p>
+            <p className={`${styles.text}`}>© 2022 Grafana Labs</p>
           </div>
           <div className={'col-md-10 col-sm-12 col-auto'}>
             <ul className={styles.legalLinksList}>
