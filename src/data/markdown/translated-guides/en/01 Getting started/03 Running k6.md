@@ -188,7 +188,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://httpbin.org/');
+  const res = http.get('https://httpbin.test.k6.io/');
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }

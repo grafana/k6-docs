@@ -106,7 +106,7 @@ Si desea acceder a la información de tiempo de una solicitud HTTP individual en
 import http from 'k6/http';
 
 export default function () {
-  const res = http.get('http://httpbin.org');
+  const res = http.get('http://httpbin.test.k6.io');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
 }
 ```
@@ -136,7 +136,7 @@ import { Trend } from 'k6/metrics';
 const myTrend = new Trend('waiting_time');
 
 export default function () {
-  const r = http.get('https://httpbin.org');
+  const r = http.get('https://httpbin.test.k6.io');
   myTrend.add(r.timings.waiting);
   console.log(myTrend.name); // waiting_time
 }

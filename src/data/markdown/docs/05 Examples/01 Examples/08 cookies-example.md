@@ -22,7 +22,7 @@ import { check, group } from 'k6';
 
 export default function () {
   // Since this request redirects the `res.cookies` property won't contain the cookies
-  const res = http.get('http://httpbin.org/cookies/set?name1=value1&name2=value2');
+  const res = http.get('http://httpbin.test.k6.io/cookies/set?name1=value1&name2=value2');
   check(res, {
     'status is 200': (r) => r.status === 200,
   });
@@ -94,8 +94,8 @@ export default function () {
   // that a request must match (domain, path, HTTPS or not etc.)
   // to have the cookie attached to it when sent to the server.
   const jar = http.cookieJar();
-  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
-    domain: 'httpbin.org',
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world', {
+    domain: 'httpbin.test.k6.io',
     path: '/cookies',
     secure: true,
     max_age: 600,
@@ -104,7 +104,7 @@ export default function () {
   // As the following request is matching the above cookie in terms of domain,
   // path, HTTPS (secure) and will happen within the specified "age" limit, the
   // cookie will be attached to this request.
-  const res = http.get('https://httpbin.org/cookies');
+  const res = http.get('https://httpbin.test.k6.io/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,

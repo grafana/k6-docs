@@ -135,7 +135,7 @@ Una gran diferencia entre la etapa init y la de setup/teardown es que en esta ú
 import http from 'k6/http';
 
 export function setup() {
-  const res = http.get('https://httpbin.org/get');
+  const res = http.get('https://httpbin.test.k6.io/get');
   return { data: res.json() };
 }
 

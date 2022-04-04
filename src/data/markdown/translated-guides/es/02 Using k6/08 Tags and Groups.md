@@ -144,7 +144,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('http://httpbin.org/', {
+  const res = http.get('http://httpbin.test.k6.io/', {
     tags: {
       my_tag: "I'm a tag",
     },
@@ -191,7 +191,7 @@ export const options = {
       "group ": "::my group::json ",
       "method ": "GET ",
       "status ": "200 ",
-      "url ": "https://httpbin.org/get "
+      "url ": "https://httpbin.test.k6.io/get "
     }
   },
   "metric ": "http_req_duration "

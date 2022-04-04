@@ -37,7 +37,7 @@ in a subsequent request to the server we include the cookie in the `cookies` req
 import http from 'k6/http';
 
 export default function () {
-  http.get('https://httpbin.org/cookies', {
+  http.get('https://httpbin.test.k6.io/cookies', {
     cookies: {
       my_cookie: 'hello world',
     },
@@ -58,8 +58,8 @@ import http from 'k6/http';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world');
-  http.get('https://httpbin.org/cookies');
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world');
+  http.get('https://httpbin.test.k6.io/cookies');
 }
 ```
 
@@ -78,7 +78,7 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world');
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world');
 
   const cookies = {
     my_cookie: {
@@ -87,7 +87,7 @@ export default function () {
     },
   };
 
-  const res = http.get('https://httpbin.org/cookies', {
+  const res = http.get('https://httpbin.test.k6.io/cookies', {
     cookies,
   });
 
@@ -111,7 +111,7 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get('https://httpbin.org/cookies/set?my_cookie=hello%20world', { redirects: 0 });
+  const res = http.get('https://httpbin.test.k6.io/cookies/set?my_cookie=hello%20world', { redirects: 0 });
   check(res, {
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => r.cookies.my_cookie[0].value === 'hello world',
@@ -153,9 +153,9 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get('https://httpbin.org/cookies/set?my_cookie=hello%20world', { redirects: 0 });
+  const res = http.get('https://httpbin.test.k6.io/cookies/set?my_cookie=hello%20world', { redirects: 0 });
   const jar = http.cookieJar();
-  const cookies = jar.cookiesForURL('http://httpbin.org/');
+  const cookies = jar.cookiesForURL('http://httpbin.test.k6.io/');
   check(res, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
@@ -183,13 +183,13 @@ import { check } from 'k6';
 
 export default function () {
   const jar = http.cookieJar();
-  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', {
-    domain: 'httpbin.org',
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world', {
+    domain: 'httpbin.test.k6.io',
     path: '/cookies',
     secure: true,
     max_age: 600,
   });
-  const res = http.get('https://httpbin.org/cookies');
+  const res = http.get('https://httpbin.test.k6.io/cookies');
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
@@ -216,15 +216,15 @@ export default function () {
 
   // Add cookie to local jar
   const cookieOptions = {
-    domain: 'httpbin.org',
+    domain: 'httpbin.test.k6.io',
     path: '/cookies',
     secure: true,
     max_age: 600,
   };
-  jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world', cookieOptions);
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie', 'hello world', cookieOptions);
 
   // Override per-VU jar with local jar for the following request
-  const res = http.get('https://httpbin.org/cookies', { jar });
+  const res = http.get('https://httpbin.test.k6.io/cookies', { jar });
   check(res, {
     'has status 200': (r) => r.status === 200,
     "has cookie 'my_cookie'": (r) => r.cookies.my_cookie[0] !== null,
