@@ -98,7 +98,12 @@ const plugins = [
           svgoConfig: {
             plugins: [
               {
-                removeViewBox: false,
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                  },
+                },
               },
             ],
           },
@@ -110,7 +115,12 @@ const plugins = [
           svgoConfig: {
             plugins: [
               {
-                removeViewBox: false,
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                  },
+                },
               },
             ],
           },
@@ -132,43 +142,7 @@ const plugins = [
       },
     },
   },
-  {
-    resolve: 'gatsby-plugin-sitemap',
-    options: {
-      query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-            allSitePage {
-              edges {
-                node {
-                  path
-                }
-              }
-            }
-        }`,
-      exclude: [
-        '/dev-404-page',
-        '/404',
-        '/404.html',
-        '/offline-plugin-app-shell-fallback',
-        '/getting-started/welcome',
-        '/docs/getting-started/welcome',
-      ],
-      serialize: ({ site, allSitePage }) =>
-        allSitePage.edges.map((edge) => {
-          const value = site.siteMetadata.siteUrl + edge.node.path;
-          return {
-            url: value,
-            changefreq: 'daily',
-            priority: 0.7,
-          };
-        }),
-    },
-  },
+  'gatsby-plugin-sitemap',
 ];
 
 // when `canonical` URL is finally fixed, add this to the plugin list
