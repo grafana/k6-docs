@@ -154,13 +154,13 @@ To make HTTP requests there are a number of different Lua APIs available. In the
 
 ```plain
 -- Send a single GET request
-http.get("https://httpbin.org/")
+http.get("https://httpbin.test.k6.io/")
 -- Send a single POST request
-http.post("https://httpbin.org", "key=val&key2=val")
+http.post("https://httpbin.test.k6.io", "key=val&key2=val")
 -- Send several requests in parallel
 http.request_batch({
-  { "GET", "https://httpbin.org/" },
-  { "POST", "https://httpbin.org/", "key=val&key2=val" }
+  { "GET", "https://httpbin.test.k6.io/" },
+  { "POST", "https://httpbin.test.k6.io/", "key=val&key2=val" }
 })
 ```
 
@@ -168,13 +168,13 @@ http.request_batch({
 import http from 'k6/http';
 export default function () {
   // Send a single GET request
-  http.get('https://httpbin.org/');
+  http.get('https://httpbin.test.k6.io/');
   // Send a single POST request
-  http.post('https://httpbin.org', 'key=val&key2=val');
+  http.post('https://httpbin.test.k6.io', 'key=val&key2=val');
   // Send several requests in parallel
   http.batch([
-    'https://httpbin.org/',
-    { method: 'POST', url: 'https://httpbin.org/', body: 'key=val&key2=val' },
+    'https://httpbin.test.k6.io/',
+    { method: 'POST', url: 'https://httpbin.test.k6.io/', body: 'key=val&key2=val' },
   ]);
 }
 ```
@@ -191,10 +191,10 @@ In the 3.0 product there's a concept of pages. Lua code in between calls to `htt
 
 ```plain
 http.page_start("My page")
-http.get("https://httpbin.org/")
+http.get("https://httpbin.test.k6.io/")
 http.request_batch({
-  { "GET", "https://httpbin.org/" },
-  { "GET", "https://httpbin.org/get" },
+  { "GET", "https://httpbin.test.k6.io/" },
+  { "GET", "https://httpbin.test.k6.io/get" },
 })
 http.page_end("My page")
 ```
@@ -205,8 +205,8 @@ import { group } from 'k6';
 
 export default function () {
   group('My page', function () {
-    http.get('https://httpbin.org/');
-    http.batch(['https://httpbin.org/', 'https://httpbin.org/get']);
+    http.get('https://httpbin.test.k6.io/');
+    http.batch(['https://httpbin.test.k6.io/', 'https://httpbin.test.k6.io/get']);
   });
 }
 ```
@@ -315,7 +315,7 @@ Beyond the standard metrics collected by the 3.0 product you can also collect cu
 
 ```plain
 -- Track the time-to-first-byte (TTFB)
-local res = http.get("https://httpbin.org/")
+local res = http.get("https://httpbin.test.k6.io/")
 result.custom_metric("time_to_first_byte", res.time_to_first_byte)
 ```
 
@@ -326,7 +326,7 @@ import { Trend } from 'k6/metrics';
 const ttfbMetric = new Trend('time_to_first_byte');
 export default function () {
   group('My page', function () {
-    const res = http.get('https://httpbin.org/');
+    const res = http.get('https://httpbin.test.k6.io/');
     ttfbMetric.add(res.timings.waiting);
   });
 }

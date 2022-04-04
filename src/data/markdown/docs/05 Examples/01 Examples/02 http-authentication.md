@@ -22,7 +22,7 @@ export default function () {
 
   // Passing username and password as part of the URL will
   // allow us to authenticate using HTTP Basic Auth.
-  const url = `http://${credentials}@httpbin.org/basic-auth/${username}/${password}`;
+  const url = `http://${credentials}@httpbin.test.k6.io/basic-auth/${username}/${password}`;
 
   let res = http.get(url);
 
@@ -42,9 +42,9 @@ export default function () {
     },
   };
 
-  res = http.get(`http://httpbin.org/basic-auth/${username}/${password}`, options);
+  res = http.get(`http://httpbin.test.k6.io/basic-auth/${username}/${password}`, options);
 
-  // Verify response (checking the echoed data from the httpbin.org
+  // Verify response (checking the echoed data from the httpbin.test.k6.io
   // basic auth test API endpoint)
   check(res, {
     'status is 200': (r) => r.status === 200,
@@ -72,11 +72,11 @@ export default function () {
   // authenticate using HTTP Digest authentication.
   const credentials = `${username}:${password}`;
   const res = http.get(
-    `http://${credentials}@httpbin.org/digest-auth/auth/${username}/${password}`,
+    `http://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`,
     { auth: 'digest' }
   );
 
-  // Verify response (checking the echoed data from the httpbin.org digest auth
+  // Verify response (checking the echoed data from the httpbin.test.k6.io digest auth
   // test API endpoint)
   check(res, {
     'status is 200': (r) => r.status === 200,

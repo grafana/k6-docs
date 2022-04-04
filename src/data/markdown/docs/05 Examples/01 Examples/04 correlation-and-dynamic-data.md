@@ -36,7 +36,7 @@ import { check } from 'k6';
 
 export default function () {
   // Make a request that returns some JSON data
-  const res = http.get('https://httpbin.org/json');
+  const res = http.get('https://httpbin.test.k6.io/json');
 
   // Extract data from that JSON data by first parsing it
   // using a call to "json()" and then accessing properties by

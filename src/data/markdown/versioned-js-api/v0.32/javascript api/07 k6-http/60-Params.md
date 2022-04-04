@@ -51,7 +51,7 @@ Here is another example using [http.batch()](/javascript-api/k6-http/batch-reque
 import http from 'k6/http';
 
 const url1 = 'https://api.k6.io/v3/account/me';
-const url2 = 'http://httpbin.org/get';
+const url2 = 'http://httpbin.test.k6.io/get';
 const apiToken = 'f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195';
 const requestHeaders = {
   'User-Agent': 'k6',
@@ -80,7 +80,7 @@ import { check } from 'k6';
 
 export default function () {
   // Passing username and password as part of URL plus the auth option will authenticate using HTTP Digest authentication
-  const res = http.get('http://user:passwd@httpbin.org/digest-auth/auth/user/passwd', {
+  const res = http.get('http://user:passwd@httpbin.test.k6.io/digest-auth/auth/user/passwd', {
     auth: 'digest',
   });
 
@@ -107,7 +107,7 @@ export default function () {}
 export function setup() {
   // Get 10 random bytes as an ArrayBuffer. Without the responseType the body
   // will be null.
-  const response = http.get('https://httpbin.org/bytes/10', {
+  const response = http.get('https://httpbin.test.k6.io/bytes/10', {
     responseType: 'binary',
   });
   // response.body is an ArrayBuffer, so wrap it in a typed array view to access
