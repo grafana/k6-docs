@@ -76,8 +76,8 @@ export default function () {
     cookies,
   });
 
-  check(res, {
-    'cookie has correct value': (r) => r.cookies.my_cookie[0].value === 'hello world 2',
+  check(res.json(), {
+    'cookie has correct value': (b) => b.cookies.my_cookie == 'hello world 2',
   });
 }
 ```
