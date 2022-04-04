@@ -6,7 +6,7 @@ excerpt: 'Each VU executes an exact number of iterations.'
 ## Description
 
 Each VU executes an exact number of iterations. The total number of completed
-iterations will be `vus * iterations`.
+iterations will be `iterations`. They will be equally distributed along VUs, that's why `VUs < iterations`.
 
 ## Options
 
