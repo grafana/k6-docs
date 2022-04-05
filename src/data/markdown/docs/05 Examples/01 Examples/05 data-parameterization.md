@@ -186,7 +186,7 @@ import { SharedArray } from 'k6/data';
 import { scenario } from 'k6/execution';
 
 const data = new SharedArray('users', function () {
-  return JSON.parse(open('users.json'));
+  return JSON.parse(open('users.json')).users;
 });
 
 export const options = {
@@ -222,7 +222,7 @@ import { SharedArray } from 'k6/data';
 import { vu } from 'k6/execution';
 
 const users = new SharedArray('users', function () {
-  return JSON.parse(open('users.json'));
+  return JSON.parse(open('users.json')).users;
 });
 
 export const options = {
@@ -238,7 +238,7 @@ export const options = {
 
 export default function () {
   // VU identifiers are one-based and arrays are zero-based, thus we need - 1
-  console.log(`Users name: ${users[vu.idInTest - 1].name}`);
+  console.log(`Users name: ${users[vu.idInTest - 1].username}`);
   sleep(1);
 }
 ```
