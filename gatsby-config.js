@@ -142,7 +142,12 @@ const plugins = [
       },
     },
   },
-  'gatsby-plugin-sitemap',
+  {
+    resolve: 'gatsby-plugin-sitemap',
+    options: {
+      excludes: ['/getting-started/welcome', '/docs/getting-started/welcome'],
+    },
+  },
 ];
 
 // when `canonical` URL is finally fixed, add this to the plugin list
