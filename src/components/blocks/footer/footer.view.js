@@ -135,7 +135,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://calendly.com/k6cloud/'}
+                        href={'https://go2.grafana.com/k6-contact.html'}
                       >
                         Schedule a Cloud Demo
                       </a>
