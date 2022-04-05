@@ -238,7 +238,7 @@ export const options = {
 
 export default function () {
   // VU identifiers are one-based and arrays are zero-based, thus we need - 1
-  console.log(`Users name: ${users[vu.idInTest - 1].name}`);
+  console.log(`Users name: ${users[vu.idInTest - 1].username}`);
   sleep(1);
 }
 ```
