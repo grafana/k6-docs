@@ -186,7 +186,7 @@ import { SharedArray } from 'k6/data';
 import { scenario } from 'k6/execution';
 
 const data = new SharedArray('users', function () {
-  return JSON.parse(open('users.json')).users;
+  return JSON.parse(open('./data.json')).users;
 });
 
 export const options = {
@@ -222,7 +222,7 @@ import { SharedArray } from 'k6/data';
 import { vu } from 'k6/execution';
 
 const users = new SharedArray('users', function () {
-  return JSON.parse(open('users.json')).users;
+  return JSON.parse(open('./data.json')).users;
 });
 
 export const options = {
