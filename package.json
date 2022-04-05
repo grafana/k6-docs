@@ -1,7 +1,7 @@
 {
   "name": "k6-docs",
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14.15.0"
   },
   "description": "",
   "version": "0.1.0",
