@@ -1,12 +1,13 @@
 ---
 title: 'HTTP Requests'
-excerpt: 'When creating a new load test, the first thing you often do is define the HTTP requests that will be used to test your system.'
+excerpt: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
 ---
+
+When you create a new load test, you'll often first define the HTTP requests that you will use to test your system.
 
 ## Making HTTP Requests
 
-When creating a new load test, the first thing you'll often do is define the HTTP requests that will be used to test
-your system. A simple example that just performs a GET request looks like this:
+A simple GET request looks like this:
 
 <CodeGroup labels={["http_get.js"]} lineNumbers={[true]}>
 
@@ -20,7 +21,7 @@ export default function () {
 
 </CodeGroup>
 
-A slightly more complex request might be e.g. a POST request to authenticate on a site/service:
+For something slightly more complex, here's a POST request to authenticate on a service or site:
 
 <CodeGroup labels={["http_post.js"]} lineNumbers={[true]}>
 
@@ -48,7 +49,7 @@ export default function () {
 
 ## Available methods
 
-Use the [http module](/javascript-api/k6-http) to perform all kinds of HTTP requests in your load tests.
+The [http module](/javascript-api/k6-http) handles all kinds of HTTP requests and methods.
 
 | Name                                                                | Value                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -64,7 +65,8 @@ Use the [http module](/javascript-api/k6-http) to perform all kinds of HTTP requ
 
 ## HTTP Request Tags
 
-k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to your HTTP requests. These tags allow you to filter your results during analysis.
+k6 automatically applies [tags](/using-k6/tags-and-groups#section-tags) to your HTTP requests.
+These tags let you filter your results, helping you organize your analysis.
 
 | Name   | Description                                |
 | ------ | ------------------------------------------ |
@@ -76,7 +78,10 @@ k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to yo
 | status | response status                            |
 | url    | defaults to URL requested                  |
 
-Below you can see how a test result data point (the duration of an HTTP request) is logged, in JSON format, including the various tags mentioned above:
+The following snippet shows a JSON example of how a test-result data point is logged.
+In this example, the metric is the duration of an HTTP request.
+
+Note how the `tags` object groups data.
 
 <CodeGroup labels={["data_point.json"]} lineNumbers={[true]}>
 
@@ -104,9 +109,9 @@ Below you can see how a test result data point (the duration of an HTTP request)
 
 ## URL Grouping
 
-By default, requests report the name tag with the value of the request URL. For URLs that contain dynamic parts, this might not be desirable since it can
-introduce a large number of unique URLs in the metrics stream. The below code shows a situation when you'll access 100 different URLs but may want them
-all reported using one single metric:
+By default, tags have a `name` field that holds the value of the request URL.
+If your test has dynamic URL paths, you might not want this behavior, which could bring a large number of unique URLs into the metrics stream.
+For example, the following code accesses 100 different URLs:
 
 <CodeGroup labels={["grouping.js" ]} lineNumbers={[true]}>
 
@@ -124,7 +129,8 @@ export default function () {
 
 </CodeGroup>
 
-You can aggregate data from dynamic URLs by explicitly setting a name tag:
+You might prefer to report this data in a single metric:
+To aggregate data from dynamic URLs, explicitly set a `name` tag:
 
 <CodeGroup labels={["explicit_tag.js"]} lineNumbers={[true]}>
 
@@ -144,7 +150,7 @@ export default function () {
 
 </CodeGroup>
 
-Which would produce JSON output like the following:
+That code would produce JSON output like this:
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
@@ -184,9 +190,10 @@ Which would produce JSON output like the following:
 
 </CodeGroup>
 
-Note how the `name` is the same for the two data samples related to two different URLs. Filtering the results on tag `name: PostsItemURL` will give you a result set including all the data points from all the 100 different URLs.
+Note how these two objects have the same `name`, despite having different URLs.
+If you filter the results for the tag `name: PostsItemURL`, the results include all data points from all 100 URLs.
 
-Additionally, you can use the `http.url` wrapper to set the name tag with a string template value:
+As an alternative, you can also use the `http.url` wrapper to set the `name` tag with a string template value:
 
 <CodeGroup labels={[ ]} lineNumbers={[true]}>
 
@@ -206,6 +213,6 @@ export default function () {
 
 ## Inside k6 Cloud Results
 
-[k6 Cloud Results's HTTP Table](/cloud/analyzing-results/http-tab) will show all the requests, on an aggregated level per URL.
+[k6 Cloud Results HTTP Table](/cloud/analyzing-results/http-tab) organizes requests by URL.
 
 ![k6 Cloud URL table](./images/HTTP-requests/cloud-insights-http-tab.png)
