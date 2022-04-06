@@ -33,7 +33,7 @@ When k6 sends the results to [`stdout`](https://en.wikipedia.org/wiki/Standard_s
 
 You can completely customize the output and redirect it to a file.
 You can also save arbitrary files with machine-readable versions of the summary, like JSON, XML (e.g. JUnit, XUnit, etc.), or even nicely-formatted HTML reports meant for humans!
-For more details, see the [`handleSummary()` docs](/results-visualization/end-of-test-summary#handlesummary-much
+For more details, see the [`handleSummary()` docs](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 ### Test details
 
@@ -68,7 +68,7 @@ By default, the summary prints the following statuses to `stdout`:
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
 
-You can customize the summary shown to `stdout`, redirect it to a file or `stderr`, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+You can customize the summary shown to `stdout`, redirect it to a file or `stderr`, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 <CodeGroup labels={[]}>
