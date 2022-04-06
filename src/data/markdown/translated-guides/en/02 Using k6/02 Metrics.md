@@ -75,7 +75,7 @@ k6 always collects the following built-in metrics:
 | vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level) |
 | iterations         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function). |
 | iteration_duration | Trend   | The time it took to complete one full iteration. It includes the time spent in `setup` and `teardown` as well. Check out this [workaround](/using-k6/workaround-to-calculate-iteration_duration) to calculate the duration of the iteration's function for a specific scenario. |
-| dropped_iterations | Counter | Introduced in k6 v0.27.0, the number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
+| dropped_iterations | Counter | The number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
 | data_received      | Counter | The amount of received data. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
 | data_sent          | Counter | The amount of data sent. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
 | checks             | Rate    | The rate of successful checks. |
@@ -95,7 +95,7 @@ These metrics are generated only when the test makes HTTP requests.
 | http_req_waiting                     | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                       |
 | http_req_receiving                   | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
 | http_req_duration                    | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
-| http_req_failed <sup>(≥ v0.31)</sup> | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
+| http_req_failed | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
 
 ### Accessing HTTP timings from a script
 

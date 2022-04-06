@@ -3,7 +3,7 @@ title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 ---
 
-There are two ways to inspect test results:
+There are two ways to look at test results:
 * After the test runs, k6 sends a small summary to `stdout`.
 * For granular analysis and time-series data, you can also stream live test data to an external output.
 
@@ -30,8 +30,10 @@ When k6 sends the results to [`stdout`](https://en.wikipedia.org/wiki/Standard_s
 - Test details: general test information and load options.
 - Progress bar: test status and how much time has passed.
 - [Test summary](/results-visualization/end-of-test-summary): the test results (after test completion).
-Since k6 v0.30.0, you can completely customize the output and redirect it to a file.
-You can also to save arbitrary files with machine-readable versions of the summary, like JSON, XML (e.g. JUnit, XUnit, etc.), or even nicely-formatted HTML reports meant for humans! For more details, see the [`handleSummary()` docs](/results-visualization/end-of-test-summary#handlesummary-much
+
+You can completely customize the output and redirect it to a file.
+You can also save arbitrary files with machine-readable versions of the summary, like JSON, XML (e.g. JUnit, XUnit, etc.), or even nicely-formatted HTML reports meant for humans!
+For more details, see the [`handleSummary()` docs](/results-visualization/end-of-test-summary#handlesummary-much
 
 ### Test details
 
@@ -57,7 +59,7 @@ scenarios: (100.00%) 1 scenario, 50 max VUs, 5m30s max duration (incl. graceful 
 - `5m30s max duration` is the maximum time the script will take to run, including any [graceful stop](/using-k6/scenarios/graceful-stop) times.
 - `* default: ...` describes the only scenario for this test run. In this case it's a scenario with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus), specified via the [`stages` shortcut option](/using-k6/options#stages) instead of using the [`scenarios` long-form option](/using-k6/options#scenarios).
 
-## End-of-test summary report
+### End-of-test summary report
 
 The [test summary](/results-visualization/end-of-test-summary) provides a general overview of test results.
 By default, the summary prints the following statuses to `stdout`:
@@ -66,7 +68,7 @@ By default, the summary prints the following statuses to `stdout`:
 - [Checks](/using-k6/checks) and [thresholds](/using-k6/thresholds).
 - [Groups](/using-k6/tags-and-groups#groups) and [tags](/using-k6/tags-and-groups#tags).
 
-As of k6 v0.30.0, you can completely customize the summary shown to `stdout`, redirect it to a file or `stderr`, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+You can customize the summary shown to `stdout`, redirect it to a file or `stderr`, or build and export your own completely custom report (e.g. HTML, JSON, JUnit/XUnit XML, etc.) via the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 <CodeGroup labels={[]}>
@@ -92,7 +94,7 @@ vus_max....................: 100    min=100 max=100
 
 > To learn more about the metrics k6 collects and reports, read the [Metrics guide](/using-k6/metrics).
 
-**Output of trend metrics**
+### Trend metrics
 
 [Trend metrics](/using-k6/metrics#metric-types) collect trend statistics (min/max/avg/percentiles) for a series of values.
 On stdout, they are printed like this:
@@ -117,16 +119,16 @@ $ k6 run --summary-trend-stats="min,avg,med,p(99),p(99.9),max,count" --summary-t
 
 </CodeGroup>
 
-### Summary export
+### Export summary
 
 To get your aggregated test results in a machine-readable format,
 you can export the end-of-test summary report to a JSON file.
 This helps with things like integration with dashboards, external alerts, etc.
 
-This was first possible in k6 v0.26.0 with the [`--summary-export` flag](/using-k6/options#summary-export), though [we now discourage using it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file)).
+We recommend the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+It lets you customize the end-of-test summary and export the report data to any desired format (e.g. JSON, CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.).
 
-Instead, we recommend the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
-It lets you completely customize the end-of-test summary and export the summary report data in any desired format (e.g. JSON, CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.).
+You can also use the [`--summary-export` flag](/using-k6/options#summary-export), though [we now discourage using it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file)).
 
 ## External outputs
 

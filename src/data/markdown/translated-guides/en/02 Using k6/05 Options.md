@@ -405,8 +405,7 @@ Possible `policy` values are:
 Here are some configuration examples:
 
 ```bash
-k6 run --dns "ttl=inf,select=first,policy=any" script.js # the old k6 behavior before v0.29.0
-K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js # new default behavior from v0.29.0
+K6_DNS="ttl=5m,select=random,policy=preferIPv4" k6 cloud script.js
 ```
 
 <CodeGroup labels={[ "script.js" ]} lineNumbers={[true]}>
@@ -491,9 +490,6 @@ segment sequence, e.g. `--execution-segment-sequence '0,1/4,1/2,1'`.
 This way one instance could run with `--execution-segment '0:1/4'`, another with
 `--execution-segment '1/4:1/2'`, etc. and there would be no overlap between them.
 
-In v0.27.0 this distinction is not very important, but it will be required
-in future versions when support for test data partitioning is added.
-
 <!-- TODO: Add more examples, link to a standalone page? -->
 
 ## Exit On Running
@@ -522,7 +518,7 @@ An object with overrides to DNS resolution, similar to what you can do with `/et
 Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
 up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
-From v0.28.0 it is also supported to redirect only from certain ports and/or to certain ports.
+You can also redirect only from certain ports or to certain ports.
 
 > ### ⚠️ Keep in mind!
 >
@@ -873,7 +869,10 @@ export const options = {
 
 ## No Summary
 
-Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation. Since k6 v0.30.0, that includes disabling the calling of [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`. Available in the `k6 run` command.
+Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation,
+including calls to [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`.
+
+Available in the `k6 run` command.
 
 | Env                | CLI               | Code / Config file | Default |
 | ------------------ | ----------------- | ------------------ | ------- |
@@ -1189,7 +1188,7 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
-Starting with k6 v0.30.0, while this feature is not deprecated yet, its usage is discouraged, see the explanation why [here](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1292,9 +1291,9 @@ export const options = {
 
 ## Summary Trend Stats
 
-Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count` (since k6 v0.26.0), as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback) introduced in k6 v0.30.0.
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 | Env                      | CLI                     | Code / Config file  | Default                        |
@@ -1485,7 +1484,8 @@ options = {
 ## User Agent
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
-requests. Setting it to an empty string will not send a `User-Agent` header since v0.29.0.
+requests.
+If you pass an empty string, no `User-Agent` header is sent.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env             | CLI            | Code / Config file | Default                                                               |

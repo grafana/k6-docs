@@ -206,9 +206,13 @@ This feature is only available for local `k6 run` tests for now, though we plan 
 
 k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export) to export some of the summary report data to a JSON file format.
 
-Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities. For example, groups and checks are unordered, and threshold values are unintuitive - `true` indicates the threshold has failed, and `false` that succeeded.
+Unfortunately, the exported format is somewhat limited and has a few confusing peculiarities.
+For example, groups and checks are unordered,
+and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
 
-We couldn't change the `--summary-export` data format because it would have broken backward compatibility in a feature that people depended on their CI pipelines. Since k6 v0.30.0, the recommended approach to export to a JSON file is to use the [`handleSummary()` callback](#handlesummary-callback). The `--summary-export` option will likely be deprecated in the future.
+We couldn't change the `--summary-export` data format because it would have broken backward compatibility in a feature that people depended on their CI pipelines.
+The recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
+The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
 

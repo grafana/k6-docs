@@ -68,7 +68,7 @@ k6 will automatically apply [tags](/using-k6/tags-and-groups#section-tags) to yo
 
 | Name   | Description                                |
 | ------ | ------------------------------------------ |
-| expected_response <sup>(≥ v0.31)</sup>  | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
+| expected_response   | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
 | group   | When the request runs inside a [group](/javascript-api/k6/group-name-fn), the tag value is the group name.  Default is empty.               |
 | name   | Defaults to URL requested                  |
 | method | Request method (`GET`, `POST`, `PUT` etc.) |
@@ -113,7 +113,7 @@ all reported using one single metric:
 ```javascript
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   for (let id = 1; id <= 100; id++) {
     http.get(`http://example.com/posts/${id}`);
   }
@@ -131,7 +131,7 @@ You can aggregate data from dynamic URLs by explicitly setting a name tag:
 ```javascript
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   for (let id = 1; id <= 100; id++) {
     http.get(`http://example.com/posts/${id}`, {
       tags: { name: 'PostsItemURL' },
@@ -193,7 +193,7 @@ Additionally, you can use the `http.url` wrapper to set the name tag with a stri
 ```javascript
 import http from 'k6/http';
 
-export default function() {
+export default function () {
   for (let id = 1; id <= 100; id++) {
     http.get(http.url`http://example.com/posts/${id}`);
   }

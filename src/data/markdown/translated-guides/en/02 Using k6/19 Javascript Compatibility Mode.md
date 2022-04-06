@@ -4,7 +4,7 @@ excerpt: 'k6 supports running test scripts with different ECMAScript compatibili
 hideFromSidebar: true
 ---
 
-As of v0.26, k6 supports running test scripts with different ECMAScript compatibility modes using the
+You can run test scripts with different ECMAScript compatibility modes with the
 `run --compatibility-mode` CLI option or `K6_COMPATIBILITY_MODE` environment variable.
 
 Currently two modes are available:
@@ -119,7 +119,8 @@ $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 
 In case of syntax/parsing errors, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers. 
 
-Before k6 v0.31.0, [core.js](https://github.com/zloirock/core-js) v2 and even more Babel plugins were also included in extended mode. This added around 2MB extra memory usage per VU and some of the transformations (generators, async/await) of Babel were not useful as they were still not enough for k6 to just work with those features. So, before v0.31.0, using `--compatibility-mode=base` was a significant improvement on memory usage, which also translated to some CPU gains.
+Before v0.31.0, k6 included [core.js](https://github.com/zloirock/core-js) v2 and even more Babel plugins in extended mode.
+This added around 2MB extra memory usage per VU and some of the transformations (generators, async/await) of Babel were still insufficient to get k6 working with these features.
 
 ## Performance Comparison
 
