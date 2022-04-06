@@ -30,10 +30,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 12.xs
-        uses: actions/setup-node@v1
+      - name: Use Node.js 14.xs
+        uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -51,10 +51,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 12.xs
-        uses: actions/setup-node@v1
+      - name: Use Node.js 14.xs
+        uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -83,10 +83,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 12.xs
-        uses: actions/setup-node@v1
+      - name: Use Node.js 14.xs
+        uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
