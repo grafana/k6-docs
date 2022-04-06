@@ -105,6 +105,7 @@ const plugins = [
                   },
                 },
               },
+              'prefixIds',
             ],
           },
         },
