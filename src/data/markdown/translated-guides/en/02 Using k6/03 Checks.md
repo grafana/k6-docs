@@ -9,7 +9,7 @@ For a way to halt the execution of a test based on checks, take a look at [thres
 
 The following sections show some ways how you can use checks.
 
-## Check for HTTP response code returned
+## Check for HTTP response code
 
 Checks are great for codifying assertions relating to HTTP requests and responses.
 For example, this snippet makes sure the HTTP response code is a 2xx:
@@ -30,7 +30,7 @@ export default function () {
 
 </CodeGroup>
 
-## Check for text in response body returned
+## Check for text in response body
 
 Sometimes, even an HTTP 200 response contains an error message.
 In these situations, consider adding a check to verify the response body, like this:
