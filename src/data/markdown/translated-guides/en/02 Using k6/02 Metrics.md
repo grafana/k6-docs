@@ -11,7 +11,7 @@ Metrics fall into four broad types:
 - _Counters_ sum values.
 - _Gauges_ track the smallest, largest, and latest values.
 - _Rates_ track how frequently a non-zero value occurs.
-- _Trends_  calculate statistics for multiple values (like mean or mode)
+- _Trends_  calculate statistics for multiple values (like mean or mode).
 
 ## Built-in metrics
 
