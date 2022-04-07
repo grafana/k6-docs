@@ -46,6 +46,7 @@ browserified
 browserlist
 bundler
 Capitan
+charset
 corejs
 cron
 crypto
