@@ -3,11 +3,19 @@ title: 'Metrics'
 excerpt: 'This section covers the important aspect of metrics management in k6. How and what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.'
 ---
 
-This section covers the important aspects of metrics management in k6:  what kind of metrics k6 collects automatically (_built-in_ metrics), and what custom metrics you can make k6 collect.
+_Metrics_ measure how a system performs under test conditions.
+By default, k6 automatically collects built-in metrics.
+Besides built-ins, you can also make custom metrics.
+
+Metrics fall into four broad types:
+- _Counters_ sum values.
+- _Gauges_ track the latest value.
+- _Rates_ track how frequently a non-zero value occurs.
+- _Trends_  calculate statistical patterns over time.
 
 ## Built-in metrics
 
-The _built-in_ metrics are the ones that are output to stdout when you run the simplest possible k6 test:
+The _built-in_ metrics output to `stdout` when you run the simplest possible k6 test:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -65,41 +73,41 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 
 </CodeGroup>
 
-In the preceding output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
+In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
 
 k6 always collects the following built-in metrics:
 
-| Metric Name | Type | Description |
-| ----------- | ---- | ----------- |
-| vus                | Gauge   | Current number of active virtual users |
-| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, to ensure performance will not be affected when scaling up the load level) |
-| iterations         | Counter | The aggregate number of times the VUs in the test have executed the JS script (the `default` function). |
-| iteration_duration | Trend   | The time it took to complete one full iteration. It includes the time spent in `setup` and `teardown` as well. Check out this [workaround](/using-k6/workaround-to-calculate-iteration_duration) to calculate the duration of the iteration's function for a specific scenario. |
-| dropped_iterations | Counter | The number of iterations that could not be started due to lack of VUs (for the arrival-rate executors) or lack of time (due to expired maxDuration in the iteration-based executors). |
-| data_received      | Counter | The amount of received data. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
-| data_sent          | Counter | The amount of data sent. Read [this example](/examples/track-transmitted-data-per-url) to track data for an individual URL. |
-| checks             | Rate    | The rate of successful checks. |
-
+| Metric Name        | Type    | Description                                                                                                                                                                                                                                                   |
+|--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                        |
+| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, ensuring performance will not be affected when scaling up the load level)                                                                                                              |
+| iterations         | Counter | The aggregate number of times the VUs executed the JS script (the `default` function).                                                                                                                                                                        |
+| iteration_duration | Trend   | The time it took to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](/using-k6/workaround-to-calculate-iteration_duration) |
+| dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors).                                                                             |
+| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](/examples/track-transmitted-data-per-url).                                                                                                                         |
+| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                   |
+| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                |
 
 ## HTTP-specific built-in metrics
 
 These metrics are generated only when the test makes HTTP requests.
 
-| Metric Name                          | Type    | Description                                                                                                                                                                                                                                  |
-| ------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| http_reqs                            | Counter | How many HTTP requests has k6 generated, in total.                                                                                                                                                                                           |
-| http_req_blocked                     | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
-| http_req_connecting                  | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
-| http_req_tls_handshaking             | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
-| http_req_sending                     | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
-| http_req_waiting                     | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                       |
-| http_req_receiving                   | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
-| http_req_duration                    | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
-| http_req_failed | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
+| Metric Name              | Type    | Description                                                                                                                                                                                                                                  |
+|--------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| http_reqs                | Counter | How many total HTTP requests k6 generated.                                                                                                                                                                                                   |
+| http_req_blocked         | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
+| http_req_connecting      | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
+| http_req_tls_handshaking | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
+| http_req_sending         | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
+| http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                           |
+| http_req_receiving       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
+| http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
+| http_req_failed          | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
+|                          |         |                                                                                                                                                                                                                                              |
 
 ### Accessing HTTP timings from a script
 
-If you want to access the timing information from an individual HTTP request in the k6, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`:
+To access the timing information from an individual HTTP request, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`:
 
 - blocked: equals to `http_req_blocked`.
 - connecting: equals to `http_req_connecting`.
@@ -137,7 +145,7 @@ $ k6 run script.js
 ## Custom metrics
 
 You can also create custom metrics.
-They will be reported at the end of a load test, just like HTTP timings:
+They are reported at the end of a load test, just like HTTP timings:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -159,7 +167,8 @@ export default function () {
 The preceding code creates a Trend metric called `waiting_time`.
 In the code, it's referred to with the variable name `myTrend`.
 
-Custom metrics are reported at the end of a test. Here is how the output might look:
+Custom metrics are reported at the end of a test.
+Here's how the output might look:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -223,7 +232,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-The value of `my_counter` will be 3 (if you run it for one single iteration - i.e. without specifying `--iterations` or `--duration`).
+If you run the script for one iteration&mdash;without specifying `--iterations` or `--duration`&mdash;the value of `my_counter` will be three.
 
 Note that there is currently no way to access the value of any custom metric from within JavaScript.
 Note also that counters that have a value of zero (`0`) at the end of a test are a special case.
@@ -262,7 +271,8 @@ $ k6 run script.js
 
 </CodeGroup>
 
-The value of `my_gauge` will be 2 at the end of the test. As with the Counter metric, a Gauge with value zero (`0`) will **NOT** be printed to the stdout summary at the end of the test.
+The value of `my_gauge` will be 2 at the end of the test.
+As with the Counter metric, a Gauge with a value of zero (`0`) will *NOT* be printed to the `stdout` summary at the end of the test.
 
 ### Trend _(collect trend statistics (min/max/avg/percentiles) for a series of values)_
 
@@ -296,7 +306,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-A _trend metric_ is a container that holds a set of sample values, and which we can ask to output statistics (min, max, average, median or percentiles) about those samples.
+A _trend metric_ holds a set of sample values, which it can output statistics about (min, max, average, median, or percentiles).
 By default, k6 prints `average`, `min`, `max`, `median`, `90th percentile`, and `95th percentile`.
 
 ### Rate _(keeps track of the percentage of values in a series that are non-zero)_
@@ -338,14 +348,14 @@ added to the metric were non-zero.
 
 ### Notes
 
-- custom metrics are only collected from VU threads at the end of a VU iteration.
+- Custom metrics are collected from VU threads only at the end of a VU iteration.
   This means that for long-running scripts, you may not see any custom metrics until the test runs a while.
 
 ## Metric graphs in k6 Cloud Results
 
 If you use [k6 Cloud Results](/cloud/analyzing-results/overview), you can access all test
 metrics within the [Analysis Tab](/cloud/analyzing-results/analysis-tab).
-You can use this tab to further analyze and compare test result data, to look for meaningful correlations in your data.
+You can use this tab to analyze, compare, and look for meaningful correlations in your test result data.
 
 ![k6 Cloud Analysis Tab](images/Metrics/cloud-insights-analysis-tab.png)
 
