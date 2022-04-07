@@ -70,3 +70,11 @@ All pull requests merged to `main` will result in an automatic deployment to the
 > Versions follow the same major and minor as github.com/grafana/k6. When cutting a new release of the docs between k6 releases, only increment the patch digit(s).
 
 All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/grafana/k6-docs/releases
+
+Once in the link above, click on the "Draft a new Release" button.
+![DraftRelease1](./internal-images/DraftNewRelease.png)
+
+In the next screen, click on "Choose a tag", type a version number increasing the one below (in image should be v0.37.17).
+![DraftRelease2](./internal-images/DraftNewRelease2.png)
+
+Add a description and the bins included, then press the "Publish release" green button at the bottom.
