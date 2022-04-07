@@ -9,9 +9,9 @@ Besides built-ins, you can also make custom metrics.
 
 Metrics fall into four broad types:
 - _Counters_ sum values.
-- _Gauges_ track the latest value.
+- _Gauges_ track the smallest, largest, and latest values.
 - _Rates_ track how frequently a non-zero value occurs.
-- _Trends_  calculate statistical patterns over time.
+- _Trends_  calculate statistics for multiple values (like mean or mode)
 
 ## Built-in metrics
 
@@ -186,6 +186,9 @@ $ k6 run script.js
 
 </CodeGroup>
 
+You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
+This can be useful when analyzing test results.
+
 ## Metric types
 
 All metrics (both built-in and custom) have a _type_. The four different metric types in k6 are:
@@ -197,8 +200,6 @@ All metrics (both built-in and custom) have a _type_. The four different metric 
 | [Rate](/javascript-api/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
 | [Trend](/javascript-api/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |
 
-You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
-This can be useful when analyzing test results.
 
 ### Counter _(cumulative metric)_
 
