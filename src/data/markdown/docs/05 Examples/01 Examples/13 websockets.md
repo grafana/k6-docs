@@ -6,14 +6,14 @@ excerpt: |
 
 Here's a load test for CrocoChat - a WebSocket chat API available on [https://test-api.k6.io/](https://test-api.k6.io/).
 
-Multiple VUs join a chat room and discuss various things for up to 1 minute, after which they disconnect. 
+Multiple VUs join a chat room and discuss various things for up to 1 minute, after which they disconnect.
 
-Each VU receives messages sent by all chat participants. 
+Each VU receives messages sent by all chat participants.
 
 <CodeGroup labels={["crocochat.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+import { randomString, randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 import ws from 'k6/ws';
 import { check, sleep } from 'k6';
 
