@@ -38,6 +38,7 @@
 [pP]ipelining
 [wW]ebpack
 Okta
+addons
 alice
 async
 backoff
