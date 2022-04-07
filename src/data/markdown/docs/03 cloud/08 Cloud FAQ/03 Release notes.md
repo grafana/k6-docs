@@ -4,6 +4,9 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.4.1 `(2022-3-23)`
+- Fix: subscription view includes now values from addons.
+
 ### v3.3.2 `(2022-3-16)`
 - Fix: error when loading project with many team members.
 - Fix: error when Scenarios configuration is `null`.
