@@ -19,10 +19,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 14.xs
+      - name: Use Node.js 17.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '17.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -38,10 +38,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 14.xs
+      - name: Use Node.js 17.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '17.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -77,10 +77,10 @@ jobs:
           echo "GATSBY_DEFAULT_BLOG_URL: $GATSBY_DEFAULT_BLOG_URL"
           echo "GATSBY_DEFAULT_APP_URL: $GATSBY_DEFAULT_APP_URL"
 
-      - name: Use Node.js 14.xs
+      - name: Use Node.js 17.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '17.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install
