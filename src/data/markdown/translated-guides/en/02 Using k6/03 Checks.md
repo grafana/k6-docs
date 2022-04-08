@@ -54,7 +54,7 @@ export default function () {
 
 ## Check for response body size
 
-If you want to verify the size of the response body, you can use a check like this:
+To verify the size of the response body, you can use a check like this:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -74,7 +74,7 @@ export default function () {
 
 ## See percentage of checks that passed
 
-When you run a script that includes checks, you can see the outcome of the check calls in the summary output:
+When a script includes checks, the summary report shows how many of the tests' checks passed:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -91,11 +91,11 @@ $ k6 run script.js
 
 </CodeGroup>
 
-In this example, note that the check "is status 200" was successful 100% of the times it was called.
+In this example, note that the check "is status 200" succeeded 100% of the times it was called.
 
 ## Add multiple checks
 
-You may also add multiple checks within a single [check()](/javascript-api/k6/check-val-sets-tags) statement, like this:
+You may also add multiple checks within a single [check()](/javascript-api/k6/check-val-sets-tags) statement:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -114,7 +114,7 @@ export default function () {
 
 </CodeGroup>
 
-When this test is executed, the output will look something like this:
+When this test executes, the output will look something like this:
 
 <CodeGroup lineNumbers={[false]}>
 
@@ -142,8 +142,8 @@ $ k6 run checks.js
 
 In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks-tab) for analysis.
 
-Here we can quickly see what checks are failing,
-When you clicking a check, you can see the count of passes/failures at given points in the test.
+Here we can quickly see what checks are failing.
+When you select a check, you can see the count of passes/failures at given points in the test.
 You can also add the check to the **analysis** tab, for further comparison with other metrics.
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
