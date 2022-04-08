@@ -1,5 +1,5 @@
 ---
-title: 'randomString(length, charset)'
+title: 'randomString(length, [charset])'
 description: 'Random string'
 excerpt: 'Random string'
 ---
@@ -7,10 +7,10 @@ excerpt: 'Random string'
 Function returns a random string of a given length, optionally selected from a custom character set.
 
 
-| Parameter     | Type    | Description |
-| ------------- | ------- | ----------- |
-| length        | int     | Length of the random string  |
-| charset       | string  | A customized list of characters  |
+| Parameter          | Type    | Description |
+| ------------------ | ------- | ----------- |
+| length             | int     | Length of the random string  |
+| charset (optional) | string  | A customized list of characters  |
 
 
 ### Returns
@@ -31,10 +31,10 @@ export default function () {
   const randomFirstName = randomString(8);
   console.log(`Hello, my first name is ${randomFirstName}`);
 
-  const randomLastName = randomString(10,`aeioubcdfghijpqrstuv`);
+  const randomLastName = randomString(10, `aeioubcdfghijpqrstuv`);
   console.log(`Hello, my last name is ${randomLastName}`);
 
-  const randomCharacterWeighted = randomString(1,`AAAABBBCCD`);
+  const randomCharacterWeighted = randomString(1, `AAAABBBCCD`);
   console.log(`Chose a random character ${randomCharacterWeighted}`);
 }
 ```
