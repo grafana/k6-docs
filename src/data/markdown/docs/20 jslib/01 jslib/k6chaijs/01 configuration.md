@@ -5,8 +5,7 @@ description: 'Global configuration options for k6Chaijs'
 excerpt: 'Global configuration options for k6Chaijs'
 ---
 
-
-There are number of configuration options that can change how k6chaijs behaves. 
+Chai exposes a number of configuration options that can change how the library behaves.
 
 
 | Config option             | Default     | Description |

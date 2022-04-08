@@ -99,7 +99,7 @@ The above script should result in the following being printed after execution:
   ✓ expected number of crocs to be above 4
 ```
 
-When the status code isn't 200, the remaining two calls to `expect()` are ommitted and the the result looks like this.
+When the status code isn't 200, the remaining two calls to `expect()` are omitted and the result looks like this.
 
 ```bash
 █ Fetch a list of public crocodiles
@@ -113,7 +113,7 @@ More advanced examples can be found in the [examples section](/examples/function
 
 ## Configuration
 
-There are number of configuration options that can change how k6chaijs behaves. See [configuration](./k6chaijs/configuration).
+Chai exposes a number of configuration options that can change how the library behaves. See [configuration](./k6chaijs/configuration).
 
 ## Plugins
 

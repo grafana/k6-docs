@@ -145,3 +145,5 @@ eval
 xcaddy
 pdf()
 (?i)cpu
+(?i)chai
+(?i)chaijs
