@@ -3,22 +3,25 @@ title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
 ---
 
+
 ## What are thresholds?
 
-Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.
+*Thresholds* are pass/fail criteria that specify the performance expectations of the system under test.
 
-Example expectations (Thresholds):
+For example, you can use thresholds to test that your system meets the following expectations:
 
-- System doesn't produce more than 1% errors.
-- Response time for 95% of requests should be below 200ms.
-- Response time for 99% of requests should be below 400ms.
-- Specific endpoint must always respond within 300ms.
-- Any conditions on any [Custom metric](/using-k6/metrics#custom-metrics).
+- Less than 1% of requests return an error.
+- 95% of requests have a response time below 200ms.
+- 99% of requests have a response time below 400ms.
+- A specific endpoint always responds within 300ms.
+- Any conditions for a [custom metric](/using-k6/metrics#custom-metrics).
 
-Thresholds analyze the performance metrics and determine the final test result (pass/fail).
-Thresholds are a essential for [load-testing automation](/testing-guides/automated-performance-testing).
+Thresholds analyze the performance metrics and determine whether the final results passed or failed the test.
+Thresholds are essential for [load-testing automation](/testing-guides/automated-performance-testing).
 
-Here is a sample script that specifies two thresholds, one evaluating the rate of http errors (`http_req_failed` metric) and one using the 95 percentile of all the response durations (the `http_req_duration` metric).
+Here is a sample script that specifies two thresholds.
+One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
+The other evaluates whether 95 percent of responses happen within a certain duration (the `http_req_duration` metric).
 
 <CodeGroup labels={["threshold.js"]} lineNumbers={[true]}>
 
@@ -39,10 +42,10 @@ export default function () {
 
 </CodeGroup>
 
-In other words, you specify the `pass` criteria when defining your threshold, and if that
-expression evaluates to `false` at the end of the test, the whole test will be considered a `fail`.
+In other words, when you define your threshold, specify an expression for a `pass` criteria.
+If that expression evaluates to `false` at the end of the test, k6 considers the whole test a `fail`.
 
-When executing that script, k6 will output something similar to this:
+After executing that script, k6 outputs something similar to this:
 
 <CodeGroup labels={["threshold-output"]} lineNumbers={[false]}>
 
@@ -53,17 +56,21 @@ When executing that script, k6 will output something similar to this:
 ```
 </CodeGroup>
 
-- In the above case, the criteria for both thresholds were met. The whole load test is considered
-  to be a `pass`, which means that k6 will exit with exit code zero.
+In this case, the test met the criteria for both thresholds.
+k6 considers this test a `pass` and exits with an exit code `0`.
 
-- If any of the thresholds had failed, the little green checkmark <span style="color:green; font-weight:bold">✓</span> next to the threshold name
-  (`http_req_failed`, `http_req_duration`) would have been a red cross <span style="color:red; font-weight:bold">✗</span> instead, and k6 would have generated a non-zero exit code.
+If any of the thresholds had failed, the little green checkmark <span style="color:green; font-weight:bold">✓</span> next to the threshold name
+  (`http_req_failed`, `http_req_duration`) would have been a red cross <span style="color:red; font-weight:bold">✗</span>,
+  and k6 would have generated a non-zero exit code.
 
-## Copy-paste Threshold examples
+## Copy-paste threshold examples
 
 The quickest way to start with thresholds is to use the [standard, built-in k6 metrics](/using-k6/metrics#http-specific-built-in-metrics).
-
 Here are a few copy-paste examples that you can start using right away.
+
+For more specific threshold examples, refer to the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
+
+### A percentile of requests finishes in a specified duration
 
 <CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
@@ -86,6 +93,8 @@ export default function () {
 
 </CodeGroup>
 
+### Error rate is lower than 1 percent
+
 <CodeGroup labels={["threshold-error-rate.js"]} lineNumbers={[true]}>
 
 ```javascript
@@ -95,7 +104,6 @@ import { sleep } from 'k6';
 export const options = {
   thresholds: {
     // During the whole test execution, the error rate must be lower than 1%.
-    // `http_req_failed` metric is available since v0.31.0
     http_req_failed: ['rate<0.01'],
   },
 };
@@ -109,6 +117,9 @@ export default function () {
 </CodeGroup>
 
 ### Multiple thresholds on a single metric
+
+You can also apply multiple thresholds for one metric.
+This threshold has different duration requirements for different request percentiles.
 
 <CodeGroup labels={["threshold-request-duration.js"]} lineNumbers={[true]}>
 
@@ -133,6 +144,10 @@ export default function () {
 
 ### Threshold on group duration
 
+You can set thresholds per [Group](/using-k6/tags-and-groups/#groups).
+This code has groups for individual requests and batch requests.
+For each group, there are different thresholds.
+
 <CodeGroup labels={["threshold-group-duration.js"]} lineNumbers={[true]}>
 
 ```javascript
@@ -141,7 +156,7 @@ import { group, sleep } from 'k6';
 
 export const options = {
   thresholds: {
-    'group_duration{group:::individualRequests}': ['avg < 200'],
+    'group_duration{group:::individualRequests}': ['avg < 400'],
     'group_duration{group:::batchRequests}': ['avg < 200'],
   },
   vus: 1,
@@ -169,11 +184,10 @@ export default function () {
 
 </CodeGroup>
 
-You can find more specific threshold examples on the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
 
 ## Threshold Syntax
 
-A threshold requires at least one `threshold_expression` to be defined:
+To use a threshold, you must define at least one `threshold_expression`:
 
 <CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
@@ -194,21 +208,22 @@ export const options = {
 
 </CodeGroup>
 
-The above declaration inside a k6 script means that there will be thresholds configured for
-the metrics `metric_name1` and `metric_name2`. To determine if the threshold has failed or passed, the string `'threshold_expression'`
-will be evaluated. The `'threshold_expression'` must follow the following format:
+This declaration configures thresholds for the metrics `metric_name1` and `metric_name2`.
+To determine whether the threshold passes or fails, the script evaluates the `'threshold_expression'.`
+
+The `'threshold_expression'` must follow the format:
 
 `aggregation_method operator value`
 
 Examples:
 
-- `avg < 200` // average duration can't be larger than 200ms
-- `count >= 500` // count must be larger or equal to 500
+- `avg < 200` // average duration must be less than 200ms
+- `count >= 500` // count must be larger than or equal to 500
 - `p(90) < 300` // 90% of samples must be below 300
 
 A threshold expression evaluates to `true` or `false`.
 
-Each of the four metric types included in k6 provide its own set of aggregation methods usable in threshold expressions.
+Each of the four [metric types](using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
 
 | Metric type | Aggregation methods                                                                                                                                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -217,8 +232,8 @@ Each of the four metric types included in k6 provide its own set of aggregation 
 | Rate        | `rate`                                                                                                                                                                                                              |
 | Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, e.g. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. |
 
-Here is a (slightly contrived) sample script that uses all different types of metrics, and sets
-different types of thresholds for them:
+Here is a (slightly contrived) sample script that uses all different types of metrics,
+setting different types of thresholds for each:
 
 <CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
 
@@ -233,10 +248,10 @@ export const GaugeContentSize = new Gauge('ContentSize');
 export const CounterErrors = new Counter('Errors');
 export const options = {
   thresholds: {
-    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
-    'Content OK': ['rate>0.95'],
-    'ContentSize': ['value<4000'],
     'Errors': ['count<100'],
+    'ContentSize': ['value<4000'],
+    'Content OK': ['rate>0.95'],
+    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
   },
 };
 
@@ -257,19 +272,18 @@ export default function () {
 
 We have these thresholds:
 
-- A trend metrics that is fed with response time samples, and which has the following threshold
-  criteria:
+- A counter metric that keeps track of the total number of times that the content response was *not* `OK`.
+  The success criteria here is that content cannot be bad more than 99 times.
+- A gauge metric that contains the latest size of the returned content.
+  The success criteria for this metric is that the returned content is smaller than 4000 bytes.
+- A rate metric that keeps track of how often the content returned was `OK`. This metric has one
+  success criteria: content must have been `OK` more than 95% of the time.
+- A trend metric that is fed with response time samples and which has the following threshold criteria:
   - 99th percentile response time must be below 300 ms
   - 70th percentile response time must be below 250 ms
   - Average response time must be below 200 ms
   - Median response time must be below 150 ms
   - Minimum response time must be below 100 ms
-- A rate metric that keeps track of how often the content returned was OK. This metric has one
-  success criteria: content must have been OK more than 95% of the time.
-- A gauge metric that contains the latest size of the returned content. The success criteria for
-  this metric is that the returned content must be smaller than 4000 bytes.
-- A counter metric that keeps track of the total number of times content returned was **not** OK.
-  The success criteria here implies that content can't have been bad more than 99 times.
 
 **⚠️ Common mistake** Do not specify multiple thresholds for the same metric by repeating the same object key:
 
@@ -286,12 +300,15 @@ export const options = {
 ```
 </CodeGroup>
 
-Since thresholds are defined as the properties of a JavaScript object, it's not possible to specify multiple ones with the same property name. Only the last one will remain and the rest will be **silently** ignored. You should specify them with an [array for the same key instead](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
+Since thresholds are defined as the properties of a JavaScript object, it's not possible to specify multiple ones with the same property name.
+Only the last one will remain.
+The rest will be **silently** ignored.
+Instead, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
 ## Thresholds on tags
 
-It's often useful to specify thresholds only on a single URL or a specific tag.
-In k6, tagged requests create sub-metrics that can be used in thresholds as shown below.
+It's often useful to specify thresholds on a single URL or specific tag.
+In k6, tagged requests create sub-metrics that you can use in thresholds:
 
 ```javascript
 export const options = {
@@ -343,8 +360,8 @@ export default function () {
 
 ## Aborting a test when a threshold is crossed
 
-If you want to abort a test as soon as a threshold is crossed, before the test has completed,
-there's an extended threshold specification format that looks like this:
+If you want to abort a test as soon as a threshold is crossed, before the test finishes,
+there's an extended threshold specification format:
 
 <CodeGroup labels={["threshold-abort.js"]} lineNumbers={[true]}>
 
@@ -365,14 +382,14 @@ export const options = {
 
 </CodeGroup>
 
-As you can see in the example above the threshold specification has been extended to alternatively
+In this example, the threshold specification has been extended to alternatively
 support a JS object with parameters to control the abort behavior. The fields are as follows:
 
 | Name           | Type    | Description                                                                                                                                                                                                               |
 | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | threshold      | string  | This is the threshold expression string specifying the threshold condition to evaluate.                                                                                                                                   |
 | abortOnFail    | boolean | Whether to abort the test if the threshold is evaluated to false before the test has completed.                                                                                                                           |
-| delayAbortEval | string  | If you want to delay the evaluation of the threshold for some time, to allow for some metric samples to be collected, you can specify the amount of time to delay using relative time strings like `10s`, `1m` and so on. |
+| delayAbortEval | string  | If you want to delay the evaluation of the threshold to let some metric samples to be collected, you can specify the amount of time to delay using relative time strings like `10s`, `1m` and so on. |
 
 Here is an example:
 
@@ -398,15 +415,15 @@ export default function () {
 
 > **⚠️ Evaluation delay in the cloud**
 >
-> When k6 runs in the cloud, thresholds are evaluated every 60 seconds, therefore the "abortOnFail" feature may be delayed by up to 60 seconds.
+> When k6 runs in the cloud, thresholds are evaluated every 60 seconds, therefore the `abortOnFail` feature may be delayed by up to 60 seconds.
 
 ## Failing a load test using checks
 
-[Checks](/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` will not affect the exit status of k6.
+[Checks](/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` do not affect the exit status of k6.
 
-If you only use `checks` to verify that things work as expected, you will not be able to fail the whole test run based on the results of those `checks`.
+If you use only `checks` to verify that things work as expected, you can't fail the whole test run based on the `check` results.
 
-It can often be useful to combine `checks` and `thresholds`, to get the best of both:
+It's often useful to combine `checks` and `thresholds`, to get the best of both:
 
 <CodeGroup labels={["check_and_fail.js"]} lineNumbers={[true]}>
 
@@ -436,7 +453,7 @@ export default function () {
 
 </CodeGroup>
 
-In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics) - establishing that the rate of successful checks should be higher than 90%.
+In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics), establishing that the rate of successful checks is higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
 
