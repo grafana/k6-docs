@@ -4,6 +4,15 @@ description: 'Entry point for creating test cases.'
 excerpt: 'Entry point for creating test cases.'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
 
 To declare a new test case you call the `describe(name, function)` function. Provide the required name and implementation function. 
 Names should be unique within the script, otherwise, the test cases will to be grouped. 

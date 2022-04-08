@@ -4,6 +4,16 @@ description: 'Use to verify that received >= expected'
 excerpt: 'Use to verify that received >= expected'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
+
 `toBeGreaterThanOrEqual(expectedValue)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeGreaterThanOrEqual` is equivalent to `received >= expected`

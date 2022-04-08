@@ -4,6 +4,16 @@ description: 'and(value) is similar to expect(value), but can be used in a chain
 excerpt: 'and(value) is similar to expect(value), but can be used in a chain.'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
+
 `and(value)` works the same as `expect(value)`, but can be used to chain multiple tests together.
 
 

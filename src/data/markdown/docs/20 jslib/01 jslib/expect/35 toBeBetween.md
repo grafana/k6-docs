@@ -4,6 +4,16 @@ description: 'Use toBeBetween(from, to) to check if numeric value is within rang
 excerpt: 'Use toBeBetween(from, to) to check if numeric value is within range.'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
+
 `toBeBetween(from, to)` is a comparison function that evaluates to true or false. It must be called in the chain after the `t.expect(value)` or `.and(value)`. 
 
 `toBeBetween(from, to)` is equivalent to `value >= from && value <= to`

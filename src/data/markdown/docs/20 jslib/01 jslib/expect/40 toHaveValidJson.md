@@ -4,6 +4,16 @@ description: 'Use .expect(response).toHaveValidJson() to check that HTTP respons
 excerpt: 'Use .expect(response).toHaveValidJson() to check that HTTP response contains valid JSON.'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
+
 `toHaveValidJson()` validates that the http response has valid JSON body. It must be called in the chain after the `t.expect(response)` or `.and(response)`. 
 
 When `toHaveValidJson()` returns false, the chain is broken, and the test is marked as failed. When the chain is broken, further checks inside of the `test` are omitted. 

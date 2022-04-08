@@ -4,6 +4,15 @@ description: 'How to handle errors in expect.js.'
 excerpt: 'How to handle errors in expect.js.'
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
 When executing a performance or integration test, you should expect that your system under test may crash. If this happens, your test should print useful information rather than stack traces caused by unexpected HTTP responses.
 
 `expect` library is designed to make it easy to write test scripts that are resilient to failing SUT (System Under Test).
