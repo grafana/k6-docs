@@ -180,7 +180,7 @@ A threshold requires at least one `threshold_expression` to be defined:
 ```javascript
 export const options = {
   thresholds: {
-    metric_name1: [ 'threshold_expression', ... ], // short format
+    metric_name1: ['threshold_expression', `...`], // short format
     metric_name2: [
       {
         threshold: 'threshold_expression',
@@ -188,7 +188,7 @@ export const options = {
         delayAbortEval: '10s', // string
       },
     ], // full format
-  }
+  },
 };
 ```
 
@@ -276,12 +276,12 @@ We have these thresholds:
 <CodeGroup labels={["threshold-duplicate-mistake.js"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   thresholds: {
     // avoid using the same metric more than once here
     // metric_name: [ 'count<100' ],
     // metric_name: [ 'rate<50' ],
-  }
+  },
 };
 ```
 </CodeGroup>
