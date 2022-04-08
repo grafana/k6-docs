@@ -16,7 +16,8 @@ Chai exposes a number of configuration options that can change how the library b
 | logFailures               | false | When the check fails, debug messages are printed. |
 
 
-`truncateMsgThreshold` configuration variable sets the lower threshold for how large the full check message can be. `truncateVariableThreshold` sets the lower threshold for how large an individual variable can be. It is intended as a safeguard from mistakes when a very large string is included in the check name, especially when the `aggregateChecks` is set to `false`;. 
+`truncateMsgThreshold` configuration variable sets the upper bound for how large the full check message can be. `truncateVariableThreshold` sets the upper bound for how large an individual variable can be. 
+It is intended as a safeguard from mistakes when a very large string is included in the check name, especially when the `aggregateChecks` is set to `false`;. 
 
 <CodeGroup labels={[]}>
 

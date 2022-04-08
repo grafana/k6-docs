@@ -9,6 +9,7 @@ This library is recommended for any type of testing, but especially:
  - Functional testing, where many asserts are needed
  - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
  - Load testing, when the test should be aborted as soon as the first failure occurs.
+ - Unit testing of JavaScript code, not necesairly connected with load. 
  - JavaScript Developers that are already familiar with Chai, Jest or Jasmine.
 
 > ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs). 
@@ -43,6 +44,12 @@ First, create a `mytest.js` k6 script file.
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
 import http from 'k6/http';
 
+export const options = {
+  thresholds: {
+    checks: [{ threshold: 'rate == 1.00' }], // fail test on any expect() failure
+  },
+};
+
 export default function testSuite() {
   describe('Basic API test', () => {
     const response = http.get('https://test-api.k6.io/public/crocodiles');
@@ -62,7 +69,7 @@ When you run this test with `k6 run mytest.js` the result should look similar to
   ✓ expected API status code to equal 200
 ```
 
-This basic example is not very exciting because the same result can be achieved with `group` and `check`, so let's move on to more interesting examples.
+This basic example is not very exciting because the same result can be achieved with `group` and `check`, so let's move on to more interesting examples. 
 
 ## Chain of assertions
 
@@ -76,6 +83,12 @@ Unlike `check()`, when `expect()` fails, it stops the execution of the following
 ```javascript
 import http from 'k6/http';
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
+
+export const options = {
+  thresholds: {
+    checks: [{ threshold: 'rate == 1.00' }], // fail test on any expect() failure
+  },
+};
 
 export default function testSuite() {
   describe('Fetch a list of public crocodiles', () => {
@@ -106,6 +119,7 @@ When the status code isn't 200, the remaining two calls to `expect()` are omitte
   ✗ expected response status to equal 200
   ↳  0% — ✓ 0 / ✗ 1
 ```
+Due of the threshold, k6 will exit with non-zero exit code.
 
 All examples documented in official [Chai's API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
 
