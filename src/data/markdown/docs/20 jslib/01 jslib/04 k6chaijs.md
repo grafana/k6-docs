@@ -9,7 +9,7 @@ This library is recommended for any type of testing, but especially:
  - Functional testing, where many asserts are needed
  - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
  - Load testing, when the test should be aborted as soon as the first failure occurs.
- - Unit testing of JavaScript code, not necesairly connected with load. 
+ - Unit testing of JavaScript code, not necessarily connected with load. 
  - JavaScript Developers that are already familiar with Chai, Jest or Jasmine.
 
 > ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs). 
