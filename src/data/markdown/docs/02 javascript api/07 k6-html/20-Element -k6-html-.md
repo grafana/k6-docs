@@ -7,7 +7,7 @@ excerpt: 'An HTML DOM element as returned by the Selection API.'
 Represents a DOM element matched by a [Selection](/javascript-api/k6-html/selection),
 and provides an API to inspect the element content.
 
-Use [Selection.get(index)](/javascript-api/k6-html/selection/selection-get-index) to return an Element object.
+Use [Selection.get(index)](/javascript-api/k6-html/selection/selection-get) to return an Element object.
 
 The Element object provides a similar API to the [DOM Element API](https://developer.mozilla.org/en-US/Web/API/Element) to retrieve element information.
 

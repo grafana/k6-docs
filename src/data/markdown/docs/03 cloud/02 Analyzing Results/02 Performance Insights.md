@@ -99,9 +99,9 @@ More on [URL Grouping](/using-k6/http-requests#url-grouping)
 
 ## Too Many Groups
 
-**This is a best practice alert, we recommend reviewing how you use the [Group name](/javascript-api/k6/group-name-fn) in your test script.**
+**This is a best practice alert, we recommend reviewing how you use the [Group name](/javascript-api/k6/group) in your test script.**
 
-This alert is raised when we <b>detect a high number of groups</b> in your test script. The most common reason for this alert is an incorrect usage of the [Group name](/javascript-api/k6/group-name-fn) using it for aggregating different HTTP requests, or within a loop statement. When aggregating URLs, please use the name tag.
+This alert is raised when we <b>detect a high number of groups</b> in your test script. The most common reason for this alert is an incorrect usage of the [Group name](/javascript-api/k6/group) using it for aggregating different HTTP requests, or within a loop statement. When aggregating URLs, please use the name tag.
 
 Groups are meant to organize and provide an overview of your result tests allowing you a BDD-style of testing. By allowing this organization, you can quickly find specific parts of your test. For example, the point where users are on a certain page or taking specific actions.
 

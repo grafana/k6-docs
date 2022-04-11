@@ -10,4 +10,4 @@ access to a few functions not accessible during main script execution (aka
 
 | Function                                                                    | Description                                          |
 | --------------------------------------------------------------------------- | ---------------------------------------------------- |
-| [open( filePath, [mode] )](/javascript-api/init-context/open-filepath-mode) | Opens a file and reads all the contents into memory. |
+| [open( filePath, [mode] )](/javascript-api/init-context/open) | Opens a file and reads all the contents into memory. |

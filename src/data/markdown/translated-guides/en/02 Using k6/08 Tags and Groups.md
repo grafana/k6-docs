@@ -120,7 +120,7 @@ Currently, k6 automatically creates the following tags by default:
 | `tls_version` | the [TLS](/using-k6/protocols/ssl-tls) version                                                                                                                                    |
 | `scenario`    | the name of the scenario where the metric was emitted                                                                                                                             |
 | `service`     | the RPC service name for gRPC                                                                                                                                                     |
-| `expected_response` | "true" or "false" based on the [responseCallback](/javascript-api/k6-http/setresponsecallback-callback/) used, by default this checks that the status is 2xx or 3xx |
+| `expected_response` | "true" or "false" based on the [responseCallback](/javascript-api/k6-http/setresponsecallback/) used, by default this checks that the status is 2xx or 3xx |
 
 If you choose, you could disable some of the above tags by using the `systemTags`
 [option](/using-k6/options), just keep in mind that some data collectors (e.g. `cloud`)
@@ -132,7 +132,7 @@ you need them:
 | `vu`          | the ID of the virtual user that executed the request                                                                              |
 | `iter`        | the iteration number                                                                                                              |
 | `ip`          | The IP address of the remote server                                                                                               |
-| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
+| `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol) HTTPS status |
 
 ### User-defined tags
 

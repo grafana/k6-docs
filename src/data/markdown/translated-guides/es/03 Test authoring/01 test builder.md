@@ -55,9 +55,9 @@ Continuamente mejoramos y añadimos nuevas características al generador de prue
 
 **API de k6**
 - Define [thresholds](/es/usando-k6/thresholds/).
-- Añada [checks](/javascript-api/k6/check-val-sets-tags).
-- Añada [sleep](/javascript-api/k6/sleep-t).
-- Añada [group](/javascript-api/k6/group-name-fn).
+- Añada [checks](/javascript-api/k6/check).
+- Añada [sleep](/javascript-api/k6/sleep).
+- Añada [group](/javascript-api/k6/group).
 
 **Algunas otras características**
 - Rellenar el constructor de pruebas con las peticiones grabadas utilizando el [grabador del navegador](/es/creacion-de-pruebas/grabar-una-sesion/grabador-de-navegador/).

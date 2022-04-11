@@ -165,7 +165,7 @@ Read more about managing [Organizations](/cloud/project-and-team-management/orga
 
 ### What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?
 
-Read more [here](/cloud/cloud-faq/whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud-4-0-javascript).
+Read more [here](/cloud/cloud-faq/whats-the-difference-between-loadimpacts-version-3-0-and-k6-cloud-4-0).
 
 ----
 
