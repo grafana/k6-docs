@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+const fs = require('fs');
 const Path = require('path');
 
 const {
@@ -23,6 +24,7 @@ const {
   removeEnPrefix,
   translatePath,
   getSlug,
+  getSlugWithoutArguments,
   getTranslatedSlug,
   replacePathsInSidebarTree,
 } = require('./src/utils/utils.node');
@@ -31,6 +33,8 @@ const {
   LATEST_VERSION,
   DEFAULT_JS_API_VERSIONS_TO_BUILD,
 } = require('./src/utils/versioning');
+
+const newJavascriptURLsRedirects = {};
 
 /* constants */
 // auxilary flag to determine the environment (staging/prod)
@@ -253,11 +257,35 @@ function generateSidebar({ nodes, type = 'docs' }) {
             'guides',
           )}`;
 
+    let pageSlugWithoutArguments =
+      pageLocale === DEFAULT_LOCALE
+        ? `/${getSlugWithoutArguments(translatedPath)}`
+        : `/${getTranslatedSlug(
+            relativeDirectory,
+            title,
+            pageLocale,
+            'guides',
+          )}`;
+
     if (pageSlug === '//') {
       pageSlug = '/';
     }
 
+    if (pageSlugWithoutArguments === '//') {
+      pageSlugWithoutArguments = '/';
+    }
+
     let customSlug = slug ? addTrailingSlash(slug) : null;
+
+    const pageSlugWithDotifiedVersion = dotifyVersion(pageSlug);
+    const pageSlugWithoutArgumentsWithDotifiedVersion = dotifyVersion(
+      pageSlugWithoutArguments,
+    );
+
+    if (pageSlug !== pageSlugWithoutArguments && !customSlug) {
+      newJavascriptURLsRedirects[pageSlugWithDotifiedVersion] =
+        pageSlugWithoutArgumentsWithDotifiedVersion;
+    }
 
     const pageVersion = SUPPORTED_VERSIONS.find((version) =>
       translatedPath.startsWith(version),
@@ -270,7 +298,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: customSlug || dotifyVersion(pageSlug),
+        path: customSlug || pageSlugWithoutArgumentsWithDotifiedVersion,
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -588,8 +616,15 @@ function getDocPagesProps({
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
 
       let slug = customSlug ? addTrailingSlash(customSlug) : getSlug(path);
+      let slugWithoutArguments = customSlug
+        ? addTrailingSlash(customSlug)
+        : getSlugWithoutArguments(path);
       // path collision check
-      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+      if (
+        !pathCollisionDetectorInstance
+          .add({ path: slugWithoutArguments, name })
+          .isUnique()
+      ) {
         // skip the page creation if there is already a page with identical url
         return false;
       }
@@ -601,7 +636,7 @@ function getDocPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: slugWithoutArguments,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -613,15 +648,15 @@ function getDocPagesProps({
 
       let sidebarTree = getSidebar(docSection);
 
-      if (slug.startsWith('extensions/')) {
+      if (slugWithoutArguments.startsWith('extensions/')) {
         sidebarTree = getExtensionsPageSidebar(sidebarTree);
       }
 
       let pageVersions = null;
 
       if (
-        slug.startsWith('javascript-api/') ||
-        slug.startsWith('/javascript-api/')
+        slugWithoutArguments.startsWith('javascript-api/') ||
+        slugWithoutArguments.startsWith('/javascript-api/')
       ) {
         pageVersions = getPageVersions(
           getSidebar,
@@ -634,7 +669,7 @@ function getDocPagesProps({
       // replace sidebar section name for k6 js api pages
       let sectionName = formatSectionName(docSection);
 
-      if (slug.startsWith('javascript-api/')) {
+      if (slugWithoutArguments.startsWith('javascript-api/')) {
         sectionName = 'k6 API';
         breadcrumbs = breadcrumbs.map((item) => ({
           ...item,
@@ -650,6 +685,26 @@ function getDocPagesProps({
       // add prefix to jslib pages slugs and sidebar links
       if (slug.startsWith('jslib/')) {
         slug = `javascript-api/${slug}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/jslib',
+          '/javascript-api/jslib',
+        );
+
+        githubUrl = 'https://github.com/grafana/jslib.k6.io';
+        githubTitle = 'jslib';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Jslib' ? 'jslib' : item.name,
+          path: item.path.replace('/jslib', '/javascript-api/jslib'),
+        }));
+      }
+
+      // add prefix to jslib pages slugs and sidebar links
+      if (slugWithoutArguments.startsWith('jslib/')) {
+        slugWithoutArguments = `javascript-api/${slugWithoutArguments}`;
 
         replacePathsInSidebarTree(
           sidebarTree,
@@ -690,16 +745,43 @@ function getDocPagesProps({
         }));
       }
 
+      // add prefix to xk6-browser pages slugs and sidebar links
+      if (slugWithoutArguments.startsWith('xk6-browser/')) {
+        slugWithoutArguments = `javascript-api/${slugWithoutArguments}`;
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/xk6-browser',
+          '/javascript-api/xk6-browser',
+        );
+
+        githubUrl = 'https://github.com/grafana/xk6-browser';
+        githubTitle = 'xk6-browser';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Xk6-browser' ? 'xk6-browser' : item.name,
+          path: item.path.replace(
+            '/xk6-browser',
+            '/javascript-api/xk6-browser',
+          ),
+        }));
+      }
+
       let hideBreadcrumbs = false;
       if (
-        slug === 'javascript-api/jslib/' ||
-        slug === 'javascript-api/xk6-browser/'
+        slugWithoutArguments === 'javascript-api/jslib/' ||
+        slugWithoutArguments === 'javascript-api/xk6-browser/'
       ) {
         hideBreadcrumbs = true;
       }
 
+      if (slug !== slugWithoutArguments) {
+        newJavascriptURLsRedirects[slug] = slugWithoutArguments;
+      }
+
       return {
-        path: slug,
+        path: slugWithoutArguments,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -766,10 +848,22 @@ function getGuidesPagesProps({
           ? getSlug(path)
           : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
 
+      const slugWithoutArguments =
+        pageLocale === DEFAULT_LOCALE
+          ? getSlugWithoutArguments(path)
+          : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
+
       const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
+      const pageSlugWithoutArguments = customSlug
+        ? addTrailingSlash(customSlug)
+        : slugWithoutArguments;
 
       // path collision check
-      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
+      if (
+        !pathCollisionDetectorInstance
+          .add({ path: slugWithoutArguments, name })
+          .isUnique()
+      ) {
         // skip the page creation if there is already a page with identical url
         return false;
       }
@@ -805,7 +899,7 @@ function getGuidesPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: slugWithoutArguments,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -814,8 +908,12 @@ function getGuidesPagesProps({
         },
       };
 
+      if (pageSlug !== pageSlugWithoutArguments) {
+        newJavascriptURLsRedirects[pageSlug] = pageSlugWithoutArguments;
+      }
+
       return {
-        path: pageSlug || '/',
+        path: pageSlugWithoutArguments || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Guides',
@@ -895,10 +993,16 @@ function getJsAPIVersionedPagesProps({
       }
 
       const slug = getSlug(path);
+      const slugWithoutArguments = getSlugWithoutArguments(path);
 
       const pageSlug = customSlug
         ? getVersionedCustomSlug(addTrailingSlash(customSlug), pageVersion)
-        : slug;
+        : slugWithoutArguments;
+
+      if (slug !== slugWithoutArguments) {
+        newJavascriptURLsRedirects[dotifyVersion(slug)] =
+          dotifyVersion(slugWithoutArguments);
+      }
 
       // path collision check
       if (
@@ -915,7 +1019,7 @@ function getJsAPIVersionedPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: slugWithoutArguments,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -948,7 +1052,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: dotifyVersion(pageSlug) || '/',
+        path: dotifyVersion(slugWithoutArguments) || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
@@ -1380,6 +1484,7 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/touchscreen/',
     '/javascript-api/k6-x-browser/launcher/':
       '/javascript-api/xk6-browser/launcher/',
+    ...newJavascriptURLsRedirects,
   };
 
   // eslint-disable-next-line no-restricted-syntax
@@ -1460,6 +1565,13 @@ exports.createPages = async (options) => {
     javascriptAPISidebar,
   });
   await createRedirects(options);
+
+  // TODO: Delete both these lines of code and newJavascriptURLsRedirects.js once the new javascript API is live
+  // fs.writeFile(
+  //   './newJavascriptURLsRedirects.js',
+  //   JSON.stringify(newJavascriptURLsRedirects),
+  //   (error) => console.log(error),
+  // );
 };
 
 exports.onCreateNode = ({ node, actions }) => {

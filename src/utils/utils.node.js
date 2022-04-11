@@ -251,6 +251,8 @@ const redirectWelcome = (path) =>
     .replace(/en\/getting-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
+const unargumentify = (path) => path.replace(/\(.*?\)/g, '');
+
 const getSlug = (path) => {
   const slug = compose(
     removeEnPrefix,
@@ -259,6 +261,20 @@ const getSlug = (path) => {
     dedupePath,
     unorderify,
     slugify,
+  )(path);
+
+  return slug;
+};
+
+const getSlugWithoutArguments = (path) => {
+  const slug = compose(
+    removeEnPrefix,
+    addTrailingSlash,
+    redirectWelcome,
+    dedupePath,
+    unorderify,
+    slugify,
+    unargumentify,
   )(path);
 
   return slug;
@@ -336,6 +352,9 @@ Object.defineProperties(utils, {
   },
   getSlug: {
     value: getSlug,
+  },
+  getSlugWithoutArguments: {
+    value: getSlugWithoutArguments,
   },
   getTranslatedSlug: {
     value: getTranslatedSlug,
