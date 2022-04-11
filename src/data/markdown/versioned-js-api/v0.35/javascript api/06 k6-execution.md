@@ -5,7 +5,7 @@ excerpt: "Get information about the current test's execution state."
 
 k6 v0.34.0 introduced the capability to get information about the current test execution state inside the test script. You can now read in your script the execution state during the test execution and change your script logic based on the current state.
 
-The `k6/execution` module provides the test execution information with the following three properties:
+The `k6/execution` module provides the test execution information with the following properties:
 
 - [instance](#instance)
 - [scenario](#scenario)
@@ -64,7 +64,7 @@ Meta information and execution details about the current running [scenario](/usi
 | iterationInTest     | integer | The unique and zero-based sequential number of the current iteration in the scenario. It is unique in all k6 execution modes - in local, cloud and distributed/segmented test runs. However, while every instance will get non-overlapping index values in cloud/distributed tests, they might iterate over them at different speeds, so the values won't be sequential across them. |
 
 
-### vu 
+### vu
 
 Meta information and execution details about the current vu and iteration.
 
@@ -115,7 +115,7 @@ export default function () {
 ### Script naming
 The `name` property can be used for executing the logic based on which script is currently running.
 
-> **Tip**: 
+> **Tip**:
 > If you need to run [multiple scenarios](/using-k6/scenarios/advanced-examples/#using-multiple-scenarios) in your script you can use `exec` option achieve a similar goal
 
 <CodeGroup labels={["script-naming.js"]} lineNumbers={[true]}>

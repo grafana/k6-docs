@@ -3,7 +3,7 @@ title: "k6/execution"
 shouldCreatePage: false
 ---
 
-The `k6/execution` module provides the test execution information with the following three properties:
+The `k6/execution` module provides the test execution information with the following properties:
 - [instance](/javascript-api/k6-execution/#instance)
 - [scenario](/javascript-api/k6-execution/#scenario)
 - [vu](/javascript-api/k6-execution/#vu)
