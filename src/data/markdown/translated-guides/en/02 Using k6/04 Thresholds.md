@@ -223,7 +223,7 @@ Examples:
 
 A threshold expression evaluates to `true` or `false`.
 
-Each of the four [metric types](using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
+Each of the four [metric types](/using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
 
 | Metric type | Aggregation methods                                                                                                                                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

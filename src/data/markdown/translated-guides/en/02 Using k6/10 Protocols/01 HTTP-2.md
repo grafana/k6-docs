@@ -37,7 +37,4 @@ export default function () {
 
 </CodeGroup>
 
-For more information on what values the r.proto field can have, check out:
-
-- [k6 HTTP](/javascript-api/k6-http/response)
-- https://http2.github.io/http2-spec/#versioning
+To see the values that the `r.proto` field can have, refer to the documentation for [k6 HTTP](/javascript-api/k6-http/response).
