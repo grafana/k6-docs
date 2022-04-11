@@ -30,20 +30,20 @@ This documentation is for the last version only. If you discover that some of th
 
 | Function | Description |
 | -------- | ----------- |
-| [request(method, url, [body], [params])](/javascript-api/jslib/httpx/request)  | Generic method for making arbitrary HTTP requests. |
-| [get(url, [body], [params])](/javascript-api/jslib/httpx/get)  | Makes GET request |
-| [post(url, [body], [params])](/javascript-api/jslib/httpx/post)  | Makes POST request |
-| [put(url, [body], [params])](/javascript-api/jslib/httpx/put)  | Makes PUT request |
-| [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch)  | Makes PATCH request |
-| [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete)  | Makes DELETE request |
-| [batch(requests)](/javascript-api/jslib/httpx/batch)  | Batch multiple HTTP requests together, to issue them in parallel. |
-| [setBaseUrl(url)](/javascript-api/jslib/httpx/setbaseurl)  | Sets the base URL for the session |
-| [addHeader(key, value)](/javascript-api/jslib/httpx/addheader)  | Adds a header to the session |
-| [addHeaders(object)](/javascript-api/jslib/httpx/addheaders)  | Adds multiple headers to the session |
-| [clearHeader(name)](/javascript-api/jslib/httpx/clearheader)  | Removes header from the session |
-| [addTag(key, value)](/javascript-api/jslib/httpx/addtag)  | Adds a tag to the session |
-| [addTags(object)](/javascript-api/jslib/httpx/addtags)  | Adds multiple tags to the session |
-| [clearTag(name)](/javascript-api/jslib/httpx/cleartag)  | Removes tag from the session |
+| [request(method, url, [body], [params])](/javascript-api/jslib/httpx/request-method-url-body-params)  | Generic method for making arbitrary HTTP requests. |
+| [get(url, [body], [params])](/javascript-api/jslib/httpx/get-url-body-params)  | Makes GET request |
+| [post(url, [body], [params])](/javascript-api/jslib/httpx/post-url-body-params)  | Makes POST request |
+| [put(url, [body], [params])](/javascript-api/jslib/httpx/put-url-body-params)  | Makes PUT request |
+| [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch-url-body-params)  | Makes PATCH request |
+| [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete-url-body-params)  | Makes DELETE request |
+| [batch(requests)](/javascript-api/jslib/httpx/batch-requests)  | Batch multiple HTTP requests together, to issue them in parallel. |
+| [setBaseUrl(url)](/javascript-api/jslib/httpx/setbaseurl-url)  | Sets the base URL for the session |
+| [addHeader(key, value)](/javascript-api/jslib/httpx/addheader-key-value)  | Adds a header to the session |
+| [addHeaders(object)](/javascript-api/jslib/httpx/addheaders-object)  | Adds multiple headers to the session |
+| [clearHeader(name)](/javascript-api/jslib/httpx/clearheader-name)  | Removes header from the session |
+| [addTag(key, value)](/javascript-api/jslib/httpx/addtag-key-value)  | Adds a tag to the session |
+| [addTags(object)](/javascript-api/jslib/httpx/addtags-object)  | Adds multiple tags to the session |
+| [clearTag(name)](/javascript-api/jslib/httpx/cleartag-name)  | Removes tag from the session |
 
 
 

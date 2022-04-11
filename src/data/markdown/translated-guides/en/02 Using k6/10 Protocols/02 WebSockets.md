@@ -35,7 +35,7 @@ export default function () {
 
 </CodeGroup>
 
-As you can see above the [connect()](/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter, and that function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter. The run function forms the basis of the asynchronous event loop.
+As you can see above the [connect()](/javascript-api/k6-ws/connect-url-params-callback) method takes a "run" function as its third parameter, and that function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter. The run function forms the basis of the asynchronous event loop.
 
 It will be called immediately when the WebSocket connection is created, execute all code inside it (usually code to set up event handlers), and then block until the WebSocket connection is closed (by the remote host or by using [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
 
@@ -109,7 +109,7 @@ export default function () {
 ## Timeouts
 
 You can add a timeout to the WebSocket connection by passing a handler function as well as the
-timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout) function.
+timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay) function.
 
 <CodeGroup labels={["Timeouts in WebSocket tests"]} lineNumbers={[true]}>
 

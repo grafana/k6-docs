@@ -7,7 +7,7 @@ excerpt: 'Generic method for making arbitrary HTTP requests'
 
 Generic method for making arbitrary HTTP requests. 
 
-Consider using specific methods for making common requests ([get](/javascript-api/jslib/httpx/get), [post](/javascript-api/jslib/httpx/post), [put](/javascript-api/jslib/httpx/put), [patch](/javascript-api/jslib/httpx/patch))
+Consider using specific methods for making common requests ([get](/javascript-api/jslib/httpx/get-url-body-params), [post](/javascript-api/jslib/httpx/post-url-body-params), [put](/javascript-api/jslib/httpx/put-url-body-params), [patch](/javascript-api/jslib/httpx/patch-url-body-params))
 
 
 | Parameter      | Type   | Description                                                                          |

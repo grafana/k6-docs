@@ -231,7 +231,7 @@ k6 run --vus 3 --iterations 3 script.js
 
 ## Use the open() scripting API to open a CSV/JSON/TXT file:
 
-more info here: [open](/javascript-api/init-context/open)
+more info here: [open](/javascript-api/init-context/open-filepath-mode)
 
 <CodeGroup labels={["users.json"]} lineNumbers={[false]}>
 

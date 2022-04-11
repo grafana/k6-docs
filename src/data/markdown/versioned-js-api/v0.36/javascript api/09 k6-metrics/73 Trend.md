@@ -12,7 +12,7 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 
 | Method                                                                            | Description                      |
 | --------------------------------------------------------------------------------- | -------------------------------- |
-| [Trend.add(value, [tags])](/javascript-api/k6-metrics/trend/trend-add) | Add a value to the trend metric. |
+| [Trend.add(value, [tags])](/javascript-api/k6-metrics/trend/trend-add-value-tags) | Add a value to the trend metric. |
 
 ## Trend usage in Thresholds
 

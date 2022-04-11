@@ -29,5 +29,5 @@ The following TLS functionality supported by k6 is worth talking about in more d
 - [TLS client certificates](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates)
 - [TLS version and ciphers](/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers) (restricting as
   well as checking what was used for a HTTP request by checking response object properties)
-- [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol)
+- [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp)
 - [Response.timings.tls_handshaking](/javascript-api/k6-http/response)

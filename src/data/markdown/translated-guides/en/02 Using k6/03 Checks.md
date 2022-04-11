@@ -3,7 +3,7 @@ title: 'Checks'
 excerpt: 'Checks are like asserts but differ in that they do not halt the execution, instead, they just store the result of the check, pass or fail, and let the script execution continue.'
 ---
 
-[*Checks*](/javascript-api/k6/check/) are like assertions, but they don't halt execution.
+[*Checks*](/javascript-api/k6/check-val-sets-tags/) are like assertions, but they don't halt execution.
 Instead, they store the result of the check, pass or fail, and let the script continue.
 For a way to halt the execution of a test based on checks, take a look at [thresholds](/using-k6/thresholds).
 
@@ -95,7 +95,7 @@ In this example, note that the check "is status 200" succeeded 100% of the times
 
 ## Add multiple checks
 
-You may also add multiple checks within a single [check()](/javascript-api/k6/check) statement:
+You may also add multiple checks within a single [check()](/javascript-api/k6/check-val-sets-tags) statement:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -150,5 +150,5 @@ You can also add the check to the **analysis** tab, for further comparison with 
 
 ## See also
 
-- [Check Javascript API](/javascript-api/k6/check/)
+- [Check Javascript API](/javascript-api/k6/check-val-sets-tags/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

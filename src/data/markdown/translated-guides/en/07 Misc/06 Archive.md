@@ -6,7 +6,7 @@ excerpt: 'A k6 archive is simply a tar file with all files needed to execute a k
 ## What is an archive?
 
 When the complexity of a k6 test goes beyond a single JS file it quickly becomes cumbersome to
-find and bundle up all the dependencies (JS, [open()](/javascript-api/init-context/open)'ed data files, TLS
+find and bundle up all the dependencies (JS, [open()](/javascript-api/init-context/open-filepath-mode)'ed data files, TLS
 client certs, etc.). k6 archives are a native way to bundle and distribute, or share, a test.
 
 A k6 archive is simply a [tar](https://en.wikipedia.org/wiki/Tar_%28computing%29) file with all
@@ -26,7 +26,7 @@ $ k6 run script.js
 
 Now if you replace `run` with `archive` k6 will run the [init stage](/using-k6/test-life-cycle) of
 the code to determine which JS files are being imported and what data files are being
-[`open()`](/javascript-api/init-context/open)'ed and bundles all of the files up
+[`open()`](/javascript-api/init-context/open-filepath-mode)'ed and bundles all of the files up
 into a tar file:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
@@ -89,7 +89,7 @@ distribute the test files to all participating nodes.
 
 ## Contents of an archive file
 
-An archive contains the original source of the JS code, any [`open()`](/javascript-api/init-context/open)'ed
+An archive contains the original source of the JS code, any [`open()`](/javascript-api/init-context/open-filepath-mode)'ed
 data files, [SSL/TLS client certificates](/using-k6/protocols/ssl-tls/ssl-tls-client-certificates) as well as a
 `metadata.json` with all the options (a cascading of the options set on the [CLI](/using-k6/options),
 via [Environment variables](/using-k6/options) and [in-script options](/using-k6/options)
@@ -157,7 +157,7 @@ Breaking down the file structure we get:
 
 **data** contains the source code of the main JS file (`script.js` in this example).
 
-**files** contains the full original directory tree of all [`open()`](/javascript-api/init-context/open)'ed data files.
+**files** contains the full original directory tree of all [`open()`](/javascript-api/init-context/open-filepath-mode)'ed data files.
 
 **metadata.json** The resolved "default" options for this test based on [CLI flags](/using-k6/options),
 [Environment variables](/using-k6/options) and [in-script options](/using-k6/options).

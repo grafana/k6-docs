@@ -9,7 +9,7 @@ Examples parsing HTML content. Use the `k6/html` module for HTML parsing.
 | ------------------------------------------------------- | -------- | ----------------------------------------------------- |
 | [Selection](/javascript-api/k6-html/selection)          | Class    | A jQuery-like API for accessing HTML DOM elements.    |
 | [Element](/javascript-api/k6-html/element)              | Class    | An HTML DOM element as returned by the Selection API. |
-| [parseHTML(src)](/javascript-api/k6-html/parsehtml) | function | Parse an HTML string and populate a Selection object. |
+| [parseHTML(src)](/javascript-api/k6-html/parsehtml-src) | function | Parse an HTML string and populate a Selection object. |
 
 <CodeGroup labels={["Select.find"]} lineNumbers={[true]}>
 

@@ -4,7 +4,7 @@ description: 'Object returned by crypto.createHash(). It allows adding more data
 excerpt: 'Object returned by crypto.createHash(). It allows adding more data to be hashed and to extract digests along the way.'
 ---
 
-This object is returned by [crypto.createHash()](/javascript-api/k6-crypto/createhash)
+This object is returned by [crypto.createHash()](/javascript-api/k6-crypto/createhash-algorithm)
 and allows the user to successively add more string data to be hashed, and to extract digests along the way.
 
 | Name                  | Type     | Description                                                                                                                                                                                                                                                             |

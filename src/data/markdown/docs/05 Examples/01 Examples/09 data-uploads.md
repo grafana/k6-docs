@@ -7,7 +7,7 @@ Example to execute a load test that will upload a file to the System Under Test 
 
 ## The open() function
 
-Using the built-in function, [`open()`](/javascript-api/init-context/open),
+Using the built-in function, [`open()`](/javascript-api/init-context/open-filepath-mode),
 we are able to read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
@@ -75,17 +75,17 @@ export default function () {
 
 </CodeGroup>
 
-In the example above we use the [http.file()](/javascript-api/k6-http/file)
+In the example above we use the [http.file()](/javascript-api/k6-http/file-data-filename-contenttype)
 API to wrap the file contents in a [FileData](/javascript-api/k6-http/filedata) object.
-When passing a JS object as the body parameter to [http.post()](/javascript-api/k6-http/post),
+When passing a JS object as the body parameter to [http.post()](/javascript-api/k6-http/post-url-body-params),
 or any of the other HTTP request functions, where one of the property values is a
 [FileData](/javascript-api/k6-http/filedata) a multipart request will be constructed
 and sent.
 
 ### Relevant k6 APIs
 
-- [open(filePath, [mode])](/javascript-api/init-context/open)
-- [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file)
+- [open(filePath, [mode])](/javascript-api/init-context/open-filepath-mode)
+- [http.file(data, [filename], [contentType])](/javascript-api/k6-http/file-data-filename-contenttype)
 
 
 ## Advanced multipart request

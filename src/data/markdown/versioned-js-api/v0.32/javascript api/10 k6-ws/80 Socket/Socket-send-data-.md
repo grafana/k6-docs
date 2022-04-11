@@ -30,4 +30,4 @@ export default function () {
 
 </CodeGroup>
 
-- See also [Socket.sendBinary(data)](/javascript-api/k6-ws/socket/socket-sendbinary)
+- See also [Socket.sendBinary(data)](/javascript-api/k6-ws/socket/socket-sendbinary-data)

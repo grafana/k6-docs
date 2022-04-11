@@ -86,7 +86,7 @@ Nombre de métrica                          | Tipo    | Descripción            
 | http_req_waiting                     | Trend   | Tiempo dedicado a la espera de respuesta del host remoto (a.k.a. “time to first byte”, o “TTFB”). `float`                                                                                                                                       |
 | http_req_receiving                   | Trend   | Tiempo empleado en recibir datos de respuesta del host remoto. `float`                                                                                                                                                                             |
 | http_req_duration                    | Trend   | Tiempo total de la solicitud. Es igual a `http_req_sending + http_req_waiting + http_req_receiving` (es decir, cuánto tiempo tardó el servidor remoto en procesar la solicitud y responder, sin el DNS inicial lookup/connection times). `float` |
-| http_req_failed <sup>(≥ v0.31)</sup> | Rate    | La tasa de solicitudes fallidas según [setResponseCallback](/javascript-api/k6-http/setresponsecallback).                                                                                                                        |
+| http_req_failed <sup>(≥ v0.31)</sup> | Rate    | La tasa de solicitudes fallidas según [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                                                                                                                        |
 
 ### Accediendo a los tiempos HTTP desde un script
 

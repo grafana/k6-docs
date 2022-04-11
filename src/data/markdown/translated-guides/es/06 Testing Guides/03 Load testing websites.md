@@ -129,7 +129,7 @@ Pero también hay casos válidos para probar su CDN en caso de que quiera entend
 
 Cuando se prueban sitios web es común que se tenga que interactuar con HTML para enviar formularios, extraer datos, comprobar la existencia de elementos o texto, etc.
 
-Por esa razón k6 tiene el [parseHTML](/javascript-api/k6-html/parsehtml) y el [Selection](/javascript-api/k6-html/selection) API que contiene más o menos todo el API de jQuery que tiene sentido en el contexto de k6.
+Por esa razón k6 tiene el [parseHTML](/javascript-api/k6-html/parsehtml-src) y el [Selection](/javascript-api/k6-html/selection) API que contiene más o menos todo el API de jQuery que tiene sentido en el contexto de k6.
 
 <CodeGroup labels={["Parsing HTML content"]}>
 
@@ -147,7 +147,7 @@ export default function () {
 
 </CodeGroup>
 
-Para enviar un formulario, consulte [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform).
+Para enviar un formulario, consulte [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
 
 ### Etiquetar diferentes tipos de recursos
 
@@ -194,4 +194,4 @@ group('login page', function () {
 - [Guía de grabación de sesiones ](/es/creacion-de-pruebas/grabar-una-sesion/)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
-- Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml) and [Selection.find](/javascript-api/k6-html/selection/selection-find)
+- Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)

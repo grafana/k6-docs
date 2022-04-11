@@ -53,15 +53,15 @@ The [http module](/javascript-api/k6-http) handles all kinds of HTTP requests an
 
 | Name                                                                | Value                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [batch()](/javascript-api/k6-http/batch)                   | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
-| [del()](/javascript-api/k6-http/del)                | Issue an HTTP DELETE request.                                             |
-| [get()](/javascript-api/k6-http/get)                     | Issue an HTTP GET request.                                                |
-| [head()](/javascript-api/k6-http/head)                   | Issue an HTTP HEAD request.                                               |
-| [options()](/javascript-api/k6-http/options)        | Issue an HTTP OPTIONS request.                                            |
-| [patch()](/javascript-api/k6-http/patch)            | Issue an HTTP PATCH request.                                              |
-| [post()](/javascript-api/k6-http/post)              | Issue an HTTP POST request.                                               |
-| [put()](/javascript-api/k6-http/put)                | Issue an HTTP PUT request.                                                |
-| [request()](/javascript-api/k6-http/request) | Issue any type of HTTP request.                                           |
+| [batch()](/javascript-api/k6-http/batch-requests)                   | Issue multiple HTTP requests in parallel (like e.g. browsers tend to do). |
+| [del()](/javascript-api/k6-http/del-url-body-params)                | Issue an HTTP DELETE request.                                             |
+| [get()](/javascript-api/k6-http/get-url-params)                     | Issue an HTTP GET request.                                                |
+| [head()](/javascript-api/k6-http/head-url-params)                   | Issue an HTTP HEAD request.                                               |
+| [options()](/javascript-api/k6-http/options-url-body-params)        | Issue an HTTP OPTIONS request.                                            |
+| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Issue an HTTP PATCH request.                                              |
+| [post()](/javascript-api/k6-http/post-url-body-params)              | Issue an HTTP POST request.                                               |
+| [put()](/javascript-api/k6-http/put-url-body-params)                | Issue an HTTP PUT request.                                                |
+| [request()](/javascript-api/k6-http/request-method-url-body-params) | Issue any type of HTTP request.                                           |
 
 ## HTTP Request Tags
 
@@ -70,8 +70,8 @@ These tags let you filter your results, helping you organize your analysis.
 
 | Name   | Description                                |
 | ------ | ------------------------------------------ |
-| expected_response   | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/javascript-api/k6-http/setresponsecallback).                  |
-| group   | When the request runs inside a [group](/javascript-api/k6/group), the tag value is the group name.  Default is empty.               |
+| expected_response   | By default, response statuses between 200 and 399 are `true`. Change the default behavior with [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
+| group   | When the request runs inside a [group](/javascript-api/k6/group-name-fn), the tag value is the group name.  Default is empty.               |
 | name   | Defaults to URL requested                  |
 | method | Request method (`GET`, `POST`, `PUT` etc.) |
 | scenario   | When the request runs inside a [scenario](/using-k6/scenarios), the tag value is the scenario name.  Default is `default`.               |

@@ -24,7 +24,7 @@ Logs can aid you in troubleshooting your test execution. But they should NOT rep
 
 For example, it is often an **anti-pattern** to use `logs` to:
 
-- Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check) to assert these conditions.
+- Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check-val-sets-tags) to assert these conditions.
 - Track a variable value during the test execution. Instead, use the [Trend](/javascript-api/k6-metrics/trend) metric.
 
 > **Tip**

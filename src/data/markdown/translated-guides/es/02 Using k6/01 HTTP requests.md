@@ -51,14 +51,14 @@ Utilice el [módulo http](/javascript-api/k6-http) para realizar todo tipo de pe
 
 | Nombre                                                                | Descripción                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [batch()](/javascript-api/k6-http/batch)                   | Emitir múltiples peticiones HTTP en paralelo (como suelen hacer, por ejemplo, los navegadores).|
-| [del()](/javascript-api/k6-http/del)                | Emitir una solicitud HTTP DELETE.                                             |
-| [get()](/javascript-api/k6-http/get)                     | Emitir una solicitud HTTP GET.                                                |
-| [options()](/javascript-api/k6-http/options)        | Emitir una solicitud HTTP OPTIONS.                                            |
-| [patch()](/javascript-api/k6-http/patch)            | Emitir una solicitud HTTP PATCH.                                              |
-| [post()](/javascript-api/k6-http/post)              | Emitir una solicitud HTTP POST.                                               |
-| [put()](/javascript-api/k6-http/put)                | Emitir una solicitud HTTP PUT.                                                |
-| [request()](/javascript-api/k6-http/request) | Emitir una solicitud HTTP.                                           |
+| [batch()](/javascript-api/k6-http/batch-requests)                   | Emitir múltiples peticiones HTTP en paralelo (como suelen hacer, por ejemplo, los navegadores).|
+| [del()](/javascript-api/k6-http/del-url-body-params)                | Emitir una solicitud HTTP DELETE.                                             |
+| [get()](/javascript-api/k6-http/get-url-params)                     | Emitir una solicitud HTTP GET.                                                |
+| [options()](/javascript-api/k6-http/options-url-body-params)        | Emitir una solicitud HTTP OPTIONS.                                            |
+| [patch()](/javascript-api/k6-http/patch-url-body-params)            | Emitir una solicitud HTTP PATCH.                                              |
+| [post()](/javascript-api/k6-http/post-url-body-params)              | Emitir una solicitud HTTP POST.                                               |
+| [put()](/javascript-api/k6-http/put-url-body-params)                | Emitir una solicitud HTTP PUT.                                                |
+| [request()](/javascript-api/k6-http/request-method-url-body-params) | Emitir una solicitud HTTP.                                           |
 
 ## Tags en las solicitudes HTTP 
 
@@ -66,8 +66,8 @@ k6 aplicará automáticamente [etiquetas (tags)](/es/usando-k6/tags-y-groups/#sy
 
 | Nombre   | Descripción                                |
 | ------ | ------------------------------------------ |
-| expected_response <sup>(≥ v0.31)</sup>  | Por defecto, cuando el valor de  `response.status` está entre 200 y 399, el valor es `true`. Cambia el compartamiento por defecto mediante [setResponseCallback](/javascript-api/k6-http/setresponsecallback).                  |
-| group   | Cuando una petición se ejecutan dentro de un [group](/javascript-api/k6/group), el valor es el nombre del grupo. Por defecto está vacío.    |
+| expected_response <sup>(≥ v0.31)</sup>  | Por defecto, cuando el valor de  `response.status` está entre 200 y 399, el valor es `true`. Cambia el compartamiento por defecto mediante [setResponseCallback](/javascript-api/k6-http/setresponsecallback-callback).                  |
+| group   | Cuando una petición se ejecutan dentro de un [group](/javascript-api/k6/group-name-fn), el valor es el nombre del grupo. Por defecto está vacío.    |
 | name   | Por defecto será la URL solicitada                  |
 | method | Métodos de la solicitud (GET,POST,PUT, entre otros) |
 | scenario   | Cuando una petición se ejecutan dentro de un [scenario](/es/usando-k6/escenarios/), el valor es el nombre del grupo. Por defecto está vacío. |
