@@ -282,7 +282,11 @@ function generateSidebar({ nodes, type = 'docs' }) {
       pageSlugWithoutArguments,
     );
 
-    if (pageSlug !== pageSlugWithoutArguments && !customSlug) {
+    if (
+      pageSlugWithDotifiedVersion.includes('javascript-api') &&
+      pageSlug !== pageSlugWithoutArguments &&
+      !customSlug
+    ) {
       newJavascriptURLsRedirects[pageSlugWithDotifiedVersion] =
         pageSlugWithoutArgumentsWithDotifiedVersion;
     }
@@ -298,7 +302,10 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: customSlug || pageSlugWithoutArgumentsWithDotifiedVersion,
+        path:
+          customSlug || pageSlugWithDotifiedVersion.includes('javascript-api')
+            ? pageSlugWithoutArgumentsWithDotifiedVersion
+            : pageSlugWithDotifiedVersion,
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -619,10 +626,14 @@ function getDocPagesProps({
       let slugWithoutArguments = customSlug
         ? addTrailingSlash(customSlug)
         : getSlugWithoutArguments(path);
+
       // path collision check
       if (
         !pathCollisionDetectorInstance
-          .add({ path: slugWithoutArguments, name })
+          .add({
+            path: slug.includes('javascript-api') ? slugWithoutArguments : slug,
+            name,
+          })
           .isUnique()
       ) {
         // skip the page creation if there is already a page with identical url
@@ -636,7 +647,7 @@ function getDocPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug: slugWithoutArguments,
+          slug: slug.includes('javascript-api') ? slugWithoutArguments : slug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -776,12 +787,12 @@ function getDocPagesProps({
         hideBreadcrumbs = true;
       }
 
-      if (slug !== slugWithoutArguments) {
+      if (slug.includes('javascript-api') && slug !== slugWithoutArguments) {
         newJavascriptURLsRedirects[slug] = slugWithoutArguments;
       }
 
       return {
-        path: slugWithoutArguments,
+        path: slug.includes('javascript-api') ? slugWithoutArguments : slug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -848,22 +859,10 @@ function getGuidesPagesProps({
           ? getSlug(path)
           : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
 
-      const slugWithoutArguments =
-        pageLocale === DEFAULT_LOCALE
-          ? getSlugWithoutArguments(path)
-          : getTranslatedSlug(relativeDirectory, title, pageLocale, 'guides');
-
       const pageSlug = customSlug ? addTrailingSlash(customSlug) : slug;
-      const pageSlugWithoutArguments = customSlug
-        ? addTrailingSlash(customSlug)
-        : slugWithoutArguments;
 
       // path collision check
-      if (
-        !pathCollisionDetectorInstance
-          .add({ path: slugWithoutArguments, name })
-          .isUnique()
-      ) {
+      if (!pathCollisionDetectorInstance.add({ path: slug, name }).isUnique()) {
         // skip the page creation if there is already a page with identical url
         return false;
       }
@@ -899,7 +898,7 @@ function getGuidesPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug: slugWithoutArguments,
+          slug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -908,12 +907,8 @@ function getGuidesPagesProps({
         },
       };
 
-      if (pageSlug !== pageSlugWithoutArguments) {
-        newJavascriptURLsRedirects[pageSlug] = pageSlugWithoutArguments;
-      }
-
       return {
-        path: pageSlugWithoutArguments || '/',
+        path: pageSlug || '/',
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Guides',
