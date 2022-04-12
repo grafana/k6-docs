@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+// TODO: Delete both these lines of code and newJavascriptURLsRedirects.js once the new javascript API is live
+// const fs = require('fs');
 const Path = require('path');
 
 const {
@@ -52,6 +54,54 @@ if (!isProduction && jsApiVersionsToBuild) {
   SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
     .reverse()
     .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
+}
+
+const newJavascriptURLsRedirects = {};
+
+function removeParametersFromJavaScriptAPISlug(slug, title) {
+  if (!slug || !title) return slug;
+
+  // Making sure to change slug only for Javascript API docs that have parameters
+  if (
+    (slug.includes('javascript-api/') || slug.includes('jslib/')) &&
+    title.includes('(') &&
+    title.includes(')')
+  ) {
+    let newSlug = slug;
+    // Getting parameters that need to be removed from slug
+    const parameters = title.split('(')[1].slice(0, -1).split(',');
+
+    if (parameters.length === 0) return slug;
+
+    // Reversing parameters in order to start a loop from the end
+    const reversedParameters = parameters.reverse();
+
+    // Removing parameters from slug
+    reversedParameters.forEach((word) => {
+      const replaceRegexp = new RegExp(
+        `${word
+          // Lowercasing word since words in slug are lowercased
+          .toLowerCase()
+          // Trimming word since it can contain a space
+          .trim()
+          // Removing square brackets since some parameters can be wrapped in them
+          .replace(/\[|\]/g, '')}/?$`,
+      );
+
+      // Removing parameter from slug and cleaning up by removing spaces and hyphens in the end of the slug
+      newSlug = newSlug.replace(replaceRegexp, '').replace(/[\s-]+$/g, '');
+    });
+
+    // Adding slash since it was removed in the regexp above
+    newSlug = addTrailingSlash(newSlug);
+
+    // Adding slugs to redirects object if they are different
+    if (slug !== newSlug) newJavascriptURLsRedirects[slug] = newSlug;
+
+    return newSlug;
+  }
+
+  return slug;
 }
 
 const formatSectionName = (name) => {
@@ -270,7 +320,10 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: customSlug || dotifyVersion(pageSlug),
+        path: removeParametersFromJavaScriptAPISlug(
+          customSlug || dotifyVersion(pageSlug),
+          title,
+        ),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -699,7 +752,7 @@ function getDocPagesProps({
       }
 
       return {
-        path: slug,
+        path: removeParametersFromJavaScriptAPISlug(slug, title),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -948,7 +1001,10 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: dotifyVersion(pageSlug) || '/',
+        path: removeParametersFromJavaScriptAPISlug(
+          dotifyVersion(pageSlug) || '/',
+          title,
+        ),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
@@ -1380,6 +1436,7 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/touchscreen/',
     '/javascript-api/k6-x-browser/launcher/':
       '/javascript-api/xk6-browser/launcher/',
+    ...newJavascriptURLsRedirects,
   };
 
   // eslint-disable-next-line no-restricted-syntax
@@ -1460,6 +1517,13 @@ exports.createPages = async (options) => {
     javascriptAPISidebar,
   });
   await createRedirects(options);
+
+  // TODO: Delete both these lines of code and newJavascriptURLsRedirects.js once the new javascript API is live
+  // fs.writeFile(
+  //   './newJavascriptURLsRedirects.json',
+  //   JSON.stringify(newJavascriptURLsRedirects, null, 2),
+  //   (error) => console.log(error),
+  // );
 };
 
 exports.onCreateNode = ({ node, actions }) => {
