@@ -356,6 +356,8 @@ to access it in addition to the `Runtime()` method shown above.
 Output extensions are written similarly to JavaScript extensions, but have a
 different API and performance considerations.
 
+There is a [template repository](https://github.com/grafana/xk6-output-template) for output extensions with very basic implementation.
+
 The core of an Output extension is a struct that implements the [`output.Output`
 interface](https://pkg.go.dev/go.k6.io/k6/output#Output). For example:
 
