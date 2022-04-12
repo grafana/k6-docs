@@ -19,9 +19,9 @@ Due to implementation specifics:
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
-| callback  | [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) | an object returned from [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) |
+| callback  | [expectedStatuses](/javascript-api/k6-http/expectedstatuses) | an object returned from [expectedStatuses](/javascript-api/k6-http/expectedstatuses) |
 
-Currently only the very special [expectedStatuses](/javascript-api/k6-http/expectedstatuses-statuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
+Currently only the very special [expectedStatuses](/javascript-api/k6-http/expectedstatuses) objects are supported but in the future it is planned that a JavaScript callback will be supported as well. By default requests with status codes between 200 and 399 are considered "expected".
 
 Setting the callback to `null` disables the tagging with `expected_response` and the emitting of `http_req_failed`, effectively reverting to the behaviour prior to v0.31.0.
 

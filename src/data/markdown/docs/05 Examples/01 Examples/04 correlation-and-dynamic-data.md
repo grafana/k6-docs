@@ -62,9 +62,9 @@ export default function () {
 ### Extracting values/tokens from form fields
 
 You can choose from two different approaches when deciding how to handle form submissions.
-Either you use the higher-level [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params) API
+Either you use the higher-level [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform) API
 or you extract necessary hidden fields etc. and build a request yourself and then send it using the
-appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/javascript-api/k6-http/post-url-body-params).
+appropriate `http.*` family of APIs, like [http.post(url, [body], [params])](/javascript-api/k6-http/post).
 
 #### Extracting .NET ViewStates, CSRF tokens and other hidden input fields
 
@@ -104,9 +104,9 @@ export default function () {
 
 **Relevant k6 APIs**:
 
-- [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find-selector) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
+- [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find) (the [jQuery Selector API](http://api.jquery.com/category/selectors/)
   docs are also a good resource on what possible selector queries can be made)
-- [Selection.attr(name)](/javascript-api/k6-html/selection/selection-attr-name)
+- [Selection.attr(name)](/javascript-api/k6-html/selection/selection-attr)
 
 ### Generic extraction of values/tokens
 

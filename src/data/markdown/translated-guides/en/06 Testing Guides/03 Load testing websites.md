@@ -131,7 +131,7 @@ But there are also valid cases to test your CDN in case you want to understand s
 
 When testing web sites it's common that you have to interact with HTML to submit forms, extract data, check for existence of elements or text etc.
 
-For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml-src) and the [Selection](/javascript-api/k6-html/selection) API that contains more or less all of the [jQuery API](http://api.jquery.com/) that makes sense in the context of k6.
+For that reason k6 has the [parseHTML](/javascript-api/k6-html/parsehtml) and the [Selection](/javascript-api/k6-html/selection) API that contains more or less all of the [jQuery API](http://api.jquery.com/) that makes sense in the context of k6.
 
 <CodeGroup labels={["Parsing HTML content"]}>
 
@@ -149,7 +149,7 @@ export default function () {
 
 </CodeGroup>
 
-For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform-params).
+For submitting a form, check out [Response.submitForm([params])](/javascript-api/k6-http/response/response-submitform).
 
 ### Tag different types of resources
 
@@ -198,6 +198,6 @@ group('login page', function () {
 - [Session recording guide](/using-k6/session-recording-har-support)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](/examples/correlation-and-dynamic-data)
-- Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml-src) and [Selection.find](/javascript-api/k6-html/selection/selection-find-selector)
+- Interacting with HTML content: [parseHTML](/javascript-api/k6-html/parsehtml) and [Selection.find](/javascript-api/k6-html/selection/selection-find)
 
 <LdScript script='{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "When to load test a website?", "acceptedAnswer": { "@type": "Answer", "text": "<p>In short, whenever you are concerned about the <b>availability and scalability of your website</b>.</p><p>If you have a very low number of users, backend performance won&apos;t likely be an issue. Spend your time optimizing the frontend.</p><p>But as the number of users grows, you should start spending more time improving and testing the performance of your backend.</p>"}}]}' />
