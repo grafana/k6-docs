@@ -3,9 +3,8 @@ import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view'
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
-import ArrowIcon from './svg/arrow.inline.svg';
-
 import styles from './sidebar-section-dropdown.module.scss';
+import ArrowIcon from './svg/arrow.inline.svg';
 
 const cx = classNames.bind(styles);
 
@@ -87,27 +86,27 @@ export const SidebarSectionDropdown = ({ links, className }) => {
           {currentSection && <span>{currentSection}</span>}
           <ArrowIcon className={styles.icon} />
         </button>
-        {isOpen && (
-          <ul className={cx('menu')}>
-            {flatLinks.map(({ label, to, disabled, isSubmenu }) => (
-              <li className={cx('item', isSubmenu && 'submenu')}>
-                {!disabled ? (
-                  <Link
-                    className={cx('link', disabled && 'disabled')}
-                    to={to}
-                    activeClassName={styles.active}
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  <span className={cx('link', disabled && 'disabled')}>
-                    {label}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* {isOpen && ( */}
+        <ul className={cx('menu')}>
+          {flatLinks.map(({ label, to, disabled, isSubmenu }) => (
+            <li className={cx('item', isSubmenu && 'submenu')}>
+              {!disabled ? (
+                <Link
+                  className={cx('link', disabled && 'disabled')}
+                  to={to}
+                  activeClassName={styles.active}
+                >
+                  {label}
+                </Link>
+              ) : (
+                <span className={cx('link', disabled && 'disabled')}>
+                  {label}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+        {/* )} */}
       </div>
     </div>
   );

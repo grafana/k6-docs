@@ -12,8 +12,8 @@ import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
-import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { SEO } from 'components/shared/seo';
+import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
@@ -30,9 +30,8 @@ import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
 
-import ArrowLeft from './svg/arrow-left.inline.svg';
-
 import styles from './doc-layout.module.scss';
+import ArrowLeft from './svg/arrow-left.inline.svg';
 
 const { indexName } = AlgoliaQueries[0];
 
@@ -225,7 +224,7 @@ const SidebarNode = (props) => {
               )}
             />
           )}
-          {!!Object.keys(children).length && isActive && (
+          {!!Object.keys(children).length && (
             <div className={styles.sidebarNodeChildren}>
               {childrenToList(children).map((node) => (
                 <SidebarNode node={node} key={node.name} />
