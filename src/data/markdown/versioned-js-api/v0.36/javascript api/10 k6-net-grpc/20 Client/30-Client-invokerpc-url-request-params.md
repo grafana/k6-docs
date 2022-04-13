@@ -8,7 +8,7 @@ Invokes an unary RPC request to the given method.
 The given method to invoke must have its RPC schema previously loaded via the [Client.load()](/javascript-api/k6-net-grpc/client/client-load) function, otherwise an
 error will be thrown.
 
-[Client.connect()](/javascript-api/k6-net-grpc/client/client-connect-address) must be called first before invoking a request, otherwise an error will be thrown.
+[Client.connect()](/javascript-api/k6-net-grpc/client/client-connect) must be called first before invoking a request, otherwise an error will be thrown.
 
 | Parameter | Type | Description |
 |-----------|------|-------------|

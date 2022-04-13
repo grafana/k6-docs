@@ -78,15 +78,18 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
 
     // Removing parameters from slug
     reversedParameters.forEach((word) => {
-      const replaceRegexp = new RegExp(
-        `${word
-          // Lowercasing word since words in slug are lowercased
-          .toLowerCase()
-          // Trimming word since it can contain a space
-          .trim()
-          // Removing square brackets since some parameters can be wrapped in them
-          .replace(/\[|\]/g, '')}/?$`,
-      );
+      const formattedWord = word
+        // Lowercasing word since words in slug are lowercased
+        .toLowerCase()
+        // Removing symbols that word can contain after splitting
+        .replace(/\[|\]/g, '')
+        // Trimming word since it can contain a space
+        .trim();
+
+      if (!formattedWord) return;
+
+      // Creating a regex that will match the word in the slug with optional trailing slash
+      const replaceRegexp = new RegExp(`${formattedWord}/?$`);
 
       // Removing parameter from slug and cleaning up by removing spaces and hyphens in the end of the slug
       newSlug = newSlug.replace(replaceRegexp, '').replace(/[\s-]+$/g, '');

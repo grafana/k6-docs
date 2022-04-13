@@ -15,8 +15,8 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 |--------------|-------------|
 | [Client](/javascript-api/k6-net-grpc/client) | gRPC client used for making RPC calls to a gRPC Server. |
 | [Client.load(importPaths, ...protoFiles)](/javascript-api/k6-net-grpc/client/client-load) | Loads and parses the given protocol buffer definitions to be made available for RPC requests. |
-| [Client.connect(address [,params])](/javascript-api/k6-net-grpc/client/client-connect-address) | Connects to a given gRPC service. |
-| [Client.invoke(url, request [,params])](/javascript-api/k6-net-grpc/client/client-invoke-url-request) | Makes an unary RPC for the given service/method and returns a [Response](/javascript-api/k6-net-grpc/response). |
+| [Client.connect(address [,params])](/javascript-api/k6-net-grpc/client/client-connect) | Connects to a given gRPC service. |
+| [Client.invoke(url, request [,params])](/javascript-api/k6-net-grpc/client/client-invoke) | Makes an unary RPC for the given service/method and returns a [Response](/javascript-api/k6-net-grpc/response). |
 | [Client.close()](/javascript-api/k6-net-grpc/client/client-close) | Close the connection to the gRPC service. |
 | [Params](/javascript-api/k6-net-grpc/params) | RPC Request specific options. |
 | [Response](/javascript-api/k6-net-grpc/response) | Returned by RPC requests. |
