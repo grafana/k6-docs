@@ -1,6 +1,4 @@
 /* eslint-disable max-len */
-// TODO: Delete both these lines of code and newJavascriptURLsRedirects.js once the new javascript API is live
-// const fs = require('fs');
 const Path = require('path');
 
 const {
@@ -59,7 +57,7 @@ if (!isProduction && jsApiVersionsToBuild) {
 const newJavascriptURLsRedirects = {};
 
 function removeParametersFromJavaScriptAPISlug(slug, title) {
-  if (!slug || !title) return slug;
+  if (!title) return slug;
 
   // Making sure to change slug only for Javascript API docs that have parameters
   if (
@@ -1520,13 +1518,6 @@ exports.createPages = async (options) => {
     javascriptAPISidebar,
   });
   await createRedirects(options);
-
-  // TODO: Delete both these lines of code and newJavascriptURLsRedirects.js once the new javascript API is live
-  // fs.writeFile(
-  //   './newJavascriptURLsRedirects.json',
-  //   JSON.stringify(newJavascriptURLsRedirects, null, 2),
-  //   (error) => console.log(error),
-  // );
 };
 
 exports.onCreateNode = ({ node, actions }) => {
