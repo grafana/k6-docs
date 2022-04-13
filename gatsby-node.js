@@ -60,43 +60,17 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
   if (!title) return slug;
 
   // Making sure to change slug only for Javascript API docs that have parameters
-  if (
-    (slug.includes('javascript-api/') || slug.includes('jslib/')) &&
-    title.includes('(') &&
-    title.includes(')')
-  ) {
-    let newSlug = slug;
-    // Getting parameters that need to be removed from slug
-    const parameters = title.split('(')[1].slice(0, -1).split(',');
+  if (/javascript-api\/|jslib\//.test(slug) && /\(.+\)/.test(title)) {
+    const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
+    const methodNameWithSlash = `/${methodName}`;
 
-    if (parameters.length === 0) return slug;
+    const newSlug = addTrailingSlash(
+      slug.slice(
+        0,
+        slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
+      ),
+    );
 
-    // Reversing parameters in order to start a loop from the end
-    const reversedParameters = parameters.reverse();
-
-    // Removing parameters from slug
-    reversedParameters.forEach((word) => {
-      const formattedWord = word
-        // Lowercasing word since words in slug are lowercased
-        .toLowerCase()
-        // Removing symbols that word can contain after splitting
-        .replace(/\[|\]/g, '')
-        // Trimming word since it can contain a space
-        .trim();
-
-      if (!formattedWord) return;
-
-      // Creating a regex that will match the word in the slug with optional trailing slash
-      const replaceRegexp = new RegExp(`${formattedWord}/?$`);
-
-      // Removing parameter from slug and cleaning up by removing spaces and hyphens in the end of the slug
-      newSlug = newSlug.replace(replaceRegexp, '').replace(/[\s-]+$/g, '');
-    });
-
-    // Adding slash since it was removed in the regexp above
-    newSlug = addTrailingSlash(newSlug);
-
-    // Adding slugs to redirects object if they are different
     if (slug !== newSlug) newJavascriptURLsRedirects[slug] = newSlug;
 
     return newSlug;
