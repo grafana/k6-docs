@@ -83,7 +83,7 @@ export default function DocPage(props) {
         locale={locale}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
         pageVersions={pageVersions}
-        path={frontmatter.slug}
+        path={path}
         sectionName={sectionName}
       >
         <div
