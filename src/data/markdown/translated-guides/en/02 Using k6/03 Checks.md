@@ -5,7 +5,7 @@ excerpt: 'Checks are like asserts but differ in that they do not halt the execut
 
 [*Checks*](/javascript-api/k6/check-val-sets-tags/) are like assertions, but they don't halt execution.
 Instead, they store the result of the check, pass or fail, and let the script continue.
-For a way to halt the execution of a test based on checks, take a look at [thresholds](/using-k6/thresholds).
+If you want to halt execution, take a look at [thresholds](/using-k6/thresholds) (which can include checks).
 
 The following sections show some ways how you can use checks.
 
