@@ -1,15 +1,9 @@
 .anchor-bar-wrapper {
   position: absolute;
   right: 0;
-  top: -15px;
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 15px;
-
+  top: 0;
+  height: 100%;
   margin-right: -30px;
-
-  overflow-x: hidden;
-  overflow-y: auto;
 
   @include lg-down {
     display: none;
@@ -17,9 +11,20 @@
   &.hidden {
     visibility: hidden;
   }
+  &.with-top-offset {
+    top: 40px;
+  }
 }
 
 .anchor-bar {
+  position: sticky;
+  top: 35px;
+  bottom: 35px;
+  right: 0;
+  // Height of the screen, minus values of top and bottom properties
+  max-height: calc(100vh - 35px - 35px);
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 275px;
 }
 

@@ -13,7 +13,12 @@ const components = {
 
 const TableOfContents = forwardRef(
   (
-    { style, label, contentContainerRef, shouldMakeReplacement = false },
+    {
+      label,
+      contentContainerRef,
+      shouldMakeReplacement = false,
+      withTopOffset,
+    },
     ref,
   ) => {
     useElementsReplacement({
@@ -47,10 +52,9 @@ const TableOfContents = forwardRef(
 
     return (
       <div
-        style={style}
         className={`${styles.anchorBarWrapper} ${
           !links.length && styles.hidden
-        }`}
+        } ${withTopOffset && styles.withTopOffset}`}
         ref={ref}
       >
         <nav className={`${styles.anchorBar} ${label ?? ''}`}>

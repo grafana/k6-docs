@@ -3,18 +3,17 @@ import { HtmlContent } from 'components/blocks/html-content';
 import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
+import BrowserClassList from 'components/shared/browser-class-list';
+import BrowserCompatibility from 'components/shared/browser-compatibility';
+import BrowserWIP from 'components/shared/browser-wip';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
 import { HeadingLandmark } from 'components/shared/heading';
-import BrowserCompatibility from 'components/shared/browser-compatibility';
-import BrowserClassList from 'components/shared/browser-class-list';
-import BrowserWIP from 'components/shared/browser-wip';
 import InstallationInstructions from 'components/shared/installation-instructions';
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
 import TableWrapper from 'components/shared/table-wrapper';
 import React, { useRef } from 'react';
-import { StickyContainer, Sticky } from 'react-sticky';
 
 import styles from './doc-page-content.module.scss';
 
@@ -53,45 +52,29 @@ export const DocPageContent = ({
       })}
     >
       <div className={`${styles.inner}`}>
-        <StickyContainer>
-          <div
-            ref={contentContainerRef}
-            className={classNames(styles.mainDocContent, {
-              [styles.beliefs]: mod === 'beliefs',
-            })}
-          >
-            <HtmlContent
-              content={content}
-              componentsForNativeReplacement={{
-                ...componentsForNativeReplacement,
-                a: Link(version),
-              }}
-              className={classNames(
-                styles.contentWrapper,
-                { [styles.beliefs]: mod === 'beliefs' },
-                label,
-              )}
-            />
-          </div>
-
-          <Sticky
-            topOffset={!hasGithubLink ? -15 : 25}
-            bottomOffset={0}
-            disableCompensation
-          >
-            {({ style }) => (
-              <TableOfContents
-                style={{
-                  ...style,
-                  left: 350,
-                  top: !hasGithubLink ? -15 : 25,
-                  maxHeight: '100vh',
-                }}
-                contentContainerRef={contentContainerRef}
-              />
+        <div
+          ref={contentContainerRef}
+          className={classNames(styles.mainDocContent, {
+            [styles.beliefs]: mod === 'beliefs',
+          })}
+        >
+          <HtmlContent
+            content={content}
+            componentsForNativeReplacement={{
+              ...componentsForNativeReplacement,
+              a: Link(version),
+            }}
+            className={classNames(
+              styles.contentWrapper,
+              { [styles.beliefs]: mod === 'beliefs' },
+              label,
             )}
-          </Sticky>
-        </StickyContainer>
+          />
+        </div>
+        <TableOfContents
+          contentContainerRef={contentContainerRef}
+          withTopOffset={hasGithubLink}
+        />
       </div>
     </div>
   );

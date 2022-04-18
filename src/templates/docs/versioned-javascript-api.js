@@ -20,7 +20,6 @@ import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
 
@@ -130,24 +129,17 @@ export default function VersionedJavascriptAPI({
           className={classNames(version !== LATEST_VERSION && jsApiStyles.info)}
         />
         <div className={docPageContent.inner}>
-          <StickyContainer>
-            <div ref={contentContainerRef} className={stickyContainerClasses}>
-              <div className={`${htmlStyles.wrapper}`}>
-                <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
-                  {content}
-                </CustomContentContainer>
-              </div>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
+            <div className={`${htmlStyles.wrapper}`}>
+              <CustomContentContainer label={jsApiStyles.jsApiWrapper}>
+                {content}
+              </CustomContentContainer>
             </div>
-            <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-              {({ style }) => (
-                <TableOfContents
-                  style={{ ...style, left: 350 }}
-                  contentContainerRef={contentContainerRef}
-                  shouldMakeReplacement
-                />
-              )}
-            </Sticky>
-          </StickyContainer>
+          </div>
+          <TableOfContents
+            contentContainerRef={contentContainerRef}
+            shouldMakeReplacement
+          />
         </div>
       </DocLayout>
     </LocaleProvider>
