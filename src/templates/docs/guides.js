@@ -17,7 +17,6 @@ import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import { Sticky, StickyContainer } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
@@ -79,43 +78,35 @@ function GuidesContent({
     >
       <PageInfo {...pageInfo[locale]} />
       <div className={classNames(docPageContent.inner)}>
-        <StickyContainer>
-          <div ref={contentContainerRef} className={stickyContainerClasses}>
-            <Quickstart />
-            <WhatIs />
-            <Features />
-            <UseCases />
-            <Manifesto />
-            <K6DoesNot />
-            {locale === 'en' && (
-              <Cloud
-                title={'Looking for k6 Cloud?'}
-                btnLink={`${docs}/cloud`}
-                isExternal
-                btnTarget={'_self'}
-                btnText={'Cloud docs'}
-                description={
-                  'A tailored SaaS service to bring your team together into load testing.'
-                }
-              />
-            )}
-          </div>
-          <DocPageNavigation
-            prev={null}
-            next={flatSidebar[1]}
-            variant="top-level"
-          />
-
-          <Sticky topOffset={-15} bottomOffset={10} disableCompensation>
-            {({ style }) => (
-              <TableOfContents
-                style={{ ...style, left: 350 }}
-                contentContainerRef={contentContainerRef}
-                shouldMakeReplacement
-              />
-            )}
-          </Sticky>
-        </StickyContainer>
+        <div ref={contentContainerRef} className={stickyContainerClasses}>
+          <Quickstart />
+          <WhatIs />
+          <Features />
+          <UseCases />
+          <Manifesto />
+          <K6DoesNot />
+          {locale === 'en' && (
+            <Cloud
+              title={'Looking for k6 Cloud?'}
+              btnLink={`${docs}/cloud`}
+              isExternal
+              btnTarget={'_self'}
+              btnText={'Cloud docs'}
+              description={
+                'A tailored SaaS service to bring your team together into load testing.'
+              }
+            />
+          )}
+        </div>
+        <DocPageNavigation
+          prev={null}
+          next={flatSidebar[1]}
+          variant="top-level"
+        />
+        <TableOfContents
+          contentContainerRef={contentContainerRef}
+          shouldMakeReplacement
+        />
       </div>
     </DocLayout>
   );
