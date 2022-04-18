@@ -12,14 +12,14 @@ import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
-import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { SEO } from 'components/shared/seo';
+import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Cookies,
   CookiesProvider,
@@ -30,9 +30,8 @@ import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
 
-import ArrowLeft from './svg/arrow-left.inline.svg';
-
 import styles from './doc-layout.module.scss';
+import ArrowLeft from './svg/arrow-left.inline.svg';
 
 const { indexName } = AlgoliaQueries[0];
 
@@ -73,52 +72,37 @@ const OptionsGroup = ({ node: { name, meta, children }, nested }) => {
   );
 };
 
-const MobileNavMenu = ({ sidebarTree, links }) => {
-  const [value, setValue] = useState(false);
-  useLayoutEffect(() => {
-    /* manually adding back cloud rest api path
-     since we have excluded it in gatsby-node
-     */
-    const topLevelNav = [...links, '/cloud-rest-api'];
-    const currentValue = window.location.pathname
-      .replace(/^\/docs/, '')
-      .replace(/\/$/, '');
-    if (!topLevelNav.includes(currentValue.replace(/\/$/, ''))) {
-      setValue(currentValue);
-    }
-  }, []);
-  return (
-    <select
-      onChange={({ target }) => {
-        const val = target.value;
-        if (!val) return;
-        const isExternalLink = val.startsWith('http');
-        if (isExternalLink) {
-          window.location.assign(val);
-        } else {
-          navigate(val);
-        }
-      }}
-      className={styles.dropdown}
-      value={value}
-    >
-      <option disabled value={false}>
-        Choose a section
-      </option>
-      {sidebarTree &&
-        childrenToList(sidebarTree.children).map((sectionNode) => (
-          <optgroup
-            label={sectionNode.name}
-            key={`docSection-${sectionNode.name}`}
-          >
-            {childrenToList(sectionNode.children).map((node) => (
-              <OptionsGroup node={node} key={node.name} nested={0} />
-            ))}
-          </optgroup>
-        ))}
-    </select>
-  );
-};
+const MobileNavMenu = ({ sidebarTree, path }) => (
+  <select
+    onChange={({ target }) => {
+      const val = target.value;
+      if (!val) return;
+      const isExternalLink = val.startsWith('http');
+      if (isExternalLink) {
+        window.location.assign(val);
+      } else {
+        navigate(val);
+      }
+    }}
+    className={styles.dropdown}
+    value={path}
+  >
+    <option disabled value={false}>
+      Choose a section
+    </option>
+    {sidebarTree &&
+      childrenToList(sidebarTree.children).map((sectionNode) => (
+        <optgroup
+          label={sectionNode.name}
+          key={`docSection-${sectionNode.name}`}
+        >
+          {childrenToList(sectionNode.children).map((node) => (
+            <OptionsGroup node={node} key={node.name} nested={0} />
+          ))}
+        </optgroup>
+      ))}
+  </select>
+);
 
 // renders sidebar nodes from passed children prop, recursively
 const SidebarNode = (props) => {
@@ -251,6 +235,7 @@ export const DocLayout = ({
   children,
   pageVersions = {},
   sectionName = null,
+  path,
 }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
@@ -388,10 +373,7 @@ export const DocLayout = ({
           </div>
           <div className={'d-md-none col-12'}>
             <div className={styles.dropdownWrapper}>
-              <MobileNavMenu
-                sidebarTree={sidebarTree}
-                links={links.map(({ to }) => to)}
-              />
+              <MobileNavMenu sidebarTree={sidebarTree} path={path} />
             </div>
           </div>
         </Header>
