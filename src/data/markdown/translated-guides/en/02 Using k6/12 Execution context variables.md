@@ -17,7 +17,7 @@ The [k6/execution](/javascript-api/k6-execution) module exposes various details 
 | [scenario](/javascript-api/k6-execution/#scenario) | Meta information and execution details about the current running scenario    |
 | [vu](/javascript-api/k6-execution/#vu)             | Meta information and execution details about the current vu and iteration    |
 
-> k6 v0.34.0 introduced **k6/execution** module. 
+> k6 v0.34.0 introduced **k6/execution** module.
 > If you are using an earlier version of k6, where the module is not available,
 > refer to [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
 

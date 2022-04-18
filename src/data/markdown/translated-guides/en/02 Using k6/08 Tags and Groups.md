@@ -51,7 +51,7 @@ export default function () {
 
 Groups do the following tasks internally:
 
-- For each `group()` function, k6 emits a [group_duration metric](/using-k6/metrics) that contains the total time to execute the group function. 
+- For each `group()` function, k6 emits a [group_duration metric](/using-k6/metrics) that contains the total time to execute the group function.
 
 - When a taggable resource: checks, requests, or custom metrics runs within a group, k6 will set the tag `group` with the current group name. Read more about it in [Tags](/using-k6/tags-and-groups#tags).
 
@@ -88,7 +88,7 @@ If your code looks like the example above, consider the following alternatives t
 - For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
 - To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
-- If you need to model advanced user patterns, check out [Scenarios](/using-k6/scenarios). 
+- If you need to model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
 
 
 

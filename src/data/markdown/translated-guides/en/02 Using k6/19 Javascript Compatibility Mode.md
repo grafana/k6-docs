@@ -117,7 +117,7 @@ $ K6_COMPATIBILITY_MODE=extended k6 run script.js
 
 </CodeGroup>
 
-In case of syntax/parsing errors, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers. 
+In case of syntax/parsing errors, the script will be transformed using Babel with specific plugins bringing the compatibility to ES2015(ES6)+. This means that features such as classes and arrow functions can be used. This does take some time to transpile and the produced code has slightly different line/column numbers.
 
 Before v0.31.0, k6 included [core.js](https://github.com/zloirock/core-js) v2 and even more Babel plugins in extended mode.
 This added around 2MB extra memory usage per VU and some of the transformations (generators, async/await) of Babel were still insufficient to get k6 working with these features.

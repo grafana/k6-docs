@@ -179,7 +179,7 @@ $ k6 run script.js
   INFO[0001] waiting_time                                  source=console
 
   ...
-  iteration_duration.............: avg=1.15s    min=1.15s    med=1.15s    max=1.15s    p(90)=1.15s    p(95)=1.15s   
+  iteration_duration.............: avg=1.15s    min=1.15s    med=1.15s    max=1.15s    p(90)=1.15s    p(95)=1.15s
   iterations.....................: 1     0.864973/s
   waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
 ```
