@@ -88,7 +88,7 @@ Note that each time is different!
 - Set the `duration: "10s"` option in the config file
 - Set the `duration: "15s"` option in the script
 - Define `K6_DURATION=20s` as an environment variable
-- Use the `--duration 30s`
+- Use the `--duration 30s` command-line flag
 
 Even though the preceding example has four different `duration` values, the test would run with a duration of 30s.
 That's because _command-line options have the highest order of precedence:_
