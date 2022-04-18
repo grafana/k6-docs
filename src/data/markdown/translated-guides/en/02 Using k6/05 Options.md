@@ -3,7 +3,7 @@ title: 'Options'
 excerpt: 'Options allow you to configure how k6 will behave during test execution.'
 ---
 
-Options allow you to configure how k6 will behave during test execution.
+Options let you configure how k6 behaves during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -15,7 +15,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Console Output](#console-output)                         | Redirects logs logged by `console` methods to the provided output file              |
-| [Discard Response Bodies](#discard-response-bodies)       | Specify if response bodies should be discarded                                      |
+| [Discard Response Bodies](#discard-response-bodies)       | Specify whether response bodies should be discarded                                      |
 | [DNS](#dns)                                               | Configure DNS resolution behavior                                                   |
 | [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution Segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
@@ -54,7 +54,7 @@ Options allow you to configure how k6 will behave during test execution.
 | [Summary Export](#summary-export)                         | Output the [end-of-test summary](/results-visualization/end-of-test-summary) report to a JSON file (discouraged, use [handleSummary()](/results-visualization/end-of-test-summary#handlesummary-callback) instead) |
 | [Summary Trend Stats](#summary-trend-stats)               | Define stats for trend metrics in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                     |
 | [Summary Time Unit](#summary-time-unit)                   | Time unit to be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                      |
-| [Tags](#tags)                                             | Specify tags that should be set test wide across all metrics                        |
+| [Tags](#tags)                                             | Specify tags that should be set test-wide across all metrics                        |
 | [Teardown Timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
 | [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
 | [Throw](#throw)                                           | A boolean specifying whether to throw errors on failed HTTP requests                |
@@ -66,25 +66,40 @@ Options allow you to configure how k6 will behave during test execution.
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
 | [VUs Max](#vus-max)                                       | **DEPRECATED** |
 
-## Using Options
+## Where to set options?
 
-Options can be a part of the script code so that they can be version controlled. They can also be specified with command-line flags, environment variables or via a config file. The order of precedence is as follows:
+You can specify options with command-line flags, environment variables, or via a config file.
+You can also specify them in the script code, making the options version-controlled.
 
-<!-- THIS FOLLOWING QUOTED TEXT SHOULD BE REPLACED WITH A FLOWCHART -->
-<!-- ![Order of Precedence](./images/order-of-precedence.png) -->
+If you set options in multiple places, k6 follows an _order of precedence_.
 
-> **command-line flags > environment variables > exported script options > config file > defaults**
+1. First, k6 looks in the config file.
+2. Then, it looks in the `options` object in the script.
+3. Then, it looks at the environment variables.
+4. Finally, it looks at the command-line flags.
 
-Options from each level will overwrite the options from the next level, with the command-line flags having the highest precedence.
+This is to say that _command-line flags override all other options_.
 
-For example, you can define the duration in 4 different ways:
+### Order of precedence
+
+For example, these are all valid ways to set the test duration.
+Note that each time is different!
 
 - Set the `duration: "10s"` option in the config file
-- Set the `duration: "10s"` option in the script
-- Define `K6_DURATION` as an environment variable
-- Use the `--duration 10s` command-line flag: *overwrites all the above*.
+- Set the `duration: "15s"` option in the script
+- Define `K6_DURATION=20s` as an environment variable
+- Use the `--duration 30s`
 
-The following JS snippet shows how to specify options in the script:
+Even though the preceding example has four different `duration` values, the test would run with a duration of 30s.
+That's because _command-line options have the highest order of precedence:_
+
+![The options order of precedence. First, k6 looks at options in the config. Then, in the script file. Then, in the environmental variables. Finally, in the command-line flags. Options passed as command-line flags override all other options.](./images/Options/order-of-precedence.svg)
+
+### Examples of setting options
+
+The following JS snippets shows some examples of different ways to set options.
+
+#### Options in the script
 
 <CodeGroup labels={["example.js"]} lineNumbers={[true]}>
 
@@ -110,8 +125,10 @@ export default function () {
 
 </CodeGroup>
 
+#### Options in a config file
+
 <div id="config-json-example">
-You can also set the same options through a config file:
+You can also define the same options through a config file:
 </div>
 
 <CodeGroup labels={["config.json"]} lineNumbers={[true]}>
@@ -144,6 +161,8 @@ You can also set the same options through a config file:
 ```
 
 </CodeGroup>
+
+#### Options with environment variables
 
 Or set some of the previous options via environment variables and command-line flags:
 
