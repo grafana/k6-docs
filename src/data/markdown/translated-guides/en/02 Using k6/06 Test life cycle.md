@@ -5,10 +5,10 @@ excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", 
 
 A k6 test has four distinct stages, which always run in the same order:
 
-1.  *Init code* initializes VUs
+1. *Init code* initializes VUs
 2. *Setup code* sets up data and the test environment
-3. *VU* code runs the test
-4. *Teardown* cleans up data and stops the test environment
+3. *VU code* runs the test
+4. *Teardown code* cleans up data and stops the test environment
 
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
