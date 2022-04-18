@@ -31,17 +31,17 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## A quick overview
+## A quick overview of test stages
 
-The rest of this article dives into the technical details of each stage.
-This table provides a more high-level picture.
+This table provides the essential information about each stage.
+The rest of this page goes into deeper technical detail.
 
-| Test stage  | Used to                         | Example                                       | Called                                                                             | Required? |
-|-------------|----------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------|-----------|
-| **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module          | Once per VU\*                                                                      | No        |
-| **2. Setup**    | Set up data for processing, share data among VUs       | Call API to start test environment | Once                                                                               | No        |
-| **3. VU code**  | Run the test script              | Make https requests, validate responses             | Per VU, for as many iterations and as long a duration as the test options required | Yes       |
-| **4. Teardown** | Process result of setup code, stop test environment     | Validate that setup had a certain result, send webhook notifying that test has finished      | Once per script                                                                    | No        |
+| Test stage      | Used to                                                    | Example                                                                                 | Called                                                                             | Required? |
+|-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
+| **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Optional  |
+| **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
+| **3. VU code**  | Run the test script                                        | Make https requests, validate responses                                                 | Per VU, for as many iterations and as long a duration as the test options required | Required       |
+| **4. Teardown** | Process result of setup code, stop test environment        | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                                                    | Optional        |
 
 \* In cloud scripts, init code might be called more often.
 
@@ -79,28 +79,24 @@ There are a few important exceptions. VU code:
 
 Instead of VU code, init code does these jobs.
 
-Why separate init and VU code? There are two chief reasons:
-* Better performance
-* Better design
+## Benefits of separating init and VU code
 
-### Performance is faster and more accurate
+ There are two chief reasons we separate these code stages:
 
-If you read a file from disk every iteration, the script will be needlessly slow.
+* Performance is faster and more accurate.
+* The design is more flexible and modular.
 
-Even if you cached the contents of the file and any imported modules, the _first iteration_ of the script would be much slower than all subsequent iterations.
+On the performance side, if you read a file from disk every iteration, the script would be needlessly slow.
+Even if you cached the contents of the file and imported modules, the _first iteration_ of the script would be much slower than all subsequent iterations.
 Worse, if your script imports or loads data dynamically, you'd get slow iterations each time you loaded something new.
 
-### Design is more modular
-
-Besides performance, there's another, more interesting reason to separate init code from VU code.
-By forcing all imports and file reads into the init context, k6 lets you execute in different modes without modifying your scripts.
-
+Besides improving performance, these stages let you execute in different modes without modifying your scripts.
 You should be able to run a k6 script in local, cloud, and clustered systems.
 In the case of cloud and clustered execution, we know which files are needed, so we distribute only those files.
 We know which modules to import, so we can bundle them from the get-go.
-And, tying into the performance point above, the other nodes don't even need writable filesystems&mdash;everything can be kept in-memory.
+And, tying into the performance benefits, the other nodes don't even need writable filesystems&mdash;everything can be kept in-memory.
 
-As a bonus, you can use this to reuse data between iterations (but only for the same VU):
+As a bonus, you can reuse data between iterations (but only for the same VU):
 
 <CodeGroup labels={[]}>
 
