@@ -5,14 +5,15 @@ excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", 
 
 A k6 test has four distinct stages, which always run in the same order:
 
-1. Code in the `init` context prepares the script. During this preparation, the `init` context
-     - Imports modules
-     - Loads files from the local filesystem
-     - initializes all VUs, configuring their `options`
-     - defines the functions for `default` (VU), `setup`, and `teardown` stages.
- 2. The `setup` code runs, preprocessing data and setting up the test environment (optional).
- 3. VU code runs, as defined in the `default` functions. This code can run multiple times, for however much or as long as the `options` define.
- 4. The `teardown` code runs, postprocessing data and closing the test environment (optional).
+1. Code in the `init` context prepares the script. In this preparation, `init` code
+- Imports modules
+- Loads files from the local filesystem
+- initializes all VUs, configuring their `options`
+- defines the functions for `default` (VU), `setup`, and `teardown` stages.
+
+2. The `setup` code runs, preprocessing data and setting up the test environment (optional).
+3. VU code runs, as defined in the `default` functions. This code can run multiple times, for however much or as long as the `options` define.
+4. The `teardown` code runs, postprocessing data and closing the test environment (optional).
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
