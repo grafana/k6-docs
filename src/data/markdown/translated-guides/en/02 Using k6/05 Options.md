@@ -1484,7 +1484,7 @@ server, or an object specifying the "min" and "max" versions allowed to be used.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tlsVersion: 'tls1.2',
 };
 
