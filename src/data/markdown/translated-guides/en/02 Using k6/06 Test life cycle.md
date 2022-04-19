@@ -40,7 +40,7 @@ The rest of this page goes into deeper technical detail.
 |-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
 | **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Optional  |
 | **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
-| **3. VU code**  | Run the test script                                        | Make https requests, validate responses                                                 | Per VU, for as many iterations and as long a duration as the test options required | Required       |
+| **3. VU code**  | Run the test function, usually the `default` one                                        | Make https requests, validate responses                                                 | Once per iteration, as many times  as the test options required | Required       |
 | **4. Teardown** | Process result of setup code, stop test environment        | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                                                    | Optional        |
 
 \* In cloud scripts, init code might be called more often.
