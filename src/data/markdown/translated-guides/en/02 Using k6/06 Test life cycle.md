@@ -38,9 +38,9 @@ The rest of this page goes into deeper technical detail.
 
 | Test stage      | Used to                                                    | Example                                                                                 | Called                                                                             | Required? |
 |-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
-| **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Optional  |
+| **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Required  |
 | **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
-| **3. VU code**  | Run the test function, usually the `default` one                                        | Make https requests, validate responses                                                 | Once per iteration, as many times  as the test options required | Required       |
+| **3. VU code**  | Run the test function, usually `default` | Make https requests, validate responses                                                 | Once per iteration, as many times as the test options require | Required       |
 | **4. Teardown** | Process result of setup code, stop test environment        | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                                                    | Optional        |
 
 \* In cloud scripts, init code might be called more often.
@@ -132,8 +132,6 @@ But unlike the `default` function, k6 calls `setup` and `teardown` only once per
 * `setup` is called at the beginning of the test, after the init stage but before the VU stage.
 * `teardown` is called at the end of a test, after the VU stage (`default` function).
 
-The VU number is 0 while the `setup` and `teardown` functions execute.
-
 Again, let's have a look at the basic structure of a k6 test:
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
@@ -160,11 +158,8 @@ You might have noticed the function signatures of the `default` and `teardown` f
 take an argument, referred to here as `data`.
 
 This `data` is whatever the `setup` function returns.
-Having a mechanism for passing data from the setup stage to the subsequent VU and teardown stages is compatible with our goal of supporting local, cloud, and clustered execution modes without requiring script changes when switching between them.
-In cloud and clustered modes, the node that runs the setup code might not be the node that runs the teardown code.
 
-To support these modes, you can pass only data (i.e. JSON) between `setup()` and the
-other stages.
+You can pass only data (i.e. JSON) between `setup()` and the other stages.
 You cannot pass functions.
 
 Here's an example of passing some data from setup to VU and teardown stages:
@@ -212,10 +207,6 @@ export default function (data) {
 ```
 
 </CodeGroup>
-
-Note that the [the end-of-test summary](/results-visualization/end-of-test-summary/#summary-export-to-a-json-file) includes requests made in the setup and teardown stages.
-These requests are tagged appropriately with the `::setup` and `::teardown` values
-for the `group` metric tag, so that you can filter them in JSON output or InfluxDB.
 
 ## Skip setup and teardown execution
 
