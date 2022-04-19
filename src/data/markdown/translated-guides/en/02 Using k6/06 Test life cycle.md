@@ -5,11 +5,14 @@ excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", 
 
 A k6 test has four distinct stages, which always run in the same order:
 
-1. *Init code* initializes VUs
-2. *Setup code* sets up data and the test environment
-3. *VU code* runs the test
-4. *Teardown code* cleans up data and stops the test environment
-
+1. Code in the `init` context prepares the script. During this preparation, the `init` context
+     - Imports modules
+     - Loads files from the local filesystem
+     - initializes all VUs, configuring their `options`
+     - defines the functions for `default` (VU), `setup`, and `teardown` stages.
+ 2. The `setup` code runs, preprocessing data and setting up the test environment (optional).
+ 3. VU code runs, as defined in the `default` functions. This code can run multiple times, for however much or as long as the `options` define.
+ 4. The `teardown` code runs, postprocessing data and closing the test environment (optional).
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
@@ -31,7 +34,7 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## A quick overview of test stages
+## Test stages in a quick table reference
 
 This table provides the essential information about each stage.
 The rest of this page goes into deeper technical detail.
@@ -49,7 +52,7 @@ The rest of this page goes into deeper technical detail.
 
 ## Init and VU stages
 
-Scripts must contain, at the very least, a `default` function.
+Scripts must contain, at least, a `default` function.
 The `default` function defines the entry point for your VUs, similar to the `main()` function in other languages:
 
 <CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
@@ -69,8 +72,6 @@ But code *inside* and *outside* your `default` function do different things.
 
 Code inside `default` is called *VU code*.
 VU code runs over and over through the test duration.
-Besides setup and teardown, code outside of `default` is  *init code*.
-It runs only once per VU.
 
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test to do.
 There are a few important exceptions. VU code:
@@ -118,11 +119,6 @@ Once the VU reaches the end of the default function, it loops back to the start 
 As part of this "restart" process, k6 resets the VU.
 Cookies are cleared and TCP connections
 might be torn down  (depending on your test configuration options).
-
-> Make sure to use `sleep()` statements to pace your VUs properly, simulating a user reading content on your page.
-> If you don't have a `sleep()` statement at the end of the default function, your VU might be more "aggressive" than you've planned.
->
-> VU without any `sleep()` is akin to a user who constantly presses F5 to refresh the page.
 
 ## Setup and teardown stages
 
