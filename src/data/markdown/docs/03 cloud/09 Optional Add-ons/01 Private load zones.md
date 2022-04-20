@@ -69,4 +69,4 @@ Once a private load zone has been set up, it will take only slightly more time t
 
 ## See also
 
-- [k6 Office Hours livestream about private load zones](https://youtu.be/sqKc95zdXyI)
+- [k6 Office Hours live stream about private load zones](https://youtu.be/sqKc95zdXyI)
