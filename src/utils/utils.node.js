@@ -22,6 +22,9 @@ const noTrailingSlash = (path) =>
 // ensures that path has a trailing slash
 const addTrailingSlash = (path) => path.replace(/\/$|$/, `/`);
 
+// ensures that path has a slash at the start
+const addPrefixSlash = (path) => path.replace(/^\/|^/, `/`);
+
 const translatePathPart = (item, locale) => {
   if (
     typeof pathTranslations[item] !== 'undefined' &&
@@ -286,6 +289,9 @@ const getTranslatedSlug = (
 };
 
 Object.defineProperties(utils, {
+  addPrefixSlash: {
+    value: addPrefixSlash,
+  },
   addTrailingSlash: {
     value: addTrailingSlash,
   },

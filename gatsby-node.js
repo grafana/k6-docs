@@ -19,6 +19,7 @@ const {
   getDocSection,
   buildBreadcrumbs,
   dedupePath,
+  addPrefixSlash,
   addTrailingSlash,
   removeEnPrefix,
   translatePath,
@@ -64,14 +65,17 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
     const methodNameWithSlash = `/${methodName}`;
 
-    const newSlug = addTrailingSlash(
-      slug.slice(
-        0,
-        slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
+    const newSlug = addPrefixSlash(
+      addTrailingSlash(
+        slug.slice(
+          0,
+          slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
+        ),
       ),
     );
 
-    if (slug !== newSlug) newJavascriptURLsRedirects[slug] = newSlug;
+    if (slug !== newSlug)
+      newJavascriptURLsRedirects[addPrefixSlash(slug)] = newSlug;
 
     return newSlug;
   }
