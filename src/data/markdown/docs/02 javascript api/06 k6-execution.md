@@ -72,6 +72,7 @@ Control the test execution.
 | Property | Type | Description |
 |----------|------|-------------|
 | abort([String]) | function | It aborts the test run with the exit code `108`, and an optional string parameter can provide an error message. Aborting the test will not prevent the `teardown()` execution. |
+| options | Object | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](https://k6.io/docs/using-k6/options/#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
 
 ### vu
 
@@ -181,6 +182,30 @@ export default function() {
 
 export function teardown() {
   console.log("teardown will still be called after test.abort()");
+}
+```
+
+</CodeGroup>
+
+### Get test options
+
+Get the consolidated and derived options' values
+
+<CodeGroup labels={["init-abort.js"]} lineNumbers={[true]}>
+
+```javascript
+import exec from 'k6/execution';
+
+export const options = {
+  stages: [
+    { duration: '5s', target: 100 },
+    { duration: '5s', target: 50 }
+  ],
+};
+
+export default function () {
+  console.log(exec.test.options.paused); // null
+  console.log(exec.test.options.scenarios.default.stages[0].target); // 100
 }
 ```
 

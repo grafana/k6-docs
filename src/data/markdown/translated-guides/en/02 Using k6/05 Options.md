@@ -188,6 +188,29 @@ PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" sc
 
 </CodeGroup>
 
+#### Get options' value from the script
+
+The `k6/execution` API provides a [test.options](/javascript-api/k6-execution/#test) object for accessing the final consolidated and derived options.
+
+<CodeGroup>
+
+```javascript
+import exec from 'k6/execution';
+
+export const options = {
+  stages: [
+    { duration: '5s', target: 100 },
+    { duration: '5s', target: 50 }
+  ],
+};
+
+export default function () {
+  console.log(exec.test.options.scenarios.default.stages[0].target); // 100
+}
+```
+
+</CodeGroup>
+
 <br/>
 
 Below, you'll find details on all available options that can be specified within a script. It also
@@ -1558,13 +1581,3 @@ export const options = {
 ```
 
 </CodeGroup>
-
-## VUs Max
-
-> ### ⚠️ Keep in mind!
->
-> This option was deprecated in k6 version 0.27.0. See [scenarios](/using-k6/scenarios) and the [externally controlled executor](/using-k6/scenarios/executors/externally-controlled) instead.
-
-| Env          | CLI           | Code / Config file | Default         |
-| ------------ | ------------- | ------------------ | --------------- |
-| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
