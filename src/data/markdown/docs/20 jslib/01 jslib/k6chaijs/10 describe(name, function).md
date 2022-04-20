@@ -4,8 +4,9 @@ description: 'Entry point for creating test cases.'
 excerpt: 'Entry point for creating test cases.'
 ---
 
-To declare a new test case you call the `describe(name, function)` function. 
-Test case name should be unique within the script, otherwise, the test cases will to be grouped. 
+To declare a new test case, call the `describe(name, function)` function. 
+The test case name should be unique within the script.
+If it's not, the test cases will be grouped. 
 
 Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/k6/group-name-fn). 
 
@@ -62,7 +63,7 @@ Note, a failed `describe()` won't stop the execution of the next `describe()` bl
 
 ## chaining describe() blocks
 
-If you would like to skip the execution of the following blocks, you can consider chaining the `describe()` calls using `&&` as shown below.
+If you would like to skip the execution of the following blocks, consider chaining the `describe()` calls using `&&` as shown below.
 
 <!-- eslint-skip -->
 
