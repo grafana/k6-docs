@@ -1116,7 +1116,7 @@ Specify how long the `setup()` function is allow to run before it's terminated a
 
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
-| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"10s"` |
+| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"60s"` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -1366,7 +1366,7 @@ fails.
 
 | Env                   | CLI | Code / Config file | Default |
 | --------------------- | --- | ------------------ | ------- |
-| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"10s"` |
+| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"60s"` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
