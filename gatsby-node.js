@@ -54,6 +54,31 @@ if (!isProduction && jsApiVersionsToBuild) {
     .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
 }
 
+const newJavascriptURLsRedirects = {};
+
+function removeParametersFromJavaScriptAPISlug(slug, title) {
+  if (!title) return slug;
+
+  // Making sure to change slug only for Javascript API docs that have parameters
+  if (/javascript-api\/|jslib\//.test(slug) && /\(.+\)/.test(title)) {
+    const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
+    const methodNameWithSlash = `/${methodName}`;
+
+    const newSlug = addTrailingSlash(
+      slug.slice(
+        0,
+        slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
+      ),
+    );
+
+    if (slug !== newSlug) newJavascriptURLsRedirects[slug] = newSlug;
+
+    return newSlug;
+  }
+
+  return slug;
+}
+
 const formatSectionName = (name) => {
   if (name === 'javascript api') {
     return 'Javascript API';
@@ -270,7 +295,10 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: customSlug || dotifyVersion(pageSlug),
+        path: removeParametersFromJavaScriptAPISlug(
+          customSlug || dotifyVersion(pageSlug),
+          title,
+        ),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -699,7 +727,7 @@ function getDocPagesProps({
       }
 
       return {
-        path: slug,
+        path: removeParametersFromJavaScriptAPISlug(slug, title),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -948,7 +976,10 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: dotifyVersion(pageSlug) || '/',
+        path: removeParametersFromJavaScriptAPISlug(
+          dotifyVersion(pageSlug) || '/',
+          title,
+        ),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
@@ -1380,6 +1411,7 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/touchscreen/',
     '/javascript-api/k6-x-browser/launcher/':
       '/javascript-api/xk6-browser/launcher/',
+    ...newJavascriptURLsRedirects,
   };
 
   // eslint-disable-next-line no-restricted-syntax

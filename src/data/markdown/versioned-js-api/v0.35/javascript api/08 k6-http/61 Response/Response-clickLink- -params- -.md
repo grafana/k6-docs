@@ -9,7 +9,7 @@ This method takes an object argument where the following properties can be set:
 
 | Param    | Type   | Description                                                                                                                                                                    |
 | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| selector | string | A selector string passed to [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find-selector) to locate the link to click. By default this is `"a[href]"`. |
+| selector | string | A selector string passed to [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find) to locate the link to click. By default this is `"a[href]"`. |
 | params   | object | A [Params](/javascript-api/k6-http/params) object that will be forwarded to the link click request. Can be used to set headers, cookies etc.                                   |
 
 ### Returns

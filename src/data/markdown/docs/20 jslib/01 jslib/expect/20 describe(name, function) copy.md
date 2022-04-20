@@ -10,7 +10,7 @@ Names should be unique within the script, otherwise, the test cases will to be g
 
 Note: The first argument of the implementation function should be named `t`.
 
-Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/k6/group-name-fn). 
+Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/k6/group). 
 
 
 

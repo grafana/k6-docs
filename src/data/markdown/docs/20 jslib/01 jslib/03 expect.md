@@ -117,16 +117,16 @@ More advanced examples can be found in the [examples section](/examples/function
 
 | Function | Description |
 | -------- | ----------- |
-| [describe(name, function)](/javascript-api/jslib/expect/describe-name-function)  | Entry point for creating tests. |
-| [expect(value)](/javascript-api/jslib/expect/expect-value)  | expect(value) sets the value to be used in comparison by the next function in the chain |
-| [and(value)](/javascript-api/jslib/expect/and-value)  | and(value) is similar to expect(value), but can be used in a chain. |
-| [as(alias)](/javascript-api/jslib/expect/as-string)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
-| [toEqual(value)](/javascript-api/jslib/expect/toequal-expectedvalue)  | The `.toEqual(expectedValue)` is similar to `===`    |
-| [toBeGreaterThan(expectedValue)](/javascript-api/jslib/expect/tobegreaterthan-expectedvalue)  | Use to verify that `received` > `expected` |
-| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal-expectedvalue)  | Use to verify that `received` >= `expected` |
-| [toBeLessThan(expectedValue)](/javascript-api/jslib/expect/tobelessthan-expectedvalue)  | Use to verify that `received` < `expected` |
-| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal-expectedvalue)  | Use to verify that `received` <= `expected` |
-| [toBeBetween(from, to)](/javascript-api/jslib/expect/tobebetween-from-to)  | Use to verify that expected value is within range. |
+| [describe(name, function)](/javascript-api/jslib/expect/describe)  | Entry point for creating tests. |
+| [expect(value)](/javascript-api/jslib/expect/expect)  | expect(value) sets the value to be used in comparison by the next function in the chain |
+| [and(value)](/javascript-api/jslib/expect/and)  | and(value) is similar to expect(value), but can be used in a chain. |
+| [as(alias)](/javascript-api/jslib/expect/as)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
+| [toEqual(value)](/javascript-api/jslib/expect/toequal)  | The `.toEqual(expectedValue)` is similar to `===`    |
+| [toBeGreaterThan(expectedValue)](/javascript-api/jslib/expect/tobegreaterthan)  | Use to verify that `received` > `expected` |
+| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal)  | Use to verify that `received` >= `expected` |
+| [toBeLessThan(expectedValue)](/javascript-api/jslib/expect/tobelessthan)  | Use to verify that `received` < `expected` |
+| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal)  | Use to verify that `received` <= `expected` |
+| [toBeBetween(from, to)](/javascript-api/jslib/expect/tobebetween)  | Use to verify that expected value is within range. |
 | [toBeTruthy()](/javascript-api/jslib/expect/tobetruthy)  | Use `.toBeTruthy` when you don't care what a value is and you want to ensure a value is true in a boolean context.  | 
 | [toHaveValidJson()](/javascript-api/jslib/expect/tohavevalidjson)  | Use to verify that the http response has a valid JSON body. |
 

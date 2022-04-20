@@ -34,7 +34,7 @@ export default function () {
 
 </CodeGroup>
 
-Como puedes ver arriba el método [connect()](/javascript-api/k6-ws/connect-url-params-callback) toma una función "run" como su tercer parámetro, y esa función debe aceptar un objeto [Socket](/javascript-api/k6-ws/socket) como su único parámetro. La función "run" forma la base del bucle de eventos asíncrono.
+Como puedes ver arriba el método [connect()](/javascript-api/k6-ws/connect) toma una función "run" como su tercer parámetro, y esa función debe aceptar un objeto [Socket](/javascript-api/k6-ws/socket) como su único parámetro. La función "run" forma la base del bucle de eventos asíncrono.
 
 Será llamada inmediatamente cuando se cree la conexión WebSocket, ejecutará todo el código dentro de ella (normalmente código para configurar los manejadores de eventos), y luego bloqueará hasta que la conexión WebSocket sea cerrada (por el host remoto o usando [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
 
@@ -107,7 +107,7 @@ export default function () {
 
 ## Timeouts
 
-Se puede añadir un tiempo de espera a la conexión WebSocket pasando una función manejadora así como el valor del tiempo de espera (en milisegundos) a la función [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout-callback-delay).
+Se puede añadir un tiempo de espera a la conexión WebSocket pasando una función manejadora así como el valor del tiempo de espera (en milisegundos) a la función [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout).
 
 <CodeGroup labels={["Timeouts in WebSocket tests"]} lineNumbers={[true]}>
 
