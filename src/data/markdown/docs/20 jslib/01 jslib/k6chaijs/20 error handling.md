@@ -8,12 +8,12 @@ excerpt: 'How to handle errors in k6chaijs.'
 When executing a performance or integration test, your System Under Test (SUT) may crash. 
 When your system crashes, the test should print useful information rather than stack traces caused by unexpected HTTP responses.
 
-While the k6-native `check()` function requires you to do all error handling on your own, k6chaijs 
-does most of it automatically to make your test code more resilient and easier to maintain.
+While the k6-native `check()` function requires you handle all errors on your own, k6chaijs does most of it automatically.
+This makes your test code more resilient and easier to maintain.
 
 It's not uncommon for performance testers to write fragile code that assumes the http response will contain expected data.
 
-Fragile code is most clearly demonstrated with an example.
+Here's an example of fragile code:
 
 <CodeGroup labels={["Test code that is fragile to failing SUT"]}>
 
@@ -77,8 +77,8 @@ export default function () {
 
 # Handling exceptions
 
-Sometimes it's hard to predict the way SUT can fail. For those cases, the library catches any exceptions 
-thrown inside of `describe()` body, and records it as a failed condition.
+Sometimes it's hard to predict how a SUT might fail. For those cases, the library catches any exceptions 
+thrown inside of `describe()` body, and records them as failed conditions.
 
 <CodeGroup labels={[]}>
 
