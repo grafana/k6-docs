@@ -9,7 +9,7 @@ excerpt: 'Use toBeTruthy() to check that the value is truthy.'
 ## expect.js library is no longer maintained
 expect.js library has been deprecated in favor of Chaijs. 
 
-Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+Please migrate to the [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
 
 </Blockquote>
 
