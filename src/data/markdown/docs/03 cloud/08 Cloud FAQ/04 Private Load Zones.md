@@ -5,6 +5,8 @@ excerpt: 'How to set up private load zones in k6 Cloud'
 
 A private load zone is a special location that we set up for you on k6 Cloud. This location corresponds to availability zones you've selected on your own AWS account. With private load zones, you can start tests on k6 Cloud but have them execute on _your own cloud infrastructure_, provisioned within AWS.
 
+> ⭐️ &nbsp;Private load zones are available on [the Enterprise plan](https://k6.io/pricing/) upon request.
+
 ## Benefits of using private load zones
 
 Here are some reasons why you might want to use a private load zone on k6 Cloud:
@@ -39,9 +41,7 @@ export const options = {
 ```
 
 
-Third, [start the test](https://k6.io/docs/cloud/creating-and-running-a-test/test-authoring/#running-a-cloud-test) by:
-- clicking "Run" in k6 Cloud, or
-- running `k6 cloud test.js` from the k6 CLI.
+Third, [start the test](https://k6.io/docs/cloud/creating-and-running-a-test/test-authoring/#running-a-cloud-test) the way you would any other test on k6 Cloud.
 
 k6 checks whether your k6 Cloud account has permissions to start instances in your AWS account. Assuming k6 has the appropriate privileges, k6 instructs AWS to provision a number of instances according to your selections in the test script.
 
