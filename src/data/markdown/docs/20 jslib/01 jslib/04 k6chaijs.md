@@ -3,14 +3,14 @@ title: "k6chaijs"
 excerpt: "Assertion library for k6"
 ---
 
-[Chai Assertion Library](https://www.chaijs.com/) is an assertion library that is delightfully paired with k6 to provide more developer friendly BDD / TDD assertion style. It's a more powerful alternative to the k6-native `check()` and `group()`. 
+[Chai Assertion Library](https://www.chaijs.com/) is an assertion library that is paired with k6 to provide a more developer-friendly BDD and TDD assertion style. It's a more powerful alternative to the k6-native `check()` and `group()`. 
 
-This library is recommended for any type of testing, but especially:
- - Functional testing, where many asserts are needed
+This library is recommended for any type of testing, but especially for:
+ - Functional testing, where many asserts are needed.
  - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
- - Load testing, when the test should be aborted as soon as the first failure occurs.
- - Unit testing of JavaScript code, not necessarily connected with load. 
- - JavaScript Developers that are already familiar with Chai, Jest or Jasmine.
+ - Load testing, when the test should abort as soon as the first failure occurs.
+ - Unit testing of JavaScript code, which is not necessarily connected with load. 
+ - JavaScript Developers, who are already familiar with Chai, Jest or Jasmine.
 
 > ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs). 
 > Please request features and report bugs through [GitHub issues](https://github.com/grafana/k6-jslib-k6chaijs/issues).
@@ -60,7 +60,7 @@ export default function testSuite() {
 
 </CodeGroup>
 
-If you are familiar with k6, this is similar to using the built-in `group` and `check` functionality but with different names.
+If you are familiar with k6, this is similar to using the built-in `group` and `check` functionalities but with different names.
 
 When you run this test with `k6 run mytest.js` the result should look similar to this:
 
@@ -69,11 +69,13 @@ When you run this test with `k6 run mytest.js` the result should look similar to
   ✓ expected API status code to equal 200
 ```
 
-This basic example is not very exciting because the same result can be achieved with `group` and `check`, so let's move on to more interesting examples. 
+This basic example is not very exciting because you can get the same result with `group` and `check`.
+So let's move on to more interesting examples. 
 
 ## Chain of assertions
 
-When writing integration tests and performance test, it's often necessary to execute conditional checks. For example, you may want to inspect the JSON body only when the http response is 200. If it's 500, the body is not relevant and should not be inspected. 
+When writing integration tests and performance test, it's often necessary to execute conditional checks.
+For example, you may want to inspect the JSON body only when the http response is 200, ignoring the bodies of all other status codes.
 
 Unlike `check()`, when `expect()` fails, it stops the execution of the following assertions in the entire `describe()`group.
 
@@ -103,7 +105,7 @@ export default function testSuite() {
 
 </CodeGroup>
 
-The above script should result in the following being printed after execution:
+After executing, this script should print the following:
 
 ```bash
 █ Fetch a list of public crocodiles
@@ -119,11 +121,11 @@ When the status code isn't 200, the remaining two calls to `expect()` are omitte
   ✗ expected response status to equal 200
   ↳  0% — ✓ 0 / ✗ 1
 ```
-Due of the threshold, k6 will exit with non-zero exit code.
+Because of the threshold, k6 will exit with non-zero exit code.
 
-All examples documented in official [Chai's API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
+All examples documented in [Chai's officail API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
 
-More advanced examples can be found in the [examples section](/examples/functional-testing)
+For more advanced examples, see the [examples section](/examples/functional-testing)
 
 ## Configuration
 
