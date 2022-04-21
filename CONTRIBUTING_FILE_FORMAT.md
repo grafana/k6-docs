@@ -19,7 +19,7 @@ Example: 02 Hello world
 
 ![](internal-images/Untitled.png)
 
-The same pattern used to define orders not only root folderы but also pages(md files) inside the category.
+The same pattern used to define orders not only root folders but also pages(md files) inside the category.
 
 ![](internal-images/Untitled%201.png)
 
