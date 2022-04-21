@@ -123,7 +123,7 @@ When the status code isn't 200, the remaining two calls to `expect()` are omitte
 ```
 Because of the threshold, k6 will exit with non-zero exit code.
 
-All examples documented in [Chai's officail API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
+All examples documented in [Chai's official API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
 
 For more advanced examples, see the [examples section](/examples/functional-testing)
 
