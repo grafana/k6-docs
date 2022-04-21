@@ -152,6 +152,13 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       </Link>
                       .
                     </Trait>
+                    <Trait>
+                      Run tests on your own infrastructure with{' '}
+                      <Link to={'/cloud/cloud-faq/private-load-zones/'}>
+                        Private Load Zones
+                      </Link>
+                      .
+                    </Trait>
                   </div>
 
                   <div className={'col-lg-6 traits'}>
