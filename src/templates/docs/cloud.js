@@ -91,7 +91,14 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                           '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#list-of-supported-load-zones'
                         }
                       >
-                        multiple locations
+                        multiple cloud locations
+                      </Link>
+                      .
+                    </Trait>
+                    <Trait>
+                      Run tests on your own{' '}
+                      <Link to={'/cloud/cloud-faq/private-load-zones/'}>
+                        AWS EC2 instances
                       </Link>
                       .
                     </Trait>
@@ -137,25 +144,18 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                     </Trait>
                     <Trait>
                       <Link to={'/cloud/project-and-team-management/members/'}>
-                        Members
+                        Role-based access control
                       </Link>{' '}
-                      and{' '}
+                      in{' '}
                       <Link to={'/cloud/project-and-team-management/projects/'}>
                         Projects
                       </Link>
                       .
                     </Trait>
                     <Trait>
-                      See team and testing activity with{' '}
-                      <Link to={'/cloud/manage/usage-reports/'}>
-                        Usage reports
-                      </Link>
-                      .
-                    </Trait>
-                    <Trait>
-                      Run tests on your own infrastructure with{' '}
-                      <Link to={'/cloud/cloud-faq/private-load-zones/'}>
-                        Private Load Zones
+                      SAML SSO with{' '}
+                      <Link to={'/cloud/project-and-team-management/saml-sso/'}>
+                        Azure AD and Okta
                       </Link>
                       .
                     </Trait>
@@ -208,6 +208,13 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       and generate{' '}
                       <Link to={'/cloud/analyzing-results/result-export/'}>
                         PDF reports
+                      </Link>
+                      .
+                    </Trait>
+                    <Trait>
+                      See team and testing activity with{' '}
+                      <Link to={'/cloud/manage/usage-reports/'}>
+                        Usage reports
                       </Link>
                       .
                     </Trait>
