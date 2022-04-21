@@ -5,29 +5,6 @@ excerpt: "xk6-browser: BrowserType Class"
 
 <BrowserCompatibility/>
 
-## Supported APIs
-
-| Method | Playwright Relevant Distinctions |
-| - |  - |
-| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-executable-path" target="_blank" >browserType.executablePath()</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch" target="_blank" >browserType.launch([options])</a> |   |
-| <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-name" target="_blank" >browserType.name()</a> |   |
-
-### Missing Playwright APIs
-
-<Glossary>
-
-- [connect()](https://playwright.dev/docs/api/class-browsertype/#browser-type-connect)
-- [connectOverCDP()](https://playwright.dev/docs/api/class-browsertype#browser-type-connect-over-cdp)
-- [launchPersistentContext()](https://playwright.dev/docs/api/class-browsertype#browsertypelaunchpersistentcontextuserdatadir-options)
-- [launchServer()](https://playwright.dev/docs/api/class-browsertype#browsertypelaunchserveroptions)
-  
-</Glossary>
-
-<BrowserWIP/>
-
-## Examples
-
 ```javascript
 import launcher from 'k6/x/browser';
 
@@ -48,4 +25,26 @@ export default function () {
 }
 ```
 
-<BrowserClassList/>
+- [browserType.connect()](#browsertype-connect)
+- [browserType.connectOverCDP()](#browsertype-connectovercdp)
+- [browserType.executablePath()](#browsertype-executablepath)
+- [browserType.launch([options])](#browsertype-launch-options)
+- [browserType.launchPersistentContext()](#browsertype-launchpersistentcontext)
+- [browserType.launchServer()](#browsertype-launchserver)
+- [browserType.name()](#browsertype-name)
+
+
+## browserType.connect()
+
+## browserType.connectOverCDP()
+
+## browserType.executablePath()
+
+## browserType.launch([options])
+
+## browserType.launchPersistentContext()
+
+## browserType.launchServer()
+
+## browserType.name()
+

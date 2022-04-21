@@ -19,13 +19,13 @@ export default function () {
 - [browser.close()](#browser-close)
 - [browser.contexts()](#browser-contexts)
 - [browser.isConnected()](#browser-isconnected)
+- 🚧 [browser.newBrowserCDPSession()](#browser-newbrowsercdpsession)
 - [browser.newContext([options])](#browser-newcontext-options)
 - [browser.newPage([options])](#browser-newpage-options)
+- 🚧 [browser.on()](#browser-on)
+- ❌ [browser.startTracing()](#browser-starttracing)
+- ❌ [browser.stopTracing()](#browser-stoptracing)
 - [browser.version()](#browser-version)
-- 🚧 [browser.newBrowserCDPSession()](#missing-playwright-apis)
-- 🚧 [browser.on()](#missing-playwright-apis)
-- ❌ [browser.startTracing()](#missing-playwright-apis)
-- ❌ [browser.stopTracing()](#missing-playwright-apis)
 
 
 ## browser.close()
@@ -34,20 +34,16 @@ export default function () {
 
 ## browser.isConnected()
 
+## browser.newBrowserCDPSession()
+
 ## browser.newContext([options])
 
 ## browser.newPage([options])
 
+## browser.on()
+
+## browser.startTracing()
+
+## browser.stopTracing()
+
 ## browser.version()
-
-
-### Missing Playwright APIs
-
-<Glossary>
-
-- [on()](https://playwright.dev/docs/api/class-browsertype/#browser-type-connect)
-- [newBrowserCDPSession()](https://playwright.dev/docs/api/class-browser#browser-new-browser-cdp-session)
-- [startTracing()](https://playwright.dev/docs/api/class-browser#browser-start-tracing)
-- [stopTracing()](https://playwright.dev/docs/api/class-browser#browser-stop-tracing)
-
-</Glossary>
