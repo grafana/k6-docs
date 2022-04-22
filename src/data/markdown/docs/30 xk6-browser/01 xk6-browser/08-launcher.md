@@ -5,8 +5,6 @@ excerpt: "xk6-browser: launcher Object"
 
 This object can be used to launch or connect to Chromium, returning instances of [Browser](/javascript-api/xk6-browser/browser/).
 
-## Examples
-
 ```javascript
 import launcher from 'k6/x/browser';
 
@@ -39,5 +37,3 @@ export default function () {
   browser.close();
 }
 ```
-
-<BrowserClassList/>
