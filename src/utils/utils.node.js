@@ -288,6 +288,30 @@ const getTranslatedSlug = (
   return slug;
 };
 
+// removes parameters from slug, e.g. /javascript-api/k6/check-val-sets-tags/ => /javascript-api/k6/check/
+function removeParametersFromJavaScriptAPISlug(slug, title) {
+  if (!title) return slug;
+
+  // Making sure to change slug only for Javascript API docs that have parameters
+  if (/javascript-api\/|jslib\//.test(slug) && /\(.+\)/.test(title)) {
+    const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
+    const methodNameWithSlash = `/${methodName}`;
+
+    const newSlug = addPrefixSlash(
+      addTrailingSlash(
+        slug.slice(
+          0,
+          slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
+        ),
+      ),
+    );
+
+    return newSlug;
+  }
+
+  return slug;
+}
+
 Object.defineProperties(utils, {
   addPrefixSlash: {
     value: addPrefixSlash,
@@ -348,6 +372,9 @@ Object.defineProperties(utils, {
   },
   replacePathsInSidebarTree: {
     value: replacePathsInSidebarTree,
+  },
+  removeParametersFromJavaScriptAPISlug: {
+    value: removeParametersFromJavaScriptAPISlug,
   },
   SUPPORTED_VERSIONS: {
     value: SUPPORTED_VERSIONS,
