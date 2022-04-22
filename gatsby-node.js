@@ -26,6 +26,7 @@ const {
   getSlug,
   getTranslatedSlug,
   replacePathsInSidebarTree,
+  removeParametersFromJavaScriptAPISlug,
 } = require('./src/utils/utils.node');
 const {
   SUPPORTED_VERSIONS,
@@ -57,26 +58,14 @@ if (!isProduction && jsApiVersionsToBuild) {
 
 const newJavascriptURLsRedirects = {};
 
-function removeParametersFromJavaScriptAPISlug(slug, title) {
-  if (!title) return slug;
+function removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+  slug,
+  title,
+) {
+  const newSlug = removeParametersFromJavaScriptAPISlug(slug, title);
 
-  // Making sure to change slug only for Javascript API docs that have parameters
-  if (/javascript-api\/|jslib\//.test(slug) && /\(.+\)/.test(title)) {
-    const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
-    const methodNameWithSlash = `/${methodName}`;
-
-    const newSlug = addPrefixSlash(
-      addTrailingSlash(
-        slug.slice(
-          0,
-          slug.lastIndexOf(methodNameWithSlash) + methodNameWithSlash.length,
-        ),
-      ),
-    );
-
-    if (slug !== newSlug)
-      newJavascriptURLsRedirects[addPrefixSlash(slug)] = newSlug;
-
+  if (slug !== newSlug) {
+    newJavascriptURLsRedirects[addPrefixSlash(slug)] = newSlug;
     return newSlug;
   }
 
@@ -299,7 +288,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: removeParametersFromJavaScriptAPISlug(
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
           customSlug || dotifyVersion(pageSlug),
           title,
         ),
@@ -731,7 +720,10 @@ function getDocPagesProps({
       }
 
       return {
-        path: removeParametersFromJavaScriptAPISlug(slug, title),
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+          slug,
+          title,
+        ),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -980,7 +972,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: removeParametersFromJavaScriptAPISlug(
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
           dotifyVersion(pageSlug) || '/',
           title,
         ),
