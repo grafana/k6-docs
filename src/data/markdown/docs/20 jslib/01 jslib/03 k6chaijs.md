@@ -129,11 +129,11 @@ For more advanced examples, see the [examples section](/examples/functional-test
 
 ## Configuration
 
-Chai exposes a number of configuration options that can change how the library behaves. See [configuration](./k6chaijs/configuration).
+Chai exposes a number of configuration options that can change how the library behaves. See [configuration](/javascript-api/jslib/k6chaijs/configuration).
 
 ## Plugins
 
-It's possible to extend the Chaijs default functionality with additional plugins. See [plugins](./k6chaijs/plugins).
+It's possible to extend the Chaijs default functionality with additional plugins. See [plugins](/javascript-api/jslib/k6chaijs/).
 
 
 

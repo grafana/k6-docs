@@ -1,6 +1,7 @@
 ---
 title: "expect"
 excerpt: "Functional testing and specifying robust expectations with k6"
+hideFromSidebar: true
 ---
 
 <Blockquote mod="warning">
@@ -9,7 +10,7 @@ excerpt: "Functional testing and specifying robust expectations with k6"
 
 expect.js library has been deprecated in favor of Chaijs. 
 
-Please migrate to [k6Chaijs library](../k6chaijs). The documentation below is retained for historical reasons.
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
 
 </Blockquote>
 
