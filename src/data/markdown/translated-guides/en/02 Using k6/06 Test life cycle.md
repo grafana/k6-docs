@@ -6,16 +6,6 @@ excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", 
 The four distinct life cycle stages in a k6 test are "init", "setup", "VU" and "teardown"
 Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
 
-Delete before merging:
-
-1. Item 1 contains unordered items
-   * thing 1
-   * thing 2
-2. Item 2
-   1. thing 1
-   2. thing 2
-3. Item 3
-
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
 ```javascript
