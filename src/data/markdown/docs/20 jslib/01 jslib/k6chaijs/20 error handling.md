@@ -1,25 +1,19 @@
 ---
-title: 'Error handling in expect.js'
-description: 'How to handle errors in expect.js.'
-excerpt: 'How to handle errors in expect.js.'
+title: 'Error handling'
+description: 'How to handle errors in k6chaijs.'
+excerpt: 'How to handle errors in k6chaijs.'
 ---
 
-<Blockquote mod="warning">
 
-## expect.js library is no longer maintained
-expect.js library has been deprecated in favor of Chaijs. 
+When executing a performance or integration test, your System Under Test (SUT) may crash. 
+When your system crashes, the test should print useful information rather than stack traces caused by unexpected HTTP responses.
 
-Please migrate to the [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
-
-</Blockquote>
-
-When executing a performance or integration test, you should expect that your system under test may crash. If this happens, your test should print useful information rather than stack traces caused by unexpected HTTP responses.
-
-`expect` library is designed to make it easy to write test scripts that are resilient to failing SUT (System Under Test).
+While the k6-native `check()` function requires you handle all errors on your own, k6chaijs does most of it automatically.
+This makes your test code more resilient and easier to maintain.
 
 It's not uncommon for performance testers to write fragile code that assumes the http response will contain expected data.
 
-Fragile code is most clearly demonstrated with an example.
+Here's an example of fragile code:
 
 <CodeGroup labels={["Test code that is fragile to failing SUT"]}>
 
@@ -53,34 +47,29 @@ default at gotMoreThan5Crocs (file:///home/user/happy-path-check.js:7:68(5))
   at file:///home/user/happy-path-check.js:5:22(17)  executor=per-vu-iterations scenario=default source=stacktrace
 ```
 
-In this example, the system was overloaded, and the load balancer returned a 503 response that did not have a valid JSON body. k6 has thrown a JavaScript exception and restarted execution from the beginning.
+In this example, the system was overloaded, and the load balancer returned a 503 response that did not have a valid JSON body. 
+k6 has thrown a JavaScript exception and restarted execution from the beginning.
 This test code is fragile to failing SUT because the first `check` does not prevent the second check from executing.
 It's possible to rewrite this code to be less fragile, but that will make it longer and less readable.
 
-Error handling of this type happens automatically when using the `expect.js` library.
+Error handling of this type happens automatically when using the `k6chaijs.js` library.
 When the first `expect` fails, the remaining checks in the chain are not executed, and the test is marked as failed — the execution proceeds to the next `describe()` instead of restarting from the top.
 
 
-<CodeGroup labels={["Resilient code written using expect.js"]}>
+<CodeGroup labels={["Resilient code written using k6chaijs.js"]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 import http from 'k6/http';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
 
 export default function () {
-  describe('Fetch a list of public crocodiles', (t) => {
+  describe('Fetch a list of public crocodiles', () => {
     const response = http.get('https://test-api.k6.io/public/crocodiles');
 
-    t.expect(response.status)
-      .as('response status')
-      .toEqual(200)
-      .and(response)
-      .toHaveValidJson()
-      .and(response.json().length)
-      .as('number of crocs')
-      .toBeGreaterThan(5);
+    expect(response.status, 'response status').to.equal(200);
+    expect(response).to.have.validJsonBody();
+    expect(response.json().length, 'number of crocs').to.be.above(5);
   });
-  // more code here
 }
 ```
 
@@ -88,13 +77,13 @@ export default function () {
 
 # Handling exceptions
 
-Sometimes it's hard to predict the way SUT can fail. For those cases, the `expect` library caught any exceptions thrown inside of `describe()` body, and records it as a failed condition.
+Sometimes it's hard to predict how a SUT might fail. For those cases, the library catches any exceptions 
+thrown inside of `describe()` body, and records them as failed conditions.
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
-import http from 'k6/http';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
 
 export default function testSuite() {
   describe('Executing test against a Shaky SUT', (t) => {
@@ -108,4 +97,7 @@ export default function testSuite() {
 Execution of this script should print the following output.
 
 
-![output](./images/exception-handling.png)
+![output](./images/exception-handling.png) 
+
+
+

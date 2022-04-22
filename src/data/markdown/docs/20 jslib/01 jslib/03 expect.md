@@ -3,6 +3,16 @@ title: "expect"
 excerpt: "Functional testing and specifying robust expectations with k6"
 ---
 
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](../k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
+
 The `expect` module is a JavaScript library that simplifies specifying expectations about the responses from the target system. The design of the `expect` library was inspired by ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
 
 This library is especially useful for:
@@ -12,16 +22,6 @@ This library is especially useful for:
 
 > ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-expect). 
 > Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-expect/issues).
-
-<Blockquote mod='info'>
-
-#### This library is rapidly evolving.
-
-This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io). 
-
-This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
-
-</Blockquote>
 
 ## Installation
 There's nothing to install. This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in the k6 script directly.
