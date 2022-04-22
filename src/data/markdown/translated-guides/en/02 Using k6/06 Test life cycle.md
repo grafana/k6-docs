@@ -8,7 +8,7 @@ A script always runs through these stages in the same order.
 
 1. Code in the `init` context prepares the script: loading files, importing modules, and defining functions.
 2. (Optional) The `setup` code runs,  setting up the test environment (optional) and generating data.
-3. VU code runs in the `default()` function, running for however long and as many times as the `options` define.
+3. VU code runs in the `default()` function, running for as long and as many times as the `options` define.
 4. (Optional) The `teardown` code runs, postprocessing data and closing the test environment.
 
 This order&mdash;set up, test, then tear down&mdash;follows the structure of many testing frameworks.
@@ -59,7 +59,7 @@ To prepare the test, the code in the `init` context:
 - defines functions for the `default` (VU), `setup`, and `teardown` stages.
 
 The init stage is required.
-Any useful k6 script is going to import a module from the k6 API.
+Any useful k6 script will import a module from the k6 API.
 Besides that, k6 needs to define what functions the test will run.
 
 All code that is outside of a function is code in the `init` context.
@@ -122,7 +122,7 @@ A VU executes the `default()` function from start to end in sequence.
 Once the VU reaches the end of the function, it loops back to the start and executes the code all over.
 
 As part of this "restart" process, k6 resets the VU.
-Cookies are cleared and TCP connections might be torn down  (depending on your test configuration options).
+Cookies are cleared, and TCP connections might be torn down  (depending on your test configuration options).
 
 As a bonus, you can reuse data between iterations (but only for the same VU):
 
@@ -249,7 +249,7 @@ It's best to think that each stage and each VU has access to a fresh "copy" of w
 ![Diagram showing data getting returned by setup, then used (separately) by default and teardown functions](./images/Lifecycle/lifecycle.png)
 
 It would be extremely complicated and computationally intensive to pass mutable data between all VUs and then to teardown, especially in distributed setups.
-This would go against a core k6 goal: the same script should be execuatable in multple modes.
+This would go against a core k6 goal: the same script should be executable in multiple modes.
 
 
 ## Benefits of separating init and VU code
@@ -289,3 +289,4 @@ There are multiple reasons to separate the code into these stages.
   </p>
   </dd>
 </dl>
+
