@@ -13,7 +13,7 @@ A script always runs through these stages in the same order.
 
 This order&mdash;set up, test, then tear down&mdash;follows the structure of many testing frameworks.
 
-The extra separation of `init` and VU code gives k6 better performance, higher result accuracy, and more script portability.
+Separating the init stage from the VU stage improves k6 performance by removing irrelevant computation from the VU stage.
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
@@ -168,7 +168,7 @@ $ k6 run --no-setup --no-teardown ...
 
 </CodeGroup>
 
-## Using data from setup in default and init
+### Using data from setup in default and init
 
 Again, let's have a look at the basic structure of a k6 test:
 
