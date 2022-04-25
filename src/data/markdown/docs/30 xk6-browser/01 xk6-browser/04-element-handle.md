@@ -35,10 +35,10 @@ export default function () {
 ```
 
 
-- [elementHandle.$(selector)](#)
-- [elementHandle.$$(selector)](#)
-- [elementHandle.$eval()](#)
-- [elementHandle.$$eval()](#)
+- [elementHandle.$(selector)](#elementhandle---selector)
+- [elementHandle.$$(selector)](#elementhandle----selector)
+- [elementHandle.$eval()](#elementhandle--eval)
+- [elementHandle.$$eval()](#elementhandle---eval)
 - [elementHandle.boundingBox()](#elementhandle-boundingbox)
 - [elementHandle.check([options])](#elementhandle-check-options)
 - [elementHandle.click([options])](#elementhandle-click-options)
