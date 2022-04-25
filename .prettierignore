@@ -5,7 +5,3 @@ node_modules/
 # disable formatting for code snippets
 src/data/home-examples/*
 src/data/native-automation-instruction/*
-
-# disable formatting for markdown files
-*.md
-*.mdx
