@@ -36,21 +36,21 @@ In this example, we'll run a four-stage test. We initially stay at the defined r
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
 ```javascript
-import http from "k6/http";
-import exec from "k6/execution";
+import http from 'k6/http';
+import exec from 'k6/execution';
 
-export let options = {
+export const options = {
   discardResponseBodies: true,
 
   scenarios: {
     contacts: {
-      executor: "ramping-arrival-rate",
+      executor: 'ramping-arrival-rate',
 
       // Our test with at a rate of 300 iterations started per `timeUnit` (e.g minute).
       startRate: 300,
 
       // It should start `startRate` iterations per minute
-      timeUnit: "1m",
+      timeUnit: '1m',
 
       // It should preallocate 2 VUs before starting the test.
       preAllocatedVUs: 2,
@@ -61,25 +61,24 @@ export let options = {
 
       stages: [
         // It should start 300 iterations per `timeUnit` for the first minute.
-        { target: 300, duration: "1m" },
+        { target: 300, duration: '1m' },
 
         // It should linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
-        { target: 600, duration: "2m" },
+        { target: 600, duration: '2m' },
 
         // It should continue starting 600 iterations per `timeUnit` for the following four minutes.
-        { target: 600, duration: "4m" },
+        { target: 600, duration: '4m' },
 
         // It should linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
-        { target: 60, duration: "2m" },
+        { target: 60, duration: '2m' },
       ],
     },
   },
 };
 
 export default function () {
-  http.get("https://test.k6.io/contacts.php");
+  http.get('https://test.k6.io/contacts.php');
 }
-
 ```
 
 </CodeGroup>
