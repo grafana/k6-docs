@@ -19,10 +19,10 @@
     "develop": "gatsby develop",
     "format": "prettier --check '**/*.{js,jsx,css,scss}'",
     "format:fix": "prettier --write '**/*.{js,jsx,css,scss}'",
-    "lint": "eslint -c .eslintrc",
-    "lint:fix": "eslint -c .eslintrc --fix",
-    "lint:examples": "./node_modules/.bin/eslint src/data/markdown",
-    "lint:examples:fix": "./node_modules/.bin/eslint src/data/markdown --fix",
+    "lint": "eslint --ext .js,.jsx .",
+    "lint:fix": "eslint --ext .js,.jsx --fix .",
+    "lint:examples": "eslint -c ./src/data/markdown/.eslintrc.js --ext .md,.mdx src/data/markdown",
+    "lint:examples:fix": "eslint -c ./src/data/markdown/.eslintrc.js --ext .md,.mdx src/data/markdown --fix",
     "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",
@@ -97,8 +97,5 @@
     "prettier": "^2.4.1",
     "shx": "^0.3.3",
     "wait-on": "^5.3.0"
-  },
-  "lint-staged": {
-    "*.md": "./node_modules/.bin/eslint -c ./src/data/markdown/.eslintrc.js"
   }
 }
