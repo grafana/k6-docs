@@ -78,13 +78,19 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30
 _Running a 30-second, 10-VU load test_
 
 k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
-VUs are essentially
-glorified, parallel `while(true)` loops.
-Scripts are written using JavaScript, as ES6 modules,
+VUs are essentially parallel `while(true)` loops.
+Scripts are written in JavaScript, as ES6 modules,
 which allows you to break larger tests into smaller pieces or make reusable pieces as you like.
 
-Scripts must contain, at the very least, a `default` function.
-This function defines the entry point for your VUs, similar to the `main()` function in many other languages:
+
+### The init context and the default function
+
+For a test to run, you need to have *init code*, which prepares the test, and *VU code,* which makes requests.
+
+Code in the init context defines functions and configures the test options (like `duration`).
+
+Every test also has a `default` function.
+This function defines the entry point for your VUs.
 
 <CodeGroup labels={[]}>
 
@@ -96,34 +102,8 @@ export default function () {
 
 </CodeGroup>
 
-### The init context and the default function
-
-You might ask: "Why not just run my script normally, from top to bottom?"  The answer is: we do, but code inside and outside your default function can do different things.
-
-Code _inside_ `default` is *VU code*.
-It runs over and over for as long as the test is running.
-Code _outside_ of `default` is *init code*.
-It's run only once per VU.
-
-<CodeGroup labels={[""]}>
-
-```javascript
-// init code
-
-export default function () {
-  // vu code
-}
-```
-
-</CodeGroup>
-
-VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test
-to do.
-There are a few important exceptions: you can't:
-* Load anything from your local filesystem
-* Import any other modules.
-
-Instead, do these from init-code.
+Init code runs first and is called only once per VU.
+On the other hand, default code executes as many times as the test options set.
 
 Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
 
@@ -196,7 +176,7 @@ export default function () {
 
 </CodeGroup>
 
-To configure advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
 ## Running cloud tests
 
