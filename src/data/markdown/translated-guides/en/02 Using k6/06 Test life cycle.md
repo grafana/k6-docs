@@ -1,10 +1,17 @@
 ---
 title: 'Test life cycle'
-excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", "VU" and "teardown".'
+excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 ---
 
-The four distinct life cycle stages in a k6 test are "init", "setup", "VU" and "teardown"
-Throughout the documentation, you will also see us referring to it as "init code", "VU code" etc.
+A k6 test has four distinct stages.
+A script always runs through these stages in the same order.
+
+1. Code in the `init` context prepares the script: loading files, importing modules, and defining functions.
+2. (Optional) The `setup` code runs,  setting up the test environment (optional) and generating data.
+3. VU code runs in the `default()` function, running for as long and as many times as the `options` define.
+4. (Optional) The `teardown` code runs, postprocessing data and closing the test environment.
+
+This order&mdash;set up, test, then tear down&mdash;follows the structure of many testing frameworks.
 
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
@@ -26,10 +33,63 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## Init and VU stages
+## Overview of the test stages
 
-Scripts must contain, at the very least, a `default` function - this defines the entry point
-for your VUs, similar to the `main()` function in many other languages:
+For more technical detail, see this page's subsequent sections.
+
+| Test stage      | Used to                                                    | Example                                                                                 | Called                                                                             | Required? |
+|-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
+| **1. init**     | Load local files, import modules, declare global variables | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Required  |
+| **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
+| **3. VU code**  | Run the test function, usually `default` | Make https requests, validate responses                                                 | Once per iteration, as many times as the test options require | Required       |
+| **4. Teardown** | Process result of setup code, stop test environment        | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                                                    | Optional        |
+
+\* In cloud scripts, init code might be called more often.
+
+## The init stage
+
+Before the test runs, k6 needs to initialize the test conditions.
+To prepare the test, the code in the `init` context:
+
+- Imports modules
+- Loads files from the local file system
+- Configures the test for all `options`
+- Defines functions for the `default` (VU), `setup`, and `teardown` stages (and for custom functions, too).
+
+The init stage is required.
+Separating the init stage from the VU stage removes irrelevant computation from VU code, which both improves k6 performance and makes test results more reliable.
+
+All code that is outside of a function is code in the `init` context.
+Code in the `init` context *always executes first*.
+
+<CodeGroup labels={["Examples of init code"]} lineNumbers={[true]}>
+
+```javascript
+// init context: importing modules
+import http from 'k6/http';
+import { Trend } from 'k6/metrics';
+
+// init context: define k6 options
+export const options = {
+  vus: 10,
+  duration: '30s',
+};
+
+// init context: global variables
+const customTrend = new Trend('oneCustomMetric');
+
+// init context: define custom function
+function myCustomFunction() {
+  // ...
+}
+```
+
+</CodeGroup>
+
+## The VU stage
+
+Scripts must contain, at least, a `default()` function.
+The code inside this function is *VU code*.
 
 <CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
 
@@ -41,71 +101,70 @@ export default function () {
 
 </CodeGroup>
 
-_"Why not just run my script normally, from top to bottom"_, you might ask - the answer is: we
-do, but code **inside** and **outside** your `default` function can do different things.
+VU code runs over and over through the test duration.
 
-Code inside `default` is called "VU code", and is run over and over for as long as the test is
-running. Code outside of it is called "init code", and is run only once per VU.
+VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test to do.
+The only exceptions are the jobs that happen in the `init` context.
 
-VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load
-test to do - with a few important exceptions: you can't load anything from your local filesystem,
-or import any other modules. This all has to be done from the init code.
+- VU code *does not* load files from your local filesystem.
+- VU code *does not* import any other modules.
 
-We have two reasons for this. The first is, of course: performance.
+Again, instead of VU code, init code does these jobs.
 
-If you read a file from disk on every single script iteration, it'd be needlessly slow; even
-if you cache the contents of the file and any imported modules, it'd mean the _first run_ of the
-script would be much slower than all the others. Worse yet, if you have a script that imports
-or loads things based on things that can only be known at runtime, you'd get slow iterations
-thrown in every time you load something new.
+### The default function life-cycle
 
-But there's another, more interesting reason. By forcing all imports and file reads into the
-init context, we make an important design goal possible; we want to support three different
-execution modes without the need for you to modify your scripts; local, cloud and clustered
-execution. In the case of cloud and clustered execution we know which files will be needed, so
-we distribute only those files. We know which modules will be imported, so we can bundle them
-up from the get-go. And, tying into the performance point above, the other nodes don't even
-need writable filesystems - everything can be kept in-memory.
+A VU executes the `default()` function from start to end in sequence.
+Once the VU reaches the end of the function, it loops back to the start and executes the code all over.
 
-As an added bonus, you can use this to reuse data between iterations (but only for the same VU):
+As part of this "restart" process, k6 resets the VU.
+Cookies are cleared, and TCP connections might be torn down  (depending on your test configuration options).
 
-<CodeGroup labels={[]}>
+## Setup and teardown stages
+
+Like `default`, `setup` and `teardown` functions must be exported functions.
+But unlike the `default` function, k6 calls `setup` and `teardown` only once per test.
+
+- `setup` is called at the beginning of the test, after the init stage but before the VU stage.
+- `teardown` is called at the end of a test, after the VU stage (`default` function).
+
+You can call the full k6 API in the setup and teardown stages, unlike the init stage.
+For example, you can make HTTP requests:
+
+<CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
 
 ```javascript
-let counter = 0;
+import http from 'k6/http';
 
-export default function () {
-  counter++;
+export function setup() {
+  const res = http.get('https://httpbin.test.k6.io/get');
+  return { data: res.json() };
+}
+
+export function teardown(data) {
+  console.log(JSON.stringify(data));
+}
+
+export default function (data) {
+  console.log(JSON.stringify(data));
 }
 ```
 
 </CodeGroup>
 
-## The default function life-cycle
+### Skip setup and teardown execution
 
-A VU will execute the default function from start to end in sequence. Nothing out of the ordinary
-so far, but here's the important part; once the VU reaches the end of the default function it will
-loop back to the start and execute the code all over.
+You can skip the execution of setup and teardown stages using the options `--no-setup` and
+`--no-teardown`.
 
-As part of this "restart" process, the VU is reset. Cookies are cleared and TCP connections
-might be torn down, depending on your test configuration options.
+<CodeGroup labels={["Skipping setup/teardown execution"]} lineNumbers={[true]}>
 
-> Make sure to use `sleep()` statements to pace your VUs properly. An appropriate amount of
-> sleep/think time at the end of the default function is often needed to properly simulate a
-> user reading content on a page. If you don't have a `sleep()` statement at the end of
-> the default function your VU might be more "aggressive" than you've planned.
->
-> VU without any `sleep()` is akin to a user who constantly presses F5 to refresh the page.
+```bash
+$ k6 run --no-setup --no-teardown ...
+```
 
-## Setup and teardown stages
+</CodeGroup>
 
-Beyond the required init and VU stages, which is code run for each VU, k6 also supports test-wide
-setup and teardown stages, like many other testing frameworks and tools. The `setup` and
-`teardown` functions, like the `default` function, needs to be exported functions. But unlike
-the `default` function `setup` and `teardown` are only called once for a test. `setup` is called
-at the beginning of the test, after the init stage but before the VU stage (`default` function),
-and `teardown` is called at the end of a test, after the VU stage (`default` function). Therefore,
-VU number is 0 while executing the `setup` and `teardown` functions.
+### Using data from setup in default and init
 
 Again, let's have a look at the basic structure of a k6 test:
 
@@ -129,19 +188,9 @@ export function teardown(data) {
 
 </CodeGroup>
 
-You might have noticed the function signature of the `default` function and `teardown` function
-takes an argument, which we here refer to as `data`.
+You might have noticed the function signatures of the `default()` and `teardown()` functions take an argument, referred to here as `data`.
 
-This `data` will be whatever is returned in the `setup` function, so a mechanism for passing data
-from the setup stage to the subsequent VU and teardown stages in a way that, again, is compatible
-with our goal of supporting local, cloud and clustered execution modes without requiring script
-changes when switching between them. (it might or might not be the same node that runs the setup
-and teardown stages in the cloud or clustered execution mode).
-
-To support all of those modes, only data (i.e. JSON) can be passed between `setup()` and the
-other stages, any passed functions will be stripped.
-
-Here's an example of doing just that, passing some data from setup to VU and teardown stages:
+Here's an example of passing some data from the setup code to the VU and teardown stages:
 
 <CodeGroup labels={["Setup/Teardown"]} lineNumbers={[true]}>
 
@@ -163,44 +212,23 @@ export function teardown(data) {
 
 </CodeGroup>
 
-A big difference between the init stage and setup/teardown stages is that you have the full k6
-API available in the latter, you can for example make HTTP requests in the setup and teardown
-stages:
 
-<CodeGroup labels={["Setup/Teardown with HTTP request"]} lineNumbers={[true]}>
+For example, with the data returned by the `setup()` function, you can:
 
-```javascript
-import http from 'k6/http';
+- Give each VU access to an identical copy of the data
+- Postprocess the data in `teardown` code
 
-export function setup() {
-  const res = http.get('https://httpbin.test.k6.io/get');
-  return { data: res.json() };
-}
+However, there are some restrictions.
 
-export function teardown(data) {
-  console.log(JSON.stringify(data));
-}
+- You can pass only data (i.e. JSON) between `setup` and the other stages.
+You cannot pass functions.
+- If the data returned by the `setup()` function is large, it will consume more memory.
+- You cannot manipulate data in the `default()` function, then pass it to the `teardown()` function.
 
-export default function (data) {
-  console.log(JSON.stringify(data));
-}
-```
+It's best to think that each stage and each VU has access to a fresh "copy" of whatever data the `setup()` function returns.
 
-</CodeGroup>
+![Diagram showing data getting returned by setup, then used (separately) by default and teardown functions](./images/Lifecycle/lifecycle.png)
 
-Note that any requests made in the setup and teardown stages will be counted in the end-of-test
-summary. Those requests will be tagged appropriately with the `::setup` and `::teardown` values
-for the `group` metric tag, so that you can filter them in JSON output or InfluxDB.
+It would be extremely complicated and computationally intensive to pass mutable data between all VUs and then to teardown, especially in distributed setups.
+This would go against a core k6 goal: the same script should be executable in multiple modes.
 
-## Skip setup and teardown execution
-
-It is possible to skip the execution of setup and teardown stages using the two options `--no-setup` and
-`--no-teardown` respectively.
-
-<CodeGroup labels={["Skipping setup/teardown execution"]} lineNumbers={[true]}>
-
-```bash
-k6 run --no-setup --no-teardown ...
-```
-
-</CodeGroup>
