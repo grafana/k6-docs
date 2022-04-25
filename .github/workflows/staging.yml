@@ -66,9 +66,15 @@ jobs:
           curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.4.0
           export PATH="./bin:$PATH"
           vale -v
+      - name: Check formatting
+        run: |
+          npm run format
       - name: Lint code
         run: |
           npm run lint
+      - name: Lint code examples
+        run: |
+          npm run lint:examples
       - name: Lint prose
         run: |
           export PATH="./bin:$PATH"
