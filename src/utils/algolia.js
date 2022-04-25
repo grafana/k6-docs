@@ -6,6 +6,7 @@ const { stripDirectoryPath, mdxAstToPlainText, flat } = require('./utils');
 const {
   getSlug,
   getTranslatedSlug,
+  removeParametersFromJavaScriptAPISlug,
   SUPPORTED_LOCALES,
   DEFAULT_LOCALE,
 } = require('./utils.node');
@@ -88,7 +89,10 @@ const processMdxEntry = (
     cache[pointer] = {
       title,
       objectID: `${objectID}-${pointer}`,
-      slug: pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
+      slug: removeParametersFromJavaScriptAPISlug(
+        pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
+        title,
+      ),
       content: chunks[pointer],
       _tags: pageTags,
     };

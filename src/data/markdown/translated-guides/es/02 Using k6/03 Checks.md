@@ -5,7 +5,7 @@ excerpt: 'Checks son aserciones, pero difieren en que no detienen la ejecución,
 
 ## ¿Qué es un check?
 
-Las [checks](/javascript-api/k6/check-val-sets-tags/) son como afirmaciones, pero se diferencian en que no detienen la ejecución. En su lugar, almacenan el resultado de la verificación, pasa o no pasa, y deja que continúe la ejecución del script. Eche un vistazo a [thresholds](/using-k6/thresholds) para encontrar una forma de detener la ejecución de una prueba basada en comprobaciones.
+Las [checks](/javascript-api/k6/check/) son como afirmaciones, pero se diferencian en que no detienen la ejecución. En su lugar, almacenan el resultado de la verificación, pasa o no pasa, y deja que continúe la ejecución del script. Eche un vistazo a [thresholds](/using-k6/thresholds) para encontrar una forma de detener la ejecución de una prueba basada en comprobaciones.
 
 ### Verifica el código de respuesta HTTP devuelto
 
@@ -91,7 +91,7 @@ En el resultado anterior, puede ver que nuestra verificación "es el estado 200"
 
 ### Agregar varios checks
 
-También puede agregar múltiples checks dentro de una sola declaración [check ()](/javascript-api/k6/check-val-sets-tags), como esta:
+También puede agregar múltiples checks dentro de una sola declaración [check ()](/javascript-api/k6/check), como esta:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -145,5 +145,5 @@ en determinados puntos de teste. También puede agregar la verificación a la ta
 
 ## Ver también
 
-- [API de JavaScript](/javascript-api/k6/check-val-sets-tags/)
+- [API de JavaScript](/javascript-api/k6/check/)
 - [Fallo en una prueba de carga usando checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

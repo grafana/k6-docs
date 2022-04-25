@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { anchorify } from 'utils';
 
 const useLandmark = ({ containerRef, markSelector }, deps = []) => {
   const [links, setLinks] = useState([]);
@@ -10,7 +9,7 @@ const useLandmark = ({ containerRef, markSelector }, deps = []) => {
       setLinks(
         Array.from(allMarks).map(({ id, innerText, tagName }) => ({
           title: innerText,
-          anchor: `#${anchorify(id || innerText)}`,
+          anchor: `#${id}`,
           tagName,
         })),
       );

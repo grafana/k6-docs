@@ -9,8 +9,8 @@ _CookieJar_ is an object for storing cookies, set by the server and/or added by 
 
 | Method                                                                                                     | Description                                                                                               |
 | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| [cookiesForURL(url)](/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url)                        | Get Object of cookies where the key is the cookie name and the value is an array.                         |
-| [set(url, name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options) | Set a cookie in the jar by specifying name, value and some other optional settings like domain, path etc. |
+| [cookiesForURL(url)](/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl)                        | Get Object of cookies where the key is the cookie name and the value is an array.                         |
+| [set(url, name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set) | Set a cookie in the jar by specifying name, value and some other optional settings like domain, path etc. |
 
 ### Example
 

@@ -19,12 +19,14 @@ const {
   getDocSection,
   buildBreadcrumbs,
   dedupePath,
+  addPrefixSlash,
   addTrailingSlash,
   removeEnPrefix,
   translatePath,
   getSlug,
   getTranslatedSlug,
   replacePathsInSidebarTree,
+  removeParametersFromJavaScriptAPISlug,
 } = require('./src/utils/utils.node');
 const {
   SUPPORTED_VERSIONS,
@@ -52,6 +54,22 @@ if (!isProduction && jsApiVersionsToBuild) {
   SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
     .reverse()
     .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
+}
+
+const newJavascriptURLsRedirects = {};
+
+function removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+  slug,
+  title,
+) {
+  const newSlug = removeParametersFromJavaScriptAPISlug(slug, title);
+
+  if (slug !== newSlug) {
+    newJavascriptURLsRedirects[addPrefixSlash(slug)] = newSlug;
+    return newSlug;
+  }
+
+  return slug;
 }
 
 const formatSectionName = (name) => {
@@ -270,7 +288,10 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: customSlug || dotifyVersion(pageSlug),
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+          customSlug || dotifyVersion(pageSlug),
+          title,
+        ),
         title,
         redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
         redirectTarget,
@@ -699,7 +720,10 @@ function getDocPagesProps({
       }
 
       return {
-        path: slug,
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+          slug,
+          title,
+        ),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -948,7 +972,10 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: dotifyVersion(pageSlug) || '/',
+        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+          dotifyVersion(pageSlug) || '/',
+          title,
+        ),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
@@ -1380,6 +1407,7 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/touchscreen/',
     '/javascript-api/k6-x-browser/launcher/':
       '/javascript-api/xk6-browser/launcher/',
+    ...newJavascriptURLsRedirects,
   };
 
   // eslint-disable-next-line no-restricted-syntax

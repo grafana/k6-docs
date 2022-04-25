@@ -5,7 +5,7 @@ excerpt: 'Un archivo en k6 es simplemente un archivo tar con todos los archivos 
 
 ## ¿Qué es un archivo?
 
-Cuando la complejidad de una prueba en k6 va más allá de un solo archivo JS (Java Script), rápidamente se vuelve engorroso encontrar y agrupar todas las dependencias (JS, archivos de datos [open()](/javascript-api/init-context/open-filepath-mode)'ed, certificados de clientes TLS, etc.). Los archivos en k6 son una forma nativa de agrupar y distribuir, o compartir, una prueba.
+Cuando la complejidad de una prueba en k6 va más allá de un solo archivo JS (Java Script), rápidamente se vuelve engorroso encontrar y agrupar todas las dependencias (JS, archivos de datos [open()](/javascript-api/init-context/open)'ed, certificados de clientes TLS, etc.). Los archivos en k6 son una forma nativa de agrupar y distribuir, o compartir, una prueba.
 
 Un archivo en k6 es simplemente un archivo [tar](https://en.wikipedia.org/wiki/Tar_%28computing%29) con todos los archivos necesarios para ejecutar una prueba k6.
 
@@ -21,7 +21,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-Ahora bien, si sustituye `k6 run` por `k6 archive`, k6 ejecutará la fase de [inicio del código](/es/usando-k6/etapas-de-un-test/) para determinar qué archivos JS se están importando y qué archivos de datos se están [open()](/javascript-api/init-context/open-filepath-mode) y agrupa todos los archivos en un archivo tar:
+Ahora bien, si sustituye `k6 run` por `k6 archive`, k6 ejecutará la fase de [inicio del código](/es/usando-k6/etapas-de-un-test/) para determinar qué archivos JS se están importando y qué archivos de datos se están [open()](/javascript-api/init-context/open) y agrupa todos los archivos en un archivo tar:
 
 
 <CodeGroup labels={[]} lineNumbers={[true]}>

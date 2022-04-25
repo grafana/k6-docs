@@ -970,7 +970,7 @@ Especifica el tiempo que se permite ejecutar la función `setup()` antes de que 
 
 | Env                | CLI | Code / Config file | Default |
 | ------------------ | --- | ------------------ | ------- |
-| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"10s"` |
+| `K6_SETUP_TIMEOUT` | N/A | `setupTimeout`     | `"60s"` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -1165,7 +1165,7 @@ Especifica cuánto tiempo se permite que se ejecute la función `teardown()` ant
 
 | Env                   | CLI | Code / Config file | Default |
 | --------------------- | --- | ------------------ | ------- |
-| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"10s"` |
+| `K6_TEARDOWN_TIMEOUT` | N/A | `teardownTimeout`  | `"60s"` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 

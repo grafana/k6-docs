@@ -8,7 +8,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import { StickyContainer, Sticky } from 'react-sticky';
 import SeoMetadata from 'utils/seo-metadata';
 
 export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
@@ -55,25 +54,18 @@ export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
           }
         />
         <div className={`${docPageContent.inner} `}>
-          <StickyContainer>
-            <div ref={contentContainerRef} className={stickyContainerClasses}>
-              <DocLinksBlock title={'Examples'} links={examplesBlockLinks} />
-              <DocLinksBlock
-                title={'Tutorials'}
-                links={tutorialsBlockLinks}
-                last
-              />
-            </div>
-            <Sticky topOffset={-15} bottomOffset={0} disableCompensation>
-              {({ style }) => (
-                <TableOfContents
-                  style={{ ...style, left: 350 }}
-                  contentContainerRef={contentContainerRef}
-                  shouldMakeReplacement
-                />
-              )}
-            </Sticky>
-          </StickyContainer>
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
+            <DocLinksBlock title={'Examples'} links={examplesBlockLinks} />
+            <DocLinksBlock
+              title={'Tutorials'}
+              links={tutorialsBlockLinks}
+              last
+            />
+          </div>
+          <TableOfContents
+            contentContainerRef={contentContainerRef}
+            shouldMakeReplacement
+          />
         </div>
       </DocLayout>
     </LocaleProvider>

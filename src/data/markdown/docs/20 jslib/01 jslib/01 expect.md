@@ -1,7 +1,18 @@
 ---
 title: "expect"
 excerpt: "Functional testing and specifying robust expectations with k6"
+hideFromSidebar: true
 ---
+
+<Blockquote mod="warning">
+
+## expect.js library is no longer maintained
+
+expect.js library has been deprecated in favor of Chaijs. 
+
+Please migrate to [k6Chaijs library](/javascript-api/jslib/k6chaijs). The documentation below is retained for historical reasons.
+
+</Blockquote>
 
 The `expect` module is a JavaScript library that simplifies specifying expectations about the responses from the target system. The design of the `expect` library was inspired by ava, Jest and Jasmine. If you already know one of these frameworks, using this library should be very simple. 
 
@@ -12,16 +23,6 @@ This library is especially useful for:
 
 > ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-expect). 
 > Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-expect/issues).
-
-<Blockquote mod='info'>
-
-#### This library is rapidly evolving.
-
-This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io). 
-
-This documentation is for the last version only. If you discover that some of the code below does not work, it most likely means that you are using an older version.
-
-</Blockquote>
 
 ## Installation
 There's nothing to install. This library is hosted on [jslib](https://jslib.k6.io/) and can be imported in the k6 script directly.
@@ -117,16 +118,16 @@ More advanced examples can be found in the [examples section](/examples/function
 
 | Function | Description |
 | -------- | ----------- |
-| [describe(name, function)](/javascript-api/jslib/expect/describe-name-function)  | Entry point for creating tests. |
-| [expect(value)](/javascript-api/jslib/expect/expect-value)  | expect(value) sets the value to be used in comparison by the next function in the chain |
-| [and(value)](/javascript-api/jslib/expect/and-value)  | and(value) is similar to expect(value), but can be used in a chain. |
-| [as(alias)](/javascript-api/jslib/expect/as-string)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
-| [toEqual(value)](/javascript-api/jslib/expect/toequal-expectedvalue)  | The `.toEqual(expectedValue)` is similar to `===`    |
-| [toBeGreaterThan(expectedValue)](/javascript-api/jslib/expect/tobegreaterthan-expectedvalue)  | Use to verify that `received` > `expected` |
-| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal-expectedvalue)  | Use to verify that `received` >= `expected` |
-| [toBeLessThan(expectedValue)](/javascript-api/jslib/expect/tobelessthan-expectedvalue)  | Use to verify that `received` < `expected` |
-| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal-expectedvalue)  | Use to verify that `received` <= `expected` |
-| [toBeBetween(from, to)](/javascript-api/jslib/expect/tobebetween-from-to)  | Use to verify that expected value is within range. |
+| [describe(name, function)](/javascript-api/jslib/expect/describe)  | Entry point for creating tests. |
+| [expect(value)](/javascript-api/jslib/expect/expect)  | expect(value) sets the value to be used in comparison by the next function in the chain |
+| [and(value)](/javascript-api/jslib/expect/and)  | and(value) is similar to expect(value), but can be used in a chain. |
+| [as(alias)](/javascript-api/jslib/expect/as)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
+| [toEqual(value)](/javascript-api/jslib/expect/toequal)  | The `.toEqual(expectedValue)` is similar to `===`    |
+| [toBeGreaterThan(expectedValue)](/javascript-api/jslib/expect/tobegreaterthan)  | Use to verify that `received` > `expected` |
+| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal)  | Use to verify that `received` >= `expected` |
+| [toBeLessThan(expectedValue)](/javascript-api/jslib/expect/tobelessthan)  | Use to verify that `received` < `expected` |
+| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal)  | Use to verify that `received` <= `expected` |
+| [toBeBetween(from, to)](/javascript-api/jslib/expect/tobebetween)  | Use to verify that expected value is within range. |
 | [toBeTruthy()](/javascript-api/jslib/expect/tobetruthy)  | Use `.toBeTruthy` when you don't care what a value is and you want to ensure a value is true in a boolean context.  | 
 | [toHaveValidJson()](/javascript-api/jslib/expect/tohavevalidjson)  | Use to verify that the http response has a valid JSON body. |
 

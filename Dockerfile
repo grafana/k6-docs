@@ -1,5 +1,5 @@
 # base image
-FROM node:12-slim
+FROM node:14-slim
 
 EXPOSE 8000
 

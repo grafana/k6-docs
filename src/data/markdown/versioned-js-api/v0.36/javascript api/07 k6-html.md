@@ -6,7 +6,7 @@ The k6/html module contains functionality for HTML parsing.
 
 | Function | Description |
 | -------- | ----------- |
-| [parseHTML(src)](/javascript-api/k6-html/parsehtml-src)  | Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selection) object. |
+| [parseHTML(src)](/javascript-api/k6-html/parsehtml)  | Parse an HTML string and populate a [Selection](/javascript-api/k6-html/selection) object. |
 
 | Class | Description |
 | -------- | ----------- |
