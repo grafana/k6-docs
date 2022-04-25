@@ -3,9 +3,8 @@ import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view'
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
-import ArrowIcon from './svg/arrow.inline.svg';
-
 import styles from './sidebar-section-dropdown.module.scss';
+import ArrowIcon from './svg/arrow.inline.svg';
 
 const cx = classNames.bind(styles);
 

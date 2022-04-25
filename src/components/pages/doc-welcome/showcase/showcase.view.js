@@ -1,8 +1,8 @@
 import { FeaturedPostCard } from 'components/blocks/featured-post-card';
 import { graphql, useStaticQuery } from 'gatsby';
+import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { getDateAndSlugFromPath } from 'utils';
-import { getImage } from 'gatsby-plugin-image';
 
 import styles from './showcase.module.scss';
 

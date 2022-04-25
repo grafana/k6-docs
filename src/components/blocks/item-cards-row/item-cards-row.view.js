@@ -5,7 +5,6 @@ import {
   styles as itemCardStyles,
 } from 'components/shared/item-card';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-
 import * as React from 'react';
 
 import styles from './item-cards-row.module.scss';
