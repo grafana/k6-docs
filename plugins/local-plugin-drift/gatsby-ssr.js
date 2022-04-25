@@ -1,6 +1,6 @@
 const React = require('react');
 
-exports.onRenderBody = ({setPostBodyComponents}, pluginOptions) => {
+exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions) => {
   return setPostBodyComponents([
     <script
       dangerouslySetInnerHTML={{
@@ -10,5 +10,5 @@ exports.onRenderBody = ({setPostBodyComponents}, pluginOptions) => {
         `,
       }}
     />,
-    ]);
+  ]);
 };

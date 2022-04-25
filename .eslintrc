@@ -69,7 +69,7 @@
           "utils",
           "contexts",
           "i18n",
-          "data",
+          "data"
         ]
       }
     ],
@@ -83,12 +83,12 @@
   "plugins": ["prettier"],
   "overrides": [
     {
-      "files": ["*.mdx" ,"*.md"],
+      "files": ["*.mdx", "*.md"],
       "parser": "eslint-mdx", // enable `eslint-mdx` manually if it does not work
       "extends": ["plugin:mdx/recommended"],
       "rules": {
         "prettier/prettier": 0,
-        "max-len": 0,
+        "max-len": 0
       }
     }
   ]
