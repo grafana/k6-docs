@@ -69,23 +69,22 @@ Code in the `init` context *always executes first*.
 <CodeGroup labels={["Examples of init code"]} lineNumbers={[true]}>
 
 ```javascript
-function one() {
-  // this code is not init context and isn't called so it won't be executed
-}
-function two() {
-  // this code is not the init context but is called
-}
+// init context: importing modules
+import http from 'k6/http';
+import { Trend } from 'k6/metrics';
 
-two(); // this is in the init context and calls the function `two`.
+// init context: define k6 options
+export const options = {
+  vus: 10,
+  duration: '30s',
+};
 
-// export default function() {} // if this isn't uncommented,
-// k6 will give an error,
-// because no default function was defined
+// init context: global variables
+const customTrend = new Trend('oneCustomMetric');
 
-export function setup() {
-  // this line is in the init context.
-  // it defines that there is `setup` to be called
-  // some setup code
+// init context: define custom function
+function myCustomFunction() {
+  // ...
 }
 ```
 
