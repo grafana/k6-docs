@@ -124,20 +124,6 @@ Once the VU reaches the end of the function, it loops back to the start and exec
 As part of this "restart" process, k6 resets the VU.
 Cookies are cleared, and TCP connections might be torn down  (depending on your test configuration options).
 
-As a bonus, you can reuse data between iterations (but only for the same VU):
-
-<CodeGroup labels={[]}>
-
-```javascript
-let counter = 0;
-
-export default function () {
-  counter++;
-}
-```
-
-</CodeGroup>
-
 ## Setup and teardown stages
 
 Like `default`, `setup` and `teardown` functions must be exported functions.
@@ -250,43 +236,4 @@ It's best to think that each stage and each VU has access to a fresh "copy" of w
 
 It would be extremely complicated and computationally intensive to pass mutable data between all VUs and then to teardown, especially in distributed setups.
 This would go against a core k6 goal: the same script should be executable in multiple modes.
-
-
-## Benefits of separating init and VU code
-
-There are multiple reasons to separate the code into these stages.
-
-<dl>
-<dt><emph>Faster performance</emph></dt>
-  <dd>
-  <p>
-  If a script read a file from disk every iteration, the test would be needlessly slow.
-  </p>
-  <p>
-  Even if you cached the contents of the file and imported modules, the first iteration of the script would be much slower than all subsequent iterations.
-  Worse, if your script imports or loads data dynamically, you'd get slow iterations each time you loaded something new.
-  </p>
-  <p>
-  This ties into a second point: the init-VU separation reduces experimental noise.
-  </p>
-  </dd>
-  <dt><emph>Stabler, more meaningful test results.</emph></dt>
-  <dd> 
-  <p>
-  As init code does not make requests, it doesn't generate metrics.
-  This isolation removes irrelevant computation from the actual VU requests, making test results more accurate.
-  </p>
-  </dd>
-  <dt><emph> More portable design </emph></dt>
-  <dd>
-  <p>
-  The separation lets k6 create an `archive` and run the script in a different execution mode, e.g. in the cloud.
-  The init context already defines which files to load and which modules to import.
-  </p>
-  <p>
-  In more sophisticated execution modes, like clustered systems, this separation brings further performance benefits.
-  Certain nodes don't even need writable file systems&mdash; you can keep everything in memory.
-  </p>
-  </dd>
-</dl>
 
