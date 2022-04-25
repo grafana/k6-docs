@@ -17,6 +17,7 @@
     "deploy": "./scripts/gatsby-s3-workaround.sh prepare && gatsby-plugin-s3 deploy --yes && ./scripts/cloudfront-invalidate.sh && ./scripts/gatsby-s3-workaround.sh revert",
     "predevelop": "shx test -f ./.env.development || shx cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
+    "format": "prettier --write .",
     "lint": "eslint src/ -c .eslintrc",
     "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
     "lint:fix": "eslint src/ --fix -c .eslintrc",
