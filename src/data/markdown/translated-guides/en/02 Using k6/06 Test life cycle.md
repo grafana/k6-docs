@@ -13,8 +13,6 @@ A script always runs through these stages in the same order.
 
 This order&mdash;set up, test, then tear down&mdash;follows the structure of many testing frameworks.
 
-Separating the init stage from the VU stage improves k6 performance by removing irrelevant computation from the VU stage.
-
 <CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
 
 ```javascript
@@ -56,15 +54,13 @@ To prepare the test, the code in the `init` context:
 - Imports modules
 - Loads files from the local file system
 - Configures the test for all `options`
-- defines functions for the `default` (VU), `setup`, and `teardown` stages.
+- Defines functions for the `default` (VU), `setup`, and `teardown` stages (and for custom functions, too).
 
 The init stage is required.
-Any useful k6 script will import a module from the k6 API.
-Besides that, k6 needs to define what functions the test will run.
+Separating the init stage from the VU stage removes irrelevant computation from VU code, which both improves k6 performance and makes test results more reliable.
 
 All code that is outside of a function is code in the `init` context.
 Code in the `init` context *always executes first*.
-
 
 <CodeGroup labels={["Examples of init code"]} lineNumbers={[true]}>
 
