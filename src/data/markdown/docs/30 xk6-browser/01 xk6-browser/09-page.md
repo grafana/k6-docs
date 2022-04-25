@@ -203,5 +203,5 @@ export default function () {
 
 ## page.waitForURL()
   
-
+<BrowserClassList/>
 
