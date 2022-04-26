@@ -5,18 +5,17 @@ import React from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
 export default function NotFoundPage({
-pageContext: { sidebarTree, navLinks },
+  pageContext: { sidebarTree, navLinks },
 }) {
-  const pageMetadata = SeoMetadata[
-  404];
+  let pageMetadata = SeoMetadata[404];
   return (
     <LocaleProvider>
-<DocLayout
-      sidebarTree={sidebarTree}
-  navLinks={navLinks}
+      <DocLayout
+        sidebarTree={sidebarTree}
+        navLinks={navLinks}
         pageMetadata={pageMetadata}
       >
-<NotFound />
+        <NotFound />
       </DocLayout>
     </LocaleProvider>
   );
