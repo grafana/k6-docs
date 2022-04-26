@@ -40,7 +40,7 @@ export const options = {
 };
 ```
 
-We will assign a loadzone to you in the format `companyname:amazon:us:portland`, and you'll be able to create one in each Amazon region you'd like.
+We will assign a load zone to you in the format `companyname:amazon:us:portland`, and you'll be able to create one in each Amazon region you'd like.
 
 Third, [start the test](https://k6.io/docs/cloud/creating-and-running-a-test/test-authoring/#running-a-cloud-test) the way you would any other test on k6 Cloud.
 
