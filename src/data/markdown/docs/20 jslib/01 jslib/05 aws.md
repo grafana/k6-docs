@@ -11,7 +11,7 @@ The library exposes a couple of configuration and client classes allowing to int
 - The [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient) class allows listing, getting, creating, updating, and deleting secrets from the AWS secrets manager service.
 - The [AWSConfig](/javascript-api/jslib/aws/awsconfig/) class is used by each client classes to provide them access to AWS credentials as well as configuration.
 
-> ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-aws). . 
+> ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-aws). 
 > Please request features and report bugs through [GitHub issues](https://github.com/grafana/k6-jslib-aws/issues).
 
 
