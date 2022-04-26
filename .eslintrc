@@ -1,14 +1,16 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2020,
     "sourceType": "module"
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["react", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true
   },
   "rules": {
     "prettier/prettier": ["error"],
@@ -83,21 +85,6 @@
     ],
     "import/prefer-default-export": 0,
     "jsx-a11y/html-has-lang": 0, // We use react-helmet for that
-    "jsx-a11y/control-has-associated-label": 0,
-    "mdx/no-jsx-html-comments": "error",
-    "mdx/no-unused-expressions": "error"
-  },
-  "extends": ["airbnb", "plugin:mdx/recommended", "prettier"],
-  "plugins": ["prettier"],
-  "overrides": [
-    {
-      "files": ["*.mdx", "*.md"],
-      "parser": "eslint-mdx", // enable `eslint-mdx` manually if it does not work
-      "extends": ["plugin:mdx/recommended"],
-      "rules": {
-        "prettier/prettier": 0,
-        "max-len": 0
-      }
-    }
-  ]
+    "jsx-a11y/control-has-associated-label": 0
+  }
 }
