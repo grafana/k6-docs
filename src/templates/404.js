@@ -7,7 +7,7 @@ import SeoMetadata from 'utils/seo-metadata';
 export default function NotFoundPage({
   pageContext: { sidebarTree, navLinks },
 }) {
-  let pageMetadata = SeoMetadata[404];
+  const pageMetadata = SeoMetadata[404];
   return (
     <LocaleProvider>
       <DocLayout
