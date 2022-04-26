@@ -18,7 +18,7 @@ sudo apt-get install k6
 
 ## apt-key is deprecated
 
-Some users might run into an `apt-key` deprecation warning while adding k6's repository key to their system's keyring: `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`. Ubuntu and Debian deprecated the `apt-key` command indeed. In order to avoid it, and be future-proof, users should delete the existing `security@k6.io` existing repository key present on their system, and update their sources list accordingly.
+Some Ubuntu and Debian users might run into an `apt-key` deprecation warning while adding k6's repository key to their system's keyring: `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`. In order to avoid it, and be future-proof, users should delete the existing `security@k6.io` repository key present on their system, and update their sources list accordingly.
 
 ```bash
 # delete existing key
