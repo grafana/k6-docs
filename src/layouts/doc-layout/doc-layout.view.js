@@ -191,35 +191,31 @@ const SidebarNode = (props) => {
     return 'text';
   };
 
-  return (
-    <>
-      {!meta.hideFromSidebar && (
-        <div
+  return !meta.hideFromSidebar ? (
+    <div
+      className={classNames(
+        styles.sidebarNode,
+        hasSubMenu && styles.sidebarNodeWithChildren,
+      )}
+    >
+      {nodes[nodeType()]()}
+      {hasSubMenu > 0 && (
+        <ArrowLeft
           className={classNames(
-            styles.sidebarNode,
-            hasSubMenu && styles.sidebarNodeWithChildren,
+            styles.sidebarArrow,
+            isActive && styles.sidebarArrowActive,
           )}
-        >
-          {nodes[nodeType()]()}
-          {hasSubMenu > 0 && (
-            <ArrowLeft
-              className={classNames(
-                styles.sidebarArrow,
-                isActive && styles.sidebarArrowActive,
-              )}
-            />
-          )}
-          {!!Object.keys(children).length && isActive && (
-            <div className={styles.sidebarNodeChildren}>
-              {childrenToList(children).map((node) => (
-                <SidebarNode node={node} key={node.name} />
-              ))}
-            </div>
-          )}
+        />
+      )}
+      {!!Object.keys(children).length && isActive && (
+        <div className={styles.sidebarNodeChildren}>
+          {childrenToList(children).map((node) => (
+            <SidebarNode node={node} key={node.name} />
+          ))}
         </div>
       )}
-    </>
-  );
+    </div>
+  ) : null;
 };
 
 /*

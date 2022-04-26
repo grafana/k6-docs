@@ -1,1 +1,3 @@
-export { default } from './glossary';
+import Glossary from './glossary';
+
+export default Glossary;

@@ -35,56 +35,53 @@ export const Button = (props) => {
     className,
   );
 
-  const innerContent = (
-    <>
-      {theme === 'gradient-primary' || theme === 'gradient-secondary' ? (
-        <>
-          <span className={styles.border}>
-            <span className={styles.borderInner}>
-              <span className={styles.borderInnerSpace} />
-              <span className={styles.borderInnerGradient} />
-            </span>
+  const innerContent =
+    theme === 'gradient-primary' || theme === 'gradient-secondary' ? (
+      <>
+        <span className={styles.border}>
+          <span className={styles.borderInner}>
+            <span className={styles.borderInnerSpace} />
+            <span className={styles.borderInnerGradient} />
           </span>
+        </span>
 
-          <span className={styles.blur}>
-            <span className={styles.blurInner}>
-              <span className={styles.blurInnerSpace} />
-              <span className={styles.blurInnerGradient} />
-            </span>
+        <span className={styles.blur}>
+          <span className={styles.blurInner}>
+            <span className={styles.blurInnerSpace} />
+            <span className={styles.blurInnerGradient} />
           </span>
-          <span className={styles.fill} />
-          <span className={styles.text}>
-            {children}
-            {cursor && (
-              <>
-                {/* No-break space and > */}
-                &nbsp;&gt;
-                <span className={styles.cursor}>_</span>
-              </>
-            )}
-          </span>
-        </>
-      ) : (
-        <>
-          {loading && (
-            <div className={styles.loader}>
-              <Loader />
-            </div>
+        </span>
+        <span className={styles.fill} />
+        <span className={styles.text}>
+          {children}
+          {cursor && (
+            <>
+              {/* No-break space and > */}
+              &nbsp;&gt;
+              <span className={styles.cursor}>_</span>
+            </>
           )}
-          <span className={styles.buttonContent}>
-            {children}
-            {cursor && (
-              <>
-                {/* No-break space and > */}
-                &nbsp;&gt;
-                <span className={styles.cursor}>_</span>
-              </>
-            )}
-          </span>
-        </>
-      )}
-    </>
-  );
+        </span>
+      </>
+    ) : (
+      <>
+        {loading && (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        )}
+        <span className={styles.buttonContent}>
+          {children}
+          {cursor && (
+            <>
+              {/* No-break space and > */}
+              &nbsp;&gt;
+              <span className={styles.cursor}>_</span>
+            </>
+          )}
+        </span>
+      </>
+    );
 
   switch (tag) {
     case 'a':

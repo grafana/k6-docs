@@ -32,7 +32,7 @@ export const ItemCardsRow = ({
               <Heading className={itemCardStyles.title} tag={'h3'} size={'md'}>
                 {title}
               </Heading>
-              {text ? <div className={itemCardStyles.text}>{text}</div> : <></>}
+              {text ? <div className={itemCardStyles.text}>{text}</div> : null}
             </div>
             <div className={classNames(itemCardStyles.footer, styles.footer)}>
               <div className={itemCardStyles.link}>{linkText}</div>

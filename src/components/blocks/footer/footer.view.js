@@ -31,6 +31,7 @@ const fetchStatusIndicator = async (callback) => {
     );
     callback(result?.status?.indicator || 'none');
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('failed while fetching status', e);
   }
 };

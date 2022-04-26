@@ -65,7 +65,7 @@ const Collapsible = ({ children, title, isOpen, tag: Tag }) => {
           [styles.expanded]: isExpanded,
         })}
       >
-        {Tag ? <Tag id={anchorify(title)}>{title}</Tag> : <>{title}</>}
+        {Tag ? <Tag id={anchorify(title)}>{title}</Tag> : title}
         <button
           type="button"
           className={styles.button}

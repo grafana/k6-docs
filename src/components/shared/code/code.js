@@ -79,7 +79,7 @@ const Code = ({
       {showCopyButton && (
         <WithCopyButton dataToCopy={copyBtnContent}>{children}</WithCopyButton>
       )}
-      {!showCopyButton && <>{children}</>}
+      {!showCopyButton && children}
     </>
   );
 
