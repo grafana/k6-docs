@@ -32,7 +32,7 @@ jobs:
       - name: Use Node.js 15.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -52,7 +52,7 @@ jobs:
       - name: Use Node.js 15.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -90,7 +90,7 @@ jobs:
       - name: Use Node.js 15.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
