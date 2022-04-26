@@ -31,7 +31,7 @@ export const options = {
     loadimpact: {
       distribution: {
         private: {
-          loadZone: 'amazon:eu:private load zone',
+          loadZone: 'companyname:amazon:us:portland',
           percent: 100,
         },
       },
@@ -40,6 +40,7 @@ export const options = {
 };
 ```
 
+We will assign a loadzone to you in the format `companyname:amazon:us:portland`, and you'll be able to create one in each Amazon region you'd like.
 
 Third, [start the test](https://k6.io/docs/cloud/creating-and-running-a-test/test-authoring/#running-a-cloud-test) the way you would any other test on k6 Cloud.
 
@@ -66,6 +67,10 @@ Yes, you can run tests on a combination of private and public load zones on k6 C
 **How long does it take to start a test on a private load zone?**
 
 Once a private load zone has been set up, it will take only slightly more time to start a test on it than it would on a public load zone. This is because we reuse public load generators to improve startup time, but we can't use this strategy for private load zones at this point. However, the difference between the two shouldn't be more than a few seconds.
+
+**Can I get live cloud logs from my private load zone?**
+
+You'll be able to get all the *metrics* (response time, rps, errors, etc.) from k6, but at the moment, you won't be able to see log output from load generators within private load zones. We intend to address this in the future.
 
 ## See also
 
