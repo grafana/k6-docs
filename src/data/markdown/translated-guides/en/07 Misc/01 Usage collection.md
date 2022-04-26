@@ -8,6 +8,7 @@ By default, k6 sends a usage report each time it is run, so that we can track ho
 The usage report does not contain any information about what you are testing. The contents are the following:
 
 - The k6 version (string, e.g. "0.17.2")
+- Max VUs configured (number)
 - Test duration (number)
 - Total stages duration (number)
 - VU iterations configured (number)
@@ -40,6 +41,7 @@ For those interested, here is the actual Go [code](https://github.com/grafana/k6
 
       body, err := json.Marshal(map[string]interface{}{
         "k6_version":  Version,
+        "vus_max":     engine.Executor.GetVUsMax(),
         "iterations":  engine.Executor.GetEndIterations(),
         "duration":    endTSeconds,
         "st_duration": stagesEndTSeconds,
