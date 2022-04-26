@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
@@ -87,7 +87,7 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'

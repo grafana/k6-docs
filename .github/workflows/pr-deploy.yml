@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
@@ -83,7 +83,7 @@ jobs:
           echo "GATSBY_DEFAULT_BLOG_URL: $GATSBY_DEFAULT_BLOG_URL"
           echo "GATSBY_DEFAULT_APP_URL: $GATSBY_DEFAULT_APP_URL"
 
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
