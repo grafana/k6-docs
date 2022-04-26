@@ -19,7 +19,7 @@ The library exposes a couple of configuration and client classes allowing to int
 
 #### This library is in active development
 
-This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io). 
+This library is stable enough to be useful, but pay attention to the new versions released on [jslib.k6.io](https://jslib.k6.io) and [k6-jslib-aws/releases](https://github.com/grafana/k6-jslib-aws/releases).   
 
 This documentation is for the last version only. If you discover that some code below does not work, it most likely means that you are using an older version.
 
