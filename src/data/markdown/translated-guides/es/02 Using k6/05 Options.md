@@ -64,7 +64,6 @@ Las opciones le permiten configurar cómo se comportará k6 durante la ejecució
 | [User Agent](#user-agent)                                 | Un string que especifica la cabecera User-Agent al enviar solicitudes HTTP                |
 | [Verbose](#verbose) | Un boleando especifiando si el logging verboso está habilidado |
 | [VUs](#vus)                                               | Un número que especifica el número de VUs que se ejecutan simultáneamente                           |
-| [VUs Max](#vus-max)                                       | Un número que especifica el número máximo de usuarios virtuales                                     |
 
 ## Usando las opciones
 
@@ -1334,26 +1333,6 @@ Un valor entero que especifica el número de VUs a ejecutar simultáneamente, ut
 ```javascript
 export const options = {
   vus: 10,
-};
-```
-
-</CodeGroup>
-
-## VUs Max
-
-> ### ⚠️ Ten en cuenta!
->
-> Esta opción quedó obsoleta en la versión 0.27.0 de k6. Véase en su lugar los escenarios y el ejecutor controlado externamente.
-
-| Env          | CLI           | Code / Config file | Default         |
-| ------------ | ------------- | ------------------ | --------------- |
-| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |
-
-<CodeGroup labels={[]} lineNumbers={[true]}>
-
-```javascript
-export const options = {
-  vusMax: 10,
 };
 ```
 

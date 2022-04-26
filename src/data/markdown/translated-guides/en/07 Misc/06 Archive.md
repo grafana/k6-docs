@@ -172,7 +172,6 @@ Breaking down the file structure we get:
   "options": {
     "paused": null,
     "vus": null,
-    "vusMax": null,
     "duration": null,
     "iterations": null,
     "stages": null,

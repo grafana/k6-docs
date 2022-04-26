@@ -64,7 +64,6 @@ Options let you configure how k6 behaves during test execution.
 | [User Agent](#user-agent)                                 | A string specifying the User-Agent header when sending HTTP requests                |
 | [Verbose](#verbose)                                       | A boolean specifying whether verbose logging is enabled                             |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
-| [VUs Max](#vus-max)                                       | **DEPRECATED** |
 
 ## Where to set options?
 
@@ -1559,12 +1558,3 @@ export const options = {
 
 </CodeGroup>
 
-## VUs Max
-
-> ### ⚠️ Keep in mind!
->
-> This option was deprecated in k6 version 0.27.0. See [scenarios](/using-k6/scenarios) and the [externally controlled executor](/using-k6/scenarios/executors/externally-controlled) instead.
-
-| Env          | CLI           | Code / Config file | Default         |
-| ------------ | ------------- | ------------------ | --------------- |
-| `K6_VUS_MAX` | `--max`, `-m` | `vusMax`           | `0` (unlimited) |

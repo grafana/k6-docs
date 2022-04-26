@@ -1,7 +1,7 @@
 ---
 title: 'k6 REST API'
 excerpt: 'With this API you can see and control different execution aspects like
-number of VUs, Max VUs, pause or resume the test, list groups, set and get the
+number of VUs, pause or resume the test, list groups, set and get the
 setup data and more.'
 hideFromSidebar: true
 ---
@@ -36,7 +36,6 @@ curl -X GET \
       "running": true,
       "tainted": false,
       "vus": 1,
-      "vus-max": 1
     },
     "id": "default",
     "type": "status"
@@ -61,7 +60,6 @@ curl -X PATCH \
         "attributes": {
             "paused": true,
             "vus": 1,
-            "vus-max": 1
         },
         "id": "default",
         "type": "status"
@@ -77,7 +75,6 @@ curl -X PATCH \
     "attributes": {
       "paused": true,
       "vus": 1,
-      "vus-max": 1,
       "running": true,
       "tainted": false
     }
@@ -217,18 +214,6 @@ curl -X GET \
           "min": 0.057306,
           "p(90)": 0.2315264999999998,
           "p(95)": 0.4944592499999994
-        }
-      }
-    },
-    {
-      "type": "metrics",
-      "id": "vus_max",
-      "attributes": {
-        "type": "gauge",
-        "contains": "default",
-        "tainted": null,
-        "sample": {
-          "value": 1
         }
       }
     },
