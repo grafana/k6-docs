@@ -42,11 +42,88 @@ The [Browser](01-browser.md) object itself is considered to be disposed and cann
 
 ## browser.contexts()
 
+Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
+
+<!-- eslint-skip -->
+
+```javascript
+const browser = launcher.launch('chromium');
+console.log(browser.contexts().length); // prints `0`
+
+const context = browser.newContext();
+console.log(browser.contexts().length); // prints `1`
+```
+
 ## browser.isConnected()
+
+Indicates that the browser is connected.
 
 ## browser.newBrowserCDPSession()
 
+Returns the newly created browser session.
+
+> **Note**:
+> CDP Sessions are only supported on Chromium-based browsers.
+
 ## browser.newContext([options])
+
+### options: returns <[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>
+
+You can customize the creation of a new browser context using the following options.
+
+<!-- vale off -->
+
+| Option            | Type                   | Description |
+| ----------------- | ---------------------- | ----------- |
+| acceptDownloads   | boolean                | TODO |
+| bypassCSP         | boolean                | TODO |
+| colorScheme       | string                 | Emulates 'prefers-colors-scheme' media feature. It can be one of `"light"`, `"dark"`, `"no-preference"`. |
+| deviceScaleFactor | number                 | TODO |
+| extraHTTPHeaders  | object                 | TODO |
+| geolocation       | object                 | See [geolocation](#newcontext-geolocation). |
+| hasTouch          | boolean                | TODO |
+| httpCredentials   | object                 | Credentials for HTTP authentication. See: [httpCredentials](#newcontext-http-credentials). |
+| ignoreHTTPSErrors | boolean                | TODO |
+| isMobile          | boolean                | TODO |
+| javaScriptEnabled | boolean                | TODO |
+| locale            | string                 | TODO |
+| offline           | boolean                | TODO |
+| permissions       | Array                  | TODO |
+| reducedMotion     | string                 | TODO |
+| screen            | object                 | Emulates consistent window screen size available inside web page via window.screen. Is only used when the viewport is set. See: [screen](#newcontext-screen) |
+| timezoneID        | xx                     | TODO |
+| userAgent         | xx                     | TODO |
+| videosPath        | xx                     | TODO |
+| viewport          | xx                     | TODO |
+
+<!-- vale on -->
+
+### <a name="newcontext-geolocation">geolocation option</a>
+
+| Option    | Type   | Description |
+| --------- | :----- | ----------- |
+| latitude  | number | Latitude between -90 and 90. |
+| longitude | number | Longitude between -180 and 180. |
+| accuracy  | number | Non-negative accuracy value. Defaults to 0. |
+
+### <a name="newcontext-http-credentials">httpCredentials option</a>
+
+| Option   | Type   | Description |
+| -------- | ------ | ----------- |
+| username | string | Username to pass to the web browser for Basic HTTP Authentication. |
+| password | string | Password to pass to the web browser for Basic HTTP Authentication. |
+
+### <a name="newcontext-screen">screen option</a>
+
+| Option   | Type   | Description |
+| -------- | ------ | ----------- |
+| username | string | Username to pass to the web browser for Basic HTTP Authentication. |
+| password | string | Password to pass to the web browser for Basic HTTP Authentication. |
+
+
+Not yet implemented options:
+
+  * `baseURL`, `forcedColors`, `logger`, `proxy`, `recordHar`, `recordVideo`, `storageState`, `strictSelectors`, `videoSize`.
 
 ## browser.newPage([options])
 
