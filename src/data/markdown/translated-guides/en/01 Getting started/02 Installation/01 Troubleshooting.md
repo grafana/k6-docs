@@ -22,7 +22,7 @@ Some Ubuntu and Debian users might run into an `apt-key` deprecation warning whi
 
 ```bash
 # delete existing key
-apt-key del k6
+sudo apt-key del k6
 
 # import key the updated way
 sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
