@@ -3,6 +3,8 @@ title: "Browser"
 excerpt: "xk6-browser: Browser Class"
 ---
 
+[X]: ## "Not implemented"
+
 <BrowserCompatibility/>
 
 A Browser is created via [browserType.launch([options])](03-browser-type.md#launch). An example of using a Browser to create a [Page](09-page.md):
@@ -23,26 +25,29 @@ export default function () {
 - [browser.close()](#browser-close)
 - [browser.contexts()](#browser-contexts)
 - [browser.isConnected()](#browser-isconnected)
+- 🚧 [browser.newBrowserCDPSession()](#browser-newbrowsercdpsession)
 - [browser.newContext([options])](#browser-newcontext-options)
 - [browser.newPage([options])](#browser-newpage-options)
-- [browser.version()](#browser-version)
-- 🚧 [browser.newBrowserCDPSession()](#browser-newbrowsercdpsession)
 - 🚧 [browser.on()](#browser-on)
 - ❌ [browser.startTracing()](#browser-starttracing)
 - ❌ [browser.stopTracing()](#browser-stoptracing)
-
+- [browser.version()](#browser-version)
 
 ## browser.close()
 
-In case this browser is obtained using [browserType.launch([options])](03-browser-type.md#launch), closes the browser and all of its pages (if any were opened).
-
-In case this browser is connected to, clears all created contexts belonging to this browser and disconnects from the browser server.
+Closes the browser and all of its pages (if any were opened).
 
 The [Browser](01-browser.md) object itself is considered to be disposed and cannot be used anymore.
 
 ## browser.contexts()
 
 Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
+
+### Returns
+
+| Type         | Description  |
+| ------------ | ------------ |
+| Array        | Array of [BrowserContext](../browsercontext/) objects |
 
 <!-- eslint-skip -->
 
@@ -67,34 +72,52 @@ Returns the newly created browser session.
 
 ## browser.newContext([options])
 
-### options: returns <[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>
+| Parameter | Type   | Description  |
+| --------- | ------ | ------------ |
+| options   | object | See [options](#newcontext-options). |
+
+### Returns
+
+| Type         | Description  |
+| ------------ | ------------ |
+| object       | [BrowserContext](../browsercontext/) object |
+
+<a name="newcontext-options" style="visibility: hidden;"></a>
+
+### options
 
 You can customize the creation of a new browser context using the following options.
 
 <!-- vale off -->
 
-| Option            | Type                   | Description |
-| ----------------- | ---------------------- | ----------- |
-| acceptDownloads   | boolean                | TODO |
-| bypassCSP         | boolean                | TODO |
-| colorScheme       | string                 | Emulates 'prefers-colors-scheme' media feature. It can be one of `"light"`, `"dark"`, `"no-preference"`. |
-| deviceScaleFactor | number                 | TODO |
-| extraHTTPHeaders  | object                 | TODO |
-| geolocation       | object                 | See [geolocation](#newcontext-geolocation). |
-| hasTouch          | boolean                | TODO |
-| httpCredentials   | object                 | Credentials for HTTP authentication. See: [httpCredentials](#newcontext-http-credentials). |
-| ignoreHTTPSErrors | boolean                | TODO |
-| isMobile          | boolean                | TODO |
-| javaScriptEnabled | boolean                | TODO |
-| locale            | string                 | TODO |
-| offline           | boolean                | TODO |
-| permissions       | Array                  | TODO |
-| reducedMotion     | string                 | TODO |
-| screen            | object                 | Emulates consistent window screen size available inside web page via window.screen. Is only used when the viewport is set. See: [screen](#newcontext-screen) |
-| timezoneID        | xx                     | TODO |
-| userAgent         | xx                     | TODO |
-| videosPath        | xx                     | TODO |
-| viewport          | xx                     | TODO |
+| Option                  | Type                   | Description |
+| ----------------------- | ---------------------- | ----------- |
+| acceptDownloads         | boolean                | TODO |
+| [❌][X] baseURL         | string                 |  |
+| bypassCSP               | boolean                | TODO |
+| colorScheme             | string                 | Emulates 'prefers-colors-scheme' media feature. It can be one of `"light"`, `"dark"`, `"no-preference"`. |
+| deviceScaleFactor       | number                 | TODO |
+| extraHTTPHeaders        | object                 | TODO |
+| [❌][X] forcedColors    | string                 |  |
+| geolocation             | object                 | See [geolocation](#newcontext-geolocation). |
+| hasTouch                | boolean                | TODO |
+| httpCredentials         | object                 | Credentials for HTTP authentication. See: [httpCredentials](#newcontext-http-credentials). |
+| ignoreHTTPSErrors       | boolean                | TODO |
+| isMobile                | boolean                | TODO |
+| javaScriptEnabled       | boolean                | TODO |
+| locale                  | string                 | TODO |
+| [❌][X] logger          | object                 |  |
+| offline                 | boolean                | TODO |
+| permissions             | Array                  | TODO |
+| [❌][X] proxy           | object                 |  |
+| [❌][X] recordHar       | object                 |  |
+| [❌][X] recordVideo     | object                 |  |
+| reducedMotion           | string                 | TODO |
+| screen                  | object                 | Emulates consistent window screen size available inside web page via window.screen. Is only used when the viewport is set. See: [screen](#newcontext-screen) |
+| [❌][X] strictSelectors | bool                   |  |
+| timezoneID              | xx                     | TODO |
+| userAgent               | xx                     | TODO |
+| viewport                | xx                     | TODO |
 
 <!-- vale on -->
 
@@ -128,10 +151,6 @@ You can customize the creation of a new browser context using the following opti
 | username | string | Username to pass to the web browser for Basic HTTP Authentication. |
 | password | string | Password to pass to the web browser for Basic HTTP Authentication. |
 
-
-Not yet implemented options:
-
-  * `baseURL`, `forcedColors`, `logger`, `proxy`, `recordHar`, `recordVideo`, `storageState`, `strictSelectors`, `videoSize`.
 
 ## browser.newPage([options])
 
