@@ -18,7 +18,11 @@ sudo apt-get install k6
 
 ## apt-key is deprecated
 
-Some Ubuntu and Debian users might run into an `apt-key` deprecation warning while adding k6's repository key to their system's keyring: `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`. In order to avoid it, and be future-proof, users should delete the existing `security@k6.io` repository key present on their system, and update their sources list accordingly.
+Some Ubuntu and Debian users might run into an `apt-key` deprecation warning while adding k6's repository key to their system's keyring:
+
+> `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`
+
+To avoid this message and be future-proof, users should delete the existing `security@k6.io` repository key on their system, and update their sources list accordingly.
 
 ```bash
 # delete existing key
@@ -41,8 +45,8 @@ gpg: connecting dirmngr at '/root/.gnupg/S.dirmngr' failed: No such file or dire
 gpg: keyserver receive failed: No dirmngr
 ```
 
-If this issue affects you, make sure `dirmngr` is installed on your system by running `apt-get install dirmngr` (or equivalent for your distribution),
-and run `dirmngr -q` once to initialize it. 
+If this issue affects you, make sure `dirmngr` is installed on your system by running `apt-get install dirmngr` (or the equivalent for your distribution).
+Then run `dirmngr -q` once to initialize it. 
 
 ## Behind a firewall or proxy
 
