@@ -13,6 +13,20 @@
       "categories": ["Browser"]
     },
     {
+      "name": "xk6-websockets",
+      "description": "WebSockets API specification implementation for k6",
+      "url": "https://github.com/grafana/xk6-websockets",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "official": false,
+      "categories": [
+        "WebSockets"
+      ]
+    },
+    {
       "name": "xk6-kafka",
       "description": "Load-test Apache Kafka. Includes support for Avro messages",
       "url": "https://github.com/mostafa/xk6-kafka",
