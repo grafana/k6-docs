@@ -61,24 +61,6 @@ curl -s https://dl.k6.io/key.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/
 
 Run `sudo apt-key list`, and confirm that the output shows the preceding key.
 
-## Using the old Bintray repository
-
-The Bintray k6 repositories [stopped working May 1st, 2021](https://k6.io/blog/sunsetting-bintray/).
-You should use the preceding instructions to switch to our repositories.
-
-On Debian/Ubuntu, you can remove the Bintray repository with:
-```bash
-sudo sed -i '/dl\.bintray\.com\/loadimpact\/deb/d' /etc/apt/sources.list
-sudo apt-key del 379CE192D401AB61
-sudo apt-get update
-```
-
-And on Fedora/CentOS with:
-```bash
-sudo rm /etc/yum.repos.d/bintray-loadimpact-rpm.repo
-```
-
-
 
 ## CentOS versions older than 8
 
