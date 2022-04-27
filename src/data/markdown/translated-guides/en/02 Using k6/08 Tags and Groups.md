@@ -47,10 +47,9 @@ Currently, k6 automatically creates the following tags by default:
 | `service`           | the RPC service name for gRPC                                                                                                                       |
 | `expected_response` | `true` or `false` based on the [responseCallback](/javascript-api/k6-http/setresponsecallback/); by default checks whether the status is 2xx or 3xx |
 
-To disable some of the above tags, you can use the `systemTags`
-[option](/using-k6/options).
+To disable some of the above tags, you can use the `systemTags` [option](/using-k6/options).
 Keep in mind that some data collectors (e.g. `cloud`) may require certain tags.
-You can als enable some additional system tags, if you need them:
+You can also enable some additional system tags, if you need them:
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +59,7 @@ You can als enable some additional system tags, if you need them:
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
 
 ### User-defined tags
- 
+
 User-defined tags let you categorize k6 entities based on logic.
 You can tag the following entities:
 
@@ -95,6 +94,64 @@ export default function () {
 ```
 
 </CodeGroup>
+
+### Test-wide tags
+
+Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
+There are two ways you can set these tags:
+
+- In the CLI, using one or more `--tag NAME=VALUE` flags
+
+- In the script itself:
+
+  <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
+
+  ```javascript
+  export const options = {
+    tags: {
+      name: 'value',
+    },
+  };
+  ```
+
+  </CodeGroup>
+
+### Tags in results output
+
+<CodeGroup labels={["output.js"]} lineNumbers={[true]}>
+
+```json
+{
+  "type ": "Point ",
+  "data ": {
+    "time ": "2017-05-09T14:34:45.239531499+02:00 ",
+    "value ": 459.865729,
+    "tags ": {
+      "group ": "::my group::json ",
+      "method ": "GET ",
+      "status ": "200 ",
+      "url ": "https://httpbin.test.k6.io/get "
+    }
+  },
+  "metric ": "http_req_duration "
+}
+```
+
+```json
+{
+  "type ": "Point ",
+  "data ": {
+    "time ": "2017-05-09T14:34:45.625742514+02:00 ",
+    "value ": 5,
+    "tags ": null
+  },
+  "metric ": "vus "
+}
+```
+
+</CodeGroup>
+
+To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/json).
 
 ## Groups
 
@@ -177,62 +234,6 @@ If your code looks like the preceding snippet, consider the following strategies
 - To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
 
-## Test-wide tags
-
-Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
-There are two ways you can set these tags:
-- In the CLI, using one or more `--tag NAME=VALUE` flags
-- In the script itself:
-
-  <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
-
-  ```javascript
-  export const options = {
-    tags: {
-      name: 'value',
-    },
-  };
-  ```
-
-  </CodeGroup>
-
-### Tags in results output
-
-<CodeGroup labels={["output.js"]} lineNumbers={[true]}>
-
-```json
-{
-  "type ": "Point ",
-  "data ": {
-    "time ": "2017-05-09T14:34:45.239531499+02:00 ",
-    "value ": 459.865729,
-    "tags ": {
-      "group ": "::my group::json ",
-      "method ": "GET ",
-      "status ": "200 ",
-      "url ": "https://httpbin.test.k6.io/get "
-    }
-  },
-  "metric ": "http_req_duration "
-}
-```
-
-```json
-{
-  "type ": "Point ",
-  "data ": {
-    "time ": "2017-05-09T14:34:45.625742514+02:00 ",
-    "value ": 5,
-    "tags ": null
-  },
-  "metric ": "vus "
-}
-```
-
-</CodeGroup>
-
-To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/json).
- 
 ## Tags and Groups in k6 Cloud Results
 
 In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
