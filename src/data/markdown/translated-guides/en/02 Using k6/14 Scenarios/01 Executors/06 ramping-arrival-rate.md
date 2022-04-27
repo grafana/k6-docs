@@ -100,3 +100,27 @@ Based upon our test scenario inputs and results:
 * The script waits for a period of time (defined by the `gracefulStop` option) for iterations to finish. It won't start new iterations during the `gracefulStop` period.
 * The script will run the `teardown()` function (if specified) before exiting.
 * Our example performed, 4020 iterations over the course of the test.
+
+## Get the stage index
+
+It is possible to get the current running stage index using the `getCurrentStageIndex` helper function from the [k6-jslib-utils](/javascript-api/jslib/utils) library. It returns a zero based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
+
+```javascript
+import { getCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
+
+export const options = {
+    stages: [
+        {target: 10, duration: '30s'},
+        {target: 50, duration: '1m'},
+        {target: 10, duration: '30s'}
+    ]
+} 
+
+export default function() {
+    if (getCurrentStageIndex() === 1) {
+        console.log('Running the second stage where the expected target is 50')
+    }
+}
+```
+
+Using this feature is possible to automatically tagging with the current running stage. Check the [Tagging stages](/using-k6/tags-and-groups/#tagging-stages) section for more details.
