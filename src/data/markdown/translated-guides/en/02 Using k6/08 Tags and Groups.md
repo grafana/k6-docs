@@ -26,7 +26,7 @@ k6 provides two types of tags:
 - *System tags* are tags that k6 automatically assigns.
 - *User-defined* tags are tags that you add when you write your script.
 
-### System tags
+## System tags
 
 Currently, k6 automatically creates the following tags by default:
 
@@ -49,7 +49,7 @@ Currently, k6 automatically creates the following tags by default:
 
 To disable some of the above tags, you can use the `systemTags` [option](/using-k6/options).
 Keep in mind that some data collectors (e.g. `cloud`) may require certain tags.
-You can also enable some additional system tags, if you need them:
+You can also enable some additional system tags if you need them:
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +58,7 @@ You can also enable some additional system tags, if you need them:
 | `ip`          | The IP address of the remote server                                                                                               |
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
 
-### User-defined tags
+## User-defined tags
 
 User-defined tags let you categorize k6 entities based on logic.
 You can tag the following entities:
@@ -95,7 +95,7 @@ export default function () {
 
 </CodeGroup>
 
-### Test-wide tags
+## Test-wide tags
 
 Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
 There are two ways you can set these tags:
@@ -115,6 +115,102 @@ There are two ways you can set these tags:
   ```
 
   </CodeGroup>
+
+## Code-defined tags
+
+In the case, a user-defined tag with advanced logic for handling which tag to set is required then it's possible doing it by defining the tag from the code.
+
+It's possible to use the [k6/execution.vu.tags](/javascript-api/k6-execution/#vu) API for assigning an object property with the name and the value of the required tag. Like the following example for tracking the container group from the nested groups, it would be helpful for aggregating sub-metrics for nested groups.
+
+```javascript
+import http from 'k6/http'
+import exec from 'k6/execution'
+import { group } from 'k6'
+
+export const options = {
+    thresholds: {
+        'http_reqs{container_group:main}': ['count==3'],
+        'http_req_duration{container_group:main}': ['max<1000'],
+    },
+};
+
+export default function () {
+    exec.vu.tags['container_group'] = 'main'
+    
+    group('main', function () {
+        http.get('https://test.k6.io')
+        group('sub', function () {
+            http.get('https://httpbin.test.k6.io/anything')
+        });
+        http.get('https://test-api.k6.io')
+    });
+
+    delete exec.vu.tags['container_group']
+
+    http.get('https://httpbin.test.k6.io/delay/3')
+}
+```
+
+Using the same API is even possible to get any already set user-defined and/or system-defined tag:
+
+```javascript
+import exec from 'k6/execution'
+
+export default function() {
+    let tag = exec.vu.tags['scenario']
+    console.log(tag) // default
+} 
+```
+
+## Tagging stages
+
+Thanks to some defined helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, it's possible to add a tag with the current ongoing stage for the executors that supports the `stages` option.
+
+The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
+
+```javascript
+import exec from 'k6/execution'
+import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
+
+export const options = {
+  stages: []
+}
+
+export default function() {
+    tagWithCurrentStageIndex()
+    
+    // all the requests will have a `stage` tag
+    // with its value equal to the the index of the stage
+    http.get('https://test.k6.io') // e.g. {stage: "1"}
+} 
+```
+
+Additionally, a profiling function `tagWithCurrentStageProfile` can add a tag with a computed profile of the current running stage:
+
+```javascript
+import exec from 'k6/execution'
+import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
+
+export const options = {
+  stages: []
+}
+
+export default function() {
+    tagWithCurrentStageProfile()
+    
+    // all the requests are tagged with a `stage` tag
+    // with the index of the stage as value   
+    http.get('https://test.k6.io') // {stage_profile: ramp-up}
+} 
+```
+
+The profile value based on the current stage can be one of the following options:
+
+| Profile | Description |
+| ------- | ----------- |
+| `ramp-up`   | The current stage has a target greater than the previous stage's target |
+| `steady`    | The current stage has a target equal to the previous stage's target |
+| `ramp-down` | The current stage has a target less than the previous stage's target |
 
 ### Tags in results output
 
@@ -231,7 +327,7 @@ If your code looks like the preceding snippet, consider the following strategies
 
 - For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
-- To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
+- To reuse common logic or organize your code better, group logic in functions or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
 
 ## Tags and Groups in k6 Cloud Results
