@@ -9,6 +9,10 @@ Out of the box, k6 supports the following protocols:
 * [WebSockets](/using-k6/protocols/websockets)
 * [gRPC](/using-k6/protocols/grpc)
 
+You can use k6 on more protocols with xk6.
+
+## Upgrade to HTTP/2 is automatic
+
 By default, k6 uses HTTP/1.1 when it contacts a server.
 If the server reports to k6 that it supports [HTTP/2](/using-k6/protocols/http-2), k6 upgrades the connection to HTTP/2 instead.
 
