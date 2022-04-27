@@ -55,8 +55,6 @@ If this issue affects you, you can try this alternative:
 curl -s https://dl.k6.io/key.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/k6-archive-keyring.gpg
 ```
 
-Run `sudo apt-key list`, and confirm that the output shows the preceding key.
-
 
 ## CentOS versions older than 8
 
