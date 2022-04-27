@@ -28,10 +28,12 @@ export default function () {
 - 🚧 [browser.newBrowserCDPSession()](#browser-newbrowsercdpsession)
 - [browser.newContext([options])](#browser-newcontext-options)
 - [browser.newPage([options])](#browser-newpage-options)
-- 🚧 [browser.on()](#browser-on)
+- 🚧 [browser.on('disconnected')](#browser-on)
 - ❌ [browser.startTracing()](#browser-starttracing)
 - ❌ [browser.stopTracing()](#browser-stoptracing)
 - [browser.version()](#browser-version)
+
+<a name="browserclose"></a>
 
 ## browser.close()
 
@@ -61,14 +63,13 @@ console.log(browser.contexts().length); // prints `1`
 
 ## browser.isConnected()
 
-Indicates that the browser is connected.
+Indicates whether the WebSocket connection to the browser application is active or not.
 
-## browser.newBrowserCDPSession()
+### Returns
 
-Returns the newly created browser session.
-
-> **Note**:
-> CDP Sessions are only supported on Chromium-based browsers.
+| Type         | Description  |
+| ------------ | ------------ |
+| boolean      | Returns `true` if Browser is connected to the browser application. Otherwise, returns `false`. |
 
 ## browser.newContext([options])
 
@@ -187,18 +188,29 @@ You can customize the creation of a new page using the following options.
 
 TODO
 
-## browser.on()
+## browser.on('disconnected')
 
-TODO
+Emitted when Browser gets disconnected from the browser application. This might happen because of one of the following:
 
-## browser.startTracing()
+* Browser application is closed or crashed.
+* The [browser.close()](#browserclose) method was called.
 
-TODO
+| Parameter | Type   | Description  |
+| --------- | ------ | ------------ |
+| event     | string | The only accepted event value is `"disconnected"`. |
 
-## browser.stopTracing()
+### Returns
 
-TODO
+| Type         | Description  |
+| ------------ | ------------ |
+| promise      | On returns a Promise that is resolved when the browser process is disconnected. |
+
+TODO: @imiric, are these statements valid?
 
 ## browser.version()
 
-TODO
+### Returns
+
+| Type         | Description  |
+| ------------ | ------------ |
+| string       | Returns the browser application's version. |
