@@ -98,7 +98,10 @@ You can customize the creation of a new browser context using the following opti
 
 <!-- vale on -->
 
+<a name="newcontext-geolocation" style="visibility: hidden;"></a>
+
 ### geolocation option
+
 
 | Option    | Type   | Description |
 | --------- | :----- | ----------- |
@@ -106,12 +109,17 @@ You can customize the creation of a new browser context using the following opti
 | longitude | number | Longitude between -180 and 180. |
 | accuracy  | number | Non-negative accuracy value. Defaults to 0. |
 
+<a name="newcontext-http-credentials"></a>
+
 ### httpCredentials option
+
 
 | Option   | Type   | Description |
 | -------- | ------ | ----------- |
 | username | string | Username to pass to the web browser for Basic HTTP Authentication. |
 | password | string | Password to pass to the web browser for Basic HTTP Authentication. |
+
+<a name="#newcontext-screen"></a>
 
 ### screen option
 
