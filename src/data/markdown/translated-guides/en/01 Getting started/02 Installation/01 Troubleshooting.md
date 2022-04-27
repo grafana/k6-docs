@@ -31,9 +31,10 @@ sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.g
 echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
 ```
 
-## Dirmng is missing or uninitialized
 
-Some users might encounter an error mentioning `No dirmng` as they try to download k6's GPG key from ubuntu's keyserver:
+## Error importing k6's GPG key
+
+The `gpg` command to import k6's package signing key might fail with:
 ```bash
 gpg: keybox '/usr/share/keyrings/k6-archive-keyring.gpg' created
 gpg: failed to create temporary file '/root/.gnupg/.#lk0x000055db689f2310.a86c4b090dc7.7': No such file or directory
@@ -41,8 +42,8 @@ gpg: connecting dirmngr at '/root/.gnupg/S.dirmngr' failed: No such file or dire
 gpg: keyserver receive failed: No dirmngr
 ```
 
-If this issue affects you, make sure `dirmngr` is installed on your system by running `apt-get install dirmngr` (or equivalent for your distribution),
-and run `dirmngr -q` to initialize it. 
+This happens if it's the first time `gpg` is run by that user, so the directory `/root/.gnupg/` doesn't exist yet. You can create it by running `sudo gpg -k` and trying to import the key again.
+
 
 ## Behind a firewall or proxy
 
