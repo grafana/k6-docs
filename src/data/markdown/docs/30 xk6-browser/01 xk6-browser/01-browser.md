@@ -142,7 +142,7 @@ You can customize the creation of a new browser context using the following opti
 | username | string | Username to pass to the web browser for Basic HTTP Authentication. |
 | password | string | Password to pass to the web browser for Basic HTTP Authentication. |
 
-<a name="#newcontext-screen"></a>
+<a name="newcontext-screen"></a>
 
 ### screen option
 
