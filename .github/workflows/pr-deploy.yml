@@ -2,7 +2,6 @@ name: Pull Request CI
 
 env:
   PATH_PREFIX: /docs/${{ github.ref }}
-  GATSBY_JOB_COUNTER: ${{ secrets.CI_GATSBY_JOB_COUNTER }}
   GATSBY_DEFAULT_MAIN_URL: https://staging.k6.io
   GATSBY_DEFAULT_DOC_URL: https://mdr-ci.staging.k6.io/docs/${{ github.ref }}
   GATSBY_DEFAULT_BLOG_URL: https://k6.io/blog

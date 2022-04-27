@@ -38,9 +38,20 @@ const fetchStatusIndicator = async (callback) => {
 export const Footer = () => {
   // possible values: 'none', 'minor', 'major', 'critical'
   const [statusIndicator, setStatusIndicator] = useState('none');
+  const [jobs, setJobs] = useState(null);
 
   useEffect(() => {
     fetchStatusIndicator(setStatusIndicator);
+  }, []);
+
+  useEffect(() => {
+    fetch('/data/jobs-positions.json')
+      .then((response) => response.json())
+      .then((data) => setJobs(data))
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Failed to fetch jobs: ', error);
+      });
   }, []);
 
   return (
@@ -293,8 +304,8 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a className={styles.navColumnLink} href={`${main}/jobs`}>
                         Jobs
-                        {!!process.env.GATSBY_JOB_COUNTER && (
-                          <Badge>{process.env.GATSBY_JOB_COUNTER}</Badge>
+                        {jobs && jobs.length > 0 && (
+                          <Badge>{jobs.length}</Badge>
                         )}
                       </a>
                     </li>
