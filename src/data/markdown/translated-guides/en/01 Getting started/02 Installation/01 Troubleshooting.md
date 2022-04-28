@@ -46,7 +46,8 @@ gpg: connecting dirmngr at '/root/.gnupg/S.dirmngr' failed: No such file or dire
 gpg: keyserver receive failed: No dirmngr
 ```
 
-This happens if it's the first time `gpg` is run by that user, so the directory `/root/.gnupg/` doesn't exist yet. You can create it by running `sudo gpg -k` and trying to import the key again.
+This happens if it's the first time that the user runs `gpg` , so the directory `/root/.gnupg/` doesn't exist yet.
+To create the directory, run `sudo gpg -k` and try to import the key again.
 
 
 ## Behind a firewall or proxy
