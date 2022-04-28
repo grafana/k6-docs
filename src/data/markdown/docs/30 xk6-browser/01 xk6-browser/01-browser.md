@@ -83,9 +83,7 @@ Creates a new browser context. See [browser.newContext([options])](./browser-new
 | ------ | ----------------------- |
 | object | [Page](../page/) object |
 
-<a name="newpage-options"></a>
-
-### options
+### newPage options
 
 You can customize the creation of a new page using the following options.
 
