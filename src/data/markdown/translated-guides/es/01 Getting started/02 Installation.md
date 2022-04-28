@@ -3,17 +3,11 @@ title: 'Instalación'
 excerpt: 'Instrucciones para installar k6 en Linux, Mac, or Windows. Usa Docker o los binarios de k6.'
 ---
 
+k6 tiene paquetes para Linux, Mac, y Windows. Alternativamente, puede usar un contenedor Docker o un binario independiente.
+
 ## Linux
 
 ### Debian/Ubuntu
-
-> #### 🧠 Si usas una imagen que le falte  `ca-certificates` o `gnupg2`
-> 
-> Necesitas instalar primero esos paquetes con añadiendo el comando:
-> 
-> ```bash
-> $ sudo apt-get update && sudo apt-get install ca-certificates gnupg2 -y
-> ```
 
 ```bash
 $ sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
@@ -22,13 +16,6 @@ $ sudo apt-get update
 $ sudo apt-get install k6
 ```
 
-> #### ⚠️ En caso de usar un firewall o un proxy
-> Usted debe tener en cuenta que algunos usuarios han reportado que no pueden descargar la clave del servidor de Ubuntu usando el comando `apt-key`, debido a que los firewalls o los proxies bloquean las solicitudes. Si usted está presentando este problema, puede intentar hacerlo de la siguiente manera:
->
-> ```bash
-> $ curl -s https://dl.k6.io/key.gpg | sudo apt-key add -
-> ```
-> Entonces confirme que la clave con el ID mencionado arriba se muestre al ejecutar `sudo apt-key list`.
 
 ### Fedora/CentOS
 
@@ -38,28 +25,6 @@ Usando `dnf` o `yum`:
 $ sudo dnf install https://dl.k6.io/rpm/repo.rpm
 $ sudo dnf install k6
 ```
-
-Versiones anteriores a CentOS 8 no soportan firmas PGP V4 que utilizamos, por lo que debe deshabilitar la verificación instalando k6 con:
-```bash
-$ sudo yum install --nogpgcheck k6
-```
-
-> #### ⚠️ Nota sobre Bintray
->
-> Los repositorios k6 de Bintray [dejarán de funcionar después del 1ro de mayo, 2021](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)
-> y deberá cambiar a nuestros repositorios siguiendo las instrucciones mencionadas arriba.
->
-> En Debian/Ubuntu puede remover el repositorio de Bintray con:
-> ```bash
-> $ sudo sed -i '/dl\.bintray\.com\/loadimpact\/deb/d' /etc/apt/sources.list
-> $ sudo apt-key del 379CE192D401AB61
-> $ sudo apt-get update
-> ```
->
-> Y en Fedora/CentOS con:
-> ```bash
-> $ sudo rm /etc/yum.repos.d/bintray-loadimpact-rpm.repo
-> ```
 
 
 ## macOS
@@ -79,12 +44,7 @@ Si usa el [gestor de paquetes Chocolatey](https://chocolatey.org/) puede instala
 choco install k6
 ```
 
-Si no, puede descargar e instalar [el más reciente paquete oficial `.msi`](https://dl.k6.io/msi/k6-latest-amd64.msi).
-
-
-## Binarios
-
-Descarga un binario preconstruido de nuestra [página de releases](https://github.com/grafana/k6/releases), y colócalo en el `PATH` de tu sistema. De esta manera puede ejecutar `k6` desde cualquier lugar.
+Alternativamente, puede descargar y ejecutar [el instalador oficial más reciente](https://dl.k6.io/msi/k6-latest-amd64.msi).
 
 
 ## Docker
@@ -92,3 +52,18 @@ Descarga un binario preconstruido de nuestra [página de releases](https://githu
 ```bash
 $ docker pull grafana/k6
 ```
+
+## Binarios
+
+Nuestra [página de releases en GitHub](https://github.com/grafana/k6/releases) tiene binarios independientes para todas las plataformas. Descargue y extraiga el archivo para su plataforma, y coloque el binario `k6` o `k6.exe` en el `PATH` de su sistema. De esta manera puede ejecutar `k6` desde cualquier lugar.
+
+
+## Usando extensiones de k6
+
+Si utiliza una o más [extensiones de k6](/extensions), necesita un binario compilado con las extensiones deseadas. Visite la página [del creador de paquetes](/extensions/bundle-builder/) para empezar.
+
+
+## Solución de problemas
+
+Si tiene problemas con la instalación, visite [la lista de problemas y soluciones comúnes](/es/empezando/instalacion/solucion-de-problemas/) para ayuda.
+Si su problema no está listado y persiste, contacte el canal `#lang-spanish` en nuestro [Slack oficial](https://k6io.slack.com/), o repórtelo en nuestro [foro comunitario](https://community.k6.io/).
