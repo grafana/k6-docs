@@ -5,9 +5,14 @@ excerpt: 'When you make HTTP requests in k6 it will automatically upgrade the co
 
 ## Overview
 
-HTTP/2.0 is the latest version of the HTTP protocol and introduces some major improvements compared to its predecessor. Chiefly of which is the introduction of a binary wire protocol with multiplexed streams over a single TCP connection. This solves a long-standing performance issue with HTTP/1.1, [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
+HTTP/2.0 is the latest version of the HTTP protocol.
+It improves significantly upon HTTP/1.
+Most importantly, it introduces a binary wire protocol with multiplexed streams over a single TCP connection.
+This solves a long-standing performance issue with HTTP/1.1: [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
 
-Well, it at least _partially_ solves it, since you still have TCP congestion control mechanisms interfering with the intended independent nature of the multiplexed streams in cases of lost/dropped packets and retransmission/reassembly. The full solution is to run HTTP/2.0 over UDP, which is what Google implemented with [QUIC](https://en.wikipedia.org/wiki/QUIC).
+Well, it at least _partially_ solves it.
+There are still TCP congestion control mechanisms interfering with the intended independent nature of the multiplexed streams in cases of lost/dropped packets and retransmission/reassembly.
+The full solution is to run HTTP/2.0 over UDP, as Google implemented with [QUIC](https://en.wikipedia.org/wiki/QUIC).
 
 ## Additional features of HTTP/2.0
 
@@ -18,7 +23,9 @@ Well, it at least _partially_ solves it, since you still have TCP congestion con
 
 ## Load testing HTTP/2 with k6
 
-When you make HTTP requests in k6 it will automatically upgrade the connection to HTTP/2.0 if the server supports it, just like your web browser would. You can check what protocol was used for a particular request by looking at the `proto` property of the response object.
+When you make HTTP requests in k6, k6 automatically upgrades the connection to HTTP/2.0 if the server supports it, just like your web browser would.
+
+To check what protocol was used for a particular request, refer to the `proto` property of the response object.
 
 <CodeGroup labels={["Check if protocol used for request is HTTP/2.0"]} lineNumbers={[true]}>
 
