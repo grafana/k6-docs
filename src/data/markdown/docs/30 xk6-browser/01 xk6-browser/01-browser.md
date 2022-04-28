@@ -5,7 +5,7 @@ excerpt: "xk6-browser: Browser Class"
 
 <BrowserCompatibility/>
 
-A Browser is created via [browserType.launch([options])](03-browser-type.md#launch). An example of using a Browser to create a [Page](09-page.md):
+A Browser is created via [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/#browsertype-launch-options). An example of using a Browser to create a [Page](/javascript-api/xk6-browser/page):
 
 ```javascript
 import launcher from 'k6/x/browser';
@@ -35,7 +35,7 @@ export default function () {
 
 Closes the browser and all of its pages (if any were opened).
 
-The [Browser](01-browser.md) object itself is considered to be disposed and cannot be used anymore.
+The Browser object itself is considered to be disposed and cannot be used anymore.
 
 ## browser.contexts()
 
@@ -45,7 +45,7 @@ Returns an array of all open browser contexts. In a newly created browser, this 
 
 | Type  | Description                                           |
 | ----- | ----------------------------------------------------- |
-| Array | Array of [BrowserContext](../browsercontext/) objects |
+| Array | Array of [BrowserContext](/javascript-api/xk6-browser/browsercontext/) objects |
 
 <!-- eslint-skip -->
 
@@ -81,7 +81,7 @@ Creates a new browser context. See [browser.newContext([options])](./browser-new
 
 | Type   | Description             |
 | ------ | ----------------------- |
-| object | [Page](../page/) object |
+| object | [Page](/javascript-api/xk6-browser/page/) object |
 
 ### newPage options
 
@@ -109,8 +109,6 @@ Emitted when Browser gets disconnected from the browser application. This might 
 | Type    | Description                                                                     |
 | ------- | ------------------------------------------------------------------------------- |
 | promise | On returns a Promise that is resolved when the browser process is disconnected. |
-
-TODO: @imiric, are these statements valid?
 
 ## browser.version()
 
