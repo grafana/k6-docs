@@ -5,7 +5,22 @@ excerpt: "xk6-browser: Browser Class"
 
 <BrowserCompatibility/>
 
-A Browser is created via [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/#browsertype-launch-options). An example of using a Browser to create a [Page](/javascript-api/xk6-browser/page):
+A Browser is created via [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/#browsertype-launch-options).
+
+| Method                                                                                                 | Description                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| [browser.close()](/javascript-api/xk6-browser/browser/browser-close)                                   |                                            |
+| [browser.contexts()](/javascript-api/xk6-browser/browser/browser-contexts)                            |                                            |
+| [browser.isConnected](/javascript-api/xk6-browser/browser/browser-isconnected)                         |                                            |
+| 🚧 [browser.newBrowserCDPSession()](/javascript-api/xk6-browser/browser/browser-newbrowsercdpsession) |                                            |
+| [browser.newContext([options])](/javascript-api/xk6-browser/browser/browser-newcontext/)               | Creates and returns a new browser context. |
+| [browser.newPage([options])](/javascript-api/xk6-browser/browser/browser-newpage)                      |                                            |
+| 🚧 [browser.on('disconnected')](/javascript-api/xk6-browser/browser/browser-on)                       |                                            |
+| ❌ [browser.startTracing()](/javascript-api/xk6-browser/browser/browser-starttracing)                  |                                            |
+| ❌ [browser.stopTracing()](/javascript-api/xk6-browser/browser/browser-stoptracing)                    |                                            |
+| [browser.version()](/javascript-api/xk6-browser/browser/browser-version)                               |                                            |
+
+An example of using a Browser to create a [Page](/javascript-api/xk6-browser/page):
 
 ```javascript
 import launcher from 'k6/x/browser';
@@ -19,101 +34,3 @@ export default function () {
   browser.close();
 }
 ```
-
-- [browser.close()](#browser-close)
-- [browser.contexts()](#browser-contexts)
-- [browser.isConnected()](#browser-isconnected)
-- 🚧 [browser.newBrowserCDPSession()](#browser-newbrowsercdpsession)
-- [browser.newContext([options])](#browser-newcontext-options)
-- [browser.newPage([options])](#browser-newpage-options)
-- 🚧 [browser.on('disconnected')](#browser-on)
-- ❌ [browser.startTracing()](#browser-starttracing)
-- ❌ [browser.stopTracing()](#browser-stoptracing)
-- [browser.version()](#browser-version)
-
-## browser.close()
-
-Closes the browser and all of its pages (if any were opened).
-
-The Browser object itself is considered to be disposed and cannot be used anymore.
-
-## browser.contexts()
-
-Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
-
-### Returns
-
-| Type  | Description                                           |
-| ----- | ----------------------------------------------------- |
-| Array | Array of [BrowserContext](/javascript-api/xk6-browser/browsercontext/) objects |
-
-<!-- eslint-skip -->
-
-```javascript
-const browser = launcher.launch('chromium');
-console.log(browser.contexts().length); // prints `0`
-
-const context = browser.newContext();
-console.log(browser.contexts().length); // prints `1`
-```
-
-## browser.isConnected()
-
-Indicates whether the WebSocket connection to the browser application is active or not.
-
-### Returns
-
-| Type    | Description                                                                                    |
-| ------- | ---------------------------------------------------------------------------------------------- |
-| boolean | Returns `true` if Browser is connected to the browser application. Otherwise, returns `false`. |
-
-## browser.newContext([options])
-
-Creates a new browser context. See [browser.newContext([options])](./browser-newcontext/) for more details.
-
-## browser.newPage([options])
-
-| Parameter | Type   | Description                                       |
-| --------- | ------ | ------------------------------------------------- |
-| options   | object | See [options](#newpage-options) for more details. |
-
-### Returns
-
-| Type   | Description             |
-| ------ | ----------------------- |
-| object | [Page](/javascript-api/xk6-browser/page/) object |
-
-### newPage options
-
-You can customize the creation of a new page using the following options.
-
-| Option          | Type    | Description                                                                                                   |
-| --------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
-| acceptDownloads | boolean | Whether to automatically download all the attachments. Defaults to true where all the downloads are accepted. |
-
-TODO
-
-## browser.on('disconnected')
-
-Emitted when Browser gets disconnected from the browser application. This might happen because of one of the following:
-
-* Browser application is closed or crashed.
-* The [browser.close()](#browser-close) method was called.
-
-| Parameter | Type   | Description                                        |
-| --------- | ------ | -------------------------------------------------- |
-| event     | string | The only accepted event value is `'disconnected'`. |
-
-### Returns
-
-| Type    | Description                                                                     |
-| ------- | ------------------------------------------------------------------------------- |
-| promise | On returns a Promise that is resolved when the browser process is disconnected. |
-
-## browser.version()
-
-### Returns
-
-| Type   | Description                                |
-| ------ | ------------------------------------------ |
-| string | Returns the browser application's version. |
