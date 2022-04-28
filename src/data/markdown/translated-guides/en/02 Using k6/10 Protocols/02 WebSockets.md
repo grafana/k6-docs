@@ -5,11 +5,13 @@ excerpt: 'Comparing HTTP based tests to WebSocket ones, there are some differenc
 
 ## Overview
 
-[WebSocket](https://en.wikipedia.org/wiki/WebSocket) is a protocol that provides full-duplex communication channels over a single TCP connection. It is commonly used by single-page apps (SPAs), and to some extent mobile apps, to add server-push based functionality, which usually means a performance improvement over polling based solutions.
+[WebSocket](https://en.wikipedia.org/wiki/WebSocket) is a protocol that provides full-duplex communication channels over a single TCP connection.
+It is commonly used by single-page apps (SPAs) and mobile apps, to add server-push based functionality, which usually improves performance in polling-based solutions.
 
 ## Load testing WebSockets with k6
 
-Comparing HTTP based tests to WebSocket ones, there are some differences in the structure and inner workings. The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now setup to run an asynchronous event loop.
+Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
+The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now runs an asynchronous event loop.
 
 The basic structure of a WebSocket test looks like this:
 
@@ -35,13 +37,15 @@ export default function () {
 
 </CodeGroup>
 
-As you can see above the [connect()](/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter, and that function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter. The run function forms the basis of the asynchronous event loop.
+In this example, the [connect()](/javascript-api/k6-ws/connect) method takes a "run" function as its third parameter.
+That function should accept a [Socket](/javascript-api/k6-ws/socket) object as its only parameter.
+The run function forms the basis of the asynchronous event loop.
 
-It will be called immediately when the WebSocket connection is created, execute all code inside it (usually code to set up event handlers), and then block until the WebSocket connection is closed (by the remote host or by using [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
-
+When the WebSocket connection is created, the run function will be immediately called, all code inside it will be executed (usually code to set up event handlers), and then blocked until the WebSocket connection is closed (by the remote host or by using [socket.close()](/javascript-api/k6-ws/socket/socket-close)).
+    
 ## Error handling
 
-To catch errors that can happen during the life of a WebSocket connection you attach a handler to the "error" event, as is illustrated below:
+To catch errors happen during the life of a WebSocket connection, attach a handler to the "error" event:
 
 <CodeGroup labels={["Error handling in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -73,7 +77,7 @@ export default function () {
 
 ## Timers
 
-If you want to schedule a recurring action you can use the [socket.setInterval](/javascript-api/k6-ws/socket#section-socketsetinterval) function to specify a function that should be called with a particular interval.
+To schedule a recurring action, use the [socket.setInterval](/javascript-api/k6-ws/socket#section-socketsetinterval) to specify a function to call at a particular interval.
 
 <CodeGroup labels={["Timers in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -108,8 +112,7 @@ export default function () {
 
 ## Timeouts
 
-You can add a timeout to the WebSocket connection by passing a handler function as well as the
-timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout) function.
+To add a timeout to the WebSocket connection, pass both a handler function and a timeout value (in milliseconds) to the [socket.setTimeout](/javascript-api/k6-ws/socket/socket-settimeout) function.
 
 <CodeGroup labels={["Timeouts in WebSocket tests"]} lineNumbers={[true]}>
 
@@ -137,11 +140,11 @@ export default function () {
 
 </CodeGroup>
 
-The timeout in the above code will close down the WebSocket connection after 2 seconds.
+In the preceding example, the timeout will close the WebSocket connection after 2 seconds.
 
 ## Multiple event handlers
 
-You can attach multiple handler functions to an event as the code below illustrates.
+You can attach multiple handler functions to an event:
 
 <CodeGroup labels={["Multiple event handlers in WebSocket tests"]} lineNumbers={[true]}>
 
