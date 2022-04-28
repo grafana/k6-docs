@@ -3,8 +3,6 @@ title: "Browser"
 excerpt: "xk6-browser: Browser Class"
 ---
 
-[X]: ## "Not implemented"
-
 <BrowserCompatibility/>
 
 A Browser is created via [browserType.launch([options])](03-browser-type.md#launch). An example of using a Browser to create a [Page](09-page.md):
@@ -33,8 +31,6 @@ export default function () {
 - ❌ [browser.stopTracing()](#browser-stoptracing)
 - [browser.version()](#browser-version)
 
-<a name="browserclose"></a>
-
 ## browser.close()
 
 Closes the browser and all of its pages (if any were opened).
@@ -47,9 +43,9 @@ Returns an array of all open browser contexts. In a newly created browser, this 
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| Array        | Array of [BrowserContext](../browsercontext/) objects |
+| Type  | Description                                           |
+| ----- | ----------------------------------------------------- |
+| Array | Array of [BrowserContext](../browsercontext/) objects |
 
 <!-- eslint-skip -->
 
@@ -67,114 +63,105 @@ Indicates whether the WebSocket connection to the browser application is active 
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| boolean      | Returns `true` if Browser is connected to the browser application. Otherwise, returns `false`. |
+| Type    | Description                                                                                    |
+| ------- | ---------------------------------------------------------------------------------------------- |
+| boolean | Returns `true` if Browser is connected to the browser application. Otherwise, returns `false`. |
 
 ## browser.newContext([options])
 
-| Parameter | Type   | Description  |
-| --------- | ------ | ------------ |
-| options   | object | See [options](#newcontext-options). |
+| Parameter | Type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| options   | object | See [options](#newcontext-options) for more details. |
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| object       | [BrowserContext](../browsercontext/) object |
+| Type   | Description                                 |
+| ------ | ------------------------------------------- |
+| object | [BrowserContext](../browsercontext/) object |
 
-<a name="newcontext-options" style="visibility: hidden;"></a>
-
-### options
+### newContext options
 
 You can customize the creation of a new browser context using the following options.
 
 <!-- vale off -->
 
-| Option                  | Type                   | Description |
-| ----------------------- | ---------------------- | ----------- |
-| acceptDownloads         | boolean                | Whether to automatically download all the attachments. Defaults to true where all the downloads are accepted. |
-| [❌][X] baseURL         | string                 | - |
-| bypassCSP               | boolean                | Toggles bypassing page's Content-Security-Policy. |
-| colorScheme             | string                 | Emulates 'prefers-colors-scheme' media feature. It can be one of `"light"`, `"dark"`, `"no-preference"`. See [page.emulateMedia](../page#page-emulatemedia-options) for more details. Defaults to `"light"`. |
-| deviceScaleFactor       | number                 | Specify device scale factor (can be thought of as dpr). Defaults to `1`. |
-| extraHTTPHeaders        | object                 | An object containing additional HTTP headers to be sent with every request, where the keys are HTTP headers and values are HTTP header values. |
-| [❌][X] forcedColors    | string                 | - |
-| geolocation             | object                 | See [geolocation](#newcontext-geolocation). |
-| hasTouch                | boolean                | Specifies if viewport supports touch events. Defaults to `false`. |
-| httpCredentials         | object                 | Credentials for HTTP authentication. See: [httpCredentials](#newcontext-http-credentials). |
-| ignoreHTTPSErrors       | boolean                | Whether to ignore HTTPS errors when sending network requests. Defaults to `false`. |
-| isMobile                | boolean                | Whether the meta `viewport` tag is taken into account and touch events are enabled. Defaults to `false`. |
-| javaScriptEnabled       | boolean                | Whether or not to enable JavaScript in the context. Defaults to `true`. |
-| locale                  | string                 | Specify user locale, for example `en-GB`, `de-DE`, etc. |
-| [❌][X] logger          | object                 | - |
-| offline                 | boolean                | Whether to emulate network being offline. Defaults to `false`. |
-| permissions             | Array                  | A list of permissions to grant to all pages in this context. See [browserContext.grantPermissions()](../browsercontext#browsercontext-grantpermissions-permissions-options) for more details. |
-| [❌][X] proxy           | object                 | - |
-| [❌][X] recordHar       | object                 | - |
-| [❌][X] recordVideo     | object                 | - |
-| reducedMotion           | string                 | Emulates 'prefers-reduced-motion' media feature, supported values are `"reduce"`, `"no-preference"`. See [page.emulateMedia()](../page#page-emulatemedia-options) for more details. Defaults to `"no-preference"`. |
-| screen                  | object                 | Emulates consistent window screen size available inside web page via window.screen. Is only used when the viewport is set. See: [screen](#newcontext-screen) |
-| [❌][X] strictSelectors | bool                   | - |
-| timezoneID              | string                 | Changes the timezone of the context. See [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) for a list of supported timezone IDs. |
-| userAgent               | string                 | Specific user agent to use in this context.# |
-| viewport                | object                 | Emulates consistent viewport for each page. Defaults to an 1280x720 viewport. `null` disables the default viewport. See: [viewport](#newcontext-viewport). |
+| Option                                                              | Type    | Description                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| acceptDownloads                                                     | boolean | Whether to automatically download files. Defaults to `true`.                                                                                                                                                                                                                                                                                                    |
+| <span title="Not implemented">❌</span> baseURL                     | string  | The base URL to use for all relative URLs. For example: `/open-source/` will be converted to `https://k6.io/open-source/` if `baseURL` is set to `https://k6.io`.                                                                                                                                                                                               |
+| bypassCSP                                                           | boolean | Whether to bypass a page's Content-Security-Policy.                                                                                                                                                                                                                                                                                                             |
+| colorScheme                                                         | string  | Whether to display a page in dark or light mode by emulating the 'prefers-colors-scheme' media feature. It can be one of `'light'`, `'dark'`, `'no-preference'`. See [page.emulateMedia](../page#page-emulatemedia-options) for the options and the [example](https://github.com/grafana/xk6-browser/blob/main/examples/colorscheme.js). Defaults to `'light'`. |
+| deviceScaleFactor                                                   | number  | Sets the resolution ratio in physical pixels to the resolution in CSS pixels. See the [link](https://github.com/grafana/xk6-browser/blob/main/examples/device_emulation.js) as an example. Defaults to `1`.                                                                                                                                                     |
+| extraHTTPHeaders                                                    | object  | Contains additional HTTP headers to be sent with every request, where the keys are HTTP headers and values are HTTP header values.                                                                                                                                                                                                                              |
+| <span title="Not implemented">❌</span> forcedColors                | string  | Enforces a limited color palette on the page by emulating `forced-colors` media feature. It can be one of `'active'` or `'none'`. Defaults to `'none'`.                                                                                                                                                                                                         |
+| geolocation                                                         | object  | Sets the user's geographical location. See [geolocation](#newcontext-geolocation-options) for the options.                                                                                                                                                                                                                                                      |
+| hasTouch                                                            | boolean | Whether to simulate a device with touch events. Defaults to `false`.                                                                                                                                                                                                                                                                                            |
+| httpCredentials                                                     | object  | Sets the credentials for HTTP authentication. See: [httpCredentials](#newcontext-httpcredentials-options).                                                                                                                                                                                                                                                      |
+| ignoreHTTPSErrors                                                   | boolean | Whether to ignore HTTPS errors that may be caused by invalid certificates. Defaults to `false`.                                                                                                                                                                                                                                                                 |
+| isMobile                                                            | boolean | Whether to simulate a mobile device. Defaults to `false`.                                                                                                                                                                                                                                                                                                       |
+| javaScriptEnabled                                                   | boolean | Whether to activate JavaScript support for the context. Defaults to `true`.                                                                                                                                                                                                                                                                                     |
+| locale                                                              | string  | Specifies the user's locale, such as `en-US`, `tr-TR`, etc.                                                                                                                                                                                                                                                                                                     |
+| <span title="Not implemented">❌</span> logger                      | object  | Specifies the logger to use in xk6-browser.                                                                                                                                                                                                                                                                                                                     |
+| offline                                                             | boolean | Whether to emulate an offline network. Defaults to `false`.                                                                                                                                                                                                                                                                                                     |
+| permissions                                                         | Array   | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](../browsercontext#browsercontext-grantpermissions-permissions-options) for the options.                                                                                                                                                                                   |
+| <span title="Not implemented">❌</span> proxy                       | object  | Sets the network proxy settings for the context.                                                                                                                                                                                                                                                                                                                |
+| <span title="Not implemented">❌</span> recordHar                   | object  | Activates HAR recording for the context's pages.                                                                                                                                                                                                                                                                                                                |
+| [❌](https://github.com/grafana/xk6-browser/issues/103) recordVideo | object  | Activates video recording for the context's pages.                                                                                                                                                                                                                                                                                                              |
+| reducedMotion                                                       | string  | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](../page#page-emulatemedia-options) for the options. Defaults to `'no-preference'`.                                                                                                         |
+| screen                                                              | object  | Sets a window screen size for all pages in the context. It can only be used when the viewport is set. See: [screen](#newcontext-screen-options) for the options.                                                                                                                                                                                                |
+| <span title="Not implemented">❌</span> strictSelectors             | bool    | Whether to activate the strict selectors mode.                                                                                                                                                                                                                                                                                                                  |
+| timezoneID                                                          | string  | Changes the context's timezone. See [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) for a list of supported timezone IDs.                                                                                                                               |
+| userAgent                                                           | string  | Specifies the user agent to use in the context.                                                                                                                                                                                                                                                                                                                 |
+| viewport                                                            | object  | Sets a viewport size for all pages in the context. `null` disables the default viewport. See: [viewport](#newcontext-viewport-options) for the options. Defaults to `1280x720`.                                                                                                                                                                                 |
 
 <!-- vale on -->
 
-<a name="newcontext-geolocation" style="visibility: hidden;"></a>
+### newContext geolocation options
 
-### geolocation option
+| Option    | Type   | Description                                            |
+| --------- | ------ | ------------------------------------------------------ |
+| latitude  | number | Latitude should be between `-90` and `90`.             |
+| longitude | number | Longitude should be between `-180` and `180`.          |
+| accuracy  | number | Accuracy should be a positive number. Defaults to `0`. |
 
-| Option    | Type   | Description |
-| --------- | :----- | ----------- |
-| latitude  | number | Latitude between -90 and 90. |
-| longitude | number | Longitude between -180 and 180. |
-| accuracy  | number | Non-negative accuracy value. Defaults to 0. |
+### newContext httpCredentials options
 
-<a name="newcontext-http-credentials"></a>
-
-### httpCredentials option
-
-| Option   | Type   | Description |
-| -------- | ------ | ----------- |
+| Option   | Type   | Description                                                        |
+| -------- | ------ | ------------------------------------------------------------------ |
 | username | string | Username to pass to the web browser for Basic HTTP Authentication. |
 | password | string | Password to pass to the web browser for Basic HTTP Authentication. |
 
-<a name="newcontext-screen"></a>
+### newContext screen options
 
-### screen option
-
-| Option   | Type   | Description |
-| -------- | ------ | ----------- |
-| username | string | Username to pass to the web browser for Basic HTTP Authentication. |
-| password | string | Password to pass to the web browser for Basic HTTP Authentication. |
+| Option | Type   | Description            |
+| ------ | ------ | ---------------------- |
+| width  | number | Page width in pixels.  |
+| height | number | Page height in pixels. |
 
 <!-- vale off -->
 
-<a name="newcontext-viewport"></a>
-
-### viewport option
+### newContext viewport options
 
 <!-- vale on -->
 
-| Option   | Type   | Description |
-| -------- | ------ | ----------- |
-| width    | number | Page width in pixels. |
-| height   | number | Page height in pixels. |
+| Option | Type   | Description            |
+| ------ | ------ | ---------------------- |
+| width  | number | Page width in pixels.  |
+| height | number | Page height in pixels. |
+
 
 
 ## browser.newPage([options])
 
-| Parameter | Type   | Description  |
-| --------- | ------ | ------------ |
-| options   | object | See [options](#newpage-options). |
+| Parameter | Type   | Description                                       |
+| --------- | ------ | ------------------------------------------------- |
+| options   | object | See [options](#newpage-options) for more details. |
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| object       | [Page](../page/) object |
+| Type   | Description             |
+| ------ | ----------------------- |
+| object | [Page](../page/) object |
 
 <a name="newpage-options"></a>
 
@@ -182,9 +169,9 @@ You can customize the creation of a new browser context using the following opti
 
 You can customize the creation of a new page using the following options.
 
-| Option                  | Type                   | Description |
-| ----------------------- | ---------------------- | ----------- |
-| acceptDownloads         | boolean                | Whether to automatically download all the attachments. Defaults to true where all the downloads are accepted. |
+| Option          | Type    | Description                                                                                                   |
+| --------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| acceptDownloads | boolean | Whether to automatically download all the attachments. Defaults to true where all the downloads are accepted. |
 
 TODO
 
@@ -193,17 +180,17 @@ TODO
 Emitted when Browser gets disconnected from the browser application. This might happen because of one of the following:
 
 * Browser application is closed or crashed.
-* The [browser.close()](#browserclose) method was called.
+* The [browser.close()](#browser-close) method was called.
 
-| Parameter | Type   | Description  |
-| --------- | ------ | ------------ |
-| event     | string | The only accepted event value is `"disconnected"`. |
+| Parameter | Type   | Description                                        |
+| --------- | ------ | -------------------------------------------------- |
+| event     | string | The only accepted event value is `'disconnected'`. |
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| promise      | On returns a Promise that is resolved when the browser process is disconnected. |
+| Type    | Description                                                                     |
+| ------- | ------------------------------------------------------------------------------- |
+| promise | On returns a Promise that is resolved when the browser process is disconnected. |
 
 TODO: @imiric, are these statements valid?
 
@@ -211,6 +198,6 @@ TODO: @imiric, are these statements valid?
 
 ### Returns
 
-| Type         | Description  |
-| ------------ | ------------ |
-| string       | Returns the browser application's version. |
+| Type   | Description                                |
+| ------ | ------------------------------------------ |
+| string | Returns the browser application's version. |
