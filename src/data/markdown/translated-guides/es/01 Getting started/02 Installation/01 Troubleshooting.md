@@ -17,7 +17,11 @@ Este ejemplo es para Debian/Ubuntu y derivados. Consulte la documentación de su
 
 ## apt-key es deprecado
 
-Algunos usuarios de Debian/Ubuntu y derivados podrían encontrar una advertencia utilizando `apt-key` para añadir la clave de firma del repositorio de k6: `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`. Para evitar esto, y estar a prueba del futuro, se recomienda remover la clave existente de `security@k6.io`, y actualizar la lista de repositorios.
+Algunos usuarios de Debian/Ubuntu y derivados podrían encontrar una advertencia utilizando `apt-key` para añadir la clave de firma del repositorio de k6:
+
+> `Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8))`
+
+Para evitar esto, y estar a prueba del futuro, se recomienda remover la clave existente de `security@k6.io`, y actualizar la lista de repositorios.
 
 ```bash
 # borra la clave existente
