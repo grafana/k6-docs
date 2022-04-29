@@ -7,8 +7,8 @@ Options let you configure how k6 behaves during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| <Tooltip value="Not implemented">❌</Tooltip> [Address](#address)                                       | Address of the REST API server                                                           |
-| <Tooltip value="Not implemented. Clickable!">[❌](https://github.com/grafana/xk6-browser/issues/103)</Tooltip> [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
+| <BNIT/> [Address](#address)                                       | Address of the REST API server                                                           |
+| <BNIT id="103" /> [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
 | [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |

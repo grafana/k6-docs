@@ -13,7 +13,7 @@ import InstallationInstructions from 'components/shared/installation-instruction
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
 import TableWrapper from 'components/shared/table-wrapper';
-import Tooltip from 'components/shared/tooltip';
+import Tooltip, { BNIT } from 'components/shared/tooltip';
 import React, { useRef } from 'react';
 
 import styles from './doc-page-content.module.scss';
@@ -36,6 +36,7 @@ const componentsForNativeReplacement = {
   BrowserWIP,
   InstallationInstructions,
   Tooltip,
+  BNIT,
 };
 
 export const DocPageContent = ({
