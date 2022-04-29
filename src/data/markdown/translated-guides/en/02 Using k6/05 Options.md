@@ -7,11 +7,11 @@ Options let you configure how k6 behaves during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| <BNIT/> [Address](#address)                                       | Address of the REST API server                                                           |
-| <BNIT id="103"/> [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
+| [Address](#address)                                       | Address of the REST API server                                                           |
+| [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
-| <BWIPT/>[ Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
-| <BWIPT id="103"/> [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
+| [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
+| [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
 | [Console Output](#console-output)                         | Redirects logs logged by `console` methods to the provided output file              |
