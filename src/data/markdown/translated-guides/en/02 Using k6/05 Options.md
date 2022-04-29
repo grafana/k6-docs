@@ -7,8 +7,8 @@ Options let you configure how k6 behaves during test execution.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Address](#address)                                       | Address of the REST API server                                                           |
-| [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
+| <Tooltip value="Not implemented">❌</Tooltip> [Address](#address)                                       | Address of the REST API server                                                           |
+| <Tooltip value="Not implemented. Clickable!">[❌](https://github.com/grafana/xk6-browser/issues/103)</Tooltip> [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
 | [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
 | [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
@@ -168,9 +168,9 @@ Or set some of the previous options via environment variables and command-line f
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
+K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
 
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 ```bash
@@ -206,7 +206,7 @@ By default, the server listens on `localhost:6565`. Read more on [k6 REST API](/
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --address "localhost:3000" script.js
+k6 run --address "localhost:3000" script.js
 ```
 
 </CodeGroup>
@@ -273,8 +273,6 @@ export const options = {
 
 </CodeGroup>
 
-
-
 ## Block Hostnames
 
 Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
@@ -296,11 +294,10 @@ export const options = {
 
 </CodeGroup>
 
-
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --block-hostnames="test.k6.io,*.example.com" script.js
+k6 run --block-hostnames="test.k6.io,*.example.com" script.js
 ```
 
 </CodeGroup>
@@ -318,7 +315,7 @@ Read about the different modes on the [JavaScript Compatibility Mode documentati
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --compatibility-mode=base script.js
+k6 run --compatibility-mode=base script.js
 ```
 
 </CodeGroup>
@@ -341,7 +338,7 @@ Available in `k6 run` and `k6 cloud` commands:
 
 An example of a config file is available [here](/using-k6/options#config-json-example)
 
-> ### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind
 >
 > When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
 
@@ -353,11 +350,10 @@ Redirects logs logged by `console` methods to the provided output file. Availabl
 | ---                 | -------------------| ------------------ | ------- |
 | `K6_CONSOLE_OUTPUT` | `--console-output` | N/A                | `null`  |
 
-
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --console-output "loadtest.log" script.js
+k6 run --console-output "loadtest.log" script.js
 ```
 
 </CodeGroup>
@@ -398,22 +394,24 @@ will try to reuse connections if HTTP keep-alive is supported. To force a certai
 DNS behavior consider enabling the [`noConnectionReuse`](#no-connection-reuse)
 option in your tests.
 
-
 | Env      | CLI     | Code / Config file | Default                                  |
 | ---------| --------| -------------------| ---------------------------------------- |
 | `K6_DNS` | `--dns` | `dns`              | `ttl=5m,select=random,policy=preferIPv4` |
 
 Possible `ttl` values are:
+
 - `0`: no caching at all - each request will trigger a new DNS lookup.
 - `inf`: cache any resolved IPs for the duration of the test run.
 - any time duration like `60s`, `5m30s`, `10m`, `2h`, etc.; if no unit is specified (e.g. `ttl=3000`), k6 assumes milliseconds.
 
 Possible `select` values are:
+
 - `first`: always pick the first resolved IP.
 - `random`: pick a random IP for every new connection.
 - `roundRobin`: iterate sequentially over the resolved IPs.
 
 Possible `policy` values are:
+
 - `preferIPv4`: use IPv4 addresses if available, otherwise fall back to IPv6.
 - `preferIPv6`: use IPv6 addresses if available, otherwise fall back to IPv4.
 - `onlyIPv4`: only use IPv4 addresses, ignore any IPv6 ones.
@@ -525,7 +523,7 @@ This option allows you to exit early and let the script run in the background. A
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 cloud --exit-on-running script.js
+k6 cloud --exit-on-running script.js
 ```
 
 </CodeGroup>
@@ -538,7 +536,7 @@ up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
 You can also redirect only from certain ports or to certain ports.
 
-> ### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind
 >
 > This does not modify the actual HTTP `Host` header, but rather where it will be routed.
 
@@ -594,7 +592,7 @@ Pass the real system [environment variables](/using-k6/environment-variables) to
 <CodeGroup labels={["Shell" ]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --include-system-env-vars ~/script.js
+k6 run --include-system-env-vars ~/script.js
 ```
 
 </CodeGroup>
@@ -629,7 +627,6 @@ Together with the [`vus` option](#vus), `iterations` is a shortcut for a single 
 By default, the maximum duration of a `shared-iterations` scenario is 10 minutes. You can adjust that time via the `maxDuration` option of the scenario, or by also specifying the [`duration` global shortcut option](#duration).
 
 **Note that iterations aren't fairly distributed with this option, and a VU that executes faster will complete more iterations than others.** Each VU will try to complete as many iterations as possible, ["stealing"](https://en.wikipedia.org/wiki/Work_stealing) them from the total number of iterations for the test. So, depending on iteration times, some VUs may complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
-
 
 | Env             | CLI                  | Code / Config file | Default |
 | --------------- | -------------------- | ------------------ | ------- |
@@ -694,11 +691,10 @@ Available in the `k6 run` command.
 | -------------- | ---------------- | ------------------ | ------- |
 | `K6_LOCAL_IPS` | `--local-ips`    | N/A                | N/A     |
 
-
 <CodeGroup labels={[]}>
 
 ```bash
-$ k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
+k6 run --local-ips=192.168.20.12-192.168.20.15,192.168.10.0/27 script.js
 ```
 
 </CodeGroup>
@@ -714,7 +710,7 @@ This option specifies where to send logs to and another configuration connected 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --log-output=stdout script.js
+k6 run --log-output=stdout script.js
 ```
 
 </CodeGroup>
@@ -734,7 +730,7 @@ The loki can additionally be configured as follows:
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
+k6 run --log-output=loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231 script.js
 ```
 
 </CodeGroup>
@@ -760,7 +756,7 @@ The file can be configured as below, where an explicit file path is required:
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --log-output=file=./k6.log script.js
+k6 run --log-output=file=./k6.log script.js
 ```
 
 </CodeGroup>
@@ -786,7 +782,7 @@ A value specifying the log format. By default, k6 includes extra debug informati
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --logformat raw test.js
+k6 run --logformat raw test.js
 ```
 
 </CodeGroup>
@@ -838,11 +834,10 @@ A boolean specifying whether colored output is disabled. Available in `k6 run` a
 | --- | ------------ | ------------------- | ------- |
 | N/A | `--no-color` | N/A                 | `false` |
 
-
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --no-color script.js
+k6 run --no-color script.js
 ```
 
 </CodeGroup>
@@ -899,7 +894,7 @@ Available in the `k6 run` command.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --no-summary ~/script.js
+k6 run --no-summary ~/script.js
 ```
 
 </CodeGroup>
@@ -915,7 +910,7 @@ A boolean specifying whether `setup()` function should be run. Available in `k6 
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --no-setup script.js
+k6 run --no-setup script.js
 ```
 
 </CodeGroup>
@@ -931,7 +926,7 @@ A boolean specifying whether `teardown()` function should be run. Available in `
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --no-teardown script.js
+k6 run --no-teardown script.js
 ```
 
 </CodeGroup>
@@ -947,7 +942,7 @@ Disables threshold execution. Available in the `k6 run` command.
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --no-thresholds ~/script.js
+k6 run --no-thresholds ~/script.js
 ```
 
 </CodeGroup>
@@ -966,13 +961,12 @@ learn more, have a look at the [Usage reports](/misc/usage-collection) documenta
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --no-usage-report ~/script.js
+k6 run --no-usage-report ~/script.js
 ```
 
 </CodeGroup>
 
 \* Note that this option is not supported in the exported script options, but can be specified in a configuration file.
-
 
 ## No VU Connection Reuse
 
@@ -1023,7 +1017,7 @@ A boolean, true or false, that disables the progress update bar on the console o
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run script.js -d 20s --quiet
+k6 run script.js -d 20s --quiet
 ```
 
 </CodeGroup>
@@ -1041,7 +1035,7 @@ specified multiple times. Available in `k6 run` command.
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --out influxdb=http://localhost:8086/k6 script.js
+k6 run --out influxdb=http://localhost:8086/k6 script.js
 ```
 
 </CodeGroup>
@@ -1050,7 +1044,7 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-> ### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind
 >
 > This option has some caveats and is difficult to use correctly, so its usage is somewhat discouraged. For example, in the cloud/distributed execution, this option affects every k6 instance independently, i.e. it is not sharded like VUs are. We strongly recommend the use of [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
 
@@ -1135,15 +1129,13 @@ A boolean specifying whether the cloud logs are printed out to the terminal. Ava
 | --- | ------------- | ------------------ | ------- |
 | N/A | `--show-logs` | N/A                | `true`  |
 
-
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 cloud --show-logs=false script.js
+k6 cloud --show-logs=false script.js
 ```
 
 </CodeGroup>
-
 
 ## Stages
 
@@ -1252,7 +1244,7 @@ Add/override an [environment variable](/using-k6/environment-variables) with `VA
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
-Note: This can *not* be used to configure k6 with environment variables as listed on this page. In other words `-e K6_ITERATIONS=120` will *not* configure the script [iterations](#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
+Note: This can _not_ be used to configure k6 with environment variables as listed on this page. In other words `-e K6_ITERATIONS=120` will *not* configure the script [iterations](#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -1261,7 +1253,7 @@ Note: This can *not* be used to configure k6 with environment variables as liste
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run -e FOO=bar ~/script.js
+k6 run -e FOO=bar ~/script.js
 ```
 
 </CodeGroup>
@@ -1295,7 +1287,6 @@ Define which time unit will be used for _all_ time values in the [end-of-test su
 | ---------------------- | --------------------- | ------------------- | ------- |
 | `K6_SUMMARY_TIME_UNIT` | `--summary-time-unit` | `summaryTimeUnit`   | `null`  |
 
-
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```javascript
@@ -1306,13 +1297,11 @@ export const options = {
 
 </CodeGroup>
 
-
 ## Summary Trend Stats
 
 Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
 For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
-
 
 | Env                      | CLI                     | Code / Config file  | Default                        |
 | ------------------------ | ----------------------- | ------------------- | ------------------------------ |
@@ -1331,7 +1320,7 @@ export const options = {
 <CodeGroup labels={[ "Shell" ]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
+k6 run --summary-trend-stats="avg,min,med,max,p(90),p(99.9),p(99.99),count" ./script.js
 ```
 
 </CodeGroup>
@@ -1403,9 +1392,10 @@ export const options = {
 ## Throw
 
 A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
- - failed [HTTP requests](/javascript-api/k6-http/)
- - adding invalid values to [custom metrics](/using-k6/metrics/#custom-metrics)
- - setting invalid [per-VU metric tags](/javascript-api/k6-execution/#tags)
+
+- failed [HTTP requests](/javascript-api/k6-http/)
+- adding invalid values to [custom metrics](/using-k6/metrics/#custom-metrics)
+- setting invalid [per-VU metric tags](/javascript-api/k6-execution/#tags)
 
 Available in `k6 run` and `k6 cloud` commands.
 
@@ -1453,9 +1443,9 @@ export const options = {
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-> ### ⚠️ Keep in mind!
+> ### ⚠️ Keep in mind
 >
-> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
+> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is _not_ supported and will do nothing.
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |
@@ -1528,11 +1518,10 @@ A boolean specifying whether verbose logging is enabled. Available in `k6 run` a
 | --- | ------------------ | ------------------- | ------- |
 | N/A | `--verbose`, `-v`  | N/A                 | `false` |
 
-
 <CodeGroup labels={[]} lineNumbers={[false]}>
 
 ```bash
-$ k6 run --verbose script.js
+k6 run --verbose script.js
 ```
 
 </CodeGroup>
@@ -1557,4 +1546,3 @@ export const options = {
 ```
 
 </CodeGroup>
-
