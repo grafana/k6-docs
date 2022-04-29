@@ -39,7 +39,7 @@ Then visit http://localhost:8100
 If you prefer not to use Docker, you can install the project locally.
 
 Requirements:
-- NodeJS version higher than 12.13.0
+- NodeJS version 16.0.0 or higher
 - npm or yarn
 
 Clone the project and install dependencies:

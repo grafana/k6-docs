@@ -5,7 +5,6 @@ import {
   styles as itemCardStyles,
 } from 'components/shared/item-card';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-
 import * as React from 'react';
 
 import styles from './item-cards-row.module.scss';
@@ -33,7 +32,7 @@ export const ItemCardsRow = ({
               <Heading className={itemCardStyles.title} tag={'h3'} size={'md'}>
                 {title}
               </Heading>
-              {text ? <div className={itemCardStyles.text}>{text}</div> : <></>}
+              {text ? <div className={itemCardStyles.text}>{text}</div> : null}
             </div>
             <div className={classNames(itemCardStyles.footer, styles.footer)}>
               <div className={itemCardStyles.link}>{linkText}</div>

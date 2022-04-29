@@ -1,1 +1,3 @@
-export { default } from './announcement-banner';
+import AnnouncementBanner from './announcement-banner';
+
+export default AnnouncementBanner;

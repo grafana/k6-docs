@@ -161,7 +161,7 @@ Aborting is possible during initialization:
 <CodeGroup labels={["init-abort.js"]} lineNumbers={[true]}>
 
 ```javascript
-import exec from "k6/execution";
+import exec from 'k6/execution';
 exec.test.abort();
 ```
 
@@ -172,15 +172,15 @@ As well as inside the `default` function:
 <CodeGroup labels={["default-abort.js"]} lineNumbers={[true]}>
 
 ```javascript
-import exec from "k6/execution";
+import exec from 'k6/execution';
 
-export default function() {
+export default function () {
   // Note that you can abort with a specific message too
-  exec.test.abort("this is the reason");
+  exec.test.abort('this is the reason');
 }
 
 export function teardown() {
-  console.log("teardown will still be called after test.abort()");
+  console.log('teardown will still be called after test.abort()');
 }
 ```
 

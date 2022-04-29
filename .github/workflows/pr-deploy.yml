@@ -18,10 +18,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -37,10 +37,10 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
         uses: actions/cache@v2
@@ -54,9 +54,15 @@ jobs:
           curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.4.0
           export PATH="./bin:$PATH"
           vale -v
+      - name: Check formatting
+        run: |
+          npm run format
       - name: Lint code
         run: |
           npm run lint
+      - name: Lint code examples
+        run: |
+          npm run lint:examples
       - name: Lint prose
         run: |
           export PATH="./bin:$PATH"
@@ -76,10 +82,10 @@ jobs:
           echo "GATSBY_DEFAULT_BLOG_URL: $GATSBY_DEFAULT_BLOG_URL"
           echo "GATSBY_DEFAULT_APP_URL: $GATSBY_DEFAULT_APP_URL"
 
-      - name: Use Node.js 15.xs
+      - name: Use Node.js 16.xs
         uses: actions/setup-node@v2
         with:
-          node-version: '15.x'
+          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install
