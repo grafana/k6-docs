@@ -293,7 +293,10 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
   if (!title) return slug;
 
   // Making sure to change slug only for Javascript API docs that have parameters
-  if (/javascript-api\/|jslib\//.test(slug) && /\(.+\)/.test(title)) {
+  if (
+    /javascript-api\/|jslib\/|xk6-browser\//.test(slug) &&
+    /\(.+\)/.test(title)
+  ) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
     const methodNameWithSlash = `/${methodName}`;
 
