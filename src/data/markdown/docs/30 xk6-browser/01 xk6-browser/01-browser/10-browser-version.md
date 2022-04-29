@@ -5,10 +5,10 @@ excerpt: 'xk6-browser: Browser.version method'
 
 <BrowserCompatibility/>
 
-TODO
+Returns the browser application's version.
 
 ### Returns
 
-| Type   | Description                                |
-| ------ | ------------------------------------------ |
-| string | Returns the browser application's version. |
+| Type   | Description                        |
+| ------ | ---------------------------------- |
+| string | The browser application's version. |
