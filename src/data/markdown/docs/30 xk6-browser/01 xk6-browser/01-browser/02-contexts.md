@@ -1,5 +1,5 @@
 ---
-title: 'Browser.contexts()'
+title: 'contexts()'
 excerpt: 'xk6-browser: Browser.contexts method'
 ---
 

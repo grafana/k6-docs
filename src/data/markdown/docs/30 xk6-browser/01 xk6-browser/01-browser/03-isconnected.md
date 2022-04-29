@@ -1,5 +1,5 @@
 ---
-title: 'Browser.isConnected()'
+title: 'isConnected()'
 excerpt: 'xk6-browser: Browser.isConnected method'
 ---
 
