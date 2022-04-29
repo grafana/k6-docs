@@ -1,5 +1,5 @@
 ---
-title: 'Browser.version()'
+title: 'version()'
 excerpt: 'xk6-browser: Browser.version method'
 ---
 

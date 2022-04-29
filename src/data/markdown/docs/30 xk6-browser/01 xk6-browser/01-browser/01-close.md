@@ -1,5 +1,5 @@
 ---
-title: 'Browser.close()'
+title: 'close()'
 excerpt: 'xk6-browser: Browser.close method'
 ---
 

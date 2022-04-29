@@ -1,5 +1,5 @@
 ---
-title: 'Browser.newContext()'
+title: 'newContext()'
 excerpt: 'xk6-browser: Browser.newContext method'
 ---
 

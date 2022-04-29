@@ -1,5 +1,5 @@
 ---
-title: 'Browser.newBrowserCDPSession()'
+title: 'newBrowserCDPSession()'
 excerpt: 'xk6-browser: Browser.newBrowserCDPSession method'
 ---
 
