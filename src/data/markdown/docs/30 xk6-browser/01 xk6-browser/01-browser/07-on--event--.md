@@ -1,5 +1,5 @@
 ---
-title: 'on()'
+title: 'on(event)'
 excerpt: 'xk6-browser: Browser.on method'
 ---
 
