@@ -7,4 +7,4 @@ excerpt: 'xk6-browser: Browser.close method'
 
 Closes the browser and all of its pages (if any were opened).
 
-The Browser object itself is considered to be disposed and cannot be used anymore.
+The Browser object cannot be used anymore and is considered disposed of.
