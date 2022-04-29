@@ -1,5 +1,5 @@
 ---
-title: 'Browser.newContext([options])'
+title: 'Browser.newContext()'
 excerpt: 'xk6-browser: Browser.newContext method'
 ---
 
@@ -86,3 +86,5 @@ You can customize the creation of a new browser context using the following opti
 | ------ | ------ | ---------------------- |
 | width  | number | Page width in pixels.  |
 | height | number | Page height in pixels. |
+
+<!-- vale off -->
