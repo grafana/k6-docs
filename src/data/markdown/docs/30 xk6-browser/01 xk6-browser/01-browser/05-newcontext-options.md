@@ -5,7 +5,7 @@ excerpt: 'xk6-browser: Browser.newContext method'
 
 <BrowserCompatibility/>
 
-Creates a new browser context.
+Creates and returns a new browser context.
 
 | Parameter | Type   | Description                               |
 | --------- | ------ | ----------------------------------------- |
