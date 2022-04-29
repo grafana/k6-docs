@@ -1,5 +1,5 @@
 ---
-title: 'Browser.stopTracing()'
+title: 'stopTracing()'
 excerpt: 'xk6-browser: Browser.stopTracing method'
 ---
 

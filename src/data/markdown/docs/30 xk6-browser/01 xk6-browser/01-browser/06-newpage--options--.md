@@ -1,5 +1,5 @@
 ---
-title: 'Browser.newPage()'
+title: 'newPage()'
 excerpt: 'xk6-browser: Browser.newPage method'
 ---
 
