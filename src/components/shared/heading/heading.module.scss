@@ -31,7 +31,7 @@
 .mark-heading {
   position: relative;
   margin-bottom: 15px;
-  a {
+  a:first-child {
     position: absolute;
     left: -20px;
     visibility: hidden;
@@ -44,7 +44,7 @@
     }
   }
   &:hover {
-    a {
+    a:first-child {
       visibility: visible;
     }
   }
