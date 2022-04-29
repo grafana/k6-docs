@@ -3,28 +3,28 @@ import React from 'react';
 
 import Tooltip from '../tooltip';
 
-// BNIT = xk6-browser "Not Implemented" tooltip
-const BNIT = ({ id }) =>
+// BWIPT = xk6-browser "Work in Progress" tooltip
+const BWIPT = ({ id }) =>
   id ? (
-    <Tooltip value="Not implemented">
+    <Tooltip value="Work in Progress">
       <a
         href={`https://github.com/grafana/xk6-browser/issues/${id}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        ❌
+        🚧
       </a>
     </Tooltip>
   ) : (
-    <Tooltip value="Not implemented">❌</Tooltip>
+    <Tooltip value="Work in Progress">🚧</Tooltip>
   );
 
-BNIT.propTypes = {
+BWIPT.propTypes = {
   id: PropTypes.string,
 };
 
-BNIT.defaultProps = {
+BWIPT.defaultProps = {
   id: null,
 };
 
-export default BNIT;
+export default BWIPT;

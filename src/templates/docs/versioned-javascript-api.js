@@ -14,7 +14,7 @@ import CustomContentContainer from 'components/shared/custom-content-container';
 import { Link } from 'components/shared/link';
 import { PageInfo } from 'components/shared/page-info';
 import TableWrapper from 'components/shared/table-wrapper';
-import Tooltip, { BNIT } from 'components/shared/tooltip';
+import Tooltip from 'components/shared/tooltip';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql } from 'gatsby';
@@ -32,7 +32,6 @@ const componentsForNativeReplacement = {
   pre: Code,
   CodeGroup,
   Tooltip,
-  BNIT,
 };
 
 const getContent = (nodes, alternativeNodes, sidebarTree, version) =>
