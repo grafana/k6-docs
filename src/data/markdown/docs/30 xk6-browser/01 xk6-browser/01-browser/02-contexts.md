@@ -16,7 +16,7 @@ Allows you to access all open browser contexts.
 
 ## Example
 
-In a newly created browser, this method will return zero browser contexts.
+This method will return zero browser contexts for a Browser just created.
 
 <!-- eslint-skip -->
 
