@@ -1,5 +1,5 @@
 ---
-title: 'startTracing()'
+title: 'startTracing([page], [options])'
 excerpt: 'xk6-browser: Browser.startTracing method'
 ---
 
