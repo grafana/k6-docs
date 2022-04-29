@@ -5,13 +5,18 @@ excerpt: 'xk6-browser: Browser.contexts method'
 
 <BrowserCompatibility/>
 
-Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
+Allows you to access all open browser contexts.
 
 ### Returns
 
 | Type  | Description                                                                    |
 | ----- | ------------------------------------------------------------------------------ |
 | Array | Array of [BrowserContext](/javascript-api/xk6-browser/browsercontext/) objects |
+
+
+## Example
+
+In a newly created browser, this method will return zero browser contexts.
 
 <!-- eslint-skip -->
 
