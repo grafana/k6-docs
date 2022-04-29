@@ -1,3 +1,7 @@
+.cache/
+public/
+node_modules/
+
 # disable formatting for code snippets
 src/data/home-examples/*
 src/data/native-automation-instruction/*

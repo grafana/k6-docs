@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies, max-len */
 const React = require('react');
 
-exports.onRenderBody = ({setPostBodyComponents}, pluginOptions) => {
-  return setPostBodyComponents([
+exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions) =>
+  setPostBodyComponents([
     <script
+      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html: `
         window.driftAppId = '${pluginOptions.appId}';
@@ -10,5 +12,4 @@ exports.onRenderBody = ({setPostBodyComponents}, pluginOptions) => {
         `,
       }}
     />,
-    ]);
-};
+  ]);

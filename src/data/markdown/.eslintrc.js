@@ -9,7 +9,7 @@ module.exports = {
     ecmaVersion: 7,
     sourceType: 'module',
   },
-  extends: ['plugin:prettier/recommended'],
+  extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],
   overrides: [
     {

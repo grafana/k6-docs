@@ -1,7 +1,7 @@
 import Glossary from 'components/pages/doc-page/glossary';
+import { HeadingLandmark } from 'components/shared/heading';
 import { Link } from 'gatsby';
 import React from 'react';
-import { HeadingLandmark } from 'components/shared/heading';
 
 const links = [
   {

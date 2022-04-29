@@ -1,7 +1,7 @@
 {
   "name": "k6-docs",
   "engines": {
-    "node": ">=14.15.0",
+    "node": ">=16.0.0",
     "npm": ">=7.0.0"
   },
   "description": "",
@@ -17,11 +17,13 @@
     "deploy": "./scripts/gatsby-s3-workaround.sh prepare && gatsby-plugin-s3 deploy --yes && ./scripts/cloudfront-invalidate.sh && ./scripts/gatsby-s3-workaround.sh revert",
     "predevelop": "shx test -f ./.env.development || shx cp ./.env.example ./.env.development",
     "develop": "gatsby develop",
-    "lint": "eslint src/ -c .eslintrc",
+    "format": "prettier --check '**/*.{js,jsx,css,scss}'",
+    "format:fix": "prettier --write '**/*.{js,jsx,css,scss}'",
+    "lint": "eslint --ext .js,.jsx .",
+    "lint:fix": "eslint --ext .js,.jsx --fix .",
+    "lint:examples": "eslint -c ./src/data/markdown/.eslintrc.js src/data/markdown",
+    "lint:examples:fix": "eslint -c ./src/data/markdown/.eslintrc.js --fix src/data/markdown",
     "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
-    "lint:fix": "eslint src/ --fix -c .eslintrc",
-    "lint:examples": "./node_modules/.bin/eslint src/data/markdown",
-    "lint:examples:fix": "./node_modules/.bin/eslint src/data/markdown --fix",
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",
     "check:blc": "wait-on tcp:8000 && blc http://localhost:8000 -rof",
@@ -75,28 +77,24 @@
     "sass": "^1.34.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
+    "@babel/core": "^7.17.9",
     "@svgr/webpack": "^6.2.1",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^8.2.5",
     "broken-link-checker": "^0.7.8",
     "concurrently": "^5.3.0",
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-markdown": "^2.2.1",
-    "eslint-plugin-mdx": "^1.13.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.4.1",
+    "eslint-plugin-mdx": "^1.17.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
+    "prettier": "^2.6.2",
     "shx": "^0.3.3",
     "wait-on": "^5.3.0"
-  },
-  "lint-staged": {
-    "*.md": "./node_modules/.bin/eslint -c ./src/data/markdown/.eslintrc.js"
   }
 }

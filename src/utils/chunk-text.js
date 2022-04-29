@@ -136,9 +136,10 @@ var chunkLength = function chunkLength(
     } else if (charLengthMask === 0) {
       length = charactersArray
         .map(function (character) {
-          return (charLengthType === 'TextEncoder'
-            ? textEncoder.encode(character)
-            : character
+          return (
+            charLengthType === 'TextEncoder'
+              ? textEncoder.encode(character)
+              : character
           ).length;
         })
         .reduce(function (accumulator, currentValue) {
@@ -147,9 +148,10 @@ var chunkLength = function chunkLength(
     } else if (charLengthMask > 0) {
       var arrayLength = charactersArray
         .map(function (character) {
-          return (charLengthType === 'TextEncoder'
-            ? textEncoder.encode(character)
-            : character
+          return (
+            charLengthType === 'TextEncoder'
+              ? textEncoder.encode(character)
+              : character
           ).length;
         })
         .reduce(function (accumulator, currentValue) {

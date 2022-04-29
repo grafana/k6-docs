@@ -50,13 +50,13 @@ const buildBreadcrumbs = (path, versioned = false) => {
     const slug = slugify(accumulatedPath);
     let name;
     if (i === 0) {
-      name = new RegExp(/javascript api/i).test(part)
+      name = /javascript api/i.test(part)
         ? 'Javascript API'
         : part.slice(0, 1).toUpperCase() + part.slice(1);
     } else if (i === 1) {
-      name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
+      name = /k6-/i.test(part) ? part.replace(/-/g, '/') : part;
     } else if (i === 2 && versioned) {
-      name = new RegExp(/k6-/i).test(part) ? part.replace(/-/g, '/') : part;
+      name = /k6-/i.test(part) ? part.replace(/-/g, '/') : part;
     } else {
       name = part;
     }
