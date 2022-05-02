@@ -103,7 +103,7 @@ Based upon our test scenario inputs and results:
 
 ## Get the stage index
 
-It is possible to get the current running stage index using the `getCurrentStageIndex` helper function from the [k6-jslib-utils](/javascript-api/jslib/utils) library. It returns a zero based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
+It is possible to get the current running stage index using the `getCurrentStageIndex` helper function from the [k6-jslib-utils](/javascript-api/jslib/utils) library. It returns a zero-based number equal to the position in the shortcut `stages` array or in the executor's `stages` array.
 
 ```javascript
 import { getCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
@@ -123,4 +123,4 @@ export default function() {
 }
 ```
 
-Using this feature is possible to automatically tagging with the current running stage. Check the [Tagging stages](/using-k6/tags-and-groups/#tagging-stages) section for more details.
+Using this feature, it is possible to automatically tag using the current running stage. Check the [Tagging stages](/using-k6/tags-and-groups/#tagging-stages) section for more details.

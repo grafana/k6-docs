@@ -120,7 +120,9 @@ There are two ways you can set these tags:
 
 In the case, a user-defined tag with advanced logic for handling which tag to set is required then it's possible doing it by defining the tag from the code.
 
-It's possible to use the [k6/execution.vu.tags](/javascript-api/k6-execution/#vu) API for assigning an object property with the name and the value of the required tag. Like the following example for tracking the container group from the nested groups, it would be helpful for aggregating sub-metrics for nested groups.
+To support advanced tagging logics and workflows, it is also possible to directly manipulate them from scripts' code.
+
+[k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
 ```javascript
 import http from 'k6/http'
@@ -151,7 +153,7 @@ export default function () {
 }
 ```
 
-Using the same API is even possible to get any already set user-defined and/or system-defined tag:
+Using the same API, it is also possible to retrieve any already set user-defined and/or system-defined tag:
 
 ```javascript
 import exec from 'k6/execution'
@@ -164,7 +166,7 @@ export default function() {
 
 ## Tagging stages
 
-Thanks to some defined helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, it's possible to add a tag with the current ongoing stage for the executors that supports the `stages` option.
+Thanks to some of the helper functions defined in the [k6-jslib-utils](/javascript-api/jslib/utils) project, it is possible to tag executors supporting the `stages` option with the current ongoing stage.
 
 The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
