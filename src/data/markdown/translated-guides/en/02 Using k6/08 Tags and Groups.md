@@ -120,7 +120,7 @@ There are two ways you can set these tags:
 
 In the case, a user-defined tag with advanced logic for handling which tag to set is required then it's possible doing it by defining the tag from the code.
 
-To support advanced tagging logics and workflows, it is also possible to directly manipulate them from scripts' code.
+To support advanced tagging logics and workflows, it is also possible to directly set and get them from scripts' code.
 
 [k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
@@ -153,7 +153,7 @@ export default function () {
 }
 ```
 
-Using the same API, it is also possible to retrieve any already set user-defined and/or system-defined tag:
+Using the same API, you can also retrieve any already set user-defined or system-defined tag:
 
 ```javascript
 import exec from 'k6/execution';
@@ -166,7 +166,7 @@ export default function () {
 
 ## Tagging stages
 
-Thanks to some of the helper functions defined in the [k6-jslib-utils](/javascript-api/jslib/utils) project, it is possible to tag executors supporting the `stages` option with the current ongoing stage.
+Thanks to some helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, if an executor supports the `stages` option, then a tag can be added with the current ongoing stage. Similar to the other ways for tagging, the tag will be added to all the samples collected during the iteration.
 
 The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
@@ -334,7 +334,7 @@ If your code looks like the preceding snippet, consider the following strategies
 
 - For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
-- To reuse common logic or organize your code better, group logic in functions or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
+- To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
 
 ## Tags and Groups in k6 Cloud Results
