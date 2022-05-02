@@ -125,43 +125,43 @@ To support advanced tagging logics and workflows, it is also possible to directl
 [k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
 ```javascript
-import http from 'k6/http'
-import exec from 'k6/execution'
-import { group } from 'k6'
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { group } from 'k6';
 
 export const options = {
-    thresholds: {
-        'http_reqs{container_group:main}': ['count==3'],
-        'http_req_duration{container_group:main}': ['max<1000'],
-    },
+  thresholds: {
+    'http_reqs{container_group:main}': ['count==3'],
+    'http_req_duration{container_group:main}': ['max<1000'],
+  },
 };
 
 export default function () {
-    exec.vu.tags['container_group'] = 'main'
-    
-    group('main', function () {
-        http.get('https://test.k6.io')
-        group('sub', function () {
-            http.get('https://httpbin.test.k6.io/anything')
-        });
-        http.get('https://test-api.k6.io')
+  exec.vu.tags.containerGroup = 'main';
+
+  group('main', function () {
+    http.get('https://test.k6.io');
+    group('sub', function () {
+      http.get('https://httpbin.test.k6.io/anything');
     });
+    http.get('https://test-api.k6.io');
+  });
 
-    delete exec.vu.tags['container_group']
+  delete exec.vu.tags.containerGroup;
 
-    http.get('https://httpbin.test.k6.io/delay/3')
+  http.get('https://httpbin.test.k6.io/delay/3');
 }
 ```
 
 Using the same API, it is also possible to retrieve any already set user-defined and/or system-defined tag:
 
 ```javascript
-import exec from 'k6/execution'
+import exec from 'k6/execution';
 
-export default function() {
-    let tag = exec.vu.tags['scenario']
-    console.log(tag) // default
-} 
+export default function () {
+  const tag = exec.vu.tags['scenario'];
+  console.log(tag); // default
+}
 ```
 
 ## Tagging stages
@@ -171,39 +171,44 @@ Thanks to some of the helper functions defined in the [k6-jslib-utils](/javascri
 The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
 ```javascript
-import exec from 'k6/execution'
-import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
 
 export const options = {
-  stages: []
-}
+  stages: [
+    { target: 5, duration: '5s' },
+    { target: 10, duration: '10s' },
+  ],
+};
 
-export default function() {
-    tagWithCurrentStageIndex()
-    
-    // all the requests will have a `stage` tag
-    // with its value equal to the the index of the stage
-    http.get('https://test.k6.io') // e.g. {stage: "1"}
-} 
+export default function () {
+  tagWithCurrentStageIndex();
+
+  // all the requests will have a `stage` tag
+  // with its value equal to the the index of the stage
+  http.get('https://test.k6.io'); // e.g. {stage: "1"}
+}
 ```
 
 Additionally, a profiling function `tagWithCurrentStageProfile` can add a tag with a computed profile of the current running stage:
 
 ```javascript
-import exec from 'k6/execution'
-import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js'
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
 
 export const options = {
-  stages: []
-}
+  stages: [{ target: 10, duration: '10s' }],
+};
 
-export default function() {
-    tagWithCurrentStageProfile()
-    
-    // all the requests are tagged with a `stage` tag
-    // with the index of the stage as value   
-    http.get('https://test.k6.io') // {stage_profile: ramp-up}
-} 
+export default function () {
+  tagWithCurrentStageProfile();
+
+  // all the requests are tagged with a `stage` tag
+  // with the index of the stage as value
+  http.get('https://test.k6.io'); // {stage_profile: ramp-up}
+}
 ```
 
 The profile value based on the current stage can be one of the following options:
