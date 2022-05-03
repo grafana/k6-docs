@@ -7,6 +7,8 @@ There are two ways to look at test results:
 * After the test runs, k6 sends a small summary to `stdout`.
 * For granular analysis and time-series data, you can also stream live test data to an external output.
 
+![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
+
 By default, when a test finishes, k6 provides an [_end-of-test summary report_](#end-of-test-summary-report).
 This report aggregates the test results, with information about all [groups](/using-k6/tags-and-groups#groups), [checks](/using-k6/checks), and [thresholds](/using-k6/thresholds) in the load test.
 It also gives basic, summary statistics about each metric (e.g. mean, median, p95, etc).
