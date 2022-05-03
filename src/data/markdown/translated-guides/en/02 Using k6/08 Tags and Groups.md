@@ -26,7 +26,7 @@ k6 provides two types of tags:
 - *System tags* are tags that k6 automatically assigns.
 - *User-defined* tags are tags that you add when you write your script.
 
-### System tags
+## System tags
 
 Currently, k6 automatically creates the following tags by default:
 
@@ -47,10 +47,9 @@ Currently, k6 automatically creates the following tags by default:
 | `service`           | the RPC service name for gRPC                                                                                                                       |
 | `expected_response` | `true` or `false` based on the [responseCallback](/javascript-api/k6-http/setresponsecallback/); by default checks whether the status is 2xx or 3xx |
 
-To disable some of the above tags, you can use the `systemTags`
-[option](/using-k6/options).
+To disable some of the above tags, you can use the `systemTags` [option](/using-k6/options).
 Keep in mind that some data collectors (e.g. `cloud`) may require certain tags.
-You can als enable some additional system tags, if you need them:
+You can also enable some additional system tags if you need them:
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,8 +58,8 @@ You can als enable some additional system tags, if you need them:
 | `ip`          | The IP address of the remote server                                                                                               |
 | `ocsp_status` | the [Online Certificate Status Protocol (OCSP)](/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp) HTTPS status |
 
-### User-defined tags
- 
+## User-defined tags
+
 User-defined tags let you categorize k6 entities based on logic.
 You can tag the following entities:
 
@@ -95,6 +94,167 @@ export default function () {
 ```
 
 </CodeGroup>
+
+## Test-wide tags
+
+Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
+There are two ways you can set these tags:
+
+- In the CLI, using one or more `--tag NAME=VALUE` flags
+
+- In the script itself:
+
+  <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
+
+  ```javascript
+  export const options = {
+    tags: {
+      name: 'value',
+    },
+  };
+  ```
+
+  </CodeGroup>
+
+## Code-defined tags
+
+In the case, a user-defined tag with advanced logic for handling which tag to set is required then it's possible doing it by defining the tag from the code.
+
+To support advanced tagging logics and workflows, it is also possible to directly set and get them from scripts' code.
+
+[k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { group } from 'k6';
+
+export const options = {
+  thresholds: {
+    'http_reqs{container_group:main}': ['count==3'],
+    'http_req_duration{container_group:main}': ['max<1000'],
+  },
+};
+
+export default function () {
+  exec.vu.tags.containerGroup = 'main';
+
+  group('main', function () {
+    http.get('https://test.k6.io');
+    group('sub', function () {
+      http.get('https://httpbin.test.k6.io/anything');
+    });
+    http.get('https://test-api.k6.io');
+  });
+
+  delete exec.vu.tags.containerGroup;
+
+  http.get('https://httpbin.test.k6.io/delay/3');
+}
+```
+
+Using the same API, you can also retrieve any already set user-defined or system-defined tag:
+
+```javascript
+import exec from 'k6/execution';
+
+export default function () {
+  const tag = exec.vu.tags['scenario'];
+  console.log(tag); // default
+}
+```
+
+## Tagging stages
+
+Thanks to some helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, if an executor supports the `stages` option, then a tag can be added with the current ongoing stage. Similar to the other ways for tagging, the tag will be added to all the samples collected during the iteration.
+
+The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { tagWithCurrentStageIndex } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
+
+export const options = {
+  stages: [
+    { target: 5, duration: '5s' },
+    { target: 10, duration: '10s' },
+  ],
+};
+
+export default function () {
+  tagWithCurrentStageIndex();
+
+  // all the requests will have a `stage` tag
+  // with its value equal to the the index of the stage
+  http.get('https://test.k6.io'); // e.g. {stage: "1"}
+}
+```
+
+Additionally, a profiling function `tagWithCurrentStageProfile` can add a tag with a computed profile of the current running stage:
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+import { tagWithCurrentStageProfile } from 'https://jslib.k6.io/k6-utils/1.3.0/index.js';
+
+export const options = {
+  stages: [{ target: 10, duration: '10s' }],
+};
+
+export default function () {
+  tagWithCurrentStageProfile();
+
+  // all the requests are tagged with a `stage` tag
+  // with the index of the stage as value
+  http.get('https://test.k6.io'); // {stage_profile: ramp-up}
+}
+```
+
+The profile value based on the current stage can be one of the following options:
+
+| Profile | Description |
+| ------- | ----------- |
+| `ramp-up`   | The current stage has a target greater than the previous stage's target |
+| `steady`    | The current stage has a target equal to the previous stage's target |
+| `ramp-down` | The current stage has a target less than the previous stage's target |
+
+### Tags in results output
+
+<CodeGroup labels={["output.js"]} lineNumbers={[true]}>
+
+```json
+{
+  "type ": "Point ",
+  "data ": {
+    "time ": "2017-05-09T14:34:45.239531499+02:00 ",
+    "value ": 459.865729,
+    "tags ": {
+      "group ": "::my group::json ",
+      "method ": "GET ",
+      "status ": "200 ",
+      "url ": "https://httpbin.test.k6.io/get "
+    }
+  },
+  "metric ": "http_req_duration "
+}
+```
+
+```json
+{
+  "type ": "Point ",
+  "data ": {
+    "time ": "2017-05-09T14:34:45.625742514+02:00 ",
+    "value ": 5,
+    "tags ": null
+  },
+  "metric ": "vus "
+}
+```
+
+</CodeGroup>
+
+To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/json).
 
 ## Groups
 
@@ -174,65 +334,9 @@ If your code looks like the preceding snippet, consider the following strategies
 
 - For dynamic URLs, use the [URL grouping feature](/using-k6/http-requests#url-grouping).
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
-- To reuse common logic or organize your code better, group logic in functions or create a [local Javascript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
+- To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
 
-## Test-wide tags
-
-Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
-There are two ways you can set these tags:
-- In the CLI, using one or more `--tag NAME=VALUE` flags
-- In the script itself:
-
-  <CodeGroup labels={["test-wide-tags.js"]} lineNumbers={[true]}>
-
-  ```javascript
-  export const options = {
-    tags: {
-      name: 'value',
-    },
-  };
-  ```
-
-  </CodeGroup>
-
-### Tags in results output
-
-<CodeGroup labels={["output.js"]} lineNumbers={[true]}>
-
-```json
-{
-  "type ": "Point ",
-  "data ": {
-    "time ": "2017-05-09T14:34:45.239531499+02:00 ",
-    "value ": 459.865729,
-    "tags ": {
-      "group ": "::my group::json ",
-      "method ": "GET ",
-      "status ": "200 ",
-      "url ": "https://httpbin.test.k6.io/get "
-    }
-  },
-  "metric ": "http_req_duration "
-}
-```
-
-```json
-{
-  "type ": "Point ",
-  "data ": {
-    "time ": "2017-05-09T14:34:45.625742514+02:00 ",
-    "value ": 5,
-    "tags ": null
-  },
-  "metric ": "vus "
-}
-```
-
-</CodeGroup>
-
-To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/json).
- 
 ## Tags and Groups in k6 Cloud Results
 
 In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
