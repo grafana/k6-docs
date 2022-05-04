@@ -600,6 +600,18 @@
       },
       "official": false,
       "categories": ["Authentication"]
+    },
+    {
+      "name": "xk6-output-error",
+      "description": "Add more information into StdErr k6 about requests",
+      "url": "https://github.com/Tinkoff/xk6-output-error",
+      "logo": "",
+      "author": {
+        "name": "Maksimall89",
+        "url": "https://github.com/maksimall89"
+      },
+      "official": false,
+      "categories": ["Reporting"]
     }
   ]
 }
