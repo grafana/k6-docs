@@ -1,23 +1,21 @@
 ---
 title: 'SSL/TLS version and ciphers'
-excerpt: 'To support testing specific client configurations k6 allows you to set a specific version or range
+excerpt: 'To support testing specific client configurations, k6 allows you to set a specific version or range
 of versions of SSL/TLS that should be allowed for a connection.'
 ---
 
-To support testing specific client configurations k6 allows you to set a specific version or range
-of versions of SSL/TLS that should be allowed for a connection, as well as which cipher suites are
-allowed to be used on that connection.
+To support testing specific client configurations, k6 allows you to specify a version or range of versions of SSL/TLS that are allowed for a connection.
+You can as also specify which cipher suites are allowed for that connection.
 
 
 > #### ⚠️ Reg. ciphers and TLS 1.3
 >
-> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
+> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349), changing the ciphers for TLS 1.3 is *not* supported and will do nothing.
 
 ## Limiting SSL/TLS version
 
-Limiting the SSL/TLS versions that k6 will be allowed to use during a test is a global
-[configuration option](/using-k6/options). You can choose to limit to a specific version:
-
+To limit the k6 to a specific SSL/TLS version, use a global
+[configuration option](/using-k6/options):
 <CodeGroup labels={["Limiting to a specific SSL/TLS version"]} lineNumbers={[true]}>
 
 ```javascript
@@ -34,7 +32,7 @@ export default function () {
 
 </CodeGroup>
       
-or choose to accept a range of SSL/TLS versions:
+You can also accept a range of SSL/TLS versions:
 
 <CodeGroup labels={["Limiting to a range of SSL/TLS versions"]} lineNumbers={[true]}>
 
@@ -57,8 +55,7 @@ export default function () {
 
 ## Versions available to choose from
 
-Below is the list of available SSL/TLS version that you can choose from. They are listed in
-order from lowest/oldest version to highest/newest version.
+Here's the list of available SSL/TLS versions that you can choose from, ordered from oldest version to latest.
 
 - `http.SSL_3_0`
 - `http.TLS_1_0`
@@ -67,8 +64,9 @@ order from lowest/oldest version to highest/newest version.
 
 ## Limiting cipher suites
 
-Limiting the cipher suites that k6 is allowed to use during a test is a global
-[configuration option](/using-k6/options). You choose a list of allowed ciphers:
+To limit the cipher suites that k6 is allowed to use, there's a global
+[configuration option](/using-k6/options).
+You choose a list of allowed ciphers:
 
 <CodeGroup labels={["Limiting cipher suites"]} lineNumbers={[true]}>
 
@@ -86,9 +84,10 @@ export default function () {
 
 </CodeGroup>
 
-## Checking SSL/TLS version and cipher suite used in request
+## Checking SSL/TLS version and cipher suite used in requests
 
-You can also check which SSL/TLS version and ciphers were used to make a request by looking at the `tls_version` and `tls_cipher_suite` response object properties.
+You can also check which SSL/TLS version and ciphers were used.
+To do so, look at the `tls_version` and `tls_cipher_suite` response object properties.
 
 <CodeGroup labels={["Check SSL/TLS version and cipher suite"]} lineNumbers={[true]}>
 
@@ -109,7 +108,7 @@ export default function () {
 
 ## Cipher suites available to choose from
 
-Below is a list of available SSL/TLS cipher suites to choose from.
+Here's a list of available SSL/TLS cipher suites:
 
 - `TLS_RSA_WITH_RC4_128_SHA`
 - `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
@@ -131,6 +130,5 @@ Below is a list of available SSL/TLS cipher suites to choose from.
 
 > ### ⚠️ Differences depending on k6 build
 >
-> Note that there could be differences from the above list of available cipher suites depending on which k6 build your running.
->
-> The list above will reflect the available cipher suites in the latest official build. If you are using a custom-built k6 then the cipher suites available will be dependent on the Go version you compiled it with, see [https://golang.org/pkg/crypto/tls/#pkg-constants](https://golang.org/pkg/crypto/tls/#pkg-constants).
+> This list reflects the available cipher suites in the latest official build.
+> If you are using a custom-built k6, the available cipher suites will depend on the Go version you compiled it with, see [https://golang.org/pkg/crypto/tls/#pkg-constants](https://golang.org/pkg/crypto/tls/#pkg-constants).

@@ -6,27 +6,27 @@ the TLS connection setup.'
 
 ## What is OCSP?
 
-Online Certificate Status Protocol (OCSP) is a protocol that web browsers and clients can use
-to check the status of an issued TLS certificate with a Certificate Authority (CA), making sure
-it has not been revoked for whatever purpose.
+The Online Certificate Status Protocol (OCSP) lets web browsers and clients check the status of an issued TLS certificate with a Certificate Authority (CA), ensuring
+that the certificate has not been revoked.
 
-This can be done in different ways, putting the burden on different parties:
+There are different ways to check whether the certificate has been revoked.
+Each way places the burden on different parties:
 
-- The browser/client: talk to the CA (or by CA entrusted OCSP responder) with OCSP. One downside
-  with this approach is that the CA's servers need to be available which might not always be the case.
+- The browser/client: talk to the CA (or through a CA&ndash;entrusted OCSP responder) with OCSP. One downside
+  with this approach is that the CA's servers need to be available.
 
-- The browser vendor: maintain a regularly updated list of certificate revocations by talking to
-  the CAs (or by CA entrusted OCSP responder) and then distributing this list to the browsers
+- The browser vendor: maintain an up-to-date list of certificate revocations by talking to
+  the CAs (or through a CA&ndash;entrusted OCSP responder) and distributing this list to the browsers
   running on users' machines.
-- The server side: the server handles the interaction with the CA (or by CA entrusted OCSP
+- The server side: the server handles the interaction with the CA (or through a CA&ndash;entrusted OCSP
   responder), caching the results of the periodic updates and including a "stapled response"
   (referred to as OCSP stapling) in the TLS connection setup with the browser/client.
 
 ## OCSP with k6
 
-At the moment k6 supports OCSP stapling, receiving and parsing a stapled response as part of
-the TLS connection setup. The OCSP response information is available on the `ocsp.stapled_response`
-property of the response object.
+k6 supports OCSP stapling.
+The application can receive and parse a stapled response as part of the TLS connection setup.
+The OCSP response information is available in the `ocsp.stapled_response` property of the response object.
 
 <CodeGroup labels={["OCSP stapled response properties example"]} lineNumbers={[true]}>
 
@@ -52,8 +52,8 @@ The OCSP `ocsp` object contains the following properties:
 | ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `status`            | string | the status of the certificate, see possible values below                                                                                                                              |
 | `revocation_reason` | string | the reason for revocation of the certificate (if that is the status), see possible values below                                                                                       |
-| `produced_at`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this OCSP stapled response was signed by CA (or by CA entrusted OCSP responder)          |
-| `this_update`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time at which the status being indicated was known to be correct                                   |
+| `produced_at`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this OCSP stapled response was signed by the CA (or CA&ndash;entrusted OCSP responder)          |
+| `this_update`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when the status being indicated was known to be correct                                   |
 | `next_update`       | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this OCSP stapled response will be refreshed with CA (or by CA entrusted OCSP responder) |
 | `revoked_at`        | number | number of milliseconds elapsed since 1 January 1970 00:00:00 UTC, representing the time when this certificate was revoked (if that is the status)                                     |
 

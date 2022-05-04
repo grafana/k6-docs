@@ -1,19 +1,17 @@
 ---
 title: 'SSL/TLS client certificates'
-excerpt: 'To use client certificates you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
+excerpt: 'To use client certificates, you specify global that tell k6 how to map a public certificate and private key to the domains they are valid for.'
 ---
 
-Usually, when we are talking about TLS certificates we are referring to the mechanism by which
-clients authenticate servers. The reverse, servers authenticating clients, is also supported by
-both TLS and k6.
+Discussion about TLS certificates is usually about how clients authenticate servers.
+However, both TLS and k6 also support the reverse process, in which servers authenticate clients.
 
-To use client certificates you specify global [configuration options](/using-k6/options) that
-tell k6 how to map a public certificate and private key to the domains they are valid for. You can
-load the certificate and key from local files or embed them as strings in the script.
+To use client certificates, specify global [configuration options](/using-k6/options) that tell k6 how to map a public certificate and private key to the domains they are valid for.
+You can load the certificate and key from local files or embed them as strings in the script.
 
 ## Loading a certificate and a key from local files
 
-To load a certificate and a key from local files you use the builtin `open(...)` function:
+To load a certificate and a key from local files, use the builtin `open(...)` function:
 
 <CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 
@@ -39,13 +37,13 @@ export default function () {
 
 ## Loading certificate and key from embedded strings
 
-To load certificate and key from embedded strings (note the use of
-[template literals](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Template_literals)
-for multi-line strings):
+To load the certificate and key from embedded strings, use this snippet.
+Note the use of
+[template literals](https://developer.mozilla.org/en-US/Web/JavaScript/Reference/Template_literals) for multi-line strings):
 
-> ### ⚠️ Certificate and key used in the example
+> ### ⚠ These are just example keys
 >
-> The partial certificate and key data in the above example were generated for this particular example, they're not real or in-use anywhere.
+> They're not real and were never used anywhere.
 
 <CodeGroup labels={["TLS client certificates from local certificate and key files"]} lineNumbers={[true]}>
 
@@ -86,3 +84,4 @@ export default function () {
 ```
 
 </CodeGroup>
+
