@@ -5,16 +5,18 @@ excerpt: 'xk6-browser: Browser.on method'
 
 <BrowserCompatibility/>
 
-The returned promise will be resolved when the Browser disconnects from the browser application. Possible reasons for this might be happening as follows:
-
-* Closed or crashed browser application.
-* Calling of the [browser.close()](/javascript-api/xk6-browser/browser/browser-close) method.
+Detects events from the browser application.
 
 | Parameter | Type   | Description                                        |
 | --------- | ------ | -------------------------------------------------- |
 | event     | string | The only accepted event value is `'disconnected'`. |
 
 ### Returns
+
+The returned promise will be resolved when the Browser disconnects from the browser application. Possible reasons for this might be happening as follows:
+
+* Closed or crashed browser application.
+* Calling of the [browser.close()](/javascript-api/xk6-browser/browser/browser-close) method.
 
 | Type    | Description                                                                     |
 | ------- | ------------------------------------------------------------------------------- |
