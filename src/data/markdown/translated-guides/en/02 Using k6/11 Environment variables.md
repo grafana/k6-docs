@@ -1,18 +1,20 @@
 ---
 title: 'Environment variables'
-excerpt: 'You can access any environment variables from your k6 script code, and use this to supply your VUs with configuration information.'
+excerpt: 'You can access any environment variables from your k6 script code and use this to supply your VUs with configuration information.'
 ---
 
-A lot of the time, scripts will only need minor tweaking to be reusable in different contexts. Rather than having to create several separate scripts for these different contexts or environments, you can use environment variables to make parts of your script tweakable.
+Often, scripts need only minor tweaks to be reusable in different contexts.
+Rather than creating several separate scripts for these different contexts or environments, you can use environment variables to make parts of your script tweakable.
 
 You can use environment variables for two main purposes:
 
 1. Passing environment variables to the k6 Script
-2. Configure [k6 Options](/using-k6/options) with environment variables
+2. Configuring [k6 Options](/using-k6/options) with environment variables
 
-## Passing environment variables to the k6 Script
+## Passing environment variables to the k6 script
 
-In k6, the environment variables are exposed through a global `__ENV` variable, a JS object. For reference, see the script example below:
+In k6, the environment variables are exposed through a global `__ENV` variable, a JS object.
+For reference, see the script example below:
 
 ```javascript
 import http from 'k6/http';
@@ -24,7 +26,8 @@ export default function () {
 }
 ```
 
-The recommended option of passing environment variables to your testing script is using one or more [`-e` / `--env` CLI flags](/using-k6/options#supply-environment-variables) (this command works the same for all platforms):
+The recommended option to pass environment variables to your testing script is to use one or more [`-e` / `--env` CLI flags](/using-k6/options#supply-environment-variables)
+(this command works the same for all platforms):
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -38,7 +41,7 @@ $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 
 <Collapsible title="Using System Environment Variables">
 
-A second option of passing environment variables is by sourcing them from the local system.
+A second option to pass environment variables is to source them from the local system.
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -58,13 +61,16 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 #### ⚠️ Warning
 
-By default, passing system environment variables does not work for `k6 archive`, `k6 cloud` and `k6 inspect`. It is a security measure to avoid the risk of uploading sensitive data to k6 Cloud. You can override this mode by explicitly specifying [--include-system-env-vars](/using-k6/options/#include-system-env-vars).
+By default, passing system environment variables doesn't work for `k6 archive`, `k6 cloud`, and `k6 inspect`.
+This is a security measure to avoid the risk of uploading sensitive data to k6 Cloud.
+To override this mode, specify [--include-system-env-vars](/using-k6/options/#include-system-env-vars).
 
 </Collapsible>
 
 ## Configure k6 options with environment variables
 
-k6 [options](/using-k6/options) can be configured by passing environment variables. Consider the following basic test script:
+You can also configure k6 [options](/using-k6/options) with environment variables.
+Consider this script:
 
 ```javascript
 import http from 'k6/http';
@@ -76,7 +82,9 @@ export default function () {
 }
 ```
 
-By default, running the above script locally will execute a single iteration using one virtual user(VU). We can modify the **default behavior** by passing along [k6 options](/using-k6/options) as environment variables. For example, we can configure the script to run 10 virtual users for a duration of 10 seconds:
+By default, a local run of this script will execute a single iteration with one virtual user(VU).
+To modify the default behavior, pass [k6 options](/using-k6/options) as environment variables.
+For example, this snippet configures the script to run 10 virtual users for a duration of 10 seconds:
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
@@ -94,9 +102,12 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 </CodeGroup>
 
-As demonstrated above, you will need to prefix `K6_` in the environment variable name in order for k6 to evaluate it as an **option parameter**. However, be aware not all options are supported as environment variables. You can confirm by checking the documentation for each [option](/using-k6/options/#list-of-options).
+As the preceding example shows, you need to prefix `K6_` in the environment variable name for k6 to evaluate it as an option parameter.
+However, be aware that not all options are supported as environment variables.
+You can confirm whether one is by checking the [documentation for each option](/using-k6/options/#list-of-options).
 
-Note that when you use multiple ways to define options for a script, there's an [order of precedence](/using-k6/options#using-options) that is used to determine which option is actually used. To ensure you are always working with the highest precedence, always use command-line flags instead of environment variables:
+Note that when you define options in multiple places, there's an [order of precedence](/using-k6/options#using-options) that determines the option to use.
+To ensure you're always working with the highest precedence, use command-line flags instead of environment variables:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -105,3 +116,4 @@ $ k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
 ```
 
 </CodeGroup>
+
