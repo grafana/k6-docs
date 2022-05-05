@@ -345,10 +345,8 @@ to access it in addition to the `Runtime()` method shown above.
 - Any heavy initialization should be done in the [init
   context](/javascript-api/init-context/) if possible, and not as part of the
   `default` function execution.
-- Custom metric emission can be done by creating new metrics using
-  [`stats.New()`](https://pkg.go.dev/go.k6.io/k6/stats#New)
-  and emitting them using [`stats.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/stats#PushIfNotDone).
-  For an example of this see the [`xk6-remote-write` extension](https://github.com/dgzlopes/xk6-remote-write).
+- Custom metric emission can be done by creating new metrics using a registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method
+  and emitting them using [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
 
 
 ## Writing a new Output extension
