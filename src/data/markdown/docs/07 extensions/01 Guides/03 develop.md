@@ -400,7 +400,7 @@ func (o *Logger) Start() error {
 
 // AddMetricSamples receives metric samples from the k6 Engine as they're
 // emitted and prints them to stdout.
-func (l *Logger) AddMetricSamples(samples []stats.SampleContainer) {
+func (l *Logger) AddMetricSamples(samples []metrics.SampleContainer) {
 	for i := range samples {
 		all := samples[i].GetSamples()
 		for j := range all {
