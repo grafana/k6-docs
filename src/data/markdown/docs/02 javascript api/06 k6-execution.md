@@ -199,7 +199,7 @@ import exec from 'k6/execution';
 export const options = {
   stages: [
     { duration: '5s', target: 100 },
-    { duration: '5s', target: 50 }
+    { duration: '5s', target: 50 },
   ],
 };
 
