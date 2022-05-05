@@ -20,7 +20,9 @@ The `utils` module contains number of small utility functions useful in every da
 | [uuidv4()](/javascript-api/jslib/utils/uuidv4)  | Random UUID v4 in a string representation |
 | [findBetween(content, left, right, [repeat])](/javascript-api/jslib/utils/findbetween)  | Extract a string between two surrounding strings |
 | [normalDistributionStages(maxVUs, durationSeconds, [numberOfStages])](/javascript-api/jslib/utils/normaldistributionstages)  | Creates [stages](/using-k6/options/#stages) which will produce a normal distribution (bell-curve) of VUs for a test  |
-
+| getCurrentStageIndex | Get the index of the running stage as defined in the `stages` array options. It can be used only with the executors that support the `stages` option as [ramping-vus](/using-k6/scenarios/executors/ramping-vus) or [ramping-arrival-rate](using-k6/scenarios/executors/ramping-arrival-rate). |
+| tagWithCurrentStageIndex | Tag all the generated metrics in the iteration with the index of the current running stage. |
+| tagWithCurrentStageProfile | Tag all the generated metrics in the iteration with the computed profile for the current running stage. |
 
 ## Simple example
 
