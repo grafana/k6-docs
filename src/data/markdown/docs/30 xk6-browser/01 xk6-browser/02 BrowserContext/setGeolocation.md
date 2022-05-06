@@ -5,12 +5,12 @@ excerpt: "Sets the context's geolocation."
 
 Sets the context's geolocation.
 
-| Parameter   | Type   | Description                                          |
-| ---------   | ------ | ---------------------------------------------------- |
-| geolocation | object |                                                      |
-| - latitude  | number | Latitude between -90 and 90.                         |
-| - longitude | number | Latitude between -180 and 180.                       |
-| - accuracy  | number | Optional non-negative accuracy value. Defaults to 0. |
+| Parameter             | Type   | Description                                          |
+| --------------------- | ------ | ---------------------------------------------------- |
+| geolocation           | object |                                                      |
+| geolocation.latitude  | number | Latitude between -90 and 90.                         |
+| geolocation.longitude | number | Latitude between -180 and 180.                       |
+| geolocation.accuracy  | number | Optional non-negative accuracy value. Defaults to 0. |
 
 
 ### Example
