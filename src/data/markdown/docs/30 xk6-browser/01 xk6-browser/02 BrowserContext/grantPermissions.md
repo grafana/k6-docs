@@ -10,7 +10,7 @@ Grants specified permissions to the browser context. Only grants corresponding p
 | ------------------- | ------ | -------------------------------------------------------------------- |
 | permissions         | array | A string array of permissions to grant. A permission can be one of the following values: `'geolocation'`, `'midi'`, `'midi-sysex'` (system-exclusive midi), `'notifications'`, `'camera'`, `'microphone'`, `'background-sync'`, `'ambient-light-sensor'`, `'accelerometer'`, `'gyroscope'`, `'magnetometer'`, `'accessibility-events'`, `'clipboard-read'`, `'clipboard-write'`, `'payment-handler'`. |
 | options             | object | Optional. |
-| - origin            | string | The [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) to grant permissions to, e.g. `'https://example.com'`. |
+| options.origin      | string | The [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) to grant permissions to, e.g. `'https://example.com'`. |
 
 
 ### Example
