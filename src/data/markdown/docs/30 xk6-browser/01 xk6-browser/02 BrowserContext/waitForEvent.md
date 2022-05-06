@@ -17,8 +17,8 @@ Waits for the event to fire and passes its value into the predicate function. Re
 | --------- | ------ | ----------------------------------------- |
 | event     | string | Name of event to wait for. **NOTE**: Currently this argument is disregarded, and `waitForEvent` will always wait for `'close'` or `'page'` events. |
 | optionsOrPredicate | function\|object | Optional. If it's a function, the `'page'` event data will be passed to it and it must return `true` to continue. |
-| - predicate | function | Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue. |
-| - timeout | number | Maximum time to wait in milliseconds. Defaults to `30000` (30s). Pass `0` to disable timeout. |
+| optionsOrPredicate.predicate | function | Function that will be called when the `'page'` event is emitted. The event data will be passed to it and it must return `true` to continue. |
+| optionsOrPredicate.timeout | number | Maximum time to wait in milliseconds. Defaults to `30000` (30s). Pass `0` to disable timeout. |
 
 
 ### Returns
