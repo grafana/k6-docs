@@ -120,3 +120,5 @@ export default function () {
 - [http.cookieJar()](/javascript-api/k6-http/cookiejar-method)
 - [http.CookieJar](/javascript-api/k6-http/cookiejar)
   - [set(url, name, value, [options])](/javascript-api/k6-http/cookiejar/cookiejar-set)
+  - [delete(url, name)](/javascript-api/k6-http/cookiejar/cookiejar-delete)
+  - [clear(url)](/javascript-api/k6-http/cookiejar/cookiejar-clear)
