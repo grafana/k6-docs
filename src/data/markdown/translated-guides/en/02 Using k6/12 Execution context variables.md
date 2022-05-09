@@ -3,23 +3,24 @@ title: 'Execution context variables'
 excerpt: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
 ---
 
+It's often useful to have information about the current test-execution state.
+You can access details about the test-exection state with *exection context variables*.
 
-In certain use cases information about the current test execution state inside your test scripts can be really useful.
 
 ## k6/execution
 
-The [k6/execution](/javascript-api/k6-execution) module exposes various details about the current execution state, such as _the name of the currently executed scenario_ or _how many VUs are currently active_ and many more. The module provides test execution information via three properties:
+The [k6/execution](/javascript-api/k6-execution) module exposes details about the current execution state, such as _the name of the currently executed scenario_, _how many VUs are currently active_, and more.
+The module provides test-execution information via three properties:
 
-
-| Property                                           | Description                                                                  |
+| Property                                           | Meta-information and execution details about                                      |
 | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [instance](/javascript-api/k6-execution/#instance) | Meta information and execution details on the currently running k6 instance  |
-| [scenario](/javascript-api/k6-execution/#scenario) | Meta information and execution details about the current running scenario    |
-| [vu](/javascript-api/k6-execution/#vu)             | Meta information and execution details about the current vu and iteration    |
+| [instance](/javascript-api/k6-execution/#instance) | The current running k6 instance  |
+| [scenario](/javascript-api/k6-execution/#scenario) | The current running scenario    |
+| [vu](/javascript-api/k6-execution/#vu)             | The current VU and iteration    |
 
-> k6 v0.34.0 introduced **k6/execution** module.
-> If you are using an earlier version of k6, where the module is not available,
-> refer to [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
+> k6 v0.34.0 introduced the **k6/execution** module.
+> If you are using a version k6 that does not have this module,
+> refer to the [\_\_VU and \_\_ITER](/using-k6/execution-context-variables/#__vu-and-__iter-discouraged) section.
 
 ## Examples and use cases
 
@@ -29,7 +30,7 @@ The [k6/execution](/javascript-api/k6-execution) module exposes various details 
 
 <Collapsible title="_VU and _ITER (discouraged)" tag="h2">
 
-⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution context information that k6 makes available to the test script.
+⚠️  **\_\_VU** and **\_\_ITER** are both global variables with execution-context information that k6 makes available to the test script.
 
 ### \_\_ITER
 
@@ -37,11 +38,13 @@ A numeric counter with the current iteration number for a specific VU. Zero-base
 
 ### \_\_VU
 
-Current VU number in use. The value is assigned incrementally for each new VU instance, starting from one. The variable will be 0 while executing the setup and teardown functions.
+Current VU number in use. k6 assigns the value incrementally for each new VU instance, starting from one.
+The variable is 0 when executing the setup and teardown functions.
 
-### Running in the k6 Cloud
+### Running in k6 Cloud
 
-When you run your tests in the [k6 Cloud](/cloud), the **\_\_VU** value you get will be per server/load generator. You can read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
+When you run tests in [k6 Cloud](/cloud), the **\_\_VU** value is per server/load generator.
+Read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
 
 ### Examples
 
@@ -59,9 +62,8 @@ export default function () {
 
 </CodeGroup>
 
-Different test behaviors and parameterizations can be accomplished by making use of the
-execution context variables. A typical use case would be a load test simulating different users
-performing a login flow.
+You can use execution-context variables to configure different test behaviors and parameterizations.
+A typical use case is a load test that simulates different users performing a login flow.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -84,5 +86,6 @@ export default function () {
 
 ## k6 Cloud environment variables
 
-If you're running tests in k6 Cloud you will also have additional environment variables that will tell you on which server, load zone and distribution of the test you are currently executing.
-You can find more details and examples [here](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
+If you run tests in k6 Cloud, you have additional environment variables that tell you the server, load zone, and distribution of the currently running test.
+[Read about cloud environment variables]](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
+
