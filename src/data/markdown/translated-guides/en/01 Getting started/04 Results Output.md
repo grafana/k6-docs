@@ -7,6 +7,7 @@ There are two ways to look at test results:
 * After the test runs, k6 sends a small summary to `stdout`.
 * For granular analysis and time-series data, you can also stream live test data to an external output.
 
+
 ![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
 
 By default, when a test finishes, k6 provides an [_end-of-test summary report_](#end-of-test-summary-report).
