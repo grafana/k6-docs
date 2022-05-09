@@ -1275,7 +1275,15 @@ Add/override an [environment variable](/using-k6/environment-variables) with `VA
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
-Note: This can *not* be used to configure k6 with environment variables as listed on this page. In other words `-e K6_ITERATIONS=120` will *not* configure the script [iterations](#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
+
+> #### ⚠ The `-e` flag does not configure options
+>
+> This flag just provides variables to the script, which the script can use or ignore.
+> For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations,
+> only provides `__ENV.K6_ITERATIONS` as a variable.
+>
+> Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ set iterations.
+
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
