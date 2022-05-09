@@ -2,10 +2,12 @@
 title: 'Execution context variables'
 excerpt: 'k6/execution module provides the capability to get information about the current test execution state inside the test script'
 ---
+In some cases, it's really useful to have information about the script's current test-execution state. For example, you might want to
+- Have different VUs run different test logic
+- Use different data for each VU and iteration
+- Figure out the stage that a test is in
 
-It's often useful to have information about the current test-execution state.
-You can access details about the test-exection state with *exection context variables*.
-
+To solve these issues, you can use *execution context variables*.
 
 ## k6/execution
 
