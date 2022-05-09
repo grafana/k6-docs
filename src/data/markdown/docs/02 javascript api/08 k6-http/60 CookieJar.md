@@ -23,14 +23,22 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get('https://httpbin.test.k6.io/cookies/set?my_cookie=hello%20world', {
+  const res1 = http.get('https://httpbin.test.k6.io/cookies/set?my_cookie=hello%20world', {
     redirects: 0,
   });
   const jar = http.cookieJar();
   const cookies = jar.cookiesForURL('http://httpbin.test.k6.io/');
-  check(res, {
+  check(res1, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',
+  });
+
+  jar.clear('https://httpbin.test.k6.io/cookies');
+
+  const res2 = http.get('https://httpbin.test.k6.io/cookies');
+  check(res2, {
+    'has status 200': (r) => r.status === 200,
+    "hasn't cookie 'my_cookie'": (r) => r.json().cookies.my_cookie == null,
   });
 }
 ```
