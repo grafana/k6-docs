@@ -14,7 +14,7 @@
     },
     {
       "name": "xk6-websockets",
-      "description": "WebSockets API specification implementation for k6",
+      "description": "A WHATWG WebSockets API specification implementation for k6 that might replace k6/ws in the future.",
       "url": "https://github.com/grafana/xk6-websockets",
       "logo": "",
       "author": {
