@@ -804,12 +804,12 @@ A value specifying the log format. By default, k6 includes extra debug informati
 
 | Env            | CLI                 | Code / Config file | Default |
 | -------------- | ------------------- | ------------------ | ------- |
-| `K6_LOGFORMAT` | `--logformat`, `-f` | N/A                |         |
+| `K6_LOG_FORMAT` | `--log-format`, `-f` | N/A                |         |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
 ```bash
-$ k6 run --logformat raw test.js
+$ k6 run --log-format raw test.js
 ```
 
 </CodeGroup>
