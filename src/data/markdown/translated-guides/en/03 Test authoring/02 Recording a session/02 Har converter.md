@@ -3,11 +3,13 @@ title: 'HAR converter'
 excerpt: 'The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.'
 ---
 
-The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder). It generates a k6 script based on the HTTP requests included on a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
+The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder).
+It generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 
 > HAR is a file format used by all major browsers and various other tools to export recorded HTTP requests.
 
-The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool. Unlike the Browser Recorder, it _does not_ require a k6 Cloud user to generate the k6 script.
+The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool.
+Unlike the Browser Recorder, it _does not_ require a k6 Cloud user to generate the k6 script.
 
 Turning a HAR file into a test follows this sequence:
 
@@ -51,7 +53,7 @@ You probably _do not_ want to:
 
 ## 1. Record a HAR file
 
-Here are the basic steps you need to take to make a recording in Chrome:
+Here are the basic steps you need to record in Chrome:
 
 1. Open a new incognito window in Chrome. (This is optional, but it means you won't send things like cookies, which your browser might have saved).
 1. Open up Chrome developer tools (press F12).
@@ -64,7 +66,7 @@ Here are the basic steps you need to take to make a recording in Chrome:
 ![Save HAR for load testing](./images/session_recorder_save_as_har.png)
 
 
-## 2. Convert the HAR file to a k6 script
+## 2. Convert with `har-to-k6`
 
 The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool that can convert a HAR file (browser session) into a k6 script.
 
@@ -87,7 +89,7 @@ It reads the HAR file (_myfile.har_) and converts it into a k6 test (_loadtest.j
 
 ## 3. Modify the auto-generated k6 script
 
-In the previous step, the converter created a k6 script for testing.}
+In the previous step, the converter created a k6 script for testing.
 Now, you should evaluate whether you have to change any part of the k6 script.
 
 Depending on your use case, you might need to:
@@ -123,7 +125,7 @@ To learn more about how to configure the load options, read the [Adding more VUs
 
 ### Remove third-party content
 
-If you are recording a user session of a website, by default, you will record all the HTTP requests that your website uses.
+If you are recording a user session of a website, by default, you'll record all the HTTP requests that your website uses.
 This includes requests from the third-party tools that your site uses,
 e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, et cetera.
 
@@ -135,8 +137,8 @@ You should remove these third party requests:
 
 Your k6 script can skip third-party requests in a few ways:
 
-Edit the auto-generated k6 script, removing the requests one-by-one
-Download a HAR file with only requests to the selected domains.
+* Edit the auto-generated k6 script, removing the requests one-by-one
+* Download a HAR file with only requests to the selected domains.
 
 In Chrome, you can use the DevTools Network Filter to select only particular domains.
 The Filter input accepts a Regex to match multiple domains.
@@ -182,5 +184,4 @@ To learn about running k6, check out the [Running k6 tutorial](/getting-started/
 ## See also
 
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
-
 

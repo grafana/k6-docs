@@ -37,7 +37,12 @@ $ k6 run -e MY_HOSTNAME=test.k6.io script.js
 
 </CodeGroup>
 
-**Note**: This can _not_ be used to configure k6 with environment variables as listed on the [options](/using-k6/options) page. In other words `-e K6_ITERATIONS=120` will _not_ configure the script [iterations](/using-k6/options#iterations), it will just provide `__ENV.K6_ITERATIONS` to the script, unlike `K6_ITERATIONS=120 k6 run script.js`.
+> #### ⚠ The `-e` flag does not configure options
+>
+> This flag just provides variables to the script, which the script can use or ignore.
+> For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
+>
+> Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ set iterations.
 
 <Collapsible title="Using System Environment Variables">
 
