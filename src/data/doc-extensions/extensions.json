@@ -508,7 +508,7 @@
     {
       "name": "xk6-telegram",
       "description": "Interact with Telegram Bots",
-      "url": "https://github.com/Maksimall89/xk6-telegram",
+      "url": "https://github.com/maksimall89/xk6-telegram",
       "logo": "",
       "author": {
         "name": "Maksimall89",
@@ -604,7 +604,7 @@
     {
       "name": "xk6-output-error",
       "description": "Add more information into StdErr k6 about requests",
-      "url": "https://github.com/Tinkoff/xk6-output-error",
+      "url": "https://github.com/tinkoff/xk6-output-error",
       "logo": "",
       "author": {
         "name": "Maksimall89",
