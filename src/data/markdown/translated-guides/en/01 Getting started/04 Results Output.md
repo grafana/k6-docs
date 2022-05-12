@@ -16,7 +16,7 @@ It also gives basic, summary statistics about each metric (e.g. mean, median, p9
 
 For fine-grained analysis, you can stream all the data that your test generates (e.g. all HTTP requests) to an _external output_.
 This output might be a structured file format, like CSV or JSON.
-But you could also stream to another program, like Datadog or Prometheus, or pipe results to our managed [k6 cloud](/result-visualization/cloud) service.
+But you could also stream to another program, like Datadog or Prometheus, or pipe results to our managed [k6 cloud](/results-visualization/cloud) service.
 The "External outputs" section lists [all supported built-in outputs](/getting-started/results-output#external-outputs).
 
 You have much room to handle the data in the way that best fits your use case.
