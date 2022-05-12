@@ -23,7 +23,7 @@ excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS s
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.3.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.4.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig(
   __ENV.AWS_REGION,

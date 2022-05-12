@@ -11,13 +11,13 @@ S3Client is included in both the dedicated jslib `s3.js` bundle, and the `aws.js
 
 ### Methods
 
-| Function                                                                                                                  | Description                                           |
-| :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------- |
-| [listBuckets()](/javascript-api/jslib/aws/s3client/s3client-listbuckets)                                                  | List the buckets the authenticated user has access to |
-| [listObjects(bucketName, [prefix])](/javascript-api/jslib/aws/s3client/s3client-listobjects-bucketname-prefix)            | List the objects contained in a bucket                |
-| [getObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-getobject-bucketname-objectkey)            | Download an object from a bucket                      |
-| [putObject(bucketName, objectKey, data)](/javascript-api/jslib/aws/s3client/s3client-putobject-bucketname-objectkey-data) | Upload an object to a bucket                          |
-| [deleteObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-deleteobject-bucketname-objectkey)      | Delete an object from a bucket                        |
+| Function                                                                                         | Description                                           |
+| :----------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| [listBuckets()](/javascript-api/jslib/aws/s3client/s3client-listbuckets)                         | List the buckets the authenticated user has access to |
+| [listObjects(bucketName, [prefix])](/javascript-api/jslib/aws/s3client/s3client-listobjects/)    | List the objects contained in a bucket                |
+| [getObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-getobject/)       | Download an object from a bucket                      |
+| [putObject(bucketName, objectKey, data)](/javascript-api/jslib/aws/s3client/s3client-putobject/) | Upload an object to a bucket                          |
+| [deleteObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-deleteobject/) | Delete an object from a bucket                        |
 
 ### Throws
 
@@ -37,7 +37,7 @@ import { check } from 'k6';
 import exec from 'k6/execution';
 import http from 'k6/http';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.3.0/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.4.0/s3.js';
 
 const awsConfig = new AWSConfig(
   __ENV.AWS_REGION,
