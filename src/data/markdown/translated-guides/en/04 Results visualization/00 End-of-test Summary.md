@@ -62,25 +62,6 @@ Ramp_Up ✓ [======================================] 00/20 VUs  30s
 ERRO[0044] some thresholds have failed  
 ```
 
-</CodeGroup>
-
-<Collapsible title="Summary export to a JSON file (Discouraged)">
-
-### Export summary to a JSON file
-
-k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export), which exports some summary report data to a JSON file.
-
-The format of `--summary-export` is similar to the `data` parameter of the `handleSummary()` function. 
-Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.
-For example, groups and checks are unordered,
-and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
-
-We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on their CI pipelines.
-But, the recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
-The `--summary-export` option will likely be deprecated in the future.
-
-</Collapsible>
-
 ## Customize with handleSummary()
 
 Use the `handleSummary()` function to completely customize the end-of-test summary report.
@@ -262,6 +243,14 @@ We thank everyone who has shared!
 - [Reporting to Xray](https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6)
 - [HTML reporter](https://github.com/benc-uk/k6-reporter)
 
+## Summary options
+
+k6 provides some options to filter or silence summary output:
+- The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) defines which [Trend metric](/javascript-api/k6-metrics/trend) statistics to calculate and show.
+- The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
+- The [`--no-summary` option](/using-k6/options#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
+- The `--summary-export` option exports a summary report with a predefined JSON format to a file. Now discouraged; use the `handleSummary` callback instead.
+
 <Collapsible title="Summary export to a JSON file (Discouraged)">
 
 ### Summary export to a JSON file
@@ -278,10 +267,3 @@ But, the recommended approach to export to a JSON file is the [`handleSummary()`
 The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
-
-## Summary options
-
-k6 provides some options to filter or silence summary output:
-- The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) defines which [Trend metric](/javascript-api/k6-metrics/trend) statistics to calculate and show.
-- The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
-- The [`--no-summary` option](/using-k6/options#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
