@@ -248,7 +248,7 @@ export function handleSummary(data) {
 The preceding snippet uses some JS helper functions to transform the summary in various formats.
 These helper functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
 
-Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io),too!
+Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io), too!
 
 
 ### Custom output examples
