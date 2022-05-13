@@ -3,19 +3,35 @@ title: 'End-of-test summary'
 excerpt: 'By default, k6 prints a summary report containing the aggregated results at the end of the test. The handleSummary callback allows the report to be completely customized, including the generation and saving of JSON, HTML, XML (e.g. JUnit), etc. reports to files.'
 ---
 
-By default, when a test finishes, k6 prints an _end-of-test_ summary to `stdout`.
-This report provides aggregated values for the major data of the test:
+When a test finishes, k6 prints an _end-of-test_ summary to `stdout`, providing top-level details about the test run.
+
+If the default report doesn't suit you, you can use the `handleSummary()` function to completely customize output (including format).
+
+## The default summary
+
+The end-of-test summary reports details and aggregated statistics for the primary aspects of the test:
+
 - Summary statistics about each built-in and custom [metric](/using-k6/metrics#built-in-metrics) (e.g. mean, median, p95, etc).
 - A list of the test's [groups](/using-k6/tags-and-groups#groups) and [scenarios](/using-k6/scenarios)
 - The pass/fail results of the test's [thresholds](/using-k6/thresholds) and [checks](/using-k6/checks).
 
-The report will look something like this:
+You can use options to configure or silence the report.
 
-<CodeGroup labels={["Summary with scenario, groups, checks, and thresholds"]} lineNumbers={[true]}>
+### End-of-test example
+
+Here's an example of a report that k6 generated after a test run.
+
+- It has a scenario, `Ramp_Up`
+- The requests are split into two groups:
+  - `GET home`, which has a check that responses are `200` (all passed)
+  - `Create resource`, which has a check that responses are `201` (all failed)
+- The test has one threshold, requiring that 95% of requests have a duration under 200ms (failed)
+
+<CodeGroup labels={["Summary with scenario, groups, checks, and thresholds"]}>
 
 ```
 Ramp_Up ✓ [======================================] 00/20 VUs  30s
-     █ Home page - https://example.com/
+     █ GET home - https://example.com/
 
        ✓ status equals 200
        
@@ -47,35 +63,59 @@ ERRO[0044] some thresholds have failed
 ```
 </CodeGroup>
 
-## Summary options
+### Summary options
 
 A few options affect how this report behaves:
 - The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) defines which [Trend metric](/javascript-api/k6-metrics/trend) statistics to calculate and show.
 - The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
-- The [`--no-summary` option](/using-k6/options#no-summary) completely disables the report generation, including `--summary-export` and `handleSummary()`.
 
+<Collapsible title="Summary export to a JSON file (Discouraged)">
+
+### Export summary to a JSON file
+
+k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export), which exports some summary report data to a JSON file.
+
+The format of `--summary-export` is similar to the `data` parameter of the `handleSummary()` function. 
+Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.
+For example, groups and checks are unordered,
+and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
+
+We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on their CI pipelines.
+But, the recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
+The `--summary-export` option will likely be deprecated in the future.
+
+</Collapsible>
 
 ## Customize with handleSummary()
 
 Use the `handleSummary()` function to completely customize the end-of-test summary report.
 
 k6 calls`handleSummary()` at the end of the test run, even after [`teardown()`](/using-k6/test-life-cycle#setup-and-teardown-stages).
-`handleSummary()` is called with a JS object that contains the same information used to generate the end-of-test summary and `--summary-export`.
 If `handleSummary()` is exported, k6 does _not_ print the default summary.
 
-
-Besides customizing the CLI summary, you can also transform the summary data into various machine or human-readable formats.
+Besides customizing the CLI summary, you can also transform the summary data into machine- or human-readable formats.
 This lets you create JS-helper functions that generate JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. files from the summary data.
 
-### `handleSummary()` data
+### Data format returned by `handleSummary()`
 
 k6 expects `handleSummary()` to return a `{key1: value1, key2: value2, ...}` map that represents the summary-report content.
+While the values can have a type of either `string` or `ArrayBuffer`, the keys must be strings.
 
-The values can be a `string` or `ArrayBuffer`.
-The keys must be strings. They determine where k6 will display or save the content:
+The keys determine where k6 displays or saves the content:
 - `stdout` for [standard output](https://en.wikipedia.org/wiki/Standard_streams)
 - `stderr` for standard error,
 - any relative or absolute path to a file on the system (this operation overwrites existing files)
+
+<CodeGroup labels={["example keys for handleSummary output"]}>
+
+```
+  return {
+    'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout...
+    'other/path/to/summary.json': JSON.stringify(data), // and a JSON with all the details...
+  };
+```
+
+</CodeGroup>
 
 To get an idea how `data` would look in your specific test run, just add `return { 'raw-data.json': JSON.stringify(data)};` in your `handleSummary()` function and inspect the resulting `raw-data.json` file. Here's a very abridged example of how it might look:
 
@@ -169,15 +209,13 @@ To get an idea how `data` would look in your specific test run, just add `return
 
 </CodeGroup>
 
-This feature is available only for local `k6 run` tests for now, though we plan to support [`k6 cloud`](/cloud) tests eventually.
+For now, the `handleSummary()` feature is available only for local `k6 run` tests.
+However we plan to support the feature for k6 Cloud tests eventually.
+[You can track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
 
-The format might change, too. So Keep an eye on [jslib.k6.io](https://jslib.k6.io/) for updates.
-Of course, we always welcome PRs at https://github.com/grafana/jslib.k6.io
+### Send reports to a remote server
 
-### Send reports to remote server
-
-You can also send the generated reports to a remote server by making an HTTP request with them (or using any of the other protocols k6 already supports)! Here's a simple example:
-
+You can also send the generated reports to a remote server by making an HTTP request (or using any of the other protocols k6 already supports)! Here's a simple example:
 
 <CodeGroup labels={["handleSummary() demo"]} lineNumbers={[true]}>
 
@@ -211,31 +249,37 @@ export function handleSummary(data) {
 
 </CodeGroup>
 
-<Collapsible title="Summary export to a JSON file (Discouraged)">
+The preceding snippet uses some JS helper functions to transform the summary in various formats.
+These helper functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
 
-### Summary export to a JSON file
+Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io),too!
 
-k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export), which exports some summary report data to a JSON file.
 
-The format of the `--summary-export` is similar to the `data` parameter of the `handleSummary()` function. 
-Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.
-For example, groups and checks are unordered,
-and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
+### Custom output examples
 
-We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on their CI pipelines.
-But, the recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
-The `--summary-export` option will likely be deprecated in the future.
-
-</Collapsible>
-
-## Custom output examples
-
-These examples are contributed by the community.
-We thank everyone for sharing!
+These examples are community contributions.
+We thank everyone who has shared!
 
 - [Using the JUnit output with Azure Test Plan](https://medium.com/microsoftazure/load-testing-with-azure-devops-and-k6-839be039b68a)
 - [Using the JUnit output with TestRail](https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck)
 - [handleSummary and custom Slack integration](https://medium.com/geekculture/k6-custom-slack-integration-metrics-are-the-magic-of-tests-527aaf613595)
 - [Reporting to Xray](https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6)
 - [HTML reporter](https://github.com/benc-uk/k6-reporter)
+
+<Collapsible title="Summary export to a JSON file (Discouraged)">
+
+### Summary export to a JSON file
+
+k6 also has the [`--summary-export=path/to/file.json` option](/using-k6/options#summary-export), which exports some summary report data to a JSON file.
+
+The format of `--summary-export` is similar to the `data` parameter of the `handleSummary()` function.
+Unfortunately, the `--summary-export` format is limited and has a few confusing peculiarities.
+For example, groups and checks are unordered,
+and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
+
+We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on in CI pipelines.
+But, the recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
+The `--summary-export` option will likely be deprecated in the future.
+
+</Collapsible>
 
