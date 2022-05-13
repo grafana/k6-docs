@@ -61,13 +61,8 @@ Ramp_Up ✓ [======================================] 00/20 VUs  30s
 
 ERRO[0044] some thresholds have failed  
 ```
+
 </CodeGroup>
-
-### Summary options
-
-A few options affect how this report behaves:
-- The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) defines which [Trend metric](/javascript-api/k6-metrics/trend) statistics to calculate and show.
-- The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
 
 <Collapsible title="Summary export to a JSON file (Discouraged)">
 
@@ -95,6 +90,10 @@ If `handleSummary()` is exported, k6 does _not_ print the default summary.
 
 Besides customizing the CLI summary, you can also transform the summary data into machine- or human-readable formats.
 This lets you create JS-helper functions that generate JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. files from the summary data.
+
+> **Note:** For now, the `handleSummary()` feature is available only for local `k6 run` tests.
+> However we plan to support the feature for k6 Cloud tests eventually.
+> [You can track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
 
 ### Data format returned by `handleSummary()`
 
@@ -209,9 +208,6 @@ To get an idea how `data` would look in your specific test run, just add `return
 
 </CodeGroup>
 
-For now, the `handleSummary()` feature is available only for local `k6 run` tests.
-However we plan to support the feature for k6 Cloud tests eventually.
-[You can track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
 
 ### Send reports to a remote server
 
@@ -283,3 +279,9 @@ The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
 
+## Summary options
+
+k6 provides some options to filter or silence summary output:
+- The [`--summary-trend-stats` option](/using-k6/options#summary-trend-stats) defines which [Trend metric](/javascript-api/k6-metrics/trend) statistics to calculate and show.
+- The [`--summary-time-unit` option](/using-k6/options#summary-time-unit) forces k6 to use a fixed-time unit for all time values in the summary.
+- The [`--no-summary` option](/using-k6/options#no-summary) completely disables report generation, including `--summary-export` and `handleSummary()`.
