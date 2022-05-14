@@ -29,7 +29,7 @@ Here's an example of a report that k6 generated after a test run.
 
 <CodeGroup labels={["Summary with scenario, groups, checks, and thresholds"]}>
 
-```
+```TXT
 Ramp_Up ✓ [======================================] 00/20 VUs  30s
      █ GET home - https://example.com/
 
@@ -61,6 +61,8 @@ Ramp_Up ✓ [======================================] 00/20 VUs  30s
 
 ERRO[0044] some thresholds have failed  
 ```
+
+</CodeGroup>
 
 ## Customize with handleSummary()
 
@@ -189,7 +191,6 @@ To get an idea how `data` would look in your specific test run, just add `return
 
 </CodeGroup>
 
-
 ### Send reports to a remote server
 
 You can also send the generated reports to a remote server by making an HTTP request (or using any of the other protocols k6 already supports)! Here's a simple example:
@@ -230,7 +231,6 @@ The preceding snippet uses some JS helper functions to transform the summary in 
 These helper functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
 
 Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io), too!
-
 
 ### Custom output examples
 
