@@ -23,8 +23,6 @@ Turning a HAR file into a test follows this sequence:
 Before you record your HAR file, you'll need to choose your tool.
 You'll also want to consider how you'll record a plausible user session.
 
-### Find a tool
-
 Multiple browsers and tools can export HTTP traffic in a HAR format.
 A few popular ones are:
 
@@ -34,21 +32,6 @@ A few popular ones are:
 - [Charles recording proxy](http://www.charlesproxy.com/)(HTTP proxy/recorder)
 - [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
 
-### Consider what you want to record
-
-Before you record your session, consider the following dos and don'ts.
-
-It's a good idea to:
-- Browse as a user would
-- Take natural pauses that users would take to consume page content
-- Focus on the most common use cases, rather than all the possible use cases
-- Take note of pages where forms/logins occur. You will likely need to complete some scripting.
-
-You probably _do not_ want to:
-- Visit every page in one journey
-- Click every possible option
-- Navigate as fast as you can
-- Navigate out of your actual site or application
 
 
 ## 1. Record a HAR file
