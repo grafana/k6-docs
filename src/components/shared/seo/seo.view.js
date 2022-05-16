@@ -40,7 +40,13 @@ export const SEO = ({
 
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
-  const currentUrl = slug && slug !== '*' ? `${docs}/${slug}` : docs;
+  const currentUrl =
+    // eslint-disable-next-line no-nested-ternary
+    slug && slug !== '*'
+      ? slug.startsWith('jslib/')
+        ? `${docs}/javascript-api/${slug}`
+        : `${docs}/${slug}`
+      : docs;
 
   let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available
