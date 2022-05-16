@@ -10,6 +10,15 @@ It is commonly used by single-page apps (SPAs) and mobile apps, to add server-pu
 
 ## Load testing WebSockets with k6
 
+<Blockquote mod='info'>
+
+#### An extension with much better and standard API exists
+
+[xk6-websockets](https://github.com/grafana/xk6-websockets) implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/). While the implementation isn't full, it uses a global event loop instead of local one.
+
+It is also likely that it will at some point become part of the core of k6.
+</Blockquote>
+
 Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
 The primary difference is that instead of continuously looping the main function (`export default function() { ... }`) over and over, each VU is now runs an asynchronous event loop.
 
