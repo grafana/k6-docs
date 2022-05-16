@@ -26,9 +26,9 @@ export default function () {
     "has cookie 'my_cookie'": (r) => r.json().cookies.my_cookie !== null,
     'cookie has correct value': (r) => r.json().cookies.my_cookie == 'hello world',
   });
-  
+
   jar.clear('https://httpbin.test.k6.io/cookies');
-  
+
   const res2 = http.get('https://httpbin.test.k6.io/cookies');
   check(res2, {
     'has status 200': (r) => r.status === 200,
