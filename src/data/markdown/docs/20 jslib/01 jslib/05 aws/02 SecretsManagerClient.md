@@ -11,13 +11,13 @@ SecretsManagerClient is included in both the dedicated jslib `secrets-manager.js
 
 ### Methods
 
-| Function                                                                                                                                                                                              | Description                                  |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
-| [listSecrets()](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/)                                                                                                     | List secrets owned by the authenticated user |
-| [getSecret(secretID)](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret-secretid)                                                                                         | Download a secret                            |
-| [createSecret(name, secretString, description, [versionID], [tags])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret-name-secretstring-description-versionid-tags)   | Create a new secret                          |
-| [putSecretValue(secretID, secretString, [versionID])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecret-secretid-secretstring-versionid-tags)                             | Update a secret                              |
-| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret-secretid-{-recoverywindow-30-norecovery-false}}) | Delete a secret                              |
+| Function                                                                                                                                                | Description                                  |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------- |
+| [listSecrets()](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/)                                                       | List secrets owned by the authenticated user |
+| [getSecret(secretID)](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret/)                                                   | Download a secret                            |
+| [createSecret(name, secretString, description, [versionID], [tags])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret/) | Create a new secret                          |
+| [putSecretValue(secretID, secretString, [versionID])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue/)              | Update a secret                              |
+| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret/)  | Delete a secret                              |
 
 ### Throws
 
@@ -35,7 +35,7 @@ S3 Client methods will throw errors in case of failure.
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.3.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.4.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig(
   __ENV.AWS_REGION,

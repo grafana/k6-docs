@@ -13,6 +13,20 @@
       "categories": ["Browser"]
     },
     {
+      "name": "xk6-websockets",
+      "description": "A WHATWG WebSockets API specification implementation for k6 that might replace k6/ws in the future.",
+      "url": "https://github.com/grafana/xk6-websockets",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "official": false,
+      "categories": [
+        "WebSockets"
+      ]
+    },
+    {
       "name": "xk6-kafka",
       "description": "Load-test Apache Kafka. Includes support for Avro messages",
       "url": "https://github.com/mostafa/xk6-kafka",
@@ -39,8 +53,8 @@
     {
       "name": "xk6-chaos",
       "description": "Run chaos experiments 💣",
-      "url": "https://github.com/simskij/xk6-chaos",
-      "logo": "https://github.com/simskij/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true",
+      "url": "https://github.com/grafana/xk6-chaos",
+      "logo": "https://github.com/grafana/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true",
       "isLogoLarge": true,
       "author": {
         "name": "Simon Aronsson",
@@ -272,7 +286,7 @@
       "logo": "",
       "author": {
         "name": "Mihail Stoykov",
-        "url": "https://github.com/MStoykov"
+        "url": "https://github.com/mstoykov"
       },
       "official": false,
       "categories": ["Misc"]
@@ -284,7 +298,7 @@
       "logo": "",
       "author": {
         "name": "Mihail Stoykov",
-        "url": "https://github.com/MStoykov"
+        "url": "https://github.com/mstoykov"
       },
       "official": false,
       "categories": ["Misc"]
@@ -488,7 +502,7 @@
       "logo": "",
       "author": {
         "name": "Mihail Stoykov",
-        "url": "https://github.com/MStoykov"
+        "url": "https://github.com/mstoykov"
       },
       "official": false,
       "categories": ["Reporting"]
@@ -508,7 +522,7 @@
     {
       "name": "xk6-telegram",
       "description": "Interact with Telegram Bots",
-      "url": "https://github.com/Maksimall89/xk6-telegram",
+      "url": "https://github.com/maksimall89/xk6-telegram",
       "logo": "",
       "author": {
         "name": "Maksimall89",
@@ -604,7 +618,7 @@
     {
       "name": "xk6-output-error",
       "description": "Add more information into StdErr k6 about requests",
-      "url": "https://github.com/Tinkoff/xk6-output-error",
+      "url": "https://github.com/tinkoff/xk6-output-error",
       "logo": "",
       "author": {
         "name": "Maksimall89",

@@ -1,8 +1,32 @@
-(https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
+---
+title: 'Browser recorder'
+excerpt: 'The browser recorder allows generating a k6 script based on a web session. It is available as extensions for Chrome and Firefox.'
+---
+
+The browser recorder lets you generate a k6 script based on a web session.
+It's available as an extension for [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/).
+
+## k6 Cloud integration
+
+The browser recorder integrates with [k6 Cloud](/cloud).
+When you finish recording the session, the extension uploads the auto-generated k6 test into the k6 Cloud account.
+
+> **Note**: **the recorder is free to use**.
+>
+>You do not need an active k6 Cloud subscription.
+> 
+> Any user can copy the script from the [script editor](/cloud/creating-and-running-a-test/script-editor) to edit or run the test locally using the `k6 run` command. We also plan to make this feature work without a k6 Cloud account.
+
+The recorder captures every HTTP(s) request loaded into the browser as you click.
+This includes including ads, images, documents, etc.
+
+## How to record
+
+1. Install the [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
 1. Open the extension by clicking the k6 logo.
-1. Press "Start recording" to begin recording the current browser tab. 
+1. Select **Start recording** to begin recording the current browser tab. 
 ![start recording](./images/Recording-a-test-script/step-2.png)
-1. When done, press **Stop recording**. You'll be taken to the app to review the recorded test script.
+1. When done, select **Stop recording**. You'll be taken to the app to review the recorded test script.
    ![Step 3](./images/Recording-a-test-script/step-3.png)
 1. Save the recorded script in any of your projects.
   To include some of the requests in the _third party list_,  deselect the ones you want to include.
@@ -16,7 +40,7 @@
 
 For more about running k6, refer to the [Running k6 guide](/getting-started/running-k6).
 
-## Having trouble? Try the HAR convertor
+## Having trouble? Try the HAR converter
 
 Under the hood, the browser recorder generates the script with the [HAR converter](./HAR-converter).
 The HAR converter creates a k6 script from the HTTP requests included in a HAR file.

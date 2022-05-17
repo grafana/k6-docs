@@ -1510,16 +1510,20 @@ server, or an object specifying the "min" and "max" versions allowed to be used.
 | --- | --- | ------------------ | --------------------------- |
 | N/A | N/A | `tlsVersion`       | `null` (Allow all versions) |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={["tlsVersion"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tlsVersion: 'tls1.2',
 };
+```
 
-// or...
+</CodeGroup>
 
-options = {
+<CodeGroup labels={["Min and max versions"]} lineNumbers={[true]}>
+
+```javascript
+export const options = {
   tlsVersion: {
     min: 'ssl3.0',
     max: 'tls1.2',
@@ -1528,6 +1532,8 @@ options = {
 ```
 
 </CodeGroup>
+
+
 
 ## User Agent
 
