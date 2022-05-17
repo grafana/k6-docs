@@ -752,7 +752,9 @@ Possible values are:
 
 ### Loki
 
-The loki can additionally be configured as follows:
+For additional instructions and step-by-step guide, check out the [Loki tutorial](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/).
+
+Use the `log-output` option to configure [Loki](https://grafana.com/oss/loki/) as follows:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -775,6 +777,7 @@ The possible keys with their meanings and default values:
 | pushPeriod | at what period to send log lines | 1s |
 | profile | whether to print some info about performance of the sending to loki | false |
 | msgMaxSize | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576 |
+
 
 ### File
 
