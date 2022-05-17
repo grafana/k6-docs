@@ -22,8 +22,7 @@ This includes including ads, images, documents, etc.
 
 ## How to record
 
-1. Install the
-(https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
+1. Install the [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
 1. Open the extension by clicking the k6 logo.
 1. Select **Start recording** to begin recording the current browser tab. 
 ![start recording](./images/Recording-a-test-script/step-2.png)
