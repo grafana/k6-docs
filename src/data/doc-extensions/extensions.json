@@ -1,6 +1,18 @@
 {
   "extensions": [
     {
+      "name": "xk6-client-tracing",
+      "description": "Client for load testing distributed tracing backends",
+      "url": "https://github.com/grafana/xk6-client-tracing",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "official": false,
+      "categories": ["Observability"]
+    },
+    {
       "name": "xk6-browser",
       "description": "Browser automation and end-to-end web testing",
       "url": "https://github.com/grafana/xk6-browser",
