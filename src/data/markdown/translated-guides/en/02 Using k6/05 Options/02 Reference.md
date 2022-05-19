@@ -1,9 +1,34 @@
 ---
 title: 'Options reference'
-excerpt: 'A complete list of all k6 options, with descriptions, defaults, and examples of how to set the option in your script,  config files, environment variables, or CLI.'
+head_title: 'Options reference'
+slug: 'reference'
+excerpt: 'A complete list of all k6 options, with descriptions, defaults, and examples of how to set the option in your script, config files, environment variables, or CLI.'
 ---
 
-Options let you configure how k6 behaves during test execution.
+Options define test-run behavior.
+Most options can be passed in multiple places.
+
+## Order of precedence
+
+_Command-line flags have the highest order of precedence.
+They override all other options._
+
+For almost all options that k6 provides, you can pass them in one of four places:
+- Command-line flags,
+- Environment variables
+- Config file
+- In the script code
+
+If you set the same option in multiple places, k6 runs according to the order of precedence:
+
+| Place to specify options           | Order of precedence |
+|------------------------------------|---------------------|
+| Command-line flags                 | **1 (highest)**     |
+| Environmental variables            | 2                   |
+| The `options` object in the script | 3                   |
+| A config file                      | 4                   |
+| Nowhere (k6 uses the default)      | **5 (lowest)**      |
+
 
 ## Quick reference of options
 
@@ -153,7 +178,6 @@ export const options = {
 ```
 
 </CodeGroup>
-
 
 
 ## Block Hostnames
@@ -1085,9 +1109,11 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 ## Summary export
 
-Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
+Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
+This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
-While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1199,7 +1225,7 @@ export const options = {
 
 Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), refer to the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 | Env                      | CLI                     | Code / Config file  | Default                        |
