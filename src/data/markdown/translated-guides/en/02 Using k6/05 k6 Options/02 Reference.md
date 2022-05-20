@@ -1,7 +1,6 @@
 ---
 title: 'Options reference'
-head_title: 'Options reference'
-slug: 'reference'
+slug: '/using-k6/k6-options/reference'
 excerpt: 'A complete list of all k6 options, with descriptions, defaults, and examples of how to set the option in your script, config files, environment variables, or CLI.'
 ---
 

@@ -1293,7 +1293,7 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/using-k6/options',
-    toPath: '/using-k6/k6-options',
+    toPath: '/using-k6/k6-options/reference',
     isPermanent: true,
   });
 

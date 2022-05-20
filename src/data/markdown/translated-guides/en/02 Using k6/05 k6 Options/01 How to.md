@@ -1,7 +1,6 @@
 ---
 title: 'How to use options'
-slug: 'how-to'
-head_title: 'How to use options'
+slug: '/using-k6/k6-options/how-to'
 excerpt: 'Examples of different ways to set options. Options in command-line flags have the highest precedence. You can also access option values as the test runs.'
 ---
 
