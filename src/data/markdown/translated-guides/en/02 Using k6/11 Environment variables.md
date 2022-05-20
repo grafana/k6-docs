@@ -111,7 +111,7 @@ As the preceding example shows, you need to prefix `K6_` in the environment vari
 However, be aware that not all options are supported as environment variables.
 You can confirm whether one is by checking the [documentation for each option](/using-k6/options/#list-of-options).
 
-Note that when you define options in multiple places, there's an [order of precedence](/using-k6/options#using-options) that determines the option to use.
+Note that when you define options in multiple places, there's an [order of precedence](/using-k6/options#order-of-precedence) that determines the option to use.
 To ensure you're always working with the highest precedence, use command-line flags instead of environment variables:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
