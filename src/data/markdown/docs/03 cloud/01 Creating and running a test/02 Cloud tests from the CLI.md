@@ -3,9 +3,8 @@ title: 'Cloud tests from the CLI'
 excerpt: 'How to run cloud tests from the k6 CLI.'
 ---
 
-Running tests within the web app is helpful when getting a feel for the tool or
-building a proof of concept. However, many users will find great flexibility
-when using k6 to trigger cloud tests from the command line.
+Running tests within the web app is helpful to get a feel for the tool or to build a proof of concept.
+However, many users will prefer the flexibility of using the command line to trigger cloud tests.
 
 Reasons for triggering cloud tests from the k6 CLI include:
 
