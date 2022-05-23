@@ -168,22 +168,50 @@ export default function () {
 
 Esto también se puede lograr con una configuración más avanzada utilizando [escenarios](/es/usando-k6/escenarios/) y el ejecutor `ramping-vus`.
 
-## Ejecutando las pruebas en la nube
 
-k6 soporta tres modelos de ejecución para ejecutar los tests:
-- [Local](#running-local-tests): En tu máquina local o en un servidor de Integración continua (CI server) 
-- [Cloud](/cloud):  En la infraestructura de la nube administrada por K6 Cloud
-- Clustered: En más de una máquina administrada por usted. [No está soportado aun](https://github.com/grafana/k6/issues/140).
+## Modos de ejecución
 
-Uno de los objetivos de K6 es permitir la ejecución de las pruebas en tres modelos de ejecución sin hacer modificaciones en el script . 
-Para ejecutar las pruebas en la nube desde la interfaz de línea de comando (CLI), debe primero crear una cuenta en K6 Cloud e iniciar sesión con su cuenta usando CLI. Luego debe pasar su script al comando `k6 cloud`. 
+k6 soporta tres modelos de ejecución para ejecutar los tests: local, cluster, and cloud. 
 
-<CodeGroup labels={["Running a cloud test"]}>
+> El objetivo de k6 es permitir cambiar el modo de ejecución con mínimos cambios. El objetivo es soportar ejecutar el test en los differentes modos de ejecución sin modificar el script de k6. Ésto te permitirá reutilizar los tests independientemente del entorno de tu equipo de trabajo.
 
-```bash
-$ k6 cloud script.js
-```
+1. [Local](#ejecutando-los-tests-localmente): la ejecución del test es local en una máquina, container or servidor de CI.
 
-</CodeGroup>
+  ```bash
+  k6 run script.js
+  ```
 
-Para instrucciones más detalladas y otras opciones, puede encontrar más información en [ejecución de pruebas en la nube desde CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli).
+2. [Clustered](https://github.com/grafana/k6-operator): la ejecución del test es distribuida en un cluster de Kubernetes. 
+  
+  <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
+
+  ```bash
+  kubectl apply -f /path/k6-resource.yml
+  ```
+
+  ```yml
+  ---
+  apiVersion: k6.io/v1alpha1
+  kind: K6
+  metadata:
+    name: k6-sample
+  spec:
+    parallelism: 4
+    script:
+      configMap:
+        name: "k6-test"
+        file: "script.js"
+  ```
+
+  </CodeGroup>
+
+3. [Cloud](/cloud): la ejecución del test es en k6 Cloud.  
+
+  ```bash
+  k6 cloud script.js
+  ```
+
+  Adicionalmente, k6 Cloud puede ejecutar cloud tests en tu [propia infraestructura cloud](/cloud/cloud-faq/private-load-zones/), y acepta los resultados de un test [local](/results-visualization/cloud/) o [distribuido en k8s](https://github.com/grafana/k6-operator#k6-cloud-output).
+
+
+

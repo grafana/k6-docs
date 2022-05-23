@@ -80,12 +80,11 @@ from the k6 command-line via the `k6 cloud script.js` command (similar to `k6 ru
 trigger an implicit creation of a k6 archive that is uploaded and distributed to k6 cloud
 load generators for execution.
 
-### Clustered Execution (_future_)
+### Clustered Execution 
 
-In the future (see [our roadmap](https://github.com/grafana/k6/wiki/Roadmap)) k6 will
-support a clustered execution mode that will enable tests to be run across more than one
-node. This mode of execution is also likely to make use of the archive functionality to
-distribute the test files to all participating nodes.
+[k6-operator](https://github.com/grafana/k6-operator#multi-file-tests) can distribute a k6 test across a Kubernetes cluster. 
+
+When having a k6 test with multiple files, you can use the archive functionality to bundle the k6 test in a single "archived" file and pass this file to run the test.
 
 ## Contents of an archive file
 
