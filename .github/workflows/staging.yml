@@ -61,6 +61,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install vale
+        if: ${{ false }}
         run: |
           curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.4.0
           export PATH="./bin:$PATH"
@@ -75,6 +76,7 @@ jobs:
         run: |
           npm run lint:examples
       - name: Lint prose
+        if: ${{ false }}
         run: |
           export PATH="./bin:$PATH"
           npm run lint:prose
