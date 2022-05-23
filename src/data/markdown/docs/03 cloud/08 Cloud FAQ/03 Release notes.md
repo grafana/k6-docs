@@ -4,6 +4,27 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.4.4 `(2022-5-17)`
+- Disable create and run test runs when cloud execution is disabled.
+- Fix: add support for private loadzones in PDF.
+- Fix: create new org does not leave the user with read-only permission.
+
+### v3.4.3.internal `(2022-4-26)`
+- Internal: improve cloud service stability and reliability.
+- Fix: [private load zones](/cloud/cloud-faq/private-load-zones/) authentication.
+
+### v3.4.3 `(2022-4-19)`
+- Edit note icon.
+
+### v3.4.2.internal `(2022-4-12)`
+- Internal: improve cloud service stability and reliability.
+
+### v3.4.2 `(2022-4-5)`
+- Better alignment of project buttons. 
+
+### v3.4.1.internal `(2022-4-5)`
+- Internal: improve cloud service stability and reliability.
+
 ### v3.4.1 `(2022-3-23)`
 - Fix: subscription view includes now values from addons.
 
