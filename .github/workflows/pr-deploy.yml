@@ -69,7 +69,7 @@ jobs:
         with:
           files: ./src/data/markdown
           fail_on_error: true
-          vale_flags: "--glob='**/{docs,translated-guides/en}/**/*.md'"
+          vale_flags: '--glob=**/{docs,translated-guides/en}/**/*.md'
   build:
     name: Build pull request
     runs-on: ubuntu-latest
