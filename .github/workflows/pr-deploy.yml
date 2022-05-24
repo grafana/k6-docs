@@ -64,11 +64,16 @@ jobs:
       - name: Lint code examples
         run: |
           npm run lint:examples
-      - name: Lint prose
-        if: ${{ false }}
-        run: |
-          export PATH="./bin:$PATH"
-          npm run lint:prose
+  lint-prose:
+    name: Lint prose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: errata-ai/vale-action@reviewdog
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          fail_on_error: true
   build:
     name: Build pull request
     runs-on: ubuntu-latest
