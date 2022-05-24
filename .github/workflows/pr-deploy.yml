@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: npm install
   lint:
-    name: Lint code and prose
+    name: Lint code
     needs: [update-dependencies]
     runs-on: ubuntu-latest
     steps:
@@ -49,12 +49,6 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm install
-      - name: Install vale
-        if: ${{ false }}
-        run: |
-          curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.4.0
-          export PATH="./bin:$PATH"
-          vale -v
       - name: Check formatting
         run: |
           npm run format
