@@ -78,7 +78,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
+          files: ./src/data/markdown
           fail_on_error: true
+          vale_flags: "--glob='**/{docs,translated-guides/en}/**/*.md'"
   build-deploy-staging:
     name: Build and deploy to staging
     runs-on: ubuntu-latest
