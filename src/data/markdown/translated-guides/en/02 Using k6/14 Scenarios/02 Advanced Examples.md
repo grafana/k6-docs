@@ -175,3 +175,79 @@ export function apitest() {
 ```
 
 </CodeGroup>
+
+## Different flow for each scenario with parameter
+
+Using multiple separate exec functions for each scenario cannot leverage usage of passing data form setup() function called before test begin.
+To pass data to exec function use one exec function with branching based on scenarion name.
+A test with 3 scenarios, each with different test flow using parametrized exec function:
+
+<CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+import exec from 'k6/execution';
+
+export const options = {
+  scenarios: {
+    my_web_test: {
+      // some arbitrary scenario name
+      executor: 'constant-vus',
+      vus: 50,
+      duration: '5m',
+    },
+    my_api_test_1: {
+      executor: 'constant-arrival-rate',
+      rate: 90,
+      timeUnit: '1m', // 90 iterations per minute, i.e. 1.5 RPS
+      duration: '5m',
+      preAllocatedVUs: 10, // the size of the VU (i.e. worker) pool for this scenario
+    },
+    my_api_test_2: {
+      executor: 'ramping-arrival-rate',
+      startTime: '30s', // the ramping API test starts a little later
+      startRate: 50,
+      timeUnit: '1s', // we start at 50 iterations per second
+      stages: [
+        { target: 200, duration: '30s' }, // go from 50 to 200 iters/s in the first 30 seconds
+        { target: 200, duration: '3m30s' }, // hold at 200 iters/s for 3.5 minutes
+        { target: 0, duration: '30s' }, // ramp down back to 0 iters/s over the last 30 second
+      ],
+      preAllocatedVUs: 50, // how large the initial pool of VUs would be
+      maxVUs: 100, // if the preAllocatedVUs are not enough, we can initialize more
+    },
+  },
+  discardResponseBodies: true,
+  thresholds: {
+    // we can set different thresholds for the different scenarios because
+    // of the extra metric tags we set!
+    'http_req_duration{test_type:api}': ['p(95)<250', 'p(99)<350'],
+    'http_req_duration{test_type:website}': ['p(99)<500'],
+    // we can reference the scenario names as well
+    'http_req_duration{scenario:my_api_test_2}': ['p(99)<300'],
+  },
+};
+  
+export function setup() {
+    let params = {
+        responseType: "text"
+    }
+    return http.get([baseurl](https://test.k6.io/contacts.php), params).body;
+}
+
+export default function(data) {
+  if (exec.scenario.name === 'my_web_test') {
+    //test flow for my_web_test scenario using 'data' as parameter
+    sleep(Math.random() * 2);
+  } else if (exec.scenario.name === 'my_api_test_1') {
+    //test flow for 'my_api_test_1' scenario using 'data' as parameter
+    sleep(Math.random() * 2);
+  } else {
+    //test flow for 'my_api_test_2' scenario using 'data' as parameter
+    sleep(Math.random() * 2);
+  }
+}
+```
+
+</CodeGroup>
