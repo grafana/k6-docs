@@ -180,7 +180,7 @@ For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramp
 
 ## Execution modes
 
-k6 supports three execution modes to run a k6 test: local, clustered, and cloud. 
+k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
 
 > One of the k6 design goals is to allow switching the execution modes with minimal changes. 
 > &nbsp;
@@ -193,7 +193,7 @@ k6 supports three execution modes to run a k6 test: local, clustered, and cloud.
   k6 run script.js
   ```
 
-2. [Clustered](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
+2. [Distributed](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
   
   <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
 
@@ -223,5 +223,5 @@ k6 supports three execution modes to run a k6 test: local, clustered, and cloud.
   k6 cloud script.js
   ```
 
-  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/cloud-faq/private-load-zones/), and accepts the test results from a [local](/results-visualization/cloud/) or [clustered test](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/cloud-faq/private-load-zones/), and accepts the test results from a [local](/results-visualization/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 

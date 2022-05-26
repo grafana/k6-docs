@@ -80,7 +80,7 @@ from the k6 command-line via the `k6 cloud script.js` command (similar to `k6 ru
 trigger an implicit creation of a k6 archive that is uploaded and distributed to k6 cloud
 load generators for execution.
 
-### Clustered Execution 
+### Distributed Execution 
 
 [k6-operator](https://github.com/grafana/k6-operator#multi-file-tests) can distribute a k6 test across a Kubernetes cluster. 
 

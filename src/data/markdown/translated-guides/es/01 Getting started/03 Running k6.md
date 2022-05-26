@@ -181,7 +181,7 @@ k6 soporta tres modelos de ejecución para ejecutar los tests: local, cluster, a
   k6 run script.js
   ```
 
-2. [Clustered](https://github.com/grafana/k6-operator): la ejecución del test es distribuida en un cluster de Kubernetes. 
+2. [Distribuido](https://github.com/grafana/k6-operator): la ejecución del test es distribuida en un cluster de Kubernetes. 
   
   <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
 
