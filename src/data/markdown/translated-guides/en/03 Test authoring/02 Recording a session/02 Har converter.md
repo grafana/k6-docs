@@ -110,7 +110,7 @@ To learn more about how to configure the load options, read the [Adding more VUs
 
 If you are recording a user session of a website, by default, you'll record all the HTTP requests that your website uses.
 This includes requests from the third-party tools that your site uses,
-e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, et cetera.
+e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, etc.
 
 You should remove these third party requests:
 
@@ -147,7 +147,7 @@ Often, the correlation would be for a token or ID that is needed to run a sequen
 
 The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.
 
-To run your load test correctly, you may need to replace the hardcoded data with dynamic data that k6 gets from previous requests.
+To run your load test correctly, you may need to replace some recorded data with dynamic data that k6 gets from previous requests.
 For example, tokens expire quickly, and they are one of the most common things that users will correlate from a recorded session.
 
 [Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.

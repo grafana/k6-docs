@@ -15,6 +15,7 @@
 (?i)json
 (?i)param
 (?i)params
+(?i)postprocess
 (?i)statsd
 (?i)tcp
 (?i)teardown
@@ -68,8 +69,12 @@ gzip
 Hasher
 hostname
 htop
+kafka
+keyserver
 iftop
+iters
 initializer
+interquartile
 impactful
 ints
 io
@@ -93,6 +98,8 @@ performant
 plaintext
 polyfill
 polyfills
+postgres
+postprocessing
 proto
 rawstd
 reqs
@@ -145,7 +152,10 @@ eval
 xcaddy
 pdf()
 yaml
+Xray
+Netdata
 yml
+xk6-\*
 (?i)cpu
 (?i)chai
 (?i)chaijs
