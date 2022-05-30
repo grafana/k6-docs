@@ -23,7 +23,7 @@
     "lint:fix": "eslint --ext .js,.jsx --fix .",
     "lint:examples": "eslint -c ./src/data/markdown/.eslintrc.js src/data/markdown",
     "lint:examples:fix": "eslint -c ./src/data/markdown/.eslintrc.js --fix src/data/markdown",
-    "lint:prose": "vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
+    "lint:prose": "./node_modules/.bin/vale --glob='**/{docs,translated-guides/en}/**/*.md' ./src/data/markdown",
     "precheck:links": "gatsby build",
     "check:links": "concurrently --kill-others -s first \"gatsby serve --port 8000\" \"npm run check:blc\"",
     "check:blc": "wait-on tcp:8000 && blc http://localhost:8000 -rof",
@@ -79,6 +79,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
+    "@ocular-d/vale-bin": "1.0.29",
     "@svgr/webpack": "^6.2.1",
     "babel-loader": "^8.2.5",
     "broken-link-checker": "^0.7.8",
