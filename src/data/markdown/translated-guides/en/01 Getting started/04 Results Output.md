@@ -3,7 +3,7 @@ title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 ---
 
-There are two ways to look at test results:
+k6 provides two ways to look at test results:
 * After the test runs, k6 sends a small summary to `stdout`.
 * For granular analysis and time-series data, you can also stream live test data to an external output.
 

@@ -91,8 +91,7 @@ before the network issue.
 
 ## Advanced settings
 
-There are a few special [environment variables](/using-k6/environment-variables)
-specifically for controlling k6 when streaming with `k6 -o cloud`.
+A few [environment variables](/using-k6/environment-variables) can control how k6 streams results with `-o cloud`.
 
 When streaming, k6 will collect all data and send it to the cloud in batches.
 
