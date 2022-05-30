@@ -144,6 +144,8 @@ eval
 (?i)toolchain
 xcaddy
 pdf()
+yaml
+yml
 (?i)cpu
 (?i)chai
 (?i)chaijs
