@@ -84,7 +84,7 @@ load generators for execution.
 
 [k6-operator](https://github.com/grafana/k6-operator#multi-file-tests) can distribute a k6 test across a Kubernetes cluster. 
 
-When having a k6 test with multiple files, you can use the archive functionality to bundle the k6 test in a single "archived" file and pass this file to run the test.
+When a k6 test has multiple files, you can use the archive functionality to bundle the k6 test in a single *archived* file and pass this file to run the test.
 
 ## Contents of an archive file
 
