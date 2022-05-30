@@ -20,15 +20,18 @@ You can also set an option in one place and override it somewhere else (accordin
 Sometimes, how you set options is a matter of personal preference.
 Other times, your situation will dictate the best place to put your options.
 
-CLI options are good setting options on the fly.
+*CLI options are good setting options on the fly.*
+
 Of course, you can configure options in multiple places.
 For example, you might want to set your stages in the script options, then use CLI flags to run the script with different duration times.
 
-Environment variables often work well when you need to set your options from some other part of your DevOps build chain.
+*Environment variables often work well when you need to set your options from some other part of your DevOps build chain*.
+
 For example, you could derive the option from a variable in your Docker container definition, CI UI, vault&mdash;wherever you declare environment variables.
 The [block hostnames](#block-hostnames) option is an option that works well with environment variables.
 
-You can version control your options (and keep your tests tidy) by setting them in your script or config file.
+*Options in the script or config file let you version control your options (and keep your tests tidy).
+
 You may wonder why you would need a config file when you can use the script options.
 Isn't this redundant?
 In fact, you might have multiple reasons to set your options in a config file.
