@@ -198,7 +198,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
 
   ```bash
-  kubectl apply -f /path/k6-resource.yml
+  kubectl apply -f /path/k6-resource.yaml
   ```
 
   ```yml
