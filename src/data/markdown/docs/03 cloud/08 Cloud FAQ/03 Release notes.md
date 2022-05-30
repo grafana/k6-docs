@@ -6,7 +6,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v3.4.4 `(2022-5-17)`
 - Disable create and run test runs when cloud execution is disabled.
-- Fix: add support for private loadzones in PDF.
+- Fix: add support for private load zones on the PDF report.
 - Fix: create new org does not leave the user with read-only permission.
 
 ### v3.4.3.internal `(2022-4-26)`
