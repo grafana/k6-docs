@@ -30,7 +30,7 @@ For example, you might want to set your stages in the script options, then use C
 For example, you could derive the option from a variable in your Docker container definition, CI UI, vault&mdash;wherever you declare environment variables.
 The [block hostnames](#block-hostnames) option is an option that works well with environment variables.
 
-*Options in the script or config file let you version control your options (and keep your tests tidy).
+*Options in the script or config file let you version control your options (and keep your tests tidy).*
 
 You may wonder why you would need a config file when you can use the script options.
 Isn't this redundant?
