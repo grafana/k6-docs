@@ -181,7 +181,6 @@ export const options = {
 
 ## Block hostnames
 
-
 Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
 `*` at the beginning such as `*.example.com` that will match anything before that such as
 `test.example.com` and `test.test.example.com`.
