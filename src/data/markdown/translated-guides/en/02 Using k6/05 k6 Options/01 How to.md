@@ -151,7 +151,7 @@ PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" sc
 ## Get an option value from the script
 
 The `k6/execution` API provides a [test.options](/javascript-api/k6-execution/#test) object.
-With `test.options`, you can access the final, consolidated, and derived options of your script as the test runs.
+With `test.options`, you can access the consolidated and derived options of your script as the test runs.
 
 A common use is to grab the value of a tag.
 It also can be handy to get stage values.
