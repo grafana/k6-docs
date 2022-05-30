@@ -195,7 +195,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 
 2. [Distributed](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
   
-  <CodeGroup labels={["Running", "k6-resource.yml"]} lineNumbers={[true]}> 
+  <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
 
   ```bash
   kubectl apply -f /path/k6-resource.yaml
