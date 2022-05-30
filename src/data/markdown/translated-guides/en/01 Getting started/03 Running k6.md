@@ -217,7 +217,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 
   </CodeGroup>
 
-3. [Cloud](/cloud): the test execution is run on the k6 Cloud.  
+3. [Cloud](/cloud): the test execution happens on k6 Cloud.  
 
   ```bash
   k6 cloud script.js
