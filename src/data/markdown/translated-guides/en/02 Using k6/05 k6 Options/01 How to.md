@@ -44,7 +44,7 @@ This provides automatic version control, allows for easy reuse, and lets you mod
 *CLI options are good for setting options on the fly.*
 
 When you want to run a quick test, command-line flags are convenient.
-You can also use command-line flags to override files in your script (according to the [order of precedence](#order-of-precedence).
+You can also use command-line flags to override files in your script (as determined by the [order of precedence](#order-of-precedence)).
 For example, your script may set the test duration at 100s.
 You could use CLI flags to run a one-time, longer test.
 
