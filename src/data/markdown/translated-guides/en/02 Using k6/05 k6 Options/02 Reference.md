@@ -1,9 +1,37 @@
 ---
-title: 'Options'
-excerpt: 'Options allow you to configure how k6 will behave during test execution.'
+title: 'Options reference'
+slug: '/using-k6/k6-options/reference'
+excerpt: 'A complete list of all k6 options, with descriptions, defaults, and examples of how to set the option in your script, config files, environment variables, or CLI.'
 ---
 
-Options let you configure how k6 behaves during test execution.
+Options define test-run behavior.
+Most options can be passed in multiple places.
+
+## Order of precedence
+
+_Command-line flags have the highest order of precedence.
+They override all other options._
+
+For almost all options that k6 provides, you can pass them in one of four places:
+- Command-line flags,
+- Environment variables
+- Config file
+- In the script code
+
+If you set the same option in multiple places, k6 runs according to the order of precedence:
+
+| Place to specify options           | Order of precedence |
+|------------------------------------|---------------------|
+| Command-line flags                 | **1 (highest)**     |
+| Environmental variables            | 2                   |
+| The `options` object in the script | 3                   |
+| A config file                      | 4                   |
+| Nowhere (k6 uses the default)      | **5 (lowest)**      |
+
+
+## Quick reference of options
+
+Each option has its own detailed reference in a separate section.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -65,156 +93,10 @@ Options let you configure how k6 behaves during test execution.
 | [Verbose](#verbose)                                       | A boolean specifying whether verbose logging is enabled                             |
 | [VUs](#vus)                                               | A number specifying the number of VUs to run concurrently                           |
 
-## Where to set options?
+The following sections detail all available options that you can be specify within a script.
 
-You can specify options with command-line flags, environment variables, or via a config file.
-You can also specify them in the script code, making the options version-controlled.
-
-If you set options in multiple places, k6 follows an _order of precedence_.
-
-1. First, k6 looks in the config file.
-2. Then, it looks in the `options` object in the script.
-3. Then, it looks at the environment variables.
-4. Finally, it looks at the command-line flags.
-
-This is to say that _command-line flags override all other options_.
-
-### Order of precedence
-
-For example, these are all valid ways to set the test duration.
-Note that each time is different!
-
-- Set the `duration: "10s"` option in the config file
-- Set the `duration: "15s"` option in the script
-- Define `K6_DURATION=20s` as an environment variable
-- Use the `--duration 30s` command-line flag
-
-Even though the preceding example has four different `duration` values, the test would run with a duration of 30s.
-That's because _command-line options have the highest order of precedence:_
-
-![The options order of precedence. First, k6 looks at options in the config. Then, in the script file. Then, in the environmental variables. Finally, in the command-line flags. Options passed as command-line flags override all other options.](./images/Options/order-of-precedence.svg)
-
-### Examples of setting options
-
-The following JS snippets shows some examples of different ways to set options.
-
-#### Options in the script
-
-<CodeGroup labels={["example.js"]} lineNumbers={[true]}>
-
-```javascript
-import http from 'k6/http';
-
-export const options = {
-  hosts: { 'test.k6.io': '1.2.3.4' },
-  stages: [
-    { duration: '1m', target: 10 },
-    { duration: '1m', target: 20 },
-    { duration: '1m', target: 0 },
-  ],
-  thresholds: { http_req_duration: ['avg<100', 'p(95)<200'] },
-  noConnectionReuse: true,
-  userAgent: 'MyK6UserAgentString/1.0',
-};
-
-export default function () {
-  http.get('http://test.k6.io/');
-}
-```
-
-</CodeGroup>
-
-#### Options in a config file
-
-<div id="config-json-example">
-You can also define the same options through a config file:
-</div>
-
-<CodeGroup labels={["config.json"]} lineNumbers={[true]}>
-
-```json
-{
-  "hosts": {
-    "test.k6.io": "1.2.3.4"
-  },
-  "stages": [
-    {
-      "duration": "1m",
-      "target": 10
-    },
-    {
-      "duration": "1m",
-      "target": 30
-    },
-    {
-      "duration": "1m",
-      "target": 0
-    }
-  ],
-  "thresholds": {
-    "http_req_duration": ["avg<100", "p(95)<200"]
-  },
-  "noConnectionReuse": true,
-  "userAgent": "MyK6UserAgentString/1.0"
-}
-```
-
-</CodeGroup>
-
-#### Options with environment variables
-
-Or set some of the previous options via environment variables and command-line flags:
-
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
-
-```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
-
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
-```
-
-```bash
-C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
-
-C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
-```
-
-```bash
-PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
-
-PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
-```
-
-</CodeGroup>
-
-#### Get options' value from the script
-
-The `k6/execution` API provides a [test.options](/javascript-api/k6-execution/#test) object for accessing the final consolidated and derived options.
-
-<CodeGroup>
-
-```javascript
-import exec from 'k6/execution';
-
-export const options = {
-  stages: [
-    { duration: '5s', target: 100 },
-    { duration: '5s', target: 50 },
-  ],
-};
-
-export default function () {
-  console.log(exec.test.options.scenarios.default.stages[0].target); // 100
-}
-```
-
-</CodeGroup>
-
-<br/>
-
-Below, you'll find details on all available options that can be specified within a script. It also
-documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
-and `k6 cloud ...` that can be used to override options specified in the code.
+It also documents the equivalent command line flag, environment variables or option when executing `k6 run ...`
+and `k6 cloud ...`, which you can use to override options specified in the code.
 
 ## Address
 
@@ -295,7 +177,6 @@ export const options = {
 ```
 
 </CodeGroup>
-
 
 
 ## Block Hostnames
@@ -752,9 +633,8 @@ Possible values are:
 
 ### Loki
 
-For additional instructions and step-by-step guide, check out the [Loki tutorial](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/).
-
-Use the `log-output` option to configure [Loki](https://grafana.com/oss/loki/) as follows:
+Use the `log-output` option to configure [Loki](https://grafana.com/oss/loki/) as follows.
+For additional instructions and a step-by-step guide, check out the [Loki tutorial](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/).
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -777,7 +657,6 @@ The possible keys with their meanings and default values:
 | pushPeriod | at what period to send log lines | 1s |
 | profile | whether to print some info about performance of the sending to loki | false |
 | msgMaxSize | how many symbols can there be at most in a message. Messages bigger will miss the middle of the message with an additional few characters explaining how many characters were dropped. | 1048576 |
-
 
 ### File
 
@@ -1230,9 +1109,11 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 
 ## Summary export
 
-Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
+Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
+This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
-While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file). For a better and more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1344,7 +1225,7 @@ export const options = {
 
 Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), see new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), refer to the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 
 | Env                      | CLI                     | Code / Config file  | Default                        |
