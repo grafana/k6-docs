@@ -4,43 +4,54 @@ slug: '/using-k6/k6-options/how-to'
 excerpt: 'Examples of different ways to set options. Options in command-line flags have the highest precedence. You can also access option values as the test runs.'
 ---
 
-Your use case will likely determine how you want to set options.
-You can also access option values as your test runs.
-
-## Where to set options
-
-For most options, k6 provides multiple ways to set them:
+k6 provides multiple places to set most options:
 
 - In CLI flags
 - In environment variables
-- In the config file
 - In the script `options` object
 
-You can also set an option in one place and override it somewhere else (according to the [order of precedence](../#order-of-precedence)).
+Your use case will likely determine how you want to set options.
+You can also access option values as your test runs.
+
+## Order of precedence
+
+![Diagram of the options order of precedence. Options passed as command-line flags override all other options: defaults > script options > environment variables > command-line flags](./images/order-of-precedence.png)
+
+You can set options in multiple places.
+If the same option is set in multiple places, k6 uses the option from the place with the highest _order of precedence_.
+
+For example, here are three ways set a test duration.
+Note that each time is different!
+
+- Set the `duration: "15s"` option in the script
+- Define `K6_DURATION=20s` as an environment variable
+- Use the `--duration 30s` command-line flag
+
+If you passed all of these options to the same test, the duration would be 30 seconds.
+That's because **command-line flags have the highest order of precedence**.
+They override all other options.
+
+## Where to set options
+
 Sometimes, how you set options is a matter of personal preference.
 Other times, your situation will dictate the best place to put your options.
 
-*CLI options are good setting options on the fly.*
+*Options in the script or config file let you version control and keep tests tidy*.
 
-Of course, you can configure options in multiple places.
-For example, you might want to set your stages in the script options, then use CLI flags to run the script with different duration times.
+The script `options` object is generally the best place to put your options.
+This provides automatic version control, allows for easy reuse, and lets you modularize your script.
+
+*CLI options are good for setting options on the fly.*
+
+When you want to run a quick test, command-line flags are convenient.
+You can also use command-line flags to override files in your script (according to the [order of precedence](#order-of-precedence).
+For example, your script may set the test duration at 100s.
+You could use CLI flags to run a one-time, longer test.
 
 *Environment variables often work well when you need to set your options from some other part of your DevOps build chain*.
 
 For example, you could derive the option from a variable in your Docker container definition, CI UI, vault&mdash;wherever you declare environment variables.
 The [block hostnames](#block-hostnames) option is an option that works well with environment variables.
-
-*Options in the script or config file let you version control your options (and keep your tests tidy).*
-
-You may wonder why you would need a config file when you can use the script options.
-Isn't this redundant?
-In fact, you might have multiple reasons to set your options in a config file.
-
-For one, k6 uses the (auto-generated) config file to keep users logged in after they run `k6 login cloud`.
-Other reasons for config files are more about developer style and comfort:
-- To separate the test configuration from JavaScript code
-- To reduce the size of the entry-point script, especially when there are multiple scenarios
-- To more easily switch between configs (either rename the current config file or modify the JavaScript code in one location)
 
 
 ## Examples of setting options
@@ -135,6 +146,7 @@ PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" sc
 ```
 
 </CodeGroup>
+
 
 ## Get an option value from the script
 
