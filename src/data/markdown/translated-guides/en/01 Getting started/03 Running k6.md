@@ -187,7 +187,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 > 
 > This lets users reuse tests&mdash;no matter the environment and context. Making tests portable across multiple modes of execution is a key design goal of k6.
 
-1. [Local](#running-local-tests): the test execution is run entirely on a single machine, container, or CI server. 
+1. [Local](#running-local-tests): the test execution happens entirely on a single machine, container, or CI server. 
 
   ```bash
   k6 run script.js
