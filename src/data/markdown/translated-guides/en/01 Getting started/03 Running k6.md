@@ -178,26 +178,50 @@ export default function () {
 
 For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
-## Running cloud tests
+## Execution modes
 
-k6 supports three test-execution modes:
+k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
 
-- [Local](#running-local-tests): on your local machine or a CI server.
-- [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
-- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/grafana/k6/issues/140).
+> **k6 aims to let users switch between execution modes with minimal changes.**
+> &nbsp;
+> 
+> This lets users reuse tests&mdash;no matter the environment and context. Making tests portable across multiple modes of execution is a key design goal of k6.
 
-k6 has a goal of letting you run a test in all three execution modes without modifying the script.
+1. [Local](#running-local-tests): the test execution happens entirely on a single machine, container, or CI server. 
 
-To run cloud tests from the CLI:
-1. Register a k6 Cloud account.
-2. Log in to your account via the CLI.
-3. Use the `k6 cloud` command to run the script you already have.
+  ```bash
+  k6 run script.js
+  ```
 
-<CodeGroup labels={["Running a cloud test"]}>
+2. [Distributed](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
+  
+  <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
 
-```bash
-$ k6 cloud script.js
-```
+  ```bash
+  kubectl apply -f /path/k6-resource.yaml
+  ```
 
-</CodeGroup>
+  ```yml
+  ---
+  apiVersion: k6.io/v1alpha1
+  kind: K6
+  metadata:
+    name: k6-sample
+  spec:
+    parallelism: 4
+    script:
+      configMap:
+        name: "k6-test"
+        file: "script.js"
+  ```
+
+  </CodeGroup>
+
+3. [Cloud](/cloud): the test execution happens on k6 Cloud.  
+
+  ```bash
+  k6 cloud script.js
+  ```
+
+  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/cloud-faq/private-load-zones/), and accept the test results from a [local](/results-visualization/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 
