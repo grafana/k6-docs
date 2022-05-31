@@ -72,7 +72,7 @@ Control the test execution.
 | Property | Type | Description |
 |----------|------|-------------|
 | abort([String]) | function | It aborts the test run with the exit code `108`, and an optional string parameter can provide an error message. Aborting the test will not prevent the `teardown()` execution. |
-| options | Object | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](https://k6.io/docs/using-k6/options/#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
+| options | Object | It returns an object with all the test options as properties. The options' values are consolidated following the [order of precedence](/using-k6/k6-options/how-to#order-of-precedence) and derived if shortcuts have been used. It returns `null` for properties where the relative option hasn't been defined. |
 
 ### vu
 
