@@ -20,16 +20,12 @@ You can also access option values as your test runs.
 You can set options in multiple places.
 If the same option is set in multiple places, k6 uses the option from the place with the highest _order of precedence_.
 
-For example, here are three ways set a test duration.
-Note that each time is different!
+1. First, k6 uses the option's default value.
+2. Then, k6 uses the script value (if set).
+3. After, k6 uses the environment variable (if set). 
+4. Finally, k6 takes the value from the CLI flag (if set). 
 
-- Set the `duration: "15s"` option in the script
-- Define `K6_DURATION=20s` as an environment variable
-- Use the `--duration 30s` command-line flag
-
-If you passed all of these options to the same test, the duration would be 30 seconds.
-That's because **command-line flags have the highest order of precedence**.
-They override all other options.
+This is to say that **command-line flags have the highest order of precedence**.
 
 ## Where to set options
 
@@ -84,11 +80,42 @@ export default function () {
 
 </CodeGroup>
 
+
+### Options with environment variables
+
+Set some of the previous options via environment variables and command-line flags:
+
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
+
+$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+```
+
+```bash
+C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
+
+C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+```
+
+```bash
+PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
+
+PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
+```
+
+</CodeGroup>
+
 ### Options in a config file
 
 <div id="config-json-example">
-You can also define the same options through a config file:
+You can also define the same options through a config file, then use a CLI flag to specify the config file path.
 </div>
+
+```bash
+k6 run --config config.json script.js
+```
 
 <CodeGroup labels={["config.json"]} lineNumbers={[true]}>
 
@@ -117,32 +144,6 @@ You can also define the same options through a config file:
   "noConnectionReuse": true,
   "userAgent": "MyK6UserAgentString/1.0"
 }
-```
-
-</CodeGroup>
-
-### Options with environment variables
-
-Set some of the previous options via environment variables and command-line flags:
-
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
-
-```bash
-$ K6_NO_CONNECTION_REUSE=true K6_USER_AGENT="MyK6UserAgentString/1.0" k6 run script.js
-
-$ k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
-```
-
-```bash
-C:\k6> set "K6_NO_CONNECTION_REUSE=true" && set "K6_USER_AGENT=MyK6UserAgentString/1.0" && k6 run script.js
-
-C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
-```
-
-```bash
-PS C:\k6> $env:K6_NO_CONNECTION_REUSE=true; $env:K6_USER_AGENT="MyK6UserAgentString/1.0"; k6 run script.js
-
-PS C:\k6> k6 run --no-connection-reuse --user-agent "MyK6UserAgentString/1.0" script.js
 ```
 
 </CodeGroup>
