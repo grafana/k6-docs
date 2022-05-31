@@ -126,7 +126,7 @@ This allows for quick configuration.
 import http from 'k6/http';
 
 export const options = {
-    userAgent: __ENV.MY_USER_AGENT
+    userAgent: __ENV.MY_USER_AGENT,
 };
 
 export default function () {
