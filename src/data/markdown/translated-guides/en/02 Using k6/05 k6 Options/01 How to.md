@@ -15,7 +15,7 @@ You can also access option values as your test runs.
 
 ## Order of precedence
 
-![Diagram of the options order of precedence. Options passed as command-line flags override all other options: defaults > script options > environment variables > command-line flags](./images/order-of-precedence.png)
+![Diagram of the options order of precedence. Options passed as command-line flags override all other options: defaults > script options > environment variables > command-line flags](../images/order-of-precedence.png)
 
 You can set options in multiple places.
 If the same option is set in multiple places, k6 uses the option from the place with the highest _order of precedence_.
