@@ -7,16 +7,16 @@ excerpt: 'A complete list of all k6 options, with descriptions, defaults, and ex
 Options define test-run behavior.
 Most options can be passed in multiple places.
 
-## Quick reference of options
+## Quick reference
 
-Each option has its own detailed reference in a separate section.
+Select an option to jump to its full reference.
 
 | Option                                                    | Description                                                                         |
 | --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Address](#address)                                       | Address of the REST API server                                                           |
 | [Batch](#batch)                                           | Max number of simultaneous connections of a `http.batch()` call                     |
 | [Batch per host](#batch-per-host)                         | Max number of simultaneous connections of a `http.batch()` call for a host          |
-| [Blacklist IPs](#blacklist-ips)                           | Blacklist IP ranges from being called                                               |
+| [Blacklist IP](#blacklist-ip)                           | Blacklist IP ranges from being called                                               |
 | [Block hostnames](#block-hostnames)                       | Block any requests to specific hostnames                                                   |
 | [Compatibility Mode](#compatibility-mode)                 | Support running scripts with different ECMAScript modes                             |
 | [Config](#config)                                         | Specify the config file in JSON format to read the options values                   |
@@ -138,7 +138,7 @@ export const options = {
 
 </CodeGroup>
 
-## Blacklist IPs
+## Blacklist IP
 
 Blacklist IP ranges from being called. Available in `k6 run` and `k6 cloud` commands.
 
