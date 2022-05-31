@@ -4,13 +4,13 @@ slug: '/using-k6/k6-options/how-to'
 excerpt: 'Examples of different ways to set options. Options in command-line flags have the highest precedence. You can also access option values as the test runs.'
 ---
 
-k6 provides multiple places to set most options:
+k6 provides multiple places to set options:
 
 - In CLI flags
 - In environment variables
 - In the script `options` object
 
-Your use case will likely determine how you want to set options.
+Most likely, your use case will determine where you want to set the particular options for a particular test.
 You can also access option values as your test runs.
 
 ## Order of precedence
@@ -25,12 +25,12 @@ If there are conflicts, k6 uses the option from the place with the highest _orde
 3. After, k6 uses the environment variable (if set). 
 4. Finally, k6 takes the value from the CLI flag (if set). 
 
-This is to say that **command-line flags have the highest order of precedence**.
+That is, **command-line flags have the highest order of precedence**.
 
 ## Where to set options
 
 Sometimes, how you set options is a matter of personal preference.
-Other times, the context of your test dicates the most sensible place to put your options.
+Other times, the context of your test dictates the most sensible place to put your options.
 
 *Options in the script or config file let you version control and keep tests tidy*.
 
