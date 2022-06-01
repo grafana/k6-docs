@@ -139,50 +139,6 @@ export default function () {
 > **Note**: Though this method uses the `--env` flag, this is not the same as using an environment variable.
 > For an explanation, refer to the [environment variables document](/using-k6/environment-variables).
 
-### Set options in a config file
-
-<div id="config-json-example">
-You can also define the same options through a config file, then use a CLI flag to specify the config path.
-</div>
-
-```bash
-k6 run script.js --config options.json
-```
-
-This would set the options according to the values in the `options.json` file.
-
-<CodeGroup labels={["options.json"]} lineNumbers={[true]}>
-
-```json
-{
-  "hosts": {
-    "test.k6.io": "1.2.3.4"
-  },
-  "stages": [
-    {
-      "duration": "1m",
-      "target": 10
-    },
-    {
-      "duration": "1m",
-      "target": 30
-    },
-    {
-      "duration": "1m",
-      "target": 0
-    }
-  ],
-  "thresholds": {
-    "http_req_duration": ["avg<100", "p(95)<200"]
-  },
-  "noConnectionReuse": true,
-  "userAgent": "MyK6UserAgentString/1.0"
-}
-```
-
-</CodeGroup>
-
-
 ## Get an option value from the script
 
 The `k6/execution` API provides a [test.options](/javascript-api/k6-execution/#test) object.

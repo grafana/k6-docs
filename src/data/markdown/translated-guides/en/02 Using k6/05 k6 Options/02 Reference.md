@@ -207,7 +207,9 @@ $ k6 run --compatibility-mode=base script.js
 
 ## Config
 
-Specify the config file in JSON format to read the `options` values. If the config file is not specified, k6 will look for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system. Default config locations on different operating systems are:
+Specify the config file in JSON format.
+If the config file is not specified, k6 looks for `config.json` in the `loadimpact/k6` directory inside the regular directory for configuration files on the operating system.
+Default config locations on different operating systems are as follows:
 
 |OS|Default Config Path|
 |---|---|
@@ -221,7 +223,6 @@ Available in `k6 run` and `k6 cloud` commands:
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
-An example of a config file is available [here](/using-k6/options#config-json-example)
 
 > ### ⚠️ Keep in mind!
 >
