@@ -258,7 +258,7 @@ To see how tags affect your test-result output, refer to the [k6 results output 
 
 ## Groups
 
-Groups are an optional which can “group” a large load script by functions.
+For extra organization, you can use *groups* to organize a load script by functions.
 You can also nest groups for BDD-style testing.
 
 All metrics emitted in a group have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
