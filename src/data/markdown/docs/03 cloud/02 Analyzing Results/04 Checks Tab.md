@@ -1,11 +1,12 @@
 ---
 title: 'Checks Tab'
-excerpt: 'The Checks tab allow you to visualize performance of your checks in your k6 test'
+excerpt: 'The Checks tab visualizes performance of your checks in your k6 test'
 ---
 
 ## Cloud Results: Checks
 
-The Checks Tab allows you to visually inspect and analyze `Checks` in your test. The number in the tab represents passing Checks / total Checks, so you can quickly see if there's something that demands your attention.
+With the **Checks** tab, you can visually inspect and analyze Checks in your test.
+The number in the tab represents passing Checks / total Checks, so you can quickly see if there's something that demands your attention.
 
 As you further examine this tab, you are able to:
 

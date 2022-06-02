@@ -10,7 +10,7 @@ This can make it hard to pinpoint the issues that are degrading performance.
 k6 provides two scripting APIs to help you visualize, sort, and filter your test results.
 
 - *Tags* categorize your checks, thresholds, custom metrics, and requests for in-depth filtering.
-- *Groups* let you apply tags to the script's functions.
+- *Groups* apply tags to the script's functions.
 
 Besides these granular tags, you can also use options to set test-wide tags.
 You can use these tags to compare results from multiple tests.
@@ -60,7 +60,7 @@ You can also enable some additional system tags if you need them:
 
 ## User-defined tags
 
-User-defined tags let you categorize k6 entities based on logic.
+You can define your own tags to categorize k6 entities based on your test logic.
 You can tag the following entities:
 
 - requests
@@ -258,10 +258,8 @@ To see how tags affect your test-result output, refer to the [k6 results output 
 
 ## Groups
 
-Groups are optional.
-
-They let you “group” a large load script by functions.
-You can also nest groups, allowing BDD-style testing.
+Groups are an optional which can “group” a large load script by functions.
+You can also nest groups for BDD-style testing.
 
 All metrics emitted in a group have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
 The root group uses the name '' (empty string).

@@ -5,9 +5,10 @@ excerpt: 'Keep your tests and team members organized with projects, a filing sys
 
 ## Using Projects
 
-Projects can be considered a filing system which you use to organize your tests on a per organization level. They are flexible enough to allow you to use them in a way that makes sense to you, but simple enough to not lose information in a deep nested structure.
+You can think of Projects as a filing system that organizes your tests on a per-organization level.
+Projects are designed to be flexible enough that you can organize them in a way that makes sense to you, without being so complex that you'd lose information in a deeply nested structure.
 
-Here are some ways we have seen users utilize Projects to stay organized:
+Here are some ways we have seen users use Projects to stay organized:
 
 - Per team: Each team is given their own project for them to do their work and collaborate
 - Per component: A project is created for each component or service you're testing

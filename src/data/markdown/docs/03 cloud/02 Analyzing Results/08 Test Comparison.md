@@ -15,7 +15,9 @@ The test comparison feature built-in to k6 Cloud Results allows you to compare t
 
 ## Setting a baseline test
 
-Comparing results against a known **baseline** is a core part of the general methodology for [automated performance testing](/testing-guides/automated-performance-testing). Baseline tests are important as they allow you to compare against a control to look for differences. Baseline tests should produce enough load to contain meaningful data and ideal results. In other words, a heavy [stress test](/test-types/stress-testing) isn't a good baseline. Think much smaller.
+Comparing results against a known *baseline* is a core part of the general methodology for [automated performance testing](/testing-guides/automated-performance-testing).
+Baseline tests are an important way to compare against a control and find differences.
+Baseline tests should produce enough load to contain meaningful data and ideal results. In other words, a heavy [stress test](/test-types/stress-testing) isn't a good baseline. Think much smaller.
 
 In order to set your baseline, open up the results for the test run you wish to be your baseline. Select the three dots in the top right corner -> set as Baseline test run. Baseline tests are exempt from data retention policies.
 
