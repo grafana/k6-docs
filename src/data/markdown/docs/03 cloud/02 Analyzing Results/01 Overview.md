@@ -5,7 +5,7 @@ excerpt: 'An overview of using k6 Cloud Results as a premiere analysis tool'
 
 ## Background
 
-As part of the k6 Cloud offering, k6 Cloud Results enables you to visualize, store, analyze, and trend your test results. All tests that utilize k6 Clouds Results will be analyzed by our [Performance Insights](/cloud/analyzing-results/performance-insights/) algorithms to detect patterns associated with performance issues.
+As part of the k6 Cloud offering, k6 Cloud Results visualizes, stores, analyzes, and presents trends for your test results. All tests that use k6 Clouds Results are analyzed by our [Performance Insights](/cloud/analyzing-results/performance-insights/) algorithms to detect patterns associated with performance issues.
 
 As you continue to use k6 Cloud Results, we will also automatically create trending graphs so that you can keep track of how performance of your system changes over time. This is helpful for identifying creeping performance issues before they become larger problems.
 

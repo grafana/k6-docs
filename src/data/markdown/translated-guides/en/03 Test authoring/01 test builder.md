@@ -59,7 +59,7 @@ Read the [Cloud APM](/cloud/integrations/cloud-apm/).
 
 ## Scenarios
 
-Scenarios let you schedule VUs and iterations to model diverse traffic patterns. 
+Scenarios can schedule VUs and iterations to model diverse traffic patterns. 
 
 You can create multiple scenarios in a test.
 For each scenario, configure its options:

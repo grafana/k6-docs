@@ -66,7 +66,7 @@ The [http module](/javascript-api/k6-http) handles all kinds of HTTP requests an
 ## HTTP Request Tags
 
 k6 automatically applies [tags](/using-k6/tags-and-groups#section-tags) to your HTTP requests.
-These tags let you filter your results, helping you organize your analysis.
+You can use these tags to filter your results and organize your analysis.
 
 | Name   | Description                                |
 | ------ | ------------------------------------------ |
