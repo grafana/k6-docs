@@ -1,7 +1,7 @@
 ---
 title: 'How to use options'
 slug: '/using-k6/k6-options/how-to'
-excerpt: 'Examples of different ways to set options. Options in command-line flags have the highest precedence. You can also access option values as the test runs.'
+excerpt: 'How to set options in different places (with examples), how to override options, and how to access the value of an option as the test runs.'
 ---
 
 k6 provides multiple places to set options:

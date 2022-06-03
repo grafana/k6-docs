@@ -9,5 +9,5 @@ For example, options are how you define a test's tags, thresholds, user agents, 
 
 | On this page                     | Read about...                                                                           |
 |----------------------------------|--------------------------------------------------------------------------------------------------|
-| [How to use options](/using-k6/k6-options/how-to)   | How to set options in different places (with examples), how to override options, with examples, and how to access the value of an option as the test runs. |
+| [How to use options](/using-k6/k6-options/how-to)   | How to set options in different places (with examples), how to override options, and how to access the value of an option as the test runs.|
 | [Options reference](/using-k6/k6-options/reference) | Every option, with examples, defaults, and descriptions.                                         |
