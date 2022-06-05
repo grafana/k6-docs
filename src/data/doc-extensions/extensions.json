@@ -638,6 +638,18 @@
       },
       "official": false,
       "categories": ["Reporting"]
+    },
+    {
+      "name": "xk6-oauth-pkce",
+      "description": "Generate OAuth PKCE code verifier and code challenge",
+      "url": "https://github.com/frankhefeng/xk6-oauth-pkce",
+      "logo": "",
+      "author": {
+        "name": "Feng He",
+        "url": "https://github.com/frankhefeng"
+      },
+      "official": false,
+      "categories": ["Authentication"]
     }
   ]
 }
