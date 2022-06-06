@@ -105,6 +105,24 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
     Learn more about test results on [Analyzing Results](/cloud/analyzing-results/overview).
 
+<Collapsible title="Run tests on multiple cloud accounts">
+
+### Run tests on multiple cloud accounts
+
+If you have multiple cloud subscriptions, use your API token to change between subscriptions.
+One way to do this is with the environment variables, as the preceding section demonstrates.
+
+Another way is to toggle between config files with the `--config` flag.
+
+```bash
+k6 cloud --config nondefault/location/config.json script.js
+```
+
+For syntax examples and default config locations, refer to the [`--config` option reference](/using-k6/k6-options/reference#config).
+
+</Collapsible>
+
+
 ## Cloud execution options
 
 All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the same between the `k6 run` and `k6 cloud` commands. k6 aims to run the same script in different execution modes without making any script modifications.
