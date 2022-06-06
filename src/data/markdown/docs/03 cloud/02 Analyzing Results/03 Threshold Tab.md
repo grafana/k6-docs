@@ -5,7 +5,7 @@ excerpt: 'The Threshold Tab allows you to visually inspect the performance of yo
 
 ## Cloud Results: Thresholds
 
-In the the **Threshold** tab, you can visually inspect and analyze `Thresholds` in your test. The number in the tab represents passing Thresholds / Total Thresholds so you can quickly see if something needs your attention.
+In the **Threshold** tab, you can visually inspect and analyze `Thresholds` in your test. The number in the tab represents passing Thresholds / Total Thresholds so you can quickly see if something needs your attention.
 
 Further within this tab, you are able to:
 
