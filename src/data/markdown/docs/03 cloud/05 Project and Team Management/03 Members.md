@@ -32,7 +32,7 @@ Gives a project member the ability to create, edit, run and schedule tests in a 
 
 <h4 id="read-only">Read-Only</h4>
 
-Gives a project member the ability only to view tests and test runs in a particular project. They are not able to modify them in any way.
+Lets a project member view only tests and test runs in a particular project. They cannot modify them in any way.
 
 > ⚠️ &nbsp; If you only have access to run tests in a specific project, don't forget to specify its projectID when running a cloud test from the k6 CLI. Read more [here](/cloud/project-and-team-management/projects/#running-cli-tests-in-a-specific-project).
 

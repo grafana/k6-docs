@@ -115,7 +115,7 @@ e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, etc.
 You should remove these third party requests:
 
 - They will skew the percentiles of your performance results.
-- You may not be able to affect the performance of the third-party service.
+- You may be unable to affect the performance of the third-party service.
 - The load test may violate the terms-of-service contract that you have with the provider.
 
 Your k6 script can skip third-party requests in a few ways:

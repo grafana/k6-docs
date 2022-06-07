@@ -43,7 +43,7 @@ Deletes the current test result.
 
 ## Set as baseline
 
-Sets the current test run as your baseline test. You are able to specify one test run per test as baseline. This allows you to compare performance over a longer period of time.
+Sets the current test run as your baseline test. You can specify one test run per test as baseline. This allows you to compare performance over a longer period of time.
 
 ![Set Baseline](./images/08-Test-Results-Menu/set-baseline.png)
 

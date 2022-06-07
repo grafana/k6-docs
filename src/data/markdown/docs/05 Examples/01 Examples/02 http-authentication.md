@@ -139,7 +139,7 @@ For this to work, we first need to do the following:
 
    </CodeGroup>
 
-4. Move the `aws4.js` file to the same folder as your script file and you'll be able to import
+4. Move the `aws4.js` file to the same folder as your script file. Now you can import
    it into your test script:
 
    <CodeGroup labels={[""]} lineNumbers={[false]}>

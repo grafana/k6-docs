@@ -23,13 +23,13 @@ You typically want to stress test an API or website to determine:
 3. The breaking point of your system and its failure mode.
 4. If your system will recover without manual intervention after the stress test is over.
 
-When stress testing, you're going to configure the test to include more concurrent users or generate higher throughput than:
+When stress testing, you configure the test to include more concurrent users or generate higher throughput than:
 
-1. Your application typically sees.
-2. You think it will be able to handle.
+* Your application typically sees.
+* You think your application can handle.
 
-It's important to note that a stress test does not mean you're going to overwhelm the system
-immediately — that's a [spike test](#spike-testing), which we'll cover in a minute.
+Note that a stress test doesn't overwhelm the system
+immediately — that's a [spike test](#spike-testing), which we'll cover soon.
 
 A stress test should be configured in many gradual steps, each step increasing the concurrent load of the system.
 

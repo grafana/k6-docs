@@ -7,9 +7,9 @@ excerpt: 'The Threshold Tab allows you to visually inspect the performance of yo
 
 In the **Threshold** tab, you can visually inspect and analyze `Thresholds` in your test. The number in the tab represents passing Thresholds / Total Thresholds so you can quickly see if something needs your attention.
 
-Further within this tab, you are able to:
+You can use this tab to do the following:
 
-- Easily see failing thresholds. In the example below we have filtered the list of thresholds to only show thresholds with names that include either "http" or "vus". Out of the thresholds that satisfies the filter criteria we can see that two are failing, `vus: value>100` and `http_reqs:count>10000`. Take notice of the &#10003; or &#10005; on the left side of each row.
+- Find failing thresholds. In this example, we've filtered the list of thresholds to show only thresholds with names that include either "http" or "vus". Out of the thresholds that satisfies the filter criteria we can see that two are failing, `vus: value>100` and `http_reqs:count>10000`. Note the &#10003; or &#10005; on the left side of each row.
 - Expand a threshold to view its graph. In our example below, the expanded thresholds calculated value is below the threshold of 100 ms.
 - Add the chart to the `Analysis Tab` for further correlation with other data
 

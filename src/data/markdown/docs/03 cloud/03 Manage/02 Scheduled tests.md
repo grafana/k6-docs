@@ -21,7 +21,7 @@ Schedules can be set up from two different places:
 Located in the left menu under **Manage section** you will find the **Scheduled tests** option.
 
 On this page you can quickly find and edit all test schedules that have been created in your organization.<br/>
-You are also able to create a new schedule for any of your projects and cloud tests directly from this page.
+You can create a new schedule for any of your projects and cloud tests directly from this page.
 
 ![Schedules page](./images/Scheduling-a-test/schedules-page.png)
 

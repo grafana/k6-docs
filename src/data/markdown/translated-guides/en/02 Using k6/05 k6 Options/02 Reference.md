@@ -565,7 +565,7 @@ export const options = {
 
 A list of IPs, IP ranges and CIDRs from which VUs will make requests. The IPs will be sequentially
 given out to VUs. This option doesn't change anything on the OS level so the IPs need to be already
-configured on the OS level in order for k6 to be able to use them. Also IPv4 CIDRs with more than 2
+configured on the OS level for k6 to use them. Also IPv4 CIDRs with more than 2
 IPs don't include the first and last IP as they are reserved for referring to the network itself and
 the broadcast address respectively.
 

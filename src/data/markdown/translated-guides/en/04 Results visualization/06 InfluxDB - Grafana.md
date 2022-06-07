@@ -119,7 +119,7 @@ $ docker-compose run -v \
     k6 run /scripts/es6sample.js
 ```
 
-Now you should be able to connect to localhost on port 3000 with your browser and access the
+Now you should be able to connect to `localhost` on port 3000 with your browser and access the
 Grafana installation in the Docker container.
 
 ## InfluxDB options

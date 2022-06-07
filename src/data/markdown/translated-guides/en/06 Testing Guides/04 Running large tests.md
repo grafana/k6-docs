@@ -273,7 +273,7 @@ If you make 50M requests with 100 failures, this is generally a good result (0.0
 ## Benchmarking k6 on AWS
 
 We have executed a few large tests on different EC2 machines to see how much load k6 can generate.
-Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
+Our general observation is that k6 scales proportionally to the hardware. 2x larger machine can generate 2x more traffic.
 The limit to this scalability is in the number of open connections. A single Linux machine can open up to `65 535` sockets per IP.
 This means that maximum of 65k requests can be executed simultaneously on a single machine.
 The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000.
