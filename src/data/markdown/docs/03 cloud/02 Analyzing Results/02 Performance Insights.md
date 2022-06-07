@@ -9,7 +9,7 @@ k6 Cloud's Performance Insights are algorithms built into k6 Cloud Test Results.
 
 > ### Using Performance Insights
 >
-> In order to utilize Performance Insights, all you need to do is run a test. The algorithms automatically analyze
+> To use Performance Insights, just run your test. The algorithms automatically analyze
 > the raw metrics and data. If we find something, we will let you know in the Performance Overview section at the top of your test
 
 ## Throughput Limit
@@ -44,7 +44,7 @@ This alert is raised because our Smart Results algorithms need at least 100 comp
 
 ## Duration Too Short
 
-Similarly to `Not Enough Training Data`, this alert is raised because our system does not have enough training data to produce meaningful results. More than 100 complete VU iterations were detected but duration needs to be extended in order to analyze data.
+Similar `Not Enough Training Data`, this alert is raised because our system does not have enough training data to produce meaningful results. More than 100 complete VU iterations were detected but duration needs to be extended in to analyze data.
 
 ## Test Health and Informational Performance Insights
 

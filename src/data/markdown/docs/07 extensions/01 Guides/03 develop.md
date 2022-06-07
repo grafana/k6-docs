@@ -45,7 +45,7 @@ func (*Compare) IsGreater(a, b int) bool {
 
 </CodeGroup>
 
-In order to use this from k6 test scripts we need to register the module
+To use this from k6 test scripts, register the module
 by adding the following:
 
 <CodeGroup labels={[]} lineNumbers={[false]}>
