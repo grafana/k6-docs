@@ -156,6 +156,7 @@ Xray
 Netdata
 yml
 xk6-\*
+yml
 (?i)cpu
 (?i)chai
 (?i)chaijs
