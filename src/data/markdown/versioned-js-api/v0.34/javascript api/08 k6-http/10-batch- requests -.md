@@ -72,7 +72,8 @@ export default function () {
 
 ### Example with request objects
 
-You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/k6-http/params) object to the request:
+You can also use objects to hold information about a request.
+Here's an example where we do that to send a POST request, also using the [Params](/javascript-api/k6-http/params) object to give the request custom headers:
 
 <CodeGroup labels={[]}>
 
@@ -133,7 +134,7 @@ export default function () {
   };
   const responses = http.batch(requests);
   // when accessing results, we use the name of the request as index
-  // in order to find the corresponding Response object
+  // to find the corresponding Response object
   check(responses['front page'], {
     'front page status was 200': (res) => res.status === 200,
   });

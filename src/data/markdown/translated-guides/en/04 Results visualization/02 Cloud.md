@@ -106,8 +106,7 @@ default.
 When using aggregation, k6 will collect incoming test data into time-buckets.
 For each data-type collected in such a bucket, it will figure out the dispersion
 (by default the [interquartile range][iqr]) around the median value.
-Outlier-data far outside the lower and upper quartiles are not aggregated in
-order to not lose potentially important testing information.
+Outlier data&mdash;far outside the lower and upper quartiles&mdash; is not aggregated, preventing the loss of potentially important testing information.
 
 | Name                                          | Description                                                                                              |
 |---------------------------------------------- |----------------------------------------------------------------------------------------------------------|

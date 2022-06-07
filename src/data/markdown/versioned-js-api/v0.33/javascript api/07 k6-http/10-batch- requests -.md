@@ -132,7 +132,7 @@ export default function () {
   };
   const responses = http.batch(requests);
   // when accessing results, we use the name of the request as index
-  // in order to find the corresponding Response object
+  // to find the corresponding Response object
   check(responses['front page'], {
     'front page status was 200': (res) => res.status === 200,
   });
