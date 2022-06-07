@@ -139,6 +139,65 @@ export default function () {
 > **Note**: Though this method uses the `--env` flag, this is not the same as using an environment variable.
 > For an explanation, refer to the [environment variables document](/using-k6/environment-variables).
 
+
+<Collapsible title="Set options with config">
+
+### Set options with the --config flag
+
+You can also define the same options through a config file, then use a CLI flag to specify the config.
+If you use it, the options take the _second lowest order of precedence_ (after defaults).
+If you set options anywhere else, they will override the `--config` flag options.  
+
+Use the `--config` flag to declare the file path to your options.
+
+```bash
+k6 run --config options.json script.js
+```
+
+This command would set test options according to the values in the `options.json` file.
+
+<CodeGroup labels={["options.json"]} lineNumbers={[true]}>
+
+```json
+{
+  "hosts": {
+    "test.k6.io": "1.2.3.4"
+  },
+  "stages": [
+    {
+      "duration": "1m",
+      "target": 10
+    },
+    {
+      "duration": "1m",
+      "target": 30
+    },
+    {
+      "duration": "1m",
+      "target": 0
+    }
+  ],
+  "thresholds": {
+    "http_req_duration": ["avg<100", "p(95)<200"]
+  },
+  "noConnectionReuse": true,
+  "userAgent": "MyK6UserAgentString/1.0"
+}
+```
+
+</CodeGroup>
+
+For an alternative way to separate configuration from logic, you can use the `JSON.parse()` method in your script file:
+
+```javascript
+// load test config, used to populate exported options object:
+const testConfig = JSON.parse(open('./config/test.json'));
+// combine the above with options set directly:
+export const options = testConfig;
+```
+
+</Collapsible>
+
 ## Get an option value from the script
 
 The `k6/execution` API provides a [test.options](/javascript-api/k6-execution/#test) object.
