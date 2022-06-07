@@ -84,6 +84,7 @@ jq
 loki
 Lua
 maxfiles
+Netdata
 msgs
 netstat
 nofile
@@ -151,12 +152,10 @@ eval
 (?i)toolchain
 xcaddy
 pdf()
-yaml
 Xray
-Netdata
+yaml
 yml
 xk6-\*
-yml
 (?i)cpu
 (?i)chai
 (?i)chaijs
