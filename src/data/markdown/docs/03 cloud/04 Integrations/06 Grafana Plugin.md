@@ -30,7 +30,7 @@ The k6 Cloud app for Grafana, like the k6 Cloud web app, provides a dashboard in
 
 ## Re-running cloud tests
 
-The k6 Cloud app for Grafana will also provide additional features to interact with your testing. To begin with, the application offers the possibility to launch an existing cloud test. Select the `Run test` button to start running the test on the k6 Cloud. You'll be able to visualize the test run immediately on Grafana.
+The k6 Cloud app for Grafana will also provide additional features to interact with your testing. To begin with, the application offers the possibility to launch an existing cloud test. Select the `Run test` button to start running the test on the k6 Cloud. You can visualize the test run immediately on Grafana.
 
 ![k6 test overview](./images/06-Grafana-Plugin/k6_cloud_grafana_test_overview.png)
 

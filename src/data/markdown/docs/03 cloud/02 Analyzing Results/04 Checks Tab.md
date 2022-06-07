@@ -8,9 +8,9 @@ excerpt: 'The Checks tab visualizes performance of your checks in your k6 test'
 With the **Checks** tab, you can visually inspect and analyze Checks in your test.
 The number in the tab represents passing Checks / total Checks, so you can quickly see if there's something that demands your attention.
 
-As you further examine this tab, you are able to:
+You can use this tab to do the following:
 
-- Easily see `Checks` that have failures. Take notice of the &#10003; or &#10005; on the left side of each row
+- Find `Checks` that have failures. Take notice of the &#10003; or &#10005; on the left side of each row
   - In the example below, the `Check` "HTTP status is 200" is succeeding only 84.57% of the time with 137 successful runs and 25 failures.
 - Expand a `Check` to view its graph. We can see how many failures occur at different points in the test
 - Add the chart to the `Analysis Tab` for further correlation with other data.

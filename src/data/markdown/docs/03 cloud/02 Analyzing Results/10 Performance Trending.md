@@ -5,7 +5,7 @@ excerpt: 'The performance trending graph allows you to quickly see how performan
 
 ## Background
 
-The performance trending graph is automatically created as you continue to run your tests. It's intended to provide a high level overview of your test performance over time. The bars on the graph also signal the status of a specific test. You are able to view the performance trending graph both from the dashboard, or by clicking on the name of any given test. In both cases we plot the `p95` response time metric for all HTTP requests from the test run.
+The performance trending graph is automatically created as you continue to run your tests. It's intended to provide a high level overview of your test performance over time. The bars on the graph also signal the status of a specific test. You can view the performance trending graph both from the dashboard, or by clicking on the name of any given test. In both cases we plot the `p95` response time metric for all HTTP requests from the test run.
 
 ## Dashboard Performance Trending
 
