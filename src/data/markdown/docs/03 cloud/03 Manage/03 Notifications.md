@@ -224,7 +224,7 @@ This example loops over the list of `errors` (if any):
   ]
 ```
 
-The `loop.last` is a special Jinja feature used here in order to not add a
+The `loop.last` is a special Jinja feature used here to not add a
 comma after the very last item (a comma at the end would not be valid JSON).
 
 > It's important to remember that after the Jinja-parsing/replacing, the result _must be a valid JSON structure_.

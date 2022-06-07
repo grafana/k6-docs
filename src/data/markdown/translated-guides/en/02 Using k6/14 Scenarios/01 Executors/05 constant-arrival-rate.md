@@ -62,7 +62,7 @@ export const options = {
       // It should preallocate 2 VUs before starting the test
       preAllocatedVUs: 2,
 
-      // It is allowed to spin up to 50 maximum VUs in order to sustain the defined
+      // It is allowed to spin up to 50 maximum VUs to sustain the defined
       // constant arrival rate.
       maxVUs: 50,
     },
@@ -79,7 +79,7 @@ export default function () {
 
 </CodeGroup>
 
-> Note that in order to reliably achieve a fixed request rate, it's recommended to keep
+> **Note**: to reliably achieve a fixed request rate, it's recommended to keep
 > the function being executed very simple, with preferably only a single request call,
 > and no additional processing or `sleep()` calls.
 

@@ -3,7 +3,7 @@ title: 'Token'
 excerpt: 'How to authenticate with k6 Cloud token'
 ---
 
-You'll need to authenticate in order to use k6 Cloud, whether it's for streaming results or running tests in the cloud. Your Auth Token enables the interaction with k6 Cloud using the k6 CLI or through the REST API. [Get your Auth Token](https://app.k6.io/account/token).
+You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. Your Auth Token enables the interaction with k6 Cloud using the k6 CLI or through the REST API. [Get your Auth Token](https://app.k6.io/account/token).
 
 Below are some examples on how to utilize the token to authenticate.
 
