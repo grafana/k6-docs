@@ -41,4 +41,4 @@ The Payments section will include all of your receipts for purchases made with a
 
 ## Invoicing and Wire Transfer
 
-For annual agreements we do offer wire transfer / invoicing as a method of payment. In order to get started, please reach out to sales@k6.io.
+For annual agreements we do offer wire transfer / invoicing as a method of payment. To get started, reach out to sales@k6.io.
