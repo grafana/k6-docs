@@ -6,6 +6,7 @@ excerpt: 'A complete list of all k6 options, with descriptions, defaults, and ex
 
 Options define test-run behavior.
 Most options can be passed in multiple places.
+If an option is defined in multiple places, k6 chooses the value from the highest [order of precedence](/using-k6/k6-options/how-to#order-of-precedence).
 
 ## Quick reference of options
 

@@ -21,9 +21,10 @@ You can set options in multiple places.
 If there are conflicts, k6 uses the option from the place with the highest _order of precedence_.
 
 1. First, k6 uses the option's default value.
-2. Then, k6 uses the script value (if set).
-3. After, k6 uses the environment variable (if set). 
-4. Finally, k6 takes the value from the CLI flag (if set). 
+1. Next, k6 uses the options set by the `--config` flag.
+1. Then, k6 uses the script value (if set).
+1. After, k6 uses the environment variable (if set). 
+1. Finally, k6 takes the value from the CLI flag (if set). 
 
 That is, **command-line flags have the highest order of precedence**.
 
