@@ -7,28 +7,6 @@ excerpt: 'A complete list of all k6 options, with descriptions, defaults, and ex
 Options define test-run behavior.
 Most options can be passed in multiple places.
 
-## Order of precedence
-
-_Command-line flags have the highest order of precedence.
-They override all other options._
-
-For almost all options that k6 provides, you can pass them in one of four places:
-- Command-line flags,
-- Environment variables
-- Config file
-- In the script code
-
-If you set the same option in multiple places, k6 runs according to the order of precedence:
-
-| Place to specify options           | Order of precedence |
-|------------------------------------|---------------------|
-| Command-line flags                 | **1 (highest)**     |
-| Environmental variables            | 2                   |
-| The `options` object in the script | 3                   |
-| A config file                      | 4                   |
-| Nowhere (k6 uses the default)      | **5 (lowest)**      |
-
-
 ## Quick reference of options
 
 Each option has its own detailed reference in a separate section.
