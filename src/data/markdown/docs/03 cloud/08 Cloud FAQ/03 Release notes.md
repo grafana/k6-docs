@@ -4,6 +4,14 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.6.0 `(2022-6-7)`
+- Support for script scenarios in [TestBuilder](/test-authoring/test-builder/)
+
+### v3.5.0 `(2022-5-31)`
+- Grafana Single Sign On
+- Add more descriptive messages to performance insights header
+- Sort status code on insights filter
+
 ### v3.4.4 `(2022-5-17)`
 - Disable create and run test runs when cloud execution is disabled.
 - Fix: add support for private load zones on the PDF report.
