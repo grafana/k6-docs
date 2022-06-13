@@ -10,16 +10,16 @@ excerpt: 'Find a list of terms commonly used within the k6 project and what we m
 let list = '';
 
 function makeDoc(words) {
-  for (let i = 0; i < words.length; i++) {
-    list += `<dt id="${words[i]['term']}"><b> ${words[i]['term']}</b></dt>
+    for (let i = 0; i < words.length; i++) {
+        list += `<dt id="${words[i]['term']}"><b> ${words[i]['term']}</b></dt>
     <dd> ${words[i]['definition']} </dd> \n`;
-  }
-  return `${frontmatter} <dl> ${list} </dl>`;
+    }
+    return `${frontmatter} <dl> ${list} </dl>`;
 }
 
 fs.writeFile("glossary.md", makeDoc(words), function(err) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log("File saved at glossary.md");
+    if (err) {
+        return console.log(err);
+    }
+    console.log("File saved at glossary.md");
 });
