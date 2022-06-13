@@ -3,10 +3,8 @@ title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
 ---
 
-
-## What are thresholds?
-
 *Thresholds* are pass/fail criteria that specify the performance expectations of the system under test.
+Often, k6 users use thresholds to codify their SLOs.
 
 For example, you can use thresholds to test that your system meets the following expectations:
 

@@ -4,7 +4,7 @@ excerpt: 'Scenarios allow us to make in-depth configurations to how VUs and iter
 hideFromSidebar: false
 ---
 
-Scenarios allow us to make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
+Scenarios make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
 
 - Multiple scenarios can be declared in the same script, and each one can
   independently execute a different JavaScript function, which makes organizing tests easier
