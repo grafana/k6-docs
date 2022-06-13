@@ -22,7 +22,7 @@ also adds the following options:
 | preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start to preserve runtime resources. | -       |
 | startRate        | integer | Number of iterations to execute each `timeUnit` period at test start.                   | `0`     |
 | timeUnit         | string  | Period of time to apply the `startRate` to the `stages`' `target` value. Its value is constant for the whole duration of the scenario, it is not possible to change it for a specific stage.                    | `"1s"`  |
-| maxVUs          | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| maxVUs          | integer | Maximum number of VUs to allow during the test run.                                     | If unset, same as `preAllocatedVUs`      |
 
 ## When to use
 
