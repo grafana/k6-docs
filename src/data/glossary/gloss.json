@@ -1,0 +1,247 @@
+[
+  {
+    "term": "Concurrency",
+    "definition": "When multiple computations happen at the same time.\nIn the context of k6, virtual users can make concurrent requests as a test runs. In k6 cloud, you can also run multiple tests concurrently."
+  },
+  {
+    "term": "Correlation",
+    "definition": "The process of capturing dynamic data received from the system under test and reusing the data in subsequent requests. A common use case for correlation is retrieving and reusing a session id, or token, throughout the whole lifetime of a [virtual user](#virtual-user).",
+    "see_also": [
+      "[Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/)",
+      "[Correlation in testing APIs](https://k6.io/docs/testing-guides/api-load-testing/#correlation-and-data-parameterization)"
+    ],
+    "dnt": false,
+    "en_US_note": "Avoid using \"correlation\" in the statistical sense, unless the usage is precise and necessary"
+  },
+  {
+    "term": "Checks",
+    "definition": "Conditions that validate the correctness of a service.\nIn k6, checks are an object in the API that validates a test condition.",
+    "see_also": [
+      "[/using-k6/checks]"
+    ],
+    "en_US_note": "Grafana also uses checks as a concept in their synthetic monitoring service."
+  },
+  {
+    "term": "Duration",
+    "definition": "The length of time that a test runs. When duration is set as an option, VU code runs for the length of time specified.",
+    "see_also": [
+      "[Duration option](https://k6.io/docs/using-k6/k6-options/reference/#duration)"
+    ]
+  },
+  {
+    "term": "Dynamic data",
+    "definition": "Data that might, or will, change between test runs. Common examples are order ids, session tokens or timestamps.",
+    "see_also": [
+      "[Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/)"
+    ],
+    "dnt": false,
+    "en_US_note": null
+  },
+  {
+    "term": "Endurance testing",
+    "definition": "A synonym for [soak testing](#soak-test).",
+    "see_also": null,
+    "dnt": false,
+    "en_US_note": "Prefer Soak testing"
+  },
+  {
+    "term": "Executor",
+    "definition": "An attribute that configures VU behavior in a scenario."
+  },
+  {
+    "term": "Goja",
+    "definition": "A JavaScript runtime, purely written in go, that emphasizes standard compliance and performance. We use goja to allow for test scripting without having to compromise speed, efficiency or reliability, which would have been the case using NodeJS. For more details, see the [Goja repository on GitHub](https://github.com/dop251/goja).",
+    "see_also": null,
+    "dnt": true,
+    "en_US_note": null
+  },
+  {
+    "term": "Graceful stop",
+    "definition": "Some period of intentional ramping down at the end of a load test. Graceful stops prevent abrupt, unrealistic drops to zero VUs.",
+    "see_also": [
+      "The [Graceful stop reference](https://k6.io/docs/using-k6/scenarios/graceful-stop/)"
+    ]
+  },
+  {
+    "term": "Horizontal scalability",
+    "definition": "The degree to which one can improve the performance of a system by adding more nodes (servers or computers for instance).",
+    "see_also": null,
+    "dnt": false
+  },
+  {
+    "term": "HTTP archive (HAR file)",
+    "definition": "A file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/k6io/har-to-k6).\n\nFor more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).",
+    "see_also": [
+      "[Har converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)"
+    ],
+    "dnt": false,
+    "en_US_note": null
+  },
+  {
+    "term": "Iteration",
+    "definition": "An iteration is an execution of the `default function`, or scenario `exec` function.\nYou can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)).",
+    "see_also": [
+      "The [test life cycle](https://k6.io/docs/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code."
+    ],
+    "dnt": false,
+    "en_US_note": "Applies only to code in VU context."
+  },
+  {
+    "term": "k6 Cloud",
+    "definition": "**k6 Cloud** is the common name for the entire cloud product, which is composed of both k6 Cloud Execution and k6 Cloud Test Results.",
+    "see_also": [
+      "[k6 Cloud docs](https://k6.io/docs/cloud)"
+    ],
+    "dnt": true,
+    "en_US_note": null
+  },
+  {
+    "term": "k6 Options",
+    "definition": "Values that configure a k6 test run. Can be set with command-line flags, environment variables, and in the script.",
+    "see_also": [
+      "[k6 Options](/using-ky/k6-options)"
+    ],
+    "dnt": false
+  },
+  {
+    "term": "Load test",
+    "definition": "A test that assesses the performance of the system under test in terms of concurrent users or requests per second.",
+    "see_also": [
+      "[Load Testing](/test-types/load-testing)"
+    ],
+    "dnt": false,
+    "en_US_note": null
+  },
+  {
+    "term": "Metric",
+    "definition": "Anything measurable that a test emits. Users use metrics to assess the performance of the system under test in terms of concurrent users or requests per second.",
+    "see_also": [
+      "[Metrics](/using-k6/metrics)"
+    ],
+    "dnt": false
+  },
+  {
+    "term": "Metric sample",
+    "definition": "A metric's value (and, in time-series data, its timestamp)",
+    "dnt": false,
+    "en_US_note": null
+  },
+  {
+    "term": "Parameterization",
+    "definition": "The process of turning test values into reusable parameters, e.g. through variables and shared arrays.",
+    "see_also": [
+      "[Data parameterization examples](https://k6.io/docs/examples/data-parameterization/)"
+    ],
+    "dnt": false
+  },
+  {
+    "term": "Reliability",
+    "definition": "The degree to which a system can produce reliable results consecutively, even under pressure.",
+    "see_also": null,
+    "dnt": false
+  },
+  {
+    "term": "Requests per second",
+    "definition": "the rate at which requests are executed against the system under test.",
+    "see_also": null,
+    "dnt": false
+  },
+  {
+    "term": "Saturation",
+    "definition": "A condition when a system's reaches full resource utilization, and can handle no additional request.",
+    "see_also": null,
+    "dnt": false,
+    "en_US_note": null
+  },
+  {
+    "term": "Scalability",
+    "definition": "The degree to which system under test’s performance or capacity may be increased by adding additional resources. See [Vertical scalability](#vertical-scalability) and [Horizontal scalability](#horizontal-scalability).",
+    "see_also": null,
+    "dnt": false
+  },
+  {
+    "term": "Scenario",
+    "definition": "A special option that models plausible events that an application could experience. To model high traffic, a scenario might have virtual users making concurrent requests over multiple script iterations.",
+    "see_also": [
+      "[Scenarios reference](/using-k6/scenarios)"
+    ]
+  },
+  {
+    "term": "Service-level agreement",
+    "definition": "an agreement made between the one providing the service and someone, often a user of the service, promising that the availability of the service will meet a certain level during a certain period.",
+    "dnt": false
+  },
+  {
+    "term": "Service-level indicator (SLI)",
+    "definition": "the metric we use to measure whether a service meets the [service-level objective (SLO)](#service-level-objective). While doing performance monitoring this could, for instance, be the number of successful requests against the service during a specified period.",
+    "dnt": false
+  },
+  {
+    "term": "Service-level objective (SLO)",
+    "defintion": "An actual target, either internal or part of the [service-level agreement (SLA)](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's deemed stable."
+  },
+  {
+    "term": "Smoke test",
+    "definition": "A type of test used to verify that the system under test can handle a minimal amount of load without any issues. It’s commonly used as a first step, to ensure that everything works as intended under optimal conditions, before advancing to any of the other performance test types.",
+    "see_also": [
+      "[Smoke Testing](/test-types/smoke-testing)"
+    ],
+    "dnt": false
+  },
+  {
+    "term": "Soak test",
+    "definition": "A type of test used to uncover performance and reliability issues stemming from a system being under pressure for an extended period.",
+    "see_also": "[Soak Testing](/test-types/soak-testing)",
+    "dnt": false
+  },
+  {
+    "Term": "Stability",
+    "definition": "A trait used to describe a system under test’s ability to withstand failures and erroneous behavior under normal usage.",
+    "dnt": false
+  },
+  {
+    "term": "Stress test",
+    "definition": "A type of test used to identify the limits of what the system under test is capable of handling in terms of load.",
+    "see_also": [
+      "[Stress Testing](/test-types/stress-testing)"
+    ]
+  },
+  {
+    "term": "System under test",
+    "definition": "The actual piece of software that we're currently testing. This could be an API, a website, infrastructure, or any combination of these.",
+    "dnt": false
+  },
+  {
+    "term": "Test run",
+    "definition": "An individual execution of a test script.",
+    "see_also": [
+      "[Running k6](/getting-started/running-k6)"
+    ],
+    "en_US_note": "Prefer *run* over *execution*."
+  },
+  {
+    "term": "Test script",
+    "definition": "The actual code you run as part of your test run, as well as any (or at least most) of the configuration needed to run the code. It defines how the test will behave as well as what requests will be made. See the [Single Request example](/examples/single-request).",
+    "see_also": null
+  },
+  {
+    "term": "Threshold",
+    "definition": "A minimum value that indicates something significant about a system.\nIn k6, thresholds are pass/fail criteria that specify the performance expectations of the system under test.",
+    "see_also": [
+      "[k6.io/docs/using-k6/thresholds](Thresholds are pass/fail criteria that specify the performance expectations of the system under test.)"
+    ],
+    "dnt": false,
+    "en_US_note": "Grafana also has thresholds, which mean something different from k6."
+  },
+  {
+    "term": "Vertical scalability",
+    "definition": "A trait describing to what degree a system under test’s performance or capacity may be increased by adding more hardware resources to a node (RAM, cores, bandwidth, etc.)."
+  },
+  {
+    "term": "Virtual users (VU)",
+    "definition": "The simulated users that perform separate and concurrent iterations of your test script.",
+    "see_also": [
+      "[Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users)."
+    ]
+  }
+]
