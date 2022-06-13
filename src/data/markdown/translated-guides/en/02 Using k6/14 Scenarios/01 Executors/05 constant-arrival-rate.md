@@ -26,7 +26,7 @@ also adds the following options:
 | rate<sup>(required)</sup>            | integer | Number of iterations to start during each `timeUnit` period.                                 | -       |
 | preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start to preserve runtime resources. | -       |
 | timeUnit         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | If not set, has the same value as `preAllocatedVUs`       |
+| maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | If unset, same as `preAllocatedVUs`       |
 
 ## When to use
 
