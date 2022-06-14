@@ -63,7 +63,7 @@ In k6 scripts, checks are a function that validates a response to a test request
 <dt id="Goja"><b> Goja</b></dt>
 <dd> A JavaScript runtime, purely written in go, that emphasizes standard compliance and performance. We use goja to allow for test scripting without having to compromise speed, efficiency or reliability, which would have been the case using NodeJS. For more details, see the [Goja repository on GitHub](https://github.com/dop251/goja). </dd> 
 <dt id="Graceful stop"><b> Graceful stop</b></dt>
-<dd> A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution, and graceful rampdowns unrealistic drops to zero VUs. </dd> 
+<dd> A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution, and graceful ramp downs unrealistic drops to zero VUs. </dd> 
 <dt id="Horizontal scalability"><b> Horizontal scalability</b></dt>
 <dd> The degree to which one can improve the performance of a system by adding more nodes (servers or computers for instance). </dd> 
 <dt id="HTTP archive (HAR file)"><b> HTTP archive (HAR file)</b></dt>
