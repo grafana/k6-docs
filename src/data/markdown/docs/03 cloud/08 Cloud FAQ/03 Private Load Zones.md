@@ -9,11 +9,11 @@ A private load zone is a special location that we set up for you on k6 Cloud. Th
 
 ## Benefits of using private load zones
 
-Here are some reasons why you might want to use a private load zone on k6 Cloud:
-- Improved privacy or application security while doing load testing
-- Ability to leverage k6 Cloud's unified dashboards and visualization features
-- Reuse of existing cloud provider account to provision the infrastructure
-- Improved visibility into instance usage and provisioning activity on your team
+Why might you want to use a private load zone?
+
+One advantage of private load zones is **improved privacy or application security**. When you run a load test on a private load zone in k6 Cloud, log output from the load generator never gets sent to us, which may help avoid the accidental leaking of private information.
+
+Another advantage of using private load zones is the ability to **leverage all of k6 Cloud's features** even with tests run on your cloud account. For example, you will be able to visualize your results in real time, have your data collated in a single place, use the Test Builder and Script Editor to create your scripts, [and more](https://k6.io/docs/cloud/#cloud-features).
 
 ## How do you use a private load zone?
 
