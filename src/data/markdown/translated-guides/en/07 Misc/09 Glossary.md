@@ -34,7 +34,7 @@ excerpt: 'Find a list of terms commonly used within the k6 project and what we m
 - [Service-level objective (SLO)](#service-level-objective-(slo))
 - [Smoke test](#smoke-test)
 - [Soak test](#soak-test)
-- [undefined](#undefined)
+- [Stability](#stability)
 - [Stress test](#stress-test)
 - [System under test](#system-under-test)
 - [Test run](#test-run)
@@ -201,7 +201,7 @@ A type of test used to uncover performance and reliability issues stemming from 
 
 Read more: [Soak Testing](/test-types/soak-testing)
 
-### undefined
+### Stability
 
 A system under test’s ability to withstand failures and errors.
 

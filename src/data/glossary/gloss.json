@@ -185,7 +185,7 @@
 	]
 },
 {
-	"Term": "Stability",
+	"term": "Stability",
 	"definition": "A system under test’s ability to withstand failures and errors."
 },
 {
