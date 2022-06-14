@@ -4,6 +4,7 @@ excerpt: 'Find a list of terms commonly used within the k6 project and what we m
 ---
 
 <Glossary>
+
 - [Concurrency](#concurrency)
 - [Correlation](#correlation)
 - [Checks](#checks)
