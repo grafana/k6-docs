@@ -14,6 +14,10 @@ const breadcrumbs = [
     path: '/extensions/',
   },
   {
+    name: 'Getting started',
+    path: '/extensions/getting-started/',
+  },
+  {
     name: 'Build Bundle',
     path: '/extensions/bundle-builder/',
   },
@@ -56,32 +60,33 @@ export default function BundleBuilderPage({
       >
         <ExtensionsTitleGroup
           title={'Build Bundle'}
-          description={``}
+          description={`Combine multiple extensions into your reliability testing toolkit.`}
           className="container"
           breadcrumbs={breadcrumbs}
         />
         <div className={docPageContent.inner}>
           <p>
-            Easily create your own bespoke k6 binary with all the extensions you
-            want to run using the bundle builder and xk6. Just select all the
-            extensions you want to use, and copy the command below. The
-            resulting binary will then allow you to use all the extensions
-            you&apos;ve picked in your test scripts.
+            Extensions are composable; select the extensions you would like to
+            mix and match for use in your test scripts. Then use the{' '}
+            <em>builder</em> below to generate your command line to build your
+            bespoke k6 binary.
           </p>
+          <ExtensionSelection
+            data={extensionsList}
+            description={
+              'Use the following command to build k6 based upon your selection(s):'
+            }
+          />
           <p>
-            Want learn more about how xk6 works or how to create your own
-            extension? Check out the{' '}
+            Don&apos;t see what you need? Learn how you can{' '}
             <Link
-              to={'/extensions/guides/build-a-k6-binary-with-extensions/'}
+              to={'/extensions/getting-started/create/'}
               class={docPageContent.link}
             >
-              tutorial
-            </Link>
-            .
+              create
+            </Link>{' '}
+            a custom extension.
           </p>
-        </div>
-        <div className={`${docPageContent.inner} `}>
-          <ExtensionSelection data={extensionsList} />
         </div>
       </DocLayout>
     </LocaleProvider>
