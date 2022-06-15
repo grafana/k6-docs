@@ -153,6 +153,11 @@ export const options = {
 | distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution).               |
 | staticIPs (boolean)   | Optional. `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                                       |
 | note (string)         | Optional. Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test. |
+| deleteSensitiveData (boolean) | Optional. false by default  | If set to `true`, k6 deletes sensitive data as soon as the test starts running, or, if still queued, when the test aborts. Sensitive data includes scripts, HAR files, archives, and APM credentials. |
+
+> **Note**:
+> The `deleteSensitiveData` option is unavailable in default subscriptions.
+> If you want to activate it, contact our CS team at support@k6.io.
 
 ### Running tests under a different project than your default one
 
