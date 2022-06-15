@@ -1,5 +1,6 @@
 import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import Blockquote from 'components/shared/blockquote';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql, Link, useStaticQuery } from 'gatsby';
@@ -14,8 +15,12 @@ const breadcrumbs = [
     path: '/extensions/',
   },
   {
-    name: 'Build Bundle',
-    path: '/extensions/bundle-builder/',
+    name: 'Getting started',
+    path: '/extensions/getting-started/',
+  },
+  {
+    name: 'Bundle',
+    path: '/extensions/getting-started/bundle/',
   },
 ];
 
@@ -55,33 +60,45 @@ export default function BundleBuilderPage({
         sectionName="Extensions"
       >
         <ExtensionsTitleGroup
-          title={'Build Bundle'}
-          description={``}
+          title={'Bundle'}
+          description={`Combine multiple extensions into your reliability testing toolkit.`}
           className="container"
           breadcrumbs={breadcrumbs}
         />
         <div className={docPageContent.inner}>
           <p>
-            Easily create your own bespoke k6 binary with all the extensions you
-            want to run using the bundle builder and xk6. Just select all the
-            extensions you want to use, and copy the command below. The
-            resulting binary will then allow you to use all the extensions
-            you&apos;ve picked in your test scripts.
+            Extensions are composable; select the extensions you would like to
+            mix and match for use in your test scripts. Then use the
+            <em>interactive builder</em> below to generate your command line to
+            build your bespoke k6 binary.
           </p>
-          <p>
-            Want learn more about how xk6 works or how to create your own
-            extension? Check out the{' '}
+          <Blockquote>
+            To build successfully, ensure your environment is as described in{' '}
             <Link
-              to={'/extensions/guides/build-a-k6-binary-with-extensions/'}
-              class={docPageContent.link}
+              to="/extensions/guides/build-a-k6-binary-with-extensions/"
+              className="link"
             >
-              tutorial
+              Build a k6 binary with extensions
             </Link>
             .
+          </Blockquote>
+          <p />
+          <ExtensionSelection
+            data={extensionsList}
+            description={
+              'Use the following command to build k6 based upon your selection(s):'
+            }
+          />
+          <p>
+            Don&apos;t see what you need? Learn how you can{' '}
+            <Link
+              to={'/extensions/getting-started/create/'}
+              class={docPageContent.link}
+            >
+              create
+            </Link>{' '}
+            a custom extension.
           </p>
-        </div>
-        <div className={`${docPageContent.inner} `}>
-          <ExtensionSelection data={extensionsList} />
         </div>
       </DocLayout>
     </LocaleProvider>
