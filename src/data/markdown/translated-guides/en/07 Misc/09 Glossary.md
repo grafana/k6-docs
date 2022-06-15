@@ -5,8 +5,8 @@ excerpt: 'A list of technical terms commonly used when discussing k6, with defin
 
 What we talk about when we talk about k6.
 
-In discussion about k6, certain terms have a precise technical meaning.
-If a certain term in these docs confuses you, consult this list for a definition.
+In discussion about k6, certain terms have a precise, technical meaning.
+If a term in these docs confuses you, consult this list for a definition.
 
 <Glossary>
 
@@ -252,3 +252,4 @@ The degree to which a system under test can improve performance or increase capa
 Or VUs. The simulated users that perform separate and concurrent iterations of your test script.
 
 Read more: [VU option reference](/using-k6/k6-options/reference#vus), [Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
+
