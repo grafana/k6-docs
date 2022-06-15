@@ -67,9 +67,7 @@ In k6 scripts, checks are a function that validates a response to a test request
 <dt id="Horizontal scalability"><b> Horizontal scalability</b></dt>
 <dd> The degree to which one can improve the performance of a system by adding more nodes (servers or computers for instance). </dd> 
 <dt id="HTTP archive (HAR file)"><b> HTTP archive (HAR file)</b></dt>
-<dd> A file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/k6io/har-to-k6).
-
-For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/). </dd> 
+<dd> A file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/k6io/har-to-k6).</dd> 
 <dt id="Iteration"><b> Iteration</b></dt>
 <dd> An iteration is an execution of the `default function`, or scenario `exec` function.
 You can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)). </dd> 
