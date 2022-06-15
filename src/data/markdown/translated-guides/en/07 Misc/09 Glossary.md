@@ -1,7 +1,12 @@
 ---
 title: Glossary
-excerpt: 'Find a list of terms commonly used within the k6 project and what we mean when we use them.'
+excerpt: 'A list of technical terms commonly used when discussing k6, with definitions.'
 ---
+
+What we talk about when we talk about k6.
+
+In discussion about k6, certain terms have a precise technical meaning.
+If a certain term in these docs confuses you, consult this list for a definition.
 
 <Glossary>
 
