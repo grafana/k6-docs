@@ -1246,6 +1246,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/extensions/bundle-builder/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/extensions/getting-started',
+    toPath: '/extensions/',
+    isPermanent: true,
+  });
 
   createRedirect({
     fromPath: '/misc/k6-extensions/',

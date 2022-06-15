@@ -325,3 +325,4 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 
 Next, create an [Output extension](/extensions/getting-started/create/output-extensions/) to publish test metrics 
 to a destination not already supported by k6.
+

@@ -204,3 +204,4 @@ Your output should be similar to the following:
   for your output extension.
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).
+

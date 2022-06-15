@@ -105,8 +105,8 @@ export default function ExploreExtensionsPage({
               className={docPageContent.link}
               to={'/extensions/bundle-builder/'}
             >
-              interactive builder
-            </Link>{' '}
+              bundle builder
+            Link>{' '}
             to get started!
           </p>
         </div>

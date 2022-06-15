@@ -33,4 +33,4 @@ export const ExtensionsQuickstart = () => {
       linkText="Read more"
     />
   );
-};
+}

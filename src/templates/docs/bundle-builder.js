@@ -19,7 +19,7 @@ const breadcrumbs = [
     path: '/extensions/getting-started/',
   },
   {
-    name: 'Bundle',
+    name: 'Build Bundle',
     path: '/extensions/bundle-builder/',
   },
 ];
@@ -60,7 +60,7 @@ export default function BundleBuilderPage({
         sectionName="Extensions"
       >
         <ExtensionsTitleGroup
-          title={'Bundle'}
+          title={'Build Bundle'}
           description={`Combine multiple extensions into your reliability testing toolkit.`}
           className="container"
           breadcrumbs={breadcrumbs}
