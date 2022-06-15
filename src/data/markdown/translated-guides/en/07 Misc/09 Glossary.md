@@ -29,9 +29,9 @@ excerpt: 'Find a list of terms commonly used within the k6 project and what we m
 - [Saturation](#saturation)
 - [Scalability](#scalability)
 - [Scenario](#scenario)
-- [Service-level agreement (SLA)](#service-level-agreement-(sla))
-- [Service-level indicator (SLI)](#service-level-indicator-(sli))
-- [Service-level objective (SLO)](#service-level-objective-(slo))
+- [Service-level agreement](#service-level-agreement)
+- [Service-level indicator](#service-level-indicator)
+- [Service-level objective](#service-level-objective)
 - [Smoke test](#smoke-test)
 - [Soak test](#soak-test)
 - [Stability](#stability)
@@ -42,7 +42,7 @@ excerpt: 'Find a list of terms commonly used within the k6 project and what we m
 - [Threshold](#threshold)
 - [Throughput](#throughput)
 - [Vertical scalability](#vertical-scalability)
-- [Virtual users (VU)](#virtual-users-(vu))
+- [Virtual users](#virtual-users)
 
 </Glossary>
 
@@ -53,7 +53,7 @@ In the context of k6, virtual users can make concurrent requests as a test runs.
 
 ### Correlation
 
-The process of capturing dynamic data received from the system under test and reusing the data in subsequent requests. A common use case for correlation is retrieving and reusing a session id, or token, throughout the whole lifetime of a [virtual user](#virtual-user).
+The process of taking [dynamic data](#dynamic-data) recieved from the system under test then reusing the data in a subsequent request. Testers commonly use correlation to retrieve and reuse session IDs or tokens for a [virtual user](#virtual-user)'s iteration lifetime.
 
 Read more: [Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](https://k6.io/docs/testing-guides/api-load-testing/#correlation-and-data-parameterization)
 
@@ -66,7 +66,7 @@ Read more: [Checks reference](/using-k6/checks)
 
 ### Duration
 
-The length of time that a test runs. When duration is set as an option, VU code runs for the length of time specified.
+The length of time that a test runs. When duration is set as an option, VU code runs for as many iterations as possible in the length of time specified (with possible finishing time given as a [graceful stop](#graceful-stop).
 
 Read more: [Duration option reference](https://k6.io/docs/using-k6/k6-options/reference/#duration)
 
@@ -82,17 +82,17 @@ A synonym for [soak testing](#soak-test).
 
 ### Executor
 
-An attribute of a scenario that configures VU behavior.
+An property of a [scenario](#scenario) that configures VU behavior. You can use executors to configure whether to designate iterations as shared between VUs or to run per VU, or to configure or whether the VU concurrency is constant or changing
 
 ### Goja
 
-A JavaScript runtime, written in pure Go, that emphasizes standard compliance and performance. We use Goja to enable test scripting without compromising speed, efficiency or reliability, which would have been the case using NodeJS
+A JavaScript runtime, written in pure Go, that emphasizes standard compliance and performance. k6 uses Goja to enable test scripting without compromising speed, efficiency or reliability, compromises that would have been necessary with NodeJS
 
 Read more: [Goja repository on GitHub](https://github.com/dop251/goja).
 
 ### Graceful stop
 
-A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution, and graceful rampdowns unrealistic drops to zero VUs.
+A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution, and graceful ramp downs prevent unrealistic drops to zero VUs.
 
 Read more: The [Graceful stop reference](https://k6.io/docs/using-k6/scenarios/graceful-stop/)
 
@@ -102,11 +102,9 @@ The degree to which one can improve the performance of a system by adding more n
 
 ### HTTP archive (HAR file)
 
-A file containing logs of a browser interactions with the system under test. All of the included transactions are stored as JSON-formatted text. These archives may then be used to generate test scripts using, for instance, the [har-to-k6 Converter](https://github.com/k6io/har-to-k6).
+A file containing logs of a browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts using (for example, with the har-to-k6 Converter).
 
-For more details, see the [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/).
-
-Read more: [Har converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)
+Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [Har converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)
 
 ### Iteration
 
@@ -117,13 +115,13 @@ Read more: The [test life cycle](https://k6.io/docs/using-k6/test-life-cycle/) d
 
 ### k6 Cloud
 
-The proper name for the entire cloud product, composed of both k6 Cloud Execution and k6 Cloud Test Results.
+The proper name for the entire cloud product, comprising both k6 Cloud Execution and k6 Cloud Test Results.
 
 Read more: [k6 Cloud docs](https://k6.io/docs/cloud)
 
 ### k6 options
 
-Values that configure a k6 test run. Can be set with command-line flags, environment variables, and in the script.
+Values that configure a k6 test run. You can set options with command-line flags, environment variables, and in the script.
 
 Read more: [k6 Options](/using-ky/k6-options)
 
@@ -157,15 +155,15 @@ Read more: [Data parameterization examples](https://k6.io/docs/examples/data-par
 
 ### Reliability
 
-The degree to which a system can produce reliable results consecutively, even under pressure.
+The degree to which a system can produce correct results consecutively, even when under pressure.
 
 ### Requests per second
 
-The rate at which requests are executed against the system under test.
+The rate at which a test sends requests to the system under test.
 
 ### Saturation
 
-A condition when a system's reaches full resource utilization, and can handle no additional request.
+A condition when a system's reaches full resource utilization and can handle no additional request.
 
 ### Scalability
 
@@ -173,31 +171,31 @@ The degree to which system under test’s performance or capacity may be increas
 
 ### Scenario
 
-A special option that models plausible events that an application could experience. To model high traffic, a scenario might have virtual users making concurrent requests over multiple script iterations.
+A special option that models plausible events that an application could experience. To model high traffic, a scenario might have virtual users making concurrent requests over multiple script iterations. Configure scenario behavior with [executors](#executors)
 
 Read more: [Scenarios reference](/using-k6/scenarios)
 
-### Service-level agreement (SLA)
+### Service-level agreement
 
 An agreement between a service provider and another party, often a user of the service, promising that the availability of the service will meet a certain level during a certain period.
 
-### Service-level indicator (SLI)
+### Service-level indicator
 
-A metric that measures whether a service meets its [service-level objective](#service-level-objective). While doing performance monitoring this could, for instance, be the number of successful requests against the service during a specified period.
+Or SLI. A metric that measures whether a service meets its [service-level objective](#service-level-objective). In performance monitoring, and SLI could be the number of successful requests against the service during a specified period.
 
-### Service-level objective (SLO)
+### Service-level objective
 
-An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its "error budget"
+Or SLO. An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its "error budget"
 
 ### Smoke test
 
-A type of test used to verify that the system under test can handle a minimal amount of load without any issues. It’s commonly used as a first step, to ensure that everything works as intended under optimal conditions, before advancing to any of the other performance test types.
+A test that verifies whether the system under test can handle a minimal amount of load without any issues. Testers commonly use smoke tests to make sure that everything works as intended under optimal conditions. After the smoke test, they can advance to any of the other performance test types.
 
 Read more: [Smoke Testing](/test-types/smoke-testing)
 
 ### Soak test
 
-A type of test used to uncover performance and reliability issues stemming from a system being under pressure for an extended period.
+A test that tries to uncover performance and reliability issues stemming from a system being under pressure for an extended duration.
 
 Read more: [Soak Testing](/test-types/soak-testing)
 
@@ -207,7 +205,7 @@ A system under test’s ability to withstand failures and errors.
 
 ### Stress test
 
-A type of test used to identify the limits of what the system under test is capable of handling in terms of load.
+A type of test used to identify the limits of what the system under test can handle in terms of load.
 
 Read more: [Stress Testing](/test-types/stress-testing)
 
@@ -217,20 +215,24 @@ The software that the load test tests. This could be an API, a website, infrastr
 
 ### Test run
 
-An individual execution of a test script.
+An individual execution of a test script over all configured iterations.
 
 Read more: [Running k6](/getting-started/running-k6)
 
 ### Test script
 
-The actual code you run as part of your test run, as well as any (or at least most) of the configuration needed to run the code. It defines how the test will behave as well as what requests will be made. See the [Single Request example](/examples/single-request).
+The actual code that k6 executes to create a test run, along with all (or at least most) configuration needed to run the code. A test script defines how the test behaves, and what requests to make.
+
+Read more: [Single Request example](/examples/single-request).
 
 ### Threshold
 
 A minimum value that indicates something significant about a system.
 In k6, thresholds are pass/fail criteria that specify the performance expectations of the system under test.
 
-Read more: [k6.io/docs/using-k6/thresholds](Thresholds are pass/fail criteria that specify the performance expectations of the system under test.)
+ Testers often use thresholds to codify [SLOs](#service-level-objectives)
+
+Read more: [Threshold reference](k6.io/docs/using-k6/thresholds)
 
 ### Throughput
 
@@ -238,11 +240,11 @@ The rate of successful message delivery. In k6, throughput is measured in reques
 
 ### Vertical scalability
 
-A trait describing to what degree a system under test’s performance or capacity may be increased by adding more hardware resources to a node (RAM, cores, bandwidth, etc.).
+The degree to which a system under test can improve performance or increase capacity by adding more hardware resources to a node (RAM, cores, bandwidth, etc.).
 
-### Virtual users (VU)
+### Virtual users
 
-The simulated users that perform separate and concurrent iterations of your test script.
+Or VUs. The simulated users that perform separate and concurrent iterations of your test script.
 
 Read more: [VU option reference](/using-k6/k6-options/reference#vus), [Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
 
