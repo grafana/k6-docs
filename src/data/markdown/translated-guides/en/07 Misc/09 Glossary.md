@@ -53,7 +53,7 @@ In the context of k6, virtual users can make concurrent requests as a test runs.
 
 ### Correlation
 
-The process of taking [dynamic data](#dynamic-data) recieved from the system under test then reusing the data in a subsequent request. Testers commonly use correlation to retrieve and reuse session IDs or tokens for a [virtual user](#virtual-user)'s iteration lifetime.
+The process of taking [dynamic data](#dynamic-data) received from the system under test then reusing the data in a subsequent request. Testers commonly use correlation to retrieve and reuse session IDs or tokens for a [virtual user](#virtual-user)'s iteration lifetime.
 
 Read more: [Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](https://k6.io/docs/testing-guides/api-load-testing/#correlation-and-data-parameterization)
 
@@ -104,7 +104,7 @@ The degree to which one can improve the performance of a system by adding more n
 
 A file containing logs of a browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts using (for example, with the har-to-k6 Converter).
 
-Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [Har converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)
+Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)
 
 ### Iteration
 
@@ -247,4 +247,3 @@ The degree to which a system under test can improve performance or increase capa
 Or VUs. The simulated users that perform separate and concurrent iterations of your test script.
 
 Read more: [VU option reference](/using-k6/k6-options/reference#vus), [Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
-
