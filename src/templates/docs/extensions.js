@@ -1,73 +1,29 @@
-import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list';
-import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import classNames from 'classnames';
+import {
+  ExtensionsQuickstart,
+  ExtensionsOverview,
+  ExtensionsUseCases,
+  WhatIsXk6,
+} from 'components/pages/doc-extensions';
+import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import { PageInfo } from 'components/shared/page-info';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
-import queryString from 'query-string';
-import React from 'react';
+import React, { useRef } from 'react';
 import SeoMetadata from 'utils/seo-metadata';
 
-/*
-    
-    Thank you for your interest in contributing an extension to the k6 ecosystem! (ﾉ◕ヮ◕)ﾉ*:・ﾟ✧
-
-    To make the process of getting your extension accepted as fast as possible, make sure
-    you fill out all of the fields in the list below (except logo, which is optional).
-    
-    The list is currently alphabetized, so it
-    doesn't matter where in the list you place your entry.
-
-    For an extension to be merged, we require the following:
-
-    1. The readme contains one or more usage examples, showing the basics of how to use the extension.
-    2. The repository has the xk6 label
-    3. The readme contains Links to any other relevant documentation a user might need.
-    
- */
-
-const breadcrumbs = [
-  {
-    name: 'Extensions',
-    path: '/extensions/',
-  },
-  {
-    name: 'Explore',
-    path: '/extensions/',
-  },
-];
-
-export default function Extensions({
-  location,
-  pageContext: { sidebarTree, navLinks },
-}) {
+export default function Extensions({ pageContext: { sidebarTree, navLinks } }) {
   useScrollToAnchor();
   const pageMetadata = SeoMetadata.extensions;
 
-  const queryParams = queryString.parse(location.search);
-  const category = queryParams?.category || 'All';
-
-  const {
-    docExtensionsJson: { extensionsList },
-  } = useStaticQuery(graphql`
-    query extensionsData {
-      docExtensionsJson {
-        extensionsList: extensions {
-          name
-          description
-          url
-          logo
-          official
-          categories
-          author {
-            name
-            url
-          }
-        }
-      }
-    }
-  `);
+  const contentContainerRef = useRef(null);
+  const stickyContainerClasses = classNames(
+    docPageContent.mainDocContent,
+    docPageContent.contentWrapper,
+  );
 
   return (
     <LocaleProvider>
@@ -77,42 +33,27 @@ export default function Extensions({
         pageMetadata={pageMetadata}
         sectionName="Extensions"
       >
-        <ExtensionsTitleGroup
-          title={'Explore'}
-          description={''}
-          breadcrumbs={breadcrumbs}
+        <PageInfo
+          title={'k6 Extensions'}
+          description={`Expand the potential use cases for k6.`}
         />
         <div className={docPageContent.inner}>
-          <span>
-            The extension ecosystem enables developers and testers to extend k6
-            to cover use cases not supported natively in the core. Explore the
-            endless possibilities of k6 using extensions from the table below.
-            Common use cases include:
-          </span>
-          <ul>
-            <li>Adding support for testing new protocols</li>
-            <li>
-              Using clients to communicate with other systems in your test, or
-            </li>
-            <li>
-              Making an expensive part of your test more performant by writing
-              it in Go and consuming it from your tests using JavaScript
-            </li>
-          </ul>
-          <span>
-            Ready to put together your own bespoke k6 binary containing the
-            features you need? Head over to the{' '}
-            <Link
-              className={docPageContent.link}
-              to={'/extensions/bundle-builder/'}
-            >
-              bundle builder
+          <div ref={contentContainerRef} className={stickyContainerClasses}>
+            <ExtensionsQuickstart />
+            <ExtensionsOverview />
+            <WhatIsXk6 />
+            <ExtensionsUseCases />
+            Next,{' '}
+            <Link to={'/extensions/explore/'} class={docPageContent.link}>
+              explore
             </Link>{' '}
-            to get started!
-          </span>
-        </div>
-        <div className={docPageContent.inner}>
-          <ExtensionsList category={category} data={extensionsList} />
+            the available extensions to see how you can expand your use of k6
+            right now.
+          </div>
+          <TableOfContents
+            contentContainerRef={contentContainerRef}
+            shouldMakeReplacement
+          />
         </div>
       </DocLayout>
     </LocaleProvider>

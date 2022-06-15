@@ -311,35 +311,7 @@ const getExtensionsPageSidebar = (sidebarTree) => {
       title: 'Extensions',
       path: '/extensions/',
     },
-    children: {
-      Extensions: {
-        name: 'extensions',
-        meta: {
-          title: 'Extensions',
-          path: '/extensions/',
-        },
-        children: {
-          Explore: {
-            name: 'Explore',
-            meta: {
-              title: 'Explore',
-              isActiveSidebarLink: true,
-              path: '/extensions/',
-            },
-            children: {},
-          },
-          'Build Bundle': {
-            name: 'Build Bundle',
-            meta: {
-              title: 'Build Bundle',
-              isActiveSidebarLink: true,
-              path: '/extensions/bundle-builder/',
-            },
-            children: {},
-          },
-        },
-      },
-    },
+    children: {},
   };
 
   return {
@@ -521,6 +493,15 @@ function getTopLevelPagesProps({
       {
         path: `/extensions/`,
         component: Path.resolve(`./src/templates/docs/extensions.js`),
+        context: {
+          sectionName: 'Extensions',
+          sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+      {
+        path: `/extensions/explore/`,
+        component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
@@ -1263,6 +1244,11 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
     toPath: '/extensions/bundle-builder/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/extensions/getting-started',
+    toPath: '/extensions/',
     isPermanent: true,
   });
 

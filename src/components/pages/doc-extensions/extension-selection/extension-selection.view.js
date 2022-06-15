@@ -1,10 +1,11 @@
+/* eslint-disable react/no-danger */
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
 import React, { useState, useLayoutEffect } from 'react';
 
 import styles from './extension-selection.module.scss';
 
-export const ExtensionSelection = ({ data }) => {
+export const ExtensionSelection = ({ data, description = '' }) => {
   const [selected, setSelected] = useState([]);
   const [version, setVersion] = useState(null);
 
@@ -43,6 +44,7 @@ export const ExtensionSelection = ({ data }) => {
     <section className={styles.container}>
       {!!version && (
         <div className={styles.selection}>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
           <WithCopyButton
             dataToCopy={code.replace(/^\$\s/gm, '')}
             copyButtonLabel={styles.copy}
