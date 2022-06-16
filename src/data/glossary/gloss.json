@@ -1,4 +1,11 @@
 [{
+	"term": "Application performance monitoring",
+	"definition": "*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM, as users can use Grafana to monitor the load test from side of the system under test.",
+	"see_also": [
+		"[k6 cloud has built-in support to export to a few APM services](https://k6.io/docs/cloud/integrations/cloud-apm/)."
+	]
+},
+{
 	"term": "Concurrency",
 	"definition": "When multiple computations happen at the same time.\nIn the context of k6, virtual users can make concurrent requests as a test runs. In k6 cloud, you can also run multiple tests concurrently."
 },
@@ -138,13 +145,13 @@
 	]
 }, {
 	"term": "Service-level agreement",
-	"definition": "An agreement between a service provider and another party, often a user of the service, promising that the availability of the service will meet a certain level during a certain period."
+	"definition": "*(Or SLA)*. An agreement between a service provider and another party, often a user of the service, promising that the availability of the service will meet a certain level during a certain period."
 }, {
 	"term": "Service-level indicator",
-	"definition": "Or SLI. A metric that measures whether a service meets its [service-level objective](#service-level-objective). In performance monitoring, and SLI could be the number of successful requests against the service during a specified period."
+	"definition": "*(Or SLI)*. A metric that measures whether a service meets its [service-level objective](#service-level-objective). In performance monitoring, and SLI could be the number of successful requests against the service during a specified period."
 }, {
 	"term": "Service-level objective",
-	"definition": "Or SLO. An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its \"error budget\""
+	"definition": "*(Or SLO)*. An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its \"error budget\""
 }, {
 	"term": "Smoke test",
 	"definition": "A test that verifies whether the system under test can handle a minimal amount of load without any issues. Testers commonly use smoke tests to make sure that everything works as intended under optimal conditions. After the smoke test, they can advance to any of the other performance test types.",
@@ -204,3 +211,4 @@
 	]
 }
 ]
+

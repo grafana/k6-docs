@@ -5,11 +5,12 @@ excerpt: 'A list of technical terms commonly used when discussing k6, with defin
 
 What we talk about when we talk about k6.
 
-In discussion about k6, certain terms have a precise, technical meaning.
-If a term in these docs confuses you, consult this list for a definition.
+In discussion about k6, some terms have a precise, technical meaning.
+If a certain term in these docs confuses you, consult this list for a definition.
 
 <Glossary>
 
+- [Application performance monitoring](#application-performance-monitoring)
 - [Concurrency](#concurrency)
 - [Correlation](#correlation)
 - [Checks](#checks)
@@ -50,6 +51,12 @@ If a term in these docs confuses you, consult this list for a definition.
 - [Virtual users](#virtual-users)
 
 </Glossary>
+
+### Application performance monitoring
+
+*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM, as users can use Grafana to monitor the load test from side of the system under test.
+
+Read more: [k6 cloud has built-in support to export to a few APM services](https://k6.io/docs/cloud/integrations/cloud-apm/).
 
 ### Concurrency
 
@@ -182,15 +189,15 @@ Read more: [Scenarios reference](/using-k6/scenarios)
 
 ### Service-level agreement
 
-An agreement between a service provider and another party, often a user of the service, promising that the availability of the service will meet a certain level during a certain period.
+*(Or SLA)*. An agreement between a service provider and another party, often a user of the service, promising that the availability of the service will meet a certain level during a certain period.
 
 ### Service-level indicator
 
-Or SLI. A metric that measures whether a service meets its [service-level objective](#service-level-objective). In performance monitoring, and SLI could be the number of successful requests against the service during a specified period.
+*(Or SLI)*. A metric that measures whether a service meets its [service-level objective](#service-level-objective). In performance monitoring, and SLI could be the number of successful requests against the service during a specified period.
 
 ### Service-level objective
 
-Or SLO. An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its "error budget"
+*(Or SLO)*. An actual target, either internal or part of the [service-level agreement](#service-level-agreement), for the availability of the service. This is often expressed as a percentage (99,2%, for instance). If the service meets or exceeds this target, it's within its "error budget"
 
 ### Smoke test
 
