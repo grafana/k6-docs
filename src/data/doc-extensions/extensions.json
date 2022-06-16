@@ -650,6 +650,18 @@
       },
       "official": false,
       "categories": ["Authentication"]
+    },
+    {
+      "name": "xk6-output-dynatrace",
+      "description": "Export results to Dynatrace",
+      "url": "https://github.com/henrikrexed/xk6-output-dynatrace",
+      "logo": "",
+      "author": {
+        "name": "Henrik Rexed",
+        "url": "https://github.com/henrikrexed"
+      },
+      "official": false,
+      "categories": ["Reporting", "Observability"]
     }
   ]
 }
