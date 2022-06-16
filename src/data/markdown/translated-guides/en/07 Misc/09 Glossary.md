@@ -54,7 +54,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 
 ### Application performance monitoring
 
-*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM, as users can use Grafana to monitor the load test from side of the system under test.
+*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM service, as users can use Grafana to monitor the load test from the side of the system under test.
 
 Read more: [k6 cloud has built-in support to export to a few APM services](https://k6.io/docs/cloud/integrations/cloud-apm/).
 

@@ -1,6 +1,6 @@
 [{
 	"term": "Application performance monitoring",
-	"definition": "*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM, as users can use Grafana to monitor the load test from side of the system under test.",
+	"definition": "*(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. When running load tests, Grafana is an example of a compatible APM service, as users can use Grafana to monitor the load test from the side of the system under test.",
 	"see_also": [
 		"[k6 cloud has built-in support to export to a few APM services](https://k6.io/docs/cloud/integrations/cloud-apm/)."
 	]
@@ -16,14 +16,14 @@
 		"[Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/)",
 		"[Correlation in testing APIs](https://k6.io/docs/testing-guides/api-load-testing/#correlation-and-data-parameterization)"
 	],
-	"en_US_note": "Avoid using \"correlation\" in the statistical sense, unless the usage is precise and necessary"
+	"usage_note": "Avoid using \"correlation\" in the statistical sense, unless the usage is precise and necessary"
 }, {
 	"term": "Checks",
 	"definition": "Conditions that validate the correctness of a service.\nIn k6 scripts, checks are a function that validates a response to a test request.",
 	"see_also": [
 		"[Checks reference](/using-k6/checks)"
 	],
-	"en_US_note": "Grafana also uses checks as a concept in their synthetic monitoring service."
+	"usage_note": "Grafana also uses checks as a concept in their synthetic monitoring service."
 }, {
 	"term": "Duration",
 	"definition": "The length of time that a test runs. When duration is set as an option, VU code runs for as many iterations as possible in the length of time specified (with possible finishing time given as a [graceful stop](#graceful-stop).",
@@ -36,12 +36,12 @@
 	"see_also": [
 		"[Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/)"
 	],
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Endurance testing",
 	"definition": "A synonym for [soak testing](#soak-test).",
 	"see_also": null,
-	"en_US_note": "Prefer Soak testing"
+	"usage_note": "Prefer soak testing"
 }, {
 	"term": "Executor",
 	"definition": "An property of a [scenario](#scenario) that configures VU behavior. You can use executors to configure whether to designate iterations as shared between VUs or to run per VU, or to configure or whether the VU concurrency is constant or changing"
@@ -52,7 +52,7 @@
 		"[Goja repository on GitHub](https://github.com/dop251/goja)."
 	],
 	"proper_name": true,
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Graceful stop",
 	"definition": "A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution, and graceful ramp downs prevent unrealistic drops to zero VUs.",
@@ -69,14 +69,14 @@
 		"[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/)",
 		"[HAR converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)"
 	],
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Iteration",
 	"definition": "A single run in the execution of the `default function`, or scenario `exec` function.\nYou can either calculate iterations across all [virtual users](#virtual-users) (as done by the [Shared iterations](/using-k6/scenarios/executors/shared-iterations) executor), or per virtual user (as the [Per-VU Iterations](/using-k6/scenarios/executors/per-vu-iterations)).",
 	"see_also": [
 		"The [test life cycle](https://k6.io/docs/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code."
 	],
-	"en_US_note": "Applies only to code in VU context."
+	"usage_note": "Applies only to code in VU context."
 }, {
 	"term": "k6 Cloud",
 	"definition": "The proper name for the entire cloud product, comprising both k6 Cloud Execution and k6 Cloud Test Results.",
@@ -84,7 +84,7 @@
 		"[k6 Cloud docs](https://k6.io/docs/cloud)"
 	],
 	"proper_name": true,
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "k6 options",
 	"definition": "Values that configure a k6 test run. You can set options with command-line flags, environment variables, and in the script.",
@@ -97,7 +97,7 @@
 	"see_also": [
 		"[Load Testing](/test-types/load-testing)"
 	],
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Load zone",
 	"definition": "The geographical instance from which a test runs.",
@@ -113,7 +113,7 @@
 }, {
 	"term": "Metric sample",
 	"definition": "A metric's value (and, in time-series data, its timestamp)",
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Parameterization",
 	"definition": "The process of turning test values into reusable parameters, e.g. through variables and shared arrays.",
@@ -132,7 +132,7 @@
 	"term": "Saturation",
 	"definition": "A condition when a system's reaches full resource utilization and can handle no additional request.",
 	"see_also": null,
-	"en_US_note": null
+	"usage_note": null
 }, {
 	"term": "Scalability",
 	"definition": "The degree to which system under test’s performance or capacity may be increased by adding additional resources. See [Vertical scalability](#vertical-scalability) and [Horizontal scalability](#horizontal-scalability).",
@@ -182,7 +182,7 @@
 	"see_also": [
 		"[Running k6](/getting-started/running-k6)"
 	],
-	"en_US_note": "Prefer *run* over *execution*."
+	"usage_note": "Prefer *run* over *execution*."
 }, {
 	"term": "Test script",
 	"definition": "The actual code that k6 executes to create a test run, along with all (or at least most) configuration needed to run the code. A test script defines how the test behaves, and what requests to make.",
@@ -195,7 +195,7 @@
 	"see_also": [
 		"[Threshold reference](k6.io/docs/using-k6/thresholds)"
 	],
-	"en_US_note": "When using in conjunction with Grafana, be carefult to distinguish k6 Thresholds from Grafana thresholds, which configure colors in a graph."
+	"usage_note": "When using in conjunction with Grafana, be carefult to distinguish k6 Thresholds from Grafana thresholds, which configure colors in a graph."
 }, {
 	"term": "Throughput",
 	"definition": "The rate of successful message delivery. In k6, throughput is measured in requests per second."
