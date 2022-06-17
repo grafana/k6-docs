@@ -27,13 +27,13 @@ docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -
 ## Account API token
 Account level API token provides API access to your account with k6. To generate the token select **API token** menu item under **Account settings**, where you'll be able to copy, see and regenerate the token.
 
-![account api token view](./images/04-Token/account-api-token-view.png)
+![account token view](./images/04-Token/account-api-token-view.png)
 
 ## Organization API token
 Organization level API token provides API access to your organization with k6. To generate a token select **API token** menu item under **Organization settings**, where you'll be able to create, see and regenerate the tokens.
 Maximum amount of tokens an organization can create is 5.
 
-![organization api token view](./images/04-Token/organization-api-token-view.png)
+![organization token view](./images/04-Token/organization-api-token-view.png)
 
 > #### Access to organization settings
 >
