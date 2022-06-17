@@ -99,3 +99,13 @@ body .hide-md-down {
     display: initial;
   }
 }
+
+dt {
+  // TODO: complete styling
+  font-weight: bold;
+  margin: $font-size-base 0 $font-size-base/2 0;
+}
+
+dd {
+  margin-inline-start: 40px;
+}
