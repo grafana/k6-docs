@@ -203,7 +203,7 @@ Read more: [Running k6](/getting-started/running-k6)
 
 ### Test concurrency
 
-In k6 Cloud, the number of tets running at the same time.
+In k6 Cloud, the number of tests running at the same time.
 
 ### Test duration
 

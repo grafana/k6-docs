@@ -165,7 +165,7 @@
 	"usage_note": "Prefer *run* over *execution*."
 }, {
 	"term": "Test concurrency",
-	"definition": "In k6 Cloud, the number of tets running at the same time."
+	"definition": "In k6 Cloud, the number of tests running at the same time."
 
 }, {
 	"term": "Test duration",
