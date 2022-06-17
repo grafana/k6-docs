@@ -22,7 +22,7 @@ This document contains some of our most frequently asked questions about [Pricin
 
 ### Does k6 have a concept of VU Hours?
 
-Yes, we have introduced this concept in Custom and Enterprise level Annual subscriptions. For more info, reach out to our [sales](mailto:sales@k6.io.com) team for more info.
+Yes, we have introduced this concept in Custom and Enterprise level Annual subscriptions. For more info, reach out to our [sales](mailto:sales@k6.io.com) team.
 
 ----
 
