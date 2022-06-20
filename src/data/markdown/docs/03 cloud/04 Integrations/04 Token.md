@@ -15,7 +15,7 @@ Below you'll find instructions on how to generate API tokens and examples on how
 
 > #### Docker Users
 >
-> If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 Cloud API authentication information is stored to is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag. Example:
+> If you're running k6 in a Docker container, make sure that the k6 config file where the k6 Cloud API authentication information is stored is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag. Example:
 ```bash
 docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json
 ```
@@ -25,20 +25,25 @@ docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -
 > If you are integrating k6 into your CI pipeline, we recommend using one of the token methods to authenticate and not exposing your username/password within your CI configuration files or as variables.
 
 ## Account API token
-Account level API token provides API access to your account with k6. To generate the token select **API token** menu item under **Account settings**, where you'll be able to copy, see and regenerate the token.
+An account-level API token provides API access to your account with k6. To generate the token, go to **Account settings** and select **API token**.
+From there you can copy, see, and regenerate the token.
 
 ![account token view](./images/04-Token/account-api-token-view.png)
 
 ## Organization API token
-Organization level API token provides API access to your organization with k6. To generate a token select **API token** menu item under **Organization settings**, where you'll be able to create, see and regenerate the tokens.
-Maximum amount of tokens an organization can create is 5.
+An organization-level API token provides API access to your organization with k6. To generate a token, go to **Organization settings** and select **API token**.
+From there you can create, see, and regenerate the tokens. Maximum amount of tokens an organization can create is 5.
 
 ![organization token view](./images/04-Token/organization-api-token-view.png)
 
 > #### Access to organization settings
 >
-> Only [organization admins](/cloud/project-and-team-management/members/#admin) can access organization settings view.
+> Only [organization admins](/cloud/project-and-team-management/members/#admin) can access organization settings.
 
+
+## API Token as an environment variable
+
+Authenticate with your k6 Cloud API authentication token via environment variables. Make sure the `K6_CLOUD_TOKEN` has been set to your k6 Cloud API authentication token, and k6 will pick it up when executing.
 
 ## Authenticate with email/password
 
@@ -65,10 +70,6 @@ k6 login cloud --token YOUR_API_AUTH_TOKEN
 ```
 
 </CodeGroup>
-
-## API Token as an environment variable
-
-You can also authenticate with your k6 Cloud API authentication token via environment variables. Make sure the `K6_CLOUD_TOKEN` has been set to your k6 Cloud API authentication token, and k6 will pick it up when executing.
 
 ## Authentication with a config file
 
