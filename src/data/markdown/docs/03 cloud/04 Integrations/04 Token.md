@@ -41,10 +41,6 @@ From there you can create, see, and regenerate the tokens. Maximum amount of tok
 > Only [organization admins](/cloud/project-and-team-management/members/#admin) can access organization settings.
 
 
-## API Token as an environment variable
-
-Authenticate with your k6 Cloud API authentication token via environment variables. Make sure the `K6_CLOUD_TOKEN` has been set to your k6 Cloud API authentication token, and k6 will pick it up when executing.
-
 ## Authenticate with email/password
 
 You can forego using a token and use your k6 Cloud email/password credentials by entering the following command into your terminal:
@@ -70,6 +66,10 @@ k6 login cloud --token YOUR_API_AUTH_TOKEN
 ```
 
 </CodeGroup>
+
+## API Token as an environment variable
+
+You can also authenticate with your k6 Cloud API authentication token via environment variables. Make sure the `K6_CLOUD_TOKEN` has been set to your k6 Cloud API authentication token, and k6 will pick it up when executing.
 
 ## Authentication with a config file
 
