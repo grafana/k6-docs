@@ -53,7 +53,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 
  You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.
 
-Read more: [k6 OSS APM integrations](/getting-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/).
+Read more: [k6 OSS APM integrations](/getting-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
 
 ### Concurrent sessions
 
@@ -70,19 +70,19 @@ Read more: [Checks reference](/using-k6/checks)
 
 The process of taking [dynamic data](#dynamic-data) received from the system under test and reusing the data in a subsequent request.
 
-Read more: [Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](https://k6.io/docs/testing-guides/api-load-testing/#correlation-and-data-parameterization)
+Read more: [Correlation and dynamic data example](/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](/api-load-testing/#correlation-and-data-parameterization)
 
 ### Data parameterization
 
 The process of turning test values into reusable parameters, e.g. through variables and shared arrays.
 
-Read more: [Data parameterization examples](https://k6.io/docs/examples/data-parameterization/)
+Read more: [Data parameterization examples](/examples/data-parameterization/)
 
 ### Dynamic data
 
 Data that might change or will change during test runs or across test runs. Common examples are order IDs, session tokens, or timestamps.
 
-Read more: [Correlation and dynamic data example](https://k6.io/docs/examples/correlation-and-dynamic-data/)
+Read more: [Correlation and dynamic data example](/examples/correlation-and-dynamic-data/)
 
 ### Endurance testing
 
@@ -92,32 +92,32 @@ A synonym for [soak testing](#soak-test).
 
 A JavaScript runtime written in Go. k6 uses Goja to enable test scripting in Javascript.
 
-Read more: [Goja repository on GitHub](https://github.com/dop251/goja).
+Read more: [Goja repository on GitHub](https://github.com/dop251/goja)
 
 ### Graceful stop
 
 A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.
 
-Read more: The [Graceful stop reference](https://k6.io/docs/using-k6/scenarios/graceful-stop/)
+Read more: The [Graceful stop reference](/using-k6/scenarios/graceful-stop/)
 
 ### HTTP archive
 
 *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).
 
-Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](https://k6.io/docs/test-authoring/recording-a-session/har-converter/)
+Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/recording-a-session/har-converter/)
 
 ### Iteration
 
 A single run in the execution of the `default function`, or scenario `exec` function.
 You can set iterations across all VUs, or per VU.
 
-Read more: The [test life cycle](https://k6.io/docs/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.
+Read more: The [test life cycle](/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.
 
 ### k6 Cloud
 
 The proper name for the entire cloud product, comprising both k6 Cloud Execution and k6 Cloud Test Results.
 
-Read more: [k6 Cloud docs](https://k6.io/docs/cloud)
+Read more: [k6 Cloud docs](/cloud)
 
 ### k6 options
 
@@ -135,7 +135,7 @@ Read more: [Load Testing](/test-types/load-testing)
 
 The geographical instance from which a test runs.
 
-Read more: [Private load zones](/cloud/cloud-faq/private-load-zones/), [Declare load zones from the CLI](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
+Read more: [Private load zones](/cloud/cloud-faq/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
 
 ### Metric
 
@@ -209,7 +209,7 @@ In k6 Cloud, the number of tests running at the same time.
 
 The length of time that a test runs. When duration is set as an option, VU code runs for as many iterations as possible in the length of time specified.
 
-Read more: [Duration option reference](https://k6.io/docs/using-k6/k6-options/reference/#duration)
+Read more: [Duration option reference](/using-k6/k6-options/reference/#duration)
 
 ### Test script
 
