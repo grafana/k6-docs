@@ -53,7 +53,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 
  You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.
 
-Read more: [k6 cloud has built-in support to export to a few APM services](https://k6.io/docs/cloud/integrations/cloud-apm/).
+Read more: [k6 OSS APM integrations](/getting-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/).
 
 ### Concurrent sessions
 
