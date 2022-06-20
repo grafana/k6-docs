@@ -109,7 +109,7 @@ Read more: [HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spe
 ### Iteration
 
 A single run in the execution of the `default function`, or scenario `exec` function.
-Iterations can be shared between VUs, or per VU.
+You can set iterations across all VUs, or per VU.
 
 Read more: The [test life cycle](https://k6.io/docs/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.
 
