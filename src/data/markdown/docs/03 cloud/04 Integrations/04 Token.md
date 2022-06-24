@@ -9,7 +9,7 @@ Below are some examples on how to utilize the token to authenticate.
 
 > #### Google/GitHub Single Sign-On Users
 >
-> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 Cloud account email and password. You will need to create a password using [Forgot Password](https://app.k6.io/account/forgot), or you'll instead need to <a href="https://app.k6.io/account/token"> get your API authentication token from the app</a> and supply that explicitly: `k6 login cloud --token YOUR_API_AUTH_TOKEN`.
+> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 Cloud account email and password. You will need to create a password using [Forgot Password](https://app.k6.io/account/forgot), or you'll instead need to <a href="https://app.k6.io/account/api-token"> get your API authentication token from the app</a> and supply that explicitly: `k6 login cloud --token YOUR_API_AUTH_TOKEN`.
 > <a href="#authenticating-with-api-token">See below</a> for more information.
 
 > #### Docker Users
