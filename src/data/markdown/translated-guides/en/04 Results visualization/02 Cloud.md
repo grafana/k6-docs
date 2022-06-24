@@ -97,7 +97,7 @@ When streaming, k6 will collect all data and send it to the cloud in batches.
 
 | Name | Description |
 | ---- | ----------- |
-| `K6_CLOUD_METRIC_PUSH_INTERVAL`               | How often to send data to the k6 cloud (default `'6s'`).                                        |
+| `K6_CLOUD_METRIC_PUSH_INTERVAL`               | How often to send data to the k6 cloud (default `'1s'`).                                        |
 
 k6 can also _aggregate_ the data it sends to the k6 cloud each batch. This
 reduces the amount of data sent to the cloud. Aggregation is disabled by
