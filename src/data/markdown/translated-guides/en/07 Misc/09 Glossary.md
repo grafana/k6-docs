@@ -70,7 +70,7 @@ Read more: [Checks reference](/using-k6/checks)
 
 The process of taking [dynamic data](#dynamic-data) received from the system under test and reusing the data in a subsequent request.
 
-Read more: [Correlation and dynamic data example](/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](/api-load-testing/#correlation-and-data-parameterization)
+Read more: [Correlation and dynamic data example](/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](/testing-guides/api-load-testing/#correlation-and-data-parameterization)
 
 ### Data parameterization
 
@@ -169,6 +169,8 @@ Read more: [Scenarios reference](/using-k6/scenarios)
 
 An property of a [scenario](#scenario) that configures VU behavior. You can use executors to configure whether to designate iterations as shared between VUs or to run per VU, or to configure or whether the VU concurrency is constant or changing.
 
+Read more: [Executor reference](/using-k6/scenarios/executors/)
+
 ### Smoke test
 
 A regular load test configured for minimum load. Smoke tests verify that the script has no errors and that the system under test can handle a minimal amount of load.
@@ -232,7 +234,7 @@ The rate of successful message delivery. In k6, throughput is measured in reques
 
 ### Virtual users
 
-Or VUs. The simulated users that perform separate and concurrent iterations of your test script.
+*(Or VUs)*. The simulated users that perform separate and concurrent iterations of your test script.
 
 Read more: [VU option reference](/using-k6/k6-options/reference#vus), [Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
 
