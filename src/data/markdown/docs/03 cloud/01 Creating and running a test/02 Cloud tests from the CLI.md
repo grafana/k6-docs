@@ -108,7 +108,7 @@ Testers have many reasons they might prefer to run tests from the CLI:
 ### Run tests on multiple cloud accounts
 
 If you have multiple cloud subscriptions, use your API token to change between subscriptions.
-One way to do this is with the environment variables:
+One way to do this is with environment variables:
 
 ```bash
 K6_CLOUD_TOKEN k6 cloud script.js 
