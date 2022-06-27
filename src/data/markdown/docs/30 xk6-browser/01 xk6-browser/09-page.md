@@ -121,7 +121,6 @@ import launcher from 'k6/x/browser';
 export default function () {
   const browser = launcher.launch('chromium', {
     headless: false,
-    slowMo: '500ms', // slow down by 500ms
   });
   const context = browser.newContext();
   const page = context.newPage();
@@ -140,7 +139,7 @@ export default function () {
   page.$('input[type="submit"]').click();
 
   // Wait for next page to load
-  page.waitForLoadState('networkdidle');
+  page.waitForNavigation();
 
   page.close();
   browser.close();
