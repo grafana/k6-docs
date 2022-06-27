@@ -5,16 +5,16 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
 ### v3.7.0 `(2022-6-14)`
-- New `deleteSensitiveData` option to enable deleting sensitive data as soon as the test starts
+- New `deleteSensitiveData` option to enable deleting sensitive data as soon as the test starts.
 
 
 ### v3.6.0 `(2022-6-7)`
-- Support for script scenarios in [TestBuilder](/test-authoring/test-builder/)
+- Support for script scenarios in [TestBuilder](/test-authoring/test-builder/).
 
 ### v3.5.0 `(2022-5-31)`
-- Grafana Single Sign On
-- Add more descriptive messages to performance insights header
-- Sort status code on insights filter
+- Grafana Single Sign On.
+- Add more descriptive messages to performance insights header.
+- Sort status code on insights filter.
 
 ### v3.4.4 `(2022-5-17)`
 - Disable create and run test runs when cloud execution is disabled.
