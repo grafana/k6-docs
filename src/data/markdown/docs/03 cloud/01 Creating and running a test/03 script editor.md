@@ -3,12 +3,12 @@ title: 'Script editor'
 excerpt: 'How to use the script editor in k6 Cloud'
 ---
 
-With the script editor, you can quickly write test scripts from within the web app.
+With the *script editor*, you can quickly write test scripts from within the web app.
 
 While most users run [k6 Cloud on the CLI](../cloud-tests-from-the-cli/)  with their IDE of choice, organizational security rules vary from organization to organization.
 Some users can't install applications without a review from their security team.
 
-Fortunately, the *script editor* supports almost all features of k6 right within the web app.
+Fortunately, the script editor supports almost all features of k6, no local machine required.
 
 
 <Blockquote mod="warning">
