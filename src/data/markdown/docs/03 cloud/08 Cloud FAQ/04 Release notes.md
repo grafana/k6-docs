@@ -4,6 +4,10 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.7.0 `(2022-6-14)`
+- New `deleteSensitiveData` option to enable deleting sensitive data as soon as the test starts
+
+
 ### v3.6.0 `(2022-6-7)`
 - Support for script scenarios in [TestBuilder](/test-authoring/test-builder/)
 
