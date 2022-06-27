@@ -1,4 +1,4 @@
- ---
+---
 title: 'Script editor'
 excerpt: 'How to use the script editor in k6 Cloud'
 ---
