@@ -3,23 +3,20 @@ title: 'Cloud tests from the CLI'
 excerpt: 'How to run cloud tests from the k6 CLI.'
 ---
 
-Running tests within the web app is helpful to get a feel for the tool or to build a proof of concept.
-However, many users will prefer the flexibility of using the command line to trigger cloud tests.
+Running k6 tests from the web application helps you get a feel for the tool or build a proof of concept.
+For regular use, however, you'll probably prefer to run cloud tests from the command line.
 
-Reasons for triggering cloud tests from the k6 CLI include:
-
-- Storing test scripts in local version control.
-- Modularization of scripts for collaboration and easier maintenance.
-- Preference to work in your local environment.
-- Integrating testing in CI/CD pipelines.
+Testers have many reasons they might prefer to run tests from the CLI:
+- To store tests in version control
+- To modularize scripts for collaboration and easier maintenance.
+- To work in the local environment.
+- To integrate testing in CI/CD pipelines.
 
 ## Instructions
 
-1. First, you need to have a k6 Cloud account. If you don't have one, sign up [here](https://app.k6.io/account/register) and get 50 cloud tests with the Free Trial.
-
-2. Install k6 using the instructions [here](/getting-started/installation).
-
-3. Authenticate to k6 Cloud from the CLI. Log in using your username and password or your [API token](https://app.k6.io/account/api-token).
+1. First, you need to have a k6 Cloud account. If you don't have one, [sign up](https://app.k6.io/account/register) and get 50 cloud tests with the Free Trial.
+1. [Install k6](/getting-started/installation).
+1. Authenticate to k6 Cloud from the CLI. To log in, either use your username and password or your [API token](https://app.k6.io/account/api-token).
 
    <CodeGroup labels={["Log in with username and password", "Log in with the API Token"]}>
 
@@ -34,8 +31,9 @@ Reasons for triggering cloud tests from the k6 CLI include:
    </CodeGroup>
 
    `k6 login` stores your API Token in a local config file to authenticate to k6 Cloud when running cloud commands.
+   Unless running tests on multiple cloud accounts, you need to run `k6 login` only once.
 
-4. Run your test in the cloud. (`k6 cloud` will upload your script and any dependencies to our cloud automatically) 
+1. Run your test in the cloud. (`k6 cloud` automatically uploads your script and any dependencies to our cloud).
 
    <CodeGroup labels={["CLI", "CLI with the API Token", "Docker"]}>
 
@@ -44,7 +42,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
    ```
 
    ```bash
-   # Setting the K6_CLOUD_TOKEN environment variable let skipping the step that runs the k6 login command 
+   # Setting the K6_CLOUD_TOKEN environment variable let skipping the step that runs the k6 login command
    $ K6_CLOUD_TOKEN=<YOUR_K6_CLOUD_API_TOKEN> k6 cloud script.js
    ```
 
@@ -81,7 +79,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
    </CodeGroup>
 
-5. You'll see k6 print some information and the URL of your test results.
+   You'll see k6 print some information and the URL of your test results.
 
     <CodeGroup labels={[""]}>
 
@@ -99,7 +97,7 @@ Reasons for triggering cloud tests from the k6 CLI include:
 
     </CodeGroup>
 
-6. Navigate to the URL to check your test results. When the test is running, the test result page is shown.
+1. Navigate to the URL to check your test results. When the test is running, the test-result page is shown.
 
     ![k6 Cloud Test Results](./images/Running-a-test-from-the-CLI/api-testing.png 'k6 Cloud Test Results')
 
@@ -110,7 +108,11 @@ Reasons for triggering cloud tests from the k6 CLI include:
 ### Run tests on multiple cloud accounts
 
 If you have multiple cloud subscriptions, use your API token to change between subscriptions.
-One way to do this is with the environment variables, as the preceding section demonstrates.
+One way to do this is with the environment variables:
+
+```bash
+K6_CLOUD_TOKEN k6 cloud script.js 
+```
 
 Another way is to toggle between config files with the `--config` flag.
 
@@ -125,9 +127,12 @@ For syntax examples and default config locations, refer to the [`--config` optio
 
 ## Cloud execution options
 
-All the [k6 Options](/using-k6/options), like `--vus` and `--duration` are the same between the `k6 run` and `k6 cloud` commands. k6 aims to run the same script in different execution modes without making any script modifications.
+All [k6 Options](/using-k6/options), such as `--vus` and `--duration`, are the same between the `k6 run` and `k6 cloud` commands.
+k6 aims to run the same script in different execution modes without making any script modifications.
 
-Optionally, you can define some cloud options in your k6 script.
+However, you can set some cloud-specific options for your script.
+
+**All cloud options are optional.**
 
 ```javascript
 export const options = {
@@ -148,12 +153,12 @@ export const options = {
 
 | Name                  | Default                                                                                          | Description                                                                                                                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name (string)         | Optional. The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
-| projectID (number)    | Optional. It is empty by default.                                                                | The ID of the project to which the test is assigned in the k6 Cloud UI. That's in the default project of the user's default organization.                                                                                           |
-| distribution (object) | Optional. The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution).               |
-| staticIPs (boolean)   | Optional. `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                                       |
-| note (string)         | Optional. Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test. |
-| deleteSensitiveData (boolean) | Optional. false by default  | If set to `true`, k6 deletes sensitive data as soon as the test starts running, or, if still queued, when the test aborts. Sensitive data includes scripts, HAR files, archives, and APM credentials. |
+| name (string)         | The name of the main script file, so something like "script.js".                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                                     |
+| projectID (number)    | It is empty by default.                                                                | The ID of the project to which the test is assigned in the k6 Cloud UI. That's in the default project of the user's default organization.                                                                                           |
+| distribution (object) | The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution).               |
+| staticIPs (boolean)   | `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                                       |
+| note (string)         | Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test. |
+| deleteSensitiveData (boolean) | False by default  | If set to `true`, k6 deletes sensitive data as soon as the test starts running or, if still queued, when the test aborts. Sensitive data includes scripts, HAR files, archives, and APM credentials. |
 
 > **Note**:
 > The `deleteSensitiveData` option is unavailable in default subscriptions.
@@ -161,17 +166,18 @@ export const options = {
 
 ### Running tests under a different project than your default one
 
-As a rule, tests and test runs will be created and run under your default project, in your default organization.
+As a rule, tests and test runs are created and run under your default project in your default organization.
 
-To create and run tests under a different project, like one you've been invited to, you have to pass the `Project ID` to k6.
+To create and run tests under a different project, like one you've been invited to, you must pass the `Project ID` to k6.
 
-Select the project on the sidebar menu and you will find the `Project ID` in the header of the Project Dashboard page.
+Select the project on the sidebar menu.
+Then find the `Project ID` in the header of the Project Dashboard page.
 
 ![k6 Cloud Project ID](./images/Running-a-test-from-the-CLI/dashboard-project-id.png 'Project ID')
 
-You have two options to pass the Project ID to k6:
+You can pass the Project ID to k6 in two ways:
 
-1. Specify it in the script options:
+- Specify it in the script options:
 
    <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -187,11 +193,13 @@ You have two options to pass the Project ID to k6:
 
    </CodeGroup>
 
-2. Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
+- Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
 
 ## Load zones
 
 <div id="list-of-supported-load-zones">Here the list of supported AWS cloud regions: </div>
+
+<Glossary>
 
 - Africa (Cape Town) `amazon:sa:cape town`
 - Asia Pacific (Hong Kong) `amazon:cn:hong kong`
@@ -215,21 +223,22 @@ You have two options to pass the Project ID to k6:
 - US East (N. Virginia) `amazon:us:ashburn`
 - US East (Ohio) - **DEFAULT** `amazon:us:columbus`
 
+</Glossary>
 
 ## Cloud execution tags
 
-[Tags](/using-k6/tags-and-groups) is a powerful concept in k6 as it opens up for great flexibility in how you can slice and dice the result data.
+[Tags](/using-k6/tags-and-groups) provide great flexibility to slice and dice the test-result data.
 
-When running a k6 test in the cloud we add two tags to all metrics:
+When a test runs in k6 Cloud, k6 adds two tags to all metrics:
 
 | Tag name      | Type   | Description                                                                                          |
 | ------------- | ------ | ---------------------------------------------------------------------------------------------------- |
-| `load_zone`   | string | The load zone from where the metric was collected. Values will be of the form: `amazon:us :ashburn`. |
-| `instance_id` | number | A unique number representing the ID of a load generator server taking part in the test.              |
+| `load_zone`   | string | The load zone from where the metric was collected. Values are in the form: `amazon:us :ashburn`. |
+| `instance_id` | number | A unique number that represents the ID of a load-generator server taking part in the test.              |
 
-The cloud tags are automatically added when collecting the test metrics, and they work as regular tags.
+The cloud tags are automatically added when collecting test metrics and work as regular tags.
 
-For example, you can filter the results for a particular load zone on the k6 Cloud Results view.
+For example, you can filter the results for a particular load zone in the k6 Cloud Results view.
 
 ![filter tags](./images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
 
@@ -266,7 +275,7 @@ export default function () {
 
 ## Cloud environment variables
 
-When running in the k6 Cloud there will be three additional environment variables that can be used to find out in which load zone, server instance, and distribution label the given script is currently running.
+When you run tests in k6 Cloud, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
 
 | Name              | Value  | Description                                                                                                                                              |
 | ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -304,25 +313,33 @@ export default function () {
 
 ## Differences between local and cloud execution
 
+While the cloud and local execution modes are almost completely compatible, they differ in a few particularities.
+
 ### Iterations
 
-Local execution has support for iterations based test length (`-i` or
-`--iterations` on CLI, and `iterations` in script options) which is
-not yet supported by the cloud execution mode.
+Local execution supports iterations based on test length (`-i` or
+`--iterations` on CLI, and `iterations` in script options), which is
+not yet supported by the cloud-execution mode.
 
 ### Using setup/teardown life-cycle functions
 
-Your [setup and teardown life cycle functions](/using-k6/test-life-cycle)
-are executed as normal when running cloud tests. Depending on the size
-of your test, it will execute from one or more cloud servers, but the
-setup and teardown will only execute from one server, so execute once
-for each test run. There's no guarantee though that the same cloud server
-that executed the `setup()` will execute the `teardown()`.
-       
+Depending on the test size, the test might run from one or more cloud servers.
+
+Setup and teardown, on the other hand, execute only once, and each will execute from only one server.
+However, there's no guarantee that the cloud server that runs `setup()` will be the same one that runs `teardown()`.
+
+Besides this quirk, your [setup and teardown life cycle functions](/using-k6/test-life-cycle) run as normal when running cloud tests.
+
 ### Disable cloud logs
-       
-When running cloud tests from the CLI, you will get cloud log output printed to the terminal. You can disable this either by passing `--show-logs=false` as an option to `k6` or by setting an environment variable `K6_SHOW_CLOUD_LOGS=false`. 
+
+When a cloud tests runs from the CLI,  cloud log output prints to the terminal.
+To disable this, either pass `--show-logs=false` as an option to `k6`, or set an environment variable `K6_SHOW_CLOUD_LOGS=false`.
 
 ### System environment variables
 
-Environment variables set in the local terminal before executing k6 won't be forwarded to the k6 cloud service, and thus won't be available to your script when executing in the cloud. With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environment variables like `-e KEY=VALUE` or `--env KEY=VALUE`. Read more about this on [environment variables](/using-k6/environment-variables).
+Environment variables set in the local terminal before executing k6 won't be forwarded to the k6 cloud service.
+Thus they won't be available to your script when executing in the cloud.
+With cloud execution, you must use the CLI flags (`-e`/`--env`) to set environment variables like `-e KEY=VALUE` or `--env KEY=VALUE`.
+
+For details, refer to the [environment variables](/using-k6/environment-variables) document.
+
