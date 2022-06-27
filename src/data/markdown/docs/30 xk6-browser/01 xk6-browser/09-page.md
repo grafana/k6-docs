@@ -131,6 +131,9 @@ export default function () {
   const elem = page.$('a[href="/my_messages.php"]');
   elem.click();
 
+  // Wait for login page to load
+  page.waitForLoadState();
+
   // Enter login credentials and login
   page.$('input[name="login"]').type('admin');
   page.$('input[name="password"]').type('123');
