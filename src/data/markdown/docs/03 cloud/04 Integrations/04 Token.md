@@ -22,7 +22,7 @@ docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -
 
 > #### Integrating with CI
 >
-> If you are integrating k6 into your CI pipeline, we recommend using one of the token methods to authenticate and not exposing your username/password within your CI configuration files or as variables.
+> If you are integrating k6 into your CI pipeline, we recommend using an [organization level API token](#organization-api-token) to authenticate and not exposing your username/password within your CI configuration files or as variables. Alternatively you can use an [account level API token](#account-api-token) with a user created specially for the purpose of running CI tests.
 
 ## Account API token
 An account-level API token provides API access to your account with k6. To generate the token, go to **Account settings** and select **API token**.
@@ -31,7 +31,7 @@ From there you can copy, see, and regenerate the token.
 ![account token view](./images/04-Token/account-api-token-view.png)
 
 ## Organization API token
-An organization API token provides organization-wide API access with k6. It's intended for actions that are not tied to a specific user like running tests from a CI platform. To generate a token, go to **Organization settings** and select **API token**.
+An organization API token provides organization-wide API access with k6. It is intended for actions that are not tied to a specific user like running tests from a CI platform. To generate a token, go to **Organization settings** and select **API token**.
 From there you can create, see, and regenerate the tokens. Maximum amount of tokens an organization can create by default is 5.
 
 Note that when using an organization API token you must always specify the project the test runs will be created under. Learn how to set the `Project ID` [here](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
