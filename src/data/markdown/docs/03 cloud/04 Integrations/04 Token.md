@@ -5,7 +5,7 @@ excerpt: 'How to authenticate with k6 Cloud token'
 
 You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. Your API token enables the interaction with k6 Cloud using the k6 CLI or through the REST API.
 
-In k6 Cloud there are two ways how you can generate an API Token, via account or organization settings. These tokens differ in the kind of access they provide - [account level API token](#account-api-token) will grant access to your account with k6, while [organization level API token](#organization-api-token) will grant access to your organization.    
+In k6 Cloud there are two ways how you can generate an API Token, via account or organization settings. These tokens differ in the kind of access they provide - [account level API token](#account-api-token) will grant access through your account with k6, while [organization level API token](#organization-api-token) will grant organization-wide access for actions not tied to a user.    
 
 Below you'll find instructions on how to generate API tokens and examples on how to utilize them.
 
@@ -31,8 +31,10 @@ From there you can copy, see, and regenerate the token.
 ![account token view](./images/04-Token/account-api-token-view.png)
 
 ## Organization API token
-An organization-level API token provides API access to your organization with k6. To generate a token, go to **Organization settings** and select **API token**.
-From there you can create, see, and regenerate the tokens. Maximum amount of tokens an organization can create is 5.
+An organization API token provides organization-wide API access with k6. It's intended for actions that are not tied to a specific user like running tests from a CI platform. To generate a token, go to **Organization settings** and select **API token**.
+From there you can create, see, and regenerate the tokens. Maximum amount of tokens an organization can create by default is 5.
+
+Note that when using an organization API token you must always specify the project the test runs will be created under. Learn how to set the `Project ID` [here](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
 
 ![organization token view](./images/04-Token/organization-api-token-view.png)
 
