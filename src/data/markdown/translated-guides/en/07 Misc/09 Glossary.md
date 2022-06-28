@@ -145,7 +145,7 @@ Read more: [Metrics](/using-k6/metrics)
 
 ### Metric sample
 
-A single value for metric in a test run. For example, the value of `http_req_duration` from a single VU request.
+A single value for a metric in a test run. For example, the value of `http_req_duration` from a single VU request.
 
 ### Reliability
 
