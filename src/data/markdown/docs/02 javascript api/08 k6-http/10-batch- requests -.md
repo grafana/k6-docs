@@ -5,7 +5,7 @@ excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to d
 ---
 
 Batch multiple HTTP requests together, to issue them in parallel over multiple TCP connections.
-Note that you can set batch size with the [batch-per-host](/using-k6/k6-options/reference/#batch-per-host) option.
+Note that you can set batch size with the [batch per host](/using-k6/k6-options/reference/#batch-per-host) option.
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
