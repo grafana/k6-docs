@@ -38,7 +38,7 @@ HTTP load alerts happen when your test results have a high number of active requ
 *Identifier*: `http_load_throughput_limit`
 - **Happens when**:
   k6 detects a throughput limit.
-  The number of active in-flight requests continues to grow as the number of Virtual Users increases, while the request rate (finished requests) flatlines.
+  The number of active in-flight requests continues to grow as the number of Virtual Users increases, while the request rate (finished requests) stays flat.
 - **What it might indicate**:
   The system under test is overloaded, thus resulting in higher response times.
 - **Recommendations**:
@@ -328,5 +328,5 @@ For all insights and their identifiers, refer to the table below:
 | Too Many Groups                  | `best_practice_too_many_groups`          | `best_practice` |
 | Too Many Metrics                 | `best_practice_too_many_metrics`         | `best_practice` |
 | High Load Generator CPU Usage    | `health_high_loadgen_cpu_usage`          | `health`        |
-| High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        geto boys we can't be stopped full album|
+| High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        |
 
