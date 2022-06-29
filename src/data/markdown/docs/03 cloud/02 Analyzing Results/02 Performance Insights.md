@@ -64,7 +64,7 @@ HTTP load alerts happen when your test results have a high number of active requ
 *Identifier*: `http_load_high_http_failure_rate`
 - **Happens when**:
   The total number of HTTP(s) errors is higher than 15% during the first 100 completed script iterations.
-- **What it might indicate**
+- **What it might indicate**:
   Errors that occur early in a test are often not performance-related.
   Instead, your script might be making invalid requests:
   - Invalid URLs, e.g. with typos or hostnames outside the public DNS system
@@ -117,7 +117,7 @@ These alerts are often quickly solved with changes in the test script or test co
   We detect many different domains in a test.
 - **What it might indicate**:
   Your test script contains requests to 3rd party resources such as CDNs, social media scripts, analytics tools, etc.
-- **Recommendations**.
+- **Recommendations**:
   Remove third-party requests:
   - The requests may violate the third party's ToS.
   - The third party may throttle your requests, skewing the percentiles of your results.
@@ -184,7 +184,7 @@ These alerts are often quickly solved with changes in the test script or test co
 *Identifier*: `best_practice_too_many_metrics`
 - **Happens when**:
   k6 detects a high number of metrics in your test script.
-- **Recommendations**
+- **Recommendations**:
   Considering k6 can generate two types of metrics (built-in and custom), there are two things to check:
   - Whether your script contains too many unique URLs.
   - Whether it generates custom metrics in a loop.
@@ -237,7 +237,7 @@ Health alerts happen when the load generator has high resource utilization.
   - Large amounts of data are returned in responses, resulting in high memory utilization.
   - When the memory of the load generator reaches near total consumption, the garbage-collection efforts of the load generator can increase CPU utilization.
   - A JavaScript exception is being thrown early in VU execution. This results in an endless restart loop until all CPU cycles are consumed.
-- **Recommendations**.
+- **Recommendations**:
   - Increase sleep times where appropriate.
   - Increase the number of VUs to produce less RPS per VU (thus the same total load)-
   - Use multiple load zones to spread VUs across multiple regions.
