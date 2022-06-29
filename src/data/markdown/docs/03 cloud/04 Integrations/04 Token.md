@@ -32,7 +32,8 @@ From there you can copy, see, and regenerate the token.
 
 ## Organization API token
 An organization API token provides organization-wide API access with k6. It is intended for actions that are not tied to a specific user like running tests from a CI platform. To generate a token, go to **Organization settings** and select **API token**.
-From there you can create, see, and regenerate the tokens. Maximum amount of tokens an organization can create by default is 5.
+From there you can create, see, and regenerate the tokens.
+The maximum amount of tokens that an organization can create is 5 by default.
 
 Note that when using an organization API token you must always specify the project the test runs will be created under. Learn how to set the `Project ID` [here](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
 
