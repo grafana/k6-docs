@@ -92,13 +92,13 @@ A synonym for [soak testing](#soak-test).
 
 A JavaScript runtime written in Go. k6 uses Goja to enable test scripting in Javascript.
 
-Read more: [Goja repository on GitHub](https://github.com/dop251/goja)
+Read more: [Goja repository](https://github.com/dop251/goja)
 
 ### Graceful stop
 
 A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.
 
-Read more: The [Graceful stop reference](/using-k6/scenarios/graceful-stop/)
+Read more: [Graceful stop reference](/using-k6/scenarios/graceful-stop/)
 
 ### HTTP archive
 
@@ -236,5 +236,5 @@ The rate of successful message delivery. In k6, throughput is measured in reques
 
 *(Or VUs)*. The simulated users that perform separate and concurrent iterations of your test script.
 
-Read more: [VU option reference](/using-k6/k6-options/reference#vus), [Tutorial to calculate the number of Virtual Users with Google Analytics](https://k6.io/blog/monthly-visits-concurrent-users).
+Read more: [VU option reference](/using-k6/k6-options/reference#vus)
 
