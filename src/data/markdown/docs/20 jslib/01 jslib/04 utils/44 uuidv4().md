@@ -6,10 +6,16 @@ excerpt: 'uuid v4 function'
 
 Function returns a random uuid v4 in a string form.
 
+### Parameters
+
+| Parameter         | Type    | Description                                                                                                                                                                                                                                                                                                                                    |
+| :---------------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| secure (optional) | boolean | By default, `uuidv4()` uses a standard random number generator. If the `secure` option is set to `true`, `uuidv4` uses a cryptographically secure random number generator instead. While this adds security, the `secure` option also makes the function an order of magnitude slower. |
+
 ### Returns
 
-| Type   | Description     |
-| -----  | --------------- |
+| Type   | Description           |
+| :----- | :-------------------- |
 | string | Random UUID v4 string |
 
 
@@ -18,7 +24,7 @@ Function returns a random uuid v4 in a string form.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export default function () {
   const randomUUID = uuidv4();
