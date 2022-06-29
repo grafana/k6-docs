@@ -3,11 +3,12 @@ title: 'Token'
 excerpt: 'How to authenticate with k6 Cloud token'
 ---
 
-You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. Your API token enables the interaction with k6 Cloud using the k6 CLI or through the REST API.
+You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. 
+Your API token lets you interact with k6 Cloud using the k6 CLI or the REST API.
 
 In k6 Cloud there are two ways how you can generate an API Token, via account or organization settings. These tokens differ in the kind of access they provide - [account level API token](#account-api-token) will grant access through your account with k6, while [organization level API token](#organization-api-token) will grant organization-wide access for actions not tied to a user.    
 
-Below you'll find instructions on how to generate API tokens and examples on how to utilize them.
+To generate API tokens, you can follow these steps or adapt these examples.
 
 > #### Google/GitHub Single Sign-On Users
 >
@@ -31,11 +32,14 @@ From there you can copy, see, and regenerate the token.
 ![account token view](./images/04-Token/account-api-token-view.png)
 
 ## Organization API token
-An organization API token provides organization-wide API access with k6. It is intended for actions that are not tied to a specific user like running tests from a CI platform. To generate a token, go to **Organization settings** and select **API token**.
+An organization API token provides organization-wide API access to k6. 
+You can use it to run tests without linking the run to a specific user, e.g. when running tests from a CI platform.
+To generate a token, go to **Organization settings** and select **API token**.
 From there you can create, see, and regenerate the tokens.
 The maximum amount of tokens that an organization can create is 5 by default.
 
-Note that when using an organization API token you must always specify the project the test runs will be created under. Learn how to set the `Project ID` [here](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
+Note that when using an organization API token, you must specify the project where the test runs will be created.
+Read about [how to set the `Project ID`](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
 
 ![organization token view](./images/04-Token/organization-api-token-view.png)
 
