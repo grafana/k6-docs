@@ -218,7 +218,9 @@ for (let id = 1; id <= 1000; id++) {
 
 Health alerts happen when the load generator has high resource utilization.
 
-You **should not ignore** these alerts, and they can skew test data.
+> ⚠ **Pay attention to health alerts**
+>
+> An overutilized load generator can skew test results.
 
 ### High load generator CPU usage
 
