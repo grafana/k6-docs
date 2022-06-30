@@ -3,22 +3,52 @@ title: 'Token'
 excerpt: 'How to authenticate with k6 Cloud token'
 ---
 
-You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. Your Auth Token enables the interaction with k6 Cloud using the k6 CLI or through the REST API. [Get your Auth Token](https://app.k6.io/account/api-token).
+You'll need to authenticate to use k6 Cloud, whether it's for streaming results or running tests in the cloud. 
+Your API token lets you interact with k6 Cloud using the k6 CLI or the REST API.
 
-Below are some examples on how to utilize the token to authenticate.
+You can generate two types of API tokens for k6 Cloud, depending on how you want to authenticate:
+- [Account-level API tokens](#account-api-token) grant access through your account with k6
+- [Organization-level API tokens](#organization-api-token) grant organization-wide access for actions not tied to a user.    
+
+To generate API tokens, you can follow these steps or adapt these examples.
 
 > #### Google/GitHub Single Sign-On Users
 >
-> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 Cloud account email and password. You will need to create a password using [Forgot Password](https://app.k6.io/account/forgot), or you'll instead need to <a href="https://app.k6.io/account/api-token"> get your API authentication token from the app</a> and supply that explicitly: `k6 login cloud --token YOUR_API_AUTH_TOKEN`.
-> <a href="#authenticating-with-api-token">See below</a> for more information.
+> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 Cloud account email and password. You will need to create a password using [Forgot Password](https://app.k6.io/account/forgot), or you can instead authenticate via API token. See [Authenticating with API token](#authenticating-with-api-token) for more information.
 
 > #### Docker Users
 >
-> If you're running k6 in a Docker container you'll need to make sure that the k6 config file where the k6 Cloud API authentication information is stored to is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag, e.g. `docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json`.
+> If you're running k6 in a Docker container, make sure that the k6 config file where the k6 Cloud API authentication information is stored is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag. Example:
+```bash
+docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json
+```
 
 > #### Integrating with CI
 >
-> If you are integrating k6 into your CI pipeline, we recommend using one of the token methods to authenticate and not exposing your username/password within your CI configuration files or as variables.
+> If you are integrating k6 into your CI pipeline, we recommend using an [organization level API token](#organization-api-token) to authenticate and not exposing your username/password within your CI configuration files or as variables. Alternatively you can use an [account level API token](#account-api-token) with a user created specially for the purpose of running CI tests.
+
+## Account API token
+An account-level API token provides API access to your account with k6. To generate the token, go to **Account settings** and select **API token**.
+From there you can copy, see, and regenerate the token.
+
+![account token view](./images/04-Token/account-api-token-view.png)
+
+## Organization API token
+An organization API token provides organization-wide API access to k6. 
+You can use it to run tests without linking the run to a specific user, e.g. when running tests from a CI platform.
+To generate a token, go to **Organization settings** and select **API token**.
+From there you can create, see, and regenerate the tokens.
+The maximum amount of tokens that an organization can create is 5 by default.
+
+Note that when using an organization API token, you must specify the project where the test runs will be created.
+Read about [how to set the `Project ID`](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one). 
+
+![organization token view](./images/04-Token/organization-api-token-view.png)
+
+> #### Access to organization settings
+>
+> Only [organization admins](/cloud/project-and-team-management/members/#admin) can access organization settings.
+
 
 ## Authenticate with email/password
 
