@@ -77,11 +77,8 @@ The _Teams_ feature allows you to automatically assign all members of your inter
 
 Setting up teams has two steps:
 
-1. You, or whomever is the IdP organization admin, should organize your internal teams into Okta/Azure _groups_. Make sure to give those groups access to the `k6 Cloud` application. Next they should update attribute statement on the said application to relay the group name in the call to our platform upon sign-in.
-2. Since mapping your teams to k6 projects is currently a manual process, you need to reach out to us via the Customer Success team for further setup. We will ask you for:
-
-- The Azure/Okta groups (or group ids).
-- To which k6 project ids you want to map each group (or group id).
+1. You, or whomever the IdP organization admin is, should organize your internal teams into Okta/Azure _groups_. Make sure to give those groups access to the `k6 Cloud` application. Next they should update attribute statement on the said application to relay the group name in the call to our platform upon sign-in.
+2. Since mapping your teams to k6 projects is currently a manual process, you need to reach out to us via the Customer Success team for further setup. We will ask you for the attribute name you used to pass the group name to us. Group names will become project names. Upon the first sign-in from any user of any group, the project will be automatically created. Any other user will be joined to the already created project.
 
 Each IdP platform has its own instructions for setting up groups, which are provided in their corresponding documentation:
 
