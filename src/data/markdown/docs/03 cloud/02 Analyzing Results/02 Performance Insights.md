@@ -175,7 +175,7 @@ These alerts are often quickly solved with changes in the test script or test co
 - **What it might indicate**:
   Most commonly, this alert happens when a test uses a [Group name](/javascript-api/k6/group) to aggregate different HTTP requests or puts the group name in a loop statement.
 - **Recommendations**:
-  - When aggregating URLs, please use the `name` tag.
+  - Use the `name` tag to aggregate URLs.
   - Add [Group names](/javascript-api/k6/group) in your test script.
   - If you want to group multiple HTTP requests, use [URL grouping](/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
 
