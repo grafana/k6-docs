@@ -8,7 +8,7 @@ excerpt: 'Guide on setting up Teams in k6 Cloud'
 
 ## What are Teams?
 
-Teams are an an optional unit of structure between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). With Teams, you can group the Projects of your Organizations into categories. All Team members gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
+Teams are an optional unit of structure between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). With Teams, you can group the Projects of your Organizations into categories. All Team members gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
 
 Using Teams can help when administrating k6 Organizations with a large number of members and projects. For example, you could have a "backend" Team that grants read-write access to all backend-related k6-cloud Projects. The Organization-admin can add/remove a member from the Team rather than having to do so for every related Project. 
 
