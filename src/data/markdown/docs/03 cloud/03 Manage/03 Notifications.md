@@ -143,17 +143,17 @@ a notification is sent.
 
 ### Events when a test ends
 
-| Event name                  | Identifier                           | Description                                                                                   |
-| --------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- |
-| Test finished               | `test.finished.finished`             | All tests that ends with a `Finished` run-status                                              |
-| Test finished successfully  | `test.finished.success`              | Only tests that _pass_ their [checks](/using-k6/checks) or [thresholds](/using-k6/thresholds) |
-| Test failed                 | `test.finished.failed`               | Only tests that _fail_ their checks or thresholds                                             |
-| Test timed out              | `test.finished.timed_out`            | Only tests that _timed out_ in some way due to an upstream issue                              |
-| Test aborted (by user)      | `test.finished.aborted_user`         | Only tests that were _aborted_ manually by a user                                             |
-| Test aborted (by system)    | `test.finished.aborted_system`       | Only tests that were _aborted_ due to some upstream system problem                            |
-| Test aborted (script error) | `test.finished.aborted_script_error` | Only tests that were _aborted_ due to a test-script error                                     |
-| Test aborted (by threshold) | `test.finished.aborted_threshold`    | Only tests that were _aborted_ by crossing a test threshold                                   |
-| Test aborted (by limit)     | `test.finished.aborted_limit`        | Only tests that were _aborted_ due to hitting an execution or network limit                   |
+| Event name                  | Identifier                           | Description                                                                   |
+|-----------------------------|--------------------------------------|-------------------------------------------------------------------------------|
+| Test finished               | `test.finished.finished`             | All tests that ends with a `Finished` run status                              |
+| Test finished successfully  | `test.finished.success`              | Only tests that _pass_ (all [thresholds](/using-k6/thresholds) must pass too) |
+| Test failed                 | `test.finished.failed`               | Only tests that _fail_ their thresholds                                       |
+| Test timed out              | `test.finished.timed_out`            | Only tests that _timed out_ in some way due to an upstream issue              |
+| Test aborted (by user)      | `test.finished.aborted_user`         | Only tests that were _aborted_ manually by a user                             |
+| Test aborted (by system)    | `test.finished.aborted_system`       | Only tests that were _aborted_ due to some upstream system problem            |
+| Test aborted (script error) | `test.finished.aborted_script_error` | Only tests that were _aborted_ due to a test-script error                     |
+| Test aborted (by threshold) | `test.finished.aborted_threshold`    | Only tests that were _aborted_ by crossing a test threshold                   |
+| Test aborted (by limit)     | `test.finished.aborted_limit`        | Only tests that were _aborted_ due to hitting an execution or network limit   |
 
 You can safely pick multiple options and will still at most get two notifications per
 test-run, one when it starts and one when it ends. The event-identifier will be passed along
