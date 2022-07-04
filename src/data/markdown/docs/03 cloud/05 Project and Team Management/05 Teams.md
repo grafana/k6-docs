@@ -26,16 +26,21 @@ If your subscription supports Teams, you should be able to access _Teams_ from t
 
 ![Team menu](images/05-Teams/teams1.png)
 
+---
 
 A Team must have an organization-unique **name**. You can also add an optional **description**. 
 
-![Team menu](images/05-Teams/teams2.png)
+![Creating a new Team](images/05-Teams/teams2.png)
+
+---
 
 Using the drop downs, add Projects to the Team based on the [Membership level](/cloud/project-and-team-management/members) that should be granted on this Project by the Team. As a reminder, 
 - **Project Read/Write** access means Team members will be able to look at, create and edit test-runs in the Project. They will not be able to delete or rename the Project itself.
 - **Project Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
-![Team menu](images/05-Teams/teams3.png)
+![The Project membership dropdown](images/05-Teams/teams3.png)
+
+---
 
 Once the Team has been created, select it in your list of teams and press _Invite Members_. Only existing members of your Organization can be invited. When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
 
@@ -46,8 +51,10 @@ Once the Team has been created, select it in your list of teams and press _Invit
 > Don't confuse the _Team_ access level with the _Project_ access level granted by the Team!
  Most members just need **read only** Team access.
 
-![Team menu](images/05-Teams/teams4.png)
+![Inviting new Team members](images/05-Teams/teams4.png)
+
+---
 
 Once members are added, you can add and remove members at will.
 
-![Team menu](images/05-Teams/teams5.png)
+![Managing Team members in Team member listing](images/05-Teams/teams5.png)
