@@ -10,7 +10,7 @@ Projects are designed to be flexible enough that you can organize them in a way 
 
 Here are some ways we have seen users use Projects to stay organized:
 
-- Per team: Each team is given their own project for them to do their work and collaborate
+- Per team: Each team is given their own project for them to do their work and collaborate (see also [Teams](/cloud/project-and-team-management/teams)).
 - Per component: A project is created for each component or service you're testing
 - Per brand: E-commerce customers may want to use projects per brand to stay organized
 - Per Customer: When dealing with custom software, you may wish to organize by customer to ensure each unique system is tested
