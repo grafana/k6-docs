@@ -9,7 +9,6 @@ excerpt: 'Guide on setting up Teams in k6 Cloud'
 ## A level between organizations and projects
 
 A _Team_ is an optional structural unit between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). 
-
 With Teams, you can group the Projects of your Organizations into categories. 
 All users who belong to a team gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
 
