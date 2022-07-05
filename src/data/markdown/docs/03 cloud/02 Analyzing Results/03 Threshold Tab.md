@@ -3,18 +3,42 @@ title: 'Threshold Tab'
 excerpt: 'The Threshold Tab allows you to visually inspect the performance of your Thresholds during a k6 test. '
 ---
 
-## Cloud Results: Thresholds
+With thresholds, you can codify SLOs, and set pass/fail criteria for your test.
+After your test finishes, the **Thresholds** tab  can give you valuable insight into how your system under test performed.
 
-In the **Threshold** tab, you can visually inspect and analyze `Thresholds` in your test. The number in the tab represents passing Thresholds / Total Thresholds so you can quickly see if something needs your attention.
+> **ⓘ If a threshold fails, k6 marks the test as `Failed` in the UI.**
 
-You can use this tab to do the following:
 
-- Find failing thresholds. In this example, we've filtered the list of thresholds to show only thresholds with names that include either "http" or "vus". Out of the thresholds that satisfies the filter criteria we can see that two are failing, `vus: value>100` and `http_reqs:count>10000`. Note the &#10003; or &#10005; on the left side of each row.
-- Expand a threshold to view its graph. In our example below, the expanded thresholds calculated value is below the threshold of 100 ms.
-- Add the chart to the `Analysis Tab` for further correlation with other data
+To visual inspect and analyze thresholds, use the **Threshold** tab.
+First, in the tab itself, note the number of the thresholds that passed against the total number of thresholds.
+You can use this number to quickly see whether something needs your attention.
 
 ![Thresholds Tab](./images/03-Threshold-Tab/thresholds-tab.png)
 
+Then, you can explore the data from individual thresholds.
+
+## Explore thresholds in k6 Cloud
+
+
+You can use this tab to do the following:
+
+- To **find failing thresholds**, use the search bar. You can filter by name, or by whether the threshold passed or failed.
+
+  In this example, we've filtered the list of thresholds to show only thresholds with names that include either `http` or `vus`.
+  Out of the thresholds that satisfies the filter criteria, two are failing, `vus: value>100` and `http_reqs:count>10000`.
+  Note the &#10003; or &#10005; on the left side of each row.
+- To see visualizes for the metric, select the threshold.
+  A graph appears, which you can use to inspect where performance degraded.
+
+  In our example below, the expanded thresholds calculated value is below the threshold of 100 ms.
+
+To compare the threshold with other data about the test:
+1. Select the threshold.
+2. Select **Add to analysis**.
+3. Then use the **Analysis** tab to find correlations between threshold data and other values from the test.
+
+
+
 ## See Also
 
-For more information on defining `Thresholds` in your test, please refer to our documentation on [Thresholds](/using-k6/thresholds).
+For more information on defining `Thresholds` in your test, refer to the [Thresholds documentation](/using-k6/thresholds).
