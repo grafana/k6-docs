@@ -1,5 +1,5 @@
 ---
-title: 'Checks Tab'
+title: 'Inspect checks'
 excerpt: 'The Checks tab visualizes performance of your checks in your k6 test'
 ---
 

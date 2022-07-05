@@ -1,6 +1,6 @@
 ---
-title: 'HTTP Tab'
-excerpt: 'The HTTP tab allows you to inspect individual requests in your k6 test'
+title: 'Inspect HTTP requests'
+excerpt: 'Use the HTTP tab to inspect individual requests in your k6 test'
 ---
 
 If your test is on an HTTP service, you'll often want to search through the requests that the test made to find significant values.

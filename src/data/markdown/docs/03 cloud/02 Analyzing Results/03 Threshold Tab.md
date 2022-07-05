@@ -1,5 +1,5 @@
 ---
-title: 'Threshold Tab'
+title: 'Inspect thresholds'
 excerpt: 'The Threshold Tab allows you to visually inspect the performance of your Thresholds during a k6 test. '
 ---
 

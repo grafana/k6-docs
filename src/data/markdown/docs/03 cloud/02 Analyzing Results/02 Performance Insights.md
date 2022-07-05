@@ -1,5 +1,5 @@
 ---
-title: 'Performance Insights'
+title: 'Understand Performance Insights'
 excerpt: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
 ---
 
