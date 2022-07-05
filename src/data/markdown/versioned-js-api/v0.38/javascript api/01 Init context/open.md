@@ -17,7 +17,7 @@ Opens a file, reading all its contents into memory for use in the script.
 
 This is a function that can be called from only the init context (aka **init code**). This is to say, code in the global context, outside of the main export default function { ... }.
 
-By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
+By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a distributed test.
 
 See the example further down on this page. For a more in-depth description, see [Running k6](/getting-started/running-k6).
 
