@@ -11,7 +11,7 @@ excerpt: 'Get object with all cookies for the given URL, where the key is the co
 
 | Type   | Description |
 | ------ | ----------- |
-| object | A JS object will all cookies for the given URL, where the key is the cookie name and the value is an array. |
+| object | A JS object with all cookies for the given URL, where the key is the cookie name and the value is an array. |
 
 ### Example
 
