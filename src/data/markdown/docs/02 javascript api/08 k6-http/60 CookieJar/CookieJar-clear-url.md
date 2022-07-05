@@ -5,7 +5,7 @@ excerpt: 'Delete all cookies for the given URL.'
 
 | Parameter | Type   | Description |
 | --------- | ------ | ----------- |
-| url     | string | The URL for which to delete all cookies. |
+| url     | string | The URL to delete all cookies for. |
 
 ### Example
 
