@@ -4,7 +4,7 @@ excerpt: 'The init context (aka "init code") is code in the global context that 
 ---
 The init context (aka "init code") is code in the global context that has
 access to a few functions not accessible during main script execution (that is,
-"VU context" or "VU code"). For a more detailed description see
+"VU context" or "VU code"). For a more detailed description, refer to
 [Running k6](/getting-started/running-k6#section-the-init-context-and-the-default-function).
 
 
