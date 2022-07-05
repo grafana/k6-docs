@@ -5,7 +5,7 @@ excerpt: 'Get object with all cookies for the given URL, where the key is the co
 
 | Parameter | Type   | Description |
 | --------- | ------ | ----------- |
-| url       | string | The URL for which to get cookies. |
+| url       | string | The URL to get cookies for. |
 
 ### Returns
 

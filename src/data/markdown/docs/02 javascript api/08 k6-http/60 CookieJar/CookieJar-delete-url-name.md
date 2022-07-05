@@ -5,7 +5,7 @@ excerpt: 'Delete the `name` cookie for the given URL.'
 
 | Parameter | Type   | Description |
 | --------- | ------ | ----------- |
-| url     | string | The URL for which to delete cookies. |
+| url     | string | The URL to delete cookies for. |
 | name     | string | The name of the cookie you want to delete. |
 
 ### Example
