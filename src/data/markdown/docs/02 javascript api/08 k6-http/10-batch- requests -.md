@@ -11,7 +11,13 @@ Note that you can set batch size with the [batch per host](/using-k6/k6-options/
 | --------- | --------------- | ---------------------------------------------------------------- |
 | requests  | array \| object | An array or object containing requests, in string or object form |
 
-When each request is specified as an array, the order of the arguments for each request is as follows:
+### Request definition
+
+#### Array and Object
+
+Request specified by Array or JavaScript Object can be defined with the following parameters.
+
+When a Request definition is provided as an Array then the order of items is relevant. Check the `Position` column for the correct order.
 
 | Position | Name              | Type             | Description                                                                                                                 |
 | -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -20,34 +26,15 @@ When each request is specified as an array, the order of the arguments for each 
 | 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
 | 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
 
+#### String
+
+If an item is passed as a `string` then it will be automatically parsed as a `GET` request.
 
 ### Returns
 
 | Type   | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | object | The returned object contains [Response](/javascript-api/k6-http/response) objects.<br /><br />It is an array when users pass an array as `requests` and is an ordinary object with string keys when named requests are used (see below). |
-
-### Example with request as an array
-
-<CodeGroup labels={[]}>
-
-```javascript
-import http from 'k6/http';
-import { check } from 'k6';
-
-export default function () {
-  const responses = http.batch([
-    ['GET', 'https://test.k6.io', null, { tags: { ctype: 'html' } }],
-    ['GET', 'https://test.k6.io/style.css', null, { tags: { ctype: 'css' } }],
-    ['GET', 'https://test.k6.io/images/logo.png', null, { tags: { ctype: 'images' } }],
-  ]);
-  check(responses[0], {
-    'main page status was 200': (res) => res.status === 200,
-  });
-}
-```
-
-</CodeGroup>
 
 ### Example batching three URLs for parallel fetching
 
@@ -111,7 +98,33 @@ export default function () {
 
 </CodeGroup>
 
-_Note that the requests in the example above may happen in any order, or simultaneously. When running requests in batches, there is no guarantee that e.g. req1 will happen before req2 or req3_
+_Note that the requests in the example above may happen in any order, or simultaneously. When running requests in batches, there is no guarantee that e.g. req1 will happen before req2 or req3_.
+
+### Example with GET shorthand
+
+If a requests' item is passed as a `string` then they will be automatically parsed as a `GET` request. 
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+
+export default function () {
+  const responses = http.batch(['http://test.k6.io', 'http://test.k6.io/pi.php']);
+
+  check(responses[0], {
+    'main page 200': (res) => res.status === 200,
+  });
+
+  check(responses[1], {
+    'pi page 200': (res) => res.status === 200,
+    'pi page has right content': (res) => res.body === '3.14',
+  });
+}
+```
+
+</CodeGroup>
 
 ### Example with named requests
 
