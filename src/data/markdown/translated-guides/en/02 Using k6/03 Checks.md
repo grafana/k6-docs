@@ -140,7 +140,7 @@ $ k6 run checks.js
 
 ## Checks in k6 Cloud Results
 
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks-tab) for analysis.
+In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks) for analysis.
 
 Here we can quickly see what checks are failing.
 When you select a check, you can see the count of passes/failures at given points in the test.

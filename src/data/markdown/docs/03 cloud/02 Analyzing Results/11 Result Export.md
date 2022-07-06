@@ -1,6 +1,7 @@
 ---
 title: 'Export results'
 excerpt: 'You can export k6 Cloud test results as CSV files and as PDF reports'
+slug: '/cloud/analyzing-results/result-export'
 ---
 
 After a test finishes, you can export the test-result data in various formats:

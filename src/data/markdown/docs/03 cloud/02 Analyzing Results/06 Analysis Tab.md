@@ -1,6 +1,7 @@
 ---
 title: 'Compare time series'
 excerpt: 'With the Analysis tab, you can compare and correlate data from your k6 test.'
+slug: '/cloud/analyzing-results/analysis-tab'
 ---
 
 In the previous pages, this documentation gave instructions about how to add a certain value from your test results to the **Analysis** tab.

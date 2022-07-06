@@ -109,8 +109,8 @@ To visualize the data in different ways, you have a few choices:
 ## See Also
 
 - [Performance Insights](/cloud/analyzing-results/performance-insights/)
-- [Thresholds](/cloud/analyzing-results/threshold-tab)
-- [Checks](/cloud/analyzing-results/checks-tab)
-- [HTTP Table](/cloud/analyzing-results/http-tab)
+- [Thresholds](/cloud/analyzing-results/thresholds)
+- [Checks](/cloud/analyzing-results/checks)
+- [HTTP Table](/cloud/analyzing-results/http)
 - [Analysis and Comparison Tab](/cloud/analyzing-results/test-comparison)
 

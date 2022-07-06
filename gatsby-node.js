@@ -573,8 +573,8 @@ function getDocPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -758,8 +758,8 @@ function getGuidesPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -874,8 +874,8 @@ function getJsAPIVersionedPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -1294,6 +1294,24 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/using-k6/options/',
     toPath: '/using-k6/k6-options/reference/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/thresholds-tab',
+    toPath: '/cloud/analyzing-results/thresholds',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/checks-tab',
+    toPath: '/cloud/analyzing-results/checks',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/http-tab',
+    toPath: '/cloud/analyzing-results/http',
     isPermanent: true,
   });
 

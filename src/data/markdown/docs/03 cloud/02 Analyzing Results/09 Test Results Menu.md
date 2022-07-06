@@ -1,6 +1,7 @@
 ---
 title: 'Share a test'
 excerpt: 'The Test Results menu has multiple options to share or save a test.'
+slug: '/cloud/analyzing-results/test-results-menu'
 ---
 
 To share, export, and save your test, use the vertical dots icon to open the Test Result menu.

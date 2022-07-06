@@ -1,6 +1,7 @@
 ---
 title: 'Track trends'
 excerpt: 'With the performance trending graph, you can quickly see how performance changes over between test runs'
+slug: '/cloud/analyzing-results/performance-trending'
 ---
 
 The performance trending graph automatically displays as you continue to run your tests.

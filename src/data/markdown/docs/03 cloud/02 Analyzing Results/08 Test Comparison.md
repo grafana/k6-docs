@@ -1,6 +1,7 @@
 ---
 title: 'Compare tests'
 excerpt: 'Use the k6 Cloud Results test-comparison feature to compare data across different test runs.'
+slug: '/cloud/analyzing-results/test-comparison'
 ---
 
 <Blockquote mod="warning">

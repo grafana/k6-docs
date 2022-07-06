@@ -1,6 +1,7 @@
 ---
 title: 'Inspect HTTP requests'
 excerpt: 'Use the HTTP tab to inspect individual requests in your k6 test'
+slug: '/cloud/analyzing-results/http'
 ---
 
 If your test is on an HTTP service, you'll often want to search through the requests that the test made to find significant values.

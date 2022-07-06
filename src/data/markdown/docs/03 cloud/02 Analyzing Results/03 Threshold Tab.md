@@ -1,6 +1,7 @@
 ---
 title: 'Inspect thresholds'
 excerpt: 'With the Threshold Tab, you can visually inspect and filter the performance of your Thresholds during a k6 test.'
+slug: '/cloud/analyzing-results/thresholds/'
 ---
 
 With thresholds, you can codify SLOs, and set pass/fail criteria for your test.

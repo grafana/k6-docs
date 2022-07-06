@@ -495,7 +495,7 @@ export default function () {
 ## Thresholds in k6 Cloud Results
 
 In [k6 Cloud Results](/cloud/analyzing-results/overview) `Thresholds` are available in
-their [own tab](/cloud/analyzing-results/threshold-tab) for analysis.
+their [own tab](/cloud/analyzing-results/thresholds) for analysis.
 
 You can also see how the underlying metric compares to a specific threshold throughout the test.
 The threshold can be added to the analysis tab for further comparison against other metrics.

@@ -1,6 +1,7 @@
 ---
 title: 'Inspect checks'
 excerpt: 'The Checks tab visualizes the performance of your checks in your k6 test'
+slug: '/cloud/analyzing-results/checks'
 ---
 
 *Checks* validate response values.
