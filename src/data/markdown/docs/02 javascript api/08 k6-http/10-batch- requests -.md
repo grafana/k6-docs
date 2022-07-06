@@ -15,9 +15,7 @@ Note that you can set batch size with the [batch per host](/using-k6/k6-options/
 
 #### Array and Object
 
-Request specified by Array or JavaScript Object can be defined with the following parameters.
-
-When a Request definition is provided as an Array then the order of items is relevant. Check the `Position` column for the correct order.
+A request specified by Array or Object can be defined with the following parameters.
 
 | Position | Name              | Type             | Description                                                                                                                 |
 | -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -25,6 +23,10 @@ When a Request definition is provided as an Array then the order of items is rel
 | 2        | url               | string / [HTTP URL](/javascript-api/k6-http/urlurl#returns)  | Mandatory. The URL to request.                                                                                              |
 | 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
 | 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
+
+<Blockquote mod="warning">
+When a Request definition is provided as an Array, the order of items is relevant. Check the `Position` column for the correct order.
+</Blockquote>
 
 #### String
 
