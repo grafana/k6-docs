@@ -1,13 +1,13 @@
 ---
 title: 'Compare tests'
-excerpt: 'Use the k6 Cloud Results test comparison feature to compare data across different test runs.'
+excerpt: 'Use the k6 Cloud Results test-comparison feature to compare data across different test runs.'
 ---
 
 <Blockquote mod="warning">
 
 #### Test comparison works only on runs from the same test script
 
-When using test comparison, you can compare tests only from the same series of test runs.
+You can compare tests only from the same series of test runs.
 You can't compare two different test scripts.
 
 </Blockquote>
@@ -16,9 +16,7 @@ The test-comparison feature compares the results of two different test runs of t
 You can compare high-level metrics, individual checks, and URL endpoints.
 
 To establish a point of comparison, you can set a baseline.
-You may also wish to compare against a previous test run to look for a measurable differences in some change you made.
-
-
+You may also wish to compare against a previous test run to look for measurable differences stemming from a change that you made.
 
 ## Set a baseline test
 
@@ -50,8 +48,8 @@ To compare two test runs, follow these steps:
 
 ## Test comparison mode
 
-After you select a test, you'll be brought into *comparison mode*.
-When you activate this mode, layout of the Performance Overview section changes quite a bit. 
+After you select a test, k6 brings you to *comparison mode*.
+When you activate this mode, the layout of the Performance Overview section changes quite a bit.
 
 Controls for changing base and target test runs appear, and the overview chart now renders time series for the two compared test runs. Solid lines represent the base run, and dashed lines represent the compared target.
 
@@ -74,8 +72,7 @@ You can add additional data to the table for the base and target test runs.
 For the current and previous runs, you can compare:
 - The `value` of the threshold
 - `pass/fail` statuses
-
-previous and current test-run values for each Threshold and their `pass/fail` statuses.
+- Previous and current test-run values for each Threshold and their `pass/fail` statuses.
 
 To display a separate threshold chart for each test run, select a threshold.
 
@@ -83,7 +80,7 @@ To display a separate threshold chart for each test run, select a threshold.
 
 ## Compare checks
 
-To compare checks, us the **Checks** tab.
+To compare checks, use the **Checks** tab.
 Here additional data is added to the table for the base and target test runs.
 
 For the current and previous runs, you can compare:
@@ -106,7 +103,7 @@ For previous and current test runs, you can compare:
   - p95 response time`
 - Other data for individual HTTP requests.
 
-To show two separate charts, select the rows, one for each test run.
+To show two separate charts, select the rows for each test run that you want to compare.
 
 You can also change how the data aggregates by adding additional charts, such as timing breakdowns for each HTTP request.
 

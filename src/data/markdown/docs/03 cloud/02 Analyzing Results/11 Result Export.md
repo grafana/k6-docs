@@ -44,22 +44,22 @@ You have a few ways to edit and format the PDF.
 
 ![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_edit_text.png)
 
-Each section in the summary comes with a predefined text.
+Each section of the summary has text from a predefined template.
 To edit this text:
 1. Select the edit icon or the text itself.
-3. Write your new text.
-4. Select outside the text field.
+1. Write your new text.
+1. Select outside the text field.
 
-When you are satisfied with your changes, select outside the text editor to save your changes.
+When you are satisfied with your changes, select outside the text editor.
 If you want to cancel and revert your changes, select the cancel icon next to the editor, or use the ESC key on your keyboard.
 
 #### Formatting
 
 ![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_text_formatting.png)
 
-To apply formatting to your text, select the text you want to format and choosing the appropriate formatting from the popup.
+To apply formatting to your text, select the text you want to format and choose the appropriate formatting from the popup.
 
-You can also use the following keyboard shortcuts to apply formatting:
+You can also use the following keyboard shortcuts to apply format text:
 
 | Shortcut            | Format                                                    |
 | ------------------- | --------------------------------------------------------- |
@@ -72,13 +72,11 @@ You can also use the following keyboard shortcuts to apply formatting:
 Once you've finished editing the summary, select the `Generate PDF` button in the top right of the editor. This opens a progress dialog.
 After a few moments, the browser will prompt you to download the PDF summary report.
 
-<Blockquote mod="warning">
 
 > **Do not refresh or navigate away from the page while the PDF is being generated.**
 > How much time it takes to generate depends on the amount of data that needs to be included.
 > If your test has much data, such as many load zones, it may take longer.
 
-</Blockquote>
 
 ## Export as CSV
 
@@ -86,12 +84,12 @@ To export the test result as CSV, follow these steps:
 1. Select the test result.
 1. Select the three-dots icon in the top right, and select `Export Data`.
 
-The data will be exported as a `.zip` file containing number of `.csv` files.
+The data will be exported as a ZIP file that contains a number of CSV files.
 
 Each metric is exported to a separate file.
 The export also contains a `metrics.csv` file with the list of exported metrics.
 
-For a typical k6 HTTP test, these files will be present:
+A typical k6 HTTP test will have the following files:
 
 | File name                                        |             Metric               |           Columns                |
 | ------------------------------------------------ | -------------------------------- | -------------------------------- | 
@@ -115,14 +113,14 @@ For a typical k6 HTTP test, these files will be present:
 | `metric_myCustomTrend.csv`                       | User-defined `myCustomTrend` [Trend](/javascript-api/k6-metrics/trend/) | `time`,`metric`,`scenario`,`group`,`load_zone`,`tags`,`count`,`min`,`mean`,`median`,`p95`,`p99`,`max`,`stdev` |
 
 
-Here's example data, units, and description of fields present in the CSV data.
+The following table is a reference for the columns in the CSV data, with examples, data types, and descriptions.
 
-| Column          | Example                          | Data/Unit      | Description                                                                                                                               |
+| Column          | Example                          | Type (unit)      | Description                                                                                                                               |
 | --------------- | -------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `time`          | 2019-03-25 11:12:48.927949+00:00 | datetime (UTC) | The ISO-8601 timestamp when this data point was captured (when the HTTP request was made).                                                |
 | `metric`        | http_req_duration                | string         | The metric name that this data point represents.                                                                                          |
 | `group`         | "my group"                       | string         | The group name [`group()`](/using-k6/tags-and-groups) from where this request was made.                                                 |
-| `scenario`      | default                          | string         | The name of the scenario this metric was collected in.                                                                           |
+| `scenario`      | default                          | string         | The name of the scenario that this metric was collected in.                                                                           |
 | `url`           | http://test.k6.io/style.css      | string         | The URL requested.                                                                                                                        |
 | `method`        | GET                              | string         | The HTTP method of the request that this data point represents.                                                                           |
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
@@ -136,3 +134,4 @@ Here's example data, units, and description of fields present in the CSV data.
 | `p99`           | 14.08016                         | number (ms)    | The 99th percentile response time for samples collected within the time bucket. |
 | `max`           | 15.08016                         | number (ms)    | The maximum response time for samples collected within the time bucket. |
 | `stdev`         | 0.075112                         | number (ms)    | The standard deviation time for samples collected within the time bucket. |
+

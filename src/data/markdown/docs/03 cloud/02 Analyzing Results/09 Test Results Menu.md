@@ -1,10 +1,9 @@
 ---
 title: 'Share a test'
-excerpt: 'Additional options available in the test results menu'
+excerpt: 'The Test Results menu has multiple options to share or save a test.'
 ---
 
-To share, export, and save your test, use the vertical dots icon.
-This brings up the Test Result menu.
+To share, export, and save your test, use the vertical dots icon to open the Test Result menu.
 
 ![Test Results Menu](./images/08-Test-Results-Menu/test-results-menu.png)
 
@@ -23,7 +22,7 @@ For more information  on the structure of the export, refer to the [documentatio
 Generates a URL that you can use to share test results.
 
 
-**Users do not need to be authenticated to view a shared test URL**.
+**Users don't need to authenticate to view a shared test URL**.
 If you want to share sensitive results, consider adding users as
 [Members](/cloud/project-and-team-management/members) instead.
 
@@ -38,15 +37,15 @@ Deletes the current test result.
 
 <Blockquote mod="warning">
 
-Test deletion is not reversible
+Test deletion is irreversible.
 
 </Blockquote>
 
-## Set as baseline
+## Set as a baseline
 
 Set the current test run as your baseline test.
-You can specify one test run per test as baseline.
-With baselines, you can compare performance over a longer period of time.
+You can specify one test run per test as a baseline.
+With baselines, you can compare performance over an extended period.
 
 ![Set Baseline](./images/08-Test-Results-Menu/set-baseline.png)
 
@@ -57,3 +56,4 @@ The `Create Note` option launches a modal window with a text box.
 You can use this to enter notes regarding the test, changes made, or anything that may be worth noting about your test.
 
 ![Test Note](./images/08-Test-Results-Menu/test-note.png)
+

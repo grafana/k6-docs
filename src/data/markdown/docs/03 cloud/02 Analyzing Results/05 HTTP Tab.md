@@ -7,8 +7,8 @@ If your test is on an HTTP service, you'll often want to search through the requ
 
 In k6 Cloud, you can use the **HTTP** tab to inspect individual requests in your test.
 
-First, in the tab itself, note the number of HTTP request that passed against the total number of requests.
-This provides a quick hint about over test performance.
+First, in the tab itself, note the number of HTTP requests that passed against the total number of requests.
+This number provides a quick, top-level overview of test performance.
 
 ![HTTP Tab](./images/05-HTTP-Tab/http-tab.png)
 
@@ -16,15 +16,16 @@ Then, you can explore the individual requests.
 
 ## Explore HTTP requests in cloud results
 
-The **HTTP** shows a row for each HTTP request, with columns for resource, test scenario, method used, and status code returned.
+The **HTTP** tab shows a row for each HTTP request, with columns for resource, test scenario, method used, and status code returned.
 
 If an endpoint has multiple request methods or status codes, k6 separates them.
-On this tab, we can easily see `HTTP` requests that have failures. Take notice of the &#10003; on the left of each row. If we had failures they would be marked with a &#10005;
+The data in each row helps you quickly scan for failed HTTP requests. Take notice of the &#10003; on the left of each row. If they were failures, they would be marked with a &#10005;
 
-To filter the requests to a subset, use the search bar to filter by `name`, `status`, etc.
+To filter the requests to a subset of requests, use the search bar to filter by `name`, `status`, etc.
 These filters can be particularly useful when analyzing the result.
 
-For a more detailed analysis of a request, select its row. This expands the request, so you can see:
+To inspect a request in detail, select its row.
+This expands the request, so you can see:
 
 - Additional metrics for the request
 - Options to change the aggregation
@@ -39,9 +40,9 @@ To compare the request, and its metrics, with other data about the test:
 
 ### Organize HTTP requests by scenario and group
 
-The HTTP tab can be display two different views: 
-- The list view shows a flat list of entries aggregating similar entries (with same value for labels name, status, method, expected_response).
-- The tree view visually groups entries by the scenario and group the request was executed.
+The HTTP tab can  display two different views:
+- The list view shows a flat list of entries. You can use the columns to sort by label name, status, method, and expected_response.
+- The tree view organizes entries by the scenario and group from which the request was sent.
 
 To change the tab to tree view, use the toggle.
 
@@ -55,3 +56,4 @@ To customize what metrics and resources are displayed, use the vertical-ellipses
 With this icon, you hide columns or show new columns.
 
 ![HTTP Tab columns](./images/05-HTTP-Tab/http-tab-columns.png)
+

@@ -1,11 +1,11 @@
 ---
-title: 'Understand Performance Insights'
+title: 'Performance Insights'
 excerpt: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
 ---
 
 Whenever you run a test in k6 Cloud, *Performance Insights* algorithms automatically process the raw metrics and data.
 
-If k6 finds an issue, it will notify you at the end of the test and recommend ways to mitigate the issue.
+If k6 finds an issue, it will notify you at the end of the test and recommend mitigations.
 
 k6 categorizes performance insights into three sets:
 - *HTTP load* insights help diagnose issues with your system under test.
@@ -27,7 +27,7 @@ k6 categorizes performance insights into three sets:
 
 </Glossary>
 
-You can [disable Performance Insights](#disabling-performance-insights) alerts, either for an individual insight or a set of insights.
+You can [disable Performance Insights](#disabling-performance-insights) alerts, either for a single insight or a set of insights.
 
 ## HTTP load alerts
 
@@ -74,7 +74,7 @@ HTTP load alerts happen when your test results have a high number of active requ
   The system under test also might be intentionally limiting requests:
   - It may be behind a firewall.
   - It may have a rate limit that your test is reaching.
-- **Recommendations**: Check that your script is valid and that it properly access the system.
+- **Recommendations**: Check that your script is valid and that it can properly access the system.
   - Run a single iteration of the script locally to troubleshoot the failing requests running a load test.
   - In the script, verify that the failing requests are formulated correctly and return the expected response.
   - Verify that any user accounts have sufficient permissions to access the application.
@@ -97,7 +97,7 @@ HTTP load alerts happen when your test results have a high number of active requ
 
 *Identifier*: `best_practice_duration_too_short`
 - **Happens when**:
-More than 100 complete VU iterations were detected, but the duration needs to be extended to properly analyze data.
+k6 detects more than 100 complete VU iterations, but the duration needs to be extended to properly analyze data.
 Similar to `Not Enough Training Data`, this alert is raised because our system does not have enough training data to produce meaningful results.
 - **Recommendations**:
   Increase the test duration or number of iterations.
@@ -114,14 +114,14 @@ These alerts are often quickly solved with changes in the test script or test co
 
 *Identifier*: `best_practice_third_party_content`
 - **Happens when**:
-  We detect many different domains in a test.
+  k6 detects many different domains in a test.
 - **What it might indicate**:
   Your test script contains requests to 3rd party resources such as CDNs, social media scripts, analytics tools, etc.
 - **Recommendations**:
   Remove third-party requests:
   - The requests may violate the third party's ToS.
   - The third party may throttle your requests, skewing the percentiles of your results.
-  - You may have no ability to affect the performance of that third party.
+  - You may have no ability to affect that third party's performance.
 
 > **ⓘ You may have valid reasons to ignore this alert**
 >
@@ -131,9 +131,10 @@ These alerts are often quickly solved with changes in the test script or test co
 ### Too many URLs
 
 *Identifier*: `best_practice_too_many_urls`
-- **Happens when:**
+- **Happens when**:
   k6 detects more than 500 unique URLs in your test results.
-  This is commonly caused by a URL that contains a query parameter or other ID that is unique per iteration. e.g., tokens, session IDs, etc.
+-   **What it might indicate**:
+   URL may contain a query parameter or other ID that is unique per iteration. e.g., tokens, session IDs, etc.
   In the following example, our query parameter would produce a large number of URL metrics:
 
   <CodeGroup labels={["Using a name tag to aggregate URLs"]}>
@@ -173,7 +174,7 @@ These alerts are often quickly solved with changes in the test script or test co
 - **Happens when**:
   k6 detects a high number of groups in your test script.
 - **What it might indicate**:
-  Most commonly, this alert happens when a test uses a [Group name](/javascript-api/k6/group) to aggregate different HTTP requests or puts the group name in a loop statement.
+  This alert commonly happens when a test uses a [Group name](/javascript-api/k6/group) to aggregate different HTTP requests or puts the group name in a loop statement.
 - **Recommendations**:
   - Use the `name` tag to aggregate URLs.
   - Add [Group names](/javascript-api/k6/group) in your test script.
@@ -226,7 +227,7 @@ Health alerts happen when the load generator has high resource utilization.
 
 *Identifier*: `health_high_loadgen_cpu_usage`
 - **Happens when**:
-  This alert is raised when we detect high utilization of the load generator CPU during a test.
+  k6 detects high utilization of the load-generator CPU during a test.
   Overutilization of the load generator can skew your test results, producing data that varies unpredictably from test to test.
   Virtual Users will naturally try to execute as quickly as possible.
 - **What it might indicate**:
@@ -236,7 +237,7 @@ Health alerts happen when the load generator has high resource utilization.
   - Large numbers of requests in a single request batch. Requests made in a request batch are parallelized up to the default or defined limits.
   - Large amounts of data are returned in responses, resulting in high memory utilization.
   - When the memory of the load generator reaches near total consumption, the garbage-collection efforts of the load generator can increase CPU utilization.
-  - A JavaScript exception is being thrown early in VU execution. This results in an endless restart loop until all CPU cycles are consumed.
+  - A JavaScript exception is being thrown early in VU execution, resulting in an endless restart loop until all CPU cycles are consumed.
 - **Recommendations**:
   - Increase sleep times where appropriate.
   - Increase the number of VUs to produce less RPS per VU (thus the same total load)-
@@ -248,8 +249,8 @@ Health alerts happen when the load generator has high resource utilization.
 *Identifier*: `health_high_loadgen_mem_usage`
 - **Happens when**:
   k6 detects high utilization of load-generator memory during a test.
-  When memory is highly utilized, the results may display some unexpected behavior or failures.
-  High memory utilization may also cause high CPU utilization as garbage-collection efforts consume more and more CPU cycles.
+  When memory utilization is high, the results might have unexpected behavior or failures.
+  High memory utilization may also cause high CPU utilization, as garbage-collection efforts consume more and more CPU cycles.
 - **Recommendations**:
   - Use the test option `discardResponseBodies` to throw away the response body by default
   - Use `responseType:` to capture the response bodies you may require
