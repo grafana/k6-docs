@@ -11,17 +11,17 @@ export const ExtensionsQuickstart = () => {
       {
         to: '/extensions/explore/',
         title: '🔎 Explore',
-        text: 'an ecosystem having more than 50 available extensions.',
+        text: 'With more than 50 available extensions, discover what is available.',
       },
       {
         to: '/extensions/bundle-builder/',
         title: '🧩 Bundle',
-        text: 'multiple extensions into a single utility to meet your needs.',
+        text: 'Use the interactive builder to ease the creation of your customized k6 binary.',
       },
       {
         to: '/extensions/getting-started/create/',
         title: '🏗️ Create',
-        text: 'your own integration in case one is not already available.',
+        text: 'Learn to make your integration in case one is not already available.',
       },
     ],
   };

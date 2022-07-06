@@ -1,5 +1,6 @@
 import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import Blockquote from 'components/shared/blockquote';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql, Link, useStaticQuery } from 'gatsby';
@@ -18,7 +19,7 @@ const breadcrumbs = [
     path: '/extensions/getting-started/',
   },
   {
-    name: 'Build Bundle',
+    name: 'Bundle',
     path: '/extensions/bundle-builder/',
   },
 ];
@@ -59,7 +60,7 @@ export default function BundleBuilderPage({
         sectionName="Extensions"
       >
         <ExtensionsTitleGroup
-          title={'Build Bundle'}
+          title={'Bundle'}
           description={`Combine multiple extensions into your reliability testing toolkit.`}
           className="container"
           breadcrumbs={breadcrumbs}
@@ -67,10 +68,21 @@ export default function BundleBuilderPage({
         <div className={docPageContent.inner}>
           <p>
             Extensions are composable; select the extensions you would like to
-            mix and match for use in your test scripts. Then use the{' '}
-            <em>builder</em> below to generate your command line to build your
-            bespoke k6 binary.
+            mix and match for use in your test scripts. Then use the
+            <em>interactive builder</em> below to generate your command line to
+            build your bespoke k6 binary.
           </p>
+          <Blockquote>
+            To build successfully, ensure your environment is as described in{' '}
+            <Link
+              to="/extensions/guides/build-a-k6-binary-with-extensions/"
+              className="link"
+            >
+              Build a k6 binary with extensions
+            </Link>
+            .
+          </Blockquote>
+          <p />
           <ExtensionSelection
             data={extensionsList}
             description={

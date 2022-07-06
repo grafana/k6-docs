@@ -36,4 +36,4 @@ to extend the JavaScript functionality of your script or add support for a new n
 * An [Output extension](/extensions/getting-started/create/output-extensions/) is more suitable if you need 
 to process the metrics emitted by k6 or publish them to unsupported backend stores. 
 
-With either option, the k6 APIs you'll need to use, and things to consider while developing will differ.
+With either option, the k6 APIs you'll need to use and things to consider while developing will differ.
