@@ -1,22 +1,43 @@
 ---
-title: 'Checks Tab'
-excerpt: 'The Checks tab visualizes performance of your checks in your k6 test'
+title: 'Inspect checks'
+excerpt: 'The Checks tab visualizes the performance of your checks in your k6 test'
 ---
 
-## Cloud Results: Checks
+*Checks* validate response values.
+For example, you can use checks to validate that your POST request is returning `201` status codes.
 
-With the **Checks** tab, you can visually inspect and analyze Checks in your test.
-The number in the tab represents passing Checks / total Checks, so you can quickly see if there's something that demands your attention.
+Inspecting checks is a valuable practice at both the beginning and the end of the test.
+- If your checks fail at the beginning, there's a good chance the test is sending improper requests.
+  For example, `4xx` responses to POST requests may indicate that the authentication is malformed.
+- If your checks fail at the end of the test, your system is likely degrading under the test load.
 
-You can use this tab to do the following:
 
-- Find `Checks` that have failures. Take notice of the &#10003; or &#10005; on the left side of each row
-  - In the example below, the `Check` "HTTP status is 200" is succeeding only 84.57% of the time with 137 successful runs and 25 failures.
-- Expand a `Check` to view its graph. We can see how many failures occur at different points in the test
-- Add the chart to the `Analysis Tab` for further correlation with other data.
+To visually inspect and analyze your checks, use the **Checks** tab.
+First, in the tab itself, note the number of checks that passed against the total number of checks.
+This provides a quick, top-level overview of the check performance.
 
 ![Checks Tab](./images/04-Checks-Tab/checks-tab.png)
 
+From there, you can explore the individual checks.
+
+## Explore checks in cloud results
+
+In the **Checks** tab, you can do the following:
+
+- Find `Checks` that have failures. Note the &#10003; or &#10005; on the left side of each row.
+  - In the preceding image, the Check `HTTP status is 200` succeeded only 84.57% of the time: 137 successful runs and 25 failures.
+
+- To view a graph for a check, select the row.
+
+  With the graph, you can see how many failures occur at different points in the test.
+
+To compare the check data with other data about the test:
+1. Select a check.
+1. Select **Add to Analysis**.
+1. Then use the **Analysis** tab to find correlations between checks data and other values from the test.
+  
+
 ## See Also
 
-For more information on using `Checks` in your test, please refer to our documentation on [Checks](/using-k6/checks).
+For more information on using checks in your test, refer to the [Checks documentation](/using-k6/checks).
+

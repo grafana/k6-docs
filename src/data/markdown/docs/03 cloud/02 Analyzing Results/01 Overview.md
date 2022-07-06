@@ -105,16 +105,6 @@ To visualize the data in different ways, you have a few choices:
 - Select **Filters**.
 - Use the `+` to add the data to the large chart for comparison.
 
-Here are some general tips to consider when adding metrics and using this tab:
-
-- Ensure that VUs and Request rate follow the same trend
-- Add and compare interesting requests from the HTTP and Websocket tabs to compare with other metrics
-- Add the load generator CPU and Memory consumption metrics to ensure they are not saturated (metrics are only available for tests run in the cloud)
-- Add thresholds that have been exceeded
-- Add checks that have failures
-- Add metrics for endpoints that you have specific SLAs/SLOs on
-
-The preceding list is a starting point to help you identify performance-related issues.
 
 ## See Also
 
