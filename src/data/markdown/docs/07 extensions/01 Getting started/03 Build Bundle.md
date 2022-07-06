@@ -1,4 +1,4 @@
 ---
-title: 'Build Bundle'
+title: 'Bundle'
 slug: '/extensions/bundle-builder/'
 ---
