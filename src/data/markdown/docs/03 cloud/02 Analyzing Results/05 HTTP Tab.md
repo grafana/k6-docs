@@ -19,13 +19,13 @@ Then, you can explore the individual requests.
 The **HTTP** tab shows a row for each HTTP request, with columns for resource, test scenario, method used, and status code returned.
 
 If an endpoint has multiple request methods or status codes, k6 separates them.
-The data in each row helps you quickly scan for failed HTTP requests. Take notice of the &#10003; on the left of each row. If they were failures, they would be marked with a &#10005;
+The data in each row helps you quickly scan for failed HTTP requests. Take notice of the &#10003; on the left of each row. If they were failures, they would be marked with a &#10005;.
 
 To filter the requests to a subset of requests, use the search bar to filter by `name`, `status`, etc.
 These filters can be particularly useful when analyzing the result.
 
 To inspect a request in detail, select its row.
-This expands the request, so you can see:
+This expands the request so you can see the following:
 
 - Additional metrics for the request
 - Options to change the aggregation
@@ -38,7 +38,7 @@ To compare the request, and its metrics, with other data about the test:
 
 ![HTTP Tab breakdown chart](./images/05-HTTP-Tab/http-tab-graph.png)
 
-### Organize HTTP requests by scenario and group
+## Organize HTTP requests by scenario and group
 
 The HTTP tab can  display two different views:
 - The list view shows a flat list of entries. You can use the columns to sort by label name, status, method, and expected_response.
@@ -57,3 +57,6 @@ With this icon, you hide columns or show new columns.
 
 ![HTTP Tab columns](./images/05-HTTP-Tab/http-tab-columns.png)
 
+## See also
+
+For information about forming HTTP requests in your test, refer to the [HTTP requests](/using-k6/http-requests/) documentation.
