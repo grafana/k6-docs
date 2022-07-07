@@ -4,7 +4,9 @@ excerpt: 'With the Threshold Tab, you can visually inspect and filter the perfor
 slug: '/cloud/analyzing-results/thresholds/'
 ---
 
-With thresholds, you can codify SLOs, and set pass/fail criteria for your test.
+With thresholds, you can set pass/fail criteria for your test metrics.
+Often testers use thresholds to codify their service-level objectives.
+
 After your test finishes, the **Thresholds** tab can give you valuable insight into how your system under test performed.
 
 > **ⓘ If a threshold fails, k6 marks the test as `Failed` in the UI.**
@@ -29,14 +31,12 @@ You can use this tab to do the following:
 - To see visualizations for the metric, select the threshold.
   A graph appears, which you can use to inspect where performance degraded.
 
-  In our example below, the expanded thresholds calculated value is below the threshold of 100 ms.
+  In our example below, the expanded thresholds has a value below the threshold of 100 ms.
 
 To compare the threshold with other data about the test:
 1. Select the threshold.
-2. Select **Add to analysis**.
-3. Then use the **Analysis** tab to find correlations between threshold data and other values from the test.
-
-
+1. Select **Add to analysis**.
+1. Then use the **Analysis** tab to find correlations between threshold data and other values from the test.
 
 ## See Also
 
