@@ -1298,19 +1298,19 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/cloud/analyzing-results/thresholds-tab',
+    fromPath: '/cloud/analyzing-results/thresholds-tab/',
     toPath: '/cloud/analyzing-results/thresholds',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/cloud/analyzing-results/checks-tab',
+    fromPath: '/cloud/analyzing-results/checks-tab/',
     toPath: '/cloud/analyzing-results/checks',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/cloud/analyzing-results/http-tab',
+    fromPath: '/cloud/analyzing-results/http-tab/',
     toPath: '/cloud/analyzing-results/http',
     isPermanent: true,
   });
