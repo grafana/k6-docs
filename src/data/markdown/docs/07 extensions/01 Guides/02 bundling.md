@@ -3,63 +3,112 @@ title: 'Build a k6 binary with extensions'
 excerpt: 'Performance testing without limits. This tutorial shows how to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
-You might have found a neat k6 extension on the [Extensions page](/extensions) or on
-[GitHub](https://github.com/topics/xk6) and wish to use it in your tests. Great! You only need to use a k6 binary that includes the extension.
+You might have found a neat k6 extension on the [Extensions page](/extensions/explore/) or on
+[GitHub](https://github.com/topics/xk6) and wish to use it in your tests. Great! Building a k6 
+binary with one or multiple extensions is relatively simple. 
 
-The process of building a k6 binary with one or multiple extensions is relatively simple. You'll first need to setup [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/). Make sure that your `$PATH` environment variable is
-updated and that `go version` returns the correct version.
+> You'll first need to set up [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/). 
+> Make sure that your `$PATH` environment variable is updated so that `go version` returns 
+> the correct version.
 
-Then install [xk6](https://github.com/grafana/xk6) with:
+## Installing xk6
 
-
+Given the prerequisite Go setup, installing [xk6](https://github.com/grafana/xk6) itself only requires 
+executing the following:
 ```bash
-go install go.k6.io/xk6/cmd/xk6@latest
+$ go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
+Confirm your installation by ensuring that `which xk6` on Linux/Mac or `where xk6` on Windows returns 
+a valid path. 
 
-And confirm that `which xk6` on Linux/macOS or `where xk6` on Windows returns a
-valid path. Otherwise ensure that `$GOPATH` is correctly defined and that
-`$GOPATH/bin` is added to your `$PATH` environment variable. See the
-[Go documentation](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable) for details.
+If not, check that the `$GOPATH` environment variable is correctly defined and that `$GOPATH/bin` 
+is in your `$PATH`. See the [Go documentation](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable) 
+for details.
 
-Once [xk6](https://github.com/grafana/xk6) is installed, building a k6 binary with one or more extensions can be done
-with the `xk6 build` command as follows:
+## Building your first extension
 
+Once installed, building a k6 binary with one or more extensions can be done with the `xk6 build` 
+command as follows:
 
 ```bash
-xk6 build latest \
-  --with github.com/grafana/xk6-sql \
+$ xk6 build latest \
+  --with github.com/grafana/xk6-sql@v0.0.1 \
   --with github.com/grafana/xk6-output-prometheus-remote
 ```
 
-This will build a `k6` binary in the current directory based on the most recently
-released k6 version including the [`xk6-sql`](https://github.com/grafana/xk6-sql) and [`xk6-output-prometheus-remote`](https://github.com/grafana/xk6-output-prometheus-remote). 
+> When creating your bundles, use the [interactive builder](/extensions/bundle-builder/) to avoid typing mistakes!
+
+Once completed, the **current directory** will contain your newly built `k6` binary with 
+the [`xk6-sql`](https://github.com/grafana/xk6-sql) and [`xk6-output-prometheus-remote`](https://github.com/grafana/xk6-output-prometheus-remote) 
+extensions.
 
 ```bash
 ... [INFO] Build environment ready
 ... [INFO] Building k6
 ... [INFO] Build complete: ./k6
+
+xk6 has now produced a new k6 binary which may be different than the command on your system path!
+Be sure to run './k6 run <SCRIPT_NAME>' from the '...' directory.
 ```
 
-Now you can run a script with this binary and use the functionalities of the bundled extensions.
+## Breaking down the xk6 command
+
+From the [xk6 documentation](https://github.com/grafana/xk6/#command-usage), the command line usage is as follows:
+
+```plain
+xk6 build [<k6_version>]
+    [--output <file>]
+    [--with <module[@version][=replacement]>...]
+    [--replace <module=replacement>...]
+    
+Flags:
+  --output   specifies the new binary name [default: 'k6']
+  --replace  enables override of dependencies for k6 and extensions [default: none]
+  --with     the extension module to be included in the binary [default: none]
+```
+
+> The use of `--replace` should be considered an advanced feature to be avoided unless required.
+
+Referring back to our executed command, we'll see that:
+- We specify the version as `latest`, which is also the default if we hadn't supplied 
+  a version. `latest` means that we'll build using the _latest_ source code for k6. Consider using 
+  a stable [release version](https://github.com/grafana/k6/releases) as a best practice unless
+  you genuinely want the _bleeding edge_.
+- With each `--with`, we specified a full GitHub URI for the extension repository. If not specifying 
+  a version, the default is `latest` once again. Check your extension repository for stable
+  release versions, if available, to lock in your version as we've done with `xk6-sql@v0.0.1`.
+- We did not use the `--output` option; therefore, our new binary is `k6` within the current directory. 
+  Had we used `--output k6-extended`, our binary would be named `k6-extended` within the current 
+  directory. If a directory is specified, then the new binary would be `k6` within 
+  _that_ directory. If a path to a non-existent file, e.g. `/tmp/k6-extended`, this will be the
+  path and filename for the binary.
+
+> Suppose now you've cloned the `xk6-sql` repository and want the local version included in your 
+> custom binary? From the cloned directory, we would then use:
+> ```bash
+> --with github.com/grafana/xk6-sql=.
+> ```
+> This tells xk6 to use the _current directory_ as the _replacement_ for the _module_.
+
+Running `./k6 version` should show your build is based upon the appropriate version.
+
+## Running your extended binary
+
+Now that we have our newly built k6 binary, we can run scripts using the functionalities 
+of the bundled extensions.
 
 ```bash
-./k6 my-script.js
+$ ./k6 run my-script.js
 ```
 
+> Be sure to specify the binary just built in the current directory as `./k6`, or else
+> Linux/Mac could execute another k6 binary on your system path. Windows shells will 
+> first search for the binary in the current directory by default.
 
-Note that when running the script we have to **specify the binary just built in the
-current directory (`./k6`)**, as otherwise some other `k6` binary found on the system
-could be executed which might not have the extensions built-in. This is only the case
-on Linux and macOS, as Windows shells will execute the binary in the current
-directory first.
 
+<!-- TODO: Is this really necessary here? Preserving for the time being.
 > Also note that because of the way xk6 works, vendored dependencies (the `vendor`
 directory created by `go mod vendor`) will **not** be taken into account when
 building a binary, and you don't need to commit them to the extension repository.
-
-## See also
-
-- [`xk6 build` command options](https://github.com/grafana/xk6#command-usage)
-- [Build Bundle](/extensions/bundle-builder/)
-
+-->
