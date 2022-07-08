@@ -3,8 +3,6 @@ title: 'startTracing([page], [options])'
 excerpt: 'xk6-browser: Browser.startTracing method'
 ---
 
-<BrowserCompatibility/>
-
 <Blockquote mod="warning">❌ Not yet implemented.</Blockquote>
 
 Starts [Chromium Tracing](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) for debugging a [Page](/javascript-api/xk6-browser/page).

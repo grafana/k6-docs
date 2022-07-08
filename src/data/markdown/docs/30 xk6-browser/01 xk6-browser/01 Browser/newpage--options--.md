@@ -3,8 +3,6 @@ title: 'newPage([options])'
 excerpt: 'xk6-browser: Browser.newPage method'
 ---
 
-<BrowserCompatibility/>
-
 Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/) and returns the page.
 
 | Parameter | Type   | Description                               |

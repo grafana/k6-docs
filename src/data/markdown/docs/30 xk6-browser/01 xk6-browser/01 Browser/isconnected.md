@@ -3,8 +3,6 @@ title: 'isConnected()'
 excerpt: 'xk6-browser: Browser.isConnected method'
 ---
 
-<BrowserCompatibility/>
-
 Indicates whether the WebSocket connection to the browser application is active or not.
 
 ### Returns

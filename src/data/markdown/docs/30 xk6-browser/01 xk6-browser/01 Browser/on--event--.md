@@ -3,8 +3,6 @@ title: 'on(event)'
 excerpt: 'xk6-browser: Browser.on method'
 ---
 
-<BrowserCompatibility/>
-
 Detects events from the browser application.
 
 | Parameter | Type   | Description                                        |
