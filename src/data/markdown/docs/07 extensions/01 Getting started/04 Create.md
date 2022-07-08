@@ -3,37 +3,36 @@ title: 'Create'
 excerpt: 'Creating k6 extensions does not have to be a daunting task, but there are some prerequisites to succeed.'
 ---
 
-Sometimes your needs are so specific that you require a custom extension. Creating k6
-extensions does not have to be a daunting task, but there are some prerequisites
-to succeed.
+If you find a gap in your testing process that no k6 extension can fix,
+consider building your own extension.
 
-If you want to create your k6 extension, you _should_:
-* be familiar with both Go(lang) and JavaScript as well as their tooling
-* understand how the _Go-to-JavaScript_ bridge works within k6 
+These tutorials show you how to create custom JavaScript and output extensions.
 
-> You should be committed to maintaining a public repository that keeps up to date 
+* [Create a JavaScript extension](/extensions/getting-started/create/javascript-extensions/)
+to extend the JavaScript functionality of your script or add support for a new network protocol to test.
+* [Create an Output extension](/extensions/getting-started/create/output-extensions/)
+to process the metrics emitted by k6 or publish them to unsupported backend stores.
+
+## Necessary knowledge
+
+Anyone who can use the command line to edit files and install software should be able to follow along.
+But, if you want to create an extension for more than the purposes of demonstration,
+there's some background knowledge you should have:
+
+* You should be familiar with both Go(lang), JavaScript, and their tooling
+* You should understand how the _Go-to-JavaScript_ bridge works within k6
+
+> You should be committed to maintaining a public repository that keeps up to date
 > with the latest k6 APIs if you intend to share with the community.
 
-## Explore existing options
+## Avoid unneeded work
 
-The first thing you should do before starting work on a new extension is to confirm
-that a similar extension doesn't already exist for your use case. Take a look at
+These actions may save you the trouble of building a whole new extension when its not needed.
+
+- Confirm that a similar extension doesn't already exist for your use case. Take a look at
 the [Extensions listing](/extensions/getting-started/explore) and the [`xk6` topic on GitHub](https://github.com/topics/xk6).
+- Prefer generic solutions. For example, if you can test a system with a generic protocol like _MQTT_, prefer
+[xk6-mqtt](https://github.com/pmalhaire/xk6-mqtt) over a new extension for some custom protocol.
+- Lean toward writing pure JavaScript libraries over building an extension in Go.
+A JavaScript library will be better supported, more straightforward, and reusable than an extension.
 
-For example, if you can test a system with a generic protocol like _MQTT_, prefer 
-utilizing [xk6-mqtt](https://github.com/pmalhaire/xk6-mqtt) rather than creating 
-an extension for some custom protocol. 
-
-> Lean toward writing pure JavaScript libraries 
-> over building an extension in Go; a JavaScript library will be better supported, 
-> more straightforward, and reusable than an extension.
-
-## Determine extension type
-
-Next, you should decide the type of extension you need. 
-* A [JavaScript extension](/extensions/getting-started/create/javascript-extensions/) is a good fit if you want 
-to extend the JavaScript functionality of your script or add support for a new network protocol to test.
-* An [Output extension](/extensions/getting-started/create/output-extensions/) is more suitable if you need 
-to process the metrics emitted by k6 or publish them to unsupported backend stores. 
-
-With either option, the k6 APIs you'll need to use and things to consider while developing will differ.

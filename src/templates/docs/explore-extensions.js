@@ -73,18 +73,16 @@ export default function ExploreExtensionsPage({
         />
         <div className={docPageContent.inner}>
           <p>
-            With more than 50 available extensions, the k6 extension ecosystem
-            provides many options to meet your requirements, whether
-            incorporating specific protocol access, embedding a particular
-            client, or improving your tests&apos; performance. Extension
-            development includes a mix of k6 developers and the open-source
-            developer community.
+            With over 50 available extensions, the k6 extension ecosystem has
+            many options to meet your requirements and help you incorporate new
+            protocol access, embed a particular client, or improve your test
+            performance. Extensions are developed both by the k6 developers and
+            by the open-source developer community.
           </p>
 
           <p>
-            Explore the endless possibilities of k6 using extensions from the
-            table below. Questions? Feel free to join the discussions related to
-            extensions within the{' '}
+            Use the table to explore the many extensions. Questions? Feel free
+            to join the discussion about extensions in the{' '}
             <Link
               className={docPageContent.link}
               to={'https://community.k6.io/c/extensions/'}
@@ -99,15 +97,14 @@ export default function ExploreExtensionsPage({
           </p>
 
           <p>
-            Ready to create your bespoke k6 binary containing the features you
-            need? Head over to the{' '}
+            Ready to create your bespoke k6 binary? Head over to the{' '}
             <Link
               className={docPageContent.link}
               to={'/extensions/getting-started/bundle/'}
             >
-              interactive builder
+              bundle builder
             </Link>{' '}
-            to get started!
+            to generate a command!
           </p>
         </div>
       </DocLayout>

@@ -1,4 +1,4 @@
 ---
 title: 'Overview'
-slug: '/extensions/' 
+slug: '/extensions/'
 ---
