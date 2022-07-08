@@ -3,9 +3,8 @@ title: 'Build a k6 binary with extensions'
 excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
-You might have found a neat k6 extension on the [Extensions page](/extensions/explore/) or on
-[GitHub](https://github.com/topics/xk6) and wish to use it in your tests. Great! Building a k6 
-binary with one or multiple extensions is relatively simple. 
+To use an extension that you found on the [Extension page](/extensions) or the [xk6 Github topic](https://github.com/topics/xk6),
+you need to build a binary.
 
 > You'll first need to set up [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/). 
 > Make sure that your `$PATH` environment variable is updated so that `go version` returns 
