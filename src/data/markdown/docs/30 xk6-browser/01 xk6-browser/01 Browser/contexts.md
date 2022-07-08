@@ -3,8 +3,6 @@ title: 'contexts()'
 excerpt: 'xk6-browser: Browser.contexts method'
 ---
 
-<BrowserCompatibility/>
-
 Allows you to access all open browser contexts.
 
 ### Returns

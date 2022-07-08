@@ -3,8 +3,6 @@ title: "Browser"
 excerpt: "xk6-browser: Browser Class"
 ---
 
-<BrowserCompatibility/>
-
 A Browser is created via [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/#browsertype-launch-options).
 
 | State | Method                                                                                         | Description                                                                                                     |
