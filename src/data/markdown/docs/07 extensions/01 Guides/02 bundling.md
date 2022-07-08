@@ -1,6 +1,6 @@
 ---
 title: 'Build a k6 binary with extensions'
-excerpt: 'Performance testing without limits. This tutorial shows how to build a k6 binary that includes one or many extensions using xk6.'
+excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
 You might have found a neat k6 extension on the [Extensions page](/extensions/explore/) or on
@@ -84,14 +84,17 @@ Referring back to our executed command, we'll see that:
   _that_ directory. If a path to a non-existent file, e.g. `/tmp/k6-extended`, this will be the
   path and filename for the binary.
 
-> Suppose now you've cloned the `xk6-sql` repository and want the local version included in your 
-> custom binary? From the cloned directory, we would then use:
-> ```bash
-> --with github.com/grafana/xk6-sql=.
-> ```
-> This tells xk6 to use the _current directory_ as the _replacement_ for the _module_.
-
 Running `./k6 version` should show your build is based upon the appropriate version.
+
+## Building from a local repository
+
+Suppose now you've cloned the `xk6-sql` repository and want the local version included in your 
+custom binary? From the cloned directory, we would then use:
+```bash
+--with github.com/grafana/xk6-sql=.
+```
+Based upon the command usage described in the previous section, this tells xk6 to use 
+the _current directory_ as the _replacement_ for the _module_.
 
 ## Running your extended binary
 

@@ -14,12 +14,8 @@ export const WhatIsXk6 = () => (
       <Link to="https://github.com/grafana/xk6/" className="link">
         xk6
       </Link>{' '}
-      is the command-line tool and framework inspired by{' '}
-      <Link to="https://github.com/caddyserver/xcaddy/" className="link">
-        xcaddy
-      </Link>
-      , designed for building custom k6 binaries that bundle one or more
-      extensions written in Go.
+      is the command-line tool and framework designed for building custom k6
+      binaries that bundle one or more extensions written in Go.
     </p>
 
     <p className={styles.description}>
