@@ -3,8 +3,6 @@ title: 'version()'
 excerpt: 'xk6-browser: Browser.version method'
 ---
 
-<BrowserCompatibility/>
-
 Returns the browser application's version.
 
 ### Returns
