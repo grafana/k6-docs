@@ -6,7 +6,7 @@ excerpt: 'Follow these steps to build a JS extension for k6.'
 Take advantage of Go's speed, power, and efficiency while providing the flexibility of using JavaScript APIs
 within your test scripts.
 
-By implementing a k6 interfaces, you can close various gaps in your testing setup:
+By implementing k6 interfaces, you can close various gaps in your testing setup:
 
 * New network protocols
 * Improved performance
