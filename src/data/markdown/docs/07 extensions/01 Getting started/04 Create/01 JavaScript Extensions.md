@@ -15,7 +15,6 @@ By implementing k6 interfaces, you can close various gaps in your testing setup:
 ## Before you start
 
 To run this tutorial, you'll need the following applications installed:
-- k6
 - Go
 - Git
 

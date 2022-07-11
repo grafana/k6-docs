@@ -9,7 +9,6 @@ you need to build a binary.
 
 ## Before you start
 
-- Install k6
 - Set up [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/).
 - Make sure that your `$PATH` environment variable is updated so that `go version` returns the correct version.
 

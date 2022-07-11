@@ -17,7 +17,6 @@ on the extension author to implement specific APIs.
 ## Before you start:
 
 To run this tutorial, you'll need the following applications installed:
-- k6
 - Go
 - Git
 
@@ -28,6 +27,11 @@ go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
 ## Write a simple extension
+
+First, set up a directory to work in.
+
+```bash
+$ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
 
 The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
 interface.
