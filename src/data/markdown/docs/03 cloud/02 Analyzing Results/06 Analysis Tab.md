@@ -1,5 +1,5 @@
 ---
-title: 'Compare time series'
+title: 'Compare metrics'
 excerpt: 'With the Analysis tab, you can compare and correlate data from your k6 test.'
 slug: '/cloud/analyzing-results/analysis-tab'
 ---
