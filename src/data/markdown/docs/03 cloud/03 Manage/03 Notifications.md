@@ -1,6 +1,7 @@
 ---
 title: 'Send notifications'
 excerpt: 'How to send emails and webhooks about test-related events in your organizations and projects.'
+slug: '/cloud/manage/notifications'
 ---
 
 > **&#128712; Only organization owners and admins can set up notifications.**
@@ -237,7 +238,7 @@ Here it used in place of a comma after the last item (a comma at the end would n
 
 You can use these variables in your notification templates.
 
-Usually, you access these with Jinja's `{{ }}` tags.
+To access them as expressions, use the default `{{ }}` delimiters.
 Note the type of each value and especially remember to put double quotes around strings, so the result after template-replacement is still valid JSON.
 
 ### test
