@@ -32,6 +32,7 @@ First, set up a directory to work in.
 
 ```bash
 $ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
+```
 
 The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
 interface.
