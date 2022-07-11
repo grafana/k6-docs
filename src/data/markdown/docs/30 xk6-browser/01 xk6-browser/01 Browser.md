@@ -3,7 +3,11 @@ title: "Browser"
 excerpt: "xk6-browser: Browser Class"
 ---
 
-A Browser is created via [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/#browsertype-launch-options).
+The `Browser` class is the entry point for all your tests, and it is what interacts with the actual internet browser via [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP). It manages:
+- [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s which is where you can set a variety of attributes to control the behavior of pages;
+- and [Page](/javascript-api/xk6-browser/page/)s which is where your rendered site is displayed.
+
+It can be created via `launch()` which is an exported function from `'k6/x/browser'`. Launching a new instance of `Browser` will also create a new browser process.
 
 | Method                                                                                                                                                                         | Description                                                                                                                                           |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
