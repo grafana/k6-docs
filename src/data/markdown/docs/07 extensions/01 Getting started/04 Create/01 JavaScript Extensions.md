@@ -31,9 +31,7 @@ go install go.k6.io/xk6/cmd/xk6@latest
 First, set up a directory to work in.
 
 ```bash
-mkdir xk6-compare
-cd xk6-compare
-go mod init xk6-compare
+$ mkdir xk6-compare; cd xk6-compare; go mod init xk6-compare
 ```
 
 
