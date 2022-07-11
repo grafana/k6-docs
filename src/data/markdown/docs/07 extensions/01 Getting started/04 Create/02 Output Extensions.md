@@ -1,9 +1,10 @@
 ---
 title: 'Output Extensions'
+excerpt: 'Follow these steps to build an output extension for k6.'
 ---
 
-Create a custom output extension if you wish to store or alter metrics captured during an active k6 test. Out of the box, 
-k6 already provides multiple destinations and metric types, but we cannot directly support all possibilities.
+Create a custom output extension if you wish to store or alter metrics captured during an active k6 test.
+Out of the box, k6 already provides multiple destinations and metric types, but we cannot directly support all possibilities.
 
 Some potential reasons for a custom extension could include:
 * Support a time-series database not already supported
@@ -13,12 +14,30 @@ Some potential reasons for a custom extension could include:
 Like [JavaScript extensions](/extensions/getting-started/create/javascript-extensions/), output extensions rely
 on the extension author to implement specific APIs.
 
-## Writing a simple extension
+## Before you start:
 
-The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output) 
+To run this tutorial, you'll need the following applications installed:
+- Go
+- Git
+
+You also need to install xk6:
+
+```
+go install go.k6.io/xk6/cmd/xk6@latest
+```
+
+## Write a simple extension
+
+First, set up a directory to work in.
+
+```bash
+$ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
+```
+
+The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
 interface.
 
-We'll create a simple example that outputs each set of metrics to the console as received by the `AddMetricSamples(samples []metrics.SampleContainer)` 
+We'll create a simple example that outputs each set of metrics to the console as received by the `AddMetricSamples(samples []metrics.SampleContainer)`
 method of the output interface.
 
 ```go
@@ -62,9 +81,9 @@ func init() {
 }
 ```
 
-> The registered name must be used with the `-o`, or `--out` argument when running k6! 
+> The registered name must be used with the `-o`, or `--out` argument when running k6!
 
-The final extension code will look like so:
+The final extension code looks like this:
 
 <CodeGroup labels={["log.go"]} lineNumbers={[true]}>
 
@@ -76,7 +95,7 @@ import (
     "io"
     "strings"
     "time"
-	
+
     "go.k6.io/k6/metrics"
     "go.k6.io/k6/output"
 )
@@ -138,14 +157,14 @@ Notice a couple of things:
   [`output.Params`](https://pkg.go.dev/go.k6.io/k6/output#Params).
   With this object, the extension can access the output-specific configuration,
   interfaces to the filesystem, synchronized stdout and stderr, and more.
-  
-- `AddMetricSamples` in this example writes to stdout. This output might have 
-  to be buffered and flushed periodically in a real-world scenario to avoid memory 
+
+- `AddMetricSamples` in this example writes to stdout. This output might have
+  to be buffered and flushed periodically in a real-world scenario to avoid memory
   leaks. Below we'll discuss some helpers you can use for that.
 
-## Compiling your extended k6
+## Compile your extended k6
 
-We can then build a k6 binary including this extension by running:
+To build a k6 binary with this extension, run:
 
 ```bash
 $ xk6 build --with xk6-output-logger=.
@@ -153,7 +172,7 @@ $ xk6 build --with xk6-output-logger=.
 > When building from source code, `xk6-output-logger` is the Go module name passed to `go mod init`.
 > Usually, this would be a URL similar to `github.com/grafana/xk6-output-logger`.
 
-## Using your extension
+## Use your extension
 
 Now we can use the extension with a test script!
 
@@ -177,7 +196,7 @@ Now, let's run the test.
 $ ./k6 run test.js -o logger --quiet --no-summary --iterations 2
 ```
 
-> Take note of the `-o logger` argument. This is what tells k6 to use your custom output. Also, we're using 
+> Take note of the `-o logger` argument. This is what tells k6 to use your custom output. Also, we're using
 > `--quiet --no-summary` in order to only show our custom output.
 
 Your output should be similar to the following:
@@ -193,14 +212,14 @@ Your output should be similar to the following:
 ## Things to keep in mind
 
 - Output structs can optionally implement additional interfaces that allow them to
-  receive [thresholds](https://pkg.go.dev/go.k6.io/k6/output#WithThresholds) or 
+  receive [thresholds](https://pkg.go.dev/go.k6.io/k6/output#WithThresholds) or
   [run-status updates](https://pkg.go.dev/go.k6.io/k6/output#WithRunStatusUpdates)
   and even [interrupt a test](https://pkg.go.dev/go.k6.io/k6/output#WithTestRunStop).
 - Consider using [`output.SampleBuffer`](https://pkg.go.dev/go.k6.io/k6/output#SampleBuffer)
-  and [`output.PeriodicFlusher`](https://pkg.go.dev/go.k6.io/k6/output#PeriodicFlusher) 
+  and [`output.PeriodicFlusher`](https://pkg.go.dev/go.k6.io/k6/output#PeriodicFlusher)
   to improve performance given the large amounts of data produced by k6. Refer to
   [`statsd` output](https://github.com/grafana/k6/blob/master/output/statsd/output.go) for an example.
-- Use the [project template](https://github.com/grafana/xk6-output-template) as a starting point 
+- Use the [project template](https://github.com/grafana/xk6-output-template) as a starting point
   for your output extension.
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).

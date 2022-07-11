@@ -1,19 +1,40 @@
 ---
 title: 'JavaScript Extensions'
+excerpt: 'Follow these steps to build a JS extension for k6.'
 ---
 
-Take advantage of Go's speed, power, and efficiency while providing the flexibility of using JavaScript APIs 
+Take advantage of Go's speed, power, and efficiency while providing the flexibility of using JavaScript APIs
 within your test scripts.
 
-By implementing a handful of k6 interfaces, you can provide varied support for features like:
+By implementing k6 interfaces, you can close various gaps in your testing setup:
 
-* Support new network protocols
-* improve performance compared to equivalent JS libraries
-* provide features not supported by the k6 core
+* New network protocols
+* Improved performance
+* Features not supported by k6 core
 
-## Writing a simple extension
+## Before you start
 
-A simple JavaScript extension requires a struct that exposes methods to be called from a k6 test script. For example:
+To run this tutorial, you'll need the following applications installed:
+- Go
+- Git
+
+You also need to install xk6:
+
+```
+go install go.k6.io/xk6/cmd/xk6@latest
+```
+
+
+## Write a simple extension
+
+First, set up a directory to work in.
+
+```bash
+$ mkdir xk6-compare; cd xk6-compare; go mod init xk6-compare
+```
+
+
+A simple JavaScript extension requires a struct that exposes methods to be called from a k6 test script.
 
 <!-- TODO: A better trivial example? A coin flip perhaps? -->
 
@@ -52,7 +73,7 @@ func init() {
 
 > k6 extensions must have the `k6/x/` prefix, and the short name must be unique among all extensions built in the same k6 binary.
 
-The final extension code will look like so:
+The final code looks like so. Save this as something like `compare.go`.
 
 <CodeGroup labels={["compare.go"]} lineNumbers={[true]}>
 
@@ -88,19 +109,22 @@ func (c *Compare) IsGreater(a, b int) bool {
 
 </CodeGroup>
 
-## Compiling your extended k6
+## Compile your extended k6
 
-We can then build a k6 binary including this extension by running:
+To build a k6 binary with this extension, run this command:
 
 ```bash
 $ xk6 build --with xk6-compare=.
 ```
-> When building from source code, `xk6-compare` is the Go module name passed to `go mod init`. 
+
+> When building from source code, `xk6-compare` is the Go module name passed to `go mod init`.
 > Usually, this would be a URL similar to `github.com/grafana/xk6-compare`.
 
-## Using your extension
+## Use your extension
 
 Now we can use the extension in a test script!
+
+Make a file with a name like `test.js`, then add this code:
 
 <CodeGroup labels={["test.js"]} lineNumbers={[true]}>
 
@@ -115,7 +139,9 @@ export default function () {
 
 </CodeGroup>
 
-Run the test with `./k6 run test.js`, which should output the following:
+Run the test with `./k6 run test.js`.
+
+It should output the following:
 
 ```shell
 INFO[0000] true, 2 is greater than 1                     source=console
@@ -126,16 +152,16 @@ INFO[0000] false, 1 is NOT greater than 3                source=console
 
 The k6 Go-JS bridge has a few features we should highlight:
 
-- Go method names will be converted from _Pascal_ to _Camel_ case when
-  accessed in JS so that `IsGreater` becomes `isGreater`.
+- Go method names are converted from _Pascal_ to _Camel_ case when
+  accessed in JS. For example, `IsGreater` becomes `isGreater`.
 
-- Go field names convert from _Pascal_ to _Snake_ case so that the struct field `ComparisonResult string` 
+- Go field names convert from _Pascal_ to _Snake_ case. For example, the struct field `ComparisonResult string`
   becomes `comparison_result` in JS.
 
 - Field names may be explicit using `js` struct tags. For example, declaring the field as <CodeInline>ComparisonResult string &grave;js:"result"&grave;</CodeInline>
   or hiding from JS using <CodeInline>&grave;js:"-"&grave;</CodeInline>.
 
-The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent. 
+The JavaScript runtime transparently converts Go types like `int64` to their JS equivalent.
 For complex types where this is impossible, your script might fail with a `TypeError`, requiring you to explicitly convert
 your object to a [`goja.Object`](https://pkg.go.dev/github.com/dop251/goja#Object) or [`goja.Value`](https://pkg.go.dev/github.com/dop251/goja#Value).
 
@@ -146,12 +172,12 @@ func (*Compare) XComparator(call goja.ConstructorCall, rt *goja.Runtime) *goja.O
 ```
 
 The above also demonstrates the _native constructors_ feature from goja, allowing methods to become JS constructors.
-Methods with this signature allow for creating `Comparator` instances in JS with `new compare.Comparator()`, which is a bit 
+Methods with this signature allow for creating `Comparator` instances in JS with `new compare.Comparator()`, which is a bit
 more idiomatic to JS while having the benefit of receiving the `goja.Runtime`.
 
 ## Advanced module API
 
-Suppose your extension needs access to internal k6 objects to, for example, inspect the state of the test during execution. 
+Suppose your extension needs access to internal k6 objects to, for example, inspect the state of the test during execution.
 We will need to make slightly more complicated changes to the above example.
 
 Our main `Compare` struct should implement the [`modules.Instance`](https://pkg.go.dev/go.k6.io/k6/js/modules#Instance) interface
@@ -161,7 +187,7 @@ to access the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) to in
 * [`goja.Runtime`](https://pkg.go.dev/github.com/dop251/goja#Runtime), the JavaScript runtime used by the VU
 * a global `context.Context` containing objects like the [`lib.ExecutionState`](https://pkg.go.dev/go.k6.io/k6/lib#ExecutionState)
 
-Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module) 
+Additionally, there should be a root module implementation of the [`modules.Module`](https://pkg.go.dev/go.k6.io/k6/js/modules#Module)
 interface to serve as a factory of `Compare` instances for each VU.
 
 > Note that this can have memory implications depending on the size of your module.
@@ -211,7 +237,7 @@ func New() *RootModule {
 // NewModuleInstance implements the modules.Module interface returning a new instance for each VU.
 func (*RootModule) NewModuleInstance(vu modules.VU) modules.Instance {
 	return &ModuleInstance{
-		vu: vu, 
+		vu: vu,
 		comparator: &Compare{vu: vu}
 	}
 }
@@ -247,7 +273,7 @@ func (mi *ModuleInstance) Exports() modules.Exports {
 
 ## Accessing runtime state
 
-At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) from the `Compare` 
+At this time, we've provided access to the [`modules.VU`](https://pkg.go.dev/go.k6.io/k6/js/modules#VU) from the `Compare`
 type; however, we aren't taking advantage of the methods provided. Here is a contrived example of how we can utilize the
 runtime state:
 
@@ -314,14 +340,14 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 - The code in the `default` function (or another function specified by
   [`exec`](/using-k6/scenarios/#common-options)) will be executed many
   times during a test run and possibly in parallel by thousands of VUs.
-  Any operation of your extension should therefore be performant 
+  Any operation of your extension should therefore be performant
   and [thread-safe](https://en.wikipedia.org/wiki/Thread_safety).
-- Any _heavy_ initialization should be done in the [init context](/javascript-api/init-context/), 
+- Any _heavy_ initialization should be done in the [init context](/javascript-api/init-context/),
   if possible, and not as part of the `default` function execution.
-- Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create 
+- Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create
   custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).
 
-Next, create an [Output extension](/extensions/getting-started/create/output-extensions/) to publish test metrics 
+Next, create an [Output extension](/extensions/getting-started/create/output-extensions/) to publish test metrics
 to a destination not already supported by k6.

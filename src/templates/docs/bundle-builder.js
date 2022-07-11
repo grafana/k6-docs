@@ -67,10 +67,9 @@ export default function BundleBuilderPage({
         />
         <div className={docPageContent.inner}>
           <p>
-            Extensions are composable; select the extensions you would like to
-            mix and match for use in your test scripts. Then use the
-            <em>interactive builder</em> below to generate your command line to
-            build your bespoke k6 binary.
+            Extensions are composable; you can combine any extensions, or mix
+            and match different test cases. To generate the command for your
+            extension combination, you can use this <em>bundle builder</em>.
           </p>
           <Blockquote>
             To build successfully, ensure your environment is as described in{' '}
@@ -86,7 +85,7 @@ export default function BundleBuilderPage({
           <ExtensionSelection
             data={extensionsList}
             description={
-              'Use the following command to build k6 based upon your selection(s):'
+              'Select the extensions you want, then copy the generated command.'
             }
           />
           <p>
