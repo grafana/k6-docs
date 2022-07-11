@@ -311,35 +311,7 @@ const getExtensionsPageSidebar = (sidebarTree) => {
       title: 'Extensions',
       path: '/extensions/',
     },
-    children: {
-      Extensions: {
-        name: 'extensions',
-        meta: {
-          title: 'Extensions',
-          path: '/extensions/',
-        },
-        children: {
-          Explore: {
-            name: 'Explore',
-            meta: {
-              title: 'Explore',
-              isActiveSidebarLink: true,
-              path: '/extensions/',
-            },
-            children: {},
-          },
-          'Build Bundle': {
-            name: 'Build Bundle',
-            meta: {
-              title: 'Build Bundle',
-              isActiveSidebarLink: true,
-              path: '/extensions/bundle-builder/',
-            },
-            children: {},
-          },
-        },
-      },
-    },
+    children: {},
   };
 
   return {
@@ -528,7 +500,16 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/bundle-builder/`,
+        path: `/extensions/getting-started/explore/`,
+        component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
+        context: {
+          sectionName: 'Extensions',
+          sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+      {
+        path: `/extensions/getting-started/bundle/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
@@ -1262,7 +1243,7 @@ const createRedirects = ({ actions }) => {
   });
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
-    toPath: '/extensions/bundle-builder/',
+    toPath: '/extensions/getting-started/bundle/',
     isPermanent: true,
   });
 
@@ -1273,8 +1254,23 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/extensions/bundle-builder/',
+    toPath: '/extensions/getting-started/bundle/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/extensions/explore/',
+    toPath: '/extensions/getting-started/explore/',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/extensions/guides/getting-started/',
     toPath: '/extensions/guides/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/extensions/guides/what-are-k6-extensions/',
+    toPath: '/extensions/',
     isPermanent: true,
   });
 
