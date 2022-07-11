@@ -3,7 +3,7 @@ title: 'isConnected()'
 excerpt: 'xk6-browser: Browser.isConnected method'
 ---
 
-Indicates whether the WebSocket connection to the browser application is active or not.
+Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.
 
 ### Returns
 
