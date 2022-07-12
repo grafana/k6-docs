@@ -3,65 +3,73 @@ title: 'Grafana Cloud'
 excerpt: 'How to export metrics from k6 Cloud to Grafana Cloud'
 ---
 
-With this integration, you can export test result metrics from the k6 Cloud to a Prometheus instance hosted by [Grafana Cloud](https://grafana.com/products/cloud/), allowing you to use Grafana to query, visualize, and correlate k6 metrics with all your other metrics. 
+With this integration, you can export test result metrics from the k6 Cloud to a Prometheus instance hosted by [Grafana Cloud](https://grafana.com/products/cloud/).
+After that, you can use Grafana to query, visualize, and correlate k6 metrics with all your other metrics.
 
 > ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
-## Grafana Cloud settings
+## Before you start
 
-If you do not have a Grafana Cloud account, you can sign up [here](https://grafana.com/products/cloud/). The free plan includes 10,000 Prometheus series.
+If you don't have a Grafana Cloud account, [sign up](https://grafana.com/products/cloud/).
+The free plan includes 10,000 Prometheus series.
 
-To set up the integration on the k6 Cloud, you need the following data from your Grafana Cloud Prometheus instance:
+### Necessary values from Grafana Cloud
 
-- URL
-- Username
-- Password
+To export k6 Cloud results to Grafana cloud, you need the following data from your Grafana Cloud Prometheus instance:
 
-Log in to Grafana.com and visit the [Cloud Portal](https://grafana.com/docs/grafana-cloud/what-are/cloud-portal/). Click on the `Details` button of your Prometheus service.
+- [ ] URL
+- [ ] Username
+- [ ] Password
 
-![Grafana Cloud Portal](./images/grafana_cloud_portal.png)
+To access this information:
 
-Copy the URL of the Remote Write Endpoint and the Username / Instance ID. 
+1. Log in to Grafana.com and visit the [Cloud Portal](https://grafana.com/docs/grafana-cloud/what-are/cloud-portal/).
+1. Select the **Details** button of your Prometheus service.
 
-For the password, create and copy an API key of `MetricsPublisher` role.
+  ![Grafana Cloud Portal](./images/grafana_cloud_portal.png)
 
-![Create API Key](./images/grafana_cloud_create_api_key_metrics_publisher.png)
+1. Copy the URL of the Remote Write Endpoint and the Username / Instance ID.
+1. For the password, create and copy an API key of the `MetricsPublisher` role.
 
-Now, you can set the URL, username, and password on the k6 Cloud to authorize exporting k6 Cloud metrics to your Prometheus instance.
+  ![Create API Key](./images/grafana_cloud_create_api_key_metrics_publisher.png)
 
-## k6 Cloud test configuration
+Now, you can set the URL, username, and password in k6 Cloud to authorize exporting k6 Cloud metrics to your Prometheus instance.
 
-You have to set up the Grafana Cloud settings for each test that you want to export its test result metrics when running the test.
+## Export k6 Cloud results to Grafana Cloud
+
+Now that you have the necessary values from Grafana Cloud settings, you can configure k6 Cloud tests to export.
 
 Currently, there are two options to set up the Cloud APM settings in the test:
 
 - [Using the test builder](#configuration-using-the-test-builder)
-- [Scripting the k6 test](#configuration-in-the-k6-script)  
+- [Scripting the k6 test](#configuration-in-the-k6-script)
 
+### Configuration with the Test Builder
 
+You have to configure the Grafana Cloud integration for an organization.
+From the k6 Cloud app, follow these steps.
 
-### Configuration using the test builder
+1. In the main navigation, go to **Manage > Cloud APM**, and select **Grafana Cloud**.
+1. In the form, paste the `URL`, `username`, and `password` that you copied previously.
 
-you have to configure the Grafana Cloud integration for an organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `Grafana Cloud` from the list.
+  ![Cloud APM - Grafana Cloud Form UI](images/grafana-cloud-app-form.png)
 
-![Cloud APM - Grafana Cloud Form UI](images/grafana-cloud-app-form.png)
+  For details, refer to [configuration parameters](#configuration-parameters).
 
-In this form, set the URL, username, and password that you copied previously.  For more information on the other input fields, see [configuration parameters](#configuration-parameters).
+1. Save the Grafana Cloud configuration for the current organization.
 
-Save the Grafana Cloud configuration for the current organization. 
+Note that configuring the Grafana Cloud settings for an organization does not enable the integration. You have to manually enable each test using the [test builder](/test-authoring/test-builder).
 
-Note that configuring the Grafana Cloud settings for an organization does not enable the integration. You have to enable it manually for each test using the [test builder](/test-authoring/test-builder).
+1. Create a new test with the Test Builder, or select a test that was previously created with the Test Builder.
+1. To enable the integration for the test, select the **Cloud APM** option on the Test&ndash;Builder sidebar.
 
-Now, create a new test with the test builder or select a test - previously created with the test builder. Click the `Cloud APM` option on the test builder sidebar to enable the integration for the test.
-
-![Cloud APM - Grafana Cloud Test Builder UI](images/grafana-cloud-app-testbuilder.png)
-
+  ![Cloud APM - Grafana Cloud Test Builder UI](images/grafana-cloud-app-testbuilder.png)
 
 ### Configuration in the k6 script
 
-If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script. 
+If you script your k6 tests, you can configure the Cloud APM settings using the `apm` option in the k6 script.
 
-The parameters to export the k6 metrics to a Grafana Cloud Prometheus instance are as follows:
+The parameters to export k6 metrics to a Grafana Cloud Prometheus instance are as follows:
 
 ```javascript
 export const options = {
@@ -101,13 +109,15 @@ export const options = {
 
 ## Run the cloud test
 
-Once you have set up the Grafana Cloud settings in the test, you can run a cloud test as usual. The k6 Cloud will continuously export the test results metrics to the Prometheus endpoint during the test execution.
+Once you have set up the Grafana Cloud settings in the test, you can run a cloud test as usual.
+k6 Cloud will continuously export the test results metrics to the Prometheus endpoint during the test execution.
 
-To test the integration, use the Prometheus query field to find k6 metrics. 
+To test the integration, use the Prometheus query field to find k6 metrics.
 
   ![Grafana Cloud metrics explorer](images/grafana_cloud_explore_k6_metrics.png)
 
-You can now start using all Grafana visualization capabilities for the k6 metrics. And correlate k6 metrics with other metrics of your systems to get better insights into what happens during your tests. 
+You can now start using all Grafana visualization capabilities for the k6 metrics.
+And correlate k6 metrics with other system metrics to get better insights into what happens during your tests.
 
 ## See also
 
