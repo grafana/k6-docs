@@ -54,8 +54,8 @@ The `includeDefaultMetrics` option in the k6 script controls whether to export t
 
 If you're unfamiliar with the different types of k6 metrics, refer to the [Metrics reference](/using-k6/metrics/).
 
-> By default, k6 sends only these metrics to avoid unexpected costs with your APM provider.
-> APM providers charge based on the number of stored metrics, and a load test can generate a massive amount of metrics.
+> By default, k6 limits export to only these metrics to avoid unexpected costs with your APM provider.
+> APM providers charge based on the number of stored metrics, and a load test can generate a massive volume of metrics.
 
 To select the metrics to export, use the `metrics` option.
 In the k6 script, you can set both options - `includeDefaultMetrics` and `metrics` - as follows:
