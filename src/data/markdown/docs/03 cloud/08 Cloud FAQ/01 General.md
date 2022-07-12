@@ -8,7 +8,6 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 - [What IP addresses are used by the k6 Cloud?](#what-ip-addresses-are-used-by-the-k6-cloud)
 - [What is the best way to debug my load test scripts?](#what-is-the-best-way-to-debug-my-load-test-scripts)
 - [I was invited to an organization and I cannot run tests](#i-was-invited-to-an-organization-and-i-cannot-run-tests)
-- [What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?](#whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud)
 - [How to open a firewall to k6 Cloud service for cloud tests?](#how-to-open-a-firewall-to-k6-cloud-service-for-cloud-tests)
 - [Test status codes](#test-status-codes)
 - [What are VUs (Virtual Users)?](#what-are-vus-virtual-users)
@@ -160,12 +159,6 @@ export const options = {
 </CodeGroup>
 
 Read more about managing [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects).
-
-----
-
-### What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?
-
-Read more [here](/cloud/cloud-faq/whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud-4-0-javascript).
 
 ----
 
