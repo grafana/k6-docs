@@ -1,6 +1,9 @@
 .table-wrapper {
   width: 100%;
   overflow: auto;
+  td:nth-child(1) {
+    white-space: nowrap;
+  }
   @include sm-down {
     tr td:nth-of-type(3) {
       width: 100%;
