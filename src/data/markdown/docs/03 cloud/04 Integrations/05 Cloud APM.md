@@ -8,9 +8,9 @@ By combining k6 Cloud with an APM, you can correlate and query testing metrics w
 
 <Glossary>
 
+- [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
 - [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)
 - [DataDog](/cloud/integrations/cloud-apm/datadog)
-- [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
 - [New Relic](/cloud/integrations/cloud-apm/new-relic)
 
 </Glossary>
@@ -30,10 +30,11 @@ Some ways you can customize export to your use case:
 - Configure the APM settings using the k6 Cloud app and test builder or scripting the k6 test.
 
 For details, refer to the instructuctions for how to integrate your APM:
-[Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor
-[DataDog](/cloud/integrations/cloud-apm/datadog)
-[Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
-[New Relic](/cloud/integrations/cloud-apm/new-relic).
+
+- [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
+- [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)
+- [DataDog](/cloud/integrations/cloud-apm/datadog)
+- [New Relic](/cloud/integrations/cloud-apm/new-relic).
 
 
 ## Default APM Metrics
