@@ -26,7 +26,7 @@ First, configure the Azure Monitor settings for an organization.
 
 1. From the Main navigation, go to **Manage > Cloud APM** and select **Azure Monitor**.
 
-![Cloud APM - Azure Monitor Form UI](images/azure-monitor-cloud-app-form.png)
+  ![Cloud APM - Azure Monitor Form UI](images/azure-monitor-cloud-app-form.png)
 
 1. In this form, copy over the parameters from Azure.
 
@@ -41,7 +41,7 @@ First, configure the Azure Monitor settings for an organization.
 
 1. Select the **Cloud APM option** on the test builder sidebar to enable the integration for the test.
 
-![Cloud APM - Azure Monitor Test Builder UI](images/azure-monitor-cloud-app-testbuilder.png)
+  ![Cloud APM - Azure Monitor Test Builder UI](images/azure-monitor-cloud-app-testbuilder.png)
 
 
 ### Configure Azure export in the k6 script
