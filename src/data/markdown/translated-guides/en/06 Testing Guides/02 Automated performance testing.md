@@ -140,7 +140,13 @@ k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes
 
 ### Authenticating with k6 Cloud
 
-If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool. Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
+If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool.
+
+```bash
+K6_CLOUD_TOKEN=$TOKEN k6 cloud script.js
+```
+
+Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
 
 ```bash
 k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
