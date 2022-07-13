@@ -119,7 +119,7 @@ To find metrics and test the integration:
 3. Make sure to apply a time range that includes when you ran the test.
 4. With the query builder, you can find your metrics and add them to your dashboard.
 
-  ![Grafana Cloud metrics explorer. Arrows pointing to a toggle](images/grafana_query_metric.png)
+  ![Grafana Cloud metrics explorer. Arrows pointing to a toggle](images/grafana-query-metric.png)
 
   > _On some versions of Grafana, you may have to toggle between code and builder._
   > _Make sure you are in a valid time range, too._
