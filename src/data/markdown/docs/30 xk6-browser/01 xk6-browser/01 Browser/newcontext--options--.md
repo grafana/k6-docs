@@ -98,7 +98,7 @@ export default function () {
   });
   const page = context.newPage();
 
-  page.goto('https://k6.io/');
+  page.goto('https://test.k6.io/');
 
   page.close();
   browser.close();
