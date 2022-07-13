@@ -17,9 +17,9 @@ The free plan includes 10,000 Prometheus series.
 
 To export k6 Cloud results to Grafana cloud, you need the following data from your Grafana Cloud Prometheus instance:
 
-- [ ] URL
-- [ ] Username
-- [ ] Password
+- URL
+- Username
+- Password
 
 To access this information:
 
@@ -58,7 +58,7 @@ From the k6 Cloud app, follow these steps.
 
 1. Save the Grafana Cloud configuration for the current organization.
 
-Note that configuring the Grafana Cloud settings for an organization does not enable the integration. You have to manually enable each test using the [test builder](/test-authoring/test-builder).
+Note that configuring the Grafana Cloud settings for an organization does not enable the integration. You must manually enable each test using the [test builder](/test-authoring/test-builder).
 
 1. Create a new test with the Test Builder, or select a test that was previously created with the Test Builder.
 1. To enable the integration for the test, select the **Cloud APM** option on the Test&ndash;Builder sidebar.
@@ -110,11 +110,19 @@ export const options = {
 ## Run the cloud test
 
 Once you have set up the Grafana Cloud settings in the test, you can run a cloud test as usual.
-k6 Cloud will continuously export the test results metrics to the Prometheus endpoint during the test execution.
+k6 Cloud continuously export the test-result metrics to the Prometheus endpoint as the test runs.
 
-To test the integration, use the Prometheus query field to find k6 metrics.
+To find metrics and test the integration:
 
-  ![Grafana Cloud metrics explorer](images/grafana_cloud_explore_k6_metrics.png)
+1. Open the Grafana UI.
+2. In the main navigation, select **Explore**.
+3. Make sure to apply a time range that includes when you ran the test.
+4. With the query builder, you can find your metrics and add them to your dashboard.
+
+  ![Grafana Cloud metrics explorer. Arrows pointing to a toggle](images/grafana_query_metric.png)
+
+  > _On some versions of Grafana, you may have to toggle between code and builder._
+  > _Make sure you are in a valid time range, too._
 
 You can now start using all Grafana visualization capabilities for the k6 metrics.
 And correlate k6 metrics with other system metrics to get better insights into what happens during your tests.
@@ -123,3 +131,4 @@ And correlate k6 metrics with other system metrics to get better insights into w
 
 - [Grafana Plugin](/cloud/integrations/grafana-plugin/)
 - [Cloud APM](/cloud/integrations/cloud-apm/)
+
