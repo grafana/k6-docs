@@ -3,7 +3,7 @@ title: 'newContext([options])'
 excerpt: 'xk6-browser: Browser.newContext method'
 ---
 
-Creates and returns a new [BrowserContexts](/javascript-api/xk6-browser/browsercontext/).
+Creates and returns a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/).
 
 | Parameter | Type   | Description                               |
 | --------- | ------ | ----------------------------------------- |
@@ -17,7 +17,7 @@ Creates and returns a new [BrowserContexts](/javascript-api/xk6-browser/browserc
 
 ### options
 
-You can customize the creation of a new [BrowserContexts](/javascript-api/xk6-browser/browsercontext/) using the following options.
+You can customize the creation of a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/) using the following options.
 
 <!-- vale off -->
 
