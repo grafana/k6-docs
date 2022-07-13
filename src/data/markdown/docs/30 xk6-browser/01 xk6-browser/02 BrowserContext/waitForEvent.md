@@ -5,7 +5,7 @@ excerpt: 'Waits for event to fire and passes its value into the predicate functi
 
 <Blockquote mod="warning">
 
-This method is a Work In Progress. It requires async functionality and returning a `Promise` to be useful in scripts.
+This method is a Work In Progress. It requires async functionality and returning a `Promise` to be useful in scripts. See <a href="https://github.com/grafana/xk6-browser/issues/447">issue #447</a> for details.
 
 Consider using sync methods [Page.waitForNavigation()](/javascript-api/xk6-browser/page/waitfornavigation) and [Page.waitForSelector()](/javascript-api/xk6-browser/page/waitforselector) instead.
 
