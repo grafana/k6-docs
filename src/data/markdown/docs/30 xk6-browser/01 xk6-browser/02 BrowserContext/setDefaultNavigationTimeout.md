@@ -26,7 +26,6 @@ Sets the default maximum navigation timeout for [Page.goto()](/javascript-api/xk
 const context = browser.newContext();
 const page = context.newPage();
 context.setDefaultNavigationTimeout(1000); // 1s
-// FIXME: Doesn't time out! Some JS->Go translation issue...
 page.goto('https://httpbin.test.k6.io/delay/5');
 ```
 
