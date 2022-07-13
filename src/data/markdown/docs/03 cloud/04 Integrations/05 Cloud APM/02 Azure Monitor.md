@@ -10,7 +10,8 @@ and use Azure Monitor to store and analyze all your data from your Azure and oth
 
 ## Export k6 metrics to Azure monitor
 
-You must enable the Azure Monitor integration for each test that you want to export its k6 metrics when running the test.
+You must enable the Azure Monitor integration for each test whose metrics you want to export.
+k6 will export the metrics as the test runs.
 
 Currently, there are two options to set up the Cloud APM settings in the test:
 

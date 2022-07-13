@@ -4,19 +4,18 @@ head_title: 'Datadog integration with k6 Cloud'
 excerpt: 'How to export metrics from k6 Cloud to DataDog'
 ---
 
-With this integration, you can export test result metrics from the k6 Cloud to [DataDog](https://www.datadoghq.com/). That allows querying, visualizing and correlating k6 metrics with other monitored metrics in Datadog. 
+With this integration, you can export test-result metrics from the k6 Cloud to [DataDog](https://www.datadoghq.com/), where you can visualize and correlate k6 metrics with other monitored metrics.
 
 > ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
-
-## DataDog settings
+## Necessary DataDog settings
 
 To set up the integration on the k6 Cloud, you need the following DataDog settings:
 
 - API key
 - Application key
 
-Follow this [guide](https://docs.datadoghq.com/account_management/api-app-keys/) to get your API and application keys.  
+To get your keys, follow the DataDog documentation: ["API and Application Keys"](https://docs.datadoghq.com/account_management/api-app-keys/).
 
 ### Supported Regions
 
@@ -27,36 +26,43 @@ The supported regions for the DataDog integration are:
 
 > API and Application keys for a DataDog region won't work on a different region.
 
-## k6 Cloud test configuration
+## Export k6 metrics to DataDog
 
-You have to enable the DataDog integration for each test that you want to export its test result metrics.
+You must enable the DataDog integration for each test whose metrics you want to export.
 
-Once you have set up the DataDog settings in the test, you can run a cloud test as usual. When running the cloud test, the k6 Cloud will continuously send the test results metrics to DataDog.
+After you set up the DataDog settings in the test, you can run a cloud test as usual.
+As the test runs, k6 Cloud will continuously send the test results metrics to DataDog.
 
 Currently, there are two options to set up the Cloud APM settings in the test:
 
 - [Using the test builder](#configuration-using-the-test-builder)
-- [Scripting the k6 test](#configuration-in-the-k6-script)  
+- [Scripting the k6 test](#configuration-in-the-k6-script)
 
-### Configuration using the test builder
+### Configure DataDog export with the test builder
 
-First, you have to configure the DataDog integration for an organization. Click the `Cloud APM` option on the left sidebar menu under the `Manage` section, and select `DataDog` from the list.
+First, configure the DataDog integration for an organization.
 
-![Cloud APM - DataDog Form UI](images/datadog-cloud-app-form.png)
+1. From the Main navigation, go to **Manage > Cloud APM** and select **Azure Monitor**.
 
-In this form, set the API and application keys that you copied previously from DataDog.  For more information on the other input fields, see [configuration parameters](#configuration-parameters).
+  ![Cloud APM - DataDog Form UI](images/datadog-cloud-app-form.png)
 
-Save the DataDog configuration for the current organization. 
+1. In this form, set the API and application keys that you copied previously from DataDog.
 
-Note that configuring the DataDog settings for an organization does not enable the integration. You have to enable it manually for each test using the [test builder](/test-authoring/test-builder).
+  For more information on the other input fields, see [configuration parameters](#configuration-parameters).
 
-now, create a new test with the test builder or select a test - previously created with the test builder. click the `cloud apm` option on the test builder sidebar to enable the integration for the test.
+1. Save the DataDog configuration for the current organization.
 
-![Cloud APM - DataDog Test Builder UI](images/datadog-cloud-app-testbuilder.png)
+Note that configuring the DataDog settings for an organization does not enable the integration. You must manually enable each test using the [test builder](/test-authoring/test-builder).
+
+1. Create a new test with the test builder, or select an existing test previously created using the test builder.
+
+1. Select the **cloud apm** option on the test builder sidebar to enable the integration for the test.
+
+  ![Cloud APM - DataDog Test Builder UI](images/datadog-cloud-app-testbuilder.png)
 
 ### Configuration in the k6 script
 
-If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script. 
+If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script.
 
 The parameters to export the k6 metrics to DataDog are as follows:
 
