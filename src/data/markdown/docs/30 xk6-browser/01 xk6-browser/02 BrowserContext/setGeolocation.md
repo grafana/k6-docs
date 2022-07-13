@@ -1,6 +1,6 @@
 ---
 title: 'setGeolocation(geolocation)'
-excerpt: "Sets the context's geolocation."
+excerpt: "Sets the BrowserContext's geolocation."
 ---
 
 Sets the context's geolocation.
@@ -15,9 +15,9 @@ Sets the context's geolocation.
 
 ### Example
 
-<!-- eslint-skip -->
-
 <CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
 
 ```javascript
 const context = browser.newContext();

@@ -1,14 +1,16 @@
 ---
 title: 'clearPermissions()'
-excerpt: 'Clears all permission overrides for the browser context.'
+excerpt: 'Clears all permission overrides for the BrowserContext.'
 ---
 
-Clears all permission overrides for the browser context.
+Clears all permission overrides for the `BrowserContext`.
 
 
 ### Example
 
 <CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
 
 ```javascript
 const context = browser.newContext();
