@@ -1,9 +1,9 @@
 ---
 title: 'browser()'
-excerpt: 'Returns the browser instance that this browser context belongs to.'
+excerpt: 'Returns the browser instance that this BrowserContext belongs to.'
 ---
 
-Returns the browser instance that this browser context belongs to.
+Returns the [browser](/javascript-api/xk6-browser/browser) instance that this `BrowserContext` belongs to.
 
 
 ### Returns
