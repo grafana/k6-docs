@@ -4,9 +4,9 @@ excerpt: 'xk6-browser: Browser.isConnected method'
 ---
 
 <Blockquote mod="warning">
-<p>
-    There is a known issue with this feature. See <a href="https://github.com/grafana/xk6-browser/issues/453">issue #453</a> for details.
-</p>
+
+There is a known issue with this feature. See [issue #453](https://github.com/grafana/xk6-browser/issues/453) for details.
+
 </Blockquote>
 
 Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.
