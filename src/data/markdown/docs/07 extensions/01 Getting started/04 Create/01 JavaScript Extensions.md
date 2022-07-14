@@ -20,10 +20,9 @@ To run this tutorial, you'll need the following applications installed:
 
 You also need to install xk6:
 
+```bash
+$ go install go.k6.io/xk6/cmd/xk6@latest
 ```
-go install go.k6.io/xk6/cmd/xk6@latest
-```
-
 
 ## Write a simple extension
 
@@ -32,7 +31,6 @@ First, set up a directory to work in.
 ```bash
 $ mkdir xk6-compare; cd xk6-compare; go mod init xk6-compare
 ```
-
 
 A simple JavaScript extension requires a struct that exposes methods to be called from a k6 test script.
 

@@ -22,8 +22,8 @@ To run this tutorial, you'll need the following applications installed:
 
 You also need to install xk6:
 
-```
-go install go.k6.io/xk6/cmd/xk6@latest
+```bash
+$ go install go.k6.io/xk6/cmd/xk6@latest
 ```
 
 ## Write a simple extension
