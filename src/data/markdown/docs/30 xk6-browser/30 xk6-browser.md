@@ -11,7 +11,9 @@ excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 whi
 import launcher from 'k6/x/browser';
 
 export default function () {
-  const browser = launcher.launch('chromium', { headless: false });
+  const browser = launcher.launch('chromium', {
+    headless: false,
+  });
   const context = browser.newContext();
   const page = context.newPage();
   page.goto('http://whatsmyuseragent.org/');
@@ -36,6 +38,58 @@ The quickest way to get started is to [download a release binary from GitHub](ht
 If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build from source. 
 
 <InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
+
+## Launch
+
+The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After a browser process starts up you will be able to interact with it using the [browser-level APIs](#browser-level-apis) listed below. Currently `chromium` is the only accepted browser type.
+
+| Method                          | Description                                                                                                                                                                                 |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| launch(browser_type, [options]) | The first argument is required and the only `browser_type` that is currently accepted is `chromium`. Below you will find a list of all possible `options`. The `options` param is optional. |
+
+### Options
+
+| Method            | Description                                                                                                                                                                         |
+|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| args[]            | Extra command line arguments to include when launching browser process. A list of chromium flags can be found [here](https://peter.sh/experiments/chromium-command-line-switches/). |
+| debug             | All CDP messages and internal fine grained logs will be logged if set to `true`. Default is `false`.                                                                                |
+| devtools          | Open up developer tools in the browser by default. Default is `false`.                                                                                                              |
+| env               | Environment variables to set before launching browser process.                                                                                                                      |
+| executablePath    | Override search for browser executable in favor of specified absolute path.                                                                                                         |
+| headless          | Show browser GUI or not. Defaults to `true`.                                                                                                                                        |
+| ignoreDefaultArgs | Ignore any of the default arguments included when launching browser process.                                                                                                        |
+| proxy             | Specify to set browser's proxy config.                                                                                                                                              |
+| slowMo            | Slow down input actions and navigation by specified time. By default this is off.                                                                                                   |
+| timeout           | Default timeout to use for various actions and navigation. Default timeout is 30 seconds.                                                                                           |
+
+### Example
+
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
+
+```javascript
+import launcher from 'k6/x/browser';
+
+export default function () {
+  const browser = launcher.launch('chromium', {
+    args: [],
+    debug: true,
+    devtools: true,
+    env: {},
+    executablePath: null,
+    headless: false,
+    ignoreDefaultArgs: [],
+    proxy: {},
+    slowMo: '500ms,
+    timeout: '30s,
+  });
+  // perform tests against your website...
+  browser.close();
+}
+```
+
+</CodeGroup>
 
 ## Browser-level APIs
 
