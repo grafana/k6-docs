@@ -4,10 +4,9 @@ slug: '/cloud/analyzing-results/logs'
 excerpt: 'With the Logs tab, you can view and filter console logs.'
 ---
 
-Logging messages can help debug load tests.
-With the **Log** tab, you can explore logs in k6 Cloud results. 
+Logging messages can help you debug load tests.
 
-## Logging
+## Supported log methods
 
 The k6 API supports the following console-logging methods:
 
@@ -20,12 +19,6 @@ The k6 API supports the following console-logging methods:
 > **Note**: `console.debug()` will log output only when you run k6 with the `-v/--verbose` flag.
 
 Logs can help you troubleshoot your test execution.
-But they *should not* replace the functionality of other k6 APIs.
-
-For example, it is **often an anti-pattern** to use `logs` to:
-
-- Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check) to assert these conditions.
-- Track a variable value during the test execution. Instead, use the [Trend](/javascript-api/k6-metrics/trend) metric.
 
 > **Tip: Debug locally first**
 >
@@ -47,14 +40,15 @@ Refer to [how the k6 Cloud injects environment variables](/cloud/creating-and-ru
 
 ### Filter by log level and load zone
 
-Each JavaScript log statement has a severity level:
+To filter messages by severity:
+1. Use the **Log level** dropdown.
+1. Order each JavaScript log statement by the severity level however you want:
 
-- **Info**: `console.log` and `console.info`.
-- **Debug**: `console.debug`.
-- **Warning**: `console.warning`.
-- **Error**: `console.error`.
+  - **Info**: `console.log` and `console.info`.
+  - **Debug**: `console.debug`.
+  - **Warning**: `console.warning`.
+  - **Error**: `console.error`.
 
-To filter messages by severity, use the **Log level** dropdown.
 
 The load-zone filter displays only when your test runs in more than one load zone.
 
@@ -63,14 +57,19 @@ The load-zone filter displays only when your test runs in more than one load zon
 ### Querying logs
 
 After a test run finishes, you can start querying the logs.
-The query will output messages that contain the string you've specified in the input.
+The query outputs messages that contain the string you've specified in the input.
 
 ![Cloud Logs Tab with Query](./images/11-Cloud-Logs/cloud-logs-output-messages-with-query.png)
 
 ## Logging limitations
 
-Logs help you find script issues and debug execution anomalies.
-However, you *should not* rely on logging to interpret or analyze the performance of your system.
+While logs help you debug, they *should not* replace k6 API functions.
+It is **often an anti-pattern** to use `logs` in the following ways:
+
+- Track the status of a condition. Instead, use [Checks](/javascript-api/k6/check) to assert these conditions.
+- Track a variable value during the test execution. Instead, use the [Trend](/javascript-api/k6-metrics/trend) metric.
+
+However, you also *should not* rely on logging to interpret or analyze the performance of your system.
 
 For this reason, the cloud logs have some limitations:
 
@@ -83,7 +82,7 @@ For this reason, the cloud logs have some limitations:
 
 k6 aims to have a consistent experience when running local and cloud tests.
 
-When running cloud tests using the CLI (`k6 cloud`), k6 will print cloud logs on standard output, like it would with your local tests.
+When running cloud tests with the CLI (`k6 cloud`), k6 prints cloud logs on standard output, like it would with your local tests.
 
 ![Cloud Logs Tab in CLI](./images/11-Cloud-Logs/cloud-logs-cli-output.png)
 

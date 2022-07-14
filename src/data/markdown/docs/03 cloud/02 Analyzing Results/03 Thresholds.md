@@ -27,7 +27,7 @@ This number can let you know whether the tab is worth exploring.
 Then, you can explore the data from individual thresholds.
 You can use this tab to do the following investigations.
 
-To **find failing thresholds**, use the search bar. You can filter by name or by pass/fail status.
+To find failing thresholds, use the search bar. You can filter by name or by pass/fail status.
 
 1. Search for one or multiple names, like `http` or `vus`.
 1. From your filters, find which thresholds. For example, `vus: value>100` and `http_reqs:count>10000`.
@@ -39,9 +39,9 @@ To **see visualizations for the metric**, select the threshold.
 
   In our example below, the expanded thresholds has a value below the threshold of 100 ms.
 
-If you find interesting time series, add it to the **Analysis** tab.
+To compare a threshold time series to other metrics, add the row to the **Analysis** tab.
 
-## Compare threshold metrics with other time series
+### Compare threshold metrics with other time series
 
 To compare the threshold with other data about the test:
 1. Select the threshold.

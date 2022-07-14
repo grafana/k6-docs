@@ -29,16 +29,17 @@ This provides a quick, top-level overview of the check performance.
 From there, you can explore the individual checks.
 In the **Checks** tab, you can investigate in the following ways:
 
-To Find `Checks` that have failures, use the search bar or sort columns.
+To find `Checks` that have failures, search for a check, or sort columns.
   - Note the &#10003; or &#10005; on the left side of each row.
   - In the preceding image, the Check `HTTP status is 200` succeeded only 84.57% of the time: 137 successful runs and 25 failures.
 
-To **view a time-series graph*** for a check, select the row.
+To inspect a check in detail:
+1. Select the check row.
+1. In the expanded check, note how many failures occur at different points in the test.
 
-With the graph, you can see how many failures occur at different points in the test.
-If the time series has useful data, add it to the **Analysis** tab.
+If you want to compare a check time series to other metrics, add it to the **Analysis** tab.
 
-## Compare check metrics with other time series
+### Compare check metrics with other time series
 
 To compare the check data with other data about the test:
 1. Select a check.
