@@ -43,26 +43,6 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
 
-Here's a list of the fully (✅) or partially (🚧) implemented classes of the Playwright API (with a more detailed breakdown of missing APIs in the table below):
-
-<Glossary>
-
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- 🚧  [BrowserContext](/javascript-api/xk6-browser/browsercontext/)
-- 🚧  [BrowserType](/javascript-api/xk6-browser/browsertype/)
-- 🚧  [ElementHandle](/javascript-api/xk6-browser/elementhandle/)
-- 🚧  [Frame](/javascript-api/xk6-browser/frame/)
-- ✅  [JSHandle](/javascript-api/xk6-browser/jshandle)
-- ✅  [Keyboard](/javascript-api/xk6-browser/keyboard)
-- ✅  [Mouse](/javascript-api/xk6-browser/mouse/)
-- 🚧  [Page](/javascript-api/xk6-browser/page/)
-- 🚧  [Request](/javascript-api/xk6-browser/request/)
-- 🚧  [Response](/javascript-api/xk6-browser/response/)
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- ✅  [Touchscreen](/javascript-api/xk6-browser/touchscreen/)
-
-</Glossary>
-
 | k6 Class |  Missing Playwright APIs |
 | - |  - |
 | <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/) | [`on()`](https://playwright.dev/docs/api/class-browser#browser-event-disconnected) (dependent on event-loop support in k6), [`startTracing()`](https://playwright.dev/docs/api/class-browser#browser-start-tracing), [`stopTracing()`](https://playwright.dev/docs/api/class-browser#browser-stop-tracing) |
