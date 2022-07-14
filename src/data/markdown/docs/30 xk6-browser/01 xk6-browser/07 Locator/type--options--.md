@@ -1,0 +1,35 @@
+---
+title: 'type(text, [options])'
+excerpt: 'xk6-browser: locator.type method'
+---
+
+Type in the text into the input field.
+
+| Parameter | Type   | Description                               |
+|-----------|--------|-------------------------------------------|
+| text      | string | A text to type into a focused element.    |
+| options   | object | See [options](#options) for more details. |
+
+### options
+
+<!-- vale off -->
+
+| Option      | Type    | Default | Description                                                                                                                                                                                                                           |
+|-------------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| delay       | number  | `0`     | Milliseconds to wait between key presses. Defaults to `0`.                                                                                                                                                                            |
+| noWaitAfter | boolean | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                            |
+| timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
+
+### Example
+
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
+
+```javascript
+const res = page.goto('https://test.k6.io/browser.php');
+const text = page.locator("#text1");
+text.type('hello world!');
+```
+
+</CodeGroup>
