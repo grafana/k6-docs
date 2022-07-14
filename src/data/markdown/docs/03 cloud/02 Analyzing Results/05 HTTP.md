@@ -58,6 +58,6 @@ With this icon, you hide columns or show new columns.
 
 ![HTTP Tab columns](./images/05-HTTP-Tab/http-tab-columns.png)
 
-## See also
+## Read more
 
 For information about forming HTTP requests in your test, refer to the [HTTP requests](/using-k6/http-requests/) documentation.

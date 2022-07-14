@@ -45,6 +45,6 @@ The extension repository includes a [docker-compose setup](https://github.com/gr
 ![TimescaleDB list test runs](./images/TimescaleDB/dashboard-test-runs.png)
 ![TimescaleDB k6 results](./images/TimescaleDB/dashboard-test-result.png)
 
-## See also
+## Read more
 
 - [Store k6 metrics in TimescaleDB and visualize with Grafana](https://k6.io/blog/store-k6-metrics-in-timescaledb-and-visualize-with-grafana/)

@@ -106,7 +106,7 @@ To visualize the data in different ways, you have a few choices:
 - Use the `+` to add the data to the large chart for comparison.
 
 
-## See Also
+## Read more
 
 - [Performance Insights](/cloud/analyzing-results/performance-insights/)
 - [Thresholds](/cloud/analyzing-results/thresholds)

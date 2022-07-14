@@ -31,6 +31,6 @@ Here are the thresholds and their accompanying data.
 | **Fail rate** | Number of threshold failures against the total number of times the threshold was used.                                                                                                                                  |
 | **History**   | Chart that visualizes the threshold results for the last 10 test runs.                                                                                                                                                    |
 
-## See Also
+## Read more
 
 [Thresholds documentation](/using-k6/thresholds/)

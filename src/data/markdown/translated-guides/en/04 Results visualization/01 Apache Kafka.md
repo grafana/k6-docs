@@ -55,6 +55,6 @@ $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb,influxdb.tag
 
 </CodeGroup>
 
-## See also
+## Read more
 
 - [Integrating k6 with Apache Kafka](https://k6.io/blog/integrating-k6-with-apache-kafka)

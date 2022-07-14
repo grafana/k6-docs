@@ -38,7 +38,7 @@ To compare the check data with other data about the test:
 1. Then use the **Analysis** tab to find correlations between checks data and other values from the test.
   
 
-## See Also
+## Read more
 
 For more information on using checks in your test, refer to the [Checks documentation](/using-k6/checks).
 

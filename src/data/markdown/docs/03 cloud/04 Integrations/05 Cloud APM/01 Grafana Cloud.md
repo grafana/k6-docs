@@ -127,7 +127,7 @@ To find metrics and test the integration:
 You can now start using all Grafana visualization capabilities for the k6 metrics.
 And correlate k6 metrics with other system metrics to get better insights into what happens during your tests.
 
-## See also
+## Read more
 
 - [Grafana Plugin](/cloud/integrations/grafana-plugin/)
 - [Cloud APM](/cloud/integrations/cloud-apm/)

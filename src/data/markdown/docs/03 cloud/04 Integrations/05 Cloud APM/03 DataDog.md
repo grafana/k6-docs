@@ -102,6 +102,6 @@ export const options = {
 | includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
 
-## See also
+## Read more
 
 - [Cloud APM](/cloud/integrations/cloud-apm/)

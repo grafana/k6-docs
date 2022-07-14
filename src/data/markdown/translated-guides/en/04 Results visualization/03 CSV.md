@@ -65,7 +65,7 @@ k6 provides a few options to help you configure your CSV output:
 | `timeFormat`                  | The timestamp format                             | unix, [rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)            | unix       | `K6_CSV_TIME_FORMAT`   |
 | `fileName`                    | The file name and path where output is saved     | N/A                                                                       | `file.csv` | `K6_CSV_FILENAME`      |
 
-## See also
+## Read more
 
 - [Metrics](/using-k6/metrics)
 - [Error codes](/javascript-api/error-codes)

@@ -164,7 +164,7 @@ $ k6 run loadtest.js
 
 To learn about running k6, check out the [Running k6 tutorial](/getting-started/running-k6).
 
-## See also
+## Read more
 
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
 

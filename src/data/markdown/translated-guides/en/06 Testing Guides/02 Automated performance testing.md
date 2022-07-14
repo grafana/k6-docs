@@ -293,7 +293,7 @@ export function teardown(data) {
 If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/manage/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
 
 
-## See also
+## Read more
 
 We have written CI tool specific guides following the steps mentioned above:
 

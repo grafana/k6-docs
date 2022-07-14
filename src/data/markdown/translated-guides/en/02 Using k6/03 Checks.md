@@ -148,7 +148,7 @@ You can also add the check to the **analysis** tab, for further comparison with 
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
-## See also
+## Read more
 
 - [Check Javascript API](/javascript-api/k6/check/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

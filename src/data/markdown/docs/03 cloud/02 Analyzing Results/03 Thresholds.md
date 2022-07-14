@@ -38,6 +38,6 @@ To compare the threshold with other data about the test:
 1. Select **Add to analysis**.
 1. Then use the **Analysis** tab to find correlations between threshold data and other values from the test.
 
-## See Also
+## Read more
 
 For more information on defining `Thresholds` in your test, refer to the [Thresholds documentation](/using-k6/thresholds).

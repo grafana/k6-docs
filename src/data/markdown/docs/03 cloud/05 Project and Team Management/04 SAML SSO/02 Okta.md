@@ -51,6 +51,6 @@ By default, all the people, aka. accounts, are added to the **Everyone** group, 
 6. Many groups can be added to the same **k6 Cloud** application on Okta, but the users will end up in their projects in k6 Cloud based on their group name. Joining users to the project(s) only happens on provisioning.
 7. Inform your point of contact of the exact group names (plus prefixes) and the list of projects on k6 Cloud you want the users from those groups to land on.
 
-## See also
+## Read more
 
 - [Project and Team Management / SAML SSO](/cloud/project-and-team-management/saml-sso/)

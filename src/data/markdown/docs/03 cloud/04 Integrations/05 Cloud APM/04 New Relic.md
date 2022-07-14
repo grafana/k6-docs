@@ -108,7 +108,7 @@ export const options = {
 | resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
 
 
-### See also
+### Read more
 
 - [New Relic: Set up your Prometheus remote write integration](https://docs.newrelic.com/docs/integrations/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/)
 - [Cloud APM](/cloud/integrations/cloud-apm/)

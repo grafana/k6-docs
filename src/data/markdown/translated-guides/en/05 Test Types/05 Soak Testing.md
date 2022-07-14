@@ -95,7 +95,7 @@ You should execute soak tests after your standard load tests are successful, and
 
 Soak testing is the last major step on the road to building reliable systems.
 
-## See also
+## Read more
 
 - [Finding .NET Memory Leaks through Soak Testing](https://k6.io/blog/resolve-memory-leaks-with-soak-testing-and-k6/)
 - [Running large tests](/testing-guides/running-large-tests)

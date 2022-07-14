@@ -194,7 +194,7 @@ only makes your system more reliable but also decreases the stress level of your
 Once your system is stress-proof, you may want to run a [soak test](/test-types/soak-testing) to see if other reliability
 issues don't surface over an extended period.
 
-## See also
+## Read more
 
 - [Running large tests](/testing-guides/running-large-tests)
 

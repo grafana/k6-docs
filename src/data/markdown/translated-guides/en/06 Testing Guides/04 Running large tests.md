@@ -474,7 +474,7 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 
 If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
-## See also
+## Read more
 
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)

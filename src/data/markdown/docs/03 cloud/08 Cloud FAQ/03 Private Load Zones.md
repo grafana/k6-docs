@@ -72,6 +72,6 @@ Once a private load zone has been set up, it will take only slightly more time t
 
 You'll be able to get all the *metrics* (response time, rps, errors, etc.) from k6, but at the moment, you won't be able to see log output from load generators within private load zones. We intend to address this in the future.
 
-## See also
+## Read more
 
 - [k6 Office Hours live stream about private load zones](https://youtu.be/sqKc95zdXyI)

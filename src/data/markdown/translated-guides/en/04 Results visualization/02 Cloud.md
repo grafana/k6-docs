@@ -122,7 +122,7 @@ Outlier data&mdash;far outside the lower and upper quartiles&mdash; is not aggre
 > aggregate. For that case the aggregation settings are however set by the
 > cloud infrastructure and are not controllable from the CLI.
 
-## See also
+## Read more
 
 - [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
 - [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)

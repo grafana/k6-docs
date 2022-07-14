@@ -91,6 +91,6 @@ Once you have configured the `apm` settings in the k6 script, you can launch the
 
 When running the cloud test, k6 Cloud will export the metrics to the Prometheus endpoint almost real-time.
 
-## See also
+## Read more
 
 - [Cloud APM](/cloud/integrations/cloud-apm/)
