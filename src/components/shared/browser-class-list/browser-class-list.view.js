@@ -33,6 +33,10 @@ const links = [
     url: '/javascript-api/xk6-browser/keyboard',
   },
   {
+    title: 'Locator',
+    url: '/javascript-api/xk6-browser/locator',
+  },
+  {
     title: 'Mouse',
     url: '/javascript-api/xk6-browser/mouse/',
   },

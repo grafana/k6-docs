@@ -16,6 +16,7 @@ Here's a list of the fully (✅) or partially (🚧) implemented classes of the 
 - 🚧  [Frame](/javascript-api/xk6-browser/frame/)
 - ✅  [JSHandle](/javascript-api/xk6-browser/jshandle)
 - ✅  [Keyboard](/javascript-api/xk6-browser/keyboard)
+- 🚧  [Locator](/javascript-api/xk6-browser/locator/)
 - ✅  [Mouse](/javascript-api/xk6-browser/mouse/)
 - 🚧  [Page](/javascript-api/xk6-browser/page/)
 - 🚧  [Request](/javascript-api/xk6-browser/request/)

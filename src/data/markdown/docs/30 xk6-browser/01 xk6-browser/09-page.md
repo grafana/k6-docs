@@ -177,6 +177,8 @@ export default function () {
 
 ## page.locator()
 
+Creates and returns a new page [locator](/javascript-api/xk6-browser/locator/) given a selector with strict mode on. The strict mode only allows selecting a single matching element, and will throw an error if multiple matches are found.
+
 ## page.pause()
 
 ## page.pdf()
