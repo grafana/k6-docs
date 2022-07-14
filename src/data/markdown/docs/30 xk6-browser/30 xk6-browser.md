@@ -45,7 +45,7 @@ The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). Af
 
 | Method                          | Description                                                                                                                                                                                 |
 |---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| launch(browser_type, [options]) | The first argument is required and the only `browser_type` that is currently accepted is `chromium`. Below you will find a list of all possible `options`. The `options` param is optional. |
+| launch(browserType, [options]) | The first argument is required and the only `browserType` that is currently accepted is `chromium`. Below you will find a list of all possible `options`. The `options` param is optional. |
 
 ### Options
 
