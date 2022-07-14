@@ -78,28 +78,3 @@ Here's a list of the fully (✅) or partially (🚧) implemented classes of the 
 | [Response](/javascript-api/xk6-browser/response/) | [`finished()`](https://playwright.dev/docs/api/class-response#response-finished) (dependent on event-loop support in k6) |
 | [Touchscreen](/javascript-api/xk6-browser/touchscreen/) |  |
 
-The following Playwright APIs are not supported yet:
-
-<Glossary>
-
-- [Accessibility](https://playwright.dev/docs/api/class-accessibility)
-- [BrowserServer](https://playwright.dev/docs/api/class-browserserver)
-- [CDPSession](https://playwright.dev/docs/api/class-cdpsession)
-- [ConsoleMessage](https://playwright.dev/docs/api/class-consolemessage)
-- [Coverage](https://playwright.dev/docs/api/class-coverage)
-- [Dialog](https://playwright.dev/docs/api/class-dialog)
-- [Download](https://playwright.dev/docs/api/class-download)
-- [FetchRequest](https://playwright.dev/docs/api/class-fetchrequest)
-- [FetchResponse](https://playwright.dev/docs/api/class-fetchresponse)
-- [FileChooser](https://playwright.dev/docs/api/class-filechooser)
-- [Locator](https://playwright.dev/docs/api/class-locator)
-- [Logger](https://playwright.dev/docs/api/class-logger) 
-- [Route](https://playwright.dev/docs/api/class-route)
-- [Selectors](https://playwright.dev/docs/api/class-selectors)
-- [Tracing](https://playwright.dev/docs/api/class-tracing)
-- [Video](https://playwright.dev/docs/api/class-video)
-- [WebSocket](https://playwright.dev/docs/api/class-websocket)
-- [Worker](https://playwright.dev/docs/api/class-worker)
-
-</Glossary>
-
