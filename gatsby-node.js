@@ -1479,6 +1479,8 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/jshandle/',
     '/javascript-api/k6-x-browser/keyboard/':
       '/javascript-api/xk6-browser/keyboard/',
+    '/javascript-api/k6-x-browser/locator/':
+      '/javascript-api/xk6-browser/locator/',
     '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
     '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
     '/javascript-api/k6-x-browser/request/':
