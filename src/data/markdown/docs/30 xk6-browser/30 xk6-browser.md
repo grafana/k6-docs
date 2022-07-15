@@ -41,17 +41,17 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 ## Launch
 
-The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After a browser process starts up you will be able to interact with it using the [browser-level APIs](#browser-level-apis) listed below. Currently `chromium` is the only accepted browser type.
+The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis). The only accepted browser type is currently `chromium`.
 
 | Method                          | Description                                                                                                                                                                                 |
 |---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| launch(browserType, [options]) | The first argument is required and the only `browserType` that is currently accepted is `chromium`. Below you will find a list of all possible `options`. The `options` param is optional. |
+| launch(browserName, [options]) | The first parameter is required, and the only accepted `browserName` is currently `chromium`. The `options` parameter is optional. You can see a list of all possible `options` in [the options heading](#options).
 
 ### Options
 
 | Method            | Description                                                                                                                                                                         |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| args[]            | Extra command line arguments to include when launching browser process. A list of chromium flags can be found [here](https://peter.sh/experiments/chromium-command-line-switches/). |
+| args[]            | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. |
 | debug             | All CDP messages and internal fine grained logs will be logged if set to `true`. Default is `false`.                                                                                |
 | devtools          | Open up developer tools in the browser by default. Default is `false`.                                                                                                              |
 | env               | Environment variables to set before launching browser process.                                                                                                                      |
@@ -59,8 +59,8 @@ The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). Af
 | headless          | Show browser GUI or not. Defaults to `true`.                                                                                                                                        |
 | ignoreDefaultArgs | Ignore any of the default arguments included when launching browser process.                                                                                                        |
 | proxy             | Specify to set browser's proxy config.                                                                                                                                              |
-| slowMo            | Slow down input actions and navigation by specified time. By default this is off.                                                                                                   |
-| timeout           | Default timeout to use for various actions and navigation. Default timeout is 30 seconds.                                                                                           |
+| slowMo            | Slow down input actions and navigation by the specified time. By default, it is off.                                                                                                 |
+| timeout           | Default timeout to use for various actions and navigation. Defaults to 30 seconds.                                                                                                  |
 
 ### Example
 
@@ -82,9 +82,9 @@ export default function () {
     ignoreDefaultArgs: [],
     proxy: {},
     slowMo: '500ms,
-    timeout: '30s,
+    timeout: '30s',
   });
-  // perform tests against your website...
+  // add your test code here and finally close the browser
   browser.close();
 }
 ```
@@ -99,8 +99,8 @@ Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly di
 
 | k6 Class |  Description |
 | - |  - |
-| <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/) | It is the entry point for all tests. It is used to launch `BrowserContext`s and `Page`s. |
-| <BWIPT /> [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | It enables independent browser sessions, with separate `page`s, cache and cookies. |
+| <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/) | The entry point for all tests and used to launch [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s and [Page]((/javascript-api/xk6-browser/page/)s. |
+| <BWIPT /> [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | Enables independent browser sessions with separate [Page](/javascript-api/xk6-browser/page/)s, cache, and cookies. |
 | <BWIPT /> [ElementHandle](/javascript-api/xk6-browser/elementhandle/) | Represents an in-page DOM element. |
 | <BWIPT /> [Frame](/javascript-api/xk6-browser/frame/) | Access and interact with the `Page`'s `Frame`s. |
 | [JSHandle](/javascript-api/xk6-browser/jshandle) | Represents an in-page JavaScript object. |
