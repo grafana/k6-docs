@@ -43,24 +43,24 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis). The only accepted browser type is currently `chromium`.
 
-| Method                          | Description                                                                                                                                                                                 |
-|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| launch(browserName, [options]) | The first parameter is required, and the only accepted `browserName` is currently `chromium`. The `options` parameter is optional. You can see a list of all possible `options` in [the options heading](#options).
+| Method                         | Description                                                                                                                                                                                                         |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| launch(browserName, [options]) | The first parameter is required, and the only accepted `browserName` is currently `chromium`. The `options` parameter is optional. You can see a list of all possible `options` in [the options heading](#options). |
 
 ### Options
 
-| Method            | Description                                                                                                                                                                         |
-|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| args[]            | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. |
-| debug             | All CDP messages and internal fine grained logs will be logged if set to `true`. Default is `false`.                                                                                |
-| devtools          | Open up developer tools in the browser by default. Default is `false`.                                                                                                              |
-| env               | Environment variables to set before launching browser process.                                                                                                                      |
-| executablePath    | Override search for browser executable in favor of specified absolute path.                                                                                                         |
-| headless          | Show browser GUI or not. Defaults to `true`.                                                                                                                                        |
-| ignoreDefaultArgs | Ignore any of the default arguments included when launching browser process.                                                                                                        |
-| proxy             | Specify to set browser's proxy config.                                                                                                                                              |
-| slowMo            | Slow down input actions and navigation by the specified time. By default, it is off.                                                                                                 |
-| timeout           | Default timeout to use for various actions and navigation. Defaults to 30 seconds.                                                                                                  |
+| Method            | Description                                                                                                                                                                                              |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| args              | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments; remove the `--`. |
+| debug             | All CDP messages and internal fine grained logs will be logged if set to `true`. Default is `false`.                                                                                                     |
+| devtools          | Open up developer tools in the browser by default. Default is `false`.                                                                                                                                   |
+| env               | Environment variables to set before launching browser process.                                                                                                                                           |
+| executablePath    | Override search for browser executable in favor of specified absolute path.                                                                                                                              |
+| headless          | Show browser GUI or not. Defaults to `true`.                                                                                                                                                             |
+| ignoreDefaultArgs | Ignore any of the default arguments included when launching browser process.                                                                                                                             |
+| proxy             | Specify to set browser's proxy config.                                                                                                                                                                   |
+| slowMo            | Slow down input actions and navigation by the specified time. By default, it is off.                                                                                                                     |
+| timeout           | Default timeout to use for various actions and navigation. Defaults to 30 seconds.                                                                                                                       |
 
 ### Example
 
@@ -73,15 +73,12 @@ import launcher from 'k6/x/browser';
 
 export default function () {
   const browser = launcher.launch('chromium', {
-    args: [],
+    args: ['show-property-changed-rects'],
     debug: true,
     devtools: true,
-    env: {},
-    executablePath: null,
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: false,
-    ignoreDefaultArgs: [],
-    proxy: {},
-    slowMo: '500ms,
+    slowMo: '500ms',
     timeout: '30s',
   });
   // add your test code here and finally close the browser
