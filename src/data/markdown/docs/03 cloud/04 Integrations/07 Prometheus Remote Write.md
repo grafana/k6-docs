@@ -1,27 +1,25 @@
 ---
 title: 'Prometheus Remote Write'
-excerpt: 'How to export metrics from k6 Cloud to a Prometheus instance using the Prometheus Remote Write integration'
+excerpt: 'How to export metrics from k6 Cloud to a Prometheus instance using the Prometheus remote-write integration'
 ---
 
-The Prometheus remote write integration allows to export metrics from k6 Cloud to a Prometheus instance: either self-hosted or provided by a vendor.
+With the Prometheus remote-write integration, you can export metrics from k6 Cloud to a self-hosted or managed Prometheus instance.
 
-With the Prometheus integration, you can: 
+With the Prometheus integration, you can do the following:
 
 - Store k6 metrics on your Prometheus instances.
 - Run PromQL queries on k6 metrics.
 - Correlate testing results with other system metrics collected with Prometheus.
 
-
-We currently offer similar integrations with Cloud APM solutions: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor/), [DataDog](/cloud/integrations/cloud-apm/datadog/), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud/), and [New Relic](/cloud/integrations/cloud-apm/new-relic/). If you use any of these solutions, we recommend starting to integrate your APM solution first.
-
-
+k6 currently offers similar integrations with Cloud APM solutions: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor/), [DataDog](/cloud/integrations/cloud-apm/datadog/), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud/), and [New Relic](/cloud/integrations/cloud-apm/new-relic/).
+If you use any of these solutions, we recommend integrating your APM solution first.
 
 
 > ⭐️  &nbsp;Prometheus remote write and [Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
 ## Configuration Parameters
 
-Currently, you can only enable this integration using the `apm` option in the k6 script.
+You can enable this integration only with the `apm` option in the k6 script.
 
 The `apm` option configures how to export k6 Cloud metrics to the supported monitoring solutions. It allows multiple configuration blocks to export simultaneously to different monitoring providers.
 
@@ -89,8 +87,9 @@ credentials: {
 
 Once you have configured the `apm` settings in the k6 script, you can launch the cloud test from the [CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/) or [Script Editor](/cloud/creating-and-running-a-test/script-editor/) as usual. 
 
-When running the cloud test, k6 Cloud will export the metrics to the Prometheus endpoint almost real-time.
+When running the cloud test, k6 Cloud will export the metrics to the Prometheus endpoint in almost real-time.
 
 ## Read more
 
 - [Cloud APM](/cloud/integrations/cloud-apm/)
+
