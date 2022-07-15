@@ -49,5 +49,5 @@ To compare the check data with other data about the test:
 
 ## Read more
 
-[Checks in your test scripts](/using-k6/checks).
+- [Checks in your test scripts](/using-k6/checks).
 

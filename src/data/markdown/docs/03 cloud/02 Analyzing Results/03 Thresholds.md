@@ -50,4 +50,4 @@ To compare the threshold with other data about the test:
 
 ## Read more
 
-[Thresholds in your test scripts](/using-k6/thresholds).
+- [Thresholds in your test scripts](/using-k6/thresholds).

@@ -71,4 +71,4 @@ With this icon, you hide columns or show new columns.
 
 ## Read more
 
-[HTTP requests in scripts](/using-k6/http-requests/).
+- [HTTP requests in scripts](/using-k6/http-requests/).
