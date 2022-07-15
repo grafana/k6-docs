@@ -94,17 +94,17 @@ export default function () {
 
 Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
 
-| k6 Class |  Description |
-| - |  - |
-| <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/) | The entry point for all tests and used to launch [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s and [Page]((/javascript-api/xk6-browser/page/)s. |
-| <BWIPT /> [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | Enables independent browser sessions with separate [Page](/javascript-api/xk6-browser/page/)s, cache, and cookies. |
-| <BWIPT /> [ElementHandle](/javascript-api/xk6-browser/elementhandle/) | Represents an in-page DOM element. |
-| <BWIPT /> [Frame](/javascript-api/xk6-browser/frame/) | Access and interact with the `Page`'s `Frame`s. |
-| [JSHandle](/javascript-api/xk6-browser/jshandle) | Represents an in-page JavaScript object. |
-| [Keyboard](/javascript-api/xk6-browser/keyboard/) | Used to simulate the keyboard interactions with the associated `Page`. |
-| [Mouse](/javascript-api/xk6-browser/mouse/) | Used to simulate the mouse interactions with the associated `Page`. |
-| <BWIPT /> [Page](/javascript-api/xk6-browser/page/) | `Page` provides methods to interact with a single tab in a `Browser`. |
-| <BWIPT /> [Request](/javascript-api/xk6-browser/request/) | Used to keep track of the request the `Page` makes.  |
-| <BWIPT /> [Response](/javascript-api/xk6-browser/response/) | Represents the response received by the `Page`. |
-| [Touchscreen](/javascript-api/xk6-browser/touchscreen/) | Used to simulate touch interactions with the associated `Page`. |
+| k6 Class                                                                | Description                                                                                                                                                     |
+|-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/)               | The entry point for all tests and used to launch [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s and [Page](/javascript-api/xk6-browser/page/)s. |
+| <BWIPT /> [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | Enables independent browser sessions with separate [Page](/javascript-api/xk6-browser/page/)s, cache, and cookies.                                              |
+| <BWIPT /> [ElementHandle](/javascript-api/xk6-browser/elementhandle/)   | Represents an in-page DOM element.                                                                                                                              |
+| <BWIPT /> [Frame](/javascript-api/xk6-browser/frame/)                   | Access and interact with the [`Page`](/javascript-api/xk6-browser/page/).'s `Frame`s.                                                                           |
+| [JSHandle](/javascript-api/xk6-browser/jshandle)                        | Represents an in-page JavaScript object.                                                                                                                        |
+| [Keyboard](/javascript-api/xk6-browser/keyboard/)                       | Used to simulate the keyboard interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                     |
+| [Mouse](/javascript-api/xk6-browser/mouse/)                             | Used to simulate the mouse interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                        |
+| <BWIPT /> [Page](/javascript-api/xk6-browser/page/)                     | Provides methods to interact with a single tab in a [`Browser`](/javascript-api/xk6-browser/browser/).                                                          |
+| <BWIPT /> [Request](/javascript-api/xk6-browser/request/)               | Used to keep track of the request the [`Page`](/javascript-api/xk6-browser/page/) makes.                                                                        |
+| <BWIPT /> [Response](/javascript-api/xk6-browser/response/)             | Represents the response received by the [`Page`](/javascript-api/xk6-browser/page/).                                                                            |
+| [Touchscreen](/javascript-api/xk6-browser/touchscreen/)                 | Used to simulate touch interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                            |
 
