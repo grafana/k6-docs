@@ -51,7 +51,7 @@ The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). Af
 
 | Method            | Description                                                                                                                                                                                              |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| args              | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments; remove the `--`. |
+| args              | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the [example](#Example)).  |
 | debug             | All CDP messages and internal fine grained logs will be logged if set to `true`. Default is `false`.                                                                                                     |
 | devtools          | Open up developer tools in the browser by default. Default is `false`.                                                                                                                                   |
 | env               | Environment variables to set before launching browser process.                                                                                                                                           |
