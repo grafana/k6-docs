@@ -202,7 +202,7 @@ const getPageVersions = (
   return pageVersions;
 };
 
-const generateTopLevelLinks = (topLevelLinks) => [
+const generateTopLevelLinks = () => [
   {
     label: 'guides',
     to: '/',
@@ -216,9 +216,18 @@ const generateTopLevelLinks = (topLevelLinks) => [
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
-  ...topLevelLinks.filter(
-    (item) => item.label !== 'JAVASCRIPT API' && item.label !== 'EXAMPLES',
-  ),
+  {
+    label: 'Cloud Docs',
+    to: '/cloud/',
+  },
+  {
+    label: 'Extensions',
+    to: '/extensions/',
+  },
+  {
+    label: 'Integrations',
+    to: '/integrations/',
+  },
   {
     label: 'examples',
     to: '/examples/',
