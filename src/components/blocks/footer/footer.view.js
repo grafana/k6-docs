@@ -179,14 +179,22 @@ export const Footer = () => {
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
-                      <Link className={styles.navColumnLink} to={'/cloud'}>
+                      <Link className={styles.navColumnLink} to={'/cloud/'}>
                         Cloud Docs
                       </Link>
                     </li>
                     <li className={styles.navColumnItem}>
                       <Link
                         className={styles.navColumnLink}
-                        to={'/integrations'}
+                        to={'/extensions/'}
+                      >
+                        Extensions
+                      </Link>
+                    </li>
+                    <li className={styles.navColumnItem}>
+                      <Link
+                        className={styles.navColumnLink}
+                        to={'/integrations/'}
                       >
                         Integrations
                       </Link>
