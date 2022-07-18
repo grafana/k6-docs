@@ -88,7 +88,7 @@ k6 run test.js -i 1 -u 1
 For debugging, k6 also provides a few builtin options:
 
 
-- [`--http-debug`](/using-k6/options#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
+- [`--http-debug`](/using-k6/k6-options/reference#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
 
   <CodeGroup labels={[""]}>
 
@@ -112,7 +112,7 @@ For debugging, k6 also provides a few builtin options:
 
   </CodeGroup>
 
-  Note that you can also use the [`--console-output`](/using-k6/options/#console-output) option to redirect console logs to an output file.
+  Note that you can also use the [`--console-output`](/using-k6/k6-options/reference#console-output) option to redirect console logs to an output file.
 
     <CodeGroup labels={[""]}>
 
