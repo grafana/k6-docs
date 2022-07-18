@@ -179,13 +179,7 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                     </Trait>
                     <Trait>
                       <Link to={'/cloud/analyzing-results/test-comparison/'}>
-                        Compare tests{' '}
-                      </Link>{' '}
-                      and{' '}
-                      <Link
-                        to={'/cloud/analyzing-results/performance-trending/'}
-                      >
-                        performance trends
+                        Compare tests and track trends
                       </Link>
                       .
                     </Trait>
