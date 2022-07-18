@@ -1273,6 +1273,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/extensions/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/integrations/k6-extensions/',
+    toPath: '/extensions/',
+    isPermanent: true,
+  });
 
   createRedirect({
     fromPath: '/cloud/project-and-team-management/team-members/',
