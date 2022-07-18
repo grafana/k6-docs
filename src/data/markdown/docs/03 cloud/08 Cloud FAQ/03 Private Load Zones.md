@@ -21,7 +21,7 @@ First, [contact us](mailto:support@k6.io) about adding private load zones to you
 
 Second, once we've confirmed that your private load zone is ready to go, set up your test to select the private load zone. You can do this one of two ways:
 - via the [graphical Test Builder](https://k6.io/docs/test-authoring/test-builder) on k6 Cloud
-- via the k6 script, within the [test options](https://k6.io/docs/using-k6/options/)
+- via the k6 script, within the [test options](https://k6.io/docs/using-k6/k6-options/)
 
 Here's how to define a private load zone in the test options of your k6 script:
 

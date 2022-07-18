@@ -24,8 +24,9 @@ To setup Okta SAML SSO based authentication to k6 Cloud you must have:
 ![k6 Cloud application](images/02-Okta/okta-k6-cloud-app.png)
 5. You'll be presented with a few setup options. Choose your desired application label and visibility settings and click on Done.
 ![k6 Cloud application setup](images/02-Okta/okta-k6-cloud-app-setup.png)
-6. You'll be sent to the k6 Cloud application configuration page, where you can copy the Metadata URL from the Sing On tab. The link referenced by the Identity Provider metadata should be copied and sent to the customer success team for further setup. The link usually looks like
-[`https://your-organization.okta.com/app/your-app-id/sso/saml/metadata`](https://your-organization.okta.com/app/your-app-id/sso/saml/metadata)
+6. You'll be sent to the k6 Cloud application configuration page, where you can copy the Metadata URL from the Sing On tab. The link referenced by the Identity Provider metadata should be copied and sent to the customer success team for further setup. The link usually looks like this:
+
+  - `https://your-organization.okta.com/app/your-app-id/sso/saml/metadata`
 ![k6 Cloud application metadata](images/02-Okta/okta-k6-cloud-app-metadata-url.png)
 7. The customer success team will convert your k6 Cloud organization to a SAML organization and provide you with a token. On the same tab (Sign On), click on Edit in the top right corner and paste the token in the Advanced Sign-on Settings and click on Save button at the bottom of the same box.
 ![k6 Cloud application token](images/02-Okta/okta-k6-cloud-app-token.png)
