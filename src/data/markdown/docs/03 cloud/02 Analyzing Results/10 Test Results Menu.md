@@ -1,5 +1,6 @@
 ---
-title: 'Save, share, delete tests'
+title: 'Save, share, and delete tests'
+head_title: 'Save, share, delete tests'
 excerpt: 'Different ways to manage test data for further analysis'
 slug: '/cloud/analyzing-results/test-results-menu'
 ---
