@@ -16,6 +16,11 @@ Note that in the case of redirects, all the information in the Response object w
 | geolocation.latitude  | number | Latitude between -90 and 90                         |
 | geolocation.longitude | number | Latitude between -180 and 180                       |
 | geolocation.accuracy  | number | Optional non-negative accuracy value. Defaults to 0 |
+| geolocation.accuracy.test  | number | Optional non-negative accuracy value. Defaults to 0 |
+| geolocation.accuracy.more  | number | Optional non-negative accuracy value. Defaults to 0 |
+| test | number | Optional non-negative accuracy value. Defaults to 0 |
+| test.more | number | Optional non-negative accuracy value. Defaults to 0 |
+| simple | number | Optional non-negative accuracy value. Defaults to 0 |
 
 </TableWithNestedRows>
 

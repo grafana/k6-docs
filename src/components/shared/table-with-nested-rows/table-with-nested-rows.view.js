@@ -1,121 +1,157 @@
 import classNames from 'classnames/bind';
 import TableWrapper from 'components/shared/table-wrapper';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
+import CollapsibleClosedIcon from './svg/collapsible-closed.inline.svg';
+import CollapsibleOpenIcon from './svg/collapsible-open.inline.svg';
 import styles from './table-with-nested-rows.module.scss';
 
 const cx = classNames.bind(styles);
 
-function parseRows(rows) {
-  return rows.map(
-    ({ props: { children } }) =>
+const parseRows = (rows) =>
+  rows.map(({ props: { children } }, i) => ({
+    id: i,
+    group:
       children[0]?.props?.children?.props?.children ||
       children[0]?.props?.children,
-  );
-}
+  }));
 
-function getCollapsibleRowIndexes(rows) {
-  const parsedRows = parseRows(rows);
-  const collapsibleRowIndexes = {};
-
-  parsedRows.forEach((startRow, startRowIndex) => {
-    if (!startRow.includes('.')) {
-      const nestedRowIndexes = [];
-
-      for (
-        let nestedRowIndex = 0;
-        nestedRowIndex < parsedRows.length;
-        nestedRowIndex += 1
-      ) {
-        if (nestedRowIndex > startRowIndex) {
-          if (
-            new RegExp(`^${startRow}\\..*`).test(parsedRows[nestedRowIndex])
-          ) {
-            nestedRowIndexes.push(nestedRowIndex);
-          } else {
-            break;
-          }
-        }
-      }
-
-      if (nestedRowIndexes.length > 0) {
-        collapsibleRowIndexes[startRowIndex] = nestedRowIndexes;
-      }
+const structureRows = (parsedRows) => {
+  const result = [];
+  const hash = { _: result };
+  parsedRows.forEach((row) => {
+    if (!row.group) {
+      hash._.push(row);
+      return;
     }
+    row.group
+      .split('.')
+      .reduce((acc, cur) => {
+        if (!acc[cur]) {
+          acc[cur] = { _: [] };
+          acc._.push(acc[cur]._);
+        }
+        return acc[cur];
+      }, hash)
+      ._.push(row);
   });
+  return result;
+};
 
-  return collapsibleRowIndexes;
-}
+const getPropertyPart = (property) => {
+  const [p1, p2, p3] = property.split('.');
+  return p3 || p2 || p1;
+};
 
-function checkIsActive(activeParentRowIndexes, rowIndex) {
-  return activeParentRowIndexes.includes(rowIndex);
-}
-
-function checkIsExpanded(index, collapsibleRowIndexes, activeParentRowIndexes) {
-  const isChildRow = Object.values(collapsibleRowIndexes).some((childrenRows) =>
-    childrenRows.includes(index),
+const TableRow = (props) => {
+  const {
+    handleToggleClick,
+    data,
+    isCollapsible = false,
+    isExpanded = false,
+  } = props;
+  return (
+    <tr>
+      {data.props.children.map(({ props: { children } }, cellIndex) => (
+        <td key={cellIndex}>
+          {cellIndex === 0 && isCollapsible && (
+            <button
+              className={cx('toggle-button')}
+              type="button"
+              onClick={handleToggleClick}
+            >
+              {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
+            </button>
+          )}
+          <span>{cellIndex === 0 ? getPropertyPart(children) : children}</span>
+        </td>
+      ))}
+    </tr>
   );
+};
 
-  if (!isChildRow) return true;
+const isObj = (item) => !Array.isArray(item);
 
-  if (activeParentRowIndexes.length === 0) return false;
+const renderRowsGroup = (params) => {
+  const {
+    data,
+    handleToggleClick,
+    row,
+    isCollapsible,
+    isExpanded = false,
+  } = params;
 
-  return activeParentRowIndexes.some((activeParentRowIndex) =>
-    collapsibleRowIndexes[activeParentRowIndex].includes(index),
+  if (!isCollapsible) {
+    return (
+      <TableRow
+        data={isObj(row) ? data[row.id] : data[row[0].id]}
+        handleToggleClick={() =>
+          handleToggleClick(isObj(row) ? row.id : row[0].id)
+        }
+      />
+    );
+  }
+
+  if (isObj(row)) {
+    return (
+      <TableRow
+        isCollapsible={isCollapsible}
+        isExpanded={row.isExpanded ?? false}
+        data={data[row.id]}
+        handleToggleClick={() => handleToggleClick(row.id)}
+      />
+    );
+  }
+
+  if (isExpanded) {
+    return row.map((nestedRow) =>
+      renderRowsGroup({
+        data,
+        handleToggleClick,
+        row: nestedRow,
+        isCollapsible: nestedRow.length > 1 || nestedRow.isExpanded || false,
+        isExpanded: nestedRow?.[0]?.isExpanded ?? false,
+      }),
+    );
+  }
+  return (
+    <TableRow
+      isCollapsible
+      data={data[row[0].id]}
+      handleToggleClick={() => handleToggleClick(row[0].id)}
+    />
   );
-}
+};
+
+const changeExpandedAtId = (id) => (row) => {
+  if (Array.isArray(row)) return row.map(changeExpandedAtId(id));
+  if (row.id === id)
+    return {
+      ...row,
+      isExpanded: !row.isExpanded,
+    };
+  return row;
+};
 
 const TableBody = ({ children }) => {
-  const [activeParentRowIndexes, setActiveParentRowIndexes] = React.useState(
-    [],
+  const [rowsState, setRowsState] = useState(() =>
+    structureRows(parseRows(children)),
   );
-
-  const collapsibleRowIndexes = getCollapsibleRowIndexes(children);
-
-  const handleToggleButtonClick = (rowIndex) => {
-    setActiveParentRowIndexes((activeParentRowIndexes) =>
-      activeParentRowIndexes.includes(rowIndex)
-        ? activeParentRowIndexes.slice(
-            0,
-            activeParentRowIndexes.indexOf(rowIndex),
-          )
-        : [...activeParentRowIndexes, rowIndex],
-    );
-  };
-
+  const handleToggleClick = (rowId) =>
+    setRowsState((rows) => rows.map(changeExpandedAtId(rowId)));
   return (
     <tbody>
-      {children.map(({ props: { children } }, rowIndex) => {
-        const isCollapsible = collapsibleRowIndexes[rowIndex]?.length > 0;
-        const isActive = checkIsActive(activeParentRowIndexes, rowIndex);
-        const isExpanded = checkIsExpanded(
-          rowIndex,
-          collapsibleRowIndexes,
-          activeParentRowIndexes,
-        );
-
-        if (!isExpanded) return null;
-
-        return (
-          <tr key={rowIndex}>
-            {children.map(({ props: { children } }, cellIndex) => (
-              <td key={cellIndex}>
-                {children}
-                {cellIndex === 0 && isCollapsible && (
-                  <button
-                    className={cx('toggle-button')}
-                    type="button"
-                    onClick={() => handleToggleButtonClick(rowIndex)}
-                  >
-                    {isActive ? 'Collapse' : 'Expand'}
-                  </button>
-                )}
-              </td>
-            ))}
-          </tr>
-        );
-      })}
+      {rowsState.map((row, idx) =>
+        renderRowsGroup({
+          handleToggleClick,
+          data: children,
+          row,
+          rowIdx: idx,
+          isCollapsible: row.length > 1,
+          isExpanded: row?.[0]?.isExpanded ?? false,
+        }),
+      )}
     </tbody>
   );
 };

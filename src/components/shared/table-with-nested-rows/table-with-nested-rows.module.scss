@@ -1,37 +1,9 @@
 .toggle-button {
-  position: relative;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: $color-secondary;
-  border: 1px solid $color-secondary;
+  -webkit-appearance: none;
+  border: 0;
   background: none;
-  margin-left: 8px;
-  padding: 2px 12px 2px 4px;
   cursor: pointer;
-  transition: color 0.3s, border-color 0.3s;
-
-  &:hover {
-    color: $color-accent-primary;
-    border-color: $color-accent-primary;
-
-    &:after {
-      border-top-color: $color-accent-primary;
-    }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 4px;
-    width: 0;
-    height: 0;
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-top: 3px solid $color-secondary;
-    transition: border-top-color 0.3s;
-  }
+  padding: 0;
+  vertical-align: middle;
+  margin-right: 6px;
 }
