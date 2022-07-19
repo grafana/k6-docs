@@ -5,17 +5,11 @@
 }
 
 .toggle-button {
-  position: relative;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: $color-secondary;
-  border: 1px solid $color-secondary;
+  -webkit-appearance: none;
+  border: 0;
   background: none;
-  margin-left: 8px;
-  padding: 2px 12px 2px 4px;
   cursor: pointer;
+<<<<<<< HEAD
   transition: color 0.3s, border-color 0.3s;
 
   &:hover {
@@ -135,4 +129,9 @@ tr.nesting-0[class*='is-expanded'] {
     transition: border-top-color 0.3s;
 >>>>>>> 95e979e2 (feat: add component TableWithNestedRows)
   }
+=======
+  padding: 0;
+  vertical-align: middle;
+  margin-right: 6px;
+>>>>>>> 3ce7fb50 (feat: logic for upcoming nested table)
 }
