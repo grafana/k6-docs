@@ -5,7 +5,7 @@ excerpt: "xk6-browser: BrowserContext Class"
 
 `BrowserContext`s provide a way to operate multiple independent sessions, with separate pages, cache and cookies. When a [Browser](/javascript-api/xk6-browser/browser) is launched, a default `BrowserContext` is created.
 
-A `BrowserContext` is created by using the [Browser](/javascript-api/xk6-browser/browser) type.
+The [Browser](/javascript-api/xk6-browser/browser) type is used to create a new `BrowserContext`.
 
 If a [page](/javascript-api/xk6-browser/page) opens another page, e.g. with a `window.open` call, the popup will belong to the parent page's `BrowserContext`.
 
