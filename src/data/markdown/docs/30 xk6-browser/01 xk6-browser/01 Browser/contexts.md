@@ -3,7 +3,7 @@ title: 'contexts()'
 excerpt: 'xk6-browser: Browser.contexts method'
 ---
 
-Allows you to access all open browser contexts.
+Allows you to access all open [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s.
 
 ### Returns
 
@@ -13,8 +13,6 @@ Allows you to access all open browser contexts.
 
 
 ## Example
-
-This method will return zero browser contexts for a Browser just created.
 
 <!-- eslint-skip -->
 
