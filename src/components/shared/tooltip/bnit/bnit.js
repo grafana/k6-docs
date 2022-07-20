@@ -11,12 +11,15 @@ const BNIT = ({ id }) =>
         href={`https://github.com/grafana/xk6-browser/issues/${id}`}
         target="_blank"
         rel="noopener noreferrer"
+        style={{ fontSize: '11px', cursor: 'pointer' }}
       >
         ❌
       </a>
     </Tooltip>
   ) : (
-    <Tooltip value="Not implemented">❌</Tooltip>
+    <Tooltip value="Not implemented">
+      <span style={{ fontSize: '11px', cursor: 'help' }}>❌</span>
+    </Tooltip>
   );
 
 BNIT.propTypes = {
