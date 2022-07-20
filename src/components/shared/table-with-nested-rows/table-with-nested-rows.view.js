@@ -3,6 +3,8 @@ import TableWrapper from 'components/shared/table-wrapper';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import { CodeInline } from '../code';
+
 import CollapsibleClosedIcon from './svg/collapsible-closed.inline.svg';
 import CollapsibleOpenIcon from './svg/collapsible-open.inline.svg';
 import styles from './table-with-nested-rows.module.scss';
@@ -11,13 +13,34 @@ const cx = classNames.bind(styles);
 
 const parseRows = (rows) =>
   rows.map(({ props: { children } }, i) => {
-    const group =
-      children[0]?.props?.children?.props?.children?.props?.children ||
-      children[0]?.props?.children?.props?.children ||
-      children[0]?.props?.children;
+    let group;
+    const base = children[0]?.props?.children;
+    if (Array.isArray(base)) {
+      const noTooltips = base.filter(
+        (item) => !['BWIPT', 'BNIT'].includes(item?.props?.mdxType),
+      );
+      const stringsOnly = noTooltips.map((item) => {
+        if (typeof item === 'string') return item;
+        if (item.props.mdxType === 'inlineCode') {
+          return item.props.children;
+        }
+        if (item.props.mdxType === 'a') {
+          return item.props.children?.props?.children ?? item.props.children;
+        }
+        return item;
+      });
+      const target = stringsOnly.filter(
+        (item) => item.length && item !== ' ',
+      )[0];
+      group = target;
+    } else {
+      group =
+        children[0]?.props?.children?.props?.children ||
+        children[0]?.props?.children;
+    }
     return {
       id: i,
-      group: Array.isArray(group) ? group[0].props.children : group,
+      group: group.trim(),
     };
   });
 
@@ -43,19 +66,44 @@ const structureRows = (parsedRows) => {
   return result;
 };
 
+const getPropertyPieces = (string) => string.split('.');
+
+const getContentFromArray = (array) => (
+  <>
+    {array.map((item) => {
+      if (typeof item === 'string') {
+        if (item === ' ') {
+          return ` `;
+        }
+        return item;
+      }
+      if (['BWIPT', 'BNIT'].includes(item?.props?.mdxType)) {
+        return item;
+      }
+      if (item?.props?.mdxType === 'a') {
+        const [c1, c2, c3] = getPropertyPieces(
+          item.props.children?.props?.children ?? item.props.children,
+        );
+        return (
+          <a href={item.props.href} rel="noreferrer">
+            {c3 || c2 || c1}
+          </a>
+        );
+      }
+      if (item?.props?.mdxType === 'inlineCode') {
+        const [c1, c2, c3] = getPropertyPieces(item.props.children);
+        return <CodeInline>{c3 || c2 || c1}</CodeInline>;
+      }
+      return item;
+    })}
+  </>
+);
+
 const getCellContent = (property) => {
-  const getPropertyPiece = (string) => string.split('.');
-  const temp = Array.isArray(property) ? property[0] : property;
-  // check for whether it is link
-  if (temp?.props?.originalType === 'a') {
-    const [c1, c2, c3] = getPropertyPiece(temp.props.children);
-    return (
-      <a href={temp.props.href} rel="noreferrer">
-        {c3 || c2 || c1}
-      </a>
-    );
+  if (Array.isArray(property)) {
+    return getContentFromArray(property);
   }
-  const [p1, p2, p3] = getPropertyPiece(temp?.props?.children ?? temp);
+  const [p1, p2, p3] = getPropertyPieces(property?.props?.children ?? property);
   return p3 || p2 || p1;
 };
 
@@ -76,7 +124,7 @@ const TableRow = (props) => {
         isLast && `is-last`,
       )}
     >
-      {data.props.children.map(({ props: { children } }, cellIndex) => (
+      {data?.props?.children.map(({ props: { children } }, cellIndex) => (
         <td key={cellIndex}>
           {cellIndex === 0 && isCollapsible && (
             <button
@@ -87,9 +135,9 @@ const TableRow = (props) => {
               {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
             </button>
           )}
-          <span>{cellIndex === 0 ? getCellContent(children) : children}</span>
+          <div>{cellIndex === 0 ? getCellContent(children) : children}</div>
         </td>
-      ))}
+      )) ?? [<td>invalid row markup</td>]}
     </tr>
   );
 };
