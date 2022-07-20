@@ -3,6 +3,8 @@ import TableWrapper from 'components/shared/table-wrapper';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import { CodeInline } from '../code';
+
 import CollapsibleClosedIcon from './svg/collapsible-closed.inline.svg';
 import CollapsibleOpenIcon from './svg/collapsible-open.inline.svg';
 import styles from './table-with-nested-rows.module.scss';
@@ -42,6 +44,7 @@ const parseRows = (rows) =>
       group =
         children[0]?.props?.children?.props?.children ||
         children[0]?.props?.children;
+<<<<<<< HEAD
 =======
 function parseRows(rows) {
   return rows.map(
@@ -60,9 +63,12 @@ const parseRows = (rows) =>
 >>>>>>> 45898b03 (feat: styles for nested tables)
       children[0]?.props?.children?.props?.children ||
       children[0]?.props?.children;
+=======
+    }
+>>>>>>> 5ccdcb59 (feat: nested table tooltip support)
     return {
       id: i,
-      group: Array.isArray(group) ? group[0].props.children : group,
+      group: group.trim(),
     };
   });
 
@@ -144,6 +150,9 @@ const structureRows = (parsedRows) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5ccdcb59 (feat: nested table tooltip support)
 const getPropertyPieces = (string) => string.split('.');
 
 const getContentFromArray = (array) => (
@@ -177,6 +186,7 @@ const getContentFromArray = (array) => (
   </>
 );
 
+<<<<<<< HEAD
 const getCellContent = (property) => {
   if (Array.isArray(property)) {
     return getContentFromArray(property);
@@ -299,20 +309,18 @@ const changeExpandedAtId = (id) => (row) => {
 const getPropertyPart = (property) => {
   const [p1, p2, p3] = property.split('.');
 =======
+=======
+>>>>>>> 5ccdcb59 (feat: nested table tooltip support)
 const getCellContent = (property) => {
-  const getPropertyPiece = (string) => string.split('.');
-  const temp = Array.isArray(property) ? property[0] : property;
-  // check for whether it is link
-  if (temp?.props?.originalType === 'a') {
-    const [c1, c2, c3] = getPropertyPiece(temp.props.children);
-    return (
-      <a href={temp.props.href} rel="noreferrer">
-        {c3 || c2 || c1}
-      </a>
-    );
+  if (Array.isArray(property)) {
+    return getContentFromArray(property);
   }
+<<<<<<< HEAD
   const [p1, p2, p3] = getPropertyPiece(temp?.props?.children ?? temp);
 >>>>>>> 45898b03 (feat: styles for nested tables)
+=======
+  const [p1, p2, p3] = getPropertyPieces(property?.props?.children ?? property);
+>>>>>>> 5ccdcb59 (feat: nested table tooltip support)
   return p3 || p2 || p1;
 };
 >>>>>>> 3ce7fb50 (feat: logic for upcoming nested table)
@@ -334,7 +342,7 @@ const TableRow = (props) => {
         isLast && `is-last`,
       )}
     >
-      {data.props.children.map(({ props: { children } }, cellIndex) => (
+      {data?.props?.children.map(({ props: { children } }, cellIndex) => (
         <td key={cellIndex}>
           {cellIndex === 0 && isCollapsible && (
             <button
@@ -345,9 +353,9 @@ const TableRow = (props) => {
               {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
             </button>
           )}
-          <span>{cellIndex === 0 ? getCellContent(children) : children}</span>
+          <div>{cellIndex === 0 ? getCellContent(children) : children}</div>
         </td>
-      ))}
+      )) ?? [<td>invalid row markup</td>]}
     </tr>
   );
 };
