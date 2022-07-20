@@ -3,11 +3,12 @@ title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
 ---
 
-*Thresholds* are pass/fail criteria that specify the performance expectations of the system under test.
+*Thresholds* are pass/fail criteria for your test metrics.
+If a test metric does not meet the expectation you defined, the threshold fails.
 Often, k6 users use thresholds to codify their SLOs.
 
-For example, you can use thresholds to test that your system meets the following expectations:
-
+Thresholds can evaluate any metric that your test generates.
+For example, you could create a threshold for any combination of the following expectations:
 - Less than 1% of requests return an error.
 - 95% of requests have a response time below 200ms.
 - 99% of requests have a response time below 400ms.
