@@ -94,7 +94,7 @@ X-Xss-Protection: 1; mode=block
 </CodeGroup>
 
 
-## See also
+## Read more
 
 - [Debugging Using a Web Proxy](https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/)
 - [Cloud FAQ: What is the best way to debug my load test scripts?](/cloud/cloud-faq/general-questions/#what-is-the-best-way-to-debug-my-load-test-scripts)

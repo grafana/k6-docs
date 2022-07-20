@@ -140,7 +140,7 @@ $ k6 run checks.js
 
 ## Checks in k6 Cloud Results
 
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks-tab) for analysis.
+In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks) for analysis.
 
 Here we can quickly see what checks are failing.
 When you select a check, you can see the count of passes/failures at given points in the test.
@@ -148,7 +148,7 @@ You can also add the check to the **analysis** tab, for further comparison with 
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
-## See also
+## Read more
 
 - [Check Javascript API](/javascript-api/k6/check/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

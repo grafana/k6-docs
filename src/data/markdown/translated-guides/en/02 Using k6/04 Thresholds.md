@@ -3,10 +3,8 @@ title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
 ---
 
-
-## What are thresholds?
-
 *Thresholds* are pass/fail criteria that specify the performance expectations of the system under test.
+Often, k6 users use thresholds to codify their SLOs.
 
 For example, you can use thresholds to test that your system meets the following expectations:
 
@@ -497,7 +495,7 @@ export default function () {
 ## Thresholds in k6 Cloud Results
 
 In [k6 Cloud Results](/cloud/analyzing-results/overview) `Thresholds` are available in
-their [own tab](/cloud/analyzing-results/threshold-tab) for analysis.
+their [own tab](/cloud/analyzing-results/thresholds) for analysis.
 
 You can also see how the underlying metric compares to a specific threshold throughout the test.
 The threshold can be added to the analysis tab for further comparison against other metrics.

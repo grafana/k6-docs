@@ -273,7 +273,7 @@ If you make 50M requests with 100 failures, this is generally a good result (0.0
 ## Benchmarking k6 on AWS
 
 We have executed a few large tests on different EC2 machines to see how much load k6 can generate.
-Our general observation is that k6 scales proportionally to the hardware. 2x larger machine is able to generate 2x more traffic.
+Our general observation is that k6 scales proportionally to the hardware. 2x larger machine can generate 2x more traffic.
 The limit to this scalability is in the number of open connections. A single Linux machine can open up to `65 535` sockets per IP.
 This means that maximum of 65k requests can be executed simultaneously on a single machine.
 The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000.
@@ -464,7 +464,7 @@ However - at this moment - the distributed execution mode of k6 is not entirely 
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
-With the limitations mentioned above, we built a [kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **k8s cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
+With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **k8s cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/grafana/k6/issues/140) on GitHub.
 
@@ -474,7 +474,7 @@ With the limitations mentioned above, we built a [kubernetes operator](https://g
 
 If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
-## See also
+## Read more
 
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)

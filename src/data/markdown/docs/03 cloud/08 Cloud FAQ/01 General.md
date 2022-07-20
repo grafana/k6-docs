@@ -8,7 +8,6 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 - [What IP addresses are used by the k6 Cloud?](#what-ip-addresses-are-used-by-the-k6-cloud)
 - [What is the best way to debug my load test scripts?](#what-is-the-best-way-to-debug-my-load-test-scripts)
 - [I was invited to an organization and I cannot run tests](#i-was-invited-to-an-organization-and-i-cannot-run-tests)
-- [What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?](#whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud)
 - [How to open a firewall to k6 Cloud service for cloud tests?](#how-to-open-a-firewall-to-k6-cloud-service-for-cloud-tests)
 - [Test status codes](#test-status-codes)
 - [What are VUs (Virtual Users)?](#what-are-vus-virtual-users)
@@ -21,7 +20,7 @@ excerpt: 'Frequently asked questions about k6 Cloud'
 
 k6 uses AWS for cloud load generators. For the IP addresses used in the different load zones and filtering methods please refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
-If you prefer to view the ranges directly, within the above link, the [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators. In order to know which IP ranges can be used, you need to filter the `service` of type EC2 and the `region` of the selected load zone/s in your test configuration.
+If you prefer to view the ranges directly, within the above link, the [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators. To find the IP ranges that you can use, you need to filter the `service` of type EC2 and the `region` of the selected load zones in your test configuration.
 
 The zone codes are mapped as follows:
 
@@ -89,7 +88,7 @@ k6 run test.js -i 1 -u 1
 For debugging, k6 also provides a few builtin options:
 
 
-- [`--http-debug`](/using-k6/options#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
+- [`--http-debug`](/using-k6/k6-options/reference#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
 
   <CodeGroup labels={[""]}>
 
@@ -113,7 +112,7 @@ For debugging, k6 also provides a few builtin options:
 
   </CodeGroup>
 
-  Note that you can also use the [`--console-output`](/using-k6/options/#console-output) option to redirect console logs to an output file.
+  Note that you can also use the [`--console-output`](/using-k6/k6-options/reference#console-output) option to redirect console logs to an output file.
 
     <CodeGroup labels={[""]}>
 
@@ -160,12 +159,6 @@ export const options = {
 </CodeGroup>
 
 Read more about managing [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects).
-
-----
-
-### What's the difference between LoadImpact's version 3.0 (Lua) and k6 Cloud?
-
-Read more [here](/cloud/cloud-faq/whats-the-difference-between-loadimpacts-version-3-0-lua-and-k6-cloud-4-0-javascript).
 
 ----
 

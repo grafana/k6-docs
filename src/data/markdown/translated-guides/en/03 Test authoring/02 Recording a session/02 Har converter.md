@@ -110,12 +110,12 @@ To learn more about how to configure the load options, read the [Adding more VUs
 
 If you are recording a user session of a website, by default, you'll record all the HTTP requests that your website uses.
 This includes requests from the third-party tools that your site uses,
-e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, et cetera.
+e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, etc.
 
 You should remove these third party requests:
 
 - They will skew the percentiles of your performance results.
-- You may not be able to affect the performance of the third-party service.
+- You may be unable to affect the performance of the third-party service.
 - The load test may violate the terms-of-service contract that you have with the provider.
 
 Your k6 script can skip third-party requests in a few ways:
@@ -147,7 +147,7 @@ Often, the correlation would be for a token or ID that is needed to run a sequen
 
 The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.
 
-To run your load test correctly, you may need to replace the hardcoded data with dynamic data that k6 gets from previous requests.
+To run your load test correctly, you may need to replace some recorded data with dynamic data that k6 gets from previous requests.
 For example, tokens expire quickly, and they are one of the most common things that users will correlate from a recorded session.
 
 [Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
@@ -164,7 +164,7 @@ $ k6 run loadtest.js
 
 To learn about running k6, check out the [Running k6 tutorial](/getting-started/running-k6).
 
-## See also
+## Read more
 
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
 

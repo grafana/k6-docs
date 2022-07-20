@@ -37,7 +37,7 @@ For this to work, we first need to go through a few required steps:
 
    </CodeGroup>
 
-4. Move the `uuid.js` file to the same folder as your script file and you'll be able to import
+4. Move the `uuid.js` file to the same folder as your script file. Now you can import
    it into your test script:
 
    <CodeGroup labels={[]} lineNumbers={[false]}>

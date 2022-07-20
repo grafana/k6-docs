@@ -3,42 +3,47 @@ title: 'Billing'
 excerpt: 'Update and view information such as billing address, VAT, Credit Cards, and receipts'
 ---
 
+To view or update your subscription, select your profile icon, then **Manage > Subscriptions.**
+Only Account Owners and Admins can access this menu.
+
 <Blockquote mod="warning">
 
 <b>VAT for EU Organizations</b>
 
-If you are making a purchase from within the EU, please be sure to enter your VAT number before purchase.
+If you purchase from within the EU, be sure to enter your value-added tax (VAT) ID number **before purchase**.
 
-If you do not enter a VAT number, we must collect VAT and we're unable to refund VAT even if you present a valid number later on.
+If you do not enter a VAT number, we must collect VAT,
+and we cannot refund VAT even if you present a valid number later.
 
-Due to regulations, all purchases made within Sweden will include VAT.
+Regulations require that all purchases in Sweden include VAT.
 
 </Blockquote>
 
-## Background
+In the Billing menu, manage your billing address, VAT numbers, payment methods and receipts.
 
-The Billing menu allows you to manage things such as billing address, VAT numbers, payment methods and receipts. This menu is only accessible to Account Owners and Admins. The Billing menu can be accessed by clicking on the Account Menu -> `Billing`
 
-## Billing Information
+## Update billing information
 
-Use this section to update your billing email, billing address and VAT (if applicable). To update this information click "Update Billing Information"
+To update your billing email, billing address, and VAT (if applicable),
+select **Update Billing Information**.
 
 ![Updating Billing Information](images/03-Billing/update-billing.png)
 
----
+## Update credit cards
 
-## Credit Cards
+You can add, remove, and change your credit card on file.
+When updating cards, remove old and expired cards to ensure no lapse in service. 
 
-Use this section to add/remove/change your Credit Card on file. When updating cards, please remove old/expired cards to ensure no lapse in service. To add a card, click `Add New Card`
+To add a card, select **Add New Card**.
 
----
+## Review payments and receipts
 
-## Payments and Receipts
+In the **Payments** section, you can review all receipts for purchases made with a Credit Card in our web app. 
 
-The Payments section will include all of your receipts for purchases made with a Credit Card in our web app. If you have paid via wire / invoice please reach out to support for help on retrieving historical payment details.
+If you paid through wire or invoice, reach out to support for help retrieving historical payment details.
 
----
 
-## Invoicing and Wire Transfer
+## Pay by invoice and wire transfer
 
-For annual agreements we do offer wire transfer / invoicing as a method of payment. In order to get started, please reach out to sales@k6.io.
+For annual agreements, k6 offers wire transfer and invoicing as a method of payment.
+To get started, reach out to sales@k6.io.

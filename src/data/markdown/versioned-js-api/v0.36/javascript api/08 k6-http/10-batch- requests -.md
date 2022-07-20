@@ -15,7 +15,7 @@ When each request is specified as an array, the order of the arguments for each 
 | Position | Name              | Type             | Description                                                                                                                 |
 | -------- | ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 1        | method            | string           | Mandatory. The HTTP method of the request. One of GET, POST, PUT, PATCH, DELETE, HEAD or OPTION.                            |
-| 2        | url               | string / [HTTP URL](/javascript-api/k6-http/url-url#returns)  | Mandatory. The URL to request.                                                                                              |
+| 2        | url               | string / [HTTP URL](/javascript-api/k6-http/urlurl#returns)  | Mandatory. The URL to request.                                                                                              |
 | 3        | body (optional)   | string / object / ArrayBuffer | The body of the request if relevant. Can be set to `null` if not applicable but you want to set the last `params` argument. |
 | 4        | params (optional) | object           | [Params](/javascript-api/k6-http/params) like auth, custom headers and tags.                                                |
 
@@ -72,7 +72,7 @@ export default function () {
 
 ### Example with request objects
 
-You can also use objects to hold information about a request. Here is an example where we do that in order to send a POST request, plus use custom HTTP headers by adding a [Params](/javascript-api/k6-http/params) object to the request:
+You can also use objects to hold information about a request. Here's an example of a POST request in an object. It also uses the [Params](/javascript-api/k6-http/params) object to add custom HTTP headers to the request:
 
 <CodeGroup labels={[]}>
 
@@ -133,7 +133,7 @@ export default function () {
   };
   const responses = http.batch(requests);
   // when accessing results, we use the name of the request as index
-  // in order to find the corresponding Response object
+  // to find the corresponding Response object
   check(responses['front page'], {
     'front page status was 200': (res) => res.status === 200,
   });

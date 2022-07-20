@@ -202,7 +202,7 @@ const getPageVersions = (
   return pageVersions;
 };
 
-const generateTopLevelLinks = (topLevelLinks) => [
+const generateTopLevelLinks = () => [
   {
     label: 'guides',
     to: '/',
@@ -216,9 +216,18 @@ const generateTopLevelLinks = (topLevelLinks) => [
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
-  ...topLevelLinks.filter(
-    (item) => item.label !== 'JAVASCRIPT API' && item.label !== 'EXAMPLES',
-  ),
+  {
+    label: 'Cloud Docs',
+    to: '/cloud/',
+  },
+  {
+    label: 'Extensions',
+    to: '/extensions/',
+  },
+  {
+    label: 'Integrations',
+    to: '/integrations/',
+  },
   {
     label: 'examples',
     to: '/examples/',
@@ -311,35 +320,7 @@ const getExtensionsPageSidebar = (sidebarTree) => {
       title: 'Extensions',
       path: '/extensions/',
     },
-    children: {
-      Extensions: {
-        name: 'extensions',
-        meta: {
-          title: 'Extensions',
-          path: '/extensions/',
-        },
-        children: {
-          Explore: {
-            name: 'Explore',
-            meta: {
-              title: 'Explore',
-              isActiveSidebarLink: true,
-              path: '/extensions/',
-            },
-            children: {},
-          },
-          'Build Bundle': {
-            name: 'Build Bundle',
-            meta: {
-              title: 'Build Bundle',
-              isActiveSidebarLink: true,
-              path: '/extensions/bundle-builder/',
-            },
-            children: {},
-          },
-        },
-      },
-    },
+    children: {},
   };
 
   return {
@@ -528,7 +509,16 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/bundle-builder/`,
+        path: `/extensions/getting-started/explore/`,
+        component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
+        context: {
+          sectionName: 'Extensions',
+          sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
+          navLinks: generateTopLevelLinks(topLevelLinks),
+        },
+      },
+      {
+        path: `/extensions/getting-started/bundle/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
@@ -573,8 +563,8 @@ function getDocPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -758,8 +748,8 @@ function getGuidesPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -874,8 +864,8 @@ function getJsAPIVersionedPagesProps({
       // for debuggin purpose in case there are errors in md/html syntax
       if (typeof remarkNode === 'undefined') {
         reporter.warn(
-          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n 
-            ${relativeDirectory}/${name}`,
+          `\nMarkup of a page is broken, unable to generate. Check the following file: \n\n
+          ${relativeDirectory}/${name}`,
         );
         return false;
       }
@@ -1262,7 +1252,7 @@ const createRedirects = ({ actions }) => {
   });
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
-    toPath: '/extensions/bundle-builder/',
+    toPath: '/extensions/getting-started/bundle/',
     isPermanent: true,
   });
 
@@ -1273,8 +1263,28 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/extensions/bundle-builder/',
+    toPath: '/extensions/getting-started/bundle/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/extensions/explore/',
+    toPath: '/extensions/getting-started/explore/',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/extensions/guides/getting-started/',
     toPath: '/extensions/guides/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/extensions/guides/what-are-k6-extensions/',
+    toPath: '/extensions/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/integrations/k6-extensions/',
+    toPath: '/extensions/',
     isPermanent: true,
   });
 
@@ -1288,6 +1298,36 @@ const createRedirects = ({ actions }) => {
     fromPath: '/cloud/project-and-team-management/azure-ad-saml-sso/',
     toPath: '/cloud/project-and-team-management/saml-sso/azure-ad/',
     redirectInBrowser: true,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6/options/',
+    toPath: '/using-k6/k6-options/reference/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/thresholds-tab/',
+    toPath: '/cloud/analyzing-results/thresholds',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/checks-tab/',
+    toPath: '/cloud/analyzing-results/checks',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/http-tab/',
+    toPath: '/cloud/analyzing-results/http',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/analyzing-results/performance-trending/',
+    toPath: '/cloud/analyzing-results/test-comparison',
     isPermanent: true,
   });
 

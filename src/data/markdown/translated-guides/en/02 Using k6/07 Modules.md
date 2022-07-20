@@ -376,7 +376,7 @@ has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
 
-## See also
+## Read more
 
 - [ES6 template](https://github.com/k6io/template-es6): a scaffolding project to use ES6 in your k6 scripts.
 - [TypeScript template](https://github.com/k6io/template-typescript): a scaffolding project to use TypeScript in your k6 scripts.

@@ -42,7 +42,7 @@ For more about running k6, refer to the [Running k6 guide](/getting-started/runn
 
 ## Having trouble? Try the HAR converter
 
-Under the hood, the browser recorder generates the script with the [HAR converter](./HAR-converter).
+Under the hood, the browser recorder generates the script with the [HAR converter](/test-authoring/recording-a-session/har-converter/).
 The HAR converter creates a k6 script from the HTTP requests included in a HAR file.
 
 For certain edge cases, the HAR converter will catch some behavior that the browser recorder won't.

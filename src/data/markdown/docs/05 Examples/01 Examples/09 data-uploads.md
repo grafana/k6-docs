@@ -7,8 +7,8 @@ Example to execute a load test that will upload a file to the System Under Test 
 
 ## The open() function
 
-Using the built-in function, [`open()`](/javascript-api/init-context/open),
-we are able to read the contents of a file given a filename or URL.
+Using the built-in function [`open()`](/javascript-api/init-context/open),
+we can read the contents of a file given a filename or URL.
 
 Below is a simple example showing how to load the contents of a local file `data.json`.
 

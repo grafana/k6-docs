@@ -121,7 +121,6 @@ import launcher from 'k6/x/browser';
 export default function () {
   const browser = launcher.launch('chromium', {
     headless: false,
-    slowMo: '500ms', // slow down by 500ms
   });
   const context = browser.newContext();
   const page = context.newPage();
@@ -131,13 +130,16 @@ export default function () {
   const elem = page.$('a[href="/my_messages.php"]');
   elem.click();
 
+  // Wait for login page to load
+  page.waitForLoadState();
+
   // Enter login credentials and login
   page.$('input[name="login"]').type('admin');
   page.$('input[name="password"]').type('123');
   page.$('input[type="submit"]').click();
 
   // Wait for next page to load
-  page.waitForLoadState('networkdidle');
+  page.waitForNavigation();
 
   page.close();
   browser.close();

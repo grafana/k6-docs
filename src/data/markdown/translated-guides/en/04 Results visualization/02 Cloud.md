@@ -91,14 +91,13 @@ before the network issue.
 
 ## Advanced settings
 
-There are a few special [environment variables](/using-k6/environment-variables)
-specifically for controlling k6 when streaming with `k6 -o cloud`.
+A few [environment variables](/using-k6/environment-variables) can control how k6 streams results with `-o cloud`.
 
 When streaming, k6 will collect all data and send it to the cloud in batches.
 
 | Name | Description |
 | ---- | ----------- |
-| `K6_CLOUD_METRIC_PUSH_INTERVAL`               | How often to send data to the k6 cloud (default `'6s'`).                                        |
+| `K6_CLOUD_METRIC_PUSH_INTERVAL`               | How often to send data to the k6 cloud (default `'1s'`).                                        |
 
 k6 can also _aggregate_ the data it sends to the k6 cloud each batch. This
 reduces the amount of data sent to the cloud. Aggregation is disabled by
@@ -107,8 +106,7 @@ default.
 When using aggregation, k6 will collect incoming test data into time-buckets.
 For each data-type collected in such a bucket, it will figure out the dispersion
 (by default the [interquartile range][iqr]) around the median value.
-Outlier-data far outside the lower and upper quartiles are not aggregated in
-order to not lose potentially important testing information.
+Outlier data&mdash;far outside the lower and upper quartiles&mdash; is not aggregated, preventing the loss of potentially important testing information.
 
 | Name                                          | Description                                                                                              |
 |---------------------------------------------- |----------------------------------------------------------------------------------------------------------|
@@ -124,7 +122,7 @@ order to not lose potentially important testing information.
 > aggregate. For that case the aggregation settings are however set by the
 > cloud infrastructure and are not controllable from the CLI.
 
-## See also
+## Read more
 
 - [Analyzing results on the k6 Cloud](/cloud/analyzing-results/overview)
 - [Running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli)

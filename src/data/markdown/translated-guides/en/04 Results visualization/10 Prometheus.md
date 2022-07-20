@@ -52,6 +52,6 @@ Here is the full list of options that can be configured and passed to the extens
 | `K6_KEEP_NAME_TAG`                       | Boolean option whether to add `name` k6 tag to labels for each metric. Note: see [HTTP Requests Tags](/using-k6/http-requests#http-request-tags) for explanation on values of `name` tag when HTTP requests are made. The default value is `false`. |
 | `K6_KEEP_URL_TAG`                       | Boolean option whether to send `url` k6 tag to labels for each metric. Note: see [HTTP Requests URL Grouping](/using-k6/http-requests#url-grouping) for explanation on values of `url` tag why you might want to use name instead of url to reduce cardinality. The default value is `true`. |
 
-## See also
+## Read more
 
 - [k6 metrics in Prometheus](https://k6.io/blog/k6-loves-prometheus/#the-mechanics-behind-metrics-crunching)
