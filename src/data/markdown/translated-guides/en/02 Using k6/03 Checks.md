@@ -3,16 +3,23 @@ title: 'Checks'
 excerpt: 'Checks are like asserts but differ in that they do not halt the execution, instead, they just store the result of the check, pass or fail, and let the script execution continue.'
 ---
 
-[*Checks*](/javascript-api/k6/check/) are like assertions, but they don't halt execution.
-Instead, they store the result of the check, pass or fail, and let the script continue.
-If you want to halt execution, take a look at [thresholds](/using-k6/thresholds) (which can include checks).
+Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.
 
-The following sections show some ways how you can use checks.
+In practice, checks often evaluate whether the system under test responds with a certain value.
+A check may evaluate:
+- That the system responds with a 200 status
+- That a response body contains certain text
+- That the response body is of a specified size.
+
+Unlike many JS `assert` functions,
+checks _do not_ throw errors or halt execution.
+Instead, k6 stores the result of the check&mdash;either `pass` or `fail`&mdash;and the script continues.
+If you want to halt a run when a check fails, you can make a metric for the check and use it in a [threshold](/using-k6/thresholds).
 
 ## Check for HTTP response code
 
 Checks are great for codifying assertions relating to HTTP requests and responses.
-For example, this snippet makes sure the HTTP response code is a 2xx:
+For example, this snippet makes sure the HTTP response code is a 200:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -95,7 +102,7 @@ In this example, note that the check "is status 200" succeeded 100% of the times
 
 ## Add multiple checks
 
-You may also add multiple checks within a single [check()](/javascript-api/k6/check) statement:
+You can also add multiple checks within a single [check()](/javascript-api/k6/check) statement:
 
 <CodeGroup lineNumbers={[true]}>
 

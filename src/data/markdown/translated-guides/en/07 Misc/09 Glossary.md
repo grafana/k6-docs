@@ -43,7 +43,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Test script](#test-script)
 - [Threshold](#threshold)
 - [Throughput](#throughput)
-- [Virtual users](#virtual-users)
+- [Virtual user](#virtual-user)
 
 </Glossary>
 
@@ -61,8 +61,7 @@ The number of simultaneous VU requests in a test run.
 
 ### Checks
 
-Conditions that validate the correctness of a service.
-In k6 scripts, a check validates any true/false condition in the test.
+Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.
 
 Read more: [Checks reference](/using-k6/checks)
 
@@ -221,10 +220,7 @@ Read more: [Single Request example](/examples/single-request).
 
 ### Threshold
 
-A minimum value that indicates something significant about a system.
-In k6, thresholds are pass/fail criteria that specify the performance expectations of the system under test.
-
- Testers often use thresholds to codify [SLOs](#service-level-objectives)
+A pass/fail criteria that evaluates whether a metric reaches a certain value. Testers often use thresholds to codify SLOs.
 
 Read more: [Threshold reference](k6.io/docs/using-k6/thresholds)
 
@@ -232,9 +228,9 @@ Read more: [Threshold reference](k6.io/docs/using-k6/thresholds)
 
 The rate of successful message delivery. In k6, throughput is measured in requests per second.
 
-### Virtual users
+### Virtual user
 
-*(Or VUs)*. The simulated users that perform separate and concurrent iterations of your test script.
+*(Or VU)*. The simulated users that run separate and concurrent iterations of your test script.
 
-Read more: [VU option reference](/using-k6/k6-options/reference#vus)
+Read more: [The VU option](/using-k6/k6-options/reference#vus)
 
