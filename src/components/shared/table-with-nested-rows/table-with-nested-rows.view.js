@@ -10,12 +10,16 @@ import styles from './table-with-nested-rows.module.scss';
 const cx = classNames.bind(styles);
 
 const parseRows = (rows) =>
-  rows.map(({ props: { children } }, i) => ({
-    id: i,
-    group:
+  rows.map(({ props: { children } }, i) => {
+    const group =
+      children[0]?.props?.children?.props?.children?.props?.children ||
       children[0]?.props?.children?.props?.children ||
-      children[0]?.props?.children,
-  }));
+      children[0]?.props?.children;
+    return {
+      id: i,
+      group: Array.isArray(group) ? group[0].props.children : group,
+    };
+  });
 
 const structureRows = (parsedRows) => {
   const result = [];
@@ -39,8 +43,19 @@ const structureRows = (parsedRows) => {
   return result;
 };
 
-const getPropertyPart = (property) => {
-  const [p1, p2, p3] = property.split('.');
+const getCellContent = (property) => {
+  const getPropertyPiece = (string) => string.split('.');
+  const temp = Array.isArray(property) ? property[0] : property;
+  // check for whether it is link
+  if (temp?.props?.originalType === 'a') {
+    const [c1, c2, c3] = getPropertyPiece(temp.props.children);
+    return (
+      <a href={temp.props.href} rel="noreferrer">
+        {c3 || c2 || c1}
+      </a>
+    );
+  }
+  const [p1, p2, p3] = getPropertyPiece(temp?.props?.children ?? temp);
   return p3 || p2 || p1;
 };
 
@@ -50,9 +65,17 @@ const TableRow = (props) => {
     data,
     isCollapsible = false,
     isExpanded = false,
+    nestLevel = 0,
+    isLast,
   } = props;
   return (
-    <tr>
+    <tr
+      className={cx(
+        `nesting-${nestLevel}`,
+        isExpanded && `is-expanded-${nestLevel}`,
+        isLast && `is-last`,
+      )}
+    >
       {data.props.children.map(({ props: { children } }, cellIndex) => (
         <td key={cellIndex}>
           {cellIndex === 0 && isCollapsible && (
@@ -64,7 +87,7 @@ const TableRow = (props) => {
               {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
             </button>
           )}
-          <span>{cellIndex === 0 ? getPropertyPart(children) : children}</span>
+          <span>{cellIndex === 0 ? getCellContent(children) : children}</span>
         </td>
       ))}
     </tr>
@@ -80,6 +103,8 @@ const renderRowsGroup = (params) => {
     row,
     isCollapsible,
     isExpanded = false,
+    nestLevel,
+    isLast,
   } = params;
 
   if (!isCollapsible) {
@@ -89,6 +114,8 @@ const renderRowsGroup = (params) => {
         handleToggleClick={() =>
           handleToggleClick(isObj(row) ? row.id : row[0].id)
         }
+        nestLevel={nestLevel}
+        isLast={isLast}
       />
     );
   }
@@ -100,18 +127,22 @@ const renderRowsGroup = (params) => {
         isExpanded={row.isExpanded ?? false}
         data={data[row.id]}
         handleToggleClick={() => handleToggleClick(row.id)}
+        nestLevel={nestLevel - 1}
+        isLast={isLast}
       />
     );
   }
 
   if (isExpanded) {
-    return row.map((nestedRow) =>
+    return row.map((nestedRow, nestedRowIdx) =>
       renderRowsGroup({
         data,
         handleToggleClick,
         row: nestedRow,
         isCollapsible: nestedRow.length > 1 || nestedRow.isExpanded || false,
         isExpanded: nestedRow?.[0]?.isExpanded ?? false,
+        nestLevel: nestLevel + 1,
+        isLast: row.length - 1 === nestedRowIdx,
       }),
     );
   }
@@ -120,6 +151,8 @@ const renderRowsGroup = (params) => {
       isCollapsible
       data={data[row[0].id]}
       handleToggleClick={() => handleToggleClick(row[0].id)}
+      nestLevel={nestLevel}
+      isLast={isLast}
     />
   );
 };
@@ -148,8 +181,10 @@ const TableBody = ({ children }) => {
           data: children,
           row,
           rowIdx: idx,
+          isLast: idx === rowsState.length - 1,
           isCollapsible: row.length > 1,
           isExpanded: row?.[0]?.isExpanded ?? false,
+          nestLevel: 0,
         }),
       )}
     </tbody>

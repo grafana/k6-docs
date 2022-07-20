@@ -13,3 +13,100 @@
   vertical-align: middle;
   margin-right: 6px;
 }
+
+td:first-child {
+  white-space: nowrap;
+}
+
+tr.nesting-1 td:first-child > *:first-child {
+  margin-left: 20px;
+}
+
+tr.nesting-2 td:first-child > *:first-child {
+  margin-left: 40px;
+}
+
+tr.is-expanded-0 > td,
+tr.is-expanded-0 ~ tr.nesting-1:not(.is-last) > td {
+  border-bottom: transparent;
+}
+tr.is-expanded-1 > td,
+tr.is-expanded-1 ~ tr.nesting-2:not(.is-last) > td {
+  border-bottom: transparent;
+}
+
+tr[class*='is-expanded'] {
+  td:first-child {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      background-color: $color-additional-2;
+      top: 48px;
+      bottom: 0%;
+      left: 26px;
+    }
+  }
+}
+
+tr.is-expanded-1 {
+  td:first-child {
+    &::before {
+      top: 0%;
+    }
+  }
+}
+
+tr[class*='nesting']:not([class*='nesting-0']) {
+  td:first-child {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      background-color: $color-additional-2;
+      top: 0%;
+      bottom: 0%;
+      left: 26px;
+    }
+  }
+  &.is-last {
+    td:first-child {
+      &::before {
+        bottom: 20px;
+      }
+    }
+  }
+}
+
+tr[class*='nesting-2'].is-last {
+  td {
+    border-bottom: transparent;
+    &:first-child {
+      &::before {
+        bottom: 0 !important;
+      }
+    }
+  }
+}
+
+tr[class*='nesting-2'] {
+  td:first-child {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      background-color: $color-additional-2;
+      top: 0%;
+      bottom: 0%;
+      left: 46px;
+    }
+  }
+  &.is-last {
+    td:first-child::after {
+      bottom: 20px;
+    }
+  }
+}
