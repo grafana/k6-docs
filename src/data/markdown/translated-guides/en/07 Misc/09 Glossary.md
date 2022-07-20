@@ -61,7 +61,7 @@ The number of simultaneous VU requests in a test run.
 
 ### Checks
 
-Checks are true/false conditions that evaluate the content of some value in the Javascript runtime.
+Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.
 
 Read more: [Checks reference](/using-k6/checks)
 

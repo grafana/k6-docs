@@ -3,7 +3,7 @@ title: 'Checks'
 excerpt: 'Checks are like asserts but differ in that they do not halt the execution, instead, they just store the result of the check, pass or fail, and let the script execution continue.'
 ---
 
-Checks are true/false conditions that evaluate the content of some value in the Javascript runtime.
+Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.
 
 In practice, checks often evaluate whether the system under test responds with a certain value.
 A check may evaluate:
