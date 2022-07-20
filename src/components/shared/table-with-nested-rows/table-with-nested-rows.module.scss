@@ -10,6 +10,9 @@
 
 td:first-child {
   white-space: nowrap;
+  div {
+    display: inline;
+  }
 }
 
 tr.nesting-1 td:first-child > *:first-child {
@@ -74,7 +77,7 @@ tr[class*='nesting']:not([class*='nesting-0']) {
   }
 }
 
-tr[class*='nesting-2'].is-last {
+tr.nesting-2:not(:last-child) {
   td {
     border-bottom: transparent;
     &:first-child {
@@ -85,7 +88,24 @@ tr[class*='nesting-2'].is-last {
   }
 }
 
-tr[class*='nesting-2'] {
+tr.nesting-1 {
+  &[class*='is-expanded'] {
+    td:first-child {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        background-color: $color-additional-2;
+        top: 48px;
+        bottom: 0%;
+        left: 46px;
+      }
+    }
+  }
+}
+
+tr.nesting-2 {
   td:first-child {
     position: relative;
     &::after {
@@ -101,6 +121,23 @@ tr[class*='nesting-2'] {
   &.is-last {
     td:first-child::after {
       bottom: 20px;
+    }
+  }
+}
+
+tr.nesting-0[class*='is-expanded'] {
+  td {
+    border-top: 1px solid $color-additional-2;
+    &:first-child {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        background-color: $color-tertiary;
+        height: 20px;
+        top: -21px;
+        left: 26px;
+      }
     }
   }
 }

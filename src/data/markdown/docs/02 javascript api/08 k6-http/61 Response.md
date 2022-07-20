@@ -10,6 +10,18 @@ Note that in the case of redirects, all the information in the Response object w
 
 <TableWithNestedRows>
 
+| Param | Type |
+| - | - |
+| nope <BWIPT/> | string |
+| another <BWIPT/> | string |
+| `another.nope` <BNIT/> | string |
+| `another.nope.more` <BNIT/> | string |
+| [`another.nope.other`](/error-codes) <BWIPT/> | string |
+
+</TableWithNestedRows>
+
+<TableWithNestedRows>
+
 | Parameter             | Type   | Description                                         |
 |-----------------------|--------|-----------------------------------------------------|
 | geolocation           | object | A test description that may be way too long, but will do just alright for testing purposes. How else can we make sure the guideliens are fit? We can repeat this howevermuch we want, just avoid obscene and profound language                                                     |
