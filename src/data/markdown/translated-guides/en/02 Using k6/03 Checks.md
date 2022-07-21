@@ -3,7 +3,8 @@ title: 'Checks'
 excerpt: 'Checks are like asserts but differ in that they do not halt the execution, instead, they just store the result of the check, pass or fail, and let the script execution continue.'
 ---
 
-Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.
+Checks are true/false criteria for your test runtime values.
+If a check fails, k6 stores the result and the test continues to run.
 
 In practice, checks often evaluate whether the system under test responds with a certain value.
 A check may evaluate:
@@ -147,11 +148,10 @@ $ k6 run checks.js
 
 ## Checks in k6 Cloud Results
 
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks) for analysis.
+In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` have their [own tab](/cloud/analyzing-results/checks) for analysis.
 
-Here we can quickly see what checks are failing.
 When you select a check, you can see the count of passes/failures at given points in the test.
-You can also add the check to the **analysis** tab, for further comparison with other metrics.
+You can also add the check to the **Analysis** tab, for and compare it to other metrics.
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
