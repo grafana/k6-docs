@@ -11,24 +11,39 @@ import styles from './table-with-nested-rows.module.scss';
 
 const cx = classNames.bind(styles);
 
+// @TODO: fix yesterdays hack
+// set keys
+
+/* 1.
+ * Parse the array of children
+ * to get flat array with id being the child index in original array
+ * and group is the property
+ * */
 const parseRows = (rows) =>
   rows.map(({ props: { children } }, i) => {
     let group;
     const base = children[0]?.props?.children;
     if (Array.isArray(base)) {
+      // tooltips require no special handling
       const noTooltips = base.filter(
         (item) => !['BWIPT', 'BNIT'].includes(item?.props?.mdxType),
       );
       const stringsOnly = noTooltips.map((item) => {
         if (typeof item === 'string') return item;
         if (item.props.mdxType === 'inlineCode') {
+          // extract key
           return item.props.children;
         }
         if (item.props.mdxType === 'a') {
+          // extract key, may be nested within another element like inline code
+          // being inside a link
           return item.props.children?.props?.children ?? item.props.children;
         }
         return item;
       });
+      // grab the key, assuming
+      // after filtering for tooltips and empty strings
+      // it comes first
       const target = stringsOnly.filter(
         (item) => item.length && item !== ' ',
       )[0];
@@ -44,6 +59,12 @@ const parseRows = (rows) =>
     };
   });
 
+/* 2.
+ * Transform parsed array into
+ * a multidimensional array
+ * that will serve as a source of truth
+ * for renderer and a table state
+ * */
 const structureRows = (parsedRows) => {
   const result = [];
   const hash = { _: result };
@@ -65,15 +86,34 @@ const structureRows = (parsedRows) => {
   });
   return result;
 };
+// local helpers
 
+const isObj = (item) => !Array.isArray(item);
 const getPropertyPieces = (string) => string.split('.');
 
+const generateInlineCode = (item) => {
+  const [c1, c2, c3] = getPropertyPieces(item.props.children);
+  return <CodeInline>{c3 || c2 || c1}</CodeInline>;
+};
+const generateLink = (item) => {
+  const [c1, c2, c3] = getPropertyPieces(
+    item.props.children?.props?.children ?? item.props.children,
+  );
+  return (
+    <a href={item.props.href} rel="noreferrer">
+      {c3 || c2 || c1}
+    </a>
+  );
+};
+
+// handle cell content if the argument is an array
 const getContentFromArray = (array) => (
   <>
-    {array.map((item) => {
+    {array.map((item, idx) => {
       if (typeof item === 'string') {
-        if (item === ' ') {
-          return ` `;
+        if ([0, 1].includes(idx) && item !== ' ') {
+          const [c1, c2, c3] = getPropertyPieces(item);
+          return item === ' ' ? item : c3 || c2 || c1;
         }
         return item;
       }
@@ -81,32 +121,32 @@ const getContentFromArray = (array) => (
         return item;
       }
       if (item?.props?.mdxType === 'a') {
-        const [c1, c2, c3] = getPropertyPieces(
-          item.props.children?.props?.children ?? item.props.children,
-        );
-        return (
-          <a href={item.props.href} rel="noreferrer">
-            {c3 || c2 || c1}
-          </a>
-        );
+        return generateLink(item);
       }
       if (item?.props?.mdxType === 'inlineCode') {
-        const [c1, c2, c3] = getPropertyPieces(item.props.children);
-        return <CodeInline>{c3 || c2 || c1}</CodeInline>;
+        return generateInlineCode(item);
       }
       return item;
     })}
   </>
 );
 
+// cast passed AST piece into a cell content
 const getCellContent = (property) => {
   if (Array.isArray(property)) {
     return getContentFromArray(property);
+  }
+  if (property?.props?.mdxType === 'inlineCode') {
+    return generateInlineCode(property);
+  }
+  if (property?.props?.mdxType === 'a') {
+    return generateLink(property);
   }
   const [p1, p2, p3] = getPropertyPieces(property?.props?.children ?? property);
   return p3 || p2 || p1;
 };
 
+// a single unit, the row table component
 const TableRow = (props) => {
   const {
     handleToggleClick,
@@ -142,8 +182,7 @@ const TableRow = (props) => {
   );
 };
 
-const isObj = (item) => !Array.isArray(item);
-
+// recursive row renderer
 const renderRowsGroup = (params) => {
   const {
     data,
@@ -205,6 +244,7 @@ const renderRowsGroup = (params) => {
   );
 };
 
+// change state handler
 const changeExpandedAtId = (id) => (row) => {
   if (Array.isArray(row)) return row.map(changeExpandedAtId(id));
   if (row.id === id)
@@ -239,6 +279,7 @@ const TableBody = ({ children }) => {
   );
 };
 
+// main component
 const TableWithNestedRows = ({ children }) => {
   const thead = children.props.children.find(
     ({ props: { originalType } }) => originalType === 'thead',

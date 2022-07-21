@@ -125,7 +125,7 @@ tr.nesting-2 {
   }
 }
 
-tr.nesting-0[class*='is-expanded'] {
+tr[class*='nesting-0'][class*='is-expanded']:not(:first-child) {
   td {
     border-top: 1px solid $color-additional-2;
     &:first-child {
