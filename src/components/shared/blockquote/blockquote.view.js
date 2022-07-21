@@ -1,47 +1,53 @@
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import React from 'react';
+import { slugify } from 'utils';
 
 import styles from './blockquote.module.scss';
 import AttentionIcon from './svg/attention.inline.svg';
-import InfoIcon from './svg/pencil-note.inline.svg';
+import NoteIcon from './svg/note.inline.svg';
 import WarningIcon from './svg/warning.inline.svg';
 
-const Blockquote = ({ children, title, mod = 'default' }) => {
-  // create optional kicker in case of modifications
-  const getKicker = (mod) => {
-    const kickers = {
-      attention: 'attention',
-      info: 'info',
-      warning: 'warning',
-      default: '',
-    };
+const cx = classNames.bind(styles);
 
-    const icons = {
-      attention: AttentionIcon,
-      info: InfoIcon,
-      warning: WarningIcon,
-    };
-
-    const Icon = icons[mod] ?? null;
-
-    return (
-      <div className={styles.wrapper}>
-        {Icon && <Icon className={styles.icon} src={icons[mod]} />}
-        <span className="kicker">{!title ? kickers[mod] : title}</span>
-      </div>
-    );
+const getKicker = ({ mod, title }) => {
+  const kickers = {
+    attention: 'attention',
+    note: 'note',
+    warning: 'warning',
+    default: '',
   };
+
+  const icons = {
+    attention: AttentionIcon,
+    note: NoteIcon,
+    warning: WarningIcon,
+  };
+
+  const Icon = icons[mod] ?? null;
+  const kickerContent = kickers[mod];
+  const Tag = title ? 'h4' : 'span';
+
+  return title || kickerContent ? (
+    <div className={cx('wrapper')}>
+      {Icon && <Icon className={cx('icon')} />}
+      <Tag
+        className={cx('kicker', !title && kickerContent && 'uppercased')}
+        id={title ? slugify(title) : undefined}
+      >
+        {title || kickerContent}
+      </Tag>
+    </div>
+  ) : null;
+};
+
+const Blockquote = ({ children, title, mod = 'default' }) => {
+  const variation = mod.toLowerCase();
   return (
-    <blockquote
-      className={classNames({
-        [styles.docBlockquoteWarning]: mod === 'warning',
-        [styles.docBlockquoteAttention]: mod === 'attention',
-        [styles.docBlockquoteInfo]: mod === 'info',
-      })}
-    >
-      {getKicker(mod)}
+    <blockquote className={variation && cx(`doc-blockquote-${variation}`)}>
+      {getKicker({ mod: variation, title })}
       {children}
     </blockquote>
   );
 };
+
 export default Blockquote;

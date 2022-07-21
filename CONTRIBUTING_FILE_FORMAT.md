@@ -109,7 +109,7 @@ There are also cases when the path to an image contains white space characters. 
 
 Note, that for some reason not every `%`-ed path with spaces works everytime. The truly foolproof solution is using kebab only case: like `[](/images/kebab-cased-folder-name/kebab-cased-image-name.png)`
 
-## Blockquotes
+## Blockquotes or admonitions
 
 Here things are getting a bit hairy. It is still default md, so it is perfectly fine to write blockquotes like:
 
@@ -132,52 +132,25 @@ And you'll get a fine quote block:
 
 ![internal-images/Untitled%204.png](internal-images/Untitled%204.png)
 
-In case of a 'attention' mod for a blockquote, you just add an ⚠️ emoji, like this:
+**Variations**
 
-```md
-> #### ⚠️ Docker syntax
->
-> When using the `k6` docker image, you can't just give the script name since
-> the script file will not be available to the container as it runs. Instead
-> you must tell k6 to read `stdin` by passing the file name as `-`. Then you
-> pipe the actual file into the container with `<` or equivalent. This will
-> cause the file to be redirected into the container and be read by k6.
->
-> **Note**: If your script imports other files (JS modules), piping like this
-> will not work since the extra files will not be visible inside the container.
-> To use modules you need to first mount your host/local directory into the
-> Docker container, see [Modules with Docker](https://docs.k6.io/v1.0/docs/modules#section-using-local-modules-with-docker)."
-```
+It is possible to adjust your admonition theme using custom `Blockquote` wrapper. This wrapper accepts the follwoing props:
 
-And our default blockquote will take a form of:
+- `mod`, one of [`note`, `warning`, `attention`, `default`]. Optional, default value is `default`. Passing any non-default value will display corresponding kicker with an icon.
+- `title`. Optional. If passed, will replace default text in the kicker. Title is getting wrapped with `h4` tag and beas `id` attribute to be able to be anchored to. ⚠️ **Make sure title is unique across the page**
 
-![Default blockquote](internal-images/Untitled%205.png)
+<details>
+<summary>Examples</summary>
 
-Another option is 'warning' mod, the syntax is following:
+![](/internal-images/blockquote-set-1.jpg)
 
-```md
-<Blockquote mod="warning">
+![](/internal-images/blockquote-set-2.jpg)
 
-#### Make a cost estimate before starting a soak test
-
-Soak test can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
-
-If you are testing a website, you should consider excluding your CDN from the test.
-
-If your system makes use of external services, you may want to calculate the cost before you start the test.
-
-</Blockquote>
-```
-
-And the result is:
-
-![Warning blockquote](internal-images/blockquote-warning.png)
+</details>
 
 _Pay attention to those empty lines between md block and a wrapper, they are required to correctly parsing._
 
 _Also pay attention, that usage of `Blockquote` requires omitting native `md` blockquote syntax, so you just put your content inside withou any `>` and you are good to go._
-
-At the moment there are only three mods available: `default`, `attention` (wrapper for both is optional) and warning (wrapper is required). If you need more, let us know.
 
 ## Code blocks
 
@@ -198,7 +171,6 @@ and you are good to go!
 If your code contains backticks, use `<CodeInline>` wrapper instead:
 
     Hide a field with <CodeInline>`js: "-"`</CodeInline>
-
 
 ### Headerless
 
