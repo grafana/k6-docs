@@ -199,7 +199,6 @@ If your code contains backticks, use `<CodeInline>` wrapper instead:
 
     Hide a field with <CodeInline>`js: "-"`</CodeInline>
 
-
 ### Headerless
 
 We are going to write them a bit differently, half-native md:
@@ -398,6 +397,55 @@ In md file it should look like this to be formatted as a table. You could use on
 Result:
 
 ![internal-images/Untitled%2011.png](internal-images/Untitled%2011.png)
+
+### Table with nested data
+
+An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom component that will do all the magic, all you need to do is to wrap your table with this tag and make sure you follow the rules:
+
+1. Only 2 levels of nesting is permitted
+2. You can not omit any intermediary keys in the first column (more in example below)
+3. You can use `inlineCode`, links and tooltips in the first column, but keep as little content as possible to prevent malfunctioning or UI distortion.
+4. Prefer having tooltips `<BWIPT/>`, `<BNIT/>` at the righmost side to avoid colliding with toggler icon.
+5. If you see one of the rows displaying `Invalid row markup`, something fishy is going on with your first column value in this row
+
+A perfect example:
+
+```mdx
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| location  | object | Location object | 
+| location.langitude  | number | Desc | 
+| location.longitude  | number | Desc | 
+| location.id <BWIPT/>  | number | Desc | 
+| [location.address](/link)  | object | Desc | 
+| location.address.street  | string | Desc | 
+| location.address.apt  | string | Desc | 
+```
+
+<details>
+<summary>Result</summary>
+
+[Table with nested rows](/internal-images/table-with-nested-rows.png)
+
+</details>
+
+A bad example:
+
+1. Missed `location.address` property
+2. First row has tooltip at leftmost side
+3. Second row contains too much elements, confuses the parser
+4. Last row contains 2 dots, confuses the parser
+
+```mdx
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| <BWIPT/> location  | object | Location object | 
+| location.langitude (currently unavailable) <BWIPT/>  | number | Desc | 
+| location.longitude  | number | Desc | 
+| location.id <BWNIT/>  | number | Desc | 
+| location.address.street  | string | Desc | 
+| location.address..apt  | string | Desc | 
+```
 
 ## LdScript
 

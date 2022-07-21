@@ -11,9 +11,6 @@ import styles from './table-with-nested-rows.module.scss';
 
 const cx = classNames.bind(styles);
 
-// @TODO: fix yesterdays hack
-// set keys
-
 /* 1.
  * Parse the array of children
  * to get flat array with id being the child index in original array

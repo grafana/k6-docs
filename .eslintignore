@@ -1,3 +1,4 @@
 .cache/
 public/
 node_modules/
+CONTRIBUTING_FILE_FORMAT.md
