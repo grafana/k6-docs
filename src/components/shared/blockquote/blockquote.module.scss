@@ -20,7 +20,37 @@ blockquote {
   }
 }
 
+blockquote.doc-blockquote-info {
+  border-left: 2px solid $color-info;
+  span[class='kicker'] {
+    display: block;
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    color: $color-info;
+    margin-bottom: 15px;
+    margin-left: 8px;
+    font-weight: 600;
+  }
+}
+
+blockquote.doc-blockquote-attention {
+  background: $color-attention-bg;
+  border-left: 2px solid $color-attention;
+  span[class='kicker'] {
+    display: block;
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    color: $color-attention;
+    margin-bottom: 15px;
+    margin-left: 8px;
+    font-weight: 600;
+  }
+}
+
 blockquote.doc-blockquote-warning {
+  background: $color-error-bg;
   border-left: 2px solid $color-error;
   span[class='kicker'] {
     display: block;
@@ -29,6 +59,17 @@ blockquote.doc-blockquote-warning {
     line-height: $line-height-xs;
     color: $color-error;
     margin-bottom: 15px;
+    margin-left: 8px;
     font-weight: 600;
   }
+}
+
+.icon {
+  display: inline;
+  width: 18px;
+  height: 18px;
+}
+
+.wrapper {
+  display: flex;
 }
