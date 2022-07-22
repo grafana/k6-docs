@@ -26,7 +26,7 @@ export default function () {
 }
 ```
 
-The recommended option to pass environment variables to your testing script is to use one or more [`-e` / `--env` CLI flags](/using-k6/options#supply-environment-variables)
+The recommended option to pass environment variables to your testing script is to use one or more [`-e` / `--env` CLI flags](/using-k6/k6-options/reference#supply-environment-variables)
 (this command works the same for all platforms):
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
@@ -68,7 +68,7 @@ PS C:\k6> $env:MY_HOSTNAME="test.k6.io"; k6 run script.js
 
 By default, passing system environment variables doesn't work for `k6 archive`, `k6 cloud`, and `k6 inspect`.
 This is a security measure to avoid the risk of uploading sensitive data to k6 Cloud.
-To override this mode, specify [--include-system-env-vars](/using-k6/options/#include-system-env-vars).
+To override this mode, specify [--include-system-env-vars](/using-k6/k6-options/reference#include-system-env-vars).
 
 </Collapsible>
 
@@ -109,9 +109,9 @@ PS C:\k6> $env:K6_VUS=10 ; $env:K6_DURATION="10s" ; k6 run script.js
 
 As the preceding example shows, you need to prefix `K6_` in the environment variable name for k6 to evaluate it as an option parameter.
 However, be aware that not all options are supported as environment variables.
-You can confirm whether one is by checking the [documentation for each option](/using-k6/options/#list-of-options).
+You can confirm whether one is by checking the [documentation for each option](/using-k6/k6-options/reference).
 
-Note that when you define options in multiple places, there's an [order of precedence](/using-k6/k6-options/how-to#order-of-precedence) that determines the option to use.
+Note that when you define options in multiple places, there's an [order of precedence](/using-k6/k6-options/how-to) that determines the option to use.
 To ensure you're always working with the highest precedence, use command-line flags instead of environment variables:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
