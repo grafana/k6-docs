@@ -74,9 +74,16 @@ If `handleSummary()` is exported, k6 does _not_ print the default summary.
 Besides customizing the CLI summary, you can also transform the summary data into machine- or human-readable formats.
 This lets you create JS-helper functions that generate JSON, CSV, XML (JUnit/xUnit/etc.), HTML, etc. files from the summary data.
 
-> **Note:** For now, the `handleSummary()` feature is available only for local `k6 run` tests.
-> However we plan to support the feature for k6 Cloud tests eventually.
-> [You can track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
+<Blockquote mod="note"
+title="handleSummary() is available on only local tests."
+>
+
+However we plan to support the feature for k6 Cloud tests, too.
+[Track progress in this issue](https://github.com/grafana/k6-cloud-feature-requests/issues/24).
+
+</Blockquote>
+
+
 
 ### Data format returned by `handleSummary()`
 

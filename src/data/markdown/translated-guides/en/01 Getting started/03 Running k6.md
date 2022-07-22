@@ -182,10 +182,13 @@ For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramp
 
 k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
 
-> **k6 aims to let users switch between execution modes with minimal changes.**
-> &nbsp;
-> 
-> This lets users reuse tests&mdash;no matter the environment and context. Making tests portable across multiple modes of execution is a key design goal of k6.
+<Blockquote mod="" title="Portability is a major design goal of k6">
+
+You can run the same test in different modes with minimal changes.
+
+</Blockquote>
+
+
 
 1. [Local](#running-local-tests): the test execution happens entirely on a single machine, container, or CI server. 
 

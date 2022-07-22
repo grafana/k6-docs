@@ -1,40 +1,26 @@
 ---
 title: 'Token'
-excerpt: 'How to authenticate with k6 Cloud token'
+excerpt: 'How to authenticate with a k6 Cloud token'
 ---
 
 To use k6 Cloud, you need to authenticate your account.
-Authentication is required for both tests that run on the cloud and for results that stream to the cloud.
+Authentication is required for both tests that run on k6 Cloud and results that stream to k6 Cloud.
 To authenticate accounts, k6 provides an API token, which you can pass on the CLI or through the REST API.
 
 You can generate two types of API tokens for k6 Cloud, depending on how you want to authenticate:
 - [Account-level API tokens](#account-api-token) grant access through your account with k6
 - [Organization-level API tokens](#organization-api-token) grant organization-wide access for actions not tied to a user.
 
-To generate API tokens, you can follow these steps or adapt these examples.
-
-> #### Google/GitHub Single Sign-On Users
->
-> For Single Sign-On (SSO) users, `k6 login cloud` requires a k6 Cloud account email and password. You will need to create a password using [Forgot Password](https://app.k6.io/account/forgot), or you can instead authenticate via API token. See [Authenticating with API token](#authenticating-with-api-token) for more information.
-
-> #### Docker Users
->
-> If you're running k6 in a Docker container, make sure that the k6 config file where the k6 Cloud API authentication information is stored is persisted via a Docker volume to the host machine, using the `-c/--config PATH/TO/CONFIG_FILE` CLI flag. Example:
-```bash
-docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 login cloud -c /path/in-container/config.json
-```
-
-> #### Integrating with CI
->
-> If you are integrating k6 into your CI pipeline, we recommend using an [organization level API token](#organization-api-token) to authenticate and not exposing your username/password within your CI configuration files or as variables. Alternatively you can use an [account level API token](#account-api-token) with a user created specially for the purpose of running CI tests.
+To generate API tokens, follow these steps.
 
 ## Account API token
+
 An account-level API token provides API access to your account with k6.
 To generate the token:
 1. Select your profile in the top-right icon.
 2. Under **Account settings**, select **API token**.
-
-From there you can copy, see, and regenerate the token.
+  
+  On this page, you can copy, see, and regenerate the token.
 
 ![account token view](./images/04-Token/account-api-token-view.png)
 
@@ -52,17 +38,20 @@ To generate a token, follow these steps:
 2. Under **Organization settings**, select **API token**.
 3. Select **New token**.
 
-On this page, you can create, see, and regenerate the tokens.
-The maximum amount of tokens that an organization can create is 5 by default.
+   On this page, you can create, see, and regenerate the tokens.
 
-Note that when using an organization API token, you must specify the project where the test runs will be created.
-Read about [how to set the `Project ID`](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one).
+   By default, organizations can create a maximum of 5 tokens.
+
+Note that you must specify the project where the test runs will be created when using an organization API token.
+
+[How to set the `Project ID`](https://k6.io/docs/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#running-tests-under-a-different-project-than-your-default-one).
 
 ![organization token view](./images/04-Token/organization-api-token-view.png)
 
 ## Authenticate with email and password
 
-If you want to forego using a token, you can authenticate with your k6 Cloud email and password credentials.
+To forego using a token, you can authenticate with your k6 Cloud email and password credentials.
+
 To do so, enter the following command into your terminal:
 
 <CodeGroup labels={["Authenticate with email/password"]}>
@@ -73,7 +62,7 @@ k6 login cloud
 
 </CodeGroup>
 
-This will log in to your account, fetch (and create if necessary) your k6 Cloud API authentication token, and save it to a [k6 configuration file](#using-config-file).
+This logs in to your account, fetches or creates your k6 Cloud API authentication token, and savea it to a [k6 configuration file](#using-config-file).
 
 ## Authenticating with API token
 
@@ -92,7 +81,7 @@ k6 login cloud --token YOUR_API_AUTH_TOKEN
 ## API Token as an environment variable
 
 You can also authenticate with your k6 Cloud API authentication token via environment variables.
-Make sure the `K6_CLOUD_TOKEN` has been set to your k6 Cloud API authentication token, and k6 will pick it up when running.
+Make sure you have set the `K6_CLOUD_TOKEN` as your k6 Cloud API authentication token, and k6 will pick it up when running.
 
 ## Authentication with a config file
 
@@ -114,9 +103,9 @@ C:\Users\&lt;User&gt;\AppData\Roaming\loadimpact\k6\config.json
 
 </CodeGroup>
 
-or by specifying the `-c/--config PATH/TO/CONFIG_FILE` CLI flag.
+Or, set the config path with the `-c/--config PATH/TO/CONFIG_FILE` CLI flag.
 
-When your k6 Cloud API authentication token has been added to the config file, it should look something like this (removing any other config options from the file):
+After your token has been added to the config file, it should look something like this (removing any other config options from the file):
 
 <CodeGroup labels={["API token in JSON"]}>
 
@@ -131,3 +120,57 @@ When your k6 Cloud API authentication token has been added to the config file, i
 ```
 
 </CodeGroup>
+
+## Recommended authentication methods for different cases
+
+### Single Sign-On Users
+
+If you use SSO to authenticate through Google and GitHub, here's the recommended approach:
+
+- **Recommended method**  
+  Use `k6 login cloud` and log in with either:
+    - Your account email and password
+    - Your API token
+- **How to authenticate**.
+  - Create a password using [Forgot Password](https://app.k6.io/account/forgot).
+  - [Authenticate with an API token](#authenticating-with-api-token).
+
+### Docker Users
+
+If you're running k6 in a Docker container, here's the recommended approach:
+
+- **Recommended method**.  
+  Use the `-c/--config PATH/TO/CONFIG_FILE` CLI flag.
+
+- **Reason for recommendation**.  
+  This ensures that the k6 config file where the k6 Cloud API authentication information is stored is persisted via a Docker volume to the host machine.
+
+- **How-to authenticate**. 
+
+  ```bash
+  docker run --rm -i -v /path/on-host:/path/in-container/ grafana/k6 \
+  login cloud -c /path/in-container/config.json
+  ```
+
+### Integrating with CI
+
+
+If you want to integrate k6 into your CI pipeline, here's the recommended approach:
+
+- **Recommended method**.  
+  Two options:
+  - Use [organization level API token](#organization-api-token), and passing the token through an environment variable.
+  - Use an [account-level API token](#account-api-token) with a user created specifically to run CI tests.
+- **Reason for recommendation**.  
+  With this method, you can authenticate without exposing your username and password within your CI configuration files or as variables.
+- **How-to authenticate.**  
+  In this case, the recommended way to pass the token is through an environment variable:
+
+  ```bash
+  K6_CLOUD_TOKEN=$TOKEN k6 cloud script.js
+  ```
+
+- **Read more**.
+  - [Environment Variables](/using-k6/environment-variables/)
+  - [Automated performance testing guide](/automated-performance-testing/).
+

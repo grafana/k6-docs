@@ -88,6 +88,6 @@ Take the following steps to enable mapping of Azure Active Directory groups with
     ![Azure SAML SSO group claim](images/01-Azure-AD/azure-group-claim.png)
 14. You've successfully set up teams on your end. Inform your point of contact about the object id of each group and the list of projects on k6 Cloud you want the users from those groups to land on. You can retrieve the object id of the group by navigating to your **Azure Active Directory** and then clicking on **Groups** in the right pane. The list of groups and their object ids will be shown.
 
-## See also
+## Read more
 
 - [Project and Team Management / SAML SSO](/cloud/project-and-team-management/saml-sso/)

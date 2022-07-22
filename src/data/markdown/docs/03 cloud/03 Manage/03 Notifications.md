@@ -1,138 +1,136 @@
 ---
-title: 'Notifications'
-excerpt: 'Notifications allow third-party services to be notified via Webhook when various test-related events of your choice happen in your organizations/projects.'
+title: 'Send notifications'
+excerpt: 'How to send emails and webhooks about test-related events in your organizations and projects.'
+slug: '/cloud/manage/notifications'
 ---
 
-Notifications allow third-party services to be notified via
-[Webhook](https://en.wikipedia.org/wiki/Webhook) or [Email](https://en.wikipedia.org/wiki/Email) 
-when various test-related
-events of your choice happen in your organizations/projects. Commonly monitored
-events are if a test is aborted unexpectedly or if it fails a
-[check](/using-k6/checks) or [threshold](/using-k6/thresholds).
+> **&#128712; Only organization owners and admins can set up notifications.**
 
-You will likely want to use notifications when you schedule your performance
-tests and/or configure them into your Continuous Integration (CI) pipeline.
+It would be tedious to monitor every test in your ongoing test operations.
+Instead, you can configure k6 Cloud to send notifications whenever a significant test event happens.
+For example, you could send a notification whenever a test unexpectedly aborts or fails a check or threshold.
 
-> **Note:** Notifications are configured per organization by the organization's
-> owner or an admin member.
+k6 supports the following ways to send notifications:
+- To a third-party platform, like workspaces for Slack and Microsoft teams
+- Through a custom [webhooks](https://en.wikipedia.org/wiki/Webhook)
+- Through email
 
-k6 supports four different integration options: _Slack_, _Microsoft Teams_ and
-your own _Custom Webhook_ or _Custom Email_. Each option can also be customized freely 
-if our default is not exactly what you need.
+When you [schedule a test](/cloud/manage/scheduled-tests) or add it to your continuous integration pipeline, 
+you'll likely want to configure a notification for failed events, thus automating test execution and observation.
+
 
 ![k6 Notifications](./images/Notifications/notification-type-selection.png)
 
-## Adding a Slack notification
+## Add a Slack notification
 
-[Slack](https://slack.com/) is a proprietary business communication platform.
+To send notifications to Slack, follow these steps.
 
-1. From Slack, add a Custom Integration and select _Incoming WebHook_ app.
-2. Select or create a channel and copy Slack's generated WebHook URL.
-3. From the k6 web app, select `Notifications` from the left menu bar. From
-   there, select to setup _Slack_.
-4. Add Slack's WebHook URL into the `Webhook URL` input field.
-5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
-   You can find descriptions of the available events [below](#supported-notification-events).
-6. Optionally, give your notification a name (in case you want more than one Slack integration)
-7. Press `Save`. If you now go back to `Configure` the notification you just created, you'll see a
-   `Send test event` button. Use that to send a dummy message and to make sure it works.
+1. From Slack, add a **Custom Integration** and select **Incoming WebHook** app.
+1. Select or create a channel and copy Slack's generated WebHook URL.
+
+Then, head to the k6 web app.
+
+1. From the sidebar, select **Notifications**, then select **Slack**.
+1. Paste the Slack WebHook URL into the **Webhook URL** input field.
+1. From the **Notification event** dropdown, choose the events that will trigger notifications or select all.
+   Refer to the [supported notification events](#supported-notification-events).
+1. Optionally, give your notification a name (in case you want more than one Slack integration).
+1. **Save**.
+
+  If you now go back to **Configure** the notification you just created, you'll see a
+   **Send test event** button. Use that to send a dummy message and to make sure it works.
 
 ![Slack Setup example](./images/Notifications/slack-setup.png)
 
-> By pressing the _toggle advanced mode_ button you can view and customize exactly what will be
-> sent to Slack. Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
+> With the _toggle advanced mode_ button, you can view and customize exactly what k6 sends to Slack. Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
 
----
 
-## Adding a Microsoft Teams notification
+## Add a Microsoft Teams notification
 
-[Microsoft Teams](https://docs.microsoft.com/en-us/microsoftteams/) is a hub for team
-collaboration in office 365.
+First, figure out the webhook URL for your Microsoft Team setup.
+Then go the k6 web app and follow these steps.
 
-1. Figure out the webhook URL for your Microsoft Team setup.
-2. From the k6 web app, select `Notifications` from the left menu bar. From there,
-   select to setup _Microsoft Teams_.
-3. Add The Teams URL into the `Webhook URL` input field.
-4. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
-   You can find descriptions of the available events [below](#supported-notification-events).
-5. Optionally, give your notification a name (in case you want more than one Teams integration)
-6. Press `Save`. If you now go back to `Configure` the notification you just created, you'll see a
-   `Send test event` button. Use that to send a dummy message and make sure it works.
+1. From the k6 web app, select **Notifications** from the left menu bar. From there, select **Microsoft Teams**.
+1. Paste the Teams URL into the **Webhook URL** input field.
+1. From the **Notification event** dropdown, pick the events you want to be notified by, or all of them.
+   Refer to the [supported notification events](#supported-notification-events).
+1. Optionally, give your notification a name (in case you want more than one Teams integration).
+1. **Save**.
+
+  If you now go back to **Configure** the notification you just created, you'll see a
+  **Send test event** button. Use that to send a dummy message and make sure it works.
 
 ![MSTeams Setup example](./images/Notifications/ms-teams-setup.png)
 
-> By pressing the _toggle advanced mode_ button you can view and customize
-> exactly what will be sent to Microsoft Teams. Read more about it in the
-> [Custom webhook](#adding-a-custom-webhook) section below.
+> To view and customize exactly what k6 sends to Microsoft Teams,
+> use the **Advanced mode** toggle.
+> Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
 
----
 
-## Adding a Custom Webhook
+## Add a Custom Webhook
 
 While k6 offers defaults for Slack and Microsoft Teams, you can send to any
-third-party service with a webhook integration. The JSON payload can be
-customized directly in the k6 app.
+third-party service with a webhook integration.
+You can customize the JSON payload directly in the k6 app.
 
-1. Get the webhook URL of your service of choice. If you are experimenting it
-   may be an idea to first try with some free online service that provides temporary
-   URLs for webhook debugging, like [webhook.site](https://webhook.site/).
-2. From the k6 web app, select `Notifications` from the left menu bar. From there,
-   select to setup a _Custom Webhook_.
-3. Add your URL in the `Webhook URL` input field.
-4. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
+First, get the webhook URL of your service of choice.
+If experimenting, you might first try a free online service that provides temporary
+URLs for webhook debugging, like [webhook.site](https://webhook.site/).
+
+
+1. From the k6 web app, select **Notifications** from the left menu bar. From there, select **Custom Webhook**.
+1. Add your URL in the **Webhook URL** input field.
+1. From the **Notification event** dropdown, pick the events you want to be notified by, or all of them.
+   Refer to the [supported notification events](#supported-notification-events).
    You can find descriptions of the available events [below](#supported-notification-events).
-5. Optionally, give your notification a name to separate different hooks.
-6. Optionally, select a `Template` to start from. The _Generic Template_ showcases all the possible
-   values k6 can send. The _Slack/Microsoft Teams_ templates are the same ones you can customize by clicking
-   `Toggle advanced mode` within each integration.
-7. Modify the JSON payload as needed. Note the `Template Context` pane on the right - this lists most available
-   properties k6 cloud returns. The full list of template variables is [found below](#template-context-variables).
-8. Press `Save` and fix any eventual errors reported.
-9. Once Saving completes correctly, go back to `Configure` the notification you
-   just created and click the `Send test event` button. This sends a dummy
-   message to your URL. All the context fields in your template will be filled
-   with mock values to make sure it works.
-10. Fix any errors reported by sending the test event. Make sure to also
-    double-check so that you get the expected value-type for every field on the
-    receiving end (if there was a typo in the variable-name some may just be
-    left empty without giving an explicit error).
+1. Optionally, give your notification a name to separate different hooks.
+1. Optionally, select a `Template` to start from. The _Generic Template_ showcases all the possible
+   values k6 can send. The _Slack/Microsoft Teams_ templates are the same ones you can customize when you send webhooks to those services.
+1. Modify the JSON payload as needed. Refer to [Template context variables](#template-context-variables) as needed.
+1.  **Save** and fix any eventual errors reported.
 
-![MSTeams Setup example](./images/Notifications/custom-webhook-setup.png)
+  After you save, select the notification you just created.
+  Then test your webhook with the **Send test event**.
+  k6 will fill all the context fields in your template with mock values.
 
-## Adding a Custom Email notification
+Fix any errors reported by sending the test event. Double-check that each field's value is what you expect.
 
-Instead of using webhooks you can have k6.io send you an email.
+![Custom webhook example](./images/Notifications/custom-webhook-setup.png)
 
-1. Decide which email or emails to receive the notification.
-2. From the k6 web app, select `Notifications` from the left menu bar. From there,
-   select to setup _Email_.
-3. In the `Recipients` field select your organization's member emails from a dropdown or 
-   alternatively enter the email address or addresses that should receive the
-   notification. Separate multiple emails by commas or spaces.
-4. Enter `Email Subject`. This is useful if you want to filter
-   and organize notifications in your email program.
-5. From the `Notification event` dropdown, pick the events you want to be notified by, or all of them.
-   You can find descriptions of the available events [below](#supported-notification-events).
+## Add a Custom Email notification
+
+Instead of using webhooks,  you can have k6.io send you an email.
+First, decide which email addresses will receive the notification.
+Then, follow these steps.
+
+1. From the k6 web app, select **Notifications** from the left menu bar. From there, select **Email**.
+3. In the **Recipients** field, select your organization's member emails from the dropdown, or enter the email addresses that should receive the
+   notification. Use commas or spaces to separate emails.
+4. Enter an email Subject.
+   This helps filter and organize notifications in your email program.
+5. From the **Notification event** dropdown, choose the events you want to be notified about, or select all.
+   Refer to [Supported notification events](#supported-notification-events).
 6. Optionally, give your notification a name to separate different notifications.
 7. Optionally, select a `Template` to start from. The default _Email notification_ is a simple
    HTML-enhanced email template with human-readable test results. You can edit this to your liking.
-8. Press `Save` and fix any eventual errors reported.
-9. Once Saving completes correctly, go back to `Configure` the notification you
-   just created and click the `Send test event` button. This sends a dummy
-   message to your email address/addresses. All the context fields in your template will be filled
-   with mock values to make sure it works.
-10. Fix any errors reported by sending the test event. Make sure to also
-   double-check so that you get the expected value-type for every field on the
-   receiving end (if there was a typo in the variable-name some may just be
-   left empty without giving an explicit error).
+8. **Save** and fix any reported errors.
 
-![Email Setup example](./images/Notifications/email-setup.png)
+   After you save, open the webhook and test it with the **Send test event** button. This sends a dummy
+   message to your email address/addresses. k6 will fill the context fields in your template with mock values.
+
+Fix any errors reported by sending the test event. Double-check that value for each field is what you expect.
+
+![Custom email example](./images/Notifications/email-setup.png)
+
+---
 
 ## Supported Notification events
 
-You can receive notifications for two main situations - when a test-run
-_starts_ and when it _ends_. You can then further limit the conditions under which
-a notification is sent.
+Broadly, two types of events trigger notifications:
+- When a test run _starts_
+- When a test run _ends_
+
+Within these categories, you can granularly configure which events trigger notifications.
 
 ### Events when a test starts
 
@@ -155,14 +153,16 @@ a notification is sent.
 | Test aborted (by threshold) | `test.finished.aborted_threshold`    | Only tests that were _aborted_ by crossing a test threshold                   |
 | Test aborted (by limit)     | `test.finished.aborted_limit`        | Only tests that were _aborted_ due to hitting an execution or network limit   |
 
-You can safely pick multiple options and will still at most get two notifications per
-test-run, one when it starts and one when it ends. The event-identifier will be passed along
-to specify which condition triggered the notification.
+You can safely pick multiple options and get at most get two notifications per
+test-run, one when it starts and one when it ends.
+k6 passes the event identifier along to specify which condition triggered the notification.
 
 <!--  These are not in frontend, superfluous and commented out for now:
 |  -    | `test.started.all` | All tests started, no matter how |
 |  -    | `test.finished.all` | All tests that ends, no matter how |
 -->
+
+---
 
 ## Templating syntax
 
@@ -171,8 +171,9 @@ The notification templates use the
 Jinja uses `{{ }}` to mark places in the template that will be replaced by
 actual values when the notification is created.
 
-For example, let's say we want to include the running test's name and
-identifier in our context. From the `Template Context` list we see that these
+For example, let's say we want to include the test name and identifier in our context.
+
+From the `Template Context` list, note that these
 variables are accessed as `test.name` and `test.id`. Here's what we need to add
 to the template:
 
@@ -185,14 +186,13 @@ to the template:
 }
 ```
 
-Jinja also supports simple if/else conditionals. These are written on the form
+Jinja also supports simple if/else conditionals. Write conditionals in the form:
 
 ```json
 {% if condition %}if_true_result{% else %}if_untrue_result{% endif %}
 ```
 
-Here is an example (from the generic template) of setting a color based on the
-result of the test-run:
+Here is an example (from the generic template) of setting a color based on the result of the test-run:
 
 ```json
 {
@@ -224,28 +224,26 @@ This example loops over the list of `errors` (if any):
   ]
 ```
 
-The `loop.last` is a special Jinja feature used here to not add a
-comma after the very last item (a comma at the end would not be valid JSON).
+The `loop.last` is a special Jinja feature.
+Here it used in place of a comma after the last item (a comma at the end would not be valid JSON).
 
-> It's important to remember that after the Jinja-parsing/replacing, the result _must be a valid JSON structure_.
+> Remember that after the Jinja-parsing/replacing, the result _must be a valid JSON structure_.
 > So in the examples above, note how we can leave the `test.id` as-is (since
-> it's an int), but because the `test.name` is a string it must be enclosed
+> it's an int), but because the `test.name` is a string, it must be enclosed
 > in quotes `" ... "`. In the same way, the for-loop output must be created inside `[ ... ]` to
 > have the result be a proper JSON array.
 
----
 
 ## Template Context variables
 
-These are variables available for use in your notification templates. A short
-list of these are available in the app, here is the full list. They will
-usually be accessed with Jinja's `{{ }}` tags. Note the type of each value
-and especially remember to put double-quotes around strings so the result
-after template-replacement is still valid JSON.
+You can use these variables in your notification templates.
 
-### \`test\`
+To access them as expressions, use the default `{{ }}` delimiters.
+Note the type of each value and especially remember to put double quotes around strings, so the result after template-replacement is still valid JSON.
 
-This holds test-run data for the test-run that triggered the event.
+### test
+
+This holds test-run data for the test run that triggered the event.
 
 | Variable               | Type  | Description                                                           |
 | ---------------------- | ----- | --------------------------------------------------------------------- |
@@ -264,7 +262,7 @@ This holds test-run data for the test-run that triggered the event.
 | `test.result`          | `int` | Is `0` if passed, `1` if failed                                       |
 | `test.result_text`     | `str` | Result as text ("Passed"/"Failed")                                    |
 
-### \`user\`
+### user
 
 Information about the user associated with this test-run.
 
@@ -274,19 +272,19 @@ Information about the user associated with this test-run.
 | `user.name`   | `str` | The full name of the user (first and last name, if available)                         |
 | `user.avatar` | `str` | A [gravatar](https://en.gravatar.com/) link, needed for example for Slack integration |
 
-### \`event\`
+###  event
 
-This holds details about the event itself.
+ Details about the event itself.
 
 | Variable     | Type  | Description                                                                                                                               |
 | ------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `event.id`   | `str` | Unique hash for this event                                                                                                                |
-| `event.type` | `str` | This is the event trigger type that fired, like "test.finished.all". If no `event` was specified, this will be the string `<any>`         |
+| `event.type` | `str` | This is the event trigger type that fired, like "test.finished.all". If no `event` is specified, will be the string `<any>`         |
 | `event.text` | `str` | This is a more readable description of the event type, like "Test finished running". If `event.type` is `<any>`, this will be `"Unknown"` |
 
-### \`errors\`
+### errors
 
-This is an array of error objects attached to this test run (if any).
+An array of error objects attached to this test run (if any).
 
 | Variable | Type    | Description      |
 | -------- | ------- | ---------------- |
@@ -301,10 +299,11 @@ the list has the following properties:
 | `error.created` | `str` | ISO string with the time the error was triggered                  |
 | `error.detail`  | `str` | A short description of the error                                  |
 
+---
+
 ## Notification message format
 
-When an event is triggered, k6cloud sends a HTTP POST request to the configured
-URL.
+When an event is triggered, k6 Cloud sends a POST request to the configured URL.
 
 Headers sent with all requests:
 
@@ -328,3 +327,4 @@ User-Agent: K6CloudWebHook
 
 The body of the request is a JSON structure created by populating the chosen
 notification template with values relevant to the event.
+

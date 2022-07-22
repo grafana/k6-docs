@@ -213,6 +213,6 @@ export default function () {
 
 ## Inside k6 Cloud Results
 
-[k6 Cloud Results HTTP Table](/cloud/analyzing-results/http-tab) organizes requests by URL.
+[k6 Cloud Results HTTP Table](/cloud/analyzing-results/http) organizes requests by URL.
 
 ![k6 Cloud URL table](./images/HTTP-requests/cloud-insights-http-tab.png)

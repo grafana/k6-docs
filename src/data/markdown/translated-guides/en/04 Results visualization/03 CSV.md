@@ -53,7 +53,19 @@ iterations,1595325561,1.000000,,,,,,,,default,,,,,
 
 Each entry in the report represents a metric `metric_name` along with its value `metric_value` at time `timestamp`. If there's an error, then the `error` along with the `error_code` fields will be populated.
 
-## See also
+
+## CSV options
+
+k6 provides a few options to help you configure your CSV output:
+
+
+| option  | Configures                                       | Possible values                                                           | Default    | Env. variable          |
+|-------------------------------|--------------------------------------------------|---------------------------------------------------------------------------|------------|------------------------|
+| `saveInterval`                | The time intervals at which k6 writes to the CSV | Either a string with time units(`"1m45s"`), or a number of milliseconds | `"1s"`       | `K6_CSV_SAVE_INTERVAL` |
+| `timeFormat`                  | The timestamp format                             | unix, [rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)            | unix       | `K6_CSV_TIME_FORMAT`   |
+| `fileName`                    | The file name and path where output is saved     | N/A                                                                       | `file.csv` | `K6_CSV_FILENAME`      |
+
+## Read more
 
 - [Metrics](/using-k6/metrics)
 - [Error codes](/javascript-api/error-codes)

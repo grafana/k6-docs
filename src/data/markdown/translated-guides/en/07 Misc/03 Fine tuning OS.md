@@ -335,7 +335,7 @@ Since sockets are uniquely created for a combination of local address, local por
 
 For example, you can configure your application to run on ports :8080, :8081, :8082, etc. and spread out your HTTP requests across these endpoints.
 
-## See also
+## Read more
 
 - [Running large tests](/testing-guides/running-large-tests)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
