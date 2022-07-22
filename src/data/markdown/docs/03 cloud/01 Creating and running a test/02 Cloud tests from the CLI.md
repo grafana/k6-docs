@@ -204,11 +204,12 @@ For example, you may want to test a local environment that is not connected to t
 To do, this you can use `k6 run -out cloud`.
 For detailed instructions, refer to [Results visualization](/results-visualization/cloud/).
 
-<Blockquote mod="warning"
-title="Tests streamed to the cloud count as runs in your subscription."
+<Blockquote mod="attention"
+title="k6 charges your subscription for cloud streaming"
 >
 
-Be careful with `k6 run --out cloud`, as each run counts against your total number of tests!
+Data storage and processing are primary cloud costs,
+so `k6 run --out cloud` will consume VUh or test runs from your subscription.
 
 </Blockquote>
 

@@ -7,13 +7,15 @@ Besides [running cloud tests](/cloud/creating-and-running-a-test/cloud-tests-fro
 
 When streaming the results to the k6 Cloud, the machine - where you execute the k6 CLI command - runs the test and uploads the results to the k6 Cloud. Then, you will be able to visualize and analyze the results on the web app in real-time.
 
-<Blockquote mod="warning"
-title="Tests streamed to the cloud count as runs in your subscription."
+<Blockquote mod="attention"
+title="k6 charges your subscription for cloud streaming"
 >
 
-Be careful with `k6 run --out cloud`, as each run counts against your total number of tests!
+Data storage and processing are primary cloud costs,
+so `k6 run --out cloud` will consume VUh or test runs from your subscription.
 
 </Blockquote>
+
 
 ## Streaming results vs. running on cloud servers
 
