@@ -116,9 +116,9 @@ export default function () {
 </CodeGroup>
 
 <Blockquote mod="note"
-title="Batch requests can happen in an order, or simultaneusly.">
+title="Batch requests can happen in any order, or simultaneusly.">
 
-In the preceding example, there's no guarantee that `req1` will happen before `req2` or `req3`_.
+In the preceding example, `req1` can happen before `req2` or `req3`.
 
 </Blockquote>
 
