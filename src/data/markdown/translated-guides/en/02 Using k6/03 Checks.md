@@ -4,18 +4,15 @@ excerpt: 'Checks are like asserts but differ in that they do not halt the execut
 ---
 
 Checks are true/false criteria for your test runtime values.
+
 If a check fails, k6 stores the result and the test continues to run.
+If you want to halt a run when a check fails, you can make a metric for the check and use it in a [threshold](/using-k6/thresholds).
 
 In practice, checks often evaluate whether the system under test responds with a certain value.
 A check may evaluate:
 - That the system responds with a 200 status
 - That a response body contains certain text
 - That the response body is of a specified size.
-
-Unlike many JS `assert` functions,
-checks _do not_ throw errors or halt execution.
-Instead, k6 stores the result of the check&mdash;either `pass` or `fail`&mdash;and the script continues.
-If you want to halt a run when a check fails, you can make a metric for the check and use it in a [threshold](/using-k6/thresholds).
 
 ## Check for HTTP response code
 
