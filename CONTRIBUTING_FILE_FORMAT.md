@@ -134,7 +134,7 @@ And you'll get a fine quote block:
 
 **Variations**
 
-It is possible to adjust your admonition theme using custom `Blockquote` wrapper. This wrapper accepts the follwoing props:
+It is possible to adjust your admonition theme using custom `Blockquote` wrapper. This wrapper accepts the following props:
 
 - `mod`, one of [`note`, `warning`, `attention`, `default`]. Optional, default value is `default`. Passing any non-default value will display corresponding kicker with an icon.
 - `title`. Optional. If passed, will replace default text in the kicker. Title is getting wrapped with `h4` tag and beas `id` attribute to be able to be anchored to. ⚠️ **Make sure title is unique across the page**
@@ -150,7 +150,44 @@ It is possible to adjust your admonition theme using custom `Blockquote` wrapper
 
 _Pay attention to those empty lines between md block and a wrapper, they are required to correctly parsing._
 
-_Also pay attention, that usage of `Blockquote` requires omitting native `md` blockquote syntax, so you just put your content inside withou any `>` and you are good to go._
+_Also pay attention, that usage of `Blockquote` requires omitting native `md` blockquote syntax, so you just put your content inside without any `>` and you are good to go._
+
+## Definition list
+
+Small, but useful tool in technical documentation. It provides an accessible way to make term lists, and it's a generally good way to add structure to a text when a writer needs more than bullets and less than headings.
+
+It is possible to apply it by using custom `DefinitionList` wrapper. This wrapper accepts the only one prop - text from your `md`. So you just put your content inside the tag by following format:
+
+`<DefinitionList>`
+
+- `term` - definition term - first paragraph of your text content;
+- `definition one` - definition one - second paragraph of your text content;
+- `definition two` - definition two - third paragraph of your text content;
+- `definition three` - definition three - fourth paragraph of your text content & etc;
+
+`</DefinitionList>`
+
+and you are done with it!
+
+<details>
+<summary>Examples</summary>
+
+Your text in md:
+
+`<DefinitionList>`
+
+Hey, I am term:
+
+I am a definition of the term #1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+I am a definition of the term #2: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+`</DefinitionList>`
+
+The result:
+![](/internal-images/definition-list.png)
+
+</details>
 
 ## Code blocks
 
