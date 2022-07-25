@@ -5,24 +5,6 @@ excerpt: 'k6 has packages for Linux, Mac, and Windows. As alternatives, you can 
 
 k6 has packages for Linux, Mac, and Windows. Alternatively, you can use a Docker container or a standalone binary.
 
-## Remove me: default {#test-0}
-
-## Remove me: default no hash {test-1}
-
-## Remove me: default no hash free content {test 1 Absolutely free text content}
-
-## Remove me: default double brackets {test-2}{}
-
-## Remove me: default faulty double brackets with content {test-3}{#test-faulty}
-
-## Remove me: [compound link](/nope) {#test-4}
-
-## 🚀 Remove me: [compound link](/nope) with emoji 🚀 {#test-5}
-
-## 🚀 Remove me: `compound code` with emoji 🚀 {test-6}
-
-### 🚀 Remove me: `compound code` low hierarchy 🚀 {test-7}
-
 ## Linux
 
 ### Debian/Ubuntu
