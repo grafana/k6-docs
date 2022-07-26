@@ -152,37 +152,57 @@ _Pay attention to those empty lines between md block and a wrapper, they are req
 
 _Also pay attention, that usage of `Blockquote` requires omitting native `md` blockquote syntax, so you just put your content inside without any `>` and you are good to go._
 
-## Definition list
+## Description list
 
 Small, but useful tool in technical documentation. It provides an accessible way to make term lists, and it's a generally good way to add structure to a text when a writer needs more than bullets and less than headings.
 
-It is possible to apply it by using custom `DefinitionList` wrapper. This wrapper accepts the only one prop - text from your `md`. So you just put your content inside the tag by following format:
+It is possible to apply it by using custom `DescriptionList` wrapper. This wrapper accepts text-content from your `md` as a prop. So you just put your content inside this tag by following format:
 
-`<DefinitionList>`
+`<DescriptionList>`
 
-- `term` - definition term - first paragraph of your text content;
-- `definition one` - definition one - second paragraph of your text content;
-- `definition two` - definition two - third paragraph of your text content;
-- `definition three` - definition three - fourth paragraph of your text content & etc;
+`term` - your term;<br/>
+`: description one` - description one - second paragraph of your text content;<br/>
+`: description two` - description two - third paragraph of your text content;<br/>
+`: description three` - description three - fourth paragraph of your text content & etc;
 
-`</DefinitionList>`
+`term` - your term;<br/>
+`term` - your term;<br/>
+`: description one` - description one - second paragraph of your text content;<br/>
+`: description two` - description two - third paragraph of your text content;<br/>
+`: description three` - description three - fourth paragraph of your text content & etc;
+
+`</DescriptionList>`
 
 and you are done with it!
+
+Notice, that you can use md-features inside of this tag such as:
+
+- anchor for the first term;
+- several terms;
+- several descriptions;
+- _italic_, **bold** and other font-styles;
+- [hyper-references](a/);
+- emoji (available only in description);
 
 <details>
 <summary>Examples</summary>
 
 Your text in md:
 
-`<DefinitionList>`
+```
+<DescriptionList>
 
-Hey, I am term:
+Your term 1 part 1
+Your term 1 part 2
+: I am a definition of the term #1
+: I am a definition of the term #2<br/>Read more: [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
 
-I am a definition of the term #1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Your term 2
+: **I am a definition of the term #1**
+: *I am a definition of the term #2*
 
-I am a definition of the term #2: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-`</DefinitionList>`
+</DescriptionList>
+```
 
 The result:
 ![](/internal-images/definition-list.png)

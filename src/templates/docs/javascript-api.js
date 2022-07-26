@@ -11,7 +11,7 @@ import {
   styles as codeStyles,
 } from 'components/shared/code';
 import CustomContentContainer from 'components/shared/custom-content-container';
-import DefinitionList from 'components/shared/definition-list';
+import DescriptionList from 'components/shared/description-list';
 import { PageInfo } from 'components/shared/page-info';
 import TableWrapper from 'components/shared/table-wrapper';
 import Tooltip from 'components/shared/tooltip';
@@ -32,7 +32,7 @@ const componentsForNativeReplacement = {
   pre: Code,
   CodeGroup,
   Tooltip,
-  DefinitionList,
+  DescriptionList,
 };
 
 const getContent = (nodes, alternativeNodes, sidebarTree) =>

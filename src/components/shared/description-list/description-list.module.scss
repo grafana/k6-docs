@@ -1,0 +1,51 @@
+.wrapper {
+  margin-bottom: 30px;
+  width: 100%;
+
+  dd {
+    margin-top: 10px;
+    font-size: $font-size-base;
+    & + dt {
+      margin-top: 10px;
+    }
+  }
+
+  dt {
+    font-size: $font-size-lg;
+    font-weight: 500;
+    .anchor-icon {
+      position: absolute !important;
+      left: -20px;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      text-decoration: none !important;
+      border: none !important;
+      &:hover {
+        text-decoration: none !important;
+        border: none !important;
+      }
+    }
+    &:hover {
+      .anchor-icon {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// .list {
+//   margin-bottom: 30px;
+//   width: 100%;
+// }
+
+// .definition {
+//   margin-left: 20px;
+//   margin-top: 10px;
+//   font-size: $font-size-base;
+// }
+
+// .term {
+//   margin-top: 20px;
+//   font-size: $font-size-lg;
+//   font-weight: 500;
+// }
