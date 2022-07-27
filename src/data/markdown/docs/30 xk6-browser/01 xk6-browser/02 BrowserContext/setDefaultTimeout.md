@@ -11,9 +11,9 @@ There is a known issue with this feature. See [issue #456](https://github.com/gr
 
 Sets the default maximum timeout for all methods accepting a `timeout` option in milliseconds.
 
-| Parameter | Type   | Description                  |
-| --------- | ------ | ---------------------------- |
-| timeout   | number | The timeout in milliseconds. |
+| Parameter | Type   | Default                  | Description                  |
+|-----------|--------|--------------------------|------------------------------|
+| timeout   | number | Dependent on the action. | The timeout in milliseconds. |
 
 
 ### Example
