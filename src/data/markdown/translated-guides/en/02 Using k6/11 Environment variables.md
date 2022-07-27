@@ -9,7 +9,7 @@ Rather than creating several separate scripts for these different contexts or en
 You can use environment variables for two main purposes:
 
 1. Passing environment variables to the k6 Script
-2. Configuring [k6 Options](/using-k6/options) with environment variables
+2. Configuring [k6 Options](/using-k6/k6-options/how-to) with environment variables
 
 ## Passing environment variables to the k6 script
 
@@ -74,7 +74,7 @@ To override this mode, specify [--include-system-env-vars](/using-k6/k6-options/
 
 ## Configure k6 options with environment variables
 
-You can also configure k6 [options](/using-k6/options) with environment variables.
+You can also configure k6 [options](/using-k6/k6-options/how-to) with environment variables.
 Consider this script:
 
 ```javascript
@@ -88,7 +88,7 @@ export default function () {
 ```
 
 By default, a local run of this script will execute a single iteration with one virtual user(VU).
-To modify the default behavior, pass [k6 options](/using-k6/options) as environment variables.
+To modify the default behavior, pass [k6 options](/using-k6/k6-options/how-to) as environment variables.
 For example, this snippet configures the script to run 10 virtual users for a duration of 10 seconds:
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
