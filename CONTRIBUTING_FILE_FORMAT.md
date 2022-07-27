@@ -198,58 +198,67 @@ _Also pay attention, that usage of `Blockquote` requires omitting native `md` bl
 
 ## Description list
 
-Small, but useful tool in technical documentation. It provides an accessible way to make term lists, and it's a generally good way to add structure to a text when a writer needs more than bullets and less than headings.
+Custom `mdx` component that makes possible using [extended markdown syntax for descriptions lists](https://www.markdownguide.org/extended-syntax/#definition-lists). Fully [WCAG-compliant](https://www.w3.org/TR/WCAG20-TECHS/H40.html). It provides an accessible way to make term lists, and it's a generally good way to add structure to a text when a writer needs more than bullets and less than headings.
 
-It is possible to apply it by using custom `DescriptionList` wrapper. This wrapper accepts text-content from your `md` as a prop. So you just put your content inside this tag by following format:
+The usage is pretty [straightforward](https://github.com/grafana/k6-docs/pull/740/commits/65a8c8fce838f7c3e5f1a356250145d59296807c#diff-3a17a7abbacb63f84edb34a6d6631cc656f65efc3b8d1863d8b24cba0c99b838):
 
-`<DescriptionList>`
+```md
+<!-- other content here -->
 
-`term` - your term;<br/>
-`: description one` - description one - second paragraph of your text content;<br/>
-`: description two` - description two - third paragraph of your text content;<br/>
-`: description three` - description three - fourth paragraph of your text content & etc;
+<DescriptionList>
+<!-- required new line -->
+Scenario executor
+: First definition
+: Second definition
 
-`term` - your term;<br/>
-`term` - your term;<br/>
-`: description one` - description one - second paragraph of your text content;<br/>
-`: description two` - description two - third paragraph of your text content;<br/>
-`: description three` - description three - fourth paragraph of your text content & etc;
+Soak test
+: First and only definition
 
-`</DescriptionList>`
+Smoke test
+Another term for smoke test
+: First definition for both terms
+: Second definition for both terms
+: ...n definition for both terms
 
-and you are done with it!
+[Stress test](/)
+: First and **only** definition for both terms with additional markup <br/> Read more: [link](/)
 
-Notice, that you can use md-features inside of this tag such as:
+<!-- required new line -->
+</DescriptionList>
 
-- anchor for the first term;
-- several terms;
-- several descriptions;
-- _italic_, **bold** and other font-styles;
-- [hyper-references](/);
-- emoji (available only in description);
+<!-- other content here -->
+```
+
+### Acceptable markup for term
+
+- `*italic*`
+- `[link](/)`
+- `**strong**` - but that doesn't make sense, by default terms appearance is already bold
+- `inlineCode` - but it doesn't alter it's change in this context
+
+### Batteries
+
+`DefinitionList` is backward-compatible with the old way of representing terms and definitions, via `h3` tag and custom content. `h3` tag by default had an anchor icon and a `id` attribute, similar to how it works on GitHub.
+
+So our `dt` (term) has an `id` att and the same anchor as well!
+
+⚠️ Beware of the contstrainst though:
+
+- using emojis in `dt` is prohibited, as it potentially can mess up with `id` attribute, and `href` at anchor. We can not be sure which range will be used to display a particular symbol (depends on editor OS) and if it is going to be stripped.
+- if there are multiple terms for a given set of descriptions, only the first one will have an `id` and an `anchor`
+- make absolutely sure your `dt` text content is unique across the page to avoid `id` collisions
+
+### Acceptable markup for description
+
+- everything for term
+- emojis
+- any inline html
+- line breaks `<br/>` (recommended way to separate visually something inside a single description)
 
 <details>
 <summary>Examples</summary>
 
-Your text in md:
-
-```
-<DescriptionList>
-
-Your term 1 part 1
-Your term 1 part 2
-: I am a definition of the term #1
-: I am a definition of the term #2<br/>Read more: [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
-
-Your term 2
-: **I am a definition of the term #1**
-: *I am a definition of the term #2*
-
-</DescriptionList>
-```
-
-The result:
-![](/internal-images/definition-list.png)
+![](/internal-images/definition-list.jpg)
 
 </details>
 
