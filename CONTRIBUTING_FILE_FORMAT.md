@@ -181,7 +181,7 @@ Notice, that you can use md-features inside of this tag such as:
 - several terms;
 - several descriptions;
 - _italic_, **bold** and other font-styles;
-- [hyper-references](a/);
+- [hyper-references](/);
 - emoji (available only in description);
 
 <details>
