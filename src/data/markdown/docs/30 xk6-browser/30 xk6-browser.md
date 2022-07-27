@@ -5,26 +5,6 @@ excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 whi
 
 [xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level scripting APIs to interact with real browsers and collect frontend metrics as part of your k6 tests.
 
-<CodeGroup labels={[]}>
-
-```javascript
-import launcher from 'k6/x/browser';
-
-export default function () {
-  const browser = launcher.launch('chromium', {
-    headless: false,
-  });
-  const context = browser.newContext();
-  const page = context.newPage();
-  page.goto('http://whatsmyuseragent.org/');
-  page.screenshot({ path: `example-chromium.png` });
-  page.close();
-  browser.close();
-}
-```
-
-</CodeGroup>
-
 ## Installation
 
 xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](#browser-level-apis) in your k6 tests.
@@ -81,7 +61,13 @@ export default function () {
     slowMo: '500ms',
     timeout: '30s',
   });
-  // add your test code here and finally close the browser
+
+  const context = browser.newContext();
+  const page = context.newPage();
+  page.goto('http://whatsmyuseragent.org/');
+  page.screenshot({ path: `example-chromium.png` });
+
+  page.close();
   browser.close();
 }
 ```
