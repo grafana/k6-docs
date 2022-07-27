@@ -11,9 +11,9 @@ There is a known issue with this feature. See [issue #445](https://github.com/gr
 
 Sets the default maximum navigation timeout for [Page.goto()](/javascript-api/xk6-browser/page/goto/).
 
-| Parameter | Type   | Description                  |
-| --------- | ------ | ---------------------------- |
-| timeout   | number | The timeout in milliseconds. |
+| Parameter | Type   | Default                  | Description                  |
+|-----------|--------|--------------------------|------------------------------|
+| timeout   | number | Dependent on the action. | The timeout in milliseconds. |
 
 
 ### Example

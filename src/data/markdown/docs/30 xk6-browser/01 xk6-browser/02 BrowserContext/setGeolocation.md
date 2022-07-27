@@ -11,12 +11,12 @@ There is a known issue with this feature. See [issue #435](https://github.com/gr
 
 Sets the context's geolocation.
 
-| Parameter             | Type   | Description                                          |
-| --------------------- | ------ | ---------------------------------------------------- |
-| geolocation           | object |                                                      |
-| geolocation.latitude  | number | Latitude between -90 and 90.                         |
-| geolocation.longitude | number | Latitude between -180 and 180.                       |
-| geolocation.accuracy  | number | Optional non-negative accuracy value. Defaults to 0. |
+| Parameter             | Type   | Default | Description                           |
+|-----------------------|--------|---------|---------------------------------------|
+| geolocation           | object | NA      |                                       |
+| geolocation.latitude  | number | `0`     | Latitude between -90 and 90.          |
+| geolocation.longitude | number | `0`     | Latitude between -180 and 180.        |
+| geolocation.accuracy  | number | `0`     | Optional non-negative accuracy value. |
 
 
 ### Example
