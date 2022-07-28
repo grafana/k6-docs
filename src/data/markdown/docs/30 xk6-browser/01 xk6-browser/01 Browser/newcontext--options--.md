@@ -46,11 +46,11 @@ You can customize the creation of a new [BrowserContext](/javascript-api/xk6-bro
 
 ### geolocation options
 
-| Option    | Type   | Description                                                     |
-|-----------|--------|-----------------------------------------------------------------|
-| latitude  | number | Latitude should be between `-90` and `90`.                      |
-| longitude | number | Longitude should be between `-180` and `180`.                   |
-| accuracy  | number | Accuracy should only be a non-negative number. Defaults to `0`. |
+| Option    | Type   | Default | Description                                                     |
+|-----------|--------|---------|-----------------------------------------------------------------|
+| latitude  | number | `0`     | Latitude should be between `-90` and `90`.                      |
+| longitude | number | `0`     | Longitude should be between `-180` and `180`.                   |
+| accuracy  | number | `0`     | Accuracy should only be a non-negative number. Defaults to `0`. |
 
 ### httpCredentials options
 
