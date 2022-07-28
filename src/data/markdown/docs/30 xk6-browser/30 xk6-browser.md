@@ -5,24 +5,6 @@ excerpt: "xk6-browser brings browser automation and end-to-end testing to k6 whi
 
 [xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level scripting APIs to interact with real browsers and collect frontend metrics as part of your k6 tests.
 
-<CodeGroup labels={[]}>
-
-```javascript
-import launcher from 'k6/x/browser';
-
-export default function () {
-  const browser = launcher.launch('chromium', { headless: false });
-  const context = browser.newContext();
-  const page = context.newPage();
-  page.goto('http://whatsmyuseragent.org/');
-  page.screenshot({ path: `example-chromium.png` });
-  page.close();
-  browser.close();
-}
-```
-
-</CodeGroup>
-
 ## Installation
 
 xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](#browser-level-apis) in your k6 tests.
@@ -37,69 +19,78 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 <InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
 
+## Launch
+
+The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis). The only accepted browser type is currently `chromium`.
+
+| Method                         | Description                                                                                                                                                                                                         |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| launch(browserName, [options]) | The first parameter is required, and the only accepted `browserName` is currently `chromium`. The `options` parameter is optional. You can see a list of all possible `options` in [the options heading](#options). |
+
+### Options
+
+| Method            | Type     | Default | Description                                                                                                                                                                                                                                                           |
+|-------------------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| args              | [string] | `null`  | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the [example](#example)). |
+| debug             | boolean  | `false` | All CDP messages and internal fine grained logs will be logged if set to `true`.                                                                                                                                                                                      |
+| devtools          | boolean  | `false` | Open up developer tools in the browser by default.                                                                                                                                                                                                                    |
+| env               | [string] | `null`  | Environment variables to set before launching browser process.                                                                                                                                                                                                        |
+| executablePath    | string   | `null`  | Override search for browser executable in favor of specified absolute path.                                                                                                                                                                                           |
+| headless          | boolean  | `true`  | Show browser GUI or not.                                                                                                                                                                                                                                              |
+| ignoreDefaultArgs | [string] | `null`  | Ignore any of the default arguments included when launching browser process.                                                                                                                                                                                          |
+| proxy             | string   | `null`  | Specify to set browser's proxy config.                                                                                                                                                                                                                                |
+| slowMo            | string   | `null`  | Slow down input actions and navigation by the specified time e.g. `500ms`.                                                                                                                                                                                            |
+| timeout           | number   | `30s`   | Default timeout to use for various actions and navigation.                                                                                                                                                                                                            |
+
+### Example
+
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
+
+```javascript
+import launcher from 'k6/x/browser';
+
+export default function () {
+  const browser = launcher.launch('chromium', {
+    args: ['show-property-changed-rects'],
+    debug: true,
+    devtools: true,
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    headless: false,
+    slowMo: '500ms',
+    timeout: '30s',
+  });
+
+  const context = browser.newContext();
+  const page = context.newPage();
+  page.goto('http://whatsmyuseragent.org/');
+  page.screenshot({ path: `example-chromium.png` });
+
+  page.close();
+  browser.close();
+}
+```
+
+</CodeGroup>
+
 ## Browser-level APIs
 
-`xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) to instrument and interact with the browser. The `xk6-browser` APIs aims for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright). 
+`xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP) to instrument and interact with the browser. The `xk6-browser` APIs aims for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright). 
 
 Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
 
-Here's a list of the fully (✅) or partially (🚧) implemented classes of the Playwright API (with a more detailed breakdown of missing APIs in the table below):
-
-<Glossary>
-
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- 🚧  [BrowserContext](/javascript-api/xk6-browser/browsercontext/)
-- 🚧  [BrowserType](/javascript-api/xk6-browser/browsertype/)
-- 🚧  [ElementHandle](/javascript-api/xk6-browser/elementhandle/)
-- 🚧  [Frame](/javascript-api/xk6-browser/frame/)
-- ✅  [JSHandle](/javascript-api/xk6-browser/jshandle)
-- ✅  [Keyboard](/javascript-api/xk6-browser/keyboard)
-- ✅  [Mouse](/javascript-api/xk6-browser/mouse/)
-- 🚧  [Page](/javascript-api/xk6-browser/page/)
-- 🚧  [Request](/javascript-api/xk6-browser/request/)
-- 🚧  [Response](/javascript-api/xk6-browser/response/)
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- ✅  [Touchscreen](/javascript-api/xk6-browser/touchscreen/)
-
-</Glossary>
-
-| k6 Class |  Missing Playwright APIs |
-| - |  - |
-| [Browser](/javascript-api/xk6-browser/browser/) | [`on()`](https://playwright.dev/docs/api/class-browser#browser-event-disconnected) (dependent on event-loop support in k6), [`startTracing()`](https://playwright.dev/docs/api/class-browser#browser-start-tracing), [`stopTracing()`](https://playwright.dev/docs/api/class-browser#browser-stop-tracing) |
-| [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | [`addCookies()`](https://playwright.dev/docs/api/class-browsercontext#browsercontextaddcookiescookies), [`backgroundPages()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-background-pages), [`cookies()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-cookies), [`exposeBinding()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-expose-binding), [`exposeFunction()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-expose-function), [`newCDPSession()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-new-cdp-session), [`on()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-event-background-page) (dependent on event-loop support in k6), [`route()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-route) (dependent on event-loop support in k6), [`serviceWorkers()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-service-workers), [`storageState()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-storage-state), [`unroute()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-unroute) (dependent on event-loop support in k6), [`waitForEvent()`](https://playwright.dev/docs/api/class-browsercontext#browser-context-wait-for-event) (dependent on event-loop support in k6), [`tracing`](https://playwright.dev/docs/api/class-browsercontext#browser-context-tracing) |
-| [BrowserType](/javascript-api/xk6-browser/browsertype/) | [`connect()`](https://playwright.dev/docs/api/class-browsertype#browser-type-connect), [`connectOverCDP()`](https://playwright.dev/docs/api/class-browsertype#browser-type-connect-over-cdp), [`launchPersistentContext()`](https://playwright.dev/docs/api/class-browsertype#browsertypelaunchpersistentcontextuserdatadir-options), [`launchServer()`](https://playwright.dev/docs/api/class-browsertype#browsertypelaunchserveroptions) |
-| [ElementHandle](/javascript-api/xk6-browser/elementhandle/) | [`$eval()`](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector), [`$$eval()`](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector-all), [`setInputFiles()`](https://playwright.dev/docs/api/class-elementhandle#element-handle-set-input-files) |
-| [Frame](/javascript-api/xk6-browser/frame/) | [`$eval()`](https://playwright.dev/docs/api/class-frame#frame-eval-on-selector), [`$$eval()`](https://playwright.dev/docs/api/class-frame#frame-eval-on-selector-all), [`addScriptTag()`](https://playwright.dev/docs/api/class-frame#frame-add-script-tag), [`addStyleTag()`](https://playwright.dev/docs/api/class-frame#frame-add-style-tag), [`dragAndDrop()`](https://playwright.dev/docs/api/class-frame#frame-drag-and-drop), [`locator()`](https://playwright.dev/docs/api/class-frame#frame-locator), [`setInputFiles()`](https://playwright.dev/docs/api/class-frame#frame-set-input-files) |
-| [JSHandle](/javascript-api/xk6-browser/jshandle) |  |
-| [Keyboard](/javascript-api/xk6-browser/keyboard/) |  |
-| [Mouse](/javascript-api/xk6-browser/mouse/) | |
-| [Page](/javascript-api/xk6-browser/page/) | [`$eval()`](https://playwright.dev/docs/api/class-page#page-eval-on-selector), [`$$eval()`](https://playwright.dev/docs/api/class-page#page-eval-on-selector-all), [`addInitScript()`](https://playwright.dev/docs/api/class-page#page-add-init-script), [`addScriptTag()`](https://playwright.dev/docs/api/class-page#page-add-script-tag), [`addStyleTag()`](https://playwright.dev/docs/api/class-page#page-add-style-tag), [`dragAndDrop()`](https://playwright.dev/docs/api/class-page#page-drag-and-drop), [`exposeBinding()`](https://playwright.dev/docs/api/class-page#page-expose-binding), [`exposeFunction()`](https://playwright.dev/docs/api/class-page#page-expose-function), [`frame()`](https://playwright.dev/docs/api/class-page#page-frame), [`goBack()`](https://playwright.dev/docs/api/class-page#page-go-back), [`goForward()`](https://playwright.dev/docs/api/class-page#page-go-forward), [`locator()`](https://playwright.dev/docs/api/class-page#page-locator), [`on()`](https://playwright.dev/docs/api/class-page#page-event-close) (dependent on event-loop support in k6), [`pause()`](https://playwright.dev/docs/api/class-page#page-pause), [`pdf()`](https://playwright.dev/docs/api/class-page#page-pdf), [`route()`](https://playwright.dev/docs/api/class-page#page-route) (dependent on event-loop support in k6), [`unroute()`](https://playwright.dev/docs/api/class-page#page-unroute) (dependent on event-loop support in k6), [`video()`](https://playwright.dev/docs/api/class-page#page-video), [`waitForEvent()`](https://playwright.dev/docs/api/class-page#page-wait-for-event) (dependent on event-loop support in k6), [`waitForResponse()`](https://playwright.dev/docs/api/class-page#page-wait-for-response) (dependent on event-loop support in k6), [`waitForURL()`](https://playwright.dev/docs/api/class-page#page-wait-for-url) (dependent on event-loop support in k6), [`workers()`](https://playwright.dev/docs/api/class-page#page-workers) |
-| [Request](/javascript-api/xk6-browser/request/) | [`failure()`](https://playwright.dev/docs/api/class-request#request-failure) (dependent on event-loop support in k6), [`postDataJSON()`](https://playwright.dev/docs/api/class-request#request-post-data-json), [`redirectFrom()`](https://playwright.dev/docs/api/class-request#request-redirected-from), [`redirectTo()`](https://playwright.dev/docs/api/class-request#request-redirected-to) |
-| [Response](/javascript-api/xk6-browser/response/) | [`finished()`](https://playwright.dev/docs/api/class-response#response-finished) (dependent on event-loop support in k6) |
-| [Touchscreen](/javascript-api/xk6-browser/touchscreen/) |  |
-
-The following Playwright APIs are not supported yet:
-
-<Glossary>
-
-- [Accessibility](https://playwright.dev/docs/api/class-accessibility)
-- [BrowserServer](https://playwright.dev/docs/api/class-browserserver)
-- [CDPSession](https://playwright.dev/docs/api/class-cdpsession)
-- [ConsoleMessage](https://playwright.dev/docs/api/class-consolemessage)
-- [Coverage](https://playwright.dev/docs/api/class-coverage)
-- [Dialog](https://playwright.dev/docs/api/class-dialog)
-- [Download](https://playwright.dev/docs/api/class-download)
-- [FetchRequest](https://playwright.dev/docs/api/class-fetchrequest)
-- [FetchResponse](https://playwright.dev/docs/api/class-fetchresponse)
-- [FileChooser](https://playwright.dev/docs/api/class-filechooser)
-- [Locator](https://playwright.dev/docs/api/class-locator)
-- [Logger](https://playwright.dev/docs/api/class-logger) 
-- [Route](https://playwright.dev/docs/api/class-route)
-- [Selectors](https://playwright.dev/docs/api/class-selectors)
-- [Tracing](https://playwright.dev/docs/api/class-tracing)
-- [Video](https://playwright.dev/docs/api/class-video)
-- [WebSocket](https://playwright.dev/docs/api/class-websocket)
-- [Worker](https://playwright.dev/docs/api/class-worker)
-
-</Glossary>
+| k6 Class                                                                | Description                                                                                                                                                     |
+|-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <BWIPT /> [Browser](/javascript-api/xk6-browser/browser/)               | The entry point for all tests and used to launch [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s and [Page](/javascript-api/xk6-browser/page/)s. |
+| <BWIPT /> [BrowserContext](/javascript-api/xk6-browser/browsercontext/) | Enables independent browser sessions with separate [Page](/javascript-api/xk6-browser/page/)s, cache, and cookies.                                              |
+| <BWIPT /> [ElementHandle](/javascript-api/xk6-browser/elementhandle/)   | Represents an in-page DOM element.                                                                                                                              |
+| <BWIPT /> [Frame](/javascript-api/xk6-browser/frame/)                   | Access and interact with the [`Page`](/javascript-api/xk6-browser/page/).'s `Frame`s.                                                                           |
+| [JSHandle](/javascript-api/xk6-browser/jshandle)                        | Represents an in-page JavaScript object.                                                                                                                        |
+| [Keyboard](/javascript-api/xk6-browser/keyboard/)                       | Used to simulate the keyboard interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                     |
+| [Mouse](/javascript-api/xk6-browser/mouse/)                             | Used to simulate the mouse interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                        |
+| <BWIPT /> [Page](/javascript-api/xk6-browser/page/)                     | Provides methods to interact with a single tab in a [`Browser`](/javascript-api/xk6-browser/browser/).                                                          |
+| <BWIPT /> [Request](/javascript-api/xk6-browser/request/)               | Used to keep track of the request the [`Page`](/javascript-api/xk6-browser/page/) makes.                                                                        |
+| <BWIPT /> [Response](/javascript-api/xk6-browser/response/)             | Represents the response received by the [`Page`](/javascript-api/xk6-browser/page/).                                                                            |
+| [Touchscreen](/javascript-api/xk6-browser/touchscreen/)                 | Used to simulate touch interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                            |
 
