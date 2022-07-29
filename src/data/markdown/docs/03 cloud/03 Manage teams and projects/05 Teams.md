@@ -16,36 +16,30 @@ Team-membership can be mixed with regular, "direct", Project-membership. If acce
 
 > Note that when you want to run k6 scrips in the cloud, it's still the [ProjectID](/cloud/project-and-team-management/projects#running-cli-tests-in-a-specific-project) of the Project you need to specify. The Team granting that project membership is never referenced in k6 scripts.
 
-## Using Teams from the UI
+## Managing teams
 
-To add Teams and Team members via the app, your Organization must first have some [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management). You need **Organization admin**- or **Organization read/write** privileges to add new Teams. 
+To add Teams and Team members via the app, your Organization must first have some [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management). You need **Organization admin** or **Organization read/write** privileges to add new Team. 
 
-Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ from the left side bar or from your _Organization settings_. This will only be available if your subscription supports the Team feature.
+Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ view from the left side bar.
 
----
+![Team menu](images/05-Teams/teams-menu.png)
 
-![Team menu](images/05-Teams/teams1.png)
+### Creating a team
 
----
+To create a new team click on **Create new team** button. A Team must have an organization-unique **name** and at least one selected **project**. You can also add an optional **description**.
 
-A Team must have an organization-unique **name**. You can also add an optional **description**. 
+![Creating a new Team](images/05-Teams/create-team.png)
 
----
-![Creating a new Team](images/05-Teams/teams2.png)
+Selected **projects** can provide different accesses:
 
----
+- **Read/Write** access means Team members will be able to look at, create and edit test-runs in the Project. They will not be able to delete or rename the Project itself.
+- **Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
-Using the drop downs, add Projects to the Team based on the [Membership level](/cloud/project-and-team-management/members) that should be granted on this Project by the Team. As a reminder, 
-- **Project Read/Write** access means Team members will be able to look at, create and edit test-runs in the Project. They will not be able to delete or rename the Project itself.
-- **Project Read-only** access allows Team members to look at test data but not modify or create new test-runs.
+### Inviting a team member
 
----
+Once the Team has been created, select it in your list of Teams and press **Invite members**. Only existing members of your Organization can be invited. When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
 
-![The Project membership dropdown](images/05-Teams/teams3.png)
-
----
-
-Once the Team has been created, select it in your list of Teams and press _Invite Members_. Only existing members of your Organization can be invited. When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
+![Inviting a new team member](images/05-Teams/invite-team-member.png)
 
 - All Team members gain access to all Projects linked to that Team (according to the Project accesses you set up for the Team)
 - **Team Admins** can modify the Team itself (change name and description) as well as invite/remove members from the Team. 
@@ -54,15 +48,8 @@ Once the Team has been created, select it in your list of Teams and press _Invit
 > Don't confuse the _Team_ access level with the _Project_ access level granted by the Team!
  Most members just need **read only** Team access.
 
----
-![Inviting new Team members](images/05-Teams/teams4.png)
-
----
+### Managing team members
 
 Once members are added, they appear in the list and Organization admins and Team admins for that Team will be able to add/remove members from it.
 
----
-
-![Managing Team members in Team member listing](images/05-Teams/teams5.png)
-
----
+![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
