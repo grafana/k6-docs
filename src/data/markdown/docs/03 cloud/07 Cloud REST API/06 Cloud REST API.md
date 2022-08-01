@@ -1,4 +1,4 @@
 ---
 title: 'Cloud REST API'
-redirect: 'https://developers.loadimpact.com/'
+redirect: 'https://developers.k6.io/'
 ---
