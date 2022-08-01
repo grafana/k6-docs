@@ -195,6 +195,24 @@ You can pass the Project ID to k6 in two ways:
 
 - Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
 
+
+## Run locally and stream to the cloud
+
+At times, you might want to run a test locally, but see the results on k6 Cloud.
+For example, you may want to test a local environment that is not connected to the wider internet.
+
+To do, this you can use `k6 run -out cloud`.
+For detailed instructions, refer to [Results visualization](/results-visualization/cloud/).
+
+<Blockquote mod="attention"
+title="k6 charges your subscription for cloud streaming"
+>
+
+Data storage and processing are primary cloud costs,
+so `k6 run --out cloud` will consume VUh or test runs from your subscription.
+
+</Blockquote>
+
 ## Load zones
 
 <div id="list-of-supported-load-zones">Here the list of supported AWS cloud regions: </div>

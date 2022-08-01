@@ -62,9 +62,9 @@ curl -s https://dl.k6.io/key.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/
 ```
 
 
-## CentOS versions older than 8
+## Old rpm-based Linux distributions
 
-CentOS versions older than 8 don't support the PGP V4 signature we use.
+Distributions like Amazon Linux 2 and CentOS before version 8 don't support the PGP V4 signature we use.
 You'll need to disable the verification when you install k6:
 
 ```bash

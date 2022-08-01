@@ -14,7 +14,7 @@ Using the [TimescaleDB k6 extension](https://github.com/grafana/xk6-output-times
 
 Check that the TimescaleDB instance is running. Copy the Postgres connection string of the database, which will store the k6 metrics. 
 
-Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](/using-k6/options/#results-output) as follows:
+Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](/using-k6/k6-options/reference#results-output) as follows:
 
 
 ```bash

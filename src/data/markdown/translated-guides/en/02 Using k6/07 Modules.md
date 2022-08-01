@@ -88,7 +88,7 @@ The steps of this tutorial are as follows:
 >
 > A ready-to-use Webpack and Babel starter is available [on GitHub](https://github.com/k6io/k6-es6).
 
-In a javascript project running NodeJS, modules are imported using either `import` or `require()`,
+In a JavaScript project running NodeJS, modules are imported using either `import` or `require()`,
 using the node module resolution algorithm. This means that the developer can import modules
 by name, without providing the full filesystem path to the module. For instance:
 
@@ -128,9 +128,9 @@ specific reason to choose something else.
 
 In general, all external modules added to a test project have a negative impact on performance, as they further increase the memory footprint and CPU usage.
 
-Usually, this is not a big problem as each application only allocates these resources once. In k6, however, every VU has a separate javascript virtual machine, duplicating the resource usage once each.
+Usually, this is not a big problem as each application only allocates these resources once. In k6, however, every VU has a separate JavaScript virtual machine (VM), duplicating the resource usage once each.
 
-By running code requiring additional features on top of ES5.1, we also need additional extensions to the javascript vm, further boosting the resource usage. This is the default mode of k6.
+By running code requiring additional features on top of ES5.1, we also need additional extensions to the JavaScript VM, further boosting the resource usage. This is the default mode of k6.
 
 When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 

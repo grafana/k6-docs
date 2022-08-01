@@ -4,7 +4,7 @@ excerpt: "Things don't always work as expected. For those cases there is a handy
 hideFromSidebar: true
 ---
 
-Things don't always work as expected. For those cases, enabling the [--http-debug](/using-k6/options/#http-debug) option will log HTTP requests and responses to help you debugging the script.
+Things don't always work as expected. For those cases, enabling the [--http-debug](/using-k6/k6-options/reference#http-debug) option will log HTTP requests and responses to help you debugging the script.
 
 - `--http-debug` logs the HTTP requests and responses, skipping the body.
 - `--http-debug="full"` logs the HTTP requests and responses, including the full body.
