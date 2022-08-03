@@ -3,9 +3,6 @@ title: "ElementHandle"
 excerpt: "xk6-browser: ElementHandle Class"
 ---
 
-<BrowserCompatibility/>
-
-
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
@@ -44,18 +41,6 @@ excerpt: "xk6-browser: ElementHandle Class"
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-uncheck" target="_blank" >elementHandle.uncheck([options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-element-state" target="_blank" >elementHandle.waitForElementState(state[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-selector" target="_blank" >elementHandle.waitForSelector(selector[, options])</a> | - |
-
-### Missing Playwright APIs
-
-<Glossary>
-
-- [$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector)
-- [$$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector-all)
-- [setInputFiles()](https://playwright.dev/docs/api/class-elementhandle#element-handle-set-input-files)
-
-</Glossary>
-
-<BrowserWIP/>
 
 ## Examples
 
@@ -133,6 +118,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-
-<BrowserClassList/>

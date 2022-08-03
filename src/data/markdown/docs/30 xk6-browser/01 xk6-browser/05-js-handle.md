@@ -3,8 +3,6 @@ title: "JSHandle"
 excerpt: "xk6-browser: JSHandle Class"
 ---
 
-<BrowserCompatibility/>
-
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
@@ -16,5 +14,3 @@ excerpt: "xk6-browser: JSHandle Class"
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-properties" target="_blank" >jsHandle.getProperties()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-get-property" target="_blank" >jsHandle.getProperty(propertyName)</a> | - |
 | <a href="https://playwright.dev/docs/api/class-jshandle#js-handle-json-value" target="_blank" >jsHandle.jsonValue()</a> | - |
-
-<BrowserClassList/>
