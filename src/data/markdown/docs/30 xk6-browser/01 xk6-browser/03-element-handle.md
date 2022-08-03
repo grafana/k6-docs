@@ -5,6 +5,62 @@ excerpt: "xk6-browser: ElementHandle Class"
 
 <BrowserCompatibility/>
 
+
+## Supported APIs
+
+| Method | Playwright Relevant Distinctions |
+| - |  - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-query-selector" target="_blank" >elementHandle.$(selector)</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-query-selector-all" target="_blank" >elementHandle.$$(selector)</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-bounding-box" target="_blank" >elementHandle.boundingBox()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-check" target="_blank" >elementHandle.check([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-click" target="_blank" >elementHandle.click([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-content-frame" target="_blank" >elementHandle.contentFrame()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-dblclick" target="_blank" >elementHandle.dblclick([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-dispatch-event" target="_blank" >elementHandle.dispatchEvent(type[, eventInit])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-fill" target="_blank" >elementHandle.fill(value[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-focus" target="_blank" >elementHandle.focus()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-get-attribute" target="_blank" >elementHandle.getAttribute()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-hover" target="_blank" >elementHandle.hover([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-inner-html" target="_blank" >elementHandle.innerHTML()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-inner-text" target="_blank" >elementHandle.innerText()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-input-value" target="_blank" >elementHandle.inputValue([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-checked" target="_blank" >elementHandle.isChecked()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-disabled" target="_blank" >elementHandle.isDisabled()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-editable" target="_blank" >elementHandle.isEditable()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-enabled" target="_blank" >elementHandle.isEnabled()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-hidden" target="_blank" >elementHandle.isHidden()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-is-visible" target="_blank" >elementHandle.isVisible()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-owner-frame" target="_blank" >elementHandle.ownerFrame()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-press" target="_blank" >elementHandle.press(key[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-screenshot" target="_blank" >elementHandle.screenshot([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-scroll-into-view-if-needed" target="_blank" >elementHandle.scrollIntoViewIfNeeded([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-select-option" target="_blank" >elementHandle.selectOptions(values[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-select-text" target="_blank" >elementHandle.selectText([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-set-checked" target="_blank" >elementHandle.setChecked(checked[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-tap" target="_blank" >elementHandle.tap([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-text-content" target="_blank" >elementHandle.textContent()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-type" target="_blank" >elementHandle.type(text[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-uncheck" target="_blank" >elementHandle.uncheck([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-element-state" target="_blank" >elementHandle.waitForElementState(state[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-selector" target="_blank" >elementHandle.waitForSelector(selector[, options])</a> | - |
+
+### Missing Playwright APIs
+
+<Glossary>
+
+- [$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector)
+- [$$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector-all)
+- [setInputFiles()](https://playwright.dev/docs/api/class-elementhandle#element-handle-set-input-files)
+
+</Glossary>
+
+<BrowserWIP/>
+
+## Examples
+
+<CodeGroup labels={["Fill out a form"]} >
+
 ```javascript
 import launcher from 'k6/x/browser';
 
@@ -34,84 +90,49 @@ export default function () {
 }
 ```
 
+</CodeGroup>
 
-- [elementHandle.$(selector)](#elementhandle---selector)
-- [elementHandle.$$(selector)](#elementhandle----selector)
-- [elementHandle.$eval()](#elementhandle--eval)
-- [elementHandle.$$eval()](#elementhandle---eval)
-- [elementHandle.boundingBox()](#elementhandle-boundingbox)
-- [elementHandle.check([options])](#elementhandle-check-options)
-- [elementHandle.click([options])](#elementhandle-click-options)
-- [elementHandle.contentFrame()](#elementhandle-contentframe)
-- [elementHandle.dblclick([options])](#elementhandle-dblclick-options)
-- [elementHandle.dispatchEvent(type[, eventInit])](#elementhandle-dispatchevent-type-eventinit)
-- [elementHandle.fill(value[, options])](#elementhandle-fill-value-options)
-- [elementHandle.focus()](#elementhandle-focus)
-- [elementHandle.getAttribute()](#elementhandle-getattribute)
-- [elementHandle.hover([options])](#elementhandle-hover-options)
-- [elementHandle.innerHTML()](#elementhandle-innerhtml)
-- [elementHandle.innerText()](#elementhandle-innertext)
-- [elementHandle.inputValue([options])](#elementhandle-inputvalue-options)
-- [elementHandle.isChecked()](#elementhandle-ischecked)
-- [elementHandle.isDisabled()](#elementhandle-isdisabled)
-- [elementHandle.isEditable()](#elementhandle-iseditable)
-- [elementHandle.isEnabled()](#elementhandle-isenabled)
-- [elementHandle.isHidden()](#elementhandle-ishidden)
-- [elementHandle.isVisible()](#elementhandle-isvisible)
-- [elementHandle.ownerFrame()](#elementhandle-ownerframe)
-- [elementHandle.press(key[, options])](#elementhandle-press-key-options)
-- [elementHandle.screenshot([options])](#elementhandle-screenshot-options)
-- [elementHandle.scrollIntoViewIfNeeded([options])](#elementhandle-scrollintoviewifneeded-options)
-- [elementHandle.selectOptions(values[, options])](#elementhandle-selectoptions-values-options)
-- [elementHandle.selectText([options])](#elementhandle-selecttext-options)
-- [elementHandle.setChecked(checked[, options])](#elementhandle-setchecked-checked-options)
-- [elementHandle.setInputFiles()](#elementhandle-setinputfiles)
-- [elementHandle.tap([options])](#elementhandle-tap-options)
-- [elementHandle.textContent()](#elementhandle-textcontent)
-- [elementHandle.type(text[, options])](#elementhandle-type-text-options)
-- [elementHandle.uncheck([options])](#elementhandle-uncheck-options)
-- [elementHandle.waitForElementState(state[, options])](#elementhandle-waitforelementstate-state-options)
-- [elementHandle.waitForSelector(selector[, options])](#elementhandle-waitforselector-selector-options)
+<CodeGroup labels={["Check element state"]} >
 
+```javascript
+import launcher from 'k6/x/browser';
+import { check } from 'k6';
 
-## elementHandle.$(selector)
-## elementHandle.$$(selector)
-## elementHandle.$eval()
-## elementHandle.$$eval()
-## elementHandle.boundingBox()
-## elementHandle.check([options])
-## elementHandle.click([options])
-## elementHandle.contentFrame()
-## elementHandle.dblclick([options])
-## elementHandle.dispatchEvent(type[, eventInit])
-## elementHandle.fill(value[, options])
-## elementHandle.focus()
-## elementHandle.getAttribute()
-## elementHandle.hover([options])
-## elementHandle.innerHTML()
-## elementHandle.innerText()
-## elementHandle.inputValue([options])
-## elementHandle.isChecked()
-## elementHandle.isDisabled()
-## elementHandle.isEditable()
-## elementHandle.isEnabled()
-## elementHandle.isHidden()
-## elementHandle.isVisible()
-## elementHandle.ownerFrame()
-## elementHandle.press(key[, options])
-## elementHandle.screenshot([options])
-## elementHandle.scrollIntoViewIfNeeded([options])
-## elementHandle.selectOptions(values[, options])
-## elementHandle.selectText([options])
-## elementHandle.setChecked(checked[, options])
-## elementHandle.setInputFiles()
-## elementHandle.tap([options])
-## elementHandle.textContent()
-## elementHandle.type(text[, options])
-## elementHandle.uncheck([options])
-## elementHandle.waitForElementState(state[, options])
-## elementHandle.waitForSelector(selector[, options])
+export default function () {
+  const browser = launcher.launch('chromium', {
+    headless: false,
+  });
+  const context = browser.newContext();
+  const page = context.newPage();
+
+  // Inject page content
+  page.setContent(`
+        <div class="visible">Hello world</div>
+        <div style="display:none" class="hidden"></div>
+        <div class="editable" editable>Edit me</div>
+        <input type="checkbox" enabled class="enabled">
+        <input type="checkbox" disabled class="disabled">
+        <input type="checkbox" checked class="checked">
+        <input type="checkbox" class="unchecked">
+    `);
+
+  // Check state
+  check(page, {
+    visible: (p) => p.$('.visible').isVisible(),
+    hidden: (p) => p.$('.hidden').isHidden(),
+    editable: (p) => p.$('.editable').isEditable(),
+    enabled: (p) => p.$('.enabled').isEnabled(),
+    disabled: (p) => p.$('.disabled').isDisabled(),
+    checked: (p) => p.$('.checked').isChecked(),
+    unchecked: (p) => p.$('.unchecked').isChecked() === false,
+  });
+
+  page.close();
+  browser.close();
+}
+```
+
+</CodeGroup>
 
 
-
-
+<BrowserClassList/>

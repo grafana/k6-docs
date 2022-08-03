@@ -5,56 +5,29 @@ excerpt: "xk6-browser: Response Class"
 
 <BrowserCompatibility/>
 
-- [response.allHeaders()](#response-allheaders)
-- [response.body()](#response-body)
-- [response.finished()](#response-finished)
-- [response.frame()](#response-frame)
-- [response.headers()](#response-headers)
-- [response.headersArray()](#response-headersarray)
-- [response.headerValue(name)](#response-headervalue-name)
-- [response.headerValues(name)](#response-headervalues-name)
-- [response.json()](#response-json)
-- [response.ok()](#response-ok)
-- [response.request()](#response-request)
-- [response.securityDetails()](#response-securitydetails)
-- [response.serverAddr()](#response-serveraddr)
-- [response.status()](#response-status)
-- [response.statusText()](#response-statustext)
-- [response.text()](#response-text)
-- [response.url()](#response-url)
+## Supported APIs
 
+| Method | Playwright Relevant Distinctions |
+| - |  - |
+| <a href="https://playwright.dev/docs/api/class-response#response-all-headers" target="_blank" >response.allHeaders()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-body" target="_blank" >response.body()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-frame" target="_blank" >response.frame()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-headers" target="_blank" >response.headers()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-headers-array" target="_blank" >response.headersArray()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-header-value" target="_blank" >response.headerValue(name)</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-header-values" target="_blank" >response.headerValues(name)</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-json" target="_blank" >response.json()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-ok" target="_blank" >response.ok()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-request" target="_blank" >response.request()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-security-details" target="_blank" >response.securityDetails()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-server-addr" target="_blank" >response.serverAddr()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-status" target="_blank" >response.status()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-status-text" target="_blank" >response.statusText()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-text" target="_blank" >response.text()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-response#response-url" target="_blank" >response.url()</a> | - |
 
+### Missing Playwright APIs
 
-## response.allHeaders()
+- <a href="https://playwright.dev/docs/api/class-response/#response-finished" target="_blank" >finished()</a>: dependent on event-loop support in k6.
 
-## response.body()
-
-## response.frame()
-
-## response.headers()
-
-## response.headersArray()
-
-## response.headerValue(name)
-
-## response.headerValues(name)
-
-## response.json()
-
-## response.ok()
-
-## response.request()
-
-## response.securityDetails()
-
-## response.serverAddr()
-
-## response.status()
-
-## response.statusText()
-
-## response.text()
-
-## response.url()
-
-## response.finished()
+<BrowserClassList/>
