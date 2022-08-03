@@ -19,13 +19,14 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 <InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
 
-## Launch
+## Launch Chromium
 
-The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis). The only accepted browser type is currently `chromium`.
+The first step is to launch a `chromium` [Browser](/javascript-api/xk6-browser/browser) (which is currently the only available browser type). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis).
 
-| Method                         | Description                                                                                                                                                                                                         |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| launch(browserName, [options]) | The first parameter is required, and the only accepted `browserName` is currently `chromium`. The `options` parameter is optional. You can see a list of all possible `options` in [the options heading](#options). |
+| Method                     | Description                                                                      |
+|----------------------------|----------------------------------------------------------------------------------|
+| chromium                   | Import module from `'k6/x/browser'`                                              |
+| chromium.launch([options]) | You can see a list of all possible `options` in [the options heading](#options). |
 
 ### Options
 
@@ -49,10 +50,10 @@ The first step is to launch a [Browser](/javascript-api/xk6-browser/browser). Af
 <!-- eslint-skip -->
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = launcher.launch('chromium', {
+  const browser = chromium.launch({
     args: ['show-property-changed-rects'],
     debug: true,
     devtools: true,

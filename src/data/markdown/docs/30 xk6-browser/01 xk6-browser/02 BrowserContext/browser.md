@@ -18,10 +18,10 @@ Returns the [browser](/javascript-api/xk6-browser/browser) instance that this `B
 <CodeGroup labels={[]}>
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = launcher.launch('chromium');
+  const browser = chromium.launch();
   const context = browser.newContext();
   const b2 = context.browser();
   b2.close();

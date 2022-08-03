@@ -17,7 +17,7 @@ Allows you to access all open [BrowserContext](/javascript-api/xk6-browser/brows
 <!-- eslint-skip -->
 
 ```javascript
-const browser = launcher.launch('chromium');
+const browser = chromium.launch();
 console.log(browser.contexts().length); // prints `0`
 
 const context = browser.newContext();
