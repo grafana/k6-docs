@@ -3,8 +3,6 @@ title: "Mouse"
 excerpt: "xk6-browser: Mouse Class"
 ---
 
-<BrowserCompatibility/>
-
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
@@ -15,5 +13,3 @@ excerpt: "xk6-browser: Mouse Class"
 | <a href="https://playwright.dev/docs/api/class-mouse#mouse-move" target="_blank" >mouse.move(x, y[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-mouse#mouse-up" target="_blank" >mouse.up([options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-mouse#mouse-wheel" target="_blank" >mouse.wheel(deltaX, deltaY)</a> | - |
-
-<BrowserClassList/>

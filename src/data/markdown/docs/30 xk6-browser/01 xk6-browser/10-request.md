@@ -3,8 +3,6 @@ title: "Request"
 excerpt: "xk6-browser: Request Class"
 ---
 
-<BrowserCompatibility/>
-
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
@@ -23,14 +21,3 @@ excerpt: "xk6-browser: Request Class"
 | <a href="https://playwright.dev/docs/api/class-request#request-sizes" target="_blank" >request.sizes()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-request#request-timing" target="_blank" >request.timing()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-request#request-url" target="_blank" >request.url()</a> | - |
-
-### Missing Playwright APIs
-
-- <a href="https://playwright.dev/docs/api/class-request#request-failure" target="_blank" >failure()</a>: dependent on event-loop support in k6.
-- <a href="https://playwright.dev/docs/api/class-request/#request-post-data-json" target="_blank" >postDataJSON()</a>
-- <a href="https://playwright.dev/docs/api/class-request/#request-redirected-from" target="_blank" >redirectedFrom()</a>
-- <a href="https://playwright.dev/docs/api/class-request/#request-redirected-to" target="_blank" >redirectedTo()</a>
-
-<BrowserWIP/>
-
-<BrowserClassList/>
