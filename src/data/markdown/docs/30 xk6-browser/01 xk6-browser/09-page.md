@@ -3,8 +3,6 @@ title: "Page"
 excerpt: "xk6-browser: Page Class"
 ---
 
-<BrowserCompatibility/>
-
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions | Description |
@@ -69,49 +67,6 @@ excerpt: "xk6-browser: Page Class"
 | <a href="https://playwright.dev/docs/api/class-page#page-mouse" target="_blank" >mouse</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-touchscreen" target="_blank" >touchscreen</a> | - | - |
 
-### Missing Playwright APIs
-
-<Glossary>
-
-- <a href="https://playwright.dev/docs/api/class-page#page-eval-on-selector" target="_blank" >$eval()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-eval-on-selector-all" target="_blank" >$$eval()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-add-init-script" target="_blank" >addInitScript()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-add-script-tag" target="_blank" >addScriptTag()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-add-style-tag" target="_blank" >addStyleTag()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-drag-and-drop" target="_blank" >dragAndDrop()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-expose-binding" target="_blank" >exposeBinding()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-expose-function" target="_blank" >exposeFunction()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-frame" target="_blank" >frame()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-go-back" target="_blank" >goBack()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-go-forward" target="_blank" >goForward()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-pause" target="_blank" >pause()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-pdf" target="_blank" >pdf()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-video" target="_blank" >video()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-workers" target="_blank" >workers()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-accessibility" target="_blank" >accessibility</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-coverage" target="_blank" >coverage</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-request" target="_blank" >request</a>
-
-</Glossary>
-
-The next APIs depends on event-loop support in k6:
-
-<Glossary>
-
-- <a href="https://playwright.dev/docs/api/class-page#page-on" target="_blank" >on()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-route" target="_blank" >route()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-unroute" target="_blank" >unroute()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-wait-for-event" target="_blank" >waitForEvent()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-wait-for-response" target="_blank" >waitForResponse()</a>
-- <a href="https://playwright.dev/docs/api/class-page#page-wait-for-url" target="_blank" >waitForURL()</a>
-
-</Glossary>
-
-
-
-<BrowserWIP/>
-
-
 ## Examples
 
 ```javascript
@@ -144,6 +99,3 @@ export default function () {
   browser.close();
 }
 ```
-  
-<BrowserClassList/>
-
