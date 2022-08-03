@@ -14,7 +14,7 @@ But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to 
 
 ## Running local tests
 
-To run a simple local script,
+To run a simple local script:
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
@@ -88,7 +88,7 @@ which allows you to break larger tests into smaller pieces or make reusable piec
 For a test to run, you need to have *init code*, which prepares the test, and *VU code,* which makes requests.
 
 Code in the init context defines functions and configures the test options (like `duration`).
-_
+
 Every test also has a `default` function.
 This function defines the entry point for your VUs.
 
@@ -105,7 +105,7 @@ export default function () {
 Init code runs first and is called only once per VU.
 On the other hand, default code executes as many times as the test options set.
 
-Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
+- [The life cycle of a k6 test](/using-k6/test-life-cycle).
 
 ## Using options
 
