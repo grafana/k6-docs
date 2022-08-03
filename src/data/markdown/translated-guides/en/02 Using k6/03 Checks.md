@@ -3,16 +3,21 @@ title: 'Checks'
 excerpt: 'Checks are like asserts but differ in that they do not halt the execution, instead, they just store the result of the check, pass or fail, and let the script execution continue.'
 ---
 
-[*Checks*](/javascript-api/k6/check/) are like assertions, but they don't halt execution.
-Instead, they store the result of the check, pass or fail, and let the script continue.
-If you want to halt execution, take a look at [thresholds](/using-k6/thresholds) (which can include checks).
+Checks are true/false criteria for your test runtime values.
 
-The following sections show some ways how you can use checks.
+If a check fails, k6 stores the result and the test continues to run.
+If you want to halt a run when a check fails, you can make a metric for the check and use it in a [threshold](/using-k6/thresholds).
+
+In practice, checks often evaluate whether the system under test responds with a certain value.
+A check may evaluate:
+- That the system responds with a 200 status
+- That a response body contains certain text
+- That the response body is of a specified size.
 
 ## Check for HTTP response code
 
 Checks are great for codifying assertions relating to HTTP requests and responses.
-For example, this snippet makes sure the HTTP response code is a 2xx:
+For example, this snippet makes sure the HTTP response code is a 200:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -95,7 +100,7 @@ In this example, note that the check "is status 200" succeeded 100% of the times
 
 ## Add multiple checks
 
-You may also add multiple checks within a single [check()](/javascript-api/k6/check) statement:
+You can also add multiple checks within a single [check()](/javascript-api/k6/check) statement:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -140,15 +145,14 @@ $ k6 run checks.js
 
 ## Checks in k6 Cloud Results
 
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` are available in their [own tab](/cloud/analyzing-results/checks-tab) for analysis.
+In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` have their [own tab](/cloud/analyzing-results/checks) for analysis.
 
-Here we can quickly see what checks are failing.
 When you select a check, you can see the count of passes/failures at given points in the test.
-You can also add the check to the **analysis** tab, for further comparison with other metrics.
+You can also add the check to the **Analysis** tab, for and compare it to other metrics.
 
 ![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
 
-## See also
+## Read more
 
 - [Check Javascript API](/javascript-api/k6/check/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)

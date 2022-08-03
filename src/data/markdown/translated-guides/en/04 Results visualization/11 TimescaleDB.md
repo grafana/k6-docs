@@ -14,7 +14,7 @@ Using the [TimescaleDB k6 extension](https://github.com/grafana/xk6-output-times
 
 Check that the TimescaleDB instance is running. Copy the Postgres connection string of the database, which will store the k6 metrics. 
 
-Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](/using-k6/options/#results-output) as follows:
+Use the previous k6 binary and run the test passing the Postgres connection string to the [output option](/using-k6/k6-options/reference#results-output) as follows:
 
 
 ```bash
@@ -45,6 +45,6 @@ The extension repository includes a [docker-compose setup](https://github.com/gr
 ![TimescaleDB list test runs](./images/TimescaleDB/dashboard-test-runs.png)
 ![TimescaleDB k6 results](./images/TimescaleDB/dashboard-test-result.png)
 
-## See also
+## Read more
 
 - [Store k6 metrics in TimescaleDB and visualize with Grafana](https://k6.io/blog/store-k6-metrics-in-timescaledb-and-visualize-with-grafana/)

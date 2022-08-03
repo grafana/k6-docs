@@ -1,17 +1,17 @@
 ---
 title: 'CookieJar.cookiesForURL(url)'
-excerpt: 'Get bbject of cookies where the key is the cookie name and the value is an array.'
+excerpt: 'Get object with all cookies for the given URL, where the key is the cookie name and the value is an array.'
 ---
 
-| Parameter | Type   | Description                       |
-| --------- | ------ | --------------------------------- |
-| url       | string | The URL for which to get cookies. |
+| Parameter | Type   | Description |
+| --------- | ------ | ----------- |
+| url       | string | The URL to get cookies for. |
 
 ### Returns
 
-| Type   | Description                                                                   |
-| ------ | ----------------------------------------------------------------------------- |
-| object | Object of cookies where the key is the cookie name and the value is an array. |
+| Type   | Description |
+| ------ | ----------- |
+| object | A JS object with all cookies for the given URL, where the key is the cookie name and the value is an array. |
 
 ### Example
 

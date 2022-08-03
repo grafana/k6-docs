@@ -224,10 +224,13 @@ Available in `k6 run` and `k6 cloud` commands:
 | --- | ------------------------------ | ------------------ | ------- |
 | N/A | `--config <path>`, `-c <path>` | N/A                | `null`  |
 
+<Blockquote mod="note" title="">
 
-> ### ⚠️ Keep in mind!
->
-> When running tests in k6 Cloud and using a non-default config.json file, you will have to specify the cloud token inside your config file in order to authenticate.
+When running tests in k6 Cloud and using a non-default config.json file,
+specify the cloud token inside your config file in order to authenticate.
+
+</Blockquote>
+
 
 ## Console output
 
@@ -422,9 +425,12 @@ up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
 You can also redirect only from certain ports or to certain ports.
 
-> ### ⚠️ Keep in mind!
->
-> This does not modify the actual HTTP `Host` header, but rather where it will be routed.
+<Blockquote mod="note" title="">
+
+This does not modify the actual HTTP `Host` header, but rather where it will be routed.
+
+</Blockquote>
+
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -935,9 +941,15 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-> ### ⚠️ Keep in mind!
->
-> This option has some caveats and is difficult to use correctly, so its usage is somewhat discouraged. For example, in the cloud/distributed execution, this option affects every k6 instance independently, i.e. it is not sharded like VUs are. We strongly recommend the use of [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
+<Blockquote mod="attention" title="This option is discouraged">
+
+The `--rps` option has caveats and is difficult to use correctly.
+
+For example, in the cloud or distributed execution, this option affects every k6 instance independently.
+That is, it is not sharded like VUs are.
+We strongly recommend the [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
+
+</Blockquote>
 
 | Env      | CLI     | Code / Config file | Default         |
 | -------- | ------- | ------------------ | --------------- |
@@ -1093,7 +1105,7 @@ Save the end-of-test summary report to a JSON file that includes data for all te
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
 While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file).
-For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, see the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, refer to the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1139,13 +1151,17 @@ Add/override an [environment variable](/using-k6/environment-variables) with `VA
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
+<Blockquote mod="note" title="The `-e` flag does not configure options">
 
-> #### ⚠ The `-e` flag does not configure options
->
-> This flag just provides variables to the script, which the script can use or ignore.
-> For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
->
-> Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ set iterations.
+This flag just provides variables to the script, which the script can use or ignore.
+For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
+
+Compare this behavior with `K6_ITERATIONS=120 k6 run script.js`, which _does_ set iterations.
+
+
+</Blockquote>
+
+
 
 
 | Env | CLI           | Code / Config file | Default |
@@ -1347,9 +1363,12 @@ export const options = {
 A list of cipher suites allowed to be used by in SSL/TLS interactions with a server.
 For a full listing of available ciphers go [here](https://golang.org/pkg/crypto/tls/#pkg-constants).
 
-> ### ⚠️ Keep in mind!
->
-> Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349) changing of the ciphers for TLS 1.3 is *not* supported and will do nothing.
+<Blockquote mod="attention" title="">
+
+Due to limitations in the underlying [go implementation](https://github.com/golang/go/issues/29349), changing the ciphers for TLS 1.3 is *not* supported and will do nothing.
+
+</Blockquote>
+
 
 | Env | CLI | Code / Config file | Default                   |
 | --- | --- | ------------------ | ------------------------- |

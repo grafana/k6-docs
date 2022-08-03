@@ -6,7 +6,7 @@ excerpt: 'An overview of using k6 Cloud Results as a premiere analysis tool'
 k6 Cloud Results visualizes, stores, analyzes, and presents trends for your test results.
 For all tests that use k6 Clouds Results, [Performance Insights](/cloud/analyzing-results/performance-insights/) algorithms analyze the script and results to promote good practices and detect patterns associated with performance issues.
 
-As you use k6 Cloud Results, k6 automatically creates trending graphs that track your system's performance over time.
+As you use k6 Cloud Results, k6 automatically creates trending graphs that track your system performance over time.
 These graphs help you identify creeping performance issues before they become serious.
 
 ## Navigate tests and metadata
@@ -105,22 +105,12 @@ To visualize the data in different ways, you have a few choices:
 - Select **Filters**.
 - Use the `+` to add the data to the large chart for comparison.
 
-Here are some general tips to consider when adding metrics and using this tab:
 
-- Ensure that VUs and Request rate follow the same trend
-- Add and compare interesting requests from the HTTP and Websocket tabs to compare with other metrics
-- Add the load generator CPU and Memory consumption metrics to ensure they are not saturated (metrics are only available for tests run in the cloud)
-- Add thresholds that have been exceeded
-- Add checks that have failures
-- Add metrics for endpoints that you have specific SLAs/SLOs on
-
-The preceding list is a starting point to help you identify performance-related issues.
-
-## See Also
+## Read more
 
 - [Performance Insights](/cloud/analyzing-results/performance-insights/)
-- [Thresholds](/cloud/analyzing-results/threshold-tab)
-- [Checks](/cloud/analyzing-results/checks-tab)
-- [HTTP Table](/cloud/analyzing-results/http-tab)
+- [Thresholds](/cloud/analyzing-results/thresholds)
+- [Checks](/cloud/analyzing-results/checks)
+- [HTTP Table](/cloud/analyzing-results/http)
 - [Analysis and Comparison Tab](/cloud/analyzing-results/test-comparison)
 

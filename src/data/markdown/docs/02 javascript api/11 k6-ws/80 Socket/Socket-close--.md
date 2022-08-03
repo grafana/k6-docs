@@ -1,9 +1,14 @@
 ---
-title: 'Socket.close()'
+title: 'Socket.close([code])'
 excerpt: 'Close the WebSocket connection.'
 ---
 
 Close the WebSocket connection.
+
+| Parameter       | Type     | Description                                  |
+| --------------- | -------- | -------------------------------------------- |
+| code (optional) | number   | WebSocket status code. (default: 1001)       |
+
 
 ### Example
 

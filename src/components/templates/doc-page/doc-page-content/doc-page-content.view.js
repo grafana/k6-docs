@@ -8,6 +8,7 @@ import BrowserCompatibility from 'components/shared/browser-compatibility';
 import BrowserWIP from 'components/shared/browser-wip';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
+import DescriptionList from 'components/shared/description-list';
 import { HeadingLandmark } from 'components/shared/heading';
 import InstallationInstructions from 'components/shared/installation-instructions';
 import LdScript from 'components/shared/ld-script';
@@ -38,6 +39,7 @@ const componentsForNativeReplacement = {
   Tooltip,
   BNIT,
   BWIPT,
+  DescriptionList,
 };
 
 export const DocPageContent = ({

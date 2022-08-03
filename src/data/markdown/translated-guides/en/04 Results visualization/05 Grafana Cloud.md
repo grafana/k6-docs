@@ -1,15 +1,20 @@
 ---
 title: 'Grafana Cloud'
 excerpt: >
-  This tutorial shows how to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and the k6 extension for Prometheus remote write'
+  How to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and the k6 extension for Prometheus remote write'
 ---
 
 
 Using Grafana Cloud Prometheus and the [k6 extension for Prometheus remote write](https://github.com/grafana/xk6-output-prometheus-remote), you can send your k6 metrics into [Grafana Cloud](https://grafana.com/products/cloud/) to better visualize your testing results, enabling you to correlate k6 metrics with other metrics of your observability stack.
 
-> While this article focuses on Grafana Cloud, any remote-write capable Prometheus installation is compatible with this approach.
-> 
-> ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/grafana-cloud).
+While this article focuses on Grafana Cloud, any remote-write capable Prometheus installation is compatible with this approach.
+
+<Blockquote mod="attention" title="">
+
+For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/grafana-cloud).
+
+</Blockquote>
+
 
 ## Set up Grafana Cloud Prometheus
 
@@ -52,6 +57,6 @@ In Grafana Cloud, click on the Explore icon on the menu bar, and choose the Prom
 
 ![Explore k6 metrics in Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics_from_extension.png)
 
-## See also
+## Read more
 
 - [K6 makes performance testing easy with Prometheus and Grafana in Docker](https://medium.com/@rody.bothe/turning-data-into-understandable-insights-with-k6-load-testing-fa24e326e221)

@@ -125,7 +125,7 @@ The k6 settings listed below will unlock additional performance benefits when ru
 
 ### --compatibility-mode=base
 
-The most impactful option to improve k6 performance is to use [`--compatibility-mode=base`](/using-k6/options/#compatibility-mode) to disable the internal [Babel](https://babeljs.io/) transpilation and run a k6 script written in ES5.1.  
+The most impactful option to improve k6 performance is to use [`--compatibility-mode=base`](/using-k6/k6-options/reference#compatibility-mode) to disable the internal [Babel](https://babeljs.io/) transpilation and run a k6 script written in ES5.1.  
 
 
 ```bash
@@ -431,7 +431,7 @@ Users often look for the distributed execution mode to run large-scale tests. Al
 - Simulate load from multiple locations simultaneously.
 - Scale the load of your test beyond what a single machine can handle.
 
-In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/options#execution-segment) option. For example:
+In k6, you can split the load of a test across multiple k6 instances using the [execution-segment](/using-k6/k6-options/reference#execution-segment) option. For example:
 
 <CodeGroup labels={["Two machines", "Three machines", "Four machines"]}>
 
@@ -460,8 +460,8 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
-- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/options#paused) to synchronize the multiple k6 instances' execution.
-- Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/options#no-thresholds).
+- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
+- Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
 With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **k8s cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
@@ -474,7 +474,7 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 
 If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
-## See also
+## Read more
 
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)

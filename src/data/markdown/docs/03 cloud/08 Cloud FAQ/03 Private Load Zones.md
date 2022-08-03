@@ -21,7 +21,7 @@ First, [contact us](mailto:support@k6.io) about adding private load zones to you
 
 Second, once we've confirmed that your private load zone is ready to go, set up your test to select the private load zone. You can do this one of two ways:
 - via the [graphical Test Builder](https://k6.io/docs/test-authoring/test-builder) on k6 Cloud
-- via the k6 script, within the [test options](https://k6.io/docs/using-k6/options/)
+- via the k6 script, within the [test options](https://k6.io/docs/using-k6/k6-options/)
 
 Here's how to define a private load zone in the test options of your k6 script:
 
@@ -72,6 +72,6 @@ Once a private load zone has been set up, it will take only slightly more time t
 
 You'll be able to get all the *metrics* (response time, rps, errors, etc.) from k6, but at the moment, you won't be able to see log output from load generators within private load zones. We intend to address this in the future.
 
-## See also
+## Read more
 
 - [k6 Office Hours live stream about private load zones](https://youtu.be/sqKc95zdXyI)

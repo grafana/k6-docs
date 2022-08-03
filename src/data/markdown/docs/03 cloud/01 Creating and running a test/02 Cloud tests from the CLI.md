@@ -127,7 +127,7 @@ For syntax examples and default config locations, refer to the [`--config` optio
 
 ## Cloud execution options
 
-All [k6 Options](/using-k6/options), such as `--vus` and `--duration`, are the same between the `k6 run` and `k6 cloud` commands.
+All [k6 Options](/using-k6/k6-options), such as `--vus` and `--duration`, are the same between the `k6 run` and `k6 cloud` commands.
 k6 aims to run the same script in different execution modes without making any script modifications.
 
 However, you can set some cloud-specific options for your script.
@@ -194,6 +194,24 @@ You can pass the Project ID to k6 in two ways:
    </CodeGroup>
 
 - Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
+
+
+## Run locally and stream to the cloud
+
+At times, you might want to run a test locally, but see the results on k6 Cloud.
+For example, you may want to test a local environment that is not connected to the wider internet.
+
+To do, this you can use `k6 run -out cloud`.
+For detailed instructions, refer to [Results visualization](/results-visualization/cloud/).
+
+<Blockquote mod="attention"
+title="k6 charges your subscription for cloud streaming"
+>
+
+Data storage and processing are primary cloud costs,
+so `k6 run --out cloud` will consume VUh or test runs from your subscription.
+
+</Blockquote>
 
 ## Load zones
 

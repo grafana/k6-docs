@@ -1,54 +1,66 @@
 ---
-title: 'Result Export'
-excerpt: 'Exporting k6 Cloud test results. CSV format and PDF reports'
+title: 'Export results'
+excerpt: 'You can export k6 Cloud test results as CSV files and as PDF reports'
+slug: '/cloud/analyzing-results/result-export'
 ---
 
-Test result data can be exported after a test has finished and data processing complete in various formats:
+After a test finishes, you can export the test-result data in various formats:
 
 - [PDF report](#generate-pdf-report): to share the performance results with managers and executives.
 - [CSV format](#export-as-csv): to analyze the test result metrics deeper on your own.
 
-If you want to know other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
+For other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
 
-## Generate PDF Report
+## Generate a PDF Report
 
 > ⭐️ The PDF report is available on annual Pro and Enterprise plans.
 
-The PDF report is an executive summary of the test result's most relevant metrics and performance data. To get an idea of the report looks, you can download an example [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
+The PDF report is an executive summary of the test results' most relevant metrics and performance data.
+To get an idea of the report looks, you can download an example [here](https://f.hubspotusercontent10.net/hubfs/1681264/Executive%20Summary%20-%20Scenarios.pdf).
 
 ![Performance Test Result - PDF Summary Report](./images/11-Result-Export/pdf_report.png)
 
-### Opening the Editor
+### Open the editor
 
 To generate a PDF summary, do the following:
 
 1. Navigate to the test result you want to generate a summary of.
-2. Open the [test results menu](/cloud/analyzing-results/test-results-menu) in the top right.
+2. Use the three-dots icon to open [test results menu](/cloud/analyzing-results/test-results-menu) in the top right.
 3. Select the `Generate PDF summary` option.
 
-This will take you to an editor where you can customize and download the summary.
+This takes you to an editor where you can customize and download the summary.
 
-### Adding or Removing Metrics
+### Add or remove metrics
 
-By using the Add/Remove Metrics-dropdown at the top of the page, it is possible to toggle which sections to include in the generated report. The editor comes with a variety of predefined metrics that can be included.
+To limit the data included in the report, use the **Add/Remove Metrics** dropdown at the top of the page.
+The editor comes with a variety of predefined metrics that can be included.
 
 ![Adding or Removing Metrics - PDF Summary Report](./images/11-Result-Export/pdf_report_add_remove_metrics.png)
 
-### Summarizing the Results
+### Summarize the Results
 
-#### Editing
+You have a few ways to edit and format the PDF.
+
+#### Edit text
 
 ![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_edit_text.png)
 
-Each section in the summary comes with a predefined text. You can edit this text by clicking on the edit icon or by clicking on the text itself.
+Each section of the summary has text from a predefined template.
+To edit this text:
+1. Select the edit icon or the text itself.
+1. Write your new text.
+1. Select outside the text field.
 
-When you are satisfied with your changes, simply click outside the text editor to save your changes. If you want to cancel and revert your changes, you can click the cancel icon next to the editor or use the ESC key on your keyboard.
+When you are satisfied with your changes, select outside the text editor.
+If you want to cancel and revert your changes, select the cancel icon next to the editor, or use the ESC key on your keyboard.
 
 #### Formatting
 
 ![Text Editing - PDF Summary Report](./images/11-Result-Export/pdf_report_text_formatting.png)
 
-You can apply formatting to your text by selecting the text you want to format and choosing the appropriate formatting from the popup. It's also possible to use the following keyboard shortcuts to apply formatting:
+To apply formatting to your text, select the text you want to format and choose the appropriate formatting from the popup.
+
+You can also use the following keyboard shortcuts to apply format text:
 
 | Shortcut            | Format                                                    |
 | ------------------- | --------------------------------------------------------- |
@@ -58,17 +70,27 @@ You can apply formatting to your text by selecting the text you want to format a
 
 ### Generating the PDF
 
-Once you've finished editing the summary, you can click the `Generate PDF` button in the top right of the editor. This will open up a progress dialog and, after a few moments, the browser will prompt you to download the PDF summary report.
+Once you've finished editing the summary, select the `Generate PDF` button in the top right of the editor. This opens a progress dialog.
+After a few moments, the browser will prompt you to download the PDF summary report.
 
-> **Note:** It is important that you do not refresh or navigate away from the page while the PDF is being generated. The time it takes to generate the PDF is dependent on the amount of data that needs to be included, so it may take a minute if your test includes many load zones, for instance.
+
+> **Do not refresh or navigate away from the page while the PDF is being generated.**
+> How much time it takes to generate depends on the amount of data that needs to be included.
+> If your test has much data, such as many load zones, it may take longer.
+
 
 ## Export as CSV
 
-To export the test result as CSV, visit the test result, click the options menu - the three dots in the top right - and select `Export Data`. The data will be exported as a `.zip` file containing number of `.csv` files.
+To export the test result as CSV, follow these steps:
+1. Select the test result.
+1. Select the three-dots icon in the top right, and select `Export Data`.
 
-Each metric is exporter into a separate file. The export also contains `metrics.csv` file which contains the list of exported metrics.
+The data will be exported as a ZIP file that contains a number of CSV files.
 
-For a typical k6 HTTP test, these files will be present
+Each metric is exported to a separate file.
+The export also contains a `metrics.csv` file with the list of exported metrics.
+
+A typical k6 HTTP test will have the following files:
 
 | File name                                        |             Metric               |           Columns                |
 | ------------------------------------------------ | -------------------------------- | -------------------------------- | 
@@ -92,14 +114,14 @@ For a typical k6 HTTP test, these files will be present
 | `metric_myCustomTrend.csv`                       | User-defined `myCustomTrend` [Trend](/javascript-api/k6-metrics/trend/) | `time`,`metric`,`scenario`,`group`,`load_zone`,`tags`,`count`,`min`,`mean`,`median`,`p95`,`p99`,`max`,`stdev` |
 
 
-Here's example data, units, and description of fields present in the CSV data.
+The following table is a reference for the columns in the CSV data, with examples, data types, and descriptions.
 
-| Column          | Example                          | Data/Unit      | Description                                                                                                                               |
+| Column          | Example                          | Type (unit)      | Description                                                                                                                               |
 | --------------- | -------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `time`          | 2019-03-25 11:12:48.927949+00:00 | datetime (UTC) | The ISO-8601 timestamp when this data point was captured (when the HTTP request was made).                                                |
 | `metric`        | http_req_duration                | string         | The metric name that this data point represents.                                                                                          |
 | `group`         | "my group"                       | string         | The group name [`group()`](/using-k6/tags-and-groups) from where this request was made.                                                 |
-| `scenario`      | default                          | string         | The name of the scenario this metric was collected in.                                                                           |
+| `scenario`      | default                          | string         | The name of the scenario that this metric was collected in.                                                                           |
 | `url`           | http://test.k6.io/style.css      | string         | The URL requested.                                                                                                                        |
 | `method`        | GET                              | string         | The HTTP method of the request that this data point represents.                                                                           |
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
@@ -113,3 +135,4 @@ Here's example data, units, and description of fields present in the CSV data.
 | `p99`           | 14.08016                         | number (ms)    | The 99th percentile response time for samples collected within the time bucket. |
 | `max`           | 15.08016                         | number (ms)    | The maximum response time for samples collected within the time bucket. |
 | `stdev`         | 0.075112                         | number (ms)    | The standard deviation time for samples collected within the time bucket. |
+

@@ -13,7 +13,7 @@ k6 provides multiple places to set options:
 Most likely, your use case will determine where you want to set the particular options for a particular test.
 You can also access option values as your test runs.
 
-## Order of precedence
+## Order of precedence {#order-of-precedence}
 
 ![Options passed as command-line flags override all other options: defaults < script options < environment variables < command-line flags](../images/Options/order-of-precedence.png)
 
@@ -33,22 +33,23 @@ That is, **command-line flags have the highest order of precedence**.
 Sometimes, how you set options is a matter of personal preference.
 Other times, the context of your test dictates the most sensible place to put your options.
 
-*Options in the script or config file let you version control and keep tests tidy*.
+<DescriptionList>
 
-The script `options` object is generally the best place to put your options.
+Options in the script to version control and keep tests tidy.
+: The script `options` object is generally the best place to put your options.
 This provides automatic version control, allows for easy reuse, and lets you modularize your script.
 
-*CLI flags are good for setting options on the fly*.
+CLI flags to set options on the fly
+: When you want to run a quick test, command-line flags are convenient.
+: You can also use command-line flags to override files in your script (as determined by the [order of precedence](#order-of-precedence)).
+  For example, if your script file sets the test duration at 60 seconds, you could use a CLI flag to run a one-time shorter test.
+  With a flag like `--duration 30s`, the test would be half as long but otherwise identical.
 
-When you want to run a quick test, command-line flags are convenient.
-You can also use command-line flags to override files in your script (as determined by the [order of precedence](#order-of-precedence)).
-For example, if your script file sets the test duration at 60 seconds, you could use a CLI flag to run a one-time shorter test.
-With a flag like `--duration 30s`, the test would be half as long but otherwise identical.
+Environment variables to set options from your build chain
+: For example, you could derive the option from a variable in your Docker container definition, CI UI, or vault&mdash;wherever you declare environment variables.
+: The [block hostnames](/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
 
-*Environment variables often work well when you need to set your options from some other part of your DevOps build chain*.
-
-For example, you could derive the option from a variable in your Docker container definition, CI UI, or vault&mdash;wherever you declare environment variables.
-The [block hostnames](/using-k6/k6-options/reference#block-hostnames) option is an example of an option that works well with environment variables.
+</DescriptionList>
 
 ## Examples of setting options
 
