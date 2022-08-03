@@ -50,10 +50,10 @@ Creates and returns a new [BrowserContext](/javascript-api/xk6-browser/browserco
 ### deviceScaleFactor example
 
 ```javascript
-import k6b from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = k6b.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
   });
 
