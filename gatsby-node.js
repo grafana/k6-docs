@@ -1489,8 +1489,6 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/response/',
     '/javascript-api/k6-x-browser/touchscreen/':
       '/javascript-api/xk6-browser/touchscreen/',
-    '/javascript-api/k6-x-browser/launcher/':
-      '/javascript-api/xk6-browser/launcher/',
     ...newJavascriptURLsRedirects,
   };
 
