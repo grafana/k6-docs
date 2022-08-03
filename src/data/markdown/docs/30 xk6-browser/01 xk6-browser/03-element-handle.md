@@ -49,10 +49,10 @@ excerpt: "xk6-browser: ElementHandle Class"
 <CodeGroup labels={["Fill out a form"]} >
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = launcher.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
     slowMo: '500ms', // slow down by 500ms
   });
@@ -82,11 +82,11 @@ export default function () {
 <CodeGroup labels={["Check element state"]} >
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 import { check } from 'k6';
 
 export default function () {
-  const browser = launcher.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
   });
   const context = browser.newContext();
