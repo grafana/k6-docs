@@ -9,6 +9,7 @@ excerpt: 'Guide on setting up Teams in k6 Cloud'
 ## A level between organizations and projects
 
 A _Team_ is an optional structural unit between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). 
+
 With Teams, you can group the Projects of your Organizations into categories. 
 All users who belong to a team gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
 
@@ -25,7 +26,9 @@ If you leave the Team, your regular Project membership does not change.
 
 ## Managing teams
 
-Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ view from the left side bar.
+## Managing teams
+
+To manage teams from k6 Cloud, use the left sidebar and select **Teams**. 
 
 ![Team menu](images/05-Teams/teams-menu.png)
 
@@ -42,7 +45,7 @@ Selected **projects** can provide different accesses:
 - **Read/Write** access allows Team members to view, create, and edit test runs in the Project. They cannot delete or rename the Project itself.
 - **Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
-### Inviting a team member
+### Inviting a user to a Team
 
 Once the Team has been created, select it in your list of Teams and press **Invite members**.
 You can invite only existing members of your Organization.
@@ -65,10 +68,14 @@ Most members just need **read only** Team access.
 
 Once members are added, they appear in the list.
 <<<<<<< HEAD
+<<<<<<< HEAD
 Organization admins and Team admins can add or remove users from a team.
 =======
 Organization admins and Team admins can add or remove members from it.
 >>>>>>> 56803e99 ([feat] Update docs)
+=======
+Organization admins and Team admins can add or remove users from a team.
+>>>>>>> a72f99ae (Use "Structural unit" and minimize use of word "Member")
 
 ![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
 
