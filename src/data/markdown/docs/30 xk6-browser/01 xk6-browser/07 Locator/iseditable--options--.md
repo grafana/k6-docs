@@ -5,23 +5,20 @@ excerpt: 'xk6-browser: locator.isEditable method'
 
 Checks if the element is `editable`.
 
-| Parameter | Type   | Description                               |
-| --------- | ------ | ----------------------------------------- |
-| options   | object | See [options](#options) for more details. |
+<TableWithNestedRows>
+
+| Parameter       | Type   | Default | Description                                                                                                                                                                                                                           |
+|-----------------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| options         | object | `null`  | Optional options.                                                                                                                                                                                                                     |
+| options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
+
+</TableWithNestedRows>
 
 ### Returns
 
 | Type | Description                                        |
 |------|----------------------------------------------------|
 | bool | `true` if the element is `editable`, else `false`. |
-
-### options
-
-<!-- vale off -->
-
-| Option  | Type   | Default | Description                                                                                                                                                                                                                           |
-|---------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
 
 ### Example
 
