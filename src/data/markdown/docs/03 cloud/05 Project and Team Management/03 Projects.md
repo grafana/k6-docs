@@ -14,8 +14,8 @@ Here are some ways we users use Projects to stay organized:
 - Per team: Each team is given their own project for them to do their work and collaborate (see also [Teams](/cloud/project-and-team-management/teams)).
 - Per component: A project is created for each component or service you're testing
 - Per brand: E-commerce customers may want to use projects per brand to stay organized
-- Per Customer: When dealing with custom software, you may wish to organize by customer to ensure each unique system is tested
-- Per Major Release: After your systems go through a major change, you may wish to create a new project to organize the most recent data
+- Per Customer: When dealing with custom software, you can to organize by customer to ensure each unique system is tested
+- Per Major Release: After your systems go through a major change, you can to create a new project to organize the most recent data
 
 > To learn how to manage users on an organization or project level, refer to [Members](/cloud/project-and-team-management/members).
 
