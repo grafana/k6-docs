@@ -8,15 +8,15 @@ excerpt: 'Guide on setting up Teams in k6 Cloud'
 
 ## A level between organizations and projects
 
-A _Team_ is an optional organizational level that sits between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). 
+A _Team_ is an optional structural unit between [Organizations](/cloud/project-and-team-management/organizations) and [Projects](/cloud/project-and-team-management/projects). 
 
 With Teams, you can group the Projects of your Organizations into categories. 
-All Team members gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
+All users who belong to a team gain access to the Projects under that Team. The Team can provide varying [Membership](/cloud/project-and-team-management/members) levels to each Project.
 
-Teams help you administrate k6 Organizations with a large number of members and projects.
+Teams help you administrate k6 Organizations with a large number of users and projects.
 For example, a "Backend" Team could grant read-write access to all backend-related k6-cloud Projects,
 and a "Payment" Team might deal only with Projects for testing payment-related services.
-In this case, an Organization admin could add or remove members from these Teams (rather than doing so for each project).
+In this case, an Organization admin could add or remove users from these Teams (rather than doing so for each project).
 
 You can mix **Team** membership with **Project** membership.
 If the access-level differs, k6 uses the higher membership.
@@ -37,7 +37,9 @@ To add Teams and Team members, you need the following:
 
 ## Managing teams
 
-Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ view from the left side bar.
+## Managing teams
+
+To manage teams from k6 Cloud, use the left sidebar and select **Teams**. 
 
 ![Team menu](images/05-Teams/teams-menu.png)
 
@@ -54,7 +56,7 @@ Selected **projects** can provide different accesses:
 - **Read/Write** access allows Team members to view, create, and edit test runs in the Project. They cannot delete or rename the Project itself.
 - **Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
-### Inviting a team member
+### Inviting a user to a Team
 
 Once the Team has been created, select it in your list of Teams and press **Invite members**.
 You can invite only existing members of your Organization.
@@ -76,6 +78,6 @@ Most members just need **read only** Team access.
 ### Managing team members
 
 Once members are added, they appear in the list.
-Organization admins and Team admins can add or remove members from it.
+Organization admins and Team admins can add or remove users from a team.
 
 ![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
