@@ -178,7 +178,7 @@ $ xk6 build --with xk6-output-logger=.
 <Blockquote mod="note"
 title="">
 
-`xk6-output-logger` is the Go module name passed to `go mod init`>
+`xk6-output-logger` is the Go module name passed to `go mod init`
 
 Usually, this would be a URL similar to `github.com/grafana/xk6-output-logger`.
 
