@@ -3,8 +3,8 @@ title: 'Token'
 excerpt: 'How to authenticate with a k6 Cloud token'
 ---
 
-To use k6 Cloud, you need to authenticate your account.
-Authentication is required for both tests that run on k6 Cloud and results that stream to k6 Cloud.
+To run [Cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/), you need to authenticate your account.
+Authentication is required both for tests that run on k6 Cloud and for results that stream to k6 Cloud.
 To authenticate accounts, k6 provides an API token, which you can pass on the CLI or through the REST API.
 
 You can generate two types of API tokens for k6 Cloud, depending on how you want to authenticate:
