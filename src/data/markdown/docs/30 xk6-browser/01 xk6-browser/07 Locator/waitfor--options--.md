@@ -11,18 +11,15 @@ There is a known issue with this feature. See [issue #472](https://github.com/gr
 
 Wait for the element to be in a particular state e.g. `visible`.
 
-| Parameter | Type   | Description                               |
-|-----------|--------|-------------------------------------------|
-| options   | object | See [options](#options) for more details. |
+<TableWithNestedRows>
 
-### options
+| Parameter       | Type   | Default   | Description                                                                                                                                                                                                                           |
+|-----------------|--------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| options         | object | `null`    | Optional options.                                                                                                                                                                                                                     |
+| options.state   | string | `visible` | Can be `attached`, `detached`, `visible` or `hidden`.                                                                                                                                                                                 |
+| options.timeout | number | `30000`   | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
 
-<!-- vale off -->
-
-| Option  | Type   | Default   | Description                                                                                                                                                                                                                           |
-|---------|--------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| state   | string | `visible` | Can be `attached`, `detached`, `visible` or `hidden`.                                                                                                                                                                                 |
-| timeout | number | `30000`   | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
+</TableWithNestedRows>
 
 ### Example
 

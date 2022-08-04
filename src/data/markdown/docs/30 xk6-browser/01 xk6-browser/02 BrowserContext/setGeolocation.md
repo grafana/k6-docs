@@ -11,6 +11,8 @@ There is a known issue with this feature. See [issue #435](https://github.com/gr
 
 Sets the context's geolocation.
 
+<TableWithNestedRows>
+
 | Parameter             | Type   | Default | Description                           |
 |-----------------------|--------|---------|---------------------------------------|
 | geolocation           | object | `null`      |                                       |
@@ -18,6 +20,7 @@ Sets the context's geolocation.
 | geolocation.longitude | number | `0`     | Latitude between -180 and 180.        |
 | geolocation.accuracy  | number | `0`     | Optional non-negative accuracy value. |
 
+</TableWithNestedRows>
 
 ### Example
 
