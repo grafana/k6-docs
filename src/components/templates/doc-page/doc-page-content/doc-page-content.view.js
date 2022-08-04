@@ -13,6 +13,7 @@ import { HeadingLandmark } from 'components/shared/heading';
 import InstallationInstructions from 'components/shared/installation-instructions';
 import LdScript from 'components/shared/ld-script';
 import { Link } from 'components/shared/link';
+import TableWithNestedRows from 'components/shared/table-with-nested-rows';
 import TableWrapper from 'components/shared/table-wrapper';
 import Tooltip, { BNIT, BWIPT } from 'components/shared/tooltip';
 import React, { useRef } from 'react';
@@ -23,6 +24,7 @@ const componentsForNativeReplacement = {
   h2: HeadingLandmark('h2'),
   h3: HeadingLandmark('h3'),
   table: TableWrapper,
+  TableWithNestedRows,
   blockquote: Blockquote,
   Blockquote,
   LdScript,

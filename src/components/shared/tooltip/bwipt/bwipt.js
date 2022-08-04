@@ -11,12 +11,15 @@ const BWIPT = ({ id }) =>
         href={`https://github.com/grafana/xk6-browser/issues/${id}`}
         target="_blank"
         rel="noopener noreferrer"
+        style={{ fontSize: '11px', cursor: 'pointer' }}
       >
         🚧
       </a>
     </Tooltip>
   ) : (
-    <Tooltip value="Work in Progress">🚧</Tooltip>
+    <Tooltip value="Work in Progress">
+      <span style={{ fontSize: '11px', cursor: 'help' }}>🚧</span>
+    </Tooltip>
   );
 
 BWIPT.propTypes = {
