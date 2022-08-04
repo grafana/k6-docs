@@ -20,10 +20,15 @@ But, if you want to create an extension for more than the purposes of demonstrat
 there's some background knowledge you should have:
 
 * You should be familiar with both Go(lang), JavaScript, and their tooling
-* You should understand how the _Go-to-JavaScript_ bridge works within k6
+* You should understand how the [_Go-to-JavaScript_](/extensions/explanations/go-js-bridge/) bridge works within k6
 
-> You should be committed to maintaining a public repository that keeps up to date
-> with the latest k6 APIs if you intend to share with the community.
+
+<Blockquote mod="note" title="">
+
+If you maintain a public xk6 repository,
+the community appreciates that it stays up to date with the latest k6 APIs.
+
+</Blockquote>
 
 ## Avoid unneeded work
 
