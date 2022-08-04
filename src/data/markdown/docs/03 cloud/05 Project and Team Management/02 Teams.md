@@ -25,26 +25,28 @@ If you leave the Team, your regular Project membership does not change.
 
 ## Managing teams
 
-To add Teams and Team members via the app, your Organization must first have some [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management). You need **Organization admin** or **Organization read/write** privileges to add new Team. 
-
 Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ view from the left side bar.
 
 ![Team menu](images/05-Teams/teams-menu.png)
 
 ### Creating a team
 
-To create a new team click on **Create new team** button. A Team must have an organization-unique **name** and at least one selected **project**. You can also add an optional **description**.
+To create a new team:
+1. Select the **Create new team** button.
+2. Give the team an organization-unique **name**, and assign at least one **project**. You can also add an optional **description**.
 
 ![Creating a new Team](images/05-Teams/create-team.png)
 
 Selected **projects** can provide different accesses:
 
-- **Read/Write** access means Team members will be able to look at, create and edit test-runs in the Project. They will not be able to delete or rename the Project itself.
+- **Read/Write** access allows Team members to view, create, and edit test runs in the Project. They cannot delete or rename the Project itself.
 - **Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
 ### Inviting a team member
 
-Once the Team has been created, select it in your list of Teams and press **Invite members**. Only existing members of your Organization can be invited. When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
+Once the Team has been created, select it in your list of Teams and press **Invite members**.
+You can invite only existing members of your Organization.
+When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
 
 ![Inviting a new team member](images/05-Teams/invite-team-member.png)
 
@@ -62,7 +64,11 @@ Most members just need **read only** Team access.
 ### Managing team members
 
 Once members are added, they appear in the list.
+<<<<<<< HEAD
 Organization admins and Team admins can add or remove users from a team.
+=======
+Organization admins and Team admins can add or remove members from it.
+>>>>>>> 56803e99 ([feat] Update docs)
 
 ![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
 
