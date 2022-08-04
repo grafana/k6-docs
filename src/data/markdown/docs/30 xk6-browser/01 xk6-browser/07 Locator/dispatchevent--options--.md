@@ -5,11 +5,16 @@ excerpt: 'xk6-browser: locator.dispatchEvent method'
 
 Dispatches HTML DOM event types e.g. `'click'`.
 
-| Parameter | Type   | Description                                                                       |
-|-----------|--------|-----------------------------------------------------------------------------------|
-| type      | string | DOM event type e.g. `'click'`.                                                    |
-| eventInit | object | Optional event specific properties. See [eventInit](#eventinit) for more details. |
-| options   | object | See [options](#options) for more details.                                         |
+<TableWithNestedRows>
+
+| Parameter       | Type   | Defaults | Description                                                                                                                                                                                                                           |
+|-----------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type            | string | `''`     | DOM event type e.g. `'click'`.                                                                                                                                                                                                        |
+| eventInit       | object | `null`   | Optional event specific properties. See [eventInit](#eventinit) for more details.                                                                                                                                                     |
+| options         | object | `null`   | Optional options.                                                                                                                                                                                                                     |
+| options.timeout | number | `30000`  | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
+
+</TableWithNestedRows>
 
 ### eventInit
 
@@ -22,14 +27,6 @@ Since eventInit is event-specific, please refer to the events documentation for 
 - [PointerEvent](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/PointerEvent)
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
-
-### options
-
-<!-- vale off -->
-
-| Option  | Type   | Default | Description                                                                                                                                                                                                                           |
-|---------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
 
 ### Example
 
