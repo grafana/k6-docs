@@ -19,10 +19,7 @@ To get your keys, follow the DataDog documentation: ["API and Application Keys"]
 
 ### Supported Regions
 
-The supported regions for the DataDog integration are:
-
-- `eu`: Europe.
-- `us`: rest of the world (default).
+The supported regions for the DataDog integration are `us`/`us1` (default), `eu`/`eu1`, `us3`, `us5`, `us1-fed`.
 
 > API and Application keys for a DataDog region won't work on a different region.
 
@@ -79,9 +76,19 @@ export const options = {
           // optional parameters
           region: 'us',
 
-          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
+          metrics: [
+            'vus',
+            'http_req_duration',
+            'my_rate_metric',
+            'my_gauge_metric',
+            // create a metric by counting HTTP responses with status 500
+            {
+                sourceMetric: 'http_reqs{status="500"}',
+                targetMetric: 'k6.http_server_errors.count',            
+            }
+          ], 
           includeDefaultMetrics: true,
-          includeTestRunId: false,
+          includeTestRunId: true,
         },
       ],
     },
@@ -91,16 +98,92 @@ export const options = {
 
 ### Configuration parameters
 
-| Name                    | Description                                                                                                                                            |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| provider<sup>(required)</sup>              | For this integration, the value must be `datadog`.   |
-| apiKey<sup>(required)</sup>                | DataDog API key.                         |
-| appKey<sup>(required)</sup>                | DataDog application key.                 |
-| region                | The `region` supported by DataDog. See the list of [supported regions](#supported-regions). Default is `us`.                 |
-| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
-| metrics               | List of built-in and custom metrics to export.    |
-| includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
-| resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+| Name                          | Description                                                                                                                                                                                                                                                   |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| provider<sup>(required)</sup> | For this integration, the value must be `datadog`.                                                                                                                                                                                                            |
+| apiKey<sup>(required)</sup>   | DataDog API key.                                                                                                                                                                                                                                              |
+| appKey<sup>(required)</sup>   | DataDog application key.                                                                                                                                                                                                                                      |
+| region                        | One of DataDog regions/sites. See the list of [supported regions](#supported-regions). Default is `us`.                                                                                                                                                       |
+| apiURL                        | _Alternative to `region`._ URL of [Datadog Site API](https://docs.datadoghq.com/getting_started/site/). Included for support of possible new or custom Datadog regions. Default is picked according to `region`, e.g. `'https://api.datadoghq.com'` for `us`. |
+| includeDefaultMetrics         | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                               |
+| metrics                       | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                                                                        |
+| includeTestRunId              | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                             |
+| resampleRate                  | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                                      |
+#### Metric configuration
+
+Each entry in `metrics` parameter can be an object with following keys:
+
+| Name                              | Description                                                                                                                                                                                                                                                                                       |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> for example: `http_reqs{name="http://example.com",status!="500"}` |
+| targetMetric                      | Name of resulting metric in Datadog. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                                     |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+
+
+<Blockquote mod="warning">
+
+#### Possible high costs of using `keepTags`
+
+Most cloud platforms, including Datadog, charge clients based on number of time series stored.
+
+When exporting a k6 metric, every combination of kept tag values will become a distinct set of tags in Datadog. 
+This can be very useful for analyzing load test results, but will incur high costs if there are thousands of these combinations produced. 
+
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls a lot of dynamic URLs, the number of produced time series can build up very quickly.
+See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value count for `name` tag.
+
+We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
+
+_See also_: [Counting custom metrics](https://docs.datadoghq.com/account_management/billing/custom_metrics/?tab=countrate#counting-custom-metrics) in Datadog documentation
+
+</Blockquote>
+
+#### Metric configuration detailed example
+```javascript
+export const options = {
+  ext: {
+    loadimpact: {
+      apm: [
+        {
+          // ...              
+          includeDefaultMetrics: false,
+          includeTestRunId: true,
+             
+          metrics: [
+              // keep vus metrics for whole test run
+              'vus',
+              // total byte count for data sent/received by k6
+              'data_sent',
+              'data_received',
+                
+              // export checks metric, keeping 'check' (name of the check) tag 
+              {
+                  sourceMetric: 'checks',
+                  keepTags: ['check']
+              },
+              // export HTTP durations from 'default' scenario,
+              // keeping only successful response codes (2xx, 3xx), using regex selector syntax  
+              {                  
+                  sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+                  targetMetric: 'k6_http_request_duration',  // name of metric as it appears in Datadog 
+                  keepTags: ['name', 'method', 'status']                  
+              },
+              
+              // count HTTP responses with status 500
+              {
+                  sourceMetric: 'http_reqs{status="500"}',
+                  targetMetric: 'k6_http_server_errors_count',
+                  keepTags: ['scenario', 'group', 'name', 'method']
+              }
+          ], 
+          
+        },
+      ],
+    },
+  },
+};
+```
+
 
 ## Read more
 

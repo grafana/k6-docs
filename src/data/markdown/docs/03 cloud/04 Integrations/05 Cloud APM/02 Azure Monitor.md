@@ -81,47 +81,125 @@ export const options = {
 
 ### Configuration Parameters
 
-| Name                    | Description                                                                                                                                                                                |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| provider<sup>(required)</sup>            | For this integration, the value must be `azuremonitor`.
-| remoteWriteURL<sup>(required)</sup>       | URL of the Prometheus remote write endpoint.  <br/> The `prometheus_server` query param must be included. The license key can optionally be included using the `X-License-Key` query param. |
-| tenantId<sup>(required)</sup>              | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.     |
-| clientId<sup>(required)</sup>              | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.     |
-| clientSecret<sup>(required)</sup>          | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.  |
-| subscriptionId<sup>(required)</sup>        | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                     |
-| resourceGroupName<sup>(required)</sup>     | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.          |
-| insightsAppName<sup>(required)</sup>       | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.     |
-| azureRegion           | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.   |
-| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
-| metrics               | List of built-in and custom metrics to export.                            |
-| includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
-| resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+| Name                                   | Description                                                                                                                                                                                                       |
+|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| provider<sup>(required)</sup>          | For this integration, the value must be `azuremonitor`.                                                                                                                                                           |
+| remoteWriteURL<sup>(required)</sup>    | URL of the Prometheus remote write endpoint.  <br/> The `prometheus_server` query param must be included. The license key can optionally be included using the `X-License-Key` query param.                       |
+| tenantId<sup>(required)</sup>          | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                                                                          |
+| clientId<sup>(required)</sup>          | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                                                                        |
+| clientSecret<sup>(required)</sup>      | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.                                                        |
+| subscriptionId<sup>(required)</sup>    | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                                                                                                                                  |
+| resourceGroupName<sup>(required)</sup> | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.                                                                                       |
+| insightsAppName<sup>(required)</sup>   | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.                                                                                 |
+| azureRegion                            | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.                                                                         |
+| includeDefaultMetrics                  | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.     |
+| metrics                                | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                            |
+| includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
+| resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 period.                                                                                                           |
+
+
+#### Metric configuration
+
+Each entry in `metrics` parameter can be an object with following keys:
+
+| Name                              | Description                                                                                                                                                                                                                                                                                       |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> for example: `http_reqs{name="http://example.com",status!="500"}` |
+| targetMetric                      | Name of resulting metric in Azure Monitor. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                               |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+
+
+<Blockquote mod="warning">
+
+#### Possible high costs of using `keepTags`
+
+Most cloud platformscharge clients based on number of time series stored.
+
+When exporting a metric, every combination of kept tag values will become a distinct time series. 
+This can be very useful for analyzing load test results, but will incur high costs if there are thousands of time series produced. 
+
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls a lot of dynamic URLs, the number of produced time series can build up very quickly.
+See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value count for `name` tag.
+
+We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
+
+</Blockquote>
+
+
+#### Metric configuration detailed example
+```javascript
+export const options = {
+  ext: {
+    loadimpact: {
+      apm: [
+         {
+          // ...              
+          includeDefaultMetrics: false,
+          includeTestRunId: true,
+             
+          metrics: [
+              // keep vus metrics for whole test run
+              'vus',
+              // total byte count for data sent/received by k6
+              'data_sent',
+              'data_received',
+                
+              // export checks metric, keeping 'check' (name of the check) tag 
+              {
+                  sourceMetric: 'checks',
+                  keepTags: ['check']
+              },
+              
+              // export HTTP durations from 'default' scenario,
+              // keeping only successful response codes (2xx, 3xx), using regex selector syntax  
+              {                  
+                  sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+                  targetMetric: 'k6_http_request_duration',  // name of metric as it appears in Azure Monitor 
+                  keepTags: ['name', 'method', 'status'],                  
+              },
+              
+              // count HTTP responses with status 500
+              {
+                  sourceMetric: 'http_reqs{status="500"}',
+                  targetMetric: 'k6_http_server_errors_count',
+                  keepTags: ['scenario', 'group', 'name', 'method']
+              }
+          ], 
+          
+        },
+      ],
+    },
+  },
+};
+```
+
+## Read more
 
 ### Supported Regions
 
 The supported Azure Monitor regions are:
 
-| Geographic Region    | Supported Azure Region(s)                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Africa**           | `southafricanorth`, `southafricawest`                                                                                                         |
-| **America**          | `brazilsouth`, `canadacentral`, `canadaeast`, `centralus`, `eastus` (default), `eastus2`, `northcentralus`, `southcentralus`, `westcentralus`, `westus`, `westus2`                                                                                                          |
-| **Asia** | `centralindia`, `eastasia`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `southeastasia`, `southlindia`, `uaecentral`, `uaenorth`, `westindia` |
-| **Australia**    | `australiacentral`, `australiacentral2`, `australiaeast`, `australiasoutheast` |
-| **Europe**           | `francecentral`, `francesouth`, `northeurope`, `uksouth`, `ukwest`, `westeurope` |
+| Geographic Region | Supported Azure Region(s)                                                                                                                                          |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Africa**        | `southafricanorth`, `southafricawest`                                                                                                                              |
+| **America**       | `brazilsouth`, `canadacentral`, `canadaeast`, `centralus`, `eastus` (default), `eastus2`, `northcentralus`, `southcentralus`, `westcentralus`, `westus`, `westus2` |
+| **Asia**          | `centralindia`, `eastasia`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `southeastasia`, `southlindia`, `uaecentral`, `uaenorth`, `westindia`          |
+| **Australia**     | `australiacentral`, `australiacentral2`, `australiaeast`, `australiasoutheast`                                                                                     |
+| **Europe**        | `francecentral`, `francesouth`, `northeurope`, `uksouth`, `ukwest`, `westeurope`                                                                                   |
 
 ## Necessary Azure values
 
 To set up the Azure Monitor integration on the k6 Cloud, you need the following settings:
 
-| Name                    | Description           |
-| ----------------------- | ---------------------------------------------- |
-| tenantId              | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.     |
-| clientId              | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.     |
-| clientSecret          | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations.  |
-| subscriptionId        | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                     |
-| resourceGroupName     | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.     |
-| insightsAppName       | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`. |
-| azureRegion           | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.   |
+| Name              | Description                                                                                                                                                |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| tenantId          | The `tenantId` provided by service principal. The directory (tenant) ID can be extracted from Azure's app registrations.                                   |
+| clientId          | The `clientId` provided by service principal. The application (client) ID can be extracted from Azure's app registrations.                                 |
+| clientSecret      | The `clientSecret` provided by service principal. The client secret can be extracted from the certificates & secrets section of Azure's app registrations. |
+| subscriptionId    | The `subscriptionId` can be viewed in the subscriptions section of Azure portal.                                                                           |
+| resourceGroupName | The `resourceGroupName` can be viewed in the resource groups section of Azure portal. It should match the `subscriptionId`.                                |
+| insightsAppName   | The `insightsAppName` can be viewed in the application insights section of Azure portal. It should match the `resourceGroupName`.                          |
+| azureRegion       | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.                  |
 
 
 You can follow these instructions to get the required Azure Monitor settings.
