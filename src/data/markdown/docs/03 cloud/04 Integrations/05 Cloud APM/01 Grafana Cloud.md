@@ -83,7 +83,11 @@ export const options = {
             username: '<Prometheus Username / Instance ID>',
             password: '<Grafana Cloud API key of type MetricsPublisher>',
           },
+<<<<<<< HEAD
           // optional parameters
+=======
+          // optional parameters          
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
           metrics: [
             'vus',
             'http_req_duration',
@@ -91,10 +95,17 @@ export const options = {
             'my_gauge_metric',
             // create a metric by counting HTTP responses with status 500
             {
+<<<<<<< HEAD
               sourceMetric: 'http_reqs{status="500"}',
               targetMetric: 'k6_http_server_errors_count',
             },
           ],
+=======
+                sourceMetric: 'http_reqs{status="500"}',
+                targetMetric: 'k6_http_server_errors_count',                
+            }
+          ], 
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
           // for advanced metric configuration see example belod
           includeDefaultMetrics: true,
           includeTestRunId: false,
@@ -113,12 +124,17 @@ export const options = {
 | remoteWriteURL<sup>(required)</sup> | URL of the Prometheus remote write endpoint. <br/> For example: `https://prometheus-us-central1.grafana.net/api/prom/push`.                                                                                                              |
 | credentials<sup>(required)</sup>    | The credentials to authenticate with the Grafana Cloud Prometheus instance. The required parameters are: <br/> - username: the Prometheus username or instance ID. <br/> - password: a Grafana Cloud API key of type `MetricsPublisher`. |
 | includeDefaultMetrics               | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                          |
+<<<<<<< HEAD
 | metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                    |
+=======
+| metrics                             | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                                                   |
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                        |
 | resampleRate                        | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                 |
 
 #### Metric configuration
 
+<<<<<<< HEAD
 Each entry in the `metrics` parameter can be an object with the following keys:
 
 | Name                              | Description                                                                                                                                                                                                                                                                                   |
@@ -144,6 +160,35 @@ _Read more_: [Time series dimensions](https://grafana.com/docs/grafana/latest/ba
 </Blockquote>
 
 
+=======
+Each entry in `metrics` parameter can be an object with following keys:
+
+| Name                              | Description                                                                                                                                                                                                                                                                                       |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> for example: `http_reqs{name="http://example.com",status!="500"}` |
+| targetMetric                      | Name of resulting metric in Grafana/Prometheus. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                          |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+
+
+<Blockquote mod="warning">
+
+#### Possible high costs of using `keepTags`
+
+Most cloud platforms (including Grafana) charge clients based on number of time series stored.
+
+When exporting a metric, every combination of kept tag values will become a distinct time series in Grafana/Prometheus. 
+This can be very useful for analyzing load test results, but will incur high costs if there are thousands of time series produced. 
+
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls a lot of dynamic URLs, the number of produced time series can build up very quickly.
+See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value count for `name` tag.
+
+We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
+
+_See also_: [Time series dimensions](https://grafana.com/docs/grafana/latest/basics/timeseries-dimensions/) in Grafana documentation.
+
+</Blockquote>
+
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
 #### Metric configuration detailed example
 ```javascript
 export const options = {
@@ -151,6 +196,7 @@ export const options = {
     loadimpact: {
       apm: [
         {
+<<<<<<< HEAD
           // ...
           includeDefaultMetrics: false,
           includeTestRunId: true,
@@ -183,6 +229,41 @@ export const options = {
               keepTags: ['scenario', 'group', 'name', 'method'],
             },
           ],
+=======
+          // ...              
+          includeDefaultMetrics: false,
+          includeTestRunId: true,
+             
+          metrics: [
+              // keep vus metrics for whole test run
+              'vus',
+              // total byte count for data sent/received by k6
+              'data_sent',
+              'data_received',
+                
+              // export checks metric, keeping 'check' (name of the check) tag 
+              {
+                  sourceMetric: 'checks',
+                  keepTags: ['check']
+              },
+              
+              // export HTTP durations from 'default' scenario,
+              // keeping only successful response codes (2xx, 3xx), using regex selector syntax  
+              {                  
+                  sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+                  targetMetric: 'k6_http_request_duration',  // name of metric as it appears in Grafana 
+                  keepTags: ['name', 'method', 'status'],                  
+              },
+              
+              // count HTTP responses with status 500
+              {
+                  sourceMetric: 'http_reqs{status="500"}',
+                  targetMetric: 'k6_http_server_errors_count',
+                  keepTags: ['scenario', 'group', 'name', 'method']
+              }
+          ], 
+           
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
         },
       ],
     },

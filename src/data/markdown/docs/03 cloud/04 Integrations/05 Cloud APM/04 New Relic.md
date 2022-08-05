@@ -103,13 +103,18 @@ export const options = {
 | remoteWriteURL<sup>(required)</sup> | URL of the Prometheus remote write endpoint.  <br/> The `prometheus_server` query param must be included. The license key can optionally be included using the `X-License-Key` query param.                                                            |
 | credentials                         | The credentials to authenticate with New Relic. It has a `token` parameter to set the license key. <br/> The `credentials` parameter is optional when the license key is passed via the `X-License-Key` query param on the `remoteWriteURL` parameter. |
 | includeDefaultMetrics               | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                          |
+<<<<<<< HEAD
 | metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                  |
+=======
+| metrics                             | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                                                                 |
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                      |
 | resampleRate                        | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10.                                                                                                 |
 
 
 #### Metric configuration
 
+<<<<<<< HEAD
 | Name                              | Description                                                                                                                                                                                                                                                                                   |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> Example: `http_reqs{name="http://example.com",status!="500"}` |
@@ -127,17 +132,43 @@ For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load 
 Refer to [URL Grouping](/using-k6/http-requests#url-grouping) for how to reduce the value count for a `name` tag.
 
 k6 recommends exporting only tags that are necessary and don't have many distinct values.
+=======
+| Name                              | Description                                                                                                                                                                                                                                                                                       |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> for example: `http_reqs{name="http://example.com",status!="500"}` |
+| targetMetric                      | Name of resulting metric in New Relic. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                                   |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+
+
+<Blockquote mod="warning">
+
+#### Possible high costs of using `keepTags`
+
+Most cloud platformscharge clients based on number of time series stored.
+
+When exporting a metric, every combination of kept tag values will become a distinct time series. 
+This can be very useful for analyzing load test results, but will incur high costs if there are thousands of time series produced. 
+
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls a lot of dynamic URLs, the number of produced time series can build up very quickly.
+See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value count for `name` tag.
+
+We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
 
 </Blockquote>
 
 #### Metric configuration detailed example
+<<<<<<< HEAD
 
+=======
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
 ```javascript
 export const options = {
   ext: {
     loadimpact: {
       apm: [
         {
+<<<<<<< HEAD
           // ...
           includeDefaultMetrics: false,
           includeTestRunId: true,
@@ -170,6 +201,41 @@ export const options = {
               keepTags: ['scenario', 'group', 'name', 'method'],
             },
           ],
+=======
+          // ...              
+          includeDefaultMetrics: false,
+          includeTestRunId: true,
+             
+          metrics: [
+              // keep vus metrics for whole test run
+              'vus',
+              // total byte count for data sent/received by k6
+              'data_sent',
+              'data_received',
+                
+              // export checks metric, keeping 'check' (name of the check) tag 
+              {
+                  sourceMetric: 'checks',
+                  keepTags: ['check']
+              },
+              
+              // export HTTP durations from 'default' scenario,
+              // keeping only successful response codes (2xx, 3xx), using regex selector syntax  
+              {                  
+                  sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+                  targetMetric: 'k6_http_request_duration',  // name of metric as it appears in New Relic 
+                  keepTags: ['name', 'method', 'status'],                  
+              },
+              
+              // count HTTP responses with status 500
+              {
+                  sourceMetric: 'http_reqs{status="500"}',
+                  targetMetric: 'k6_http_server_errors_count',
+                  keepTags: ['scenario', 'group', 'name', 'method']
+              }
+          ], 
+           
+>>>>>>> e52edde8 (Change APM documentation to reflect code changes)
         },
       ],
     },
