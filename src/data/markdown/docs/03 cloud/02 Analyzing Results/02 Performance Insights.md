@@ -222,8 +222,8 @@ for (let id = 1; id <= 1000; id++) {
 - **Happens when**:
   you use a legacy version of k6 that is significantly older than the latest stable version.
 - **Recommendations**:
-  - Download and install the latest release of k6 [here](/getting-started/installation) or upgrade your packages if relevant.
-  - Update the k6 binary that your CI/CD pipeline uses for running tests.
+  - [Install the latest release of k6](/getting-started/installation), or upgrade your existing packages.
+  - Update the k6 binary that your CI/CD pipeline uses to run tests.
   - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
 
 ## Health alerts
