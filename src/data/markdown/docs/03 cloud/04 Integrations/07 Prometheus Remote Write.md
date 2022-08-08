@@ -21,7 +21,8 @@ If you use any of these solutions, we recommend integrating your APM solution fi
 
 You can enable this integration only with the `apm` option in the k6 script.
 
-The `apm` option configures how to export k6 Cloud metrics to the supported monitoring solutions. It allows multiple configuration blocks to export simultaneously to different monitoring providers.
+The `apm` option configures how to export k6 Cloud metrics to the supported monitoring solutions.
+You can use multiple configuration blocks to export simultaneously to different monitoring providers.
 
 The parameters for sending metrics to a Prometheus Remote Write instance are as follows:
 
@@ -56,7 +57,7 @@ export const options = {
 | remoteWriteURL<sup>(required)</sup> | URL of the Prometheus remote write endpoint. <br/> For example: `http://monitoring.example.com:9090/api/v1/write`.                                                                                                |
 | credentials                         | The `credentials` to authenticate with the Prometheus remote write instance. <br/> Read more on [supported authentication mechanisms](#supported-authentication-mechanisms).                                      |
 | includeDefaultMetrics               | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.     |
-| metrics                             | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                            |
+| metrics                             | List of metrics to export. <br/> For details on how to specify metrics, see the subsequent section.                                                                                                                            |
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate                        | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10.                                                            |
 
@@ -136,7 +137,8 @@ export const options = {
 
 ### Supported authentication mechanisms
 
-Currently, the integration only supports bearer token and HTTP basic authentication mechanisms. Set the `credentials` option to configure one of the supported authentication mechanisms as follows:
+Currently, the integration supports only bearer token and HTTP basic authentication mechanisms.
+To configure one of the supported auhentication methods, set the `credentials` option as follows.
 
 #### HTTP basic authentication
 
