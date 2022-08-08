@@ -22,6 +22,7 @@ k6 categorizes performance insights into three sets:
 - [Too many URLs](#too-many-urls)
 - [Too many groups](#too-many-groups)
 - [Too many metrics](#too-many-metrics)
+- [Outdated k6 Release Used](#outdated-k6-release-used)
 - [High load generator CPU usage](#high-load-generator-cpu-usage)
 - [High load generator memory usage](#high-load-generator-memory-usage)
 
@@ -215,6 +216,16 @@ for (let id = 1; id <= 1000; id++) {
 
 </CodeGroup>
 
+### Outdated k6 release used
+
+*Identifier*: `best_practice_outdated_k6_release_used`
+- **Happens when**:
+  you use a legacy version of k6 that is significantly older than the latest stable version.
+- **Recommendations**:
+  - [Install the latest release of k6](/getting-started/installation), or upgrade your existing packages.
+  - Update the k6 binary that your CI/CD pipeline uses to run tests.
+  - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
+
 ## Health alerts
 
 Health alerts happen when the load generator has high resource utilization.
@@ -330,6 +341,7 @@ For all insights and their identifiers, refer to the table below:
 | Too Many URLs                    | `best_practice_too_many_urls`            | `best_practice` |
 | Too Many Groups                  | `best_practice_too_many_groups`          | `best_practice` |
 | Too Many Metrics                 | `best_practice_too_many_metrics`         | `best_practice` |
+| Outdated k6 Release Used         | `best_practice_outdated_k6_release_used` | `best_practice` |
 | High Load Generator CPU Usage    | `health_high_loadgen_cpu_usage`          | `health`        |
 | High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        |
 
