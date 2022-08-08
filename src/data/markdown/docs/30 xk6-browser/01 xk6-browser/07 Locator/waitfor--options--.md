@@ -15,7 +15,7 @@ Wait for the element to be in a particular state e.g. `visible`.
 
 | Parameter       | Type   | Default   | Description                                                                                                                                                                                                                           |
 |-----------------|--------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| options         | object | `null`    | Optional options.                                                                                                                                                                                                                     |
+| options         | object | `null`    |                                                                                                                                                                                                                      |
 | options.state   | string | `visible` | Can be `attached`, `detached`, `visible` or `hidden`.                                                                                                                                                                                 |
 | options.timeout | number | `30000`   | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
 
