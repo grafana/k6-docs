@@ -133,13 +133,18 @@ k6 recommends exporting only tags that are necessary and don't have many distinc
 | targetMetric                      | Name of resulting metric in Azure Monitor. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                               |
 | keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
 
+<Blockquote mod="warning"
+title="keepTags can have a high cost">
 
-<Blockquote mod="warning">
+Most cloud platforms charge clients based on the number of time series stored.
 
-#### Possible high costs of using `keepTags`
+When exporting a metric, every combination of kept-tag values becomes a distinct time series in Prometheus.
+While this granularity can help test analysis, it will incur high costs with thousands of time series
 
-Most cloud platformscharge clients based on number of time series stored.
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls many dynamic URLs, the number of produced time series can build up very quickly.
+Refer to [URL Grouping](/using-k6/http-requests#url-grouping) for how to reduce the value count for a `name` tag.
 
+<<<<<<< HEAD
 When exporting a metric, every combination of kept tag values will become a distinct time series. 
 This can be very useful for analyzing load test results, but will incur high costs if there are thousands of time series produced. 
 
@@ -148,10 +153,14 @@ See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value 
 
 We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+k6 recommends exporting only tags that are necessary and don't have many distinct values.
+>>>>>>> 04ba7976 (Standardizes keepTags warning)
 
 </Blockquote>
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #### Metric configuration detailed example
@@ -159,6 +168,11 @@ We recommend only exporting tags that are really necessary and don't have a lot 
 =======
 #### Metric configuration detailed example
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+
+#### Metric configuration detailed example
+
+>>>>>>> 04ba7976 (Standardizes keepTags warning)
 ```javascript
 export const options = {
   ext: {
