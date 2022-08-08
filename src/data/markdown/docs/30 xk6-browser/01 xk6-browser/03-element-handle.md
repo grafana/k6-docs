@@ -3,6 +3,8 @@ title: "ElementHandle"
 excerpt: "xk6-browser: ElementHandle Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |

@@ -3,6 +3,8 @@ title: "Mouse"
 excerpt: "xk6-browser: Mouse Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |

@@ -3,6 +3,8 @@ title: "Frame"
 excerpt: "xk6-browser: Frame Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |

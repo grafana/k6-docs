@@ -3,6 +3,8 @@ title: "Page"
 excerpt: "xk6-browser: Page Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions | Description |
