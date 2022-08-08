@@ -88,16 +88,22 @@ export const options = {
             // create a metric by counting HTTP responses with status 500
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5b8da2dc (Linting autofixes)
               sourceMetric: 'http_reqs{status="500"}',
               targetMetric: 'k6.http_server_errors.count',
             },
           ],
+<<<<<<< HEAD
 =======
                 sourceMetric: 'http_reqs{status="500"}',
                 targetMetric: 'k6.http_server_errors.count',            
             }
           ], 
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+>>>>>>> 5b8da2dc (Linting autofixes)
           includeDefaultMetrics: true,
           includeTestRunId: true,
         },
@@ -194,6 +200,7 @@ export const options = {
       apm: [
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
           // ...
           includeDefaultMetrics: false,
           includeTestRunId: true,
@@ -227,10 +234,14 @@ export const options = {
           ],
 =======
           // ...              
+=======
+          // ...
+>>>>>>> 5b8da2dc (Linting autofixes)
           includeDefaultMetrics: false,
           includeTestRunId: true,
-             
+
           metrics: [
+<<<<<<< HEAD
               // keep vus metrics for whole test run
               'vus',
               // total byte count for data sent/received by k6
@@ -259,6 +270,34 @@ export const options = {
           ], 
           
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+            // keep vus metrics for whole test run
+            'vus',
+            // total byte count for data sent/received by k6
+            'data_sent',
+            'data_received',
+
+            // export checks metric, keeping 'check' (name of the check) tag
+            {
+              sourceMetric: 'checks',
+              keepTags: ['check'],
+            },
+            // export HTTP durations from 'default' scenario,
+            // keeping only successful response codes (2xx, 3xx), using regex selector syntax
+            {
+              sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+              targetMetric: 'k6_http_request_duration', // name of metric as it appears in Datadog
+              keepTags: ['name', 'method', 'status'],
+            },
+
+            // count HTTP responses with status 500
+            {
+              sourceMetric: 'http_reqs{status="500"}',
+              targetMetric: 'k6_http_server_errors_count',
+              keepTags: ['scenario', 'group', 'name', 'method'],
+            },
+          ],
+>>>>>>> 5b8da2dc (Linting autofixes)
         },
       ],
     },

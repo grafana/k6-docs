@@ -63,21 +63,21 @@ In the k6 script, you can set both options - `includeDefaultMetrics` and `metric
 
 ```javascript
 export const options = {
-    ext: {
-        loadimpact: {
-            apm: [
-                {
-                    provider: 'your-provider',
+  ext: {
+    loadimpact: {
+      apm: [
+        {
+          provider: 'your-provider',
 
-                    // Whether it exports the default APM metrics. Default is true.
-                    includeDefaultMetrics: false,
-                    // List of built-in and custom metrics to export. Default is empty.
-                    metrics: ['vus', 'http_req_duration', 'http_req_sending', 'my_rate', 'my_gauge'], //...
-                    //....
-                },
-            ],
+          // Whether it exports the default APM metrics. Default is true.
+          includeDefaultMetrics: false,
+          // List of built-in and custom metrics to export. Default is empty.
+          metrics: ['vus', 'http_req_duration', 'http_req_sending', 'my_rate', 'my_gauge'], //...
+          //....
         },
+      ],
     },
+  },
 };
 ```
  
