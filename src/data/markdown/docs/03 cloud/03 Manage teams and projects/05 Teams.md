@@ -22,9 +22,9 @@ You can mix **Team** membership with **Project** membership.
 If the access-level differs, k6 uses the higher membership.
 If you leave the Team, your regular Project membership does not change.
 
-<Blockquote mod="note" title="You still must specify the projectID in cloud scripts.">
+<Blockquote mod="note" title="You must still specify the projectID in cloud scripts.">
 
-That team that the project belongs to is never referenced in k6 scripts.
+The team that the project belongs to is never referenced in k6 scripts.
 Refer to [Projects](/cloud/project-and-team-management/projects) for examples.
 
 </Blockquote>
