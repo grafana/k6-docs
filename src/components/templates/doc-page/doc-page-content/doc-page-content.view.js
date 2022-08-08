@@ -4,7 +4,7 @@ import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import Blockquote from 'components/shared/blockquote';
 import BrowserClassList from 'components/shared/browser-class-list';
-import BrowserCompatibility from 'components/shared/browser-compatibility';
+import BrowserDocsWIP from 'components/shared/browser-docs-wip';
 import BrowserWIP from 'components/shared/browser-wip';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
@@ -34,7 +34,7 @@ const componentsForNativeReplacement = {
   CodeGroup,
   Collapsible,
   CodeInline,
-  BrowserCompatibility,
+  BrowserDocsWIP,
   BrowserClassList,
   BrowserWIP,
   InstallationInstructions,
