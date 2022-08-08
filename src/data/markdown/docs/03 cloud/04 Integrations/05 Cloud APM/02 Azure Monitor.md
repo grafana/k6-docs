@@ -132,40 +132,39 @@ export const options = {
   ext: {
     loadimpact: {
       apm: [
-         {
-          // ...              
+        {
+          // ...
           includeDefaultMetrics: false,
           includeTestRunId: true,
-             
+
           metrics: [
-              // keep vus metrics for whole test run
-              'vus',
-              // total byte count for data sent/received by k6
-              'data_sent',
-              'data_received',
-                
-              // export checks metric, keeping 'check' (name of the check) tag 
-              {
-                  sourceMetric: 'checks',
-                  keepTags: ['check']
-              },
-              
-              // export HTTP durations from 'default' scenario,
-              // keeping only successful response codes (2xx, 3xx), using regex selector syntax  
-              {                  
-                  sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
-                  targetMetric: 'k6_http_request_duration',  // name of metric as it appears in Azure Monitor 
-                  keepTags: ['name', 'method', 'status'],                  
-              },
-              
-              // count HTTP responses with status 500
-              {
-                  sourceMetric: 'http_reqs{status="500"}',
-                  targetMetric: 'k6_http_server_errors_count',
-                  keepTags: ['scenario', 'group', 'name', 'method']
-              }
-          ], 
-          
+            // keep vus metrics for whole test run
+            'vus',
+            // total byte count for data sent/received by k6
+            'data_sent',
+            'data_received',
+
+            // export checks metric, keeping 'check' (name of the check) tag
+            {
+              sourceMetric: 'checks',
+              keepTags: ['check'],
+            },
+
+            // export HTTP durations from 'default' scenario,
+            // keeping only successful response codes (2xx, 3xx), using regex selector syntax
+            {
+              sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+              targetMetric: 'k6_http_request_duration', // name of metric as it appears in Azure Monitor
+              keepTags: ['name', 'method', 'status'],
+            },
+
+            // count HTTP responses with status 500
+            {
+              sourceMetric: 'http_reqs{status="500"}',
+              targetMetric: 'k6_http_server_errors_count',
+              keepTags: ['scenario', 'group', 'name', 'method'],
+            },
+          ],
         },
       ],
     },
