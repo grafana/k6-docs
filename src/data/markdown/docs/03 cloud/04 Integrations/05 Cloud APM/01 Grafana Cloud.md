@@ -119,7 +119,7 @@ export const options = {
 
 #### Metric configuration
 
-Each entry in `metrics` parameter can be an object with following keys:
+Each entry in the `metrics` parameter can be an object with the following keys:
 
 | Name                              | Description                                                                                                                                                                                                                                                                                       |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
