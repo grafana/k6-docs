@@ -11,28 +11,20 @@ There are known issues with this feature. See [issue #471](https://github.com/gr
 
 Use this method to select an `input` checkbox.
 
-| Parameter | Type   | Description                               |
-| --------- | ------ | ----------------------------------------- |
-| options   | object | See [options](#options) for more details. |
+<TableWithNestedRows>
 
-### options
+| Parameter           | Type    | Default | Description                                                                                                                                                                                                                           |
+|---------------------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| options             | object  | `null`  |                                                                                                                                                                                                                      |
+| options.force       | boolean | `false` | Setting this to `true` will bypass the actionability checks (`visible`, `stable`, `enabled`).                                                                                                                                         |
+| options.noWaitAfter | boolean | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                            |
+| options.position    | object  | `null`  | A point to use relative to the top left corner of the element. If not supplied, a visible point of the element is used.                                                                                                               |
+| options.position.x  | number  | `0`     | The x coordinate.                                                                                                                                                                                                                     |
+| options.position.y  | number  | `0`     | The y coordinate.                                                                                                                                                                                                                     |
+| options.timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
+| options.trial       | boolean | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                           |
 
-<!-- vale off -->
-
-| Option      | Type    | Default | Description                                                                                                                                                                                                                           |
-|-------------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| force       | boolean | `false` | Setting this to `true` will bypass the actionability checks (`visible`, `stable`, `enabled`).                                                                                                                                         |
-| noWaitAfter | boolean | `false` | If set to `true` and a navigation occurs from performing this action, it will not wait for it to complete.                                                                                                                            |
-| position    | object  | `null`  | A point to use relative to the top left corner of the element. If not supplied, a visible point of the element is used. See [position](#position) for more details.                                                                   |
-| timeout     | number  | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/xk6-browser/browsercontext/) or [Page](/javascript-api/xk6-browser/page/). |
-| trial       | boolean | `false` | Setting this to `true` will perform the actionability checks without performing the action.                                                                                                                                           |
-
-### position
-
-| variable | Type   | Description       |
-|----------|--------|-------------------|
-| x        | number | The x coordinate. |
-| y        | number | The y coordinate. |
+</TableWithNestedRows>
 
 ### Example
 
