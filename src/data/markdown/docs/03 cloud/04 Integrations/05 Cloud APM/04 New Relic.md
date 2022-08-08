@@ -116,24 +116,23 @@ export const options = {
 | targetMetric                      | Name of resulting metric in New Relic. If not specified, will use the name `k6.{sourceMetric}`.                                                                                                                                                                                                   |
 | keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
 
+<Blockquote mod="warning"
+title="keepTags can have a high cost">
 
-<Blockquote mod="warning">
+Most cloud platforms charge clients based on the number of time series stored.
 
-#### Possible high costs of using `keepTags`
+When exporting a metric, every combination of kept-tag values becomes a distinct time series in Prometheus.
+While this granularity can help test analysis, it will incur high costs with thousands of time series.
 
-Most cloud platformscharge clients based on number of time series stored.
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls many dynamic URLs, the number of produced time series can build up very quickly.
+Refer to [URL Grouping](/using-k6/http-requests#url-grouping) for how to reduce the value count for a `name` tag.
 
-When exporting a metric, every combination of kept tag values will become a distinct time series. 
-This can be very useful for analyzing load test results, but will incur high costs if there are thousands of time series produced. 
-
-For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls a lot of dynamic URLs, the number of produced time series can build up very quickly.
-See [URL Grouping](/using-k6/http-requests#url-grouping) on how to reduce value count for `name` tag.
-
-We recommend only exporting tags that are really necessary and don't have a lot of distinct values.
+k6 recommends exporting only tags that are necessary and don't have many distinct values.
 
 </Blockquote>
 
 #### Metric configuration detailed example
+
 ```javascript
 export const options = {
   ext: {
