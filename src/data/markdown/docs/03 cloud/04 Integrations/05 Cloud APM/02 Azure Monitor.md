@@ -94,11 +94,15 @@ export const options = {
 | azureRegion                            | The `azureRegion` you've created your Azure configurations. See the list of [supported regions](#supported-regions). Default is `eastus`.                                                                         |
 | includeDefaultMetrics                  | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.     |
 <<<<<<< HEAD
+<<<<<<< HEAD
 | metrics                                | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                             |
 | includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 minute periods.                                                                                                   |
 =======
 | metrics                                | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                            |
+=======
+| metrics                                | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                            |
+>>>>>>> 27bbb324 (removes directional language)
 | includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 period.                                                                                                           |
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)

@@ -104,10 +104,14 @@ export const options = {
 | credentials                         | The credentials to authenticate with New Relic. It has a `token` parameter to set the license key. <br/> The `credentials` parameter is optional when the license key is passed via the `X-License-Key` query param on the `remoteWriteURL` parameter. |
 | includeDefaultMetrics               | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                          |
 <<<<<<< HEAD
+<<<<<<< HEAD
 | metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                  |
 =======
 | metrics                             | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                                                                 |
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+| metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                 |
+>>>>>>> 27bbb324 (removes directional language)
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                      |
 | resampleRate                        | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10.                                                                                                 |
 
