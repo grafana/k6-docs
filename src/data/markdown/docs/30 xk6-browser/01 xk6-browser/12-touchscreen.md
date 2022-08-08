@@ -3,6 +3,8 @@ title: "Touchscreen"
 excerpt: "xk6-browser: Touchscreen Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |

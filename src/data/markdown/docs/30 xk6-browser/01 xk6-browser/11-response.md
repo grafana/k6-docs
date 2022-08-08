@@ -3,6 +3,8 @@ title: "Response"
 excerpt: "xk6-browser: Response Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |

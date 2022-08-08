@@ -3,6 +3,8 @@ title: "JSHandle"
 excerpt: "xk6-browser: JSHandle Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
