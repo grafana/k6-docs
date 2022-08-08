@@ -3,6 +3,8 @@ title: "Request"
 excerpt: "xk6-browser: Request Class"
 ---
 
+<BrowserDocsWIP/>
+
 ## Supported APIs
 
 | Method | Playwright Relevant Distinctions |
