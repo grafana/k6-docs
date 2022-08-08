@@ -225,7 +225,6 @@ for (let id = 1; id <= 1000; id++) {
   - Download and install the latest release of k6 [here](/getting-started/installation) or upgrade your packages if relevant.
   - Update the k6 binary that your CI/CD pipeline uses for running tests.
   - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
-  - If you have questions about which version of k6 to use, please contact our [Support team](mailto:support@k6.io).
 
 ## Health alerts
 
