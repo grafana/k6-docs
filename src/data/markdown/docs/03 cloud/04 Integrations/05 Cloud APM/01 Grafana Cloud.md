@@ -145,6 +145,7 @@ export const options = {
 #### Metric configuration
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Each entry in the `metrics` parameter can be an object with the following keys:
 
 | Name                              | Description                                                                                                                                                                                                                                                                                   |
@@ -172,6 +173,9 @@ _Read more_: [Time series dimensions](https://grafana.com/docs/grafana/latest/ba
 
 =======
 Each entry in `metrics` parameter can be an object with following keys:
+=======
+Each entry in the `metrics` parameter can be an object with the following keys:
+>>>>>>> 1813789a (adds missing article)
 
 | Name                              | Description                                                                                                                                                                                                                                                                                       |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
