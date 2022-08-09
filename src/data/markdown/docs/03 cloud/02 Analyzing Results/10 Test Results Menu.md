@@ -22,9 +22,15 @@ To do any of these actions, use the vertical-dots icon to open the *Test Result 
 
 Besides [saving a test as a baseline](./test-comparison), you can also save a test to persist its data.
 
-> ⓘ **Each premium k6 Cloud subscription can save some number of test results indefinitely.**
->
-> Your subscription level determines how many tests you can save.
+
+<Blockquote mod="info"
+title="Each premium k6 Cloud subscription can save some number of test results indefinitely.">
+
+Your subscription level determines how many tests you can save.
+
+</Blockquote>
+
+
 
 To save a test run, follow these steps:
 1. Use the three-dot icon in the top-right corner of your test run.
