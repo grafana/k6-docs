@@ -49,10 +49,10 @@ Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext
 ### deviceScaleFactor example
 
 ```javascript
-import k6b from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = k6b.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
   });
 

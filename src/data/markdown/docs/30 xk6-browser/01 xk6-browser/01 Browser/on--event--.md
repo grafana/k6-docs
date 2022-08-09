@@ -25,11 +25,11 @@ The returned promise will be resolved when the Browser disconnects from the brow
 <!-- eslint-skip -->
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 import { check, sleep } from 'k6';
 
 export default function() {
-  const browser = launcher.launch('chromium');
+  const browser = chromium.launch();
 
   check(browser, {
     'should be connected after launch': browser.isConnected(),
