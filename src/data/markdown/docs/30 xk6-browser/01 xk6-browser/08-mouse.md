@@ -3,19 +3,15 @@ title: "Mouse"
 excerpt: "xk6-browser: Mouse Class"
 ---
 
-<BrowserCompatibility/>
+<BrowserDocsWIP/>
 
+## Supported APIs
 
-- [mouse.click(x, y[, options])](#mouse-click-x-y-options)
-- [mouse.dblclick(x, y[, options])](#mouse-dblclick-x-y-options)
-- [mouse.down([options])](#mouse-down-options)
-- [mouse.move(x, y[, options])](#mouse-move-x-y-options)
-- [mouse.up([options])](#mouse-up-options)
-- [mouse.wheel(deltaX, deltaY)](#mouse-wheel-deltax-deltay)
-
-## mouse.click(x, y[, options])
-## mouse.dblclick(x, y[, options])
-## mouse.down([options])
-## mouse.move(x, y[, options])
-## mouse.up([options])
-## mouse.wheel(deltaX, deltaY)
+| Method | Playwright Relevant Distinctions |
+| - |  - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-click" target="_blank" >mouse.click(x, y[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-dblclick" target="_blank" >mouse.dblclick(x, y[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-down" target="_blank" >mouse.down([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-move" target="_blank" >mouse.move(x, y[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-up" target="_blank" >mouse.up([options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-mouse#mouse-wheel" target="_blank" >mouse.wheel(deltaX, deltaY)</a> | - |

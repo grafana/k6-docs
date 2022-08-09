@@ -3,60 +3,23 @@ title: "Request"
 excerpt: "xk6-browser: Request Class"
 ---
 
-<BrowserCompatibility/>
+<BrowserDocsWIP/>
 
-- [request.allHeaders()](#request-allheaders)
-- [request.failure()](#request-failure)
-- [request.frame()](#request-frame)
-- [request.headers()](#request-headers)
-- [request.headersArray()](#request-headersarray)
-- [request.headerValue(name)](#request-headervalue-name)
-- [request.isNavigationRequest()](#request-isnavigationrequest)
-- [request.method()](#request-method)
-- [request.postData()](#request-postdata)
-- [request.postDataBuffer()](#request-postdatabuffer)
-- [request.postDataJSON()](#request-postdatajson)
-- [request.redirectedFrom()](#request-redirectedfrom)
-- [request.redirectedTo()](#request-redirectedto)
-- [request.resourceType()](#request-resourcetype)
-- [request.response()](#request-response)
-- [request.sizes()](#request-sizes)
-- [request.timing()](#request-timing)
-- [request.url()](#request-url)
+## Supported APIs
 
-## request.allHeaders()
-
-## request.failure()
-
-## request.frame()
-
-## request.headers()
-
-## request.headersArray()
-
-## request.headerValue(name)
-
-## request.isNavigationRequest()
-
-## request.method()
-
-## request.postData()
-
-## request.postDataBuffer()
-
-## request.postDataJSON()
-
-## request.redirectedFrom()
-
-## request.redirectedTo()
-
-## request.resourceType()
-
-## request.response()
-
-## request.sizes()
-
-## request.timing()
-
-## request.url()
-
+| Method | Playwright Relevant Distinctions |
+| - |  - |
+| <a href="https://playwright.dev/docs/api/class-request#request-all-headers" target="_blank" >request.allHeaders()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-frame" target="_blank" >request.frame()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-headers" target="_blank" >request.headers()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-headers-array" target="_blank" >request.headersArray()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-header-value" target="_blank" >request.headerValue(name)</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-is-navigation-request" target="_blank" >request.isNavigationRequest()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-method" target="_blank" >request.method()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-post-data" target="_blank" >request.postData()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-post-data-buffer" target="_blank" >request.postDataBuffer()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-resource-type" target="_blank" >request.resourceType()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-response" target="_blank" >request.response()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-sizes" target="_blank" >request.sizes()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-timing" target="_blank" >request.timing()</a> | - |
+| <a href="https://playwright.dev/docs/api/class-request#request-url" target="_blank" >request.url()</a> | - |
