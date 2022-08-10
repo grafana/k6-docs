@@ -55,7 +55,7 @@ method of the output interface.
 
   // AddMetricSamples receives metric samples from the k6 Engine as they're emitted.
   func (l *Logger) AddMetricSamples(samples []metrics.SampleContainer) {
-          for _, sample := range samples {
+      for _, sample := range samples {
           all := sample.GetSamples()
           fmt.Fprintf(l.out, "%s [%s]\n", all[0].GetTime().Format(time.RFC3339Nano), metricKeyValues(all))
       }
