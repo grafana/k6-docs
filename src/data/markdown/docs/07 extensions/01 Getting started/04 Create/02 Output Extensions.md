@@ -3,16 +3,17 @@ title: 'Output Extensions'
 excerpt: 'Follow these steps to build an output extension for k6.'
 ---
 
-Create a custom output extension if you wish to store or alter metrics captured during an active k6 test.
-Out of the box, k6 already provides multiple destinations and metric types, but we cannot directly support all possibilities.
+k6 provides many destinations and metric types, but it cannot directly support all possibilities.
+If you want to store or alter metrics captured during an active k6 test,
+you can create a custom output extension.
 
 Some potential reasons for a custom extension could include:
-* Support a time-series database not already supported
-* add derived metrics data for storage
-* filter metrics to only that data you care about
+* To support a time-series database not already supported
+* To add derived metrics data for storage
+* To filter metrics to only the data you care about
 
-Like [JavaScript extensions](/extensions/getting-started/create/javascript-extensions/), output extensions rely
-on the extension author to implement specific APIs.
+Like [JavaScript extensions](/extensions/getting-started/create/javascript-extensions/),
+output extensions rely on the extension author to implement specific APIs.
 
 ## Before you start:
 
@@ -28,60 +29,64 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 
 ## Write a simple extension
 
-First, set up a directory to work in.
+1. Set up a directory to work in.
 
-```bash
-$ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
-```
+  ```bash
+  $ mkdir xk6-output-logger; cd xk6-output-logger; go mod init xk6-output-logger
+  ```
 
-The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
+1. The core of an Output extension is a struct that implements the [`output.Output`](https://pkg.go.dev/go.k6.io/k6/output#Output)
 interface.
 
-We'll create a simple example that outputs each set of metrics to the console as received by the `AddMetricSamples(samples []metrics.SampleContainer)`
+  Create a simple example that outputs each set of metrics to the console as received by the `AddMetricSamples(samples []metrics.SampleContainer)`
 method of the output interface.
 
-```go
-package log
+  ```go
+  package log
 
-import (
-    "fmt"
-	"strings"
-	"time"
+  import (
+      "fmt"
+      "strings"
+      "time"
 
-    "go.k6.io/k6/metrics"
-    "go.k6.io/k6/output"
-)
+      "go.k6.io/k6/metrics"
+      "go.k6.io/k6/output"
+  )
 
-// AddMetricSamples receives metric samples from the k6 Engine as they're emitted.
-func (l *Logger) AddMetricSamples(samples []metrics.SampleContainer) {
-    for _, sample := range samples {
-        all := sample.GetSamples()
-        fmt.Fprintf(l.out, "%s [%s]\n", all[0].GetTime().Format(time.RFC3339Nano), metricKeyValues(all))
-    }
-}
+  // AddMetricSamples receives metric samples from the k6 Engine as they're emitted.
+  func (l *Logger) AddMetricSamples(samples []metrics.SampleContainer) {
+      for _, sample := range samples {
+          all := sample.GetSamples()
+          fmt.Fprintf(l.out, "%s [%s]\n", all[0].GetTime().Format(time.RFC3339Nano), metricKeyValues(all))
+      }
+  }
 
-// metricKeyValues returns a string of key-value pairs for all metrics in the sample.
-func metricKeyValues(samples []metrics.Sample) string {
-    names := make([]string, 0, len(samples))
-    for _, sample := range samples {
-        names = append(names, fmt.Sprintf("%s=%v", sample.Metric.Name, sample.Value))
-    }
-    return strings.Join(names, ", ")
-}
-```
+  // metricKeyValues returns a string of key-value pairs for all metrics in the sample.
+  func metricKeyValues(samples []metrics.Sample) string {
+      names := make([]string, 0, len(samples))
+      for _, sample := range samples {
+          names = append(names, fmt.Sprintf("%s=%v", sample.Metric.Name, sample.Value))
+      }
+      return strings.Join(names, ", ")
+  }
+  ```
 
-Register the module to use these from k6 test scripts.
+1. Register the module to use these from k6 test scripts.
 
-```go
-import "go.k6.io/k6/output"
+  ```go
+  import "go.k6.io/k6/output"
 
-// init is called by the Go runtime at application startup.
-func init() {
-	output.RegisterExtension("logger", New)
-}
-```
+  // init is called by the Go runtime at application startup.
+  func init() {
+      output.RegisterExtension("logger", New)
+  }
+  ```
 
-> The registered name must be used with the `-o`, or `--out` argument when running k6!
+<Blockquote mod="note" title="">
+
+You must use the registered with the `-o`, or `--out` flag when running k6!
+
+</Blockquote>
 
 The final extension code looks like this:
 
@@ -169,37 +174,51 @@ To build a k6 binary with this extension, run:
 ```bash
 $ xk6 build --with xk6-output-logger=.
 ```
-> When building from source code, `xk6-output-logger` is the Go module name passed to `go mod init`.
-> Usually, this would be a URL similar to `github.com/grafana/xk6-output-logger`.
+
+<Blockquote mod="note"
+title="">
+
+`xk6-output-logger` is the Go module name passed to `go mod init`
+
+Usually, this would be a URL similar to `github.com/grafana/xk6-output-logger`.
+
+</Blockquote>
+
 
 ## Use your extension
 
-Now we can use the extension with a test script!
+Now we can use the extension with a test script.
 
-<CodeGroup labels={["test.js"]} lineNumbers={[true]}>
+1. In new JavaScript file, make some simple test logic.
 
-```javascript
-import http from 'k6/http';
-import { sleep } from 'k6';
+  <CodeGroup labels={["test.js"]} lineNumbers={[true]}>
 
-export default function () {
-  http.get('https://test-api.k6.io');
-  sleep(0.5);
-}
-```
+  ```javascript
+  import http from 'k6/http';
+  import { sleep } from 'k6';
 
-</CodeGroup>
+  export default function () {
+    http.get('https://test-api.k6.io');
+    sleep(0.5);
+  }
+  ```
 
-Now, let's run the test.
+  </CodeGroup>
 
-```bash
-$ ./k6 run test.js -o logger --quiet --no-summary --iterations 2
-```
+1. Now, run the test.
 
-> Take note of the `-o logger` argument. This is what tells k6 to use your custom output. Also, we're using
-> `--quiet --no-summary` in order to only show our custom output.
+  ```bash
+  $ ./k6 run test.js -o logger --quiet --no-summary --iterations 2
+  ```
 
-Your output should be similar to the following:
+<Blockquote mod="note" title="">
+
+The `-o logger` argument tells k6 to use your custom output. The flag
+`--quiet --no-summary` configures k6 to show only custom output.
+
+</Blockquote>
+
+Your output should look something like this:
 
 ```shell
 2022-07-01T08:55:09.59272-05:00 [http_reqs=1, http_req_duration=117.003, http_req_blocked=558.983, http_req_connecting=54.135, http_req_tls_handshaking=477.198, http_req_sending=0.102, http_req_waiting=116.544, http_req_receiving=0.357, http_req_failed=0]
@@ -223,3 +242,4 @@ Your output should be similar to the following:
   for your output extension.
 
 > Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).
+
