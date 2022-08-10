@@ -5,6 +5,7 @@ excerpt: The IPs that k6 Cloud tests run on, and how many VUs can run on each IP
 
 When you look at k6 tests from the side of your server, it's often helpful to
 <<<<<<< HEAD
+<<<<<<< HEAD
 know which IPs are associated with k6 Cloud tests.
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
@@ -16,6 +17,9 @@ refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-r
 If you prefer to view the ranges directly,  this [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators.
 =======
 know which IPs are associated with k6 Cloud tests. 
+=======
+know which IPs are associated with k6 Cloud tests.
+>>>>>>> 5b3a8b50 (Description lists for PLZs and status codes)
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
 
@@ -96,6 +100,7 @@ Note that these are the _defaults_. If your tests have specific requirements, pl
 
 </Blockquote>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
@@ -103,3 +108,5 @@ Note that these are the _defaults_. If your tests have specific requirements, pl
 
 
 >>>>>>> 4f4aa3dc (Destructure General FAQ)
+=======
+>>>>>>> 5b3a8b50 (Description lists for PLZs and status codes)
