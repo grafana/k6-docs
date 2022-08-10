@@ -45,18 +45,18 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 
   // Compare is the type for our custom API.
   type Compare struct{
-	  ComparisonResult string // textual description of the most recent comparison
+      ComparisonResult string // textual description of the most recent comparison
   }
 
   // IsGreater returns true if a is greater than b, or false otherwise, setting textual result message.
   func (c *Compare) IsGreater(a, b int) bool {
-	  if a > b {
-		  c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
-		  return true
-	  } else {
-		  c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
-		  return false
-	  }
+      if a > b {
+          c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
+          return true
+      } else {
+          c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
+          return false
+      }
   }
   ```
 
@@ -74,7 +74,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
 
   // init is called by the Go runtime at application startup.
   func init() {
-	  modules.Register("k6/x/compare", new(Compare))
+      modules.Register("k6/x/compare", new(Compare))
   }
   ```
 
@@ -86,29 +86,29 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
   package compare
 
   import (
-	  "fmt"
-	  "go.k6.io/k6/js/modules"
+      "fmt"
+      "go.k6.io/k6/js/modules"
   )
 
   // init is called by the Go runtime at application startup.
   func init() {
-	  modules.Register("k6/x/compare", new(Compare))
+      modules.Register("k6/x/compare", new(Compare))
   }
 
   // Compare is the type for our custom API.
   type Compare struct{
-	  ComparisonResult string // textual description of the most recent comparison
+      ComparisonResult string // textual description of the most recent comparison
   }
 
   // IsGreater returns true if a is greater than b, or false otherwise, setting textual result message.
   func (c *Compare) IsGreater(a, b int) bool {
-	  if a > b {
-		  c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
-		  return true
-	  } else {
-		  c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
-		  return false
-	  }
+      if a > b {
+          c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
+          return true
+      } else {
+          c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
+          return false
+      }
   }
   ```
 
@@ -188,70 +188,70 @@ Here's what that would look like:
 package compare
 
 import (
-	"fmt"
-	"go.k6.io/k6/js/modules"
+    "fmt"
+    "go.k6.io/k6/js/modules"
 )
 
 // init is called by the Go runtime at application startup.
 func init() {
-	modules.Register("k6/x/compare", New())
+    modules.Register("k6/x/compare", New())
 }
 
 type (
-	// RootModule is the global module instance that will create module
-	// instances for each VU.
-	RootModule struct{}
+    // RootModule is the global module instance that will create module
+    // instances for each VU.
+    RootModule struct{}
 
-	// ModuleInstance represents an instance of the JS module.
-	ModuleInstance struct {
-		// vu provides methods for accessing internal k6 objects for a VU
-		vu modules.VU
-		// comparator is the exported type
-		comparator *Compare
-	}
+    // ModuleInstance represents an instance of the JS module.
+    ModuleInstance struct {
+        // vu provides methods for accessing internal k6 objects for a VU
+        vu modules.VU
+        // comparator is the exported type
+        comparator *Compare
+    }
 )
 
 // Ensure the interfaces are implemented correctly.
 var (
-	_ modules.Instance = &ModuleInstance{}
-	_ modules.Module   = &RootModule{}
+    _ modules.Instance = &ModuleInstance{}
+    _ modules.Module   = &RootModule{}
 )
 
 // New returns a pointer to a new RootModule instance.
 func New() *RootModule {
-	return &RootModule{}
+    return &RootModule{}
 }
 
 // NewModuleInstance implements the modules.Module interface returning a new instance for each VU.
 func (*RootModule) NewModuleInstance(vu modules.VU) modules.Instance {
-	return &ModuleInstance{
-		vu: vu,
-		comparator: &Compare{vu: vu}
-	}
+    return &ModuleInstance{
+        vu: vu,
+        comparator: &Compare{vu: vu}
+    }
 }
 
 // Compare is the type for our custom API.
 type Compare struct{
-	vu modules.VU           // provides methods for accessing internal k6 objects
-	ComparisonResult string // textual description of the most recent comparison
+    vu modules.VU           // provides methods for accessing internal k6 objects
+    ComparisonResult string // textual description of the most recent comparison
 }
 
 // IsGreater returns true if a is greater than b, or false otherwise, setting textual result message.
 func (c *Compare) IsGreater(a, b int) bool {
-	if a > b {
-		c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
-		return true
-	} else {
-		c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
-		return false
-	}
+    if a > b {
+        c.ComparisonResult = fmt.Sprintf("%d is greater than %d", a, b)
+        return true
+    } else {
+        c.ComparisonResult = fmt.Sprintf("%d is NOT greater than %d", a, b)
+    return false
+    }
 }
 
 // Exports implements the modules.Instance interface and returns the exported types for the JS module.
 func (mi *ModuleInstance) Exports() modules.Exports {
-	return modules.Exports{
-		Default: c.comparator
-	}
+    return modules.Exports{
+        Default: c.comparator
+    }
 }
 ```
 
