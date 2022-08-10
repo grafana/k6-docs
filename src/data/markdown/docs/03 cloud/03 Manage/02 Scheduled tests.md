@@ -4,11 +4,10 @@ excerpt: 'How to schedule your k6 Cloud load tests to run in the future and at r
 slug: '/cloud/manage/scheduled-tests'
 ---
 
-Unlike cloud servers, humans can't be "on" all the time.
 At times, it might be impossible for you to manually run a cloud test at the time you want to.
 
 In k6 Cloud, you can schedule tests to run at fixed times and regular intervals.
-There are many particular reasons to schedule a test, but the broad motivations are as follows:
+The particular reasons to schedule a test depend on use cases, but the broad motivations are usually as follows:
 
 - **To test at inconvenient hours**
 
