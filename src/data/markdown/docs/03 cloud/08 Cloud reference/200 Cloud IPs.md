@@ -4,11 +4,11 @@ excerpt: The IPs that k6 Cloud tests run on, and how many VUs can run on each IP
 ---
 
 When you look at k6 tests from the side of your server, it's often helpful to
-know which IPs are associated with k6 Cloud tests.
+know which IPs are associated with k6 Cloud tests. 
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
 
-k6 Cloud uses AWS for load generators.
+k6 uses AWS for cloud load generators.
 For the IP addresses used in the different load zones and filtering methods,
 refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
