@@ -257,7 +257,7 @@ This holds test-run data for the test run that triggered the event.
 | `test.was_scheduled`   | `int` | 1 or 0 depending on if this was a scheduled test or not               |
 | `test.started`         | `str` | ISO time stamp for when test-run started (GMT)                        |
 | `test.ended`           | `str` | ISO time stamp for when test-run ended (GMT)                          |
-| `test.status`          | `int` | The [run-status code](/cloud/cloud-faq/test-status-codes) of the test |
+| `test.status`          | `int` | The [run-status code](/cloud/cloud-reference/test-status-codes/)      |
 | `test.status_text`     | `str` | Run-status as human-readable text ("Finished", "Timed out" etc)       |
 | `test.result`          | `int` | Is `0` if passed, `1` if failed                                       |
 | `test.result_text`     | `str` | Result as text ("Passed"/"Failed")                                    |

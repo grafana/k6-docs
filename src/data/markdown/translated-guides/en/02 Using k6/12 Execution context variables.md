@@ -99,7 +99,7 @@ The variable is 0 when executing the setup and teardown functions.
 ### Running in k6 Cloud
 
 When you run tests in [k6 Cloud](/cloud), the **\_\_VU** value is per server/load generator.
-Read the details in the [cloud docs](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
+Read the details in the [cloud docs](/cloud/cloud-reference/cloud-ips/).
 
 ### Examples
 
