@@ -50,27 +50,25 @@ The test artifacts (the test script and any test data) are transferred to your A
 
 ## FAQs about private load zones
 
-**Is running a test on a private load zone the same as running it on-premises?**
+<DescriptionList>
 
-No. In an on-premises load test, the test is executed on machines in your data center. You would have to physically provision and maintain these machines. We are working on a way to run distributed load tests entirely on-premise, but this feature is not yet available.
+Is running a test on a private load zone the same as running it on-premises?
+: No. In an on-premises load test, the test is executed on machines in your data center. You would have to physically provision and maintain these machines. We are working on a way to run distributed load tests entirely on-premise, but this feature is not yet available.
+: When you run a test on a private load zone, the test is executed on instances started in your AWS cloud account. These machines are physically located in geographical zones that you specify during setup.
 
-When you run a test on a private load zone, the test is executed on instances started in your AWS cloud account. These machines are physically located in geographical zones that you specify during setup.
+Can you start private load zones in Azure, GCP, or other cloud providers?
+: No. At the moment, you can only start private load zones in AWS.
 
-**Can you start private load zones in Azure, GCP, or other cloud providers?**
+Can I use a mix of private and public load zones?
+: Yes, you can run tests on a combination of private and public load zones on k6 Cloud, and you can specify the percentage of load that you'd like to run on each zone within the script or within Test Builder.
 
-No. At the moment, you can only start private load zones in AWS.
+How long does it take to start a test on a private load zone?
+: Once a private load zone has been set up, it will take only slightly more time to start a test on it than it would on a public load zone. This is because we reuse public load generators to improve startup time, but we can't use this strategy for private load zones at this point. However, the difference between the two shouldn't be more than a few seconds.
 
-**Can I use a mix of private and public load zones?**
+Can I get live cloud logs from my private load zone?
+: You'll be able to get all the *metrics* (response time, rps, errors, etc.) from k6, but at the moment, you won't be able to see log output from load generators within private load zones. We intend to address this in the future.
 
-Yes, you can run tests on a combination of private and public load zones on k6 Cloud, and you can specify the percentage of load that you'd like to run on each zone within the script or within Test Builder.
-
-**How long does it take to start a test on a private load zone?**
-
-Once a private load zone has been set up, it will take only slightly more time to start a test on it than it would on a public load zone. This is because we reuse public load generators to improve startup time, but we can't use this strategy for private load zones at this point. However, the difference between the two shouldn't be more than a few seconds.
-
-**Can I get live cloud logs from my private load zone?**
-
-You'll be able to get all the *metrics* (response time, rps, errors, etc.) from k6, but at the moment, you won't be able to see log output from load generators within private load zones. We intend to address this in the future.
+</DescriptionList>
 
 ## Read more
 

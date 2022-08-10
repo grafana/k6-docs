@@ -4,7 +4,7 @@ excerpt: The IPs that k6 Cloud tests run on, and how many VUs can run on each IP
 ---
 
 When you look at k6 tests from the side of your server, it's often helpful to
-know which IPs are associated with k6 Cloud tests. 
+know which IPs are associated with k6 Cloud tests.
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
 
@@ -67,8 +67,3 @@ If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 se
 Note that these are the _defaults_. If your tests have specific requirements, please contact k6 support for a custom solution.
 
 </Blockquote>
-
-
-
-
-
