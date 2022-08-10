@@ -172,5 +172,5 @@ If you want to integrate k6 into your CI pipeline, here's the recommended approa
 
 - **Read more**.
   - [Environment Variables](/using-k6/environment-variables/)
-  - [Automated performance testing guide](/automated-performance-testing/).
+  - [Automated performance testing guide](/testing-guides/automated-performance-testing/).
 
