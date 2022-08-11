@@ -11,6 +11,7 @@
   opacity: 0;
   transition: 0.3s;
   visibility: hidden;
+  min-height: 100vh;
 
   &.visible {
     opacity: 1;
@@ -23,7 +24,7 @@
   flex-direction: column;
   height: 100%;
   min-height: 450px;
-  padding-top: 85px;
+  padding-top: 100px;
   padding-bottom: 20px;
 }
 
@@ -39,7 +40,7 @@
 
 .logo {
   display: block;
-  height: 45px;
+  height: 61px;
   fill: $color-primary;
 }
 
@@ -87,7 +88,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   list-style-type: none;
   padding-left: 0;
   margin-top: 0;
@@ -120,6 +121,6 @@
 .button {
   width: 100%;
   &:last-child {
-    margin-top: 15px;
+    margin-top: 10px;
   }
 }
