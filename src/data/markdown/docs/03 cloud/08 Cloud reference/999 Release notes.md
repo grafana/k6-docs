@@ -4,7 +4,21 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
-### v3.8.0 `(2022-07-05)`
+### `v0.4.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-8-10)`
+- Add ability to edit and create tests.
+- Add support for dynamic dashboard variables.
+- Display load zone info in Runs view.
+- Improve number and date formatting.
+
+### v3.8.2 `(2022-7-14)`
+- Integrate in-app support with the Zendesk widget.
+
+### v3.8.1 `(2022-7-7)`
+- Fix: Update API token pages copy.
+- Fix: Disable toast error for unsubscribed APM.
+- Fix: NaN and wrong colors in PDF tables.
+
+### v3.8.0 `(2022-7-5)`
 - Support for [organization-level tokens](/cloud/integrations/token/).
 
 ### v3.7.0 `(2022-6-14)`
@@ -27,6 +41,13 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ### v3.4.3.internal `(2022-4-26)`
 - Internal: improve cloud service stability and reliability.
 - Fix: [private load zones](/cloud/cloud-reference/test-status-codes/) authentication.
+
+### `v0.3.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-4-25)`
+
+- Simplify the Plugin Setup.
+- Fix: include private load zones.
+- Fix: show correct flag for South Africa load zones.
+- Fix: show small trending chart bar for runs without response times.
 
 ### v3.4.3 `(2022-4-19)`
 - Edit note icon.
@@ -59,6 +80,11 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Show the VUh counter on subscriptions view.
 - Fix: use the 95th percentile in test summary.
 - Fix:  ramping arrival rate validation on the [TestBuilder](/test-authoring/test-builder/).
+
+### `v0.2.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-2-24)`
+- Cache fetched data and refresh it in background.
+- Add error handling and loading indicators.
+- Add additional meta bar info.
 
 ### v3.2.1 `(2022-2-24)`
 - When recording a session, preserve `postData.decoded` data to handle form values with `%` symbols.
@@ -108,8 +134,8 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Update integrations page.
 - Fix: Hide "Aborted by script error Edit Script button" for k6 to ingest tests.
 
-### Grafana k6 Cloud App `(2021-12-23)`
-- https://grafana.com/grafana/plugins/grafana-k6-app/
+### `v0.1.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2021-12-23)`
+- Release launch
 
 ### v1.7.0 `(2021-11-23)`
 - Improve the script editor input and move it to breadcrumb.
