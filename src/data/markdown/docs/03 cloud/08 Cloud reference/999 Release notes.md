@@ -65,6 +65,13 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Fix: show correct flag for South Africa load zones.
 - Fix: show small trending chart bar for runs without response times.
 
+### `v0.3.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-4-25)`
+
+- Simplify the Plugin Setup.
+- Fix: include private load zones.
+- Fix: show correct flag for South Africa load zones.
+- Fix: show small trending chart bar for runs without response times.
+
 ### v3.4.3 `(2022-4-19)`
 - Edit note icon.
 
