@@ -1,7 +1,6 @@
 ---
 title: 'About data retention'
 excerpt: 'What is k6 data retention and how does it work?'
-slug: '/cloud/billing-user-menu/data-retention/'
 ---
 
 Your _data retention policy_ specifies how long the k6 Cloud service keeps your test-result data.
