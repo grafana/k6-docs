@@ -46,10 +46,6 @@ Note that in the case of redirects, all the information in the Response object w
 | [Response.html()](/javascript-api/k6-http/response/response-html)                              | function | Returns an object that supports [Selection.find(selector)](/javascript-api/k6-html/selection/selection-find).                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [Response.json( [selector] )](/javascript-api/k6-http/response/response-json)         | function | Parses the response body data as JSON and returns a JS object or array. This call caches the deserialized JSON data, additional calls will return the cached data. An optional selector can be specified to extract a specific part of the data, see [here for selector syntax](https://github.com/tidwall/gjson#path-syntax).                                                                                                                                                                                              |
 | [Response.submitForm( [params] )](/javascript-api/k6-http/response/response-submitform) | function | Parses response as HTML, parses the specified form (defaults to looking for a "form" element) with option to override fields and then submits form taking form's `method` and `action` into account.                                                                                                                                                                                                                                                                                                                        |
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ad66b02 (API; Returns disappeared response function)
 
 
 ### Example
