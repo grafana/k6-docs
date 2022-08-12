@@ -84,7 +84,18 @@ export const options = {
             password: '<Grafana Cloud API key of type MetricsPublisher>',
           },
           // optional parameters
-          metrics: ['http_req_sending', 'my_rate', 'my_gauge'], // ...
+          metrics: [
+            'vus',
+            'http_req_duration',
+            'my_rate_metric',
+            'my_gauge_metric',
+            // create a metric by counting HTTP responses with status 500
+            {
+              sourceMetric: 'http_reqs{status="500"}',
+              targetMetric: 'k6_http_server_errors_count',
+            },
+          ],
+          // for advanced metric configuration see example belod
           includeDefaultMetrics: true,
           includeTestRunId: false,
         },
@@ -96,16 +107,88 @@ export const options = {
 
 ### Configuration parameters
 
-| Name                    | Description                                                                                                                                                                                |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| provider<sup>(required)</sup>            | For this integration, the value must be `prometheus`.
-| remoteWriteURL<sup>(required)</sup>        | URL of the Prometheus remote write endpoint. <br/> For example: `https://prometheus-us-central1.grafana.net/api/prom/push`.                                                                                                |
-| credentials<sup>(required)</sup>         | The credentials to authenticate with the Grafana Cloud Prometheus instance. The required parameters are: <br/> - username: the Prometheus username or instance ID. <br/> - password: a Grafana Cloud API key of type `MetricsPublisher`. |
-| includeDefaultMetrics | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`. |
-| metrics               | List of built-in and custom metrics to export. <br/> Metric names are validated against the [Prometheus metric name conventions](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)—ignoring nonconforming metrics.                                      |
-| includeTestRunId      | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
-| resampleRate          | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10. |
+| Name                                | Description                                                                                                                                                                                                                              |
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| provider<sup>(required)</sup>       | For this integration, the value must be `prometheus`.                                                                                                                                                                                    |
+| remoteWriteURL<sup>(required)</sup> | URL of the Prometheus remote write endpoint. <br/> For example: `https://prometheus-us-central1.grafana.net/api/prom/push`.                                                                                                              |
+| credentials<sup>(required)</sup>    | The credentials to authenticate with the Grafana Cloud Prometheus instance. The required parameters are: <br/> - username: the Prometheus username or instance ID. <br/> - password: a Grafana Cloud API key of type `MetricsPublisher`. |
+| includeDefaultMetrics               | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                          |
+| metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                    |
+| includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                        |
+| resampleRate                        | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                 |
 
+#### Metric configuration
+
+Each entry in the `metrics` parameter can be an object with the following keys:
+
+| Name                              | Description                                                                                                                                                                                                                                                                                   |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> Example: `http_reqs{name="http://example.com",status!="500"}` |
+| targetMetric                      | Name of resulting metric in Grafana/Prometheus. Default is the name of the source metric with the prefix `k6_` <br/> Example: `k6_http_reqs`                                                                                                                                                  |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                          |
+
+<Blockquote mod="warning" title="keepTags can have a high cost">
+
+Most cloud platforms (including Grafana) charge clients based on the number of time series stored.
+
+When exporting a metric, every combination of kept-tag values becomes a distinct time series in Prometheus.
+While this granularity can help test analysis, it will incur high costs with thousands of time series.
+
+For example, if you add `keepTags: ["name"]` on `http_*` metrics, and your load test calls many dynamic URLs, the number of produced time series can build up very quickly.
+Refer to [URL Grouping](/using-k6/http-requests#url-grouping) for how to reduce the value count for a `name` tag.
+
+k6 recommends exporting only tags that are necessary and don't have many distinct values.
+
+_Read more_: [Time series dimensions](https://grafana.com/docs/grafana/latest/basics/timeseries-dimensions/) in Grafana documentation.
+
+</Blockquote>
+
+
+#### Metric configuration detailed example
+```javascript
+export const options = {
+  ext: {
+    loadimpact: {
+      apm: [
+        {
+          // ...
+          includeDefaultMetrics: false,
+          includeTestRunId: true,
+
+          metrics: [
+            // keep vus metrics for whole test run
+            'vus',
+            // total byte count for data sent/received by k6
+            'data_sent',
+            'data_received',
+
+            // export checks metric, keeping 'check' (name of the check) tag
+            {
+              sourceMetric: 'checks',
+              keepTags: ['check'],
+            },
+
+            // export HTTP durations from 'default' scenario,
+            // keeping only successful response codes (2xx, 3xx), using regex selector syntax
+            {
+              sourceMetric: 'http_req_duration{scenario="default",status=~"[23][0-9]{2}"}',
+              targetMetric: 'k6_http_request_duration', // name of metric as it appears in Grafana
+              keepTags: ['name', 'method', 'status'],
+            },
+
+            // count HTTP responses with status 500
+            {
+              sourceMetric: 'http_reqs{status="500"}',
+              targetMetric: 'k6_http_server_errors_count',
+              keepTags: ['scenario', 'group', 'name', 'method'],
+            },
+          ],
+        },
+      ],
+    },
+  },
+};
+```
 
 ## Run the cloud test
 

@@ -19,7 +19,7 @@ If the number of check failures increases as the test runs, you can use the **Ch
 
 ## Explore checks in cloud results
 
-To visually insepct and analyze checks, use the **Threshold** tab
+To visually inspect and analyze checks, use the **Threshold** tab
 
 First, in the tab itself, note the number of checks that passed against the total number of checks.
 This provides a quick, top-level overview of the check performance.

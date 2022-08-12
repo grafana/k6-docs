@@ -62,7 +62,7 @@ k6 login cloud
 
 </CodeGroup>
 
-This logs in to your account, fetches or creates your k6 Cloud API authentication token, and savea it to a [k6 configuration file](#using-config-file).
+This command logs in to your account, fetches or creates your k6 Cloud API authentication token, and saves it to a [k6 configuration file](#using-config-file).
 
 ## Authenticating with API token
 

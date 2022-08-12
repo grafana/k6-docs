@@ -71,3 +71,4 @@ export default function () {
 </CodeGroup>
 
 _A k6 script that will make an HTTP request and print all HTTP response headers_
+
