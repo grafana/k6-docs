@@ -1,7 +1,6 @@
 ---
 title: 'Manage subscription'
 excerpt: 'Details of what is available within the k6 subscription menu'
-slug: '/cloud/billing-user-menu/subscription'
 ---
 
 To view or update your subscription, select your profile icon, then **Manage > Subscriptions.**

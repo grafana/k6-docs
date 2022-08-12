@@ -1334,6 +1334,13 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/cloud/billing-user-menu/*/',
     toPath: '/cloud/your-plan/*',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/billing-user-menu/subscription/',
+    toPath: '/cloud/your-plan/manage-subscription/',
+    isPermanent: true,
   });
 
   const redirects = {
