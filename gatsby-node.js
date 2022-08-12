@@ -1332,8 +1332,14 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/cloud/billing-user-menu/*',
-    toPath: '/cloud/your-plan/*',
+    fromPath: '/cloud/billing-user-menu/billing',
+    toPath: '/cloud/your-plan/billing',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/billing-user-menu/data-retention/',
+    toPath: '/cloud/your-plan/about-data-retention/',
     isPermanent: true,
   });
 
