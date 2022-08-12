@@ -45,7 +45,7 @@ export const SEO = ({
     slug && slug !== '*'
       ? slug.startsWith('jslib/')
         ? `${docs}/javascript-api/${slug}`
-        : `${docs}/${slug}`
+        : `${docs}${slug}`
       : docs;
 
   let versionedCanonicalUrl = currentUrl;
