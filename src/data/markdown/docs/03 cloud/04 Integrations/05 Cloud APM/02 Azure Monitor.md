@@ -95,6 +95,7 @@ export const options = {
 | includeDefaultMetrics                  | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.     |
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 | metrics                                | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                             |
 | includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 minute periods.                                                                                                   |
@@ -106,12 +107,18 @@ export const options = {
 | includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
 | resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 period.                                                                                                           |
 >>>>>>> e52edde8 (Change APM documentation to reflect code changes)
+=======
+| metrics                                | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                             |
+| includeTestRunId                       | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider. |
+| resampleRate                           | Sampling period for metrics in seconds. Default is 60, as Azure Monitor aggregates metrics in 1 minute periods.                                                                                                   |
+>>>>>>> 23873fa7 (Fix a missing word)
 
 
 #### Metric configuration
 
 Each entry in `metrics` parameter can be an object with following keys:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 | Name                              | Description                                                                                                                                                                                                                                                                                   |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -133,12 +140,15 @@ k6 recommends exporting only tags that are necessary and don't have many distinc
 =======
 | Name                              | Description                                                                                                                                                                                                                                                                                       |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+=======
+| Name                              | Description                                                                                                                                                                                                                                                                                   |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+>>>>>>> 23873fa7 (Fix a missing word)
 | sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> Example: `http_reqs{name="http://example.com",status!="500"}` |
-| targetMetric                      | Name of resulting metric in Azure Monitor. Default is the name of the source metric with a `k6.`  prefix <br/> Example: `k6.http_reqs`|
-| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+| targetMetric                      | Name of resulting metric in Azure Monitor. Default is the name of the source metric. <br/> Example: `http_reqs`                                                                                                                                                                               |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                          |
 
-<Blockquote mod="warning"
-title="keepTags can have a high cost">
+<Blockquote mod="warning" title="keepTags can have a high cost">
 
 Most cloud platforms charge clients based on the number of time series stored.
 
