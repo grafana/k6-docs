@@ -273,7 +273,7 @@ const TableRow = (props) => {
               {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
             </button>
           )}
-          <div>{cellIndex === 0 ? getCellContent(children) : children}</div>
+          {cellIndex === 0 ? <div>{getCellContent(children)}</div> : children}
         </td>
       )) ?? [<td>invalid row markup</td>]}
     </tr>
