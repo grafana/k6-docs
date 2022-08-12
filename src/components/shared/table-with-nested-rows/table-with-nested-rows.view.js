@@ -172,7 +172,7 @@ const TableRow = (props) => {
               {isExpanded ? <CollapsibleOpenIcon /> : <CollapsibleClosedIcon />}
             </button>
           )}
-          <div>{cellIndex === 0 ? getCellContent(children) : children}</div>
+          {cellIndex === 0 ? <div>{getCellContent(children)}</div> : children}
         </td>
       )) ?? [<td>invalid row markup</td>]}
     </tr>
@@ -286,7 +286,7 @@ const TableWithNestedRows = ({ children }) => {
   );
 
   return (
-    <TableWrapper>
+    <TableWrapper className={cx('nested-table')}>
       {thead && thead}
       {tbody && <TableBody>{tbody.props.children}</TableBody>}
     </TableWrapper>

@@ -1,10 +1,15 @@
 .table-wrapper {
   width: 100%;
   overflow: auto;
-  @include sm-down {
-    tr td:nth-of-type(3) {
-      width: 100%;
-      min-width: 230px; //usually 3rd column contains text which is being squished
+  table {
+    td:nth-child(1) {
+      white-space: nowrap;
+    }
+    @include sm-down {
+      tr td:nth-of-type(3) {
+        width: 100%;
+        min-width: 230px; //usually 3rd column contains text which is being squished
+      }
     }
   }
 }
