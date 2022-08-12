@@ -105,6 +105,7 @@ export const options = {
 | includeDefaultMetrics               | Whether it exports the [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics): `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                          |
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 | metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                  |
 =======
 | metrics                             | List of metrics to export. <br/> For more details on how to specify metrics see below.                                                                                                                                                                 |
@@ -112,12 +113,16 @@ export const options = {
 =======
 | metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                 |
 >>>>>>> 27bbb324 (removes directional language)
+=======
+| metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                  |
+>>>>>>> 8a67c7b5 (Fix prefix in Prometheus export, correct Datadog capitalization)
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                      |
 | resampleRate                        | The rate by which the metrics are resampled and sent to the APM provider in seconds. Default is 3 and acceptable values are integers between 1 and 10.                                                                                                 |
 
 
 #### Metric configuration
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 | Name                              | Description                                                                                                                                                                                                                                                                                   |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -139,12 +144,15 @@ k6 recommends exporting only tags that are necessary and don't have many distinc
 =======
 | Name                              | Description                                                                                                                                                                                                                                                                                       |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+=======
+| Name                              | Description                                                                                                                                                                                                                                                                                   |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+>>>>>>> 8a67c7b5 (Fix prefix in Prometheus export, correct Datadog capitalization)
 | sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> Example: `http_reqs{name="http://example.com",status!="500"}` |
-| targetMetric                      | Name of resulting metric in New Relic. Default is the name of the source metric with a `k6.`  prefix <br/> Example: `k6.http_reqs`                                                                                                                                                           |
-| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+| targetMetric                      | Name of resulting metric in New Relic. Default is the name of the source metric with a `k6_`  prefix <br/> Example: `k6_http_reqs`                                                                                                                                                            |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                          |
 
-<Blockquote mod="warning"
-title="keepTags can have a high cost">
+<Blockquote mod="warning" title="keepTags can have a high cost">
 
 Most cloud platforms charge clients based on the number of time series stored.
 

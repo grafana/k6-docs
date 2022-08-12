@@ -20,6 +20,7 @@ To get your keys, follow the Datadog documentation: ["API and Application Keys"]
 ### Supported Regions
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 The supported regions for the Datadog integration are `us`/`us1` (default), `eu`/`eu1`, `us3`, `us5`, `us1-fed`.
 
 > API and Application keys for a Datadog region won't work on a different region.
@@ -31,6 +32,16 @@ The supported regions for the DataDog integration are `us`/`us1` (default), `eu`
 
 You must enable the Datadog integration for each test whose metrics you want to export.
 
+=======
+The supported regions for the Datadog integration are `us`/`us1` (default), `eu`/`eu1`, `us3`, `us5`, `us1-fed`.
+
+> API and Application keys for a Datadog region won't work on a different region.
+
+## Export k6 metrics to Datadog
+
+You must enable the Datadog integration for each test whose metrics you want to export.
+
+>>>>>>> 8a67c7b5 (Fix prefix in Prometheus export, correct Datadog capitalization)
 After you set up the Datadog settings in the test, you can run a cloud test as usual.
 As the test runs, k6 Cloud will continuously send the test results metrics to Datadog.
 
@@ -119,6 +130,7 @@ export const options = {
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | provider<sup>(required)</sup> | For this integration, the value must be `datadog`.                                                                                                                                                                                                            |
 <<<<<<< HEAD
+<<<<<<< HEAD
 | apiKey<sup>(required)</sup>   | Datadog API key.                                                                                                                                                                                                                                              |
 | appKey<sup>(required)</sup>   | Datadog application key.                                                                                                                                                                                                                                      |
 | region                        | One of Datadog regions/sites. See the list of [supported regions](#supported-regions). Default is `us`.                                                                                                                                                       |
@@ -137,6 +149,14 @@ export const options = {
 =======
 | metrics                       | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                        |
 >>>>>>> 27bbb324 (removes directional language)
+=======
+| apiKey<sup>(required)</sup>   | Datadog API key.                                                                                                                                                                                                                                              |
+| appKey<sup>(required)</sup>   | Datadog application key.                                                                                                                                                                                                                                      |
+| region                        | One of Datadog regions/sites. See the list of [supported regions](#supported-regions). Default is `us`.                                                                                                                                                       |
+| apiURL                        | _Alternative to `region`._ URL of [Datadog Site API](https://docs.datadoghq.com/getting_started/site/). Included for support of possible new or custom Datadog regions. Default is picked according to `region`, e.g. `'https://api.datadoghq.com'` for `us`. |
+| includeDefaultMetrics         | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                               |
+| metrics                       | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                         |
+>>>>>>> 8a67c7b5 (Fix prefix in Prometheus export, correct Datadog capitalization)
 | includeTestRunId              | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                             |
 | resampleRate                  | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                                      |
 #### Metric configuration
@@ -182,8 +202,7 @@ _Read more_: [Counting custom metrics](https://docs.datadoghq.com/account_manage
 =======
 >>>>>>> 05d67769 (Clarify and standardize targetMetric description)
 
-<Blockquote mod="warning"
-title="keepTags can have a high cost">
+<Blockquote mod="warning" title="keepTags can have a high cost">
 
 Most cloud platforms charge clients based on the number of time series stored.
 
