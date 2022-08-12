@@ -1332,9 +1332,8 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/cloud/project-and-team-management/*',
-    toPath: '/cloud/your-plan/',
-    isPermanent: true,
+    fromPath: '/cloud/billing-user-menu/*/',
+    toPath: '/cloud/your-plan/*',
   });
 
   const redirects = {
