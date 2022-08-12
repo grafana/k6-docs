@@ -1,67 +1,67 @@
 ---
-title: 'DataDog'
+title: 'Datadog'
 head_title: 'Datadog integration with k6 Cloud'
-excerpt: 'How to export metrics from k6 Cloud to DataDog'
+excerpt: 'How to export metrics from k6 Cloud to Datadog'
 ---
 
-With this integration, you can export test-result metrics from the k6 Cloud to [DataDog](https://www.datadoghq.com/), where you can visualize and correlate k6 metrics with other monitored metrics.
+With this integration, you can export test-result metrics from the k6 Cloud to [Datadog](https://www.datadoghq.com/), where you can visualize and correlate k6 metrics with other monitored metrics.
 
 > ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 
-## Necessary DataDog settings
+## Necessary Datadog settings
 
-To set up the integration on the k6 Cloud, you need the following DataDog settings:
+To set up the integration on the k6 Cloud, you need the following Datadog settings:
 
 - API key
 - Application key
 
-To get your keys, follow the DataDog documentation: ["API and Application Keys"](https://docs.datadoghq.com/account_management/api-app-keys/).
+To get your keys, follow the Datadog documentation: ["API and Application Keys"](https://docs.datadoghq.com/account_management/api-app-keys/).
 
 ### Supported Regions
 
-The supported regions for the DataDog integration are `us`/`us1` (default), `eu`/`eu1`, `us3`, `us5`, `us1-fed`.
+The supported regions for the Datadog integration are `us`/`us1` (default), `eu`/`eu1`, `us3`, `us5`, `us1-fed`.
 
-> API and Application keys for a DataDog region won't work on a different region.
+> API and Application keys for a Datadog region won't work on a different region.
 
-## Export k6 metrics to DataDog
+## Export k6 metrics to Datadog
 
-You must enable the DataDog integration for each test whose metrics you want to export.
+You must enable the Datadog integration for each test whose metrics you want to export.
 
-After you set up the DataDog settings in the test, you can run a cloud test as usual.
-As the test runs, k6 Cloud will continuously send the test results metrics to DataDog.
+After you set up the Datadog settings in the test, you can run a cloud test as usual.
+As the test runs, k6 Cloud will continuously send the test results metrics to Datadog.
 
 Currently, there are two options to set up the Cloud APM settings in the test:
 
 - [Using the test builder](#configuration-using-the-test-builder)
 - [Scripting the k6 test](#configuration-in-the-k6-script)
 
-### Configure DataDog export with the test builder
+### Configure Datadog export with the test builder
 
-First, configure the DataDog integration for an organization.
+First, configure the Datadog integration for an organization.
 
 1. From the Main navigation, go to **Manage > Cloud APM** and select **Azure Monitor**.
 
-  ![Cloud APM - DataDog Form UI](images/datadog-cloud-app-form.png)
+  ![Cloud APM - Datadog Form UI](images/datadog-cloud-app-form.png)
 
-1. In this form, set the API and application keys that you copied previously from DataDog.
+1. In this form, set the API and application keys that you copied previously from Datadog.
 
   For more information on the other input fields, see [configuration parameters](#configuration-parameters).
 
-1. Save the DataDog configuration for the current organization.
+1. Save the Datadog configuration for the current organization.
 
-Note that configuring the DataDog settings for an organization does not enable the integration. You must manually enable each test using the [test builder](/test-authoring/test-builder).
+Note that configuring the Datadog settings for an organization does not enable the integration. You must manually enable each test using the [test builder](/test-authoring/test-builder).
 
 1. Create a new test with the test builder, or select an existing test previously created using the test builder.
 
 1. Select the **cloud apm** option on the test builder sidebar to enable the integration for the test.
 
-  ![Cloud APM - DataDog Test Builder UI](images/datadog-cloud-app-testbuilder.png)
+  ![Cloud APM - Datadog Test Builder UI](images/datadog-cloud-app-testbuilder.png)
 
 ### Configuration in the k6 script
 
 If you script your k6 tests, you can also configure the Cloud APM settings using the `apm` option in the k6 script.
 
-The parameters to export the k6 metrics to DataDog are as follows:
+The parameters to export the k6 metrics to Datadog are as follows:
 
 ```javascript
 export const options = {
@@ -101,12 +101,12 @@ export const options = {
 | Name                          | Description                                                                                                                                                                                                                                                   |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | provider<sup>(required)</sup> | For this integration, the value must be `datadog`.                                                                                                                                                                                                            |
-| apiKey<sup>(required)</sup>   | DataDog API key.                                                                                                                                                                                                                                              |
-| appKey<sup>(required)</sup>   | DataDog application key.                                                                                                                                                                                                                                      |
-| region                        | One of DataDog regions/sites. See the list of [supported regions](#supported-regions). Default is `us`.                                                                                                                                                       |
+| apiKey<sup>(required)</sup>   | Datadog API key.                                                                                                                                                                                                                                              |
+| appKey<sup>(required)</sup>   | Datadog application key.                                                                                                                                                                                                                                      |
+| region                        | One of Datadog regions/sites. See the list of [supported regions](#supported-regions). Default is `us`.                                                                                                                                                       |
 | apiURL                        | _Alternative to `region`._ URL of [Datadog Site API](https://docs.datadoghq.com/getting_started/site/). Included for support of possible new or custom Datadog regions. Default is picked according to `region`, e.g. `'https://api.datadoghq.com'` for `us`. |
 | includeDefaultMetrics         | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                                               |
-| metrics                       | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                        |
+| metrics                       | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                                         |
 | includeTestRunId              | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                                             |
 | resampleRate                  | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                                      |
 #### Metric configuration
@@ -119,8 +119,7 @@ Each entry in `metrics` parameter can be an object with following keys:
 | targetMetric                      | Name of resulting metric in Datadog. Default is the name of the source metric with a `k6.`  prefix <br/> Example: `k6.http_reqs`                                                                                                                                                              |
 | keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                          |
 
-<Blockquote mod="warning"
-title="keepTags can have a high cost">
+<Blockquote mod="warning" title="keepTags can have a high cost">
 
 Most cloud platforms charge clients based on the number of time series stored.
 

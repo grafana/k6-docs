@@ -113,7 +113,7 @@ export const options = {
 | remoteWriteURL<sup>(required)</sup> | URL of the Prometheus remote write endpoint. <br/> For example: `https://prometheus-us-central1.grafana.net/api/prom/push`.                                                                                                              |
 | credentials<sup>(required)</sup>    | The credentials to authenticate with the Grafana Cloud Prometheus instance. The required parameters are: <br/> - username: the Prometheus username or instance ID. <br/> - password: a Grafana Cloud API key of type `MetricsPublisher`. |
 | includeDefaultMetrics               | If `true`, add [default APM metrics](/cloud/integrations/cloud-apm/#default-apm-metrics) to export: `data_sent`, `data_received`, `http_req_duration`, `http_reqs`, `iterations`, and `vus`. Default is `true`.                          |
-| metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                   |
+| metrics                             | List of metrics to export. <br/> A subsequent section details how to specify metrics.                                                                                                                                                    |
 | includeTestRunId                    | Whether all the exported metrics include a `test_run_id` tag whose value is the k6 Cloud test run id. Default is `false`. <br/> Be aware that enabling this setting might increase the cost of your APM provider.                        |
 | resampleRate                        | Sampling period for metrics in seconds. Default is 3 and supported values are integers between 1 and 60.                                                                                                                                 |
 
@@ -121,14 +121,13 @@ export const options = {
 
 Each entry in the `metrics` parameter can be an object with the following keys:
 
-| Name                              | Description                                                                                                                                                                                                                                                                                       |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name                              | Description                                                                                                                                                                                                                                                                                   |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | sourceMetric<sup>(required)</sup> | Name of k6 builtin or custom metric to export, optionally with tag filters. <br/> Tag filtering follows [Prometheus selector syntax](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors),<br/> Example: `http_reqs{name="http://example.com",status!="500"}` |
-| targetMetric                      | Name of resulting metric in Grafana/Prometheus. Default is the name of the source metric with the prefix `k6.` <br/> Example: `k6.http_reqs`                                                                                                                                                  |
-| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                              |
+| targetMetric                      | Name of resulting metric in Grafana/Prometheus. Default is the name of the source metric with the prefix `k6_` <br/> Example: `k6_http_reqs`                                                                                                                                                  |
+| keepTags                          | List of tags to preserve when exporting time series.                                                                                                                                                                                                                                          |
 
-<Blockquote mod="warning"
-title="keepTags can have a high cost">
+<Blockquote mod="warning" title="keepTags can have a high cost">
 
 Most cloud platforms (including Grafana) charge clients based on the number of time series stored.
 

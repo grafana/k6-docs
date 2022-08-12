@@ -10,7 +10,7 @@ By combining k6 Cloud with an APM, you can correlate and query testing metrics w
 
 - [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
 - [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)
-- [DataDog](/cloud/integrations/cloud-apm/datadog)
+- [Datadog](/cloud/integrations/cloud-apm/datadog)
 - [New Relic](/cloud/integrations/cloud-apm/new-relic)
 - [Prometheus](/cloud/integrations/prometheus-remote-write/)
 
@@ -32,7 +32,7 @@ For details, refer to the instructions on integrating different APM platforms:
 
 - [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud)
 - [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor)
-- [DataDog](/cloud/integrations/cloud-apm/datadog)
+- [Datadog](/cloud/integrations/cloud-apm/datadog)
 - [New Relic](/cloud/integrations/cloud-apm/new-relic).
 - [Prometheus](/cloud/integrations/prometheus-remote-write/)
 
