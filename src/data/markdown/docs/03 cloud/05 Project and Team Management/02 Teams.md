@@ -4,7 +4,7 @@ title: 'Teams'
 excerpt: 'Guide on setting up Teams in k6 Cloud'
 ---
 
-> ⭐️ Teams are available on Enterprise plans.
+> ⭐️ Teams are available on Pro and Enterprise plans.
 
 ## A level between organizations and projects
 
