@@ -1,6 +1,7 @@
 ---
 title: 'Apache Kafka'
 excerpt: 'Al ejecutar una prueba, k6 puede enviar las métricas en tiempo real a Kafka.'
+hideFromSidebar: true
 ---
 
 <Blockquote mod="warning">

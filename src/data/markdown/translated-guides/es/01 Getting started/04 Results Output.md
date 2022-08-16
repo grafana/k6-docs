@@ -113,7 +113,6 @@ La lista de plugins de salida son los siguientes:
 <Glossary>
 
   - [Amazon CloudWatch](/es/visualizacion-de-resultados/amazon-cloudwatch)
-  - [Apache Kafka](/es/visualizacion-de-resultados/apache-kafka)<sup>deprecated</sup>
   - [Cloud](/es/visualizacion-de-resultados/cloud)
   - [CSV](/es/visualizacion-de-resultados/csv)
   - [Datadog](/es/visualizacion-de-resultados/datadog)

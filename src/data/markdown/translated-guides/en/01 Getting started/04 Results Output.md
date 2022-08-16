@@ -152,7 +152,6 @@ The available built-in outputs are:
 <Glossary>
 
 - [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)
-- [Apache Kafka](/results-visualization/apache-kafka)<sup>deprecated</sup>
 - [Cloud](/results-visualization/cloud)
 - [CSV](/results-visualization/csv)
 - [Datadog](/results-visualization/datadog)

@@ -143,7 +143,7 @@ $ k6 run --summary-export=export.json script.js
 ```
 
 ```bash
-# you can use the `summary-export` option with other output (Kafka, Datadog, Cloud, InfluxDB, JSON...)
+# you can use the `summary-export` option with other output (Prometheus, Datadog, Cloud, InfluxDB, JSON...)
 $ k6 run --summary-export=export.json --out datadog script.js
 ```
 
