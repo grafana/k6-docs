@@ -64,7 +64,7 @@ export function setup() {
 
 export default (token) => {
   client.connect('route.googleapis.com:443');
-  const headers = {
+  const metadata = {
     authorization: `bearer ${token}`,
   };
   const response = client.invoke(
@@ -73,7 +73,7 @@ export default (token) => {
       latitude: 410248224,
       longitude: -747127767,
     },
-    { headers }
+    { metadata }
   );
   check(response, { 'status is OK': (r) => r && r.status === grpc.StatusOK });
   client.close();
