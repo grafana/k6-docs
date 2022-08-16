@@ -1335,8 +1335,7 @@ export const options = {
 
 ## TLS auth
 
-A list of TLS client certificate configuration objects. Each object needs to specify for
-which host(s)/domain(s) the given client certificate is valid for.
+A list of TLS client certificate configuration objects. `domains` and `password` are optional, but `cert` and `key` are required.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1351,6 +1350,7 @@ export const options = {
       domains: ['example.com'],
       cert: open('mycert.pem'),
       key: open('mycert-key.pem'),
+      password: "mycert-passphrase",      
     },
   ],
 };
