@@ -1234,7 +1234,7 @@ export const options = {
       domains: ['example.com'],
       cert: open('mycert.pem'),
       key: open('mycert-key.pem'),
-      password: "mycert-passphrase",
+      password: 'mycert-passphrase',
     },
   ],
 };
