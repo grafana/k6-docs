@@ -17,6 +17,10 @@
         text-decoration: none !important;
         border: none !important;
       }
+      @include sm-down {
+        position: static !important;
+        margin-left: 5px;
+      }
     }
     &:hover {
       .anchor-icon {

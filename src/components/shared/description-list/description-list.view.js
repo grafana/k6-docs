@@ -90,12 +90,12 @@ const DescriptionList = ({ children }) => {
               const anchorMold = slugify(termTextContent);
               return (
                 <dt id={!termIdx ? anchorMold : termIdx}>
+                  {term}
                   {!termIdx && (
                     <a className={cx('anchor-icon')} href={`#${anchorMold}`}>
                       <AnchorIcon />
                     </a>
                   )}
-                  {term}
                 </dt>
               );
             })}
