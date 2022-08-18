@@ -61,10 +61,10 @@ export const HeadingLandmark =
     const anchor = `${anchorify(anchorMold)}`;
     return (
       <Tag className={styles.markHeading} id={anchor}>
+        {renderContent}
         <a className={'anchor-icon'} href={`#${anchor}`}>
           <AnchorIcon />
         </a>
-        {renderContent}
       </Tag>
     );
   };
