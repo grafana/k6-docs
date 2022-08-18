@@ -7,7 +7,8 @@
     font-size: $font-size-lg;
     font-weight: 500;
     .anchor-icon {
-      margin-left: 7px;
+      position: absolute !important;
+      left: -20px;
       visibility: hidden;
       transition: all 0.3s ease;
       text-decoration: none !important;
@@ -15,6 +16,10 @@
       &:hover {
         text-decoration: none !important;
         border: none !important;
+      }
+      @include sm-down {
+        position: static !important;
+        margin-left: 5px;
       }
     }
     &:hover {
