@@ -44,8 +44,8 @@ export const SEO = ({
     // eslint-disable-next-line no-nested-ternary
     slug && slug !== '*'
       ? slug.startsWith('jslib/')
-        ? `${docs}/javascript-api/${slug}`
-        : `${docs}/${slug}`
+        ? `${docs}/javascript-api${slug}`
+        : `${docs}${slug.startsWith('/') ? slug : `/${slug}`}`
       : docs;
 
   let versionedCanonicalUrl = currentUrl;
