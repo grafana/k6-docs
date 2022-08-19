@@ -359,8 +359,14 @@ export default function () {
 
 ## Aborting a test when a threshold is crossed
 
-If you want to abort a test as soon as a threshold is crossed, before the test finishes,
-there's an extended threshold specification format:
+If you want to abort a test as soon as a threshold is crossed,
+set the `abortOnFail` property to `true`.
+When you set `abortOnFail`, the test run stops _as soon as the threshold fails_.
+
+Sometimes, though, a test might fail a threshold early and abort before the test generates significant data.
+To prevent these cases, you can delay `abortOnFail` with `delayAbortEval`.
+In this script,  `abortOnFail` is delayed ten seconds.
+After ten seconds, the test aborts if it fails the `p(99) < 10` threshold.
 
 <CodeGroup labels={["threshold-abort.js"]} lineNumbers={[true]}>
 
@@ -381,8 +387,7 @@ export const options = {
 
 </CodeGroup>
 
-In this example, the threshold specification has been extended to alternatively
-support a JS object with parameters to control the abort behavior. The fields are as follows:
+The fields are as follows:
 
 | Name           | Type    | Description                                                                                                                                                                                                               |
 | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -412,9 +417,12 @@ export default function () {
 
 </CodeGroup>
 
-> **⚠️ Evaluation delay in the cloud**
->
-> When k6 runs in the cloud, thresholds are evaluated every 60 seconds, therefore the `abortOnFail` feature may be delayed by up to 60 seconds.
+<Blockquote mod="attention" title="Evaluation delay in the cloud">
+
+When k6 runs in the cloud, thresholds are evaluated every 60 seconds.
+Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
+
+</Blockquote>
 
 ## Failing a load test using checks
 
