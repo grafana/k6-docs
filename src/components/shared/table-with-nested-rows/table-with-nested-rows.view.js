@@ -11,6 +11,11 @@ import styles from './table-with-nested-rows.module.scss';
 
 const cx = classNames.bind(styles);
 
+/* 1.
+ * Parse the array of children
+ * to get flat array with id being the child index in original array
+ * and group is the property
+ * */
 const parseRows = (rows) =>
   rows.map(({ props: { children } }, i) => {
     let group;

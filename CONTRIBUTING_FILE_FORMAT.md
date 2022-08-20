@@ -481,7 +481,7 @@ Result:
 
 ![internal-images/Untitled%2011.png](internal-images/Untitled%2011.png)
 
-### Table with nested rows
+### Table with nested data
 
 An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom component that will do all the magic, all you need to do is to wrap your table with this tag and make sure you follow the rules:
 
@@ -491,7 +491,7 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 4. Prefer having tooltips `<BWIPT/>`, `<BNIT/>` at the righmost side to avoid colliding with toggler icon.
 5. If you see one of the rows displaying `Invalid row markup`, something fishy is going on with your first column value in this row
 
-**A perfect example:**
+A perfect example:
 
 ```mdx
 | Parameter | Type | Description |
@@ -508,11 +508,11 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 <details>
 <summary>Result</summary>
 
-![Table with nested rows](/internal-images/table-with-nested-rows.png)
+[Table with nested rows](/internal-images/table-with-nested-rows.png)
 
 </details>
 
-**A bad example:**
+A bad example:
 
 1. Missed `location.address` property
 2. First row has tooltip at leftmost side
