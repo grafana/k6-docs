@@ -13,15 +13,15 @@ To view the Audit Trail, go to  **Manage > Audit Trail**.
 ## A log of system events and activities
 
 An audit trail provides a chronological list of system events and user activities. 
-Organization owners can use audit trails:
-- To keep an eye on the operations that their users perform
-- To help trace specific events.
+Organization owners can use audit trails to keep an eye on the operations that their users perform and to trace events.
 
 ## Reconstructing Events
 
-By reading through the audit trail, you can piece together how a series   
-of events perhaps led to how a test was deleted, a member lost access to a project, subscription 
-or billing settings were altered, and much more.
+With the audit trail, you can piece together how a series of events perhaps led to an event.
+Use cases include investigating the following:
+- How a test was deleted
+- How a member lost access to a project,
+- How a subscription or billing settings were altered.
 
 ## Threat Detection
 
