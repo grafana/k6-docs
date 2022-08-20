@@ -4,21 +4,22 @@ excerpt: 'Common problems that come up in k6 cloud and how to fix them'
 ---
 
 Sometimes, you might need to debug your test scripts.
-Other times, you might run into some design limitations of the cloud platform.
 
 ## Prefer to debug locally {#debug-locally}
 
 While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities.
+Sometimes, you need better debugging to get your test to run properly on k6 Cloud.
+
+However, debugging in the cloud is generally unrecommended:
+* A cloud test counts against any subscription limits you may have.
+* Execution is slower when streaming or executing in the cloud, and debugging should be fast and iterative.
+
 Instead, you can run k6 locally to execute your test scripts on a small scale:
 
 ```sh
 k6 run test.js
 ```
 
-Debugging locally has multiple benefits:
-
-* A cloud test counts against any subscription limits you may have.
-* Execution is slower when streaming or executing in the cloud. We want debugging to be a fast iterative process.
 
 If you've configured Virtual Users or duration in your script, you can add the flags `-i 1 -u 1` to instruct k6 to execute 1 iteration with 1 Virtual User,
 making the debugging sometimes easier.
@@ -27,7 +28,7 @@ making the debugging sometimes easier.
 k6 run test.js -i 1 -u 1
 ```
 
-For debugging, k6 also provides a few builtin options:
+k6 also provides a built-in option for debugging:
 
 - [`--http-debug`](/using-k6/k6-options/reference#http-debug) prints all the requests and responses to the console. Read more [HTTP debugging](/using-k6/http-debugging).
 
@@ -39,7 +40,7 @@ For debugging, k6 also provides a few builtin options:
 
   </CodeGroup>
 
-- `Console logging methods` can print any message to the console. In the cloud, the console logs are shown on the [Logs Tab](/cloud/analyzing-results/logs).
+- `Console logging methods` can print any message to the console. In the cloud, k6 shows console logs on the [Logs Tab](/cloud/analyzing-results/logs).
 
   <CodeGroup labels={[""]}>
 
@@ -52,7 +53,7 @@ For debugging, k6 also provides a few builtin options:
 
   </CodeGroup>
 
-  Note that you can also use the [`--console-output`](/using-k6/k6-options/reference#console-output) option to redirect console logs to an output file.
+  You can also use the [`--console-output`](/using-k6/k6-options/reference#console-output) option to redirect console logs to an output file.
 
     <CodeGroup labels={[""]}>
 
@@ -64,14 +65,14 @@ For debugging, k6 also provides a few builtin options:
 
 ## How to open a firewall for the k6 Cloud services {#open-firewall}
 
-`k6 cloud` tests use k6's cloud infrastructure.
-These are dynamically allocated from our cloud providers and k6 does not know the source IP until the test is running.
+`k6 cloud` tests use k6 Cloud infrastructure.
+IPs are dynamically allocated from our cloud providers and k6 does not know the source IP until the test is running.
 
 To open your firewall to k6 cloud traffic, you have multiple options.
 
 ### Open up your firewall to the whole range of AWS IP addresses
 
-In this case, you would open the firewall to the load zones where you want to run your load test from.
+For this method, open the firewall to the load zones where you want to run your load test from.
 Refer to [the list of cloud IPs](/cloud/cloud-reference/ips) for specifics.
 
 ### Identify traffic with unique headers, query params, or data
@@ -139,9 +140,9 @@ export default function () {
 
 ### Unique host name
 
-Another option would be to request content from a certain hostname that is not in the DNS.
-For this solution, you would need to configure your application to respond to requests for that hostname.
-This is how you do it on the k6 cloud's side:
+Another option is to request content from a certain hostname that is not in the DNS.
+For this solution, you need to configure your application to respond to requests for that hostname.
+This is how you do it on the side of k6 Cloud:
 
 <CodeGroup labels={["Query parameters"]}>
 
@@ -168,7 +169,9 @@ You could also use unencrypted HTTP, but get a bit less security.
 
 ## Max concurrency reached error message {#max-concurreny}
 
-In the context of the k6 Cloud, concurrency is the ability to execute more than one test run simultaneously. Your k6 Cloud subscription defines the maximum number of concurrent test runs. If you need to increase this limit, please contact our support team.
+In the context of the k6 Cloud, concurrency is the ability to execute more than one test run simultaneously.
+Your k6 Cloud subscription defines the maximum number of concurrent test runs.
+If you need to increase this limit, please contact our support team.
 
 Additionally, you can change the concurrency limit policy that defines how k6 Cloud acts when the organization reaches the limit and a new test run is triggered.
 Two options are available:
@@ -184,15 +187,15 @@ You can change the policy navigating by selecting your profile, then  **Organiza
 
 ### Data uploads with k6 Cloud
 
-The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud do not allow to upload a data file in your test.
+The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud don't allow uploading data files in your test.
 
-If you want to execute a cloud test uploads a data file, you have to [run the cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) and follow the steps described on the [data uploads example](/examples/data-uploads).
+If you want to use k6 Cloud to run a test that uploads a data file, [run the cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) and follow the steps described on the [data uploads example](/examples/data-uploads).
 
 ## Invited to an org but can't run tests {#wrong-org}
 
 > I was invited to an organization with a subscription. However, When I try to run tests, I get an error that my subscription doesn't have enough Virtual Users/exceeds the duration/uses too many load zones. Our subscription allows for the test I want to run. What is wrong and how do I fix this?
 
-If you encounter a similar situation, the problem is likely that you are trying to run the test from a different organization with another subscription.
+If you encounter a similar situation, the problem is likely that you're trying to run the test from a different organization with another subscription.
 
 This situation often happens because when you register your account.
 k6 Cloud automatically creates a "personal" default organization for you.
@@ -206,7 +209,7 @@ By default, tests run from your "personal" organization.
 
 ![Select a project](images/Troubleshooting/k6-project-dashboard.png)
 
-**To change tests from the k6 CLI**, you need to set the `projectID` in the test script:
+**To change tests from the k6 CLI**, set the `projectID` in the test script:
 1. Copy the project ID from the top left corner of the project dashboard.
 1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options).
 

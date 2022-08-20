@@ -8,11 +8,11 @@ know which IPs are associated with k6 Cloud tests.
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
 
-k6 uses AWS for cloud load generators.
+k6 Cloud uses AWS for load generators.
 For the IP addresses used in the different load zones and filtering methods,
 refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
-If you prefer to view the ranges directly, within the above link, the [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators.
+If you prefer to view the ranges directly,  this [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators.
 To find the IP ranges that you can use, filter the `service` of type EC2 and the `region` of the selected load zones in your test configuration.
 
 The zone codes are mapped as follows:
@@ -46,21 +46,22 @@ The zone codes are mapped as follows:
 
 ## Maximum VUs per IP {#vu-per-tier}
 
-k6 has 3 tiers of hardware for load-generation. The tier we choose depends on the number of VUs allocated to a load zone.
+k6 has 3 tiers of hardware for load generation. The tier we choose depends on the number of VUs allocated to a load zone.
 
-- Tier 1 is used when there are 1-999 VUs in a load zone
-- Tier 2 is used when there are 1000-4001 VUs in a load zone
-- Tier 3 is used when there are more than 4001 VUs in a load zone
+- Tier 1 when there are 1-999 VUs in a load zone
+- Tier 2 when there are 1000-4001 VUs in a load zone
+- Tier 3 when there are more than 4001 VUs in a load zone
 
 - Tier 1 server handles up to 300VUs
 - Tier 2 server handles up to 1200VUs
 - Tier 3 server handles up to 5000VUs
 
 Regardless of the tier, the amount of resources (CPU, Memory, Network) per VU is the same.
+For example, if you start a test with 900VUs, k6 uses 3x Tier 1 servers,
+meaning that the traffic generated from our service will be coming from 3 IPs.
 
-For example, if you start a test with 900VUs, we will use 3x Tier 1 servers. That means that the traffic generated from our service will be coming from 3 IPs.
-
-If you start a test with 1000VUs in a single load zone, we will use 1x Tier 2 server. If the same test is started in 2 load zones, there will be 500VUs per load zone and 4x Tier 1 servers will be used.
+If you start a test with 1000VUs in a single load zone, k6 uses 1x Tier 2 server.
+If the same test is started in 2 load zones, k6 would allocate 500VUs per load zone and use 4x Tier 1 servers.
 
 <Blockquote mod="node" title="">
 

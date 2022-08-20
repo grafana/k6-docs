@@ -53,7 +53,7 @@ Finished
 
 ## Failed and aborted tests
 
-These statuses happen when the test does not successfully finish, for whatever reason.
+These statuses happen when the test doesn't successfully finish for whatever reason.
 
 <DescriptionList>
 
@@ -65,7 +65,7 @@ Aborted (by user)
 
 Aborted (by system)
 : A test that was aborted by the system.
-: These tests typically abort due to a fatal error occurring. If the test fails before launch, there may be an underlying issue with the Load Zone, unrelated to k6. If the test aborts during execution, it may be due to overutilization of the Load Generators. In this case, we suggest you look at the CPU and Memory utilization and add or increase sleep times. You may also want to set the option `discardResponseBodies` to `true`, to lower memory pressure.
+: These tests typically abort due to a fatal error. If the test fails before launch, there may be an underlying issue with the Load Zone, unrelated to k6. If the test aborts during execution, it may be due to overutilization of the Load Generators. In this case, look at the CPU and Memory utilization and add or increase sleep times. You may also want to set the option `discardResponseBodies` to `true`, to lower memory pressure.
 
 Aborted (script error)
 : A test that was aborted due to an error in your script.
@@ -87,6 +87,7 @@ Aborted (by limit)
 If your test has too many groups, reduce their number.
 If your test has too many metrics, use URL grouping to combine similar URLs.
 You should also remove external requests from your test script.
-Each captured URL will account for multiple individual metrics that k6 measures.
-External requests can quickly produce a large number of metrics, and granularity in this case won't help you understand performance of the System Under Test.
+Each captured URL accounts for multiple individual metrics that k6 measures.
+External requests can quickly produce a large number of metrics, and this granularity won't help you understand performance of the System Under Test.
+
 
