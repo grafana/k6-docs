@@ -8,6 +8,17 @@ Response is used by the http.\* methods that generate HTTP request. Those method
 
 Note that in the case of redirects, all the information in the Response object will pertain to the last request (the one that doesn't get redirected).
 
+<TableWithNestedRows>
+
+| Parameter             | Type   | Description                                         |
+|-----------------------|--------|-----------------------------------------------------|
+| geolocation           | object |                                                     |
+| geolocation.latitude  | number | Latitude between -90 and 90                         |
+| geolocation.longitude | number | Latitude between -180 and 180                       |
+| geolocation.accuracy  | number | Optional non-negative accuracy value. Defaults to 0 |
+
+</TableWithNestedRows>
+
 | Name                                                                                           | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Response.body`                                                                                | string   | Response body content, often used to extract dynamic data (see examples [here](/examples/correlation-and-dynamic-data)) and when verifying the presence of content using [checks](/javascript-api/k6/check).<br /><br />See [Params.responseType](/javascript-api/k6-http/params) and [options.discardResponseBodies](/using-k6/options) for how to discard the body when it is not needed (and to save memory) or when handling bodies with binary data.                                                     |
