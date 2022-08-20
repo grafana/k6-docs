@@ -4,21 +4,22 @@ excerpt: 'Common problems that come up in k6 cloud and how to fix them'
 ---
 
 Sometimes, you might need to debug your test scripts.
-Other times, you might run into some design limitations of the cloud platform.
 
 ## Prefer to debug locally {#debug-locally}
 
 While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities.
+Sometimes, you need better debugging to get your test to run properly on k6 Cloud.
+
+However, debugging in the cloud is generally unrecommended:
+* A cloud test counts against any subscription limits you may have.
+* Execution is slower when streaming or executing in the cloud, and debugging should be fast and iterative.
+
 Instead, you can run k6 locally to execute your test scripts on a small scale:
 
 ```sh
 k6 run test.js
 ```
 
-Debugging locally has multiple benefits:
-
-* A cloud test counts against any subscription limits you may have.
-* Execution is slower when streaming or executing in the cloud. We want debugging to be a fast iterative process.
 
 If you've configured Virtual Users or duration in your script, you can add the flags `-i 1 -u 1` to instruct k6 to execute 1 iteration with 1 Virtual User,
 making the debugging sometimes easier.
@@ -39,7 +40,7 @@ k6 also provides a built-in option for debugging:
 
   </CodeGroup>
 
-- `Console logging methods` can print any message to the console. In the cloud, the console logs are shown on the [Logs Tab](/cloud/analyzing-results/logs).
+- `Console logging methods` can print any message to the console. In the cloud, k6 shows console logs on the [Logs Tab](/cloud/analyzing-results/logs).
 
   <CodeGroup labels={[""]}>
 
@@ -186,9 +187,9 @@ You can change the policy navigating by selecting your profile, then  **Organiza
 
 ### Data uploads with k6 Cloud
 
-The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud do not allow to upload a data file in your test.
+The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud don't allow uploading data files in your test.
 
-If you want to execute a cloud test uploads a data file, you have to [run the cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) and follow the steps described on the [data uploads example](/examples/data-uploads).
+If you want to use k6 Cloud to run a test that uploads a data file, [run the cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli) and follow the steps described on the [data uploads example](/examples/data-uploads).
 
 ## Invited to an org but can't run tests {#wrong-org}
 

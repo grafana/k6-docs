@@ -90,3 +90,4 @@ You should also remove external requests from your test script.
 Each captured URL accounts for multiple individual metrics that k6 measures.
 External requests can quickly produce a large number of metrics, and this granularity won't help you understand performance of the System Under Test.
 
+
