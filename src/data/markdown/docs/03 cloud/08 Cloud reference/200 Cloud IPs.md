@@ -59,7 +59,7 @@ meaning that the traffic generated from our service will be coming from 3 IPs.
 If you start a test with 1000VUs in a single load zone, k6 uses 1x Tier 2 server.
 If the same test is started in 2 load zones, k6 would allocate 500VUs per load zone and use 4x Tier 1 servers.
 
-<Blockquote mod="node" title="">
+<Blockquote mod="note" title="">
 
 Note that these are the _defaults_. If your tests have specific requirements, please contact k6 support for a custom solution.
 
