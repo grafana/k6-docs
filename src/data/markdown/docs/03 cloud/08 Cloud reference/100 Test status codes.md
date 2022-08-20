@@ -13,7 +13,7 @@ The code returned here is different than what is returned by k6.
 - [Queued](#queued): 0
 - [Initializing](#initializing): 1
 - [Running](#running): 2
-- [Finished](#finished): 3              
+- [Finished](#finished): 3
 - [Timed out](#timed-out): 4
 - [Aborted by user](#aborted-by-user): 5
 - [Aborted by system](#aborted-by-system): 6
@@ -89,5 +89,4 @@ If your test has too many metrics, use URL grouping to combine similar URLs.
 You should also remove external requests from your test script.
 Each captured URL will account for multiple individual metrics that k6 measures.
 External requests can quickly produce a large number of metrics, and granularity in this case won't help you understand performance of the System Under Test.
-
 

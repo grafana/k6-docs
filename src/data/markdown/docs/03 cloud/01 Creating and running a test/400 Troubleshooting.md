@@ -8,8 +8,7 @@ Other times, you might run into some design limitations of the cloud platform.
 
 ## Prefer to debug locally {#debug-locally}
 
-Debugging helps ensure your code produces the expected results.
-While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities. 
+While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities.
 Instead, you can run k6 locally to execute your test scripts on a small scale:
 
 ```sh
@@ -174,7 +173,7 @@ In the context of the k6 Cloud, concurrency is the ability to execute more than 
 Additionally, you can change the concurrency limit policy that defines how k6 Cloud acts when the organization reaches the limit and a new test run is triggered.
 Two options are available:
 
-- `Abort test`: the new test run is automatically aborted. This is the default option. 
+- `Abort test`: the new test run is automatically aborted. This is the default option.
 - `Queue test`: the new test run is queued for execution and starts once a slot opens.
   A queued test times out if no slot is available in 6 hours.
 
@@ -197,7 +196,7 @@ If you encounter a similar situation, the problem is likely that you are trying 
 
 This situation often happens because when you register your account.
 k6 Cloud automatically creates a "personal" default organization for you.
-In this case, you might have two organizations: your "personal" organization and the organization that invited you. 
+In this case, you might have two organizations: your "personal" organization and the organization that invited you.
 
 By default, tests run from your "personal" organization.
 
@@ -207,8 +206,7 @@ By default, tests run from your "personal" organization.
 
 ![Select a project](images/Troubleshooting/k6-project-dashboard.png)
 
-**To change tests from the k6 CLI**, you need to set the `projectID` in the test script. 
-To do this:
+**To change tests from the k6 CLI**, you need to set the `projectID` in the test script:
 1. Copy the project ID from the top left corner of the project dashboard.
 1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options).
 
