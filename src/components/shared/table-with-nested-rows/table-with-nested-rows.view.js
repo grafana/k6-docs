@@ -14,11 +14,14 @@ const cx = classNames.bind(styles);
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // @TODO: fix yesterdays hack
 // set keys
 
 >>>>>>> 6d8ba5fa (fix: little bugs and content of response file)
+=======
+>>>>>>> a30fd13f (feat: extended contributin file format)
 /* 1.
  * Parse the array of children
  * to get flat array with id being the child index in original array
