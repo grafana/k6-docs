@@ -39,7 +39,7 @@ Currently, there are two options to set up the Cloud APM settings in the test:
 
 First, configure the Datadog integration for an organization.
 
-1. From the Main navigation, go to **Manage > Cloud APM** and select **Azure Monitor**.
+1. From the Main navigation, go to **Manage > Cloud APM** and select **Datadog**.
 
   ![Cloud APM - Datadog Form UI](images/datadog-cloud-app-form.png)
 
