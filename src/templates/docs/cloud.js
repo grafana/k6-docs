@@ -150,6 +150,10 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       <Link to={'/cloud/project-and-team-management/projects/'}>
                         Projects
                       </Link>
+                      , and{' '}
+                      <Link to={'/cloud/project-and-team-management/teams/'}>
+                        Teams
+                      </Link>
                       .
                     </Trait>
                     <Trait>
@@ -206,7 +210,10 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                       .
                     </Trait>
                     <Trait>
-                      See team and testing activity with{' '}
+                      <Link to={'/cloud/manage/audit-trail/'}>
+                        Audit team activity
+                      </Link>{' '}
+                      and see{' '}
                       <Link to={'/cloud/manage/usage-reports/'}>
                         Usage reports
                       </Link>
