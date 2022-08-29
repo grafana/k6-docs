@@ -45,7 +45,7 @@ Use k6 Cloud to offload
 - [xk6 extensions](/extensions). Custom k6 binaries to support the tool you need.
 - [The browser recorder](/test-authoring/recording-a-session/browser-recorder/). Makes test scripts from browser sessions.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)
-_ [Integrations](/integrations/). Many ways to use k6 without ccodingg
+- [Integrations](/integrations/). Many ways to use k6 without coding
 
 ## Learning
 
@@ -57,4 +57,4 @@ _ [Integrations](/integrations/). Many ways to use k6 without ccodingg
 - [The k6 community forums](https://community.k6.io/). k6 users and devs hang out here.
 - [k6 office hours](https://www.youtube.com/playlist?list=PLJdv3RhAQXNE1TFXn2pp9h_Ul1q_kJrEZ). Weekly interviews with k6 maintainers, users, and other interesting people in the testing community.
 - [Awesome k6](https://github.com/grafana/awesome-k6). A list of awesome stuff about k6.
-- [More social media links](https://k6.io/community/). Twitter, Stack Exchange, et cetera.
+- [More social media links](https://k6.io/community/). Twitter, Stack Exchange, LinkedIn, and more.
