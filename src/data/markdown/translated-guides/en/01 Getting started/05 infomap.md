@@ -49,7 +49,7 @@ Use k6 Cloud to offload
 
 ## Learning
 
-- [k6 Learn](https://github.com/grafana/k6-learn). A repo with a course and a ton of learning resources
+- [k6 Learn](https://github.com/grafana/k6-learn). A repository with a course and a ton of learning resources
 - [k6 Resource library](https://k6.io/resource-library/). White papers by the k6 team.
 
 ## Community
