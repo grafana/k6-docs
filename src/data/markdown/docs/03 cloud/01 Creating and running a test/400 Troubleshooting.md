@@ -8,8 +8,7 @@ Other times, you might run into some design limitations of the cloud platform.
 
 ## Prefer to debug locally {#debug-locally}
 
-Debugging helps ensure your code produces the expected results.
-While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities. 
+While the [script editor](/cloud/creating-and-running-a-test/script-editor) can catch syntax errors, it has limited debugging abilities.
 Instead, you can run k6 locally to execute your test scripts on a small scale:
 
 ```sh
