@@ -146,6 +146,7 @@ untyped
 vendored
 walkthrough
 webpages
+WooCommerce
 wpnonce
 (?i)codeless
 ava
