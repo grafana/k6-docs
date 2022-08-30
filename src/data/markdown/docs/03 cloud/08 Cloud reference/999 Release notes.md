@@ -44,7 +44,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v3.4.3.internal `(2022-4-26)`
 - Internal: improve cloud service stability and reliability.
-- Fix: [private load zones](/cloud/cloud-faq/private-load-zones/) authentication.
+- Fix: [private load zones](/cloud/cloud-reference/test-status-codes/) authentication.
 
 <<<<<<< HEAD
 ### `v0.3.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-4-25)`
@@ -247,8 +247,12 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ### v1.0.0 `(2021-7-13)`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - Renovated [Test Builder](/test-authoring/test-builder/).
 
 =======
 - Renovated [Test Builder](/test-authoring/test-builder/).
 >>>>>>> 1bd25e23 (Move more miscellaneous reference)
+=======
+- Renovated [Test Builder](/test-authoring/test-builder/).
+>>>>>>> 4bc0140d (fix references to old links)
