@@ -87,6 +87,6 @@ Aborted (by limit)
 If your test has too many groups, reduce their number.
 If your test has too many metrics, use URL grouping to combine similar URLs.
 You should also remove external requests from your test script.
-Each captured URL will account for multiple individual metrics that k6 measures.
-External requests can quickly produce a large number of metrics, and granularity in this case won't help you understand performance of the System Under Test.
+Each captured URL accounts for multiple individual metrics that k6 measures.
+External requests can quickly produce a large number of metrics, and this granularity won't help you understand performance of the System Under Test.
 
