@@ -23,11 +23,19 @@ The free-and-open-source application at the heart of all k6 projects.
 
 ### k6 Cloud
 
-Use k6 Cloud to offload
+Use k6 Cloud to visualize results, manage test teams, and avoid the managing your own load-test infrastructure.
 
 - [The application](https://k6.io/cloud/)
 - [k6 Cloud docs](/cloud)
 - [Video Playlist: k6 Cloud for load testing](https://www.youtube.com/watch?v=ncxCIuo5tUU&list=PLJdv3RhAQXNGkRCp7Q0k77n5jif4qjz2o)
+
+### Test servers
+
+If you need a place to test k6 scripts, your free to load these servers as heavily as you want.
+
+- [test.k6.io](https://test.k6.io). A demo website
+- [test-api.k6.io](https://test.k6.io). A demo REST API (with some websocket support).
+- [The k6 fake shop](http://ecommerce.test.k6.io/). A demo Woo commerce sight.
 
 
 ## k6 guides and explanations
