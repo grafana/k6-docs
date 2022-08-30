@@ -89,18 +89,6 @@
     },
     {
       "name": "xk6-redis",
-      "description": "Redis",
-      "url": "https://github.com/dgzlopes/xk6-redis",
-      "logo": "",
-      "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
-      },
-      "official": false,
-      "categories": ["Data"]
-    },
-    {
-      "name": "xk6-redis",
       "description": "Client for testing Redis",
       "url": "https://github.com/grafana/xk6-redis",
       "logo": "",
@@ -662,6 +650,138 @@
       },
       "official": false,
       "categories": ["Reporting", "Observability"]
+    },
+    {
+      "name": "xk6-git",
+      "description": "Clone Git repositories from tests",
+      "url": "https://github.com/skibum55/xk6-git",
+      "logo": "",
+      "author": {
+        "name": "Sean Keery",
+        "url": "https://github.com/skibum55"
+      },
+      "official": false,
+      "categories": ["Data", "Protocol"]
+    },
+    {
+      "name": "xk6-smtp",
+      "description": "Use SMTP protocol to send emails",
+      "url": "https://github.com/gpiechnik2/xk6-smtp",
+      "logo": "",
+      "author": {
+        "name": "gpiechnik2",
+        "url": "https://github.com/gpiechnik2"
+      },
+      "official": false,
+      "categories": ["Protocol"]
+    },
+    {
+      "name": "xk6-temporal",
+      "description": "Use for testing/benchmarking Temporal",
+      "url": "https://github.com/temporalio/xk6-temporal",
+      "logo": "",
+      "author": {
+        "name": "temporalio",
+        "url": "https://github.com/temporalio"
+      },
+      "official": false,
+      "categories": ["Platform"]
+    },
+    {
+      "name": "xk6-celery",
+      "description": "Generate load on Celery workers",
+      "url": "https://github.com/fornfrey/xk6-celery",
+      "logo": "",
+      "author": {
+        "name": "Oleksandr Kotov",
+        "url": "https://github.com/fornfrey"
+      },
+      "official": false,
+      "categories": ["Messaging"]
+    },
+    {
+      "name": "xk6-es",
+      "description": "Output test results to Elasticsearch",
+      "url": "https://github.com/BarthV/xk6-es",
+      "logo": "",
+      "author": {
+        "name": "Barthélemy Vessemont",
+        "url": "https://github.com/BarthV"
+      },
+      "official": false,
+      "categories": ["Reporting"]
+    },
+    {
+      "name": "xk6-httpagg",
+      "description": "Aggregate HTTP requests into an HTML report",
+      "url": "https://github.com/gpiechnik2/xk6-httpagg",
+      "logo": "",
+      "author": {
+        "name": "gpiechnik2",
+        "url": "https://github.com/gpiechnik2"
+      },
+      "official": false,
+      "categories": ["Reporting"]
+    },
+    {
+      "name": "xk6-harbor",
+      "description": "Client for load testing Harbor container registry",
+      "url": "https://github.com/heww/xk6-harbor",
+      "logo": "",
+      "author": {
+        "name": "He Weiwei",
+        "url": "https://github.com/heww"
+      },
+      "official": false,
+      "categories": ["Containers"]
+    },
+    {
+      "name": "xk6-snowflake",
+      "description": "Load-test Snowflake cloud data warehouse",
+      "url": "https://github.com/tomlegodais/xk6-snowflake",
+      "logo": "",
+      "author": {
+        "name": "Tom LeGodais",
+        "url": "https://github.com/tomlegodais"
+      },
+      "official": false,
+      "categories": ["Data"]
+    },
+    {
+      "name": "xk6-mongo",
+      "description": "Load-test Mongo no-SQL databases",
+      "url": "https://github.com/GhMartingit/xk6-mongo",
+      "logo": "",
+      "author": {
+        "name": "GhMartingit",
+        "url": "https://github.com/GhMartingit"
+      },
+      "official": false,
+      "categories": ["Data"]
+    },
+    {
+      "name": "xk6-neo4j",
+      "description": "Interact with Neo4J graph databases",
+      "url": "https://github.com/patrick-janeiro/xk6-neo4j",
+      "logo": "",
+      "author": {
+        "name": "Patrick Janeiro",
+        "url": "https://github.com/patrick-janeiro"
+      },
+      "official": false,
+      "categories": ["Data"]
+    },
+    {
+      "name": "xk6-google-iap",
+      "description": "Provides access to Google Auth token",
+      "url": "https://github.com/AckeeCZ/xk6-google-iap",
+      "logo": "",
+      "author": {
+        "name": "Ackee",
+        "url": "https://github.com/AckeeCZ"
+      },
+      "official": false,
+      "categories": ["Authentication"]
     }
   ]
 }
