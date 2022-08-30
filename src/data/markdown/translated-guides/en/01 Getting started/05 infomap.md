@@ -1,7 +1,7 @@
 ---
-title: k6 information map
+title: k6 resources
 excerpt: 'An overview of the different resources about k6: docs, videos, repos, test servers, and beyond'
-slug: '/getting-started/infomap/'
+slug: '/getting-started/resources/'
 ---
 
 The k6 docs aim to cover everything you need to know about using the core k6 products in your daily operational work.
