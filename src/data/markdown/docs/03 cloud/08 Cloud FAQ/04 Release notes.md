@@ -4,23 +4,23 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
-### v3.10.1 `(2022-8-19)`
+### v4.2.1 `(2022-8-19)`
 - Fix time series when resolution changed while streaming data.
 - Fix time series not animated correctly while streaming data.
 - Fix first new data point not added to time series while streaming data.
 
-### v3.10.0 `(2022-8-17)`
+### v4.2.0 `(2022-8-17)`
 - New Analysis Panel.
 - Display warning when script options cannot be validated.
 - Fill user name and user email on the support widget.
 - Fix misaligned loadzone flags 
 
-### v3.9.0 `(2022-8-15)`
+### v4.1.0 `(2022-8-15)`
 - [Audit Trail](/cloud/manage/audit-trail/): audit the activity within your organization.
 - [Teams](/cloud/project-and-team-management/teams/): a new unit between organizations and projects.
 - Fix crashes in Member table, PDF summary, and Scenarios input filter.
 
-### `v0.4.0` [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-8-10)`
+### v0.4.0 [Grafana k6 Cloud App](https://grafana.com/grafana/plugins/grafana-k6-app/) `(2022-8-10)`
 - Add ability to edit and create tests.
 - Add support for dynamic dashboard variables.
 - Display load zone info in Runs view.
