@@ -6,10 +6,9 @@ the TLS connection setup.'
 
 ## What is OCSP?
 
-The Online Certificate Status Protocol (OCSP) lets web browsers and clients check the status of an issued TLS certificate with a Certificate Authority (CA), ensuring
-that the certificate has not been revoked.
+The Online Certificate Status Protocol (OCSP) lets web browsers and clients check the status of an issued TLS certificate with a Certificate Authority (CA), ensuring that the certificate has not been revoked.
 
-There are different ways to check whether the certificate has been revoked.
+It exists different ways to check whether the certificate has been revoked.
 Each way places the burden on different parties:
 
 - The browser/client: talk to the CA (or through a CA&ndash;entrusted OCSP responder) with OCSP. One downside

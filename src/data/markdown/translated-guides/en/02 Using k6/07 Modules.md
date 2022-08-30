@@ -88,7 +88,7 @@ The steps of this tutorial are as follows:
 >
 > A ready-to-use Webpack and Babel starter is available [on GitHub](https://github.com/k6io/k6-es6).
 
-In a javascript project running NodeJS, modules are imported using either `import` or `require()`,
+In a JavaScript project running NodeJS, modules are imported using either `import` or `require()`,
 using the node module resolution algorithm. This means that the developer can import modules
 by name, without providing the full filesystem path to the module. For instance:
 
@@ -128,9 +128,9 @@ specific reason to choose something else.
 
 In general, all external modules added to a test project have a negative impact on performance, as they further increase the memory footprint and CPU usage.
 
-Usually, this is not a big problem as each application only allocates these resources once. In k6, however, every VU has a separate javascript virtual machine, duplicating the resource usage once each.
+Usually, this is not a big problem as each application only allocates these resources once. In k6, however, every VU has a separate JavaScript virtual machine (VM), duplicating the resource usage once each.
 
-By running code requiring additional features on top of ES5.1, we also need additional extensions to the javascript vm, further boosting the resource usage. This is the default mode of k6.
+By running code requiring additional features on top of ES5.1, we also need additional extensions to the JavaScript VM, further boosting the resource usage. This is the default mode of k6.
 
 When bundling using the configuration described in this article, babel and corejs automatically adds the features needed, thus allowing us to run our script without these extensions, using `--compatibility-mode=base`. For more details on the performance benefits of running in the base compatibility mode, see [this article](/using-k6/javascript-compatibility-mode#performance-comparison).
 
@@ -170,10 +170,10 @@ $ npm install --save-dev \
 </CodeGroup>
 
 | Package                                                                                   | Usage                                                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :---------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [webpack](https://github.com/webpack/webpack)                                             | The bundler part of Webpack                                                                                                                                                                                                                                           |
 | [webpack-cli](https://github.com/webpack/webpack-cli)                                     | The CLI part of Webpack, which allows us to use it from the terminal                                                                                                                                                                                                  |
-| [k6](https://github.com/grafana/k6)                                                       | A dummy package used to provide type-ahead in VSCode and similar                                                                                                                                                                                                      |
+| [@types/k6](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/k6)      | k6 Typescript definition                                                                                                                                                                                                                                              |
 | [babel-loader](https://github.com/babel/babel-loader)                                     | A loader used by Webpack to leverage babel functionality while bundling                                                                                                                                                                                               |
 | [@babel/core](https://github.com/babel/babel/tree/master/packages/babel-core)             | The core functionality of Babel                                                                                                                                                                                                                                       |
 | [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) | A smart preset using [browserlist](https://github.com/browserslist/browserslist), [compat-table](https://github.com/kangax/compat-table) and [electron-to-chromium](https://github.com/Kilian/electron-to-chromium) to determine what code to transpile and polyfill. |
@@ -376,7 +376,7 @@ has been marked for sharing in the Docker settings:
 
 ![Running k6 in docker on Windows](images/Modules/running-k6-in-docker-on-windows.png)
 
-## See also
+## Read more
 
 - [ES6 template](https://github.com/k6io/template-es6): a scaffolding project to use ES6 in your k6 scripts.
 - [TypeScript template](https://github.com/k6io/template-typescript): a scaffolding project to use TypeScript in your k6 scripts.

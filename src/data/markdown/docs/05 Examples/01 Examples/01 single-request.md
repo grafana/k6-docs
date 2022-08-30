@@ -25,7 +25,7 @@ export const options = {
     { target: 0, duration: '1m' },
   ],
   thresholds: {
-    requests: ['count < 100'],
+    http_reqs: ['count < 100'],
   },
 };
 

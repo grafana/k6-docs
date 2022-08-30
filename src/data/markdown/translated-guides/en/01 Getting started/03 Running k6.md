@@ -10,54 +10,54 @@ Follow along to learn how to:
 4. Ramp the number of requests up and down as the test runs.
 
 With these example snippets, you'll run the test with your machine's resources.
-But, if you have a cloud account, you can also use the `k6 cloud` command to outsource the test to our cloud servers. 
+But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers. 
 
 ## Running local tests
 
-Let's start by running a simple local script.
-Copy the code below, paste it into your favorite editor, and save it as `script.js`:
+To run a simple local script:
+1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
-<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-```javascript
-import http from 'k6/http';
-import { sleep } from 'k6';
+  ```javascript
+  import http from 'k6/http';
+  import { sleep } from 'k6';
 
-export default function () {
-  http.get('https://test.k6.io');
-  sleep(1);
-}
-```
+  export default function () {
+    http.get('https://test.k6.io');
+    sleep(1);
+  }
+  ```
 
-</CodeGroup>
+  </CodeGroup>
 
-Then, run k6 with this command:
+1. Then, run k6 with this command:
 
-<CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
+  <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
-```bash
-$ k6 run script.js
-```
+  ```bash
+  $ k6 run script.js
+  ```
 
-```bash
-# When using the `k6` docker image, you can't just give the script name since
-# the script file will not be available to the container as it runs. Instead
-# you must tell k6 to read `stdin` by passing the file name as `-`. Then you
-# pipe the actual file into the container with `<` or equivalent. This will
-# cause the file to be redirected into the container and be read by k6.
+  ```bash
+  # When using the `k6` docker image, you can't just give the script name since
+  # the script file will not be available to the container as it runs. Instead
+  # you must tell k6 to read `stdin` by passing the file name as `-`. Then you
+  # pipe the actual file into the container with `<` or equivalent. This will
+  # cause the file to be redirected into the container and be read by k6.
 
-$ docker run --rm -i grafana/k6 run - <script.js
-```
+  $ docker run --rm -i grafana/k6 run - <script.js
+  ```
 
-```bash
-PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
-```
+  ```bash
+  PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
+  ```
 
-</CodeGroup>
+  </CodeGroup>
 
 ## Adding more VUs
 
-Now let's run a load test with more than one virtual user and a longer duration:
+Now run a load test with more than one virtual user and a longer duration:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -105,7 +105,7 @@ export default function () {
 Init code runs first and is called only once per VU.
 On the other hand, default code executes as many times as the test options set.
 
-Read more about the different [life cycle stages of a k6 test](/using-k6/test-life-cycle).
+- [The life cycle of a k6 test](/using-k6/test-life-cycle).
 
 ## Using options
 
@@ -178,26 +178,51 @@ export default function () {
 
 For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
-## Running cloud tests
+## Execution modes
 
-k6 supports three test-execution modes:
+<Blockquote mod="note" title="Portability is a major design goal of k6">
 
-- [Local](#running-local-tests): on your local machine or a CI server.
-- [Cloud](/cloud): on cloud infrastructure managed by k6 Cloud.
-- Clustered: on more than one machine managed by you. [Not supported yet](https://github.com/grafana/k6/issues/140).
+You can run the same test in different modes with minimal changes.
 
-k6 has a goal of letting you run a test in all three execution modes without modifying the script.
+</Blockquote>
 
-To run cloud tests from the CLI:
-1. Register a k6 Cloud account.
-2. Log in to your account via the CLI.
-3. Use the `k6 cloud` command to run the script you already have.
+k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
 
-<CodeGroup labels={["Running a cloud test"]}>
+- [Local](#running-local-tests): the test execution happens entirely on a single machine, container, or CI server. 
 
-```bash
-$ k6 cloud script.js
-```
+  ```bash
+  k6 run script.js
+  ```
 
-</CodeGroup>
+- [Distributed](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
+  
+  <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
+
+  ```bash
+  kubectl apply -f /path/k6-resource.yaml
+  ```
+
+  ```yml
+  ---
+  apiVersion: k6.io/v1alpha1
+  kind: K6
+  metadata:
+    name: k6-sample
+  spec:
+    parallelism: 4
+    script:
+      configMap:
+        name: "k6-test"
+        file: "script.js"
+  ```
+
+  </CodeGroup>
+
+- [Cloud](/cloud): the test execution happens on k6 Cloud.
+
+  ```bash
+  k6 cloud script.js
+  ```
+
+  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/cloud-faq/private-load-zones/), and accept the test results from a [local](/results-visualization/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 

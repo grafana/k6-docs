@@ -3,13 +3,19 @@ title: 'Fine tuning OS'
 excerpt: 'In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.'
 ---
 
-A number of users while running their test scripts locally will run into limits within their OS which would prevent them from making the necessary number of requests to complete the test. This limit usually manifests itself in a form of **Too Many Open Files** error. These limits, if unchanged, can be a severe bottleneck if you choose to run a somewhat bigger or complicated test locally on your machine.
+When running large test scripts locally, users sometimes run into limits within their OS that prevent them from making the necessary number of requests to complete the test.
+This limit usually manifests itself in a `Too Many Open Files` error.
+These limits, if unchanged, can be a severe bottleneck if you choose to run a bigger or complicated test locally on your machine.
 
-In this article we will show you how to inspect the OS imposed limits of your system, tweak them and scale for larger tests.
+This article shows you how to inspect the OS-imposed limits of your system, tweak them, and scale for larger tests.
 
-Important to note here is that everything that we are covering in this article needs to be approached with a healthy dose of caution. As with any changes you are introducing to your OS, we recommend not to blindly change your system settings to a specific value. You should document ways of testing that shows a clear before/after relation. E.g. before changing MSL / TIME_WAIT period, confirm that you’re experiencing the issue (error messages, netstat, ss, etc.), change settings conservatively, re-run the test and note any improvement. This way we can gauge the impact of the optimization, any negative side-effects and come up with a range of recommended values.
+Important to note here is that everything that we cover in this article needs to be approached with a healthy dose of caution.
+As with any changes to your OS, we discourage blindly changing your system settings to a specific value. You should document ways of testing that shows a clear before-and-after relation.
+E.g. before changing MSL / TIME_WAIT period, confirm that you’re experiencing the issue (error messages, netstat, ss, etc.), change settings conservatively, re-run the test, and note any improvement.
+This way you can gauge the effect of the optimization, find any negative side-effects, and come up with a range of recommended values.
 
-> Modifications below have been tested for macOS Sierra 10.12 and above, so if you are running an older version than that, the process for changing these settings may be different.
+> Modifications below have been tested for macOS Sierra 10.12 and above.
+> If you're on an older version, the process for changing these settings might differ.
 
 ## Network resource limit
 
@@ -290,11 +296,11 @@ $ sudo sysctl -w net.inet.ip.portrange.first=32768
 net.inet.ip.portrange.first: 49152 -> 32768
 ```
 
-Note that the official range designated by IANA is 49152 to 65535, and some firewalls may assume that dynamically assigned ports fall within that range. You may need to reconfigure your firewall in order to make use of a larger range outside of your local network.
+Note that the official range designated by IANA is 49152 to 65535, and some firewalls may assume that dynamically assigned ports fall within that range. You may need to reconfigure your firewall to use a larger range outside of your local network.
 
 ## General optimizations
 
-In this section we will go over some of the optimisations that are not necessarily dependant on your OS, but may impact your testing.
+This section goes over some optimizations that are not necessarily dependant on your OS, but may affect your testing.
 
 ### RAM usage
 
@@ -329,7 +335,7 @@ Since sockets are uniquely created for a combination of local address, local por
 
 For example, you can configure your application to run on ports :8080, :8081, :8082, etc. and spread out your HTTP requests across these endpoints.
 
-## See also
+## Read more
 
 - [Running large tests](/testing-guides/running-large-tests)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)

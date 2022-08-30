@@ -618,9 +618,11 @@ Los valores posibles son:
 - none - deshabilitar
 - stdout - enviar a la salida estándar
 - stderr - enviar a la salida de error estándar (este es el valor por defecto)
-- loki - envía los registros a un servidor loki
+- loki - envía los registros a un servidor loki. Leer más en el [tutorial de Loki](https://k6.io/blog/using-loki-to-store-and-query-k6-logs/)
 
 El servidor loki puede configurarse adicionalmente de la siguiente manera: `loki=http://127.0.0.1:3100/loki/api/v1/push,label.something=else,label.foo=bar,limit=32,level=info,pushPeriod=5m32s,msgMaxSize=1231`, donde todo, excepto la url del principio, no es necesario. Las posibles claves con sus significados y valores por defecto:
+
+
 
 
 | key               | meaning                                                                                                                                                                                | default value                            |
@@ -1217,7 +1219,7 @@ export const options = {
 
 ## TLS Auth
 
-Una lista de objetos de configuración de certificados de cliente TLS. Cada objeto debe especificar para qué host(es)/dominio(s) es válido el certificado de cliente dado.
+Una lista de objetos de configuración de certificados de cliente TLS. `domains` y `password` son opcionales, pero `cert` y `key` son obligatorios.
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -1232,6 +1234,7 @@ export const options = {
       domains: ['example.com'],
       cert: open('mycert.pem'),
       key: open('mycert-key.pem'),
+      password: 'mycert-passphrase',
     },
   ],
 };
@@ -1266,16 +1269,20 @@ server, or an object specifying the "min" and "max" versions allowed to be used.
 | --- | --- | ------------------ | --------------------------- |
 | N/A | N/A | `tlsVersion`       | `null` (Allow all versions) |
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={["tlsVersion"]} lineNumbers={[true]}>
 
 ```javascript
-export let options = {
+export const options = {
   tlsVersion: 'tls1.2',
 };
+```
 
-// or...
+</CodeGroup>
 
-options = {
+<CodeGroup labels={["Min and max versions"]} lineNumbers={[true]}>
+
+```javascript
+export const options = {
   tlsVersion: {
     min: 'ssl3.0',
     max: 'tls1.2',

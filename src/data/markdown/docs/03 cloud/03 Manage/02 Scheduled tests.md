@@ -1,44 +1,67 @@
 ---
-title: 'Scheduled tests'
-excerpt: 'A guide on how to schedule your load tests to run in the future or on a schedule within the k6 Cloud Web UI.'
+title: 'Schedule a test'
+excerpt: 'How to schedule your k6 Cloud load tests to run in the future and at regular intervals.'
+slug: '/cloud/manage/scheduled-tests'
 ---
 
-It's not always feasible to trigger a test run when you need it. The scheduling option in k6 Cloud allows you to configure a test to execute at a particular time, and on a regular interval.
+At times, it might be impossible for you to manually run a cloud test at the time you want to.
 
-Some reasons for using scheduled tests include, but are not limited to:
+In k6 Cloud, you can schedule tests to run at fixed times and regular intervals.
+The particular reasons to schedule a test depend on use cases, but the broad motivations are usually as follows:
 
-- You need to test a production system and want to do it during hours with minimal usage
-- You want to build a performance trend to monitor for regressions (but you're not ready to integrate it as a step in your CI pipeline)
+- **To test at inconvenient hours**
 
-## Scheduling
+  For example, you might need to test a production system in the middle of the night, when traffic is lowest and all your developers are asleep.
 
-You have the ability to schedule any tests that currently exist in your k6 Cloud account that have been executed on our cloud service (you can not schedule a locally run test through the web UI). You can also schedule tests that you create within the web UI after saving your configuration.
+- **To schedule once and run many times**
 
-Schedules can be set up from two different places:
+  For example, you might want regularly monitor for regressions (without integrating the test into your CI pipeline).
 
-### 1. Schedules overview page
+## How to schedule a test
 
-Located in the left menu under **Manage section** you will find the **Scheduled tests** option.
+First, you need to select or create a test to schedule.
+Then, schedule it from the **Scheduled tests** page or from the page of the test itself.
 
-On this page you can quickly find and edit all test schedules that have been created in your organization.<br/>
-You are also able to create a new schedule for any of your projects and cloud tests directly from this page.
+### Valid tests to schedule
+
+If you have already authored the test, you can schedule it on k6 Cloud if it meets these criteria:
+
+- It exists in your k6 Cloud account
+- It has run on the k6 Cloud service
+  (you can not schedule a locally run test through the web UI).
+
+You can also use the web UI to create a test to schedule.
+Make sure you save your configuration.
+
+After you have the test you want to schedule, you can schedule it in two ways.
+
+### Schedules overview page
+
+In the sidebar menu, go to **Manage > Scheduled tests**.
+
+On this page, you can create new schedules, and find and edit all test schedules your organization has created.
 
 ![Schedules page](./images/Scheduling-a-test/schedules-page.png)
 
-Select **Add schedule** on the top right, then follow the steps:
+To schedule a test, select **Add schedule** on the top right, then follow these steps:
 
 1. Select a project and test.
-2. Set a _start date and time_.
-3. Should the test repeat to run multiple times?
-4. When you are done with the configuration, save the schedule by clicking **Save schedule**.<br/>
-   If all went well, you should be seeing your newly created test schedule in the list of schedules.
+1. Set a `start date` and `time`.
+1. Toggle whether the test should repeat or run multiple times.
+1. After you configure everything, select save **Save schedule**.
 
-### 2. Test overview page
-To get to a test overview page, select the name of any of your cloud tests.
+   You should see your newly created test schedule in the list of schedules.
+
+### Test overview page
+
+You can also schedule a test from the test overview page.
+
+1. Navigate to your project and select the test.
 ![Navigate to test overview page](./images/Scheduling-a-test/goto-test-overview-page.png)
 
-Here you will find an icon that resembles a calender, next to it a link with the text **Set up schedule**.<br/>
-Select **Set up schedule** and you will be presented with the steps to configure your schedule.
+1. On the test page, select **Set up schedule**.
+
+  This brings up the schedule configuration.
 ![Test overview page](./images/Scheduling-a-test/test-overview-page.png)
 
 <!-- Scheduling is a great tool for re-running  -->
@@ -49,12 +72,21 @@ Select **Set up schedule** and you will be presented with the steps to configure
 
 ## Scheduling options
 
-In both cases, you are presented with the following options:
+However you schedule your test, k6 provides the following options:
 
-- Ability to run a test **now** or at a **later date**.
-- Set the execution to repeat on an **Hourly**, **Daily**, **Weekly**, or **Monthly interval**.
-- Control how many times the test will run for, _a set number of occurrences_, _stop after a certain date_. The granularity for controlling this is high, so do explore the options.
+- When to run the test: `now` or at a `later date`.
+- How frequently to repeat the test: `Hourly`, `Daily`, `Weekly`, or `Monthly`.
+- How many times the test will run: either __a set number_, or _stopping after a set date_.
 
-![Schedule configuration](./images/Scheduling-a-test/schedule-configuration.png)
+  You can schedule tests with a high degree of granularity.
+  So explore the options to find what works best for your case.
 
-Finally: we recommend setting up [notifications](/cloud/manage/notifications) and [thresholds](/using-k6/thresholds) to complete an automated loop. Schedule your test to run and get notified if the test has passed or failed.
+  ![Schedule configuration](./images/Scheduling-a-test/schedule-configuration.png)
+
+## Next steps
+
+After you schedule a test, you can automate further.
+
+We recommend setting up [notifications](/cloud/manage/notifications) and [thresholds](/using-k6/thresholds).
+With these, you can complete an automated loop&mdash;schedule your test to run automatically, then get automatically notified whenever it passes or fails.
+

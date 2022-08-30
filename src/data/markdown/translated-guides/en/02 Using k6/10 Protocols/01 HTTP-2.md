@@ -11,7 +11,7 @@ Most importantly, it introduces a binary wire protocol with multiplexed streams 
 This solves a long-standing performance issue with HTTP/1.1: [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
 
 Well, it at least _partially_ solves it.
-There are still TCP congestion control mechanisms interfering with the intended independent nature of the multiplexed streams in cases of lost/dropped packets and retransmission/reassembly.
+The TCP congestion control mechanisms can interfere with the intended independent nature of the multiplexed streams in cases of lost/dropped packets and retransmission/reassembly.
 The full solution is to run HTTP/2.0 over UDP, as Google implemented with [QUIC](https://en.wikipedia.org/wiki/QUIC).
 
 ## Additional features of HTTP/2.0

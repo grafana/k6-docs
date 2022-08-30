@@ -23,7 +23,7 @@
   flex-direction: column;
   height: 100%;
   min-height: 450px;
-  padding-top: 85px;
+  padding-top: 100px;
   padding-bottom: 20px;
 }
 
@@ -39,7 +39,7 @@
 
 .logo {
   display: block;
-  height: 45px;
+  height: 61px;
   fill: $color-primary;
 }
 
@@ -120,6 +120,6 @@
 .button {
   width: 100%;
   &:last-child {
-    margin-top: 15px;
+    margin-top: 10px;
   }
 }

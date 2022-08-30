@@ -23,8 +23,6 @@ Turning a HAR file into a test follows this sequence:
 Before you record your HAR file, you'll need to choose your tool.
 You'll also want to consider how you'll record a plausible user session.
 
-### Find a tool
-
 Multiple browsers and tools can export HTTP traffic in a HAR format.
 A few popular ones are:
 
@@ -34,21 +32,6 @@ A few popular ones are:
 - [Charles recording proxy](http://www.charlesproxy.com/)(HTTP proxy/recorder)
 - [Fiddler](http://www.telerik.com/fiddler) (HTTP proxy/recorder)
 
-### Consider what you want to record
-
-Before you record your session, consider the following dos and don'ts.
-
-It's a good idea to:
-- Browse as a user would
-- Take natural pauses that users would take to consume page content
-- Focus on the most common use cases, rather than all the possible use cases
-- Take note of pages where forms/logins occur. You will likely need to complete some scripting.
-
-You probably _do not_ want to:
-- Visit every page in one journey
-- Click every possible option
-- Navigate as fast as you can
-- Navigate out of your actual site or application
 
 
 ## 1. Record a HAR file
@@ -127,12 +110,12 @@ To learn more about how to configure the load options, read the [Adding more VUs
 
 If you are recording a user session of a website, by default, you'll record all the HTTP requests that your website uses.
 This includes requests from the third-party tools that your site uses,
-e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, et cetera.
+e.g. analytics tools, Facebook, Twitter, Support Widgets, CDNs, etc.
 
 You should remove these third party requests:
 
 - They will skew the percentiles of your performance results.
-- You may not be able to affect the performance of the third-party service.
+- You may be unable to affect the performance of the third-party service.
 - The load test may violate the terms-of-service contract that you have with the provider.
 
 Your k6 script can skip third-party requests in a few ways:
@@ -164,7 +147,7 @@ Often, the correlation would be for a token or ID that is needed to run a sequen
 
 The recorded HAR file may include dynamic data used on your site - `IDs`, `CSRF tokens`, `VIEWSTATE`, `wpnonce`, and other `dynamic values` - that will be converted into the k6 script.
 
-To run your load test correctly, you may need to replace the hardcoded data with dynamic data that k6 gets from previous requests.
+To run your load test correctly, you may need to replace some recorded data with dynamic data that k6 gets from previous requests.
 For example, tokens expire quickly, and they are one of the most common things that users will correlate from a recorded session.
 
 [Here](/examples/correlation-and-dynamic-data) are a few examples using the k6 API to correlate dynamic data.
@@ -181,7 +164,7 @@ $ k6 run loadtest.js
 
 To learn about running k6, check out the [Running k6 tutorial](/getting-started/running-k6).
 
-## See also
+## Read more
 
 - [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
 

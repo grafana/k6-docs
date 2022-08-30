@@ -191,7 +191,7 @@ group('login page', function () {
 
 </CodeGroup>
 
-## See also
+## Read more
 
 - [Test types](/test-types/introduction)
 - [k6 does not run in a browser](/#what-k6-does-not)

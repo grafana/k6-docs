@@ -22,21 +22,49 @@ export const Heading = ({ className, id, tag = 'h1', size, children }) => {
   );
 };
 
+const getPlainText = (arr) =>
+  arr.reduce((acc, cur) => acc.concat(cur.props?.children ?? cur), '');
+
+const mayBeGetCustomAnchor = (str) => {
+  const match = str.match(/\{#?.*?\}/);
+  if (!match) return null;
+  return [match[0], match.index];
+};
+
+const stripCustomAnchorSyntax = (str) => str.replace(/^\{#?(.*?)\}/, '$1');
+
 export const HeadingLandmark =
   (Tag) =>
   ({ children }) => {
-    const getPlainText = (arr) =>
-      arr.reduce((acc, cur) => acc.concat(cur.props?.children ?? cur), '');
     const textContent = Array.isArray(children)
       ? getPlainText(children)
       : children;
-    const anchor = `${anchorify(textContent)}`;
+    // try to get custom anchor
+    const [customAnchor, customAnchorMatchIndex] =
+      mayBeGetCustomAnchor(textContent) ?? [];
+    let anchorMold = textContent;
+    let renderContent = children;
+    // if custom anchor is there,
+    // remove it from the UI
+    if (customAnchor) {
+      // handle plaing string heading
+      if (typeof children === 'string') {
+        renderContent = renderContent.slice(0, customAnchorMatchIndex);
+      } else {
+        // handle compound heading
+        renderContent = renderContent.map((item) =>
+          typeof item === 'string' ? item.replace(customAnchor, '') : item,
+        );
+      }
+      anchorMold = stripCustomAnchorSyntax(customAnchor);
+    }
+    const anchor = `${anchorify(anchorMold)}`;
     return (
       <Tag className={styles.markHeading} id={anchor}>
+        {renderContent}
         <a className={'anchor-icon'} href={`#${anchor}`}>
           <AnchorIcon />
         </a>
-        {children}
       </Tag>
     );
   };

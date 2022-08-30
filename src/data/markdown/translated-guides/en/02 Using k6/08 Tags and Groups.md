@@ -10,7 +10,7 @@ This can make it hard to pinpoint the issues that are degrading performance.
 k6 provides two scripting APIs to help you visualize, sort, and filter your test results.
 
 - *Tags* categorize your checks, thresholds, custom metrics, and requests for in-depth filtering.
-- *Groups* let you apply tags to the script's functions.
+- *Groups* apply tags to the script's functions.
 
 Besides these granular tags, you can also use options to set test-wide tags.
 You can use these tags to compare results from multiple tests.
@@ -60,7 +60,7 @@ You can also enable some additional system tags if you need them:
 
 ## User-defined tags
 
-User-defined tags let you categorize k6 entities based on logic.
+You can define your own tags to categorize k6 entities based on your test logic.
 You can tag the following entities:
 
 - requests
@@ -98,7 +98,7 @@ export default function () {
 ## Test-wide tags
 
 Besides attaching tags to requests, checks, and custom metrics, you can set test-wide tags across all metrics.
-There are two ways you can set these tags:
+You can set these tags in two ways:
 
 - In the CLI, using one or more `--tag NAME=VALUE` flags
 
@@ -120,7 +120,7 @@ There are two ways you can set these tags:
 
 In the case, a user-defined tag with advanced logic for handling which tag to set is required then it's possible doing it by defining the tag from the code.
 
-To support advanced tagging logics and workflows, it is also possible to directly set and get them from scripts' code.
+To support advanced tagging workflows, it is also possible to directly set and get them from scripts' code.
 
 [k6/execution.vu.tags](/javascript-api/k6-execution/#vu) object's properties can indeed be directly assigned new key/value pairs to define new tags dynamically. This can prove useful, as demonstrated in the following example, to track a container's group from nested groups, and aggregating nested group's sub-metrics.
 
@@ -258,13 +258,11 @@ To see how tags affect your test-result output, refer to the [k6 results output 
 
 ## Groups
 
-Groups are optional.
-
-They let you “group” a large load script by functions.
-You can also nest groups, allowing BDD-style testing.
+For extra organization, you can use *groups* to organize a load script by functions.
+You can also nest groups for BDD-style testing.
 
 All metrics emitted in a group have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
-There is also a root group with the name '' (empty string).
+The root group uses the name '' (empty string).
 If you have a single group named `cool requests`, the actual value of the `group` is `::cool requests`.
 
 For example, you could use groups to organize multiple requests by page loads or user actions.

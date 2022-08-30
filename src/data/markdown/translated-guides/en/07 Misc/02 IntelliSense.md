@@ -25,7 +25,7 @@ $ npm init --yes
 $ npm install --save-dev @types/k6
 ```
 
-## See also
+## Read more
 
 - [Visual Studio Code - k6 Extension](https://marketplace.visualstudio.com/items?itemName=k6.k6)
 - [IntelliJ IDEA - k6 Plugin](https://plugins.jetbrains.com/plugin/16141-k6)

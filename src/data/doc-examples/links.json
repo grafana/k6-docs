@@ -159,12 +159,6 @@
       "url": "https://k6.io/blog/performance-monitoring-with-cron-and-k6"
     },
     {
-      "title": "Integrating k6 with Apache Kafka",
-      "description": "How to send k6 output to Apache Kafka?",
-      "to": "",
-      "url": "https://k6.io/blog/integrating-k6-with-apache-kafka"
-    },
-    {
       "title": "Load testing GraphQL with k6",
       "description": "The popularity and adoption of GraphQL have been impressive in the last years, this post provides an example using k6 to load testing a GraphQL service.",
       "to": "",

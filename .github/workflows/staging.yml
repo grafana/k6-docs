@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: npm install
   lint:
-    name: Lint code and prose
+    name: Lint code
     runs-on: ubuntu-latest
     needs:
       - update-dependencies
@@ -60,11 +60,6 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm install
-      - name: Install vale
-        run: |
-          curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.4.0
-          export PATH="./bin:$PATH"
-          vale -v
       - name: Check formatting
         run: |
           npm run format
@@ -74,10 +69,19 @@ jobs:
       - name: Lint code examples
         run: |
           npm run lint:examples
-      - name: Lint prose
-        run: |
-          export PATH="./bin:$PATH"
-          npm run lint:prose
+  lint-prose:
+    name: Lint prose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: errata-ai/vale-action@reviewdog
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: ./src/data/markdown
+          version: 2.17.0
+          fail_on_error: true
+          vale_flags: '--glob=**/{docs,translated-guides/en}/**/*.md'
   build-deploy-staging:
     name: Build and deploy to staging
     runs-on: ubuntu-latest

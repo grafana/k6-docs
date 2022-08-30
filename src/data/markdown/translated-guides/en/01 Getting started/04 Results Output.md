@@ -3,7 +3,7 @@ title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 ---
 
-There are two ways to look at test results:
+k6 provides two ways to look at test results:
 * After the test runs, k6 sends a small summary to `stdout`.
 * For granular analysis and time-series data, you can also stream live test data to an external output.
 
@@ -16,7 +16,7 @@ It also gives basic, summary statistics about each metric (e.g. mean, median, p9
 
 For fine-grained analysis, you can stream all the data that your test generates (e.g. all HTTP requests) to an _external output_.
 This output might be a structured file format, like CSV or JSON.
-But you could also stream to another program, like Datadog or Prometheus, or pipe results to our managed [k6 cloud](/result-visualization/cloud) service.
+But you could also stream to another program, like Datadog or Prometheus, or pipe results to our managed [k6 cloud](/results-visualization/cloud) service.
 The "External outputs" section lists [all supported built-in outputs](/getting-started/results-output#external-outputs).
 
 You have much room to handle the data in the way that best fits your use case.
@@ -152,7 +152,6 @@ The available built-in outputs are:
 <Glossary>
 
 - [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)
-- [Apache Kafka](/results-visualization/apache-kafka)<sup>deprecated</sup>
 - [Cloud](/results-visualization/cloud)
 - [CSV](/results-visualization/csv)
 - [Datadog](/results-visualization/datadog)

@@ -119,7 +119,7 @@ $ docker-compose run -v \
     k6 run /scripts/es6sample.js
 ```
 
-Now you should be able to connect to localhost on port 3000 with your browser and access the
+Now you should be able to connect to `localhost` on port 3000 with your browser and access the
 Grafana installation in the Docker container.
 
 ## InfluxDB options
@@ -135,7 +135,7 @@ When uploading the k6 results to InfluxDB (`k6 run --out influxdb=`), you can co
 | `K6_INFLUXDB_PUSH_INTERVAL`     | The flush's frequency of the `k6` metrics. | `1s` |
 | `K6_INFLUXDB_CONCURRENT_WRITES` | Number of concurrent requests for flushing data. It is useful to not block the process when a request takes more than the expected time (more than push interval). | `4` |
 
-## See also
+## Read more
 
 - [Tutorial about using k6 with InfluxDB and Grafana](https://k6.io/blog/k6-loves-grafana/)
 - [Comparison of k6 test result visualizations](https://k6.io/blog/comparison-of-k6-test-result-visualizations)

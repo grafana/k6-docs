@@ -16,7 +16,6 @@ sudo apt-get update
 sudo apt-get install k6
 ```
 
-
 ### Fedora/CentOS
 
 Using `dnf` (or `yum` on older versions):
@@ -25,7 +24,6 @@ Using `dnf` (or `yum` on older versions):
 sudo dnf install https://dl.k6.io/rpm/repo.rpm
 sudo dnf install k6
 ```
-
 
 ## MacOS
 

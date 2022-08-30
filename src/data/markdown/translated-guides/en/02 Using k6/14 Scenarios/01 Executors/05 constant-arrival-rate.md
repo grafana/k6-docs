@@ -26,7 +26,7 @@ also adds the following options:
 | rate<sup>(required)</sup>            | integer | Number of iterations to start during each `timeUnit` period.                                 | -       |
 | preAllocatedVUs<sup>(required)</sup> | integer | Number of VUs to pre-allocate before test start to preserve runtime resources. | -       |
 | timeUnit         | string  | Period of time to apply the `rate` value.                                               | `"1s"`  |
-| maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | -       |
+| maxVUs           | integer | Maximum number of VUs to allow during the test run.                                     | If unset, same as `preAllocatedVUs`       |
 
 ## When to use
 
@@ -62,7 +62,7 @@ export const options = {
       // It should preallocate 2 VUs before starting the test
       preAllocatedVUs: 2,
 
-      // It is allowed to spin up to 50 maximum VUs in order to sustain the defined
+      // It is allowed to spin up to 50 maximum VUs to sustain the defined
       // constant arrival rate.
       maxVUs: 50,
     },
@@ -79,7 +79,7 @@ export default function () {
 
 </CodeGroup>
 
-> Note that in order to reliably achieve a fixed request rate, it's recommended to keep
+> **Note**: to reliably achieve a fixed request rate, it's recommended to keep
 > the function being executed very simple, with preferably only a single request call,
 > and no additional processing or `sleep()` calls.
 

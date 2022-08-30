@@ -6,7 +6,7 @@ excerpt: 'Issue an HTTP POST request.'
 
 | Parameter           | Type                          | Description                                                                              |
 | ------------------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
-| `url`               | string / [HTTP URL](/javascript-api/k6-http/url-url#returns)     | Request URL (e.g. `http://example.com`).                                                 |
+| `url`               | string / [HTTP URL](/javascript-api/k6-http/urlurl#returns)     | Request URL (e.g. `http://example.com`).                                                 |
 | `body`              | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                   |
 | `params` (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters |
 

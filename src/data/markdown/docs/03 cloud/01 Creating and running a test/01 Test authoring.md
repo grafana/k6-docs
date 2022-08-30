@@ -1,26 +1,26 @@
 ---
 title: 'Test authoring'
 head_title: 'Test authoring in k6 Cloud'
-excerpt: 'k6 ecosystem provides a set of codeless tools to speed up the test creation and facilitate collaboration across different roles.'
+excerpt: 'The k6 ecosystem provides a set of no-code tools to speed up test creation and facilitate collaboration across different roles.'
 ---
 
-In testing, authoring refers to the test creation process. 
+In testing, *authoring* is the process of creating a test. 
 
-k6 is, at its core, a **code-based testing tool**. However, the k6 ecosystem provides a set of **no-code tools** to speed up the test creation and facilitate collaboration across different roles.
+At its core, k6 is a code-based testing tool.
+However, the k6 ecosystem provides a set of no-code tools to speed up test creation and facilitate collaboration across different roles.
 
-In k6, you can create a test in various ways, using:
+Besides writing a test in your text editor or IDE, you can also use a k6-supported tool to create a test script:
 
-- Your own text editor or IDE
-- [Script editor in the k6 Cloud](/cloud/creating-and-running-a-test/script-editor)
-- [Test builder](/test-authoring/test-builder)
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder)
-- [Converters](/integrations#converters): HAR, Postman and Swagger
+- The [Test builder](/test-authoring/test-builder) is a graphical test builder.
+- The [Script editor](/cloud/creating-and-running-a-test/script-editor) is a web-based editor in k6 cloud.
+- [Browser recorders](/test-authoring/recording-a-session/browser-recorder) create scripts from recorded sessions.
+- [Converters](/integrations#converters) create tests from HAR, Postman, and OpenAPI files
 
 ## Running a cloud test
 
-After creating your test, you might want to debug it locally or run it on the cloud. Cloud tests will be executed from the geographic location/s you've selected in your test, on the k6 Cloud infrastructure. 
+Cloud tests run on k6 Cloud infrastructure from the geographic locations that you select.
 
 You can start cloud tests from two places:
 
-- In the **k6 Cloud web app**, using the [script editor](/cloud/creating-and-running-a-test/script-editor), [test builder](/test-authoring/test-builder), or re-running a listed test.
-- In the [**k6 CLI**](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), running the `k6 cloud` command.
+- In the **k6 Cloud web app**, using the [script editor](/cloud/creating-and-running-a-test/script-editor), [test builder](/test-authoring/test-builder), or by re-running a listed test.
+- [From the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), running the `k6 cloud` command.

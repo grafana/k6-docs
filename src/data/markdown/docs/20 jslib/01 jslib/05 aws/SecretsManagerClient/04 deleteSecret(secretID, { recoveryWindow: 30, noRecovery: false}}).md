@@ -9,14 +9,14 @@ excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 | Parameter | Type                                      | Description                              |
 | :-------- | :---------------------------------------- | :--------------------------------------- |
 | secretID  | string                                    | The ARN or name of the secret to update. |
-| options   | { recoveryWindow: 30, noRecovery: false } | options allow you to control the deletion behavior. recoveryWindow defines how long a secret will remain “soft-deleted”, in days, before being hard-deleted. noRecovery set to true would hard-delete the secret immediately. Note that both options are exclusive. |
+| options   | { recoveryWindow: 30, noRecovery: false } | Use options to control the deletion behavior. recoveryWindow defines how long a secret will remain “soft-deleted”, in days, before being hard-deleted. noRecovery set to true would hard-delete the secret immediately. Note that both options are exclusive. |
 
 ### Example
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.3.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.4.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig(
   __ENV.AWS_REGION,

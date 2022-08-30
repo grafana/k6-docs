@@ -7,7 +7,7 @@ A k6 test has four distinct stages.
 A script always runs through these stages in the same order.
 
 1. Code in the `init` context prepares the script: loading files, importing modules, and defining functions.
-2. (Optional) The `setup` code runs,  setting up the test environment (optional) and generating data.
+2. (Optional) The `setup` code runs,  setting up the test environment and generating data.
 3. VU code runs in the `default()` function, running for as long and as many times as the `options` define.
 4. (Optional) The `teardown` code runs, postprocessing data and closing the test environment.
 

@@ -1,6 +1,7 @@
 ---
 title: 'Apache Kafka'
 excerpt: 'When running a test, k6 can send the metrics in real-time to Kafka. Apache Kafka is a stream-processing platform for handling real-time data.'
+hideFromSidebar: true
 ---
 
 <Blockquote mod="warning">
@@ -55,6 +56,6 @@ $ k6 --out kafka=brokers=someBroker,topic=someTopic,format=influxdb,influxdb.tag
 
 </CodeGroup>
 
-## See also
+## Read more
 
 - [Integrating k6 with Apache Kafka](https://k6.io/blog/integrating-k6-with-apache-kafka)

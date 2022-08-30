@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 // components
-import { ItemCardsRow } from 'components/blocks/item-cards-row';
 import { DocIconsRow } from 'components/pages/doc-integrations/doc-icons-row';
 import { ExternalLinksDashboard } from 'components/pages/doc-integrations/external-links-dashboard';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
@@ -16,7 +15,6 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 // icons
 import CloudWatch from 'svg/amazon-cloudwatch.inline.svg';
-import Kafka from 'svg/apache-kafka.inline.svg';
 import AWSCodeBuild from 'svg/aws-codebuild.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import Bamboo from 'svg/bamboo.inline.svg';
@@ -47,11 +45,6 @@ const iconsDataSet1 = [
     Icon: CloudWatch,
     name: 'Amazon CloudWatch',
     to: '/results-visualization/amazon-cloudwatch',
-  },
-  {
-    Icon: Kafka,
-    name: 'Apache Kafka',
-    to: '/results-visualization/apache-kafka',
   },
   {
     Icon: K6,
@@ -489,30 +482,6 @@ export default function Integrations({
                   description:
                     'Integrating with Xray. Validate test results in JIRA.',
                   url: 'https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6',
-                },
-              ]}
-            />
-            <ItemCardsRow
-              blockTitle="k6 Extensions"
-              subtitle={`Use k6 extensions to further extend the possible use cases of k6. 
-                Extensions are written in go and then made available as JavaScript modules
-                for you to utilise in your test scripts.`}
-              linkText="Read more"
-              cardsData={[
-                {
-                  as: 'a',
-                  title: '🔎 Explore the k6 extensions ecosystem',
-                  href: 'https://k6.io/docs/extensions/',
-                },
-                {
-                  as: 'a',
-                  title: '📖 Learn more about k6 extensions',
-                  href: 'https://k6.io/docs/extensions/guides/what-are-k6-extensions/',
-                },
-                {
-                  as: 'a',
-                  title: '🏗️ How to create your first k6 extension',
-                  href: 'https://k6.io/docs/extensions/guides/create-an-extension/',
                 },
               ]}
             />

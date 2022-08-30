@@ -42,6 +42,10 @@
       text-decoration: none;
       border: none;
     }
+    @include xs-down {
+      position: static;
+      margin-left: 5px;
+    }
   }
   &:hover {
     a:first-child {
