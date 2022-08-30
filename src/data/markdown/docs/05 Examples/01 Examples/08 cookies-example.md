@@ -117,8 +117,7 @@ export default function () {
 
 ## Delete a cookie in the VU cookie jar
 
-To delete a cookie in the jar by specifying url and name
-you'd do something like this:
+To delete a cookie in the jar for a specific URL and name, use the `delete` method.
 
 <CodeGroup labels={["set-cookie-in-jar.js"]} lineNumbers={[true]}>
 
