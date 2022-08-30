@@ -156,8 +156,7 @@ export default function () {
 
 ## Clear all cookies in the VU cookie jar
 
-To clear all cookies in the jar by specifying url
-you'd do something like this:
+To clear all cookies in the jar by specifying url, use the `clear` method.
 
 <CodeGroup labels={["set-cookie-in-jar.js"]} lineNumbers={[true]}>
 
