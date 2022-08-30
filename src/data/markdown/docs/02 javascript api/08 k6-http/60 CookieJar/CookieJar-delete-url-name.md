@@ -1,6 +1,6 @@
 ---
-title: 'CookieJar.delete(url)'
-excerpt: 'Delete the `name` cookie for the given URL.'
+title: 'CookieJar.delete(url, name)'
+excerpt: 'Delete a cookie of a specified `name` for the given URL.'
 ---
 
 | Parameter | Type   | Description |
@@ -14,32 +14,31 @@ excerpt: 'Delete the `name` cookie for the given URL.'
 
 ```javascript
 import http from 'k6/http';
+import { check } from 'k6';
 
 export default function () {
-  http.get('https://httpbin.test.k6.io/cookies/set?one=1&two=2');
+  const jar = http.cookieJar();
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_1', 'hello world_1');
+  jar.set('https://httpbin.test.k6.io/cookies', 'my_cookie_2', 'hello world_2');
 
-  // We'll use httpbin's reflection to see what cookies we
-  // are actually sending to the server after every change
-  let httpbinResp;
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
-  // Will print '{"one":"1","two":"2"}'
+  const res1 = http.get('https://httpbin.test.k6.io/cookies');
+  check(res1, {
+    'res1 has status 200': (r) => r.status === 200,
+    "res1 has cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 !== null,
+    'res1 cookie has correct value_1': (r) => r.json().cookies.my_cookie_1 == 'hello world_1',
+    "res1 has cookie 'my_cookie_2'": (r) => r.json().cookies.my_cookie_2 !== null,
+    'res1 cookie has correct value_2': (r) => r.json().cookies.my_cookie_2 == 'hello world_2',
+  });
 
-  const jar = http.cookieJar(); // get the VU specific jar
-  jar.set('https://httpbin.test.k6.io/cookies', 'three', '3');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
-  // Will print '{"one":"1","three":"3","two":"2"}'
+  jar.delete('https://httpbin.test.k6.io/cookies', 'my_cookie_1');
 
-  jar.delete('https://httpbin.test.k6.io/cookies', 'one');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
-  // Will print '{"three":"3","two":"2"}'
-
-  jar.clear('https://httpbin.test.k6.io/cookies');
-  httpbinResp = http.get('https://httpbin.test.k6.io/cookies');
-  console.log(JSON.stringify(httpbinResp.json().cookies));
-  // Will print '{}'
+  const res2 = http.get('https://httpbin.test.k6.io/cookies');
+  check(res2, {
+    'res2 has status 200': (r) => r.status === 200,
+    "res2 doesn't have cookie 'my_cookie_1'": (r) => r.json().cookies.my_cookie_1 == null,
+    "res2 has cookie 'my_cookie_2'": (r) => r.json().cookies.my_cookie_2 !== null,
+    'res2 cookie has correct value_2': (r) => r.json().cookies.my_cookie_2 == 'hello world_2',
+  });
 }
 ```
 
