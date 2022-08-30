@@ -24,7 +24,16 @@ If you leave the Team, your regular Project membership does not change.
 
 <Blockquote mod="note" title="You must still specify the projectID in cloud scripts.">
 
-## Managing teams
+The team that the project belongs to is never referenced in k6 scripts.
+Refer to [Projects](/cloud/project-and-team-management/projects) for examples.
+
+</Blockquote>
+
+## Necessary organization structure and permissions
+
+To add Teams and Team members, you need the following:
+- An Organization with [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management).
+- **Organization admin** or **Organization read/write** privileges 
 
 ## Managing teams
 
@@ -67,15 +76,7 @@ Most members just need **read only** Team access.
 ### Managing team members
 
 Once members are added, they appear in the list.
-<<<<<<< HEAD
-<<<<<<< HEAD
 Organization admins and Team admins can add or remove users from a team.
-=======
-Organization admins and Team admins can add or remove members from it.
->>>>>>> 56803e99 ([feat] Update docs)
-=======
-Organization admins and Team admins can add or remove users from a team.
->>>>>>> a72f99ae (Use "Structural unit" and minimize use of word "Member")
 
 ![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
 
