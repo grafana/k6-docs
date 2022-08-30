@@ -81,3 +81,4 @@ Once members are added, they appear in the list.
 Organization admins and Team admins can add or remove users from a team.
 
 ![Managing Team members in Team member listing](images/05-Teams/manage-team-members.png)
+
