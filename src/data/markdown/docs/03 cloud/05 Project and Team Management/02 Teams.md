@@ -23,43 +23,28 @@ If you leave the Team, your regular Project membership does not change.
 
 <Blockquote mod="note" title="You must still specify the projectID in cloud scripts.">
 
-The team that the project belongs to is never referenced in k6 scripts.
-Refer to [Projects](/cloud/project-and-team-management/projects) for examples.
-
-</Blockquote>
-
-## Necessary organization structure and permissions
-
-To add Teams and Team members, you need the following:
-- An Organization with [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management).
-- **Organization admin** or **Organization read/write** privileges 
-
 ## Managing teams
 
-## Managing teams
+To add Teams and Team members via the app, your Organization must first have some [Projects](/cloud/project-and-team-management/projects) and some [Organization Members](/cloud/project-and-team-management). You need **Organization admin** or **Organization read/write** privileges to add new Team. 
 
-To manage teams from k6 Cloud, use the left sidebar and select **Teams**. 
+Using the [k6 cloud browser app](https://app.k6.io), you should be able to access _Teams_ view from the left side bar.
 
 ![Team menu](images/05-Teams/teams-menu.png)
 
 ### Creating a team
 
-To create a new team:
-1. Select the **Create new team** button.
-2. Give the team an organization-unique **name**, and assign at least one **project**. You can also add an optional **description**.
+To create a new team click on **Create new team** button. A Team must have an organization-unique **name** and at least one selected **project**. You can also add an optional **description**.
 
 ![Creating a new Team](images/05-Teams/create-team.png)
 
 Selected **projects** can provide different accesses:
 
-- **Read/Write** access allows Team members to view, create, and edit test runs in the Project. They cannot delete or rename the Project itself.
+- **Read/Write** access means Team members will be able to look at, create and edit test-runs in the Project. They will not be able to delete or rename the Project itself.
 - **Read-only** access allows Team members to look at test data but not modify or create new test-runs.
 
-### Inviting a user to a Team
+### Inviting a team member
 
-Once the Team has been created, select it in your list of Teams and press **Invite members**.
-You can invite only existing members of your Organization.
-When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
+Once the Team has been created, select it in your list of Teams and press **Invite members**. Only existing members of your Organization can be invited. When adding one or more member, consider what Team-level access they should have. Every batch of members you invite will join with the same Team-level role.
 
 ![Inviting a new team member](images/05-Teams/invite-team-member.png)
 
