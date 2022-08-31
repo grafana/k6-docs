@@ -63,7 +63,7 @@ Refer to [Compare tests](/cloud/analyzing-results/test-comparison).
 Your subscription level determines how many tests you can save.
 Unlike setting a baseline, saved tests can have more than one test run per test.
 
-For instructions on saving a test, refer to [Save, share, delete tests](../analyzing-results/test-results-menu).
+For instructions on saving a test, refer to [Save, share, delete tests](/cloud/analyzing-results/test-results-menu).
 
 
 ### Export test data
