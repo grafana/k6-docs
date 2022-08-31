@@ -33,7 +33,7 @@ To set your baseline, follow these steps:
 1. Open the results for the test run you wish to be your baseline.
 2. Select the three dots in the top right corner, then **set as Baseline**.
 
-Baseline tests are exempt from [data-retention policies](/cloud/billing-user-menu/data-retention/).
+Baseline tests are exempt from [data-retention policies](/cloud/your-plan/data-retention/).
 
 ![k6 Cloud Results: Set a baseline](./images/07-Test-Comparison/set-baseline-test.png)
 

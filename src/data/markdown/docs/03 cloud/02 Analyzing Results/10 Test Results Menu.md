@@ -20,7 +20,7 @@ To do any of these actions, use the vertical-dots icon to open the *Test Result 
 
 ## Save a test result
 
-Besides [saving a test as a baseline](./test-comparison), you can also save a test to persist its data.
+Besides [saving a test as a baseline](/cloud/analyzing-results/test-comparison), you can also save a test to persist its data.
 
 > ⓘ **Each premium k6 Cloud subscription can save some number of test results indefinitely.**
 >
