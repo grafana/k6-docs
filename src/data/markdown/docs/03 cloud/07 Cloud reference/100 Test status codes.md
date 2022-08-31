@@ -85,8 +85,9 @@ Aborted (by limit)
   - The max VUs is higher than 20,000 VUs (for tests higher than 20k, please contact us)
 
 If your test has too many groups, reduce their number.
-If your test has too many metrics, use URL grouping to combine similar URLs.
+If it has too many metrics, use URL grouping to combine similar URLs.
+
 You should also remove external requests from your test script.
 Each captured URL accounts for multiple individual metrics that k6 measures.
-External requests can quickly produce a large number of metrics, and this granularity won't help you understand performance of the System Under Test.
+External requests can quickly produce a large number of metrics, and granularity of this type won't help you understand performance of the System Under Test.
 

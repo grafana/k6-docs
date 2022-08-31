@@ -12,7 +12,7 @@ k6 Cloud uses AWS for load generators.
 For the IP addresses used in the different load zones and filtering methods,
 refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
-If you prefer to view the ranges directly,  this [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators.
+If you prefer to view the ranges directly, this [ip-ranges.json](https://ip-ranges.amazonaws.com/ip-ranges.json) file provides the updated list of IP addresses used by our load generators.
 To find the IP ranges that you can use, filter the `service` of type EC2 and the `region` of the selected load zones in your test configuration.
 
 The zone codes are mapped as follows:
@@ -46,22 +46,23 @@ The zone codes are mapped as follows:
 
 ## Maximum VUs per IP {#vu-per-tier}
 
-k6 has 3 tiers of hardware for load generation. The tier we choose depends on the number of VUs allocated to a load zone.
+k6 has 3 tiers of hardware for load generation.
+The tier k6 chooses depends on the number of VUs allocated to a load zone.
 
-- Tier 1 when there are 1-999 VUs in a load zone
-- Tier 2 when there are 1000-4001 VUs in a load zone
-- Tier 3 when there are more than 4001 VUs in a load zone
+- Tier 1 when the load zone has 1-999 VUs
+- Tier 2 when the load zone has 1000-4001 VUs
+- Tier 3 when the load zone has 4001 VUs
 
 Regardless of the tier, the amount of resources (CPU, Memory, Network) per VU is the same.
 For example, if you start a test with 900VUs, k6 uses 3x Tier 1 servers,
-meaning that the traffic generated from our service will be coming from 3 IPs.
+meaning that the traffic generated from our service comes from 3 IPs.
 
 If you start a test with 1000VUs in a single load zone, k6 uses 1x Tier 2 server.
 If the same test is started in 2 load zones, k6 would allocate 500VUs per load zone and use 4x Tier 1 servers.
 
-<Blockquote mod="note" title="">
+<Blockquote mod="note" title="These are defaults">
 
-Note that these are the _defaults_. If your tests have specific requirements, please contact k6 support for a custom solution.
+If your tests have specific requirements, contact k6 support for a custom solution.
 
 </Blockquote>
 
