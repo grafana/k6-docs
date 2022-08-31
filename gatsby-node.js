@@ -1349,6 +1349,30 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/general-questions/',
+    toPath: '/cloud/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/pricing-questions/',
+    toPath: '/cloud/your-plan/pricing-questions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/private-load-zones/',
+    toPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-faq/release-notes/',
+    toPath: '/cloud/cloud-reference/release-notes/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
