@@ -148,6 +148,7 @@ walkthrough
 webpages
 WooCommerce
 wpnonce
+Zendesk
 (?i)codeless
 ava
 utils

@@ -36,7 +36,6 @@ k6 run test.js -i 1 -u 1
 
 Tests with 1 iteration with 1 Virtual User are quicker and can make the debugging easier.
 
-
 For debugging, k6 also provides a few builtin options:
 
 - [`--http-debug`](/using-k6/k6-options/reference#http-debug) prints all the requests and responses to the console.
@@ -88,7 +87,7 @@ By default, tests run from your "personal" organization.
 
 **How do I change the organization to fix this?**
 
-If you run tests from the web interface, use the User Menue to select a project within the desired organization.
+If you run tests from the web interface, use the user menu to select a project within the desired organization.
 
 ![Select a project](images/Troubleshooting/k6-project-dashboard.png)
 
