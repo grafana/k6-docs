@@ -13,7 +13,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - New Analysis Panel.
 - Display warning when script options cannot be validated.
 - Fill user name and user email on the support widget.
-- Fix misaligned loadzone flags 
+- Fix misaligned load zone flags
 
 ### v4.1.0 `(2022-8-15)`
 - [Audit Trail](/cloud/manage/audit-trail/): audit the activity within your organization.
@@ -72,7 +72,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Internal: improve cloud service stability and reliability.
 
 ### v3.4.2 `(2022-4-5)`
-- Better alignment of project buttons. 
+- Better alignment of project buttons.
 
 ### v3.4.1.internal `(2022-4-5)`
 - Internal: improve cloud service stability and reliability.
@@ -134,7 +134,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ### v2.2.0 `(2022-1-20)`
 - The saved tests and scheduled tests pages provides a link to the test project.
 - Fix: changing aggregation method or load zone on test result analysis view.
-- Fix: the time range filter was not cleared properly. 
+- Fix: the time range filter was not cleared properly.
 
 ### v2.1.2 `(2022-1-18)`
 - New [load zone regions](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones): Bahrain, Cape Town, Milan, and Osaka.
