@@ -119,7 +119,7 @@ If you are running a `k6 cloud` test, you will be utilizing k6's cloud infrastru
 
 To open your firewall to k6 cloud traffic, you have multiple options.
 
-1 - Open up your firewall to the whole range of AWS IP addresses used by the load zones where you want to run your load test from. We list [here](/cloud/cloud-faq/general-questions#what-ip-addresses-are-used-by-the-k6-cloud) the full range of IP addresses.
+1 - Open up your firewall to the whole range of AWS IP addresses used by the load zones where you want to run your load test from. We list [the full range of IPs](/cloud/cloud-reference/cloud-ips/).
 
 2 - Use HTTP headers, URL query parameters, or unique data that identifies the traffic as belonging to your load test, This requires that your firewall has support for scanning application payload data and apply rules based on what it finds. Here is some examples:
 

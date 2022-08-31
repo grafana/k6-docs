@@ -39,7 +39,7 @@ Número actual de la VU. El valor se asigna de forma incremental para cada nueva
 
 > ### ⚠️ Ejecutando tests en k6 Cloud
 >
->El valor **\_\_VU** cuando se ejecuté el test en k6 Cloud será por servidor/generador de carga. Puedes leer los detalles en la [documentación](/cloud/cloud-faq/general-questions/#how-many-vus-can-be-run-from-the-same-dedicated-ip).
+>El valor **\_\_VU** cuando se ejecuté el test en k6 Cloud será por servidor/generador de carga. Puedes leer los detalles en la [documentación](/cloud/cloud-reference/).
 >
 >En k6 Cloud existen nuevas [variables de entorno](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#environment-variables) que especifican el servidor, zona de carga  y distribución.
 
