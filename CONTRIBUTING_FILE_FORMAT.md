@@ -568,6 +568,31 @@ If you want the component to be expanded by default, use optional`isOpen` prop a
 
 If you want the component title to be displayed in the Table of Contents, please set `tag` prop to `h2`: `<Collapsible title="Collapsible title added to ToC" tag="h2">`.
 
+## Glossary
+
+The `Glossary` component takes lists and presents them in multi-columnar format.
+The recommended use is also the simplest: an unordered list.
+The columns break at different places on different screens,
+and nested lists and description lists can become incoherent if their elements are spread across multiple columns.
+
+```md
+<Glossary>
+
+- so
+- we
+- beat on
+  - boats against
+  - the current
+- borne back
+- ceaselessly into the
+- past
+
+</Glossary>
+
+```
+
+The result:
+
 ## External Link Card (Blog only)
 
 This is a component that represents a common pattern of external link decoration. Here is how you would use it:
