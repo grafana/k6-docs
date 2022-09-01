@@ -19,7 +19,7 @@ Gatsby errors can leave something to be desired.
 That's the bad news.
 
 The good news is that the majority of all local Gatsby issues have the same handful of root causes.
-If you can't make Gatsby work on your site, check that your environment and local docs don't any of these conditions.
+If you can't make Gatsby work on your site, check that your environment and local docs for any of these conditions.
 
 If there's still an issue, ask for help!
 Hopefully, we can find the solution and add it to this list.
@@ -29,13 +29,7 @@ Hopefully, we can find the solution and add it to this list.
 ## Can't serve the site locally
 
 The site dependencies are usually a little behind the latest versions of node and npm.
-If you are using the latest version of node, trying to deploy with this command:
-
-```sh
-npm install
-```
-
-Can lead to something like this:
+If you are using the latest version of node, the `npm install` command might fail with something like this:
 
 ```txt
 /k6-docs/node_modules/node-gyp-build/index.js:60
@@ -81,25 +75,24 @@ You can change versions with nvm.
 ## Serving suddenly broke
 
 Great! You figured out versions and got Gatsby serving on your `localhost`.
-You're saving changes, and previewing it live.
+You're saving changes, and previewing them live...what the deuce? The site just stopped serving! Gatsby is talking about some Raact code and you don't know what anything means.
 
-What the deuce! The site just stopped serving! Gatsby is talking about some react components and you don't know what it means.
 Don't get angry! Try these things:
 
-1. Scroll up in terminal that has your Gatsby server process. Usually Gatsby will print the text of the offending line.
+1. Scroll up the terminal that has the Gatsby server process. Usually Gatsby will print the text of the offending line. If you can't find anything, save a file and monitor what prints.
 
-  If you can't find anything strange, save a file and monitor what prints.
-2. Check the front matter.
-3. Check for broken unclosed components and HTML elements.
-4. Check for other text in angle brackets (`<` `>`).
+If the server output doesn't help:
 
-Problems with angle brackets can be tricky to diagnose, especially if you've saved across multiple files.
+1. Check the front matter.
+1. Check for broken or unclosed components and HTML elements.
+1. Check for other text in angle brackets (`<` `>`).
+
 
 ### Check the frontmatter
 
 _Frontmatter_ is the YAML metadata at the top of each page.
 Broken frontmatter breaks a site.
-This checklist covers most frontmatter issues
+This checklist covers most frontmatter issues:
 
 - [ ] Do you begin and end with triple hyphens, each on their own line?
 - [ ] Is the YAML valid? Do you need to quote or escape a character?
@@ -142,11 +135,13 @@ Like wouldn't it be joyful if I could put my
 
 ```
 
+Problems with angle brackets can be tricky to diagnose, especially if you've saved across multiple files.
+
 
 ## ESlint errors
 
-This isn't really a Gatsby problem, but a linting issue.
-If you have JavaScript snippets, our githooks and CI run the prettier linter.
+This isn't really a Gatsby problem.
+If you have JavaScript snippets, our githooks and CI run the prettier linter on them.
 
 Usually you can fix this with `eslint --fix`.
 
@@ -157,7 +152,7 @@ Usually you can fix this with `eslint --fix`.
 ```
 For more troublesome files, you will need to look at the offending code.
 Prettier evaluates the entire abstract syntax tree, so some errors can be surprising
-(why should a one line example need to declare variables? The AST is why).
+(why should a one-line example need to declare variables? The AST is why).
 
-Some writer don't like this linting, but the alternative is a million different styles of code in our load-test snippets.
+Some writers don't like this linting, but the alternative is a multitude of codestyles in our load-test snippets, which could create a confusing reading experience.
 Readers ~~>~~ `>` Writers. 
