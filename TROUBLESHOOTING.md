@@ -1,6 +1,7 @@
 # Gatsby troubleshooting
 
-![Leonardo DiCaprio as the great Gatsby](https://memegenerator.net/img/images/12595641.jpg)
+
+<img src="https://memegenerator.net/img/images/12595641.jpg" alt="Leonardo DiCaprio as the great Gatsby" height="200">
 
 Gatsby errors can leave something to be desired.
 That's the bad news.
@@ -41,9 +42,7 @@ Gives:
 "engines": {
   "node": ">=16.0.0",
   "npm": ">=7.0.0"
-},
-...
-}
+
 ```
 
 In this case, you need to use a 16.x version of node.
@@ -111,15 +110,13 @@ This applies to Gatsby components, in-line HTML, and other strings you put in an
 
 Here's my friendly site.
 
-<Collapsible> // ← Not closed!!! This will break.
+<Collapsible> <!--- Not closed!!! This will break. -->
 
-I like to write <b>HTML<b>  // OMG That <b> tag will break things.
+I like to write <b>HTML<b>  <!--- OMG That <b> tag will break things. --->
 
 I like to pretend I made up new HTML elements sometimes.
 Like wouldn't it be joyful if I could put my
-<joy> happy text between joy tags </joy> // Monospace that `<joy>` please
-
-
+<joy> happy text between joy tags </joy> <!--- Monospace that `<joy>`, please --->.
 
 ```
 
