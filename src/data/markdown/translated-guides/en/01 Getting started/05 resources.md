@@ -13,8 +13,13 @@ These resources help you write and run k6 tests in a safe environment and explor
 ## Learning
 
 - [k6 Learn](https://github.com/grafana/k6-learn). A repository with a course and a ton of learning resources
+- [k6 YouTube channel](https://www.youtube.com/c/k6test/playlists). Office hours, specific playlists, and other interesting videos from the community.
 - [Awesome k6](https://github.com/grafana/awesome-k6). A list of awesome stuff about k6.
-- [k6 YouTube channel](https://www.youtube.com/playlist?list=PLJdv3RhAQXNE1TFXn2pp9h_Ul1q_kJrEZ). Weekly interviews with k6 maintainers, users, and other interesting people in the testing community.
+
+## Community
+
+- [The k6 community forum](https://community.k6.io/). Get support from the k6 team and community.
+- [Get in touch](https://k6.io/community/#join-the-conversation). Slack, Meetup, Twitter, Stack Overflow, LinkedIn, and more.
 
 ## Test servers
 
@@ -32,7 +37,3 @@ If you need a place to test k6 scripts, you can load these servers as much as yo
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)
 - [Integrations](/integrations/). Codeless k6 tools (and more).
 
-## Community
-
-- [The k6 community forums](https://community.k6.io/). k6 users and devs hang out here.
-- [More social media links](https://k6.io/community/). Twitter, Stack Exchange, LinkedIn, and more.
