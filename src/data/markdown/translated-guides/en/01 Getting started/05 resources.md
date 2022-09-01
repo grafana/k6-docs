@@ -6,7 +6,7 @@ slug: '/getting-started/resources/'
 
 The docs aim to cover everything necessary to use the core k6 products in your daily operational work.
 But scripting and testing are skills that take time to learn.
-What's more, k6 is an extensible application, already incorporated with many other tools and protocols.
+What's more, k6 is an extensible tool, already incorporated with many other functionalities and protocols.
 
 These resources help you write and run k6 tests in a safe environment and explore how to use k6 with other applications.
 
@@ -35,5 +35,5 @@ If you need a place to test k6 scripts, you can load these servers as much as yo
 - [xk6 extensions](/extensions). Custom k6 binaries to support the tool you need.
 - [The browser recorder](/test-authoring/recording-a-session/browser-recorder/). Make test scripts from browser sessions.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)
-- [Integrations](/integrations/). Codeless k6 tools (and more).
+- [Integrations](/integrations/)
 
