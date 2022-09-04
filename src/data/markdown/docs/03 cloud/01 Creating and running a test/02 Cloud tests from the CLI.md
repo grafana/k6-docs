@@ -329,10 +329,12 @@ export default function () {
 
 </CodeGroup>
 
-#### ⚠️ Warning
+<Blockquote mod="Attention" title="The LI_ prefix is deprecated">
 
-Previously, these cloud environment variables had prefixed `LI_` (like `LI_LOAD_ZONE`). These names are deprecated and will be removed in future versions of the k6 cloud.
+Previously, cloud environment variables were prefixed with `LI_` (for example, `LI_LOAD_ZONE`).
+These names are deprecated and will be removed in future versions of k6 Cloud.
 
+</Blockquote>
 ## Differences between local and cloud execution
 
 While the cloud and local execution modes are almost completely compatible, they differ in a few particularities.
