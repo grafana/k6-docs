@@ -37,13 +37,13 @@ import { check } from 'k6';
 import exec from 'k6/execution';
 import http from 'k6/http';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.4.0/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.5.0/s3.js';
 
-const awsConfig = new AWSConfig(
-  __ENV.AWS_REGION,
-  __ENV.AWS_ACCESS_KEY_ID,
-  __ENV.AWS_SECRET_ACCESS_KEY
-);
+const awsConfig = new AWSConfig({
+  region: __ENV.AWS_REGION,
+  accessKeyId: __ENV.AWS_ACCESS_KEY_ID,
+  secretAccessKey: __ENV.AWS_SECRET_ACCESS_KEY,
+});
 
 const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
