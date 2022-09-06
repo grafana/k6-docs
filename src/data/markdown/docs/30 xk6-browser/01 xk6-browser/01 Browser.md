@@ -4,8 +4,8 @@ excerpt: "xk6-browser: Browser Class"
 ---
 
 The `Browser` class is the entry point for all your tests, and it is what interacts with the actual web browser via [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP). It manages:
-- [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s which is where you can set a variety of attributes to control the behavior of pages;
-- and [Page](/javascript-api/xk6-browser/page/)s which is where your rendered site is displayed.
+- [BrowserContext](/javascript-api/xk6-browser/browsercontext/) which is where you can set a variety of attributes to control the behavior of pages;
+- and [Page](/javascript-api/xk6-browser/page/) which is where your rendered site is displayed.
 
 A new Browser instance (hence a new browser process) can be created using the `launch()` method of the `chromium` module from `'k6/x/browser'`.
 
