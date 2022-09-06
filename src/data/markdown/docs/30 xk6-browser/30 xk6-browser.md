@@ -50,6 +50,13 @@ export default function () {
 
 </CodeGroup>
 
+### Running the Example Test
+
+If you have downloaded the pre-built binary you will find the binary named `xk6-browser`. Using the [example](#example), create a new file (such as `browser_test.js`) in the same directory as the pre-built binary, and paste the example in that file. Now run:
+
+```
+xk6-browser run browser_test.js
+```
 
 ## Module Properties
 
