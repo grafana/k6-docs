@@ -23,8 +23,8 @@ import { chromium } from 'k6/x/browser';
 export default function () {
   const browser = chromium.launch();
   const context = browser.newContext();
-  const b2 = context.browser();
-  b2.close();
+  const contextBrowser = context.browser();
+  contextBrowser.close();
 }
 ```
 
