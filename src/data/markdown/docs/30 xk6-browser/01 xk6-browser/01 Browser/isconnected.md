@@ -16,3 +16,22 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 | Type    | Description                                                                                    |
 | ------- | ---------------------------------------------------------------------------------------------- |
 | boolean | Returns `true` if Browser is connected to the browser application. Otherwise, returns `false`. |
+
+
+### Example
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const isConnected = browser.isConnected();
+  console.log(isConnected); // true
+
+  browser.close();
+}
+```
+
+</CodeGroup>

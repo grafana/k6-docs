@@ -17,3 +17,35 @@ Returns all open [Page](/javascript-api/xk6-browser/page/)s in the `BrowserConte
 | Type   | Description     |
 | ------ | --------------- |
 | array  | All open pages. |
+
+
+### Example
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  context.newPage();
+  const pages = context.pages();
+  console.log(pages); /* [
+                            null,
+                            {
+                                "base_event_emitter": {},
+                                "keyboard": {},
+                                "mouse": {},
+                                "touchscreen": {
+                                    "base_event_emitter": {}
+                                }
+                            }
+                        ] */
+
+  context.close();
+  browser.close();
+}
+```
+
+</CodeGroup>
