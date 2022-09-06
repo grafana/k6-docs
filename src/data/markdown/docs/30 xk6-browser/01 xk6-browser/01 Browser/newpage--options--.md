@@ -3,7 +3,7 @@ title: 'newPage([options])'
 excerpt: 'xk6-browser: Browser.newPage method'
 ---
 
-Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/) and returns the page.
+Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.
 
 <TableWithNestedRows>
 
@@ -56,14 +56,13 @@ export default function () {
     headless: false,
   });
 
-  const context = browser.newContext({
+  const page = browser.newPage({
     viewport: {
       width: 375,
       height: 812,
     },
     deviceScaleFactor: 3,
   });
-  const page = context.newPage();
 
   page.goto('https://test.k6.io/');
 
