@@ -3,7 +3,7 @@ title: "BrowserType"
 excerpt: "xk6-browser: BrowserType Class"
 ---
 
-The `BrowserType` is the entry point into launching a browser process; `chromium` is currently the only supported `BrowserType`. To use it, import `chromium` from the top level module `/k6/x/browser`.
+The `BrowserType` is the entry point into launching a browser process; `chromium` is currently the only supported `BrowserType`. To use it, import `chromium` from the top level module `k6/x/browser`.
 
 | Method            | Description                                                                                                      |
 |-------------------|------------------------------------------------------------------------------------------------------------------|
@@ -11,7 +11,7 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 
 ### Options
 
-| Method            | Type     | Default | Description                                                                                                                                                                                                                                                           |
+| Property            | Type     | Default | Description                                                                                                                                                                                                                                                           |
 |-------------------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | args              | string[] | `null`  | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the [example](#example)). |
 | debug             | boolean  | `false` | All CDP messages and internal fine grained logs will be logged if set to `true`.                                                                                                                                                                                      |
@@ -20,7 +20,7 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 | executablePath    | string   | `null`  | Override search for browser executable in favor of specified absolute path.                                                                                                                                                                                           |
 | headless          | boolean  | `true`  | Show browser GUI or not.                                                                                                                                                                                                                                              |
 | ignoreDefaultArgs | string[] | `null`  | Ignore any of the default arguments included when launching browser process.                                                                                                                                                                                          |
-| proxy             | string   | `null`  | Specify to set browser's proxy config.                                                                                                                                                                                                                                |
+| proxy             | string   | `null`  | Specify to set browser's proxy configuration.                                                                                                                                                                                                                                |
 | slowMo            | string   | `null`  | Slow down input actions and navigation by the specified time e.g. `'500ms'`.                                                                                                                                                                                          |
 | timeout           | string   | `'30s'` | Default timeout to use for various actions and navigation.                                                                                                                                                                                                            |
 

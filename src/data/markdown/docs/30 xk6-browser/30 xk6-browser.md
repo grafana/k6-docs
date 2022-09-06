@@ -21,7 +21,7 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 ## Your First Test
 
-The first step is to import the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype), and use its `launch` method to start up a `chromium` [Browser](/javascript-api/xk6-browser/browser) process (which is currently the only available `BrowserType`). After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis).
+The first step is to import the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype), and use its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process (which is currently the only available `BrowserType`). After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis).
 
 ### Example
 
@@ -55,9 +55,9 @@ export default function () {
 
 Listed in the table are the importable properties from the top level module (`'k6/x/browser'`).
 
-| Properties | Description                                                                                                                                                                                                                         |
+| Property | Description                                                                                                                                                                                                                         |
 |------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| chromium   | A [BrowserType](/javascript-api/xk6-browser/browsertype) to launch tests in a chromium browser.                                                                                                                                     |
+| chromium   | A [BrowserType](/javascript-api/xk6-browser/browsertype) to launch tests in a Chromium-based browser.                                                                                                                                     |
 | devices    | Returns predefined emulation settings for many end-user devices; see the list of [supported devices](#supported-devices). It can be used to simulate browser behavior on a mobile device. See the [example here](#devices-example). |
 | version    | Returns the version number of xk6-browser.                                                                                                                                                                                          |
 
@@ -95,6 +95,9 @@ export default function () {
   page.goto('https://test.k6.io/browser.php/', {
     waitUntil: 'networkidle',
   });
+  
+  page.close();
+  browser.close();
 }
 ```
 
