@@ -28,8 +28,14 @@ Returns the `element.textContent`.
 
 ```javascript
 const res = page.goto('https://test.k6.io/browser.php');
-const options = page.locator("#numbers-options");
-console.log(options.textContent());
+const options = page.locator("#checkbox1");
+console.log(options.textContent()); /*  Zero
+                                        One
+                                        Two
+                                        Three
+                                        Four
+                                        Five
+                                    */
 ```
 
 </CodeGroup>

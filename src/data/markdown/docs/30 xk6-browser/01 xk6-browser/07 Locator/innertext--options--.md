@@ -30,7 +30,7 @@ Returns the `element.innerText`.
 page.goto('https://test.k6.io/browser.php');
 const offScreen = page.locator('#off-screen');
 const innerText = offScreen.innerText();
-console.log(innerText);
+console.log(innerText); // Off page div
 ```
 
 </CodeGroup>
