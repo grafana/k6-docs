@@ -55,27 +55,11 @@ export default function () {
 
 Listed in the table are the importable properties from the top level module (`'k6/x/browser'`).
 
-| Property | Description                                                                                                                                                                                                                         |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| chromium   | A [BrowserType](/javascript-api/xk6-browser/browsertype) to launch tests in a Chromium-based browser.                                                                                                                                     |
-| devices    | Returns predefined emulation settings for many end-user devices; see the list of [supported devices](#supported-devices). It can be used to simulate browser behavior on a mobile device. See the [example here](#devices-example). |
-| version    | Returns the version number of xk6-browser.                                                                                                                                                                                          |
-
-### Supported Devices
-
-These are the supported devices for simulating browser behavior on mobile devices. Use the names exactly as listed. To test in landscape mode, add `" landscape"` to the end of the name e.g. `"iPad landscape"`.
-
-|                     |                 |                |                     |
-|---------------------|-----------------|----------------|---------------------|
-| Blackberry PlayBook | BlackBerry Z30  | Galaxy Note 3  | Galaxy Note II      |
-| Galaxy S III        | Galaxy S5       | iPad           | iPad Mini           |
-| iPad Pro            | iPhone 4        | iPhone 5       | iPhone 6            |
-| iPhone 6 Plus       | iPhone 7        | iPhone 7 Plus  | iPhone 8            |
-| iPhone 8 Plus       | iPhone SE       | iPhone X       | iPhone XR           |
-| JioPhone 2          | Kindle Fire HDX | LG Optimus L70 | Microsoft Lumia 550 |
-| Microsoft Lumia 950 | Nexus 10        | Nexus 4        | Nexus 5             |
-| Nexus 5X            | Nexus 6         | Nexus 6P       | Nexus 7             |
-| Nokia Lumia 520     | Nokia N9        | Pixel 2        | Pixel 2 XL          |
+| Property | Description                                                                                                                                                                          |
+|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| chromium | A [BrowserType](/javascript-api/xk6-browser/browsertype) to launch tests in a Chromium-based browser.                                                                                |
+| devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
+| version  | Returns the version number of xk6-browser.                                                                                                                                           |
 
 ### Devices Example
 
