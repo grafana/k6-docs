@@ -17,9 +17,20 @@ Allows you to access all open [BrowserContext](/javascript-api/xk6-browser/brows
 <!-- eslint-skip -->
 
 ```javascript
-const browser = chromium.launch();
-console.log(browser.contexts().length); // prints `0`
+import { chromium } from 'k6/x/browser';
 
-const context = browser.newContext();
-console.log(browser.contexts().length); // prints `1`
+export default function () {
+  const browser = chromium.launch();
+  console.log(browser.contexts()); // []
+
+  const context = browser.newContext();
+  console.log(browser.contexts()); /* [
+                                        {
+                                            "base_event_emitter": {}
+                                        }
+                                      ] */
+
+  context.close();
+  browser.close();
+}
 ```
