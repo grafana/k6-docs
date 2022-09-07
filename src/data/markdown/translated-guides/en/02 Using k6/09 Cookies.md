@@ -3,33 +3,34 @@ title: 'Cookies'
 excerpt: 'k6 will transparently manage the receiving, storage and sending of cookies as described above, so that testing of your cookie-based web site or app will just work.'
 ---
 
-HTTP Cookies are used by web sites and apps to store pieces of stateful information on the user's
-device. A server tells the client, via a `Set-Cookie` HTTP header, what information it wants to be
-stored on the user's machine.
+HTTP Cookies are used by web sites and apps to store pieces of stateful information on user devices.
+Through the `Set-Cookie` HTTP header, a server tells a client what information it wants stored on the user machine.
 
-The user's browser will store the cookie data and associate it with the hostname of the server,
-and for each subsequent request to that hostname, it will include the stored cookie data in a
+The user's browser stores the cookie data and associates it with the hostname of the server.
+For each subsequent request to that hostname, it includes the stored cookie data in a
 `Cookie` header.
 
-You can then control more specific rules for when cookie data should be sent or not, including
-limiting it to specific subdomains of the domain or a specific path. It's also possible to set an
-expiry date on the cookie and tell the browser only to send it over encrypted (SSL/TLS)
-connections.
+You can then control more specific rules for whether to send the cookie data or not,
+including limiting it to specific subdomains or paths.
+You can also to set an expiry date on the cookie and tell the browser to send it only over encrypted (SSL/TLS) connections.
 
 ## Cookies with k6
 
-For most intents and purposes k6 will transparently manage the receiving, storage and sending of
-cookies as described above, so that testing of your cookie-based web site or app will just work
-without you having to do anything special.
+For most purposes, k6 transparently manages the reception, storage, and transmission of cookies as described.
+Testing of your cookie-based web site or app will _just work_ without requiring any special action of you.
 
-In some use cases, you might desire more control over the cookies. In k6 you have two
-options, [either to directly manipulate HTTP headers](/javascript-api/k6-http/params),
-or use the more ergonomic cookie API. We will go through the latter below.
+In some cases, though, you might want more control over cookies.
+k6 provides multiple options to do this.
+You can:
+- [Directly manipulate HTTP headers](/javascript-api/k6-http/params),
+- Use the more ergonomic cookie API.
+
+The following section shows how to use the Cookie API.
 
 ## Setting simple cookies
 
 To simulate that a cookie has previously been set by a browser and is now supposed to be included
-in a subsequent request to the server we include the cookie in the `cookies` request parameter:
+in subsequent requests to the server, include the cookie in the `cookies` request parameter:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -47,9 +48,10 @@ export default function () {
 
 </CodeGroup>
 
-This will only apply the cookie for the request in question, but will not be sent for any
-subsequent requests. If you want to do that you have to add the cookie to a cookie jar, and by
-default there's a per-VU cookie jar we can interact with to set and inspect cookies:
+This applies only to the cookie for the request in question.
+It isn't sent for any subsequent requests.
+To send the cookie for subsequent requests, add it to a cookie jar.
+By default, k6 has a cookie jar for each VU, which you can interact with to set and inspect cookies:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -65,10 +67,10 @@ export default function () {
 
 </CodeGroup>
 
-The per-VU cookie jar stores all cookies received from the server in a `Set-Cookie` header. You
-can also create "local cookie jars" that overrides the per-VU cookie jar, but more on that in a bit.
+The per-VU cookie jar stores all cookies received from the server in a `Set-Cookie` header.
+You can also create "local cookie jars" that override the per-VU cookie jar (shown in a subsequent section).
 
-You can also specify that a cookie should be overridden if already part of the per-VU cookie jar:
+You can also override a cookie that is already part of the per-VU cookie jar:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -101,8 +103,7 @@ export default function () {
 
 ## Accessing cookies
 
-To see which cookies were set for a particular response we can look in the `cookies` property of
-the response object:
+To see which cookies were set for a particular response, look in the `cookies` property of the response object:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -124,9 +125,8 @@ export default function () {
 </CodeGroup>
 
 The response object's `cookies` property is a map where the key is the cookie name and the value
-is an array of response cookie objects (see below for description). It is an array to support
-multiple cookies having the same name (but different `domain` and/or `path` attributes), which
-is part of [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
+is an array of response cookie objects.
+This array can support multiple cookies that have the same name but different `domain` or `path` attributes, as specified in [RFC6265](https://tools.ietf.org/html/rfc6265#section-5.3).
 
 ## Properties of a response cookie object
 
@@ -145,8 +145,8 @@ A response cookie object contains the following properties:
 
 ## Inspecting a cookie in the jar
 
-To see which cookies are set, and stored in the cookie jar, for a particular URL we can use the
-`cookieForURL()` method of the cookie jar object:
+To see which cookies are set and stored in the cookie jar for a particular URL,
+use the `cookieForURL()` method of the cookie jar object:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -206,8 +206,8 @@ export default function () {
 
 ## Local cookie jars
 
-Besides the per-VU cookie jar you can also create local cookie jars that can override the per-VU
-cookie jar on a per-request basis. An example:
+Besides the per-VU cookie jar, you can also create local cookie jars to override the per-VU
+cookie jar on a per-request basis:
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
