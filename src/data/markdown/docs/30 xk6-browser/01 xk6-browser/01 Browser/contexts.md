@@ -21,14 +21,10 @@ import { chromium } from 'k6/x/browser';
 
 export default function () {
   const browser = chromium.launch();
-  console.log(browser.contexts()); // []
+  console.log(browser.contexts().length); // 0
 
   const context = browser.newContext();
-  console.log(browser.contexts()); /* [
-                                        {
-                                            "base_event_emitter": {}
-                                        }
-                                      ] */
+console.log(browser.contexts().length); // 1
 
   context.close();
   browser.close();

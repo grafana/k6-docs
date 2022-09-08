@@ -31,17 +31,7 @@ export default function () {
   const context = browser.newContext();
   context.newPage();
   const pages = context.pages();
-  console.log(pages); /* [
-                            null,
-                            {
-                                "base_event_emitter": {},
-                                "keyboard": {},
-                                "mouse": {},
-                                "touchscreen": {
-                                    "base_event_emitter": {}
-                                }
-                            }
-                        ] */
+  console.log(pages.length); // 1
 
   context.close();
   browser.close();
