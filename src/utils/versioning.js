@@ -7,9 +7,10 @@ const SUPPORTED_VERSIONS = [
   'v0.36',
   'v0.37',
   'v0.38',
+  'v0.39',
 ];
 /** latest version number for URLs without version prefix */
-const LATEST_VERSION = 'v0.39';
+const LATEST_VERSION = 'v0.40';
 
 /** applies only for development and staging; all versions are built on production */
 const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
