@@ -12,7 +12,7 @@ Allows you to access all open [BrowserContext](/javascript-api/xk6-browser/brows
 | Array | Array of [BrowserContext](/javascript-api/xk6-browser/browsercontext/) objects |
 
 
-## Example
+### Example
 
 <!-- eslint-skip -->
 

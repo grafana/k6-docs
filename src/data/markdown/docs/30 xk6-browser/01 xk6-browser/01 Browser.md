@@ -19,7 +19,7 @@ A new Browser instance (hence a new browser process) can be created using the `l
 | [browser.on('disconnected')](/javascript-api/xk6-browser/browser/on) | Detects the disconnected event from the browser application. |
 | [browser.version()](/javascript-api/xk6-browser/browser/version)                          | Returns the browser application's version.                                                                                                            |
 
-An example of using a Browser to create a [Page](/javascript-api/xk6-browser/page):
+### Example
 
 ```javascript
 import { chromium } from 'k6/x/browser';

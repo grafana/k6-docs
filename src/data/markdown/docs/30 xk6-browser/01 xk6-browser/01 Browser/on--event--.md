@@ -20,7 +20,7 @@ The returned promise will be resolved when the Browser disconnects from the brow
 | ------- | ------------------------------------------------------------------------------- |
 | promise | On returns a Promise that is resolved when the browser process is disconnected. |
 
-## Example
+### Example
 
 <!-- eslint-skip -->
 

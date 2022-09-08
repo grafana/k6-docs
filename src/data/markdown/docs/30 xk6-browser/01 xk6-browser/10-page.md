@@ -69,7 +69,7 @@ excerpt: "xk6-browser: Page Class"
 | <a href="https://playwright.dev/docs/api/class-page#page-mouse" target="_blank" >mouse</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-touchscreen" target="_blank" >touchscreen</a> | - | - |
 
-## Examples
+### Example
 
 ```javascript
 import { chromium } from 'k6/x/browser';
