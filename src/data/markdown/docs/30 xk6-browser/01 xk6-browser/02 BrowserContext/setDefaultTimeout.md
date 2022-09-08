@@ -5,7 +5,7 @@ excerpt: 'Sets the default timeout in milliseconds.'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #456](https://github.com/grafana/xk6-browser/issues/456) for details.
+See [issue #456](https://github.com/grafana/xk6-browser/issues/456) for details of a known issue.
 
 </Blockquote>
 

@@ -5,7 +5,7 @@ excerpt: 'xk6-browser: locator.waitFor method'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #472](https://github.com/grafana/xk6-browser/issues/472) for details.
+See [issue #472](https://github.com/grafana/xk6-browser/issues/472) for details of a known issue.
 
 </Blockquote>
 

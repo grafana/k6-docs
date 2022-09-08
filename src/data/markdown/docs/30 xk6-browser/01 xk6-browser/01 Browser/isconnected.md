@@ -5,7 +5,7 @@ excerpt: 'xk6-browser: Browser.isConnected method'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #453](https://github.com/grafana/xk6-browser/issues/453) for details.
+See [issue #453](https://github.com/grafana/xk6-browser/issues/453) for details of a known issue.
 
 </Blockquote>
 

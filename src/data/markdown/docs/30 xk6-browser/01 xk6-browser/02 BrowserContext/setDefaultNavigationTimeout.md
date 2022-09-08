@@ -5,7 +5,7 @@ excerpt: 'Sets the default navigation timeout in milliseconds.'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #445](https://github.com/grafana/xk6-browser/issues/445) for details.
+See [issue #445](https://github.com/grafana/xk6-browser/issues/445) for details of a known issue.
 
 </Blockquote>
 

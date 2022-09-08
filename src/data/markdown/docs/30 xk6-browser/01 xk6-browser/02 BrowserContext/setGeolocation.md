@@ -5,7 +5,7 @@ excerpt: "Sets the BrowserContext's geolocation."
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #435](https://github.com/grafana/xk6-browser/issues/435) for details.
+See [issue #435](https://github.com/grafana/xk6-browser/issues/435) for details of a known issue.
 
 </Blockquote>
 

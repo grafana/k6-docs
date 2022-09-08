@@ -5,7 +5,7 @@ excerpt: 'Clears all permission overrides for the BrowserContext.'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #443](https://github.com/grafana/xk6-browser/issues/443) for details.
+See [issue #443](https://github.com/grafana/xk6-browser/issues/443) for details of a known issue.
 
 </Blockquote>
 

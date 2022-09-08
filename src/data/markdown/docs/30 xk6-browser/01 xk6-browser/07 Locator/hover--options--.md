@@ -5,7 +5,7 @@ excerpt: 'xk6-browser: locator.hover method'
 
 <Blockquote mod="warning">
 
-There is a known issue with this feature. See [issue #471](https://github.com/grafana/xk6-browser/issues/471) for details.
+See [issue #471](https://github.com/grafana/xk6-browser/issues/471) for details of a known issue.
 
 </Blockquote>
 

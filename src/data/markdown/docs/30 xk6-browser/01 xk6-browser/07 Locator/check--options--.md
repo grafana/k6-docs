@@ -5,7 +5,7 @@ excerpt: 'xk6-browser: locator.check method'
 
 <Blockquote mod="warning">
 
-There are known issues with this feature. See [issue #471](https://github.com/grafana/xk6-browser/issues/471) and [issue #475](https://github.com/grafana/xk6-browser/issues/475) for details.
+See [issue #471](https://github.com/grafana/xk6-browser/issues/471) and [issue #475](https://github.com/grafana/xk6-browser/issues/475) for details of known issues.
 
 </Blockquote>
 
