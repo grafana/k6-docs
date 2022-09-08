@@ -3,22 +3,29 @@ title: 'Thresholds'
 excerpt: 'Thresholds are a pass/fail criteria used to specify the performance expectations of the system under test.'
 ---
 
-_Thresholds_ validate metric values that the test generates.
-Unlike [checks](/using-k6/checks), **failed thresholds can halt execution**.
+Thresholds are the pass/fail criteria that you define for your test metrics.
+If the performance of the system under test (SUT) does not meet the conditions of your threshold,
+**the test will finish with a failed status.**
 
-Thresholds can evaluate any metric that your test generates.
 Often, testers use thresholds to codify their SLOs.
-For example, you could create a threshold for any combination of the following expectations:
+For example, you can create thresholds for any combination of the following expectations:
 - Less than 1% of requests return an error.
 - 95% of requests have a response time below 200ms.
 - 99% of requests have a response time below 400ms.
 - A specific endpoint always responds within 300ms.
 - Any conditions for a [custom metric](/using-k6/metrics#custom-metrics).
 
-Thresholds analyze the performance metrics and determine whether the final results passed or failed the test.
-Thresholds are essential for [load-testing automation](/testing-guides/automated-performance-testing).
+Thresholds are also essential for [load-testing automation](/testing-guides/automated-performance-testing):
 
-Here is a sample script that specifies two thresholds.
+1. Give your test a threshold.
+1. Add it to your CI.
+1. Set up alerts for test failures.
+
+After that, you need to worry about the test only after your SUT fails to meet its performance expectations.
+
+## Example: HTTP errors and response duration
+
+This sample script specifies two thresholds.
 One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
 The other evaluates whether 95 percent of responses happen within a certain duration (the `http_req_duration` metric).
 
