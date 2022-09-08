@@ -19,29 +19,9 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 <InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
 
-## Launch Chromium
+## Your First Test
 
-The first step is to launch a `chromium` [Browser](/javascript-api/xk6-browser/browser) (which is currently the only available browser type). After the browser starts, you can interact with it using the [browser-level APIs](#browser-level-apis).
-
-| Method                     | Description                                                                      |
-|----------------------------|----------------------------------------------------------------------------------|
-| chromium                   | Import module from `'k6/x/browser'`                                              |
-| chromium.launch([options]) | You can see a list of all possible `options` in [the options heading](#options). |
-
-### Options
-
-| Method            | Type     | Default | Description                                                                                                                                                                                                                                                           |
-|-------------------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| args              | string[] | `null`  | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the [example](#example)). |
-| debug             | boolean  | `false` | All CDP messages and internal fine grained logs will be logged if set to `true`.                                                                                                                                                                                      |
-| devtools          | boolean  | `false` | Open up developer tools in the browser by default.                                                                                                                                                                                                                    |
-| env               | string[] | `null`  | Environment variables to set before launching browser process.                                                                                                                                                                                                        |
-| executablePath    | string   | `null`  | Override search for browser executable in favor of specified absolute path.                                                                                                                                                                                           |
-| headless          | boolean  | `true`  | Show browser GUI or not.                                                                                                                                                                                                                                              |
-| ignoreDefaultArgs | string[] | `null`  | Ignore any of the default arguments included when launching browser process.                                                                                                                                                                                          |
-| proxy             | string   | `null`  | Specify to set browser's proxy config.                                                                                                                                                                                                                                |
-| slowMo            | string   | `null`  | Slow down input actions and navigation by the specified time e.g. `'500ms'`.                                                                                                                                                                                          |
-| timeout           | string   | `'30s'` | Default timeout to use for various actions and navigation.                                                                                                                                                                                                            |
+The first step is to import the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype), and use its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process (which is currently the only available `BrowserType`). After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis).
 
 ### Example
 
@@ -54,18 +34,13 @@ import { chromium } from 'k6/x/browser';
 
 export default function () {
   const browser = chromium.launch({
-    args: ['show-property-changed-rects'],
-    debug: true,
-    devtools: true,
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: false,
     slowMo: '500ms',
-    timeout: '30s',
   });
 
   const context = browser.newContext();
   const page = context.newPage();
-  page.goto('http://whatsmyuseragent.org/');
+  page.goto('https://test.k6.io/browser.php/');
   page.screenshot({ path: `example-chromium.png` });
 
   page.close();
@@ -74,6 +49,51 @@ export default function () {
 ```
 
 </CodeGroup>
+
+### Running the Example Test
+
+If you have downloaded the pre-built binary you will find the binary named `xk6-browser`. Using the [example](#example), create a new file (such as `browser_test.js`) in the same directory as the pre-built binary, and paste the example in that file. Now run:
+
+```
+xk6-browser run browser_test.js
+```
+
+## Module Properties
+
+Listed in the table are the importable properties from the top level module (`'k6/x/browser'`).
+
+| Property | Description                                                                                                                                                                          |
+|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| chromium | A [BrowserType](/javascript-api/xk6-browser/browsertype) to launch tests in a Chromium-based browser.                                                                                |
+| devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
+| version  | Returns the version number of xk6-browser.                                                                                                                                           |
+
+### Devices Example
+
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
+
+```javascript
+import { chromium, devices } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch({ headless: false });
+  const iphoneX = devices['iPhone X'];
+  const context = browser.newContext(iphoneX);
+  const page = context.newPage();
+
+  page.goto('https://test.k6.io/browser.php/', {
+    waitUntil: 'networkidle',
+  });
+  
+  page.close();
+  browser.close();
+}
+```
+
+</CodeGroup>
+
 
 ## Browser-level APIs
 
@@ -85,10 +105,12 @@ Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly di
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Browser](/javascript-api/xk6-browser/browser/) <BWIPT />               | The entry point for all tests and used to launch [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s and [Page](/javascript-api/xk6-browser/page/)s. |
 | [BrowserContext](/javascript-api/xk6-browser/browsercontext/) <BWIPT /> | Enables independent browser sessions with separate [Page](/javascript-api/xk6-browser/page/)s, cache, and cookies.                                              |
+| [BrowserType](/javascript-api/xk6-browser/browsertype/)                 | The `BrowserType` is the entry point into launching a browser process; `chromium` is currently the only supported `BrowserType`.                                |
 | [ElementHandle](/javascript-api/xk6-browser/elementhandle/) <BWIPT />   | Represents an in-page DOM element.                                                                                                                              |
 | [Frame](/javascript-api/xk6-browser/frame/) <BWIPT />                   | Access and interact with the [`Page`](/javascript-api/xk6-browser/page/).'s `Frame`s.                                                                           |
 | [JSHandle](/javascript-api/xk6-browser/jshandle)                        | Represents an in-page JavaScript object.                                                                                                                        |
 | [Keyboard](/javascript-api/xk6-browser/keyboard/)                       | Used to simulate the keyboard interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                     |
+| [Locator](/javascript-api/xk6-browser/locator/)                         | The Locator API makes it easier to work with dynamically changing elements.                                                                                     |
 | [Mouse](/javascript-api/xk6-browser/mouse/)                             | Used to simulate the mouse interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                        |
 | [Page](/javascript-api/xk6-browser/page/) <BWIPT />                     | Provides methods to interact with a single tab in a [`Browser`](/javascript-api/xk6-browser/browser/).                                                          |
 | [Request](/javascript-api/xk6-browser/request/) <BWIPT />               | Used to keep track of the request the [`Page`](/javascript-api/xk6-browser/page/) makes.                                                                        |
