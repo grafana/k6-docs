@@ -14,13 +14,13 @@ const BNIT = ({ id }) =>
         rel="noopener noreferrer"
         style={{ fontSize: '18px', cursor: 'pointer' }}
       >
-        <NITIcon style={{ verticalAlign: 'inherit' }} />
+        <NITIcon style={{ verticalAlign: 'middle' }} />
       </a>
     </Tooltip>
   ) : (
     <Tooltip value="Not implemented">
       <span style={{ fontSize: '18px', cursor: 'help' }}>
-        <NITIcon style={{ verticalAlign: 'inherit' }} />
+        <NITIcon style={{ verticalAlign: 'middle' }} />
       </span>
     </Tooltip>
   );
