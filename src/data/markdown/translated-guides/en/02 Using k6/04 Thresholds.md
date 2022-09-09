@@ -18,7 +18,7 @@ For example, you can create thresholds for any combination of the following expe
 Thresholds are also essential for [load-testing automation](/testing-guides/automated-performance-testing):
 
 1. Give your test a threshold.
-1. Add it to your CI.
+1. Automate your execution
 1. Set up alerts for test failures.
 
 After that, you need to worry about the test only after your SUT fails to meet its performance expectations.
