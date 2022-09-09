@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import WIPIcon from 'svg/work-in-progress.inline.svg';
 
 import Tooltip from '../tooltip';
 
@@ -11,14 +12,16 @@ const BWIPT = ({ id }) =>
         href={`https://github.com/grafana/xk6-browser/issues/${id}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ fontSize: '11px', cursor: 'pointer' }}
+        style={{ fontSize: '18px', cursor: 'pointer' }}
       >
-        🚧
+        <WIPIcon style={{ verticalAlign: 'middle' }} />
       </a>
     </Tooltip>
   ) : (
     <Tooltip value="Work in Progress">
-      <span style={{ fontSize: '11px', cursor: 'help' }}>🚧</span>
+      <span style={{ fontSize: '18px', cursor: 'help' }}>
+        <WIPIcon style={{ verticalAlign: 'middle' }} />
+      </span>
     </Tooltip>
   );
 
