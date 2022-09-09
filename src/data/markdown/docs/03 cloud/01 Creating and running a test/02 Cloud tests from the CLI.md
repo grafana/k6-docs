@@ -332,7 +332,7 @@ export default function () {
 <Blockquote mod="Attention" title="The LI_ prefix is deprecated">
 
 Previously, cloud environment variables were prefixed with `LI_` (for example, `LI_LOAD_ZONE`).
-These names are deprecated and will be removed in future versions of k6 Cloud.
+These names are deprecated and may be removed in future versions of k6 Cloud.
 
 </Blockquote>
 
