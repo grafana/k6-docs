@@ -43,7 +43,9 @@ If you're more adventurous or want to get the latest changes of the xk6-browser 
 
 Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
 
-Here's a list of the fully (✅) or partially (🚧) implemented classes of the Playwright API (with a more detailed breakdown of missing APIs in the table below):
+Here's a list of the fully (✅) or partially implemented (<BWIPT/>) classes of the Playwright API (with a more detailed breakdown of missing APIs in the table below):
+
+Text for test: or not implemented (<BNIT/>) or partially implemented (<BWIPT/>) classes.
 
 <Glossary>
 
