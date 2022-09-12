@@ -67,7 +67,9 @@ To copy a metric:
 
 ## Add dashboard variables to switch between test runs
 
-Open dashboard settings -> variables
+Dashboard variables are useful when you need to switch between test runs often, without editing panel's query. You can select test run using the dropdown at the top of the dashboard, all your panels which use the variables will update automatically.
+
+To setup open dashboard settings -> variables
 
 1. Add organization variable
 ![k6 grafana add org](./images/06-Grafana-Plugin/k6_cloud_grafana_add_org.png)
