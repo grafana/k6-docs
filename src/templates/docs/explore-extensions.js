@@ -46,6 +46,7 @@ export default function ExploreExtensionsPage({
           logo
           official
           categories
+          type
           author {
             name
             url

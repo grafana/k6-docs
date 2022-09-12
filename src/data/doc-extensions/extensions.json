@@ -34,9 +34,7 @@
         "url": ""
       },
       "official": false,
-      "categories": [
-        "WebSockets"
-      ]
+      "categories": ["WebSockets"]
     },
     {
       "name": "xk6-kafka",
@@ -181,7 +179,8 @@
         "url": "https://github.com/vvarp"
       },
       "official": false,
-      "categories": ["Protocol"]
+      "categories": ["Protocol"],
+      "type": "JS"
     },
     {
       "name": "xk6-mqtt",
@@ -193,7 +192,8 @@
         "url": "https://github.com/pmalhaire"
       },
       "official": false,
-      "categories": ["Messaging"]
+      "categories": ["Messaging"],
+      "type": "Out"
     },
     {
       "name": "xk6-kv",
@@ -205,7 +205,8 @@
         "url": "https://github.com/dgzlopes"
       },
       "official": false,
-      "categories": ["Data"]
+      "categories": ["Data"],
+      "type": "JS"
     },
     {
       "name": "xk6-url",
@@ -217,7 +218,8 @@
         "url": "https://github.com/dgzlopes"
       },
       "official": false,
-      "categories": ["Misc"]
+      "categories": ["Misc"],
+      "type": "Out"
     },
     {
       "name": "xk6-kubernetes",
