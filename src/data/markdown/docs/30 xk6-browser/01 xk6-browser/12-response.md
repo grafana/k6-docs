@@ -3,8 +3,7 @@ title: "Response"
 excerpt: "xk6-browser: Response Class"
 ---
 
-<BrowserCompatibility/>
-
+<BrowserDocsWIP/>
 
 ## Supported APIs
 
@@ -26,9 +25,3 @@ excerpt: "xk6-browser: Response Class"
 | <a href="https://playwright.dev/docs/api/class-response#response-status-text" target="_blank" >response.statusText()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-response#response-text" target="_blank" >response.text()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-response#response-url" target="_blank" >response.url()</a> | - |
-
-### Missing Playwright APIs
-
-- <a href="https://playwright.dev/docs/api/class-response/#response-finished" target="_blank" >finished()</a>: dependent on event-loop support in k6.
-
-<BrowserClassList/>
