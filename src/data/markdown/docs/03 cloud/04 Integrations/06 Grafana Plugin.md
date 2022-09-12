@@ -3,18 +3,20 @@ title: 'Grafana Plugin'
 excerpt: 'View your k6 Cloud Test Results in Grafana'
 ---
 
-The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard.
+The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While Grafana Plugin does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
 
-It makes your testing accessible with Grafana:
+Currently supported features:
 * manage and visualize your k6 Cloud tests in Grafana.
 * add k6 visualizations to your existing Grafana dashboards.
 * correlate k6 metrics with other metrics to find root causes quickly.
+* create new and update existing tests using the script editor
+* use dashboard variables to quickly switch between test runs
 
 ## Installing the k6 Cloud plugin
 
 To install the k6 plugin
 
-1. In Grafana Cloud, select the **Install plugin** button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This automatically adds the plugin to your Grafana stack. 
+1. In Grafana Cloud, select the **Install plugin** button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This automatically adds the plugin to your Grafana stack.
 
   > For local Grafana instances, follow the [grafana-cli instructions](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation).
 
@@ -38,16 +40,6 @@ Here, you can select any project and navigate to any test or test runs.
 
 ![k6 project overview](./images/06-Grafana-Plugin/k6_cloud_grafana_project_overview.png)
 
-## Re-running cloud tests
-
-The k6 Cloud app for Grafana also provides additional features to interact with your testing.
-To begin with, the application offers the possibility to launch an existing cloud test.
-
-1. To run a test on k6 Cloud, select the **Run test**.
-1. Visualize the test run immediately on Grafana.
-
-![k6 test overview](./images/06-Grafana-Plugin/k6_cloud_grafana_test_overview.png)
-
 ## Enhanced visualizations of k6 results
 
 The k6 results view mirrors its counterpart on the k6 Cloud.
@@ -69,7 +61,25 @@ This feature allows you to visualize k6 metrics together with other metrics of y
 To copy a metric:
 
 1. Next to a chart on the test results view, select  **Copy to clipboard**.
-1. Head to a dashboard, and paste same time-series panel in. 
+1. Head to a dashboard, and paste same time-series panel in.
 
 ![k6 grafana dashboard](./images/06-Grafana-Plugin/k6_cloud_grafana_dashboard.png)
 
+## Add dashboard variables to switch between test runs
+
+Open dashboard settings -> variables
+
+1. Add organization variable
+![k6 grafana add org](./images/06-Grafana-Plugin/k6_cloud_grafana_add_org.png)
+
+2. Add project variable
+![k6 grafana add project](./images/06-Grafana-Plugin/k6_cloud_grafana_add_project.png)
+
+3. Add test variable
+![k6 grafana add test](./images/06-Grafana-Plugin/k6_cloud_grafana_add_test.png)
+
+4. Add testrun variable
+![k6 grafana add testrun](./images/06-Grafana-Plugin/k6_cloud_grafana_add_testrun.png)
+
+5. Update panel to use variables
+![k6 grafana use variables in panel](./images/06-Grafana-Plugin/k6_cloud_grafana_use_vars_in_panel.png)
