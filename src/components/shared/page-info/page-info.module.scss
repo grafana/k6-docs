@@ -1,9 +1,15 @@
 .container {
-  margin-bottom: 47.5px;
+  margin-bottom: 20px;
   margin-top: 115px;
+
   @include xl-down {
     margin-top: 160px;
   }
+
+  @include lg-down {
+    margin-bottom: 20px;
+  }
+
   @include sm-down {
     margin-top: 230px;
   }
@@ -27,6 +33,7 @@
 
 .title {
   max-width: calc(100% - 325px); // preserving the spacing and width in adaptive
+
   @include lg-down {
     max-width: 100%;
   }

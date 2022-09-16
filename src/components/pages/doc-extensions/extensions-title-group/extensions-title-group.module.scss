@@ -23,7 +23,7 @@
   align-items: center;
 
   &.low {
-    top: 150px;
+    top: 160px;
   }
 
   svg {
@@ -35,19 +35,24 @@
     }
   }
 
+  @include xl-down {
+    &.low {
+      top: 200px;
+    }
+  }
   @include lg-down {
     position: static;
     top: unset;
     right: unset;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     transform: unset;
 
     &.low {
-      top: unset;
+      top: 130px;
     }
   }
 
-  @include sm-down {
+  @include xs-down {
     margin-left: 20px;
   }
 
