@@ -42,6 +42,7 @@ export default function BundleBuilderPage({
           logo
           official
           categories
+          type
           author {
             name
             url
