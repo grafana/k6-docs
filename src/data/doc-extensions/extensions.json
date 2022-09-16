@@ -180,7 +180,7 @@
       },
       "official": false,
       "categories": ["Protocol"],
-      "type": "JS"
+      "type": false
     },
     {
       "name": "xk6-mqtt",
@@ -192,8 +192,7 @@
         "url": "https://github.com/pmalhaire"
       },
       "official": false,
-      "categories": ["Messaging"],
-      "type": "Out"
+      "categories": ["Messaging"]
     },
     {
       "name": "xk6-kv",
@@ -205,8 +204,7 @@
         "url": "https://github.com/dgzlopes"
       },
       "official": false,
-      "categories": ["Data"],
-      "type": "JS"
+      "categories": ["Data"]
     },
     {
       "name": "xk6-url",
@@ -218,8 +216,7 @@
         "url": "https://github.com/dgzlopes"
       },
       "official": false,
-      "categories": ["Misc"],
-      "type": "Out"
+      "categories": ["Misc"]
     },
     {
       "name": "xk6-kubernetes",

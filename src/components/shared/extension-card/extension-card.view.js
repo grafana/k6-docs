@@ -53,14 +53,16 @@ export const ExtensionCard = ({
         </div>
       )}
       <div className={styles.content}>
-        <ul className={styles.categoryWrapper}>
-          {extension.categories.map((category, index) => (
-            <li className={styles.category} key={index}>
-              {category}
-            </li>
-          ))}
-        </ul>
-        <div>
+        {extension.categories && (
+          <ul className={styles.categoryWrapper}>
+            {extension.categories.map((category, index) => (
+              <li className={styles.category} key={index}>
+                {category}
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className={styles.nameWrapper}>
           <span className={styles.name}>{extension.name}</span>
           {extension.type && (
             <span className={styles.type}>{extension.type}</span>
