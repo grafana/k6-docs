@@ -18,8 +18,9 @@ k6  retains data on a rolling basis.
 ## Length of data retention
 
 k6 retains data from when the test runs until the length specified by your subscription.
-For example, if your plan has one month of data retention, k6 retains your test data for 30 days following its run.
-After that period, the data is deleted.
+For example, if your plan has 30 days of data retention, k6 saves the data for a test as soon as the test run starts
+and retains this data for a period of 30 days.
+After 30 days, the data is deleted.
 
 k6 retains data on a rolling basis, depending on your subscription.
 This rolling period applies only for active subscriptions.
