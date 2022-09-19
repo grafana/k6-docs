@@ -3,19 +3,26 @@ title: 'About data retention'
 excerpt: 'What is k6 data retention and how does it work?'
 ---
 
-Your _data retention policy_ specifies how long the k6 Cloud service keeps your test-result data.
+<Blockquote mod="warning" title="k6 retains data on a rolling basis">
 
-Discussion about data retention refers to only test-result data.
-*Your user data and test configurations are saved indefinitely* on your user profile.
-
-<Blockquote mod="warning">
-
-k6  retains data on a rolling basis.
-**Test result data older than what is specified in your plan is automatically deleted**.
+**Test-result data older than what is specified in your plan is automatically deleted**.
 
 </Blockquote>
 
+Your _data retention policy_ specifies how long the k6 Cloud service keeps your test-result data.
+
+While test-result data is subject to your data retention policy, **your user data and test configurations are saved indefinitely**.
+Keep in mind that the data referenced in the following sections of this page refers to only test-result data.
+
 ## Length of data retention
+
+<Blockquote mod="Note" title="In the context of data retention, 1 month = 30 days">
+
+In some informal communication, we might define a data-retention period in months instead of days.
+
+To be clear: **a month of data retention is a unit equal to 30 days**.
+
+</Blockquote>
 
 k6 retains data from when the test runs until the length specified by your subscription.
 For example, if your plan has 30 days of data retention, k6 saves the data for a test as soon as the test run starts
