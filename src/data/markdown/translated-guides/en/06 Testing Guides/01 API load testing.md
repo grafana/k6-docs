@@ -108,7 +108,7 @@ export default function () {
     sleep(SLEEP_DURATION);
 
     // Update user profile request
-    body = JSON.string({
+    body = JSON.stringify({
       first_name: 'user_' + __ITER,
     });
     params.tags.name = 'update-user-profile';
