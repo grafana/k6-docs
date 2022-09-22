@@ -1,15 +1,15 @@
 ---
-title: 'Environment variable'
-excerpt: 'How to use environment variable in the cloud'
+title: 'Environment variables'
+excerpt: 'How to use environment variables in the cloud'
 ---
 
 Environment Variables are key-value pairs configured at the organization level and can be used to store information that you want to reference in your cloud test-scripts across all projects of this organization. All values are encrypted at rest and their plain value can only be visible to the owner and admins of the organization. All members of the organization can reference the environment variables in their test scripts. 
 
 > Changes to Environment Variables are not applied to already started Test Runs, they only apply to new upcoming Test Runs.
 
-## Manage environment variable
+## Manage environment variables
 
-Environment Variables can be managed in Organization Settings: Select your profile icon, then **Manage > Environment variable**. Permission to create, reveal, modify and delete environment variables is restricted to Owners and Admins of the organization. 
+Environment Variables can be managed in Organization Settings: Select your profile icon, then **Manage > Environment variables**. Permission to create, reveal, modify and delete environment variables is restricted to Owners and Admins of the organization. 
 
 ![k6 Environment Variable](./images/envvars/environment-variables.png)
 
