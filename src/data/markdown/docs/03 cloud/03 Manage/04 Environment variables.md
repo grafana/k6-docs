@@ -3,22 +3,32 @@ title: 'Environment variables'
 excerpt: 'How to use environment variables in the cloud'
 ---
 
-Environment Variables are key-value pairs configured at the organization level and can be used to store information that you want to reference in your cloud test-scripts across all projects of this organization. All values are encrypted at rest and their plain value can only be visible to the owner and admins of the organization. All members of the organization can reference the environment variables in their test scripts. 
+Environment Variables are key-value pairs configured at the organization level. All values are encrypted before being stored in our database and remain encrypted until they are needed for test-runs. You reference environment variables within a test-script and the variables are interpolated on the server that runs the Test-Run. Environment Variables can be used to store sensitive (and non-sensitive) information that you want to reference in your test-scripts. Managing environment variables in one central place reduces the data exposure and ensures that the changes take effect in all test-runs that use these variables.
 
-> Changes to Environment Variables are not applied to already started Test Runs, they only apply to new upcoming Test Runs.
+> Changes to an Environment Variable won't apply to already started Test-Runs, they only apply to new upcoming Test-Runs.
 
-## Manage environment variables
+## Managing environment variables
 
 Environment Variables can be managed in Organization Settings: Select your profile icon, then **Manage > Environment variables**. Permission to create, reveal, modify and delete environment variables is restricted to Owners and Admins of the organization. 
 
 ![k6 Environment Variable](./images/envvars/environment-variables.png)
 
+#### Naming environment variables
 
-### Declare new environment variable
+The following rules must apply for naming an environment variable:
+- Names can only contain alphanumeric characters (`[a-z]`, `[A-Z]`, `[0-9]`) or underscores (`_`). Spaces are not allowed.
+- Names must not start with the `K6_CLOUD` prefix.
+- Names must not start with a number.
+- Names are not case-sensitive.
+- Names must be unique.
+
+#### Declaring a new environment variable
 
 Enter the Name for your Environment Variable. Then, enter the respective Value. Optionally, you can also add a brief description then click **submit**. 
 
 ![k6 Environment Variable](./images/envvars/create-environment-variable.png)
+
+### Accessing environment variables
 
 The cloud Environment Variable can be referenced in the [script-editor](https://k6.io/docs/cloud/creating-and-running-a-test/script-editor/) through the global `__ENV` variable, the same way as in [k6 CLI Environment Variable](https://k6.io/docs/using-k6/environment-variables/#passing-environment-variables-to-the-k6-script)
 
@@ -35,6 +45,10 @@ export default function () {
 }
 ```
 
+<Blockquote mod="warning">
+It's essential to stress that the current environment variables implementation doesn't prevent printing values to the log (or restrict exposing a variable any other way). You should avoid printing sensitive data to the log intentionally.
+</Blockquote>
+
 ## Running tests with k6 cloud command
 
 Environment variables set up on the cloud can be referenced on test runs run with `k6 cloud` command. 
@@ -43,8 +57,7 @@ Environment variables set up on the cloud can be referenced on test runs run wit
 
 Referencing environment variables set in the cloud app in local scripts is possible, but it doesn't work in all cases. If the code in the [init context](https://k6.io/docs/getting-started/running-k6#the-init-context-and-the-default-function) depends on the value of the environment variable, the test run may fail.
 
-In this case, the value should contain a valid JSON. Unless the `MY_HEADERS` is set through CLI flag `--env`,
-the test run will fail locally and throw an exception:
+In the example below, the `JSON.parse` expects a valid JSON. If the `MY_HEADERS` is not set via CLI flag `--env`, the value will be `undefined` and the test will fail locally and throw an exception:
 
 ```javascript
 import http from 'k6/http';
@@ -59,7 +72,7 @@ export default function () {
 }
 ```
 
-If the value of environment is first accessed in the default function, the test run will be successfully sent to the cloud and if the value is correctly set in the cloud, the test run will succeed. (This also valid for the `setup()` and `teardown()` functions):
+But if the value of `__ENV.MY_HEADERS` is first accessed in the default function, the test run will be successfully sent to the cloud and if the value is correctly set in the cloud, the test run will succeed. (This is also valid for the `setup()` and `teardown()` functions):
 
 ```javascript
 import http from 'k6/http';
