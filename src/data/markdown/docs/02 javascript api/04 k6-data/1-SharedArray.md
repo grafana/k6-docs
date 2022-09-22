@@ -67,7 +67,7 @@ export default function () {
 
 ## Performance characteristics
 
-Internally, `SharedArray` keeps the data marshaled as JSON and unmarshals elements only when they are requested.
+Internally, the current implementation of `SharedArray` keeps the data marshaled as JSON and unmarshals elements only when they are requested.
 
 In general, this operation should be unnoticeable (relative to whatever else you do with the data).
 But, for small data sets, `SharedArray` might perform worse.
