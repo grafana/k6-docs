@@ -21,9 +21,9 @@ const data = new SharedArray('some name', function () {
 });
 ```
 
-The name argument is required,
-as VUs are completely separate JS VMs and k6 needs some way to identify the `SharedArray` that it needs to return.
-This means that you can have multiple such SharedArrays and even load only some of them for given VUs,
+The name argument is required.
+VUs are completely separate JS VMs, and k6 needs some way to identify the `SharedArray` that it needs to return.
+You can have multiple `SharedArrays` and even load only some of them for given VUs,
 though this is unlikely to have any performance benefit.
 
 Supported operations on a `SharedArray` include:
@@ -36,7 +36,7 @@ Once constructed, a `SharedArray` is read-only, so **you can't use a SharedArray
 
 <Blockquote mod="attention" title="You can only construct a SharedArray in init code">
 
-Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-life-cycle/) results in the exeception `new SharedArray must be called in the init context`.
+Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-life-cycle/) results in the exception `new SharedArray must be called in the init context`.
 
 This limitation will eventually be removed, but for now, the implication is that you can use `SharedArray` to populate test data only at the very beginning of your test and not as a result of receiving data from a response (for example).
 
