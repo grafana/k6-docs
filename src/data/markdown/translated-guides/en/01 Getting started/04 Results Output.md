@@ -58,13 +58,6 @@ k6 run --iterations=100 --vus=10 \
 --summary-trend-stats="med,p(95),p(99.9)" --summary-time-unit="ms" script.js
 ```
 
-<Blockquote mod="note" title="">
-
-With a single iteration and VU, the min, max, median, average, and p values would all be the same.
-
-</Blockquote>
-
-
 ### Custom reports with `handleSummary()`
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
