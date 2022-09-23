@@ -9,7 +9,7 @@ You can use these measurements, called _metrics_, to interpret test results.
 k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test-summary_ report.
-- As _time-series data_, in granular, point-by-point detail
+- As _time-series data_, in granular, point-by-point detail, which you can export to file formats, like CSV, or stream to external services, like Prometheus or InfluxDB.
 
 ![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
 
@@ -18,7 +18,7 @@ You can customize almost every aspect of k6 result output:
 - You can configure new summary statistics and print them not only to `stdout` but also as HTML, JSON, or any text format.
 - You can stream the results to one or multiple of the services of your choice.
 
-## Built-in and custom metrics
+## Metrics
 
 **Documentation:** [Using metrics](/using-k6/metrics)
 
@@ -46,8 +46,8 @@ The end-of-test-summary shows aggregated statistical values for your result metr
 - p90, p95, and p99 values
 
 If this default report is unsuitable, you can change the trend stats with
-the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option.
-You can also change the time unit with 
+the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option
+or change the time unit with
 the [`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option.
 
 For example, this command displays only the median, p95, and p99.9 values,
@@ -62,8 +62,8 @@ k6 run --iterations=100 --vus=10 \
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
 To completely customize the end-of-test summary,
-you can use the `handleSummary()` function to process this object into any text format.
-
+you can use the `handleSummary()` function to process this object into any text format:
+HTML, JSON, XML, et cetera.
 For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 ## Time series and external outputs
@@ -101,10 +101,10 @@ The available built-in outputs are:
 
 </Glossary>
 
-### Multiple outputs
+<Blockquote mod="note" title="You can also send metrics simultaneously to several outputs">
 
-You can also send metrics simultaneously to several outputs
-by using multiple CLI `--out` flags:
+
+To export to multiple outputs, use multiple CLI `--out` flags:
 
 
 ```bash
@@ -112,4 +112,7 @@ $ k6 run \
 --out json=test.json \
 --out influxdb=http://localhost:8086/k6
 ```
+
+</Blockquote>
+
 
