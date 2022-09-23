@@ -4,7 +4,7 @@ excerpt: 'For basic tests, the top-level summary that k6 provides might be enoug
 ---
 
 As a test runs, k6 starts generating _metrics_.
-These metrics provide quantitative data to help you interpret test results.
+You can use these metrics to interpret test results.
 
 k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
