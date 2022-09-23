@@ -45,10 +45,11 @@ The end-of-test-summary shows aggregated statistical values for your result metr
 - Minimum and maximum values
 - p90, p95, and p99 values
 
-If this default report is unsuitable, you can change the trend stats with
+If this default report is unsuitable, you can use
 the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option
-or change the time unit with
-the [`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option.
+to configure the reported statistics, or the
+[`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option
+to change the metric-value unit of time.
 
 For example, this command displays only the median, p95, and p99.9 values,
 and it presents the statistics in milliseconds instead of seconds.
