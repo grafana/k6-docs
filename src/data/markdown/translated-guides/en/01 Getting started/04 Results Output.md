@@ -70,7 +70,7 @@ With a single iteration and VU, the min, max, median, average, and p values woul
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
 
 To completely customize the end-of-test summary,
-you can use the `handleSummary()` function to process this object into any text format.For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
+you can use the `handleSummary()` function to process this object into any text format. For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 
 ## Time series and external outputs
