@@ -3,8 +3,8 @@ title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 ---
 
-As a test runs, k6 starts generating _metrics_.
-You can use these metrics to interpret test results.
+As k6 generates load for your test, it also takes measurements of the performance of the system.
+You can use these measurements, called _metrics_, to interpret test results.
 
 k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
