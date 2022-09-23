@@ -9,20 +9,20 @@ You can use these measurements, called _metrics_, to interpret test results.
 k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test-summary_ report.
-- As _time-series data_, in granular, point-by-point detail, which you can export to file formats, like CSV, or stream to external services, like Prometheus or InfluxDB.
+- As _time-series data_, which you can write to a file, or stream to external services such as Prometheus or InfluxDB.
 
 ![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
 
-You can customize almost every aspect of k6 result output:
-- You can create your custom metrics
-- You can configure new summary statistics and print them not only to `stdout` but also as HTML, JSON, or any text format.
-- You can stream the results to one or multiple of the services of your choice.
+You can customize almost every aspect of result output:
+- Create your custom metrics
+- Configure new summary statistics and print them not only to `stdout` but also as HTML, JSON, or any text format.
+- Stream the results to one or multiple services of your choice.
 
 ## Metrics
 
 **Documentation:** [Using metrics](/using-k6/metrics)
 
-k6 comes with a built-in set of metrics about the load generated and the system response.
+k6 comes with built-in metrics about the load generated and the system response.
 Key metrics include:
 - `iterations`, the total number of iterations
 - `http_req_failed`, the total number of failed requests
@@ -47,37 +47,33 @@ The end-of-test-summary shows aggregated statistical values for your result metr
 
 If this default report is unsuitable, you can use
 the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option
-to configure the reported statistics, or the
-[`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option
-to change the metric-value unit of time.
-
-For example, this command displays only the median, p95, and p99.9 values,
-and it presents the statistics in milliseconds instead of seconds.
+to configure the reported statistics.
+For example, this command displays only median, p95, and p99.9 values.
 
 ```sh
 k6 run --iterations=100 --vus=10 \
---summary-trend-stats="med,p(95),p(99.9)" --summary-time-unit="ms" script.js
+--summary-trend-stats="med,p(95),p(99.9)" script.js
 ```
 
 ### Custom reports with `handleSummary()`
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
 To completely customize the end-of-test summary,
-you can use the `handleSummary()` function to process this object into any text format:
+use the `handleSummary()` function to process this object into any text format:
 HTML, JSON, XML, what have you.
 For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 ## Time series and external outputs
 
 The condensed end-of-test summary provides a top-level view of the test.
-For deeper analysis, you need to look at granular time-series data.
-This data has metrics and timestamps for every point of the test.
+For deeper analysis, you need to look at granular time-series data,
+which has metrics and timestamps for every point of the test.
 
 You can access time-series metrics in two ways:
 - Write them to a JSON or CSV file.
 - Stream them to an external service.
 
-For both cases, you can use the `--out` flag.
+In both cases, you can use the `--out` flag.
 
 ```sh
 $ k6 run --out statsd script.js
@@ -104,9 +100,7 @@ The available built-in outputs include:
 
 <Blockquote mod="note" title="You can also send metrics simultaneously to several outputs">
 
-
 To export to multiple outputs, use multiple CLI `--out` flags:
-
 
 ```bash
 $ k6 run \
