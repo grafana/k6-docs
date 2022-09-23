@@ -68,26 +68,26 @@ With a single iteration and VU, the min, max, median, average, and p values woul
 ### Custom reports with `handleSummary()`
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
-
 To completely customize the end-of-test summary,
-you can use the `handleSummary()` function to process this object into any text format. For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
+you can use the `handleSummary()` function to process this object into any text format.
 
+For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 ## Time series and external outputs
 
 The condensed end-of-test summary provides a top-level view of the test.
 For deeper analysis, you need to look at granular time-series data.
+This data has metrics and timestamps for every point of the test.
 
-You can integrate and visualize k6 metrics on other platforms.
-You can also write every metric to a file and analyze them in the program of your choice.
+You can access time-series metrics in two ways:
+- Write them to a JSON or CSV file.
+- Stream them to an external service.
 
-To send granular results data to an external output, use the `--out` flag.
-
+For both cases, you can use the `--out` flag.
 
 ```sh
 $ k6 run --out statsd script.js
 ```
-
 
 The available built-in outputs are:
 
