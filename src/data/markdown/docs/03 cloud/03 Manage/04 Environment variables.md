@@ -28,9 +28,9 @@ Enter the Name for your Environment Variable. Then, enter the respective Value. 
 
 ![k6 Environment Variable](./images/envvars/create-environment-variable.png)
 
-### Accessing environment variables
+## Accessing environment variables
 
-The cloud Environment Variable can be referenced in the [script-editor](https://k6.io/docs/cloud/creating-and-running-a-test/script-editor/) through the global `__ENV` variable, the same way as in [k6 CLI Environment Variable](https://k6.io/docs/using-k6/environment-variables/#passing-environment-variables-to-the-k6-script)
+Environment Variables set up on the cloud can be referenced in your k6 script through the __ENV variable, like other [k6 Environment Variables](https://k6.io/docs/using-k6/environment-variables/#passing-environment-variables-to-the-k6-script)
 
 ```javascript
 import http from 'k6/http';
@@ -46,7 +46,7 @@ export default function () {
 ```
 
 <Blockquote mod="warning">
-It's essential to stress that the current environment variables implementation doesn't prevent printing values to the log (or restrict exposing a variable any other way). You should avoid printing sensitive data to the log intentionally.
+The current environment variables implementation doesn't prevent printing values to the log (or restrict exposing a variable any other way). You should avoid printing sensitive data to the log intentionally.
 </Blockquote>
 
 ## Running tests with k6 cloud command
