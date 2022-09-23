@@ -3,34 +3,44 @@ title: 'Environment variables'
 excerpt: 'How to use environment variables in the cloud'
 ---
 
-Environment Variables are key-value pairs configured at the organization level. All values are encrypted before being stored in our database and remain encrypted until they are needed for test-runs. You reference environment variables within a test-script and the variables are interpolated on the server that runs the Test-Run. Environment Variables can be used to store sensitive (and non-sensitive) information that you want to reference in your test-scripts. Managing environment variables in one central place reduces the data exposure and ensures that the changes take effect in all test-runs that use these variables.
+Environment Variables are key-value pairs that you configure at the organization level.
+k6 encrypts all values before storing them in our database, and they remain encrypted until needed for a test-run.
+If you reference a variable in a test script, k6 will insert the value of the variable on the server that runs the test.
+You can use Environment Variables to store sensitive (and non-sensitive) information that you want to reference in your test-scripts. Managing environment variables in one central place brings the following benefits:
+- Reduced data exposure
+- An easier way to re-use and change values across different test scripts.
 
 > Changes to an Environment Variable won't apply to already started Test-Runs, they only apply to new upcoming Test-Runs.
 
-## Managing environment variables
+## Manage environment variables
 
-Environment Variables can be managed in Organization Settings: Select your profile icon, then **Manage > Environment variables**. Permission to create, reveal, modify and delete environment variables is restricted to Owners and Admins of the organization. 
+Only owners and admins can create, modify, and delete environment variables.
+If you have appropriate permission, you can manage environment variables with these steps:
+1. Head to **Organization Settings**.
+2. Select your profile icon, then **Manage > Environment variables**.
 
 ![k6 Environment Variable](./images/envvars/environment-variables.png)
 
-#### Naming environment variables
+### Rules for environment variable names
 
-The following rules must apply for naming an environment variable:
-- Names can only contain alphanumeric characters (`[a-z]`, `[A-Z]`, `[0-9]`) or underscores (`_`). Spaces are not allowed.
+The following restrictions apply to environment variable names:
+- Names can contain only alphanumeric characters (`[a-z]`, `[A-Z]`, `[0-9]`) and underscores (`_`). Spaces are not allowed.
 - Names must not start with the `K6_CLOUD` prefix.
 - Names must not start with a number.
-- Names are not case-sensitive.
+- Names are **case insensitive**.
 - Names must be unique.
 
-#### Declaring a new environment variable
+### Declare a new environment variable
 
-Enter the Name for your Environment Variable. Then, enter the respective Value. Optionally, you can also add a brief description then click **submit**. 
+1. Give your Environment Variable a `name`, then enter the respective Value.
+2. Optionally, add a brief description.
+3. Select **Submit**.
 
 ![k6 Environment Variable](./images/envvars/create-environment-variable.png)
 
-## Accessing environment variables
+## Access environment variables
 
-Environment Variables set up on the cloud can be referenced in your k6 script through the __ENV variable, like other [k6 Environment Variables](https://k6.io/docs/using-k6/environment-variables/#passing-environment-variables-to-the-k6-script)
+If you create an Environment Variable on k6 Cloud, you can reference it in your k6 script through the __ENV variable, as you would with other [k6 Environment Variables](https://k6.io/docs/using-k6/environment-variables/)
 
 ```javascript
 import http from 'k6/http';
