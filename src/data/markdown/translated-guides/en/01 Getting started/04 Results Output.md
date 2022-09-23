@@ -6,7 +6,7 @@ excerpt: 'For basic tests, the top-level summary that k6 provides might be enoug
 As a test runs, k6 starts generating _metrics_.
 These metrics provide quantitative data to help you interpret test results.
 
-k6 generates many metrics about the load that your test generates and about how the system under test (SUT) responds to this load.
+k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test-summary_ report.
 - As _time-series data_, in granular, point-by-point detail
@@ -15,14 +15,14 @@ Broadly, you can analyze metrics in two ways:
 
 You can customize almost every aspect of k6 result output:
 - You can create your custom metrics
-- You can configure new summary statistics, and print them to not only `stdout` but also as HTML, JSON, or any text format.
+- You can configure new summary statistics and print them not only to `stdout` but also as HTML, JSON, or any text format.
 - You can stream the results to one or multiple of the services of your choice.
 
 ## Built-in and custom metrics
 
 **Documentation:** [Using metrics](/using-k6/metrics)
 
-k6 comes with a built-in set of metrics about the load generated and about the system response.
+k6 comes with a built-in set of metrics about the load generated and the system response.
 Key metrics include:
 - `iterations`, the total number of iterations
 - `http_req_failed`, the total number of failed requests
@@ -60,27 +60,35 @@ k6 run --iterations=100 --vus=10 \
 
 <Blockquote mod="note" title="">
 
-The preceding example uses multiple iterations and VUs so that the trend metrics have different values.
 With a single iteration and VU, the min, max, median, average, and p values would all be the same.
-For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
-## External outputs
+</Blockquote>
 
-The condensed [end-of-test summary](/results-visualization/end-of-test-summary) is good for a top-level view of the test.
+<DescriptionList>
+
+Custom reports with `handleSummary()`
+: At the end of the test, k6 automatically creates an object with all aggregated statistics.
+To completely customize the end-of-test summary,
+you can use the `handleSummary()` function to process this object into any text format.
+: For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
+
+</DescriptionList>
+
+## Time series and external outputs
+
+The condensed end-of-test summary provides a top-level view of the test.
 For deeper analysis, you need to look at granular time-series data.
 
 You can integrate and visualize k6 metrics on other platforms.
-You can also write every metric to a file, and analyze them in the program of your choice.
+You can also write every metric to a file and analyze them in the program of your choice.
 
 To send granular results data to an external output, use the `--out` flag.
 
-<CodeGroup labels={[]}>
 
-```bash
+```sh
 $ k6 run --out statsd script.js
 ```
 
-</CodeGroup>
 
 The available built-in outputs are:
 
@@ -106,7 +114,6 @@ The available built-in outputs are:
 You can also send metrics simultaneously to several outputs.
 To do so, set separate arguments for multiple CLI `--out` flags.
 
-<CodeGroup labels={[]}>
 
 ```bash
 $ k6 run \
@@ -114,4 +121,3 @@ $ k6 run \
 --out influxdb=http://localhost:8086/k6
 ```
 
-</CodeGroup>
