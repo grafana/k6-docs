@@ -55,7 +55,7 @@ You can do further operations on metrics to build your analysis and test logic.
 For example, you can derive [custom metrics](/using-k6/metrics/#custom-metrics) from any default metric type, be it a trend, rate, count, or gauge (that is, a maximum value).
 
 Another useful application of metrics is in combination with [_thresholds_](/using-k6/thresholds).
-With thresholds, you can use metrics to set performance goals, and abort the test when performance degrades beyond the threshold point.
+With thresholds, you can use metrics to set performance goals and abort the test when performance degrades beyond the threshold point.
 For example, this threshold aborts a test once the p99 duration value crosses 3000 milliseconds.
 
 <CodeGroup labels={["latency-exceeds-3000.js"]} lineNumbers={[]} showCopyButton={[true]}>
