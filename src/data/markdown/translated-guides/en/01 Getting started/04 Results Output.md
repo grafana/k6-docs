@@ -83,7 +83,7 @@ For both cases, you can use the `--out` flag.
 $ k6 run --out statsd script.js
 ```
 
-The available built-in outputs are:
+The available built-in outputs include:
 
 <Glossary>
 
