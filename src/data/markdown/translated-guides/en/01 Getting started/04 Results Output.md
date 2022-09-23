@@ -9,7 +9,7 @@ These metrics provide quantitative data to help you interpret test results.
 k6 generates many metrics about the load that your test generates and about how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test-summary_ report.
-- In granular, point-by-point detail. That is, as _time-series data_.
+- As _time-series data_, in granular, point-by-point detail
 
 ![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
 
