@@ -3,20 +3,15 @@ title: 'Results output'
 excerpt: 'For basic tests, the top-level summary that k6 provides might be enough. For detailed analysis, you can stream all data your test outputs to an external source.'
 ---
 
-As k6 starts generating load according to your script logic,
-it also starts generating _metrics_.
+As k6 starts generating load, it also starts generating _metrics_.
 These metrics provide quantitative data to help you interpret test results.
 
 k6 generates many metrics about the load that your test generates and about how the system under test (SUT) responds to this load.
 Broadly, you can analyze metrics in two ways:
-- As summary statistics
-- In granular, point-by-point detail
+- As summary statistics, in an _end-of-test-summary_ report.
+- In granular, point-by-point detail. That is, as _time-series data_.
 
-![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
-
-## Result-output essentials
-
-k6 turns metrics into two central outputs _end-of-test-summary reports_ and granular _time-series data_.
+These are the essential elements of k6 test results: metrics, summary output, and granular time series. 
 
 <DescriptionList>
 
