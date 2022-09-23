@@ -11,6 +11,8 @@ Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test-summary_ report.
 - In granular, point-by-point detail. That is, as _time-series data_.
 
+![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
+
 These are the essential elements of k6 test results: metrics, summary output, and granular time series. 
 
 <DescriptionList>
@@ -44,7 +46,7 @@ Key metrics include:
 - `iterations`, the total number of iterations
 - `http_req_failed`, the total number of failed requests
 - `http_req_duration`, the end-to-end time of all requests (that is, the total latency)
-     - `expected_response:true`, the end-to-end time of successful requests (failed requests often have faster responses)
+   - `expected_response:true`, the end-to-end time of successful requests (failed requests often have faster responses)
 
 You can also use [_checks_](/using-k6/checks) to make metrics from any boolean expression.
 For example, you can check that a response body has a certain text string.
@@ -93,23 +95,22 @@ you can change the time units, display different aggregated statistics, or make 
 
 ### Change time units and summary stats
 
-To configure the aggregated metrics in and end-of-test summary, use the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option.
-For example, you might need preciser p-values.
+To configure the aggregated metrics in an end-of-test summary, use the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option.
+For example, you might need more precise p-values.
 This command limits the stats to only p99 and p99.9 values.
 
 ```sh
 k6 run --summary-trend-stats="med,p(95),p(99.9)" ./script.js
 ```
 
-To change the unit of time that the test results show, use the [`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option.
-For example, you might need preciser units of time.
-This command displays the end-of-test values in milliseconds:
+To change the unit of time, use the [`--summary-time-unit`](/using-k6/k6-options/reference#summary-time-unit) option.
+For example, this command displays the end-of-test values in milliseconds instead of seconds:
 
 ```sh
 k6 run --summary-time-unit="ms" ./script.js
 ```
 
-Putting these options together, this command creates a more compact summary, with preciser p-values and time units.
+Putting these options together, this command creates a more compact summary, with more precise p-values and time units.
 Use the tab to compare the configured output with the default output.
 
 ```sh
@@ -173,14 +174,14 @@ With a single iteration and VU, the min, max, median, average, and p values woul
 
 ### Customize reports with `handleSummary()` function
 
-If you want to make your own report, use the `handleSummary()` function to derive any report from the summary metrics that k6 creates.
+If you want to make your own report, use the `handleSummary()` function.
 
-Your `handleSummary()` can take a single argument.
-As the test finishes, k6 passes the calculated metrics as the argument `data` to the `handleSummary()` function, then runs the `handleSummary()` function.
+The `handleSummary()` function takes a single argument.
+When the test finishes, k6 runs `handleSummary()`, passing the summary-metrics object as the function argument.
 
 You can send data to `stdout`, `stderr`, or any file.
 
-To try `handleSummary()`, stick this function at the end of your script:
+To try `handleSummary()`, paste this function at the end of your script:
 
 <CodeGroup labels={["trivial-summary.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
@@ -203,7 +204,6 @@ This is just an example, and its behavior is quite trivial:
 
 Admittedly, printing a single value isn't very useful, so open up `summary.json` to see the summary data.
 You can manipulate this summary data object into any report you want, then write it to a file.
-
 For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 ## External outputs
