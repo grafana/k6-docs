@@ -24,10 +24,9 @@ You can customize almost every aspect of result output:
 
 k6 comes with built-in metrics about the load generated and the system response.
 Key metrics include:
-- `iterations`, the total number of iterations
-- `http_req_failed`, the total number of failed requests
 - `http_req_duration`, the end-to-end time of all requests (that is, the total latency)
-   - `expected_response:true`, the end-to-end time of successful requests (failed requests often have faster responses)
+- `http_req_failed`, the total number of failed requests
+- `iterations`, the total number of iterations
 
 ## End-of-test-summary report
 
@@ -46,22 +45,13 @@ The end-of-test-summary shows aggregated statistical values for your result metr
 - p90, p95, and p99 values
 
 If this default report is unsuitable, you can use
-the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option
-to configure the reported statistics.
-For example, this command displays only median, p95, and p99.9 values.
-
-```sh
-k6 run --iterations=100 --vus=10 \
---summary-trend-stats="med,p(95),p(99.9)" script.js
-```
+the [`--summary-trend-stats`](/using-k6/k6-options/reference#summary-trend-stats) and [`--summary-time-unit`](/using-k6/k6-options/reference/#summary-time-unit) options to configure the reported statistics.
 
 ### Custom reports with `handleSummary()`
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
 To completely customize the end-of-test summary,
-use the `handleSummary()` function to process this object into any text format:
-HTML, JSON, XML, what have you.
-For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
+use the [`handleSummary()`](/results-visualization/end-of-test-summary/#customize-with-handlesummary) function to process this object into any text format: HTML, JSON, XML, what have you.
 
 ## Time series and external outputs
 
