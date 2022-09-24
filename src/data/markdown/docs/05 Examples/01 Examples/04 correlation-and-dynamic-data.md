@@ -142,4 +142,4 @@ export default function () {
 **Relevant k6 APIs**:
 
 - [Response.body](/javascript-api/k6-http/response)
-- [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween-content-left-right)
+- [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween)
