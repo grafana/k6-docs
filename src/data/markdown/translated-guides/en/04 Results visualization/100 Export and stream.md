@@ -48,3 +48,8 @@ To send k6 Cloud test results to an external service, refer to
 
 </Blockquote>
 
+
+## Read more
+
+- [k6 extensions](/extensions) have many more supported file formats.
+- [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). Video demonstrations with a companion blog post.
