@@ -77,9 +77,9 @@ If you have downloaded the pre-built binary you will find the binary named `xk6-
 
 <Blockquote mod="note" title="">
 
-Note the `./` prefix, which tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on Windows if you're using the `cmd.exe` shell. If you're using PowerShell, you should specify `.\xk6-browser` instead.
+The `./` prefix tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on the Windows `cmd.exe` shell. On PowerShell, specify `.\xk6-browser` instead.
 
-If you installed xk6-browser via a system package, or you've placed the binary in a directory that's part of your `$PATH` environment variable, then you can omit the `./` or `.\` prefix.
+If you installed xk6-browser with a system package, or placed the binary in a directory that's part of your `$PATH` environment variable, you can omit the `./` or `.\` prefixes.
 
 </Blockquote>
 
