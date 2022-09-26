@@ -19,7 +19,9 @@ We suggest this option if you don't want to build your own binary with [xk6](htt
 
 If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build a binary from source.
 
-To build a binary with the extension, first, ensure you have installed [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/). Then run the following commands in a terminal:
+To build a binary with the extension:
+1. Ensure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
+2. Run the following commands in a terminal:
 
 ```bash
 # Install xk6
