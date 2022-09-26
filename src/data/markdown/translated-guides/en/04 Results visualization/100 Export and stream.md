@@ -3,15 +3,15 @@ title: Export and stream
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Everything about a load test is dynamic: load varies and system responses vary.
+Everything about a load test is dynamic: even under constant load, system responses from second to second.
 To really analyze performance and find bottlenecks, you need to be able to look at how metrics change across time.
 
 k6 emits metrics with time stamps at every point of the test.
-You can investigate this data in many formats, either by exporting it to a file at the end of a test, or by streaming the data as the test runs.
+You can investigate this data in many formats by exporting it to a file at the end of a test or streaming the data as the test runs.
 
 ## Supported file formats
 
-k6 has built in support to export metrics to the following file formats:
+k6 has built-in support to write metrics in the following file formats:
 
 <Glossary>
 
@@ -48,8 +48,8 @@ To send k6 Cloud test results to an external service, refer to
 
 </Blockquote>
 
-
 ## Read more
 
 - [k6 extensions](/extensions) have many more supported file formats.
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). Video demonstrations with a companion blog post.
+
