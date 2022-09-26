@@ -24,10 +24,10 @@ You can customize almost every aspect of result output:
 
 k6 comes with built-in metrics about the load generated and the system response.
 Key metrics include:
-- `data_sent`, the total amount of data sent
-- `http_req_failed`, the total number of failed requests
+
 - `http_req_duration`, the end-to-end time of all requests (that is, the total latency)
-   - `expected_response:true`, the end-to-end time of successful requests (failed requests often have faster responses)
+- `http_req_failed`, the total number of failed requests
+- `iterations`, the total number of iterations
 
 ## End-of-test-summary report
 
@@ -55,12 +55,10 @@ k6 run --iterations=100 --vus=10 \
 
 ### Custom reports with `handleSummary()`
 
-
 For completely customized end-of-summary reports, k6 provides the `handleSummary()` function.
 
 At the end of the test, k6 automatically creates an object with all aggregated statistics.
 The `handleSummary()` function can process this object into a custom report in any text format: JSON, HTML, XML, and whatever else.
-For example, the community project [k6 reporter](https://github.com/benc-uk/k6-reporter) uses `handleSummary()` to make an HTML report from your k6 summary metrics.
 
 ## Time series and external outputs
 
