@@ -254,7 +254,7 @@ The profile value based on the current stage can be one of the following options
 
 </CodeGroup>
 
-To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/json).
+To see how tags affect your test-result output, refer to the [k6 results output syntax](/results-visualization/export-and-stream/json).
 
 ## Groups
 
