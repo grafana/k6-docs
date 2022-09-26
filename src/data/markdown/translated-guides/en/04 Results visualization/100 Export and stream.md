@@ -3,7 +3,7 @@ title: Export and stream
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Everything about a load test is dynamic: even under constant load, system responses from second to second.
+Everything about a load test is dynamic: even under constant load, system responses vary from second to second.
 To really analyze performance and find bottlenecks, you need to be able to look at how metrics change across time.
 
 k6 emits metrics with time stamps at every point of the test.
