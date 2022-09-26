@@ -42,7 +42,7 @@ Each option has its own detailed reference in a separate section.
 | [No color](#no-color)                                     | A boolean specifying whether colored output is disabled                             |
 | [No connection reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No cookies reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
-| [No summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
+| [No summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/export-and-stream/end-of-test-summary)                                                        |
 | [No setup](#no-setup)                                     | A boolean specifying whether `setup()` function should be run                       |
 | [No teardown](#no-teardown)                               | A boolean specifying whether `teardown()` function should be run                    |
 | [No thresholds](#no-thresholds)                           | Disables threshold execution                                                        |

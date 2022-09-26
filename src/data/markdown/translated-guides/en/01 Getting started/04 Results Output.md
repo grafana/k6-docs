@@ -31,7 +31,7 @@ Key metrics include:
 
 ## End-of-test-summary report
 
-**Documentation**: [End-of-test-summary report](results-visualization/end-of-test-summary/)
+**Documentation**: [End-of-test-summary report](results-visualization/export-and-stream/gend-of-test-summary/)
 
 By default, k6 prints summarized results to `stdout`.
 
@@ -84,22 +84,20 @@ The available built-in outputs include:
 
 <Glossary>
 
-- [Amazon CloudWatch](/results-visualization/amazon-cloudwatch)
-- [Cloud](/results-visualization/cloud)
-- [CSV](/results-visualization/csv)
-- [Datadog](/results-visualization/datadog)
-- [Grafana Cloud / Prometheus](/results-visualization/grafana-cloud)
-- [InfluxDB](/results-visualization/influxdb-+-grafana)
-- [JSON](/results-visualization/json)
-- [Netdata](/results-visualization/netdata)
-- [New Relic](/results-visualization/new-relic)
-- [Prometheus](/results-visualization/prometheus)
-- [TimescaleDB](/results-visualization/timescaledb)
-- [StatsD](/results-visualization/statsd)
+- [Amazon CloudWatch](/results-visualization/export-and-stream/amazon-cloudwatch)
+- [Cloud](/results-visualization/export-and-stream/cloud)
+- [CSV](/results-visualization/export-and-stream/csv)
+- [Datadog](/results-visualization/export-and-stream/datadog)
+- [Grafana Cloud / Prometheus](/results-visualization/export-and-stream/grafana-cloud)
+- [InfluxDB](/results-visualization/export-and-stream/influxdb-+-grafana)
+- [JSON](/results-visualization/export-and-stream/json)
+- [Netdata](/results-visualization/export-and-stream/netdata)
+- [New Relic](/results-visualization/export-and-stream/new-relic)
+- [Prometheus](/results-visualization/export-and-stream/prometheus)
+- [TimescaleDB](/results-visualization/export-and-stream/timescaledb)
+- [StatsD](/results-visualization/export-and-stream/statsd)
 
 </Glossary>
-
-
 
 
 
