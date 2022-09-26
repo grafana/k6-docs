@@ -59,44 +59,7 @@ export default function () {
 The current environment variables implementation doesn't prevent printing values to the log (or restrict exposing a variable any other way). You should avoid printing sensitive data to the log intentionally.
 </Blockquote>
 
-## Running tests with k6 cloud command
-
-Environment variables set up on the cloud can be referenced on test runs run with `k6 cloud` command. 
-
-### Limitations
-
-Referencing environment variables set in the cloud app in local scripts is possible, but it doesn't work in all cases. If the code in the [init context](https://k6.io/docs/getting-started/running-k6#the-init-context-and-the-default-function) depends on the value of the environment variable, the test run may fail.
-
-In the example below, the `JSON.parse` expects a valid JSON. If the `MY_HEADERS` is not set via CLI flag `--env`, the value will be `undefined` and the test will fail locally and throw an exception:
-
-```javascript
-import http from 'k6/http';
-import { sleep } from 'k6';
-
-const headers = JSON.parse(__ENV.MY_HEADERS); // throws an exception
-
-export default function () {
-  headers['Authorization'] = `Token ${__ENV.AUTH_TOKEN}`;
-  const res = http.get(__ENV.SERVICE_URL, { headers });
-  sleep(1);
-}
-```
-
-But if the value of `__ENV.MY_HEADERS` is first accessed in the default function, the test run will be successfully sent to the cloud and if the value is correctly set in the cloud, the test run will succeed. (This is also valid for the `setup()` and `teardown()` functions):
-
-```javascript
-import http from 'k6/http';
-import { sleep } from 'k6';
-
-export default function () {
-  const headers = JSON.parse(__ENV.MY_HEADERS);
-  headers['Authorization'] = `Token ${__ENV.AUTH_TOKEN}`;
-  const res = http.get(__ENV.SERVICE_URL, { headers });
-  sleep(1);
-}
-```
-
-### Order of precedence
+## Order of precedence
 
 When starting tests with `k6 cloud`, environment variables set via CLI flag `--env` and environment variables set in the cloud are combined and used together to run the test. If an environment variable is both set via CLI and declared in the cloud, the value set via the CLI will be applied instead of the value set in the cloud.
 
