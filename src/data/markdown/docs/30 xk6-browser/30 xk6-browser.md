@@ -13,11 +13,30 @@ xk6-browser is currently being developed as a [k6 extension](/extensions). You h
 
 The quickest way to get started is to [download a release binary from GitHub](https://github.com/grafana/xk6-browser/releases).
 
+We suggest this option if you don't want to build your own binary with [xk6](https://github.com/grafana/xk6), which can be challenging in some cases.
+
 ### Build from source
 
-If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build from source. 
+If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build a binary from source.
 
-<InstallationInstructions extensionUrl="github.com/grafana/xk6-browser"/>
+To build a binary with the extension:
+1. Ensure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
+2. Run the following commands in a terminal:
+
+```bash
+# Install xk6
+go install go.k6.io/xk6/cmd/xk6@latest
+
+# Build the xk6-browser binary
+xk6 build --output xk6-browser --with github.com/grafana/xk6-browser
+
+... [INFO] Build environment ready
+... [INFO] Building k6
+... [INFO] Build complete: xk6-browser
+```
+
+xk6 will create the `xk6-browser` binary in the current working directory.
+
 
 ## Your First Test
 
@@ -55,8 +74,16 @@ export default function () {
 If you have downloaded the pre-built binary you will find the binary named `xk6-browser`. Using the [example](#example), create a new file (such as `browser_test.js`) in the same directory as the pre-built binary, and paste the example in that file. Now run:
 
 ```
-xk6-browser run browser_test.js
+./xk6-browser run browser_test.js
 ```
+
+<Blockquote mod="note" title="">
+
+The `./` prefix tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on the Windows `cmd.exe` shell. On PowerShell, specify `.\xk6-browser` instead.
+
+If you installed xk6-browser with a system package, or placed the binary in a directory that's part of your `$PATH` environment variable, you can omit the `./` or `.\` prefixes.
+
+</Blockquote>
 
 ## Module Properties
 
@@ -86,7 +113,7 @@ export default function () {
   page.goto('https://test.k6.io/browser.php/', {
     waitUntil: 'networkidle',
   });
-  
+
   page.close();
   browser.close();
 }
@@ -97,7 +124,7 @@ export default function () {
 
 ## Browser-level APIs
 
-`xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP) to instrument and interact with the browser. The `xk6-browser` APIs aims for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright). 
+`xk6-browser` uses [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP) to instrument and interact with the browser. The `xk6-browser` APIs aim for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright).
 
 Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
 
@@ -116,4 +143,3 @@ Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly di
 | [Request](/javascript-api/xk6-browser/request/) <BWIPT />               | Used to keep track of the request the [`Page`](/javascript-api/xk6-browser/page/) makes.                                                                        |
 | [Response](/javascript-api/xk6-browser/response/) <BWIPT />             | Represents the response received by the [`Page`](/javascript-api/xk6-browser/page/).                                                                            |
 | [Touchscreen](/javascript-api/xk6-browser/touchscreen/)                 | Used to simulate touch interactions with the associated [`Page`](/javascript-api/xk6-browser/page/).                                                            |
-
