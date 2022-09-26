@@ -75,9 +75,13 @@ If you have downloaded the pre-built binary you will find the binary named `xk6-
 ./xk6-browser run browser_test.js
 ```
 
-> Note the `./` prefix, which tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on Windows if you're using the `cmd.exe` shell. If you're using PowerShell, you should specify `.\xk6-browser` instead.
->
-> If you installed xk6-browser via a system package, or you've placed the binary in a directory that's part of your `$PATH` environment variable, then you can omit the `./` or `.\` prefix.
+<Blockquote mod="note" title="">
+
+Note the `./` prefix, which tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on Windows if you're using the `cmd.exe` shell. If you're using PowerShell, you should specify `.\xk6-browser` instead.
+
+If you installed xk6-browser via a system package, or you've placed the binary in a directory that's part of your `$PATH` environment variable, then you can omit the `./` or `.\` prefix.
+
+</Blockquote>
 
 ## Module Properties
 
