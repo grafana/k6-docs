@@ -8,7 +8,7 @@ The `aws` module is a JavaScript library that wraps around some Amazon AWS servi
 
 The library exposes a couple of configuration and client classes allowing to interact with a subset of AWS services in the context of k6 load test scripts:
 - [S3Client](/javascript-api/jslib/aws/s3client): a class to list S3 buckets and the objects they contain, as well as uploading, downloading and deleting objects from them.
-- [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient): a class allows listing, getting, creating, updating, and deleting secrets from the AWS secrets manager service.
+- [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient): a class to list, get, create, update, and delete secrets from the AWS secrets manager service.
 - [KMSClient](/javascript-api/jslib/aws/kmsclient): a class to list and generate keys from the AWS Key Management Service.
 - [AWSConfig](/javascript-api/jslib/aws/awsconfig/): a class is used by each client classes to provide them access to AWS credentials as well as configuration.
 
