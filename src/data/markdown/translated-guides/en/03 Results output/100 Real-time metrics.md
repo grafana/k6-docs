@@ -1,5 +1,5 @@
 ---
-title: Export and stream
+title: Real-time metrics
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
