@@ -28,11 +28,9 @@ Besides JSON and CSV, you can also stream k6 metrics to external services:
 
 - [Amazon CloudWatch](/results-output/real-time-metrics/amazon-cloudwatch)
 - [Cloud](/results-output/real-time-metrics/cloud)
-- [CSV](/results-output/real-time-metrics/csv)
 - [Datadog](/results-output/real-time-metrics/datadog)
 - [Grafana Cloud / Prometheus](/results-output/real-time-metrics/grafana-cloud)
 - [InfluxDB](/results-output/real-time-metrics/influxdb-+-grafana)
-- [JSON](/results-output/real-time-metrics/json)
 - [Netdata](/results-output/real-time-metrics/netdata)
 - [New Relic](/results-output/real-time-metrics/new-relic)
 - [Prometheus](/results-output/real-time-metrics/prometheus)
