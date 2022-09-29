@@ -8,7 +8,7 @@ These measurements, called _metrics_, provide data for test interpretation.
 
 k6 generates many metrics about the load that your test generates and how the system under test (SUT) responds.
 Broadly, you can analyze metrics in two ways:
-- As summary statistics, in an _end-of-test-summary_ report.
+- As summary statistics, in an _end-of-test_ summary report.
 - As _time-series data_, which you can write to a file, or stream to external services such as Prometheus or InfluxDB.
 
 ![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
@@ -31,7 +31,7 @@ Key metrics include:
 
 ## End-of-test-summary report
 
-**Documentation**: [End-of-test-summary report](/results-output/real-time-metrics/gend-of-test-summary/)
+**Documentation**: [End-of-test summary](/results-output/end-of-test-summary/)
 
 By default, k6 prints summarized results to `stdout`.
 
@@ -45,7 +45,7 @@ The end-of-test-summary shows aggregated statistical values for your result metr
 - Minimum and maximum values
 - p90, p95, and p99 values
 
-You can configure the statistics to report with the [`--summary-trend-stats`](https://k6.io/docs/using-k6/k6-options/reference#summary-trend-stats) option.
+You can configure the statistics to report with the [`--summary-trend-stats`](/using-k6/k6-options/reference#summary-trend-stats) option.
 For example, this command displays only median, p95, and p99.9 values.
 
 ```sh
@@ -61,6 +61,8 @@ At the end of the test, k6 automatically creates an object with all aggregated s
 The `handleSummary()` function can process this object into a custom report in any text format: JSON, HTML, XML, and whatever else.
 
 ## Time series and external outputs
+
+**Documentation**: [Real-time metrics](/results-output/real-time-metrics/)
 
 The condensed end-of-test summary provides a top-level view of the test.
 For deeper analysis, you need to look at granular time-series data,
