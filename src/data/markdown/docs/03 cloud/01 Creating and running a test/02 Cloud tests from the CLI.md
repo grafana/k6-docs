@@ -202,7 +202,7 @@ At times, you might want to run a test locally, but see the results on k6 Cloud.
 For example, you may want to test a local environment that is not connected to the wider internet.
 
 To do, this you can use `k6 run -out cloud`.
-For detailed instructions, refer to [Results visualization](/results-visualization/export-and-stream/cloud/).
+For detailed instructions, refer to [Results visualization](/results-output/real-time-metrics/cloud/).
 
 <Blockquote mod="attention"
 title="k6 charges your subscription for cloud streaming"

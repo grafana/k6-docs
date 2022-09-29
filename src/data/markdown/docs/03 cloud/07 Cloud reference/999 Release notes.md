@@ -242,7 +242,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v1.0.4 `(2021-7-27)`
 
-- Improve error reporting when [uploading results to the k6 Cloud](/results-visualization/export-and-stream/cloud/).
+- Improve error reporting when [uploading results to the k6 Cloud](/results-output/real-time-metrics/cloud/).
 - Fix: password input field icon and state mismatch.
 
 ### v1.0.1 `(2021-7-15)`

@@ -1,4 +1,4 @@
 ---
 title: 'Cloud'
-redirect: 'https://k6.io/docs/results-visualization/export-and-stream/cloud'
+redirect: 'https://k6.io/docs/results-output/real-time-metrics/cloud'
 ---

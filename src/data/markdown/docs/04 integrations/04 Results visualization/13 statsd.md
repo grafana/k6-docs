@@ -1,4 +1,4 @@
 ---
 title: 'StatsD'
-redirect: 'https://k6.io/docs/results-visualization/export-and-stream/statsd'
+redirect: 'https://k6.io/docs/results-output/real-time-metrics/statsd'
 ---

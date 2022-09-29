@@ -31,7 +31,7 @@ Key metrics include:
 
 ## End-of-test-summary report
 
-**Documentation**: [End-of-test-summary report](results-visualization/export-and-stream/gend-of-test-summary/)
+**Documentation**: [End-of-test-summary report](/results-output/real-time-metrics/gend-of-test-summary/)
 
 By default, k6 prints summarized results to `stdout`.
 
@@ -84,18 +84,18 @@ The available built-in outputs include:
 
 <Glossary>
 
-- [Amazon CloudWatch](/results-visualization/export-and-stream/amazon-cloudwatch)
-- [Cloud](/results-visualization/export-and-stream/cloud)
-- [CSV](/results-visualization/export-and-stream/csv)
-- [Datadog](/results-visualization/export-and-stream/datadog)
-- [Grafana Cloud / Prometheus](/results-visualization/export-and-stream/grafana-cloud)
-- [InfluxDB](/results-visualization/export-and-stream/influxdb-+-grafana)
-- [JSON](/results-visualization/export-and-stream/json)
-- [Netdata](/results-visualization/export-and-stream/netdata)
-- [New Relic](/results-visualization/export-and-stream/new-relic)
-- [Prometheus](/results-visualization/export-and-stream/prometheus)
-- [TimescaleDB](/results-visualization/export-and-stream/timescaledb)
-- [StatsD](/results-visualization/export-and-stream/statsd)
+- [Amazon CloudWatch](/results-output/real-time-metrics/amazon-cloudwatch)
+- [Cloud](/results-output/real-time-metrics/cloud)
+- [CSV](/results-output/real-time-metrics/csv)
+- [Datadog](/results-output/real-time-metrics/datadog)
+- [Grafana Cloud / Prometheus](/results-output/real-time-metrics/grafana-cloud)
+- [InfluxDB](/results-output/real-time-metrics/influxdb-+-grafana)
+- [JSON](/results-output/real-time-metrics/json)
+- [Netdata](/results-output/real-time-metrics/netdata)
+- [New Relic](/results-output/real-time-metrics/new-relic)
+- [Prometheus](/results-output/real-time-metrics/prometheus)
+- [TimescaleDB](/results-output/real-time-metrics/timescaledb)
+- [StatsD](/results-output/real-time-metrics/statsd)
 
 </Glossary>
 
