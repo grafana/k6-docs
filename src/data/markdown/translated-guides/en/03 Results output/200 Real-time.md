@@ -1,28 +1,9 @@
 ---
-title: Real-time metrics
+title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Everything about a load test is dynamic: even under constant load, system responses vary from second to second.
-To really analyze performance and find bottlenecks, you need to be able to look at how metrics change across time.
-
-k6 emits metrics with time stamps at every point of the test.
-You can investigate this data in many formats by exporting it to a file at the end of a test or streaming the data as the test runs.
-
-## Supported file formats
-
-k6 has built-in support to write metrics in the following file formats:
-
-<Glossary>
-
-- [CSV](/results-output/real-time-metrics/csv/)
-- [JSON](/results-output/real-time-metrics/json/)
-
-</Glossary>
-
-## External services
-
-Besides JSON and CSV, you can also stream k6 metrics to external services:
+Besides writing granular, timestamped metrics to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them to the following external services:
 
 <Glossary>
 
