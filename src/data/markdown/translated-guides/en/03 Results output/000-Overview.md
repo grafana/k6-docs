@@ -12,5 +12,5 @@ or **in granular detail**.
   - Write it to a file
   - [Stream it in real time](../real-time)
 
-![k6 results output diagram](../images/k6-results-diagram.png)
+![A diagram of the two broad ways to handle results: aggregated and granular](./images/k6-results-diagram.png)
 
