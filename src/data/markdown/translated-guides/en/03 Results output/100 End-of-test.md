@@ -31,12 +31,11 @@ vus_max........................: 20     min=20     max=20
 
 Besides this default summary, k6 can output the results in other formats at the end of the test:
 
-
-| On this page          |  Metrics Format                       | Read about...                           |
-|------------------------|-------------------------|-----------------------------------------|
-| [Custom summary](./custom-summary) | Aggregated | Using the `handleSummary()` callback to make custom reports of the aggregated results |
-| [CSV](./csv)   | Time series | Outputting results into CSV and the structure of the data  |
-| [JSON](./json) | Time series | Outputting results into JSON, and the structure of the data |
+| On this page                                    | Read about...                           |
+|-------------------------------------------------|-----------------------------------------|
+| [Custom summary](./custom-summary) | Using the `handleSummary()` callback to make completely custom reports|
+| [CSV](./csv)   | Writing results as a CSV file, and the structure of the data  |
+| [JSON](./json) | Writing results as a JSON file, and the structure of the data |
 
 
 ## The default summary
