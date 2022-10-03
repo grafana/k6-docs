@@ -1,9 +1,14 @@
 ---
 title: 'Test builder'
-excerpt: 'The k6 Test Builder allows you to utilize a graphical interface to create a k6 test.'
+excerpt: 'With the k6 Test Builder, use a graphical interface to create a k6 test.'
 ---
 
-> **Note**: you need a [k6 Cloud](/cloud) account to use the test builder. However, it is **free to use**, and you do not need an active subscription to utilize this feature.
+<Blockquote mod="note" title="Requires free k6 Cloud account">
+
+To use the test builder, you need a [k6 Cloud](/cloud). However, it is **free to use**.
+
+</Blockquote>
+
 
 The k6 Test Builder provides a graphical interface to create a k6 test.
 
@@ -108,4 +113,3 @@ Check out the script to get familiar with the [k6 API](/javascript-api/) or to c
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
 - Show relevant examples.
 - Run the test on the k6 Cloud.
-
