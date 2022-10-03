@@ -7,9 +7,6 @@ When a test finishes, k6 prints a top-level overview of the test results.
 Besides this default, you can make a custom summary,
 or write the granular output to a file.
 
-- As summary statistics, with an overview of the test.
-- In granular, timestamped detail, written to a file.
-
 
 | On this page                                    | Read about...                           |
 |-------------------------------------------------|-----------------------------------------|

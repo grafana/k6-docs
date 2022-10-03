@@ -5,6 +5,13 @@ excerpt: Send your time-series k6 metrics to multiple file formats and services
 
 Besides writing granular, timestamped metrics to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them to the following external services:
 
+<Blockquote mod="note" title="This list applies to tests on your machine">
+
+To send k6 Cloud test results to an external service, refer to
+[Cloud APM](http://localhost:8000/cloud/integrations/cloud-apm/).
+
+</Blockquote>
+
 <Glossary>
 
 - [Amazon CloudWatch](/results-output/real-time-metrics/amazon-cloudwatch)
@@ -20,12 +27,6 @@ Besides writing granular, timestamped metrics to [JSON](../end-of-test/json) and
 
 </Glossary>
 
-<Blockquote mod="note" title="This list applies to tests on your machine">
-
-To send k6 Cloud test results to an external service, refer to
-[Cloud APM](http://localhost:8000/cloud/integrations/cloud-apm/).
-
-</Blockquote>
 
 ## Read more
 
