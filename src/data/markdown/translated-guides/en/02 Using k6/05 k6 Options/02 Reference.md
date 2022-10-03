@@ -403,7 +403,8 @@ A boolean, specifying whether the script should exit once the test status reache
 When running scripts with `k6 cloud` by default scripts will run until the test reaches a finalized status.
 This could be problematic in certain environments (think of Continuous Integration and Delivery pipelines),
 since you'd need to wait until the test ends up in a finalized state.
-This option allows you to exit early and let the script run in the background. Available in `k6 cloud` command.
+
+With this option, you can exit early and let the script run in the background. Available in `k6 cloud` command.
 
 | Env                  | CLI                 | Code / Config file | Default |
 | -------------------- | ------------------- | ------------------ | ------- |
