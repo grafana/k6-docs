@@ -95,8 +95,8 @@ The ramp down stage is optional.
 
 We recommend you to always include a ramp-up stage in all your load tests because:
 
-- It allows your system to warm up or auto scale to handle the traffic.
-- It allows you to compare the response time between the low-load and nominal-load stages.
+- It lets your system warm up or auto scale to handle the traffic.
+- It lets you compare the response time between the low-load and nominal-load stages.
 - If you run a load test using our SaaS cloud service, it allows the automated performance alerts to
   better understand the normal behaviour of your system.
 

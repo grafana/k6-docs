@@ -73,7 +73,7 @@ As you can see below, the default project is already selected:
 
 ## Auto-assigning your internal teams to k6 projects
 
-The _Teams_ feature allows you to automatically assign all members of your internal teams (aka. [Okta](/cloud/project-and-team-management/saml-sso/okta) and [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) groups) to one or more [k6 Cloud projects](/cloud/project-and-team-management/projects/).
+With _Teams_, you can automatically assign all members of your internal teams (aka. [Okta](/cloud/project-and-team-management/saml-sso/okta) and [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) groups) to one or more [k6 Cloud projects](/cloud/project-and-team-management/projects/).
 
 Setting up teams has two steps:
 

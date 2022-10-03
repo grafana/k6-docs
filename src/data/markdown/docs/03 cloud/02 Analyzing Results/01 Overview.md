@@ -89,7 +89,7 @@ With these tabs, you can visually explore your test data and errors.
 Select any metric to expand a graph and dig deeper.
 
 You can also add these graphs to the **Analysis** tab.
-This allows you to look for interesting correlations in your result data.
+In this tab, you can find for interesting correlations in your result data.
 Within each tab, note the &#10003; or &#10005; next to the individual metrics if failures were encountered.
 In the example below, we have two checks with apparent failures.
 

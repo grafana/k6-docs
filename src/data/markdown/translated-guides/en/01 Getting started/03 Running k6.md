@@ -80,7 +80,7 @@ _Running a 30-second, 10-VU load test_
 k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
 VUs are essentially parallel `while(true)` loops.
 Scripts are written in JavaScript, as ES6 modules,
-which allows you to break larger tests into smaller pieces or make reusable pieces as you like.
+so you can break larger tests into smaller pieces or make reusable pieces as you like.
 
 
 ### The init context and the default function

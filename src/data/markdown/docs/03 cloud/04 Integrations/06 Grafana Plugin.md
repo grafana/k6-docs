@@ -57,7 +57,7 @@ If you want to visualize your test results on the k6 Cloud, select **Open in k6 
 ## Correlate testing results with other metrics
 
 You can copy relevant metrics from your test result to a Grafana dashboard.
-This feature allows you to visualize k6 metrics together with other metrics of your application or systems and bring QA data to any of your existing dashboards.
+In this dashboard, you can visualize k6 metrics with other metrics of your application or systems and bring QA data to any of your existing dashboards.
 To copy a metric:
 
 1. Next to a chart on the test results view, select  **Copy to clipboard**.

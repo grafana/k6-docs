@@ -67,7 +67,7 @@ export default function () {
     const heads = page.$("input[value='Bet on heads!']");
     const tails = page.$("input[value='Bet on tails!']");
 
-  The Locator API allows you to get a fresh element handle each
+  The Locator API provides a fresh element handle each
   time you use one of the locator methods. And, you can carry a
   locator across frame navigations. Let's create two locators;
   each locates a button on the page.

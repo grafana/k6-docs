@@ -1,10 +1,10 @@
 ---
 title: 'SSL/TLS version and ciphers'
-excerpt: 'To support testing specific client configurations, k6 allows you to set a specific version or range
+excerpt: 'To support testing specific client configurations, you can set a specific version or range
 of versions of SSL/TLS that should be allowed for a connection.'
 ---
 
-To support testing specific client configurations, k6 allows you to specify a version or range of versions of SSL/TLS that are allowed for a connection.
+To support testing specific client configurations, you can specify a version or range of versions of SSL/TLS that are allowed for a connection.
 You can as also specify which cipher suites are allowed for that connection.
 
 
