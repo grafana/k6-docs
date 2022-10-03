@@ -1,4 +1,4 @@
 ---
 title: 'Datadog'
-redirect: 'https://k6.io/docs/results-output/real-time-metrics/datadog'
+redirect: 'https://k6.io/docs/results-output/real-time/datadog'
 ---

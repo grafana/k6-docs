@@ -14,16 +14,16 @@ To send k6 Cloud test results to an external service, refer to
 
 <Glossary>
 
-- [Amazon CloudWatch](/results-output/real-time-metrics/amazon-cloudwatch)
-- [Cloud](/results-output/real-time-metrics/cloud)
-- [Datadog](/results-output/real-time-metrics/datadog)
-- [Grafana Cloud / Prometheus](/results-output/real-time-metrics/grafana-cloud)
-- [InfluxDB](/results-output/real-time-metrics/influxdb-+-grafana)
-- [Netdata](/results-output/real-time-metrics/netdata)
-- [New Relic](/results-output/real-time-metrics/new-relic)
-- [Prometheus](/results-output/real-time-metrics/prometheus)
-- [TimescaleDB](/results-output/real-time-metrics/timescaledb)
-- [StatsD](/results-output/real-time-metrics/statsd)
+- [Amazon CloudWatch](/results-output/real-time/amazon-cloudwatch)
+- [Cloud](/results-output/real-time/cloud)
+- [Datadog](/results-output/real-time/datadog)
+- [Grafana Cloud / Prometheus](/results-output/real-time/grafana-cloud)
+- [InfluxDB](/results-output/real-time/influxdb-+-grafana)
+- [Netdata](/results-output/real-time/netdata)
+- [New Relic](/results-output/real-time/new-relic)
+- [Prometheus](/results-output/real-time/prometheus)
+- [TimescaleDB](/results-output/real-time/timescaledb)
+- [StatsD](/results-output/real-time/statsd)
 
 </Glossary>
 
