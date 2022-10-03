@@ -1375,79 +1375,79 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/results-visualization/end-of-test-summary/',
-    toPath: '/results-output/end-of-test-summary/',
+    toPath: '/results-output/end-of-test/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/end-of-test-summary/',
-    toPath: '/results-output/end-of-test-summary/',
+    toPath: '/results-output/end-of-test/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/amazon-cloudwatch/',
-    toPath: '/results-output/real-time-metrics/amazon-cloudwatch/',
+    toPath: '/results-output/real-time/amazon-cloudwatch/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/cloud/',
-    toPath: '/results-output/real-time-metrics/cloud/',
+    toPath: '/results-output/real-time/cloud/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/csv/',
-    toPath: '/results-output/real-time-metrics/csv/',
+    toPath: '/results-output/real-time/csv/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/datadog/',
-    toPath: '/results-output/real-time-metrics/datadog/',
+    toPath: '/results-output/real-time/datadog/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/influxdb-+-grafana/',
-    toPath: '/results-output/real-time-metrics/influxdb-+-grafana/',
+    toPath: '/results-output/real-time/influxdb-+-grafana/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/json/',
-    toPath: '/results-output/real-time-metrics/json/',
+    toPath: '/results-output/real-time/json/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/netdata/',
-    toPath: '/results-output/real-time-metrics/netdata/',
+    toPath: '/results-output/real-time/netdata/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/new-relic/',
-    toPath: '/results-output/real-time-metrics/new-relic/',
+    toPath: '/results-output/real-time/new-relic/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/prometheus/',
-    toPath: '/results-output/real-time-metrics/prometheus/',
+    toPath: '/results-output/real-time/prometheus/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/timescaledb/',
-    toPath: '/results-output/real-time-metrics/timescaledb/',
+    toPath: '/results-output/real-time/timescaledb/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/results-visualization/statsd/',
-    toPath: '/results-output/real-time-metrics/statsd/',
+    toPath: '/results-output/real-time/statsd/',
     isPermanent: true,
   });
 
