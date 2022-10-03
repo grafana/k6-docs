@@ -24,7 +24,7 @@ Key metrics include:
 - `http_req_failed`, the total number of failed requests
 - `iterations`, the total number of iterations
 
-## End-of-test-summary report
+## End-of-test summary
 
 **Documentation**: [End-of-test summary](/results-output/end-of-test/)
 
