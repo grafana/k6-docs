@@ -6,7 +6,7 @@ excerpt: 'For basic tests, the top-level summary that k6 provides might be enoug
 As k6 generates load for your test, it also makes _metrics_ that measure the performance of the system.
 Broadly, you can analyze metrics in two ways:
 - As summary statistics, in an _end-of-test_ summary report.
-- In granular detail, with measurements for every point of the test (and timestamps)
+- In granular detail, with measurements for every data point across test (and timestamps)
 
 You can customize almost every aspect of result output:
 - Create custom metrics
