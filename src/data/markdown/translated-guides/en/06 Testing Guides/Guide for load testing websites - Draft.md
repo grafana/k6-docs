@@ -105,6 +105,25 @@ A best practice in hybrid load testing is to generate most of the load using the
 
 ## Scripting against a web app
 
+When you're testing a web app, you may wonder whether how you structure your test scripts. Consider the two methods below.
+
+#### Testing to isolate components
+
+One way you could test a web app is to test its components. Maybe you know there are issues with a specific functionality due to previous production issues, or maybe you'd like to target components that are business-critical to reduce risk exposure.
+
+In these cases, the type of test you write may: 
+- be protocol-based
+- call only those API endpoints that are relevant
+- have smaller or no sleep/think time
+- be focused on eventually stress testing a component or service or finding its breaking point
+
+Testing in this way is more flexible. With protocol testing, you can specify the endpoints or servers you'd like to hit, and narrow your test's target that way. You can test specific functionalities while skipping others that come chronologically before it in a standard user flow. You can more finely control the type of traffic that is generated. If you're recreating a specific mix of requests, you can script those requests and reproduce them in a repeatable manner.
+
+#### End-to-end testing
+
+You could also do end-to-end testing against a web app. End-to-end testing seeks to replicate real user behaviour and track its effects across the entire stack. When doing end-to-end testing, you might:
+- do protocol-level, browser-level, or hybrid load testing
+- replicate the actions in a typical user flow
 
 ### Should it be realistic?
 
