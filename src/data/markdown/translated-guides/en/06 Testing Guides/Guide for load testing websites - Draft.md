@@ -95,9 +95,16 @@ Unlike protocol-based load testing, browser-based load testing scripts generate 
 
 ### Hybrid load testing
 
-Hybrid load testing is a combination of protocol-based and browser-based load testing. 
+Hybrid load testing is a combination of protocol-based and browser-based load testing. While you can use two tools or two scripts to execute different types of load tests (one protocol-based and one browser-based), having both types of tests executed by the same script and the same tool is ideal. Aggregating results between different tools can be difficult at best and inconsistent at worst.
+
+A best practice in hybrid load testing is to generate most of the load using the protocol-level test, and then to run a smaller number of the browser-level testing scripts. This approach:
+- reduces the number of load generators needed, since protocol-level testing requires fewer machines to generate the same load
+- measures backend and frontend performance in the same test execution
+- provides a single source of aggregated output at the end
+- reduces complexity in the creation and maintenance of scripts
 
 ## Scripting against a web app
+
 
 ### Should it be realistic?
 
