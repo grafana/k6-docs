@@ -3,7 +3,7 @@ title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Besides writing metric data points to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them in real-time to:
+Besides writing metric data points to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them in real-time to the following services:
 
 
 <Glossary>
