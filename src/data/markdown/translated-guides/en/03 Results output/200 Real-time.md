@@ -3,14 +3,8 @@ title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Besides writing granular metrics to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them to the following external services:
+Besides writing metric data points to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them in real-time to:
 
-<Blockquote mod="note" title="This list applies to tests on your machine">
-
-To send k6 Cloud test results to an external service, refer to
-[Cloud APM](http://localhost:8000/cloud/integrations/cloud-apm/).
-
-</Blockquote>
 
 <Glossary>
 
@@ -27,9 +21,12 @@ To send k6 Cloud test results to an external service, refer to
 
 </Glossary>
 
+> This list applies to local tests. To send k6 Cloud test results to an external service, refer to
+[Cloud APM](http://localhost:8000/cloud/integrations/cloud-apm/).
+
 
 ## Read more
 
-- [k6 extensions](/extensions) have many more supported file formats.
+- [k6 extensions](/extensions/getting-started/explore) have many more supported file formats.
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). Video demonstrations with a companion blog post.
 
