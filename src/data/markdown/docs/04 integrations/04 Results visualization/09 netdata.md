@@ -1,4 +1,4 @@
 ---
 title: 'Netdata'
-redirect: 'https://k6.io/docs/results-visualization/netdata/'
+redirect: 'https://k6.io/docs/results-output/real-time/netdata/'
 ---

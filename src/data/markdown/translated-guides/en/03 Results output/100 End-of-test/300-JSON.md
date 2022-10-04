@@ -129,7 +129,9 @@ For more advanced cases, check out the [jq Manual][jq_manual_url]
 
 ## Summary export
 
-If you don't care about each individual metric measurement and instead want to see only the aggregated data, exporting the end-of-test summary data to a JSON file might be a better choice than using the JSON output described here. For more details, see `--export-summary` and `handleSummary()` in the [end-of-test summary docs](/results-visualization/end-of-test-summary).
+If you don't care about each individual metric measurement and instead want to see only the aggregated data,
+exporting the end-of-test summary data to a JSON file might be a better choice than using the JSON output described here.
+For more details, see `--export-summary` and `handleSummary()` in the [end-of-test summary docs](/results-output/end-of-test/).
 
 ## Read more
 

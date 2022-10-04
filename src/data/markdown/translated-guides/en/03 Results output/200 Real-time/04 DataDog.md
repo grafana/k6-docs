@@ -63,7 +63,7 @@ $ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
 
 </CodeGroup>
 
-Please look at the [StatsD](/results-visualization/statsd) output page for configuration options.
+Please look at the [StatsD](/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualize in Datadog
 

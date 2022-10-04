@@ -113,4 +113,3 @@ Check out the script to get familiar with the [k6 API](/javascript-api/) or to c
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
 - Show relevant examples.
 - Run the test on the k6 Cloud.
-

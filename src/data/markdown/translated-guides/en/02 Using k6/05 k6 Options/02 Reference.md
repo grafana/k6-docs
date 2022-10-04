@@ -42,7 +42,7 @@ Each option has its own detailed reference in a separate section.
 | [No color](#no-color)                                     | A boolean specifying whether colored output is disabled                             |
 | [No connection reuse](#no-connection-reuse)               | A boolean specifying whether k6 should disable keep-alive connections               |
 | [No cookies reset](#no-cookies-reset)                     | This disables resetting the cookie jar after each VU iteration                      |
-| [No summary](#no-summary)                                 | disables the [end-of-test summary](/results-visualization/end-of-test-summary)                                                        |
+| [No summary](#no-summary)                                 | disables the [end-of-test summary](/results-output/end-of-test/)                                                        |
 | [No setup](#no-setup)                                     | A boolean specifying whether `setup()` function should be run                       |
 | [No teardown](#no-teardown)                               | A boolean specifying whether `teardown()` function should be run                    |
 | [No thresholds](#no-thresholds)                           | Disables threshold execution                                                        |
@@ -58,9 +58,9 @@ Each option has its own detailed reference in a separate section.
 | [Stages](#stages)                                         | A list of objects that specify the target number of VUs to ramp up or down; shortcut option for a single [scenario](/using-k6/scenarios) with a [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus) |
 | [Supply environment variable](#supply-environment-variables) | Add/override environment variable with `VAR=value`                                    |
 | [System tags](#system-tags)                               | Specify which System Tags will be in the collected metrics                          |
-| [Summary export](#summary-export)                         | Output the [end-of-test summary](/results-visualization/end-of-test-summary) report to a JSON file (discouraged, use [handleSummary()](/results-visualization/end-of-test-summary#handlesummary-callback) instead) |
-| [Summary trend stats](#summary-trend-stats)               | Define stats for trend metrics in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                     |
-| [Summary time unit](#summary-time-unit)                   | Time unit to be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary)                                                      |
+| [Summary export](#summary-export)                         | Output the [end-of-test summary](/results-output/end-of-test) report to a JSON file (discouraged, use [handleSummary()](/results-output/end-of-test/custom-summary) instead) |
+| [Summary trend stats](#summary-trend-stats)               | Define stats for trend metrics in the [end-of-test summary](/results-output/end-of-test)                                                     |
+| [Summary time unit](#summary-time-unit)                   | Time unit to be used for _all_ time values in the [end-of-test summary](/results-output/end-of-test)                                                      |
 | [Tags](#tags)                                             | Specify tags that should be set test-wide across all metrics                        |
 | [Teardown timeout](#teardown-timeout)                     | Specify how long the teardown() function is allowed to run before it's terminated   |
 | [Thresholds](#thresholds)                                 | Configure under what conditions a test is successful or not                         |
@@ -779,8 +779,8 @@ export const options = {
 
 ## No summary
 
-Disables [end-of-test summary](/results-visualization/end-of-test-summary) generation,
-including calls to [`handleSummary()`](/results-visualization/end-of-test-summary#handlesummary-callback) and `--summary-export`.
+Disables [end-of-test summary](/results-output/end-of-test) generation,
+including calls to [`handleSummary()`](/results-output/end-of-test#handlesummary-callback) and `--summary-export`.
 
 Available in the `k6 run` command.
 
@@ -1105,8 +1105,8 @@ C:\k6> $env:K6_STAGES="5s:10,5m:20,10s:5"; k6 run script.js
 Save the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
-While this feature is not deprecated yet, [we now discourage it](/results-visualization/end-of-test-summary#summary-export-to-a-json-file).
-For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, refer to the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+While this feature is not deprecated yet, [we now discourage it](/results-output/end-of-test#summary-export-to-a-json-file).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, refer to the [`handleSummary()` callback](/results-output/end-of-test#handlesummary-callback).
 
 Available in the `k6 run` command.
 
@@ -1200,7 +1200,7 @@ export const options = {
 
 ## Summary time unit
 
-Define which time unit will be used for _all_ time values in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
+Define which time unit will be used for _all_ time values in the [end-of-test summary](/results-output/end-of-test). Possible values are `s` (seconds), `ms` (milliseconds) and `us` (microseconds). If no value is specified, k6 will use mixed time units, choosing the most appropriate unit for each value.
 
 | Env                    | CLI                   | Code / Config file  | Default |
 | ---------------------- | --------------------- | ------------------- | ------- |
@@ -1220,9 +1220,9 @@ export const options = {
 
 ## Summary trend stats
 
-Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-visualization/end-of-test-summary). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
+Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), refer to the new [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback).
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), refer to the new [`handleSummary()` callback](/results-output/end-of-test#handlesummary-callback).
 
 
 | Env                      | CLI                     | Code / Config file  | Default                        |

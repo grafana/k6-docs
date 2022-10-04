@@ -71,7 +71,7 @@ $ K6_STATSD_ENABLE_TAGS=true k6 run --out statsd script.js
 
 </CodeGroup>
 
-Please look at [StatsD](/results-visualization/statsd) output page for configuration options.
+Please look at [StatsD](/results-output/real-time/statsd) output page for configuration options.
 
 ## Visualize k6 metrics in Amazon CloudWatch
 

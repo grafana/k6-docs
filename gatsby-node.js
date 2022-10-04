@@ -1373,6 +1373,84 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/results-visualization/end-of-test-summary/',
+    toPath: '/results-output/end-of-test/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/end-of-test-summary/',
+    toPath: '/results-output/end-of-test/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/amazon-cloudwatch/',
+    toPath: '/results-output/real-time/amazon-cloudwatch/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/cloud/',
+    toPath: '/results-output/real-time/cloud/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/csv/',
+    toPath: '/results-output/real-time/csv/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/datadog/',
+    toPath: '/results-output/real-time/datadog/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/influxdb-+-grafana/',
+    toPath: '/results-output/real-time/influxdb-+-grafana/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/json/',
+    toPath: '/results-output/real-time/json/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/netdata/',
+    toPath: '/results-output/real-time/netdata/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/new-relic/',
+    toPath: '/results-output/real-time/new-relic/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/prometheus/',
+    toPath: '/results-output/real-time/prometheus/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/timescaledb/',
+    toPath: '/results-output/real-time/timescaledb/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/statsd/',
+    toPath: '/results-output/real-time/statsd/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
