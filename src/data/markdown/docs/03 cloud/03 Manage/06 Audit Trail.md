@@ -30,6 +30,10 @@ you can use audit logs to rule out the possibility that something or someone gai
 You can scan the audit trail for abnormalities and even check whether the IP addresses correlate to what you have 
 registered for your users.
 
+## Viewing Results
+- To view results within a specified time frame, use the **period** filter (highlighted in green).
+- To change how results are sorted, use the columns (highlighted in orange).
+
 ![Table results](images/Audit-Trail/audit-example.png)
 
 | Column                        | Description                                   |
@@ -38,3 +42,4 @@ registered for your users.
 | **Triggered by**              | Source of the event                           |
 | **Event**                     | Brief summary of the event                    |
 | **IP Address**                | The users IP address                          |
+
