@@ -31,8 +31,8 @@ You can scan the audit trail for abnormalities and even check whether the IP add
 registered for your users.
 
 ## Viewing Results
-- Highlighted in green is the period filter which allows you to view results within a specific time frame.
-- Highlighted in orange are columns that can sort the results.
+- To view results within a specified time frame, use the **period** filter (highlighted in green).
+- To change how results are sorted, use the columns (highlighted in orange).
 
 ![Table results](images/Audit-Trail/audit-example.png)
 
