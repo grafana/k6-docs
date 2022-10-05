@@ -20,7 +20,7 @@ import { check } from 'k6';
 import http from 'k6/http';
 import redis from 'k6/experimental/redis';
 import exec from 'k6/execution';
-import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
 
 export const options = {
   scenarios: {
