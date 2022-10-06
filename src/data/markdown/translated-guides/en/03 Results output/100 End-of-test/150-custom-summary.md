@@ -146,7 +146,7 @@ export default k6example; // use some predefined example to generate some data
 export const options = { vus: 5, iterations: 10 };
 
 // These are still very much WIP and untested, but you can use them as is or write your own!
-import { jUnit, textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
+import { jUnit, textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
 
 export function handleSummary(data) {
   console.log('Preparing the end-of-test summary...');
