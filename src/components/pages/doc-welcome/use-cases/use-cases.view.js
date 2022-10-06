@@ -71,6 +71,12 @@ export const UseCases = () => {
           </Heading>
           <p>{t('welcome.use-cases.chaos-testing.description')}</p>
         </li>
+        <li>
+          <Heading tag={'h3'} size={'md'} className={styles.title}>
+            {t('welcome.use-cases.browser-testing.title')}
+          </Heading>
+          <p>{t('welcome.use-cases.browser-testing.description')}</p>
+        </li>
       </ul>
     </section>
   );

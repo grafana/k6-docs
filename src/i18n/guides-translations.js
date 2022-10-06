@@ -46,6 +46,9 @@ export const localizedMessages = {
     'welcome.use-cases.chaos-testing.title': 'Chaos and reliability testing',
     'welcome.use-cases.chaos-testing.description':
       'k6 provides an extensible architecture. You can use k6 to simulate traffic as part of your chaos experiments or trigger them from your k6 tests.',
+    'welcome.use-cases.browser-testing.title': 'Browser testing',
+    'welcome.use-cases.browser-testing.description':
+      'Through xk6-browser, you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.',
     'welcome.manifesto.title': 'Load Testing Manifesto',
     'welcome.manifesto.description': `Our load testing manifesto is the result of having spent years hip deep in
     the trenches, doing performance- and load testing. We’ve created it to be
@@ -121,7 +124,11 @@ export const localizedMessages = {
     'welcome.use-cases.chaos-testing.title': 'Pruebas de chaos',
     'welcome.use-cases.chaos-testing.description':
       'k6 proporciona una arquitectura extensible Puede utilizar k6 para simular tráfico como parte de sus experimentos de chaos, o lanzarlos desde k6.',
+    'welcome.use-cases.browser-testing.title': 'Browser testing',
+    'welcome.use-cases.browser-testing.description':
+      'Con xk6-browser, puedes interactuar con el navegador para validar la interfaz web o rendimiento. Ejecuta browser tests juntos o separados de otros tests de carga.',
     'welcome.manifesto.title': 'Manifiesto',
+
     'welcome.manifesto.description': `Nuestro manifiesto es el resultado de muchos años de trabajo haciendo pruebas de rendimiento y de carga. Lo hemos creado para ser usado como una guía de cómo hacer pruebas de rendimiento.`,
     'welcome.manifesto.bullet1': 'Una prueba sencilla es mejor que no hacerla',
     'welcome.manifesto.bullet2':
