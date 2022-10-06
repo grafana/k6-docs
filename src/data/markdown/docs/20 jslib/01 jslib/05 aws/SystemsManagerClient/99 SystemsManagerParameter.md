@@ -63,6 +63,6 @@ export default function () {
 }
 ```
 
-_A k6 script querying a user's Systems Manager Service parameter_
+_A k6 script querying a user Systems Manager Service parameter_
 
 </CodeGroup>
