@@ -19,7 +19,7 @@ excerpt: 'KMSDataKey is returned by the KMSClient.*DataKey methods that query KM
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.5.0/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.6.0/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

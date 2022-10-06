@@ -10,6 +10,7 @@ The library exposes a couple of configuration and client classes allowing to int
 - [S3Client](/javascript-api/jslib/aws/s3client): a class to list S3 buckets and the objects they contain, as well as uploading, downloading and deleting objects from them.
 - [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient): a class to list, get, create, update, and delete secrets from the AWS secrets manager service.
 - [KMSClient](/javascript-api/jslib/aws/kmsclient): a class to list and generate keys from the AWS Key Management Service.
+- [SystemsManagerClient](/javascript-api/jslib/aws/systemsmanagerclient): a class to fetch parameters from the AWS Systems Manager Service.
 - [AWSConfig](/javascript-api/jslib/aws/awsconfig/): a class is used by each client classes to provide them access to AWS credentials as well as configuration.
 
 > ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-aws). 
@@ -28,11 +29,10 @@ This documentation is for the last version only. If you discover that some code 
 
 ### Classes
 
-| Library                                                          | Description                                                          |
-| :--------------------------------------------------------------- | :------------------------------------------------------------------- |
-| [S3Client](/javascript-api/jslib/aws/s3client)                   | Client class to interact with AWS S3 buckets and objects.            |
-| [SecretsManager](/javascript-api/jslib/aws/secretsmanagerclient) | Client class to interact with AWS secrets stored in Secrets Manager. |
-| [KMSClient](/javascript-api/jslib/aws/kmsclient)                 | Client class to interact with AWS Key Management Service.            |                                  
-| [AWSConfig](/javascript-api/jslib/aws/awsconfig)                 | Class to configure AWS client classes.                               |
-
-
+| Library                                                                | Description                                                          |
+| :--------------------------------------------------------------------- | :------------------------------------------------------------------- |
+| [S3Client](/javascript-api/jslib/aws/s3client)                         | Client class to interact with AWS S3 buckets and objects.            |
+| [SecretsManager](/javascript-api/jslib/aws/secretsmanagerclient)       | Client class to interact with AWS secrets stored in Secrets Manager. |
+| [KMSClient](/javascript-api/jslib/aws/kmsclient)                       | Client class to interact with AWS Key Management Service.            |
+| [SystemsManagerClient](/javascript-api/jslib/aws/systemsmanagerclient) | Client class to interact with AWS Systems Manager Service.           |
+| [AWSConfig](/javascript-api/jslib/aws/awsconfig)                       | Class to configure AWS client classes.                               |
