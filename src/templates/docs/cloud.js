@@ -44,23 +44,23 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
           <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={'container'}>
               <div className={`${htmlStyles.wrapper}`}>
-                <h2>What is the k6 Cloud?</h2>
+                <h2>What is k6 Cloud?</h2>
                 <p>
-                  The k6 Cloud is a commercial SaaS product that we’ve designed
-                  to be the perfect companion to k6 OSS. It brings ease-of-use
-                  and convenience to your performance and load testing.
+                  The k6 Cloud is a commercial SaaS product designed to be the
+                  perfect companion to k6 OSS.
                 </p>
-                <p>
-                  This knowledge base will help you learn how to use the
-                  features and functionality of the k6 Cloud:
-                </p>
-                <ul>
-                  <li>Running cloud tests.</li>
-                  <li>Analyzing results.</li>
-                  <li>Managing projects, teams and users.</li>
-                  <li>Integrations.</li>
-                  <li>FAQ.</li>
-                </ul>
+                <div className="iframe-container">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/gwO7k5RTE54"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+
                 <h2>How can it help me?</h2>
                 <p>
                   The k6 Cloud is a premium service to empower your team to
