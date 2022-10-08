@@ -1380,8 +1380,14 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/results-visualization/end-of-test-summary/',
-    toPath: '/results-output/end-of-test/',
+    fromPath: '/results-visualization/json/',
+    toPath: '/results-output/end-of-test/json/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/csv/',
+    toPath: '/results-output/end-of-test/csv/',
     isPermanent: true,
   });
 
@@ -1398,12 +1404,6 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/results-visualization/csv/',
-    toPath: '/results-output/real-time/csv/',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/results-visualization/datadog/',
     toPath: '/results-output/real-time/datadog/',
     isPermanent: true,
@@ -1412,12 +1412,6 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/results-visualization/influxdb-+-grafana/',
     toPath: '/results-output/real-time/influxdb-+-grafana/',
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: '/results-visualization/json/',
-    toPath: '/results-output/real-time/json/',
     isPermanent: true,
   });
 
