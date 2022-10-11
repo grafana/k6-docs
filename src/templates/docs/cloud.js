@@ -46,20 +46,32 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
               <div className={`${htmlStyles.wrapper}`}>
                 <h2>What is k6 Cloud?</h2>
                 <p>
-                  The k6 Cloud is a commercial SaaS product designed to be the
-                  perfect companion to k6 OSS.
+                  The k6 Cloud is a commercial SaaS product that we’ve designed
+                  to be the perfect companion to k6 OSS. It brings ease of use,
+                  team management, and continuous testing capabilities to your
+                  performance testing projects.
                 </p>
-                <div className="iframe-container">
-                  <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/gwO7k5RTE54"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
+                <p>
+                  This knowledge base will help you learn how to use the
+                  features and functionality of the k6 Cloud:
+                </p>
+                <ul>
+                  <li>Running cloud tests.</li>
+                  <li>Analyzing results.</li>
+                  <li>
+                    Managing performance testing projects across your
+                    organization.
+                  </li>
+                  <li>Integrations.</li>
+                  <li>Managing teams, users, and permissions.</li>
+                </ul>
+                <p>
+                  For intro videos , check out the{' '}
+                  <a href="https://www.youtube.com/playlist?list=PLJdv3RhAQXNGkRCp7Q0k77n5jif4qjz2o">
+                    k6 Cloud Playlist 🎥
+                  </a>{' '}
+                  .
+                </p>
 
                 <h2>How can it help me?</h2>
                 <p>
