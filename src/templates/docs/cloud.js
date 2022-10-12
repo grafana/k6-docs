@@ -66,7 +66,7 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                   <li>Managing teams, users, and permissions.</li>
                 </ul>
                 <p>
-                  For intro videos , check out the{' '}
+                  For introductory videos, check out the{' '}
                   <a href="https://www.youtube.com/playlist?list=PLJdv3RhAQXNGkRCp7Q0k77n5jif4qjz2o">
                     k6 Cloud Playlist 🎥
                   </a>{' '}
