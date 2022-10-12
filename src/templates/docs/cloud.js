@@ -52,8 +52,8 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                   performance testing projects.
                 </p>
                 <p>
-                  The k6 Cloud docs help you learn and use the
-                  features and functionality of k6 Cloud:
+                  The k6 Cloud docs help you learn and use the features and
+                  functionality of k6 Cloud:
                 </p>
                 <ul>
                   <li>Run cloud tests.</li>
