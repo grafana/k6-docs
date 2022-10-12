@@ -52,18 +52,18 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                   performance testing projects.
                 </p>
                 <p>
-                  This knowledge base will help you learn how to use the
-                  features and functionality of the k6 Cloud:
+                  The k6 Cloud docs help you learn and use the
+                  features and functionality of k6 Cloud:
                 </p>
                 <ul>
-                  <li>Running cloud tests.</li>
-                  <li>Analyzing results.</li>
+                  <li>Run cloud tests.</li>
+                  <li>Analyze results.</li>
                   <li>
-                    Managing performance testing projects across your
+                    Manage performance-testing projects across your
                     organization.
                   </li>
-                  <li>Integrations.</li>
-                  <li>Managing teams, users, and permissions.</li>
+                  <li>Integrate with other services.</li>
+                  <li>Manage teams, users, and permissions.</li>
                 </ul>
                 <p>
                   For introductory videos, check out the{' '}
