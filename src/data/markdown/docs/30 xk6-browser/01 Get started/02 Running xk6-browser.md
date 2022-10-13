@@ -67,7 +67,7 @@ To interact with elements on the page, you need to use `page.locator()` and pass
 
 This will create and return a [Locator](https://k6.io/docs/javascript-api/xk6-browser/locator/) object.
   
-  <CodeGroup labels={[]} lineNumbers={[true]}>
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
   import { chromium } from 'k6/x/browser';
@@ -102,7 +102,7 @@ At the moment, `page.waitForNavigation()` and `Element.click()` return promises 
 
 To avoid timing errors or other race conditions in your script, if you have actions that load up a different page, you need to make sure that you wait for that action to finish before continuing.
 
- <!-- <CodeGroup labels={[]} lineNumbers={[true]}>
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
   import { check } from 'k6';
@@ -119,6 +119,7 @@ To avoid timing errors or other race conditions in your script, if you have acti
     page.$('input[name="password"]').type('123');
 
     // Wait for asynchronous operations
+    // eslint-disable-next-line no-undef
     Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
       .then(() => {
         check(page, {
@@ -132,7 +133,7 @@ To avoid timing errors or other race conditions in your script, if you have acti
   }
   ```
 
-  </CodeGroup> -->
+  </CodeGroup>
 
 The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
 
@@ -141,12 +142,12 @@ The preceding code uses `Promise.all([])` to wait for the two promises to be res
 There are two ways to add assertions in your browser script:
 1. Using checks, as mentioned in the previous section
 2. Using [k6chaijs](https://k6.io/docs/javascript-api/jslib/k6chaijs/) for a more BDD (Behavior Driven Development) or TDD (Test Driven Development) style
-<!-- 
-  <CodeGroup labels={[]} lineNumbers={[true]}>
+
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
   import { chromium } from 'k6/x/browser';
-  import { expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.0/index.js'
+  import { expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.0/index.js';
 
   export default function () {
     const browser = chromium.launch({ headless: false });
@@ -159,6 +160,7 @@ There are two ways to add assertions in your browser script:
     page.$('input[name="password"]').type('123');
 
     // Wait for asynchronous operations
+    // eslint-disable-next-line no-undef
     Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
       .then(() => {
         expect(page.locator('h2').textContent()).to.equal('Welcome, admin!');
@@ -170,7 +172,7 @@ There are two ways to add assertions in your browser script:
   }
   ```
 
-  </CodeGroup> -->
+  </CodeGroup>
 
 ## Run both browser-level and protocol-level in a single script
 
@@ -178,7 +180,7 @@ The real power of xk6-browser shines when it’s combined with the existing feat
 
 To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://k6.io/docs/using-k6/scenarios/). 
 
-  <CodeGroup labels={[]} lineNumbers={[true]}>
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
   import { chromium } from 'k6/x/browser';
