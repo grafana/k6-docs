@@ -1392,6 +1392,18 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/results-output/end-of-test/json/',
+    toPath: '/results-output/real-time/json/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/end-of-test/csv/',
+    toPath: '/results-output/real-time/csv/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/results-visualization/amazon-cloudwatch/',
     toPath: '/results-output/real-time/amazon-cloudwatch/',
     isPermanent: true,
