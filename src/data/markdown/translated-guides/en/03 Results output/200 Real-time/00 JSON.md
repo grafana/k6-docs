@@ -3,12 +3,14 @@ title: 'JSON'
 excerpt: 'You can also make k6 output detailed statistics in JSON format by using the --out option.'
 ---
 
-You can also make k6 output detailed statistics in JSON format by using the `--out`/`-o` option for `k6 run`, like this:
+You can output granular data points in JSON format.
+To do so, use `k6 run` with the `--out` flag.
+Pass the path for your JSON file as the flag argument:
 
 <CodeGroup labels={["CLI", "Docker"]}>
 
 ```bash
-$ k6 run --out json=my_test_result.json script.js
+$ k6 run --out json=test_results.json script.js
 ```
 
 ```bash
@@ -27,7 +29,7 @@ Or if you want to get the result gzipped, like this:
 <CodeGroup labels={["CLI", "Docker"]}>
 
 ```bash
-$ k6 run --out json=my_test_result.gz script.js
+$ k6 run --out json=test_results.gz script.js
 ```
 
 ```bash
@@ -41,10 +43,15 @@ $ docker run -it --rm \
 
 </CodeGroup>
 
+To inspect the output in real time, you can use a command like `tail -f` on the file you save:
+
+```bash
+$ tail -f test_results.json
+```
 
 ## JSON format
 
-The JSON file will contain lines like these:
+The JSON file will have lines like these:
 
 <CodeGroup labels={["Output"]}>
 
@@ -57,7 +64,8 @@ The JSON file will contain lines like these:
 
 </CodeGroup>
 
-Each line will either contain information about a metric, or log a data point (sample) for a metric. Lines consist of three items:
+Each line either has information about a metric, or logs a data point (sample) for a metric.
+Lines consist of three items:
 
 - `type` - can have the values [Metric](#metric) or [Point](#point) where `Metric` means the line is declaring a metric, and `Point` is an actual data point (sample) for a metric.
 - `data` - is a dictionary that contains lots of stuff, varying depending on the `"type"` above.
@@ -65,7 +73,7 @@ Each line will either contain information about a metric, or log a data point (s
 
 ### Metric
 
-This line contains information about the nature of a metric. Here, `"data"` will contain the following:
+This line has metadata about a metric. Here, `"data"` contains the following:
 
 - `"type"` - the metric type ("gauge", "rate", "counter" or "trend")
 - `"contains"` - information on the type of data collected (can e.g. be "time" for timing metrics)
@@ -75,7 +83,7 @@ This line contains information about the nature of a metric. Here, `"data"` will
 
 ### Point
 
-This line contains actual data samples. Here, `"data"` will contain these fields:
+This line has actual data samples. Here, `"data"` contains these fields:
 
 - `"time"` - timestamp when the sample was collected
 - `"value"` - the actual data sample; time values are in milliseconds
@@ -83,7 +91,7 @@ This line contains actual data samples. Here, `"data"` will contain these fields
 
 ## Processing JSON output
 
-We recommend using [jq][jq_url] to process the k6 JSON output. [jq][jq_url] is a lightweight and flexible command-line JSON processor.
+You can use [jq][jq_url] to process the k6 JSON output.
 
 You can quickly create [filters][jq_filters_url] to return a particular metric of the JSON file:
 
@@ -129,9 +137,8 @@ For more advanced cases, check out the [jq Manual][jq_manual_url]
 
 ## Summary export
 
-If you don't care about each individual metric measurement and instead want to see only the aggregated data,
-exporting the end-of-test summary data to a JSON file might be a better choice than using the JSON output described here.
-For more details, see `--export-summary` and `handleSummary()` in the [end-of-test summary docs](/results-output/end-of-test/).
+If you want to see only the aggregated data, you can export the end-of-test summary to a JSON file.
+For more details, refer to the `handleSummary()` topic in the [end-of-test summary docs](/results-output/end-of-test/).
 
 ## Read more
 

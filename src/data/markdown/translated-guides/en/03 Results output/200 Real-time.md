@@ -3,8 +3,27 @@ title: Real time
 excerpt: Send your time-series k6 metrics to multiple file formats and services
 ---
 
-Besides writing metric data points to [JSON](../end-of-test/json) and [CSV](../end-of-test/json), you can also stream them in real-time to the following services:
+Besides the [end-of-test summary](/results-output/end-of-test), you can also view metrics as granular data points.
+k6 can stream the metrics in real time and either:
+- Write output to a file
+- Send output to an external service.
 
+
+## Write to file {#write}
+
+Currently, k6 supports writing to the following file formats:
+
+<Glossary>
+
+- [CSV](/results-output/real-time/csv)
+- [JSON](/results-output/real-time/json)
+
+</Glossary>
+
+
+## Stream to service {#service}
+
+You can also stream real-time metrics to the following services:
 
 <Glossary>
 

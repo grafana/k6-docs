@@ -3,29 +3,38 @@ title: 'CSV'
 excerpt: 'You can also make k6 output detailed statistics in a CSV format by using the --out option.'
 ---
 
-You can also make k6 output detailed statistics in a CSV format by using the `--out/-o` option for `k6 run`, like this:
+You can output granular data points in CSV format.
+To do so, use `k6 run` with the `--out` flag.
+Pass the path for your CSV file as the flag argument:
 
 <CodeGroup labels={["CLI"]}>
 
 ```bash
-$ k6 run --out csv=my_test_result.csv script.js
+$ k6 run --out csv=test_results.csv script.js
 ```
 
 </CodeGroup>
 
-Or if you want to get the result gzipped, like this:
+You can also get the results gzipped, like this:
 
 <CodeGroup labels={["CLI"]}>
 
 ```bash
-$ k6 run --out csv=my_test_result.gz script.js
+$ k6 run --out csv=test_results.gz script.js
 ```
 
 </CodeGroup>
+
+To inspect the output in real time, you can use a command like `tail -f` on the file you save:
+
+```bash
+$ tail -f test_results.csv
+```
+
 
 ## CSV format
 
-The CSV result file will contain lines like these:
+The CSV result file will look something like this:
 
 <CodeGroup labels={["Output"]}>
 
@@ -51,7 +60,8 @@ iterations,1595325561,1.000000,,,,,,,,default,,,,,
 
 </CodeGroup>
 
-Each entry in the report represents a metric `metric_name` along with its value `metric_value` at time `timestamp`. If there's an error, then the `error` along with the `error_code` fields will be populated.
+Each entry in the report represents a metric, `metric_name`, along with its value, `metric_value`, at time, `timestamp`.
+If an error happens, then the `error` along with the `error_code` fields will be populated.
 
 
 ## CSV options
