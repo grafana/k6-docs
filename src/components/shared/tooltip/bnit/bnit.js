@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import NITIcon from 'svg/not-implemented.inline.svg';
 
 import Tooltip from '../tooltip';
 
@@ -11,14 +12,16 @@ const BNIT = ({ id }) =>
         href={`https://github.com/grafana/xk6-browser/issues/${id}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ fontSize: '11px', cursor: 'pointer' }}
+        style={{ fontSize: '18px', cursor: 'pointer' }}
       >
-        ❌
+        <NITIcon style={{ verticalAlign: 'middle' }} />
       </a>
     </Tooltip>
   ) : (
     <Tooltip value="Not implemented">
-      <span style={{ fontSize: '11px', cursor: 'help' }}>❌</span>
+      <span style={{ fontSize: '18px', cursor: 'help' }}>
+        <NITIcon style={{ verticalAlign: 'middle' }} />
+      </span>
     </Tooltip>
   );
 
