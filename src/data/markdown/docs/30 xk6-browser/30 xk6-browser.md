@@ -20,6 +20,7 @@ We suggest this option if you don't want to build your own binary with [xk6](htt
 If you're more adventurous or want to get the latest changes of the xk6-browser extension, you can also build a binary from source.
 
 To build a binary with the extension:
+
 1. Ensure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
 2. Run the following commands in a terminal:
 
@@ -36,7 +37,6 @@ xk6 build --output xk6-browser --with github.com/grafana/xk6-browser
 ```
 
 xk6 will create the `xk6-browser` binary in the current working directory.
-
 
 ## Your First Test
 
@@ -120,7 +120,6 @@ export default function () {
 ```
 
 </CodeGroup>
-
 
 ## Browser-level APIs
 
