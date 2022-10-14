@@ -139,9 +139,9 @@ The preceding code uses `Promise.all([])` to wait for the two promises to be res
 
 ## Assertions
 
-There are two ways to add assertions in your browser script:
-1. Using checks, as mentioned in the previous section
-2. Using [k6chaijs](https://k6.io/docs/javascript-api/jslib/k6chaijs/) for a more BDD (Behavior Driven Development) or TDD (Test Driven Development) style
+You can add assertions in your browser script via:
+1. Checks, as mentioned in the previous section
+2. [k6chaijs](https://k6.io/docs/javascript-api/jslib/k6chaijs/) for a more BDD (Behavior Driven Development) or TDD (Test Driven Development) style
 
   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 

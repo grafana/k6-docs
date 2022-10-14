@@ -167,3 +167,4 @@ xk6-\*
 (?i)chaijs
 viewport
 superset
+contentful
