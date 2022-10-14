@@ -30,6 +30,7 @@ import Grafana from 'svg/grafana.inline.svg';
 import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
+import Keptn from 'svg/keptn.inline.svg';
 import K6 from 'svg/logo.inline.svg';
 import Netdata from 'svg/netdata.inline.svg';
 import NewRelic from 'svg/new-relic.inline.svg';
@@ -153,6 +154,11 @@ const iconsDataSet2 = [
     Icon: Jenkins,
     name: 'Jenkins',
     link: `${blog}/integrating-load-testing-with-jenkins/`,
+  },
+  {
+    Icon: Keptn,
+    name: 'Keptn',
+    link: 'https://github.com/keptn-sandbox/k6-service',
   },
   {
     Icon: TeamCity,

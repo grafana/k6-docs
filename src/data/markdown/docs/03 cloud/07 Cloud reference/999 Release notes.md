@@ -4,6 +4,18 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.11.0 `(2022-9-26)`
+- Apply global time filter to [analysis panel](/cloud/analyzing-results/analysis-tab/)
+- [Environment variables](/cloud/manage/environment-variables/)
+
+### v3.10.5 `(2022-9-13)`
+- Fix wrong checks data in pdf reports
+
+### v3.10.4 `(2022-9-5)`
+- Add tooltip to threshold names in the test result page
+- Restrict audit trail view based on new subscription rule
+- Add expiry date on subscription status overview for enterprise subscriptions
+
 ### v4.2.1 `(2022-8-19)`
 - Fix time series when resolution changed while streaming data.
 - Fix time series not animated correctly while streaming data.
@@ -230,7 +242,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v1.0.4 `(2021-7-27)`
 
-- Improve error reporting when [uploading results to the k6 Cloud](/results-visualization/cloud/).
+- Improve error reporting when [uploading results to the k6 Cloud](/results-output/real-time/cloud/).
 - Fix: password input field icon and state mismatch.
 
 ### v1.0.1 `(2021-7-15)`

@@ -45,7 +45,7 @@ Once your goals are clear, you need to codify them as [thresholds](/using-k6/thr
 
 Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is easy with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
 
-- [Why to automate performance tests?](#why-to-automate-performance-tests)
+- [Why automate performance tests?](#why-automate-performance-tests)
 - [Know your goals](#know-your-goals)
 - [How to automate performance testing](#how-to-automate-performance-testing)
 - [1. Installation of k6](#installation-of-k6)

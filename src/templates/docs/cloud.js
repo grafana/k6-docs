@@ -44,23 +44,35 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
           <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={'container'}>
               <div className={`${htmlStyles.wrapper}`}>
-                <h2>What is the k6 Cloud?</h2>
+                <h2>What is k6 Cloud?</h2>
                 <p>
                   The k6 Cloud is a commercial SaaS product that we’ve designed
-                  to be the perfect companion to k6 OSS. It brings ease-of-use
-                  and convenience to your performance and load testing.
+                  to be the perfect companion to k6 OSS. It brings ease of use,
+                  team management, and continuous testing capabilities to your
+                  performance testing projects.
                 </p>
                 <p>
-                  This knowledge base will help you learn how to use the
-                  features and functionality of the k6 Cloud:
+                  The k6 Cloud docs help you learn and use the features and
+                  functionality of k6 Cloud:
                 </p>
                 <ul>
-                  <li>Running cloud tests.</li>
-                  <li>Analyzing results.</li>
-                  <li>Managing projects, teams and users.</li>
-                  <li>Integrations.</li>
-                  <li>FAQ.</li>
+                  <li>Run cloud tests.</li>
+                  <li>Analyze results.</li>
+                  <li>
+                    Manage performance-testing projects across your
+                    organization.
+                  </li>
+                  <li>Integrate with other services.</li>
+                  <li>Manage teams, users, and permissions.</li>
                 </ul>
+                <p>
+                  For introductory videos, check out the{' '}
+                  <a href="https://www.youtube.com/playlist?list=PLJdv3RhAQXNGkRCp7Q0k77n5jif4qjz2o">
+                    k6 Cloud Playlist 🎥
+                  </a>{' '}
+                  .
+                </p>
+
                 <h2>How can it help me?</h2>
                 <p>
                   The k6 Cloud is a premium service to empower your team to

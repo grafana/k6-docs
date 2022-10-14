@@ -121,8 +121,8 @@ La lista de plugins de salida son los siguientes:
   - [JSON](/es/visualizacion-de-resultados/json)
   - [Netdata](/es/visualizacion-de-resultados/netdata)
   - [New Relic](/es/visualizacion-de-resultados/new-relic)
-  - [Prometheus](/results-visualization/prometheus) 
-  - [TimescaleDB](/results-visualization/timescaledb) 
+  - [Prometheus](/results-output/real-time/prometheus)
+  - [TimescaleDB](/results-output/real-time/timescaledb)
   - [StatsD](/es/visualizacion-de-resultados/statsd) 
 
 </Glossary>

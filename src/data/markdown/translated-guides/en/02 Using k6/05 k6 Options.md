@@ -5,7 +5,7 @@ excerpt: 'Options configure test-run behavior. You can set options in multiple l
 ---
 
 Options configure test-run behavior.
-For example, options are how you define a test's tags, thresholds, user agents, and its number of virtual users and iterations.
+For example, options are how you define test tags, thresholds, user agents, and the number of virtual users and iterations.
 
 | On this page                     | Read about...                                                                           |
 |----------------------------------|--------------------------------------------------------------------------------------------------|

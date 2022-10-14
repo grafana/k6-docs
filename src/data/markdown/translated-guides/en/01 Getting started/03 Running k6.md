@@ -80,7 +80,7 @@ _Running a 30-second, 10-VU load test_
 k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
 VUs are essentially parallel `while(true)` loops.
 Scripts are written in JavaScript, as ES6 modules,
-which allows you to break larger tests into smaller pieces or make reusable pieces as you like.
+so you can break larger tests into smaller pieces or make reusable pieces as you like.
 
 
 ### The init context and the default function
@@ -224,5 +224,5 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   k6 cloud script.js
   ```
 
-  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/creating-and-running-a-test/private-load-zones/), and accept the test results from a [local](/results-visualization/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/creating-and-running-a-test/private-load-zones/), and accept the test results from a [local](/results-output/real-time/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 

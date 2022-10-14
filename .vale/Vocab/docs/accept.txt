@@ -165,3 +165,5 @@ xk6-\*
 (?i)cpu
 (?i)chai
 (?i)chaijs
+viewport
+superset

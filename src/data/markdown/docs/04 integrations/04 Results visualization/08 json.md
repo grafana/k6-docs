@@ -1,4 +1,4 @@
 ---
 title: 'JSON'
-redirect: 'https://k6.io/docs/results-visualization/json'
+redirect: 'https://k6.io/docs/results-output/real-time/json'
 ---

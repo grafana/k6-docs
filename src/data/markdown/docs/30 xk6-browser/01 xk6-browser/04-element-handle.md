@@ -3,8 +3,7 @@ title: "ElementHandle"
 excerpt: "xk6-browser: ElementHandle Class"
 ---
 
-<BrowserCompatibility/>
-
+<BrowserDocsWIP/>
 
 ## Supported APIs
 
@@ -45,27 +44,15 @@ excerpt: "xk6-browser: ElementHandle Class"
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-element-state" target="_blank" >elementHandle.waitForElementState(state[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-elementhandle#element-handle-wait-for-selector" target="_blank" >elementHandle.waitForSelector(selector[, options])</a> | - |
 
-### Missing Playwright APIs
-
-<Glossary>
-
-- [$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector)
-- [$$eval()](https://playwright.dev/docs/api/class-elementhandle#element-handle-eval-on-selector-all)
-- [setInputFiles()](https://playwright.dev/docs/api/class-elementhandle#element-handle-set-input-files)
-
-</Glossary>
-
-<BrowserWIP/>
-
 ## Examples
 
 <CodeGroup labels={["Fill out a form"]} >
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 
 export default function () {
-  const browser = launcher.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
     slowMo: '500ms', // slow down by 500ms
   });
@@ -95,11 +82,11 @@ export default function () {
 <CodeGroup labels={["Check element state"]} >
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 import { check } from 'k6';
 
 export default function () {
-  const browser = launcher.launch('chromium', {
+  const browser = chromium.launch({
     headless: false,
   });
   const context = browser.newContext();
@@ -133,6 +120,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-
-<BrowserClassList/>

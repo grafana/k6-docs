@@ -20,13 +20,13 @@ excerpt: "SecretsManagerClient.putSecretValue updates an existing secret's value
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.4.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.6.0/secrets-manager.js';
 
-const awsConfig = new AWSConfig(
-  __ENV.AWS_REGION,
-  __ENV.AWS_ACCESS_KEY_ID,
-  __ENV.AWS_SECRET_ACCESS_KEY
-);
+const awsConfig = new AWSConfig({
+  region: __ENV.AWS_REGION,
+  accessKeyId: __ENV.AWS_ACCESS_KEY_ID,
+  secretAccessKey: __ENV.AWS_SECRET_ACCESS_KEY,
+});
 
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';

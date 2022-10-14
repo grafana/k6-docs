@@ -20,8 +20,8 @@ In a load testing scenario, correlation means extracting one or more values from
 of one request and then reusing them in subsequent requests. Often, this could be getting
 a token or some sort of ID necessary to fulfill a sequence of steps in a user journey.
 
-The [browser recording](/using-k6/session-recording-har-support) will for example capture things like CSRF tokens,
-VIEWSTATES, nonce, etc. from your session. This type of data is likely to no longer be valid when
+The [browser recording](/test-authoring/recording-a-session/) will capture session data such as CSRF tokens,
+VIEWSTATES, nonce, etc. This type of data is unlikely to be valid when
 you run your test, meaning you'll need to handle the extraction of this data from the HTML/form
 to include it in subsequent requests. This issue is fairly common with any site that has forms
 and can be handled with a little bit of scripting.
@@ -112,7 +112,8 @@ export default function () {
 
 Sometimes, responses may be neither JSON nor HTML, in which case the above extraction methods would not apply. In these situations, you would likely want to operate directly on the `Response.body` string using a simple function capable of extracting a string at some known location. This is typically achieved by looking for the string "boundaries" immediately before (left) and after (right) the value needing extraction.
 
-The [jslib](/javascript-api/jslib/) [utils](/javascript-api/jslib/utils/) library contains an example of this kind of function, called [findBetween](/javascript-api/jslib/utils/findbetween-content-left-right). The function makes use of JavaScript's built-in [String.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) and therefore does not depend on the use of potentially expensive regular expression operations.
+The [jslib](/javascript-api/jslib/) [utils](/javascript-api/jslib/utils/) library contains an example of this kind of function, [findBetween](/javascript-api/jslib/utils/findbetween/). The function uses the JavaScript built-in [String.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) and therefore doesn't depend on potentially expensive regular-expression operations.
+
 
 #### Extracting a value/token using findBetween
 
@@ -141,4 +142,4 @@ export default function () {
 **Relevant k6 APIs**:
 
 - [Response.body](/javascript-api/k6-http/response)
-- [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween-content-left-right)
+- [findBetween(content, left, right)](/javascript-api/jslib/utils/findbetween)

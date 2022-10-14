@@ -34,9 +34,7 @@
         "url": ""
       },
       "official": false,
-      "categories": [
-        "WebSockets"
-      ]
+      "categories": ["WebSockets"]
     },
     {
       "name": "xk6-kafka",
@@ -181,7 +179,8 @@
         "url": "https://github.com/vvarp"
       },
       "official": false,
-      "categories": ["Protocol"]
+      "categories": ["Protocol"],
+      "type": false
     },
     {
       "name": "xk6-mqtt",

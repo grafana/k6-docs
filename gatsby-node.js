@@ -1373,6 +1373,90 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/results-visualization/end-of-test-summary/',
+    toPath: '/results-output/end-of-test/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/json/',
+    toPath: '/results-output/real-time/json/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/csv/',
+    toPath: '/results-output/real-time/csv/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/end-of-test/json/',
+    toPath: '/results-output/real-time/json/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/end-of-test/csv/',
+    toPath: '/results-output/real-time/csv/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/amazon-cloudwatch/',
+    toPath: '/results-output/real-time/amazon-cloudwatch/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/cloud/',
+    toPath: '/results-output/real-time/cloud/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/datadog/',
+    toPath: '/results-output/real-time/datadog/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/influxdb-+-grafana/',
+    toPath: '/results-output/real-time/influxdb-+-grafana/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/netdata/',
+    toPath: '/results-output/real-time/netdata/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/new-relic/',
+    toPath: '/results-output/real-time/new-relic/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/prometheus/',
+    toPath: '/results-output/real-time/prometheus/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/timescaledb/',
+    toPath: '/results-output/real-time/timescaledb/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/statsd/',
+    toPath: '/results-output/real-time/statsd/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
@@ -1479,6 +1563,8 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/jshandle/',
     '/javascript-api/k6-x-browser/keyboard/':
       '/javascript-api/xk6-browser/keyboard/',
+    '/javascript-api/k6-x-browser/locator/':
+      '/javascript-api/xk6-browser/locator/',
     '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
     '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
     '/javascript-api/k6-x-browser/request/':
@@ -1487,8 +1573,6 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/xk6-browser/response/',
     '/javascript-api/k6-x-browser/touchscreen/':
       '/javascript-api/xk6-browser/touchscreen/',
-    '/javascript-api/k6-x-browser/launcher/':
-      '/javascript-api/xk6-browser/launcher/',
     ...newJavascriptURLsRedirects,
   };
 

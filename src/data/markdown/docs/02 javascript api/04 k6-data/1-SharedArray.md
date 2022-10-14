@@ -3,26 +3,49 @@ title: SharedArray
 excerpt: 'SharedArray is an array-like object that shares the underlying memory between VUs.'
 ---
 
-`SharedArray` is an array-like object that shares the underlying memory between VUs. Its constructor takes a name for the `SharedArray` and a function which needs to return an array object itself. The function will be executed only once and its result will then be saved in memory once and copies of the elements will be given when requested. The name is needed as VUs are completely separate JS VMs and k6 needs some way to identify the `SharedArray`s that it needs to return.
+`SharedArray` is an array-like object that shares the underlying memory between VUs.
+The function executes only once, and its result is saved in memory once.
+When a script requests an element, k6 gives a _copy_ of that element.
 
-This does mean that you can have multiple such ones and even only load some of them for given VUs, although that is unlikely to have any performance benefit.
+You must construct a `SharedArray` in the [`init` context](/using-k6/test-life-cycle).
+Its constructor takes a name for the `SharedArray` and a function that needs to return an array object itself:
 
-Everything about `SharedArray` is read-only once it is constructed, so it is not possible to communicate between VUs using it.
 
-> #### ⚠️ `SharedArray` can currently only be constructed inside `init` code!
-> 
->  Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-life-cycle/) will result in a `new SharedArray must be called in the init context` exception. This limitation will eventually be removed, but for now, the implication is that `SharedArray` can only be used to populate test data at the very beginning of your test and not as a result of receiving data from a response (for example).
+```javascript
+import { SharedArray } from 'k6/data';
 
-Supported operations include:
-1. getting the number of elements with `length`
-2. getting an element by its index using the normal syntax `array[index]`
-3. using `for-of` loops
+const data = new SharedArray('some name', function () {
+  const dataArray = [];
+  // more operations
+  return dataArray; // must be an array
+});
+```
 
-Which means that for the most part if you currently have an array data structure that you want to take less memory you can just wrap it in `SharedArray` and it should work for most cases.
+The name argument is required.
+VUs are completely separate JS VMs, and k6 needs some way to identify the `SharedArray` that it needs to return.
+You can have multiple `SharedArrays` and even load only some of them for given VUs,
+though this is unlikely to have any performance benefit.
 
-### Examples
+Supported operations on a `SharedArray` include:
+- Getting the number of elements with `length`
+- Getting an element by its index using the normal syntax `array[index]`
+- Using `for-of` loops
 
-<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+In most cases, you should be able to reduce the memory usage of an array data structure by wrapping it in a `SharedArray`.
+Once constructed, a `SharedArray` is read-only, so **you can't use a SharedArray to communicate data between VUs**.
+
+<Blockquote mod="attention" title="You can only construct a SharedArray in init code">
+
+Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-life-cycle/) results in the exception `new SharedArray must be called in the init context`.
+
+This limitation will eventually be removed, but for now, the implication is that you can use `SharedArray` to populate test data only at the very beginning of your test and not as a result of receiving data from a response (for example).
+
+</Blockquote>
+
+
+## Example
+
+<CodeGroup labels={["example-SharedArray.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
 import { SharedArray } from 'k6/data';
@@ -34,23 +57,25 @@ const data = new SharedArray('some name', function () {
   return f; // f must be an array
 });
 
-export default () => {
+export default function () {
   const element = data[Math.floor(Math.random() * data.length)];
   // do something with element
-};
+}
 ```
 
-</div>
+</CodeGroup>
 
 ## Performance characteristics
 
-As the `SharedArray` is keeping the data marshalled as JSON and unmarshals elements when requested it does take additional time to unmarshal JSONs and generate objects that then need to be garbage collected.
+Internally, the current implementation of `SharedArray` keeps the data marshaled as JSON and unmarshals elements only when they are requested.
 
-This in general should be unnoticeable compared to whatever you are doing with the data, but might mean that for small sets of data it is better to not use `SharedArray`, although your mileage may vary.
+In general, this operation should be unnoticeable (relative to whatever else you do with the data).
+But, for small data sets, `SharedArray` might perform worse.
+However, this is highly dependent on use case.
 
-As an example the following script:
+To test this, we ran the following script on version v0.31.0 with 100 VUs.
 
-<div class="code-group" data-props='{"labels": ["Simple example"], "lineNumbers": [true]}'>
+<CodeGroup labels={["shared-vs-unshared.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
 import { check } from 'k6';
@@ -82,9 +107,13 @@ export default function () {
 }
 ```
 
-</div>
+</CodeGroup>
 
-Which was ran with v0.31.0 and 100 VUs. As can be seen from the table below, there isn't much of a difference at lower numbers of data lines - up until around 1000 data lines there is little benefit in memory usage. But also there is little to no difference in CPU usage as well. At 10k and above, the memory savings start to heavily translate to CPU ones.
+As the table shows, performance didn't differ much at lower numbers of data lines:
+up until around 1000 data lines, `SharedArray` shows little benefit in memory usage
+and had a higher upper bound of CPU usage (though not substantially higher).
+
+At 10k lines and above, the memory savings started to heavily carry over to CPU savings as well.
 
 | data lines | shared | wall time | CPU %    | MEM usage   | http requests |
 | ---        | ---    | ---       | ---      |  ----       | ---           |
@@ -97,8 +126,12 @@ Which was ran with v0.31.0 and 100 VUs. As can be seen from the table below, the
 | 100000     | true   | 2:02:20   | 78-79%   | 238-275MB   | 98103-98540   |
 | 100000     | false  | 2:14:00   | 120-124% | 8.3-9.1GB   | 96003-97802   |
 
-In v0.30.0 the difference in CPU usage at lower numbers was around 10-15%, but it also started to even out at around 10k data lines and was a clear winner at 100k.
+In v0.30.0, the difference in CPU usage at lower numbers was around 10-15%, but it also started to even out at around 10k data lines and was a clear winner at 100k.
 
-The CPU/memory data comes from using `/usr/bin/time` and the raw data can be found [here](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb).
+The CPU/memory data came from using `/usr/bin/time`. Refer to the [gist with the raw data](https://gist.github.com/MStoykov/1181cfa6f00bc56b90915155f885e2bb).
 
-These numbers are purely illustrative as the performance can be affected by any additional processing of the element retrieved from the `SharedArray`, or if an output is in use, or it gets multiple elements, etc. While `SharedArray` has some CPU usage it might turn out that it will be negligible in a given situation with just 10 elements or more problematic than the memory usage for a 100k elements. So if in doubt you should probably run some benchmarks and decide which tradeoffs are more important for your use case.
+These numbers are purely illustrative: the performance can be affected by any additional processing of the element retrieved from the `SharedArray`, or if an output is in use, or it gets multiple elements, etc.
+While `SharedArray` has some CPU usage,
+it might turn out to be negligible in a given situation with just 10 elements, or more problematic than the memory usage for a 100k elements.
+So, if in doubt, you should probably run some benchmarks and decide which tradeoffs are more important for your use case.
+
