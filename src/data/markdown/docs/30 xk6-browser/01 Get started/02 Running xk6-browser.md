@@ -66,7 +66,9 @@ To run a simple local script:
 You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://k6.io/docs/javascript-api/xk6-browser/locator/) object, which you can later use to interact with the element.
 
 <Blockquote mod="note" title="">
+
 You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://k6.io/docs/javascript-api/xk6-browser/locator/).
+
 </Blockquote>
   
   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
@@ -82,8 +84,8 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
   
     // Enter login credentials and click submit button
     page.locator('input[name="login"]').type('admin');
-    page.$('input[name="password"]').type('123');
-    page.$('input[name="submit"]').click();
+    page.locator('input[name="password"]').type('123');
+    page.locator('input[name="submit"]').click();
 
     page.close();
     browser.close();
@@ -118,11 +120,11 @@ To avoid timing errors or other race conditions in your script, if you have acti
 
     // Enter login credentials and login
     page.locator('input[name="login"]').type('admin');
-    page.$('input[name="password"]').type('123');
+    page.locator('input[name="password"]').type('123');
 
     // Wait for asynchronous operations
     // eslint-disable-next-line no-undef
-    Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
+    Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()])
       .then(() => {
         check(page, {
           header: page.locator('h2').textContent() == 'Welcome, admin!',
@@ -159,11 +161,11 @@ You can add assertions in your browser script via:
 
     // Enter login credentials and login
     page.locator('input[name="login"]').type('admin');
-    page.$('input[name="password"]').type('123');
+    page.locator('input[name="password"]').type('123');
 
     // Wait for asynchronous operations
     // eslint-disable-next-line no-undef
-    Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
+    Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()])
       .then(() => {
         expect(page.locator('h2').textContent()).to.equal('Welcome, admin!');
       })
