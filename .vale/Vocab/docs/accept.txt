@@ -170,3 +170,4 @@ viewport
 superset
 eql
 instanceof
+contentful
