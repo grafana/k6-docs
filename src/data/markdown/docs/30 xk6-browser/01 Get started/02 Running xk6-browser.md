@@ -82,10 +82,9 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
     page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
   
-    // Enter login credentials and click submit button
+    // Enter login credentials
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
-    page.locator('input[name="submit"]').click();
 
     page.close();
     browser.close();
@@ -96,7 +95,7 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
 The preceding code creates and returns a Locator object with the selectors for both login and password passed as arguments. 
 
-Within the Locator API, various methods such as `type()` or `click()` can be used to interact with the elements. The `type()` method types a text to an input field while `click()` will do a mouse click on the element. 
+Within the Locator API, various methods such as `type()` can be used to interact with the elements. The `type()` method types a text to an input field. 
 
 ## Asynchronous operations
 
@@ -122,9 +121,11 @@ To avoid timing errors or other race conditions in your script, if you have acti
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    // Wait for asynchronous operations
+    // Wait for asynchronous operations to complete
+    // page.$() is used instead of page.locator
+    // because page.locator does not support asynchronous click yet
     // eslint-disable-next-line no-undef
-    Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()])
+    Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
       .then(() => {
         check(page, {
           header: page.locator('h2').textContent() == 'Welcome, admin!',
@@ -139,7 +140,9 @@ To avoid timing errors or other race conditions in your script, if you have acti
 
   </CodeGroup>
 
-The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
+The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Since clicking the submit button causes page navigation, `page.waitForNavigation()` is needed because the page won't be ready until the navigation completes. This is required because there can be a race condition if these two actions don't happen simultaneously. 
+
+Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
 
 ## Assertions
 
@@ -164,8 +167,10 @@ You can add assertions in your browser script via:
     page.locator('input[name="password"]').type('123');
 
     // Wait for asynchronous operations
+    // page.$() is used instead of page.locator
+    // because page.locator does not support asynchronous click yet
     // eslint-disable-next-line no-undef
-    Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()])
+    Promise.all([page.waitForNavigation(), page.$('input[type="submit"]').click()])
       .then(() => {
         expect(page.locator('h2').textContent()).to.equal('Welcome, admin!');
       })
