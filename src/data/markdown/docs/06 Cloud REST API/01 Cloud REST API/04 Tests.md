@@ -78,7 +78,7 @@ Returns details of a test with the specified ID.
 
 ## Update test
 
-Partially updates a test in Load Impact. Note: only given fields will be updated.
+Partially updates a test in k6 Cloud. Note: only given fields will be updated.
 
 **PATCH** `/loadtests/v2/tests/{id}`
 

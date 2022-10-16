@@ -23,7 +23,7 @@ The API returns errors in the following format:
 
  `message` and `code`**are required fields**:
 - **`message`**  describes the error.
-- **`code`** is an internal numerical identifier, useful when reporting problems to Load Impact support.
+- **`code`** is an internal numerical identifier, useful when reporting problems to k6 support.
 
 All other fields are optional.
 The `field_errors` object will have keys named after the data field causing a problem (`fieldname1` and `fieldname2` above are just examples) whereas the `errors` array will hold details about any other errors.
