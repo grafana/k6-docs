@@ -6,7 +6,11 @@ draft: 'true'
 
 ## Start test run
 
-Starts a test-run in the k6 cloud. It uses the specified test ID, previously retrieved from the create-test endpoint. The test-run will be managed by the k6 Cloud from beginning to end. Testing progress can be seen in the k6 Cloud application. From there you can also export and analyze the result.
+Starts a test run in k6 Cloud for the specified test ID.
+The test run is managed by k6 Cloud from beginning to end.
+
+You can see testing progress in the k6 Cloud application.
+From there, you can also export and analyze the result.
 
 **POST** `/loadtests/v2/tests/{id}/start-testrun`
 
@@ -51,9 +55,11 @@ Starts a test-run in the k6 cloud. It uses the specified test ID, previously ret
 
 ## Read test run
 
-Returns details of a test run with the specified ID. The response contains several fields that are helpful for checking the test run's status:
+Returns details of a test run with the specified ID.
+The response contains several fields that help check the test-run status.
 
-`run_status` - Describes how far test run is in the execution pipeline. Possible values are:
+The `run_status` field describes how far the test run is in the execution pipeline.
+Possible values are the following:
 
 | Value | Description                                                                                                                   |
 | ----- | ----------------------------------------------------------------------------------------------------------------------------- |
