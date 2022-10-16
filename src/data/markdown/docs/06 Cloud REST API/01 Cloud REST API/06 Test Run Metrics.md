@@ -4,12 +4,16 @@ excerpt: ''
 draft: 'true'
 ---
 
+For a detailed explanation and reference of all metrics, refer to the [Metrics docs](/using-k6/metrics).
+
 ## List metrics
 
-Returns all metrics within a specified test run. The test run ids are available in the `test_run_ids` field in response from Read Test or from `id` field in response from Start Test Run endpoint.
+Returns all metrics within a specified test run.
+You can get test-run ids from the `test_run_ids` field in responses from the Read Test endpoint, or from the `id` field in the response from the Start Test Run endpoint.
 
-Note that k6 cloud may store multiple (sub)metrics for each metric generated in the k6 script. For example, when sending an HTTP request within the script, k6 cloud will store `http_req_duration`, `http_req_blocked`, `http_req_connecting` and other metrics for that particular endpoint.
-Differing HTTP methods and statuses are all grouped as separate metrics. (e.g. same URL produces multiple metrics if k6 detects statuses such as 200, 400 etc).
+Note that k6 Cloud might store multiple (sub)metrics for each metric generated in the k6 script. For example, when sending an HTTP request within the script, k6 cloud stores `http_req_duration`, `http_req_blocked`, `http_req_connecting` and other metrics for that particular endpoint.
+Differing HTTP methods and statuses are all grouped as separate metrics.
+(The same URL produces multiple metrics if k6 detects statuses such as 200, 400 etc).
 
 Some of the fields contained in the response are:
 
@@ -106,9 +110,11 @@ Returns details of a metric with the specified ID.
 
 ## Read series data
 
-Returns time series data for specified metrics ids within a specified test run id. Test run ids are
+Returns time-series data points for specified metrics ids within a specified test run id. Test run ids are
 available in the `test_run_ids` field of a response from `Read Test` or in the `id` field of a response
-from `Start Test Run` endpoint. Metric ids are available in the `id` field of the response from the
+from `Start Test Run` endpoint.
+
+Metric ids are available in the `id` field of the response from the
 List metrics endpoint.
 
 **GET** `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}`
@@ -270,7 +276,8 @@ Returns an overview of the test run which includes numbers of URLs, thresholds, 
 
 ## Export test run metrics
 
-Exports metric data for test run in CSV format. URL to the file is available in `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
+Exports metric data for test run in CSV format.
+The file URL is in the `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
 
 **POST** `/loadtests/v2/runs/{test_run_id}/export`
 

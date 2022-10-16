@@ -4,6 +4,9 @@ excerpt: ''
 draft: 'true'
 ---
 
+Organizations are the top-level structural unit in k6 Cloud.
+Read about [How to manage organizations](/cloud/project-and-team-management/organizations/).
+
 ## List organizations
 
 Returns a list of organizations associated with the authenticated user along with organization details.
