@@ -64,7 +64,7 @@ export default function () {
 
 </CodeGroup>
 
-The preceeding code launches a Chromium-based browser, visit the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
+The preceding code launches a Chromium-based browser, visit the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
 
 After running the test, the following [browser metrics](/javascript-api/xk6-browser/get-started/browser-metrics/) will be reported.
 
