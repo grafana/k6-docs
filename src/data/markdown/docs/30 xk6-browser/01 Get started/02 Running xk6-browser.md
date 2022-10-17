@@ -8,8 +8,7 @@ Follow along to learn how to:
 1. Run a test
 2. Interact with elements on your webpage
 3. Wait for page navigation
-4. Write assertions
-5. Run both browser-level and protocol-level test in a single script
+4. Run both browser-level and protocol-level test in a single script
 
 <Blockquote mod="note" title="">
 
@@ -161,45 +160,6 @@ export default function () {
 The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Since clicking the submit button causes page navigation, `page.waitForNavigation()` is needed because the page won't be ready until the navigation completes. This is required because there can be a race condition if these two actions don't happen simultaneously. 
 
 Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
-
-## Assertions
-
-You can add assertions in your browser script via:
-1. Checks, as mentioned in the previous section
-2. [k6chaijs](https://k6.io/docs/javascript-api/jslib/k6chaijs/) for a more BDD (Behavior Driven Development) or TDD (Test Driven Development) style
-
-<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
-
-<!-- eslint-skip -->
-
-```javascript
-import { chromium } from 'k6/x/browser';
-import { expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.0/index.js';
-
-export default function () {
-  const browser = chromium.launch({ headless: false });
-  const page = browser.newPage();
-
-  page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' }).then(() => {
-    // Enter login credentials and login
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
-    
-    // Wait for asynchronous operations to complete
-    return Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]).then(() => {
-      expect(page.locator('h2').textContent()).to.equal('Welcome, admin!');
-    }).finally(() => {
-      page.close();
-      browser.close();
-    });
-  });
-}
-```
-
-</CodeGroup>
 
 ## Run both browser-level and protocol-level in a single script
 
