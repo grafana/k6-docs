@@ -126,7 +126,10 @@ const SidebarNode = (props) => {
     let doesPathMatchLocation = maybePrefixedPath === pathname;
 
     const isPathLocationPart =
-      meta.path === '/' || meta.path === '/es/' || meta.path === '/extensions/'
+      meta.path === '/' ||
+      meta.path === '/es/' ||
+      meta.path === '/extensions/' ||
+      meta.path === '/javascript-api/xk6-browser/'
         ? false
         : pathname.startsWith(maybePrefixedPath);
 
