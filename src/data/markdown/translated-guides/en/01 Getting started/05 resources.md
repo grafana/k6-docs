@@ -32,7 +32,7 @@ If you need a place to test k6 scripts, you can load these servers as much as yo
 
 ## k6 + your favorite tool
 
-- [k6 Operator](https://github.com/grafana/k6-operator). Distribute test execution across a Kubernetes cluster.
+- [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribute test execution across a Kubernetes cluster.
 - [xk6 extensions](/extensions). Custom k6 binaries to support the tool you need.
 - [The browser recorder](/test-authoring/recording-a-session/browser-recorder/). Make test scripts from browser sessions.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript)

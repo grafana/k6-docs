@@ -194,7 +194,7 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
   k6 run script.js
   ```
 
-- [Distributed](https://github.com/grafana/k6-operator): the test execution is distributed across a Kubernetes cluster. 
+- [Distributed](https://k6.io/blog/running-distributed-tests-on-k8s/): the test execution is distributed across a Kubernetes cluster. 
   
   <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
 
