@@ -104,14 +104,14 @@ const buildFileTree = (nodeBuilder) => {
           part === DEFAULT_LOCALE
             ? '/'
             : compose(
-                // eslint-disable-next-line no-use-before-define
-                removeEnPrefix,
-                // eslint-disable-next-line no-use-before-define
-                redirectWelcome,
-                // eslint-disable-next-line no-use-before-define
-                dedupePath,
-                slugify,
-              )(`${currentPath}/${translatedName}`);
+              // eslint-disable-next-line no-use-before-define
+              removeEnPrefix,
+              // eslint-disable-next-line no-use-before-define
+              redirectWelcome,
+              // eslint-disable-next-line no-use-before-define
+              dedupePath,
+              slugify,
+            )(`${currentPath}/${translatedName}`);
 
         parent.children[part] = nodeBuilder(part, {
           title: translatedName,
@@ -123,14 +123,14 @@ const buildFileTree = (nodeBuilder) => {
           part === DEFAULT_LOCALE
             ? '/'
             : compose(
-                // eslint-disable-next-line no-use-before-define
-                removeEnPrefix,
-                // eslint-disable-next-line no-use-before-define
-                redirectWelcome,
-                // eslint-disable-next-line no-use-before-define
-                dedupePath,
-                slugify,
-              )(`${currentPath}/${part}`);
+              // eslint-disable-next-line no-use-before-define
+              removeEnPrefix,
+              // eslint-disable-next-line no-use-before-define
+              redirectWelcome,
+              // eslint-disable-next-line no-use-before-define
+              dedupePath,
+              slugify,
+            )(`${currentPath}/${part}`);
       }
 
       parent.children[part] = parent.children[part] || nodeBuilder(part);
@@ -195,8 +195,8 @@ const getDocSection = (str) => str.replace(/^(.*?)\/.*$/, '$1');
 // getChildSidebar(sidebar: Object -> child: String) -> Object
 const getChildSidebar =
   (sidebar) =>
-  (child, locale = null) =>
-    locale ? sidebar.children[locale].children[child] : sidebar.children[child];
+    (child, locale = null) =>
+      locale ? sidebar.children[locale].children[child] : sidebar.children[child];
 
 // accepts a logger (reporter, console.log)
 // and returns a set of functions
@@ -252,6 +252,7 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 const redirectWelcome = (path) =>
   path
     .replace(/en\/get-started\/welcome/i, '')
+    .replace(/javascript-api\/xk6-browser\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 const getSlug = (path) => {

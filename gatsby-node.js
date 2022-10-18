@@ -202,7 +202,7 @@ const getPageVersions = (
   return pageVersions;
 };
 
-const generateTopLevelLinks = () => [
+const topLevelLinks = [
   {
     label: 'guides',
     to: '/',
@@ -332,7 +332,6 @@ const getExtensionsPageSidebar = (sidebarTree) => {
 function getSupplementaryPagesProps({
   reporter,
   topLevelNames,
-  topLevelLinks,
   getSidebar,
   getGuidesSidebar,
 }) {
@@ -341,7 +340,7 @@ function getSupplementaryPagesProps({
     component: Path.resolve(`./src/templates/404.js`),
     context: {
       sidebarTree: getSidebar('guides'),
-      navLinks: generateTopLevelLinks(topLevelLinks),
+      navLinks: topLevelLinks,
     },
   };
   const stubPagesProps = topLevelNames
@@ -389,7 +388,7 @@ function getSupplementaryPagesProps({
             sectionName,
             breadcrumbs,
             title: name,
-            navLinks: generateTopLevelLinks(topLevelLinks),
+            navLinks: topLevelLinks,
             directChildren: getSidebar(section).children[name].children,
           },
         };
@@ -433,7 +432,7 @@ function getSupplementaryPagesProps({
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
           title: meta.title,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           directChildren: getGuidesSidebar(locale).children[name].children,
           locale,
           translations: pageTranslations,
@@ -447,7 +446,6 @@ function getSupplementaryPagesProps({
 
 function getTopLevelPagesProps({
   topLevelNames,
-  topLevelLinks,
   getSidebar,
   getGuidesSidebar,
   pathCollisionDetectorInstance,
@@ -482,7 +480,7 @@ function getTopLevelPagesProps({
         context: {
           sectionName: formatSectionName(name),
           sidebarTree: getSidebar(name),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       };
     })
@@ -492,7 +490,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/guides.js`),
         context: {
           sidebarTree: getGuidesSidebar(locale),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           locale,
           sectionName: 'Guides',
         },
@@ -505,7 +503,7 @@ function getTopLevelPagesProps({
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
       {
@@ -514,7 +512,7 @@ function getTopLevelPagesProps({
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
       {
@@ -523,7 +521,7 @@ function getTopLevelPagesProps({
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
     ])
@@ -537,7 +535,7 @@ function getTopLevelPagesProps({
           sectionName: 'Javascript API',
           sidebarTree:
             getJavascriptAPISidebar(version).children['javascript api'],
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           version,
           // eslint-disable-next-line no-useless-escape
           versionRegex: `/${version}\/javascript api/`,
@@ -552,7 +550,6 @@ function getTopLevelPagesProps({
 function getDocPagesProps({
   nodes,
   reporter,
-  topLevelLinks,
   getSidebar,
   getJavascriptAPISidebar,
   pathCollisionDetectorInstance,
@@ -687,6 +684,11 @@ function getDocPagesProps({
           '/xk6-browser',
           '/javascript-api/xk6-browser',
         );
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/javascript-api/xk6-browser/getting-started/welcome',
+          '/javascript-api/xk6-browser',
+        );
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
         githubTitle = 'xk6-browser';
@@ -720,7 +722,7 @@ function getDocPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           pageVersions,
           githubUrl,
           githubTitle,
@@ -734,7 +736,6 @@ function getDocPagesProps({
 function getGuidesPagesProps({
   nodesGuides,
   reporter,
-  topLevelLinks,
   pathCollisionDetectorInstance,
   getGuidesSidebar,
 }) {
@@ -838,7 +839,7 @@ function getGuidesPagesProps({
           breadcrumbs: breadcrumbs.filter(
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           locale: pageLocale,
         },
       };
@@ -849,7 +850,6 @@ function getGuidesPagesProps({
 function getJsAPIVersionedPagesProps({
   nodesJsAPI,
   reporter,
-  topLevelLinks,
   pathCollisionDetectorInstance,
   getJavascriptAPISidebar,
   getSidebar,
@@ -972,7 +972,7 @@ function getJsAPIVersionedPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           version: pageVersion,
           pageVersions,
         },
@@ -1133,17 +1133,9 @@ async function createDocPages({
     (name) => name !== 'xk6-browser' && name !== 'jslib',
   );
 
-  const topLevelLinks = topLevelNames
-    .filter((name) => name !== 'Cloud REST API')
-    .map((name) => ({
-      label: name === 'cloud' ? 'Cloud Docs' : name.toUpperCase(),
-      to: name === 'guides' ? `/` : `/${slugify(name)}/`,
-    }));
-
   getDocPagesProps({
     nodes,
     reporter,
-    topLevelLinks,
     pathCollisionDetectorInstance,
     getSidebar,
     getJavascriptAPISidebar,
@@ -1152,21 +1144,18 @@ async function createDocPages({
       getGuidesPagesProps({
         nodesGuides,
         reporter,
-        topLevelLinks,
         pathCollisionDetectorInstance,
         getGuidesSidebar,
       }),
       getJsAPIVersionedPagesProps({
         nodesJsAPI,
         reporter,
-        topLevelLinks,
         pathCollisionDetectorInstance,
         getJavascriptAPISidebar,
         getSidebar,
       }),
       getTopLevelPagesProps({
         topLevelNames,
-        topLevelLinks,
         getSidebar,
         getGuidesSidebar,
         getJavascriptAPISidebar,
@@ -1174,7 +1163,6 @@ async function createDocPages({
       }),
       getSupplementaryPagesProps({
         topLevelNames,
-        topLevelLinks,
         getSidebar,
         getGuidesSidebar,
         getJavascriptAPISidebar,
@@ -1190,6 +1178,13 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/getting-started/welcome/',
     toPath: '/',
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  // TODO: move to appropriate place
+  createRedirect({
+    fromPath: '/javascript-api/xk6-browser/getting-started/welcome/',
+    toPath: '/javascript-api/xk6-browser/',
     redirectInBrowser: true,
     isPermanent: true,
   });
