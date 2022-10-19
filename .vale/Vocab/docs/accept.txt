@@ -171,3 +171,4 @@ superset
 eql
 instanceof
 contentful
+xpath
