@@ -61,6 +61,7 @@ Here's the list of available SSL/TLS versions that you can choose from, ordered 
 - `http.TLS_1_0`
 - `http.TLS_1_1`
 - `http.TLS_1_2`
+- `http.TLS_1_3`
 
 ## Limiting cipher suites
 
