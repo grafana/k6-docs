@@ -107,6 +107,7 @@ postgres
 postprocessing
 proto
 rawstd
+redis
 reqs
 resampled
 rollouts
