@@ -29,7 +29,7 @@ Behind the scenes, the `describe()` function creates a k6 [group](/javascript-ap
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   const success1 = describe('Basic test', () => {
@@ -68,7 +68,7 @@ If you would like to skip the execution of the following blocks, consider chaini
 <!-- eslint-skip -->
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.1/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   describe('Basic test', () => {
