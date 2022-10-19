@@ -47,11 +47,11 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype), and use its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process (which is currently the only available `BrowserType`). After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process. After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
-  To provide rough compatibility with Playwright API, xk6-browser API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `.then()` is used to deal with the asynchronous nature of the operation. 
+  To provide rough compatibility with the Playwright API, the xk6-browser API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `.then()` is used to deal with the asynchronous nature of the operation.
 
   </Blockquote>
 
@@ -116,9 +116,9 @@ Within the Locator API, various methods such as `type()` can be used to interact
 
 ## Asynchronous operations
 
-As explained previously, k6 operations are synchronous. However, Playwright operations are asynchronous in nature and since xk6-browser aims to provide rough compatibility with Playwright, some of our operations are now asynchronous.
+As explained previously, the k6 API is synchronous. However, since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most xk6-browser methods to be asynchronous as well.
 
-At the moment, operations such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return promises and work similarly to [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
+At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and scripts must be written to handle this properly.
 
 To avoid timing errors or other race conditions in your script, if you have actions that load up a different page, you need to make sure that you wait for that action to finish before continuing.
 

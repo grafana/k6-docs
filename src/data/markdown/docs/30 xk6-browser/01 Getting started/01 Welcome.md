@@ -65,7 +65,7 @@ export default function () {
 
 </CodeGroup>
 
-The preceding code launches a Chromium-based browser, visit the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
+The preceding code launches a Chromium-based browser, visits the application and mimics a user logging in to the application. Once submitted, it checks if the text of the header matches what is expected.
 
 <Blockquote mod="note" title="">
 
@@ -73,7 +73,7 @@ Even though xk6-browser aims to provide rough compatibility with Playwright, xk6
 
 </Blockquote>
 
-After running the test, the following [browser metrics](/javascript-api/xk6-browser/get-started/browser-metrics/) will be reported.
+After running the test, the following [browser metrics](/javascript-api/xk6-browser/getting-started/browser-metrics/) will be reported.
 
 <CodeGroup labels={[]}>
 
