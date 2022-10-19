@@ -3,7 +3,7 @@ title: 'Options'
 excerpt: 'Options allow to fine tune how a Redis client behaves and interacts with a Redis server or cluster.'
 ---
 
-You can configure the [Redis Client](/javascript-api/k6-experimental-redis/client) at construction time with the [Options](#options) object.
+You can configure the [Redis Client](/javascript-api/k6-experimental/redis/client) at construction time with the [Options](#options) object.
 We recommend passing the options to the constructor as an argument,  then passing the most common options, such as the `addrs` and `password`, to the constructor from the environment.
 
 The following snippet provides an example:

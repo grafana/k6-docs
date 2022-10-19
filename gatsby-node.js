@@ -1457,6 +1457,22 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/',
+    toPath: '/k6-experimental/redis/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/client/',
+    toPath: '/k6-experimental/redis/client/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/options/',
+    toPath: '/k6-experimental/redis/options/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
