@@ -7,10 +7,7 @@ excerpt: 'xk6-browser brings browser automation and end-to-end testing to k6 whi
 
 [xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 
-xk6-browser aims to provide rough compatibility with the Playwright API for the following two reasons:
-
-1. Users don't need to learn a completely new API just to use xk6-browser.
-2. It opens up for using the [Playwright RPC server](https://github.com/playwright-community/playwright-go) as an optional backend for xk6-browser should we decide to support that in the future.
+xk6-browser aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
 
 ## Why xk6-browser?
 
