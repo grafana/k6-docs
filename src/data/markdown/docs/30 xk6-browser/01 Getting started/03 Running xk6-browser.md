@@ -75,11 +75,13 @@ To run a simple local script:
 
 ## Interact with elements on your webpage
 
-You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](https://k6.io/docs/javascript-api/xk6-browser/locator/) object, which you can later use to interact with the element.
+You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/xk6-browser/locator/) object, which you can later use to interact with the element.
+
+To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
 
 <Blockquote mod="note" title="">
 
-You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](https://k6.io/docs/javascript-api/xk6-browser/locator/).
+You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](/javascript-api/xk6-browser/locator/).
 
 </Blockquote>
 
