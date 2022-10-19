@@ -1458,17 +1458,6 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/results-visualization/statsd/',
-    toPath: '/results-output/real-time/statsd/',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/results-visualization/statsd/',
-    toPath: '/results-output/real-time/statsd/',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/javascript-api/k6-experimental-redis/',
     toPath: '/k6-experimental/redis/',
     isPermanent: true,
