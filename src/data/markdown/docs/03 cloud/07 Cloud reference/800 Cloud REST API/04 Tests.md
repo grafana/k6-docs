@@ -12,7 +12,7 @@ If no project is specified, k6 returns the default project.
 
 You MAY sort or query the results with query parameters.
 
-**GET** `/loadtests/v2/tests`
+**GET** `https://api.k6.io/loadtests/v2/tests`
 
 | Query Parameters | Type    | Description                                                                                                          | Example                                                              |
 |------------------|---------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
@@ -54,7 +54,7 @@ You MAY sort or query the results with query parameters.
 
 Returns details of a test with the specified ID.
 
-**GET** `/loadtests/v2/tests/{id}`
+**GET** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -90,7 +90,7 @@ This patch updates only the specified fields.
 
 </Blockquote>
 
-**PATCH** `/loadtests/v2/tests/{id}`
+**PATCH** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -125,7 +125,7 @@ This patch updates only the specified fields.
 
 Deletes a test with the specified test ID.
 
-**DELETE** `/loadtests/v2/tests/{id}`
+**DELETE** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -141,7 +141,7 @@ The test run is managed by k6 Cloud from beginning to end.
 You can monitor the test progress in the k6 Cloud application.
 From there, you can also export and analyze the result.
 
-**POST** `/loadtests/v2/tests/{id}/start-testrun`
+**POST** `https://api.k6.io/loadtests/v2/tests/{id}/start-testrun`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |

@@ -20,7 +20,7 @@ Some of the fields contained in the response are:
 - `group_id` - ID of the `group` this metric belongs to.
 - `contains` - "Unit" for the metrics. Some examples are: `time`, `percent`, `bytes` et.
 
-**GET** `/loadtests/v2/metrics?test_run_id={test_run_id}`
+**GET** `https://api.k6.io/loadtests/v2/metrics?test_run_id={test_run_id}`
 
 | Query Parameter | Type    | Description                                          |
 | --------------- | ------- | ---------------------------------------------------- |
@@ -57,7 +57,7 @@ Some of the fields contained in the response are:
 
 Returns details of a metric with the specified ID.
 
-**GET** `/loadtests/v2/metrics/{id}`
+**GET** `https://api.k6.io/loadtests/v2/metrics/{id}`
 
 | Path Parameter | Type   | Description                 |
 | -------------- | ------ | --------------------------- |
@@ -116,7 +116,7 @@ from `Start Test Run` endpoint.
 Metric ids are available in the `id` field of the response from the
 List metrics endpoint.
 
-**GET** `/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}`
+**GET** `https://api.k6.io/loadtests/v2/series?test_run_id={test_run_id}&ids[]={metric_id_1}`
 
 | Query Parameters | Type    | Description           | Example                                                                                  |
 | ---------------- | ------- | --------------------- | ---------------------------------------------------------------------------------------- |
@@ -151,7 +151,7 @@ List metrics endpoint.
 
 Returns all thresholds (and related metrics) for a test run.
 
-**GET** `/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}`
+**GET** `https://api.k6.io/loadtests/v2/thresholds?test_run_id={test_run_id}&ids[]={threshold_id_1}`
 
 | Query Parameter | Type    | Description                                             | Example                                                                                            |
 | --------------- | ------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -204,7 +204,7 @@ Returns all thresholds (and related metrics) for a test run.
 
 Returns details of a threshold with the specified ID.
 
-**GET** `/loadtests/v2/thresholds/{id}?test_run_id={test_run_id}`
+**GET** `https://api.k6.io/loadtests/v2/thresholds/{id}?test_run_id={test_run_id}`
 
 | Query Parameter | Type    | Description          |
 | --------------- | ------- | -------------------- |
@@ -241,7 +241,7 @@ Returns details of a threshold with the specified ID.
 
 Returns an overview of the test run which includes numbers of URLs, thresholds, checks, etc.
 
-**GET** `/loadtests/v2/run-overviews?test_run_id={test_run_id}`
+**GET** `https://api.k6.io/loadtests/v2/run-overviews?test_run_id={test_run_id}`
 
 | Query Parameter | Type    | Description                                       |
 | --------------- | ------- | ------------------------------------------------- |
@@ -278,7 +278,7 @@ Returns an overview of the test run which includes numbers of URLs, thresholds, 
 Exports metric data for test run in CSV format.
 The file URL is in the `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
 
-**POST** `/loadtests/v2/runs/{test_run_id}/export`
+**POST** `https://api.k6.io/loadtests/v2/runs/{test_run_id}/export`
 
 | Path Parameter | Type    | Description                                       |
 | -------------- | ------- | ------------------------------------------------- |

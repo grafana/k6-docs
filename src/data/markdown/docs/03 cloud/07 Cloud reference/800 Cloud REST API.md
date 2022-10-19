@@ -11,6 +11,16 @@ The things you can do with the Cloud API include:
 - Start tests
 - Retrieve data about tests and test runs
 
+## APIs
+
+| APIs                  |   |
+|---------------------------|--------|
+| [Organizations](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and List projects   |
+| [Test](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update, Delete, and Start a test run   |
+| [Test Runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | List and Read    |
+| [Test Runs Metrics](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and Export metric data   |
+| [Error reference](/cloud/cloud-reference/cloud-rest-api/organizations/)      | Error message format    |
+
 ## Authentication
 
 Authentication is based on a custom token scheme.
@@ -33,23 +43,3 @@ curl -H "Authorization: token <YOUR_API_TOKEN_HERE>"  #replace with your token
 | Security scheme type      | HTTP   |
 | HTTP Authorization Scheme | bearer |
 | Bearer format             | "JWT"  |
-
-## Request paths
-
-All requests go to the base URL, `https://api.k6.io/`.
-
-Some endpoints start at the `/v2/` path.
-Others start at the `/v3` path.
-
-## APIs
-
-| APIs                  |  Actions |
-|---------------------------|--------|
-| [Organizations](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and List projects   |
-| [Test](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update, Delete, and Start a test run   |
-| [Test Runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | List and Read    |
-| [Test Runs Metrics](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and Export metric data   |
-
-| References                  |  |
-|---------------------------|--------|
-| [Error](/cloud/cloud-reference/cloud-rest-api/organizations/)      | Error message format    |

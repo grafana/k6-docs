@@ -45,7 +45,7 @@ Possible values are the following:
 | 0     | PASSED - all criteria defined in k6 script have passed. |
 | 1     | FAILED - on or more criteria in k6 script has failed.   |
 
-**GET** `/loadtests/v2/runs/{id}`
+**GET** `https://api.k6.io/loadtests/v2/runs/{id}`
 
 | Path Parameter | Type    | Description         |
 | -------------- | ------- | ------------------- |
@@ -98,7 +98,7 @@ Possible values are the following:
 
 Returns test runs for a particular test.
 
-**GET** `/loadtests/v2/runs?test_id={test_id}`
+**GET** `https://api.k6.io/loadtests/v2/runs?test_id={test_id}`
 
 | Query Parameter | Type    | Description                           | Example                                                              |
 | --------------- | ------- | ------------------------------------- | -------------------------------------------------------------------- |
