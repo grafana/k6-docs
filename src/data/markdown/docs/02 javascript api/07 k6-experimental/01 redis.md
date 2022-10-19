@@ -3,17 +3,7 @@ title: "redis"
 excerpt: "k6 Redis experimental API"
 ---
 
-<Blockquote mod="attention" title="Experimental module, use at your own risk">
-
-While we intend to keep this module as simple and stable as possible,
-we may need to add features or introduce breaking changes.
-This could happen at any time until we release this module as stable.
-
-**Use at your own risk!**
-
-Feel free to provide user feedback, and open an issue or pull request if you have any suggestions.
-
-</Blockquote>
+<ExperimentalBlockquote />
 
 
 The [Redis](https://redis.io/) module provides a client library that makes it possible to interact with Redis directly from a k6 script.

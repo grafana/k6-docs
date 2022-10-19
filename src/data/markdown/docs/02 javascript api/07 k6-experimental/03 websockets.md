@@ -3,17 +3,7 @@ title: 'websockets'
 excerpt: "k6 websockets experimental API"
 ---
 
-<Blockquote mod="attention" title="Experimental module, use at your own risk">
-
-While we intend to keep this module as simple and stable as possible,
-we may need to add features or introduce breaking changes.
-This could happen at any time until we release this module as stable.
-
-**Use at your own risk!**
-
-Feel free to provide user feedback, and open an issue or pull request if you have any suggestions.
-
-</Blockquote>
+<ExperimentalBlockquote />
 
 This experimental API implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 
