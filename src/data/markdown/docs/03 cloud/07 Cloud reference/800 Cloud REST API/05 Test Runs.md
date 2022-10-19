@@ -1,7 +1,6 @@
 ---
 title: 'Test Runs'
 excerpt: ''
-draft: 'true'
 ---
 
 A _test run_ is an individual execution of a test.

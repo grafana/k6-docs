@@ -83,7 +83,7 @@ const formatSectionName = (name) => {
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
-  if (!isProduction && title === 'Cloud REST API') {
+  if (!isProduction && title === 'TO REMOVE Cloud REST API') {
     const docUrl = process.env.GATSBY_DEFAULT_DOC_URL;
     const domain = docUrl.includes('8000') ? `` : `/docs`;
     return `${domain}/cloud-rest-api/introduction`;

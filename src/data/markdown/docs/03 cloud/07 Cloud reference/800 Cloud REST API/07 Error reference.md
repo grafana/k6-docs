@@ -1,7 +1,6 @@
 ---
 title: 'Error reference'
 excerpt: ''
-draft: 'true'
 ---
 
 The API returns errors in the following format:

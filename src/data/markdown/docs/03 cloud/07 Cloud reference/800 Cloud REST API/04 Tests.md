@@ -1,7 +1,6 @@
 ---
 title: 'Tests'
 excerpt: ''
-draft: 'true'
 ---
 
 To read, update, and start tests, use the `/tests` path.

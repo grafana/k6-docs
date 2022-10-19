@@ -1,7 +1,6 @@
 ---
 title: 'Organizations'
 excerpt: ''
-draft: 'true'
 ---
 
 Organizations are the top-level structural unit in k6 Cloud.

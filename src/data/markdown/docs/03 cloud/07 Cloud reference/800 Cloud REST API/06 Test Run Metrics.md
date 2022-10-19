@@ -1,7 +1,6 @@
 ---
 title: 'Test Run Metrics'
 excerpt: ''
-draft: 'true'
 ---
 
 For a detailed explanation and reference of all metrics, refer to the [Metrics docs](/using-k6/metrics).
