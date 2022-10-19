@@ -1,5 +1,5 @@
 ---
-title: "k6/experimental/timesr"
+title: "k6/experimental/timers"
 excerpt: "k6 timers experimental API"
 ---
 
@@ -19,10 +19,9 @@ Feel free to provide user feedback, and open an issue or pull request if you hav
 This modules implements the commonly found in browsers:
 - SetTimeout, ClearTimeout, SetInterval, ClearInterval
 
-
 ### API
 
-| Class                                       | Description                                                                                    |
+| Function                                       | Description                                                                                    |
 | :------------------------------------------ | :--------------------------------------------------------------------------------------------- |
 | [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)     | sets a function to be run after a given timeout  |
 | [clearTimeout](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) | clears a previously set timeout with `setTimeout` |
