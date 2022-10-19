@@ -17,7 +17,9 @@ The [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-p
 
 While backend performance testing is useful and efficient, it doesn’t represent the overall user experience. 
 
-With xk6-browser, you can interact with the browser to script tests much closer to the actual website experience and load test the backend to get the complete picture. You'll get insight into what your user sees on a browser-level and catch issues skipped from the protocol level.
+With xk6-browser, you can interact with the browser to script tests much closer to the actual website experience. You'll get insight into what your user sees on a browser-level and catch issues skipped from the protocol level. 
+
+At the same time, you can adopt a hybrid approach to performance testing by leveraging the existing functionalities of k6 and perform backend load testing on a protocol-level, all in the same script. This gives you a full picture of how the user experience is under different load scenarios.
 
 ## Use case for xk6-browser
 

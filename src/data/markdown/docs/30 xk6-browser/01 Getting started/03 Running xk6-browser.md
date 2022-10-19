@@ -163,9 +163,15 @@ Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from th
 
 ## Run both browser-level and protocol-level in a single script
 
-The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix browser-level tests with a protocol-level test which can simulate how your website responds to various performance events.
+The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events.
 
 To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://k6.io/docs/using-k6/scenarios/). 
+
+<Blockquote mod="note" title="">
+
+  Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
+
+  </Blockquote>
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
