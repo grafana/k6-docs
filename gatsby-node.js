@@ -212,7 +212,10 @@ const topLevelLinks = [
     to: '/javascript-api/',
     submenu: [
       { label: 'k6 API', to: `/javascript-api/` },
-      { label: 'xk6-browser', to: `/javascript-api/xk6-browser/` },
+      {
+        label: 'xk6-browser',
+        to: `/javascript-api/xk6-browser/getting-started/welcome/`,
+      },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
@@ -684,11 +687,13 @@ function getDocPagesProps({
           '/xk6-browser',
           '/javascript-api/xk6-browser',
         );
+        /*
         replacePathsInSidebarTree(
           sidebarTree,
           '/javascript-api/xk6-browser/getting-started/welcome',
           '/javascript-api/xk6-browser',
         );
+        */
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
         githubTitle = 'xk6-browser';
@@ -1182,12 +1187,14 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   // TODO: move to appropriate place
+  /*
   createRedirect({
     fromPath: '/javascript-api/xk6-browser/getting-started/welcome/',
     toPath: '/javascript-api/xk6-browser/',
     redirectInBrowser: true,
     isPermanent: true,
   });
+  */
   createRedirect({
     fromPath: '/es/empezando/bienvenido/',
     toPath: '/es/',

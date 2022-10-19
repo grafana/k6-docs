@@ -252,7 +252,7 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 const redirectWelcome = (path) =>
   path
     .replace(/en\/getting-started\/welcome/i, '')
-    .replace(/javascript-api\/xk6-browser\/getting-started\/welcome/i, '')
+    // .replace(/javascript-api\/xk6-browser\/getting-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 const getSlug = (path) => {
