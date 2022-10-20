@@ -3,15 +3,14 @@ title: "k6chaijs"
 excerpt: "Assertion library for k6"
 ---
 
-`k6chaijs` is a library to provide BDD / TDD assertions in k6 based on [ChaiJS](https://www.chaijs.com/). You can use `k6chaijs` as an alternative to [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/).
+`k6chaijs` is a library to provide BDD assertions in k6 based on [ChaiJS](https://www.chaijs.com/). You can use `k6chaijs` as an alternative to [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/).
 
-
-This library is recommended for any type of testing, but especially for:
- - Functional testing, where many asserts are needed.
- - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
- - Load testing, when the test should abort as soon as the first failure occurs.
- - Unit testing of JavaScript code, which is not necessarily connected with load. 
- - JavaScript Developers, who are already familiar with Chai, Jest or Jasmine.
+With this library, you get the following:
+- BDD style of assertions for more expressive language
+- chainable assertions
+- more powerful assertions functions such as: `deep`, `nested`, `ordered`, etc.
+- automatic assertion messages  
+- [exception handling](/javascript-api/jslib/k6chaijs/error-handling/) for better test stability 
 
 
 ## Installation
@@ -61,15 +60,15 @@ When you run this test with `k6 run script.js`, the output at the end of the tes
   ✓ expected number of crocs to be above 4
 ```
 
-If you are familiar with k6, the result is the same than using [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/) but with different names.
+If you are familiar with k6, the result is the same as using [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/). Note that [expect](/javascript-api/jslib/k6chaijs/expect/) might add or extend the assertion message.
 
-## APIs
+## API
 
-| Function | Description |
+| API | Description |
 | -------- | ----------- |
-| [config](/javascript-api/jslib/k6chaijs/config/)  | Options to change `k6chaijs` behaviour  |
-| [describe](/javascript-api/jslib/k6chaijs/describe/)  |  |
-| [expect](/javascript-api/jslib/k6chaijs/expect/)  |  |
+| [config](/javascript-api/jslib/k6chaijs/config/)  | Options to change `k6chaijs` behaviour.  |
+| [describe](/javascript-api/jslib/k6chaijs/describe/)  | A wrapper of [group](/javascript-api/k6/group/) that catches exceptions to allow continuing the test execution.  It returns a boolean to indicate the success of all its assertions. |
+| [expect](/javascript-api/jslib/k6chaijs/expect/)  |  A wrapper of [check](/javascript-api/k6/check/) that provides BDD style of assertions. |
 
 
 ## Plugins

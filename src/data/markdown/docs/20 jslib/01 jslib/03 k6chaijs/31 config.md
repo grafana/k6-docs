@@ -1,25 +1,20 @@
 ---
 title: 'config'
-head_title: 'k6Chai configuration'
-description: 'Global configuration options for k6Chaijs'
 excerpt: 'Global configuration options for k6Chaijs'
 ---
 
-Chai exposes a number of configuration options that can change how the library behaves.
+Chai exposes a few options to change the library configuration.
 
 
 | Config option             | Default     | Description |
 | ------------------------- | ----------- | ----------- |
 | truncateMsgThreshold      | 300   | Check message length is truncated to this value. |
-| truncateVariableThreshold | 100   | Variables interpolated into check message are truncated to this length. |
+| truncateVariableThreshold | 100   | Variables interpolated into check message are truncated to this length. It prevents mistakes when the check name is very large, especially when `aggregateChecks` is `false`.  |
 | aggregateChecks           | true  | The actual values are not interpolated into the check message. Disable for tests with 1 iteration. |
 | logFailures               | false | When the check fails, debug messages are printed. |
 
 
-`truncateMsgThreshold` configuration variable sets the upper bound for how large the full check message can be. `truncateVariableThreshold` sets the upper bound for how large an individual variable can be. 
-It is intended as a safeguard from mistakes when a very large string is included in the check name, especially when the `aggregateChecks` is set to `false`;. 
-
-<CodeGroup labels={[]}>
+<CodeGroup labels={['example.js']}>
 
 ```javascript
 import http from 'k6/http';
