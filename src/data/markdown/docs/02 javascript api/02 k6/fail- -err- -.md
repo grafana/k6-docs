@@ -4,7 +4,10 @@ description: 'Throws an error, failing and aborting the current VU script iterat
 excerpt: 'Throws an error, failing and aborting the current VU script iteration immediately.'
 ---
 
-Immediately throw an error, aborting the current script iteration.
+Immediately throw an error, aborting the current iteration. 
+
+`fail()` does not abort the test, nor does it make the test exit with non-0 status.
+If you are looking to fail the test by halting the execution, use [test.abort()](/javascript-api/k6-execution/#test) instead
 
 `fail()` is a simple convenience wrapper on top of JavaScript's `throw()`,
 because the latter cannot be used as `[expr] || throw`, which is a convenient way to write k6 test code.
