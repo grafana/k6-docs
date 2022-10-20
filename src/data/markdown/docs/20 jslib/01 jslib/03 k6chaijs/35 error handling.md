@@ -60,7 +60,7 @@ When the first `expect` fails, the remaining checks in the chain are not execute
 
 ```javascript
 import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 
 export default function () {
   describe('Fetch a list of public crocodiles', () => {
@@ -83,7 +83,7 @@ thrown inside of `describe()` body, and records them as failed conditions.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 
 export default function testSuite() {
   describe('Executing test against a Shaky SUT', (t) => {

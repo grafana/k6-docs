@@ -1,5 +1,5 @@
 ---
-title: 'configuration'
+title: 'config'
 head_title: 'k6Chai configuration'
 description: 'Global configuration options for k6Chaijs'
 excerpt: 'Global configuration options for k6Chaijs'
@@ -23,7 +23,7 @@ It is intended as a safeguard from mistakes when a very large string is included
 
 ```javascript
 import http from 'k6/http';
-import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 
 // individual variables should be up to 20 chars after rendering.
 chai.config.truncateVariableThreshold = 20;

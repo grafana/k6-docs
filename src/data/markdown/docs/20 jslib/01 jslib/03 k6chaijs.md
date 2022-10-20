@@ -3,7 +3,7 @@ title: "k6chaijs"
 excerpt: "Assertion library for k6"
 ---
 
-`k6chaijs` is a k6 library to provide BDD / TDD assertions based on [ChaiJS](https://www.chaijs.com/). It is an alternative to using [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/).
+`k6chaijs` is a library to provide BDD / TDD assertions in k6 based on [ChaiJS](https://www.chaijs.com/). You can use `k6chaijs` as an alternative to [check](/javascript-api/k6/check/) and [group](/javascript-api/k6/group/).
 
 
 This library is recommended for any type of testing, but especially for:
@@ -12,8 +12,6 @@ This library is recommended for any type of testing, but especially for:
  - Load testing, when the test should abort as soon as the first failure occurs.
  - Unit testing of JavaScript code, which is not necessarily connected with load. 
  - JavaScript Developers, who are already familiar with Chai, Jest or Jasmine.
-
-> ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs). 
 
 
 ## Installation
@@ -24,22 +22,22 @@ There's nothing to install. This library is hosted on [jslib](https://jslib.k6.i
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 ```
 
 </CodeGroup>
 
-Alternatively, you can use a copy of this file stored locally.
+Alternatively, you can use a copy of this file stored locally. The source code is available on [GitHub](https://github.com/grafana/k6-jslib-k6chaijs).
 
 ## Example
 
-The following example tests a hypothetical HTTP API that returns a JSON array of objects. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
+The following example tests a hypothetical HTTP API that returns a JSON array of objects. Copy the following code, and save it as `script.js`:
 
 <CodeGroup labels={[]}>
 
 ```javascript
 import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 
 export default function testSuite() {
   describe('Fetch a list of public crocodiles', () => {
@@ -54,7 +52,7 @@ export default function testSuite() {
 
 </CodeGroup>
 
-When you run this test with `k6 run script.js`, the output is:
+When you run this test with `k6 run script.js`, the output at the end of the test shows:
 
 ```bash
 █ Fetch a list of public crocodiles
@@ -67,15 +65,17 @@ If you are familiar with k6, the result is the same than using [check](/javascri
 
 ## APIs
 
-All examples documented in [Chai's official API documentation](https://www.chaijs.com/api/bdd/) are runnable in k6. For specific APIs, please refer to the official documentation. 
+| Function | Description |
+| -------- | ----------- |
+| [config](/javascript-api/jslib/k6chaijs/config/)  | Options to change `k6chaijs` behaviour  |
+| [describe](/javascript-api/jslib/k6chaijs/describe/)  |  |
+| [expect](/javascript-api/jslib/k6chaijs/expect/)  |  |
 
-For more advanced examples, see the [examples section](/examples/functional-testing)
-
-Chai exposes a number of configuration options that can change how the library behaves. See [configuration](/javascript-api/jslib/k6chaijs/configuration).
 
 ## Plugins
 
-It's possible to extend the default functionality with [Chai plugins](https://www.chaijs.com/plugins/). Built the project See [plugins](/javascript-api/jslib/k6chaijs/).
+It's possible to extend the default functionality with [Chai plugins](https://www.chaijs.com/plugins/).  Follow the build instructions on the [project repository](https://github.com/grafana/k6-jslib-k6chaijs).
+
 
 
 

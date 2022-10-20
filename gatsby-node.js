@@ -1473,6 +1473,17 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/javascript-api/jslib/k6chaijs/plugins/',
+    toPath: '/javascript-api/jslib/k6chaijs/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/javascript-api/jslib/k6chaijs/configuration/',
+    toPath: '/javascript-api/jslib/k6chaijs/config/',
+    isPermanent: true,
+  });
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
