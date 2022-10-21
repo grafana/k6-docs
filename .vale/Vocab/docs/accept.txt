@@ -168,3 +168,5 @@ xk6-\*
 (?i)chaijs
 viewport
 superset
+eql
+instanceof
