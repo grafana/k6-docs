@@ -48,7 +48,7 @@ export function handleSummary(data) {
 
 Fundamentally, `handleSummary()` is just a function that can access a data object.
 As such, you can transform the summary data into any text format: JSON, HTML, console, XML, and so on.
-You can pipe your custom summary to standard out or standard error, write it to a file, or send it to a remote server.
+You can pipe your custom summary to [standard output or standard error](https://en.wikipedia.org/wiki/Standard_streams), write it to a file, or send it to a remote server.
 
 ## Use handleSummary()
 
@@ -62,14 +62,14 @@ k6 expects `handleSummary()` to return a `{key1: value1, key2: value2, ...}` map
 
 The keys must be strings.
 They determine where k6 displays or saves the content:
-- `stdout` for [standard output](https://en.wikipedia.org/wiki/Standard_streams)
+- `stdout` for standard output
 - `stderr` for standard error,
 - any relative or absolute path to a file on the system (this operation overwrites existing files)
 
 The value of a key can have a type of either `string` or [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer).
 
 You can return mutiple summary outputs in a script.
-As an example, this `return` statement sends a report to standard out and writes the `data` object to a JSON file.
+As an example, this `return` statement sends a report to standard output and writes the `data` object to a JSON file.
 
 <CodeGroup labels={["example keys for handleSummary output"]}>
 
@@ -84,7 +84,7 @@ As an example, this `return` statement sends a report to standard out and writes
 
 ### Extract data properties
 
-This minimal `handleSummary()` extracts the `median` value for the `iteration_duration` metric and prints it on standard out:
+This minimal `handleSummary()` extracts the `median` value for the `iteration_duration` metric and prints it to standard output:
 
 <CodeGroup labels={["Print metric value"]} lineNumbers={[]} showCopyButton={[true]}>
 
