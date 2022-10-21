@@ -3,7 +3,7 @@ title: 'expect()'
 excerpt: 'BDD style to construct k6 assertions.'
 ---
 
-`expect` implements the [Chai Expect API](https://www.chaijs.com/api/bdd/):
+`expect` is a wrapper of [check](/javascript-api/k6/check/) to provide BDD style of assertions in k6. It implements the [Chai Expect API](https://www.chaijs.com/api/bdd/):
 
 <Glossary>
 
@@ -57,62 +57,63 @@ excerpt: 'BDD style to construct k6 assertions.'
 
 </Glossary>
 
-<CodeGroup labels={["Expect example"]}>
+<CodeGroup labels={["script.js"]}>
 
 <!-- eslint-skip -->
 ```javascript
-import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import http from "k6/http";
+import { expect } from "https://jslib.k6.io/k6chaijs/4.3.4.2/index.js";
 
 export default function () {
-  describe('Test expect methods', () => {
-    expect({ a: 1 }).to.not.have.property('b');
-    expect(2).to.equal(2);
-    expect({ a: 1 }).to.deep.equal({ a: 1 });
-    expect({ a: { b: ['x', 'y'] } }).to.have.nested.property('a.b[1]');
-    expect({ a: 1 }).to.have.own.property('a');
-    expect([1, 2]).to.have.ordered.members([1, 2]).but.not.have.ordered.members([2, 1]);
-    expect({ a: 1, b: 2 }).to.not.have.any.keys('c', 'd');
-    expect({ a: 1, b: 2 }).to.have.all.keys('a', 'b');
-    expect('foo').to.be.a('string');
-    expect([1, 2, 3]).to.be.an('array').that.includes(2);
-    expect('foobar').to.include('foo');
-    expect(1).to.equal(1);
-    expect(true).to.be.true;
-    expect(false).to.be.false;
-    expect(null).to.be.null;
-    expect(undefined).to.be.undefined;
-    expect(NaN).to.be.NaN;
-    expect(1).to.equal(1);
-    expect([]).to.be.empty;
-    expect({}).not.to.be.arguments;
-    expect(1).to.equal(1);
-    expect({ a: 1 }).to.eql({ a: 1 }).but.not.equal({ a: 1 });
-    expect('foo').to.have.lengthOf(3);
-    expect(2).to.equal(2);
-    expect(1).to.equal(1);
-    expect(2).to.be.at.most(3);
-    expect(2).to.equal(2);
-    expect({ a: 1 }).to.not.be.an.instanceof(Array);
-    expect({ a: 1 }).to.have.property('a');
-    expect([1, 2, 3]).to.have.lengthOf(3);
-    expect('foobar').to.match(/^foo/);
-    expect('foobar').to.have.string('bar');
-    expect({ a: 1, b: 2 }).to.have.all.keys('a', 'b');
-    const badFn = function () {
-      throw new TypeError('Illegal salmon!');
-    };
-    expect(badFn).to.throw();
-    expect(1).to.satisfy(function (num) {
-      return num > 0;
-    });
-    expect(1.5).to.equal(1.5);
-    expect([1, 2, 3]).to.have.members([2, 1, 3]);
-    expect('Today is sunny').to.contain.oneOf(['sunny', 'cloudy']);
-    expect({ a: 1 }).to.be.extensible;
-    expect(1).to.be.finite;
+  expect({ a: 1 }).to.not.have.property("b");
+  expect(2).to.equal(2);
+  expect({ a: 1 }).to.deep.equal({ a: 1 });
+  expect({ a: { b: ["x", "y"] } }).to.have.nested.property("a.b[1]");
+  expect({ a: 1 }).to.have.own.property("a");
+  expect([1, 2])
+    .to.have.ordered.members([1, 2])
+    .but.not.have.ordered.members([2, 1]);
+  expect({ a: 1, b: 2 }).to.not.have.any.keys("c", "d");
+  expect({ a: 1, b: 2 }).to.have.all.keys("a", "b");
+  expect("foo").to.be.a("string");
+  expect([1, 2, 3]).to.be.an("array").that.includes(2);
+  expect("foobar").to.include("foo");
+  expect(1).to.equal(1);
+  expect(true).to.be.true;
+  expect(false).to.be.false;
+  expect(null).to.be.null;
+  expect(undefined).to.be.undefined;
+  expect(NaN).to.be.NaN;
+  expect(1).to.equal(1);
+  expect([]).to.be.empty;
+  expect({}).not.to.be.arguments;
+  expect(1).to.equal(1);
+  expect({ a: 1 }).to.eql({ a: 1 }).but.not.equal({ a: 1 });
+  expect("foo").to.have.lengthOf(3);
+  expect(2).to.equal(2);
+  expect(1).to.equal(1);
+  expect(2).to.be.at.most(3);
+  expect(2).to.equal(2);
+  expect({ a: 1 }).to.not.be.an.instanceof(Array);
+  expect({ a: 1 }).to.have.property("a");
+  expect([1, 2, 3]).to.have.lengthOf(3);
+  expect("foobar").to.match(/^foo/);
+  expect("foobar").to.have.string("bar");
+  expect({ a: 1, b: 2 }).to.have.all.keys("a", "b");
+  const badFn = function () {
+    throw new TypeError("Illegal salmon!");
+  };
+  expect(badFn).to.throw();
+  expect(1).to.satisfy(function (num) {
+    return num > 0;
   });
+  expect(1.5).to.equal(1.5);
+  expect([1, 2, 3]).to.have.members([2, 1, 3]);
+  expect("Today is sunny").to.contain.oneOf(["sunny", "cloudy"]);
+  expect({ a: 1 }).to.be.extensible;
+  expect(1).to.be.finite;
 }
+
 ```
 
 </CodeGroup>
@@ -122,43 +123,41 @@ When you run this test with `k6 run script.js`, the output at the end of the tes
 ```bash
 default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 iters, 1 per VU
 
-     █ Test expect methods
-
-       ✓ expected ${this} to not have property 'b'
-       ✓ expected ${this} to equal 2
-       ✓ expected ${this} to deeply equal { a: 1 }
-       ✓ expected ${this} to have nested property 'a.b[1]'
-       ✓ expected ${this} to have own property 'a'
-       ✓ expected ${this} to be an array
-       ✓ expected ${this} to have the same ordered members as [ 1, 2 ]
-       ✓ expected ${this} to not have the same ordered members as [ 2, 1 ]
-       ✓ expected ${this} to not have keys 'c', or 'd'
-       ✓ expected ${this} to have keys 'a', and 'b'
-       ✓ expected ${this} to be a string
-       ✓ expected ${this} to include 2
-       ✓ expected ${this} to include 'foo'
-       ✓ expected ${this} to equal 1
-       ✓ expected ${this} to be true
-       ✓ expected ${this} to be false
-       ✓ expected ${this} to be null
-       ✓ expected ${this} to be undefined
-       ✓ expected ${this} to be NaN
-       ✓ expected ${this} to be empty
-       ✓ expected ${this} to not be arguments
-       ✓ expected ${this} to not equal { a: 1 }
-       ✓ expected ${this} to have property 'length'
-       ✓ expected ${this} to have a length of 3 got ${actual}
-       ✓ expected ${this} to be at most 3
-       ✓ expected ${this} to not be an instance of Array
-       ✓ expected ${this} to have property 'a'
-       ✓ expected ${this} to match /^foo/
-       ✓ expected ${this} to contain 'bar'
-       ✓ expected ${this} to be a function
-       ✓ expected ${this} to throw an error
-       ✓ expected ${this} to satisfy [Function]
-       ✓ expected ${this} to equal 1.5
-       ✓ expected ${this} to have the same members as [ 2, 1, 3 ]
-       ✓ expected ${this} to contain one of [ 'sunny', 'cloudy' ]
-       ✓ expected ${this} to be extensible
-       ✓ expected ${this} to be a finite number
+     ✓ expected ${this} to not have property 'b'
+     ✓ expected ${this} to equal 2
+     ✓ expected ${this} to deeply equal { a: 1 }
+     ✓ expected ${this} to have nested property 'a.b[1]'
+     ✓ expected ${this} to have own property 'a'
+     ✓ expected ${this} to be an array
+     ✓ expected ${this} to have the same ordered members as [ 1, 2 ]
+     ✓ expected ${this} to not have the same ordered members as [ 2, 1 ]
+     ✓ expected ${this} to not have keys 'c', or 'd'
+     ✓ expected ${this} to have keys 'a', and 'b'
+     ✓ expected ${this} to be a string
+     ✓ expected ${this} to include 2
+     ✓ expected ${this} to include 'foo'
+     ✓ expected ${this} to equal 1
+     ✓ expected ${this} to be true
+     ✓ expected ${this} to be false
+     ✓ expected ${this} to be null
+     ✓ expected ${this} to be undefined
+     ✓ expected ${this} to be NaN
+     ✓ expected ${this} to be empty
+     ✓ expected ${this} to not be arguments
+     ✓ expected ${this} to not equal { a: 1 }
+     ✓ expected ${this} to have property 'length'
+     ✓ expected ${this} to have a length of 3 got ${actual}
+     ✓ expected ${this} to be at most 3
+     ✓ expected ${this} to not be an instance of Array
+     ✓ expected ${this} to have property 'a'
+     ✓ expected ${this} to match /^foo/
+     ✓ expected ${this} to contain 'bar'
+     ✓ expected ${this} to be a function
+     ✓ expected ${this} to throw an error
+     ✓ expected ${this} to satisfy [Function]
+     ✓ expected ${this} to equal 1.5
+     ✓ expected ${this} to have the same members as [ 2, 1, 3 ]
+     ✓ expected ${this} to contain one of [ 'sunny', 'cloudy' ]
+     ✓ expected ${this} to be extensible
+     ✓ expected ${this} to be a finite number
 ```

@@ -4,8 +4,8 @@ excerpt: 'Entry point for creating test cases.'
 ---
 
 To declare a new test case, call the `describe(name, function)` function. 
-The test case name should be unique within the script.
-If it's not, the test cases will be grouped. 
+
+The test case name should be unique within the script. If it's not, the test cases will be grouped. 
 
 Behind the scenes, the `describe()` function creates a k6 [group](/javascript-api/k6/group-name-fn). 
 
