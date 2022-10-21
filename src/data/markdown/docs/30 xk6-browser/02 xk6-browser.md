@@ -43,7 +43,7 @@ To emulate the browser behaviour on a mobile device and approximately measure th
 
   </CodeGroup>
 
-## Classes
+## Browser-level APIs
 
 | k6 Class                                                                | Description                                                                                                                                                     |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|

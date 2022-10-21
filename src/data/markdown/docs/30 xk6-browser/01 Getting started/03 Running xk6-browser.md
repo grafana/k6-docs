@@ -34,7 +34,7 @@ To run a simple local script:
     const page = browser.newPage();
 
     page
-      .goto('https://test.k6.io/')
+      .goto('https://test.k6.io/', { waitUntil: 'networkidle' })
       .then(() => {
         page.screenshot({ path: 'screenshot.png' });
       })
@@ -77,7 +77,7 @@ To run a simple local script:
 
 You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/xk6-browser/locator/) object, which you can later use to interact with the element.
 
-To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
+To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/getting-started/selecting-elements/).
 
 <Blockquote mod="note" title="">
 
@@ -95,7 +95,7 @@ export default function () {
   const page = browser.newPage();
 
   page
-    .goto('https://test.k6.io/my_messages.php')
+    .goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' })
     .then(() => {
       // Enter login credentials
       page.locator('input[name="login"]').type('admin');
@@ -136,24 +136,26 @@ export default function () {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
-  page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' }).then(() => {
-    // Enter login credentials and login
-    page.locator('input[name="login"]').type('admin');
-    page.locator('input[name="password"]').type('123');
-    
-    // Wait for asynchronous operations to complete
-    return Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]).then(() => {
-      check(page, {
-        'header': page.locator('h2').textContent() == 'Welcome, admin!',
+  page
+    .goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' })
+    .then(() => {
+      // Enter login credentials and login
+      page.locator('input[name="login"]').type('admin');
+      page.locator('input[name="password"]').type('123');
+      
+      // Wait for asynchronous operations to complete
+      return Promise.all([
+        page.waitForNavigation(),
+        page.locator('input[type="submit"]').click(),
+      ]).then(() => {
+        check(page, {
+          'header': page.locator('h2').textContent() == 'Welcome, admin!',
+        });
+      }).finally(() => {
+        page.close();
+        browser.close();
       });
-    }).finally(() => {
-      page.close();
-      browser.close();
     });
-  });
 }
 ```
 

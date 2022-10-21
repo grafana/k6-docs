@@ -3,7 +3,9 @@ title: 'Installation'
 excerpt: 'A step-by-step guide on how to install xk6-browser.'
 ---
 
-xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](#browser-level-apis) in your k6 tests.
+xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](/javascript-api/xk6-browser/#browser-level-apis) in your k6 tests.
+
+To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](https://k6.io/docs/extensions/guides/build-a-k6-binary-with-extensions/).
 
 ### Download a release binary
 
@@ -32,5 +34,3 @@ xk6 build --output xk6-browser --with github.com/grafana/xk6-browser
 ```
 
 xk6 will create the `xk6-browser` binary in the current working directory.
-
-To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](https://k6.io/docs/extensions/guides/build-a-k6-binary-with-extensions/).
