@@ -147,4 +147,4 @@ en determinados puntos de teste. También puede agregar la verificación a la ta
 
 - [API de JavaScript](/javascript-api/k6/check/)
 - [Fallo en una prueba de carga usando checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
-- [k6chaijs](https://k6.io/blog/k6-chai-js/): usando `chai.js` assertions en k6
+- [k6chaijs](/javascript-api/jslib/k6chaijs): usando BDD assertions en k6
