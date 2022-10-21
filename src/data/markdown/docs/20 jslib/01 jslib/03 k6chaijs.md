@@ -67,7 +67,7 @@ If you are familiar with k6, the result is the same as using [check](/javascript
 | API | Description |
 | -------- | ----------- |
 | [config](/javascript-api/jslib/k6chaijs/config/)  | Options to change `k6chaijs` behaviour.  |
-| [describe](/javascript-api/jslib/k6chaijs/describe/)  | A wrapper of [group](/javascript-api/k6/group/) that catches exceptions to allow continuing the test execution.  It returns a boolean to indicate the success of all its assertions. |
+| [describe](/javascript-api/jslib/k6chaijs/describe/)  | A wrapper of [group](/javascript-api/k6/group/) that catches exceptions to allow continuing the test execution.  It returns a boolean to indicate the success of all its `k6chaijs` assertions. |
 | [expect](/javascript-api/jslib/k6chaijs/expect/)  |  A wrapper of [check](/javascript-api/k6/check/) that provides BDD style of assertions. |
 
 
