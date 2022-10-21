@@ -10,6 +10,6 @@ The [jslib.k6.io](https://jslib.k6.io/) is a collection of external JavaScript l
 | -------- | ----------- |
 | [aws](/javascript-api/jslib/aws)  | Library allowing to interact with Amazon AWS services |
 | [httpx](/javascript-api/jslib/httpx)  | Wrapper around [k6/http](https://k6.io/docs/javascript-api/#k6-http) to simplify session handling |
-| [k6chaijs](/javascript-api/jslib/k6chaijs)  | BDD and TDD assertion style |
+| [k6chaijs](/javascript-api/jslib/k6chaijs)  | BDD assertion style |
 | [utils](/javascript-api/jslib/utils)  | Small utility functions useful in every day load testing |
 
