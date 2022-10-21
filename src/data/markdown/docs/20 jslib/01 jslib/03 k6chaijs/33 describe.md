@@ -5,7 +5,7 @@ excerpt: 'Entry point for creating test cases.'
 
 `describe` is a wrapper of [group](/javascript-api/k6/group) that adds the ability to: 
 
-- [Catch exceptions](/javascript-api/jslib/k6chaijs/error-handling/) to allow continuing the execution on the following `describe` block.
+- [Catch exceptions](/javascript-api/jslib/k6chaijs/error-handling/) to allow continuing the execution outside of the `describe` function.
 - Returns a boolean to indicate the success of all its `k6chaijs` assertions.
 
 <CodeGroup labels={['describe-example.js']}>

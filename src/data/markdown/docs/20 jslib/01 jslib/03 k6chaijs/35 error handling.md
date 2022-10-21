@@ -1,21 +1,17 @@
 ---
 title: 'Error handling'
-description: 'How to handle errors in k6chaijs.'
 excerpt: 'How to handle errors in k6chaijs.'
 ---
 
+When you execute a load test, your System Under Test (SUT) may often become oversaturated and start responding with errors. In this case,  you need to consider what the iteration execution should do:
 
-When executing a performance or integration test, your System Under Test (SUT) may crash. 
-When your system crashes, the test should print useful information rather than stack traces caused by unexpected HTTP responses.
+1. to embrace the system error and continue the execution of the scenario
+2. or to exit
 
-While the k6-native `check()` function requires you handle all errors on your own, k6chaijs does most of it automatically.
-This makes your test code more resilient and easier to maintain.
+It's not uncommon for performance testers to forget about these cases. We often write fragile test code that assumes our system's response will always succeed and contain the expected data.
 
-It's not uncommon for performance testers to write fragile code that assumes the http response will contain expected data.
 
-Here's an example of fragile code:
-
-<CodeGroup labels={["Test code that is fragile to failing SUT"]}>
+<CodeGroup labels={["Showcasing a fragile test"]}>
 
 ```javascript
 import { check, group } from 'k6';
@@ -24,80 +20,77 @@ import http from 'k6/http';
 export default function () {
   group('Fetch a list of public crocodiles', () => {
     const res = http.get('https://test-api.k6.io/public/crocodiles');
-
     check(res, {
       'is status 200': (r) => r.status === 200,
       'got more than 5 crocs': (r) => r.json().length > 5,
     });
+    // ... continue test within the group...
   });
-  // more code here
+
+  group('other group', () => {
+    //...
+  });
 }
 ```
 
 </CodeGroup>
 
 
-This code will work fine as long as SUT (System Under Test) returns correct responses. When the SUT starts to fail, there's a good chance the `r.json().length` will throw an exception similar to
+This code will work fine when the SUT returns correct responses. But, when the SUT starts to fail, `r.json().length` will throw an exception:
 
 ```bash
 ERRO[0001] cannot parse json due to an error at line 1, character 2 , error: invalid character '<' looking for beginning of value
 running at reflect.methodValueCall (native)
-default at gotMoreThan5Crocs (file:///home/user/happy-path-check.js:7:68(5))
-  at github.com/k6io/k6/js/common.Bind.func1 (native)
-  at file:///home/user/happy-path-check.js:5:22(17)  executor=per-vu-iterations scenario=default source=stacktrace
 ```
 
-In this example, the system was overloaded, and the load balancer returned a 503 response that did not have a valid JSON body. 
-k6 has thrown a JavaScript exception and restarted execution from the beginning.
-This test code is fragile to failing SUT because the first `check` does not prevent the second check from executing.
-It's possible to rewrite this code to be less fragile, but that will make it longer and less readable.
+In this case, k6 throws a JavaScript exception and **exits the execution of the current iteration** but continues starting new iterations. 
 
-Error handling of this type happens automatically when using the `k6chaijs.js` library.
-When the first `expect` fails, the remaining checks in the chain are not executed, and the test is marked as failed — the execution proceeds to the next `describe()` instead of restarting from the top.
+This might not be ideal because:
 
+1. system errors are propagated as exceptions that are not reported on the test results
+2. you might want to embrace these errors - as normal - and continue the execution
 
-<CodeGroup labels={["Resilient code written using k6chaijs.js"]}>
-
-```javascript
-import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
-
-export default function () {
-  describe('Fetch a list of public crocodiles', () => {
-    const response = http.get('https://test-api.k6.io/public/crocodiles');
-
-    expect(response.status, 'response status').to.equal(200);
-    expect(response).to.have.validJsonBody();
-    expect(response.json().length, 'number of crocs').to.be.above(5);
-  });
-}
-```
-
-</CodeGroup>
+It's possible to rewrite this test to be less fragile, but it can make our test code longer and less readable.
 
 # Handling exceptions
 
-Sometimes it's hard to predict how a SUT might fail. For those cases, the library catches any exceptions 
-thrown inside of `describe()` body, and records them as failed conditions.
+Sometimes it's hard to predict how a SUT might fail.  For those cases, [describe](/javascript-api/jslib/k6chaijs/describe/) catches any internal exceptions and:
+1. records them as failed assertions
+2. continues the execution (outside of its `describe()` function)
 
-<CodeGroup labels={[]}>
+<CodeGroup labels={['Showcasing how describe works']}>
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
 
 export default function testSuite() {
-  describe('Executing test against a Shaky SUT', (t) => {
+  describe('Test case against a Shaky SUT', (t) => {
     throw 'Something entirely unexpected happened';
+  });
+
+  // this test case will be executed because
+  // the previous `describe` catched the exception
+  describe('Another test case', (t) => {
+    expect(2).to.equal(2);
   });
 }
 ```
 
 </CodeGroup>
 
-Execution of this script should print the following output.
+<CodeGroup labels={['Output']}>
 
+```bash
+█ Test case against a Shaky SUT
 
-![output](./images/exception-handling.png) 
+  ✗ Exception raised "Something entirely unexpected happened"
+  ↳  0% — ✓ 0 / ✗ 1
 
+█ Another test case
+
+  ✓ expected ${this} to equal 2
+```
+
+</CodeGroup>
 
 
