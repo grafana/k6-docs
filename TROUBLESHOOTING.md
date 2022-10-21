@@ -137,6 +137,15 @@ Like wouldn't it be joyful if I could put my
 
 Problems with angle brackets can be tricky to diagnose, especially if you've saved across multiple files.
 
+### No text in codegroups
+
+The only text in a `<CodeGroup>` component should be in the code fence ( between `\`\`\`` the text that is in the code fence itself, don't put text in codegroups.
+Otherwise you'll get the error `No codeFrame could be generated`
+
+### Be careful nesting
+
+If you have the courage to nest components, be sure you keep each context separated.
+
 
 ## ESlint errors
 
