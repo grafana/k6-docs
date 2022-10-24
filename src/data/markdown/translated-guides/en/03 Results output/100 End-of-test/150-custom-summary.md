@@ -19,7 +19,7 @@ However, we plan to support the feature for k6 Cloud tests, too.
 
 ## About the `handleSummary()` callback
 
-After your VU code runs, k6 aggregates your metrics into a JavaScript object.
+After your test runs, k6 aggregates your metrics into a JavaScript object.
 The `handleSummary()` function takes this object as an argument (called `data` in all examples here).
 
 You can use `handleSummary()` to create a custom summary or return the default summary object.
