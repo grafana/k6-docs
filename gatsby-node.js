@@ -1486,14 +1486,62 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/getting-started/*',
-    toPath: '/get-started/*',
+    fromPath: '/getting-started/installation/',
+    toPath: '/get-started/installation/',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/extensions/getting-started/*',
-    toPath: '/extensions/get-started/*',
+    fromPath: '/getting-started/installation/troubleshooting/',
+    toPath: '/get-started/installation/troubleshooting/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/running-k6/',
+    toPath: '/get-started/running-k6/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/results-output/',
+    toPath: '/get-started/results-output/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/resources/',
+    toPath: '/get-started/resources/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/',
+    toPath: '/extensions/get-started/create/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/javascript-extensions/',
+    toPath: '/extensions/get-started/create/javescript-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/output-extensions/',
+    toPath: '/extensions/get-started/create/output-extensions/',
     isPermanent: true,
   });
 
