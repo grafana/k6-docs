@@ -1535,7 +1535,7 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/extensions/getting-started/create/javascript-extensions/',
-    toPath: '/extensions/get-started/create/javescript-extensions/',
+    toPath: '/extensions/get-started/create/javascript-extensions/',
     isPermanent: true,
   });
 
