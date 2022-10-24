@@ -75,7 +75,7 @@ Even though xk6-browser aims to provide rough compatibility with Playwright, xk6
 
 </Blockquote>
 
-After running the test, the following [browser metrics](/javascript-api/xk6-browser/getting-started/browser-metrics/) will be reported.
+After running the test, the following [browser metrics](/javascript-api/xk6-browser/get-started/browser-metrics/) will be reported.
 
 <CodeGroup labels={[]}>
 

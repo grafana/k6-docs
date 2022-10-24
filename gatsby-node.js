@@ -214,7 +214,7 @@ const topLevelLinks = [
       { label: 'k6 API', to: `/javascript-api/` },
       {
         label: 'xk6-browser',
-        to: `/javascript-api/xk6-browser/getting-started/welcome/`,
+        to: `/javascript-api/xk6-browser/get-started/welcome/`,
       },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
@@ -690,7 +690,7 @@ function getDocPagesProps({
         /*
         replacePathsInSidebarTree(
           sidebarTree,
-          '/javascript-api/xk6-browser/getting-started/welcome',
+          '/javascript-api/xk6-browser/get-started/welcome',
           '/javascript-api/xk6-browser',
         );
         */
@@ -1181,7 +1181,7 @@ const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: '/getting-started/welcome/',
+    fromPath: '/get-started/welcome/',
     toPath: '/',
     redirectInBrowser: true,
     isPermanent: true,
@@ -1189,7 +1189,7 @@ const createRedirects = ({ actions }) => {
   // TODO: move to appropriate place
   /*
   createRedirect({
-    fromPath: '/javascript-api/xk6-browser/getting-started/welcome/',
+    fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
     toPath: '/javascript-api/xk6-browser/',
     redirectInBrowser: true,
     isPermanent: true,

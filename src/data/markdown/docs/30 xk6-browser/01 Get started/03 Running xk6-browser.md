@@ -47,7 +47,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process. After it starts, you can interact with it using the [browser-level APIs](#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
@@ -77,7 +77,7 @@ To run a simple local script:
 
 You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/xk6-browser/locator/) object, which you can later use to interact with the element.
 
-To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/getting-started/selecting-elements/).
+To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
 
 <Blockquote mod="note" title="">
 
@@ -163,13 +163,13 @@ export default function () {
 
 The preceding code uses `Promise.all([])` to wait for the two promises to be resolved before continuing. Since clicking the submit button causes page navigation, `page.waitForNavigation()` is needed because the page won't be ready until the navigation completes. This is required because there can be a race condition if these two actions don't happen simultaneously. 
 
-Then, you can use [`check`](https://k6.io/docs/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
+Then, you can use [`check`](/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
 
 ## Run both browser-level and protocol-level in a single script
 
 The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events.
 
-To run a browser-level and protocol-level test concurrently, you can use [scenarios](https://k6.io/docs/using-k6/scenarios/). 
+To run a browser-level and protocol-level test concurrently, you can use [scenarios](/using-k6/scenarios/). 
 
 <Blockquote mod="note" title="">
 
@@ -232,6 +232,6 @@ export function news() {
 
 </CodeGroup>
 
-The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](https://k6.io/docs/using-k6/scenarios/executors/constant-vus) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time. 
+The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](/using-k6/scenarios/executors/constant-vus/) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time. 
 
 Since it's all in one script, this allows for greater collaboration amongst teams.

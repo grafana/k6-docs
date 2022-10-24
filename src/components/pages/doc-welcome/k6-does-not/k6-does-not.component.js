@@ -26,7 +26,7 @@ export const K6DoesNot = () => {
             {t('welcome.k6-does-not.browser.testing.text')}{' '}
             <Link
               className={'link'}
-              to={'/javascript-api/xk6-browser/getting-started/welcome/'}
+              to={'/javascript-api/xk6-browser/get-started/welcome/'}
             >
               {t('welcome.k6-does-not.browser.testing.link')}
             </Link>
