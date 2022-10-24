@@ -38,7 +38,7 @@ This includes including ads, images, documents, etc.
   - To run a test from the k6 Cloud UI, select **Run** to start the test.
   - To use the k6 CLI to run a local or cloud test, copy the generated script to your local text editor and execute the `k6 run` or `k6 cloud` command to start the test. 
 
-For more about running k6, refer to the [Running k6 guide](/getting-started/running-k6).
+For more about running k6, refer to the [Running k6 guide](/get-started/running-k6).
 
 ## Having trouble? Try the HAR converter
 

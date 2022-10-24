@@ -21,7 +21,7 @@ export const WhatIsXk6 = () => (
     <p className={styles.description}>
       With xk6 and the Go toolchain, you can build the k6 binary with the
       combination of extensions you want. You can use the{' '}
-      <Link className="link" to={'/extensions/getting-started/bundle/'}>
+      <Link className="link" to={'/extensions/get-started/bundle/'}>
         bundle builder
       </Link>{' '}
       to generate the CLI command that will build your customized k6 binary.

@@ -251,7 +251,7 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 // for sidebar links processing
 const redirectWelcome = (path) =>
   path
-    .replace(/en\/getting-started\/welcome/i, '')
+    .replace(/en\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 const getSlug = (path) => {

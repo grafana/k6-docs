@@ -3,7 +3,7 @@ export const localizedMessages = {
   en: {
     'read-more': 'Read more',
     'suggest-edits': 'suggest edits',
-    'welcome.quickstart.title': 'Quickstart',
+    'welcome.quickstart.title': 'Get started',
     'welcome.quickstart.installation.title': 'Installation',
     'welcome.quickstart.installation.text':
       'Get up and running in no-time, using either a package manager, standalone installer or the official docker image.',
@@ -82,7 +82,7 @@ export const localizedMessages = {
   es: {
     'read-more': 'Leer más',
     'suggest-edits': 'Sugerir ediciones',
-    'welcome.quickstart.title': 'Guía rápida ',
+    'welcome.quickstart.title': 'Empezar',
     'welcome.quickstart.installation.title': 'Instalación',
     'welcome.quickstart.installation.text':
       'Ponlo en marcha en un abrir y cerrar de ojos, utilizando un gestor de paquetes, un instalador autónomo o con la imagen de docker oficial.',

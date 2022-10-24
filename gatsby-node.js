@@ -509,7 +509,7 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/getting-started/explore/`,
+        path: `/extensions/get-started/explore/`,
         component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
         context: {
           sectionName: 'Extensions',
@@ -518,7 +518,7 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/getting-started/bundle/`,
+        path: `/extensions/get-started/bundle/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
@@ -1252,7 +1252,7 @@ const createRedirects = ({ actions }) => {
   });
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
 
@@ -1264,16 +1264,16 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/extensions/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
   createRedirect({
     fromPath: '/extensions/explore/',
-    toPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/extensions/guides/getting-started/',
+    fromPath: '/extensions/guides/get-started/',
     toPath: '/extensions/guides/',
     isPermanent: true,
   });
@@ -1484,6 +1484,67 @@ const createRedirects = ({ actions }) => {
     toPath: '/javascript-api/jslib/k6chaijs/config/',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/getting-started/installation/',
+    toPath: '/get-started/installation/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/installation/troubleshooting/',
+    toPath: '/get-started/installation/troubleshooting/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/running-k6/',
+    toPath: '/get-started/running-k6/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/results-output/',
+    toPath: '/get-started/results-output/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/resources/',
+    toPath: '/get-started/resources/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/',
+    toPath: '/extensions/get-started/create/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/javascript-extensions/',
+    toPath: '/extensions/get-started/create/javescript-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/output-extensions/',
+    toPath: '/extensions/get-started/create/output-extensions/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',

@@ -19,7 +19,7 @@ This is a function that can only be called from the init context (aka **init cod
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
-See the example further down on this page. For a more in-depth description, see [Running k6](/getting-started/running-k6).
+See the example further down on this page. For a more in-depth description, see [Running k6](/get-started/running-k6).
 
 #### Breaking change in v0.36.0
 

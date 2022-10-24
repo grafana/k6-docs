@@ -50,7 +50,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 <DescriptionList>
 
 Application performance monitoring
-: *(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.<br/><br/>[k6 OSS APM integrations](/getting-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
+: *(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.<br/><br/>[k6 OSS APM integrations](/get-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
 
 Concurrent sessions
 : The number of simultaneous VU requests in a test run.
@@ -132,7 +132,7 @@ System under test
 : The software that the load test tests. This could be an API, a website, infrastructure, or any combination of these.
 
 Test run
-: An individual execution of a test script over all configured iterations.<br/><br/>[Running k6](/getting-started/running-k6)
+: An individual execution of a test script over all configured iterations.<br/><br/>[Running k6](/get-started/running-k6)
 
 Test concurrency
 : In k6 Cloud, the number of tests running at the same time.

@@ -193,7 +193,7 @@ Before writing and eventually running your test, set aside some time to think ab
 
 It is important to have a predefined set of goals and expectations, but it's not good to try to meet them all at once. The bigger your list of goals, the less likely your ability to make things right the first time. So, start small, e.g. write and run a test for one or two API endpoints. Try to experiment with different settings and environments, then you can build upon that and execute large tests that span several hours and has thousands of virtual users and hundreds of thousands of requests per second.
 
-The very simple examples in the [running k6](/getting-started/running-k6) section would give you a head start.
+The very simple examples in the [running k6](/get-started/running-k6) section would give you a head start.
 
 ### Correlation and data parameterization
 
@@ -209,7 +209,7 @@ For more information, refer to [the post on the k6 community forum](https://comm
 
 ### URL grouping
 
-By default, k6 will print runtime information and general results to standard output, `stdout`, while the test is running, and will also print a summary after the test has ended. It may output more granular result data using special output modules, one of them being [JSON output](/getting-started/results-output/json). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
+By default, k6 will print runtime information and general results to standard output, `stdout`, while the test is running, and will also print a summary after the test has ended. It may output more granular result data using special output modules, one of them being [JSON output](/get-started/results-output/json). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
 
 Sometimes you need to make lots of similar API requests to read or create many resources of the same type. As shown in the following example, a 100 posts will be fetched with unique requests. Each of these requests will create a metric and will have the full URL inside the metric. This poses a problem for data aggregation, either on our cloud platform or on your own API load testing stack. The problem is that all the metrics for each of these URLs will be separate and they'll be aggregated individually, because they are different in their `id` field. It also creates a lot of unnecessary records in the output.
 

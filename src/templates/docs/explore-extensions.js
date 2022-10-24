@@ -16,11 +16,11 @@ const breadcrumbs = [
   },
   {
     name: 'Getting started',
-    path: '/extensions/getting-started/',
+    path: '/extensions/get-started/',
   },
   {
     name: 'Explore',
-    path: '/extensions/getting-started/explore/',
+    path: '/extensions/get-started/explore/',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function ExploreExtensionsPage({
             Ready to create your bespoke k6 binary? Head over to the{' '}
             <Link
               className={docPageContent.link}
-              to={'/extensions/getting-started/bundle/'}
+              to={'/extensions/get-started/bundle/'}
             >
               bundle builder
             </Link>{' '}

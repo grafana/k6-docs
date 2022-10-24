@@ -104,7 +104,7 @@ k6 lets you configure this in several ways:
   };
   ```
 
-To learn more about how to configure the load options, read the [Adding more VUs guide](/getting-started/running-k6#adding-more-vus) and the [Options guide](/using-k6/options).
+To learn more about how to configure the load options, read the [Adding more VUs guide](/get-started/running-k6#adding-more-vus) and the [Options guide](/using-k6/options).
 
 ### Remove third-party content
 
@@ -154,7 +154,7 @@ For example, tokens expire quickly, and they are one of the most common things t
 
 ## 4. Run the test
 
-Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](/getting-started/installation).
+Now, you can run your load test with k6. If you have not installed k6 yet, please, follow the [k6 installation instructions](/get-started/installation).
 
 Execute the `k6 run` command to run your k6 script:
 
@@ -162,7 +162,7 @@ Execute the `k6 run` command to run your k6 script:
 $ k6 run loadtest.js
 ```
 
-To learn about running k6, check out the [Running k6 tutorial](/getting-started/running-k6).
+To learn about running k6, check out the [Running k6 tutorial](/get-started/running-k6).
 
 ## Read more
 

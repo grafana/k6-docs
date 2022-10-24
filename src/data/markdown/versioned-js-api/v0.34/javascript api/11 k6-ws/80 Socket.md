@@ -28,7 +28,7 @@ excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 | ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send)                   |
 | ws_msgs_received    | Counter | Total number of received messages [Socket.on('message', callback)](/javascript-api/k6-ws/socket/socket-on). |
 
-Check out the [Results output article](/getting-started/results-output) for more information about how to process the metric information.
+Check out the [Results output article](/get-started/results-output) for more information about how to process the metric information.
 
 ### Example
 

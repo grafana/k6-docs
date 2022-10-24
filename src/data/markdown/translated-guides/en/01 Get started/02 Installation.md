@@ -62,9 +62,9 @@ Our [GitHub Releases page](https://github.com/grafana/k6/releases) has a standal
 ## Using k6 extensions
 
 If you use one or more [k6 extensions](/extensions), you need a k6 binary built with your desired extensions.
-Head to the [bundle builder page](/extensions/getting-started/bundle/) to get started.
+Head to the [bundle builder page](/extensions/get-started/bundle/) to get started.
 
 ## Troubleshooting
 
-If installation fails, check the [list of common installation issues](/getting-started/installation/troubleshooting/).
+If installation fails, check the [list of common installation issues](/get-started/installation/troubleshooting/).
 If your problem is not listed and persists, reach out via the channel `#community-discussion` on our [official Slack](https://k6io.slack.com/), or report it on our [community forum](https://community.k6.io/).
