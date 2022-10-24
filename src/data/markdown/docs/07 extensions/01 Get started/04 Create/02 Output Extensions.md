@@ -12,7 +12,7 @@ Some potential reasons for a custom extension could include:
 * To add derived metrics data for storage
 * To filter metrics to only the data you care about
 
-Like [JavaScript extensions](/extensions/getting-started/create/javascript-extensions/),
+Like [JavaScript extensions](/extensions/get-started/create/javascript-extensions/),
 output extensions rely on the extension author to implement specific APIs.
 
 ## Before you start:

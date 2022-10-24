@@ -77,7 +77,7 @@ Installing k6 can be done in three different ways:
 - Pulling the Docker image
 - Downloading the binary for your OS
 
-See the full [installation instructions](/getting-started/installation) for more information.
+See the full [installation instructions](/get-started/installation) for more information.
 
 Additionally, we also have available [guides for installing k6 in specific CI tools](/integrations#continuous-integration-and-continuous-delivery).
 

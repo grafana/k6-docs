@@ -15,7 +15,7 @@ Testers have many reasons they might prefer to run tests from the CLI:
 ## Instructions
 
 1. First, you need to have a k6 Cloud account. If you don't have one, [sign up](https://app.k6.io/account/register) and get 50 cloud tests with the Free Trial.
-1. [Install k6](/getting-started/installation).
+1. [Install k6](/get-started/installation).
 1. Authenticate to k6 Cloud from the CLI. To log in, either use your username and password or your [API token](https://app.k6.io/account/api-token).
 
    <CodeGroup labels={["Log in with username and password", "Log in with the API Token"]}>

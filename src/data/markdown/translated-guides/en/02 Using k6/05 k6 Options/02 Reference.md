@@ -922,7 +922,7 @@ $ k6 run script.js -d 20s --quiet
 
 ## Results output
 
-Specify the results output. Please go to [Results output](/getting-started/results-output) for more information
+Specify the results output. Please go to [Results output](/get-started/results-output) for more information
 on all built-in output modules available and how to configure them. Since version 0.21, this option can be
 specified multiple times. Available in `k6 run` command.
 
@@ -1144,7 +1144,7 @@ C:\k6> $env:K6_SUMMARY_EXPORT="export.json"; k6 run script.js
 
 </CodeGroup>
 
-See an example file on the [Results Output](/getting-started/results-output#summary-export) page.
+See an example file on the [Results Output](/get-started/results-output#summary-export) page.
 
 ## Supply environment variables
 

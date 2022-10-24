@@ -509,7 +509,7 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/getting-started/explore/`,
+        path: `/extensions/get-started/explore/`,
         component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
         context: {
           sectionName: 'Extensions',
@@ -518,7 +518,7 @@ function getTopLevelPagesProps({
         },
       },
       {
-        path: `/extensions/getting-started/bundle/`,
+        path: `/extensions/get-started/bundle/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
@@ -1252,7 +1252,7 @@ const createRedirects = ({ actions }) => {
   });
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
 
@@ -1264,16 +1264,16 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/extensions/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
   createRedirect({
     fromPath: '/extensions/explore/',
-    toPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/extensions/guides/getting-started/',
+    fromPath: '/extensions/guides/get-started/',
     toPath: '/extensions/guides/',
     isPermanent: true,
   });
@@ -1484,6 +1484,19 @@ const createRedirects = ({ actions }) => {
     toPath: '/javascript-api/jslib/k6chaijs/config/',
     isPermanent: true,
   });
+
+  createRedirect({
+    fromPath: '/getting-started/*',
+    toPath: '/get-started/*',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/*',
+    toPath: '/extensions/get-started/*',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',

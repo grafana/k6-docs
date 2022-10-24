@@ -60,7 +60,7 @@ We presume that you already have a machine that supports both running k6 and Clo
 
 ## Run the k6 test
 
-Once the agent is running, [install](/getting-started/installation) k6 and [run](/getting-started/running-k6) the test, so that the metrics gets sent to the agent with the following command:
+Once the agent is running, [install](/get-started/installation) k6 and [run](/get-started/running-k6) the test, so that the metrics gets sent to the agent with the following command:
 
 <CodeGroup labels={[]}>
 
