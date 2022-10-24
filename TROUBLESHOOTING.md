@@ -165,3 +165,16 @@ Prettier evaluates the entire abstract syntax tree, so some errors can be surpri
 
 Some writers don't like this linting, but the alternative is a multitude of codestyles in our load-test snippets, which could create a confusing reading experience.
 Readers ~~>~~ `>` Writers. 
+
+Sometimes, though, the Prettier output can be misleading.
+
+This error suggests that the problem is with a missing config. Really, the problem is with JS formatting at line 266. 
+
+```txt
+✖ eslint -c ./src/data/markdown/.eslintrc.js --fix:
+
+./k6-docs/src/data/markdown/translated-guides/en/03 Results output/100 End-of-test/150-custom-summary.md
+  266:1  error  Parsing error: No Babel config file detected for ./k6-docs/src/data/markdown/translated-guides/en/03 Results output/100 End-of-test/150-custom-summary.md/5_5.javascript. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files
+```
+
+
