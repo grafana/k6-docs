@@ -21,6 +21,8 @@ To build a binary with the extension:
 1. Ensure you have [Go](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
 2. Run the following commands in a terminal:
 
+<CodeGroup labels={["Linux/MacOS", "Windows"]}>
+
 ```bash
 # Install xk6
 go install go.k6.io/xk6/cmd/xk6@latest
@@ -32,5 +34,19 @@ xk6 build --output xk6-browser --with github.com/grafana/xk6-browser
 ... [INFO] Building k6
 ... [INFO] Build complete: xk6-browser
 ```
+
+```bash
+# Install xk6
+go install go.k6.io/xk6/cmd/xk6@latest
+
+# Build the xk6-browser binary
+xk6 build --output xk6-browser.exe --with github.com/grafana/xk6-browser
+
+... [INFO] Build environment ready
+... [INFO] Building k6
+... [INFO] Build complete: xk6-browser
+```
+
+</CodeGroup>
 
 xk6 will create the `xk6-browser` binary in the current working directory.
