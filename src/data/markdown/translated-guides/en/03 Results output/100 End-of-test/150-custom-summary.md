@@ -1,9 +1,9 @@
 ---
 title: Custom summary
-excerpt: With the handlesummary() function, you can customize every part of your report. Change the content, redirect output, and more.
+excerpt: With handlesummary(), you can customize every part of your report. Change the content, redirect output, and more.
 ---
 
-With the `handleSummary()` callback, you can completely customize your end-of-test summary.
+With `handleSummary()`, you can completely customize your end-of-test summary.
 In this document, you can read about:
 - How `handleSummary()` works
 - How to customize the content and output location of your summary
@@ -19,11 +19,11 @@ However, we plan to support the feature for k6 Cloud tests, too.
 
 ## About the `handleSummary()` callback
 
-After your VU code runs, k6 aggregates your metrics into an object.
+After your VU code runs, k6 aggregates your metrics into a JavaScript object.
 The `handleSummary()` function takes this object as an argument (called `data` in all examples here).
 k6 calls `handleSummary()` at the end of the test run, even after [`teardown()`](/using-k6/test-life-cycle).
 
-You can use `handleSummary()` to manipulate this object as you want.
+You can use `handleSummary()` to create a custom summary or return the default summary object.
 To get an idea of what the data looks like,
 run this script and open the output file, `summary.json`.
 
@@ -82,7 +82,7 @@ As an example, this `return` statement sends a report to standard output and wri
 
 </CodeGroup>
 
-### Extract data properties
+### Example: extract data properties
 
 This minimal `handleSummary()` extracts the `median` value for the `iteration_duration` metric and prints it to standard output:
 
@@ -108,7 +108,7 @@ export function handleSummary(data) {
 </CodeGroup>
 
 
-### Modify default output
+### Example: modify default output
 
 If `handleSummary()` is exported, k6 _does not_ print the default summary.
 However, if you want to keep the default output, you could import `textSummary` from the [K6 JS utilities library](https://jslib.k6.io/).
@@ -211,7 +211,7 @@ For compactness, these outputs were limited with the `summaryTrendStats` option.
 </Collapsible>
 
 
-### Custom reports to a remote server
+### Example: Send to remote servers and make custom reports
 
 You can also send the generated reports to a remote server (over any protocol that k6 supports).
 This script:
