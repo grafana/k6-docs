@@ -4,7 +4,7 @@ excerpt: With handlesummary(), you can customize every part of your report. Chan
 ---
 
 With `handleSummary()`, you can completely customize your end-of-test summary.
-In this document, you can read about:
+In this document, read about:
 - How `handleSummary()` works
 - How to customize the content and output location of your summary
 - The data structure of the summary object
@@ -21,7 +21,6 @@ However, we plan to support the feature for k6 Cloud tests, too.
 
 After your VU code runs, k6 aggregates your metrics into a JavaScript object.
 The `handleSummary()` function takes this object as an argument (called `data` in all examples here).
-k6 calls `handleSummary()` at the end of the test run, even after [`teardown()`](/using-k6/test-life-cycle).
 
 You can use `handleSummary()` to create a custom summary or return the default summary object.
 To get an idea of what the data looks like,
@@ -49,6 +48,9 @@ export function handleSummary(data) {
 Fundamentally, `handleSummary()` is just a function that can access a data object.
 As such, you can transform the summary data into any text format: JSON, HTML, console, XML, and so on.
 You can pipe your custom summary to [standard output or standard error](https://en.wikipedia.org/wiki/Standard_streams), write it to a file, or send it to a remote server.
+
+
+k6 calls `handleSummary()` at the end of the [test life cycle](/using-k6/test-life-cycle).
 
 ## Use handleSummary()
 
@@ -162,9 +164,10 @@ export function handleSummary(data) {
 In the collapsible, you can use the tabs to compare default and modified reports.
 
 
-<Collapsible title="Compare default and modified reports" isOpen="" tag="">
+<Collapsible title="Compare the default and modified reports" isOpen="" tag="">
 
-Select `Modified` to see the output of the preceding script.
+To see the output of the preceding script,
+select **Modified**.
 For compactness, these outputs were limited with the `summaryTrendStats` option.
 
 <CodeGroup labels={["Default report", "Modified"]} lineNumbers={[]} showCopyButton={[true]}>
@@ -210,26 +213,62 @@ For compactness, these outputs were limited with the `summaryTrendStats` option.
 
 </Collapsible>
 
+### Example: make custom file format
 
-### Example: Send to remote servers and make custom reports
+This script imports a helper function to turn the summary into a JUnit XML.
+The output is a short XML file that reports whether the test thresholds failed.
 
-You can also send the generated reports to a remote server (over any protocol that k6 supports).
-This script:
-
-- Turns the summary object into JSON and makes an HTTP request to send it to a remote server
-- Uses an imported helper function to turn the summary into a jUnit XML report
-- Prints the default report to `stdout`.
-
-<CodeGroup labels={["handleSummary() demo"]} lineNumbers={[true]}>
+<CodeGroup labels={["Custom file format"]} lineNumbers={[true]}>
 
 ```javascript
 import http from 'k6/http';
-import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
-export default k6example; // use some predefined example to generate some data
-export const options = { vus: 5, iterations: 10 };
 
-// These are still very much WIP and untested, but you can use them as is or write your own!
-import { jUnit, textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
+// Use example functions to generate data
+import { jUnit } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
+import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
+
+export default k6example;
+export const options = {
+  vus: 5,
+  iterations: 10,
+  thresholds: {
+    http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
+  },
+};
+
+export function handleSummary(data) {
+  console.log('Preparing the end-of-test summary...');
+
+  return {
+    'junit.xml': jUnit(data), // Transform summary and save it as a JUnit XML...
+  };
+}
+```
+
+</CodeGroup>
+
+Output for a test that crosses a threshold looks something like this:
+
+```xml
+<?xml version="1.0"?>
+<testsuites tests="1" failures="1">
+<testsuite name="k6 thresholds" tests="1" failures="1"><testcase name="http_req_duration - p(95)&lt;200"><failure message="failed" /></testcase>
+</testsuite >
+</testsuites >
+```
+
+### Example: send data to remote server
+
+You can also send the generated reports to a remote server (over any protocol that k6 supports).
+
+<CodeGroup labels={["POST the summary"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+
+// use example function to generate data
+import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
+export const options = { vus: 5, iterations: 10 };
 
 export function handleSummary(data) {
   console.log('Preparing the end-of-test summary...');
@@ -239,21 +278,19 @@ export function handleSummary(data) {
   if (resp.status != 200) {
     console.error('Could not send summary, got status ' + resp.status);
   }
-
-  return {
-    'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout...
-    '../path/to/junit.xml': jUnit(data), // but also transform it and save it as a JUnit XML...
-    'other/path/to/summary.json': JSON.stringify(data), // and a JSON with all the details...
-    // And any other JS transformation of the data you can think of,
-    // you can write your own JS helpers to transform the summary data however you like!
-  };
 }
 ```
 
 </CodeGroup>
 
-These helper functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
+<Blockquote mod="note" title="">
+
+The last examples use imported helper functions.
+These functions might change, so keep an eye on [jslib.k6.io](https://jslib.k6.io/) for the latest.
+
 Of course, we always welcome [PRs to the jslib](https://github.com/grafana/jslib.k6.io), too!
+
+</Blockquote>
 
 ## Summary data reference
 
@@ -263,8 +300,6 @@ All metrics are in a top-level `metrics` object.
 In this object, each metric has an object whose key is the name of the metric.
 For example, if your `handleSummary()` argument is called `data`,
 the function can access the object about the `http_req_duration` metric at `data.metrics.http_req_duration`.
-
-
 
 ### Metric schema
 
@@ -276,9 +311,9 @@ The specific values depend on the [metric type](/using-k6/metrics):
 | Property             | Description                                                                    |
 |----------------------|--------------------------------------------------------------------------------|
 | type                 | String that gives the metric type                                              |
-| contains             | String that describes the data                                                    |
+| contains             | String that describes the data                                                 |
 | values               | Object with the summary metric values (properties differ for each metric type) |
-| thresholds           | Object with info about the thresholds for the metric (if applicable)                           |
+| thresholds           | Object with info about the thresholds for the metric (if applicable)           |
 | thresholds.{name}    | Name of threshold (object)                                                     |
 | thresholds.{name}.ok | Whether threshold was crossed (boolean)                                        |
 
