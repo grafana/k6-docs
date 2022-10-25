@@ -204,4 +204,4 @@ Returns test runs for a particular test.
 
 Manually stops a test run.
 
-**POST** `/loadtests/v2/runs/<test_run_id>/stop``
+**POST** `/loadtests/v2/runs/<test_run_id>/stop`
