@@ -5,7 +5,6 @@ excerpt: 'Introduction to Cloud REST API'
 
 Welcome to the k6 Cloud REST API docs!
 
-The k6 Cloud API gives you programmatic access to the same set of features used to power the service at [app.k6.io](https://app.k6.io). 
 The things you can do with the Cloud API include:
 - View data about organizations
 - Start tests
