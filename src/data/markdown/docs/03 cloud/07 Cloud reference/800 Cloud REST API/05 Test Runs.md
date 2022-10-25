@@ -6,6 +6,55 @@ excerpt: ''
 A _test run_ is an individual execution of a test.
 Every test run has an ID, held in an array of `test_run_ids` in the `k6-test` object.
 
+## Start test run
+
+Starts a test run in k6 Cloud for the specified test ID.
+
+The test run is managed by k6 Cloud from beginning to end.
+You can monitor the test progress in the k6 Cloud application.
+From there, you can also export and analyze the result.
+
+**POST** `https://api.k6.io/loadtests/v2/tests/{id}/start-testrun`
+
+| Path Parameter | Type    | Description                                   |
+| -------------- | ------- | --------------------------------------------- |
+| id             | integer | A unique integer value identifying this test. |
+
+<CodeGroup labels={["Response"]}>
+
+```json
+{
+  "k6-run": {
+    "config": {},
+    "created": "2020-08-13T18:28:45Z",
+    "duration": 0,
+    "ended": "2020-08-13T18:28:45Z",
+    "error_code": 0,
+    "error_detail": "string",
+    "id": 0,
+    "k6_archive": "string",
+    "load_time": 0,
+    "note": "string",
+    "organization_id": 0,
+    "processing_status": 0,
+    "project_id": 0,
+    "public_id": 0,
+    "result_status": 0,
+    "run_process": "string",
+    "run_status": 0,
+    "script": "string",
+    "started": "2020-08-13T18:28:45Z",
+    "stopped_by_id": 0,
+    "test_id": 0,
+    "user_id": 0,
+    "version": "string",
+    "vus": 0
+  }
+}
+```
+
+</CodeGroup>
+
 ## Read test run
 
 Returns details of a test run with the specified ID.
@@ -149,3 +198,10 @@ Returns test runs for a particular test.
 ```
 
 </CodeGroup>
+
+
+## Stop test runs
+
+Manually stops a test run.
+
+**POST** `/loadtests/v2/runs/<test_run_id>/stop``
