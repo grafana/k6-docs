@@ -172,11 +172,10 @@ While teams/projects can be auto-created on-connection (if you arranged for this
 Follow these steps to update list of default teams/projects for new users:
 
 1. Make sure you correctly setup the SAML organization with the help of the customer success team. You can use your admin account to test the setup.
-2. Go to your organization setting and choose the SAML SSO tab:
+2. Go to your organization setting and choose the SAML SSO tab.
 ![SAML SSO settings](images/04-SAML-SSO/saml-sso-settings.png)
-As you can see below, the default project is already selected. If you have access to Teams, it's recommended that you [set up your Teams](/cloud/project-and-team-management/teams#creating-a-team) to grant access to the Projects you like, and just set up new users to join those Team(s) here rather than add them directly to Projects.
 
+3. If you have access to Teams, it's recommended that you [set up your Teams](/cloud/project-and-team-management/teams#creating-a-team) to grant access to the Projects you like, and just set up new users to join those Team(s) here rather than add them directly to Projects. From the drop-down you can choose the default team(s) or project(s) newly provisioned users will be assigned.
 ![SAML SSO default project](images/04-SAML-SSO/saml-sso-default-project.png)
-3. From the drop-down you can choose the default team(s) or project(s) newly provisioned users will be assigned. Then click on update button:
-![SAML SSO update default projects](images/04-SAML-SSO/saml-sso-update-default-project.png)
+
 4. Now the users assigned to the IdP application can sign in to k6 Cloud. They'll be automatically added to project(s) in step 3 with __project read/write__ permissions. They will join Teams with a **team read only** permission (but the team will normally grant **project read/write** projects to all projects linked to the team).
