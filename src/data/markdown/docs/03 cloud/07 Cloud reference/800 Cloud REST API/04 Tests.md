@@ -5,7 +5,7 @@ excerpt: ''
 
 To read, update, and start tests, use the `/loadtests/v2/tests/` path.
 
-## List tests
+## List load tests
 
 Returns all tests within a specified project.
 If no project is specified, k6 returns the default project.
