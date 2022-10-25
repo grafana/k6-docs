@@ -271,7 +271,7 @@ At minimum, every team has one environment: production. Often that's the *only* 
 There's still a lot of testing that can be done in production without disrupting regular operations. Consider the following options:
 - Use lower levels of load when running load tests during peak hours.
 - Schedule load tests for off-peak hours, when the least amount of users would potentially be affected.
-- Choose load test types that are less risky: for example, consider saving stress or breakpoint tests for pre-production.
+- Choose load test types that are less risky: for example, consider saving stress or break point tests for pre-production.
 - Publicly announce a short window during which your system will be down for maintenance and testing.
 - Use techniques like synthetic monitoring, which makes requests in a more staggered way than typical load testing.
 - Use real user monitoring tools to get snapshots of user performance at load.
