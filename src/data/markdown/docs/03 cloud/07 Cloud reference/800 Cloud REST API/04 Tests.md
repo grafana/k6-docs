@@ -3,7 +3,7 @@ title: 'Tests'
 excerpt: ''
 ---
 
-To read, update, and start tests, use the `/tests` path.
+To read, update, and start tests, use the `/loadtests/v2/tests/` path.
 
 ## List tests
 
