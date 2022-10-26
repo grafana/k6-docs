@@ -15,10 +15,10 @@ The things you can do with the Cloud API include:
 | APIs                  |   |
 |---------------------------|--------|
 | [Organizations](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and List projects   |
-| [Test](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update, Delete, and Start a test run   |
-| [Test Runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | List and Read    |
-| [Test Runs Metrics](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and Export metric data   |
-| [Error reference](/cloud/cloud-reference/cloud-rest-api/organizations/)      | Error message format    |
+| [Load Tests](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update and Delete a Load Test |
+| [Load Test Runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | Start, Stop, List and Read a Load Test Run   |
+| [Load Test Run Metrics](/cloud/cloud-reference/cloud-rest-api/test-run-metrics/)      | List, Read, and Export metric test data   |
+| [Error reference](/cloud/cloud-reference/cloud-rest-api/error-reference/)      | Error message format    |
 
 ## Authentication
 
@@ -29,7 +29,7 @@ If you have adequate permissions, you can get the token in your account settings
 The k6 Cloud [Token docs](https://k6.io/docs/cloud/integrations/token) describe the different access levels a token can have and the procedure to generate a token.
 
 Requests to the cloud API MUST contain an authorization header with the value of your token.
-Using cURL, a request looks like this:
+Using [curl](https://curl.se/), a request looks like this:
 
 ```bash
 curl -H "Authorization: token <YOUR_API_TOKEN_HERE>"  #replace with your token

@@ -50,7 +50,7 @@ You MAY sort or query the results with query parameters.
 
 </CodeGroup>
 
-## Read test
+## Read load test
 
 Returns details of a test with the specified ID.
 
@@ -80,7 +80,7 @@ Returns details of a test with the specified ID.
 
 </CodeGroup>
 
-## Update test
+## Update load test
 
 Partially updates a test in k6 Cloud.
 
@@ -121,7 +121,7 @@ This patch updates only the specified fields.
 
 </CodeGroup>
 
-## Delete test
+## Delete load test
 
 Deletes a test with the specified test ID.
 

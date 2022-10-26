@@ -20,7 +20,7 @@ The API returns errors in the following format:
 }
 ```
 
- `message` and `code`**are required fields**:
+ `message` and `code` **are required fields**:
 - **`message`**  describes the error.
 - **`code`** is an internal numerical identifier, useful when reporting problems to k6 support.
 

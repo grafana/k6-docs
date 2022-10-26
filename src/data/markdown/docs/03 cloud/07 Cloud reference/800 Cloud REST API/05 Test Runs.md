@@ -6,9 +6,11 @@ excerpt: ''
 A _test run_ is an individual execution of a test.
 Every test run has an ID, held in an array of `test_run_ids` in the `k6-test` object.
 
-## Start test run
+## Start load test run
 
-Starts a test run in k6 Cloud for the specified test ID.
+Starts a test run in k6 Cloud for the specified Load Test ID. 
+
+> Note that this endpoint uses the `/v2/tests/` base URL rather than `/v2/runs`. It also needs to be provided with a Load Test `{id}`. This is because this endpoint makes use of the data from the provided Load Test to create and return a new Load Test Run.
 
 The test run is managed by k6 Cloud from beginning to end.
 You can monitor the test progress in the k6 Cloud application.
@@ -55,7 +57,7 @@ From there, you can also export and analyze the result.
 
 </CodeGroup>
 
-## Read test run
+## Read load test run
 
 Returns details of a test run with the specified ID.
 The response contains several fields about test-run status.
@@ -143,7 +145,7 @@ Possible values are the following:
 
 </CodeGroup>
 
-## List test runs
+## List load test runs
 
 Returns test runs for a particular test.
 
@@ -200,8 +202,8 @@ Returns test runs for a particular test.
 </CodeGroup>
 
 
-## Stop test runs
+## Stop load test run
 
-Manually stops a test run.
+Manually stops a test run. If you follow along in the app, the test-run will be marked as `Aborted (by User)`. Note that can take a few moments before the test actually stops as the processor shuts down.
 
 **POST** `/loadtests/v2/runs/<test_run_id>/stop`
