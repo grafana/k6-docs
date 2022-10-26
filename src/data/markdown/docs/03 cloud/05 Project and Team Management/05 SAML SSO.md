@@ -146,8 +146,8 @@ Setting Azure up to send Group attributes, allows for more powerful mapping of A
 (It doesn't matter what the Attribute is called, as long as you tell us what you chose). Azure AD sends "Group Object IDs", so if you are a member of three groups, the data k6 receives would look like this: 
 
     "department": ["6663s5-234f20342-c232ad1-8dwsr2356", 
-                                    "114fs5-664f20543-b612bd3-s7sr23c88", 
-                                    "57f6sa-28ab52112-a25sc85-abc2aa223"]
+                   "114fs5-664f20543-b612bd3-s7sr23c88", 
+                   "57f6sa-28ab52112-a25sc85-abc2aa223"]
 
 k6 won't know which Azure Group each ID corresponds to. So you need to check the `Users and Groups` for your Azure application and figure out the  `Object Id` for each Group. You then need to send to send the k6 customer support a mapping like this: 
   
