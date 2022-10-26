@@ -149,7 +149,7 @@ Setting Azure up to send Group attributes, allows for more powerful mapping of A
                                     "114fs5-664f20543-b612bd3-s7sr23c88", 
                                     "57f6sa-28ab52112-a25sc85-abc2aa223"]
 
-There is no way for k6 cloud to know which Group ID each corresponds to. So you need to check the `Users and Groups` for your Azure application and figure out the  `Object Id` for each Group. You then need to send to send the k6 customer suppport a mapping like this: 
+k6 won't know which Azure Group each ID corresponds to. So you need to check the `Users and Groups` for your Azure application and figure out the  `Object Id` for each Group. You then need to send to send the k6 customer support a mapping like this: 
   
 | Azure Group Object ID | Team /Project name to use on the k6 side| 
 | --------------- | ----------------------------------- | 
