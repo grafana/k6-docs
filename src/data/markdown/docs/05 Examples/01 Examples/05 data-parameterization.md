@@ -14,7 +14,7 @@ necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a 
 Parameterization helps to prevent server-side caching from impacting your load test.
 This will, in turn, make your test more realistic.
 
-<Blockquote mod="warning">
+## Performance implications of `SharedArray`
 
 Each VU in k6 is a separate JS VM. To prevent multiple copies of the whole data file,
 [SharedArray](/javascript-api/k6-data/sharedarray) was added. It does have some CPU overhead in accessing elements compared to a normal non shared
@@ -30,7 +30,6 @@ additional work.
 
 A note on performance characteristics of `SharedArray` can be found within its [API documentation](/javascript-api/k6-data/sharedarray#performance-characteristics).
 
-</Blockquote>
 
 ## From a JSON file
 
@@ -68,8 +67,7 @@ export default function () {
 
 ## From a CSV file
 
-As k6 doesn't support parsing CSV files natively, we'll have to resort to using a
-library called [Papa Parse](https://www.papaparse.com/).
+k6 doesn't parse CSV files natively, but you can use an external library, [Papa Parse](https://www.papaparse.com/).
 
 You can download the library and import it locally like this:
 
