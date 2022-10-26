@@ -3,7 +3,7 @@ title: 'Test Runs'
 excerpt: ''
 ---
 
-A _test run_ is an individual execution of a test.
+A _load test run_ is an individual execution of a load test.
 Every test run has an ID, held in an array of `test_run_ids` in the `k6-test` object.
 
 ## Start load test run
@@ -147,7 +147,7 @@ Possible values are the following:
 
 ## List load test runs
 
-Returns test runs for a particular test.
+Returns all test runs for a particular load test.
 
 **GET** `https://api.k6.io/loadtests/v2/runs?test_id={test_id}`
 
@@ -204,6 +204,6 @@ Returns test runs for a particular test.
 
 ## Stop load test run
 
-Manually stops a test run. If you follow along in the app, the test-run will be marked as `Aborted (by User)`. Note that can take a few moments before the test actually stops as the processor shuts down.
+Manually stops a load test run. If you follow along in the app, the test-run will be marked as `Aborted (by User)`. Note that can take a few moments before the test actually stops as the processor shuts down.
 
-**POST** `/loadtests/v2/runs/<test_run_id>/stop`
+**POST** `/loadtests/v2/runs/{id}/stop`
