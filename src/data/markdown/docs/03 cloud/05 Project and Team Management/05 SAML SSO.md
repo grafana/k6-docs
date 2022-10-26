@@ -28,7 +28,7 @@ To set up SAML SSO for your organization, you need admin access to your k6 Organ
 2. You need to find the **IdP Metadata URL** for your SAML SSO application. This should be forwarded to the k6 customer success team.
     - In Okta, go to the "Sign on" tab for your IdP application. Use `SAML Signing Certificates->Actions->View IdP metadata` and copy the URL of the page that opens.
     - In Azure, find the "Single sign-on" menu for your IdP application. Copy the `SAML Certificates->App Federation Metadata Url` field.
-3. You will get a **token** back from the k6 customer success team. In the SAML SSO application, add a custom _attribute_ `token` and set it to the value of the token you received. [See below](#idp-specific-setups)  for examples.
+3. You will get a **token** back from the k6 customer success team. In the SAML SSO application, add a custom _attribute_ `token` and set it to the value of the token you received. [See below](#idp-specific-setups) for examples.
 4. If your IdP supports it, you can create custom attributes that point to IdP _Groups_ you want to map to k6 cloud Teams/Projects. These key:value pairs will be sent to k6 cloud when the user logs in. [See below](#idp-specific-setups) for examples for Okta and Azure AD. 
 5. Assign IdP Groups (or users) to the application so they can use it.
 6. **Optional:** Request the k6 customer success team to enforce SAML SSO on all existing and new users. This effectively disables username/password authentication for all users, even the owner.
