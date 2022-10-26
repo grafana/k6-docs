@@ -260,7 +260,7 @@ if (process.env.BUCKET_NAME) {
 
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || `/docs`,
-
+  trailingSlash: 'always',
   siteMetadata: {
     siteTitle:
       'Docs k6.io - Performance testing for developers, like unit-testing, for performance', // <title>
