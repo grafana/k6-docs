@@ -7,7 +7,7 @@ excerpt: 'Guide on setting up a SAML SSO Identity Provider with k6 Cloud'
 
 ## What is SAML SSO?
 
-[SAML SSO](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) is an open standard that allows your company to manage your users through a central Identity Provider (IdP) application (such as [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) and [Okta](/cloud/project-and-team-management/saml-sso/okta)).
+[SAML SSO](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) allows your company to manage your users through a central Identity Provider (IdP) application (such as [Azure Active Directory](/cloud/project-and-team-management/saml-sso/azure-ad) and [Okta](/cloud/project-and-team-management/saml-sso/okta)).
 Once set up, new employees just need to be granted access in that application. They will then be able to log into k6 cloud without any additional authentication.
 
 Upon connecting, the user will end up in the correct k6 organization and have access to k6 [Teams](/cloud/project-and-team-management/teams) and [Projects](/cloud/project-and-team-management/projects) based on the Okta/Azure Groups you have assigned them to. Removing them from the IdP means they also completely lose access to k6.
@@ -18,7 +18,6 @@ Upon connecting, the user will end up in the correct k6 organization and have ac
 - [Azure Active Directory](https://azure.microsoft.com/en-au/products/active-directory/) - . Azure is supported, but Azure only pass group IDs and not actual group names to k6 cloud. This means that for anything more advanced, you need to manually create Teams/Projects on the k6 cloud side and then contact us in order to map them to the IDs sent from Azure AD.
 - [Auth0](https://auth0.com/) is tested, but not supported, because it can't map [custom attributes](https://community.auth0.com/t/adding-custom-saml-attribute-when-auth0-is-idp/45691) in assertions.
 - Since we support the open [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0) standard, you can connect k6 Cloud to practically any SAML 2.0 identity provider, not just the ones documented here. For further assistance, please contact support.
-
 
 ## General setup
 
@@ -105,7 +104,6 @@ This example would allow all Okta Groups to be sent. When a user connects, _only
 
 If such teams existed on the k6 side, you'd join them. Otherwise they would be auto-created. Auto-created teams also get a Project with the same name assigned to it. 
 
-
 ## Azure Active Directory
 
 Settings are modified from the `Single sign-on` sidebar menu for your Azure k6 cloud application. You can also check out [setup instructions with images](/cloud/project-and-team-management/saml-sso/azure-ad).
@@ -159,7 +157,6 @@ k6 won't know which Azure Group each ID corresponds to. So you need to check the
 
 
 The k6 cloud support team will then map the Group IDs to your Teams on the k6 cloud side.
-
 
 ## Assigning default Teams (or projects) to newly provisioned users
 
