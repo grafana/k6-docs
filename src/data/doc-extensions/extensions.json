@@ -279,30 +279,6 @@
       "categories": ["Messaging"]
     },
     {
-      "name": "xk6-encoding",
-      "description": "Comfortably parse CSV values in tests",
-      "url": "https://github.com/mstoykov/xk6-encoding",
-      "logo": "",
-      "author": {
-        "name": "Mihail Stoykov",
-        "url": "https://github.com/mstoykov"
-      },
-      "official": false,
-      "categories": ["Misc"]
-    },
-    {
-      "name": "xk6-counter",
-      "description": "Share and increment a counter between VUs",
-      "url": "https://github.com/mstoykov/xk6-counter",
-      "logo": "",
-      "author": {
-        "name": "Mihail Stoykov",
-        "url": "https://github.com/mstoykov"
-      },
-      "official": false,
-      "categories": ["Misc"]
-    },
-    {
       "name": "xk6-docker",
       "description": "Docker",
       "url": "https://github.com/grafana/xk6-docker",
