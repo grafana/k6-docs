@@ -85,7 +85,7 @@ These are required.
 | user.username   | Basic       | user.login         |
 | user.first_name | Basic       | user.firstName     |
 | user.last_name  | Basic       | user.lastName      |
-| token           | Basic       | \<TOKEN-YOU-GET-FROM-K6-SUPPORT\> |
+| token           | Basic       | `<TOKEN-YOU-GET-FROM-K6-SUPPORT>` |
 
 ### Group Attribute Statements
 
@@ -130,7 +130,7 @@ These are required.
 | user.last_name | user.surname | 
 | user.email | user.userprincipalname | 
 | user.username | user.userprincipalname | 
-| token | "\<TOKEN-YOU-GET-FROM-K6-SUPPORT\>" | 
+| token | `<TOKEN-YOU-GET-FROM-K6-SUPPORT>` | 
 | Unique User Identifier | user.userprincipalname | 
 
 ### Additional Attributes and Claims 
