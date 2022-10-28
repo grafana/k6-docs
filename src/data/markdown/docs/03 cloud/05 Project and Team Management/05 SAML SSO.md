@@ -19,7 +19,6 @@ Upon connecting, the user will end up in the correct k6 organization and have ac
 
 </Blockquote>
 
-
 ## Suggested identity providers
 
 - [Okta](https://www.okta.com) 
@@ -40,18 +39,21 @@ To set up SAML SSO for your organization, you need the following:
 Currently, setting up SAML SSO is a manual process that involves getting in touch with the k6 customer success team. 
 The general procedure follows these steps:
 
-1. Choose or create the `k6 Cloud` SAML SSO application on your IdP of choice (such as Okta or Azure). k6 recommends organizing your users into _Groups_ on the IdP side. Refer to the [Setups for specific IdPs](#idp-specific-setups).
+1. Choose or create the `k6 Cloud` SAML SSO application on your IdP of choice (such as Okta or Azure). 
+    - We recommend organizing your users into _Groups_ on the IdP side. 
+     - The k6 Cloud's SAML SSO URL is https://api.k6.io/sso/acs/ 
+     - The k6 Cloud's SAM SSO logout URL (if needed) is https://api.k6.io/sso/acs/logout 
+     - For detailed instructions, refer to the [Setups for specific IdPs](#idp-specific-setups).
 2. Find the **IdP Metadata URL** for your SAML SSO application. Forward the URL to the k6 customer success team.
-    - In Okta, go to the **Sign on** tab for your IdP application. Use `SAML Signing Certificates->Actions->View IdP metadata` and copy the URL of the page that opens.
-    - In Azure, find the **Single sign-on** menu for your IdP application. Copy the `SAML Certificates->App Federation Metadata Url` field.
 3. After you send the URL, the customer success team will send a **token**. In the SAML SSO application, add a custom _attribute_ `token` and set it to the value of the token you received.
 4. **Optional**: If your IdP supports it, create custom attributes that point to the IdP _Groups_  that you want to map to k6 cloud Teams or Projects. These key-value pairs are sent to k6 cloud when users log in. [See below](#idp-specific-setups) for examples for Okta and Azure AD. 
 5. Assign IdP Groups (or users) to the application so they can use it.
 6. **Optional:** Request the k6 customer success team to enforce SAML SSO on all existing and new users. This effectively disables username/password authentication for all users, even the owner.
 7. **Optional:** In k6 Cloud, go to `Organization->Settings->SAML SSO`. Choose the Team or Project that newly provisioned users will join by default.
 
-After these steps, users with access to the IdP `k6 Cloud` app can now click the icon to log into k6 Cloud for the first time.
-9. After users logs in once (is _provisioned_), they can henceforth log in both via the IdP dashboard and through the SAML SSO button available on the login page of [k6.io](https://app.k6.io/account/login).
+After these steps, users with access to the IdP `k6 Cloud` app can now click the icon to log into k6 Cloud for the first time. 
+
+After a user logs in once (is _provisioned_), they can henceforth log in both via the IdP dashboard and through the SAML SSO button available on the login page of [k6.io](https://app.k6.io/account/login).
 
 > ⚠️ __Invite users via k6 Cloud web app doesn't work with SAML SSO__
 >
@@ -72,14 +74,16 @@ If you are familiar with SAML SSO, you only need this information to set up your
 
 ### Okta 
 
-These are modified from the Okta app in **General tab -> SAML Settings -> Edit**. You can also check out [setup instructructions with images](/cloud/project-and-team-management/saml-sso/okta). 
+To find the **IdP metadata URL** needed by the k6 customer support team, go to the **Sign on** tab for your Okta application. Use `SAML Signing Certificates->Actions->View IdP metadata` and copy the URL of the page that opens.
+
+General setup is done from the Okta app in **General tab -> SAML Settings -> Edit**. You can also check out [setup instructructions with images](/cloud/project-and-team-management/saml-sso/okta). 
 
 | Attribute                  | Value                                  |
 | -------------------------- | -------------------------------------- |
-| Single Sign On URL         | https://api.loadimpact.com/sso/acs/    |
-| Recipient URL              | https://api.loadimpact.com/sso/acs/    |
-| Destination URL            | https://api.loadimpact.com/sso/acs/    |
-| Audience Restriction       | https://api.loadimpact.com/sso/acs/    |
+| Single Sign On URL         | https://api.k6.io/sso/acs/    |
+| Recipient URL              | https://api.k6.io/sso/acs/    |
+| Destination URL            | https://api.k6.io/sso/acs/    |
+| Audience Restriction       | https://api.k6.io/sso/acs/    |
 | Default Relay State        | None                                   |
 | Name ID Format             | EmailAddress                           |
 | Response                   | Signed                                 |
@@ -108,15 +112,14 @@ These are required.
 
 Optional. If you don't pass group attribures, all users will start in the organization's _default_ Projects or Teams (configurable from the app, see the following section).
 
-Configuring Okta to send Group attributes gives you more powerful mapping of Okta Groups to k6 cloud Teams Projects. Whatever you choose to add, you must communicate it to the k6 customer success team so they can set the matching mapping on the k6 cloud side.
+Configuring Okta to send Group attributes gives you more powerful mapping of Okta Groups to k6 cloud Teams or Projects. Whatever you choose to add, you must communicate it to the k6 customer success team so they can set the matching mapping on the k6 cloud side.
 
-This example would allow all Okta Groups to be sent.
-When a user connects, Okta will send _only_ the Groups that the user acrually belongs to (k6 ignores the Okta `Everyone` Group).
+This example would allow all Okta Groups to be sent. When a user connects, Okta will send _only_ the Groups that the user actually belongs to (k6 ignores the Okta `Everyone` Group).
 k6 recommends this setup for most users.
 
-| Name            | Name Format | Filter - Value  | 
-| --------------- | ----------- | --------------- | 
-| department      | Basic       | regex - .*      |
+| Name            | Name Format | Filter | Value  | 
+| --------------- | ----------- | ------- | ------- | 
+| department      | Basic       | regex  | .*     |
 
 
 You can name the Attribute however you want, as long as you tell us what you chose.
@@ -130,7 +133,9 @@ If such teams existed on the k6 side, you'd join them. Otherwise they would be a
 
 ### Azure Active Directory
 
-Settings are modified from the `Single sign-on` sidebar menu for your Azure k6 cloud application. You can also check out [setup instructions with images](/cloud/project-and-team-management/saml-sso/azure-ad).
+To find the **IdP metadata URL** needed by the k6 customer support team, find the **Single sign-on** menu for your Azure AD application. Copy the `SAML Certificates->App Federation Metadata Url` field.
+
+Azure settings are modified from the `Single sign-on` sidebar menu for your Azure k6 cloud application. You can also check out [setup instructions with images](/cloud/project-and-team-management/saml-sso/azure-ad).
 
 #### Basic SAML Configuration
 
