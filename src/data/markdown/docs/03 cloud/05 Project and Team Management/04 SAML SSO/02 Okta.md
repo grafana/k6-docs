@@ -6,7 +6,7 @@ excerpt: 'Guide on setting up Okta to act as a SAML SSO IdP with k6 Cloud'
 > ⭐️ SAML SSO is available on Enterprise plans.
 
 Okta is a well-known identity and access management service that provides means for provisioning and user management all in a single place.
-k6 Cloud integrates with Okta to provide organizations with a compliant way to onboard and offboard team members to the service
+k6 Cloud integrates with Okta to provide organizations with a compliant way to let team members to join and leave the service.
 
 ## Prerequisites
 

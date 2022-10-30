@@ -24,17 +24,16 @@ One use of SAML is _single sign-on_ (SSO), which lets an organization manage use
 
 <blockquote mod="note" title="Provisioning in SAML SSO">
 
-SAML SSO provisioning is the first time a user signs in to k6 Cloud web app via SAML SSO from their IdP dashboard.
-This process causes the user to be created, joined to its organization and assigned to the default project(s).
+In SAML SSO, _provisioning_ happens the first time a user signs in to k6 Cloud web app via SAML SSO from their IdP dashboard.
+This process causes the user to be created, joined to its organization, and assigned to default organization units.
 
 </blockquote>
 
 ### SAML SSO with k6 Cloud
 
-Once you set up SAML SSO with your k6 Cloud organization, the only further step is to grant access to new employees.
-After that, members can log in to k6 Cloud without any additional authentication.
-When they connect, users will be directed to the correct k6 organization and have access to k6 [Teams](/cloud/project-and-team-management/teams) and [Projects](/cloud/project-and-team-management/projects) based on the Okta or Azure Groups you have assigned them to.
-
+Once you set up SAML SSO with your k6 Cloud organization, the only further step is to grant access to new users.
+With access, members can log in to k6 Cloud without any additional authentication.
+When they connect, users will be directed to the correct k6 organization and have access to k6 [Teams](/cloud/project-and-team-management/teams) and [Projects](/cloud/project-and-team-management/projects) based on the Okta or Azure Groups you assign them to.
 
 ### Suggested identity providers
 
@@ -56,7 +55,7 @@ The full procedure to set up SAML SSO with k6 Cloud is as follows:
 
 <Blockquote mod="attention" title="">
 
-If you remove users from the IdP, they also completely lose access to k6.
+If you remove users from the IdP, they also completely lose access to k6 Cloud.
 
 </Blockquote>
 
@@ -87,7 +86,7 @@ To set up SAML SSO for your organization, you need the following:
 After you send the URL, the customer success team will send you a **token**.
 When you get your token, you can finish the procedure:
 
-1. In the SAML SSO application, add a custom _attribute_ `token` and set it to the value of the token you received.
+1. In the SAML SSO application, add a custom **attribute** `token` and set it to the value of the token you received.
 1. _Optional_: If your IdP supports it, create custom attributes that point to the IdP _Groups_  that you want to map to k6 cloud Teams or Projects.
   For examples, refer to the supplementary docs for Okta and Azure AD.
 1. Assign IdP Groups (or users) to the application so they can use it.
@@ -121,7 +120,7 @@ Many projects can belong to the same Team, so Team-level assignment offers more 
 To change default Teams and Projects, go to the k6 app settings at **Organization > Settings > SAML SSO**. For team-level assignment, refer to the procedure in the subsequent section.
 
 While Teams and Projects can be auto-created on-connection
-if you arranged for this with the k6 customer success team), they need to already exist for you to assign them in these settings.
+(if you arranged for this with the k6 customer success team), they need to already exist for you to assign them as defaults.
 
 <Blockquote mod="note" title="You cannot assign retroactively">
 
