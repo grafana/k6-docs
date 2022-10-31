@@ -77,6 +77,8 @@ If such teams existed on the k6 side, you'd join them. Otherwise they would be a
 
 ## Add OKTA as an IdP
 
+This procedure covers the same material of the previous sections, but adds granular detail:
+
 1. Head over to [`https://your-organization.okta.com/`](https://your-organization.okta.com/).
 2. Go to Applications menu item and click on Applications.
 3. Click on Browse App Catalog button.

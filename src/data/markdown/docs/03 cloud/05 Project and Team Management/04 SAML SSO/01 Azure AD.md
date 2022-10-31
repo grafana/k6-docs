@@ -81,6 +81,8 @@ The k6 cloud support team will then map the Group IDs to your Teams on the k6 cl
 
 ## Add Azure AD as an IdP
 
+This procedure covers the same material of the previous sections, but adds granular detail:
+
 1. Navigate to [https://portal.azure.com/](https://portal.azure.com/).
 2. Log in to Azure Portal and go to **Azure Active Directory** tab.
 3. Select the **Enterprise applications** service.
