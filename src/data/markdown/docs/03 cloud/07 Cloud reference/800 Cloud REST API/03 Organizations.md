@@ -1,14 +1,16 @@
 ---
 title: 'Organizations'
 excerpt: ''
-draft: 'true'
 ---
+
+Organizations are the top-level structural unit in k6 Cloud.
+Read about [How to manage organizations](/cloud/project-and-team-management/organizations/).
 
 ## List organizations
 
 Returns a list of organizations associated with the authenticated user along with organization details.
 
-**GET** `/v3/organizations`
+**GET** `https://api.k6.io/v3/organizations`
 
 <CodeGroup labels={["Response"]}>
 
@@ -38,7 +40,7 @@ Returns a list of organizations associated with the authenticated user along wit
 
 Returns details for the specified organization.
 
-**GET** `/v3/organizations/{organization_id}`
+**GET** `https://api.k6.io/v3/organizations/{organization_id}`
 
 | Path Parameter  | Type    | Description                                           |
 | --------------- | ------- | ----------------------------------------------------- |
@@ -70,7 +72,7 @@ Returns details for the specified organization.
 
 Returns all projects a user is member of in the specified organization.
 
-**GET** `/v3/organizations/{organization_id}/projects`
+**GET** `https://api.k6.io/v3/organizations/{organization_id}/projects`
 
 | Path Parameter  | Type    | Description                                           |
 | --------------- | ------- | ----------------------------------------------------- |

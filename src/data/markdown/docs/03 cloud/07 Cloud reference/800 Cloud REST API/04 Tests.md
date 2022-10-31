@@ -1,23 +1,27 @@
 ---
 title: 'Tests'
 excerpt: ''
-draft: 'true'
 ---
 
-## List tests
+To read, update, and start tests, use the `/loadtests/v2/tests/` path.
 
-Returns all tests within a specified project (if project is not specified then default project will be used). You may sort or query the results with the specified options.
+## List load tests
 
-**GET** `/loadtests/v2/tests`
+Returns all tests within a specified project.
+If no project is specified, k6 returns the default project.
 
-| Query Parameters | Type    | Description                                                                                                                       | Example                                                              |
-| ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| project_id       | integer | Returns tests associated with a given project_id                                                                                  | `/loadtests/v2/tests?project_id={project_id}`                        |
-| ids[]            | integer | Returns tests with given ids.                                                                                                     | `/loadtests/v2/tests?ids[]={id_1}&ids[]={id_2}`                      |
+You MAY sort or query the results with query parameters.
+
+**GET** `https://api.k6.io/loadtests/v2/tests`
+
+| Query Parameters | Type    | Description                                                                                                          | Example                                                              |
+|------------------|---------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| project_id       | integer | Returns tests associated with a given project_id                                                                     | `/loadtests/v2/tests?project_id={project_id}`                        |
+| ids[]            | integer | Returns tests with given ids.                                                                                        | `/loadtests/v2/tests?ids[]={id_1}&ids[]={id_2}`                      |
 | order_by         | string  | Selects the parameter to use to order the returned tests. Available parameter values: `id`, `name`, `last_run_time`. | `/loadtests/v2/tests?project_id={project_id}&order_by=last_run_time` |
-| q                | string  | Returns tests containing specified string in their `name` field.                                                                  | `/loadtests/v2/tests?project_id={project_id}&q=some_string`          |
-| page             | integer | A page number within the paginated result set.                                                                                    | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
-| page_size        | integer | Number of results to return per page.                                                                                             | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
+| q                | string  | Returns tests whose `name` property matches the queried string.                                                      | `/loadtests/v2/tests?project_id={project_id}&q=some_string`          |
+| page             | integer | A page number within the paginated result set.                                                                       | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
+| page_size        | integer | Number of results to return per page.                                                                                | `/loadtests/v2/tests?project_id={project_id}&page=2&page_size=5`     |
 
 <CodeGroup labels={["Response"]}>
 
@@ -46,11 +50,11 @@ Returns all tests within a specified project (if project is not specified then d
 
 </CodeGroup>
 
-## Read test
+## Read load test
 
 Returns details of a test with the specified ID.
 
-**GET** `/loadtests/v2/tests/{id}`
+**GET** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -76,11 +80,17 @@ Returns details of a test with the specified ID.
 
 </CodeGroup>
 
-## Update test
+## Update load test
 
-Partially updates a test in Load Impact. Note: only given fields will be updated.
+Partially updates a test in k6 Cloud.
 
-**PATCH** `/loadtests/v2/tests/{id}`
+<Blockquote>
+
+This patch updates only the specified fields.
+
+</Blockquote>
+
+**PATCH** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -89,7 +99,7 @@ Partially updates a test in Load Impact. Note: only given fields will be updated
 | Request Body Parameter | Type   | Description                                          |
 | ---------------------- | ------ | ---------------------------------------------------- |
 | name                   | string | Name of the test.                                    |
-| script                 | string | k6 script that will be used when starting test runs. |
+| script                 | string | k6 script to use when starting test runs. |
 
 <CodeGroup labels={["Response"]}>
 
@@ -111,14 +121,15 @@ Partially updates a test in Load Impact. Note: only given fields will be updated
 
 </CodeGroup>
 
-## Delete test
+## Delete load test
 
 Deletes a test with the specified test ID.
 
-**DELETE** `/loadtests/v2/tests/{id}`
+**DELETE** `https://api.k6.io/loadtests/v2/tests/{id}`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
 | id             | integer | A unique integer value identifying this test. |
 
 **RESPONSE** `204`
+

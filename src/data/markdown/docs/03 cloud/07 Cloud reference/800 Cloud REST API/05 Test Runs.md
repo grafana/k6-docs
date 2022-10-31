@@ -1,14 +1,22 @@
 ---
 title: 'Test Runs'
 excerpt: ''
-draft: 'true'
 ---
 
-## Start test run
+A _load test run_ is an individual execution of a load test.
+Every test run has an ID, held in an array of `test_run_ids` in the `k6-test` object.
 
-Starts a test-run in the k6 cloud. It uses the specified test ID, previously retrieved from the create-test endpoint. The test-run will be managed by the k6 Cloud from beginning to end. Testing progress can be seen in the k6 Cloud application. From there you can also export and analyze the result.
+## Start load test run
 
-**POST** `/loadtests/v2/tests/{id}/start-testrun`
+Starts a test run in k6 Cloud for the specified Load Test ID. 
+
+> Note that this endpoint uses the `/v2/tests/` base URL rather than `/v2/runs`. It also needs to be provided with a Load Test `{id}`. This is because this endpoint makes use of the data from the provided Load Test to create and return a new Load Test Run.
+
+The test run is managed by k6 Cloud from beginning to end.
+You can monitor the test progress in the k6 Cloud application.
+From there, you can also export and analyze the result.
+
+**POST** `https://api.k6.io/loadtests/v2/tests/{id}/start-testrun`
 
 | Path Parameter | Type    | Description                                   |
 | -------------- | ------- | --------------------------------------------- |
@@ -49,11 +57,13 @@ Starts a test-run in the k6 cloud. It uses the specified test ID, previously ret
 
 </CodeGroup>
 
-## Read test run
+## Read load test run
 
-Returns details of a test run with the specified ID. The response contains several fields that are helpful for checking the test run's status:
+Returns details of a test run with the specified ID.
+The response contains several fields about test-run status.
 
-`run_status` - Describes how far test run is in the execution pipeline. Possible values are:
+The `run_status` field describes how far the test run is in the execution pipeline.
+Possible values are the following:
 
 | Value | Description                                                                                                                   |
 | ----- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +96,7 @@ Returns details of a test run with the specified ID. The response contains sever
 | 0     | PASSED - all criteria defined in k6 script have passed. |
 | 1     | FAILED - on or more criteria in k6 script has failed.   |
 
-**GET** `/loadtests/v2/runs/{id}`
+**GET** `https://api.k6.io/loadtests/v2/runs/{id}`
 
 | Path Parameter | Type    | Description         |
 | -------------- | ------- | ------------------- |
@@ -135,11 +145,11 @@ Returns details of a test run with the specified ID. The response contains sever
 
 </CodeGroup>
 
-## List test runs
+## List load test runs
 
-Returns test runs for a particular test.
+Returns all test runs for a particular load test.
 
-**GET** `/loadtests/v2/runs?test_id={test_id}`
+**GET** `https://api.k6.io/loadtests/v2/runs?test_id={test_id}`
 
 | Query Parameter | Type    | Description                           | Example                                                              |
 | --------------- | ------- | ------------------------------------- | -------------------------------------------------------------------- |
@@ -190,3 +200,10 @@ Returns test runs for a particular test.
 ```
 
 </CodeGroup>
+
+
+## Stop load test run
+
+Manually stops a load test run. If you follow along in the app, the test-run will be marked as `Aborted (by User)`. Note that can take a few moments before the test actually stops as the processor shuts down.
+
+**POST** `/loadtests/v2/runs/{id}/stop`
