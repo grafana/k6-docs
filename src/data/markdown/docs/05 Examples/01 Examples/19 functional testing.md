@@ -17,7 +17,7 @@ import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js'
 
 export const options = {
   thresholds: {
-    checks: [{ threshold: 'rate == 1.00', abortOnFail: true }],
+    checks: ['rate == 1.00'],
   },
 };
 
@@ -53,8 +53,8 @@ chai.config.logFailures = true;
 export let options = {
   thresholds: {
     // fail the test if any checks fail or any requests fail
-    checks: [{ threshold: 'rate == 1.00', abortOnFail: true }],
-    http_req_failed: [{ threshold: 'rate == 0.00', abortOnFail: true }],
+    checks: ['rate == 1.00'],
+    http_req_failed: ['rate == 0.00'],
   },
   vus: 1,
   iterations: 1,
