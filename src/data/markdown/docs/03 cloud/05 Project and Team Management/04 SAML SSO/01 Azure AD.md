@@ -7,6 +7,11 @@ excerpt: 'Guide on setting up Azure AD to act as a SAML SSO IdP with k6 Cloud'
 
 Microsoft's Active Directory has been a long time the standard for managing an enterprise's users and their access permissions, and Azure Active Directory is its direct cloud counterpart. k6 Cloud integrates with Azure AD to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
 
+On this page, you can read:
+
+- A quick table reference of the necessary fields to configure Azure AD as an IDP
+- Detailed steps, with screenshots, of the entire procedure
+
 ## Prerequisites
 
 To setup Azure AD SAML SSO based authentication to k6 Cloud you must have:

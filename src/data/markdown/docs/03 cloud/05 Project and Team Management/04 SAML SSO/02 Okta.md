@@ -8,6 +8,11 @@ excerpt: 'Guide on setting up Okta to act as a SAML SSO IdP with k6 Cloud'
 Okta is a well-known identity and access management service that provides means for provisioning and user management all in a single place.
 k6 Cloud integrates with Okta to provide organizations with a compliant way to let team members to join and leave the service.
 
+On this page, you can read:
+
+- A quick table reference of the necessary fields to configure OKTA as an IDP
+- Detailed steps, with screenshots, of the entire procedure
+
 ## Prerequisites
 
 To setup Okta SAML SSO based authentication to k6 Cloud, you must have:
