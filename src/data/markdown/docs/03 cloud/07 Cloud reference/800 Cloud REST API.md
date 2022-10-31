@@ -15,9 +15,9 @@ The things you can do with the Cloud API include:
 | APIs                  |   |
 |---------------------------|--------|
 | [Organizations](/cloud/cloud-reference/cloud-rest-api/organizations/)      | List, Read, and List projects   |
-| [Load Tests](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update and Delete a Load Test |
-| [Load Test Runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | Start, Stop, List and Read a Load Test Run   |
-| [Load Test Run Metrics](/cloud/cloud-reference/cloud-rest-api/test-run-metrics/)      | List, Read, and Export metric test data   |
+| [Load tests](/cloud/cloud-reference/cloud-rest-api/tests/)      | List, Read, Update and Delete a Load Test |
+| [Load test runs](/cloud/cloud-reference/cloud-rest-api/test-runs/)      | Start, Stop, List and Read a Load Test Run   |
+| [Test run metrics](/cloud/cloud-reference/cloud-rest-api/test-run-metrics/)      | List, Read, and Export metric test data   |
 | [Error reference](/cloud/cloud-reference/cloud-rest-api/error-reference/)      | Error message format    |
 
 ## Authentication
