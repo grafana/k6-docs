@@ -70,7 +70,7 @@ As an example, if a member belongs to three Okta teams, k6 would receive  data t
 
 If such teams existed on the k6 side, you'd join them. Otherwise they would be auto-created. Auto-created teams also get a Project with the same name assigned to it.
 
-## Steps to add OKTA as an Id
+## Add OKTA as an IdP
 
 1. Head over to [`https://your-organization.okta.com/`](https://your-organization.okta.com/).
 2. Go to Applications menu item and click on Applications.

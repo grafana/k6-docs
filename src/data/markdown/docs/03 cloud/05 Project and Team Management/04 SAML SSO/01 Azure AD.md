@@ -74,7 +74,7 @@ k6 won't know which Azure Group each ID corresponds to. So you need to check the
 
 The k6 cloud support team will then map the Group IDs to your Teams on the k6 cloud side.
 
-## Steps to configure
+## Add Azure AD as an IdP
 
 1. Navigate to [https://portal.azure.com/](https://portal.azure.com/).
 2. Log in to Azure Portal and go to **Azure Active Directory** tab.
