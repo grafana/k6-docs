@@ -140,7 +140,7 @@ A best practice in hybrid load testing is to generate most of the load using the
 - provides a single source of aggregated output at the end
 - reduces complexity in the creation and maintenance of scripts
 
-## Scripting against a web app
+## Component testing vs. end-to-end testing
 
 When you're testing a web app, you may wonder whether how you structure your test scripts. Consider the two methods below.
 
@@ -156,6 +156,8 @@ In these cases, the type of test you write may:
 
 Testing in this way is more flexible. With protocol testing, you can specify the endpoints or servers you'd like to hit, and narrow your test's target that way. You can test specific functionalities while skipping others that come chronologically before it in a standard user flow. You can more finely control the type of traffic that is generated. If you're recreating a specific mix of requests, you can script those requests and reproduce them in a repeatable manner.
 
+Doing component testing for load may not always require that your script behave like an end user. In fact, it may be necessary to artificially inflate traffic to more quickly reproduce issues, or to deflate traffic to reduce the noise in the logs. By the nature of this type of testing, scripts don't contain the full flow of a request that you would expect to see in production, so realism is not a priority.
+
 #### End-to-end testing
 
 You could also do end-to-end testing against a web app. End-to-end testing seeks to replicate real user behaviour and track its effects across the entire stack. When doing end-to-end testing, you might:
@@ -166,13 +168,7 @@ You could also do end-to-end testing against a web app. End-to-end testing seeks
 
 This type of load testing is broader in scope than component testing, but shallower in terms of depth. With end-to-end testing, you get a better idea of the full user experience of the application as a whole. However, it can also be more complex to troubleshoot, as you have more components to monitor and more places to look for issues that are found.
 
-### Should it be realistic?
-
-Whether or not a load testing script should be realistic is dependent on the type of testing you're doing. 
-
-Doing component testing for load may not always require that your script behave like an end user. In fact, it may be necessary to artificially inflate traffic to more quickly reproduce issues, or to deflate traffic to reduce the noise in the logs. By the nature of this type of testing, scripts don't contain the full flow of a request that you would expect to see in production, so realism is not a priority.
-
-On the other hand, end-to-end testing is based on real user behavior, so it's often important that end-to-end test scripts also be realistic.
+End-to-end testing is based on real user behavior, so it's often important that end-to-end test scripts also be realistic.
 
 ### Considerations for scripting
 
