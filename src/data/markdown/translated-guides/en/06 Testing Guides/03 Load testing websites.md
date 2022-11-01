@@ -233,9 +233,17 @@ A good selector is:
 
 Using the Element Inspector feature of [DevTools](https://developer.chrome.com/docs/devtools/) on most modern browsers can be very helpful in identifying the element you want your script to interact with. Some of them will even write selectors for you, but make sure you review them so that they follow the guidelines above.
 
-##### Wait for selectors to appear
+##### Use elements to verify responses
 
-In protocol-based test scripts, 
+In protocol-based test scripts, checks are used to verify that every page is successfully retrieved, usually by checking a part of the response headers or body. In browser-based test scripts, you can achieve the same type of verification by adding code that looks for key elements.
+
+For example, the code below looks for the checkbox element before it proceeds with the rest of the test.
+
+```javascript
+const res = page.goto('https://test.k6.io/browser.php');
+const checkbox = page.locator("#checkbox1");
+checkbox.check();
+```
 
 ##### Take screenshots
 
