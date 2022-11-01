@@ -79,4 +79,4 @@ With static IPs, you can:
 - Avoid exposing your service to any IP besides the ones specially dedicated to be your load generators.
 
 Refer to the [Pricing page](https://k6.io/pricing/) to check the price per dedicated IP per month.
-If you're interested in using static IPs with your cloud tests, contack k6 customer support!
+If you're interested in using static IPs with your cloud tests, contact k6 customer support!
