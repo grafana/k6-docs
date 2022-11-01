@@ -7,9 +7,9 @@ excerpt: 'Do you know how many users your site can handle? This guide answers th
 Load testing helps you simulate real user traffic against your application to prevent failures, improve reliability, and release new code with confidence. This guide provides guidance and recommendations for getting started, determining your load testing approach, scripting complex scenarios, and executing load tests specifically targeting websites.
 
 
-## Backend vs frontend
+## Backend vs frontend performance
 
-On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
+On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main factors affecting the user experience response time are:
 
 - Frontend performance
 - Backend performance
@@ -17,6 +17,8 @@ On a website, performance is a crucial part of the user experience. It is often 
 ### Frontend performance
 
 Frontend performance testing verifies application performance on the interface level, measuring round-trip metrics that consider how and when page elements appear on the screen. It is concerned with the end-user experience of an application, usually involving a browser.
+
+![Snapshots of different stages of rendering in a browser](./images/frontend-rendering.png)
 
 Frontend performance testing excels at identifying issues on a micro level but does not expose issues in the underlying architecture of a system.
 
@@ -42,13 +44,6 @@ Testing only frontend performance ignores a large part of the application, one m
 ### Backend performance
 
 Backend performance testing targets the underlying application servers to verify the scalability, elasticity, availability, reliability, and responsiveness of a system as a whole.
-
-- *Scalability*: Can the system adjust to steadily increasing levels of demand?
-- *Elasticity*: Can the system conserve resources during periods of lower demand?
-- *Availability*: What is the uptime of each of the components in the system?
-- *Reliability*: Does the system respond consistently in different environmental conditions?
-- *Resiliency*: Can the system gracefully withstand unexpected events?
-- *Latency*: How quickly does the system process and respond to requests?
 
 Backend testing is broader in scope than frontend performance testing. API testing can be used to target specific components or integrated components, meaning that application teams have more flexibility and higher chances of finding performance issues earlier. Backend testing is less resource-intensive than frontend performance testing and is thus more suitable for generating high load.
 
