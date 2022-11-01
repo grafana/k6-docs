@@ -6,15 +6,8 @@ excerpt: 'Do you know how many users your site can handle? This guide answers th
 
 Load testing helps you simulate real user traffic against your application to prevent failures, improve reliability, and release new code with confidence. This guide provides guidance and recommendations for getting started, determining your load testing approach, scripting complex scenarios, and executing load tests specifically targeting websites.
 
-## Performance vs. load testing: what's the difference?
 
-A common mistake in the industry is to use the terms *performance testing* and *load testing* interchangeably. It's more accurate to say that load testing is a sub-practice of performance testing.
-
-Performance testing verifies how well a system works as a whole, including aspects such as scalability, elasticity, availability, reliability, resiliency, and latency. Load testing is one type of performance testing, and it is an approach that can be used to test many of aspects of application performance. However, not all performance testing involves load testing.
-
-Load testing specifically focuses on verifying and validating the performance of an application while it has a significant volume of tasks to process. Load testing can be done manually, but most teams write automated load testing scripts to programmatically simulate real users accessing the application. You can also think of load testing as one method of testing application performance.
-
-## What to test
+## Backend vs frontend
 
 On a website, performance is a crucial part of the user experience. It is often measured by the response time to visualize or interact with some information. The two main actors affecting the user experience response time are:
 
