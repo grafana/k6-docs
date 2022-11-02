@@ -312,7 +312,7 @@ export const options = {
                 { duration: '1m', target: 10 },
                 { duration: '3m', target: 10 },
                 { duration: '1m', target: 0},
-            ]
+            ],
         },
         checkout_browser: {
             executor: 'per-vu-iterations',
@@ -321,8 +321,8 @@ export const options = {
             iterations: 1,
             startTime: '1m',
         },
-    }
-}
+    },
+};
 ```
 
 
@@ -375,6 +375,8 @@ export const options = {
 How long would a real user spend on each webpage before interacting with it? Consider adding varying [delays](https://k6.io/docs/javascript-api/k6/sleep/) so as to not artificially stagger a script with completely uniform delays:
 
 ```javascript
+import { sleep } from 'k6';
+
 sleep(Math.random() * 4);
 ```
 
@@ -426,7 +428,7 @@ Testing in pre-production environments and in production environments both add v
 
 **Testing in pre-production environments** (staging, test, system integration testing, user acceptance testing, and production replica environments) enables you to identify performance defects early, which can save a lot of time and effort (and reputation) later on. Running in test environments also means you can often afford to be more aggressive with your tests. However, it's also more critical to get your load profiles right, and the test results you get may not necessarily apply to production.
 
-**Testing in production** yields the most accurate results, but it's also more risky. Often, testing production is the only feasible alternative. You can reduce the risk of impact to real customers while testing in production by using lowerer levels of load when running load tests during peak hours, schedule tests for off-peak hours, choosing load test types that are less risky, using techniques like synthetic monitoring that generate less traffic, using real user monitoring tools to get snapshots of user performance at load, and ensuring that your observability stack is working at peak efficiency.
+**Testing in production** yields the most accurate results, but it's also more risky. Often, testing production is the only feasible alternative. You can reduce the risk of impact to real customers while testing in production by using lower levels of load when running load tests during peak hours, schedule tests for off-peak hours, choosing load test types that are less risky, using techniques like synthetic monitoring that generate less traffic, using real user monitoring tools to get snapshots of user performance at load, and ensuring that your observability stack is working at peak efficiency.
 
 ### Run tests where your customers are
 
