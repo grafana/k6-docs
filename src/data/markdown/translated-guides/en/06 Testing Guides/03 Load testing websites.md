@@ -249,7 +249,7 @@ checkbox.check();
 
 One of the advantages of using a browser-based test script is the ability to take screenshots during test execution. While it's good practice to handle all known errors within the script, it can also be useful to visually record what happened in the browser window for future troubleshooting.
 
-The following command saves a screenshot to the specififed path.
+The following command saves a screenshot to the specified path.
 
 ```javascript
 page.screenshot({ path: 'screenshots/error.png' });
