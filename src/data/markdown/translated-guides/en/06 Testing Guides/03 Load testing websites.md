@@ -217,7 +217,7 @@ Identify the steps that would be taken by a user that you'd like to simulate, fo
 
 ###### Identify unique selectors
 
-Elements on a web page are given identifiers to distinguish them from each other. Since a script doesn't have th e heuristic capabilities that a human user would, your browser-level script uses CSS *selectors* to identify elements to interact with. Choosing a good selector is essential to making frontend automated scripts that are reliable.
+Elements on a web page are given identifiers to distinguish them from each other. Since a script doesn't have the heuristic capabilities that a human user would, your browser-level script uses CSS *selectors* to identify elements to interact with. Choosing a good selector is essential to making frontend automated scripts that are reliable.
 
 ```javascript
 let element = page.$('a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]');
@@ -247,7 +247,15 @@ checkbox.check();
 
 ##### Take screenshots
 
+One of the advantages of using a browser-based test script is the ability to take screenshots during test execution. While it's good practice to handle all known errors within the script, it can also be useful to visually record what happened in the browser window for future troubleshooting.
 
+The following command saves a screenshot to the specififed path.
+
+```javascript
+page.screenshot({ path: 'screenshots/error.png' });
+```
+
+Having screenshots tied to key actions or errors may help debug the script, especially in the beginning.
 
 ##### Sample browser-based test script
 
@@ -344,7 +352,7 @@ Whether you're going for realism in your test scripts or not, here are some thin
 
 ## Load test execution for websites
 
-All [load test types](../05%20Test%20Types/00%20Introduction.md) can be used when load testing websites. However, running a load test against a website comes with some unique considerations.
+All [load test types](./05%20Test%20Types/00%20Introduction.md) can be used when load testing websites. However, running a load test against a website comes with some unique considerations.
 
 ### Environments
 
