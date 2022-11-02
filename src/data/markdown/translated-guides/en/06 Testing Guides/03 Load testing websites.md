@@ -220,7 +220,7 @@ Identify the steps that would be taken by a user that you'd like to simulate, fo
 Elements on a web page are given identifiers to distinguish them from each other. Since a script doesn't have the heuristic capabilities that a human user would, your browser-level script uses CSS *selectors* to identify elements to interact with. Choosing a good selector is essential to making frontend automated scripts that are reliable.
 
 ```javascript
-let element = page.$('a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]');
+const element = page.$('a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]');
     element.click();
 ```
 
@@ -241,7 +241,7 @@ For example, the code below looks for the checkbox element before it proceeds wi
 
 ```javascript
 const res = page.goto('https://test.k6.io/browser.php');
-const checkbox = page.locator("#checkbox1");
+const checkbox = page.locator('#checkbox1');
 checkbox.check();
 ```
 
@@ -266,7 +266,7 @@ import launcher from 'k6/x/browser';
 import { sleep } from 'k6';
 
 export default function () {
-    const browser = launcher.launch('chromium', { headless: true});
+	const browser = launcher.launch('chromium', { headless: true});
     const context = browser.newContext();
     const page = context.newPage();
 
