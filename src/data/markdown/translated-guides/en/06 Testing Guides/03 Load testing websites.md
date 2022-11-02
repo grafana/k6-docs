@@ -83,7 +83,7 @@ If you want your load test to mimic user journeys as closely as possible, it may
 
 The process of creating this type of load test could be tedious. The recording of a user session could facilitate the job of starting the test creation for you. Check out the [Session Recording guide](/test-authoring/recording-a-session) to learn more about how to auto-generate your load test from a user session.
 
-##### Add checks to each page
+###### Add checks to each page
 
 For every page, add a [check](https://k6.io/docs/using-k6/checks/) to verify the expected HTTP response or text returned in the body of the response. Doing so helps you clearly set expectations for how the application should behave, and aids in future troubleshooting in the case of reported errors during the test.
 
@@ -233,7 +233,7 @@ A good selector is:
 
 Using the Element Inspector feature of [DevTools](https://developer.chrome.com/docs/devtools/) on most modern browsers can be very helpful in identifying the element you want your script to interact with. Some of them will even write selectors for you, but make sure you review them so that they follow the guidelines above.
 
-##### Use elements to verify responses
+###### Use elements to verify responses
 
 In protocol-based test scripts, checks are used to verify that every page is successfully retrieved, usually by checking a part of the response headers or body. In browser-based test scripts, you can achieve the same type of verification by adding code that looks for key elements.
 
@@ -245,7 +245,7 @@ const checkbox = page.locator("#checkbox1");
 checkbox.check();
 ```
 
-##### Take screenshots
+###### Take screenshots
 
 One of the advantages of using a browser-based test script is the ability to take screenshots during test execution. While it's good practice to handle all known errors within the script, it can also be useful to visually record what happened in the browser window for future troubleshooting.
 
@@ -257,7 +257,7 @@ page.screenshot({ path: 'screenshots/error.png' });
 
 Having screenshots tied to key actions or errors may help debug the script, especially in the beginning.
 
-##### Sample browser-based test script
+###### Sample browser-based test script
 
 Below is an example of a browser-based load testing script in k6 using xk6-browser. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
 
@@ -418,68 +418,46 @@ export default function () {
 
 ```
 
-## Load test execution for websites
+## Best practices and recommendations
 
-All [load test types](./05%20Test%20Types/00%20Introduction.md) can be used when load testing websites. However, running a load test against a website comes with some unique considerations.
+### Run your tests in the appropriate environment
 
-### Environments
+Testing in pre-production environments and in production environments both add value.
 
-Where should you run your load tests? Testing in pre-production environments and in production environments both add value.
+**Testing in pre-production environments** (staging, test, system integration testing, user acceptance testing, and production replica environments) enables you to identify performance defects early, which can save a lot of time and effort (and reputation) later on. Running in test environments also means you can often afford to be more aggressive with your tests. However, it's also more critical to get your load profiles right, and the test results you get may not necessarily apply to production.
 
-#### The case for testing in pre-production
+**Testing in production** yields the most accurate results, but it's also more risky. Often, testing production is the only feasible alternative. You can reduce the risk of impact to real customers while testing in production by using lowerer levels of load when running load tests during peak hours, schedule tests for off-peak hours, choosing load test types that are less risky, using techniques like synthetic monitoring that generate less traffic, using real user monitoring tools to get snapshots of user performance at load, and ensuring that your observability stack is working at peak efficiency.
 
-If you have the luxury of multiple environments, it's best practice to run tests as early as you can, which means running them in pre-production environments: staging, test, system integration testing, user acceptance testing, and production replica environments. Finding performance defects early can save a lot of time and effort (and reputation) later on.
+### Run tests where your customers are
 
-The main advantage of testing in test environments is that you can often afford to be more aggressive with your tests. You can also run tests more frequently, needing only to sort out environment contention internally, rather than being beholden to real user behaviour.
+The location of the load generator(s), where the traffic is coming *from*, can also have an impact on your test results. The question is: where are your end users located?
 
-However, testing in pre-production environments also makes your load profile more critical to get right. It's common to see production incidents occur that were never identified in pre-production testing, usually as a result of the test profile being not quite as realistic as it could have been.
+**On-premises load testing** can be ideal when testing early on in the development a website, or when there are machines that can be repurposed as load generators. However, testing entirely from within a corporate network may also yield false positives, in that response times reported are significantly lower than if the same application servers were accessed from across the country. 
 
-#### The case for testing in production
+**Load testing on the cloud** is an essential part of the testing strategy for many public-facing websites. Using load generators on the cloud gives you access to test in different states and geographical countries, creating a mix of load generators proportional to your users' locations. Cloud load generators are easier to provision and cheaper to maintain in the long run than on-premise ones. Load testing on the cloud can help you include the effects of network latency in your tests and yield results that are more realistic.
 
-At minimum, every team has one environment: production. Often that's the *only* environment that you might have. Consider large companies like Netflix and Amazon, whose networks are too big to feasibly replicate in their entirety. How do they get their testing done?
+## Recommendations
 
-There's still a lot of testing that can be done in production without disrupting regular operations. Consider the following options:
-- Use lower levels of load when running load tests during peak hours.
-- Schedule load tests for off-peak hours, when the least amount of users would potentially be affected.
-- Choose load test types that are less risky: for example, consider saving stress or break point tests for pre-production.
-- Publicly announce a short window during which your system will be down for maintenance and testing.
-- Use techniques like synthetic monitoring, which makes requests in a more staggered way than typical load testing.
-- Use real user monitoring tools to get snapshots of user performance at load.
-- Ensure that your observability stack is working at peak efficiency.
+Here are some recommendations to help you plan, script, and execute your load tests for websites.
 
-In general, load testing in production is less about generating high amounts of traffic (since production traffic exists alongside test traffic) and more about measuring and quantifying user experience.
+If you want to test the last-mile user experience of your website: 
+- focus on **frontend performance**,
+- write **browser-based test scripts**,
+- and consider doing more realistic **end-to-end** tests of the user flow.
 
-### Testing for mobile?
+If you want to test the underlying infrastructure of your website:
+- focus on **backend performance**,
+- write **protocol-based test scripts**,
+- and consider starting with **component testing** and then gradually increasing the scope.
 
-If your website is open to the public, a proportion of them may be accessing your site through mobile devices, and potentially through mobile networks. If your usage logs indicate this might be a large proportion, consider doing testing around the experience of a mobile user as well.
+If your website is meant for internal or has limited access: 
+- Use **on-premise load generators** located within the network that most of your users access the website from.
+ 
+If your website is external and public-facing: 
+- Use **cloud load generators** in the load zones where your users reside.
 
-Protocol-level load testing for mobile devices is similar to testing for desktop devices, as API endpoints are the same or similar. However, the effect of slower mobile networks may need to be taken into consideration. Perhaps you can throttle test throughput accordingly, by setting a lower value in a [ramping arrival rate executor](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate) or similar, to simulate network latency.
+Test in **pre-production environments** when you can, but also consider **testing in production** in a limited capacity.
 
-Browser-level load testing for mobile devices, if necessary based on your user demographic, can add increased complexity due to device fragmentation. Determine which devices, and which mobile operating systems, your team is willing to test. As with all browser-level testing, the most feasible approach is likely to still generate the majority of the load through protocol-level tests.
-
-### Load generation
-
-In a previous section, we discussed test environments and how to tailor the type of load test to the environment(s) available. However, the location of the load generator(s), where the traffic is coming *from*, can also have an impact on your test results.
-
-The question is: where are your end users located?
-
-#### On-premises
-
-On-premises load testing can be ideal when testing early on in the development a website, or when there are machines that can be repurposed as load generators. However, testing entirely from within a corporate network may also yield false positives, in that response times reported are significantly lower than if the same application servers were accessed from across the country.
-
-If your website is an internal one, meant for employee consumption, on-premise load generators may be the only type of load generator you have.
-
-#### Cloud
-
-If your website is external, however, you may find that the results you get from on-premise load testing does not adequately approximate results that real users are likely to see.
-
-For most public websites, using cloud-based load generators is an essential part of the testing strategy. Below are some things for you to consider:
-- Using cloud providers gives you access to test in different states and geographical countries, creating a mix of load generators proportional to your users' locations.
-- Cloud load generators are easier to provision than on-premise ones.
-- Machines on the cloud are often cheaper in the long run, as they are ephemeral and easily torn down when not in use.
-- If your application uses a Content Delivery Network (CDN), the speed with which your CDN can serve resources to users may change dramatically depending on where the users are located.
-
-Load testing on the cloud can help you include the effects of network latency in your tests and yield results that are more realistic.
 
 ## Read more
 
