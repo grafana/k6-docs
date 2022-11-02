@@ -297,21 +297,34 @@ A best practice in hybrid load testing is to generate most of the load using the
 - provides a single source of aggregated output at the end
 - reduces complexity in the creation and maintenance of scripts
 
-###### Determine Cache and cookie behaviour
+##### Use scenarios and executors
 
-Are you simulating the behaviour of returning users, or real users? Choose your script's cache and cookie policies accordingly. Confirm both script caching *and* server-side caching.
+When combining protocol-based and browser-based tests, use [scenarios](https://k6.io/docs/using-k6/scenarios/) to independently control their test parameters and [executors](https://k6.io/docs/using-k6/scenarios/executors/):
 
-###### Dynamic think time and pacing
+```javascript
+export const options = {
+    scenarios: {
+        checkout_http: {
+            executor: 'ramping-vus',
+            exec: 'http',
+            startVUs: 0,
+            stages: [
+                { duration: '1m', target: 10 },
+                { duration: '3m', target: 10 },
+                { duration: '1m', target: 0},
+            ]
+        },
+        checkout_browser: {
+            executor: 'per-vu-iterations',
+            exec: 'xk6browser',
+            vus: 10,
+            iterations: 1,
+            startTime: '1m',
+        },
+    }
+}
+```
 
-How long would a real user spend on each webpage before interacting with it? Consider varying delays so as to not artificially stagger a script with completely uniform delays.
-
-###### Test data
-
-Real users typically don't search for or submit the same data repeatedly. Consider adding a test data file for the script to iterate through.
-
-###### Test parameters and load profile
-
-Does your script create a load profile that matches what you see in production?
 
 ### Component testing vs. end-to-end testing
 
@@ -343,12 +356,67 @@ This type of load testing is broader in scope than component testing, but shallo
 
 End-to-end testing is based on real user behavior, so it's often important that end-to-end test scripts also be realistic.
 
-### Considerations for scripting
+##### Tips for realistic scripting
 
-Whether you're going for realism in your test scripts or not, here are some things to consider when creating your script.
+###### Determine cache and cookie behaviour
 
+Are you simulating the behaviour of returning users, or real users? Choose your script's cache and cookie policies accordingly. Confirm both script caching *and* server-side caching.
 
+k6 automatically resets cookies between iterations, but you can also [change this behavior](https://k6.io/docs/using-k6/k6-options/reference/#no-cookies-reset) if maintaining cookies would be more realistic:
 
+```javascript
+export const options = {
+  noCookiesReset: true,
+};
+```
+
+###### Dynamic think time and pacing
+
+How long would a real user spend on each webpage before interacting with it? Consider adding varying [delays](https://k6.io/docs/javascript-api/k6/sleep/) so as to not artificially stagger a script with completely uniform delays:
+
+```javascript
+sleep(Math.random() * 4);
+```
+
+The line above will provide a delay lasting from 0 to 4 seconds.
+
+###### Test data
+
+Real users typically don't search for or submit the same data repeatedly. Consider adding a [test data file](https://k6.io/docs/examples/data-parameterization/) for the script to iterate through.
+
+###### Test parameters and load profile
+
+Does your script create a load profile that matches what you see in production? In k6, you can use [test options](https://k6.io/docs/using-k6/k6-options/how-to) to determine the exact shape and profile of your load test script. Here's an example of how you could choose a [ramping arrival rate executor](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate/) to determine how many VUs are started at different stages of the test:
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+
+export const options = {
+  discardResponseBodies: true,
+
+  scenarios: {
+    contacts: {
+      executor: 'ramping-arrival-rate',
+      startRate: 300,
+      timeUnit: '1m',
+      preAllocatedVUs: 2,
+      maxVUs: 50,
+      stages: [
+        { target: 300, duration: '1m' },
+        { target: 600, duration: '2m' },
+        { target: 600, duration: '4m' },
+        { target: 60, duration: '2m' },
+      ],
+    },
+  },
+};
+
+export default function () {
+  http.get('https://test.k6.io/contacts.php');
+}
+
+```
 
 ## Load test execution for websites
 
