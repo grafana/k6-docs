@@ -73,17 +73,17 @@
       "categories": ["Reporting"]
     },
     {
-      "name": "xk6-chaos",
-      "description": "Run chaos experiments 💣",
-      "url": "https://github.com/grafana/xk6-chaos",
-      "logo": "https://github.com/grafana/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true",
+      "name": "xk6-disruptor",
+      "description": "Inject faults to test 💣",
+      "url": "https://github.com/grafana/xk6-disruptor",
+      "logo": "https://github.com/grafana/xk6-disruptor/blob/7128b44180d868e67dfb302860334a5e85cb98a6/assets/logo.png?raw=true",
       "isLogoLarge": true,
       "author": {
-        "name": "Simon Aronsson",
-        "url": "https://github.com/simskij"
+        "name": "Pablo Chacin",
+        "url": "https://github.com/pablochacin"
       },
       "official": false,
-      "categories": ["Chaos Engineering", "Containers"]
+      "categories": ["Chaos Engineering", "Kubernetes"]
     },
     {
       "name": "xk6-sql",
