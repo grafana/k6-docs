@@ -37,7 +37,7 @@ export function teardown(data) {
 
 For more technical detail, see this page's subsequent sections.
 
-| Test stage      | Used to                                                    | Example                                                                                 | Called                                                                             | Required? |
+| Test stage      | Purpose                                                 | Example                                                                                 | Called                                                                             | Required? |
 |-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
 | **1. init**     | Load local files, import modules, declare lifecycle functions | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Required  |
 | **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
