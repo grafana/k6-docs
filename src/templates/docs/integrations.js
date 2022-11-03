@@ -45,62 +45,62 @@ const iconsDataSet1 = [
   {
     Icon: CloudWatch,
     name: 'Amazon CloudWatch',
-    to: '/results-visualization/amazon-cloudwatch',
+    to: '/results-output/real-time/amazon-cloudwatch',
   },
   {
     Icon: K6,
     name: 'Cloud',
-    to: '/results-visualization/cloud',
+    to: '/results-output/real-time/cloud',
   },
   {
     Icon: CSV,
     name: 'CSV',
-    to: '/results-visualization/csv',
+    to: '/results-output/real-time/csv',
   },
   {
     Icon: Datadog,
     name: 'Datadog',
-    to: '/results-visualization/datadog',
+    to: '/results-output/real-time/datadog',
   },
   {
     Icon: Grafana,
     name: 'Grafana Cloud',
-    to: '/results-visualization/grafana-cloud/',
+    to: '/results-output/real-time/grafana-cloud/',
   },
   {
     Icon: InfluxGrafana,
     name: 'InfluxDB + Grafana',
-    to: '/results-visualization/influxdb-+-grafana',
+    to: '/results-output/real-time/influxdb-+-grafana',
   },
   {
     Icon: Json,
     name: 'JSON file',
-    to: '/results-visualization/json',
+    to: '/results-output/real-time/json',
   },
   {
     Icon: Netdata,
     name: 'Netdata',
-    to: '/results-visualization/netdata',
+    to: '/results-output/real-time/netdata',
   },
   {
     Icon: NewRelic,
     name: 'New Relic',
-    to: '/results-visualization/new-relic',
+    to: '/results-output/real-time/new-relic',
   },
   {
     Icon: Prometheus,
     name: 'Prometheus',
-    to: '/results-visualization/prometheus',
+    to: '/results-output/real-time/prometheus',
   },
   {
     Icon: TimescaleDB,
     name: 'TimescaleDB',
-    to: '/results-visualization/timescaledb',
+    to: '/results-output/real-time/timescaledb',
   },
   {
     Icon: StatsD,
     name: 'StatsD',
-    to: '/results-visualization/statsd',
+    to: '/results-output/real-time/statsd',
   },
 ];
 
