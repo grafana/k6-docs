@@ -8,8 +8,9 @@ excerpt: |
   This will, in turn, make your test more realistic.
 ---
 
-Scripting examples on how to parameterize data in a test script. Parameterization is typically
-necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a test.
+This page gives some examples of how to parameterize data in a test script.
+Parameterization is typically necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a test.
+You can also use parameterization when you need to add test data from a seperate file.
 
 Parameterization helps to prevent server-side caching from impacting your load test.
 This will, in turn, make your test more realistic.
