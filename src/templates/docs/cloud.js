@@ -109,7 +109,11 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                     </Trait>
                     <Trait>
                       Run tests on your own{' '}
-                      <Link to={'/cloud/cloud-faq/private-load-zones/'}>
+                      <Link
+                        to={
+                          '/cloud/creating-and-running-a-test/private-load-zones/'
+                        }
+                      >
                         AWS EC2 instances
                       </Link>
                       .
