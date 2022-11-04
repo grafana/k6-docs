@@ -58,10 +58,10 @@ export default function () {
       check(page, {
         'header': page.locator('h2').textContent() == 'Welcome, admin!',
       });
-    }).finally(() => {
-      page.close();
-      browser.close();
     });
+  }).finally(() => {
+    page.close();
+    browser.close();
   });
 }
 ```
