@@ -42,10 +42,10 @@ export const localizedMessages = {
     'welcome.use-cases.performance-monitoring.title':
       'Performance and synthetic monitoring',
     'welcome.use-cases.performance-monitoring.description':
-      'With k6, you could run tests with a small amount of load to continuously validate the performance and availability of your production environment.',
-    'welcome.use-cases.chaos-testing.title': 'Chaos and reliability testing',
+      'With k6, you can automate and schedule to trigger tests very frequently with a small load to continuously validate the performance and availability of your production environment.',
+    'welcome.use-cases.chaos-testing.title': 'Chaos and resilience testing',
     'welcome.use-cases.chaos-testing.description':
-      'k6 provides an extensible architecture. You can use k6 to simulate traffic as part of your chaos experiments or trigger them from your k6 tests.',
+      'You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with xk6-disruptor.',
     'welcome.use-cases.browser-testing.title': 'Browser testing',
     'welcome.use-cases.browser-testing.description':
       'Through xk6-browser, you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.',
@@ -120,10 +120,10 @@ export const localizedMessages = {
     'welcome.use-cases.performance-monitoring.title':
       'Monitoreo del rendimiento',
     'welcome.use-cases.performance-monitoring.description':
-      'Con k6, puedes ejecutar pruebas con una pequeña cantidad de carga para supervisar continuamente el rendimiento y disponibilidad de su entorno de producción.',
+      'Con k6, puede automatizar la ejecución de tests frequentemente con una pequeña cantidad de carga para supervisar continuamente el rendimiento y disponibilidad de su entorno de producción.',
     'welcome.use-cases.chaos-testing.title': 'Pruebas de chaos',
     'welcome.use-cases.chaos-testing.description':
-      'k6 proporciona una arquitectura extensible Puede utilizar k6 para simular tráfico como parte de sus experimentos de chaos, o lanzarlos desde k6.',
+      'Puede utilizar k6 para simular tráfico como parte de sus experimentos de chaos, lanzarlos desde el script de k6 o injectar fallos en Kubernetes con xk6-disruptor.',
     'welcome.use-cases.browser-testing.title': 'Browser testing',
     'welcome.use-cases.browser-testing.description':
       'Con xk6-browser, puedes interactuar con el navegador para validar la interfaz web o rendimiento. Ejecuta browser tests juntos o separados de otros tests de carga.',
