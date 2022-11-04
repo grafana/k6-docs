@@ -124,6 +124,7 @@ const SidebarNode = (props) => {
       : `${window.location.pathname}/`;
 
     let doesPathMatchLocation = maybePrefixedPath === pathname;
+    console.log({ maybePrefixedPath, pathname });
 
     const isPathLocationPart =
       meta.path === '/' ||
@@ -291,10 +292,11 @@ export const DocLayout = ({
         </div>
         {sidebarTree && <SidebarSectionDropdown links={links} />}
         {sidebarTree &&
-          childrenToList(sidebarTree.children).map((sectionNode) => (
-            <div className={styles.sidebarSection} key={sectionNode.name}>
-              {sectionNode.meta.title !== sectionName &&
-                sectionNode.meta.isActiveSidebarLink && (
+          childrenToList(sidebarTree.children).map((sectionNode) =>
+            sectionNode.meta.hideFromSidebar ? null : (
+              <div className={styles.sidebarSection} key={sectionNode.name}>
+                {sectionNode.meta.title !== sectionName &&
+                sectionNode.meta.isActiveSidebarLink ? (
                   <Heading
                     className={styles.sidebarSectionTitle}
                     size={'sm'}
@@ -307,9 +309,7 @@ export const DocLayout = ({
                       {sectionNode.meta.title || sectionNode.name}
                     </Link>
                   </Heading>
-                )}
-              {sectionNode.meta.title !== sectionName &&
-                !sectionNode.meta.isActiveSidebarLink && (
+                ) : (
                   <Heading
                     className={styles.sidebarSectionTitle}
                     size={'sm'}
@@ -318,13 +318,16 @@ export const DocLayout = ({
                     {sectionNode.meta.title || sectionNode.name}
                   </Heading>
                 )}
-              <div className={styles.sidebarNodeChildren}>
-                {childrenToList(sectionNode.children).map((node) => (
-                  <SidebarNode node={node} key={node.name} />
-                ))}
+                {childrenToList(sectionNode.children).length && (
+                  <div className={styles.sidebarNodeChildren}>
+                    {childrenToList(sectionNode.children).map((node) => (
+                      <SidebarNode node={node} key={node.name} />
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            ),
+          )}
         <div
           className={classNames(styles.sidebarSection, styles.sidebarFooter)}
         >

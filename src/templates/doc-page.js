@@ -98,6 +98,7 @@ export default function DocPage(props) {
             articleSrc={frontmatter.fileOrigin}
             githubUrl={githubUrl}
             githubTitle={githubTitle}
+            hideHeading={frontmatter.hideHeading}
           />
           <DocPageContent
             label={codeStyles.codeContainer}

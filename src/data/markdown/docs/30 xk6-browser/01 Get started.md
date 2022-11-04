@@ -3,7 +3,7 @@ title: 'Get started'
 excerpt: ''
 ---
 
-[Welcome](/javascript-api/xk6-browser/get-started/welcome/)
+[Welcome](/javascript-api/xk6-browser/)
 
 [Installation](/javascript-api/xk6-browser/get-started/installation/)
 

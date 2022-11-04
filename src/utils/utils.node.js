@@ -20,10 +20,12 @@ const noTrailingSlash = (path) =>
   path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
 
 // ensures that path has a trailing slash
-const addTrailingSlash = (path) => path.replace(/\/$|$/, `/`);
+const addTrailingSlash = (path) =>
+  (path.endsWith('/') ? path : `${path}/`).replace(/\/+$/, '/');
 
 // ensures that path has a slash at the start
-const addPrefixSlash = (path) => path.replace(/^\/|^/, `/`);
+const addPrefixSlash = (path) =>
+  (path.startsWith('/') ? path : `/${path}`).replace(/^\/+/, '/');
 
 const translatePathPart = (item, locale) => {
   if (
@@ -170,6 +172,36 @@ const replacePathsInSidebarTree = (
         tree.children[item],
         stringToReplace,
         replacementString,
+      );
+    });
+  }
+};
+
+// takes a sidebar tree and entry title and replaces a substring
+// in matching path (inplace)
+const findByTitleAndReplacePathInSidebarTree = (
+  tree,
+  title,
+  pathToReplace,
+  replacementPath,
+) => {
+  if (
+    typeof tree.meta !== 'undefined' &&
+    tree.meta.title === title &&
+    tree.meta.path === pathToReplace
+  ) {
+    // eslint-disable-next-line no-param-reassign
+    tree.meta.path = replacementPath;
+    return;
+  }
+  if (typeof tree.children !== 'undefined') {
+    const childrenKeys = Object.keys(tree.children);
+    childrenKeys.forEach((item) => {
+      findByTitleAndReplacePathInSidebarTree(
+        tree.children[item],
+        title,
+        pathToReplace,
+        replacementPath,
       );
     });
   }
@@ -376,6 +408,9 @@ Object.defineProperties(utils, {
   },
   replacePathsInSidebarTree: {
     value: replacePathsInSidebarTree,
+  },
+  findByTitleAndReplacePathInSidebarTree: {
+    value: findByTitleAndReplacePathInSidebarTree,
   },
   removeParametersFromJavaScriptAPISlug: {
     value: removeParametersFromJavaScriptAPISlug,

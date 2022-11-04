@@ -26,6 +26,7 @@ const {
   getSlug,
   getTranslatedSlug,
   replacePathsInSidebarTree,
+  findByTitleAndReplacePathInSidebarTree,
   removeParametersFromJavaScriptAPISlug,
 } = require('./src/utils/utils.node');
 const {
@@ -214,7 +215,7 @@ const topLevelLinks = [
       { label: 'k6 API', to: `/javascript-api/` },
       {
         label: 'xk6-browser',
-        to: `/javascript-api/xk6-browser/get-started/welcome/`,
+        to: `/javascript-api/xk6-browser/`,
       },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
@@ -259,7 +260,6 @@ function generateSidebar({ nodes, type = 'docs' }) {
     }
 
     // skip altogether if this content has draft flag
-    // OR hideFromSidebar
     if (draft === 'true' && isProduction) return;
 
     // titles like k6/html treated like paths otherwise
@@ -687,13 +687,17 @@ function getDocPagesProps({
           '/xk6-browser',
           '/javascript-api/xk6-browser',
         );
-        /*
         replacePathsInSidebarTree(
           sidebarTree,
           '/javascript-api/xk6-browser/get-started/welcome',
           '/javascript-api/xk6-browser',
         );
-        */
+        findByTitleAndReplacePathInSidebarTree(
+          getChildSidebar(sidebarTree)('xk6-browser'),
+          'xk6-browser',
+          '/javascript-api/xk6-browser/',
+          '/javascript-api/xk6-browser/api/',
+        );
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
         githubTitle = 'xk6-browser';
@@ -1012,6 +1016,7 @@ async function fetchDocPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+                  hideHeading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1054,6 +1059,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+                  hideHeading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1096,6 +1102,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+                  hideHeading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1187,14 +1194,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   // TODO: move to appropriate place
-  /*
   createRedirect({
     fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
     toPath: '/javascript-api/xk6-browser/',
     redirectInBrowser: true,
     isPermanent: true,
   });
-  */
   createRedirect({
     fromPath: '/es/empezando/bienvenido/',
     toPath: '/es/',
@@ -1780,6 +1785,11 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'shouldCreatePage',
       value: node.frontmatter.shouldCreatePage || true,
+    });
+    createNodeField({
+      node,
+      name: 'hideHeading',
+      value: node.frontmatter.hideHeading || false,
     });
   }
 };
