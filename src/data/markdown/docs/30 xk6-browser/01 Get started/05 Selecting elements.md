@@ -3,7 +3,7 @@ title: 'Selecting elements'
 excerpt: 'A guide on how to select elements with xk6-browser.'
 ---
 
-Selectors are strings that represents a specific DOM element on the page. When writing browser-level tests, it's best practice to use selectors that are robust to avoid test flakiness when the DOM structure changes. 
+Selectors are strings that represents a specific DOM element on the page. When writing browser-level tests, it's recommended to use selectors that are robust to avoid test flakiness when the DOM structure changes. 
 
 Currently, xk6-browser supports the standard **CSS and XPath selectors**.
 
@@ -13,7 +13,7 @@ Text-based selectors are currently not supported in xk6-browser. This will be su
 
 </Blockquote>
 
-## Best practices
+## Recommended practices
 
 The selectors that you choose should not be tightly coupled to any behaviour or styling changes. If your application is prone to changes frequently, it's recommended to use user-facing attributes or custom data attributes as these are not tightly coupled to the element. 
 
