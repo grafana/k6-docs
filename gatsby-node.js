@@ -1637,28 +1637,57 @@ const createRedirects = ({ actions }) => {
     '/using-k6/using-node-modules': '/using-k6/modules/',
     '/javascript-api/k6-x-browser/': '/javascript-api/xk6-browser/',
     '/javascript-api/k6-x-browser/browser/':
-      '/javascript-api/xk6-browser/browser/',
+      '/javascript-api/xk6-browser/api/browser/',
+    '/javascript-api/xk6-browser/browser/':
+      '/javascript-api/xk6-browser/api/browser/',
     '/javascript-api/k6-x-browser/browsercontext/':
-      '/javascript-api/xk6-browser/browsercontext/',
+      '/javascript-api/xk6-browser/api/browsercontext/',
+    '/javascript-api/xk6-browser/browsercontext/':
+      '/javascript-api/xk6-browser/api/browsercontext/',
     '/javascript-api/k6-x-browser/browsertype/':
-      '/javascript-api/xk6-browser/browsertype/',
+      '/javascript-api/xk6-browser/api/browsertype/',
+    '/javascript-api/xk6-browser/browsertype/':
+      '/javascript-api/xk6-browser/api/browsertype/',
     '/javascript-api/k6-x-browser/elementhandle/':
-      '/javascript-api/xk6-browser/elementhandle/',
-    '/javascript-api/k6-x-browser/frame/': '/javascript-api/xk6-browser/frame/',
+      '/javascript-api/xk6-browser/api/elementhandle/',
+    '/javascript-api/xk6-browser/elementhandle/':
+      '/javascript-api/xk6-browser/api/elementhandle/',
+    '/javascript-api/k6-x-browser/frame/':
+      '/javascript-api/xk6-browser/api/frame/',
+    '/javascript-api/xk6-browser/frame/':
+      '/javascript-api/xk6-browser/api/frame/',
     '/javascript-api/k6-x-browser/jshandle/':
-      '/javascript-api/xk6-browser/jshandle/',
+      '/javascript-api/xk6-browser/api/jshandle/',
+    '/javascript-api/xk6-browser/jshandle/':
+      '/javascript-api/xk6-browser/api/jshandle/',
     '/javascript-api/k6-x-browser/keyboard/':
-      '/javascript-api/xk6-browser/keyboard/',
+      '/javascript-api/xk6-browser/api/keyboard/',
+    '/javascript-api/xk6-browser/keyboard/':
+      '/javascript-api/xk6-browser/api/keyboard/',
     '/javascript-api/k6-x-browser/locator/':
-      '/javascript-api/xk6-browser/locator/',
-    '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
-    '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
+      '/javascript-api/xk6-browser/api/locator/',
+    '/javascript-api/xk6-browser/locator/':
+      '/javascript-api/xk6-browser/api/locator/',
+    '/javascript-api/k6-x-browser/mouse/':
+      '/javascript-api/xk6-browser/api/mouse/',
+    '/javascript-api/xk6-browser/mouse/':
+      '/javascript-api/xk6-browser/api/mouse/',
+    '/javascript-api/k6-x-browser/page/':
+      '/javascript-api/xk6-browser/api/page/',
+    '/javascript-api/xk6-browser/page/':
+      '/javascript-api/xk6-browser/api/page/',
     '/javascript-api/k6-x-browser/request/':
-      '/javascript-api/xk6-browser/request/',
+      '/javascript-api/xk6-browser/api/request/',
+    '/javascript-api/xk6-browser/request/':
+      '/javascript-api/xk6-browser/api/request/',
     '/javascript-api/k6-x-browser/response/':
-      '/javascript-api/xk6-browser/response/',
+      '/javascript-api/xk6-browser/api/response/',
+    '/javascript-api/xk6-browser/response/':
+      '/javascript-api/xk6-browser/api/response/',
     '/javascript-api/k6-x-browser/touchscreen/':
-      '/javascript-api/xk6-browser/touchscreen/',
+      '/javascript-api/xk6-browser/api/touchscreen/',
+    '/javascript-api/xk6-browser/touchscreen/':
+      '/javascript-api/xk6-browser/api/touchscreen/',
     ...newJavascriptURLsRedirects,
   };
 
