@@ -24,7 +24,7 @@ export default function () {
   console.log(browser.contexts().length); // 0
 
   const context = browser.newContext();
-console.log(browser.contexts().length); // 1
+  console.log(browser.contexts().length); // 1
 
   context.close();
   browser.close();
