@@ -1,6 +1,6 @@
 ---
 title: 'Running xk6-browser'
-excerpt: 'Follow along to learn how to run xk6-browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level in a single script.'
+excerpt: 'Follow along to learn how to run xk6-browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level tests in a single script.'
 ---
 
 Follow along to learn how to:
@@ -8,7 +8,7 @@ Follow along to learn how to:
 1. Run a test
 2. Interact with elements on your webpage
 3. Wait for page navigation
-4. Run both browser-level and protocol-level test in a single script
+4. Run both browser-level and protocol-level tests in a single script
 
 <Blockquote mod="note" title="">
 
@@ -165,7 +165,7 @@ The preceding code uses `Promise.all([])` to wait for the two promises to be res
 
 Then, you can use [`check`](/javascript-api/k6/check/) from the k6 API to assert the text content of a specific element. Finally, you close the page and the browser.
 
-## Run both browser-level and protocol-level in a single script
+## Run both browser-level and protocol-level tests in a single script
 
 The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events.
 
