@@ -55,7 +55,7 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ## Drawbacks of using the closed model
 
-The closed model can suffer a problem of _coordinated omission_, in which the system under test inadvertently coordinates with the load generator.
+The closed model can suffer from a problem of _coordinated omission_, in which the system under test inadvertently coordinates with the load generator.
 
 In short, the closed model couples iteration duration with iteration start, which means that the response time of the target system can influence the throughput of the test.
 If a VU iteration starts only when a previous iteration ends,
@@ -65,7 +65,7 @@ rate of new iterations, and vice versa for faster response times.
 
 In other words, when the target system is stressed and starts to respond more
 slowly, a closed-model load test will "wait" for the duration to end, resulting in increased
-iteration durations and a tapering off of the arrival rate of new VU iterations.
+iteration durations and a tapering of the arrival rate of new VU iterations.
 
 This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
 or more generally throughput (e.g. requests per second).
