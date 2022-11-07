@@ -55,13 +55,16 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ## Drawbacks of using the closed model
 
-This tight coupling between the VU iteration duration and start of new VU iterations
-in effect means that the target system can influence the throughput of the test, via
-its response time. Slower response times means longer iterations and a lower arrival
+The closed model can suffer a problem of _coordinated omission_, in which the system under test inadvertently coordinates with the load generator.
+
+In short, the closed model couples iteration duration with iteration start, which means that the response time of the target system can influence the throughput of the test.
+If a VU iteration starts only when a previous iteration ends,
+then the iteration duration affects when the next iteration starts.
+Slower response times mean longer iterations and a lower arrival
 rate of new iterations, and vice versa for faster response times.
 
-In other words, when the target system is being stressed and starts to respond more
-slowly a closed model load test will play "nice" and wait, resulting in increased
+In other words, when the target system is stressed and starts to respond more
+slowly, a closed-model load test will "wait" for the duration to end, resulting in increased
 iteration durations and a tapering off of the arrival rate of new VU iterations.
 
 This is not ideal when the goal is to simulate a certain arrival rate of new VUs,
@@ -115,3 +118,8 @@ Running this script would result in something like:
 running (1m09.3s), 000/011 VUs, 60 complete and 0 interrupted iterations
 open_model ✓ [======================================] 011/011 VUs  1m0s  1 iters/s
 ```
+
+## Read more
+
+- [Open Versus Closed: A Cautionary Tale](https://www.usenix.org/legacy/event/nsdi06/tech/full_papers/schroeder/schroeder.pdf). A research paper by Bianca Schroeder et. al (2006).
+- [How NOT to measure latency](https://www.youtube.com/watch?v=6Rs0p3mPNr0). A talk by Gil Tene, who coined the phrase "coordinated omission" (2014).
