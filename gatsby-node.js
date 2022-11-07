@@ -26,7 +26,6 @@ const {
   getSlug,
   getTranslatedSlug,
   replacePathsInSidebarTree,
-  findByTitleAndReplacePathInSidebarTree,
   removeParametersFromJavaScriptAPISlug,
 } = require('./src/utils/utils.node');
 const {
@@ -59,10 +58,7 @@ if (!isProduction && jsApiVersionsToBuild) {
 
 const newJavascriptURLsRedirects = {};
 
-function removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
-  slug,
-  title,
-) {
+function stripJSAPISlugParamsAndAddToRedirects(slug, title) {
   const newSlug = removeParametersFromJavaScriptAPISlug(slug, title);
 
   if (slug !== newSlug) {
@@ -300,7 +296,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+        path: stripJSAPISlugParamsAndAddToRedirects(
           customSlug || dotifyVersion(pageSlug),
           title,
         ),
@@ -681,6 +677,10 @@ function getDocPagesProps({
       // add prefix to xk6-browser pages slugs and sidebar links
       if (slug.startsWith('xk6-browser/')) {
         slug = `javascript-api/${slug}`;
+        if (slug.includes('xk6-browser/get-started/welcome')) {
+          // make the section root out of the welcome page
+          slug = `javascript-api/xk6-browser/`;
+        }
 
         replacePathsInSidebarTree(
           sidebarTree,
@@ -691,12 +691,6 @@ function getDocPagesProps({
           sidebarTree,
           '/javascript-api/xk6-browser/get-started/welcome',
           '/javascript-api/xk6-browser',
-        );
-        findByTitleAndReplacePathInSidebarTree(
-          getChildSidebar(sidebarTree)('xk6-browser'),
-          'xk6-browser',
-          '/javascript-api/xk6-browser/',
-          '/javascript-api/xk6-browser/api/',
         );
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
@@ -721,10 +715,7 @@ function getDocPagesProps({
       }
 
       return {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
-          slug,
-          title,
-        ),
+        path: stripJSAPISlugParamsAndAddToRedirects(slug, title),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -971,7 +962,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+        path: stripJSAPISlugParamsAndAddToRedirects(
           dotifyVersion(pageSlug) || '/',
           title,
         ),
