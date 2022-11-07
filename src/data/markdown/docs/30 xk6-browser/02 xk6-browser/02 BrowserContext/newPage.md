@@ -25,10 +25,14 @@ export default function () {
   const context = browser.newContext();
   const page = context.newPage();
 
-  page.goto('https://test.k6.io/browser.php');
-
-  page.close();
-  browser.close();
+  page
+    .goto('https://test.k6.io/browser.php', {
+      waitUntil: 'networkidle',
+    })
+    .finally(() => {
+      page.close();
+      browser.close();
+    });
 }
 ```
 

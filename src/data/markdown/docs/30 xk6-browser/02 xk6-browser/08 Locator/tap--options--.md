@@ -37,9 +37,13 @@ Tap on the chosen element.
 const page = context.newPage({
     hasTouch: true,
 });
-const res = page.goto('https://test.k6.io/browser.php');
-const options = page.locator("#numbers-options");
-options.tap();
+
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const options = page.locator("#numbers-options");
+    options.tap();      
+  });
 ```
 
 </CodeGroup>

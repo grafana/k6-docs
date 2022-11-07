@@ -27,10 +27,13 @@ Returns the `element.innerHTML`.
 <!-- eslint-skip -->
 
 ```javascript
-page.goto('https://test.k6.io/browser.php');
-const offScreen = page.locator('#off-screen');
-const innerHTML = offScreen.innerHTML();
-console.log(innerHTML);
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const offScreen = page.locator('#off-screen');
+    const innerHTML = offScreen.innerHTML();
+    console.log(innerHTML);
+  });
 ```
 
 </CodeGroup>

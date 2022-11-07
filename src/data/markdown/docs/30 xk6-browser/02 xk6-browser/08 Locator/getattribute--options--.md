@@ -28,10 +28,13 @@ Returns the element attribute value for the given attribute name.
 <!-- eslint-skip -->
 
 ```javascript
-page.goto('https://test.k6.io/browser.php');
-const textInput = page.locator('#text1');
-const attribute = textInput.getAttribute('onfocus');
-console.log(attribute);
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const textInput = page.locator('#text1');
+    const attribute = textInput.getAttribute('onfocus');
+    console.log(attribute);
+  });
 ```
 
 </CodeGroup>

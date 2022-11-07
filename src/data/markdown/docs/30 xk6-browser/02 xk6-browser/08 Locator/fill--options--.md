@@ -24,9 +24,12 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 <!-- eslint-skip -->
 
 ```javascript
-page.goto("https://test.k6.io/browser.php");
-const textbox = page.locator("#text1");
-textbox.fill('hello world!');
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const textbox = page.locator("#text1");
+    textbox.fill('hello world!');
+  });
 ```
 
 </CodeGroup>

@@ -27,11 +27,14 @@ Checks if the element is `hidden`.
 <!-- eslint-skip -->
 
 ```javascript
-page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#input-text-hidden');
-if (text.isHidden()) {
-    console.log("element is hidden");
-}
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const text = page.locator('#input-text-hidden');
+    if (text.isHidden()) {
+        console.log("element is hidden");
+    }
+  });
 ```
 
 </CodeGroup>

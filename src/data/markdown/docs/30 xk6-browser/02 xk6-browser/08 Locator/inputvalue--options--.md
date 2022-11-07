@@ -27,11 +27,14 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 <!-- eslint-skip -->
 
 ```javascript
-page.goto('https://test.k6.io/browser.php');
-const textInput = page.locator('#text1');
-textInput.fill("Hello world!");
-const inputValue = textInput.inputValue();
-console.log(inputValue);
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const textInput = page.locator('#text1');
+    textInput.fill("Hello world!");
+    const inputValue = textInput.inputValue();
+    console.log(inputValue);
+  });
 ```
 
 </CodeGroup>

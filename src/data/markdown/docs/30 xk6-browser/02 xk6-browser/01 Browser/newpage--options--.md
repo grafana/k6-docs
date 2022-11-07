@@ -64,9 +64,13 @@ export default function () {
     deviceScaleFactor: 3,
   });
 
-  page.goto('https://test.k6.io/');
-
-  page.close();
-  browser.close();
+  page
+    .goto('https://test.k6.io/', {
+      waitUntil: 'networkidle',
+    })
+    .finally(() => {
+      page.close();
+      browser.close();
+    });
 }
 ```

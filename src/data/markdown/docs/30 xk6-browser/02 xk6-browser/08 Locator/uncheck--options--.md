@@ -33,10 +33,13 @@ Unselect the `input` checkbox.
 <!-- eslint-skip -->
 
 ```javascript
-const res = page.goto('https://test.k6.io/browser.php');
-const checkbox = page.locator("#checkbox1");
-checkbox.check();
-checkbox.uncheck();
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const checkbox = page.locator("#checkbox1");
+    checkbox.check();
+    checkbox.uncheck();   
+  });
 ```
 
 </CodeGroup>

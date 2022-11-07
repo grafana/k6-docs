@@ -33,9 +33,12 @@ Use this method to select an `input` checkbox.
 <!-- eslint-skip -->
 
 ```javascript
-const res = page.goto('https://test.k6.io/browser.php');
-const checkbox = page.locator("#checkbox1");
-checkbox.check();
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const checkbox = page.locator("#checkbox1");
+    checkbox.check();
+  });
 ```
 
 </CodeGroup>

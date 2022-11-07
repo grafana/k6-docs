@@ -66,9 +66,13 @@ export default function () {
   });
   const page = context.newPage();
 
-  page.goto('https://test.k6.io/');
-
-  page.close();
-  browser.close();
+  page
+    .goto('https://test.k6.io/', {
+      waitUntil: 'networkidle',
+    })
+    .finally(() => {
+      page.close();
+      browser.close();
+    });
 }
 ```

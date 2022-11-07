@@ -24,10 +24,16 @@ export default function () {
   context.setOffline(true);
 
   const page = context.newPage();
-  page.goto('https://test.k6.io/browser.php'); // Will not be able to load the page
 
-  context.close();
-  browser.close();
+  page
+    .goto('https://test.k6.io/browser.php', {
+      // Will not be able to load the page
+      waitUntil: 'networkidle',
+    })
+    .finally(() => {
+      context.close();
+      browser.close();
+    });
 }
 ```
 

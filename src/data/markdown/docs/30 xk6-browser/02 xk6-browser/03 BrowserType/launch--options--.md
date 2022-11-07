@@ -48,11 +48,17 @@ export default function () {
   const context = browser.newContext();
   const page = context.newPage();
 
-  page.goto('http://whatsmyuseragent.org/');
-  page.screenshot({ path: `example-chromium.png` });
-
-  page.close();
-  browser.close();
+  page
+    .goto('http://whatsmyuseragent.org/', { 
+      waitUntil: 'networkidle',
+    })
+    .then(() => {
+      page.screenshot({ path: `example-chromium.png` });
+    })
+    .finally(() => {
+      page.close();
+      browser.close();
+    });
 }
 ```
 

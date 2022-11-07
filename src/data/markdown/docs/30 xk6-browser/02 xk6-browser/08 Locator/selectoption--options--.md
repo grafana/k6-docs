@@ -36,9 +36,12 @@ Select one or more options which match the values.
 <!-- eslint-skip -->
 
 ```javascript
-page.goto('https://test.k6.io/browser.php');
-const options = page.locator('#numbers-options');
-options.selectOption('three');
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const options = page.locator('#numbers-options');
+    options.selectOption('three');
+  });
 ```
 
 </CodeGroup>

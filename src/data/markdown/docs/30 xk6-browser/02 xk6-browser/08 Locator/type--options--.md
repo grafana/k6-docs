@@ -24,9 +24,12 @@ Type in the text into the input field.
 <!-- eslint-skip -->
 
 ```javascript
-const res = page.goto('https://test.k6.io/browser.php');
-const text = page.locator("#text1");
-text.type('hello world!');
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const text = page.locator("#text1");
+    text.type('hello world!');    
+  });
 ```
 
 </CodeGroup>

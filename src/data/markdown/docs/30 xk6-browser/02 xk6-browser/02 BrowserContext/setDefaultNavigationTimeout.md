@@ -26,7 +26,15 @@ Sets the default maximum navigation timeout for [Page.goto()](/javascript-api/xk
 const context = browser.newContext();
 const page = context.newPage();
 context.setDefaultNavigationTimeout(1000); // 1s
-page.goto('https://httpbin.test.k6.io/delay/5');
+
+page
+  .goto('https://httpbin.test.k6.io/delay/5', {
+    waitUntil: 'networkidle',
+  })
+  .finally(() => {
+    page.close();
+    browser.close();
+  });
 ```
 
 </CodeGroup>

@@ -21,9 +21,12 @@ Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
 <!-- eslint-skip -->
 
 ```javascript
-page.goto("https://test.k6.io/browser.php");
-const textbox = page.locator("#text1");
-textbox.focus();
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const textbox = page.locator("#text1");
+    textbox.focus();
+  });
 ```
 
 </CodeGroup>

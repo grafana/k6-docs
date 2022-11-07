@@ -27,15 +27,18 @@ Returns the `element.textContent`.
 <!-- eslint-skip -->
 
 ```javascript
-const res = page.goto('https://test.k6.io/browser.php');
-const options = page.locator("#checkbox1");
-console.log(options.textContent()); /*  Zero
-                                        One
-                                        Two
-                                        Three
-                                        Four
-                                        Five
-                                    */
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const options = page.locator("#checkbox1");
+    console.log(options.textContent()); /*  Zero
+                                            One
+                                            Two
+                                            Three
+                                            Four
+                                            Five
+                                        */    
+  });
 ```
 
 </CodeGroup>

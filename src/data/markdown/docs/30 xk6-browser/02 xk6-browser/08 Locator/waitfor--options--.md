@@ -28,11 +28,14 @@ Wait for the element to be in a particular state e.g. `visible`.
 <!-- eslint-skip -->
 
 ```javascript
-const res = page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#input-text-hidden');
-text.waitFor({
-    state: 'hidden',
-});
+page
+  .goto('https://test.k6.io/browser.php')
+  .then(() => {
+    const text = page.locator('#input-text-hidden');
+    text.waitFor({
+        state: 'hidden',
+    });   
+  });
 ```
 
 </CodeGroup>
