@@ -3,13 +3,13 @@ title: 'contexts()'
 excerpt: 'xk6-browser: Browser.contexts method'
 ---
 
-Access all open [BrowserContext](/javascript-api/xk6-browser/browsercontext/)s.
+Access all open [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/)s.
 
 ### Returns
 
 | Type  | Description                                                                    |
 | ----- | ------------------------------------------------------------------------------ |
-| Array | Array of [BrowserContext](/javascript-api/xk6-browser/browsercontext/) objects |
+| Array | Array of [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/) objects |
 
 
 ### Example

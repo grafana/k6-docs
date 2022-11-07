@@ -3,7 +3,7 @@ title: 'newPage([options])'
 excerpt: 'xk6-browser: Browser.newPage method'
 ---
 
-Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext](/javascript-api/xk6-browser/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.
+Creates a new [Page](/javascript-api/xk6-browser/api/page/) in a new [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.
 
 <TableWithNestedRows>
 
@@ -27,8 +27,8 @@ Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext
 | options.javaScriptEnabled                   | boolean | `true`                           | Whether to activate JavaScript support for the context.                                                                                                                                                                                           |
 | options.locale                              | string  | system                           | Specifies the user's locale, such as `'en-US'`, `'tr-TR'`, etc.                                                                                                                                                                                   |
 | options.offline                             | boolean | `false`                          | Whether to emulate an offline network.                                                                                                                                                                                                            |
-| options.permissions                         | Array   | `null`                           | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](/javascript-api/xk6-browser/browsercontext#browsercontext-grantpermissions-permissions-options) for the options.                                            |
-| options.reducedMotion                       | string  | `'no-preference'`                | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](/javascript-api/xk6-browser/page#page-emulatemedia-options) for the options. |
+| options.permissions                         | Array   | `null`                           | Permissions to grant for the context's pages. See [browserContext.grantPermissions()](/javascript-api/xk6-browser/api/browsercontext#browsercontext-grantpermissions-permissions-options) for the options.                                            |
+| options.reducedMotion                       | string  | `'no-preference'`                | Minimizes the amount of motion by emulating the 'prefers-reduced-motion' media feature. It can be one of `'reduce'` and `'no-preference'`. See [page.emulateMedia()](/javascript-api/xk6-browser/api/page#page-emulatemedia-options) for the options. |
 | options.screen                              | object  | `{'width': 1280, 'height': 720}` | Sets a window screen size for all pages in the context. It can only be used when the viewport is set.                                                                                                                                             |
 | options.screen.width                        | number  | `1280`                           | Page width in pixels.                                                                                                                                                                                                                             |
 | options.screen.height                       | number  | `720`                            | Page height in pixels.                                                                                                                                                                                                                            |
@@ -44,7 +44,7 @@ Creates a new [Page](/javascript-api/xk6-browser/page/) in a new [BrowserContext
 
 | Type   | Description                                      |
 | ------ | ------------------------------------------------ |
-| object | [Page](/javascript-api/xk6-browser/page/) object |
+| object | [Page](/javascript-api/xk6-browser/api/page/) object |
 
 ### deviceScaleFactor example
 

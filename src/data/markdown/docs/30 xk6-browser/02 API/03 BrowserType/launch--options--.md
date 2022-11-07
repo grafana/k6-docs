@@ -23,7 +23,7 @@ Launches a new browser process.
 
 | Type   | Description                                            |
 |--------|--------------------------------------------------------|
-| object | [Browser](/javascript-api/xk6-browser/browser/) object |
+| object | [Browser](/javascript-api/xk6-browser/api/browser/) object |
 
 
 ## Example

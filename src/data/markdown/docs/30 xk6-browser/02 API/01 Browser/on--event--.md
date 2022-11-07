@@ -11,10 +11,10 @@ Detects events from the browser application.
 
 ### Returns
 
-The returned promise will be resolved when the [Browser](/javascript-api/xk6-browser/browser/) disconnects from the browser application. Possible reasons for this might be happening as follows:
+The returned promise will be resolved when the [Browser](/javascript-api/xk6-browser/api/browser/) disconnects from the browser application. Possible reasons for this might be happening as follows:
 
 * Closed or crashed browser application.
-* Calling of the [browser.close()](/javascript-api/xk6-browser/browser/close) method.
+* Calling of the [browser.close()](/javascript-api/xk6-browser/api/browser/close) method.
 
 | Type    | Description                                                                     |
 | ------- | ------------------------------------------------------------------------------- |

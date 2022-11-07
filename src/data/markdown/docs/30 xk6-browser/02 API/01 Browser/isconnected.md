@@ -15,7 +15,7 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 | Type    | Description                                                                                    |
 | ------- | ---------------------------------------------------------------------------------------------- |
-| boolean | Returns `true` if [Browser](/javascript-api/xk6-browser/browser/) is connected to the browser application. Otherwise, returns `false`. |
+| boolean | Returns `true` if [Browser](/javascript-api/xk6-browser/api/browser/) is connected to the browser application. Otherwise, returns `false`. |
 
 
 ### Example

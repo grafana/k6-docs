@@ -8,10 +8,10 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 | Method                                                                                  | Description                                                                  |
 |-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
 | browserType.connect([options]) <BWIPT id="17"/>                                         | Connect attaches k6 browser to an existing browser instance.                 |
-| [browserType.executablePath()](/javascript-api/xk6-browser/browsertype/executablepath/) | Returns the path where the extension expects to find the browser executable. |
-| [browserType.launch([options])](/javascript-api/xk6-browser/browsertype/launch/)        | Launches a new browser process.                                              |
+| [browserType.executablePath()](/javascript-api/xk6-browser/api/browsertype/executablepath/) | Returns the path where the extension expects to find the browser executable. |
+| [browserType.launch([options])](/javascript-api/xk6-browser/api/browsertype/launch/)        | Launches a new browser process.                                              |
 | browserType.launchPersistentContext(userDataDir, [options]) <BWIPT id="16"/>            | Launches the browser with persistent storage.                                |
-| [browserType.name()](/javascript-api/xk6-browser/browsertype/name/)                     | Returns the name of the `BrowserType`; currently it will return `chromium`.  |
+| [browserType.name()](/javascript-api/xk6-browser/api/browsertype/name/)                     | Returns the name of the `BrowserType`; currently it will return `chromium`.  |
 
 
 ## Example

@@ -36,7 +36,7 @@ excerpt: "xk6-browser: Page Class"
 | <a href="https://playwright.dev/docs/api/class-page#page-is-enabled" target="_blank" >page.isEnabled(selector[, options])</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-is-hidden" target="_blank" >page.isHidden(selector[, options])</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-is-visible" target="_blank" >page.isVisible(selector[, options])</a> | - | - |
-| <a href="/javascript-api/xk6-browser/locator">page.locator(selector[, options])</a> | - | Creates and returns a new page `locator` given a selector with strict mode on. The strict mode only allows selecting a single matching element, and will throw an error if multiple matches are found. |
+| <a href="/javascript-api/xk6-browser/api/locator">page.locator(selector[, options])</a> | - | Creates and returns a new page `locator` given a selector with strict mode on. The strict mode only allows selecting a single matching element, and will throw an error if multiple matches are found. |
 | <a href="https://playwright.dev/docs/api/class-page#page-main-frame" target="_blank" >page.mainFrame()</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-opener" target="_blank" >page.opener()</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-press" target="_blank" >page.press(selector, key[, options])</a> | - | - |

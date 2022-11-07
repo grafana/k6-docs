@@ -9,7 +9,7 @@ See [issue #444](https://github.com/grafana/xk6-browser/issues/444) for details 
 
 </Blockquote>
 
-Returns all open [Page](/javascript-api/xk6-browser/page/)s in the `BrowserContext`.
+Returns all open [Page](/javascript-api/xk6-browser/api/page/)s in the `BrowserContext`.
 
 
 ### Returns
