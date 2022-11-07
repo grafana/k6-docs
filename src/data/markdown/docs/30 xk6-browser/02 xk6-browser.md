@@ -72,7 +72,7 @@ The preceding code launches a Chromium-based browser, visits the application and
 
 <Blockquote mod="note" title="">
 
-Even though xk6-browser aims to provide rough compatibility with Playwright, xk6-browser currently doesn't support async/await keywords. For now, you would have to use Promises. For more information, check out [Running xk6-browser](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
+We're currently (Nov. 2022) migrating most xk6-browser APIs to be async and return a Promise. Because k6 doesn't yet support the async/await keywords, you'll have to use `then()` to resolve Promises. For more information, check out [Running xk6-browser](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
 
 </Blockquote>
 
