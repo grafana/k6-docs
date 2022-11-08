@@ -1007,7 +1007,7 @@ async function fetchDocPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+                  heading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1050,7 +1050,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1093,7 +1093,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1184,7 +1184,6 @@ const createRedirects = ({ actions }) => {
     redirectInBrowser: true,
     isPermanent: true,
   });
-  // TODO: move to appropriate place
   createRedirect({
     fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
     toPath: '/javascript-api/xk6-browser/',
@@ -1805,11 +1804,6 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'shouldCreatePage',
       value: node.frontmatter.shouldCreatePage || true,
-    });
-    createNodeField({
-      node,
-      name: 'hideHeading',
-      value: node.frontmatter.hideHeading || false,
     });
   }
 };
