@@ -40,11 +40,14 @@ export default function () {
 }
 
 function startWSWorker(id) {
-  const url = `wss://test-api.k6.io/ws/crocochat/${chatRoomName}/`;
-  const ws = new WebSocket(url);
+  // create a new websocket connection
+  const ws = new WebSocket(`wss://test-api.k6.io/ws/crocochat/${chatRoomName}/`);
+
   ws.addEventListener('open', () => {
+    // change the user name
     ws.send(JSON.stringify({ event: 'SET_NAME', new_name: `Croc ${__VU}:${id}` }));
 
+    // listen for messages/errors and log them into console
     ws.addEventListener('message', (e) => {
       const msg = JSON.parse(e.data);
       if (msg.event === 'CHAT_MSG') {
@@ -56,21 +59,25 @@ function startWSWorker(id) {
       }
     });
 
+    // send a message every 2-8 seconds
     const intervalId = setInterval(() => {
       ws.send(JSON.stringify({ event: 'SAY', message: `I'm saying ${randomString(5)}` }));
-    }, randomIntBetween(2000, 8000)); // say something every 2-8seconds
+    }, randomIntBetween(2000, 8000)); // say something every 2-8 seconds
 
+    // after a sessionDuration stop sending messages and leave the room
     const timeout1id = setTimeout(function () {
       clearInterval(intervalId);
       console.log(`VU ${__VU}:${id}: ${sessionDuration}ms passed, leaving the chat`);
       ws.send(JSON.stringify({ event: 'LEAVE' }));
     }, sessionDuration);
 
+    // after a sessionDuration + 3s close the connection
     const timeout2id = setTimeout(function () {
       console.log(`Closing the socket forcefully 3s after graceful LEAVE`);
       ws.close();
     }, sessionDuration + 3000);
 
+    // when connection is closing, clean up the previously created timers
     ws.addEventListener('close', () => {
       clearTimeout(timeout1id);
       clearTimeout(timeout2id);
