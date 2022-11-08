@@ -19,7 +19,9 @@ With some caveats:
 
 ## Example
 
-An example below showcases how a single VU can run multiple WebSockets connections asynchronously and how to stop them after a period using the timeout and interval functions.
+This example shows:
+- How a single VU can run multiple WebSockets connections asynchronously
+- How to use the timeout and interval functions to stop the connections after some period.
 
 <CodeGroup labels={["example-websocket.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
