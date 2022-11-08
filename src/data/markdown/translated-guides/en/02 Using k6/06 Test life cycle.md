@@ -1,9 +1,9 @@
 ---
-title: 'Test life cycle'
-excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
+title: 'Test lifecycle'
+excerpt: 'The four distinct lifecycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 ---
 
-In the life cycle of a k6 test,
+In the lifecycle of a k6 test,
 a script always runs through these stages in the same order:
 
 1. **Required**. Code in the `init` context prepares the script, loading files, importing modules, and defining the test _lifecycle functions_.
@@ -19,7 +19,7 @@ a function called in a specific sequence in the k6 runtime.
 </Blockquote>
 
 
-<CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
+<CodeGroup labels={["The four lifecycle stages"]} lineNumbers={[true]}>
 
 ```javascript
 // 1. init code
