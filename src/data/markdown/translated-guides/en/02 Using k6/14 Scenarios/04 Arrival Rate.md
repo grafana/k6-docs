@@ -55,6 +55,12 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ## Drawbacks of using the closed model
 
+<Blockquote mod="warning" title="The closed model can create misleading metrics of latency">
+
+If a primary goal of your test is to measure latency, k6 recommends choosing one of the open-model executors.
+
+</Blockquote>
+
 The closed model can suffer from a problem of _coordinated omission_, in which the system under test inadvertently coordinates with the load generator.
 
 In short, the closed model couples iteration duration with iteration start, which means that the response time of the target system can influence the throughput of the test.
