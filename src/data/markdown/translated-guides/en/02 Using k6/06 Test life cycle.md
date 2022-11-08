@@ -3,10 +3,10 @@ title: 'Test life cycle'
 excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 ---
 
-A k6 test has distinct stages.
-A script always runs through these stages in the same order.
+In the life cycle of a k6 test,
+a script always runs through these stages in the same order:
 
-1. **Required**. Code in the `init` context prepares the script, loading files, importing modules, and defining the test lifecycle functions.
+1. **Required**. Code in the `init` context prepares the script, loading files, importing modules, and defining the test _lifecycle functions_.
 2. _Optional._ The `setup` function runs,  setting up the test environment and generating data.
 3. **Required**. VU code runs in the default or scenario function, running for as long and as many times as the `options` define.
 4. _Optional._ The `teardown` function runs, postprocessing data and closing the test environment.
@@ -39,7 +39,7 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## Overview of the test stages
+## Overview of the lifecycle stages
 
 For examples and implementation details of each stage, refer to the subsequent sections.
 
@@ -173,7 +173,7 @@ $ k6 run --no-setup --no-teardown ...
 
 </CodeGroup>
 
-### Using data from setup in default and init
+### Use data from setup in default and init
 
 Again, let's have a look at the basic structure of a k6 test:
 
