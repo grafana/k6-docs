@@ -11,32 +11,6 @@
   @include md-down {
     max-width: 100%;
   }
-  &.no-heading {
-    margin: 0;
-    margin-bottom: 50px;
-    max-width: calc(100% - 120px);
-    @include lg-down {
-      max-width: 100%;
-    }
-    .links {
-      justify-content: space-between;
-      width: 100%;
-      flex-direction: row;
-      position: initial;
-      top: initial;
-      right: initial;
-      transform: none;
-      @include sm-down {
-        flex-direction: column;
-      }
-      .githubLink {
-        margin-bottom: 0;
-        @include sm-down {
-          margin-bottom: 15px;
-        }
-      }
-    }
-  }
 }
 
 .title {
