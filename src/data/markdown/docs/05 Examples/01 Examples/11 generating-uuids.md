@@ -21,45 +21,7 @@ export default function () {
 
 If you really need other UUID versions, you must rely on an external library.
 
-## Send v4 UUIDs in a POST request
-
-This example script:
-1. Makes a variable from a v4 UUID and logs the value to the console.
-1. Makes the UUID an ID for an example object, then sends the object to a test server.
-
-<CodeGroup labels={["uuid.js"]} lineNumbers={[]} showCopyButton={[true]}>
-
-```javascript
-import { randomString, uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
-import http from 'k6/http';
-
-const url = 'https://httpbin.test.k6.io/post';
-
-export default function () {
-  // create a uuid
-  const id = uuidv4();
-  console.log(id);
-
-  //make it a user ID in a POST request
-  const data = {
-    userId: id,
-    username: randomString(8),
-    password: randomString(8),
-  };
-  const res = http.post(url, JSON.stringify(data), {
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  console.log(JSON.parse(res));
-}
-```
-
-</CodeGroup>
-
-
-
 ## Generate v1 UUIDs
-
 
 As k6 doesn't have built-in support
 for version 1 UUID, you'll have to use a third-party library.
