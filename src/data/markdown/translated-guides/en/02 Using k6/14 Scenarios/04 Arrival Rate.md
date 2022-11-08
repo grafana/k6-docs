@@ -121,5 +121,10 @@ open_model ✓ [======================================] 011/011 VUs  1m0s  1 ite
 
 ## Read more
 
+<!-- vale off -->
+
 - [Open Versus Closed: A Cautionary Tale](https://www.usenix.org/legacy/event/nsdi06/tech/full_papers/schroeder/schroeder.pdf). A research paper by Bianca Schroeder et. al (2006).
 - [How NOT to measure latency](https://www.youtube.com/watch?v=6Rs0p3mPNr0). A talk by Gil Tene, who coined the phrase "coordinated omission" (2014).
+
+<-- vale on -->
+
