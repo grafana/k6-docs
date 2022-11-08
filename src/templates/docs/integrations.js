@@ -158,7 +158,7 @@ const iconsDataSet2 = [
   {
     Icon: Keptn,
     name: 'Keptn',
-    link: 'https://github.com/keptn-sandbox/k6-service',
+    link: `${blog}/performance-testing-in-keptn-using-k6/`,
   },
   {
     Icon: TeamCity,
