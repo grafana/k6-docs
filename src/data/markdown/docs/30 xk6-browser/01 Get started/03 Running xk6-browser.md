@@ -47,7 +47,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 

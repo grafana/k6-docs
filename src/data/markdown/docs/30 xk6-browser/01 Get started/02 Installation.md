@@ -3,7 +3,7 @@ title: 'Installation'
 excerpt: 'A step-by-step guide on how to install xk6-browser.'
 ---
 
-xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](/javascript-api/xk6-browser/#browser-level-apis) in your k6 tests.
+xk6-browser is currently being developed as a [k6 extension](/extensions). You have to run a k6 version built with the browser extension to use the [browser-level APIs](/javascript-api/xk6-browser/api/#browser-level-apis) in your k6 tests.
 
 To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](/extensions/guides/build-a-k6-binary-with-extensions/).
 
