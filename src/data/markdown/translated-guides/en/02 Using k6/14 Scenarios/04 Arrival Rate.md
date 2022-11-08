@@ -55,9 +55,9 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 ## Drawbacks of using the closed model
 
-<Blockquote mod="warning" title="The closed model can create misleading metrics of latency">
+<Blockquote mod="attention" title="The closed model can create misleading latency metrics">
 
-If a primary goal of your test is to measure latency, k6 recommends choosing one of the open-model executors.
+If you primarily want to test how throughput affects latency, consider choosing one of the open-model executors.
 
 </Blockquote>
 
@@ -132,5 +132,5 @@ open_model ✓ [======================================] 011/011 VUs  1m0s  1 ite
 - [Open Versus Closed: A Cautionary Tale](https://www.usenix.org/legacy/event/nsdi06/tech/full_papers/schroeder/schroeder.pdf). A research paper by Bianca Schroeder et. al (2006).
 - [How NOT to measure latency](https://www.youtube.com/watch?v=6Rs0p3mPNr0). A talk by Gil Tene, who coined the phrase "coordinated omission" (2014).
 
-<-- vale on -->
+<!-- vale on -->
 
