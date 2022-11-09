@@ -7,10 +7,10 @@ Welcome to the k6 docs!
 This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
 
 Some key facts:
-- 💙 Issues and contributions are always welcome
+- 💙 Issues and contributions are always welcome!
 - The docs are written in Markdown, built with Gatsby, and linted with Prettier and Vale.
 - The [Contributor's guide](./contributors-guide) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
--[Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md)
+- We have a [Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md).
 
 ## Contributing
 
