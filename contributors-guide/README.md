@@ -15,8 +15,7 @@ For help with the Gatsby and writing, refer to the [Gatsby build and components 
     - [Build locally](#build-locally)
     - [Write](#write)
     - [Deploy](#deploy)
-      - [Upgrade a main release](#upgrade-a-main-release)
-
+      
 <!-- markdown-toc end -->
 
 
@@ -37,32 +36,37 @@ These the following sections cover how to build locally and deploy the site.
 
 For any substantial changes, a local, live preview hugely improves writer comfort, which translates to better doc quality.
 
+#### Necessary software
+
 If you don't want to build with Docker (refer to repo README), you'll need the following
 - NodeJS version 16.0.0 or higher
 - A node version manager like `nvm` or `fnm`
 - `npm` or `yarn`
 
+#### Build procedure
+
 Then, to build:
 
 1. Clone the project
+ 
   ```bash
   git clone git@github.com:grafana/k6-docs.git
   cd k6-docs
   npm install  # or yarn install
   ```
-1. Use the version manager to install a version of node compatible with the version in `package.json`.
-  ```bash
+2. Use the version manager to install a version of node compatible with the version in `package.json`.
+ 
+ ```bash
   nvm install 16.16
   nvm use 16.16
   ```
-
-1. Install dependencies (only necessary the first time)
+3. Install dependencies (only necessary the first time)
 
   ```bash
   npm install  # or yarn install
   ```
 
-1. Run the docs locally:
+4. Run the docs locally:
 
   ```bash
   npm start  # or yarn start
@@ -93,14 +97,12 @@ Beyond that, Gatsby has a set way to build pages, and we've added a number of wr
 
 GitHub actions build preview builds of the site in multiple stages:
 
-1. Each PR to main gets a build preview at `https://mdr-ci.staging.k6.io/docs/refs/pull/<PR-NUMBER>/merge`
-
-  With every commit to the PR branch, the preview updates.
-
+1. Each PR to main gets a build preview at `https://mdr-ci.staging.k6.io/docs/refs/pull/<PR-NUMBER>/merge`. With every commit to the PR branch, the preview updates.
 1. The main branch deploys to `staging.k6.io`
 1. **After the repo release number is upgraded, the main branch deploys to `k6.io`**
 
-[Release process diagram](../internal-images/release.svg)
+![release-process diagram](https://user-images.githubusercontent.com/47385188/200912113-1fc81137-1fe5-4f33-a8a9-e1f97c774d1d.png)
+
 
 #### Upgrade a main release
 
