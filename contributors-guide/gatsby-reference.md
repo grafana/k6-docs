@@ -1,4 +1,4 @@
-# Contributing File Formats
+# Contributing reference
 
 The k6 documentation is a Gatsby application using React components and markdown files for the content of the different pages.
 
@@ -493,7 +493,7 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 
 **A perfect example:**
 
-```mdx
+```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
 | location  | object | Location object | 
@@ -519,7 +519,7 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 3. Second row contains too much elements, confuses the parser
 4. Last row contains 2 dots, confuses the parser
 
-```mdx
+```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
 | <BWIPT/> location  | object | Location object | 

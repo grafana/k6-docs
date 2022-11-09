@@ -69,7 +69,7 @@ You can change versions with nvm.
 3. Install dependencies and run:
 
   ```sh
-  npm  install && npm start
+  npm install && npm start
   ```
 
 ## Serving suddenly broke
@@ -146,6 +146,18 @@ Otherwise you'll get the error `No codeFrame could be generated`
 
 If you have the courage to nest components, be sure you keep each context separated.
 
+### Check that component open and close tags have the same indentation
+
+```html
+
+- I'm hiding something in a bullet
+
+  <Collapsible>
+
+  Here's my secret.
+
+<Collapsible> <!--- not aligned!!! This will break. -->
+
 
 ## ESlint errors
 
@@ -177,4 +189,21 @@ This error suggests that the problem is with a missing config. Really, the probl
   266:1  error  Parsing error: No Babel config file detected for ./k6-docs/src/data/markdown/translated-guides/en/03 Results output/100 End-of-test/150-custom-summary.md/5_5.javascript. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files
 ```
 
+## Vale errors
 
+Vale is the prose linter. Most times, when vale has an error, you should fix it.
+However, sometimes Vale will flag a word that you want to use as a spelling error.
+To fix this, you have two options:
+
+- If this word will only appear on one page, disable vale for those lines.
+
+  ```markdown
+
+  <!-- vale off -->
+  
+  No spellng erors.
+
+  <!-- vale on -->
+  ```
+
+- If this is a word that might appear often (usually a programming term or application), add it to `.vale/accept.txt` 
