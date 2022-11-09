@@ -780,7 +780,7 @@ export const options = {
 ## No summary
 
 Disables [end-of-test summary](/results-output/end-of-test) generation,
-including calls to [`handleSummary()`](/results-output/end-of-test#handlesummary-callback) and `--summary-export`.
+including calls to [`handleSummary()`](/results-output/end-of-test/custom-summary) and `--summary-export`.
 
 Available in the `k6 run` command.
 
@@ -1106,7 +1106,7 @@ Save the end-of-test summary report to a JSON file that includes data for all te
 This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, CI pipelines, etc.
 
 While this feature is not deprecated yet, [we now discourage it](/results-output/end-of-test#summary-export-to-a-json-file).
-For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, refer to the [`handleSummary()` callback](/results-output/end-of-test#handlesummary-callback).
+For a better, more flexible JSON export, as well as export of the summary data to different formats (e.g. JUnit/XUnit/etc. XML, HTML, .txt) and complete summary customization, use the [`handleSummary()` function](/results-output/end-of-test/custom-summary).
 
 Available in the `k6 run` command.
 
@@ -1222,7 +1222,7 @@ export const options = {
 
 Define which stats for [`Trend` metrics](/javascript-api/k6-metrics/trend) (e.g. response times, group/iteration durations, etc.) will be shown in the [end-of-test summary](/results-output/end-of-test). Possible values include `avg` (average), `med` (median), `min`, `max`, `count`, as well as arbitrary percentile values (e.g. `p(95)`, `p(99)`, `p(99.99)`, etc.).
 
-For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), refer to the new [`handleSummary()` callback](/results-output/end-of-test#handlesummary-callback).
+For further summary customization and exporting the summary in various formats (e.g. JSON, JUnit/XUnit/etc. XML, HTML, .txt, etc.), use the [`handleSummary()` function](/results-output/end-of-test/custom-summary).
 
 
 | Env                      | CLI                     | Code / Config file  | Default                        |
