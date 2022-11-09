@@ -276,3 +276,4 @@ k6 has a few additional ways to use lifecycle functions:
   ```
 
   </CodeGroup>
+
