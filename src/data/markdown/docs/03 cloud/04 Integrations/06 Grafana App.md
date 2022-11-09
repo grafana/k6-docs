@@ -1,9 +1,9 @@
 ---
-title: 'Grafana Plugin'
-excerpt: 'View your k6 Cloud Test Results in Grafana'
+title: 'Grafana App'
+excerpt: 'Use k6 Cloud in Grafana'
 ---
 
-The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While Grafana Plugin does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
+The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While the Grafana App does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
 
 Currently supported features:
 * manage and visualize your k6 Cloud tests in Grafana.
@@ -12,11 +12,11 @@ Currently supported features:
 * create new and update existing tests using the script editor
 * use dashboard variables to quickly switch between test runs
 
-## Installing the k6 Cloud plugin
+## Installing the Grafana App
 
-To install the k6 plugin
+To install the k6 app
 
-1. In Grafana Cloud, select the **Install plugin** button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This automatically adds the plugin to your Grafana stack.
+1. In Grafana Cloud, select the **Install plugin** button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This automatically adds the app to your Grafana stack.
 
   > For local Grafana instances, follow the [grafana-cli instructions](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation).
 

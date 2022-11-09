@@ -212,6 +212,6 @@ And correlate k6 metrics with other system metrics to get better insights into w
 
 ## Read more
 
-- [Grafana Plugin](/cloud/integrations/grafana-plugin/)
+- [Grafana App](/cloud/integrations/grafana-app/)
 - [Cloud APM](/cloud/integrations/cloud-apm/)
 
