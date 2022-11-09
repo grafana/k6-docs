@@ -10,7 +10,7 @@ Documentation articles are markdown files structured under the [`src/data/markdo
 
 ## Folder structure
 
-Root folders represent main categories at the top of the page.  
+Root folders represent main categories at the top of the page.
 Use numbers in front of the folder name to set the order.
 
 Pattern: {number}{space}{page name}
@@ -496,13 +496,13 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 ```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| location  | object | Location object | 
-| location.langitude  | number | Desc | 
-| location.longitude  | number | Desc | 
-| location.id <BWIPT/>  | number | Desc | 
-| [location.address](/link)  | object | Desc | 
-| location.address.street  | string | Desc | 
-| location.address.apt  | string | Desc | 
+| location  | object | Location object |
+| location.langitude  | number | Desc |
+| location.longitude  | number | Desc |
+| location.id <BWIPT/>  | number | Desc |
+| [location.address](/link)  | object | Desc |
+| location.address.street  | string | Desc |
+| location.address.apt  | string | Desc |
 ```
 
 <details>
@@ -522,12 +522,12 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 ```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| <BWIPT/> location  | object | Location object | 
-| location.langitude (currently unavailable) <BWIPT/>  | number | Desc | 
-| location.longitude  | number | Desc | 
-| location.id <BWNIT/>  | number | Desc | 
-| location.address.street  | string | Desc | 
-| location.address..apt  | string | Desc | 
+| <BWIPT/> location  | object | Location object |
+| location.langitude (currently unavailable) <BWIPT/>  | number | Desc |
+| location.longitude  | number | Desc |
+| location.id <BWNIT/>  | number | Desc |
+| location.address.street  | string | Desc |
+| location.address..apt  | string | Desc |
 ```
 
 ## LdScript

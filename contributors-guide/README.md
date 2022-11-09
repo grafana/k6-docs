@@ -86,3 +86,4 @@ All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result 
 ![DraftRelease2](../internal-images/DraftNewRelease2.png)
 
 1. Optionally add a description and generate release notes, then **Publish release**.
+

@@ -168,7 +168,7 @@ Usually you can fix this with `eslint --fix`.
 
 
 ```bash
-./node_modules/.bin/eslint --fix ./src/data/markdown/translated-guides/en/01\ Getting\ started/04\ Results\ Output.md 
+./node_modules/.bin/eslint --fix ./src/data/markdown/translated-guides/en/01\ Getting\ started/04\ Results\ Output.md
 
 ```
 For more troublesome files, you will need to look at the offending code.
@@ -176,11 +176,11 @@ Prettier evaluates the entire abstract syntax tree, so some errors can be surpri
 (why should a one-line example need to declare variables? The AST is why).
 
 Some writers don't like this linting, but the alternative is a multitude of codestyles in our load-test snippets, which could create a confusing reading experience.
-Readers ~~>~~ `>` Writers. 
+Readers ~~>~~ `>` Writers.
 
 Sometimes, though, the Prettier output can be misleading.
 
-This error suggests that the problem is with a missing config. Really, the problem is with JS formatting at line 266. 
+This error suggests that the problem is with a missing config. Really, the problem is with JS formatting at line 266.
 
 ```txt
 ✖ eslint -c ./src/data/markdown/.eslintrc.js --fix:
@@ -200,10 +200,10 @@ To fix this, you have two options:
   ```markdown
 
   <!-- vale off -->
-  
+
   No spellng erors.
 
   <!-- vale on -->
   ```
 
-- If this is a word that might appear often (usually a programming term or application), add it to `.vale/accept.txt` 
+- If this is a word that might appear often (usually a programming term or application), add it to `.vale/accept.txt`
