@@ -39,13 +39,13 @@ For any substantial changes, a local, live preview hugely improves writer comfor
 #### Necessary software
 
 If you don't want to build with Docker (refer to repo README), you'll need the following
-- NodeJS version 16.0.0 or higher
-- A node version manager like `nvm` or `fnm`
+- [NodeJS](https://nodejs.org/en/download/), version 16.0.0 or higher
+- A node version manager like [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) or `fnm`
 - `npm` or `yarn`
 
 #### Build procedure
 
-Then, to build:
+To build locally:
 
 1. Clone the project
  
