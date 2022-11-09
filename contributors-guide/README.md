@@ -89,7 +89,7 @@ GitHub actions build preview builds of the site in multiple stages:
 
 [Release process diagram](../internal-images/release.svg)
 
-### Upgrade a main release
+#### Upgrade a main release
 
 >  #### ⚠️ Versions
 >
