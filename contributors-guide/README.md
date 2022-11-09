@@ -7,6 +7,19 @@ On this page, you find:
 
 For help with the Gatsby and writing, refer to the [Gatsby build and components reference](./gatsby-reference) and [Troubleshooting](./troubleshooting)
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Important directories](#important-directories)
+- [The writing workflow](#the-writing-workflow)
+    - [Build locally](#build-locally)
+    - [Write](#write)
+    - [Deploy](#deploy)
+      - [Upgrade a main release](#upgrade-a-main-release)
+
+<!-- markdown-toc end -->
+
+
 ## Important directories
 
 For writers, these are the most important directories:
