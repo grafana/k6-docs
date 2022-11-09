@@ -101,7 +101,7 @@ GitHub actions build preview builds of the site in multiple stages:
 1. The main branch deploys to `staging.k6.io`
 1. **After the repo release number is upgraded, the main branch deploys to `k6.io`**
 
-![release-process diagram](https://user-images.githubusercontent.com/47385188/200912113-1fc81137-1fe5-4f33-a8a9-e1f97c774d1d.png)
+![release-process diagram](https://user-images.githubusercontent.com/47385188/200913675-0ddc4c17-2fc0-40fa-8dd2-84965926cb0f.png)
 
 
 #### Upgrade a main release
