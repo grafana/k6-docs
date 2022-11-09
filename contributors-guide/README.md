@@ -1,21 +1,26 @@
 # Contributor's guide
 
 When you contribute to the docs, it helps to know how things work.
+On this page, you find:
+- The most important docs directories
+- The procedures to build locally and deploy remotely
+
+For help with the Gatsby and writing, refer to the [Gatsby build and components reference](./gatsby-reference) and [Troubleshooting](./troubleshooting)
 
 ## Important directories
 
 For writers, these are the most important directories:
-- [`src/data/markdown`](./src/data/markdown) is where the docs live
+- [`src/data/markdown`](../src/data/markdown) is where the docs live
   - `translated-guides` has the principle OSS docs
-- [`./gatsby-node.js`](https://github.com/grafana/k6-docs/blob/main/gatsby-node.js) is where URI redirects are programmed.
-- [`src/templates/docs`](./src/templates/docs)  has the "landing pages" for major docs sections: cloud, guides, examples, et cetera.
-- [`src/components/shared`](./src/components/shared) has the reusable writing enhancements, like our stylish `<blockquote>`
+- [`gatsby-node.js`](../gatsby-node.js) is where URI redirects are programmed.
+- [`src/templates/docs`](../src/templates/docs)  has the "landing pages" for major docs sections: cloud, guides, examples, et cetera.
+- [`src/components/shared`](../src/components/shared) has the reusable writing enhancements, like our stylish `<blockquote>`
 
 ## The writing workflow
 
 These the following sections cover how to build locally and deploy the site.
 
-### Build locally {#build}
+### Build locally
 
 For any substantial changes, a local, live preview hugely improves writer comfort, which translates to better doc quality.
 
@@ -53,7 +58,25 @@ Then, to build:
 If everything works, a live preview should be serving on http://localhost:8000.
 Things don't always work, though. The [Troubleshooting](./troubleshooting) section covers some common breaks.
 
-### Preview and deploy builds {#build}
+### Write
+
+Each markdown page should start with the following frontmatter.
+
+```yaml
+---
+title: <page title>
+excerpt: <summary text for social shares. Aim for 170 characters>.
+---
+```
+
+The writing style aims to follow the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/),
+which in itself is mostly based off the [Google developer documentation style guide](https://developers.google.com/style).
+
+Beyond that, Gatsby has a set way to build pages, and we've added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections.
+- To look up how to use Gatsby, make redirects, and use components, check the [Gatsby reference](./gatsby-reference)
+- To troubleshoot common issues, refer to [Troubleshooting](troubleshooting.md)
+
+### Deploy
 
 GitHub actions build preview builds of the site in multiple stages:
 
