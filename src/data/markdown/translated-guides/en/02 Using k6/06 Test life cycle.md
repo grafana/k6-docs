@@ -276,27 +276,3 @@ k6 has a few additional ways to use lifecycle functions:
   ```
 
   </CodeGroup>
-
-## Design reasons for k6 stages
-
-The architecture of the k6 is designed to be stable, portable, and modular.
-The separation of the runtime into stages and functions serves these key design goals, providing:
-
-* Stabler, more meaningful test results.
-
-  As `init` code is separated, it doesn't generate metrics.
-  This isolation removes irrelevant computation from the actual VU requests, making test results more accurate.
-
-* Portable scripts
-
-  The separation lets k6 create an `archive` and run the script in a different execution mode, e.g. in the cloud.
-  The init context already defines which files to load and which modules to import.
-
-  In more sophisticated execution, like clustered systems, this separation brings further performance benefits&mdash;certain nodes don't even need writable filesystems.
-  Everything can be kept in memory.
-
-* Reusable functions
-
-  The init context defines *functions* for the test script.
-  These functions can be called multiple times during the test execution, with each call in a new context.
-
