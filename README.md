@@ -7,10 +7,10 @@ Welcome to the k6 docs!
 This repo contains the source code of the [k6 documentation](https://k6.io/docs/).
 
 Some key facts:
-- Issues and contributions are always welcome
+- 💙 Issues and contributions are always welcome
 - The docs are written in Markdown, built with Gatsby, and linted with Prettier and Vale.
 - The [Contributor's guide](./contributors-guide) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
-- We have a [Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md)
+-[Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md)
 
 ## Contributing
 
@@ -28,9 +28,9 @@ or you can use node, as described in the [Contributor's Guide](./contributors-gu
  
 The following docs cover the different stages of the writing workflow:
 
-- [Build locally](./contributors-guide#build). For any large changes, being able to view how the site looks live hugely improves writer comfort and doc quality. To build locally, you'll need node and a node version manager.
-- [Contributing reference](./gatsby-reference). The syntax and structure of the page paths, custom style components, program redirects, and so on.
-- [Troubleshooting](./troubleshooting). Unfortunately, things can go wrong, and Gatsby can be tough on errors. Fortunately, the inscrutable Gatsby errors usually share the same few fixes.
+- [Build locally](./contributors-guide#build-locally). For any large changes, being able to view how the site looks live hugely improves writer comfort and doc quality. To build locally, you'll need node and a node version manager.
+- [Contributing reference](./contributors-guide/gatsby-reference.md). The syntax and structure of the page paths, custom style components, program redirects, and so on.
+- [Troubleshooting](./contributors-guide/troubleshooting.md). Unfortunately, things can go wrong, and Gatsby can be tough on errors. Fortunately, the inscrutable Gatsby errors usually share the same few fixes.
 - [Preview and deploy](./contributors-guide#deploy). Each PR has a preview. The main branch has two previews, staging (which deploys on merges) and prod (which deploys with version upgrades).
 
   Only people with qualified permissions can deploy.
