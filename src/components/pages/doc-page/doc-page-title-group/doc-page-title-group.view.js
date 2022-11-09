@@ -29,17 +29,13 @@ export const DocPageTitleGroup = ({
   articleSrc,
   githubUrl,
   githubTitle,
-  hideHeading,
+  heading,
 }) => {
   const { locale } = useLocale();
 
   return (
-    <div
-      className={classNames(styles.wrapper, {
-        [styles.noHeading]: hideHeading,
-      })}
-    >
-      {!hideHeading && <Heading className={styles.title}>{title}</Heading>}
+    <div className={classNames(styles.wrapper)}>
+      <Heading className={styles.title}>{heading || title}</Heading>
       <div className={styles.links}>
         {githubUrl && (
           <GithubLink githubUrl={githubUrl} githubTitle={githubTitle} />

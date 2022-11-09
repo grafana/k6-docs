@@ -1007,7 +1007,7 @@ async function fetchDocPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+                  heading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1050,7 +1050,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1093,7 +1093,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  hideHeading
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1184,7 +1184,6 @@ const createRedirects = ({ actions }) => {
     redirectInBrowser: true,
     isPermanent: true,
   });
-  // TODO: move to appropriate place
   createRedirect({
     fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
     toPath: '/javascript-api/xk6-browser/',
@@ -1544,10 +1543,16 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/cloud/integrations/grafana-plugin/',
+    toPath: '/cloud/integrations/grafana-app/',
+    isPermanent: true,
+  });
+  
+  createRedirect({
     fromPath: '/using-k6/test-life-cycle/',
     toPath: '/using-k6/test-lifecycle/',
     isPermanent: true,
-  });
+  });  
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
@@ -1811,11 +1816,6 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'shouldCreatePage',
       value: node.frontmatter.shouldCreatePage || true,
-    });
-    createNodeField({
-      node,
-      name: 'hideHeading',
-      value: node.frontmatter.hideHeading || false,
     });
   }
 };

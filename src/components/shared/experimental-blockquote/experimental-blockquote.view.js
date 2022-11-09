@@ -7,8 +7,9 @@ const ExperimentalBlockquote = () => (
     need to add features or introduce breaking changes. This could happen at any
     time until we release this module as stable.
     <p>
-      Feel free to provide user feedback, and open an issue or pull request if
-      you have any suggestions.
+      Feel free to <a href="https://community.k6.io/">provide user feedback</a>,
+      and <a href="https://github.com/grafana/k6/issues">open an issue</a> or
+      pull request if you have any suggestions.
     </p>
   </Blockquote>
 );

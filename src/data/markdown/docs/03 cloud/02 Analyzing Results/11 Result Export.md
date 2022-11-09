@@ -9,7 +9,7 @@ After a test finishes, you can export the test-result data in various formats:
 - [PDF report](#generate-pdf-report): to share the performance results with managers and executives.
 - [CSV format](#export-as-csv): to analyze the test result metrics deeper on your own.
 
-For other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
+For other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-app).
 
 ## Generate a PDF Report
 

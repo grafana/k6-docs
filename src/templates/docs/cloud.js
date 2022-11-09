@@ -209,7 +209,7 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
                         APM platforms
                       </Link>{' '}
                       and{' '}
-                      <Link to={'/cloud/integrations/grafana-plugin/'}>
+                      <Link to={'/cloud/integrations/grafana-app/'}>
                         Grafana
                       </Link>
                       .
