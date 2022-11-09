@@ -1547,12 +1547,12 @@ const createRedirects = ({ actions }) => {
     toPath: '/cloud/integrations/grafana-app/',
     isPermanent: true,
   });
-  
+
   createRedirect({
     fromPath: '/using-k6/test-life-cycle/',
     toPath: '/using-k6/test-lifecycle/',
     isPermanent: true,
-  });  
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
