@@ -69,9 +69,9 @@ excerpt: <summary text for social shares. Aim for 170 characters>.
 ---
 ```
 
-The writing style aims to follow the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/),
-which in itself is mostly based off the [Google developer documentation style guide](https://developers.google.com/style).
 
+The writing style aims to follow the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/),
+which itself mostly follows the [Google developer documentation style guide](https://developers.google.com/style).
 Beyond that, Gatsby has a set way to build pages, and we've added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections.
 - To look up how to use Gatsby, make redirects, and use components, check the [Gatsby reference](./gatsby-reference)
 - To troubleshoot common issues, refer to [Troubleshooting](troubleshooting.md)
@@ -98,9 +98,10 @@ GitHub actions build preview builds of the site in multiple stages:
 Before you upgrade versions, it's a good idea to give the updated docs a final look at `https://staging.k6.io`
 **Especially check that redirects work and components render correctly!**
 
+Unless k6 OSS has a major version upgrade, increment the version by 0.0.1. For example, `0.43.1` → `0.43.2`
 As the UI might change, refer to GitHub [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) doc for the canonical instructions.
 
-All tags created using the format `vN.N.N`, for instance, `v0.0.1`, will result in an automatic deployment to the production environment. Tags can either be created and pushed from the git cli, or from https://github.com/grafana/k6-docs/releases
+Each release has a tag, which you can create either through the Github CLI or from https://github.com/grafana/k6-docs/releases
 
 1. From the releases page, select **Draft a new Release**.
 ![DraftRelease1](../internal-images/DraftNewRelease.png)

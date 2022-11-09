@@ -23,6 +23,19 @@ The same pattern used to define orders not only root folders but also pages(md f
 
 ![](internal-images/Untitled%201.png)
 
+## Links
+
+The root of the site begins at `k6.io/docs`.
+
+So `/cloud` as an anchor will render as `k6.io/docs/cloud`.
+
+## Redirects
+
+Everytime you change a page path, you MUST program in a redirect at `gatsby-node.js`.
+Search `createRedirect` and follow the syntax.
+
+Test redirects in staging.k6.io before deploying.
+
 ## Headings
 
 Use typical `##` markdown definition to format headings.
