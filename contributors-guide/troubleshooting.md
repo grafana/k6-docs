@@ -1,7 +1,7 @@
 # Gatsby troubleshooting
 
 
-<img src="https://memegenerator.net/img/images/12595641.jpg" alt="Leonardo DiCaprio as the great Gatsby" width="300" align="right">
+<img src="https://upload.wikimedia.org/wikipedia/en/c/c2/TheGreatGatsby2013Poster.jpg" alt="Leonardo DiCaprio as the great Gatsby" width="300" align="right">
 
 
 **Table of contents**
@@ -157,7 +157,7 @@ If you have the courage to nest components, be sure you keep each context separa
   Here's my secret.
 
 <Collapsible> <!--- not aligned!!! This will break. -->
-
+```
 
 ## ESlint errors
 
