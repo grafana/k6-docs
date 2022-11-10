@@ -1,9 +1,6 @@
 # Contributor's guide
 
-When you contribute to the docs, it helps to know how things work. On this page, you'll find links to the most important directories, and procedures about how to build locally and deploy.
-
-For help with the Gatsby syntax and components, check the [Contributor's reference](./gatsby-reference).
-If you have any problems, try [Troubleshooting](./troubleshooting).
+When you contribute to the docs, it helps to know how things work.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -13,7 +10,9 @@ If you have any problems, try [Troubleshooting](./troubleshooting).
     - [Necessary software](#necessary-software)
     - [Build procedure](#build-procedure)
 - [Write](#write)
-    - [Links to help writers](#links-to-help-writers)
+    - [Style Guides](#style-guides)
+    - [Gatsby components](#gatsby-components)
+    - [Troubleshooting](#troubleshooting)
 - [Deploy](#deploy)
     - [Upgrade a main release](#upgrade-a-main-release)
 
@@ -81,12 +80,17 @@ excerpt: <summary text for social shares. Aim for 170 characters>.
 ---
 ```
 
-### Links to help writers
+### Style guides
 
 - k6 follows the style prescribed in the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/), which itself inherits most of its rules from the [Google developer documentation style guide](https://developers.google.com/style).
 
+
+### Gatsby components
+
 - To organize your pages on the site, Gatsby has a specific way to make paths and organize topics.
 We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Contributor's reference](./gatsby-reference). 
+
+### Troubleshooting
 
 - [Troubleshooting](troubleshooting.md) has fixes for common breaks.
 
