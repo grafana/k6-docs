@@ -1,13 +1,9 @@
 # Contributor's guide
 
-When you contribute to the docs, it helps to know how things work.
-On this page, you find:
-- The most important docs directories
-- The procedures to build locally and deploy remotely
+When you contribute to the docs, it helps to know how things work. On this page, you'll find links to the most important directories, and procedures about how to build locally and deploy.
 
 For help with the Gatsby and writing, refer to the [Gatsby build and components reference](./gatsby-reference) and [Troubleshooting](./troubleshooting)
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
 - [Important directories](#important-directories)
@@ -16,7 +12,6 @@ For help with the Gatsby and writing, refer to the [Gatsby build and components 
     - [Write](#write)
     - [Deploy](#deploy)
       
-<!-- markdown-toc end -->
 
 
 ## Important directories
@@ -28,46 +23,40 @@ For writers, these are the most important directories:
 - [`src/templates/docs`](../src/templates/docs)  has the "landing pages" for major docs sections: cloud, guides, examples, et cetera.
 - [`src/components/shared`](../src/components/shared) has the reusable writing enhancements, like our stylish `<blockquote>`
 
-## The writing workflow
-
 These the following sections cover how to build locally and deploy the site.
 
-### Build locally
+## Build locally
 
 For any substantial changes, a local, live preview hugely improves writer comfort, which translates to better doc quality.
 
-#### Necessary software
+### Necessary software
 
 If you don't want to build with Docker (refer to repo README), you'll need the following
 - [NodeJS](https://nodejs.org/en/download/), version 16.0.0 or higher
 - A node version manager like [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) or `fnm`
 - `npm` or `yarn`
 
-#### Build procedure
+### Build procedure
 
 To build locally:
 
 1. Clone the project
- 
   ```bash
   git clone git@github.com:grafana/k6-docs.git
   cd k6-docs
   npm install  # or yarn install
   ```
 2. Use the version manager to install a version of node compatible with the version in `package.json`.
- 
  ```bash
   nvm install 16.16
   nvm use 16.16
   ```
-3. Install dependencies (only necessary the first time)
-
+3. Install dependencies (only necessary the first time.
   ```bash
   npm install  # or yarn install
   ```
 
 4. Run the docs locally:
-
   ```bash
   npm start  # or yarn start
   ```
@@ -75,7 +64,7 @@ To build locally:
 If everything works, a live preview should be serving on http://localhost:8000.
 Things don't always work, though. The [Troubleshooting](./troubleshooting) section covers some common breaks.
 
-### Write
+## Write
 
 Each markdown page should start with the following frontmatter.
 
@@ -86,14 +75,17 @@ excerpt: <summary text for social shares. Aim for 170 characters>.
 ---
 ```
 
+### Writing resources
 
-The writing style aims to follow the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/),
-which itself mostly follows the [Google developer documentation style guide](https://developers.google.com/style).
-Beyond that, Gatsby has a set way to build pages, and we've added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections.
-- To look up how to use Gatsby, make redirects, and use components, check the [Gatsby reference](./gatsby-reference)
-- To troubleshoot common issues, refer to [Troubleshooting](troubleshooting.md)
+- [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/). The canonical style guide.
+- [Google developer documentation style guide](https://developers.google.com/style). Grafana inherits most of its style guide from Google.
 
-### Deploy
+To organize your pages on the site, Gatsby has a specific way to make paths and organize topics. We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections.
+- [Gatsby reference](./gatsby-reference). To look up how to use Gatsby, make redirects, and use components-
+- [Troubleshooting](troubleshooting.md). Fixes for common breaks.
+
+
+## Deploy
 
 GitHub actions build preview builds of the site in multiple stages:
 
@@ -104,7 +96,8 @@ GitHub actions build preview builds of the site in multiple stages:
 ![release-process diagram](https://user-images.githubusercontent.com/47385188/200913675-0ddc4c17-2fc0-40fa-8dd2-84965926cb0f.png)
 
 
-#### Upgrade a main release
+
+### Upgrade a main release
 
 >  #### ⚠️ Versions
 >
@@ -125,4 +118,5 @@ Each release has a tag, which you can create either through the Github CLI or fr
 ![DraftRelease2](../internal-images/DraftNewRelease2.png)
 
 1. Optionally add a description and generate release notes, then **Publish release**.
+
 
