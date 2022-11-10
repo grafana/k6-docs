@@ -2,7 +2,7 @@
 
 When you contribute to the docs, it helps to know how things work. On this page, you'll find links to the most important directories, and procedures about how to build locally and deploy.
 
-For help with the Gatsby authoring, check the [Contributor's reference](./gatsby-reference).
+For help with the Gatsby syntax and components, check the [Contributor's reference](./gatsby-reference).
 If you have any problems, try [Troubleshooting](./troubleshooting).
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
