@@ -769,6 +769,18 @@
       },
       "official": false,
       "categories": ["Authentication"]
+    },
+    {
+      "name": "xk6-ethereum",
+      "description": "K6 extension for ethereum protocols",
+      "url": "https://github.com/distribworks/xk6-ethereum",
+      "logo": "",
+      "author": {
+        "name": "Victor Castell",
+        "url": "https://github.com/distribworks"
+      },
+      "official": false,
+      "categories": ["Blockchain", "Ethereum"]
     }
   ]
 }
