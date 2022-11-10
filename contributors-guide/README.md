@@ -88,7 +88,7 @@ excerpt: <summary text for social shares. Aim for 170 characters>.
 ### Gatsby components
 
 - To organize your pages on the site, Gatsby has a specific way to make paths and organize topics.
-We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Contributor's reference](./gatsby-reference). 
+We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Contributor's reference](./gatsby-reference.md). 
 
 ### Troubleshooting
 
