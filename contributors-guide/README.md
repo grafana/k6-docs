@@ -2,16 +2,22 @@
 
 When you contribute to the docs, it helps to know how things work. On this page, you'll find links to the most important directories, and procedures about how to build locally and deploy.
 
-For help with the Gatsby and writing, refer to the [Gatsby build and components reference](./gatsby-reference) and [Troubleshooting](./troubleshooting)
+For help with the Gatsby authoring, check the [Contributor's reference](./gatsby-reference).
+If you have any problems, try [Troubleshooting](./troubleshooting).
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
 - [Important directories](#important-directories)
-- [The writing workflow](#the-writing-workflow)
-    - [Build locally](#build-locally)
-    - [Write](#write)
-    - [Deploy](#deploy)
-      
+- [Build locally](#build-locally)
+    - [Necessary software](#necessary-software)
+    - [Build procedure](#build-procedure)
+- [Write](#write)
+    - [Links to help writers](#links-to-help-writers)
+- [Deploy](#deploy)
+    - [Upgrade a main release](#upgrade-a-main-release)
+
+<!-- markdown-toc end -->
 
 
 ## Important directories
@@ -66,7 +72,7 @@ Things don't always work, though. The [Troubleshooting](./troubleshooting) secti
 
 ## Write
 
-Each markdown page should start with the following frontmatter.
+Each Markdown page should start with the following frontmatter.
 
 ```yaml
 ---
@@ -75,15 +81,14 @@ excerpt: <summary text for social shares. Aim for 170 characters>.
 ---
 ```
 
-### Writing resources
+### Links to help writers
 
-- [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/). The canonical style guide.
-- [Google developer documentation style guide](https://developers.google.com/style). Grafana inherits most of its style guide from Google.
+- k6 follows the style prescribed in the [Grafana Writers' Toolkit](https://grafana.com/docs/writers-toolkit/), which itself inherits most of its rules from the [Google developer documentation style guide](https://developers.google.com/style).
 
-To organize your pages on the site, Gatsby has a specific way to make paths and organize topics. We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections.
-- [Gatsby reference](./gatsby-reference). To look up how to use Gatsby, make redirects, and use components-
-- [Troubleshooting](troubleshooting.md). Fixes for common breaks.
+- To organize your pages on the site, Gatsby has a specific way to make paths and organize topics.
+We've also added a number of writing enhancements, like nested tables, tabbed code fences, and collapsible sections. For all syntax and components you can use, checkout the [Contributor's reference](./gatsby-reference). 
 
+- [Troubleshooting](troubleshooting.md) has fixes for common breaks.
 
 ## Deploy
 

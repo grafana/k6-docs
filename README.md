@@ -29,7 +29,7 @@ or you can use node, as described in the [Contributor's Guide](./contributors-gu
 The following docs cover the different stages of the writing workflow:
 
 - [Build locally](./contributors-guide#build-locally). For any large changes, being able to view how the site looks live hugely improves writer comfort and doc quality. To build locally, you'll need node and a node version manager.
-- [Contributing reference](./contributors-guide/gatsby-reference.md). The syntax and structure of the page paths, custom style components, program redirects, and so on.
+- [Contributor's reference](./contributors-guide/gatsby-reference.md). The syntax and structure of the page paths, custom style components, program redirects, and so on.
 - [Troubleshooting](./contributors-guide/troubleshooting.md). Unfortunately, things can go wrong, and Gatsby can be tough on errors. Fortunately, the inscrutable Gatsby errors usually share the same few fixes.
 - [Preview and deploy](./contributors-guide#deploy). Each PR has a preview. The main branch has two previews, staging (which deploys on merges) and prod (which deploys with version upgrades).
 

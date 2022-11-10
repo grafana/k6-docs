@@ -1,4 +1,4 @@
-# Contributing reference
+# Contributor's reference
 
 The k6 documentation is a Gatsby application using React components and markdown files for the content of the different pages.
 
