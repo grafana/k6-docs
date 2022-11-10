@@ -1,19 +1,25 @@
 ---
-title: 'Test life cycle'
-excerpt: 'The four distinct life cycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
+title: 'Test lifecycle'
+excerpt: 'The four distinct lifecycle stages in a k6 test are "init", "setup", "VU", and "teardown".'
 ---
 
-A k6 test has four distinct stages.
-A script always runs through these stages in the same order.
+In the lifecycle of a k6 test,
+a script always runs through these stages in the same order:
 
-1. Code in the `init` context prepares the script: loading files, importing modules, and defining functions.
-2. (Optional) The `setup` code runs,  setting up the test environment and generating data.
-3. VU code runs in the `default()` function, running for as long and as many times as the `options` define.
-4. (Optional) The `teardown` code runs, postprocessing data and closing the test environment.
+1. **Required**. Code in the `init` context prepares the script, loading files, importing modules, and defining the test _lifecycle functions_.
+2. _Optional._ The `setup` function runs,  setting up the test environment and generating data.
+3. **Required**. VU code runs in the default or scenario function, running for as long and as many times as the `options` define.
+4. _Optional._ The `teardown` function runs, postprocessing data and closing the test environment.
 
-This order&mdash;set up, test, then tear down&mdash;follows the structure of many testing frameworks.
+<Blockquote mod="note" title="Lifecycle functions">
 
-<CodeGroup labels={["The four life cycle stages"]} lineNumbers={[true]}>
+Except for init code, each stage occurs in a _lifecycle function_,
+a function called in a specific sequence in the k6 runtime.
+
+</Blockquote>
+
+
+<CodeGroup labels={["The four lifecycle stages"]} lineNumbers={[true]}>
 
 ```javascript
 // 1. init code
@@ -33,33 +39,32 @@ export function teardown(data) {
 
 </CodeGroup>
 
-## Overview of the test stages
+## Overview of the lifecycle stages
 
-For more technical detail, see this page's subsequent sections.
+For examples and implementation details of each stage, refer to the subsequent sections.
 
-| Test stage      | Purpose                                                 | Example                                                                                 | Called                                                                             | Required? |
-|-----------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------|
-| **1. init**     | Load local files, import modules, declare lifecycle functions | Open JSON file, Import module                                                           | Once per VU\*                                                                      | Required  |
-| **2. Setup**    | Set up data for processing, share data among VUs           | Call API to start test environment                                                      | Once                                                                               | Optional  |
-| **3. VU code**  | Run the test function, usually `default` | Make https requests, validate responses                                                 | Once per iteration, as many times as the test options require | Required       |
-| **4. Teardown** | Process result of setup code, stop test environment        | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                                                    | Optional        |
+| Test stage      | Purpose                                                       | Example                                                                                 | Called                                                        |
+|-----------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| **1. init**     | Load local files, import modules, declare lifecycle functions | Open JSON file, Import module                                                           | Once per VU\*                                                 |
+| **2. Setup**    | Set up data for processing, share data among VUs              | Call API to start test environment                                                      | Once                                                          |
+| **3. VU code**  | Run the test function, usually `default`                      | Make https requests, validate responses                                                 | Once per iteration, as many times as the test options require |
+| **4. Teardown** | Process result of setup code, stop test environment           | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                               |
 
 \* In cloud scripts, init code might be called more often.
 
 ## The init stage
 
+**The init stage is required**.
 Before the test runs, k6 needs to initialize the test conditions.
 To prepare the test, the code in the `init` context:
 
 - Imports modules
 - Loads files from the local file system
 - Configures the test for all `options`
-- Defines functions for the `default` (VU), `setup`, and `teardown` stages (and for custom functions, too).
+- Defines lifecycle functions for the VU, `setup`, and `teardown` stages (and for custom or `handleSummary()` functions, too).
 
-The init stage is required.
-Separating the init stage from the VU stage removes irrelevant computation from VU code, which both improves k6 performance and makes test results more reliable.
 
-All code that is outside of a function is code in the `init` context.
+**All code that is outside of a lifecycle function is code in the `init` context**.
 Code in the `init` context *always executes first*.
 
 <CodeGroup labels={["Examples of init code"]} lineNumbers={[true]}>
@@ -86,10 +91,15 @@ function myCustomFunction() {
 
 </CodeGroup>
 
+Separating the `init` stage from the VU stage removes irrelevant computation from VU code, which improves k6 performance and makes test results more reliable.
+One limitation of `init` code is that it **cannot** make HTTP requests.
+This limitation ensures that the `init` stage is reproducible across tests (the response from protocol requests is dynamic and unpredictable)
+
 ## The VU stage
 
-Scripts must contain, at least, a `default()` function.
+Scripts must contain, at least, a _scenario function_ that defines the logic of the VUs.
 The code inside this function is *VU code*.
+Typically, VU code is inside the `default` function, but it can also be inside the function defined by a scenario (see subsequent section for an example).
 
 <CodeGroup labels={["Default/Main function"]} lineNumbers={[true]}>
 
@@ -101,8 +111,7 @@ export default function () {
 
 </CodeGroup>
 
-VU code runs over and over through the test duration.
-
+**VU code runs over and over through the test duration.**
 VU code can make HTTP requests, emit metrics, and generally do everything you'd expect a load test to do.
 The only exceptions are the jobs that happen in the `init` context.
 
@@ -164,7 +173,7 @@ $ k6 run --no-setup --no-teardown ...
 
 </CodeGroup>
 
-### Using data from setup in default and init
+### Use data from setup in default and init
 
 Again, let's have a look at the basic structure of a k6 test:
 
@@ -231,4 +240,40 @@ It's best to think that each stage and each VU has access to a fresh "copy" of w
 
 It would be extremely complicated and computationally intensive to pass mutable data between all VUs and then to teardown, especially in distributed setups.
 This would go against a core k6 goal: the same script should be executable in multiple modes.
+
+## Additional lifecycle functions
+
+k6 has a few additional ways to use lifecycle functions:
+
+- **`handleSummary()`**. If you want to make a custom summary, k6 calls one more lifecycle function at the very end of the test.
+
+  For details, refer to [Custom summary](/results-output/end-of-test/custom-summary/).
+
+- **Scenario functions**. Instead of the `default` function, you can also run VU code in scenario functions.
+
+  <CodeGroup labels={["scenario-function.js"]} lineNumbers={[]} showCopyButton={[true]}>
+
+  ```javascript
+  import http from 'k6/http';
+  import { sleep } from 'k6';
+
+  export const options = {
+    scenarios: {
+      my_web_test: {
+        // the function this scenario will execute
+        exec: 'webtest',
+        executor: 'constant-vus',
+        vus: 50,
+        duration: '1m',
+      },
+    },
+  };
+
+  export function webtest() {
+    http.get('https://test.k6.io/contacts.php');
+    sleep(Math.random() * 2);
+  }
+  ```
+
+  </CodeGroup>
 
