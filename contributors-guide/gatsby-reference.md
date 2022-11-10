@@ -1,4 +1,4 @@
-# Contributing File Formats
+# Contributor's reference
 
 The k6 documentation is a Gatsby application using React components and markdown files for the content of the different pages.
 
@@ -10,7 +10,7 @@ Documentation articles are markdown files structured under the [`src/data/markdo
 
 ## Folder structure
 
-Root folders represent main categories at the top of the page.  
+Root folders represent main categories at the top of the page.
 Use numbers in front of the folder name to set the order.
 
 Pattern: {number}{space}{page name}
@@ -22,6 +22,19 @@ Example: 02 Hello world
 The same pattern used to define orders not only root folders but also pages(md files) inside the category.
 
 ![](internal-images/Untitled%201.png)
+
+## Links
+
+The root of the site begins at `k6.io/docs`.
+
+So `/cloud` as an anchor will render as `k6.io/docs/cloud`.
+
+## Redirects
+
+Everytime you change a page path, you MUST program in a redirect at `gatsby-node.js`.
+Search `createRedirect` and follow the syntax.
+
+Test redirects in staging.k6.io before deploying.
 
 ## Headings
 
@@ -493,16 +506,16 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 
 **A perfect example:**
 
-```mdx
+```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| location  | object | Location object | 
-| location.langitude  | number | Desc | 
-| location.longitude  | number | Desc | 
-| location.id <BWIPT/>  | number | Desc | 
-| [location.address](/link)  | object | Desc | 
-| location.address.street  | string | Desc | 
-| location.address.apt  | string | Desc | 
+| location  | object | Location object |
+| location.langitude  | number | Desc |
+| location.longitude  | number | Desc |
+| location.id <BWIPT/>  | number | Desc |
+| [location.address](/link)  | object | Desc |
+| location.address.street  | string | Desc |
+| location.address.apt  | string | Desc |
 ```
 
 <details>
@@ -519,15 +532,15 @@ An invaluable tool in API documentation! We have `<TableWithNestedRows>` custom 
 3. Second row contains too much elements, confuses the parser
 4. Last row contains 2 dots, confuses the parser
 
-```mdx
+```markdown
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| <BWIPT/> location  | object | Location object | 
-| location.langitude (currently unavailable) <BWIPT/>  | number | Desc | 
-| location.longitude  | number | Desc | 
-| location.id <BWNIT/>  | number | Desc | 
-| location.address.street  | string | Desc | 
-| location.address..apt  | string | Desc | 
+| <BWIPT/> location  | object | Location object |
+| location.langitude (currently unavailable) <BWIPT/>  | number | Desc |
+| location.longitude  | number | Desc |
+| location.id <BWNIT/>  | number | Desc |
+| location.address.street  | string | Desc |
+| location.address..apt  | string | Desc |
 ```
 
 ## LdScript
