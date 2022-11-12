@@ -119,11 +119,4 @@ jobs:
       - uses: JustinBeckwith/linkinator-action@v1
         with:
           paths: ${{process.env.GATSBY_DEFAULT_DOC_URL}}
-          concurrency: 10
-          recurse: true
-          linksToSkip: "https://fonts.googleapis.com"
-          skip: ".*\.(js|css)$"
-          retry: true
-          retryErrorsCount: 3
-          retryErrorsJitter: 5
-          verbosity: "ERROR"
+          config: "linkinator.config.json"
