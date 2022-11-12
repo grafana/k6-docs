@@ -110,3 +110,20 @@ jobs:
         run: sudo pip3 install awscli
       - name: Deploy
         run: npm run deploy
+  linkinator:
+    name: "Checks broken links"
+    runs-on: ubuntu-latest
+    needs: [build-deploy-staging]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: JustinBeckwith/linkinator-action@v1
+        with:
+          paths: ${{process.env.GATSBY_DEFAULT_DOC_URL}}
+          concurrency: 10
+          recurse: true
+          linksToSkip: "https://fonts.googleapis.com"
+          skip: ".*\.(js|css)$"
+          retry: true
+          retryErrorsCount: 3
+          retryErrorsJitter: 5
+          verbosity: "ERROR"
