@@ -25,6 +25,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [k6 options](#k6-options)
 - [Load test](#load-test)
 - [Load zone](#load-zone)
+- [Lifecycle function](#lifecycle-function)
 - [Metric](#metric)
 - [Metric sample](#metric-sample)
 - [Reliability](#reliability)
@@ -93,6 +94,9 @@ Load test
 
 Load zone
 : The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
+
+Lifecycle function
+: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/docs/using-k6/test-life-cycle/)
 
 Metric
 : A measure of how the system performs during a test run. `http_req_duration` is an example of a built-in k6 metric. Besides built-ins, you can also create custom metrics.<br/><br/>[Metrics](/using-k6/metrics)
