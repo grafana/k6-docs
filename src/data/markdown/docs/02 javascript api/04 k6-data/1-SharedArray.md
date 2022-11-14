@@ -7,7 +7,7 @@ excerpt: 'SharedArray is an array-like object that shares the underlying memory 
 The function executes only once, and its result is saved in memory once.
 When a script requests an element, k6 gives a _copy_ of that element.
 
-You must construct a `SharedArray` in the [`init` context](/using-k6/test-life-cycle).
+You must construct a `SharedArray` in the [`init` context](/using-k6/test-lifecycle).
 Its constructor takes a name for the `SharedArray` and a function that needs to return an array object itself:
 
 
