@@ -124,7 +124,6 @@ const SidebarNode = (props) => {
       : `${window.location.pathname}/`;
 
     let doesPathMatchLocation = maybePrefixedPath === pathname;
-    console.log({ maybePrefixedPath, pathname });
 
     const isPathLocationPart =
       meta.path === '/' ||
