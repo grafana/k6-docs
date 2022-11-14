@@ -11,7 +11,7 @@ Everything about `SharedArray` is read-only once it is constructed, so it is not
 
 > #### ⚠️ `SharedArray` can currently only be constructed inside `init` code!
 > 
->  Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-life-cycle/) will result in a `new SharedArray must be called in the init context` exception. This limitation will eventually be removed, but for now, the implication is that `SharedArray` can only be used to populate test data at the very beginning of your test and not as a result of receiving data from a response (for example).
+>  Attempting to instantiate a `SharedArray` outside of the [init context](/using-k6/test-lifecycle/) will result in a `new SharedArray must be called in the init context` exception. This limitation will eventually be removed, but for now, the implication is that `SharedArray` can only be used to populate test data at the very beginning of your test and not as a result of receiving data from a response (for example).
 
 Supported operations include:
 1. getting the number of elements with `length`

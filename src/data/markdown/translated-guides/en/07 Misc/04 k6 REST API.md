@@ -491,7 +491,7 @@ curl -X GET \
 
 This endpoint returns the current JSON-encoded setup data.
 
-For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+For more detail about the setup stage please go to [Test life cycle](/using-k6/test-lifecycle).
 
 ## Run Setup
 
@@ -523,7 +523,7 @@ curl -X POST \
 
 This endpoint executes the Setup stage and returns the result.
 
-For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+For more detail about the setup stage please go to [Test life cycle](/using-k6/test-lifecycle).
 
 ## Update Setup
 
@@ -568,7 +568,7 @@ curl -X PUT \
 
 This endpoint parses the JSON request body and sets the result as Setup data.
 
-For more detail about the setup stage please go to [Test life cycle](/using-k6/test-life-cycle).
+For more detail about the setup stage please go to [Test life cycle](/using-k6/test-lifecycle).
 
 ## Stop Test
 

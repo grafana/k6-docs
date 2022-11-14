@@ -24,7 +24,7 @@ $ k6 run script.js
 
 </CodeGroup>
 
-Now if you replace `run` with `archive` k6 will run the [init stage](/using-k6/test-life-cycle) of
+Now if you replace `run` with `archive` k6 will run the [init stage](/using-k6/test-lifecycle) of
 the code to determine which JS files are being imported and what data files are being
 [`open()`](/javascript-api/init-context/open)'ed and bundles all of the files up
 into a tar file:

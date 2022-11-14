@@ -168,7 +168,7 @@ Consider these three factors when picking the best solution for you:
 
 A rule of thumb is that the shorter the "VU iteration duration" the more frequent you _can_ run your tests without introducing long delays in the development cycle feedback loop, or blocking your team mates' deployments from access to shared pre-production environments.
 
-A quick re-cap of the [test life cycle](/using-k6/test-life-cycle) article:
+A quick re-cap of the [test life cycle](/using-k6/test-lifecycle) article:
 
 ```javascript
 export default function () {
