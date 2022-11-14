@@ -12,3 +12,5 @@ export {
   isInIFrame,
   capitalize,
 } from './utils';
+
+export { noTrailingSlash, addPrefixSlash } from './utils.node';
