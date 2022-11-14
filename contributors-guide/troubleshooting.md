@@ -1,7 +1,7 @@
 # Gatsby troubleshooting
 
 
-<img src="https://memegenerator.net/img/images/12595641.jpg" alt="Leonardo DiCaprio as the great Gatsby" width="300" align="right">
+<img src="https://upload.wikimedia.org/wikipedia/en/c/c2/TheGreatGatsby2013Poster.jpg" alt="Leonardo DiCaprio as the great Gatsby" width="300" align="right">
 
 
 **Table of contents**
@@ -69,7 +69,7 @@ You can change versions with nvm.
 3. Install dependencies and run:
 
   ```sh
-  npm  install && npm start
+  npm install && npm start
   ```
 
 ## Serving suddenly broke
@@ -146,6 +146,18 @@ Otherwise you'll get the error `No codeFrame could be generated`
 
 If you have the courage to nest components, be sure you keep each context separated.
 
+### Check that component open and close tags have the same indentation
+
+```html
+
+- I'm hiding something in a bullet
+
+  <Collapsible>
+
+  Here's my secret.
+
+<Collapsible> <!--- not aligned!!! This will break. -->
+```
 
 ## ESlint errors
 
@@ -156,7 +168,7 @@ Usually you can fix this with `eslint --fix`.
 
 
 ```bash
-./node_modules/.bin/eslint --fix ./src/data/markdown/translated-guides/en/01\ Getting\ started/04\ Results\ Output.md 
+./node_modules/.bin/eslint --fix ./src/data/markdown/translated-guides/en/01\ Getting\ started/04\ Results\ Output.md
 
 ```
 For more troublesome files, you will need to look at the offending code.
@@ -164,11 +176,11 @@ Prettier evaluates the entire abstract syntax tree, so some errors can be surpri
 (why should a one-line example need to declare variables? The AST is why).
 
 Some writers don't like this linting, but the alternative is a multitude of codestyles in our load-test snippets, which could create a confusing reading experience.
-Readers ~~>~~ `>` Writers. 
+Readers ~~>~~ `>` Writers.
 
 Sometimes, though, the Prettier output can be misleading.
 
-This error suggests that the problem is with a missing config. Really, the problem is with JS formatting at line 266. 
+This error suggests that the problem is with a missing config. Really, the problem is with JS formatting at line 266.
 
 ```txt
 ✖ eslint -c ./src/data/markdown/.eslintrc.js --fix:
@@ -177,4 +189,21 @@ This error suggests that the problem is with a missing config. Really, the probl
   266:1  error  Parsing error: No Babel config file detected for ./k6-docs/src/data/markdown/translated-guides/en/03 Results output/100 End-of-test/150-custom-summary.md/5_5.javascript. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files
 ```
 
+## Vale errors
 
+Vale is the prose linter. Most times, when vale has an error, you should fix it.
+However, sometimes Vale will flag a word that you want to use as a spelling error.
+To fix this, you have two options:
+
+- If this word will only appear on one page, disable vale for those lines.
+
+  ```markdown
+
+  <!-- vale off -->
+
+  No spellng erors.
+
+  <!-- vale on -->
+  ```
+
+- If this is a word that might appear often (usually a programming term or application), add it to `.vale/accept.txt`
