@@ -11,7 +11,7 @@ To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/javascript-
 
 | Method | Description |
 | ------ | ----------- |
-| [PodDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) | 
+| [PodDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) |  Inject [HTTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
 | PodDisruptor.targets() | Returns the list of target Pods of the PodDisruptor |
  
 
@@ -53,7 +53,7 @@ export default function () {
 
 You can test this script by first creating a pod running nginx with the command below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
 ```bash
-> kubectl run nginx --image=nginx
+$ kubectl run nginx --image=nginx
 ```
 
  You can also use the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension for creating these resources from your test script.

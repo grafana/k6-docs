@@ -15,6 +15,7 @@ The `PodDisruptor()` constructor creates a new instance of a [PodDisruptor](/jav
 ### Selector
 
 The `selector` defines the criteria a pod must satisfy in order to be a valid target:
+
 | Attribute | Description |
 | --------- | ----------- |
 | namespace | namespace the selector will look for pods |
@@ -24,11 +25,13 @@ The `selector` defines the criteria a pod must satisfy in order to be a valid ta
 The following attributes can be used for selecting or excluding pods:
 
 ### Pod attributes
+
 | Attribute | Description |
 | --------- | ----------- |
 | labels    | map with the labels to be matched for selection/exclusion |
 
 ### Options
+
 The `options` control the creation and behavior of the `PodDisruptor`:
 
 | Attribute | Description |

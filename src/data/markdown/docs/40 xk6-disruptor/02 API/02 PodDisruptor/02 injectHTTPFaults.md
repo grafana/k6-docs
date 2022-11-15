@@ -5,7 +5,7 @@ excerpt: 'xk6-disruptor: PodDisruptor.injectHTTPFaults method'
 
 injectHTTPFaults injects HTTP faults in the requests served by a target Pod.
 
-| Parameters | Description |
+| Parameter | Description |
 | ---------- | ----------- |
 | fault | description of the [http faults](/javascript-api/xk6-disruptor/api/faults/http) to be injected |
 | duration | duration of the disruption in seconds |

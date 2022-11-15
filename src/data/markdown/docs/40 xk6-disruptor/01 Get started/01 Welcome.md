@@ -12,13 +12,13 @@ The extension offers an [API](/javascript-api/xk6-disruptor/api/) for creating d
 
 <Blockquote mod="note">
 
-> xk6-disruptor is intended for systems running in kubernetes. Other platforms are not supported at this time.
+xk6-disruptor is intended for systems running in kubernetes. Other platforms are not supported at this time.
 
 </Blockquote>
 
 <Blockquote mod="warning">
 
-> xk6-disruptor is in the alpha stage, undergoing active development. We do not guarantee API compatibility between releases - your k6 scripts may need to be updated on each release until this extension reaches v1.0 release.
+xk6-disruptor is in the alpha stage, undergoing active development. We do not guarantee API compatibility between releases - your k6 scripts may need to be updated on each release until this extension reaches v1.0 release.
 
 </Blockquote>
 

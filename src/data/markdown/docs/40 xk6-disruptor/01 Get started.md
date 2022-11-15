@@ -5,7 +5,7 @@ excerpt: ''
 
 [Welcome](/javascript-api/xk6-disruptor/get-started/welcome)
 
-[Requirements] (/javascript-api/xk6-disruptor/get-started/requirements)
+[Requirements](/javascript-api/xk6-disruptor/get-started/requirements)
 
 [Installation](/javascript-api/xk6-disruptor/get-started/installation)
 
