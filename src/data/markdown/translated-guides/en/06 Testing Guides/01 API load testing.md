@@ -10,7 +10,7 @@ In this guide, you'll learn how to do API load testing and what the best practic
 
 ## How to load test an API with k6
 
-Our developer-friendly tool for load-testing is k6. You can write JavaScript code to load test your API. This is different from other tools, which are focused more on simple testing by hammering one or multiple endpoints via predefined requests, in that, you can write a user-flow scenarios in JavaScript to do all sorts of load testing. Using this tool will help you achieve more by giving you the possibility of:
+Our developer-friendly tool for load testing is k6. You can write JavaScript code to load test your API. This is different from other tools, which are focused more on simple testing by hammering one or multiple endpoints via predefined requests, in that, you can write a user-flow scenarios in JavaScript to do all sorts of load testing. Using this tool will help you achieve more by giving you the possibility of:
 
 1. writing your tests in this well-known scripting language, ES5.1(+).
 2. using correlation to easily connect various requests together. (For example, you can log in to your API, extract the API key from the response, and use it to make other requests, with a unique API key dedicated to that specific session.)
@@ -209,7 +209,9 @@ For more information, refer to [the post on the k6 community forum](https://comm
 
 ### URL grouping
 
-By default, k6 will print runtime information and general results to standard output, `stdout`, while the test is running, and will also print a summary after the test has ended. It may output more granular result data using special output modules, one of them being [JSON output](/get-started/results-output/json). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
+By default, k6 prints runtime information and general results to standard output, `stdout`, while the test runs.
+When the test ends, it also prints a summary after the test has ended.
+It may output more granular result data using special output modules, one of them being [JSON output](/results-output/real-time/json/). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
 
 Sometimes you need to make lots of similar API requests to read or create many resources of the same type. As shown in the following example, a 100 posts will be fetched with unique requests. Each of these requests will create a metric and will have the full URL inside the metric. This poses a problem for data aggregation, either on our cloud platform or on your own API load testing stack. The problem is that all the metrics for each of these URLs will be separate and they'll be aggregated individually, because they are different in their `id` field. It also creates a lot of unnecessary records in the output.
 

@@ -213,7 +213,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v1.5.0 `(2021-10-20)`
 
-- Better visibility for updates on the [subscriptions UI](/cloud/your-plan/subscription/).
+- Better visibility for updates on the [subscriptions UI](/cloud/your-plan/manage-subscription/).
 
 ### v1.4.0 `(2021-10-6)`
 

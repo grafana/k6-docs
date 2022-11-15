@@ -276,7 +276,7 @@ Returns an overview of the test run which includes numbers of URLs, thresholds, 
 ## Export test run metrics
 
 Exports metric data for test run in CSV format.
-The file URL is in the `export.export_file` field of [List test runs response](/cloud-rest-api/test-runs#list-test-runs).
+The file URL is in the `export.export_file` field of [List test runs response](/cloud/cloud-reference/cloud-rest-api/test-runs/#list-load-test-runs).
 
 **POST** `https://api.k6.io/loadtests/v2/runs/{test_run_id}/export`
 
