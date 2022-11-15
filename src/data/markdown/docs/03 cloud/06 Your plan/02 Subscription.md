@@ -31,6 +31,6 @@ If you cancel, you can use your plan through the end of the current period.
 
 ## Retain data
 
-When you cancel, you can opt in to [Data Retention](/cloud/your-plan/data-retention) to save your result data longer-term or between projects.
+When you cancel, you can opt in to [Data Retention](/cloud/your-plan/about-data-retention/) to save your result data longer-term or between projects.
 
 If you don't choose data retention, k6 clears all test-result data seven days after your subscription expires.
