@@ -1010,7 +1010,6 @@ async function fetchDocPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-                  heading
                   redirect
                   redirectTarget
                   hideFromSidebar
