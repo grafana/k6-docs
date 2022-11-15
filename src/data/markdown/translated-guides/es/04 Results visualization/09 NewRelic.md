@@ -100,16 +100,6 @@ SELECT latest(k6.vus) FROM Metric TIMESERIES
 
 </CodeGroup>
 
-**Percentil 90 -  Duración de la solicitud**
-
-<CodeGroup labels={[""]}>
-
-```plain
-SELECT sum(k6.http_req_duration.sum.percentiles) AS '90th' FROM Metric WHERE percentile = 90 TIMESERIES
-```
-
-</CodeGroup>
-
 **Duración máxima, mediana y media de las solicitudes**
 
 <CodeGroup labels={[""]}>
