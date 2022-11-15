@@ -213,6 +213,10 @@ const topLevelLinks = [
         label: 'xk6-browser',
         to: `/javascript-api/xk6-browser/`,
       },
+      {
+        label: 'xk6-disruptor',
+        to: `/javascript-api/xk6-disruptor/`,
+      },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
@@ -455,7 +459,10 @@ function getTopLevelPagesProps({
   return topLevelNames
     .filter(
       (item) =>
-        item !== 'jslib' && item !== 'xk6-browser' && item !== 'extensions',
+        item !== 'jslib' &&
+        item !== 'xk6-disruptor' &&
+        item !== 'xk6-browser' &&
+        item !== 'extensions',
     )
     .map((name) => {
       const slug = slugify(name);
@@ -650,7 +657,7 @@ function getDocPagesProps({
       }
 
       // data for github button on the right
-      // currently we only show it for jslib and xk6-browser pages
+      // currently we only show it for jslib, xk6-browser, xk6-disruptor pages
       let githubUrl = null;
       let githubTitle = '';
 
@@ -671,6 +678,38 @@ function getDocPagesProps({
           ...item,
           name: item.name === 'Jslib' ? 'jslib' : item.name,
           path: item.path.replace('/jslib', '/javascript-api/jslib'),
+        }));
+      }
+
+      // add prefix to xk6-disruptor pages slugs and sidebar links
+      if (slug.startsWith('xk6-disruptor/')) {
+        slug = `javascript-api/${slug}`;
+        if (slug.includes('xk6-disruptor/get-started/welcome')) {
+          // make the section root out of the welcome page
+          slug = `javascript-api/xk6-disruptor/`;
+        }
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/xk6-disruptor',
+          '/javascript-api/xk6-disruptor',
+        );
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/javascript-api/xk6-disruptor/get-started/welcome',
+          '/javascript-api/xk6-disruptor',
+        );
+
+        githubUrl = 'https://github.com/grafana/xk6-disruptor';
+        githubTitle = 'xk6-disruptor';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Xk6-disruptor' ? 'xk6-disruptor' : item.name,
+          path: item.path.replace(
+            '/xk6-disruptor',
+            '/javascript-api/xk6-disruptor',
+          ),
         }));
       }
 
@@ -709,6 +748,7 @@ function getDocPagesProps({
       let hideBreadcrumbs = false;
       if (
         slug === 'javascript-api/jslib/' ||
+        slug === 'javascript-api/xk6-disruptor/' ||
         slug === 'javascript-api/xk6-browser/'
       ) {
         hideBreadcrumbs = true;
@@ -1133,7 +1173,8 @@ async function createDocPages({
 
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children).filter(
-    (name) => name !== 'xk6-browser' && name !== 'jslib',
+    (name) =>
+      name !== 'xk6-browser' && name !== 'xk6-disruptor' && name !== 'jslib',
   );
 
   getDocPagesProps({

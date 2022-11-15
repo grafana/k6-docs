@@ -1,16 +1,8 @@
 ---
-title: 'xk6-disruptor'
-excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system's reliability under turbulent conditions. Think of it as unit testing, but for reliability.'
+title: 'Welcome'
+heading: 'xk6-disruptor Documentation'
+excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions. Think of it as unit testing, but for reliability.'
 ---
-
-</br>
-</br>
-
-<div align="center">
-
-![logo](images/logo.png)
-
-</div>
 
 xk6-disruptor is a [k6](https://k6.io) extension providing fault injection capabilities to test system's reliability under turbulent conditions. Think of it as unit testing, but for reliability. 
 

@@ -285,6 +285,7 @@ const redirectWelcome = (path) =>
   path
     .replace(/en\/get-started\/welcome/i, '')
     .replace(/javascript-api\/xk6-browser\/get-started\/welcome/i, '')
+    .replace(/javascript-api\/xk6-disruptor\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 const getSlug = (path) => {
@@ -327,7 +328,7 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
 
   // Making sure to change slug only for Javascript API docs that have parameters
   if (
-    /javascript-api\/|jslib\/|xk6-browser\//.test(slug) &&
+    /javascript-api\/|jslib\/|xk6-browser\/|xk6-disruptor\//.test(slug) &&
     /\(.+\)/.test(title)
   ) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
