@@ -172,3 +172,12 @@ eql
 instanceof
 contentful
 xpath
+disruptors
+kubectl
+nginx
+iface
+virtualizing
+oversaturated
+Minikube
+kubernetes
+metallb
