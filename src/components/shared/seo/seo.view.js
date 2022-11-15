@@ -2,9 +2,17 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { createMetaImagePath } from 'utils';
+import { createMetaImagePath, noTrailingSlash, addPrefixSlash } from 'utils';
 import { docs } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
+
+const getPageHref = (host, slug) => {
+  if (slug.match(/^\/?jslib\/.*/g)) {
+    return `${noTrailingSlash(host)}/javascript-api${addPrefixSlash(slug)}`;
+  }
+
+  return `${noTrailingSlash(host)}${addPrefixSlash(slug)}`;
+};
 
 export const SEO = ({
   data: { title, description, image, slug } = {},
@@ -40,13 +48,7 @@ export const SEO = ({
 
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
-  const currentUrl =
-    // eslint-disable-next-line no-nested-ternary
-    slug && slug !== '*'
-      ? slug.startsWith('jslib/')
-        ? `${docs}/javascript-api${slug}`
-        : `${docs}${slug.startsWith('/') ? slug : `/${slug}`}`
-      : docs;
+  const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
 
   let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available

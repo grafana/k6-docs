@@ -81,7 +81,7 @@ HTTP archive
 : *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).<br/><br/>[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/recording-a-session/har-converter/)
 
 Iteration
-: A single run in the execution of the `default function`, or scenario `exec` function. You can set iterations across all VUs, or per VU.<br/><br/>The [test life cycle](/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.
+: A single run in the execution of the `default function`, or scenario `exec` function. You can set iterations across all VUs, or per VU.<br/><br/>The [test life cycle](/using-k6/test-lifecycle/) document breaks down each stage of a k6 script, including iterations in VU code.
 
 k6 Cloud
 : The proper name for the entire cloud product, comprising both k6 Cloud Execution and k6 Cloud Test Results.<br/><br/>[k6 Cloud docs](/cloud)
@@ -96,7 +96,7 @@ Load zone
 : The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
 
 Lifecycle function
-: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/docs/using-k6/test-life-cycle/)
+: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/docs/using-k6/test-lifecycle/)
 
 Metric
 : A measure of how the system performs during a test run. `http_req_duration` is an example of a built-in k6 metric. Besides built-ins, you can also create custom metrics.<br/><br/>[Metrics](/using-k6/metrics)

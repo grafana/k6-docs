@@ -354,7 +354,7 @@ Depending on the test size, the test might run from one or more cloud servers.
 Setup and teardown, on the other hand, execute only once, and each will execute from only one server.
 However, there's no guarantee that the cloud server that runs `setup()` will be the same one that runs `teardown()`.
 
-Besides this quirk, your [setup and teardown life cycle functions](/using-k6/test-life-cycle) run as normal when running cloud tests.
+Besides this quirk, your [setup and teardown life cycle functions](/using-k6/test-lifecycle) run as normal when running cloud tests.
 
 ### Disable cloud logs
 

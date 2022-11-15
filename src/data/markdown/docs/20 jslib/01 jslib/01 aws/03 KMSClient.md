@@ -6,7 +6,7 @@ excerpt: 'KMSClient allows interacting with the AWS Key Management Service'
 ---
 
 `KMSClient` interacts with the AWS Key Management Service.
-With it, the user can list all the Key Management Service keys in the caller's AWS account and region. They can also generate symmetric data keys to use outside of AWS Key Management Service. `KMSClient` operations are blocking. k6 recommends reserving their use to the [`setup`](/using-k6/test-life-cycle/) and [`teardown`](/using-k6/test-life-cycle/) stages as much as possible.
+With it, the user can list all the Key Management Service keys in the caller's AWS account and region. They can also generate symmetric data keys to use outside of AWS Key Management Service. `KMSClient` operations are blocking. k6 recommends reserving their use to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) stages as much as possible.
 
 Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundle include the `KMSClient`. 
 

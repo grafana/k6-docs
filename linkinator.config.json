@@ -1,0 +1,10 @@
+{
+  "concurrency": 10,
+  "recurse": true,
+  "retry": true,
+  "retryErrorsCount": 3,
+  "retryErrorsJitter": 5,
+  "skip": "linkedin.com|fonts.googleapis.com|.*(\\.js|\\.css)$",
+  "verbosity": "error",
+  "format": "json"
+}

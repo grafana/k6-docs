@@ -50,7 +50,7 @@ As such, you can transform the summary data into any text format: JSON, HTML, co
 You can pipe your custom summary to [standard output or standard error](https://en.wikipedia.org/wiki/Standard_streams), write it to a file, or send it to a remote server.
 
 
-k6 calls `handleSummary()` at the end of the [test lifecycle](/using-k6/test-life-cycle).
+k6 calls `handleSummary()` at the end of the [test lifecycle](/using-k6/test-lifecycle).
 
 ## Use handleSummary()
 
