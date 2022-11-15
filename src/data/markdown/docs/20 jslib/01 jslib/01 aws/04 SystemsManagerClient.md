@@ -6,7 +6,7 @@ excerpt: 'SystemsManagerClient allows interacting with the AWS Systems Manager S
 ---
 
 `SystemsManagerClient` interacts with the AWS Systems Manager Service.
-With it, the user can get parameters from the Systems Manager Service in the caller's AWS account and region. `SystemsManagerClient` operations are blocking. k6 recommends reserving their use to the [`setup`](/using-k6/test-life-cycle/) and [`teardown`](/using-k6/test-life-cycle/) stages as much as possible.
+With it, the user can get parameters from the Systems Manager Service in the caller's AWS account and region. `SystemsManagerClient` operations are blocking. k6 recommends reserving their use to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) stages as much as possible.
 
 Both the dedicated `ssm.js` jslib bundle and the all-encompassing `aws.js` bundle include the `SystemsManagerClient`. 
 

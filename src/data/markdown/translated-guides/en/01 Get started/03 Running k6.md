@@ -105,7 +105,7 @@ export default function () {
 Init code runs first and is called only once per VU.
 On the other hand, default code executes as many times as the test options set.
 
-- [The life cycle of a k6 test](/using-k6/test-life-cycle).
+- [The life cycle of a k6 test](/using-k6/test-lifecycle).
 
 ## Using options
 

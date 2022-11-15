@@ -5,7 +5,7 @@ excerpt: 'Loads and parses the protoset file (serialized FileDescriptor set) so 
 
 Loads and parses the protoset file (serialized FileDescriptor set) so they are available to the client to marshal/unmarshal the correct request and response data structures for the RPC schema.
 
-Must be called within the [`init` phase](/using-k6/test-life-cycle).
+Must be called within the [`init` phase](/using-k6/test-lifecycle).
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
