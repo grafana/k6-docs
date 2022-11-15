@@ -87,6 +87,12 @@ También puede añadir estas métricas a los [dashboards](https://docs.newrelic.
 
 ### Ejemplo de las consultas NRQL
 
+<Blockquote mod="note" title="">
+
+New Relic no tiene soporte para calcular percentiles sobre datos enviados como métricas, que es el formato enviado por esta integración. Vea [este hilo en el foro de New Relic](https://discuss.newrelic.com/t/percentiles-of-values-from-metrics-api-with-nrql-not-working/95832) y [la documentación sobre el tipo de dato `metric`](https://docs.newrelic.com/docs/data-apis/understand-data/metric-data/query-metric-data-type/) (en inglés) para más detalle.
+
+</Blockquote>
+
 A continuación se muestran algunos ejemplos de consultas NRQL que puedes copiar y pegar fácilmente en los widgets de un dashboard de New Relic, sin embargo, puedes seguir con el [constructor de gráficos](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder). Encuentre todas sus métricas de k6 en la pestaña de métricas, con el prefijo `k6.`.
 
 
