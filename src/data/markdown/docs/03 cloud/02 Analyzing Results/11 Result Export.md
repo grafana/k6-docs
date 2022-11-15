@@ -66,7 +66,7 @@ You can also use the following keyboard shortcuts to apply format text:
 | ------------------- | --------------------------------------------------------- |
 | Ctrl / &#x2318; + B | **Bold**                                                  |
 | Ctrl / &#x2318; + I | _Italic_                                                  |
-| Ctrl / &#x2318; + U | <span style="text-decoration: underline">Underline</span> |
+| Ctrl / &#x2318; + U | <span style={{ textDecoration: 'underline' }}>Underline</span> |
 
 ### Generating the PDF
 
@@ -125,9 +125,9 @@ The following table is a reference for the columns in the CSV data, with example
 | `url`           | http://test.k6.io/style.css      | string         | The URL requested.                                                                                                                        |
 | `method`        | GET                              | string         | The HTTP method of the request that this data point represents.                                                                           |
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
-| `count`         | 1.0                              | number         | Number of samples that this data point represents (if > 1 `response_time` is an aggregate value).                                         |
+| `count`         | 1.0                              | number         | Number of samples that this data point represents (if \> 1 `response_time` is an aggregate value).                                         |
 | `load_zone`     | amazon:us:ashburn                | string         | The load zone where the request(s) was made from.                                                                                         |
-| `tags`          | {"staticAsset":"true"}           | string         | JSON formatted list of `{"name": "value"}` tags as specified for the request in the script.                                                      |
+| `tags`          | \{"staticAsset":"true"\}           | string         | JSON formatted list of `{"name": "value"}` tags as specified for the request in the script.                                                      |
 | `min`           | 1.008016                         | number (ms)    | The minimum response time for samples collected within the time bucket. |
 | `mean`          | 3.008016                         | number (ms)    | The mean response time for samples collected within the time bucket. |
 | `median`        | 5.468016                         | number (ms)    | The median response time for samples collected within the time bucket. |

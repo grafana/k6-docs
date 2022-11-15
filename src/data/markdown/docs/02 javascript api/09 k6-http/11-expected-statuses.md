@@ -11,7 +11,7 @@ Returns a callback to be used with [setResponseCallback](/javascript-api/k6-http
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
-| statuses  | integer/objects | either an integer or an object like {min:100, max:300} which gives a minimum and maximum expected status codes|
+| statuses  | integer/objects | either an integer or an object like \{min:100, max:300\} which gives a minimum and maximum expected status codes|
 
 You can have as many arguments as wanted in any order.
 

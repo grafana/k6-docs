@@ -12,7 +12,7 @@ excerpt: 'SecretsManagerClient.createSecret creates a new secret'
 | secretString         | string                   | The text data to encrypt and store in this new version of the secret. We recommend you use a JSON structure of key/value pairs for your secret value. |
 | description          | string                   | The description of the secret.                                                                                                                        |
 | versionID (optional) | string                   | Optional unique version identifier for the created secret. If no versionID is provided, an auto-generated UUID will be used instead.                   |
-| tags (optional)      | Array<{"key": "value"},> | A list of tags to attach to the secret. Each tag is a key and value pair of strings in a JSON text string                                             |
+| tags (optional)      | Array\<\{"key": "value"\},\> | A list of tags to attach to the secret. Each tag is a key and value pair of strings in a JSON text string                                             |
 
 ### Example
 

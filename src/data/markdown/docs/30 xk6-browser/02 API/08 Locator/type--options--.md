@@ -21,7 +21,7 @@ Type in the text into the input field.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

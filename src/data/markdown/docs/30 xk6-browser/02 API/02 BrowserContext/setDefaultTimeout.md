@@ -20,7 +20,7 @@ Sets the default maximum timeout for all methods accepting a `timeout` option in
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 const context = browser.newContext();

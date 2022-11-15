@@ -17,7 +17,7 @@ SecretsManagerClient is included in both the dedicated jslib `secrets-manager.js
 | [getSecret(secretID)](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret/)                                                   | Download a secret                            |
 | [createSecret(name, secretString, description, [versionID], [tags])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret/) | Create a new secret                          |
 | [putSecretValue(secretID, secretString, [versionID])](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue/)              | Update a secret                              |
-| [deleteSecret(secretID, { recoveryWindow: 30, noRecovery: false}})](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret/)  | Delete a secret                              |
+| [deleteSecret(secretID, \{ recoveryWindow: 30, noRecovery: false \}})](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-deletesecret/)  | Delete a secret                              |
 
 ### Throws
 

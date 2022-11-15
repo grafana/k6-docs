@@ -124,9 +124,9 @@ More advanced examples can be found in the [examples section](/examples/function
 | [as(alias)](/javascript-api/jslib/expect/as)  | as(alias) sets a textual representation of the value passed to `expect` or `and`. |
 | [toEqual(value)](/javascript-api/jslib/expect/toequal)  | The `.toEqual(expectedValue)` is similar to `===`    |
 | [toBeGreaterThan(expectedValue)](/javascript-api/jslib/expect/tobegreaterthan)  | Use to verify that `received` > `expected` |
-| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal)  | Use to verify that `received` >= `expected` |
+| [toBeGreaterThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobegreaterthanorequal)  | Use to verify that `received` \>= `expected` |
 | [toBeLessThan(expectedValue)](/javascript-api/jslib/expect/tobelessthan)  | Use to verify that `received` < `expected` |
-| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal)  | Use to verify that `received` <= `expected` |
+| [toBeLessThanOrEqual(expectedValue)](/javascript-api/jslib/expect/tobelessthanorequal)  | Use to verify that `received` \<= `expected` |
 | [toBeBetween(from, to)](/javascript-api/jslib/expect/tobebetween)  | Use to verify that expected value is within range. |
 | [toBeTruthy()](/javascript-api/jslib/expect/tobetruthy)  | Use `.toBeTruthy` when you don't care what a value is and you want to ensure a value is true in a boolean context.  | 
 | [toHaveValidJson()](/javascript-api/jslib/expect/tohavevalidjson)  | Use to verify that the http response has a valid JSON body. |

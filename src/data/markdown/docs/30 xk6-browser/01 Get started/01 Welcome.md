@@ -35,7 +35,7 @@ The main use case for xk6-browser is to test performance on the browser level. B
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 import { check } from 'k6';

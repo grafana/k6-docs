@@ -157,10 +157,10 @@ You can safely pick multiple options and get at most get two notifications per
 test-run, one when it starts and one when it ends.
 k6 passes the event identifier along to specify which condition triggered the notification.
 
-<!--  These are not in frontend, superfluous and commented out for now:
+{/* These are not in frontend, superfluous and commented out for now:
 |  -    | `test.started.all` | All tests started, no matter how |
 |  -    | `test.finished.all` | All tests that ends, no matter how |
--->
+*/}
 
 ---
 

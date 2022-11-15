@@ -15,7 +15,7 @@ excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 
 | Type                                                       | Description                                                              |
 | :--------------------------------------------------------- | :----------------------------------------------------------------------- |
-| Array<[Object](/javascript-api/jslib/aws/s3client/object)> | An array of [Object](/javascript-api/jslib/aws/s3client/object) objects. |
+| Array\<[Object](/javascript-api/jslib/aws/s3client/object)\> | An array of [Object](/javascript-api/jslib/aws/s3client/object) objects. |
 
 ### Example
 

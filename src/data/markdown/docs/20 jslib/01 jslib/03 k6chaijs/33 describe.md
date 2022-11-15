@@ -71,7 +71,7 @@ default ✓ [======================================] 1 VUs  00m00.0s/10m0s  1/1 
 
 If you want to skip the execution of the following `describe` blocks, consider chaining them using `&&` as shown below.
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';

@@ -32,7 +32,7 @@ Since eventInit is event-specific, please refer to the events documentation for 
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

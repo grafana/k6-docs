@@ -24,7 +24,7 @@ Returns the `element.innerText`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

@@ -10,7 +10,7 @@ excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has acce
 
 | Type            | Description                                                              |
 | :-------------- | :----------------------------------------------------------------------- |
-| Array<[Bucket](/javascript-api/jslib/aws/s3client/bucket)> | An array of [Bucket](/javascript-api/jslib/aws/s3client/bucket) objects. |
+| Array\<[Bucket](/javascript-api/jslib/aws/s3client/bucket)\> | An array of [Bucket](/javascript-api/jslib/aws/s3client/bucket) objects. |
 
 ### Example
 

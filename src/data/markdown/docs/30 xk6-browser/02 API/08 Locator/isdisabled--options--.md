@@ -24,7 +24,7 @@ Checks if the element is `disabled`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

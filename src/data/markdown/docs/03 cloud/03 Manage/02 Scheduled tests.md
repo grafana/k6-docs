@@ -64,7 +64,7 @@ You can also schedule a test from the test overview page.
   This brings up the schedule configuration.
 ![Test overview page](./images/Scheduling-a-test/test-overview-page.png)
 
-<!-- Scheduling is a great tool for re-running  -->
+{/* Scheduling is a great tool for re-running */}
 
 > ⭐ **Pro Tip**
 > [trigger a cloud test from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli), then set up a schedule from the cloud app to re-run the test on a regular interval.

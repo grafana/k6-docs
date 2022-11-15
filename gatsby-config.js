@@ -65,9 +65,6 @@ const plugins = [
       extensions: ['.md'],
       gatsbyRemarkPlugins: [
         {
-          resolve: 'gatsby-remark-relative-images',
-        },
-        {
           resolve: 'gatsby-remark-copy-linked-files',
         },
         {
@@ -81,6 +78,13 @@ const plugins = [
           },
         },
       ],
+      mdxOptions: {
+        remarkPlugins: [
+          // Add GitHub Flavored Markdown (GFM) support
+          // eslint-disable-next-line global-require
+          require('remark-gfm'),
+        ],
+      },
     },
   },
   {

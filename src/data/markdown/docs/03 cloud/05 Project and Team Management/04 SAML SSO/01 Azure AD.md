@@ -39,7 +39,7 @@ Azure settings are modified from the **Single sign-on** sidebar menu for your Az
 
 These are required.
 
-<!-- vale off -->
+{/* vale off */}
 
 | Attribute | Value |
 | ----------| ------|
@@ -50,7 +50,7 @@ These are required.
 | token | `<TOKEN-YOU-GET-FROM-K6-SUPPORT>` |
 | Unique User Identifier | user.userprincipalname |
 
-<!-- vale on -->
+{/* vale on */}
 
 ### Additional attributes and claims
 

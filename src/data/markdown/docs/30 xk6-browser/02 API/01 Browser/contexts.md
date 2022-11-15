@@ -14,7 +14,7 @@ Access all open [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/
 
 ### Example
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 import { chromium } from 'k6/x/browser';

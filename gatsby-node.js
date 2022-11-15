@@ -579,6 +579,7 @@ function getDocPagesProps({
           slug: customSlug,
           shouldCreatePage,
         },
+        internal: { contentFilePath },
       } = remarkNode;
 
       if (shouldCreatePage === false) {
@@ -716,7 +717,9 @@ function getDocPagesProps({
 
       return {
         path: stripJSAPISlugParamsAndAddToRedirects(slug, title),
-        component: Path.resolve('./src/templates/doc-page.js'),
+        component: `${Path.resolve(
+          './src/templates/doc-page.js',
+        )}?__contentFilePath=${contentFilePath}`,
         context: {
           sectionName,
           remarkNode: extendedRemarkNode,
@@ -994,7 +997,7 @@ async function fetchDocPagesData(graphql) {
             ext: { in: [".md"] }
             relativeDirectory: { regex: "/docs/" }
           }
-          sort: { fields: absolutePath, order: ASC }
+          sort: { fields: internal___contentFilePath, order: ASC }
         ) {
           nodes {
             name
@@ -1013,6 +1016,9 @@ async function fetchDocPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                }
+                internal {
+                  contentFilePath
                 }
               }
             }
@@ -1037,7 +1043,7 @@ async function fetchGuidesPagesData(graphql) {
             ext: { in: [".md"] }
             relativeDirectory: { regex: "/translated-guides/" }
           }
-          sort: { fields: absolutePath, order: ASC }
+          sort: { fields: internal___contentFilePath, order: ASC }
         ) {
           nodes {
             name
@@ -1056,6 +1062,9 @@ async function fetchGuidesPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                }
+                internal {
+                  contentFilePath
                 }
               }
             }
@@ -1080,7 +1089,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
             ext: { in: [".md"] }
             relativeDirectory: { regex: "/versioned-js-api/" }
           }
-          sort: { fields: absolutePath, order: ASC }
+          sort: { fields: internal___contentFilePath, order: ASC }
         ) {
           nodes {
             name
@@ -1099,6 +1108,9 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                }
+                internal {
+                  contentFilePath
                 }
               }
             }

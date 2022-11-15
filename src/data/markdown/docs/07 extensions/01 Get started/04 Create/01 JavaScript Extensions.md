@@ -36,7 +36,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
   
   A simple JavaScript extension requires a struct that exposes methods called by the test script.
 
-  <!-- TODO: A better trivial example? A coin flip perhaps? -->
+  {/* TODO: A better trivial example? A coin flip perhaps? */}
 
   ```go
   package compare

@@ -30,7 +30,7 @@ Use this method to select an `input` checkbox.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

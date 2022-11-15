@@ -63,14 +63,14 @@ Returns details of a metric with the specified ID.
 | -------------- | ------ | --------------------------- |
 | id             | string | Return metric given the id. |
 
-<!-- vale off -->
+{/* vale off */}
 
 | Query Parameters | Type    | Description                                                                                      | Example                                                                                       |
 | ---------------- | ------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
 | test_run_id      | integer | Returns metric associated with a given test_run_id.                                              | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}`                                 |
 | include[]        | string  | Specifies additional information to include in the response. Allowed options: url, group, check. | `/loadtests/v2/metrics/{metric_id}?test_run_id={test_run_id}&include[]=check&include[]=group` |
 
-<!-- vale on -->
+{/* vale on */}
 
 <CodeGroup labels={["Response"]}>
 

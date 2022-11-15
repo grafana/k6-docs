@@ -126,7 +126,7 @@ To avoid timing errors or other race conditions in your script, if you have acti
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 import { check } from 'k6';

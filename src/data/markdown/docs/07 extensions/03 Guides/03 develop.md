@@ -3,7 +3,7 @@ title: 'Create an extension'
 hideFromSidebar: true
 ---
 
-<!-- TODO: This url is referenced in k6 code (<= v0.37.0)!!! -->
+{/* TODO: This url is referenced in k6 code (<= v0.37.0)!!! */}
 
 ### Advanced JavaScript Extension
 

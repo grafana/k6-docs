@@ -21,7 +21,7 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

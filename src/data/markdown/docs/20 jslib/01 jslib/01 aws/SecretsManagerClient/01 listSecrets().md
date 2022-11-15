@@ -10,7 +10,7 @@ excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated u
 
 | Type                                                                   | Description                                                                          |
 | :--------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| Array<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | An array of [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
+| Array\<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)\> | An array of [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
 
 ### Example
 

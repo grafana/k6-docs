@@ -11,7 +11,9 @@ export const Showcase = () => {
     allMarkdownRemark: { edges: featuredPost },
   } = useStaticQuery(graphql`
     query featuredPostQuery {
-      allMdx(filter: { fileAbsolutePath: { regex: "/markdown/posts/" } }) {
+      allMdx(
+        filter: { internal: { contentFilePath: { regex: "/markdown/posts/" } } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -29,7 +31,9 @@ export const Showcase = () => {
               covertext
               summary
             }
-            fileAbsolutePath
+            internal {
+              contentFilePath
+            }
           }
         }
       }
@@ -40,7 +44,7 @@ export const Showcase = () => {
   // inject date and slug manually
   if (featuredPostData) {
     const { date, slug } = getDateAndSlugFromPath(
-      featuredPostData.fileAbsolutePath,
+      featuredPostData.internal.contentFilePath,
     );
 
     return (

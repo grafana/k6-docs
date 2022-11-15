@@ -21,7 +21,7 @@ Press a single key on the keyboard or a combination of keys.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 page

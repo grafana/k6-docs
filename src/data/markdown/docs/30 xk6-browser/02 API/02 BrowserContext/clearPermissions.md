@@ -16,7 +16,7 @@ Clears all permission overrides for the `BrowserContext`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 const context = browser.newContext();

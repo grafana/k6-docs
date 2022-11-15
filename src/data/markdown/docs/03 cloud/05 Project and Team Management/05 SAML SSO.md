@@ -66,7 +66,7 @@ To set up SAML SSO for your organization, you need the following:
 - Admin access to your k6 Organization
 - Admin access to the admin panel of the IdP you are using.
 
-<!--double blank lines for styling -->
+{/* double blank lines for styling */ }
 - SAML URLs for k6 Cloud:
   
   | Resource                    | URL                                |

@@ -27,7 +27,7 @@ export default function () {
 
 </CodeGroup>
 
-<!-- vale off -->
+{/* vale off */}
 
 | Name                  | Type        | Description                                                                                                                                                  |
 | --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -46,7 +46,7 @@ export default function () {
 | searchParams          | Property    | A [URLSearchParams](#urlsearchparams) object which can be used to access the individual query parameters found in search.                                    |
 | username              | Property    | A USVString containing the username specified before the domain name.                                                                                        |
 
-<!-- vale on -->
+{/* vale on */}
 
 ## URLSearchParams
 

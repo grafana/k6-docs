@@ -13,7 +13,7 @@ Secret is returned by the SecretsManagerClient.* methods that query secrets. Nam
 | `Secret.createdAt`       | number                  | The date and time (timestamp) when a secret was created.                                                                                      |
 | `Secret.lastAccessDate`  | number                  | The last date that this secret was accessed. This value is truncated to midnight of the date and therefore shows only the date, not the time. |
 | `Secret.lastChangedDate` | number                  | The last date and time that this secret was modified in any way.                                                                              |
-| `Secret.tags`            | Array<{"key": "value"}> | The list of user-defined tags associated with the secret.                                                                                     |
+| `Secret.tags`            | Array\<\{"key": "value"\}\> | The list of user-defined tags associated with the secret.                                                                                     |
 
 ### Example
 

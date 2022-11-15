@@ -111,8 +111,8 @@ $ ./k6 run my-script.js
 > first search for the binary in the current directory by default.
 
 
-<!-- TODO: Is this really necessary here? Preserving for the time being.
+{/* TODO: Is this really necessary here? Preserving for the time being.
 > Also note that because of the way xk6 works, vendored dependencies (the `vendor`
 directory created by `go mod vendor`) will **not** be taken into account when
 building a binary, and you don't need to commit them to the extension repository.
--->
+*/}

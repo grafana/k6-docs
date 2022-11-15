@@ -71,7 +71,7 @@ excerpt: "xk6-browser: Page Class"
 
 ### Example
 
-<!-- eslint-skip -->
+[//]: # (eslint-skip)
 
 ```javascript
 import { check } from 'k6';
