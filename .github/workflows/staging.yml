@@ -120,4 +120,10 @@ jobs:
       - uses: JustinBeckwith/linkinator-action@v1
         with:
           paths: ${{ env.GATSBY_DEFAULT_DOC_URL }}
-          config: "linkinator.config.json"
+          concurrency: 50
+          recurse: true
+          retry: true
+          skip: ".*(\\.js|\\.css)$"
+          linksToSkip: "linkedin.com, googleapis.com"
+          verbosity: "ERROR"
+          markdown: false
