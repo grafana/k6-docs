@@ -16,10 +16,10 @@ env:
   GATSBY_ALGOLIA_APP_ID: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_APP_ID }}
   GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_INDEX_NAME }}
   GATSBY_ALGOLIA_SEARCH_ONLY_KEY: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_SEARCH_ONLY_KEY }}
-  GATSBY_DEFAULT_APP_URL: https://app.${{ secrets.STAGING_CI_MAIN_URL }}
-  GATSBY_DEFAULT_BLOG_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}/blog
-  GATSBY_DEFAULT_DOC_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}/docs
-  GATSBY_DEFAULT_MAIN_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}
+  GATSBY_DEFAULT_APP_URL: https://app.staging.k6.io
+  GATSBY_DEFAULT_BLOG_URL: https://staging.k6.io/blog
+  GATSBY_DEFAULT_DOC_URL: https://staging.k6.io/docs
+  GATSBY_DEFAULT_MAIN_URL: https://staging.k6.io
   GATSBY_GOOGLE_API_KEY: ${{ secrets.STAGING_CI_GATSBY_GOOGLE_API_KEY }}
 jobs:
   update-dependencies:
