@@ -5,7 +5,7 @@ excerpt: ''
 
 This example shows how [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) can be used for testing the effect of disruptions in the HTTP requests served by a pod. The example deploys a pod running the [httpbin](https://httpbin.org), a simple request/response application that offers endpoints for testing different HTTP request. The test consists in two load generating scenarios: one for obtaining baseline results and another for checking the effect of the faults introduced by the `PodDisruptor`, and one additional scenario for injecting the faults.
 
-Next sections examine the sample code below in detail, describing the different steps in the test life-cycle.
+You will find the complete [source code](#source-code) at the end of this document. Next sections examine the sample code below in detail, describing the different steps in the test life-cycle.
 
 ## Initialization
 
@@ -194,7 +194,7 @@ When the code above is executed we get an output similar to the one shown below 
 <CodeGroup heightTogglers="true">
 
 ```
-$ ./build/k6 run examples/httpbin/disrupt-pod.js
+$ k6 run disrupt-pod.js
 
           /\      |‾‾| /‾‾/   /‾‾/   
      /\  /  \     |  |/  /   /  /    
@@ -203,7 +203,7 @@ $ ./build/k6 run examples/httpbin/disrupt-pod.js
   / __________ \  |__| \__\ \_____/ .io
 
   execution: local
-     script: examples/httpbin/disrupt-pod.js
+     script: disrupt-pod.js
      output: -
 
   scenarios: (100.00%) 3 scenarios, 201 max VUs, 11m0s max duration (incl. graceful stop):
@@ -246,6 +246,12 @@ load    ✓ [======================================] 000/017 VUs  30s           
 ```
 </CodeGroup >
 
+<Blockquote mod="note">
+
+The command above assumes the xk6-disruptor binary is available in your execution path. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+
+</Blockquote>
+
 <Blockquote mod="attention">
 
 It may happen that you see the following error message during the test execution:
@@ -265,3 +271,174 @@ Let's take a closer look at the results for the requests on each scenario. We ca
        { scenario:base }...............: 0.00%  ✓ 0         ✗ 2998
        { scenario:faults }...............: 9.72%  ✓ 291       ✗ 2702
   ```
+## Source Code
+
+### Manifests
+
+<Collapsible title="manifests/namespace.yaml">
+
+```yaml
+apiVersion: "v1"
+kind: Namespace
+metadata:
+  name: httpbin-ns
+```
+
+</Collapsible>
+
+
+<Collapsible title="manifests/pod.yaml">
+
+```yaml
+kind: "Pod"
+apiVersion: "v1"
+metadata:
+  name: httpbin
+  namespace: httpbin-ns
+  labels:
+    app: httpbin
+spec:
+  containers:
+  - name: httpbin
+    image: kennethreitz/httpbin
+    ports:
+    - name: http
+      containerPort: 80
+```
+
+</Collapsible>
+
+
+<Collapsible title="manifests/service.yaml">
+
+```yaml
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: httpbin
+  namespace: httpbin-ns
+spec:
+  selector:
+    app: httpbin
+  type: "LoadBalancer"
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+</Collapsible>
+
+### Test script
+
+<Collapsible title="disrupt-pod.js">
+
+```javascript
+import { Kubernetes } from 'k6/x/kubernetes';
+import { PodDisruptor } from 'k6/x/disruptor';
+import http from 'k6/http';
+import exec from 'k6/execution';
+
+// read manifests for resources used in the test
+const podManifest = open("./manifests/pod.yaml")
+const svcManifest = open("./manifests/service.yaml")
+const nsManifest = open("./manifests/namespace.yaml")
+const app = "httpbin"
+const namespace = "httpbin-ns"
+const timeout = 30
+
+export function setup() {
+    const k8s = new Kubernetes()
+
+    // create namespace for isolating test
+    k8s.apply(nsManifest)
+
+    // create a test deployment and wait until is ready
+    k8s.apply(podManifest)
+    const ready = k8s.helpers(namespace).waitPodRunning(app, timeout)
+    if (!ready) {
+        k8s.delete("Namespace", namespace)
+        exec.test.abort("Pod " + app + " not ready after " + timeout + " seconds")
+    }
+
+    // expose deployment as a service
+    k8s.apply(svcManifest)
+    const ip = k8s.helpers(namespace).getExternalIP(app, timeout)
+    if (ip == "") {
+        k8s.delete("Namespace", namespace)
+        exec.test.abort("Service " + app + " have no external IP after " + timeout + " seconds")
+    }
+
+    // pass service ip to scenarios
+    return {
+        srv_ip: ip,
+    }
+}
+
+export function teardown(data) {
+    const k8s = new Kubernetes()
+    k8s.delete("Namespace", namespace)
+}
+
+export default function (data) {
+    http.get(`http://${data.srv_ip}/delay/0.1`);
+}
+
+export function disrupt(data) {
+    const selector = {
+        namespace: namespace,
+        select: {
+            labels: {
+                app: app
+            }
+        }
+    }
+    const podDisruptor = new PodDisruptor(selector)
+
+    // delay traffic from one random replica of the deployment
+    const fault = {
+        averageDelay: 50,
+        errorCode: 500,
+        errorRate: 0.1
+    }
+    podDisruptor.injectHTTPFaults(fault, 30)
+}
+
+export const options = {
+    setupTimeout: '90s',
+    scenarios: {
+        base: {
+            executor: 'constant-arrival-rate',
+            rate: 100,
+            preAllocatedVUs: 10,
+            maxVUs: 100,
+            exec: "default",
+            startTime: '0s',
+            duration: "30s",
+        },
+        disrupt: {
+            executor: 'shared-iterations',
+            iterations: 1,
+            vus: 1,
+            exec: "disrupt",
+            startTime: "30s",
+        },
+        faults: {
+            executor: 'constant-arrival-rate',
+            rate: 100,
+            preAllocatedVUs: 10,
+            maxVUs: 100,
+            exec: "default",
+            startTime: '30s',
+            duration: "30s",
+        }
+    },
+    thresholds: {
+        'http_req_duration{scenario:base}': [],
+        'http_req_duration{scenario:faults}': [],
+        'http_req_failed{scenario:base}': [],
+        'http_req_failed{scenario:faults}': [],
+    },
+}
+```
+
+</Collapsible>
