@@ -26,7 +26,7 @@ Sets the context's geolocation.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 const context = browser.newContext();

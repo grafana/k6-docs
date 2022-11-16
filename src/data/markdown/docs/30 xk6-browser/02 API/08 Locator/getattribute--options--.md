@@ -25,7 +25,7 @@ Returns the element attribute value for the given attribute name.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

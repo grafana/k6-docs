@@ -33,7 +33,7 @@ Select one or more options which match the values.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

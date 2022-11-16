@@ -34,7 +34,7 @@ Mouse click on the chosen element.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

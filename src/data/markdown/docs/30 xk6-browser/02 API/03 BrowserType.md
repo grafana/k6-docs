@@ -18,7 +18,7 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 import { chromium } from 'k6/x/browser';

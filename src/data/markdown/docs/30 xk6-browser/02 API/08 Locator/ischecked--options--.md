@@ -24,7 +24,7 @@ Checks to see if the `checkbox` `input` type is selected or not.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

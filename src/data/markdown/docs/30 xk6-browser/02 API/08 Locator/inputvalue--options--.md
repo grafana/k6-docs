@@ -24,7 +24,7 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

@@ -30,7 +30,7 @@ Unselect the `input` checkbox.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page

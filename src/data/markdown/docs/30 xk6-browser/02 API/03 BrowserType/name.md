@@ -15,7 +15,7 @@ Returns the name of the `BrowserType`; currently it will return `chromium`.
 
 ## Example
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 import { chromium } from 'k6/x/browser';

@@ -20,7 +20,7 @@ Grants specified permissions to the `BrowserContext`. Only grants corresponding 
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 const context = browser.newContext();

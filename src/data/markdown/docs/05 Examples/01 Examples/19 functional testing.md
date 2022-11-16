@@ -9,7 +9,7 @@ excerpt: |
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 import http from 'k6/http';
@@ -41,7 +41,7 @@ This test goes through several steps. It creates a new user account, authenticat
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 import chai, { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
@@ -177,7 +177,7 @@ Here's an auto-generated k6 test script showcasing all examples from the [Chaijs
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';

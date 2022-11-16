@@ -25,7 +25,7 @@ Wait for the element to be in a particular state e.g. `visible`.
 
 <CodeGroup labels={[]}>
 
-[//]: # (eslint-skip)
+{/* eslint-skip */}
 
 ```javascript
 page
