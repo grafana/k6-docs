@@ -454,7 +454,7 @@ export default function () {
 
 ## Thresholds en k6 Cloud Results
 
-En los resultados de k6 Cloud los thresholds están disponibles en su [propia pestaña](/cloud/analyzing-results/threshold-tab) para su análisis.
+En los resultados de k6 Cloud los thresholds están disponibles en su [propia pestaña](/cloud/analyzing-results/thresholds) para su análisis.
 
 También puede ver cómo se compara la métrica subyacente con un threshold específico a lo largo de la prueba. El threshold puede añadirse a la pestaña de análisis para su posterior comparación con otras métricas.
 
