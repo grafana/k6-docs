@@ -11,7 +11,7 @@ However, k6 Cloud tests have few enhancements in its execution configuration and
 - Extra tags for load zones
 - Built-in Cloud environment variables
 
-## k6 Cloud options
+## k6 Cloud options {#k6-cloud-options}
 
 When you run cloud tests, you can choose to use a few extra cloud-specific options.
 These cloud options are **not required**.
@@ -50,7 +50,7 @@ If you want to activate it, contact our CS team at support@k6.io.
 
 </Blockquote>
 
-## Load zones
+## Load zones {#load-zones}
 
 <div id="list-of-supported-load-zones">This is the list of supported AWS cloud regions: </div>
 
@@ -80,7 +80,7 @@ If you want to activate it, contact our CS team at support@k6.io.
 
 </Glossary>
 
-## Cloud execution tags
+## Cloud execution tags {#tags}
 
 [Tags](/using-k6/tags-and-groups) provide great flexibility to filter test results.
 
@@ -129,7 +129,7 @@ export default function () {
 </CodeGroup>
 
 
-## Cloud environment variables
+## Cloud environment variables {#env-vars}
 
 When you run tests in k6 Cloud, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
 
