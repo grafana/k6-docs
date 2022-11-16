@@ -139,7 +139,7 @@ export function handleSummary(data) {
 
 | Method                                                                           | Redis command                                    | Description                                                                     |
 | :------------------------------------------------------------------------------- | :----------------------------------------------- | :------------------------------------------------------------------------------ |
-| [`Client.lpush(key, values)`](/javascript-api/k6-experimental/redis/client/client-lpush)        | **[LPSUH](https://redis.io/commands/lpsuh)**   | Inserts all the specified values at the head of the list stored at `key`.       |
+| [`Client.lpush(key, values)`](/javascript-api/k6-experimental/redis/client/client-lpush)        | **[LPSUH](https://redis.io/commands/lpush)**   | Inserts all the specified values at the head of the list stored at `key`.       |
 | [`Client.rpush(key, values)`](/javascript-api/k6-experimental/redis/client/client-rpush)        | **[RPUSH](https://redis.io/commands/rpush)**   | Inserts all the specified values at the tail of the list stored at `key`.       |
 | [`Client.lpop(key)`](/javascript-api/k6-experimental/redis/client/client-lpop)                  | **[LPOP](https://redis.io/commands/lpop)**     | Removes and returns the first element of the list stored at `key`.              |
 | [`Client.rpop(key)`](/javascript-api/k6-experimental/redis/client/client-rpop)                  | **[RPOP](https://redis.io/commands/rpop)**     | Removes and returns the last element of the list stored at `key`.               |
@@ -179,4 +179,4 @@ export function handleSummary(data) {
 
 | Method                                                                                  | Description                         |
 | :-------------------------------------------------------------------------------------- | :---------------------------------- |
-| [`Client.sendCommand(command, args)`](/javascript-api/k6-experimental/redis/client/client-sendCommand) | Send a command to the Redis server. |
+| [`Client.sendCommand(command, args)`](/javascript-api/k6-experimental/redis/client/client-sendcommand) | Send a command to the Redis server. |
