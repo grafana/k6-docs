@@ -24,23 +24,23 @@ To setup Okta SAML SSO based authentication to k6 Cloud, you must have:
 
 These are modified from the Okta app's **General tab -> SAML Settings -> Edit**.
 
-| Attribute                  | Value                                  |
-| -------------------------- | -------------------------------------- |
-| Single Sign On URL         | https://api.loadimpact.com/sso/acs/    |
-| Recipient URL              | https://api.loadimpact.com/sso/acs/    |
-| Destination URL            | https://api.loadimpact.com/sso/acs/    |
-| Audience Restriction       | https://api.loadimpact.com/sso/acs/    |
-| Default Relay State        | None                                   |
-| Name ID Format             | EmailAddress                           |
-| Response                   | Signed                                 |
-| Assertion Signature        | Signed                                 |
-| Signature Algorithm        | RSA_SHA256                             |
-| Digest Algorithm           | SHA256                                 |
-| Assertion Encryption       | Encrypted                              |
-| SAML Single Logout         | Disabled                               |
-| authnContextClassRef       | PasswordProtectedTransport             |
-| Honor Force Authentication | Yes                                    |
-| SAML Issuer ID             | http://www.okta.com/${org.externalKey} |
+| Attribute                  | Value                                    |
+|----------------------------|------------------------------------------|
+| Single Sign On URL         | `https://api.loadimpact.com/sso/acs/`    |
+| Recipient URL              | `https://api.loadimpact.com/sso/acs/`    |
+| Destination URL            | `https://api.loadimpact.com/sso/acs/`    |
+| Audience Restriction       | `https://api.loadimpact.com/sso/acs/`    |
+| Default Relay State        | None                                     |
+| Name ID Format             | EmailAddress                             |
+| Response                   | Signed                                   |
+| Assertion Signature        | Signed                                   |
+| Signature Algorithm        | RSA_SHA256                               |
+| Digest Algorithm           | SHA256                                   |
+| Assertion Encryption       | Encrypted                                |
+| SAML Single Logout         | Disabled                                 |
+| authnContextClassRef       | PasswordProtectedTransport               |
+| Honor Force Authentication | Yes                                      |
+| SAML Issuer ID             | `http://www.okta.com/${org.externalKey}` |
 
 ### Attribute Statements
 

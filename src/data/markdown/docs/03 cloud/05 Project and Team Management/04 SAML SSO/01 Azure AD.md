@@ -29,11 +29,11 @@ Azure settings are modified from the **Single sign-on** sidebar menu for your Az
 
 | Attribute   | Value |
 | ----------------------------| ----------- |
-| Identifier (Entity ID) | https://api.k6.io/sso/acs/ |
-| Reply URL (Assertion Consumer Service URL) | https://api.k6.io/sso/acs/ |
+| Identifier (Entity ID) | `https://api.k6.io/sso/acs/` |
+| Reply URL (Assertion Consumer Service URL) | `https://api.k6.io/sso/acs/` |
 | Sign on URL | _Optional_ |
 | Relay State (Optional) | _Optional_ |
-| Logout Url (Optional) | https://api.k6.io/sso/acs/logout |
+| Logout Url (Optional) | `https://api.k6.io/sso/acs/logout` |
 
 ### Attributes and claims
 
