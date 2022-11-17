@@ -93,7 +93,25 @@ With the `k6 cloud` command, you can run tests on Cloud servers, with scripts on
 
     Learn more about test results at [Analyzing Results](/cloud/analyzing-results/overview).
 
-### Change test project
+
+## Run locally and stream to the cloud
+
+At times, you might want to run a test locally, but see the results on k6 Cloud.
+For example, you may want to test a local environment that is not connected to the wider internet.
+
+To do, this you can use `k6 run --out cloud`.
+For detailed instructions, refer to the [real-time results output](/results-output/real-time/cloud/) docs.
+
+<Blockquote mod="attention"
+title="k6 charges your subscription for cloud streaming"
+>
+
+Data storage and processing are primary cloud costs,
+so `k6 run --out cloud` will consume VUh or test runs from your subscription.
+
+</Blockquote>
+
+## Change test project
 
 By default, k6 creates, runs, and stores tests and test runs in the default project to your default organization.
 
@@ -123,8 +141,7 @@ You can pass the Project ID to k6 in two ways:
 - Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
 
 
-<Collapsible title="Run tests on multiple cloud accounts" tag="h3">
-
+<Collapsible title="Run tests on multiple cloud accounts" tag="h2">
 
 If you have multiple cloud subscriptions, use your API token to change between subscriptions.
 One way to do this is with environment variables:
@@ -143,20 +160,3 @@ For syntax examples and the default config locations, refer to the [`--config` o
 
 </Collapsible>
 
-
-## Run locally and stream to the cloud
-
-At times, you might want to run a test locally, but see the results on k6 Cloud.
-For example, you may want to test a local environment that is not connected to the wider internet.
-
-To do, this you can use `k6 run --out cloud`.
-For detailed instructions, refer to the [real-time results output](/results-output/real-time/cloud/) docs.
-
-<Blockquote mod="attention"
-title="k6 charges your subscription for cloud streaming"
->
-
-Data storage and processing are primary cloud costs,
-so `k6 run --out cloud` will consume VUh or test runs from your subscription.
-
-</Blockquote>
