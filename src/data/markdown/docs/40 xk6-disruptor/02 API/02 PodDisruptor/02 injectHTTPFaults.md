@@ -20,3 +20,13 @@ The injection of the fault is controlled by the following options:
 | ------ | ----------- |
 | proxyPort | port the agent will use to listen for requests in the target pods ( default `8080`) |
 | iface | network interface where the agent will capture the traffic ( default `eth0`) |
+
+<Blockquote mod="note">
+
+When injecting faults you may find the following error message during the test execution:
+
+WARN\[0035\] Request Failed error="read tcp 172.18.0.1:43564->172.18.255.200:80: read: connection reset by peer"
+
+This is normal and means that one request was "in transit" at the time the faults were injected causing the request to fail due to a network connection reset.
+
+</Blockquote>

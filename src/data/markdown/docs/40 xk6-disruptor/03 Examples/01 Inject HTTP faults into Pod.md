@@ -252,15 +252,6 @@ The command above assumes the xk6-disruptor binary is available in your executio
 
 </Blockquote>
 
-<Blockquote mod="attention">
-
-It may happen that you see the following error message during the test execution:
-
-WARN\[0035\] Request Failed error="read tcp 172.18.0.1:43564->172.18.255.200:80: read: connection reset by peer".
-
-This is normal and means that one request was "in transit" at the time the faults were injected, causing the request to fail due to a network connection reset.
-
-</Blockquote>
 
 Let's take a closer look at the results for the requests on each scenario. We can observe that he `base` scenario has a median around `100ms` and an error rate of `0%`  while the `faults` scenario has a median around `150ms` and an error rate of nearly `10%`, matching the definition of the faults defined in the disruptor.
 
