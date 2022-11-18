@@ -109,7 +109,7 @@ jobs:
       - name: Build project
         run: npm run build:gatsby
       - name: Checks if AWS CLI already installed
-        run: command -v aws >/dev/null && echo "is_aws_installed=true" || echo "is_aws_installed=false" >> $GITHUB_ENV
+        run: (command -v aws >/dev/null && echo "is_aws_installed=true" || echo "is_aws_installed=false") >> $GITHUB_ENV
       - name: Download AWS CLI
         if: ${{ !env.is_aws_installed }}
         run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
