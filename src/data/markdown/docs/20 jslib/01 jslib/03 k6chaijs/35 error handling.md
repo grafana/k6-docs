@@ -3,7 +3,7 @@ title: 'Error handling'
 excerpt: 'How to handle errors in k6chaijs.'
 ---
 
-When you execute a load test, your System Under Test (SUT) may often become oversaturated and start responding with errors. In this case,  you need to consider what the iteration execution should do:
+When you execute a load test, your System Under Test (SUT) may often become over saturated and start responding with errors. In this case,  you need to consider what the iteration execution should do:
 
 1. to embrace the system error and continue the execution of the scenario
 2. or to exit
