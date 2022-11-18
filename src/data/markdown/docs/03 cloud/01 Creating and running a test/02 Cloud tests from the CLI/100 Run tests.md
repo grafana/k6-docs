@@ -141,7 +141,7 @@ You can pass the Project ID to k6 in two ways:
 - Set the `K6_CLOUD_PROJECT_ID` environment variable when running your test.
 
 
-<Collapsible title="Run tests on multiple cloud accounts" tag="h2">
+## Run tests on multiple cloud accounts
 
 If you have multiple cloud subscriptions, use your API token to change between subscriptions.
 One way to do this is with environment variables:
