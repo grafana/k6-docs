@@ -158,5 +158,3 @@ k6 cloud --config nondefault/location/config.json script.js
 
 For syntax examples and the default config locations, refer to the [`--config` option reference](/using-k6/k6-options/reference#config).
 
-</Collapsible>
-
