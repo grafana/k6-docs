@@ -108,9 +108,15 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build:gatsby
-      - name: Install AWS CLI dependencies
-        run: sudo apt-get update && sudo apt-get -y install python3-pip python-dev
+      - name: Checks if AWS CLI already installed
+        run: command -v aws >/dev/null && echo "is_aws_installed=true" || echo "is_aws_installed=false" >> $GITHUB_ENV
+      - name: Download AWS CLI
+        if: ${{ !env.is_aws_installed }}
+        run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
       - name: Install AWS CLI
-        run: sudo pip3 install awscli
+        if: ${{ !env.is_aws_installed }}
+        run: sudo ./aws/install
+      - name: Confirm the installation
+        run: aws --version
       - name: Deploy
         run: npm run deploy
