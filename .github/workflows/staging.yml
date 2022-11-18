@@ -124,7 +124,7 @@ jobs:
           recurse: true
           retry: true
           skip: ".*(\\.js|\\.css)$"
-          linksToSkip: >-
+          linksToSkip: |
             "https://linkedin.com/, googleapis.com,
             staging.k6.io/docs/xk6-browser,
             staging.k6.io/docs/using-k6/k6-options/options-reference/,
