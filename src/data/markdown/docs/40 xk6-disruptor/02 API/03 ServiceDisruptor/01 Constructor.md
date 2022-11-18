@@ -15,7 +15,8 @@ The `ServiceDisruptor()` constructor creates a new instance of a [ServiceDisrupt
 
 
 ### Options
-The `options` control the creation and behavior of the `ServiceDisruptor`:
+
+The following options control the creation and behavior of the `ServiceDisruptor`:
 
 | Attribute | Description |
 | --------- | ----------- |

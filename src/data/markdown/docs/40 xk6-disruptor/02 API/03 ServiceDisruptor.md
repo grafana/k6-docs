@@ -3,7 +3,7 @@ title: 'ServiceDisruptor'
 excerpt: 'xk6-disruptor: ServiceDisruptor class'
 ---
 
-The `ServiceDisruptor` class allows the injection of different types of faults in the pods that back a Kubernetes service. 
+The `ServiceDisruptor` class can inject different types of faults into the pods that back a Kubernetes service. 
 
 To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](/javascript-api/xk6-disruptor/api/servicedisruptor/constructor).
  
@@ -17,7 +17,9 @@ To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](/jav
 
 ## Example
 
-The following example shows how to create a disruptor for the `nginx` service and inject a delay of 100ms and a 10% of requests returning a http response code 500. 
+The following example:
+- Creates a disruptor for the `nginx` service
+- Injects a delay of 100ms and a 10 percent of requests that return an http response code `500`. 
 
 ```javascript
 import { ServiceDisruptor } from 'k6/x/disruptor';

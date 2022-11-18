@@ -19,16 +19,16 @@ The `selector` defines the criteria a pod must satisfy in order to be a valid ta
 | Attribute | Description |
 | --------- | ----------- |
 | namespace | namespace the selector will look for pods |
-| select | [attributes](#pod-attributes) that a pod must match for being selected |
-| exclude | [attributes](#pod-attributes) that if a pod matches, will be excluded (even if it matches the select attributes) |
+| select | [attributes](#pod-attributes) that a pod must match to be selected |
+| exclude | [attributes](#pod-attributes) that exclude a pod (even if it matches the select attributes) |
 
-The following attributes can be used for selecting or excluding pods:
+You can use the following attributes to select or exclude pods:
 
 ### Pod attributes
 
 | Attribute | Description |
 | --------- | ----------- |
-| labels    | map with the labels to be matched for selection/exclusion |
+| labels    | map with the labels to be matched for selection or exclusion |
 
 ### Options
 
@@ -36,4 +36,4 @@ The `options` control the creation and behavior of the `PodDisruptor`:
 
 | Attribute | Description |
 | --------- | ----------- |
-| injectTimeout | maximum time for waiting the disruptor to be ready in the target pods, in seconds (default 30s). Zero value forces default. Negative values force no waiting. |
+| injectTimeout | maximum time to wait for the disruptor to be ready in the target pods, in seconds (default 30s). Zero value forces default. Negative values force no waiting. |

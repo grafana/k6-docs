@@ -3,7 +3,7 @@ title: 'PodDisruptor'
 excerpt: 'xk6-disruptor: PodDisruptor class'
 ---
 
-The `PodDisruptor` class allows the injection of different types of faults in the pods that match a selection criteria.
+The `PodDisruptor` class can inject different types of faults into the pods that match a selection criteria.
 
 To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/javascript-api/xk6-disruptor/api/poddisruptor/constructor).
 
@@ -17,7 +17,9 @@ To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/javascript-
 
 ## Example
 
-This example shows how to create a selector that matches all pods in the `default` namespace with the `run=nginx` label and inject a delay of 100ms and a 10% of requests returning a http response code 500.
+This example:
+- Creates a selector that matches all pods in the `default` namespace with the `run=nginx` label
+- Injects a delay of 100ms and makes 10 percent of requests return an http response code `500`.
 
 
 ```javascript
