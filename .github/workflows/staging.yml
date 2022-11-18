@@ -125,10 +125,10 @@ jobs:
           retry: true
           skip: ".*(\\.js|\\.css)$"
           linksToSkip: >
-            "linkedin.com/company/k6io, googleapis.com,
+            "https://linkedin.com/company/k6io, googleapis.com,
             staging.k6.io/docs/xk6-browser,
             staging.k6.io/docs/using-k6/k6-options/options-reference/,
             https://staging.k6.io/docs/using-k6/k6-options/how-to-use-options/,
-            staging.k6.io/docs/using-k6/get-started/k6-resources"
+            https://staging.k6.io/docs/get-started/k6-resources/"
           verbosity: "ERROR"
           markdown: false
