@@ -96,7 +96,7 @@ The cloud tags are automatically added when collecting test metrics.
 They work as regular tags do.
 For example, you can filter the results for a particular load zone in the k6 Cloud Results view.
 
-![filter tags](./images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
+![filter tags](../images/Running-a-test-from-the-CLI/analysis-tab-cloud-tags.png 'Cloud execution tags')
 
 Or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
