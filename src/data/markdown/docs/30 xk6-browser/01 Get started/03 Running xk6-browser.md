@@ -239,7 +239,7 @@ Since it's all in one script, this allows for greater collaboration amongst team
 
 ## Run xk6-browser tests in a Docker container
 
-If you prefer working with Docker, you can run your xk6-browser test scripts in a Docker container using Docker Compose by creating a [Dockerfile](https://github.com/grafana/xk6-browser/blob/main/Dockerfile) and [docker-compose](https://github.com/grafana/xk6-browser/blob/main/docker-compose.yaml) file:
+If you prefer working with Docker, you can run your xk6-browser test scripts in a Docker container using Docker Compose by creating a [Dockerfile](https://github.com/grafana/xk6-browser/blob/main/Dockerfile) and [docker-compose](https://github.com/grafana/xk6-browser/blob/main/docker-compose.yaml) file.
 
 To run the test, use the following command and replace `script.js` with your file.
 
