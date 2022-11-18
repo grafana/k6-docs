@@ -27,7 +27,7 @@ Your k6 scripts may need to be updated on each release until this extension reac
 
 ## Use case for xk6-disruptor
 
-The main use case for xk6-disruptor is to test how resilient an application is to diverse types of disruptions. xk6-browser can eproduce the effects of these disruptions, without having to reproduce their root causes.
+The main use case for xk6-disruptor is to test how resilient an application is to diverse types of disruptions. xk6-disruptor can reproduce the effects of these disruptions, without having to reproduce their root causes.
 For example, you can inject delays in the HTTP requests that an application makes to a service  without having to stress or interfere with the infrastructure (network, nodes) on which the service runs.
 
 In this way, xk6-disruptor makes reliability tests repeatable, predictable, and with a limited blast radius.

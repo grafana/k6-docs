@@ -176,6 +176,7 @@ disruptors
 kubectl
 nginx
 iface
+virtualize
 virtualizing
 oversaturated
 Minikube

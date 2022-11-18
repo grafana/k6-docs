@@ -3,7 +3,7 @@ title: 'Exposing your application'
 excerpt: 'How to make your applications accessible from the test scripts.'
 ---
 
-To access your application from the test scripts, you must assigned it an external IP in the cluster where it's running.
+To access your application from the test scripts, you must assign it an external IP in the cluster where it's running.
 How you do this depends on the platform you use to deploy the application.
 The following sections explain the different approaches.
 
@@ -39,7 +39,7 @@ How you configure the load balancer depends on the your cluster's deployment pla
 The following sections provide guidelines to expose your application when running in common development environments.
 If your cluster is deployed in a public cloud, check your cloud provider documentation.
 
-If the service that you want your tests to accesss is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
+If the service that you want your tests to access is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
 
 ```bash
 $ kubectl patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
