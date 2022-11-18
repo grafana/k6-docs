@@ -16,3 +16,21 @@ A HTTP fault is described by the following attributes:
 | errorRate | rate of requests that will return an error, represented as a float in the range `0.0` to `1.0` (default `0.0`) |
 | exclude | comma-separated list of urls to be excluded from disruption (e.g. /health) |
 | port | port on which the requests will be intercepted |
+
+<Blockquote mod="note">
+
+`averageDelay` and `delayVariation` are applied to all requests affected by the fault, regardless of the value of `errorRate`. `errorCode` is returned only to a fraction of requests defined by `errorRate`.
+
+</Blockquote>
+
+## Example
+
+This example defines a HTTP fault that introduces a delay of `50ms` in all requests and returns an error code `500` in `10%` of the requests.
+
+```javascript
+const fault = {
+  average_delay: 50,
+  error_code: 500,
+  error_rate: 0.1,
+};
+```
