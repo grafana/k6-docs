@@ -9,6 +9,7 @@ Follow along to learn how to:
 2. Interact with elements on your webpage
 3. Wait for page navigation
 4. Run both browser-level and protocol-level tests in a single script
+5. Run xk6-browser tests in a Docker container
 
 <Blockquote mod="note" title="">
 
@@ -235,3 +236,50 @@ export function news() {
 The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](/using-k6/scenarios/executors/constant-vus/) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time. 
 
 Since it's all in one script, this allows for greater collaboration amongst teams.
+
+## Run xk6-browser tests in a Docker container
+
+Apart from running the tests locally, you can also run your xk6-browser scripts in a Docker container using Docker Compose by creating the following Dockerfile and docker-compose file:
+
+<CodeGroup labels={["Dockerfile", "docker-compose.yaml"]} lineNumbers={[true]}>
+
+```bash
+FROM golang:1.19-bullseye as builder
+
+RUN go install -trimpath go.k6.io/xk6/cmd/xk6@latest
+
+RUN  xk6 build --output "/tmp/k6" --with github.com/grafana/xk6-browser
+
+FROM debian:bullseye
+
+ARG CHROMIUM_VERSION=106.0.5249.61-1~deb11u1
+
+RUN apt-get update && \
+    apt-get install -y chromium=${CHROMIUM_VERSION}
+
+COPY --from=builder /tmp/k6 /usr/bin/k6
+
+ENV XK6_HEADLESS=true
+
+ENTRYPOINT ["k6"]
+```
+
+```yaml
+version: '3.4'
+
+services:
+  xk6-browser:
+    build: .
+```
+
+</CodeGroup>
+
+To run the test, use the following command and replace `script.js` with your file.
+
+<CodeGroup labels={["CLI"]}>
+
+```bash
+docker-compose run -T xk6-browser run - <script.js
+```
+
+</CodeGroup>
