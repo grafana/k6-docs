@@ -41,7 +41,7 @@ The full list of available options that can be configured and passed to the exte
 | Name                                     | Value                                                                                                       |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `K6_PROMETHEUS_REMOTE_URL`               | Address of the Prometheus Remote Write endpoint. The default value is `http://localhost:9090/api/v1/write`. |
-| `K6_PROMETHEUS_HEADERS`                  | Additional headers that should be included in the HTTP requests. Optional. |
+| `K6_PROMETHEUS_HEADERS`                  | Additional headers to include in the HTTP requests. Optional. |
 | `K6_PROMETHEUS_USER`                     | User for the basic HTTP authentication at the Prometheus Remote Write endpoint. Optional. |
 | `K6_PROMETHEUS_PASSWORD`                 | Password for the basic HTTP authentication at the Prometheus Remote Write endpoint. Optional. |
 | `K6_PROMETHEUS_PUSH_INTERVAL`            | Interval of the metrics' aggregation and upload to the endpoint. The default value is `5s`. |
