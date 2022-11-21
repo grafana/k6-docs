@@ -49,18 +49,6 @@
       "categories": ["Messaging"]
     },
     {
-      "name": "xk6-fixprotocol",
-      "description": "Send and receive FIX messages",
-      "url": "https://bitbucket.vericode.com.br/projects/K6/repos/xk6-fixprotocol",
-      "logo": "",
-      "author": {
-        "name": "",
-        "url": ""
-      },
-      "official": false,
-      "categories": ["Messaging"]
-    },
-    {
       "name": "xk6-notification",
       "description": "Create notifications",
       "url": "https://github.com/dgzlopes/xk6-notification",
