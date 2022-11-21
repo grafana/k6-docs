@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view';
 import { Link } from 'gatsby';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import styles from './sidebar-section-dropdown.module.scss';
 import ArrowIcon from './svg/arrow.inline.svg';
@@ -16,8 +16,26 @@ const formatLabel = (label) => {
   return newLabel;
 };
 
+const useClickOutside = (ref, handler, events) => {
+  const _events = events || ['mousedown', 'touchstart'];
+  const detectClickOutside = (event) =>
+    !ref.current.contains(event.target) && handler();
+  useEffect(() => {
+    _events.forEach((event) =>
+      document.addEventListener(event, detectClickOutside),
+    );
+    return () => {
+      _events.forEach((event) =>
+        document.removeEventListener(event, detectClickOutside),
+      );
+    };
+  });
+};
+
 export const SidebarSectionDropdown = ({ links, className }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const rootRef = useRef(null);
+  useClickOutside(rootRef, () => setIsOpen(false));
 
   // flatten links
   const flatLinks = [];
@@ -73,7 +91,7 @@ export const SidebarSectionDropdown = ({ links, className }) => {
   }
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <div className={classNames(styles.wrapper, className)} ref={rootRef}>
       <div className={classNames(styles.dropdown, isOpen && styles.open)}>
         <button
           onClick={() => setIsOpen(!isOpen)}
