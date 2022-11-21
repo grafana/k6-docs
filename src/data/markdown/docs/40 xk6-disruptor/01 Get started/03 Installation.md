@@ -10,7 +10,8 @@ Before you build the `xk6-disruptor` binary:
 2. Install the [xk6 build tool](https://github.com/grafana/xk6#command-usage):
   ```bash
   $ go install go.k6.io/xk6/cmd/xk6@latest
-```
+  ```
+
 
 After you've installed the prerequisites, follow these steps to build your xk6-disruptor extension:
 
