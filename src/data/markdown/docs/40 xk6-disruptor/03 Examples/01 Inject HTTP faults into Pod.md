@@ -194,7 +194,7 @@ When the code above is executed we get an output similar to the one shown below 
 <CodeGroup heightTogglers="true">
 
 ```
-$ k6 run disrupt-pod.js
+$ xk6-disruptor run disrupt-pod.js
 
           /\      |‾‾| /‾‾/   /‾‾/   
      /\  /  \     |  |/  /   /  /    
@@ -248,7 +248,7 @@ load    ✓ [======================================] 000/017 VUs  30s           
 
 <Blockquote mod="note">
 
-The command above assumes the xk6-disruptor binary is available in your execution path. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+The command above assumes the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
 
 </Blockquote>
 
