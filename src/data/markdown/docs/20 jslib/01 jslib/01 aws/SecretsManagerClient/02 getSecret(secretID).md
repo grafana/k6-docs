@@ -14,7 +14,7 @@ excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS s
 
 | Type                                                            | Description                                                                                                      |
 | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) | A [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secrett) describing and holding the downloaded secret. |
+| [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) | A [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
 
 ### Example
 

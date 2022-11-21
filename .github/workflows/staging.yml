@@ -16,10 +16,10 @@ env:
   GATSBY_ALGOLIA_APP_ID: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_APP_ID }}
   GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_INDEX_NAME }}
   GATSBY_ALGOLIA_SEARCH_ONLY_KEY: ${{ secrets.STAGING_CI_GATSBY_ALGOLIA_SEARCH_ONLY_KEY }}
-  GATSBY_DEFAULT_APP_URL: https://app.${{ secrets.STAGING_CI_MAIN_URL }}
-  GATSBY_DEFAULT_BLOG_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}/blog
-  GATSBY_DEFAULT_DOC_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}/docs
-  GATSBY_DEFAULT_MAIN_URL: https://${{ secrets.STAGING_CI_MAIN_URL }}
+  GATSBY_DEFAULT_APP_URL: https://app.staging.k6.io
+  GATSBY_DEFAULT_BLOG_URL: https://staging.k6.io/blog
+  GATSBY_DEFAULT_DOC_URL: https://staging.k6.io/docs
+  GATSBY_DEFAULT_MAIN_URL: https://staging.k6.io
   GATSBY_GOOGLE_API_KEY: ${{ secrets.STAGING_CI_GATSBY_GOOGLE_API_KEY }}
 jobs:
   update-dependencies:
@@ -104,9 +104,41 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build:gatsby
-      - name: Install AWS CLI dependencies
-        run: sudo apt-get update && sudo apt-get -y install python3-pip python-dev
+      - name: Checks if AWS CLI already installed
+        run: (command -v aws >/dev/null && echo "is_aws_installed=true" || echo "is_aws_installed=false") >> $GITHUB_ENV
+      - name: Download AWS CLI
+        if: ${{ !env.is_aws_installed }}
+        run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
       - name: Install AWS CLI
-        run: sudo pip3 install awscli
+        if: ${{ !env.is_aws_installed }}
+        run: sudo ./aws/install
+      - name: Confirm the installation
+        run: aws --version
       - name: Deploy
         run: npm run deploy
+  linkinator:
+    name: "Checks broken links"
+    runs-on: ubuntu-latest
+    needs: [build-deploy-staging]
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: JustinBeckwith/linkinator-action@v1
+        with:
+          paths: ${{ env.GATSBY_DEFAULT_DOC_URL }}
+          concurrency: 50
+          recurse: true
+          retry: true
+          skip: ".*(\\.js|\\.css)$"
+          linksToSkip: >-
+            https://linkedin.com,
+            googleapis.com,
+            staging.k6.io/docs/xk6-browser,
+            staging.k6.io/docs/using-k6/k6-options/options-reference/,
+            https://staging.k6.io/docs/using-k6/k6-options/how-to-use-options/,
+            https://staging.k6.io/docs/cloud/creating-and-running-a-test/cloud-execution-reference,
+            https://staging.k6.io/docs/cloud/creating-and-running-a-test/run-tests,
+            https://www.linkedin.com/company/k6io,
+            staging.k6.io/docs/get-started/k6-resources/
+          verbosity: "ERROR"
+          markdown: false

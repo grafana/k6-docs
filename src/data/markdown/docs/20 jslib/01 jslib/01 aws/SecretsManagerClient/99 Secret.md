@@ -4,7 +4,10 @@ description: 'Secret is returned by the SecretsManagerClient.* methods who query
 excerpt: 'Secret is returned by the SecretsManagerClient.* methods who query secrets from AWS secrets manager.'
 ---
 
-Secret is returned by the SecretsManagerClient.* methods that query secrets. Namely, [listSecrets](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/), [getSecret](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret-secretid), [createSecret](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret-name-secretstring-description-versionid-tags), and [putSecretValue](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecret-secretid-secretstring-versionid-tags) returns either an instance or array of Secret objects. The Secret object describes an Amazon Secrets Manager secret.  
+Secret is returned by the SecretsManagerClient.* methods that query secrets. Namely, [listSecrets](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-listsecrets/),
+[getSecret](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-getsecret),
+[createSecret](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-createsecret), and
+[putSecretValue](/javascript-api/jslib/aws/secretsmanagerclient/secretsmanagerclient-putsecretvalue) returns either an instance or array of Secret objects. The Secret object describes an Amazon Secrets Manager secret.
 
 | Name                     | Type                    | Description                                                                                                                                   |
 | :----------------------- | :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |

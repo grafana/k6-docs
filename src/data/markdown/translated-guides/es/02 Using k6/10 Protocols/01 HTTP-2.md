@@ -38,4 +38,4 @@ export default function () {
 Para más información sobre los valores que puede tener el campo `r.proto`, consulte la siguiente documentación: 
 
 - [k6 HTTP](/javascript-api/k6-http/response)
-- https://http2.github.io/http2-spec/#versioning
+- [RFC 7540](https://httpwg.org/specs/rfc7540.html)

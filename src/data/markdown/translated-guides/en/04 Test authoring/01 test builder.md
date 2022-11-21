@@ -43,7 +43,7 @@ Configure the geographical zones that the load test will run from.
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones).
+Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#load-zones).
 
 ## Thresholds
 
@@ -56,7 +56,7 @@ Read the [thresholds documentation](/using-k6/thresholds/).
 
 ## Cloud APM
 
-Select where you want to export metrics from a running test in real-time.  
+Select where you want to export metrics from a running test in real-time.
 
 ![Test Builder - Cloud APM UI](images/cloud-apm.png)
 

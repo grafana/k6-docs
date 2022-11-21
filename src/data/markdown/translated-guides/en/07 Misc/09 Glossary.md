@@ -96,7 +96,7 @@ Load zone
 : The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
 
 Lifecycle function
-: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/docs/using-k6/test-life-cycle/)
+: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/using-k6/test-life-cycle/)
 
 Metric
 : A measure of how the system performs during a test run. `http_req_duration` is an example of a built-in k6 metric. Besides built-ins, you can also create custom metrics.<br/><br/>[Metrics](/using-k6/metrics)
@@ -148,7 +148,7 @@ Test script
 : The actual code that defines how the test behaves and what requests it makes, along with all (or at least most) configuration needed to run the test.<br/><br/>[Single Request example](/examples/single-request).
 
 Threshold
-: A pass/fail criteria that evaluates whether a metric reaches a certain value. Testers often use thresholds to codify SLOs.<br/><br/>[Threshold reference](k6.io/docs/using-k6/thresholds)
+: A pass/fail criteria that evaluates whether a metric reaches a certain value. Testers often use thresholds to codify SLOs.<br/><br/>[Threshold reference](/using-k6/thresholds)
 
 Throughput
 : The rate of successful message delivery. In k6, throughput is measured in requests per second.

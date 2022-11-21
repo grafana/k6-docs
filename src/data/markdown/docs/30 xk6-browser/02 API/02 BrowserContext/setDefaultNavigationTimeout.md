@@ -9,7 +9,7 @@ See [issue #445](https://github.com/grafana/xk6-browser/issues/445) for details 
 
 </Blockquote>
 
-Sets the default maximum navigation timeout for [Page.goto()](/javascript-api/xk6-browser/api/page/goto/).
+Sets the default maximum navigation timeout for [Page.goto()](https://playwright.dev/docs/api/class-page#page-goto).
 
 | Parameter | Type   | Default                  | Description                  |
 |-----------|--------|--------------------------|------------------------------|

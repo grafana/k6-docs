@@ -48,9 +48,12 @@ For examples and implementation details of each stage, refer to the subsequent s
 | **1. init**     | Load local files, import modules, declare lifecycle functions | Open JSON file, Import module                                                           | Once per VU\*                                                 |
 | **2. Setup**    | Set up data for processing, share data among VUs              | Call API to start test environment                                                      | Once                                                          |
 | **3. VU code**  | Run the test function, usually `default`                      | Make https requests, validate responses                                                 | Once per iteration, as many times as the test options require |
-| **4. Teardown** | Process result of setup code, stop test environment           | Validate that setup had a certain result, send webhook notifying that test has finished | Once per script                                               |
+| **4. Teardown** | Process result of setup code, stop test environment           | Validate that setup had a certain result, send webhook notifying that test has finished | Once \*\*                                          |
 
 \* In cloud scripts, init code might be called more often.
+
+\*\* If the `Setup` function ends abnormally (e.g throws an error), the `teardown()` function isn't called. Consider adding logic to the `setup()` function to handle errors and ensure proper cleanup.
+
 
 ## The init stage
 
