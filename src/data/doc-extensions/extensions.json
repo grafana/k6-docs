@@ -243,6 +243,18 @@
       "categories": ["Observability"]
     },
     {
+      "name": "xk6-output-elasticsearch",
+      "description": "Export results to Elasticsearch 8.x",
+      "url": "https://github.com/elastic/xk6-output-elasticsearch",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": "https://github.com/elastic"
+      },
+      "official": true,
+      "categories": ["Data"]
+    },
+    {
       "name": "xk6-output-influxdb",
       "description": "Export results to InfluxDB v2",
       "url": "https://github.com/grafana/xk6-output-influxdb",
