@@ -1,5 +1,5 @@
 ---
-title: 'Exposing your application'
+title: 'Expose your application'
 excerpt: 'How to make your applications accessible from the test scripts.'
 ---
 

@@ -11,7 +11,7 @@ Refer to the [Installation](/javascript-api/xk6-disruptor/get-started/installati
  To do so, you must have the credentials to access the cluster in a [kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
  Ensure that this file is pointed to by the `KUBECONFIG` environment variable or that it is located at the default location, `$HOME/.kube/config`.
 
-<Blockquote mod="attention">
+<Blockquote mod="note">
 
 xk6-disruptor requires Kubernetes version 1.23 or higher
 
