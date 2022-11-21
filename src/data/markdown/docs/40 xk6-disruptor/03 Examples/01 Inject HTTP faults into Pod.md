@@ -73,7 +73,7 @@ The time required for creating the httpbin pod and exposing it as a service vari
 
 <Blockquote mod="attention">
 
-If you get the message `test aborted: service httpbin have no external IP after 30 seconds` verify your cluster is properly configured for exposing `LoadBalancer` services. Check the [exposing your application](/javascript-api/xk6-disruptor/get-started/exposing-your-application) section in the get started guide for more details.
+If you get the message `test aborted: service httpbin have no external IP after 30 seconds` verify your cluster is properly configured for exposing `LoadBalancer` services. Check the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section in the get started guide for more details.
 
 </Blockquote>
 

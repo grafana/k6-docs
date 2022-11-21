@@ -25,4 +25,4 @@ If you find an error similar to the following when using the xk6-disruptor, cont
 
 
 You also need to ensure your test application is accessible from the machine where the tests run.
-Refer to [Exposing your application](/javascript-api/xk6-disruptor/get-started/exposing-your-application) section for instructions on how to make your application available from outside the Kubernetes cluster..
+Refer to [Expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section for instructions on how to make your application available from outside the Kubernetes cluster..
