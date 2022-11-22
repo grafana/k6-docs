@@ -17,14 +17,17 @@ excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 
 ```javascript
 import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.6.0/secrets-manager.js';
+
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
   accessKeyId: __ENV.AWS_ACCESS_KEY_ID,
   secretAccessKey: __ENV.AWS_SECRET_ACCESS_KEY,
 });
+
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 const testSecretValue = 'jslib-test-value';
+
 export default function () {
   // Let's make sure our test secret is created
   const testSecret = secretsManager.createSecret(
@@ -32,6 +35,7 @@ export default function () {
     testSecretValue,
     'this is a test secret, delete me.'
   );
+
   // Let's hard delete our test secret and verify it worked
   secretsManager.deleteSecret(testSecretName, { noRecovery: true });
 }
