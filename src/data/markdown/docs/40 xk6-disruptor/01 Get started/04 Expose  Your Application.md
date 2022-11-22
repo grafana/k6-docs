@@ -7,29 +7,10 @@ To access your application from the test scripts, you must assign it an external
 How you do this depends on the platform you use to deploy the application.
 The following sections explain the different approaches.
 
-Once your application has an external IP, you can retrieve it in your script `setup` function.
-To do this, you can use the [getExternalIP](https://github.com/grafana/xk6-kubernetes#helpers) helper function offered by the [xk6-kubernetes](https://github.com/grafana/xk6-kubernetes) extension and pass it to the test in the setup data:
+You can retrieve the external IP address and store in an environment variable (`SVC_IP` in this example) using the following command:
 
-```javascript
-import http from 'k6/http';
-import { Kubernetes } from 'k6/x/kubernetes';
-
-const service = 'service-name';
-const namespace = 'service-namespace';
-
-export function setup() {
-  const k8s = new Kubernetes();
-
-  const ip = k8s.helpers(namespace).getExternalIP(service);
-
-  return {
-    srvIP: ip,
-  };
-}
-
-export default function (data) {
-  http.get(`http://${data.srvIP}/path/to/endpoint`);
-}
+```bash
+SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
 ## As a LoadBalancer service
@@ -42,7 +23,7 @@ If your cluster is deployed in a public cloud, check your cloud provider documen
 If the service that you want your tests to access is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
 
 ```bash
-$ kubectl patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
+$ kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
 
