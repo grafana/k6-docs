@@ -341,7 +341,7 @@ service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   
 You can retrieve the external IP address in the environment variable `SVC_IP` using the following command:
 
 ```bash
-SRV_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
 ### Manifests
