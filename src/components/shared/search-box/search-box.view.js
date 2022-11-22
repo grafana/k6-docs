@@ -2,6 +2,7 @@ import algoliasearch from 'algoliasearch/lite';
 import classNames from 'classnames';
 import { Heading } from 'components/shared/heading';
 import { useLocale } from 'contexts/locale-provider';
+import useClickOutside from 'hooks/use-click-outside';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   InstantSearch,
@@ -44,22 +45,6 @@ const Stats = connectStateResults(({ setResultsExist, searchResults }) => {
   return stats;
 });
 
-const useClickOutside = (ref, handler, events) => {
-  const _events = events || ['mousedown', 'touchstart'];
-  const detectClickOutside = (event) =>
-    !ref.current.contains(event.target) && handler();
-  useEffect(() => {
-    _events.forEach((event) =>
-      document.addEventListener(event, detectClickOutside),
-    );
-    return () => {
-      _events.forEach((event) =>
-        document.removeEventListener(event, detectClickOutside),
-      );
-    };
-  });
-};
-
 export const SearchBox = ({ inputLabel, indices }) => {
   if (
     !process.env.GATSBY_ALGOLIA_APP_ID ||
@@ -81,6 +66,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
     process.env.GATSBY_ALGOLIA_SEARCH_ONLY_KEY,
   );
   useClickOutside(rootRef, () => setFocus(false));
+
   return (
     <div className={classNames(styles.wrapper)} ref={rootRef}>
       <InstantSearch

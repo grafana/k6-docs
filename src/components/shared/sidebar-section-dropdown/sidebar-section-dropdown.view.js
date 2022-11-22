@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import { isJsAPIActiveLink } from 'components/blocks/header/nav/header-nav.view';
 import { Link } from 'gatsby';
-import React, { useState, useEffect, useRef } from 'react';
+import useClickOutside from 'hooks/use-click-outside';
+import React, { useState, useRef } from 'react';
 
 import styles from './sidebar-section-dropdown.module.scss';
 import ArrowIcon from './svg/arrow.inline.svg';
@@ -14,22 +15,6 @@ const formatLabel = (label) => {
   newLabel = newLabel.replace('Xk6', 'xk6');
   newLabel = newLabel.replace('api', 'API');
   return newLabel;
-};
-
-const useClickOutside = (ref, handler, events) => {
-  const _events = events || ['mousedown', 'touchstart'];
-  const detectClickOutside = (event) =>
-    !ref.current.contains(event.target) && handler();
-  useEffect(() => {
-    _events.forEach((event) =>
-      document.addEventListener(event, detectClickOutside),
-    );
-    return () => {
-      _events.forEach((event) =>
-        document.removeEventListener(event, detectClickOutside),
-      );
-    };
-  });
 };
 
 export const SidebarSectionDropdown = ({ links, className }) => {
