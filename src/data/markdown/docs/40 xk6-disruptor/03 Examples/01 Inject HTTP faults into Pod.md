@@ -3,103 +3,35 @@ title: 'Inject HTTP faults into Pod'
 excerpt: ''
 ---
 
-This example shows how [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) can be used for testing the effect of disruptions in the HTTP requests served by a pod. The example deploys a pod running the [httpbin](https://httpbin.org), a simple request/response application that offers endpoints for testing different HTTP request. The test consists in two load generating scenarios: one for obtaining baseline results and another for checking the effect of the faults introduced by the `PodDisruptor`, and one additional scenario for injecting the faults.
+This example shows how [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
 
-You will find the complete [source code](#source-code) at the end of this document. Next sections examine the sample code below in detail, describing the different steps in the test life-cycle.
+You will find the complete [source code](#source-code) at the end of this document. Next sections examine the code in detail.
+
+The example uses [httpbin](https://httpbin.org), a simple request/response application that offers endpoints for testing different HTTP requests.
+
+The test requires `httpbin` to be deployed in a cluster in the namespace `httpbin` and exposed with an external IP. the IP address is expected in the environment variable `SVC_IP`.
+
+You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document. You can learn more about how to get the external IP address in the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section.
+
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The `Kubernetes` class imported from the `xk6-kubernetes` extension (line 1) provides functions for handling Kubernetes resources. The `PodDisruptor` class imported from the `xk6-disruptor` extension (line 2) provides functions for injecting faults in pods. The [k6/http](https://k6.io/docs/javascript-api/k6-http/) module (line 3) provides functions for executing HTTP requests. 
+The initialization code imports the external dependencies required by the test. The `PodDisruptor` class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/http](https://k6.io/docs/javascript-api/k6-http/) module provides functions for executing HTTP requests.
 
-The built-in [open](https://k6.io/docs/javascript-api/init-context/open) function is used for reading the YAML manifests of the Kubernetes resources needed by test (lines 7-9).
-
-
-Finally some constants are defined: the name of the pod and service running the `httpbin` application (line 10), the namespace on which the application is running (line 11) and the timeout used for waiting the resources to be ready (line 12).
 
 ```javascript
-  1 import { Kubernetes } from 'k6/x/kubernetes';
-  2 import { PodDisruptor } from 'k6/x/disruptor';
-  3 import  http from 'k6/http';
-  4 import exec from 'k6/execution';
-  5
-  6 // read manifests for resources used in the test
-  7 const podManifest = open("./manifests/pod.yaml")
-  8 const svcManifest = open("./manifests/service.yaml")
-  9 const nsManifest  = open("./manifests/namespace.yaml")
- 10 const app = "httpbin"
- 11 const namespace = "httpbin-ns"
- 12 const timeout = 30
+import { PodDisruptor } from 'k6/x/disruptor';
+import  http from 'k6/http';
  ```
-
-## Setup and teardown
-
-The `setup` function creates the Kubernetes resources needed by the test using the `apply` function provided by the `Kubernetes` class. The resources are defined as `yaml` manifests imported in the init code. It creates a namespace (line 18) for isolating the test from other tests running in the same cluster, then deploys the application as a pod (line 21) and waits until the pod is ready using the helper function `waitPodRunning` (line 22). The pod is exposed as a service (line 29) and the `getExternalIP` function is used for waiting until the service is assigned an IP for being accessed from outside the cluster (line 30). This IP address is then returned as part of the setup data to be used by the test code (line 37-39).
-
-```javascript
- 14 export function setup() {
- 15     const k8s = new Kubernetes()
- 16
- 17    // create namespace for isolating test
- 18    k8s.apply(nsManifest)
- 19
- 20    // create a test deployment and wait until is ready
- 21    k8s.apply(podManifest)
- 22    const ready = k8s.helpers(namespace).waitPodRunning(app, timeout)
- 23    if (!ready) {
- 24          k8s.delete("Namespace", namespace)
- 25          exec.test.abort("pod "+ app + " not ready after " + timeout + " seconds")
- 26    }
- 27
- 28    // expose deployment as a service
- 29    k8s.apply(svcManifest)
- 30    const ip = k8s.helpers(namespace).getExternalIP(app, timeout)
- 31    if (ip == "") {
- 32        k8s.delete("Namespace", namespace)
- 33        exec.test.abort("service " + app + " have no external IP after " + timeout + " seconds")
- 34    }
- 35
- 36    // pass service ip to scenarios
- 37    return {
- 38        srv_ip: ip,
- 39    }
- 40 }
- ```
-
-<Blockquote mod="note">
-
-The time required for creating the httpbin pod and exposing it as a service varies significantly between environments. Times of 1 minute or more are not uncommon.
-
-</Blockquote>
-
-<Blockquote mod="attention">
-
-If you get the message `test aborted: service httpbin have no external IP after 30 seconds` verify your cluster is properly configured for exposing `LoadBalancer` services. Check the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section in the get started guide for more details.
-
-</Blockquote>
-
-The `teardown` function is invoked when the test ends to cleanup all resources. As all the resources created by the tests are defined in a namespace, the teardown logic only has to delete this namespace and all associated resources will be deleted (line 44).
-
-```javascript
- 42 export function teardown(data) {
- 43    const k8s = new Kubernetes()
- 44    k8s.delete("Namespace", namespace)
- 45 }
- ```
-
-<Blockquote mod="attention">
-
-Deleting the namespace may take several seconds. If you retry the test shortly after a previous execution you may find the error `object is being deleted: namespaces "httpbin-ns" already exists`. Allow some time for the deletion to complete and retry the execution.
-
-</Blockquote>
 
 ## Test Load
 
-The test load is generated by the `default` function, which executes a request to the `httpbin` service using the IP address obtained int the `setup` function. The test makes requests to the endpoint `delay/0.1` which will return after `0.1` seconds (`100ms`).
+The test load is generated by the `default` function, which executes a request to the `httpbin` pod using the IP obtained from the environment variable `SVC_IP`. The test makes requests to the endpoint `delay/0.1` which will return after `0.1` seconds (`100ms`).
 
 ```javascript
- 47 export default function(data) {
- 48     http.get(`http://${data.srv_ip}/delay/0.1`);
- 49 }
+export default function(data) {
+    http.get(`http://${data.SVC_IP}/delay/0.1`);
+}
  ```
 
 <Blockquote mod="note">
@@ -110,64 +42,68 @@ The test load is generated by the `default` function, which executes a request t
 
 ## Fault injection
 
-The `disrupt` function creates a PodDisruptor](pod-disruptor) using a selector that matches pods in the namespace `httpbin-ns` with the label `app: httpbin` (lines 52-60). 
+The `disrupt` function creates a `PodDisruptor` using a selector that matches pods in the namespace `httpbin` with the label `app: httpbin`.
 
-The http faults are then injected by calling the `PodDisruptor`'s `injectHTTPFaults` method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in a `10%` of the requests (lines 63-68).
+The http faults are injected by calling the [PodDisruptor.injectHTTPFaults](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) method using a fault definition that introduces a delay of `50ms` on each request and an error code `500` in `10%` of the requests.
+
 
 ```javascript
- 51 export function disrupt(data) {
- 52     const selector = {
- 53         namespace: namespace,
- 54             select: {
- 55                 labels: {
- 56                     app: app
- 57                 }
- 58         }
- 59     }
- 60     const podDisruptor = new PodDisruptor(selector)
- 61
- 62     // delay traffic from one random replica of the deployment
- 63     const fault = {
- 64         average_delay: 50,
- 65         error_code: 500,
- 66         error_rate: 0.1
- 67     }
- 68     podDisruptor.injectHTTPFaults(fault, 30)
- 69 }
+export function disrupt(data) {
+   if (__ENV.SKIP_FAULTS == "1") {
+      return
+   }
+    const selector = {
+        namespace: namespace,
+            select: {
+                labels: {
+                    app: "httpbin"
+                }
+        }
+    }
+    const podDisruptor = new PodDisruptor(selector)
+    // delay traffic from one random replica of the deployment
+    const fault = {
+        average_delay: 50,
+        error_code: 500,
+        error_rate: 0.1
+    }
+    podDisruptor.injectHTTPFaults(fault, 30)
+}
 ```
+
+Notice the following code snippet in the `injectFaults` function above:
+
+```javascript
+   if (__ENV.SKIP_FAULTS == "1") {
+       return
+   }
+```
+
+This code makes the function return without injecting faults if the `SKIP_FAULTS` environment variable is passed to the execution of the test with a value of "1". We will use this option to obtain a [baseline execution](#baseline-execution) without faults.
 
 ## Scenarios 
 
-This test defines three [scenarios](https://k6.io/docs/using-k6/scenarios) to be executed. The `base` scenario (lines 74-82) applies the test load to the target application for `30s` invoking the `default` function and it is used to set a baseline for the application's performance. The `disrupt` scenario (lines 83-89) is executed starting at the `30` seconds of the test run. It invokes once the `disrupt` function to inject a fault in the HTTP requests of the target application. The `faults` scenario (lines 90-98) is also executed starting at the `30` seconds of the test run, reproducing the same workload than the `base` scenario but now under the effect of the faults introduced by the `disrupt` scenario.
+This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `httpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the HTTP requests of the target application.
 
 ```javascript
- 73     scenarios: {
- 74         base: {
- 75             executor: 'constant-arrival-rate',
- 76             rate: 100,
- 77             preAllocatedVUs: 10,
- 78             maxVUs: 100,
- 79             exec: "default",
- 80             startTime: '0s',
- 81             duration: "30s",
- 82         },
- 83         disrupt: {
- 84             executor: 'shared-iterations',
- 85             iterations: 1,
- 86             vus: 1,
- 87             exec: "disrupt",
- 88             startTime: "30s",
- 89         },
- 90         faults: {
- 91             executor: 'constant-arrival-rate',
- 92             rate: 100,
- 93             preAllocatedVUs: 10,
- 94             maxVUs: 100,
- 95             exec: "default",
- 96             startTime: '30s',
- 97             duration: "30s",
- 98         }
- 99      },
+    scenarios: {
+        load: {
+            executor: 'constant-arrival-rate',
+            rate: 100,
+            preAllocatedVUs: 10,
+            maxVUs: 100,
+            exec: "default",
+            startTime: '0s',
+            duration: "30s",
+        },
+        disrupt: {
+            executor: 'shared-iterations',
+            iterations: 1,
+            vus: 1,
+            exec: "disrupt",
+            startTime: "30s",
+        }
+     }
  ```
 
  <Blockquote mod="note">
@@ -176,25 +112,82 @@ This test defines three [scenarios](https://k6.io/docs/using-k6/scenarios) to be
 
 </Blockquote>
 
-In order to facilitate the comparison of the results of each scenario, thresholds are defined (lines 100-105) for the `http_req_duration` and the `http_req_failed` metrics for each scenario. 
 
-```javascript
-100     thresholds: {
-101         'http_req_duration{scenario:base}': [],
-102         'http_req_duration{scenario:faults}': [],
-103         'http_req_failed{scenario:base}': [],
-104         'http_req_failed{scenario:faults}': [],
-105      },
+## Executions
+
+<Blockquote mod="note">
+
+The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+
+</Blockquote>
+
+### Baseline execution
+
+We will first execute the test without introducing faults to have an baseline using the following command:
+
+```bash
+xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP disrupt-pod.js
 ```
 
-## Results
+Notice the argument `--env SKIP_FAULT=1` which makes the `disrupt` function to return without injecting any fault as explained in the [fault injection](#fault-injection) section above. Also notice the `--env SVC_IP=$SVC_IP` argument which passes the external IP used to access the `httpbin` application.
 
-When the code above is executed we get an output similar to the one shown below (click `Expand` button to see all output). 
+You should get an output similar to the one shown below (click `Expand` button to see all output).
 
 <CodeGroup heightTogglers="true">
 
 ```
-$ xk6-disruptor run disrupt-pod.js
+          /\      |‾‾| /‾‾/   /‾‾/   
+     /\  /  \     |  |/  /   /  /    
+    /  \/    \    |     (   /   ‾‾\  
+   /          \   |  |\  \ |  (‾)  | 
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: test.js
+     output: -
+
+  scenarios: (100.00%) 2 scenarios, 101 max VUs, 10m30s max duration (incl. graceful stop):
+           * disrupt: 1 iterations shared among 1 VUs (maxDuration: 10m0s, exec: disrupt, gracefulStop: 30s)
+           * load: 100.00 iterations/s for 30s (maxVUs: 10-100, exec: default, gracefulStop: 30s)
+
+
+running (00m30.1s), 000/014 VUs, 2998 complete and 0 interrupted iterations
+disrupt ✓ [======================================] 1 VUs        00m00.0s/10m0s  1/1 shared iters
+load    ✓ [======================================] 000/013 VUs  30s             100.00 iters/s
+
+     data_received..................: 1.4 MB 46 kB/s
+     data_sent......................: 267 kB 8.9 kB/s
+     dropped_iterations.............: 4      0.132766/s
+     http_req_blocked...............: avg=8.08µs   min=2.36µs   med=5.8µs    max=543.79µs p(90)=8.68µs   p(95)=10.5µs  
+     http_req_connecting............: avg=1.25µs   min=0s       med=0s       max=418.63µs p(90)=0s       p(95)=0s      
+     http_req_duration..............: avg=103.22ms min=101.65ms med=103.13ms max=121.7ms  p(90)=104.01ms p(95)=104.4ms 
+       { expected_response:true }...: avg=103.22ms min=101.65ms med=103.13ms max=121.7ms  p(90)=104.01ms p(95)=104.4ms 
+     http_req_failed................: 0.00%  ✓ 0         ✗ 2997
+     http_req_receiving.............: avg=133.5µs  min=45.06µs  med=131.23µs max=879.43µs p(90)=193.48µs p(95)=223.04µs
+     http_req_sending...............: avg=31.14µs  min=11.46µs  med=29.37µs  max=171.68µs p(90)=40.48µs  p(95)=47.53µs 
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=103.05ms min=101.54ms med=102.98ms max=121.56ms p(90)=103.82ms p(95)=104.2ms 
+     http_reqs......................: 2997   99.474844/s
+     iteration_duration.............: avg=103.34ms min=109.86µs med=103.28ms max=121.92ms p(90)=104.19ms p(95)=104.63ms
+     iterations.....................: 2998   99.508035/s
+     vus............................: 13     min=11      max=13
+     vus_max........................: 14     min=12      max=14
+```
+</CodeGroup >
+
+
+
+### Fault injection
+
+We repeat the execution injecting the faults. Notice we have removed the `--env SKIP_FAULTS=1` argument.
+
+```bash
+xk6-disruptor run --env SVC_IP=$SVC_IP disrupt-pod.js
+```
+
+<CodeGroup heightTogglers="true">
+
+```
 
           /\      |‾‾| /‾‾/   /‾‾/   
      /\  /  \     |  |/  /   /  /    
@@ -206,180 +199,74 @@ $ xk6-disruptor run disrupt-pod.js
      script: disrupt-pod.js
      output: -
 
-  scenarios: (100.00%) 3 scenarios, 201 max VUs, 11m0s max duration (incl. graceful stop):
-           * base: 100.00 iterations/s for 30s (maxVUs: 10-100, exec: default, gracefulStop: 30s)
-           * disrupt: 1 iterations shared among 1 VUs (maxDuration: 10m0s, exec: disrupt, startTime: 30s, gracefulStop: 30s)
-           * load: 100.00 iterations/s for 30s (maxVUs: 10-100, exec: default, startTime: 30s, gracefulStop: 30s)
+  scenarios: (100.00%) 2 scenarios, 101 max VUs, 10m30s max duration (incl. graceful stop):
+           * disrupt: 1 iterations shared among 1 VUs (maxDuration: 10m0s, exec: disrupt, gracefulStop: 30s)
+           * load: 100.00 iterations/s for 30s (maxVUs: 10-100, exec: default, gracefulStop: 30s)
 
 
-running (01m05.4s), 000/031 VUs, 5992 complete and 0 interrupted iterations
-base    ✓ [======================================] 000/013 VUs  30s             100.00 iters/s
+running (00m31.1s), 000/018 VUs, 2995 complete and 0 interrupted iterations
 disrupt ✓ [======================================] 1 VUs        00m31.1s/10m0s  1/1 shared iters
 load    ✓ [======================================] 000/017 VUs  30s             100.00 iters/s
 
-     █ setup
-
-     █ teardown
-
-     data_received..................: 2.5 MB 38 kB/s
-     data_sent......................: 533 kB 8.2 kB/s
-     dropped_iterations.............: 10     0.15296/s
-     http_req_blocked...............: avg=8.88µs   min=2.31µs   med=5.99µs   max=500.43µs p(90)=8.21µs   p(95)=9.45µs  
-     http_req_connecting............: avg=1.8µs    min=0s       med=0s       max=368.21µs p(90)=0s       p(95)=0s      
-     http_req_duration..............: avg=122.65ms min=50.3ms   med=103.73ms max=169.17ms p(90)=154.49ms p(95)=154.82ms
-       { expected_response:true }...: avg=126.31ms min=101.58ms med=103.89ms max=169.17ms p(90)=154.52ms p(95)=154.85ms
-       { scenario:base }...............: avg=103.12ms min=101.58ms med=103.08ms max=125.88ms p(90)=103.83ms p(95)=104.08ms
-       { scenario:faults }...............: avg=142.22ms min=50.3ms   med=153.86ms max=169.17ms p(90)=154.83ms p(95)=155.17ms
-     http_req_failed................: 4.85%  ✓ 291       ✗ 5700
-       { scenario:base }...............: 0.00%  ✓ 0         ✗ 2998
-       { scenario:faults }...............: 9.72%  ✓ 291       ✗ 2702
-     http_req_receiving.............: avg=100.45µs min=26.6µs   med=88.68µs  max=427.17µs p(90)=154.15µs p(95)=171.03µs
-     http_req_sending...............: avg=30.51µs  min=11.13µs  med=29.37µs  max=678.86µs p(90)=39.01µs  p(95)=43.96µs 
+     data_received..................: 1.1 MB 34 kB/s
+     data_sent......................: 267 kB 8.6 kB/s
+     dropped_iterations.............: 7      0.224798/s
+     http_req_blocked...............: avg=9.81µs   min=2.59µs   med=5.93µs   max=489.67µs p(90)=7.88µs   p(95)=9.5µs   
+     http_req_connecting............: avg=2.48µs   min=0s       med=0s       max=367.63µs p(90)=0s       p(95)=0s      
+     http_req_duration..............: avg=142.15ms min=50.33ms  med=153.79ms max=165.85ms p(90)=154.8ms  p(95)=155.12ms
+       { expected_response:true }...: avg=151.9ms  min=101.81ms med=153.9ms  max=165.85ms p(90)=154.86ms p(95)=155.17ms
+     http_req_failed................: 9.65%  ✓ 289       ✗ 2705
+     http_req_receiving.............: avg=80.92µs  min=28.32µs  med=77.33µs  max=352.19µs p(90)=105.09µs p(95)=123.68µs
+     http_req_sending...............: avg=30.43µs  min=11.27µs  med=29.37µs  max=287.71µs p(90)=37.42µs  p(95)=41.84µs 
      http_req_tls_handshaking.......: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s      
-     http_req_waiting...............: avg=122.52ms min=50.22ms  med=103.57ms max=169.07ms p(90)=154.37ms p(95)=154.7ms 
-     http_reqs......................: 5991   91.638524/s
-     iteration_duration.............: avg=128.65ms min=11.95ms  med=103.9ms  max=31.07s   p(90)=154.66ms p(95)=154.98ms
-     iterations.....................: 5992   91.65382/s
-     vus............................: 1      min=0       max=18
-     vus_max........................: 31     min=21      max=31
+     http_req_waiting...............: avg=142.04ms min=50.25ms  med=153.68ms max=165.76ms p(90)=154.69ms p(95)=155.01ms
+     http_reqs......................: 2994   96.149356/s
+     iteration_duration.............: avg=152.64ms min=50.43ms  med=153.93ms max=31.12s   p(90)=154.97ms p(95)=155.29ms
+     iterations.....................: 2995   96.18147/s
+     vus............................: 1      min=1       max=18
+     vus_max........................: 18     min=12      max=18
 
 ```
 </CodeGroup >
 
+### Comparison
+
+Let's take a closer look at the results for the requests on each scenario. We can observe that he `base` scenario has an average of `103ms` and an error rate of `0%`  while the `faults` scenario has a median around `151.9ms` and an error rate of nearly `10%`, matching the definition of the faults defined in the disruptor.
+
+| Execution       | Avg. Response | Failed requests |
+| --------------- | ------------- | --------------- |
+| Baseline        | 103.22ms      | 0.00%           |
+| Fault injection | 151.9 ms      | 9.65%           |
+
+
 <Blockquote mod="note">
 
-The command above assumes the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+Notice we have used the average response time reported as `expected_response:true` because this metric only consider successful requests while `http_req_duration` considers all requests, including those returning a fault.
 
 </Blockquote>
 
-
-Let's take a closer look at the results for the requests on each scenario. We can observe that he `base` scenario has a median around `100ms` and an error rate of `0%`  while the `faults` scenario has a median around `150ms` and an error rate of nearly `10%`, matching the definition of the faults defined in the disruptor.
-
-```
-       { scenario:base }...............: avg=103.12ms min=101.58ms med=103.08ms max=125.88ms p(90)=103.83ms p(95)=104.08ms
-       { scenario:faults }...............: avg=142.22ms min=50.3ms   med=153.86ms max=169.17ms p(90)=154.83ms p(95)=155.17ms
-     http_req_failed................: 4.85%  ✓ 291       ✗ 5700
-       { scenario:base }...............: 0.00%  ✓ 0         ✗ 2998
-       { scenario:faults }...............: 9.72%  ✓ 291       ✗ 2702
-  ```
 ## Source Code
-
-### Manifests
-
-<Collapsible title="manifests/namespace.yaml">
-
-```yaml
-apiVersion: "v1"
-kind: Namespace
-metadata:
-  name: httpbin-ns
-```
-
-</Collapsible>
-
-
-<Collapsible title="manifests/pod.yaml">
-
-```yaml
-kind: "Pod"
-apiVersion: "v1"
-metadata:
-  name: httpbin
-  namespace: httpbin-ns
-  labels:
-    app: httpbin
-spec:
-  containers:
-  - name: httpbin
-    image: kennethreitz/httpbin
-    ports:
-    - name: http
-      containerPort: 80
-```
-
-</Collapsible>
-
-
-<Collapsible title="manifests/service.yaml">
-
-```yaml
-apiVersion: "v1"
-kind: "Service"
-metadata:
-  name: httpbin
-  namespace: httpbin-ns
-spec:
-  selector:
-    app: httpbin
-  type: "LoadBalancer"
-  ports:
-  - port: 80
-    targetPort: 80
-```
-
-</Collapsible>
-
-### Test script
 
 <Collapsible title="disrupt-pod.js">
 
 ```javascript
-import { Kubernetes } from 'k6/x/kubernetes';
 import { PodDisruptor } from 'k6/x/disruptor';
 import http from 'k6/http';
-import exec from 'k6/execution';
-
-// read manifests for resources used in the test
-const podManifest = open("./manifests/pod.yaml")
-const svcManifest = open("./manifests/service.yaml")
-const nsManifest = open("./manifests/namespace.yaml")
-const app = "httpbin"
-const namespace = "httpbin-ns"
-const timeout = 30
-
-export function setup() {
-    const k8s = new Kubernetes()
-
-    // create namespace for isolating test
-    k8s.apply(nsManifest)
-
-    // create a test deployment and wait until is ready
-    k8s.apply(podManifest)
-    const ready = k8s.helpers(namespace).waitPodRunning(app, timeout)
-    if (!ready) {
-        k8s.delete("Namespace", namespace)
-        exec.test.abort("Pod " + app + " not ready after " + timeout + " seconds")
-    }
-
-    // expose deployment as a service
-    k8s.apply(svcManifest)
-    const ip = k8s.helpers(namespace).getExternalIP(app, timeout)
-    if (ip == "") {
-        k8s.delete("Namespace", namespace)
-        exec.test.abort("Service " + app + " have no external IP after " + timeout + " seconds")
-    }
-
-    // pass service ip to scenarios
-    return {
-        srv_ip: ip,
-    }
-}
-
-export function teardown(data) {
-    const k8s = new Kubernetes()
-    k8s.delete("Namespace", namespace)
-}
 
 export default function (data) {
-    http.get(`http://${data.srv_ip}/delay/0.1`);
+    http.get(`http://${__ENV.SVC_IP}/delay/0.1`);
 }
 
 export function disrupt(data) {
+    if (__ENV.SKIP_FAULTS == "1") {
+        return
+    }
+
     const selector = {
-        namespace: namespace,
+        namespace: "httpbin",
         select: {
             labels: {
-                app: app
+                app: "httpbin"
             }
         }
     }
@@ -395,9 +282,8 @@ export function disrupt(data) {
 }
 
 export const options = {
-    setupTimeout: '90s',
     scenarios: {
-        base: {
+        load: {
             executor: 'constant-arrival-rate',
             rate: 100,
             preAllocatedVUs: 10,
@@ -411,25 +297,104 @@ export const options = {
             iterations: 1,
             vus: 1,
             exec: "disrupt",
-            startTime: "30s",
+            startTime: "0s",
         },
-        faults: {
-            executor: 'constant-arrival-rate',
-            rate: 100,
-            preAllocatedVUs: 10,
-            maxVUs: 100,
-            exec: "default",
-            startTime: '30s',
-            duration: "30s",
-        }
-    },
-    thresholds: {
-        'http_req_duration{scenario:base}': [],
-        'http_req_duration{scenario:faults}': [],
-        'http_req_failed{scenario:base}': [],
-        'http_req_failed{scenario:faults}': [],
-    },
+    }
 }
 ```
 
 </Collapsible>
+
+## Test setup
+
+The tests requires the deployment of the `httpbin` application. The application must also be accessible using an external IP available in the `SVC_IP` environment variable.
+
+The [manifests](#manifests) below define the resources required for deploying the application and exposing it as a LoadBalancer service.
+
+You can deploy the application using the following commands:
+
+```bash
+# Create Namespace
+kubectl apply -f namespace.yaml
+namespace/httpbin created
+
+# Deploy Pod
+kubectl apply -f pod.yaml
+pod/httpbin created
+
+# Expose Pod as a Service
+kubectl apply -f service.yaml
+service/httpbin created
+```
+
+You can retrieve the resources using the following command:
+
+```bash
+kubectl -n httpbin get all
+NAME          READY   STATUS    RESTARTS   AGE
+pod/httpbin   1/1     Running   0          1m
+
+NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   1m
+```
+
+You can retrieve the external IP address in the environment variable `SVC_IP` using the following command:
+
+```bash
+SRV_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
+
+### Manifests
+
+<Collapsible title="namespace.yaml">
+
+```yaml
+apiVersion: "v1"
+kind: Namespace
+metadata:
+  name: httpbin
+```
+
+</Collapsible>
+
+<Collapsible title="pod.yaml">
+
+```yaml
+kind: "Pod"
+apiVersion: "v1"
+metadata:
+  name: httpbin
+  namespace: httpbin
+  labels:
+    app: httpbin
+spec:
+  containers:
+  - name: httpbin
+    image: kennethreitz/httpbin
+    ports:
+    - name: http
+      containerPort: 80
+```
+
+</Collapsible>
+
+
+<Collapsible title="service.yaml">
+
+```yaml
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: httpbin
+  namespace: httpbin
+spec:
+  selector:
+    app: httpbin
+  type: "LoadBalancer"
+  ports:
+  - port: 80
+    targetPort: 80
+```
+
+</Collapsible>
+
