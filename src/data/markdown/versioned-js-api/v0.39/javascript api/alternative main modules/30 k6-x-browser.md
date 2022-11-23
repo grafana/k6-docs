@@ -9,18 +9,18 @@ Here's a list of the fully (✅) or partially (🚧) implemented classes of the 
 
 <Glossary>
 
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- 🚧  [BrowserContext](/javascript-api/xk6-browser/browsercontext/)
-- 🚧  [BrowserType](/javascript-api/xk6-browser/browsertype/)
-- 🚧  [ElementHandle](/javascript-api/xk6-browser/elementhandle/)
-- 🚧  [Frame](/javascript-api/xk6-browser/frame/)
-- ✅  [JSHandle](/javascript-api/xk6-browser/jshandle)
-- ✅  [Keyboard](/javascript-api/xk6-browser/keyboard)
-- ✅  [Mouse](/javascript-api/xk6-browser/mouse/)
-- 🚧  [Page](/javascript-api/xk6-browser/page/)
-- 🚧  [Request](/javascript-api/xk6-browser/request/)
-- 🚧  [Response](/javascript-api/xk6-browser/response/)
-- 🚧  [Browser](/javascript-api/xk6-browser/browser/)
-- ✅  [Touchscreen](/javascript-api/xk6-browser/touchscreen/)
+- 🚧  [Browser](/javascript-api/xk6-browser/api/browser/)
+- 🚧  [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/)
+- 🚧  [BrowserType](/javascript-api/xk6-browser/api/browsertype/)
+- 🚧  [ElementHandle](/javascript-api/xk6-browser/api/elementhandle/)
+- 🚧  [Frame](/javascript-api/xk6-browser/api/frame/)
+- ✅  [JSHandle](/javascript-api/xk6-browser/api/jshandle)
+- ✅  [Keyboard](/javascript-api/xk6-browser/api/keyboard)
+- ✅  [Mouse](/javascript-api/xk6-browser/api/mouse/)
+- 🚧  [Page](/javascript-api/xk6-browser/api/page/)
+- 🚧  [Request](/javascript-api/xk6-browser/api/request/)
+- 🚧  [Response](/javascript-api/xk6-browser/api/response/)
+- 🚧  [Browser](/javascript-api/xk6-browser/api/browser/)
+- ✅  [Touchscreen](/javascript-api/xk6-browser/api/touchscreen/)
 
 </Glossary>

@@ -41,11 +41,11 @@ You can also stream real-time metrics to the following services:
 </Glossary>
 
 > This list applies to local tests. To send k6 Cloud test results to an external service, refer to
-[Cloud APM](http://localhost:8000/cloud/integrations/cloud-apm/).
+[Cloud APM](/cloud/integrations/cloud-apm/).
 
 
 ## Read more
 
-- [k6 extensions](/extensions/getting-started/explore) have many more supported file formats.
+- [k6 extensions](/extensions/get-started/explore) have many more supported file formats.
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). Video demonstrations with a companion blog post.
 

@@ -13,7 +13,7 @@ To use the test builder, you need a [k6 Cloud](/cloud). However, it is **free to
 The k6 Test Builder provides a graphical interface to create a k6 test.
 
 Based on your input, the test builder automatically generates the k6 script for you.
-You can copy this script and [run the test from the CLI](/getting-started/running-k6).
+You can copy this script and [run the test from the CLI](/get-started/running-k6).
 
 Though we strongly believe that scriptable, code-based tools will help you get the most out of your performance-testing efforts, a GUI-based tool like the test builder could help you:
 
@@ -43,7 +43,7 @@ Configure the geographical zones that the load test will run from.
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#list-of-supported-load-zones).
+Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#load-zones).
 
 ## Thresholds
 
@@ -56,7 +56,7 @@ Read the [thresholds documentation](/using-k6/thresholds/).
 
 ## Cloud APM
 
-Select where you want to export metrics from a running test in real-time.  
+Select where you want to export metrics from a running test in real-time.
 
 ![Test Builder - Cloud APM UI](images/cloud-apm.png)
 

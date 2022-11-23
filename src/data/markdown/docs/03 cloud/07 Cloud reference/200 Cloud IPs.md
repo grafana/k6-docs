@@ -46,6 +46,12 @@ The zone codes are mapped as follows:
 
 ## Maximum VUs per IP {#vu-per-tier}
 
+<Blockquote mod="note" title="These are defaults">
+
+If your tests have specific requirements, contact k6 support for a custom solution.
+
+</Blockquote>
+
 k6 has 3 tiers of hardware for load generation.
 The tier k6 chooses depends on the number of VUs allocated to a load zone.
 
@@ -60,13 +66,17 @@ meaning that the traffic generated from our service comes from 3 IPs.
 If you start a test with 1000VUs in a single load zone, k6 uses 1x Tier 2 server.
 If the same test is started in 2 load zones, k6 would allocate 500VUs per load zone and use 4x Tier 1 servers.
 
-<Blockquote mod="note" title="These are defaults">
 
-If your tests have specific requirements, contact k6 support for a custom solution.
+## Buy static IPs
 
-</Blockquote>
+If you don't want to run your tests from these default IP ranges, you can also purchase static IPs.
+A static IP doesn't change.
+After you purchase a static IP, only your organization can access it.
 
+Reasons to run your tests from a static IP include security and convenience.
+With static IPs, you can:
+- Reduce the number of IPs that you must [open your firewall](/cloud/creating-and-running-a-test/troubleshooting/#open-a-firewall-for-k6-cloud) to.
+- Avoid exposing your service to any IP besides the ones specially dedicated to be your load generators.
 
-
-
-
+Refer to the [Pricing page](https://k6.io/pricing/) to check the price per dedicated IP per month.
+If you're interested in using static IPs with your cloud tests, contact k6 customer support!

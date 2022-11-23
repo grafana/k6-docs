@@ -100,7 +100,7 @@ export function news() {
 
 Note that by default a `scenario` tag with the name of the scenario as value is
 applied to all metrics in each scenario, which can be used in thresholds and
-simplifies filtering metrics when using [result outputs](/getting-started/results-output).
+simplifies filtering metrics when using [result outputs](/get-started/results-output).
 This can be disabled with the [`--system-tags` option](/using-k6/options#system-tags).
 
 ## Multiple exec functions, tags, environment variables, and thresholds

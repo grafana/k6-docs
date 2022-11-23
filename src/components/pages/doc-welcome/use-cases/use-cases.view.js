@@ -61,9 +61,9 @@ export const UseCases = () => {
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
-            {t('welcome.use-cases.performance-monitoring.title')}
+            {t('welcome.use-cases.browser-testing.title')}
           </Heading>
-          <p>{t('welcome.use-cases.performance-monitoring.description')}</p>
+          <p>{t('welcome.use-cases.browser-testing.description')}</p>
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
@@ -73,9 +73,9 @@ export const UseCases = () => {
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
-            {t('welcome.use-cases.browser-testing.title')}
+            {t('welcome.use-cases.performance-monitoring.title')}
           </Heading>
-          <p>{t('welcome.use-cases.browser-testing.description')}</p>
+          <p>{t('welcome.use-cases.performance-monitoring.description')}</p>
         </li>
       </ul>
     </section>

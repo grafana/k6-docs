@@ -173,7 +173,7 @@ Los archivos HAR son registros de navegación grabados que pueden exportarse com
 
 **Fiddler-to-k6**
 
-Originalmente llamado [FiddlerToLoadImpact](https://github.com/k6io/FiddlerToLoadImpact), puede ser usado para exportar tus grabaciones de fiddler a un script de k6. Obviamente, necesitas tener Fiddler instalado para que funcione. Esta herramienta también crea grabaciones HAR, así que lo mismo ocurre con esto, en el sentido de que no es apto para las pruebas de carga de las APIs, sino que está hecho para las pruebas de carga del sitio web, así que tenga esto en cuenta. Para más información, consulte la [guía de grabación de sesiones](/es/creacion-de-pruebas/grabar-una-sesion/).
+Originalmente llamado [FiddlerToLoadImpact](https://github.com/li-clutter-org/FiddlerToLoadImpact), puede ser usado para exportar tus grabaciones de fiddler a un script de k6. Obviamente, necesitas tener Fiddler instalado para que funcione. Esta herramienta también crea grabaciones HAR, así que lo mismo ocurre con esto, en el sentido de que no es apto para las pruebas de carga de las APIs, sino que está hecho para las pruebas de carga del sitio web, así que tenga esto en cuenta. Para más información, consulte la [guía de grabación de sesiones](/es/creacion-de-pruebas/grabar-una-sesion/).
 
 ## Diferentes tipos de pruebas de carga para las APIs
 

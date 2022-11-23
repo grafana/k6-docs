@@ -30,7 +30,7 @@ You can grab the project ID from the top-left corner of the dashboard:
 
 ![Test result navigation](images/02-Projects/projectID.png)
 
-Then, modify your script to add the `projectID` to the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli#cloud-execution-options):
+Then, modify your script to add the `projectID` to the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#options):
 
 ```javascript
 export const options = {

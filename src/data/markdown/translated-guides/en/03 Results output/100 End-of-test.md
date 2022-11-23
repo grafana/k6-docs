@@ -33,7 +33,7 @@ Besides this default summary, k6 can output the results in other formats at the 
 
 | On this page        | Result format         | Read about...                           |
 |---------------------|-----------------------|-----------------------------------------|
-| [Custom summary](./custom-summary) | Aggregated | Using the `handleSummary()` callback to make completely custom reports|
+| [Custom summary](/results-output/end-of-test/custom-summary) | Aggregated | Using the `handleSummary()` to make completely custom reports|
 | [CSV](/results-output/real-time/csv)  | Time-stamped data points | Writing results as a CSV file, and the structure of the data  |
 | [JSON](/results-output/real-time/json) | Time-stamped data points | Writing results as a JSON file, and the structure of the data |
 
@@ -111,7 +111,8 @@ For example, groups and checks are unordered,
 and threshold values are unintuitive: `true` indicates the threshold failed, and `false` that it succeeded.
 
 We couldn't change the `--summary-export` data format, because it would have broken backward compatibility in a feature that people depended on in CI pipelines.
-But, the recommended approach to export to a JSON file is the [`handleSummary()` callback](#handlesummary-callback).
+But, the recommended approach to export to a JSON file is to use the `handleSummary()` function].
 The `--summary-export` option will likely be deprecated in the future.
 
 </Collapsible>
+

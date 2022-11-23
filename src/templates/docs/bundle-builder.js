@@ -15,12 +15,12 @@ const breadcrumbs = [
     path: '/extensions/',
   },
   {
-    name: 'Getting started',
-    path: '/extensions/getting-started/',
+    name: 'Get started',
+    path: '/extensions/get-started/',
   },
   {
     name: 'Bundle',
-    path: '/extensions/getting-started/bundle/',
+    path: '/extensions/get-started/bundle/',
   },
 ];
 
@@ -92,7 +92,7 @@ export default function BundleBuilderPage({
           <p>
             Don&apos;t see what you need? Learn how you can{' '}
             <Link
-              to={'/extensions/getting-started/create/'}
+              to={'/extensions/get-started/create/'}
               class={docPageContent.link}
             >
               create

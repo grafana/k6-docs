@@ -68,8 +68,8 @@ Nombre de métrica                          | Tipo    | Descripción            
 | iterations         | Counter | El número total de veces que las VU de la prueba han ejecutado el script JS (la función "default").                                                 |
 | iteration_duration | Trend   | El tiempo que tardó en completar una iteración completa de la función predeterminada / principal.                                                                                  |
 | dropped_iterations | Counter | Introducido en k6 v0.27.0, el número de iteraciones que no se pudieron iniciar debido a la falta de VU (para los ejecutores de tasa de llegada) o falta de tiempo (debido a maxDuration expirado en los ejecutores basados en iteraciones). |
-| data_received      | Counter | La cantidad de datos recibidos. Lea [este ejemplo](/examples/track-stored-data-per-url) para rastrear los datos de una URL individual.                                                    |
-| data_sent          | Counter | La cantidad de datos enviados. Lea [este ejemplo](/examples/track-stored-data-per-url) para rastrear los datos de una URL individual.                                                                                  |
+| data_received      | Counter | La cantidad de datos recibidos. Lea [este ejemplo](/examples/track-transmitted-data-per-url) para rastrear los datos de una URL individual.                                                    |
+| data_sent          | Counter | La cantidad de datos enviados. Lea [este ejemplo](/examples/track-transmitted-data-per-url) para rastrear los datos de una URL individual.                                                                                  |
 | checks             | Rate    | La tasa de controles exitosos.                                                                                 |
 
 ## Métricas integradas específicas de HTTP

@@ -25,6 +25,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [k6 options](#k6-options)
 - [Load test](#load-test)
 - [Load zone](#load-zone)
+- [Lifecycle function](#lifecycle-function)
 - [Metric](#metric)
 - [Metric sample](#metric-sample)
 - [Reliability](#reliability)
@@ -50,7 +51,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 <DescriptionList>
 
 Application performance monitoring
-: *(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.<br/><br/>[k6 OSS APM integrations](/getting-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
+: *(Or APM)*. The practice of monitoring the performance, availability, and reliability of a system. You can export k6 OSS and k6 Cloud results to an APM to analyze system metrics alongside k6 metrics.<br/><br/>[k6 OSS APM integrations](/get-started/results-output/#external-outputs), [k6 Cloud APM integrations](/cloud/integrations/cloud-apm/)
 
 Concurrent sessions
 : The number of simultaneous VU requests in a test run.
@@ -94,6 +95,9 @@ Load test
 Load zone
 : The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
 
+Lifecycle function
+: A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/using-k6/test-life-cycle/)
+
 Metric
 : A measure of how the system performs during a test run. `http_req_duration` is an example of a built-in k6 metric. Besides built-ins, you can also create custom metrics.<br/><br/>[Metrics](/using-k6/metrics)
 
@@ -132,7 +136,7 @@ System under test
 : The software that the load test tests. This could be an API, a website, infrastructure, or any combination of these.
 
 Test run
-: An individual execution of a test script over all configured iterations.<br/><br/>[Running k6](/getting-started/running-k6)
+: An individual execution of a test script over all configured iterations.<br/><br/>[Running k6](/get-started/running-k6)
 
 Test concurrency
 : In k6 Cloud, the number of tests running at the same time.
@@ -144,7 +148,7 @@ Test script
 : The actual code that defines how the test behaves and what requests it makes, along with all (or at least most) configuration needed to run the test.<br/><br/>[Single Request example](/examples/single-request).
 
 Threshold
-: A pass/fail criteria that evaluates whether a metric reaches a certain value. Testers often use thresholds to codify SLOs.<br/><br/>[Threshold reference](k6.io/docs/using-k6/thresholds)
+: A pass/fail criteria that evaluates whether a metric reaches a certain value. Testers often use thresholds to codify SLOs.<br/><br/>[Threshold reference](/using-k6/thresholds)
 
 Throughput
 : The rate of successful message delivery. In k6, throughput is measured in requests per second.

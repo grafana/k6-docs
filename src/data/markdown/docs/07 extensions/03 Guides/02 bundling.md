@@ -3,7 +3,7 @@ title: 'Build a k6 binary with extensions'
 excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
-To use an extension that you found on the [Extension page](/extensions/getting-started/explore/) or the [xk6 GitHub topic](https://github.com/topics/xk6),
+To use an extension that you found on the [Extension page](/extensions/get-started/explore/) or the [xk6 GitHub topic](https://github.com/topics/xk6),
 you need to build a binary.
 
 
@@ -38,7 +38,7 @@ $ xk6 build latest \
   --with github.com/grafana/xk6-output-prometheus-remote
 ```
 
-> When creating your bundles, use the [interactive builder](/extensions/getting-started/bundle/) to avoid typing mistakes!
+> When creating your bundles, use the [interactive builder](/extensions/get-started/bundle/) to avoid typing mistakes!
 
 Once completed, the **current directory** contains your newly built `k6` binary with
 the [`xk6-sql`](https://github.com/grafana/xk6-sql) and [`xk6-output-prometheus-remote`](https://github.com/grafana/xk6-output-prometheus-remote)

@@ -154,3 +154,4 @@ You can also add the check to the **Analysis** tab, for and compare it to other 
 
 - [Check Javascript API](/javascript-api/k6/check/)
 - [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
+- [k6chaijs](/javascript-api/jslib/k6chaijs): use BDD assertions in k6

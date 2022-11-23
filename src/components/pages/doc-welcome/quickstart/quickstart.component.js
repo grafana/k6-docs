@@ -17,7 +17,7 @@ export const Quickstart = () => {
         to:
           urlLocale === 'es'
             ? '/es/empezando/instalacion/'
-            : '/getting-started/installation/',
+            : '/get-started/installation/',
         title: `🚀 ${t('welcome.quickstart.installation.title')}`,
         text: t('welcome.quickstart.installation.text'),
       },
@@ -25,7 +25,7 @@ export const Quickstart = () => {
         to:
           urlLocale === 'es'
             ? '/es/empezando/ejecucion-de-k6/'
-            : '/getting-started/running-k6/',
+            : '/get-started/running-k6/',
         title: `🏎💨 ${t('welcome.quickstart.running-k6.title')}`,
         text: t('welcome.quickstart.running-k6.text'),
       },
@@ -33,7 +33,7 @@ export const Quickstart = () => {
         to:
           urlLocale === 'es'
             ? '/es/empezando/instalacion/'
-            : '/getting-started/results-output/',
+            : '/get-started/results-output/',
         title: `⏱ ${t('welcome.quickstart.results-output.title')}`,
         text: t('welcome.quickstart.results-output.text'),
       },

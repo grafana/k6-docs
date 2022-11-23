@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Heading } from 'components/shared/heading';
 import { useLocale } from 'contexts/locale-provider';
 import React from 'react';
@@ -28,12 +29,13 @@ export const DocPageTitleGroup = ({
   articleSrc,
   githubUrl,
   githubTitle,
+  heading,
 }) => {
   const { locale } = useLocale();
 
   return (
-    <div className={styles.wrapper}>
-      <Heading className={styles.title}>{title}</Heading>
+    <div className={classNames(styles.wrapper)}>
+      <Heading className={styles.title}>{heading || title}</Heading>
       <div className={styles.links}>
         {githubUrl && (
           <GithubLink githubUrl={githubUrl} githubTitle={githubTitle} />

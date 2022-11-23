@@ -7,7 +7,7 @@ import styles from './search-box.module.scss';
 export default connectSearchBox(({ refine, label, queryLength, onFocus }) => {
   const inputRef = useRef(null);
   return (
-    <form className={styles.searchForm}>
+    <form className={styles.searchForm} onSubmit={(e) => e.preventDefault()}>
       <input
         ref={inputRef}
         placeholder={'Search'}

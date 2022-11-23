@@ -38,15 +38,18 @@ This includes including ads, images, documents, etc.
   - To run a test from the k6 Cloud UI, select **Run** to start the test.
   - To use the k6 CLI to run a local or cloud test, copy the generated script to your local text editor and execute the `k6 run` or `k6 cloud` command to start the test. 
 
-For more about running k6, refer to the [Running k6 guide](/getting-started/running-k6).
+For more about running k6, refer to the [Running k6 guide](/get-started/running-k6).
 
 ## Having trouble? Try the HAR converter
 
-Under the hood, the browser recorder generates the script with the [HAR converter](/test-authoring/recording-a-session/har-converter/).
+Some users have reported `413` errors trying to upload long recordings.
+In these cases, the easiest fix is to use the [HAR converter](/test-authoring/recording-a-session/har-converter/), which powers the browser recorder.
+
 The HAR converter creates a k6 script from the HTTP requests included in a HAR file.
 
-For certain edge cases, the HAR converter will catch some behavior that the browser recorder won't.
-For example, the browser extension won't record other tabs or pop-up windows.
+Besides avoiding the `413` error,
+the HAR converter catches some edge-case behavior that the browser recorder won't.
+For example, the browser extension doesn't record other tabs or pop-up windows.
 
 If you need to capture this information or are having a problem recording a request, try the HAR converter.
 If the error persists with the HAR converter, please provide detailed information about the problem [in a new issue](https://github.com/k6io/har-to-k6/issues).

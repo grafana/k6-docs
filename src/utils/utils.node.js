@@ -20,10 +20,12 @@ const noTrailingSlash = (path) =>
   path === '/' ? '/' : path.replace(/(.+)\/$/, '$1');
 
 // ensures that path has a trailing slash
-const addTrailingSlash = (path) => path.replace(/\/$|$/, `/`);
+const addTrailingSlash = (path) =>
+  (path.endsWith('/') ? path : `${path}/`).replace(/\/+$/, '/');
 
 // ensures that path has a slash at the start
-const addPrefixSlash = (path) => path.replace(/^\/|^/, `/`);
+const addPrefixSlash = (path) =>
+  (path.startsWith('/') ? path : `/${path}`).replace(/^\/+/, '/');
 
 const translatePathPart = (item, locale) => {
   if (
@@ -175,6 +177,36 @@ const replacePathsInSidebarTree = (
   }
 };
 
+// takes a sidebar tree and entry title and replaces a substring
+// in matching path (inplace)
+const findByTitleAndReplacePathInSidebarTree = (
+  tree,
+  title,
+  pathToReplace,
+  replacementPath,
+) => {
+  if (
+    typeof tree.meta !== 'undefined' &&
+    tree.meta.title === title &&
+    tree.meta.path === pathToReplace
+  ) {
+    // eslint-disable-next-line no-param-reassign
+    tree.meta.path = replacementPath;
+    return;
+  }
+  if (typeof tree.children !== 'undefined') {
+    const childrenKeys = Object.keys(tree.children);
+    childrenKeys.forEach((item) => {
+      findByTitleAndReplacePathInSidebarTree(
+        tree.children[item],
+        title,
+        pathToReplace,
+        replacementPath,
+      );
+    });
+  }
+};
+
 // takes a string like 'docs/001-Directory/01-file' or just '001-Directory'
 // and removes all the order numbers like 'docs/Directory/file' or 'Directory'
 // unorderify(str: String, nameOnly?: Bool) -> String
@@ -251,7 +283,9 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 // for sidebar links processing
 const redirectWelcome = (path) =>
   path
-    .replace(/en\/getting-started\/welcome/i, '')
+    .replace(/en\/get-started\/welcome/i, '')
+    .replace(/javascript-api\/xk6-browser\/get-started\/welcome/i, '')
+    .replace(/javascript-api\/xk6-disruptor\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
 const getSlug = (path) => {
@@ -294,7 +328,7 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
 
   // Making sure to change slug only for Javascript API docs that have parameters
   if (
-    /javascript-api\/|jslib\/|xk6-browser\//.test(slug) &&
+    /javascript-api\/|jslib\/|xk6-browser\/|xk6-disruptor\//.test(slug) &&
     /\(.+\)/.test(title)
   ) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
@@ -375,6 +409,9 @@ Object.defineProperties(utils, {
   },
   replacePathsInSidebarTree: {
     value: replacePathsInSidebarTree,
+  },
+  findByTitleAndReplacePathInSidebarTree: {
+    value: findByTitleAndReplacePathInSidebarTree,
   },
   removeParametersFromJavaScriptAPISlug: {
     value: removeParametersFromJavaScriptAPISlug,

@@ -61,17 +61,17 @@
       "categories": ["Reporting"]
     },
     {
-      "name": "xk6-chaos",
-      "description": "Run chaos experiments 💣",
-      "url": "https://github.com/grafana/xk6-chaos",
-      "logo": "https://github.com/grafana/xk6-chaos/blob/064932e0bae64fe94de2f86bf3c41be18fbab1d6/assets/logo.png?raw=true",
+      "name": "xk6-disruptor",
+      "description": "Inject faults to test 💣",
+      "url": "https://github.com/grafana/xk6-disruptor",
+      "logo": "https://github.com/grafana/xk6-disruptor/blob/7128b44180d868e67dfb302860334a5e85cb98a6/assets/logo.png?raw=true",
       "isLogoLarge": true,
       "author": {
-        "name": "Simon Aronsson",
-        "url": "https://github.com/simskij"
+        "name": "Pablo Chacin",
+        "url": "https://github.com/pablochacin"
       },
       "official": false,
-      "categories": ["Chaos Engineering", "Containers"]
+      "categories": ["Chaos Engineering", "Kubernetes"]
     },
     {
       "name": "xk6-sql",
@@ -243,6 +243,18 @@
       "categories": ["Observability"]
     },
     {
+      "name": "xk6-output-elasticsearch",
+      "description": "Export results to Elasticsearch 8.x",
+      "url": "https://github.com/elastic/xk6-output-elasticsearch",
+      "logo": "",
+      "author": {
+        "name": "",
+        "url": "https://github.com/elastic"
+      },
+      "official": true,
+      "categories": ["Data"]
+    },
+    {
       "name": "xk6-output-influxdb",
       "description": "Export results to InfluxDB v2",
       "url": "https://github.com/grafana/xk6-output-influxdb",
@@ -277,30 +289,6 @@
       },
       "official": false,
       "categories": ["Messaging"]
-    },
-    {
-      "name": "xk6-encoding",
-      "description": "Comfortably parse CSV values in tests",
-      "url": "https://github.com/mstoykov/xk6-encoding",
-      "logo": "",
-      "author": {
-        "name": "Mihail Stoykov",
-        "url": "https://github.com/mstoykov"
-      },
-      "official": false,
-      "categories": ["Misc"]
-    },
-    {
-      "name": "xk6-counter",
-      "description": "Share and increment a counter between VUs",
-      "url": "https://github.com/mstoykov/xk6-counter",
-      "logo": "",
-      "author": {
-        "name": "Mihail Stoykov",
-        "url": "https://github.com/mstoykov"
-      },
-      "official": false,
-      "categories": ["Misc"]
     },
     {
       "name": "xk6-docker",
@@ -781,6 +769,18 @@
       },
       "official": false,
       "categories": ["Authentication"]
+    },
+    {
+      "name": "xk6-ethereum",
+      "description": "K6 extension for ethereum protocols",
+      "url": "https://github.com/distribworks/xk6-ethereum",
+      "logo": "",
+      "author": {
+        "name": "Victor Castell",
+        "url": "https://github.com/distribworks"
+      },
+      "official": false,
+      "categories": ["Blockchain", "Ethereum"]
     }
   ]
 }

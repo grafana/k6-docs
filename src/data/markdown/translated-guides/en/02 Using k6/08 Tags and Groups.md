@@ -47,7 +47,7 @@ Currently, k6 automatically creates the following tags by default:
 | `service`           | the RPC service name for gRPC                                                                                                                       |
 | `expected_response` | `true` or `false` based on the [responseCallback](/javascript-api/k6-http/setresponsecallback/); by default checks whether the status is 2xx or 3xx |
 
-To disable some of the above tags, you can use the `systemTags` [option](/using-k6/options).
+To disable some of the above tags, you can use the [`systemTags` option](/using-k6/k6-options/reference/#system-tags).
 Keep in mind that some data collectors (e.g. `cloud`) may require certain tags.
 You can also enable some additional system tags if you need them:
 

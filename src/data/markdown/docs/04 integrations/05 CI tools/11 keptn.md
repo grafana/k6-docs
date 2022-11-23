@@ -1,4 +1,4 @@
 ---
 title: 'Keptn'
-redirect: 'https://github.com/keptn-sandbox/k6-service'
+redirect: 'https://k6.io/blog/performance-testing-in-keptn-using-k6/'
 ---

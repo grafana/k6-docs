@@ -45,7 +45,7 @@ export default function Extensions({ pageContext: { sidebarTree, navLinks } }) {
             <ExtensionsUseCases />
             Next,{' '}
             <Link
-              to={'/extensions/getting-started/explore/'}
+              to={'/extensions/get-started/explore/'}
               class={docPageContent.link}
             >
               explore

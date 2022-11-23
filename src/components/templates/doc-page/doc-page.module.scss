@@ -1,10 +1,8 @@
 .container {
-  margin-top: 115px;
+  margin-top: 100px;
+  position: relative;
   @include xl-down {
     margin-top: 185px;
-  }
-  @include md-down {
-    margin-top: 225px;
   }
   @include sm-down {
     margin-top: 250px;

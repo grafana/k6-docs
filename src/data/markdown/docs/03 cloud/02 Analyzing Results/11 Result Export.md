@@ -9,7 +9,7 @@ After a test finishes, you can export the test-result data in various formats:
 - [PDF report](#generate-pdf-report): to share the performance results with managers and executives.
 - [CSV format](#export-as-csv): to analyze the test result metrics deeper on your own.
 
-For other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-plugin).
+For other methods to analyze your test results, check out the k6 Cloud integrations with [APM tools](/cloud/integrations/cloud-apm) and the [Grafana Data Source Plugin](/cloud/integrations/grafana-app).
 
 ## Generate a PDF Report
 
@@ -122,7 +122,7 @@ The following table is a reference for the columns in the CSV data, with example
 | `metric`        | http_req_duration                | string         | The metric name that this data point represents.                                                                                          |
 | `group`         | "my group"                       | string         | The group name [`group()`](/using-k6/tags-and-groups) from where this request was made.                                                 |
 | `scenario`      | default                          | string         | The name of the scenario that this metric was collected in.                                                                           |
-| `url`           | http://test.k6.io/style.css      | string         | The URL requested.                                                                                                                        |
+| `url`           | `http://test.k6.io/style.css`      | string         | The URL requested.                                                                                                                        |
 | `method`        | GET                              | string         | The HTTP method of the request that this data point represents.                                                                           |
 | `status`        | 200                              | number         | The HTTP response status code of the request that this data point represents.                                                             |
 | `count`         | 1.0                              | number         | Number of samples that this data point represents (if > 1 `response_time` is an aggregate value).                                         |

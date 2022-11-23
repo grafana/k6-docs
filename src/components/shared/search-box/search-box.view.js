@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import algoliasearch from 'algoliasearch/lite';
 import classNames from 'classnames';
 import { Heading } from 'components/shared/heading';
@@ -27,23 +28,30 @@ const Hits = connectHits(({ showAll, hitComponent: Comp, hits }) => (
   </ul>
 ));
 
-const Stats = connectStateResults(({ setResultsExist, searchResults }) => {
-  const [stats, setStats] = useState(null);
-  useEffect(() => {
-    if (searchResults?.nbHits) {
-      const { nbHits, processingTimeMS } = searchResults;
-      setResultsExist(true);
-      setStats(
-        <span className={styles.stats}>
-          {`${nbHits} result${
-            nbHits > 1 ? 's' : ''
-          } found in ${processingTimeMS}ms`}
-        </span>,
-      );
-    } else setResultsExist(false);
-  }, [searchResults]);
-  return stats;
-});
+const Stats = connectStateResults(
+  ({ setResultsExist, searchResults, setShowButton }) => {
+    const [stats, setStats] = useState(null);
+    useEffect(() => {
+      if (searchResults?.nbHits) {
+        const { nbHits, processingTimeMS } = searchResults;
+        setResultsExist(true);
+
+        if (nbHits > 5) {
+          setShowButton(true);
+        } else setShowButton(false);
+
+        setStats(
+          <span className={styles.stats}>
+            {`${nbHits} result${
+              nbHits > 1 ? 's' : ''
+            } found in ${processingTimeMS}ms`}
+          </span>,
+        );
+      } else setResultsExist(false);
+    }, [searchResults]);
+    return stats;
+  },
+);
 
 export const SearchBox = ({ inputLabel, indices }) => {
   if (
@@ -60,6 +68,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
   const [focus, setFocus] = useState(false);
   const [allResultsShown, setAllResultsShown] = useState(false);
   const [resultsExist, setResultsExist] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   const searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
@@ -97,7 +106,10 @@ export const SearchBox = ({ inputLabel, indices }) => {
                     &ldquo;{query}&rdquo;
                   </span>
                 </Heading>
-                <Stats setResultsExist={setResultsExist} />
+                <Stats
+                  setResultsExist={setResultsExist}
+                  setShowButton={setShowButton}
+                />
               </header>
               {resultsExist && (
                 <Hits
@@ -108,7 +120,7 @@ export const SearchBox = ({ inputLabel, indices }) => {
             </Index>
           ))}
           <span className={styles.poweredBy}>
-            {resultsExist && (
+            {resultsExist && showButton && (
               <button
                 type={'button'}
                 onClick={() => setAllResultsShown(!allResultsShown)}

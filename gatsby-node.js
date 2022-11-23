@@ -58,10 +58,7 @@ if (!isProduction && jsApiVersionsToBuild) {
 
 const newJavascriptURLsRedirects = {};
 
-function removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
-  slug,
-  title,
-) {
+function stripJSAPISlugParamsAndAddToRedirects(slug, title) {
   const newSlug = removeParametersFromJavaScriptAPISlug(slug, title);
 
   if (slug !== newSlug) {
@@ -83,7 +80,7 @@ const formatSectionName = (name) => {
 // @TODO: remove this after the porting of cloud rest api
 // section will be finished
 const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
-  if (!isProduction && title === 'Cloud REST API') {
+  if (!isProduction && title === 'TO REMOVE Cloud REST API') {
     const docUrl = process.env.GATSBY_DEFAULT_DOC_URL;
     const domain = docUrl.includes('8000') ? `` : `/docs`;
     return `${domain}/cloud-rest-api/introduction`;
@@ -202,7 +199,7 @@ const getPageVersions = (
   return pageVersions;
 };
 
-const generateTopLevelLinks = () => [
+const topLevelLinks = [
   {
     label: 'guides',
     to: '/',
@@ -212,7 +209,14 @@ const generateTopLevelLinks = () => [
     to: '/javascript-api/',
     submenu: [
       { label: 'k6 API', to: `/javascript-api/` },
-      { label: 'xk6-browser', to: `/javascript-api/xk6-browser/` },
+      {
+        label: 'xk6-browser',
+        to: `/javascript-api/xk6-browser/`,
+      },
+      {
+        label: 'xk6-disruptor',
+        to: `/javascript-api/xk6-disruptor/`,
+      },
       { label: 'jslib', to: `/javascript-api/jslib/` },
     ],
   },
@@ -256,7 +260,6 @@ function generateSidebar({ nodes, type = 'docs' }) {
     }
 
     // skip altogether if this content has draft flag
-    // OR hideFromSidebar
     if (draft === 'true' && isProduction) return;
 
     // titles like k6/html treated like paths otherwise
@@ -297,7 +300,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
       {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+        path: stripJSAPISlugParamsAndAddToRedirects(
           customSlug || dotifyVersion(pageSlug),
           title,
         ),
@@ -332,7 +335,6 @@ const getExtensionsPageSidebar = (sidebarTree) => {
 function getSupplementaryPagesProps({
   reporter,
   topLevelNames,
-  topLevelLinks,
   getSidebar,
   getGuidesSidebar,
 }) {
@@ -341,7 +343,7 @@ function getSupplementaryPagesProps({
     component: Path.resolve(`./src/templates/404.js`),
     context: {
       sidebarTree: getSidebar('guides'),
-      navLinks: generateTopLevelLinks(topLevelLinks),
+      navLinks: topLevelLinks,
     },
   };
   const stubPagesProps = topLevelNames
@@ -389,7 +391,7 @@ function getSupplementaryPagesProps({
             sectionName,
             breadcrumbs,
             title: name,
-            navLinks: generateTopLevelLinks(topLevelLinks),
+            navLinks: topLevelLinks,
             directChildren: getSidebar(section).children[name].children,
           },
         };
@@ -433,7 +435,7 @@ function getSupplementaryPagesProps({
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
           title: meta.title,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           directChildren: getGuidesSidebar(locale).children[name].children,
           locale,
           translations: pageTranslations,
@@ -447,7 +449,6 @@ function getSupplementaryPagesProps({
 
 function getTopLevelPagesProps({
   topLevelNames,
-  topLevelLinks,
   getSidebar,
   getGuidesSidebar,
   pathCollisionDetectorInstance,
@@ -458,7 +459,10 @@ function getTopLevelPagesProps({
   return topLevelNames
     .filter(
       (item) =>
-        item !== 'jslib' && item !== 'xk6-browser' && item !== 'extensions',
+        item !== 'jslib' &&
+        item !== 'xk6-disruptor' &&
+        item !== 'xk6-browser' &&
+        item !== 'extensions',
     )
     .map((name) => {
       const slug = slugify(name);
@@ -482,7 +486,7 @@ function getTopLevelPagesProps({
         context: {
           sectionName: formatSectionName(name),
           sidebarTree: getSidebar(name),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       };
     })
@@ -492,7 +496,7 @@ function getTopLevelPagesProps({
         component: Path.resolve(`./src/templates/docs/guides.js`),
         context: {
           sidebarTree: getGuidesSidebar(locale),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           locale,
           sectionName: 'Guides',
         },
@@ -505,25 +509,25 @@ function getTopLevelPagesProps({
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
       {
-        path: `/extensions/getting-started/explore/`,
+        path: `/extensions/get-started/explore/`,
         component: Path.resolve(`./src/templates/docs/explore-extensions.js`),
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
       {
-        path: `/extensions/getting-started/bundle/`,
+        path: `/extensions/get-started/bundle/`,
         component: Path.resolve(`./src/templates/docs/bundle-builder.js`),
         context: {
           sectionName: 'Extensions',
           sidebarTree: getExtensionsPageSidebar(getSidebar('extensions')),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
         },
       },
     ])
@@ -537,7 +541,7 @@ function getTopLevelPagesProps({
           sectionName: 'Javascript API',
           sidebarTree:
             getJavascriptAPISidebar(version).children['javascript api'],
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           version,
           // eslint-disable-next-line no-useless-escape
           versionRegex: `/${version}\/javascript api/`,
@@ -552,7 +556,6 @@ function getTopLevelPagesProps({
 function getDocPagesProps({
   nodes,
   reporter,
-  topLevelLinks,
   getSidebar,
   getJavascriptAPISidebar,
   pathCollisionDetectorInstance,
@@ -654,7 +657,7 @@ function getDocPagesProps({
       }
 
       // data for github button on the right
-      // currently we only show it for jslib and xk6-browser pages
+      // currently we only show it for jslib, xk6-browser, xk6-disruptor pages
       let githubUrl = null;
       let githubTitle = '';
 
@@ -678,13 +681,54 @@ function getDocPagesProps({
         }));
       }
 
+      // add prefix to xk6-disruptor pages slugs and sidebar links
+      if (slug.startsWith('xk6-disruptor/')) {
+        slug = `javascript-api/${slug}`;
+        if (slug.includes('xk6-disruptor/get-started/welcome')) {
+          // make the section root out of the welcome page
+          slug = `javascript-api/xk6-disruptor/`;
+        }
+
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/xk6-disruptor',
+          '/javascript-api/xk6-disruptor',
+        );
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/javascript-api/xk6-disruptor/get-started/welcome',
+          '/javascript-api/xk6-disruptor',
+        );
+
+        githubUrl = 'https://github.com/grafana/xk6-disruptor';
+        githubTitle = 'xk6-disruptor';
+
+        breadcrumbs = breadcrumbs.map((item) => ({
+          ...item,
+          name: item.name === 'Xk6-disruptor' ? 'xk6-disruptor' : item.name,
+          path: item.path.replace(
+            '/xk6-disruptor',
+            '/javascript-api/xk6-disruptor',
+          ),
+        }));
+      }
+
       // add prefix to xk6-browser pages slugs and sidebar links
       if (slug.startsWith('xk6-browser/')) {
         slug = `javascript-api/${slug}`;
+        if (slug.includes('xk6-browser/get-started/welcome')) {
+          // make the section root out of the welcome page
+          slug = `javascript-api/xk6-browser/`;
+        }
 
         replacePathsInSidebarTree(
           sidebarTree,
           '/xk6-browser',
+          '/javascript-api/xk6-browser',
+        );
+        replacePathsInSidebarTree(
+          sidebarTree,
+          '/javascript-api/xk6-browser/get-started/welcome',
           '/javascript-api/xk6-browser',
         );
 
@@ -704,23 +748,21 @@ function getDocPagesProps({
       let hideBreadcrumbs = false;
       if (
         slug === 'javascript-api/jslib/' ||
+        slug === 'javascript-api/xk6-disruptor/' ||
         slug === 'javascript-api/xk6-browser/'
       ) {
         hideBreadcrumbs = true;
       }
 
       return {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
-          slug,
-          title,
-        ),
+        path: stripJSAPISlugParamsAndAddToRedirects(slug, title),
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           pageVersions,
           githubUrl,
           githubTitle,
@@ -734,7 +776,6 @@ function getDocPagesProps({
 function getGuidesPagesProps({
   nodesGuides,
   reporter,
-  topLevelLinks,
   pathCollisionDetectorInstance,
   getGuidesSidebar,
 }) {
@@ -838,7 +879,7 @@ function getGuidesPagesProps({
           breadcrumbs: breadcrumbs.filter(
             (item) => !SUPPORTED_LOCALES.includes(item.path.replace(/\//g, '')),
           ),
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           locale: pageLocale,
         },
       };
@@ -849,7 +890,6 @@ function getGuidesPagesProps({
 function getJsAPIVersionedPagesProps({
   nodesJsAPI,
   reporter,
-  topLevelLinks,
   pathCollisionDetectorInstance,
   getJavascriptAPISidebar,
   getSidebar,
@@ -962,7 +1002,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: removeParametersFromJavaScriptAPISlugAndAddToRedirectsArray(
+        path: stripJSAPISlugParamsAndAddToRedirects(
           dotifyVersion(pageSlug) || '/',
           title,
         ),
@@ -972,7 +1012,7 @@ function getJsAPIVersionedPagesProps({
           remarkNode: extendedRemarkNode,
           sidebarTree,
           breadcrumbs,
-          navLinks: generateTopLevelLinks(topLevelLinks),
+          navLinks: topLevelLinks,
           version: pageVersion,
           pageVersions,
         },
@@ -1007,6 +1047,7 @@ async function fetchDocPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+                  heading
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1049,6 +1090,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1091,6 +1133,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   slug
                   head_title
                   excerpt
+
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1130,20 +1173,13 @@ async function createDocPages({
 
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children).filter(
-    (name) => name !== 'xk6-browser' && name !== 'jslib',
+    (name) =>
+      name !== 'xk6-browser' && name !== 'xk6-disruptor' && name !== 'jslib',
   );
-
-  const topLevelLinks = topLevelNames
-    .filter((name) => name !== 'Cloud REST API')
-    .map((name) => ({
-      label: name === 'cloud' ? 'Cloud Docs' : name.toUpperCase(),
-      to: name === 'guides' ? `/` : `/${slugify(name)}/`,
-    }));
 
   getDocPagesProps({
     nodes,
     reporter,
-    topLevelLinks,
     pathCollisionDetectorInstance,
     getSidebar,
     getJavascriptAPISidebar,
@@ -1152,21 +1188,18 @@ async function createDocPages({
       getGuidesPagesProps({
         nodesGuides,
         reporter,
-        topLevelLinks,
         pathCollisionDetectorInstance,
         getGuidesSidebar,
       }),
       getJsAPIVersionedPagesProps({
         nodesJsAPI,
         reporter,
-        topLevelLinks,
         pathCollisionDetectorInstance,
         getJavascriptAPISidebar,
         getSidebar,
       }),
       getTopLevelPagesProps({
         topLevelNames,
-        topLevelLinks,
         getSidebar,
         getGuidesSidebar,
         getJavascriptAPISidebar,
@@ -1174,7 +1207,6 @@ async function createDocPages({
       }),
       getSupplementaryPagesProps({
         topLevelNames,
-        topLevelLinks,
         getSidebar,
         getGuidesSidebar,
         getJavascriptAPISidebar,
@@ -1188,8 +1220,14 @@ const createRedirects = ({ actions }) => {
   const { createRedirect } = actions;
 
   createRedirect({
-    fromPath: '/getting-started/welcome/',
+    fromPath: '/get-started/welcome/',
     toPath: '/',
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
+    toPath: '/javascript-api/xk6-browser/',
     redirectInBrowser: true,
     isPermanent: true,
   });
@@ -1252,7 +1290,7 @@ const createRedirects = ({ actions }) => {
   });
   createRedirect({
     fromPath: '/ecosystem/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
 
@@ -1264,16 +1302,16 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/extensions/bundle-builder/',
-    toPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
     isPermanent: true,
   });
   createRedirect({
     fromPath: '/extensions/explore/',
-    toPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/extensions/guides/getting-started/',
+    fromPath: '/extensions/guides/get-started/',
     toPath: '/extensions/guides/',
     isPermanent: true,
   });
@@ -1457,6 +1495,106 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/',
+    toPath: '/k6-experimental/redis/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/client/',
+    toPath: '/k6-experimental/redis/client/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/javascript-api/k6-experimental-redis/options/',
+    toPath: '/k6-experimental/redis/options/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/javascript-api/jslib/k6chaijs/plugins/',
+    toPath: '/javascript-api/jslib/k6chaijs/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/javascript-api/jslib/k6chaijs/configuration/',
+    toPath: '/javascript-api/jslib/k6chaijs/config/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/installation/',
+    toPath: '/get-started/installation/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/installation/troubleshooting/',
+    toPath: '/get-started/installation/troubleshooting/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/running-k6/',
+    toPath: '/get-started/running-k6/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/results-output/',
+    toPath: '/get-started/results-output/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/getting-started/resources/',
+    toPath: '/get-started/resources/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/explore/',
+    toPath: '/extensions/get-started/explore/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/bundle/',
+    toPath: '/extensions/get-started/bundle/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/',
+    toPath: '/extensions/get-started/create/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/javascript-extensions/',
+    toPath: '/extensions/get-started/create/javascript-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/extensions/getting-started/create/output-extensions/',
+    toPath: '/extensions/get-started/create/output-extensions/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/integrations/grafana-plugin/',
+    toPath: '/cloud/integrations/grafana-app/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6/test-life-cycle/',
+    toPath: '/using-k6/test-lifecycle/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
@@ -1551,28 +1689,57 @@ const createRedirects = ({ actions }) => {
     '/using-k6/using-node-modules': '/using-k6/modules/',
     '/javascript-api/k6-x-browser/': '/javascript-api/xk6-browser/',
     '/javascript-api/k6-x-browser/browser/':
-      '/javascript-api/xk6-browser/browser/',
+      '/javascript-api/xk6-browser/api/browser/',
+    '/javascript-api/xk6-browser/browser/':
+      '/javascript-api/xk6-browser/api/browser/',
     '/javascript-api/k6-x-browser/browsercontext/':
-      '/javascript-api/xk6-browser/browsercontext/',
+      '/javascript-api/xk6-browser/api/browsercontext/',
+    '/javascript-api/xk6-browser/browsercontext/':
+      '/javascript-api/xk6-browser/api/browsercontext/',
     '/javascript-api/k6-x-browser/browsertype/':
-      '/javascript-api/xk6-browser/browsertype/',
+      '/javascript-api/xk6-browser/api/browsertype/',
+    '/javascript-api/xk6-browser/browsertype/':
+      '/javascript-api/xk6-browser/api/browsertype/',
     '/javascript-api/k6-x-browser/elementhandle/':
-      '/javascript-api/xk6-browser/elementhandle/',
-    '/javascript-api/k6-x-browser/frame/': '/javascript-api/xk6-browser/frame/',
+      '/javascript-api/xk6-browser/api/elementhandle/',
+    '/javascript-api/xk6-browser/elementhandle/':
+      '/javascript-api/xk6-browser/api/elementhandle/',
+    '/javascript-api/k6-x-browser/frame/':
+      '/javascript-api/xk6-browser/api/frame/',
+    '/javascript-api/xk6-browser/frame/':
+      '/javascript-api/xk6-browser/api/frame/',
     '/javascript-api/k6-x-browser/jshandle/':
-      '/javascript-api/xk6-browser/jshandle/',
+      '/javascript-api/xk6-browser/api/jshandle/',
+    '/javascript-api/xk6-browser/jshandle/':
+      '/javascript-api/xk6-browser/api/jshandle/',
     '/javascript-api/k6-x-browser/keyboard/':
-      '/javascript-api/xk6-browser/keyboard/',
+      '/javascript-api/xk6-browser/api/keyboard/',
+    '/javascript-api/xk6-browser/keyboard/':
+      '/javascript-api/xk6-browser/api/keyboard/',
     '/javascript-api/k6-x-browser/locator/':
-      '/javascript-api/xk6-browser/locator/',
-    '/javascript-api/k6-x-browser/mouse/': '/javascript-api/xk6-browser/mouse/',
-    '/javascript-api/k6-x-browser/page/': '/javascript-api/xk6-browser/page/',
+      '/javascript-api/xk6-browser/api/locator/',
+    '/javascript-api/xk6-browser/locator/':
+      '/javascript-api/xk6-browser/api/locator/',
+    '/javascript-api/k6-x-browser/mouse/':
+      '/javascript-api/xk6-browser/api/mouse/',
+    '/javascript-api/xk6-browser/mouse/':
+      '/javascript-api/xk6-browser/api/mouse/',
+    '/javascript-api/k6-x-browser/page/':
+      '/javascript-api/xk6-browser/api/page/',
+    '/javascript-api/xk6-browser/page/':
+      '/javascript-api/xk6-browser/api/page/',
     '/javascript-api/k6-x-browser/request/':
-      '/javascript-api/xk6-browser/request/',
+      '/javascript-api/xk6-browser/api/request/',
+    '/javascript-api/xk6-browser/request/':
+      '/javascript-api/xk6-browser/api/request/',
     '/javascript-api/k6-x-browser/response/':
-      '/javascript-api/xk6-browser/response/',
+      '/javascript-api/xk6-browser/api/response/',
+    '/javascript-api/xk6-browser/response/':
+      '/javascript-api/xk6-browser/api/response/',
     '/javascript-api/k6-x-browser/touchscreen/':
-      '/javascript-api/xk6-browser/touchscreen/',
+      '/javascript-api/xk6-browser/api/touchscreen/',
+    '/javascript-api/xk6-browser/touchscreen/':
+      '/javascript-api/xk6-browser/api/touchscreen/',
     ...newJavascriptURLsRedirects,
   };
 

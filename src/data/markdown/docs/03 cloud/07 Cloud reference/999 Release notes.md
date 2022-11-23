@@ -4,6 +4,24 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.15.0 `(2022-11-2)`
+- Add teams dropdown to [SAML SSO](/cloud/project-and-team-management/saml-sso/)
+- Fix pdf crashes when fetching urls
+
+### v3.14.0 `(2022-11-1)`
+- [Cloud REST API](/cloud/cloud-reference/cloud-rest-api/)
+
+### v3.13.4 `(2022-10-19)`
+- Protect billing receipt download link
+
+### v3.13.0 `(2022-10-12)`
+- Drag-and-drop metrics between charts in analysis panel 
+
+### v3.12.0 `(2022-10-11)`
+- Improved UX of metric analysis controls
+- HTTP tab showing NaN/0 while metric_summaries are being loaded
+- Add automatic sorting and filtering to [audit trail](/cloud/manage/audit-trail/)
+
 ### v3.11.0 `(2022-9-26)`
 - Apply global time filter to [analysis panel](/cloud/analyzing-results/analysis-tab/)
 - [Environment variables](/cloud/manage/environment-variables/)
@@ -195,7 +213,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v1.5.0 `(2021-10-20)`
 
-- Better visibility for updates on the [subscriptions UI](/cloud/your-plan/subscription/).
+- Better visibility for updates on the [subscriptions UI](/cloud/your-plan/manage-subscription/).
 
 ### v1.4.0 `(2021-10-6)`
 

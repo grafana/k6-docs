@@ -19,11 +19,11 @@ This is a function that can be called from only the init context (aka **init cod
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a distributed test.
 
-Refer to the example in the subsequent section of this page. For a more in-depth description, see [Running k6](/getting-started/running-k6).
+Refer to the example in the subsequent section of this page. For a more in-depth description, see [Running k6](/get-started/running-k6).
 
 #### Breaking change in v0.36.0
 
-Since k6 v0.36.0, VUs are now restricted to only `open()` files that were also opened in the [init context](https://k6.io/docs/using-k6/test-life-cycle/#init-and-vu-stages) of the first VU, which was initialized to get the exported `options` from the JS script (`__VU==0`).
+Since k6 v0.36.0, VUs are now restricted to only `open()` files that were also opened in the [init context](https://k6.io/docs/using-k6/test-lifecycle/#init-and-vu-stages) of the first VU, which was initialized to get the exported `options` from the JS script (`__VU==0`).
 This means that the code like `if (__VU > 0) { const arr = open("./arr.json"); }` will result in an error.
 
 </blockquote>

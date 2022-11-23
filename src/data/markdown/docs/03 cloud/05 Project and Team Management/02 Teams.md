@@ -37,8 +37,6 @@ To add Teams and Team members, you need the following:
 
 ## Managing teams
 
-## Managing teams
-
 To manage teams from k6 Cloud, use the left sidebar and select **Teams**. 
 
 ![Team menu](images/05-Teams/teams-menu.png)

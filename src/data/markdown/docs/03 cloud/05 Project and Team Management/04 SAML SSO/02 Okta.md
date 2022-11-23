@@ -5,16 +5,79 @@ excerpt: 'Guide on setting up Okta to act as a SAML SSO IdP with k6 Cloud'
 
 > ⭐️ SAML SSO is available on Enterprise plans.
 
-Okta is a well-known identity and access management service that provides means for provisioning and user management all in a single place. k6 Cloud integrates with Okta to provide organizations with a compliant way to handle on- and offboarding of team members to the service.
+Okta is a well-known identity and access management service that provides means for provisioning and user management all in a single place.
+k6 Cloud integrates with Okta to provide organizations with a compliant way to let team members to join and leave the service.
+
+On this page, you can read:
+
+- A quick table reference of the necessary fields to configure OKTA as an IDP
+- Detailed steps, with screenshots, of the entire procedure
 
 ## Prerequisites
 
-To setup Okta SAML SSO based authentication to k6 Cloud you must have:
+To setup Okta SAML SSO based authentication to k6 Cloud, you must have:
 
 1. An [Enterprise plan](https://k6.io/pricing) or a plan with the SAML SSO add-on.
 2. An [Okta Subscription with SSO Integrations](https://www.okta.com/pricing/).
 
-## Configuration
+## Okta reference
+
+These are modified from the Okta app's **General tab -> SAML Settings -> Edit**.
+
+| Attribute                  | Value                                    |
+|----------------------------|------------------------------------------|
+| Single Sign On URL         | `https://api.loadimpact.com/sso/acs/`    |
+| Recipient URL              | `https://api.loadimpact.com/sso/acs/`    |
+| Destination URL            | `https://api.loadimpact.com/sso/acs/`    |
+| Audience Restriction       | `https://api.loadimpact.com/sso/acs/`    |
+| Default Relay State        | None                                     |
+| Name ID Format             | EmailAddress                             |
+| Response                   | Signed                                   |
+| Assertion Signature        | Signed                                   |
+| Signature Algorithm        | RSA_SHA256                               |
+| Digest Algorithm           | SHA256                                   |
+| Assertion Encryption       | Encrypted                                |
+| SAML Single Logout         | Disabled                                 |
+| authnContextClassRef       | PasswordProtectedTransport               |
+| Honor Force Authentication | Yes                                      |
+| SAML Issuer ID             | `http://www.okta.com/${org.externalKey}` |
+
+### Attribute Statements
+
+These are required.
+
+| Name            | Name Format | Value              |
+| --------------- | ----------- | ------------------ |
+| user.email      | Basic       | user.email         |
+| user.username   | Basic       | user.login         |
+| user.first_name | Basic       | user.firstName     |
+| user.last_name  | Basic       | user.lastName      |
+| token           | Basic       | `<TOKEN-YOU-GET-FROM-K6-SUPPORT>` |
+
+### Group Attribute Statements
+
+This is optional. If not given, all users will end up starting in the k6 Organization's _default_ Project(s) or Team(s) (configurable from the app, see next section).
+
+Setting Okta up to send Group attributes, allows for more powerful mapping of Okta Groups to k6 cloud Teams/Projects. Whatever you choose to add here, you must communicate it to the k6 customer success team so they can set it the matching mapping on the k6 cloud side.
+
+This example would allow all Okta Groups to be sent. When a user connects, _only_ the Groups they are actually a member of will be sent (k6 ignores the Okta `Everyone` Group). This is the recommended setup for most users.
+
+| Name            | Name Format | Filter - Value  |
+| --------------- | ----------- | --------------- |
+| department      | Basic       | regex - .*      |
+
+(It doesn't matter what the Attribute is named, as long as you tell us what you chose).
+As an example, if a member belongs to three Okta teams, k6 would receive  data that looks something this this:
+
+```JSON
+"department": ["Backend", "ProjectX", "Engineering"]
+```
+
+If such teams existed on the k6 side, you'd join them. Otherwise they would be auto-created. Auto-created teams also get a Project with the same name assigned to it.
+
+## Add OKTA as an IdP
+
+This procedure covers the same material of the previous sections, but adds granular detail:
 
 1. Head over to [`https://your-organization.okta.com/`](https://your-organization.okta.com/).
 2. Go to Applications menu item and click on Applications.
@@ -51,7 +114,3 @@ By default, all the people, aka. accounts, are added to the **Everyone** group, 
     ![Okta team setup](images/02-Okta/okta-team.png)
 6. Many groups can be added to the same **k6 Cloud** application on Okta, but the users will end up in their projects in k6 Cloud based on their group name. Joining users to the project(s) only happens on provisioning.
 7. Inform your point of contact of the exact group names (plus prefixes) and the list of projects on k6 Cloud you want the users from those groups to land on.
-
-## Read more
-
-- [Project and Team Management / SAML SSO](/cloud/project-and-team-management/saml-sso/)

@@ -9,17 +9,17 @@ export const ExtensionsQuickstart = () => {
     blockTitle: 'Quickstart',
     cardsData: [
       {
-        to: '/extensions/getting-started/explore/',
+        to: '/extensions/get-started/explore/',
         title: '🔎 Explore',
         text: 'A list of more than 50 available extensions',
       },
       {
-        to: '/extensions/getting-started/bundle/',
+        to: '/extensions/get-started/bundle/',
         title: '🧩 Bundle',
         text: 'Combine multiple extensions into a custom k6 binary (interactive!)',
       },
       {
-        to: '/extensions/getting-started/create/',
+        to: '/extensions/get-started/create/',
         title: '🏗️ Create',
         text: 'Learn how to make your own k6 extension.',
       },
