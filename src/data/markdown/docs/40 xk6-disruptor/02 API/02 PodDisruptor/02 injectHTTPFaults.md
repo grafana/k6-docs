@@ -30,3 +30,14 @@ WARN\[0035\] Request Failed error="read tcp 172.18.0.1:43564->172.18.255.200:80:
 This is normal and means that one request was "in transit" at the time the faults were injected, causing the request to fail from a network connection reset.
 
 </Blockquote>
+
+## Example
+
+```javascript
+    const fault = {
+        averageDelay: 50,
+        errorCode: 500,
+        errorRate: 0.1
+    }
+    disruptor.injectHTTPFaults(fault, 30)
+```

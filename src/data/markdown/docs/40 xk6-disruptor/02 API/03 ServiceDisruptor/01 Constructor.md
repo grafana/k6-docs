@@ -21,3 +21,9 @@ The following options control the creation and behavior of the `ServiceDisruptor
 | Attribute | Description |
 | --------- | ----------- |
 | injectTimeout | maximum time for waiting the disruptor to be ready in the target pods, in seconds (default 30s). Zero value forces default. Negative values force no waiting. |
+
+## Example
+
+```javascript
+  const disruptor = new ServiceDisruptor('my-service', 'my-namespace');
+```

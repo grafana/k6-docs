@@ -37,3 +37,17 @@ The `options` control the creation and behavior of the `PodDisruptor`:
 | Attribute | Description |
 | --------- | ----------- |
 | injectTimeout | maximum time to wait for the disruptor to be ready in the target pods, in seconds (default 30s). Zero value forces default. Negative values force no waiting. |
+
+## Example
+
+```javascript
+    const selector = {
+        namespace: "my-namespace",
+        select: {
+            labels: {
+                app: "my-app"
+            }
+        }
+    }
+    const podDisruptor = new PodDisruptor(selector)
+```
