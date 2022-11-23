@@ -4,6 +4,7 @@ import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { CtaDoc } from 'components/shared/cta-doc';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import { Trait } from 'components/shared/trait';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -12,17 +13,15 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef, useState, useEffect } from 'react';
 import { isInIFrame } from 'utils';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 import { app } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
-export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
+const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
   const [showFooter, setShowFooter] = useState(true);
   const contentContainerRef = useRef(null);
   useEffect(() => setShowFooter(!isInIFrame()), []);
   useScrollToAnchor();
-
-  const pageMetadata = SeoMetadata.cloud;
 
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
@@ -36,7 +35,6 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Cloud"
       >
         <PageInfo title={'k6 Cloud documentation'} />
@@ -269,4 +267,8 @@ export default function Cloud({ pageContext: { sidebarTree, navLinks } }) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default Cloud;
+
+export const Head = () => <SEO {...SeoMetaData.cloud} />;

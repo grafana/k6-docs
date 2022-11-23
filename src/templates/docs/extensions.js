@@ -7,17 +7,17 @@ import {
 } from 'components/pages/doc-extensions';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 
-export default function Extensions({ pageContext: { sidebarTree, navLinks } }) {
+const Extensions = ({ pageContext: { sidebarTree, navLinks } }) => {
   useScrollToAnchor();
-  const pageMetadata = SeoMetadata.extensions;
 
   const contentContainerRef = useRef(null);
   const stickyContainerClasses = classNames(
@@ -30,7 +30,6 @@ export default function Extensions({ pageContext: { sidebarTree, navLinks } }) {
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Extensions"
       >
         <PageInfo
@@ -61,4 +60,8 @@ export default function Extensions({ pageContext: { sidebarTree, navLinks } }) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default Extensions;
+
+export const Head = () => <SEO {...SeoMetaData.extensions} />;

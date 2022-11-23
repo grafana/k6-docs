@@ -1,5 +1,6 @@
 import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { Link, graphql, useStaticQuery } from 'gatsby';
@@ -7,7 +8,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
 import React from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 
 const breadcrumbs = [
   {
@@ -24,12 +25,11 @@ const breadcrumbs = [
   },
 ];
 
-export default function ExploreExtensionsPage({
+const ExploreExtensionsPage = ({
   location,
   pageContext: { sidebarTree, navLinks },
-}) {
+}) => {
   useScrollToAnchor();
-  const pageMetadata = SeoMetadata['explore-extensions'];
 
   const queryParams = queryString.parse(location.search);
   const category = queryParams?.category || 'All';
@@ -61,7 +61,6 @@ export default function ExploreExtensionsPage({
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Extensions"
       >
         <ExtensionsTitleGroup
@@ -111,4 +110,8 @@ export default function ExploreExtensionsPage({
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default ExploreExtensionsPage;
+
+export const Head = () => <SEO {...SeoMetaData['explore-extensions']} />;

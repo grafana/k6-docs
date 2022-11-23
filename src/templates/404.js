@@ -1,22 +1,18 @@
 import { NotFound } from 'components/pages/404/not-found';
+import { SEO } from 'components/shared/seo';
 import LocaleProvider from 'contexts/locale-provider';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 
-export default function NotFoundPage({
-  pageContext: { sidebarTree, navLinks },
-}) {
-  const pageMetadata = SeoMetadata[404];
-  return (
-    <LocaleProvider>
-      <DocLayout
-        sidebarTree={sidebarTree}
-        navLinks={navLinks}
-        pageMetadata={pageMetadata}
-      >
-        <NotFound />
-      </DocLayout>
-    </LocaleProvider>
-  );
-}
+const NotFoundPage = ({ pageContext: { sidebarTree, navLinks } }) => (
+  <LocaleProvider>
+    <DocLayout sidebarTree={sidebarTree} navLinks={navLinks}>
+      <NotFound />
+    </DocLayout>
+  </LocaleProvider>
+);
+
+export default NotFoundPage;
+
+export const Head = () => <SEO {...SeoMetaData['404']} />;
