@@ -12,7 +12,6 @@ import { Heading } from 'components/shared/heading';
 import HelperWidget from 'components/shared/helper-widget';
 import { LanguageSwitcher } from 'components/shared/language-switcher';
 import { SearchBox } from 'components/shared/search-box';
-import { SEO } from 'components/shared/seo';
 import { SidebarSectionDropdown } from 'components/shared/sidebar-section-dropdown';
 import { VersionBanner } from 'components/shared/version-banner';
 import { VersionSwitcher } from 'components/shared/version-switcher';
@@ -227,7 +226,6 @@ const SidebarNode = (props) => {
  */
 
 export const DocLayout = ({
-  pageMetadata,
   pageTranslations = null,
   version,
   sidebarTree,
@@ -280,12 +278,6 @@ export const DocLayout = ({
 
   return (
     <div className={styles.wrapper}>
-      <SEO
-        pageTranslations={pageTranslations}
-        pageVersions={pageVersions}
-        {...pageMetadata}
-      />
-
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
           <HeaderLogo theme={'doc'} />

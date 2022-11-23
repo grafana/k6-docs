@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/ssr-apis/
- */
+exports.onRenderBody = ({ pathname, setHtmlAttributes }) => {
+  let currentLanguage = 'en';
 
-// You can delete this file if you're not using it
+  if (pathname.startsWith('/es/')) {
+    currentLanguage = 'es';
+  }
+
+  setHtmlAttributes({ lang: currentLanguage, prefix: 'og: http://ogp.me/ns#' });
+};

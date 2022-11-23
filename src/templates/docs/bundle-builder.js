@@ -1,13 +1,14 @@
 import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import Blockquote from 'components/shared/blockquote';
+import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 
 const breadcrumbs = [
   {
@@ -24,11 +25,8 @@ const breadcrumbs = [
   },
 ];
 
-export default function BundleBuilderPage({
-  pageContext: { sidebarTree, navLinks },
-}) {
+const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
   useScrollToAnchor();
-  const pageMetadata = SeoMetadata['bundle-builder'];
 
   const {
     docExtensionsJson: { extensionsList },
@@ -57,7 +55,6 @@ export default function BundleBuilderPage({
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Extensions"
       >
         <ExtensionsTitleGroup
@@ -103,4 +100,8 @@ export default function BundleBuilderPage({
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default BundleBuilderPage;
+
+export const Head = () => <SEO {...SeoMetaData['bundle-builder']} />;

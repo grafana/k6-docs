@@ -14,6 +14,7 @@ import CustomContentContainer from 'components/shared/custom-content-container';
 import DescriptionList from 'components/shared/description-list';
 import { Link } from 'components/shared/link';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import TableWrapper from 'components/shared/table-wrapper';
 import Tooltip from 'components/shared/tooltip';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
@@ -22,7 +23,7 @@ import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
 
 const componentsForNativeReplacement = {
@@ -88,17 +89,16 @@ const getContent = (nodes, alternativeNodes, sidebarTree, version) =>
     return null;
   });
 
-export default function VersionedJavascriptAPI({
+const VersionedJavascriptAPI = ({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
-}) {
+}) => {
   const content = getContent(
     data.content.nodes,
     data.alternativeContent.nodes,
     sidebarTree,
     version,
   );
-  const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
 
@@ -121,7 +121,6 @@ export default function VersionedJavascriptAPI({
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         version={version}
         path="/javascript-api/"
         pageVersions={pageVersions}
@@ -148,7 +147,9 @@ export default function VersionedJavascriptAPI({
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default VersionedJavascriptAPI;
 
 export const query = graphql`
   query IndexVersionedQuery(
@@ -199,3 +200,5 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => <SEO {...SeoMetaData['javascript-api']} />;

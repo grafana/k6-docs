@@ -5,6 +5,7 @@ import { ExternalLinksDashboard } from 'components/pages/doc-integrations/extern
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import CustomContentContainer from 'components/shared/custom-content-container';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 // styles
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -38,7 +39,7 @@ import Prometheus from 'svg/prometheus.inline.svg';
 import StatsD from 'svg/statsd.inline.svg';
 import TeamCity from 'svg/teamcity.inline.svg';
 import TimescaleDB from 'svg/timescaledb.inline.svg';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 import { blog, main } from 'utils/urls';
 
 const iconsDataSet1 = [
@@ -167,10 +168,7 @@ const iconsDataSet2 = [
   },
 ];
 
-export default function Integrations({
-  pageContext: { sidebarTree, navLinks },
-}) {
-  const pageMetadata = SeoMetadata.integrations;
+const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
   const contentContainerRef = useRef(null);
 
   const {
@@ -347,12 +345,12 @@ export default function Integrations({
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
+
   return (
     <LocaleProvider>
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Integrations"
       >
         <PageInfo title={'Integrations & Tools'} description={''} />
@@ -510,7 +508,9 @@ export default function Integrations({
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default Integrations;
 
 export const IntegrationsResultIconBlock = () => (
   <DocIconsRow iconsData={iconsDataSet1} />
@@ -519,3 +519,5 @@ export const IntegrationsResultIconBlock = () => (
 export const IntegrationsCiIconBlock = () => (
   <DocIconsRow iconsData={iconsDataSet2} />
 );
+
+export const Head = () => <SEO {...SeoMetaData.integrations} />;
