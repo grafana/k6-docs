@@ -24,6 +24,8 @@ The following options control the creation and behavior of the `ServiceDisruptor
 
 ## Example
 
+<!-- eslint-skip -->
+
 ```javascript
   const disruptor = new ServiceDisruptor('my-service', 'my-namespace');
 ```

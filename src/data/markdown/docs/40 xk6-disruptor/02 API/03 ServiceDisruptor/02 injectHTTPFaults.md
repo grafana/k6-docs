@@ -32,6 +32,8 @@ This is normal and means that one request was "in transit" at the time the fault
 
 ## Example
 
+<!-- eslint-skip -->
+
 ```javascript
     const fault = {
         averageDelay: 50,

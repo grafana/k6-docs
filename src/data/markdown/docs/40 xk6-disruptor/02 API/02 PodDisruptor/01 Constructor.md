@@ -40,6 +40,8 @@ The `options` control the creation and behavior of the `PodDisruptor`:
 
 ## Example
 
+<!-- eslint-skip -->
+
 ```javascript
     const selector = {
         namespace: "my-namespace",
