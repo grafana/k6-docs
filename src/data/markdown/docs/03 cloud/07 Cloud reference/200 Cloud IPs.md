@@ -8,7 +8,7 @@ know which IPs are associated with k6 Cloud tests.
 
 ## IP addresses used by k6 Cloud {#cloud-ip-list}
 
-k6 Cloud uses AWS for load generators. Generally, in the k6 Cloud app, and our documentation, we will refer to geograpically distributed load generators as [load zones](https://k6.io/docs/misc/glossary/#load-zone).
+k6 Cloud uses AWS for load generators. Generally, in the k6 Cloud app, and our documentation, we will refer to geographically distributed load generators as [load zones](https://k6.io/docs/misc/glossary/#load-zone).
 For the IP addresses used in the different load zones and filtering methods,
 refer directly to [Amazon](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
