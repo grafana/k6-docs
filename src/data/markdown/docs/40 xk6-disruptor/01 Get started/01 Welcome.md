@@ -18,13 +18,6 @@ xk6-disruptor is intended for systems running in kubernetes. Other platforms are
 
 </Blockquote>
 
-<Blockquote mod="attention">
-
-xk6-disruptor is in the alpha stage, undergoing active development. We do not guarantee API compatibility between releases.
-Your k6 scripts may need to be updated on each release until this extension reaches v1.0 release.
-
-</Blockquote>
-
 ## Use case for xk6-disruptor
 
 The main use case for xk6-disruptor is to test how resilient an application is to diverse types of disruptions. xk6-disruptor can reproduce the effects of these disruptions, without having to reproduce their root causes.
@@ -34,3 +27,9 @@ In this way, xk6-disruptor makes reliability tests repeatable, predictable, and 
 These characteristics make it easier to incorporate such tests into the test suites of applications that deploy on shared infrastructures (such as staging environments).
 
 
+<Blockquote mod="attention">
+
+xk6-disruptor is in the alpha stage, undergoing active development. We do not guarantee API compatibility between releases.
+Your k6 scripts may need to be updated on each release until this extension reaches v1.0 release.
+
+</Blockquote>
