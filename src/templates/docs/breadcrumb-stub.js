@@ -1,4 +1,5 @@
 import { Heading } from 'components/shared/heading';
+import { SEO } from 'components/shared/seo';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -8,7 +9,7 @@ import React from 'react';
 import { childrenToList, slugify } from 'utils';
 import { LATEST_VERSION } from 'utils/utils.node';
 
-export default function BreadcrumbsStubPage(props) {
+const BreadcrumbsStubPage = (props) => {
   const {
     path,
     pageContext: {
@@ -24,13 +25,6 @@ export default function BreadcrumbsStubPage(props) {
     },
   } = props;
 
-  const pageMetadata = {
-    data: {
-      title,
-      description: ' ',
-    },
-  };
-
   const isJsAPIPage = path ? path.indexOf('/javascript-api/') >= 0 : false;
 
   return (
@@ -40,7 +34,6 @@ export default function BreadcrumbsStubPage(props) {
         navLinks={navLinks}
         locale={locale}
         pageTranslations={translations}
-        pageMetadata={pageMetadata}
         version={isJsAPIPage ? version || LATEST_VERSION : null}
         path={path}
         sectionName={sectionName}
@@ -79,4 +72,17 @@ export default function BreadcrumbsStubPage(props) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default BreadcrumbsStubPage;
+
+export const Head = ({ pageContext: { title } }) => {
+  const pageMetaData = {
+    data: {
+      title,
+      description: ' ',
+    },
+  };
+
+  return <SEO {...pageMetaData} />;
+};

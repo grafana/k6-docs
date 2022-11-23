@@ -2,18 +2,18 @@ import classNames from 'classnames';
 import { DocLinksBlock } from 'components/pages/doc-examples/doc-links-block';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 
-export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
+const Examples = ({ pageContext: { sidebarTree, navLinks } }) => {
   useScrollToAnchor();
   const contentContainerRef = useRef(null);
-  const pageMetadata = SeoMetadata.examples;
 
   const {
     docExamplesJson: { tutorialsBlockLinks, examplesBlockLinks },
@@ -39,12 +39,12 @@ export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
     docPageContent.mainDocContent,
     docPageContent.contentWrapper,
   );
+
   return (
     <LocaleProvider>
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         sectionName="Examples"
       >
         <PageInfo
@@ -70,4 +70,8 @@ export default function Examples({ pageContext: { sidebarTree, navLinks } }) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default Examples;
+
+export const Head = () => <SEO {...SeoMetaData.examples} />;

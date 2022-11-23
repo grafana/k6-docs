@@ -11,13 +11,14 @@ import {
 import { K6DoesNot } from 'components/pages/doc-welcome/k6-does-not';
 import { UseCases } from 'components/pages/doc-welcome/use-cases';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import I18nProvider from 'contexts/i18n-provider';
 import LocaleProvider from 'contexts/locale-provider';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 import { docs } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
@@ -34,19 +35,11 @@ const pageInfo = {
   },
 };
 
-function GuidesContent({
+const GuidesContent = ({
   pageContext: { sidebarTree, navLinks, locale = 'en' },
-}) {
+}) => {
   useScrollToAnchor();
 
-  const pageMetadata = {
-    data: {
-      ...(locale === 'es'
-        ? SeoMetadata.guidesES.data
-        : SeoMetadata.guides.data),
-      slug: locale === 'es' ? 'es/' : '',
-    },
-  };
   const contentContainerRef = useRef(null);
   const stickyContainerClasses = classNames(
     docPageContent.mainDocContent,
@@ -71,7 +64,6 @@ function GuidesContent({
     <DocLayout
       sidebarTree={sidebarTree}
       navLinks={navLinks}
-      pageMetadata={pageMetadata}
       locale={locale}
       pageTranslations={guidesTranslations}
       sectionName="Guides"
@@ -110,9 +102,9 @@ function GuidesContent({
       </div>
     </DocLayout>
   );
-}
+};
 
-export default function Guides(props) {
+const Guides = (props) => {
   const {
     pageContext: { locale = 'en' },
   } = props;
@@ -124,4 +116,19 @@ export default function Guides(props) {
       </I18nProvider>
     </LocaleProvider>
   );
-}
+};
+
+export default Guides;
+
+export const Head = ({ pageContext: { locale } }) => {
+  const pageMetaData = {
+    data: {
+      ...(locale === 'es'
+        ? SeoMetaData.guidesES.data
+        : SeoMetaData.guides.data),
+      slug: locale === 'es' ? 'es/' : '',
+    },
+  };
+
+  return <SEO {...pageMetaData} />;
+};

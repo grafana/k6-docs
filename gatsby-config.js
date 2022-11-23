@@ -269,7 +269,6 @@ module.exports = {
       // eslint-disable-next-line max-len
       'Grafana k6 is an open source developer-centric load and performance regression testing tool for cloud native APIs, microservices and web sites/apps. Tests are written in ES6 JS with support for HTTP/1.1, HTTP/2.0 and WebSocket protocols.',
     siteImage: '/images/k6-cover-image.png',
-    siteLanguage: 'en',
     siteUrl: process.env.GATSBY_DEFAULT_MAIN_URL,
     authorName: 'k6',
     authorTwitterAccount: '@k6_io',

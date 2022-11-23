@@ -1,7 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect, useRef } from 'react';
 import { createMetaImagePath, noTrailingSlash, addPrefixSlash } from 'utils';
 import { docs } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
@@ -27,7 +26,6 @@ export const SEO = ({
         siteDescription,
         siteUrl,
         siteImage,
-        siteLanguage,
         authorTwitterAccount,
       },
     },
@@ -39,7 +37,6 @@ export const SEO = ({
           siteDescription
           siteUrl
           siteImage
-          siteLanguage
           authorTwitterAccount
         }
       }
@@ -49,6 +46,7 @@ export const SEO = ({
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
   const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
+  const currentRobotsContent = useRef('index, follow');
 
   let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available
@@ -62,6 +60,16 @@ export const SEO = ({
     en: { href: `${siteUrl}/docs` },
     es: { href: `${siteUrl}/docs` },
   };
+
+  useEffect(() => {
+    if (
+      I18N_CONFIG.hideEsFromRobots &&
+      slug &&
+      (slug.startsWith('es/') || slug === 'es')
+    ) {
+      currentRobotsContent.current = 'noindex';
+    }
+  }, []);
 
   if (pageTranslations) {
     if (pageTranslations.es) {
@@ -86,58 +94,49 @@ export const SEO = ({
 
   return (
     <>
-      {I18N_CONFIG.hideEsFromRobots &&
-        slug &&
-        (slug.startsWith('es/') || slug === 'es') && (
-          <Helmet meta={[{ name: 'robots', content: 'noindex' }]} />
-        )}
-      <Helmet
-        title={currentTitle}
-        htmlAttributes={{
-          lang: slug && slug.startsWith('es/') ? 'es' : siteLanguage,
-          prefix: 'og: http://ogp.me/ns#',
-        }}
-      >
-        {/* General */}
-        <meta name={'description'} content={currentDescription} />
-        {/* Open Graph */}
-        <meta property={'og:url'} content={currentUrl} />
-        <meta property={'og:title'} content={currentTitle} />
-        <meta property={'og:description'} content={currentDescription} />
-        <meta property={'og:image'} content={currentImage} />
-        <meta property={'og:type'} content={'website'} />
-        {facebook && <meta property={'fb:app_id'} content={facebook.appId} />}
-        {/* Twitter Card tags */}
-        <meta name={'twitter:card'} content={'summary'} />
-        <meta name={'twitter:creator'} content={authorTwitterAccount} />
+      <title>{currentTitle}</title>
+      {/* General */}
+      <meta name={'description'} content={currentDescription} />
+      <meta name={'robots'} content={currentRobotsContent.current} />
+      {/* Open Graph */}
+      <meta property={'og:url'} content={currentUrl} />
+      <meta property={'og:title'} content={currentTitle} />
+      <meta property={'og:description'} content={currentDescription} />
+      <meta property={'og:image'} content={currentImage} />
+      <meta property={'og:type'} content={'website'} />
+      {facebook ? (
+        <meta property={'fb:app_id'} content={facebook.appId} />
+      ) : null}
+      {/* Twitter Card tags */}
+      <meta name={'twitter:card'} content={'summary'} />
+      <meta name={'twitter:creator'} content={authorTwitterAccount} />
 
-        {/* Canonical links for versioned pages */}
-        <link href={versionedCanonicalUrl} rel="canonical" />
+      {/* Canonical links for versioned pages */}
+      <link href={versionedCanonicalUrl} rel="canonical" />
 
-        {/* SEO for localized pages */}
-        {/* rel should be declared after href https://github.com/nfl/react-helmet/issues/279 */}
-        {pageTranslations && pageTranslations.en !== undefined && (
-          <link
-            hrefLang="en"
-            href={`${hrefLangAttributes.en.href}`}
-            rel="alternate"
-          />
-        )}
-        {pageTranslations && pageTranslations.es && (
-          <link
-            hrefLang="es"
-            href={`${hrefLangAttributes.es.href}`}
-            rel="alternate"
-          />
-        )}
-        {pageTranslations && pageTranslations.en && (
-          <link
-            hrefLang="x-default"
-            href={`${hrefLangAttributes.en.href}`}
-            rel="alternate"
-          />
-        )}
-      </Helmet>
+      {/* SEO for localized pages */}
+      {/* rel should be declared after href https://github.com/nfl/react-helmet/issues/279 */}
+      {pageTranslations?.en && (
+        <link
+          hrefLang="en"
+          href={`${hrefLangAttributes.en.href}`}
+          rel="alternate"
+        />
+      )}
+      {pageTranslations?.es && (
+        <link
+          hrefLang="es"
+          href={`${hrefLangAttributes.es.href}`}
+          rel="alternate"
+        />
+      )}
+      {pageTranslations?.en && (
+        <link
+          hrefLang="x-default"
+          href={`${hrefLangAttributes.en.href}`}
+          rel="alternate"
+        />
+      )}
     </>
   );
 };

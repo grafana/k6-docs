@@ -13,6 +13,7 @@ import {
 import CustomContentContainer from 'components/shared/custom-content-container';
 import DescriptionList from 'components/shared/description-list';
 import { PageInfo } from 'components/shared/page-info';
+import { SEO } from 'components/shared/seo';
 import TableWrapper from 'components/shared/table-wrapper';
 import Tooltip from 'components/shared/tooltip';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
@@ -21,7 +22,7 @@ import { graphql } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
-import SeoMetadata from 'utils/seo-metadata';
+import SeoMetaData from 'utils/seo-metadata';
 import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
 
 const componentsForNativeReplacement = {
@@ -81,17 +82,15 @@ const getContent = (nodes, alternativeNodes, sidebarTree) =>
     return null;
   });
 
-export default function JavascriptAPI({
+const JavascriptAPI = ({
   data,
   pageContext: { sidebarTree, navLinks, version = LATEST_VERSION },
-}) {
+}) => {
   const content = getContent(
     data.content.nodes,
     data.alternativeContent.nodes,
     sidebarTree,
   );
-
-  const pageMetadata = SeoMetadata['javascript-api'];
   const contentContainerRef = useRef(null);
   useScrollToAnchor();
 
@@ -114,7 +113,6 @@ export default function JavascriptAPI({
       <DocLayout
         sidebarTree={sidebarTree}
         navLinks={navLinks}
-        pageMetadata={pageMetadata}
         version={version}
         path="/javascript-api/"
         pageVersions={pageVersions}
@@ -143,7 +141,9 @@ export default function JavascriptAPI({
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default JavascriptAPI;
 
 // on regex origin: /02 ... /
 // is required to distinguish from
@@ -196,3 +196,5 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => <SEO {...SeoMetaData['javascript-api']} />;

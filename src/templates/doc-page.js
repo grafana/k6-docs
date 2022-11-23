@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
 import { styles as codeStyles } from 'components/shared/code';
+import { SEO } from 'components/shared/seo';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
 import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
@@ -12,7 +13,7 @@ import React from 'react';
 import { flattenSidebarTree } from 'utils/utils';
 import { LATEST_VERSION } from 'utils/utils.node';
 
-export default function DocPage(props) {
+const DocPage = (props) => {
   const {
     path,
     pageContext: {
@@ -30,14 +31,6 @@ export default function DocPage(props) {
     },
   } = props;
   useScrollToAnchor();
-
-  const pageMetadata = {
-    data: {
-      title: frontmatter.head_title || frontmatter.title,
-      description: frontmatter.excerpt,
-      slug: frontmatter.slug ? frontmatter.slug : path.slice(1),
-    },
-  };
 
   const isJsAPIPage = sidebarTree.name === 'javascript api' || !!version;
 
@@ -76,7 +69,6 @@ export default function DocPage(props) {
   return (
     <LocaleProvider urlLocale={locale}>
       <DocLayout
-        pageMetadata={pageMetadata}
         sidebarTree={sidebarTree}
         navLinks={navLinks}
         pageTranslations={frontmatter.translations}
@@ -111,4 +103,30 @@ export default function DocPage(props) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default DocPage;
+
+export const Head = ({
+  location,
+  pageContext: {
+    remarkNode: { frontmatter },
+    pageVersions,
+  },
+}) => {
+  const pageMetaData = {
+    data: {
+      title: frontmatter.head_title || frontmatter.title,
+      description: frontmatter.excerpt,
+      slug: frontmatter.slug ? frontmatter.slug : location.pathname.slice(1),
+    },
+  };
+
+  return (
+    <SEO
+      pageTranslations={frontmatter.translations}
+      pageVersions={pageVersions}
+      {...pageMetaData}
+    />
+  );
+};

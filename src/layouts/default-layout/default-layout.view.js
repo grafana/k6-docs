@@ -9,7 +9,6 @@ import { MobileNav } from 'components/blocks/mobile-nav';
 import { Button } from 'components/shared/button';
 import CookieConsent from 'components/shared/cookie-consent';
 import HelperWidget from 'components/shared/helper-widget';
-import { SEO } from 'components/shared/seo';
 import React from 'react';
 import {
   Cookies,
@@ -22,7 +21,7 @@ import styles from './default-layout.module.scss';
 
 const cookies = new Cookies({ 'user-has-accepted-cookies': true });
 
-export const DefaultLayout = ({ pageMetadata, children }) => {
+export const DefaultLayout = ({ children }) => {
   const [isMobileNavVisible, setIsMobileNavVisible] = React.useState(false);
 
   React.useEffect(() => {
@@ -52,7 +51,6 @@ export const DefaultLayout = ({ pageMetadata, children }) => {
 
   return (
     <>
-      <SEO {...pageMetadata} />
       <Header>
         <div className={'col-xl-3 col-lg-2 col-3'}>
           <HeaderLogo />
