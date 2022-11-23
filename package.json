@@ -32,7 +32,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/mdx": "^2.1.5",
     "@mdx-js/react": "^1.6.22",
     "@sentry/gatsby": "^6.19.3",
     "algoliasearch": "^4.11.0",
@@ -47,7 +47,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^2.11.1",
     "gatsby-plugin-manifest": "^4.11.0",
-    "gatsby-plugin-mdx": "^3.11.1",
+    "gatsby-plugin-mdx": "^5.1.0",
     "gatsby-plugin-offline": "^5.11.1",
     "gatsby-plugin-react-helmet-canonical-urls": "^1.4.0",
     "gatsby-plugin-resolve-src": "^2.1.0",
@@ -90,7 +90,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-markdown": "^2.2.1",
-    "eslint-plugin-mdx": "^1.17.0",
+    "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
