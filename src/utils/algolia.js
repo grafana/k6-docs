@@ -72,7 +72,7 @@ const processMdxEntry = (
     slug = getTranslatedSlug(strippedDirectory, title, pageLocale, 'guides');
   }
 
-  if (slug.startsWith('/xk6-browser')) {
+  if (slug.startsWith('/xk6-disruptor') || slug.startsWith('/xk6-browser')) {
     slug = `/javascript-api${slug}`;
   }
 

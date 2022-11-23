@@ -129,6 +129,7 @@ const SidebarNode = (props) => {
       meta.path === '/' ||
       meta.path === '/es/' ||
       meta.path === '/extensions/' ||
+      meta.path === '/javascript-api/xk6-disruptor/' ||
       meta.path === '/javascript-api/xk6-browser/'
         ? false
         : pathname.startsWith(maybePrefixedPath);
