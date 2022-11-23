@@ -172,4 +172,17 @@ eql
 instanceof
 contentful
 xpath
+disruptor
+disruptors
+PodDisruptor
+ServiceDisruptor
+kubectl
+nginx
+iface
+virtualize
+virtualizing
+oversaturated
+Minikube
+kubernetes
+metallb
 Dockerfile
