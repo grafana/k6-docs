@@ -44,3 +44,4 @@ export default function () {
 _A k6 script that will delete a secret in AWS secrets manager_
 
 </CodeGroup>
+
