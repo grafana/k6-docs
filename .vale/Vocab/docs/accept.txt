@@ -172,7 +172,10 @@ eql
 instanceof
 contentful
 xpath
+disruptor
 disruptors
+PodDisruptor
+ServiceDisruptor
 kubectl
 nginx
 iface
