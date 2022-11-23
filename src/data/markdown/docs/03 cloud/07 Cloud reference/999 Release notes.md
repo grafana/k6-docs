@@ -4,6 +4,12 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.15.2 `(2022-11-22)`
+- Fix show password visibility toggle in account registration form
+- Fix display actual API error on password reset page
+- Avoid fetching logs twice
+- Fix `checks` count displayed as `(/)` when test had no checks
+
 ### v3.15.0 `(2022-11-2)`
 - Add teams dropdown to [SAML SSO](/cloud/project-and-team-management/saml-sso/)
 - Fix pdf crashes when fetching urls
