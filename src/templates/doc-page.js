@@ -13,7 +13,7 @@ import React from 'react';
 import { flattenSidebarTree } from 'utils/utils';
 import { LATEST_VERSION } from 'utils/utils.node';
 
-export default function DocPage(props) {
+const DocPage = (props) => {
   const {
     path,
     pageContext: {
@@ -103,7 +103,9 @@ export default function DocPage(props) {
       </DocLayout>
     </LocaleProvider>
   );
-}
+};
+
+export default DocPage;
 
 export const Head = ({
   location,

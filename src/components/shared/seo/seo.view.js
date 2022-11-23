@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createMetaImagePath, noTrailingSlash, addPrefixSlash } from 'utils';
 import { docs } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
@@ -46,7 +46,7 @@ export const SEO = ({
   const currentTitle = title || siteTitle;
   const currentDescription = description || siteDescription;
   const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
-  let currentRobotsContent = 'index, follow';
+  const currentRobotsContent = useRef('index, follow');
 
   let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available
@@ -67,7 +67,7 @@ export const SEO = ({
       slug &&
       (slug.startsWith('es/') || slug === 'es')
     ) {
-      currentRobotsContent = 'noindex';
+      currentRobotsContent.current = 'noindex';
     }
   }, []);
 
@@ -97,7 +97,7 @@ export const SEO = ({
       <title>{currentTitle}</title>
       {/* General */}
       <meta name={'description'} content={currentDescription} />
-      <meta name={'robots'} content={currentRobotsContent} />
+      <meta name={'robots'} content={currentRobotsContent.current} />
       {/* Open Graph */}
       <meta property={'og:url'} content={currentUrl} />
       <meta property={'og:title'} content={currentTitle} />
@@ -116,21 +116,21 @@ export const SEO = ({
 
       {/* SEO for localized pages */}
       {/* rel should be declared after href https://github.com/nfl/react-helmet/issues/279 */}
-      {pageTranslations && pageTranslations.en !== undefined && (
+      {pageTranslations?.en && (
         <link
           hrefLang="en"
           href={`${hrefLangAttributes.en.href}`}
           rel="alternate"
         />
       )}
-      {pageTranslations && pageTranslations.es && (
+      {pageTranslations?.es && (
         <link
           hrefLang="es"
           href={`${hrefLangAttributes.es.href}`}
           rel="alternate"
         />
       )}
-      {pageTranslations && pageTranslations.en && (
+      {pageTranslations?.en && (
         <link
           hrefLang="x-default"
           href={`${hrefLangAttributes.en.href}`}
