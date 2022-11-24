@@ -22,6 +22,8 @@ To build the k6 binary with the xk6-disruptor extension:
 1. Ensure you have [Go 1.18](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
 2. Run the following commands in a terminal:
 
+<CodeGroup labels={["Linux/MacOS"]}>
+
     ```bash
     # Install xk6
     go install go.k6.io/xk6/cmd/xk6@latest
@@ -34,13 +36,18 @@ To build the k6 binary with the xk6-disruptor extension:
     xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=. --with github.com/grafana/xk6-kubernetes
     ```
 
+</CodeGroup>
+
     Notice that the `build` command includes both the xk6-disruptor and the [xk6-kubernetes extension](https://github.com/grafana/xk6-kubernetes).
     This is because many example scripts use the `xk6-kubernetes` extension to create the Kubernetes resources they need, such as Pods and Services.
     If you don't use this extension in your tests, you can build the custom `k6` binary with only the `xk6-disruptor` extension using the following command instead:
+
+<CodeGroup labels={["Linux/MacOS"]}>
 
     ```bash
     $ xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=.
     ```
 
+</CodeGroup>
 
 xk6 will create the `xk6-disruptor` binary in the current working directory.
