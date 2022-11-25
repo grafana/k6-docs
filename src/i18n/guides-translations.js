@@ -45,10 +45,11 @@ export const localizedMessages = {
       'With k6, you can automate and schedule to trigger tests very frequently with a small load to continuously validate the performance and availability of your production environment.',
     'welcome.use-cases.chaos-testing.title': 'Chaos and resilience testing',
     'welcome.use-cases.chaos-testing.description':
-      'You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with xk6-disruptor.',
+      'You can use k6 to simulate traffic as part of your chaos experiments, trigger them from your k6 tests or inject different types of faults in Kubernetes with ',
     'welcome.use-cases.browser-testing.title': 'Browser testing',
+    'welcome.use-cases.browser-testing.pre-description': 'Through ',
     'welcome.use-cases.browser-testing.description':
-      'Through xk6-browser, you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.',
+      ', you can run browser-based performance testing and catch issues related to browsers only which can be skipped entirely from the protocol level.',
     'welcome.manifesto.title': 'Load Testing Manifesto',
     'welcome.manifesto.description': `Our load testing manifesto is the result of having spent years hip deep in
     the trenches, doing performance- and load testing. We’ve created it to be
@@ -123,10 +124,11 @@ export const localizedMessages = {
       'Con k6, puede automatizar la ejecución de tests frequentemente con una pequeña cantidad de carga para supervisar continuamente el rendimiento y disponibilidad de su entorno de producción.',
     'welcome.use-cases.chaos-testing.title': 'Pruebas de chaos',
     'welcome.use-cases.chaos-testing.description':
-      'Puede utilizar k6 para simular tráfico como parte de sus experimentos de chaos, lanzarlos desde el script de k6 o injectar fallos en Kubernetes con xk6-disruptor.',
+      'Puede utilizar k6 para simular tráfico como parte de sus experimentos de chaos, lanzarlos desde el script de k6 o injectar fallos en Kubernetes con ',
     'welcome.use-cases.browser-testing.title': 'Browser testing',
+    'welcome.use-cases.browser-testing.pre-description': 'Con ',
     'welcome.use-cases.browser-testing.description':
-      'Con xk6-browser, puedes interactuar con el navegador para validar la interfaz web o rendimiento. Ejecuta browser tests juntos o separados de otros tests de carga.',
+      ', puedes interactuar con el navegador para validar la interfaz web o rendimiento. Ejecuta browser tests juntos o separados de otros tests de carga.',
     'welcome.manifesto.title': 'Manifiesto',
 
     'welcome.manifesto.description': `Nuestro manifiesto es el resultado de muchos años de trabajo haciendo pruebas de rendimiento y de carga. Lo hemos creado para ser usado como una guía de cómo hacer pruebas de rendimiento.`,

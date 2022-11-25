@@ -63,13 +63,25 @@ export const UseCases = () => {
           <Heading tag={'h3'} size={'md'} className={styles.title}>
             {t('welcome.use-cases.browser-testing.title')}
           </Heading>
-          <p>{t('welcome.use-cases.browser-testing.description')}</p>
+          <p>
+            {t('welcome.use-cases.browser-testing.pre-description')}
+            <Link className={'link'} to={'/javascript-api/xk6-browser/'}>
+              xk6-browser
+            </Link>
+            {t('welcome.use-cases.browser-testing.description')}
+          </p>
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
             {t('welcome.use-cases.chaos-testing.title')}
           </Heading>
-          <p>{t('welcome.use-cases.chaos-testing.description')}</p>
+          <p>
+            {t('welcome.use-cases.chaos-testing.description')}
+            <Link className={'link'} to={'/javascript-api/xk6-disruptor/'}>
+              xk6-disruptor
+            </Link>
+            .
+          </p>
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
