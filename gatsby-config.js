@@ -11,7 +11,6 @@ const isProduction = mainURL === 'https://k6.io/docs';
 const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
-  'gatsby-plugin-react-helmet',
   'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-sharp',
@@ -150,19 +149,6 @@ const plugins = [
     },
   },
 ];
-
-// when `canonical` URL is finally fixed, add this to the plugin list
-const autoCanonicalURL = true;
-if (autoCanonicalURL) {
-  plugins.push({
-    resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-    options: {
-      siteUrl: process.env.GATSBY_DEFAULT_MAIN_URL,
-      noHash: true,
-      noQueryString: true,
-    },
-  });
-}
 
 if (
   process.env.ALGOLIA_ADMIN_KEY &&
