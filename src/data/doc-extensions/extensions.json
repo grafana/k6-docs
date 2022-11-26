@@ -781,6 +781,18 @@
       },
       "official": false,
       "categories": ["Blockchain", "Ethereum"]
+    },
+    {
+      "name": "xk6-output-timestream",
+      "description": "Export results to AWS Timestream",
+      "url": "https://github.com/leonyork/xk6-output-timestream",
+      "logo": "",
+      "author": {
+        "name": "Leon York",
+        "url": "https://github.com/leonyork"
+      },
+      "official": false,
+      "categories": ["Reporting"]
     }
   ]
 }
