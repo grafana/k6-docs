@@ -3,9 +3,10 @@ title: 'waitFor([options])'
 excerpt: 'xk6-browser: locator.waitFor method'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #472](https://github.com/grafana/xk6-browser/issues/472) for details of a known issue.
+This feature has **known issues**. For details,
+refer to [#472](https://github.com/grafana/xk6-browser/issues/472).
 
 </Blockquote>
 

@@ -3,9 +3,10 @@ title: 'setDefaultTimeout(timeout)'
 excerpt: 'Sets the default timeout in milliseconds.'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #456](https://github.com/grafana/xk6-browser/issues/456) for details of a known issue.
+This feature has **known issues**. For details, refer to
+[#456](https://github.com/grafana/xk6-browser/issues/456).
 
 </Blockquote>
 

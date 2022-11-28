@@ -13,9 +13,9 @@ Apart from the usual HTTP specific metrics that k6 already tracks, xk6-browser t
 | browser_first_meaningful_paint | Emitted when the browser renders the main content from above-the-fold that the users are looking for.        |
 | browser_loaded                 | Emitted when the page is fully loaded.                                                                       |
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-Note that the above metrics are still subject to change in the future.
+These metrics are still subject to change in the future.
 
 </Blockquote>
 

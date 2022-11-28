@@ -3,9 +3,10 @@ title: 'clearPermissions()'
 excerpt: 'Clears all permission overrides for the BrowserContext.'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #443](https://github.com/grafana/xk6-browser/issues/443) for details of a known issue.
+This feature has known issues.
+For details, refer to [issue #443](https://github.com/grafana/xk6-browser/issues/443).
 
 </Blockquote>
 

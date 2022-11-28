@@ -3,9 +3,10 @@ title: 'setGeolocation(geolocation)'
 excerpt: "Sets the BrowserContext's geolocation."
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #435](https://github.com/grafana/xk6-browser/issues/435) for details of a known issue.
+This feature has **known issues**. For details, refer to
+[#435](https://github.com/grafana/xk6-browser/issues/435).
 
 </Blockquote>
 

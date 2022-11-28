@@ -3,9 +3,10 @@ title: 'check([options])'
 excerpt: 'xk6-browser: locator.check method'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #471](https://github.com/grafana/xk6-browser/issues/471) and [issue #475](https://github.com/grafana/xk6-browser/issues/475) for details of known issues.
+This feature has known issues. For details, refer to
+[#471](https://github.com/grafana/xk6-browser/issues/471) and [#475](https://github.com/grafana/xk6-browser/issues/475).
 
 </Blockquote>
 

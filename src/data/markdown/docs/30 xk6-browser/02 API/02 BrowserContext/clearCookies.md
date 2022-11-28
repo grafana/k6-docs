@@ -3,9 +3,10 @@ title: 'clearCookies()'
 excerpt: 'Clears context cookies.'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #442](https://github.com/grafana/xk6-browser/issues/442) for details of a known issue.
+This feature has **known issues**. For details, refer to
+[#442](https://github.com/grafana/xk6-browser/issues/442).
 
 </Blockquote>
 
