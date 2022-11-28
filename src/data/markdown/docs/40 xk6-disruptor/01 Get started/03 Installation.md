@@ -13,7 +13,7 @@ The quickest way to get started is to [download a release binary from GitHub](ht
 
 ## Build from source
 
-This option allows you to build a k6 binary using [xk6](https://github.com/grafana/xk6).
+You can also use [xk6](https://github.com/grafana/xk6) to build a k6 binary.
 
 To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](/extensions/guides/build-a-k6-binary-with-extensions/).
 
