@@ -3,11 +3,13 @@ title: 'waitForEvent(event[, optionsOrPredicate])'
 excerpt: 'Waits for event to fire and passes its value into the predicate function.'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-This method is a Work In Progress. It requires async functionality and returning a `Promise` to be useful in scripts. See <a href="https://github.com/grafana/xk6-browser/issues/447">issue #447</a> for details.
+This method is a work in progress.
+It requires async functionality and returning a `Promise` to be useful in scripts.
+Refer to <a href="https://github.com/grafana/xk6-browser/issues/447">#447</a> for details.
 
-Consider using sync methods `Page.waitForNavigation()` and `Page.waitForSelector()` instead.
+Consider using the sync methods `Page.waitForNavigation()` and `Page.waitForSelector()` instead.
 
 </Blockquote>
 

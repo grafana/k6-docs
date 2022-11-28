@@ -7,7 +7,7 @@ Selectors are strings that represents a specific DOM element on the page. When w
 
 Currently, xk6-browser supports the standard **CSS and XPath selectors**.
 
-<Blockquote mod="warning">
+<Blockquote mod="note">
 
 Text-based selectors are currently not supported in xk6-browser. This will be supported in future releases. 
 

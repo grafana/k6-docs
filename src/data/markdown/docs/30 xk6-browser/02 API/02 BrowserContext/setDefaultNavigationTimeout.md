@@ -3,9 +3,10 @@ title: 'setDefaultNavigationTimeout(timeout)'
 excerpt: 'Sets the default navigation timeout in milliseconds.'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #445](https://github.com/grafana/xk6-browser/issues/445) for details of a known issue.
+This feature has **known issues.** For details, refer to
+[#445](https://github.com/grafana/xk6-browser/issues/445).
 
 </Blockquote>
 

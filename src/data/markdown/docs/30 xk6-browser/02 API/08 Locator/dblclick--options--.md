@@ -3,9 +3,10 @@ title: 'dblclick([options])'
 excerpt: 'xk6-browser: locator.dblclick method'
 ---
 
-<Blockquote mod="warning">
+<Blockquote mod="attention">
 
-See [issue #469](https://github.com/grafana/xk6-browser/issues/469) and [issue #471](https://github.com/grafana/xk6-browser/issues/471) for details of known issues.
+This feature has known issues. For details, refer to
+[#469](https://github.com/grafana/xk6-browser/issues/469) and [#471](https://github.com/grafana/xk6-browser/issues/471).
 
 </Blockquote>
 
