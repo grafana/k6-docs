@@ -104,3 +104,6 @@ $ k6 run -e MY_HOSTNAME=test.k6.io --duration 10s --vus 10 script.js
 
 </CodeGroup>
 
+## Leer más
+
+- [Manage environment variables in k6 Cloud](/cloud/manage/environment-variables/)
