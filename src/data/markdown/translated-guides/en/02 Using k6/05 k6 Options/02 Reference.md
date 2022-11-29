@@ -160,7 +160,7 @@ export const options = {
 
 ## Block hostnames
 
-Blocks hostnames based on a list glob match strings. The pattern matching string can have a single
+Blocks hostnames based on a list of glob match strings. The pattern matching string can have a single
 `*` at the beginning such as `*.example.com` that will match anything before that such as
 `test.example.com` and `test.test.example.com`.
 Available in `k6 run` and `k6 cloud` commands.
@@ -922,9 +922,9 @@ $ k6 run script.js -d 20s --quiet
 
 ## Results output
 
-Specify the results output. Please go to [Results output](/get-started/results-output) for more information
-on all built-in output modules available and how to configure them. Since version 0.21, this option can be
-specified multiple times. Available in `k6 run` command.
+Specify the results output.
+For information on all available outputs and how to configure them,
+refer to [Results output](/get-started/results-output/overview).
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
@@ -1427,7 +1427,7 @@ If you pass an empty string, no `User-Agent` header is sent.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env             | CLI            | Code / Config file | Default                                                               |
-| --------------- | -------------- | ------------------ | --------------------------------------------------------------------- |
+|-----------------|----------------|--------------------|-----------------------------------------------------------------------|
 | `K6_USER_AGENT` | `--user-agent` | `userAgent`        | `k6/0.27.0 (https://k6.io/)` (depending on the version you're using)` |
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
