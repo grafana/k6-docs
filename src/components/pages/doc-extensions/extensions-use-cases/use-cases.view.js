@@ -53,7 +53,7 @@ export const ExtensionsUseCases = () => (
         </li>
         <li>
           <Heading tag={'h3'} size={'md'} className={styles.title}>
-            To enhance existing functionality for specialized requirements
+            To format and send metrics to the output of your choice
           </Heading>
           <p className={styles.description}>
             Suppose your company has consolidated its observability metrics into
