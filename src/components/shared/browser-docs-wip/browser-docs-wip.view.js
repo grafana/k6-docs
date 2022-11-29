@@ -2,10 +2,10 @@ import Blockquote from 'components/shared/blockquote';
 import React from 'react';
 
 const BrowserDocsWIP = () => (
-  <Blockquote mod="warning">
+  <Blockquote mod="attention">
     <p>
-      This documentation is a work in progress, and some of the functionality
-      that is listed below may not behave as expected.
+      The xk6-browser API is a work in progress. Some of the following
+      functionalities might behave unexpectedely.
     </p>
   </Blockquote>
 );
