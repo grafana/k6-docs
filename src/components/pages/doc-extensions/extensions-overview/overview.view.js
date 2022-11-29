@@ -30,8 +30,8 @@ export const ExtensionsOverview = () => (
           <strong>Output extensions</strong>
           <p>
             {' '}
-            Extend how you can handle the metric data that your test generates.
-            Add custom processing and dispatching.
+            Send metrics to a custom file format or service. Add custom
+            processing and dispatching.
           </p>
         </li>
       </ul>
