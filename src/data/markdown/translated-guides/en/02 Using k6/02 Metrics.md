@@ -189,6 +189,14 @@ $ k6 run script.js
 You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
 This can be useful when analyzing test results.
 
+<Blockquote mod="note" title="">
+
+Custom metrics are collected from VU threads only at the end of a VU iteration.
+For long-running scripts, custom metrics might appear only after the test runs a while.
+
+</Blockquote>
+
+
 ## Metric types
 
 All metrics (both built-in and custom) have a _type_. The four different metric types in k6 are:
@@ -346,11 +354,6 @@ $ k6 run script.js
 
 The value of `my_rate` at the end of the test will be 50%, indicating that half of the values
 added to the metric were non-zero.
-
-### Notes
-
-- Custom metrics are collected from VU threads only at the end of a VU iteration.
-  This means that for long-running scripts, you may not see any custom metrics until the test runs a while.
 
 ## Metric graphs in k6 Cloud Results
 
