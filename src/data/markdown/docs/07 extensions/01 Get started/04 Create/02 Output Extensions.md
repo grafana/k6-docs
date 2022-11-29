@@ -3,10 +3,11 @@ title: 'Output Extensions'
 excerpt: 'Follow these steps to build an output extension for k6.'
 ---
 
-k6 provides many destinations and metric types, but it cannot directly support all possibilities.
-If you want to store or alter metrics captured during an active k6 test,
+k6 provides many [metrics](/using-k6/metrics) and [output formats](/results-output/overview/), but it cannot directly support all possibilities.
+To store or alter metrics captured during an active k6 test,
 you can create a custom output extension.
 
+Output extension binaries can use the `--out` flag to send metrics to a custom place.
 Some potential reasons for a custom extension could include:
 * To support a time-series database not already supported
 * To add derived metrics data for storage
@@ -208,12 +209,12 @@ Now we can use the extension with a test script.
 1. Now, run the test.
 
   ```bash
-  $ ./k6 run test.js -o logger --quiet --no-summary --iterations 2
+  $ ./k6 run test.js --out logger --quiet --no-summary --iterations 2
   ```
 
 <Blockquote mod="note" title="">
 
-The `-o logger` argument tells k6 to use your custom output. The flag
+The `-out logger` argument tells k6 to use your custom output. The flag
 `--quiet --no-summary` configures k6 to show only custom output.
 
 </Blockquote>
