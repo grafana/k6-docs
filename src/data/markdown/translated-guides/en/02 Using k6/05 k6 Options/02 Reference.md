@@ -924,7 +924,7 @@ $ k6 run script.js -d 20s --quiet
 
 Specify the results output.
 For information on all available outputs and how to configure them,
-refer to [Results output](/get-started/results-output/overview).
+refer to [Results output](/results-output/overview/).
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
