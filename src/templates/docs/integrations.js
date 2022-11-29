@@ -453,9 +453,10 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                 },
                 {
                   image: k6Img,
-                  title: 'xk6-chaos',
-                  description: 'A k6 extension to test k8s failures',
-                  url: 'https://github.com/grafana/xk6-chaos',
+                  title: 'xk6-disruptor',
+                  description:
+                    'A k6 extension for injecting faults into k6 tests',
+                  url: 'https://k6.io/docs/javascript-api/xk6-disruptor/',
                 },
                 {
                   image: chaostoolkitImg,
