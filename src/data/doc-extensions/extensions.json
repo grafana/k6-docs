@@ -1,6 +1,18 @@
 {
   "extensions": [
     {
+      "name": "xk6-prompt",
+      "description": "Support for input arguments via UI.",
+      "url": "https://github.com/Juandavi1/xk6-prompt",
+      "logo": "",
+      "author": {
+        "name": "Juan David Correa",
+        "url": "https://github.com/Juandavi1"
+      },
+      "official": false,
+      "categories": ["Arguments"]
+    },
+    {
       "name": "xk6-client-tracing",
       "description": "Client for load testing distributed tracing backends",
       "url": "https://github.com/grafana/xk6-client-tracing",
