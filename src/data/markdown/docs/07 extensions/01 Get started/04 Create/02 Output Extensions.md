@@ -214,7 +214,7 @@ Now we can use the extension with a test script.
 
 <Blockquote mod="note" title="">
 
-The `-out logger` argument tells k6 to use your custom output. The flag
+The `--out logger` argument tells k6 to use your custom output. The flag
 `--quiet --no-summary` configures k6 to show only custom output.
 
 </Blockquote>
