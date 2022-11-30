@@ -14,7 +14,7 @@ Currently, disruptors exist for [Pods](/javascript-api/xk6-disruptor/api/poddisr
 
 <Blockquote mod="note">
 
-xk6-disruptor is intended for systems running in kubernetes. Other platforms are not supported at this time.
+xk6-disruptor is intended for systems running in Kubernetes. Other platforms are not supported at this time.
 
 </Blockquote>
 
