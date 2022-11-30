@@ -1,23 +1,16 @@
 .wrapper {
-  position: absolute;
-  width: 100%;
-  top: 85px;
-
-  @include lg-down {
-    top: 135px;
-  }
+  margin: 140px 0 -145px 0;
 
   @include sm-down {
     display: flex;
     align-items: center;
-    top: 160px;
+    margin: 217px 0 -217px 0;
   }
 }
 
 .inner {
   display: flex;
   align-items: center;
-  width: 100%;
   background: $color-warning;
   padding-top: 10px;
   padding-bottom: 10px;
