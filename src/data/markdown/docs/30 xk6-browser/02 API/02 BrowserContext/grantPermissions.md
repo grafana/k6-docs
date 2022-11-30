@@ -1,6 +1,7 @@
 ---
 title: 'grantPermissions(permissions[, options])'
 excerpt: 'Grants specified permissions to the BrowserContext.'
+slug: '/javascript-api/xk6-browser/api/browsercontext/grantpermissions'
 ---
 
 Grants specified permissions to the `BrowserContext`. Only grants corresponding permissions to the given origin if specified.

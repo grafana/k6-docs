@@ -12,6 +12,7 @@ export default {
   'javascript-api': {
     data: {
       title: 'k6 JavaScript API',
+      slug: '/javascript-api/',
       description:
         'This page provides the documentation of the k6 JavaScript API.',
     },
