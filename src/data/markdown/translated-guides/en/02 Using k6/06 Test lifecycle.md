@@ -176,7 +176,7 @@ $ k6 run --no-setup --no-teardown ...
 
 </CodeGroup>
 
-### Use data from setup in default and init
+### Use data from setup in default and teardown
 
 Again, let's have a look at the basic structure of a k6 test:
 
