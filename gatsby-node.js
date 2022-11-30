@@ -611,18 +611,6 @@ function getDocPagesProps({
       // generate breadcrumbs
       let breadcrumbs = compose(buildBreadcrumbs, dedupePath, unorderify)(path);
 
-      const extendedRemarkNode = {
-        ...remarkNode,
-        frontmatter: {
-          ...frontmatter,
-          slug,
-          // injection of a link to an article in git repo
-          fileOrigin: encodeURI(
-            `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
-          ),
-        },
-      };
-
       const docSection = compose(getDocSection, unorderify)(strippedDirectory);
 
       let sidebarTree = getSidebar(docSection);
@@ -753,6 +741,18 @@ function getDocPagesProps({
       ) {
         hideBreadcrumbs = true;
       }
+
+      const extendedRemarkNode = {
+        ...remarkNode,
+        frontmatter: {
+          ...frontmatter,
+          slug,
+          // injection of a link to an article in git repo
+          fileOrigin: encodeURI(
+            `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
+          ),
+        },
+      };
 
       return {
         path: stripJSAPISlugParamsAndAddToRedirects(slug, title),
