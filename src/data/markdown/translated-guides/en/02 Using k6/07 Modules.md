@@ -69,28 +69,33 @@ These libraries can either be downloaded and included with the test project or l
 
 ## Bundling node modules
 
-> #### ⚠️ Limited compatibility
->
-> k6 is not NodeJS, nor is it a browser. Packages that rely on APIs provided by NodeJS, for
-> instance the `os` and `fs` modules, will not work in k6. The same goes for browser-specific
-> APIs like the `window` object.
+<Blockquote mod="attention" title="">
+
+k6 is not NodeJS, nor is it a browser. Packages that rely on APIs provided by NodeJS, for
+instance the `os` and `fs` modules, will not work in k6. The same goes for browser-specific
+APIs like the `window` object.
+
+</Blockquote>
 
 The steps of this tutorial are as follows:
 
-- [Setting up the bundler](#setting-up-the-bundler)
-  - [Installing packages](#installing-packages)
-  - [Configuring Webpack](#configuring-webpack)
-  - [Adding a bundle command](#adding-a-bundle-command)
-- [Running the bundling](#running-the-bundling)
-- [Running the tests](#running-the-tests)
+1. [Setting up the bundler](#setting-up-the-bundler)
+    1. [Installing packages](#installing-packages)
+    1. [Configuring Webpack](#configuring-webpack)
+    1. [Adding a bundle command](#adding-a-bundle-command)
+2. [Running the bundling](#running-the-bundling)
+3. [Running the tests](#running-the-tests)
 
-> ### Using the k6-es6 starter
->
-> A ready-to-use Webpack and Babel starter is available [on GitHub](https://github.com/k6io/k6-es6).
+
+<Blockquote mod="note" title="k6-es6 starter">
+
+A [ready-to-use Webpack and Babel starter](https://github.com/k6io/k6-es6) is avaialble in a repository.
+
+</Blockquote>
 
 In a JavaScript project running NodeJS, modules are imported using either `import` or `require()`,
-using the node module resolution algorithm. This means that the developer can import modules
-by name, without providing the full filesystem path to the module. For instance:
+using the node module resolution algorithm.
+This means that the developer can import modules by name, without providing the full filesystem path to the module. For instance:
 
 ```javascript
 import { ClassInAModule } from 'cool-module';
