@@ -73,7 +73,7 @@ If you are familiar with k6, the result is the same as using [check](/javascript
 
 ## Plugins
 
-It's possible to extend the default functionality with [Chai plugins](https://www.chaijs.com/plugins/).  Follow the build instructions on the [project repository](https://github.com/grafana/k6-jslib-k6chaijs).
+It's possible to extend the default functionality with [Chai plugins](https://www.chaijs.com/plugins/).  To use a plugin or build a Chai version with plugins, follow the instructions in this [example](https://community.k6.io/t/how-to-build-plugins-for-chaijs/5080/3).
 
 ## Read more
 
