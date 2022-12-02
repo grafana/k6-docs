@@ -47,6 +47,17 @@ The full list of available options that can be configured and passed to the exte
 | `K6_PROMETHEUS_PUSH_INTERVAL`            | Interval of the metrics' aggregation and upload to the endpoint. The default value is `5s`. |
 | `K6_PROMETHEUS_INSECURE_SKIP_TLS_VERIFY` | Boolean option whether to skip TLS verification on the endpoint. The default value is `true`. |
 
+## Grafana Dashboards
+
+The extension repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards to: 
+- list test runs
+- visualize the results of a test run
+
+
+![Prometheus list test runs](./images/Prometheus/prometheus-dashboard-test-runs.png)
+
+![Prometheus k6 results](./images/Prometheus/prometheus-dashboard-test-result.png)
+
 ## Read more
 
 - [k6 metrics in Prometheus](https://k6.io/blog/k6-loves-prometheus/#the-mechanics-behind-metrics-crunching)

@@ -43,6 +43,7 @@ The extension repository includes a [docker-compose setup](https://github.com/gr
 
 
 ![TimescaleDB list test runs](./images/TimescaleDB/dashboard-test-runs.png)
+
 ![TimescaleDB k6 results](./images/TimescaleDB/dashboard-test-result.png)
 
 ## Read more
