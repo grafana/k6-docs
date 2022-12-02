@@ -95,6 +95,8 @@ This function defines the entry point for your VUs.
 <CodeGroup labels={[]}>
 
 ```javascript
+// init
+
 export default function () {
   // vu code: do things here...
 }
