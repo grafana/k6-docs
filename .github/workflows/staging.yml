@@ -133,13 +133,6 @@ jobs:
           linksToSkip: >-
             https://linkedin.com,
             googleapis.com,
-            staging.k6.io/docs/xk6-browser,
-            staging.k6.io/docs/xk6-disruptor,
-            staging.k6.io/docs/using-k6/k6-options/options-reference/,
-            https://staging.k6.io/docs/using-k6/k6-options/how-to-use-options/,
-            https://staging.k6.io/docs/cloud/creating-and-running-a-test/cloud-execution-reference,
-            https://staging.k6.io/docs/cloud/creating-and-running-a-test/run-tests,
             https://www.linkedin.com/company/k6io,
-            staging.k6.io/docs/get-started/k6-resources/
           verbosity: "ERROR"
           markdown: false
