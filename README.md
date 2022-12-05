@@ -9,7 +9,7 @@ This repo contains the source code of the [k6 documentation](https://k6.io/docs/
 Some key facts:
 - Issues and contributions are **always welcome**!
 - The docs are written in Markdown, built with Gatsby, and linted with Prettier and Vale.
-- The [Contributor's guide](./contributors-guide) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
+- The [Contributor's guide](./CONTRIBUTING) has meta-documentation about building locally, using special components and styling, deploying, troubleshooting, and more.
 - We have a [Code of conduct](https://github.com/grafana/k6-docs/blob/main/CODE_OF_CONDUCT.md).
 
 ## Contributing
@@ -24,14 +24,14 @@ Markdown files for the documentation are located in [`src/data/markdown/docs`](s
 For small changes and spelling fixes, the GitHub UI is most convenient. 
 For larger contributions, consider running the project locally to see how the changes look like before making a pull request.
 You can build locally with Docker, as described in the following section,
-or you can use node, as described in the [Contributor's Guide](./contributors-guide)
+or you can use node, as described in the [Contributor's Guide](./CONTRIBUTING)
  
 The following docs cover the different stages of the writing workflow:
 
-- [Build locally](./contributors-guide#build-locally). For any large changes, being able to view how the site looks live hugely improves writer comfort and doc quality. To build locally, you'll need node and a node version manager.
-- [Contributor's reference](./contributors-guide/gatsby-reference.md). The syntax and structure of the page paths, custom style components, program redirects, and so on.
-- [Troubleshooting](./contributors-guide/troubleshooting.md). Unfortunately, things can go wrong, and Gatsby can be tough on errors. Fortunately, the inscrutable Gatsby errors usually share the same few fixes.
-- [Preview and deploy](./contributors-guide#deploy). Each PR has a preview. The main branch has two previews, staging (which deploys on merges) and prod (which deploys with version upgrades).
+- [Build locally](./CONTRIBUTING#build-locally). For any large changes, being able to view how the site looks live hugely improves writer comfort and doc quality. To build locally, you'll need node and a node version manager.
+- [Contributor's reference](./CONTRIBUTING/gatsby-reference.md). The syntax and structure of the page paths, custom style components, program redirects, and so on.
+- [Troubleshooting](./CONTRIBUTING/troubleshooting.md). Unfortunately, things can go wrong, and Gatsby can be tough on errors. Fortunately, the inscrutable Gatsby errors usually share the same few fixes.
+- [Preview and deploy](./CONTRIBUTING#deploy). Each PR has a preview. The main branch has two previews, staging (which deploys on merges) and prod (which deploys with version upgrades).
 
   Only people with qualified permissions can deploy.
 
