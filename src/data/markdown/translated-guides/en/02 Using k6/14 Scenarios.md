@@ -131,7 +131,7 @@ per_vu_scenario      ✓ [======================================] 10 VUs  00m05.
 
 The full output includes the summary metrics, like any default end-of-test summary:
 
-<Collapsible title="full example-scenario.js output" isOpen="" tag="">
+<Collapsible title="full scenario-example.js output" isOpen="" tag="">
 
 <CodeGroup>
 
