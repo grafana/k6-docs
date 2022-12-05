@@ -296,6 +296,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
     if (pageVersion && customSlug) {
       customSlug = getVersionedCustomSlug(customSlug, pageVersion);
     }
+
     sidebarTreeBuilder.addNode(
       unorderify(stripDirectoryPath(relativeDirectory, type)),
       unorderify(name),
@@ -742,11 +743,13 @@ function getDocPagesProps({
         hideBreadcrumbs = true;
       }
 
+      const pageSlug = stripJSAPISlugParamsAndAddToRedirects(slug, title);
+
       const extendedRemarkNode = {
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: pageSlug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -755,7 +758,7 @@ function getDocPagesProps({
       };
 
       return {
-        path: stripJSAPISlugParamsAndAddToRedirects(slug, title),
+        path: pageSlug,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName,
@@ -860,7 +863,7 @@ function getGuidesPagesProps({
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: pageSlug,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -965,11 +968,16 @@ function getJsAPIVersionedPagesProps({
       const sidebarTree =
         getJavascriptAPISidebar(pageVersion).children['javascript api'];
 
+      const pagePath = stripJSAPISlugParamsAndAddToRedirects(
+        dotifyVersion(pageSlug) || '/',
+        title,
+      );
+
       const extendedRemarkNode = {
         ...remarkNode,
         frontmatter: {
           ...frontmatter,
-          slug,
+          slug: pagePath,
           // injection of a link to an article in git repo
           fileOrigin: encodeURI(
             `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
@@ -1002,10 +1010,7 @@ function getJsAPIVersionedPagesProps({
       );
 
       return {
-        path: stripJSAPISlugParamsAndAddToRedirects(
-          dotifyVersion(pageSlug) || '/',
-          title,
-        ),
+        path: pagePath,
         component: Path.resolve('./src/templates/doc-page.js'),
         context: {
           sectionName: 'Javascript API',
