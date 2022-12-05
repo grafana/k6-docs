@@ -111,7 +111,7 @@ then k6 reports the scenarios as follows:
 
 ```bash
   execution: local
-     script: example-scenario.js
+     script: scenario-example.js
      output: -
 
   scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
