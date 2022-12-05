@@ -12,7 +12,7 @@ Benefits of using scenarios include:
   and each one can independently execute a different JavaScript function.
 - **Simulate more realistic traffic.**
   Every scenario can use a distinct VU and iteration scheduling pattern,
-  powered by a purpose-built [executor](#executors).
+  powered by a purpose-built [executor](#scenario-executors).
 - **Parallel or sequential workloads.** Scenarios are independent from each other and run in parallel, though they can be made to appear sequential by setting the `startTime` property of each carefully.
 - **Granular results analysis.** Different environment variables and metric tags can be set per scenario.
 
