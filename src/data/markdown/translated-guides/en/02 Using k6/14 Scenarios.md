@@ -143,7 +143,7 @@ The full output includes the summary metrics, like any default end-of-test summa
   / __________ \  |__| \__\ \_____/ .io
 
   execution: local
-     script: example-scenario.js
+     script: scenario-example.js
      output: -
 
   scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
