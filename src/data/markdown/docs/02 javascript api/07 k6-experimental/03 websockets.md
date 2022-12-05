@@ -5,22 +5,40 @@ excerpt: "k6 websockets experimental API"
 
 <ExperimentalBlockquote />
 
-This experimental API implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+This experimental API implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional flavour of the k6 specific (cookies, tags, headers and so on). 
 
-With some caveats:
+It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository.
 
-- The [binaryType](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default ArrayBuffer and setting it panics as k6 does not support Blob.
+<!-- vale off -->
+| Class/Method | Description |
+| ------------ | ----------- |
+| [Params](/javascript-api/k6-experimental/websockets/params/)  | Used for setting various WebSocket connection parameters such as headers, cookie jar, compression, etc. |
+| [WebSocket(url, protocols, params)](/javascript-api/k6-experimental/websockets/websocket) | Constructs a new WebSocket connection. |
+| [WebSocket.close()](/javascript-api/k6-experimental/websockets/websocket/websocket-close) | Close the WebSocket connection. |
+| [WebSocket.ping()](/javascript-api/k6-experimental/websockets/websocket/websocket-ping) | Send a ping. |
+| [WebSocket.send(data)](/javascript-api/k6-experimental/websockets/websocket/websocket-send) | Send string data. |
+| [WebSocket.addEventListener(event, callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event. |
+| [WebSocket.onmessage(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | Set up an event listener on the connection for `message` event |
+| [WebSocket.onerror(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | Set up an event listener on the connection for `error` event |
+| [WebSocket.onopen(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onopen) | Set up an event listener on the connection for `open` connection event |
+| [WebSocket.onclose(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onclose) | Set up an event listener on the connection for `close` connection event |
+| [WebSocket.onping(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onping) | Set up an event listener on the connection for `ping` event |
+| [WebSocket.onpong(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onpong) | Set up an event listener on the connection for `pong` event |
+<!-- vale on -->
 
+A WebSocket instance also has the following properties:
 
-
-| Class                                       | Description                                                                                    |
-| :------------------------------------------ | :--------------------------------------------------------------------------------------------- |
-| [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)     | Constructs a new WebSocket connection |
+| Class/Property | Description |
+| -------------- | ----------- |
+| WebSocket.readyState | The current state of the connection. Could be one of [the four states](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState). |
+| WebSocket.url | The URL of the connection as resolved by the constructor. |
+| WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to send() but not yet transmitted to the network. |
+| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `ArrayBuffer` and setting it panics as k6 does not support Blob. |
 
 ## Example
 
 This example shows:
-- How a single VU can run multiple WebSockets connections asynchronously
+- How a single VU can run multiple WebSockets connections asynchronously.
 - How to use the timeout and interval functions to stop the connections after some period.
 
 <CodeGroup labels={["example-websocket.js"]} lineNumbers={[]} showCopyButton={[true]}>
