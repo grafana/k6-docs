@@ -104,7 +104,7 @@ export default function () {
 </CodeGroup>
 
 If you run a script with scenarios, k6 output includes high-level information about each one.
-For example, if you run the preceding script, `k6 run example-scenario.js`,
+For example, if you run the preceding script, `k6 run scenario-example.js`,
 then k6 reports the scenarios as follows:
 
 <CodeGroup labels={["scenario example output"]} lineNumbers={[false]}>
