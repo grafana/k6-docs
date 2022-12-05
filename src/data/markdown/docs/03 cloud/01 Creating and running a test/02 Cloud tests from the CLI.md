@@ -15,10 +15,8 @@ Some reasons you might prefer to run tests from the CLI:
 
 | On this page...           | Read about...                                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [**Run tests**](./run-tests)            | How to use the k6 CLI to run tests on k6 Cloud servers, or how to stream the results of local tests to visualize on the cloud. |
-| [**Cloud execution reference**](./cloud-execution-reference) | Cloud specific options, load zones, tags, and environment variables                                                                        |
-
----
+| [**Run tests**](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/run-tests/)            | How to use the k6 CLI to run tests on k6 Cloud servers, or how to stream the results of local tests to visualize on the cloud. |
+| [**Cloud execution reference**](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference/) | Cloud specific options, load zones, tags, and environment variables                                                                        |
 
 ## Differences in local and cloud execution
 
