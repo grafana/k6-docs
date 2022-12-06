@@ -4,7 +4,11 @@ excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios
 ---
 
 Besides making it easier to model workloads, scenarios have a second benefit of adding separation of test logic.
-With scenarios, you can sequence scenarios, add per-scenario tags, and use environment variables to make thier execution more dynamic.
+As you can split scenarios across in different VU [lifecycle functions](/using-k6/test-lifecycle),
+you can use scenarios to:
+- Sequence workloads
+- Add per-scenario tags and environment variables
+- Make scenario-specific thresholds.
 
 ## Sequence multiple scenarios
 
@@ -116,8 +120,7 @@ You can disable scenario tags with the [`--system-tags` option](/using-k6/option
 
 ## Run multiple scenario functions, with different thresholds
 
-You can use scenario names to run multiple VU [lifecycle functions](/using-k6/test-lifecycle).
-What's more, you can set different thresholds for different scenario functions.
+You can also set different thresholds for different scenario functions.
 To do this:
 1. Set scenario-specific tags
 1. Set thresholds for these tags.
