@@ -3,11 +3,16 @@ title: 'Advanced Examples'
 excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios, different environment variables and tags per scenario.'
 ---
 
-## Using multiple scenarios
+Besides making it easier to model workloads, scenarios have a second benefit of adding separation of test logic.
+With scenarios, you can sequence scenarios, add per-scenario tags, and use environment variables to make thier execution more dynamic.
 
-This configuration will first execute a scenario where 50 VUs will try to run as many iterations
-as possible for 30 seconds. It will then transition to the next scenario, executing 100 iterations
-per VU for a maximum duration of 1 minute.
+## Sequence multiple scenarios
+
+To sequence scenarios, you can use `startTime` property (in combination with the options specific to your scenario executor).
+
+This configuration first executes a scenario where 50 VUs try to run as many iterations
+as possible for 30 seconds.
+It then runs the next scenario, which executes 100 iterations per VU for a maximum duration of 1 minute.
 
 Note the use of `startTime`, and different `exec` functions for each scenario.
 
@@ -49,9 +54,9 @@ export function news() {
 
 </CodeGroup>
 
-## Different environment variables and tags per scenario.
+## Use different environment variables and tags per scenario.
 
-In the previous example we set tags on individual HTTP request metrics, but this
+The previous example set tags on individual HTTP request metrics, but this
 can also be done per scenario, which would apply them to other
 [taggable](/using-k6/tags-and-groups#tags) objects as well.
 
@@ -98,14 +103,26 @@ export function news() {
 
 </CodeGroup>
 
-Note that by default a `scenario` tag with the name of the scenario as value is
-applied to all metrics in each scenario, which can be used in thresholds and
-simplifies filtering metrics when using [result outputs](/get-started/results-output).
-This can be disabled with the [`--system-tags` option](/using-k6/options#system-tags).
+<Blockquote mod="note" title="">
 
-## Multiple exec functions, tags, environment variables, and thresholds
+By default, a `scenario` tag with the name of the scenario as value is
+applied to all metrics in each scenario.
+You can combine these tags with thresholds,
+or use them to simplify metric filtering in [result outputs](/get-started/results-output).
 
-A test with 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
+You can disable scenario tags with the [`--system-tags` option](/using-k6/options#system-tags).
+
+</Blockquote>
+
+## Run multiple scenario functions, with different thresholds
+
+You can use scenario names to run multiple VU [lifecycle functions](/using-k6/test-lifecycle).
+What's more, you can set different thresholds for different scenario functions.
+To do this:
+1. Set scenario-specific tags
+1. Set thresholds for these tags.
+
+This test has 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
 
 <CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
 
