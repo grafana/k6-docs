@@ -114,7 +114,7 @@ applied to all metrics in each scenario.
 You can combine these tags with thresholds,
 or use them to simplify metric filtering in [result outputs](/get-started/results-output).
 
-You can disable scenario tags with the [`--system-tags` option](/using-k6/options#system-tags).
+To disable scenario tags, use the [`--system-tags` option](/using-k6/options#system-tags).
 
 </Blockquote>
 
