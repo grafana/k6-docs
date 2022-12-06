@@ -189,15 +189,28 @@ And you'll get a fine quote block:
 
 ![internal-images/Untitled%204.png](../internal-images/Untitled%204.png)
 
-**Variations**
+### The `<Blockquote>` component
 
-It is possible to adjust your admonition theme using custom `Blockquote` wrapper. This wrapper accepts the following props:
+It is also possible to adjust your admonition theme using custom `Blockquote` wrapper. This wrapper accepts the following props:
 
 - `mod`, one of [`note`, `warning`, `attention`, `default`]. Optional, default value is `default`. Passing any non-default value will display corresponding kicker with an icon.
 - `title`. Optional. If passed, will replace default text in the kicker. Title is getting wrapped with `h4` tag and beas `id` attribute to be able to be anchored to. ⚠️ **Make sure title is unique across the page**
 
+```html
+<Blockquote mod="Attention" title="An attention title">
+
+Here's what it looks like.
+
+</Blockquote>   
+```
+
+
+![image](https://user-images.githubusercontent.com/47385188/205881722-3f407edf-1b55-486d-9c0b-e01ce18e3fbe.png)
+
+
+
 <details>
-<summary>Examples</summary>
+<summary>More examples</summary>
 
 ![](../internal-images/blockquote-set-1.jpg)
 
