@@ -331,7 +331,7 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 ## Things to keep in mind
 
 - The code in the `default` function (or another function specified by
-  [`exec`](/using-k6/scenarios/#common-options)) will be executed many
+  [`exec`](/using-k6/scenarios/#options)) will be executed many
   times during a test run and possibly in parallel by thousands of VUs.
   Any operation of your extension should therefore be performant
   and [thread-safe](https://en.wikipedia.org/wiki/Thread_safety).

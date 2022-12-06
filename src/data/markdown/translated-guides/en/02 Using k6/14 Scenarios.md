@@ -4,22 +4,24 @@ excerpt: 'Scenarios allow us to make in-depth configurations to how VUs and iter
 hideFromSidebar: false
 ---
 
-Scenarios make in-depth configurations to how VUs and iterations are scheduled. This makes it possible to model diverse traffic patterns in load tests. Benefits of using scenarios include:
+Scenarios configure how VUs and iteration schedules in granular detail.
+With scenarios, you can model diverse _workloads_, or traffic patterns in load tests.
 
-- Multiple scenarios can be declared in the same script, and each one can
-  independently execute a different JavaScript function, which makes organizing tests easier
-  and more flexible.
-- Every scenario can use a distinct VU and iteration scheduling pattern,
-  powered by a purpose-built [executor](#executors). This enables modeling
-  of advanced execution patterns which can better simulate real-world traffic.
-- Scenarios are independent from each other and run in parallel, though they can be made to appear sequential by setting the `startTime` property of each carefully.
-- Different environment variables and metric tags can be set per scenario.
+Benefits of using scenarios include:
+- **Easier, more flexible test organization.** You can declare multiple scenarios in the same script,
+  and each one can independently execute a different JavaScript function.
+- **Simulate more realistic traffic.**
+  Every scenario can use a distinct VU and iteration scheduling pattern,
+  powered by a purpose-built [executor](#scenario-executors).
+- **Parallel or sequential workloads.** Scenarios are independent from each other and run in parallel, though they can be made to appear sequential by setting the `startTime` property of each carefully.
+- **Granular results analysis.** Different environment variables and metric tags can be set per scenario.
 
-## Configuration
+## Configure scenarios
 
-Execution scenarios are primarily configured via the `scenarios` key of the exported `options` object
-in your test scripts. The key for each scenario can be an arbitrary, but unique, scenario name. It will
-appear in the result summary, tags, etc.
+To configure scenarios, use the `scenarios` key in the `options` object.
+You can give the scenario any name, as long as each scenario name in the script is unique.
+
+The scenario name appears in the result summary, tags, and so on.
 
 <CodeGroup labels={[]} lineNumbers={[true]}>
 
@@ -50,41 +52,35 @@ export const options = {
 
 </CodeGroup>
 
-## Executors
+## Scenario executors
 
-[Executors](/using-k6/scenarios/executors) are the workhorses of the k6 execution engine. Each one schedules VUs and iterations differently, and you'll choose one depending on the type
-of traffic you want to model to test your services.
+For each k6 scenario, the VU workload is scheduled by an _executor_.
+For example, executors configure:
+- Whether VU traffic stays constant or changes
+- Whether to model traffic by iteration number or by VU arrival rate.
 
-Possible values for `executor` are the executor name separated by hyphens.
+Your scenario object must define the `executor` property with one of the predefined executors names.
+Along with the generic scenario options, each executor object has additional options specific to its workload.
+For the list of the executors, refer to the [Executor guide](/using-k6/scenarios/executors/).
 
-| Name                                                                         | Value                   | Description                                                                                                                                        |
-| ---------------------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Shared iterations](/using-k6/scenarios/executors/shared-iterations)         | `shared-iterations`     | A fixed amount of iterations are<br/> "shared" between a number of VUs.                                                                            |
-| [Per VU iterations](/using-k6/scenarios/executors/per-vu-iterations)         | `per-vu-iterations`     | Each VU executes an exact number of iterations.                                                                                                    |
-| [Constant VUs](/using-k6/scenarios/executors/constant-vus)                   | `constant-vus`          | A fixed number of VUs execute as many<br/> iterations as possible for a specified amount of time.                                                  |
-| [Ramping VUs](/using-k6/scenarios/executors/ramping-vus)                     | `ramping-vus`           | A variable number of VUs execute as many<br/> iterations as possible for a specified amount of time.                                               |
-| [Constant Arrival Rate](/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | A fixed number of iterations are executed<br/> in a specified period of time.                                                                      |
-| [Ramping Arrival Rate](/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | A variable number of iterations are <br/> executed in a specified period of time.                                                                  |
-| [Externally Controlled](/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Control and scale execution at runtime<br/> via [k6's REST API](/misc/k6-rest-api) or the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
-
-## Common options
+## Scenario options {#options}
 
 | Option         | Type   | Description                                                                                                                                    | Default     |
 | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| executor<sup>(required)</sup> ️  | string | Unique executor name. See the list of possible values in the [executors](#executors) section.                                                  | -           |
+| executor<sup>(required)</sup> ️  | string | Unique executor name. See the list of possible values in the [executors](/using-k6/scenarios/executors/) section.                                                  | -           |
 | startTime    | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                  | `"0s"`      |
 | gracefulStop | string | Time to wait for iterations to finish executing before stopping them forcefully. Read more about gracefully stopping a test run [here](/using-k6/scenarios/graceful-stop/). | `"30s"`     |
 | exec         | string | Name of exported JS function to execute.                                                                                                       | `"default"` |
 | env          | object | Environment variables specific to this scenario.                                                                                               | `{}`        |
 | tags         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |
 
-## Example
+## Scenario example
 
 The following script defines two minimal scenarios:
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={["scenario-example.js"]} lineNumbers={[true]}>
 
-```bash
+```javascript
 import http from 'k6/http';
 
 export const options = {
@@ -101,52 +97,83 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://google.com/');
+  http.get('https://test.k6.io/');
 }
 ```
 
 </CodeGroup>
 
-Running the above script with `k6 run script.js`, additional information is added to the output as follows:
+If you run a script with scenarios, k6 output includes high-level information about each one.
+For example, if you run the preceding script, `k6 run scenario-example.js`,
+then k6 reports the scenarios as follows:
 
-<CodeGroup labels={[]} lineNumbers={[true]}>
+<CodeGroup labels={["scenario example output"]} lineNumbers={[false]}>
 
 ```bash
-          /\      |‾‾| /‾‾/   /‾‾/
-     /\  /  \     |  |/  /   /  /
-    /  \/    \    |     (   /   ‾‾\
-   /          \   |  |\  \ |  (‾)  |
-  / __________ \  |__| \__\ \_____/ .io
-
   execution: local
-     script: .\scenario_example.js
+     script: scenario-example.js
      output: -
 
-  scenarios: (100.00%) 2 scenarios, 2 max VUs, 10m35s max duration (incl. graceful stop):
-           * example_scenario: 1 iterations shared among 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
-           * another_scenario: 1 iterations shared among 1 VUs (maxDuration: 10m0s, startTime: 5s, gracefulStop: 30s)
+  scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
+           * shared_iter_scenario: 100 iterations shared among 20 VUs
+             (maxDuration: 10s, gracefulStop: 30s)
+           * per_vu_scenario: 20 iterations for each of 10 VUs
+             (maxDuration: 10m0s, startTime: 10s, gracefulStop: 30s)
 
 
-running (00m05.2s), 0/2 VUs, 2 complete and 0 interrupted iterations
-example_scenario ✓ [======================================] 1 VUs  00m00.2s/10m0s  1/1 shared iters
-another_scenario ✓ [======================================] 1 VUs  00m00.2s/10m0s  1/1 shared iters
+running (00m15.1s), 00/30 VUs, 300 complete and 0 interrupted iterations
+shared_iter_scenario ✓ [======================================] 20 VUs  03.0s/10s       100/100 shared iters
+per_vu_scenario      ✓ [======================================] 10 VUs  00m05.1s/10m0s  200/200 iters, 20 per VU
 
-     data_received..................: 54 kB  11 kB/s
-     data_sent......................: 2.5 kB 486 B/s
-     http_req_blocked...............: avg=53.45ms  min=46.56ms  med=48.42ms  max=70.4ms   p(90)=64.25ms  p(95)=67.32ms
-     http_req_connecting............: avg=19.95ms  min=18.62ms  med=19.93ms  max=21.3ms   p(90)=21.26ms  p(95)=21.28ms
-     http_req_duration..............: avg=46.16ms  min=25.82ms  med=45.6ms   max=67.6ms   p(90)=65.63ms  p(95)=66.61ms
-       { expected_response:true }...: avg=46.16ms  min=25.82ms  med=45.6ms   max=67.6ms   p(90)=65.63ms  p(95)=66.61ms
-     http_req_failed................: 0.00%  ✓ 0        ✗ 4
-     http_req_receiving.............: avg=3.56ms   min=305.8µs  med=3.05ms   max=7.84ms   p(90)=7.01ms   p(95)=7.43ms
-     http_req_sending...............: avg=132.85µs min=0s       med=0s       max=531.4µs  p(90)=371.98µs p(95)=451.68µs
-     http_req_tls_handshaking.......: avg=32.68ms  min=27.63ms  med=27.99ms  max=47.09ms  p(90)=41.43ms  p(95)=44.26ms
-     http_req_waiting...............: avg=42.46ms  min=24.78ms  med=42.64ms  max=59.75ms  p(90)=58.45ms  p(95)=59.1ms
-     http_reqs......................: 4      0.771306/s
-     iteration_duration.............: avg=199.23ms min=182.79ms med=199.23ms max=215.67ms p(90)=212.38ms p(95)=214.03ms
-     iterations.....................: 2      0.385653/s
-     vus............................: 0      min=0      max=0
-     vus_max........................: 2      min=2      max=2
 ```
 
 </CodeGroup>
+
+The full output includes the summary metrics, like any default end-of-test summary:
+
+<Collapsible title="full scenario-example.js output" isOpen="" tag="">
+
+<CodeGroup>
+
+```bash
+          /\      |‾‾| /‾‾/   /‾‾/   
+     /\  /  \     |  |/  /   /  /    
+    /  \/    \    |     (   /   ‾‾\  
+   /          \   |  |\  \ |  (‾)  | 
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: scenario-example.js
+     output: -
+
+  scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
+           * shared_iter_scenario: 100 iterations shared among 20 VUs (maxDuration: 10s, gracefulStop: 30s)
+           * per_vu_scenario: 20 iterations for each of 10 VUs (maxDuration: 10m0s, startTime: 10s, gracefulStop: 30s)
+
+
+running (00m15.1s), 00/30 VUs, 300 complete and 0 interrupted iterations
+shared_iter_scenario ✓ [======================================] 20 VUs  03.0s/10s       100/100 shared iters
+per_vu_scenario      ✓ [======================================] 10 VUs  00m05.1s/10m0s  200/200 iters, 20 per VU
+
+     data_received..................: 3.6 MB 240 kB/s
+     data_sent......................: 40 kB  2.6 kB/s
+     http_req_blocked...............: avg=54.48ms  min=4.1µs    med=8.23µs   max=747.12ms p(90)=47.99ms  p(95)=567.6ms 
+     http_req_connecting............: avg=27.62ms  min=0s       med=0s       max=281.12ms p(90)=26.86ms  p(95)=279.32ms
+     http_req_duration..............: avg=210.21ms min=172.25ms med=204.01ms max=1.87s    p(90)=206.18ms p(95)=306.99ms
+       { expected_response:true }...: avg=210.21ms min=172.25ms med=204.01ms max=1.87s    p(90)=206.18ms p(95)=306.99ms
+     http_req_failed................: 0.00%  ✓ 0         ✗ 300 
+     http_req_receiving.............: avg=1.77ms   min=82.11µs  med=149.11µs max=186.39ms p(90)=233.56µs p(95)=304.91µs
+     http_req_sending...............: avg=42.26µs  min=10.68µs  med=37.88µs  max=220.62µs p(90)=47.68µs  p(95)=70.59µs 
+     http_req_tls_handshaking.......: avg=23.02ms  min=0s       med=0s       max=410.87ms p(90)=20.91ms  p(95)=230.64ms
+     http_req_waiting...............: avg=208.39ms min=172.02ms med=203.78ms max=1.69s    p(90)=205.97ms p(95)=233.38ms
+     http_reqs......................: 300    19.886852/s
+     iteration_duration.............: avg=264.92ms min=172.48ms med=204.54ms max=1.87s    p(90)=680.75ms p(95)=751.6ms 
+     iterations.....................: 300    19.886852/s
+     vus............................: 1      min=0       max=20
+     vus_max........................: 30     min=30      max=30
+
+```
+
+</CodeGroup>
+
+</Collapsible>
