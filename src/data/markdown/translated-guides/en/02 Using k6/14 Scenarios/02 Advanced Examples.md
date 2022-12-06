@@ -109,7 +109,7 @@ export function news() {
 
 <Blockquote mod="note" title="">
 
-By default, a `scenario` tag with the name of the scenario as value is
+By default, a `scenario` tag, whose value is the scenario name, is
 applied to all metrics in each scenario.
 You can combine these tags with thresholds,
 or use them to simplify metric filtering in [result outputs](/get-started/results-output).
