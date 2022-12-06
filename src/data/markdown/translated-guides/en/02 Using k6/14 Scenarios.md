@@ -80,7 +80,7 @@ The following script defines two minimal scenarios:
 
 <CodeGroup labels={["scenario-example.js"]} lineNumbers={[true]}>
 
-```bash
+```javascript
 import http from 'k6/http';
 
 export const options = {
