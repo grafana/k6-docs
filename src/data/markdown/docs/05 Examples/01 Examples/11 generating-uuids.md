@@ -3,17 +3,31 @@ title: 'Generating UUIDs'
 excerpt: 'Scripting example on how to generate UUIDs in your load test.'
 ---
 
-Scripting example on how to generate UUIDs in your load test.
+If you want to make a version 4 UUID,
+you can use the [`uuidv4` function](/javascript-api/jslib/utils/uuidv4/) from the [k6 JS lib repository](https://jslib.k6.io/).
 
-Note that if you don't need v1 UUIDs, consider using the `uuidv4` function from
-the [k6 JS lib repository](https://jslib.k6.io/).
+<CodeGroup labels={[""]} lineNumbers={[]} showCopyButton={[true]}>
 
-## Generate v1 and v4 UUIDs
+```javascript
+import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
-Universally unique identifiers are handy in many scenarios, as k6 doesn't have built-in support
-for UUIDs, we'll have to resort to using a Node.js library called [uuid](https://www.npmjs.com/package/uuid)
+export default function () {
+  const randomUUID = uuidv4();
+  console.log(randomUUID); // 35acae14-f7cb-468a-9866-1fc45713149a
+}
+```
+
+</CodeGroup>
+
+If you really need other UUID versions, you must rely on an external library.
+
+## Generate v1 UUIDs
+
+As k6 doesn't have built-in support
+for version 1 UUID, you'll have to use a third-party library.
+
+This example uses a Node.js library called [uuid](https://www.npmjs.com/package/uuid)
 and [Browserify](http://browserify.org/) (to make it work in k6).
-
 For this to work, we first need to go through a few required steps:
 
 1. Make sure you have the necessary prerequisites installed:
@@ -48,7 +62,7 @@ For this to work, we first need to go through a few required steps:
 
    </CodeGroup>
 
-Here's an example generating a v1 and v4 UUID:
+This example generates a v1 UUID:
 
 <CodeGroup labels={["generate-uuids.js"]} lineNumbers={[false]}>
 
@@ -59,10 +73,6 @@ export default function () {
   // Generate a UUID v1
   const uuid1 = uuid.v1();
   console.log(uuid1);
-
-  // Generate a UUID v4
-  const uuid4 = uuid.v4();
-  console.log(uuid4);
 }
 ```
 

@@ -8,9 +8,10 @@ Testers often use checks to validate that the system is responding with the expe
 For example, a check could validate that a POST request has a `response.status == 201`, or that the body is of a certain size.
 
 Checks are similar to what many testing frameworks call an _assert_, but **failed checks do not cause the test to abort or finish with a failed status**.
-Instead, k6 keeps track of the rate of failed checks as the test continues to run (each check creates a [rate metric](/using-k6/metrics)).
+Instead, k6 keeps track of the rate of failed checks as the test continues to run
 
-If you want to make a check abort or fail a test, you can combine it with [Thresholds](/using-k6/thresholds).
+Each check creates a [rate metric](/using-k6/metrics).
+To make a check abort or fail a test, you can combine it with a [Threshold](/using-k6/thresholds).
 
 ## Check for HTTP response code
 

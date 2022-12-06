@@ -93,7 +93,7 @@ Load test
 : A test that assesses the performance of the system under test in terms of concurrent users or requests per second.<br/><br/>[Load Testing](/test-types/load-testing)
 
 Load zone
-: The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones)
+: The geographical instance from which a test runs.<br/><br/>[Private load zones](/cloud/creating-and-running-a-test/private-load-zones/), [Declare load zones from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference/)
 
 Lifecycle function
 : A function called in a specific sequence in the k6 runtime. The most important lifecycle function is the default function, which runs the VU code.<br/><br/>[Test lifecycle](/using-k6/test-life-cycle/)
