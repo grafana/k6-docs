@@ -3,8 +3,7 @@ title: 'WebSocket.onmessage(callback)'
 excerpt: 'Set up a callback function for message event WebSocket.'
 ---
 
-Set up a callback function for WebSocket connection `message` event.
-This way, you can set up the only handler for the `message` event.
+Set a callback function as a handler for a WebSocket connection `message` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

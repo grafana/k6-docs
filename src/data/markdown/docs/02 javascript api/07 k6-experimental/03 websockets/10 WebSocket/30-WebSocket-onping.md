@@ -3,8 +3,7 @@ title: 'WebSocket.onping(callback)'
 excerpt: 'Set up a callback function for WebSocket connection ping event.'
 ---
 
-Set up a callback function for a WebSocket connection `ping` event.
-This way, you can set up the only handler for the `ping` event.
+Set a callback function as a handler for a WebSocket connection `ping` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

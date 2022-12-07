@@ -3,8 +3,7 @@ title: 'WebSocket.onpong(callback)'
 excerpt: 'Set up a callback function for WebSocket connection pong event.'
 ---
 
-Set up a callback function for WebSocket connection `pong` event.
-This way, you can set up the only handler for the `pong` event.
+Set a callback function as a handler for a WebSocket connection `pong` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

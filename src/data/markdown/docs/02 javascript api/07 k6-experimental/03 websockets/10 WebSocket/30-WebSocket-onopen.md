@@ -3,8 +3,7 @@ title: 'WebSocket.onopen(callback)'
 excerpt: 'Set up a callback function for WebSocket connection open event.'
 ---
 
-Set up a callback function for WebSocket connection `open` event.
-This way, you can set up the only handler for the `open` event.
+Set a callback function as a handler for a WebSocket connection `open` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
