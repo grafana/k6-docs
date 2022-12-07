@@ -4,7 +4,7 @@ description: 'Used for setting various WebSocket request-specific parameters suc
 excerpt: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 ---
 
-_Params_ is an object used by the WebSocket constructor. _Params_ contains request-specific options like headers that should be inserted into the connection initialization request.
+`Params` is an object used by the WebSocket constructor. The `Params` object contains request-specific options, such as headers that should be inserted into the connection initialization request.
 
 | Name                  | Type   | Description |
 | --------------------- | ------ | ----------- |
@@ -15,7 +15,7 @@ _Params_ is an object used by the WebSocket constructor. _Params_ contains reque
 
 ### Example of custom metadata headers and tags
 
-_A k6 script that will make a WebSocket request with a custom header and tag results data with a specific tag_
+_A k6 script that makes a WebSocket request with a custom header and tags results data with a specific tag_
 
 <CodeGroup labels={["example-websocket-params.js"]} lineNumbers={[]} showCopyButton={[true]}>
 

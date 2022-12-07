@@ -26,7 +26,7 @@ The following events can close the connection:
 
 ### Example
 
-_A k6 script that will initiate WebSocket connection._
+_A k6 script that initiates a WebSocket connection._
 
 <CodeGroup labels={["example-websocket.js"]} lineNumbers={[]} showCopyButton={[true]}>
 

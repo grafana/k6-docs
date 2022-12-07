@@ -3,11 +3,11 @@ title: 'WebSocket.ping()'
 excerpt: 'Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.'
 ---
 
-Send a ping. Ping messages can be used to verify that the remote endpoint is responsive.
+Send a ping. You can use ping messages to verify that the remote endpoint is responsive.
 
 ### Example
 
-_A k6 script that will initiate WebSocket connection sends a ping and closes it using `onopen` handler. We also should see `connection is alive` since `pong` event should be automatically emitted._
+_A k6 script that initiates a WebSocket connection, sends a ping, and closes it using the `onopen` handler. The console should log `connection is alive`, since the recipient should automatically emit the `pong` event._
 
 <CodeGroup labels={["example-websocket-ping.js"]} lineNumbers={[]} showCopyButton={[true]}>
 

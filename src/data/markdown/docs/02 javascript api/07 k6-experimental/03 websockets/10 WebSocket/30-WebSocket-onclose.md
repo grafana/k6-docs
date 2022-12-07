@@ -3,7 +3,9 @@ title: 'WebSocket.onclose(callback)'
 excerpt: 'Set up a callback function for WebSocket connection close event.'
 ---
 
-Set up a callback function for WebSocket connection `close` event. That way you can set up the only handler for the `close` event. If you want to have simultaneously multiple event handlers, please use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+Set up a callback function for a WebSocket connection `close` event.
+With this, you can set up the only handler for the `close` event.
+For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
 | --------- | -------- | -------------------------------------------- |
@@ -11,7 +13,8 @@ Set up a callback function for WebSocket connection `close` event. That way you 
 
 ### Example
 
-_A k6 script that will initiate WebSocket connection sends a ping and closes it using `onopen` handler. We also should see `WebSocket connection closed` that will come from `onclose` handler._
+_A k6 script that initiates a WebSocket connection, sends a ping, and closes it using `onopen` handler.
+The console should also log `WebSocket connection closed` from the `onclose` handler._
 
 <CodeGroup labels={["example-websocket-onclose.js"]} lineNumbers={[]} showCopyButton={[true]}>
 

@@ -12,7 +12,7 @@ Close the WebSocket connection.
 
 ### Example
 
-_A k6 script that will initiate WebSocket connection and close it using `onopen` handler._
+_A k6 script that initiates a WebSocket connection and closes it using the `onopen` handler._
 
 <CodeGroup labels={["example-websocket-close.js"]} lineNumbers={[]} showCopyButton={[true]}>
 

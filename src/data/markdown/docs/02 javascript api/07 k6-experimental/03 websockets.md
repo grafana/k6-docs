@@ -32,8 +32,8 @@ A WebSocket instance also has the following properties:
 | -------------- | ----------- |
 | WebSocket.readyState | The current state of the connection. Could be one of [the four states](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState). |
 | WebSocket.url | The URL of the connection as resolved by the constructor. |
-| WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to send() but not yet transmitted to the network. |
-| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `ArrayBuffer` and setting it panics as k6 does not support Blob. |
+| WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network. |
+| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `ArrayBuffer`. Setting it panics, as k6 does not support Blob. |
 
 ## Example
 
