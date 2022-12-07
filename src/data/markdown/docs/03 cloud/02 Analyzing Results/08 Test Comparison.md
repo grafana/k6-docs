@@ -113,45 +113,51 @@ You can add extra charts, such as timing breakdowns for each HTTP request.
 ## Compare all runs for a test
 
 To compare runs for a test across time, use the *performance-trending chart*.
-The chart displayes test run metrics and uses colors to signal the status of a specific run.
+The chart displays test-run metrics, using colors to signal the status of a specific run.
 
-To view the performance-trending chart for multiple tests belonging to a same project, open the Project page:
+To view the performance-trending chart for multiple tests that belong to the same project, open the **Project** page:
 
 ![Project Performance Trending](./images/09-Performance-Trending/perf-trending-project.png)
 
-Additionally, in order to view the performance-trending chart for an individual test, open the test's page:
+Additionally, to view the performance-trending chart for an individual test, open the test's page:
 
 ![Test Performance Trending](./images/09-Performance-Trending/perf-trending-test.png)
 
-This last version of the chart shows more data points over time. For more information on an individual run, hover over any bar in the chart.
+This last chart shows more data points over time. For more information about an individual run, hover over any bar in the chart.
 
-The data displayed in the performance-trending chart is `p95` of the HTTP response time (`http_req_time`) for responses with a status code (so, for example, requests that timed out are not considered).
+By default, the data displayed in the performance-trending chart is the `p95` of the HTTP response time (`http_req_time`).
 
-We call this combination of metric plus aggregation function the _trending metric_ of the chart. k6 produces a single value for each test run using the trending metric, and then plots each value the chart.
-It is possible to customize the trending metric on a per-test basis, which allows displaying different information in the test's performance-trending chart.
+The chart displays a summary _trending metric_, an aggregated value for all metric data points in the test run.
+k6 produces a single value for each test run using the trending metric, and then plots each value the chart.
+You can customize the trending metric on a per-test basis.
 
-### Customizing the trending metric 
+### Customize the trending metric 
 
-To customize the trending metric used for a test, navigate to the Project page, and then click on the three dots at the top-right corner of the test's performance-trending chart. Then, select the "Trending metric" option:
+To customize the trending metric used for a test:
+
+1. Navigate to the Project page.
+2. Select the three dots at the top-right corner of the test's performance-trending chart.
+3. Select **Trending metric**.
 
 ![Customizing Trending Metric Step 1](./images/09-Performance-Trending/trending-metric-tutorial-1.png)
 
-This will bring up the "Customize Trending Metric" window:
+This brings up a window:
 
 ![Customizing Trending Metric Step 2](./images/09-Performance-Trending/trending-metric-tutorial-2.png)
 
-From here, you can select the metric to use in the performance-trending chart. You'll notice that both standard (created by all k6 test runs) and custom (user-defined) metrics are listed.
-For this example, we will select "CPU Usage", and then advance to the next step:
+From the window, you can select the metric to use in the performance-trending chart.
+Note that both standard (created by all k6 test runs) and custom (user-defined) metrics are listed.
+This example selects `CPU Usage`:
 
 ![Customizing Trending Metric Step 3](./images/09-Performance-Trending/trending-metric-tutorial-3.png)
 
-In this section, you can select:
+After you select a metric, you can select:
 - The aggregation function to apply to the metric (in this case, "Average" is selected).
 - A set of tags & tag values used to filter the metric's values (in this case, selecting values only from instances in the `amazon:us:ashburn` load zone).
 
-Note that you can reset the configuration to use the default trending metric by clicking on `Reset to default trending metric`. This is only possible after you have made modifications to the default configuration.
+To reset the configuration, use the default trending metric with **Reset to default trending metric**.
 
-Once the desired parameters have been selected, press "Save" to apply the changes. k6 will calculate the required values and then plot them in the performance-trending chart.
-For the example steps describe previously, the result will look like this:
+After you select the desired parameters, **Save** to apply the changes. k6 calculates the required values, then plots them in the performance-trending chart.
+In this example, the results look like this:
 
 ![Customizing Trending Metric Step 4](./images/09-Performance-Trending/trending-metric-tutorial-4.png)
