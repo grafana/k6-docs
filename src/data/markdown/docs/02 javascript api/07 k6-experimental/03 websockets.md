@@ -5,7 +5,7 @@ excerpt: "k6 websockets experimental API"
 
 <ExperimentalBlockquote />
 
-This experimental API implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional flavour of the k6 specific (cookies, tags, headers and so on). 
+This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on). 
 
 It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository.
 
