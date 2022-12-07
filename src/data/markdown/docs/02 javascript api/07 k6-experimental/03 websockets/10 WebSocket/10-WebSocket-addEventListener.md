@@ -17,7 +17,7 @@ Set up callback functions for various events on the WebSocket connection. You ca
 | ping       | Emitted when a ping is received from the server. The client will automatically send back a `pong`.                                                                                                 |
 | pong       | Emitted when a pong is received from the server.                                                                                                                                                   |
 | close      | Emitted when the connection is closed by the client [WebSocket.close()](/javascript-api/k6-experimental/websockets/websocket/websocket-close) or when the server sends the `close` event with code status 1000 (normal closure). |
-| error      | Emitted when an error occurs. Non-normal closure errors will be forwarded.                                                                                                                         |
+| error      | Emitted when an error occurs.                                                                                                                         |
 
 ### Example
 
