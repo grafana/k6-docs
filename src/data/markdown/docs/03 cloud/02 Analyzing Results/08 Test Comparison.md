@@ -110,7 +110,7 @@ You can add extra charts, such as timing breakdowns for each HTTP request.
 
 ![k6 Cloud Results: HTTP comparison](./images/07-Test-Comparison/http-comparison.png)
 
-## Compare all runs for a test
+## Explore test trends
 
 To compare runs for a test across time, use the *performance-trending chart*.
 The chart displays test-run metrics, using colors to signal the status of a specific run.
