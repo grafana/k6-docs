@@ -185,6 +185,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
     swaggerImg,
     azureTestImg,
     testRailImg,
+    testKubeImg,
     xrayImg,
   } = useStaticQuery(graphql`
     query stubImageQuery {
@@ -223,6 +224,17 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
       }
       steadybitImg: file(
         absolutePath: { regex: "/images/doc-integrations/steadybit/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      testKubeImg: file(
+        absolutePath: { regex: "/images/doc-integrations/testkube/" }
       ) {
         childImageSharp {
           gatsbyImageData(
@@ -472,7 +484,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                 {
                   image: azureTestImg,
                   title: 'Azure Test Plan',
-                  description: 'Load Testing with Azure DevOps and k6',
+                  description: 'K6 Load Testing with Azure DevOps',
                   url: 'https://medium.com/microsoftazure/load-testing-with-azure-devops-and-k6-839be039b68a',
                 },
                 {
@@ -482,10 +494,15 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                   url: 'https://dev.to/kwidera/introducing-testrail-in-you-k6-tests-eck',
                 },
                 {
+                  image: testKubeImg,
+                  title: 'Testkube',
+                  description: 'Load testing with Testkube',
+                  url: 'https://kubeshop.github.io/testkube/test-types/executor-k6',
+                },
+                {
                   image: xrayImg,
                   title: 'Xray',
-                  description:
-                    'Integrating with Xray. Validate test results in JIRA.',
+                  description: 'Xray - validate k6 test results in JIRA.',
                   url: 'https://docs.getxray.app/display/XRAYCLOUD/Performance+and+load+testing+with+k6',
                 },
               ]}

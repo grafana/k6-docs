@@ -1,3 +1,4 @@
+import classNames from 'classnames/bind';
 import { Heading } from 'components/shared/heading';
 import {
   ItemCard,
@@ -7,6 +8,8 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import styles from './external-links-dashboard.module.scss';
+
+const cx = classNames.bind(styles);
 
 export const ExternalLinksDashboard = ({
   dashboardTitle,
@@ -18,7 +21,11 @@ export const ExternalLinksDashboard = ({
       {dashboardTitle}
     </Heading>
     {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-    <ul className={styles.dashboard}>
+    <ul
+      className={`${styles.dashboard} ${cx(
+        `number-of-elements-${linksData.length}`,
+      )}`}
+    >
       {linksData.map(({ image, title, description, url }, i) => (
         <li key={`exb-${i}`}>
           <ItemCard as="a" href={url}>

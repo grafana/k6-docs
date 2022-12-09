@@ -20,6 +20,14 @@
   column-gap: 25px;
   row-gap: 25px;
 
+  &.number-of-elements-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.number-of-elements-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
   @include md-down {
     grid-template-columns: 1fr 1fr;
   }
