@@ -108,6 +108,12 @@ Default image syntax for markdown files
 
 Note, that path begins with `/`, not just `images/`.
 
+Every image with the contents of the title attribute, when this is not empty, turns into image with the caption
+
+```md
+![Alt of an image](../internal-images/insights-url-table-full.png "Title that will be used a caption")
+```
+
 Store images relative to a source `.md` file, and access them from `.md` files by using relative path. `image-sharp-plugin` will handle your image: compress, convert and lazy load.
 
 ### Example file structure
