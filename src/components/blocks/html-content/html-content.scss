@@ -1,4 +1,6 @@
-a.gatsby-resp-image-link {
+a.gatsby-resp-image-link,
+.gatsby-resp-image-figure {
+  margin: 0;
   border-bottom: none;
   outline: none;
   text-decoration: none;
@@ -14,6 +16,12 @@ a.gatsby-resp-image-link {
     top: 0;
     left: 0;
     color: transparent;
+  }
+  .gatsby-resp-image-figcaption {
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 20px;
+    color: $color-secondary;
   }
 }
 

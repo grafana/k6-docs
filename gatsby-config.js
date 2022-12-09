@@ -77,6 +77,7 @@ const plugins = [
             withWebp: true,
             disableBgImage: true,
             wrapperStyle: 'margin-left: 0;',
+            showCaptions: ['title'],
           },
         },
       ],
