@@ -19,7 +19,7 @@ When you [schedule a test](/cloud/manage/scheduled-tests) or add it to your cont
 you'll likely want to configure a notification for failed events, thus automating test execution and observation.
 
 
-![k6 Notifications](./images/Notifications/notification-type-selection.png)
+![k6 Notifications](./images/Notifications/notification-type-selection.png "Built-in notifications options in k6 Cloud")
 
 ## Add a Slack notification
 
