@@ -83,3 +83,25 @@
   line-gap-override: 0%;
   size-adjust: 96.31%;
 }
+
+@font-face {
+  font-family: 'Roboto Mono Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Courier New');
+  ascent-override: 104.79%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Roboto Mono Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Courier New');
+  ascent-override: 104.79%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
