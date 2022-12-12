@@ -90,7 +90,7 @@ export const options = {
       startTime: '0s'
     },
     another_scenario: {
-      executor: 'shared-iterations',
+      executor: 'per-vu-iterations',
       startTime: '5s'
     },
   },
