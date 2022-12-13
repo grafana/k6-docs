@@ -3,12 +3,14 @@ title: 'Advanced Examples'
 excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios, different environment variables and tags per scenario.'
 ---
 
-Besides making it easier to model workloads, scenarios have a second benefit of adding separation of test logic.
-As you can split scenarios across in different VU [lifecycle functions](/using-k6/test-lifecycle),
-you can use scenarios to:
+You can use multiple scenarios in one script, and these scenarios can be run in sequence or in parallel.
+So besides helping you model workloads, scenarios can also help you make more flexible and composable test logic.
+Some ways that you can use scenarios include the following:
 - Sequence workloads
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
+- Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle),
+
 
 ## Sequence multiple scenarios
 
@@ -60,8 +62,8 @@ export function news() {
 
 ## Use different environment variables and tags per scenario.
 
-The previous example set tags on individual HTTP request metrics, but this
-can also be done per scenario, which would apply them to other
+The previous example set tags on individual HTTP request metrics.
+But, you can also set tags per scenario, which applies them to other
 [taggable](/using-k6/tags-and-groups#tags) objects as well.
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
