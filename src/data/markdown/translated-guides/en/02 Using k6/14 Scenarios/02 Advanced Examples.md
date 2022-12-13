@@ -11,7 +11,7 @@ Some ways that you can combine scenarios include the following:
 - Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle),
 
 
-## Sequence multiple scenarios
+## Combine scenarios
 
 With the `startTime` property, you can configure your script to start some scenarios later than others. If you combine this with the executor's duration options, you can sequence your scenarios (this is easiest to do with executors with set durations, like the arrival-rate executors.).
 
