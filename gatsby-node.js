@@ -1600,6 +1600,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/es/visualizacion-de-resultados/influxdb-+-grafana/',
+    toPath: '/es/visualizacion-de-resultados/influxdb-grafana/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
