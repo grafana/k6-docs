@@ -64,7 +64,7 @@ closed_model ✓ [======================================] 1 VUs  1m0s
 
 When the duration of the VU iteration is tightly coupled to the start of new VU iterations,
 the target system's response time can influence the throughput of the test.
-Slower response times means longer iterations and a lower arrival rate of new iterations&mdash;and vice versa for faster response times.
+Slower response times means longer iterations and a lower arrival rate of new iterations―and vice versa for faster response times.
 In some testing literature, this problem is known as _coordinated omission._
 
 In other words, when the target system is stressed and starts to respond more
