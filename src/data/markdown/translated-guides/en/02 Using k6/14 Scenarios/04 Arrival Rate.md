@@ -16,8 +16,6 @@ In a closed model, the execution time of each iteration dictates the
 number of iterations executed in your test.
 The next iteration doesn't started until the previous one finishes.
 
-Prior to v0.27.0, k6 supported only a closed model to simulate new VU arrivals.
-In this closed model, a new VU iteration starts only when a previous iteration finishes.
 Thus, in a closed model, the start or arrival rate of
 new VU iterations is tightly coupled with the iteration duration (that is, time from start
 to finish of the VU's `exec` function, by default the `export default function`):
