@@ -4,9 +4,8 @@ excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios
 ---
 
 You can use multiple scenarios in one script, and these scenarios can be run in sequence or in parallel.
-So besides helping you model workloads, scenarios can also help you make more flexible and composable test logic.
-Some ways that you can use scenarios include the following:
-- Sequence workloads
+Some ways that you can combine scenarios include the following:
+- Sequence workload start times
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
 - Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle),
@@ -14,11 +13,9 @@ Some ways that you can use scenarios include the following:
 
 ## Sequence multiple scenarios
 
-To sequence scenarios, you can use `startTime` property (in combination with the options specific to your scenario executor).
+With the `startTime` property, you can configure your script to start some scenarios later than others. If you combine this with the executor's duration options, you can sequence your scenarios (this is easiest to do with executors with set durations, like the arrival-rate executors.).
 
-This configuration first executes a scenario where 50 VUs try to run as many iterations
-as possible for 30 seconds.
-It then runs the next scenario, which executes 100 iterations per VU for a maximum duration of 1 minute.
+This configuration first executes a scenario where 50 VUs try to run as many iterations as possible for 30 seconds. It then runs the next scenario, which executes 100 iterations per VU for a maximum duration of 1 minute.
 
 Note the use of `startTime`, and different `exec` functions for each scenario.
 
