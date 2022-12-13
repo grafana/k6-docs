@@ -20,8 +20,7 @@ _A k6 script that initiates a WebSocket connection and closes it using the `onop
 import { WebSocket } from 'k6/experimental/websockets';
 
 export default function () {
-  const url = 'ws://localhost:10000';
-  const ws = new WebSocket(url);
+  const ws = new WebSocket('ws://localhost:10000');
 
   ws.onopen = () => {
     ws.close();
@@ -30,4 +29,13 @@ export default function () {
 }
 ```
 
+</CodeGroup>
+
+The example above uses a simple WebSocket echo server, that you can run with the following command:
+
+<CodeGroup>
+
+```bash
+$ docker run --detach --rm --name ws-echo-server -p 10000:8080 jmalloc/echo-server
+```
 </CodeGroup>
