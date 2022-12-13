@@ -1,5 +1,6 @@
 ---
 title: 'InfluxDB + Grafana'
+slug: '/results-output/real-time/influxdb-grafana/'
 excerpt: 'This tutorial shows how to upload the test result metrics to an InfluxDB instance and configure Grafana to query the k6 metrics from InfluxDB.'
 ---
 
