@@ -5,13 +5,11 @@ excerpt: "Smoke test is a regular load test, configured for minimal load. You wa
 script or modify an existing script. Let’s see an example."
 ---
 
-Smoke test is a regular load test, configured for minimal load.
-You want to run a smoke test as a sanity check every time you write a new script or modify an existing script.
+A smoke test is a regular load test, configured for minimal load.
 
-You want to run a smoke test to:
-
-1.  Verify that your test script doesn't have errors.
-2.  Verify that your system doesn't throw any errors when under minimal load.
+Each time you run a new script, it's a good idea to run a smoke to test first, which helps you
+- Verify that your test script doesn't have errors.
+- Verify that your system doesn't throw any errors when under minimal load.
 
 ## Smoke testing in k6
 

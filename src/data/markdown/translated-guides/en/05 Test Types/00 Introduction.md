@@ -3,28 +3,22 @@ title: 'Introduction'
 excerpt: 'Guide to test types'
 ---
 
-You can use k6 to run many types of tests, each of which type serves a different purpose.
+k6 can run many types of tests, each of which serves a different testing goal.
+
+You can use the same test logic for multiple test types.
+The only thing that changes is the test workload configuration.
 
 ![Types of performance tests](./images/test-types.png)
 
-Different test types will teach you different things about your system and give you the insight
-needed to understand or optimize performance.
+Each test type teaches you something different about your system.
 
 - [**Smoke tests**](/test-types/smoke-testing) verify that your system can handle minimal load, without any problems.
-
 - [**Load tests**](/test-types/load-testing) assess system performance in terms of concurrent users or requests per second.
-
 - [**Stress**](/test-types/stress-testing) and [**Spike**](/test-types/stress-testing#spike-testing-in-k6) tests assess the limits and stability of your system under extreme conditions.
-
 - [**Soak tests**](/test-types/soak-testing) assess the reliability and performance of your system over an extended period of time.
 
-
-It's important to note that each test can be performed with the same test script.
-The only thing that changes is the test workload configuration.
-The logic stays the same.
-
-Each test type is designed to give you different insights about your system.
 Start with a [Smoke test](/test-types/smoke-testing) and see how easy it is to run your first load test!
+After you know that the script works and the system responds to minimal load correctly, you can move on to other test types.
 
 <!--
  Note that performance, stability, and reliability, while related, are 3 different goals.
