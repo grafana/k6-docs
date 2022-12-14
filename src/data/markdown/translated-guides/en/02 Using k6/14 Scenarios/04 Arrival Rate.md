@@ -14,7 +14,7 @@ Different models suit different test aims.
 
 In a closed model, the execution time of each iteration dictates the
 number of iterations executed in your test.
-The next iteration doesn't started until the previous one finishes.
+The next iteration doesn't start until the previous one finishes.
 
 Thus, in a closed model, the start or arrival rate of
 new VU iterations is tightly coupled with the iteration duration (that is, time from start
@@ -80,13 +80,12 @@ The response times of the target system no longer
 influence the load on the target system.
 
 To fix this problem of coordination, you can use an open model,
-which decouples the start of new VU iterations
-from the iteration duration.
+which decouples the start of new VU iterations from the iteration duration.
 This reduces the influence of the target system's response time.
 
 ![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
 
-k6 implements the open model with two __arrival rate_ executors:
+k6 implements the open model with two _arrival rate_ executors:
 [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
 
 <CodeGroup labels={[ "open-model.js" ]} lineNumbers={[true]}>
