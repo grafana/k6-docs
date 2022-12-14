@@ -18,7 +18,7 @@ const processMdxEntry = (
   const {
     mdxAST,
     objectID,
-    frontmatter: { title, redirect, slug: customSlug },
+    frontmatter: { title, excerpt, heading, redirect, slug: customSlug },
   } = entry;
   if (redirect) {
     // avoid pushing empty records
@@ -88,6 +88,8 @@ const processMdxEntry = (
   while (pointer--) {
     cache[pointer] = {
       title,
+      excerpt,
+      heading,
       objectID: `${objectID}-${pointer}`,
       slug: removeParametersFromJavaScriptAPISlug(
         pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
@@ -135,6 +137,8 @@ const docPagesQuery = `{
           title
           redirect
           slug
+          excerpt
+          heading
         }
         mdxAST
       }
@@ -157,6 +161,8 @@ const guidesPagesQuery = `{
           title
           redirect
           slug
+          excerpt
+          heading
         }
         mdxAST
       }
