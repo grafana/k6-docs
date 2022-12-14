@@ -5,9 +5,11 @@ excerpt: "k6 websockets experimental API"
 
 <ExperimentalBlockquote />
 
-This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on). 
+This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on).
 
-It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository.
+The main difference between this module and [`k6/ws`](/javascript-api/k6-ws/) is that this module uses a global event loop instead of a local one, which enables a single VU to have multiple concurrent connections for better performance.
+
+It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository. Our long-term goal is to replace [`k6/ws`](/javascript-api/k6-ws/) module with this one.
 
 <!-- vale off -->
 | Class/Method | Description |

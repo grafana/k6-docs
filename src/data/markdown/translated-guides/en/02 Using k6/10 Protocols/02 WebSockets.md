@@ -16,7 +16,7 @@ It is commonly used by single-page apps (SPAs) and mobile apps, to add server-pu
 
 [xk6-websockets](https://github.com/grafana/xk6-websockets) implements [the WebSockets API living standard](https://websockets.spec.whatwg.org/). While the implementation isn't full, it uses a global event loop instead of local one.
 
-It is also likely that it will at some point become part of the core of k6.
+Currently, it's available as an experimental module [`k6/experimental/websockets`](/javascript-api/k6-experimental/websockets/). It is also likely that it will at some point become part of the core of k6.
 </Blockquote>
 
 Comparing HTTP-based tests to WebSocket ones, you'll find differences in both structure and inner workings.
