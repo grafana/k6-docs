@@ -32,7 +32,7 @@ export default function () {
 
 </CodeGroup>
 
-The example above uses a simple WebSocket echo server, that you can run with the following command:
+The preceding example uses a WebSocket echo server, which you can run with the following command:
 
 <CodeGroup>
 
