@@ -50,3 +50,58 @@
   src: url('../../fonts/tt-norms-pro/tt-pro-bold-webfont.woff2') format('woff2'),
     url('../../fonts/tt-norms-pro/tt-pro-bold-webfont.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'TT Norms Pro Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 107.86%;
+  descent-override: 24.05%;
+  line-gap-override: 0%;
+  size-adjust: 99.69%;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro Fallback';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Arial');
+  ascent-override: 106.34%;
+  descent-override: 24.09%;
+  line-gap-override: 0%;
+  size-adjust: 101.57%;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial Bold');
+  ascent-override: 113.16%;
+  descent-override: 26.97%;
+  line-gap-override: 0%;
+  size-adjust: 96.31%;
+}
+
+@font-face {
+  font-family: 'Roboto Mono Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Courier New');
+  ascent-override: 104.79%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Roboto Mono Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Courier New');
+  ascent-override: 104.79%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
