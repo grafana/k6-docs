@@ -8,7 +8,7 @@ Some ways that you can combine scenarios include the following:
 - Sequence workload start times
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
-- Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle),
+- Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle).
 
 
 ## Combine scenarios
@@ -108,10 +108,8 @@ export function news() {
 
 <Blockquote mod="note" title="">
 
-By default, a `scenario` tag, whose value is the scenario name, is
-applied to all metrics in each scenario.
-You can combine these tags with thresholds,
-or use them to simplify metric filtering in [result outputs](/get-started/results-output).
+By default, k6 applies a `scenario` tag to all metrics in each scenario (the value is the scenario name.
+You can combine these tags with thresholds, or use them to simplify results filtering.
 
 To disable scenario tags, use the [`--system-tags` option](/using-k6/options#system-tags).
 
