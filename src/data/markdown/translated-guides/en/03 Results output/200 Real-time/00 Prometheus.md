@@ -3,9 +3,7 @@ title: 'Prometheus remote write'
 excerpt: 'Use the Prometheus remote write integration to send test results to any Prometheus remote write endpoint.'
 ---
 
-<Blockquote mod="attention" title="Experimental">
 <ExperimentalBlockquote />
-</Blockquote>
 
 Prometheus remote write is a protocol with a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit).
 It has multiple implementations.
@@ -67,7 +65,9 @@ If the remote write endpoint requires authentication, the following command can 
 
 ## Staleness
 
-TODO
+The output has the ability to mark the seen time series at the end of the test as stale. It is possible to enable the stale marker option setting the `K6_PROMETHEUS_RW_STALE_MARKERS` environment variable to `true`.
+
+The default logic keep it disabled then the metrics will be active for 5 minutes after the last flushed sample, and they will be automatically marked as stale after. Advanced details about staleness can be find to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness).
 
 ## Prometheus as a remote write agent
 
