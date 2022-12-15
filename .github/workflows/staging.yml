@@ -134,5 +134,6 @@ jobs:
             https://linkedin.com,
             googleapis.com,
             https://www.linkedin.com/company/k6io,
+            https://staging.k6.io/slack
           verbosity: "ERROR"
           markdown: false
