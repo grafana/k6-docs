@@ -86,7 +86,7 @@ The available built-in outputs include:
 - [CSV](/results-output/real-time/csv)
 - [Datadog](/results-output/real-time/datadog)
 - [Grafana Cloud / Prometheus](/results-output/real-time/grafana-cloud)
-- [InfluxDB](/results-output/real-time/influxdb-+-grafana)
+- [InfluxDB](/results-output/real-time/influxdb-grafana)
 - [JSON](/results-output/real-time/json)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)

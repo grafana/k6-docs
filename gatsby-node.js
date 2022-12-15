@@ -1466,7 +1466,7 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/results-visualization/influxdb-+-grafana/',
-    toPath: '/results-output/real-time/influxdb-+-grafana/',
+    toPath: '/results-output/real-time/influxdb-grafana/',
     isPermanent: true,
   });
 
@@ -1600,6 +1600,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/es/visualizacion-de-resultados/influxdb-+-grafana/',
+    toPath: '/es/visualizacion-de-resultados/influxdb-grafana/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
@@ -1649,7 +1655,7 @@ const createRedirects = ({ actions }) => {
     '/getting-started/results-output/datadog':
       '/results-visualization/datadog/',
     '/getting-started/results-output/influxdb':
-      '/results-visualization/influxdb-+-grafana/',
+      '/results-output/real-time/influxdb-grafana/',
     '/getting-started/results-output/json': '/results-visualization/json/',
     '/getting-started/results-output/statsd': '/results-visualization/statsd/',
     '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags':

@@ -71,7 +71,7 @@ const iconsDataSet1 = [
   {
     Icon: InfluxGrafana,
     name: 'InfluxDB + Grafana',
-    to: '/results-output/real-time/influxdb-+-grafana',
+    to: '/results-output/real-time/influxdb-grafana',
   },
   {
     Icon: Json,

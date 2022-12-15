@@ -263,9 +263,9 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/oss-program/`}
+                        href={`${main}/champions-program/`}
                       >
-                        OSS Support Program
+                        k6 Champions
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>

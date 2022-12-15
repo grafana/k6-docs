@@ -29,7 +29,7 @@ These characteristics make it easier to incorporate such tests into the test sui
 
 <Blockquote mod="attention">
 
-xk6-disruptor is in the alpha stage, undergoing active development. We do not guarantee API compatibility between releases.
-Your k6 scripts may need to be updated on each release until this extension reaches v1.0 release.
+xk6-disruptor is in the alpha phase, undergoing active development. k6 doesn't guarantee API compatibility between releases.
+Until this extension reaches v1.0 release, your k6 scripts may need to be updated on each release .
 
 </Blockquote>

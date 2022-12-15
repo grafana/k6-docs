@@ -223,4 +223,6 @@ Breaking down the file structure we get:
 We try to be cautious with what we include in an archive file. Some things we do to that end:
 
 - We anonymize the username found in any path to JS and data file dependencies
-- We don't include and environment variables from the system in the archive
+- By default, k6 omits environment variables from the system in the archive.
+However, if you use the flag `--include-system-env-vars`, k6 includes the environment variables in the archive (along with any variables passed with `--env`).
+To avoid including system environment variables in the archive, you can use the k6 archive flag `--exclude-env-vars`.

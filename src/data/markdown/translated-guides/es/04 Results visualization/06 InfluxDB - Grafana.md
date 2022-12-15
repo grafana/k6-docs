@@ -1,5 +1,6 @@
 ---
 title: 'InfluxDB + Grafana'
+slug: '/es/visualizacion-de-resultados/influxdb-grafana/'
 excerpt: 'Este tutorial muestra cómo subir las métricas de los resultados de las pruebas a una instancia de InfluxDB y configurar Grafana para consultar las métricas de k6.'
 ---
 
