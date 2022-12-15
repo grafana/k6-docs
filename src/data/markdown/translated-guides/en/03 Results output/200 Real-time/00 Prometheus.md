@@ -65,7 +65,7 @@ The output maps the metrics into time series with Name labels.
 As much as possible, it respects the [naming best practices](https://prometheus.io/docs/practices/naming) that the Prometheus project defines:
 
 * All the time series are prefixed with the `k6_` namespace.
-* All the time series contains when known a suffix with the Base unit used for Sample's values.
+* All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
 * Trends and Rates have the relative suffixes, to make them more discoverable.
 
 ## Prometheus as a remote write agent
