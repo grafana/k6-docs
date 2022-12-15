@@ -1,5 +1,5 @@
 ---
-title: 'Prometheus Remote Write'
+title: 'Prometheus remote write'
 excerpt: 'Use the Prometheus remote write integration to send test results to any Prometheus remote write endpoint.'
 ---
 
@@ -7,7 +7,7 @@ excerpt: 'Use the Prometheus remote write integration to send test results to an
 <ExperimentalBlockquote />
 </Blockquote>
 
-Prometheus Remote Write is a protocol with a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit).
+Prometheus remote write is a protocol with a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit).
 It has multiple implementations.
 For example, one option is to store the metrics in [Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver).
 You can find other implementations in the Prometheus' [Integrations](https://prometheus.io/docs/operating/integrations) guide.
@@ -39,7 +39,7 @@ To resolve these limitations, you can map a Trend as a [Prometheus Native Histog
 You can enable conversion with the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable (or one of the other ways).
 The output then converts all the trend types into a dedicated Native Histogram.
 
-Native Histogram is an experimental feature, so it has to be enabled (`--enable-feature=native-histograms`). Note that other Remote Write implementations don't support it yet.
+Native Histogram is an experimental feature, so it has to be enabled (`--enable-feature=native-histograms`). Note that other remote write implementations don't support it yet.
 
 ### Naming convention
 
@@ -97,10 +97,10 @@ k6 has special options for remote write output.
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| `K6_PROMETHEUS_RW_SERVER_URL` | `string` | `http://localhost:9090/api/v1/write` | URL of the Prometheus Remote Write implementation's endpoint. |
+| `K6_PROMETHEUS_RW_SERVER_URL` | `string` | `http://localhost:9090/api/v1/write` | URL of the Prometheus remote write implementation's endpoint. |
 | `K6_PROMETHEUS_RW_HEADERS_<here-the-header-key>` | list of `string` | | Additional headers to include in the HTTP requests. `K6_PROMETHEUS_RW_HEADERS_X-MY-HEADER=foo`|
-| `K6_PROMETHEUS_RW_USERNAME` | `string` | | User for the HTTP Basic authentication at the Prometheus Remote Write endpoint. |
-| `K6_PROMETHEUS_RW_PASSWORD` | `string` | | Password for the HTTP Basic authentication at the Prometheus Remote Write endpoint. |
+| `K6_PROMETHEUS_RW_USERNAME` | `string` | | User for the HTTP Basic authentication at the Prometheus remote write endpoint. |
+| `K6_PROMETHEUS_RW_PASSWORD` | `string` | | Password for the HTTP Basic authentication at the Prometheus remote write endpoint. |
 | `K6_PROMETHEUS_RW_PUSH_INTERVAL` | `string` | `5s` | Interval of the metrics' aggregation and upload to the endpoint. |
 | `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean` | false | If true, it maps the all defined Trend metrics as [Native Histograms](#trend). |
 | `K6_PROMETHEUS_RW_TREND_STATS` | list of `string` | `p(99)` | If Native Histogram is not enabled then it defines the stats functions to map for the all defined Trend metrics. |
