@@ -59,7 +59,7 @@ export function news() {
 
 ## Use different environment variables and tags per scenario.
 
-The previous example set tags on individual HTTP request metrics.
+The previous example sets tags on individual HTTP request metrics.
 But, you can also set tags per scenario, which applies them to other
 [taggable](/using-k6/tags-and-groups#tags) objects as well.
 
