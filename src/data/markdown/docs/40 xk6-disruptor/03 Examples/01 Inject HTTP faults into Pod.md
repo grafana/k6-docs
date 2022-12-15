@@ -3,18 +3,18 @@ title: 'Inject HTTP faults into Pod'
 excerpt: ''
 ---
 
-This example shows how [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) can be used for testing the effect of faults injected in the HTTP requests served by a pod.
+This example shows how you can use [PodDisruptor](/javascript-api/xk6-disruptor/api/poddisruptor) to test the effect of faults injected in the HTTP requests served by a pod.
+Along with the complete [source code](#source-code), this document also examines the code in detail.
 
-You will find the complete [source code](#source-code) at the end of this document. Next sections examine the code in detail.
+## Before you start
 
 The example uses [httpbin](https://httpbin.org), a simple request/response application that offers endpoints for testing different HTTP requests.
+The test requires `httpbin` to be deployed in a cluster in the namespace `httpbin` and exposed with an external IP. The IP address is expected in the environment variable `SVC_IP`.
 
-The test requires `httpbin` to be deployed in a cluster in the namespace `httpbin` and exposed with an external IP. the IP address is expected in the environment variable `SVC_IP`.
+You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document.
+To read about how to get external IP address, refer to [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application).
 
-You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document. You can learn more about how to get the external IP address in the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section.
-
-
-## Initialization
+## Initialize
 
 The initialization code imports the external dependencies required by the test. The `PodDisruptor` class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/http](https://k6.io/docs/javascript-api/k6-http/) module provides functions for executing HTTP requests.
 
@@ -36,11 +36,14 @@ export default function(data) {
 
 <Blockquote mod="note">
 
- The test uses the `delay` endpoint which return after the requested delay. It requests a `0.1s` (`100ms`) delay to ensure the baseline scenario (see scenarios below) has meaningful statistics for the request duration. If we were simply calling a locally deployed http server (for example `nginx`), the response time would exhibit a large variation between a few microseconds to a few milliseconds. Having `100ms` as baseline response time has proved to offer more consistent results.
+The test uses the `delay` endpoint which, returns after the requested delay.
+It requests a `0.1s` (`100ms`) delay to ensure the baseline scenario has meaningful statistics for the request duration.
+If you called a locally deployed http server (for example `nginx`), the response time would exhibit a large variation&mdash;between a few microseconds to a few milliseconds.
+Having `100ms` as baseline response time offers more consistent results.
 
 </Blockquote>
 
-## Fault injection
+## Inject faults
 
 The `disrupt` function creates a `PodDisruptor` using a selector that matches pods in the namespace `httpbin` with the label `app: httpbin`.
 
@@ -83,7 +86,9 @@ This code makes the function return without injecting faults if the `SKIP_FAULTS
 
 ## Scenarios 
 
-This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be executed. The `load` scenario applies the test load to the `httpbin` application for `30s` invoking the `default` function. The `disrupt` scenario invokes the `disrupt` function to inject a fault in the HTTP requests of the target application.
+This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be executed.
+- The `load` scenario applies the test load to the `httpbin` application for `30s`. It is called by the `default` function.
+- The `disrupt` scenario invokes the `disrupt` function to inject a fault into the HTTP requests of the target application.
 
 ```javascript
     scenarios: {
@@ -108,16 +113,19 @@ This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be e
 
  <Blockquote mod="note">
 
- Notice that the `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
+ The `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`.
+ This ensures that the `disrupt` function runs only once.
+ If you run this function multiple times concurrently, the results might be unpredictable.
 
 </Blockquote>
-
 
 ## Executions
 
 <Blockquote mod="note">
 
-The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+The commands in this section assume the `xk6-disruptor` binary is available in your current directory.
+This location can change depending on the installation process and the platform.
+Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
 
 </Blockquote>
 
@@ -307,27 +315,35 @@ export const options = {
 
 ## Test setup
 
-The tests requires the deployment of the `httpbin` application. The application must also be accessible using an external IP available in the `SVC_IP` environment variable.
+To run these tests, you need to deploy the `httpbin` application.
+The application must also be accessible using an external IP available in the `SVC_IP` environment variable.
 
-The [manifests](#manifests) below define the resources required for deploying the application and exposing it as a LoadBalancer service.
+The [manifests](#manifests) below define the necessary resources to deploy the application and expose it as a LoadBalancer service.
 
-You can deploy the application using the following commands:
+To deploy the application, you can run the following commands:
 
-```bash
-# Create Namespace
-kubectl apply -f namespace.yaml
-namespace/httpbin created
+1. Create  a Namespace
 
-# Deploy Pod
-kubectl apply -f pod.yaml
-pod/httpbin created
+  ```bash
+  kubectl apply -f namespace.yaml
+  namespace/httpbin created
+  ```
 
-# Expose Pod as a Service
-kubectl apply -f service.yaml
-service/httpbin created
-```
+1. Deploy the pod
 
-You can retrieve the resources using the following command:
+  ```bash
+  kubectl apply -f pod.yaml
+  pod/httpbin created
+  ```
+
+1. Expose the pod as a service
+
+  ```bash
+  kubectl apply -f service.yaml
+  service/httpbin created
+  ```
+
+You can retrieve the resources with the following command:
 
 ```bash
 kubectl -n httpbin get all
@@ -338,7 +354,7 @@ NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        
 service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   1m
 ```
 
-You can retrieve the external IP address in the environment variable `SVC_IP` using the following command:
+You can retrieve the external IP address in the environment variable `SVC_IP` with the following command:
 
 ```bash
 SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
@@ -398,3 +414,4 @@ spec:
 
 </Collapsible>
 
+ 
