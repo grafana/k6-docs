@@ -5,7 +5,7 @@ excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios
 
 You can use multiple scenarios in one script, and these scenarios can be run in sequence or in parallel.
 Some ways that you can combine scenarios include the following:
-- Sequence workload start times
+- Have different start times to sequence workloads
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
 - Run scenarios in different VU [lifecycle functions](/using-k6/test-lifecycle).
