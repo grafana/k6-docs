@@ -20,13 +20,13 @@ It's not fully implemented, but we're working on it. If you have any feedback, p
 | [WebSocket.close()](/javascript-api/k6-experimental/websockets/websocket/websocket-close) | Close the WebSocket connection. |
 | [WebSocket.ping()](/javascript-api/k6-experimental/websockets/websocket/websocket-ping) | Send a ping. |
 | [WebSocket.send(data)](/javascript-api/k6-experimental/websockets/websocket/websocket-send) | Send string data. |
-| [WebSocket.addEventListener(event, callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event. |
-| [WebSocket.onmessage(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | Set up an event listener on the connection for `message` event |
-| [WebSocket.onerror(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | Set up an event listener on the connection for `error` event |
-| [WebSocket.onopen(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onopen) | Set up an event listener on the connection for `open` connection event |
-| [WebSocket.onclose(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onclose) | Set up an event listener on the connection for `close` connection event |
-| [WebSocket.onping(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onping) | Set up an event listener on the connection for `ping` event |
-| [WebSocket.onpong(callback)](/javascript-api/k6-experimental/websockets/websocket/websocket-onpong) | Set up an event listener on the connection for `pong` event |
+| [WebSocket.addEventListener(event, handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event. |
+| [WebSocket.onmessage(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | Set up an event listener on the connection for `message` event |
+| [WebSocket.onerror(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | Set up an event listener on the connection for `error` event |
+| [WebSocket.onopen(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onopen) | Set up an event listener on the connection for `open` connection event |
+| [WebSocket.onclose(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onclose) | Set up an event listener on the connection for `close` connection event |
+| [WebSocket.onping(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onping) | Set up an event listener on the connection for `ping` event |
+| [WebSocket.onpong(handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-onpong) | Set up an event listener on the connection for `pong` event |
 <!-- vale on -->
 
 A WebSocket instance also has the following properties:

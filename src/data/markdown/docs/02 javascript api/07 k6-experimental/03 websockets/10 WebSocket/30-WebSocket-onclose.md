@@ -1,14 +1,14 @@
 ---
-title: 'WebSocket.onclose(callback)'
-excerpt: 'Set up a callback function for WebSocket connection close event.'
+title: 'WebSocket.onclose(handler)'
+excerpt: 'Set up a handler function for WebSocket connection close event.'
 ---
 
-Set a callback function as a handler for a WebSocket connection `close` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+Set a handler function as a handler for a WebSocket connection `close` event.
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
 | --------- | -------- | -------------------------------------------- |
-| callback  | function | The function to call when the event happens. |
+| handler  | function | The function to call when the event happens. |
 
 ### Example
 

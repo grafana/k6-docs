@@ -1,14 +1,14 @@
 ---
-title: 'WebSocket.onpong(callback)'
-excerpt: 'Set up a callback function for WebSocket connection pong event.'
+title: 'WebSocket.onpong(fn)'
+excerpt: 'Set up a handler function for WebSocket connection pong event.'
 ---
 
-Set a callback function as a handler for a WebSocket connection `pong` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+Set a function as a handler for a WebSocket connection `pong` event.
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
 | --------- | -------- | -------------------------------------------- |
-| callback  | function | The function to call when the event happens. |
+| handler   | function | The function to call when the event happens. |
 
 ### Example
 

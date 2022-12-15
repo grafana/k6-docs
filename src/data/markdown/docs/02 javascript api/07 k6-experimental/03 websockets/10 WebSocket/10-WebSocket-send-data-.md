@@ -8,7 +8,7 @@ You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON st
 
 | Parameter | Type   | Description       |
 | --------- | ------ | ----------------- |
-| data      | string | The data to send. |
+| data      | string / ArrayBuffer | The data to send. |
 
 ### Example
 

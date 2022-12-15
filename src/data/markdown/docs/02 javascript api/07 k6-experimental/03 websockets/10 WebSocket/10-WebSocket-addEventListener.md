@@ -1,14 +1,14 @@
 ---
-title: 'WebSocket.addEventListener(event, callback)'
-excerpt: 'Set up callback functions for various events on the WebSocket connection.'
+title: 'WebSocket.addEventListener(event, handler)'
+excerpt: 'Set up handler functions for various events on the WebSocket connection.'
 ---
 
-Set up callback functions for various events on the WebSocket connection. You can define multiple handlers for the same event.
+Set up handler functions for various events on the WebSocket connection. You can define multiple handlers for the same event.
 
 | Parameter | Type     | Description                                  |
 | --------- | -------- | -------------------------------------------- |
-| event     | string   | The event name to define a callback for.     |
-| callback  | function | The function to call when the event happens. |
+| event     | string   | The event name to define a handler for.     |
+| handler  | function | The function to call when the event happens. |
 
 | Event name | Description                                                                                                                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
