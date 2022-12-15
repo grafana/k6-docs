@@ -16,23 +16,6 @@ With the Prometheus remote write output, k6 can send test-result metrics to a Pr
 The output during the `k6 run` execution gets all the generated data points for the [built-in  k6 metrics](/using-k6/metrics/).
 It then generates the equivalent Prometheus remote write time series.
 
-## Send test metrics to a remote write endpoint
-
-
-**Before you start**:
-
-For remote-output to work, you need the following:
-- A running remote write implementation, with an endpoint that k6 can reach.
-To use k6 with remote-write output, use the `--out` flag with `experimental-prometheus-rw` as the argument:
-
-```bash
-k6 run -o experimental-prometheus-rw script.js
-```
- 
-All the time series are generated and sent with the `k6_` prefix. In the Metric Explorer UI in Grafana, it looks something  like this:
-
-![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
-
 ## Metrics mapping
 
 All the k6 metric types are converted into an equivalent Prometheus remote write type:
@@ -67,12 +50,6 @@ As much as possible, it respects the [naming best practices](https://prometheus.
 * All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
 * Trends and Rates have the relative suffixes, to make them more discoverable.
 
-## Prometheus as a remote write agent
-
-To use remote write in Prometheus 2.x, use the `--web.enable-remote-write-receiver ` flag.
-The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples in the [example](https://github.com/grafana/xk6-output-prometheus-remote/tree/main/example) directory.
-For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
-
 ## Authentication
 
 If the remote write endpoint requires authentication, the following command can be used:
@@ -91,6 +68,28 @@ If the remote write endpoint requires authentication, the following command can 
 ## Staleness
 
 TODO
+
+## Prometheus as a remote write agent
+
+To use remote write in Prometheus 2.x, use the `--web.enable-remote-write-receiver ` flag.
+The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples in the [example](https://github.com/grafana/xk6-output-prometheus-remote/tree/main/example) directory.
+For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
+
+## Send test metrics to a remote write endpoint
+
+**Before you start**:
+
+For remote-output to work, you need the following:
+- A running remote write implementation, with an endpoint that k6 can reach.
+To use k6 with remote-write output, use the `--out` flag with `experimental-prometheus-rw` as the argument:
+
+```bash
+k6 run -o experimental-prometheus-rw script.js
+```
+ 
+All the time series are generated and sent with the `k6_` prefix. In the Metric Explorer UI in Grafana, it looks something  like this:
+
+![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
 
 ## Options
 
