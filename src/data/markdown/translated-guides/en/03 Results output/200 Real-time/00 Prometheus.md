@@ -48,7 +48,7 @@ As much as possible, it respects the [naming best practices](https://prometheus.
 * All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
 * Trends and Rates have the relative suffixes, to make them more discoverable.
 
-## Staleness
+### Staleness
 
 The output has the ability to mark the seen time series at the end of the test as stale. It is possible to enable the stale marker option setting the `K6_PROMETHEUS_RW_STALE_MARKERS` environment variable to `true`.
 
