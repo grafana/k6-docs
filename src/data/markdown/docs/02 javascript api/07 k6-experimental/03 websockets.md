@@ -7,9 +7,10 @@ excerpt: "k6 websockets experimental API"
 
 This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on).
 
-The main difference between this module and [`k6/ws`](/javascript-api/k6-ws/) is that this module uses a global event loop instead of a local one, which enables a single VU to have multiple concurrent connections for better performance.
+The main difference between this module and [`k6/ws`](/javascript-api/k6-ws/) is that this module uses a global event loop instead of a local one.
+A global event loop lets a single VU have multiple concurrent connections, which improves performance.
 
-It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository. Our long-term goal is to replace [`k6/ws`](/javascript-api/k6-ws/) module with this one.
+It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository. Our long-term goal is to replace the [`k6/ws`](/javascript-api/k6-ws/) module with this one.
 
 <!-- vale off -->
 | Class/Method | Description |
@@ -35,7 +36,7 @@ A WebSocket instance also has the following properties:
 | WebSocket.readyState | The current state of the connection. Could be one of [the four states](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState). |
 | WebSocket.url | The URL of the connection as resolved by the constructor. |
 | WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network. |
-| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `ArrayBuffer`. Setting it panics, as k6 does not support Blob. |
+| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `"ArrayBuffer"`. Setting it throws an exception, as k6 does not support the Blob type. |
 
 ## Example
 

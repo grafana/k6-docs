@@ -4,7 +4,7 @@ excerpt: 'Set up a callback function for message event WebSocket.'
 ---
 
 Set a callback function as a handler for a WebSocket connection `message` event.
-For multiple, simultaneous event handlers, use [`WebSocket.addEventHandler()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
+For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
 | --------- | -------- | -------------------------------------------- |

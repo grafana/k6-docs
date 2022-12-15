@@ -12,7 +12,7 @@ Set up callback functions for various events on the WebSocket connection. You ca
 
 | Event name | Description                                                                                                                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open       | Emitted when the connection is established                                                                                                                                                         |
+| open       | Emitted when the connection is established.                                                                                                                                                         |
 | message    | Emitted when a message is received from the server.                                                                                                                                                |
 | ping       | Emitted when a ping is received from the server. The client will automatically send back a `pong`.                                                                                                 |
 | pong       | Emitted when a pong is received from the server.                                                                                                                                                   |
