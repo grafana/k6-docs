@@ -162,7 +162,7 @@ if (
       appId: process.env.GATSBY_ALGOLIA_APP_ID,
       apiKey: process.env.ALGOLIA_ADMIN_KEY,
       enablePartialUpdates: true,
-      matchFields: ['title', 'slug', 'content'],
+      matchFields: ['title', 'slug', 'content', 'excerpt', 'heading'],
       queries,
       chunkSize: 10000, // default: 1000
     },
