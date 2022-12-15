@@ -48,21 +48,6 @@ As much as possible, it respects the [naming best practices](https://prometheus.
 * All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
 * Trends and Rates have the relative suffixes, to make them more discoverable.
 
-## Authentication
-
-If the remote write endpoint requires authentication, the following command can be used:
-
-<CodeGroup labels={[""]}>
-
-```bash
-    K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY=false \
-    K6_PROMETHEUS_RW_USERNAME=foo \
-    K6_PROMETHEUS_RW_PASSWORD=bar \
-    ./k6 run script.js -o experimental-prometheus-rw
-```
-
-</CodeGroup>
-
 ## Staleness
 
 The output has the ability to mark the seen time series at the end of the test as stale. It is possible to enable the stale marker option setting the `K6_PROMETHEUS_RW_STALE_MARKERS` environment variable to `true`.
@@ -90,6 +75,21 @@ k6 run -o experimental-prometheus-rw script.js
 All the time series are generated and sent with the `k6_` prefix. In the Metric Explorer UI in Grafana, it looks something  like this:
 
 ![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
+
+### Authentication
+
+If the remote write endpoint requires authentication, the following command can be used:
+
+<CodeGroup labels={[""]}>
+
+```bash
+    K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY=false \
+    K6_PROMETHEUS_RW_USERNAME=foo \
+    K6_PROMETHEUS_RW_PASSWORD=bar \
+    ./k6 run script.js -o experimental-prometheus-rw
+```
+
+</CodeGroup>
 
 ## Options
 
