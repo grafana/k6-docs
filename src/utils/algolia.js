@@ -116,8 +116,8 @@ const flatten = (arr, kind = 'docs') => {
 // custom index entry for extensions page
 const processExtensions = (extensionsList) =>
   extensionsList.map((extension) => ({
-    title: extension.name,
-    objectID: `extensions-${extension.name}`,
+    title: `${extension.name} extension`,
+    objectID: `${extension.name}-extension`,
     slug: '/extensions/',
     content: extension.description,
     _tags: ['en', 'es'],
@@ -187,7 +187,8 @@ const settings = {
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'k6_docs';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
+console.warn({ indexName, env: process.env.GATSBY_ALGOLIA_INDEX_NAME });
 
 const queries = [
   {
