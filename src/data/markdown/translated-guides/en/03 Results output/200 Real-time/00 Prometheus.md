@@ -70,7 +70,9 @@ As much as possible, it respects the [naming best practices](https://prometheus.
 
 ## Prometheus as a remote write agent
 
-To enable remote write in Prometheus 2.x use `--web.enable-remote-write-receiver ` option. See docker-compose samples in [example/]() folder of the k6 repository. Options for remote write storage can be found [here](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
+To use remote write in Prometheus 2.x, use the `--web.enable-remote-write-receiver ` flag.
+The k6 repo has some docker compose examples in the [`samples` directory](https://github.com/grafana/k6/tree/master/samples).
+For remote write storage options, refer to the [the Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
 
 ## Authentication
 
@@ -89,7 +91,7 @@ If the remote write endpoint requires authentication, the following command can 
 
 ## Options
 
-The Output supports different options for better adapting the behavior for different need. Take a look to the full list of available Options.
+k6 has special options for remote write output.
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
@@ -104,7 +106,8 @@ The Output supports different options for better adapting the behavior for diffe
 
 ## Grafana Dashboards
 
-The [extension]() repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards that can be used for visualizing the generated time series with Prometheus configured as a data source: 
+The [extension]() repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards.
+You can use use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
 - visualize the results of a test run
 - list test runs
 
