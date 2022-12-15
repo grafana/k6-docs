@@ -29,8 +29,8 @@ To use k6 with remote-write output, use the `--out` flag with `experimental-prom
 k6 run -o experimental-prometheus-rw script.js
 ```
  
-All the time series are generated and sent with the `k6_` prefix.
-In the Metric Explorer UI in Grafana, it looks something  like this:
+All the time series are generated and sent with the `k6_` prefix. In the Metric Explorer UI in Grafana, it looks something  like this:
+
 ![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
 
 ## Metrics mapping
@@ -88,6 +88,10 @@ If the remote write endpoint requires authentication, the following command can 
 
 </CodeGroup>
 
+## Staleness
+
+TODO
+
 ## Options
 
 k6 has special options for remote write output.
@@ -102,6 +106,7 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean` | false | If true, it maps the all defined Trend metrics as [Native Histograms](#trend). |
 | `K6_PROMETHEUS_RW_TREND_STATS` | list of `string` | `p(99)` | If Native Histogram is not enabled then it defines the stats functions to map for the all defined Trend metrics. |
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY` | `boolean` | false | If true, the HTTP client skips TLS verification on the endpoint. |
+| `K6_PROMETHEUS_RW_STALE_MARKERS | `boolean` | false | If true, the output at the end of the test marks all the seen time series as stale. |
 
 ## Grafana Dashboards
 
