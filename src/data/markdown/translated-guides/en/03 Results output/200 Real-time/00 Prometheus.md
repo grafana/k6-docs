@@ -30,9 +30,8 @@ k6 run -o experimental-prometheus-rw script.js
 ```
  
 All the time series are generated and sent with the `k6_` prefix.
-In the Prometheus UI, it looks something  like this:
-
-![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom.png)
+In the Metric Explorer UI in Grafana, it looks something  like this:
+![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
 
 ## Metrics mapping
 
@@ -71,8 +70,8 @@ As much as possible, it respects the [naming best practices](https://prometheus.
 ## Prometheus as a remote write agent
 
 To use remote write in Prometheus 2.x, use the `--web.enable-remote-write-receiver ` flag.
-The k6 repo has some docker compose examples in the [`samples` directory](https://github.com/grafana/k6/tree/master/samples).
-For remote write storage options, refer to the [the Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
+The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples in the [example](https://github.com/grafana/xk6-output-prometheus-remote/tree/main/example) directory.
+For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
 
 ## Authentication
 
@@ -106,8 +105,8 @@ k6 has special options for remote write output.
 
 ## Grafana Dashboards
 
-The [extension]() repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards.
-You can use use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
+The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards.
+You can use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
 - visualize the results of a test run
 - list test runs
 
