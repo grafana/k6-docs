@@ -10,7 +10,7 @@ This experimental API implements the browser [WebSocket API](https://developer.m
 The main difference between this module and [`k6/ws`](/javascript-api/k6-ws/) is that this module uses a global event loop instead of a local one.
 A global event loop lets a single VU have multiple concurrent connections, which improves performance.
 
-It's not fully implemented, but we're working on it. If you have any feedback, please [open an issue](https://github.com/grafana/xk6-websockets/) in the extension repository. Our long-term goal is to replace the [`k6/ws`](/javascript-api/k6-ws/) module with this one.
+The `WebSocket API` is not fully implemented, and we're working on it, but we believe it's usable for most users. So whether you're writing a new WebSocket test, or currently using the `k6/ws` module, we invite you to give it a try, and report any issues in the project's [issue tracker](https://github.com/grafana/xk6-websockets/). Our midterm is to make this module as part of the k6 core, and the long-term goal to replace the [`k6/ws`](/javascript-api/k6-ws/) module.
 
 <!-- vale off -->
 | Class/Method | Description |
