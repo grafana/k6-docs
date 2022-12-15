@@ -7,7 +7,7 @@ Close the WebSocket connection.
 
 | Parameter       | Type     | Description                                  |
 | --------------- | -------- | -------------------------------------------- |
-| code (optional) | number   | WebSocket status code. (default: 1000)       |
+| code (optional) | number   | WebSocket status code. (default: 1000) . See [the list of supported](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code) close codes.      |
 
 
 ### Example
