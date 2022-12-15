@@ -9,6 +9,4 @@ excerpt: ''
 
 [Installation](/javascript-api/xk6-disruptor/get-started/installation)
 
-[How it works](/javascript-api/xk6-disruptor/get-started/how-it-works)
-
 [Exposing Your Applications](/javascript-api/xk6-disruptor/get-started/expose-your-application/)
