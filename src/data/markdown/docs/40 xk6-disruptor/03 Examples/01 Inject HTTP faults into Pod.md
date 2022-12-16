@@ -36,7 +36,7 @@ export default function(data) {
 
 <Blockquote mod="note">
 
-The test uses the `delay` endpoint which, returns after the requested delay.
+The test uses the `delay` endpoint, which returns after the requested delay.
 It requests a `0.1s` (`100ms`) delay to ensure the baseline scenario has meaningful statistics for the request duration.
 If you called a locally deployed http server (for example `nginx`), the response time would exhibit a large variation&mdash;between a few microseconds to a few milliseconds.
 Having `100ms` as baseline response time offers more consistent results.
