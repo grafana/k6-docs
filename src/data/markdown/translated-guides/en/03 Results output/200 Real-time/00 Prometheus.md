@@ -37,7 +37,7 @@ To resolve these limitations, you can map a Trend as a [Prometheus Native Histog
 You can enable conversion with the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable (or one of the other ways).
 The output then converts all the trend types into a dedicated Native Histogram.
 
->Native Histogram is an experimental feature, so it has to be enabled (`--enable-feature=native-histograms`). Note that other remote write implementations don't support it yet.
+>Native Histogram is an experimental feature, so it has to be enabled ([--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms)). Note that other remote write implementations don't support it yet.
 
 ### Naming convention
 
@@ -66,7 +66,7 @@ For remote write storage options, refer to the [Prometheus docs](https://prometh
 For remote-output to work, you need the following:
 - A running remote write implementation, with an endpoint that k6 can reach.
 
-To use k6 with remote-write output, use the `--out` flag with `experimental-prometheus-rw` as the argument:
+To use k6 with remote write output, use the `--out` flag with `experimental-prometheus-rw` as the argument:
 
 ```bash
 k6 run -o experimental-prometheus-rw script.js
@@ -78,18 +78,19 @@ All the time series are generated and sent with the `k6_` prefix. In the Metric 
 
 ### Authentication
 
-If the remote write endpoint requires authentication, the following command can be used:
+If the remote write endpoint requires authentication, the output supports the HTTP Basic authentication and it can be used with the following command:
 
 <CodeGroup labels={[""]}>
 
 ```bash
-    K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY=false \
     K6_PROMETHEUS_RW_USERNAME=foo \
     K6_PROMETHEUS_RW_PASSWORD=bar \
     ./k6 run script.js -o experimental-prometheus-rw
 ```
 
 </CodeGroup>
+
+Feel free to request more authentication methods or provide your experience in the [issue tracker](https://github.com/grafana/xk6-output-prometheus-remote/issues).
 
 ## Options
 
