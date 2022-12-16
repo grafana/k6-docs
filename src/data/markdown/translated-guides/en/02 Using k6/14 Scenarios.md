@@ -76,32 +76,39 @@ For the list of the executors, refer to the [Executor guide](/using-k6/scenarios
 
 ## Scenario example
 
-The following script defines two minimal scenarios:
+This script combines two scenarios, with sequencing:
 
-<CodeGroup labels={["scenario-example.js"]} lineNumbers={[true]}>
+- The `shared_iter_scenario` starts immediately. Ten VUs try to use 100 iterations as quickly as possible (some VUs may use more iterations than others).
+- The `per_vu_scenario` starts after 10s. In this case, ten VUs each run ten iterations.
+
+Which scenario takes longer?
+You can run to discover.
+You can also add a `maxDuration` property to one or both scenarios.
 
 ```javascript
-import http from 'k6/http';
+import http from "k6/http";
 
 export const options = {
   scenarios: {
-    example_scenario: {
-      executor: 'shared-iterations',
-      startTime: '0s'
+    shared_iter_scenario: {
+      executor: "shared-iterations",
+      vus: 10,
+      iterations: 100,
+      startTime: "0s",
     },
-    another_scenario: {
-      executor: 'shared-iterations',
-      startTime: '5s'
+    per_vu_scenario: {
+      executor: "per-vu-iterations",
+      vus: 10,
+      iterations: 10,
+      startTime: "10s",
     },
   },
 };
 
 export default function () {
-  http.get('https://test.k6.io/');
+  http.get("https://test.k6.io/");
 }
 ```
-
-</CodeGroup>
 
 If you run a script with scenarios, k6 output includes high-level information about each one.
 For example, if you run the preceding script, `k6 run scenario-example.js`,
