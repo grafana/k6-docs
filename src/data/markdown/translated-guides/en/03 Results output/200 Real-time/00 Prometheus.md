@@ -37,7 +37,7 @@ To resolve these limitations, you can map a Trend as a [Prometheus Native Histog
 You can enable conversion with the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable (or one of the other ways).
 The output then converts all the trend types into a dedicated Native Histogram.
 
-Native Histogram is an experimental feature, so it has to be enabled (`--enable-feature=native-histograms`). Note that other remote write implementations don't support it yet.
+>Native Histogram is an experimental feature, so it has to be enabled (`--enable-feature=native-histograms`). Note that other remote write implementations don't support it yet.
 
 ### Naming convention
 
@@ -63,9 +63,9 @@ For remote write storage options, refer to the [Prometheus docs](https://prometh
 ## Send test metrics to a remote write endpoint
 
 **Before you start**:
-
 For remote-output to work, you need the following:
 - A running remote write implementation, with an endpoint that k6 can reach.
+
 To use k6 with remote-write output, use the `--out` flag with `experimental-prometheus-rw` as the argument:
 
 ```bash
@@ -107,9 +107,11 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY` | `boolean` | false | If true, the HTTP client skips TLS verification on the endpoint. |
 | `K6_PROMETHEUS_RW_STALE_MARKERS | `boolean` | false | If true, the output at the end of the test marks all the seen time series as stale. |
 
-## Grafana Dashboards
+## Time series visualization 
 
-The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built dashboards.
+The simplest solution is to use the possible [Grafana Cloud](/results-output/real-time/grafana-cloud) integration.
+
+Instead, if you want a local option then the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built Grafana dashboards.
 You can use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
 - visualize the results of a test run
 - list test runs
