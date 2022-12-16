@@ -1,5 +1,6 @@
 ---
 title: 'Prometheus remote write'
+slug: '/results-output/real-time/prometheus'
 excerpt: 'Use the Prometheus remote write integration to send test results to any Prometheus remote write endpoint.'
 ---
 
