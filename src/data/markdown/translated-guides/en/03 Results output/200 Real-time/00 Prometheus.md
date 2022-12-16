@@ -38,7 +38,7 @@ This mapping has following drawbacks:
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
-To resolve these limitations, you can map a trend as a [Prometheus Native Histogram].(https://prometheus.io/docs/concepts/metric_types/#histogram).
+To resolve these limitations, you can map a trend as a [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram).
 To do this,
 you can use the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable
 (or one of the other ways).
