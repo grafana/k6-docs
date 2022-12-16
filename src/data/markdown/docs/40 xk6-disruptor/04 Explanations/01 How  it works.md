@@ -4,7 +4,7 @@ excerpt: 'A brief description of the components of the xk6-disruptor and how the
 ---
 
 xk6-disruptor consists of two main components:
-- **The xk6-disruptor extension** provides a Javascript API for injecting faults into a target system using the xk6-disruptor-agent as a backend.
+- **The xk6-disruptor extension** provides a Javascript API for injecting faults into a target system using the xk6-disruptor-agent as a backend. This API is built around a collection of **disruptors**. Each disruptor targets a type of component in the system (for example Pods or cluster Nodes).
 - **The xk6-disruptor-agent** injects faults into the target system where it runs. It is provided as an Docker image that you can pull from the [xk6-disruptor repository](https://github.com/grafana/xk6-disruptor/pkgs/container/xk6-disruptor-agent).
 
 The xk6-disruptor extension installs the agent in the target and sends commands to inject the desired faults. How this happens depends on the type of disruptor, as described in the following sections.
