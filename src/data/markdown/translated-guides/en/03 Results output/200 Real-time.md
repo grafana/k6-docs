@@ -34,7 +34,7 @@ You can also stream real-time metrics to the following services:
 - [InfluxDB](/results-output/real-time/influxdb-grafana)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)
-- [Prometheus](/results-output/real-time/prometheus)
+- [Prometheus remote write](/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](/results-output/real-time/timescaledb)
 - [StatsD](/results-output/real-time/statsd)
 
