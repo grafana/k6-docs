@@ -8,7 +8,7 @@ Some ways that you can combine scenarios include the following:
 - Have different start times to sequence workloads
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
--  Export multiple scenarios as functions in [VU code](/using-k6/test-lifecycle)
+- Export multiple scenarios as functions in [VU code](/using-k6/test-lifecycle).
 
 
 ## Combine scenarios
