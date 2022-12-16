@@ -1,9 +1,9 @@
 ---
-title: 'WebSocket.onclose(handler)'
-excerpt: 'Set up a handler function for WebSocket connection close event.'
+title: 'WebSocket.onclose'
+excerpt: 'A handler function for WebSocket connection close event.'
 ---
 
-Set a handler function as a handler for a WebSocket connection `close` event.
+A handler for a WebSocket connection `close` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

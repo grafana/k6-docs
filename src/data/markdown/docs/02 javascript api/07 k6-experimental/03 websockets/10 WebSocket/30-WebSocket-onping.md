@@ -1,9 +1,9 @@
 ---
-title: 'WebSocket.onping(handler)'
-excerpt: 'Set up a handler function for WebSocket connection ping event.'
+title: 'WebSocket.onping'
+excerpt: 'A handler function for WebSocket connection ping event.'
 ---
 
-Set a handler function as a handler for a WebSocket connection `ping` event.
+A handler for a WebSocket connection `ping` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

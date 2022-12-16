@@ -1,9 +1,9 @@
 ---
-title: 'WebSocket.onerror(handler)'
-excerpt: 'Set up a handler function for WebSocket connection error event.'
+title: 'WebSocket.onerror'
+excerpt: 'A handler function for WebSocket connection error event.'
 ---
 
-Set a handler function as a handler for a WebSocket connection `error` event.
+A handler for a WebSocket connection `error` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |

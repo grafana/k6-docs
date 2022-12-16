@@ -1,9 +1,9 @@
 ---
-title: 'WebSocket.onopen(handler)'
-excerpt: 'Set up a handler function for WebSocket connection open event.'
+title: 'WebSocket.onopen'
+excerpt: 'A handler function for WebSocket connection open event.'
 ---
 
-Set a handler function as a handler for a WebSocket connection `open` event.
+A handler for a WebSocket connection `open` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
 | Parameter | Type     | Description                                  |
