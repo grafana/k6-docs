@@ -9,8 +9,6 @@ xk6-disruptor consists of two main components:
 
 The xk6-disruptor extension installs the agent in the target and sends commands to inject the desired faults. How this happens depends on the type of disruptor, as described in the following sections.
 
-With this mode of operation, the xk6-disruptor can work without requiring you to install additional components.
-
 ## PodDisruptor
 
 The following diagram shows how PodDisruptor works:
