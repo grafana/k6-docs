@@ -137,4 +137,3 @@ You can use these dashboards to visualize the generated time series with Prometh
 - list test runs
 
 ![Prometheus k6 results](./images/Prometheus/prometheus-dashboard-test-result.png)
-![Prometheus list test runs](./images/Prometheus/prometheus-dashboard-test-runs.png)
