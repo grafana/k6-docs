@@ -6,7 +6,7 @@ excerpt: 'Use the Prometheus remote write integration to send test results to an
 
 <ExperimentalBlockquote />
 
-Prometheus remote write is a protocol to make it possible to reliably propagate data in real-time from a sender to a receiver.
+Prometheus remote write is a protocol that makes it possible to reliably propagate data in real-time from a sender to a receiver.
 It has a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit)
 and multiple implementations.
 For example, you can store the metrics in [Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver).
