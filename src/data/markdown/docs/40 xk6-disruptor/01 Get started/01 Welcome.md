@@ -36,7 +36,7 @@ Until this extension reaches v1.0 release, your k6 scripts may need to be update
 
 ## Your first test with xk6-disruptor
 
-1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements)
+1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements).
 
 2. [Install](/javascript-api/xk6-disruptor/get-started/installation) xk6-disrutor binary in your system.
 
