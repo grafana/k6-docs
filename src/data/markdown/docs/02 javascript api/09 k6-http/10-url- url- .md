@@ -8,7 +8,7 @@ URLs that contain dynamic parts can introduce a large number of unique URLs in t
 
 | Parameter | Type            | Description                                                      |
 | --------- | --------------- | ---------------------------------------------------------------- |
-| url  | template literal | Request URL (e.g. http://example.com). |
+| url  | template literal | Request URL (e.g. `http://example.com`). |
 
 ### Returns
 
