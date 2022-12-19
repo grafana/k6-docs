@@ -8,16 +8,20 @@ Some ways that you can combine scenarios include the following:
 - Have different start times to sequence workloads
 - Add per-scenario tags and environment variables
 - Make scenario-specific thresholds.
- - Use multiple scenarios to run different test logic, so that VUs don't run only the `default` function](https://k6.io/docs/using-k6/test-lifecycle/).
+- Use multiple scenarios to run different test logic, so that VUs don't run only the [`default` function](https://k6.io/docs/using-k6/test-lifecycle/).
 
 
 ## Combine scenarios
 
-With the `startTime` property, you can configure your script to start some scenarios later than others. If you combine this with the executor's duration options, you can sequence your scenarios (this is easiest to do with executors with set durations, like the arrival-rate executors.).
+With the `startTime` property, you can configure your script to start some scenarios later than others.
+To sequence your scenarios, you can combine `startTime` with the duration options specific to the executor.
+(this is easiest to do with executors with set durations, like the arrival-rate executors).
 
-This configuration first executes a scenario where 50 VUs try to run as many iterations as possible for 30 seconds. It then runs the next scenario, which executes 100 iterations per VU for a maximum duration of 1 minute.
+This script has two scenarios, `contacts` and `news`, which run in sequence:
+1. At the beginning of the test, k6 starts the `contacts` scenario. 50 VUs try to run as many iterations as possible for 30 seconds.
+1. After 30 seconds, k6 starts the `news` scenario. 50 VUs each try to run 100 iterations in one minute.
 
-Note the use of `startTime`, and different `exec` functions for each scenario.
+Along with `startTime` `duration`, and `maxDuration`, note the different test logic for each scenario.
 
 <CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
