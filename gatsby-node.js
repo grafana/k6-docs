@@ -1484,7 +1484,13 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/results-visualization/prometheus/',
-    toPath: '/results-output/real-time/prometheus/',
+    toPath: '/results-output/real-time/prometheus-remote-write/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/real-time/prometheus/',
+    toPath: '/results-output/real-time/prometheus-remote-write/',
     isPermanent: true,
   });
 

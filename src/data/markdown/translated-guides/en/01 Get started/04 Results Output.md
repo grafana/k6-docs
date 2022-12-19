@@ -90,7 +90,7 @@ The available built-in outputs include:
 - [JSON](/results-output/real-time/json)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)
-- [Prometheus](/results-output/real-time/prometheus)
+- [Prometheus](/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](/results-output/real-time/timescaledb)
 - [StatsD](/results-output/real-time/statsd)
 
