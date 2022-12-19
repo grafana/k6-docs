@@ -32,7 +32,7 @@ A WebSocket instance also has the following properties:
 | WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network. |
 | WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `"ArrayBuffer"`. Setting it throws an exception, as k6 does not support the Blob type. |
 | [WebSocket.onmessage](/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | A handler for `message` events. |
-| [WebSocket.onerror](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | A handler for for `error` events. |
+| [WebSocket.onerror](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | A handler for `error` events. |
 | [WebSocket.onopen](/javascript-api/k6-experimental/websockets/websocket/websocket-onopen) | A handler for `open` events. |
 | [WebSocket.onclose](/javascript-api/k6-experimental/websockets/websocket/websocket-onclose) | A handler for `close` events. |
 | [WebSocket.onping](/javascript-api/k6-experimental/websockets/websocket/websocket-onping) | A handler for `ping` events. |

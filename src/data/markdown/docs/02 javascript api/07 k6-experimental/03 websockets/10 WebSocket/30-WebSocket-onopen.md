@@ -6,10 +6,6 @@ excerpt: 'A handler function for WebSocket connection open event.'
 A handler for a WebSocket connection `open` event.
 For multiple, simultaneous event handlers, use [`WebSocket.addEventListener()`](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener).
 
-| Parameter | Type     | Description                                  |
-| --------- | -------- | -------------------------------------------- |
-| handler  | function | The function to call when the event happens. |
-
 ### Example
 
 _A k6 script that initiates a WebSocket connection and sets up a handler for the `open` event._
