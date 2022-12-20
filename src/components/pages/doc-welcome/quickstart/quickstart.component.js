@@ -26,7 +26,7 @@ export const Quickstart = () => {
           urlLocale === 'es'
             ? '/es/empezando/ejecucion-de-k6/'
             : '/get-started/running-k6/',
-        title: `🏎💨 ${t('welcome.quickstart.running-k6.title')}`,
+        title: `🏎️💨 ${t('welcome.quickstart.running-k6.title')}`,
         text: t('welcome.quickstart.running-k6.text'),
       },
       {
