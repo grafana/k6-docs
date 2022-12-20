@@ -30,7 +30,7 @@ You can also stream real-time metrics to the following services:
 - [Amazon CloudWatch](/results-output/real-time/amazon-cloudwatch)
 - [Cloud](/results-output/real-time/cloud)
 - [Datadog](/results-output/real-time/datadog)
-- [Grafana Cloud / Prometheus](/results-output/real-time/grafana-cloud)
+- [Grafana Cloud](/results-output/real-time/grafana-cloud)
 - [InfluxDB](/results-output/real-time/influxdb-grafana)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)
