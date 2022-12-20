@@ -86,10 +86,10 @@ export const localizedMessages = {
     'welcome.quickstart.title': 'Empezar',
     'welcome.quickstart.installation.title': 'Instalación',
     'welcome.quickstart.installation.text':
-      'Ponlo en marcha en un abrir y cerrar de ojos, utilizando un gestor de paquetes, un instalador autónomo o con la imagen de docker oficial.',
+      'Pónlo en marcha en un abrir y cerrar de ojos, utilizando un gestor de paquetes, un instalador autónomo o con la imagen oficial de Docker.',
     'welcome.quickstart.running-k6.title': 'Ejecutando k6',
     'welcome.quickstart.running-k6.text':
-      'Escriba y ejecute su primera prueba de carga localmente usando javascript y la api de k6, añadiendo múltiples usuarios virtuales, Checks y tipos de carga.',
+      'Escriba y ejecute su primera prueba de carga localmente usando JavaScript y la API de k6, añadiendo múltiples usuarios virtuales, checks y tipos de carga.',
     'welcome.quickstart.results-output.title': 'Resultados',
     'welcome.quickstart.results-output.text':
       'Aprende a utilizar los resultados para obtener información práctica sobre el rendimiento de sus aplicaciones.',
