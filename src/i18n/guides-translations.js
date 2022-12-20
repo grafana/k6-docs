@@ -6,13 +6,13 @@ export const localizedMessages = {
     'welcome.quickstart.title': 'Get started',
     'welcome.quickstart.installation.title': 'Installation',
     'welcome.quickstart.installation.text':
-      'Get up and running in no-time, using either a package manager, standalone installer or the official docker image.',
+      'Get up and running in no-time, using either a package manager, standalone installer or the official Docker image.',
     'welcome.quickstart.running-k6.title': 'Running k6',
     'welcome.quickstart.running-k6.text':
-      'Write and execute your first load test locally using javascript and the k6 api, adding multiple virtual users, checks and ramping stages',
+      'Write and execute your first load test locally using JavaScript and the k6 API, adding multiple virtual users, checks and ramping stages.',
     'welcome.quickstart.results-output.title': 'Results Output',
     'welcome.quickstart.results-output.text':
-      'Learn how to leverage the results output to gain actionable insight about your applications performance.',
+      "Learn how to leverage the results output to gain actionable insight about your application's performance.",
     'welcome.what-is.title': 'What is k6?',
     'welcome.what-is.description1': `Grafana k6 is an open-source load testing tool that makes performance testing easy and productive for engineering teams. k6 is free, developer-centric, and extensible.`,
     'welcome.what-is.description2': `Using k6, you can test the reliability and performance of your systems and catch performance regressions and problems earlier. k6 will help you to build resilient and performant applications that scale.`,
