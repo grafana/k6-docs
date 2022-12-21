@@ -12,9 +12,10 @@ export const docPageHit =
   (clickHandler) =>
   ({ hit }) => {
     const hitTitleKey = hit.heading ? getKeyByValue(hit, hit.heading) : 'title';
-    const hitContentKey = hit.excerpt
-      ? getKeyByValue(hit, hit.excerpt)
-      : 'content';
+    const hitContentKey =
+      hit._snippetResult.content.matchLevel === 'none' && hit.excerpt
+        ? getKeyByValue(hit, hit.excerpt)
+        : 'content';
 
     return (
       <div>
