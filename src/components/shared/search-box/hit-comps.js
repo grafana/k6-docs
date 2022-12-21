@@ -5,10 +5,19 @@ import { Highlight, Snippet } from 'react-instantsearch-dom';
 
 import styles from './search-box.module.scss';
 
+const getKeyByValue = (object, value) =>
+  Object.keys(object).find((key) => object[key] === value);
+
 export const docPageHit =
   (clickHandler) =>
-  ({ hit }) =>
-    (
+  ({ hit }) => {
+    const hitTitleKey = hit.heading ? getKeyByValue(hit, hit.heading) : 'title';
+    const hitContentKey =
+      hit._snippetResult.content.matchLevel === 'none' && hit.excerpt
+        ? getKeyByValue(hit, hit.excerpt)
+        : 'content';
+
+    return (
       <div>
         <Link
           to={`${hit.slug}`}
@@ -20,14 +29,15 @@ export const docPageHit =
             size={'sm'}
             className={`link ${styles.hitHeading}`}
           >
-            <Highlight attribute={'title'} hit={hit} tagName={'mark'} />
+            <Highlight attribute={hitTitleKey} hit={hit} tagName={'mark'} />
           </Heading>
         </Link>
         <Snippet
-          attribute={'content'}
+          attribute={hitContentKey}
           hit={hit}
           tagName={'mark'}
           className={styles.excerpt}
         />
       </div>
     );
+  };
