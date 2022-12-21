@@ -182,12 +182,13 @@ const extensionsQuery = `{extensionsData: docExtensionsJson {
 
 // additional config
 const settings = {
-  attributesToSnippet: ['content:20'],
+  attributesToSnippet: ['content:20', 'excerpt'],
   attributeForDistinct: 'title',
   distinct: true,
 };
 
 const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
+// eslint-disable-next-line no-console
 console.warn({ indexName, env: process.env.GATSBY_ALGOLIA_INDEX_NAME });
 
 const queries = [
