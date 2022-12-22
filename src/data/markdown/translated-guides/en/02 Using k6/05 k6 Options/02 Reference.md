@@ -421,7 +421,7 @@ $ k6 cloud --exit-on-running script.js
 ## Hosts
 
 An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
-Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
+Linux/Unix or `C:\Windows\System32\drivers\etc\hosts` on Windows. For instance, you could set
 up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
 You can also redirect only from certain ports or to certain ports.

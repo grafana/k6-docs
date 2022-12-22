@@ -452,7 +452,7 @@ $ k6 cloud --exit-on-running script.js
 
 ## Hosts
 
-Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\\Windows\\System32\\drivers\\etc\\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
+Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\Windows\System32\drivers\etc\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
 
 A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo desde ciertos puertos y/o hacia ciertos puertos.
 
