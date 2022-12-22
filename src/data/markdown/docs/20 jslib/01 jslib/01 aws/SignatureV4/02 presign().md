@@ -39,7 +39,7 @@ The `presign` operation returns an Object with the following properties.
 
 | Property | Type   | Description                                                                |
 | :------- | :----- | :------------------------------------------------------------------------- |
-| headers  | Object | The pre-signed request's headers to use in the context of a k6 HTTP request |
+| headers  | Object | The pre-signed request headers to use in the context of a k6 HTTP request |
 | url      | string | The pre-signed url to use in the context of a k6 HTTP request               |
 
 ### Example
