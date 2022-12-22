@@ -424,7 +424,9 @@ An object with overrides to DNS resolution, similar to what you can do with `/et
 Linux/Unix or `C:\Windows\System32\drivers\etc\hosts` on Windows. For instance, you could set
 up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
-You can also redirect only from certain ports or to certain ports.
+Starting from v0.28.0, you can also redirect only from certain ports or to certain ports.
+
+Starting from v0.42.0, you can use an asterisk (`*`) at the start of the host name, to avoid repetition. For example, `*.k6.io` would apply the override for all subdomains of `k6.io`.
 
 <Blockquote mod="note" title="">
 
@@ -444,14 +446,14 @@ export const options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
+    '*.k6.io': '1.2.3.4',  // applies for all subdomains of k6.io
   },
 };
 ```
 
 </CodeGroup>
 
-With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
-it port unless it's port is `443` which will be redirected to port `8443`.
+With the above code any request made to `test.k6.io` or any subdomains of `k6.io` will be redirected to `1.2.3.4` without changing its port, unless the port is `443` which will be redirected to port `8443`.
 
 ## HTTP debug
 
