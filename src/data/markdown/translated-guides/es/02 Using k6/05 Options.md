@@ -456,6 +456,8 @@ Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer co
 
 A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo desde ciertos puertos y/o hacia ciertos puertos.
 
+A partir de la versión v0.42.0 puede utilizar un asterisco (`*`) al principio del nombre del servidor, para evitar repetición. Por ejemplo, `*.k6.io` aplicaría la anulación para todos los subdominios de `k6.io`.
+
 > ### ⚠️ Tenga en cuenta que!
 >
 > Esto no modifica la cabecera HTTP Host propiamente dicha, sino hacia dónde se dirigirá.
@@ -471,13 +473,14 @@ export const options = {
   hosts: {
     'test.k6.io': '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
+    '*.k6.io': '1.2.3.4',  // aplica para todos los subdominios de k6.io
   },
 };
 ```
 
 </CodeGroup>
 
-Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4` sin cambiar su puerto a menos que su puerto sea `443` que será redirigido al puerto `8443`.
+Con el código anterior cualquier petición hecha a `test.k6.io` o cualquier subdominio de `k6.io` será redirigida a `1.2.3.4` sin cambiar su puerto, a menos que su puerto sea `443` que será redirigido al puerto `8443`.
 
 ## HTTP Debug
 
