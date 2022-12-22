@@ -21,7 +21,7 @@ The first parameter of the `sign` method consists of an Object with the followin
 | applyChecksum | boolean                  | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is required for AWS Glacier and Amazon S3 and optional for every other AWS service as of late 2017. |
 |               |                          |                                                                                                                                                                                                                                                                         |
 
-You can override the SignatureV4's options in the context of this specific request. To do this, pass a second parameter to the `sign` method, which is an Object with the following parameters.
+You can override SignatureV4 options in the context of this specific request. To do this, pass a second parameter to the `sign` method, which is an Object with the following parameters.
 
 | Property          | Type        | Description                                                                |
 | :---------------- | :---------- | :------------------------------------------------------------------------- |
