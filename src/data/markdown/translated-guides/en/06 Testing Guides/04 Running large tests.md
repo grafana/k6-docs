@@ -5,10 +5,9 @@ excerpt: 'How to run large-scale k6 tests without distributed-execution'
 
 This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution.
 
-The common misconception of many load testers is that [distributed execution](#distributed-execution) (ability to launch a load test on multiple machines) is required to generate large load. This is not the case with k6.
+A common misconception of many load testers is that [distributed execution](#distributed-execution) (the ability to launch a load test from multiple machines) is required to generate large load. This is not the case with k6.
 
-k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine.
-A single instance of k6 is often enough to generate load of 30,000-40,000 simultaneous users (VUs). This number of VUs can generate upwards of 300,000 requests per second (RPS).
+k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine. Depending on the available resources, and taking into consideration some of the advice below, a single instance of k6 is able to run 30,000-40,000 simultaneous users (VUs). In some cases this number of VUs can generate up to 300,000 HTTP requests per second (RPS).
 
 Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 will likely be sufficient for your needs.
 
@@ -16,7 +15,7 @@ Below we will explore what hardware and considerations are needed for generating
 
 ## OS fine-tuning
 
-The following OS changes allow k6 to use the **full network capacity** of the machine for maximum performance.
+The following OS changes for GNU/Linux allow k6 to use the **full network capacity** of the machine for maximum performance.
 
 ```bash
 sysctl -w net.ipv4.ip_local_port_range="1024 65535"
@@ -48,8 +47,8 @@ Unlike many other load testing tools, k6 is heavily multi-threaded. It will effe
 The amount of CPU you need depends on your test files (sometimes called test script).
 Regardless of the test file, you can assume that large tests require a significant amount of CPU power.
 We recommend that you size the machine to have at least 20% idle cycles (up to 80% used by k6, 20% idle).
-If k6 uses 100% to generate load, it won't have enough CPU to measure the responses correctly.
-This may cause the result metrics to have a much larger response time than in reality.
+If k6 uses 100% of the CPU to generate load, the test will experience throttling limits, and this may
+cause the result metrics to have a much larger response time than in reality.
 
 ### Memory
 
@@ -58,7 +57,9 @@ Memory consumption heavily depends on your test scenarios. To estimate the memor
 run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs.
 
 Simple tests will use ~1-5MB per VU. (1000VUs = 1-5GB).
-Tests that are using file uploads can consume tens of megabytes per VU.
+Tests that are using file uploads, or load large JS modules, can consume tens of megabytes per VU.
+Keep in mind that each VU has a copy of all JS modules your test uses.
+If you need to share memory between VUs, consider using [SharedArray](/javascript-api/k6-data/sharedarray/), or an external data store, such as [Redis](/javascript-api/k6-experimental/redis/).
 
 ## General advice
 
@@ -66,7 +67,7 @@ Tests that are using file uploads can consume tens of megabytes per VU.
 
 When running large stress tests, your script can't assume anything about the HTTP response.
 Often performance tests are written with a "happy path" in mind.
-For example, a "happy path" check like the one below is something that we see in k6 often.
+For example, a "happy path" check like the one below is something that we often see in k6 scripts.
 
 ```javascript
 import { check } from 'k6';
@@ -81,8 +82,8 @@ const checkRes = check(res, {
 Code like this runs fine when the system under test (SUT) is not overloaded and returns proper responses.
 When the system starts to fail, the above check won't work as expected.
 
-The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if server is failing.
-In such case, the check itself won't work as expected and error similar to the one below will be returned:
+The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if the server is failing.
+In such case, the check itself won't work as expected and an error similar to the one below will be returned:
 
 ```bash
 ERRO[0625] TypeError: Cannot read property 'length' of undefined
@@ -104,10 +105,10 @@ const checkRes = check(res, {
 
 </CodeGroup>
 
-### Monitor the load generator server
+### Monitor the load generator machine
 
 If you are running a test for the first time, it's a good idea to keep an eye on the available resources while the test is running.
-The easiest way to do so is to SSH to the server with 3 sessions:
+The easiest way to do so is to start 3 terminals on the machine:
 
 1. To run k6
 2. To monitor CPU and memory
@@ -125,26 +126,26 @@ The k6 settings listed below will unlock additional performance benefits when ru
 
 ### --compatibility-mode=base
 
-The most impactful option to improve k6 performance is to use [`--compatibility-mode=base`](/using-k6/k6-options/reference#compatibility-mode) to disable the internal [Babel](https://babeljs.io/) transpilation and run a k6 script written in ES5.1.  
+The most impactful option to improve k6 performance is to use [`--compatibility-mode=base`](/using-k6/k6-options/reference#compatibility-mode) to disable the internal [Babel](https://babeljs.io/) transpilation and run a k6 script written in ES5.1.
 
 
 ```bash
-# compatibility-mode=base disables the Babel transpilation and the inclusion of corejs 
+# compatibility-mode=base disables the Babel transpilation and the inclusion of corejs
 k6 run --compatibility-mode=base yourscript.es5.js
 ```
 
 > **Background**
-> 
+>
 > Most k6 script examples and documentation are written in ES6+.
-> 
+>
 > By default, k6 transpiles ES6+ code to ES5.1 using babel and loads corejs to enable commonly used APIs.
 > This works very well for 99% of use cases, but it adds significant overheard with large tests.
-> 
+>
 > When running a ES5.1 script instead of the original ES6+ script, k6 can use about 50-85% of memory and significantly reduce the CPU load and startup time.
 
-You can use [webpack](https://webpack.js.org/) to transpile the scripts outside of k6. We have prepared a [webpack.config example](https://github.com/grafana/k6-hardware-benchmark/blob/master/webpack.config.js) that transforms ES6+ code to ES5.1 code for k6. 
+You can use [webpack](https://webpack.js.org/) to transpile the scripts outside of k6. We have prepared a [webpack.config example](https://github.com/grafana/k6-hardware-benchmark/blob/master/webpack.config.js) that transforms ES6+ code to ES5.1 code for k6.
 
-In the [k6-hardware-benchmark](https://github.com/grafana/k6-hardware-benchmark) repository, you can use it as follows: 
+In the [k6-hardware-benchmark](https://github.com/grafana/k6-hardware-benchmark) repository, you can use it as follows:
 
 ```bash
 git clone https://github.com/grafana/k6-hardware-benchmark/
@@ -272,13 +273,9 @@ If you make 50M requests with 100 failures, this is generally a good result (0.0
 
 ## Benchmarking k6 on AWS
 
-We have executed a few large tests on different EC2 machines to see how much load k6 can generate.
-Our general observation is that k6 scales proportionally to the hardware. 2x larger machine can generate 2x more traffic.
-The limit to this scalability is in the number of open connections. A single Linux machine can open up to `65 535` sockets per IP.
-This means that maximum of 65k requests can be executed simultaneously on a single machine.
-The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650 000.
+We have executed a few large tests on different EC2 machines to see how much load k6 can generate. Our general observation is that k6 scales proportionally to the hardware. A machine with 2x more resources can generate roughly 2x more traffic. The limit to this scalability is in the number of open connections. A single Linux machine can open up to 65,535 sockets per IP. This means that a maximum of 65k requests can be sent simultaneously on a single machine. The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650,000.
 
-### Real-life test of a website.
+### Real-life test of a website
 
 Testing the theoretical limits is fun, but that's not the point of this benchmark.
 The point of this benchmark is to give users an indication of how much traffic k6 can generate when executing complicated, real-life tests.
