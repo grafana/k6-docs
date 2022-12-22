@@ -21,7 +21,8 @@ The first parameter of the `presign` method consists of an Object with the follo
 | applyChecksum | boolean                  | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is required for AWS Glacier and Amazon S3 and optional for every other AWS service as of late 2017. |
 |               |                          |                                                                                                                                                                                                                                                                         |
 
-It is also possible to provide further options and override the SignatureV4's options in the context of this specific request. This is done by passing a second parameter to the `presign` method, which is an Object with the following parameters.
+You can provide further options and override SignatureV4 options in the context of this specific request.
+To do this, pass a second parameter to the `presign` method, which is an Object with the following parameters.
 
 | Property          | Type          | Description                                                                |
 | :---------------- | :------------ | :------------------------------------------------------------------------- |
