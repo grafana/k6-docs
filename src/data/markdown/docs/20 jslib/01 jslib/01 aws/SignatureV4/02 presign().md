@@ -4,7 +4,7 @@ description: 'Signaturev4.presign pre-signs a URL with the AWS Signature V4 algo
 excerpt: 'SignatureV4.sign pre-signs a URL with the AWS Signature V4 algorithm'
 ---
 
-`SignatureV4.presign()` pre-signs a URL with the AWS Signature V4 algorithm. Given an HTTP request description, it returns a new HTTP request with the AWS signature v4 authorization added. It returns an Object holding a `url` containing the authorization information encoded in its query string, ready to use in the context of k6's HTTP call.
+`SignatureV4.presign()` pre-signs a URL with the AWS Signature V4 algorithm. Given an HTTP request description, it returns a new HTTP request with the AWS signature v4 authorization added. It returns an Object holding a `url` containing the authorization information encoded in its query string, ready to use in the context of a k6 HTTP call.
 
 ### Parameters
 
