@@ -40,12 +40,10 @@ This includes including ads, images, documents, etc.
 
 For more about running k6, refer to the [Running k6 guide](/get-started/running-k6).
 
-## Having trouble? Try the HAR converter
+## Trouble? Try the HAR converter
 
-Some users have reported `413` errors trying to upload long recordings.
-In these cases, the easiest fix is to use the [HAR converter](/test-authoring/recording-a-session/har-converter/), which powers the browser recorder.
-
-The HAR converter creates a k6 script from the HTTP requests included in a HAR file.
+Some users have reported `413` errors when they try to upload long recordings.
+In these cases, the easiest fix is to use the [HAR converter](/test-authoring/recording-a-session/har-converter/), which creates a k6 script from the HTTP requests included in a HAR file (it also powers the browser recorder).
 
 Besides avoiding the `413` error,
 the HAR converter catches some edge-case behavior that the browser recorder won't.
