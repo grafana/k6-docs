@@ -9,8 +9,7 @@ To use it in a k6 test script, you need the following:
 - A bundled k6 extension that includes the disruptor.
 Refer to the [Installation](/javascript-api/xk6-disruptor/get-started/installation) section  for instructions on how to get this custom build.
 
-- Access to the Kubernetes cluster that the system under test runs on.
- To access, you must have the credentials to access the cluster in a [kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
+- Credentials to access the cluster in a [kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) file.
  Ensure that this file is pointed to by the `KUBECONFIG` environment variable or that it is located at the default location, `$HOME/.kube/config`.
 
   <Blockquote mod="note">
@@ -20,9 +19,11 @@ Refer to the [Installation](/javascript-api/xk6-disruptor/get-started/installati
   </Blockquote>
 
 
-- The [grafana/xk6-disruptor-agent](https://github.com/grafana/xk6-disruptor/pkgs/container/xk6-disruptor-agent) image to the [disruptor agent](https://github.com/grafana/xk6-disruptor/blob/main/docs/01-development/02-architecture.md) into the disruption targets.
+- Access to the [grafana/xk6-disruptor-agent](https://github.com/grafana/xk6-disruptor/pkgs/container/xk6-disruptor-agent) image used by the [disruptor agent](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works/).
 
-  Kubernetes clusters can be configured to restrict the download of images from public repositories. You need to ensure this image is available in the cluster where the system under test is running. Additionally, the xk6-disruptor-agent must run with network access privileges. Kubernetes clusters [can be configured to restrict the privileges of containers](https://kubernetes.io/docs/concepts/security/pod-security-admission/).
+  Kubernetes clusters can be configured to restrict the download of images from public repositories. You need to ensure this image is available in the cluster where the system under test is running.
+  
+ Additionally, the xk6-disruptor-agent must run with network access privileges. Kubernetes clusters [can be configured to restrict the privileges of containers](https://kubernetes.io/docs/concepts/security/pod-security-admission/).
 If you find an error similar to the following when using the xk6-disruptor, contact your cluster administrator and request the necessary privileges.
 
   ```txt
@@ -30,5 +31,5 @@ If you find an error similar to the following when using the xk6-disruptor, cont
   ```
 
 
-You also need to ensure your test application is accessible from the machine where the tests run.
+- Ensure your test application is accessible from the machine where the tests run.
 Refer to [Expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section for instructions on how to make your application available from outside the Kubernetes cluster.

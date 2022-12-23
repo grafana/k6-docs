@@ -315,7 +315,7 @@ export const options = {
 
 ## Test setup
 
-To run these tests, you need to deploy the `httpbin` application.
+To run this test, you need to deploy the `httpbin` application.
 The application must also be accessible using an external IP available in the `SVC_IP` environment variable.
 
 The [manifests](#manifests) below define the necessary resources to deploy the application and expose it as a LoadBalancer service.
