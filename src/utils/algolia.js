@@ -18,7 +18,7 @@ const processMdxEntry = (
   const {
     mdxAST,
     objectID,
-    frontmatter: { title, redirect, slug: customSlug },
+    frontmatter: { title, excerpt, heading, redirect, slug: customSlug },
   } = entry;
   if (redirect) {
     // avoid pushing empty records
@@ -88,6 +88,8 @@ const processMdxEntry = (
   while (pointer--) {
     cache[pointer] = {
       title,
+      excerpt,
+      heading,
       objectID: `${objectID}-${pointer}`,
       slug: removeParametersFromJavaScriptAPISlug(
         pageSlug.startsWith('/') ? pageSlug : `/${pageSlug}`,
@@ -114,8 +116,8 @@ const flatten = (arr, kind = 'docs') => {
 // custom index entry for extensions page
 const processExtensions = (extensionsList) =>
   extensionsList.map((extension) => ({
-    title: extension.name,
-    objectID: `extensions-${extension.name}`,
+    title: `${extension.name} extension`,
+    objectID: `${extension.name}-extension`,
     slug: '/extensions/',
     content: extension.description,
     _tags: ['en', 'es'],
@@ -135,6 +137,8 @@ const docPagesQuery = `{
           title
           redirect
           slug
+          excerpt
+          heading
         }
         mdxAST
       }
@@ -157,6 +161,8 @@ const guidesPagesQuery = `{
           title
           redirect
           slug
+          excerpt
+          heading
         }
         mdxAST
       }
@@ -176,12 +182,14 @@ const extensionsQuery = `{extensionsData: docExtensionsJson {
 
 // additional config
 const settings = {
-  attributesToSnippet: ['content:20'],
+  attributesToSnippet: ['content:20', 'excerpt'],
   attributeForDistinct: 'title',
   distinct: true,
 };
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'k6_docs';
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_k6_docs';
+// eslint-disable-next-line no-console
+console.warn({ indexName, env: process.env.GATSBY_ALGOLIA_INDEX_NAME });
 
 const queries = [
   {

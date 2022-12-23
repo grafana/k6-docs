@@ -6,7 +6,7 @@ excerpt: 'Do you know how many users your site can handle? This guide answers th
 
 Bad user experience impacts business. This is the reason you might want to know how many concurrent users your website can handle appropriately.
 
-Load testing helps you simulate those users to asses your system performance and know if your website or web app meets your goals.
+Load testing helps you simulate those users to assess your system performance and know if your website or web app meets your goals.
 
 This guide provides guidance and recommendations to get started, creating user scenarios, and avoiding common pitfalls to load test a website.
 

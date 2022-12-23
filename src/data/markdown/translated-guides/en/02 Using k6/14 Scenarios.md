@@ -76,32 +76,39 @@ For the list of the executors, refer to the [Executor guide](/using-k6/scenarios
 
 ## Scenario example
 
-The following script defines two minimal scenarios:
+This script combines two scenarios, with sequencing:
 
-<CodeGroup labels={["scenario-example.js"]} lineNumbers={[true]}>
+- The `shared_iter_scenario` starts immediately. Ten VUs try to use 100 iterations as quickly as possible (some VUs may use more iterations than others).
+- The `per_vu_scenario` starts after 10s. In this case, ten VUs each run ten iterations.
+
+Which scenario takes longer?
+You can run to discover.
+You can also add a `maxDuration` property to one or both scenarios.
 
 ```javascript
-import http from 'k6/http';
+import http from "k6/http";
 
 export const options = {
   scenarios: {
-    example_scenario: {
-      executor: 'shared-iterations',
-      startTime: '0s'
+    shared_iter_scenario: {
+      executor: "shared-iterations",
+      vus: 10,
+      iterations: 100,
+      startTime: "0s",
     },
-    another_scenario: {
-      executor: 'shared-iterations',
-      startTime: '5s'
+    per_vu_scenario: {
+      executor: "per-vu-iterations",
+      vus: 10,
+      iterations: 10,
+      startTime: "10s",
     },
   },
 };
 
 export default function () {
-  http.get('https://test.k6.io/');
+  http.get("https://test.k6.io/");
 }
 ```
-
-</CodeGroup>
 
 If you run a script with scenarios, k6 output includes high-level information about each one.
 For example, if you run the preceding script, `k6 run scenario-example.js`,
@@ -114,17 +121,12 @@ then k6 reports the scenarios as follows:
      script: scenario-example.js
      output: -
 
-  scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
-           * shared_iter_scenario: 100 iterations shared among 20 VUs
-             (maxDuration: 10s, gracefulStop: 30s)
-           * per_vu_scenario: 20 iterations for each of 10 VUs
-             (maxDuration: 10m0s, startTime: 10s, gracefulStop: 30s)
-
-
-running (00m15.1s), 00/30 VUs, 300 complete and 0 interrupted iterations
-shared_iter_scenario ✓ [======================================] 20 VUs  03.0s/10s       100/100 shared iters
-per_vu_scenario      ✓ [======================================] 10 VUs  00m05.1s/10m0s  200/200 iters, 20 per VU
-
+  scenarios: (100.00%) 2 scenarios, 20 max VUs, 10m40s max duration (incl. grace
+ful stop):
+           * shared_iter_scenario: 100 iterations shared among 10 VUs (maxDurati
+on: 10m0s, gracefulStop: 30s)
+           * per_vu_scenario: 10 iterations for each of 10 VUs (maxDuration: 10m
+0s, startTime: 10s, gracefulStop: 30s)
 ```
 
 </CodeGroup>
@@ -146,33 +148,46 @@ The full output includes the summary metrics, like any default end-of-test summa
      script: scenario-example.js
      output: -
 
-  scenarios: (100.00%) 2 scenarios, 30 max VUs, 10m40s max duration (incl. graceful stop):
-           * shared_iter_scenario: 100 iterations shared among 20 VUs (maxDuration: 10s, gracefulStop: 30s)
-           * per_vu_scenario: 20 iterations for each of 10 VUs (maxDuration: 10m0s, startTime: 10s, gracefulStop: 30s)
+  scenarios: (100.00%) 2 scenarios, 20 max VUs, 10m40s max duration (incl. grace
+ful stop):
+           * shared_iter_scenario: 100 iterations shared among 10 VUs (maxDurati
+on: 10m0s, gracefulStop: 30s)
+           * per_vu_scenario: 10 iterations for each of 10 VUs (maxDuration: 10m
+0s, startTime: 10s, gracefulStop: 30s)
 
 
-running (00m15.1s), 00/30 VUs, 300 complete and 0 interrupted iterations
-shared_iter_scenario ✓ [======================================] 20 VUs  03.0s/10s       100/100 shared iters
-per_vu_scenario      ✓ [======================================] 10 VUs  00m05.1s/10m0s  200/200 iters, 20 per VU
+running (00m12.8s), 00/20 VUs, 200 complete and 0 interrupted iterations
+shared_iter_scenario ✓ [ 100% ] 10 VUs  00m02.7s/10m0s  100/100 shared iters
+per_vu_scenario      ✓ [ 100% ] 10 VUs  00m02.8s/10m0s  100/100 iters, 10 per V
 
-     data_received..................: 3.6 MB 240 kB/s
-     data_sent......................: 40 kB  2.6 kB/s
-     http_req_blocked...............: avg=54.48ms  min=4.1µs    med=8.23µs   max=747.12ms p(90)=47.99ms  p(95)=567.6ms 
-     http_req_connecting............: avg=27.62ms  min=0s       med=0s       max=281.12ms p(90)=26.86ms  p(95)=279.32ms
-     http_req_duration..............: avg=210.21ms min=172.25ms med=204.01ms max=1.87s    p(90)=206.18ms p(95)=306.99ms
-       { expected_response:true }...: avg=210.21ms min=172.25ms med=204.01ms max=1.87s    p(90)=206.18ms p(95)=306.99ms
-     http_req_failed................: 0.00%  ✓ 0         ✗ 300 
-     http_req_receiving.............: avg=1.77ms   min=82.11µs  med=149.11µs max=186.39ms p(90)=233.56µs p(95)=304.91µs
-     http_req_sending...............: avg=42.26µs  min=10.68µs  med=37.88µs  max=220.62µs p(90)=47.68µs  p(95)=70.59µs 
-     http_req_tls_handshaking.......: avg=23.02ms  min=0s       med=0s       max=410.87ms p(90)=20.91ms  p(95)=230.64ms
-     http_req_waiting...............: avg=208.39ms min=172.02ms med=203.78ms max=1.69s    p(90)=205.97ms p(95)=233.38ms
-     http_reqs......................: 300    19.886852/s
-     iteration_duration.............: avg=264.92ms min=172.48ms med=204.54ms max=1.87s    p(90)=680.75ms p(95)=751.6ms 
-     iterations.....................: 300    19.886852/s
-     vus............................: 1      min=0       max=20
-     vus_max........................: 30     min=30      max=30
-
+     data_received..................: 2.4 MB 188 kB/s
+     data_sent......................: 26 kB  2.1 kB/s
+     http_req_blocked...............: avg=64.26ms  min=1.56µs   med=8.28µs   max
+=710.86ms p(90)=57.63ms  p(95)=582.36ms
+     http_req_connecting............: avg=28.6ms   min=0s       med=0s       max
+=365.92ms p(90)=20.38ms  p(95)=224.44ms
+     http_req_duration..............: avg=204.25ms min=169.55ms med=204.36ms max
+=407.95ms p(90)=205.96ms p(95)=239.32ms
+       { expected_response:true }...: avg=204.25ms min=169.55ms med=204.36ms max
+=407.95ms p(90)=205.96ms p(95)=239.32ms
+     http_req_failed................: 0.00%  ✓ 0         ✗ 200 
+     http_req_receiving.............: avg=195.54µs min=53.87µs  med=162.55µs max
+=1.52ms   p(90)=260.6µs  p(95)=317.89µs
+     http_req_sending...............: avg=38.16µs  min=7.61µs   med=37.99µs  max
+=167.54µs p(90)=50.16µs  p(95)=60.18µs 
+     http_req_tls_handshaking.......: avg=24.03ms  min=0s       med=0s       max
+=274.05ms p(90)=20.81ms  p(95)=212.74ms
+     http_req_waiting...............: avg=204.01ms min=169.32ms med=204.11ms max
+=407.82ms p(90)=205.74ms p(95)=239.01ms
+     http_reqs......................: 200    15.593759/s
+     iteration_duration.............: avg=268.83ms min=169.78ms med=204.67ms max
+=952.85ms p(90)=444.97ms p(95)=786.52ms
+     iterations.....................: 200    15.593759/s
+     vus............................: 10     min=0       max=10
+     vus_max........................: 20     min=20      max=20
 ```
+
+
 
 </CodeGroup>
 

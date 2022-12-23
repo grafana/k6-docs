@@ -641,7 +641,7 @@
     {
       "name": "xk6-output-dynatrace",
       "description": "Export results to Dynatrace",
-      "url": "https://github.com/henrikrexed/xk6-output-dynatrace",
+      "url": "https://github.com/dynatrace/xk6-output-dynatrace",
       "logo": "",
       "author": {
         "name": "Henrik Rexed",

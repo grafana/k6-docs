@@ -5,22 +5,44 @@ excerpt: "k6 websockets experimental API"
 
 <ExperimentalBlockquote />
 
-This experimental API implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+This experimental API implements the browser [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) with additional k6-specific functionalities (cookies, tags, headers and so on).
 
-With some caveats:
+The main difference between this module and [`k6/ws`](/javascript-api/k6-ws/) is that this module uses a global event loop instead of a local one.
+A global event loop lets a single VU have multiple concurrent connections, which improves performance.
 
-- The [binaryType](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default ArrayBuffer and setting it panics as k6 does not support Blob.
+The `WebSocket API` is not fully implemented, and we're working on it, but we believe it's usable for most users. So whether you're writing a new WebSocket test, or currently using the `k6/ws` module, we invite you to give it a try, and report any issues in the project's [issue tracker](https://github.com/grafana/xk6-websockets/). Our midterm goal is to make this module part of k6 core, and long-term to replace the [`k6/ws`](/javascript-api/k6-ws/) module.
 
 
+| Class/Method | Description |
+| ------------ | ----------- |
+| [Params](/javascript-api/k6-experimental/websockets/params/)  | Used for setting various WebSocket connection parameters such as headers, cookie jar, compression, etc. |
+| [WebSocket(url, protocols, params)](/javascript-api/k6-experimental/websockets/websocket) | Constructs a new WebSocket connection. |
+| [WebSocket.close()](/javascript-api/k6-experimental/websockets/websocket/websocket-close) | Close the WebSocket connection. |
+| [WebSocket.ping()](/javascript-api/k6-experimental/websockets/websocket/websocket-ping) | Send a ping. |
+| [WebSocket.send(data)](/javascript-api/k6-experimental/websockets/websocket/websocket-send) | Send string data. |
+| [WebSocket.addEventListener(event, handler)](/javascript-api/k6-experimental/websockets/websocket/websocket-addeventlistener) | Add an event listener on the connection for specific event. |
 
-| Class                                       | Description                                                                                    |
-| :------------------------------------------ | :--------------------------------------------------------------------------------------------- |
-| [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)     | Constructs a new WebSocket connection |
+A WebSocket instance also has the following properties:
+
+<!-- vale off -->
+| Class/Property | Description |
+| -------------- | ----------- |
+| WebSocket.readyState | The current state of the connection. Could be one of [the four states](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState). |
+| WebSocket.url | The URL of the connection as resolved by the constructor. |
+| WebSocket.bufferedAmount | The number of bytes of data that have been queued using calls to `send()` but not yet transmitted to the network. |
+| WebSocket.binaryType | The [`binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType) is by default `"ArrayBuffer"`. Setting it throws an exception, as k6 does not support the Blob type. |
+| [WebSocket.onmessage](/javascript-api/k6-experimental/websockets/websocket/websocket-onmessage) | A handler for `message` events. |
+| [WebSocket.onerror](/javascript-api/k6-experimental/websockets/websocket/websocket-onerror) | A handler for `error` events. |
+| [WebSocket.onopen](/javascript-api/k6-experimental/websockets/websocket/websocket-onopen) | A handler for `open` events. |
+| [WebSocket.onclose](/javascript-api/k6-experimental/websockets/websocket/websocket-onclose) | A handler for `close` events. |
+| [WebSocket.onping](/javascript-api/k6-experimental/websockets/websocket/websocket-onping) | A handler for `ping` events. |
+| [WebSocket.onpong](/javascript-api/k6-experimental/websockets/websocket/websocket-onpong) | A handler for `pong` events. |
+<!-- vale on -->
 
 ## Example
 
 This example shows:
-- How a single VU can run multiple WebSockets connections asynchronously
+- How a single VU can run multiple WebSockets connections asynchronously.
 - How to use the timeout and interval functions to stop the connections after some period.
 
 <CodeGroup labels={["example-websocket.js"]} lineNumbers={[]} showCopyButton={[true]}>

@@ -33,3 +33,11 @@ xk6-disruptor is in the alpha phase, undergoing active development. k6 doesn't g
 Until this extension reaches v1.0 release, your k6 scripts may need to be updated on each release .
 
 </Blockquote>
+
+## Your first test with xk6-disruptor
+
+1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements).
+
+2. [Install](/javascript-api/xk6-disruptor/get-started/installation) the xk6-disrutor binary in your system.
+
+3. Run the [Injecting HTTP faults to a Pod](/javascript-api/xk6-disruptor/examples/inject-http-faults-into-pod) example.

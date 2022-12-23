@@ -11,6 +11,7 @@ The library exposes a couple of configuration and client classes allowing to int
 - [SecretsManagerClient](/javascript-api/jslib/aws/secretsmanagerclient): a class to list, get, create, update, and delete secrets from the AWS secrets manager service.
 - [KMSClient](/javascript-api/jslib/aws/kmsclient): a class to list and generate keys from the AWS Key Management Service.
 - [SystemsManagerClient](/javascript-api/jslib/aws/systemsmanagerclient): a class to fetch parameters from the AWS Systems Manager Service.
+- [SignatureV4](/javascript-api/jslib/aws/signaturev4): a class to sign and pre-sign requests to AWS services using the [Signature V4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) algorithm.
 - [AWSConfig](/javascript-api/jslib/aws/awsconfig/): a class is used by each client classes to provide them access to AWS credentials as well as configuration.
 
 > ⭐️ Source code available on [GitHub](https://github.com/grafana/k6-jslib-aws). 

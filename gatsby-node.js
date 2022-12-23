@@ -1484,7 +1484,13 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/results-visualization/prometheus/',
-    toPath: '/results-output/real-time/prometheus/',
+    toPath: '/results-output/real-time/prometheus-remote-write/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/real-time/prometheus/',
+    toPath: '/results-output/real-time/prometheus-remote-write/',
     isPermanent: true,
   });
 
@@ -1597,6 +1603,12 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/using-k6/test-life-cycle/',
     toPath: '/using-k6/test-lifecycle/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/es/visualizacion-de-resultados/influxdb-+-grafana/',
+    toPath: '/es/visualizacion-de-resultados/influxdb-grafana/',
     isPermanent: true,
   });
 

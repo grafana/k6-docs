@@ -4,6 +4,14 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.16.0 `(2022-12-15)`
+- Update the tag filter to allow custom input for tags values
+- Customisable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
+- Fix saving the filter otions in the insights panel
+
+### v3.15.3 `(2022-12-5)`
+- Fix long test runs are not aborted when having too many metrics
+
 ### v3.15.2 `(2022-11-22)`
 - Fix show password visibility toggle in account registration form
 - Fix display actual API error on password reset page

@@ -38,7 +38,7 @@ import {
   randomItem,
   uuidv4,
   findBetween,
-} from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
+} from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export default function () {
   const res = http.post(`https://test-api.k6.io/user/register/`, {

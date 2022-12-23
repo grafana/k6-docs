@@ -452,9 +452,12 @@ $ k6 cloud --exit-on-running script.js
 
 ## Hosts
 
-Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\\Windows\\System32\\drivers\\etc\\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
+Un objeto con anulaciones de la resolución DNS, similar a lo que puede hacer con `/etc/hosts` en Linux/Unix o `C:\Windows\System32\drivers\etc\hosts` en Windows. Por ejemplo, puede configurar una anulación que dirija todas las solicitudes de test.k6.io a 1.2.3.4.
 
-A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo desde ciertos puertos y/o hacia ciertos puertos.
+También es posible ampliar o especificar la anulación:
+- Redirigiendo desde o hacia puertos en específico.
+- A partir de la version v0.42.0, puede utilizar un asterisco (`*`) al principio del nombre del servidor, para evitar repetición. Por ejemplo, `*.k6.io` aplicaría la anulación para todos los subdominios de `k6.io`.
+
 
 > ### ⚠️ Tenga en cuenta que!
 >
@@ -469,15 +472,17 @@ A partir de la versión v0.28.0 también se soporta el redireccionamiento sólo 
 ```javascript
 export const options = {
   hosts: {
-    'test.k6.io': '1.2.3.4',
+    'test.k6.io':     '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
+    '*.grafana.com':  '1.2.3.4',
   },
 };
 ```
 
 </CodeGroup>
 
-Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4` sin cambiar su puerto a menos que su puerto sea `443` que será redirigido al puerto `8443`.
+Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4`, manteniendo el mismo puerto. Si la petición es al puerto `443`, será redirigida al puerto `8443`. También redigirá peticiones a cualquier subdominio de `grafana.com` a `1.2.3.4`.
+
 
 ## HTTP Debug
 

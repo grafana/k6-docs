@@ -5,18 +5,17 @@ excerpt: "Smoke test is a regular load test, configured for minimal load. You wa
 script or modify an existing script. Let’s see an example."
 ---
 
-Smoke test is a regular load test, configured for minimal load.
-You want to run a smoke test as a sanity check every time you write a new script or modify an existing script.
+A smoke test is a test configured for minimal load.
 
-You want to run a smoke test to:
-
-1.  Verify that your test script doesn't have errors.
-2.  Verify that your system doesn't throw any errors when under minimal load.
+Each time you write a new test script, it's a good idea to run a smoke to test first, which helps you:
+- Verify that your test script doesn't have errors.
+- Verify that your system doesn't throw any errors when under minimal load.
 
 ## Smoke testing in k6
 
-Below you find a sample smoke test script to get you started. You can copy it, change the end points and start testing.
-If you would like to see more comprehensive script, check out our [example section](/examples).
+The following script is a sample smoke test script to get you started.
+You can copy it, change the end points, and start testing.
+If you'd like to see more comprehensive script, check out our [example section](/examples).
 
 <CodeGroup labels={["sample-smoke-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
 
@@ -62,13 +61,14 @@ export default () => {
 
 </CodeGroup>
 
-The VU chart of a smoke test should look similar to this. You want to use only 1 or 2 VUs.
+The VU chart of a smoke test should look similar to this.
+You want to use only 1 or 2 VUs.
 ![Smoke test VU chart](./images/smoke-test.png)
 
-If your smoke test produced any errors, you should either correct the script or fix your environment
-before you continue.
+If your smoke test produces any errors,
+you should either correct the script or fix your environment before you continue.
 
 The k6 output should look similar to this:
 ![Smoke test Terminal Output](./images/smoke-test-terminal-output.png)
 
-Once your smoke test shows 0 errors, as on the screenshot above, you can go to the next step and execute a [load test](/test-types/load-testing) to assess the performance of your system.
+Once your smoke test shows zero errors, you can go to the next step and execute a [load test](/test-types/load-testing) to assess the performance of your system.

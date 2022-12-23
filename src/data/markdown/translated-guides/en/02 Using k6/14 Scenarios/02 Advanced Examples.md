@@ -3,13 +3,25 @@ title: 'Advanced Examples'
 excerpt: 'Advanced Examples using the k6 Scenario API - Using multiple scenarios, different environment variables and tags per scenario.'
 ---
 
-## Using multiple scenarios
+You can use multiple scenarios in one script, and these scenarios can be run in sequence or in parallel.
+Some ways that you can combine scenarios include the following:
+- Have different start times to sequence workloads
+- Add per-scenario tags and environment variables
+- Make scenario-specific thresholds.
+- Use multiple scenarios to run different test logic, so that VUs don't run only the [`default` function](https://k6.io/docs/using-k6/test-lifecycle/).
 
-This configuration will first execute a scenario where 50 VUs will try to run as many iterations
-as possible for 30 seconds. It will then transition to the next scenario, executing 100 iterations
-per VU for a maximum duration of 1 minute.
 
-Note the use of `startTime`, and different `exec` functions for each scenario.
+## Combine scenarios
+
+With the `startTime` property, you can configure your script to start some scenarios later than others.
+To sequence your scenarios, you can combine `startTime` with the duration options specific to the executor.
+(this is easiest to do with executors with set durations, like the arrival-rate executors).
+
+This script has two scenarios, `contacts` and `news`, which run in sequence:
+1. At the beginning of the test, k6 starts the `contacts` scenario. 50 VUs try to run as many iterations as possible for 30 seconds.
+1. After 30 seconds, k6 starts the `news` scenario. 50 VUs each try to run 100 iterations in one minute.
+
+Along with `startTime` `duration`, and `maxDuration`, note the different test logic for each scenario.
 
 <CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
@@ -49,10 +61,10 @@ export function news() {
 
 </CodeGroup>
 
-## Different environment variables and tags per scenario.
+## Use different environment variables and tags per scenario.
 
-In the previous example we set tags on individual HTTP request metrics, but this
-can also be done per scenario, which would apply them to other
+The previous example sets tags on individual HTTP request metrics.
+But, you can also set tags per scenario, which applies them to other
 [taggable](/using-k6/tags-and-groups#tags) objects as well.
 
 <CodeGroup labels={[ "multiple-scenarios-env-tags.js" ]} lineNumbers={[true]}>
@@ -98,14 +110,23 @@ export function news() {
 
 </CodeGroup>
 
-Note that by default a `scenario` tag with the name of the scenario as value is
-applied to all metrics in each scenario, which can be used in thresholds and
-simplifies filtering metrics when using [result outputs](/get-started/results-output).
-This can be disabled with the [`--system-tags` option](/using-k6/options#system-tags).
+<Blockquote mod="note" title="">
 
-## Multiple exec functions, tags, environment variables, and thresholds
+By default, k6 applies a `scenario` tag to all metrics in each scenario (the value is the scenario name.
+You can combine these tags with thresholds, or use them to simplify results filtering.
 
-A test with 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
+To disable scenario tags, use the [`--system-tags` option](/using-k6/options#system-tags).
+
+</Blockquote>
+
+## Run multiple scenario functions, with different thresholds
+
+You can also set different thresholds for different scenario functions.
+To do this:
+1. Set scenario-specific tags
+1. Set thresholds for these tags.
+
+This test has 3 scenarios, each with different `exec` functions, tags and environment variables, and thresholds:
 
 <CodeGroup labels={[ "multiple-scenarios-complex.js" ]} lineNumbers={[true]}>
 

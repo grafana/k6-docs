@@ -120,7 +120,7 @@ SELECT max(k6.http_req_duration.summary) AS 'Max Duration', average(k6.http_req_
 <CodeGroup labels={[""]}>
 
 ```plain
-SELECT rate(max(k6.http_reqs.per_second), 1 seconds) FROM Metric TIMESERIES
+SELECT rate(max(k6.http_reqs), 1 seconds) FROM Metric TIMESERIES
 ```
 
 </CodeGroup>

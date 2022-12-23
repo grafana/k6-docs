@@ -421,10 +421,12 @@ $ k6 cloud --exit-on-running script.js
 ## Hosts
 
 An object with overrides to DNS resolution, similar to what you can do with `/etc/hosts` on
-Linux/Unix or `C:\\Windows\\System32\\drivers\\etc\\hosts` on Windows. For instance, you could set
+Linux/Unix or `C:\Windows\System32\drivers\etc\hosts` on Windows. For instance, you could set
 up an override which routes all requests for `test.k6.io` to `1.2.3.4`.
 
-You can also redirect only from certain ports or to certain ports.
+k6 also supports ways to narrow or widen the scope of your redirects:
+- You can redirect only from or to certain ports.
+- Starting from v0.42.0, you can use an asterisk (`*`) as a wild card at the start of the host name to avoid repetition. For example, `*.k6.io` would apply the override for all subdomains of `k6.io`.
 
 <Blockquote mod="note" title="">
 
@@ -442,16 +444,16 @@ This does not modify the actual HTTP `Host` header, but rather where it will be 
 ```javascript
 export const options = {
   hosts: {
-    'test.k6.io': '1.2.3.4',
+    'test.k6.io':     '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
+    '*.grafana.com':  '1.2.3.4',
   },
 };
 ```
 
 </CodeGroup>
 
-With the above code any request made to `test.k6.io` will be redirected to `1.2.3.4` without changing
-it port unless it's port is `443` which will be redirected to port `8443`.
+The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, keeping the same port. If the request is done to port `443`, it will redirect it to port `8443` instead. It will also redirect requests to any subdomain of `grafana.com` to `1.2.3.4`.
 
 ## HTTP debug
 
