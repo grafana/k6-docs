@@ -128,7 +128,8 @@ The k6 settings listed below will unlock additional performance benefits when ru
 
 ### discardResponseBodies
 
-You can tell k6 to not process the body of the response by setting `discardResponseBodies` in the options object like this:
+k6 by default loads the response body of the request into memory. This causes much higher memory consumption and is often not necessary.
+You can tell k6 to not process the body of all responses by setting `discardResponseBodies` in the options object like this:
 
 ```javascript
 export const options = {
@@ -136,8 +137,7 @@ export const options = {
 };
 ```
 
-k6 by default loads the response body of the request into memory. This causes much higher memory consumption and often is completely unnecessary.
-If you need the response body for some requests you can set [Params.responseType](/javascript-api/k6-http/params).
+If you need the response body for some requests you can override this with [Params.responseType](/javascript-api/k6-http/params).
 
 
 ### --no-thresholds --no-summary
