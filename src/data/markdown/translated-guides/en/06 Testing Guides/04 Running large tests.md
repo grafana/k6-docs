@@ -154,7 +154,7 @@ k6 run scripts/website.js \
   --vus=20000 \
   --duration=10m \
   --no-thresholds \
-  --no-summary \
+  --no-summary
 ```
 
 ### Remove unnecessary checks, groups and custom metrics
