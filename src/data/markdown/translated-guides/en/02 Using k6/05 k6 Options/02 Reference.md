@@ -444,18 +444,16 @@ This does not modify the actual HTTP `Host` header, but rather where it will be 
 ```javascript
 export const options = {
   hosts: {
-    'test.k6.io': '1.2.3.4',
+    'test.k6.io':     '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
-    '*.k6.io': '1.2.3.4',  // applies for all subdomains of k6.io
+    '*.grafana.com':  '1.2.3.4',
   },
 };
 ```
 
 </CodeGroup>
 
-The preceding code will redirect any request made to any subdomain of `k6.io` to `1.2.3.4`.
-The port will remain the same, unless the redirect is from `test.k6.io` on port `443`.
-In this case, it redirects to port `8443`.
+The preceding code will redirect requests made to `test.k6.io` to `1.2.3.4`, keeping the same port. If the request is done to port `443`, it will redirect it to port `8443` instead. It will also redirect requests to any subdomain of `grafana.com` to `1.2.3.4`.
 
 ## HTTP debug
 

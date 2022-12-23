@@ -472,16 +472,16 @@ También es posible ampliar o especificar la anulación:
 ```javascript
 export const options = {
   hosts: {
-    'test.k6.io': '1.2.3.4',
+    'test.k6.io':     '1.2.3.4',
     'test.k6.io:443': '1.2.3.4:8443',
-    '*.k6.io': '1.2.3.4',  // aplica para todos los subdominios de k6.io
+    '*.grafana.com':  '1.2.3.4',
   },
 };
 ```
 
 </CodeGroup>
 
-Con el código anterior cualquier petición hecha a cualquier subdominio de `k6.io` será redirigida a `1.2.3.4`. El puerto se mantendrá igual, a menos que la petición es a `test.k6.io` al puerto `443`. En este caso, será redirigida al puerto `8443`.
+Con el código anterior cualquier petición hecha a `test.k6.io` será redirigida a `1.2.3.4`, manteniendo el mismo puerto. Si la petición es al puerto `443`, será redirigida al puerto `8443`. También redigirá peticiones a cualquier subdominio de `grafana.com` a `1.2.3.4`.
 
 
 ## HTTP Debug
