@@ -28,7 +28,7 @@ These commands enable reusing network connections, increase the limit of network
 
 To apply these changes, you can either paste these commands as a root user before running a k6 test or change the configuration files in your operating system.
 
-For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine-tuning OS" article](/misc/fine-tuning-os).
+For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine tuning OS" article](/misc/fine-tuning-os).
 
 ## Hardware considerations
 
@@ -206,7 +206,7 @@ If your infrastructure is already hosted on AWS, consider running your load gene
 #### Virtual server
 
 The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour.
-Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.
+However, make sure to turn off the load generator servers once you are done with your testing. A forgotten EC2 server might cost thousands of dollars per month.
 Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
 
 ## Errors
@@ -215,7 +215,7 @@ If you run into errors during the execution, it's good to understand if they wer
 
 ### read: connection reset by peer
 
-Error similar to this one is caused by the target system resetting the TCP connection. This happens when the Load balancer or the server itself isn't able to handle the traffic.
+This is caused by the target system resetting the TCP connection. This happens when the Load balancer or the server itself isn't able to handle the traffic.
 
 ```bash
 WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72.209:35288->63.32.205.136:80: read: connection reset by peer"
@@ -223,7 +223,7 @@ WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72
 
 ### context deadline exceeded
 
-Error like this happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
+This happens when k6 was able to send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
 
 ```bash
 WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exceeded"
@@ -231,19 +231,19 @@ WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exce
 
 ### dial tcp 52.18.24.222:80: i/o timeout
 
-This is a similar error to the one above, but in this case, k6 wasn't even able to make a request. The target system isn't able to establish a connection.
+This is a similar error to the one above, but in this case, k6 wasn't even able to make an HTTP request. The target system isn't able to establish a TCP connection.
 
 ```bash
-WARN[0057] Request Failed     error="Get http://pawel.staging.loadimpact.com/static/logo.svg?url=v3: dial tcp 52.18.24.222:80: i/o timeout"
+WARN[0057] Request Failed     error="Get http://test.k6.io/: dial tcp 52.18.24.222:80: i/o timeout"
 ```
 
 ### socket: too many open files
 
 This error means that the load-generator machine isn't able to open TCP sockets because it reached the limit of open file descriptors.
-Make sure that your limit is set sufficiently high `ulimit -n 250000` should be enough for anyone :tm:
+Make sure that your limit is set sufficiently high. See our ["Fine tuning OS" article](/misc/fine-tuning-os/#viewing-limits-configuration).
 
 ```bash
-WARN[0034] Request Failed     error="Get http://99.81.83.131/static/logo.svg?ip=6: dial tcp 99.81.83.131:80: socket: too many open files"
+WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.131:80: socket: too many open files"
 ```
 
 Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
