@@ -192,14 +192,18 @@ The network throughput of the load generator machine, as well as the SUT will li
 
 k6 needs a significant amount of memory when uploading files, as every VU is independent and has its own memory.
 
-### Data transfer costs
+### Costs
+
+#### Data transfer
 
 k6 can upload a large amount of data in a very short period of time. Make sure you understand the data transfer costs before commencing a large scale test.
 
 [Outbound Data Transfer is expensive in AWS EC2](https://www.cloudmanagementinsider.com/data-transfer-costs-everything-you-need-to-know/). The price ranges between $0.08 to $0.20 per GB depending on the region.
-If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB, therefore, costs about $80. Long-running test can cost several hundreds of dollars in data transfer alone.
+If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB, therefore, costs about $80. A long-running test can cost several hundreds of dollars in data transfer alone.
 
-### EC2 costs
+If your infrastructure is already hosted on AWS, consider running your load generator machine within the same AWS region and availability zone. In some cases, this traffic will be much cheaper or even free. See [this article](https://www.stormit.cloud/blog/aws-data-transfer-pricing-how-to-reduce-costs/) for other AWS data cost saving tips. Our examples are made with AWS in mind, but the same suggestions also apply for other cloud providers.
+
+#### Virtual server
 
 The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour.
 Make sure to turn off the load generator servers once you are done with your testing. Forgotten EC2 server will cost $3312 per month.
