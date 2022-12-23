@@ -79,7 +79,7 @@ const checkRes = check(res, {
 });
 ```
 
-Code like this runs fine when the system under test (SUT) is not overloaded and returns proper responses.
+Code like this runs fine when the [system under test](/misc/glossary/#system-under-test) (SUT) is not overloaded and returns proper responses.
 When the system starts to fail, the above check won't work as expected.
 
 The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if the server is failing.
