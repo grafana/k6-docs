@@ -157,22 +157,28 @@ k6 run scripts/website.js \
   --no-summary
 ```
 
-### Remove unnecessary checks, groups and custom metrics
+### Test script optimizations
 
-If everything else has failed and you are trying to squeeze more performance out of the hardware,
-you can consider optimizing the code of the load test itself.
+If you are trying to squeeze more performance out of the hardware, you can consider optimizing the code of the test script itself.
 
-**Checks and groups**
+#### Checks and groups
 
 k6 records the result of every individual check and group separately. If you are using many checks and groups, you may consider removing them to boost performance.
 
-**Custom metrics**
+#### Custom metrics
 
 Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) are recorded separately. Consider minimizing the usage of custom metrics.
 
-**Thresholds with abortOnFail**
+#### Thresholds with abortOnFail
 
 If you have configured [abortOnFail thresholds](/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
+
+#### JavaScript optimizations
+
+Finally, if all of the above suggestions are insufficient, there might be some JavaScript optimizations you can do. This includes general improvements to minimize script complexity: avoid deeply nested `for` loops, don't keep references to large objects in memory if it can be avoided, keep external JS dependencies to a minimum, perform tree shaking of the k6 script if you have a build pipeline, etc.
+
+See [this article](https://javascript.info/garbage-collection) about garbage collection in the V8 runtime. While the JavaScript VM k6 uses is very different and runs on Go, the general principles are applicable. Keep in mind that memory leaks are still possible in k6 scripts, and might lead to much quicker RAM exhaustion if not fixed.
+
 
 ## File upload testing
 
