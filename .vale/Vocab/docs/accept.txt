@@ -90,6 +90,7 @@ maxfiles
 Netdata
 msgs
 netstat
+nmon
 nofile
 npm
 offboarding

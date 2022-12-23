@@ -114,8 +114,10 @@ The easiest way to do so is to start 3 terminals on the machine:
 2. To monitor CPU and memory
 3. To monitor the network
 
-For monitoring CPU and memory we recommend [htop](https://en.wikipedia.org/wiki/Htop).
-For monitoring network, we recommend [iftop](https://en.wikipedia.org/wiki/Iftop)
+For monitoring CPU and memory usage from the command-line we recommend [htop](https://en.wikipedia.org/wiki/Htop)
+or [nmon](https://nmon.sourceforge.net/). For monitoring network usage, we recommend [iftop](https://en.wikipedia.org/wiki/Iftop).
+If you prefer graphical applications, you can use your OS's system monitoring tool (e.g. GNOME System
+Monitor or Plasma System Monitor), or use a standalone tool like [SysMonTask](https://github.com/KrispyCamel4u/SysMonTask).
 
 Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 ![k6 iftop htop](./images/large-scale-testing-3-terminals.png)
