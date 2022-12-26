@@ -15,7 +15,7 @@ When you design your API tests, first consider the reason you want to load test 
 
 Once you can answer these questions, your API testing strategy will likely follow something like this procedure:
 1. **Script the test.** Write user flows, parameterize test data, and group URLs.
-1. **Assert performance and correctness** Use Checks to assert system responses and use Thresholds to ensure that the system performs within your SLOs.
+1. **Assert performance and correctness.** Use Checks to assert system responses and use Thresholds to ensure that the system performs within your SLOs.
 1. **Model and generate load.** Choose the executors you need to model load on the API, as determined by your test goals. Make sure the load generators are located where they should be.
 1. **Iterate over your test suite.** Over time, you'll be able to reuse script logic (e.g., a user log-in flow or a throughput configuration). You'll also be able to run tests with a wider scope or as a part of your automated testing suite.
 
