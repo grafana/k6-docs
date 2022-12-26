@@ -1,242 +1,624 @@
 ---
 title: 'API load testing'
 head_title: 'Intro to API Load Testing: The k6 Guide'
-excerpt: 'APIs are everywhere. Slow APIs impact user experience and business. This guide introduces you to performance testing and gives you the best practices on how to load test your APIs with k6.'
+excerpt: 'Load testing APIs has many facets. This guide introduces you to performance testing and provides best practices to load test your APIs with k6.'
 ---
 
-It is crucial to test your API with various testing methods and tools. From unit- to performance-testing, you need to have plans and execute them with great care. One type of testing the API is to put load on it to see how it performs, hence the load-testing.
+Generally, an API load test starts with small loads on isolated components.
+As your testing matures, your strategy matures as well,
+with more requests, longer durations, and a wider test scope&mdash;from isolated components to complete end-to-end workflows.
 
-In this guide, you'll learn how to do API load testing and what the best practices are. You'll also learn about our tools, which helps you generate or convert your existing API documentation or tests into k6 scripts.
+When you design your API tests, first consider the reason you want to load test the API in the first place:
+- What flows or components do you want to test?
+- How will you run the test?
+- What criteria determine acceptable performance?
 
-## How to load test an API with k6
+Once you can answer these questions, your API testing strategy will likely follow something like this procedure:
+1. **Script the test.** Write user flows, parameterize test data, and group URLs.
+1. **Assert performance and correctness** Use Checks to assert system responses and use Thresholds to ensure that the system performs within your SLOs.
+1. **Model and generate load.** Choose the executors you need to model load on the API, as determined by your test goals. Make sure the load generators are located where they should be.
+1. **Iterate over your test suite.** Over time, you'll be able to reuse script logic (e.g., a user log-in flow or a throughput configuration). You'll also be able to run tests with a wider scope or as a part of your automated testing suite.
 
-Our developer-friendly tool for load testing is k6. You can write JavaScript code to load test your API. This is different from other tools, which are focused more on simple testing by hammering one or multiple endpoints via predefined requests, in that, you can write a user-flow scenarios in JavaScript to do all sorts of load testing. Using this tool will help you achieve more by giving you the possibility of:
+The following sections provide specific explanations and examples of the steps in this process.
 
-1. writing your tests in this well-known scripting language, ES5.1(+).
-2. using correlation to easily connect various requests together. (For example, you can log in to your API, extract the API key from the response, and use it to make other requests, with a unique API key dedicated to that specific session.)
-3. having the option to set thresholds on your requests to achieve your SLOs.
-4. automating your load testing in your CI tool.
+## Identify the components to test
 
-k6 binaries are available for various platforms, so you don't need to install a language runtime anymore. It is really easy to use by providing a easy-to-use command line interface:
+Before you start testing, identify the components you want to test.
+Do you want to test a single endpoint or an entire flow?
 
-```bash
-$ k6 run script.js
-```
-
-Using this command, you can run your load test script and put load on your API. Since you're already in the documentation, make sure to look around for specifics catered to your use case. To give you an example, have a look at the following script, taken from [HTTP Requests](/using-k6/http-requests) section of the docs. It uses the [k6/http API](/javascript-api/k6-http) to make a load test request call. You can easily play with the example to create your own script. The following sections describe how to do load testing, either by hammering an endpoint or testing the user flow (scenario).
-
-### Hammering an endpoint
-
-Suppose you want to load test your login endpoint to see how many requests it can handle concurrently. This is the type you write to achieve that.
+The following script uses the [k6 HTTP module](https://k6.io/docs/javascript-api/k6-http/) to test a single endpoint.
 
 ```javascript
 import http from 'k6/http';
 
 export default function () {
-  const url = 'http://api.yourplatform.com/login';
   const payload = JSON.stringify({
-    email: 'johndoe@example.com',
-    password: 'PASSWORD',
+    name: 'lorem',
+    surname: 'ipsum',
   });
-
-  const params = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
-  http.post(url, payload, params);
+  const headers = { 'Content-Type': 'application/json' };
+  http.post('https://httpbin.test.k6.io/post', payload, { headers });
 }
 ```
 
-It is a simple HTTP request, which runs once. By tweaking the command line arguments, you can adjust how many concurrent requests you want to make. This command would create 1000 concurrent sessions (virtual users), and would run this single requests 10 times for each virtual user, hence 10,000 iterations.
+This is a minimal test, with one call to one component.
+Generally, your test suite will progress from scripts like this to more complex and complete workflows.
+In this process, your test suite will advance through the [testing pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) as follows:
 
-```bash
-$ k6 run --vus 1000 --iterations 10000 script.js
-```
+- **Testing an isolated API**. Hammering an API endpoint like [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) to test the baseline performance, breaking point, or availability. If a component doesn’t meet performance requirements, it is a bottleneck. Generally, the load is set in requests per second.
+- **Testing integrated APIs**.  Testing one or multiple APIs that interact with other internal or external APIs. Your focus might be on testing one system or various.
+- **Testing end-to-end API flows**. Simulating realistic interactions between APIs to test the system as a whole. The focus is often on frequent and critical user scenarios.
 
-While hammering is good in some cases, e.g. if you want to test endpoints in isolation, it is recommended that you take into account other endpoints and write a scenario-based load test script.
+Your load test suite should include a wide range of different tests.
+But, when you start, start small and simple.
+Test individual APIs and uncomplicated integration tests.
 
-### User flow (scenarios) testing
+## Determined the reason for the test 
 
-In the following example, you see four consecutive [HTTP requests](/using-k6/http-requests) to your API to log in, fetch user profile, update user profile and finally log out. Each request has unique characteristics, accepts some parameters and finally returns a [response](/javascript-api/k6-http/response), which is [check](/using-k6/checks)ed against a set of rules. We also pause after each request and response, for the API to keep up and not be flooded. In the beginning of the script, we've also added a set of [options](/using-k6/options) used to control your script.
+Before you configure the test load, you should know what traffic patterns you want to test the API for.
+A load test typically aims to do one of two things:
 
-`iterations` is a number that specifies how many iterations (executions) of the script per VU should happen, which is divided by the number of virtual users. `vus` is a number specifying the number of concurrent sessions (virtual users) to your API. So from `iterations` and `vus` you deduct that you'll likely run each VU around 10 iterations, depending on your API response time and network roundtrip.
+- Validate reliability under expected traffic
+- Discover problems and system limits under unusual traffic.
 
-As you can see, this is a fairly normal, yet simple, user flow that tries to mimic the user behavior while using our mobile App or website. For the sake of simplicity, only four requests has been shown, but you can easily add additional requests to have a more realistic user experience. This way you can test the flow of your users' navigation in your application or platform. This is the point that distinguishes k6 from most of the currently available load testing tools, in that it can be used to test realistic user flows, instead of just relying on hammering a set of endpoints.<!-- The [open source load testing tool review 2020](https://blog.loadimpact.com/comparing-best-open-source-load-testing-tools) blog post goes into details of all the open source load testing tools available today, and tries to dig deep into their pros and cons, performance and developer experience. This is particularly important, because it gives you a more holistic view of the user experience and your system's performance under load, while hammering gives you a more narrow view of your system. -->
+For example, your team might create one set of tests for frequent user flows on average traffic, and another set to find breaking points in the API.
+Even if the test logic stays the same, its load might change.
+
+The test goal determines the test type, which in turn determines the test load.
+Consider the following test types, which correspond to different goals load profiles:
+
+- [Smoke test](https://k6.io/docs/test-types/smoke-testing). Verify the system functions with minimal load.
+- [“Average” load test](https://k6.io/docs/test-types/load-testing/). Discover how the system functions with typical traffic.
+- [Stress test](https://k6.io/docs/test-types/stress-testing). Discover how the system functions with the load of peak traffic.
+- [Spike test](https://k6.io/docs/test-types/stress-testing#spike-testing-in-k6). Discover how the system functions with sudden and massive increases in traffic.
+- [Breaking test](https://github.com/grafana/k6-learn/blob/main/Modules/I-Performance-testing-principles/03-Load-Testing.md#breakpoint-test). Progressively ramp up traffic to discover system breaking points.
+- [Soak test](https://k6.io/docs/test-types/soak-testing). Discover whether or when the system degrades under loads of longer duration.
+
+The test types that you choose inform how you plan and structure your test.
+But each application, organization, and testing project differs.
+Our recommendation is this:
+
+> **"Start simple and test frequently. Iterate and grow the test suite".**
+
+Once you've decided on the load profile, you can schedule it with k6 options.
+
+## Model the workload
+
+To configure the workload, use [test options](https://k6.io/docs/using-k6/k6-options/).
+The test load configures the traffic generated by the test. k6 provides two broad ways to model load:
+
+- Through _virtual users_ (VUs), to simulate concurrent users
+- Through _requests per second_, to simulate raw, real-world throughput
+
+### Virtual users
+
+When you model load according to VUs, the basic load options are:
+- [`vus`](https://k6.io/docs/using-k6/k6-options/reference/#vus)
+- [`duration`](https://k6.io/docs/using-k6/k6-options/reference/#duration)
+- [`iterations`](https://k6.io/docs/using-k6/k6-options/reference/#iterations)
+
+You can define these options in the test script. In the following test, 50 concurrent users continuously run the `default` flow for 30 seconds.
 
 ```javascript
 import http from 'k6/http';
-import { check, group, sleep } from 'k6';
 
-const options = {
-  vus: 1000,
-  duration: '600s',
+export const options = {
+  vus: 50,
+  duration: '30s',
 };
-const SLEEP_DURATION = 0.1;
 
 export default function () {
-  let body = JSON.stringify({
-    username: 'user_' + __ITER,
-    password: 'PASSWORD',
+  const payload = JSON.stringify({
+    name: 'lorem',
+    surname: 'ipsum',
   });
-  const params = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    tags: {
-      name: 'login', // first request
-    },
-  };
-
-  group('simple user journey', (_) => {
-    // Login request
-    const login_response = http.post('http://api.yourplatform.com/v2/login', body, params);
-    check(login_response, {
-      'is status 200': (r) => r.status === 200,
-      'is api key present': (r) => r.json().hasOwnProperty('api_key'),
-    });
-    params.headers['api-key'] = login_response.json()['api_key'];
-    sleep(SLEEP_DURATION);
-
-    // Get user profile request
-    params.tags.name = 'get-user-profile';
-    const user_profile_response = http.get(
-      'http://api.yourplatform.com/v2/users/user_' + __ITER + '/profile',
-      params
-    );
-    sleep(SLEEP_DURATION);
-
-    // Update user profile request
-    body = JSON.stringify({
-      first_name: 'user_' + __ITER,
-    });
-    params.tags.name = 'update-user-profile';
-    const update_profile_response = http.post(
-      'http://api.yourplatform.com/v2/users/user_' + __ITER + '/profile',
-      body,
-      params
-    );
-    sleep(SLEEP_DURATION);
-
-    // Logout request
-    params.tags.name = 'logout';
-    const logout_response = http.get('http://api.yourplatform.com/v2/logout', params);
-    sleep(SLEEP_DURATION);
-  });
+  const headers = { 'Content-Type': 'application/json' };
+  http.post('https://httpbin.test.k6.io/post', payload, { headers });
 }
 ```
 
-## Virtual Users vs. Constant Request Rate
+<Blockquote mod="note" title="Sleep when testing APIs">
 
-Historically, there are two types of categories of load testing tools: scriptable and non-scriptable. Non-scriptable tools generate requests to one or multiple endpoints without any correlation between the requests providing the option to define a constant request rate to hit an endpoint. On the other hand, scriptable tools are usually designed to facilitate user flow testing, thus providing the option to configure the number of virtual users to set up the load of your test. k6 belongs to this category.
+Generally, you should add [sleep time](https://k6.io/docs/javascript-api/k6/sleep/) to your load tests. This helps control the load generator, and better simulates realistic traffic patterns for human users.
 
-The k6 v0.27.0 release includes the [scenarios](/using-k6/scenarios) feature, where you can configure multiple scenarios and model different traffic patterns. The k6 execution engine was completely revamped and now includes support for different [executors](/using-k6/scenarios#executors) in each scenario. Now you can use the `constant-arrival-rate` executor to [generate a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api).
+However, regarding API load tests, the guidelines about sleep have a few qualifications.
+If you are load testing an isolated component, you might be worried only about performance under raw throughput.
+But, even in this case, sleep can still help you avoid overworking the load generator, and having a few randomized milliseconds of sleep can avoid accidental concurrency.
 
-## Test creation
+When testing the API against normal, human-run workflows, add sleep as in a normal test.
 
-It is possible to create a test, and eventually run it in k6, in multiple ways. You can write your tests in your favorite editor, convert your existing Postman collections and Swagger/OpenAPI specification documents to scripts or use proxy recording as HAR files and convert them to k6 scripts. The recommended way is definitely to write your own scripts. The other tools are available just to help you with onboarding to k6. There's a rich set of tools that can help you create load tests and run them to gain insight into your system.
+</Blockquote>
 
-![Our tools](./images/our-tools.png)
+### Request rate
 
-As is evident in the above diagram, there are four different tools to help onboard existing users into k6. The best way is to make your own custom script, but you can use our converters to help you with generating script out of your existing postman collections, swagger specification documents, and [HAR](<https://en.wikipedia.org/wiki/HAR_(file_format)>) recordings.
+When analyzing API endpoint performance, the load is generally reported by request rate&mdash;either requests per second or per minute.
 
-### Write your own script
+To configure workloads according to a target request rate, use the [constant arrival rate executor](https://k6.io/docs/using-k6/scenarios/executors/constant-arrival-rate/).
 
-Writing your own script is the recommended way to create your load test script, since it is the easiest, yet the most flexible and customizable, way to create and run your load tests. With many examples for different use cases throughout the documentation, you can easily create load test scripts.
+`constant-arrival-rate` sets a constant rate of iterations that execute the script function.
+Each iteration can generate one or multiple requests.
 
-### Converters for API testing tools
+To reach a request-rate target (`RequestsRate`), follow this approach:
+1. Set the rate frequency to the time unit of the target. Per second or per minute.
+1. Get the number of requests per iteration (`RequestsPerIteration`).
+1. Set the iteration rate to the requests per second target divided by the number of requests per iteration.  
+    `rate` =  `RequestsRate ÷ RequestsPerIteration`.
 
-We have developed two (actually more) converters for you to convert your existing Postman collections or Swagger/OpenAPI specification documents to k6 scripts. Although fairly easy to use, the output script is not 100 percent accurate, since they use wrapper APIs and limited functionality (postman-to-k6), or have limited support for all the features (openapi-to-k6). Use them to create the skeleton of your script, then modify or use it in your own script.
+To reach target of 50 reqs/s with the previous example:
 
-The postman-to-k6 converter produces non-idiomatic k6 scripts, because it uses a wrapper for various functionality inside Postman, and has its own limitations. On the other hand, the openapi-to-k6 converter produces idiomatic k6 scripts, yet not every single OpenAPI specification is supported.
+1. Set the `timeUnit` options to `1s`.
+1. The number of requests per iteration is 1.
+1. Set the `rate` option to 50/1 (so it equals 50).
 
-**Postman-to-k6**
-
-Postman is a good and easy to use tool for API testing. It can group requests into collections and you can export/import them easily. Yet, there is an easy way to create your own k6 script out of your existing Postman exported collections. We have a [postman-to-k6](https://github.com/apideck-libraries/postman-to-k6) tool that can convert your Postman exported collections. This tool also converts your Postman scripts written with the help of the [Postman Scripting API](https://learning.postman.com/docs/postman/scripts/postman-sandbox-api-reference/) and includes a wrapper for its API and related libraries. Read more at the article [Load Testing Your API with Postman](https://k6.io/blog/load-testing-with-postman-collections).
-
-![Postman export collection](./images/postman-export.png)
-
-**OpenAPI-Generator**
-
-Swagger/OpenAPI is a good way to design, document, and test your APIs.
-We have built a new OpenAPI generator in the [openapi-generator](https://openapi-generator.tech/docs/generators/k6/) project that takes in the Swagger/OpenAPI specification in JSON/YAML format and generates pure idiomatic k6 script.
-It is really easy to use, and there are multiple ways to [install](https://github.com/OpenAPITools/openapi-generator#1---installation) and use it. To get an idea of how it works, take a look at our [Load Testing Your API with Swagger/OpenAPI and k6](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6) blog post.
-
-### Converters for proxy recorders
-
-**HAR-to-k6**
-
-HAR files are recorded browser logs that can be exported as an archive and later replayed. [HAR files specification](https://w3c.github.io/web-performance/specs/HAR/Overview.html) defines the format of the file, which is basically a JSON file with various objects containing requests to different resources. This file can be converted to k6 script using the [HAR-to-k6](https://github.com/k6io/har-to-k6) tool. Since HAR files contain requests to every single resource that the browser fetches, it is not recommended to use the converted script intact, rather revise it to remove extra unneeded requests to load test CDNs and other static files. Generally, recording users' sessions is not usually the best way to do API load testing, since it creates more noise than real requests and it is used more for [load testing a website](/testing-guides/load-testing-websites). Nevertheless, you can take advantage of it, but beware of what you are doing, since it could misguide you to test systems not related to your API.
-
-## Different types of API load testing
-
-As said in the introduction, it is crucial to test your API in advance, rather than relying on the untested API, which may crash at any time and have unexpected consequences.
-
-You can test your API in multiple ways, each pertaining to a particular test type and each producing a different type of load.
-
-- [Smoke test](/test-types/smoke-testing)
-- [Load test](/test-types/load-testing)
-- [Stress test](/test-types/stress-testing)
-- [Spike test](/test-types/stress-testing#spike-testing)
-- [Soak test](/test-types/soak-testing)
-
-## API load testing considerations
-
-### Identify your goals
-
-Having a clear goal is of utmost importance in running a load test on your APIs. As with the type of load testing you want to use, you also need to identify your goals to expect correct results. For example, you cannot expect your API to perform very well under heavy load, if you just test it with a simple smoke test. Therefore you need to set well-defined goals and tune your load test to meet your expectations. Usually your goals are to meet your [Service-Level Objectives (SLOs)](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/), which might be defined in a Service-Level Agreement (SLA), formally or informally, between you and the other party, e.g. your users. You set some thresholds for your service and you make yourself responsible for any deviation from that standard.
-Fortunately, these thresholds can be tested using k6, which has a rich set of [metrics](/using-k6/metrics), built-in and custom, that can be tested against a set of [thresholds](/using-k6/thresholds).
-Before writing and eventually running your test, set aside some time to think about your SLOs and then try to design your test, so that it meets your requirements and your customers' expectations.
-
-### Start small and build upon your script
-
-It is important to have a predefined set of goals and expectations, but it's not good to try to meet them all at once. The bigger your list of goals, the less likely your ability to make things right the first time. So, start small, e.g. write and run a test for one or two API endpoints. Try to experiment with different settings and environments, then you can build upon that and execute large tests that span several hours and has thousands of virtual users and hundreds of thousands of requests per second.
-
-The very simple examples in the [running k6](/get-started/running-k6) section would give you a head start.
-
-### Correlation and data parameterization
-
-Since REST APIs are HTTP-based, hence asynchronous, it is always the responsibility of the client to describe what resource it wants to CRUD on. The whole idea is to have a stateless API, which has a way to relate separate requests to related resources. Usually it is done via some sort of correlation. Correlation would help developers to easily track the relationship between the requests and the resources with a unique key or identifier.
-
-While writing load test scripts, you may want to use this unique key to have your virtual users know which resources to work with in each request. In the above scenario script, you saw how we used the responses of the login request to extract the API key and later used it with subsequent requests to identify ourselves as a certain (virtual) user.
-
-This can be easily taken advantage of by using the response data (in form of a JSON object or even a body of text) to provide unique keys (correlation IDs, API keys, etc.) to other requests down the flow.
-
-There's also the possibility of loading data files from disk to help parameterize the load test. Imagine that you want to have 1000 users with separate credentials to be able to make multiple requests. This can be achieved by simply loading a JSON file and using its objects in your requests.
-
-For more information, refer to [the post on the k6 community forum](https://community.k6.io/t/when-parameterizing-data-how-do-i-not-use-the-same-data-more-than-once-in-a-test/).
-
-### URL grouping
-
-By default, k6 prints runtime information and general results to standard output, `stdout`, while the test runs.
-When the test ends, it also prints a summary after the test has ended.
-It may output more granular result data using special output modules, one of them being [JSON output](/results-output/real-time/json/). The contents of the records in output includes many pieces of useful information like various metrics and some of those metrics include the URL of the requests you made.
-
-Sometimes you need to make lots of similar API requests to read or create many resources of the same type. As shown in the following example, a 100 posts will be fetched with unique requests. Each of these requests will create a metric and will have the full URL inside the metric. This poses a problem for data aggregation, either on our cloud platform or on your own API load testing stack. The problem is that all the metrics for each of these URLs will be separate and they'll be aggregated individually, because they are different in their `id` field. It also creates a lot of unnecessary records in the output.
 
 ```javascript
 import http from 'k6/http';
 
-for (let id = 1; id <= 100; id++) {
-  http.get(`http://example.com/posts/${id}`);
-}
+export const options = {
+  scenarios: {
+    my_scenario1: {
+      executor: 'constant-arrival-rate',
+      duration: '30s', // total duration
+      preAllocatedVUs: 50, // to allocate runtime resources     preAll
 
-// tags.name="http://example.com/posts/1",
-// tags.name="http://example.com/posts/2",
+      rate: 50, // number of constant iterations given `timeUnit`
+      timeUnit: '1s',
+    },
+  },
+};
+
+export default function () {
+  const payload = JSON.stringify({
+    name: 'lorem',
+    surname: 'ipsum',
+  });
+  const headers = { 'Content-Type': 'application/json' };
+  http.post('https://httpbin.test.k6.io/post', payload, { headers });
+}
 ```
 
-There's a way to prevent creating a lot of metrics for the same URL. It's called [URL grouping](/using-k6/http-requests#section-url-grouping), and by using it you'll avoid creating separate metrics for the same URL. It is just a matter of using a tag that you should add to your requests' [parameters](/javascript-api/k6-http/params).
+This test outputs the total number of HTTP requests and RPS on the `http_reqs` metric:
+
+```bash
+# the reported value is close to the 50 RPS target
+ http_reqs......................: 1501   49.84156/s
+
+# the iteration rate is the same as rps, because each iteration runs only one request
+iterations.....................: 1501   49.84156/s
+```
+
+For a more extensive example, refer to this post about [generating a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api/)
+
+With the `constant-arrival-rate` executor, the load is constant throughout the entire test.
+To ramp the request rate up or down, use the [`ramping-arrival-rate`](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate/) executor instead.
+
+For all ways to model the load in k6, refer to [Scenarios](https://k6.io/docs/using-k6/scenarios/).
+
+## Verify functionality with Checks
+
+Traditionally, performance testing focuses on:
+- _Latency_, how fast the system responds
+- _Availability_, how often the system returns errors.
+
+The `http_req_duration` metric reports the latency, and `http_req_failed` reports the error rate for HTTP requests. The previous test run provided the following results:
+
+
+```bash
+http_req_duration..............: avg=106.14ms min=102.54ms med=104.66ms max=198.93ms p(90)=113.78ms p(95)=114.58ms
+    { expected_response:true }...: avg=106.14ms min=102.54ms med=104.66ms max=198.93ms p(90)=113.78ms p(95)=114.58ms
+http_req_failed................: 0.00% ✓ 0    ✗ 1501
+```
+
+
+Your test analysis might need to go beyond what's available with default metrics.
+To make your result analysis more meaningful, you might want to also validate application functionality and report errors.
+
+Some application failures happen only under certain load conditions, such as high traffic.
+These errors are hard to find.
+To find the cause of failures more quickly, instrument your APIs and verify that requests get the expected responses.
+To verify application logic in k6, you can use _Checks_.
+
+[Checks](https://k6.io/docs/using-k6/checks/) validate conditions during the test execution, for example, to verify and track API responses. With checks, you can confirm expected API responses, such as the HTTP status or any returned data.
+
+Our script now verifies the HTTP response status, headers, and payload.
 
 ```javascript
+import { check } from 'k6';
 import http from 'k6/http';
 
-for (let id = 1; id <= 100; id++) {
-  http.get(`http://example.com/posts/${id}`, {
-    tags: { name: 'PostsItemURL' },
+export const options = {
+  scenarios: {
+    my_scenario1: {
+      executor: 'constant-arrival-rate',
+      duration: '30s', // total duration
+      preAllocatedVUs: 50, // to allocate runtime resources
+
+      rate: 50, // number of constant iterations given `timeUnit`
+      timeUnit: '1s',
+    },
+  },
+};
+
+export default function () {
+  const payload = JSON.stringify({
+    name: 'lorem',
+    surname: 'ipsum',
+  });
+  const headers = { 'Content-Type': 'application/json' };
+  const res = http.post('https://httpbin.test.k6.io/post', payload, { headers });
+
+  check(res, {
+    'Post status is 200': (r) => res.status === 200,
+    'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
+    'Post response name': (r) => res.status === 200 && res.json().json.name === 'lorem',
   });
 }
-
-// tags.name="PostsItemURL",
-// tags.name="PostsItemURL",
 ```
+
+In this snippet, all the checks succeeded:
+
+```bash
+my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 iters/s
+     ✓ Post status is 200
+     ✓ Post Content-Type header
+     ✓ Post response name
+```
+
+After the load increased to 300 requests per second,  the results returned 8811 successful requests and 7 failures:
+
+```bash
+my_scenario1 ✓ [======================================] 000/300 VUs  30s  300.00 iters/s
+     ✗ Post status is 200
+      ↳  99% — ✓ 8811 / ✗ 7
+     ✗ Post Content-Type header
+      ↳  99% — ✓ 8811 / ✗ 7
+     ✗ Post response name
+      ↳  99% — ✓ 8811 / ✗ 7
+```
+
+**A failed check doesn't fail or abort the test.**
+In this regard, a check differs from how assertions work for other types of testing.
+
+By default, one failed check doesn't fail the test.
+A load test can run thousands or millions of script iterations, each with dozens of assertions.
+Some rate of failure is acceptable, as determined by your SLO's "number of nines" or your organization's error budget.
+
+## Test your reliability goals with Thresholds
+
+Every test should have a goal.
+Engineering organizations set their reliability goals using [Service Level Objectives](https://en.wikipedia.org/wiki/Service-level_objective) (SLOs) to validate availability, performance, or any critical characteristics.
+
+SLOs are essential aspects of the business or engineering that can be defined at distinct scopes, such as on the level of the application, infrastructure component, or service.
+Some example SLOs could be:
+
+- That 99% of APIs returning product information respond in less than 600ms.
+- That 99.99% of failed log-in requests respond in less than 1000ms.
+
+To ensure your system achieves its SLOs, aim to test for them frequently, in both pre-production and production environments.
+
+Load tests should be designed with pass/fail criteria to validate SLOs, reliability goals, or other important metrics.
+In k6, you can use [Thresholds](https://k6.io/docs/using-k6/thresholds/) to set the test pass/fail criteria.
+
+This script codifies two SLOs in the `thresholds` object, one about error rate (availability) and one about request duration (latency).
+
+```javascript
+export const options = {
+  thresholds: {
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+    http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
+  },
+  scenarios: {
+    my_scenario1: {
+      executor: 'constant-arrival-rate',
+      duration: '30s', // total duration
+      preAllocatedVUs: 50, // to allocate runtime resources
+
+      rate: 50, // number of constant iterations given `timeUnit`
+      timeUnit: '1s',
+    },
+  },
+};
+```
+
+When k6 runs a test, the test output indicates whether the metrics were within the thresholds, ✅, or whether they crossed them, ❌.
+In this output, the test met both thresholds.
+
+```bash
+✓ http_req_duration..............: avg=104.7ms  min=101.87ms med=103.92ms max=120.68ms p(90)=107.2ms  p(95)=111.38ms
+    { expected_response:true }...: avg=104.7ms  min=101.87ms med=103.92ms max=120.68ms p(90)=107.2ms  p(95)=111.38ms
+✓ http_req_failed................: 0.00%   ✓ 0         ✗ 1501
+```
+
+When the test fails, the **k6 CLI returns a non-zero exit code—a necessary condition for test automation.**
+As an example of a failed test, here's the output for a test with a threshold that 95 percent of requests finish in under 50ms, `http_req_duration:["p(95)<50"]`:
+
+
+```bash
+running (0m30.1s), 00/50 VUs, 1501 complete and 0 interrupted iterations
+my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 iters/s
+
+     ✓ Post status is 200
+     ✓ Post Content-Type header
+     ✓ Post response name
+
+     checks.........................: 100.00% ✓ 4503      ✗ 0
+     data_received..................: 1.3 MB  45 kB/s
+     data_sent......................: 313 kB  10 kB/s
+     http_req_blocked...............: avg=9.26ms   min=2µs      med=14µs     max=557.32ms p(90)=25µs     p(95)=46µs
+     http_req_connecting............: avg=3.5ms    min=0s       med=0s       max=113.46ms p(90)=0s       p(95)=0s
+   ✗ http_req_duration..............: avg=105.14ms min=102.01ms med=103.86ms max=171.56ms p(90)=112.4ms  p(95)=113.18ms
+       { expected_response:true }...: avg=105.14ms min=102.01ms med=103.86ms max=171.56ms p(90)=112.4ms  p(95)=113.18ms
+   ✓ http_req_failed................: 0.00%   ✓ 0         ✗ 1501
+     http_req_receiving.............: avg=202.86µs min=17µs     med=170µs    max=4.69ms   p(90)=264µs    p(95)=341µs
+     http_req_sending...............: avg=97.56µs  min=11µs     med=63µs     max=5.56ms   p(90)=98µs     p(95)=133µs
+     http_req_tls_handshaking.......: avg=4.14ms   min=0s       med=0s       max=169.35ms p(90)=0s       p(95)=0s
+     http_req_waiting...............: avg=104.84ms min=101.88ms med=103.6ms  max=171.52ms p(90)=112.18ms p(95)=112.85ms
+     http_reqs......................: 1501    49.834813/s
+     iteration_duration.............: avg=115.18ms min=102.51ms med=104.66ms max=704.99ms p(90)=113.68ms p(95)=115.54ms
+     iterations.....................: 1501    49.834813/s
+     vus............................: 50      min=50      max=50
+     vus_max........................: 50      min=50      max=50
+
+ERRO[0030] some thresholds have failed
+```
+
+## Scripting considerations
+
+If you have scripted tests before, implementing k6 scripts should seem familiar.
+k6 tests are written in JavaScript, and the design of the k6 API has similarities with other testing frameworks.
+
+But, the presence of load creates a few specific concerns.
+Unlike other tests, load tests run their scripts hundreds, thousands, or millions of times.
+When you load test APIs with k6, consider the following aspects of your script design.
+
+### Data parameterization
+
+Data parameterization happens when you replace hardcoded test data with dynamic values.
+This makes it easier to manage a load test with varied users and API calls.
+A common case for parameterization is when you want to use different `userID` and `password` values for each virtual user or iteration.
+
+For example, consider a JSON file with a list of user info such as:
+
+<CodeGroup labels={["users.json"]}>
+
+```json
+{
+	"users": [
+	  { "username": "lorem", "surname": "ipsum" },
+	  { "username": "dolorem", "surname": "ipsum" },
+	]
+}
+```
+
+</CodeGroup>
+
+You can use parameterize the users as follows:
+
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+import { SharedArray } from 'k6/data';
+
+const users = new SharedArray('users.json', function () {
+  return JSON.parse(open('./users.json')).users;
+});
+
+export const options = {};
+
+export default function () {
+  // now, user data is not the same for all the iterations
+  const user = users[Math.floor(Math.random() * users.length)];
+  const payload = JSON.stringify({
+    name: user.username,
+    surname: user.surname,
+  });
+
+  const headers = { 'Content-Type': 'application/json' };
+  const res = http.post('https://httpbin.test.k6.io/post', payload, {
+    headers,
+  });
+
+  check(res, {
+    'Post status is 200': (r) => res.status === 200,
+    'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
+    'Post response name': (r) => res.status === 200 && res.json().json.name === user.username,
+  });
+}
+```
+
+To read more about data parameterization, check out the [parameterization examples](https://k6.io/docs/examples/data-parameterization/) and [Execution context variables](https://k6.io/docs/using-k6/execution-context-variables/).
+
+### Error handling and acceptance of failures
+
+Under sufficiently heavy load, the SUT fails and starts to respond with errors.
+Since the SUT may fail, 
+** remember to implement error handling in the test logic**.
+Sometimes, we focus on only the best-case scenario and forget this important step.
+
+The test script must handle API errors to avoid runtime exceptions and to ensure that it tests SUT behavior under saturation according to the test goals.
+For example, we could extend our script to do some operation that depends on the result of the previous request:
+
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+import { SharedArray } from 'k6/data';
+
+const users = new SharedArray('users.json', function () {
+  return JSON.parse(open('./users.json')).users;
+});
+
+export const options = {};
+
+export default function () {
+  const user = users[Math.floor(Math.random() * users.length)];
+  const payload = JSON.stringify({
+    name: user.username,
+    surname: user.surname,
+  });
+  const headers = { 'Content-Type': 'application/json' };
+  const res = http.post('https://httpbin.test.k6.io/post', payload, {
+    headers,
+  });
+
+  check(res, {
+    'Post status is 200': (r) => res.status === 200,
+    'Post Content-Type header': (r) => res.headers['Content-Type'] === 'application/json',
+    'Post response name': (r) => res.status === 200 && res.json().json.name === user.username,
+  });
+
+  if (res.status === 200) {
+    // enters only successful responses
+    // otherwise, it triggers an exception
+    const delPayload = JSON.stringify({ name: res.json().json.name });
+    http.patch('https://httpbin.test.k6.io/patch', delPayload, { headers });
+  }
+}
+```
+
+### Test reuse and modularization
+
+Load testing can be vast in scope, and it may involve different types of tests.
+Generally, teams start with simple or critical load tests and continue adding tests for new use cases, user flows, traffic patterns, features, systems, etc.
+
+In this process, load testing suites grow over time.
+To minimize repetitive work, **consider reusing test scripts early and modularizing test functions and logic.**
+If you script common scenarios in reusable modules, it's easier to create different types of load tests.
+The process of creating a new load test goes like this:
+
+1. Create a new test file.
+1. Configure the specific load and other options.
+1. Import the scenario.
+
+As your testing matures, consider creating tests that [combine multiple scenarios](https://k6.io/docs/using-k6/scenarios/advanced-examples/#combine-scenarios) to simulate more diverse traffic.
+
+### Dynamic URLs for one endpoint
+
+By default, when you access the same API endpoint with different URLs―for example, `http://example.com/posts/${id}`―k6 reports the endpoint results separately.
+This may create an unnecessary amount of metrics.
+
+To group the results of the endpoint, use [URL grouping](https://k6.io/docs/using-k6/http-requests/#url-grouping).
+
+## Load generator locations
+
+When you plan the test, consider the locations of the machines of your _load generators_, the machines that run the test.
+Sometimes, running the test from a specific location is a test requirement.
+Other times, you might just choose the location based on what's most convenient or practical.
+Either way, when you set the location of the load generator, keep the following in mind:
+
+- **Required locations.** To compare performance or ensure accurate results, some load tests need to measure the latency from specific locations. These tests launch the load generators from locations that match their user's region.
+- **Optional locations.** Other tests try to measure against a performance baseline—how the system performance changes from a particular performance status or time. To avoid skewed latency results, ensure that the location of the load generator is constant across test tuns, and avoid running the tests from locations that are too close to the SUT.
+
+### Internal APIs
+
+End-to-end API tests try to replicate real-world user flows, which access public APIs from external systems.
+But other APIs are internal and unreachable from outside.
+The need to run internal tests is common when testing API integrations and isolated endpoints.
+
+If the API is in an internal or restricted environment, you can use k6 to test it in a few different ways:
+- Run the test from your private network using the k6 run command or the [Kubernetes operator](https://github.com/grafana/k6-operator). Optionally, store the test results in [k6 Cloud](https://k6.io/docs/results-output/real-time/cloud/) or other [external services](https://k6.io/docs/results-output/real-time/).
+- For cloud tests:
+  - [Open your firewall](https://k6.io/docs/cloud/creating-and-running-a-test/troubleshooting/#open-a-firewall-for-k6-cloud) for cloud test traffic.
+  - Run the cloud test from your [private AWS EC2 instances](https://k6.io/docs/cloud/creating-and-running-a-test/private-load-zones/).
+
+## Supplementary tools
+
+You might want to use k6 in conjunction with other API tools.
+
+### Integrate with API tools
+
+The tooling around REST APIs is vast, but there's not much focus on performance testing.
+k6 provides a few converters to
+help you incorporate the wider API tooling ecosystem into your load tests:
+
+
+- [Postman-to-k6 converter](https://github.com/apideck-libraries/postman-to-k6): to create a k6 test from a Postman collection.
+
+  ```bash
+  postman-to-k6 collection.json -o k6-script.js
+  ```
+
+- [OpenAPI k6 generator](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6/#api-load-testing-with-swaggeropenapi-specification): to create a k6 test from an Open API (formerly Swagger) definition.
+
+  ```bash
+  openapi-generator-cli generate -i my-api-spec.json -g k6
+  ```
+
+These tools generate a k6 test that you can edit and run as usual:
+
+```bash
+k6 run k6-script.js
+```
+
+Depending on the test type, the converters could help you quickly create your first tests or help onboard new users to k6.
+Even so, we recommend you get familiar with the [k6 Javascript API](https://k6.io/docs/javascript-api/) and script your own tests.
+
+### Using proxy recorders
+
+Another option is to auto-generate a k6 test from a recorded session. These scripts might help you start building more complex end-to-end and integration tests.
+
+The [har-to-k6 converter](https://github.com/grafana/har-to-k6) creates the k6 test from a recorded session in HAR format which collects HTTP traffic.
+
+```bash
+har-to-k6 archive.tar -o k6-script.js
+```
+
+The generated k6 test can be edited and run as usual:
+
+```bash
+k6 run k6-script.js
+```
+
+To export a recorded session to HAR format, use a proxy recorder such as [Fiddler proxy](https://www.telerik.com/fiddler/fiddler-everywhere) or [GitLab HAR recorder](https://gitlab.com/gitlab-org/security-products/har-recorder/).
+
+As with the previous converters, the recorder can help prototype tests.
+Again, we recommend learning to write your test scripts.
+
+## Beyond HTTP APIs
+
+Due to the popularity of the web and REST APIs, this guide has used the term focused on  HTTP APIs. But APIs are not restricted to the HTTP protocol.
+
+By default, k6 supports testing the following protocols:
+
+- [HTTP/1.1, HTTP/2](https://k6.io/docs/javascript-api/k6-http/)
+- [WebSockets](https://k6.io/docs/javascript-api/k6-ws/)
+- [Redis (experimental)](https://k6.io/docs/javascript-api/k6-experimental/redis/)
+- [gRPC](https://k6.io/docs/javascript-api/k6-net-grpc/)
+
+
+```javascript
+import grpc from 'k6/net/grpc';
+import { check, sleep } from 'k6';
+
+const client = new grpc.Client();
+client.load(['definitions'], 'hello.proto');
+
+export default () => {
+  client.connect('grpcb.in:9001');
+
+  const data = { greeting: 'Bert' };
+  const response = client.invoke('hello.HelloService/SayHello', data);
+
+  check(response, {
+    'status is OK': (r) => r && r.status === grpc.StatusOK,
+  });
+
+  client.close();
+  sleep(1);
+};
+```
+
+But modern software is not built only based on these protocols. Modern infrastructure and applications rely on other API protocols to provide new capabilities or improve their performance, throughput, and reliability.
+
+To test the performance and capacity of these systems, the testing tool should be able to generate protocol-specific requests against their APIs.
+
+If k6 doesn't support a protocol you need, you can use (or create) [extensions](https://k6.io/docs/extensions/).
+The list of extensions is long:
+
+- Avro
+- ZeroMQ
+- Ethereum
+- STOMP
+- MLLP
+- NATS
+- and [more](https://k6.io/docs/extensions/get-started/explore/).
+
