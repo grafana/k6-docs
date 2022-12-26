@@ -41,6 +41,7 @@
 Okta
 addons
 alice
+APIs
 apm
 async
 backoff
@@ -115,6 +116,7 @@ rollup
 Scorigami
 scriptable
 sharded
+SLOs
 smockvavelsky
 snackbar
 Solaris

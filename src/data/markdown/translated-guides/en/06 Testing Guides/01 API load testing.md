@@ -373,7 +373,7 @@ When you load test APIs with k6, consider the following aspects of your script d
 
 ### Data parameterization
 
-Data parameterization happens when you replace hardcoded test data with dynamic values.
+Data parameterization happens when you replace hard-coded test data with dynamic values.
 This makes it easier to manage a load test with varied users and API calls.
 A common case for parameterization is when you want to use different `userID` and `password` values for each virtual user or iteration.
 
