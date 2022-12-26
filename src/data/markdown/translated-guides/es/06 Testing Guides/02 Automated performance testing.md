@@ -63,7 +63,7 @@ Además, también tenemos disponibles guías para [instalar k6 en herramientas C
 Si aún no ha creado casos de prueba para su sistema, le sugerimos que lea una de nuestras guías para crear pruebas para sitios web y APIs/microservicios:
 
 - [Guía de pruebas para sitios web](/es/guias-de-prueba/pruebas-de-carga-a-sitios-web/)
-- [Guía de pruebas de API](/es/guias-de-prueba/pruebas-de-carga-para-apis/)
+- [Guía de pruebas de API](/testing-guides/automated-performance-testing/)
 
 En general, cuando se crean casos de prueba, la regla de oro es empezar con algo pequeño y luego ampliarlo desde ese punto de partida. Identifique las transacciones más críticas para el negocio en su sistema y escriba casos de prueba que cubran esa parte del sistema.
 
