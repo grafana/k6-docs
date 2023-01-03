@@ -11,15 +11,13 @@ Opens a file, reading all its contents into memory for use in the script.
 > `open()` often consumes a large amount of memory because every VU keeps a separate copy of the file in memory.
 > To reduce the memory consumption, we strongly advise the usage of [SharedArray](/javascript-api/k6-data/sharedarray/) for CSV, JSON and other files intended for script parametrization.
 
-<blockquote mod='warning'>
+<blockquote mod='attention' title='Function available only in init context'>
 
-#### Function only available in "init context"
-
-This is a function that can only be called from the init context (aka **init code**), code in the global context that is, outside of the main export default function { ... }.
+This function can only called only from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
-See the example further down on this page. For a more in-depth description, see [Running k6](/get-started/running-k6).
+See the example further down on this page. For a more in-depth description, see [Test lifecycle](/using-k6/test-lifecycle).
 
 #### Breaking change in v0.36.0
 
