@@ -10,8 +10,8 @@ amount of time. This executor is equivalent to the global [stages](/using-k6/opt
 
 ## Options
 
-In addition to the [common configuration options](/using-k6/scenarios#options) this executor
-also adds the following options:
+Besides the [common configuration options](/using-k6/scenarios#options),
+this executor has the following options:
 
 | Option             | Type    | Description                                                                                    | Default |
 | ------------------ | ------- | ---------------------------------------------------------------------------------------------- | ------- |

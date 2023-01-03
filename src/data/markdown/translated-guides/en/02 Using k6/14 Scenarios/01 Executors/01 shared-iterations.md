@@ -5,14 +5,18 @@ excerpt: 'A fixed number of iterations are "shared" between a number of VUs, and
 
 ## Description
 
-A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed. This executor is equivalent to the global [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) shortcut options.
+In this executor, the iterations are shared between the number of VUs.
+The test ends once all iterations are executed. This executor is equivalent to the global [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) shortcut options.
 
-Note that iterations aren't fairly distributed with this executor, and a VU that executes faster will complete more iterations than others. If you want guarantees that every VU will complete a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
+Iterations **are not guaranteed to be evenly distributed** with this executor.
+VU that executes faster will complete more iterations than slower VUs.
+
+To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
 
 ## Options
 
-In addition to the [common configuration options](/using-k6/scenarios#options) this executor
-also adds the following options:
+Besides the [common configuration options](/using-k6/scenarios#options),
+this executor has the following options:
 
 | Option        | Type    | Description                                                                        | Default |
 | ------------- | ------- | ---------------------------------------------------------------------------------- | ------- |
