@@ -4,7 +4,7 @@ slug: '/using-k6/k6-options'
 excerpt: 'Options configure test-run behavior. You can set options in multiple locations. Examples for how to use options, and a complete reference.'
 ---
 
-Options configure test-run behavior.
+Options configure test-run behaviour.
 For example, options are how you define test tags, thresholds, user agents, and the number of virtual users and iterations.
 
 | On this page                     | Read about...                                                                           |
