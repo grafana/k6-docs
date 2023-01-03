@@ -805,6 +805,18 @@
       },
       "official": false,
       "categories": ["Reporting"]
+    },
+    {
+      "name": "xk6-output-prometheus-pushgateway",
+      "url": "https://github.com/martymarron/xk6-output-prometheus-pushgateway",
+      "description": "Export results to Prometheus pushgateway",
+      "logo": "",
+      "author": {
+        "name": "Masashi Kurita",
+        "url": "https://github.com/martymarron"
+      },
+      "official": false,
+      "categories": ["Reporting", "Observability"]
     }
   ]
 }
