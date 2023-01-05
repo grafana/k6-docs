@@ -56,12 +56,13 @@ export const options = {
 
 For each k6 scenario, the VU workload is scheduled by an _executor_.
 For example, executors configure:
+- How long the test runs
 - Whether VU traffic stays constant or changes
 - Whether to model traffic by iteration number or by VU arrival rate.
 
 Your scenario object must define the `executor` property with one of the predefined executors names.
 Along with the generic scenario options, each executor object has additional options specific to its workload.
-For the list of the executors, refer to the [Executor guide](/using-k6/scenarios/executors/).
+For the list of the executors, refer [Executors](/using-k6/scenarios/executors/).
 
 ## Scenario options {#options}
 
