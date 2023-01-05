@@ -1,6 +1,7 @@
 ---
-title: 'Arrival rate'
-excerpt: 'In k6, we have implemented this open model with our two arrival rate executors: constant-arrival-rate and ramping-arrival-rate.'
+title: 'Open and closed models'
+slug: '/using-k6/scenarios/about-scenarios/open-vs-closed/'
+excerpt: 'k6 has two ways to schedule VUs, which can affect test results. k6 implements the open model in its arrival rate executors.'
 ---
 
 Different k6 executors have different ways of scheduling VUs.
@@ -83,7 +84,7 @@ To fix this problem of coordination, you can use an open model,
 which decouples the start of new VU iterations from the iteration duration.
 This reduces the influence of the target system's response time.
 
-![Arrival rate closed/open models](../images/Scenarios/arrival-rate-open-closed-model.png)
+![Arrival rate closed/open models](../../images/Scenarios/arrival-rate-open-closed-model.png)
 
 k6 implements the open model with two _arrival rate_ executors:
 [constant-arrival-rate](/using-k6/scenarios/executors/constant-arrival-rate) and [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate):
