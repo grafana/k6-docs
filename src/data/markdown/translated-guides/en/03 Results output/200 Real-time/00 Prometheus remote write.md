@@ -9,7 +9,7 @@ Prometheus remote write is a protocol that makes it possible to reliably propaga
 It has a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit)
 and multiple implementations.
 For example, you can store the metrics in [Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver).
-For other implementations, check the Prometheus [Integrations](https://prometheus.io/docs/operating/integrations) guide.
+For other implementations, check the [Prometheus Integrations](https://prometheus.io/docs/operating/integrations) guide.
 
 With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
 The output during the `k6 run` execution gets all the generated data points for the [built-in  k6 metrics](/using-k6/metrics/).
@@ -44,7 +44,7 @@ you can use the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment va
 (or one of the other ways).
 The output then converts all the trend types into a dedicated Native Histogram.
 
-Mapping trends as native histograms gives you more efficient storage and preciser queries.
+Mapping trends as native histograms gives you more efficient storage and precise queries.
 The drawback is that **the feature is experimental, released in Prometheus v2.40.0**.
 
 <Blockquote mod="note" title="">
@@ -125,7 +125,7 @@ k6 has special options for remote write output.
 | `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` | `boolean` | false | If true, it maps the all defined trend metrics as [Native Histograms](#trend). |
 | `K6_PROMETHEUS_RW_TREND_STATS` | list of `string` | `p(99)` | If Native Histogram is not enabled then it defines the stats functions to map for the all defined trend metrics. It's a comma-separated list of stats functions to include (e.g. `p(90),avg,sum`). Check the trend section to know the entire set of the supported stats. |
 | `K6_PROMETHEUS_RW_INSECURE_SKIP_TLS_VERIFY` | `boolean` | false | If true, the HTTP client skips TLS verification on the endpoint. |
-| `K6_PROMETHEUS_RW_STALE_MARKERS | `boolean` | false | If true, the output at the end of the test marks all the seen time series as stale. |
+| `K6_PROMETHEUS_RW_STALE_MARKERS` | `boolean` | false | If true, the output at the end of the test marks all the seen time series as stale. |
 
 ## Time series visualization 
 
