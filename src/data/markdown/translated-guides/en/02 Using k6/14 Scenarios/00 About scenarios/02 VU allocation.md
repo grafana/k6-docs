@@ -6,9 +6,9 @@ excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
 This document explains how k6 allocates VUs in the arrival-rate executors.
 
 In arrival-rate executors, three properties determine the iterations per second:
-- The `rate` property determines how many iterations k6 starts,
-- `timeUnit` determines how frequently it starts the number of iterations
-- `preAllocatedVUs` sets the number of VUs to use to reach the target iterations per second
+-  `rate`  determines how many iterations k6 starts.
+- `timeUnit` determines how frequently it starts the number of iterations.
+- `preAllocatedVUs` sets the number of VUs to use to reach the target iterations per second.
 
 In short, while `rate` and `timeUnit` set the target iterations per second, **you must allocate enough VUs to reach this target.**
 By pre-allocating VUs, k6 can initialize the VUs necessary for the test before the test runs,
