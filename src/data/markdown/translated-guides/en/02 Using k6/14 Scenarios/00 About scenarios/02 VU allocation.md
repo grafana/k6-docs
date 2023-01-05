@@ -85,5 +85,5 @@ In almost all cases, the best thing to do is to pre-allocate the number of VUs y
 
 Some of the times it might make sense to use `maxVUs` include:
 - To determine necessary allocation in first-time tests
-- To add a little "cushion" to an expected baseline `maxVUs`
-- For huge, highly distributed tests, in which you need to carefully scale load generators as you increment VUs.
+- To add a little "cushion" to the pre-allocated VUs that you expect the test needs
+- In huge, highly distributed tests, in which you need to carefully scale load generators as you increment VUs.
