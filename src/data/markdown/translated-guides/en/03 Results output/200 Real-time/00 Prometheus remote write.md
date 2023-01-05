@@ -44,7 +44,7 @@ you can use the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment va
 (or one of the other ways).
 The output then converts all the trend types into a dedicated Native Histogram.
 
-Mapping trends as native histograms gives you more efficient storage and precise queries.
+Mapping trends as native histograms gives you more efficient storage and more precise queries.
 The drawback is that **the feature is experimental, released in Prometheus v2.40.0**.
 
 <Blockquote mod="note" title="">
