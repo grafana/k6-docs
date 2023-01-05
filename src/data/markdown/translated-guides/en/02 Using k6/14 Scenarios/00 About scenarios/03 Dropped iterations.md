@@ -4,7 +4,7 @@ excerpt: Explanations about how your scenario configuration or SUT performance c
 ---
 
 Sometimes, a scenario can't run the expected number of iterations.
-k6 tracks this number in a counter metric, `dropped iterations`.
+k6 tracks the number of unsent iterations in a counter metric, `dropped iterations`.
 The number of dropped iterations can be valuable data when you debug executors or analyze results.
 
 Dropped iterations usually happen for one of two reasons:
@@ -20,14 +20,14 @@ To mitigate this, you likely need to increase the value of the duration.
   
 With `constant-arrival-rate` and `ramping-arrival-rate`, iterations drop if there are no free VUs.
 **If it happens at the beginning of the test, you likely just need to allocate more VUs.**
-If this happens later in the test, the dropped iterations might happen because of the SUT.
+If this happens later in the test, the dropped iterations might happen because of the performance of the SUT is degrading.
 
 ### SUT-related iteration drops
 
-If iterations drop later in the test run, your test SUT might have become slow to respond to requests, process iterations, or both.
+At a certain point of high latency or longer iteration durations, k6 can no longer send VUs at the configured rate.
+As a result, the executor will drop iterations.
 
-At a certain point of high latency or longer iteration durations, k6 can no longer send VUs at the configured rate. 
-There could be a variety of causes for these dropped iterations:
+The reasons for these dropped iterations vary:
 - The SUT response has become so long that k6 starts dropping scheduled VUs from the queue.
 - The SUT iteration duration has become so long that k6 needs to schedule more VUs to reach the target arrival rate, exceeding the number of scheduled iterations.
 - Some network errors between the generator and the SUT have caused iterations to drop.
