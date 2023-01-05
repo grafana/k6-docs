@@ -1,11 +1,11 @@
 ---
 title: 'Open and closed models'
 slug: '/using-k6/scenarios/about-scenarios/open-vs-closed/'
-excerpt: 'k6 has two ways to schedule VUs, which can affect test results. k6 implements the open model in its arrival rate executors.'
+excerpt: 'k6 has two ways to schedule VUs, which can affect test results. k6 implements the open model in its arrival-rate executors.'
 ---
 
 Different k6 executors have different ways of scheduling VUs.
-Some executors use the _closed model_, while the arrival rate executors use the _open model_.
+Some executors use the _closed model_, while the arrival-rate executors use the _open model_.
 
 In short, in the closed model, VU iterations start only when the last iteration finishes.
 In the open model, on the other hand, VUs arrive independently of iteration completion.
