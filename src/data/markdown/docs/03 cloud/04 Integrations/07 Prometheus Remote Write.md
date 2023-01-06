@@ -1,9 +1,11 @@
 ---
-title: 'Prometheus Remote Write'
+title: 'Cloud to Prometheus RW'
+slug: '/cloud/integrations/prometheus-remote-write/'
 excerpt: 'How to export metrics from k6 Cloud to a Prometheus instance using the Prometheus remote-write integration'
 ---
 
-With the Prometheus remote-write integration, you can export metrics from k6 Cloud to a self-hosted or managed Prometheus instance.
+With the Prometheus remote write integration, you can export metrics from k6 Cloud to a self-hosted or managed Prometheus instance.
+If you want to export local results over the remote write protocol, refer to [Prometheus remote write](https://k6.io/docs/results-output/real-time/prometheus-remote-write/).
 
 With the Prometheus integration, you can do the following:
 
@@ -13,7 +15,6 @@ With the Prometheus integration, you can do the following:
 
 k6 currently offers similar integrations with Cloud APM solutions: [Azure Monitor](/cloud/integrations/cloud-apm/azure-monitor/), [Datadog](/cloud/integrations/cloud-apm/datadog/), [Grafana Cloud](/cloud/integrations/cloud-apm/grafana-cloud/), and [New Relic](/cloud/integrations/cloud-apm/new-relic/).
 If you use any of these solutions, we recommend integrating your APM solution first.
-
 
 > ⭐️  &nbsp;Prometheus remote write and [Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Prometheus remote write'
-excerpt: 'Use the Prometheus remote write integration to send test results to any Prometheus remote write endpoint.'
+excerpt: 'Use the Prometheus remote write output to send test results to any Prometheus remote write endpoint.'
 ---
 
 <ExperimentalBlockquote />
@@ -14,6 +14,13 @@ For other implementations, check the [Prometheus Integrations](https://prometheu
 With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
 The output during the `k6 run` execution gets all the generated data points for the [built-in  k6 metrics](/using-k6/metrics/).
 It then generates the equivalent Prometheus remote write time series.
+
+<Blockquote mod="note" title="">
+
+If you want to export cloud results to remote write,
+refer to [Cloud to Prometheus RW](/cloud/integrations/prometheus-remote-write/).
+
+</Blockquote>
 
 ## About metrics mapping
 
