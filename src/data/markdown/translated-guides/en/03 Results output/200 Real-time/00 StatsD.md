@@ -1,6 +1,6 @@
 ---
 title: 'StatsD'
-excerpt: 'k6 can also push the metrics to a StatsD service.'
+excerpt: 'k6 has a built-in output to a StatsD service.'
 ---
 
 k6 can also push the metrics to a [StatsD](https://github.com/statsd/statsd) service like:

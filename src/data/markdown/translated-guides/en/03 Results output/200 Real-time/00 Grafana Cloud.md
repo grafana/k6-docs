@@ -5,7 +5,7 @@ excerpt: >
 ---
 
 
-With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](/results-output/real-time/prometheus-remote-write), you can send your k6 metrics into [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
+With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
 With k6 metrics in Grafana, you can correlate k6 metrics with other metrics of your observability stack.
 
 While this topic uses Grafana Cloud as an example, this approach is compatible with any remote write capable Prometheus installation.

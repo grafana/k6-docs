@@ -1,11 +1,11 @@
 ---
 title: 'Datadog'
-excerpt: 'The Datadog integration allows visualizing load test results and correlating performance testing metrics in Datadog.'
+excerpt: 'Send k6 output to Datadog to visualize load test results and correlate performance testing metrics in Datadog.'
 ---
 
 > ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/datadog).
 
-k6 can send performance testing metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
+k6 can send metrics to [Datadog](https://www.datadoghq.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Datadog.
 
 This article outlines the instructions of the Datadog integration:
 

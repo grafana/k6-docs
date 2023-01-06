@@ -1,9 +1,9 @@
 ---
 title: 'Netdata'
-excerpt: 'The Netdata integration allows visualizing load test results with zero configuration, in seconds'
+excerpt: 'You can send k6 output to Netdata. With this integration, visualize test results with zero configuration, in seconds'
 ---
 
-K6 can send performance testing metrics to [Netdata](https://netdata.cloud). This enables the user to start monitoring their k6 experiments right away, as Netdata is a monitoring tool with:
+k6 can send performance testing metrics to [Netdata](https://netdata.cloud). This enables the user to start monitoring their k6 experiments right away, as Netdata is a monitoring tool with:
 - auto-configuration and auto-detection of data sources
 - automatic organization of metrics into **meaningful** charts and visualization
 - per-second metric granularity
