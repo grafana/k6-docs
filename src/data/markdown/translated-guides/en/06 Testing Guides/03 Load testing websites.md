@@ -6,7 +6,7 @@ excerpt: 'Do you know how many users your site can handle? This guide answers th
 
 This doc explains some key concepts about load testing websites, including:
 - The difference between backend and frontend performance testing.
-- When to choose beteewn protocol-based, browser-based, or hybrid scripts-
+- When to choose between protocol-based, browser-based, or hybrid scripts
 - Recommended practices about how to load test websites
 
 All load tests try to simulate real user traffic  to prevent failures, improve reliability, and release new code with confidence.
@@ -77,7 +77,7 @@ However, if your testing is smaller in scope, you can choose to focus on either 
 
 ## Component testing vs. end-to-end testing
 
-When you're testing a web app, you may wonder whether how you structure your test scripts. Consider the two methods below.
+When you're testing a web app, you may wonder whether how you structure your test scripts. Consider the following two methods.
 
 ### Component testing
 
@@ -119,7 +119,7 @@ While protocol-based load testing may seem to lend itself better to component te
 
 #### Sample protocol-based test script
 
-Below is an example of a protocol-based load testing script in k6 that fetches the homepage, along with resources embedded into the page.
+The following is an example of a protocol-based load testing script in k6 that fetches the homepage, along with resources embedded into the page.
 
 ```javascript
 import http from 'k6/http';
@@ -161,7 +161,7 @@ export function Homepage() {
 }
 ```
 
-[Recording browser traffic](https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/) gives you a headstart on scripting website tests on the protocol level.
+[Recording browser traffic](https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/) helps you prototype to test websites on the protocol level.
 
 ### Browser-based load testing
 
@@ -171,7 +171,9 @@ For example, a browser-based load testing script might include instructions to n
 
 Unlike protocol-based load testing, browser-based load testing scripts generate load by starting multiple instances of browsers and interacting with your application the way real users would. Testing at the browser level can also be the only option for testing Single-Page Applications where a lot of the application logic is executed by client-side scripts.
 
-Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level. However, k6 has an extension called [xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones. Below are some steps for getting started with a browser-level test script.
+Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level.
+However, k6 has an extension called [xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
+The following steps can help you get started with a browser-level test script.
 
 #### Tips for writing browser-level scripts
 
@@ -185,7 +187,7 @@ Scripting on the browser level usually requires the use of different tools from 
 
 #### Sample browser-based test script
 
-Below is an example of a browser-based load testing script in k6 using xk6-browser. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
+The following is an example of a browser-based load testing script in k6 using xk6-browser. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
 
 ```javascript
 import launcher from 'k6/x/browser';
