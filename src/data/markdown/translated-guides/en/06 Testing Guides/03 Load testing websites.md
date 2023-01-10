@@ -5,7 +5,7 @@ excerpt: 'Do you know how many users your site can handle? This guide answers th
 ---
 
 This doc explains some key concepts about load testing websites, including:
-- The difference between backend and frontend performance testing.
+- The difference between backend and frontend performance testing
 - When to choose between protocol-based, browser-based, or hybrid scripts
 - Recommended practices about how to load test websites
 
@@ -311,7 +311,6 @@ Load testing websites can be complex due to the number of viable testing approac
 
 - [Browser testing with xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/)
 - [Test types](https://k6.io/docs/test-types/introduction)
-- [Running large tests](https://k6.io/docs/testing-guides/running-large-tests/)
 - [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](https://k6.io/docs/examples/correlation-and-dynamic-data)
