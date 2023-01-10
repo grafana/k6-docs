@@ -173,17 +173,6 @@ Unlike protocol-based load testing, browser-based load testing scripts generate 
 
 Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level.
 However, k6 has an extension called [xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
-The following steps can help you get started with a browser-level test script.
-
-#### Tips for writing browser-level scripts
-
-**Script user actions, not requests.** Determine what a user might do for a particular task, and script interactions with elements on the browser level. For example, script what buttons the user clicks on.
-
-**Identify unique selectors.** Once you have identified which page elements a user interacts with, use the Element Inspector for DevTools in your browser to find a unique, static, and simple way to identify each element. The script needs selectors to find the right element to interact with.
-
-**Use elements to verify responses.** After every action, use [locators](https://k6.io/docs/javascript-api/xk6-browser/api/locator/) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
-
-**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](https://k6.io/docs/javascript-api/xk6-browser/api/page/) to save a visual image of what the script encountered for later troubleshooting.
 
 #### Sample browser-based test script
 
@@ -214,6 +203,20 @@ export default function () {
   sleep(1);
 }
 ```
+
+
+#### Tips for writing browser-level scripts
+
+The following steps can help you get started with a browser-level test script.
+
+**Script user actions, not requests.** Determine what a user might do for a particular task, and script interactions with elements on the browser level. For example, script what buttons the user clicks on.
+
+**Identify unique selectors.** Once you have identified which page elements a user interacts with, use the Element Inspector for DevTools in your browser to find a unique, static, and simple way to identify each element. The script needs selectors to find the right element to interact with.
+
+**Use elements to verify responses.** After every action, use [locators](https://k6.io/docs/javascript-api/xk6-browser/api/locator/) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
+
+**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](https://k6.io/docs/javascript-api/xk6-browser/api/page/) to save a visual image of what the script encountered for later troubleshooting.
+
 
 ### Hybrid load testing
 
