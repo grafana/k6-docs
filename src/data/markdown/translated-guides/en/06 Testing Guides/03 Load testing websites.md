@@ -22,7 +22,7 @@ When you approach the load test, first consider the following perspectives:
 - Protocol-based, browser-based, or hybrid load testing
 - Component testing vs. end-to-end testing
 
-## Backend vs frontend performance
+## Backend vs. frontend performance
 
 Performance has a significant influence on the user experience of a website.
 
@@ -230,7 +230,9 @@ A best practice in hybrid load testing is to generate most of the load using the
 - provides a single source of aggregated output at the end
 - reduces complexity in the creation and maintenance of scripts
 
-## Scripting and execution considerations
+## Scripting considerations
+
+When you script a test for a website, consider these recommendations.
 
 ### Consider factors that affect script realism
 
@@ -270,6 +272,11 @@ A best practice in hybrid load testing is to generate most of the load using the
 
 **Use protocol-based scripts to generate majority of the load.** When writing the test scenario, use the protocol-based requests to simulate most of the traffic and use fewer VUs for the browser-based requests. Relying on the protocol-level traffic helps keep resource utilization on load generators down.
 
+
+## Execution considerations
+
+When you run tests, consider the test environment and the load generator location.
+
 ### Run your tests in the appropriate environment
 
 Testing in pre-production environments and in production environments both add value.
@@ -278,7 +285,7 @@ Testing in pre-production environments and in production environments both add v
 
 **Testing in production** yields the most accurate results, but it's also more risky. Often, testing production is the only feasible alternative. You can reduce the risk of impact to real customers while testing in production by using lower levels of load when running load tests during peak hours, schedule tests for off-peak hours, choosing load test types that are less risky, using techniques like synthetic monitoring that generate less traffic, using real user monitoring tools to get snapshots of user performance at load, and ensuring that your observability stack is working at peak efficiency.
 
-## Run tests where your customers are
+### Run tests where your customers are
 
 The location of the load generator(s), where the traffic is coming *from*, can also have an impact on your test results. The question is: where are your end users located?
 
@@ -286,7 +293,7 @@ The location of the load generator(s), where the traffic is coming *from*, can a
 
 **Load testing on the cloud** is an essential part of the testing strategy for many public-facing websites. Using load generators on the cloud gives you access to test in different states and geographical countries, creating a mix of load generators proportional to your users' locations. Cloud load generators are easier to provision and cheaper to maintain in the long run than on-premise ones. Load testing on the cloud can help you include the effects of network latency in your tests and yield results that are more realistic.
 
-### Recommendations
+## Recommendations
 
 Here are some recommendations to help you plan, script, and execute your load tests for websites.
 
