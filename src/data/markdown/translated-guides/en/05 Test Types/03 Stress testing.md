@@ -139,7 +139,7 @@ Success or failure of a spike test depends on your expectations. Systems general
    traffic subsides.
 - Bad: System crashes, and does not recover after the traffic subsides.
 
-## Spike testing in k6
+## API spike tests in k6
 
 Here's an example script configuration for a spike test.
 As with stress testing, `ramping-arrival-rate` is a good executor for a spike test.
