@@ -176,31 +176,39 @@ However, k6 has an extension called [xk6-browser](https://k6.io/docs/javascript-
 
 #### Sample browser-based test script
 
-The following is an example of a browser-based load testing script in k6 using xk6-browser. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
+The following is an example of a browser-based load testing script in k6 using xk6-browser on a dummy website. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
 
 ```javascript
-import launcher from 'k6/x/browser';
+import { chromium } from 'k6/x/browser';
 import { sleep } from 'k6';
 
 export default function () {
-  const browser = launcher.launch('chromium', { headless: true });
-  const context = browser.newContext();
-  const page = context.newPage();
+  const browser = chromium.launch({ headless: false });
+  const page = browser.newPage();
 
   // 01. Go to the homepage
-  page.goto('http://mywebsite.com', { waitUntil: 'networkidle' });
-  page.waitForSelector('p[class="woocommerce-result-count"]');
-  page.screenshot({ path: 'screenshots/01_homepage.png' });
+  page
+    .goto('https://mywebsite.com', { waitUntil: 'networkidle' })
+    .then(() => {
+      page.waitForSelector('p[class="woocommerce-result-count"]"]');
+      page.screenshot({ path: 'screenshots/01_homepage.png' });
 
-  sleep(4);
+      sleep(4);
 
-  // 02. View products
-  const element = page.$('a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]');
-  element.click();
-  page.waitForSelector('button[name="add-to-cart"]');
-  page.screenshot({ path: 'screenshots/02_view-product.png' });
+      // 02. View products
+      const element = page.$(
+        'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
+      );
+      element.click();
+      page.waitForSelector('button[name="add-to-cart"]');
+      page.screenshot({ path: 'screenshots/02_view-product.png' });
 
-  sleep(1);
+      sleep(1);
+    })
+    .finally(() => {
+      page.close();
+      browser.close();
+    });
 }
 ```
 
