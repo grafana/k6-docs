@@ -11,6 +11,14 @@ k6 will attempt to dynamically change the number of VUs to achieve the configure
 
 See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
+<Blockquote mod="Note" title="Iteration starts are spaced fractionally">
+
+Iterations **do not** started at exactly the same time.
+At a `rate` of 10 with a `timeUnit` of `1s` each iteration starts about every tenth of a second (that is, each 100ms).
+This jitter accidentally concurrency where all VUs start at the exact millisecond
+
+</Blockquote>
+
 ## Options
 
 Besides the [common configuration options](/using-k6/scenarios#options),
