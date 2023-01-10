@@ -50,24 +50,22 @@ k6 tries to reach the target iterations per second, and one of two things can ha
 
 ## Iteration duration affects the necessary allocation
 
-Imagine that you have a goal of 50 iterations per second.
-The executor `rate` is `50`, and the `timeUnit` is `1s`.
+The necessary allocation depends on the iterations duration.
+Longer durations need more VUs.
 
-How many `preAllocatedVUs` do you need?
-This depends on your iteration duration.
-If you could be sure iterations all had a duration of `1s`, then 50 pre-allocated VUs would be enough VUs&mdash;this is likely only in a perfect world.
-
-In the real world, iteration durations fluctuate with load and random statistical variance.
-You could _approximate_ the number of VUs you need by multiplying the desired rate by the expected median iteration duration (perhaps determined by an early test).
+In a "perfect world", you could estimate the number of pre-allocated VUs with this formula
 
 ```
-preAllocatedVUs = median iteration duration * rate
+preAllocatedVUs = [median_iteration_duration * rate] + constant_for_variance
 ```
 
-In real load tests, the median iteration duration might be quite hard to predict.
-And even if you knew the median value, the variance could be so high that some periods may happen where the number of pre-allocated VUs was insufficient anyway.
-You should probably add a number of extra iterations.
-The amount necessary for your case may require some experimentation.
+In the real world, if you know _exactly_ how long an iteration take, you likely don't need to run a test.
+What's more, as the test goes on, iteration duration will likely increase.
+If duration slows so much that k6 can not send iterations at the expected rate,
+the allocation might be insufficient and k6 will drop iterations.
+
+To determine your strategy, you can run tests locally and gradually add more pre-allocated VUs.
+As dropped iterations can also indicate that the system performance is degrading, this early experimentation can provide useful data on its own.
 
 ## You probably don't need `maxVUs`
 
