@@ -230,7 +230,7 @@ A best practice in hybrid load testing is to generate most of the load using the
 - provides a single source of aggregated output at the end
 - reduces complexity in the creation and maintenance of scripts
 
-## Best practices and recommendations for website load testing
+## Scripting and execution considerations
 
 ### Consider factors that affect script realism
 
