@@ -1,6 +1,6 @@
 ---
 title: 'Amazon CloudWatch'
-excerpt: 'The Amazon CloudWatch is a monitoring and observability solution. In this article, we will show you how to send metrics from k6 to Amazon CloudWatch and later visualize them.'
+excerpt: 'You can send k6 results output to Amazon CloudWatch and later visualize them.'
 ---
 
 k6 can send metrics data to [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) through the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html), which is effectively a StatsD integration. These metrics can then be visualized in dashboards.

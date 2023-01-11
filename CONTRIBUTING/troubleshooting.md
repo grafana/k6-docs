@@ -10,6 +10,7 @@
  - [Serving suddenly broke](#serving-suddenly-broke)
       - [Check the frontmatter](#check-the-frontmatter)
       - [Check for `<angle brackets>`](#check-for-angle-brackets)
+      - [Clean the cache](#clean-the-cache)
   - [ESlint errors](#eslint-errors)
 
 <!-- markdown-toc end -->
@@ -157,6 +158,19 @@ If you have the courage to nest components, be sure you keep each context separa
   Here's my secret.
 
 <Collapsible> <!--- not aligned!!! This will break. -->
+```
+### Clean the cache
+
+Sometimes you might get an error about something missing from the `.cache` directory.
+
+```
+  ModuleNotFoundError: Module not found: Error: Can't resolve 'components/blocks/new' in '.cache/caches/gatsby-plugin-mdx/mdx-scopes-dir'
+```
+
+To resolve this, you can clean the cache:
+
+```bash
+./node_modules/.bin/gatsby clean
 ```
 
 ## ESlint errors

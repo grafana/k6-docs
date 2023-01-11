@@ -1,14 +1,14 @@
 ---
 title: 'InfluxDB + Grafana'
 slug: '/results-output/real-time/influxdb-grafana/'
-excerpt: 'This tutorial shows how to upload the test result metrics to an InfluxDB instance and configure Grafana to query the k6 metrics from InfluxDB.'
+excerpt: 'This tutorial shows how to upload the test output to an InfluxDB instance and configure Grafana to query the k6 metrics from InfluxDB.'
 ---
 
-You can use [Grafana](https://grafana.com/grafana/) for visualization of your k6 metrics.
+You can use [Grafana](https://grafana.com/grafana/) to visualize your k6 metrics.
 
 The first step is to upload your test result metrics to a storage backend. And next, configure Grafana to fetch the data from your backend to visualize the test results.
 
-This tutorial shows how to upload the test result metrics to an [InfluxDB](https://github.com/influxdata/influxdb) instance and configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
+This tutorial shows how to use [InfluxDB](https://github.com/influxdata/influxdb) instance as a destination for k6 output and to configure Grafana to query the [k6 metrics](/using-k6/metrics) from InfluxDB.
 
 ![Grafana Visualization](./images/InfluxDB-Grafana/grafana-visualization.png)
 

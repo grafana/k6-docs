@@ -1,6 +1,6 @@
 ---
 title: 'New Relic'
-excerpt: 'The New Relic integration allows visualizing load test results and correlation with your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
+excerpt: 'You can send k6 output to New Relic. With this integration visualize load test results and correlate them your New Relic telemetry data, create and share reports, and alert on k6 telemetry.'
 ---
 
 > ⚠️ &nbsp; For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/new-relic).

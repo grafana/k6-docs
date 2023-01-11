@@ -23,7 +23,7 @@ If your cluster is deployed in a public cloud, check your cloud provider documen
 If the service that you want your tests to access is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
 
 ```bash
-$ kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
 
@@ -41,5 +41,5 @@ Minikube's tunnel command runs as a process, creating a network route on the hos
 It uses the cluster’s IP address as a gateway. The tunnel command exposes the external IP directly to any program that is running on the host operating system.
 
 ```console
-$ minikube tunnel
+minikube tunnel
 ```

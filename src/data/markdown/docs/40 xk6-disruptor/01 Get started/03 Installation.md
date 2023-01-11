@@ -24,29 +24,31 @@ To build the k6 binary with the xk6-disruptor extension:
 
 <CodeGroup labels={["Linux/MacOS"]}>
 
-    ```bash
-    # Install xk6
-    go install go.k6.io/xk6/cmd/xk6@latest
+```bash
+# Install xk6
+go install go.k6.io/xk6/cmd/xk6@latest
 
-    # Clone the xk6-disruptor code
-    git clone https://github.com/grafana/xk6-disruptor.git
-    cd xk6-disruptor
+# Clone the xk6-disruptor code
+git clone https://github.com/grafana/xk6-disruptor.git
+cd xk6-disruptor
 
-    # Build the custom binary 
-    xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=. --with github.com/grafana/xk6-kubernetes
-    ```
+# Build the custom binary 
+xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=. --with github.com/grafana/xk6-kubernetes
+```
 
 </CodeGroup>
 
-    Notice that the `build` command includes both the xk6-disruptor and the [xk6-kubernetes extension](https://github.com/grafana/xk6-kubernetes).
-    This is because many example scripts use the `xk6-kubernetes` extension to create the Kubernetes resources they need, such as Pods and Services.
-    If you don't use this extension in your tests, you can build the custom `k6` binary with only the `xk6-disruptor` extension using the following command instead:
+
+Notice that the `build` command includes both the xk6-disruptor and the [xk6-kubernetes extension](https://github.com/grafana/xk6-kubernetes).
+This is because many example scripts use the `xk6-kubernetes` extension to create the Kubernetes resources they need, such as Pods and Services.
+If you don't use this extension in your tests, you can build the custom `k6` binary with only the `xk6-disruptor` extension using the following command instead:
+
 
 <CodeGroup labels={["Linux/MacOS"]}>
 
-    ```bash
-    $ xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=.
-    ```
+```bash
+xk6 build --output xk6-disruptor --with github.com/grafana/xk6-disruptor=.
+```
 
 </CodeGroup>
 
