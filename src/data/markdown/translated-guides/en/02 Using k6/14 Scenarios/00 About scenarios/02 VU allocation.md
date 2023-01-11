@@ -41,7 +41,8 @@ When planning a test, consider doing a trial initialization on a local machine t
 Before an arrival-rate scenario starts, k6 first initializes the number of `preAllocatedVUs`.
 When the test runs,
 the number of available `preAllocatedVUs` determines how many iterations k6 can start.
-k6 tries to reach the target iterations per second, and one of two things can happen.
+k6 tries to reach the target iterations per second,
+and one of two things can happen:
 
 | If the executor       | Then..                                                                                                                                 |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
@@ -50,17 +51,17 @@ k6 tries to reach the target iterations per second, and one of two things can ha
 
 ## Iteration duration affects the necessary allocation
 
-The necessary allocation depends on the iterations duration.
+The necessary allocation depends on the iteration duration:
 Longer durations need more VUs.
 
-In a "perfect world", you could estimate the number of pre-allocated VUs with this formula
+In a perfect world, you could estimate the number of pre-allocated VUs with this formula:
 
 ```
 preAllocatedVUs = [median_iteration_duration * rate] + constant_for_variance
 ```
 
-In the real world, if you know _exactly_ how long an iteration take, you likely don't need to run a test.
-What's more, as the test goes on, iteration duration will likely increase.
+In the real world, if you know _exactly_ how long an iteration takes, you likely don't need to run a test.
+What's more, as the test goes on, iteration duration likely increases.
 If duration slows so much that k6 can not send iterations at the expected rate,
 the allocation might be insufficient and k6 will drop iterations.
 

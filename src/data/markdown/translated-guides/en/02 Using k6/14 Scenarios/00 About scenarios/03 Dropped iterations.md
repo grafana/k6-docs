@@ -20,7 +20,7 @@ To mitigate this, you likely need to increase the value of the duration.
   
 With `constant-arrival-rate` and `ramping-arrival-rate`, iterations drop if there are no free VUs.
 **If it happens at the beginning of the test, you likely just need to allocate more VUs.**
-If this happens later in the test, the dropped iterations might happen because of the performance of the SUT is degrading.
+If this happens later in the test, the dropped iterations might happen because SUT performance is degrading and iterations are taking longer to finish.
 
 ### SUT-related iteration drops
 
