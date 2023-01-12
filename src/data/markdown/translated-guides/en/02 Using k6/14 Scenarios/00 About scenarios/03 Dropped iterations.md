@@ -30,7 +30,6 @@ As a result, the executor will drop iterations.
 The reasons for these dropped iterations vary:
 - The SUT response has become so long that k6 starts dropping scheduled VUs from the queue.
 - The SUT iteration duration has become so long that k6 needs to schedule more VUs to reach the target arrival rate, exceeding the number of scheduled iterations.
-- Some network errors between the generator and the SUT have caused iterations to drop.
 
 As the causes vary, dropped iterations might mean different things.
 A few dropped iterations might indicate a quick network error.
