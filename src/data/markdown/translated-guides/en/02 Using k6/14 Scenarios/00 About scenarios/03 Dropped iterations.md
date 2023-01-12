@@ -28,7 +28,7 @@ At a certain point of high latency or longer iteration durations, k6 can no long
 As a result, the executor will drop iterations.
 
 The reasons for these dropped iterations vary:
-- The SUT response has become so long that k6 starts dropping scheduled VUs from the queue.
+- The SUT response has become so long that k6 starts dropping scheduled iterations from the queue.
 - The SUT iteration duration has become so long that k6 needs to schedule more VUs to reach the target arrival rate, exceeding the number of scheduled iterations.
 
 As the causes vary, dropped iterations might mean different things.
