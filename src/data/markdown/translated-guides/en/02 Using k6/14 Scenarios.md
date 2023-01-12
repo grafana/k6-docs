@@ -62,7 +62,7 @@ For example, executors configure:
 
 Your scenario object must define the `executor` property with one of the predefined executors names.
 Along with the generic scenario options, each executor object has additional options specific to its workload.
-For the list of the executors, refer [Executors](/using-k6/scenarios/executors/).
+For the list of the executors, refer to [Executors](/using-k6/scenarios/executors/).
 
 ## Scenario options {#options}
 
