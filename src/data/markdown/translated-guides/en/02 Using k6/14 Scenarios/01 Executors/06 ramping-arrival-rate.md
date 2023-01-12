@@ -15,7 +15,7 @@ See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
 Iterations **do not** started at exactly the same time.
 At a `rate` of 10 with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
-This jitter accidentally concurrency where all VUs start at the exact millisecond
+This jitter prevents accidental concurrency where all VUs start at the exact millisecond
 
 </Blockquote>
 

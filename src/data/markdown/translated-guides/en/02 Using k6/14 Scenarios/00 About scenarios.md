@@ -7,7 +7,7 @@ These topics explain the essential concepts of how scenarios and their executors
 
 Different scenario configurations can affect many different aspects of your system,
 including the generated load, utilized resources, and emitted metrics.
-If you know a bit about how scenarios work, you'll both design better tests for resources and goals, and interpret test results with more understanding.
+If you know a bit about how scenarios work, you'll design better tests and interpret test results with more understanding.
 
 | On this page                                                                  | Read about                                                                                                                            |
 |-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
