@@ -62,7 +62,7 @@ preAllocatedVUs = [median_iteration_duration * rate] + constant_for_variance
 
 In the real world, if you know _exactly_ how long an iteration takes, you likely don't need to run a test.
 What's more, as the test goes on, iteration duration likely increases.
-If duration slows so much that k6 can not send iterations at the expected rate,
+If response times slow so much that k6 lacks the VUs to start iterations at the desired rate,
 the allocation might be insufficient and k6 will drop iterations.
 
 To determine your strategy, you can run tests locally and gradually add more pre-allocated VUs.
