@@ -24,7 +24,7 @@ If this happens later in the test, the dropped iterations might happen because S
 
 ### SUT-related iteration drops
 
-At a certain point of high latency or longer iteration durations, k6 can no longer send VUs at the configured rate.
+At a certain point of high latency or longer iteration durations, k6 will no longer have free VUs to start iterations with at the configured rate.
 As a result, the executor will drop iterations.
 
 The reasons for these dropped iterations vary:
