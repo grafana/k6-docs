@@ -13,9 +13,8 @@ See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
 
 <Blockquote mod="Note" title="Iteration starts are spaced fractionally">
 
-Iterations **do not** started at exactly the same time.
-At a `rate` of 10 with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
-This jitter prevents accidental concurrency where all VUs start at the exact millisecond
+Iterations **do not** start at exactly the same time.
+At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
 
 </Blockquote>
 
