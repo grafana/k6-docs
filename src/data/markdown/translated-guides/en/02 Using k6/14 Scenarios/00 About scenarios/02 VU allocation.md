@@ -3,16 +3,30 @@ title: VU allocation
 excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
 ---
 
-This document explains how k6 allocates VUs in the arrival-rate executors.
+In arrival-rate executors, as long as k6 has VUs available, it starts iterations according to your target rate.
+The ability to set iteration rate comes with a bit more configuration complexity: you must pre-allocate a sufficient number of VUs.
+In other words, before the tests runs, you must both:
+- Configure load (as iteration per unit of time)
+- Ensure that you've scheduled enough VUs.
 
-In arrival-rate executors, three properties determine the iterations per second:
--  `rate`  determines how many iterations k6 starts.
+Read on to learn about how k6 allocates VUs in the arrival-rate executors.
+
+## Pre-allocation in arrival-rate executors
+
+As [open-model](/using-k6/scenarios/about-scenarios/open-vs-closed/#open-model) scenarios, arrival-rate executors start iterations according to a configured rate.
+For example, you can configure arrival-rate executors to start 10 iterations each second, or minute, or hour.
+This behavior is opposed to the closed-model scenarios, in which VUs wait for one iteration to finish before starting another
+
+Each iteration need needs a VU to run it.
+Because k6 VUs are single threaded, like other JS runtimes, a VU can only run the event loop of a single iteration at a time.
+To ensure you have enough, you must pre-allocate a sufficient number.
+
+In your arrival-rate configuration, three properties determine the iteration rate:
+- `rate` determines how many iterations k6 starts.
 - `timeUnit` determines how frequently it starts the number of iterations.
 - `preAllocatedVUs` sets the number of VUs to use to reach the target iterations per second.
-
-In short, while `rate` and `timeUnit` set the target iterations per second, **you must allocate enough VUs to reach this target.**
-By pre-allocating VUs, k6 can initialize the VUs necessary for the test before the test runs,
-which ensures that the CPU cost of allocation doesn't interfere with test execution.
+In practice, determining the right number of iterations might take some trial and error,
+as the necessary VUs entirely depends on how quickly the SUT can process iterations.
 
 ```javascript
 export const options = {
