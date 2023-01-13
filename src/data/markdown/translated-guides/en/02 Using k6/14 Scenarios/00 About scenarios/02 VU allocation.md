@@ -6,8 +6,8 @@ excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
 In arrival-rate executors, as long as k6 has VUs available, it starts iterations according to your target rate.
 The ability to set iteration rate comes with a bit more configuration complexity: you must pre-allocate a sufficient number of VUs.
 In other words, before the tests runs, you must both:
-- Configure load (as iteration per unit of time)
-- Ensure that you've scheduled enough VUs.
+- Configure load (as new iterations per unit of time)
+- Ensure that you've allocated enough VUs.
 
 Read on to learn about how k6 allocates VUs in the arrival-rate executors.
 
@@ -18,7 +18,7 @@ For example, you can configure arrival-rate executors to start 10 iterations eac
 This behavior is opposed to the closed-model scenarios, in which VUs wait for one iteration to finish before starting another
 
 Each iteration need needs a VU to run it.
-Because k6 VUs are single threaded, like other JS runtimes, a VU can only run the event loop of a single iteration at a time.
+Because k6 VUs are single threaded, like other JavaScript runtimes, a VU can only run a single iteration (and its event loop) at a time.
 To ensure you have enough, you must pre-allocate a sufficient number.
 
 In your arrival-rate configuration, three properties determine the iteration rate:
