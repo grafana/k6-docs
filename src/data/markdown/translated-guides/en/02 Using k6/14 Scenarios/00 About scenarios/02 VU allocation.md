@@ -24,9 +24,9 @@ To ensure you have enough, you must pre-allocate a sufficient number.
 In your arrival-rate configuration, three properties determine the iteration rate:
 - `rate` determines how many iterations k6 starts.
 - `timeUnit` determines how frequently it starts the number of iterations.
-- `preAllocatedVUs` sets the number of VUs to use to reach the target iterations per second.
-In practice, determining the right number of iterations might take some trial and error,
-as the necessary VUs entirely depends on how quickly the SUT can process iterations.
+- `preAllocatedVUs` sets the number of VUs k6 will initialize before the test starts.
+In practice, determining the right number of VUs to be able to reach the target iteration rate might take some trial and error,
+as the necessary VUs entirely depends on what your iteration code looks like and how quickly the system-under-test can process requests.
 
 ```javascript
 export const options = {
