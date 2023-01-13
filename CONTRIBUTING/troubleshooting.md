@@ -7,7 +7,7 @@
 **Table of contents**
 
  - [Can't serve the site locally](#cant-serve-the-site-locally)
- - [Windows - 'shx' is not recognized](#shx-is-not-recognized)
+      - [Windows - 'shx' is not recognized](#shx-is-not-recognized)
  - [Serving suddenly broke](#serving-suddenly-broke)
       - [Check the frontmatter](#check-the-frontmatter)
       - [Check for `<angle brackets>`](#check-for-angle-brackets)
@@ -74,7 +74,7 @@ You can change versions with nvm.
   npm install && npm start
   ```
   
-## shx is not recognized
+### shx is not recognized
 On windows architectures, the component shx is often not found, and windows may prompt the following error message:
 ```sh
 'shx' is not recognized as an internal or external command,
