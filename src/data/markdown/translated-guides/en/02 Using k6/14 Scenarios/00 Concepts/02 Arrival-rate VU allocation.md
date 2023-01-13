@@ -21,7 +21,7 @@ When planning a test, consider doing a trial initialization on a local machine t
 
 ## Pre-allocation in arrival-rate executors
 
-As [open-model](/using-k6/scenarios/about-scenarios/open-vs-closed/#open-model) scenarios, arrival-rate executors start iterations according to a configured rate.
+As [open-model](/using-k6/scenarios/concepts/open-vs-closed/#open-model) scenarios, arrival-rate executors start iterations according to a configured rate.
 For example, you can configure arrival-rate executors to start 10 iterations each second, or minute, or hour.
 This behavior is opposed to the closed-model scenarios, in which VUs wait for one iteration to finish before starting another
 
@@ -89,7 +89,7 @@ As dropped iterations can also indicate that the system performance is degrading
 
 <Blockquote mod="attention" title="">
 
-In cloud tests, counts the number of `maxVUs` against your subscription,
+In cloud tests, the number of `maxVUs` counts against your subscription,
 **overriding the number set by `preAllocatedVUs`**.
 
 </Blockquote>

@@ -51,7 +51,7 @@ Each option has its own detailed reference in a separate section.
 | [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
 | [Quiet](#quiet)                                           | A boolean specifying whether to show the progress update in the console or not      |
 | [Results output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
+| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/concepts/open-vs-closed) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
 | [Show logs](#show-logs)                                   | A boolean specifying whether the cloud logs are printed out to the terminal         |
@@ -950,7 +950,7 @@ The `--rps` option has caveats and is difficult to use correctly.
 
 For example, in the cloud or distributed execution, this option affects every k6 instance independently.
 That is, it is not sharded like VUs are.
-We strongly recommend the [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
+We strongly recommend the [arrival-rate executors](/using-k6/scenarios/concepts/open-vs-closed) to simulate constant RPS instead of this option.
 
 </Blockquote>
 

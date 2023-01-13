@@ -9,7 +9,7 @@ A variable number of iterations are started in specified periods of time. This i
 similar to the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), but for iterations instead.
 k6 will attempt to dynamically change the number of VUs to achieve the configured iteration rate.
 
-See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
+Refer to [Open and closed models](/using-k6/scenarios/concepts/open-vs-closed) for details.
 
 <Blockquote mod="Note" title="Iteration starts are spaced fractionally">
 
