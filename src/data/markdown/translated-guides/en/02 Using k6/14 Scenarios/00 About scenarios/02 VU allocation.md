@@ -89,7 +89,8 @@ As dropped iterations can also indicate that the system performance is degrading
 
 <Blockquote mod="attention" title="">
 
-In cloud tests, counts the number of `maxVUs` against your subscription.
+In cloud tests, counts the number of `maxVUs` against your subscription,
+**overriding the number set by `preAllocatedVUs`**.
 
 </Blockquote>
 
@@ -103,7 +104,7 @@ If you set it, k6 runs in this sequence:
 
 Though it seems convenient, you should avoid using `maxVUs` in most cases.
 Allocating VUs has CPU and memory costs, and allocating VUs as the test runs **can overload the load generator and skew results**.
-In Cloud tests, the number of `maxVUs` count against your subscription (overriding the number set by `preAllocatedVUs`).
+In Cloud tests, the number of `maxVUs` count against your subscription.
 This is because k6 must allocate sufficient resources for `maxVUs` to be initialized, even if they never are.
 In almost all cases, the best thing to do is to pre-allocate the number of VUs you need beforehand.
 
