@@ -1,5 +1,5 @@
 ---
-title: VU allocation
+title: Arrival-rate VU allocation
 excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
 ---
 
@@ -10,6 +10,14 @@ In other words, before the tests runs, you must both:
 - Ensure that you've allocated enough VUs.
 
 Read on to learn about how k6 allocates VUs in the arrival-rate executors.
+
+<Blockquote mod="attention" title="">
+
+In cloud tests, **`preAllocatedVUs` count against your subscription.**
+
+When planning a test, consider doing a trial initialization on a local machine to ensure you're allocating VUs efficiently.
+
+</Blockquote>
 
 ## Pre-allocation in arrival-rate executors
 
@@ -22,33 +30,28 @@ Because k6 VUs are single threaded, like other JavaScript runtimes, a VU can onl
 To ensure you have enough, you must pre-allocate a sufficient number.
 
 In your arrival-rate configuration, three properties determine the iteration rate:
-- `rate` determines how many iterations k6 starts.
-- `timeUnit` determines how frequently it starts the number of iterations.
-- `preAllocatedVUs` sets the number of VUs k6 will initialize before the test starts.
-In practice, determining the right number of VUs to be able to reach the target iteration rate might take some trial and error,
-as the necessary VUs entirely depends on what your iteration code looks like and how quickly the system-under-test can process requests.
+-  k6 starts `rate` number of iterations evenly across the `timeUnit` (default 1s)
+- `preAllocatedVUs` sets the number of VUs to initialize to meet the target iteration rate.
+
+For example, with a `constant-arrival-rate` executor and `rate: 10`, k6 tries to start a new iteration every 100 milliseconds. If the scenario has `rate: 10, timeUnit: '1m'`, k6 tries to start a new iteration every 6 seconds.
+Whether it _can_ start the target iteration rate depends on whether the number of allocated VUs is sufficient.
 
 ```javascript
 export const options = {
   scenarios: {
     constant_load: {
       executor: "constant-arrival-rate",
-      preAllocatedVUs: 4,
-      rate: 8,
+      preAllocatedVUs: 10,
+      rate: 10,
       timeUnit: "1m",
     },
   },
 };
 ```
 
+In practice, determining the right number of VUs to be able to reach the target iteration rate might take some trial and error,
+as the necessary VUs entirely depends on what your iteration code looks like and how quickly the system under test can process requests.
 
-<Blockquote mod="attention" title="">
-
-In cloud tests, **both `preAllocatedVUs` and `maxVUs` count against your subscription.**
-
-When planning a test, consider doing a trial initialization on a local machine to ensure you're allocating VUs efficiently.
-
-</Blockquote>
 
 ## How k6 uses allocated VUs
 
@@ -66,7 +69,7 @@ and one of two things can happen:
 ## Iteration duration affects the necessary allocation
 
 The necessary allocation depends on the iteration duration:
-Longer durations need more VUs.
+longer durations need more VUs.
 
 In a perfect world, you could estimate the number of pre-allocated VUs with this formula:
 
@@ -84,6 +87,13 @@ As dropped iterations can also indicate that the system performance is degrading
 
 ## You probably don't need `maxVUs`
 
+<Blockquote mod="attention" title="">
+
+In cloud tests, counts the number of `maxVUs` against your subscription.
+
+</Blockquote>
+
+
 The arrival-rate executors also have a `maxVUs` property.
 If you set it, k6 runs in this sequence:
 1. Pre-allocate the `preAllocatedVUs`.
@@ -93,7 +103,7 @@ If you set it, k6 runs in this sequence:
 
 Though it seems convenient, you should avoid using `maxVUs` in most cases.
 Allocating VUs has CPU and memory costs, and allocating VUs as the test runs **can overload the load generator and skew results**.
-If you're running in k6 Cloud, the `maxVUs` will count against your subscription.
+In Cloud tests, the number of `maxVUs` count against your subscription (overriding the number set by `preAllocatedVUs`).
 This is because k6 must allocate sufficient resources for `maxVUs` to be initialized, even if they never are.
 In almost all cases, the best thing to do is to pre-allocate the number of VUs you need beforehand.
 
