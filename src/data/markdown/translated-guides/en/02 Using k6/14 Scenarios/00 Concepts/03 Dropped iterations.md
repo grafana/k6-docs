@@ -4,7 +4,7 @@ excerpt: Explanations about how your scenario configuration or SUT performance c
 ---
 
 Sometimes, a scenario can't run the expected number of iterations.
-k6 tracks the number of unsent iterations in a counter metric, `dropped iterations`.
+k6 tracks the number of unsent iterations in a counter metric, `dropped_iterations`.
 The number of dropped iterations can be valuable data when you debug executors or analyze results.
 
 Dropped iterations usually happen for one of two reasons:
