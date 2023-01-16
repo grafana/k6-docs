@@ -64,7 +64,7 @@ and one of two things can happen:
 | If the executor       | Then..                                                                                                                                 |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | Has enough VUs        | the extra VUs are "idle," ready to be used when needed.                                                                                |
-| Has insufficient VUs. | k6 emits a [`dropped_iterations` metric](/using-k6/scenarios/about-scenarios/dropped-iterations) for each iteration that it can't run. |
+| Has insufficient VUs. | k6 emits a [`dropped_iterations` metric](/using-k6/scenarios/concepts/dropped-iterations) for each iteration that it can't run. |
 
 ## Iteration duration affects the necessary allocation
 
