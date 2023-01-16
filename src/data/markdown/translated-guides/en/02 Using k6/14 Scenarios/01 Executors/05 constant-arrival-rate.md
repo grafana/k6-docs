@@ -13,7 +13,16 @@ by running a variable number of VUs&mdash;including potentially initializing mor
 of the test&mdash;to meet the configured iteration rate. This approach is
 useful for a more accurate representation of RPS, for example.
 
-See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
+For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
+and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
+
+
+<Blockquote mod="Note" title="Iteration starts are spaced fractionally">
+
+Iterations **do not** start at exactly the same time.
+At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
+
+</Blockquote>
 
 ## Options
 

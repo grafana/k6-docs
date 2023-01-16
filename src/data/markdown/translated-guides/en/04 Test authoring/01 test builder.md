@@ -72,7 +72,7 @@ For each scenario, configure its options:
 - The [scenario executor](/using-k6/scenarios/executors) and its particular configuration.
 - The scenario name.
 - When the scenario begins its execution. The time offset since the start of the test.
-- The scenario [graceful stop](/using-k6/scenarios/graceful-stop/) option.
+- The scenario [graceful stop](/using-k6/scenarios/concepts/graceful-stop/) option.
 
 ![k6 Test Builder - Edit Scenario](images/scenario-options.png)
 

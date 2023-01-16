@@ -56,12 +56,13 @@ export const options = {
 
 For each k6 scenario, the VU workload is scheduled by an _executor_.
 For example, executors configure:
+- How long the test runs
 - Whether VU traffic stays constant or changes
 - Whether to model traffic by iteration number or by VU arrival rate.
 
 Your scenario object must define the `executor` property with one of the predefined executors names.
 Along with the generic scenario options, each executor object has additional options specific to its workload.
-For the list of the executors, refer to the [Executor guide](/using-k6/scenarios/executors/).
+For the list of the executors, refer to [Executors](/using-k6/scenarios/executors/).
 
 ## Scenario options {#options}
 
@@ -69,7 +70,7 @@ For the list of the executors, refer to the [Executor guide](/using-k6/scenarios
 | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | executor<sup>(required)</sup> ️  | string | Unique executor name. See the list of possible values in the [executors](/using-k6/scenarios/executors/) section.                                                  | -           |
 | startTime    | string | Time offset since the start of the test, at which point this scenario should begin execution.                                                  | `"0s"`      |
-| gracefulStop | string | Time to wait for iterations to finish executing before stopping them forcefully. Read more about gracefully stopping a test run [here](/using-k6/scenarios/graceful-stop/). | `"30s"`     |
+| gracefulStop | string | Time to wait for iterations to finish executing before stopping them forcefully. Read more about gracefully stopping a test run [here](/using-k6/scenarios/concepts/graceful-stop/). | `"30s"`     |
 | exec         | string | Name of exported JS function to execute.                                                                                                       | `"default"` |
 | env          | object | Environment variables specific to this scenario.                                                                                               | `{}`        |
 | tags         | object | [Tags](/using-k6/tags-and-groups) specific to this scenario.                                                                                   | `{}`        |

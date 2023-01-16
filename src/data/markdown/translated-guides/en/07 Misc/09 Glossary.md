@@ -75,7 +75,7 @@ Goja
 : A JavaScript engine written in Go. k6 binaries are embedded with Goja, enabling test scripting in JavaScript.<br/><br/>[Goja repository](https://github.com/dop251/goja)
 
 Graceful stop
-: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/graceful-stop/)
+: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/concepts/graceful-stop/)
 
 HTTP archive
 : *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).<br/><br/>[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/recording-a-session/har-converter/)

@@ -1612,6 +1612,18 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/using-k6/scenarios/arrival-rate',
+    toPath: '/using-k6/scenarios/concepts/open-vs-closed',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6/scenarios/graceful-stop',
+    toPath: '/using-k6/scenarios/concepts/graceful-stop',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
