@@ -93,7 +93,6 @@ export default function () {
 </CodeGroup>
 
 The VU chart of a stress test should look similar to this:
-![Virtual user chart of an API stress test](./images/stress-test.png "This configuration increases the load by 100 users every 2 minutes and stays at this level for
 5 minutes. We have also included a recovery stage at the end, where the system is gradually
 decreasing the load to 0.")
 
@@ -205,7 +204,6 @@ export default function () {
 </CodeGroup>
 
 The VU chart of a spike test should look similar to this:
-![Virtual user chart of a spike test](./images/spike-test.png "The test starts with a period of 1 minute of low load, a quick spike to very high load, followed by a recovery period of low load.")
 
 Remember that the point of this test is to suddenly overwhelm the system. Don't be afraid to increase the number of VUs beyond your worst-case prediction.
 Depending on your needs, you may want to extend the recovery stage to 10 or more minutes to see when the system finally recovers.
