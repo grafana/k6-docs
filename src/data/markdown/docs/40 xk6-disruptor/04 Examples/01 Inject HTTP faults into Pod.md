@@ -125,11 +125,20 @@ The commands in this section assume the `xk6-disruptor` binary is available in y
 
 We will first execute the test without introducing faults to have an baseline using the following command:
 
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
 ```bash
 xk6-disruptor run --env SKIP_FAULTS=1 --env SVC_IP=$SVC_IP disrupt-pod.js
 ```
 
-Notice the argument `--env SKIP_FAULT=1` which makes the `disrupt` function to return without injecting any fault as explained in the [fault injection](#fault-injection) section above. Also notice the `--env SVC_IP=$SVC_IP` argument which passes the external IP used to access the `httpbin` application.
+```PowerShell
+xk6-disruptor run --env SKIP_FAULTS=1 --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
+```
+
+
+</CodeGroup>
+
+Notice the argument `--env SKIP_FAULT=1` which makes the `disrupt` function to return without injecting any fault as explained in the [fault injection](#fault-injection) section above. Also notice the `--env SVC_IP` argument which passes the external IP used to access the `httpbin` application.
 
 You should get an output similar to the one shown below (click `Expand` button to see all output).
 
@@ -181,9 +190,17 @@ load    ✓ [======================================] 000/013 VUs  30s           
 
 We repeat the execution injecting the faults. Notice we have removed the `--env SKIP_FAULTS=1` argument.
 
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
 ```bash
 xk6-disruptor run --env SVC_IP=$SVC_IP disrupt-pod.js
 ```
+
+```PowerShell
+xk6-disruptor run --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
+```
+
+</CodeGroup >
 
 <CodeGroup heightTogglers="true">
 
@@ -340,9 +357,17 @@ service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   
 
 You can retrieve the external IP address in the environment variable `SVC_IP` using the following command:
 
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
 ```bash
 SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
+
+```Powershell
+$Env:SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
+
+</CodeGroup>
 
 ### Manifests
 
