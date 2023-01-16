@@ -25,22 +25,13 @@ import {
   CookieBannerUniversal,
 } from 'react-cookie-banner';
 import { childrenToList, isInIFrame } from 'utils';
-import AlgoliaQueries from 'utils/algolia';
 import { main, app } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
 
 import styles from './doc-layout.module.scss';
 import ArrowLeft from './svg/arrow-left.inline.svg';
 
-const { indexName } = AlgoliaQueries[0];
-
 // local helper data
-//
-// algolia indices
-const searchIndices = [
-  { name: indexName, title: 'Doc Pages', hitComp: 'docPageHit' },
-];
-
 const cookies = new Cookies({ 'user-has-accepted-cookies': true });
 
 /*
@@ -363,7 +354,7 @@ export const DocLayout = ({
             <Burger onClick={() => setIsMobileNavVisible(true)} />
           </div>
           <div className={`col-xxl-4 col-12 ${styles.searchBox}`}>
-            <SearchBox collapse indices={searchIndices} />
+            <SearchBox />
           </div>
           <div className={'d-md-none col-12'}>
             <div className={styles.dropdownWrapper}>

@@ -1,6 +1,5 @@
 const path = require('path');
 
-const queries = require('./src/utils/algolia');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -150,24 +149,6 @@ const plugins = [
     },
   },
 ];
-
-if (
-  process.env.ALGOLIA_ADMIN_KEY &&
-  process.env.GATSBY_ALGOLIA_APP_ID &&
-  process.env.GATSBY_ALGOLIA_SEARCH_ONLY_KEY
-) {
-  plugins.push({
-    resolve: 'gatsby-plugin-algolia',
-    options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID,
-      apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      enablePartialUpdates: true,
-      matchFields: ['title', 'slug', 'content', 'excerpt', 'heading'],
-      queries,
-      chunkSize: 10000, // default: 1000
-    },
-  });
-}
 
 if (shouldAnnouncementBannerBeShown) {
   // See more on how it works:
