@@ -3,10 +3,12 @@ title: 'Graceful stop'
 excerpt: 'This option is available for all executors except externally-controlled and allows the user to specify a duration to wait before forcefully interrupting them.'
 ---
 
-Prior to v0.27.0, k6 would interrupt any iterations in progress when the test duration was reached
-or when scaling down VUs with the stages option. In some cases this would lead to skewed metrics
-and unexpected test results. Starting with v0.27.0, this behavior can be controlled through the
-`gracefulStop` and `gracefulRampDown` options.
+The `gracefulStop` is a period at the end of the test in which k6 lets iterations in progress finish.
+
+If a test has a set duration or ramp down, its possible that k6 could interrupt iterations in progress.
+These interruptions can lead to skewed metrics and unexpected test results.
+To deal with this, k6 scenarios have a `gracefulStop` and `gracefulRampDown` options.
+
 
 ## Description
 
