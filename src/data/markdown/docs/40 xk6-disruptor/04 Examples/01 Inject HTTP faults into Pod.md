@@ -138,7 +138,7 @@ xk6-disruptor run --env SKIP_FAULTS=1 --env "SVC_IP=$Env:SVC_IP" disrupt-pod.js
 
 </CodeGroup>
 
-Notice the argument `--env SKIP_FAULT=1` which makes the `disrupt` function to return without injecting any fault as explained in the [fault injection](#fault-injection) section above. Also notice the `--env SVC_IP` argument which passes the external IP used to access the `httpbin` application.
+Notice the argument `--env SKIP_FAULT=1`, which makes the `disrupt` function return without injecting any fault as explained in the [fault injection](#fault-injection) section. Also notice the `--env SVC_IP` argument, which passes the external IP used to access the `httpbin` application.
 
 You should get an output similar to the one shown below (click `Expand` button to see all output).
 
