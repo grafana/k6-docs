@@ -57,7 +57,7 @@ The tier k6 chooses depends on the number of VUs allocated to a load zone.
 
 - Tier 1 when the load zone has 1-999 VUs
 - Tier 2 when the load zone has 1000-4001 VUs
-- Tier 3 when the load zone has 4001 VUs
+- Tier 3 when the load zone has 4001-5000 VUs
 
 Regardless of the tier, the amount of resources (CPU, Memory, Network) per VU is the same.
 For example, if you start a test with 400VUs, k6 uses 1 Tier 1 server,
