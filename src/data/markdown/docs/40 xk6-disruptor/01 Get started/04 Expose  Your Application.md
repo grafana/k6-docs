@@ -9,9 +9,17 @@ The following sections explain the different approaches.
 
 You can retrieve the external IP address and store in an environment variable (`SVC_IP` in this example) using the following command:
 
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
 ```bash
 SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
+
+```Powershell
+$Env:SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
+
+</CodeGroup>
 
 ## As a LoadBalancer service
 
@@ -22,9 +30,17 @@ If your cluster is deployed in a public cloud, check your cloud provider documen
 
 If the service that you want your tests to access is not defined as a load balancer, you can change the service type with the following command. The service will then receive an external IP.
 
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
 ```bash
 kubectl -n <name space> patch svc <service name> -p '{"spec": {"type": "LoadBalancer"}}'
 ```
+
+```bash
+kubectl -n <name space> patch svc <service name> -p '{\"spec\": {\"type\": \"LoadBalancer\"}}'
+```
+
+</CodeGroup>
 
 
 ### Configuring a LoadBalancer in Kind
