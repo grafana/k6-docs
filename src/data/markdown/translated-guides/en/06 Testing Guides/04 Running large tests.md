@@ -294,11 +294,11 @@ k6 run --execution-segment "3/4:1"     --execution-segment-sequence "0,1/4,2/4,3
 
 However - at this moment - the distributed execution mode of k6 is not entirely functional. The current limitations are:
 
-- k6 does not provide a `test coordinator` or `master instance` to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
+- k6 does not provide the functionality of a "primary" instance to coordinate the distributed execution of the test. Alternatively, you can use the [k6 REST API](/misc/k6-rest-api) and [--paused](/using-k6/k6-options/reference#paused) to synchronize the multiple k6 instances' execution.
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
-With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **k8s cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
+With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **Kubernetes cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/grafana/k6/issues/140) on GitHub.
 
