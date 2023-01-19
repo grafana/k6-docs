@@ -173,6 +173,12 @@ Similar to checks, values for custom metrics (Trend, Counter, Gauge and Rate) ar
 
 If you have configured [abortOnFail thresholds](/using-k6/thresholds#aborting-a-test-when-a-threshold-is-crossed), k6 needs to evaluate the result constantly to verify that the threshold wasn't crossed. Consider removing this setting.
 
+#### URL grouping
+
+k6 v0.41.0 introduced a change to support metric time-series. A side-effect of this is that every unique URL will create a new time-series object, which may consume more RAM than expected.
+
+The solution to this is to use the [URL grouping](https://k6.io/docs/using-k6/http-requests/#url-grouping) feature.
+
 #### JavaScript optimizations
 
 Finally, if all of the above suggestions are insufficient, there might be some JavaScript optimizations you can do. This includes general improvements to minimize script complexity: avoid deeply nested `for` loops, don't keep references to large objects in memory if it can be avoided, keep external JS dependencies to a minimum, perform tree shaking of the k6 script if you have a build pipeline, etc.
