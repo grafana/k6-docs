@@ -249,153 +249,12 @@ WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.1
 Note: you should decide what level of errors is acceptable. At large scale, some errors are always present.
 If you make 50M requests with 100 failures, this is generally a good result (0.00002% errors).
 
-## Benchmarking k6 on AWS
+## Benchmarking k6
 
 We have executed a few large tests on different EC2 machines to see how much load k6 can generate. Our general observation is that k6 scales proportionally to the hardware. A machine with 2x more resources can generate roughly 2x more traffic. The limit to this scalability is in the number of open connections. A single Linux machine can open up to 65,535 sockets per IP. This means that a maximum of 65k requests can be sent simultaneously on a single machine. The RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the RPS limit is 650,000.
 
-### Real-life test of a website
+We maintain a [repository](https://github.com/grafana/k6-hardware-benchmark) with some scripts used to benchmark k6 and create reports. These tests are run for every new k6 version, and you can see the results in the [`results/` directory](https://github.com/grafana/k6-hardware-benchmark/tree/master/results).
 
-Testing the theoretical limits is fun, but that's not the point of this benchmark.
-The point of this benchmark is to give users an indication of how much traffic k6 can generate when executing complicated, real-life tests.
-For this purpose, we have written a rather heavy [real-life website test](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/website.js) that uses almost all k6 features.
-
-Setup:
-
-- All tests were executed on AWS EC2 instances
-- The "discardResponseBodies" recommendation was NOT used. (results would be better with this setting).
-- Scripts used for testing are available in the `/scripts` directory. The results are reproducible
-- k6 v0.26.2 was used
-- Note: the target system (test.k6.io) was running on a large cluster to boost performance.
-- Note: the target system (test.k6.io) is a slow-ish PHP website, not optimized for performance - a static website would be much quicker.
-
-The "website.js" test file uses a wide range of k6 features to make the test emulate a real usage of k6. This is not a test rigged for performance - quite the opposite.
-This test uses plenty of custom metrics, checks, parametrization, batches, thresholds and groups. It's a heavy test that should represent well the "real life" use case.
-
-**> AWS m5.large EC2 server**
-
-The `m5.large` instance has 8GB of RAM and 2 CPU cores.
-
-The following command was used to execute the test
-
-```bash
-k6 run scripts/website.es5.js \
- -o cloud \
- --vus=6000 \
- --duration=10m \
- --compatibility-mode=base \
- --no-thresholds \
- --no-summary
-```
-
-Results
-
-- Maximum VUS reached: 6000
-- Memory used: 6.09 GB (out of 8.0)
-- CPU load (avg): 1.49 (out of 2.0).
-- Peak RPS: ~6000 (note, this test was not optimized for RPS).
-- 2x `sleep(5)` in each iteration.
-
-**> AWS m5.4xlarge**
-
-The `m5.4xlarge` instance has 64GB of RAM and 16 CPU cores.
-
-```bash
-k6 run scripts/website.es5.js \
-   -o cloud  \
-   --vus=20000 \
-   --duration=10m \
-   --compatibility-mode=base  \
-   --no-thresholds  \
-   --no-summary
-
-```
-
-Results
-
-- Maximum VUS reached: 20.000
-- Memory used: 20.1 GB (out of 61.4)
-- CPU load (avg): 8.5 (out of 16.0).
-- Peak RPS: ~20.000 (note, this test was not optimized for RPS).
-- 2x `sleep(5)` in each iteration.
-
-**> AWS m5.24xlarge**
-
-The m5.24xlarge has 384GB of RAM and 96 CPU cores.
-NOTE: sleep has been reduced to 1s instead of 5s to produce more requests.
-
-```bash
-k6 run scripts/website.es5.js  \
-   -o cloud  \
-   --vus=30000 \
-   --duration=5m \
-   --compatibility-mode=base  \
-   --no-thresholds  \
-   --no-summary
-```
-
-Results
-
-- Maximum VUS reached: 30.000
-- Memory used: ~120 GB (out of 370 available)
-- CPU load (avg): ~45 (out of 96.0).
-- Peak RPS: ~61.500.
-- `sleep(1)` in each iteration.
-
-### Testing for RPS
-
-As stated at the beginning, k6 can produce a lot of requests very quickly, especially if the target system responds quickly.
-To test the RPS limit of our app we have written an [RPS-optimized test](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/RPS-optimized.js). Unfortunately, our `test.k6.io` target system is a rather slow PHP app. Nevertheless using 30k VUs we have reached 188.000 RPS.
-Much higher numbers are possible for faster systems.
-
-**> AWS m5.24xlarge**
-
-```bash
-k6 run scripts/RPS-optimized.es5.js \
-   -o cloud  \
-   --vus=30000  \
-   --duration=1m  \
-   --compatibility-mode=base  \
-   --no-thresholds \
-   --no-summary
-```
-
-Results
-
-- Maximum VUS reached: 30.000
-- Memory used: 24 GB (out of 370 available)
-- CPU load (avg): 80 (out of 96.0).
-- Peak RPS: ~188.500.
-
-### Testing for data transfer
-
-k6 can utilize the available network bandwidth when uploading files, but it needs plenty of memory to do so.
-
-Please read the warning about the cost of data transfer in AWS before commencing a large scale test.
-
-**> AWS m5.24xlarge**
-
-To test the network throughput we have written a [file uploading script](https://github.com/grafana/k6-hardware-benchmark/blob/master/scripts/file-upload.js). We have executed this test for only 1 minute to minimize the data transfer costs. In 1 minute, k6 managed to transfer 36 GB of data with 1000 VUs.
-
-```bash
-k6 run scripts/file-upload.es5.js \
--o cloud \
---vus=1000 \
---duration=1m \
---compatibility-mode=base \
---no-thresholds \
---no-summary
-```
-
-Results
-
-- Maximum VUS reached: 1.000
-- Memory used: 81 GB (out of 370 available)
-- CPU load (avg): 9 (out of 96.0).
-- Network throughput reached **4.7Gbit/s**
-- Data transferred: 36GB.
-
-Note: each VU in k6 is completely independent, and therefore it doesn't share any memory with other VUs.
-1000VUs uploading 26MB file need as much as 81GB of RAM since each VU holds the copy of the file in memory.
 
 ## Distributed execution
 
@@ -448,6 +307,7 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 [k6 Cloud](https://k6.io/cloud) - our commercial offering - provides an instant solution for running large-scale tests, amongst other [benefits](/cloud#how-can-it-help-me).
 
 If you aren't sure which solution, OSS or Cloud, is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
+
 
 ## Read more
 
