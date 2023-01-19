@@ -142,8 +142,8 @@ If you need the response body for some requests you can override this with [Para
 
 ### --no-thresholds --no-summary
 
-If you are running a local test and streaming results to the cloud (`k6 run -o cloud`), you may want to disable the terminal summary
-and local threshold calculation because thresholds and summary will be displayed in the cloud.
+If you are running a local test and streaming results to the k6 Cloud (`k6 run -o cloud`), you may want to disable the terminal summary
+and local threshold calculation because thresholds and summary will be displayed in the Cloud.
 This will save you some memory and CPU cycles.
 
 Here are all the mentioned flags, all in one:
