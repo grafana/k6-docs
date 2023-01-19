@@ -1,6 +1,18 @@
 {
   "extensions": [
     {
+      "name": "xk6-tracetest",
+      "description": "Support for Tracetest test execution and tracing client",
+      "url": "https://github.com/kubeshop/xk6-tracetest",
+      "logo": "",
+      "author": {
+        "name": "Oscar R. Reyes",
+        "url": "https://github.com/xoscar"
+      },
+      "official": false,
+      "categories": ["Observability"]
+    },
+    {
       "name": "xk6-prompt",
       "description": "Support for input arguments via UI.",
       "url": "https://github.com/Juandavi1/xk6-prompt",
