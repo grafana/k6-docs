@@ -108,14 +108,14 @@ const checkRes = check(res, {
 ### Monitor the load generator machine
 
 If you are running a test for the first time, it's a good idea to keep an eye on the available resources while the test is running.
-The easiest way to do so is to start 3 terminals on the machine:
+The easiest way to do so is to start at least 2 terminals one the machine: one to run k6, and others to monitor the CPU, memory and network usage.
 
-1. To run k6
-2. To monitor CPU and memory
-3. To monitor the network
+We recommend the following command-line tools for monitoring resources:
 
-For monitoring CPU and memory usage from the command-line we recommend [htop](https://en.wikipedia.org/wiki/Htop)
-or [nmon](https://nmon.sourceforge.net/). For monitoring network usage, we recommend [iftop](https://en.wikipedia.org/wiki/Iftop).
+- CPU and memory: [htop](https://en.wikipedia.org/wiki/Htop) or [nmon](https://nmon.sourceforge.net/).
+
+- Network: [iftop](https://en.wikipedia.org/wiki/Iftop) or [nmon](https://nmon.sourceforge.net/).
+
 If you prefer graphical applications, you can use your OS's system monitoring tool (e.g. GNOME System
 Monitor or Plasma System Monitor), or use a standalone tool like [SysMonTask](https://github.com/KrispyCamel4u/SysMonTask).
 
