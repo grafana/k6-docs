@@ -17,8 +17,10 @@ maximum VUs will only affect the externally controlled executor.
 
 ## Options
 
-Besides the [common configuration options](/using-k6/scenarios#options),
-this executor has the following options:
+**The `externally-controlled` executor has no graceful stop**.
+
+Besides that, this executor has all the [common configuration options](/using-k6/scenarios#options),
+and these particular ones:
 
 | Option      | Type    | Description                                         | Default |
 | ----------- | ------- | --------------------------------------------------- | ------- |
