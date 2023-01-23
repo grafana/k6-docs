@@ -21,29 +21,29 @@ The table below lists the importable properties from the top level module (`'k6/
 
 To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/x/browser`.
 
-  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-  ```javascript
-  import { chromium, devices } from 'k6/x/browser';
+<!-- eslint-skip -->
 
-  export default function () {
-    const browser = chromium.launch({ headless: false });
-    const iphoneX = devices['iPhone X'];
-    const context = browser.newContext(iphoneX);
-    const page = context.newPage();
+```javascript
+import { chromium, devices } from 'k6/x/browser';
 
-    page
-      .goto('https://test.k6.io/', {
-        waitUntil: 'networkidle',
-      })
-      .finally(() => {
-        page.close();
-        browser.close();
-      });
+export default async function () {
+  const browser = chromium.launch({ headless: false });
+  const iphoneX = devices['iPhone X'];
+  const context = browser.newContext(iphoneX);
+  const page = context.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' })
+  } finally {
+    page.close();
+    browser.close();
   }
-  ```
+}
+```
 
-  </CodeGroup>
+</CodeGroup>
 
 ## Browser-level APIs
 

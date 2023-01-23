@@ -27,14 +27,11 @@ Checks if the element is `disabled`.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const text = page.locator('#input-text-disabled');
-    if (text.isDisabled()) {
-        console.log("element is disabled")
-    }
-  });
+await page.goto('https://test.k6.io/browser.php');
+const text = page.locator('#input-text-disabled');
+if (text.isDisabled()) {
+    console.log("element is disabled")
+}
 ```
 
 </CodeGroup>

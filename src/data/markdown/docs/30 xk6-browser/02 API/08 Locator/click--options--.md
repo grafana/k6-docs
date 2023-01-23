@@ -37,12 +37,9 @@ Mouse click on the chosen element.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const button = page.locator("#counter-button");
-    button.click();
-  });
+await page.goto('https://test.k6.io/browser.php');
+const button = page.locator("#counter-button");
+button.click();
 ```
 
 </CodeGroup>

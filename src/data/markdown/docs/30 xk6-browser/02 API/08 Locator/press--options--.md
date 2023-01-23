@@ -24,14 +24,11 @@ Press a single key on the keyboard or a combination of keys.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const text = page.locator('#text1');
-    text.press('i');
-    text.press('ArrowLeft');
-    text.press('h');
-  });
+await page.goto('https://test.k6.io/browser.php');
+const text = page.locator('#text1');
+text.press('i');
+text.press('ArrowLeft');
+text.press('h');
 ```
 
 </CodeGroup>

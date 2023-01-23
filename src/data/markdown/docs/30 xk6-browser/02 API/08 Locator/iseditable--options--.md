@@ -27,14 +27,11 @@ Checks if the element is `editable`.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const text = page.locator('#text1');
-    if (text.isEditable()) {
-        text.fill("hello world!");
-    }
-  });
+await page.goto('https://test.k6.io/browser.php');
+const text = page.locator('#text1');
+if (text.isEditable()) {
+    text.fill("hello world!");
+}
 ```
 
 </CodeGroup>

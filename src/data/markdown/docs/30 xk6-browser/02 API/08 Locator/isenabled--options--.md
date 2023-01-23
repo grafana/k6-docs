@@ -27,14 +27,11 @@ Checks if the element is `enabled`.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const text = page.locator('#text1');
-    if (text.isEnabled()) {
-        console.log("element is enabled");
-    }
-  });
+await page.goto('https://test.k6.io/browser.php');
+const text = page.locator('#text1');
+if (text.isEnabled()) {
+    console.log("element is enabled");
+}
 ```
 
 </CodeGroup>

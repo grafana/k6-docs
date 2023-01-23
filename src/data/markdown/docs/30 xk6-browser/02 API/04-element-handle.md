@@ -54,7 +54,7 @@ excerpt: "xk6-browser: ElementHandle Class"
 import { check } from 'k6';
 import { chromium } from 'k6/x/browser';
 
-export default function() {
+export default async function() {
   const browser = chromium.launch({
     headless: false,
     slowMo: '500ms' // slow down by 500ms
@@ -63,30 +63,27 @@ export default function() {
   const page = context.newPage();
 
   // Goto front page, find login link and click it
-  page
-    .goto('https://test.k6.io/', { waitUntil: 'networkidle' })
-    .then(() => {
-      return Promise.all([
-        page.waitForNavigation(),
-        page.locator('a[href="/my_messages.php"]').click(),
-      ]);
-    }).then(() => {
-      // Enter login credentials and login
-      page.locator('input[name="login"]').type('admin');
-      page.locator('input[name="password"]').type('123');
-    
-      return Promise.all([
-        page.waitForNavigation(),
-        page.locator('input[type="submit"]').click(),
-      ]);
-    }).then(() => {
-      check(page, {
-        'header': page.locator('h2').textContent() == 'Welcome, admin!',
-      });
-    }).finally(() => {
-      page.close();
-      browser.close();
+  try {
+    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+    await Promise.all([
+      page.waitForNavigation(),
+      page.locator('a[href="/my_messages.php"]').click(),
+    ]);
+    // Enter login credentials and login
+    page.locator('input[name="login"]').type('admin');
+    page.locator('input[name="password"]').type('123');
+ 
+    await Promise.all([
+      page.waitForNavigation(),
+      page.locator('input[type="submit"]').click(),
+    ]);
+    check(page, {
+      'header': page.locator('h2').textContent() == 'Welcome, admin!',
     });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 

@@ -23,22 +23,18 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 ```javascript
 import { chromium } from 'k6/x/browser';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch();
   const context = browser.newContext();
   const page = context.newPage();
 
-  page
-    .goto('https://test.k6.io/', { 
-      waitUntil: 'networkidle',
-    })
-    .then(() => {
-      page.screenshot({ path: `example-chromium.png` });
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
-    });
+  try {
+    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+    page.screenshot({ path: `example-chromium.png` });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 

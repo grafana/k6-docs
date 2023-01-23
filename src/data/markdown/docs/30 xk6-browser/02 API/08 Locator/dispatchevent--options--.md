@@ -35,12 +35,9 @@ Since eventInit is event-specific, please refer to the events documentation for 
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const button = page.locator("#counter-button");
-    button.dispatchEvent('click');
-  });
+await page.goto('https://test.k6.io/browser.php');
+const button = page.locator("#counter-button");
+button.dispatchEvent('click');
 ```
 
 </CodeGroup>

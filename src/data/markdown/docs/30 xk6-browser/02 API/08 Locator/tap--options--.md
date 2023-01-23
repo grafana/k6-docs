@@ -39,12 +39,9 @@ const page = context.newPage({
     hasTouch: true,
 });
 
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const options = page.locator("#numbers-options");
-    options.tap();      
-  });
+await page.goto('https://test.k6.io/browser.php');
+const options = page.locator("#numbers-options");
+options.tap();  
 ```
 
 </CodeGroup>

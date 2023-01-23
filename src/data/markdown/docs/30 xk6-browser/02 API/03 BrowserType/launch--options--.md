@@ -35,7 +35,7 @@ Launches a new browser process.
 ```javascript
 import { chromium } from 'k6/x/browser';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({
     args: ['show-property-changed-rects'],
     debug: true,
@@ -48,17 +48,13 @@ export default function () {
   const context = browser.newContext();
   const page = context.newPage();
 
-  page
-    .goto('http://whatsmyuseragent.org/', { 
-      waitUntil: 'networkidle',
-    })
-    .then(() => {
-      page.screenshot({ path: `example-chromium.png` });
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
-    });
+  try {
+    await page.goto('http://whatsmyuseragent.org/', { waitUntil: 'networkidle' });
+    page.screenshot({ path: `example-chromium.png` });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 

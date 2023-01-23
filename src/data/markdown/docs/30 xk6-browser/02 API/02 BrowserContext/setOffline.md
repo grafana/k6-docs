@@ -14,10 +14,12 @@ Toggles the `BrowserContext`'s connectivity on/off.
 
 <CodeGroup labels={[]}>
 
+<!-- eslint-skip -->
+
 ```javascript
 import { chromium } from 'k6/x/browser';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch();
   const context = browser.newContext();
 
@@ -25,15 +27,16 @@ export default function () {
 
   const page = context.newPage();
 
-  page
-    .goto('https://test.k6.io/browser.php', {
-      // Will not be able to load the page
-      waitUntil: 'networkidle',
-    })
-    .finally(() => {
-      context.close();
-      browser.close();
+  try {
+    await page
+      .goto('https://test.k6.io/browser.php', { 
+        // Will not be able to load the page
+        waitUntil: 'networkidle' 
     });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 

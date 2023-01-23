@@ -44,33 +44,31 @@ The main use case for xk6-browser is to test performance on the browser level. B
 <!-- eslint-skip -->
 
 ```javascript
-import { check } from 'k6';
 import { chromium } from 'k6/x/browser';
+import { check } from 'k6'
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
-  page
-    .goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' })
-    .then(() => {
-      // Enter login credentials and login
-      page.locator('input[name="login"]').type('admin');
-      page.locator('input[name="password"]').type('123');
-      
-      // Wait for asynchronous operations to complete
-      return Promise.all([
-        page.waitForNavigation(),
-        page.locator('input[type="submit"]').click(),
-      ]).then(() => {
-        check(page, {
-          'header': page.locator('h2').textContent() == 'Welcome, admin!',
-        });
-      });
-    }).finally(() => {
-      page.close();
-      browser.close();
+  try {
+    await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
+
+    page.locator('input[name="login"]').type('admin');
+    page.locator('input[name="password"]').type('123');
+
+    await Promise.all([
+      page.waitForNavigation(),
+      page.locator('input[type="submit"]').click(),
+    ]);
+
+    check(page, {
+      'header': page.locator('h2').textContent() == 'Welcome, admin!',
     });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 
@@ -80,7 +78,7 @@ The preceding code launches a Chromium-based browser, visits the application and
 
 <Blockquote mod="note" title="">
 
-We're currently (Nov. 2022) migrating most xk6-browser APIs to be async and return a Promise. Because k6 doesn't yet support the async/await keywords, you'll have to use `then()` to resolve Promises. For more information, check out [Running xk6-browser](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
+We're currently (January 2023) migrating most xk6-browser APIs to be async and return a Promise. To make this simpler, our goal is to use the async/await keywords. For more information, check out [Running xk6-browser](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
 
 </Blockquote>
 

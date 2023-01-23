@@ -28,14 +28,12 @@ const context = browser.newContext();
 const page = context.newPage();
 context.setDefaultNavigationTimeout(1000); // 1s
 
-page
-  .goto('https://httpbin.test.k6.io/delay/5', {
-    waitUntil: 'networkidle',
-  })
-  .finally(() => {
-    page.close();
-    browser.close();
-  });
+try {
+  await page.goto('https://httpbin.test.k6.io/delay/5', { waitUntil: 'networkidle' });
+} finally {
+  page.close();
+  browser.close();
+}
 ```
 
 </CodeGroup>

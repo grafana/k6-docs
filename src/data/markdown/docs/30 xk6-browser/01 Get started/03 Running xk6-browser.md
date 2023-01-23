@@ -25,34 +25,34 @@ To run a simple local script:
 
 2. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
-  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-  ```javascript
-  import { chromium } from 'k6/x/browser';
+<!-- eslint-skip -->
 
-  export default function () {
-    const browser = chromium.launch({ headless: false });
-    const page = browser.newPage();
+```javascript
+import { chromium } from 'k6/x/browser';
 
-    page
-      .goto('https://test.k6.io/', { waitUntil: 'networkidle' })
-      .then(() => {
-        page.screenshot({ path: 'screenshot.png' });
-      })
-      .finally(() => {
-        page.close();
-        browser.close();
-      });
+export default async function () {
+  const browser = chromium.launch({ headless: false });
+  const page = browser.newPage();
+
+  try {
+    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' })
+    page.screenshot({ path: 'screenshot.png' });
+  } finally {
+    page.close();
+    browser.close();
   }
-  ```
+}
+```
 
-  </CodeGroup>
+</CodeGroup>
 
   The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
-  To provide rough compatibility with the Playwright API, the xk6-browser API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `.then()` is used to deal with the asynchronous nature of the operation.
+  To provide rough compatibility with the Playwright API, the xk6-browser API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `await` keyword is used to deal with the asynchronous nature of the operation.
 
   </Blockquote>
 
@@ -88,26 +88,27 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
+<!-- eslint-skip -->
+
 ```javascript
 import { chromium } from 'k6/x/browser';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
+  
+  try {
+    await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
 
-  page
-    .goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' })
-    .then(() => {
-      // Enter login credentials
-      page.locator('input[name="login"]').type('admin');
-      page.locator('input[name="password"]').type('123');
+    // Enter login credentials
+    page.locator('input[name="login"]').type('admin');
+    page.locator('input[name="password"]').type('123');
 
-      page.screenshot({ path: 'screenshot.png' });
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
-    });
+    page.screenshot({ path: 'screenshot.png' });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 
@@ -119,7 +120,7 @@ Within the Locator API, various methods such as `type()` can be used to interact
 
 ## Asynchronous operations
 
-As explained previously, the k6 API is synchronous. However, since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most xk6-browser methods to be asynchronous as well.
+Since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most xk6-browser methods to be asynchronous as well.
 
 At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and scripts must be written to handle this properly.
 
@@ -130,33 +131,31 @@ To avoid timing errors or other race conditions in your script, if you have acti
 <!-- eslint-skip -->
 
 ```javascript
-import { check } from 'k6';
 import { chromium } from 'k6/x/browser';
+import { check } from 'k6'
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
-  page
-    .goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' })
-    .then(() => {
-      // Enter login credentials and login
-      page.locator('input[name="login"]').type('admin');
-      page.locator('input[name="password"]').type('123');
-      
-      // Wait for asynchronous operations to complete
-      return Promise.all([
-        page.waitForNavigation(),
-        page.locator('input[type="submit"]').click(),
-      ]).then(() => {
-        check(page, {
-          'header': page.locator('h2').textContent() == 'Welcome, admin!',
-        });
-      });
-    }).finally(() => {
-      page.close();
-      browser.close();
+  try {
+    await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
+
+    page.locator('input[name="login"]').type('admin');
+    page.locator('input[name="password"]').type('123');
+
+    await Promise.all([
+      page.waitForNavigation(),
+      page.locator('input[type="submit"]').click(),
+    ]);
+
+    check(page, {
+      'header': page.locator('h2').textContent() == 'Welcome, admin!',
     });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 
@@ -184,6 +183,8 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
+<!-- eslint-skip -->
+
 ```javascript
 import { chromium } from 'k6/x/browser';
 import { check } from 'k6';
@@ -191,7 +192,7 @@ import http from 'k6/http';
 
 export const options = {
   scenarios: {
-    messages: {
+    browser: {
       executor: 'constant-vus',
       exec: 'browser',
       vus: 1,
@@ -206,24 +207,22 @@ export const options = {
   },
 };
 
-export function browser() {
+export async function browser() {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
-  page
-    .goto('https://test.k6.io/browser.php', { waitUntil: 'networkidle' })
-    .then(() => {
-      page.locator('#checkbox1').check();
+  try {
+    await page.goto('https://test.k6.io/browser.php', { waitUntil: 'networkidle' });
 
-      check(page, {
-        'checkbox is checked': (p) =>
-          p.locator('#checkbox-info-display').textContent() === 'Thanks for checking the box',
-      });
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
+    page.locator('#checkbox1').check();
+
+    check(page, {
+      'checkbox is checked': page.locator('#checkbox-info-display').textContent() === 'Thanks for checking the box',
     });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 
 export function news() {

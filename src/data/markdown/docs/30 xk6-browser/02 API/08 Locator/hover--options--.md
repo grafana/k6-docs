@@ -35,12 +35,9 @@ Hovers over the element.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const offScreenElement = page.locator("#off-screen");
-    offScreenElement.hover();
-  });
+await page.goto('https://test.k6.io/browser.php');
+const offScreenElement = page.locator("#off-screen");
+offScreenElement.hover();
 ```
 
 </CodeGroup>

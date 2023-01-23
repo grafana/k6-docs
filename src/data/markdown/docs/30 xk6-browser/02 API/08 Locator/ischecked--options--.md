@@ -27,14 +27,11 @@ Checks to see if the `checkbox` `input` type is selected or not.
 <!-- eslint-skip -->
 
 ```javascript
-page
-  .goto('https://test.k6.io/browser.php')
-  .then(() => {
-    const checkbox = page.locator('#checkbox1');
-    if (!checkbox.isChecked()) {
-        checkbox.check();
-    }
-  });
+await page.goto('https://test.k6.io/browser.php');
+const checkbox = page.locator('#checkbox1');
+if (!checkbox.isChecked()) {
+  checkbox.check();
+}
 ```
 
 </CodeGroup>

@@ -49,10 +49,14 @@ Creates and returns a new [BrowserContext](/javascript-api/xk6-browser/api/brows
 
 ### deviceScaleFactor example
 
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
+
 ```javascript
 import { chromium } from 'k6/x/browser';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({
     headless: false,
   });
@@ -66,13 +70,13 @@ export default function () {
   });
   const page = context.newPage();
 
-  page
-    .goto('https://test.k6.io/', {
-      waitUntil: 'networkidle',
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
-    });
+  try {
+    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
+
+</CodeGroup>
