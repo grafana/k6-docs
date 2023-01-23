@@ -14,12 +14,16 @@ As with any changes to your OS, we discourage blindly changing your system setti
 E.g. before changing MSL / TIME_WAIT period, confirm that you’re experiencing the issue (error messages, netstat, ss, etc.), change settings conservatively, re-run the test, and note any improvement.
 This way you can gauge the effect of the optimization, find any negative side-effects, and come up with a range of recommended values.
 
-> Modifications below have been tested for macOS Sierra 10.12 and above.
-> If you're on an older version, the process for changing these settings might differ.
+<Blockquote mod="note" title="">
+
+The following modifications have been tested for macOS Sierra 10.12 and above.
+If you're on an older version, the process for changing these settings might differ.
+
+</Blockquote>
 
 ## Network resource limit
 
-Unix operating system derivatives like GNU/Linux, BSDs and macOS, have the capability to limit the amount of system resources available to a process to safeguard system stability. This includes the total amount of memory, CPU time or amount of open files a single process is allowed to manage.
+Unix operating system derivatives such as GNU/Linux, BSDs and macOS, can limit the amount of system resources available to a process to safeguard system stability. This includes the total amount of memory, CPU time, or amount of open files a single process is allowed to manage.
 
 Since in Unix everything is a file, including network connections, application testing tools that heavily use the network, such as k6, might reach the configured limit of allowed open files, depending on the amount of network connections used in a particular test.
 
@@ -31,18 +35,17 @@ WARN[0127] Request Failed     error="Get http://example.com/: dial tcp example.c
 
 This message means that the network resource limit has been reached, which will prevent k6 from creating new connections, thus altering the test result. In some cases this may be desired, to measure overall system performance, for example, but in most cases this will be a bottleneck towards testing the HTTP server and web application itself.
 
-Below we will look at ways to increase this resource limit, and allow k6 to run tests with hundreds or thousands of concurrent VUs from a single system.
-
-**Limit types**
-
-Unix systems have two types of resource limits:
-
-- hard limits: these are the absolute maximum allowed for each user, and can only be configured by the root user.
-- soft limits: these can be configured by each user, but cannot be above the hard limit setting.
+The next sections describe ways to increase this resource limit, and allow k6 to run tests with hundreds or thousands of concurrent VUs from a single system.
 
 ### Viewing limits configuration
 
-**> Linux**
+Unix systems have two types of resource limits:
+
+- **Hard limits.** The absolute maximum allowed for each user, and can be configured only by the root user.
+- **Soft limits.** These can be configured by each user, but cannot be above the hard limit setting.
+
+
+### Linux
 
 On GNU/Linux, you can see the configured limits with the ulimit command.
 
@@ -92,7 +95,7 @@ file locks                      (-x) unlimited
 
 Note the difference of open files being a maximum of 1024 for the soft limit, while it's 1048576 for the hard limit.
 
-**> macOS**
+### macOS
 
 In macOS however, you will have a couple of different system imposed limits to take into consideration.
 
@@ -105,11 +108,11 @@ The first one is `launchctl limit maxfiles` which prints the per-process limits 
 
 So, to reiterate, running commands above will show you the system limits on open files and running processes.
 
-### Changing limits configuration
+## Changing limits configuration
 
 The first thing you should consider before changing the configuration is the amount of network connections you expect your test to require. The http_reqs metric in the k6 result summary can hint at this, but a baseline calculation of number of max. VUs \* number of HTTP requests in a single VU iteration will deliver a fair approximation. Note that k6 also deals with text files and other resources that count towards the "open files" quota, but network connections are the biggest consumers.
 
-**> macOS**
+### Disabling limits in macOS
 
 Before we can change any system imposed limits in macOS we will need to disable a security feature put in place to prevent us in doing so. You will need to disable System Integrity Protection that was introduced in OS X El Capitan to prevent certain system-owned files and directories from being modified by processes without the proper privileges.
 
@@ -121,9 +124,9 @@ There you should navigate to `Utilities` which are located in the menu bar at th
 
 Once you press enter and close the Terminal, you can reboot your Mac normally and log into your account.
 
-**Changing soft limits**
+### Changing soft limits
 
-**> Linux**
+#### Linux
 
 So, let's say that we want to run a 1000 VU test which makes 4 HTTP requests per iteration. In this case we could increase the open files limit to 5000, to account for additional non-network file usage. This can be done with the following command:
 
@@ -139,7 +142,7 @@ If we want to persist this change for future sessions, we can add this to a shel
 $ echo "ulimit -n 5000" >> ~/.bashrc
 ```
 
-**> macOS**
+#### macOS
 
 If the soft limit is too low, set the current session to (values written here are usually close to default ones) :
 
@@ -149,9 +152,9 @@ sudo launchctl limit maxfiles 65536 200000
 
 Since sudo is needed, you are prompted for a password.
 
-**Changing hard limits**
+### Changing hard limits
 
-**> Linux**
+#### Linux
 
 If the above command results in an error like cannot modify limit: Operation not permitted or value exceeds hard limit, that means that the hard limit is too low, which as mentioned before, can only be changed by the root user.
 
@@ -168,7 +171,7 @@ The new limits will be in place after logging out and back in.
 
 Alternatively, \* hard nofile 1048576 would apply the setting for all non-root user accounts, and root hard nofile 1048576 for the root user. See the documentation in that file or man bash for the ulimit command documentation.
 
-**> macOS**
+#### macOS
 
 Next step will be to configure your new file limits. Open terminal and paste the following command:
 
@@ -251,7 +254,7 @@ Please be aware that all of these limitations are put in place to protect your o
 
 When creating an outgoing network connection the kernel allocates a local (source) port for the connection from a range of available ports.
 
-**> GNU/Linux**
+### GNU/Linux
 
 On GNU/Linux you can see this range with:
 
@@ -277,7 +280,7 @@ sysctl -w net.ipv4.tcp_tw_reuse=1
 
 This will enable a feature to quickly reuse connections in TIME_WAIT state, potentially yielding higher throughput.
 
-**> macOS/Linux**
+### macOS/Linux
 
 On macOS the default ephemeral port range is 49152 to 65535, for a total of 16384 ports. You can check this with the sysctl command:
 
