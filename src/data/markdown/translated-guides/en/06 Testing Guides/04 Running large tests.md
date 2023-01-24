@@ -19,7 +19,9 @@ Below we will explore what hardware and considerations are needed for generating
 
 ## OS fine-tuning
 
-The following OS changes for GNU/Linux let k6 use the **full network capacity** of the machine for maximum performance.
+Modern operating systems are configured with a fairly low limit of the number of concurrent network connections an application can create. This is a safe default since most programs don't need to open thousands of concurrent TCP connections like k6. However, if we want to use the full network capacity and achieve maximum performance, we need to change some of these default settings.
+
+On a GNU/Linux machine, run the following commands as the `root` user:
 
 ```bash
 sysctl -w net.ipv4.ip_local_port_range="1024 65535"
@@ -30,9 +32,9 @@ ulimit -n 250000
 
 These commands enable reusing network connections, increase the limit of network connections, and range of local ports.
 
-To apply these changes, you can either paste these commands as a root user before running a k6 test or change the configuration files in your operating system.
+The `sysctl` commands apply immediately for the entire system, and will reset to their default values if you restart the network service or reboot the machine. The `ulimit` command applies only for the current shell session, and you'll need to run it again for it to be set in another shell instance.
 
-For detailed information about these settings, the macOS instructions, and how to make them permanent, check out our ["Fine tuning OS" article](/misc/fine-tuning-os).
+For detailed information about these settings, how to make them permanent, and instructions for macOS, check out our ["Fine tuning OS" article](/misc/fine-tuning-os).
 
 ## Hardware considerations
 
