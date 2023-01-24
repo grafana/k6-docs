@@ -11,7 +11,7 @@ This document explains how to launch a large-scale k6 test on a single machine w
 
 A common misconception of many load testers is that [distributed execution](#distributed-execution) (the ability to launch a load test from multiple machines) is required to generate a large load. This is not the case with k6.
 
-k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine. Depending on the available resources, and taking into consideration some of the advice below, a single instance of k6 is able to run 30,000-40,000 simultaneous users (VUs). In some cases this number of VUs can generate up to 300,000 HTTP requests per second (RPS).
+k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine. Depending on the available resources, and taking into consideration some of the advice below, a single instance of k6 is able to run 30,000-40,000 simultaneous users (VUs). In some cases this number of VUs can generate up to 300,000 HTTP [requests per second](/misc/glossary/#requests-per-second) (RPS).
 
 Unless you need more than 100,000-300,000 requests per second (6-12M requests per minute), a single instance of k6 will likely be sufficient for your needs.
 
