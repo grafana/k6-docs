@@ -19,6 +19,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Endurance testing](#endurance-testing)
 - [Goja](#goja)
 - [Graceful stop](#graceful-stop)
+- [Happy path](#happy-path)
 - [HTTP archive](#http-archive)
 - [Iteration](#iteration)
 - [k6 Cloud](#k6-cloud)
@@ -75,7 +76,10 @@ Goja
 : A JavaScript engine written in Go. k6 binaries are embedded with Goja, enabling test scripting in JavaScript.<br/><br/>[Goja repository](https://github.com/dop251/goja)
 
 Graceful stop
-: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/concepts/graceful-stop/)
+: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/graceful-stop/)
+
+Happy path
+: The default system behavior that happens when a known input produces an expected output. A common mistake in performance testing happens when scripts account only for the best case (in other words, the happy path). Most load tests try to discover system errors, so test scripts should include exception handling.<br/><br/>[Happy path (Wikipedia)](https://en.wikipedia.org/wiki/Happy_path)
 
 HTTP archive
 : *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).<br/><br/>[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/recording-a-session/har-converter/)
