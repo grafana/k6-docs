@@ -19,7 +19,7 @@ Below we will explore what hardware and considerations are needed for generating
 
 ## OS fine-tuning
 
-The following OS changes for GNU/Linux allow k6 to use the **full network capacity** of the machine for maximum performance.
+The following OS changes for GNU/Linux let k6 use the **full network capacity** of the machine for maximum performance.
 
 ```bash
 sysctl -w net.ipv4.ip_local_port_range="1024 65535"
@@ -67,7 +67,7 @@ If you need to share memory between VUs, consider using [SharedArray](/javascrip
 
 ## General advice
 
-### Make your test code resilient
+### Resilient error handling
 
 When running large stress tests, your script can't assume anything about the HTTP response.
 Often performance tests are written with a "happy path" in mind.
@@ -147,7 +147,9 @@ If you need the response body for some requests you can override this with [Para
 ### --no-thresholds --no-summary
 
 If you are running a local test and streaming results to the k6 Cloud (`k6 run -o cloud`), you may want to disable the terminal summary
-and local threshold calculation because thresholds and summary will be displayed in the Cloud.
+and local threshold calculation, because k6 Cloud will display the summary and calculate the thresholds.
+
+Without these options, the operations will be duplicated by both the local machine and the k6 Cloud servers.
 This will save you some memory and CPU cycles.
 
 Here are all the mentioned flags, all in one:
@@ -187,7 +189,7 @@ The solution to this is to use the [URL grouping](/using-k6/http-requests/#url-g
 
 Finally, if all of the above suggestions are insufficient, there might be some JavaScript optimizations you can do. This includes general improvements to minimize script complexity: avoid deeply nested `for` loops, don't keep references to large objects in memory if it can be avoided, keep external JS dependencies to a minimum, perform tree shaking of the k6 script if you have a build pipeline, etc.
 
-See [this article](https://javascript.info/garbage-collection) about garbage collection in the V8 runtime. While the JavaScript VM k6 uses is very different and runs on Go, the general principles are applicable. Keep in mind that memory leaks are still possible in k6 scripts, and might lead to much quicker RAM exhaustion if not fixed.
+Refer to this article about [garbage collection](https://javascript.info/garbage-collection) in the V8 runtime. While the JavaScript VM k6 uses is very different and runs on Go, the general principles are applicable. Keep in mind that memory leaks are still possible in k6 scripts, and might lead to much quicker RAM exhaustion if not fixed.
 
 
 ## File upload testing
