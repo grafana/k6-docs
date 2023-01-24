@@ -3,7 +3,11 @@ title: 'Running large tests'
 excerpt: 'How to run large-scale k6 tests without distributed-execution'
 ---
 
-This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution.
+This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution. In most cases, the process involves the following:
+- Changing operating system settings to increase the default network and user limits.
+- Monitoring the load generator machine to ensure adequate resource usage.
+- Efficient test design, with attention to scripting, k6 options, and file uploads.
+- Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](/misc/glossary/#system-under-test) (SUT).
 
 A common misconception of many load testers is that [distributed execution](#distributed-execution) (the ability to launch a load test from multiple machines) is required to generate a large load. This is not the case with k6.
 
@@ -79,7 +83,7 @@ const checkRes = check(res, {
 });
 ```
 
-Code like this runs fine when the [system under test](/misc/glossary/#system-under-test) (SUT) is not overloaded and returns proper responses.
+Code like this runs fine when the [SUT](/misc/glossary/#system-under-test) is not overloaded and returns proper responses.
 When the system starts to fail, the above check won't work as expected.
 
 The issue here is that the check assumes that there's always a body in a response. The `r.body` may not exist if the server is failing.
