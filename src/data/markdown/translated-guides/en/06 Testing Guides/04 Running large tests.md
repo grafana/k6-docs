@@ -5,7 +5,7 @@ excerpt: 'How to run large-scale k6 tests without distributed-execution'
 
 This document explains how to launch a large-scale k6 test on a single machine without the need for distributed execution.
 
-A common misconception of many load testers is that [distributed execution](#distributed-execution) (the ability to launch a load test from multiple machines) is required to generate large load. This is not the case with k6.
+A common misconception of many load testers is that [distributed execution](#distributed-execution) (the ability to launch a load test from multiple machines) is required to generate a large load. This is not the case with k6.
 
 k6 is different from many other load testing tools in the way it handles hardware resources. A single k6 process will efficiently use all CPU cores on a load generator machine. Depending on the available resources, and taking into consideration some of the advice below, a single instance of k6 is able to run 30,000-40,000 simultaneous users (VUs). In some cases this number of VUs can generate up to 300,000 HTTP requests per second (RPS).
 
@@ -177,7 +177,7 @@ If you have configured [abortOnFail thresholds](/using-k6/thresholds#aborting-a-
 
 k6 v0.41.0 introduced a change to support metric time-series. A side-effect of this is that every unique URL will create a new time-series object, which may consume more RAM than expected.
 
-The solution to this is to use the [URL grouping](https://k6.io/docs/using-k6/http-requests/#url-grouping) feature.
+The solution to this is to use the [URL grouping](/using-k6/http-requests/#url-grouping) feature.
 
 #### JavaScript optimizations
 
@@ -207,12 +207,12 @@ k6 can upload a large amount of data in a very short period of time. Make sure y
 [Outbound Data Transfer is expensive in AWS EC2](https://www.cloudmanagementinsider.com/data-transfer-costs-everything-you-need-to-know/). The price ranges between $0.08 to $0.20 per GB depending on the region.
 If you use the cheapest region the cost is about $0.08 per GB. Uploading 1TB, therefore, costs about $80. A long-running test can cost several hundreds of dollars in data transfer alone.
 
-If your infrastructure is already hosted on AWS, consider running your load generator machine within the same AWS region and availability zone. In some cases, this traffic will be much cheaper or even free. See [this article](https://www.stormit.cloud/blog/aws-data-transfer-pricing-how-to-reduce-costs/) for other AWS data cost saving tips. Our examples are made with AWS in mind, but the same suggestions also apply for other cloud providers.
+If your infrastructure is already hosted on AWS, consider running your load generator machine within the same AWS region and availability zone. In some cases, this traffic will be much cheaper or even free. For additional data cost-saving tips, check this [article on how to reduce data transfer costs on AWS](https://www.stormit.cloud/blog/aws-data-transfer-pricing-how-to-reduce-costs/). Our examples are made with AWS in mind. However, the same suggestions also apply to other cloud providers.
 
 #### Virtual server
 
 The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour.
-However, make sure to turn off the load generator servers once you are done with your testing. A forgotten EC2 server might cost thousands of dollars per month.
+Make sure you turn off the load generator servers once you are done with your testing. A forgotten EC2 server might cost thousands of dollars per month.
 Tip: it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
 
 ## Errors
@@ -221,7 +221,7 @@ If you run into errors during the execution, it's good to understand if they wer
 
 ### read: connection reset by peer
 
-This is caused by the target system resetting the TCP connection. This happens when the Load balancer or the server itself isn't able to handle the traffic.
+This is caused by the target system resetting the TCP connection. It happens when the Load Balancer or the server itself isn't able to handle the traffic.
 
 ```bash
 WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72.209:35288->63.32.205.136:80: read: connection reset by peer"
@@ -304,7 +304,7 @@ However - at this moment - the distributed execution mode of k6 is not entirely 
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [--no-thresholds](/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
-With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/k6io/operator) to distribute the load of a k6 test across a **Kubernetes cluster**. Check out [this tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/) for further instructions.
+With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/grafana/k6-operator) to distribute the load of a k6 test across a **Kubernetes cluster**. For further instructions, check out [the running distributed k6 tests on Kubernetes tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/).
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/grafana/k6/issues/140) on GitHub.
 
