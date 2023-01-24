@@ -128,6 +128,11 @@ Monitor or Plasma System Monitor), or use a standalone tool like [SysMonTask](ht
 Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 ![k6 iftop htop](./images/large-scale-testing-3-terminals.png)
 
+As general guidelines, look for the following:
+- CPU utilization doesn't exceed 90%. If all CPU cores are 100% utilized during the test run, you might notice performance degradation in your test results.
+- Network utilization is at an acceptable level. Depending on your test, you might expect to fully saturate the network bandwidth, or this might be a signal that your test is bound by the available bandwidth. In other scenarios, you might want to minimize network usage to keep costs down.
+- Memory utilization doesn't exceed 90%. If you're close to exhausting available physical RAM, the system might start swapping memory to disk, which will affect performance and system stability. In extreme cases, running out of memory on Linux will cause the system to end the k6 process.
+
 ## k6 Options
 
 The k6 settings listed below will unlock additional performance benefits when running large tests.
