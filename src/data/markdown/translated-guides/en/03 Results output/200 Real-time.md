@@ -28,6 +28,7 @@ You can also stream real-time metrics to the following services:
 <Glossary>
 
 - [Amazon CloudWatch](/results-output/real-time/amazon-cloudwatch)
+- [Apache Kafka](/results-output/real-time/apache-kafka)
 - [Cloud](/results-output/real-time/cloud)
 - [Datadog](/results-output/real-time/datadog)
 - [Grafana Cloud](/results-output/real-time/grafana-cloud)

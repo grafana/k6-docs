@@ -1624,6 +1624,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/es/visualizacion-de-resultados/apache-kafka/',
+    toPath: '/results-output/real-time/apache-kafka/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',

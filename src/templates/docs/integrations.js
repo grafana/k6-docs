@@ -16,6 +16,7 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 // icons
 import CloudWatch from 'svg/amazon-cloudwatch.inline.svg';
+import Kafka from 'svg/apache-kafka.inline.svg';
 import AWSCodeBuild from 'svg/aws-codebuild.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import Bamboo from 'svg/bamboo.inline.svg';
@@ -47,6 +48,11 @@ const iconsDataSet1 = [
     Icon: CloudWatch,
     name: 'Amazon CloudWatch',
     to: '/results-output/real-time/amazon-cloudwatch',
+  },
+  {
+    Icon: Kafka,
+    name: 'Apache Kafka',
+    to: '/results-visualization/apache-kafka',
   },
   {
     Icon: K6,
