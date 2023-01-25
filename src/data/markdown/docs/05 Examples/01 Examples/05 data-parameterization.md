@@ -8,6 +8,8 @@ excerpt: |
   This will, in turn, make your test more realistic.
 ---
 
+_Data parameterization_ is the process of turning test values into reusable parameters, for example, through variables and shared arrays.
+
 This page gives some examples of how to parameterize data in a test script.
 Parameterization is typically necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a test.
 You can also use parameterization when you need to add test data from a separate file.
