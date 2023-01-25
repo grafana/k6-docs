@@ -161,7 +161,7 @@ To instruct k6 to not process all response bodies, set `discardResponseBodies` i
 
 ```javascript
 export const options = {
-discardResponseBodies: true,
+  discardResponseBodies: true,
 };
 ```
 
