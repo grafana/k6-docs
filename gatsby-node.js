@@ -1671,8 +1671,8 @@ const createRedirects = ({ actions }) => {
     '/using-k6/ssl-tls/ssl-tls-version-and-ciphers':
       '/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/',
     '/using-k6/multipart-requests-file-uploads': '/examples/data-uploads/',
-    '/getting-started/results-output/apache-kafka':
-      '/results-visualization/apache-kafka/',
+    '/results-visualization/apache-kafka/':
+      '/results-output/real-time/apache-kafka/',
     '/getting-started/results-output/cloud': '/results-visualization/cloud/',
     '/results-visualization/k6-cloud-test-results':
       '/results-visualization/cloud/',

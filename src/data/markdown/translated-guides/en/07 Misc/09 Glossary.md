@@ -76,7 +76,7 @@ Goja
 : A JavaScript engine written in Go. k6 binaries are embedded with Goja, enabling test scripting in JavaScript.<br/><br/>[Goja repository](https://github.com/dop251/goja)
 
 Graceful stop
-: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/graceful-stop/)
+: A period that lets VUs finish an iteration at the end of a load test. Graceful stops prevent abrupt halts in execution.<br/><br/>[Graceful stop reference](/using-k6/scenarios/concepts/graceful-stop/)
 
 Happy path
 : The default system behavior that happens when a known input produces an expected output. A common mistake in performance testing happens when scripts account only for the best case (in other words, the happy path). Most load tests try to discover system errors, so test scripts should include exception handling.<br/><br/>[Happy path (Wikipedia)](https://en.wikipedia.org/wiki/Happy_path)

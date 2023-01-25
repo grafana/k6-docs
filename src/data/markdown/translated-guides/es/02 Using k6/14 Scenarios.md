@@ -69,7 +69,7 @@ Los posibles valores para los `executor` son los siguientes:
 | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `executor*` ️  | string | Nombre único del ejecutor. Consulte la lista de valores posibles en la sección de [executors](#executors) section.                                                  | -           |
 | `startTime`    | string | Desplazamiento de tiempo desde el inicio de la prueba, en el que este escenario debe comenzar a ejecutarse.                                                  | `"0s"`      |
-| `gracefulStop` | string | Tiempo para esperar a que las iteraciones terminen de ejecutarse antes de detenerlas forzosamente. Véase la sección [gracefulStop](/es/usando-k6/escenarios/graceful-stop/). | `"30s"`     |
+| `gracefulStop` | string | Tiempo para esperar a que las iteraciones terminen de ejecutarse antes de detenerlas forzosamente. Véase la sección [gracefulStop](/using-k6/scenarios/concepts/graceful-stop/). | `"30s"`     |
 | `exec`         | string | Nombre de la función JS exportada a ejecutar.                                                                                                       | `"default"` |
 | `env`          | object | Variables de entorno específicas para este escenario.                                                                                               | `{}`        |
 | `tags`         | object | [Tags](/es/usando-k6/tags-y-groups/) específicas para este escenario. | `{}`        |
