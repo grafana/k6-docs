@@ -22,7 +22,9 @@ export const localizedMessages = {
     'welcome.features.title': 'Key features',
     'welcome.features.description':
       'k6 is packed with features, which you can learn all about in the documentation. Key features include:',
-    'welcome.features.cli-tool': 'CLI tool with developer-friendly APIs.',
+    'welcome.features.cli-tool': 'CLI tool',
+    'welcome.features.cli-tool.dev-friendly-apis':
+      'with developer-friendly APIs.',
     'welcome.features.scripting':
       'Scripting in JavaScript ES2015/ES6 - with support for',
     'welcome.features.modules': 'local and remote modules',
@@ -103,7 +105,9 @@ export const localizedMessages = {
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
     'welcome.features.cli-tool':
-      'Herramienta CLI con APIs amigables para el desarrollador.',
+      'Herramienta CLI',
+    'welcome.features.cli-tool.dev-friendly-apis':
+      'con APIs amigables para el desarrollador.',
     'welcome.features.scripting':
       'Scripting en JavaScript ES2015/ES6, con soporte para módulos locales y remotos.',
     'welcome.features.modules': 'Módulos locales and remotos',
