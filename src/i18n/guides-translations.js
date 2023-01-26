@@ -104,8 +104,7 @@ export const localizedMessages = {
     'welcome.features.title': 'Características principales',
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
-    'welcome.features.cli-tool':
-      'Herramienta CLI',
+    'welcome.features.cli-tool': 'Herramienta CLI',
     'welcome.features.cli-tool.dev-friendly-apis':
       'con APIs amigables para el desarrollador.',
     'welcome.features.scripting':
