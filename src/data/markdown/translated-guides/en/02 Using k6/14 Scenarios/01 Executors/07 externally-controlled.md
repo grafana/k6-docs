@@ -35,7 +35,7 @@ If you want to control the number of VUs while the test is running.
 Important: this is the only executor that is not supported in `k6 cloud`, it can only be used
 locally with `k6 run`.
 
-## Examples
+## Example
 
 In this example, we'll execute a test controllable at runtime, starting with 10 VUs up to
 a maximum of 50, and a total duration of 10 minutes.

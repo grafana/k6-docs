@@ -37,7 +37,7 @@ this executor has the following options:
 If you need your tests to not be affected by the system-under-test's performance, and
 would like to ramp the number of iterations up or down during specific periods of time.
 
-## Examples
+## Example
 
 In this example, we'll run a four-stage test. We initially stay at the defined rate of starting 300 iterations per minute over a minute period. Then, ramping up the iteration rate from 300 to 600 iterations started per minute over the next two minutes period, and staying at this rate for four more minutes. Finally, down to starting 60 iterations per minute over the last two minutes period.
 
