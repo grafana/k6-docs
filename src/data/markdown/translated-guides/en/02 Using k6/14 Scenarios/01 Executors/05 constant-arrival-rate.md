@@ -42,7 +42,7 @@ this executor has the following options:
 When you want to maintain a constant number of iterations without being affected by the
 performance of the system under test.
 
-## Examples
+## Example
 
 In this example, we'll start a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
 

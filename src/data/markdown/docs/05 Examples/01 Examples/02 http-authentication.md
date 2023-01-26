@@ -134,7 +134,7 @@ For this to work, we first need to do the following:
    <CodeGroup labels={[""]} lineNumbers={[false]}>
 
    ```bash
-    $ browserify node_modules/aws4/aws4.js -s aws4 > aws4.js
+   $ browserify node_modules/aws4/aws4.js -s aws4 > aws4.js
    ```
 
    </CodeGroup>
