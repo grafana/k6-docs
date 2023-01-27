@@ -222,7 +222,7 @@ Finally, if the preceding suggestions are insufficient, you might be able to do 
 - Keep external JS dependencies to a minimum.
 - Perform tree shaking of the k6 script if you have a build pipeline, and so on.
 
-Refer to this article about [garbage collection](https://javascript.info/garbage-collection) in the V8 runtime. While the JavaScript VM that k6 uses is very different and runs on Go, the general principles apply. Note that memory leaks are still possible in k6 scripts, and, if not fixed, they might exhaust RAM much quicker.
+Refer to this article about [garbage collection](https://javascript.info/garbage-collection) in the V8 runtime. While the JavaScript VM that k6 uses is very different and runs on Go, the general principles apply. Note that memory leaks are still possible in k6 scripts, and, if not fixed, they might exhaust RAM much more quickly.
 
 ## File upload considerations
 
@@ -234,7 +234,7 @@ Network throughput
 : The network throughputs of the load generator machine and of the SUT are likely bottlenecks for file uploads.
 
 Memory
-: k6 needs a significant amount of memory when uploading files, as every VU is independent and has its own memory.
+: k6 needs a significant amount of memory when uploading files. Every VU is independent and has its own memory, and files will be copied in all VUs that upload them. You can follow [issue #1931](https://github.com/grafana/k6/issues/1931) that aims to improve this situation.
 
 Data transfer costs
 : k6 can upload a large amount of data in a very short period of time. Make sure you understand the data transfer costs before commencing a large scale test.
@@ -245,7 +245,7 @@ If you use the cheapest region, the cost is about $0.08 per GB. Uploading 1TB, t
 Virtual server costs
 : The AWS EC2 instances are relatively cheap. Even the largest instance we have used in this benchmark (m5.24xlarge) costs only $4.6 per hour.
 : Make sure you turn off the load generator servers once you are done with your testing. A forgotten EC2 server might cost thousands of dollars per month.
-**Tip.** It's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
+**Tip:** it's often possible to launch "spot instances" of the same hardware for 10-20% of the cost.
 
 </DescriptionList>
 
@@ -271,7 +271,7 @@ WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exce
 
 ### dial tcp 52.18.24.222:80: i/o timeout
 
-This error is similar `context deadline exceeded`, but in this case, k6 could not even make an HTTP request. The target system can't establish a TCP connection.
+This error is similar to `context deadline exceeded`, but in this case, k6 wasn't even able to make an HTTP request. The target system can't establish a TCP connection.
 
 ```bash
 WARN[0057] Request Failed     error="Get http://test.k6.io/: dial tcp 52.18.24.222:80: i/o timeout"
@@ -281,7 +281,7 @@ WARN[0057] Request Failed     error="Get http://test.k6.io/: dial tcp 52.18.24.2
 
 This error means that the load generator can't open TCP sockets because it reached the limit of open file descriptors.
 Make sure that your limit is set sufficiently high.
-Refer to ["Fine tuning OS" article](/misc/fine-tuning-os/#viewing-limits-configuration).
+Refer to the ["Fine tuning OS" article](/misc/fine-tuning-os/#viewing-limits-configuration).
 
 ```bash
 WARN[0034] Request Failed     error="Get http://test.k6.io/: dial tcp 99.81.83.131:80: socket: too many open files"
@@ -344,7 +344,7 @@ However, at this moment, the distributed execution mode of k6 is not entirely fu
 - Each k6 instance evaluates [Thresholds](/using-k6/thresholds) independently - excluding the results of the other k6 instances. If you want to disable the threshold execution, use [`--no-thresholds`](/using-k6/k6-options/reference#no-thresholds).
 - k6 reports the metrics individually for each instance. Depending on how you store the load test results, you'll have to aggregate some metrics to calculate them correctly.
 
-With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/grafana/k6-operator) to distribute the load of a k6 test across a **Kubernetes cluster**. For further instructions, check out [the running distributed k6 tests on Kubernetes tutorial](https://k6.io/blog/running-distributed-tests-on-k8s/).
+With the limitations mentioned above, we built a [Kubernetes operator](https://github.com/grafana/k6-operator) to distribute the load of a k6 test across a **Kubernetes cluster**. For further instructions, check out [the tutorial for running distributed k6 tests on Kubernetes](https://k6.io/blog/running-distributed-tests-on-k8s/).
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/grafana/k6/issues/140) on GitHub.
 
