@@ -263,7 +263,7 @@ WARN[0013] Request Failed       error="Get http://test.k6.io: read tcp 172.31.72
 
 ### context deadline exceeded
 
-This happens when k6 could send a request, but the target system didn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
+This happens when k6 can send a request, but the target system doesn't respond in time. The default timeout in k6 is 60 seconds. If your system doesn't produce the response in this time frame, this error will appear.
 
 ```bash
 WARN[0064] Request Failed    error="Get http://test.k6.io: context deadline exceeded"
