@@ -131,7 +131,8 @@ ERRO[0625] TypeError: Cannot read property 'length' of undefined
 ```
 
 To fix this issue, make your checks resilient to any response type.
-This change will handle the exception.
+
+The following change will handle the exception.
 
 <CodeGroup labels={["resilient check"]}>
 
