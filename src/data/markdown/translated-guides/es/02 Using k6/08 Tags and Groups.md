@@ -12,7 +12,7 @@ k6 proporciona dos APIs de scripting para ayudarle durante el análisis y visual
 
 ## Groups
 
-Los grupos son opcionales, y permiten "agrupar" su script de carga. Los grupos pueden ser anidados, y permiten el estilo BDD de pruebas.
+Los [grupos](/javascript-api/k6/group/) son opcionales, y permiten "agrupar" su script de carga. Los grupos pueden ser anidados, y permiten el estilo BDD de pruebas.
 
 <CodeGroup labels={["groups.js"]} lineNumbers={[true]}>
 

@@ -261,7 +261,7 @@ To see how tags affect your test-result output, refer to the [k6 results output 
 For extra organization, you can use *groups* to organize a load script by functions.
 You can also nest groups for BDD-style testing.
 
-All metrics emitted in a group have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
+All metrics emitted in a [group](/javascript-api/k6/group/) have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
 The root group uses the name '' (empty string).
 If you have a single group named `cool requests`, the actual value of the `group` is `::cool requests`.
 
