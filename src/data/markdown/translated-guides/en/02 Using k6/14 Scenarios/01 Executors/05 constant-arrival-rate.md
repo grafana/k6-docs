@@ -39,8 +39,7 @@ this executor has the following options:
 ## When to use
 
 When you want to maintain a constant number of iterations without being affected by the
-performance of the system under test. To reliably achieve a fixed request rate, try to keep test function simple, with preferably only a single request call,
-and no additional processing or `sleep()` calls.
+performance of the system under test.
 
 <Blockquote mod="note" title="Don't put sleep at the end of an iteration">
 
