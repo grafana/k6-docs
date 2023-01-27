@@ -3,7 +3,7 @@ title: 'Running large tests'
 excerpt: 'How to run large-scale k6 tests without distributed-execution'
 ---
 
-A common misconception says that a large load test requires [distributed execution](#distributed-execution) (that is, with load generated from multiple machines).
+A common misconception about load testing is that it requires [distributed execution](#distributed-execution) (that is, load generated from multiple machines).
 This isn't the case with k6.
 
 This document explains how to launch a large-scale k6 test on a single machine.
@@ -48,7 +48,7 @@ As load increases, you need to pay attention to hardware constraints.
 
 Network
 : Network throughput of the machine is an important consideration when running large tests.
-Many AWS EC2 machines come connections of with 1Gbit/s, which may limit the load k6 can generate.
+Many AWS EC2 machines come with connections of 1Gbit/s, which may limit the load k6 can generate.
 : When running the test, use a tool like `iftop` in the terminal to view the amount of network traffic generated in real time.
 If the traffic is constant at 1Gbit/s, your test is probably limited by the network card. Consider upgrading to a different EC2 instance.
 
@@ -74,10 +74,10 @@ To share memory between VUs, consider using [SharedArray](/javascript-api/k6-dat
 ## Monitoring the load generator
 
 The previous section described how hardware limits the load your machine can generate.
-Along with understanding conceptually, you also should monitor resources while the test runs&mdash;especially when running tests for the first time.
+Keeping this in mind, you should monitor resources while the test runs&mdash;especially when running tests for the first time.
 
 
-The easiest way to monitor the load generator is to open multiple terminals on the machine: one to run k6, and others to monitor the CPU, memory, and network .
+The easiest way to monitor the load generator is to open multiple terminals on the machine: one to run k6, and others to monitor the CPU, memory, and network.
 We recommend the following tools:
 
 - CPU and memory: [htop](https://en.wikipedia.org/wiki/Htop) or [nmon](https://nmon.sourceforge.net/).
@@ -91,7 +91,7 @@ Here's a screenshot of 3 terminal sessions showing k6, iftop and htop.
 
 ### Monitoring guidelines
 
-As the test runs, these are the indicators to monitor:
+As the test runs, these are good indicators to monitor:
 
 - **CPU utilization stays within 80%.**
   If all CPU cores are 100% utilized during the test run, you might notice performance degradation in your test results.
@@ -104,7 +104,7 @@ If you're close to exhausting available physical RAM, the system might start swa
 
 ## Error handling should be resilient
 
-When running large stress tests, your script can't assume anything about the HTTP response.
+When running large stress tests, your script shouldn't assume anything about the HTTP response.
 It's a mistake to script a performance test with only the [happy path](/misc/glossary#happy-path "The default behavior that happens when the system returns no errors") in mind.
 
 For example, in k6 scripts, we often see something like this _happy path_ check:
