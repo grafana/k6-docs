@@ -229,6 +229,17 @@ Two options are available:
 - `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours. This is the current default option.
 - `Abort test`: the new test run will be automatically aborted.
 
+<Blockquote mod="note" title="Concurrency limit policy default change">
+
+On 31.01.2023, the default concurrency policy changed from `Abort test` to `Queue test`.
+To avoid confusion, k6 kept the old default for organizations who joined before the change.
+
+If your organization uses the old default and wants to upgrade to `Queue test` policy, simply follow the instructions below.
+
+</Blockquote>
+
+### Changing the concurrency limit policy
+
 To change the concurrency limit policy, you must be the organization owner.
 You can change the policy at in your user menu, at **Organization settings > Settings**:
 
