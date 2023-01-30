@@ -18,13 +18,16 @@ Run code inside a group. Groups are used to organize results in a test.
 | any  | The return value of _fn_. |
 
 <Blockquote mod="warning">
-Using group with async functions or any kind of asynchronize code does not work reliably or intuitive.
 
-This means that starting promise chains or even using `await` within it would not work as expected and some of the code "within" the group will be waited for and will be tagged with the proper `group` tag and others will not be.
+Avoid using `group` with async functions or asynchrounous code.
+If you do, k6 might apply tags in a way that is unreliable or unintuitive.
 
-In order for this to not be confusing async functions are forbidden as arguments. This still let users make and chain promises within a group but it is recommend that this is not done and it is not supported. 
+If you start promise chains or even use `await` within `group`, some code within the group will be waited for and tagged with the proper `group` tag, but others won't be.
 
-This issue, possible solutions and more detail explanations of all of this is tracked in this [k6 issue](https://github.com/grafana/k6/issues/2728).
+To avoid confusion, async functions are forbidden as arguments. This still let users make and chain promises within a group, but doing so is unsupported and not recommended.
+
+For more information, refer to [k6 #2728](https://github.com/grafana/k6/issues/2728), which tracks possible solutions and provides detailed explanations.
+
 </Blockquote>
 
 ### Example
