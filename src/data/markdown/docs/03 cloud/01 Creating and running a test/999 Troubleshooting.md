@@ -226,8 +226,8 @@ If you need to increase this limit, contact our support team.
 Additionally, you can change the concurrency limit policy that defines how k6 Cloud acts when the organization reaches the limit and a new test run is triggered.
 Two options are available:
 
-- `Abort test`: the new test run will be automatically aborted. This is the default option.
-- `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours.
+- `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours. This is the default option.
+- `Abort test`: the new test run will be automatically aborted.
 
 To change the concurrency limit policy, you must be the organization owner.
 You can change the policy at in your user menu, at **Organization settings > Settings**:
