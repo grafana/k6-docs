@@ -19,7 +19,7 @@ Run code inside a group. Groups are used to organize results in a test.
 
 <Blockquote mod="warning">
 
-Avoid using `group` with async functions or asynchrounous code.
+Avoid using `group` with async functions or asynchronous code.
 If you do, k6 might apply tags in a way that is unreliable or unintuitive.
 
 If you start promise chains or even use `await` within `group`, some code within the group will be waited for and tagged with the proper `group` tag, but others won't be.
