@@ -112,3 +112,13 @@ Some of the times it might make sense to use `maxVUs` include:
 - To determine necessary allocation in first-time tests
 - To add a little "cushion" to the pre-allocated VUs that you expect the test needs
 - In huge, highly distributed tests, in which you need to carefully scale load generators as you increment VUs.
+
+## Arrival-rate executors cycle over all VUs
+
+Given enough time, k6 cycles over all VUs initialized, even if only a small fraction of them are needed to reach the target rate.
+
+This fact has implications for the [execution context variables](/docs/using-k6/execution-context-variables/).
+For example, if your arrival-rate scenario allocates 15 vus runs long enough,
+then the value of `{exec.vu.iterationInScenario}` will reach `15`,
+even if k6 never requires that number of VUs to reach the target iteration.
+
