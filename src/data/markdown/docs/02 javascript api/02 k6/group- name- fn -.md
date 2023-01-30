@@ -24,7 +24,7 @@ If you do, k6 might apply tags in a way that is unreliable or unintuitive.
 
 If you start promise chains or even use `await` within `group`, some code within the group will be waited for and tagged with the proper `group` tag, but others won't be.
 
-To avoid confusion, async functions are forbidden as arguments. This still let users make and chain promises within a group, but doing so is unsupported and not recommended.
+To avoid confusion, `async` functions are forbidden as `group()` arguments. This still lets users make and chain promises within a group, but doing so is unsupported and not recommended.
 
 For more information, refer to [k6 #2728](https://github.com/grafana/k6/issues/2728), which tracks possible solutions and provides detailed explanations.
 
