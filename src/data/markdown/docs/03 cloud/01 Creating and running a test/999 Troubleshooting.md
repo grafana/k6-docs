@@ -234,7 +234,7 @@ Two options are available:
 On January 31st, 2023, the default concurrency policy changed from `Abort test` to `Queue test`.
 To avoid confusion, k6 kept the old default for organizations who joined before the change.
 
-If your organization uses the old default and wants to upgrade to `Queue test` policy, change the policy at **Organization settings > Settings**.
+If your organization uses the old default and wants to upgrade to `Queue test` policy, change the policy as described in the following section.
 
 </Blockquote>
 
