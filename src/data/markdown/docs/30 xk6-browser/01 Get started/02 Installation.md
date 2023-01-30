@@ -7,13 +7,13 @@ xk6-browser is currently being developed as a [k6 extension](/extensions). You h
 
 To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](/extensions/guides/build-a-k6-binary-with-extensions/).
 
-### Download a release binary
+## Download a release binary
 
 The quickest way to get started is to [download a release binary from GitHub](https://github.com/grafana/xk6-browser/releases).
 
 This option is recommended if you don't want to build your own binary with [xk6](https://github.com/grafana/xk6), which can be challenging in some cases.
 
-### Build from source
+## Build from source
 
 If you want to get the latest changes of the xk6-browser extension, you can also build a binary from source.
 
