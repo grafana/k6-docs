@@ -241,12 +241,12 @@ If your organization uses the old default and wants to upgrade to `Queue test` p
 ### Changing the concurrency limit policy
 
 To change the concurrency limit policy, you must be the organization owner.
-You can change the policy at in your user menu, at **Organization settings > Settings**:
+You can change the policy in your user menu, at **Organization settings > Settings**:
 
 ![Concurrency limit policy](./images/Troubleshooting/k6-concurrency-limit-policy.png)
 
 
-### Data uploads with k6 Cloud
+## Data uploads with k6 Cloud
 
 The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud don't support uploading data files in your test.
 
