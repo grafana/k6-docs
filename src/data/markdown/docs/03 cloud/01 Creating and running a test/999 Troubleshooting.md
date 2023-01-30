@@ -231,7 +231,7 @@ Two options are available:
 
 <Blockquote mod="note" title="Concurrency limit policy default change">
 
-On 31.01.2023, the default concurrency policy changed from `Abort test` to `Queue test`.
+On 2023-01-31, the default concurrency policy changed from `Abort test` to `Queue test`.
 To avoid confusion, k6 kept the old default for organizations who joined before the change.
 
 If your organization uses the old default and wants to upgrade to `Queue test` policy, simply follow the instructions below.
