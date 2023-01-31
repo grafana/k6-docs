@@ -112,3 +112,9 @@ Some of the times it might make sense to use `maxVUs` include:
 - To determine necessary allocation in first-time tests
 - To add a little "cushion" to the pre-allocated VUs that you expect the test needs
 - In huge, highly distributed tests, in which you need to carefully scale load generators as you increment VUs.
+
+## You can't guarantee which VU runs an iteration
+
+As with all executors, you can't predict the specific VU that an arrival-rate executor uses for a specific iteration.
+As the test runs on, the executor might use some or all of the allocated VUs, even if it never needs the entire allocated number to reach the iteration rate.
+
