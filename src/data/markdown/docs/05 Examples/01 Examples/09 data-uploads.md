@@ -139,6 +139,6 @@ Note that:
   will appear last in the request under the `text` form field.
 - It's required to specify the multipart boundary in the `Content-Type` header,
   so you must assemble the header manually as shown.
-- Blob is not supported or implemented. There is no practical need for them all the functionality can be done as
+- Blob is not supported or implemented. The same functionality can be achived using
   a simple object with the fields `data`, `content_type` (defaulting to "application/octet-stream") and optionally
   `filename` as shown for `aBinaryFile` above.
