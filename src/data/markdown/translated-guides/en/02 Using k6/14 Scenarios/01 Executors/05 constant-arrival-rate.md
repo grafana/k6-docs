@@ -44,7 +44,7 @@ performance of the system under test.
 <Blockquote mod="note" title="Don't put sleep at the end of an iteration">
 
 The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
-It's unnecessary to use a `sleep()` function at the end of the VU code.
+So it's unnecessary to use a `sleep()` function at the end of the VU code.
 
 </Blockquote>
 
