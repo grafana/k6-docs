@@ -157,7 +157,7 @@ The following k6 settings can reduce the performance costs of running large test
 ### Save memory with `discardResponseBodies`
 
 By default, k6 loads the response body of the request into memory. This causes much higher memory consumption and is often unnecessary.
-  
+
 To instruct k6 to not process all response bodies, set `discardResponseBodies` in the options object like this:
 
 ```javascript
@@ -232,7 +232,7 @@ File uploads can affect both resource usage and cloud costs.
 <DescriptionList>
 
 Network throughput
-: The network throughputs of the load generator machine and of the SUT are likely bottlenecks for file uploads.
+: The network throughput of the load generator machine and of the SUT are likely bottlenecks for file uploads.
 
 Memory
 : k6 needs a significant amount of memory when uploading files. Every VU is independent and has its own memory, and files will be copied in all VUs that upload them. You can follow [issue #1931](https://github.com/grafana/k6/issues/1931) that aims to improve this situation.
