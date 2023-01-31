@@ -9,6 +9,19 @@ want to model to test your services.
 
 Possible values for `executor` are the executor name separated by hyphens.
 
+<Blockquote mod="note" title="VUs might not distribute uniformely over iterations">
+
+For any given scenario, you can't guarantee that a specific VU can run a specific iteration.
+
+With [`SharedArray`](/javascript-api/k6-data/sharedarray/) and [execution context variables](/using-k6/execution-context-variables/), you can map a specific VU to a specific value in your test data.
+So the tenth VU could use the tenth item in your array.
+
+But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration.
+
+</Blockquote>
+
+
+
 | Name                                                                         | Value                   | Description                                                                                                                                        |
 | ---------------------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Shared iterations](/using-k6/scenarios/executors/shared-iterations)         | `shared-iterations`     | A fixed amount of iterations are<br/> "shared" between a number of VUs.                                                                            |
