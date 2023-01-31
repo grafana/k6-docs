@@ -68,7 +68,7 @@ run the test on your development machine with 100VUs and multiply the consumed m
 Tests that use file uploads, or load large JS modules, can consume tens of megabytes per VU.
 Note that each VU has a copy of all JS modules your test uses.
 To share memory between VUs, consider using [SharedArray](/javascript-api/k6-data/sharedarray/), or an external data store, such as [Redis](/javascript-api/k6-experimental/redis/).
-: If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
+: If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Which likely will invalidate any test results as the load generator had different performance in different parts of the test. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
 
 </DescriptionList>
 
