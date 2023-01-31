@@ -14,7 +14,7 @@ Possible values for `executor` are the executor name separated by hyphens.
 For any given scenario, you can't guarantee that a specific VU can run a specific iteration.
 
 With [`SharedArray`](/javascript-api/k6-data/sharedarray/) and [execution context variables](/using-k6/execution-context-variables/), you can map a specific VU to a specific value in your test data.
-So the tenth VU could use the tenth item in your array.
+So the tenth VU could use the tenth item in your array (or the sixth iteration to the sixth item).
 
 But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration.
 
