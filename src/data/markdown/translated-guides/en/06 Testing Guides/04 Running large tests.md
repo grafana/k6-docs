@@ -68,6 +68,7 @@ run the test on your development machine with 100VUs and multiply the consumed m
 Tests that use file uploads, or load large JS modules, can consume tens of megabytes per VU.
 Note that each VU has a copy of all JS modules your test uses.
 To share memory between VUs, consider using [SharedArray](/javascript-api/k6-data/sharedarray/), or an external data store, such as [Redis](/javascript-api/k6-experimental/redis/).
+: If you're using [swap space](https://en.wikipedia.org/wiki/Memory_paging), consider disabling it. If the system runs out of physical memory, the process of swapping memory to much slower secondary storage will have erratic effects on performance and system stability. Instead, plan ahead for the memory usage you expect your tests to achieve, and ensure that you have enough physical RAM for the usage to not exceed 90%.
 
 </DescriptionList>
 
@@ -100,7 +101,7 @@ As the test runs, these are good indicators to monitor:
 Depending on your test, you might expect to fully saturate the network bandwidth, or this might be a signal that your test is bound by the available bandwidth. In other scenarios, you might want to minimize network usage to keep costs down.
 
 - **Memory utilization doesn't exceed 90%.**
-If you're close to exhausting available physical RAM, the system might start swapping memory to disk, which will affect performance and system stability. In extreme cases, running out of memory on Linux will cause the system to end the k6 process.
+If you're close to exhausting available physical RAM, the system might start swapping memory to disk, which will affect performance and system stability (note that [we recommend disabling swap space altogether](#memory)). In extreme cases, running out of memory on Linux will cause the system to end the k6 process.
 
 ## Error handling should be resilient
 
