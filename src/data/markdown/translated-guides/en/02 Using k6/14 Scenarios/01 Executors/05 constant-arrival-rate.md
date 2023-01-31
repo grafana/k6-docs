@@ -16,7 +16,6 @@ useful for a more accurate representation of RPS, for example.
 For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
 and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-
 <Blockquote mod="Note" title="Iteration starts are spaced fractionally">
 
 Iterations **do not** start at exactly the same time.
@@ -41,6 +40,13 @@ this executor has the following options:
 
 When you want to maintain a constant number of iterations without being affected by the
 performance of the system under test.
+
+<Blockquote mod="note" title="Don't put sleep at the end of an iteration">
+
+The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
+So it's unnecessary to use a `sleep()` function at the end of the VU code.
+
+</Blockquote>
 
 ## Example
 
@@ -82,15 +88,11 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
   // We're injecting a processing pause for illustrative purposes only!
   // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
-  sleep(0.5);
 }
 ```
 
 </CodeGroup>
 
-> **Note**: to reliably achieve a fixed request rate, it's recommended to keep
-> the function being executed very simple, with preferably only a single request call,
-> and no additional processing or `sleep()` calls.
 
 ## Observations
 
