@@ -41,6 +41,9 @@ export const options = {
 | staticIPs (boolean)           | `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                         |
 | note (string)                 | Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test.                                                                                                                         |
 | deleteSensitiveData (boolean) | False by default                                                                       | If set to `true`, k6 deletes sensitive data as soon as the test starts running or, if still queued, when the test aborts. Sensitive data includes scripts, HAR files, archives, and APM credentials.                  |
+| drop_metrics (array)          | Empty by default                                                                       | Drops the metrics listed in the array during ingestion time.
+ E.g. `["http_req_tls_handshaking"]`. This helps reduce the cardinality of time series.                                                                                    |
+| drop_tags (object)            | Empty by default                                                                       | Drops tags for a specified metric, where the metric is the key and the tags are an array. E.g. `{"http_req_duration": ["instance_id"]}`. This helps reduce the cardinality of time series.                                                                             |
 
 
 <Blockquote mod="note" title="">
@@ -49,6 +52,20 @@ The `deleteSensitiveData` option is unavailable in default subscriptions.
 If you want to activate it, contact our CS team at support@k6.io.
 
 </Blockquote>
+
+### Options to reduce time series
+
+The `Too many time series` alert aborts a test run.
+Sometimes, though, a test might trigger the alert even if the script follows all recommended practices from the performance insight.
+In these cases, you can consider the `drop_metrics` and `drop_tags` options.
+
+Note that if you use these options, some graphs may appear empty for
+the metrics deleted.
+
+Certain important tags and metrics cannot be dropped:
+- For metrics,  you can't drop `http_reqs` or `http_req_duration`.
+- For tags, you can't drop `name` and `method` from `http_req_duration`.
+
 
 ## Load zones {#load-zones}
 
