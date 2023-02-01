@@ -200,7 +200,7 @@ module.exports = {
     signup: './src/signup.test.js',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'), // eslint-disable-line
     libraryTarget: 'commonjs',
     filename: '[name].bundle.js',
   },
