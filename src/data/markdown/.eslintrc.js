@@ -1,12 +1,11 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
-    node: true,
-    es6: true,
+    es2017: true,
+    commonjs: true,
   },
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: '2017',
     sourceType: 'module',
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
@@ -32,13 +31,6 @@ module.exports = {
         'use-isnan': 'error',
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
         'prefer-const': 'error',
-        'no-restricted-syntax': [
-          'error',
-          {
-            selector: 'AwaitExpression',
-            message: 'async/await is not supported',
-          },
-        ],
       },
     },
   ],
@@ -47,6 +39,6 @@ module.exports = {
     __VU: 'readonly',
     __ENV: 'readonly',
     __ITER: 'readonly',
-    Promise: 'off',
+    open: 'readonly',
   },
 };
