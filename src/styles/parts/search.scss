@@ -19,15 +19,28 @@
   &:hover {
     cursor: pointer;
     border: 1px solid $color-accent-primary;
+    box-shadow: none;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
   }
 
   .DocSearch-Search-Icon {
     display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 
   .DocSearch-Button-Placeholder {
     color: $color-secondary;
     font-weight: 400;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 
   .DocSearch-Button-Keys {
@@ -37,14 +50,23 @@
 
     .DocSearch-Button-Key {
       position: relative;
+      top: 0;
       width: 20px;
       height: 20px;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f5f5f5;
+      background: #f5f5f5;
       border: 1px solid #e6e6e6;
       border-radius: 3px;
+      box-shadow: none;
+      color: inherit;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 }
@@ -72,14 +94,6 @@
   .DocSearch-SearchBar {
     display: flex;
     padding: 12px 12px 0;
-  }
-
-  .DocSearch-Dropdown {
-    max-height: 504px;
-    min-height: 12px;
-    padding: 0 12px;
-    scrollbar-color: #333 #f5f5f5;
-    scrollbar-width: thin;
   }
 
   .DocSearch-Footer {

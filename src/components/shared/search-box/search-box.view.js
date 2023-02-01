@@ -2,6 +2,8 @@
 import { DocSearch } from '@docsearch/react';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import '@docsearch/css';
 
 import styles from './search-box.module.scss';
 
@@ -14,9 +16,12 @@ export const SearchBox = () => {
     <div className={classNames(styles.wrapper)} ref={rootRef}>
       <DocSearch
         appId="MGJ30X6AFY"
-        apiKey="49dea9cc3035bda0c2baf4894e7dc271"
+        apiKey="5f8378d0e74b297ad0ce5ac826a76781"
         indexName="k6"
         placeholder="Search"
+        searchParameters={{
+          hitsPerPage: 1000,
+        }}
       />
     </div>
   );

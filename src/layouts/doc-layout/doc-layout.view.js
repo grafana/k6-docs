@@ -255,7 +255,7 @@ export const DocLayout = ({
   const location = typeof window !== 'undefined' ? window.pathname : '';
 
   // if user opens a page in a different language from what was chosen, save new language
-  React.useEffect(() => {
+  useEffect(() => {
     if (locale && locale !== urlLocale) {
       setLocale(urlLocale);
     }
