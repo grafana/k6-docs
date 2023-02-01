@@ -32,13 +32,6 @@ module.exports = {
         'use-isnan': 'error',
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
         'prefer-const': 'error',
-        'no-restricted-syntax': [
-          'error',
-          {
-            selector: 'AwaitExpression',
-            message: 'async/await is not supported',
-          },
-        ],
       },
     },
   ],
