@@ -3,6 +3,13 @@ title: 'Grafana App'
 excerpt: 'Use k6 Cloud in Grafana'
 ---
 
+<Blockquote mod="attention" title="">
+
+This plugin is no longer maintained, and will be replaced by a new one soon. Stay tuned.
+
+</Blockquote>
+
+
 The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While the Grafana App does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
 
 Currently supported features:
