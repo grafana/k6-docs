@@ -35,19 +35,16 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('mykey', 'myvalue', 0)
-    .then((_) => redisClient.exists('mykey'))
-    .then((exists) => {
-      if (exists === false) {
-        throw new Error('mykey should exist');
-      }
+export default async function() {
+  await redisClient.set('mykey', 'myvalue', 0)
+  let exists = await redisClient.exists('mykey')
+  if (exists === false) {
+    throw new Error('mykey should exist');
+  }
 
-      return redisClient.get('mykey');
-    })
-    .then((value) => console.log(`set key 'mykey' to value: ${value}`))
-    .then(() => redisClient.del('mykey'));
+  let value = await redisClient.get('mykey');
+  console.log(`set key 'mykey' to value: ${value}`)
+  await redisClient.del('mykey')
 }
 ```
 
