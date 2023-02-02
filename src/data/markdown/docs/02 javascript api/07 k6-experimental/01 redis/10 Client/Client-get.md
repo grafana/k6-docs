@@ -37,12 +37,12 @@ const redisClient = new redis.Client({
 
 export default async function() {
   await redisClient.set('mykey', 'myvalue', 0)
-  let exists = await redisClient.exists('mykey')
+  const exists = await redisClient.exists('mykey')
   if (exists === false) {
     throw new Error('mykey should exist');
   }
 
-  let value = await redisClient.get('mykey');
+  const value = await redisClient.get('mykey');
   console.log(`set key 'mykey' to value: ${value}`)
   await redisClient.del('mykey')
 }
