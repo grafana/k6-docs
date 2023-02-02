@@ -11,7 +11,6 @@ export const SearchBox = () => {
   const rootRef = useRef(null);
 
   // TODO add env keys and return null if keys do not exist
-
   return (
     <div className={classNames(styles.wrapper)} ref={rootRef}>
       <DocSearch
@@ -19,9 +18,6 @@ export const SearchBox = () => {
         apiKey="5f8378d0e74b297ad0ce5ac826a76781"
         indexName="k6"
         placeholder="Search"
-        searchParameters={{
-          hitsPerPage: 1000,
-        }}
       />
     </div>
   );
