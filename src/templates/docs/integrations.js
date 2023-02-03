@@ -192,6 +192,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
     azureTestImg,
     testRailImg,
     testKubeImg,
+    tracetestImg,
     xrayImg,
   } = useStaticQuery(graphql`
     query stubImageQuery {
@@ -252,6 +253,17 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
       }
       testRailImg: file(
         absolutePath: { regex: "/images/doc-integrations/testrail/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      tracetestImg: file(
+        absolutePath: { regex: "/images/doc-integrations/tracetest/" }
       ) {
         childImageSharp {
           gatsbyImageData(
@@ -504,6 +516,12 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                   title: 'Testkube',
                   description: 'Load testing with Testkube',
                   url: 'https://kubeshop.github.io/testkube/test-types/executor-k6',
+                },
+                {
+                  image: tracetestImg,
+                  title: 'Tracetest',
+                  description: 'Trace-based testing with Tracetest',
+                  url: 'https://docs.tracetest.io/tools-and-integrations/integrations/k6',
                 },
                 {
                   image: xrayImg,
