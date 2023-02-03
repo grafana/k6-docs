@@ -18,7 +18,7 @@ const LATEST_VERSION = 'v0.42';
 const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
 
 /** applies this for production */
-const MAX_JS_API_VERSIONS_TO_BUILD = 6;
+const MAX_JS_API_VERSIONS_TO_BUILD = 4;
 
 module.exports = {
   SUPPORTED_VERSIONS,
