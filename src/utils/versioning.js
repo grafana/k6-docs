@@ -14,11 +14,15 @@ const SUPPORTED_VERSIONS = [
 /** latest version number for URLs without version prefix */
 const LATEST_VERSION = 'v0.42';
 
-/** applies only for development and staging; all versions are built on production */
+/** applies only for development and staging */
 const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
+
+/** applies this for production */
+const MAX_JS_API_VERSIONS_TO_BUILD = 6;
 
 module.exports = {
   SUPPORTED_VERSIONS,
   LATEST_VERSION,
   DEFAULT_JS_API_VERSIONS_TO_BUILD,
+  MAX_JS_API_VERSIONS_TO_BUILD,
 };

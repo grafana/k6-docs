@@ -6,6 +6,7 @@ import {
   LATEST_VERSION,
   SUPPORTED_VERSIONS,
   DEFAULT_JS_API_VERSIONS_TO_BUILD,
+  MAX_JS_API_VERSIONS_TO_BUILD,
 } from 'utils/versioning';
 
 export const VersionSwitcher = ({
@@ -14,10 +15,13 @@ export const VersionSwitcher = ({
 }) => {
   const isProduction =
     process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
-  const jsApiVersionsToBuild =
-    process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
+
+  const jsApiVersionsToBuild = isProduction
+    ? MAX_JS_API_VERSIONS_TO_BUILD
+    : process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
+
   let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
-  if (!isProduction && jsApiVersionsToBuild) {
+  if (jsApiVersionsToBuild) {
     SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
       .reverse()
       .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));

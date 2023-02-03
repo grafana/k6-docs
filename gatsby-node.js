@@ -32,6 +32,7 @@ const {
   SUPPORTED_VERSIONS,
   LATEST_VERSION,
   DEFAULT_JS_API_VERSIONS_TO_BUILD,
+  MAX_JS_API_VERSIONS_TO_BUILD,
 } = require('./src/utils/versioning');
 
 /* constants */
@@ -47,10 +48,12 @@ const getVersionedCustomSlug = (slug, pageVersion) => {
   return `/${pageVersion}${slug}`;
 };
 
-const jsApiVersionsToBuild =
-  process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
+const jsApiVersionsToBuild = isProduction
+  ? MAX_JS_API_VERSIONS_TO_BUILD
+  : process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
+
 let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
-if (!isProduction && jsApiVersionsToBuild) {
+if (jsApiVersionsToBuild) {
   SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
     .reverse()
     .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
