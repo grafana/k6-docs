@@ -13,15 +13,11 @@ Opens a file, reading all its contents into memory for use in the script.
 
 <blockquote mod='attention' title='Function available only in init context'>
 
-This function can only called only from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
+This function can only be called from the init context (aka _init code_), code in the global context that is, outside of the main export default function { ... }.
 
 By restricting it to the init context, we can easily determine what local files are needed to run the test and thus what we need to bundle up when distributing the test to multiple nodes in a clustered/distributed test.
 
 See the example further down on this page. For a more in-depth description, see [Test lifecycle](/using-k6/test-lifecycle).
-
-#### Breaking change in v0.36.0
-
-Since k6 v0.36.0, VUs are now restricted to only `open()` files that were also opened in the [init context](https://k6.io/docs/using-k6/test-lifecycle/#init-and-vu-stages) of the first VU - the one that was initialized to get the exported `options` from the JS script (`__VU==0`). This means that the code like `if (__VU > 0) { const arr = open("./arr.json"); }` will result in an error.
 
 </blockquote>
 
@@ -35,11 +31,6 @@ Since k6 v0.36.0, VUs are now restricted to only `open()` files that were also o
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
 | string / ArrayBuffer | The contents of the file, returned as string or ArrayBuffer (if `b` was specified as the mode). |
-
-> #### Breaking change in v0.32.0
-> Since k6 v0.32.0 `open(..., 'b')` returns an ArrayBuffer object instead of an array of numbers (bytes).
-> If you need to manipulate the binary data, you'll need to wrap the ArrayBuffer
-> object in a [typed array view](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays).
 
 
 <CodeGroup labels={["users.json"]}>
