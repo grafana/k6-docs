@@ -36,6 +36,10 @@ const redisClient = new redis.Client({
 });
 
 export default function () {
+  const a = async () => {
+    await console.log('hey');
+  };
+
   redisClient
     .set('mykey', 'myvalue', 0)
     .then((_) => redisClient.exists('mykey'))
