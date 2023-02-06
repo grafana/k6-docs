@@ -114,4 +114,6 @@ const ExploreExtensionsPage = ({
 
 export default ExploreExtensionsPage;
 
-export const Head = () => <SEO {...SeoMetaData['explore-extensions']} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData['explore-extensions']} />
+);

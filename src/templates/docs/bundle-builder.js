@@ -104,4 +104,6 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
 
 export default BundleBuilderPage;
 
-export const Head = () => <SEO {...SeoMetaData['bundle-builder']} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData['bundle-builder']} />
+);

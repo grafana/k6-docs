@@ -74,4 +74,6 @@ const Examples = ({ pageContext: { sidebarTree, navLinks } }) => {
 
 export default Examples;
 
-export const Head = () => <SEO {...SeoMetaData.examples} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData.examples} />
+);

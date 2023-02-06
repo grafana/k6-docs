@@ -271,4 +271,6 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
 
 export default Cloud;
 
-export const Head = () => <SEO {...SeoMetaData.cloud} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData.cloud} />
+);

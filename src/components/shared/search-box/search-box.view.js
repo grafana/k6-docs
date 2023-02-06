@@ -2,6 +2,7 @@
 import { DocSearch } from '@docsearch/react';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
+import { LATEST_VERSION } from 'utils/versioning';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import '@docsearch/css';
 
@@ -18,6 +19,9 @@ export const SearchBox = () => {
         apiKey="5f8378d0e74b297ad0ce5ac826a76781"
         indexName="k6"
         placeholder="Search"
+        searchParameters={{
+          facetFilters: [`version:${LATEST_VERSION}`],
+        }}
       />
     </div>
   );

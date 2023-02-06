@@ -112,6 +112,7 @@ export const Head = ({
   pageContext: {
     remarkNode: { frontmatter },
     pageVersions,
+    version,
   },
 }) => {
   const pageMetaData = {
@@ -126,6 +127,7 @@ export const Head = ({
     <SEO
       pageTranslations={frontmatter.translations}
       pageVersions={pageVersions}
+      version={version}
       {...pageMetaData}
     />
   );
