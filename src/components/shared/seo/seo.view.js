@@ -54,7 +54,7 @@ export const SEO = ({
   const currentRobotsContent = useRef('index, follow');
   let currentLanguage = 'en';
 
-  if (slug.startsWith('es/') || slug.startsWith('/es/')) {
+  if ((slug && slug.startsWith('es/')) || (slug && slug.startsWith('/es/'))) {
     currentLanguage = 'es';
   }
 
