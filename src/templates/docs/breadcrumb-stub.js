@@ -76,7 +76,7 @@ const BreadcrumbsStubPage = (props) => {
 
 export default BreadcrumbsStubPage;
 
-export const Head = ({ pageContext: { title } }) => {
+export const Head = ({ pageContext: { title, version } }) => {
   const pageMetaData = {
     data: {
       title,
@@ -84,5 +84,5 @@ export const Head = ({ pageContext: { title } }) => {
     },
   };
 
-  return <SEO {...pageMetaData} />;
+  return <SEO version={version} {...pageMetaData} />;
 };

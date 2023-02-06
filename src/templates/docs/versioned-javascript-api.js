@@ -201,4 +201,6 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => <SEO {...SeoMetaData['javascript-api']} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData['javascript-api']} />
+);

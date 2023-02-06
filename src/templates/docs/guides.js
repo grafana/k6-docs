@@ -120,7 +120,7 @@ const Guides = (props) => {
 
 export default Guides;
 
-export const Head = ({ pageContext: { locale } }) => {
+export const Head = ({ pageContext: { locale, version } }) => {
   const pageMetaData = {
     data: {
       ...(locale === 'es'
@@ -130,5 +130,5 @@ export const Head = ({ pageContext: { locale } }) => {
     },
   };
 
-  return <SEO {...pageMetaData} />;
+  return <SEO version={version} {...pageMetaData} />;
 };

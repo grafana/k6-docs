@@ -562,4 +562,6 @@ export const IntegrationsCiIconBlock = () => (
   <DocIconsRow iconsData={iconsDataSet2} />
 );
 
-export const Head = () => <SEO {...SeoMetaData.integrations} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData.integrations} />
+);

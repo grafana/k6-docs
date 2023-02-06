@@ -64,4 +64,6 @@ const Extensions = ({ pageContext: { sidebarTree, navLinks } }) => {
 
 export default Extensions;
 
-export const Head = () => <SEO {...SeoMetaData.extensions} />;
+export const Head = ({ pageContext: { version } }) => (
+  <SEO version={version} {...SeoMetaData.extensions} />
+);

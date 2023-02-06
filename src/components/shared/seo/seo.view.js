@@ -22,6 +22,7 @@ export const SEO = ({
   facebook,
   pageTranslations = null,
   pageVersions = null,
+  version = LATEST_VERSION,
 } = {}) => {
   const {
     site: {
@@ -51,6 +52,11 @@ export const SEO = ({
   const currentDescription = description || siteDescription;
   const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
   const currentRobotsContent = useRef('index, follow');
+  let currentLanguage = 'en';
+
+  if ((slug && slug.startsWith('es/')) || (slug && slug.startsWith('/es/'))) {
+    currentLanguage = 'es';
+  }
 
   let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available
@@ -114,6 +120,9 @@ export const SEO = ({
       {/* Twitter Card tags */}
       <meta name={'twitter:card'} content={'summary'} />
       <meta name={'twitter:creator'} content={authorTwitterAccount} />
+
+      <meta name="docsearch:language" content={currentLanguage} />
+      <meta name="docsearch:version" content={version} />
 
       {/* Canonical links for versioned pages */}
       <link href={versionedCanonicalUrl} rel="canonical" />
