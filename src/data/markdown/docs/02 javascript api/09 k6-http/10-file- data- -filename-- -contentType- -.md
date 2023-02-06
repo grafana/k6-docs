@@ -8,7 +8,7 @@ Create a file object that is used for building [Multipart requests (file uploads
 
 | Parameter   | Type                         | Description                                                                      |
 | ----------- | ---------------------------- | -------------------------------------------------------------------------------- |
-| data        | string / Array / ArrayBuffer <sup>(≥ v0.31.0)</sup> | File data as string, array of numbers, or an `ArrayBuffer` object. |
+| data        | string / Array / ArrayBuffer | File data as string, array of numbers, or an `ArrayBuffer` object. |
 | filename    | string                       | The filename to specify for this field (or "part") of the multipart request.     |
 | contentType | string                       | The content type to specify for this field (or "part") of the multipart request. |
 

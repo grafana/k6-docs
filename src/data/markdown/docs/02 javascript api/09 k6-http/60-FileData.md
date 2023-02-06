@@ -10,7 +10,7 @@ You create it by calling [http.file( data, [filename], [contentType] )](/javascr
 
 | Name                  | Type                         | Description                                                              |
 | --------------------- | ---------------------------- | ------------------------------------------------------------------------ |
-| FileData.data         | string / Array / ArrayBuffer <sup>(≥ v0.31.0)</sup> | File data as string, array of numbers, or an `ArrayBuffer` object. |
+| FileData.data         | string / Array / ArrayBuffer | File data as string, array of numbers, or an `ArrayBuffer` object. |
 | FileData.content_type | string                       | The content type that will be specified in the multipart request.        |
 | FileData.filename     | string                       | The filename that will be specified in the multipart request.            |
 
