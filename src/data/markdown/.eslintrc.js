@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    es2017:true,
+    es2017: true,
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],
