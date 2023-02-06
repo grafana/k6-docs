@@ -35,12 +35,17 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
+class something {
+    #privateField
+}
+
 export default async function() {
   await redisClient.set('mykey', 'myvalue', 0)
   const exists = await redisClient.exists('mykey')
   if (exists === false) {
     throw new Error('mykey should exist');
   }
+  console.log(new something());
 
   const value = await redisClient.get('mykey');
   console.log(`set key 'mykey' to value: ${value}`)
