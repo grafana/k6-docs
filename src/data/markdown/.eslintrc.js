@@ -8,6 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 7,
     sourceType: 'module',
+    requireConfigFile: false,
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],
@@ -32,13 +33,6 @@ module.exports = {
         'use-isnan': 'error',
         'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
         'prefer-const': 'error',
-        'no-restricted-syntax': [
-          'error',
-          {
-            selector: 'AwaitExpression',
-            message: 'async/await is not supported',
-          },
-        ],
       },
     },
   ],
