@@ -3,7 +3,7 @@ title: "k6/execution"
 excerpt: "Get information about the current test's execution state."
 ---
 
-k6 v0.34.0 introduced the capability to get information about the current test execution state inside the test script. You can now read in your script the execution state during the test execution and change your script logic based on the current state.
+`k6/execution` provides the capability to get information about the current test execution state inside the test script. You can read in your script the execution state during the test execution and change your script logic based on the current state.
 
 The `k6/execution` module provides the test execution information with the following properties:
 
