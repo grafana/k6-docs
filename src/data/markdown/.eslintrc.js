@@ -8,6 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 8,
     sourceType: 'module',
+    requireConfigFile: false,
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],
