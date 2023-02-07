@@ -22,6 +22,12 @@ With xk6-browser, you can interact with the browser to script tests much closer 
 
 At the same time, you can adopt a hybrid approach to performance testing by leveraging the existing functionalities of k6 and perform backend load testing on a protocol-level, all in the same script. This gives you a full picture of how the user experience is under different load scenarios.
 
+A hybrid approach lets you combine frontend and backend performance testing to give you the most holistic view of your application's performance. Check out our video guide below to know more:
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/xVACRP5qIJI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 ## Use case for xk6-browser
 
 The main use case for xk6-browser is to test performance on the browser level. Browser-level testing  provides a way to measure user experience and  find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
