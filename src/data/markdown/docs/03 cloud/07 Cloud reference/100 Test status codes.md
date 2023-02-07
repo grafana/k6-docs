@@ -3,8 +3,8 @@ title: 'Test status codes'
 excerpt: 'A list of test statuses returned by k6 Cloud, with context and descriptions.'
 ---
 
-The following is a list of test statuses in k6, along with the code returned.
-The code returned here is different than what is returned by k6.
+The following is a list of test statuses of k6 Cloud test runs, along with their code representation as returned by the Cloud API.
+Note that these codes differ from the exit codes returned by the k6 process on the command line.
 
 <Glossary>
 
