@@ -1,10 +1,12 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
-    node: true,
-    es6: true,
     es2017: true,
+    commonjs: true,
+  },
+  parserOptions: {
+    ecmaVersion: '2017',
+    sourceType: 'module',
   },
   extends: ['plugin:mdx/recommended', 'plugin:prettier/recommended'],
   plugins: ['markdown'],
@@ -37,5 +39,6 @@ module.exports = {
     __VU: 'readonly',
     __ENV: 'readonly',
     __ITER: 'readonly',
+    open: 'readonly',
   },
 };
