@@ -29,7 +29,7 @@ Using [WebSockets](/using-k6/protocols/websockets) is a bit different, for both 
 xk6 is a separate CLI tool that lets you build custom k6 binaries.
 Community contributors have already added support for additional protocols,
 with extensions for SQL, Kafka, ZeroMQ, Redis, and more.
-See the [full list of extensions](/extensions).
+Refer to the [full list of extensions](/extensions/get-started/explore/) and find the ones you want to build. Then follow the [xk6 guide](/extensions/guides/build-a-k6-binary-with-extensions/).
 
 You can build your own extension, too.
-To get started, see this [xk6 explanation and tutorial](https://k6.io/blog/extending-k6-with-xk6).
+See the [tutorials](/extensions/get-started/create/) to get started.
