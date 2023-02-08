@@ -54,14 +54,28 @@ Using  `http.asyncRequest()` to issue multiple requests, then [Promise.race](htt
 import http from 'k6/http';
 
 export default async () => {
+  const urlOne = `https://httpbin.test.k6.io/delay/${randomInt(1, 5)}`
+  const urlTwo = `https://httpbin.test.k6.io/delay/${randomInt(1, 5)}`
+  const urlThree = `https://httpbin.test.k6.io/delay/${randomInt(1, 5)}`
 
-  const google = http.asyncRequest('GET', 'https://www.google.com/search?q=k6')
-  const bing = http.asyncRequest('GET', 'https://www.bing.com/search?q=k6')
-  const duckduckgo = http.asyncRequest('GET', 'https://www.duckduckgo.com/?q=k6')
+  const one = http.asyncRequest('GET', urlOne);
+  const two = http.asyncRequest('GET', urlTwo);
+  const three = http.asyncRequest('GET', urlThree);
 
-  const winner = await Promise.race([google, bing, duckduckgo])
-  console.log('Winner is ' + winner.url);
+  console.log('Racing:')
+  console.log(urlOne);
+  console.log(urlTwo);
+  console.log(urlThree);
+
+  const res = await Promise.race([  one, two, three])
+  console.log('winner is', res.url, 'with duration of', res.timings.duration+'ms');
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 ```
+
+Note: `http.asyncRequest` has no current way of aborting a request. So while the above will get the one that is the fastest, the remaining ones will still continue and may block the end of the iteration as iteration only stop once all async jobs are finished.
 
 </CodeGroup>
