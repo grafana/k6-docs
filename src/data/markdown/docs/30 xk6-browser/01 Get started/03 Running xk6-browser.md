@@ -168,7 +168,11 @@ Then, you can use [`check`](/javascript-api/k6/check/) from the k6 API to assert
 
 ## Run both browser-level and protocol-level tests in a single script
 
-The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events.
+The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events. This approach is what we refer to as [hybrid load testing](/testing-guides/load-testing-websites/#hybrid-load-testing) and provides advantages such as:
+
+- testing real user flows on the frontend while generating a higher load in the backend
+- measuring backend and frontend performance in the same test execution
+- increased collaboration between backend and frontend teams since the same tool can be used
 
 To run a browser-level and protocol-level test concurrently, you can use [scenarios](/using-k6/scenarios/). 
 

@@ -8,7 +8,7 @@ Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash input data.
 
 | Parameter      | Type                 | Description                                       |
 | -------------- | -------------------- | --------------------------------------------------|
-| input          | string / ArrayBuffer <sup>(≥ v0.31.0)</sup> | The input string or `ArrayBuffer` object to hash. |
+| input          | string / ArrayBuffer | The input string or `ArrayBuffer` object to hash. |
 | outputEncoding | string               | Describes the type of encoding to use for the hash value. Can be "base64", "base64url", "base64rawurl", "hex" or "binary". |
 
 ### Returns

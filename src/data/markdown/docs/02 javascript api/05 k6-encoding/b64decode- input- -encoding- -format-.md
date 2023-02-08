@@ -18,11 +18,6 @@ Decode the passed base64 encoded `input` string into the unencoded original inpu
 | -------------------- | ------------------------------------------------- |
 | ArrayBuffer / string | The base64 decoded version of the `input` string in either string or ArrayBuffer format, depending on the `format` parameter. |
 
-> #### Breaking change in v0.32.0
-> Since k6 v0.32.0 `b64decode()` returns an ArrayBuffer object by default instead of
-> a string. To return a string pass `"s"` as the 3rd parameter, e.g. `encoding.b64decode(encodedString, 'std', 's')`.
-
-
 ### Example
 
 <CodeGroup labels={[]}>
