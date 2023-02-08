@@ -1,6 +1,6 @@
 ---
 title: 'isEnabled([options])'
-excerpt: 'xk6-browser: locator.isEnabled method'
+excerpt: 'Browser module: locator.isEnabled method'
 ---
 
 Checks if the element is `enabled`.

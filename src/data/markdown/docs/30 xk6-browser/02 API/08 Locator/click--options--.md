@@ -1,6 +1,6 @@
 ---
 title: 'click([options])'
-excerpt: 'xk6-browser: locator.click method'
+excerpt: 'Browser module: locator.click method'
 ---
 
 <Blockquote mod="attention">

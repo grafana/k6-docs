@@ -1,6 +1,6 @@
 ---
 title: 'textContent([options])'
-excerpt: 'xk6-browser: locator.textContent method'
+excerpt: 'Browser module: locator.textContent method'
 ---
 
 Returns the `element.textContent`.

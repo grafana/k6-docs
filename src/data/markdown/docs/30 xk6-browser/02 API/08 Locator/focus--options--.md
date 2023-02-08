@@ -1,6 +1,6 @@
 ---
 title: 'focus([options])'
-excerpt: 'xk6-browser: locator.focus method'
+excerpt: 'Browser module: locator.focus method'
 ---
 
 Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on the element, if it can be focused on.

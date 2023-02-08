@@ -1,6 +1,6 @@
 ---
 title: "Page"
-excerpt: "xk6-browser: Page Class"
+excerpt: "Browser module: Page Class"
 ---
 
 <BrowserDocsWIP/>

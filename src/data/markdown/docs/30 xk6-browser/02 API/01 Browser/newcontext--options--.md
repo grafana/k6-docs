@@ -1,6 +1,6 @@
 ---
 title: 'newContext([options])'
-excerpt: 'xk6-browser: Browser.newContext method'
+excerpt: 'Browser module: Browser.newContext method'
 ---
 
 Creates and returns a new [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/).

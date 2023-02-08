@@ -1,6 +1,6 @@
 ---
 title: 'version()'
-excerpt: 'xk6-browser: Browser.version method'
+excerpt: 'Browser module: Browser.version method'
 ---
 
 Returns the browser application's version.

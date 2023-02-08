@@ -1,6 +1,6 @@
 ---
 title: 'isEditable([options])'
-excerpt: 'xk6-browser: locator.isEditable method'
+excerpt: 'Browser module: locator.isEditable method'
 ---
 
 Checks if the element is `editable`.

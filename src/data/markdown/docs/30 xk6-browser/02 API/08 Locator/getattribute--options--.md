@@ -1,6 +1,6 @@
 ---
 title: 'getAttribute(name, [options])'
-excerpt: 'xk6-browser: locator.getAttribute method'
+excerpt: 'Browser module: locator.getAttribute method'
 ---
 
 Returns the element attribute value for the given attribute name.

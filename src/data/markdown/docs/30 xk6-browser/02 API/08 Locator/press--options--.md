@@ -1,6 +1,6 @@
 ---
 title: 'press(key, [options])'
-excerpt: 'xk6-browser: locator.press method'
+excerpt: 'Browser module: locator.press method'
 ---
 
 Press a single key on the keyboard or a combination of keys.

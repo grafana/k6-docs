@@ -1,6 +1,6 @@
 ---
 title: 'isVisible([options])'
-excerpt: 'xk6-browser: locator.isVisible method'
+excerpt: 'Browser module: locator.isVisible method'
 ---
 
 Checks if the element is `visible`.

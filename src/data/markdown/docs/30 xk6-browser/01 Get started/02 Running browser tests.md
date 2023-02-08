@@ -1,6 +1,6 @@
 ---
-title: 'Running xk6-browser'
-excerpt: 'Follow along to learn how to run xk6-browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level tests in a single script.'
+title: 'Running browser tests'
+excerpt: 'Follow along to learn how to run a browser test, interact with elements on the page, wait for page navigation, write assertions and run both browser-level and protocol-level tests in a single script.'
 ---
 
 Follow along to learn how to:
@@ -9,11 +9,11 @@ Follow along to learn how to:
 2. Interact with elements on your webpage
 3. Wait for page navigation
 4. Run both browser-level and protocol-level tests in a single script
-5. Run xk6-browser tests in a Docker container
+5. Run browser tests in a Docker container
 
 <Blockquote mod="note" title="">
 
-With these example snippets, you'll run the test locally with your machine's resources. xk6-browser is not available within k6 cloud as of yet.
+With these example snippets, you'll run the test locally with your machine's resources. The browser module is not available within k6 cloud as of yet.
 
 </Blockquote>
 
@@ -21,62 +21,52 @@ With these example snippets, you'll run the test locally with your machine's res
 
 To run a simple local script:
 
-1. Follow the [Installation Guidelines](/javascript-api/xk6-browser/get-started/installation/) and make sure there is a binary named `xk6-browser` in your current working directory.
+1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
-2. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
+  <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<CodeGroup labels={["script.js"]} lineNumbers={[true]}>
+  ```javascript
+  import { chromium } from 'k6/experimental/browser';
 
-```javascript
-import { chromium } from 'k6/experimental/browser';
+  export default async function () {
+    const browser = chromium.launch({ headless: false });
+    const page = browser.newPage();
 
-export default async function () {
-  const browser = chromium.launch({ headless: false });
-  const page = browser.newPage();
-
-  try {
-    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' })
-    page.screenshot({ path: 'screenshot.png' });
-  } finally {
-    page.close();
-    browser.close();
+    try {
+      await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' })
+      page.screenshot({ path: 'screenshot.png' });
+    } finally {
+      page.close();
+      browser.close();
+    }
   }
-}
-```
+  ```
 
-</CodeGroup>
+  </CodeGroup>
 
   The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
-  To provide rough compatibility with the Playwright API, the xk6-browser API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `await` keyword is used to deal with the asynchronous nature of the operation.
+  To provide rough compatibility with the Playwright API, the browser module API is also being converted from synchronous to asynchronous. `page.goto()` is now asynchronous so `await` keyword is used to deal with the asynchronous nature of the operation.
 
   </Blockquote>
 
-3. Then, run xk6-browser on your terminal with this command:
+2. Then, run the test on your terminal with this command:
 
   <CodeGroup labels={["CLI"]}>
 
   ```bash
-  $ ./xk6-browser run script.js
+  $ K6_BROWSER_ENABLED=1 k6 run script.js
   ```
 
   </CodeGroup>
-
-  <Blockquote mod="note" title="">
-
-  The `./` prefix tells your shell to run the binary located in the current working directory. This is required on macOS and Linux, but not on the Windows `cmd.exe` shell. On PowerShell, specify `.\xk6-browser` instead.
-
-  If you installed xk6-browser with a system package, or placed the binary in a directory that's part of your `$PATH` environment variable, you can omit the `./` or `.\` prefixes.
-
-  </Blockquote>
 
 ## Interact with elements on your webpage
 
 You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/xk6-browser/api/locator/) object, which you can later use to interact with the element.
 
-To find out which selectors xk6-browser supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
+To find out which selectors the browser module supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
 
 <Blockquote mod="note" title="">
 
@@ -116,7 +106,7 @@ Within the Locator API, various methods such as `type()` can be used to interact
 
 ## Asynchronous operations
 
-Since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most xk6-browser methods to be asynchronous as well.
+Since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most of the browser module methods to be asynchronous as well.
 
 At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and scripts must be written to handle this properly.
 
@@ -161,7 +151,7 @@ Then, you can use [`check`](/javascript-api/k6/check/) from the k6 API to assert
 
 ## Run both browser-level and protocol-level tests in a single script
 
-The real power of xk6-browser shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events. This approach is what we refer to as [hybrid load testing](/testing-guides/load-testing-websites/#hybrid-load-testing) and provides advantages such as:
+The real power of the browser module shines when it’s combined with the existing features of k6. A common scenario that you can try is to mix a smaller subset of browser-level tests with a larger protocol-level test which can simulate how your website responds to various performance events. This approach is what we refer to as [hybrid load testing](/testing-guides/load-testing-websites/#hybrid-load-testing) and provides advantages such as:
 
 - testing real user flows on the frontend while generating a higher load in the backend
 - measuring backend and frontend performance in the same test execution
@@ -232,16 +222,16 @@ The preceding code contains two scenarios. One for the browser-level test called
 
 Since it's all in one script, this allows for greater collaboration amongst teams.
 
-## Run xk6-browser tests in a Docker container
+## Run browser tests in a Docker container
 
-If you prefer working with Docker, you can run your xk6-browser test scripts in a Docker container using Docker Compose by creating a [Dockerfile](https://github.com/grafana/xk6-browser/blob/main/Dockerfile) and [docker-compose](https://github.com/grafana/xk6-browser/blob/main/docker-compose.yaml) file.
+If you prefer working with Docker, you can run your browser test scripts in a Docker container using Docker Compose by creating a [Dockerfile](https://github.com/grafana/xk6-browser/blob/main/Dockerfile) and [docker-compose](https://github.com/grafana/xk6-browser/blob/main/docker-compose.yaml) file.
 
 To run the test, use the following command and replace `script.js` with your file.
 
 <CodeGroup labels={["CLI"]}>
 
 ```bash
-docker-compose run -T xk6-browser run - <script.js
+docker-compose run -T K6_BROWSER_ENABLED=1 k6 run - <script.js
 ```
 
 </CodeGroup>

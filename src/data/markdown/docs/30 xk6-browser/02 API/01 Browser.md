@@ -1,6 +1,6 @@
 ---
 title: "Browser"
-excerpt: "xk6-browser: Browser Class"
+excerpt: "Browser module: Browser Class"
 ---
 
 The `Browser` class is the entry point for all your tests, and it is what interacts with the actual web browser via [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP). It manages:

@@ -1,6 +1,6 @@
 ---
 title: 'newPage([options])'
-excerpt: 'xk6-browser: Browser.newPage method'
+excerpt: 'Browser module: Browser.newPage method'
 ---
 
 Creates a new [Page](/javascript-api/xk6-browser/api/page/) in a new [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.

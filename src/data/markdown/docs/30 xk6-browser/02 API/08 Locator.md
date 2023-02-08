@@ -1,6 +1,6 @@
 ---
 title: "Locator"
-excerpt: "xk6-browser: Locator Class"
+excerpt: "Browser module: Locator Class"
 ---
 
 The Locator API makes it easier to work with dynamically changing elements. Some of the benefits of using it over existing ways to locate an element (e.g. `Page.$()`) include:

@@ -1,6 +1,6 @@
 ---
 title: 'type(text, [options])'
-excerpt: 'xk6-browser: locator.type method'
+excerpt: 'Browser module: locator.type method'
 ---
 
 Type in the text into the input field.

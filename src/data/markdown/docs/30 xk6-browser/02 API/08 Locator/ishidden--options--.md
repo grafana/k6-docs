@@ -1,6 +1,6 @@
 ---
 title: 'isHidden([options])'
-excerpt: 'xk6-browser: locator.isHidden method'
+excerpt: 'Browser module: locator.isHidden method'
 ---
 
 Checks if the element is `hidden`.

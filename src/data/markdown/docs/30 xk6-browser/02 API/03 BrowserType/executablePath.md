@@ -1,6 +1,6 @@
 ---
 title: 'executablePath()'
-excerpt: 'xk6-browser: BrowserType.executablePath method'
+excerpt: 'Browser module: BrowserType.executablePath method'
 ---
 
 Returns the path where the extension expects to find the browser executable.

@@ -1,6 +1,6 @@
 ---
 title: 'hover([options])'
-excerpt: 'xk6-browser: locator.hover method'
+excerpt: 'Browser module: locator.hover method'
 ---
 
 <Blockquote mod="attention">

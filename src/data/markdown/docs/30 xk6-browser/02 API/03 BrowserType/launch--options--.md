@@ -1,6 +1,6 @@
 ---
 title: 'launch([options])'
-excerpt: 'xk6-browser: BrowserType.launch method'
+excerpt: 'Browser module: BrowserType.launch method'
 ---
 
 Launches a new browser process.

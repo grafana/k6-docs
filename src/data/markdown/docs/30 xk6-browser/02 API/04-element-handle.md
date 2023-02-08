@@ -1,6 +1,6 @@
 ---
 title: "ElementHandle"
-excerpt: "xk6-browser: ElementHandle Class"
+excerpt: "Browser module: ElementHandle Class"
 ---
 
 <BrowserDocsWIP/>

@@ -1,6 +1,6 @@
 ---
 title: 'uncheck([options])'
-excerpt: 'xk6-browser: locator.uncheck method'
+excerpt: 'Browser module: locator.uncheck method'
 ---
 
 <Blockquote mod="attention">

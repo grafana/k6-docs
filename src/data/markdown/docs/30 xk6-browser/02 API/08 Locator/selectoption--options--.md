@@ -1,6 +1,6 @@
 ---
 title: 'selectOption(values, [options])'
-excerpt: 'xk6-browser: locator.selectOption method'
+excerpt: 'Browser module: locator.selectOption method'
 ---
 
 <Blockquote mod="attention">

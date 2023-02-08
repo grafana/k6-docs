@@ -1,6 +1,6 @@
 ---
 title: "Touchscreen"
-excerpt: "xk6-browser: Touchscreen Class"
+excerpt: "Browser module: Touchscreen Class"
 ---
 
 <BrowserDocsWIP/>

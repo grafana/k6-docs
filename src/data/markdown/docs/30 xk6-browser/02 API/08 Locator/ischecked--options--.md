@@ -1,6 +1,6 @@
 ---
 title: 'isChecked([options])'
-excerpt: 'xk6-browser: locator.isChecked method'
+excerpt: 'Browser module: locator.isChecked method'
 ---
 
 Checks to see if the `checkbox` `input` type is selected or not.

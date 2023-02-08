@@ -1,15 +1,15 @@
 ---
 title: 'Selecting elements'
-excerpt: 'A guide on how to select elements with xk6-browser.'
+excerpt: 'A guide on how to select elements with the browser module.'
 ---
 
 Selectors are strings that represents a specific DOM element on the page. When writing browser-level tests, it's recommended to use selectors that are robust to avoid test flakiness when the DOM structure changes. 
 
-Currently, xk6-browser supports the standard **CSS and XPath selectors**.
+Currently, the browser module supports the standard **CSS and XPath selectors**.
 
 <Blockquote mod="note">
 
-Text-based selectors are currently not supported in xk6-browser. This will be supported in future releases. 
+Text-based selectors are currently not supported. This will be supported in future releases. 
 
 </Blockquote>
 

@@ -1,6 +1,6 @@
 ---
 title: 'dispatchEvent(type, eventInit, [options])'
-excerpt: 'xk6-browser: locator.dispatchEvent method'
+excerpt: 'Browser module: locator.dispatchEvent method'
 ---
 
 Dispatches HTML DOM event types e.g. `'click'`.

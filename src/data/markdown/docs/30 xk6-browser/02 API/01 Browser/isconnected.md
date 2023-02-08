@@ -1,6 +1,6 @@
 ---
 title: 'isConnected()'
-excerpt: 'xk6-browser: Browser.isConnected method'
+excerpt: 'Browser module: Browser.isConnected method'
 ---
 
 <Blockquote mod="attention">

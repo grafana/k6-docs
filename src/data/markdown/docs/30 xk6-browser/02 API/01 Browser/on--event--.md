@@ -1,6 +1,6 @@
 ---
 title: 'on(event)'
-excerpt: 'xk6-browser: Browser.on method'
+excerpt: 'Browser module: Browser.on method'
 ---
 
 Detects events from the browser application.

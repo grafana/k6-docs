@@ -1,6 +1,6 @@
 ---
 title: 'name()'
-excerpt: 'xk6-browser: BrowserType.name method'
+excerpt: 'Browser module: BrowserType.name method'
 ---
 
 Returns the name of the `BrowserType`; currently it will return `chromium`.

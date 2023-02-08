@@ -1,16 +1,16 @@
 ---
 title: 'Welcome'
-heading: 'xk6-browser Documentation'
-excerpt: 'xk6-browser brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
+heading: 'Browser Module Documentation'
+excerpt: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
 ---
 
-## What is xk6-browser?
+<ExperimentalBlockquote />
 
-[xk6-browser](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
+The [Browser module](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 
-xk6-browser aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
+This module aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
 
-## Why xk6-browser?
+## Why browser testing?
 
 The [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states that 80%-90% of the website response time is spent on the frontend. But when the number of concurrent users is high, the percentage of time spent between the frontend and backend changes:
 
@@ -18,7 +18,7 @@ The [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-p
 
 While backend performance testing is useful and efficient, it doesn’t represent the overall user experience.
 
-With xk6-browser, you can interact with the browser to script tests much closer to the actual website experience. You'll get insight into what your user sees on a browser-level and catch issues skipped from the protocol level.
+With the browser module, you can interact with the browser to script tests much closer to the actual website experience. You'll get insight into what your user sees on a browser-level and catch issues skipped from the protocol level.
 
 At the same time, you can adopt a hybrid approach to performance testing by leveraging the existing functionalities of k6 and perform backend load testing on a protocol-level, all in the same script. This gives you a full picture of how the user experience is under different load scenarios.
 
@@ -28,16 +28,16 @@ A hybrid approach lets you combine frontend and backend performance testing to g
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/xVACRP5qIJI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-## Use case for xk6-browser
+## Use case for browser testing
 
-The main use case for xk6-browser is to test performance on the browser level. Browser-level testing  provides a way to measure user experience and  find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
+The main use case for the browser module is to test performance on the browser level. Browser-level testing  provides a way to measure user experience and  find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
 
 - When my application is receiving thousands of simultaneous requests from the protocol-level, what happens to the frontend?
 - How can I get metrics specific to browsers, like total page load time?
 - Are all my elements interactive on the frontend?
 - Are there any loading spinners that take a long time to disappear?
 
-## A simple test using xk6-browser
+## A simple browser test
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -76,7 +76,7 @@ The preceding code launches a Chromium-based browser, visits the application and
 
 <Blockquote mod="note" title="">
 
-We're currently (January 2023) migrating most xk6-browser APIs to be async and return a Promise. To make this simpler, our goal is to use the async/await keywords. For more information, check out [Running xk6-browser](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
+We're currently (February 2023) migrating most browser module APIs to be async and return a Promise. To make this simpler, our goal is to use the async/await keywords. For more information, check out [Running browser tests](/javascript-api/xk6-browser/get-started/running-xk6-browser/).
 
 </Blockquote>
 

@@ -1,6 +1,6 @@
 ---
 title: 'innerHTML([options])'
-excerpt: 'xk6-browser: locator.innerHTML method'
+excerpt: 'Browser module: locator.innerHTML method'
 ---
 
 Returns the `element.innerHTML`.

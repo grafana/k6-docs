@@ -1,6 +1,6 @@
 ---
 title: "Mouse"
-excerpt: "xk6-browser: Mouse Class"
+excerpt: "Browser module: Mouse Class"
 ---
 
 <BrowserDocsWIP/>

@@ -66,7 +66,7 @@ export const UseCases = () => {
           <p>
             {t('welcome.use-cases.browser-testing.pre-description')}
             <Link className={'link'} to={'/javascript-api/xk6-browser/'}>
-              xk6-browser
+              our browser module
             </Link>
             {t('welcome.use-cases.browser-testing.description')}
           </p>

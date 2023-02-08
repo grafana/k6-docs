@@ -1,6 +1,6 @@
 ---
 title: 'check([options])'
-excerpt: 'xk6-browser: locator.check method'
+excerpt: 'Browser module: locator.check method'
 ---
 
 <Blockquote mod="attention">

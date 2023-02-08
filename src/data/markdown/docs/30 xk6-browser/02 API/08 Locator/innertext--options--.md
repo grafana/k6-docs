@@ -1,6 +1,6 @@
 ---
 title: 'innerText([options])'
-excerpt: 'xk6-browser: locator.innerText method'
+excerpt: 'Browser module: locator.innerText method'
 ---
 
 Returns the `element.innerText`.

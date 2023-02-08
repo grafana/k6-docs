@@ -1,6 +1,6 @@
 ---
 title: 'inputValue([options])'
-excerpt: 'xk6-browser: locator.inputValue method'
+excerpt: 'Browser module: locator.inputValue method'
 ---
 
 Returns `input.value` for the selected `input`, `textarea` or `select` element.

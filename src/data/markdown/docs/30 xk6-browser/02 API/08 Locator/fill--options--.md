@@ -1,6 +1,6 @@
 ---
 title: 'fill(value, [options])'
-excerpt: 'xk6-browser: locator.fill method'
+excerpt: 'Browser module: locator.fill method'
 ---
 
 Fill an `input`, `textarea` or `contenteditable` element with the provided value.

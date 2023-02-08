@@ -1,6 +1,6 @@
 ---
 title: 'close()'
-excerpt: 'xk6-browser: Browser.close method'
+excerpt: 'Browser module: Browser.close method'
 ---
 
 Closes the browser and all of its pages (if any were opened).

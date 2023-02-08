@@ -1,6 +1,6 @@
 ---
 title: 'waitFor([options])'
-excerpt: 'xk6-browser: locator.waitFor method'
+excerpt: 'Browser module: locator.waitFor method'
 ---
 
 <Blockquote mod="attention">

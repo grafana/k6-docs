@@ -1,6 +1,6 @@
 ---
 title: "BrowserContext"
-excerpt: "xk6-browser: BrowserContext Class"
+excerpt: "Browser module: BrowserContext Class"
 ---
 
 `BrowserContext`s provide a way to operate multiple independent sessions, with separate pages, cache, and cookies. A default `BrowserContext` is created when a [Browser](/javascript-api/xk6-browser/api/browser) is launched.

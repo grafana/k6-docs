@@ -1,11 +1,11 @@
 ---
 title: 'API'
-excerpt: 'An overview of the browser-level APIs from xk6-browser.'
+excerpt: 'An overview of the browser-level APIs from browser module.'
 ---
 
-The `xk6-browser` APIs aim for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright).
+The browser module APIs aim for rough compatibility with the [Playwright API for NodeJS](https://playwright.dev/docs/api/class-playwright).
 
-Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly differ from their Playwright counterparts.
+Note that because k6 does not run in NodeJS, the browser module APIs will slightly differ from their Playwright counterparts.
 
 ## Modules
 

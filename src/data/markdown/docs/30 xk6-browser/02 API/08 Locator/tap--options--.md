@@ -1,6 +1,6 @@
 ---
 title: 'tap([options])'
-excerpt: 'xk6-browser: locator.tap method'
+excerpt: 'Browser module: locator.tap method'
 ---
 
 <Blockquote mod="attention">

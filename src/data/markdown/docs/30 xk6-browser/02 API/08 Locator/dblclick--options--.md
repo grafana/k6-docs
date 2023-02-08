@@ -1,6 +1,6 @@
 ---
 title: 'dblclick([options])'
-excerpt: 'xk6-browser: locator.dblclick method'
+excerpt: 'Browser module: locator.dblclick method'
 ---
 
 <Blockquote mod="attention">

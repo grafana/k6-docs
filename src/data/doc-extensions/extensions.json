@@ -37,18 +37,6 @@
       "categories": ["Observability"]
     },
     {
-      "name": "xk6-browser",
-      "description": "Browser automation and end-to-end web testing",
-      "url": "https://github.com/grafana/xk6-browser",
-      "logo": "",
-      "author": {
-        "name": "",
-        "url": ""
-      },
-      "official": false,
-      "categories": ["Browser"]
-    },
-    {
       "name": "xk6-websockets",
       "description": "A WHATWG WebSockets API specification implementation for k6 that might replace k6/ws in the future.",
       "url": "https://github.com/grafana/xk6-websockets",
