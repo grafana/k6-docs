@@ -6,9 +6,9 @@ excerpt: 'Issue any type of HTTP request asynchronously.'
 
 | Parameter         | Type                          | Description                                                                               |
 | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
-| method            | string                        | Request method (e.g. `POST`). Note, the method must be uppercase.                         |
+| method            | string                        | Request method (e.g. `POST`). Must be uppercase.                         |
 | url               | string / [HTTP URL](/javascript-api/k6-http/urlurl#returns) | Request URL (e.g. `http://example.com`).                                                  |
-| body (optional)   | string / object / ArrayBuffer | Request body; objects will be `x-www-form-urlencoded`.                                    |
+| body (optional)   | string / object / ArrayBuffer | Request body. Objects are `x-www-form-urlencoded`.                                    |
 | params (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
@@ -17,7 +17,7 @@ excerpt: 'Issue any type of HTTP request asynchronously.'
 | -------- | --------------------------------------------------------- |
 | Promise with Response | HTTP [Response](/javascript-api/k6-http/response) object. |
 
-### Example
+### Examples
 
 Using http.asyncRequest() to issue a POST request:
 
@@ -46,7 +46,7 @@ export default async function () {
 
 </CodeGroup>
 
-Using http.asyncRequest() to issue multiple requests and see which one finishes first using [Promise.race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race):
+Using  `http.asyncRequest()` to issue multiple requests, then [Promise.race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race) to determine which requests finish first:
 
 <CodeGroup labels={[]}>
 
