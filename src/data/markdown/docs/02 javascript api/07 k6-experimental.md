@@ -10,3 +10,4 @@ excerpt: "k6 experimental APIs"
 | [redis](/javascript-api/k6-experimental/redis/) | Functionality to interact with [Redis](https://redis.io/). |
 | [timers](/javascript-api/k6-experimental/timers/) | `setTimeout`, `clearTimeout`, `setInterval`, `clearInterval`  |
 | [websockets](/javascript-api/k6-experimental/websockets/) | Implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).  |
+| [k6 browser](/javascript-api/xk6-browser/) | Provides browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.  |
