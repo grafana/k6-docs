@@ -67,7 +67,7 @@ export default async () => {
   console.log(urlTwo);
   console.log(urlThree);
 
-  const res = await Promise.race([  one, two, three])
+  const res = await Promise.race([one, two, three])
   console.log('winner is', res.url, 'with duration of', res.timings.duration+'ms');
 }
 
@@ -76,6 +76,14 @@ function randomInt(min, max) {
 }
 ```
 
-Note: `http.asyncRequest` has no current way of aborting a request. So while the above will get the one that is the fastest, the remaining ones will still continue and may block the end of the iteration as iteration only stop once all async jobs are finished.
+<Blockquote mod="note" title="">
+
+ `http.asyncRequest` has no current way to abort a request.
+ 
+ In the preceding script, after `res` gets the value from the fastest request, the other requests will continue to execute.
+ This might block the end of the iteration, because the iteration only stops once all async jobs finish.
+
+</Blockquote>
+
 
 </CodeGroup>
