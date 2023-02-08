@@ -19,7 +19,7 @@ Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

@@ -42,7 +42,7 @@ The main use case for xk6-browser is to test performance on the browser level. B
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { check } from 'k6'
 
 export default async function () {

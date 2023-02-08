@@ -22,7 +22,7 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

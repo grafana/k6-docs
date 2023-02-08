@@ -33,7 +33,7 @@ Since eventInit is event-specific, please refer to the events documentation for 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

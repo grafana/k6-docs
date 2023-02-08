@@ -7,7 +7,7 @@ The `Browser` class is the entry point for all your tests, and it is what intera
 - [BrowserContext](/javascript-api/xk6-browser/api/browsercontext/) which is where you can set a variety of attributes to control the behavior of pages;
 - and [Page](/javascript-api/xk6-browser/api/page/) which is where your rendered site is displayed.
 
-A new Browser instance (hence a new browser process) can be created using the `launch()` method of the `chromium` module from `'k6/x/browser'`.
+A new Browser instance (hence a new browser process) can be created using the `launch()` method of the `chromium` module from `'k6/experimental/browser'`.
 
 | Method                                                                                    | Description                                                                                                                                           |
 |-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -24,7 +24,7 @@ A new Browser instance (hence a new browser process) can be created using the `l
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

@@ -16,7 +16,7 @@ Returns the path where the extension expects to find the browser executable.
 ## Example
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default function () {
   const execPath = chromium.executablePath();

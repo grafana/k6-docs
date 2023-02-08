@@ -18,7 +18,7 @@ Returns the [browser](/javascript-api/xk6-browser/api/browser) instance that thi
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default function () {
   const browser = chromium.launch();

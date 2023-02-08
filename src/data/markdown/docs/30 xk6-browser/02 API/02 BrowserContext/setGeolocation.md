@@ -28,7 +28,7 @@ Sets the context's geolocation.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default function () {
   const browser = chromium.launch();

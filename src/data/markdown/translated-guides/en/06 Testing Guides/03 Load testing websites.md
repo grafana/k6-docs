@@ -183,7 +183,7 @@ The following is an example of a browser-based load testing script in k6 using x
 <!-- eslint-skip -->
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { sleep } from 'k6';
 
 export default async function () {

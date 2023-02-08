@@ -73,7 +73,7 @@ excerpt: "xk6-browser: Page Class"
 
 ```javascript
 import { check } from 'k6';
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function() {
   const browser = chromium.launch({

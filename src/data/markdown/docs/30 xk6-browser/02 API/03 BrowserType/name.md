@@ -16,7 +16,7 @@ Returns the name of the `BrowserType`; currently it will return `chromium`.
 ## Example
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default function () {
   const name = chromium.name();

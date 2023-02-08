@@ -50,7 +50,7 @@ excerpt: "xk6-browser: ElementHandle Class"
 
 ```javascript
 import { check } from 'k6';
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function() {
   const browser = chromium.launch({
@@ -90,7 +90,7 @@ export default async function() {
 <CodeGroup labels={["Check element state"]} >
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { check } from 'k6';
 
 export default function () {

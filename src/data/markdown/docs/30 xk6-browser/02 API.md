@@ -9,7 +9,7 @@ Note that because k6 does not run in NodeJS, `xk6-browser` APIs will slightly di
 
 ## Modules
 
-The table below lists the importable properties from the top level module (`'k6/x/browser'`).
+The table below lists the importable properties from the top level module (`'k6/experimental/browser'`).
 
 | Property | Description                                                                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -19,12 +19,12 @@ The table below lists the importable properties from the top level module (`'k6/
 
 ### Devices Example
 
-To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/x/browser`.
+To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/experimental/browser`.
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium, devices } from 'k6/x/browser';
+import { chromium, devices } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch({ headless: false });

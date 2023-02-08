@@ -3,7 +3,7 @@ title: "BrowserType"
 excerpt: "xk6-browser: BrowserType Class"
 ---
 
-The `BrowserType` is the entry point into launching a browser process; `chromium` is currently the only supported `BrowserType`. To use it, import `chromium` from the top level module `k6/x/browser`.
+The `BrowserType` is the entry point into launching a browser process; `chromium` is currently the only supported `BrowserType`. To use it, import `chromium` from the top level module `k6/experimental/browser`.
 
 | Method                                                                                  | Description                                                                  |
 |-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@ The `BrowserType` is the entry point into launching a browser process; `chromium
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

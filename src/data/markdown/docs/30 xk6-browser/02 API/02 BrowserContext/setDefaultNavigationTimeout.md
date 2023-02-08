@@ -22,7 +22,7 @@ Sets the default maximum navigation timeout for [Page.goto()](https://playwright
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();

@@ -28,7 +28,7 @@ To run a simple local script:
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch({ headless: false });
@@ -87,7 +87,7 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch({ headless: false });
@@ -125,7 +125,7 @@ To avoid timing errors or other race conditions in your script, if you have acti
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { check } from 'k6'
 
 export default async function () {
@@ -178,7 +178,7 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { check } from 'k6';
 import http from 'k6/http';
 

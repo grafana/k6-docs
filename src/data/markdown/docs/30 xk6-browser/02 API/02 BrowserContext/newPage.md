@@ -18,7 +18,7 @@ Uses the `BrowserContext` to create a new [Page](/javascript-api/xk6-browser/api
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 
 export default async function () {
   const browser = chromium.launch();
