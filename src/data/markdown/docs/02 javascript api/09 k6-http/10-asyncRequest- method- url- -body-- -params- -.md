@@ -8,7 +8,7 @@ excerpt: 'Issue any type of HTTP request asynchronously.'
 | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
 | method            | string                        | Request method (e.g. `POST`). Must be uppercase.                         |
 | url               | string / [HTTP URL](/javascript-api/k6-http/urlurl#returns) | Request URL (e.g. `http://example.com`).                                                  |
-| body (optional)   | string / object / ArrayBuffer | Request body. Objects are `x-www-form-urlencoded`.                                    |
+| body (optional)   | string / object / ArrayBuffer | Request body. Objects will be `x-www-form-urlencoded` encoded.                                    |
 | params (optional) | object                        | [Params](/javascript-api/k6-http/params) object containing additional request parameters. |
 
 ### Returns
