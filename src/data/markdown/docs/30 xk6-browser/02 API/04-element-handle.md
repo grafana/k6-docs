@@ -48,8 +48,6 @@ excerpt: "xk6-browser: ElementHandle Class"
 
 <CodeGroup labels={["Fill out a form"]} >
 
-<!-- eslint-skip -->
-
 ```javascript
 import { check } from 'k6';
 import { chromium } from 'k6/x/browser';

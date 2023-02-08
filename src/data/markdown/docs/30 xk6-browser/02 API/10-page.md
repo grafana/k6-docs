@@ -71,13 +71,11 @@ excerpt: "xk6-browser: Page Class"
 
 ### Example
 
-<!-- eslint-skip -->
-
 ```javascript
 import { check } from 'k6';
 import { chromium } from 'k6/x/browser';
 
-export default function() {
+export default async function() {
   const browser = chromium.launch({
     headless: false,
   });

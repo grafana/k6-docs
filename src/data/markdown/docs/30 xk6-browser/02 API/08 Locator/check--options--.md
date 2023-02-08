@@ -31,12 +31,17 @@ Use this method to select an `input` checkbox.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const checkbox = page.locator("#checkbox1");
-checkbox.check();
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const checkbox = page.locator("#checkbox1");
+  checkbox.check();
+}
 ```
 
 </CodeGroup>

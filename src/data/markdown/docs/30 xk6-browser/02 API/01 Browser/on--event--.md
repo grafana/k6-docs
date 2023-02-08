@@ -22,8 +22,6 @@ The returned promise will be resolved when the [Browser](/javascript-api/xk6-bro
 
 ### Example
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 import { check, sleep } from 'k6';

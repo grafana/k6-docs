@@ -24,13 +24,18 @@ Checks to see if the `checkbox` `input` type is selected or not.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const checkbox = page.locator('#checkbox1');
-if (!checkbox.isChecked()) {
-  checkbox.check();
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const checkbox = page.locator('#checkbox1');
+  if (!checkbox.isChecked()) {
+    checkbox.check();
+  }
 }
 ```
 

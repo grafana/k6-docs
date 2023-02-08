@@ -20,13 +20,16 @@ Grants specified permissions to the `BrowserContext`. Only grants corresponding 
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const context = browser.newContext();
-context.grantPermissions(['clipboard-read', 'clipboard-write'], {
-  origin: 'https://example.com/',
-});
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  context.grantPermissions(['clipboard-read', 'clipboard-write'], {
+    origin: 'https://example.com/',
+  });
+}
 ```
 
 </CodeGroup>

@@ -21,13 +21,16 @@ Sets the default maximum timeout for all methods accepting a `timeout` option in
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const context = browser.newContext();
-context.setDefaultTimeout(1000); // 1s
-const page = context.newPage();
-page.click('h2'); // times out
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  context.setDefaultTimeout(1000); // 1s
+  const page = context.newPage();
+  page.click('h2'); // times out
+}
 ```
 
 </CodeGroup>

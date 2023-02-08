@@ -21,12 +21,17 @@ Fill an `input`, `textarea` or `contenteditable` element with the provided value
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const textbox = page.locator("#text1");
-textbox.fill('hello world!');
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const textbox = page.locator("#text1");
+  textbox.fill('hello world!');
+}
 ```
 
 </CodeGroup>

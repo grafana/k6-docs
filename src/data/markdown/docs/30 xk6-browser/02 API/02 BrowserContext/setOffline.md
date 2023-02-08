@@ -14,8 +14,6 @@ Toggles the `BrowserContext`'s connectivity on/off.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 

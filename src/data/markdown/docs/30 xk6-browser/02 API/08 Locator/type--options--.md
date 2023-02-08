@@ -21,12 +21,17 @@ Type in the text into the input field.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const text = page.locator("#text1");
-text.type('hello world!');    
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const text = page.locator("#text1");
+  text.type('hello world!');   
+}
 ```
 
 </CodeGroup>

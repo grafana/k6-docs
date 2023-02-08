@@ -26,14 +26,19 @@ Wait for the element to be in a particular state e.g. `visible`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#input-text-hidden');
-text.waitFor({
-    state: 'hidden',
-});   
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+	const text = page.locator('#input-text-hidden');
+	text.waitFor({
+			state: 'hidden',
+	});  
+}
 ```
 
 </CodeGroup>

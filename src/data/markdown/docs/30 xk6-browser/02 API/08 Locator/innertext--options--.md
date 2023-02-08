@@ -24,13 +24,18 @@ Returns the `element.innerText`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const offScreen = page.locator('#off-screen');
-const innerText = offScreen.innerText();
-console.log(innerText); // Off page div
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const offScreen = page.locator('#off-screen');
+  const innerText = offScreen.innerText();
+  console.log(innerText); // Off page div
+}
 ```
 
 </CodeGroup>

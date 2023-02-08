@@ -21,18 +21,21 @@ Sets the default maximum navigation timeout for [Page.goto()](https://playwright
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const context = browser.newContext();
-const page = context.newPage();
-context.setDefaultNavigationTimeout(1000); // 1s
+import { chromium } from 'k6/x/browser';
 
-try {
-  await page.goto('https://httpbin.test.k6.io/delay/5', { waitUntil: 'networkidle' });
-} finally {
-  page.close();
-  browser.close();
+export default async function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  const page = context.newPage();
+  context.setDefaultNavigationTimeout(1000); // 1s
+
+  try {
+    await page.goto('https://httpbin.test.k6.io/delay/5', { waitUntil: 'networkidle' });
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
 

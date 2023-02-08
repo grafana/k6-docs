@@ -15,14 +15,11 @@ Returns the path where the extension expects to find the browser executable.
 
 ## Example
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 
 export default function () {
   const execPath = chromium.executablePath();
   console.log(execPath);
-  ...
 }
 ```

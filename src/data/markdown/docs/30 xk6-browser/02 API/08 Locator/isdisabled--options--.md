@@ -24,13 +24,18 @@ Checks if the element is `disabled`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#input-text-disabled');
-if (text.isDisabled()) {
-    console.log("element is disabled")
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+	const text = page.locator('#input-text-disabled');
+	if (text.isDisabled()) {
+			console.log("element is disabled")
+	}
 }
 ```
 

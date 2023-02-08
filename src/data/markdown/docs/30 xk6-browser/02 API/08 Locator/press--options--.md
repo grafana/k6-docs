@@ -21,14 +21,19 @@ Press a single key on the keyboard or a combination of keys.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#text1');
-text.press('i');
-text.press('ArrowLeft');
-text.press('h');
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const text = page.locator('#text1');
+  text.press('i');
+  text.press('ArrowLeft');
+  text.press('h');
+}
 ```
 
 </CodeGroup>

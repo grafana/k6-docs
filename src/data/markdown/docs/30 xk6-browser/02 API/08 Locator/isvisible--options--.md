@@ -24,13 +24,18 @@ Checks if the element is `visible`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const text = page.locator('#text1');
-if (text.isVisible()) {
-    console.log("element is visible");
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+	const text = page.locator('#text1');
+	if (text.isVisible()) {
+			console.log("element is visible");
+	}
 }
 ```
 

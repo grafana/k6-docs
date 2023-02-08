@@ -17,13 +17,16 @@ Clears all permission overrides for the `BrowserContext`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const context = browser.newContext();
-context.grantPermissions(['clipboard-read']);
-// do stuff ...
-context.clearPermissions();
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  context.grantPermissions(['clipboard-read']);
+  // do stuff ...
+  context.clearPermissions();
+}
 ```
 
 </CodeGroup>

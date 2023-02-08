@@ -24,14 +24,19 @@ Returns `input.value` for the selected `input`, `textarea` or `select` element.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const textInput = page.locator('#text1');
-textInput.fill("Hello world!");
-const inputValue = textInput.inputValue();
-console.log(inputValue);
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const textInput = page.locator('#text1');
+  textInput.fill("Hello world!");
+  const inputValue = textInput.inputValue();
+  console.log(inputValue);
+}
 ```
 
 </CodeGroup>

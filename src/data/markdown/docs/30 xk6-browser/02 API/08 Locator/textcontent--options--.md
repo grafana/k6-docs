@@ -24,18 +24,23 @@ Returns the `element.textContent`.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const options = page.locator("#checkbox1");
-console.log(options.textContent()); /*  Zero
-                                        One
-                                        Two
-                                        Three
-                                        Four
-                                        Five
-                                    */    
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+	const options = page.locator("#checkbox1");
+	console.log(options.textContent()); /*  Zero
+																					One
+																					Two
+																					Three
+																					Four
+																					Five
+																			*/    
+	}
 ```
 
 </CodeGroup>

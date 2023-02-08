@@ -34,12 +34,17 @@ Select one or more options which match the values.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-await page.goto('https://test.k6.io/browser.php');
-const options = page.locator('#numbers-options');
-options.selectOption('three');
+import { chromium } from 'k6/x/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  await page.goto('https://test.k6.io/browser.php');
+  const options = page.locator('#numbers-options');
+  options.selectOption('three');
+}
 ```
 
 </CodeGroup>

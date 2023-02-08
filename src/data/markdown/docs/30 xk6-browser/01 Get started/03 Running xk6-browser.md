@@ -27,8 +27,6 @@ To run a simple local script:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 
@@ -88,8 +86,6 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 
@@ -127,8 +123,6 @@ At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `El
 To avoid timing errors or other race conditions in your script, if you have actions that load up a different page, you need to make sure that you wait for that action to finish before continuing.
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
-
-<!-- eslint-skip -->
 
 ```javascript
 import { chromium } from 'k6/x/browser';
@@ -182,8 +176,6 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
   </Blockquote>
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
-
-<!-- eslint-skip -->
 
 ```javascript
 import { chromium } from 'k6/x/browser';

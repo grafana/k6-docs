@@ -51,8 +51,6 @@ Creates and returns a new [BrowserContext](/javascript-api/xk6-browser/api/brows
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 

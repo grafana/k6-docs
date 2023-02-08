@@ -32,16 +32,20 @@ Tap on the chosen element.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const page = context.newPage({
-    hasTouch: true,
-});
+import { chromium } from 'k6/x/browser';
 
-await page.goto('https://test.k6.io/browser.php');
-const options = page.locator("#numbers-options");
-options.tap();  
+export default async function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  const page = context.newPage({
+    hasTouch: true,
+	});
+  
+  await page.goto('https://test.k6.io/browser.php');
+	const options = page.locator("#numbers-options");
+	options.tap();  
+}
 ```
 
 </CodeGroup>

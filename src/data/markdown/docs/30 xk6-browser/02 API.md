@@ -23,8 +23,6 @@ To emulate the browser behaviour on a mobile device and approximately measure th
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium, devices } from 'k6/x/browser';
 

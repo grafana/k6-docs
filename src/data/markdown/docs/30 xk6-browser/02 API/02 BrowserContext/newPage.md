@@ -17,8 +17,6 @@ Uses the `BrowserContext` to create a new [Page](/javascript-api/xk6-browser/api
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 

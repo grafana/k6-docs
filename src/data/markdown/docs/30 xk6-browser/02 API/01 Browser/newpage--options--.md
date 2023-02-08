@@ -50,8 +50,6 @@ Creates a new [Page](/javascript-api/xk6-browser/api/page/) in a new [BrowserCon
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 

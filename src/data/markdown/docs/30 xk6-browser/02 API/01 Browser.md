@@ -23,8 +23,6 @@ A new Browser instance (hence a new browser process) can be created using the `l
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
 import { chromium } from 'k6/x/browser';
 

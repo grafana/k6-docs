@@ -27,11 +27,14 @@ Sets the context's geolocation.
 
 <CodeGroup labels={[]}>
 
-<!-- eslint-skip -->
-
 ```javascript
-const context = browser.newContext();
-context.setGeolocation({latitude: 59.95, longitude: 30.31667});
+import { chromium } from 'k6/x/browser';
+
+export default function () {
+  const browser = chromium.launch();
+  const context = browser.newContext();
+  context.setGeolocation({latitude: 59.95, longitude: 30.31667});
+}
 ```
 
 </CodeGroup>
