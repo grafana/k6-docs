@@ -213,7 +213,7 @@ const topLevelLinks = [
     submenu: [
       { label: 'k6 API', to: `/javascript-api/` },
       {
-        label: 'browser module',
+        label: 'k6 browser',
         to: `/javascript-api/xk6-browser/`,
       },
       {
