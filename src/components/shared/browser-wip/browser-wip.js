@@ -4,7 +4,7 @@ import WIPIcon from 'svg/work-in-progress.inline.svg';
 
 const BrowserWIP = () => (
   <p style={{ verticalAlign: 'middle' }}>
-    <WIPIcon /> xk6-browser is in <CodeInline>beta</CodeInline> - we are working
+    <WIPIcon /> k6 browser is in <CodeInline>beta</CodeInline> - we are working
     to cover more Playwright APIs.
   </p>
 );

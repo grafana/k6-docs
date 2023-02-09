@@ -16,18 +16,18 @@ export const isJsAPIActiveLink = (path) => {
     // getting the same piece from window and removing possible trailing slash
     const actualPath = window.location.pathname.replace(/\/$/, '');
 
-    // avoid highlighting k6 api link if xk6-browser or jslib was selected
+    // avoid highlighting k6 api link if k6 browser or jslib was selected
     if (actualPath.includes('javascript-api/jslib')) {
       isActiveLink =
         givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
-    } else if (actualPath.includes('javascript-api/xk6-browser')) {
+    } else if (actualPath.includes('javascript-api/k6-browser')) {
       isActiveLink =
-        givenPath.includes('javascript-api/xk6-browser') &&
+        givenPath.includes('javascript-api/k6-browser') &&
         actualPath.includes(givenPath);
     } else {
       isActiveLink =
-        !givenPath.includes('javascript-api/xk6-browser') &&
+        !givenPath.includes('javascript-api/k6-browser') &&
         !givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
     }

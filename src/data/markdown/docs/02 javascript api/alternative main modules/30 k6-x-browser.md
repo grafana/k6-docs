@@ -1,5 +1,5 @@
 ---
-title: "k6/experimental/browser"
+title: "k6/x/browser"
 shouldCreatePage: false
 ---
 

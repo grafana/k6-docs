@@ -4,7 +4,7 @@ import NITIcon from 'svg/not-implemented.inline.svg';
 
 import Tooltip from '../tooltip';
 
-// BNIT = xk6-browser "Not Implemented" tooltip
+// BNIT = k6 browser "Not Implemented" tooltip
 const BNIT = ({ id }) =>
   id ? (
     <Tooltip value="Not implemented">

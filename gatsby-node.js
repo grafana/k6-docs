@@ -214,7 +214,7 @@ const topLevelLinks = [
       { label: 'k6 API', to: `/javascript-api/` },
       {
         label: 'k6 browser',
-        to: `/javascript-api/xk6-browser/`,
+        to: `/javascript-api/k6-browser/`,
       },
       {
         label: 'xk6-disruptor',
@@ -465,7 +465,7 @@ function getTopLevelPagesProps({
       (item) =>
         item !== 'jslib' &&
         item !== 'xk6-disruptor' &&
-        item !== 'xk6-browser' &&
+        item !== 'k6-browser' &&
         item !== 'extensions',
     )
     .map((name) => {
@@ -649,7 +649,7 @@ function getDocPagesProps({
       }
 
       // data for github button on the right
-      // currently we only show it for jslib, xk6-browser, xk6-disruptor pages
+      // currently we only show it for jslib, k6-browser, xk6-disruptor pages
       let githubUrl = null;
       let githubTitle = '';
 
@@ -705,35 +705,32 @@ function getDocPagesProps({
         }));
       }
 
-      // add prefix to xk6-browser pages slugs and sidebar links
-      if (slug.startsWith('xk6-browser/')) {
+      // add prefix to k6-browser pages slugs and sidebar links
+      if (slug.startsWith('k6-browser/')) {
         slug = `javascript-api/${slug}`;
-        if (slug.includes('xk6-browser/get-started/welcome')) {
+        if (slug.includes('k6-browser/get-started/welcome')) {
           // make the section root out of the welcome page
-          slug = `javascript-api/xk6-browser/`;
+          slug = `javascript-api/k6-browser/`;
         }
 
         replacePathsInSidebarTree(
           sidebarTree,
-          '/xk6-browser',
-          '/javascript-api/xk6-browser',
+          '/k6-browser',
+          '/javascript-api/k6-browser',
         );
         replacePathsInSidebarTree(
           sidebarTree,
-          '/javascript-api/xk6-browser/get-started/welcome',
-          '/javascript-api/xk6-browser',
+          '/javascript-api/k6-browser/get-started/welcome',
+          '/javascript-api/k6-browser',
         );
 
         githubUrl = 'https://github.com/grafana/xk6-browser';
-        githubTitle = 'xk6-browser';
+        githubTitle = 'k6 browser';
 
         breadcrumbs = breadcrumbs.map((item) => ({
           ...item,
-          name: item.name === 'Xk6-browser' ? 'xk6-browser' : item.name,
-          path: item.path.replace(
-            '/xk6-browser',
-            '/javascript-api/xk6-browser',
-          ),
+          name: item.name === 'K6-browser' ? 'k6-browser' : item.name,
+          path: item.path.replace('/k6-browser', '/javascript-api/k6-browser'),
         }));
       }
 
@@ -741,7 +738,7 @@ function getDocPagesProps({
       if (
         slug === 'javascript-api/jslib/' ||
         slug === 'javascript-api/xk6-disruptor/' ||
-        slug === 'javascript-api/xk6-browser/'
+        slug === 'javascript-api/k6-browser/'
       ) {
         hideBreadcrumbs = true;
       }
@@ -1182,7 +1179,7 @@ async function createDocPages({
   // create data for rendering docs navigation
   const topLevelNames = Object.keys(sidebar.children).filter(
     (name) =>
-      name !== 'xk6-browser' && name !== 'xk6-disruptor' && name !== 'jslib',
+      name !== 'k6-browser' && name !== 'xk6-disruptor' && name !== 'jslib',
   );
 
   getDocPagesProps({
@@ -1234,8 +1231,8 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/javascript-api/xk6-browser/get-started/welcome/',
-    toPath: '/javascript-api/xk6-browser/',
+    fromPath: '/javascript-api/k6-browser/get-started/welcome/',
+    toPath: '/javascript-api/k6-browser/',
     redirectInBrowser: true,
     isPermanent: true,
   });
@@ -1725,59 +1722,58 @@ const createRedirects = ({ actions }) => {
       '/cloud/cloud-faq/general-questions/',
     '/misc/usage-reports': '/misc/usage-collection/',
     '/using-k6/using-node-modules': '/using-k6/modules/',
-    '/javascript-api/k6-x-browser/': '/javascript-api/xk6-browser/',
+    '/javascript-api/k6-x-browser/': '/javascript-api/k6-browser/',
     '/javascript-api/k6-x-browser/browser/':
-      '/javascript-api/xk6-browser/api/browser/',
-    '/javascript-api/xk6-browser/browser/':
-      '/javascript-api/xk6-browser/api/browser/',
+      '/javascript-api/k6-browser/api/browser/',
+    '/javascript-api/k6-browser/browser/':
+      '/javascript-api/k6-browser/api/browser/',
     '/javascript-api/k6-x-browser/browsercontext/':
-      '/javascript-api/xk6-browser/api/browsercontext/',
-    '/javascript-api/xk6-browser/browsercontext/':
-      '/javascript-api/xk6-browser/api/browsercontext/',
+      '/javascript-api/k6-browser/api/browsercontext/',
+    '/javascript-api/k6-browser/browsercontext/':
+      '/javascript-api/k6-browser/api/browsercontext/',
     '/javascript-api/k6-x-browser/browsertype/':
-      '/javascript-api/xk6-browser/api/browsertype/',
-    '/javascript-api/xk6-browser/browsertype/':
-      '/javascript-api/xk6-browser/api/browsertype/',
+      '/javascript-api/k6-browser/api/browsertype/',
+    '/javascript-api/k6-browser/browsertype/':
+      '/javascript-api/k6-browser/api/browsertype/',
     '/javascript-api/k6-x-browser/elementhandle/':
-      '/javascript-api/xk6-browser/api/elementhandle/',
-    '/javascript-api/xk6-browser/elementhandle/':
-      '/javascript-api/xk6-browser/api/elementhandle/',
+      '/javascript-api/k6-browser/api/elementhandle/',
+    '/javascript-api/k6-browser/elementhandle/':
+      '/javascript-api/k6-browser/api/elementhandle/',
     '/javascript-api/k6-x-browser/frame/':
-      '/javascript-api/xk6-browser/api/frame/',
-    '/javascript-api/xk6-browser/frame/':
-      '/javascript-api/xk6-browser/api/frame/',
+      '/javascript-api/k6-browser/api/frame/',
+    '/javascript-api/k6-browser/frame/':
+      '/javascript-api/k6-browser/api/frame/',
     '/javascript-api/k6-x-browser/jshandle/':
-      '/javascript-api/xk6-browser/api/jshandle/',
-    '/javascript-api/xk6-browser/jshandle/':
-      '/javascript-api/xk6-browser/api/jshandle/',
+      '/javascript-api/k6-browser/api/jshandle/',
+    '/javascript-api/k6-browser/jshandle/':
+      '/javascript-api/k6-browser/api/jshandle/',
     '/javascript-api/k6-x-browser/keyboard/':
-      '/javascript-api/xk6-browser/api/keyboard/',
-    '/javascript-api/xk6-browser/keyboard/':
-      '/javascript-api/xk6-browser/api/keyboard/',
+      '/javascript-api/k6-browser/api/keyboard/',
+    '/javascript-api/k6-browser/keyboard/':
+      '/javascript-api/k6-browser/api/keyboard/',
     '/javascript-api/k6-x-browser/locator/':
-      '/javascript-api/xk6-browser/api/locator/',
-    '/javascript-api/xk6-browser/locator/':
-      '/javascript-api/xk6-browser/api/locator/',
+      '/javascript-api/k6-browser/api/locator/',
+    '/javascript-api/k6-browser/locator/':
+      '/javascript-api/k6-browser/api/locator/',
     '/javascript-api/k6-x-browser/mouse/':
-      '/javascript-api/xk6-browser/api/mouse/',
-    '/javascript-api/xk6-browser/mouse/':
-      '/javascript-api/xk6-browser/api/mouse/',
+      '/javascript-api/k6-browser/api/mouse/',
+    '/javascript-api/k6-browser/mouse/':
+      '/javascript-api/k6-browser/api/mouse/',
     '/javascript-api/k6-x-browser/page/':
-      '/javascript-api/xk6-browser/api/page/',
-    '/javascript-api/xk6-browser/page/':
-      '/javascript-api/xk6-browser/api/page/',
+      '/javascript-api/k6-browser/api/page/',
+    '/javascript-api/k6-browser/page/': '/javascript-api/k6-browser/api/page/',
     '/javascript-api/k6-x-browser/request/':
-      '/javascript-api/xk6-browser/api/request/',
-    '/javascript-api/xk6-browser/request/':
-      '/javascript-api/xk6-browser/api/request/',
+      '/javascript-api/k6-browser/api/request/',
+    '/javascript-api/k6-browser/request/':
+      '/javascript-api/k6-browser/api/request/',
     '/javascript-api/k6-x-browser/response/':
-      '/javascript-api/xk6-browser/api/response/',
-    '/javascript-api/xk6-browser/response/':
-      '/javascript-api/xk6-browser/api/response/',
+      '/javascript-api/k6-browser/api/response/',
+    '/javascript-api/k6-browser/response/':
+      '/javascript-api/k6-browser/api/response/',
     '/javascript-api/k6-x-browser/touchscreen/':
-      '/javascript-api/xk6-browser/api/touchscreen/',
-    '/javascript-api/xk6-browser/touchscreen/':
-      '/javascript-api/xk6-browser/api/touchscreen/',
+      '/javascript-api/k6-browser/api/touchscreen/',
+    '/javascript-api/k6-browser/touchscreen/':
+      '/javascript-api/k6-browser/api/touchscreen/',
     ...newJavascriptURLsRedirects,
   };
 
