@@ -15,6 +15,8 @@ const SUPPORTED_VERSIONS = [
 const LATEST_VERSION = 'v0.42';
 
 /** applies only for development and staging */
+/** if no JS_API_VERSIONS_TO_BUILD is defined in env */
+/** which takes precedence over */
 const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
 
 /** applies this for production */

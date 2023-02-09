@@ -24,15 +24,6 @@ const processMdxEntry = (
     // avoid pushing empty records
     return [];
   }
-  /* @TODO: remove if clause after cloud rest api docs will be ported ,
-   * avoid indexing this section for a while to avoid
-   * search user's confusion
-   */
-  if (/cloud rest api/i.test(relativeDirectory)) {
-    // eslint-disable-next-line no-console
-    console.log('exluded from algolia indecies pages:', relativeDirectory);
-    return [];
-  }
 
   // hide alternative main modules
   if (/alternative main modules/i.test(relativeDirectory)) {

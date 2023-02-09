@@ -80,17 +80,6 @@ const formatSectionName = (name) => {
   return `${name[0].toUpperCase()}${name.slice(1)}`;
 };
 
-// @TODO: remove this after the porting of cloud rest api
-// section will be finished
-const replaceRestApiRedirect = ({ isProduction, title, redirect }) => {
-  if (!isProduction && title === 'TO REMOVE Cloud REST API') {
-    const docUrl = process.env.GATSBY_DEFAULT_DOC_URL;
-    const domain = docUrl.includes('8000') ? `` : `/docs`;
-    return `${domain}/cloud-rest-api/introduction`;
-  }
-  return redirect;
-};
-
 const getPageTranslations = (
   relativeDirectory,
   name,
@@ -309,7 +298,7 @@ function generateSidebar({ nodes, type = 'docs' }) {
           title,
         ),
         title,
-        redirect: replaceRestApiRedirect({ isProduction, title, redirect }),
+        redirect,
         redirectTarget,
         hideFromSidebar: hideFromSidebar || false,
         isActiveSidebarLink: true,
