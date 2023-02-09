@@ -231,7 +231,7 @@ To run the test, use the following command and replace `script.js` with your fil
 <CodeGroup labels={["CLI"]}>
 
 ```bash
-docker-compose run -T K6_BROWSER_ENABLED=1 k6 run - <script.js
+docker-compose run -T K6_BROWSER_ENABLED=true k6 run - <script.js
 ```
 
 </CodeGroup>
