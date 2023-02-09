@@ -44,7 +44,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/xk6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/xk6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/xk6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  The preceding code imports the `chromium` [BrowserType](/javascript-api/k6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/k6-browser/api/browser) process. After it starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
@@ -57,20 +57,20 @@ To run a simple local script:
   <CodeGroup labels={["CLI"]}>
 
   ```bash
-  $ K6_BROWSER_ENABLED=1 k6 run script.js
+  $ K6_BROWSER_ENABLED=true k6 run script.js
   ```
 
   </CodeGroup>
 
 ## Interact with elements on your webpage
 
-You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/xk6-browser/api/locator/) object, which you can later use to interact with the element.
+You can use `page.locator()` and pass in the element's selector you want to find on the page. `page.locator()` will create and return a [Locator](/javascript-api/k6-browser/api/locator/) object, which you can later use to interact with the element.
 
-To find out which selectors the browser module supports, check out [Selecting Elements](/javascript-api/xk6-browser/get-started/selecting-elements/).
+To find out which selectors the browser module supports, check out [Selecting Elements](/javascript-api/k6-browser/get-started/selecting-elements/).
 
 <Blockquote mod="note" title="">
 
-You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](/javascript-api/xk6-browser/api/locator/).
+You can also use `page.$()` instead of `page.locator()`. You can find the differences between `page.locator()` and `page.$` in the [Locator API documentation](/javascript-api/k6-browser/api/locator/).
 
 </Blockquote>
 
