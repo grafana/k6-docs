@@ -24,7 +24,11 @@ Launches a new browser process.
 List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `ignoreDefaultArgs` field when launching a browser for the ones you want to ignore.
 ``
 
-**Note:** The starting '--' have been omitted from the argument names in these lists.
+<Blockquote mod="note">
+
+The starting '--' have been omitted from the argument names in these lists.
+
+</Blockquote>
 
 | Argument | Value  | Description                                            |
 |----------|--------|--------------------------------------------------------|
