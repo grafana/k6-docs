@@ -6,7 +6,7 @@ excerpt: "k6 Tracing experimental API"
 <ExperimentalBlockquote />
 
 
-With this experimental module, you can _instrument_ you HTTP requests so that they emit traces as the test runs.
+With this experimental module, you can _instrument_ HTTP requests so that they emit traces as the test runs.
 
 ## About trace contexts
 
