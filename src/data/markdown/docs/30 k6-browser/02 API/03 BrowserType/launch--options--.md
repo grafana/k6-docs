@@ -22,7 +22,6 @@ Launches a new browser process.
 ### Default arguments
 
 List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `ignoreDefaultArgs` field when launching a browser for the ones you want to ignore.
-``
 
 <Blockquote mod="note">
 
