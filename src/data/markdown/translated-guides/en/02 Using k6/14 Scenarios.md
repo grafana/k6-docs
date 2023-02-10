@@ -73,8 +73,8 @@ Choices include:
 
 - **By iteration rate.**
 
-    - [`constant-arrival-rate`](/using-k6/scenarios/executors/constant-vus/) starts iterations at a constant rate.
-    - [`ramping-arrival-rate`](/using-k6/scenarios/executors/ramping-arrival-rate) ramps the iteration rate according to your configured stages.
+    - [`constant-arrival-rate`](/using-k6/scenarios/executors/constant-arrival-rate/) starts iterations at a constant rate.
+    - [`ramping-arrival-rate`](/using-k6/scenarios/executors/ramping-arrival-rate/) ramps the iteration rate according to your configured stages.
 
 Along with the generic scenario options, each executor object has additional options specific to its workload.
 For the full list, refer to [Executors](/using-k6/scenarios/executors/).
