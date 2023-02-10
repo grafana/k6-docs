@@ -7,7 +7,9 @@ const {
   stripDirectoryPath,
   dotifyVersion,
 } = require('./utils');
-const { SUPPORTED_VERSIONS, LATEST_VERSION } = require('./versioning');
+
+const isProduction =
+  process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
@@ -392,6 +394,9 @@ Object.defineProperties(utils, {
   DEFAULT_LOCALE: {
     value: DEFAULT_LOCALE,
   },
+  isProduction: {
+    value: isProduction,
+  },
   removeEnPrefix: {
     value: removeEnPrefix,
   },
@@ -415,12 +420,6 @@ Object.defineProperties(utils, {
   },
   removeParametersFromJavaScriptAPISlug: {
     value: removeParametersFromJavaScriptAPISlug,
-  },
-  SUPPORTED_VERSIONS: {
-    value: SUPPORTED_VERSIONS,
-  },
-  LATEST_VERSION: {
-    value: LATEST_VERSION,
   },
 });
 
