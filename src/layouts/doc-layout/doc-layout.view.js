@@ -227,7 +227,7 @@ const SidebarNode = (props) => {
 
 export const DocLayout = ({
   pageTranslations = null,
-  version,
+  version = LATEST_VERSION,
   sidebarTree,
   navLinks: links,
   children,

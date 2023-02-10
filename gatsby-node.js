@@ -27,18 +27,12 @@ const {
   getTranslatedSlug,
   replacePathsInSidebarTree,
   removeParametersFromJavaScriptAPISlug,
+  isProduction,
 } = require('./src/utils/utils.node');
 const {
   SUPPORTED_VERSIONS,
   LATEST_VERSION,
-  DEFAULT_JS_API_VERSIONS_TO_BUILD,
-  MAX_JS_API_VERSIONS_TO_BUILD,
 } = require('./src/utils/versioning');
-
-/* constants */
-// auxilary flag to determine the environment (staging/prod)
-const isProduction =
-  process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
 const getVersionedCustomSlug = (slug, pageVersion) => {
   if (pageVersion === LATEST_VERSION) {
@@ -47,17 +41,6 @@ const getVersionedCustomSlug = (slug, pageVersion) => {
 
   return `/${pageVersion}${slug}`;
 };
-
-const jsApiVersionsToBuild = isProduction
-  ? MAX_JS_API_VERSIONS_TO_BUILD
-  : process.env.JS_API_VERSIONS_TO_BUILD || DEFAULT_JS_API_VERSIONS_TO_BUILD;
-
-let SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS;
-if (jsApiVersionsToBuild) {
-  SUPPORTED_VERSIONS_FOR_BUILD = SUPPORTED_VERSIONS.sort()
-    .reverse()
-    .slice(0, Math.max(jsApiVersionsToBuild - 1, 0));
-}
 
 const newJavascriptURLsRedirects = {};
 
@@ -162,27 +145,26 @@ const getPageVersions = (
 
   const pageVersions = {};
 
+  const pathMold =
+    filePath === ''
+      ? [unorderify(name)]
+      : [...filePath.split('/'), unorderify(name)];
   SUPPORTED_VERSIONS.forEach((version) => {
-    const versionedPath = (
-      filePath === ''
-        ? [unorderify(name)]
-        : [...filePath.split('/'), unorderify(name)]
-    ).reduce(
+    const versionedPath = pathMold.reduce(
       treeReducer,
       getJavascriptAPISidebar(version).children['javascript api'],
     );
 
-    if (versionedPath && versionedPath.meta) {
+    if (versionedPath?.meta) {
       pageVersions[version] = versionedPath.meta;
     }
   });
 
   // find latest version link
-  const latestVersion = (
-    filePath === ''
-      ? [unorderify(name)]
-      : [...filePath.split('/'), unorderify(name)]
-  ).reduce(treeReducer, getSidebar('javascript api'));
+  const latestVersion = pathMold.reduce(
+    treeReducer,
+    getSidebar('javascript api'),
+  );
 
   if (latestVersion && latestVersion.meta) {
     pageVersions[LATEST_VERSION] = latestVersion.meta;
@@ -525,7 +507,7 @@ function getTopLevelPagesProps({
       },
     ])
     .concat(
-      SUPPORTED_VERSIONS_FOR_BUILD.map((version) => ({
+      SUPPORTED_VERSIONS.map((version) => ({
         path: `/${version}/javascript-api/`,
         component: Path.resolve(
           `./src/templates/docs/versioned-javascript-api.js`,
@@ -931,15 +913,11 @@ function getJsAPIVersionedPagesProps({
         return false;
       }
       const path = `${strippedDirectory}/${title.replace(/\//g, '-')}`;
-
       const pageVersion = SUPPORTED_VERSIONS.find((version) =>
         strippedDirectory.startsWith(version),
       );
 
-      if (
-        !isProduction &&
-        !SUPPORTED_VERSIONS_FOR_BUILD.includes(pageVersion)
-      ) {
+      if (!pageVersion) {
         return null;
       }
 

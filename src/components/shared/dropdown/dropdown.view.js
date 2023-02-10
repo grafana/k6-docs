@@ -22,7 +22,8 @@ export const Dropdown = ({ currentOption, options, className, onChange }) => {
       >
         {currentOption && (
           <span>
-            {options.find((item) => item.value === currentOption).label}
+            {options.find((item) => item.value === currentOption)?.label ??
+              currentOption}
           </span>
         )}
         <ArrowIcon className={styles.icon} />
@@ -33,7 +34,7 @@ export const Dropdown = ({ currentOption, options, className, onChange }) => {
             .filter((option) => option.value !== currentOption)
             .map((option) => (
               <button
-                key={option}
+                key={option.value}
                 type="button"
                 className={styles.menuItem}
                 onClick={() => onChange(option.value)}

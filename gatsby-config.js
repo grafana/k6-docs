@@ -1,12 +1,11 @@
 const path = require('path');
 
 const queries = require('./src/utils/algolia');
+const { isProduction } = require('./src/utils/utils.node');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-
-const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
-const isProduction = mainURL === 'https://k6.io/docs';
 
 const shouldAnnouncementBannerBeShown = false;
 
