@@ -3,10 +3,8 @@ title: 'Running large tests'
 excerpt: 'How to run large-scale k6 tests without distributed-execution'
 ---
 
-A common misconception about load testing is that it requires [distributed execution](#distributed-execution) (that is, load generated from multiple machines).
-This isn't the case with k6.
+k6 can generate a lot of load from a single machine. With proper monitoring and script optimization, you might be able to run a rather large load test without needing [distributed execution](#distributed-execution). This document explains how to launch such a test, and some of the aspects you should be aware of.
 
-This document explains how to launch a large-scale k6 test on a single machine.
 Maximizing the load a machine generates is a multi-faceted process, which includes:
 
 - Changing operating system settings to increase the default network and user limits.
@@ -14,7 +12,6 @@ Maximizing the load a machine generates is a multi-faceted process, which includ
 - Designing efficient tests, with attention to scripting, k6 options, and file uploads.
 - Monitoring the test run to detect errors logged by k6, which could indicate limitations of the load generator machine or the [system under test](/misc/glossary/#system-under-test) (SUT).
 
-k6 differs from many other load testing tools in how it handles hardware resources.
 A single k6 process efficiently uses all CPU cores on a load generator machine. Depending on the available resources, and with the guidelines described in this document, a single instance of k6 can run 30,000-40,000 simultaneous users (VUs).
 In some cases, this number of VUs can generate up to 300,000 HTTP [requests per second](/misc/glossary/#requests-per-second) (RPS).
 
@@ -53,7 +50,7 @@ Many AWS EC2 machines come with connections of 1Gbit/s, which may limit the load
 If the traffic is constant at 1Gbit/s, your test is probably limited by the network card. Consider upgrading to a different EC2 instance.
 
 CPU
-: Unlike many other load testing tools, k6 is heavily multi-threaded. It will effectively use all available CPU cores.
+: k6 is heavily multi-threaded, and will effectively utilize all available CPU cores.
 : The amount of CPU you need depends on your test script and associated files.
 Regardless of the test file, you can assume that large tests require a significant amount of CPU power.
 We recommend that you size the machine to have at least 20% idle cycles (up to 80% used by k6, 20% idle).
@@ -61,7 +58,7 @@ If k6 uses 100% of the CPU to generate load, the test will experience throttling
 cause the result metrics to have a much larger response time than in reality.
 
 Memory
-: k6 likes memory, but isn't [as greedy as other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage).
+: k6 can use a lot of memory, though [more efficiently than some other load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools#memory-usage).
 Memory consumption heavily depends on your test scenarios. To estimate the memory requirement of your test,
 run the test on your development machine with 100VUs and multiply the consumed memory by the target number of VUs.
 : Simple tests use ~1-5MB per VU. (1000VUs = 1-5GB).
