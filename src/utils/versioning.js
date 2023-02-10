@@ -22,6 +22,10 @@ const DEFAULT_JS_API_VERSIONS_TO_BUILD = 2;
 /** applies this for production */
 const MAX_JS_API_VERSIONS_TO_BUILD = 4;
 
+while (SUPPORTED_VERSIONS.length !== MAX_JS_API_VERSIONS_TO_BUILD - 1) {
+  SUPPORTED_VERSIONS.shift();
+}
+
 module.exports = {
   SUPPORTED_VERSIONS,
   LATEST_VERSION,
