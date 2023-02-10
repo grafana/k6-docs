@@ -1723,6 +1723,7 @@ const createRedirects = ({ actions }) => {
     '/misc/usage-reports': '/misc/usage-collection/',
     '/using-k6/using-node-modules': '/using-k6/modules/',
     '/javascript-api/k6-x-browser/': '/javascript-api/k6-browser/',
+    '/javascript-api/xk6-browser/': '/javascript-api/k6-browser/',
     '/javascript-api/k6-x-browser/browser/':
       '/javascript-api/k6-browser/api/browser/',
     '/javascript-api/k6-browser/browser/':
