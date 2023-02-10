@@ -595,11 +595,13 @@ function getDocPagesProps({
       }
 
       let pageVersions = null;
+      let version = null;
 
       if (
         slug.startsWith('javascript-api/') ||
         slug.startsWith('/javascript-api/')
       ) {
+        version = LATEST_VERSION;
         pageVersions = getPageVersions(
           getSidebar,
           getJavascriptAPISidebar,
@@ -740,6 +742,7 @@ function getDocPagesProps({
           sidebarTree,
           breadcrumbs,
           navLinks: topLevelLinks,
+          version,
           pageVersions,
           githubUrl,
           githubTitle,
