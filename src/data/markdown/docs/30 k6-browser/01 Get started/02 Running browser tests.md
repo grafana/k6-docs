@@ -9,7 +9,6 @@ Follow along to learn how to:
 2. Interact with elements on your webpage
 3. Wait for page navigation
 4. Run both browser-level and protocol-level tests in a single script
-5. Run browser tests in a Docker container
 
 <Blockquote mod="note" title="">
 
@@ -221,17 +220,3 @@ export function news() {
 The preceding code contains two scenarios. One for the browser-level test called `browser` and one for the protocol-level test called `news`. Both scenarios are using the [constant-vus executor](/using-k6/scenarios/executors/constant-vus/) which introduces a constant number of virtual users to execute as many iterations as possible for a specified amount of time. 
 
 Since it's all in one script, this allows for greater collaboration amongst teams.
-
-## Run browser tests in a Docker container
-
-If you prefer working with Docker, you can run your browser test scripts in a Docker container using Docker Compose by creating a [Dockerfile](https://github.com/grafana/xk6-browser/blob/main/Dockerfile) and [docker-compose](https://github.com/grafana/xk6-browser/blob/main/docker-compose.yaml) file.
-
-To run the test, use the following command and replace `script.js` with your file.
-
-<CodeGroup labels={["CLI"]}>
-
-```bash
-docker-compose run -T K6_BROWSER_ENABLED=true k6 run - <script.js
-```
-
-</CodeGroup>
