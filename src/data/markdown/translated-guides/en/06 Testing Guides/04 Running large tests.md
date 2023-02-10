@@ -299,7 +299,7 @@ We've executed a few large tests on different EC2 machines to see how much load 
 
 Primarily, though, the RPS limit depends on the response time of the SUT. If responses are delivered in 100ms, the theoretical RPS limit is 650,000 for HTTP/1 requests to a single remote address.
 
-We maintain a [repository](https://github.com/grafana/k6-hardware-benchmark) with some scripts used to benchmark k6 and create reports. These tests are run for every new k6 version, and you can see the results in the [`results/` directory](https://github.com/grafana/k6-hardware-benchmark/tree/master/results).
+We maintain a [repository](https://github.com/grafana/k6-benchmarks) with some scripts used to benchmark k6 and create reports. These tests are run for every new k6 version, and you can see the results in the [`results/` directory](https://github.com/grafana/k6-benchmarks/tree/master/results).
 
 ## Distributed execution
 
