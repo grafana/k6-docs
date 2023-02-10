@@ -1,10 +1,11 @@
 import React from 'react';
+import { LATEST_VERSION } from 'utils/versioning';
 
 export const Link =
   (version) =>
   ({ href, children, ...otherProps }) => {
     const newHref =
-      version && href.includes('/javascript-api/')
+      version && version !== LATEST_VERSION && href.includes('/javascript-api/')
         ? href.replace('/javascript-api/', `/${version}/javascript-api/`)
         : href;
 
