@@ -21,39 +21,40 @@ Launches a new browser process.
 
 ### Default arguments
 
-List of default arguments included when launching the browser process.
+List of default arguments included when launching the browser process. You can pass one or more of the arguments to the `ignoreDefaultArgs` field when launching a browser for the ones you want to ignore.
+``
 
 **Note:** The starting '--' have been omitted from the argument names in these lists.
 
 | Argument | Value  | Description                                            |
 |----------|--------|--------------------------------------------------------|
-| disable-background-networking | `true` | Disables several subsystems which run network requests in the background. This is for use when doing network performance testing to avoid noise in the measurements. |
+| disable-background-networking | `true` | Disables several subsystems which run network requests in the background. This is used during network performance testing to avoid measurement noise. |
 | enable-features | NetworkService,<br />NetworkServiceInProcess | Comma-separated list of feature names to enable. |
 | disable-background-timer-throttling | `true` | Disables task throttling of timer tasks from background pages. |
 | disable-backgrounding-occluded-windows | `true` | Disables backgrounding renders for occluded windows. Done for tests to avoid nondeterministic behavior. |
 | disable-breakpad | `true` | Disables the crash reporting. |
 | disable-component-extensions<br />-with-background-pages | `true` | Disables default component extensions with background pages. Useful for performance tests where these pages may interfere with results. |
-| disable-default-apps | `true` | Disables installation of default apps on first run. This is used during automated testing. |
+| disable-default-apps | `true` | Disables the installation of default apps on the first run. This is used during automated testing. |
 | disable-dev-shm-usage | `true` | The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash. This flag provides a work-around for this issue (a temporary directory will always be used to create anonymous shared memory files). |
 | disable-extensions | `true` | Disables extensions. |
 | disable-features | ImprovedCookieControls,<br />LazyFrameLoading,<br />GlobalMediaControls,<br />DestroyProfileOnBrowserClose,<br />MediaRouter,<br />AcceptCHFrame | Comma-separated list of feature names to disable. |
 | disable-hang-monitor | `true` | Suppresses hang monitor dialogs in renderer processes. This may allow slow unload handlers on a page to prevent the tab from closing, but the Task Manager can be used to terminate the offending process in this case. |
 | disable-ipc-flooding-protection | `true` | Disables the IPC flooding protection. It is activated by default. Some javascript functions can be used to flood the browser process with IPC. This protection limits the rate at which they can be used. |
 | disable-popup-blocking | `true` | Disables pop-up blocking. |
-| disable-prompt-on-repost | `true` | Normally when the user attempts to navigate to a page that was the result of a post request, the browser prompts to make sure that's the intention of the user. This switch may be used to disable that check. This switch is used during automated testing. |
+| disable-prompt-on-repost | `true` | Usually, when the user attempts to navigate to a page that was the result of a post request, the browser prompts to make sure that's the intention of the user. This switch may be used to disable that check during automated testing.  |
 | disable-renderer-backgrounding | `true` | Prevents renderer process backgrounding when set. |
 | force-color-profile | `srgb` | Forces all monitors to be treated as though they have the specified color profile. Accepted values are "srgb" and "generic-rgb" (currently used by Mac layout tests) and "color-spin-gamma24" (used by layout tests). |
 | metrics-recording-only | `true` | Enables the recording of metrics reports but disables reporting. This executes all the code that a normal client would use for reporting, except the report is dropped rather than sent to the server. This is useful for finding issues in the metrics code during UI and performance tests. |
-| no-first-run | `true` | Skips the "First Run" tasks, whether or not it's actually the first run, and the "What's New" page. This does not drop the "First Run" sentinel and thus doesn't prevent "First Run" from occurring the next time chrome is launched without this flag. It also does not update the last "What's New" milestone, so does not prevent "What's New" from occurring the next time chrome is launched without this flag. |
-| enable-automation | `true` | Enables indication that browser is controlled by automation. |
-| password-store | `basic` | Specifies which encryption storage backend to use. Possible values are kwallet, kwallet5, gnome, gnome-keyring, gnome-libsecret, basic. Any other value will lead to Chrome detecting the best backend automatically.  |
+| no-first-run | `true` | Skips the "First Run" tasks, whether or not it's the first run, and the "What's New" page. This does not drop the "First Run" sentinel and thus doesn't prevent "First Run" from occurring the next time Chromium is launched without this flag. It also does not update the last "What's New" milestone, so it does not prevent "What's New" from occurring the next time Chromium is launched without this flag. |
+| enable-automation | `true` | Enables indication that the browser is controlled by automation. |
+| password-store | `basic` | Specifies which encryption storage backend to use. The possible values are kwallet, kwallet5, gnome, gnome-keyring, gnome-libsecret, and basic. Any other value will lead to Chromium detecting the best backend automatically. |
 | use-mock-keychain | `true` | Uses mock keychain on Mac to prevent the blocking permissions dialog about: "Chrome wants to use your confidential information stored in your keychain." |
 | no-service-autorun | `true` | Disables the service process from adding itself as an autorun process. This does not delete existing autorun registrations, it just prevents the service from registering a new one. |
 | no-startup-window | `true` | Does not automatically open a browser window on startup (used when launching Chrome for the purpose of hosting background apps). |
 | no-default-browser-check | `true` | Disables the default browser check. Useful for UI/browser tests where we want to avoid having the default browser info-bar displayed. |
 | no-sandbox | `true` | Disables the sandbox for all process types that are normally sandboxed. Meant to be used as a browser-level switch for testing purposes only. |
 | headless | `true`/`false` | Run in headless mode, i.e., without a UI or display server dependencies. Set by [launch options](/javascript-api/xk6-browser/api/browsertype/launch/) (default true).  |
-| auto-open-devtools-for-tabs | `true`/`false` | This flag makes Chrome auto-open DevTools window for each tab. It is intended to be used by developers and automation to not require user interaction for opening DevTools. Set by [launch options](/javascript-api/xk6-browser/api/browsertype/launch/) (default false). |
+| auto-open-devtools-for-tabs | `true`/`false` | This flag makes Chrome auto-open the DevTools window for each tab. It is intended to be used by developers and automation, not to require user interaction for opening DevTools. Set by [launch options](/javascript-api/xk6-browser/api/browsertype/launch/) (default false). |
 | window-size | `800,600` | Sets the initial window size. Provided as string in the format "800,600". |
 
 Additionally if headless mode is set to `true` in [launch options](/javascript-api/xk6-browser/api/browsertype/launch/), the following arguments are also set:
