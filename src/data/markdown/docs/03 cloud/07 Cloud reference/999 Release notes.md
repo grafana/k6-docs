@@ -6,7 +6,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 
 ### v3.16.0 `(2022-12-15)`
 - Update the tag filter to allow custom input for tags values
-- Customisable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
+- Customizable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
 - Fix saving the filter otions in the insights panel
 
 ### v3.15.3 `(2022-12-5)`
@@ -29,7 +29,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Protect billing receipt download link
 
 ### v3.13.0 `(2022-10-12)`
-- Drag-and-drop metrics between charts in analysis panel 
+- Drag-and-drop metrics between charts in analysis panel
 
 ### v3.12.0 `(2022-10-11)`
 - Improved UX of metric analysis controls
