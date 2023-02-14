@@ -44,3 +44,5 @@ export default function () {
 ```
 
 </CodeGroup>
+In order to make requests
+This allows you to use k6 to make requests
