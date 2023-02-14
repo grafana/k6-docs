@@ -1,0 +1,6 @@
+extends: existence
+message: "Instead of '%s...', just say 'to...' ."
+ignorecase: true
+level: error
+raw:
+  - 'in order to'
