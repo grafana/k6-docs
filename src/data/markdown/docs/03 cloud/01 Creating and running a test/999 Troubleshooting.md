@@ -94,7 +94,7 @@ If you run tests from the web interface, use the user menu to select a project w
 If you run tests from the k6 CLI, set the `projectID` in the test script.
 
 1. Copy the project ID from the top-left corner of the project dashboard.
-1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#options).
+1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options).
 
 <CodeGroup labels={["Example:"]}>
 

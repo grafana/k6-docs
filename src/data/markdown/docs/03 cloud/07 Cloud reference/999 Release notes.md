@@ -181,7 +181,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Fix: the time range filter was not cleared properly.
 
 ### v2.1.2 `(2022-1-18)`
-- New [load zone regions](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones): Bahrain, Cape Town, Milan, and Osaka.
+- New [load zone regions](/cloud/creating-and-running-a-test/cloud-scripting-extras/load-zones): Bahrain, Cape Town, Milan, and Osaka.
 
 ### v2.1.0 `(2022-1-12)`
 - Add support for new user role - [project read only](/cloud/project-and-team-management/members/#project-member).

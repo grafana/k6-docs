@@ -1603,6 +1603,20 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath:
+      '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference/',
+    toPath: '/cloud/creating-and-running-a-test/cloud-scripting-extras',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath:
+      '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/run-tests/',
+    toPath: '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
