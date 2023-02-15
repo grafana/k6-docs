@@ -36,7 +36,7 @@ Beyond reading log messages, you can also use the log panel to find contextual i
 - The load zone. The geographic zone where the load generator is.
 - The instance ID. The numerical ID of the load generator taking part in the test.
 
-Refer to [how the k6 Cloud injects environment variables](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#env-vars) for further information about the load zone and instance ID.
+Refer to [how the k6 Cloud injects environment variables](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-environment-variables) for further information about the load zone and instance ID.
 
 ### Filter by log level and load zone
 

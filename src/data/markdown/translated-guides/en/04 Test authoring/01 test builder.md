@@ -43,7 +43,7 @@ Configure the geographical zones that the load test will run from.
 
 ![Test Builder - Load Zones UI](images/load-zones.png)
 
-Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#load-zones).
+Check out the [list of supported load zones](/cloud/creating-and-running-a-test/cloud-scripting-extras/load-zones).
 
 ## Thresholds
 

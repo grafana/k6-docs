@@ -235,7 +235,7 @@ for (let id = 1; id <= 1000; id++) {
 - **Recommendations**:
   - Use [URL grouping](/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
   - Use fewer tag values when using [custom tags](/using-k6/http-requests/#http-request-tags).
-  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference/#k6-cloud-options) to reduce the cardinality of time series.
+  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options) to reduce the cardinality of time series.
 
 ### Outdated k6 release used
 
