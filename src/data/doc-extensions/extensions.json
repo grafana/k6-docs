@@ -829,6 +829,18 @@
       },
       "official": false,
       "categories": ["Reporting", "Observability"]
+    },
+    {
+      "name": "xk6-couchbase",
+      "description": "Load-test Couchbase no-SQL databases",
+      "url": "https://github.com/thotasrinath/xk6-couchbase",
+      "logo": "",
+      "author": {
+        "name": "thotasrinath",
+        "url": "https://github.com/thotasrinath"
+      },
+      "official": false,
+      "categories": ["Data"]
     }
   ]
 }
