@@ -68,7 +68,7 @@ export const localizedMessages = {
     'welcome.k6-does-not.browser.title': 'Does not run natively in a browser',
     'welcome.k6-does-not.browser.description': `By default, k6 does not render web pages the same way a browser does. Browsers can consume significant system resources. Skipping the browser allows running more load within a single machine.`,
     'welcome.k6-does-not.browser.testing.text': 'However, with',
-    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.link': 'k6 browser',
     'welcome.k6-does-not.browser.testing.text2':
       'you can interact with real browsers and collect frontend metrics as part of your k6 tests',
     'welcome.k6-does-not.browser.recorded-session.link':
@@ -151,7 +151,7 @@ export const localizedMessages = {
       'No ejecuta nativamente en un navegador',
     'welcome.k6-does-not.browser.description': `Por defecto, k6 no renderiza las páginas web de la misma manera que lo hace un navegado. Los navegadores pueden consumir muchos recursos del sistema. No usando el navegador, nos permite ejecutar tests de más carga en una misma máquina.`,
     'welcome.k6-does-not.browser.testing.text': 'Sin embargo, con',
-    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.link': 'k6 browser',
     'welcome.k6-does-not.browser.testing.text2':
       'puedes interactuar con navegadores reales y monitorizar métricas del frontend en tus tests de k6',
     'welcome.k6-does-not.nodejs.title': 'No se ejecuta en NodeJS',

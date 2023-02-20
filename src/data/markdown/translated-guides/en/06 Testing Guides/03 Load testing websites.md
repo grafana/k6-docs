@@ -172,45 +172,50 @@ For example, a browser-based load testing script might include instructions to n
 Unlike protocol-based load testing, browser-based load testing scripts generate load by starting multiple instances of browsers and interacting with your application the way real users would. Testing at the browser level can also be the only option for testing Single-Page Applications where a lot of the application logic is executed by client-side scripts.
 
 Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level.
-However, k6 has an extension called [xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
+However, k6 now has an experimental module called [k6 browser](https://k6.io/docs/javascript-api/k6-browser/) that allows the creation of browser-based test scripts alongside protocol-based ones.
 
 #### Sample browser-based test script
 
-The following is an example of a browser-based load testing script in k6 using xk6-browser on a dummy website. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
+The following is an example of a browser-based load testing script in k6 using the browser module on a dummy website. Instead of making an HTTP request, the script views the homepage, then looks for and clicks on a link to the product page.
+
+<CodeGroup labels={[]}>
+
+<!-- eslint-skip -->
 
 ```javascript
-import { chromium } from 'k6/x/browser';
+import { chromium } from 'k6/experimental/browser';
 import { sleep } from 'k6';
 
-export default function () {
+export default async function () {
   const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
   // 01. Go to the homepage
-  page
-    .goto('https://mywebsite.com', { waitUntil: 'networkidle' })
-    .then(() => {
-      page.waitForSelector('p[class="woocommerce-result-count"]"]');
-      page.screenshot({ path: 'screenshots/01_homepage.png' });
+  try {
+    await page.goto('https://mywebsite.com', { waitUntil: 'networkidle' });
 
-      sleep(4);
+    page.waitForSelector('p[class="woocommerce-result-count"]"]');
+    page.screenshot({ path: 'screenshots/01_homepage.png' });
 
-      // 02. View products
-      const element = page.$(
-        'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
-      );
-      element.click();
-      page.waitForSelector('button[name="add-to-cart"]');
-      page.screenshot({ path: 'screenshots/02_view-product.png' });
+    sleep(4);
 
-      sleep(1);
-    })
-    .finally(() => {
-      page.close();
-      browser.close();
-    });
+    // 02. View products
+    const element = page.$(
+      'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
+    );
+    element.click();
+    page.waitForSelector('button[name="add-to-cart"]');
+    page.screenshot({ path: 'screenshots/02_view-product.png' });
+
+    sleep(1);
+  } finally {
+    page.close();
+    browser.close();
+  }
 }
 ```
+
+</CodeGroup>
 
 
 #### Tips for writing browser-level scripts
@@ -221,9 +226,9 @@ The following steps can help you get started with a browser-level test script.
 
 **Identify unique selectors.** Once you have identified which page elements a user interacts with, use the Element Inspector for DevTools in your browser to find a unique, static, and simple way to identify each element. The script needs selectors to find the right element to interact with.
 
-**Use elements to verify responses.** After every action, use [locators](https://k6.io/docs/javascript-api/xk6-browser/api/locator/) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
+**Use elements to verify responses.** After every action, use [locators](https://k6.io/docs/javascript-api/k6-browser/api/locator/) to search for elements on the page that you would expect to find. This verification helps ensure that the script has reached the expected page.
 
-**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](https://k6.io/docs/javascript-api/xk6-browser/api/page/) to save a visual image of what the script encountered for later troubleshooting.
+**Take screenshots for every action while debugging.** One of the advantages of browser-based testing is the ability to take screenshots. After every user interaction the script simulates, use [page.screenshot](https://k6.io/docs/javascript-api/k6-browser/api/page/) to save a visual image of what the script encountered for later troubleshooting.
 
 
 ### Hybrid load testing
@@ -327,7 +332,7 @@ Load testing websites can be complex due to the number of viable testing approac
 
 ## Read more
 
-- [Browser testing with xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/)
+- [Browser testing with k6 browser](https://k6.io/docs/javascript-api/k6-browser/)
 - [Test types](https://k6.io/docs/test-types/introduction)
 - [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)

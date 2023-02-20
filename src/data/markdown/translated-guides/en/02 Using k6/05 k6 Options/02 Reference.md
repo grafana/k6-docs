@@ -227,7 +227,7 @@ Available in `k6 run` and `k6 cloud` commands:
 <Blockquote mod="note" title="">
 
 When running tests in k6 Cloud and using a non-default config.json file,
-specify the cloud token inside your config file in order to authenticate.
+specify the cloud token inside your config file to authenticate.
 
 </Blockquote>
 

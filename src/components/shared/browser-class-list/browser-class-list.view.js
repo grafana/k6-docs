@@ -6,55 +6,55 @@ import React from 'react';
 const links = [
   {
     title: 'Browser',
-    url: '/javascript-api/xk6-browser/browser/',
+    url: '/javascript-api/k6-browser/browser/',
   },
   {
     title: 'BrowserContext',
-    url: '/javascript-api/xk6-browser/browsercontext/',
+    url: '/javascript-api/k6-browser/browsercontext/',
   },
   {
     title: 'BrowserType',
-    url: '/javascript-api/xk6-browser/browsertype/',
+    url: '/javascript-api/k6-browser/browsertype/',
   },
   {
     title: 'ElementHandle',
-    url: '/javascript-api/xk6-browser/elementhandle/',
+    url: '/javascript-api/k6-browser/elementhandle/',
   },
   {
     title: 'Frame',
-    url: '/javascript-api/xk6-browser/frame/',
+    url: '/javascript-api/k6-browser/frame/',
   },
   {
     title: 'JSHandle',
-    url: '/javascript-api/xk6-browser/jshandle',
+    url: '/javascript-api/k6-browser/jshandle',
   },
   {
     title: 'Keyboard',
-    url: '/javascript-api/xk6-browser/keyboard',
+    url: '/javascript-api/k6-browser/keyboard',
   },
   {
     title: 'Locator',
-    url: '/javascript-api/xk6-browser/locator',
+    url: '/javascript-api/k6-browser/locator',
   },
   {
     title: 'Mouse',
-    url: '/javascript-api/xk6-browser/mouse/',
+    url: '/javascript-api/k6-browser/mouse/',
   },
   {
     title: 'Page',
-    url: '/javascript-api/xk6-browser/page/',
+    url: '/javascript-api/k6-browser/page/',
   },
   {
     title: 'Request',
-    url: '/javascript-api/xk6-browser/request/',
+    url: '/javascript-api/k6-browser/request/',
   },
   {
     title: 'Response',
-    url: '/javascript-api/xk6-browser/response/',
+    url: '/javascript-api/k6-browser/response/',
   },
   {
     title: 'Touchscreen',
-    url: '/javascript-api/xk6-browser/touchscreen/',
+    url: '/javascript-api/k6-browser/touchscreen/',
   },
 ];
 
