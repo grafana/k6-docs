@@ -11,11 +11,12 @@ const ALL_SUPPORTED_JS_API_VERSIONS = [
   'v0.39',
   'v0.40',
   'v0.41',
+  'v0.42',
 ]
   .sort()
   .reverse();
 /** latest version number for URLs without version prefix */
-const LATEST_VERSION = 'v0.42';
+const LATEST_VERSION = 'v0.43';
 
 /** applies only for development and staging */
 /** amount DOES NOT include LATEST_VERSION */
