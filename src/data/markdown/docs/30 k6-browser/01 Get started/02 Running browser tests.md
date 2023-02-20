@@ -105,7 +105,7 @@ Within the Locator API, various methods such as `type()` can be used to interact
 
 ## Asynchronous operations
 
-Since many browser operations happen asynchronously, and in order to follow the Playwright API more closely, we are working on migrating most of the browser module methods to be asynchronous as well.
+Since many browser operations happen asynchronously, and to follow the Playwright API more closely, we are working on migrating most of the browser module methods to be asynchronous as well.
 
 At the moment, methods such as `page.goto()`, `page.waitForNavigation()` and `Element.click()` return [JavaScript promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and scripts must be written to handle this properly.
 
