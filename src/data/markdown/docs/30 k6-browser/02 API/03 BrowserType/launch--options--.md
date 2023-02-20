@@ -60,7 +60,7 @@ The starting '--' have been omitted from the argument names in these lists.
 | auto-open-devtools-for-tabs | `true`/`false` | This flag makes Chrome auto-open the DevTools window for each tab. It is intended to be used by developers and automation, not to require user interaction for opening DevTools. Set by [launch options](/javascript-api/xk6-browser/api/browsertype/launch/) (default false). |
 | window-size | `800,600` | Sets the initial window size. Provided as string in the format "800,600". |
 
-Additionally if headless mode is set to `true` in [launch options](/javascript-api/xk6-browser/api/browsertype/launch/), the following arguments are also set:
+Additionally if headless mode is set to `true` in [launch options](/javascript-api/k6-browser/api/browsertype/launch/), the following arguments are also set:
 
 | Argument   | Value  | Description                                            |
 |------------|--------|--------------------------------------------------------|
