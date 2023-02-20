@@ -57,10 +57,12 @@ Ctrl
 Cyber
 datastore
 datetime
+dialogs
 discoverability
 dcadwallader
 deserialized
 Dev
+enum
 errno
 erroring
 falsy
@@ -115,8 +117,10 @@ reqs
 resampled
 rollouts
 rollup
+sandboxed
 Scorigami
 scriptable
+scrollbars
 sharded
 SLOs
 smockvavelsky
