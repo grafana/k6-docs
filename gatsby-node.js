@@ -1784,12 +1784,15 @@ const createRedirects = ({ actions }) => {
       '/javascript-api/k6-browser/api/touchscreen/',
     '/javascript-api/xk6-browser/touchscreen/':
       '/javascript-api/k6-browser/api/touchscreen/',
+    '/javascript-api/xk6-browser/get-started/':
+      '/javascript-api/k6-browser/get-started/',
     '/javascript-api/xk6-browser/get-started/running-xk6-browser/':
       '/javascript-api/k6-browser/get-started/running-browser-tests/',
     '/javascript-api/xk6-browser/get-started/browser-metrics/':
       '/javascript-api/k6-browser/get-started/browser-metrics/',
     '/javascript-api/xk6-browser/get-started/selecting-elements/':
       '/javascript-api/k6-browser/get-started/selecting-elements/',
+    '/javascript-api/xk6-browser/api/': '/javascript-api/k6-browser/api/',
     ...newJavascriptURLsRedirects,
   };
 
