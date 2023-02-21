@@ -4,6 +4,14 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.17.2 `(2023-2-14)`
+- Fix selected sort component
+- Fix inconsistencies of test runs showing in the trend bar chart
+
+### v3.17.0 `(2023-1-30)`
+- Add support for Grafana authentication mechanism
+- Fix `Failed by threshold` status instead of `Test failed`
+
 ### v3.16.0 `(2022-12-15)`
 - Update the tag filter to allow custom input for tags values
 - Customizable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
