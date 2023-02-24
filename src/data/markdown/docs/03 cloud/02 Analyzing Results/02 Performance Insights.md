@@ -292,7 +292,7 @@ An overutilized load generator can skew test results.
 ## Disabling performance insights
 
 You can disable one or more insights from showing up when executing load tests.
-This can be done by using `ext.loadimpct.insights` object in the `options`:
+This can be done by using `ext.loadimpact.insights` object in the `options`:
 
 
 ```javascript
