@@ -426,7 +426,7 @@ For more details on how to create groups please go to [Tags and Groups](/using-k
 
 ```bash
 curl -X GET \
-  http://localhost:6565/v1/group/b0470a9324a4ae563b04e9ac49fbc9cf \
+  http://localhost:6565/v1/groups/b0470a9324a4ae563b04e9ac49fbc9cf \
   -H 'Content-Type: application/json'
 ```
 
