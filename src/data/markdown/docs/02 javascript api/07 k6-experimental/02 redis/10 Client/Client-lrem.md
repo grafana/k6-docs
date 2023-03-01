@@ -37,21 +37,19 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .rpush('mylist', 'first')
-    .then((_) => redisClient.rpush('mylist', 'second'))
-    .then((_) => redisClient.rpush('mylist', 'first'))
-    .then((_) => redisClient.rpush('mylist', 'second'))
-    .then((_) => redisClient.lrem('mylist', 0, 'second'))
-    .then((_) => redisClient.lrem('mylist', 1, 'first'))
-    .then((length) => {
-      if (length !== 1) {
-        throw new Error('lrem operations should have left 1 item behind');
-      }
+export default async function () {
+    await redisClient.rpush('mylist', 'first');
+    await redisClient.rpush('mylist', 'second');
+    await redisClient.rpush('mylist', 'first');
+    await redisClient.rpush('mylist', 'second');
+    await redisClient.lrem('mylist', 0, 'second');
+    
+    const length = await redisClient.lrem('mylist', 1, 'first');
+    if (length !== 1) {
+    throw new Error('lrem operations should have left 1 item behind');
+    }
 
-      return redisClient.lpop('mylist');
-    });
+    await redisClient.lpop('mylist');
 }
 ```
 
