@@ -36,18 +36,16 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('mykey', 'myvalue', 10)
-    .then((_) => redisClient.expire('mykey', 100))
-    .then((_) => redisClient.ttl('mykey'))
-    .then((ttl) => {
-      if (ttl <= 10) {
-        throw new Error('mykey should have a ttl of 10 <= x < 100');
-      }
+export default async function () {
+    await redisClient.set('mykey', 'myvalue', 10);
+    await redisClient.expire('mykey', 100);
+    
+    const ttl = await redisClient.ttl('mykey');
+    if (ttl <= 10) {
+    throw new Error('mykey should have a ttl of 10 <= x < 100');
+    }
 
-      return redisClient.persist('mykey', 100);
-    });
+    await redisClient.persist('mykey', 100);
 }
 ```
 

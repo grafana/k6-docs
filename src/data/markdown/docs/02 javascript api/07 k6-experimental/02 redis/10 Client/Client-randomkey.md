@@ -28,13 +28,13 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('first', 1, 0)
-    .then((_) => redisClient.set('second', 2, 0))
-    .then((_) => redisClient.set('third', 3, 0))
-    .then((_) => redisClient.randomKey())
-    .then((key) => console.log(`picked random key is: ${key}`));
+export default async function () {
+  await redisClient.set('first', 1, 0);
+  await redisClient.set('second', 2, 0);
+  await redisClient.set('third', 3, 0);
+  
+  const key = await redisClient.randomKey();
+  console.log(`picked random key is: ${key}`);
 }
 ```
 

@@ -36,13 +36,18 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('mykey', 10, 0)
-    .then((_) => redisClient.incr('mykey'))
-    .then((value) => redisClient.incrBy('mykey', value))
-    .then((value) => redisClient.decrBy('mykey', value))
-    .then((_) => redisClient.decr('mykey'));
+export default async function () {
+    await redisClient.set('mykey', 10, 0);
+    
+    let value;
+    value = await redisClient.incr('mykey');
+    value = await redisClient.incrBy('mykey', value);
+    value = await redisClient.decrBy('mykey', value);
+    value = await redisClient.decr('mykey');
+
+    if (value !== -1) {
+        throw new Error('mykey should have been -1');
+    }
 }
 ```
 
