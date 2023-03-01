@@ -35,11 +35,10 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .hset('myhash', 'myfield', 10)
-    .then((_) => redisClient.hset('myhash', 'myotherfield', 20))
-    .then((_) => redisClient.hlen('myhash'));
+export default async function () {
+  await redisClient.hset('myhash', 'myfield', 10);
+  await redisClient.hset('myhash', 'myotherfield', 20);
+  await redisClient.hlen('myhash');
 }
 ```
 

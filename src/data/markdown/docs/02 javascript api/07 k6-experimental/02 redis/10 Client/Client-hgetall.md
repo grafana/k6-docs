@@ -35,14 +35,11 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .hset('myhash', 'myfield', 'myvalue')
-    .then((_) => redisClient.hset('myhash', 'myotherfield', 'myothervalue'))
-    .then((_) => redisClient.hgetall('myhash'))
-    .then((object) => {
-      console.log(`myhash has key:value pairs ${JSON.stringify(object)}`);
-    });
+export default async function () {
+    await redisClient.hset('myhash', 'myfield', 'myvalue');
+    await redisClient.hset('myhash', 'myotherfield', 'myothervalue');
+    const object = await redisClient.hgetall('myhash');
+    console.log(`myhash has key:value pairs ${JSON.stringify(object)}`);
 }
 ```
 
