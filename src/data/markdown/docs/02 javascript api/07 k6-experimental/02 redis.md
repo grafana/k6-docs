@@ -27,7 +27,4 @@ which operate in a synchronous manner,
 the Redis `Client` operates in an asynchronous manner.
 In practice, this means that using the Redis `Client`'s methods won't block test execution,
 and that the test will continue to run even if the Redis `Client` isn't ready to respond to the request.
-
-This new execution model does introduce a potential caveat: to depend on operations against Redis, all following operations should be made in the context of a [promise chain](https://javascript.info/promise-chaining).
-As the [Redis Client example](/javascript-api/k6-experimental/redis/client#example) demonstrates, whenever there is a dependency on a Redis operation result or return value, the operation should be wrapped in a promise itself.
-This way, a user can perform asynchronous interactions with Redis in a seemingly synchronous manner.
+However, achieving a seemingly synchronous behavior can be done using the `async/await` syntax. When preceding an asynchronous Redis `Client` operation with the `await` keyword in the context of an `async` function, the execution of the function will wait for the operation to complete before continuing its execution.
