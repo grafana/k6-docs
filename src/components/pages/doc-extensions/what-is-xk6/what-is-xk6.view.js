@@ -33,7 +33,7 @@ export const WhatIsXk6 = () => (
       You now have a new option that doesn&apos;t require setting a Go
       environment!{' '}
       <Link
-        to="/extensions/guides/how-to-build-k6-using-docker/"
+        to="/extensions/guides/build-a-k6-binary-using-docker/"
         className="link"
       >
         Use Docker

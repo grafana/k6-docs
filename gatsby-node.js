@@ -1565,6 +1565,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/extensions/guides/build-a-k6-binary-with-extensions/',
+    toPath: '/extensions/guides/build-a-k6-binary-using-go/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/cloud/integrations/grafana-plugin/',
     toPath: '/cloud/integrations/grafana-app/',
     isPermanent: true,

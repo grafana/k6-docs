@@ -1,5 +1,5 @@
 ---
-title: 'Build a k6 binary with extensions'
+title: 'Build a k6 binary using Go'
 excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
@@ -8,7 +8,7 @@ you need to build a binary using Go.
 
 <Blockquote mod="note" title="Support for Docker">
 
-  Not interested in setting up a Go environment? You can [use Docker instead](/extensions/guides/how-to-build-k6-using-docker/).
+  Not interested in setting up a Go environment? You can [use Docker instead](/extensions/guides/build-a-k6-binary-using-docker/).
 
 </Blockquote>
 

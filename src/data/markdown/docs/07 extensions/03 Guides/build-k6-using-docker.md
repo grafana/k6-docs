@@ -1,5 +1,5 @@
 ---
-title: 'How to build k6 using Docker'
+title: 'Build a k6 binary using Docker'
 excerpt: ''
 hideFromSidebar: false
 ---

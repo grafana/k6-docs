@@ -72,10 +72,10 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           <Blockquote>
             To build successfully, ensure your environment is as described in{' '}
             <Link
-              to="/extensions/guides/build-a-k6-binary-with-extensions/"
+              to="/extensions/guides/build-a-k6-binary-using-go/"
               className="link"
             >
-              Build a k6 binary with extensions
+              Build a k6 binary using Go
             </Link>
             .
           </Blockquote>
