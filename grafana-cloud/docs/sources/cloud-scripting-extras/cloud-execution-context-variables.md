@@ -1,19 +1,18 @@
 ---
 title: Cloud execution context variables
-description: 
+description: You can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
 weight: 304
 ---
 
+# Cloud execution context variables
 
-## Cloud execution context variables
-
-When you run tests in k6 Cloud, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
+When you run a cloud test, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
 
 | Name              | Value  | Description                                                                                                                                              |
 | ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `K6_CLOUDRUN_LOAD_ZONE`    | string | The load zone from where the metric was collected. Values will be of the form: amazon:us :ashburn (see list above).                                      |
+| `K6_CLOUDRUN_LOAD_ZONE`    | string | The [load zone]({{< relref "cloud-load-zones" >}}) from where the metric was collected. Values will be of the form: amazon:us:ashburn .                                      |
 | `K6_CLOUDRUN_INSTANCE_ID`  | number | A sequential number representing the unique ID of a load generator server taking part in the test, starts at 0.                                          |
-| `K6_CLOUDRUN_DISTRIBUTION` | string | The value of the "distribution label" that you used in `ext.loadimpact.distribution` corresponding to the load zone the script is currently executed in. |
+| `K6_CLOUDRUN_DISTRIBUTION` | string | The value of the [`ext.loadimpact.distribution` label"]({{< relref "cloud-options" >}}) corresponding to the load generator instance. |
 
 You can read the values of these variables in your k6 script as usual.
 

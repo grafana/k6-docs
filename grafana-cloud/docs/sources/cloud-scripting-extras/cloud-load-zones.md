@@ -1,11 +1,12 @@
 ---
 title: Cloud load zones
-description: You can run k6 on the following AWS cloud regions.
+description: You can run cloud tests from the following AWS cloud regions.
 weight: 302
 ---
 
-
 # Cloud load zones
+
+You can run your tests from the following load zones:
 
 - US East (Ohio) - **DEFAULT** `amazon:us:columbus`
 - Africa (Cape Town) `amazon:sa:cape town`
@@ -29,4 +30,29 @@ weight: 302
 - US West (Oregon) `amazon:us:portland`
 - US East (N. Virginia) `amazon:us:ashburn`
 
+## Syntax to set load zones
+
+Declare load zones in the `options.ext.loadimpact.distribution` object.
+
+Each load zone has an object with a custom label for the key. Load zones have two properties:
+
+- `loadZone`, a string whose value must be one of the load zones, as listed in the next section.
+- `percent`, an integer declaring the percentage of the load that runs from the load zone.
+
+The sum of the percentages must equal 100.
+
+This example distributes load across two load zones, Ashburn and Dublin.
+
+```javascript
+export const options = {
+  ext: {
+    loadimpact: {
+      distribution: {
+        distributionLabel1: { loadZone: 'amazon:us:ashburn', percent: 50 },
+        distributionLabel2: { loadZone: 'amazon:ie:dublin', percent: 50 },
+      },
+    },
+  },
+};
+```
 
