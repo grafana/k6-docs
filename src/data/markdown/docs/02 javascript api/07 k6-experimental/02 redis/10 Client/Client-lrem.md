@@ -46,7 +46,7 @@ export default async function () {
     
     const length = await redisClient.lrem('mylist', 1, 'first');
     if (length !== 1) {
-    throw new Error('lrem operations should have left 1 item behind');
+      throw new Error('lrem operations should have left 1 item behind');
     }
 
     await redisClient.lpop('mylist');

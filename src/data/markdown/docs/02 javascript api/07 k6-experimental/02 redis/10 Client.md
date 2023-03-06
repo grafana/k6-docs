@@ -62,7 +62,8 @@ export async function measureRedisPerformance() {
 
   await redisClient.set(key, 1);
   await redisClient.incrBy(key, 10);
-  if (await redisClient.get(key) !== '11') {
+  const value = await redisClient.get(key);
+  if (value !== '11') {
     throw new Error('foo should have been incremented to 11');
   }
 
@@ -81,7 +82,7 @@ export async function measureUsingRedisData() {
   // we have filled in setup().
   const randomID = await redisClient.srandmember('crocodile_ids');
   const url = `https://test-api.k6.io/public/crocodiles/${randomID}`;
-  const res = http.get(url);
+  const res = await http.asyncRequest("GET", url);
 
   check(res, {'status is 200': (r) => r.status === 200});
 

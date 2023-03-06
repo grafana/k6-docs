@@ -27,4 +27,4 @@ which operate in a synchronous manner,
 the Redis `Client` operates in an asynchronous manner.
 In practice, this means that using the Redis `Client`'s methods won't block test execution,
 and that the test will continue to run even if the Redis `Client` isn't ready to respond to the request.
-However, achieving a seemingly synchronous behavior can be done using the `async/await` syntax. When preceding an asynchronous Redis `Client` operation with the `await` keyword in the context of an `async` function, the execution of the function will wait for the operation to complete before continuing its execution.
+The `async/await` syntax can be used to make the code look synchronous while still being asynchronous, and not blocking the test execution.

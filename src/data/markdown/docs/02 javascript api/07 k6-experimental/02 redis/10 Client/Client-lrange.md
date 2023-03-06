@@ -44,7 +44,7 @@ export default async function () {
     
     const item = redisClient.lindex('mylist', 0);
     if (item !== 'first') {
-    throw new Error('lindex operation should have returned first');
+      throw new Error('lindex operation should have returned first');
     }
 
     await redisClient.lrange('mylist', 1, 2);

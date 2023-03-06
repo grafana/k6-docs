@@ -40,7 +40,7 @@ export default async function () {
     
     const exists = await redisClient.exists('mykey');
     if (exists === false) {
-    throw new Error('mykey should exist');
+      throw new Error('mykey should exist');
     }
 
     const value = await redisClient.get('mykey');

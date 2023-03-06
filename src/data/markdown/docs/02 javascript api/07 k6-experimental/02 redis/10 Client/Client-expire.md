@@ -41,11 +41,9 @@ export default async function () {
     await redisClient.expire('mykey', 100);
     
     const ttl = await redisClient.ttl('mykey');
-    if (ttl <= 10) {
+    if (ttl <= 10 || ttl >= 100) {
     throw new Error('mykey should have a ttl of 10 <= x < 100');
     }
-
-    await redisClient.persist('mykey', 100);
 }
 ```
 

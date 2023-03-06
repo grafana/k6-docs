@@ -41,9 +41,9 @@ export default async function () {
     await redisClient.hsetnx('myhash', 'myfield', 'myvalue')
     await redisClient.hsetnx('myhash', 'myotherfield', 'myothervalue');
     
-    const s = await redisClient.hsetnx('myhash', 'myfield', 'mynewvalue');
-    if (s === true) {
-    throw new Error('hsetnx should have failed on existing field');
+    const set = await redisClient.hsetnx('myhash', 'myfield', 'mynewvalue');
+    if (set === true) {
+      throw new Error('hsetnx should have failed on existing field');
     }
 }
 ```

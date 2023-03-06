@@ -39,7 +39,7 @@ const redisClient = new redis.Client({
 
 export default async function () {
   await redisClient.hset('myhash', 'myfield', 'myvalue');
-  await redisClient.then((_) => redisClient.hget('myhash', 'myfield'));
+  await redisClient.hget('myhash', 'myfield');
   await redisClient.hdel('myhash', 'myfield');
 }
 ```

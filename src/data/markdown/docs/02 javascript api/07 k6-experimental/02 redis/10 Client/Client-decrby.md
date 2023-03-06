@@ -39,14 +39,9 @@ const redisClient = new redis.Client({
 export default async function () {
     await redisClient.set('mykey', 10, 0);
     
-    let value;
-    value = await redisClient.incr('mykey');
-    value = await redisClient.incrBy('mykey', value);
-    value = await redisClient.decrBy('mykey', value);
-    value = await redisClient.decr('mykey');
-
-    if (value !== -1) {
-        throw new Error('mykey should have been -1');
+    const value = await redisClient.decrBy('mykey', 2);
+    if (value !== 8) {
+        throw new Error('mykey should have been 8');
     }
 }
 ```

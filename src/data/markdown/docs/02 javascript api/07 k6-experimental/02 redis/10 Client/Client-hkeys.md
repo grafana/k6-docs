@@ -41,7 +41,7 @@ export default async function () {
     
     const keys = await redisClient.hkeys('myhash');
     if (keys.length !== 2) {
-    throw new Error('myhash should have 2 keys');
+      throw new Error('myhash should have 2 keys');
     }
 
     console.log(`myhash has keys ${keys}`);
