@@ -4,11 +4,11 @@ excerpt: ''
 hideFromSidebar: false
 ---
 
-The easiest way to use [xk6](https://github.com/grafana/xk6) is via our [Docker image](https://hub.docker.com/r/grafana/xk6/). This avoids having to setup a local Go environment, and install xk6 manually.
+Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify the process of creating a custom k6 binary. It avoids having to setup a local Go environment, and install xk6 manually.
 
 ## Building your first extension
 
-For example, to build a k6 v0.43.1 binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, you would run one of the following based upon your operating system:
+For example, to build a k6 v0.43.1 binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
 
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
@@ -41,20 +41,20 @@ docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
 
 </CodeGroup>
 
-This would create a `k6` (or `k6.exe`) binary in the current working directory.
+This creates a `k6` (or `k6.exe`) binary in the current working directory.
 
 ## Breaking down the command
 
-We'll admit, the example command line looks terrifying. Let's focus on the first part, which pertains strictly to Docker:
+The example command line may look a bit intimidating at first, but let's focus on the first part, which pertains strictly to Docker:
 
 ```bash
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6"
 ```
 
 This tells Docker to run a new container from an image. 
-`--rm` means the container will be destroyed once your build is completed.
-`-u` specifies the user and group IDs of the account on the host machine. This is important for the `k6` file to have the same file permissions as the host user.
-`-v` is required to mount the current working directory inside the container, so that the `k6` binary can be written to it.
+- `--rm` means the container will be destroyed once your build is completed.
+- `-u` specifies the user and group IDs of the account on the host machine. This is important for the `k6` file to have the same file permissions as the host user.
+- `-v` is required to mount the current working directory inside the container, so that the `k6` binary can be written to it.
 
 For Windows and Mac, we additionally include the target system as an environment variable:
 
@@ -62,7 +62,7 @@ For Windows and Mac, we additionally include the target system as an environment
 -e GOOS=<target os>
 ```
 
-The remainder is straight from the [xk6 documentation](https://github.com/grafana/xk6/#command-usage) with the exception that we are using the `grafana/xk6` _image_ rather than a local installation of `xk6`:
+The remainder is straight from the [xk6 documentation](https://github.com/grafana/xk6/#command-usage), with the exception that we use the `grafana/xk6` _image_ rather than a local installation of `xk6`:
 
 ```plain
 grafana/xk6 build [<k6_version>]
@@ -85,16 +85,16 @@ The use of `--replace` should be considered an advanced feature to be avoided un
 </Blockquote>
 
 Referring back to our executed command, note that:
-- We specify the version as `v0.43.1`. Had we specified `latest`, or omitted a version, would mean that we'll build using the _latest_ source code for k6. 
+- We specify the version as `v0.43.1`. When you omit the version or specify `latest`, you build using the _latest_ source code for k6.
   Consider using a stable [release version](https://github.com/grafana/k6/releases) as a best practice unless you genuinely want the _bleeding edge_.
-- With each `--with`, we specified a full GitHub URI for the extension repository. 
-  If not specifying a version, the default is `latest` once again. 
+- We specify a full GitHub URI for the extension repository with each `--with`.
+If a version is not specified, the default is again the `latest`.
   Check your extension repository for stable release versions, if available, to lock in your version as we've done with `xk6-kafka@v0.17.0` and `xk6-output-influxdb@v0.3.0`.
 - For Windows, we used the `--output` option to name our result as `k6.exe`; if not specified, our new binary is `k6` within the current directory.
-  If a directory is specified, then the new binary would be `k6` within _that_ directory. 
-  If a path to a non-existent file, e.g. `/tmp/k6-extended`, this will be the path and filename for the binary.
+If you specify a directory, the new binary will be `k6` within _that_ directory.
+If you specify a path to a non-existent file, e.g. `/tmp/k6-extended`, this will be the path and filename for the binary.
 
-Running `./k6 version` (or `k6.exe version`) should show your build is based upon the appropriate version.
+Run `./k6 version` (or `k6.exe version`) to check that your build is based on the appropriate `k6` version and contains the desired extensions. For example:
 
 ## Running your extended binary
 
