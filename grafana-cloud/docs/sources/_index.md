@@ -7,7 +7,7 @@ title: Grafana Cloud k6
 menuTitle: Grafana Cloud k6
 description: Run k6 in Cloud servers, visualize and scripts in your Grafana instance.
 description: 'Script performance tests locally, run tests from the CLI on servers all over the world, and visualize test results in Grafana Cloud.'
-weight: 100
+weight: 001
 ---
 
 # Grafana Cloud k6

@@ -1,11 +1,12 @@
 ---
 title: Cloud tags
 description: Cloud execution has a extra tags to filter for load zones and instance ids
+weight: 303
 ---
 
 # Cloud tags
 
-[Tags](/using-k6/tags-and-groups) provide great flexibility to filter test results.
+[Tags](https://k6.io/using-k6/tags-and-groups) provide great flexibility to filter test results.
 
 When a test runs in k6 Cloud, k6 adds two tags to all metrics:
 
@@ -18,7 +19,7 @@ The cloud tags are automatically added when collecting test metrics.
 
 They work as regular tags do.
 For example, you can filter the results for a particular load zone,
-or define a [Threshold](/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
+or define a [Threshold](https://k6.io/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
 
 ```javascript

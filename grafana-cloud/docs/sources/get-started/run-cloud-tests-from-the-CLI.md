@@ -1,7 +1,7 @@
 ---
 title: Run cloud tests from the CLI 
 description: For day-to-day use, it's most convenient to run your cloud tests from you own CLI.
-weight: 300
+weight: 102
 ---
 
 # Run Cloud tests from the CLI

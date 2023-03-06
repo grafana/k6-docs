@@ -1,6 +1,6 @@
 ---
 title: Analyze tests
 menuTitle: Analyze tests
-weight: 300
+weight: 200
 ---
 
