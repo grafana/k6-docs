@@ -1,9 +1,11 @@
 ---
-title: Load zones
+title: Cloud load zones
 description: You can run k6 on the following AWS cloud regions.
+weight: 302
 ---
 
-# Load zones
+
+# Cloud load zones
 
 - US East (Ohio) - **DEFAULT** `amazon:us:columbus`
 - Africa (Cape Town) `amazon:sa:cape town`

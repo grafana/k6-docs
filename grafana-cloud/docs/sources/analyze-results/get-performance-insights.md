@@ -1,7 +1,10 @@
 ---
-title: 'Performance Insights'
+title: 'Get performance insights'
 excerpt: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
+weight: 202
 ---
+
+# Get performance insights
 
 Whenever you run a test in k6 Cloud, *Performance Insights* algorithms automatically process the raw metrics and data.
 

@@ -1,18 +1,13 @@
 ---
-title: Environment variables
-description: You can store environment variables in the cloud, then run them during cloud execution.
+title: Cloud execution context variables
+description: 
+weight: 304
 ---
 
 
-## Cloud environment variables
+## Cloud execution context variables
 
 When you run tests in k6 Cloud, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
-
-<Blockquote mod="note" title="You can also set your own environment variables">
-
-To use custom Cloud environment variables, refer to [Cloud environment variables](/cloud/manage/environment-variables/).
-
-</Blockquote>
 
 | Name              | Value  | Description                                                                                                                                              |
 | ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -1,7 +1,7 @@
 ---
 title: Run your first tests
 description: Use the GUI to build a quick prototype test. Run the test from the UI, or copy the script and run it from your UI
-weight: 200
+weight: 101
 ---
 
 # Get started with Grafana Cloud k6

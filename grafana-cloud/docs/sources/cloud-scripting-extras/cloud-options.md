@@ -1,6 +1,7 @@
 ---
 title: Cloud options
 description:
+weight: 301
 ---
 
 # Cloud options

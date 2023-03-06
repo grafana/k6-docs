@@ -1,7 +1,7 @@
 ---
 title: Get started with Grafana Cloud k6
 menuTitle: Get started
-weight: 001
+weight: 100
 ---
 
 # Get started with Grafana k6

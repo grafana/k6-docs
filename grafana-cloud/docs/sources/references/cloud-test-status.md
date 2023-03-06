@@ -1,15 +1,13 @@
 ---
-title: 'Test status codes'
-excerpt: 'A list of test statuses returned by k6 Cloud, with context and descriptions.'
-weight: 200
+title: 'Cloud test status'
+excerpt: 'A list of test statuses returned by the cloud test, with context and descriptions.'
+weight: 503
 ---
 
 # Test status codes
 
-The following is a list of test statuses in k6, along with the code returned.
+The following is a list of test statuses returned by the cloud test, along with the code returned.
 The code returned here is different than what is returned by k6.
-
-<Glossary>
 
 - [Created](#created): -2
 - [Validated](#validated): -1
@@ -24,7 +22,6 @@ The code returned here is different than what is returned by k6.
 - [Aborted by threshold](#aborted-by-threshold): 8
 - [Aborted by limit](#aborted-by-limit): 9
 
-</Glossary>
 
 ## Successful tests
 
