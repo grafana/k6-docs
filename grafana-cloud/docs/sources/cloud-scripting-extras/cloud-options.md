@@ -1,12 +1,14 @@
 ---
 title: Cloud options
-description:
+description: Cloud execution has a few extra options, including to distribute load across different regions or to change projects.
 weight: 301
 ---
 
 # Cloud options
 
-Cloud execution has a few extra options, including to distribute load across different zones, or to change projects.
+Cloud execution has a few extra options, including to distribute load across different regions or to change projects. These cloud options are **not required**.
+
+> For all available options, refer to [Options](https://k6.io/docs/using-k6/options) in the k6 OSS docs.
 
 ## Example
 
@@ -35,7 +37,7 @@ export const options = {
 |-------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name (string)                 | The name of the main script file, so something like `script.js`.                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                       |
 | projectID (number)            | It is empty by default.                                                                | The ID of the project to which the test is assigned in the k6 Cloud UI. That's in the default project of the user's default organization.                                                                             |
-| distribution (object)         | The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](#load-zones). The keys are string labels that will be injected as [environment variables](#injected-environment-variables-on-the-cloud-execution). |
+| distribution (object)         | The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [cloud load zones]({{< relref "./cloud-load-zones" >}}). |
 | staticIPs (boolean)           | `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                         |
 | note (string)                 | Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test.                                                                                                                         |
 | deleteSensitiveData (boolean) | False by default                                                                       | If set to `true`, k6 deletes sensitive data as soon as the test starts running or, if still queued, when the test aborts. Sensitive data includes scripts, HAR files, archives, and APM credentials.                  |
@@ -43,12 +45,9 @@ export const options = {
 | drop_tags (object)            | Empty by default                                                                       | Drops tags for a specified metric, where the metric is the key and the tags are an array. E.g. `{"http_req_duration": ["instance_id"]}`. This helps reduce the cardinality of time series.                            |
 
 
-<Blockquote mod="note" title="">
 
-The `deleteSensitiveData` option is unavailable in default subscriptions.
-If you want to activate it, contact our CS team at support@k6.io.
-
-</Blockquote>
+> The `deleteSensitiveData` option is unavailable in default subscriptions.
+> If you want to activate it, [contact our CS team](https://grafana.com/help/).
 
 ### Options to reduce time series
 
