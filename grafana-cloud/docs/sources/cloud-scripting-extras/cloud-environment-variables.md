@@ -8,9 +8,9 @@ weight: 305
 
 > **IMPORTANT** 
 > 
-> Cloud environment variables are currently not available from Grafana Cloud k6. 
+> The environment variables view is currently not available in Grafana Cloud. We are working on it.
 > 
-> We are working on it. Meanwhile, you can use this functionality by logging in to [k6 Cloud](https://app.k6.io/).
+> Meanwhile, you can manage environment variables by logging in to [k6 Cloud](https://app.k6.io/) and accessing them in your Grafana Cloud k6 tests.
 
 Environment Variables are key-value pairs that you configure at the organization level.
 
