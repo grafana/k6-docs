@@ -6,11 +6,11 @@ weight: 202
 
 # Get performance insights
 
-Whenever you run a test in k6 Cloud, *Performance Insights* algorithms automatically process the raw metrics and data.
+Whenever you run a cloud test, *Performance Insights* algorithms automatically process the raw metrics and data.
 
-If k6 finds an issue, it will notify you at the end of the test and recommend mitigations.
+If the cloud service finds an issue, it will notify you at the end of the test and recommend mitigations.
 
-k6 categorizes performance insights into three sets:
+Performance insights are categorized into three sets:
 - *HTTP load* insights help diagnose issues with your system under test.
 - *Best practices* insights help diagnose issues with your test script.
 - *Health alert* insights help discover issues with your load generator.
@@ -43,13 +43,10 @@ HTTP load alerts happen when your test results have a high number of active requ
    - Internal errors caused by saturation of a resource (CPU, memory, disk I/O or database connections).
      Saturation typically means the target system is close to its performance limit.
 
-<Blockquote>
 
-**Failed responses are often returned much faster than successful responses.**
-
-Consequently, an increased HTTP failure rate may produce misleading metrics for request rates and response times.
-
-</Blockquote>
+> **Failed responses are often returned much faster than successful responses.**
+> 
+> Consequently, an increased HTTP failure rate may produce misleading metrics for request rates and response times.
 
 ### High HTTP failure rate
 
@@ -72,13 +69,10 @@ Consequently, an increased HTTP failure rate may produce misleading metrics for 
   - Verify that any user accounts have sufficient permissions to access the application.
   - Verify that the application is publicly accessible.
 
-<Blockquote>
 
-**Failed responses are often returned much faster than successful responses.**
-
-Consequently, an increased HTTP failure rate may produce misleading metrics for request rates and response times.
-
-</Blockquote>
+> **Failed responses are often returned much faster than successful responses.**
+> 
+> Consequently, an increased HTTP failure rate may produce misleading metrics for request rates and response times.
 
 
 ### Not enough training data
@@ -119,15 +113,9 @@ These alerts are often quickly solved with changes in the test script or test co
   - The requests may violate the third party's ToS.
   - The third party may throttle your requests, skewing the percentiles of your results.
   - You may have no ability to affect that third party's performance.
-
-<Blockquote>
-
-You might have valid reasons to ignore this alert:
-
-- Your system under test may use multiple domains, in which case you can ignore this alert.
-- You also may have a valid reason to test your CDN. However, most CDNs charge based on usage, so your tests could generate additional costs from your CDN.
-
-</Blockquote>
+- **You might have valid reasons to ignore this alert**:
+  - Your system under test may use multiple domains, in which case you can ignore this alert.
+  - You also may have a valid reason to test your CDN. However, most CDNs charge based on usage, so your tests could generate additional costs from your CDN.
 
 ### Too many URLs
 
@@ -159,14 +147,11 @@ You might have valid reasons to ignore this alert:
 
 - **Recommendations**:
   Aggregate dynamic URLs as it will make analysis easier.
-  To see how, refer to [URL Grouping](/using-k6/http-requests#url-grouping).
+  To see how, refer to [URL Grouping](https://k6.io/using-k6/http-requests#url-grouping).
 
-<Blockquote>
 
-In some cases, the unique URLs may belong to third parties.
-As mentioned in the [Third Party Content](#third-party-content) alert, best practices recommend excluding third-party resources in your test scripts.
-
-</Blockquote>
+> In some cases, the unique URLs may belong to third parties.
+> As mentioned in the [Third Party Content](#third-party-content) alert, best practices recommend excluding third-party resources in your test scripts.
 
 ### Too many groups
 
@@ -174,11 +159,11 @@ As mentioned in the [Third Party Content](#third-party-content) alert, best prac
 - **Happens when**:
   k6 detects a high number of groups in your test script.
 - **What it might indicate**:
-  This alert commonly happens when a test uses a [Group name](/javascript-api/k6/group) to aggregate different HTTP requests or puts the group name in a loop statement.
+  This alert commonly happens when a test uses a [Group name](https://k6.io/docs/javascript-api/k6/group) to aggregate different HTTP requests or puts the group name in a loop statement.
 - **Recommendations**:
   - Use the `name` tag to aggregate URLs.
-  - Add [Group names](/javascript-api/k6/group) in your test script.
-  - If you want to group multiple HTTP requests, use [URL grouping](/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
+  - Add [Group names](https://k6.io/docs/javascript-api/k6/group) in your test script.
+  - If you want to group multiple HTTP requests, use [URL grouping](https://k6.io/docs/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
 
 ### Too many metrics
 
@@ -218,19 +203,13 @@ for (let id = 1; id <= 1000; id++) {
 - **Happens when**:
   you use a legacy version of k6 that is significantly older than the latest stable version.
 - **Recommendations**:
-  - [Install the latest release of k6](/get-started/installation), or upgrade your existing packages.
+  - [Install the latest release of k6](https://k6.io/get-started/installation), or upgrade your existing packages.
   - Update the k6 binary that your CI/CD pipeline uses to run tests.
   - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
 
 ## Health alerts
 
-Health alerts happen when the load generator has high resource utilization.
-
-<Blockquote mod="Attention" title="Pay attention to health alerts">
-
-An overutilized load generator can skew test results.
-
-</Blockquote>
+> Health alerts happen when the load generator has high resource utilization. An overutilized load generator can skew test results.
 
 ### High load generator CPU usage
 
@@ -267,7 +246,7 @@ An overutilized load generator can skew test results.
 ## Disabling performance insights
 
 You can disable one or more insights from showing up when executing load tests.
-This can be done by using `ext.loadimpct.insights` object in the `options`:
+This can be done by using `ext.loadimpact.insights` object in the `options`:
 
 
 ```javascript
@@ -342,5 +321,4 @@ For all insights and their identifiers, refer to the table below:
 | Outdated k6 Release Used         | `best_practice_outdated_k6_release_used` | `best_practice` |
 | High Load Generator CPU Usage    | `health_high_loadgen_cpu_usage`          | `health`        |
 | High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        |
-Document Title
 
