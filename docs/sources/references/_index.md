@@ -6,6 +6,7 @@ weight: 500
 
 ## References
 
+- [Tokens and CLI authentication]({{< relref "tokens-and-cli-authentication" >}})
 - [Schedule a test]({{< relref "schedule-a-test" >}})
 - [Send notifications]({{< relref "send-notifications" >}})
 - [Share test results]({{< relref "share-test-results" >}})

@@ -1,6 +1,6 @@
 .cache/
 public/
-grafana-cloud/
+docs/sources/
 node_modules/
 CONTRIBUTING_FILE_FORMAT.md
 src/data/markdown/docs/40 xk6-disruptor/04 Examples/01 Inject HTTP faults into Pod.md

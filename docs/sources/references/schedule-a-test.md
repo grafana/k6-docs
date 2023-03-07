@@ -1,7 +1,7 @@
 ---
 title: Schedule a test
 description: How to schedule your cloud tests to run in the future and at regular intervals. 
-weight: 501
+weight: 502
 ---
 
 # Schedule a test
