@@ -64,6 +64,8 @@ For Windows and Mac, we additionally include the target system as an environment
 
 The remainder is straight from the [xk6 documentation](https://github.com/grafana/xk6/#command-usage), with the exception that we use the `grafana/xk6` _image_ rather than a local installation of `xk6`:
 
+<CodeGroup labels={["Command usage"]} showCopyButton={[false]}>
+
 ```plain
 grafana/xk6 build [<k6_version>]
     [--output <file>]
@@ -75,6 +77,8 @@ Flags:
   --replace  enables override of dependencies for k6 and extensions [default: none]
   --with     the extension module to be included in the binary [default: none]
 ```
+
+</CodeGroup>
 
 > For this portion, use the [interactive builder](/extensions/get-started/bundle/) and prefix the `grafana/` to avoid typing mistakes!
 
@@ -95,6 +99,18 @@ If you specify a directory, the new binary will be `k6` within _that_ directory.
 If you specify a path to a non-existent file, e.g. `/tmp/k6-extended`, this will be the path and filename for the binary.
 
 Run `./k6 version` (or `k6.exe version`) to check that your build is based on the appropriate `k6` version and contains the desired extensions. For example:
+
+<CodeGroup labels={["Verify build"]} showCopyButton={[false]}>
+
+```bash
+$ ./k6 version
+k6 v0.43.1 ((devel), go1.20.1, darwin/amd64)
+Extensions:
+  github.com/grafana/xk6-output-influxdb v0.3.0, xk6-influxdb [output]
+  github.com/mostafa/xk6-kafka v0.17.0, k6/x/kafka [js]
+```
+
+</CodeGroup>
 
 ## Running your extended binary
 
