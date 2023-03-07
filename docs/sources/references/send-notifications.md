@@ -1,7 +1,7 @@
 ---
 title: Send notifications
 description: How to send emails and webhooks about test-related events in your organizations and projects 
-weight: 502
+weight: 503
 ---
 
 # Send notifications

@@ -1,7 +1,7 @@
 ---
 title: Usage reports
 description: Discover valuable information about the testing activity in your organization
-weight: 404
+weight: 403
 ---
 
 ## Usage reports

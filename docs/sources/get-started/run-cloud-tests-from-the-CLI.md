@@ -20,7 +20,7 @@ In this topic, learn how to use the CLI to:
 To use the CLI test, you need the following:
 
 - A machine with [k6 installed](https://k6.io/docs/get-started/installation)
-- An API token (refer to next section)
+- A [k6 token]({{< relref "../references/tokens-and-cli-authentication" >}})
 - A test file
 
 For your test file, you can copy the script prototyped in [Build your first test]({{< relref "build-your-first-test" >}}).
@@ -69,14 +69,7 @@ export function scenario_1() {
 }
 ```
 
-### Get a token
-
-To run tests from the CLI, you'll need a token.
-To get one, go **k6 > Settings**.
-
-<!--- WRITERS_NOTE  complete this step when API token exists-->
-
-## Run local tests
+## Run tests
 
 To run tests from the CLI, open your terminal follow these steps:
 
@@ -99,7 +92,18 @@ k6 run cloud_demo.js
 
 ### Cloud execution
 
-After you have a suitable script, you can run the test on Cloud servers without leaving your local device.
+To run a cloud test from the CLI, you'll need a [Token]({{< relref "../references/tokens-and-cli-authentication" >}}) for authenticating the k6 CLI with the k6 Cloud App.
+
+1. To get a personal token in Grafana Cloud, go to **k6 Cloud App > Settings**. 
+2. Copy your personal token.
+3. Use the token to authenticate your k6 CLI instance.
+
+    ```bash
+    k6 login cloud --token <YOUR_PERSONAL_K6_CLOUD_API_TOKEN>
+    ```
+
+    Note that you only need to authenticate once your local k6 CLI instance. Alternatively, [other authentication options]({{< relref "../references/tokens-and-cli-authentication" >}}) are available. 
+
 To run cloud tests from your CLI, use the `k6 cloud` command:
   
 ```bash
@@ -114,6 +118,5 @@ A frequent use case for this feature is to run load tests on networks that aren'
 To stream results to Grafana Cloud k6, use the `k6 run --out cloud`:
 
 ```bash
-k6 cloud cloud_demo.js
+k6 run --out cloud cloud_demo.js
 ```
-

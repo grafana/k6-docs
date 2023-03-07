@@ -4,7 +4,6 @@ description:
 weight: 400
 ---
 
-## References
+## Project and users
 
-- [Cloud test status]({{< relref "cloud-test-status" >}})
 
