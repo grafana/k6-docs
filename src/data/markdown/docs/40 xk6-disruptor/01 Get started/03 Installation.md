@@ -15,7 +15,7 @@ The quickest way to get started is to [download a release binary from GitHub](ht
 
 You can also use [xk6](https://github.com/grafana/xk6) to build a k6 binary.
 
-To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary with extensions](/extensions/guides/build-a-k6-binary-with-extensions/).
+To find out more about how to use xk6 or what it is, check out this guide - [Build a k6 binary using Go](/extensions/guides/build-a-k6-binary-using-go/).
 
 
 To build the k6 binary with the xk6-disruptor extension:
