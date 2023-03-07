@@ -1,7 +1,7 @@
 ---
 title: 'Cloud test status'
 excerpt: 'A list of test statuses returned by the cloud test, with context and descriptions.'
-weight: 503
+weight: 504
 ---
 
 # Test status codes
