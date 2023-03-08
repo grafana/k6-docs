@@ -1,6 +1,6 @@
 ---
 title: Manage project members
-description: 
+description: Learn the distinct roles in k6 projects and how to grant role access to team members
 weight: 402
 ---
 
