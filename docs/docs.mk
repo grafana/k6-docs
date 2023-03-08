@@ -27,7 +27,6 @@ endif
 
 DOCS_IMAGE     := grafana/docs-base:latest
 DOCS_CONTAINER := $(PROJECT)-docs
-DOCS_VALIDATOR_IMAGE     := grafana/doc-validator:v1.9.0
 
 HUGO_REFLINKSERRORLEVEL ?= WARNING
 
