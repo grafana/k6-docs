@@ -12,15 +12,19 @@ Follow along to learn how to create load tests with the _Test Builder_.
 
 To do these procedures, you'll need the following:
 
-- [ ] A [Grafana Cloud](/docs/grafana-cloud/) stack with the k6 app
+- A [Grafana Cloud Stack](/docs/grafana-cloud/) with the k6 app
+- You have permission to run load tests against an HTTP endpoint
 
 ## Create a test with the test builder
 
 The _Test Builder_ is a graphical interface to simulate user behavior and model traffic patterns.
 It provides a quick way to prototype tests and learn the basic functionality of the k6 API.
 
-You have permission to run load tests on a demo site, `https://test.k6.io`.
-To learn how to make a test, follow these steps:
+![Grafana Cloud k6 - Test Builder](/media/docs/k6/screenshoot-k6-test-builder.png)
+
+
+
+To learn how to make a test with the _Test Builder_, follow these steps:
 
 1. From your Grafana stack, go to the k6 app.
 1. Select **New Test**. Choose the **Test Builder**.
@@ -28,7 +32,8 @@ To learn how to make a test, follow these steps:
 1. Select **Request**.
 1. Make your test logic:
     - In the **Name** field, enter `Get homepage`.
-    - In the **Request** fields, select `GET` and enter the url, `test.k6.io`.
+    - In the **Request** fields, select `GET` and enter the url of your demo site or API.
+
 
 Now you have test logic, and could already run a test.
 But k6 doesn't only make requests.
@@ -98,7 +103,7 @@ To do so, follow these steps:
 1. From the test results, select **Script**.
 1. Select **Run script from the CLI** and follow the instructions.
 
-As you build the test, you can also use the **Script** toggle to view the configuration. 
+As you build the test, you can also use the **Script** toggle to view the k6 test script. 
 
 For a more detailed tutorial, read [Run tests from the CLI]({{< relref "run-cloud-tests-from-the-cli" >}}).
  
