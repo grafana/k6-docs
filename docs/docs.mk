@@ -27,6 +27,7 @@ endif
 
 DOCS_IMAGE     := grafana/docs-base:latest
 DOCS_CONTAINER := $(PROJECT)-docs
+DOCS_VALIDATOR_IMAGE     := grafana/doc-validator:v1.9.0
 
 HUGO_REFLINKSERRORLEVEL ?= WARNING
 
@@ -37,6 +38,16 @@ docs-rm: ## Remove the docs container.
 .PHONY: docs-pull
 docs-pull: ## Pull documentation base image.
 	$(PODMAN) pull $(DOCS_IMAGE)
+
+.PHONY: docs/lint
+docs/lint: ## Run docs-validator on the entire docs folder.
+	docker run --rm -ti \
+		--platform linux/amd64 \
+		--volume "${PWD}/sources:/docs/sources" \
+		grafana/doc-validator:v1.9.0 \
+		--skip-image-validation \
+		/docs/sources \
+		/docs/k6
 
 .PHONY: docs
 docs: ## Serve documentation locally.
