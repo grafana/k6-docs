@@ -4,7 +4,7 @@ description: For day-to-day use, it's most convenient to run your cloud tests fr
 weight: 102
 ---
 
-# Run Cloud tests from the CLI
+# Run cloud tests from the CLI
 
 While the [Test Builder]({{< relref "build-your-first-test" >}}) is a nice way to learn the API and prototype tests, testers usually prefer to write scripts in their local code editor.
 k6 is also a command-line tool, and you can use it to write test files on your machine and execute them on Cloud servers.
