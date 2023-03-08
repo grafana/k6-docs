@@ -12,7 +12,7 @@ Follow along to learn how to create load tests with the _Test Builder_.
 
 To do these procedures, you'll need the following:
 
-- [ ] A [Grafana Cloud](/docs/grafana-cloud/) instance with the k6 app
+- [ ] A [Grafana Cloud](/docs/grafana-cloud/) stack with the k6 app
 
 ## Create a test with the test builder
 
@@ -22,7 +22,7 @@ It provides a quick way to prototype tests and learn the basic functionality of 
 You have permission to run load tests on a demo site, `https://test.k6.io`.
 To learn how to make a test, follow these steps:
 
-1. From your Grafana instance, go to the k6 app.
+1. From your Grafana stack, go to the k6 app.
 1. Select **New Test**. Choose the **Test Builder**.
 1. In the first field, name the test `Test demo`.
 1. Select **Request**.

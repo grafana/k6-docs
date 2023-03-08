@@ -12,7 +12,7 @@ To authenticate accounts, k6 provides an API token, which you can pass on the CL
 
 You can generate two types of API tokens for k6 Cloud, depending on how you want to authenticate:
 - [Personal level API tokens](#personal-api-token) grant access through your account with the Grafana Cloud k6 App.
-- [Instance level API tokens](#grafana-instance-api-token) grant access for actions not tied to a user but to the Grafana instance.
+- [Stack level API tokens](#grafana-stack-api-token) grant access for actions not tied to a user but to the Grafana Cloud Stack.
 
 To generate API tokens, follow these steps.
 
@@ -25,16 +25,16 @@ In Grafana Cloud, go to **k6 Cloud App > Settings > Personal API token**.
 On this section, you can copy, see, and regenerate your personal API token.
 
 
-## Grafana Instance API token
+## Grafana Stack API token
 
 > Only [admins](/cloud/project-and-team-management/members/#admin) can access and manage these tokens.
 
-An instance API token provides access to all projects within the Grafana instance.
+A Stack API token provides access to all projects within the Grafana Cloud Stack.
 You can use it to run tests without linking the run to a specific user, e.g. when running tests from a CI platform.
 To generate a token, follow these steps:
 
-1. In Grafana Cloud, go to **k6 Cloud App > Settings > Grafana Instance API token**.
-2. Select **Set up Grafana Instance API token**.
+1. In Grafana Cloud, go to **k6 Cloud App > Settings > Grafana Stack API token**.
+2. Select **Set up Grafana Stack API token**.
    
 	> **IMPORTANT** 
 	> 
