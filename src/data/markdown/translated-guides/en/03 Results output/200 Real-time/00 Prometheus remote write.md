@@ -138,7 +138,7 @@ k6 has special options for remote write output.
 
 To visualize time series, you can use Grafana via explorer, importing the pre-built [official dashboard](https://grafana.com/grafana/dashboards/18030-test-result/) or create a custom version. You can visualize them from [Grafana Cloud](/results-output/real-time/grafana-cloud) integration or in a self-hosted instance.
 
-If you want a local option, the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built Grafana dashboards.
+If you want a local option, the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-compose.yml) with two pre-built Grafana dashboards.
 You can use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
 - visualize the results of a test run
 - list test runs
@@ -147,7 +147,7 @@ You can use these dashboards to visualize the generated time series with Prometh
 
 ### Docker compose example 
 
-Clone the repository to get started and follow these steps for using the [docker-compose.yml](./docker-compose.yml) file that starts _Prometheus_ and _Grafana_:
+Clone the repository to get started and follow these steps for using the [docker-compose.yml](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-compose.yml) file that starts _Prometheus_ and _Grafana_:
 
 <Blockquote mod="note" title="">
 
