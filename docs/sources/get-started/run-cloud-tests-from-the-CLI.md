@@ -6,7 +6,7 @@ weight: 102
 
 # Run cloud tests from the CLI
 
-While the [Test Builder]({{< relref "build-your-first-test" >}}) is a nice way to learn the API and prototype tests, testers usually prefer to write scripts in their local code editor.
+While the [Test Builder]({{< relref "run-your-first-tests" >}}) is a nice way to learn the API and prototype tests, testers usually prefer to write scripts in their local code editor.
 k6 is also a command-line tool, and you can use it to write test files on your machine and execute them on Cloud servers.
 
 In this topic, learn how to use the CLI to:
@@ -23,7 +23,7 @@ To use the CLI test, you need the following:
 - A [k6 token]({{< relref "../references/tokens-and-cli-authentication" >}})
 - A test file
 
-For your test file, you can copy the script prototyped in [Build your first test]({{< relref "build-your-first-test" >}}).
+For your test file, you can copy the script prototyped in [Build your first test]({{< relref "run-your-first-tests" >}}).
 In the directory where you want to run your test, save this as `cloud_demo.js`.
 
 > To keep demo run times short, the total test duration has been modified to be only 45 seconds.

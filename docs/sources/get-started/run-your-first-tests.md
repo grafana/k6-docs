@@ -1,10 +1,10 @@
 ---
-title: Run your first tests from the Test Builder
+title: Run your first tests
 description: Use the GUI to build a quick prototype test. Run the test from the UI, or copy the script and run it from your UI
 weight: 101
 ---
 
-# Run your first tests from the Test Builder
+# Run your first tests 
 
 Follow along to learn how to create load tests with the _Test Builder_.
 
