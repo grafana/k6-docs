@@ -4,7 +4,7 @@
   "retry": true,
   "retryErrorsCount": 3,
   "retryErrorsJitter": 5,
-  "skip": "linkedin.com|fonts.googleapis.com|.*(\\.js|\\.css)$",
+  "skip": "localhost|linkedin.com|fonts.googleapis.com|.*(\\.js|\\.css)$",
   "verbosity": "error",
   "format": "json"
 }
