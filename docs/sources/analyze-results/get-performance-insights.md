@@ -180,8 +180,8 @@ Having too many metrics in a single test is considered an anti-pattern because i
 The following example shows how custom metrics can be misused:
 
 ```javascript
-import { Counter } from 'k6/metrics';
 import http from 'k6/http';
+import { Counter } from 'k6/metrics';
 
 const successCounts = [];
 for (let id = 1; id <= 1000; id++) {
