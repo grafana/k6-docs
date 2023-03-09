@@ -1,22 +1,34 @@
 ---
 title: 'Correlate results in Grafana'
-excerpt: ''
+description: 'Sometimes, you cannot determine what is happening during testing with the test result dashboard. Correlating testing data with server-side data helps to better understand what happens and find root causes.'
 weight: 203
 ---
 
 # Correlate results in Grafana
 
-Sometimes, our result analysis view is not enough to determine what's going on with your tests. Grafana Cloud k6 integrates deeply with Grafana, so you can leverage all its powers when needed. A vital piece of this integration is the data source we provide, which can be used to query de data directly from Explore or your dashboards. 
+Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze the testing results: k6 metrics. By default, these visualizations do not integrate with other dashboards observing your systems or monitoring their metrics.
+
+Sometimes, you cannot determine what's happening during testing with the predefined visualizations. In this case, correlating testing data with server-side data helps to better understand what happens and find root causes.
+
+This topic shows how to use Grafana features to correlate k6 results with other dashboards and observability data.
 
 ## Explore
 
-When you want to dive deeper into a chart we display in the app, compare it with data from other data sources, or play with our query editor, Explore is here to help. 
+[Grafana Explore](/docs/grafana/latest/explore/) allows to query metrics and shows its results as graph and a table. You can query distinct data types from multiple sources and visualize them together for comparison and correlation.
 
-Every chart in the app has a button in the top right corner to open Explore and showcase the same chart you saw. Once there, you can add new queries from the Grafana Cloud k6 or any other data source. In Explore, our data source shows the results as a graph and a Table, allowing you to see trends in the data and more details simultaneously.
+To access k6 metrics with Explore:
 
-![Explore](/media/docs/k6/screenshot-grafana-cloud-dashboard.png)
+1. Navigate to a test result dashboard.
+2. Find a panel to query their metrics.
+3. Click the **Kebab menu** (three dots) of the panel.
 
-To learn more about how to use Explore, check out the [Grafana documentation](https://grafana.com/docs/grafana/latest/explore/).
+	![Select Explore metrics](/media/docs/k6/screenshot-grafana-cloud-kebab-menu.png)
+
+4. Click **Explore**.
+
+	The metric or group of metrics are now displayed on Explore.
+
+	![Explore](/media/docs/k6/screenshot-grafana-cloud-explore.png)
 
 ## Dashboards
 
