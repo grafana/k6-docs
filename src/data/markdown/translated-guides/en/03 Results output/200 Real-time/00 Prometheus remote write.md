@@ -100,7 +100,7 @@ To send k6 metrics to a remote write endpoint, follow these steps:
 All the time series have a `k6_` prefix.
 In the Metric Explorer UI in Grafana, it looks something  like this:
 
-![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-rw-metrics.png)
+![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-metric-explorer.png)
 
 ### Authenticate
 
@@ -136,11 +136,64 @@ k6 has special options for remote write output.
 
 ## Time series visualization 
 
-To visualize time series, you can use the [Grafana Cloud](/results-output/real-time/grafana-cloud) integration.
+To visualize time series, you can use Grafana via explorer, importing the pre-built [official dashboard](https://grafana.com/grafana/dashboards/18030-test-result/) or create a custom version. You can visualize them from [Grafana Cloud](/results-output/real-time/grafana-cloud) integration or in a self-hosted instance.
 
-If you want a local option instead, the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/#docker-compose) with two pre-built Grafana dashboards.
+If you want a local option, the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-compose.yml) with two pre-built Grafana dashboards.
 You can use these dashboards to visualize the generated time series with Prometheus configured as a data source: 
 - visualize the results of a test run
 - list test runs
 
-![Prometheus k6 results](./images/Prometheus/prometheus-dashboard-test-result.png)
+![Prometheus k6 results dashboard](./images/Prometheus/prom-dashboard-test-result.png)
+
+### Docker compose example 
+
+Clone the repository to get started and follow these steps for using the [docker-compose.yml](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-compose.yml) file that starts _Prometheus_ and _Grafana_:
+
+<Blockquote mod="note" title="">
+
+The `docker-compose.yml` file has the Native Histogram mapping set as enabled.
+
+</Blockquote>
+
+1. Start the docker compose environment.
+
+<CodeGroup labels={[""]}>
+
+```shell
+docker compose up -d prometheus grafana
+```
+
+</CodeGroup>
+
+<CodeGroup labels={[""]}>
+
+```shell
+# Output
+Creating xk6-output-prometheus-remote_grafana_1     ... done
+Creating xk6-output-prometheus-remote_prometheus_1  ... done
+```
+
+</CodeGroup>
+
+2. Use the k6 Docker image to run the k6 script and send metrics to the Prometheus container started on the previous step. You must set the `testid` tag as a [wide test tag](https://k6.io/docs/using-k6/tags-and-groups/#test-wide-tags) with a unique identifier to segment the metrics into discrete test runs for the pre-built Grafana dashboards.
+
+<CodeGroup labels={[""]}>
+
+```shell
+K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
+  k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> ./samples/http_get.js
+```
+
+</CodeGroup>
+
+`testid` can be any unique string that let you clearly identify the test. For convenience, a [docker-run.sh](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-run.sh) file is available with a time-based `testid`, and it can be simply:
+
+<CodeGroup labels={[""]}>
+
+```shell
+docker-run.sh ./samples/http_get.js
+```
+
+</CodeGroup>
+
+3. Visit [http://localhost:3000](http://localhost:3000) to view results in Grafana.
