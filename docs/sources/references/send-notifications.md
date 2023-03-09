@@ -47,7 +47,7 @@ Then, head to the [k6 web app](https://app.k6.io/).
   If you now go back to **Configure** the notification you just created, you'll see a
    **Send test event** button. Use that to send a dummy message and to make sure it works.
 
-> With the _toggle advanced mode_ button, you can view and customize exactly what k6 sends to Slack. Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
+> With the _toggle advanced mode_ button, you can view and customize exactly what k6 sends to Slack. Read more about it in the [Custom webhook](#add-a-custom-webhook) section below.
 
 
 ## Add a Microsoft Teams notification
@@ -67,7 +67,7 @@ Then go the [k6 web app](https://app.k6.io/) and follow these steps.
 
 > To view and customize exactly what k6 sends to Microsoft Teams,
 > use the **Advanced mode** toggle.
-> Read more about it in the [Custom webhook](#adding-a-custom-webhook) section below.
+> Read more about it in the [Custom webhook](#add-a-custom-webhook) section below.
 
 
 ## Add a Custom Webhook

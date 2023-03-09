@@ -1,6 +1,6 @@
 ---
 title: 'Get performance insights'
-excerpt: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
+description: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
 weight: 202
 ---
 

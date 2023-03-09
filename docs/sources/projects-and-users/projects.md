@@ -14,12 +14,12 @@ Projects allow to organize k6 tests in collections and grant their access. Here 
 - Per customer: When dealing with custom software, you can to organize by customer to ensure each unique system is tested.
 - Per major release: After your systems go through a major change, you can to create a new project to organize the most recent data.
 
-> To invite users to a project, refer to [manage project members]({{./manage-project-members}}).
+> To invite users to a project, refer to [manage project members]({{< relref "./manage-project-members" >}}).
 
 
 ## Running CLI Tests in a Specific Project
 
-By default, when you run a test from the CLI, the test runs in your default project. If you want to set the test run in a different project, specify the [`projectID` option]({{../cloud-scripting-extras/cloud-options}}) in the k6 script:
+By default, when you run a test from the CLI, the test runs in your default project. If you want to set the test run in a different project, specify the [`projectID` option]({{< relref "../cloud-scripting-extras/cloud-options" >}}) in the k6 script:
 
 ```javascript
 export const options = {
