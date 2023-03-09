@@ -6,7 +6,7 @@ weight: 402
 
 # Manage project members
 
-A k6 project member is a Grafana user with access to a particular [k6 project]({{./projects}}). Each member is associated with a role that includes permissions in the project.
+A k6 project member is a Grafana user with access to a particular [k6 project]({{< relref "./projects" >}}). Each member is associated with a role that includes permissions in the project.
 
 ## Roles
 

@@ -1,10 +1,10 @@
 ---
-title: Run your first tests
+title: Run your first tests from the Test Builder
 description: Use the GUI to build a quick prototype test. Run the test from the UI, or copy the script and run it from your UI
 weight: 101
 ---
 
-# Get started with Grafana Cloud k6
+# Run your first tests from the Test Builder
 
 Follow along to learn how to create load tests with the _Test Builder_.
 

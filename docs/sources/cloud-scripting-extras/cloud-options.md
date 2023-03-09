@@ -47,7 +47,7 @@ export const options = {
 
 
 > The `deleteSensitiveData` option is unavailable in default subscriptions.
-> If you want to activate it, [contact our CS team](https://grafana.com/help/).
+> If you want to activate it, [contact our CS team](/help/).
 
 ### Options to reduce time series
 

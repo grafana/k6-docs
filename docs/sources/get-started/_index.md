@@ -1,10 +1,11 @@
 ---
 title: Get started with Grafana Cloud k6
-menuTitle: Get started
+menuTitle: 'Get started'
+description: 'The following information will help you to start with Grafana Cloud k6'
 weight: 100
 ---
 
-# Get started with Grafana k6
+# Get started with Grafana Cloud k6
 
 In these topics, learn the minimum to run tests and use Grafana Cloud k6.
 
