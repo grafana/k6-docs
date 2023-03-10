@@ -8,7 +8,7 @@ weight: 203
 
 Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze the testing results: k6 metrics. By default, these visualizations do not integrate with other dashboards observing your systems or monitoring their metrics.
 
-Sometimes, you cannot determine what's happening during testing with the predefined visualizations. In this case, correlating testing data with server-side data helps to better understand what happens and find root causes.
+Sometimes, you cannot determine what’s happening during testing with the predefined visualizations. In this case, correlating testing results with the data of the system under test helps to better understand what happens and find root causes.
 
 This topic shows how to use Grafana features to correlate k6 results with other dashboards and observability data.
 
@@ -20,38 +20,73 @@ To access k6 metrics with Explore:
 
 1. Navigate to a test result dashboard.
 2. Find a panel to query their metrics.
-3. Click the **Kebab menu** (three dots) of the panel.
+3. Click the **Kebab menu** (three dots).
 
 	![Select Explore metrics](/media/docs/k6/screenshot-grafana-cloud-kebab-menu.png)
 
 4. Click **Explore**.
 
-	The metric or group of metrics are now displayed on Explore.
+	Explore displays the metric or group of metrics.
 
 	![Explore](/media/docs/k6/screenshot-grafana-cloud-explore.png)
 
-## Dashboards
+## Add a k6 panel to a dashboard
 
-Even if our Result Analysis page is purposely designed for Performance Testing, sometimes, more is needed, and you need to leverage Grafana's dashboarding capabilities. One typical example is requiring a central visualization that mixes black box (k6) and white box data available on Grafana Cloud (e.g., Metrics, Logs, Traces) from the system under test. 
+Add a k6 panel to a [dashboard](/docs/grafana/latest/dashboards/) when you want to visualize k6 results with other existing visualizations, such as observability data of the system under test. 
 
-It is also helpful when Explore falls short because you need another panel type or have too much data from different queries.
+1. Find the k6 panel.
+2. Click the **Kebab menu** (three dots).
+3. Click **Copy to Clipboard**.
+4. Navigate to the dashboard that you want to add the panel.
+5. Click the **Add Panel** icon.
+   
+	The Add panel dialog opens.
 
-Panels that use the Grafana Cloud k6 data source can be added manually. But, to ease the process, we have added, on the top right of every chart you see in the app, a "Copy to Clipboard" button that lets you copy the panel and paste it into a new or existing dashboard.
+	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-add-panel.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the add panel dialog" >}}
 
-![Dashboard](/media/docs/k6/screenshot-grafana-cloud-dashboard.png)
+6. Click **Paste panel from clipboard**.
 
-To learn more about how to create dashboards, check out the [Grafana documentation](https://grafana.com/docs/grafana/latest/dashboards/).
+Once added the k6 panel to a dashboard, you can edit the panel options. 
 
-### Variables
+### Change the panel visualization
 
-When you need to parametrize a dashboard, Variables are key. They act as placeholders for values and can be used in metric queries and panel titles. So when you change the value using the dropdown at the top of the dashboard, your panel's metric queries will change to reflect the new value.
 
-Our data source integrates seamlessly with variables. Using our data source, you can create variables populated by it (e.g., with the project, test, and test run values) and use them later on any panel.
+The majority of the k6 panels are `Time series` visualizations. To change the panel visualization:
 
-To learn more about how to create variables, check out the [Grafana documentation](https://grafana.com/docs/grafana/latest/variables/).
+1. Click on the panel title
 
-### Panels
+	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the panel menu" >}}
 
-Even if the most common panel type in the app is the Time Series panel, once you create a panel in a dashboard you can change its type. The Grafana Cloud k6 data source supports all the panel types available in Grafana, so you can use them to visualize your data.
+2. Click **Edit**
+   
+3. Click the right sidebar to change the visualization
+   
+	You can see a list of visualizations to select.
 
-To learn more about how to panel types, check out the [Grafana documentation](https://grafana.com/docs/grafana/latest/panels-visualizations/).
+	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel-view.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the edit panel" >}}
+
+### Add a k6 variable
+
+[Variables](/docs/grafana/latest/dashboards/variables/) allow you to have dynamic dashboards. You can use variables in panels to change the panel's data when the variable value changes.
+
+Grafana Cloud k6 provides the following variables:
+- `Project`
+- `Test`
+- `Test run`
+
+For example, you can set the `Test run` variable in a k6 panel that visualizes latency. If you change the `Test run` value, it displays the latency of the new `Test run`.
+
+To add a k6 variable to a panel:
+
+1. Navigate to the dashboard you want to make a variable for and click the **Dashboard settings** (gear) icon at the top of the page. 
+2. On the Variables tab, click **Add variable**.
+3. Enter a Name for the variable.
+4. In the Type list, select Query.
+5. On the Datasource list, select `Grafana Cloud k6`. 
+6. On Query, select the k6 variable you want.
+   
+	The `Test` variable depends on a `Project`.
+
+	The `Test run` variable depends on a `Test` from a specific `Project`.
+7. Click **Apply** to add the variable to the dashboard.
+		{{< figure src="/media/docs/k6/screenshot-grafana-cloud-dashboard-with-variable.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the dashboard with the new variable" >}}
