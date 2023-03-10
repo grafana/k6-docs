@@ -1028,6 +1028,7 @@ async function fetchDocPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
@@ -1071,6 +1072,7 @@ async function fetchGuidesPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
@@ -1114,6 +1116,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
@@ -1916,6 +1919,11 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'shouldCreatePage',
       value: node.frontmatter.shouldCreatePage || true,
+    });
+    createNodeField({
+      node,
+      name: 'canonicalUrl',
+      value: node.frontmatter.canonicalUrl || '',
     });
   }
 };

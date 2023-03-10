@@ -120,6 +120,7 @@ export const Head = ({
       title: frontmatter.head_title || frontmatter.title,
       description: frontmatter.excerpt,
       slug: frontmatter.slug ? frontmatter.slug : location.pathname.slice(1),
+      canonicalUrl: frontmatter.canonicalUrl,
     },
   };
 

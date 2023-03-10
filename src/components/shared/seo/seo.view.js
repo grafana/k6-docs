@@ -18,7 +18,7 @@ const getPageHref = (host, slug) => {
 };
 
 export const SEO = ({
-  data: { title, description, image, slug } = {},
+  data: { title, description, image, slug, canonicalUrl } = {},
   facebook,
   pageTranslations = null,
   pageVersions = null,
@@ -52,16 +52,20 @@ export const SEO = ({
   const currentDescription = description || siteDescription;
   const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
   const currentRobotsContent = useRef('index, follow');
+  let versionedCanonicalUrl = currentUrl;
   let currentLanguage = 'en';
 
   if ((slug && slug.startsWith('es/')) || (slug && slug.startsWith('/es/'))) {
     currentLanguage = 'es';
   }
 
-  let versionedCanonicalUrl = currentUrl;
   // set canonical path to latest version URL if it's available
   if (pageVersions && typeof pageVersions[LATEST_VERSION] !== 'undefined') {
     versionedCanonicalUrl = `${docs}${pageVersions[LATEST_VERSION].path}`;
+  }
+
+  if (canonicalUrl) {
+    versionedCanonicalUrl = canonicalUrl;
   }
 
   const currentImage = createMetaImagePath(image, siteUrl, siteImage);
