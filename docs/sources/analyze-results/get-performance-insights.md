@@ -196,6 +196,19 @@ for (let id = 1; id <= 1000; id++) {
 // in Too Many URLs alert example.
 ```
 
+### Too many time series
+
+*Identifier*: `best_practice_too_many_time_series`
+- **Happens when**:
+  k6 detects a high number of time series in your test script.
+- **What it might indicate**:
+  This alert commonly happens when a test has an excessive number of unique values for `tags`.
+- **Recommendations**:
+  - Use [URL grouping](https://k6.io/docs/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
+  - Use fewer tag values when using [custom tags](https://k6.io/docs/using-k6/http-requests/#http-request-tags).
+  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`]({{< relref "cloud-options#options-to-reduce-time-series" >}}) to reduce the cardinality of time series.
+
+
 
 ### Outdated k6 release used
 
