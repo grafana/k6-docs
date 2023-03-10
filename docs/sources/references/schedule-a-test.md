@@ -71,7 +71,7 @@ You can also schedule a test from the test overview page.
   This brings up the schedule configuration.
 
 
-> **Tip**: [trigger a cloud test from the CLI]({{< relref "../get-started/run-cloud-tests-from-the-CLI" >}}), then set up a schedule from the cloud app to re-run the test on a regular interval.
+> **Tip**: [trigger a cloud test from the CLI]({{< relref "../get-started/run-cloud-tests-from-the-cli" >}}), then set up a schedule from the cloud app to re-run the test on a regular interval.
 
 
 ## Scheduling options
