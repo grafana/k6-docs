@@ -1,39 +1,28 @@
 ---
 title: 'Share test results'
-description: ''
+description: 'After you analyze your test results, you might want to share them with other users involved in the testing'
 weight: 504
 ---
 
 # Share test results
 
-After you analyze your test, you might want to mark it for further analysis.
+After you analyze your test results, you might want to share them with other users involved in the testing.
 
-To do this, you have a few options:
+[Project members]({{< relref "../projects-and-users/manage-project-members" >}}) can access the project test results. For non-project members, you have a few options to share test results:
 
-- Generate a PDF Summary of your test results
-- Export it to another format, so you can query it with the program of your choice.
-- Make a shareable link, so you can show the results to others.
-- Set the test as baseline, keeping it available beyond the normal data retention periods.
-- Make notes on the test, preserving contextual details.
+- **Generate a PDF report**. A executive summary of the test results. Read about the [PDF report](https://k6.io/docs/cloud/analyzing-results/result-export/#generate-a-pdf-report).
+- **Export data** to CSV format to query them with other program. Read about [CSV format](https://k6.io/docs/cloud/analyzing-results/result-export/#export-as-csv).
+- **Share a public link** that does not require authentication. This option could expose sensitive test information. 
 
-
-To do any of these actions, use the vertical-dots icon to open the *Test Result menu*.
+To do any of these actions, click the **Kebab menu** (three dots) to open the *Test Result menu*.
 
 ![Test Results Menu](/media/docs/k6/test-results-menu.png)
 
-## Download export data
+Also, in this menu, you can select to write a note about the test result to share with project members.
 
-Starts a test result data export.
-
-## Share test results (generates a link to app.k6.io)
-
-Generates a URL that you can use to share test results.
-
-**Users don't need to authenticate to view a shared test URL**.
-If you want to share sensitive results, consider adding users as
-[Members](/cloud/project-and-team-management/members) instead.
-
-## Generate PDF Summary (will go to app.k6.io)
-
-Generates an executive summary of the test's most relevant metrics and performance data.
+> **IMPORTANT** 
+> 
+> The shareable link and PDF report features are currently not available in Grafana Cloud. We are working on it.
+> 
+> Meanwhile, the link with the public results is available at [https://app.k6.io/ (k6 Cloud)](https://app.k6.io/), and users are redirected to **k6 Cloud** to generate the PDF report.
 
