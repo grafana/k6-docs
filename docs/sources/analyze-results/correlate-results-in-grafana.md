@@ -6,8 +6,6 @@ weight: 203
 
 # Correlate results in Grafana
 
-Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze the testing results: k6 metrics. 
-
 Sometimes, you cannot determine what’s happening during testing with the predefined visualizations. In this case, correlating testing results with the system-under-test data helps to better understand what happens and find root causes.
 
 This topic shows how to use Grafana to correlate k6 results with other dashboards and observability data.
@@ -18,7 +16,7 @@ This topic shows how to use Grafana to correlate k6 results with other dashboard
 
 To access k6 metrics with Explore:
 
-1. Navigate to a test result dashboard.
+1. Navigate to a test result view.
 2. Find a panel to query their metrics.
 3. Click the **Kebab menu** (three dots).
 

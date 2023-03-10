@@ -31,7 +31,7 @@ export const options = {
 };
 ```
 
-In Grafana Cloud, you can find the `projectID` value below the project name on the project dashboard:
+In Grafana Cloud, you can find the `projectID` value below the project name on the project view:
 
 ![k6 Project ID](/media/docs/k6/screenshoot-grafana-cloud-k6-project-id.png)
 
