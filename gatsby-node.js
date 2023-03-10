@@ -1028,6 +1028,7 @@ async function fetchDocPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
@@ -1071,6 +1072,7 @@ async function fetchGuidesPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
@@ -1114,6 +1116,7 @@ async function fetchJavascriptAPIPagesData(graphql) {
                   hideFromSidebar
                   draft
                   shouldCreatePage
+                  canonicalUrl
                 }
               }
             }
