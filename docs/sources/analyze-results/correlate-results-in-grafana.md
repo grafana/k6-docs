@@ -14,7 +14,7 @@ This topic shows how to use Grafana to correlate k6 results with other dashboard
 
 [Grafana Explore](/docs/grafana/latest/explore/) allows to query metrics and shows its results as graph and a table. You can query distinct data types from multiple sources and visualize them together for comparison and correlation.
 
-To access k6 metrics with Explore:
+To work directly with the k6 queries of a panel on Explore:
 
 1. Navigate to a test result view.
 2. Find a panel to query their metrics.
@@ -62,29 +62,3 @@ The majority of the k6 panels are `Time series` visualizations. To change the pa
 	You can see a list of visualizations to select.
 
 	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel-view.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the edit panel" >}}
-
-### Add a k6 variable
-
-[Variables](/docs/grafana/latest/dashboards/variables/) allow you to have dynamic dashboards. You can use variables in panels to change the panel's data when the variable value changes.
-
-Grafana Cloud k6 provides the following variables:
-- `Project`
-- `Test`
-- `Test run`
-
-For example, you can set the `Test run` variable in a k6 panel that visualizes latency. If you change the `Test run` value, it displays the latency of the new `Test run`.
-
-To add a k6 variable to a panel:
-
-1. Navigate to the dashboard you want to make a variable for and click the **Dashboard settings** (gear) icon at the top of the page. 
-2. On the Variables tab, click **Add variable**.
-3. Enter a Name for the variable.
-4. In the Type list, select Query.
-5. On the Datasource list, select `Grafana Cloud k6`. 
-6. On Query, select the k6 variable you want.
-   
-	The `Test` variable depends on a `Project`.
-
-	The `Test run` variable depends on a `Test` from a specific `Project`.
-7. Click **Apply** to add the variable to the dashboard.
-		{{< figure src="/media/docs/k6/screenshot-grafana-cloud-dashboard-with-variable.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the dashboard with the new variable" >}}
