@@ -1,14 +1,14 @@
 ---
 title: 'Correlate results in Grafana'
-description: 'Sometimes, you cannot determine what is happening during testing with the test result dashboard. Correlating testing data with server-side data helps to better understand what happens and find root causes.'
+description: 'Sometimes, you cannot determine what is happening during testing with the predefined visualizations. Correlate testing results with the system-under-test data helps to better understand what happens and find root causes'
 weight: 203
 ---
 
 # Correlate results in Grafana
 
-Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze the testing results: k6 metrics. By default, these visualizations do not integrate with other dashboards observing your systems or monitoring their metrics.
+Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze the testing results: k6 metrics. 
 
-Sometimes, you cannot determine what’s happening during testing with the predefined visualizations. In this case, correlating testing results with the data of the system under test helps to better understand what happens and find root causes.
+Sometimes, you cannot determine what’s happening during testing with the predefined visualizations. In this case, correlating testing results with the system-under-test data helps to better understand what happens and find root causes.
 
 This topic shows how to use Grafana features to correlate k6 results with other dashboards and observability data.
 
