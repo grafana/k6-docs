@@ -10,7 +10,7 @@ Grafana Cloud k6 provides preconfigured dashboards and visualizations to analyze
 
 Sometimes, you cannot determine what’s happening during testing with the predefined visualizations. In this case, correlating testing results with the system-under-test data helps to better understand what happens and find root causes.
 
-This topic shows how to use Grafana features to correlate k6 results with other dashboards and observability data.
+This topic shows how to use Grafana to correlate k6 results with other dashboards and observability data.
 
 ## Explore
 
