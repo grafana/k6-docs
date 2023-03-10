@@ -1920,5 +1920,10 @@ exports.onCreateNode = ({ node, actions }) => {
       name: 'shouldCreatePage',
       value: node.frontmatter.shouldCreatePage || true,
     });
+    createNodeField({
+      node,
+      name: 'canonicalUrl',
+      value: node.frontmatter.canonicalUrl || '',
+    });
   }
 };
