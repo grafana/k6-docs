@@ -135,3 +135,45 @@ To find `Checks` that have failures, search for a check, or sort columns.
 To inspect a check in detail:
 1. Select the check row.
 1. In the expanded check, note how many failures occur at different points in the test.
+
+
+# Results filtering
+
+# Execution logs
+
+Logging messages can help you debug load tests.
+
+## Supported log methods
+
+The k6 API supports the following console-logging methods:
+
+- `console.log()`
+- `console.info()`
+- `console.debug()`
+- `console.warn()`
+- `console.error()`
+
+> **Note**: `console.debug()` will log output only when you run k6 with the `-v/--verbose` flag.
+
+
+> **Tip: Debug locally first**
+>
+> When your script is ready, execute the test on the Grafana Cloud k6 with the `k6 cloud` command.
+
+## Explore logs in Grafana Cloud k6 results.
+
+With the **Logs** Tab, you can view, filter, and query log messages in the Cloud Results page.
+
+### Filter by log level and load zone
+
+To filter messages by severity:
+1. Use the **Log level** dropdown.
+1. Order each JavaScript log statement by the severity level however you want:
+
+  - **Info**: `console.log` and `console.info`.
+  - **Debug**: `console.debug`.
+  - **Warning**: `console.warning`.
+  - **Error**: `console.error`.
+
+
+The load-zone filter displays only when your test runs in more than one load zone.
