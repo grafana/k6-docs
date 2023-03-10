@@ -10,7 +10,7 @@ This plugin is no longer maintained, and will be replaced by a new one soon. Sta
 </Blockquote>
 
 
-The [k6 Cloud app](https://grafana.com/grafana/plugins/grafana-k6-app/) for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While the Grafana App does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
+The **k6 Cloud app** for [Grafana](https://grafana.com/) simulates the k6 Cloud UI in your dashboard. While the Grafana App does not yet support all the features of k6 Cloud we are actively working on reaching feature parity.
 
 Currently supported features:
 * manage and visualize your k6 Cloud tests in Grafana.
@@ -21,23 +21,11 @@ Currently supported features:
 
 ## Installing the Grafana App
 
-To install the k6 app
+<Blockquote mod="attention" title="">
 
-1. In Grafana Cloud, select the **Install plugin** button on the [k6 Cloud app installation page](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation). This automatically adds the app to your Grafana stack.
+This plugin can no longer be installed but will continue to work for Grafana instances where it has already been installed. 
 
-  > For local Grafana instances, follow the [grafana-cli instructions](https://grafana.com/grafana/plugins/grafana-k6-app/?tab=installation).
-
-1. After you install, log in to your Grafana instance, and check that the k6 icon appears in the sidebar menu.
-
-1. To add the k6 Cloud app data source to use the application, select **Data sources** and then **k6 Cloud app data source**.
-
-![k6 data source configuration](./images/06-Grafana-Plugin/k6_cloud_grafana_plugin_data_source_view.png)
-
-The k6 Cloud app needs your API token to connect to your k6 Cloud account.
-
-1. Head to your [k6 Cloud API token](https://app.k6.io/account/api-token) and copy your API token.
-1. Paste the token into the **API Token** field.
-1. Test that your token is valid and connection is up with **Save & test**.
+</Blockquote>
 
 ## Navigate cloud tests across various projects
 
