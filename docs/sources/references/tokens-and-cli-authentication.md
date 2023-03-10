@@ -6,7 +6,7 @@ weight: 501
 
 # Tokens and CLI authentication
 
-To run [cloud tests from the CLI]({{< relref "../get-started/run-cloud-tests-from-the-CLI" >}}), you need to authenticate your account.
+To run [cloud tests from the CLI]({{< relref "../get-started/run-cloud-tests-from-the-cli" >}}), you need to authenticate your account.
 Authentication is required both for tests that run on the cloud service and for results that stream to the cloud service.
 To authenticate accounts, k6 provides an API token, which you can pass on the CLI or through the REST API.
 
