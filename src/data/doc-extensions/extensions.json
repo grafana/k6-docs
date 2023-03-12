@@ -829,6 +829,18 @@
       },
       "official": false,
       "categories": ["Data"]
+    },
+    {
+      "name": "xk6-opentelemetry",
+      "description": "Generate OpenTelemetry signals",
+      "url": "https://github.com/thmshmm/xk6-opentelemetry",
+      "logo": "",
+      "author": {
+        "name": "Thomas Hamm",
+        "url": "https://github.com/thmshmm"
+      },
+      "official": false,
+      "categories": ["Observability"]
     }
   ]
 }
