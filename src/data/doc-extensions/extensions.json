@@ -819,6 +819,18 @@
       "categories": ["Reporting", "Observability"]
     },
     {
+      "name": "xk6-opentelemetry",
+      "url": "https://github.com/thmshmm/xk6-opentelemetry",
+      "description": "Generate OpenTelemetry signals from within your test scripts",
+      "logo": "https://github.com/thmshmm/xk6-opentelemetry/raw/main/assets/xk6-opentelemetry-logo.png",
+      "author": {
+        "name": "Thomas Hamm",
+        "url": "https://github.com/thmshmm"
+      },
+      "official": false,
+      "categories": ["Observability"]
+    },
+    {
       "name": "xk6-couchbase",
       "description": "Load-test Couchbase no-SQL databases",
       "url": "https://github.com/thotasrinath/xk6-couchbase",
