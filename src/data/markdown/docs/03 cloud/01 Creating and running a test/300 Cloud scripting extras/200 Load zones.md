@@ -1,6 +1,7 @@
 ---
 title: Load zones
 description: You can run k6 on the following AWS cloud regions.
+canonicalUrl: https://grafana.com/docs/k6/cloud-scripting-extras/cloud-load-zones/
 ---
 
 You can run your tests from the following load zones.

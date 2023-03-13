@@ -2,6 +2,7 @@
 title: 'Send notifications'
 excerpt: 'How to send emails and webhooks about test-related events in your organizations and projects.'
 slug: '/cloud/manage/notifications'
+canonicalUrl: https://grafana.com/docs/k6/references/send-notifications/
 ---
 
 > **&#128712; Only organization owners and admins can set up notifications.**

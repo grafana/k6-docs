@@ -1,6 +1,7 @@
 ---
 title: Cloud options
 description: Cloud execution has a few extra options, including distributing load zones, and setting 
+canonicalUrl: https://grafana.com/docs/k6/cloud-scripting-extras/cloud-options/
 ---
   
 Cloud execution has a few extra options, including to distribute load across different regions or to change projects.
