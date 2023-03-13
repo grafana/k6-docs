@@ -5,7 +5,7 @@ excerpt: 'Use k6 Cloud in Grafana'
 
 <Blockquote mod="attention" title="">
 
-The [k6 Cloud Grafana App plugin](https://grafana.com/grafana/plugins/grafana-k6-app/) is deprecated.
+The **k6 Cloud Grafana App plugin** is deprecated.
 We have stopped its development in favor of [Grafana Cloud k6](https://grafana.com/docs/k6/). 
 
 </Blockquote>
