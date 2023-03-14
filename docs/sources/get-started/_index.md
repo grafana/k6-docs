@@ -19,6 +19,5 @@ In these topics, learn the minimum to run tests and use Grafana Cloud k6.
 
 **The following articles will help you to get started:**
 
-- [Run your first tests]({{< relref "run-your-first-tests" >}})
-- [Run cloud tests from the CLI]({{< relref "run-cloud-tests-from-the-cli" >}})
+{{< section >}}
 - [Inspect test results in Grafana Cloud]({{< relref "../analyze-results/inspect-test-results">}})
