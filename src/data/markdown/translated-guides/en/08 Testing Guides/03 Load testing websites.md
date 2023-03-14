@@ -172,7 +172,7 @@ For example, a browser-based load testing script might include instructions to n
 Unlike protocol-based load testing, browser-based load testing scripts generate load by starting multiple instances of browsers and interacting with your application the way real users would. Testing at the browser level can also be the only option for testing Single-Page Applications where a lot of the application logic is executed by client-side scripts.
 
 Scripting on the browser level usually requires the use of different tools from the ones used to test at the protocol level.
-However, k6 now has an experimental module called [k6 browser](https://k6.io/docs/using-k6-browser/browser-module/) that allows the creation of browser-based test scripts alongside protocol-based ones.
+However, k6 now has an experimental module called [k6 browser](https://k6.io/docs/using-k6-browser/overview/) that allows the creation of browser-based test scripts alongside protocol-based ones.
 
 #### Sample browser-based test script
 
@@ -332,7 +332,7 @@ Load testing websites can be complex due to the number of viable testing approac
 
 ## Read more
 
-- [Browser testing with k6 browser](https://k6.io/docs/using-k6-browser/browser-module/)
+- [Browser testing with k6 browser](https://k6.io/docs/using-k6-browser/overview/)
 - [Test types](https://k6.io/docs/test-types/introduction)
 - [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)

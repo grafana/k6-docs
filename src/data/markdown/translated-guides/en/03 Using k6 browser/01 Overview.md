@@ -1,5 +1,5 @@
 ---
-title: 'Browser Module'
+title: 'Overview'
 heading: 'Browser Module Documentation'
 head_title: 'Browser Module Documentation'
 excerpt: 'The browser module brings browser automation and end-to-end testing to k6 while supporting core k6 features. Interact with real browsers and collect frontend metrics as part of your k6 tests.'
@@ -10,24 +10,6 @@ excerpt: 'The browser module brings browser automation and end-to-end testing to
 The [Browser module](https://github.com/grafana/xk6-browser) brings browser automation and end-to-end web testing to k6 while supporting core k6 features. It adds browser-level APIs to interact with browsers and collect frontend performance metrics as part of your k6 tests.
 
 This module aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
-
-## Why browser testing?
-
-The [performance golden rule](https://www.stevesouders.com/blog/2012/02/10/the-performance-golden-rule/) states that 80%-90% of the website response time is spent on the frontend. But when the number of concurrent users is high, the percentage of time spent between the frontend and backend changes:
-
-![Frontend time vs Backend time with increasing amount of website visitors](./images/Frontend-Backend-LoadTesting.png)
-
-While backend performance testing is useful and efficient, it doesn’t represent the overall user experience.
-
-With the browser module, you can interact with the browser to script tests much closer to the actual website experience. You'll get insight into what your user sees on a browser-level and catch issues skipped from the protocol level.
-
-At the same time, you can adopt a hybrid approach to performance testing by leveraging the existing functionalities of k6 and perform backend load testing on a protocol-level, all in the same script. This gives you a full picture of how the user experience is under different load scenarios.
-
-A hybrid approach lets you combine frontend and backend performance testing to give you the most holistic view of your application's performance. Check out our video guide below to know more:
-
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/xVACRP5qIJI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
 
 ## Use case for browser testing
 

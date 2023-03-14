@@ -1677,9 +1677,9 @@ const createRedirects = ({ actions }) => {
       '/cloud/cloud-faq/general-questions/',
     '/misc/usage-reports': '/misc/usage-collection/',
     '/using-k6/using-node-modules': '/using-k6/modules/',
-    '/javascript-api/k6-x-browser/': '/using-k6-browser/browser-module/',
-    '/javascript-api/xk6-browser/': '/using-k6-browser/browser-module/',
-    '/javascript-api/k6-browser/': '/using-k6-browser/browser-module/',
+    '/javascript-api/k6-x-browser/': '/using-k6-browser/overview/',
+    '/javascript-api/xk6-browser/': '/using-k6-browser/overview/',
+    '/javascript-api/k6-browser/': '/using-k6-browser/overview/',
     '/javascript-api/k6-x-browser/browser/':
       '/javascript-api/k6-experimental/browser/browser-class/',
     '/javascript-api/k6-browser/browser/':
