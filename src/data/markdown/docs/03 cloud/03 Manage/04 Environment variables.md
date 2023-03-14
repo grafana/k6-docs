@@ -1,6 +1,7 @@
 ---
 title: 'Environment variables'
 excerpt: 'How to use environment variables in the cloud'
+canonicalUrl: https://grafana.com/docs/k6/cloud-scripting-extras/cloud-environment-variables/
 ---
 
 Environment Variables are key-value pairs that you configure at the organization level.

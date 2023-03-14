@@ -1,6 +1,7 @@
 ---
 title: 'Test status codes'
 excerpt: 'A list of test statuses returned by k6 Cloud, with context and descriptions.'
+canonicalUrl: https://grafana.com/docs/k6/references/cloud-test-status/
 ---
 
 The following is a list of test statuses of k6 Cloud test runs, along with their code representation as returned by the Cloud API.

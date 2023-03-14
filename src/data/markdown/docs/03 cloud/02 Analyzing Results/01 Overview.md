@@ -1,7 +1,6 @@
 ---
 title: 'Overview'
 excerpt: 'An overview of using k6 Cloud Results as a premiere analysis tool'
-canonicalUrl: ''
 ---
 
 k6 Cloud Results visualizes, stores, analyzes, and presents trends for your test results.
