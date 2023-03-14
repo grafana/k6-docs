@@ -128,8 +128,7 @@ const SidebarNode = (props) => {
       meta.path === '/' ||
       meta.path === '/es/' ||
       meta.path === '/extensions/' ||
-      meta.path === '/javascript-api/xk6-disruptor/' ||
-      meta.path === '/javascript-api/k6-browser/'
+      meta.path === '/javascript-api/xk6-disruptor/'
         ? false
         : pathname.startsWith(maybePrefixedPath);
 

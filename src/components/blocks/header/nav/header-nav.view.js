@@ -21,13 +21,8 @@ export const isJsAPIActiveLink = (path) => {
       isActiveLink =
         givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
-    } else if (actualPath.includes('javascript-api/k6-browser')) {
-      isActiveLink =
-        givenPath.includes('javascript-api/k6-browser') &&
-        actualPath.includes(givenPath);
     } else {
       isActiveLink =
-        !givenPath.includes('javascript-api/k6-browser') &&
         !givenPath.includes('javascript-api/jslib') &&
         actualPath.includes(givenPath);
     }
