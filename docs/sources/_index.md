@@ -12,7 +12,7 @@ weight: 001
 
 # Grafana Cloud k6
 
-Grafana Cloud k6 is a performance-testing tool in your Grafana cloud instance.
+Grafana Cloud k6 is a performance-testing tool in your Grafana Cloud instance.
 The test engine is powered by [k6 OSS](https://k6.io/docs).
 
 Script performance tests from the UI or in your local editor. Run tests from different geographical locations. Store and visualize the results in Grafana Cloud.
