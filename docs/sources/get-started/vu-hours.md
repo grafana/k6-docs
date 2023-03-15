@@ -1,6 +1,7 @@
 ---
-Title: About VU hours
+title: VU hours
 description: Grafana Cloud k6 charges your subscription by VU hours. Here's how it works.
+weight: 300
 ---
 
 # VU hours

@@ -19,7 +19,7 @@ Projects allow to organize k6 tests in collections and grant their access. Here 
 
 ## Running CLI Tests in a Specific Project
 
-By default, when you run a test from the CLI, the test runs in your default project. If you want to set the test run in a different project, specify the [`projectID` option]({{< relref "../cloud-scripting-extras/cloud-options" >}}) in the k6 script:
+By default, when you run a test from the CLI, the test runs in your default project. If you want to set the test run in a different project, specify the [`projectID` option]({{< relref "../author-run/cloud-scripting-extras/cloud-options" >}}) in the k6 script:
 
 ```javascript
 export const options = {

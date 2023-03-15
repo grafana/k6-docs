@@ -1,10 +1,10 @@
 ---
 title: Run your first tests
-description: Use the GUI to build a quick prototype test. Run the test from the UI, or copy the script and run it from your UI
+description: Use the GUI to build a quick prototype test. Run the test from the UI, or copy the script and run it from your UI.
 weight: 200
 ---
 
-# Get started with Grafana Cloud k6
+# Run your first tests
 
 Follow along to learn how to create load tests with the _Test Builder_.
 
@@ -20,7 +20,7 @@ To do these procedures, you'll need the following:
 The _Test Builder_ is a graphical interface to simulate user behavior and model traffic patterns.
 It provides a quick way to prototype tests and learn the basic functionality of the k6 API.
 
-> **Note:** The following test uses 10 VUh. To learn how VUh is calculated, refer to [VU hours]({{< relref "VU-hours" >}}).
+> **Note:** The following test uses 10 VUh. To learn how VUh is calculated, refer to [VU hours]({{< relref "vu-hours" >}}).
 
 You have permission to run load tests on a demo site, `https://test.k6.io`.
 To learn how to make a test, follow these steps:
@@ -57,7 +57,7 @@ When it finishes, you can look at granular data for all results output.
 
 ## Model ramping traffic from multiple geographies
 
-> **Note:** The following test uses **20 VUh**. To learn how VUh is calculated, refer to [VU hours]({{< relref "VU-hours" >}}).
+> **Note:** The following test uses **20 VUh**. To learn how VUh is calculated, refer to [VU hours]({{< relref "vu-hours" >}}).
 
 The k6 app provides many options to simulate realistic load.
 This procedure modifies the same test so that the volume of traffic _ramps_ (that is, changes the number of active virtual users) and comes from multiple _load zones_ (geographic areas).
