@@ -72,4 +72,3 @@ When starting tests with `k6 cloud`, environment variables set via CLI flag `--e
 
 > Environment variables set via CLI flag will still be stored in the archive as plain data.
 
-

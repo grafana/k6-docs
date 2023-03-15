@@ -1,24 +1,23 @@
 ---
 title: Cloud tags
-description: Cloud execution adds extra tags to filter for load zones and instance ids. It provides great flexibility to filter test results.
+description: Cloud execution has a extra tags to filter for load zones and instance ids
 weight: 303
 ---
 
 # Cloud tags
 
-Cloud execution adds [extra tags](https://k6.io/using-k6/tags-and-groups) to filter for load zones and instance ids. It provides great flexibility to filter test results.
-
-When a test runs in k6 Cloud, k6 adds two tags to all metrics:
+When a test runs in k6 Cloud, k6 adds two tags to all metrics.
+As with all [tags in k6](https://k6.io/docs/using-k6/tags-and-groups), you can use cloud tags to filter results.
 
 | Tag name      | Type   | Description                                                                                          |
 | ------------- | ------ | ---------------------------------------------------------------------------------------------------- |
-| `load_zone`   | string | The [load zone]({{< relref "cloud-load-zones" >}}) from where the metric was collected. Values are in the form: `amazon:us:ashburn`. |
+| `load_zone`   | string | The load zone from where the metric was collected. Values are in the form: `amazon:us :ashburn`. |
 | `instance_id` | number | A unique number that represents the ID of a load-generator server taking part in the test.              |
 
-The cloud tags are automatically added when collecting test metrics. They work as regular [tags](https://k6.io/using-k6/tags-and-groups) do. For example, you can: 
-- [filter the results]({{< relref "../analyze-results/inspect-test-results" >}}) for a particular load zone,
-- or define a [Threshold](https://k6.io/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
-
+The cloud tags are automatically added when collecting test metrics.
+They work as regular tags do.
+For example, you can filter the results for a particular load zone,
+or define a [Threshold](https://k6.io/docs/using-k6/thresholds#thresholds-on-sub-metrics-tagged-metrics) based on the results of a load zone.
 
 ```javascript
 import http from 'k6/http';
@@ -43,5 +42,4 @@ export default function () {
   http.get('https://test.k6.io/');
 }
 ```
-
 
