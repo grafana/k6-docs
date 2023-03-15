@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     tags:
-      - gcloud*
+      - v*-gcloud
     paths:
       - "docs/sources/**"
   workflow_dispatch:
