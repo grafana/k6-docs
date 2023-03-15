@@ -7,7 +7,7 @@ weight: 100
 
 # Get started with Grafana Cloud k6
 
-In these topics, learn the minimum to run tests and use Grafana k6 Cloud.
+In these topics, learn the minimum needed to run tests and use Grafana k6 Cloud.
 
 Here's the essential information:
 
