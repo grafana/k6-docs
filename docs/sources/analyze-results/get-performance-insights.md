@@ -6,7 +6,7 @@ weight: 202
 
 # Get performance insights
 
-Whenever you run a cloud test, *Performance Insights* algorithms automatically process the raw metrics and data.
+Whenever you run a cloud test, Performance Insights algorithms automatically process the raw metrics and data.
 
 If the cloud service finds an issue, it will notify you at the end of the test and recommend mitigations.
 
