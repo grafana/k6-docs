@@ -1,10 +1,10 @@
 ---
-title: 'Cloud test status'
+title: 'Cloud test status codes'
 description: 'A list of test statuses returned by the cloud test, with context and descriptions.'
 weight: 505
 ---
 
-# Cloud test status
+# Cloud test status codes
 
 The following is a list of test statuses returned by the cloud test, along with the code returned.
 The code returned here is different than what is returned by k6.
@@ -21,7 +21,6 @@ The code returned here is different than what is returned by k6.
 - [Aborted by script error](#aborted-by-script-error): 7
 - [Aborted by threshold](#aborted-by-threshold): 8
 - [Aborted by limit](#aborted-by-limit): 9
-
 
 ## Successful tests
 
@@ -82,3 +81,5 @@ If it has too many metrics, use URL grouping to combine similar URLs.
 You should also remove external requests from your test script.
 Each captured URL accounts for multiple individual metrics that k6 measures.
 External requests can quickly produce a large number of metrics, and granularity of this type won't help you understand the performance of the System Under Test.
+
+
