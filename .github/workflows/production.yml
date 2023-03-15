@@ -3,7 +3,7 @@ name: Production
 on:
   push:
     tags:
-      - v*
+      - 'v*.*.*'
 
 env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.PROD_CI_ALGOLIA_ADMIN_KEY }}
