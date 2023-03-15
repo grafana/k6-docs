@@ -85,6 +85,7 @@ Besides visualization and infrastructure, the Grafana Cloud k6 enhances the comm
 
 - [The Test Builder]({{< relref "author-run/test-builder" >}}), a graphical interface to author tests
 - [Scripting extras]({{< relref "author-run/cloud-scripting-extras" >}}) for enhanced capabilities to run tests and filter results
-- [Performance insights]({{< relref "analyze-results/performance-insights" >}}) to alert you about issues in your script or system under test.
-- Portable [test-results panels]({{< relref "analyze-results/add-results-to-dashboards" >}}) to put in other dashboards
+- [Performance insights]({{< relref "analyze-results/get-performance-insights" >}}) to alert you about issues in your script or system under test.
+- Portable [test-results panels]({{< relref "analyze-results/correlate-results-in-grafana" >}}) to put in other dashboards
 - Detailed analysis of different test metrics
+

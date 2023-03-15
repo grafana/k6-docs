@@ -1,10 +1,11 @@
 ---
 title: Get started with Grafana Cloud k6
 menuTitle: Get started
+description: Steps to run your first load test quickly.
 weight: 100
 ---
 
-# Get started with Grafana k6
+# Get started with Grafana Cloud k6
 
 In these topics, learn the minimum to run tests and use Grafana k6 Cloud.
 
