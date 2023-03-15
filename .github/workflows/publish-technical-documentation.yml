@@ -3,8 +3,8 @@ name: "publish-technical-documentation"
 on:
   pull_request:
   push:
-    branches:
-      - "main"
+    tags:
+      - gcloud*
     paths:
       - "docs/sources/**"
   workflow_dispatch:
