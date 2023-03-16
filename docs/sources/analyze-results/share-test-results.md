@@ -2,6 +2,8 @@
 title: 'Share test results'
 description: 'After you analyze your test results, you might want to share them with other users involved in the testing'
 weight: 504
+aliases:
+  - /docs/k6/analyze-results/share-test-results
 ---
 
 # Share test results

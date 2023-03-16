@@ -3,6 +3,8 @@ title: Cloud options
 description:
   Test execution in Grafana Cloud k6 comes with a few extra options that you can set.
 weight: 301
+aliases:
+  - /docs/k6/author-run/cloud-scripting-extras/cloud-options
 ---
 
 # Cloud options

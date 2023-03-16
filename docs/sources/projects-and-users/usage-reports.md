@@ -2,6 +2,8 @@
 title: Usage reports
 description: Discover valuable information about the testing activity in your organization
 weight: 403
+aliases:
+  - /docs/k6/projects-and-users/usage-reports
 ---
 
 ## Usage reports

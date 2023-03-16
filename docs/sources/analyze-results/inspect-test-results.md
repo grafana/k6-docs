@@ -2,6 +2,8 @@
 title: 'Inspect test results'
 description: 'Grafana Cloud k6 provides views that visualize, analyze, and present trends for the test results. This topic describes the primary sections of the Test Result view.'
 weight: 201
+aliases:
+  - /docs/k6/analyze-results/inspect-test-results
 ---
 
 # Inspect test results

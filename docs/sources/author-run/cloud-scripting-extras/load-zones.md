@@ -3,7 +3,7 @@ title: Load zones
 description: You can run k6 on the following AWS cloud regions.
 weight: 302
 aliases:
-  - /docs/k6/cloud-scripting-extras/cloud-load-zones`
+  - /docs/k6/author-run/cloud-scripting-extras/load-zones
 ---
 
 # Load zones

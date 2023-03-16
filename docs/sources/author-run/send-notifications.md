@@ -3,8 +3,7 @@ title: Send notifications
 description: How to send emails and webhooks about test-related events in your organizations and projects 
 weight: 503
 aliases:
-  - /docs/k6/references/send-notifications/
----
+  - /docs/k6/author-run/send-notifications
 ---
 
 # Send notifications
