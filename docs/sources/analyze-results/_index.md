@@ -1,20 +1,20 @@
 ---
-title: Analyze tests
+title: Analyze test results
 description: 'The following topics describe the common options to analyze test results in Grafana Cloud k6'
-weight: 200
+weight: 300
 ---
 
-## Analyze tests
+## Analyze test results
 
 The following topics describe the common options to analyze test results in Grafana Cloud k6.
-
-{{< section >}}
 
 ## About the test overview
 
 When you enter a project, the app presents an overview of all the project's tests.
 Each test is comprised of individual _test runs_ represented by bars in a chart.
 The bar length indicates how long the test run lasted, and the color represents the test status.
+
+![A tiled view of all test runs in a project](/media/docs/k6/grafana-k6-tiled-test-overview.png)
 
 ### Each test has a unique name
 
