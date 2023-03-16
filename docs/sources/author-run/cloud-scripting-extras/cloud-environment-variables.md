@@ -6,12 +6,6 @@ weight: 305
 
 # Cloud environment variables
 
-> **IMPORTANT** 
-> 
-> The environment variables view is currently not available in Grafana Cloud. We are working on it.
-> 
-> Meanwhile, you can manage environment variables by logging in to [k6 Cloud](https://app.k6.io/) and accessing them in your Grafana Cloud k6 tests.
-
 Environment Variables are key-value pairs that you configure at the organization level.
 
 The cloud service encrypts all values before storing them in our database, and they remain encrypted until needed for a test run.
@@ -27,8 +21,13 @@ You can use Environment Variables to store sensitive (and non-sensitive) informa
 
 Only owners and admins can create, modify, and delete environment variables.
 If you have appropriate permission, you can manage environment variables with these steps:
-1. Head to **Organization Settings**.
-2. Select your profile icon, then **Manage > Environment variables**.
+
+1. Go to **Settings > Environment variables**.
+
+> The environment variables view is currently not available in Grafana Cloud. We are working on it.
+> 
+> Meanwhile, this option redirects you [k6 Cloud (app.k6.io)](https://app.k6.io/) to manage environment variables.
+
 
 ![Environment variables list](/media/docs/k6/screenshoot-k6-cloud-environment-variables.png)
 

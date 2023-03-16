@@ -35,11 +35,9 @@ To generate a token, follow these steps:
 1. In Grafana Cloud, go to **k6 Cloud App > Settings > Grafana Stack API token**.
 2. Select **Set up Grafana Stack API token**.
    
-	> **IMPORTANT** 
-	> 
 	> This view is currently not available in Grafana Cloud. We are working on it.
 	> 
-	> Meanwhile, you will be redirected to [k6 Cloud](https://app.k6.io/) to manage your tokens. 
+	> Meanwhile, this option redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to manage your tokens. 
 
    On this page, you can create, see, and regenerate the tokens.
 

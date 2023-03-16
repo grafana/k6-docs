@@ -6,11 +6,6 @@ weight: 502
 
 # Schedule a test
 
-> **IMPORTANT** 
-> 
-> The test scheduling view is currently not available in Grafana Cloud. We are working on it.
-> 
-> Meanwhile, you can schedule your Grafana Cloud tests by logging in to [k6 Cloud](https://app.k6.io/) and scheduling them from there.
 
 At times, it might be impossible for you to manually run a cloud test at the time you want to.
 
@@ -46,6 +41,10 @@ After you have the test you want to schedule, you can schedule it in two ways.
 ### Schedules overview page
 
 In the sidebar menu, go to **Manage > Scheduled tests**.
+
+> The test scheduling view is currently not available in Grafana Cloud. We are working on it.
+> 
+> Meanwhile, the **Scheduled tests** option redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to schedule your cloud tests from there.
 
 On this page, you can create new schedules, and find and edit all test schedules your organization has created.
 

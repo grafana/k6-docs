@@ -6,15 +6,13 @@ weight: 403
 
 ## Usage reports
 
-> **IMPORTANT** 
-> 
-> The usage report view is currently not available in Grafana Cloud. We are working on it.
-> 
-> Meanwhile, you can view the usage report by logging in to [k6 Cloud](https://app.k6.io/) and follow the instructions below.
-
 The *Usage report* helps you keep track of everything happening in your team’s project and follow the activity of your performance testing projects.
 
 To view the Usage report, go to  **Manage > Usage reports** section.
+
+> The usage report view is currently not available in Grafana Cloud. We are working on it.
+> 
+> Meanwhile, the Usage reports option redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to access from there.
 
 ## Usage report breakdown
 
