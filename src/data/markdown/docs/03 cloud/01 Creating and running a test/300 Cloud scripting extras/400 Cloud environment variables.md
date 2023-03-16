@@ -1,7 +1,7 @@
 ---
 title: Cloud environment variables
 description: k6 Cloud provides some extra environment variables about load zones, server instances, and labels.
-canonicalUrl: https://grafana.com/docs/k6/cloud-scripting-extras/cloud-execution-context-variables/
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-execution-context-variables/
 ---
 
 When you run tests in k6 Cloud, you can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.

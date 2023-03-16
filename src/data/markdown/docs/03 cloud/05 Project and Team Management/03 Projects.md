@@ -1,7 +1,7 @@
 ---
 title: 'Projects'
 excerpt: 'Keep your tests and team members organized with projects, a filing system built into the k6 web app'
-canonicalUrl: https://grafana.com/docs/k6/projects-and-users/projects/
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/projects-and-users/projects/
 ---
 
 Organizations can organize their tests and testers into _projects._
