@@ -67,7 +67,7 @@ To learn the benefits and outcomes of using Histograms, watch [High-resolution H
 
 </Blockquote>
 
-To converts k6 trend types to Native Histogram types:
+To convert k6 trend types to Native Histogram types:
 
 1. Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus.
 2. Run the k6 test enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable
