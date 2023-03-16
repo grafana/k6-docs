@@ -10,8 +10,6 @@ k6 emphasizes a _code-based_ approach to testing, which makes it easier to modul
 This code-based approach carries over to cloud execution, which has a few extra scripting capabilities and tags.
 In the following topics, read about how to author and run tests in Grafana k6:
 
-{{< section >}}
-
 However, along with the scripting API, the Grafana Cloud k6 ecosystem provides some supportive tools to speed up test creation and facilitate collaboration across different roles.
 
 ## Tools to prototype tests
