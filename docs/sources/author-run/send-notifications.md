@@ -9,13 +9,6 @@ aliases:
 
 # Send notifications
 
-> **IMPORTANT** 
-> 
-> The view to set up notifications is currently not available in Grafana Cloud. We are working on it.
-> 
-> Meanwhile, you can set up the notifications for your Grafana Cloud k6 tests by logging in to [k6 Cloud](https://app.k6.io/) and follow the instructions on this article.
-
-
 It would be tedious to monitor every test in your ongoing test operations.
 Instead, you can configure sending notifications whenever a significant test event happens.
 For example, you could send a notification whenever a test unexpectedly aborts or fails a check or threshold.
@@ -37,14 +30,16 @@ To send notifications to Slack, follow these steps.
 1. From Slack, add a **Custom Integration** and select **Incoming WebHook** app.
 1. Select or create a channel and copy Slack's generated WebHook URL.
 
-Then, head to the [k6 web app](https://app.k6.io/).
+In Grafana Cloud k6:
 
-1. From the sidebar, select **Notifications**, then select **Slack**.
-1. Paste the Slack WebHook URL into the **Webhook URL** input field.
-1. From the **Notification event** dropdown, choose the events that will trigger notifications or select all.
+1. In the sidebar menu, go to **Settings > Notifications**
+
+      Currently, it redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to configure notifications.
+2. Paste the Slack WebHook URL into the **Webhook URL** input field.
+3. From the **Notification event** dropdown, choose the events that will trigger notifications or select all.
    Refer to the [supported notification events](#supported-notification-events).
-1. Optionally, give your notification a name (in case you want more than one Slack integration).
-1. **Save**.
+4. Optionally, give your notification a name (in case you want more than one Slack integration).
+5. **Save**.
 
   If you now go back to **Configure** the notification you just created, you'll see a
    **Send test event** button. Use that to send a dummy message and to make sure it works.
@@ -55,14 +50,18 @@ Then, head to the [k6 web app](https://app.k6.io/).
 ## Add a Microsoft Teams notification
 
 First, figure out the webhook URL for your Microsoft Team setup.
-Then go the [k6 web app](https://app.k6.io/) and follow these steps.
+Then go the Grafana Cloud k6 and follow these steps.
 
-1. From the k6 web app, select **Notifications** from the left menu bar. From there, select **Microsoft Teams**.
-1. Paste the Teams URL into the **Webhook URL** input field.
-1. From the **Notification event** dropdown, pick the events you want to be notified by, or all of them.
+1. In the sidebar menu, go to **Settings > Notifications**
+
+      Currently, it redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to configure notifications.
+
+2. From there, select **Microsoft Teams**.
+3. Paste the Teams URL into the **Webhook URL** input field.
+4. From the **Notification event** dropdown, pick the events you want to be notified by, or all of them.
    Refer to the [supported notification events](#supported-notification-events).
-1. Optionally, give your notification a name (in case you want more than one Teams integration).
-1. **Save**.
+5. Optionally, give your notification a name (in case you want more than one Teams integration).
+6. **Save**.
 
   If you now go back to **Configure** the notification you just created, you'll see a
   **Send test event** button. Use that to send a dummy message and make sure it works.
@@ -82,8 +81,10 @@ First, get the webhook URL of your service of choice.
 If experimenting, you might first try a free online service that provides temporary
 URLs for webhook debugging, like [webhook.site](https://webhook.site/).
 
+1. In the sidebar menu, go to **Settings > Notifications**
 
-1. From the [k6 web app](https://app.k6.io/), select **Notifications** from the left menu bar. From there, select **Custom Webhook**.
+      Currently, it redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to configure notifications.
+1. From there, select **Custom Webhook**.
 1. Add your URL in the **Webhook URL** input field.
 1. From the **Notification event** dropdown, pick the events you want to be notified by, or all of them.
    Refer to the [supported notification events](#supported-notification-events).
@@ -106,7 +107,10 @@ Instead of using webhooks,  you can have k6.io send you an email.
 First, decide which email addresses will receive the notification.
 Then, follow these steps.
 
-1. From the [k6 web app](https://app.k6.io/), select **Notifications** from the left menu bar. From there, select **Email**.
+1. In the sidebar menu, go to **Settings > Notifications**
+
+      Currently, it redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to configure notifications.
+2. From there, select **Email**.
 3. In the **Recipients** field, select your organization's member emails from the dropdown, or enter the email addresses that should receive the
    notification. Use commas or spaces to separate emails.
 4. Enter an email Subject.

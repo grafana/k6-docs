@@ -8,15 +8,13 @@ aliases:
 
 # Audit trails
 
-> **IMPORTANT** 
-> 
-> The audit trail view is currently not available in Grafana Cloud. We are working on it.
-> 
-> Meanwhile, you can view it by logging in to [k6 Cloud](https://app.k6.io/) and follow the instructions below.
-
 The *Audit Trail* can provide valuable insights into the activity within your organization.
 
 To view the Audit Trail, go to  **Manage > Audit Trail**.
+
+> The audit trail view is currently not available in Grafana Cloud. We are working on it.
+> 
+> Meanwhile, the **Audit Trail** option redirects you to [k6 Cloud (app.k6.io)](https://app.k6.io/) to visualize them from there. 
 
 ## A log of system events and activities
 

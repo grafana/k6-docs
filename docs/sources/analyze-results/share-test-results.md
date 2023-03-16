@@ -20,8 +20,6 @@ To do any of these actions, click the **Kebab menu** (three dots) to open the *T
 
 Also, in this menu, you can select to write a note about the test result to share with project members.
 
-> **IMPORTANT**
->
 > The shareable link and PDF report features are currently not available in Grafana Cloud. We are working on it.
 >
 > Meanwhile, the link with the public results is available at [https://app.k6.io/ (k6 Cloud)](https://app.k6.io/), and users are redirected to **k6 Cloud** to generate the PDF report.
