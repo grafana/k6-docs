@@ -21,7 +21,6 @@ jobs:
   sync:
     runs-on: "ubuntu-latest"
     needs: "test"
-    if: "github.ref == 'refs/heads/main'"
     steps:
       - uses: "actions/checkout@v1"
       - name: "Clone website-sync Action"
