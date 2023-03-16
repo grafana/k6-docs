@@ -71,7 +71,6 @@ To converts k6 trend types to Prometheus Histogram types:
 
 1. Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus.
 2. Run the k6 test enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable
-(or one of the other ways).
 
 
 
