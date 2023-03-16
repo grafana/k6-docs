@@ -51,7 +51,7 @@ This mapping has following drawbacks:
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
-To resolve these limitations, you can convert k6 trend metrics to high-fidelity histograms using Prometheus Native histogram instead.
+To resolve these limitations, you can convert k6 trend metrics to high-fidelity histograms using Prometheus Native Histogram.
 
 ### Prometheus Native histogram
 
