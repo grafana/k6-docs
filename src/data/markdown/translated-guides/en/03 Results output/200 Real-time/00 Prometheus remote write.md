@@ -57,7 +57,7 @@ To resolve these limitations, you can convert k6 trend metrics to high-fidelity 
 
 A load test could generate vast amounts of data points. Storing raw data is almost always unnecessary and could quickly become expensive and complex to scale.
 
-We can use [Prometheus Histogram types](https://prometheus.io/docs/concepts/metric_types/#histogram) to avoid storing all the raw data of Trend metrics. It provides efficient storage with high-precision queries.
+We can use [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) to avoid storing all the raw data of Trend metrics. It provides efficient storage with high-precision queries.
 
 <Blockquote mod="note" title="">
 
