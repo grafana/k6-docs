@@ -51,23 +51,21 @@ This mapping has following drawbacks:
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
-To resolve these limitations, you can convert k6 trend metrics to high-fidelity histograms using Prometheus Native Histogram.
-
 ### Prometheus Native histogram
 
-A load test could generate vast amounts of data points. Storing raw data is almost always unnecessary and could quickly become expensive and complex to scale.
 
-We can use [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) to avoid storing all the raw data of Trend metrics. It provides efficient storage with high-precision queries.
+To resolve the previous drawbacks, you can convert k6 trend metrics to high-fidelity histograms using [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram). It provides high-precision queries and an efficient storage mechanism that does not store all the raw data.
+
 
 <Blockquote mod="note" title="">
 
-Native Histogram is an experimental feature released in Prometheus v2.40.0. Other remote write implementations might not support it yet.
+A load test could generate vast amounts of data points. Storing raw data is almost always unnecessary and could quickly become expensive and complex to scale.
 
 To learn the benefits and outcomes of using Histograms, watch [High-resolution Histograms in the Prometheus TSDB](https://www.youtube.com/watch?v=F72Tk8iaWeA).
 
 </Blockquote>
 
-To convert k6 trend types to Native Histogram types:
+Native Histogram is an experimental feature released in Prometheus v2.40.0. Other remote write implementations might not support it yet.  To convert k6 trend types to Native Histogram types:
 
 1. Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus.
 2. Run the k6 test enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable
@@ -77,15 +75,12 @@ To convert k6 trend types to Native Histogram types:
 
 ## Send test metrics to a remote write endpoint
 
-<Blockquote mod="" title="">
+To use remote write in Prometheus 2.x:
 
-To use remote write in Prometheus 2.x, use the `--web.enable-remote-write-receiver ` flag.
-The [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples.
-For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
+1. Enable the feature flag [--web.enable-remote-write-receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver). For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
 
-</Blockquote>
 
-To send k6 metrics to a remote write endpoint, follow these steps:
+To send k6 metrics to a remote write endpoint:
 1. Set up a running remote write endpoint with an endpoint that k6 can reach.
 1. Run your k6 script, using the `--out` flag with `experimental-prometheus-rw` as the argument:
 
@@ -108,8 +103,7 @@ To send k6 metrics to a remote write endpoint, follow these steps:
 
 
 
-
-Feel free to request more authentication methods or provide your experience in the [issue tracker](https://github.com/grafana/xk6-output-prometheus-remote/issues).
+The [`xk6-output-prometheus-remote` extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples. Feel free to request more authentication methods or provide your experience in the [issue tracker](https://github.com/grafana/xk6-output-prometheus-remote/issues).
 
 ## Options
 
