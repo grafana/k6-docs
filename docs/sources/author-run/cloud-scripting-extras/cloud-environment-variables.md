@@ -26,7 +26,7 @@ If you have appropriate permission, you can manage environment variables with th
 
 1. Go to **Settings > Environment variables**.
 
-> The environment variables view is currently not available in Grafana Cloud. We are working on it.
+> The environment variables view is currently unavailable in Grafana Cloud. We are working on it.
 > 
 > Meanwhile, this option redirects you [k6 Cloud (app.k6.io)](https://app.k6.io/) to manage environment variables.
 
