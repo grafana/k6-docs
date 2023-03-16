@@ -2,6 +2,8 @@
 title: Authenticate on the CLI
 description: How to authenticate with a k6 Cloud App token
 weight: 501
+aliases:
+  - /docs/k6/references/tokens-and-cli-authentication
 ---
 
 # Authenticate on the CLI

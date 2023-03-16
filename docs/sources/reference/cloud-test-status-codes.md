@@ -2,6 +2,8 @@
 title: 'Cloud test status codes'
 description: 'A list of test statuses returned by the cloud test, with context and descriptions.'
 weight: 505
+aliases:
+  - /docs/k6/references/cloud-test-status/
 ---
 
 # Cloud test status codes

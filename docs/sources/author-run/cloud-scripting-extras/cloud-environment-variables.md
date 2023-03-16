@@ -2,6 +2,8 @@
 title: Cloud environment variables
 description:  You can use Environment Variables to store sensitive (and non-sensitive) information that you want to reference in your cloud test-scripts.
 weight: 305
+aliases:
+  - /docs/k6/cloud-scripting-extras/cloud-environment-variables/
 ---
 
 # Cloud environment variables
