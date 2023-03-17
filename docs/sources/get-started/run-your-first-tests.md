@@ -4,6 +4,7 @@ description: Use the GUI to build a quick prototype test. Run the test from the 
 weight: 200
 aliases:
   - /docs/k6/run-your-first-tests/
+  - /docs/k6/get-started/run-your-first-tests
 ---
 
 # Run your first tests
