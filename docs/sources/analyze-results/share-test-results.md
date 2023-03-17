@@ -34,8 +34,6 @@ The **Create Note** option launches a modal window with a text box.
 
 You can write comments about the test, mark changes, or add any context worth noting.
 
-![Test Note](./images/08-Test-Results-Menu/test-note.png)
-
 ## Delete test results
 
 > ⚠
