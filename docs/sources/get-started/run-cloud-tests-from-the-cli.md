@@ -4,6 +4,7 @@ description: For day-to-day use, it's most convenient to run your cloud tests fr
 weight: 102
 aliases:
   - /docs/k6/run-cloud-tests-from-the-cli/
+  - /docs/k6/get-started/run-cloud-tests-from-the-cli/
 ---
 
 # Run cloud tests from the CLI
