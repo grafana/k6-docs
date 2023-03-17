@@ -4,6 +4,7 @@ description: How to schedule your cloud tests to run in the future and at regula
 weight: 502
 aliases:
   - /docs/k6/author-run/schedule-a-test/
+  - /docs/k6/references/schedule-a-test/
 ---
 
 # Schedule a test

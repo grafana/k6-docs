@@ -4,6 +4,7 @@ description: How to send emails and webhooks about test-related events in your o
 weight: 503
 aliases:
   - /docs/k6/author-run/send-notifications/
+  - /docs/k6/references/send-notifications/
 ---
 
 # Send notifications

@@ -4,6 +4,7 @@ description:  You can use Environment Variables to store sensitive (and non-sens
 weight: 305
 aliases:
   - /docs/k6/author-run/cloud-scripting-extras/cloud-environment-variables/
+  - /docs/k6/cloud-scripting-extras/cloud-environment-variables/
 ---
 
 # Cloud environment variables

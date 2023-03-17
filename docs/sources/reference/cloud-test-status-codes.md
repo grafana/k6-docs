@@ -4,6 +4,7 @@ description: 'A list of test statuses returned by the cloud test, with context a
 weight: 505
 aliases:
   - /docs/k6/reference/cloud-test-status-codes/
+  - /docs/k6/references/cloud-test-status-codes/
 ---
 
 # Cloud test status codes

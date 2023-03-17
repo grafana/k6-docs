@@ -4,6 +4,7 @@ description: Monitor actions performed by members in your test projects.
 weight: 506
 aliases:
   - /docs/k6/reference/audit-trails/
+  - /docs/k6/references/audit-trails/
 ---
 
 # Audit trails
