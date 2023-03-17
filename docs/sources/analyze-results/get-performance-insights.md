@@ -208,7 +208,7 @@ for (let id = 1; id <= 1000; id++) {
 - **Recommendations**:
   - Use [URL grouping](https://k6.io/docs/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
   - Use fewer tag values when using [custom tags](https://k6.io/docs/using-k6/http-requests/#http-request-tags).
-  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`]({{< relref "../cloud-scripting-extras/cloud-options#options-to-reduce-time-series" >}}) to reduce the cardinality of time series.
+  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`]({{< relref "../author-run/cloud-scripting-extras/cloud-options#options-to-reduce-time-series" >}}) to reduce the cardinality of time series.
 
 
 
