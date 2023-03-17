@@ -3,7 +3,7 @@ title: 'Get performance insights'
 description: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
 weight: 202
 aliases:
-  - /docs/k6/analyze-results/get-performance-insights
+  - /docs/k6/analyze-results/get-performance-insights/
 ---
 
 # Get performance insights

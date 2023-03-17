@@ -3,7 +3,7 @@ title: Use the test builder
 description: With the Test builder, you can script tests directly from the Cloud UI.
 weight: 100
 aliases:
-  - /docs/k6/author-run/test-builder
+  - /docs/k6/author-run/test-builder/
 ---
 
 # Use the test builder

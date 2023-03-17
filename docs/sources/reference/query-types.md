@@ -2,7 +2,7 @@
 title: Query types
 description: A reference of query types for the k6 data source.
 aliases:
-  - /docs/k6/reference/query-types
+  - /docs/k6/reference/query-types/
 ---
 
 # Query types

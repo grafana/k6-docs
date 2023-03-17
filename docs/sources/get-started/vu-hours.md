@@ -3,7 +3,7 @@ title: VU hours
 description: Grafana Cloud k6 charges your subscription by VU hours. Here's how it works.
 weight: 300
 aliases:
-  - /docs/k6/vu-hours
+  - /docs/k6/vu-hours/
 ---
 
 # VU hours

@@ -3,7 +3,7 @@ title: Cloud execution context variables
 description: You can use three additional environment variables to find out in which load zone, server instance, and distribution label the script is currently running.
 weight: 304
 aliases:
-  - /docs/k6/author-run/cloud-scripting-extras/cloud-execution-context-variables
+  - /docs/k6/author-run/cloud-scripting-extras/cloud-execution-context-variables/
 ---
 
 # Cloud execution context variables

@@ -3,7 +3,7 @@ title: Projects
 description: Projects allow to organize k6 tests in collections and grant their access.
 weight: 401
 aliases:
-  - /docs/k6/projects-and-users/projects
+  - /docs/k6/projects-and-users/projects/
 ---
 
 # Projects

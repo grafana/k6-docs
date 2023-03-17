@@ -3,7 +3,7 @@ title: Analyze test results
 description: 'The following topics describe the common options to analyze test results in Grafana Cloud k6'
 weight: 300
 aliases:
-  - /docs/k6/analyze-results
+  - /docs/k6/analyze-results/
 ---
 
 ## Analyze test results

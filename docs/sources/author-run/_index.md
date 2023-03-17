@@ -3,7 +3,7 @@ title: Author and run tests
 description: Write tests to run on Grafana k6 Cloud
 weight: 200
 aliases:
-  - /docs/k6/author-run
+  - /docs/k6/author-run/
 ---
 
 # Author and run tests

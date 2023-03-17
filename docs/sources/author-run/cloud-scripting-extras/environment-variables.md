@@ -4,7 +4,7 @@ description: You can store environment variables in the cloud, then run them dur
 draft: true
 weight: 310
 aliases:
-  - /docs/k6/author-run/cloud-scripting-extras/cloud-environment-variables
+  - /docs/k6/author-run/cloud-scripting-extras/cloud-environment-variables/
 ---
 
 # Cloud environment variables

@@ -2,7 +2,7 @@
 title: Cloud IPs
 description: The IPs that k6 tests run on, and how many VUs can run on each IP
 aliases:
-  - /docs/k6/reference/cloud-ips
+  - /docs/k6/reference/cloud-ips/
 ---
 
 # Cloud IPs

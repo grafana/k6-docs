@@ -4,7 +4,7 @@ menuTitle: Get started
 description: Steps to run your first load test quickly.
 weight: 100
 aliases:
-  - /docs/k6/get-started
+  - /docs/k6/get-started/
 ---
 
 # Get started with Grafana Cloud k6

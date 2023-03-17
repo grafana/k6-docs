@@ -4,7 +4,7 @@ description: 'Sometimes, you cannot determine what is happening during testing w
 description: Combine test results in different Grafana dashboards.
 weight: 203
 aliases:
-  - /docs/k6/analyze-results/correlate-results-in-grafana
+  - /docs/k6/analyze-results/correlate-results-in-grafana/
 ---
 
 # Correlate results in Grafana
