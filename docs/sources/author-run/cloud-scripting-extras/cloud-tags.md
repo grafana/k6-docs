@@ -2,6 +2,8 @@
 title: Cloud tags
 description: Cloud execution has a extra tags to filter for load zones and instance ids
 weight: 303
+aliases:
+  - /docs/k6/author-run/cloud-scripting-extras/cloud-tags/
 ---
 
 # Cloud tags

@@ -8,13 +8,13 @@ excerpt: 'Use k6 Cloud in Grafana'
 ## k6 Cloud Grafana plugin
 
 The **k6 Cloud Grafana App plugin** is deprecated.
-We stopped the plugin development in favor of [Grafana Cloud k6](https://grafana.com/docs/k6/). 
+We stopped the plugin development in favor of [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/). 
 
 </Blockquote>
 
 ## Grafana Cloud k6
 
-[Grafana Cloud k6](https://grafana.com/docs/k6/) is a native solution provided as part of [Grafana Cloud](https://grafana.com/products/cloud/). 
+[Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/) is a native solution provided as part of [Grafana Cloud](https://grafana.com/products/cloud/). 
 
 Grafana Cloud k6 aims to support most of the `k6 Cloud` features while leveraging the capabilities of the Grafana Visualization and Observability platform. 
 

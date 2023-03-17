@@ -2,6 +2,8 @@
 title: Manage project members
 description: Learn the distinct roles in k6 projects and how to grant role access to team members
 weight: 402
+aliases:
+  - /docs/k6/projects-and-users/manage-project-members/
 ---
 
 # Manage project members

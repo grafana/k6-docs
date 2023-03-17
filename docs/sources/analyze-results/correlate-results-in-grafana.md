@@ -3,6 +3,8 @@ title: 'Correlate results in Grafana'
 description: 'Sometimes, you cannot determine what is happening during testing with the predefined visualizations. Correlate testing results with the system-under-test data helps to better understand what happens and find root causes'
 description: Combine test results in different Grafana dashboards.
 weight: 203
+aliases:
+  - /docs/k6/analyze-results/correlate-results-in-grafana/
 ---
 
 # Correlate results in Grafana

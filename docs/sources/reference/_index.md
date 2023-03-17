@@ -2,6 +2,8 @@
 title: Cloud reference pages
 description: Pages to look up info about running a cloud test
 weight: 999
+aliases:
+  - /docs/k6/reference/
 ---
 
 # Cloud reference pages

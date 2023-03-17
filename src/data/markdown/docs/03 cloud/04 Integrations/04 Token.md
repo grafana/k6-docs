@@ -1,7 +1,7 @@
 ---
 title: 'Token'
 excerpt: 'How to authenticate with a k6 Cloud token'
-canonicalUrl: https://grafana.com/docs/k6/references/tokens-and-cli-authentication/
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/tokens-and-cli-authentication/
 ---
 
 To run [Cloud tests from the CLI](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/), you need to authenticate your account.

@@ -3,6 +3,8 @@ title: About test scenarios
 description: |
   Learn about how to model user logic and load in a k6 scenario. 
 weight: 999
+aliases:
+  - /docs/k6/author-run/about-scenarios/
 ---
 
 # About test scenarios
