@@ -1,14 +1,26 @@
 ---
-title: 'Share test results'
+title: 'Export, share, or delete a test run'
+title: 'Export, share, delete'
 description: 'After you analyze your test results, you might want to share them with other users involved in the testing'
 weight: 504
 aliases:
   - /docs/k6/analyze-results/share-test-results/
 ---
 
-# Share test results
+# Export, share, delete a test run
 
-After you analyze your test results, you might want to share them with other users involved in the testing.
+After you analyze your test, you might want to mark it for further analysis.
+To do this, you have a few options:
+- Save the test, keeping it beyond normal data retention periods.
+- Make notes on the test, preserving contextual details.
+- Export it to another format, so you can query it with the program of your choice.
+- Make a shareable link, so you can show the results to others.
+- Delete irrelevant tests, de-cluttering your UI.
+
+To do any of these actions, use the vertical-dots icon to open the *Test Result menu*.
+![Test Results Menu](/media/docs/k6/test-results-menu.png)
+
+## Share a test result
 
 [Project members]({{< relref "../projects-and-users/manage-project-members" >}}) can access the project test results. For non-project members, you have a few options to share test results:
 
@@ -16,12 +28,19 @@ After you analyze your test results, you might want to share them with other use
 - **Export data** to CSV format to query them with other program. Read about [CSV format](https://k6.io/docs/cloud/analyzing-results/result-export/#export-as-csv).
 - **Share a public link** that does not require authentication. This option could expose sensitive test information.
 
-To do any of these actions, click the **Kebab menu** (three dots) to open the *Test Result menu*.
+## Create a note
 
-![Test Results Menu](/media/docs/k6/test-results-menu.png)
+The **Create Note** option launches a modal window with a text box.
 
-Also, in this menu, you can select to write a note about the test result to share with project members.
+You can write comments about the test, mark changes, or add any context worth noting.
 
-> The shareable link and PDF report features are currently not available in Grafana Cloud. We are working on it.
+![Test Note](./images/08-Test-Results-Menu/test-note.png)
+
+## Delete test results
+
+> ⚠
 >
-> Meanwhile, the link with the public results is available at [https://app.k6.io/ (k6 Cloud)](https://app.k6.io/), and users are redirected to **k6 Cloud** to generate the PDF report.
+> Test deletion is **irreversible**.
+
+Deletes the current test result.
+
