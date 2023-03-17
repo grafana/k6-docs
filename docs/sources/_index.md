@@ -46,9 +46,9 @@ A holistic approach to reliability brings a number of benefits:
   Since the k6 app comes with Grafana Cloud, your testing team can share platforms with everyone who uses your Grafana stack.
   Greater accessibility opens new opportunities for collaboration, communication, and discovery.
 
-  For example, testing teams might correlate results with panels initially used by only DevOps teams.
+  For example, engineering teams might correlate results with panels initially used by only DevOps teams.
   On the other end, since tests can be run directly from Grafana Cloud,
-  an experienced tester could write a test that developers could use to test for regressions after each significant commit.
+  you could write a test that other developers could re-use to test for regressions after each significant commit.
 
 - **Diagnose known failure conditions**
 

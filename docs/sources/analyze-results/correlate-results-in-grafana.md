@@ -85,4 +85,4 @@ To change the panel visualization:
 	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel-view.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the edit panel" >}}
 
 The majority of the k6 panels are `Time series` visualizations.
-For details, refer to [query types]({{< relref "../reference/query-types" >}}.
+For details, refer to [query types]({{< relref "../reference/query-types" >}}).

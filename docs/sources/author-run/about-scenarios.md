@@ -29,7 +29,7 @@ However, the most data-intensive traffic may come from editors, who update pages
 Use scenarios to model diverse traffic patterns and behaviors.
 In the example of the community-run encyclopedia, one scenario could simulate 1000 concurrent users reading different text pages,
 and another could simulate 100 editors who log in and then do actions that cause writes to the application database.
-Each scenario could also have different load shapes (for example, ramping or constant=.
+Each scenario could also have different load shapes (for example, ramping or constant).
 
 ## Configure scenarios
 
@@ -38,7 +38,6 @@ In your test scripts, configure scenarios in the `options` object.
 ```
 export const options = {
   scenarios: {
-    Scenario_1: {
     Scenario_1: {
       executor: "ramping-vus",
       ...
