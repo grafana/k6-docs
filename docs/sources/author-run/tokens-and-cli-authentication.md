@@ -29,7 +29,7 @@ On this section, you can copy, see, and regenerate your personal API token.
 
 ## Get a Grafana Stack API token
 
-> Only [admins](/cloud/project-and-team-management/members/#admin) can access and manage these tokens.
+> Only [admins]({{< relref "../projects-and-users/manage-project-members/" >}}) can access and manage these tokens.
 
 A Stack API token provides access to all projects within the Grafana Cloud Stack.
 You can use it to run tests without linking the run to a specific user, e.g. when running tests from a CI platform.

@@ -149,7 +149,7 @@ These alerts are often quickly solved with changes in the test script or test co
 
 - **Recommendations**:
   Aggregate dynamic URLs as it will make analysis easier.
-  To see how, refer to [URL Grouping](https://k6.io/using-k6/http-requests#url-grouping).
+  To see how, refer to [URL Grouping](https://k6.io/docs/using-k6/http-requests#url-grouping).
 
 
 > In some cases, the unique URLs may belong to third parties.
@@ -218,7 +218,7 @@ for (let id = 1; id <= 1000; id++) {
 - **Happens when**:
   you use a legacy version of k6 that is significantly older than the latest stable version.
 - **Recommendations**:
-  - [Install the latest release of k6](https://k6.io/get-started/installation), or upgrade your existing packages.
+  - [Install the latest release of k6](https://k6.io/docs/get-started/installation), or upgrade your existing packages.
   - Update the k6 binary that your CI/CD pipeline uses to run tests.
   - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
 
