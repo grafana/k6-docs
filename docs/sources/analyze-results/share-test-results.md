@@ -1,6 +1,6 @@
 ---
-title: 'Export, share, or delete a test run'
-title: 'Export, share, delete'
+title: 'Save, share, or delete a test run'
+title: 'Save, share, delete'
 description: 'After you analyze your test results, you might want to share them with other users involved in the testing'
 weight: 504
 aliases:
