@@ -72,11 +72,11 @@ Once added the k6 panel to a dashboard, you can edit the panel options.
 
 To change the panel visualization:
 
-1. Click on the panel title
+1. Hover over any part of the panel to display the actions menu on the top right corner. 
+
+2. Click the menu and select **Edit**.
 
 	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the panel menu" >}}
-
-2. Click **Edit**
    
 3. Click the right sidebar to change the visualization
    
