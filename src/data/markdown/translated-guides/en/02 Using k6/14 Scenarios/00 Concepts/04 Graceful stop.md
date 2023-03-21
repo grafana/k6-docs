@@ -82,7 +82,7 @@ export const options = {
         { duration: "10s", target: 10 },
         { duration: "10s", target: 0 },
       ],
-      gracefulrampdown: "1s",
+      gracefulRampDown: "1s",
     },
   },
 };
