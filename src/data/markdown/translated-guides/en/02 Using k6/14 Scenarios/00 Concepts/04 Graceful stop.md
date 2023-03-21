@@ -7,16 +7,17 @@ The `gracefulStop` is a period at the end of the test in which k6 lets iteration
 
 If a test has a set duration or ramp down, its possible that k6 could interrupt iterations in progress.
 These interruptions can lead to skewed metrics and unexpected test results.
-To deal with this, k6 scenarios have a `gracefulStop` and `gracefulRampDown` options.
+To deal with this, k6 scenarios have a `gracefulStop`.
+For the `ramping-vus` executor, a related option, `gracefulRampDown`, exists to let VUs finish as their number ramps down.
 
 
-## Description
+## Graceful stop
 
-This option is available for all executors except `externally-controlled` and allows the
-user to specify a duration to wait before forcefully interrupting them. The default value
-of this property is `30s`.
+The `gracefulStop` option is available for all executors except `externally-controlled`.
+It specifies a duration that k6 will wait before forcefully interrupting an iteration.
+The default value is `30s`.
 
-## Example
+### Graceful stop example
 
 <CodeGroup labels={[ "graceful-stop.js" ]} lineNumbers={[true]}>
 
@@ -54,8 +55,42 @@ Notice that even though the total test duration is 10s, the actual execution tim
 because of `gracefulStop`, giving the VUs a 3s additional time to complete iterations in progress. 23
 of the iterations currently in progress did not complete within this window and was therefore interrupted.
 
-## Additional Information
+## The `gracefulRampDown`
 
-A similar option exists for the [ramping-vus](/using-k6/scenarios/executors/ramping-vus) executor: `gracefulRampDown`. This
-specifies the time k6 should wait for any iterations in progress to finish before
-VUs are returned to the global pool during a ramp down period defined in `stages`.
+In addition to `gracefulStop`, the [ramping-vus](/using-k6/scenarios/executors/ramping-vus) executor also has a `gracefulRampDown`.
+
+When the target value for a stage is lower than the target for the previous stage, k6 might need to stop some VUs that were started during the previous stages.
+The `gracefulRampDown` option controls how long these VUs have to finish currently before k6 interrupts them.
+
+To get an idea of how `gracefulRampDown` works, you can run the following script with
+`k6 run --verbose`.
+In this script, the iteration `sleep` time exceeds the `gracefulRampdown` time.
+So, as k6 ramps down to reach the target of the second stage, it must forcibly interrupt VUs.
+The `--verbose` flag will log to your console when VUs start, enter the grace period, and are forcibly interrupted.
+
+```javascript
+import http from "k6/http";
+import { sleep } from "k6";
+
+export const options = {
+  discardresponsebodies: true,
+  scenarios: {
+    contacts: {
+      executor: "ramping-vus",
+      startvus: 0,
+      stages: [
+        { duration: "10s", target: 10 },
+        { duration: "10s", target: 0 },
+      ],
+      gracefulRampDown: "1s",
+    },
+  },
+};
+
+export default function () {
+  http.get("https://test.k6.io/contacts.php");
+  // adding sleep beyond so that iterations are longer than rampdown
+  sleep(5);
+}
+```
+
