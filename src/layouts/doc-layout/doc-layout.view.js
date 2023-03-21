@@ -156,6 +156,20 @@ const SidebarNode = (props) => {
 
   const hasSubMenu = Object.keys(children).length;
 
+  const internalLinkClickHandler = (event) => {
+    if (hasSubMenu) {
+      event.preventDefault();
+
+      navigate(meta.path, {
+        state: {
+          disableScrollUpdate: true,
+        },
+      });
+    }
+
+    return false;
+  };
+
   const nodes = {
     externalLink: () => (
       <a
@@ -172,6 +186,7 @@ const SidebarNode = (props) => {
           isActive ? styles.active : ''
         }`}
         to={meta.path}
+        onClick={internalLinkClickHandler}
       >
         {meta.title}
       </Link>
@@ -330,7 +345,6 @@ export const DocLayout = ({
           </a>
         </div>
       </div>
-
       <main className={styles.main}>
         <Header>
           <div
