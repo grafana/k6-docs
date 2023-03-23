@@ -78,7 +78,7 @@
   font-weight: 500;
   outline: none;
   transition: 0.3s border-color;
-  &::-moz-focusring {
+  &:-moz-focusring {
     border: none;
   }
   &:focus {
@@ -186,11 +186,14 @@ a.sidebar-link {
   font-weight: 500;
 }
 
-.sidebar-arrow {
+.sidebar-button {
+  z-index: 9;
   position: absolute;
   right: 0;
   top: 2px;
-  pointer-events: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 
   &-active {
     transform: rotate(90deg);

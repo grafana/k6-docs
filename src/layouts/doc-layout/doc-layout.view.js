@@ -108,6 +108,7 @@ const SidebarNode = (props) => {
   const {
     node: { name, meta, children },
   } = props;
+  const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const search = typeof window === 'undefined' ? '' : window.location.search;
@@ -152,11 +153,18 @@ const SidebarNode = (props) => {
         isPathLocationPart ||
         doesMatchExtensionsCategory,
     );
+    setIsOpen(
+      doesPathMatchLocation ||
+        isPathLocationPart ||
+        doesMatchExtensionsCategory,
+    );
   }, [search]);
 
   const hasSubMenu = Object.keys(children).length;
 
   const internalLinkClickHandler = (event) => {
+    setIsOpen((prev) => !prev);
+
     if (hasSubMenu) {
       event.preventDefault();
 
@@ -217,14 +225,19 @@ const SidebarNode = (props) => {
     >
       {nodes[nodeType()]()}
       {hasSubMenu > 0 && (
-        <ArrowLeft
+        <button
           className={classNames(
-            styles.sidebarArrow,
-            isActive && styles.sidebarArrowActive,
+            styles.sidebarButton,
+            isOpen && styles.sidebarButtonActive,
           )}
-        />
+          type="button"
+          aria-label={isOpen ? 'Collapse the menu' : 'Open the menu'}
+          onClick={internalLinkClickHandler}
+        >
+          <ArrowLeft />
+        </button>
       )}
-      {!!Object.keys(children).length && isActive && (
+      {!!Object.keys(children).length && isActive && isOpen && (
         <div className={styles.sidebarNodeChildren}>
           {childrenToList(children).map((node) => (
             <SidebarNode node={node} key={node.name} />
