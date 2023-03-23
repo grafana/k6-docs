@@ -46,7 +46,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/k6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/k6-browser/api/browser) process. Two parameters are passed to it. One is the `headless` parameter with the value `false` so you can see the browser launching, and `timeout` parameter with the value `60s` which will be the timeout use for various actions and navigation. For a full list of parameters that you can pass, check out the documentation for [BrowserType.launch()](/javascript-api/k6-browser/api/browsertype/launch/).
+  The preceding code imports the `chromium` [BrowserType](/javascript-api/k6-browser/api/browsertype) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/k6-browser/api/browser) process. Two parameters are passed to it. One is the `headless` parameter with the value `false` so you can see the browser launching, and `timeout` parameter with the value `60s` which will be the timeout used for various actions and navigation. For a full list of parameters that you can pass, check out the documentation for [BrowserType.launch()](/javascript-api/k6-browser/api/browsertype/launch/).
   
   After it starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-browser/api/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
