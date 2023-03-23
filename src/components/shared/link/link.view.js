@@ -12,7 +12,7 @@ export const Link =
         ? href.replace('/javascript-api/', `/${version}/javascript-api/`)
         : href;
 
-    return href.startsWith('http') ? (
+    return href.startsWith('http') && !href.includes('k6.io/') ? (
       <a
         className={styles.external}
         href={newHref}
