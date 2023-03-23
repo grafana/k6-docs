@@ -72,7 +72,7 @@ Once added the k6 panel to a dashboard, you can edit the panel options.
 
 To change the panel visualization:
 
-1. Hover over any part of the panel to display the actions menu on the top right corner. 
+1. Hover over any part of the panel to display the actions menu (three dots) on the top right corner. 
 
 2. Click the menu and select **Edit**.
 
