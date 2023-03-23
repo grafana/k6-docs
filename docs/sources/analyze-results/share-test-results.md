@@ -1,13 +1,13 @@
 ---
-title: 'Save, share, or delete a test run'
-title: 'Save, share, delete'
+title: 'Save, share, delete a test run'
+menuTitle: 'Save, share, delete'
 description: 'After you analyze your test results, you might want to share them with other users involved in the testing'
 weight: 504
 aliases:
   - /docs/k6/analyze-results/share-test-results/
 ---
 
-# Export, share, delete a test run
+# Save, share, delete a test run
 
 After you analyze your test, you might want to mark it for further analysis.
 To do this, you have a few options:
