@@ -16,6 +16,8 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import SeoMetaData from 'utils/seo-metadata';
 
+import Blockquote from '../../components/shared/blockquote';
+
 const Extensions = ({ pageContext: { sidebarTree, navLinks } }) => {
   useScrollToAnchor();
 
@@ -38,6 +40,16 @@ const Extensions = ({ pageContext: { sidebarTree, navLinks } }) => {
         />
         <div className={docPageContent.inner}>
           <div ref={contentContainerRef} className={stickyContainerClasses}>
+            <Blockquote mod="attention" title="Looking for Feedback">
+              Help us improve extensions by completing this{' '}
+              <Link
+                to="https://docs.google.com/forms/d/e/1FAIpQLSeL1RdxAyaoznGKLAdlMa5sLmVWoytpxRCZZVzBeFGSyqGI6A/viewform"
+                className="link"
+              >
+                short survey
+              </Link>
+              .
+            </Blockquote>
             <ExtensionsQuickstart />
             <ExtensionsOverview />
             <WhatIsXk6 />
