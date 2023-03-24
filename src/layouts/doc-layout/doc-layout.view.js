@@ -226,7 +226,8 @@ const SidebarNode = (props) => {
         <button
           className={classNames(
             styles.sidebarButton,
-            isOpen && styles.sidebarButtonActive,
+            isActive && styles.sidebarButtonActive,
+            isOpen && styles.sidebarButtonOpen,
           )}
           type="button"
           aria-label={isOpen ? 'Collapse the menu' : 'Open the menu'}

@@ -187,16 +187,20 @@ a.sidebar-link {
 }
 
 .sidebar-button {
-  z-index: 9;
   position: absolute;
   right: 0;
   top: 2px;
   border: none;
   cursor: pointer;
   background-color: transparent;
+  pointer-events: none;
+
+  &-open {
+    transform: rotate(90deg);
+  }
 
   &-active {
-    transform: rotate(90deg);
+    pointer-events: auto;
   }
 
   svg {
