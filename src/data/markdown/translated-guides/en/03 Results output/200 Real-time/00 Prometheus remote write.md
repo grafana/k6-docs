@@ -57,7 +57,7 @@ Note that k6 aggregates trend metric data before sending it to Prometheus in bot
 
 ### Trend stats option
 
-By default, Prometheus supports [Counter and Guage Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, the trend stats option is the default of this output and converts all the k6 trend metrics to Counter and Gauges Prometheus metrics. 
+By default, Prometheus supports [Counter and Gauge Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, the trend stats option is the default of this output and converts all the k6 trend metrics to Counter and Gauges Prometheus metrics. 
 
 The [`K6_PROMETHEUS_RW_TREND_STATS` option](#options) accepts a comma-separated list of stats functions that define how to convert all the k6 trend metrics:
 
