@@ -198,6 +198,10 @@ a.sidebar-link {
   &-active {
     transform: rotate(90deg);
   }
+
+  svg {
+    pointer-events: none;
+  }
 }
 
 .main {

@@ -163,17 +163,15 @@ const SidebarNode = (props) => {
   const hasSubMenu = Object.keys(children).length;
 
   const internalLinkClickHandler = (event) => {
-    setIsOpen((prev) => !prev);
+    event.preventDefault();
 
-    if (hasSubMenu) {
-      event.preventDefault();
+    if (event.target.type === 'button') return setIsOpen((prev) => !prev);
 
-      navigate(meta.path, {
-        state: {
-          disableScrollUpdate: true,
-        },
-      });
-    }
+    navigate(meta.path, {
+      state: {
+        disableScrollUpdate: true,
+      },
+    });
 
     return false;
   };
