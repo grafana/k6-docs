@@ -268,14 +268,6 @@ export const Footer = () => {
                         k6 Champions
                       </a>
                     </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
-                        href={`${main}/k6-cloud-for-education/`}
-                      >
-                        k6 Cloud for Education
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div className={`col-lg-3 col-sm-6 col-12`}>
