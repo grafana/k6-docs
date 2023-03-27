@@ -19,18 +19,37 @@ While we cannot guarantee the quality of community-provided extensions, we _can_
 ## Registry Requirements
 At minimum, each source code repository must have the following:
 
-- a README file with a project description, build and usage documentation, and k6 version compatibilities
-- the `xk6` topic _(See the [GitHub documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics))_ for discoverability
-- a non-restrictive OSS license _(Apache2 preferred)_
-- an `examples` folder with at least one example to show proper usage
-- at least one [versioned release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
-- must successfully build with the latest version of k6 or a prior version within two releases
+- **a README file**
 
-<Blockquote mod="note" title="">
+  The `README` must contain documentation such as the project description, build and usage instructions, as well as k6 version compatibility.
+  The goal is to provide enough information to quickly and easily evaluate the extension.
+ 
+- **the `xk6` topic set**
+ 
+  GitHub allows setting _topics_ for a repository. 
+  This supports querying all public repositories based upon a keyword for better discoverability, i.e. ["xk6"](https://github.com/topics/xk6). 
+  See the [GitHub documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics) to add topics.
+ 
+- **a non-restrictive license**
+  
+  Any open source software (OSS) license will suffice, but [Apache2](https://www.apache.org/licenses/LICENSE-2.0) is preferred.
+  
+- **an `examples` folder with examples**
 
-Our goal is to ease evaluation and adoption of extensions.
+  Provide at least one script to show proper usage of your API.
+  If a [Docker Compose](https://docs.docker.com/compose/compose-file/) specification is provided, these could be used as integration tests to validate the extension works as intended.
 
-</Blockquote>
+- **at least one versioned release**
+
+  As features or fixes are ready to be consumed, create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+  This promotes stability by allowing a user to utilize a particular version.
+  Use [semantic versioning](https://semver.org/) to communicate changes as the extension evolves.
+
+- **builds with a recent k6 version**
+
+  Ideally, the extension should build with the latest release.
+  But, it must build with a version of k6 that is no more than three releases old.
+  For example, if latest version of k6 is `v0.100`, the extension must build with at least version `v0.98`.
 
 ## Naming Conventions
 Some extensions may be very specific, where others are more general. 
