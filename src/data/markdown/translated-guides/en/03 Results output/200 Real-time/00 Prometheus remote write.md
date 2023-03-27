@@ -43,7 +43,7 @@ As much as possible, k6 respects the [naming best practices](https://prometheus.
 
 ## Trend metric conversions
 
-This output provides two distinct mechanisms to send [built-in and custom Trend metrics](https://k6.io/docs/using-k6/metrics/) to Prometheus:
+This output provides two distinct mechanisms to send [built-in and custom metrics](https://k6.io/docs/using-k6/metrics/) to Prometheus:
 
 1. [Trend stats option](#trend-stats-option) 
 2. [Prometheus Native histogram](#prometheus-native-histogram) 
