@@ -19,7 +19,7 @@ For example, you can store the metrics in [Prometheus](https://prometheus.io/doc
 For other implementations, check the [Prometheus Integrations](https://prometheus.io/docs/operating/integrations) guide.
 
 With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
-The output during the `k6 run` execution gets all the generated data points for the [built-in  k6 metrics](/using-k6/metrics/).
+The output during the `k6 run` execution gets all the generated data points for the [k6 metrics](/using-k6/metrics/).
 It then generates the equivalent Prometheus remote write time series.
 
 
