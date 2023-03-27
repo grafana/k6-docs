@@ -94,7 +94,7 @@ To learn the benefits and outcomes of using Histograms, watch [High-resolution H
 
 Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet.  
 
-The instructions to use Native Histogram types are:
+The additional settings to use Native Histogram types are:
 
 1. Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus.
 2. Run the k6 test enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable.
