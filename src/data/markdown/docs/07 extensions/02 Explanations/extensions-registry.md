@@ -6,7 +6,7 @@ hideFromSidebar: false
 
 Did you create an extension and want to share it with your fellow k6 users?
 We'd love to spread word of this new feature adding to our [registry](/extensions/get-started/explore/) of available extensions.
-However, before an extension is added to the registry, we must ensure that it meets our quality standards.
+However, before an extension is added to the registry, we must ensure that it is maintained to the registry standard.
 
 Our desire is to provide the best developer experience when using k6.
 This extends to the extensions ecosystem as well.
@@ -19,13 +19,12 @@ While we cannot guarantee the quality of community-provided extensions, we _can_
 ## Registry Requirements
 At minimum, each source code repository must have the following:
 
-- a README file with a project description, build and usage documentation, and version compatibilities
+- a README file with a project description, build and usage documentation, and k6 version compatibilities
 - the `xk6` topic _(See the [GitHub documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics))_ for discoverability
 - a non-restrictive OSS license _(Apache2 preferred)_
 - an `examples` folder with at least one example to show proper usage
 - at least one [versioned release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
-
-In addition, extensions must successfully build with versions of k6 no older than one year. You must specify the k6 versions it is compatible with.
+- must successfully build with the latest version of k6 or a prior version within two releases
 
 <Blockquote mod="note" title="">
 
