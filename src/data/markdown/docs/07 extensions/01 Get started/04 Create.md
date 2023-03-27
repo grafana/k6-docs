@@ -25,8 +25,8 @@ there's some background knowledge you should have:
 
 <Blockquote mod="note" title="">
 
-If you maintain a public xk6 repository,
-the community appreciates that it stays up to date with the latest k6 APIs.
+If you maintain a public xk6 repository and wish to have your extension listed in our [registry](/extensions/get-started/explore/), 
+be sure to review the [requirements](/extensions/explanations/about-the-extensions-registry#registry-requirements).
 
 </Blockquote>
 
