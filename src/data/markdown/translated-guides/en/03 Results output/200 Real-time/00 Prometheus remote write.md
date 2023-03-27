@@ -19,7 +19,7 @@ For example, you can store the metrics in [Prometheus](https://prometheus.io/doc
 For other implementations, check the [Prometheus Integrations](https://prometheus.io/docs/operating/integrations) guide.
 
 With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
-The output during the `k6 run` execution gets all the generated data points for the [k6 metrics](/using-k6/metrics/).
+The output during the `k6 run` execution gets all the generated data points for the [built-in and custom metrics](/using-k6/metrics/).
 It then generates the equivalent Prometheus remote write time series.
 
 
@@ -32,7 +32,7 @@ All k6 metric types are converted into an equivalent Prometheus remote write typ
 | Counter | Counter                   | `k6_*_total`         |
 | Gauge   | Gauge                     | `k6_*_<unit-suffix>` |
 | Rate    | Gauge                     | `k6_*_rate`          |
-| Trend   | [Gauges (default)](#trend-stats-option) or [Native Histogram](#prometheus-native-histogram) | `k6_*_<unit-suffix>` |
+| Trend   | [Counter and Gauges (default)](#counter-and-gauges) or [Native Histogram](#prometheus-native-histogram) | `k6_*_<unit-suffix>` |
 
 The output maps the metrics into time series with Name labels.
 As much as possible, k6 respects the [naming best practices](https://prometheus.io/docs/practices/naming) that the Prometheus project defines:
@@ -43,9 +43,9 @@ As much as possible, k6 respects the [naming best practices](https://prometheus.
 
 ## Trend metric conversions
 
-This output provides two distinct mechanisms to send [built-in and custom metrics](https://k6.io/docs/using-k6/metrics/) to Prometheus:
+This output provides two distinct mechanisms to send [Trend metrics](/using-k6/metrics/) to Prometheus:
 
-1. [Trend stats option](#trend-stats-option) 
+1. [Counter and Gauge metrics](#counter-and-gauges) (default)
 2. [Prometheus Native histogram](#prometheus-native-histogram) 
 
 Both options provide efficient storage of test results while providing high-precision queries.
@@ -55,28 +55,24 @@ Note that k6 aggregates trend metric data before sending it to Prometheus in bot
 - Prometheus stores data in a millisecond precision (`ms`), but k6 metrics collect data points with higher accuracy, nanosecond (`ns`).
 - A load test could generate vast amounts of data points. High-precision raw data could quickly become expensive and complex to scale and is unnecessary when analyzing performance trends.
 
-### Trend stats option
+### Counter and Gauges
 
-By default, Prometheus supports [Counter and Gauge Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, the trend stats option is the default of this output and converts all the k6 trend metrics to Counter and Gauges Prometheus metrics. 
+By default, Prometheus supports [Counter and Gauge Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, this option is the default of this output and converts all the k6 `Trend` metrics to Counter and Gauges Prometheus metrics. 
 
-The [`K6_PROMETHEUS_RW_TREND_STATS` option](#options) accepts a comma-separated list of stats functions that define how to convert all the k6 trend metrics:
+You can configure how to convert all the k6 trend metrics with the [`K6_PROMETHEUS_RW_TREND_STATS` option](#options) that accepts a comma-separated list of stats functions: `count`, `sum`, `min`, `max`, `avg`, `med`, `p(x)`.
 
-- `count`
-- `sum`
-- `min`
-- `max`
-- `avg`
-- `med`
-- `p(x)`
 
-Given the list of stats functions, k6 converts all trend metrics to the respective math functions as Prometheus metrics. For example, `K6_PROMETHEUS_RW_TREND_STATS=p(90),p(95),max` transforms each trend metric into three Prometheus metrics as follows:
+Given the list of stats functions, k6 converts all trend metrics to the respective math functions as Prometheus metrics.
+
+
+For example, `K6_PROMETHEUS_RW_TREND_STATS=p(90),p(95),max` transforms each trend metric into three Prometheus metrics as follows:
 
 - `k6_*_p90`
 - `k6_*_p95`
 - `k6_*_max`
 
-This mapping has the following drawbacks:
-- Convert a k6 metric to several Prometheus metrics.
+This option provides a configurable solution to represent `Trend` metrics in Prometheus but has the following drawbacks:
+- Convert a k6 `Trend` metric to several Prometheus metrics.
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
@@ -92,7 +88,7 @@ To learn the benefits and outcomes of using Histograms, watch [High-resolution H
 
 </Blockquote>
 
-Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet.  
+Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet. In the future, when Prometheus makes this feature stable, k6 will consider using it as the default conversion method for Trend metrics.
 
 The additional settings to use Native Histogram types are:
 
