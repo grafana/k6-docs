@@ -202,7 +202,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/deliver-fast-and-reliable-digital-experiences-with-k6`}
+                        href={`${main}/why-your-organization-should-perform-load-testing`}
                       >
                         Not a developer. Why k6?
                       </a>
