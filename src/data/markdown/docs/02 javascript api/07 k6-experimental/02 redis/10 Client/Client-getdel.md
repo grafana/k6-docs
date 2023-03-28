@@ -35,11 +35,14 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('mykey', 'oldvalue', 0)
-    .then((_) => redisClient.getSet('mykey', 'newvalue'))
-    .then((_) => redisClient.getDel('mykey'));
+export default async function () {
+    await redisClient.set('mykey', 'oldvalue', 0);
+    let value = await redisClient.getSet('mykey', 'newvalue');
+    
+    value = await redisClient.getDel('mykey');
+    if (value !== 'newvalue') {
+        throw new Error('mykey should have been newvalue');
+    }
 }
 ```
 

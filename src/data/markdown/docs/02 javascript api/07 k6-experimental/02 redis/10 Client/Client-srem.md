@@ -36,17 +36,15 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .sadd('myset', 'foo')
-    .then((_) => redisClient.sadd('myset', 'bar'))
-    .then((_) => redisClient.srem('myset', 'foo'))
-    .then((_) => redisClient.smembers('myset'))
-    .then((members) => {
-      if (members.length !== 1) {
-        throw new Error('sismember should have length 1');
-      }
-    });
+export default async function () {
+  await redisClient.sadd('myset', 'foo');
+  await redisClient.sadd('myset', 'bar');
+  await redisClient.srem('myset', 'foo');
+  
+  const members = await redisClient.smembers('myset');
+  if (members.length !== 1) {
+    throw new Error('sismember should have length 1');
+  }
 }
 ```
 

@@ -35,18 +35,16 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .hset('myhash', 'myfield', 'myvalue')
-    .then((_) => redisClient.hset('myhash', 'myotherfield', 'myothervalue'))
-    .then((_) => redisClient.hkeys('myhash'))
-    .then((keys) => {
-      if (keys.length !== 2) {
-        throw new Error('myhash should have 2 keys');
-      }
+export default async function () {
+    await redisClient.hset('myhash', 'myfield', 'myvalue');
+    await redisClient.hset('myhash', 'myotherfield', 'myothervalue');
+    
+    const keys = await redisClient.hkeys('myhash');
+    if (keys.length !== 2) {
+      throw new Error('myhash should have 2 keys');
+    }
 
-      console.log(`myhash has keys ${keys}`);
-    });
+    console.log(`myhash has keys ${keys}`);
 }
 ```
 

@@ -36,13 +36,13 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('mykey', 10, 0)
-    .then((_) => redisClient.incr('mykey'))
-    .then((value) => redisClient.incrBy('mykey', value))
-    .then((value) => redisClient.decrBy('mykey', value))
-    .then((_) => redisClient.decr('mykey'));
+export default async function () {
+    await redisClient.set('mykey', 10, 0);
+    
+    const value = await redisClient.decrBy('mykey', 2);
+    if (value !== 8) {
+        throw new Error('mykey should have been 8');
+    }
 }
 ```
 

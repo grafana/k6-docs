@@ -35,13 +35,13 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .set('first', 1, 0)
-    .then((_) => redisClient.set('second', 2, 0))
-    .then((_) => redisClient.set('third', 3, 0))
-    .then((_) => redisClient.mget('first', 'second', 'third'))
-    .then((values) => console.log(`set values are: ${values}`));
+export default async function () {
+  await redisClient.set('first', 1, 0)
+  await redisClient.set('second', 2, 0);
+  await redisClient.set('third', 3, 0);
+  
+  const values = await redisClient.mget('first', 'second', 'third');
+  console.log(`set values are: ${values}`);
 }
 ```
 
