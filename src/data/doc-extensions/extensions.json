@@ -841,6 +841,18 @@
       },
       "official": false,
       "categories": ["Data"]
+    },
+    {
+      "name": "xk6-top",
+      "description": "Updating the current k6 metrics summaries on the terminal during the test run",
+      "url": "https://github.com/szkiba/xk6-top",
+      "logo": "https://raw.githubusercontent.com/szkiba/xk6-top/78393869e5885030de22ea70aadff186557c7b15/assets/xk6-top-logo.png",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "official": false,
+      "categories": ["Reporting", "Observability"]
     }
   ]
 }
