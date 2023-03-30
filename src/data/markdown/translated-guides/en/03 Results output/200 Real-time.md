@@ -31,6 +31,7 @@ You can also stream real-time metrics to the following services:
 - [Apache Kafka](/results-output/real-time/apache-kafka)
 - [Cloud](/results-output/real-time/cloud)
 - [Datadog](/results-output/real-time/datadog)
+- [Dynatrace](/results-output/real-time/dynatrace)
 - [Elasticsearch](/results-output/real-time/elasticsearch)
 - [Grafana Cloud](/results-output/real-time/grafana-cloud)
 - [InfluxDB](/results-output/real-time/influxdb-grafana)
