@@ -106,14 +106,14 @@ const iconsDataSet1 = [
     to: '/results-output/real-time/prometheus',
   },
   {
-    Icon: TimescaleDB,
-    name: 'TimescaleDB',
-    to: '/results-output/real-time/timescaledb',
-  },
-  {
     Icon: StatsD,
     name: 'StatsD',
     to: '/results-output/real-time/statsd',
+  },
+  {
+    Icon: TimescaleDB,
+    name: 'TimescaleDB',
+    to: '/results-output/real-time/timescaledb',
   },
 ];
 
