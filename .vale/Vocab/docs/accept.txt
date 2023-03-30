@@ -87,6 +87,7 @@ jmx
 j[qQ]uery
 jq
 loki
+Kibana
 Lua
 maxfiles
 Netdata
