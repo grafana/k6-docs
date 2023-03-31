@@ -12,9 +12,9 @@ Using the [Elasticsearch k6 extension](https://github.com/elastic/xk6-output-ela
 
 ## Run the test
 
-Check that the Elasticsearch instance which will store the k6 metrics is running. 
+Check that the Elasticsearch instance to store the k6 metrics is running.
 
-If you are running on Elasticsearch cloud, use the previous k6 binary and run the test passing the cloud credentials as follows:
+If you're running on Elasticsearch cloud, use the previous k6 binary and run the test passing the cloud credentials as follows:
 
 ```bash
 # export cloud configuration
@@ -26,7 +26,7 @@ export K6_ELASTICSEARCH_PASSWORD=your-password-here
 ./k6 run script.js -o output-elasticsearch
 ```
 
-k6 runs the test script and sends the metrics in real-time to Elasticsearch. 
+k6 runs the test script and sends the metrics in real-time to Elasticsearch.
 
 You can also send the metrics to a local Elasticsearch cluster:
 
@@ -39,10 +39,11 @@ export K6_ELASTICSEARCH_URL=http://localhost:9200
 ```
 
 <Blockquote mod="attention">
-Security and self-signed certificates for non-cloud clusters are not yet supported
+Security and self-signed certificates for non-cloud clusters are not yet supported.
 </Blockquote>
 
-You can now connect to Elasticsearch and query the [k6 metrics](/using-k6/metrics/) stored in the `k6-metrics` index. The example below uses an unsecured local Elasticsearch version `7.17.9`:
+You can now connect to Elasticsearch and query the [k6 metrics](/using-k6/metrics/) stored in the `k6-metrics` index.
+The following example uses an unsecured local Elasticsearch, version `7.17.9`:
 
 ```bash
 curl -XGET 'http://localhost:9200/k6-metrics/_search?pretty' -H 'Content-Type: application/json' -d'
@@ -73,4 +74,3 @@ Here is the full list of options that can be configured and passed to the extens
 | `K6_ELASTICSEARCH_URL`                     | Elasticsearch URL.  |
 | `K6_ELASTICSEARCH_USER`                     | Elasticsearch username.  |
 | `K6_ELASTICSEARCH_PASSWORD`                     | Elasticsearch password.  |
-

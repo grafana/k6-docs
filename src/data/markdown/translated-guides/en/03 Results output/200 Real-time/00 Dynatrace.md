@@ -3,7 +3,8 @@ title: 'Dynatrace'
 excerpt: Send k6 output to Dynatrace to visualize load test results and correlate performance testing metrics in Dynatrace.
 ---
 
-Using the [Dynatrace k6 extension](https://github.com/Dynatrace/xk6-output-dynatrace) you can send metrics to [Dynatrace](https://www.dynatrace.com/). That allows visualizing and correlating performance testing metrics with other monitored metrics in Dynatrace.
+With the [Dynatrace k6 extension](https://github.com/Dynatrace/xk6-output-dynatrace),
+you can send visualize and correlate performance testing metrics with the other metrics that you monitor in Dynatrace.
 
 ## Build the k6 version
 
@@ -11,11 +12,11 @@ Using the [Dynatrace k6 extension](https://github.com/Dynatrace/xk6-output-dynat
 
 ## Run the test
 
-Create a Dynatrace API token to send the data. 
+Create a Dynatrace API token to send the data.
 
 <Blockquote mod="attention">
-The Dynatrace API Token must have the scope name "metrics.ingest" (scope type "API v2").
-</Blockquote> 
+The Dynatrace API Token must have the scope name "metrics.ingest" (scope type `API v2`).
+</Blockquote>
 
 You can use the Dynatrace UI:
 
@@ -38,7 +39,7 @@ export K6_DYNATRACE_APITOKEN=<Dynatrace API token>
 ./k6 run script.js -o output-dynatrace
 ```
 
-You can now check the metrics in your Dynatrace environment, filtering for `k6`:
+Check the metrics in your Dynatrace environment, filtering for `k6`:
 
 ![Dynatrace Test result](./images/Dynatrace/dynatrace-k6-metrics.png)
 
@@ -46,7 +47,7 @@ You can now check the metrics in your Dynatrace environment, filtering for `k6`:
 
 ### Options
 
-When streaming the k6 results to Dynatrace, you can configure the Dynatrace options below:
+When streaming the k6 results to Dynatrace, you can configure the following Dynatrace options:
 
 | Name                                     | Value                                                                                                       |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
