@@ -3,11 +3,11 @@ title: 'injectGrpcFaults()'
 excerpt: 'xk6-disruptor: PodDisruptor.injectGrpcFaults method'
 ---
 
-injectGrpcFaults injects Grpc faults in the requests served by a target Pod.
+injectGrpcFaults injects gRPC faults in the requests served by a target Pod.
 
 | Parameter | Description |
 | ---------- | ----------- |
-| fault | description of the [grpc faults](/javascript-api/xk6-disruptor/api/faults/grpc) to be injected |
+| fault | description of the [gRPC faults](/javascript-api/xk6-disruptor/api/faults/grpc) to be injected |
 | duration | duration of the disruption in seconds |
 | [options](#options) | options that control the injection of the fault |
 

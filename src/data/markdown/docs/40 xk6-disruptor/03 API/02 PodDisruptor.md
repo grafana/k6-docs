@@ -11,7 +11,7 @@ To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/javascript-
 
 | Method | Description |
 | ------ | ----------- |
-| [PodDisruptor.injectGrpcFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injectgrpcfaults) |  Inject [Grpc faults](/javascript-api/xk6-disruptor/api/faults/grpc) in the target Pods|
+| [PodDisruptor.injectGrpcFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injectgrpcfaults) |  Inject [gRPC faults](/javascript-api/xk6-disruptor/api/faults/grpc) in the target Pods|
 | [PodDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) |  Inject [HTTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
 | PodDisruptor.targets() | Returns the list of target Pods of the PodDisruptor |
  

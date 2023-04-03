@@ -1,11 +1,11 @@
 ---
-title: 'Grpc'
-excerpt: 'xk6-disruptor: GrpcP Fault attributes'
+title: 'gRPC'
+excerpt: 'xk6-disruptor: gRPC Fault attributes'
 ---
 
-A Grpc Fault describes the characteristics of the faults to be injected in the Grpc requests served by a target.
+A gRPC Fault describes the characteristics of the faults to be injected in the gRPC requests served by a target.
 
-A Grpc fault is described by the following attributes:
+A gRPC fault is described by the following attributes:
 
 | Attribute | Description |
 | --------- | ------------|
@@ -25,7 +25,7 @@ A Grpc fault is described by the following attributes:
 
 ## Example
 
-This example defines a Grpc fault that introduces a delay of `50ms` in all requests and returns a status code `13` in `10%` of the requests.
+This example defines a gRPC fault that introduces a delay of `50ms` in all requests and returns a status code `13` in `10%` of the requests.
 
 ```javascript
 const fault = {
