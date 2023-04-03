@@ -51,7 +51,7 @@ $ tail -f test_results.json
 
 ## JSON format
 
-The JSON file will have lines like these:
+The JSON output has lines as follows:
 
 <CodeGroup labels={["Output"]}>
 
