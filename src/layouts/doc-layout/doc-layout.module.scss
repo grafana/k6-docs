@@ -109,6 +109,19 @@
   line-height: $line-height-sm;
 }
 
+.sidebar-list {
+  position: sticky;
+  top: 0;
+  max-height: calc(100vh - 54px);
+  height: 100%;
+  scrollbar-width: none;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .sidebar-footer {
   display: flex;
   position: fixed;

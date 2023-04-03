@@ -167,11 +167,7 @@ const SidebarNode = (props) => {
 
     if (event.target.type === 'button') return setIsOpen((prev) => !prev);
 
-    navigate(meta.path, {
-      state: {
-        disableScrollUpdate: true,
-      },
-    });
+    navigate(meta.path);
 
     return false;
   };
@@ -290,11 +286,26 @@ export const DocLayout = ({
   const location = typeof window !== 'undefined' ? window.pathname : '';
 
   // if user opens a page in a different language from what was chosen, save new language
-  React.useEffect(() => {
+  useEffect(() => {
     if (locale && locale !== urlLocale) {
       setLocale(urlLocale);
     }
   }, [location]);
+
+  useEffect(() => {
+    const sidebar = document.querySelector('#sidebar-list');
+    const sidebarScroll = localStorage.getItem('sidebar-scroll');
+
+    sidebar.scrollTop = parseInt(sidebarScroll, 10);
+
+    const handleScroll = () => {
+      localStorage.setItem('sidebar-scroll', sidebar.scrollTop);
+    };
+
+    sidebar.addEventListener('scroll', handleScroll);
+
+    return () => sidebar.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle &&
@@ -305,47 +316,49 @@ export const DocLayout = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.sidebar}>
-        <div className={styles.sidebarHeader}>
-          <HeaderLogo theme={'doc'} />
-        </div>
-        {sidebarTree && <SidebarSectionDropdown links={links} />}
-        {sidebarTree &&
-          childrenToList(sidebarTree.children).map((sectionNode) =>
-            sectionNode.meta.hideFromSidebar ? null : (
-              <div className={styles.sidebarSection} key={sectionNode.name}>
-                {sectionNode.meta.title !== sectionName &&
-                sectionNode.meta.isActiveSidebarLink ? (
-                  <Heading
-                    className={styles.sidebarSectionTitle}
-                    size={'sm'}
-                    tag={'h2'}
-                  >
-                    <Link
-                      className={styles.sidebarSectionTitleLink}
-                      to={sectionNode.meta.path}
+        <div id="sidebar-list" className={styles.sidebarList}>
+          <div className={styles.sidebarHeader}>
+            <HeaderLogo theme={'doc'} />
+          </div>
+          {sidebarTree && <SidebarSectionDropdown links={links} />}
+          {sidebarTree &&
+            childrenToList(sidebarTree.children).map((sectionNode) =>
+              sectionNode.meta.hideFromSidebar ? null : (
+                <div className={styles.sidebarSection} key={sectionNode.name}>
+                  {sectionNode.meta.title !== sectionName &&
+                  sectionNode.meta.isActiveSidebarLink ? (
+                    <Heading
+                      className={styles.sidebarSectionTitle}
+                      size={'sm'}
+                      tag={'h2'}
+                    >
+                      <Link
+                        className={styles.sidebarSectionTitleLink}
+                        to={sectionNode.meta.path}
+                      >
+                        {sectionNode.meta.title || sectionNode.name}
+                      </Link>
+                    </Heading>
+                  ) : (
+                    <Heading
+                      className={styles.sidebarSectionTitle}
+                      size={'sm'}
+                      tag={'h2'}
                     >
                       {sectionNode.meta.title || sectionNode.name}
-                    </Link>
-                  </Heading>
-                ) : (
-                  <Heading
-                    className={styles.sidebarSectionTitle}
-                    size={'sm'}
-                    tag={'h2'}
-                  >
-                    {sectionNode.meta.title || sectionNode.name}
-                  </Heading>
-                )}
-                {childrenToList(sectionNode.children).length > 0 && (
-                  <div className={styles.sidebarNodeChildren}>
-                    {childrenToList(sectionNode.children).map((node) => (
-                      <SidebarNode node={node} key={node.name} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            ),
-          )}
+                    </Heading>
+                  )}
+                  {childrenToList(sectionNode.children).length > 0 && (
+                    <div className={styles.sidebarNodeChildren}>
+                      {childrenToList(sectionNode.children).map((node) => (
+                        <SidebarNode node={node} key={node.name} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ),
+            )}
+        </div>
         <div
           className={classNames(styles.sidebarSection, styles.sidebarFooter)}
         >
