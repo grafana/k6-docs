@@ -16,7 +16,7 @@ For the Kubernetes manifests and the instructions on how to deploy it to a clust
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://k6.io/docs/javascript-api/xk6-disruptor/api/servicedisruptor/) class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/net/grpc](https://k6.io/docs/javascript-api/k6-net-grpc/) module provides functions for executing gRPC requests. The [check](https://k6.io/docs/javascript-api/k6/check/) function verifies the results from the requests.
+The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://k6.io/docs/javascript-api/xk6-disruptor/api/servicedisruptor/) class imported from the `xk6-disruptor` extension provides functions for injecting faults in services. The [k6/net/grpc](https://k6.io/docs/javascript-api/k6-net-grpc/) module provides functions for executing gRPC requests. The [check](https://k6.io/docs/javascript-api/k6/check/) function verifies the results from the requests.
 
 
 ```javascript
