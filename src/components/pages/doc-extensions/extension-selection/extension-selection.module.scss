@@ -115,8 +115,8 @@
 .selected {
   margin-right: 20px;
   font-family: $font-family-primary;
-  font-size: $font-size-sm;
-  line-height: $line-height-sm;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
   color: $color-primary;
 
   & .number {
@@ -126,19 +126,15 @@
 
 .clear {
   font-family: $font-family-primary;
-  font-size: $font-size-sm;
-  line-height: $line-height-sm;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
   padding: 0;
-  color: $color-primary;
+  color: $color-accent-primary;
   font-weight: 500;
   transition: color 0.3s;
   border: none;
   background-color: transparent;
   cursor: pointer;
-
-  &:hover {
-    color: $color-accent-primary;
-  }
 }
 
 .filters {

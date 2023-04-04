@@ -175,41 +175,39 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </div>
       )}
       <div className={`container ${styles.list}`}>
-        {activeCategories
-          .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
-          .map((category, index) => {
-            const filteredCategories = data
-              .filter((extension) => extension.categories.includes(category))
-              .filter((extension) =>
-                activeTier.length > 0
-                  ? extension.tiers.includes(activeTier[0])
-                  : extension,
-              )
-              .filter((extension) =>
-                activeType.length > 0
-                  ? extension.type.includes(activeType[0])
-                  : extension,
-              );
+        {activeCategories.map((category, index) => {
+          const filteredCategories = data
+            .filter((extension) => extension.categories.includes(category))
+            .filter((extension) =>
+              activeTier.length > 0
+                ? extension.tiers.includes(activeTier[0])
+                : extension,
+            )
+            .filter((extension) =>
+              activeType.length > 0
+                ? extension.type.includes(activeType[0])
+                : extension,
+            );
 
-            return filteredCategories.length > 0 ? (
-              <>
-                <h2 key={index} className={styles.listTitle}>
-                  {category}
-                </h2>
-                {filteredCategories.map((extension) => (
-                  <ExtensionCard
-                    key={extension.name}
-                    extension={extension}
-                    isChecked={selected.includes(
-                      extension.url.replace('https://', ''),
-                    )}
-                    onCheckboxClick={() => handleCheckboxClick(extension.url)}
-                    hasCheckbox
-                  />
-                ))}
-              </>
-            ) : null;
-          })}
+          return filteredCategories.length > 0 ? (
+            <>
+              <h2 key={index} className={styles.listTitle}>
+                {category}
+              </h2>
+              {filteredCategories.map((extension) => (
+                <ExtensionCard
+                  key={extension.name}
+                  extension={extension}
+                  isChecked={selected.includes(
+                    extension.url.replace('https://', ''),
+                  )}
+                  onCheckboxClick={() => handleCheckboxClick(extension.url)}
+                  hasCheckbox
+                />
+              ))}
+            </>
+          ) : null;
+        })}
       </div>
     </section>
   );

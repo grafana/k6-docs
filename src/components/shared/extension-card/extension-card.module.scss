@@ -188,7 +188,7 @@
 .external {
   margin-top: auto;
   display: flex;
-  gap: 10px;
+  gap: 16px;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -213,8 +213,9 @@
 
 .stars {
   &:before {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
+    margin: 0 4px;
     background-image: url(./svg/star.inline.svg);
   }
 }
