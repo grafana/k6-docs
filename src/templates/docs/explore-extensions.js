@@ -44,13 +44,15 @@ const ExploreExtensionsPage = ({
           description
           url
           logo
-          official
-          categories
-          type
           author {
             name
             url
           }
+          stars
+          type
+          categories
+          tiers
+          cloudEnabled
         }
       }
     }

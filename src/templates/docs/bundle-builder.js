@@ -38,13 +38,15 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           description
           url
           logo
-          official
-          categories
-          type
           author {
             name
             url
           }
+          stars
+          type
+          categories
+          tiers
+          cloudEnabled
         }
       }
     }

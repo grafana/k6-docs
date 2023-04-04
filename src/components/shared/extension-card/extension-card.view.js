@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { CheckboxField } from 'components/shared/checkbox-field';
 import {
   ItemCard,
@@ -13,7 +14,7 @@ export const ExtensionCard = ({
   isChecked = false,
   onCheckboxClick = () => {},
 }) => {
-  const Wrapper = ({ className, children }) => {
+  const Wrapper = ({ className = '', children }) => {
     if (hasCheckbox) {
       return (
         <ItemCard
@@ -53,22 +54,33 @@ export const ExtensionCard = ({
         </div>
       )}
       <div className={styles.content}>
-        {extension.categories && (
-          <ul className={styles.categoryWrapper}>
-            {extension.categories.map((category, index) => (
-              <li className={styles.category} key={index}>
-                {category}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className={styles.tiersWrapper}>
+          {extension.tiers.map((tier, index) => (
+            <li
+              className={classNames(
+                styles.tier,
+                tier === 'Official' && styles.tierOfficial,
+                tier === 'Verified' && styles.tierVerified,
+                tier === 'Community' && styles.tierCommunity,
+              )}
+              key={index}
+            >
+              <span>{tier}</span>
+            </li>
+          ))}
+        </ul>
         <div className={styles.nameWrapper}>
           <span className={styles.name}>{extension.name}</span>
-          {extension.type && (
-            <span className={styles.type}>{extension.type}</span>
-          )}
         </div>
         <span className={styles.description}>{extension.description}</span>
+        <div className={styles.external}>
+          {extension.stars && (
+            <span className={styles.stars}>{extension.stars}</span>
+          )}
+          {extension.cloudEnabled && (
+            <span className={styles.cloud}>Available in cloud</span>
+          )}
+        </div>
       </div>
     </Wrapper>
   );
