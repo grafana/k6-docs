@@ -66,7 +66,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           breadcrumbs={breadcrumbs}
         />
         <div className={docPageContent.inner}>
-          <p>
+          <p className="container">
             Extensions are composable; you can combine any extensions, or mix
             and match different test cases. To generate the command for your
             extension combination, you can use this <em>bundle builder</em>.

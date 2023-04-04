@@ -1,4 +1,5 @@
 /* eslint-disable react/no-danger */
+import classNames from 'classnames';
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
@@ -8,7 +9,7 @@ import styles from './extension-selection.module.scss';
 export const ExtensionSelection = ({ data, description = '' }) => {
   const [selected, setSelected] = useState([]);
   const [version, setVersion] = useState(null);
-  const [allTypes, setAlltypes] = useState([]);
+  const [allTypes, setAllTypes] = useState([]);
   const [activeType, setActiveType] = useState([]);
   const [allCategories, setAllCategories] = useState(new Set());
   const [activeCategories, setActiveCategories] = useState([]);
@@ -17,7 +18,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
 
   useEffect(() => {
     data.forEach((extension) => {
-      setAlltypes((prevState) => [
+      setAllTypes((prevState) => [
         ...new Set(prevState.concat(extension.type)),
       ]);
 
@@ -36,7 +37,9 @@ export const ExtensionSelection = ({ data, description = '' }) => {
   }, []);
 
   useEffect(() => {
-    setActiveCategories([...allCategories]);
+    setActiveCategories(
+      [...allCategories].sort((item1, item2) => (item1 > item2 ? 1 : -1)),
+    );
   }, [allCategories]);
 
   const fetchLatestVersion = async (callback) => {
@@ -72,7 +75,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
 
   return (
     <section className={styles.container}>
-      <ul className={styles.filters}>
+      <ul className={classNames('container', styles.filters)}>
         <li className={styles.dropdownWrapper}>
           <select
             onChange={({ target }) => {
@@ -128,9 +131,15 @@ export const ExtensionSelection = ({ data, description = '' }) => {
 
               // eslint-disable-next-line no-unused-expressions
               target.value === 'All'
-                ? setActiveCategories([...allCategories])
+                ? setActiveCategories(
+                    [...allCategories].sort((item1, item2) =>
+                      item1 > item2 ? 1 : -1,
+                    ),
+                  )
                 : setActiveCategories(
-                    [...allCategories].filter((item) => item === target.value),
+                    [...allCategories]
+                      .filter((item) => item === target.value)
+                      .sort((item1, item2) => (item1 > item2 ? 1 : -1)),
                   );
             }}
             className={styles.dropdown}
@@ -174,7 +183,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
           </div>
         </div>
       )}
-      <div className={`container ${styles.list}`}>
+      <div className="container">
         {activeCategories.map((category, index) => {
           const filteredCategories = data
             .filter((extension) => extension.categories.includes(category))
@@ -190,22 +199,22 @@ export const ExtensionSelection = ({ data, description = '' }) => {
             );
 
           return filteredCategories.length > 0 ? (
-            <>
-              <h2 key={index} className={styles.listTitle}>
-                {category}
-              </h2>
-              {filteredCategories.map((extension) => (
-                <ExtensionCard
-                  key={extension.name}
-                  extension={extension}
-                  isChecked={selected.includes(
-                    extension.url.replace('https://', ''),
-                  )}
-                  onCheckboxClick={() => handleCheckboxClick(extension.url)}
-                  hasCheckbox
-                />
-              ))}
-            </>
+            <div key={index} className={styles.list}>
+              <h2 className={styles.listTitle}>{category}</h2>
+              {filteredCategories
+                .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
+                .map((extension) => (
+                  <ExtensionCard
+                    key={extension.name}
+                    extension={extension}
+                    isChecked={selected.includes(
+                      extension.url.replace('https://', ''),
+                    )}
+                    onCheckboxClick={() => handleCheckboxClick(extension.url)}
+                    hasCheckbox
+                  />
+                ))}
+            </div>
           ) : null;
         })}
       </div>
