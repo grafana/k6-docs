@@ -3,20 +3,20 @@ title: 'Inject gRPC faults into Service'
 excerpt: ''
 ---
 
-This example shows how [ServiceDisruptor](/javascript-api/xk6-disruptor/api/servicedisruptor) can be used for testing the effect of faults injected in the gRPC requests served by a service.
+This example shows a way to use the [ServiceDisruptor](/javascript-api/xk6-disruptor/api/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
 
-You will find the complete [source code](#source-code) at the end of this document. Next sections examine the code in detail.
+The complete [source code](#source-code) is at the end of this document. The next sections examine the code in detail.
 
 The example uses [grpcpbin](https://grpcb.in), a simple request/response application that offers endpoints for testing different gRPC requests.
 
-The test requires `grpcpbin` to be deployed in a cluster in the namespace `grpcbin` and exposed with an external IP. the IP address is expected in the environment variable `GRPC_HOST`.
+The test requires `grpcpbin` to be deployed in a cluster in the namespace `grpcbin` and exposed with an external IP. The IP address is expected in the environment variable `GRPC_HOST`.
 
-You will find the Kubernetes manifests and the instructions of how to deploy it to a cluster in the [test setup](#test-setup) section at the end of this document. You can learn more about how to get the external IP address in the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section.
+For the Kubernetes manifests and the instructions on how to deploy it to a cluster, refer to the [test setup](#test-setup) section at the end of this document. To learn more about how to get the external IP address, refer to [Expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application).
 
 
 ## Initialization
 
-The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://k6.io/docs/javascript-api/xk6-disruptor/api/servicedisruptor/) class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/net/grpc](https://k6.io/docs/javascript-api/k6-net-grpc/) module provides functions for executing gRPC requests. We will also use the [check](https://k6.io/docs/javascript-api/k6/check/) function to verify the results from the requests.
+The initialization code imports the external dependencies required by the test. The [ServiceDisruptor](https://k6.io/docs/javascript-api/xk6-disruptor/api/servicedisruptor/) class imported from the `xk6-disruptor` extension provides functions for injecting faults in pods. The [k6/net/grpc](https://k6.io/docs/javascript-api/k6-net-grpc/) module provides functions for executing gRPC requests. The [check](https://k6.io/docs/javascript-api/k6/check/) function verifies the results from the requests.
 
 
 ```javascript
@@ -125,7 +125,7 @@ This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be e
 
  <Blockquote mod="note">
 
- Notice that the `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
+ The `disrupt` scenario uses a `shared-iterations` executor with one iteration and one `VU`. This setting ensures the `disrupt` function is executed only once. Executing this function multiples times concurrently may have unpredictable results.
 
 </Blockquote>
 
@@ -134,7 +134,7 @@ This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be e
 
 <Blockquote mod="note">
 
-The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to the [installation section](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
+The commands in this section assume the `xk6-disruptor` binary is available in your current directory. This location can change depending on the installation process and the platform. Refer to [Installation](/javascript-api/xk6-disruptor/get-started/installation) for details on how to install it in your environment.
 
 </Blockquote>
 
@@ -156,7 +156,7 @@ xk6-disruptor --env SKIP_FAULTS=1 --env "GRPC_HOST=$Env:GRPC_HOST" run grpc-faul
 
 Notice the argument `--env SKIP_FAULT=1`, which makes the `disrupt` function return without injecting any fault as explained in the [fault injection](#fault-injection) section. Also notice the `--env GRPC_HOST` argument, which passes the external IP used to access the `grpcbin` application.
 
-You should get an output similar to the one shown below (click `Expand` button to see all output).
+You should get an output similar to the following (use the `Expand` button to see all output).
 
 <CodeGroup heightTogglers="true">
 
@@ -364,7 +364,7 @@ message HelloResponse {
 
 The tests requires the deployment of the `grpcbin` application. The application must also be accessible using an external IP available in the `GRPC_HOST` environment variable.
 
-The [manifests](#manifests) below define the resources required for deploying the application and exposing it as a LoadBalancer service.
+The following [manifests](#manifests) define the resources required for deploying the application and exposing it as a LoadBalancer service.
 
 You can deploy the application using the following commands:
 
@@ -384,7 +384,7 @@ service/grpcbin created
 
 You must set the environment variable `GRPC_HOST` with the external IP address and port used to access the `grpcbin` service from the test script. 
 
-You can learn more about how to get the external IP address in the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section.
+Learn more about how to get the external IP address in the [Expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application).
 
 ### Manifests
 
