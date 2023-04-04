@@ -12,6 +12,7 @@ To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](/jav
 
 | Method | Description |
 | ------ | ----------- |
+| [ServiceDisruptor.injectGrpcFaults()](/javascript-api/xk6-disruptor/api/servicedisruptor/injectgrpcfaults) | Inject [gRPC faults](/javascript-api/xk6-disruptor/api/faults/Grpc) in the target Pods|
 | [ServiceDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/servicedisruptor/injecthttpfaults) | Inject [HTTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
  
 

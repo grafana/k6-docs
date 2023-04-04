@@ -4,4 +4,5 @@ node_modules/
 docs/sources/get-started/run-cloud-tests-from-the-CLI.md
 docs/sources/get-started/run-your-first-tests.md
 CONTRIBUTING_FILE_FORMAT.md
-src/data/markdown/docs/40 xk6-disruptor/04 Examples/01 Inject HTTP faults into Pod.md
+src/data/markdown/docs/40 xk6-disruptor/04 Examples/01 Inject Grpc faults into Service.md
+src/data/markdown/docs/40 xk6-disruptor/04 Examples/02 Inject HTTP faults into Pod.md
