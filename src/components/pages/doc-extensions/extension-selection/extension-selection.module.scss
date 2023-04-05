@@ -183,3 +183,29 @@
     border-color: $color-accent-primary;
   }
 }
+
+.notFoundWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.notFoundIllustration {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+.notFoundTitle {
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+.notFoundDescription {
+  font-size: 20px;
+  line-height: 25px;
+  color: #5a5c87;
+  margin-top: 0;
+  margin-bottom: 30px;
+}

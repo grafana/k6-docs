@@ -1,8 +1,16 @@
 /* eslint-disable react/no-danger */
 import classNames from 'classnames';
+import NotFoundIllustration from 'components/pages/404/not-found/svg/not-found.inline.svg';
+import { Button } from 'components/shared/button';
 import { ExtensionCard } from 'components/shared/extension-card';
 import { WithCopyButton } from 'components/shared/with-copy-button';
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 
 import styles from './extension-selection.module.scss';
 
@@ -42,6 +50,31 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     );
   }, [allCategories]);
 
+  const filterExtensionsByCategory = useCallback(
+    (category) =>
+      data
+        .filter((extension) => extension.categories.includes(category))
+        .filter((extension) =>
+          activeTier.length > 0
+            ? extension.tiers.includes(activeTier[0])
+            : extension,
+        )
+        .filter((extension) =>
+          activeType.length > 0
+            ? extension.type.includes(activeType[0])
+            : extension,
+        ),
+    [activeCategories, activeTier, activeType],
+  );
+
+  const totalExtensions = useMemo(
+    () =>
+      activeCategories
+        .map((category) => filterExtensionsByCategory(category))
+        .flat(),
+    [activeCategories, activeTier, activeType],
+  );
+
   const fetchLatestVersion = async (callback) => {
     try {
       const res = await fetch(
@@ -66,6 +99,14 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     } else {
       setSelected([...selected, urlWithoutPrefix]);
     }
+  };
+
+  const handleResetFilters = () => {
+    setActiveTier([]);
+    setActiveType([]);
+    setActiveCategories(
+      [...allCategories].sort((item1, item2) => (item1 > item2 ? 1 : -1)),
+    );
   };
 
   let code = `$ xk6 build ${version}`;
@@ -184,39 +225,39 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </div>
       )}
       <div className="container">
-        {activeCategories.map((category, index) => {
-          const filteredCategories = data
-            .filter((extension) => extension.categories.includes(category))
-            .filter((extension) =>
-              activeTier.length > 0
-                ? extension.tiers.includes(activeTier[0])
-                : extension,
-            )
-            .filter((extension) =>
-              activeType.length > 0
-                ? extension.type.includes(activeType[0])
-                : extension,
-            );
-
-          return filteredCategories.length > 0 ? (
-            <div key={index} className={styles.list}>
-              <h2 className={styles.listTitle}>{category}</h2>
-              {filteredCategories
-                .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
-                .map((extension) => (
-                  <ExtensionCard
-                    key={extension.name}
-                    extension={extension}
-                    isChecked={selected.includes(
-                      extension.url.replace('https://', ''),
-                    )}
-                    onCheckboxClick={() => handleCheckboxClick(extension.url)}
-                    hasCheckbox
-                  />
-                ))}
-            </div>
-          ) : null;
-        })}
+        {totalExtensions.length === 0 ? (
+          <div className={styles.notFoundWrapper}>
+            <NotFoundIllustration className={styles.notFoundIllustration} />
+            <h2 className={styles.notFoundTitle}>Oops! No match found.</h2>
+            <p className={styles.notFoundDescription}>
+              Adjust or clear the filters and try again.
+            </p>
+            <Button cursor onClick={handleResetFilters}>
+              Clear all filters
+            </Button>
+          </div>
+        ) : (
+          activeCategories.map((category, index) =>
+            filterExtensionsByCategory(category).length > 0 ? (
+              <div key={index} className={styles.list}>
+                <h2 className={styles.listTitle}>{category}</h2>
+                {filterExtensionsByCategory(category)
+                  .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
+                  .map((extension) => (
+                    <ExtensionCard
+                      key={extension.name}
+                      extension={extension}
+                      isChecked={selected.includes(
+                        extension.url.replace('https://', ''),
+                      )}
+                      onCheckboxClick={() => handleCheckboxClick(extension.url)}
+                      hasCheckbox
+                    />
+                  ))}
+              </div>
+            ) : null,
+          )
+        )}
       </div>
     </section>
   );
