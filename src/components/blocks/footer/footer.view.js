@@ -202,7 +202,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/deliver-fast-and-reliable-digital-experiences-with-k6`}
+                        href={`${main}/why-your-organization-should-perform-load-testing`}
                       >
                         Not a developer. Why k6?
                       </a>
@@ -266,14 +266,6 @@ export const Footer = () => {
                         href={`${main}/champions-program/`}
                       >
                         k6 Champions
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
-                        href={`${main}/k6-cloud-for-education/`}
-                      >
-                        k6 Cloud for Education
                       </a>
                     </li>
                   </ul>

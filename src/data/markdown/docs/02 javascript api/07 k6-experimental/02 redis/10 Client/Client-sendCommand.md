@@ -36,12 +36,11 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient.sendCommand('ECHO', 'Hello world').then((result) => {
-    if (result !== 'Hello world') {
-      throw new Error('ECHO should have returned "Hello world"');
-    }
-  });
+export default async function () {
+  const result = await redisClient.sendCommand('ECHO', 'Hello world');
+  if (result !== 'Hello world') {
+    throw new Error('ECHO should have returned "Hello world"');
+  }
 }
 ```
 

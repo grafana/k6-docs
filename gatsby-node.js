@@ -1580,6 +1580,12 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/using-k6/test-life-cycle',
+    toPath: '/using-k6/test-lifecycle/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/using-k6/test-life-cycle/',
     toPath: '/using-k6/test-lifecycle/',
     isPermanent: true,

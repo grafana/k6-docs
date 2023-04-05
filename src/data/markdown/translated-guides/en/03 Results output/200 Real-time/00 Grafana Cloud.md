@@ -4,25 +4,28 @@ excerpt: >
   How to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and the k6 output for Prometheus remote write'
 ---
 
+<Blockquote mod="attention" title="">
+
+This page includes instructions for running a local test that sends the test results to a Prometheus instance in Grafana Cloud.
+
+For running and managing cloud tests in Grafana Cloud, check out [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/).
+
+</Blockquote>
+
 
 With Grafana Cloud Prometheus and the [k6 output for Prometheus remote write](/results-output/real-time/prometheus-remote-write), you can send your k6 results output to [Grafana Cloud](https://grafana.com/products/cloud) to visualize your testing results.
 With k6 metrics in Grafana, you can correlate k6 metrics with other metrics of your observability stack.
 
 While this topic uses Grafana Cloud as an example, this approach is compatible with any remote write capable Prometheus installation.
 
-<Blockquote mod="attention" title="">
-
-For k6 Cloud tests, follow the [k6 Cloud instructions](/cloud/integrations/cloud-apm/grafana-cloud).
-
-</Blockquote>
 
 
 ## Set up Grafana Cloud Prometheus
 
 Before you start, you need the following:
-- [ ] A Grafana Cloud account ([sign up](https://grafana.com/products/cloud/)).
+- A Grafana Cloud account ([sign up](https://grafana.com/products/cloud/)).
 The free plan includes 10,000 Prometheus series.
-- [ ] The URL, username, and password of your Grafana Cloud Prometheus instance to configure the integration. 
+- The URL, username, and password of your Grafana Cloud Prometheus instance to configure the integration. 
 
 After you've set up your account, follow these steps:
 

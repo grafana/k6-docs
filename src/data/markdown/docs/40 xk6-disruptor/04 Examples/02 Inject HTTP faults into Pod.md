@@ -63,9 +63,9 @@ export function disrupt(data) {
     const podDisruptor = new PodDisruptor(selector)
     // delay traffic from one random replica of the deployment
     const fault = {
-        average_delay: 50,
-        error_code: 500,
-        error_rate: 0.1
+        averageDelay: 50,
+        errorCode: 500,
+        errorRate: 0.1
     }
     podDisruptor.injectHTTPFaults(fault, 30)
 }
@@ -355,19 +355,10 @@ NAME              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        
 service/httpbin   LoadBalancer   10.96.169.78   172.18.255.200   80:31224/TCP   1m
 ```
 
-You can retrieve the external IP address in the environment variable `SVC_IP` using the following command:
+You must set the environment variable `SVC_IP` with the external IP address and port used to access the `httpbin` service from the test script.
 
-<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+You can learn more about how to get the external IP address in the [expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application) section.
 
-```bash
-SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
-
-```Powershell
-$Env:SVC_IP=$(kubectl -n httpbin  get svc httpbin --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
-
-</CodeGroup>
 
 ### Manifests
 

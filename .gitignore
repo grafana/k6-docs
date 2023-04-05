@@ -79,3 +79,6 @@ yarn-error.log
 .vscode/snipsnap.code-snippets
 output 
 .obsidian
+
+# make-docs script fetched from GitHub.
+docs/make-docs

@@ -5,30 +5,34 @@ export SHELLOPTS := pipefail:errexit
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rule
 
+.DEFAULT_GOAL: help
+
+# Adapted from https://www.thapaliya.com/en/writings/well-documented-makefiles/
+.PHONY: help
+help: ## Display this help.
+help:
+	@awk 'BEGIN {FS = ": ##"; printf "Usage:\n  make <target>\n\nTargets:\n"} /^[a-zA-Z0-9_\.\-\/%]+: ##/ { printf "  %-45s %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
+
 GIT_ROOT := $(shell git rev-parse --show-toplevel)
-# Support podman over Docker if it is available.
-PODMAN  := $(shell if command -v podman >/dev/null 2>&1; then echo podman; else echo docker; fi)
 
-# This allows ports and base URL to be overridden, so services like ngrok.io can
-# be used to share a local running docs instances.
-DOCS_HOST_PORT   := 3002
-DOCS_LISTEN_PORT := 3002
-DOCS_BASE_URL    := "localhost:$(DOCS_HOST_PORT)"
+# List of projects to provide to the make-docs script.
+PROJECTS := grafana-cloud/k6
 
-PROJECT         := k6
-PROJECT_VERSION :=
-ifeq ($(PROJECT_VERSION),)
-PROJECT_URL         := http://$(DOCS_BASE_URL)/docs/$(PROJECT)/
-PROJECT_CONTENT_DIR := /hugo/content/docs/$(PROJECT)
-else
-PROJECT_URL         := http://$(DOCS_BASE_URL)/docs/$(PROJECT)/$(PROJECT_VERSION)
-PROJECT_CONTENT_DIR := /hugo/content/docs/$(PROJECT)/$(PROJECT_VERSION)
-endif
+# Name for the container.
+export DOCS_CONTAINER := $(firstword $(subst /,-,$(PROJECTS))-docs)
 
-DOCS_IMAGE     := grafana/docs-base:latest
-DOCS_CONTAINER := $(PROJECT)-docs
+# Host port to publish container port to.
+export DOCS_HOST_PORT := 3002
 
-HUGO_REFLINKSERRORLEVEL ?= WARNING
+# Container image used to perform Hugo build.
+export DOCS_IMAGE := grafana/docs-base:latest
+
+# PATH-like list of directories within which to find projects.
+# If all projects are checked out into the same directory, ~/repos/ for example, then the default should work.
+export REPOS_PATH := $(realpath $(GIT_ROOT)/..)
+
+# How to treat Hugo relref errors.
+export HUGO_REFLINKSERRORLEVEL := WARNING
 
 .PHONY: docs-rm
 docs-rm: ## Remove the docs container.
@@ -37,6 +41,26 @@ docs-rm: ## Remove the docs container.
 .PHONY: docs-pull
 docs-pull: ## Pull documentation base image.
 	$(PODMAN) pull $(DOCS_IMAGE)
+
+make-docs: ## Fetch the latest make-docs script.
+make-docs:
+	curl -s -LO https://raw.githubusercontent.com/grafana/writers-toolkit/main/scripts/make-docs
+	chmod +x make-docs
+
+.PHONY: docs
+docs: ## Serve documentation locally.
+docs: make-docs
+	$(PWD)/make-docs $(PROJECTS)
+
+.PHONY: docs/lint
+docs/lint: ## Run docs-validator on the entire docs folder.
+	$(PODMAN) run --rm -ti \
+		--platform linux/amd64 \
+		--volume "$(GIT_ROOT)/docs/sources:/docs/sources" \
+		grafana/doc-validator:latest \
+		--skip-image-validation \
+		/docs/sources \
+		/docs/k6
 
 .PHONY: docs/lint
 docs/lint: ## Run docs-validator on the entire docs folder.
@@ -47,21 +71,3 @@ docs/lint: ## Run docs-validator on the entire docs folder.
 		--skip-image-validation \
 		/docs/sources \
 		/docs/k6
-
-.PHONY: docs
-docs: ## Serve documentation locally.
-docs: docs-pull
-	@echo "Documentation will be served at:"
-	echo $(PROJECT_URL)
-	echo ""
-	if [[ -z $${NON_INTERACTIVE} ]]; then \
-		read -p "Press enter to continue"; \
-	fi
-	$(PODMAN) run -ti \
-		--init \
-		-v $(GIT_ROOT)/docs/sources:$(PROJECT_CONTENT_DIR):ro,z \
-		-e HUGO_REFLINKSERRORLEVEL=$(HUGO_REFLINKSERRORLEVEL) \
-		-p $(DOCS_HOST_PORT):$(DOCS_LISTEN_PORT) \
-		--name $(DOCS_CONTAINER) \
-		--rm \
-		$(DOCS_IMAGE) make server

@@ -246,6 +246,9 @@ export default function () {
 
 </CodeGroup>
 
-## Generating data
+## Generating data using faker.js
 
-See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.
+The following articles show how to use faker.js in k6 to generate realistic data during the test execution:
+
+- [Performance Testing with Generated Data using k6 and Faker](https://dev.to/k6/performance-testing-with-generated-data-using-k6-and-faker-2e)
+- [Load Testing Made Easy with K6: Using Faker Library and CSV Files](https://farhan-labib.medium.com/load-testing-made-easy-with-k6-using-faker-library-and-csv-files-c997d48fb6e2)

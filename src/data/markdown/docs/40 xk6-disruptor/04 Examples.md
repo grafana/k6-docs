@@ -13,4 +13,5 @@ In particular, check that:
 - This cluster is configured to expose your application using an external IP.
 
 
+[Injecting gRPC faults to a Service](/javascript-api/xk6-disruptor/examples/inject-grpc-faults-into-service)
 [Injecting HTTP faults to a Pod](/javascript-api/xk6-disruptor/examples/inject-http-faults-into-pod)

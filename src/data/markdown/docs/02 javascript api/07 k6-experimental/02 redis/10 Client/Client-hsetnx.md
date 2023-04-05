@@ -37,16 +37,14 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .hsetnx('myhash', 'myfield', 'myvalue')
-    .then((_) => redisClient.hsetnx('myhash', 'myotherfield', 'myothervalue'))
-    .then((_) => redisClient.hsetnx('myhash', 'myfield', 'mynewvalue'))
-    .then((set) => {
-      if (set === true) {
-        throw new Error('hsetnx should have failed on existing field');
-      }
-    });
+export default async function () {
+    await redisClient.hsetnx('myhash', 'myfield', 'myvalue')
+    await redisClient.hsetnx('myhash', 'myotherfield', 'myothervalue');
+    
+    const set = await redisClient.hsetnx('myhash', 'myfield', 'mynewvalue');
+    if (set === true) {
+      throw new Error('hsetnx should have failed on existing field');
+    }
 }
 ```
 

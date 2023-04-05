@@ -3,7 +3,7 @@ title: 'HTTP Requests'
 excerpt: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
 ---
 
-When you create a new load test, you'll often first define the HTTP requests that you will use to test your system.
+When testers create new load test, the first step is often to define the HTTP requests to test the system with.
 
 ## Making HTTP Requests
 

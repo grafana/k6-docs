@@ -36,16 +36,14 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .sadd('myset', 'foo')
-    .then((_) => redisClient.sadd('myset', 'bar'))
-    .then((_) => redisClient.sismember('myset', 'foo'))
-    .then((isit) => {
-      if (isit === false) {
-        throw new Error('sismember should have returned true');
-      }
-    });
+export default async function () {
+  await redisClient.sadd('myset', 'foo');
+  await redisClient.sadd('myset', 'bar');
+
+  const isit = await redisClient.sismember('myset', 'foo');
+  if (isit === false) {
+    throw new Error('sismember should have returned true');
+  }
 }
 ```
 

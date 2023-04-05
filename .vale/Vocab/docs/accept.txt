@@ -62,6 +62,7 @@ discoverability
 dcadwallader
 deserialized
 Dev
+Dynatrace
 enum
 errno
 erroring
@@ -87,6 +88,7 @@ jmx
 j[qQ]uery
 jq
 loki
+Kibana
 Lua
 maxfiles
 Netdata

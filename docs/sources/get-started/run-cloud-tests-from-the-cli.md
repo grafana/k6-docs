@@ -1,7 +1,7 @@
 ---
 title: Run cloud tests from the CLI 
 description: For day-to-day use, it's most convenient to run your cloud tests from you own CLI.
-weight: 102
+weight: 200
 aliases:
   - /docs/k6/run-cloud-tests-from-the-cli/
   - /docs/k6/get-started/run-cloud-tests-from-the-cli/
@@ -40,7 +40,7 @@ export const options = {
     loadimpact: {
       distribution: {
         "amazon:us:ashburn": { loadZone: "amazon:us:ashburn", percent: 34 },
-        "amazon:gb:london": { loadZone: "amazon:gb:london", percent: 34 },
+        "amazon:gb:london": { loadZone: "amazon:gb:london", percent: 33 },
         "amazon:au:sydney": { loadZone: "amazon:au:sydney", percent: 33 },
       },
     },

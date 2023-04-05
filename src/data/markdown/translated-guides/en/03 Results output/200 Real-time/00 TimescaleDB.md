@@ -21,7 +21,7 @@ Use the previous k6 binary and run the test passing the Postgres connection stri
 k6 run script.js -o timescaledb=postgresql://<postgresql_user_name>:<password>@<ip>:<port>/<database>
 ```
 
-k6 runs the test script and send the metrics in real-time to the TimescaleDB instance. You can now connect to TimescaleDB and query the [k6 metrics]().
+k6 runs the test script and sends the metrics in real-time to the TimescaleDB instance. You can now connect to TimescaleDB and query the [k6 metrics](/using-k6/metrics/).
 
 ```bash
 k6=# SELECT metric,AVG (value) FROM samples GROUP BY metric;

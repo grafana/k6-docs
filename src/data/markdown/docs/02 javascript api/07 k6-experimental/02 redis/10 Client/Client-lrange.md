@@ -37,19 +37,17 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .rpush('mylist', 'first')
-    .then((_) => redisClient.rpush('mylist', 'second'))
-    .then((_) => redisClient.rpush('mylist', 'third'))
-    .then((_) => redisClient.lindex('mylist', 0))
-    .then((item) => {
-      if (item !== 'first') {
-        throw new Error('lindex operation should have returned first');
-      }
+export default async function () {
+    await redisClient.rpush('mylist', 'first');
+    await redisClient.rpush('mylist', 'second');
+    await redisClient.rpush('mylist', 'third');
+    
+    const item = redisClient.lindex('mylist', 0);
+    if (item !== 'first') {
+      throw new Error('lindex operation should have returned first');
+    }
 
-      return redisClient.lrange('mylist', 1, 2);
-    });
+    await redisClient.lrange('mylist', 1, 2);
 }
 ```
 

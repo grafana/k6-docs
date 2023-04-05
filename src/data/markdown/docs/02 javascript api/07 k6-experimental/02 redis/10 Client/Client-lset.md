@@ -37,13 +37,12 @@ const redisClient = new redis.Client({
   password: redis_password,
 });
 
-export default function () {
-  redisClient
-    .rpush('mylist', 'first')
-    .then((_) => redisClient.rpush('mylist', 'second'))
-    .then((_) => redisClient.rpush('mylist', 'third'))
-    .then((_) => redisClient.lset('mylist', 0, 1))
-    .then((_) => redisClient.lset('mylist', 1, 2));
+export default async function () {
+    await redisClient.rpush('mylist', 'first');
+    await redisClient.rpush('mylist', 'second');
+    await redisClient.rpush('mylist', 'third');
+    await redisClient.lset('mylist', 0, 1);
+    await redisClient.lset('mylist', 1, 2);
 }
 ```
 

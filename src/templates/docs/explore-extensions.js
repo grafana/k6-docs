@@ -10,6 +10,8 @@ import queryString from 'query-string';
 import React from 'react';
 import SeoMetaData from 'utils/seo-metadata';
 
+import Blockquote from '../../components/shared/blockquote';
+
 const breadcrumbs = [
   {
     name: 'Extensions',
@@ -74,6 +76,16 @@ const ExploreExtensionsPage = ({
           breadcrumbs={breadcrumbs}
         />
         <div className={docPageContent.inner}>
+          <Blockquote mod="attention" title="Looking for Feedback">
+            Help us improve extensions by completing this{' '}
+            <Link
+              to="https://docs.google.com/forms/d/e/1FAIpQLSeL1RdxAyaoznGKLAdlMa5sLmVWoytpxRCZZVzBeFGSyqGI6A/viewform"
+              className="link"
+            >
+              short survey
+            </Link>
+            .
+          </Blockquote>
           <p>
             With over 50 available extensions, the k6 extension ecosystem has
             many options to meet your requirements and help you incorporate new

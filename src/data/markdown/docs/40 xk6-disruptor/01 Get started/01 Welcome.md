@@ -1,6 +1,7 @@
 ---
 title: 'Welcome'
 heading: 'xk6-disruptor Documentation'
+head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 ---
 

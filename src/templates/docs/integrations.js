@@ -24,6 +24,8 @@ import Buddy from 'svg/buddy.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
+import Dynatrace from 'svg/dynatrace.inline.svg';
+import Elasticsearch from 'svg/elastic.inline.svg';
 import Flagger from 'svg/flagger.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
@@ -70,6 +72,16 @@ const iconsDataSet1 = [
     to: '/results-output/real-time/datadog',
   },
   {
+    Icon: Dynatrace,
+    name: 'Dynatrace',
+    to: '/results-output/real-time/dynatrace',
+  },
+  {
+    Icon: Elasticsearch,
+    name: 'Elasticsearch',
+    to: '/results-output/real-time/elasticsearch',
+  },
+  {
     Icon: Grafana,
     name: 'Grafana Cloud',
     to: '/results-output/real-time/grafana-cloud/',
@@ -100,14 +112,14 @@ const iconsDataSet1 = [
     to: '/results-output/real-time/prometheus',
   },
   {
-    Icon: TimescaleDB,
-    name: 'TimescaleDB',
-    to: '/results-output/real-time/timescaledb',
-  },
-  {
     Icon: StatsD,
     name: 'StatsD',
     to: '/results-output/real-time/statsd',
+  },
+  {
+    Icon: TimescaleDB,
+    name: 'TimescaleDB',
+    to: '/results-output/real-time/timescaledb',
   },
 ];
 

@@ -14,18 +14,18 @@ A k6 project member is a Grafana user with access to a particular [k6 project]({
 
 Grafana Cloud k6 uses the following roles to control user access:
 
-- **Admin**: Has access to all the resources. 
-- **Editor**: Can create and run tests.
-- **Viewer**: Can only view tests.
+- **Admin**. Can access to all the resources.
+- **Editor**. Can create and run tests.
+- **Viewer**. Can only view tests.
 
 ## Grant member roles
 
-### Before you begin
+**Before you begin:**
 
-- Ensure that you are an admin of the k6 project
-- The new project member must be a Grafana organization member and have logged into the Grafana Stack of the k6 project
+- Ensure that you are an admin of the k6 project.
+- The new project member must be a Grafana organization member and have logged into the Grafana Stack of the k6 project.
 
-To grant a role to a team member in a k6 project:
+Then, to grant a role to a team member in a k6 project, follow these steps:
 1. Click **Projects** on the k6 sidebar.
 2. Click the **Project Settings** (gear) icon of the particular project.
 3. Click the **Add users** button.
