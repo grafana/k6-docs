@@ -84,7 +84,8 @@ and a Grafana server on `http://localhost:3000`. Now, we show two different ways
   ![Create Dashboard](./images/InfluxDB-Grafana/grafana-new-dashboard.png)
 - Click `Graph` to create a new graph panel:
   ![Create Graph Panel](./images/InfluxDB-Grafana/grafana-new-graph-panel.png)
-- Click the `Panel title` and then `Edit` to set up the graph panel:
+- Hover over any part of the panel to display the actions menu (three dots) on the top right corner. 
+- Click the menu and select **Edit** to set up the graph panel:
   ![Edit Graph Panel](./images/InfluxDB-Grafana/grafana-configure-graph-panel.png)
 - Set the panel data source to your `myk6db` database and click the `SELECT mean(value)...`
   statement to edit the metric:
