@@ -54,7 +54,7 @@ To add k6 metrics as a panel, follow these steps:
 Add a k6 panel to a [dashboard](/docs/grafana/latest/dashboards/) when you want to visualize k6 results with other existing visualizations, such as observability data of the system under test. 
 
 1. Find the k6 panel.
-1. Click the **Kebab menu** (three dots).
+1. Click the actions menu (three dots).
 1. Click **Copy to Clipboard**.
 1. Navigate to the dashboard that you want to add the panel.
 1. At the top of the dashboard, click **Add** and select **Paste panel**.
