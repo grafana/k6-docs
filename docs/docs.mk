@@ -1,3 +1,5 @@
+include variables.mk
+
 .ONESHELL:
 .DELETE_ON_ERROR:
 export SHELL     := bash
@@ -15,17 +17,26 @@ help:
 
 GIT_ROOT := $(shell git rev-parse --show-toplevel)
 
-# List of projects to provide to the make-docs script.
-PROJECTS := grafana-cloud/k6
+PODMAN := $(shell if command -v podman >/dev/null 2>&1; then echo podman; else echo docker; fi)
+
+ifeq ($(PROJECTS),)
+$(error "PROJECTS variable must be defined in variables.mk")
+endif
+
+# First project is considered the primary one used for doc-validator.
+PRIMARY_PROJECT := $(firstword $(subst /,-,$(PROJECTS)))
 
 # Name for the container.
-export DOCS_CONTAINER := $(firstword $(subst /,-,$(PROJECTS))-docs)
+export DOCS_CONTAINER := $(PRIMARY_PROJECT)-docs
 
 # Host port to publish container port to.
 export DOCS_HOST_PORT := 3002
 
 # Container image used to perform Hugo build.
 export DOCS_IMAGE := grafana/docs-base:latest
+
+# Container image used for doc-validator linting.
+export DOC_VALIDATOR_IMAGE := grafana/doc-validator:latest
 
 # PATH-like list of directories within which to find projects.
 # If all projects are checked out into the same directory, ~/repos/ for example, then the default should work.
@@ -52,22 +63,14 @@ docs: ## Serve documentation locally.
 docs: make-docs
 	$(PWD)/make-docs $(PROJECTS)
 
-.PHONY: docs/lint
-docs/lint: ## Run docs-validator on the entire docs folder.
-	$(PODMAN) run --rm -ti \
-		--platform linux/amd64 \
-		--volume "$(GIT_ROOT)/docs/sources:/docs/sources" \
-		grafana/doc-validator:latest \
-		--skip-image-validation \
-		/docs/sources \
-		/docs/k6
+.PHONY: doc-validator
+doc-validator: ## Run docs-validator on the entire docs folder.
+	DOCS_IMAGE=$(DOC_VALIDATOR_IMAGE) $(PWD)/make-docs $(PROJECTS)
 
-.PHONY: docs/lint
-docs/lint: ## Run docs-validator on the entire docs folder.
-	docker run --rm -ti \
-		--platform linux/amd64 \
-		--volume "${PWD}/sources:/docs/sources" \
-		grafana/doc-validator:v1.9.0 \
-		--skip-image-validation \
-		/docs/sources \
-		/docs/k6
+.PHONY: doc-validator/%
+doc-validator/%: ## Run doc-validator on a specific path. To lint the path /docs/sources/administration, run 'make doc-validator/administration'.
+doc-validator/%:
+	DOCS_IMAGE=$(DOC_VALIDATOR_IMAGE) DOC_VALIDATOR_INCLUDE=$(subst doc-validator/,,$@) $(PWD)/make-docs $(PROJECTS)
+
+docs.mk: ## Fetch the latest version of this Makefile from Writers' Toolkit.
+	curl -s -LO https://raw.githubusercontent.com/grafana/writers-toolkit/main/docs/docs.mk
