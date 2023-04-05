@@ -119,6 +119,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
       <ul className={classNames('container', styles.filters)}>
         <li className={styles.dropdownWrapper}>
           <select
+            value={activeTier.length > 0 ? activeTier[0] : 'All'}
             onChange={({ target }) => {
               const val = target.value;
 
@@ -143,6 +144,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </li>
         <li className={styles.dropdownWrapper}>
           <select
+            value={activeType.length > 0 ? activeType[0] : 'All'}
             onChange={({ target }) => {
               const val = target.value;
 
@@ -167,6 +169,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </li>
         <li className={styles.dropdownWrapper}>
           <select
+            value={activeCategories.length === 1 ? activeCategories[0] : 'All'}
             onChange={({ target }) => {
               if (!target.value) return;
 

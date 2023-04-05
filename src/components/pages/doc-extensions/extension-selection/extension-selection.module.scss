@@ -141,6 +141,15 @@
   display: flex;
   gap: 20px;
   list-style: none;
+
+  @include sm-down {
+    margin-left: 20px;
+  }
+
+  @include xs-down {
+    margin-left: 0;
+    flex-direction: column;
+  }
 }
 
 .dropdown-wrapper {
