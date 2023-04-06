@@ -90,13 +90,13 @@ Cuando pruebe la API con flujos de trabajo normales como si fuesen ejecutados po
 
 ### Usuarios virtuales
 
-Cuando modela la carga para que utilice usuarios virtuales, las opciones básicas son:
+Cuando modela la carga utilizando usuarios virtuales, las opciones básicas son:
 
 - [`vus`](https://k6.io/docs/using-k6/k6-options/reference/#vus)
 - [`duration`](https://k6.io/docs/using-k6/k6-options/reference/#duration)
 - [`iterations`](https://k6.io/docs/using-k6/k6-options/reference/#iterations)
 
-Puede definir estas opciones en el script de prueba. En la siguiente prueba, 50 usuarios simultáneos ejecutan continuamente el flujo `default` durante 30 segundos.
+Esto se puede definir en la seccion de opciones (options) en el script de prueba. En la siguiente prueba, 50 usuarios simultáneos ejecutan continuamente el flujo `default` durante 30 segundos.
 
 ```javascript
 import http from 'k6/http';
@@ -116,25 +116,25 @@ export default function () {
 }
 ```
 
-### Tasa de solicitudes
+### Flujo de solicitudes
 
-Al analizar el rendimiento del punto final de la API, la carga generalmente se calcula por velocidad de solicitud, ya sean solicitudes por segundo o por minuto.
+Al analizar el rendimiento del punto final (endpoint) de la API, la carga generalmente se calcula por flujo de solicitudes, ya sean solicitudes por segundo o por minuto.
 
-Para configurar las cargas de trabajo de acuerdo con una tasa de solicitud objetivo, utilice [constant arrival rate executor](https://k6.io/docs/using-k6/scenarios/executors/constant-arrival-rate/).
+Para configurar las cargas de trabajo de usando un objetivo de flujo de solicitudes, utilice el ejecutor (executor) [constant arrival rate](https://k6.io/docs/using-k6/scenarios/executors/constant-arrival-rate/).
 
-`constant-arrival-rate` establece una tasa constante de iteraciones que ejecutan la función del script. Cada iteración puede generar una o varias solicitudes.
+`constant-arrival-rate` establece una tasa constante de ejecuciones sobre la función del script. Cada iteración puede generar una o varias solicitudes.
 
-Para alcanzar un objetivo de tasa de solicitudes (`RequestsRate`), siga estos pasos:
+Para alcanzar un objetivo de flujo de solicitudes (`RequestsRate`), siga estos pasos:
 
-1. Fije la frecuencia de la tasa en la unidad de tiempo del objetivo. Por segundo o por minuto.
-2. Obtenga el número de solicitudes por iteración (`RequestsPerIteration`).
+1. Fije el objetivo de la frecuencia de solicitudes por unidad de tiempo, ya sea por segundo o por minuto.
+2. Busque cuantas solicitudes se hacen por iteración (`RequestsPerIteration`).
 3. Establezca la tasa de iteración dividiendo las solicitudes objetivo por segundo entre el número de solicitudes por iteración.
     
     `rate` =  `RequestsRate ÷ RequestsPerIteration`.
 
 Para alcanzar el objetivo de 50 solicitudes por segundo con el ejemplo anterior:
 
-1. Establezca las opciones `timeUnit` en `1s`.
+1. Establezca la opción `timeUnit` en `1s`.
 2. El número de solicitudes por iteración es 1.
 3. Defina la opción `rate` en 50/1 (para que sea igual a 50).
 
@@ -164,7 +164,7 @@ export default function () {
 }
 ```
 
-Esta prueba genera el número total de solicitudes HTTP y RPS en la métrica `http_reqs`:
+Esta prueba genera el número total de solicitudes HTTP y RPS (solicitudes por segundo) en la métrica `http_reqs`:
 
 ```bash
 # the reported value is close to the 50 RPS target
@@ -174,9 +174,9 @@ Esta prueba genera el número total de solicitudes HTTP y RPS en la métrica `ht
 iterations.....................: 1501   49.84156/s
 ```
 
-Para ver un ejemplo más extenso, consulte esta publicación sobre [generating a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api/).
+Para ver un ejemplo más detallado, consulte la siguiente publicación: [generating a constant request rate](https://k6.io/blog/how-to-generate-a-constant-request-rate-with-the-new-scenarios-api/).
 
-Con el ejecutor `constant-arrival-rate`, la carga será constante durante toda la prueba. Para aumentar o reducir la tasa de solicitudes, utilice el ejecutor [`ramping-arrival-rate`](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate/) en su lugar.
+Usando el ejecutor (executor) `constant-arrival-rate`, la carga será constante durante toda la prueba. Para aumentar o reducir el flujo de solicitudes, utilice el ejecutor [`ramping-arrival-rate`](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate/) en su lugar.
 
 Para ver todas las formas de modelar la carga en k6, consulte [Scenarios](https://k6.io/docs/using-k6/scenarios/).
 
@@ -184,7 +184,7 @@ Para ver todas las formas de modelar la carga en k6, consulte [Scenarios](https:
 
 Tradicionalmente, las pruebas de rendimiento se centran más en:
 
-- La latencia: cómo de rápido responde el sistema.
+- La latencia: qué tan rápido responde el sistema.
 - La disponibilidad: con qué frecuencia devuelve errores el sistema.
 
 La métrica `http_req_duration` informa de la latencia y `http_req_failed` informa sobre la tasa de errores de las solicitudes HTTP. Estos son los resultados de la prueba anterior:
@@ -195,11 +195,11 @@ http_req_duration..............: avg=106.14ms min=102.54ms med=104.66ms max=198.
 http_req_failed................: 0.00% ✓ 0    ✗ 1501
 ```
 
-Es posible que el análisis de la prueba deba ir más allá de lo que permiten las métricas predeterminadas. Para obtener un análisis más relevante de los resultados, es posible que también desee validar las funcionalidades e informar de los errores.
+Es posible que el análisis de los resultados de la prueba deba ir más allá de lo que permiten las métricas predeterminadas de k6. Para obtener un análisis más relevante de los resultados, es posible que también desee validar las funcionalidades e informar de los errores.
 
-Algunos fallos de la aplicación ocurren solo bajo ciertas condiciones de carga, como un alto tráfico. Estos errores son difíciles de encontrar. Para encontrar la causa de los fallos más rápidamente, instrumente sus API y verifique que las solicitudes obtengan las respuestas esperadas. Para verificar la lógica de la aplicación en k6, puede usar `Checks`.
+Algunos fallos de la aplicación ocurren solo bajo ciertas condiciones de carga, como un alto tráfico. Estos errores son difíciles de encontrar. Para encontrar la causa de los fallos más rápidamente, instrumente sus APIs y verifique que las solicitudes obtengan las respuestas esperadas. Para verificar la respuesta de la aplicación en k6, puede usar `Checks`.
 
-[Checks](https://k6.io/docs/using-k6/checks/) valida las condiciones durante la ejecución de la prueba. Por ejemplo, puede usar checks de verificación y realizar un seguimiento de las respuestas de la API. Con las verificaciones (checks), puede confirmar las respuestas esperadas de la API, como el estado HTTP o cualquier dato devuelto.
+[Check](https://k6.io/docs/using-k6/checks/) es un comando que valida diversas condiciones durante la ejecución de la prueba. Por ejemplo, puede usar check verificar las respuestas de la API. Con las verificaciones (checks), puede confirmar diversas respuestas de la API, como el estado HTTP o cualquier dato devuelto.
 
 Nuestro script ahora verifica el estado de la respuesta HTTP, los encabezados y la carga útil.
 
@@ -245,7 +245,7 @@ my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 
      ✓ Post response name
 ```
 
-Después de que la carga aumentara a 300 solicitudes por segundo, los resultados arrojaron 8811 solicitudes exitosas y 7 fallos:
+Después, si incrementamos la carga a 300 solicitudes por segundo, los resultados arrojaron 8811 solicitudes exitosas y 7 checks fallados:
 
 ```bash
 my_scenario1 ✓ [======================================] 000/300 VUs  30s  300.00 iters/s
@@ -257,24 +257,24 @@ my_scenario1 ✓ [======================================] 000/300 VUs  30s  300.
       ↳  99% — ✓ 8811 / ✗ 7
 ```
 
-De forma predeterminada, una verificación fallida no suspende ni aborta la prueba. En este sentido, una verificación difiere de cómo funcionan las aserciones para otros tipos de pruebas. Una prueba de carga puede ejecutar miles o millones de iteraciones de script, cada una con docenas de aserciones.
+Una verificación fallida no suspende ni aborta la prueba por default. En este sentido, una verificación (check) difiere de cómo funcionan las aserciones (assertions) para otros tipos de pruebas. Una prueba de carga puede ejecutar miles o millones de iteraciones, cada una con docenas de aserciones.
 
-Que haya una **pequeña tasa de fallo es aceptable**, según lo determinado por el «número de nueves» de su SLO o el presupuesto de error de su organización.
+Es aceptable que haya una **pequeña tasa de fallo**, todo depende del «número de nueves» de su SLO o el presupuesto de error de su organización.
 
-## Ponga a prueba sus objetivos de fiabilidad con «Thresholds»
+## Ponga a prueba sus objetivos de confiabilidad con «Thresholds»
 
-Cada prueba debe tener un objetivo. Las organizaciones de ingeniería establecen sus objetivos de fiabilidad utilizando los [objetivos de nivel de servicio](https://en.wikipedia.org/wiki/Service-level_objective)) (SLO, por sus siglas en inglés) para validar la disponibilidad, el rendimiento o cualquier requisito de rendimiento.
+Cada prueba debe tener objetivos. Las organizaciones de ingeniería establecen sus objetivos de fiabilidad utilizando los [objetivos de nivel de servicio](https://en.wikipedia.org/wiki/Service-level_objective)) (SLO, por sus siglas en inglés) para validar la disponibilidad, el performance o cualquier objetivo de rendimiento.
 
-Los SLO pueden definirse en ámbitos distintos, como en el nivel de un componente de infraestructura, de una API o de toda la aplicación. Algunos ejemplos de SLO podrían ser:
+Los SLO pueden definirse en distintos ámbitos, como puede ser en el nivel de un componente de infraestructura, de una API, o de toda la aplicación. Algunos ejemplos de SLO podrían ser:
 
-- El 99 % de las API que devuelven información del producto responden en menos de 600 ms.
-- El 99,99 % de las solicitudes de inicio de sesión fallidas responden en menos de 1000 ms.
+- El 99 % de las APIs que devuelven información del producto responden en menos de 600 ms.
+- El 99.99 % de las solicitudes fallidas iniciando sesión responden en menos de 1000 ms.
 
-Diseñe sus pruebas de carga con criterios de aprobación/fallo para validar los SLO, los objetivos de fiabilidad u otras métricas importantes. Para garantizar que su sistema logre sus SLO, realice pruebas con frecuencia, tanto en entornos de preproducción como de producción.
+Diseñe sus pruebas de carga con criterios de pase/fallo para validar los SLO, los objetivos de confiabilidad, u otras métricas importantes. Para garantizar que su sistema pase sus SLOs, realice pruebas con frecuencia, tanto en los ambientes de preproducción como los de producción.
 
-En k6, puede usar [Thresholds](https://k6.io/docs/using-k6/thresholds/) para establecer los criterios de aprobación/fallo de la prueba. 
+En k6, puede usar [Thresholds](https://k6.io/docs/using-k6/thresholds/) para establecer los criterios de pase/fallo de la prueba. 
 
-Este script codifica dos SLO en el objeto thresholds, uno sobre la tasa de errores (disponibilidad) y otro sobre la duración de la solicitud (latencia).
+Este script codifica dos SLOs en la seccion de thresholds, uno sobre la tasa de errores (disponibilidad) y otro sobre la duración de la solicitud (latencia).
 
 ```javascript
 export const options = {
@@ -295,7 +295,7 @@ export const options = {
 };
 ```
 
-Cuando k6 ejecuta una prueba, el resultado de la prueba indica si las métricas respetaban los umbrales (thresholds), ✅, o no, ❌. En esta ocasión, la prueba respetó ambos umbrales.
+Cuando k6 ejecuta una prueba, el resultado indica si las métricas pasaron los umbrales (thresholds), ✅, o no, ❌. En esta ocasión, la prueba pasó ambos umbrales.
 
 ```bash
 ✓ http_req_duration..............: avg=104.7ms  min=101.87ms med=103.92ms max=120.68ms p(90)=107.2ms  p(95)=111.38ms
@@ -303,7 +303,7 @@ Cuando k6 ejecuta una prueba, el resultado de la prueba indica si las métricas 
 ✓ http_req_failed................: 0.00%   ✓ 0         ✗ 1501
 ```
 
-Cuando la prueba falla, la interfaz de línea de comandos (CLI) de k6 devuelve un código de salida distinto de cero, una condición necesaria para la automatización de la prueba. Como ejemplo de una prueba fallida, aquí tenemos el resultado de una prueba con un umbral establecido en que el 95 % de las solicitudes terminen en menos de 50 ms, `http_req_duration:["p(95)<50"]`: 
+Cuando la prueba falla, la interfaz de línea de comandos (CLI) de k6 devuelve un código de salida distinto de cero, una condición necesaria al automatizar pruebas. Como ejemplo de una prueba fallida, aquí tenemos el resultado de una prueba con un umbral que establece que el 95 % de las solicitudes terminen en menos de 50 ms, `http_req_duration:["p(95)<50"]`: 
 
 ```bash
 running (0m30.1s), 00/50 VUs, 1501 complete and 0 interrupted iterations
@@ -334,15 +334,15 @@ my_scenario1 ✓ [======================================] 00/50 VUs  30s  50.00 
 ERRO[0030] some thresholds have failed
 ```
 
-## Consideraciones a la hora de crear scripts
+## Consideraciones cuando se crean scripts
 
-Si ha realizado pruebas con scripts anteriormente, la implementación de scripts de k6 debería resultarle familiar. Las pruebas de k6 están escritas en JavaScript, y el diseño de la API de k6 tiene similitudes con otros marcos de prueba.
+Si tiene experiencia haciendo pruebas con scripts, la creación de scripts de k6 debería resultarle familiar. Las pruebas de k6 se escriben en JavaScript, y el diseño de la API de k6 es similar a otras plataformas de pruebas.
 
-Pero, a diferencia de otras pruebas, las pruebas de carga ejecutan sus scripts cientos, miles o millones de veces. La presencia de la carga crea algunas preocupaciones específicas. Cuando realice pruebas de carga de una API con k6, considere los siguientes aspectos del diseño de su script.
+Pero, a diferencia de otros tipos de pruebas, los scripts de pruebas de carga ejecutan sus pasos cientos, miles o millones de veces. La presencia de la carga crea algunas preocupaciones específicas. Cuando realice pruebas de carga de una API con k6, considere los siguientes aspectos al diseñar su script.
 
-### Parametrización de los datos
+### Parametrización de datos
 
-La parametrización de los datos ocurre cuando reemplaza los datos de prueba codificados con valores dinámicos. La parametrización facilita la gestión de una prueba de carga con diversos usuarios y llamadas a la API. Un caso común para la parametrización ocurre cuando desea usar diferentes valores de `userID` y `password` para cada usuario virtual o iteración.
+La parametrización de datos ocurre cuando se reemplazan los datos de prueba codificados con valores dinámicos. La parametrización facilita la gestión de una prueba de carga con diversos usuarios y llamadas a la API. Un caso común para la parametrización ocurre cuando se desea usar diferentes valores de `userID` y `password` para cada usuario virtual o iteración.
 
 Por ejemplo, imaginemos un archivo JSON con una lista de información de usuarios como:
 
@@ -359,7 +359,7 @@ Por ejemplo, imaginemos un archivo JSON con una lista de información de usuario
 
 </CodeGroup>
 
-Puede parametrizar los usuarios con el objeto [`SharedArray`](/javascript-api/k6-data/sharedarray/) de la siguiente manera:
+Puede parametrizar los usuarios usando el objeto [`SharedArray`](/javascript-api/k6-data/sharedarray/) de la siguiente manera:
 
 ```javascript
 import { check } from 'k6';
@@ -393,13 +393,13 @@ export default function () {
 }
 ```
 
-Para obtener más información sobre la parametrización de los datos, consulte [parameterization examples](https://k6.io/docs/examples/data-parameterization/) y [Execution context variables](https://k6.io/docs/using-k6/execution-context-variables/).
+Para obtener más información sobre la parametrización de datos, consulte [parameterization examples](https://k6.io/docs/examples/data-parameterization/) y [Execution context variables](https://k6.io/docs/using-k6/execution-context-variables/).
 
 ### Gestión de errores y aceptación de fallos
 
-**Recuerde implementar la gestión de errores en la lógica de la prueba.** Bajo una carga suficientemente pesada, el sistema que se está probando (SUT) falla y comienza a responder con errores. Aunque una prueba podría estar diseñada para provocar fallos, a veces nos centramos solo en el mejor de los casos y olvidamos la importancia de tener en cuenta los errores.
+**Recuerde implementar gestión de errores dentro de la lógica de la prueba.** Al recibir una carga suficientemente pesada, el sistema que se está probando (SUT) puede fallar y responder con errores. Aunque la prueba podría estar diseñada para provocar fallos, a veces nos centramos solo en los escenarios optimistas y olvidamos la importancia de la posibilidad de errores.
 
-El script de la prueba debe gestionar los errores de la API para evitar excepciones de tiempo de ejecución y para asegurarse de que prueba cómo se comporta el SUT bajo saturación, de acuerdo con los objetivos de la prueba. Por ejemplo, podríamos extender nuestro script para hacer alguna operación que dependa del resultado de la solicitud anterior:
+El script de la prueba debe gestionar los errores de la API para evitar excepciones de ejecución y para asegurarse de probar cómo se comporta el SUT al saturarse, de acuerdo con los objetivos de la prueba. Por ejemplo, podríamos extender nuestro script para hacer alguna operación dependiente del resultado de la solicitud anterior:
 
 ```javascript
 import { check } from 'k6';
