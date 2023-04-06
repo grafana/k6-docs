@@ -12,7 +12,7 @@
       "stars": "7",
       "type": ["Output"],
       "categories": ["Observability"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -57,7 +57,7 @@
       "stars": "11",
       "type": ["JavaScript"],
       "categories": ["WebSockets"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -103,7 +103,7 @@
       "stars": "31",
       "type": ["JavaScript"],
       "categories": ["Chaos Engineering", "Kubernetes"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -118,7 +118,7 @@
       "stars": "43",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -133,7 +133,7 @@
       "stars": "13",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -163,7 +163,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -178,7 +178,7 @@
       "stars": "11",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -193,7 +193,7 @@
       "stars": "7",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -208,7 +208,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -223,7 +223,7 @@
       "stars": "11",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -238,7 +238,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Protocol"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -253,7 +253,7 @@
       "stars": "18",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -268,7 +268,7 @@
       "stars": "7",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -283,7 +283,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -298,7 +298,7 @@
       "stars": "37",
       "type": ["JavaScript"],
       "categories": ["Containers"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -313,13 +313,13 @@
       "stars": "10",
       "type": ["JavaScript"],
       "categories": ["Observability"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-elasticsearch",
+      "name": "xk6-output-elasticsearch",
       "description": "Export results to Elasticsearch 8.x",
-      "url": "https://github.com/elastic/xk6-Output-elasticsearch",
+      "url": "https://github.com/elastic/xk6-output-elasticsearch",
       "logo": "",
       "author": {
         "name": "",
@@ -332,9 +332,9 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-influxdb",
+      "name": "xk6-output-influxdb",
       "description": "Export results to InfluxDB v2",
-      "url": "https://github.com/grafana/xk6-Output-influxdb",
+      "url": "https://github.com/grafana/xk6-output-influxdb",
       "logo": "",
       "author": {
         "name": "",
@@ -358,22 +358,22 @@
       "stars": "5",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
       "name": "xk6-mllp",
       "description": "Simple MLLP sender for k6",
-      "url": "https://github.com/gjergJavaScriptheldija/xk6-mllp",
+      "url": "https://github.com/gjergjsheldija/xk6-mllp",
       "logo": "",
       "author": {
         "name": "Gjergj Sheldija",
-        "url": "https://github.com/gjergJavaScriptheldija"
+        "url": "https://github.com/gjergjsheldija"
       },
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -388,7 +388,7 @@
       "stars": "10",
       "type": ["JavaScript"],
       "categories": ["Containers"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -403,7 +403,7 @@
       "stars": "7",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -418,7 +418,7 @@
       "stars": "3",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -433,7 +433,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -448,7 +448,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -463,7 +463,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -478,7 +478,7 @@
       "stars": "14",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -493,7 +493,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -508,13 +508,13 @@
       "stars": "5",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-prometheus-remote",
+      "name": "xk6-output-prometheus-remote",
       "description": "Export results to Prometheus remote write endpoints",
-      "url": "https://github.com/grafana/xk6-Output-prometheus-remote",
+      "url": "https://github.com/grafana/xk6-output-prometheus-remote",
       "logo": "",
       "author": {
         "name": "",
@@ -523,7 +523,7 @@
       "stars": "92",
       "type": ["JavaScript"],
       "categories": ["Reporting", "Observability"],
-      "tiers": ["Official"],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -538,7 +538,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -553,7 +553,7 @@
       "stars": "9",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -568,7 +568,7 @@
       "stars": "12",
       "type": ["JavaScript"],
       "categories": ["Misc"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -583,7 +583,7 @@
       "stars": "15",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -598,7 +598,7 @@
       "stars": "64",
       "type": ["JavaScript"],
       "categories": ["Reporting", "Observability"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -613,13 +613,13 @@
       "stars": "18",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-kafka",
+      "name": "xk6-output-kafka",
       "description": "Export k6 results in real-time to Kafka",
-      "url": "https://github.com/grafana/xk6-Output-kafka",
+      "url": "https://github.com/grafana/xk6-output-kafka",
       "logo": "",
       "author": {
         "name": "Mihail Stoykov",
@@ -628,13 +628,13 @@
       "stars": "16",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-timescaledb",
+      "name": "xk6-output-timescaledb",
       "description": "Export k6 results to TimescaleDB",
-      "url": "https://github.com/grafana/xk6-Output-timescaledb",
+      "url": "https://github.com/grafana/xk6-output-timescaledb",
       "logo": "",
       "author": {
         "name": "",
@@ -643,7 +643,7 @@
       "stars": "16",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -658,7 +658,7 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Reporting", "Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -673,7 +673,7 @@
       "stars": "8",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -688,7 +688,7 @@
       "stars": "21",
       "type": ["JavaScript"],
       "categories": ["Browser"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -703,7 +703,7 @@
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Messaging", "Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -718,7 +718,7 @@
       "stars": "6",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -733,7 +733,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Messaging", "Protocol"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -748,7 +748,7 @@
       "stars": "18",
       "type": ["JavaScript"],
       "categories": ["Observability", "Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -763,13 +763,13 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Authentication"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-error",
+      "name": "xk6-output-error",
       "description": "Add more information into StdErr k6 about requests",
-      "url": "https://github.com/tinkoff/xk6-Output-error",
+      "url": "https://github.com/tinkoff/xk6-output-error",
       "logo": "",
       "author": {
         "name": "Maksimall89",
@@ -778,7 +778,7 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -793,13 +793,13 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Authentication"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
-      "name": "xk6-Output-dynatrace",
+      "name": "xk6-output-dynatrace",
       "description": "Export results to Dynatrace",
-      "url": "https://github.com/dynatrace/xk6-Output-dynatrace",
+      "url": "https://github.com/dynatrace/xk6-output-dynatrace",
       "logo": "",
       "author": {
         "name": "Henrik Rexed",
@@ -808,7 +808,7 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Reporting", "Observability"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
@@ -823,7 +823,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Data", "Protocol"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -838,7 +838,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Protocol"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -853,7 +853,7 @@
       "stars": "6",
       "type": ["JavaScript"],
       "categories": ["Platform"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -868,7 +868,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Messaging"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -883,7 +883,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -898,7 +898,7 @@
       "stars": "5",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -913,7 +913,7 @@
       "stars": "3",
       "type": ["JavaScript"],
       "categories": ["Containers"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -928,7 +928,7 @@
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -943,7 +943,7 @@
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -958,7 +958,7 @@
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -973,7 +973,7 @@
       "stars": "1",
       "type": ["JavaScript"],
       "categories": ["Authentication"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -988,13 +988,13 @@
       "stars": "4",
       "type": ["JavaScript"],
       "categories": ["Blockchain", "Ethereum"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": true
     },
     {
-      "name": "xk6-Output-timestream",
+      "name": "xk6-output-timestream",
       "description": "Export results to AWS Timestream",
-      "url": "https://github.com/leonyork/xk6-Output-timestream",
+      "url": "https://github.com/leonyork/xk6-output-timestream",
       "logo": "",
       "author": {
         "name": "Leon York",
@@ -1003,12 +1003,12 @@
       "stars": "9",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
-      "name": "xk6-Output-prometheus-pushgateway",
-      "url": "https://github.com/martymarron/xk6-Output-prometheus-pushgateway",
+      "name": "xk6-output-prometheus-pushgateway",
+      "url": "https://github.com/martymarron/xk6-output-prometheus-pushgateway",
       "description": "Export results to Prometheus pushgateway",
       "logo": "",
       "author": {
@@ -1018,7 +1018,7 @@
       "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Reporting", "Observability"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -1033,7 +1033,7 @@
       "stars": "10",
       "type": ["JavaScript"],
       "categories": ["Observability"],
-      "tiers": [],
+      "tiers": ["Community"],
       "cloudEnabled": false
     },
     {
@@ -1048,7 +1048,22 @@
       "stars": "",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": [],
+      "tiers": ["Community"],
+      "cloudEnabled": false
+    },
+    {
+      "name": "xk6-top",
+      "description": "Updating the current k6 metrics summaries on the terminal during the test run",
+      "url": "https://github.com/szkiba/xk6-top",
+      "logo": "https://raw.githubusercontent.com/szkiba/xk6-top/78393869e5885030de22ea70aadff186557c7b15/assets/xk6-top-logo.png",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "stars": "7",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
       "cloudEnabled": false
     }
   ]

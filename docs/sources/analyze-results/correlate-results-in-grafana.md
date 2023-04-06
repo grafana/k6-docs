@@ -27,12 +27,12 @@ Use [Grafana Explore](/docs/grafana/latest/explore/) to query metrics and show t
 To work directly with the k6 queries of a panel on Explore:
 
 1. Navigate to a test result view.
-2. Find a panel to query their metrics.
-3. Click the **Kebab menu** (three dots).
+1. Find a panel to query their metrics.
+1. Click the actions menu (three dots).
 
 	![Select Explore metrics](/media/docs/k6/screenshot-grafana-cloud-kebab-menu.png)
 
-4. Click **Explore**.
+1. Click **Explore**.
 
 	Explore displays the metric or group of metrics.
 
@@ -44,7 +44,7 @@ To work directly with the k6 queries of a panel on Explore:
 To add k6 metrics as a panel, follow these steps:
 
 1. Open the dashboard that you want to add the panel to.
-1. Select the **Add panel** icon.
+1. At the top of the dashboard, click **Add** and select **Visualization**.
 1. For **Data source**, choose `k6`.
 1. Filter for your **Test**, **Test run**, **Project**, and **Query type**.
 1. **Save**.
@@ -54,35 +54,20 @@ To add k6 metrics as a panel, follow these steps:
 Add a k6 panel to a [dashboard](/docs/grafana/latest/dashboards/) when you want to visualize k6 results with other existing visualizations, such as observability data of the system under test. 
 
 1. Find the k6 panel.
-2. Click the **Kebab menu** (three dots).
-3. Click **Copy to Clipboard**.
-4. Navigate to the dashboard that you want to add the panel.
-5. Click the **Add Panel** icon.
-   
-	The Add panel dialog opens.
-
-	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-add-panel.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the add panel dialog" >}}
-
-6. Click **Paste panel from clipboard**.
+1. Click the actions menu (three dots).
+1. Click **Copy to Clipboard**.
+1. Navigate to the dashboard that you want to add the panel.
+1. At the top of the dashboard, click **Add** and select **Paste panel**.
 
 Once added the k6 panel to a dashboard, you can edit the panel options. 
 
 ### Change the panel visualization
 
-
 To change the panel visualization:
 
-1. Click on the panel title
-
-	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the panel menu" >}}
-
-2. Click **Edit**
-   
-3. Click the right sidebar to change the visualization
-   
-	You can see a list of visualizations to select.
-
-	{{< figure src="/media/docs/k6/screenshot-grafana-cloud-edit-panel-view.png" class="docs-image--no-shadow" max-width= "900px" caption="Screenshot of the edit panel" >}}
+1. Hover over any part of the panel to display the actions menu (three dots) on the top right corner. 
+1. Click the menu and select **Edit**.  
+1. Click the name of the current visualization to see a list of all visualizations, and select the one you want.
 
 The majority of the k6 panels are `Time series` visualizations.
 For details, refer to [query types]({{< relref "../reference/query-types" >}}).

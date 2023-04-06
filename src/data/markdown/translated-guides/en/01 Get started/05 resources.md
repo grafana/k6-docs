@@ -15,7 +15,7 @@ These resources help you write and run k6 tests in a safe environment and explor
 - [k6 Learn](https://github.com/grafana/k6-learn). A repository with a course and a ton of learning resources
 - [k6 YouTube channel](https://www.youtube.com/c/k6test/playlists). Office hours, specific playlists, and other interesting videos from the community.
 - [Awesome k6](https://github.com/grafana/awesome-k6). A list of awesome stuff about k6.
-- [Sample scripts](https://github.com/grafana/k6/tree/master/samples). A directory full of example k6 scripts for different use cases.
+- [Examples](https://github.com/grafana/k6/tree/master/examples). A directory full of example k6 scripts for different use cases.
 
 ## Community
 
