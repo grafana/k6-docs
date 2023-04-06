@@ -98,7 +98,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
               'Select the extensions you want, then copy the generated command.'
             }
           />
-          <p>
+          <p className="container">
             Don&apos;t see what you need? Learn how you can{' '}
             <Link
               to={'/extensions/get-started/create/'}

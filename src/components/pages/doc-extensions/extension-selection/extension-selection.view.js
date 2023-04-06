@@ -11,10 +11,13 @@ import React, {
   useMemo,
   useCallback,
 } from 'react';
+import SearchIcon from 'svg/search.inline.svg';
 
 import styles from './extension-selection.module.scss';
 
 export const ExtensionSelection = ({ data, description = '' }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [extensions, setExtensions] = useState(data);
   const [selected, setSelected] = useState([]);
   const [version, setVersion] = useState(null);
   const [allTypes, setAllTypes] = useState([]);
@@ -52,7 +55,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
 
   const filterExtensionsByCategory = useCallback(
     (category) =>
-      data
+      extensions
         .filter((extension) => extension.categories.includes(category))
         .filter((extension) =>
           activeTier.length > 0
@@ -64,15 +67,15 @@ export const ExtensionSelection = ({ data, description = '' }) => {
             ? extension.type.includes(activeType[0])
             : extension,
         ),
-    [activeCategories, activeTier, activeType],
+    [activeCategories, activeTier, activeType, extensions],
   );
 
-  const totalExtensions = useMemo(
+  const totalActiveExtensions = useMemo(
     () =>
       activeCategories
         .map((category) => filterExtensionsByCategory(category))
         .flat(),
-    [activeCategories, activeTier, activeType],
+    [activeCategories, activeTier, activeType, extensions],
   );
 
   const fetchLatestVersion = async (callback) => {
@@ -101,9 +104,29 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     }
   };
 
+  const handleSearchInputChange = (e) => {
+    const { value } = e.target;
+
+    setSearchTerm(value);
+    setExtensions([
+      ...new Set([
+        ...data.filter((extension) =>
+          extension.name.toLowerCase().includes(value.trim().toLowerCase()),
+        ),
+        ...data.filter((extension) =>
+          extension.description
+            .toLowerCase()
+            .includes(value.trim().toLowerCase()),
+        ),
+      ]),
+    ]);
+  };
+
   const handleResetFilters = () => {
     setActiveTier([]);
     setActiveType([]);
+    setSearchTerm('');
+    setExtensions(data);
     setActiveCategories(
       [...allCategories].sort((item1, item2) => (item1 > item2 ? 1 : -1)),
     );
@@ -116,91 +139,158 @@ export const ExtensionSelection = ({ data, description = '' }) => {
 
   return (
     <section className={styles.container}>
-      <ul className={classNames('container', styles.filters)}>
-        <li className={styles.dropdownWrapper}>
-          <select
-            value={activeTier.length > 0 ? activeTier[0] : 'All'}
-            onChange={({ target }) => {
-              const val = target.value;
-
-              if (!val) return;
-
-              // eslint-disable-next-line no-unused-expressions
-              val === 'All'
-                ? setActiveTier([])
-                : setActiveTier([...allTiers].filter((item) => item === val));
-            }}
-            className={styles.dropdown}
-          >
-            <option label="Tier" value="All">
-              Tier
-            </option>
-            {[...allTiers].map((node, index) => (
-              <option key={index} label={node} value={node}>
-                {node}
-              </option>
-            ))}
-          </select>
-        </li>
-        <li className={styles.dropdownWrapper}>
-          <select
-            value={activeType.length > 0 ? activeType[0] : 'All'}
-            onChange={({ target }) => {
-              const val = target.value;
-
-              if (!val) return;
-
-              // eslint-disable-next-line no-unused-expressions
-              val === 'All'
-                ? setActiveType([])
-                : setActiveType([...allTypes].filter((item) => item === val));
-            }}
-            className={styles.dropdown}
-          >
-            <option label="Type" value="All">
-              Type
-            </option>
-            {[...allTypes].map((node, index) => (
-              <option key={index} label={node} value={node}>
-                {node}
-              </option>
-            ))}
-          </select>
-        </li>
-        <li className={styles.dropdownWrapper}>
-          <select
-            value={activeCategories.length === 1 ? activeCategories[0] : 'All'}
-            onChange={({ target }) => {
-              if (!target.value) return;
-
-              // eslint-disable-next-line no-unused-expressions
-              target.value === 'All'
-                ? setActiveCategories(
-                    [...allCategories].sort((item1, item2) =>
-                      item1 > item2 ? 1 : -1,
-                    ),
-                  )
-                : setActiveCategories(
-                    [...allCategories]
-                      .filter((item) => item === target.value)
-                      .sort((item1, item2) => (item1 > item2 ? 1 : -1)),
-                  );
-            }}
-            className={styles.dropdown}
-          >
-            <option label="Category" value="All">
-              Category
-            </option>
-            {[...allCategories].map((node, index) => (
-              <option key={index} label={node} value={node}>
-                {node}
-              </option>
-            ))}
-          </select>
-        </li>
-      </ul>
       {!!version && (
         <div className={styles.selection}>
+          <ul className={classNames('container', styles.filters)}>
+            <li className={styles.dropdownWrapper}>
+              <select
+                className={styles.fieldSelect}
+                value={activeTier.length > 0 ? activeTier[0] : 'All'}
+                onChange={({ target }) => {
+                  const val = target.value;
+
+                  if (!val) return;
+
+                  // eslint-disable-next-line no-unused-expressions
+                  val === 'All'
+                    ? setActiveTier([])
+                    : setActiveTier(
+                        [...allTiers].filter((item) => item === val),
+                      );
+                }}
+              >
+                <option label="Tier" value="All">
+                  Tier
+                </option>
+                {[...allTiers]
+                  .sort((item1, item2) => (item1 > item2 ? 1 : -1))
+                  .map((node, index) => (
+                    <option key={index} label={node} value={node}>
+                      {node}
+                    </option>
+                  ))}
+              </select>
+              {activeTier.length > 0 && (
+                <button
+                  className={styles.fieldClear}
+                  type="button"
+                  onClick={() => setActiveTier([])}
+                >
+                  clear
+                </button>
+              )}
+            </li>
+            <li className={styles.dropdownWrapper}>
+              <select
+                className={styles.fieldSelect}
+                value={activeType.length > 0 ? activeType[0] : 'All'}
+                onChange={({ target }) => {
+                  const val = target.value;
+
+                  if (!val) return;
+
+                  // eslint-disable-next-line no-unused-expressions
+                  val === 'All'
+                    ? setActiveType([])
+                    : setActiveType(
+                        [...allTypes].filter((item) => item === val),
+                      );
+                }}
+              >
+                <option label="Type" value="All">
+                  Type
+                </option>
+                {[...allTypes]
+                  .sort((item1, item2) => (item1 > item2 ? 1 : -1))
+                  .map((node, index) => (
+                    <option key={index} label={node} value={node}>
+                      {node}
+                    </option>
+                  ))}
+              </select>
+              {activeType.length > 0 && (
+                <button
+                  className={styles.fieldClear}
+                  type="button"
+                  onClick={() => setActiveType([])}
+                >
+                  clear
+                </button>
+              )}
+            </li>
+            <li className={styles.dropdownWrapper}>
+              <select
+                className={styles.fieldSelect}
+                value={
+                  activeCategories.length === 1 ? activeCategories[0] : 'All'
+                }
+                onChange={({ target }) => {
+                  if (!target.value) return;
+
+                  // eslint-disable-next-line no-unused-expressions
+                  target.value === 'All'
+                    ? setActiveCategories(
+                        [...allCategories].sort((item1, item2) =>
+                          item1 > item2 ? 1 : -1,
+                        ),
+                      )
+                    : setActiveCategories(
+                        [...allCategories]
+                          .filter((item) => item === target.value)
+                          .sort((item1, item2) => (item1 > item2 ? 1 : -1)),
+                      );
+                }}
+              >
+                <option label="Category" value="All">
+                  Category
+                </option>
+                {[...allCategories]
+                  .sort((item1, item2) => (item1 > item2 ? 1 : -1))
+                  .map((node, index) => (
+                    <option key={index} label={node} value={node}>
+                      {node}
+                    </option>
+                  ))}
+              </select>
+              {activeCategories.length === 1 && (
+                <button
+                  className={styles.fieldClear}
+                  type="button"
+                  onClick={() =>
+                    setActiveCategories(
+                      [...allCategories].sort((item1, item2) =>
+                        item1 > item2 ? 1 : -1,
+                      ),
+                    )
+                  }
+                >
+                  Clear
+                </button>
+              )}
+            </li>
+            <li className={styles.fieldWrapper}>
+              <SearchIcon className={styles.fieldIcon} />
+              <input
+                className={styles.fieldInput}
+                type="search"
+                placeholder="Find extension..."
+                value={searchTerm}
+                onChange={handleSearchInputChange}
+              />
+              {searchTerm.length > 0 && (
+                <button
+                  className={styles.fieldClear}
+                  type="button"
+                  onClick={() => {
+                    setSearchTerm('');
+                    setExtensions(data);
+                  }}
+                >
+                  clear
+                </button>
+              )}
+            </li>
+          </ul>
           <p dangerouslySetInnerHTML={{ __html: description }} />
           <WithCopyButton
             dataToCopy={code.replace(/^\$\s/gm, '')}
@@ -228,7 +318,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </div>
       )}
       <div className="container">
-        {totalExtensions.length === 0 ? (
+        {totalActiveExtensions.length === 0 ? (
           <div className={styles.notFoundWrapper}>
             <NotFoundIllustration className={styles.notFoundIllustration} />
             <h2 className={styles.notFoundTitle}>Oops! No match found.</h2>
@@ -250,6 +340,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
                     <ExtensionCard
                       key={extension.name}
                       extension={extension}
+                      searchTerm={searchTerm}
                       isChecked={selected.includes(
                         extension.url.replace('https://', ''),
                       )}

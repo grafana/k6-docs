@@ -139,22 +139,134 @@
 
 .filters {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   list-style: none;
 
+  @include md-down {
+    li {
+      width: 25%;
+    }
+  }
+
   @include sm-down {
-    margin-left: 20px;
+    max-width: 100%;
   }
 
   @include xs-down {
-    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
     flex-direction: column;
+
+    li {
+      width: 100%;
+    }
+  }
+}
+
+%field {
+  position: relative;
+  padding: 10px 15px;
+  background: transparent;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-secondary;
+  font-weight: 400;
+  border: 1px solid #d3d3de;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  appearance: none;
+
+  &:-moz-focusring {
+    border: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus {
+    border-color: $color-accent-primary;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.fieldWrapper {
+  position: relative;
+  flex-grow: 1;
+  max-width: 450px;
+
+  @include xs-down {
+    max-width: 100%;
+  }
+}
+
+.fieldIcon {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  bottom: 0;
+  margin: auto;
+}
+
+.fieldInput {
+  @extend %field;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.fieldSelect {
+  @extend %field;
+  width: 160px;
+  padding-right: 40px;
+  cursor: pointer;
+
+  @include md-down {
+    width: 100%;
+  }
+}
+
+.fieldClear {
+  z-index: 9;
+  position: absolute;
+  right: 9px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  background: white;
+  cursor: pointer;
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 16px;
+    height: 1.4px;
+    background: #c9c9d4;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    top: 8px;
+    left: 1px;
+  }
+
+  &:after {
+    transform: rotate(-45deg);
   }
 }
 
 .dropdown-wrapper {
   box-shadow: $light-block-shadow;
   position: relative;
+
   &:after {
     content: '';
     position: absolute;
@@ -162,34 +274,14 @@
     top: calc(50% - 2.5px);
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid $color-secondary;
-    width: 0px;
-    height: 0px;
-    opacity: 0.5;
-  }
-}
-
-.dropdown {
-  appearance: none;
-  cursor: pointer;
-  border-radius: 0;
-  border: 1px solid $color-secondary;
-  padding: 12px 40px 11px 15px;
-  width: 100%;
-  background: transparent;
-  font-size: $font-size-sm;
-  line-height: $line-height-sm;
-  color: $color-primary;
-  font-weight: 500;
-  outline: none;
-  transition: 0.3s border-color;
-
-  &:-moz-focusring {
-    border: none;
+    border-top: 5px solid #c9c9d4;
+    width: 0;
+    height: 0;
+    pointer-events: none;
   }
 
-  &:focus {
-    border-color: $color-accent-primary;
+  @include xs-down {
+    display: none;
   }
 }
 

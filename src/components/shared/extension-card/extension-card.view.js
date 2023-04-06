@@ -10,10 +10,25 @@ import styles from './extension-card.module.scss';
 
 export const ExtensionCard = ({
   extension,
+  searchTerm = '',
   hasCheckbox = false,
   isChecked = false,
   onCheckboxClick = () => {},
 }) => {
+  const { name, description, tiers, stars, cloudEnabled, url } = extension;
+  const extensionName = searchTerm
+    ? name.replace(
+        new RegExp(searchTerm, 'gi'),
+        (match) => `<mark>${match}</mark>`,
+      )
+    : name;
+  const extensionDescription = searchTerm
+    ? description.replace(
+        new RegExp(searchTerm, 'gi'),
+        (match) => `<mark>${match}</mark>`,
+      )
+    : description;
+
   const Wrapper = ({ className = '', children }) => {
     if (hasCheckbox) {
       return (
@@ -35,7 +50,7 @@ export const ExtensionCard = ({
     }
     return (
       // eslint-disable-next-line react/jsx-indent
-      <ItemCard as="a" href={extension.url}>
+      <ItemCard as="a" href={url}>
         <div className={className}>{children}</div>
       </ItemCard>
     );
@@ -46,7 +61,7 @@ export const ExtensionCard = ({
       {hasCheckbox && (
         <div className={styles.checkbox}>
           <CheckboxField
-            id={extension.name}
+            id={name}
             checked={isChecked}
             onChange={onCheckboxClick}
             accessible={false}
@@ -55,7 +70,7 @@ export const ExtensionCard = ({
       )}
       <div className={styles.content}>
         <ul className={styles.tiersWrapper}>
-          {extension.tiers.map((tier, index) => (
+          {tiers.map((tier, index) => (
             <li
               className={classNames(
                 styles.tier,
@@ -70,14 +85,18 @@ export const ExtensionCard = ({
           ))}
         </ul>
         <div className={styles.nameWrapper}>
-          <span className={styles.name}>{extension.name}</span>
+          <span
+            className={styles.name}
+            dangerouslySetInnerHTML={{ __html: extensionName }}
+          />
         </div>
-        <span className={styles.description}>{extension.description}</span>
+        <span
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: extensionDescription }}
+        />
         <div className={styles.external}>
-          {extension.stars && (
-            <span className={styles.stars}>{extension.stars}</span>
-          )}
-          {extension.cloudEnabled && (
+          {stars && <span className={styles.stars}>{stars}</span>}
+          {cloudEnabled && (
             <span className={styles.cloud}>Available in cloud</span>
           )}
         </div>
