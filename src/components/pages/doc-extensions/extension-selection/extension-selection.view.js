@@ -159,7 +159,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
                       );
                 }}
               >
-                <option label="Tier" value="All">
+                <option disabled value="All">
                   Tier
                 </option>
                 {[...allTiers]
@@ -197,7 +197,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
                       );
                 }}
               >
-                <option label="Type" value="All">
+                <option disabled value="All">
                   Type
                 </option>
                 {[...allTypes]
@@ -241,7 +241,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
                       );
                 }}
               >
-                <option label="Category" value="All">
+                <option disabled value="All">
                   Category
                 </option>
                 {[...allCategories]
