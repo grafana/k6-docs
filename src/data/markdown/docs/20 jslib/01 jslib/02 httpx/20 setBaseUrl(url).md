@@ -5,9 +5,9 @@ excerpt: 'sets the base URL for the session'
 ---
 
 
-| Parameter | Type            | Description                                                      |
-| --------- | --------------- | ---------------------------------------------------------------- |
-| baseURL  | string  | Base URL to be used for all requests issued in the session |
+| Parameter   | Type         | Description                                                |
+|-------------|--------------|------------------------------------------------------------|
+| baseURL     | string       | Base URL to be used for all requests issued in the session |
 
 
 ### Example
@@ -15,7 +15,7 @@ excerpt: 'sets the base URL for the session'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx();
 

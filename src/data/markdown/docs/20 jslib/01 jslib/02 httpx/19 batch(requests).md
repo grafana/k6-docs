@@ -7,16 +7,16 @@ excerpt: 'Issue multiple HTTP requests in parallel (like e.g. browsers tend to d
 
 Batch multiple HTTP requests together, to issue them in parallel over multiple TCP connections.
 
-| Parameter | Type            | Description                                                      |
-| --------- | --------------- | ---------------------------------------------------------------- |
-| requests  | array  | An array containing requests, in string or object form |
-| params (optional) | object | additional parameters for all requests in the batch |
+| Parameter         | Type         | Description                                                 |
+|-------------------|--------------|-------------------------------------------------------------|
+| requests          | array        | An array containing requests, in string or object form      |
+| params (optional) | object       | additional parameters for all requests in the batch         |
 
 
 ### Returns
 
-| Type   | Description |
-| ------ | ------------------- |
+| Type  | Description                                                               |
+|-------|---------------------------------------------------------------------------|
 | array | An array containing [Response](/javascript-api/k6-http/response) objects. |
 
 ### Example
@@ -24,7 +24,7 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.0.2/index.js';
+import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { describe } from 'https://jslib.k6.io/expect/0.0.4/index.js';
 
 const session = new Httpx({ baseURL: 'https://test-api.k6.io' });

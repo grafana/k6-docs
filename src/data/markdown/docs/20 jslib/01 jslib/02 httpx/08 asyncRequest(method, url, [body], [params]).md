@@ -1,14 +1,12 @@
 ---
-title: 'request(method, url, [body], [params])'
-head_title: 'httpx.request()'
-description: 'Generic method for making arbitrary HTTP requests'
-excerpt: 'Generic method for making arbitrary HTTP requests'
+title: 'asyncRequest(method, url, [body], [params])'
+head_title: 'httpx.asyncRequest()'
+description: 'Generic method for making asynchronous HTTP requests'
+excerpt: 'Generic method for making asynchronous HTTP requests'
 ---
 
-Generic method for making arbitrary HTTP requests. 
-
-Consider using specific methods for making common requests ([get](/javascript-api/jslib/httpx/get), [post](/javascript-api/jslib/httpx/post), [put](/javascript-api/jslib/httpx/put), [patch](/javascript-api/jslib/httpx/patch))
-
+Generic method for making arbitrary asynchronous HTTP requests. 
+Note, this method returns a Promise. You must use the `await` keyword to resolve it. 
 
 | Parameter         | Type                                                                                      | Description                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -20,9 +18,9 @@ Consider using specific methods for making common requests ([get](/javascript-ap
 
 ### Returns
 
-| Type                                         | Description           |
-| -------------------------------------------- | --------------------- |
-| [Response](/javascript-api/k6-http/response) | HTTP [Response](/javascript-api/k6-http/response) object. |
+| Type                  | Description                                                |
+|-----------------------|------------------------------------------------------------|
+| Promise with Response | HTTP [Response](/javascript-api/k6-http/response) object.  |
 
 
 ### Example
@@ -37,12 +35,19 @@ const session = new Httpx({
   timeout: 20000, // 20s timeout.
 });
 
-export default function testSuite() {
-  const resp_get = session.request('GET', `/status/200`);
-  const resp_post = session.request('POST', `/status/200`, { key: 'value' });
-  const resp_put = session.request('PUT', `/status/200`, { key: 'value' });
-  const resp_patch = session.request('PATCH', `/status/200`, { key: 'value' });
-  const resp_delete = session.request('DELETE', `/status/200`);
+export default async function testSuite() {
+  const resp_get = await session.asyncRequest('GET', `/status/200`);
+  const resp_post = await session.asyncRequest('POST', `/status/200`, { key: 'value' });
+  const resp_put = await session.asyncRequest('PUT', `/status/200`, { key: 'value' });
+  const resp_patch = await session.asyncRequest('PATCH', `/status/200`, { key: 'value' });
+  const resp_delete = await session.asyncRequest('DELETE', `/status/200`);
+
+  // specific methods are also available.
+  const respGet = await session.asyncGet(`/status/200`);
+  const respPost = await session.asyncPost(`/status/200`, { key: 'value' });
+  const respPut = await session.asyncPut(`/status/200`, { key: 'value' });
+  const respPatch = await session.asyncPatch(`/status/200`, { key: 'value' });
+  const respDelete = await session.asyncDelete(`/status/200`);
 }
 ```
 
