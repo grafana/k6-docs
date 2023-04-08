@@ -853,6 +853,18 @@
       },
       "official": false,
       "categories": ["Reporting", "Observability"]
+    },
+    {
+      "name": "xk6-enhanced",
+      "description": "Add enhanced JavaScript compatibility (TypeScript, import JSON files, etc) to k6",
+      "url": "https://github.com/szkiba/xk6-enhanced",
+      "logo": "",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "official": false,
+      "categories": ["Misc"]
     }
   ]
 }
