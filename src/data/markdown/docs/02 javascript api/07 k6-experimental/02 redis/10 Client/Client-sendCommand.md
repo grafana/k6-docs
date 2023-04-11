@@ -17,7 +17,7 @@ In the event a Redis command you wish to use is not implemented yet, the `sendCo
 
 | Type           | Resolves with                                                                                | Rejected when |
 | :------------- | :------------------------------------------------------------------------------------------- | :------------ |
-| `Promise<any>` | On success, the promise resolves with string, number or boolean result the server would reply to the command sent. |               |
+| `Promise<any>` | On success, the promise resolves with string, number, or boolean result the server would reply to the command sent. |               |
 
 ### Example
 
