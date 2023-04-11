@@ -10,7 +10,7 @@ Adds the specified members to the set stored at `key`. Specified members that ar
 | Parameter | Type   | Description                                |
 | :-------- | :----- | :----------------------------------------- |
 | `key`     | string | key holding the set to add the members to. |
-| `members` | a variadic array of strings, numbers or booleans  | members to add to the set.                 |
+| `members` | a variadic array of strings, numbers, or booleans  | members to add to the set.                 |
 
 
 ### Returns
