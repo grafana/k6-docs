@@ -10,14 +10,14 @@ In the event a Redis command you wish to use is not implemented yet, the `sendCo
 | Parameter | Type   | Description                                                                                                    |
 | :-------- | :----- | :------------------------------------------------------------------------------------------------------------- |
 | `command` | string | command name to issue to the Redis server, as described in [Redis' documentation](https://redis.io/commands/). |
-| `args`    | any[]  | command arguments to pass to the Redis server.                                                                 |
+| `args`    | a variadic array of strings, numbers or booleans  | command arguments to pass to the Redis server.                                                                 |
 
 
 ### Returns
 
 | Type           | Resolves with                                                                                | Rejected when |
 | :------------- | :------------------------------------------------------------------------------------------- | :------------ |
-| `Promise<any>` | On success, the promise resolves with any result the server would reply to the command sent. |               |
+| `Promise<any>` | On success, the promise resolves with string, number or boolean result the server would reply to the command sent. |               |
 
 ### Example
 

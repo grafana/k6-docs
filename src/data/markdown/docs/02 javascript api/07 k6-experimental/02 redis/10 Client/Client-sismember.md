@@ -10,7 +10,7 @@ Returns if member is a member of the set stored at `key`.
 | Parameter | Type   | Description                                                |
 | :-------- | :----- | :--------------------------------------------------------- |
 | `key`     | string | key holding the set to check if the member is a member of. |
-| `member`  | any    | member to check if is a member of the set.                 |
+| `member`  | string, number or boolean    | member to check if is a member of the set.                 |
 
 
 ### Returns

@@ -10,7 +10,7 @@ Removes the specified members from the set stored at `key`. Specified members th
 | Parameter | Type   | Description                                     |
 | :-------- | :----- | :---------------------------------------------- |
 | `key`     | string | key holding the set to remove the members from. |
-| `members` | any[]  | members to remove from the set.                 |
+| `members` | a variadic array of strings, numbers or booleans  | members to remove from the set.                 |
 
 
 ### Returns
@@ -40,7 +40,7 @@ export default async function () {
   await redisClient.sadd('myset', 'foo');
   await redisClient.sadd('myset', 'bar');
   await redisClient.srem('myset', 'foo');
-  
+
   const members = await redisClient.smembers('myset');
   if (members.length !== 1) {
     throw new Error('sismember should have length 1');

@@ -10,7 +10,7 @@ Inserts all the specified values at the tail of the list stored at `key`. If `ke
 | Parameter | Type   | Description                            |
 | :-------- | :----- | :------------------------------------- |
 | `key`     | string | key holding the list to right push to. |
-| `values`  | any[]  | values to push to the list.            |
+| `values`  | a variadic array of strings, numbers or booleans  | values to push to the list.            |
 
 
 ### Returns
@@ -39,7 +39,7 @@ const redisClient = new redis.Client({
 export default async function () {
   await redisClient.lpush('mylist', 'first');
   await redisClient.rpush('mylist', 'second');
-  
+
   const item = await redisClient.lpop('mylist');
   await redisClient.rpush('mylist', item);
   await redisClient.rpop('mylist');

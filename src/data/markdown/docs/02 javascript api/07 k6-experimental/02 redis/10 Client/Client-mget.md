@@ -3,7 +3,7 @@ title: 'Client.mget(keys)'
 excerpt: 'Returns the values of all specified keys.'
 ---
 
-Returns the values of all specified keys. 
+Returns the values of all specified keys.
 
 ### Parameters
 
@@ -39,7 +39,7 @@ export default async function () {
   await redisClient.set('first', 1, 0)
   await redisClient.set('second', 2, 0);
   await redisClient.set('third', 3, 0);
-  
+
   const values = await redisClient.mget('first', 'second', 'third');
   console.log(`set values are: ${values}`);
 }
