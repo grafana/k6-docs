@@ -10,7 +10,7 @@ Set the value of a key, with a time to live equal to the expiration time paramet
 | Parameter    | Type    | Description                                                         |
 | :----------- | :------ | :------------------------------------------------------------------ |
 | `key`        | string  | the key to set                                                      |
-| `value`      | string, number or boolean     | the value to set                                                    |
+| `value`      | string, number, or boolean     | the value to set                                                    |
 | `expiration` | integer | the time to live in seconds. the `0` value indicates no expiration. |
 
 
