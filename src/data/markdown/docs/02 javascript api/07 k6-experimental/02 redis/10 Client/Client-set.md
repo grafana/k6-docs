@@ -10,7 +10,7 @@ Set the value of a key, with a time to live equal to the expiration time paramet
 | Parameter    | Type    | Description                                                         |
 | :----------- | :------ | :------------------------------------------------------------------ |
 | `key`        | string  | the key to set                                                      |
-| `value`      | any     | the value to set                                                    |
+| `value`      | string, number, or boolean     | the value to set                                                    |
 | `expiration` | integer | the time to live in seconds. the `0` value indicates no expiration. |
 
 
@@ -39,7 +39,7 @@ const redisClient = new redis.Client({
 
 export default async function () {
   await redisClient.set('mykey', 'myvalue', 0);
-  
+
   const exists = await redisClient.exists('mykey');
   if (exists === false) {
     throw new Error('mykey should exist');
@@ -47,7 +47,7 @@ export default async function () {
 
   const value = await redisClient.get('mykey');
   console.log(`set key 'mykey' to value: ${value}`)
-  
+
   await redisClient.del('mykey');
 }
 ```

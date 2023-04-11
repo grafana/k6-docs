@@ -10,7 +10,7 @@ Inserts all the specified values at the head of the list stored at `key`. If `ke
 | Parameter | Type   | Description                           |
 | :-------- | :----- | :------------------------------------ |
 | `key`     | string | key holding the list to left push to. |
-| `values`  | any[]  | values to push to the list.           |
+| `values`  | a variadic array of strings, numbers, or booleans  | values to push to the list.           |
 
 
 ### Returns
@@ -39,7 +39,7 @@ const redisClient = new redis.Client({
 export default async function () {
     await redisClient.lpush('mylist', 'first');
     await redisClient.rpush('mylist', 'second');
-    
+
     let item = await redisClient.lpop('mylist');
     item = redisClient.rpush('mylist', item);
     item = redisClient.rpop('mylist');
