@@ -10,7 +10,7 @@ Atomically sets `key` to `value` and returns the value previously stored at `key
 | Parameter | Type   | Description            |
 | :-------- | :----- | :--------------------- |
 | `key`     | string | the key to get and set |
-| `value`   | string, number or boolean    | the value to set       |
+| `value`   | string, number, or boolean    | the value to set       |
 
 
 ### Returns
