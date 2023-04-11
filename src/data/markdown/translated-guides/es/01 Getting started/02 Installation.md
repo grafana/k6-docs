@@ -10,10 +10,11 @@ k6 tiene paquetes para Linux, Mac, y Windows. Alternativamente, puede usar un co
 ### Debian/Ubuntu
 
 ```bash
-$ sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-$ echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
-$ sudo apt-get update
-$ sudo apt-get install k6
+sudo gpg -k
+sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+sudo apt-get update
+sudo apt-get install k6
 ```
 
 
@@ -22,8 +23,8 @@ $ sudo apt-get install k6
 Usando `dnf` o `yum`:
 
 ```bash
-$ sudo dnf install https://dl.k6.io/rpm/repo.rpm
-$ sudo dnf install k6
+sudo dnf install https://dl.k6.io/rpm/repo.rpm
+sudo dnf install k6
 ```
 
 
@@ -32,7 +33,7 @@ $ sudo dnf install k6
 Usando [Homebrew](https://brew.sh/):
 
 ```bash
-$ brew install k6
+brew install k6
 ```
 
 
@@ -50,7 +51,7 @@ Alternativamente, puede descargar y ejecutar [el instalador oficial más recient
 ## Docker
 
 ```bash
-$ docker pull grafana/k6
+docker pull grafana/k6
 ```
 
 ## Binarios
