@@ -10,7 +10,7 @@ Removes the specified members from the set stored at `key`. Specified members th
 | Parameter | Type   | Description                                     |
 | :-------- | :----- | :---------------------------------------------- |
 | `key`     | string | key holding the set to remove the members from. |
-| `members` | a variadic array of strings, numbers or booleans  | members to remove from the set.                 |
+| `members` | a variadic array of strings, numbers, or booleans  | members to remove from the set.                 |
 
 
 ### Returns
