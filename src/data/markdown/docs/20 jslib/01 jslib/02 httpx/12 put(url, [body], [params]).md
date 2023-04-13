@@ -11,7 +11,7 @@ excerpt: 'httpx.put makes PUT requests'
 | Parameter         | Type                                                                                      | Description                                                                            |
 |-------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
 | url               | string                                                                                    | HTTP URL. If baseURL is set, provide only path.                                        |
-| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body. |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects are `x-www-form-urlencoded`. To omit body, set to `null`. |
 | params (optional) | null or object {}                                                                         | Additional [parameters](/javascript-api/k6-http/params) for this specific request.     |
 
 ### Returns
