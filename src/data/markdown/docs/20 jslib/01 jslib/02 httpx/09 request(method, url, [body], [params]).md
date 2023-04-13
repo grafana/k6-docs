@@ -12,7 +12,7 @@ Consider using specific methods for making common requests ([get](/javascript-ap
 
 | Parameter         | Type                                                                                      | Description                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| method            | string                                                                                    | HTTP method. Note, the method must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc) |
+| method            | string                                                                                    | HTTP method. Must be uppercase (GET, POST, PUT, PATCH, OPTIONS, HEAD, etc) |
 | url               | string                                                                                    | HTTP URL. If baseURL is set, provide only path.                                             |
 | body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body.      |
 | params (optional) | null or object {}                                                                         | Additional [parameters](/javascript-api/k6-http/params) for this specific request.          |
