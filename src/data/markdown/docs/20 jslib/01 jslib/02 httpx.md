@@ -38,7 +38,7 @@ This documentation is for the only last version only. If you discover that some 
 | [put(url, [body], [params])](/javascript-api/jslib/httpx/put)                           | Makes PUT request                                                 |
 | [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch)                       | Makes PATCH request                                               |
 | [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete)                     | Makes DELETE request                                              |
-| [batch(requests)](/javascript-api/jslib/httpx/batch)                                    | Batch multiple HTTP requests together, to issue them in parallel. |
+| [batch(requests)](/javascript-api/jslib/httpx/batch)                                    | Batches multiple HTTP requests together to issue them in parallel. |
 | [setBaseUrl(url)](/javascript-api/jslib/httpx/setbaseurl)                               | Sets the base URL for the session                                 |
 | [addHeader(key, value)](/javascript-api/jslib/httpx/addheader)                          | Adds a header to the session                                      |
 | [addHeaders(object)](/javascript-api/jslib/httpx/addheaders)                            | Adds multiple headers to the session                              |
