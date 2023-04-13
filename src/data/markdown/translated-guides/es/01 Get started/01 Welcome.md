@@ -2,7 +2,7 @@
 title: 'Bienvenido'
 slug: ''
 excerpt: ''
-redirect: '/es/'
+redirect: '/docs/es/'
 redirectTarget: '_self'
 ---
 
