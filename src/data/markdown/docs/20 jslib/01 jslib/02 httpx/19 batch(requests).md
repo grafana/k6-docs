@@ -10,7 +10,7 @@ Batch multiple HTTP requests together, to issue them in parallel over multiple T
 | Parameter         | Type         | Description                                                 |
 |-------------------|--------------|-------------------------------------------------------------|
 | requests          | array        | An array containing requests, in string or object form      |
-| params (optional) | object       | additional parameters for all requests in the batch         |
+| params (optional) | object       | Additional parameters for all requests in the batch         |
 
 
 ### Returns
