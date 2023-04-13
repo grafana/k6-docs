@@ -5,10 +5,10 @@ excerpt: 'adds a header to the session'
 ---
 
 
-| Parameter | Type            | Description                                                      |
-| --------- | --------------- | ---------------------------------------------------------------- |
-| name  | string  | Header name |
-| value  | string  | Header value |
+| Parameter  | Type         | Description                  |
+|------------|--------------|------------------------------|
+| name       | string       | Header name                  |
+| value      | string       | Header value                 |
 
 
 ### Example
@@ -16,7 +16,7 @@ excerpt: 'adds a header to the session'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 

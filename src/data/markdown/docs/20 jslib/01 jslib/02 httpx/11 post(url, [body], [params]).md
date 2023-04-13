@@ -6,16 +6,16 @@ excerpt: 'httpx.post makes POST requests'
 ---
 
 
-| Parameter      | Type   | Description                                                                          |
-| -------------- | ------ | ------------------------------------------------------------------------------------ |
-| url  | string    | HTTP URL. If baseURL is set, provide only path. |
-| body (optional) | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects will be `x-www-form-urlencoded`. Set to `null` to omit the body. |
-| params (optional) | null or object {} | Additional [parameters](/javascript-api/k6-http/params) for this specific request. |
+| Parameter         | Type                                                                                      | Description                                                                            |
+|-------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| url               | string                                                                                    | HTTP URL. If baseURL is set, provide only path.                                        |
+| body (optional)   | null / string / object / ArrayBuffer / [SharedArray](/javascript-api/k6-data/sharedarray) | Request body; objects are `x-www-form-urlencoded`. To omit body, set to `null` . |
+| params (optional) | null or object {}                                                                         | Additional [parameters](/javascript-api/k6-http/params) for this specific request.     |
 
 ### Returns
 
-| Type                                         | Description           |
-| -------------------------------------------- | --------------------- |
+| Type                                         | Description                                               |
+|----------------------------------------------|-----------------------------------------------------------|
 | [Response](/javascript-api/k6-http/response) | HTTP [Response](/javascript-api/k6-http/response) object. |
 
 
@@ -24,7 +24,7 @@ excerpt: 'httpx.post makes POST requests'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({
   baseURL: 'https://test-api.k6.io',
