@@ -17,7 +17,7 @@ The module exports a top-level `crypto` object with the following properties and
 | :----------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [getRandomValues](/javascript-api/k6-experimental/webcrypto/crypto/getrandomvalues) | Fills the passed `TypedArray` with cryptographically sound random values.                                                                                                                     |
 | [randomUUID](/javascript-api/k6-experimental/webcrypto/crypto/randomuuid)           | Returns a randomly generated, 36 character long v4 UUID.                                                                                                                                      |
-| [subtle](/javascript-api/k6-experimental/webcrypto/subtlecrypto)                    | the [SubtleCrypto](/javascript-api/k6-experimental/webcrypto/subtlecrypto) interface provides access to common cryptographic primitives, such as hashing, signing, encryption, or decryption. |
+| [subtle](/javascript-api/k6-experimental/webcrypto/subtlecrypto)                    | The [SubtleCrypto](/javascript-api/k6-experimental/webcrypto/subtlecrypto) interface provides access to common cryptographic primitives, such as hashing, signing, encryption, or decryption. |
 
 ## Example
 
