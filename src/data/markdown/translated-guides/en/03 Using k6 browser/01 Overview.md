@@ -26,7 +26,7 @@ The main use case for the browser module is to test performance on the browser l
 
 ```javascript
 import { chromium } from 'k6/experimental/browser';
-import { check } from 'k6'
+import { check } from 'k6';
 
 export default async function () {
   const browser = chromium.launch({ headless: false });
@@ -38,13 +38,12 @@ export default async function () {
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]);
+    const submitButton = page.locator('input[type="submit"]');
+
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     check(page, {
-      'header': page.locator('h2').textContent() == 'Welcome, admin!',
+      header: page.locator('h2').textContent() == 'Welcome, admin!',
     });
   } finally {
     page.close();

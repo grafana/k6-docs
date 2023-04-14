@@ -52,10 +52,10 @@ excerpt: "Browser module: ElementHandle Class"
 import { check } from 'k6';
 import { chromium } from 'k6/experimental/browser';
 
-export default async function() {
+export default async function () {
   const browser = chromium.launch({
     headless: false,
-    slowMo: '500ms' // slow down by 500ms
+    slowMo: '500ms', // slow down by 500ms
   });
   const context = browser.newContext();
   const page = context.newPage();
@@ -63,20 +63,18 @@ export default async function() {
   // Goto front page, find login link and click it
   try {
     await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('a[href="/my_messages.php"]').click(),
-    ]);
+    const messagesLink = page.locator('a[href="/my_messages.php"]');
+
+    await Promise.all([page.waitForNavigation(), messagesLink.click()]);
     // Enter login credentials and login
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
- 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]);
+
+    const submitButton = page.locator('input[type="submit"]');
+
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
     check(page, {
-      'header': page.locator('h2').textContent() == 'Welcome, admin!',
+      header: page.locator('h2').textContent() == 'Welcome, admin!',
     });
   } finally {
     page.close();

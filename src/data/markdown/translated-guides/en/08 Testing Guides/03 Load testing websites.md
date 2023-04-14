@@ -200,10 +200,10 @@ export default async function () {
     sleep(4);
 
     // 02. View products
-    const element = page.$(
+    const element = page.locator(
       'a[class="woocommerce-LoopProduct-link woocommerce-loop-product__link"]'
     );
-    element.click();
+    await element.click();
     page.waitForSelector('button[name="add-to-cart"]');
     page.screenshot({ path: 'screenshots/02_view-product.png' });
 

@@ -132,7 +132,9 @@ export default async function () {
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
+    const submitButton = page.locator('input[type="submit"]');
+
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     check(page, {
       header: page.locator('h2').textContent() == 'Welcome, admin!',
