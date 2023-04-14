@@ -58,13 +58,21 @@ To run a simple local script:
 
 2. Then, run the test on your terminal with this command:
 
-  <CodeGroup labels={["CLI"]}>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
-  ```bash
-  $ K6_BROWSER_ENABLED=true k6 run script.js
-  ```
+```bash
+$ K6_BROWSER_ENABLED=true k6 run script.js
+```
 
-  </CodeGroup>
+```bash
+C:\k6> set "K6_BROWSER_ENABLED=true" && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_ENABLED=true ; k6 run script.js
+```
+
+</CodeGroup>
 
 ## Interact with elements on your webpage
 
