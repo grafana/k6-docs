@@ -49,6 +49,5 @@ You can also stream real-time metrics to the following services:
 
 ## Read more
 
-- [k6 extensions](/extensions/get-started/explore) have many more supported file formats.
-- [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). Video demonstrations with a companion blog post.
+- [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
 
