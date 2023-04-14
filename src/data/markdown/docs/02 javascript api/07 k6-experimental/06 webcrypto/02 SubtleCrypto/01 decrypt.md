@@ -17,7 +17,7 @@ decrypt(algorithm, key, data)
 | :---------- | :--------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `algorithm` | [AesCtrParams](/javascript-api/k6-experimental/webcrypto/aesctrparams), [AesCbcParams](/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](/javascript-api/k6-experimental/webcrypto/aesgcmparams) object         | Defines the algorithm to use and any extra-parameters. The values given for the extra parameters must match those used in the corresponding [encrypt] call. |
 | `key`       | [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey) | The [key](/javascript-api/k6-experimental/webcrypto/cryptokey) to use for decryption.                                                                       |
-| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                       | The encrypted data to be decrypted (also known as "ciphertext").                                                                                            |
+| `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                       | The encrypted data to be decrypted (also known as _ciphertext_).                                                                                            |
 
 ## Return Value
 
