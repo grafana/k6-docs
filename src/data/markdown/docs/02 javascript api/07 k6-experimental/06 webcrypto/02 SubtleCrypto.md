@@ -15,7 +15,7 @@ The `SubtleCrypto` interface provides a set of low-level cryptographic primitive
 | [verify](/javascript-api/k6-experimental/webcrypto/subtlecrypto/verify)           | Verifies the signature of the given data using the specified algorithm and key.             |
 | [digest](/javascript-api/k6-experimental/webcrypto/subtlecrypto/digest)           | Computes the digest (hash) of the given data using the specified algorithm.                 |
 | [generateKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/generatekey) | Generates a new cryptographic key for use with the specified algorithm.                     |
-| [importKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey)     | Imports a raw key material into the Web Crypto API, generating a new key object that can be |used with the specified algorithm.
+| [importKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/importkey)     | Imports a raw key material into the Web Crypto API, generating a new key object to use with the specified algorithm.
 | [exportKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey)     | Exports the raw key material of the given key object.                                       |
 
 ## Example
