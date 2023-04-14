@@ -3,7 +3,7 @@ title: 'randomUUID'
 excerpt: 'randomUUID produces a 36-characters long string containing a cryptographically random UUID v4.'
 ---
 
-The `randomUUID` method produces a 36-characters long string containing a cryptographically random UUID v4.
+The `randomUUID` method produces a 36-characters long string that contains a cryptographically random UUID v4.
 
 ## Usage
 
