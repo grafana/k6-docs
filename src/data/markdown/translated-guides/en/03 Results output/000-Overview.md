@@ -18,3 +18,4 @@ If you stream your metrics, you can either write them to a file, like JSON, or s
 - [End of test summary](../end-of-test)
 - [Real time results](../real-time)
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
+- [Build an output extension](/extensions/get-started/create/output-extensions/)
