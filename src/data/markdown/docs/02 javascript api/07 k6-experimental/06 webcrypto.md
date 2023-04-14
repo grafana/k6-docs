@@ -5,7 +5,7 @@ excerpt: "k6 webcrypto experimental API"
 
 <ExperimentalBlockquote />
 
-With this experimental module, you can use the [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) in your k6 scripts. Note however that this API is not yet fully implemented and some algorithms and features might still be missing.
+With this experimental module, you can use the [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) in your k6 scripts. However, note that this API is not yet fully implemented and some algorithms and features might still be missing.
 
 The Web Crypto API is a JavaScript API for performing cryptographic operations such as encryption, decryption, digital signature generation and verification, and key generation and management. It provides a standard interface for accessing cryptographic functionality, which can help ensure that cryptographic operations are performed correctly and securely.
 
