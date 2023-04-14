@@ -19,7 +19,7 @@ getRandomValues(typedArray)
 
 ## Return Value
 
-The same array passed as the `typedArray` parameter with its contents replaced with the newly generated random numbers. the `typedArray` parameter is modified in place, and no copy is made.
+The same array is passed as the `typedArray` parameter with its contents replaced with the newly generated random numbers. The `typedArray` parameter is modified in place, and no copy is made.
 
 ## Throws
 
