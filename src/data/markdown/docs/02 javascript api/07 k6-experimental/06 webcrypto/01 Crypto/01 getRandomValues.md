@@ -25,7 +25,7 @@ The same array is passed as the `typedArray` parameter with its contents replace
 
 | Type                 | Description                                                          |
 | :------------------- | :------------------------------------------------------------------- |
-| `QuotaExceededError` | if the `typedArray` is too large and its `byteLength` exceeds 65536. |
+| `QuotaExceededError` | Thrown when `typedArray` is too large and its `byteLength` exceeds 65536. |
 
 ## Example
 
