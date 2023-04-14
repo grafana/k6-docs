@@ -19,7 +19,7 @@ importKey(format, keyData, algorithm, extractable, keyUsages)
 | `keyData`     | `ArrayBuffer`, `TypedArray` or `DataView`                 | the data to import the key from.                                                                                                                              |
 | `algorithm`   | a `string` or object with a single `name` string property | The algorithm to use to import the key. Currently supported algorithms: `AES-CBC`, `AES-GCM`, `AES-CTR`, and `HMAC`.                                          |
 | `extractable` | `boolean`                                                 | Indicates whether it will be possible to export the key using [exportKey](/javascript-api/k6-experimental/webcrypto/subtlecrypto/exportkey).                  |
-| `keyUsages`   | `Array<string>`                                           | An array of strings describing what operations can be performed with the key. Currently supported usages include: `encrypt`, `decrypt`, `sign`, and `verify`. |
+| `keyUsages`   | `Array<string>`                                           | An array of strings describing what operations can be performed with the key. Currently supported usages include `encrypt`, `decrypt`, `sign`, and `verify`. |
 
 ## Return Value
 

@@ -3,7 +3,7 @@ title: 'SubtleCrypto'
 excerpt: 'SubtleCrypto offers low-level cryptographic functions.'
 ---
 
-The `SubtleCrypto` interface provides a set of low-level cryptographic primitives such as encryption, decryption, digital signature generation and verification, and key generation and management. It is useful for using secure and efficient cryptographic operations within k6 scripts, without requiring to have a deep understanding of the underlying cryptographic algorithms and protocols.
+The `SubtleCrypto` interface provides a set of low-level cryptographic primitives such as encryption, decryption, digital signature generation and verification, and key generation and management. It is useful for using secure and efficient cryptographic operations within k6 scripts.
 
 ## Methods
 

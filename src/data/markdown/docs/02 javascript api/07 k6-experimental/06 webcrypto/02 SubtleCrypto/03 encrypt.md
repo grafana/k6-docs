@@ -15,7 +15,7 @@ encrypt(algorithm, key, data)
 
 | Name        | Type | Description |
 | :---------- | :--- | :---------- |
-| `algorithm` | [AesCtrParams](/javascript-api/k6-experimental/webcrypto/aesctrparams), [AesCbcParams](/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](/javascript-api/k6-experimental/webcrypto/aesgcmparams) object      | defines the algorithm to use and any extra-parameters.            |
+| `algorithm` | [AesCtrParams](/javascript-api/k6-experimental/webcrypto/aesctrparams), [AesCbcParams](/javascript-api/k6-experimental/webcrypto/aescbcparams), or [AesGcmParams](/javascript-api/k6-experimental/webcrypto/aesgcmparams) object      | Defines the algorithm to use and any extra-parameters.            |
 | `key`            | [CryptoKey](/javascript-api/k6-experimental/webcrypto/cryptokey)     | The [key](/javascript-api/k6-experimental/webcrypto/cryptokey) to use for encryption.             |
 | `data`            | `ArrayBuffer`, `TypedArray`, or `DataView`     | The data to be encrypted (also known as "plaintext").            |
 

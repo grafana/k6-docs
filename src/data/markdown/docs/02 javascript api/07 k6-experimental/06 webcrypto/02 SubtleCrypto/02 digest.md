@@ -15,7 +15,7 @@ digest(algorithm, data)
 
 | Name        | Type                                                      | Description                                                                                                                                                                               |
 | :---------- | :-------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `algorithm` | a `string` or object with a single `name` string property | names the hash function to use. Supported values are `"SHA-1"`, `"SHA-256"`, `"SHA-384"` and `"SHA-512"`. Note that the SHA-1 hash function is not considered safe for cryptographic use. |
+| `algorithm` | a `string` or object with a single `name` string property | Names the hash function to use. Supported values are `"SHA-1"`, `"SHA-256"`, `"SHA-384"` and `"SHA-512"`. Note that the SHA-1 hash function is not considered safe for cryptographic use. |
 | `data`      | `ArrayBuffer`, `TypedArray`, or `DataView`                | The  data to be digested.                                                                                                                                                                 |
 
 ## Return Value
