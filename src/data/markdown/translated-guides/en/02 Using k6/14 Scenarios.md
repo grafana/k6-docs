@@ -55,7 +55,7 @@ export const options = {
 ## Scenario executors
 
 For each k6 scenario, the VU workload is scheduled by an _executor_.
-Executors configure how long the test runs, whether traffic stays constant or changes, and whether the workload is modeled by VUs or by arrival rate (that is, [open or closed models](/using-k6/scenarios/concepts/open-vs-closed/).
+Executors configure how long the test runs, whether traffic stays constant or changes, and whether the workload is modeled by VUs or by arrival rate (that is, [open or closed models](/using-k6/scenarios/concepts/open-vs-closed/)).
 
 Your scenario object must define the `executor` property with one of the predefined executor names.
 Your choice of executor determines how k6 models load.
