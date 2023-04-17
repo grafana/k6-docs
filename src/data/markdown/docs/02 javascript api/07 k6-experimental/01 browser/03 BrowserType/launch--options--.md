@@ -57,7 +57,6 @@ The starting '--' have been omitted from the argument names in these lists.
 | no-service-autorun | `true` | Disables the service process from adding itself as an autorun process. This does not delete existing autorun registrations, it just prevents the service from registering a new one. |
 | no-startup-window | `true` | Does not automatically open a browser window on startup (used when launching Chrome for the purpose of hosting background apps). |
 | no-default-browser-check | `true` | Disables the default browser check. Useful for UI/browser tests where we want to avoid having the default browser info-bar displayed. |
-| no-sandbox | `true` | Disables the sandbox for all process types that are normally sandboxed. Meant to be used as a browser-level switch for testing purposes only. |
 | headless | `true`/`false` | Run in headless mode, i.e., without a UI or display server dependencies. Set by [launch options](/javascript-api/k6-experimental/browser/browsertype/launch/) (default true).  |
 | auto-open-devtools-for-tabs | `true`/`false` | This flag makes Chrome auto-open the DevTools window for each tab. It is intended to be used by developers and automation, not to require user interaction for opening DevTools. Set by [launch options](/javascript-api/k6-experimental/browser/browsertype/launch/) (default false). |
 | window-size | `800,600` | Sets the initial window size. Provided as string in the format "800,600". |
