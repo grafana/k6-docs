@@ -6,55 +6,55 @@ import React from 'react';
 const links = [
   {
     title: 'Browser',
-    url: '/javascript-api/k6-browser/browser/',
+    url: '/javascript-api/k6-experimental/browser/browser-class/',
   },
   {
     title: 'BrowserContext',
-    url: '/javascript-api/k6-browser/browsercontext/',
+    url: '/javascript-api/k6-experimental/browser/browsercontext/',
   },
   {
     title: 'BrowserType',
-    url: '/javascript-api/k6-browser/browsertype/',
+    url: '/javascript-api/k6-experimental/browser/browsertype/',
   },
   {
     title: 'ElementHandle',
-    url: '/javascript-api/k6-browser/elementhandle/',
+    url: '/javascript-api/k6-experimental/browser/elementhandle/',
   },
   {
     title: 'Frame',
-    url: '/javascript-api/k6-browser/frame/',
+    url: '/javascript-api/k6-experimental/browser/frame/',
   },
   {
     title: 'JSHandle',
-    url: '/javascript-api/k6-browser/jshandle',
+    url: '/javascript-api/k6-experimental/browser/jshandle',
   },
   {
     title: 'Keyboard',
-    url: '/javascript-api/k6-browser/keyboard',
+    url: '/javascript-api/k6-experimental/browser/keyboard',
   },
   {
     title: 'Locator',
-    url: '/javascript-api/k6-browser/locator',
+    url: '/javascript-api/k6-experimental/browser/locator',
   },
   {
     title: 'Mouse',
-    url: '/javascript-api/k6-browser/mouse/',
+    url: '/javascript-api/k6-experimental/browser/mouse/',
   },
   {
     title: 'Page',
-    url: '/javascript-api/k6-browser/page/',
+    url: '/javascript-api/k6-experimental/browser/page/',
   },
   {
     title: 'Request',
-    url: '/javascript-api/k6-browser/request/',
+    url: '/javascript-api/k6-experimental/browser/request/',
   },
   {
     title: 'Response',
-    url: '/javascript-api/k6-browser/response/',
+    url: '/javascript-api/k6-experimental/browser/response/',
   },
   {
     title: 'Touchscreen',
-    url: '/javascript-api/k6-browser/touchscreen/',
+    url: '/javascript-api/k6-experimental/browser/touchscreen/',
   },
 ];
 
