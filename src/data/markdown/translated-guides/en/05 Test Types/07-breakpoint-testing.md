@@ -3,25 +3,25 @@ title: 'Breakpoint testing'
 excerpt: 'Breakpoint tests aim to find system limits. They increase load until the system fails.'
 ---
 
-Breakpoint testing is primarily concerned with finding system limits. Reasons you might want to know the limits include: 
+Breakpoint testing aims to find system limits. Reasons you might want to know the limits include: 
 
 * To tune or care for the system weak spots to relocate those higher limits at higher levels.
 * To help plan remediation steps in those cases and even prepare for when our system may get near those limits.
 
 In other words, knowing where and how a system starts to fail helps prepare for such limits.
 
-The Breakpoint test is another test type with no clear naming consensus.
-In some testing conversation, it is also known as Capacity testing, Point Load test, Limit testing, etc.
 
-The design of breakpoint ramps up indefinitely, or, at the very least, to gradually reace to unrealistically high numbers.
-
+A breakpoint ramps to unrealistically high numbers.
 This test commonly has to be stopped manually or automatically as thresholds start to fail. When these problems appear, the system has reached its limits.
 
 ![Overview of a breakpoint test](images/chart-breakpoint-test-overview.png)
 
-## When to run a Breakpoint test
+The breakpoint test is another test type with no clear naming consensus.
+In some testing conversation, it's also known as capacity testing, point load test, and limit testing.
 
-Teams execute a Breakpoint test whenever they must know their system's diverse limits. Some conditions that may warrant a breakpoint test include:
+## When to run a breakpoint test
+
+Teams execute a breakpoint test whenever they must know their system's diverse limits. Some conditions that may warrant a breakpoint test include:
 
 * The need to know if the system's load expects to grow continuously
 * If current resource consumption is considered high
@@ -33,36 +33,48 @@ Once the breakpoint runs and the system limits have been identified, if the team
 
 ## Considerations
 
-* Avoid running a Breakpoint test in an elastic cloud environment. It might keep growing as the test moves further, finding only the limit of your cloud account bill. If this test runs on a cloud environment,** turning off elasticity on all the affected components is strongly recommended**.
-* Another recommendation is to gradually increase the load, as a sudden increase may make it difficult to pinpoint why and when the system starts to fail.
-* System failure could mean different things to different teams, and some even may want to identify each of the following failure points:
+* **Avoid breakpoint tests in an elastic cloud environments.**
+
+    The elastic environment may grow as the test moves further, finding only the limit of your cloud account bill. If this test runs on a cloud environment, **turning off elasticity on all the affected components is strongly recommended**.
+* **Increase the load gradually.**
+
+  A sudden increase may make it difficult to pinpoint why and when the system starts to fail.
+  
+* **System failure could mean different things to different teams**
+
+    You might want to identify each of the following failure points:
     * Degraded performance. The response times increased, and user experience decreased.
     * Troublesome performance. The response times get to a point where the user experience severely degrades.
     * Timeouts. Processes are failing due to extremely high response times.
     * Errors. The system starts responding with HTTP error codes.
     * System failure. The system collapsed.
-* Teams can repeat this test several times after each tuning exercise, which may let them  push the system further.
-* Execute this test type only when the  system is known to perform under all previous test types and scenarios.
-    * If the system is not tuned and performant in the previous testing types, the Breakpoint test may not be able to go far.
+    
+* **You can repeat this test several times**
+
+    Repeating after each tuning might let the you push the system further.
+
+* **Run breakpoints only when the system is known to perform under all other test types.**
+
+  If the system is not tuned and performant in the previous testing types, the breakpoint test might go far.
 
 ## Breakpoint testing in k6
 
-The Breakpoint test is straightforward. It slowly ramps upscrip activity to a considerably high load. It lacks a plateau load duration, ramp-down, or other steps, as it generally fails before reaching the indicated point.
+The breakpoint test is straightforward. Load slowly ramps up to a considerably high load.
+It has no plateau load duration, ramp-down, or other steps, and it generally fails before reaching the indicated point.
 
-k6 offers two ways to increase the activity: by increasing VUs or increasing throughput ([open and closed models](/using-k6/scenarios/concepts/open-vs-closed/)). Different from other load test types, which should be stopped when the system degrades to a certain point, breakpoint testing aims to increase the load even if the system starts to degrade. That makes it recommendable to use [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate/) for  a Breakpoint test.
+k6 offers two ways to increase the activity: increasing VUs or increase throughput ([open and closed models](/using-k6/scenarios/concepts/open-vs-closed/)).
+Different from other load test types, which should be stopped when the system degrades to a certain point, breakpoint load increases even as the system starts to degrade.
+That makes it recommendable to use [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate/) for  a breakpoint test.
 
-The test keeps increasing load or VUs until it reaches the defined breaking point or the system limits, stopping/aborting the test.
+The test keeps increasing load or VUs until it reaches the defined breaking point or system limits, at which point the test stops or is aborted.
 
 ![The shape of the breakpoint test as configured in the preceding script](images/chart-breakpoint-test-k6-script-example.png)
 
-Breakpoint is one of the most aggressive test types and is commonly what many people think of when someone mentions a performance test.
-
-As mentioned in previous sections, this test type must be stopped before it completes the scheduled execution. This can be done manually or by defining a Threshold.
-
-To stop k6 manually in the CLI you must press Ctrl+C in windows and Command+. (dot/period) in Mac.
-
-To stop the test using a threshold you must define abortOnFail as true, for more information on how to define Thresholds please refer to the [Thresholds ](https://k6.io/docs/using-k6/thresholds/)section of k6’s documentation.
-
+The test must be stopped before it completes the scheduled execution.
+You can stop the test manually or with a threshold:
+- To stop k6 manually in the CLI, press `Ctrl+C` in Linux or Windows, and `Command .` in Mac.
+- To stop the test using a threshold, you must define `abortOnFail` as true.
+For details, refer to the [Thresholds ](https://k6.io/docs/using-k6/thresholds/).
 
 ## Results analysis
 
@@ -80,7 +92,7 @@ These actions could be:
 * Implement corrective actions for the system behavior at its limit
 * Tune the system to stretch its limits
 
-If the action taken is to tune the system, the team must repeat the Breakpoint test to find where and if the system's limits moved further.
-There is no fixed number of times to repeat this exercise.The number of repetitions of the Breakpoint test, how much the system can be tuned and how far can its limits be tuned after each exercise is up to the team’s needs.
-There are some real-life conditions where an increase, similar to the Breakpoint test, can happen suddenly. That is known as a Spike test.
+If the action taken is to tune the system, the team must repeat the breakpoint test to find where and if the system's limits moved further.
+There is no fixed number of times to repeat this exercise.The number of repetitions of the breakpoint test, how much the system can be tuned and how far can its limits be tuned after each exercise is up to the team’s needs.
+There are some real-life conditions where an increase, similar to the breakpoint test, can happen suddenly. That is known as a Spike test.
 

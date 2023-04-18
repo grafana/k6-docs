@@ -11,9 +11,9 @@ Run them to verify that the script works well, the system functions under minima
 This test type consists of running tests with only one or a few VUs. Keep the number of 5 VUs. Exceeding 5 could turn the test into a mini-load test.
 Similarly, each of these VUs does not need to iterate many times. 3 to 10 iterations should be enough (or a iteration duration with a short period).
 
-In some testing conversation, smoke tests are also called shakeout tests.
-
 ![Overview of a smoke test](images/chart-smoke-test-overview.png)
+
+In some testing conversation, smoke tests are also called shakeout tests.
 
 ## When to run a Smoke test
 
@@ -28,9 +28,16 @@ It's a good practice to run a Smoke test as a first steps, with
 
 ## Considerations 
 
-* Because smoke tests verify test scripts, try to run one every time you create or update a script. . Avoid putting untested scripts in any other test type.
-* Run Smoke tests your scripts before you proceed to any other load test type.
-* Configure your test script to be executed by a small number of VUs (from 2 to 5) with few iterations (3 to 10) or brief durations (30 to 60 seconds).
+When you prepare a smoke test, consider the following:
+
+
+- **Each time you create or update a script, run a smoke test**
+
+  Because smoke tests verify test scripts, try to run one every time you create or update a script. Avoid running other test types with untest scripts.
+
+- **Keep throughput small and duration short**
+  
+  Configure your test script to be executed by a small number of VUs (from 2 to 5) with few iterations (3 to 10) or brief durations (30 to 60 seconds).
 
 ## Smoke testing in k6
 

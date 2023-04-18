@@ -5,71 +5,102 @@ excerpt: 'A Load Test is a type of Performance Test that is primarily concerned 
 ---
 
 
-An average load test assesses how the system performs under typical load. Typical load might be a regular day in production or an average moment.
+An average-load test assesses how the system performs under typical load. Typical load might be a regular day in production or an average moment.
 
-Since “Load test” might refer to all types of tests that simulate traffic, this guide uses the name “Average load test” to avoid confusing.
-
-In some testing conversation, this test also might be called a day-in-life test or volume test.
-
-There are several other names that you can find asides from just calling this type a Load test, where some call it a Stress test, Day-in-life test, Volume testing, etc.
-
-Average-Load tests try to simulate the number of concurrent users and requests per second that reflect average behaviors in the production environment.This type of test typically increases the throughput or VUs gradually and keeps that average amount of load for some time. Depending on the system's characteristics, the test may stop suddenly or have a short ramp-down period.
-
+Average-load tests try to simulate the number of concurrent users and requests per second that reflect average behaviors in the production environment.This type of test typically increases the throughput or VUs gradually and keeps that average amount of load for some time. Depending on the system's characteristics, the test may stop suddenly or have a short ramp-down period.
 
 ![Overview of an average load test](images/chart-average-load-test-overview.png)
 
+Since “load test” might refer to all types of tests that simulate traffic, this guide uses the name _average-load test_ to avoid confusing.
+In some testing conversation, this test also might be called a day-in-life test or volume test.
 
 
-## When to run an Average-Load test
+## When to run an average load test
 
 Average-Load testing helps to understand if your system meets performance goals on a typical day (commonplace load). That means when an average number of users access the application at the same time, doing normal/average work.
 
-You should run a Load Test to:
-
-
+You should run an average load test to:
 
 * Assess the performance of your system under a typical load.
 * Identify early degradation signs during the ramp-up or full load periods.
 * Assure that the system still meets the performance standards after system changes (code and infrastructure.)
 
-
 ## Considerations
 
+When you prepare an average-load test, consider the following:
 
-* To design this test type, you must know your system's specific number of users and the typical throughput per process.
-* To know user and throughput amounts, teams can find them through APMs or analytic tools that provide  information from the production environment. If none of these are accessible, the business must provide these estimations.
-* Once you define the number of VUs and throughput needed, we recommend gradually increasing the load (ramp-up period.) This period usually lasts 5, 10, 15, or 30 minutes. A ramp-up period is essential:
+* **Know your the specific number of users and the typical throughput per process in the system.**
+
+    To find this, look through APMs or analytic tools that provide information from the production environment. If you can't access such tools, the business must provide these estimations.
+* **Gradually increase load to the target average.**
+  
+  That is, use a _ramp-up period_. This period usually lasts 5, 10, 15, or 30 minutes. A ramp-up period has many essential uses:
     * It gives your system time to warm up or auto-scale to handle the traffic.
     * It lets you compare response times between the low-load and average-load stages.
     * If you run tests using our cloud service, a ramp up lets the automated performance alerts understand the expected behavior of your system.
-* After the ramp up, maintain the load of the test for a period longer than the ramp-up—somewhere between 30 and 60 minutes. 
-* Some tests may need a ramp-down period when virtual users gradually stop working. The ramp down usually lasts as long as the ramp up, or a bit less.
+    
+* **Maintain average for a period longer than the ramp up**
 
+  Aim for somewhere between 30 and 60 minutes. 
 
-### Average-Load testing in k6
+* **Consider a ramp-down period**
+  
+  The ramp down is when virtual users activity gradually decreases. The ramp down usually lasts as long as the ramp up, or a bit less.
 
-The critical element of an Average-Load test is to simulate the average amount of activity on a typical day in production. The pattern follows this sequence:
+### Average-load testing in k6
+
+<Blockquote mod="note" title="Start small">
+
+If this is your first time running load tests, we recommend starting small or configuring the ramp-up to be slow. Your application and infrastructure might not be as rock solid as you think. We've had thousands of users run load tests that quickly crash their applications (or staging environments).
+
+</Blockquote>
+
+The goal of an average-load test is to simulate the average amount of activity on a typical day in production. The pattern follows this sequence:
 
 1. Increase the script's activity until it reaches the desired number of users and throughput. 
 1. Maintain that load for a while
 1. Depending on the test case, stop the test or let it ramp down gradually.
 
-The essential instructions are in the options section.
+Configure load in the `options` object:
 
-This script logic has only one request (to open a web page). . Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to examples.
+<CodeGroup labels={["average-load.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
-The VU/throughput chart of a typical load test looks similar to this:
+```javascript
+import http from 'k6/http';
+import {sleep} from 'k6';
+
+export const options = {
+  // Key configurations for avg load test in this section
+  stages: [
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '30m', target: 100 }, // stay at 100 users for 10 minutes
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
+  ],
+};
+
+const BASE_URL = 'https://test-api.k6.io';
+
+export default () => {
+  const urlRes = http.req(`${BASE_URL}`);
+  sleep(1);
+  // MORE STEPS
+  // Here you can have more steps or complex script
+  // Step1
+  // Step2
+  // etc.
+};
+```
+
+</CodeGroup>
 
 
-![The shape of the average-load test as configured in the preceding script](images/chart-average-load-test-k6-script-example.png)
+This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to examples.
 
-Note that the number of users or throughput starts at 0, gradually ramps up to the desired value, and stays there for the indicated period. Then load ramps down for  a short period.
+The VU or throughput chart of an average-load test looks similar to this:
 
-<Blockquote mod="note" title="start small">
 
-If this is your first time running load tests, we recommend starting small or configuring the ramp-up to be slow. Your application and infrastructure might not be as rock solid as you think. We've had thousands of users run load tests that quickly crash their applications (or staging environments).
+![The shape of the average-load test as configured in the preceding script](images/chart-average-load-test-k6-script-example.png "Note that the number of users or throughput starts at 0, gradually ramps up to the desired value, and stays there for the indicated period. Then load ramps down for  a short period." )
 
-</Blockquote>
 
 ## Results analysis
 
