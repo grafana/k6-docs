@@ -1682,6 +1682,8 @@ const createRedirects = ({ actions }) => {
     '/javascript-api/k6-browser/': '/using-k6-browser/overview/',
     '/javascript-api/xk6-browser/api/':
       '/javascript-api/k6-experimental/browser/',
+    '/javascript-api/k6-browser/api/':
+      '/javascript-api/k6-experimental/browser/',
     '/javascript-api/k6-browser/api/browser/':
       '/javascript-api/k6-experimental/browser/browser-class/',
     '/javascript-api/k6-browser/browser/':
