@@ -55,15 +55,15 @@ As you choose your test type and progress to increasingly heavier tests, conside
 
   k6 has an outstanding capability to define load patterns based on virtual users or on throughput ([open and closed models](https://k6.io/docs/using-k6/scenarios/concepts/open-vs-closed/)). Most of the time, teams should use closed models, but if you depend on throughput (like in Breakpoint testing), teams can use k6 executors: [constant-arrival-rate](https://k6.io/docs/using-k6/scenarios/executors/constant-arrival-rate/) and [ramping-arrival-rate](https://k6.io/docs/using-k6/scenarios/executors/ramping-arrival-rate/).
 
-- **No single test type removes all performance risks..**
+- **No single test type removes all performance risks.**
 
   Focus test efforts and test types depending on the risk or test goal. Make your life easier by testing for one goal or risk at a time.
 
-- **Test type categories can be complicated..**
+- **Test type categories can be complicated.**
 
   Some types share characteristics, , and others can turn into  become the next type just by changing a few settings.
 
-- **The industry hasn’t reached a consensus about naming for each type..**
+- **The industry hasn’t reached a consensus about naming for each type.**
 
   Some types appear online under different names and even different descriptions than what we list. We try to use the naming conventions we consider most descriptive. Our descriptions include the possible names you may find out there.
 
