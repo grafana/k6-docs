@@ -18,7 +18,7 @@ import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import {
   Cookies,
   CookiesProvider,
@@ -260,6 +260,7 @@ export const DocLayout = ({
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
   const { locale, urlLocale, setLocale } = useLocale();
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     if (isMobileNavVisible) {
@@ -292,20 +293,26 @@ export const DocLayout = ({
     }
   }, [location]);
 
-  useEffect(() => {
-    const sidebar = document.querySelector('#sidebar-list');
-    const sidebarScroll = localStorage.getItem('sidebar-scroll');
-
-    sidebar.scrollTop = parseInt(sidebarScroll, 10);
-
-    const handleScroll = () => {
-      localStorage.setItem('sidebar-scroll', sidebar.scrollTop);
+  useLayoutEffect(() => {
+    const handleSidebarScroll = (e) => {
+      localStorage.setItem('sidebar-scroll', e.target.scrollTop);
     };
 
-    sidebar.addEventListener('scroll', handleScroll);
+    sidebarRef.current?.addEventListener('scroll', handleSidebarScroll);
 
-    return () => sidebar.removeEventListener('scroll', handleScroll);
+    return () =>
+      sidebarRef.current?.removeEventListener('scroll', handleSidebarScroll);
   }, []);
+
+  useLayoutEffect(() => {
+    const sidebarScrollValue = localStorage.getItem('sidebar-scroll');
+
+    if (sidebarRef && sidebarRef.current && sidebarScrollValue) {
+      setTimeout(() => {
+        sidebarRef.current.scrollTop = parseInt(sidebarScrollValue, 10);
+      }, 0);
+    }
+  }, [sidebarRef]);
 
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle &&
@@ -316,7 +323,7 @@ export const DocLayout = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.sidebar}>
-        <div id="sidebar-list" className={styles.sidebarList}>
+        <div ref={sidebarRef} className={classNames(styles.sidebarList)}>
           <div className={styles.sidebarHeader}>
             <HeaderLogo theme={'doc'} />
           </div>
