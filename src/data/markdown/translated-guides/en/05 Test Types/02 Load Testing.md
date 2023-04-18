@@ -4,157 +4,78 @@ head_title: 'What is Load Testing? How to create a Load Test in k6'
 excerpt: 'A Load Test is a type of Performance Test that is primarily concerned with assessing the performance of your system in terms of concurrent users or requests per second. Let’s see an example.'
 ---
 
-Load Testing is primarily concerned with assessing the current performance of your system in terms
-of concurrent users or requests per second.
 
-When you want to understand if your system is meeting the performance goals, this is the type of test you'll run.
+An average load test assesses how the system performs under typical load. Typical load might be a regular day in production or an average moment.
 
-> #### What is Load Testing
->
-> Load Testing is a type of Performance Testing used to
-> determine a system's behavior under both normal and peak conditions.
->
-> Load Testing is used to ensure that the application performs satisfactorily
-> when many users access it at the same time.
+Since “Load test” might refer to all types of tests that simulate traffic, this guide uses the name “Average load test” to avoid confusing.
+
+In some testing conversation, this test also might be called a day-in-life test or volume test.
+
+There are several other names that you can find asides from just calling this type a Load test, where some call it a Stress test, Day-in-life test, Volume testing, etc.
+
+Average-Load tests try to simulate the number of concurrent users and requests per second that reflect average behaviors in the production environment.This type of test typically increases the throughput or VUs gradually and keeps that average amount of load for some time. Depending on the system's characteristics, the test may stop suddenly or have a short ramp-down period.
+
+
+![Overview of an average load test](images/chart-average-load-test-overview.png)
+
+
+
+## When to run an Average-Load test
+
+Average-Load testing helps to understand if your system meets performance goals on a typical day (commonplace load). That means when an average number of users access the application at the same time, doing normal/average work.
 
 You should run a Load Test to:
 
-1.  Assess the current performance of your system under typical and peak load.
-2.  Make sure you continue to meet the performance standards as you make changes to your system (code and infrastructure).
 
-You probably have some understanding about the amount of traffic your system is seeing on average and during peak hours.
-This information will be useful when deciding what your performance goals should be, in other words,
-how to configure the [performance thresholds](/using-k6/thresholds).
 
-Let's say you're seeing around 60 concurrent users on average and 100 users during the peak hours of operation.
+* Assess the performance of your system under a typical load.
+* Identify early degradation signs during the ramp-up or full load periods.
+* Assure that the system still meets the performance standards after system changes (code and infrastructure.)
 
-It's probably important to you to meet the performance goals both during normal hours and peak hours,
-therefore it's recommended to configure the load test with the high load in mind - 100 users in this case.
 
-## Load Testing in k6
+## Considerations
 
-Note, this test has one simple threshold. The response time for 99% requests must be below 1.5 seconds.
-Thresholds are a way of ensuring that your system is meeting the performance goals you set for it.
 
-<CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
+* To design this test type, you must know your system's specific number of users and the typical throughput per process.
+* To know user and throughput amounts, teams can find them through APMs or analytic tools that provide  information from the production environment. If none of these are accessible, the business must provide these estimations.
+* Once you define the number of VUs and throughput needed, we recommend gradually increasing the load (ramp-up period.) This period usually lasts 5, 10, 15, or 30 minutes. A ramp-up period is essential:
+    * It gives your system time to warm up or auto-scale to handle the traffic.
+    * It lets you compare response times between the low-load and average-load stages.
+    * If you run tests using our cloud service, a ramp up lets the automated performance alerts understand the expected behavior of your system.
+* After the ramp up, maintain the load of the test for a period longer than the ramp-up—somewhere between 30 and 60 minutes. 
+* Some tests may need a ramp-down period when virtual users gradually stop working. The ramp down usually lasts as long as the ramp up, or a bit less.
 
-```javascript
-import http from 'k6/http';
-import { check, group, sleep } from 'k6';
 
-export const options = {
-  stages: [
-    { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
-    { duration: '10m', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
-  ],
-  thresholds: {
-    'http_req_duration': ['p(99)<1500'], // 99% of requests must complete below 1.5s
-    'logged in successfully': ['p(99)<1500'], // 99% of requests must complete below 1.5s
-  },
-};
+### Average-Load testing in k6
 
-const BASE_URL = 'https://test-api.k6.io';
-const USERNAME = 'TestUser';
-const PASSWORD = 'SuperCroc2020';
+The critical element of an Average-Load test is to simulate the average amount of activity on a typical day in production. The pattern follows this sequence:
 
-export default () => {
-  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
-    username: USERNAME,
-    password: PASSWORD,
-  });
+1. Increase the script's activity until it reaches the desired number of users and throughput. 
+1. Maintain that load for a while
+1. Depending on the test case, stop the test or let it ramp down gradually.
 
-  check(loginRes, {
-    'logged in successfully': (resp) => resp.json('access') !== '',
-  });
+The essential instructions are in the options section.
 
-  const authHeaders = {
-    headers: {
-      Authorization: `Bearer ${loginRes.json('access')}`,
-    },
-  };
+This script logic has only one request (to open a web page). . Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to examples.
 
-  const myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
-  check(myObjects, { 'retrieved crocodiles': (obj) => obj.length > 0 });
+The VU/throughput chart of a typical load test looks similar to this:
 
-  sleep(1);
-};
-```
 
-</CodeGroup>
+![The shape of the average-load test as configured in the preceding script](images/chart-average-load-test-k6-script-example.png)
 
-This is a rather simple script that authenticates the user, and retrieves list of objects.
-If you would like to see a more comprehensive test that makes use of groups, checks, thresholds,
-helper functions, see our [examples section](/examples).
+Note that the number of users or throughput starts at 0, gradually ramps up to the desired value, and stays there for the indicated period. Then load ramps down for  a short period.
 
-The VU chart of a typical load test looks similar to this
-![Load Test VU chart](./images/load-test.png)
+<Blockquote mod="note" title="start small">
 
-Note that the number of users starts at 0, and slowly ramps up to the nominal value, where it stays for an extended period of time.
-The ramp down stage is optional.
+If this is your first time running load tests, we recommend starting small or configuring the ramp-up to be slow. Your application and infrastructure might not be as rock solid as you think. We've had thousands of users run load tests that quickly crash their applications (or staging environments).
 
-We recommend you to always include a ramp-up stage in all your load tests because:
+</Blockquote>
 
-- It lets your system warm up or auto scale to handle the traffic.
-- It lets you compare the response time between the low-load and nominal-load stages.
-- If you run a load test using our SaaS cloud service, it allows the automated performance alerts to
-  better understand the normal behaviour of your system.
+## Results analysis
 
-## Load Testing scenario - simulating a normal day
+An initial outcome for the Average-Load test appears during the ramp-up period to find whether the response time degrades as the load and activity increases. Some systems might even fail during the ramp-up period, degrading the system's performance or failing it.
 
-You may also go one step further and configure the load test to resemble your normal and peak conditions more closely.
-In that case you could configure the load test to stay at 60 users for most of the day, and ramp-up
-to 100 users during the peak hours of operation, then ramp-down back to normal load.
+The test validates if the system's performance and resource consumption stay stable during the period of full load, as some systems may display erratic behavior in this period.
 
-Make sure you don't go over your normal number of VUs - that's not load testing, but [stress testing](/test-types/stress-testing).
+Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as Stress tests.
 
-<CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
-
-```javascript
-export const options = {
-  stages: [
-    { duration: '5m', target: 60 }, // simulate ramp-up of traffic from 1 to 60 users over 5 minutes.
-    { duration: '10m', target: 60 }, // stay at 60 users for 10 minutes
-    { duration: '3m', target: 100 }, // ramp-up to 100 users over 3 minutes (peak hour starts)
-    { duration: '2m', target: 100 }, // stay at 100 users for short amount of time (peak hour)
-    { duration: '3m', target: 60 }, // ramp-down to 60 users over 3 minutes (peak hour ends)
-    { duration: '10m', target: 60 }, // continue at 60 for additional 10 minutes
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
-  ],
-  thresholds: {
-    http_req_duration: ['p(99)<1500'], // 99% of requests must complete below 1.5s
-  },
-};
-```
-
-</CodeGroup>
-
-The VU chart for the above configuration should look like this:
-
-![Load Test VU chart](./images/load-test-2.png)
-
-k6 is very flexible in simulating the ramp-up/ramp-down scenarios.
-
-### Note about performance thresholds
-
-Whenever you are load testing, you have some expectations in mind.
-
-Typical expectations are:
-
-- 99% of requests should finish within 5 seconds.
-- 95% of requests should finish within 1 second.
-- 99% users should be able to login successfully on the first try.
-
-Performance thresholds are a way to describe your expectations in a formal way, and automatically
-evaluate those expectations on each test run.
-Once you have configured the thresholds you'll see a Pass/Fail metric for each threshold,
-and you will know immediately if your system fulfills your expectations without analyzing the results in detail.
-
-> #### Start small
->
-> If this is your first time running load tests, start small. Your application and infrastructure
-> might not be as rock solid as you think. We've had thousands of users run load tests that quickly
-> crashed their applications (or staging environments).
-
-If your system crashes under a load test, it means that your load test has morphed into a [stress test](/test-types/stress-testing),
-which is the next type we're covering.
