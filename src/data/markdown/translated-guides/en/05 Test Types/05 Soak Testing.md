@@ -9,7 +9,7 @@ Soak testing is another variation of the Average-Load test. It focuses on extend
 * The system's degradation of performance and resource consumption over extended periods.
 * The system's availability and stability during extended periods.
 
-The soak test differs from an average load test in the load duration. In a soak test, the peak load duration (usually an average amount) extends several hours and even days.
+The soak test differs from an average-load test in test duration. In a soak test, the peak load duration (usually an average amount) extends several hours and even days.
 Though duration is considerably longer, the ramp-up and ramp-down periods of a soak test are the same as an average-load test.
 
 ![Overview of a soak test](images/chart-soak-test-overview.png)
@@ -20,7 +20,7 @@ In some testing conversation, a soak test might be called an endurance, constant
 
 Most systems must stay turned on and keep working for days, weeks, and months without intervention. This test verifies the system stability and reliability over extended periods of use. 
 
-This test type checks for common performance defects that show only after extended use.. Those problems include response time degradation, memory/resource leaks, data saturation, storage depletion, etc.
+This test type checks for common performance defects that show only after extended use. Those problems include response time degradation, memory or other resource leaks, data saturation, and storage depletion.
 
 
 ## Considerations
@@ -43,11 +43,11 @@ When you prepare to run a soak test, consider the following:
 
 ## Soak testing in k6
 
-The Soak test is almost the same as the Average-Load test. It only increases the duration of the load plateau. 
+The soak test is almost the same as the average-load test. The only difference is the increased duration of the load plateau. 
 
 It gradually increases the load until it reaches an average number of users or throughput. Then it keeps that load for a considerably longer time. Finally, depending on the test case, it is stopped or ramped down gradually.
 
-Configure the load duration in the `options`:
+Configure the load duration in the `options` object:
 
 <CodeGroup labels={["soak.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
@@ -83,15 +83,27 @@ export default () => {
 
 Notice that as in an average-load test, peak load plateaus at 100. VUs.
 The difference is in duration.
-In this soak, peak load maintains for 8 hours instead of rather than some minutes.
+In this soak, peak load maintains for 8 hours rather than for some minutes.
 
 ![The shape of the soak test as configured in the preceding script](images/chart-soak-test-k6-script-example.png)
 
 ## Results analysis
 
-If we execute this test after the previous types, we should have a system performing well under previous scenarios. In this test, monitor forr changes in any performance metric as time passes. Try to correlate any impact with backend measurement changes that indicate degradation over time. Such changes can be gradual degradations, as mentioned, and sudden changes (improvements too) in response time and backend hardware resources. Backend resources to check are RAM consumed, CPU, Network, and growth of cloud resources, among others.
+If we execute this test after the previous types, we should have a system performing well under previous scenarios. In this test, monitor for changes in any performance metric as time passes. Try to correlate any impact with backend measurement changes that indicate degradation over time. Such changes can be gradual degradations, as mentioned, and sudden changes (improvements too) in response time and backend hardware resources. Backend resources to check are RAM consumed, CPU, Network, and growth of cloud resources, among others.
 
 The expected outcome is that the performance and resource utilization of the backend stays stable or within expected variations.
 
-After you run all the previous test types, you know your system performs well at tiny loads, average usage, higher usage, and being used for extended periods.
+After you run all the previous test types, you know your system performs well at many different loads: small, average, high, and extended.
+
+
+<LdScript script='{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [{
+"@type": "Question",
+"name": "When to do soak testing?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p><p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p><p>Soak testing is the last major step on the road to building reliable systems.</p>"}}]}' />
+
 

@@ -6,7 +6,7 @@ excerpt: 'Breakpoint tests aim to find system limits. They increase load until t
 Breakpoint testing aims to find system limits. Reasons you might want to know the limits include: 
 
 * To tune or care for the system weak spots to relocate those higher limits at higher levels.
-* To help plan remediation steps in those cases and even prepare for when our system may get near those limits.
+* To help plan remediation steps in those cases and prepare for when the system nears those limits.
 
 In other words, knowing where and how a system starts to fail helps prepare for such limits.
 
@@ -17,7 +17,7 @@ This test commonly has to be stopped manually or automatically as thresholds sta
 ![Overview of a breakpoint test](images/chart-breakpoint-test-overview.png)
 
 The breakpoint test is another test type with no clear naming consensus.
-In some testing conversation, it's also known as capacity testing, point load test, and limit testing.
+In some testing conversation, it's also known as capacity, point load, and limit testing.
 
 ## When to run a breakpoint test
 
@@ -59,12 +59,12 @@ Once the breakpoint runs and the system limits have been identified, if the team
 
 ## Breakpoint testing in k6
 
-The breakpoint test is straightforward. Load slowly ramps up to a considerably high load.
-It has no plateau load duration, ramp-down, or other steps, and it generally fails before reaching the indicated point.
+The breakpoint test is straightforward. Load slowly ramps up to a considerably high level.
+It has no plateau, ramp-down, or other step, and it generally fails before reaching the indicated point.
 
 k6 offers two ways to increase the activity: increasing VUs or increase throughput ([open and closed models](/using-k6/scenarios/concepts/open-vs-closed/)).
 Different from other load test types, which should be stopped when the system degrades to a certain point, breakpoint load increases even as the system starts to degrade.
-That makes it recommendable to use [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate/) for  a breakpoint test.
+That makes it recommendable to use [ramping-arrival-rate](/using-k6/scenarios/executors/ramping-arrival-rate/) for a breakpoint test.
 
 The test keeps increasing load or VUs until it reaches the defined breaking point or system limits, at which point the test stops or is aborted.
 
@@ -93,6 +93,7 @@ These actions could be:
 * Tune the system to stretch its limits
 
 If the action taken is to tune the system, the team must repeat the breakpoint test to find where and if the system's limits moved further.
-There is no fixed number of times to repeat this exercise.The number of repetitions of the breakpoint test, how much the system can be tuned and how far can its limits be tuned after each exercise is up to the team’s needs.
+There is no fixed number of times to repeat this exercise.
+Team needs determine the number of repetitions of the breakpoint test, how much the system can be tuned, and how far can its limits be tuned after each exercise.
 There are some real-life conditions where an increase, similar to the breakpoint test, can happen suddenly. That is known as a Spike test.
 

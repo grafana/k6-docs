@@ -23,7 +23,7 @@ You should run an average load test to:
 
 * Assess the performance of your system under a typical load.
 * Identify early degradation signs during the ramp-up or full load periods.
-* Assure that the system still meets the performance standards after system changes (code and infrastructure.)
+* Assure that the system still meets the performance standards after system changes (code and infrastructure).
 
 ## Considerations
 

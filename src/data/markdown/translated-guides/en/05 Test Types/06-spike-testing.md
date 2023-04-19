@@ -6,12 +6,12 @@ excerpt: 'Spike tests simulate moments of short, extreme load'
 A spike test verifies whether the system survives and performs under sudden and massive rushes of utilization. It is one of the least common tests.
 
 Spike tests are useful when the system may experience events of sudden and massive traffic.
-Examples of such events include ticket sales (ComicCon, Taylor Swift), product launches (PS5, fashion apparel), sale announcements (Super Bowl ads), process deadlines (tax declaration), seasonal sales (Black Friday, Christmas, St.Valentine), etc.
+Examples of such events include ticket sales (ComicCon, Taylor Swift), product launches (PS5, fashion apparel), sale announcements (Super Bowl ads), process deadlines (tax declaration), and seasonal sales (Black Friday, Christmas, St.Valentine).
 
 Spike testing increases to extremely high loads in a very short or non-existent ramp-up time.
 Usually, it has no plateau period or is very brief, as real users generally do not stick around doing extra steps in these situations. In the same way, the ramp-down is very fast or non-existent, letting the process iterate only once.
 
-This test usually includes very different processes than the previous test types, as these processes often aren't part of an average day in production. A recommendation is to automate the processes with heavy demand during the event. It may also require adding, removing, or modifying processes on the script that were not in the Average-Load tests.
+This test usually includes very different processes than the previous test types, as these processes often aren't part of an average day in production. A recommendation is to automate the processes with heavy demand during the event. It may also require adding, removing, or modifying processes on the script that were not in the average-load tests.
 
 Occasionally, teams should revamp the system to allow or prioritize resources for the high-demand processes during the event.
 
@@ -21,7 +21,6 @@ Occasionally, teams should revamp the system to allow or prioritize resources fo
 
 Spike testing is the least frequent test type. This test must be executed when the system expects to receive a sudden rush of activity, which is not a common behavior on most platforms.
  
-This test type applies when the system is involved in events when several users are suddenly allowed or summoned into a given functionality. These events are such as ticket sales (ComicCon, Taylor Swift), product launches (PS5, fashion apparel), sale announcements (Super Bowl ads), process deadlines (tax declaration), seasonal sales(BlackFriday, Christmas, St.Valentine), etc.
 
 When the system expects this type of behavior, the spike test helps identify how the system will behave and if it will survive the sudden rush of load. The load is considerably above the average and frequently focuses on a different set of processes than the other test types.
 
@@ -45,9 +44,9 @@ When preparing for a spike test, consider the following:
 
 ## Spike testing in k6
 
-The key differentiators of the spike test are the simulation of  sudden and very high loads. It lacks a plateau (full load) duration or is usually brief. 
+The key differentiators of the spike test are the simulation of sudden and very high loads. It lacks a plateau (full load) duration or is usually brief. 
 
-Sometimes, the test may require keeping the load plateau for some time, but generally, it is short. A ramp-down 
+Sometimes, the test may require to maintain a load plateau for some time, but generally, it is short. A ramp-down 
 can also be quick or unnecessary as the goal is to suddenly increase the system's load.
 
 <CodeGroup labels={["spike.js"]} lineNumbers={[]} showCopyButton={[true]}>
