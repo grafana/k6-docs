@@ -13,24 +13,20 @@ Each test type serves a different goal, addressing different profiles of risk an
 
 - **[Smoke tests](../smoke-testing)** validate that your script works and that the system performs adequately under minimal load.
 
-- **[Average-load test](../load-testing).** Use average load to assess how your system performs under expected normal conditions.
+- **[Average-load test](../load-testing)** assess how your system performs under expected normal conditions.
 
-- **[Stress tests](../stress-testing).**
-  Use above-average load to assess how a system performs at its limits, when load exceeds what’s expected on average. 
+- **[Stress tests](../stress-testing)** assess how a system performs at its limits when load exceeds the expected average. 
 
-- **[Soak tests](../soak-testing).**
-  Run for a longer duration to assess the reliability and performance of your system over an extended periods.
+- **[Soak tests](../soak-testing.** run for a longer duration to assess the reliability and performance of your system over extended periods.
 
-- **[Breakpoint tests](../breakpoint-testing).**
-  Gradually increase load to identify the capacity limits of the system
+- **[Breakpoint tests](../breakpoint-testing)** gradually increase load to identify the capacity limits of the system.
 
-- **[Spike tests](../spike-testing).**
-  Validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity 
+- **[Spike tests](../spike-testing)** validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity.
  
 Start with a [Smoke test](https://k6.io/docs/test-types/smoke-testing).
 After all, before beginning larger tests, you should validate that your scripts work as expected and that your system performs well with a few users.
 
-After you know that the script works and the system responds correctly to minimal load, you can move on to other test types. However, as you should run smoke tests before running tests with larger load, you should also run test types with basic load—average-load and soak—before running tests with more complex load patterns.
+After you know that the script works and the system responds correctly to minimal load, you can move on to average-load tests. From there, you can progress to more complex load patterns.
 
 
 ## Test-type cheat sheet 
@@ -61,7 +57,7 @@ As you choose your test type and progress to increasingly heavier tests, conside
 
 - **Test type categories can be complicated.**
 
-  Some types share characteristics, , and others can turn into  become the next type just by changing a few settings.
+  Some types share characteristics, and others can turn into the next type just by changing a few settings.
 
 - **The industry hasn’t reached a consensus about naming for each type.**
 
@@ -69,12 +65,12 @@ As you choose your test type and progress to increasingly heavier tests, conside
 
 - **Keep load patterns at a maximum of three variations per test.**
 
-  Increase the load, keep, and decrease (graphed as a trapezoid.) Adding more variations, for example, in a rollercoaster shape, may be wasteful and make it considerably trickier to pinpoint problems, risks, and action paths.
-  In the same way, avoid multiple load variations unless you strictly need them. IE: Increase load to a point, decrease it to another point, increase it again, hold it, increase after a while, etc. A complex load pattern makes it very difficult to pinpoint problems.
+  Increase the load, maintain, and decrease (graphed as a trapezoid.) Adding more variations, for example, in a rollercoaster shape, may be wasteful and make it considerably trickier to pinpoint problems, risks, and action paths.
+  In the same way, avoid multiple load variations unless you strictly need them. For example, increase the load to a point, decrease it to another point, increase it again, hold it, increase after a while, etc. A complex load pattern makes it very difficult to pinpoint problems.
 
-- **The load patterns of each load test type aren’t bound.**
+- **The load patterns of each load test type aren’t bound to the system under test.**
 
-  Not to the system under test, the nature of the automation, test cases, or the position of the test in the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html).
+  They also are independent to the nature of the automation, test cases, or the position of the test in the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html).
 
 
 ## Define load in scenarios

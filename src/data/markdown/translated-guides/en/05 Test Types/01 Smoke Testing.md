@@ -8,8 +8,8 @@ script or modify an existing script. Let’s see an example."
 Smoke tests have a minimal load.
 Run them to verify that the script works well, the system functions under minimal load, and to gather some minimum performance values.
 
-This test type consists of running tests with only one or a few VUs. Keep the number of 5 VUs. Exceeding 5 could turn the test into a mini-load test.
-Similarly, each of these VUs does not need to iterate many times. 3 to 10 iterations should be enough (or a iteration duration with a short period).
+This test type consists of running tests with only one or a few VUs. Keep the number to 5 VUs or less. Exceeding 5 could turn the test into a mini-load test.
+Similarly, each of these VUs does not need to iterate many times. 3 to 10 iterations should be enough (or an iteration duration with a short period).
 
 ![Overview of a smoke test](images/chart-smoke-test-overview.png)
 
@@ -17,14 +17,14 @@ In some testing conversation, smoke tests are also called shakeout tests.
 
 ## When to run a Smoke test
 
-Teams should run Smoke tests whenever a test script is created or updated. In the same way Smoke testing should be done every time new software functions or updates come by.
+Teams should run smoke tests whenever a test script is created or updated. Smoke testing should also be done every time the application code is updated.
 
-It's a good practice to run a Smoke test as a first steps, with 
+It's a good practice to run a smoke test as a first step, with the following goals: 
 
 - Verify that your test script doesn't have errors.
 - Verify that your system doesn't throw any errors (performance or system related) when under minimal load.
 - Gather baseline performance metrics of your system’s response under minimal load.
-- With simple logic, serve as a synthetic test to monitor the performance and availability of productive environments.
+- With simple logic, to serve as a synthetic test to monitor the performance and availability of production environments.
 
 ## Considerations 
 
