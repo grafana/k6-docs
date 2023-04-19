@@ -29,7 +29,7 @@ You should run an average load test to:
 
 When you prepare an average-load test, consider the following:
 
-* **Know your the specific number of users and the typical throughput per process in the system.**
+* **Know the specific number of users and the typical throughput per process in the system.**
 
     To find this, look through APMs or analytic tools that provide information from the production environment. If you can't access such tools, the business must provide these estimations.
 * **Gradually increase load to the target average.**
@@ -39,13 +39,13 @@ When you prepare an average-load test, consider the following:
     * It lets you compare response times between the low-load and average-load stages.
     * If you run tests using our cloud service, a ramp up lets the automated performance alerts understand the expected behavior of your system.
     
-* **Maintain average for a period longer than the ramp up**
+* **Maintain average for a period longer than the ramp up.**
 
   Aim for somewhere between 30 and 60 minutes. 
 
-* **Consider a ramp-down period**
+* **Consider a ramp-down period.**
   
-  The ramp down is when virtual users activity gradually decreases. The ramp down usually lasts as long as the ramp up, or a bit less.
+  The ramp down is when virtual user activity gradually decreases. The ramp down usually lasts as long as the ramp up, or a bit less.
 
 ### Average-load testing in k6
 
@@ -94,7 +94,7 @@ export default () => {
 </CodeGroup>
 
 
-This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to examples.
+This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to [Examples](/examples).
 
 The VU or throughput chart of an average-load test looks similar to this:
 
@@ -104,7 +104,7 @@ The VU or throughput chart of an average-load test looks similar to this:
 
 ## Results analysis
 
-An initial outcome for the Average-Load test appears during the ramp-up period to find whether the response time degrades as the load and activity increases. Some systems might even fail during the ramp-up period, degrading the system's performance or failing it.
+An initial outcome for the average-load test appears during the ramp-up period to find whether the response time degrades as the load increases. Some systems might even fail during the ramp-up period.
 
 The test validates if the system's performance and resource consumption stay stable during the period of full load, as some systems may display erratic behavior in this period.
 
