@@ -3,15 +3,15 @@ title: 'Introduction'
 excerpt: 'Guide to test types'
 ---
 
-Load creates poses risks to system performance.
+Load creates diverse risks to system performance.
 Many things can go wrong when a system runs numerous operations simultaneously and responds to varied requests from a variable number of users.
 
-Load testing helps teams to tune their system and prepare for those risks. But a good load testing strategy requires more than just executing a single script. We must test each application risk differently, a process that requires different _test types._
-Each test type serves a different goal,  addressing different profiles of risk and traffic.
+Load testing helps teams tune their system and prepare for those risks. But a good load testing strategy requires more than just executing a single script. We must test each application risk differently, a process that requires different _test types._
+Each test type serves a different goal, addressing different profiles of risk and traffic.
 
 ![Overview of load test shapes](./chart-load-test-types-overview.png)
 
-- **[Smoke tests](../smoke-testing).** Use minimal load and duration to validate the health of your scripts and that the system performs adequately under minimal loads
+- **[Smoke tests](../smoke-testing)** validate that your script works and that the system performs adequately under minimal load.
 
 - **[Average-load test](../load-testing).** Use average load to assess how your system performs under expected normal conditions.
 
