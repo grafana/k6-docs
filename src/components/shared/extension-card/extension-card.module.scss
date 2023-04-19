@@ -33,6 +33,11 @@
   right: 20px;
 }
 
+.checked {
+  outline: 1px solid #7d64ff;
+  box-shadow: 0px 1px 5px rgba(60, 60, 100, 0.05);
+}
+
 .imageWrapper {
   flex-shrink: 0;
   margin-right: 15px;
@@ -71,12 +76,14 @@
   flex-direction: column;
   align-items: flex-start;
   min-height: 100%;
+  width: 100%;
 }
 
 .tiers-wrapper {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 24px;
+  width: 100%;
+  align-items: center;
   list-style-type: none;
   padding: 0;
   margin-top: 0;
@@ -106,6 +113,16 @@
   font-weight: 400;
   position: relative;
   margin-right: 8px;
+}
+
+.logo-wrapper {
+  margin-left: auto !important;
+  max-height: 28px;
+}
+
+.logo {
+  position: relative;
+  max-height: inherit;
 }
 
 .tier {

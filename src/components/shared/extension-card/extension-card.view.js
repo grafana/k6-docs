@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { CheckboxField } from 'components/shared/checkbox-field';
 import {
   ItemCard,
   styles as itemCardStyles,
@@ -15,7 +14,8 @@ export const ExtensionCard = ({
   isChecked = false,
   onCheckboxClick = () => {},
 }) => {
-  const { name, description, tiers, stars, cloudEnabled, url } = extension;
+  const { name, description, tiers, stars, cloudEnabled, url, logo } =
+    extension;
   const extensionName = searchTerm
     ? name.replace(
         new RegExp(searchTerm, 'gi'),
@@ -57,17 +57,11 @@ export const ExtensionCard = ({
   };
 
   return (
-    <Wrapper className={`${itemCardStyles.content} ${styles.wrapper}`}>
-      {hasCheckbox && (
-        <div className={styles.checkbox}>
-          <CheckboxField
-            id={name}
-            checked={isChecked}
-            onChange={onCheckboxClick}
-            accessible={false}
-          />
-        </div>
-      )}
+    <Wrapper
+      className={`${itemCardStyles.content} ${styles.wrapper} ${
+        isChecked ? styles.checked : ''
+      }`}
+    >
       <div className={styles.content}>
         <ul className={styles.tiersWrapper}>
           {tiers.map((tier, index) => (
@@ -83,6 +77,11 @@ export const ExtensionCard = ({
               <span>{tier}</span>
             </li>
           ))}
+          {logo && (
+            <li className={styles.logoWrapper}>
+              <img className={styles.logo} src={logo} alt={name} />
+            </li>
+          )}
         </ul>
         <div className={styles.nameWrapper}>
           <span
