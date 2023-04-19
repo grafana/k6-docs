@@ -11,7 +11,7 @@ excerpt: 'Entry point for creating test cases.'
 <CodeGroup labels={['describe-example.js']}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   const success1 = describe('Basic test', () => {
@@ -74,7 +74,7 @@ If you want to skip the execution of the following `describe` blocks, consider c
 <!-- eslint-skip -->
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   describe('Basic test', () => {

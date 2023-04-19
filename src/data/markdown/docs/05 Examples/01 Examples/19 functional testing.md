@@ -13,7 +13,7 @@ excerpt: |
 
 ```javascript
 import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export const options = {
   thresholds: {
@@ -44,7 +44,7 @@ This test goes through several steps. It creates a new user account, authenticat
 <!-- eslint-skip -->
 
 ```javascript
-import chai, { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import chai, { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 import { Httpx, Get } from 'https://jslib.k6.io/httpx/0.0.6/index.js';
 import { randomString } from 'https://jslib.k6.io/k6-utils/1.0.0/index.js';
 
@@ -180,7 +180,7 @@ Here's an auto-generated k6 test script showcasing all examples from the [Chaijs
 <!-- eslint-skip -->
 
 ```javascript
-import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect, chai } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 chai.config.aggregateChecks = false;
 chai.config.logFailures = true;
