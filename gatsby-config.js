@@ -145,7 +145,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-sitemap',
     options: {
-      excludes: ['/getting-started/welcome', '/docs/getting-started/welcome'],
+      excludes: ['/get-started/welcome', '/docs/get-started/welcome'],
     },
   },
 ];

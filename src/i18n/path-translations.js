@@ -2,7 +2,7 @@ const pathTranslations = {
   guides: {
     es: 'guías',
   },
-  'Getting started': {
+  'Get started': {
     es: 'Empezando',
   },
   Welcome: {

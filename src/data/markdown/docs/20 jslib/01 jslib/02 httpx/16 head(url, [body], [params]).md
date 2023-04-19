@@ -25,7 +25,7 @@ excerpt: 'httpx.head makes HEAD requests'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.4/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({
   baseURL: 'https://httpbin.test.k6.io',

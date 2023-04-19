@@ -13,7 +13,7 @@ It's a http client with features that are not yet available in the native module
 httpx module integrates well with the expect library. 
 
 
-The source code is [on GitHub](https://github.com/k6io/k6-jslib-httpx). . 
+The source code is [on GitHub](https://github.com/k6io/k6-jslib-httpx).
 Please request features and report bugs through [GitHub issues](https://github.com/k6io/k6-jslib-httpx/issues).
 
 <Blockquote mod='attention'>
@@ -29,22 +29,23 @@ This documentation is for the only last version only. If you discover that some 
 
 ### Methods
 
-| Function | Description |
-| -------- | ----------- |
-| [request(method, url, [body], [params])](/javascript-api/jslib/httpx/request)  | Generic method for making arbitrary HTTP requests. |
-| [get(url, [body], [params])](/javascript-api/jslib/httpx/get)  | Makes GET request |
-| [post(url, [body], [params])](/javascript-api/jslib/httpx/post)  | Makes POST request |
-| [put(url, [body], [params])](/javascript-api/jslib/httpx/put)  | Makes PUT request |
-| [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch)  | Makes PATCH request |
-| [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete)  | Makes DELETE request |
-| [batch(requests)](/javascript-api/jslib/httpx/batch)  | Batch multiple HTTP requests together, to issue them in parallel. |
-| [setBaseUrl(url)](/javascript-api/jslib/httpx/setbaseurl)  | Sets the base URL for the session |
-| [addHeader(key, value)](/javascript-api/jslib/httpx/addheader)  | Adds a header to the session |
-| [addHeaders(object)](/javascript-api/jslib/httpx/addheaders)  | Adds multiple headers to the session |
-| [clearHeader(name)](/javascript-api/jslib/httpx/clearheader)  | Removes header from the session |
-| [addTag(key, value)](/javascript-api/jslib/httpx/addtag)  | Adds a tag to the session |
-| [addTags(object)](/javascript-api/jslib/httpx/addtags)  | Adds multiple tags to the session |
-| [clearTag(name)](/javascript-api/jslib/httpx/cleartag)  | Removes tag from the session |
+| Function                                                                                | Description                                                       |
+|-----------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| [asyncRequest(method, url, [body], [params])](/javascript-api/jslib/httpx/asyncrequest) | Generic method for making arbitrary, asynchronous HTTP requests.  |
+| [request(method, url, [body], [params])](/javascript-api/jslib/httpx/request)           | Generic method for making arbitrary HTTP requests.                |
+| [get(url, [body], [params])](/javascript-api/jslib/httpx/get)                           | Makes GET request                                                 |
+| [post(url, [body], [params])](/javascript-api/jslib/httpx/post)                         | Makes POST request                                                |
+| [put(url, [body], [params])](/javascript-api/jslib/httpx/put)                           | Makes PUT request                                                 |
+| [patch(url, [body], [params])](/javascript-api/jslib/httpx/patch)                       | Makes PATCH request                                               |
+| [delete(url, [body], [params])](/javascript-api/jslib/httpx/delete)                     | Makes DELETE request                                              |
+| [batch(requests)](/javascript-api/jslib/httpx/batch)                                    | Batches multiple HTTP requests together to issue them in parallel. |
+| [setBaseUrl(url)](/javascript-api/jslib/httpx/setbaseurl)                               | Sets the base URL for the session                                 |
+| [addHeader(key, value)](/javascript-api/jslib/httpx/addheader)                          | Adds a header to the session                                      |
+| [addHeaders(object)](/javascript-api/jslib/httpx/addheaders)                            | Adds multiple headers to the session                              |
+| [clearHeader(name)](/javascript-api/jslib/httpx/clearheader)                            | Removes header from the session                                   |
+| [addTag(key, value)](/javascript-api/jslib/httpx/addtag)                                | Adds a tag to the session                                         |
+| [addTags(object)](/javascript-api/jslib/httpx/addtags)                                  | Adds multiple tags to the session                                 |
+| [clearTag(name)](/javascript-api/jslib/httpx/cleartag)                                  | Removes tag from the session                                      |
 
 
 
@@ -55,7 +56,7 @@ This documentation is for the only last version only. If you discover that some 
 
 ```javascript
 import { fail } from 'k6';
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.3/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`; // random email address

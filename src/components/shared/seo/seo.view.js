@@ -6,11 +6,7 @@ import { docs } from 'utils/urls';
 import { LATEST_VERSION } from 'utils/versioning';
 
 const getPageHref = (host, slug) => {
-  if (
-    slug.match(/^\/?k6-browser\/.*/g) ||
-    slug.match(/^\/?xk6-disruptor\/.*/g) ||
-    slug.match(/^\/?jslib\/.*/g)
-  ) {
+  if (slug.match(/^\/?xk6-disruptor\/.*/g) || slug.match(/^\/?jslib\/.*/g)) {
     return `${noTrailingSlash(host)}/javascript-api${addPrefixSlash(slug)}`;
   }
 

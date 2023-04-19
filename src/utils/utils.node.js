@@ -286,7 +286,6 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 const redirectWelcome = (path) =>
   path
     .replace(/en\/get-started\/welcome/i, '')
-    .replace(/javascript-api\/k6-browser\/get-started\/welcome/i, '')
     .replace(/javascript-api\/xk6-disruptor\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
@@ -330,7 +329,7 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
 
   // Making sure to change slug only for Javascript API docs that have parameters
   if (
-    /javascript-api\/|jslib\/|k6-browser\/|xk6-disruptor\//.test(slug) &&
+    /javascript-api\/|jslib\/|xk6-disruptor\//.test(slug) &&
     /\(.+\)/.test(title)
   ) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');

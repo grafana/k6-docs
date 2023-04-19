@@ -10,7 +10,7 @@ Adds the specified members to the set stored at `key`. Specified members that ar
 | Parameter | Type   | Description                                |
 | :-------- | :----- | :----------------------------------------- |
 | `key`     | string | key holding the set to add the members to. |
-| `members` | any[]  | members to add to the set.                 |
+| `members` | a variadic array of strings, numbers, or booleans  | members to add to the set.                 |
 
 
 ### Returns
@@ -39,7 +39,7 @@ const redisClient = new redis.Client({
 export default async function () {
   await redisClient.sadd('myset', 'foo');
   await redisClient.sadd('myset', 'bar');
-  
+
   const isit = await redisClient.sismember('myset', 'foo');
   if (isit === false) {
     throw new Error('sismember should have returned true');

@@ -1,14 +1,14 @@
 ---
 title: 'Selection.map(fn)'
-excerpt: 'Pass each element in the current matched set through a function, producing a new Array containing the return values.'
+excerpt: 'Pass each selection in the current matched set through a function, producing a new Array containing the return values.'
 ---
 
-Pass each element in the current matched set through a function, producing a new Array containing the return values.
+Pass each selection in the current matched set through a function, producing a new Array containing the return values.
 Mimics [jquery.each](https://api.jquery.com/each/)
 
-| Parameter | Type     | Description                                               |
-| --------- | -------- | --------------------------------------------------------- |
-| fn        | function | A function to iterate all the Elements of the Collection. |
+| Parameter | Type     | Description                                                 |
+| --------- | -------- | ----------------------------------------------------------- |
+| fn        | function | A function to iterate all the Selections of the Collection. |
 
 ### Returns
 

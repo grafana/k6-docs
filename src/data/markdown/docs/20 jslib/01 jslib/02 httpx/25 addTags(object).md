@@ -5,16 +5,16 @@ excerpt: 'adds multiple tags to the session'
 ---
 
 
-| Parameter | Type            | Description                                                      |
-| --------- | --------------- | ---------------------------------------------------------------- |
-| headers  | object  | Object |
+| Parameter  | Type      | Description  |
+|------------|-----------|--------------|
+| headers    | object    | Object       |
 
 ### Example
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx();
 
