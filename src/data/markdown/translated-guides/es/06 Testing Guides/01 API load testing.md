@@ -4,9 +4,9 @@ head_title: 'Introducción a las pruebas de carga para APIs: la guía k6'
 excerpt: 'Las pruebas de carga de API tienen muchas facetas. Esta guía presenta las pruebas de performance y las mejores prácticas para realizar pruebas de carga de sus APIs con k6.'
 ---
 
-Una prueba de carga de API generalmente comienza con pequeñas cargas en componentes aislados. A medida que se verifica que los componentes aislados cumplen con los requerimientos de performance con cargas pequeañas, puede considerar incluir en su estrategia pruebas a la API de una manera más completa. En este proceso, probará su API con más solicitudes, duraciones más largas y un mayor alcance, e incluir en un solo script desde componentes aislados hasta flujos de trabajo completos de extremo a extremo.
+Una prueba de carga de API generalmente comienza con pequeñas cargas en componentes aislados. A medida que se verifica que los componentes aislados cumplen con los requerimientos de performance con cargas pequeñas, puede considerar incluir en su estrategia pruebas a la API de una manera más completa. En este proceso, probará su API con más solicitudes, duraciones más largas y un mayor alcance, e incluir en un solo script desde componentes aislados hasta flujos de trabajo completos de extremo a extremo.
 
-Cuando diseñe sus pruebas de API, primero evalue las razones para probar la API:
+Cuando diseñe sus pruebas de API, primero evalúe las razones para probar la API:
 - ¿Qué flujos o componentes desea probar?
 - ¿Cómo va a ejecutar la prueba?
 - ¿Qué valores determinan un performance aceptable?
@@ -42,7 +42,7 @@ Esta es una prueba básica, solo contiene una llamada a un componente.
 Generalmente, su conjunto de pruebas progresará de scripts como el anterior, a flujos de trabajo más complejos. En este proceso, su set de pruebas avanzará a través de la [pirámide de la automatización de pruebas](https://martinfowler.com/articles/practical-test-pyramid.html) de la siguiente manera:
 
 - **Probar una API aislada**. Intentará conectarse repetidamente al punto final (endpoint) de una API, por ejemplo: [ab](https://httpd.apache.org/docs/2.4/programs/ab.html), para conocer el performance de base, el punto de quiebre o la disponibilidad. Si un componente no cumple con los requisitos de performance, a este se le considera un cuello de botella. Generalmente, la definición de la cantidad de carga es en solicitudes por segundo.
-- **Probar APIs integradas**. Probará una o varias APIs que interactúan con otras APIs ya sea internas o externas. Se puede probar uno o varios sistemas.
+- **Probar APIs integradas**. Probará una o varias APIs que interactúen con otras APIs ya sea internas o externas. Se puede probar uno o varios sistemas.
 - **Prueba de flujos de API de inicio a fin (end to end)**. Simulará interacciones realistas entre las APIs para probar el sistema como un conjunto. La atención se centra a menudo en acciones frecuentes y críticas del usuario.
 
 Su set de pruebas de carga debe incluir una amplia gama de pruebas. Pero, cuando comience, empiece de forma pequeña y simple, probando API individuales y pruebas de integración sencillas.
@@ -82,7 +82,7 @@ Para configurar la carga de trabajo, utilice las [opciones de prueba](https://k6
 
 En general, sus pruebas de carga deben añadir [pausas](https://k6.io/docs/javascript-api/k6/sleep/). Dichas pausas ayudan a controlar el generador de carga y simula mejor los patrones de tráfico de humanos interactuando con su sistema.
 
-Sin embargo, cuando se trata de pruebas de carga de API, estas recomendaciones vienen con algunas condiciones. Si prueba un componente aislado, es posible que solo le importe el performance bajo un determinado volumen de transacciones. Pero, incluso en este caso, el comando de pausa (sleep) puede ayudarle a evitar exceso de trabajo del generador de carga, e incluir unos pocos milisegundos aleatorios de pausa para evitar concurrencias accidentales.
+Sin embargo, cuando se trata de pruebas de carga de API, estas recomendaciones vienen con algunas condiciones. Si prueba un componente aislado, es posible que solo le importe el performance bajo un determinado volumen de transacciones. Pero, incluso en este caso, el comando de pausa (sleep) puede ayudar a evitar exceso de trabajo del generador de carga, e incluir unos pocos milisegundos aleatorios de pausa para evitar concurrencias accidentales.
 
 Cuando pruebe la API con flujos de trabajo normales como si fuesen ejecutados por humanos, agregue pausas entre solicitudes como en una prueba normal.
 
@@ -96,7 +96,7 @@ Cuando modela la carga utilizando usuarios virtuales, las opciones básicas son:
 - [`duration`](https://k6.io/docs/using-k6/k6-options/reference/#duration)
 - [`iterations`](https://k6.io/docs/using-k6/k6-options/reference/#iterations)
 
-Esto se puede definir en la seccion de opciones (options) en el script de prueba. En la siguiente prueba, 50 usuarios simultáneos ejecutan continuamente el flujo `default` durante 30 segundos.
+Esto se puede definir en la sección de opciones (options) en el script de prueba. En la siguiente prueba, 50 usuarios simultáneos ejecutan continuamente el flujo `default` durante 30 segundos.
 
 ```javascript
 import http from 'k6/http';
@@ -118,7 +118,7 @@ export default function () {
 
 ### Flujo de solicitudes
 
-Al analizar el rendimiento del punto final (endpoint) de la API, la carga generalmente se calcula por flujo de solicitudes, ya sean solicitudes por segundo o por minuto.
+Al analizar el performance del punto final (endpoint) de la API, la carga generalmente se calcula por flujo de solicitudes, ya sean solicitudes por segundo o por minuto.
 
 Para configurar las cargas de trabajo de usando un objetivo de flujo de solicitudes, utilice el ejecutor (executor) [constant arrival rate](https://k6.io/docs/using-k6/scenarios/executors/constant-arrival-rate/).
 
@@ -182,7 +182,7 @@ Para ver todas las formas de modelar la carga en k6, consulte [Scenarios](https:
 
 ## Verificar la funcionalidad con Checks (comprobaciones)
 
-Tradicionalmente, las pruebas de rendimiento se centran más en:
+Tradicionalmente, las pruebas de performance se centran más en:
 
 - La latencia: qué tan rápido responde el sistema.
 - La disponibilidad: con qué frecuencia devuelve errores el sistema.
@@ -197,7 +197,7 @@ http_req_failed................: 0.00% ✓ 0    ✗ 1501
 
 Es posible que el análisis de los resultados de la prueba deba ir más allá de lo que permiten las métricas predeterminadas de k6. Para obtener un análisis más relevante de los resultados, es posible que también desee validar las funcionalidades e informar de los errores.
 
-Algunos fallos de la aplicación ocurren solo bajo ciertas condiciones de carga, como un alto tráfico. Estos errores son difíciles de encontrar. Para encontrar la causa de los fallos más rápidamente, instrumente sus APIs y verifique que las solicitudes obtengan las respuestas esperadas. Para verificar la respuesta de la aplicación en k6, puede usar `Checks`.
+Algunos fallos de la aplicación ocurren sólo bajo ciertas condiciones de carga, como un alto tráfico. Estos errores son difíciles de encontrar. Para encontrar la causa de los fallos más rápidamente, instrumente sus APIs y verifique que las solicitudes obtengan las respuestas esperadas. Para verificar la respuesta de la aplicación en k6, puede usar `Checks`.
 
 [Check](https://k6.io/docs/using-k6/checks/) es un comando que valida diversas condiciones durante la ejecución de la prueba. Por ejemplo, puede usar check verificar las respuestas de la API. Con las verificaciones (checks), puede confirmar diversas respuestas de la API, como el estado HTTP o cualquier dato devuelto.
 
@@ -263,18 +263,18 @@ Es aceptable que haya una **pequeña tasa de fallo**, todo depende del «número
 
 ## Ponga a prueba sus objetivos de confiabilidad con «Thresholds»
 
-Cada prueba debe tener objetivos. Las organizaciones de ingeniería establecen sus objetivos de fiabilidad utilizando los [objetivos de nivel de servicio](https://en.wikipedia.org/wiki/Service-level_objective)) (SLO, por sus siglas en inglés) para validar la disponibilidad, el performance o cualquier objetivo de rendimiento.
+Cada prueba debe tener objetivos. Las organizaciones de ingeniería establecen sus objetivos de fiabilidad utilizando los [objetivos de nivel de servicio](https://en.wikipedia.org/wiki/Service-level_objective)) (SLO, por sus siglas en inglés) para validar la disponibilidad, el performance o cualquier objetivo de performance.
 
 Los SLO pueden definirse en distintos ámbitos, como puede ser en el nivel de un componente de infraestructura, de una API, o de toda la aplicación. Algunos ejemplos de SLO podrían ser:
 
 - El 99 % de las APIs que devuelven información del producto responden en menos de 600 ms.
 - El 99.99 % de las solicitudes fallidas iniciando sesión responden en menos de 1000 ms.
 
-Diseñe sus pruebas de carga con criterios de pase/fallo para validar los SLO, los objetivos de confiabilidad, u otras métricas importantes. Para garantizar que su sistema pase sus SLOs, realice pruebas con frecuencia, tanto en los ambientes de preproducción como los de producción.
+Diseñe sus pruebas de carga con criterios de pase/fallo para validar los SLO, los objetivos de confiabilidad, u otras métricas importantes. Para garantizar que su sistema pase sus SLOs, realice pruebas con frecuencia, tanto en los ambientes de preproducción como en los de producción.
 
 En k6, puede usar [Thresholds](https://k6.io/docs/using-k6/thresholds/) para establecer los criterios de pase/fallo de la prueba. 
 
-Este script codifica dos SLOs en la seccion de thresholds, uno sobre la tasa de errores (disponibilidad) y otro sobre la duración de la solicitud (latencia).
+Este script codifica dos SLOs en la sección de thresholds, uno sobre la tasa de errores (disponibilidad) y otro sobre la duración de la solicitud (latencia).
 
 ```javascript
 export const options = {
@@ -336,7 +336,7 @@ ERRO[0030] some thresholds have failed
 
 ## Consideraciones cuando se crean scripts
 
-Si tiene experiencia haciendo pruebas con scripts, la creación de scripts de k6 debería resultarle familiar. Las pruebas de k6 se escriben en JavaScript, y el diseño de la API de k6 es similar a otras plataformas de pruebas.
+Si tiene experiencia haciendo pruebas con scripts, la creación de scripts de k6 debería resultar familiar. Las pruebas de k6 se escriben en JavaScript, y el diseño de la API de k6 es similar a otras plataformas de pruebas.
 
 Pero, a diferencia de otros tipos de pruebas, los scripts de pruebas de carga ejecutan sus pasos cientos, miles o millones de veces. La presencia de la carga crea algunas preocupaciones específicas. Cuando realice pruebas de carga de una API con k6, considere los siguientes aspectos al diseñar su script.
 
@@ -440,38 +440,38 @@ export default function () {
 
 ### Reutilización y modularización de las pruebas
 
-Las pruebas de carga pueden ser de gran alcance y pueden implicar diferentes tipos de pruebas. En general, los equipos comienzan con pruebas de carga simples o críticas y continúan agregando pruebas para nuevos casos de uso, flujos de usuarios, patrones de tráfico, características, sistemas, etc.
+Las pruebas de carga pueden tener un gran alcance e incluir diferentes tipos de pruebas. En general, los equipos comienzan con pruebas de carga simples o pruebas críticas, y continúan agregando pruebas para nuevos casos de uso, flujos de usuarios, patrones de tráfico, características, sistemas, etc.
 
-En este proceso, los conjuntos de pruebas de carga crecen con el tiempo. Para minimizar el trabajo repetitivo, intente reutilizar sus scripts de prueba pasados y modularizar las funciones y la lógica de la prueba. Si escribe escenarios comunes en módulos reutilizables, es más fácil crear diferentes tipos de pruebas de carga. El proceso de creación de una nueva prueba de carga es el siguiente:
+En este proceso, los sets de pruebas de carga crecen con el tiempo. Para minimizar el trabajo repetitivo, intente reutilizar scripts de prueba pasados y modularizar las funciones y la lógica de la prueba. Si escribe procesos comunes en módulos reutilizables, es más fácil crear diferentes tipos de pruebas de carga. El proceso de creación de una nueva prueba de carga es el siguiente:
 
 1. Crear un nuevo archivo.
 2. Configurar la carga específica y otras opciones.
-3. Importar el escenario.
+3. Importar el proceso.
 
-A medida que sus pruebas maduren, considere crear pruebas que [combine multiple scenarios](https://k6.io/docs/using-k6/scenarios/advanced-examples/#combine-scenarios) para simular un tráfico más diverso.
+A medida que sus pruebas maduren, considere crear pruebas que [combine multiple scenarios](https://k6.io/docs/using-k6/scenarios/advanced-examples/#combine-scenarios) para simular diversas variaciones de tráfico.
 
-### URL dinámicas para un punto final
+### URL dinámicas para un punto final(EndPoint)
 
-De forma predeterminada, cuando accede al mismo punto final de una API con diferentes URL, por ejemplo, `http://example.com/posts/${id}`, k6 informa de los resultados del punto final por separado. Esto puede crear una cantidad innecesaria de métricas.
+De forma predeterminada, cuando accede al mismo punto final (EndPoint) de una API con diferentes URL, por ejemplo, `http://example.com/posts/${id}`, k6 informa de los resultados por separado. Esto puede crear una cantidad innecesaria de métricas.
 
-Para agrupar los resultados del punto final, utilice [URL grouping](https://k6.io/docs/using-k6/http-requests/#url-grouping).
+Para agrupar los resultados del punto final (EndPoint), utilice [URL grouping](https://k6.io/docs/using-k6/http-requests/#url-grouping).
 
 ## Ubicaciones del generador de carga
 
-Cuando planifique la prueba, considere las ubicaciones de sus generadores de carga, las máquinas que ejecutan la prueba. A veces, ejecutar la prueba desde una ubicación específica es un requisito de la prueba. Otras veces, puede elegir la ubicación en función de cómo le resulte más conveniente o práctico. De cualquier manera, cuando establezca la ubicación del generador de carga, tenga en cuenta lo siguiente:
+Cuando planifique la prueba, considere las ubicaciones de sus generadores de carga, es decir, las máquinas que ejecutan la prueba. A veces, ejecutar la prueba desde una ubicación específica es un requisito de la prueba. Otras veces, puede elegir la ubicación en función de cómo le resulte más conveniente o práctico. De cualquier manera, cuando establezca la ubicación del generador de carga, tenga en cuenta lo siguiente:
 
-- **Ubicaciones requeridas**. Para comparar el rendimiento o garantizar resultados precisos, algunas pruebas de carga deben medir la latencia desde ubicaciones específicas. Estas pruebas lanzan los generadores de carga desde ubicaciones que coinciden con la región de su usuario.
-- **Ubicaciones opcionales**. Otras pruebas comparan las mediciones con una base de referencia del rendimiento para ver cómo cambia el rendimiento del sistema a partir de un estado de rendimiento o tiempo en particular. Para evitar resultados de latencia sesgados, asegúrese de que la ubicación del generador de carga sea constante en todas las ejecuciones de prueba y evite ejecutar las pruebas desde ubicaciones que estén demasiado cerca del SUT.
+- **Ubicaciones requeridas**. Para comparar el performance o garantizar resultados precisos, algunas pruebas de carga deben medir la latencia desde ubicaciones específicas. Estas pruebas lanzan los generadores de carga desde ubicaciones que coinciden con la región de su usuario.
+- **Ubicaciones opcionales**. Otras pruebas comparan las mediciones contra una base de referencia, para ver cómo cambia el performance del sistema a partir de métricas base de la aplicación. Para evitar resultados de latencia confusos, asegúrese de que la ubicación del generador de carga sea la misma en todas las ejecuciones de prueba y evite ejecutar las pruebas desde ubicaciones que estén demasiado cerca del Sistema probado (SUT por sus siglas en Inglés).
 
 ### APIs internas
 
-Las pruebas de API de extremo a extremo intentan replicar los flujos de usuarios del mundo real, que acceden a las API públicas desde sistemas externos. Otras API son internas y no se puede acceder a ellas desde el exterior. La necesidad de ejecutar pruebas internas es común cuando se prueban integraciones de API y puntos finales aislados.
+Las pruebas de API que replican los flujos de usuarios del mundo real con pasos de inicio a fin acceden a las API públicas desde sistemas externos. Otras API son internas y no se puede acceder a ellas desde el exterior. La necesidad de ejecutar pruebas internas es común cuando se prueban integraciones de API y puntos finales (EndPoints) aislados.
 
-Si la API se encuentra en un entorno interno o restringido, puede usar k6 para probarla de varias maneras diferentes:
+Si la API se encuentra en un entorno interno o restringido, se puede usar k6 para probarla de varias maneras diferentes:
 
-- Ejecute la prueba desde su red privada utilizando el comando de ejecución k6 o el [Kubernetes operator](https://github.com/grafana/k6-operator). Opcionalmente, almacene los resultados de la prueba en [k6 Cloud](https://k6.io/docs/results-output/real-time/cloud/) u otros [servicios externos](https://k6.io/docs/results-output/real-time/).
+- Ejecute la prueba desde su red privada utilizando el comando "k6 run" o el [Kubernetes operator](https://github.com/grafana/k6-operator). Opcionalmente, almacene los resultados de la prueba en [k6 Cloud](https://k6.io/docs/results-output/real-time/cloud/) u otros [servicios externos](https://k6.io/docs/results-output/real-time/).
 - Para pruebas en la nube:
-  - [Abra su firewall](https://k6.io/docs/cloud/creating-and-running-a-test/troubleshooting/#open-a-firewall-for-k6-cloud) para el tráfico de prueba en la nube.
+  - [Abra su firewall](https://k6.io/docs/cloud/creating-and-running-a-test/troubleshooting/#open-a-firewall-for-k6-cloud) para el tráfico de prueba desde la nube.
   - Ejecute la prueba en la nube desde sus [instancias privadas de AWS EC2](https://k6.io/docs/cloud/creating-and-running-a-test/private-load-zones/).
 
 ## Herramientas complementarias
@@ -480,7 +480,7 @@ Es posible que desee utilizar k6 junto con otras herramientas de API.
 
 ### Integración con herramientas API
 
-Hay muchas herramientas para las API de REST, pero se centran demasiado en las pruebas de rendimiento. k6 le ofrece varios convertidores para ayudarle a incorporar un ecosistema de herramientas de API más amplio en sus pruebas de carga:
+Hay muchas herramientas para las API de REST, pero no se centran demasiado en las pruebas de performance. k6 le ofrece varios convertidores para ayudarle a incorporar un ecosistema de herramientas de API más amplio en sus pruebas de carga:
 
 - [Postman-to-k6 converter](https://github.com/apideck-libraries/postman-to-k6): para crear una prueba de k6 a partir de una colección de Postman.
 
@@ -488,7 +488,7 @@ Hay muchas herramientas para las API de REST, pero se centran demasiado en las p
   postman-to-k6 collection.json -o k6-script.js
   ```
 
-- [OpenAPI k6 generator](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6/#api-load-testing-with-swaggeropenapi-specification): para crear una prueba de k6 a partir de una definición de API abierta (anteriormente Swagger).
+- [OpenAPI k6 generator](https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6/#api-load-testing-with-swaggeropenapi-specification): para crear una prueba de k6 a partir de una definición de Open API (anteriormente Swagger).
 
   ```bash
   openapi-generator-cli generate -i my-api-spec.json -g k6
@@ -500,13 +500,13 @@ Estas herramientas generan una prueba de k6 que puede editar y ejecutar como de 
 k6 run k6-script.js
 ```
 
-Dependiendo del tipo de prueba, los convertidores podrían ayudarlo a crear rápidamente sus primeras pruebas o a incorporar nuevos usuarios a k6. Aun así, le recomendamos que se familiarice con la [API de JavaScript de k6](https://k6.io/docs/javascript-api/) y escriba sus propias pruebas.
+Dependiendo del tipo de prueba, los convertidores podrían ayudarlo a crear rápidamente sus primeras pruebas o a alentar a nuevos miembros del equipo a usar k6. Aun así, le recomendamos que se familiarice con la [API de JavaScript de k6](https://k6.io/docs/javascript-api/) y escriba sus propias pruebas.
 
 ### Uso de grabadoras de proxy
 
-Otra opción es generar automáticamente una prueba de k6 a partir de una sesión grabada. Estos scripts podrían ayudarlo a comenzar a crear pruebas de integración y de extremo a extremo más complejas.
+Otra opción es generar automáticamente una prueba de k6 a partir de una sesión grabada. Estos scripts podrían ayudar a crear pruebas de integración o pasos de inicio a fin más complejas.
 
-El [har-to-k6 converter](https://github.com/grafana/har-to-k6) crea la prueba de k6 a partir de una sesión grabada en formato HAR que recopila tráfico HTTP.
+El [har-to-k6 converter](https://github.com/grafana/har-to-k6) crea la prueba de k6 a partir de una sesión grabada en formato HAR que contiene tráfico HTTP.
 
 ```bash
 har-to-k6 archive.tar -o k6-script.js
@@ -520,11 +520,11 @@ k6 run k6-script.js
 
 Para exportar una sesión grabada al formato HAR, utilice una grabadora de proxy como [Fiddler proxy](https://www.telerik.com/fiddler/fiddler-everywhere) o [GitLab HAR recorder](https://gitlab.com/gitlab-org/security-products/har-recorder/).
 
-Al igual que con los convertidores anteriores, la grabadora puede ayudar con las pruebas de prototipos. Nuevamente, le recomendamos que aprenda a escribir sus scripts de prueba.
+Al igual que con los convertidores anteriores, la grabadora puede ayudar a iniciar scripts de pruebas. Nuevamente, le recomendamos que aprenda a escribir sus scripts de prueba en lugar de usar sólo convertidores.
 
-## Más allá de las API HTTP
+## Más allá de las APIs de HTTP
 
-Debido a la popularidad de las API web y de REST, en esta guía hemos utilizado el término centrado en las API HTTP. Pero las API no están restringidas al protocolo HTTP.
+Debido a la popularidad de las web APIs y de REST, en esta guía hemos utilizado el término enfocándose en las APIs de HTTP. Pero las API no están restringidas al protocolo HTTP.
 
 De forma predeterminada, k6 permite realizar pruebas con los siguientes protocolos:
 
@@ -555,11 +555,11 @@ export default () => {
 };
 ```
 
-Pero los software modernos no se diseñan solo en base a estos protocolos. Las infraestructuras y las aplicaciones modernas dependen de otros protocolos API para proporcionar nuevas funciones o mejorar su rendimiento, procesamiento y fiabilidad.
+Pero los software modernos no se diseñan usando sólo estos protocolos. Las infraestructuras y las aplicaciones modernas dependen de otros protocolos API para proporcionar nuevas funciones o mejorar su performance, procesamiento y fiabilidad.
 
-Para probar el rendimiento y la capacidad de estos sistemas, la herramienta de prueba debe ser capaz de generar solicitudes de protocolos específicos para sus API.
+Para probar el performance y la capacidad de estos sistemas, la herramienta de prueba debe ser capaz de generar solicitudes usando protocolos específicos para sus API.
 
-Si k6 no es compatible con un protocolo que necesita, puede usar (o crear) [extensions](https://k6.io/docs/extensions/). La lista de extensiones es larga:
+Si k6 no es compatible con un protocolo que necesite, puede usar (o crear) [extensions](https://k6.io/docs/extensions/). La lista de extensiones es larga:
 
 - Avro
 - ZeroMQ
