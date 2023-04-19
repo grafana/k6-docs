@@ -17,7 +17,7 @@ In some testing conversation, this test also might be called a day-in-life test 
 
 ## When to run an average load test
 
-Average-Load testing helps to understand if your system meets performance goals on a typical day (commonplace load). That means when an average number of users access the application at the same time, doing normal/average work.
+Average-Load testing helps understand whether a system meets performance goals on a typical day (commonplace load). _Typical day_ here means when an average number of users access the application at the same time, doing normal, average work.
 
 You should run an average load test to:
 
