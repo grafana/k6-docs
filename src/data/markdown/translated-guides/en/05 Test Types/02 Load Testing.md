@@ -11,7 +11,7 @@ Average-load tests try to simulate the number of concurrent users and requests p
 
 ![Overview of an average load test](images/chart-average-load-test-overview.png)
 
-Since “load test” might refer to all types of tests that simulate traffic, this guide uses the name _average-load test_ to avoid confusing.
+Since “load test” might refer to all types of tests that simulate traffic, this guide uses the name _average-load test_ to avoid confusion.
 In some testing conversation, this test also might be called a day-in-life test or volume test.
 
 

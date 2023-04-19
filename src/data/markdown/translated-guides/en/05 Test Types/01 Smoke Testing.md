@@ -33,7 +33,7 @@ When you prepare a smoke test, consider the following:
 
 - **Each time you create or update a script, run a smoke test**
 
-  Because smoke tests verify test scripts, try to run one every time you create or update a script. Avoid running other test types with untest scripts.
+  Because smoke tests verify test scripts, try to run one every time you create or update a script. Avoid running other test types with untested scripts.
 
 - **Keep throughput small and duration short**
   
@@ -69,17 +69,17 @@ export default () => {
 </CodeGroup>
 
 
-The following script is an example Smoke test script sample. You can copy it, change the endpoints, and start testing.  Refer to [Examples](/examples) for more comprehensive or complex test steps in a script.
+The following script is an example Smoke test . You can copy it, change the endpoints, and start testing. For more comprehensive test logic, refer to [Examples](/examples).
 The VU chart of a smoke test should look similar to this.  Again, a smoke test should use only 2 or 3 VUs and run for only a brief period.
 
 ![The shape of the smoke test as configured in the preceding script](images/chart-smoke-test-k6-script-example.png)
 
 ## Results analysis
 
-The Smoke test initially validates that your script runs without errors. If any script-related errors appear, correct the script before trying any more extensive tests.
+The smoke test initially validates that your script runs without errors. If any script-related errors appear, correct the script before trying any more extensive tests.
 
-On the other hand, if you notice poor performance with these low VU numbers, report it, fix your environment, and try again with a Smoke test before any further tests.
+On the other hand, if you notice poor performance with these low VU numbers, report it, fix your environment, and try again with a smoke test before any further tests.
 
-Once your Smoke test shows zero errors and the performance results seem acceptable, you can proceed to other test types.
+Once your smoke test shows zero errors and the performance results seem acceptable, you can proceed to other test types.
 
 
