@@ -5,6 +5,11 @@
   flex-direction: column;
 }
 
+.result {
+  display: flex;
+  justify-content: space-between;
+}
+
 .list {
   width: 100%;
   margin-top: 40px;
@@ -118,10 +123,10 @@
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $color-primary;
+}
 
-  & .number {
-    font-weight: 700;
-  }
+.number {
+  font-weight: 700;
 }
 
 .clear {
@@ -142,10 +147,9 @@
   gap: 15px;
   list-style: none;
 
-  @include md-down {
-    li {
-      width: 25%;
-    }
+  @include lg-down {
+    flex-wrap: wrap;
+    gap: 2%;
   }
 
   @include sm-down {
@@ -155,11 +159,11 @@
   @include xs-down {
     padding-left: 0;
     padding-right: 0;
-    flex-direction: column;
+    //flex-direction: column;
 
-    li {
-      width: 100%;
-    }
+    //li {
+    //  width: 100%;
+    //}
   }
 }
 
@@ -196,10 +200,26 @@
 .fieldWrapper {
   position: relative;
   flex-grow: 1;
-  max-width: 450px;
+
+  @include lg-down {
+    width: 80%;
+    margin-top: 2%;
+  }
 
   @include xs-down {
-    max-width: 100%;
+    width: 60%;
+  }
+}
+
+.buttonWrapper {
+  position: relative;
+
+  @include lg-down {
+    margin-top: 2%;
+  }
+
+  @include xs-down {
+    width: 42px;
   }
 }
 
@@ -280,9 +300,57 @@
     pointer-events: none;
   }
 
-  @include xs-down {
-    display: none;
+  @include lg-down {
+    width: 32%;
+
+    select {
+      width: 100%;
+    }
   }
+
+  @include xs-down {
+    width: 49%;
+
+    &:nth-child(3) {
+      width: 100%;
+      margin-top: 2%;
+    }
+  }
+}
+
+.filterButton {
+  width: 41px;
+  height: 41px;
+  padding: 8px;
+  border: 1px solid #d3d3de;
+  border-radius: 4px;
+  color: #beb9d7;
+  font-size: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #7d64ff;
+    border-color: #7d64ff;
+  }
+
+  &-active {
+    opacity: 1;
+    color: #7d64ff;
+    border-color: #7d64ff;
+    cursor: default;
+  }
+}
+
+.clearButton {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  color: #7d64ff;
+  border: none;
+  text-transform: none;
 }
 
 .notFoundWrapper {

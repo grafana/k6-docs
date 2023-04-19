@@ -14,12 +14,15 @@ import React, {
 import SearchIcon from 'svg/search.inline.svg';
 
 import styles from './extension-selection.module.scss';
+import GroupedListIcon from './svg/grouped-list.inline.svg';
+import NoneGroupedListIcon from './svg/non-grouped-list.inline.svg';
 
 export const ExtensionSelection = ({ data, description = '' }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [extensions, setExtensions] = useState(data);
   const [selected, setSelected] = useState([]);
   const [version, setVersion] = useState(null);
+  const [isExtensionsCategorized, setIsExtensionsCategorized] = useState(true);
   const [allTypes, setAllTypes] = useState([]);
   const [activeType, setActiveType] = useState([]);
   const [allCategories, setAllCategories] = useState(new Set());
@@ -53,7 +56,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     );
   }, [allCategories]);
 
-  const filterExtensionsByCategory = useCallback(
+  const filteredExtensionsByCategory = useCallback(
     (category) =>
       extensions
         .filter((extension) => extension.categories.includes(category))
@@ -70,10 +73,31 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     [activeCategories, activeTier, activeType, extensions],
   );
 
+  const filteredExtensions = useCallback(
+    () =>
+      extensions
+        .filter((extension) =>
+          activeCategories.length === 1
+            ? extension.categories.includes(activeCategories[0])
+            : extension,
+        )
+        .filter((extension) =>
+          activeTier.length > 0
+            ? extension.tiers.includes(activeTier[0])
+            : extension,
+        )
+        .filter((extension) =>
+          activeType.length > 0
+            ? extension.type.includes(activeType[0])
+            : extension,
+        ),
+    [activeCategories, activeTier, activeType, extensions],
+  );
+
   const totalActiveExtensions = useMemo(
     () =>
       activeCategories
-        .map((category) => filterExtensionsByCategory(category))
+        .map((category) => filteredExtensionsByCategory(category))
         .flat(),
     [activeCategories, activeTier, activeType, extensions],
   );
@@ -290,8 +314,58 @@ export const ExtensionSelection = ({ data, description = '' }) => {
                 </button>
               )}
             </li>
+            <li className={styles.buttonWrapper}>
+              <Button
+                className={classNames(
+                  styles.filterButton,
+                  isExtensionsCategorized && styles.filterButtonActive,
+                )}
+                theme="transparent"
+                size="sm"
+                disabled={isExtensionsCategorized}
+                onClick={() => setIsExtensionsCategorized(true)}
+              >
+                <GroupedListIcon />
+                Enable grouped listing
+              </Button>
+            </li>
+            <li className={styles.buttonWrapper}>
+              <Button
+                className={classNames(
+                  styles.filterButton,
+                  !isExtensionsCategorized && styles.filterButtonActive,
+                )}
+                theme="transparent"
+                size="sm"
+                disabled={!isExtensionsCategorized}
+                onClick={() => setIsExtensionsCategorized(false)}
+              >
+                <NoneGroupedListIcon />
+                Enable non-grouped listing
+              </Button>
+            </li>
           </ul>
-          <p dangerouslySetInnerHTML={{ __html: description }} />
+          {activeCategories.length === 1 ||
+          activeTier.length > 0 ||
+          activeType.length > 0 ||
+          searchTerm ? (
+            <p className={styles.result}>
+              <span>
+                <b className={styles.number}>{totalActiveExtensions.length}</b>{' '}
+                result{totalActiveExtensions.length === 1 ? '' : 's'} found
+              </span>{' '}
+              <Button
+                className={styles.clearButton}
+                theme="transparent"
+                size="sm"
+                onClick={handleResetFilters}
+              >
+                Clear filter
+              </Button>
+            </p>
+          ) : (
+            <p dangerouslySetInnerHTML={{ __html: description }} />
+          )}
           <WithCopyButton
             dataToCopy={code.replace(/^\$\s/gm, '')}
             copyButtonLabel={styles.copy}
@@ -318,6 +392,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
         </div>
       )}
       <div className="container">
+        {/* eslint-disable-next-line no-nested-ternary */}
         {totalActiveExtensions.length === 0 ? (
           <div className={styles.notFoundWrapper}>
             <NotFoundIllustration className={styles.notFoundIllustration} />
@@ -329,12 +404,12 @@ export const ExtensionSelection = ({ data, description = '' }) => {
               Clear all filters
             </Button>
           </div>
-        ) : (
+        ) : isExtensionsCategorized ? (
           activeCategories.map((category, index) =>
-            filterExtensionsByCategory(category).length > 0 ? (
+            filteredExtensionsByCategory(category).length > 0 ? (
               <div key={index} className={styles.list}>
                 <h2 className={styles.listTitle}>{category}</h2>
-                {filterExtensionsByCategory(category)
+                {filteredExtensionsByCategory(category)
                   .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
                   .map((extension) => (
                     <ExtensionCard
@@ -351,6 +426,23 @@ export const ExtensionSelection = ({ data, description = '' }) => {
               </div>
             ) : null,
           )
+        ) : (
+          <div className={styles.list}>
+            {filteredExtensions()
+              .sort((item1, item2) => (item1.name > item2.name ? 1 : -1))
+              .map((extension) => (
+                <ExtensionCard
+                  key={extension.name}
+                  extension={extension}
+                  searchTerm={searchTerm}
+                  isChecked={selected.includes(
+                    extension.url.replace('https://', ''),
+                  )}
+                  onCheckboxClick={() => handleCheckboxClick(extension.url)}
+                  hasCheckbox
+                />
+              ))}
+          </div>
         )}
       </div>
     </section>
