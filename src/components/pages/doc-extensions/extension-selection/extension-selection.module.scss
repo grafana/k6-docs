@@ -43,7 +43,6 @@
   background-color: $color-tertiary;
   padding-left: 50px;
   padding-right: 50px;
-  //margin-top: -20px;
   margin-left: -50px;
   margin-right: -50px;
 
@@ -159,11 +158,6 @@
   @include xs-down {
     padding-left: 0;
     padding-right: 0;
-    //flex-direction: column;
-
-    //li {
-    //  width: 100%;
-    //}
   }
 }
 
@@ -171,7 +165,7 @@
   position: relative;
   padding: 10px 15px;
   background: transparent;
-  font-size: $font-size-sm;
+  font-size: 16px;
   line-height: $line-height-sm;
   color: $color-secondary;
   font-weight: 400;
