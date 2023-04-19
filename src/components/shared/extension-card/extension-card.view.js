@@ -79,7 +79,14 @@ export const ExtensionCard = ({
           ))}
           {logo && (
             <li className={styles.logoWrapper}>
-              <img className={styles.logo} src={logo} alt={name} />
+              <img
+                className={styles.logo}
+                src={logo}
+                width="auto"
+                height="24"
+                alt={name}
+                loading="lazy"
+              />
             </li>
           )}
         </ul>

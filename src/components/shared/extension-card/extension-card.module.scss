@@ -118,6 +118,13 @@
 .logo-wrapper {
   margin-left: auto !important;
   max-height: 28px;
+  //position: absolute;
+  //top: 20px;
+  //right: 20px;
+
+  &:before {
+    content: none;
+  }
 }
 
 .logo {
