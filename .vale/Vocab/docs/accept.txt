@@ -45,6 +45,7 @@ APIs
 apm
 async
 backoff
+breakpoint
 browserified
 browserlist
 bundler
