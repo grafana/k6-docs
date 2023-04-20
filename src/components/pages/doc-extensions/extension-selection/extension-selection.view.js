@@ -165,7 +165,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
     <section className={styles.container}>
       {!!version && (
         <div className={styles.selection}>
-          <ul className={classNames('container', styles.filters)}>
+          <ul className={styles.filters}>
             <li className={styles.dropdownWrapper}>
               <select
                 className={styles.fieldSelect}
@@ -391,7 +391,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
           </div>
         </div>
       )}
-      <div className="container">
+      <div className="">
         {/* eslint-disable-next-line no-nested-ternary */}
         {totalActiveExtensions.length === 0 ? (
           <div className={styles.notFoundWrapper}>

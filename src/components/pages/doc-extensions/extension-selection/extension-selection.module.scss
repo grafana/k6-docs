@@ -52,17 +52,16 @@
   @include md-down {
     margin-left: -20px;
     margin-right: -20px;
-
     padding-left: 20px;
     padding-right: 20px;
   }
 
   @include sm-down {
-    margin-left: 20px;
-    margin-right: 20px;
-
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    overflow: hidden;
   }
 }
 
@@ -144,6 +143,7 @@
 .filters {
   display: flex;
   gap: 15px;
+  padding: 0;
   list-style: none;
 
   @include lg-down {

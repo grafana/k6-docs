@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import Blockquote from 'components/shared/blockquote';
 import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -9,8 +11,6 @@ import { DocLayout } from 'layouts/doc-layout';
 import queryString from 'query-string';
 import React from 'react';
 import SeoMetaData from 'utils/seo-metadata';
-
-import Blockquote from '../../components/shared/blockquote';
 
 const breadcrumbs = [
   {
@@ -72,10 +72,9 @@ const ExploreExtensionsPage = ({
           description={
             'Discover the extensions available to meet your specific needs.'
           }
-          className="container"
           breadcrumbs={breadcrumbs}
         />
-        <div className={docPageContent.inner}>
+        <div className={classNames('container', docPageContent.inner)}>
           <Blockquote mod="attention" title="Looking for Feedback">
             Help us improve extensions by completing this{' '}
             <Link

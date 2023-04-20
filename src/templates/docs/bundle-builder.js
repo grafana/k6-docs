@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import Blockquote from 'components/shared/blockquote';
@@ -62,10 +63,9 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
         <ExtensionsTitleGroup
           title={'Bundle'}
           description={`Combine multiple extensions into your reliability testing toolkit.`}
-          className="container"
           breadcrumbs={breadcrumbs}
         />
-        <div className={docPageContent.inner}>
+        <div className={classNames('container', docPageContent.inner)}>
           <Blockquote mod="attention" title="Looking for Feedback">
             Help us improve extensions by completing this{' '}
             <Link
@@ -76,7 +76,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
             </Link>
             .
           </Blockquote>
-          <p className="container">
+          <p>
             Extensions are composable; you can combine any extensions, or mix
             and match different test cases. To generate the command for your
             extension combination, you can use this <em>bundle builder</em>.
@@ -98,7 +98,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
               'Select the extensions you want, then copy the generated command.'
             }
           />
-          <p className="container">
+          <p>
             Don&apos;t see what you need? Learn how you can{' '}
             <Link
               to={'/extensions/get-started/create/'}
