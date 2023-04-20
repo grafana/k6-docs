@@ -50,9 +50,7 @@ Currently, k6 automatically creates the following tags by default:
 To disable some of the preceding tags, use the [`systemTags` option](/using-k6/k6-options/reference/#system-tags).
 Note that some data collectors, for example `cloud` runs, may require certain tags.
 
-
-
-The following system tags are optional. You can enable them if you you need them:
+The following system tags are optional. Enable them as needed:
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |

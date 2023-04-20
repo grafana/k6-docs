@@ -5,6 +5,8 @@ excerpt: 'Browser module: BrowserType.launch method'
 
 Launches a new browser process.
 
+<!-- vale off -->
+
 | Parameter         | Type     | Default | Description                                                                                                                                                                                                                                                           |
 |-------------------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | args              | string[] | `null`  | Extra command line arguments to include when launching browser process. See [this link](https://peter.sh/experiments/chromium-command-line-switches/) for a list of Chromium arguments. Note that arguments should not start with `--` (see the [example](#example)). |
@@ -68,6 +70,8 @@ Additionally if headless mode is set to `true` in [launch options](/javascript-a
 | mute-audio | `true` | Mutes audio sent to the audio device so it is not audible during automated testing. |
 | blink-settings | primaryHoverType=2,availableHoverTypes=2,<br />primaryPointerType=4,availablePointerTypes=4 | Sets blink settings. Format is <name\>[=<value\>],<name\>[=<value\>],... The names are declared in [settings.json5](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/settings.json5) from chromium project. For boolean type, use "true", "false", or omit '=<value\>' part to set to true. For enum type, use the int value of the enum value. |
 
+
+<!-- vale on -->
 
 ### Returns
 
