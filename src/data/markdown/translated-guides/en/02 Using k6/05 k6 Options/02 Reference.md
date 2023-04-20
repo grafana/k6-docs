@@ -1316,7 +1316,7 @@ export const options = {
 ## Throw
 
 A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
- - failed [HTTP requests](/javascript-api/k6-http/)
+ - failing to make [HTTP requests](/javascript-api/k6-http/), e.g. due to a network error
  - adding invalid values to [custom metrics](/using-k6/metrics/#custom-metrics)
  - setting invalid [per-VU metric tags](/javascript-api/k6-execution/#tags)
 
