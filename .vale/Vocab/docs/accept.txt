@@ -154,6 +154,7 @@ Un\*x
 unencoded
 unencrypted
 untyped
+variadic
 vendored
 walkthrough
 webpages
