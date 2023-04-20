@@ -36,7 +36,7 @@ const selector = {
 };
 
 const fault = {
-  averageDelay: 100,
+  averageDelay: '100ms',
   errorRate: 0.1,
   errorCode: 500,
 };
@@ -48,7 +48,7 @@ export default function () {
     throw new Error('expected list to have one target');
   }
 
-  disruptor.injectHTTPFaults(fault, 30);
+  disruptor.injectHTTPFaults(fault, '30s');
 }
 ```
 

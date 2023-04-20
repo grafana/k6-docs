@@ -5,21 +5,21 @@ excerpt: 'xk6-disruptor: PodDisruptor.injectHTTPFaults method'
 
 injectHTTPFaults injects HTTP faults in the requests served by a target Pod.
 
-| Parameter | Description |
-| ---------- | ----------- |
-| fault | description of the [http faults](/javascript-api/xk6-disruptor/api/faults/http) to be injected |
-| duration | duration of the disruption in seconds |
-| [options](#options) | options that control the injection of the fault |
+| Parameter | Type   | Description |
+| --------- | ------ | ------- |
+| fault     | object | description of the [http faults](/javascript-api/xk6-disruptor/api/faults/http) to be injected |
+| duration  | string | duration of the disruption |
+| options (optional)   | object | [options](#options) that control the injection of the fault |
 
 
 ## options
 
 The injection of the fault is controlled by the following options:
 
-| Option | Description |
-| ------ | ----------- |
-| proxyPort | port the agent will use to listen for requests in the target pods ( default `8080`) |
-| iface | network interface where the agent will capture the traffic ( default `eth0`) |
+| Option    | Type   | Description |
+| --------- | ------ | -------- |
+| proxyPort | number | port the agent will use to listen for requests in the target pods ( default `8080`) |
+| iface     | string | network interface where the agent will capture the traffic ( default `eth0`) |
 
 <Blockquote mod="note">
 
@@ -37,9 +37,9 @@ This is normal and means that one request was "in transit" at the time the fault
 
 ```javascript
     const fault = {
-        averageDelay: 50,
+        averageDelay: "50ms",
         errorCode: 500,
         errorRate: 0.1
     }
-    disruptor.injectHTTPFaults(fault, 30)
+    disruptor.injectHTTPFaults(fault, "30s")
 ```
