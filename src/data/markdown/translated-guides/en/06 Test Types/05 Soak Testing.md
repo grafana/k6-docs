@@ -45,7 +45,9 @@ When you prepare to run a soak test, consider the following:
 
 The soak test is almost the same as the average-load test. The only difference is the increased duration of the load plateau. 
 
-It gradually increases the load until it reaches an average number of users or throughput. Then it keeps that load for a considerably longer time. Finally, depending on the test case, it is stopped or ramped down gradually.
+1. Increase the load until it reaches an average number of users or throughput.
+1. Maintain that load for **a considerably longer time.**
+1. Finally, depending on the test case, stop or ramped down gradually.
 
 Configure the load duration in the `options` object:
 

@@ -78,7 +78,8 @@ export default () => {
 
 </CodeGroup>
 
-The test quickly increases to an extreme load. The ramp-down period follows when the test reaches the maximum, returning to 0 quickly.
+In a spike test, load quickly increases to an extreme level.
+The ramp-down period follows when the test reaches the maximum, returning to 0 quickly.
 
 A spike test gets its name from the shape of its load when represented graphically.
 
