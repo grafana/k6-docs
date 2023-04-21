@@ -68,12 +68,13 @@ If an error happens, then the `error` along with the `error_code` fields will be
 
 k6 provides a few options to help you configure your CSV output:
 
-
+<!-- vale off -->
 | option  | Configures                                       | Possible values                                                           | Default    | Env. variable          |
 |-------------------------------|--------------------------------------------------|---------------------------------------------------------------------------|------------|------------------------|
 | `saveInterval`                | The time intervals at which k6 writes to the CSV | Either a string with time units(`"1m45s"`), or a number of milliseconds | `"1s"`       | `K6_CSV_SAVE_INTERVAL` |
-| `timeFormat`                  | The timestamp format                             | unix, [rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)            | unix       | `K6_CSV_TIME_FORMAT`   |
+| `timeFormat`                  | The timestamp format                             | unix, unix_nano, unix_micro, unix_milli, [rfc3339](https://datatracker.ietf.org/doc/html/rfc3339), rfc3339_nano            | unix       | `K6_CSV_TIME_FORMAT`   |
 | `fileName`                    | The file name and path where output is saved     | N/A                                                                       | `file.csv` | `K6_CSV_FILENAME`      |
+<!-- vale on -->
 
 ## Read more
 
