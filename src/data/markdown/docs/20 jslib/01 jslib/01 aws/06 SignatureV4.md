@@ -10,7 +10,7 @@ The `presign` operation produces a pre-signed request with authorization informa
 
 SignatureV4 is included in both the dedicated jslib `signature.js` bundle and the `aws.js` one, containing all the service's clients.
 
-Instantiating a new `SignatureV4` requires a single options object argument with the following properties: 
+Instantiating a new `SignatureV4` requires a single options object argument with the following properties:
 
 | Property      | Type                                                                                      | Description                                                                                                                                                                                                                                                             |
 | :------------ | :---------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +44,7 @@ SignatureV4 methods throw errors on failure.
 ```javascript
 import http from 'k6/http.js'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.1/aws.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.2/aws.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
