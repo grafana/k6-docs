@@ -7,15 +7,15 @@ A HTTP Fault describes the characteristics of the faults to be injected in the H
 
 A HTTP fault is described by the following attributes:
 
-| Attribute | Description |
-| --------- | ------------|
-| averageDelay | average delay added to requests in milliseconds (default `0ms`) |
-| delayVariation| variation in the injected delay in milliseconds (default `0ms`) |
-| errorBody | body to be returned when an error is injected |
-| errorCode | error code to return |
-| errorRate | rate of requests that will return an error, represented as a float in the range `0.0` to `1.0` (default `0.0`) |
-| exclude | comma-separated list of urls to be excluded from disruption (e.g. /health) |
-| port | port on which the requests will be intercepted |
+| Attribute     | Type   | Description |
+| ------------- | ------ | --------|
+| averageDelay  | string | average delay added to requests represented as a string (default `0`) |
+| delayVariation| string | variation in the injected delay (default `0`) |
+| errorBody     | string | body to be returned when an error is injected |
+| errorCode     | number | error code to return |
+| errorRate     | number | rate of requests that will return an error, represented as a float in the range `0.0` to `1.0` (default `0.0`) |
+| exclude       | string | comma-separated list of urls to be excluded from disruption (e.g. /health) |
+| port          | number | port on which the requests will be intercepted |
 
 <Blockquote mod="note">
 
@@ -29,7 +29,7 @@ This example defines a HTTP fault that introduces a delay of `50ms` in all reque
 
 ```javascript
 const fault = {
-  averageDelay: 50,
+  averageDelay: '50ms',
   errorCde: 500,
   errorRate: 0.1,
 };

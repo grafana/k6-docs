@@ -63,11 +63,11 @@ export function disrupt(data) {
     const podDisruptor = new PodDisruptor(selector)
     // delay traffic from one random replica of the deployment
     const fault = {
-        averageDelay: 50,
+        averageDelay: "50ms",
         errorCode: 500,
         errorRate: 0.1
     }
-    podDisruptor.injectHTTPFaults(fault, 30)
+    podDisruptor.injectHTTPFaults(fault, "30s")
 }
 ```
 
@@ -291,11 +291,11 @@ export function disrupt(data) {
 
     // delay traffic from one random replica of the deployment
     const fault = {
-        averageDelay: 50,
+        averageDelay: "50ms",
         errorCode: 500,
         errorRate: 0.1
     }
-    podDisruptor.injectHTTPFaults(fault, 30)
+    podDisruptor.injectHTTPFaults(fault, "30s")
 }
 
 export const options = {

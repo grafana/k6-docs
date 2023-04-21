@@ -78,13 +78,13 @@ export function disrupt() {
     }
 
     const fault = {
-        averageDelay: 300,
+        averageDelay: "300ms",
         statusCode: grpc.StatusInternal,
         errorRate: 0.1,
         port: 9000,
     }
     const disruptor = new ServiceDisruptor('grpcbin','grpcbin')
-    disruptor.injectGrpcFaults(fault, 30)
+    disruptor.injectGrpcFaults(fault, "30s")
 }
 ```
 
@@ -303,12 +303,12 @@ export function disrupt() {
 
     // inject errors in requests
     const fault = {
-        averageDelay: 300,
+        averageDelay: "300ms",
         statusCode: grpc.StatusInternal,
         errorRate: 0.1,
         port: 9000,
     }
-    disruptor.injectGrpcFaults(fault, 30)
+    disruptor.injectGrpcFaults(fault, "30s")
 }
 
 export const options = {
