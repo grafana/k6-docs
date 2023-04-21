@@ -89,5 +89,5 @@ A spike test gets its name from the shape of its load when represented graphical
 
 Some performance metrics to assess in spike tests include pod speeds, recovery times after the load rush, time to return to normal, or the behavior on crucial system processes during the overload.
 
-Finding how the system responds ( if it survives) to the sudden rush helps to optimize it to guarantee that it can perform during a real event. Often the load is so high that the whole system may have to be optimized to deal with the key processes. In these cases, repeat the test until the system confidence is high.
+Finding how the system responds (if it survives) to the sudden rush helps to optimize it to guarantee that it can perform during a real event. Often the load is so high that the whole system may have to be optimized to deal with the key processes. In these cases, repeat the test until the system confidence is high.
 
