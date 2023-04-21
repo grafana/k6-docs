@@ -6,6 +6,9 @@ env:
   GATSBY_DEFAULT_DOC_URL: https://mdr-ci.staging.k6.io/docs/${{ github.ref }}
   GATSBY_DEFAULT_BLOG_URL: https://k6.io/blog
   GATSBY_DEFAULT_APP_URL: https://app.staging.k6.io
+  GATSBY_NEWSLETTER_FORM_URL: https://go2.grafana.com
+  GATSBY_NEWSLETTER_FORM_MUNCHKIN_ID: 356-YFG-389
+  GATSBY_NEWSLETTER_FORM_ID: 1420
 
 on:
   pull_request:

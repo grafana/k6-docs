@@ -21,6 +21,10 @@ env:
   GATSBY_DEFAULT_DOC_URL: https://staging.k6.io/docs
   GATSBY_DEFAULT_MAIN_URL: https://staging.k6.io
   GATSBY_GOOGLE_API_KEY: ${{ secrets.STAGING_CI_GATSBY_GOOGLE_API_KEY }}
+  GATSBY_NEWSLETTER_FORM_URL: https://go2.grafana.com
+  GATSBY_NEWSLETTER_FORM_MUNCHKIN_ID: 356-YFG-389
+  GATSBY_NEWSLETTER_FORM_ID: 1420
+
 jobs:
   update-dependencies:
     name: Update node module dependencies
