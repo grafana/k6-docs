@@ -5,7 +5,7 @@ excerpt: "A Smoke test is a minimal load test to run when you create or modify a
 ---
 
 Smoke tests have a minimal load.
-Run them to verify that the script works well, the system functions under minimal load, and to gather some minimum performance values.
+Run them to verify that the script works well, the system functions under minimal load, and to gather baseline performance values.
 
 This test type consists of running tests with only one or a few VUs. Keep the number to 5 VUs or less.
 Exceeding 5 could turn the test into a mini-load test.
