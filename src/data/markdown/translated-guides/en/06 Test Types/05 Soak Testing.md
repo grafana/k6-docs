@@ -39,7 +39,7 @@ When you prepare to run a soak test, consider the following:
     Running this first may cause confusion and resource waste.
 * **Monitor the backend resources and code efficiency.**
   Since we are checking for system degradation, monitoring the backend resources and code efficiency is highly recommended. 
-  Of all test types, monitoring is especially important for soak tests.
+  Of all test types, backend monitoring is especially important for soak tests.
 
 ## Soak testing in k6
 
@@ -47,7 +47,7 @@ The soak test is almost the same as the average-load test. The only difference i
 
 1. Increase the load until it reaches an average number of users or throughput.
 1. Maintain that load for **a considerably longer time.**
-1. Finally, depending on the test case, stop or ramped down gradually.
+1. Finally, depending on the test case, stop or ramp down gradually.
 
 Configure the load duration in the `options` object:
 
