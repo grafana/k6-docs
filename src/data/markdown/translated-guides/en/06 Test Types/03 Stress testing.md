@@ -94,7 +94,7 @@ Note that in the same way as the average-load test, the Stress test starts at 0 
 
 <Blockquote mod="note" title="">
 
-Run stress tests only after smoke and average-load tests. Running this test type earlier be wasteful and make it hard to pinpoint problems if they appear at low volumes or at loads under the average utilization.
+Run stress tests only after smoke and average-load tests. Running this test type earlier may be wasteful and make it hard to pinpoint problems if they appear at low volumes or at loads under the average utilization.
 
 </Blockquote>
 
