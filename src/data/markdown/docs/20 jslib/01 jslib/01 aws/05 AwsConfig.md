@@ -18,6 +18,12 @@ It takes an options object as its single parameter, with the following propertie
 | secretAccessKey            | string | The AWS secret access credential to use for authentication.                                                               |
 | sessionToken (optional)    | string | The AWS secret access token to use for authentication.                                                               |
 
+### Methods
+
+| Name                | Description                                                                                                                                |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `fromEnvironment()` | Creates an `AWSConfig` using the `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` environment variables. |
+
 ### Throws
 
 S3 Client methods will throw errors in case of failure.
