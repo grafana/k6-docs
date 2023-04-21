@@ -1,3 +1,4 @@
+import SubscribeForm from 'components/shared/subscribe-form';
 import { Link } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import Logo from 'svg/logo-with-grafana-labs.inline.svg';
@@ -317,6 +318,8 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      <SubscribeForm />
 
       <div className={'container'}>
         <div className={'row'}>
