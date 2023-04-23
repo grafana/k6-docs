@@ -333,7 +333,7 @@ Load testing websites can be complex due to the number of viable testing approac
 ## Read more
 
 - [Browser testing with k6 browser](https://k6.io/docs/using-k6-browser/overview/)
-- [Test types](https://k6.io/docs/test-types/introduction)
+- [Load test types](https://k6.io/docs/test-types/load-test-types)
 - [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](https://k6.io/docs/examples/correlation-and-dynamic-data)

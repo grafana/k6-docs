@@ -23,7 +23,7 @@ From here, the decision to go for automated testing is hopefully clear:
 - **Shifting performance testing left**, making sure it happens as close to development as possible, giving developers an early feedback loop for performance matters.
 - **Adding performance regression checks** to your Continuous Integration and Delivery (CI/CD) pipelines.
 
-Of course not [all types of performance tests](/test-types/introduction) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance of A and B over time.
+Of course not [all types of performance tests](/test-types/load-test-types) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance of A and B over time.
 
 ## Know your goals
 
