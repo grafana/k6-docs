@@ -33,8 +33,7 @@ The main types are as follows. Each type has its own article outlining its essen
 
 <Blockquote mod="note" title="">
 
-In k6 scripts, configure your load in the `options` object using [Scenarios](/using-k6/scenarios).
-Because options are defined in [`init` context](/using-k6/test-lifecycle), the configuration is separate from the logic of VUs.
+In k6 scripts, configure your load in the [`options` object](/using-k6/k6-options/reference/) or using [Scenarios](/using-k6/scenarios). The workload configuration is separated from the logic of VUs.
 
 </Blockquote>
 
