@@ -45,7 +45,7 @@ When you prepare an average-load test, consider the following:
   
   The ramp down is when virtual user activity gradually decreases. The ramp down usually lasts as long as the ramp up or a bit less.
 
-### Average-load testing in k6
+## Average-load testing in k6
 
 <Blockquote mod="note" title="Start small">
 
