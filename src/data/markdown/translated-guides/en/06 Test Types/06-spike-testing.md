@@ -58,15 +58,13 @@ export const options = {
   // Key configurations for spike in this section
   stages: [
     { duration: '2m', target: 2000 }, // fast ramp-up to a high point
-	// No plateau
+    // No plateau
     { duration: '1m', target: 0 }, // quick ramp-down to 0 users
   ],
 };
 
-const BASE_URL = 'https://test-api.k6.io';
-
 export default () => {
-  const urlRes = http.req(`${BASE_URL}`);
+  const urlRes = http.req('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Add only the processes that will be on high demand

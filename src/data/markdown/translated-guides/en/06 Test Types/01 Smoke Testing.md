@@ -52,10 +52,8 @@ export const options = {
   duration: '1m', // This can be shorter or just a few iterations
 };
 
-const BASE_URL = 'https://test-api.k6.io';
-
 export default () => {
-  const urlRes = http.req(`${BASE_URL}`);
+  const urlRes = http.req('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script
@@ -63,7 +61,6 @@ export default () => {
   // Step2
   // etc.
 };
-
 ```
 
 </CodeGroup>

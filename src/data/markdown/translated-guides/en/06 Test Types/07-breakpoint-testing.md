@@ -71,7 +71,6 @@ The test keeps increasing load or VUs until it reaches the defined breaking poin
 <CodeGroup labels={["breakpoint.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
-
 import http from 'k6/http';
 import {sleep} from 'k6';
 
@@ -83,10 +82,8 @@ export const options = {
   ],
 };
 
-const BASE_URL = 'https://test-api.k6.io';
-
 export default () => {
-  const urlRes = http.req(`${BASE_URL}`);
+  const urlRes = http.req('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script
