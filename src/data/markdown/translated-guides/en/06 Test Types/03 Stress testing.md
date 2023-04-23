@@ -42,7 +42,7 @@ When you run a stress test, consider the following:
 
 * **Expect worse performance compared to average load.**
 
-  This test determines how much the performance degrades with the extra load and whether the system survives it. 
+  This test determines how much the performance degrades with the extra load and whether the system survives it. A well-performant system should respond with consistent response times when handling a constant workload for an extended period.
 
 
 ## Stress testing in k6
