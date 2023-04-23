@@ -31,10 +31,6 @@ When you run a stress test, consider the following:
 
   Define load according to the risk load patterns that the system may receive.
 
-* **Expect worse performance compared to average load.**
-
-  This test determines how much the performance degrades with the extra load and whether the system survives it. 
-
 - **Only run stress tests after running average-load tests.** 
 
   Identify performance issues under average-load tests before trying anything more challenging.
@@ -43,6 +39,11 @@ When you run a stress test, consider the following:
 * **Re-use the Average-Load test script.**
 
   Modify the parameters to have higher load or VUs.
+
+* **Expect worse performance compared to average load.**
+
+  This test determines how much the performance degrades with the extra load and whether the system survives it. 
+
 
 ## Stress testing in k6
 
