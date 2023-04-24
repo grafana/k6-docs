@@ -25,6 +25,7 @@ After that, you need to worry about the test only after your SUT fails to meet i
 
 ## Example: thresholds for HTTP errors and response duration
 
+
 This sample script specifies two thresholds.
 One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
 The other evaluates whether 95 percent of responses happen within a certain duration (the `http_req_duration` metric).
@@ -199,8 +200,6 @@ Only the last one will remain.
 The rest will be **silently** ignored.
 If you want to set multiple thresholds for a metric, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
-
-
 ## Threshold examples to copy and paste
 
 The quickest way to start with thresholds is to use the [standard, built-in k6 metrics](/using-k6/metrics#http-specific-built-in-metrics).
@@ -321,6 +320,7 @@ export default function () {
 ```
 
 </CodeGroup>
+
 
 
 
