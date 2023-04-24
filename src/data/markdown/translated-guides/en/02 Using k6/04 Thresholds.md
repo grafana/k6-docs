@@ -88,12 +88,12 @@ The real text must be the name of the metric and the threshold expression.
 ```javascript
 export const options = {
   thresholds: {
-    metric_name1: ['<threshold_expression>', `...`], // short format
+    metric_name1: ["<threshold_expression>", `...`], // short format
     metric_name2: [
       {
-        threshold: '<threshold_expression>',
+        threshold: "<threshold_expression>",
         abortOnFail: true, // boolean
-        delayAbortEval: '10s', // string
+        delayAbortEval: "10s", // string
       },
     ], // full format
   },
