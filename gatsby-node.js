@@ -1585,6 +1585,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/test-types/introduction',
+    toPath: '/test-types/load-test-types/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',

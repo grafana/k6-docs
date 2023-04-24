@@ -1,104 +1,101 @@
 ---
 title: 'Soak testing'
 head_title: 'What is Soak Testing? How to create a Soak Test in k6'
-excerpt: 'A Soak Test is a type of Performance Test that tells you about the reliability and performance of your system over an extended period of time. Let’s see an example.'
+excerpt: 'A Soak Test tests the reliability and performance of your system over extended periods of use.'
 ---
 
-While [load testing](/test-types/load-testing) is primarily concerned with performance assessment, and
-[stress testing](/test-types/stress-testing) is concerned with system stability under extreme conditions, soak testing is concerned with reliability over a longer period of time.
+Soak testing is another variation of the Average-Load test. It focuses on extended periods, analyzing the following: 
 
-A soak test uncovers performance and reliability issues stemming from a system being under
-pressure for an extended period.
+* The system's degradation of performance and resource consumption over extended periods.
+* The system's availability and stability during extended periods.
 
-Reliability issues typically relate to bugs, memory leaks, insufficient storage quotas,
-incorrect configuration or infrastructure failures. Performance issues typically relate to
-incorrect database tuning, memory leaks, resource leaks or a large amount of data.
+The soak test differs from an average-load test in test duration. In a soak test, the peak load duration (usually an average amount) extends several hours and even days.
+Though the duration is considerably longer, the ramp-up and ramp-down periods of a soak test are the same as an average-load test.
 
-With a soak test you can simulate days worth of traffic in only a few hours.
+![Overview of a soak test](images/chart-soak-test-overview.png)
 
-You typically run this test to:
+In some testing conversation, a soak test might be called an endurance, constant high load, or stamina test.
 
-- Verify that your system doesn't suffer from bugs or memory leaks, which result in a crash or
-  restart after several hours of operation.
-- Verify that expected application restarts don't lose requests.
-- Find bugs related to race-conditions that appear sporadically.
-- Make sure your database doesn't exhaust the allotted storage space and stops.
-- Make sure your logs don't exhaust the allotted disk storage.
-- Make sure the external services you depend on don't stop working after a certain amount of
-  requests are executed.
+## When to perform a Soak test
 
-You may discover that the performance of your application was much better at the beginning of the
-test in comparison to the end. This typically happens if your database is not properly tuned.
-Adding indexes or assigning additional memory may help.
+Most systems must stay turned on and keep working for days, weeks, and months without intervention. This test verifies the system stability and reliability over extended periods of use. 
+
+This test type checks for common performance defects that show only after extended use. Those problems include response time degradation, memory or other resource leaks, data saturation, and storage depletion.
+
+
+## Considerations
+
+When you prepare to run a soak test, consider the following:
+
+* **Configure the duration to be considerably longer than any other test.**
+
+    Some typical values are 3, 4, 8, 12, 24, and 48 to 72 hours.
+* **If possible, re-use the average-load test script**
+
+    Changing only the peak durations for the aforementioned values.
+* **Don't run soak tests before running smoke and average-load tests.** 
+
+    Each test uncovers different problems.
+    Running this first may cause confusion and resource waste.
+* **Monitor the backend resources and code efficiency.**
+  Since we are checking for system degradation, monitoring the backend resources and code efficiency is highly recommended. 
+  Of all test types, backend monitoring is especially important for soak tests.
 
 ## Soak testing in k6
 
-We recommend you to configure your soak test at about 80% capacity of your system.
-If your system can handle a maximum of 500 simultaneous users, you should configure your soak test to 400 VUs.
+The soak test is almost the same as the average-load test. The only difference is the increased duration of the load plateau. 
 
-The duration of a soak test should be measured in hours. We recommend you to start with a 1 hour test,
-and once that one is successful, extend it to several hours.
-Some errors are related to time, and not to the total number of requests executed.
+1. Increase the load until it reaches an average number of users or throughput.
+1. Maintain that load for **a considerably longer time.**
+1. Finally, depending on the test case, stop or ramp down gradually.
 
-Here's a sample test configuration:
+Configure the load duration in the `options` object:
 
-<CodeGroup labels={["sample-soak-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
+<CodeGroup labels={["soak.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
 import http from 'k6/http';
-import { sleep } from 'k6';
+import {sleep} from 'k6';
 
 export const options = {
+  // Key configurations for Soak test in this section
   stages: [
-    { duration: '2m', target: 400 }, // ramp up to 400 users
-    { duration: '3h56m', target: 400 }, // stay at 400 for ~4 hours
-    { duration: '2m', target: 0 }, // scale down. (optional)
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '8h', target: 100 }, // stay at 100 users for 8 hours!!!
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
   ],
 };
 
-const API_BASE_URL = 'https://test-api.k6.io';
-
-export default function () {
-  http.batch([
-    ['GET', `${API_BASE_URL}/public/crocodiles/1/`],
-    ['GET', `${API_BASE_URL}/public/crocodiles/2/`],
-    ['GET', `${API_BASE_URL}/public/crocodiles/3/`],
-    ['GET', `${API_BASE_URL}/public/crocodiles/4/`],
-  ]);
-
+export default () => {
+  const urlRes = http.req('https://test-api.k6.io');
   sleep(1);
-}
+  // MORE STEPS
+  // Here you can have more steps or complex script
+  // Step1
+  // Step2
+  // etc.
+};
+
 ```
 
 </CodeGroup>
 
-The VU chart of a Soak Test should look similar to this:
-![Soak Test Configuration](./images/soak-test.png)
+For more complex behavior, refer to [Examples](/examples).
 
-<Blockquote mod="warning">
+Notice that, as in an average-load test, peak load plateaus at 100. VUs.
+The difference is in duration.
+In this soak, peak load maintains for 8 hours rather than some minutes.
 
-#### Make a cost estimate before starting a soak test
+![The shape of the soak test as configured in the preceding script](images/chart-soak-test-k6-script-example.png)
 
-Soak tests can simulate days or weeks worth of normal traffic within a few hours. This means that your infrastructure and vendor costs may be significant.
+## Results analysis
 
-If you are testing a website, you should consider excluding your CDN from the test.
+If we execute this test after the previous types, we should have a system performing well under previous scenarios. In this test, monitor for changes in any performance metric as time passes. Try to correlate any impact with backend measurement changes that indicate degradation over time. Such changes can be gradual degradations, as mentioned, and sudden changes (improvements, too) in response time and backend hardware resources. Backend resources to check are RAM consumed, CPU, Network, and growth of cloud resources, among others.
 
-If your system makes use of external services, you may want to calculate the cost before you start the test.
+The expected outcome is that the performance and resource utilization of the backend stays stable or within expected variations.
 
-</Blockquote>
+After you run all the previous test types, you know your system performs well at many different loads: small, average, high, and extended.
 
-## When to do soak testing?
-
-Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.
-
-You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.
-
-Soak testing is the last major step on the road to building reliable systems.
-
-## Read more
-
-- [Finding .NET Memory Leaks through Soak Testing](https://k6.io/blog/resolve-memory-leaks-with-soak-testing-and-k6/)
-- [Running large tests](/testing-guides/running-large-tests)
 
 <LdScript script='{
 "@context": "https://schema.org",
@@ -109,3 +106,4 @@ Soak testing is the last major step on the road to building reliable systems.
 "acceptedAnswer": {
 "@type": "Answer",
 "text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p><p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p><p>Soak testing is the last major step on the road to building reliable systems.</p>"}}]}' />
+

@@ -1,160 +1,107 @@
 ---
 title: 'Load testing'
 head_title: 'What is Load Testing? How to create a Load Test in k6'
-excerpt: 'A Load Test is a type of Performance Test that is primarily concerned with assessing the performance of your system in terms of concurrent users or requests per second. Let’s see an example.'
+excerpt: 'An average load test assesses the performance of your system in terms of concurrent users or requests per second.'
 ---
 
-Load Testing is primarily concerned with assessing the current performance of your system in terms
-of concurrent users or requests per second.
+An average-load test assesses how the system performs under typical load. Typical load might be a regular day in production or an average moment.
 
-When you want to understand if your system is meeting the performance goals, this is the type of test you'll run.
+Average-load tests simulate the number of concurrent users and requests per second that reflect average behaviors in the production environment. This type of test typically increases the throughput or VUs gradually and keeps that average load for some time. Depending on the system's characteristics, the test may stop suddenly or have a short ramp-down period.
 
-> #### What is Load Testing
->
-> Load Testing is a type of Performance Testing used to
-> determine a system's behavior under both normal and peak conditions.
->
-> Load Testing is used to ensure that the application performs satisfactorily
-> when many users access it at the same time.
+![Overview of an average load test](images/chart-average-load-test-overview.png)
 
-You should run a Load Test to:
+Since “load test” might refer to all types of tests that simulate traffic, this guide uses the name _average-load test_ to avoid confusion.
+In some testing conversation, this test also might be called a day-in-life test or volume test.
 
-1.  Assess the current performance of your system under typical and peak load.
-2.  Make sure you continue to meet the performance standards as you make changes to your system (code and infrastructure).
+## When to run an average load test
 
-You probably have some understanding about the amount of traffic your system is seeing on average and during peak hours.
-This information will be useful when deciding what your performance goals should be, in other words,
-how to configure the [performance thresholds](/using-k6/thresholds).
+Average-Load testing helps understand whether a system meets performance goals on a typical day (commonplace load). _Typical day_ here means when an average number of users access the application at the same time, doing normal, average work.
 
-Let's say you're seeing around 60 concurrent users on average and 100 users during the peak hours of operation.
+You should run an average load test to:
 
-It's probably important to you to meet the performance goals both during normal hours and peak hours,
-therefore it's recommended to configure the load test with the high load in mind - 100 users in this case.
+* Assess the performance of your system under a typical load.
+* Identify early degradation signs during the ramp-up or full load periods.
+* Assure that the system still meets the performance standards after system changes (code and infrastructure).
 
-## Load Testing in k6
+## Considerations
 
-Note, this test has one simple threshold. The response time for 99% requests must be below 1.5 seconds.
-Thresholds are a way of ensuring that your system is meeting the performance goals you set for it.
+When you prepare an average-load test, consider the following:
 
-<CodeGroup labels={["sample-load-test.js"]} lineNumbers={[true]} heightTogglers={[true]}>
+* **Know the specific number of users and the typical throughput per process in the system.**
+
+    To find this, look through APMs or analytic tools that provide information from the production environment. If you can't access such tools, the business must provide these estimations.
+* **Gradually increase load to the target average.**
+  
+  That is, use a _ramp-up period_. This period usually lasts 1, 2, 5, or 10 minutes. A ramp-up period has many essential uses:
+    * It gives your system time to warm up or auto-scale to handle the traffic.
+    * It lets you compare response times between the low-load and average-load stages.
+    * If you run tests using our cloud service, a ramp up lets the automated performance alerts understand the expected behavior of your system.
+    
+* **Maintain average for a period longer than the ramp up.**
+
+  Aim for an average duration at least five times longer than the ramp-up to assess the performance trend over a significant period of time.
+
+* **Consider a ramp-down period.**
+  
+  The ramp down is when virtual user activity gradually decreases. The ramp down usually lasts as long as the ramp up or a bit less.
+
+## Average-load testing in k6
+
+<Blockquote mod="note" title="Start small">
+
+If this is your first time running load tests, we recommend starting small or configuring the ramp-up to be slow. Your application and infrastructure might not be as rock solid as you think. We've had thousands of users run load tests that quickly crash their applications (or staging environments).
+
+</Blockquote>
+
+The goal of an average-load test is to simulate the average amount of activity on a typical day in production. The pattern follows this sequence:
+
+1. Increase the script's activity until it reaches the desired number of users and throughput. 
+1. Maintain that load for a while
+1. Depending on the test case, stop the test or let it ramp down gradually.
+
+Configure load in the `options` object:
+
+<CodeGroup labels={["average-load.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
 import http from 'k6/http';
-import { check, group, sleep } from 'k6';
+import {sleep} from 'k6';
 
 export const options = {
+  // Key configurations for avg load test in this section
   stages: [
-    { duration: '5m', target: 100 }, // simulate ramp-up of traffic from 1 to 100 users over 5 minutes.
-    { duration: '10m', target: 100 }, // stay at 100 users for 10 minutes
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '30m', target: 100 }, // stay at 100 users for 10 minutes
     { duration: '5m', target: 0 }, // ramp-down to 0 users
   ],
-  thresholds: {
-    'http_req_duration': ['p(99)<1500'], // 99% of requests must complete below 1.5s
-    'logged in successfully': ['p(99)<1500'], // 99% of requests must complete below 1.5s
-  },
 };
-
-const BASE_URL = 'https://test-api.k6.io';
-const USERNAME = 'TestUser';
-const PASSWORD = 'SuperCroc2020';
 
 export default () => {
-  const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
-    username: USERNAME,
-    password: PASSWORD,
-  });
-
-  check(loginRes, {
-    'logged in successfully': (resp) => resp.json('access') !== '',
-  });
-
-  const authHeaders = {
-    headers: {
-      Authorization: `Bearer ${loginRes.json('access')}`,
-    },
-  };
-
-  const myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
-  check(myObjects, { 'retrieved crocodiles': (obj) => obj.length > 0 });
-
+  const urlRes = http.req('https://test-api.k6.io');
   sleep(1);
+  // MORE STEPS
+  // Here you can have more steps or complex script
+  // Step1
+  // Step2
+  // etc.
 };
 ```
 
 </CodeGroup>
 
-This is a rather simple script that authenticates the user, and retrieves list of objects.
-If you would like to see a more comprehensive test that makes use of groups, checks, thresholds,
-helper functions, see our [examples section](/examples).
 
-The VU chart of a typical load test looks similar to this
-![Load Test VU chart](./images/load-test.png)
+This script logic has only one request (to open a web page). Your test behavior likely has more steps. If you would like to see more complex tests that use groups, checks, thresholds, and helper functions, refer to [Examples](/examples).
 
-Note that the number of users starts at 0, and slowly ramps up to the nominal value, where it stays for an extended period of time.
-The ramp down stage is optional.
+The VU or throughput chart of an average-load test looks similar to this:
 
-We recommend you to always include a ramp-up stage in all your load tests because:
+![The shape of the average-load test as configured in the preceding script](images/chart-average-load-test-k6-script-example.png "Note that the number of users or throughput starts at 0, gradually ramps up to the desired value, and stays there for the indicated period. Then load ramps down for  a short period." )
 
-- It lets your system warm up or auto scale to handle the traffic.
-- It lets you compare the response time between the low-load and nominal-load stages.
-- If you run a load test using our SaaS cloud service, it allows the automated performance alerts to
-  better understand the normal behaviour of your system.
 
-## Load Testing scenario - simulating a normal day
+## Results analysis
 
-You may also go one step further and configure the load test to resemble your normal and peak conditions more closely.
-In that case you could configure the load test to stay at 60 users for most of the day, and ramp-up
-to 100 users during the peak hours of operation, then ramp-down back to normal load.
+An initial outcome for the average-load test appears during the ramp-up period to find whether the response time degrades as the load increases. Some systems might even fail during the ramp-up period.
 
-Make sure you don't go over your normal number of VUs - that's not load testing, but [stress testing](/test-types/stress-testing).
+The test validates if the system's performance and resource consumption stay stable during the period of full load, as some systems may display erratic behavior in this period.
 
-<CodeGroup labels={["ramp-up-scenario.js"]} lineNumbers={[true]}>
+Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as [Stress tests](../stress-testing).
 
-```javascript
-export const options = {
-  stages: [
-    { duration: '5m', target: 60 }, // simulate ramp-up of traffic from 1 to 60 users over 5 minutes.
-    { duration: '10m', target: 60 }, // stay at 60 users for 10 minutes
-    { duration: '3m', target: 100 }, // ramp-up to 100 users over 3 minutes (peak hour starts)
-    { duration: '2m', target: 100 }, // stay at 100 users for short amount of time (peak hour)
-    { duration: '3m', target: 60 }, // ramp-down to 60 users over 3 minutes (peak hour ends)
-    { duration: '10m', target: 60 }, // continue at 60 for additional 10 minutes
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
-  ],
-  thresholds: {
-    http_req_duration: ['p(99)<1500'], // 99% of requests must complete below 1.5s
-  },
-};
-```
-
-</CodeGroup>
-
-The VU chart for the above configuration should look like this:
-
-![Load Test VU chart](./images/load-test-2.png)
-
-k6 is very flexible in simulating the ramp-up/ramp-down scenarios.
-
-### Note about performance thresholds
-
-Whenever you are load testing, you have some expectations in mind.
-
-Typical expectations are:
-
-- 99% of requests should finish within 5 seconds.
-- 95% of requests should finish within 1 second.
-- 99% users should be able to login successfully on the first try.
-
-Performance thresholds are a way to describe your expectations in a formal way, and automatically
-evaluate those expectations on each test run.
-Once you have configured the thresholds you'll see a Pass/Fail metric for each threshold,
-and you will know immediately if your system fulfills your expectations without analyzing the results in detail.
-
-> #### Start small
->
-> If this is your first time running load tests, start small. Your application and infrastructure
-> might not be as rock solid as you think. We've had thousands of users run load tests that quickly
-> crashed their applications (or staging environments).
-
-If your system crashes under a load test, it means that your load test has morphed into a [stress test](/test-types/stress-testing),
-which is the next type we're covering.
