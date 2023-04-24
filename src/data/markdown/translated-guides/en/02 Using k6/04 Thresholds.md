@@ -187,16 +187,11 @@ Since thresholds are defined as the properties of a JavaScript object, you can't
 ```javascript
 export const options = {
   thresholds: {
-    // avoid using the same metric more than once here
+    // don't use the same metric more than once here
     // metric_name: [ 'count<100' ],
     // metric_name: [ 'rate<50' ],
   },
 };
-```
-
-</CodeGroup>
-
-Only the last one will remain.
 The rest will be **silently** ignored.
 If you want to set multiple thresholds for a metric, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
