@@ -19,7 +19,7 @@ excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has acce
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.1/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.2/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

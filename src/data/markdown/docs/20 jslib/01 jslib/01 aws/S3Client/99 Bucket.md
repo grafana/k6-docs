@@ -4,7 +4,7 @@ description: 'Bucket is returned by the S3Client.* methods who query S3 buckets.
 excerpt: 'Bucket is returned by the S3Client.* methods who query S3 buckets.'
 ---
 
-Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `listBuckets()` returns an array of Bucket objects. The Bucket object describes an Amazon S3 bucket.  
+Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `listBuckets()` returns an array of Bucket objects. The Bucket object describes an Amazon S3 bucket.
 
 | Name                  | Type   | Description                  |
 | :-------------------- | :----- | :--------------------------- |
@@ -16,7 +16,7 @@ Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `lis
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.1/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.2/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
