@@ -19,17 +19,17 @@ Start with smoke tests, then progress to higher loads and longer durations.
 
 The main types are as follows. Each type has its own article outlining its essential concepts.
 
-- [**Smoke tests**](../smoke-testing) validate that your script works and that the system performs adequately under minimal load.
+- [**Smoke tests**](/test-types/smoke-testing) validate that your script works and that the system performs adequately under minimal load.
 
-- [**Average-load test**](../load-testing) assess how your system performs under expected normal conditions.
+- [**Average-load test**](/test-types/load-testing) assess how your system performs under expected normal conditions.
 
-- [**Stress tests**](../stress-testing) assess how a system performs at its limits when load exceeds the expected average. 
+- [**Stress tests**](/test-types/stress-testing) assess how a system performs at its limits when load exceeds the expected average. 
 
-- [**Soak tests**](../soak-testing) assess the reliability and performance of your system over extended periods.
+- [**Soak tests**](/test-types/soak-testing) assess the reliability and performance of your system over extended periods.
 
-- [**Spike tests**](../spike-testing) validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity.
+- [**Spike tests**](/test-types/spike-testing) validate the behavior and survival of your system in cases of sudden, short, and massive increases in activity.
 
-- [**Breakpoint tests**](../breakpoint-testing) gradually increase load to identify the capacity limits of the system.
+- [**Breakpoint tests**](/test-types/breakpoint-testing) gradually increase load to identify the capacity limits of the system.
 
 <Blockquote mod="note" title="">
 

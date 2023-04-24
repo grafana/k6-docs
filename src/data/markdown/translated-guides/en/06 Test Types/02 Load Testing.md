@@ -103,5 +103,5 @@ An initial outcome for the average-load test appears during the ramp-up period t
 
 The test validates if the system's performance and resource consumption stay stable during the period of full load, as some systems may display erratic behavior in this period.
 
-Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as [Stress tests](../stress-testing).
+Once you know your system performs well and survives a typical load, you may need to push it further to determine how it behaves at above-average conditions. Some of these above-average conditions are known as [Stress tests](/test-types/stress-testing).
 
