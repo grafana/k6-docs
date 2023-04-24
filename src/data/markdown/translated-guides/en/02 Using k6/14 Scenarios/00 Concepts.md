@@ -12,7 +12,7 @@ If you know a bit about how scenarios work, you'll design better tests and inter
 | On this page                                                                           | Read about                                                                                                                            |
 |----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | [Open and closed models](/using-k6/scenarios/concepts/open-vs-closed/)                 | Different ways k6 can schedule VUs, their affects on test results, and how k6 implements the open model in its arrival-rate executors |
+| [Graceful Stop](/using-k6/scenarios/concepts/graceful-stop)                            | A configurable period for iterations to finish or ramp down after the test reaches its scheduled duration                             |
 | [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation/) | How k6 allocates VUs in arrival-rate executors                                                                                        |
 | [Dropped iterations](/using-k6/scenarios/concepts/dropped-iterations/)                 | Possible reasons k6 might drop a scheduled iteration                                                                                  |
-| [Graceful Stop](/using-k6/scenarios/concepts/graceful-stop)                            | A configurable period to let iterations finish or ramp down after the test has reached it's scheduled duration                        |
 
