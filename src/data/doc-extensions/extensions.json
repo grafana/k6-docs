@@ -865,6 +865,18 @@
       },
       "official": false,
       "categories": ["Misc"]
+    },
+    {
+      "name": "xk6-chai",
+      "description": "Embed Chai.js into the k6 binary",
+      "url": "https://github.com/szkiba/xk6-chai",
+      "logo": "",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "official": false,
+      "categories": ["Misc"]
     }
   ]
 }
