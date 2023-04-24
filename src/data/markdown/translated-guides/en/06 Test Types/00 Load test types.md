@@ -57,7 +57,7 @@ When you write and run different test types in k6, consider the following.
 
 ### Start with a smoke test
 
-Start with a [smoke test](../smoke-testing).
+Start with a [smoke test](/test-types/smoke-testing).
 Before beginning larger tests, validate that your scripts work as expected and that your system performs well with a few users.
 
 After you know that the script works and the system responds correctly to minimal load,
