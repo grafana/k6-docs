@@ -5,7 +5,7 @@ excerpt: 'Thresholds are a pass/fail criteria used to specify the performance ex
 
 Thresholds are the pass/fail criteria that you define for your test metrics.
 If the performance of the system under test (SUT) does not meet the conditions of your threshold,
-**the test will finish with a failed status.**
+**the test finishes with a failed status.**
 
 Often, testers use thresholds to codify their SLOs.
 For example, you can create thresholds for any combination of the following expectations:
@@ -23,7 +23,7 @@ Thresholds are also essential for [load-testing automation](/testing-guides/auto
 
 After that, you need to worry about the test only after your SUT fails to meet its performance expectations.
 
-## Example: HTTP errors and response duration
+## Example: Set threshold for HTTP errors and response duration
 
 This sample script specifies two thresholds.
 One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
@@ -69,7 +69,7 @@ If any of the thresholds had failed, the little green checkmark <span style="col
   (`http_req_failed`, `http_req_duration`) would have been a red cross <span style="color:red; font-weight:bold">✗</span>,
   and k6 would have generated a non-zero exit code.
 
-## Copy-paste threshold examples
+## Threshold examples to copy and paste
 
 The quickest way to start with thresholds is to use the [standard, built-in k6 metrics](/using-k6/metrics#http-specific-built-in-metrics).
 Here are a few copy-paste examples that you can start using right away.
@@ -193,7 +193,7 @@ export default function () {
 
 ## Threshold Syntax
 
-To use a threshold, you must define at least one `threshold_expression`:
+To use a threshold, define at least one `threshold_expression`:
 
 <CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
 
@@ -217,11 +217,13 @@ export const options = {
 This declaration configures thresholds for the metrics `metric_name1` and `metric_name2`.
 To determine whether the threshold passes or fails, the script evaluates the `'threshold_expression'.`
 
-The `'threshold_expression'` must follow the format:
+The threshold expression must be in the following format:
 
-`aggregation_method operator value`
+```
+<aggregation_method> <operator> <value>
+```
 
-Examples:
+For example:
 
 - `avg < 200` // average duration must be less than 200ms
 - `count >= 500` // count must be larger than or equal to 500
@@ -238,7 +240,7 @@ Each of the four [metric types](/using-k6/metrics/#metric-types) included in k6 
 | Rate        | `rate`                                                                                                                                                                                                              |
 | Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, e.g. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. |
 
-Here is a (slightly contrived) sample script that uses all different types of metrics,
+This (slightly contrived) sample script uses all different types of metrics,
 setting different types of thresholds for each:
 
 <CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
@@ -311,7 +313,7 @@ Only the last one will remain.
 The rest will be **silently** ignored.
 Instead, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
-## Thresholds on tags
+## Set thresholds for specific tags
 
 It's often useful to specify thresholds on a single URL or specific tag.
 In k6, tagged requests create sub-metrics that you can use in thresholds:
@@ -364,7 +366,7 @@ export default function () {
 
 </CodeGroup>
 
-## Aborting a test when a threshold is crossed
+## Abort a test when a threshold is crossed
 
 If you want to abort a test as soon as a threshold is crossed,
 set the `abortOnFail` property to `true`.
