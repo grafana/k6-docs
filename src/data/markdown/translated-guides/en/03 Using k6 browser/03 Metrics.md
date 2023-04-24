@@ -9,9 +9,10 @@ Follow along to learn about:
 2. The existing browser metrics that k6 browser tracks
 3. How to analyze the browser metrics output
 4. How to set thresholds for your browser metrics
+
 ## Google's Core Web Vitals
 
-In order to provide users with the best user experience, Google introduced [Core Web Vitals](https://web.dev/vitals/#core-web-vitals) which consists of three important metrics to help you measure your user's experience when using your web application. In a nutshell, it gives you an indication of your page's:
+To provide users with the best user experience, Google introduced [Core Web Vitals](https://web.dev/vitals/#core-web-vitals) which consists of three important metrics to help you measure your user's experience when using your web application. In a nutshell, it gives you an indication of your page's:
 
 1. loading performance,
 2. interactivity,
@@ -23,7 +24,8 @@ These core metrics will evolve over time when technology changes, but for now, k
 |--------------------------------      |--------------------------------------------------------------------------------------------------------------|
 | webvital_largest_content_paint       | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
 | webvital_first_input_delay           | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
-| webvital_cumulative_layout_shift     | Measures a page's visual stabilty. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
+| webvital_cumulative_layout_shift     | Measures a page's visual stability. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
+
 ### Other Web Vitals
 
 Apart from the Core Web Vitals, the browser module also reports [Other Web Vitals](https://web.dev/vitals/#other-web-vitals).
@@ -34,11 +36,13 @@ Apart from the Core Web Vitals, the browser module also reports [Other Web Vital
 | webvital_time_to_first_byte          | Measures the time it takes between the browser request and the start of the response from a server. Please refer to [Time to First Byte](https://web.dev/ttfb/) for more information.|
 | webvital_first_contentful_paint      | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Please refer to [First Contentful Paint](https://web.dev/fcp/) for more information.  |
 | webvital_interaction_to_next_paint   | An experimental metric that measures a page's responsiveness. Please refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.  |
+
 ### Why are they important?
 
 The Core Web Vitals comprise one of [Google's Page Experience Signals](https://developers.google.com/search/docs/appearance/page-experience). A positive page experience naturally leads to better quality and better search engine rankings. These golden metrics help you understand which areas of your frontend application need optimization so your pages can rank higher than similar content.
 
 Existing browser measures such as the `Load` and `DOMContentLoaded` time do not accurately reflect the user's experience very well as they used to. Relying on these load events does not give the correct metric to analyze critical performance bottlenecks that your page might have. Google's Web Vitals is a better measure of your page's performance as well as your page's user experience.
+
 ## Existing browser metrics
 
 <Blockquote mod="note" title="">
@@ -89,6 +93,7 @@ After each web vital metric, an additional row with the same metric name is also
 For example, `webvital_first_contentful_paint_good` was reported twice, indicating that this metric was seen on two pages and has a rating of good. In future releases of k6, we aim to improve how to display the rating for a better developer experience.
 
 You can also visualize these results in different ways depending on your team's needs. For more information, check out our blog post on [visualizing k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). 
+
 ## Set thresholds for your browser metrics
 
 The great thing about the browser module is it can easily use all of k6's key functionalities, such as [Thresholds](https://k6.io/docs/using-k6/thresholds/).

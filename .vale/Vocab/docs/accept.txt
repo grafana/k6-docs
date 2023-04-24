@@ -199,3 +199,8 @@ metallb
 Dockerfile
 Avro
 Ethereum
+webvital
+variadic
+shm
+srgb
+kwallet

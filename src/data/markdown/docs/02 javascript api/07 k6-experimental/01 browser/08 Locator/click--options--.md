@@ -49,7 +49,7 @@ export default async function () {
 
 </CodeGroup>
 
-When a click action results in a page navigation, remember to work with `Promise.all()` and `page.waitForNavigation()` to properly handle the asychronous operation.
+When a click action results in a page navigation, remember to work with `Promise.all()` and `page.waitForNavigation()` to properly handle the asynchronous operation.
 
 <CodeGroup labels={["Click action with navigation"]}>
 
