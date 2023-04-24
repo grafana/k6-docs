@@ -868,7 +868,7 @@
     },
     {
       "name": "xk6-chai",
-      "description": "Embed Chai.js into the k6 binary",
+      "description": "Embed k6chaijs into the k6 binary",
       "url": "https://github.com/szkiba/xk6-chai",
       "logo": "",
       "author": {
