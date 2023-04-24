@@ -15,5 +15,5 @@ excerpt: 'Crypto offers basic cryptography features.'
 
 | Name | Type | Description |
 | :--- | :--- | :---------- |
-| `Crypto.getRandomValues()` | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBufferView) | Returns an array of cryptographically secure random values. |
+| `Crypto.getRandomValues()` | [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | Returns an array of cryptographically secure random values. |
 | `Crypto.randomUUID()` | [ArrayBuffer]() | Returns a randomly generated, 36 character long v4 UUID. |
