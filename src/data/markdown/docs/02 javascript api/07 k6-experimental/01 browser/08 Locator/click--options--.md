@@ -30,9 +30,9 @@ Mouse click on the chosen element.
 
 </TableWithNestedRows>
 
-### Example
+### Examples
 
-<CodeGroup labels={[]}>
+<CodeGroup labels={["Click action without navigation"]}>
 
 ```javascript
 import { chromium } from 'k6/experimental/browser';
@@ -40,10 +40,30 @@ import { chromium } from 'k6/experimental/browser';
 export default async function () {
   const browser = chromium.launch();
   const page = browser.newPage();
-  
+
   await page.goto('https://test.k6.io/browser.php');
-  const button = page.locator("#counter-button");
-  button.click();
+  const button = page.locator('#counter-button');
+  await button.click();
+}
+```
+
+</CodeGroup>
+
+When a click action results in a page navigation, remember to work with `Promise.all()` and `page.waitForNavigation()` to properly handle the asynchronous operation.
+
+<CodeGroup labels={["Click action with navigation"]}>
+
+```javascript
+import { chromium } from 'k6/experimental/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+
+  await page.goto('https://test.k6.io/');
+  const messagesLink = page.locator('a[href="/my_messages.php"]');
+
+  await Promise.all([page.waitForNavigation(), messagesLink.click()]);
 }
 ```
 

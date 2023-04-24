@@ -58,13 +58,21 @@ To run a simple local script:
 
 2. Then, run the test on your terminal with this command:
 
-  <CodeGroup labels={["CLI"]}>
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
-  ```bash
-  $ K6_BROWSER_ENABLED=true k6 run script.js
-  ```
+```bash
+$ K6_BROWSER_ENABLED=true k6 run script.js
+```
 
-  </CodeGroup>
+```bash
+C:\k6> set "K6_BROWSER_ENABLED=true" && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_ENABLED=true ; k6 run script.js
+```
+
+</CodeGroup>
 
 ## Interact with elements on your webpage
 
@@ -132,7 +140,9 @@ export default async function () {
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
+    const submitButton = page.locator('input[type="submit"]');
+
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     check(page, {
       header: page.locator('h2').textContent() == 'Welcome, admin!',

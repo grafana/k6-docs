@@ -26,7 +26,7 @@ The main use case for the browser module is to test performance on the browser l
 
 ```javascript
 import { chromium } from 'k6/experimental/browser';
-import { check } from 'k6'
+import { check } from 'k6';
 
 export default async function () {
   const browser = chromium.launch({ headless: false });
@@ -38,13 +38,12 @@ export default async function () {
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('input[type="submit"]').click(),
-    ]);
+    const submitButton = page.locator('input[type="submit"]');
+
+    await Promise.all([page.waitForNavigation(), submitButton.click()]);
 
     check(page, {
-      'header': page.locator('h2').textContent() == 'Welcome, admin!',
+      header: page.locator('h2').textContent() == 'Welcome, admin!',
     });
   } finally {
     page.close();
@@ -87,23 +86,34 @@ default ✓ [===============================] 1 VUs  00m01.9s/10m0s  1/1 iters, 
 
      ✓ header
 
-     browser_dom_content_loaded.......: avg=7.31ms  min=122µs   med=5.59ms  max=16.22ms  p(90)=14.1ms   p(95)=15.16ms
-     browser_first_contentful_paint...: avg=16.8ms  min=14.78ms med=16.8ms  max=18.81ms  p(90)=18.41ms  p(95)=18.61ms
-     browser_first_paint..............: avg=16.75ms min=14.73ms med=16.75ms max=18.78ms  p(90)=18.37ms  p(95)=18.58ms
-     browser_loaded...................: avg=7.23ms  min=1.13ms  med=4.56ms  max=16.01ms  p(90)=13.72ms  p(95)=14.87ms
-     checks...........................: 100.00% ✓ 1        ✗ 0
-     data_received....................: 5.8 kB  3.0 kB/s
-     data_sent........................: 2.6 kB  1.3 kB/s
-     http_req_connecting..............: avg=40.4ms  min=0s      med=0s      max=202ms    p(90)=121.2ms  p(95)=161.59ms
-     http_req_duration................: avg=117.6ms min=649µs   med=96.27ms max=298.96ms p(90)=218.15ms p(95)=258.55ms
-     http_req_receiving...............: avg=75.4ms  min=0s      med=94ms    max=95ms     p(90)=95ms     p(95)=95ms
-     http_req_sending.................: avg=0s      min=0s      med=0s      max=0s       p(90)=0s       p(95)=0s
-     http_req_tls_handshaking.........: avg=21.6ms  min=0s      med=0s      max=108ms    p(90)=64.8ms   p(95)=86.39ms
-     http_reqs........................: 5       2.568486/s
-     iteration_duration...............: avg=1.94s   min=1.94s   med=1.94s   max=1.94s    p(90)=1.94s    p(95)=1.94s
-     iterations.......................: 1       0.513697/s
-     vus..............................: 1       min=1      max=1
-     vus_max..........................: 1       min=1      max=1
+     browser_dom_content_loaded.............................: avg=63.74ms  min=2.11ms   med=21.66ms  max=167.44ms p(90)=138.28ms p(95)=152.86ms
+     browser_first_paint....................................: avg=72.62ms  min=41.31ms  med=72.62ms  max=103.94ms p(90)=97.67ms  p(95)=100.8ms
+     browser_loaded.........................................: avg=63.16ms  min=6.52ms   med=15.98ms  max=166.98ms p(90)=136.78ms p(95)=151.88ms
+     checks.................................................: 100.00% ✓ 1        ✗ 0
+     data_received..........................................: 5.8 kB  659 B/s
+     data_sent..............................................: 2.6 kB  291 B/s
+     http_req_connecting....................................: avg=48ms     min=0s       med=0s       max=240ms    p(90)=144ms    p(95)=191.99ms
+     http_req_duration......................................: avg=155.01ms min=3.09ms   med=121.84ms max=405.52ms p(90)=294.59ms p(95)=350.05ms
+     http_req_receiving.....................................: avg=92.6ms   min=0s       med=108ms    max=138ms    p(90)=127.2ms  p(95)=132.6ms
+     http_req_sending.......................................: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+     http_req_tls_handshaking...............................: avg=22.4ms   min=0s       med=0s       max=112ms    p(90)=67.2ms   p(95)=89.59ms
+     http_reqs..............................................: 5       0.566242/s
+     iteration_duration.....................................: avg=8.82s    min=8.82s    med=8.82s    max=8.82s    p(90)=8.82s    p(95)=8.82s
+     iterations.............................................: 1       0.113248/s
+     vus....................................................: 1       min=1      max=1
+     vus_max................................................: 1       min=1      max=1
+     webvital_cumulative_layout_shift.......................: avg=0        min=0        med=0        max=0        p(90)=0        p(95)=0
+     webvital_cumulative_layout_shift_good..................: 1       0.113248/s
+     webvital_first_contentful_paint........................: avg=415.35ms min=302ms    med=415.35ms max=528.7ms  p(90)=506.03ms p(95)=517.36ms
+     webvital_first_contentful_paint_good...................: 2       0.226497/s
+     webvital_first_input_delay.............................: avg=5.59ms   min=5.59ms   med=5.59ms   max=5.59ms   p(90)=5.59ms   p(95)=5.59ms
+     webvital_first_input_delay_good........................: 1       0.113248/s
+     webvital_interaction_to_next_paint.....................: avg=248ms    min=248ms    med=248ms    max=248ms    p(90)=248ms    p(95)=248ms
+     webvital_interaction_to_next_paint_needs_improvement...: 1       0.113248/s
+     webvital_largest_content_paint.........................: avg=528.7ms  min=528.7ms  med=528.7ms  max=528.7ms  p(90)=528.7ms  p(95)=528.7ms
+     webvital_largest_content_paint_good....................: 1       0.113248/s
+     webvital_time_to_first_byte............................: avg=320.59ms min=247.09ms med=320.59ms max=394.1ms  p(90)=379.4ms  p(95)=386.75ms
+     webvital_time_to_first_byte_good.......................: 2       0.226497/s
 ```
 
 </CodeGroup>
