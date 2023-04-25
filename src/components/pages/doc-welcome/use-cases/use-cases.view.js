@@ -27,8 +27,8 @@ export const UseCases = () => {
               className={'link'}
               to={
                 urlLocale === 'es'
-                  ? '/es/tipos-de-prueba/stress-testing/#spike-testing'
-                  : '/test-types/stress-testing#spike-testing-in-k6'
+                  ? '/test-types/spike-testing/'
+                  : '/test-types/spike-testing/'
               }
             >
               spike
