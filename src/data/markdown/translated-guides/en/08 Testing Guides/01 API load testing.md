@@ -67,7 +67,7 @@ Even if the test logic stays the same, its load might change.
 The test goal determines the test type, which in turn determines the test load.
 Consider the following test types, which correspond to different goals load profiles:
 
-- [Smoke test](/docs/test-types/smoke-testing). Verify the system functions with minimal load.
+- [Smoke test](/test-types/smoke-testing). Verify the system functions with minimal load.
 - [“Average” load test](/test-types/load-testing/). Discover how the system functions with typical traffic.
 - [Stress test](/test-types/stress-testing). Discover how the system functions with the load of peak traffic.
 - [Spike test](/test-types/spike-testing). Discover how the system functions with sudden and massive increases in traffic.
