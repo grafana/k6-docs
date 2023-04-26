@@ -106,8 +106,6 @@ To use a threshold, follow these steps:
   The real text must be the name of the metric and the threshold expression.
 
 
-</CodeGroup>
-
 This declaration configures thresholds for the metrics `metric_name1` and `metric_name2`.
 To determine whether the threshold passes or fails, the script evaluates the `'threshold_expression'.`
 
