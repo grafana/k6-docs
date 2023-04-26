@@ -74,31 +74,37 @@ and k6 would exit with a non-zero exit code.
 
 To use a threshold, follow these steps:
 
-1. In the `options.thresholds` object, set a key using the name of the metric you want the threshold for:
+1. In the `thresholds` property of the `options` object, set a key using the name of the metric you want the threshold for:
+  ```
+  export const options = {
+    thresholds: {
+    ...
+  }
+  ```
 2. Define at least one threshold expression. You can do this in two ways:
     - The short format puts all threshold expressions as strings in an array.
     - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort).
 
-For example, this script demonstrates short and long formats.
-Note that `metric_name1` and `<threshold_expression` are placeholders.
-The real text must be the name of the metric and the threshold expression.
+  ```
+  export const options = {
+    thresholds: {
+      //short format
+      METRIC_NAME: ["THRESHOLD_EXPRESSION", `...`],
+      //long format
+      METRIC_NAME2: [
+        {
+          threshold: "THRESHOLD_EXPRESSION",
+          abortOnFail: true, // boolean
+          delayAbortEval: "10s", // string
+        },
+      ], // full format
+    },
+  };
+  ```
 
-<CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
+  Note that `METRIC_NAME1` and `THRESHOLD_EXPRESSION` are placeholders.
+  The real text must be the name of the metric and the threshold expression.
 
-```javascript
-export const options = {
-  thresholds: {
-    metric_name1: ["<threshold_expression>", `...`], // short format
-    metric_name2: [
-      {
-        threshold: "<threshold_expression>",
-        abortOnFail: true, // boolean
-        delayAbortEval: "10s", // string
-      },
-    ], // full format
-  },
-};
-```
 
 </CodeGroup>
 
@@ -120,6 +126,8 @@ Some examples of threshold expressions are as follows:
 - `count >= 500` // count must be larger than or equal to 500
 - `p(90) < 300` // 90% of samples must be below 300
 
+
+### Aggregation methods by type
 
 Each of the four [metric types](/using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
 
@@ -188,10 +196,14 @@ Since thresholds are defined as the properties of a JavaScript object, you can't
 export const options = {
   thresholds: {
     // don't use the same metric more than once here
-    // metric_name: [ 'count<100' ],
-    // metric_name: [ 'rate<50' ],
+    metric_name: ["count<100"],
+    metric_name: ["rate<50"],
   },
 };
+```
+
+</CodeGroup>
+
 The rest will be **silently** ignored.
 If you want to set multiple thresholds for a metric, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
 
