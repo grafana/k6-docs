@@ -95,7 +95,7 @@ These metrics are generated only when the test makes HTTP requests.
 <Blockquote mod="note" title="">
 
 For all `http_req_*` metrics, **the timestamp is emitted the end of the request.**
-In other words, the timestamp happens when k6 receives a return status, or the request times out.
+In other words, the timestamp happens when k6 receives the end of the response body, or the request times out.
 
 </Blockquote>
 
