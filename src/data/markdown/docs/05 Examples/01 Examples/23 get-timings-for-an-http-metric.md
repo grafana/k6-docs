@@ -1,9 +1,14 @@
 ---
-title: Calculate HTTP timings
+title: Get timings for an HTTP metric
 excerpt: How to calculate timings for an individual k6 metric
 ---
 
-To access the timing information from an individual HTTP request, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`:
+
+To access the timing information from an individual HTTP request, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`.
+One use case of this is to use the timings in a [Custom metric](/using-k6/metrics/create-custom-metrics) to make a trend for a specific endpoint.
+
+The timings are as follows:
+
 
 - blocked: equals to `http_req_blocked`.
 - connecting: equals to `http_req_connecting`.
@@ -12,6 +17,8 @@ To access the timing information from an individual HTTP request, the [Response.
 - waiting: equals to `http_req_waiting`.
 - receiving: equals to `http_req_receiving`.
 - duration: equals to `http_req_duration`.
+
+This script gets the request duration timing for a specific GET request and logs it to the console.
 
 <CodeGroup lineNumbers={[true]}>
 
