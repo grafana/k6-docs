@@ -26,11 +26,8 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page
-      .goto('https://test.k6.io/browser.php', { 
-        // Will not be able to load the page
-        waitUntil: 'networkidle' 
-    });
+    // Will not be able to load the page
+    await page.goto('https://test.k6.io/browser.php');
   } finally {
     page.close();
     browser.close();

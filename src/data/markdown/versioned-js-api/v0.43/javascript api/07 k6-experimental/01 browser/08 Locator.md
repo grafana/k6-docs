@@ -54,9 +54,7 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page.goto('https://test.k6.io/flip_coin.php', {
-      waitUntil: 'networkidle',
-    });
+    await page.goto('https://test.k6.io/flip_coin.php');
 
     /*
     In this example, we will use two locators, matching a
