@@ -43,5 +43,5 @@ After you select the desired parameters, **Save** to apply the changes. Note tha
 
 To reset the configuration, use the default trending metric with **Reset to default trending metric** button in the bottom left corner.
 
-k6 calculates the required values, then plots them in the performance-trending chart. In this example, the results look like this:
+k6 calculates the required values, then plots them in the performance-trending chart.
 
