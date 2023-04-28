@@ -15,7 +15,7 @@ const BlockingAwsBlockquote = () => (
       we recommend using these operations in the
       <span className="code-inline">setup</span> and{' '}
       <span className="code-inline">teardown</span>{' '}
-      <a href="/using-k6/test-lifecycle/">lifecycle functions</a>. These
+      <a href="/docs/using-k6/test-lifecycle/">lifecycle functions</a>. These
       functions run before and after the test run and thus do not influence test
       results.
     </p>
