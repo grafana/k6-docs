@@ -21,14 +21,16 @@ export const ExtensionsTitleGroup = ({
       className="container"
       breadcrumbs={breadcrumbs}
     />
-    <a
-      className={classNames(styles.editLink, breadcrumbs && styles.low)}
-      href={EXTENSIONS_HREF}
-      target={'_blank'}
-      rel={'noreferrer'}
-    >
-      <Pencil />
-      Add your own extension
-    </a>
+    <div className="container">
+      <a
+        className={classNames(styles.editLink, breadcrumbs && styles.low)}
+        href={EXTENSIONS_HREF}
+        target={'_blank'}
+        rel={'noreferrer'}
+      >
+        <Pencil />
+        Add your own extension
+      </a>
+    </div>
   </div>
 );

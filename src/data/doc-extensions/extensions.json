@@ -9,8 +9,11 @@
         "name": "Oscar R. Reyes",
         "url": "https://github.com/xoscar"
       },
-      "official": false,
-      "categories": ["Observability"]
+      "stars": "7",
+      "type": ["Output"],
+      "categories": ["Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-prompt",
@@ -21,8 +24,11 @@
         "name": "Juan David Correa",
         "url": "https://github.com/Juandavi1"
       },
-      "official": false,
-      "categories": ["Arguments"]
+      "stars": "9",
+      "type": ["JavaScript"],
+      "categories": ["Arguments"],
+      "tiers": ["Verified"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-client-tracing",
@@ -33,8 +39,11 @@
         "name": "",
         "url": ""
       },
-      "official": false,
-      "categories": ["Observability"]
+      "stars": "23",
+      "type": ["JavaScript"],
+      "categories": ["Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-websockets",
@@ -45,8 +54,11 @@
         "name": "",
         "url": ""
       },
-      "official": false,
-      "categories": ["WebSockets"]
+      "stars": "11",
+      "type": ["JavaScript"],
+      "categories": ["WebSockets"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-kafka",
@@ -57,8 +69,11 @@
         "name": "Mostafa Moradian",
         "url": "https://github.com/mostafa"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "79",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-notification",
@@ -69,8 +84,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "16",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-disruptor",
@@ -82,8 +100,11 @@
         "name": "Pablo Chacin",
         "url": "https://github.com/pablochacin"
       },
-      "official": false,
-      "categories": ["Chaos Engineering", "Kubernetes"]
+      "stars": "31",
+      "type": ["JavaScript"],
+      "categories": ["Chaos Engineering", "Kubernetes"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-sql",
@@ -94,8 +115,11 @@
         "name": "Ivan Mirić",
         "url": "https://github.com/imiric"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "43",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-redis",
@@ -106,8 +130,11 @@
         "name": "",
         "url": "https://github.com/grafana"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "13",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-distributed-tracing",
@@ -118,8 +145,11 @@
         "name": "grafana",
         "url": "https://github.com/grafana"
       },
-      "official": true,
-      "categories": ["Observability"]
+      "stars": "57",
+      "type": ["Output"],
+      "categories": ["Observability"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-datadog",
@@ -130,8 +160,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-exec",
@@ -142,8 +175,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "11",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-interpret",
@@ -154,8 +190,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "7",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-sqs",
@@ -166,8 +205,11 @@
         "name": "Matthew Ridehalgh",
         "url": "https://github.com/mridehalgh"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-file",
@@ -178,8 +220,11 @@
         "name": "Vitali Asheichyk",
         "url": "https://github.com/avitalique"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "11",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-wamp",
@@ -190,9 +235,11 @@
         "name": "Maciek Szczesniak",
         "url": "https://github.com/vvarp"
       },
-      "official": false,
+      "stars": "1",
+      "type": ["JavaScript"],
       "categories": ["Protocol"],
-      "type": false
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-mqtt",
@@ -203,8 +250,11 @@
         "name": "pmalhaire",
         "url": "https://github.com/pmalhaire"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "18",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-kv",
@@ -215,8 +265,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "7",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-url",
@@ -227,8 +280,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-kubernetes",
@@ -239,8 +295,11 @@
         "name": "Alexey Kuznetsov",
         "url": "https://github.com/lxkuz"
       },
-      "official": false,
-      "categories": ["Containers"]
+      "stars": "37",
+      "type": ["JavaScript"],
+      "categories": ["Containers"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-client-prometheus-remote",
@@ -251,8 +310,11 @@
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
       },
-      "official": false,
-      "categories": ["Observability"]
+      "stars": "10",
+      "type": ["JavaScript"],
+      "categories": ["Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-elasticsearch",
@@ -263,8 +325,11 @@
         "name": "",
         "url": "https://github.com/elastic"
       },
-      "official": true,
-      "categories": ["Data"]
+      "stars": "6",
+      "type": ["Output"],
+      "categories": ["Data"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-influxdb",
@@ -275,8 +340,11 @@
         "name": "",
         "url": "https://github.com/grafana"
       },
-      "official": true,
-      "categories": ["Data"]
+      "stars": "28",
+      "type": ["Output"],
+      "categories": ["Data"],
+      "tiers": ["Official"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-pubsub",
@@ -287,8 +355,11 @@
         "name": "Oleksii Vodotyiets",
         "url": "https://github.com/olvod"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "5",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-mllp",
@@ -299,8 +370,11 @@
         "name": "Gjergj Sheldija",
         "url": "https://github.com/gjergjsheldija"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-docker",
@@ -311,8 +385,11 @@
         "name": "Alexey Kuznetsov",
         "url": "https://github.com/lxkuz"
       },
-      "official": false,
-      "categories": ["Containers"]
+      "stars": "10",
+      "type": ["JavaScript"],
+      "categories": ["Containers"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-ssh",
@@ -323,8 +400,11 @@
         "name": "Alexey Kuznetsov",
         "url": "https://github.com/lxkuz"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "7",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-yaml",
@@ -335,8 +415,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "3",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-toml",
@@ -347,8 +430,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-csv",
@@ -359,8 +445,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-ansible-vault",
@@ -371,8 +460,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-amqp",
@@ -383,8 +475,11 @@
         "name": "Alexey Kuznetsov",
         "url": "https://github.com/lxkuz"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "14",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-crypto",
@@ -395,8 +490,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-jose",
@@ -407,8 +505,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "5",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-prometheus-remote",
@@ -419,8 +520,11 @@
         "name": "",
         "url": "https://github.com/grafana"
       },
-      "official": false,
-      "categories": ["Reporting", "Observability"]
+      "stars": "92",
+      "type": ["JavaScript"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-cache",
@@ -431,8 +535,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-mock",
@@ -443,8 +550,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "9",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-dotenv",
@@ -455,8 +565,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "12",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-faker",
@@ -467,8 +580,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "15",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-dashboard",
@@ -479,8 +595,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Reporting", "Observability"]
+      "stars": "64",
+      "type": ["JavaScript"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-cable",
@@ -491,8 +610,11 @@
         "name": "Evil Martians",
         "url": "https://github.com/evilmartians"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "18",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-kafka",
@@ -503,8 +625,11 @@
         "name": "Mihail Stoykov",
         "url": "https://github.com/mstoykov"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "16",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-timescaledb",
@@ -515,8 +640,11 @@
         "name": "",
         "url": ""
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "16",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-telegram",
@@ -527,8 +655,11 @@
         "name": "Maksimall89",
         "url": "https://github.com/Maksimall89"
       },
-      "official": false,
-      "categories": ["Reporting", "Messaging"]
+      "stars": "2",
+      "type": ["JavaScript"],
+      "categories": ["Reporting", "Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-nats",
@@ -539,8 +670,11 @@
         "name": "Yeray Darias Camacho",
         "url": "https://github.com/ydarias"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "8",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-playwright",
@@ -551,8 +685,11 @@
         "name": "We Open Source Performance - Nick Vuono",
         "url": "https://github.com/wosp-io"
       },
-      "official": false,
-      "categories": ["Browser"]
+      "stars": "21",
+      "type": ["JavaScript"],
+      "categories": ["Browser"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-avro",
@@ -563,8 +700,11 @@
         "name": "Matthias Riegler",
         "url": "https://github.com/xvzf"
       },
-      "official": false,
-      "categories": ["Messaging", "Data"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Messaging", "Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-tcp",
@@ -575,8 +715,11 @@
         "name": "Nikolay Alexandrov",
         "url": "https://github.com/NAlexandrov"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "6",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-stomp",
@@ -587,8 +730,11 @@
         "name": "Walter Wanderley",
         "url": "https://github.com/walterwanderley"
       },
-      "official": false,
-      "categories": ["Messaging", "Protocol"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Messaging", "Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-loki",
@@ -599,8 +745,11 @@
         "name": "",
         "url": "https://github.com/grafana"
       },
-      "official": false,
-      "categories": ["Observability", "Messaging"]
+      "stars": "18",
+      "type": ["JavaScript"],
+      "categories": ["Observability", "Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-cognito",
@@ -611,8 +760,11 @@
         "name": "Timothée MIEULET",
         "url": "https://github.com/tmieulet"
       },
-      "official": false,
-      "categories": ["Authentication"]
+      "stars": "2",
+      "type": ["JavaScript"],
+      "categories": ["Authentication"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-error",
@@ -623,8 +775,11 @@
         "name": "Maksimall89",
         "url": "https://github.com/maksimall89"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "2",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-oauth-pkce",
@@ -635,8 +790,11 @@
         "name": "Feng He",
         "url": "https://github.com/frankhefeng"
       },
-      "official": false,
-      "categories": ["Authentication"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Authentication"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-output-dynatrace",
@@ -647,8 +805,11 @@
         "name": "Henrik Rexed",
         "url": "https://github.com/henrikrexed"
       },
-      "official": false,
-      "categories": ["Reporting", "Observability"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-git",
@@ -659,8 +820,11 @@
         "name": "Sean Keery",
         "url": "https://github.com/skibum55"
       },
-      "official": false,
-      "categories": ["Data", "Protocol"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Data", "Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-smtp",
@@ -671,8 +835,11 @@
         "name": "gpiechnik2",
         "url": "https://github.com/gpiechnik2"
       },
-      "official": false,
-      "categories": ["Protocol"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-temporal",
@@ -683,8 +850,11 @@
         "name": "temporalio",
         "url": "https://github.com/temporalio"
       },
-      "official": false,
-      "categories": ["Platform"]
+      "stars": "6",
+      "type": ["JavaScript"],
+      "categories": ["Platform"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-celery",
@@ -695,8 +865,11 @@
         "name": "Oleksandr Kotov",
         "url": "https://github.com/fornfrey"
       },
-      "official": false,
-      "categories": ["Messaging"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Messaging"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-es",
@@ -707,8 +880,11 @@
         "name": "Barthélemy Vessemont",
         "url": "https://github.com/BarthV"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-httpagg",
@@ -719,8 +895,11 @@
         "name": "gpiechnik2",
         "url": "https://github.com/gpiechnik2"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "5",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-harbor",
@@ -731,8 +910,11 @@
         "name": "He Weiwei",
         "url": "https://github.com/heww"
       },
-      "official": false,
-      "categories": ["Containers"]
+      "stars": "3",
+      "type": ["JavaScript"],
+      "categories": ["Containers"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-snowflake",
@@ -743,8 +925,11 @@
         "name": "Tom LeGodais",
         "url": "https://github.com/tomlegodais"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-mongo",
@@ -755,8 +940,11 @@
         "name": "GhMartingit",
         "url": "https://github.com/GhMartingit"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-neo4j",
@@ -767,8 +955,11 @@
         "name": "Patrick Janeiro",
         "url": "https://github.com/patrick-janeiro"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-google-iap",
@@ -779,8 +970,11 @@
         "name": "Ackee",
         "url": "https://github.com/AckeeCZ"
       },
-      "official": false,
-      "categories": ["Authentication"]
+      "stars": "1",
+      "type": ["JavaScript"],
+      "categories": ["Authentication"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-ethereum",
@@ -791,8 +985,11 @@
         "name": "Victor Castell",
         "url": "https://github.com/distribworks"
       },
-      "official": false,
-      "categories": ["Blockchain", "Ethereum"]
+      "stars": "4",
+      "type": ["JavaScript"],
+      "categories": ["Blockchain", "Ethereum"],
+      "tiers": ["Community"],
+      "cloudEnabled": true
     },
     {
       "name": "xk6-output-timestream",
@@ -803,8 +1000,11 @@
         "name": "Leon York",
         "url": "https://github.com/leonyork"
       },
-      "official": false,
-      "categories": ["Reporting"]
+      "stars": "9",
+      "type": ["JavaScript"],
+      "categories": ["Reporting"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-output-prometheus-pushgateway",
@@ -815,8 +1015,11 @@
         "name": "Masashi Kurita",
         "url": "https://github.com/martymarron"
       },
-      "official": false,
-      "categories": ["Reporting", "Observability"]
+      "stars": "2",
+      "type": ["JavaScript"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-opentelemetry",
@@ -827,8 +1030,11 @@
         "name": "Thomas Hamm",
         "url": "https://github.com/thmshmm"
       },
-      "official": false,
-      "categories": ["Observability"]
+      "stars": "10",
+      "type": ["JavaScript"],
+      "categories": ["Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-couchbase",
@@ -839,8 +1045,11 @@
         "name": "thotasrinath",
         "url": "https://github.com/thotasrinath"
       },
-      "official": false,
-      "categories": ["Data"]
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-top",
@@ -851,8 +1060,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Reporting", "Observability"]
+      "stars": "7",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     },
     {
       "name": "xk6-enhanced",
@@ -863,8 +1075,11 @@
         "name": "Iván Szkiba",
         "url": "https://github.com/szkiba"
       },
-      "official": false,
-      "categories": ["Misc"]
+      "stars": "7",
+      "type": ["Output"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
