@@ -5,6 +5,8 @@ description: 'S3Client allows interacting with AWS S3 buckets and objects'
 excerpt: 'S3Client class allows interacting with AWS S3 buckets and objects'
 ---
 
+<BlockingAwsBlockquote />
+
 S3Client allows interacting with AWS S3's buckets and objects. Namely, it allows the user to list buckets and the objects they contain, as well as download, uploading, and deleting objects. The S3Client operations are blocking, and we recommend reserving their usage to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) functions as much as possible.
 
 S3Client is included in both the dedicated jslib `s3.js` bundle, and the `aws.js` one, containing all the services clients.

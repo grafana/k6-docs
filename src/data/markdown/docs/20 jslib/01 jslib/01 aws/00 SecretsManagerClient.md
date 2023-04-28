@@ -5,6 +5,8 @@ description: 'SecretsManagerClient allows interacting with AWS secrets stored in
 excerpt: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 ---
 
+<BlockingAwsBlockquote />
+
 SecretsManagerClient allows interacting with secrets stored in AWS's Secrets Manager. Namely, it allows the user to list, download, create, modify and delete secrets. Note that the SecretsManagerClient operations are blocking, and we recommend reserving their usage to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) functions as much as possible.
 
 SecretsManagerClient is included in both the dedicated jslib `secrets-manager.js` bundle, and the `aws.js` one, containing all the services clients.
