@@ -31,7 +31,7 @@ export default async function () {
   context.setDefaultNavigationTimeout(1000); // 1s
 
   try {
-    await page.goto('https://httpbin.test.k6.io/delay/5', { waitUntil: 'networkidle' });
+    await page.goto('https://httpbin.test.k6.io/delay/5');
   } finally {
     page.close();
     browser.close();

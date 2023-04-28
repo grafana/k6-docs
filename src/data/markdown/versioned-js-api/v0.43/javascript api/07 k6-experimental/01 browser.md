@@ -35,7 +35,7 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/');
   } finally {
     page.close();
     browser.close();
