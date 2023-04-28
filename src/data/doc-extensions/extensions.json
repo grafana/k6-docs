@@ -524,7 +524,7 @@
       "type": ["Output"],
       "categories": ["Reporting", "Observability"],
       "tiers": ["Official"],
-      "cloudEnabled": true
+      "cloudEnabled": false
     },
     {
       "name": "xk6-cache",
