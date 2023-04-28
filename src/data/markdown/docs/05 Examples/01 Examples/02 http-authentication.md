@@ -110,7 +110,7 @@ export default function () {
 
 ## AWS Signature v4 authentication with the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws)
 
-To authenticate requests to AWS APIs using [AWS Signature Version 4](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html), k6 offers the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws) javascript library which provides a dedicated `SignatureV4` class. This class allows to produce authenticated requests that can be sent to AWS APIs using the `http` k6 module.
+To authenticate requests to AWS APIs using [AWS Signature Version 4](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html), k6 offers the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws) JavaScript library, which provides a dedicated `SignatureV4` class. This class can produce authenticated requests to send to AWS APIs using the `http` k6 module.
 
 Here's an example script to demonstrate how to sign a request to fetch an object from an S3 bucket:
 
