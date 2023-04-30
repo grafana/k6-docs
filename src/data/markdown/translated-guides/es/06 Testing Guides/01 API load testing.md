@@ -58,12 +58,12 @@ Por ejemplo, su equipo podría crear un set de pruebas para flujos comunes de us
 
 El objetivo de la prueba determina qué tipo de prueba se debe usar, lo cual, a su vez, determina la carga de prueba. Considere los siguientes tipos de prueba que corresponden a diferentes perfiles y objetivos:
 
-- [Smoke test](https://k6.io/docs/test-types/smoke-testing). Verifique su script y las funciones del sistema con una carga mínima.
-- [“Average” load test](https://k6.io/docs/test-types/load-testing/). Descubra cómo reacciona el sistema al recibir tráfico típico.
-- [Stress test](https://k6.io/docs/test-types/stress-testing). Descubra cómo funciona el sistema con una carga de tráfico superior a lo típico.
-- [Spike test](https://k6.io/docs/test-types/stress-testing#spike-testing-in-k6). Descubra cómo funciona el sistema con repentinos y masivos aumentos en el tráfico.
-- [Breaking test](https://github.com/grafana/k6-learn/blob/main/Modules/I-Performance-testing-principles/03-Load-Testing.md#breakpoint-test). Incrementa progresivamente el tráfico para descubrir los puntos de quiebre del sistema.
-- [Soak test](https://k6.io/docs/test-types/soak-testing). Descubra como y en qué momento se degrada el sistema bajo cargas de mayor duración.
+- [Smoke test](/test-types/smoke-testing). Verifique su script y las funciones del sistema con una carga mínima.
+- [“Average” load test](/test-types/load-testing/). Descubra cómo reacciona el sistema al recibir tráfico típico.
+- [Stress test](/test-types/stress-testing/). Descubra cómo funciona el sistema con una carga de tráfico superior a lo típico.
+- [Spike test](/test-types/spike-testing/). Descubra cómo funciona el sistema con repentinos y masivos aumentos en el tráfico.
+- [Breaking test](/test-types/breakpoint-testing/). Incrementa progresivamente el tráfico para descubrir los puntos de quiebre del sistema.
+- [Soak test](/test-types/soak-testing). Descubra como y en qué momento se degrada el sistema bajo cargas de mayor duración.
 
 Los tipos de prueba que elija definen cómo planificar y estructurar su prueba. Pero cada aplicación, organización y proyecto de prueba es diferente. Nuestra recomendación es siempre:
 
