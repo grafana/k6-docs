@@ -4,17 +4,16 @@ description: How to build custom k6 metrics for each metric type.
 ---
 
 Besides the [built-in metrics](/results-output/metrics-reference), you can create custom metrics.
-For example, you can create some derived metrics from the built-in metrics, or you might use the [Response.timings](/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
+For example, you can create some derived metrics from the built-in metrics, or use the [Response.timings](/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
 
 Each metric type has a [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) to create a custom metric.
 The constructor creates a metric object of the declared type. Each type has methods to take metric measurements.
 
 If you need help constructing a custom metric, read the following sections of this document.
-They provide a walkthrough of the procedure, along with examples for each metric type.
+They document the procedure and provide examples.
+
 If you're comfortable with these Javascript conventions already, you might prefer to read the [reference documentation for each metric constructor](/javascript-api/k6-metrics).
 Each topic has examples to make a custom metric and create thresholds from it.
-
-k6 reports custom metrics at the end of a load test, just like HTTP timings.
 
 ## Create a custom metric
 
@@ -70,7 +69,7 @@ $ k6 run script.js
 </CodeGroup>
 
 You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
-This can be useful when analyzing test results.
+You can use these tags to filter test results.
 
 <Blockquote mod="note" title="">
 
@@ -82,7 +81,7 @@ For long-running scripts, custom metrics might appear only after the test runs a
 ## Examples for each type
 ### Create a counter
 
-This counter metric is a _cumulative metric_
+This counter metric is a cumulative metric
 
 <CodeGroup lineNumbers={[true]}>
 
