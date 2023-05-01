@@ -14,6 +14,9 @@ Metrics fall into four broad types:
 - _Trends_  calculate statistics for multiple values (like mean or mode).
 
 If you want to make a test fail a certain criteria, you can write [Threshold](/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the test type.
+To filter metrics, you can use [Tags and groups](/using-k6/tags-and-groups).
+You can also export metrics in various summary and granular formats, as documented in [Results output](/results-output).
+
 
 
 | On this page...                                                      | Read about...                                                           |
