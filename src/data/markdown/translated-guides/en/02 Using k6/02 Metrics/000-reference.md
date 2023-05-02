@@ -4,7 +4,7 @@ slug: '/using-k6/metrics/reference'
 excerpt: A reference of built-in metrics for different supported protocols.
 ---
 
-Every k6 test emits built-in and custom metrics.
+Every k6 test emits built-in and [Custom metrics](/using-k6/metrics/create-custom).
 Each supported protocol also has its specific metrics.
 
 ## Standard built-in metrics.
@@ -14,9 +14,9 @@ k6 always collects the following metrics, no matter what protocol the test uses:
 | Metric Name        | Type    | Description                                                                                                                                                                                                                                                   |
 |--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                        |
-| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, ensuring performance will not be affected when scaling up the load level)                                                                                                              |
-| iterations         | Counter | The aggregate number of times the VUs executed the JS script (the `default` function).                                                                                                                                                                        |
-| iteration_duration | Trend   | The time it took to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](/using-k6/workaround-to-calculate-iteration_duration) |
+| vus_max            | Gauge   | Max possible number of virtual users (VU resources are [pre-allocated](/using-k6/scenarios/concepts/arrival-rate-vu-allocation/), to avoid affecting performance when scaling up load )                                                                                                              |
+| iterations         | Counter | The aggregate number of times the VUs execute the JS script (the `default` function).                                                                                                                                                                        |
+| iteration_duration | Trend   | The time to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](/using-k6/workaround-to-calculate-iteration_duration) |
 | dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). [About dropped iterations](/using-k6/scenarios/concepts/dropped-iterations/)                                                                             |
 | data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](/examples/track-transmitted-data-per-url).                                                                                                                         |
 | data_sent          | Counter | The amount of data sent. [Track data for an individual URL](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                   |
