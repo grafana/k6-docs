@@ -4,7 +4,7 @@ description: How to build custom k6 metrics for each metric type.
 ---
 
 Besides the [built-in metrics](/results-output/metrics-reference), you can create custom metrics.
-For example, you can create some derived metrics from the built-in metrics, or use the [Response.timings](/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
+For example, you can compute a metric for your business logic, or use the [Response.timings](/javascript-api/k6-http/response) object to create a metric for a specific set of endpoints.
 
 Each metric type has a [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) to create a custom metric.
 The constructor creates a metric object of the declared type. Each type has an `add` method to take metric measurements.
