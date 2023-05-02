@@ -44,7 +44,7 @@ SREs might recognize these metrics as three of the [four Golden Signals](https:/
 
 ## Example output
 
-An aggregated summary of all _built-in_ and custom metrics outputs to `stdout` when you run a test.:
+An aggregated summary of all _built-in_ and custom metrics outputs to `stdout` when you run a test:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -58,7 +58,7 @@ export default function () {
 
 </CodeGroup>
 
-Running the preceding script outputs something like this:
+The preceding script outputs something like this:
 
 <CodeGroup labels={["output"]} lineNumbers={[false]}>
 
@@ -103,18 +103,5 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 </CodeGroup>
 
 In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
-
-k6 always collects the following built-in metrics:
-
-| Metric Name        | Type    | Description                                                                                                                                                                                                                                                   |
-|--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                        |
-| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, ensuring performance will not be affected when scaling up the load level)                                                                                                              |
-| iterations         | Counter | The aggregate number of times the VUs executed the JS script (the `default` function).                                                                                                                                                                        |
-| iteration_duration | Trend   | The time it took to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](/using-k6/workaround-to-calculate-iteration_duration) |
-| dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors). [About dropped iterations](/using-k6/scenarios/concepts/dropped-iterations/)                                                                             |
-| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](/examples/track-transmitted-data-per-url).                                                                                                                         |
-| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                   |
-| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                |
-
+For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/reference/).
 
