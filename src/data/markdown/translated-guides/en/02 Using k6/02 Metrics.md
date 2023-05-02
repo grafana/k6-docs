@@ -7,11 +7,16 @@ _Metrics_ measure how a system performs under test conditions.
 By default, k6 automatically collects built-in metrics.
 Besides built-ins, you can also make custom metrics.
 
-Metrics fall into four broad types:
+
+Metrics fall into four broad types.
+k6 has different aggregation methods for each type.
 - _Counters_ sum values.
+  - Aggregation method: `count` (as a sum) or `rate` (as a percentage).
 - _Gauges_ track the smallest, largest, and latest values.
+  - Aggregation method: `value`
 - _Rates_ track how frequently a non-zero value occurs.
-- _Trends_  calculate statistics for multiple values (like mean or mode).
+  - Aggregation method: `rate` (as a percentage)
+- _Trends_ calculate statistics for multiple values (like mean or mode).
 
 If you want to make a test fail a certain criteria, you can write [Threshold](/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the test type.
 To filter metrics, you can use [Tags and groups](/using-k6/tags-and-groups).
