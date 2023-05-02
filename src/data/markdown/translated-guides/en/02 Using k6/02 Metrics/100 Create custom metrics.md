@@ -11,9 +11,8 @@ The constructor creates a metric object of the declared type. Each type has an `
 
 If you need help constructing a custom metric, read the following sections of this document.
 They document the procedure and provide examples.
-
-If you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](/javascript-api/k6-metrics).
-Each topic has examples to make a custom metric and create thresholds from it.
+f you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](/javascript-api/k6-metrics).
+Each topic has examples to make a custom metric and create [thresholds](/using-k6/thresholds) from it.
 
 ## Create a custom metric
 
@@ -24,7 +23,6 @@ Custom metrics must be created in [init context](/using-k6/test-lifecycle).
 This limits memory and ensures that k6 can validate that all thresholds are evaluating defined metrics.
 
 </Blockquote>
-
 
 The generic procedure to create a custom metric is as follows:
 
@@ -38,7 +36,7 @@ The generic procedure to create a custom metric is as follows:
 1. In init context, construct a new custom-metric object.
 
   For example, the following creates a custom trend. The object in the script is called `myTrend`, and its metric appears in the results output as `waiting_time`.
-  
+
    ```
    const myTrend = new Trend('waiting_time');
    ```
@@ -46,7 +44,7 @@ The generic procedure to create a custom metric is as follows:
 1. In the VU iteration code, use the `add` method to take a measurement.
 
 For example, this VU code makes a request, then adds the timing value of the request to the `myTrend` object.
- 
+
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -66,7 +64,9 @@ export default function () {
 </CodeGroup>
 
 Custom metrics appear in both the end-of-test summary and in the granular points of the [Results output](/results-output).
-Here's how the output of the preceding script might look. Since the metric is a trend, k6 calculates various trends based on the number of values and their summation.
+Here's how the output of the preceding script might look.
+Each metric type has specific aggregation methods.
+Since the metric is a trend, k6 calculates various trends based on the number of values and their summation.
 
   <CodeGroup lineNumbers={[false]}>
 
