@@ -19,6 +19,13 @@ Each topic has examples to make a custom metric and create thresholds from it.
 
 The generic procedure to create a custom metric is as follows:
 
+1. Import the [`k6/metrics`](/javascript-api/k6-metrics/) module.
+   Optionally, specify the type of metrics you want to create with a named import:
+
+  ```
+  import { Counter } from 'k6/metrics';
+  ```
+
 1. In [init context](/using-k6/test-lifecycle), construct a new custom-metric object.
 
   For example, the following creates a custom trend. The object in the script is called `myTrend`, and its metric appears in the results output as `waiting_time`.
