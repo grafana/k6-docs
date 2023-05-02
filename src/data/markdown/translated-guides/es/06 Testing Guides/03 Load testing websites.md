@@ -226,9 +226,9 @@ Los siguientes pasos pueden ayudarlo a empezar a escribir scripts de pruebas a n
 
 **Identifique selectores únicos.** Una vez que haya identificado con qué elementos de la página interactuaría un usuario, use el Inspector de elementos de DevTools en su navegador para encontrar una forma única, estática y simple de identificar cada elemento. El script necesita selectores para encontrar el elemento correcto con el que interactuar.
 
-**Utilice los elementos para verificar las respuestas.** Después de cada acción, use [locators](https://k6.io/docs/javascript-api/xk6-browser/api/locator/) para buscar los elementos de la página que esperaría encontrar. Esta verificación ayuda a garantizar que el script haya llegado a la página esperada.
+**Utilice los elementos para verificar las respuestas.** Después de cada acción, use [locators](https://k6.io/docs/javascript-api/k6-experimental/browser/locator/) para buscar los elementos de la página que esperaría encontrar. Esta verificación ayuda a garantizar que el script haya llegado a la página esperada.
 
-**Tome capturas de pantalla para cada acción mientras depura.** Una de las ventajas de las pruebas basadas en el navegador es la posibilidad de tomar capturas de pantalla. Después de cada interacción del usuario simulada por el script, use [page.screenshot](https://k6.io/docs/javascript-api/xk6-browser/api/page/) para guardar una imagen visual de lo que el script encontró para solucionar los problemas posteriores.
+**Tome capturas de pantalla para cada acción mientras depura.** Una de las ventajas de las pruebas basadas en el navegador es la posibilidad de tomar capturas de pantalla. Después de cada interacción del usuario simulada por el script, use [page.screenshot](https://k6.io/docs/javascript-api/k6-experimental/browser/page/) para guardar una imagen visual de lo que el script encontró para solucionar los problemas posteriores.
 
 
 ### Pruebas de carga híbridas
