@@ -23,5 +23,5 @@ excerpt: "Browser module: Response Class"
 | <a href="https://playwright.dev/docs/api/class-response#response-server-addr" target="_blank" >response.serverAddr()</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-response#response-status" target="_blank" >response.status()</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-response#response-status-text" target="_blank" >response.statusText()</a> | - | - |
-| response.size() | - | Similar to [`Request.size()`](/javascript-api/k6-experimental/browser/request/ returns the size of response headers and body sections, e.g. `{ headers: 100, body: 200 }` |
+| response.size() | - | Similar to [`Request.size()`](/javascript-api/k6-experimental/browser/request/size) returns the size of response headers and body sections. |
 | <a href="https://playwright.dev/docs/api/class-response#response-url" target="_blank" >response.url()</a> | - | - |

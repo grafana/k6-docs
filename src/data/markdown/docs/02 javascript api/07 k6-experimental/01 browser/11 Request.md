@@ -22,6 +22,6 @@ excerpt: "Browser module: Request Class"
 | <a href="https://playwright.dev/docs/api/class-request#request-redirected-to" target="_blank" >request.redirectedTo()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-request#request-resource-type" target="_blank" >request.resourceType()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-request#request-response" target="_blank" >request.response()</a> | - |
-| <a href="https://playwright.dev/docs/api/class-request#request-sizes" target="_blank" >request.size()</a> | Unlike Playwright this method returns an object containing the sizes of request headers and body, e.g. `{ headers: 100, body: 200 }` |
+| [request.size()](/javascript-api/k6-experimental/browser/request/size) | Unlike Playwright this method returns an object containing the sizes of request headers and body. |
 | <a href="https://playwright.dev/docs/api/class-request#request-timing" target="_blank" >request.timing()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-request#request-url" target="_blank" >request.url()</a> | - |
