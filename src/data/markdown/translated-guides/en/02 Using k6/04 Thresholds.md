@@ -127,7 +127,9 @@ Some examples of threshold expressions are as follows:
 
 ### Aggregation methods by type
 
-Each of the four [metric types](/using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
+k6 aggregates metrics according to [their type](/using-k6/metrics).
+These aggregation methods form part of the threshold expressions.
+
 
 | Metric type | Aggregation methods                                                                                                                                                                                                |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
