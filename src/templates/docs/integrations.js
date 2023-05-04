@@ -84,7 +84,7 @@ const iconsDataSet1 = [
   {
     Icon: Grafana,
     name: 'Grafana Cloud',
-    to: '/results-output/real-time/grafana-cloud/',
+    to: '/results-output/real-time/grafana-cloud-prometheus/',
   },
   {
     Icon: InfluxGrafana,

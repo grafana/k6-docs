@@ -1591,6 +1591,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/results-output/real-time/grafana-cloud',
+    toPath: '/results-output/real-time/grafana-cloud-prometheus/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
