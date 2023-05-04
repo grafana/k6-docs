@@ -13,7 +13,7 @@ For example, you can create thresholds for any combination of the following expe
 - 95% of requests have a response time below 200ms.
 - 99% of requests have a response time below 400ms.
 - A specific endpoint always responds within 300ms.
-- Any conditions for a [custom metric](/using-k6/metrics#custom-metrics).
+- Any conditions for a [custom metric](/using-k6/metrics/create-custom-metrics).
 
 Thresholds are also essential for [load-testing automation](/testing-guides/automated-performance-testing):
 
@@ -207,7 +207,7 @@ If you want to set multiple thresholds for a metric, specify them with an [array
 
 ## Threshold examples to copy and paste
 
-The quickest way to start with thresholds is to use the [standard, built-in k6 metrics](/using-k6/metrics#http-specific-built-in-metrics).
+The quickest way to start with thresholds is to use the [built-in metrics](/using-k6/metrics/reference).
 Here are a few copy-paste examples that you can start using right away.
 
 For more specific threshold examples, refer to the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
@@ -485,7 +485,7 @@ export default function () {
 
 </CodeGroup>
 
-In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics), establishing that the rate of successful checks is higher than 90%.
+In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics/reference), establishing that the rate of successful checks is higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
 
