@@ -1,6 +1,6 @@
 ---
 title: Create custom metrics
-description: How to build custom k6 metrics for each metric type.
+excerpt: How to build custom k6 metrics for each metric type.
 ---
 
 Besides the [built-in metrics](/using-k6/metrics/reference), you can create custom metrics.
