@@ -4,7 +4,7 @@ slug: '/using-k6/metrics/reference'
 excerpt: A reference of built-in metrics for different supported protocols.
 ---
 
-Every k6 test emits built-in and [Custom metrics](/using-k6/metrics/create-custom).
+Every k6 test emits built-in and [Custom metrics](/using-k6/metrics/create-custom-metrics).
 Each supported protocol also has its specific metrics.
 
 ## Standard built-in metrics.
