@@ -9,18 +9,13 @@ Besides built-ins, you can also make custom metrics.
 
 
 Metrics fall into four broad types.
-In results output, k6 aggregates the metrics according to their type:
-- _Counters_ sum values.
-    - Aggregation methods: `count` (as a sum) or `rate` (as a percentage).
-- _Gauges_ track the smallest, largest, and latest values.
-    - Aggregation method: `value`
-- _Rates_ track how frequently a non-zero value occurs.
-    - Aggregation method: `rate` (as a percentage)
-- _Trends_ calculate statistics for multiple values (like mean or mode).
-    - Aggregation method: `avg` (average), `med` (median), `min`, `max`, and `p(N)` percentile.
+- **Counter.** Sums values
+- **Gauge.** Tracks the smallest, largest, and latest values
+- **Rate.** Tracks how frequently a non-zero value occurs
+- **Trend.** Calculates statistics for multiple values (like mean, mode or percentile)
 
 
-If you want to make a test fail a certain criteria, you can write [Threshold](/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the test type.
+If you want to make a test fail a certain criteria, you can write [Threshold](/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the metric type).
 To filter metrics, you can use [Tags and groups](/using-k6/tags-and-groups).
 You can also export metrics in various summary and granular formats, as documented in [Results output](/results-output).
 
