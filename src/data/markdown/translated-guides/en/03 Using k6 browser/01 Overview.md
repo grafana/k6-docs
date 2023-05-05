@@ -11,6 +11,12 @@ The [Browser module](https://github.com/grafana/xk6-browser) brings browser auto
 
 This module aims to provide rough compatibility with the Playwright API, so you don’t need to learn a completely new API.
 
+<Blockquote mod="note" title="">
+
+To work with the browser module, make sure you are using [k6 version 0.43.0](https://github.com/grafana/k6/releases/tag/v0.43.0) or above.
+
+</Blockquote>
+
 ## Use case for browser testing
 
 The main use case for the browser module is to test performance on the browser level. Browser-level testing  provides a way to measure user experience and  find issues that are difficult to catch on the protocol level. Browser-level testing can help you answer questions like:
