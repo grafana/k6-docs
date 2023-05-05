@@ -34,7 +34,7 @@ You can also stream real-time metrics to the following services:
 - [Dynatrace](/results-output/real-time/dynatrace)
 - [Elasticsearch](/results-output/real-time/elasticsearch)
 - [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus)
-- [InfluxDB](/results-output/real-time/influxdb-grafana)
+- [InfluxDB](/results-output/real-time/influxdb)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)
 - [Prometheus remote write](/results-output/real-time/prometheus-remote-write)

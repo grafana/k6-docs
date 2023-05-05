@@ -117,11 +117,11 @@ La lista de plugins de salida son los siguientes:
   - [CSV](/es/visualizacion-de-resultados/csv)
   - [Datadog](/es/visualizacion-de-resultados/datadog)
   - [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus)
-  - [InfluxDB](/es/visualizacion-de-resultados/influxdb-grafana)
+  - [InfluxDB](/es/visualizacion-de-resultados/influxdb)
   - [JSON](/es/visualizacion-de-resultados/json)
   - [Netdata](/es/visualizacion-de-resultados/netdata)
   - [New Relic](/es/visualizacion-de-resultados/new-relic)
-  - [Prometheus](/results-output/real-time/prometheus)
+  - [Prometheus](/results-output/real-time/prometheus-remote-write)
   - [TimescaleDB](/results-output/real-time/timescaledb)
   - [StatsD](/es/visualizacion-de-resultados/statsd) 
 

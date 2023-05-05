@@ -19,7 +19,7 @@ The flexibility and interoperability of Grafana and k6 allow you to dashboard yo
 For inspiration about how to build a custom dashboard that visualizes k6 results, browse the list of [community-built k6 dashboards](https://grafana.com/grafana/dashboards/?search=k6). The following outputs include pre-built Grafana dashboards for their storage:
 
 - [AWSTimestream](https://github.com/leonyork/xk6-output-timestream)
-- [InfluxDB](/results-output/real-time/influxdb-grafana)
+- [InfluxDB](/results-output/real-time/influxdb)
 - [Prometheus remote write](/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](/results-output/real-time/timescaledb/)
 

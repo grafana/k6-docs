@@ -1597,6 +1597,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/results-output/real-time/influxdb-grafana',
+    toPath: '/results-output/grafana-dashboards/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
