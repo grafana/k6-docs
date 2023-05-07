@@ -88,6 +88,7 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
   // We're injecting a processing pause for illustrative purposes only!
   // Sleep time is 500ms. Total iteration time is sleep + time to finish request.
+  sleep(0.5);
 }
 ```
 
