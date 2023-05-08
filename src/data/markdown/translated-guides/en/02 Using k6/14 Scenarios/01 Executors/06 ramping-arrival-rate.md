@@ -12,7 +12,9 @@ k6 will attempt to dynamically change the number of VUs to achieve the configure
 For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
 and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-<Blockquote mod="Note" title="Iteration starts are spaced fractionally">
+<Blockquote mod="Note" title="">
+
+**Iteration starts are spaced fractionally.**
 
 Iterations **do not** start at exactly the same time.
 At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
@@ -37,7 +39,9 @@ this executor has the following options:
 If you need your tests to not be affected by the system-under-test's performance, and
 would like to ramp the number of iterations up or down during specific periods of time.
 
-<Blockquote mod="note" title="Don't put sleep at the end of an iteration">
+<Blockquote mod="note" title="">
+
+**Don't put sleep at the end of an iteration.**
 
 The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
 It's unnecessary to use a `sleep()` function at the end of the VU code.
