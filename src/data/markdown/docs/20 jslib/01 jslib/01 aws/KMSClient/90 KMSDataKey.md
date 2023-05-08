@@ -21,7 +21,7 @@ For instance, the [`generateDataKey`](/javascript-api/jslib/aws/kmsclient/kmscli
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.7.2/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.8.0/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

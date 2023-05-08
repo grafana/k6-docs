@@ -44,7 +44,7 @@ SignatureV4 methods throw errors on failure.
 ```javascript
 import http from 'k6/http.js'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.2/aws.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.8.0/aws.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
