@@ -95,10 +95,13 @@ export const ExtensionSelection = ({ data, description = '' }) => {
   );
 
   const totalActiveExtensions = useMemo(
-    () =>
-      activeCategories
-        .map((category) => filteredExtensionsByCategory(category))
-        .flat(),
+    () => [
+      ...new Set(
+        activeCategories
+          .map((category) => filteredExtensionsByCategory(category))
+          .flat(),
+      ),
+    ],
     [activeCategories, activeTier, activeType, extensions],
   );
 
@@ -352,7 +355,8 @@ export const ExtensionSelection = ({ data, description = '' }) => {
             <p className={styles.result}>
               <span>
                 <b className={styles.number}>{totalActiveExtensions.length}</b>{' '}
-                result{totalActiveExtensions.length === 1 ? '' : 's'} found
+                result
+                {totalActiveExtensions.length === 1 ? '' : 's'} found
               </span>{' '}
               <Button
                 className={styles.clearButton}
@@ -391,7 +395,7 @@ export const ExtensionSelection = ({ data, description = '' }) => {
           </div>
         </div>
       )}
-      <div className="">
+      <div>
         {/* eslint-disable-next-line no-nested-ternary */}
         {totalActiveExtensions.length === 0 ? (
           <div className={styles.notFoundWrapper}>

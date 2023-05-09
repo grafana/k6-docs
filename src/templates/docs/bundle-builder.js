@@ -102,7 +102,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
             Don&apos;t see what you need? Learn how you can{' '}
             <Link
               to={'/extensions/get-started/create/'}
-              class={docPageContent.link}
+              className={docPageContent.link}
             >
               create
             </Link>{' '}
