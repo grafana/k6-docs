@@ -68,6 +68,7 @@ Dynatrace
 enum
 errno
 erroring
+etag
 falsy
 flatlined
 fn
