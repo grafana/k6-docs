@@ -76,13 +76,13 @@ Control the test execution.
 
 ### vu
 
-Meta information and execution details about the current vu and iteration.
+Meta information and execution details about the current vu.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| iterationInInstance | integer | The identifier of the iteration in the current instance. |
-| iterationInScenario | integer | The identifier of the iteration in the current scenario. |
-| idInInstance        | integer | The identifier of the VU across the instance. |
+| iterationInInstance | integer | The identifier of the iteration in the current instance for this VU. This is only unique for current VU and this instance (if multiple instances). This keeps being aggregated if a given VU is reused between multiple scenarios. |
+| iterationInScenario | integer | The identifier of the iteration in the current scenario for this VU. This is only unique for current VU and scenario it is currently executing. |
+| idInInstance        | integer | The identifier of the VU across the instance. Not unique across multiple instances. |
 | idInTest            | integer | The globally unique (across the whole test run) identifier of the VU. |
 | tags                | object  | The map that gives control over [VU's Tags](/using-k6/tags-and-groups/#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
 
