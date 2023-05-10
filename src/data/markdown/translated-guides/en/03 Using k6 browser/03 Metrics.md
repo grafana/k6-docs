@@ -16,7 +16,7 @@ This section provides some conceptual background about the core vital.
 To review the complete list browser metrics, refer to the section in the [Metrics reference](/using-k6/metrics/reference#browser).
 
 Google introduced these metrics to provided unified signals to assess user experience on the web.
-The vitals are composed ofthree important metrics to help user experience when using your web application.
+The vitals are composed of three important metrics to help user experience when using your web application.
 
 - Loading performance
 - Interactivity
