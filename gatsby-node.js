@@ -1395,7 +1395,7 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/results-visualization/influxdb-+-grafana/',
-    toPath: '/results-output/real-time/influxdb-grafana/',
+    toPath: '/results-output/grafana-dashboards/',
     isPermanent: true,
   });
 
@@ -1548,12 +1548,6 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/es/visualizacion-de-resultados/influxdb-+-grafana/',
-    toPath: '/es/visualizacion-de-resultados/influxdb-grafana/',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/using-k6/scenarios/arrival-rate',
     toPath: '/using-k6/scenarios/concepts/open-vs-closed',
     isPermanent: true,
@@ -1594,6 +1588,12 @@ const createRedirects = ({ actions }) => {
   createRedirect({
     fromPath: '/results-output/real-time/grafana-cloud',
     toPath: '/results-output/real-time/grafana-cloud-prometheus/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/es/visualizacion-de-resultados/influxdb-+-grafana/',
+    toPath: '/results-output/grafana-dashboards/',
     isPermanent: true,
   });
 
@@ -1652,7 +1652,7 @@ const createRedirects = ({ actions }) => {
     '/getting-started/results-output/datadog':
       '/results-visualization/datadog/',
     '/getting-started/results-output/influxdb':
-      '/results-output/real-time/influxdb-grafana/',
+      '/results-output/real-time/influxdb/',
     '/getting-started/results-output/json': '/results-visualization/json/',
     '/getting-started/results-output/statsd': '/results-visualization/statsd/',
     '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags':
