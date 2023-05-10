@@ -15,16 +15,15 @@ blockquote {
   & div[class^='with-copy-button'] {
     margin-top: 15px;
   }
-}
-
-.kicker {
-  display: block;
-  font-size: $font-size-xs;
-  line-height: $line-height-xs;
-  color: $color-accent-primary;
-  font-weight: 600;
-  &.uppercased {
-    text-transform: uppercase;
+  .kicker {
+    display: block;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    color: $color-accent-primary;
+    font-weight: 600;
+    &.uppercased {
+      text-transform: uppercase;
+    }
   }
 }
 

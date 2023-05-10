@@ -43,7 +43,9 @@ export default function () {
 ```
 
 <Blockquote mod="note">
-> You can test this script by creating first a pod running nginx and exposing it as a service with the commands below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
+
+You can test this script by creating first a pod running nginx and exposing it as a service with the commands below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
+
 ```bash
 > kubectl run nginx --image=nginx
 > kubectl expose pod nginx --port 80

@@ -67,7 +67,7 @@ export default async function () {
   });
 
   try {
-    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/');
   } finally {
     page.close();
     browser.close();

@@ -53,7 +53,7 @@ export const options = {
 export default function () {
   http.get('https://test.k6.io/contacts.php');
   // We're injecting a processing pause for illustrative purposes only!
-  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  // Sleep time is 500ms. Total iteration time is sleep + time to finish request.
   sleep(0.5);
 }
 ```

@@ -15,7 +15,7 @@ export const ExtensionsList = ({ category, data }) => {
       .filter((extension) => extension.categories.includes(category));
   }
   return (
-    <section className={`container ${styles.container}`}>
+    <section className={styles.container}>
       {extensions.map((extension) => (
         <ExtensionCard key={extension.name} extension={extension} />
       ))}

@@ -96,14 +96,3 @@ The expected outcome is that the performance and resource utilization of the bac
 
 After you run all the previous test types, you know your system performs well at many different loads: small, average, high, and extended.
 
-
-<LdScript script='{
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [{
-"@type": "Question",
-"name": "When to do soak testing?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "<p>Soak testing helps you uncover bugs and reliability issues that surface over an extended period. Many complex systems have bugs of this nature.</p><p>You should execute soak tests after your standard load tests are successful, and your system has been found stable when executing a stress test.</p><p>Soak testing is the last major step on the road to building reliable systems.</p>"}}]}' />
-

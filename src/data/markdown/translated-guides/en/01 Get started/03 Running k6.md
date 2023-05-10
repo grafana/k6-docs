@@ -182,7 +182,9 @@ For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramp
 
 ## Execution modes
 
-<Blockquote mod="note" title="Portability is a major design goal of k6">
+<Blockquote mod="note" title="">
+
+**Portability is a major design goal of k6.**
 
 You can run the same test in different modes with minimal changes.
 

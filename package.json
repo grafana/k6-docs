@@ -80,6 +80,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@ocular-d/vale-bin": "^1.0.29",
     "@svgr/webpack": "^6.5.1",
     "babel-loader": "^9.1.0",
     "broken-link-checker": "^0.7.8",

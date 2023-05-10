@@ -31,7 +31,7 @@ const getKicker = ({ mod, title }) => {
     <div className={cx('wrapper')}>
       {Icon && <Icon className={cx('icon')} />}
       <Tag
-        className={cx('kicker', !title && kickerContent && 'uppercased')}
+        className={cx('kicker', 'uppercased')}
         id={title ? slugify(title) : undefined}
       >
         {title || kickerContent}

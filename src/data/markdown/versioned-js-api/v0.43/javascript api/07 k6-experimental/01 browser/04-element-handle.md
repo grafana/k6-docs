@@ -62,7 +62,7 @@ export default async function () {
 
   // Goto front page, find login link and click it
   try {
-    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/');
     await Promise.all([
       page.waitForNavigation(),
       page.locator('a[href="/my_messages.php"]').click(),

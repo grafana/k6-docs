@@ -1,5 +1,6 @@
 ---
 title: 'Load test types'
+head_title: 'Understanding the Different Types of Load Tests: Goals and Recommendations'
 excerpt: 'A series of conceptual articles explaining the different types of load tests. Learn about planning, running, and interpreting different tests for different performance goals.'
 ---
 
@@ -57,7 +58,7 @@ When you write and run different test types in k6, consider the following.
 
 ### Start with a smoke test
 
-Start with a [smoke test](../smoke-testing).
+Start with a [smoke test](/test-types/smoke-testing).
 Before beginning larger tests, validate that your scripts work as expected and that your system performs well with a few users.
 
 After you know that the script works and the system responds correctly to minimal load,

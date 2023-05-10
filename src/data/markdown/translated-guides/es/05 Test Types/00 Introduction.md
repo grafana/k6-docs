@@ -13,7 +13,7 @@ Cada tipo de prueba está diseñado para proporcionarle diferentes conocimientos
 
 [Load Test (Prueba de Carga)](/es/tipos-de-prueba/load-testing/): se ocupa principalmente de evaluar el rendimiento de su sistema en términos de usuarios concurrentes o solicitudes por segundo.
 
-[Stress Test (Prueba de Estrés)](/es/tipos-de-prueba/stress-testing/) y [Spike testing (Prueba de Pico)](/es/tipos-de-prueba/stress-testing/#spike-testing-en-k6): se ocupan de evaluar los límites de su sistema y la estabilidad en condiciones extremas.
+[Stress Test (Prueba de Estrés)](/es/tipos-de-prueba/stress-testing/) y [Spike testing (Prueba de Pico)](/test-types/spike-testing/): se ocupan de evaluar los límites de su sistema y la estabilidad en condiciones extremas.
 
 [Soak Test (Prueba de Resistencia)](/es/tipos-de-prueba/soak-testing/): le informa sobre la fiabilidad y el rendimiento de su sistema durante un periodo de tiempo prolongado.
 

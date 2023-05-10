@@ -944,7 +944,9 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-<Blockquote mod="attention" title="This option is discouraged">
+<Blockquote mod="attention" title="">
+
+**This option is discouraged.""
 
 The `--rps` option has caveats and is difficult to use correctly.
 
@@ -1154,7 +1156,9 @@ Add/override an [environment variable](/using-k6/environment-variables) with `VA
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
-<Blockquote mod="note" title="The `-e` flag does not configure options">
+<Blockquote mod="note" title="">
+
+**The `-e` flag does not configure options.**
 
 This flag just provides variables to the script, which the script can use or ignore.
 For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
