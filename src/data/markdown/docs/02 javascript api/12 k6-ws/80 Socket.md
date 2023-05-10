@@ -17,16 +17,8 @@ excerpt: 'Socket is a WebSocket client to interact with a WebSocket connection.'
 
 ### WebSocket built-in metrics
 
-`k6` will automatically collect some metrics when interacting with a WebSocket service through the `k6/ws` API.
-
-| Metric name         | Type    | Description                                                                                                                |
-| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
-| ws_connecting       | Trend   | Total duration for the WebSocket connection request.                                                                       |
-| ws_session_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution.               |
-| ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                                |
-| ws_ping             | Trend   | Duration between a ping request and its pong reception                                                                     |
-| ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send)                   |
-| ws_msgs_received    | Counter | Total number of received messages [Socket.on('message', callback)](/javascript-api/k6-ws/socket/socket-on). |
+`k6` automatically collects metrics when interacting with a WebSocket service through the `k6/ws` API.
+Review the list in the [metrics reference](/using-k6/metrics/reference#websockets).
 
 Check out the [Results output article](/get-started/results-output) for more information about how to process the metric information.
 
