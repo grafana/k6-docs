@@ -1394,12 +1394,6 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/results-visualization/influxdb-+-grafana/',
-    toPath: '/results-output/grafana-dashboards/',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/results-visualization/netdata/',
     toPath: '/results-output/real-time/netdata/',
     isPermanent: true,
@@ -1598,7 +1592,19 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/results-output/real-time/influxdb-grafana',
+    fromPath: '/es/visualizacion-de-resultados/influxdb-grafana/',
+    toPath: '/results-output/grafana-dashboards/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-output/real-time/influxdb-grafana/',
+    toPath: '/results-output/grafana-dashboards/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/results-visualization/influxdb-+-grafana/',
     toPath: '/results-output/grafana-dashboards/',
     isPermanent: true,
   });
