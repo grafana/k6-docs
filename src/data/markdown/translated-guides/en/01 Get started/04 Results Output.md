@@ -88,7 +88,7 @@ The available built-in outputs include:
 - [Dynatrace](/results-output/real-time/dynatrace)
 - [Elasticsearch](/results-output/real-time/elasticsearch)
 - [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus)
-- [InfluxDB](/results-output/real-time/influxdb-grafana)
+- [InfluxDB](/results-output/real-time/influxdb)
 - [JSON](/results-output/real-time/json)
 - [Netdata](/results-output/real-time/netdata)
 - [New Relic](/results-output/real-time/new-relic)

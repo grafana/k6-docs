@@ -18,12 +18,18 @@ export const DocIconsRow = ({ className, title, subtitle, iconsData }) => (
           {to ? (
             <Link className={styles.link} to={to}>
               <Icon className={styles.icon} />
-              <p className={'link'}>{name}</p>
+              <p
+                className={'link'}
+                dangerouslySetInnerHTML={{ __html: name }}
+              />
             </Link>
           ) : (
             <a className={styles.link} href={link}>
               <Icon className={styles.icon} />
-              <p className={'link'}>{name}</p>
+              <p
+                className={'link'}
+                dangerouslySetInnerHTML={{ __html: name }}
+              />
             </a>
           )}
         </li>
