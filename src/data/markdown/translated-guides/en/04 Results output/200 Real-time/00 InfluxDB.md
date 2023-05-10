@@ -24,7 +24,7 @@ K6_INFLUXDB_ADDR="<INFLUXDB-HTTP-ADDRESS>" \
 ```
 
 
-k6 runs the test script and sends the the [k6 metrics](/using-k6/metrics/) in real-time to the InfluxDB instance. You can now select the bucket to [query](https://docs.influxdata.com/influxdb/v2.7/query-data/) and [visualize](https://docs.influxdata.com/influxdb/v2.7/visualize-data/) the stored k6 metrics, for example, using the [InfluxDB Data Explorer](https://docs.influxdata.com/influxdb/v2.7/query-data/execute-queries/data-explorer/).
+k6 runs the test script and sends the [k6 metrics](/using-k6/metrics/) in real-time to the InfluxDB instance. You can now select the bucket to [query](https://docs.influxdata.com/influxdb/v2.7/query-data/) and [visualize](https://docs.influxdata.com/influxdb/v2.7/visualize-data/) the stored k6 metrics, for example, using the [InfluxDB Data Explorer](https://docs.influxdata.com/influxdb/v2.7/query-data/execute-queries/data-explorer/).
 
 <br/>
 
