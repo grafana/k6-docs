@@ -3,6 +3,12 @@ title: 'isClosed()'
 excerpt: 'Browser module: page.isClosed() method'
 ---
 
+<Blockquote mod="attention">
+
+This method has **known issues**. For details, refer to [#878](https://github.com/grafana/xk6-browser/issues/878).
+
+</Blockquote>
+
 Checks if the page has been closed.
 
 ### Example

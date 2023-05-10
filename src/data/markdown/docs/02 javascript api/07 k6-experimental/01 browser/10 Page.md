@@ -47,29 +47,21 @@ Page provides methods to interact with a single tab in a running web browser ins
 | [page.setContent(html, [options])](/javascript-api/k6-experimental/browser/page/setcontent/)       | Sets the supplied html string to the current page.               |
 | [page.setDefaultNavigationTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaultnavigationtimeout/)       | Changes the navigation timeout for [page.goto(url, [options])](/javascript-api/k6-experimental/browser/page/goto/), [page.reload([options])](/javascript-api/k6-experimental/browser/page/reload/), [page.setContent(html, [options])](/javascript-api/k6-experimental/browser/page/setcontent/), and [page.waitForNavigation([options])](/javascript-api/k6-experimental/browser/page/waitfornavigation/)               |
 | [page.setDefaultTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaulttimeout/)       | Changes the timeout for all the methods accepting a `timeout` option.  |
-
-
-
-
-
-
-<!-- 
-| <a href="https://playwright.dev/docs/api/class-page#page-set-extra-http-headers" target="_blank" >page.setExtraHTTPHeaders(headers)</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-input-files" target="_blank" >page.setInputFiles(selector, files[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-viewport-size" target="_blank" >page.setViewportSize(viewportSize)</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-tap" target="_blank" >page.tap(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-text-content" target="_blank" >page.textContent(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-title" target="_blank" >page.title()</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-type" target="_blank" >page.type(selector, text[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-uncheck" target="_blank" >page.uncheck(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-unroute" target="_blank" >page.unroute(url[, handler])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-url" target="_blank" >page.url()</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-viewport-size" target="_blank" >page.viewportSize()</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-function" target="_blank" >page.waitForFunction(pageFunction[, arg, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-load-state" target="_blank" >page.waitForLoadState([state, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-navigation" target="_blank" >page.waitForNavigation([options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-request" target="_blank" >page.waitForRequest(urlOrPredicate[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-response" target="_blank" >page.waitForResponse(urlOrPredicate[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-selector" target="_blank" >page.waitForSelector(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-wait-for-timeout" target="_blank" >page.waitForTimeout(timeout)</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-touchscreen" target="_blank" >touchscreen</a> | - | - | -->
+| [page.setExtraHTTPHeaders(headers)](/javascript-api/k6-experimental/browser/page/setextrahttpheaders/)       | Sets extra HTTP headers which will be sent with subsequent HTTP requests. |
+| [page.setViewportSize(viewportSize)](/javascript-api/k6-experimental/browser/page/setviewportsize/)       | Updates the page's width and height. |
+| [page.tap(selector, [options])](/javascript-api/k6-experimental/browser/page/tap/)       | Taps the first element that matches the selector.                                      |
+| [page.textContent(selector, [options])](/javascript-api/k6-experimental/browser/page/textcontent/)       | Returns the `element.textContent`.         |
+| [page.title()](/javascript-api/k6-experimental/browser/page/title/)       | Returns the page's title.         |
+| [page.type(selector, text, [options])](/javascript-api/k6-experimental/browser/page/type/)       | Types the `text` in the first element found that matches the selector.              |
+| [page.touchScreen()](/javascript-api/k6-experimental/browser/page/touchscreen/)       | Returns the [Touchscreen](/javascript-api/k6-experimental/browser/touchscreen/) instance to interact with a virtual touchscreen on the page.                                      |
+| [page.uncheck(selector, [options])](/javascript-api/k6-experimental/browser/page/uncheck/)       | Unselects an input checkbox.                                    |
+| [page.url()](/javascript-api/k6-experimental/browser/page/url/)       | Returns the page's URL.         |
+| [page.viewportSize()](/javascript-api/k6-experimental/browser/page/viewportsize/)       | Returns the page's size (width and height).         |
+| [page.waitForFunction(pageFunction, arg, [options])](/javascript-api/k6-experimental/browser/page/waitforfunction/)       | Returns when the `pageFunction` returns a truthy value.         |
+| [page.waitForLoadState(state, [options])](/javascript-api/k6-experimental/browser/page/waitforloadstate/)       | Waits for the given load state to be reached.         |
+| [page.waitForNavigation([options])](/javascript-api/k6-experimental/browser/page/waitfornavigation/)       | Waits for the given navigation lifecycle event to occur and returns the main resource response.         |
+| [page.waitForSelector(selector, [options])](/javascript-api/k6-experimental/browser/page/waitforselector/)       | Returns when element specified by selector satisfies `state` option.        |
+| [page.waitForTimeout(timeout)](/javascript-api/k6-experimental/browser/page/waitfortimeout/)       | Waits for the given `timeout` in milliseconds. |
+| [page.workers()](/javascript-api/k6-experimental/browser/page/workers/)       | Returns an array of the dedicated WebWorkers associated with the page. |
+| [page.$(selector)](/javascript-api/k6-experimental/browser/page/$/)       | Finds an element matching the specified selector within the page. |
+| [page.$$(selector)](/javascript-api/k6-experimental/browser/page/$$/)       | Finds all elements matching the specified selector within the page. |
