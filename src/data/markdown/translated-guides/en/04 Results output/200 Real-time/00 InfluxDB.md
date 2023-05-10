@@ -35,6 +35,7 @@ k6 runs the test script and sends the [k6 metrics](/using-k6/metrics/) in real-t
 
 Here is the full list of options that can be configured and passed to the extension:
 
+<!-- vale off -->
 | ENV | Default | Description |
 |-----|---------|-------------|
 | K6_INFLUXDB_ORGANIZATION      |                       | Your InfluxDB organization ID. [View organizations](https://docs.influxdata.com/influxdb/v2.7/organizations/). |
