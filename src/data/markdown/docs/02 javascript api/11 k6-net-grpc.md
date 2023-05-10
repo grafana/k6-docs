@@ -25,7 +25,7 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 ## gRPC metrics
 
 k6 takes specific measurements for gRPC requests.
-For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference).
+For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference#grpc).
 
 ### Example
 
