@@ -45,6 +45,47 @@ In other words, the timestamp happens when k6 receives the end of the response b
 | http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
 | http_req_failed          | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback).                                                                                                                        |
 
+## Browser metrics {#browser}
+
+The [k6 browser module](/using-k6-browser) emits its own metrics based on the [Core Web Vitals](https://web.dev/vitals/#core-web-vitals).
+
+
+These core metrics will evolve over time when technology changes, but for now, k6 tracks the following core web vitals:
+
+| Core Web Vital                       |  Description                                                                                                 |
+|--------------------------------      |--------------------------------------------------------------------------------------------------------------|
+| webvital_largest_content_paint       | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
+| webvital_first_input_delay           | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
+| webvital_cumulative_layout_shift     | Measures a page's visual stability. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
+
+### Other Web Vitals
+
+Apart from the Core Web Vitals, the browser module also reports [Other Web Vitals](https://web.dev/vitals/#other-web-vitals).
+
+
+| Other Web Vital                      |  Description                                                                                                 |
+|--------------------------------      |--------------------------------------------------------------------------------------------------------------|
+| webvital_time_to_first_byte          | Measures the time it takes between the browser request and the start of the response from a server. Please refer to [Time to First Byte](https://web.dev/ttfb/) for more information.|
+| webvital_first_contentful_paint      | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Please refer to [First Contentful Paint](https://web.dev/fcp/) for more information.  |
+| webvital_interaction_to_next_paint   | An experimental metric that measures a page's responsiveness. Please refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.  |
+
+### Legacy browser metrics
+
+<Blockquote mod="note" title="">
+
+  As of [k6 version 0.44.0](https://github.com/grafana/k6/releases/tag/v0.44.0), k6 now natively supports [Google's Core Web Vitals](https://web.dev/vitals/#core-web-vitals). In future releases, to align with recommended practices, we will remove the following browser metrics to focus on the web vital metrics. Please refer to [#831](https://github.com/grafana/xk6-browser/issues/831) for more information.
+
+</Blockquote>
+
+Apart from the usual HTTP specific metrics that k6 already tracks, the browser module tracks the following browser specific performance metrics on top:
+
+| Metric Name                    |  Description                                                                                                 |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------|
+| browser_dom_content_loaded     | Emitted when the page is loaded but scripts have just started to be executed.                                |
+| browser_first_paint            | Emitted when the browser renders the first pixel on the page.                                                |
+| browser_loaded                 | Emitted when the page is fully loaded.                                                                       |
+
+
 ## Built-in WebSocket metrics
 
 `k6` emits the following metrics when interacting with a WebSocket service through the [`experimental`](/javascript-api/k6-experimental/websockets) or legacy websockets API.
