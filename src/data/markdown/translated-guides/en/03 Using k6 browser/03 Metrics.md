@@ -5,32 +5,38 @@ excerpt: 'An overview of the different browser performance metrics that the brow
 
 Follow along to learn about:
 
-1. Google's Core Web Vitals and why they are important
-2. The existing browser metrics that k6 browser tracks
-3. How to analyze the browser metrics output
-4. How to set thresholds for your browser metrics
+- Google's Core Web Vitals and why they are important
+- How to analyze the browser metrics output
+- How to set thresholds for your browser metrics
 
 ## Google's Core Web Vitals
 
-To provide users with the best user experience, Google introduced [Core Web Vitals](https://web.dev/vitals/#core-web-vitals) which consists of three important metrics to help you measure your user's experience when using your web application. In a nutshell, it gives you an indication of your page's:
+The k6 browser module emits metrics based on the [Core Web Vitals](https://web.dev/vitals/#core-web-vitals).
+This section provides some conceptual background about the core vital.
+To review the complete list browser metrics, refer to the section in the [Metrics reference](/using-k6/metrics/reference#browser).
 
-1. loading performance,
-2. interactivity,
-3. and visual stability. 
+Google introduced these metrics to provided unified signals to assess user experience on the web.
+The vitals are composed ofthree important metrics to help user experience when using your web application.
 
-### Why are they important?
+- Loading performance
+- Interactivity
+- And visual stability
 
-The Core Web Vitals comprise one of [Google's Page Experience Signals](https://developers.google.com/search/docs/appearance/page-experience). A positive page experience naturally leads to better quality and better search engine rankings. These golden metrics help you understand which areas of your frontend application need optimization so your pages can rank higher than similar content.
+### Why web vitals
 
-Existing browser measures such as the `Load` and `DOMContentLoaded` time do not accurately reflect the user's experience very well as they used to. Relying on these load events does not give the correct metric to analyze critical performance bottlenecks that your page might have. Google's Web Vitals is a better measure of your page's performance as well as your page's user experience.
+The Core Web Vitals are one of [Google's Page Experience Signals](https://developers.google.com/search/docs/appearance/page-experience). A positive page experience naturally leads to better quality and better search engine rankings. These golden metrics help you understand which areas of your frontend application need optimization so your pages can rank higher than similar content.
+
+Existing browser measures, such as `Load` and `DOMContentLoaded` times, no longer accurately reflect user experience very well.
+Relying on these load events does not give the correct metric to analyze critical performance bottlenecks that your page might have. Google's Web Vitals is a better measure of your page performance and its user experience.
 
 ## Understanding the browser metrics output
 
-When a browser test is finished, k6 reports a top-level overview of the aggregated browser metrics output. A sample of which you can see below.
+When a browser test finishes, k6 reports a top-level overview of the aggregated browser metrics output.
+The following snippet is an example:
 
 <Blockquote mod="note" title="">
 
-  As mentioned previously, in future releases, the `browser_*` metrics will be removed in favour of the web vitals. As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
+In future releases, the `browser_*` metrics will be removed in favor of the web vitals. As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
 
 </Blockquote>
 
@@ -60,9 +66,13 @@ You can also visualize these results in different ways depending on your team's 
 
 ## Set thresholds for your browser metrics
 
-The great thing about the browser module is it can easily use all of k6's key functionalities, such as [Thresholds](https://k6.io/docs/using-k6/thresholds/).
+The browser module can use all key k6 functionalities, such as [Thresholds](https://k6.io/docs/using-k6/thresholds/).
 
-To set thresholds for your browser metrics, add the metric you want to check and specify its threshold value. As seen in the example below, you can also pass in different URLs if you're going to set a threshold for other pages, especially when your script contains page navigations.
+To set thresholds for your browser metrics:
+1. Add the metric you want to check.
+1. Specify its threshold value.
+
+As the following example shows, you can also pass in different URLs if you're going to set a threshold for other pages, especially when your script contains page navigations.
 
 <Blockquote mod="attention">
 
