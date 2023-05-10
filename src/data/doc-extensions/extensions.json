@@ -1080,6 +1080,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-chai",
+      "description": "Embed k6chaijs into the k6 binary",
+      "url": "https://github.com/szkiba/xk6-chai",
+      "logo": "",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "stars": "",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
