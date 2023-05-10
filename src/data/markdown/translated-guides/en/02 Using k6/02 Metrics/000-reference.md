@@ -22,7 +22,7 @@ k6 always collects the following metrics, no matter what protocol the test uses:
 | data_sent          | Counter | The amount of data sent. [Track data for an individual URL](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                   |
 | checks             | Rate    | The rate of successful checks.
 
-## HTTP-specific built-in metrics
+## HTTP-specific built-in metrics {#http}
 
 These metrics are generated only when the test makes HTTP requests.
 
@@ -86,20 +86,20 @@ Apart from the usual HTTP specific metrics that k6 already tracks, the browser m
 | browser_loaded                 | Emitted when the page is fully loaded.                                                                       |
 
 
-## Built-in WebSocket metrics
+## Built-in WebSocket metrics {#websockets}
 
 `k6` emits the following metrics when interacting with a WebSocket service through the [`experimental`](/javascript-api/k6-experimental/websockets) or legacy websockets API.
 
-| Metric name         | Type    | Description                                                                                                                |
-| ------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
-| ws_connecting       | Trend   | Total duration for the WebSocket connection request.                                                                       |
-| ws_session_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution.               |
-| ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                                |
-| ws_ping             | Trend   | Duration between a ping request and its pong reception                                                                     |
-| ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send)                   |
-| ws_msgs_received    | Counter | Total number of received messages [Socket.on('message', callback)](/javascript-api/k6-ws/socket/socket-on). |
+| Metric name         | Type    | Description                                                                                                  |
+|---------------------|---------|--------------------------------------------------------------------------------------------------------------|
+| ws_connecting       | Trend   | Total duration for the WebSocket connection request.                                                         |
+| ws_session_duration | Trend   | Duration of the WebSocket session. Time between the start of the connection and the end of the VU execution. |
+| ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                  |
+| ws_ping             | Trend   | Duration between a ping request and its pong reception                                                       |
+| ws_msgs_sent        | Counter | Total number of messages sent through [Socket.send(data)](/javascript-api/k6-ws/socket/socket-send)          |
+| ws_msgs_received    | Counter | Total number of messages received                                                                            |
 
-## Built-in gRPC metrics
+## Built-in gRPC metrics {#grpc}
 
 k6 emits the following metrics when it interacts with a service through the [`gRPC`](https://k6.io/docs/javascript-api/k6-net-grpc/) API.
 

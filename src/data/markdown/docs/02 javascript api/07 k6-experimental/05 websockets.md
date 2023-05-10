@@ -42,7 +42,7 @@ A WebSocket instance also has the following properties:
 ## Websocket metrics
 
 k6 takes specific measurements for Websockets.
-For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference).
+For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference#websockets).
 
 ## Example
 
