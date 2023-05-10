@@ -35,7 +35,6 @@ k6 runs the test script and sends the [k6 metrics](/using-k6/metrics/) in real-t
 
 Here is the full list of options that can be configured and passed to the extension:
 
-<!-- vale off -->
 | ENV | Default | Description |
 |-----|---------|-------------|
 | K6_INFLUXDB_ORGANIZATION      |                       | Your InfluxDB organization ID. [View organizations](https://docs.influxdata.com/influxdb/v2.7/organizations/). |
@@ -47,7 +46,6 @@ Here is the full list of options that can be configured and passed to the extens
 | K6_INFLUXDB_TAGS_AS_FIELDS    | vu:int,iter:int,url | A comma-separated string to set `k6` metrics as non-indexable fields (instead of tags). An optional type can be specified using :type as in vu:int will make the field integer. The possible field types are int, bool, float and string, which is the default. Example: vu:int,iter:int,url:string,event_time:int. |
 | K6_INFLUXDB_INSECURE          | false | When `true`, it will skip `https` certificate verification. |
 | K6_INFLUXDB_PRECISION         | 1ns | The timestamp [Precision](https://docs.influxdata.com/influxdb/v2.7/reference/glossary/#precision). |
-<!-- vale on -->
 
 ## Grafana Dashboards
 
