@@ -1,9 +1,9 @@
 ---
-title: 'frames()'
-excerpt: 'Browser module: page.frames method'
+title: 'opener()'
+excerpt: 'Browser module: page.mouse method'
 ---
 
-Returns an array of frames on the page.
+Returns the page that opened the current page. The first page that is navigated to will have a null opener.
 
 ### Example
 
@@ -17,7 +17,7 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.frames());
+  console.log(page.opener())
 }
 ```
 

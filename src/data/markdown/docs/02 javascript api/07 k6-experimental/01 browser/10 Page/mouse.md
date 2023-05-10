@@ -1,9 +1,9 @@
 ---
-title: 'frames()'
-excerpt: 'Browser module: page.frames method'
+title: 'mouse()'
+excerpt: 'Browser module: page.mouse method'
 ---
 
-Returns an array of frames on the page.
+Returns the [Mouse](javascript-api/k6-experimental/browser/mouse/) instance to interact with a virtual mouse on the page.
 
 ### Example
 
@@ -17,7 +17,7 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.frames());
+  page.mouse.down();
 }
 ```
 

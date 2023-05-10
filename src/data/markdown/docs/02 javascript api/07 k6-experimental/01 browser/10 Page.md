@@ -32,6 +32,21 @@ Page provides methods to interact with a single tab in a running web browser ins
 | [page.isClosed()](/javascript-api/k6-experimental/browser/page/isclosed/)       | Checks if the page has been closed.                                           |
 | [page.isDisabled(selector, [options])](/javascript-api/k6-experimental/browser/page/isdisabled/)       | Checks if the element is `disabled`.                                        |
 | [page.isEditable(selector, [options])](/javascript-api/k6-experimental/browser/page/iseditable/)       | Checks if the element is `editable`.                                      |
+| [page.isEnabled(selector, [options])](/javascript-api/k6-experimental/browser/page/isenabbled/)       | Checks if the element is `enabled`.                                      |
+| [page.isHidden(selector, [options])](/javascript-api/k6-experimental/browser/page/ishidden/)       | Checks if the element is `hidden`.                                      |
+| [page.isVisible(selector, [options])](/javascript-api/k6-experimental/browser/page/isvisible/)       | Checks if the element is `visible`.                                      |
+| [page.keyboard()](/javascript-api/k6-experimental/browser/page/keyboard/)       | Returns the [Keyboard](javascript-api/k6-experimental/browser/keyboard/) instance to interact with a virtual keyboard on the page.                                         |
+| [page.locator(selector)](/javascript-api/k6-experimental/browser/page/locator/)       | Returns an element [Locator](/javascript-api/k6-experimental/browser/locator/).                                          |
+| [page.mainFrame()](/javascript-api/k6-experimental/browser/page/mainframe/)       | Returns the page's main frame.                                         |
+| [page.mouse()](/javascript-api/k6-experimental/browser/page/mouse/)       | Returns the [Mouse](javascript-api/k6-experimental/browser/mouse/) instance to interact with a virtual mouse on the page.                                        |
+| [page.opener()](/javascript-api/k6-experimental/browser/page/opener/)       | Returns the page that opened the current page.                                        |
+| [page.press(selector, key, [options])](/javascript-api/k6-experimental/browser/page/press/)       | Focuses the element, and then uses `keyboard.down(key)` and `keyboard.up(key)`. |
+| [page.opener([options])](/javascript-api/k6-experimental/browser/page/reload/)       | Reloads the current page.                                        |
+| [page.screenshot([options])](/javascript-api/k6-experimental/browser/page/screenshot/)       | Returns the buffer with the captured screenshot from the browser.                 |
+| [page.selectOption(selector, values, [options])](/javascript-api/k6-experimental/browser/page/selectoption/)       | Selects one or more options which match the values from a `<select>` element.                |
+| [page.setContent(html, [options])](/javascript-api/k6-experimental/browser/page/setcontent/)       | Sets the supplied html string to the current page.               |
+| [page.setDefaultNavigationTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaultnavigationtimeout/)       | Changes the navigation timeout for [page.goto(url, [options])](/javascript-api/k6-experimental/browser/page/goto/), [page.reload([options])](/javascript-api/k6-experimental/browser/page/reload/), [page.setContent(html, [options])](/javascript-api/k6-experimental/browser/page/setcontent/), and [page.waitForNavigation([options])](/javascript-api/k6-experimental/browser/page/waitfornavigation/)               |
+| [page.setDefaultTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaulttimeout/)       | Changes the timeout for all the methods accepting a `timeout` option.  |
 
 
 
@@ -39,20 +54,6 @@ Page provides methods to interact with a single tab in a running web browser ins
 
 
 <!-- 
-| <a href="https://playwright.dev/docs/api/class-page#page-is-enabled" target="_blank" >page.isEnabled(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-is-hidden" target="_blank" >page.isHidden(selector[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-is-visible" target="_blank" >page.isVisible(selector[, options])</a> | - | - |
-| [page.locator(selector\[, options\])](/javascript-api/k6-experimental/browser/locator/) | - | Creates and returns a new page `locator` given a selector with strict mode on. The strict mode only allows selecting a single matching element, and will throw an error if multiple matches are found. |
-| <a href="https://playwright.dev/docs/api/class-page#page-main-frame" target="_blank" >page.mainFrame()</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-opener" target="_blank" >page.opener()</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-press" target="_blank" >page.press(selector, key[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-reload" target="_blank" >page.reload([options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-screenshot" target="_blank" >page.screenshot([options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-select-option" target="_blank" >page.selectOption(selector, values[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-checked" target="_blank" >page.setChecked(selector, checked[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-content" target="_blank" >page.setContent(html[, options])</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-default-navigation-timeout" target="_blank" >page.setDefaultNavigationTimeout(timeout)</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-set-default-timeout" target="_blank" >page.setDefaultTimeout(timeout)</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-set-extra-http-headers" target="_blank" >page.setExtraHTTPHeaders(headers)</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-set-input-files" target="_blank" >page.setInputFiles(selector, files[, options])</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-set-viewport-size" target="_blank" >page.setViewportSize(viewportSize)</a> | - | - |
@@ -71,6 +72,4 @@ Page provides methods to interact with a single tab in a running web browser ins
 | <a href="https://playwright.dev/docs/api/class-page#page-wait-for-response" target="_blank" >page.waitForResponse(urlOrPredicate[, options])</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-wait-for-selector" target="_blank" >page.waitForSelector(selector[, options])</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-wait-for-timeout" target="_blank" >page.waitForTimeout(timeout)</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-keyboard" target="_blank" >keyboard</a> | - | - |
-| <a href="https://playwright.dev/docs/api/class-page#page-mouse" target="_blank" >mouse</a> | - | - |
 | <a href="https://playwright.dev/docs/api/class-page#page-touchscreen" target="_blank" >touchscreen</a> | - | - | -->

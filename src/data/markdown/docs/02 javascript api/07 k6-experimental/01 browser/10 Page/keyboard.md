@@ -1,9 +1,9 @@
 ---
-title: 'frames()'
-excerpt: 'Browser module: page.frames method'
+title: 'keyboard()'
+excerpt: 'Browser module: page.keyboard method'
 ---
 
-Returns an array of frames on the page.
+Returns the [Keyboard](javascript-api/k6-experimental/browser/keyboard/) instance to interact with a virtual keyboard on the page.
 
 ### Example
 
@@ -17,7 +17,7 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.frames());
+  page.keyboard.press('Tab');
 }
 ```
 

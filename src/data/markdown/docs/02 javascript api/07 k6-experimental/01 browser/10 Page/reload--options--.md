@@ -1,19 +1,15 @@
 ---
-title: 'goto(url, [options])'
-excerpt: 'Browser module: page.goto(url, [options]) method'
+title: 'reload([options])'
+excerpt: 'Browser module: page.reload([options]) method'
 ---
 
-Navigates to the specified url and returns the main resource response.
-
-Navigating to `about:blank` or navigation to the same URL with a different hash, will succeed and return `null`.
+This reloads the current page and returns the main resource response.
 
 <TableWithNestedRows>
 
 | Parameter       | Type   | Default | Description                                                                                                                                                                                                                           |
 |-----------------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| url            | string  | `''`    |  URL to navigate page to. The url should include scheme, e.g. `https://`.                                                                                                               |
 | options         | object | `null`  |                                                                                                                                                                                                                      |
-| options.referer  | string| `''`  | Referer header value.                                                             |
 | options.timeout | number | `30000` | Maximum operation time in milliseconds. Pass `0` to disable the timeout. The default value can be changed via the [browserContext.setDefaultNavigationTimeout(timeout)](/javascript-api/k6-experimental/browser/browsercontext/setdefaultnavigationtimeout/), [browserContext.setDefaultTimeout(timeout)](/javascript-api/k6-experimental/browser/browsercontext/setdefaulttimeout/), [page.setDefaultNavigationTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaultnavigationtimeout/) or [page.setDefaultTimeout(timeout)](/javascript-api/k6-experimental/browser/page/setdefaulttimeout/) methods. Setting the value to `0` will disable the timeout. |
 | options.waitUntil | string | `load` | When to consider operation to have succeeded. See [Events](#events) for more details. |
 
@@ -45,9 +41,7 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-
-  page.close();
-  browser.close();
+  page.reload();
 }
 ```
 
