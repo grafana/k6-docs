@@ -11,7 +11,7 @@ The constructor creates a metric object of the declared type. Each type has an `
 
 If you need help constructing a custom metric, read the following sections of this document.
 They document the procedure and provide examples.
-f you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](/javascript-api/k6-metrics).
+If you're comfortable with these already, you might prefer to read the [reference documentation for each metric constructor](/javascript-api/k6-metrics).
 Each topic has examples to make a custom metric and create [thresholds](/using-k6/thresholds) from it.
 
 ## Create a custom metric
