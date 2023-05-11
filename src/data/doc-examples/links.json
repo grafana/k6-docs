@@ -55,10 +55,10 @@
       "to": "/examples/data-uploads"
     },
     {
-      "title": "Advanced API example",
-      "description": "This example covers the usage of different k6 APIs for API load testing.",
+      "title": "API CRUD Operations",
+      "description": "This example covers the usage of different k6 APIs for API CRUD operations testing.",
       "url": "",
-      "to": "/examples/advanced-api-flow"
+      "to": "/examples/api-crud-operations"
     },
     {
       "title": "Generating UUIDs",
