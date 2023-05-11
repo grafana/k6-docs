@@ -97,7 +97,7 @@ Apart from the usual HTTP specific metrics that k6 already tracks, the browser m
 | ws_sessions         | Counter | Total number of started WebSocket sessions.                                                                  |
 | ws_ping             | Trend   | Duration between a ping request and its pong reception                                                       |
 | ws_msgs_sent        | Counter | Total number of messages sent                                                                                |
-| ws_msgs_received    | Counter | Total number of received messages                                                                            |
+| ws_msgs_received    | Counter | Total number of messages received |
 
 ## Built-in gRPC metrics {#grpc}
 
