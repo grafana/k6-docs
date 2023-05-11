@@ -3,6 +3,12 @@ title: 'waitForLoadState(state, [options])'
 excerpt: 'Browser module: page.waitForLoadState(state, [options]) method'
 ---
 
+<Blockquote mod="attention">
+
+This method has **known issues**. For details, refer to [#880](https://github.com/grafana/xk6-browser/issues/880).
+
+</Blockquote>
+
 This waits for the given load state to be reached. It will immediately unblock if that lifecycle event has already been received.
 
 <TableWithNestedRows>
