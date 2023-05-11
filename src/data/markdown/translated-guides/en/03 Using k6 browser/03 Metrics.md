@@ -12,8 +12,8 @@ Follow along to learn about:
 ## Google's Core Web Vitals
 
 The k6 browser module emits metrics based on the [Core Web Vitals](https://web.dev/vitals/#core-web-vitals).
-This section provides some conceptual background about the core vital.
-To review the complete list browser metrics, refer to the section in the [Metrics reference](/using-k6/metrics/reference#browser).
+This section provides some conceptual background about the core vitals.
+To review the complete list of browser metrics, refer to the section in the [Metrics reference](/using-k6/metrics/reference#browser).
 
 Google introduced these metrics to provided unified signals to assess user experience on the web.
 The vitals are composed of three important metrics to help user experience when using your web application.
