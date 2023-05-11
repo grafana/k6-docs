@@ -30,7 +30,7 @@ import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js'
 import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
 
-export let options = {
+export const options = {
     thresholds: {
         checks: [{
             threshold: 'rate == 1.00', abortOnFail: true,
