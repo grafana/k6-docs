@@ -46,7 +46,7 @@ export let options = {
 const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`;  // Set your own email;
 const PASSWORD = 'superCroc2019';
 
-let session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
 
 // Create a random string of given length
 function randomString(length, charset = '') {
@@ -62,7 +62,7 @@ export function setup() {
     let authToken = null;
 
     describe(`setup - create a test user ${USERNAME}`, () => {
-        let resp = session.post(`/user/register/`, {
+        const resp = session.post(`/user/register/`, {
             first_name: 'Crocodile',
             last_name: 'Owner',
             username: USERNAME,
@@ -74,7 +74,7 @@ export function setup() {
     });
 
     describe(`setup - Authenticate the new user ${USERNAME}`, () => {
-        let resp = session.post(`/auth/token/login/`, {
+        const resp = session.post(`/auth/token/login/`, {
             username: USERNAME,
             password: PASSWORD
         });
@@ -94,14 +94,14 @@ export default function (authToken) {
     session.addHeader('Authorization', `Bearer ${authToken}`);
 
     describe('01. Create a new crocodile', (t) => {
-        let payload = {
+        const payload = {
             name: `Croc name ${randomString(10)}`,
             sex: randomItem(["M", "F"]),
             date_of_birth: '2023-05-11',
         };
 
         session.addTag('name', 'Create');
-        let resp = session.post(`/my/crocodiles/`, payload);
+        const resp = session.post(`/my/crocodiles/`, payload);
 
         expect(resp.status, 'Croc creation status').to.equal(201);
         expect(resp).to.have.validJsonBody();
@@ -112,7 +112,7 @@ export default function (authToken) {
     describe('02. Fetch private crocs', (t) => {
 
         session.clearTag('name');
-        let resp = session.get('/my/crocodiles/');
+        const resp = session.get('/my/crocodiles/');
 
         expect(resp.status, 'Fetch croc status').to.equal(200);
         expect(resp).to.have.validJsonBody();
@@ -120,18 +120,18 @@ export default function (authToken) {
     })
 
     describe('03. Update the croc', (t) => {
-        let payload = {
+        const payload = {
             name: `New croc name ${randomString(10)}`,
         };
 
-        let resp = session.patch(`/my/crocodiles/${session.newCrocId}/`, payload);
+        const resp = session.patch(`/my/crocodiles/${session.newCrocId}/`, payload);
 
         expect(resp.status, 'Croc patch status').to.equal(200);
         expect(resp).to.have.validJsonBody();
         expect(resp.json('name')).to.equal(payload.name);
 
         // read "croc" again to verify the update worked
-        let resp1 = session.get(`/my/crocodiles/${session.newCrocId}/`);
+        const resp1 = session.get(`/my/crocodiles/${session.newCrocId}/`);
 
         expect(resp1.status, 'Croc fetch status').to.equal(200);
         expect(resp1).to.have.validJsonBody();
@@ -141,7 +141,7 @@ export default function (authToken) {
 
     describe('04. Delete the croc', (t) => {
 
-        let resp = session.delete(`/my/crocodiles/${session.newCrocId}/`);
+        const resp = session.delete(`/my/crocodiles/${session.newCrocId}/`);
 
         expect(resp.status, 'Croc delete status').to.equal(204);
     });
