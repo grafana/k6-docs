@@ -112,18 +112,20 @@ La lista de plugins de salida son los siguientes:
 
 <Glossary>
 
-  - [Amazon CloudWatch](/es/visualizacion-de-resultados/amazon-cloudwatch)
-  - [Cloud](/es/visualizacion-de-resultados/cloud)
-  - [CSV](/es/visualizacion-de-resultados/csv)
-  - [Datadog](/es/visualizacion-de-resultados/datadog)
-  - [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus)
-  - [InfluxDB](/es/visualizacion-de-resultados/influxdb)
-  - [JSON](/es/visualizacion-de-resultados/json)
-  - [Netdata](/es/visualizacion-de-resultados/netdata)
-  - [New Relic](/es/visualizacion-de-resultados/new-relic)
-  - [Prometheus](/results-output/real-time/prometheus-remote-write)
-  - [TimescaleDB](/results-output/real-time/timescaledb)
-  - [StatsD](/es/visualizacion-de-resultados/statsd) 
+- [Amazon CloudWatch](/results-output/real-time/amazon-cloudwatch)
+- [Cloud](/results-output/real-time/cloud)
+- [CSV](/results-output/real-time/csv)
+- [Datadog](/results-output/real-time/datadog)
+- [Dynatrace](/results-output/real-time/dynatrace)
+- [Elasticsearch](/results-output/real-time/elasticsearch)
+- [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus)
+- [InfluxDB](/results-output/real-time/influxdb)
+- [JSON](/results-output/real-time/json)
+- [Netdata](/results-output/real-time/netdata)
+- [New Relic](/results-output/real-time/new-relic)
+- [Prometheus](/results-output/real-time/prometheus-remote-write)
+- [TimescaleDB](/results-output/real-time/timescaledb)
+- [StatsD](/results-output/real-time/statsd)
 
 </Glossary>
 
