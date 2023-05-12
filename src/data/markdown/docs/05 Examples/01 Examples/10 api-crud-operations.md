@@ -12,7 +12,7 @@ CRUD refers to the basic operations in a database: Create, Read, Update, and Del
 - _Update_: HTTP `PUT`or `PATCH` to change an existing resource.
 - _Delete_: HTTP `DELETE` to remove a resource.
 
-You'll find two test examples: the first one uses the core k6 APIs (`k6/http` and `checks`), and the second showcases more recent APIs (`httpx` and `k6chaijs`).
+This document has two examples, one that uses the core k6 APIs (`k6/http` and `checks`) and another to show the more recent APIs (`httpx` and `k6chaijs`).
 
 ## Test steps
 
