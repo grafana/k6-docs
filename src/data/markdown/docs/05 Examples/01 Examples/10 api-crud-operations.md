@@ -3,7 +3,7 @@ title: 'API CRUD Operations'
 excerpt: 'This example covers the usage of k6 to test a REST API CRUD operations.'
 ---
 
-The example showcases the testing of CRUD operations on a REST API. 
+The examples showcase the testing of CRUD operations on a REST API. 
 
 CRUD refers to the basic operations in a database: Create, Read, Update, and Delete. We can map these operations to HTTP methods in REST APIs:
 
@@ -11,6 +11,8 @@ CRUD refers to the basic operations in a database: Create, Read, Update, and Del
 - _Read_: HTTP `GET` to retrieve a resource.
 - _Update_: HTTP `PUT`or `PATCH` to change an existing resource.
 - _Delete_: HTTP `DELETE` to remove a resource.
+
+You'll find two test examples: the first one uses the core k6 APIs (`k6/http` and `checks`), and the second showcases more recent APIs (`httpx` and `k6chaijs`).
 
 ## Test steps
 
@@ -23,12 +25,11 @@ The steps implemented in the [VU stage](/using-k6/test-lifecycle/#the-vu-stage) 
 3. _Update_ the name of the "croc" and _read_ the "croc" to confirm the update operation.
 4. _Delete_ the "croc" resource.
 
-<CodeGroup labels={["api-crud-operations.js"]} lineNumbers={[true]}>
+<CodeGroup labels={["api-crud-operations-k6-core-apis.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
-import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
-import { randomIntBetween, randomItem } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
+import http from 'k6/http';
+import { check, group, fail } from 'k6';
 
 export const options = {
     thresholds: {
@@ -43,11 +44,6 @@ export const options = {
     iterations: 1
 };
 
-const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`;  // Set your own email;
-const PASSWORD = 'superCroc2019';
-
-const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
-
 // Create a random string of given length
 function randomString(length, charset = '') {
     if (!charset) charset = 'abcdefghijklmnopqrstuvwxyz';
@@ -56,7 +52,131 @@ function randomString(length, charset = '') {
     return res;
 }
 
-// Authenticate user and retrieve authentication token for the API requests
+const USERNAME = `${randomString(10)}@example.com`; // Set your own email or `${randomString(10)}@example.com`;
+const PASSWORD = 'superCroc2019';
+
+const BASE_URL = 'https://test-api.k6.io';
+
+// Register a new user and retrieve authentication token for subsequent API requests
+export function setup() {
+    const res = http.post(`${BASE_URL}/user/register/`, {
+        first_name: 'Crocodile',
+        last_name: 'Owner',
+        username: USERNAME,
+        password: PASSWORD,
+    });
+
+    check(res, { 'created user': (r) => r.status === 201 });
+
+    const loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
+        username: USERNAME,
+        password: PASSWORD,
+    });
+
+    const authToken = loginRes.json('access');
+    check(authToken, { 'logged in successfully': () => authToken !== '' });
+
+    return authToken;
+}
+
+export default (authToken) => {
+    // set the authorization header on the session for the subsequent requests
+    const requestConfigWithTag = (tag) => ({
+        headers: {
+            Authorization: `Bearer ${authToken}`,
+        },
+        tags: Object.assign(
+            {},
+            {
+                name: 'PrivateCrocs',
+            },
+            tag
+        ),
+    });
+
+    let URL = `${BASE_URL}/my/crocodiles/`;
+
+    group('01. Create a new crocodile', () => {
+        const payload = {
+            name: `Name ${randomString(10)}`,
+            sex: 'F',
+            date_of_birth: '2023-05-11',
+        };
+
+        const res = http.post(URL, payload, requestConfigWithTag({ name: 'Create' }));
+
+        if (check(res, { 'Croc created correctly': (r) => r.status === 201 })) {
+            URL = `${URL}${res.json('id')}/`;
+        } else {
+            console.log(`Unable to create a Croc ${res.status} ${res.body}`);
+            return;
+        }
+    });
+
+    group('02. Fetch private crocs', () => {
+        const res = http.get(`${BASE_URL}/my/crocodiles/`, requestConfigWithTag({ name: 'Fetch' }));
+        check(res, { 'retrieved crocs status': (r) => r.status === 200 });
+        check(res.json(), { 'retrieved crocs list': (r) => r.length > 0 });
+    });
+
+    group('03. Update the croc', () => {
+        const payload = { name: 'New name' };
+        const res = http.patch(URL, payload, requestConfigWithTag({ name: 'Update' }));
+        const isSuccessfulUpdate = check(res, {
+            'Update worked': () => res.status === 200,
+            'Updated name is correct': () => res.json('name') === 'New name',
+        });
+
+        if (!isSuccessfulUpdate) {
+            console.log(`Unable to update the croc ${res.status} ${res.body}`);
+            return;
+        }
+    });
+
+    group('04. Delete the croc', () => {
+        const delRes = http.del(URL, null, requestConfigWithTag({ name: 'Delete' }));
+
+        const isSuccessfulDelete = check(null, {
+            'Croc was deleted correctly': () => delRes.status === 204,
+        });
+
+        if (!isSuccessfulDelete) {
+            console.log(`Croc was not deleted properly`);
+            return;
+        }
+    });
+
+};
+```
+
+</CodeGroup>
+
+<CodeGroup labels={["api-crud-operations-k6-new-apis.js"]} lineNumbers={[true]}>
+
+```javascript
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
+import { randomIntBetween, randomItem, randomString } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
+
+export const options = {
+    thresholds: {
+        checks: [{
+            threshold: 'rate == 1.00', abortOnFail: true,
+        }],
+        'http_req_duration': ['p(90)<25000', 'p(95)<30000'],
+        'http_req_duration{name:Create}': ['avg<15000', 'max<25000'],
+    },
+    // for the example, let's run only 1 VU with 1 iteration
+    vus: 1,
+    iterations: 1,
+};
+
+const USERNAME = `user${randomIntBetween(1, 100000)}@example.com`;  // Set your own email;
+const PASSWORD = 'superCroc2019';
+
+const session = new Httpx({ baseURL: 'https://test-api.k6.io' });
+
+// Register a new user and retrieve authentication token for subsequent API requests
 export function setup() {
 
     let authToken = null;
@@ -70,7 +190,7 @@ export function setup() {
         });
 
         expect(resp.status, 'User create status').to.equal(201);
-        expect(resp).to.have.validJsonBody();
+        expect(resp, 'User create valid json response').to.have.validJsonBody();
     });
 
     describe(`setup - Authenticate the new user ${USERNAME}`, () => {
@@ -79,10 +199,10 @@ export function setup() {
             password: PASSWORD
         });
 
-        expect(resp.status, 'Auth status').to.equal(200);
-        expect(resp).to.have.validJsonBody();
+        expect(resp.status, 'Authenticate status').to.equal(200);
+        expect(resp, 'Authenticate valid json response').to.have.validJsonBody();
         authToken = resp.json('access');
-        expect(authToken, 'auth token').to.not.be.null;
+        expect(authToken, 'Authentication token', 'auth token').to.not.be.null;
     });
 
     return authToken;
@@ -90,7 +210,7 @@ export function setup() {
 
 export default function (authToken) {
 
-    // set the authorization header on the session for the subsequent requests.
+    // set the authorization header on the session for the subsequent requests
     session.addHeader('Authorization', `Bearer ${authToken}`);
 
     describe('01. Create a new crocodile', (t) => {
@@ -104,7 +224,7 @@ export default function (authToken) {
         const resp = session.post(`/my/crocodiles/`, payload);
 
         expect(resp.status, 'Croc creation status').to.equal(201);
-        expect(resp).to.have.validJsonBody();
+        expect(resp, 'Croc creation valid json response').to.have.validJsonBody();
 
         session.newCrocId = resp.json('id');
     })
@@ -115,8 +235,8 @@ export default function (authToken) {
         const resp = session.get('/my/crocodiles/');
 
         expect(resp.status, 'Fetch croc status').to.equal(200);
-        expect(resp).to.have.validJsonBody();
-        expect(resp.json().length, 'number of crocs').to.be.above(0);
+        expect(resp, 'Fetch croc valid json response').to.have.validJsonBody();
+        expect(resp.json().length, 'Number of crocs').to.be.above(0);
     })
 
     describe('03. Update the croc', (t) => {
@@ -127,15 +247,15 @@ export default function (authToken) {
         const resp = session.patch(`/my/crocodiles/${session.newCrocId}/`, payload);
 
         expect(resp.status, 'Croc patch status').to.equal(200);
-        expect(resp).to.have.validJsonBody();
-        expect(resp.json('name')).to.equal(payload.name);
+        expect(resp, 'Fetch croc valid json response').to.have.validJsonBody();
+        expect(resp.json('name'), 'Croc name').to.equal(payload.name);
 
         // read "croc" again to verify the update worked
         const resp1 = session.get(`/my/crocodiles/${session.newCrocId}/`);
 
         expect(resp1.status, 'Croc fetch status').to.equal(200);
-        expect(resp1).to.have.validJsonBody();
-        expect(resp1.json('name')).to.equal(payload.name);
+        expect(resp1, 'Fetch croc valid json response').to.have.validJsonBody();
+        expect(resp1.json('name'), 'Croc name').to.equal(payload.name);
 
     })
 
