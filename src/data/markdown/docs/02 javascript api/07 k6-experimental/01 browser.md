@@ -41,7 +41,7 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page.goto('https://test.k6.io/')
+    await page.goto('https://test.k6.io/');
   } finally {
     page.close();
     browser.close();
@@ -68,3 +68,4 @@ export default async function () {
 | [Request](/javascript-api/k6-experimental/browser/request/) <BWIPT />               | Used to keep track of the request the [`Page`](/javascript-api/k6-experimental/browser/page/) makes.                                                                        |
 | [Response](/javascript-api/k6-experimental/browser/response/) <BWIPT />             | Represents the response received by the [`Page`](/javascript-api/k6-experimental/browser/page/).                                                                            |
 | [Touchscreen](/javascript-api/k6-experimental/browser/touchscreen/)                 | Used to simulate touch interactions with the associated [`Page`](/javascript-api/k6-experimental/browser/page/).                                                            |
+| [Worker](/javascript-api/k6-experimental/browser/worker/)                           | Represents a [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).                                                            |
