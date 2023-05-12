@@ -63,5 +63,5 @@ Page provides methods to interact with a single tab in a running web browser ins
 | [page.waitForSelector(selector, [options])](/javascript-api/k6-experimental/browser/page/waitforselector/)       | Returns when element specified by selector satisfies `state` option.        |
 | [page.waitForTimeout(timeout)](/javascript-api/k6-experimental/browser/page/waitfortimeout/)       | Waits for the given `timeout` in milliseconds. |
 | [page.workers()](/javascript-api/k6-experimental/browser/page/workers/)       | Returns an array of the dedicated WebWorkers associated with the page. |
-| [page.$(selector)](/javascript-api/k6-experimental/browser/page/$/)       | Finds an element matching the specified selector within the page. |
-| [page.$$(selector)](/javascript-api/k6-experimental/browser/page/$$/)       | Finds all elements matching the specified selector within the page. |
+| [page.$(selector)](/javascript-api/k6-experimental/browser/page/page-$/)       | Finds an element matching the specified selector within the page. |
+| [page.$$(selector)](/javascript-api/k6-experimental/browser/page/page-$$/)       | Finds all elements matching the specified selector within the page. |
