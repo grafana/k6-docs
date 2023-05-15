@@ -1,6 +1,6 @@
 ---
-title: 'setContent(html, [options])'
-excerpt: 'Browser module: page.setContent(html, [options]) method'
+title: 'setContent(html[, options])'
+excerpt: 'Browser module: page.setContent(html[, options]) method'
 ---
 
 Sets the supplied HTML string to the current page.

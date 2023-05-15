@@ -3,7 +3,7 @@ title: 'bringToFront()'
 excerpt: 'Browser module: page.bringToFront method'
 ---
 
-Activates the browser tab so that it comes into focus and actions can be performed against it.
+Activates the browser tab which brings the page in focus to allow actions to be performed onto it.
 
 
 ### Example

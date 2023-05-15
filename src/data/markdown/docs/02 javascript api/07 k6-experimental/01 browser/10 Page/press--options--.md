@@ -1,6 +1,6 @@
 ---
-title: 'press(selector, key, [options])'
-excerpt: 'Browser module: page.press(selector, key, [options]) method'
+title: 'press(selector, key[, options])'
+excerpt: 'Browser module: page.press(selector, key[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

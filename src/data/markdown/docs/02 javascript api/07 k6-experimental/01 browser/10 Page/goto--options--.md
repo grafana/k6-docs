@@ -1,6 +1,6 @@
 ---
-title: 'goto(url, [options])'
-excerpt: 'Browser module: page.goto(url, [options]) method'
+title: 'goto(url[, options])'
+excerpt: 'Browser module: page.goto(url[, options]) method'
 ---
 
 Navigates to the specified URL and returns the main resource response.

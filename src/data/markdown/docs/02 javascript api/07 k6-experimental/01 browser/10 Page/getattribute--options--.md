@@ -1,6 +1,6 @@
 ---
-title: 'getAttribute(selector, name, [options])'
-excerpt: 'Browser module: page.getAttribute(selector, name, [options]) method'
+title: 'getAttribute(selector, name[, options])'
+excerpt: 'Browser module: page.getAttribute(selector, name[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

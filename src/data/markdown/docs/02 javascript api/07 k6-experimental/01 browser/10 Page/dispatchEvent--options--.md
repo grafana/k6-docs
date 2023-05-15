@@ -1,11 +1,11 @@
 ---
-title: 'dispatchEvent(selector, type, eventInit, [options])'
-excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit, [options]) method'
+title: 'dispatchEvent(selector, type, eventInit[, options])'
+excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
 ---
 
 <Blockquote mod="note" title="">
 
-Use locator-based [`locator.dispatchEvent(type, eventInit, [options])`](/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
+Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
 
 </Blockquote>
 

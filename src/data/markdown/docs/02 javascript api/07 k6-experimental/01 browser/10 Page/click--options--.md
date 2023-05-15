@@ -1,6 +1,6 @@
 ---
-title: 'click(selector,[options)'
-excerpt: 'Browser module: page.click(selector,[options) method'
+title: 'click(selector[, options])'
+excerpt: 'Browser module: page.click(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">
@@ -9,7 +9,7 @@ Use locator-based [`locator.click([options])`](/javascript-api/k6-experimental/b
 
 </Blockquote>
 
-This method clicks an element matching a `selector`.
+This method clicks on an element matching a `selector`.
 
 <TableWithNestedRows>
 
@@ -44,7 +44,7 @@ export default async function () {
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
-  await Promise.all([page.click('#counter-button')]);
+  await page.click('#counter-button');
 }
 ```
 

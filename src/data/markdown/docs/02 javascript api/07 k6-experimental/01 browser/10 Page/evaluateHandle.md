@@ -5,7 +5,7 @@ excerpt: 'Browser module: page.evaluateHandle(pageFunction[, arg]) method'
 
 Returns the value of the `pageFunction` invocation as a [JSHandle](/javascript-api/k6-experimental/browser/jshandle/). 
 
-The only difference between `page.evaluate` and `page.evaluateHandle` is that `page.evaluateHandle` returns [JSHandle](/javascript-api/k6-experimental/browser/jshandle/).
+The only difference between `page.evaluate()` and `page.evaluateHandle()` is that `page.evaluateHandle()` returns [JSHandle](/javascript-api/k6-experimental/browser/jshandle/).
 
 <TableWithNestedRows>
 
