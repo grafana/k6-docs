@@ -1,6 +1,6 @@
 ---
 title: 'waitForNavigation([options])'
-excerpt: 'Browser module: page.waitForLoadState(state, [options]) method'
+excerpt: 'Browser module: page.waitForNavigation([options]) method'
 ---
 
 Waits for the given navigation lifecycle event to occur and returns the main resource response.

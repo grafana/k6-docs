@@ -1,6 +1,6 @@
 ---
-title: 'inputValue(selector, [options])'
-excerpt: 'Browser module: page.inputValue(selector, [options]) method'
+title: 'inputValue(selector[, options])'
+excerpt: 'Browser module: page.inputValue(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

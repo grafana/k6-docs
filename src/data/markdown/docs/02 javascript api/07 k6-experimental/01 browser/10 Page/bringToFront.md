@@ -19,7 +19,7 @@ export default async function () {
   
   await page.goto('https://test.k6.io/browser.php');
   
-  /// perform other actions that might open up a different tab, but not focused.
+  // perform other actions that might open up a different tab, taking focus away from the initial page.
 
   page.bringToFront();
 }

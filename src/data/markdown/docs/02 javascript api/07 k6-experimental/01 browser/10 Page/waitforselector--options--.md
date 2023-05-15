@@ -1,6 +1,6 @@
 ---
-title: 'waitForSelector(selector, [options])'
-excerpt: 'Browser module: page.waitForSelector(selector, [options]) method'
+title: 'waitForSelector(selector[, options])'
+excerpt: 'Browser module: page.waitForSelector(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

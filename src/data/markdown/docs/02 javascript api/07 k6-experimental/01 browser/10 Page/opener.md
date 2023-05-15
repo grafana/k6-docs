@@ -3,7 +3,7 @@ title: 'opener()'
 excerpt: 'Browser module: page.mouse method'
 ---
 
-Returns the page that opened the current page. The first page that is navigated to will have a null opener.
+Returns the page that opened the current page. The first page that is navigated to will have a `null` opener.
 
 ### Example
 

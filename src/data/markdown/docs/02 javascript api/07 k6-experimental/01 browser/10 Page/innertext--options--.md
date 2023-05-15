@@ -1,6 +1,6 @@
 ---
-title: 'innerText(selector, [options])'
-excerpt: 'Browser module: page.innerText(selector, [options]) method'
+title: 'innerText(selector[, options])'
+excerpt: 'Browser module: page.innerText(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

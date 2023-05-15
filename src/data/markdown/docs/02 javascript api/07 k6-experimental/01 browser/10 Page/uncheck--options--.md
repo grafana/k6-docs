@@ -1,6 +1,6 @@
 ---
-title: 'uncheck(selector, [options])'
-excerpt: 'Browser module: page.uncheck(selector, [options]) method'
+title: 'uncheck(selector[, options])'
+excerpt: 'Browser module: page.uncheck(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

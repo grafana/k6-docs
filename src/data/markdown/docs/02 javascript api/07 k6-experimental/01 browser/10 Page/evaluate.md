@@ -1,6 +1,6 @@
 ---
-title: 'evaluate(pageFunction, [arg])'
-excerpt: 'Browser module: page.evaluate(pageFunction, [arg]) method'
+title: 'evaluate(pageFunction[, arg])'
+excerpt: 'Browser module: page.evaluate(pageFunction[, arg]) method'
 ---
 
 Returns the value of the `pageFunction` invocation.

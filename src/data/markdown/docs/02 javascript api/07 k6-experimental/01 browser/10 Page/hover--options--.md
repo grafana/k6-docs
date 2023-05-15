@@ -1,6 +1,6 @@
 ---
-title: 'hover(selector, [options])'
-excerpt: 'Browser module: page.hover(selector, [options]) method'
+title: 'hover(selector[, options])'
+excerpt: 'Browser module: page.hover(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

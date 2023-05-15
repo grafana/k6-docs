@@ -1,6 +1,6 @@
 ---
 title: 'title()'
-excerpt: 'Browser module: page.title() method'
+excerpt: 'Browser module: page.title method'
 ---
 
 Returns the page's title.

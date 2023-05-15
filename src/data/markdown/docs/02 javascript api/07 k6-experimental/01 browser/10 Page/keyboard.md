@@ -1,5 +1,5 @@
 ---
-title: 'keyboard()'
+title: 'keyboard'
 excerpt: 'Browser module: page.keyboard method'
 ---
 

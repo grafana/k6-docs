@@ -1,6 +1,6 @@
 ---
-title: 'tap(selector, [options])'
-excerpt: 'Browser module: locator.tap(selector, [options]) method'
+title: 'tap(selector[, options])'
+excerpt: 'Browser module: locator.tap(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

@@ -5,7 +5,7 @@ excerpt: 'Browser module: page.getAttribute(selector, name, [options]) method'
 
 <Blockquote mod="note" title="">
 
-Use locator-based [`locator.getAttribute(name, [options])`](/javascript-api/k6-experimental/browser/locator/getattribute/) instead.
+Use locator-based [`locator.getAttribute()`](/javascript-api/k6-experimental/browser/locator/getattribute/) instead.
 
 </Blockquote>
 

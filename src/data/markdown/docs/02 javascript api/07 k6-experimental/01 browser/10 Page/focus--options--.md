@@ -1,6 +1,6 @@
 ---
-title: 'focus(selector, [options])'
-excerpt: 'Browser module: page.focus(selector, [options]) method'
+title: 'focus(selector[, options])'
+excerpt: 'Browser module: page.focus(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

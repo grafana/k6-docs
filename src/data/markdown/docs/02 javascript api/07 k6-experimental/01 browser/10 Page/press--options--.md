@@ -5,7 +5,7 @@ excerpt: 'Browser module: page.press(selector, key, [options]) method'
 
 <Blockquote mod="note" title="">
 
-Use locator-based [`locator.press(key, [options])`](/javascript-api/k6-experimental/browser/locator/press/) instead.
+Use locator-based [`locator.press()`](/javascript-api/k6-experimental/browser/locator/press/) instead.
 
 </Blockquote>
 

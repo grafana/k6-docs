@@ -1,5 +1,5 @@
 ---
-title: 'touchScreen()'
+title: 'touchScreen'
 excerpt: 'Browser module: page.touchScreen method'
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'textContent(selector, [options])'
-excerpt: 'Browser module: locator.textContent(selector, [options]) method'
+title: 'textContent(selector[, options])'
+excerpt: 'Browser module: locator.textContent(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

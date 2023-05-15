@@ -1,6 +1,6 @@
 ---
-title: 'isEditable(selector, [options])'
-excerpt: 'Browser module: page.isEditable(selector, [options]) method'
+title: 'isEditable(selector[, options])'
+excerpt: 'Browser module: page.isEditable(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

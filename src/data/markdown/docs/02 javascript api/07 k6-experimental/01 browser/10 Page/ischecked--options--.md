@@ -1,6 +1,6 @@
 ---
-title: 'isChecked(selector, [options])'
-excerpt: 'Browser module: page.isChecked(selector, [options]) method'
+title: 'isChecked(selector[, options])'
+excerpt: 'Browser module: page.isChecked(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

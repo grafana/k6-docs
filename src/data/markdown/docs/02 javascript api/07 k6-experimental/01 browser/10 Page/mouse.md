@@ -1,5 +1,5 @@
 ---
-title: 'mouse()'
+title: 'mouse'
 excerpt: 'Browser module: page.mouse method'
 ---
 

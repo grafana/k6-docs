@@ -1,6 +1,6 @@
 ---
-title: 'evaluateHandle(pageFunction, [arg])'
-excerpt: 'Browser module: page.evaluateHandle(pageFunction, [arg]) method'
+title: 'evaluateHandle(pageFunction[, arg])'
+excerpt: 'Browser module: page.evaluateHandle(pageFunction[, arg]) method'
 ---
 
 Returns the value of the `pageFunction` invocation as a [JSHandle](/javascript-api/k6-experimental/browser/jshandle/). 

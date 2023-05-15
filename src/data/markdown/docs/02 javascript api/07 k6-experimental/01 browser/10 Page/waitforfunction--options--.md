@@ -1,6 +1,6 @@
 ---
-title: 'waitForFunction(pageFunction, arg, [options])'
-excerpt: 'Browser module: page.waitForFunction(pageFunction, arg, [options]) method'
+title: 'waitForFunction(pageFunction, arg[, options])'
+excerpt: 'Browser module: page.waitForFunction(pageFunction, arg[, options]) method'
 ---
 
 Returns when the `pageFunction` returns a truthy value.

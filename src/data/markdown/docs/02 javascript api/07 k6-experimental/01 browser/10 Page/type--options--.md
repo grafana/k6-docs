@@ -1,11 +1,11 @@
 ---
-title: 'type(selector, text, [options])'
-excerpt: 'Browser module: page.type(selector, text, [options]) method'
+title: 'type(selector, text[, options])'
+excerpt: 'Browser module: page.type(selector, text[, options]) method'
 ---
 
 <Blockquote mod="note" title="">
 
-Use locator-based [`locator.type(text, [options])`](/javascript-api/k6-experimental/browser/locator/type/) instead.
+Use locator-based [`locator.type()`](/javascript-api/k6-experimental/browser/locator/type/) instead.
 
 </Blockquote>
 

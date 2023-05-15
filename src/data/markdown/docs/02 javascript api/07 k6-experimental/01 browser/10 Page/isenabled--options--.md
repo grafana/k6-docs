@@ -1,6 +1,6 @@
 ---
-title: 'isEnabled(selector, [options])'
-excerpt: 'Browser module: page.isEnabled(selector, [options]) method'
+title: 'isEnabled(selector[, options])'
+excerpt: 'Browser module: page.isEnabled(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

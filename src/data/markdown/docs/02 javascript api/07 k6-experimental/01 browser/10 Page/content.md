@@ -17,7 +17,7 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-  console.log(page.content()); // HTML content printed on console
+  console.log(page.content()); // HTML content printed in the console
 }
 ```
 

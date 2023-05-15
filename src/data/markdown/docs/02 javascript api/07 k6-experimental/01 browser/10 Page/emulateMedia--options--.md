@@ -3,7 +3,7 @@ title: 'emulateMedia([options])'
 excerpt: 'Browser module: page.emulateMedia([options]) method'
 ---
 
-This method changes the `CSS media type` through the `media` argument, and/or the `'prefers-colors-scheme'` media feature, using the `colorScheme` argument.
+This method changes the CSS `@media type` through the `media` argument, and/or the `'prefers-colors-scheme'` media feature, using the `colorScheme` argument.
 
 <TableWithNestedRows>
 

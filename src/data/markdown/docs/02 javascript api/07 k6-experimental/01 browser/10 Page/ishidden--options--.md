@@ -1,6 +1,6 @@
 ---
-title: 'isHidden(selector, [options])'
-excerpt: 'Browser module: page.isHidden(selector, [options) method'
+title: 'isHidden(selector[, options])'
+excerpt: 'Browser module: page.isHidden(selector[, options) method'
 ---
 
 <Blockquote mod="note" title="">

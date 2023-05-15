@@ -3,7 +3,7 @@ title: 'workers()'
 excerpt: 'Browser module: page.workers method'
 ---
 
-This method returns an array of the dedicated WebWorkers associated with the page.
+This method returns an array of the dedicated [WebWorkers](/javascript-api/k6-experimental/browser/worker/) associated with the page.
 
 ### Example
 

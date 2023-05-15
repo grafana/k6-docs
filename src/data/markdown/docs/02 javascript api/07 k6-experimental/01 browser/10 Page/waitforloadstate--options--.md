@@ -1,6 +1,6 @@
 ---
-title: 'waitForLoadState(state, [options])'
-excerpt: 'Browser module: page.waitForLoadState(state, [options]) method'
+title: 'waitForLoadState(state[, options])'
+excerpt: 'Browser module: page.waitForLoadState(state[, options]) method'
 ---
 
 <Blockquote mod="attention">

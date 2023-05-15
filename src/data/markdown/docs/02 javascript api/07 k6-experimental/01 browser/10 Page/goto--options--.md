@@ -3,7 +3,7 @@ title: 'goto(url, [options])'
 excerpt: 'Browser module: page.goto(url, [options]) method'
 ---
 
-Navigates to the specified url and returns the main resource response.
+Navigates to the specified URL and returns the main resource response.
 
 Navigating to `about:blank` or navigation to the same URL with a different hash, will succeed and return `null`.
 

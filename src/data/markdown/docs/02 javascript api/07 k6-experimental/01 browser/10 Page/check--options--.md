@@ -1,6 +1,6 @@
 ---
-title: 'check(selector,[options])'
-excerpt: 'Browser module: page.check(selector,[options]) method'
+title: 'check(selector[, options])'
+excerpt: 'Browser module: page.check(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

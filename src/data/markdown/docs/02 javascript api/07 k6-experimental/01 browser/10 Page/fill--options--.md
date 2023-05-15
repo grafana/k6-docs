@@ -1,11 +1,11 @@
 ---
-title: 'fill(selector, value, [options])'
-excerpt: 'Browser module: page.fill(selector, value, [options]) method'
+title: 'fill(selector, value[, options])'
+excerpt: 'Browser module: page.fill(selector, value[, options]) method'
 ---
 
 <Blockquote mod="note" title="">
 
-Use locator-based [`locator.fill(value, [options])`](/javascript-api/k6-experimental/browser/locator/fill/) instead.
+Use locator-based [`locator.fill(value[, options])`](/javascript-api/k6-experimental/browser/locator/fill/) instead.
 
 </Blockquote>
 

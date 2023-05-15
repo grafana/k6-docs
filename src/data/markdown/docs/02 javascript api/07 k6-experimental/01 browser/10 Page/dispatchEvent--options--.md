@@ -26,7 +26,7 @@ Dispatches HTML DOM event types e.g. `'click'`.
 
 ### eventInit
 
-Since eventInit is event-specific, please refer to the events documentation for the lists of initial properties:
+Since `eventInit` is event-specific, please refer to the events documentation for the lists of initial properties:
 
 - [DragEvent](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/DragEvent)
 - [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/FocusEvent)

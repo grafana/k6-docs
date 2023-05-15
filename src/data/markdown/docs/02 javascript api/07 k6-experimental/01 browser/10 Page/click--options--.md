@@ -63,7 +63,10 @@ export default async function () {
 
   await page.goto('https://test.k6.io/');
 
-  await Promise.all([page.waitForNavigation(), page.click('a[href="/my_messages.php"]')]);
+  await Promise.all([
+    page.waitForNavigation(),
+    page.click('a[href="/my_messages.php"]'),
+  ]);
 }
 ```
 

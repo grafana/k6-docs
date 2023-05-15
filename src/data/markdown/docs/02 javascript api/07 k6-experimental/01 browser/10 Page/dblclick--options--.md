@@ -1,6 +1,6 @@
 ---
-title: 'dblclick(selector,[options)'
-excerpt: 'Browser module: page.dblclick(selector,[options) method'
+title: 'dblclick(selector[, options])'
+excerpt: 'Browser module: page.dblclick(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">

@@ -1,6 +1,6 @@
 ---
-title: 'isVisible(selector, [options])'
-excerpt: 'Browser module: page.isVisible(selector, [options]) method'
+title: 'isVisible(selector[, options])'
+excerpt: 'Browser module: page.isVisible(selector[, options]) method'
 ---
 
 <Blockquote mod="note" title="">
