@@ -267,7 +267,7 @@ You can also send the generated reports to a remote server (over any protocol th
 import http from 'k6/http';
 
 // use example function to generate data
-import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
+import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/examples/thresholds_readme_example.js';
 export const options = { vus: 5, iterations: 10 };
 
 export function handleSummary(data) {
