@@ -148,6 +148,13 @@ const plugins = [
       excludes: ['/get-started/welcome', '/docs/get-started/welcome'],
     },
   },
+  {
+    resolve: `@tmttn/gatsby-plugin-linkedin-insight`,
+    options: {
+      partnerId: '4981058',
+      includeInDevelopment: false,
+    },
+  },
 ];
 
 if (
