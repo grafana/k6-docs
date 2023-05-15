@@ -225,7 +225,7 @@ import http from 'k6/http';
 
 // Use example functions to generate data
 import { jUnit } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
-import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/samples/thresholds_readme_example.js';
+import k6example from 'https://raw.githubusercontent.com/grafana/k6/master/examples/thresholds_readme_example.js';
 
 export default k6example;
 export const options = {
