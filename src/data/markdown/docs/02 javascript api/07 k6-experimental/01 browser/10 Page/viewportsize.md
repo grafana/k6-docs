@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.viewportSize method'
 
 Returns the page's size (width and height).
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| Object               | An object containing the page's width and height.                                               |
+
 ### Example
 
 <CodeGroup labels={[]}>

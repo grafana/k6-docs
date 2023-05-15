@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.content method'
 
 Gets the HTML contents of the page.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| string               | The HTML contents of the page.                                                                  |
+
 ### Example
 
 <CodeGroup labels={[]}>

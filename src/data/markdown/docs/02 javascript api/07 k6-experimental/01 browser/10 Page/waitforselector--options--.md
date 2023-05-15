@@ -32,6 +32,12 @@ Element states can be either:
 - `'visible'` - wait for element to have non-empty bounding box and no `visibility:hidden`.
 - `'hidden'` - wait for element to be either detached from DOM, or have an empty bounding box or `visibility:hidden`.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| null or [ElementHandle](/javascript-api/k6-experimental/browser/keyboard/)              | `ElementHandle` when a matching element is found. Else, it returns `null`.        |
+
 ### Example
 
 <CodeGroup labels={[]}>

@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.title method'
 
 Returns the page's title.
 
+### Returns
+
+| Type | Description                                       |
+|------|---------------------------------------------------|
+| string | The page's title. |
+
 ### Example
 
 <CodeGroup labels={[]}>

@@ -11,6 +11,12 @@ This method has **known issues**. For details, refer to [#878](https://github.co
 
 Checks if the page has been closed.
 
+### Returns
+
+| Type | Description                                       |
+|------|---------------------------------------------------|
+| bool | `true` if the page has been closed, else `false`. |
+
 ### Example
 
 <CodeGroup labels={[]}>

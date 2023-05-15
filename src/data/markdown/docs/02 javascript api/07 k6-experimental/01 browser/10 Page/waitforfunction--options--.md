@@ -17,6 +17,12 @@ Returns when the `pageFunction` returns a truthy value.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| Promise<[JSHandle](/javascript-api/k6-experimental/browser/jshandle/)>               | The `JSHandle` instance associated with the page. |
+
 ### Example
 
 <CodeGroup labels={[]}>

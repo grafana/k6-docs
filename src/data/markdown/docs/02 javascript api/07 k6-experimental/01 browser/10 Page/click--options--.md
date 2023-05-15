@@ -32,6 +32,12 @@ This method clicks on an element matching a `selector`.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| Promise              | An asynchronous operation that doesn't return a value.                                          |
+
 ### Example
 
 <CodeGroup labels={["Click action without navigation"]}>

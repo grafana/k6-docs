@@ -10,6 +10,11 @@ The method returns an element [Locator](/javascript-api/k6-experimental/browser/
 |-----------------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | selector        | string  | `''`    |  A selector to use when resolving DOM element.                                                                                                               |
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| [Locator](/javascript-api/k6-experimental/browser/locator/)               | The element `Locator` associated with the page.        |
 
 ### Example
 

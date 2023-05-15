@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.mouse method'
 
 Returns the page that opened the current page. The first page that is navigated to will have a `null` opener.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| null or [Page](/javascript-api/k6-experimental/browser/page/)              | The `Page` instance. Else, it returns `null`.        |
+
 ### Example
 
 <CodeGroup labels={[]}>

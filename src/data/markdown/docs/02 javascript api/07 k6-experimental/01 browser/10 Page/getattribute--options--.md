@@ -27,7 +27,7 @@ Returns the element attribute value for the given attribute name.
 
 | Type   | Description                         |
 |--------|-------------------------------------|
-| string | The value of the attribute or null. |
+| null or string | The value of the attribute. Else, it returns `null`. |
 
 ### Example
 

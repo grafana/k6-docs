@@ -14,6 +14,12 @@ Returns the value of the `pageFunction` invocation.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| any              | The value of the `pageFunction` invocation.         |
+
 ### Example
 
 <CodeGroup labels={[]}>

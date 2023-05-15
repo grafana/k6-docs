@@ -11,6 +11,12 @@ Use locator-based [`page.locator(selector)`](/javascript-api/k6-experimental/bro
 
 The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| null or [ElementHandle](javascript-api/k6-experimental/browser/keyboard/)[]              | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`.        |
+
 ### Example
 
 <CodeGroup labels={[]}>

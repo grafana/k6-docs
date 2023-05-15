@@ -30,6 +30,12 @@ Events can be either:
 - `'load'` - consider operation to be finished when the `load` event is fired.
 - `'networkidle'` - Consider operation to be finished when there are no network connections for at least `500` ms. 
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| Promise<null or [Response](/javascript-api/k6-experimental/browser/response/)>               | The `Response` instance associated with the page. Else, it returns `null` |
+
 ### Example
 
 <CodeGroup labels={[]}>

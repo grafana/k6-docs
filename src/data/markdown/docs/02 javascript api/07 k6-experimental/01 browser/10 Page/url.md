@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.url method'
 
 Returns the page's URL.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| string               | The page's URL.                                              |
+
 ### Example
 
 <CodeGroup labels={[]}>

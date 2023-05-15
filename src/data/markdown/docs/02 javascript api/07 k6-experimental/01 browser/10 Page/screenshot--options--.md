@@ -23,6 +23,12 @@ Returns the buffer with the captured screenshot from the browser.
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| [Buffer](https://nodejs.org/api/buffer.html#buffer_class_buffer)              | The buffer with the captured screenshot.         |
+
 ### Example
 
 <CodeGroup labels={[]}>

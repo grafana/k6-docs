@@ -16,6 +16,13 @@ The only difference between `page.evaluate()` and `page.evaluateHandle()` is tha
 
 </TableWithNestedRows>
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| [JSHandle](/javascript-api/k6-experimental/browser/jshandle/)               | The `JSHandle` instance associated with the page.                                                                |
+
+
 ### Example
 
 <CodeGroup labels={[]}>

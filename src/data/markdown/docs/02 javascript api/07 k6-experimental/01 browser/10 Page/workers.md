@@ -5,6 +5,12 @@ excerpt: 'Browser module: page.workers method'
 
 This method returns an array of the dedicated [WebWorkers](/javascript-api/k6-experimental/browser/worker/) associated with the page.
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| [WebWorkers](/javascript-api/k6-experimental/browser/workers/)[]               | Array of `WebWorkers` associated with the page.          |
+
 ### Example
 
 <CodeGroup labels={[]}>

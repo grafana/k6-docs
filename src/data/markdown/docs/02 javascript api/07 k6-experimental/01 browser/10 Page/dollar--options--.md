@@ -11,6 +11,12 @@ Use locator-based [`page.locator(selector)`](/javascript-api/k6-experimental/bro
 
 The method finds an element matching the specified selector within the page. If no elements match the selector, the return value resolves to `null`. To wait for an element on the page, use [locator.waitFor([options])](/javascript-api/k6-experimental/browser/locator/waitfor/).
 
+### Returns
+
+| Type                 | Description                                                                                     |
+| ----                 | -----------                                                                                     |
+| null or [ElementHandle](javascript-api/k6-experimental/browser/keyboard/)              | Returns `ElementHandle` when a matching element is found. Else, it returns `null`.        |
+
 ### Example
 
 <CodeGroup labels={[]}>
