@@ -1609,6 +1609,26 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/test-authoring/recording-a-session/browser-recorder',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-authoring/recording-a-session/har-converter',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-har-converter/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-authoring/recording-a-session',
+    toPath: '/test-authoring/create-tests-from-recordings/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http':
       '/javascript-api/k6-http/cookiejar/',
