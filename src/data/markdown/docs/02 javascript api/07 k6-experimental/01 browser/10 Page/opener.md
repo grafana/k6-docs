@@ -1,6 +1,6 @@
 ---
 title: 'opener()'
-excerpt: 'Browser module: page.mouse method'
+excerpt: 'Browser module: page.opener method'
 ---
 
 Returns the page that opened the current page. The first page that is navigated to will have a `null` opener.
