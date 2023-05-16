@@ -3,26 +3,19 @@ title: 'Using the HAR converter'
 excerpt: 'The HAR converter is an alternative to the Browser recorder. It generates a k6 script based on the HTTP requests included on a HAR file.'
 ---
 
-The HAR converter is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder).
-It generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
+The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool that generates a k6 script based on the HTTP requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>). 
+It is an alternative to the [Browser recorder](/test-authoring/recording-a-session/browser-recorder).
 
 > HAR is a file format used by all major browsers and various other tools to export recorded HTTP requests.
 
-The [har-to-k6 converter](https://github.com/k6io/har-to-k6) is a NodeJS tool.
-Unlike the Browser Recorder, it _does not_ require a k6 Cloud user to generate the k6 script.
-
-Turning a HAR file into a test follows this sequence:
-
-1. Record a HAR file. You can use your browser or your tool of choice.
-1. Use the `har-to-k6` converter to generate a k6 test from the HAR file.
-1. Update the auto-generated k6 test in your text editor or IDE.
-1. Use k6 to run the test.
-
 ## Before you start
 
-Before you record your HAR file, you'll need to choose your tool.
-You'll also want to consider how you'll record a plausible user session.
+Before you start, consider the following:
 
+- [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically)
+- [A hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites)
+
+You'll need to choose a tool to record your HAR file.
 Multiple browsers and tools can export HTTP traffic in a HAR format.
 A few popular ones are:
 
@@ -163,8 +156,3 @@ $ k6 run loadtest.js
 ```
 
 To learn about running k6, check out the [Running k6 tutorial](/get-started/running-k6).
-
-## Read more
-
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder): Chrome and Firefox extensions to generate a k6 script from a browser session.
-
