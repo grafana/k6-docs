@@ -55,7 +55,7 @@ These core metrics will evolve over time when technology changes, but for now, k
 | Core Web Vital                       |  Description                                                                                                 |
 |--------------------------------      |--------------------------------------------------------------------------------------------------------------|
 | webvital_largest_content_paint       | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
-| webvital_first_input_delay           | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
+| browser_web_vital_fid                | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
 | webvital_cumulative_layout_shift     | Measures a page's visual stability. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
 
 ### Other Web Vitals
