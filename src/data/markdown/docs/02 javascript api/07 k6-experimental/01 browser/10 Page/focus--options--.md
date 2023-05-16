@@ -3,7 +3,7 @@ title: 'focus(selector[, options])'
 excerpt: 'Browser module: page.focus(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.focus([options])`](/javascript-api/k6-experimental/browser/locator/focus/) instead.
 

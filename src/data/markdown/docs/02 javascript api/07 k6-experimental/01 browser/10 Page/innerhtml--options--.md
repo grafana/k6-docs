@@ -3,7 +3,7 @@ title: 'innerHTML(selector[, options])'
 excerpt: 'Browser module: page.innerHTML(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.innerHTML([options])`](/javascript-api/k6-experimental/browser/locator/innerhtml/) instead.
 

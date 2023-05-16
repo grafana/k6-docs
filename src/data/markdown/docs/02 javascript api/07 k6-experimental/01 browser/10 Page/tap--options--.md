@@ -3,7 +3,7 @@ title: 'tap(selector[, options])'
 excerpt: 'Browser module: locator.tap(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.tap([options])`](/javascript-api/k6-experimental/browser/locator/tap/) instead.
 

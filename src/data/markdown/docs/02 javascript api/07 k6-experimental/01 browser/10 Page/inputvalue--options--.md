@@ -3,7 +3,7 @@ title: 'inputValue(selector[, options])'
 excerpt: 'Browser module: page.inputValue(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.inputValue([options])`](/javascript-api/k6-experimental/browser/locator/inputvalue/) instead.
 

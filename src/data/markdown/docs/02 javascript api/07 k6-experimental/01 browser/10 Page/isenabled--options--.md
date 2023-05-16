@@ -3,7 +3,7 @@ title: 'isEnabled(selector[, options])'
 excerpt: 'Browser module: page.isEnabled(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.isEnabled([options])`](/javascript-api/k6-experimental/browser/locator/isenabled/) instead.
 

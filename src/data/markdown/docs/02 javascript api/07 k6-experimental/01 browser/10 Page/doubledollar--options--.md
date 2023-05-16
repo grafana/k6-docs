@@ -3,7 +3,7 @@ title: 'page.$$(selector)'
 excerpt: 'Browser module: page.$$(selector) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`page.locator(selector)`](/javascript-api/k6-experimental/browser/page/locator/) instead.
 

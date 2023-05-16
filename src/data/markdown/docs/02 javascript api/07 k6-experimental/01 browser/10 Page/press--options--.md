@@ -3,7 +3,7 @@ title: 'press(selector, key[, options])'
 excerpt: 'Browser module: page.press(selector, key[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.press()`](/javascript-api/k6-experimental/browser/locator/press/) instead.
 

@@ -3,7 +3,7 @@ title: 'click(selector[, options])'
 excerpt: 'Browser module: page.click(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.click([options])`](/javascript-api/k6-experimental/browser/locator/click/) instead.
 

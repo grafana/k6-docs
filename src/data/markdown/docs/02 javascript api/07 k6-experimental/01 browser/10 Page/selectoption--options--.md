@@ -3,7 +3,7 @@ title: 'selectOption(selector, values[, options])'
 excerpt: 'Browser module: page.selectOption(selector, values[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.selectOptions()`](/javascript-api/k6-experimental/browser/locator/selectoptions/) instead.
 

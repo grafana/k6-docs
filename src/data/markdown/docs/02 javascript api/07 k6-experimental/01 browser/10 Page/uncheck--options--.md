@@ -3,7 +3,7 @@ title: 'uncheck(selector[, options])'
 excerpt: 'Browser module: page.uncheck(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.uncheck([options])`](/javascript-api/k6-experimental/browser/locator/uncheck/) instead.
 

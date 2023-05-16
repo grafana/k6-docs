@@ -3,7 +3,7 @@ title: 'type(selector, text[, options])'
 excerpt: 'Browser module: page.type(selector, text[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.type()`](/javascript-api/k6-experimental/browser/locator/type/) instead.
 

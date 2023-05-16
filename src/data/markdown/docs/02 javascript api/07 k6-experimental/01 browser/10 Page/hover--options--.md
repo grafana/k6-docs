@@ -3,7 +3,7 @@ title: 'hover(selector[, options])'
 excerpt: 'Browser module: page.hover(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.hover([options])`](/javascript-api/k6-experimental/browser/locator/hover/) instead.
 

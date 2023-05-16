@@ -3,7 +3,7 @@ title: 'textContent(selector[, options])'
 excerpt: 'Browser module: locator.textContent(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.textContent([options])`](/javascript-api/k6-experimental/browser/locator/textcontent/) instead.
 

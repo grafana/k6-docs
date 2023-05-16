@@ -3,7 +3,7 @@ title: 'isVisible(selector[, options])'
 excerpt: 'Browser module: page.isVisible(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.isVisible([options])`](/javascript-api/k6-experimental/browser/locator/isvisible/) instead.
 

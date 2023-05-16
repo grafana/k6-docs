@@ -3,7 +3,7 @@ title: 'dblclick(selector[, options])'
 excerpt: 'Browser module: page.dblclick(selector[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.dblclick([options])`](/javascript-api/k6-experimental/browser/locator/dblclick/) instead.
 

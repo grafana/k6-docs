@@ -3,7 +3,7 @@ title: 'getAttribute(selector, name[, options])'
 excerpt: 'Browser module: page.getAttribute(selector, name[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.getAttribute()`](/javascript-api/k6-experimental/browser/locator/getattribute/) instead.
 

@@ -3,7 +3,7 @@ title: "Page"
 excerpt: "Browser module: Page Class"
 ---
 
-Page provides methods to interact with a single tab in a running web browser. A single [BrowserContext](https://k6.io/docs/javascript-api/k6-experimental/browser/browsercontext/) can have many `page`s.
+Page provides methods to interact with a single tab in a running web browser. A single [BrowserContext](https://k6.io/docs/javascript-api/k6-experimental/browser/browsercontext/) can have many `pages`.
 
 | Method                                                                                                        | Description                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|

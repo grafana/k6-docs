@@ -3,7 +3,7 @@ title: 'dispatchEvent(selector, type, eventInit[, options])'
 excerpt: 'Browser module: page.dispatchEvent(selector, type, eventInit[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.dispatchEvent(type, eventInit[, options])`](/javascript-api/k6-experimental/browser/locator/dispatchevent/) instead.
 

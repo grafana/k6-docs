@@ -3,7 +3,7 @@ title: 'isHidden(selector[, options])'
 excerpt: 'Browser module: page.isHidden(selector[, options) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.isHidden([options])`](/javascript-api/k6-experimental/browser/locator/ishidden/) instead.
 

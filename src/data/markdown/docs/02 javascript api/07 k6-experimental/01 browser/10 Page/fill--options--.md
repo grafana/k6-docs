@@ -3,7 +3,7 @@ title: 'fill(selector, value[, options])'
 excerpt: 'Browser module: page.fill(selector, value[, options]) method'
 ---
 
-<Blockquote mod="note" title="">
+<Blockquote mod="warning" title="">
 
 Use locator-based [`locator.fill(value[, options])`](/javascript-api/k6-experimental/browser/locator/fill/) instead.
 
