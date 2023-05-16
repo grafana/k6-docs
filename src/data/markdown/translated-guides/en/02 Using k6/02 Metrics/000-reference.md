@@ -54,7 +54,7 @@ These core metrics will evolve over time when technology changes, but for now, k
 
 | Core Web Vital                       |  Description                                                                                                 |
 |--------------------------------      |--------------------------------------------------------------------------------------------------------------|
-| webvital_largest_content_paint       | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
+| browser_web_vital_lcp                | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
 | browser_web_vital_fid                | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
 | webvital_cumulative_layout_shift     | Measures a page's visual stability. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
 
@@ -65,7 +65,7 @@ Apart from the Core Web Vitals, the browser module also reports [Other Web Vital
 
 | Other Web Vital                      |  Description                                                                                                 |
 |--------------------------------      |--------------------------------------------------------------------------------------------------------------|
-| webvital_time_to_first_byte          | Measures the time it takes between the browser request and the start of the response from a server. Please refer to [Time to First Byte](https://web.dev/ttfb/) for more information.|
+| browser_web_vital_ttfb               | Measures the time it takes between the browser request and the start of the response from a server. Please refer to [Time to First Byte](https://web.dev/ttfb/) for more information.|
 | webvital_first_contentful_paint      | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Please refer to [First Contentful Paint](https://web.dev/fcp/) for more information.  |
 | webvital_interaction_to_next_paint   | An experimental metric that measures a page's responsiveness. Please refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.  |
 
