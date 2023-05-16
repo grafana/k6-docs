@@ -15,7 +15,7 @@ The method finds all elements matching the specified selector within the page. I
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| null or [ElementHandle](javascript-api/k6-experimental/browser/keyboard/)[]              | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`.        |
+| null \| [ElementHandle](javascript-api/k6-experimental/browser/keyboard/)[]              | Returns an array of `ElementHandle` when multiple elements are found. Else, it returns `null`.        |
 
 ### Example
 

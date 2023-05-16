@@ -36,7 +36,7 @@ Element states can be either:
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| null or [ElementHandle](/javascript-api/k6-experimental/browser/keyboard/)              | `ElementHandle` when a matching element is found. Else, it returns `null`.        |
+| null \| [ElementHandle](/javascript-api/k6-experimental/browser/keyboard/)              | `ElementHandle` when a matching element is found. Else, it returns `null`.        |
 
 ### Example
 

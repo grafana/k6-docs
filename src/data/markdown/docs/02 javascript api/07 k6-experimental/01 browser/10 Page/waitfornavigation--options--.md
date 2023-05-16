@@ -34,7 +34,7 @@ Events can be either:
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| Promise<null or [Response](/javascript-api/k6-experimental/browser/response/)>               | The `Response` instance associated with the page. Else, it returns `null` |
+| Promise<null \| [Response](/javascript-api/k6-experimental/browser/response/)>               | The `Response` instance associated with the page. Else, it returns `null` |
 
 ### Example
 
