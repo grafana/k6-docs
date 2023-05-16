@@ -1,24 +1,32 @@
 ---
-title: 'textContent([options])'
-excerpt: 'Browser module: locator.textContent method'
+title: 'innerHTML(selector[, options])'
+excerpt: 'Browser module: page.innerHTML(selector[, options]) method'
 ---
 
-Returns the `element.textContent`.
+<Blockquote mod="warning" title="">
+
+Use locator-based [`locator.innerHTML([options])`](/javascript-api/k6-experimental/browser/locator/innerhtml/) instead.
+
+</Blockquote>
+
+Returns the `element.innerHTML`.
 
 <TableWithNestedRows>
 
 | Parameter       | Type   | Default | Description                                                                                                                                                                                                                           |
 |-----------------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| selector        | string  | `''`    |  A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used.                                                                                                                 |
 | options         | object | `null`  |                                                                                                                                                                                                                      |
+| options.strict  | boolean| `false`  | When `true`, the call requires selector to resolve to a single element. If given selector resolves to more than one element, the call throws an exception.                                                                            |
 | options.timeout | number | `30000` | Maximum time in milliseconds. Pass `0` to disable the timeout. Default is overridden by the `setDefaultTimeout` option on [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) or [Page](/javascript-api/k6-experimental/browser/page/). |
 
 </TableWithNestedRows>
 
 ### Returns
 
-| Type   | Description                               |
-|--------|-------------------------------------------|
-| string | The text content of the selector or null. |
+| Type   | Description                    |
+|--------|--------------------------------|
+| string | The innerHTML of the element. |
 
 ### Example
 
@@ -32,8 +40,8 @@ export default async function () {
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
-	const options = page.locator("#checkbox1");
-	console.log(options.textContent()); 
+  const innerHTML = page.innerHTML('#off-screen');
+  console.log(innerHTML);
 }
 ```
 

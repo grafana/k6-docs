@@ -206,3 +206,5 @@ variadic
 shm
 srgb
 kwallet
+referer
+scrollable
