@@ -3,7 +3,7 @@ title: 'keyboard'
 excerpt: 'Browser module: page.keyboard method'
 ---
 
-Returns the [Keyboard](javascript-api/k6-experimental/browser/keyboard/) instance to interact with a virtual keyboard on the page.
+Returns the [Keyboard](/javascript-api/k6-experimental/browser/keyboard/) instance to interact with a virtual keyboard on the page.
 
 ### Returns
 

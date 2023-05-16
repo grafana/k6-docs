@@ -15,7 +15,7 @@ The method finds an element matching the specified selector within the page. If 
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| null \| [ElementHandle](javascript-api/k6-experimental/browser/keyboard/)              | Returns `ElementHandle` when a matching element is found. Else, it returns `null`.        |
+| null \| [ElementHandle](/javascript-api/k6-experimental/browser/elementhandle/)              | Returns `ElementHandle` when a matching element is found. Else, it returns `null`.        |
 
 ### Example
 

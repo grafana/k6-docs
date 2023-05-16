@@ -9,7 +9,7 @@ This method returns an array of the dedicated [WebWorkers](/javascript-api/k6-ex
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| [WebWorkers](/javascript-api/k6-experimental/browser/workers/)[]               | Array of `WebWorkers` associated with the page.          |
+| [WebWorkers](/javascript-api/k6-experimental/browser/worker/)[]               | Array of `WebWorkers` associated with the page.          |
 
 ### Example
 

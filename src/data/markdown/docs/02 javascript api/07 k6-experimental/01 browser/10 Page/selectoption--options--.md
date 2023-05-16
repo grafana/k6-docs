@@ -5,7 +5,7 @@ excerpt: 'Browser module: page.selectOption(selector, values[, options]) method'
 
 <Blockquote mod="warning" title="">
 
-Use locator-based [`locator.selectOptions()`](/javascript-api/k6-experimental/browser/locator/selectoptions/) instead.
+Use locator-based [`locator.selectOption()`](/javascript-api/k6-experimental/browser/locator/selectoption/) instead.
 
 </Blockquote>
 
