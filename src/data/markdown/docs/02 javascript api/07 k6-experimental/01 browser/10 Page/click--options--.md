@@ -36,7 +36,7 @@ This method clicks on an element matching a `selector`.
 
 | Type                 | Description                                                                                     |
 | ----                 | -----------                                                                                     |
-| Promise              | An asynchronous operation that doesn't return a value.                                          |
+| Promise&lt;void&gt;              | An asynchronous operation that doesn't return a value.                                          |
 
 ### Example
 
