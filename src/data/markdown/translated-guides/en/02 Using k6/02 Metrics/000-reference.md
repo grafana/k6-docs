@@ -52,22 +52,25 @@ The [k6 browser module](/using-k6-browser) emits its own metrics based on the [C
 
 These core metrics will evolve over time when technology changes, but for now, k6 tracks the following core web vitals:
 
+<!-- vale off -->
 | Core Web Vital        |  Description                                                                                                 |
 |-----------------------|--------------------------------------------------------------------------------------------------------------|
 | browser_web_vital_lcp | Measures a page's loading performance. Please refer to [Largest Contentful Paint](https://web.dev/lcp/) for more information. |
 | browser_web_vital_fid | Measures a page's interactivity. Please refer to [First Input Delay](https://web.dev/fid/) for more information.          |
 | browser_web_vital_cls | Measures a page's visual stability. Please refer to [Cumulative Layout Shift](https://web.dev/cls/) for more information.  |
+<!-- vale on -->
 
 ### Other Web Vitals
 
 Apart from the Core Web Vitals, the browser module also reports [Other Web Vitals](https://web.dev/vitals/#other-web-vitals).
 
-
+<!-- vale off -->
 | Other Web Vital                 |  Description                                                                                                 |
 |-------------------------------- |--------------------------------------------------------------------------------------------------------------|
 | browser_web_vital_ttfb          | Measures the time it takes between the browser request and the start of the response from a server. Please refer to [Time to First Byte](https://web.dev/ttfb/) for more information.|
 | browser_web_vital_fcp           | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Please refer to [First Contentful Paint](https://web.dev/fcp/) for more information.  |
 | browser_web_vital_inp           | An experimental metric that measures a page's responsiveness. Please refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.  |
+<!-- vale on -->
 
 ### Legacy browser metrics
 
