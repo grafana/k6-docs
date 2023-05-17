@@ -9,7 +9,11 @@ For example, the majority of traffic to an e-commerce site might come from users
 
 To account for these different behaviors, testers often want to distribute their VUs into different logical behaviors.
 k6 supports multiple ways to do this.
-The following sections provide different ways to split logic across VUs, along with some strategies to granularly filter results.
+
+The following sections provide examples of how to structure scripts to split logic across VUs.
+To inspect the results for a certain behavior, you can [create a custom metric](/using-k6/metrics/create-custom-metrics), or use [Tags](/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
+
+along with some strategies to granularly filter results.
 
 <Blockquote mod="note" title="Aim for simplicity">
 
@@ -70,11 +74,6 @@ export function news() {
 ```
 
 To view granular results for a specific scenario, you can filter results by the built-in scenario [tag](/using-k6/tags-and-groups).
-For example, if you output results as [JSON](/using-k6/results-output/json), you could `jq` to filter only data points for the scenario with the name `news`.
-
-```bash
-jq '. | select( .data.tags.scenario == "news")' results.json
-```
 
 ## Configuring VUs based on VU id
 
@@ -134,7 +133,10 @@ export default function () {
 
 ```
 
+To view results for a specific request or group, you can define [tags](/using-k6/tags-and-groups).
+
 </CodeGroup>
+
 
 ## Random behavior
 
@@ -161,17 +163,4 @@ export default function () {
 </CodeGroup>
 
 For a more sophisticated example of randomizing, read this [forum post](https://community.k6.io/t/how-to-distribute-vus-across-different-scenarios-with-k6/49/17).
-
-## Inspect results by behavior
-
-If you want to inspect the results for a certain behavior, you have the following options:
-
-- [Create a custom metric](/using-k6/metrics/create-custom-metrics).
-  These would also appear in the end-of-test summary.
-- Use [Tags and groups](/using-k6/tags-and-groups) to filter specific [data points](/results-output/real-time/).
-
-
-Tags provide much granularity to filter the results.
-If you split VUs across scenarios, k6 automatically applies scenario tags that you can to sort with.
-If you want to inspect specific endpoints or functions, you could apply tags to individual requests or to larger code blocks.
 
