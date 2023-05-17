@@ -29,7 +29,7 @@ In this context, _workload_ refers to the traffic pattern simulated by a scenari
 
 
 One way to distribute traffic is to use scenarios to schedule different workloads for different functions.
-1. Define multiple scenarios in your `options.scenarios` object.
+1. Define multiple scenarios in your [options](/using-k6/options).
 1. Use the scenario `exec` property to execute different VU functions with a workload.
 
 For example, imagine a social media site that typically receives 100 concurrent users.
@@ -67,6 +67,13 @@ export function contacts() {
 export function news() {
   http.get("https://test.k6.io/news.php");
 }
+```
+
+To view granular results for a specific scenario, you can filter results by the built in scenario [tag](/using-k6/tags-and-groups).
+For example, this command uses `jq` to filter only data points for the  scenario with the name "news".
+
+```bash
+jq '. | select( .data.tags.scenario == "news")' results.json
 ```
 
 ## Configuring VUs based on VU id
@@ -161,14 +168,9 @@ If you want to inspect the results for a certain behavior, you have the followin
 
 - [Create a custom metric](/using-k6/metrics/create-custom-metrics).
   These would also appear in the end-of-test summary.
-- Use [Tags and groups](/using-k6/tags-and-groups)
+- Use [Tags and groups](/using-k6/tags-and-groups) to filter specific [data points](/results-output/real-time/).
 
 
-To view granular results for a specific scenario, you can filter results by the built in scenario [tag](/using-k6/tags-and-groups).
-For example, this command uses `jq` to filter only data points for the  scenario with the name "news".
-
-```bash
-jq '. | select( .data.tags.scenario == "news")' results.json
-```
-
-Otherwise, you can assign tags to a request or block and filter accordingly.
+Tags provide much granularity to filter the results.
+If you configure behavior by workload, you can sort by scenario tag.
+If you want to inspect specific endpoints, you could apply tags to specific request functions or blocks.
