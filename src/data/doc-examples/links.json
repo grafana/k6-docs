@@ -133,10 +133,10 @@
       "to": "/examples/instant-load-increase/"
     },
     {
-      "title": "Instant load increase",
-      "description": "How to instantly increase the number of VUs or iterations",
+      "title": "Distribute workloads across VUs",
+      "description": "How to configure different amounts of traffic for different VU behaviors",
       "url": "",
-      "to": "/examples/instant-load-increase/"
+      "to": "/examples/distribute-workloads/"
     }
   ],
   "tutorials": [
