@@ -6,20 +6,16 @@ slug: /using-k6/examples/distribute-workloads
 
 You can configure your k6 test scripts so that different sets of VUs execute different functions.
 This helps simulate traffic to real-world applications, where user behavior is rarely uniform.
-For example, the majority of traffic to an e-commerce site might come from users who only search items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
+For example, most traffic to an e-commerce site might come from users who only search for items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
-To account for these different behaviors, testers often want to distribute their VUs into different logical behaviors.
-k6 supports multiple ways to do this.
 
-The following sections provide examples of how to structure scripts to split logic across VUs.
-To inspect the results for a certain behavior, you can [create a custom metric](/using-k6/metrics/create-custom-metrics), or use [Tags](/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
-
-along with some strategies to granularly filter results.
+The following sections provide examples of how to structure k6 scripts to split logic across VUs.
+To inspect the results for a certain behavior, you can [create a custom metric](/using-k6/metrics/create-custom-metrics) or use [Tags](/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
 
 <Blockquote mod="note" title="Aim for simplicity">
 
-These techniques could be used to create very complex configurations.
-However, more complexity creates more ambiguity for results interpretation
+These techniques can create very complex configurations.
+However, more complexity creates more ambiguity in result interpretation
 
 </Blockquote>
 
@@ -39,7 +35,7 @@ One way to distribute traffic is to use scenarios to schedule different workload
 
 For example, imagine a social media site that typically receives 100 concurrent users.
 Of those, 80 might visit their contacts page, and 20 might view the news.
-To configure such a distribution, make two scenarios with different throughput or VUs:
+To configure such a distribution, make two scenarios with different throughputs or VUs:
 
 ```javascript
 import http from "k6/http";
@@ -78,7 +74,7 @@ To view granular results for a specific scenario, you can filter results by the 
 
 ## Configuring VUs based on VU id
 
-In some cases, it might be inconvenient or impractical to write a scenario for each behavior.
+In some cases, writing a scenario for each behavior might be inconvenient or impractical.
 As an alternative, you can distribute logic across a range of VUs with the [execution context variables](/using-k6/execution-context-variables) from the [`k6/execution`](https://k6.io/docs/javascript-api/k6-execution/) module.
 With the `exec` object, you can scope logic to a specific instance, scenario, or across all VUs.
 
@@ -143,7 +139,7 @@ To view results for a specific request or group, you can define [tags](/using-k6
 
 To add a degree of random behavior, consider one of the randomizing functions from the [k6 utils](https://k6.io/docs/javascript-api/jslib/utils/).
 
-For example, this script randomly assigns one behavior to happen one third of the time, and another behavior to happen all other times.
+For example, this script randomly assigns one behavior to happen one-third of the time, and another to happen all other times.
 
 <CodeGroup labels={["random-behavior.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
