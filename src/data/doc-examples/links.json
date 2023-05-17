@@ -131,6 +131,12 @@
       "description": "How to instantly increase the number of VUs or iterations",
       "url": "",
       "to": "/examples/instant-load-increase/"
+    },
+    {
+      "title": "Distribute workloads across VUs",
+      "description": "How to configure different amounts of traffic for different VU behaviors",
+      "url": "",
+      "to": "/examples/distribute-workloads/"
     }
   ],
   "tutorials": [
