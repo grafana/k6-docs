@@ -5,7 +5,7 @@ excerpt: How to configure k6 so that some VUs do one action, and other VUs do an
 
 You can configure your k6 test scripts so that different sets of VUs execute different functions.
 This helps simulate traffic to real-world applications, where user behavior is rarely uniform.
-For example, the majority of traffic to an e-commerce site might come from readers who only search items and read reviews. A small percentage might actively shop, performing actions that involve writes to the database and calls to different APIs.
+For example, the majority of traffic to an e-commerce site might come from users who only search items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
 To account for these different behaviors, testers often want to distribute their VUs into different logical behaviors.
 k6 supports multiple ways to do this.
@@ -69,8 +69,8 @@ export function news() {
 }
 ```
 
-To view granular results for a specific scenario, you can filter results by the built in scenario [tag](/using-k6/tags-and-groups).
-For example, this command uses `jq` to filter only data points for the  scenario with the name "news".
+To view granular results for a specific scenario, you can filter results by the built-in scenario [tag](/using-k6/tags-and-groups).
+For example, if you output results as [JSON](/using-k6/results-output/json), you could `jq` to filter only data points for the scenario with the name `news`.
 
 ```bash
 jq '. | select( .data.tags.scenario == "news")' results.json
@@ -172,5 +172,6 @@ If you want to inspect the results for a certain behavior, you have the followin
 
 
 Tags provide much granularity to filter the results.
-If you configure behavior by workload, you can sort by scenario tag.
-If you want to inspect specific endpoints, you could apply tags to specific request functions or blocks.
+If you split VUs across scenarios, k6 automatically applies scenario tags that you can to sort with.
+If you want to inspect specific endpoints or functions, you could apply tags to individual requests or to larger code blocks.
+
