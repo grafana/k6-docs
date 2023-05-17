@@ -71,7 +71,7 @@ export function news() {
 }
 ```
 
-To view granular results for a specific scenario, you can filter results by the built-in scenario [tag](/using-k6/tags-and-groups).
+To view granular results for a specific scenario, you can filter by the built-in scenario [tag](/using-k6/tags-and-groups).
 
 ## Distribute logic by VU ID
 
