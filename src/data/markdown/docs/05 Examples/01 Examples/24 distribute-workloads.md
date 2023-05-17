@@ -1,6 +1,6 @@
 ---
 title: Distribute workloads across VUs
-excerpt: How to configure k6 so that some VUs do one action, and other VUs do another action
+excerpt: How to configure different amounts of traffic for different VU behaviors
 ---
 
 You can configure your k6 test scripts so that different sets of VUs execute different functions.

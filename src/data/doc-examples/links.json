@@ -131,6 +131,12 @@
       "description": "How to instantly increase the number of VUs or iterations",
       "url": "",
       "to": "/examples/instant-load-increase/"
+    },
+    {
+      "title": "Instant load increase",
+      "description": "How to instantly increase the number of VUs or iterations",
+      "url": "",
+      "to": "/examples/instant-load-increase/"
     }
   ],
   "tutorials": [
