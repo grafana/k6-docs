@@ -1,11 +1,11 @@
 ---
-title: Distribute VUs across different behaviors
+title: Distribute workloads across VUs
 excerpt: How to configure k6 so that some VUs do one action, and other VUs do another action
 ---
 
 You can configure your k6 test scripts so that different sets of VUs execute different functions.
 This helps simulate traffic to real-world applications, where user behavior is rarely uniform.
-
+t
 For example, the majority of traffic to an e-commerce site might come from readers who only search items and read reviews. A small percentage might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
 To account for these different behaviors, testers often want to distribute their VUs into different logical behaviors.
@@ -126,7 +126,7 @@ export function news() {
 ## Configuring VUs based on VU id
 
 In some cases, it might be inconvenient or impractical to write a scenario for each behavior.
-As an alternative, you can distribute logic across a range of VUS with the [execution context variables](/using-k6/execution-context-variables) from the [`k6/execution`](https://k6.io/docs/javascript-api/k6-execution/) module.
+As an alternative, you can distribute logic across a range of VUs with the [execution context variables](/using-k6/execution-context-variables) from the [`k6/execution`](https://k6.io/docs/javascript-api/k6-execution/) module.
 With the `exec` object, you can scope logic to a specific instance, scenario, or across all VUs.
 
 For example, this statement assigns behavior to the first 25 VUs in a test.
