@@ -31,7 +31,7 @@ import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
 import GoogleCloudBuild from 'svg/google-cloud-build.inline.svg';
 import Grafana from 'svg/grafana.inline.svg';
-import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
+import Influx from 'svg/influxdb.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
 import Keptn from 'svg/keptn.inline.svg';
@@ -83,13 +83,18 @@ const iconsDataSet1 = [
   },
   {
     Icon: Grafana,
-    name: 'Grafana Cloud',
-    to: '/results-output/real-time/grafana-cloud/',
+    name: 'Grafana Cloud <br/> Prometheus',
+    to: '/results-output/real-time/grafana-cloud-prometheus',
   },
   {
-    Icon: InfluxGrafana,
-    name: 'InfluxDB + Grafana',
-    to: '/results-output/real-time/influxdb-grafana',
+    Icon: Grafana,
+    name: 'Grafana Dashboards',
+    to: '/results-output/grafana-dashboards/',
+  },
+  {
+    Icon: Influx,
+    name: 'InfluxDB',
+    to: '/results-output/real-time/influxdb/',
   },
   {
     Icon: Json,
@@ -109,7 +114,7 @@ const iconsDataSet1 = [
   {
     Icon: Prometheus,
     name: 'Prometheus',
-    to: '/results-output/real-time/prometheus',
+    to: '/results-output/real-time/prometheus-remote-write',
   },
   {
     Icon: StatsD,

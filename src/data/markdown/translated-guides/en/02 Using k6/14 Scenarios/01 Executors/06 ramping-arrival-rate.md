@@ -12,7 +12,9 @@ k6 will attempt to dynamically change the number of VUs to achieve the configure
 For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
 and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-<Blockquote mod="Note" title="Iteration starts are spaced fractionally">
+<Blockquote mod="Note" title="">
+
+**Iteration starts are spaced fractionally.**
 
 Iterations **do not** start at exactly the same time.
 At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
@@ -37,7 +39,9 @@ this executor has the following options:
 If you need your tests to not be affected by the system-under-test's performance, and
 would like to ramp the number of iterations up or down during specific periods of time.
 
-<Blockquote mod="note" title="Don't put sleep at the end of an iteration">
+<Blockquote mod="note" title="">
+
+**Don't put sleep at the end of an iteration.**
 
 The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
 It's unnecessary to use a `sleep()` function at the end of the VU code.
@@ -64,30 +68,27 @@ export const options = {
     contacts: {
       executor: 'ramping-arrival-rate',
 
-      // Our test with at a rate of 300 iterations started per `timeUnit` (e.g minute).
+      // Start at 300 iterations per `timeUnit`
       startRate: 300,
 
-      // It should start `startRate` iterations per minute
+      // Start `startRate` iterations per minute
       timeUnit: '1m',
 
-      // It should preallocate 2 VUs before starting the test.
-      preAllocatedVUs: 2,
+      // Pre-allocate necessary VUs.
+      preAllocatedVUs: 50,
 
-      // It is allowed to spin up to 50 maximum VUs in order to sustain the defined
-      // constant arrival rate.
-      maxVUs: 50,
 
       stages: [
-        // It should start 300 iterations per `timeUnit` for the first minute.
+        // Start 300 iterations per `timeUnit` for the first minute.
         { target: 300, duration: '1m' },
 
-        // It should linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
+        // Linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
         { target: 600, duration: '2m' },
 
-        // It should continue starting 600 iterations per `timeUnit` for the following four minutes.
+        // Cntinue starting 600 iterations per `timeUnit` for the following four minutes.
         { target: 600, duration: '4m' },
 
-        // It should linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
+        // Linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
         { target: 60, duration: '2m' },
       ],
     },
@@ -98,7 +99,6 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
-
 </CodeGroup>
 
 ## Observations

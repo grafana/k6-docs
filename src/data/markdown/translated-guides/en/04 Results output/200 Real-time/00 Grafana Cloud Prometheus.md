@@ -1,5 +1,5 @@
 ---
-title: 'Grafana Cloud'
+title: 'Grafana Cloud Prometheus'
 excerpt: >
   How to upload the test result metrics to Grafana Cloud using Grafana Cloud Prometheus and the k6 output for Prometheus remote write'
 ---

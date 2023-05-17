@@ -101,7 +101,7 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page.goto('http://whatsmyuseragent.org/', { waitUntil: 'networkidle' });
+    await page.goto('http://whatsmyuseragent.org/');
     page.screenshot({ path: `example-chromium.png` });
   } finally {
     page.close();

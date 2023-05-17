@@ -1,11 +1,6 @@
 .wrapper {
   position: relative;
   max-width: 100%;
-
-  @include sm-down {
-    max-width: 540px;
-    margin: 0 auto;
-  }
 }
 
 .edit-link {
@@ -40,6 +35,7 @@
       top: 200px;
     }
   }
+
   @include lg-down {
     position: static;
     top: unset;
@@ -50,10 +46,6 @@
     &.low {
       top: 130px;
     }
-  }
-
-  @include xs-down {
-    margin-left: 20px;
   }
 
   &:hover {

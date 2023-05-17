@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { HtmlContent } from 'components/blocks/html-content';
 import Glossary from 'components/pages/doc-page/glossary';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
+import BlockingAwsBlockquote from 'components/shared/blocking-aws-blockquote';
 import Blockquote from 'components/shared/blockquote';
 import BrowserClassList from 'components/shared/browser-class-list';
 import BrowserDocsWIP from 'components/shared/browser-docs-wip';
@@ -39,6 +40,7 @@ const componentsForNativeReplacement = {
   BrowserClassList,
   BrowserWIP,
   ExperimentalBlockquote,
+  BlockingAwsBlockquote,
   InstallationInstructions,
   Tooltip,
   BNIT,

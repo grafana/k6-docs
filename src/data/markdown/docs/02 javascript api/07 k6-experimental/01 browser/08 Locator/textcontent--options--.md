@@ -33,13 +33,8 @@ export default async function () {
   
   await page.goto('https://test.k6.io/browser.php');
 	const options = page.locator("#checkbox1");
-	console.log(options.textContent()); /*	Zero
-											One
-											Two
-											Three
-											Four
-											Five	*/
-	}
+	console.log(options.textContent()); 
+}
 ```
 
 </CodeGroup>

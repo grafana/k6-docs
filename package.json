@@ -36,6 +36,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@sentry/gatsby": "^7.21.1",
+    "@tmttn/gatsby-plugin-linkedin-insight": "^5.2.0",
     "algoliasearch": "^4.14.2",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
@@ -80,6 +81,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@ocular-d/vale-bin": "^1.0.29",
     "@svgr/webpack": "^6.5.1",
     "babel-loader": "^9.1.0",
     "broken-link-checker": "^0.7.8",

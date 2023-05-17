@@ -39,6 +39,11 @@ A WebSocket instance also has the following properties:
 | [WebSocket.onpong](/javascript-api/k6-experimental/websockets/websocket/websocket-onpong) | A handler for `pong` events. |
 <!-- vale on -->
 
+## Websocket metrics
+
+k6 takes specific measurements for Websockets.
+For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference#websockets).
+
 ## Example
 
 This example shows:

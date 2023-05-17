@@ -9,6 +9,12 @@ The browser module APIs aim for rough compatibility with the [Playwright API for
 
 Note that because k6 does not run in NodeJS, the browser module APIs will slightly differ from their Playwright counterparts.
 
+<Blockquote mod="note" title="">
+
+To work with the browser module, make sure you are using [k6 version 0.43.0](https://github.com/grafana/k6/releases/tag/v0.43.0) or above.
+
+</Blockquote>
+
 ## Modules
 
 The table below lists the importable properties from the top level module (`'k6/experimental/browser'`).
@@ -35,7 +41,7 @@ export default async function () {
   const page = context.newPage();
 
   try {
-    await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' })
+    await page.goto('https://test.k6.io/');
   } finally {
     page.close();
     browser.close();
@@ -62,3 +68,4 @@ export default async function () {
 | [Request](/javascript-api/k6-experimental/browser/request/) <BWIPT />               | Used to keep track of the request the [`Page`](/javascript-api/k6-experimental/browser/page/) makes.                                                                        |
 | [Response](/javascript-api/k6-experimental/browser/response/) <BWIPT />             | Represents the response received by the [`Page`](/javascript-api/k6-experimental/browser/page/).                                                                            |
 | [Touchscreen](/javascript-api/k6-experimental/browser/touchscreen/)                 | Used to simulate touch interactions with the associated [`Page`](/javascript-api/k6-experimental/browser/page/).                                                            |
+| [Worker](/javascript-api/k6-experimental/browser/worker/)                           | Represents a [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).                                                            |

@@ -35,7 +35,7 @@ To run a simple local script:
     const page = browser.newPage();
 
     try {
-      await page.goto('https://test.k6.io/', { waitUntil: 'networkidle' });
+      await page.goto('https://test.k6.io/');
       page.screenshot({ path: 'screenshot.png' });
     } finally {
       page.close();
@@ -48,7 +48,7 @@ To run a simple local script:
 
   The preceding code imports the `chromium` [BrowserType](/javascript-api/k6-experimental/browser/browsertype/) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/k6-experimental/browser/) process. Two parameters are passed to it. One is the `headless` parameter with the value `false` so you can see the browser launching, and `timeout` parameter with the value `60s` which will be the timeout used for various actions and navigation. For a full list of parameters that you can pass, check out the documentation for [BrowserType.launch()](/javascript-api/k6-experimental/browser/browsertype/launch/).
   
-  After it starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-experimental/browser/#browser-level-apis). This example visits a test URL, waits until the network is idle and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  After it starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-experimental/browser/#browser-level-apis). This example visits a test URL and takes a screenshot of the page. Afterwards, it closes the page and the browser.
 
   <Blockquote mod="note" title="">
 
@@ -96,7 +96,7 @@ export default async function () {
   const page = browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/my_messages.php');
 
     // Enter login credentials
     page.locator('input[name="login"]').type('admin');
@@ -135,7 +135,7 @@ export default async function () {
   const page = browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/my_messages.php', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/my_messages.php');
 
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
@@ -205,7 +205,7 @@ export async function browser() {
   const page = browser.newPage();
 
   try {
-    await page.goto('https://test.k6.io/browser.php', { waitUntil: 'networkidle' });
+    await page.goto('https://test.k6.io/browser.php');
 
     page.locator('#checkbox1').check();
 

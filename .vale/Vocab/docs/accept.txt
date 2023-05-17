@@ -12,6 +12,7 @@
 (?i)html
 (?i)http
 (?i)https
+(?i)iter
 (?i)json
 (?i)param
 (?i)params
@@ -205,3 +206,5 @@ variadic
 shm
 srgb
 kwallet
+referer
+scrollable

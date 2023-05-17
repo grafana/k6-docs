@@ -18,7 +18,7 @@ The `expect` module is a JavaScript library that simplifies specifying expectati
 
 This library is especially useful for:
  - Functional testing, where many asserts are needed
- - Stress testing, where the System Under Test is failing and the test code needs to stay robust.
+ - [Stress testing](/test-types/stress-testing/), where the System Under Test is failing and the test code needs to stay robust.
  - Load testing, where the failures of the System Under Test need to be robustly collected for analysis
 
 > ⭐️ Source code available on [GitHub](https://github.com/k6io/k6-jslib-expect). 

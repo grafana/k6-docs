@@ -178,7 +178,7 @@ For details about staleness, refer to the [Prometheus docs](https://prometheus.i
 
 ## Time series visualization 
 
-To visualize time series, you can use Grafana via explorer, importing the pre-built [official dashboard](https://grafana.com/grafana/dashboards/18030-test-result/) or create a custom version. You can visualize them from [Grafana Cloud](/results-output/real-time/grafana-cloud) integration or in a self-hosted instance.
+To visualize time series, you can use Grafana via explorer, importing the pre-built [official dashboard](https://grafana.com/grafana/dashboards/18030-test-result/) or create a custom version. You can visualize them from [Grafana Cloud](/results-output/real-time/grafana-cloud-prometheus) integration or in a self-hosted instance.
 
 If you want a local option, the [xk6 extension](https://github.com/grafana/xk6-output-prometheus-remote) repository includes a [docker-compose setup](https://github.com/grafana/xk6-output-prometheus-remote/blob/main/docker-compose.yml) with two pre-built Grafana dashboards.
 You can use these dashboards to visualize the generated time series with Prometheus configured as a data source: 

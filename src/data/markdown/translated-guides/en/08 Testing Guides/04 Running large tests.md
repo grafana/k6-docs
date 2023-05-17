@@ -102,7 +102,7 @@ If you're close to exhausting available physical RAM, the system might start swa
 
 ## Error handling should be resilient
 
-When running large stress tests, your script shouldn't assume anything about the HTTP response.
+When running [large stress tests](/test-types/stress-testing/), your script shouldn't assume anything about the HTTP response.
 An oversight of some scripts is to test with only the [happy path](/misc/glossary#happy-path "The default behavior that happens when the system returns no errors") in mind.
 
 For example, in k6 scripts, we often see something like this _happy path_ check:

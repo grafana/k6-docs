@@ -22,6 +22,11 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 | [Response](/javascript-api/k6-net-grpc/response) | Returned by RPC requests. |
 | [Constants](/javascript-api/k6-net-grpc/constants) | Define constants to distinguish between [gRPC Response](/javascript-api/k6-net-grpc/response) statuses. |
 
+## gRPC metrics
+
+k6 takes specific measurements for gRPC requests.
+For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference#grpc).
+
 ### Example
 
 <CodeGroup labels={["grpc-test.js"]}>

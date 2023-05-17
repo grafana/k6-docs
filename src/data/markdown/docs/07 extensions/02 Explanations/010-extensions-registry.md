@@ -71,6 +71,22 @@ Our goal is to quickly understand the intent of the extension.
 
 </Blockquote>
 
+## Extension Tiers
+Extensions come from multiple sources. 
+To help distinguish extensions, we're now categorizing each extension into a _tier_. 
+Each tier definition is as follows:
+
+- **Official Extensions**
+
+  _Official extensions_ are those owned and maintained by Grafana Labs.
+  They will have official documentation and have support provided by members of the Grafana organization.
+
+- **Community Extensions**
+
+  _Community extensions_ are created and maintained by an individual or group from the community at large.
+  These have no implied warranty or level of support.
+  The Grafana team will make best-effort assistance to keep popular projects in compliance.
+
 ## Potential for De-listing
 Given our desire to provide the best developer experience when using k6, we reserve the right to de-list any extension we deem is no longer maintaining standards.
 Before any action takes place, the extension maintainers will be contacted to be given a chance to rectify the project and thus avoid de-listing.

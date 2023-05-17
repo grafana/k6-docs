@@ -1,4 +1,3 @@
-import MarketoForm from 'components/shared/marketo-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -26,7 +25,7 @@ const FormMessage = ({ type }) => (
   </div>
 );
 
-MarketoForm.propTypes = {
+FormMessage.propTypes = {
   type: PropTypes.string.isRequired,
 };
 

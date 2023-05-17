@@ -192,7 +192,7 @@ export default async function () {
 
   // 01. Go to the homepage
   try {
-    await page.goto('https://mywebsite.com', { waitUntil: 'networkidle' });
+    await page.goto('https://mywebsite.com');
 
     page.waitForSelector('p[class="woocommerce-result-count"]"]');
     page.screenshot({ path: 'screenshots/01_homepage.png' });
