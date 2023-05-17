@@ -35,7 +35,10 @@ One way to distribute traffic is to use scenarios to schedule different workload
 
 For example, imagine a social media site that typically receives 100 concurrent users.
 Of those, 80 might visit their contacts page, and 20 might view the news.
-To configure such a distribution, make two scenarios with different throughputs or VUs:
+To configure such a distribution, make two scenarios with different 
+<!-- vale off -->
+throughputs or VUs:
+<!-- vale on -->
 
 ```javascript
 import http from "k6/http";
