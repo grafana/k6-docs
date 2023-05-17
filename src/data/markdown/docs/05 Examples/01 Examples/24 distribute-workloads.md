@@ -169,12 +169,11 @@ export default function () {
   if (exec.vu.idInTest % 10 < 4) {
     // 0-3 range, read the news
     http.get("http://test.k6.io/news");
-  }
-  else if (exec.vu.idInTest % 10 < 7) {
+  } else if (exec.vu.idInTest % 10 < 7) {
       // 4-6 range, bet heads
     http.get("http://test.k6.io/flip_coin.php?bet=heads");
   } else {
-    // 7-9 range, bet tails"
+    // 7-9 range, bet tails
     http.get("http://test.k6.io/flip_coin.php?bet=tails");
   }
 }
