@@ -4,8 +4,8 @@ excerpt: How to configure different amounts of traffic for different VU behavior
 slug: /examples/distribute-workloads
 ---
 
-You can configure your k6 test scripts so that different sets of VUs execute different functions.
-This helps simulate traffic to real-world applications, where user behavior is rarely uniform.
+k6 can schedule different load patterns for different VU functions.
+A test with multiple workloads might better simulate traffic in the real world, where user behavior is rarely uniform.
 For example, most traffic to an e-commerce site might come from users who only search for items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
 
@@ -73,7 +73,7 @@ export function news() {
 
 To view granular results for a specific scenario, you can filter results by the built-in scenario [tag](/using-k6/tags-and-groups).
 
-## Configuring VUs based on VU id
+## Distribute logic by VU ID
 
 In some cases, writing a scenario for each behavior might be inconvenient or impractical.
 As an alternative, you can distribute logic across a range of VUs with the [execution context variables](/using-k6/execution-context-variables) from the [`k6/execution`](https://k6.io/docs/javascript-api/k6-execution/) module.
@@ -136,7 +136,7 @@ To view results for a specific request or group, you can define [tags](/using-k6
 </CodeGroup>
 
 
-## Random behavior
+## Randomize behavior
 
 To add a degree of random behavior, consider one of the randomizing functions from the [k6 utils](https://k6.io/docs/javascript-api/jslib/utils/).
 
