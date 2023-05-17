@@ -139,7 +139,7 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
                       and{' '}
                       <Link
                         to={
-                          '/test-authoring/recording-a-session/browser-recorder/'
+                          '/test-authoring/create-tests-from-recordings/using-the-browser-recorder/'
                         }
                       >
                         Browser Recorder

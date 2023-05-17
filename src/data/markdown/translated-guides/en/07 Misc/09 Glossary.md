@@ -82,7 +82,7 @@ Happy path
 : The default system behavior that happens when a known input produces an expected output. A common mistake in performance testing happens when scripts account only for the best case (in other words, the happy path). Most load tests try to discover system errors, so test scripts should include exception handling.<br/><br/>[Happy path (Wikipedia)](https://en.wikipedia.org/wiki/Happy_path)
 
 HTTP archive
-: *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).<br/><br/>[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/recording-a-session/har-converter/)
+: *(Or HAR file)*. A file containing logs of browser interactions with the system under test. All included transactions are stored as JSON-formatted text. You can use these archives to generate test scripts (for example, with the har-to-k6 Converter).<br/><br/>[HAR 1.2 Specification](http://www.softwareishard.com/blog/har-12-spec/), [HAR converter](/test-authoring/create-tests-from-recordings/using-the-har-converter/)
 
 Iteration
 : A single run in the execution of the `default function`, or scenario `exec` function. You can set iterations across all VUs, or per VU.<br/><br/>The [test life cycle](/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.

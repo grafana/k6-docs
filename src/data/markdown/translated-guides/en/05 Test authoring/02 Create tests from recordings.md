@@ -11,8 +11,8 @@ For example, testing advanced scenarios on websites or mobile applications, such
 
 k6 provides two tools that can directly convert a recording into k6 script:
 
-- [Browser recorder](/test-authoring/recording-a-session/browser-recorder) generates a k6 script from a browser session. 
-- [HAR converter](/test-authoring/recording-a-session/har-converter) generates a k6 script from the requests included in a HAR file.
+- [Browser recorder](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/) generates a k6 script from a browser session. 
+- [HAR converter](/test-authoring/create-tests-from-recordings/using-the-har-converter/) generates a k6 script from the requests included in a HAR file.
 
 ## Steps
 

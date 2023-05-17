@@ -418,7 +418,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                   image: browserRecorderImg,
                   title: 'Browser Recorder',
                   description: 'Record a user journey to base your k6 test.',
-                  url: 'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/',
+                  url: 'https://k6.io/docs/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
                 },
               ]}
             />

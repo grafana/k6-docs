@@ -32,7 +32,7 @@ Before you start, consider the following:
 1. Save the recorded script in any of your projects.
   To include some of the requests in the _third party list_,  deselect the ones you want to include.
   ![Step 4](./images/Recording-a-test-script/step-4.png)
-1. Edit your script as necessary. Depending on the type of testing, you might need to change different aspects of the script. 
+1. Edit your script as necessary. Depending on the [type of load test](/test-types/load-test-types/), you might need to change different aspects of the script. 
    Typical changes are for [load options](/using-k6/options) and to handle [correlation and dynamic data](/examples/correlation-and-dynamic-data).
 1. Run the test locally or in k6 Cloud.
 
@@ -44,7 +44,7 @@ For more about running k6, refer to the [Running k6 guide](/get-started/running-
 ## Trouble? Try the HAR converter
 
 Some users have reported `413` errors when they try to upload long recordings.
-In these cases, the easiest fix is to use the [HAR converter](/test-authoring/recording-a-session/har-converter/), which creates a k6 script from the HTTP requests included in a HAR file (it also powers the browser recorder).
+In these cases, the easiest fix is to use the [HAR converter](/test-authoring/create-tests-from-recordings/using-the-har-converter/), which creates a k6 script from the HTTP requests included in a HAR file (it also powers the browser recorder).
 
 Besides avoiding the `413` error,
 the HAR converter catches some edge-case behavior that the browser recorder won't.

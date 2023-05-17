@@ -161,7 +161,7 @@ export function Homepage() {
 }
 ```
 
-[Recording browser traffic](https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/) helps you prototype to test websites on the protocol level.
+[Recording browser traffic](https://k6.io/docs/test-authoring/create-tests-from-recordings/using-the-browser-recorder/) helps you prototype to test websites on the protocol level.
 
 ### Browser-based load testing
 
@@ -249,7 +249,7 @@ When you script a test for a website, consider these recommendations.
 
 ### Consider factors that affect script realism
 
-**Record your user journey.**  Using the browser recorder can facilitate initial test script creation by capturing all the embedded resources on webpages. Check out the [Session Recording guide](https://k6.io/docs/test-authoring/recording-a-session) to learn more about how to auto-generate your load test from a user session.
+**Record your user journey.**  Using the browser recorder can facilitate initial test script creation by capturing all the embedded resources on webpages. Check out the [Session Recording guide](https://k6.io/docs/test-authoring/create-tests-from-recordings/) to learn more about how to auto-generate your load test from a user session.
 
 **Correlate data.** Recordings often don't take into account dynamic values that are generated anew each time a request is made. Go through the recorded requests and determine whether you need to [extract values from previous responses](https://k6.io/docs/examples/correlation-and-dynamic-data/) and use parameters in subsequent requests. This practice ensures your VUs behave more like real users would.
 
@@ -334,6 +334,6 @@ Load testing websites can be complex due to the number of viable testing approac
 
 - [Browser testing with k6 browser](https://k6.io/docs/using-k6-browser/overview/)
 - [Load test types](https://k6.io/docs/test-types/load-test-types)
-- [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
+- [Session recording guide](https://k6.io/docs/test-authoring/create-tests-from-recordings)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](https://k6.io/docs/examples/correlation-and-dynamic-data)

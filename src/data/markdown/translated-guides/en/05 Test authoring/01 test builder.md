@@ -108,7 +108,7 @@ Check out the script to get familiar with the [k6 API](/javascript-api/) or to c
 - Add a [check](/javascript-api/k6/check) on a request response.
 - Add [sleep](/javascript-api/k6/sleep) time between requests.
 - Add a [group](/javascript-api/k6/group) to the test.
-- Import recorded requests using the [browser recorder](/test-authoring/recording-a-session/browser-recorder).
+- Import recorded requests using the [browser recorder](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/).
 - Import requests included in a [HAR file](<https://en.wikipedia.org/wiki/HAR_(file_format)>).
 - Capture a variable when dealing with dynamic data, such as authentication tokens.
 - Show relevant examples.
