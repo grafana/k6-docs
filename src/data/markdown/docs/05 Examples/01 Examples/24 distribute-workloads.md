@@ -69,59 +69,6 @@ export function news() {
 }
 ```
 
-### Tip: reduce scenario boilerplate with `new`
-
-If your script uses multiple scenarios, consider making a function to construct a scenario object.
-
-For example, the following script makes the same test as the preceding section.
-But instead of a new scenario each time, it uses the `new` operator to construct new workloads based on arguments for the number of VUs and `exec` name.
-
-<Collapsible title="workload constructor" isOpen="" tag="">
-
-<CodeGroup labels={["workload-constructor.js"]} lineNumbers={[true]} showCopyButton={[true]}>
-
-
-```javascript
-import http from "k6/http";
-
-// workload constructor
-function Scenario(vus, exec) {
-  this.executor = "shared-iterations";
-  this.vus = vus;
-  this.exec = exec;
-  this.iterations = 100;
-}
-
-//create scenario object
-const contactWorkload = new Scenario(80, "contacts");
-const newsWorkload = new Scenario(20, "news");
-
-export const options = {
-  //scenario to view contacts
-  scenarios: {
-    contactWorkload,
-    newsWorkload,
-  },
-};
-
-//use the exec property to run different scenarios for different functions
-
-export function contacts() {
-  http.get("https://test.k6.io/contacts.php");
-}
-
-export function news() {
-  http.get("https://test.k6.io/news.php");
-}
-
-```
-</CodeGroup>
-
-</Collapsible>
-
-
-
-
 ## Configuring VUs based on VU id
 
 In some cases, it might be inconvenient or impractical to write a scenario for each behavior.
