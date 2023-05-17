@@ -5,7 +5,6 @@ excerpt: How to configure k6 so that some VUs do one action, and other VUs do an
 
 You can configure your k6 test scripts so that different sets of VUs execute different functions.
 This helps simulate traffic to real-world applications, where user behavior is rarely uniform.
-t
 For example, the majority of traffic to an e-commerce site might come from readers who only search items and read reviews. A small percentage might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
 To account for these different behaviors, testers often want to distribute their VUs into different logical behaviors.
