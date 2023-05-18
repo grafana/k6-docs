@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
       - name: Restore cache
         uses: actions/cache@v2
         with:
@@ -45,6 +46,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
       - name: Restore cache
         uses: actions/cache@v2
         with:
@@ -94,9 +96,21 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
 
       - name: Install
         run: npm install
+
+      - name: Restore build cache
+        uses: actions/cache@v3
+        with:
+          # Gatsby requires both .cache and public. It will refuse to use .cache/ if public/ is not present.
+          path: |
+            .cache
+            public
+          # Cache will not be used by Gatsby if the following files change:
+          # https://www.gatsbyjs.com/docs/build-caching/
+          key: pr-gatsby-${{ hashFiles('package.json', 'gatsby-config.js', 'gatsby-node.js') }}
 
       - name: Build
         run: npm run build
