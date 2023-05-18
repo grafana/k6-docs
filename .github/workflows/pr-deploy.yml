@@ -110,7 +110,9 @@ jobs:
             public
           # Cache will not be used by Gatsby if the following files change:
           # https://www.gatsbyjs.com/docs/build-caching/
-          key: pr-gatsby-${{ hashFiles('package.json', 'gatsby-config.js', 'gatsby-node.js') }}
+          key:  pr-gatsby-${{ hashFiles('package.json', 'gatsby-config.js', 'gatsby-node.js') }}-${{ github.ref }}
+          restore-keys: |
+            pr-gatsby-${{ hashFiles('package.json', 'gatsby-config.js', 'gatsby-node.js') }}-
 
       - name: Build
         run: npm run build
