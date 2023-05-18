@@ -1,0 +1,31 @@
+FROM node:16-slim as builder
+
+EXPOSE 8000
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package*.json /app/
+
+RUN npm install
+
+COPY . /app/
+
+ARG URL=http://localhost:8080
+
+# We use --mount args to reuse gatsby cache. We need to mount both .cache/ and public/ as gatsby refuses to use the
+# former if the latter does not exist.
+# public/ is a mountpoint for this command only, so we copy it to public-persist/ so we can use the build output later.
+# build:gatsby must be used as opposed to run, as the latter will not obey PATH_PREFIX.
+RUN --mount=type=cache,target=/app/.cache --mount=type=cache,target=/app/public \
+    PATH_PREFIX=/docs \
+    GATSBY_DEFAULT_MAIN_URL=$URL \
+    GATSBY_DEFAULT_DOC_URL=$URL/docs/ \
+    GATSBY_DEFAULT_BLOG_URL=https://k6.io/blog \
+    npm run build:gatsby && \
+    cp -r public public-persist
+
+FROM nginx:1.23-alpine3.17
+
+RUN echo '<a href="/docs">/docs</a>' > /usr/share/nginx/html/index.html
+COPY --from=builder /app/public-persist /usr/share/nginx/html/docs

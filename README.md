@@ -56,4 +56,17 @@ Then visit http://localhost:8100
 
 > If you want to re-run the `--build` command, you may get an error about not having access to delete a `cache/` folder. Use `sudo` to delete this manually before retrying.
 
+### Static Docker build
 
+Additionally, the `Dockerfile-standalone` Dockefile allows to produce a lightweight static build which also does not need local files to run. This can be useful in certain scenarios, for example for sharing the build output easily.
+
+In order to build the static version in docker, run:
+
+```shell
+docker build -f Dockerfile-standalone . -t k6-docs
+```
+
+To serve the site locally, run:
+```shell
+docker run --rm -ti -p 8080:80 k6-docs
+```
