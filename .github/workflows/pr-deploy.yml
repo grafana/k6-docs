@@ -57,7 +57,7 @@ jobs:
           fail_on_error: true
           vale_flags: '--glob=**/{docs,translated-guides/en}/**/*.md'
   build:
-    name: Build pull request
+    name: Build and deploy pull request
     runs-on: ubuntu-latest
     needs: lint
     steps:
@@ -97,47 +97,35 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: k6-docs
-          path: public/
-          retention-days: 1
-
-  deploy:
-    name: Deploy pull request
-    runs-on: ubuntu-latest
-    needs: [build]
-    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.PR_CI_AWS_ACCESS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.PR_CI_AWS_SECRET_KEY }}
-      AWS_REGION: 'eu-west-1'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: k6-docs
-          path: public/
-
       - name: Sync to S3
+        id: upload
+        # Run only if PR does not come from a fork and it is not from dependabot.
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --delete
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PR_CI_AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PR_CI_AWS_SECRET_KEY }}
+          AWS_REGION: 'eu-west-1'
           AWS_S3_BUCKET: ${{ secrets.PR_CI_AWS_S3_BUCKET }}
           SOURCE_DIR: public/
           DEST_DIR: docs/${{ github.ref }}
 
       - name: Invalidate Cloudfront
+        # Run only if we did not skip the upload step
+        if: steps.upload.outcome == 'success'
         uses: chetan/invalidate-cloudfront-action@v1.2
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PR_CI_AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PR_CI_AWS_SECRET_KEY }}
+          AWS_REGION: 'eu-west-1'
           DISTRIBUTION: ${{ secrets.PR_CI_CLOUDFRONT_DISTRIBUTION_ID }}
           PATHS: '/docs/*'
 
       - name: Post published URL to PR
-        if: github.event.action == 'opened'
+        # Run only if we did not skip the upload step and it's the first run for this PR.
+        if: steps.upload.outcome == 'success' && github.event.action == 'opened'
         uses: actions/github-script@0.8.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
