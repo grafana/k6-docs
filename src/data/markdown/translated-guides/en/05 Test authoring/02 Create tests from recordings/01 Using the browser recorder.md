@@ -17,11 +17,13 @@ Before you start, consider the following:
 
 ## How to record
 
->  **Note: the recorder is free to use.**
->
-> The browser recorder requires having a [k6 Cloud account](https://app.k6.io), but you do not need an active k6 Cloud subscription.
->
-> When you finish recording the session, the browser extension uploads the auto-generated k6 test into your k6 Cloud account. You can then copy the script to edit it in your local IDE and run the test locally using the `k6 run` command. 
+<Blockquote mod="note" title="The recorder is free to use">
+
+The browser recorder requires a [k6 Cloud account](https://app.k6.io), but you do not need an active k6 Cloud subscription.
+
+When you finish recording the session, the browser extension uploads the auto-generated k6 test into your k6 Cloud account. You can then copy the script to edit it in your local IDE and run the test locally using the `k6 run` command. 
+
+</Blockquote>
 
 1. Install the [Chrome](https://chrome.google.com/webstore/detail/k6-browser-recorder/phjdhndljphphehjpgbmpocddnnmdbda?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/k6-browser-recorder/) extension.
 1. Open the extension by clicking the k6 logo.
