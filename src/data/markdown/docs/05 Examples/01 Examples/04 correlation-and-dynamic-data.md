@@ -20,7 +20,7 @@ In a load testing scenario, correlation means extracting one or more values from
 of one request and then reusing them in subsequent requests. Often, this could be getting
 a token or some sort of ID necessary to fulfill a sequence of steps in a user journey.
 
-The [browser recording](/test-authoring/recording-a-session/) will capture session data such as CSRF tokens,
+A [recording](/test-authoring/create-tests-from-recordings/) will capture session data such as CSRF tokens,
 VIEWSTATES, nonce, etc. This type of data is unlikely to be valid when
 you run your test, meaning you'll need to handle the extraction of this data from the HTML/form
 to include it in subsequent requests. This issue is fairly common with any site that has forms
