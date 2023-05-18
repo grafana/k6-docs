@@ -3,8 +3,8 @@ title: 'Create tests from recordings'
 excerpt: 'In load testing, recording usually refers to the process of creating a load test from the recording of a user session.'
 ---
 
-A recording stores the sequence of requests and parameters of a user session or API interactions. 
-You can then use this recording to auto-generate the logic of your test.
+A recording stores the sequence of requests and parameters of a user session or API interaction. 
+You can use this recording to auto-generate your test logic.
 
 Testers commonly use recordings to avoid writing complex tests from scratch. 
 For example, testing advanced scenarios on websites or mobile applications, such as end-to-end (E2E) tests with dozens or hundreds of requests.
