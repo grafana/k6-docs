@@ -166,7 +166,7 @@ export function Homepage() {
 }
 ```
 
-[Registrar el tráfico del navegador](https://k6.io/docs//test-authoring/create-tests-from-recordings/using-the-browser-recorder/) le ayuda a crear prototipos para probar sitios web a nivel de protocolos.
+[Registrar el tráfico del navegador](https://k6.io/docs/test-authoring/create-tests-from-recordings/using-the-browser-recorder/) le ayuda a crear prototipos para probar sitios web a nivel de protocolos.
 
 ### Pruebas de carga basadas en el navegador
 
