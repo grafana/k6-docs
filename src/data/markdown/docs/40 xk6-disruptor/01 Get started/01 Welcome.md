@@ -35,7 +35,13 @@ Until this extension reaches v1.0 release, your k6 scripts may need to be update
 
 </Blockquote>
 
-## Your first test with xk6-disruptor
+## Try out xk6-disruptor on our demo environment
+
+We provide an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) which you can use to try xk6-disruptor right away without having to install Kubernetes on your local machine.
+
+You can use this sandbox to try out xk6-disruptor and start writing fault injection on a microservices application right away.
+
+## Install xk6-disruptor on your environment
 
 1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements).
 
