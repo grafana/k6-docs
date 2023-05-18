@@ -8,7 +8,6 @@ k6 can schedule different load patterns for different VU functions.
 A test with multiple workloads might better simulate traffic in the real world, where user behavior is rarely uniform.
 For example, most traffic to an e-commerce site might come from users who only search for items and read reviews. A small percentage of users might actively shop, performing actions that involve writes to the database and calls to different APIs.
 
-
 The following sections provide examples of how to structure k6 scripts to split logic across VUs.
 To inspect the results for a certain behavior, you can [create a custom metric](/using-k6/metrics/create-custom-metrics) or use [Tags](/using-k6/tags-and-groups) to filter by scenario, code block, or individual request.
 
@@ -19,7 +18,6 @@ However, more complexity creates more ambiguity in result interpretation
 
 </Blockquote>
 
-
 ## Split logic across scenarios
 
 <Blockquote mod="note" title="">
@@ -27,7 +25,6 @@ However, more complexity creates more ambiguity in result interpretation
 In this context, _workload_ refers to the traffic pattern simulated by a scenario.
 
 </Blockquote>
-
 
 One way to distribute traffic is to use scenarios to schedule different workloads for different functions.
 1. Define multiple scenarios in your [options](/using-k6/options).
@@ -88,11 +85,11 @@ if (exec.vu.idInTest <= 25) {
 ```
 
 
-For more flexibility, you can use modulo expressions distribute VUs according to percentages.
+For more flexibility, you can use modulo expressions to distribute VUs according to percentages.
 For example, the following script distributes logic according to different user profiles:
 - 40 percent of users check the news.
 - 60 percent play a coinflip game.
-   - Half bet `heads` and half bet `tails`.
+   - Half bet `heads`, and half bet `tails`.
 
 <CodeGroup labels={["behavior-based-on-exec-context.js"]} lineNumbers={[true]} showCopyButton={[true]}>
 
@@ -128,13 +125,11 @@ export default function () {
     http.get("http://test.k6.io/flip_coin.php?bet=tails");
   }
 }
-
 ```
 
 To view results for a specific request or group, you can define [tags](/using-k6/tags-and-groups).
 
 </CodeGroup>
-
 
 ## Randomize behavior
 
