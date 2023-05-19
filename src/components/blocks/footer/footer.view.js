@@ -363,14 +363,6 @@ export const Footer = () => {
               <li className={styles.navColumnItem}>
                 <a
                   className={styles.navColumnLink}
-                  href={`${main}/stewardship`}
-                >
-                  Stewardship
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
                   href={'https://status.k6.io/'}
                 >
                   <div className={styles.status}>
