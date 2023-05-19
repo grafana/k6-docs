@@ -43,7 +43,7 @@
   :global {
     pre {
       display: flex;
-      background: $color-primary;
+      background: #2e2e38;
       padding: 15px;
       margin: 0;
       @include no-scrollbars;
@@ -80,7 +80,7 @@
       font-family: $font-family-secondary;
       font-size: $font-size-code;
       line-height: $line-height-code;
-      color: #e2e2e2;
+      color: #ffffff;
     }
 
     .token {
@@ -88,43 +88,80 @@
         display: table-row;
         height: 25px; //$font-size-code * $line-height-code
       }
-      &.comment {
-        opacity: 0.5;
+      // -----------------
+
+      // blue #66ADFF
+      // orange #FB9D5A
+      // yellow #FBC55A
+      // gray #9292A5
+      // white #FFFFFF
+
+      &.comment,
+      &.prolog,
+      &.doctype,
+      &.cdata,
+      &.operator,
+      &.entity,
+      &.url,
+      .language-css &.string,
+      .style &.string {
+        color: #9292a5;
       }
-      &.keyword {
-        color: #00cdff;
-      }
-      &.property {
-        color: $color-tertiary;
-      }
+
+      &.property,
+      &.tag,
       &.boolean,
-      &.string {
-        color: rgba(233, 149, 255, 1);
-      }
-
-      &.number {
-        color: rgb(195, 232, 141);
-      }
-
-      &.operator {
-        background-color: transparent;
-        color: rgb(181, 181, 181);
-      }
-
-      &.constant {
-        color: $color-accent-secondary;
-      }
-
-      &.function {
-        color: rgb(255, 255, 255);
-      }
-
+      &.number,
+      &.constant,
+      &.symbol,
+      &.deleted,
       &.punctuation {
-        color: $color-tertiary;
+        color: #ffffff;
       }
-      &.regex {
-        color: #dd4a68;
+
+      &.tag {
+        margin: 0;
+        padding: 0;
+        background: none;
+        font-size: 14px;
       }
+
+      &.selector,
+      &.attr-name,
+      &.string,
+      &.char,
+      &.builtin,
+      &.inserted {
+        color: #fb9d5a;
+      }
+
+      &.atrule,
+      &.attr-value,
+      &.keyword {
+        color: #66adff;
+      }
+
+      &.function,
+      &.number,
+      &.regex,
+      &.important,
+      &.variable {
+        color: #fbc55a;
+      }
+
+      &.important,
+      &.bold {
+        font-weight: bold;
+      }
+
+      &.italic {
+        font-style: italic;
+      }
+
+      &.entity {
+        cursor: help;
+      }
+      // ----------------------
     }
   }
 }

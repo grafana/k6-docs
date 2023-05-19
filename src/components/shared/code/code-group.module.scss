@@ -11,13 +11,13 @@
 }
 
 .header {
-  background: $color-secondary;
+  background: #2e2e38;
   display: flex;
   flex-wrap: nowrap;
   color: $color-additional-1;
   overflow: auto;
   width: 100%;
-  border-bottom: 1px solid rgba($color-tertiary, 0.05);
+  border-bottom: 1px solid #454554;
   min-height: 25px;
   @include no-scrollbars;
 }

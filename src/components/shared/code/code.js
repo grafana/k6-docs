@@ -11,6 +11,7 @@ const SUPPORTED_LANGS = [
   'bash',
   'javascript',
   'json',
+  'yaml',
   'markup',
   'go',
   'plain',
