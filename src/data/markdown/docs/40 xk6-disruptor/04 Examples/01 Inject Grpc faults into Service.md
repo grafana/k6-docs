@@ -1,6 +1,6 @@
 ---
 title: 'Inject gRPC faults into Service'
-excerpt: ''
+excerpt: 'This example shows how to test the effect of faults injected in the gRPC requests served by a service.'
 ---
 
 This example shows a way to use the [ServiceDisruptor](/javascript-api/xk6-disruptor/api/servicedisruptor) to test the effect of faults injected in the gRPC requests served by a service.
