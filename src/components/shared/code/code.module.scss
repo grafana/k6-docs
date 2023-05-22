@@ -109,6 +109,7 @@
       }
 
       &.property,
+      &.function,
       &.tag,
       &.boolean,
       &.number,
@@ -141,7 +142,6 @@
         color: #66adff;
       }
 
-      &.function,
       &.number,
       &.regex,
       &.important,
