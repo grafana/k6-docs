@@ -527,6 +527,21 @@
       "cloudEnabled": false
     },
     {
+      "name": "xk6-prometheus",
+      "description": "Prometheus HTTP exporter for k6",
+      "url": "https://github.com/szkiba/xk6-prometheus",
+      "logo": "https://raw.githubusercontent.com/szkiba/xk6-prometheus/v0.2.0/assets/xk6-prometheus.png",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "stars": "41",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
+    },
+    {
       "name": "xk6-cache",
       "description": "Enable vendoring remote HTTP modules to a single source-control-friendly file",
       "url": "https://github.com/szkiba/xk6-cache",
