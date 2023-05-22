@@ -142,15 +142,6 @@ $ k6 run checks.js
 > If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](/using-k6/thresholds/#failing-a-load-test-using-checks).
 > This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
-## Checks in k6 Cloud Results
-
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Checks` have their [own tab](/cloud/analyzing-results/checks) for analysis.
-
-When you select a check, you can see the count of passes/failures at given points in the test.
-You can also add the check to the **Analysis** tab, for and compare it to other metrics.
-
-![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
-
 ## Read more
 
 - [Check Javascript API](/javascript-api/k6/check/)

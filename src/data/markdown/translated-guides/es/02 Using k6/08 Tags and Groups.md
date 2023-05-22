@@ -213,14 +213,3 @@ export const options = {
 </CodeGroup>
 
 Lea más sobre la sintaxis de la [salida de resultados](/es/visualizacion-de-resultados/json/) de k6 para ver cómo las etiquetas afectan a la salida de los resultados de las pruebas.
-
-## Tags y Groups en k6 Cloud
-
-En k6 Cloud Results se pueden ver grupos en las pestañas de resultados.
- 
-Cuando se utilizan grupos, Checks y las solicitudes HTTP pueden verse por grupos, como se muestra a continuación. Puede cambiar entre el diseño de grupo y el de lista cambiando la selección de "ver como" en la parte superior derecha.
-
-
-![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
-
-Además, puede filtrar los resultados por etiquetas en la [pestaña de análisis](/cloud/analyzing-results/analysis-tab).

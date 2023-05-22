@@ -195,10 +195,3 @@ for (let id = 1; id <= 100; id++) {
 ```
 
 </CodeGroup>
-
-## Resultados en k6 Cloud
-
-
-La [tabla HTTP de k6 Cloud Results](/cloud/analyzing-results/http-tab) mostrará todas las peticiones, a nivel agregado por URL.
-
-![k6 Cloud URL table](./images/HTTP-requests/cloud-insights-http-tab.png)
