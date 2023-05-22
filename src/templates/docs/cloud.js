@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { CtaDoc } from 'components/shared/cta-doc';
 import { PageInfo } from 'components/shared/page-info';
 import { SEO } from 'components/shared/seo';
 import { Trait } from 'components/shared/trait';
@@ -11,16 +10,12 @@ import LocaleProvider from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
-import React, { useRef, useState, useEffect } from 'react';
-import { isInIFrame } from 'utils';
+import React, { useRef } from 'react';
 import SeoMetaData from 'utils/seo-metadata';
-import { app } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
 const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
-  const [showFooter, setShowFooter] = useState(true);
   const contentContainerRef = useRef(null);
-  useEffect(() => setShowFooter(!isInIFrame()), []);
   useScrollToAnchor();
 
   const stickyContainerClasses = classNames(
@@ -244,15 +239,6 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
               </div>
               <p />
             </div>
-            {showFooter && (
-              <CtaDoc
-                btnLink={`${app}/account/register`}
-                title={'Free Trial'}
-                btnText={'Try now'}
-                description={'Sign up to run 50 cloud tests for Free.'}
-                isExternal
-              />
-            )}
           </div>
           <DocPageNavigation
             prev={null}

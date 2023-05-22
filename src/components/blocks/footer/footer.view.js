@@ -124,17 +124,17 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/cloud`}
+                        href={'https://grafana.com/products/cloud/k6/'}
                       >
-                        Cloud
+                        Grafana Cloud k6
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/pricing`}
+                        href={'https://grafana.com/pricing/'}
                       >
-                        Pricing
+                        Grafana Cloud k6 Pricing
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -148,17 +148,9 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://go2.grafana.com/k6-contact.html'}
+                        href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
                       >
-                        Schedule a Cloud Demo
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
-                        href={`${main}/professional-services`}
-                      >
-                        Professional services
+                        Build vs Buy
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -180,8 +172,11 @@ export const Footer = () => {
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
-                      <Link className={styles.navColumnLink} to={'/cloud/'}>
-                        Cloud Docs
+                      <Link
+                        className={styles.navColumnLink}
+                        href={'https://grafana.com/docs/grafana-cloud/k6'}
+                      >
+                        Grafana Cloud k6 Docs
                       </Link>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -203,14 +198,6 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/why-your-organization-should-perform-load-testing`}
-                      >
-                        Not a developer. Why k6?
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
                         href={`${main}/modern-load-testing-for-engineering-teams/`}
                       >
                         Modern Load Testing
@@ -219,9 +206,9 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution/`}
+                        href={`${main}/why-your-organization-should-perform-load-testing`}
                       >
-                        Build vs Buy
+                        Not a developer. Why k6?
                       </a>
                     </li>
                   </ul>

@@ -193,6 +193,13 @@ const topLevelLinks = [
   {
     label: 'Cloud Docs',
     to: '/cloud/',
+    submenu: [
+      {
+        label: 'Grafana Cloud k6',
+        to: 'https://grafana.com/docs/grafana-cloud/k6',
+      },
+      { label: 'k6 Cloud', to: `/cloud/` },
+    ],
   },
   {
     label: 'Extensions',
