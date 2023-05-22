@@ -297,8 +297,6 @@ export default function () {
 }
 ```
 
-</CodeGroup>
-
 El código anterior hará que k6 imprima una salida como esta:
 
 <CodeGroup lineNumbers={[false]}>
