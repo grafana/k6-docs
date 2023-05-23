@@ -5,7 +5,7 @@ excerpt: 'A variable number of iterations are started in a specified period of t
 
 With the `ramping-arrival-rate` executor, k6 starts iterations at a variable rate.
 It is an open-model executor, meaning iterations start independently of system response (for details, read
-[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed).
+[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)).
 
 This executor has _stages_ that configure target number of iterations and the time k6 takes to reach or stay at this target.
 Unlike the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), which configures VUs,
