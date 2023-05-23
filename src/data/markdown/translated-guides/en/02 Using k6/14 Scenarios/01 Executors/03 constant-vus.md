@@ -23,7 +23,7 @@ Use this executor if you need a specific number of VUs to run for a certain amou
 
 ## Example
 
-In this example, we'll run 10 VUs constantly for a duration 30 seconds.
+This examples schedules 10 VUs to run constantly for a duration 30 seconds.
 
 <CodeGroup labels={[ "constant-vus.js" ]} lineNumbers={[true]}>
 
@@ -44,8 +44,8 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
-  // We're injecting a processing pause for illustrative purposes only!
-  // Sleep time is 500ms. Total iteration time is sleep + time to finish request.
+  // Injecting sleep
+  // Total iteration time is sleep + time to finish request.
   sleep(0.5);
 }
 ```
@@ -61,8 +61,8 @@ The following graph depicts the performance of the [example](#example) script:
 Based upon our test scenario inputs and results:
 
 * The number of VUs is fixed at 10, and are initialized before the test begins;
-* overall test duration is fixed at the configured 30 second duration; 
-* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
-* maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`; 
-* we see that the maximum throughput is reached and maintained for the majority of the test;
-* approximately 600 iterations are therefore performed in total, `30 seconds * 20 iters/s`.
+* Overall test duration is fixed at the configured 30 second duration;
+* Each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* Maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`;
+* We see that the maximum throughput is reached and maintained for the majority of the test;
+* Approximately 600 iterations are therefore performed in total, `30 seconds * 20 iters/s`.

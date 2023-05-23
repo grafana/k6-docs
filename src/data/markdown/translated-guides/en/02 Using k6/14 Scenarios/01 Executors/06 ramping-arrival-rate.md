@@ -51,7 +51,8 @@ It's unnecessary to use a `sleep()` function at the end of the VU code.
 ## Example
 
 This is an example of a four-stage test.
-It initially stays at the defined rate of starting 300 iterations per minute over a one minute period.
+
+It starts at the defined `startRate`, 300 iterations per minute over a one minute period.
 After one minute, the iteration rate ramps to 600 iterations started per minute over the next two minutes, and stays at this rate for four more minutes.
 In the last two minutes, it ramps down to a target of 60 iterations per minute.
 
@@ -68,7 +69,7 @@ export const options = {
     contacts: {
       executor: 'ramping-arrival-rate',
 
-      // Start at 300 iterations per `timeUnit`
+      // Start iterations per `timeUnit`
       startRate: 300,
 
       // Start `startRate` iterations per minute
@@ -109,14 +110,13 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* We've defined 4 stages for a total test duration of 9 minutes.
+* The configuration defines 4 stages for a total test duration of 9 minutes.
 * Stage 1 maintains the `startRate` iteration rate at 300 iterations started per minute for 1 minute.
 * Stage 2 ramps _up_ the iteration rate linearly from the *stage 1* of 300 iterations started per minute, to the target of 600 iterations started per minute over a 2-minute duration.
 * Stage 3 maintains the *stage 2* iteration rate at 600 iterations started per minute over a 4-minute duration.
 * Stage 4 ramps _down_ the iteration rate linearly to the target rate of 60 iterations started per minute over the last two minutes duration.
-* Changes to the iteration rate are performed by k6, adjusting the number of VUs as necessary from `preAllocatedVUs` to a maximum of `maxVUs`.
-* The script waits for a period of time (defined by the `gracefulStop` option) for iterations to finish. It won't start new iterations during the `gracefulStop` period.
-* The script will run the `teardown()` function (if specified) before exiting.
+* Changes to the iteration rate are performed by k6, adjusting the number of VUs
+* The script waits for a period of time (defined by the `gracefulStop` option) for iterations to finish. It doesn't start new iterations during the `gracefulStop` period.
 * Our example performed, 4020 iterations over the course of the test.
 
 ## Get the stage index

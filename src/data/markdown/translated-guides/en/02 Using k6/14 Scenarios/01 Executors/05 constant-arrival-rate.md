@@ -51,7 +51,8 @@ So it's unnecessary to use a `sleep()` function at the end of the VU code.
 
 ## Example
 
-This example starts a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
+This example schedules a constant rate of 30 iterations per second for 30 seconds.
+It allocates 50 VUs for k6 to dynamically use as needed.
 
 <CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -65,22 +66,18 @@ export const options = {
     contacts: {
       executor: 'constant-arrival-rate',
 
-      // Our test should last 30 seconds in total
+      // How long the test lasts
       duration: '30s',
 
-      // It should start 30 iterations per `timeUnit`. Note that iterations starting points
-      // will be evenly spread across the `timeUnit` period.
+      // How many iterations per timeUnit
       rate: 30,
 
-      // It should start `rate` iterations per second
+      // Start `rate` iterations per second
       timeUnit: '1s',
 
-      // It should preallocate 2 VUs before starting the test
-      preAllocatedVUs: 2,
+      // Pre-allocate VUs
+      preAllocatedVUs: 50,
 
-      // It is allowed to spin up to 50 maximum VUs to sustain the defined
-      // constant arrival rate.
-      maxVUs: 50,
     },
   },
 };
@@ -103,7 +100,7 @@ Based upon our test scenario inputs and results:
 
 * The desired rate of 30 iterations started every 1 second is achieved and maintained for the majority of the test.
 * The test scenario runs for the specified 30 second duration.
-* Having started with 2 VUs (as specified by the `preAllocatedVUs` option), k6 automatically adjusts the number of VUs to achieve the desired rate, up to the `maxVUs`; for our test, this ended up as 17 VUs.
+* Having started with 2 VUs (as specified by the `preAllocatedVUs` option), k6 automatically adjusts the number of VUs to achieve the desired rate, up to the allocated number. For this test, this ended up as 17 VUs.
 * Exactly 900 iterations are started in total, `30s * 30 iters/s`.
 
-> As in our example, using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate, as resources need to continually be allocated to achieve the rate.
+> Using too low of a `preAllocatedVUs` setting will reduce the test duration at the desired rate, as resources need to continually be allocated to achieve the rate.
