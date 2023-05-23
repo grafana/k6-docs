@@ -23,18 +23,9 @@ export const options = {
 ```
 
 
-<Blockquote mod="note" title="VUs might not distribute uniformely over iterations">
+## All executors
 
-For any given scenario, you can't guarantee that a specific VU can run a specific iteration.
-
-With [`SharedArray`](/javascript-api/k6-data/sharedarray/) and [execution context variables](/using-k6/execution-context-variables/), you can map a specific VU to a specific value in your test data.
-So the tenth VU could use the tenth item in your array (or the sixth iteration to the sixth item).
-
-But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration.
-
-</Blockquote>
-
-
+The following table lists all k6 executors and links to their documentation.
 
 | Name                                                                         | Value                   | Description                                                                                                                                        |
 | ---------------------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,3 +36,15 @@ But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration
 | [Constant Arrival Rate](/using-k6/scenarios/executors/constant-arrival-rate) | `constant-arrival-rate` | A fixed number of iterations are executed<br/> in a specified period of time.                                                                      |
 | [Ramping Arrival Rate](/using-k6/scenarios/executors/ramping-arrival-rate)   | `ramping-arrival-rate`  | A variable number of iterations are <br/> executed in a specified period of time.                                                                  |
 | [Externally Controlled](/using-k6/scenarios/executors/externally-controlled) | `externally-controlled` | Control and scale execution at runtime<br/> via [k6's REST API](/misc/k6-rest-api) or the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test). |
+
+
+<Blockquote mod="note" title="VUs might not distribute uniformely over iterations">
+
+For any given scenario, you can't guarantee that a specific VU can run a specific iteration.
+
+With [`SharedArray`](/javascript-api/k6-data/sharedarray/) and [execution context variables](/using-k6/execution-context-variables/), you can map a specific VU to a specific value in your test data.
+So the tenth VU could use the tenth item in your array (or the sixth iteration to the sixth item).
+
+But, you _cannot_ reliably map, for example, the tenth VU to the tenth iteration.
+
+</Blockquote>
