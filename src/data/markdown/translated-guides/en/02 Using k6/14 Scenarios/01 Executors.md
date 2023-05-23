@@ -7,7 +7,7 @@ excerpt: 'Executors control how k6 schedules VUs and iterations. Choose the exec
 The executor that you choose depends on the goals of your test and the type of traffic you want to model.
 
 Define the executor in `executor` key of the scenario object.
-Possible values for `executor` are the executor name separated by hyphens.
+The value is the executor name separated by hyphens.
 
 
 ```javascript
