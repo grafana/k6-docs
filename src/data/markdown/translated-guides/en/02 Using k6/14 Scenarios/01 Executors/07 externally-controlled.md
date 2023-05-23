@@ -3,8 +3,6 @@ title: 'Externally controlled'
 excerpt: 'Control and scale execution at runtime via k6 REST API or the CLI.'
 ---
 
-## Description
-
 Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
