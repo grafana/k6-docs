@@ -124,7 +124,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://grafana.com/products/cloud/k6/'}
+                        href={'https://grafana.com/products/cloud/k6/?src=k6io'}
                       >
                         Grafana Cloud k6
                       </a>
@@ -132,7 +132,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://grafana.com/pricing/'}
+                        href={'https://grafana.com/pricing/?src=k6io'}
                       >
                         Grafana Cloud k6 Pricing
                       </a>
