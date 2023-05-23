@@ -19,7 +19,7 @@ this executor has the following options:
 
 ## When to use
 
-Use this executor if you need a specific amount of VUs to complete the same amount of
+Use this executor if you need a specific number of VUs to complete the same number of
 iterations. This can be useful when you have fixed sets of test data that you want to
 partition between VUs.
 

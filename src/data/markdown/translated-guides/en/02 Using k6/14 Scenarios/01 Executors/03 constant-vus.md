@@ -19,7 +19,7 @@ this executor has the following options:
 
 ## When to use
 
-Use this executor if you need a specific amount of VUs to run for a certain amount of time.
+Use this executor if you need a specific number of VUs to run for a certain amount of time.
 
 ## Example
 

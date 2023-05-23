@@ -36,7 +36,7 @@ this executor has the following options:
 
 ## When to use
 
-If you need your tests to not be affected by the system-under-test's performance, and
+If you need start iterations independent of system-under-test performance, and
 want to ramp the number of iterations up or down during specific periods of time.
 
 <Blockquote mod="note" title="">

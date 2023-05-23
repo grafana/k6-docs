@@ -36,8 +36,7 @@ this executor has the following options:
 
 ## When to use
 
-When you want to maintain a constant number of iterations without being affected by the
-performance of the system under test.
+When you want iterations to remain constant, independent of the performance of the system under test.
 This approach is useful for a more accurate representation of RPS, for example.
 
 

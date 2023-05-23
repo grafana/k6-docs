@@ -31,12 +31,12 @@ this executor has the following options:
 
 ## When to use
 
-This executor is suitable when you want a specific amount of VUs to complete a fixed
-number of total iterations, and the amount of iterations per VU is not important. This will be 
-the most _"efficient"_ use of VUs, therefore if **time to complete** a number of test iterations
-is your concern, this executor should perform best. 
+This executor is suitable when you want a specific number of VUs to complete a fixed
+number of total iterations, and the amount of iterations per VU is unimportant.
+If the **time to complete** a number of test iterations is your concern, this executor should perform best.
 
-> An example use case could be to incorporate a quick performance test as part of the build cycle during development. As developers compile their changes, the test could be executed against the local code to help insure against performance regressions. This would be considered as part of _"shifting left"_; placing more emphasis on performance early in the development cycle when the _cost_ of the fix is lowest. 
+An example use case is for quick performance tests in the developement build cycle.
+As developers make changes, they might run the test against the local code to test for performance regressions. Thus the executor works well with a _shift-left_ policy, where emphasizes testing performance early in the development cycle when the cost of a fix is lowest. 
 
 ## Example
 
