@@ -3,14 +3,14 @@ title: 'Ramping arrival rate'
 excerpt: 'A variable number of iterations are started in a specified period of time.'
 ---
 
-## Description
+With the `ramping-arrival-rate` executor, k6 starts iterations at a variable rate.
+It is an open-model executor, meaning iterations start independently of system response (for details, read
+[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed).
 
-A variable number of iterations are started in specified periods of time. This is
-similar to the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), but for iterations instead.
-k6 will attempt to dynamically change the number of VUs to achieve the configured iteration rate.
-
-For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
-and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
+This executor has _stages_ that configure target number of iterations and the time k6 takes to reach or stay at this target.
+Unlike the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), which configures VUs,
+this executor dynamically changes the number of iterations to start, and starts these iterations as long as the test has enough allocated VUs.
+To learn how allocation works, read [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
 <Blockquote mod="Note" title="">
 
@@ -37,7 +37,7 @@ this executor has the following options:
 ## When to use
 
 If you need your tests to not be affected by the system-under-test's performance, and
-would like to ramp the number of iterations up or down during specific periods of time.
+want to ramp the number of iterations up or down during specific periods of time.
 
 <Blockquote mod="note" title="">
 

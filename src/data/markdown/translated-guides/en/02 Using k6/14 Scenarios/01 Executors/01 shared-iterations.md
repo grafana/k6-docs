@@ -3,15 +3,20 @@ title: 'Shared iterations'
 excerpt: 'A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed.'
 ---
 
-## Description
+The `shared-iterations` executor shares iterations between the number of VUs.
+The test ends once k6 executes all iterations.
 
-In this executor, the iterations are shared between the number of VUs.
-The test ends once all iterations are executed. This executor is equivalent to the global [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) shortcut options.
+For a shortcut to this executor, use the [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) options.
+
+<Blockquote mod="note" title="">
 
 Iterations **are not guaranteed to be evenly distributed** with this executor.
 VU that executes faster will complete more iterations than slower VUs.
 
 To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
+
+</Blockquote>
+
 
 ## Options
 

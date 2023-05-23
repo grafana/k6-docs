@@ -3,10 +3,8 @@ title: 'Per VU iterations'
 excerpt: 'Each VU executes an exact number of iterations.'
 ---
 
-## Description
-
-Each VU executes an exact number of iterations. The total number of completed
-iterations will be `vus * iterations`.
+With the `per-vu-iterations` executor, each VU executes an exact number of iterations.
+The total number of completed iterations equals `vus * iterations`.
 
 ## Options
 

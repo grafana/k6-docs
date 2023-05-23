@@ -3,18 +3,14 @@ title: 'Constant arrival rate'
 excerpt: 'A fixed number of iterations are started in a specified period of time.'
 ---
 
-## Description
+With the `constant-arrival-rate` executor, k6 starts a fixed number of iterations over a specified period of time.
+It is an open-model executor, meaning iterations start independently of system response (for details, read
+[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed).
 
-A fixed number of iterations are started in a specified period of time.
-This executor will continue to start iterations at the given rate as long as there are VUs
-available to run them. Since iteration execution time can vary because of test logic or the
-system-under-test responding more slowly, this executor will try to compensate
-by running a variable number of VUs&mdash;including potentially initializing more in the middle
-of the test&mdash;to meet the configured iteration rate. This approach is
-useful for a more accurate representation of RPS, for example.
-
-For explanations about how this executor works, refer to [Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)
-and [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
+This executor continues to start iterations at the given rate as long as VUs are available.
+The time to execute an iteration can vary with test logic or the system-under-test response time.
+To compensate for this, the executor starts a varied number of VUs to meet the configured iteration rate.
+For explanations of how allocation works, read [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
 <Blockquote mod="Note" title="">
 
@@ -42,6 +38,8 @@ this executor has the following options:
 
 When you want to maintain a constant number of iterations without being affected by the
 performance of the system under test.
+This approach is useful for a more accurate representation of RPS, for example.
+
 
 <Blockquote mod="note" title="">
 
@@ -54,7 +52,7 @@ So it's unnecessary to use a `sleep()` function at the end of the VU code.
 
 ## Example
 
-In this example, we'll start a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
+This example starts a constant rate of 30 iterations per second for 30 seconds, allowing k6 to dynamically schedule up to 50 VUs.
 
 <CodeGroup labels={[ "constant-arr-rate.js" ]} lineNumbers={[true]}>
 
