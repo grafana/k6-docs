@@ -6,12 +6,9 @@
   width: 100%;
   flex-grow: 1;
   background: $color-tertiary;
+  cursor: pointer;
 
   &.withCheckbox {
-    & .name {
-      padding-right: 25px;
-    }
-
     &.checked .name {
       color: $color-accent-primary;
     }
@@ -153,14 +150,23 @@
 }
 
 .name-wrapper {
+  padding-right: 30px;
   text-align: left;
 }
 
 .name {
+  position: relative;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
   font-weight: 700;
+  text-decoration: none;
   transition: color 0.3s;
+  color: $color-primary;
+  cursor: pointer;
+
+  &:hover {
+    color: #7d64ff;
+  }
 }
 
 .type {
@@ -203,7 +209,7 @@
   pointer-events: none;
 
   @media (min-width: 1200px) and (max-width: 1320px) {
-    column-gap: 0;
+    column-gap: 5px;
   }
 }
 
@@ -237,24 +243,5 @@
     width: 19px;
     height: 12px;
     background-image: url(./svg/cloud.inline.svg);
-  }
-}
-
-.link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 0 2px 2px;
-  margin-left: auto;
-  color: #5a5c87;
-  pointer-events: auto;
-  transition: color 0.2s ease;
-
-  > span {
-    font-size: 0;
-  }
-
-  &:hover {
-    color: #7d64ff;
   }
 }
