@@ -8,8 +8,6 @@
   background: $color-tertiary;
 
   &.withCheckbox {
-    //cursor: pointer;
-
     & .name {
       padding-right: 25px;
     }
@@ -39,11 +37,6 @@
     top: 12px;
     right: 12px;
   }
-}
-
-.checked {
-  //outline: 1px solid #7d64ff;
-  //box-shadow: 0px 1px 5px rgba(60, 60, 100, 0.05);
 }
 
 .imageWrapper {

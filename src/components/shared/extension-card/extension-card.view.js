@@ -44,8 +44,9 @@ export const ExtensionCard = ({
         </ItemCard>
       );
     }
+
     return (
-      <ItemCard as="a" href={url}>
+      <ItemCard as="div">
         <div className={className}>{children}</div>
       </ItemCard>
     );
