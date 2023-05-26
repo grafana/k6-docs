@@ -20,7 +20,7 @@ const parseString = (str) => {
     const suffix = string.slice(lastIndex + 8); // Length of '<wbr />'
 
     // eslint-disable-next-line max-len
-    string = `${prefix}<wbr />-<span class="no-wrap">${suffix}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left: 8px"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M4.429 1H2.714C1 1 1 1 1 2.714v9.352C1 13 1 13 2.714 13h8.572C13 13 13 13 13 11.286V9.57M7.857 1H13m0 0v5.143M13 1 6.143 7.857"/></svg></span>`;
+    string = `${prefix}<wbr />-<span class="no-wrap">${suffix}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left: 8px"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M4.429 1H2.714C1 1 1 1 1 2.714v9.352C1 13 1 13 2.714 13h8.572C13 13 13 13 13 11.286V9.57M7.857 1H13m0 0v5.143M13 1 6.143 7.857"/></svg></span>`;
   }
 
   return string;
