@@ -95,8 +95,8 @@ For a test to run, you need to have *init code*, which prepares the test, and *V
 
 Code in the init context defines functions and configures the test options (like `duration`).
 
-Every test also has a `default` function.
-This function defines the logic for your VUs.
+Every test also has a `default` function,
+which defines the VU logic.
 
 <CodeGroup labels={[]}>
 
@@ -111,8 +111,9 @@ export default function () {
 </CodeGroup>
 
 Init code runs first and is called only once per VU.
-On the other hand, default code executes as many times as the test options set.
-To learn more, read about [The test lifecycle](/using-k6/test-lifecycle).
+The `default` code runs as many times or as long as is configured in the test options.
+
+To learn more about how k6 executes, read about the [Test lifecycle](/using-k6/test-lifecycle).
 
 ## Set options {#using-options}
 
