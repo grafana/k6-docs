@@ -16,8 +16,7 @@ Each topic has examples to make a custom metric and create [thresholds](/using-k
 
 ## Create a custom metric
 
-
-<Blockquote mod="" title="">
+<Blockquote mod="note" title="">
 
 Custom metrics must be created in [init context](/using-k6/test-lifecycle).
 This limits memory and ensures that k6 can validate that all thresholds are evaluating defined metrics.
@@ -43,8 +42,9 @@ The generic procedure to create a custom metric is as follows:
 
 1. In the VU iteration code, use the `add` method to take a measurement.
 
-For example, this VU code makes a request, then adds the timing value of the request to the `myTrend` object.
+## Example: create a trend metric for waiting time
 
+This VU code makes a request then adds the timing value of the request to the `myTrend` object.
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -63,9 +63,14 @@ export default function () {
 
 </CodeGroup>
 
-Custom metrics appear in both the end-of-test summary and in the granular points of the [Results output](/results-output).
-Here's how the output of the preceding script might look.
+## View custom metric results
+
+Custom metrics appear in [Results output](/results-output) in both the end-of-test summary and in the granular data points.
 Each metric type has specific aggregation methods.
+You can also optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
+You can use these tags to filter test results.
+
+Here's how the output of the preceding script might look in the end-of-test summary.
 Since the metric is a trend, k6 calculates various trends based on the number of values and their summation.
 
   <CodeGroup lineNumbers={[false]}>
@@ -83,9 +88,6 @@ $ k6 run script.js
 ```
 
 </CodeGroup>
-
-You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
-You can use these tags to filter test results.
 
 <Blockquote mod="note" title="">
 
