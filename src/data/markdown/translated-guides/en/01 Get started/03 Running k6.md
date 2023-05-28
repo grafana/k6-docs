@@ -12,7 +12,8 @@ Follow along to learn how to:
 With these example snippets, you'll run the test with your machine's resources.
 But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers. 
 
-## Running local tests
+<!-- preserving  old anchor --->
+## Run local tests {#running-local-tests}
 
 To run a simple local script:
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
@@ -31,7 +32,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-1. Then, run k6 with this command:
+1. Run k6 with the following command:
 
   <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -55,7 +56,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-## Adding more VUs
+## Add VUs {#adding-more-vus}
 
 Now run a load test with more than one virtual user and a longer duration:
 
@@ -77,11 +78,16 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30
 
 _Running a 30-second, 10-VU load test_
 
-k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
+<Blockquote mod="note" title="Virtual users">
+
+k6 runs multiple interations in parellel with _virtual users_ (VUs).
+In general terms, more virtual users means more simulated traffic.
+
 VUs are essentially parallel `while(true)` loops.
 Scripts are written in JavaScript, as ES6 modules,
 so you can break larger tests into smaller pieces or make reusable pieces as you like.
 
+</Blockquote>
 
 ### The init context and the default function
 
@@ -90,7 +96,7 @@ For a test to run, you need to have *init code*, which prepares the test, and *V
 Code in the init context defines functions and configures the test options (like `duration`).
 
 Every test also has a `default` function.
-This function defines the entry point for your VUs.
+This function defines the logic for your VUs.
 
 <CodeGroup labels={[]}>
 
@@ -106,13 +112,12 @@ export default function () {
 
 Init code runs first and is called only once per VU.
 On the other hand, default code executes as many times as the test options set.
+To learn more, read about [The test lifecycle](/using-k6/test-lifecycle).
 
-- [The life cycle of a k6 test](/using-k6/test-lifecycle).
-
-## Using options
+## Set options {#using-options}
 
 Instead of typing `--vus 10` and `--duration 30s` each time you run the script,
-you can include the options in your JavaScript file:
+you can set the options in your JavaScript file:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -131,7 +136,7 @@ export default function () {
 
 </CodeGroup>
 
-Then, run the script without those options on the command line:
+If you run the script without flags, k6 uses the options defined in the script:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -149,7 +154,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 </CodeGroup>
 
-## Stages: ramping up/down VUs
+## Ramp VUs up and down in stages {#stages-ramping-up-down-vus}
 
 You can ramp the number of VUs up and down during the test.
 To configure ramping, use the `options.stages` property.
@@ -178,7 +183,7 @@ export default function () {
 
 </CodeGroup>
 
-For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+For more granular ramp configuration, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
 ## Execution modes
 
