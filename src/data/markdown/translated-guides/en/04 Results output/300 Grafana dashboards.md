@@ -23,4 +23,4 @@ For inspiration about how to build a custom dashboard that visualizes k6 results
 - [Prometheus remote write](/results-output/real-time/prometheus-remote-write)
 - [TimescaleDB](/results-output/real-time/timescaledb/)
 
-For a managed solution, [Grafana Cloud k6](https://grafana.com/products/cloud/k6/) is our commercial offer bringing test storage, pre-built dashboards, enhanced collaboration features, and many more additional capabilities.
+For a fully managed solution, [Grafana Cloud k6](https://grafana.com/products/cloud/k6/) is our commercial product to store, view, scale, and manage your tests with ease. It provides custom views to access your testing and analyze test results, enhanced collaboration features, and many more additional capabilities.
