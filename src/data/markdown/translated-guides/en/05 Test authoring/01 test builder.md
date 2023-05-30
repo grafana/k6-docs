@@ -3,7 +3,7 @@ title: 'Test builder'
 excerpt: 'Use a graphical interface to create a k6 test.'
 ---
 
-The k6 Test Builder provides a graphical interface to autogenerate a k6 test script. Then, you can copy the test script and [run the test from the CLI](/get-started/running-k6).
+The k6 Test Builder provides a graphical interface to generate a k6 test script based on your input. Then, you can copy the test script and [run the test from the CLI](/get-started/running-k6).
 
 Though we strongly believe that scriptable, code-based tools will help you get the most out of your performance-testing efforts, a GUI-based tool like the test builder could help you:
 
