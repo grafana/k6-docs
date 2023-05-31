@@ -115,7 +115,7 @@ To simplify, write a new test for the following situation:
 >     - Another POST to `https://test.k6.io/flip_coin.php` with the query param `?bet=tails`
 
 
-Can you figure out how to script the [requests yourself](/results-output)?
+Can you figure out how to [script the requests](/using-k6/http-requests)?
 If not, use the following script.
 
 <Collapsible title="user flow example" isOpen="" tag="">
@@ -153,7 +153,7 @@ export default function () {
 
 ### Add Group functions
 
-Now wrap the two endpoints in different groups.
+Wrap the two endpoints in different groups.
 Name one group `User contacts page` and another `Coinflip` game.
 
 <CodeGroup labels={["user-flow.js"]} lineNumbers={[]} showCopyButton={[true]}>
@@ -195,7 +195,7 @@ export default function () {
 
 ### Run and filter
 
-Now inspect the results for only the `Coinflip` group.
+Inspect the results for only the `Coinflip` group.
 To do so:
 
 1. Save the preceding script as `user-flow.js`.
@@ -283,6 +283,8 @@ Look for the custom trend metrics in the end-of-test summary:
 In this tutorial, you looked at granular output and filtered by built-in and custom tags.
 Then you made a new script with groups.
 Finally, you added a new metric for each group.
+A next step would be to create a [Custom end-of-test summary](results-output/end-of-test/) or to stream the results to a database.
 
-To develop on these techniques, you can modularize your logic and configuration.
+For ongoing operations, you can modularize your logic and configuration.
+That's the subject of the next tutorial.
 Alternatively, if you want to practice your JavaScript, you could refactor the preceding script.
