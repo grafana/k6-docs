@@ -95,7 +95,6 @@ export default function () {
   });
 }
 
-
 ```
 
 </CodeGroup>
@@ -112,7 +111,7 @@ To do so, follow these steps:
 1. Extract the `User contacts page` group function from `main.js` script file and paste it into a new file called `contacts.js`
 
 
-  ```
+  ```javascript
   export function contacts() {
       group("User contacts page", function () {
         // save response as variable
@@ -149,11 +148,6 @@ To do so, follow these steps:
       group("User contacts page", function () {
       // use globalThis to access global variables
       const baseUrl = globalThis.baseUrl;
-      // save response as variable
-      let res = http.get(`${baseUrl}/contacts.php`);
-      // add duration property to metric
-      contactsLatency.add(res.timings.duration);
-      sleep(1);
     });
   }
   ```

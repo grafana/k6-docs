@@ -14,13 +14,14 @@ In this tutorial, learn how to:
 <Blockquote mod="note" title="These examples use jq">
 
 These examples use [`jq`](https://jqlang.github.io/jq/) to filter JSON results.
+For other options, review [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/).
 
 </Blockquote>
 
 ## Write data points to a file
 
-k6 provides many output structures.
-One of the most commonly used is JSON.
+k6 provides many [output structures](/results-output).
+One of the most commonly used is [JSON](/results-output/real-time/json).
 
 To output results as JSON lines, use the `--out` flag.
 
@@ -40,7 +41,7 @@ jq '. | select(.data.tags.status >= "200")' api-results.json
 You can also apply tags to requests or code blocks.
 To do so:
 1. Add a `tags` object in the request params. Give the tag a key and value.
-  
+
   ```json
   const params = {
     headers: {
@@ -52,21 +53,21 @@ To do so:
   };
   ```
 
-2. Add the params in the function signature of the request. 
+2. Add the params in the function signature of the request.
 
   <CodeGroup labels={["tagged-login.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
 
    ```javascript
    import http from "k6/http";
-    
+
    export default function () {
      const url = "https://test-api.k6.io";
      const payload = JSON.stringify({
        username: "test_case",
        password: "1234",
      });
-   
+
      const params = {
        headers: {
          "Content-Type": "application/json",
@@ -76,14 +77,14 @@ heightTogglers={[true]}>
          function: "login",
        },
      };
-   
+
      //Login with tags
      http.post(`${url}/auth/basic/login`, payload, params);
    };
-   
+
    ```
    </CodeGroup>
-    
+
 Now you can filter the results for this tag:
 
 ```bash
@@ -150,7 +151,7 @@ export default function () {
 
 ### Add Group functions
 
-Now wrap the two endpoints in different groups:
+Now wrap the two endpoints in different groups.
 Name one group `User contacts page` and another `Coinflip` game.
 
 <CodeGroup labels={["user-flow.js"]} lineNumbers={[]} showCopyButton={[true]}>
@@ -207,7 +208,7 @@ To do so:
   ```bash
   jq '. | select(.data.tags.group == "::Coinflip game")' user-results.json
   ```
-  
+
 ## Add a custom metric
 
 As you have seen in the output, all k6 tests emit metrics.
@@ -282,5 +283,4 @@ Then you made a new script with groups.
 Finally, you added a new metric for each group.
 
 To develop on these techniques, you can modularize your logic and configuration.
-Alternatively, if you want to practice your JavaScript, you could refactor the preceding script. 
-
+Alternatively, if you want to practice your JavaScript, you could refactor the preceding script.
