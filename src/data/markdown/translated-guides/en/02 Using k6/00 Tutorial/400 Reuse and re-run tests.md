@@ -398,7 +398,7 @@ Now you've seen examples to write tests, assert for performance, filter results,
 Notice how the tests progress in complexity: from single endpoints to holistic tests, from small loads to large loads, and from single-tests to reusable modules. These progressions are typical in testing, with the next step being to automate. It might be impractical to automate a tutorial, but if you are interested,
 read the [Automated performance testing](/testing-guides/automated-performance-testing/) guide, or use the [k6 GitHub action](https://github.com/grafana/k6-action).
 
-More likely, you want to learn more about k6. [The k6 learn repo](https://github.com/grafana/k6-learn) has more detailed to practice.
+More likely, you want to learn more about k6. [The k6 learn repository](https://github.com/grafana/k6-learn) has more detailed to practice.
 Or, you can read explore the docs and try to build out your testing strategy.
 The following links only scratch the surface:
 - Learn how to use more [protocols](/using-k6/protocols)
