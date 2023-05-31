@@ -3,101 +3,13 @@ title: Analyze results
 excerpt: Use k6 to write custom metrics and filter results.
 ---
 
-
 The end-of-test summary provides only an overview of performance.
-In real analysis, it helps to be able to analyze the test along data points.
+In real analysis, it helps to be able to analyze the test along data points and for specific requests.
 
-Two methods to make results more meaningful are to use tags to filter results,
-and to create custom metrics to study performance of a certain. 
-
-## Before you start, add requests
-
-Results filtering isn't very meaningul in a test that makes one request.
-To prepare for this section, add the following requests:
-- A GET request to the `/public/crocodiles/` endpoint.
-- Multiple GET requests to request all items at `/public/crocodiles/{id}/`
-
-The available endpoints are documented at https://test-api.k6.io .
-Can you figure out how to add these requests?
-
-If not, this script works:
-
-<Collapsible title="new tutorial.js" isOpen="" tag="">
-
-<CodeGroup labels={["tutorial.js"]} lineNumbers={[]} showCopyButton={[true]}>
-
-```javascript
-// Import necessary modules
-import { check } from "k6";
-import http from "k6/http";
-
-//define configuration
-export const options = {
-  scenarios: {
-    //arbitrary name of scenario:
-    stress_test: {
-      executor: "ramping-arrival-rate",
-      // Start iterations per `timeUnit`
-      startRate: 20,
-      // Start `startRate` iterations per minute
-      timeUnit: "1m",
-      // Pre-allocate necessary VUs.
-      preAllocatedVUs: 200,
-      stages: [
-        { target: 20, duration: "10s" },
-        { target: 40, duration: "10s" },
-        { target: 40, duration: "10s" },
-        { target: 60, duration: "10s" },
-        { target: 60, duration: "30s" },
-        { target: 0, duration: "1m" },
-      ],
-    },
-  },
-  //define thresholds
-  thresholds: {
-    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
-    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
-  },
-};
-
-export default function () {
-  // define URL and request body
-  const url = "https://test-api.k6.io";
-  const payload = JSON.stringify({
-    username: "test_case",
-    password: "1234",
-  });
-  const params = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  // send a post request and save response as a variable
-  const res = http.post(`${url}/auth/basic/login/`, payload, params);
-
-  // check that response is 200
-  check(res, {
-    "login response was 200": (res) => res.status == 200,
-  });
-
-  const crocResponse = http.get(`${url}/public/crocodiles/`);
-  const crocs = JSON.parse(crocResponse.body);
-  crocs.forEach((croc) => {
-    http.get(`${url}/public/crocodiles/${croc["id"]}/`);
-  });
-}
-
-```
-
-</CodeGroup>
-
-
-
-
-</Collapsible>
-
-
+In this tutorial, learn how to:
+- Use tags to filter results
+- Organize requests in groups
+- Create custom metrics.
 
 
 ## Write data points to a file
@@ -108,7 +20,7 @@ One of the most commonly used is JSON.
 To output results as JSON, use the out flag.
 
 ~~~bash
-k6 run --out json=results.json tutorial.js
+k6 run --out json=api-results.json api-test.js
 ~~~
 
 Then, you can filter the output with the tool of your choice.
@@ -116,33 +28,240 @@ Then, you can filter the output with the tool of your choice.
 k6 results have a number of built-in tags.
 For example, run this `jq` command to filter results to only results where the status is 200:
 
+```bash
+jq '. | select(.data.tags.status >= "200")' api-results.json
 ```
-jq '. | select(.data.tags.status >= "200")' results.json
+
+## Apply custom tags
+
+You can also apply tags to requests or code blocks.
+To do so:
+1. Add a `tags` object in the request params. Give the tag a key and value.
+  
+  ```json
+  const params = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    tags: {
+      function: "login",
+    },
+  };
+  ```
+
+2. Add the params in the function signature of the request. 
+
+  <CodeGroup labels={["tagged-login.js"]} lineNumbers={[true]} showCopyButton={[true]}
+heightTogglers={[true]}>
+
+   ```javascript
+   import http from "k6/http";
+    
+   export default function () {
+     const url = "https://test-api.k6.io";
+     const payload = JSON.stringify({
+       username: "test_case",
+       password: "1234",
+     });
+   
+     const params = {
+       headers: {
+         "Content-Type": "application/json",
+       },
+       //apply tags
+       tags: {
+         function: "login",
+       },
+     };
+   
+     //Login with tags
+     http.post(`${url}/auth/basic/login`, payload, params);
+   };
+   
+   ```
+   </CodeGroup>
+    
+Now you can filter the results for this tag:
+
+```bash
+jq '. | select(.data.tags.function == "login")' results.json
 ```
 
-## Add tags for different requests
+## Organize requests in groups
+
+You can also organize tags into [_Groups_](/using-k6/tags-and-groups#groups), functions that apply a `group` tag to all requests within its block.
+Groups are very useful designing tests as a series of transactions.
 
 
+### Context: a new test for user flows
+
+Results filtering isn't very meaningful in a test that makes one request.
+And the API test script is getting long.
+To simplify, write a new test for the following situation:
+
+> Your development team wants to compare the performance two user-facing components, the Contacts page and the Coinflip game.
+> Write a script that makes it easy to compare the following 
+> - A GET request to `https://test.k6.io/contacts.php`
+> - A POST request to `https://test.k6.io/flip_coin.php` with the query param `?bet=heads`
+> - Another POST to `https://test.k6.io/flip_coin.php` with the query param `?bet=tails`
 
 
+Can you figure out how to script the requests yourself?
+If not, use the following script.
 
-, one to log in and one to log out.
-Note how the tags are arguments to the `post` method..
+<Collapsible title="user flow example" isOpen="" tag="">
 
-<CodeGroup labels={["tagged requests"]} lineNumbers={["true"]} showCopyButton={[true]}>
+Since this example simulates a human user rather than an API call, it has sleep between each request.
 
+<CodeGroup labels={["user-flow.js"]} lineNumbers={["true"]} showCopyButton={[true]}>
+
+```javascript
+import http from "k6/http";
+import { check, group, sleep } from "k6";
+
+const baseUrl = "https://test.k6.io";
+
+export default function () {
+  http.get(`${baseUrl}/contacts.php`);
+  sleep(1);
+  http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+  sleep(1);
+  http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+  sleep(1);
+}
 ```
+
+</CodeGroup>
+
+</Collapsible>
+
+### Add Group functions
+
+Now wrap the two endpoints in different groups:
+Name one group `User contacts page` and another `Coinflip` game.
+
+<CodeGroup labels={["user-flow.js"]} lineNumbers={[]} showCopyButton={[true]}>
+
+```javascript
+//import necessary modules
+import http from "k6/http";
+import { check, group, sleep } from "k6";
+import { Counter, Rate, Trend } from "k6/metrics";
+
+//set baseURL
+const baseUrl = "https://test.k6.io";
+
+export default function () {
+  // User flow
+
+// Put visits to contact page in one group
+  group("User contacts page", function () {
+    http.get(`${baseUrl}/contacts.php`);
+    sleep(1);
+  });
+
+// Coinflip players in another group
+
+  group("Coinflip game", function () {
+    http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+    sleep(1);
+    http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+    sleep(1);
+  });
+}
 
 ```
 
 </CodeGroup>
 
-Rerun the test with `k6 run --out json=results.json tutorial.js` (you can reduce stage times to avoid waiting).
+### Run and filter
 
-After it finishes, filter the results
+Now inspect the results for only the `Coinflip` group.
+To do so:
 
-## Organize in groups
+1. Save the preceding script as `user-flow.js`.
+1. Run the script with the command:
 
-## Make custom metric
+  ```bash
+ x k6 run user-flow.js --out json=user-results.json --iterations 10
+  ```
 
+1. Inspect the results with `jq`. Group names have a `::` prefix.
+
+  ```bash
+  jq '. | select(.data.tags.group == "::Coinflip game")' user-results.json
+  ```
+  
+## Add a custom metric
+
+As you have seen in the output, all k6 tests emit metrics.
+However, if the built-in metrics aren't enough, you can add custom metrics.
+A common use case is to make metrics for an endpoint or group.
+
+To create a trend for each group:
+1. Import `Trend` from the k6 metrics module.
+1. Create two duration trend metric functions.
+1. In each group, after each request, add the `duration` time to the trend.
+
+```javascript
+//import necessary modules
+import http from "k6/http";
+import {  group, sleep } from "k6";
+import { Trend } from "k6/metrics";
+
+//set baseURL
+const baseUrl = "https://test.k6.io";
+
+// Create custom trends
+const contactsLatency = new Trend("contacts duration");
+const coinflipLatency = new Trend("coinflip duration");
+
+// Function to test user flow
+export default function () {
+  // Put visits to contact page in one group
+  group("User contacts page", function () {
+    // save response as variable
+    const res = http.get(`${baseUrl}/contacts.php`);
+    // add duration property to metric
+    contactsLatency.add(res.timings.duration);
+    sleep(1);
+  });
+
+  // Coinflip players in another group
+
+  group("Coinflip game", function () {
+    // save response as variable
+    let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
+    // add duration property to metric
+    coinflipLatency.add(res.timings.duration);
+    sleep(1);
+    // mutate for new request
+    res = http.get(`${baseUrl}/flip_coin.php?bet=tails`);
+    // add duration property to metric
+    coinflipLatency.add(res.timings.duration);
+    sleep(1);
+  });
+}
+```
+
+Run the test with small number of iterations.
+
+```
+k6 run user-flow.js --iterations 10
+```
+
+Look for the custom trend metrics in the end-of-test summary:
+
+     coinflip duration..............: avg=222.022616 min=168.257618 med=228.015217 max=228.737309 p(90)=228.583013 p(95)=228.714225
+     contacts duration..............: avg=224.638603 min=198.382977 med=227.412945 max=228.258872 p(90)=228.090845 p(95)=228.174858
+
+
+## Next steps
+
+In this tutorial, you looked at granular output and filtered by built-in and custom tags.
+Then you made a new script with groups.
+Finally, you added a new metric for each group.
+
+To develop on these techniques, you can modularize your logic and configuration.
+Alternatively, if you want to practice your JavaScript, you could refactor the preceding script. 
 

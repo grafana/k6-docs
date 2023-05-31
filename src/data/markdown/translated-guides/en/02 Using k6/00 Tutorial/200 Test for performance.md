@@ -5,11 +5,11 @@ excerpt: Write thresholds to evaluate performance criteria, then increase load t
 
 In the previous section, you made a working script to test the endpoint functionality.
 The next step is to test how this system responds under load.
-This requires using the powerful `options` object, which configures the parts of the test that don't deal with user behavior.
+This requires using the powerful [`options`](/using-k6/options) object, which configures the parts of the test that don't deal with user behavior.
 
 In this tutorial, learn how to:
-- Use thresholds to assert for performance criteria
-- Configure load increases through scenarios
+- Use [thresholds](/using-k6/thresholds) to assert for performance criteria
+- Configure load increases through [scenarios](/using-k6/scenarios)
 
 These examples build on the script from the previous section.
 
@@ -25,7 +25,6 @@ After you confirm run the peak traffic test, run another test to determine where
 
 ## Assert for performance with thresholds
 
-
 To codify the SLOs, add _thresholds_ to test that your system performs to its goal criteria.
 Thresholds are exported in options.
 
@@ -40,21 +39,31 @@ export const options = {
 };
 ```
 
-To learn how use thresholds, read the [Thresholds](/using-k6/thresholds) guide.
+Add these thresholds object to your script and run it.
+Inspect the console output to determine whether performance crossed a threshold.
 
-## Test performance criteria under increasing load
+   ✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms  
+       { expected_response:true }...: avg=198.42ms   min=198.42ms   med=198.42ms   max=198.42ms   p(90)=198.42ms   p(95)=198.42ms  
+   ✗ http_req_failed................: 66.66% ✓ 2        ✗ 1    
+
+
+
+## Test performance under increasing load
 
 Now your script has logic to simulate user behavior, and assertions for functionality (checks) and performance (thresholds).
 
-It's time to increase load to see how it performs..
+It's time to increase load to see how it performs.
+To increase load, use the scenarios property.
+Scenarios schedule load according to number of VUs, number of iterations, VUs, or by iteration rate.
 
 ### Run a smoke test
 
 Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confirm the script works properly") to see your script can handle minimal load.
 
+To do so, use the `--iterations` with an argument of 10 or fewer.
 
 ```bash
-k6 run --iterations 7 tutorial.js
+k6 run --iterations 7 api-test.js
 ```
 
 If the service can't receive 10 iterations, the system has some serious performance issues to debug.
@@ -89,7 +98,7 @@ Where the smoke test used load in terms of iterations, this configuration expres
   }
 ```
 
-Run the test with no command-line flags: `k6 run tutorial.js`.
+Run the test with no command-line flags: `k6 run api-test.js`.
 
 The load is pretty small, so the server should perform within thresholds.
 However, this test server may be under load by many k6 learners, so it's hard to say.
@@ -111,7 +120,7 @@ In this case, run the test until the availability (error rate) threshold is cros
 
 To do this:
 
-1. Configure the threshold so that it aborts when it fails
+1. Configure the threshold so that it aborts when it fails.
 
   ```json
     http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
@@ -151,7 +160,8 @@ Copy and run it.
 
 Did the threshold fail? If not, add another stage with a higher target and try again. 
   
-<CodeGroup labels={["tutorial.js"]} lineNumbers={[true]} showCopyButton={[true]} heightTogglers={[true]}>
+<CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
+heightTogglers={[true]}>
 
 ```javascript
 // Import necessary modules
@@ -218,8 +228,8 @@ export default function () {
 ## Next steps
 
 In this tutorial, you used thresholds to assert for performance, then used three different [Scenarios](/using-k6/scenarios) to schedule more load and from different perspectives.
-To learn more about different load patterns for different goals, read [Test Types](/test-types).
 
-The next step is learning how to process and create more meaningful results.
+The next step is to learn how to meaningfully interpret results. This involves filtering results and adding custom metrics.
+Alternatively, to learn more about different load patterns for different goals, read [Test Types](/test-types).
 
 

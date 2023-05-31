@@ -12,14 +12,15 @@ Imagine that you are a developer or tester who is responsible for performance in
 
 ## Context: test a new endpoint
 
-Your development team has just developed a new Login endpoint.
-Before releasing, it has the following performance responsibilities:
-- Test the endpoint for the following questions:
+Your development team has just developed a new login endpoint.
+Before releasing, you must test the endpoint for the following questions:
   - Does it work?
   - Does it perform within the service-level objectives under average load?
   - At what load does performance degrade beyond objectives?
-- Filter the results for better analysis
-- Break the script down into reusable parts
+  
+After you test the endpoint, your team wants you to compare different components of the user-facing application.
+
+Finally, after you test the API and web application, break your scripts down into reusable parts. 
 
 ## Before you start
 
@@ -37,6 +38,6 @@ The tutorial requires the following:
 | [Test for functional behavior](/using-k6/tutorial/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
 | [Test for performance](/using-k6/tutorial/test-for-functional-behavior)         | Use k6 to increase load and find faults                            |
 | [Analyze results](/using-k6/tutorial/analyze-results)                           | Filter results and make custom metrics                             |
-| [Reuse and re-run](/using-k6/tutorial/reuse-and-re-run)                          | Modularize and rerun tests                                         |
+| [Reuse and re-run](/using-k6/tutorial/reuse-and-re-run-tests)                          | Modularize and re-run tests                                         |
 
 
