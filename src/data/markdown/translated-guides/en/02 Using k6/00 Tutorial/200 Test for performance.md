@@ -25,7 +25,7 @@ After you confirm run the peak traffic test, run another test to determine where
 
 ## Assert for performance with thresholds
 
-To codify the SLOs, add _thresholds_ to test that your system performs to its goal criteria.
+To codify the SLOs, add [_thresholds_](/using-k6/thresholds) to test that your system performs to its goal criteria.
 Thresholds are exported in options.
 
 
@@ -42,9 +42,11 @@ export const options = {
 Add these thresholds object to your script and run it.
 Inspect the console output to determine whether performance crossed a threshold.
 
-   ✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms  
+```
+✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms  
        { expected_response:true }...: avg=198.42ms   min=198.42ms   med=198.42ms   max=198.42ms   p(90)=198.42ms   p(95)=198.42ms  
-   ✗ http_req_failed................: 66.66% ✓ 2        ✗ 1    
+✗ http_req_failed................: 66.66% ✓ 2        ✗ 1    
+```
 
 
 

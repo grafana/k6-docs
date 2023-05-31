@@ -195,7 +195,7 @@ To do so:
 ## Add a custom metric
 
 As you have seen in the output, all k6 tests emit metrics.
-However, if the built-in metrics aren't enough, you can add custom metrics.
+However, if the built-in metrics aren't enough, you can [create custom metrics](/using-k6/metrics/create-custom-metrics).
 A common use case is to make metrics for an endpoint or group.
 
 To create a trend for each group:

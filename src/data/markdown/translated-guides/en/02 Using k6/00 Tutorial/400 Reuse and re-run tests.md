@@ -17,7 +17,6 @@ Use logic of the `user-flow.js` test with the thresholds and scenario of the `ap
 Take note of the features of this script:
 - The `default` function has two groups, `User contacts page` and `Coinflip game`
 - The `options` object has two properties, `thresholds` and `scenarios`
-- There are two custom metrics, `contactsLatency` and `coinflipLatency`.
 
 In the following sections, learn how to split these components into separate files, and combine them dynamically at run time.
 
@@ -126,8 +125,7 @@ To modularize the functions follow these steps.
    As is, this script won't work, since it has undeclared functions and variables.
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
-   ```javascript
-
+  ```javascript
   //import necessary modules
   import http from "k6/http";
   import { Trend } from "k6/metrics";
@@ -193,7 +191,7 @@ To modularize the functions follow these steps.
         timeUnit: "1m",
         // Pre-allocate necessary VUs.
         preAllocatedVUs: 200,
-        stages: [
+       stages: [
           { target: 20, duration: "10s" },
           { target: 40, duration: "10s" },
           { target: 40, duration: "10s" },
