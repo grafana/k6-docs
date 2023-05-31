@@ -70,9 +70,12 @@ export default function () {
   // Put visits to contact page in one group
   group("User contacts page", function () {
     // save response as variable
-    let res = http.get(`${baseUrl}/contacts.php`);
+    const res = http.get(`${baseUrl}/contacts.php`);
     // add duration property to metric
     contactsLatency.add(res.timings.duration);
+    sleep(1);
+    // return to the home page, no custom metric
+    http.get(`${baseUrl}/`);
     sleep(1);
   });
 
@@ -117,11 +120,14 @@ To do so, follow these steps:
         // add duration property to metric
         contactsLatency.add(res.timings.duration);
         sleep(1);
+       // return to the home page, no custom metric
+       http.get(`${baseUrl}/`);
+       sleep(1);
       });
     }
   ```
 
-   As is, this script won't work, since it has undeclared functions and variables.
+  As is, this script won't work, since it has undeclared functions and variables.
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
   ```javascript
@@ -224,6 +230,10 @@ To do so, follow these steps:
       let res = http.get(`${baseUrl}/contacts.php`);
       // add duration property to metric
       contactsLatency.add(res.timings.duration);
+      sleep(1);
+
+      // return to the home page, no custom metric
+      http.get(`${baseUrl}/`);
       sleep(1);
     });
   }

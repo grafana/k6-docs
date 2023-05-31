@@ -103,13 +103,16 @@ And the API test script is getting long.
 To simplify, write a new test for the following situation:
 
 > Your development team wants to compare the performance of two user-facing components, the Contacts page and the Coinflip game.
-> Write a script that makes it easy to compare the following 
-> - A GET request to `https://test.k6.io/contacts.php`
-> - A POST request to `https://test.k6.io/flip_coin.php` with the query param `?bet=heads`
-> - Another POST to `https://test.k6.io/flip_coin.php` with the query param `?bet=tails`
+> Write a script that makes it easy to compare the following:
+> - A user who reads the contacts page, then returns home
+>     - A GET request to `https://test.k6.io/contacts.php`
+>     - A GET to `https://test.k6.io/`
+> - A user who plays the coinflip game:
+>     - A POST request to `https://test.k6.io/flip_coin.php` with the query param `?bet=heads`
+>     - Another POST to `https://test.k6.io/flip_coin.php` with the query param `?bet=tails`
 
 
-Can you figure out how to script the requests yourself?
+Can you figure out how to script the [requests yourself](/results-output)?
 If not, use the following script.
 
 <Collapsible title="user flow example" isOpen="" tag="">
@@ -122,11 +125,18 @@ Since this example simulates a human user rather than an API call, it has sleep 
 import http from "k6/http";
 import { check, group, sleep } from "k6";
 
+//set URL as variable
 const baseUrl = "https://test.k6.io";
 
 export default function () {
+  // visit contacts
   http.get(`${baseUrl}/contacts.php`);
   sleep(1);
+  // return to the home page
+  http.get(`${baseUrl}/`);
+  sleep(1);
+
+  //play coinflip game
   http.get(`${baseUrl}/flip_coin.php?bet=heads`);
   sleep(1);
   http.get(`${baseUrl}/flip_coin.php?bet=tails`);
@@ -160,6 +170,9 @@ export default function () {
 // Put visits to contact page in one group
   group("User contacts page", function () {
     http.get(`${baseUrl}/contacts.php`);
+    sleep(1);
+    // return to the home page
+    http.get(`${baseUrl}/`);
     sleep(1);
   });
 
@@ -204,7 +217,7 @@ A common use case is to make metrics for an endpoint or group.
 To create a trend for each group:
 1. Import `Trend` from the k6 metrics module.
 1. Create two duration trend metric functions.
-1. In each group, after each request, add the `duration` time to the trend.
+1. In each group, add the `duration` time to the trend for requests to `contacts` and the `coin_flip` endpoints.
 
 ```javascript
 //import necessary modules
@@ -227,6 +240,9 @@ export default function () {
     const res = http.get(`${baseUrl}/contacts.php`);
     // add duration property to metric
     contactsLatency.add(res.timings.duration);
+    sleep(1);
+    // return to the home page, no custom metric
+    http.get(`${baseUrl}/`);
     sleep(1);
   });
 
