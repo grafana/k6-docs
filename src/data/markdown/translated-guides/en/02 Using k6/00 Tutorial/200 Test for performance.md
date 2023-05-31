@@ -26,7 +26,7 @@ After you confirm run the peak traffic test, run another test to determine where
 ## Assert for performance with thresholds
 
 To codify the SLOs, add [_thresholds_](/using-k6/thresholds) to test that your system performs to its goal criteria.
-Thresholds are exported in options.
+Thresholds are set in options.
 
 
 ```javascript
@@ -39,7 +39,7 @@ export const options = {
 };
 ```
 
-Add these thresholds object to your script and run it.
+Add this option object with thresholds to your script and run it.
 Inspect the console output to determine whether performance crossed a threshold.
 
 ```
@@ -65,7 +65,7 @@ Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confi
 To do so, use the `--iterations` with an argument of 10 or fewer.
 
 ```bash
-k6 run --iterations 7 api-test.js
+k6 run --iterations 10 api-test.js
 ```
 
 If the service can't receive 10 iterations, the system has some serious performance issues to debug.
@@ -138,9 +138,9 @@ To do this:
       //arbitrary name of scenario:
       stress_test: {
         executor: "ramping-arrival-rate",
-        // Start iterations per `timeUnit`
-        startRate: 20,
         // Start `startRate` iterations per minute
+        startRate: 20,
+        // Start iterations per `timeUnit`
         timeUnit: "1m",
         // Pre-allocate necessary VUs.
         preAllocatedVUs: 200,

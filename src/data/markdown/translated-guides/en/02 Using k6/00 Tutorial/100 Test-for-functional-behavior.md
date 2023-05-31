@@ -12,8 +12,8 @@ In this tutorial, learn how to write a test that does the following:
 The first thing to do is to add logic for the endpoint.
 To do that, you need to make an [HTTP request](/using-k6/http-request):
 1. Import the HTTP module.
-2. Add a payload to authenticate the user.
-3. Use the `http.post` method to send your request to an endpoint.
+2. Create a payload to authenticate the user.
+3. Use the `http.post` method to send your request with the payload to an endpoint.
 
 To test, copy this file and save it as `tutorial.js`
 
@@ -55,12 +55,12 @@ To make sure you're getting the right response, you can log `res` to the console
 
 ```
   //add at the end of the default function
-  console.log(res);
+  console.log(JSON.stringify(res, null, "  "));
 ```
 
 ## Add response checks
 
-Once you're sure the request is well-formed, add a [check](/using-k6/checks) that validates whether the system responds with the expected body.
+Once you're sure the request is well-formed, add a [check](/using-k6/checks) that validates whether the system responds with the expected status code.
 
 1. Update your script so it has the following check function.
 

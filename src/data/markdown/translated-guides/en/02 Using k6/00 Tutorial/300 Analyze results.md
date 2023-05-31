@@ -11,7 +11,7 @@ In this tutorial, learn how to:
 - Organize requests in groups
 - Create custom metrics.
 
-<Blockquote mod="note" title="This examples use jq">
+<Blockquote mod="note" title="These examples use jq">
 
 These examples use [`jq`](https://jqlang.github.io/jq/) to filter JSON results.
 
@@ -22,12 +22,10 @@ These examples use [`jq`](https://jqlang.github.io/jq/) to filter JSON results.
 k6 provides many output structures.
 One of the most commonly used is JSON.
 
-To output results as JSON, use the `--out` flag.
+To output results as JSON lines, use the `--out` flag.
 
-~~~bash
+```bash
 k6 run --out json=api-results.json api-test.js
-~~~
-
 Then filter the output with the tool of your choice.
 
 k6 results have a number of built-in tags.
