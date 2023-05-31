@@ -27,6 +27,8 @@ To output results as JSON lines, use the `--out` flag.
 
 ```bash
 k6 run --out json=api-results.json api-test.js
+```
+
 Then filter the output with the tool of your choice.
 
 k6 results have a number of built-in tags.
