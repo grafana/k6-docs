@@ -3,7 +3,7 @@ title: Test for performance
 excerpt: Write thresholds to evaluate performance criteria, then increase load to see how the system performs.
 ---
 
-In the previous section, you made a working script to test the endpoint functionality.
+In the previous section, you made a working script to test an endpoint functionality.
 The next step is to test how this system responds under load.
 This requires using the powerful [`options`](/using-k6/options) object, which configures the parts of the test that don't deal with user behavior.
 
@@ -21,7 +21,7 @@ To assess the login endpoint's performance, your team may have defined [service 
 
 The service must meet these SLOs up to peak traffic of 1 request/second.
 
-After you confirm run the peak traffic test, run another test to determine where the system degrades (this is also often done to discover baselines before the organization has an SLOs).
+After the peak-traffic test, run another test to determine where the system degrades (this is also often done to discover baselines before the organization has an SLOs).
 
 ## Assert for performance with thresholds
 
@@ -40,12 +40,58 @@ export const options = {
 ```
 
 Add this option object with thresholds to your script and run it.
+
+<CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
+heightTogglers={[true]}>
+
+```javascript
+// Import necessary modules
+import { check } from "k6";
+import http from "k6/http";
+
+//define configuration
+export const options = {
+  //define thresholds
+  thresholds: {
+    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
+    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
+  },
+};
+
+export default function () {
+  // define URL and request body
+  const url = "https://test-api.k6.io/auth/basic/login/";
+  const payload = JSON.stringify({
+    username: "test_case",
+    password: "1234",
+  });
+  const params = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  // send a post request and save response as a variable
+  const res = http.post(url, payload, params);
+
+  // check that response is 200
+  check(res, {
+    "login response was 200": (res) => res.status == 200,
+  });
+}
+
+```
+
+</CodeGroup>
+
+
+
 Inspect the console output to determine whether performance crossed a threshold.
 
 ```
-✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms  
-       { expected_response:true }...: avg=198.42ms   min=198.42ms   med=198.42ms   max=198.42ms   p(90)=198.42ms   p(95)=198.42ms  
-✗ http_req_failed................: 66.66% ✓ 2        ✗ 1    
+✓ http_req_duration..............: avg=66.14ms    min=0s         med=0s         max=198.42ms   p(90)=158.73ms   p(95)=178.58ms
+       { expected_response:true }...: avg=198.42ms   min=198.42ms   med=198.42ms   max=198.42ms   p(90)=198.42ms   p(95)=198.42ms
+✗ http_req_failed................: 0.00% ✓ 0        ✗ 1
 ```
 
 
@@ -62,7 +108,7 @@ Scenarios schedule load according to number of VUs, number of iterations, VUs, o
 
 Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confirm the script works properly") to see your script can handle minimal load.
 
-To do so, use the `--iterations` with an argument of 10 or fewer.
+To do so, use the `--iterations` flag with an argument of 10 or fewer.
 
 ```bash
 k6 run --iterations 10 api-test.js
@@ -102,8 +148,8 @@ Where the smoke test used load in terms of iterations, this configuration expres
 
 Run the test with no command-line flags: `k6 run api-test.js`.
 
-The load is pretty small, so the server should perform within thresholds.
-However, this test server may be under load by many k6 learners, so it's hard to say.
+The load is small, so the server should perform within thresholds.
+However, this test server may be under load by many k6 learners, so the results are unpredictable.
 
 
 <Blockquote mod="note" title="To visualize results...">
@@ -134,6 +180,12 @@ To do this:
 
 
   ```json
+  export const options = {
+    //define thresholds
+    thresholds: {
+      http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+      http_req_duration: ['p(99)<200'], // 99% of requests should be below 200ms
+    },
     scenarios: {
       //arbitrary name of scenario:
       stress_test: {
@@ -155,13 +207,14 @@ To do this:
         ],
       },
     },
+  }
   ```
-  
+
 Here is the full script.
 Copy and run it.
 
-Did the threshold fail? If not, add another stage with a higher target and try again. 
-  
+Did the threshold fail? If not, add another stage with a higher target and try again.
+
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
 
@@ -233,5 +286,3 @@ In this tutorial, you used thresholds to assert for performance, then used three
 
 The next step is to learn how to meaningfully interpret results. This involves filtering results and adding custom metrics.
 Alternatively, to learn more about different load patterns for different goals, read [Test Types](/test-types).
-
-
