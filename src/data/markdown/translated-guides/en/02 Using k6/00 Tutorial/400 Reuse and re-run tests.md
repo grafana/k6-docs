@@ -100,11 +100,10 @@ export default function () {
 
 ## Modularize logic
 
-First, extract each group function into its own file.
-To modularize like this, you need to extract the tested endpoints into separate files.
-Then export them from their file and import them into the main test. 
+With [modules](/using-k6/modules), you can use logic and variables from other files.
+Use modules to extract the functions to their own files.
 
-To modularize the functions follow these steps.
+To do so, follow these steps:
 
 1. Copy the previous script (`whole-tutorial.js`) and save it as `main.js`.
 1. Extract the `User contacts page` group function from `main.js` script file and paste it into a new file called `contacts.js`
@@ -265,9 +264,11 @@ The results should be very similar to running the script in a combined file, sin
 ## Modularize workload
 
 Now that the iteration code is totally modularized, you might modularize your `options`, too.
-To do so, you could either save the object as JavaScript, or save it as JSON and use `JSON.parse()` to use it in your test.
+To do so, you could either save the object as JavaScript, or save it as JSON and use the k6 [`open()`](/javascript-api/init-context/open/) function with `JSON.parse()`.
 
-The following example does both, with thresholds in an exported variable from `thresholds.js` and the scenario workload in a JSON file, `stress.json`
+The following example does both:
+- Thresholds are in an exported variable from `thresholds.js`
+- The scenario workload config is in a JSON file, `stress.json`
 
 
 <CodeGroup labels={["main.js", "thresholds.js", "stress.json"]} lineNumbers={[true, true, true]}
@@ -382,10 +383,10 @@ To do this, follow these steps:
   
 1. Run the script with and without the `-e` flag.
 
-What is the scenario when you run `k6 run main.js`?
-What is it when you run `k6 run main.js -e WORKLOAD="./stress.json"`
+   - What happens when you run `k6 run main.js`?
+   - What about `k6 run main.js -e WORKLOAD="./stress.json"`?
 
-If its an object, you can modularize it. Since k6 scripts are JavaScript, where essentially everything is an object, you can modularize essential everything. 
+If its an object, you can modularize it. Since k6 scripts are JavaScript, where essentially everything is an object, you can modularize essentially everything. 
   
 ## Next steps
 

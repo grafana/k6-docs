@@ -11,19 +11,24 @@ In this tutorial, learn how to:
 - Organize requests in groups
 - Create custom metrics.
 
+<Blockquote mod="note" title="This examples use jq">
+
+These examples use [`jq`](https://jqlang.github.io/jq/) to filter JSON results.
+
+</Blockquote>
 
 ## Write data points to a file
 
 k6 provides many output structures.
 One of the most commonly used is JSON.
 
-To output results as JSON, use the out flag.
+To output results as JSON, use the `--out` flag.
 
 ~~~bash
 k6 run --out json=api-results.json api-test.js
 ~~~
 
-Then, you can filter the output with the tool of your choice.
+Then filter the output with the tool of your choice.
 
 k6 results have a number of built-in tags.
 For example, run this `jq` command to filter results to only results where the status is 200:
@@ -90,7 +95,7 @@ jq '. | select(.data.tags.function == "login")' results.json
 ## Organize requests in groups
 
 You can also organize tags into [_Groups_](/using-k6/tags-and-groups#groups), functions that apply a `group` tag to all requests within its block.
-Groups are very useful designing tests as a series of transactions.
+Groups are very useful for designing tests as a series of logical transactions or blocks.
 
 
 ### Context: a new test for user flows
@@ -99,7 +104,7 @@ Results filtering isn't very meaningful in a test that makes one request.
 And the API test script is getting long.
 To simplify, write a new test for the following situation:
 
-> Your development team wants to compare the performance two user-facing components, the Contacts page and the Coinflip game.
+> Your development team wants to compare the performance of two user-facing components, the Contacts page and the Coinflip game.
 > Write a script that makes it easy to compare the following 
 > - A GET request to `https://test.k6.io/contacts.php`
 > - A POST request to `https://test.k6.io/flip_coin.php` with the query param `?bet=heads`
