@@ -318,33 +318,17 @@ export const Footer = () => {
               <li className={styles.navColumnItem}>
                 <a
                   className={styles.navColumnLink}
-                  href={`${main}/data-processing-agreement`}
+                  href={'https://grafana.com/legal/?src=k6io'}
                 >
-                  GDPR
+                  Legal and Security
                 </a>
               </li>
               <li className={styles.navColumnItem}>
                 <a
                   className={styles.navColumnLink}
-                  href={`${main}/privacy-policy`}
+                  href={'https://grafana.com/legal/privacy-policy/?src=k6io'}
                 >
-                  Privacy
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
-                  href={`${main}/security-policy`}
-                >
-                  Security
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
-                  href={`${main}/services-agreement`}
-                >
-                  Terms
+                  Privacy Policy
                 </a>
               </li>
               <li className={styles.navColumnItem}>
