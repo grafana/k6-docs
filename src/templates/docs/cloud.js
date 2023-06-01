@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import htmlStyles from 'components/blocks/html-content/html-content.module.scss';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
-import { CtaDoc } from 'components/shared/cta-doc';
 import { PageInfo } from 'components/shared/page-info';
 import { SEO } from 'components/shared/seo';
 import { Trait } from 'components/shared/trait';
@@ -11,16 +10,14 @@ import LocaleProvider from 'contexts/locale-provider';
 import { Link } from 'gatsby';
 import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
-import React, { useRef, useState, useEffect } from 'react';
-import { isInIFrame } from 'utils';
+import React, { useRef } from 'react';
 import SeoMetaData from 'utils/seo-metadata';
-import { app } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
+import Blockquote from '../../components/shared/blockquote';
+
 const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
-  const [showFooter, setShowFooter] = useState(true);
   const contentContainerRef = useRef(null);
-  useEffect(() => setShowFooter(!isInIFrame()), []);
   useScrollToAnchor();
 
   const stickyContainerClasses = classNames(
@@ -42,6 +39,40 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
           <div ref={contentContainerRef} className={stickyContainerClasses}>
             <div className={'container'}>
               <div className={`${htmlStyles.wrapper}`}>
+                <Blockquote mod="attention" title="">
+                  As the next phase of the{' '}
+                  <Link
+                    to="https://grafana.com/blog/2023/03/21/grafana-cloud-k6-performance-testing-announcement/"
+                    className="link"
+                  >
+                    Grafana Cloud k6 launch
+                  </Link>
+                  , we no longer accept new sign-ups to{' '}
+                  <Link to="https://app.k6.io" className="link">
+                    k6 Cloud
+                  </Link>
+                  . <br />
+                  <br />
+                  Check out{' '}
+                  <Link
+                    to="https://grafana.com/products/cloud/k6/"
+                    className="link"
+                  >
+                    Grafana Cloud k6
+                  </Link>{' '}
+                  if you want to try our newest performance testing solution in
+                  Grafana Cloud. Learn more about this product in the{' '}
+                  <Link
+                    to="https://grafana.com/docs/grafana-cloud/k6/"
+                    className="link"
+                  >
+                    documentation
+                  </Link>
+                  . <br />
+                  <br />
+                  Existing k6 Cloud customers can continue using k6 Cloud. We
+                  plan to migrate k6 Cloud to Grafana Cloud k6 at a later date.
+                </Blockquote>
                 <h2>What is k6 Cloud?</h2>
                 <p>
                   The k6 Cloud is a commercial SaaS product that we’ve designed
@@ -244,15 +275,6 @@ const Cloud = ({ pageContext: { sidebarTree, navLinks } }) => {
               </div>
               <p />
             </div>
-            {showFooter && (
-              <CtaDoc
-                btnLink={`${app}/account/register`}
-                title={'Free Trial'}
-                btnText={'Try now'}
-                description={'Sign up to run 50 cloud tests for Free.'}
-                isExternal
-              />
-            )}
           </div>
           <DocPageNavigation
             prev={null}
