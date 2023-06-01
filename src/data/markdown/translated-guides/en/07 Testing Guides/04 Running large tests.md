@@ -168,10 +168,10 @@ If you need the response body for some requests, override the option with [Param
 
 ### When streaming, use `--no-thresholds` and `--no-summary`
 
-If you're running a local test and streaming results to the k6 Cloud (`k6 run -o cloud`), you might want to disable the terminal summary
-and local threshold calculation, because k6 Cloud will display the summary and calculate the thresholds.
+If you're running a local test and streaming results to the cloud (`k6 run -o cloud`), you might want to disable the terminal summary
+and local threshold calculation, because the cloud service will display the summary and calculate the thresholds.
 
-Without these options, the operations will be duplicated by both the local machine and the k6 Cloud servers.
+Without these options, the operations will be duplicated by both the local machine and the cloud servers.
 This will save some memory and CPU cycles.
 
 Here are all the mentioned flags, all in one:
@@ -347,9 +347,9 @@ With the limitations mentioned above, we built a [Kubernetes operator](https://g
 
 > The k6 goal is to support a native open-source solution for distributed execution. If you want to follow the progress, subscribe to the [distributed execution issue](https://github.com/grafana/k6/issues/140) on GitHub.
 
-## Large-scale tests in k6 Cloud
+## Large-scale tests in the cloud
 
-[k6 Cloud](https://k6.io/cloud), our commercial offering, provides an instant solution for running large-scale tests, among other [benefits](/cloud#how-can-it-help-me).
+[Grafana Cloud k6](https://grafana.com/products/cloud/k6/), our commercial offering, provides an instant solution for running large-scale tests, among other [benefits](https://grafana.com/docs/grafana-cloud/k6/).
 
 If you aren't sure whether OSS or Cloud is a better fit for your project, we recommend reading this [white paper](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution) to learn more about the risks and features to consider when building a scalable solution.
 
@@ -358,5 +358,4 @@ If you aren't sure whether OSS or Cloud is a better fit for your project, we rec
 - [Fine tuning OS](/misc/fine-tuning-os)
 - [JavaScript Compatibility Mode](/using-k6/javascript-compatibility-mode)
 - [A biased comparison of the best open source load testing tools](https://k6.io/blog/comparing-best-open-source-load-testing-tools)
-- [k6 Cloud Pricing - soak and large-scale tests](https://k6.io/pricing#larger-tests)
 - [White paper: what to consider when building or buying a load testing solution](https://k6.io/what-to-consider-when-building-or-buying-a-load-testing-solution)
