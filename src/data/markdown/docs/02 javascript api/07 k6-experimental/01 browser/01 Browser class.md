@@ -16,7 +16,6 @@ A new Browser instance (hence a new browser process) can be created using the `l
 | [browser.isConnected](/javascript-api/k6-experimental/browser/browser-class/isconnected) <BWIPT id="453"/>  | Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.                  |
 | [browser.newContext([options])](/javascript-api/k6-experimental/browser/browser-class/newcontext/) <BWIPT id="455"/> | Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).                                                             |
 | [browser.newPage([options])](/javascript-api/k6-experimental/browser/browser-class/newpage)  <BWIPT id="455"/>       | Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) and returns the page. |
-| [browser.on('disconnected')](/javascript-api/k6-experimental/browser/browser-class/on/) | Detects the disconnected event from the browser application. |
 | [browser.version()](/javascript-api/k6-experimental/browser/browser-class/version/)                          | Returns the browser application's version.                                                                                                            |
 
 ### Example
