@@ -1,6 +1,6 @@
 ---
 title: 'HTTP Authentication'
-excerpt: 'Scripting examples on how to use different authenitcation or authorization methods in your load test.'
+excerpt: 'Scripting examples on how to use different authentication or authorization methods in your load test.'
 ---
 
 Scripting examples on how to use different authentication or authorization methods in your load test.
@@ -108,92 +108,67 @@ export default function () {
 
 </CodeGroup>
 
-## AWS Signature v4 authentication
+## AWS Signature v4 authentication with the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws)
 
-Requests to the AWS APIs requires a special type of auth, called AWS Signature Version 4. k6
-does not support this authentication mechanism out of the box, so we'll have to resort to using
-a Node.js library called [awsv4.js](https://github.com/mhart/aws4) and
-[Browserify](http://browserify.org/) (to make it work in k6).
+To authenticate requests to AWS APIs using [AWS Signature Version 4](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html), k6 offers the [k6-jslib-aws](https://github.com/grafana/k6-jslib-aws) JavaScript library, which provides a dedicated `SignatureV4` class. This class can produce authenticated requests to send to AWS APIs using the `http` k6 module.
 
-For this to work, we first need to do the following:
-
-1. Make sure you have the necessary prerequisites installed: [Node.js](https://nodejs.org/en/download/)
-   and [Browserify](http://browserify.org/)
-2. Install the `awsv4.js` library:
-
-   <CodeGroup labels={[""]} lineNumbers={[false]}>
-
-   ```bash
-   $ npm install aws4
-   ```
-
-   </CodeGroup>
-
-3. Run it through browserify:
-
-   <CodeGroup labels={[""]} lineNumbers={[false]}>
-
-   ```bash
-   $ browserify node_modules/aws4/aws4.js -s aws4 > aws4.js
-   ```
-
-   </CodeGroup>
-
-4. Move the `aws4.js` file to the same folder as your script file. Now you can import
-   it into your test script:
-
-   <CodeGroup labels={[""]} lineNumbers={[false]}>
-
-   ```javascript
-   import aws4 from './aws4.js';
-   ```
-
-   </CodeGroup>
-
-Here's an example script to list all the regions available in EC2. Note that the AWS access key
-and secret key needs to be provided through [environment variables](/using-k6/environment-variables).
-
-> ### ⚠️ CPU- and Memory-heavy
->
-> As the browserified version of this Node.js library includes several Node.js APIs
-> implemented in pure JS (including crypto APIs) it will be quite heavy on CPU and memory hungry
-> when run with more than just a few VUs.
+Here's an example script to demonstrate how to sign a request to fetch an object from an S3 bucket:
 
 <CodeGroup labels={["awsv4-auth.js"]} lineNumbers={[false]}>
 
 ```javascript
 import http from 'k6/http';
-import { sleep } from 'k6';
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.2/signature.js';
 
-// Import browserified AWSv4 signature library
-import aws4 from './aws4.js';
+const awsConfig = new AWSConfig({
+    region: __ENV.AWS_REGION,
+    accessKeyId: __ENV.AWS_ACCESS_KEY_ID,
+    secretAccessKey: __ENV.AWS_SECRET_ACCESS_KEY,
 
-// Get AWS credentials from environment variables
-const AWS_CREDS = {
-  accessKeyId: __ENV.AWS_ACCESSKEY,
-  secretAccessKey: __ENV.AWS_SECRETKEY,
-};
+    /**
+     * Optional session token for temporary credentials.
+     */
+    sessionToken: __ENV.AWS_SESSION_TOKEN,
+});
 
 export default function () {
-  // Sign the AWS API request
-  const signed = aws4.sign(
-    {
-      service: 'ec2',
-      path: '/?Action=DescribeRegions&Version=2014-06-15',
+  /**
+   * Create a signer instance with the AWS credentials.
+   * The signer will be used to sign the request.
+   */
+  const signer = new SignatureV4({
+    service: 's3',
+    region: awsConfig.region,
+    credentials: {
+        accessKeyId: awsConfig.accessKeyId,
+        secretAccessKey: awsConfig.secretAccessKey,
+        sessionToken: awsConfig.sessionToken,
     },
-    AWS_CREDS
-  );
-
-  // Make the actual request to the AWS API including the
-  // "Authorization" header with the signature
-  const res = http.get(`https://${signed.hostname}${signed.path}`, {
-    headers: signed.headers,
   });
 
-  // Print the response
-  console.log(res.body);
+  /**
+   * Use the signer to prepare a signed request.
+   * The signed request can then be used to send the request to the AWS API.
+   */
+  const signedRequest = signer.sign({
+    method: 'GET',
+    protocol: 'https',
+    hostname: 'test-jslib-aws.s3.us-east-1.amazonaws.com',
+    path: '/bonjour.txt',
+    headers: {},
+    uriEscapePath: false,
+    applyChecksum: false,
+  }, {
+    signingDate: new Date(),
+    signingService: 's3',
+    signingRegion: 'us-east-1',
+  });
 
-  sleep(1);
+  /**
+   * The `signedRequest` object contains the signed request URL and headers.
+   * We can use them to send the request to the AWS API.
+   */
+  http.get(signedRequest.url, { headers: signedRequest.headers });
 }
 ```
 
