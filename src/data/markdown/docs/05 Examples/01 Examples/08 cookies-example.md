@@ -22,7 +22,7 @@ import { check, group } from 'k6';
 
 export default function () {
   // Since this request redirects the `res.cookies` property won't contain the cookies
-  const res = http.get('http://httpbin.test.k6.io/cookies/set?name1=value1&name2=value2');
+  const res = http.get('https://httpbin.test.k6.io/cookies/set?name1=value1&name2=value2');
   check(res, {
     'status is 200': (r) => r.status === 200,
   });

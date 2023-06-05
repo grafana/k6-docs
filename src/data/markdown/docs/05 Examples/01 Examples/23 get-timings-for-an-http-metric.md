@@ -26,7 +26,7 @@ This script gets the request duration timing for a specific GET request and logs
 import http from 'k6/http';
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
 }
 ```

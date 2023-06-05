@@ -28,7 +28,7 @@ export default function () {
     redirects: 0,
   });
   const jar = http.cookieJar();
-  const cookies = jar.cookiesForURL('http://httpbin.test.k6.io/');
+  const cookies = jar.cookiesForURL('https://httpbin.test.k6.io/');
   check(res1, {
     "has cookie 'my_cookie'": (r) => cookies.my_cookie.length > 0,
     'cookie has correct value': (r) => cookies.my_cookie[0] === 'hello world',

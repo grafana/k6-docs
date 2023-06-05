@@ -58,7 +58,7 @@ For debugging, k6 also provides a few builtin options:
   ```javascript
   import http from 'k6/http';
 
-  const res = http.get('http://httpbin.test.k6.io/json');
+  const res = http.get('https://httpbin.test.k6.io/json');
   console.log(JSON.stringify(res));
   ```
 

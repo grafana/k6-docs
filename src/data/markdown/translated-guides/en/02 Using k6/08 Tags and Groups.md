@@ -80,7 +80,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('http://httpbin.test.k6.io/', {
+  const res = http.get('https://httpbin.test.k6.io/', {
     tags: {
       my_tag: "I'm a tag",
     },

@@ -475,7 +475,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -508,12 +508,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(
     res,
     {

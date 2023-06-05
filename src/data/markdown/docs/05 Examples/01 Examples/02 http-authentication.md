@@ -22,7 +22,7 @@ export default function () {
 
   // Passing username and password as part of the URL will
   // allow us to authenticate using HTTP Basic Auth.
-  const url = `http://${credentials}@httpbin.test.k6.io/basic-auth/${username}/${password}`;
+  const url = `https://${credentials}@httpbin.test.k6.io/basic-auth/${username}/${password}`;
 
   let res = http.get(url);
 
@@ -42,7 +42,7 @@ export default function () {
     },
   };
 
-  res = http.get(`http://httpbin.test.k6.io/basic-auth/${username}/${password}`, options);
+  res = http.get(`https://httpbin.test.k6.io/basic-auth/${username}/${password}`, options);
 
   // Verify response (checking the echoed data from the httpbin.test.k6.io
   // basic auth test API endpoint)
@@ -72,7 +72,7 @@ export default function () {
   // authenticate using HTTP Digest authentication.
   const credentials = `${username}:${password}`;
   const res = http.get(
-    `http://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`,
+    `https://${credentials}@httpbin.test.k6.io/digest-auth/auth/${username}/${password}`,
     { auth: 'digest' }
   );
 
