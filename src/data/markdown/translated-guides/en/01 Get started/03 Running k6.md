@@ -80,7 +80,7 @@ _Running a 30-second, 10-VU load test_
 
 <Blockquote mod="note" title="Virtual users">
 
-k6 runs multiple interations in parellel with _virtual users_ (VUs).
+k6 runs multiple iterations in parallel with _virtual users_ (VUs).
 In general terms, more virtual users means more simulated traffic.
 
 VUs are essentially parallel `while(true)` loops.
