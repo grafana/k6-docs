@@ -34,7 +34,7 @@ The main types are as follows. Each type has its own article outlining its essen
 
 <Blockquote mod="note" title="">
 
-In k6 scripts, configure load in the [`options`](/using-k6/k6-options/reference/) object with [Scenarios](/using-k6/scenarios) (or the [`stages` shortcut](/using-k6/k6-options/reference/#stages)). This separates workload configuration from iteration logic.
+In k6 scripts, configure the load configuration using [`options`](/get-started/running-k6/#using-options) or [`scenarios`](/using-k6/scenarios). This separates workload configuration from iteration logic.
 
 </Blockquote>
 
