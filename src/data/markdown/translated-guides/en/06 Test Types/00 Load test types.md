@@ -44,7 +44,7 @@ The following table provides some broad comparisons.
 
 | Type       | VUs/Throughput        | Duration                   | When?                                                                                                            |
 |------------|-----------------------|----------------------------|------------------------------------------------------------------------------------------------------------------|
-| Smoke      | Low                   | Quick (seconds or minutes) | Every time new code or a change is done. It checks scripts, baseline system metrics, and deviations from changes |
+| Smoke      | Low                   | Quick (seconds or minutes) | When the relevant system or application code changes. It checks functional logic, baseline metrics, and deviations |
 | Load       | Average production    | Mid (15-60 minutes)           | Often to check system maintains performance with average use                                                     |
 | Stress     | High (above average)  | Mid (15-60 minutes)           | When system may receive above-average loads to check how it manages                                              |
 | Soak       | Average               | Long (hours)               | After changes to check system under prolonged continuous use                                                     |
