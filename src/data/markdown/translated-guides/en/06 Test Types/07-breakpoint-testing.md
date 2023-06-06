@@ -27,7 +27,7 @@ Teams execute a breakpoint test whenever they must know their system's diverse l
 * If current resource consumption is considered high
 * After significant changes to the code-base or infrastructure.
 
-How often to run this test type depends on the risk of reaching the system limits and the number of changes and code additions.
+How often to run this test type depends on the risk of reaching the system limits and the number of changes to provision infrastructure components.
 
 Once the breakpoint runs and the system limits have been identified, you can repeat the test after the tuning exercise to validate how it impacted limits. Repeat the test-tune cycle until the team is satisfied.
 
