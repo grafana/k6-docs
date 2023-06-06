@@ -1624,6 +1624,20 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/recording-a-test-script',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6/session-recording-har-support',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-har-converter/',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: '/test-authoring/recording-a-session/har-converter',
     toPath:
       '/test-authoring/create-tests-from-recordings/using-the-har-converter/',
@@ -1700,14 +1714,10 @@ const createRedirects = ({ actions }) => {
       '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/',
     '/using-k6/html/working-with-html-forms': '/examples/html-forms/',
     '/using-k6/html': '/javascript-api/k6-html/',
-    '/using-k6/session-recording-har-support':
-      '/test-authoring/recording-a-session/',
     '/cloud/creating-and-running-a-test/test-builder':
       '/test-authoring/test-builder/',
     '/cloud/creating-and-running-a-test/in-app-script-editor':
       '/cloud/creating-and-running-a-test/script-editor/',
-    '/cloud/creating-and-running-a-test/recording-a-test-script':
-      '/test-authoring/recording-a-session/browser-recorder/',
     '/cloud/creating-and-running-a-test/converters': '/integrations/',
     '/cloud/integrations/ci': '/integrations/',
     '/cloud/cloud-faq/what-is-data-retention':
