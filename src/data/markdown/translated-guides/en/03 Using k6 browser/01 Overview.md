@@ -13,7 +13,7 @@ This module aims to provide rough compatibility with the Playwright API, so you 
 
 <Blockquote mod="note" title="">
 
-To work with the browser module, make sure you are using [k6 version 0.43.0](https://github.com/grafana/k6/releases/tag/v0.43.0) or above.
+To work with the browser module, make sure you are using [k6 version 0.45.0](https://github.com/grafana/k6/releases/tag/v0.45.0) or above.
 
 </Blockquote>
 
@@ -31,12 +31,28 @@ The main use case for the browser module is to test performance on the browser l
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
 
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+  thresholds: {
+    checks: ["rate==1.0"]
+  }
+}
+
 export default async function () {
-  const browser = chromium.launch({ headless: false });
-  const page = browser.newPage();
+  const context = browser.newContext();
+  const page = context.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
@@ -53,7 +69,6 @@ export default async function () {
     });
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
@@ -87,39 +102,28 @@ After running the test, the following [browser metrics](/using-k6-browser/browse
            * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
 
 
-running (00m01.9s), 0/1 VUs, 1 complete and 0 interrupted iterations
-default ✓ [===============================] 1 VUs  00m01.9s/10m0s  1/1 iters, 1 per VU
+running (00m01.3s), 0/1 VUs, 1 complete and 0 interrupted iterations
+ui   ✓ [======================================] 1 VUs  00m01.3s/10m0s  1/1 shared iters
 
      ✓ header
 
-     browser_dom_content_loaded.............................: avg=63.74ms  min=2.11ms   med=21.66ms  max=167.44ms p(90)=138.28ms p(95)=152.86ms
-     browser_first_paint....................................: avg=72.62ms  min=41.31ms  med=72.62ms  max=103.94ms p(90)=97.67ms  p(95)=100.8ms
-     browser_loaded.........................................: avg=63.16ms  min=6.52ms   med=15.98ms  max=166.98ms p(90)=136.78ms p(95)=151.88ms
-     checks.................................................: 100.00% ✓ 1        ✗ 0
-     data_received..........................................: 5.8 kB  659 B/s
-     data_sent..............................................: 2.6 kB  291 B/s
-     http_req_connecting....................................: avg=48ms     min=0s       med=0s       max=240ms    p(90)=144ms    p(95)=191.99ms
-     http_req_duration......................................: avg=155.01ms min=3.09ms   med=121.84ms max=405.52ms p(90)=294.59ms p(95)=350.05ms
-     http_req_receiving.....................................: avg=92.6ms   min=0s       med=108ms    max=138ms    p(90)=127.2ms  p(95)=132.6ms
-     http_req_sending.......................................: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
-     http_req_tls_handshaking...............................: avg=22.4ms   min=0s       med=0s       max=112ms    p(90)=67.2ms   p(95)=89.59ms
-     http_reqs..............................................: 5       0.566242/s
-     iteration_duration.....................................: avg=8.82s    min=8.82s    med=8.82s    max=8.82s    p(90)=8.82s    p(95)=8.82s
-     iterations.............................................: 1       0.113248/s
-     vus....................................................: 1       min=1      max=1
-     vus_max................................................: 1       min=1      max=1
-     webvital_cumulative_layout_shift.......................: avg=0        min=0        med=0        max=0        p(90)=0        p(95)=0
-     webvital_cumulative_layout_shift_good..................: 1       0.113248/s
-     webvital_first_contentful_paint........................: avg=415.35ms min=302ms    med=415.35ms max=528.7ms  p(90)=506.03ms p(95)=517.36ms
-     webvital_first_contentful_paint_good...................: 2       0.226497/s
-     webvital_first_input_delay.............................: avg=5.59ms   min=5.59ms   med=5.59ms   max=5.59ms   p(90)=5.59ms   p(95)=5.59ms
-     webvital_first_input_delay_good........................: 1       0.113248/s
-     webvital_interaction_to_next_paint.....................: avg=248ms    min=248ms    med=248ms    max=248ms    p(90)=248ms    p(95)=248ms
-     webvital_interaction_to_next_paint_needs_improvement...: 1       0.113248/s
-     webvital_largest_content_paint.........................: avg=528.7ms  min=528.7ms  med=528.7ms  max=528.7ms  p(90)=528.7ms  p(95)=528.7ms
-     webvital_largest_content_paint_good....................: 1       0.113248/s
-     webvital_time_to_first_byte............................: avg=320.59ms min=247.09ms med=320.59ms max=394.1ms  p(90)=379.4ms  p(95)=386.75ms
-     webvital_time_to_first_byte_good.......................: 2       0.226497/s
+     browser_data_received.......: 2.6 kB  2.0 kB/s
+     browser_data_sent...........: 1.9 kB  1.5 kB/s
+     browser_http_req_duration...: avg=215.4ms  min=124.9ms med=126.65ms max=394.64ms p(90)=341.04ms p(95)=367.84ms
+     browser_http_req_failed.....: 0.00%   ✓ 0        ✗ 3  
+     browser_web_vital_cls.......: avg=0        min=0       med=0        max=0        p(90)=0        p(95)=0       
+     browser_web_vital_fcp.......: avg=344.15ms min=269.2ms med=344.15ms max=419.1ms  p(90)=404.11ms p(95)=411.6ms 
+     browser_web_vital_fid.......: avg=200µs    min=200µs   med=200µs    max=200µs    p(90)=200µs    p(95)=200µs   
+     browser_web_vital_inp.......: avg=8ms      min=8ms     med=8ms      max=8ms      p(90)=8ms      p(95)=8ms     
+     browser_web_vital_lcp.......: avg=419.1ms  min=419.1ms med=419.1ms  max=419.1ms  p(90)=419.1ms  p(95)=419.1ms 
+     browser_web_vital_ttfb......: avg=322.4ms  min=251ms   med=322.4ms  max=393.8ms  p(90)=379.52ms p(95)=386.66ms
+   ✓ checks......................: 100.00% ✓ 1        ✗ 0  
+     data_received...............: 0 B     0 B/s
+     data_sent...................: 0 B     0 B/s
+     iteration_duration..........: avg=1.28s    min=1.28s   med=1.28s    max=1.28s    p(90)=1.28s    p(95)=1.28s   
+     iterations..................: 1       0.777541/s
+     vus.........................: 1       min=1      max=1
+     vus_max.....................: 1       min=1      max=1
 ```
 
 </CodeGroup>
