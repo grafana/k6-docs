@@ -220,12 +220,10 @@ if (shouldAnnouncementBannerBeShown) {
 
 if (isProduction) {
   plugins.push({
-    resolve: 'gatsby-plugin-google-analytics',
+    resolve: 'gatsby-plugin-google-tagmanager',
     options: {
-      trackingId: 'UA-158196577-1',
-      head: false,
-      cookieDomain: 'k6.io',
-      allowLinker: true,
+      id: 'G-YQE19WEB36',
+      includeInDevelopment: false,
     },
   });
 
