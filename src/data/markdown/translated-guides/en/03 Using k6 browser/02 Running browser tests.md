@@ -229,9 +229,9 @@ import http from 'k6/http';
 
 export const options = {
   scenarios: {
-    testk6: {
+    browser: {
       executor: 'constant-vus',
-      exec: 'testk6',
+      exec: 'browsertest',
       vus: 1,
       duration: '10s',
       options: {
@@ -254,7 +254,7 @@ export const options = {
   }
 };
 
-export async function testk6() {
+export async function browsertest() {
   const context = browser.newContext();
   const page = context.newPage();
 
