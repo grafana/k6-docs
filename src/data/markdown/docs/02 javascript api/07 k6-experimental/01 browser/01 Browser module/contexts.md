@@ -1,6 +1,6 @@
 ---
 title: 'contexts()'
-excerpt: 'Browser module: Browser.contexts method'
+excerpt: 'Browser module: contexts method'
 ---
 
 Access all open [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s.

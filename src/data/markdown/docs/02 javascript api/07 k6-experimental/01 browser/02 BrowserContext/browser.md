@@ -3,14 +3,14 @@ title: 'browser instance'
 excerpt: 'Returns the browser instance that this BrowserContext belongs to.'
 ---
 
-Returns the [browser](/javascript-api/k6-experimental/browser/browser-class/) instance that this `BrowserContext` belongs to.
+Returns the [browser](/javascript-api/k6-experimental/browser/browser-module/) instance that this `BrowserContext` belongs to.
 
 
 ### Returns
 
 | Type                                            | Description             |
 | ----------------------------------------------  | ----------------------- |
-| [Browser](/javascript-api/k6-experimental/browser/browser-class/) | The Browser instance.   |
+| [Browser](/javascript-api/k6-experimental/browser/browser-module/) | The Browser instance.   |
 
 
 ### Example
