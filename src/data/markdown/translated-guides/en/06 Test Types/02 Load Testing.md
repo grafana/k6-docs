@@ -32,7 +32,7 @@ When you prepare an average-load test, consider the following:
     To find this, look through APMs or analytic tools that provide information from the production environment. If you can't access such tools, the business must provide these estimations.
 * **Gradually increase load to the target average.**
   
-  That is, use a _ramp-up period_. This period usually lasts 1, 2, 5, or 10 minutes. A ramp-up period has many essential uses:
+  That is, use a _ramp-up period_. This period usually lasts between 5% and 15% of the total test duration. A ramp-up period has many essential uses:
     * It gives your system time to warm up or auto-scale to handle the traffic.
     * It lets you compare response times between the low-load and average-load stages.
     * If you run tests using our cloud service, a ramp up lets the automated performance alerts understand the expected behavior of your system.

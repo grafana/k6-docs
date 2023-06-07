@@ -17,7 +17,7 @@ In some testing conversation, stress tests might also be called rush-hour, surge
 ## When to perform a Stress test
 
 Stress tests verify the stability and reliability of the system under conditions of heavy use.
-Systems may receive higher than usual workloads on unusual moments such as process deadlines, paydays, rush hours, ends of the workweek, and many other isolated behaviors that might combine to create high-load events.
+Systems may receive higher than usual workloads on unusual moments such as process deadlines, paydays, rush hours, ends of the workweek, and many other behaviors that might cause frequent higher-than-average traffic.
 
 ## Considerations
 
