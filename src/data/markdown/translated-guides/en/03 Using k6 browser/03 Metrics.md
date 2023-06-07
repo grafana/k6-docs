@@ -36,7 +36,7 @@ The following snippet is an example:
 
 <Blockquote mod="note" title="">
 
-As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output. When the browser module receives the metric from the [Google's Web Vital Library](https://github.com/GoogleChrome/web-vitals), it counts how many times it sees that metric. 
+As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output. 
 
 </Blockquote>
 
