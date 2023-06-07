@@ -3,9 +3,9 @@ title: "BrowserContext"
 excerpt: "Browser module: BrowserContext Class"
 ---
 
-`BrowserContext`s provide a way to operate multiple independent sessions, with separate pages, cache, and cookies. A default `BrowserContext` is created when a [Browser](/javascript-api/k6-experimental/browser/browser-module/) is launched.
+`BrowserContext`s provide a way to operate multiple independent sessions, with separate pages, cache, and cookies. A default `BrowserContext` is created when a browser is launched.
 
-The [Browser](/javascript-api/k6-experimental/browser/browser-module/) type is used to create a new `BrowserContext`.
+The [browser module API](/javascript-api/k6-experimental/browser#browser-module-api) is used to create a new `BrowserContext`.
 
 If a [page](/javascript-api/k6-experimental/browser/page/) opens another page, e.g. with a `window.open` call, the popup will belong to the parent page's `BrowserContext`.
 
