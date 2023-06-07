@@ -11,7 +11,7 @@ Note that because k6 does not run in NodeJS, the browser module APIs will slight
 
 <Blockquote mod="note" title="">
 
-To work with the browser module, make sure you are using [k6 version 0.43.0](https://github.com/grafana/k6/releases/tag/v0.43.0) or above.
+To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases).
 
 </Blockquote>
 
