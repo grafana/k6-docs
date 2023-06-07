@@ -21,7 +21,7 @@ The table below lists the importable properties from the top level module (`'k6/
 
 | Property | Description                                                                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| browser | The entry point for all your tests. See the [example](#example) and the [API](#browser-module-api) below. |
+| browser | The browser module API is the entry point for all your tests. See the [example](#example) and the [API](#browser-module-api) below. |
 | devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
 
 
@@ -48,10 +48,25 @@ A new Chromium browser process is automatically launched when you use the `newCo
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+  thresholds: {
+    checks: ["rate==1.0"]
+  }
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   const page = context.newPage();
 
@@ -59,7 +74,6 @@ export default async function () {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
