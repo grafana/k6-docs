@@ -21,7 +21,7 @@ The table below lists the importable properties from the top level module (`'k6/
 
 | Property | Description                                                                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| chromium | A [BrowserType](/javascript-api/k6-experimental/browser/browsertype) to launch tests in a Chromium-based browser.                                                                                |
+| browser | A [Browser](/javascript-api/k6-experimental/browser/browser) to launch tests in a Chromium-based browser.                                                                                |
 | devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
 
 ### Devices Example
@@ -31,19 +31,33 @@ To emulate the browser behaviour on a mobile device and approximately measure th
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium, devices } from 'k6/experimental/browser';
+import { browser, devices } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+  thresholds: {
+    checks: ["rate==1.0"]
+  }
+}
 
 export default async function () {
-  const browser = chromium.launch({ headless: false });
   const iphoneX = devices['iPhone X'];
-  const context = browser.newContext(iphoneX);
+  const context = browser.newContext();
   const page = context.newPage();
 
   try {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
