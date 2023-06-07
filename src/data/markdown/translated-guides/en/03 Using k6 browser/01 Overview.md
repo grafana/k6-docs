@@ -13,7 +13,7 @@ This module aims to provide rough compatibility with the Playwright API, so you 
 
 <Blockquote mod="note" title="">
 
-To work with the browser module, make sure you are using [k6 version 0.45.0](https://github.com/grafana/k6/releases/tag/v0.45.0) or above.
+To work with the browser module, make sure you are using the latest [k6 version](https://github.com/grafana/k6/releases).
 
 </Blockquote>
 
