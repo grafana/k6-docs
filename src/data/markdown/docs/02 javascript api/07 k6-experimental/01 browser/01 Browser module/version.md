@@ -1,6 +1,6 @@
 ---
 title: 'version()'
-excerpt: 'Browser module: Browser.version method'
+excerpt: 'Browser module: version method'
 ---
 
 Returns the browser application's version.

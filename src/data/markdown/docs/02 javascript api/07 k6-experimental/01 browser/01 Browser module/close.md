@@ -1,11 +1,11 @@
 ---
 title: 'close()'
-excerpt: 'Browser module: Browser.close method'
+excerpt: 'Browser module: close method'
 ---
 
 Closes the browser and all of its pages (if any were opened).
 
-The [Browser](/javascript-api/k6-experimental/browser/browser-class/) object cannot be used anymore and is considered disposed of.
+The [Browser](/javascript-api/k6-experimental/browser/browser-module/) object cannot be used anymore and is considered disposed of.
 
 
 ### Example

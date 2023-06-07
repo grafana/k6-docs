@@ -15,13 +15,13 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 </Blockquote>
 
-## Modules
+## Importable Properties
 
 The table below lists the importable properties from the top level module (`'k6/experimental/browser'`).
 
 | Property | Description                                                                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| browser | A [Browser](/javascript-api/k6-experimental/browser/browser) to launch tests in a Chromium-based browser.                                                                                |
+| browser | The [Browser module](/javascript-api/k6-experimental/browser/browser-module) to launch tests in a Chromium-based browser.                                                                                |
 | devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
 
 ### Devices Example
@@ -68,7 +68,7 @@ export default async function () {
 
 | k6 Class                                                                | Description                                                                                                                                                     |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Browser](/javascript-api/k6-experimental/browser/browser-class/) <BWIPT />               | The entry point for all tests and used to launch [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s and [Page](/javascript-api/k6-experimental/browser/page/)s. |
+| [Browser Module](/javascript-api/k6-experimental/browser/browser-module/) <BWIPT />               | The entry point for all tests and used to start [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s and [Page](/javascript-api/k6-experimental/browser/page/)s. |
 | [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) <BWIPT /> | Enables independent browser sessions with separate [Page](/javascript-api/k6-experimental/browser/page/)s, cache, and cookies.                                              |
 | [ElementHandle](/javascript-api/k6-experimental/browser/elementhandle/) <BWIPT />   | Represents an in-page DOM element.                                                                                                                              |
 | [Frame](/javascript-api/k6-experimental/browser/frame/) <BWIPT />                   | Access and interact with the [`Page`](/javascript-api/k6-experimental/browser/page/).'s `Frame`s.                                                                           |
