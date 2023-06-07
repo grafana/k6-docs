@@ -23,7 +23,6 @@ The table below lists the importable properties from the top level module (`'k6/
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | chromium | A [BrowserType](/javascript-api/k6-experimental/browser/browsertype) to launch tests in a Chromium-based browser.                                                                                |
 | devices  | Returns predefined emulation settings for many end-user devices that can be used to simulate browser behavior on a mobile device. See the [devices example](#devices-example) below. |
-| version  | Returns the version number of k6 browser.                                                                                                                                           |
 
 ### Devices Example
 
