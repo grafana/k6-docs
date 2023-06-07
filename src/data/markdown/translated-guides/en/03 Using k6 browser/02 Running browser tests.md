@@ -243,7 +243,7 @@ export const options = {
   scenarios: {
     browser: {
       executor: 'constant-vus',
-      exec: 'browsertest',
+      exec: 'browserTest',
       vus: 1,
       duration: '10s',
       options: {
@@ -266,7 +266,7 @@ export const options = {
   }
 };
 
-export async function browsertest() {
+export async function browserTest() {
   const context = browser.newContext();
   const page = context.newPage();
 
