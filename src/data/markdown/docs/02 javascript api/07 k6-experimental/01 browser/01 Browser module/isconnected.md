@@ -1,6 +1,6 @@
 ---
 title: 'isConnected()'
-excerpt: 'Browser module: Browser.isConnected method'
+excerpt: 'Browser module: isConnected method'
 ---
 
 <Blockquote mod="attention">
@@ -16,7 +16,7 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 | Type    | Description                                                                                    |
 | ------- | ---------------------------------------------------------------------------------------------- |
-| boolean | Returns `true` if [Browser](/javascript-api/k6-experimental/browser/browser-class/) is connected to the browser application. Otherwise, returns `false`. |
+| boolean | Returns `true` if [Browser](/javascript-api/k6-experimental/browser/browser-module/) is connected to the browser application. Otherwise, returns `false`. |
 
 
 ### Example
