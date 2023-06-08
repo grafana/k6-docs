@@ -1425,6 +1425,26 @@ export const options = {
 
 
 
+## Upload Only
+
+A boolean specifying whether the test should just be uploaded to the cloud, but not run it. Available in `k6 cloud` command.
+
+This is useful if you want to just update a given test but to run it later. For example to update it from the CI of the test, but run the test on a schedule.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| `K6_CLOUD_UPLOAD_ONLY` | `--upload-only` | N/A                | `false`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --upload-only script.js
+```
+
+</CodeGroup>
+
+
 ## User agent
 
 A string specifying the user-agent string to use in `User-Agent` headers when sending HTTP
