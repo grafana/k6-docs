@@ -27,7 +27,7 @@ The table below lists the importable properties from the top level module (`'k6/
 
 ## Browser Module API
 
-The Browser module is the entry point for all your tests, and it is what interacts with the actual web browser via [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP). It manages:
+The browser module is the entry point for all your tests, and it is what interacts with the actual web browser via [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) (CDP). It manages:
 - [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) which is where you can set a variety of attributes to control the behavior of pages;
 - and [Page](/javascript-api/k6-experimental/browser/page/) which is where your rendered site is displayed.
 
