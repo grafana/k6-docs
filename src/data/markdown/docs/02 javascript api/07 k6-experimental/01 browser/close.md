@@ -5,7 +5,7 @@ excerpt: 'Browser module: close method'
 
 Closes the browser and all of its pages (if any were opened).
 
-The [browser module API](/javascript-api/k6-experimental/browser#browser-module-api) cannot be used anymore and the browser is considered disposed of.
+Once closed, the [browser module API](/javascript-api/k6-experimental/browser#browser-module-api) cannot be used anymore, and the browser is considered disposed of.
 
 
 ### Example
