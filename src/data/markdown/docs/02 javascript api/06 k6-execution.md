@@ -230,3 +230,26 @@ export default function () {
 ```
 
 </CodeGroup>
+
+### Metadata
+The `vu.metrics.metadata` property can be used for getting or setting VU's metadata. It is very similar to `tags`, but can be used for high cardinality data. It also can not be used in thresholds and will likely be handled differently by each output.
+
+<CodeGroup labels={["metadata-control.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+
+export default function () {
+  exec.vu.metrics.metadata['trace_id'] = 'somecoolide';
+
+  // the metrics these HTTP requests emit will get the metadata `trace_id`:
+  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+
+  delete exec.vu.metrics.metadata['trace_id'] // this will unset it
+  // which will make the metrics these requests to not have the metadata `trace_id` set on them.
+  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+}
+```
+
+</CodeGroup>
