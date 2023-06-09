@@ -18,10 +18,22 @@ Clears all permission overrides for the `BrowserContext`.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   context.grantPermissions(['clipboard-read']);
   // do stuff ...
