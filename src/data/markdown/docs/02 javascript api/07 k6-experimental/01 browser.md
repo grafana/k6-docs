@@ -40,7 +40,6 @@ A new Chromium browser process is automatically launched when you use the `newCo
 | [browser.isConnected](/javascript-api/k6-experimental/browser/isconnected) <BWIPT id="453"/>  | Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/) connection to the browser process is active or not.                  |
 | [browser.newContext([options])](/javascript-api/k6-experimental/browser/newcontext/) <BWIPT id="455"/> | Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).                                                             |
 | [browser.newPage([options])](/javascript-api/k6-experimental/browser/newpage)  <BWIPT id="455"/>       | Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) and returns the page. |
-| [browser.on('disconnected')](/javascript-api/k6-experimental/browser/on/) | Detects the disconnected event from the browser application. |
 | [browser.version()](/javascript-api/k6-experimental/browser/version/)                          | Returns the browser application's version.                                                                                                            |
 
 ### Example
