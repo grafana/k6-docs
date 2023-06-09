@@ -42,7 +42,7 @@
     "date-fns": "^2.29.3",
     "dateformat": "^4.6.3",
     "dotenv": "^10.0.0",
-    "gatsby": "^4.24.8",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-catch-links": "^4.24.0",
     "gatsby-plugin-google-analytics": "^4.24.0",
