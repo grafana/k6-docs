@@ -44,8 +44,7 @@ To run a simple local script:
   }
 
   export default async function () {
-    const context = browser.newContext();
-    const page = context.newPage();
+    const page = browser.newPage();
 
     try {
       await page.goto('https://test.k6.io/');
@@ -122,8 +121,7 @@ export const options = {
 }
 
 export default async function () {
-  const context = browser.newContext();
-  const page = context.newPage();
+  const page = browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
@@ -176,8 +174,7 @@ export const options = {
 }
 
 export default async function () {
-  const context = browser.newContext();
-  const page = context.newPage();
+  const page = browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/my_messages.php');
@@ -255,8 +252,7 @@ export const options = {
 };
 
 export async function browserTest() {
-  const context = browser.newContext();
-  const page = context.newPage();
+  const page = browser.newPage();
 
   try {
     await page.goto('https://test.k6.io/browser.php');
