@@ -57,9 +57,9 @@ To run a simple local script:
 
   </CodeGroup>
 
-  The preceding code imports the `browser` ([BrowserType](/javascript-api/k6-experimental/browser/browsertype/)), and uses its `newContext` method to starts a new Chromium [BrowserContext](/javascript-api/k6-experimental/browser-context/), which is an incognito window. 
+  The preceding code imports the `browser` ([the browser module](/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
     
-  After the browser starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-experimental/browser/#browser-level-apis). This example visits a test URL and takes a screenshot of the page. Afterwards, it closes the page. The browser will be closed automatically when the test run finishes.
+  After getting the page, you can interact with it using the [Page](/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page. Afterwards, it closes the page.
 
   <Blockquote mod="note" title="">
 
