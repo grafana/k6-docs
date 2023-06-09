@@ -41,9 +41,6 @@ In future releases, the `browser_*` metrics will be removed in favor of the web 
 </Blockquote>
 
 ```bash
-  browser_dom_content_loaded.............................: avg=63.74ms  min=2.11ms   med=21.66ms  max=167.44ms p(90)=138.28ms p(95)=152.86ms
-  browser_first_paint....................................: avg=72.62ms  min=41.31ms  med=72.62ms  max=103.94ms p(90)=97.67ms  p(95)=100.8ms
-  browser_loaded.........................................: avg=63.16ms  min=6.52ms   med=15.98ms  max=166.98ms p(90)=136.78ms p(95)=151.88ms
   webvital_cumulative_layout_shift.......................: avg=0        min=0        med=0        max=0        p(90)=0        p(95)=0
   webvital_cumulative_layout_shift_good..................: 1       0.113248/s
   webvital_first_contentful_paint........................: avg=415.35ms min=302ms    med=415.35ms max=528.7ms  p(90)=506.03ms p(95)=517.36ms

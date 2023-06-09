@@ -69,22 +69,6 @@ Apart from the Core Web Vitals, the browser module also reports [Other Web Vital
 | webvital_first_contentful_paint      | Measures the time it takes for the browser to render the first DOM element on the page, whether that's a text, image or header. Please refer to [First Contentful Paint](https://web.dev/fcp/) for more information.  |
 | webvital_interaction_to_next_paint   | An experimental metric that measures a page's responsiveness. Please refer to [Interaction to Next Paint](https://web.dev/inp/) for more information.  |
 
-### Legacy browser metrics
-
-<Blockquote mod="note" title="">
-
-  As of [k6 version 0.44.0](https://github.com/grafana/k6/releases/tag/v0.44.0), k6 now natively supports [Google's Core Web Vitals](https://web.dev/vitals/#core-web-vitals). In future releases, to align with recommended practices, we will remove the following browser metrics to focus on the web vital metrics. Please refer to [#831](https://github.com/grafana/xk6-browser/issues/831) for more information.
-
-</Blockquote>
-
-Apart from the usual HTTP specific metrics that k6 already tracks, the browser module tracks the following browser specific performance metrics on top:
-
-| Metric Name                    |  Description                                                                                                 |
-|--------------------------------|--------------------------------------------------------------------------------------------------------------|
-| browser_dom_content_loaded     | Emitted when the page is loaded but scripts have just started to be executed.                                |
-| browser_first_paint            | Emitted when the browser renders the first pixel on the page.                                                |
-| browser_loaded                 | Emitted when the page is fully loaded.                                                                       |
-
 
 ## Built-in WebSocket metrics {#websockets}
 
