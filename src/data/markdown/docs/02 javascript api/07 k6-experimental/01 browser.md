@@ -31,8 +31,6 @@ The browser module is the entry point for all your tests, and it is what interac
 - [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) which is where you can set a variety of attributes to control the behavior of pages;
 - and [Page](/javascript-api/k6-experimental/browser/page/) which is where your rendered site is displayed.
 
-A new Chromium browser process is automatically launched when you use the `newContext` method of the `browser` module (`'k6/experimental/browser'`).
-
 | Method                                                                                    | Description                                                                                                                                           |
 |-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [browser.contexts()](/javascript-api/k6-experimental/browser/contexts)                        | Lets you access all open [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s.                                                        |
