@@ -22,10 +22,22 @@ Sets the default maximum navigation timeout for [Page.goto()](https://playwright
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   const page = context.newPage();
   context.setDefaultNavigationTimeout(1000); // 1s
@@ -34,7 +46,6 @@ export default async function () {
     await page.goto('https://httpbin.test.k6.io/delay/5');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```

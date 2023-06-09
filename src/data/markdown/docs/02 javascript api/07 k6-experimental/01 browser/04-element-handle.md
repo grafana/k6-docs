@@ -50,15 +50,23 @@ excerpt: "Browser module: ElementHandle Class"
 
 ```javascript
 import { check } from 'k6';
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch({
-    headless: false,
-    slowMo: '500ms', // slow down by 500ms
-  });
-  const context = browser.newContext();
-  const page = context.newPage();
+  const page = browser.newPage();
 
   // Goto front page, find login link and click it
   try {
@@ -78,7 +86,6 @@ export default async function () {
     });
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
@@ -88,15 +95,24 @@ export default async function () {
 <CodeGroup labels={["Check element state"]} >
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
 
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
+
 export default function () {
-  const browser = chromium.launch({
-    headless: false,
-  });
-  const context = browser.newContext();
-  const page = context.newPage();
+  const page = browser.newPage();
 
   // Inject page content
   page.setContent(`
@@ -121,7 +137,6 @@ export default function () {
   });
 
   page.close();
-  browser.close();
 }
 ```
 

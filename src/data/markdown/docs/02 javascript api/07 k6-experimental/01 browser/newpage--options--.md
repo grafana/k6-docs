@@ -51,13 +51,22 @@ Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [Br
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch({
-    headless: false,
-  });
-
   const page = browser.newPage({
     viewport: {
       width: 375,
@@ -70,7 +79,6 @@ export default async function () {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```

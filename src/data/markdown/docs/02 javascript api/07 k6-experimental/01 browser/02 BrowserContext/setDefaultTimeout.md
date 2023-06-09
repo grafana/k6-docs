@@ -22,10 +22,22 @@ Sets the default maximum timeout for all methods accepting a `timeout` option in
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   context.setDefaultTimeout(1000); // 1s
   const page = context.newPage();
