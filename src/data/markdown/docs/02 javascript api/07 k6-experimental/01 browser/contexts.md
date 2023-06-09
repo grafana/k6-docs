@@ -15,16 +15,27 @@ Access all open [BrowserContext](/javascript-api/k6-experimental/browser/browser
 ### Example
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   console.log(browser.contexts().length); // 0
 
   const context = browser.newContext();
   console.log(browser.contexts().length); // 1
 
   context.close();
-  browser.close();
 }
 ```
