@@ -21,10 +21,22 @@ Grants specified permissions to the `BrowserContext`. Only grants corresponding 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   context.grantPermissions(['clipboard-read', 'clipboard-write'], {
     origin: 'https://example.com/',

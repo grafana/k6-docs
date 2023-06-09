@@ -13,15 +13,25 @@ Once closed, the [browser module API](/javascript-api/k6-experimental/browser#br
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
   context.newPage();
-
   context.close();
-  browser.close();
 }
 ```
 

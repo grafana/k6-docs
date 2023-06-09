@@ -16,10 +16,22 @@ Returns the [Mouse](/javascript-api/k6-experimental/browser/mouse/) instance to 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
   
   await page.goto('https://test.k6.io/browser.php');
