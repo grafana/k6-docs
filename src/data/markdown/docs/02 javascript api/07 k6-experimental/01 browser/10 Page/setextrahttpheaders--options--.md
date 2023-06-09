@@ -14,10 +14,22 @@ This sets extra HTTP headers which will be sent with subsequent HTTP requests.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
   
   page.setExtraHTTPHeaders({ 'foo': 'bar' });

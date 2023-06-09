@@ -1,9 +1,11 @@
 ---
 title: 'close()'
-excerpt: 'Close the BrowserContext and all its pages.'
+excerpt: 'Browser module: close method'
 ---
 
-Close the `BrowserContext` and all its [page](/javascript-api/k6-experimental/browser/page/)s. The `BrowserContext` is unusable after this call and a new one must be created. This is typically called to cleanup before ending the test.
+Closes the browser and all of its pages (if any were opened).
+
+Once closed, the [browser module API](/javascript-api/k6-experimental/browser#browser-module-api) cannot be used anymore, and the browser is considered disposed of.
 
 
 ### Example
@@ -29,7 +31,6 @@ export const options = {
 export default function () {
   const context = browser.newContext();
   context.newPage();
-
   context.close();
 }
 ```

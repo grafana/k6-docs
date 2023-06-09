@@ -1,15 +1,15 @@
 ---
-title: 'newContext([options])'
-excerpt: 'Browser module: Browser.newContext method'
+title: 'newPage([options])'
+excerpt: 'Browser module: newPage method'
 ---
 
-Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.
 
 <TableWithNestedRows>
 
 | Parameter                                   | Type    | Default                          | Description                                                                                                                                                                                                                                       |
 |---------------------------------------------|---------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| options                                     | object  | `null`                           |                                                                                                                                                                                                                                  |
+| options                                     | object  | `null`                           |                                                                                                                                                                                                          |
 | options.bypassCSP                           | boolean | `false`                          | Whether to bypass a page's Content-Security-Policy.                                                                                                                                                                                               |
 | options.colorScheme                         | string  | `'light'`                        | Whether to display a page in dark or light mode by emulating the 'prefers-colors-scheme' media feature. It can be one of `'light'`, `'dark'`, `'no-preference'`.                                                                                  |
 | options.deviceScaleFactor <BWIPT id="433"/> | number  | `1`                              | Sets the resolution ratio in physical pixels to the resolution in CSS pixels i.e. if set higher than `1`, then images will look sharper on high pixel density screens. See an [example](#devicescalefactor-example) below.                        |
@@ -42,37 +42,43 @@ Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/brows
 
 ### Returns
 
-| Type   | Description                                                          |
-| ------ | -------------------------------------------------------------------- |
-| object | [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) object |
-
+| Type   | Description                                      |
+| ------ | ------------------------------------------------ |
+| object | [Page](/javascript-api/k6-experimental/browser/page/) object |
 
 ### deviceScaleFactor example
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch({
-    headless: false,
-  });
-
-  const context = browser.newContext({
+  const page = browser.newPage({
     viewport: {
       width: 375,
       height: 812,
     },
     deviceScaleFactor: 3,
   });
-  const page = context.newPage();
 
   try {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
