@@ -35,7 +35,7 @@ k6 results have a number of built-in tags.
 For example, run this `jq` command to filter results to only results where the status is 200:
 
 ```bash
-jq '. | select(.data.tags.status >= "200")' api-results.json
+jq '. | select(.data.tags.status == "200")' api-results.json
 ```
 
 ## Apply custom tags
