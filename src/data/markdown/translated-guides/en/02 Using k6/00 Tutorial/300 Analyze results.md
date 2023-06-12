@@ -9,7 +9,7 @@ When testing, it helps to be able to analyze the test along data points and for 
 In this tutorial, learn how to:
 - Use tags to filter results
 - Organize requests in groups
-- Create custom metrics.
+- Create custom metrics
 
 <Blockquote mod="note" title="These examples use jq">
 
