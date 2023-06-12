@@ -40,7 +40,7 @@ jq '. | select(.data.tags.status == "200")' api-results.json
 
 ## Apply custom tags
 
-You can also apply tags to requests or code blocks.
+You can also apply [_Tags_](/using-k6/tags-and-groups/#tags) to requests or code blocks.
 To do so:
 1. Add a `tags` object in the request params. Give the tag a key and value.
 
