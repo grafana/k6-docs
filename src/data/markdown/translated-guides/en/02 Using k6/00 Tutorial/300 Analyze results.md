@@ -282,7 +282,7 @@ Look for the custom trend metrics in the end-of-test summary:
 In this tutorial, you looked at granular output and filtered by built-in and custom tags.
 Then you made a new script with groups.
 Finally, you added a new metric for each group.
-A next step would be to create a [Custom end-of-test summary](results-output/end-of-test/) or to stream the results to a database.
+A next step would be to create a [Custom end-of-test summary](/results-output/end-of-test/custom-summary/) or to [stream the results to a database](/results-output/real-time/#service).
 
 For ongoing operations, you can modularize your logic and configuration.
 That's the subject of the next tutorial.
