@@ -55,7 +55,7 @@ To do so:
   };
   ```
 
-2. Add the params in the function signature of the request.
+2. Add the [params](/javascript-api/k6-experimental/websockets/params/) in the function signature of the request. Create the file `tagged-login.js`:
 
   <CodeGroup labels={["tagged-login.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
