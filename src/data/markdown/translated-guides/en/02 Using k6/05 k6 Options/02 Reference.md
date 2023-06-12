@@ -1429,7 +1429,7 @@ export const options = {
 
 A boolean specifying whether the test should just be uploaded to the cloud, but not run it. Available in `k6 cloud` command.
 
-This is useful if you want to just update a given test but to run it later. For example to update it from the CI of the test, but run the test on a schedule.
+This would be useful if you would like to update a given test and run it later. For example, updating test scripts of a scheduled test from the CI pipelines.
 
 | Env | CLI           | Code / Config file | Default |
 | --- | ------------- | ------------------ | ------- |
