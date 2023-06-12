@@ -120,7 +120,7 @@ If not, use the following script.
 
 <Collapsible title="user flow example" isOpen="" tag="">
 
-Since this example simulates a human user rather than an API call, it has sleep between each request.
+Since this example simulates a human user rather than an API call, it has a sleep between each request. Run with `k6 run user-flow.js`.
 
 <CodeGroup labels={["user-flow.js"]} lineNumbers={["true"]} showCopyButton={[true]}>
 
