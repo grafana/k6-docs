@@ -390,7 +390,7 @@ To do this, follow these steps:
    - What happens when you run `k6 run main.js`?
    - What about `k6 run main.js -e WORKLOAD="./stress.json"`?
 
-If its an object, you can modularize it. Since k6 scripts are JavaScript, where essentially everything is an object, you can modularize essentially everything. 
+If it's an object, you can modularize it. Since k6 scripts are JavaScript, where everything is an object, you can modularize everything. 
   
 ## Next steps
 
