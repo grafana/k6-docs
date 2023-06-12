@@ -366,7 +366,6 @@ To do this, follow these steps:
       "executor": "shared-iterations",
       "iterations": 5,
       "vus": 1
-      "exec": "scenario1"
     }
   }
   ```
