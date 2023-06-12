@@ -202,7 +202,7 @@ To do so:
 1. Run the script with the command:
 
   ```bash
- x k6 run user-flow.js --out json=user-results.json --iterations 10
+ k6 run user-flow.js --out json=user-results.json --iterations 10
   ```
 
 1. Inspect the results with `jq`. Group names have a `::` prefix.
