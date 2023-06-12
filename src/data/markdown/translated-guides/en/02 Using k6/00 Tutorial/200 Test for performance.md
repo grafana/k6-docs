@@ -39,7 +39,7 @@ export const options = {
 };
 ```
 
-Add this option object with thresholds to your script and run it.
+Add this [`options`](/using-k6/k6-options/) object with thresholds to your script `api-test.js` and run it with `k6 run api-test.js`.
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
