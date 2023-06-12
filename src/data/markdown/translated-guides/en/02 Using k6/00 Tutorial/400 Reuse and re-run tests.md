@@ -8,7 +8,7 @@ You also tested a web application and an API.
 
 In this section, learn how to:
 - Modularize test scripts into reusable components
-- Dynamically configure scripts with environment variables.
+- Dynamically configure scripts with environment variables
 
 ## Example script
 
