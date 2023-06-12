@@ -172,7 +172,6 @@ To do this:
 
   ```json
     http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
-  }
   ```
 
 1. Use the `ramping-arrival-rate` scenario to ramp the test up until it fails.
