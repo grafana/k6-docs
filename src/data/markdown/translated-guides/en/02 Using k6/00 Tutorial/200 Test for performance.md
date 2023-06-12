@@ -156,7 +156,7 @@ However, this test server may be under load by many k6 learners, so the results 
 
 At this point, it'd be nice to have a graphical interface to visualize metrics as they occur.
 k6 has many output formats, which can serve as inputs for many visualization tools, both open source and commercial.
-For ideas, read [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-results).
+For ideas, read [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results).
 
 </Blockquote>
 
