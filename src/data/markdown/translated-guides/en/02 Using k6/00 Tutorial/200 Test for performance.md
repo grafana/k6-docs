@@ -17,7 +17,7 @@ These examples build on the script from the previous section.
 
 To assess the login endpoint's performance, your team may have defined [service level objectives](https://sre.google/sre-book/service-level-objectives/) (SLOs):
 - 99.9% of requests are successful
-- 99% of requests have a latency of 1000ms or less.
+- 99% of requests have a latency of 1000ms or less
 
 The service must meet these SLOs up to peak traffic of 1 request/second.
 
