@@ -351,7 +351,7 @@ An easy way to configure this is through [environment variables](/using-k6/envir
 
 Change `main.js` so that it:
 - _By default_ runs a smoke test with 5 iterations
-- With the right enviroment variables, runs a stress test.
+- With the right enviroment variables, runs a stress test
 
 To do this, follow these steps:
 
