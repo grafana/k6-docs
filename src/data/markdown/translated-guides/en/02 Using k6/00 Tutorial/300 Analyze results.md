@@ -179,7 +179,7 @@ export default function () {
     sleep(1);
   });
 
-// Coinflip players in another group
+  // Coinflip players in another group
   group("Coinflip game", function () {
     http.get(`${baseUrl}/flip_coin.php?bet=heads`);
     sleep(1);
