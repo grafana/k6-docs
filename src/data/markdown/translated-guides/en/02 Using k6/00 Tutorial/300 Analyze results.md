@@ -87,7 +87,7 @@ heightTogglers={[true]}>
    ```
    </CodeGroup>
 
-Now you can filter the results for this tag:
+Run with `k6 run --out json=results.json tagged-login.js`. Now you can filter the results for this tag:
 
 ```bash
 jq '. | select(.data.tags.function == "login")' results.json
