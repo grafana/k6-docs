@@ -80,7 +80,6 @@ export default function () {
   });
 
   // Coinflip players in another group
-
   group("Coinflip game", function () {
     // save response as variable
     let res = http.get(`${baseUrl}/flip_coin.php?bet=heads`);
