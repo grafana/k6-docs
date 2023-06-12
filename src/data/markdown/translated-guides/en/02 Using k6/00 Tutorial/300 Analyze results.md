@@ -4,7 +4,7 @@ excerpt: Use k6 to write custom metrics and filter results.
 ---
 
 The end-of-test summary provides only an overview of performance.
-In real analysis, it helps to be able to analyze the test along data points and for specific requests.
+When testing, it helps to be able to analyze the test along data points and for specific requests.
 
 In this tutorial, learn how to:
 - Use tags to filter results
