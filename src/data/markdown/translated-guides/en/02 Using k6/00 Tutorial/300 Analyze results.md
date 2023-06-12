@@ -170,7 +170,7 @@ const baseUrl = "https://test.k6.io";
 export default function () {
   // User flow
 
-// Put visits to contact page in one group
+  // Put visits to contact page in one group
   group("User contacts page", function () {
     http.get(`${baseUrl}/contacts.php`);
     sleep(1);
