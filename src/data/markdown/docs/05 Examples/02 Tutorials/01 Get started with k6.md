@@ -1,7 +1,6 @@
 ---
-title: 'Tutorial: tests as code'
+title: 'Get started with k6'
 excerpt: A series of docs to learn how to use the major features of k6
-slug: '/using-k6/tutorial'
 ---
 
 This tutorial provides some procedures for common real-life uses of k6.
@@ -35,9 +34,9 @@ The tutorial requires the following:
 
 | In this tutorial                                                                | Learn how to                                                       |
 |---------------------------------------------------------------------------------|--------------------------------------------------------------------|
-| [Test for functional behavior](/using-k6/tutorial/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
-| [Test for performance](/using-k6/tutorial/test-for-performance)         | Use k6 to increase load and find faults                            |
-| [Analyze results](/using-k6/tutorial/analyze-results)                           | Filter results and make custom metrics                             |
-| [Reuse and re-run](/using-k6/tutorial/reuse-and-re-run-tests)                          | Modularize and re-run tests                                         |
+| [Test for functional behavior](/examples/tutorials/get-started-with-k6/test-for-functional-behavior) | Use k6 to script requests and evaluate that performance is correct |
+| [Test for performance](/examples/tutorials/get-started-with-k6/test-for-performance)         | Use k6 to increase load and find faults                            |
+| [Analyze results](/examples/tutorials/get-started-with-k6/analyze-results)                           | Filter results and make custom metrics                             |
+| [Reuse and re-run](/examples/tutorials/get-started-with-k6/reuse-and-re-run-tests)                          | Modularize and re-run tests                                         |
 
 
