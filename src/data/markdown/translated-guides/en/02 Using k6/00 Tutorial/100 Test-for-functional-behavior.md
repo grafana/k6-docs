@@ -10,7 +10,7 @@ In this tutorial, learn how to write a test that does the following:
 ## Script the Request
 
 The first thing to do is to add logic for the endpoint.
-To do that, you need to make an [HTTP request](/using-k6/http-request):
+To do that, you need to make an [HTTP request](/using-k6/http-requests):
 1. Import the HTTP module.
 2. Create a payload to authenticate the user.
 3. Use the `http.post` method to send your request with the payload to an endpoint.
