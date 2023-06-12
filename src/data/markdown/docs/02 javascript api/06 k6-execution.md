@@ -232,11 +232,11 @@ export default function () {
 
 </CodeGroup>
 
-`vu.tags` (without `metrics`) can also be used, but is deprecated for the more context specific variant.
+`vu.tags` (without `metrics`) can also be used, but is deprecated for the more context-specific variant.
 
 
 ### Metadata
-The `vu.metrics.metadata` property can be used for getting or setting VU's metadata. It is very similar to `tags`, but can be used for high cardinality data. It also can not be used in thresholds and will likely be handled differently by each output.
+The `vu.metrics.metadata` property can be used for getting or setting VU's metadata. It is similar to `tags`, but can be used for high cardinality data. It also can not be used in thresholds and will likely be handled differently by each output.
 
 <CodeGroup labels={["metadata-control.js"]} lineNumbers={[true]}>
 
