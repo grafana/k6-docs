@@ -5,7 +5,7 @@ excerpt: Write thresholds to evaluate performance criteria, then increase load t
 
 In the previous section, you made a working script to test an endpoint functionality.
 The next step is to test how this system responds under load.
-This requires using the powerful [`options`](/using-k6/options) object, which configures the parts of the test that don't deal with user behavior.
+This requires using the powerful [`options`](/using-k6/k6-options/) object, which configures the parts of the test that don't deal with user behavior.
 
 In this tutorial, learn how to:
 - Use [thresholds](/using-k6/thresholds) to assert for performance criteria
