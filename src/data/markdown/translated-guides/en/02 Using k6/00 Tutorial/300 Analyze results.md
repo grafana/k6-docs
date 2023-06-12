@@ -154,7 +154,7 @@ export default function () {
 ### Add Group functions
 
 Wrap the two endpoints in different groups.
-Name one group `User contacts page` and another `Coinflip` game.
+Name one group `User contacts page` and another `Coinflip game`.
 
 <CodeGroup labels={["user-flow.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
