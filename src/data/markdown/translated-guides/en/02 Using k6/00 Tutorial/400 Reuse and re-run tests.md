@@ -402,7 +402,7 @@ More likely, you want to learn more about k6. [The k6 learn repository](https://
 Or, you can read explore the docs and try to build out your testing strategy.
 The following links only scratch the surface:
 - Learn how to use more [protocols](/using-k6/protocols)
-- Review the reference for the full-featured [JavaScript API](/javascript-api).
+- Review the reference for the full-featured [JavaScript API](/javascript-api)
 - Read about [Testing strategies](/testing-guides) and [Test types](/test-types)
 
 Happy testing!
