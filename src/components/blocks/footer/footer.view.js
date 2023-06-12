@@ -262,6 +262,11 @@ export const Footer = () => {
                   <h3 className={styles.navColumnTitle}>About</h3>
                   <ul className={styles.navColumnList}>
                     <li className={styles.navColumnItem}>
+                      <a className={styles.navColumnLink} href={`${blog}`}>
+                        Blog
+                      </a>
+                    </li>
+                    <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
                         href={`${main}/about`}
@@ -275,11 +280,6 @@ export const Footer = () => {
                         href={`${main}/our-beliefs`}
                       >
                         Our beliefs
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a className={styles.navColumnLink} href={`${blog}`}>
-                        Blog
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
