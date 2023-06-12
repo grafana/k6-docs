@@ -365,7 +365,7 @@ To do this, follow these steps:
     "smoke": {
       "executor": "shared-iterations",
       "iterations": 5,
-      "vus": 1,
+      "vus": 1
       "exec": "scenario1"
     }
   }
