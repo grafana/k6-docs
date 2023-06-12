@@ -373,7 +373,7 @@ To do this, follow these steps:
 
   </CodeGroup>
 
-1. Add conditional logic to bind `workload` to `__ENV.WORKLOAD`  if the environment variable exists, and to the content of `smoke.json` if it doesn't.
+1. Add conditional logic to bind `workload` to `__ENV.WORKLOAD`  if the environment variable exists, and to the content of `smoke.json` if it doesn't. Replace the line `const workload = JSON.parse(open("./stress.json"));` in `main.js` with:
   
   ```javascript
   let workload;
