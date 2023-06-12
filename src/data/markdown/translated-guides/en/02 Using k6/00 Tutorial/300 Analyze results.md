@@ -194,7 +194,7 @@ export default function () {
 
 ### Run and filter
 
-Inspect the results for only the `Coinflip` group.
+Inspect the results for only the `Coinflip game` group.
 To do so:
 
 1. Save the preceding script as `user-flow.js`.
