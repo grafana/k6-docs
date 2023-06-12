@@ -217,7 +217,7 @@ However, if the built-in metrics aren't enough, you can [create custom metrics](
 A common use case is to make metrics for an endpoint or group.
 
 To create a trend for each group:
-1. Import `Trend` from the k6 metrics module.
+1. Import [`Trend`](/javascript-api/k6-metrics/trend/) from the k6 metrics module.
 1. Create two duration trend metric functions.
 1. In each group, add the `duration` time to the trend for requests to `contacts` and the `coin_flip` endpoints.
 
