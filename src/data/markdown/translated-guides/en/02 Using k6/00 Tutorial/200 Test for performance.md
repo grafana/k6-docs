@@ -183,7 +183,7 @@ To do this:
   export const options = {
     //define thresholds
     thresholds: {
-      http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+      http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
       http_req_duration: ['p(99)<200'], // 99% of requests should be below 200ms
     },
     scenarios: {
