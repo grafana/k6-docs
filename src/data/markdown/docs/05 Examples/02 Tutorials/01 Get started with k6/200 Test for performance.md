@@ -5,7 +5,7 @@ excerpt: Write thresholds to evaluate performance criteria, then increase load t
 
 In the previous section, you made a working script to test an endpoint functionality.
 The next step is to test how this system responds under load.
-This requires using the powerful [`options`](/using-k6/k6-options/) object, which configures the parts of the test that don't deal with user behavior.
+This requires setting up a few [`options`](/using-k6/k6-options/) to configure the parts of the test that don't deal with test logic.
 
 In this tutorial, learn how to:
 - Use [thresholds](/using-k6/thresholds) to assert for performance criteria
@@ -15,13 +15,11 @@ These examples build on the script from the previous section.
 
 ## Context: meet service-level objectives
 
-To assess the login endpoint's performance, your team may have defined [service level objectives](https://sre.google/sre-book/service-level-objectives/) (SLOs):
-- 99.9% of requests are successful
-- 99% of requests have a latency of 1000ms or less
+To assess the login endpoint's performance, your team may have defined [service level objectives](https://sre.google/sre-book/service-level-objectives/) (SLOs). For example:
+- 99% of requests should be successful
+- 99% of requests should have a latency of 1000ms or less
 
-The service must meet these SLOs up to peak traffic of 1 request/second.
-
-After the peak-traffic test, run another test to determine where the system degrades (this is also often done to discover baselines before the organization has an SLOs).
+The service must meet these SLOs under different type of usual traffic.
 
 ## Assert for performance with thresholds
 
@@ -34,12 +32,13 @@ export const options = {
   //define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-    http_req_duration: ['p(99)<200'], // 99% of requests should be below 200ms
+    http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
   },
 };
 ```
 
-Add this [`options`](/using-k6/k6-options/) object with thresholds to your script `api-test.js` and run it with `k6 run api-test.js`.
+Add this [`options`](/using-k6/k6-options/) object with thresholds to your script `api-test.js`. 
+
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
@@ -54,7 +53,7 @@ export const options = {
   //define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
+    http_req_duration: ["p(99)<1000"], // 99% of requests should be below 1s
   },
 };
 
@@ -84,6 +83,11 @@ export default function () {
 
 </CodeGroup>
 
+Run the test as usual: 
+
+```bash
+k6 run api-test.js
+```
 
 
 Inspect the console output to determine whether performance crossed a threshold.
@@ -108,7 +112,7 @@ Scenarios schedule load according to number of VUs, number of iterations, VUs, o
 
 Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confirm the script works properly") to see your script can handle minimal load.
 
-To do so, use the `--iterations` flag with an argument of 10 or fewer.
+To do so, use the [`--iterations`](/using-k6/k6-options/reference/#iterations) flag with an argument of 10 or fewer.
 
 ```bash
 k6 run --iterations 10 api-test.js
@@ -127,7 +131,7 @@ To simulate this, testers increase load in _stages_.
 
 Since this is a learning environment, the stages are still quite short.
 Add the following _scenario_ to your options `object` and run the test again.
-Where the smoke test used load in terms of iterations, this configuration expresses load in terms virtual users and time.
+Where the smoke test used load in terms of iterations, this configuration uses the [`ramping-vus` executor](/using-k6/scenarios/executors/ramping-vus/) to express load in terms virtual users and duration.
 
 ```json
   scenarios: {
@@ -135,18 +139,22 @@ Where the smoke test used load in terms of iterations, this configuration expres
     average_load: {
       executor: "ramping-vus",
       stages: [
-        // ramp up to average load of 20
-        { duration: "20s", target: 20 },
+        // ramp up to average load of 20 virtual users
+        { duration: "10s", target: 20 },
         // maintain load
-        { duration: "20s", target: 20 },
+        { duration: "50s", target: 20 },
         // ramp down to zero
-        { duration: "20s", target: 0 },
+        { duration: "5s", target: 0 },
       ],
     },
   }
 ```
 
-Run the test with no command-line flags: `k6 run api-test.js`.
+Run the test with no command-line flags: 
+
+```bash
+k6 run api-test.js
+```
 
 The load is small, so the server should perform within thresholds.
 However, this test server may be under load by many k6 learners, so the results are unpredictable.
@@ -163,46 +171,39 @@ For ideas, read [Ways to visualize k6 results](https://k6.io/blog/ways-to-visual
 
 ### Ramp up until threshold fails
 
-Finally, run a [stress test](/test-types/stress-testing), where you probe the limits of the system.
+Finally, run a [breakpoint test](/test-types/breakpoint-testing), where you probe the limits of the system.
 In this case, run the test until the availability (error rate) threshold is crossed.
 
 To do this:
 
 1. Configure the threshold so that it aborts when it fails.
 
-  ```json
-    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
+  ```javascript
+  http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // http errors should be less than 1%, otherwise abort the test
   ```
 
-1. Use the `ramping-arrival-rate` scenario to ramp the test up until it fails.
-  This configuration expresses load not in VUs but in iterations per minute.
+1. Configure the load to ramp the test up until it fails.
 
-
-  ```json
+  ```javascript
   export const options = {
-    //define thresholds
     thresholds: {
-      http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
-      http_req_duration: ['p(99)<200'], // 99% of requests should be below 200ms
+      http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], 
+      http_req_duration: ['p(99)<1000'], 
     },
     scenarios: {
       //arbitrary name of scenario:
-      stress_test: {
-        executor: "ramping-arrival-rate",
-        // Start `startRate` iterations per minute
-        startRate: 20,
-        // Start iterations per `timeUnit`
-        timeUnit: "1m",
-        // Pre-allocate necessary VUs.
-        preAllocatedVUs: 200,
-        // ramp up to target of 60reqs/minute (1/s)
+      breaking: {
+        executor: "ramping-vus",
         stages: [
-          { target: 20, duration: "10s" },
-          { target: 40, duration: "10s" },
-          { target: 40, duration: "10s" },
-          { target: 60, duration: "10s" },
-          { target: 60, duration: "30s" },
-          { target: 0, duration: "1m" },
+          { duration: "10s", target: 20 },
+          { duration: "50s", target: 20 },
+          { duration: "50s", target: 40 },
+          { duration: "50s", target: 60 },
+          { duration: "50s", target: 80 },
+          { duration: "50s", target: 100 },
+          { duration: "50s", target: 120 },
+          { duration: "50s", target: 140 },
+          //....
         ],
       },
     },
@@ -211,8 +212,6 @@ To do this:
 
 Here is the full script.
 Copy and run it.
-
-Did the threshold fail? If not, add another stage with a higher target and try again.
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
@@ -226,22 +225,18 @@ import http from "k6/http";
 export const options = {
   scenarios: {
     //arbitrary name of scenario:
-    stress_test: {
-      executor: "ramping-arrival-rate",
-      // Start iterations per `timeUnit`
-      startRate: 20,
-      // Start `startRate` iterations per minute
-      timeUnit: "1m",
-      // Pre-allocate necessary VUs.
-      preAllocatedVUs: 200,
-      // ramp up to target of 60reqs/minute (1/s)
+    breaking: {
+      executor: "ramping-vus",
       stages: [
-        { target: 20, duration: "10s" },
-        { target: 40, duration: "10s" },
-        { target: 40, duration: "10s" },
-        { target: 60, duration: "10s" },
-        { target: 60, duration: "30s" },
-        { target: 0, duration: "1m" },
+        { duration: "10s", target: 20 },
+        { duration: "50s", target: 20 },
+        { duration: "50s", target: 40 },
+        { duration: "50s", target: 60 },
+        { duration: "50s", target: 80 },
+        { duration: "50s", target: 100 },
+        { duration: "50s", target: 120 },
+        { duration: "50s", target: 140 },
+        //....
       ],
     },
   },
@@ -278,10 +273,15 @@ export default function () {
 
 </CodeGroup>
 
+Did the threshold fail? If not, add another stage with a higher target and try again. Repeat until the threshold aborts the test:
+
+```bash
+ERRO[0010] thresholds on metrics 'http_req_duration, http_req_failed' were breached; at least one has abortOnFail enabled, stopping test prematurely 
+```
+
 
 ## Next steps
 
-In this tutorial, you used thresholds to assert for performance, then used three different [Scenarios](/using-k6/scenarios) to schedule more load and from different perspectives.
+In this tutorial, you used [thresholds](/using-k6/thresholds/) to assert performance and [Scenarios](/using-k6/scenarios) to schedule different load patterns. To learn more about the usual load patterns and their goals, read [Load Test Types](/test-types/load-test-types/)
 
-The next step is to learn how to meaningfully interpret results. This involves filtering results and adding custom metrics.
-Alternatively, to learn more about different load patterns for different goals, read [Test Types](/test-types).
+The [next step of this tutorial shows how to interpret test results](/examples/tutorials/get-started-with-k6/analyze-results/). This involves filtering results and adding custom metrics.

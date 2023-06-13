@@ -15,9 +15,9 @@ To do that, you need to make an [HTTP request](/using-k6/http-requests):
 2. Create a payload to authenticate the user.
 3. Use the [`http.post`](/javascript-api/k6-http/post/) method to send your request with the payload to an endpoint.
 
-To test, copy this file and save it as `tutorial.js`.
+To test, copy this file and save it as `api-test.js`.
 
-<CodeGroup labels={["tutorial.js"]} lineNumbers={[]} showCopyButton={[true]}>
+<CodeGroup labels={["api-test.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
 // import necessary module
@@ -48,7 +48,7 @@ export default function () {
 Run the script using the `k6 run` command:
 
 ```bash
-k6 run tutorial.js
+k6 run api-test.js
 ```
 
 After the test finishes, k6 reports the [default result summary](/results-output/end-of-test/#the-default-summary).
@@ -61,7 +61,7 @@ After the test finishes, k6 reports the [default result summary](/results-output
   / __________ \  |__| \__\ \_____/ .io
 
   execution: local
-     script: tutorial.js
+     script: api-test.js
      output: -
   ...
 ```
