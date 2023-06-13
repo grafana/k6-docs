@@ -13,9 +13,9 @@ The first thing to do is to add logic for the endpoint.
 To do that, you need to make an [HTTP request](/using-k6/http-requests):
 1. Import the HTTP module.
 2. Create a payload to authenticate the user.
-3. Use the `http.post` method to send your request with the payload to an endpoint.
+3. Use the [`http.post`](/javascript-api/k6-http/post/) method to send your request with the payload to an endpoint.
 
-To test, copy this file and save it as `tutorial.js`
+To test, copy this file and save it as `tutorial.js`.
 
 <CodeGroup labels={["tutorial.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
@@ -45,17 +45,32 @@ export default function () {
 
 </CodeGroup>
 
-Run the script with `k6 run tutorial.js`.
+Run the script using the `k6 run` command:
 
-After the test finishes, k6 logs a summary to the console.
-Confirm that the request works, and check that the summary numbers look plausible.
-
-
-To make sure you're getting the right response, you can log `res` to the console.
-
+```bash
+k6 run tutorial.js
 ```
-  //add at the end of the default function
-  console.log(JSON.stringify(res, null, "  "));
+
+After the test finishes, k6 reports the [default result summary](/results-output/end-of-test/#the-default-summary).
+
+```bash
+          /\      |‾‾| /‾‾/   /‾‾/   
+     /\  /  \     |  |/  /   /  /    
+    /  \/    \    |     (   /   ‾‾\  
+   /          \   |  |\  \ |  (‾)  | 
+  / __________ \  |__| \__\ \_____/ .io
+
+  execution: local
+     script: tutorial.js
+     output: -
+  ...
+```
+
+To make sure you're getting the right response, you could log the response body to the console as follows:
+
+```javascript
+const res = http.post(url, payload, params);
+console.log(res.body);
 ```
 
 ## Add response checks
@@ -118,4 +133,4 @@ Rather, k6 tracks the success rate and presents it in your end of test summary.
 In this tutorial, you've used k6 to make a POST request and check that it responds with a `200` status.
 
 However, these tests make only one request, which doesn't say much about how the system will respond under load.
-For that, you need to increase load.
+For that, you need to [test under load](/examples/tutorials/get-started-with-k6/test-for-performance/).
