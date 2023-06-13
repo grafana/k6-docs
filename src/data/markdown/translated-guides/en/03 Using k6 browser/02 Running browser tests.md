@@ -85,6 +85,23 @@ PS C:\k6> k6 run script.js
 
 </CodeGroup>
 
+You can also use [the browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
+
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_BROWSER_HEADLESS=false k6 run script.js
+```
+
+```bash
+C:\k6> set "K6_BROWSER_HEADLESS=false" && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_HEADLESS=false ; k6 run script.js
+```
+
+</CodeGroup>
 
 
 ## Interact with elements on your webpage
