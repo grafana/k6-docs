@@ -9,7 +9,7 @@ The browser module APIs aim for rough compatibility with the [Playwright API for
 
 Note that because k6 does not run in NodeJS, the browser module APIs will slightly differ from their Playwright counterparts.
 
-You can find examples of using the browser module API in our [getting started guide](using-k6-browser).
+You can find examples of using [the browser module API](#browser-module-api) in our [getting started guide](using-k6-browser).
 
 <Blockquote mod="note" title="">
 
