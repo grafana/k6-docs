@@ -112,7 +112,7 @@ export function news() {
 
 <Blockquote mod="note" title="">
 
-By default, k6 applies a `scenario` tag to all metrics in each scenario (the value is the scenario name.
+By default, k6 applies a `scenario` tag to all metrics in each scenario, whose value is the scenario name.
 You can combine these tags with thresholds, or use them to simplify results filtering.
 
 To disable scenario tags, use the [`--system-tags` option](/using-k6/options#system-tags).
