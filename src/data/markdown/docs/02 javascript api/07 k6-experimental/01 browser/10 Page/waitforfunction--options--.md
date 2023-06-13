@@ -30,7 +30,6 @@ Returns when the `pageFunction` returns a truthy value.
 <!-- eslint-skip-->
 
 ```javascript
-import { check } from 'k6';
 import { browser } from 'k6/experimental/browser';
 
 export const options = {
