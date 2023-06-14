@@ -86,7 +86,7 @@ $ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run
 ```
 
 ```bash
-C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_ARGS='show-property-changed-rects' " && k6 run script.js
+C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_ARGS='show-property-changed-rects'" && k6 run script.js
 ```
 
 ```bash
