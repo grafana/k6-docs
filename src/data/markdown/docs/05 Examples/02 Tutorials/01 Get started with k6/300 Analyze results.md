@@ -256,7 +256,7 @@ To do so:
 1. Run the script with the command:
 
   ```bash
- k6 run multiple-flows.js --out json=results.json --iterations 10
+  k6 run multiple-flows.js --out json=results.json --iterations 10
   ```
 
 1. Inspect the results with `jq`. Group names have a `::` prefix.
@@ -330,17 +330,17 @@ export default function () {
 Run the test with small number of iterations and output the results to `results.json`:
 
 ```bash
-k6 run multiple-flows.js --iterations 10 --out json=results.json
+k6 run multiple-flows.js --out json=results.json --iterations 10
 ```
 
 Look for the custom trend metrics in the end-of-test console summary:
 
 ```bash
-coinflip duration..............: avg=222.022616 min=168.257618 med=228.015217 max=228.737309 p(90)=228.583013 p(95)=228.714225
-contacts duration..............: avg=224.638603 min=198.382977 med=227.412945 max=228.258872 p(90)=228.090845 p(95)=228.174858
+coinflip duration..............: avg=119.6438  min=116.481  med=118.4755 max=135.498  p(90)=121.8459 p(95)=123.89565
+contacts duration..............: avg=125.76985 min=116.973  med=120.6735 max=200.507  p(90)=127.9271 p(95)=153.87245
 ```
 
-You can also query custom metric results from the JSON results. For example:
+You can also query custom metric results from the JSON results. For example, to get the aggregated results as:
 
 
 <CodeGroup labels={["Average", "Min", "Max"]} lineNumbers={[false]} showCopyButton={[true]} heightTogglers={[true]}>
