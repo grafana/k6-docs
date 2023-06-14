@@ -5,10 +5,13 @@ excerpt: "k6 gRPC API"
 
 The `k6/net/grpc` module, added in k6 v0.29.0, provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
-<Blockquote mod="warning">
+<Blockquote mod='info'>
 
-The k6 gRPC API is currently considered in beta and is subject to change. Future k6 versions might have slight differences in the method and type signatures described in this documentation.
+#### An extension with much better API exists
 
+[xk6-grpc](https://github.com/grafana/xk6-grpc) implements gRPC streaming APIs.
+
+Currently, it's available as an experimental module [`k6/experimental/grpc`](/javascript-api/k6-experimental/grpc/). It is also likely that it will at some point become part of the core of k6.
 </Blockquote>
 
 | Class/Method | Description |

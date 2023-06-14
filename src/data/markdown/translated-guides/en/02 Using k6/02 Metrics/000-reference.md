@@ -103,7 +103,16 @@ Apart from the usual HTTP specific metrics that k6 already tracks, the browser m
 
 k6 emits the following metrics when it interacts with a service through the [`gRPC`](https://k6.io/docs/javascript-api/k6-net-grpc/) API.
 
-| Metric Name         | Type  | Description                               |
-|---------------------|-------|-------------------------------------------|
-| `grpc_req_duration` | Trend | Time to receive response from remote host |
+| Metric Name                  | Type    | Description                               |
+|------------------------------|---------|-------------------------------------------|
+| `grpc_req_duration`          | Trend   | Time to receive response from remote host |
+| `grpc_streams`               | Counter | Total number of started streams |
+| `grpc_streams_msgs_sent`     | Counter | Total number of messages sent |
+| `grpc_streams_msgs_received` | Counter | Total number of messages received |
 
+
+<Blockquote mod="note" title="">
+
+Steams-related metrics (`grpc_streams*`) are available only with using `k6/experimental/grpc` module which is available since `k6` version `0.45.0`.
+
+</Blockquote>
