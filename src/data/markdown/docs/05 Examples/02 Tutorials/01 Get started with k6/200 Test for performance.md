@@ -176,7 +176,7 @@ In this case, run the test until the availability (error rate) threshold is cros
 
 To do this:
 
-1. Configure the threshold so that it aborts when it fails.
+1. Configure the threshold to abort when it fails.
 
   ```javascript
   http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // http errors should be less than 1%, otherwise abort the test
