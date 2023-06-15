@@ -77,23 +77,24 @@ export default async function () {
 
 </CodeGroup>
 
-Then, run the test on your terminal with this command. The following command passes the [browser module options](#browser-module-options) as environment variables to launch a headful browser with custom arguments.
+Then, you can run the test with this command. Also, see the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) for customizing the browser module's behavior using environment variables.
 
 <CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run script.js
+$ k6 run script.js
 ```
 
 ```bash
-C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_ARGS='show-property-changed-rects'" && k6 run script.js
+C:\k6> k6 run script.js
 ```
 
 ```bash
-PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_ARGS='show-property-changed-rects' ; k6 run script.js
+PS C:\k6> k6 run script.js
 ```
 
 </CodeGroup>
+
 
 
 
@@ -127,6 +128,25 @@ You can customize the behavior of the browser module by providing browser option
 | K6_BROWSER_HEADLESS | Show browser GUI or not. `true` by default. |
 | K6_BROWSER_IGNORE_DEFAULT_ARGS | Ignore any of the [default arguments](#default-arguments) included when launching a browser process. |
 | K6_BROWSER_TIMEOUT | Default timeout to use for various actions and navigation. `'30s'` if not set. |
+
+The following command passes the [browser module options](#browser-module-options) as environment variables to launch a headful browser with custom arguments.
+
+<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run script.js
+```
+
+```bash
+C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_ARGS='show-property-changed-rects' " && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_ARGS='show-property-changed-rects' ; k6 run script.js
+```
+
+</CodeGroup>
+
 
 ## Default arguments
 
