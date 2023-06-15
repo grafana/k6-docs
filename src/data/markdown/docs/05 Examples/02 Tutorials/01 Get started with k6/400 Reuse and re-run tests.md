@@ -12,7 +12,7 @@ In this tutorial, learn how to:
 ## Example script
 
 For fun, let's combine the scripts from the previous tutorials.
-Use logic of the `multiple-flows.js` test with the thresholds and scenario of the `api-test.js` (feel free to add more checks, requests, groups, and so on).
+Use the logic of the `multiple-flows.js` test with the thresholds and scenario of the `api-test.js` (feel free to add more checks, requests, groups, and so on).
 Take note of the features of this script:
 - The `default` function has two groups, `Contacts flow` and `Coinflip game`
 - The `options` object has two properties, `thresholds` and `scenarios`
