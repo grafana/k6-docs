@@ -112,7 +112,7 @@ Once you're sure the request is well-formed, add a [check](/using-k6/checks) tha
   </CodeGroup>
 
 1. Inspect the result output for your check.
-   It should looks something like this.
+   It should look something like this.
 
    ```
    ✓ response code was 200
