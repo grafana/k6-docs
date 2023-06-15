@@ -130,7 +130,7 @@ To do so, follow these steps:
   As is, this script won't work, since it has undeclared functions and variables.
 1. Add the necessary imports and variables. This script uses the `group`, `sleep`, and `http` functions or libraries. It also has a custom metric. Since this metric is specific to the group, you can add it `contacts.js`.
 
-1. Finally, pass `baseUrl` as parameter of the `contacts` function.
+1. Finally, pass `baseUrl` as a parameter of the `contacts` function.
 
   
   <CodeGroup labels={["contacts.js"]} lineNumbers={["false"]} showCopyButton={[true]} heightTogglers={[false]}>
