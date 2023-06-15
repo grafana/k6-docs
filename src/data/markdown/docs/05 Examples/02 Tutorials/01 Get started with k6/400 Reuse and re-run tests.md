@@ -332,7 +332,7 @@ An easy way to configure this is through [environment variables](/using-k6/envir
 
 Change `main.js` and `config.js` so that it:
 - _By default_ runs a smoke test with 5 iterations
-- With the right enviroment variable value, runs a breaking test
+- With the right environment variable value, runs a breaking test
 
 To do this, follow these steps:
 
