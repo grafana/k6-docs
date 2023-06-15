@@ -412,7 +412,7 @@ Notice how the tests progress in complexity: from single endpoints to holistic t
 read the [Automated performance testing](/testing-guides/automated-performance-testing/) guide.
 
 More likely, you want to learn more about k6. The [k6-learn repository](https://github.com/grafana/k6-learn) has more details to practice.
-Or, you can read explore the [load testing guides](/testing-guides/) and try to build out your testing strategy.
+Or, you can read and explore the [load testing guides](/testing-guides/) and try to build out your testing strategy.
 
 Happy testing!
 
