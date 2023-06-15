@@ -1036,7 +1036,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-
+                  robots
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1132,12 +1132,6 @@ async function createDocPages({
     getJavascriptAPISidebar,
   })
     .concat(
-      getGuidesPagesProps({
-        nodesGuides,
-        reporter,
-        pathCollisionDetectorInstance,
-        getGuidesSidebar,
-      }),
       getJsAPIVersionedPagesProps({
         nodesJsAPI,
         reporter,
@@ -1158,6 +1152,12 @@ async function createDocPages({
         getGuidesSidebar,
         getJavascriptAPISidebar,
         reporter,
+      }),
+      getGuidesPagesProps({
+        nodesGuides,
+        reporter,
+        pathCollisionDetectorInstance,
+        getGuidesSidebar,
       }),
     )
     .map((pageProps) => actions.createPage(pageProps));
