@@ -408,7 +408,7 @@ As your test suite grows and more people are involved in performance testing, yo
 ## Next steps
 
 Now you've seen examples to write tests, assert for performance, filter results, and modularize scripts.
-Notice how the tests progress in complexity: from single endpoints to holistic tests, from small loads to large loads, and from single-tests to reusable modules. These progressions are typical in testing, with the next step being to automate. It might be impractical to automate a tutorial, but if you are interested,
+Notice how the tests progress in complexity: from single endpoints to holistic tests, from small to large loads, and from single tests to reusable modules. These progressions are typical in testing, with the next step being to automate. It might be impractical to automate a tutorial, but if you are interested,
 read the [Automated performance testing](/testing-guides/automated-performance-testing/) guide.
 
 More likely, you want to learn more about k6. [The k6 learn repository](https://github.com/grafana/k6-learn) has more detailed to practice.
