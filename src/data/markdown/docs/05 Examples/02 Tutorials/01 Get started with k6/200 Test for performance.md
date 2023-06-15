@@ -171,7 +171,7 @@ For ideas, read [Ways to visualize k6 results](https://k6.io/blog/ways-to-visual
 
 ### Ramp up until threshold fails
 
-Finally, run a [breakpoint test](/test-types/breakpoint-testing), where you probe the limits of the system.
+Finally, run a [breakpoint test](/test-types/breakpoint-testing), where you probe the system's limits.
 In this case, run the test until the availability (error rate) threshold is crossed.
 
 To do this:
