@@ -104,7 +104,7 @@ Inspect the console output to determine whether performance crossed a threshold.
 
 Now your script has logic to simulate user behavior, and assertions for functionality (checks) and performance (thresholds).
 
-It's time to increase load to see how it performs.
+It's time to increase the load to see how it performs.
 To increase load, use the scenarios property.
 Scenarios schedule load according to number of VUs, number of iterations, VUs, or by iteration rate.
 
