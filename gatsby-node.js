@@ -376,6 +376,8 @@ function getSupplementaryPagesProps({
       }),
     );
 
+  // the same thing in getGuidesPagesProps
+  // eslint-disable-next-line no-unused-vars
   const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) =>
     childrenToList(getGuidesSidebar(locale).children).map(({ name, meta }) => {
       const path = `${locale}/${meta.title}`;
@@ -422,7 +424,7 @@ function getSupplementaryPagesProps({
     }),
   );
 
-  return stubPagesProps.concat(notFoundProps, stubGuidesPagesProps);
+  return stubPagesProps.concat(notFoundProps);
 }
 
 function getTopLevelPagesProps({
@@ -1132,6 +1134,12 @@ async function createDocPages({
     getJavascriptAPISidebar,
   })
     .concat(
+      getGuidesPagesProps({
+        nodesGuides,
+        reporter,
+        pathCollisionDetectorInstance,
+        getGuidesSidebar,
+      }),
       getJsAPIVersionedPagesProps({
         nodesJsAPI,
         reporter,
@@ -1152,12 +1160,6 @@ async function createDocPages({
         getGuidesSidebar,
         getJavascriptAPISidebar,
         reporter,
-      }),
-      getGuidesPagesProps({
-        nodesGuides,
-        reporter,
-        pathCollisionDetectorInstance,
-        getGuidesSidebar,
       }),
     )
     .map((pageProps) => actions.createPage(pageProps));
