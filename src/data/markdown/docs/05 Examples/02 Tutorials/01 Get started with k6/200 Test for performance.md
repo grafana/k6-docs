@@ -106,7 +106,7 @@ Now your script has logic to simulate user behavior, and assertions for function
 
 It's time to increase the load to see how it performs.
 To increase the load, use the scenarios property.
-Scenarios schedule load according to number of VUs, number of iterations, VUs, or by iteration rate.
+Scenarios schedule load according to the number of VUs, number of iterations, VUs, or by iteration rate.
 
 ### Run a smoke test
 
