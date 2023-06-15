@@ -196,7 +196,7 @@ Additionally if headless mode is set to `true` in [browser options](/javascript-
 | mute-audio | `true` | Mutes audio sent to the audio device so it is not audible during automated testing. |
 | blink-settings | primaryHoverType=2,availableHoverTypes=2,<br />primaryPointerType=4,availablePointerTypes=4 | Sets blink settings. Format is <name\>[=<value\>],<name\>[=<value\>],... The names are declared in [settings.json5](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/settings.json5) from chromium project. For boolean type, use "true", "false", or omit '=<value\>' part to set to true. For enum type, use the int value of the enum value. |
 
-### Devices Example
+## Devices Example
 
 To emulate the browser behaviour on a mobile device and approximately measure the browser performance, you can import `devices` from `k6/experimental/browser`.
 
