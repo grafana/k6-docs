@@ -3,7 +3,7 @@ title: Reuse and re-run tests
 excerpt: Modularize your k6 test logic and workload configuration. 
 ---
 
-In the previous tutorials, you designed k6 scripts to assert for performance and to make it easy to compare results.
+In the previous tutorials, you designed k6 scripts to assert performance and make comparing results easy.
 
 In this tutorial, learn how to:
 - Modularize test scripts into reusable components
