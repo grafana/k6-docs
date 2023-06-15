@@ -14,7 +14,7 @@ In this tutorial, learn how to:
 For fun, let's combine the scripts from the previous tutorials.
 Use the logic of the `multiple-flows.js` test with the thresholds and scenario of the `api-test.js` (feel free to add more checks, requests, groups, and so on).
 Take note of the features of this script:
-- The `default` function has two groups, `Contacts flow` and `Coinflip game`
+- The `default` function has two groups, `Contacts flow`, and `Coinflip game`
 - The `options` object has two properties, `thresholds` and `scenarios`
 
 In the following sections, learn how to split these components into separate files, and combine them dynamically at run time.
