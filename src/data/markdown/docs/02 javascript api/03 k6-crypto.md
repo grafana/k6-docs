@@ -2,6 +2,16 @@
 title: "k6/crypto"
 excerpt: "The k6/crypto module provides common hashing functionality available in the GoLang crypto."
 ---
+
+<Blockquote mod='info'>
+
+#### An extension with much better and standard API exists
+
+[xk6-webcrypto](https://github.com/grafana/xk6-webcrypto) implements [the WebCrypto API](https://www.w3.org/TR/WebCryptoAPI/). While the implementation isn't full, it already implements more features then this API.
+
+Currently, it's available as an experimental module [`k6/experimental/webcrypto`](/javascript-api/k6-experimental/webcrypto/). It is also likely that it will at some point become part of the core of k6.
+</Blockquote>
+
 The k6/crypto module provides common hashing functionality available in the GoLang [crypto](https://golang.org/pkg/crypto/) package.
 
 | Function | Description |
