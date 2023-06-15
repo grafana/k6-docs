@@ -124,7 +124,7 @@ Once you're sure the request is well-formed, add a [check](/using-k6/checks) tha
 Under larger loads, this check will fail in some iterations.
 **Failed checks do not stop tests.**
 
-Rather, k6 tracks the success rate and presents it in your end of test summary.
+Rather, k6 tracks the success rate and presents it in your [end of test](/results-output/end-of-test/) summary.
 
 </Blockquote>
 
