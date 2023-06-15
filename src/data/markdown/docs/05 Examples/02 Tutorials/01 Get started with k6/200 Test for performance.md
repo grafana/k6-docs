@@ -19,7 +19,7 @@ To assess the login endpoint's performance, your team may have defined [service 
 - 99% of requests should be successful
 - 99% of requests should have a latency of 1000ms or less
 
-The service must meet these SLOs under different type of usual traffic.
+The service must meet these SLOs under different types of usual traffic.
 
 ## Assert for performance with thresholds
 
