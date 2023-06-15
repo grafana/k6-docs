@@ -121,7 +121,7 @@ k6 run --iterations 10 api-test.js
 If the service can't receive 10 iterations, the system has some serious performance issues to debug.
 Good thing you ran the test early!
 
-### Run a test against average load
+### Run a test against an average load
 
 Now increase load.
 
