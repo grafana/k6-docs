@@ -31,6 +31,7 @@ Returns when the `pageFunction` returns a truthy value.
 
 ```javascript
 import { browser } from 'k6/experimental/browser';
+import { check } from 'k6';
 
 export const options = {
   scenarios: {
