@@ -127,7 +127,7 @@ Now increase the load.
 
 Generally, traffic doesn't arrive all at once.
 Rather, it gradually increases to a peak load.
-To simulate this, testers increase load in _stages_.
+To simulate this, testers increase the load in _stages_.
 
 Since this is a learning environment, the stages are still quite short.
 Add the following _scenario_ to your options `object` and run the test again.
