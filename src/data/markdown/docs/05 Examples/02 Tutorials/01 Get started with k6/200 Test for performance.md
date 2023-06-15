@@ -123,7 +123,7 @@ Good thing you ran the test early!
 
 ### Run a test against an average load
 
-Now increase load.
+Now increase the load.
 
 Generally, traffic doesn't arrive all at once.
 Rather, it gradually increases to a peak load.
