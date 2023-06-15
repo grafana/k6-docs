@@ -130,7 +130,7 @@ Rather, it gradually increases to a peak load.
 To simulate this, testers increase the load in _stages_.
 
 Since this is a learning environment, the stages are still quite short.
-Add the following _scenario_ to your options `object` and run the test again.
+Add the following _scenario_ to your options `object` and rerun the test.
 Where the smoke test used load in terms of iterations, this configuration uses the [`ramping-vus` executor](/using-k6/scenarios/executors/ramping-vus/) to express load in terms virtual users and duration.
 
 ```json
