@@ -211,7 +211,7 @@ To do this:
   ```
 
 Here is the full script.
-Copy and run it.
+Copy and run it with `k6 run api-test.js`.
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
