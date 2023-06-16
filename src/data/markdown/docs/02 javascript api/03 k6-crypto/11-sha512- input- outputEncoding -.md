@@ -4,6 +4,8 @@ description: 'Use SHA-512 to hash input data.'
 excerpt: 'Use SHA-512 to hash input data.'
 ---
 
+<CryptoBlockquote />
+
 Use [sha512](https://golang.org/pkg/crypto/sha512/) to hash input data.
 
 | Parameter      | Type                 | Description                                       |

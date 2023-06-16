@@ -9,6 +9,7 @@ import BrowserDocsWIP from 'components/shared/browser-docs-wip';
 import BrowserWIP from 'components/shared/browser-wip';
 import { Code, CodeInline, CodeGroup } from 'components/shared/code';
 import Collapsible from 'components/shared/collapsible';
+import CryptoBlockquote from 'components/shared/crypto-blockquote';
 import DescriptionList from 'components/shared/description-list';
 import ExperimentalBlockquote from 'components/shared/experimental-blockquote';
 import { HeadingLandmark } from 'components/shared/heading';
@@ -42,6 +43,7 @@ const componentsForNativeReplacement = {
   BrowserWIP,
   ExperimentalBlockquote,
   BlockingAwsBlockquote,
+  CryptoBlockquote,
   WsBlockquote,
   InstallationInstructions,
   Tooltip,

@@ -4,6 +4,8 @@ description: 'randomBytes.'
 excerpt: 'randomBytes.'
 ---
 
+<CryptoBlockquote />
+
 Return an ArrayBuffer object with a number of cryptographically random bytes. It will either return exactly the amount of bytes requested or will throw an exception if something went wrong.
 
 | Parameter | Type    | Description                             |

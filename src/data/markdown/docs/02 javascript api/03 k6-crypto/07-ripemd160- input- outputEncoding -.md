@@ -4,6 +4,8 @@ description: 'Use RIPEMD-160 to hash input data.'
 excerpt: 'Use RIPEMD-160 to hash input data.'
 ---
 
+<CryptoBlockquote />
+
 Use [ripemd160](https://pkg.go.dev/golang.org/x/crypto/ripemd160) to hash input data.
 
 | Parameter      | Type                 | Description                                       |

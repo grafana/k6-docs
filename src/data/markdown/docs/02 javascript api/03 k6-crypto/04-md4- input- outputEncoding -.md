@@ -4,6 +4,8 @@ description: 'Use MD4 to hash input data.'
 excerpt: 'Use MD4 to hash input data.'
 ---
 
+<CryptoBlockquote />
+
 Use [md4](https://pkg.go.dev/golang.org/x/crypto/md4) to hash input data.
 
 | Parameter      | Type                 | Description                                       |
