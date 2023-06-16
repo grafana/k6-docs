@@ -4,6 +4,8 @@ description: 'Create a WebSocket connection, and provides a Socket client to int
 excerpt: 'Create a WebSocket connection, and provides a Socket client to interact with the service.'
 ---
 
+<WsBlockquote />
+
 Initiate a WebSocket connection to a remote host.
 
 Calling connect will block the VU finalization until the WebSocket connection is closed. Instead of continuously looping the main function (`export default function() { ... }`) over an over, each VU will be halted listening to async events and executing their event handlers until the connection is closed.

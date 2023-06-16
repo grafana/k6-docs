@@ -3,6 +3,8 @@ title: 'Socket.setInterval(callback, interval)'
 excerpt: 'Call a function repeatedly, while the WebSocket connection is open.'
 ---
 
+<WsBlockquote />
+
 Call a function repeatedly, while the WebSocket connection is open.
 
 | Parameter | Type     | Description                                                 |
