@@ -3,6 +3,8 @@ title: 'Socket.on(event, callback)'
 excerpt: 'Set up callback functions for various events on the WebSocket connection.'
 ---
 
+<WsBlockquote />
+
 Set up callback functions for various events on the WebSocket connection. Multiple handlers can be defined for the same event.
 
 | Parameter | Type     | Description                                  |

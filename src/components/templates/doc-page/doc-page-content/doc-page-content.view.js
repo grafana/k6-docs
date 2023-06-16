@@ -18,6 +18,7 @@ import { Link } from 'components/shared/link';
 import TableWithNestedRows from 'components/shared/table-with-nested-rows';
 import TableWrapper from 'components/shared/table-wrapper';
 import Tooltip, { BNIT, BWIPT } from 'components/shared/tooltip';
+import WsBlockquote from 'components/shared/ws-blockquote';
 import React, { useRef } from 'react';
 
 import styles from './doc-page-content.module.scss';
@@ -41,6 +42,7 @@ const componentsForNativeReplacement = {
   BrowserWIP,
   ExperimentalBlockquote,
   BlockingAwsBlockquote,
+  WsBlockquote,
   InstallationInstructions,
   Tooltip,
   BNIT,
