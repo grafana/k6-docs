@@ -3,6 +3,8 @@ title: 'Socket.close([code])'
 excerpt: 'Close the WebSocket connection.'
 ---
 
+<WsBlockquote />
+
 Close the WebSocket connection.
 
 | Parameter       | Type     | Description                                  |

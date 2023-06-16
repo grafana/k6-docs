@@ -3,6 +3,8 @@ title: 'Socket.send(data)'
 excerpt: 'Send a data string through the connection.'
 ---
 
+<WsBlockquote />
+
 Send a data string through the connection. 
 You can use `JSON.stringify` to convert a JSON or JavaScript values to a JSON string.
 
