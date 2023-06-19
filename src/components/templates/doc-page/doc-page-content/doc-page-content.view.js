@@ -12,6 +12,7 @@ import Collapsible from 'components/shared/collapsible';
 import CryptoBlockquote from 'components/shared/crypto-blockquote';
 import DescriptionList from 'components/shared/description-list';
 import ExperimentalBlockquote from 'components/shared/experimental-blockquote';
+import GrpcBlockquote from 'components/shared/grpc-blockquote';
 import { HeadingLandmark } from 'components/shared/heading';
 import InstallationInstructions from 'components/shared/installation-instructions';
 import LdScript from 'components/shared/ld-script';
@@ -45,6 +46,7 @@ const componentsForNativeReplacement = {
   BlockingAwsBlockquote,
   CryptoBlockquote,
   WsBlockquote,
+  GrpcBlockquote,
   InstallationInstructions,
   Tooltip,
   BNIT,
