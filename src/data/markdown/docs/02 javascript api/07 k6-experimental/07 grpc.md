@@ -3,6 +3,8 @@ title: "grpc"
 excerpt: "Experimental GRPC module"
 ---
 
+<ExperimentalBlockquote />
+
 The `k6/experimental/grpc` module is an extension of the [`k6/net/grpc`](/javascript-api/k6-net-grpc/). It provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2. 
 
 The key-difference between the two modules is new `Stream` class, which provides client and server streaming support. Our long-term goal is to make this module part of k6 core, and long-term to replace the [`k6/net/grpc`](/javascript-api/k6-net-grpc/) module.
