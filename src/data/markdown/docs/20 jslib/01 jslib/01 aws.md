@@ -37,5 +37,6 @@ This documentation is for the last version only. If you discover that some code 
 | [KMSClient](/javascript-api/jslib/aws/kmsclient)                       | Client class to interact with AWS Key Management Service.            |
 | [S3Client](/javascript-api/jslib/aws/s3client)                         | Client class to interact with AWS S3 buckets and objects.            |
 | [SecretsManager](/javascript-api/jslib/aws/secretsmanagerclient)       | Client class to interact with AWS secrets stored in Secrets Manager. |
+| [SignatureV4](/javascript-api/jslib/aws/signaturev4) | Class to sign and pre-sign requests to AWS services. |
 | [SQSClient](/javascript-api/jslib/aws/sqsclient)                       | Client class to interact with AWS Simple Queue Service.              |
 | [SystemsManagerClient](/javascript-api/jslib/aws/systemsmanagerclient) | Client class to interact with AWS Systems Manager Service.           |
