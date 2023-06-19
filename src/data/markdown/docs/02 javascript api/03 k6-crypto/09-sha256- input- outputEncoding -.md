@@ -4,6 +4,8 @@ description: 'Use SHA-256 to hash input data.'
 excerpt: 'Use SHA-256 to hash input data.'
 ---
 
+<CryptoBlockquote />
+
 Use [sha256](https://golang.org/pkg/crypto/sha256/) to hash input data.
 
 | Parameter      | Type                 | Description                                       |

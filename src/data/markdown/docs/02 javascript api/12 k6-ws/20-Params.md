@@ -4,6 +4,8 @@ description: 'Used for setting various WebSocket request-specific parameters suc
 excerpt: 'Used for setting various WebSocket request-specific parameters such as headers, tags, etc.'
 ---
 
+<WsBlockquote />
+
 _Params_ is an object used by the WebSocket methods that generate WebSocket requests. _Params_ contains request-specific options like headers that should be inserted into the request.
 
 | Name                  | Type   | Description |

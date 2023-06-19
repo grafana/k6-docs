@@ -4,6 +4,8 @@ description: 'Use SHA-1 to hash input data.'
 excerpt: 'Use SHA-1 to hash input data.'
 ---
 
+<CryptoBlockquote />
+
 Use [sha1](https://golang.org/pkg/crypto/sha1/) to hash input data.
 
 | Parameter      | Type                 | Description                                       |

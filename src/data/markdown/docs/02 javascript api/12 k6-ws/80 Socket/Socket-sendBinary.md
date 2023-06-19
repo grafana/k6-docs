@@ -3,6 +3,8 @@ title: 'Socket.sendBinary(data)'
 excerpt: 'Send binary data through the connection.'
 ---
 
+<WsBlockquote />
+
 Send binary data through the connection. 
 
 | Parameter | Type   | Description       |
