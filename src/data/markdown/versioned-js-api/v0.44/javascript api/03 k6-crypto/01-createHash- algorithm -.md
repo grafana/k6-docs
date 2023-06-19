@@ -1,0 +1,44 @@
+---
+title: 'createHash( algorithm )'
+description: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
+excerpt: 'Create a Hasher object, allowing the user to add data to hash multiple times, and extract hash digests along the way.'
+---
+
+<CryptoBlockquote />
+
+Creates a hashing object that can then be fed with data repeatedly, and from which you can extract a hash digest whenever you want.
+
+| Parameter | Type   | Description                                                                                                                                                       |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| algorithm | string | The name of the hashing algorithm you want to use. Can be any one of "md4", "md5", "sha1", "sha256", "sha384", "sha512", "sha512_224", "sha512_256", "ripemd160". |
+
+### Returns
+
+| Type   | Description                                          |
+| ------ | ---------------------------------------------------- |
+| object | A [Hasher](/javascript-api/k6-crypto/hasher) object. |
+
+### Example
+
+<CodeGroup labels={[]}>
+
+```javascript
+import crypto from 'k6/crypto';
+
+export default function () {
+  console.log(crypto.sha256('hello world!', 'hex'));
+  const hasher = crypto.createHash('sha256');
+  hasher.update('hello ');
+  hasher.update('world!');
+  console.log(hasher.digest('hex'));
+}
+```
+
+</CodeGroup>
+
+The above script should result in the following being printed during execution:
+
+```bash
+INFO[0000] 7509e5bda0c762d2bac7f90d758b5b2263fa01ccbc542ab5e3df163be08e6ca9
+INFO[0000] 7509e5bda0c762d2bac7f90d758b5b2263fa01ccbc542ab5e3df163be08e6ca9
+```
