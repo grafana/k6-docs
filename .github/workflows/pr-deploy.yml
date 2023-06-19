@@ -132,7 +132,7 @@ jobs:
       - name: Post published URL to PR
         # Run only if we did not skip the upload step and it's the first run for this PR.
         if: steps.upload.outcome == 'success' && github.event.action == 'opened'
-        uses: actions/github-script@0.8.0
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
