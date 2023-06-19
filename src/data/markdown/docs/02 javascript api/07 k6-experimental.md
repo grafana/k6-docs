@@ -13,3 +13,4 @@ excerpt: "k6 experimental APIs"
 | [tracing](/javascript-api/k6-experimental/tracing/) | Support for instrumenting HTTP requests with tracing information. |
 | [webcrypto](/javascript-api/k6-experimental/webcrypto/) | Implements the [WebCrypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API). |
 | [websockets](/javascript-api/k6-experimental/websockets/) | Implements the browser's [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).  |
+| [grpc](/javascript-api/k6-experimental/grpc/) | Extends `k6/net/grpc` with the streaming capabilities.  |
