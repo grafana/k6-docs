@@ -36,7 +36,7 @@ The following snippet is an example:
 
 <Blockquote mod="note" title="">
 
-In future releases, the `browser_*` metrics will be removed in favor of the web vitals. As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
+As Google recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
 
 </Blockquote>
 
