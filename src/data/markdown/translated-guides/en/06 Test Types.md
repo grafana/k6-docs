@@ -4,16 +4,4 @@ excerpt: 'A series of conceptual articles explaining the different types of load
 robots: NOINDEX, FOLLOW
 ---
 
-[Load test types](/test-types/load-test-types/)
-
-[Smoke testing](/test-types/smoke-testing/)
-
-[Load testing](/test-types/load-testing/)
-
-[Stress testing](/test-types/stress-testing/)
-
-[Soak testing](/test-types/soak-testing/)
-
-[Spike testing](/test-types/spike-testing/)
-
-[Breakpoint testing](/breakpoint-testing/)
+A series of articles explaining the different [load test types](/test-types/load-test-types/).
