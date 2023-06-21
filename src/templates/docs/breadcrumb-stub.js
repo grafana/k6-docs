@@ -99,11 +99,12 @@ const BreadcrumbsStubPage = (props) => {
 
 export default BreadcrumbsStubPage;
 
-export const Head = ({ pageContext: { title, version } }) => {
+export const Head = ({ pageContext: { title, version, remarkNode } }) => {
   const pageMetaData = {
     data: {
       title,
       description: ' ',
+      robots: remarkNode?.frontmatter.robots,
     },
   };
 
