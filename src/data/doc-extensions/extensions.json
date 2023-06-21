@@ -1097,6 +1097,22 @@
       "cloudEnabled": false
     },
     {
+      "name": "xk6-proxy",
+      "description": "Add a dynamic proxy support to k6. Allow changing the HTTP proxy settings in the script.",
+      "url": "https://github.com/SYM01/xk6-proxy",
+      "logo": "",
+      "author": {
+        "name": "SYM01",
+        "url": "https://github.com/SYM01"
+      },
+      "official": false,
+      "categories": ["Misc", "Proxy"],
+      "stars": "",
+      "type": ["JavaScript"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
+    },
+    {
       "name": "xk6-chai",
       "description": "Embed k6chaijs into the k6 binary",
       "url": "https://github.com/szkiba/xk6-chai",
