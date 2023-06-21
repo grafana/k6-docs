@@ -222,8 +222,18 @@ if (isProduction) {
   plugins.push({
     resolve: 'gatsby-plugin-google-tagmanager',
     options: {
-      id: 'G-YQE19WEB36',
+      id: 'GTM-KBV9L4L',
       includeInDevelopment: false,
+    },
+  });
+
+  plugins.push({
+    resolve: `gatsby-plugin-google-gtag`,
+    options: {
+      trackingIds: ['G-YQE19WEB36'],
+      pluginConfig: {
+        head: true,
+      },
     },
   });
 
