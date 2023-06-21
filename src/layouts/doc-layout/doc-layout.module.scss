@@ -163,6 +163,16 @@ h2.sidebar-section-title {
   }
 }
 
+.sidebarSectionInvisibleLink {
+  @extend .sidebar-section-title-link;
+  cursor: default;
+  color: #9c97b5;
+  &:hover {
+    color: #9c97b5;
+    border-color: transparent;
+  }
+}
+
 .sidebar-node {
   position: relative;
 }

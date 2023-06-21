@@ -1,6 +1,9 @@
+import { DocPageTitleGroup } from 'components/pages/doc-page/doc-page-title-group';
+import { styles as codeStyles } from 'components/shared/code';
 import { Heading } from 'components/shared/heading';
 import { SEO } from 'components/shared/seo';
 import { Breadcrumbs } from 'components/templates/doc-page/breadcrumbs';
+import { DocPageContent } from 'components/templates/doc-page/doc-page-content';
 import styles from 'components/templates/doc-page/doc-page.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
 import { Link } from 'gatsby';
@@ -17,6 +20,7 @@ const BreadcrumbsStubPage = (props) => {
       breadcrumbs,
       navLinks,
       title,
+      remarkNode,
       directChildren,
       locale,
       translations = null,
@@ -40,34 +44,53 @@ const BreadcrumbsStubPage = (props) => {
       >
         <div className={`${styles.container}`}>
           <Breadcrumbs items={breadcrumbs} label={styles.breadcrumbsStub} />
-          <Heading className={styles.title}>{title}</Heading>
-          <ul className={styles.sectionList}>
-            {childrenToList(directChildren).map(
-              ({ meta, name }, i) =>
-                !meta.hideFromSidebar && (
-                  <li key={`bcl-${i}`}>
-                    {meta.redirect ? (
-                      <a
-                        href={meta.redirect}
-                        className={'link'}
-                        target={
-                          meta.redirectTarget ? meta.redirectTarget : '_self'
-                        }
-                      >
-                        {meta.title ? meta.title : name}
-                      </a>
-                    ) : (
-                      <Link
-                        to={`${meta.path || slugify(`/${name}`)}`}
-                        className={'link'}
-                      >
-                        {meta.title ? meta.title : name}
-                      </Link>
-                    )}
-                  </li>
-                ),
-            )}
-          </ul>
+          {remarkNode ? (
+            <>
+              <DocPageTitleGroup
+                title={remarkNode.frontmatter.title}
+                articleSrc={remarkNode.frontmatter.fileOrigin}
+                heading={remarkNode.frontmatter.heading}
+              />
+              <DocPageContent
+                label={codeStyles.codeContainer}
+                content={remarkNode.body}
+                version={version}
+              />
+            </>
+          ) : (
+            <>
+              <Heading className={styles.title}>{title}</Heading>
+              <ul className={styles.sectionList}>
+                {childrenToList(directChildren).map(
+                  ({ meta, name }, i) =>
+                    !meta.hideFromSidebar && (
+                      <li key={`bcl-${i}`}>
+                        {meta.redirect ? (
+                          <a
+                            href={meta.redirect}
+                            className={'link'}
+                            target={
+                              meta.redirectTarget
+                                ? meta.redirectTarget
+                                : '_self'
+                            }
+                          >
+                            {meta.title ? meta.title : name}
+                          </a>
+                        ) : (
+                          <Link
+                            to={`${meta.path || slugify(`/${name}`)}`}
+                            className={'link'}
+                          >
+                            {meta.title ? meta.title : name}
+                          </Link>
+                        )}
+                      </li>
+                    ),
+                )}
+              </ul>
+            </>
+          )}
         </div>
       </DocLayout>
     </LocaleProvider>
