@@ -14,7 +14,7 @@ const getPageHref = (host, slug) => {
 };
 
 export const SEO = ({
-  data: { title, description, image, slug, canonicalUrl } = {},
+  data: { title, description, image, slug, canonicalUrl, robots } = {},
   facebook,
   pageTranslations = null,
   pageVersions = null,
@@ -80,6 +80,10 @@ export const SEO = ({
       currentRobotsContent.current = 'noindex';
     }
   }, []);
+
+  if (robots) {
+    currentRobotsContent.current = robots;
+  }
 
   if (pageTranslations) {
     if (pageTranslations.es) {

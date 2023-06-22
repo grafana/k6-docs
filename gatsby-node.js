@@ -311,6 +311,7 @@ const getExtensionsPageSidebar = (sidebarTree) => {
 };
 
 function getSupplementaryPagesProps({
+  nodesGuides,
   reporter,
   topLevelNames,
   getSidebar,
@@ -378,6 +379,13 @@ function getSupplementaryPagesProps({
 
   const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) =>
     childrenToList(getGuidesSidebar(locale).children).map(({ name, meta }) => {
+      const remarkNode = nodesGuides.find(
+        (node) =>
+          node.name.toLowerCase().includes(meta.title.toLowerCase()) &&
+          node.relativeDirectory === 'markdown/translated-guides/en',
+      );
+      let extendedRemarkNode = null;
+
       const path = `${locale}/${meta.title}`;
       const breadcrumbs = compose(
         buildBreadcrumbs,
@@ -398,6 +406,20 @@ function getSupplementaryPagesProps({
         }
       });
 
+      if (remarkNode) {
+        const { relativeDirectory } = remarkNode;
+
+        extendedRemarkNode = {
+          ...remarkNode.children[0],
+          frontmatter: {
+            ...remarkNode.children[0].frontmatter,
+            fileOrigin: encodeURI(
+              `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
+            ),
+          },
+        };
+      }
+
       return {
         path: compose(
           removeEnPrefix,
@@ -414,6 +436,7 @@ function getSupplementaryPagesProps({
           ),
           title: meta.title,
           navLinks: topLevelLinks,
+          remarkNode: extendedRemarkNode,
           directChildren: getGuidesSidebar(locale).children[name].children,
           locale,
           translations: pageTranslations,
@@ -1036,7 +1059,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-
+                  robots
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1153,6 +1176,7 @@ async function createDocPages({
         pathCollisionDetectorInstance,
       }),
       getSupplementaryPagesProps({
+        nodesGuides,
         topLevelNames,
         getSidebar,
         getGuidesSidebar,

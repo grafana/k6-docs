@@ -121,6 +121,7 @@ export const Head = ({
       description: frontmatter.excerpt,
       slug: frontmatter.slug ? frontmatter.slug : location.pathname.slice(1),
       canonicalUrl: frontmatter.canonicalUrl,
+      robots: frontmatter.robots,
     },
   };
 
