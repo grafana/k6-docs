@@ -50,9 +50,20 @@ export default function () {
 
 ## Use cases
 
-The main use case for xk6-disruptor is to test the resiliency of an application of diverse types of disruptions by reproducing their effects without reproducing their root causes. For example, inject delays in the HTTP requests an application makes to a service without having to stress or interfere with the infrastructure (network, nodes) on which the service runs or affect other workloads in unexpected ways.
+The disruptor allows you to test the resiliency of applications and distributed systems by introducing service errors.
 
-In this way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. These are essential characteristics to incorporate these tests in the test suits of applications deployed on shared infrastructures such as staging environments.
+The disruptor does not reproduce root causes, such as killing an instance or degrading the memory and CPU. 
+It focuses on the side effect, the propagation of errors to internal and public services, so you can focus on handling application errors and improving the resilience of the distributed system. 
+
+This way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. 
+These are essentials to test applications deployed on shared infrastructures such as pre-production and testing environments.
+
+Common use cases are:
+- Test resilient policies such as backoff, timeouts, retries, etc.
+- Test the fallback functionality when internal failures arise.
+- Test SLOs under common internal failures.
+- Test application performance when experiencing network delays.
+- Add fault injection to existing performance tests.
 
 ## Learn more
 
