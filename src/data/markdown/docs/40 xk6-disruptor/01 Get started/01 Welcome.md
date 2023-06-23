@@ -5,27 +5,22 @@ head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 ---
 
-[xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6. It implements the principles of the Chaos Engineering discipline to test the reliability of our applications under turbulent conditions such as latency delays and response errors.
+[xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6. It implements the principles of the Chaos Engineering discipline to test the reliability of our applications under turbulent conditions such as latency delays and response errors. Key features include:
 
-## Why xk6-disruptor?
+- Everything as code. Facilitate test reuse without learning a new DSL.
 
-xk6-disruptor is designed and built to provide the best experience for developers trying to make their systems more reliable:
+- Fast to adopt with no day-two surprises. [No need to deploy and maintain](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works/) a fleet of agents or operators.
 
-- Everything as code.
-  - No need to learn a new DSL.
-  - Developers can use their usual development IDE
-  - Facilitate test reuse and sharing
+- Easy to extend and integrate with other [types of load tests](/test-types/load-test-types/). No need to try to glue multiple tools together to get the job done.
 
-- Fast to adopt with no day-two surprises. No need to deploy and maintain a fleet of agents or operators.
+## Capabilities
 
-- Easy to extend and integrate with other [types of tests](https://k6.io/docs/test-types/introduction/). No need to try to glue multiple tools together to get the job done.
+Currently, the disruptor is intended to test systems running in Kubernetes. Other platforms are not supported at this time.
 
-Also, this project has been built to be a good citizen in the Grafana k6 ecosystem by:
+It provides a Javascript API that can create [PodDisruptors](javascript-api/xk6-disruptor/api/poddisruptor) and [ServiceDisruptors](/javascript-api/xk6-disruptor/api/servicedisruptor) to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC responses, such as errors and delays, into the selected Kubernetes Pods or Services. 
 
-- Working well with other extensions.
-- Working well with k6's core concepts and features.
-
-You can check this out in the following example:
+Other types of faults and disruptors will be introduced in the future.
+The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
 ```javascript
 export default function () {
@@ -52,12 +47,6 @@ export default function () {
 }
 ```
 
-## Features
-
-The project, at this time, is intended to test systems running in Kubernetes. Other platforms are not supported at this time.
-
-It offers an [API](/javascript-api/xk6-disruptor/api) for creating disruptors that target one specific type of the component (e.g., Pods) and is capable of injecting different kinds of [faults](/javascript-api/xk6-disruptor/api/faults), such as errors in HTTP requests served by that component. 
-Currently, disruptors exist for [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) and [Services](/javascript-api/xk6-disruptor/api/servicedisruptor), but others will be introduced in the future as well as additional types of faults for the existing disruptors.
 
 ## Use cases
 
@@ -73,7 +62,6 @@ This documentation presents a few [examples of injecting faults in different sce
 
 Also, an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) is available to use the k6 disruptor right away. You can fail the services of a demo application without having to install Kubernetes on your local machine.
 
-The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
 And if you are interested in contributing to the development of this project, check the [contributing guide](https://github.com/grafana/xk6-disruptor/blob/main/docs/01-development/01-contributing.md). For any unexpected behavior, please search the [GitHub issues](https://github.com/grafana/xk6-disruptor/issues) first. 
 
