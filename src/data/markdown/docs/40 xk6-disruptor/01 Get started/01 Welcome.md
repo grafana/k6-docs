@@ -33,7 +33,7 @@ export default function () {
 
     // Check that there is at least one target
     const targets = disruptor.targets();
-    if (targets.length != 1) {
+    if (targets.length === 0) {
         throw new Error("expected list to have one target");
     }
 
