@@ -5,7 +5,7 @@ head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 ---
 
-xk6-disruptor is an extension adds fault injection capabilities to [Grafana k6](https://github.com/grafana/k6). It implements the principles of Chaos Engineering discipline and enables Grafana k6 users to test their system's reliability under turbulent conditions.
+[xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6. It implements the principles of the Chaos Engineering discipline to test the reliability of our applications under turbulent conditions such as latency delays and response errors.
 
 ## Why xk6-disruptor?
 
@@ -27,7 +27,7 @@ Also, this project has been built to be a good citizen in the Grafana k6 ecosyst
 
 You can check this out in the following example:
 
-```js
+```javascript
 export default function () {
     // Create a new pod disruptor with a selector
     // that matches pods from the "default" namespace with the label "app=my-app"
@@ -63,7 +63,7 @@ Currently, disruptors exist for [Pods](/javascript-api/xk6-disruptor/api/poddisr
 
 The main use case for xk6-disruptor is to test the resiliency of an application of diverse types of disruptions by reproducing their effects without reproducing their root causes. For example, inject delays in the HTTP requests an application makes to a service without having to stress or interfere with the infrastructure (network, nodes) on which the service runs or affect other workloads in unexpected ways.
 
-In this way, xk6-disruptor make reliability tests repeatable and predictable while limiting their blast radius. These are essential characteristics to incorporate these tests in the test suits of applications deployed on shared infrastructures such as staging environments.
+In this way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. These are essential characteristics to incorporate these tests in the test suits of applications deployed on shared infrastructures such as staging environments.
 
 ## Learn more
 
