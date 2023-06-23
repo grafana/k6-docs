@@ -67,29 +67,13 @@ In this way, the disruptor makes reliability tests repeatable and predictable wh
 
 ## Learn more
 
-Check the [get started guide](/javascript-api/xk6-disruptor/get-started) for instructions on how to install and use `xk6-disruptor`.
+Check the [requirements](/javascript-api/xk6-disruptor/requirements/), [installation](/javascript-api/xk6-disruptor/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/expose-your-application/) to get started with the disruptor.
 
-The [examples](/javascript-api/xk6-disruptor/examples/) section in the documentation presents examples of using xk6-disruptor for injecting faults in different scenarios.
+This documentation presents a few [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
+
+Also, an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) is available to use the k6 disruptor right away. You can fail the services of a demo application without having to install Kubernetes on your local machine.
 
 The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
+And if you are interested in contributing to the development of this project, check the [contributing guide](https://github.com/grafana/xk6-disruptor/blob/main/docs/01-development/01-contributing.md). For any unexpected behavior, please search the [GitHub issues](https://github.com/grafana/xk6-disruptor/issues) first. 
 
-## Try out xk6-disruptor 
-
-### on our demo environment
-
-We provide an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) which you can use to try xk6-disruptor right away without having to install Kubernetes on your local machine.
-
-You can use this sandbox to try out xk6-disruptor and start writing fault injection on a microservices application right away.
-
-### On your environment
-
-1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements).
-
-2. [Install](/javascript-api/xk6-disruptor/get-started/installation) the xk6-disruptor binary in your system.
-
-## How to contribute
-
-If you encounter any bugs or unexpected behavior, please search the [currently open GitHub issues](https://github.com/grafana/xk6-disruptor/issues) first, and create a new one if it doesn't exist yet.
-
-If you are interested in contributing with the development of this project, check the [contributing guide](https://github.com/grafana/xk6-disruptor/blob/main/docs/01-development/01-contributing.md)
