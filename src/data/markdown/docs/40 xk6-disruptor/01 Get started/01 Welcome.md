@@ -50,10 +50,10 @@ export default function () {
 
 ## Use cases
 
-The disruptor allows you to test the resiliency of applications and distributed systems by introducing service errors.
+The disruptor lets you test the resiliency of applications and distributed systems by introducing service errors.
 
 The disruptor does not reproduce root causes, such as killing an instance or degrading the memory and CPU. 
-It focuses on the side effect, the propagation of errors to internal and public services, so you can focus on handling application errors and improving the resilience of the distributed system. 
+It focuses on the side effect, the propagation of errors to internal and public services, so you can work more easily on the error handling of the application and distributed systems. 
 
 This way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. 
 These are essentials to test applications deployed on shared infrastructures such as pre-production and testing environments.
