@@ -33,5 +33,12 @@ export default function () {
   });
 }
 ```
-
+Example return value from `cookiesForUrl`
+```
+{
+  "cookieName1": ["cookieValue1", "cookieValue2"],
+  "cookieName2": ["cookieValue3"],
+  "cookieName3": ["cookieValue4", "cookieValue5", "cookieValue6"]
+}
+```
 </CodeGroup>
