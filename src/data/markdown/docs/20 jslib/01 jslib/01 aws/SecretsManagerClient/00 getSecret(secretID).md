@@ -38,7 +38,7 @@ export default function () {
   // List the secrets the AWS authentication configuration
   // gives us access to.
   const secrets = secretsManager.listSecrets();
-  if (!secrets.filter((s) => s.name === testSecretName).length == 0) {
+  if (secrets.filter((s) => s.name === testSecretName).length == 0) {
     exec.test.abort('test secret not found');
   }
 
