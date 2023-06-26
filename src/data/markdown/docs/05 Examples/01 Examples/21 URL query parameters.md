@@ -35,7 +35,7 @@ export default function () {
 | toString()            | Method      | Returns a USVString containing the whole URL                                                                                                                 |
 | hash                  | Property    | A USVString containing a '#' followed by the fragment identifier of the URL.                                                                                 |
 | host                  | Property    | A USVString containing the domain (that is the hostname) followed by (if a port was specified) a ':' and the port of the URL.                                |
-| hostname              | Property    | A USVString containing the domain (that is the hostname) followed by (if a port was specified) a ':' and the port of the URL.                                |
+| hostname              | Property    | A USVString containing the domain (that is the hostname) without a ':' and the port of the URL (if one was specified).                                       |
 | href                  | Property    | Returns a USVString containing the whole URL.                                                                                                                |
 | origin                | Property    | Returns a USVString containing the origin of the URL, that is its scheme, its domain and its port.                                                           |
 | password              | Property    | A USVString containing the password specified before the domain name.                                                                                        |
