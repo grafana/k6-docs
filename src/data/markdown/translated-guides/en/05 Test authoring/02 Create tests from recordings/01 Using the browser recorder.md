@@ -15,7 +15,7 @@ Before you start, consider the following:
 - [Be sure to record realistically](/test-authoring/create-tests-from-recordings/#be-sure-to-record-realistically)
 - [A hybrid approach for load testing websites](/test-authoring/create-tests-from-recordings/#consider-hybrid-approach-for-load-testing-websites)
 
-> Note that the browser recorders **do not require a cloud account**. For cloud users, check out the [Grafana Cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/browser-recorder/) and [k6 Cloud](/cloud/creating-and-running-a-test/using-the-browser-recorder/) instructions.
+> Note that the browser recorders **do not require a cloud account**. For cloud users, check out the [Grafana Cloud](https://grafana.com/docs/grafana-cloud/k6/author-run/browser-recorder/) and [k6 Cloud](/cloud/creating-and-running-a-test/browser-recorder/) instructions.
 
 ## How to record
 

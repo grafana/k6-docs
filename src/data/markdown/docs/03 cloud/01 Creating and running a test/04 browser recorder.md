@@ -1,5 +1,5 @@
 ---
-title: 'Using the browser recorder'
+title: 'Browser recorder'
 excerpt: 'The browser recorder generates a k6 script based on a web session. It is available as extensions for Chrome and Firefox.'
 robots: NOINDEX, FOLLOW
 ---
