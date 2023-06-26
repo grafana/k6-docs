@@ -10,9 +10,7 @@ excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities
 Key features include:
 
 - Everything as code. Facilitate test reuse and collaboration between teams without learning a new DSL.
-
 - Fast to adopt with no day-two surprises. [No need to deploy and maintain](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works/) a fleet of agents or operators.
-
 - Easy to extend and integrate with other types of k6 tests. No need to try to glue multiple tools together to get the job done.
 
 ## Capabilities
