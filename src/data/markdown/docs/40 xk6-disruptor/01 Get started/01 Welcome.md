@@ -27,7 +27,7 @@ export default function () {
     // that matches pods from the "default" namespace with the label "app=my-app"
     const disruptor = new PodDisruptor({
         namespace: "default",
-        select: { labels: { app: "my-app" } },
+        select: { labels: { "app.kubernetes.io/name": "my-app" } },
     });
 
     // Check that there is at least one target
