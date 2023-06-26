@@ -1,12 +1,14 @@
 ---
 title: 'Get started'
-excerpt: ''
+excerpt: 'xk6-disruptor is an extension that adds fault injection capabilities to k6. Start here to learn the basics and how to use the disruptor'
 ---
 
-[Welcome](/javascript-api/xk6-disruptor/)
+Inject faults into kubernetes-based applications with `xk6-disruptor`. Start here to learn the basics to use the disruptor:
 
-[Requirements](/javascript-api/xk6-disruptor/get-started/requirements)
+- [About `xk6-disruptor`](/javascript-api/xk6-disruptor/)
 
-[Installation](/javascript-api/xk6-disruptor/get-started/installation)
+- [Requirements](/javascript-api/xk6-disruptor/get-started/requirements)
 
-[Exposing Your Applications](/javascript-api/xk6-disruptor/get-started/expose-your-application/)
+- [Installation](/javascript-api/xk6-disruptor/get-started/installation)
+
+- [Exposing your Kubernetes application](/javascript-api/xk6-disruptor/get-started/expose-your-application/)

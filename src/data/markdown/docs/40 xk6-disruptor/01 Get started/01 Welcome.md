@@ -5,46 +5,74 @@ head_title: 'xk6-disruptor Documentation'
 excerpt: 'xk6-disruptor is a k6 extension providing fault injection capabilities to test system reliability under turbulent conditions.'
 ---
 
-xk6-disruptor is a k6 extension that can inject faults into a system to simulate turbulent conditions. 
+[xk6-disruptor](https://github.com/grafana/xk6-disruptor) is an extension that adds fault injection capabilities to k6. It implements the principles of the Chaos Engineering discipline to test the reliability of our applications under turbulent conditions such as delays and response errors.
 
-xk6-disruptor intends to help testers approach the discipline of "Chaos Engineering" with k6 way&mdash;providing the best developer experience as a primary objective. 
+Key features include:
 
-The extension offers an [API](/javascript-api/xk6-disruptor/api/) to create disruptors that target one specific type of component (for example, Pods).
-These disruptors can inject different types of [faults](/javascript-api/xk6-disruptor/api/faults), such as errors in HTTP requests, served by that component.
-Currently, disruptors exist for [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) and [Services](/javascript-api/xk6-disruptor/api/servicedisruptor), but others will be introduced in the future, along with other types of faults for existing disruptors.
+- Everything as code. Facilitate test reuse and collaboration between teams without learning a new DSL.
+- Fast to adopt with no day-two surprises. [No need to deploy and maintain](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works/) a fleet of agents or operators.
+- Easy to extend and integrate with other types of k6 tests. No need to try to glue multiple tools together to get the job done.
 
-<Blockquote mod="note">
+## Capabilities
 
-xk6-disruptor is intended for systems running in Kubernetes. Other platforms are not supported at this time.
+Currently, the disruptor is intended to test applications running in Kubernetes. Other platforms are not supported at this time.
 
-</Blockquote>
+It provides a Javascript API to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
 
-## Use case for xk6-disruptor
+Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
-The main use case for xk6-disruptor is to test how resilient an application is to diverse types of disruptions. xk6-disruptor can reproduce the effects of these disruptions, without having to reproduce their root causes.
-For example, you can inject delays in the HTTP requests that an application makes to a service  without having to stress or interfere with the infrastructure (network, nodes) on which the service runs.
+```javascript
+export default function () {
+    // Create a new pod disruptor with a selector
+    // that matches pods from the "default" namespace with the label "app=my-app"
+    const disruptor = new PodDisruptor({
+        namespace: "default",
+        select: { labels: { "app.kubernetes.io/name": "my-app" } },
+    });
 
-In this way, xk6-disruptor makes reliability tests repeatable, predictable, and with a limited blast radius.
-These characteristics make it easier to incorporate such tests into the test suites of applications that deploy on shared infrastructures (such as staging environments).
+    // Check that there is at least one target
+    const targets = disruptor.targets();
+    if (targets.length === 0) {
+        throw new Error("expected list to have one target");
+    }
+
+    // Disrupt the targets by injecting HTTP faults into them for 30 seconds
+    const fault = {
+        averageDelay: 500,
+        errorRate: 0.1,
+        errorCode: 500
+    }
+    disruptor.injectHTTPFaults(fault, "30s")
+}
+```
+
+## Use cases
+
+The disruptor lets you test the resiliency of distributed applications by introducing errors in the requests served by your services.
+
+The disruptor does not try to reproduce root causes, such as failed application instances or degraded computing or network resources. 
+It focuses on reproducing the side effects of such failures, so you can focus on understanding the propagation of errors between internal and public services and improving the error handling in your application. 
+
+This way, the disruptor makes reliability tests repeatable and predictable while limiting their blast radius. 
+These are essentials to test applications deployed on shared infrastructures such as pre-production and testing environments.
+
+Common use cases are:
+- Test resilient policies such as backoff, timeouts, retries, etc.
+- Test the fallback functionality when internal failures arise.
+- Test SLOs under common internal failures.
+- Test application performance when experiencing delays.
+- Add fault injection to existing performance tests.
+
+## Learn more
+
+Check the [requirements](/javascript-api/xk6-disruptor/requirements/), [installation](/javascript-api/xk6-disruptor/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/expose-your-application/) to get started with the disruptor.
+
+This documentation presents a few [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
+
+Also, an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) is available to use the k6 disruptor right away. You can fail the services of a demo application without having to install Kubernetes on your local machine.
+
+For any unexpected behavior, please search the [GitHub issues](https://github.com/grafana/xk6-disruptor/issues) first.
+
+And if you are interested in contributing to the development of this project, check the [contributing guide](https://github.com/grafana/xk6-disruptor/blob/main/docs/01-development/01-contributing.md).
 
 
-<Blockquote mod="attention">
-
-xk6-disruptor is in the alpha phase, undergoing active development. k6 doesn't guarantee API compatibility between releases.
-Until this extension reaches v1.0 release, your k6 scripts may need to be updated on each release .
-
-</Blockquote>
-
-## Try out xk6-disruptor on our demo environment
-
-We provide an [interactive demo environment in Killercoda](https://killercoda.com/grafana-xk6-disruptor/scenario/killercoda) which you can use to try xk6-disruptor right away without having to install Kubernetes on your local machine.
-
-You can use this sandbox to try out xk6-disruptor and start writing fault injection on a microservices application right away.
-
-## Install xk6-disruptor on your environment
-
-1. Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements).
-
-2. [Install](/javascript-api/xk6-disruptor/get-started/installation) the xk6-disrutor binary in your system.
-
-3. Run the [Injecting HTTP faults to a Pod](/javascript-api/xk6-disruptor/examples/inject-http-faults-into-pod) example.

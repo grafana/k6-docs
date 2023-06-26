@@ -78,6 +78,7 @@ hostname
 htop
 kafka
 keyserver
+Killercoda
 iftop
 iters
 initializer
