@@ -34,8 +34,8 @@ export default function () {
 | URLSearchParams(init) | Constructor | `init` Optional: One of [USVString, sequence of pairs or record ]                                                                                            |
 | toString()            | Method      | Returns a USVString containing the whole URL                                                                                                                 |
 | hash                  | Property    | A USVString containing a '#' followed by the fragment identifier of the URL.                                                                                 |
-| host                  | Property    | A USVString containing the domain (that is the hostname) followed by (if a port was specified) a ':' and the port of the URL.                                |
-| hostname              | Property    | A USVString containing the domain (that is the hostname) followed by (if a port was specified) a ':' and the port of the URL.                                |
+| host                  | Property    | A USVString containing the host, that is the `hostname`, and then, if the port of the URL is nonempty, a ':', followed by the `port` of the URL.                                |
+| hostname              | Property    | A USVString containing the [domain name](https://developer.mozilla.org/en-US/docs/Glossary/Domain_name) of the URL.                                |
 | href                  | Property    | Returns a USVString containing the whole URL.                                                                                                                |
 | origin                | Property    | Returns a USVString containing the origin of the URL, that is its scheme, its domain and its port.                                                           |
 | password              | Property    | A USVString containing the password specified before the domain name.                                                                                        |
