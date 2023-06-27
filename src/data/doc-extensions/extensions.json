@@ -1141,6 +1141,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-output-plugin",
+      "description": "Write k6 output extension as a dynamically loadable plugin using your favorite programming language",
+      "url": "https://github.com/szkiba/xk6-output-plugin",
+      "logo": "",
+      "author": {
+        "name": "Iván Szkiba",
+        "url": "https://github.com/szkiba"
+      },
+      "stars": "0",
+      "type": ["Output"],
+      "categories": ["Reporting", "Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
