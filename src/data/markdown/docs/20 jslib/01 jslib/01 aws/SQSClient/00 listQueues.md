@@ -25,7 +25,7 @@ excerpt: "SQSClient.listQueues retrieves a list of available Amazon SQS queues"
 ```javascript
 import exec from 'k6/execution'
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.7.2/sqs.js'
+import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.8.0/sqs.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
