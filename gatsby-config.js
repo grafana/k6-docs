@@ -228,16 +228,6 @@ if (isProduction) {
   });
 
   plugins.push({
-    resolve: `gatsby-plugin-google-gtag`,
-    options: {
-      trackingIds: ['G-YQE19WEB36'],
-      pluginConfig: {
-        head: true,
-      },
-    },
-  });
-
-  plugins.push({
     resolve: '@sentry/gatsby',
     options: {
       dsn: 'https://f46b8e24a5374539ba179e52835913e3@o175050.ingest.sentry.io/5289132',
