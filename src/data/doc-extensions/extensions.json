@@ -1156,6 +1156,21 @@
       "categories": ["Reporting", "Data"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-gcp",
+      "description": "A k6 extension for Google Cloud Platform services.",
+      "url": "https://github.com/deejiw/xk6-gcp",
+      "logo": "",
+      "author": {
+        "name": "Tossaporn Jiw",
+        "url": "https://github.com/deejiw"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
