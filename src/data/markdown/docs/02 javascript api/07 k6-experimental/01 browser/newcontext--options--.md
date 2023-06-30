@@ -3,7 +3,13 @@ title: 'newContext([options])'
 excerpt: 'Browser module: newContext method'
 ---
 
-Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/), if one hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If one has already been initialized an error is thrown.
+
+<Blockquote mod="note" title="">
+
+A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [close](/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
+
+</Blockquote>
 
 <TableWithNestedRows>
 
