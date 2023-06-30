@@ -1,5 +1,5 @@
 ---
-title: 'contexts()'
+title: 'context()'
 excerpt: 'Browser module: context method'
 ---
 
