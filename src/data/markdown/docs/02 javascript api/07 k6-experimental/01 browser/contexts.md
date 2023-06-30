@@ -1,15 +1,21 @@
 ---
 title: 'contexts()'
-excerpt: 'Browser module: contexts method'
+excerpt: 'Browser module: context method'
 ---
 
-Access all open [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s.
+Returns the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+
+<Blockquote mod="note" title="">
+
+A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. If you wish to create a new `BrowserContext` while one already exists, you will need to [close](/javascript-api/k6-experimental/browser/browsercontext/close) the current one, and create a new one with either [newContext](/javascript-api/k6-experimental/browser/newcontext/) or [newPage](/javascript-api/k6-experimental/browser/newpage). All resources associated to the closed `BrowserContext` will also be closed and cleaned up (such as [Page](/javascript-api/k6-experimental/browser/page/)s).
+
+</Blockquote>
 
 ### Returns
 
-| Type  | Description                                                                    |
-| ----- | ------------------------------------------------------------------------------ |
-| Array | Array of [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) objects |
+| Type           | Description                                                                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| object \| null | The current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) if one has been created, otherwise `null`. |
 
 
 ### Example
@@ -31,11 +37,13 @@ export const options = {
 }
 
 export default function () {
-  console.log(browser.contexts().length); // 0
+  console.log(browser.context()); // null
 
-  const context = browser.newContext();
-  console.log(browser.contexts().length); // 1
+  const page = browser.newPage();
+  const context = browser.context();
+  console.log(context); // {"base_event_emitter":{}}
 
+  page.close();
   context.close();
 }
 ```
