@@ -17,7 +17,7 @@ Key features include:
 
 Currently, the disruptor is intended to test applications running in Kubernetes. Other platforms are not supported at this time.
 
-It provides a Javascript API to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
+It provides a Javascript API to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
