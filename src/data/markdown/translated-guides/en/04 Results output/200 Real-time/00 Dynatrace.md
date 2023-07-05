@@ -55,4 +55,4 @@ When streaming the k6 results to Dynatrace, you can configure the following Dyna
 | `K6_DYNATRACE_FLUSH_PERIOD`              | Define how often metrics are sent to Dynatrace. The default value is 1 second.  |
 | `K6_DYNATRACE_URL`                       | Dynatrace URL. The default value is `https://dynatrace.live.com`.  |
 | `K6_DYNATRACE_INSECURE_SKIP_TLS_VERIFY`  | If `true`, the HTTP client kips TLS verification on the endpoint. The default value is `true`. |
-| `K6_DYNATRACE_HEADER`                    | Pair of key/value headers to add to Dynatrace requests. |
+| `K6_DYNATRACE_HEADER_<here-the-header-key>` | Additional headers to include in the HTTP requests. `K6_DYNATRACE_HEADER_COOL_HEADER="cool value of the header"` |
