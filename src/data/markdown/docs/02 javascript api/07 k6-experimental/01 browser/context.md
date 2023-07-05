@@ -39,9 +39,9 @@ export const options = {
 export default function () {
   console.log(browser.context()); // null
 
-  const page = browser.newPage();
-  const context = browser.context();
-  console.log(context); // {"base_event_emitter":{}}
+  const page1 = browser.newPage(); // implicitly creates a new browserContext
+  const context = browser.context(); // underlying live browserContext associated with browser
+  const page2 = context.newPage(); // shares the browserContext with page1
 
   page.close();
   context.close();
