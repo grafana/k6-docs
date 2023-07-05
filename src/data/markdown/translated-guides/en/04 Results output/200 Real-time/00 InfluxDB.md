@@ -16,8 +16,8 @@ Check that the InfluxDB instance to store the k6 metrics is running.
 Use the previous k6 binary and run the test passing the following [options](#options):
 
 ```bash
-K6_INFLUXDB_ORGANIZATION="<INFLUXDB-ORGANIZATION-ID>" \
-K6_INFLUXDB_BUCKET="<INFLUXDB-BUCKET>" \
+K6_INFLUXDB_ORGANIZATION="<INFLUXDB-ORGANIZATION-NAME>" \
+K6_INFLUXDB_BUCKET="<INFLUXDB-BUCKET-NAME>" \
 K6_INFLUXDB_TOKEN="<INFLUXDB-TOKEN>" \
 K6_INFLUXDB_ADDR="<INFLUXDB-HTTP-ADDRESS>" \
 ./k6 run script.js -o xk6-influxdb
@@ -37,8 +37,8 @@ Here is the full list of options that can be configured and passed to the extens
 
 | ENV | Default | Description |
 |-----|---------|-------------|
-| K6_INFLUXDB_ORGANIZATION      |                       | Your InfluxDB organization ID. [View organizations](https://docs.influxdata.com/influxdb/v2.7/organizations/). |
-| K6_INFLUXDB_BUCKET            |                       | The bucket to store k6 metrics data. [Manage buckets](https://docs.influxdata.com/influxdb/v2.7/organizations/buckets/). |
+| K6_INFLUXDB_ORGANIZATION      |                       | Your InfluxDB organization name. [View organizations](https://docs.influxdata.com/influxdb/v2.7/organizations/). |
+| K6_INFLUXDB_BUCKET            |                       | The bucket name to store k6 metrics data. [Manage buckets](https://docs.influxdata.com/influxdb/v2.7/organizations/buckets/). |
 | K6_INFLUXDB_TOKEN             |                       | An API token that provides authorized access to store data. [Manage API tokens](https://docs.influxdata.com/influxdb/v2.7/security/tokens/). |
 | K6_INFLUXDB_ADDR              | http://localhost:8086 | The address of the InfluxDB instance. |
 | K6_INFLUXDB_PUSH_INTERVAL     | 1s | The flush's frequency of the `k6` metrics. |
