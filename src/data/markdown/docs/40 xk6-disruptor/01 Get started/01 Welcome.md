@@ -65,7 +65,7 @@ Common use cases are:
 
 ## Learn more
 
-Check the [requirements](/javascript-api/xk6-disruptor/requirements/), [installation](/javascript-api/xk6-disruptor/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/expose-your-application/) to get started with the disruptor.
+Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements/), [installation](/javascript-api/xk6-disruptor/get-started/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application/) to get started with the disruptor.
 
 This documentation presents a few [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
 
