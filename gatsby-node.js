@@ -1663,6 +1663,13 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/cloud/cloud-reference/cloud-rest-api/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/reference/cloud-rest-api/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
       '/javascript-api/k6-http/cookiejar/',
