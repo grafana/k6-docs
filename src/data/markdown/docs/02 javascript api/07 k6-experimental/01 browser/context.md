@@ -43,7 +43,8 @@ export default function () {
   const context = browser.context(); // underlying live browserContext associated with browser
   const page2 = context.newPage(); // shares the browserContext with page1
 
-  page.close();
+  page1.close();
+  page2.close();
   context.close();
 }
 ```
