@@ -857,21 +857,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-temporal",
-      "description": "Use for testing/benchmarking Temporal",
-      "url": "https://github.com/temporalio/xk6-temporal",
-      "logo": "",
-      "author": {
-        "name": "temporalio",
-        "url": "https://github.com/temporalio"
-      },
-      "stars": "7",
-      "type": ["JavaScript"],
-      "categories": ["Platform"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-celery",
       "description": "Generate load on Celery workers",
       "url": "https://github.com/fornfrey/xk6-celery",
