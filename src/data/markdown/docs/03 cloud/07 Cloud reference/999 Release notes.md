@@ -31,7 +31,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Fix pdf crashes when fetching urls
 
 ### v3.14.0 `(2022-11-1)`
-- [Cloud REST API](/cloud/cloud-reference/cloud-rest-api/)
+- Cloud REST API
 
 ### v3.13.4 `(2022-10-19)`
 - Protect billing receipt download link

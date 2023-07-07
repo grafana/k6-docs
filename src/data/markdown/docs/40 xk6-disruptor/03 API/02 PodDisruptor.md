@@ -12,7 +12,7 @@ To construct a `PodDisruptor`, use the [PodDisruptor() constructor](/javascript-
 | Method | Description |
 | ------ | ----------- |
 | [PodDisruptor.injectGrpcFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injectgrpcfaults) |  Inject [gRPC faults](/javascript-api/xk6-disruptor/api/faults/grpc) in the target Pods|
-| [PodDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) |  Inject [HTTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
+| [PodDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/poddisruptor/injecthttpfaults) |  Inject [HTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
 | PodDisruptor.targets() | Returns the list of target Pods of the PodDisruptor |
  
 
@@ -43,11 +43,6 @@ const fault = {
 
 export default function () {
   const disruptor = new PodDisruptor(selector);
-  const targets = disruptor.targets();
-  if (targets.length != 1) {
-    throw new Error('expected list to have one target');
-  }
-
   disruptor.injectHTTPFaults(fault, '30s');
 }
 ```

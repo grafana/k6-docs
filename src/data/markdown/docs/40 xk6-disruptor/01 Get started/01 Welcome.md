@@ -17,7 +17,7 @@ Key features include:
 
 Currently, the disruptor is intended to test applications running in Kubernetes. Other platforms are not supported at this time.
 
-It provides a Javascript API to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
+It provides a Javascript API to inject different [faults](/javascript-api/xk6-disruptor/api/faults/) in HTTP and gRPC requests, such as errors and delays, into the selected Kubernetes [Pods](/javascript-api/xk6-disruptor/api/poddisruptor) or [Services](/javascript-api/xk6-disruptor/api/servicedisruptor).
 
 Other types of faults and disruptors will be introduced in the future. The [Roadmap](https://github.com/grafana/xk6-disruptor/blob/main/ROADMAP.md) presents the project's goals for the coming months regarding new functionalities and enhancements.
 
@@ -29,12 +29,6 @@ export default function () {
         namespace: "default",
         select: { labels: { "app.kubernetes.io/name": "my-app" } },
     });
-
-    // Check that there is at least one target
-    const targets = disruptor.targets();
-    if (targets.length === 0) {
-        throw new Error("expected list to have one target");
-    }
 
     // Disrupt the targets by injecting HTTP faults into them for 30 seconds
     const fault = {
@@ -65,7 +59,7 @@ Common use cases are:
 
 ## Learn more
 
-Check the [requirements](/javascript-api/xk6-disruptor/requirements/), [installation](/javascript-api/xk6-disruptor/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/expose-your-application/) to get started with the disruptor.
+Check the [requirements](/javascript-api/xk6-disruptor/get-started/requirements/), [installation](/javascript-api/xk6-disruptor/get-started/installation/), and [how to expose your application](/javascript-api/xk6-disruptor/get-started/expose-your-application/) to get started with the disruptor.
 
 This documentation presents a few [examples of injecting faults in different scenarios](/javascript-api/xk6-disruptor/examples/).
 

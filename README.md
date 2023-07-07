@@ -56,4 +56,12 @@ Then visit http://localhost:8100
 
 > If you want to re-run the `--build` command, you may get an error about not having access to delete a `cache/` folder. Use `sudo` to delete this manually before retrying.
 
+Note: If experience issues when starting the docs locally with Docker, run the commands below to clean up previous executions: 
+
+```shell
+docker-compose rm --stop --force --volumes
+docker image rm k6-docs-web:latest
+```
+
+And run again `docker-compose  up -d --build`.
 
