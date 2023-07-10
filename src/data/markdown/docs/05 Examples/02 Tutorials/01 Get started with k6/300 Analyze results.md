@@ -45,16 +45,14 @@ vus_max........................: 20     min=20     max=20
 
 For simplicity to learn about [k6 metric results](/using-k6/metrics/reference/), this tutorial uses the [JSON output](/results-output/real-time/json) and [jq](https://jqlang.github.io/jq/) to filter results.
 
+For other options to analyze test results such as storage and time-series visualizations in real-time, check out:
 
-For other options to analyze test results such as storage and time-series visualizations in real-time, review:
 - [Results output](/results-output/overview/)
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
 
-
-
 ## Write time-series results to a JSON file
 
-To output results as JSON lines, use the `--out` flag.
+To output results to a JSON file, use the `--out` flag.
 
 ```bash
 k6 run --out json=results.json api-test.js
@@ -66,14 +64,13 @@ Then run this `jq` command to filter the latency results; `http_req_duration` me
 jq '. | select(.type == "Point" and .metric == "http_req_duration")' results.json
 ```
 
-k6 results have a number of [built-in tags](/using-k6/tags-and-groups/#system-tags).
-For example, filter results to only results where the status is 200:
+k6 results have a number of [built-in tags](/using-k6/tags-and-groups/#system-tags). For example, filter results to only results where the status is 200.
 
 ```bash
 jq '. | select(.type == "Point" and .data.tags.status == "200")' results.json
 ```
 
-And calculate the aggregated value of any metric with any particular tags. For example, 
+Or calculate the aggregated value of any metric with any particular tags.
 
 <CodeGroup labels={["Average", "Min", "Max"]} lineNumbers={[false]} showCopyButton={[true]} heightTogglers={[true]}>
 
@@ -93,12 +90,9 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration") | .data.valu
 
 ## Apply custom tags
 
-You can also apply [_Tags_](/using-k6/tags-and-groups/#tags) to requests or code blocks.
-To do so:
+You can also apply [_Tags_](/using-k6/tags-and-groups/#tags) to requests or code blocks. For example, this is how you can add a [`tags`](/using-k6/tags-and-groups/#tags) to the [request params](/javascript-api/k6-http/params/).
 
-Add a [`tags`](/using-k6/tags-and-groups/#tags) object in the [request params](/javascript-api/k6-http/params/). Give the tag a key and value.
-
-  ```javascript
+```javascript
   const params = {
     headers: {
       "Content-Type": "application/json",
@@ -107,9 +101,9 @@ Add a [`tags`](/using-k6/tags-and-groups/#tags) object in the [request params](/
       "my-custom-tag": "auth-api",
     },
   };
-  ```
+```
 
-Pass `params` to the `http` request. Create the file `tagged-login.js`:
+Create a new script named "tagged-login.js", and add a custom tag to it.
 
   <CodeGroup labels={["tagged-login.js"]} showCopyButton={[true]} heightTogglers={[true]}>
 
@@ -153,9 +147,8 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration" and .data.tag
 
 ## Organize requests in groups
 
-You can also organize your test logic into [Groups](/using-k6/tags-and-groups#groups), test logic inside a `group` tags to all requests and metrics within its block.
-Groups can help you to organize the test as a series of logical transactions or blocks.
-
+You can also organize your test logic into [Groups](/using-k6/tags-and-groups#groups). Test logic inside a `group` tags to all requests and metrics within its block.
+Groups can help you organize the test as a series of logical transactions or blocks.
 
 ### Context: a new test to group test logic
 
@@ -275,8 +268,7 @@ As an example, create a metric that collects latency results for each group:
 1. Create two duration trend metric functions.
 1. In each group, add the `duration` time to the trend for requests to `contacts` and the `coin_flip` endpoints.
 
-
-<CodeGroup labels={["Adding custom metrics"]} lineNumbers={["false"]} showCopyButton={[true]} heightTogglers={[true]}>
+<CodeGroup labels={["multiple-flows.js"]} lineNumbers={["false"]} showCopyButton={[true]} heightTogglers={[true]}>
 
 ```javascript
 //import necessary modules
@@ -326,20 +318,20 @@ export default function () {
 
 </CodeGroup>
 
-Run the test with small number of iterations and output the results to `results.json`:
+Run the test with small number of iterations and output the results to `results.json`.
 
 ```bash
 k6 run multiple-flows.js --out json=results.json --iterations 10
 ```
 
-Look for the custom trend metrics in the end-of-test console summary:
+Look for the custom trend metrics in the end-of-test console summary.
 
 ```bash
 coinflip_duration..............: avg=119.6438  min=116.481  med=118.4755 max=135.498  p(90)=121.8459 p(95)=123.89565
 contacts_duration..............: avg=125.76985 min=116.973  med=120.6735 max=200.507  p(90)=127.9271 p(95)=153.87245
 ```
 
-You can also query custom metric results from the JSON results. For example, to get the aggregated results as:
+You can also query custom metric results from the JSON results. For example, to get the aggregated results as.
 
 
 <CodeGroup labels={["Average", "Min", "Max"]} lineNumbers={[false]} showCopyButton={[true]} heightTogglers={[true]}>

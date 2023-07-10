@@ -175,7 +175,7 @@ To do so, follow these steps:
     // Put visits to contact page in one group
     contacts(baseUrl);
     // Coinflip players in another group
-    contacts(baseUrl);
+    coinflip(baseUrl);
   }
 
   //define configuration
