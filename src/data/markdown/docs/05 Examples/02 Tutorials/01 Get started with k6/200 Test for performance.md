@@ -29,7 +29,7 @@ Thresholds are set in options.
 
 ```javascript
 export const options = {
-  //define thresholds
+  // define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
@@ -44,13 +44,13 @@ Add this [`options`](/using-k6/k6-options/) object with thresholds to your scrip
 heightTogglers={[true]}>
 
 ```javascript
-// Import necessary modules
+// import necessary modules
 import { check } from "k6";
 import http from "k6/http";
 
-//define configuration
+// define configuration
 export const options = {
-  //define thresholds
+  // define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ["p(99)<1000"], // 99% of requests should be below 1s
@@ -75,7 +75,7 @@ export default function () {
 
   // check that response is 200
   check(res, {
-    "login response was 200": (res) => res.status == 200,
+    "response code was 200": (res) => res.status == 200,
   });
 }
 
@@ -133,9 +133,16 @@ Since this is a learning environment, the stages are still quite short.
 Add the following _scenario_ to your options `object` and rerun the test.
 Where the smoke test defined the load in terms of iterations, this configuration uses the [`ramping-vus` executor](/using-k6/scenarios/executors/ramping-vus/) to express load through virtual users and duration.
 
-```json
+```javascript
+export const options = {
+  // define thresholds
+  thresholds: {
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+    http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
+  },
+  // define scenarios
   scenarios: {
-    //arbitrary name of scenario
+    // arbitrary name of scenario
     average_load: {
       executor: "ramping-vus",
       stages: [
@@ -148,6 +155,7 @@ Where the smoke test defined the load in terms of iterations, this configuration
       ],
     },
   }
+};
 ```
 
 Run the test with no command-line flags: 
@@ -191,7 +199,7 @@ To do this:
       http_req_duration: ['p(99)<1000'], 
     },
     scenarios: {
-      //arbitrary name of scenario:
+      // define scenarios
       breaking: {
         executor: "ramping-vus",
         stages: [
@@ -217,14 +225,19 @@ Copy and run it with `k6 run api-test.js`.
 heightTogglers={[true]}>
 
 ```javascript
-// Import necessary modules
+// import necessary modules
 import { check } from "k6";
 import http from "k6/http";
 
-//define configuration
+// define configuration
 export const options = {
+  // define thresholds
+  thresholds: {
+    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
+    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
+  },
+  // define scenarios
   scenarios: {
-    //arbitrary name of scenario:
     breaking: {
       executor: "ramping-vus",
       stages: [
@@ -239,11 +252,6 @@ export const options = {
         //....
       ],
     },
-  },
-  //define thresholds
-  thresholds: {
-    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
-    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
   },
 };
 
@@ -265,7 +273,7 @@ export default function () {
 
   // check that response is 200
   check(res, {
-    "login response was 200": (res) => res.status == 200,
+    "response code was 200": (res) => res.status == 200,
   });
 }
 
