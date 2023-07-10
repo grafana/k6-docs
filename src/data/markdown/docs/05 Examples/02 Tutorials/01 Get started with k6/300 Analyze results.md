@@ -183,7 +183,7 @@ Since this example simulates a human user rather than an API call, it has a slee
 
 ```javascript
 import http from "k6/http";
-import { check, group, sleep } from "k6";
+import { group, sleep } from "k6";
 
 //set URL as variable
 const baseUrl = "https://test.k6.io";
@@ -218,8 +218,7 @@ Name one group `Contacts flow` and another `Coinflip game`.
 ```javascript
 //import necessary modules
 import http from "k6/http";
-import { check, group, sleep } from "k6";
-import { Counter, Rate, Trend } from "k6/metrics";
+import { group, sleep } from "k6";
 
 //set baseURL
 const baseUrl = "https://test.k6.io";
