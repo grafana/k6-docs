@@ -45,7 +45,7 @@ vus_max........................: 20     min=20     max=20
 
 For simplicity to learn about [k6 metric results](/using-k6/metrics/reference/), this tutorial uses the [JSON output](/results-output/real-time/json) and [jq](https://jqlang.github.io/jq/) to filter results.
 
-For other options to analyze test results such as storage and time-series visualizations in real-time, check out:
+For other options to analyze test results such as storage and time-series visualizations in real-time, refer to:
 
 - [Results output](/results-output/overview/)
 - [Ways to visualize k6 results](https://k6.io/blog/ways-to-visualize-k6-results/)
