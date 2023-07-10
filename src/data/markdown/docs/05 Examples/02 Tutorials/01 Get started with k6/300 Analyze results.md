@@ -288,8 +288,8 @@ import { Trend } from "k6/metrics";
 const baseUrl = "https://test.k6.io";
 
 // Create custom trend metrics
-const contactsLatency = new Trend("contacts duration");
-const coinflipLatency = new Trend("coinflip duration");
+const contactsLatency = new Trend("contacts_duration");
+const coinflipLatency = new Trend("coinflip_duration");
 
 export default function () {
   // Put visits to contact page in one group
@@ -335,8 +335,8 @@ k6 run multiple-flows.js --out json=results.json --iterations 10
 Look for the custom trend metrics in the end-of-test console summary:
 
 ```bash
-coinflip duration..............: avg=119.6438  min=116.481  med=118.4755 max=135.498  p(90)=121.8459 p(95)=123.89565
-contacts duration..............: avg=125.76985 min=116.973  med=120.6735 max=200.507  p(90)=127.9271 p(95)=153.87245
+coinflip_duration..............: avg=119.6438  min=116.481  med=118.4755 max=135.498  p(90)=121.8459 p(95)=123.89565
+contacts_duration..............: avg=125.76985 min=116.973  med=120.6735 max=200.507  p(90)=127.9271 p(95)=153.87245
 ```
 
 You can also query custom metric results from the JSON results. For example, to get the aggregated results as:
@@ -345,15 +345,15 @@ You can also query custom metric results from the JSON results. For example, to 
 <CodeGroup labels={["Average", "Min", "Max"]} lineNumbers={[false]} showCopyButton={[true]} heightTogglers={[true]}>
 
 ```bash
-jq '. | select(.type == "Point" and .metric == "coinflip duration") | .data.value' results.json | jq -s 'add/length'
+jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.value' results.json | jq -s 'add/length'
 ```
 
 ```bash
-jq '. | select(.type == "Point" and .metric == "coinflip duration") | .data.value' results.json | jq -s min
+jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.value' results.json | jq -s min
 ```
 
 ```bash
-jq '. | select(.type == "Point" and .metric == "coinflip duration") | .data.value' results.json | jq -s max
+jq '. | select(.type == "Point" and .metric == "coinflip_duration") | .data.value' results.json | jq -s max
 ```
 
 </CodeGroup>
