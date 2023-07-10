@@ -18,9 +18,9 @@ For scenarios such as these, we've created the [k6-operator](https://github.com/
 The intent is to automate tasks that a _human operator_ would normally do; tasks like provisioning new application components, changing configurations, or resolving run-time issues.
 
 The k6-operator defines the custom `K6` resource type and listens for changes to, or creation of, `K6` objects.
-Each `K6` object references a k6 test script, configures the environment, and specifies the amount of [parallelism](/misc/glossary/#parallelism) for a test run.
+Each `K6` object references a k6 test script, configures the environment, and specifies the number of instances, as `parallelism`, for a test run.
 Once a change is detected, the operator will react by modifying the cluster state, spinning up k6 test jobs as needed.
-Based on the desired parallelism, the operator split the workload between the jobs using [execution segments](/misc/glossary/#execution-segment).
+Based on the desired [parallelism](/misc/glossary/#parallelism), the operator split the workload between the jobs using [execution segments](/misc/glossary/#execution-segment).
 
 ## Get started with k6-operator
 Let's walk through the process for getting started with the k6-operator.
@@ -139,6 +139,7 @@ kubectl create configmap my-test --from-file test.js
 
 Limitations exist on how large your test script can be when deployed within a `ConfigMap`.
 Kubernetes imposes a size limit of 1,048,576 bytes (1 MiB) for the data, therefore if your test scripts exceed this limit, you'll need to mount a `PersistentVolume`.
+Check the motivations for when you should use a ConfigMap.
 
 </Blockquote>
 
@@ -158,7 +159,7 @@ Organizing your test scripts was part of the discussion during [episode #76](htt
 
 <Blockquote mod="attention" title="">
 
-When using a `PersistentVolume`, the operator will expect all test scripts to be contained within a directory named `test/`.
+When using a `PersistentVolume`, the operator will expect all test scripts to be contained within a directory named `/test/`.
 
 </Blockquote>
 
@@ -328,16 +329,39 @@ Be sure to visit the [options reference](https://k6.io/docs/using-k6/k6-options/
 Tests are executed by applying the custom resource `K6` to a cluster where the operator is running.
 The test configuration is applied as in the following:
 
-```yaml
+```shell
 kubectl apply -f /path/to/your/k6-resource.yaml
 ```
 
 After completing a test run, you need to clean up the test jobs created. 
 This is done by running the following command:
 
-```yaml
+```shell
 kubectl delete -f /path/to/your/k6-resource.yaml
 ```
+
+<Blockquote mod="note" title="Best Practice">
+
+If you make use of [real-time results output](/results-output/real-time/), e.g. [Prometheus Remote Write](/results-output/real-time/prometheus-remote-write/), use the `cleanup` option to automatically remove resources upon test completion as with the following example:
+
+```yaml
+apiVersion: k6.io/v1alpha1
+kind: K6
+metadata:
+  name: run-k6-with-realtime
+spec:
+  parallelism: 4
+  # Removes all resources upon completion
+  cleanup: post
+  script:
+    configMap:
+      name: my-test
+      file: test.js
+  arguments:  -o experimental-prometheus-rw
+```
+
+</Blockquote>
+
 
 ## 6. When things go wrong
 Sadly nothing works perfectly all the time, so knowing where you can go for help is important.
