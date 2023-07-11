@@ -20,7 +20,7 @@ These extensions might be provided by Grafana or by the community, and _may_ be 
 
 <Blockquote mod="note" title="">
 
-Only Grafana-owned extensions can progress beyond the _extension_ phase to become _experimental_ or _core modules_.
+Only Grafana-controlled extensions may progress beyond the _extension_ phase to become _experimental_ or _core modules_.
 
 </Blockquote>
 
@@ -31,6 +31,13 @@ The extension is still maintained outside the core of k6 but imported as a Go mo
 There should be a reasonably high degree of quality and stability at this point.
 This phase makes the feature accessible to more users, which in turn gives k6 developers more chances to receive feedback.
 The key will be to achieve a balance between usability and stability.
+
+<Blockquote mod="attention" title="">
+
+Not all experimental modules will progress to become a core module!
+The k6 team reserves the right to discontinue and remove any experimental module if is no longer deemed desirable.
+
+</Blockquote>
 
 ### Core Module
 The stabilized feature is now part of the standard k6 product as a built-in module.
