@@ -103,9 +103,9 @@ Once you’ve gained enough experience with test creation, we strongly advise yo
 
 Another approach to group your tests is to use the [resource object model pattern](https://k6.io/blog/load-testing-made-simpler-with-resource-object-model/).
 
-**Scenarios**
+**Scenarios and Groups**
 
-To organize and manage multiple user scenarios effectively, we also advise you to use [scenarios](/using-k6/scenarios). Scenarios allow you to model diverse workloads and can also be powerful if you are also considering a [hybrid approach to performance testing](/testing-guides/load-testing-websites/#hybrid-load-testing).
+To organize and manage multiple user scenarios effectively, we also advise you to use [scenarios](/using-k6/scenarios) and [groups](/using-k6/groups). Scenarios allow you to model diverse workloads and can be powerful if you also consider a [hybrid approach to performance testing](/testing-guides/load-testing-websites/#hybrid-load-testing). Groups allow you to organize multiple requests by page loads or user actions as a single transaction. k6 shows the response time of grouped requests separately and as a group.
 
 ## 3. Adding checks
 
@@ -200,13 +200,14 @@ export const options = {
 
 If the test ends with one or more failed thresholds, k6 will exit with a non-zero exit code, signaling to the CI/CD tool that the performance test step failed. This will stop the build/pipeline from progressing and notify you so you can take corrective action. [Notifications](#notifications) require additional setup, so we’ve provided further instructions on putting this in place in one of the sections down below.
 
-## 4. Local vs Cloud execution
+## 5. Local vs. Cloud execution
 
-k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes. In local execution mode k6 will generate all the traffic from the machine where it's being run. In a CI pipeline, this would be the build servers. 
+When running your tests, k6 supports the following options:
+- **Local execution**: run locally and view results locally (`k6 run ...`)
+- **Cloud execution**: run on the cloud and view results on the cloud  (`k6 cloud ...`)
+- **Stream results with local execution**: run locally and send results on the cloud (`k6 run -o cloud ...`)
 
-When executing a test locally, you can optionally stream the results to k6 Cloud for storage and visualization (`k6 run -o cloud ...`). 
-
-In cloud execution mode, k6 will instead bundle up and send the main JS test file, and all dependent files, to k6 Cloud as an archive for execution on cloud infrastructure managed by our k6 Cloud service. 
+In local execution mode, k6 will generate all the traffic from the machine where it's being run. In a CI pipeline, this would be the build servers. When executing a test locally, you can optionally stream the results to Grafana Cloud k6 for storage and visualization. In cloud execution mode, k6 will instead bundle up and send the main JS test file, and all dependent files, to Grafana Cloud k6 as an archive for execution on cloud infrastructure managed by our cloud service. 
 
 The different modes of execution are appropriate for different use cases. Some general guidance follows:
 
@@ -214,12 +215,12 @@ The different modes of execution are appropriate for different use cases. Some g
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                     | Local execution |
 | The target system is behind a firewall and not accessible from the public Internet                                                                            | Local execution |
-| Can't ensure consistent dedicated resources locally for load test, e.g. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
+| If your CI/CD tool is running jobs on machines/containers with varying amounts of resources                                                                   | Cloud execution |
 | Need to run test from multiple geographic locations in a test                                                                                                 | Cloud execution |
 
-### Authenticating with k6 Cloud
+### Authenticating with Grafana Cloud k6
 
-If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool.
+If you decide to use the Grafana Cloud k6 service, either to stream results with local execution or through cloud execution, you'll need to authenticate with Grafana Cloud k6. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool.
 
 ```bash
 K6_CLOUD_TOKEN=$TOKEN k6 cloud script.js
@@ -231,7 +232,7 @@ Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
 k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
 ```
 
-Get your k6 Cloud token from the [account settings page](https://app.k6.io/account/token).
+To get your personal Grafana k6 Cloud API token, check out [Authenticate on the CLI](https://grafana.com/docs/grafana-cloud/k6/author-run/tokens-and-cli-authentication/).
 
 ## 5. Test frequency
 
