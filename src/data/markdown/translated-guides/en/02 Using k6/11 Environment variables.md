@@ -4,7 +4,7 @@ excerpt: 'You can access any environment variables from your k6 script code and 
 ---
 
 Often, scripts need only minor tweaks to be reusable in different contexts.
-Rather than creating several separate scripts for these different contexts or environments, you can use environment variables to make parts of your script tweakable.
+Rather than creating several separate scripts for these different contexts or environments, you can use [environment variables](/misc/glossary/#environment-variables) to make parts of your script tweakable.
 
 You can use environment variables for two main purposes:
 

@@ -20,7 +20,6 @@ The intent is to automate tasks that a _human operator_ would normally do; tasks
 The k6-operator defines the custom `K6` resource type and listens for changes to, or creation of, `K6` objects.
 Each `K6` object references a k6 test script, configures the environment, and specifies the number of instances, as `parallelism`, for a test run.
 Once a change is detected, the operator will react by modifying the cluster state, spinning up k6 test jobs as needed.
-Based on the desired [parallelism](/misc/glossary/#parallelism), the operator split the workload between the jobs using [execution segments](/misc/glossary/#execution-segment).
 
 ## Get started with k6-operator
 Let's walk through the process for getting started with the k6-operator.
@@ -139,7 +138,8 @@ kubectl create configmap my-test --from-file test.js
 
 Limitations exist on how large your test script can be when deployed within a `ConfigMap`.
 Kubernetes imposes a size limit of 1,048,576 bytes (1 MiB) for the data, therefore if your test scripts exceed this limit, you'll need to mount a `PersistentVolume`.
-Check the motivations for when you should use a ConfigMap.
+
+Check the [motivations](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation) for when you should use a `ConfigMap` versus a `PersistentVolume`.
 
 </Blockquote>
 
@@ -208,6 +208,7 @@ We created the ConfigMap named `my-test`.
 The test script content was added to the map using the filename as the key-value, therefore the `file` value is `test.js`.
 
 The amount of `parallelism` is up to you; how many pods do you want to split the test amongst?
+The operator will split the workload between the pods using [execution segments](/misc/glossary/#execution-segment).
 
 <Blockquote mod="attention" title="">
 
@@ -250,8 +251,8 @@ Not everything should be included directly in your scripts.
 Well written scripts will allow for variability to support multiple scenarios and to avoid hard-coding values that tend to change.
 These could be anything from passwords to target urls, in addition to system options.
 
-We can pass this data as environment variables for use with each pod executing your script.
-This can be defined explicitly within the `CustomResource`, or by referencing a `ConfigMap` or `Secret`.
+We can pass this data as [environment variables](/misc/glossary/#environment-variables) for use with each pod executing your script.
+This can be defined explicitly within the `K6` resource, or by referencing a `ConfigMap` or `Secret`.
 
 <CodeGroup labels={["run-k6-with-vars.yaml"]} lineNumbers={[]} showCopyButton={[true]}>
 
@@ -285,7 +286,7 @@ The above YAML introduces the `runner` section. This section applies to each pod
 
 </Blockquote>
 
-Now, with the referenced resources, our test scripts can [use environment variables](https://k6.io/docs/using-k6/environment-variables/) as in the following:
+Now, with the referenced resources, our test scripts can [use environment variables](/using-k6/environment-variables/) as in the following:
 
 ```javascript
 export function setup() {
@@ -295,8 +296,8 @@ export function setup() {
 
 ### Change command-line arguments
 
-k6 [options](https://k6.io/docs/using-k6/k6-options/) can be specified in many ways, one being the command-line.
-Specifying options via command-line can still be accomplished when using the operator.
+[k6 options](/using-k6/k6-options/) can be specified in many ways, one being the command-line.
+Specifying options via command-line can still be accomplished when using the operator as shown with the following example:
 
 <CodeGroup labels={["run-k6-with-args.yaml"]} lineNumbers={[]} showCopyButton={[true]}>
 
@@ -316,7 +317,7 @@ spec:
 
 </CodeGroup>
 
-With the above arguments, we're both adding a custom tag to metrics, we're changing the output format of logs to [JSON](/misc/glossary/#json).
+With the above arguments, we're adding a [test-wide custom tag](/using-k6/tags-and-groups/#test-wide-tags) to metrics and changing the output format of logs to [JSON](/misc/glossary/#json).
 
 <Blockquote mod="note" title="">
 
@@ -367,7 +368,7 @@ spec:
 Sadly nothing works perfectly all the time, so knowing where you can go for help is important.
 
 Be sure to search the [k6-operator category in the community forum](https://community.k6.io/c/k6-operator). 
-k6 has a growing and helpful community of engineers working with k6-operator, so there's a good chance your issue has already been discussed and resolved.
+k6 has a growing and helpful community of engineers working with k6-operator, so there's a good chance your issue has already been discussed and overcome.
 It's also in these forums where you'll be able to get help from members of the k6 development team.
 
 ## See also

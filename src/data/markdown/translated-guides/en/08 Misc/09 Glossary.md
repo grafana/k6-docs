@@ -18,6 +18,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Data parameterization](#data-parameterization)
 - [Dynamic data](#dynamic-data)
 - [Endurance testing](#endurance-testing)
+- [Environment variables](#environment-variables)
 - [Execution segment](#execution-segment)
 - [Goja](#goja)
 - [Graceful stop](#graceful-stop)
@@ -80,6 +81,9 @@ Dynamic data
 
 Endurance testing
 : A synonym for [soak testing](#soak-test).
+
+Environment variables
+: User-definable values which may be utilized by the operating system and other programs.<br/><br/>[Using environment variables](/using-k6/environment-variables/) 
 
 Execution segment
 : A partition, or fractional portion, of an overall [test run](#test-run).<br/><br/>[The execution-segment options](/using-k6/k6-options/reference#execution-segment)
