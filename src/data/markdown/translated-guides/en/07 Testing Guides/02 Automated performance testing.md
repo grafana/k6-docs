@@ -95,7 +95,7 @@ Generally, when creating test scripts, the golden rule is to start small and exp
 
 **Version control test files**
 
-One recommended practice that we advise users and customers to adopt is version control of performance tests, preferably alongside application code like other automated tests. In our experience, this will lead to a higher likeliness of tests being maintained as the application evolves. Developers also get more invested if the tests are colocated in the application code. It also affords you all the usual benefits of version-controlling your code.
+One recommended practice that we advise users and customers to adopt is version control of performance tests, preferably alongside application code like other automated tests. In our experience, this will lead to a higher likeliness of tests being maintained as the application evolves. Developers also get more invested if the tests are co-located in the application code. It also affords you all the usual benefits of version-controlling your code.
 
 **Modules**
 

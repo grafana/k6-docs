@@ -62,7 +62,7 @@ export default function () {
 <Blockquote mod="note" title="">
 
 With [`gracefulRampDown`](/using-k6/scenarios/concepts/graceful-stop/#the-gracefulrampdown) set to 0 seconds, some iterations might be
-interrupted during the rampdown stage.
+interrupted during the ramp down stage.
 
 </Blockquote>
 
