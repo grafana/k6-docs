@@ -23,7 +23,7 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import SeoMetaData from 'utils/seo-metadata';
-import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/utils.node';
+import { LATEST_VERSION, SUPPORTED_VERSIONS } from 'utils/versioning';
 
 const componentsForNativeReplacement = {
   table: TableWrapper,

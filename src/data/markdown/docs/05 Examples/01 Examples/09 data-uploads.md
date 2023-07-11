@@ -116,6 +116,7 @@ const txt = open('/path/to/text.txt');
 export default function () {
   const fd = new FormData();
   fd.append('someTextField', 'someValue');
+  fd.append('aBinaryFile', { data: new Uint8Array(img1).buffer, filename: 'logo.png', content_type: 'image/png' });
   fd.append('anotherTextField', 'anotherValue');
   fd.append('images', http.file(img1, 'image1.png', 'image/png'));
   fd.append('images', http.file(img2, 'image2.jpg', 'image/jpeg'));
@@ -138,3 +139,6 @@ Note that:
   will appear last in the request under the `text` form field.
 - It's required to specify the multipart boundary in the `Content-Type` header,
   so you must assemble the header manually as shown.
+- Blob is not supported or implemented. For the same functionality, use
+  a simple object with the fields `data`, `content_type` (defaulting to "application/octet-stream") and optionally
+  `filename` as shown for `aBinaryFile` above.

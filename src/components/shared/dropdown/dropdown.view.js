@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import useClickOutside from 'hooks/use-click-outside';
+import React, { useRef, useState } from 'react';
 
 import styles from './dropdown.module.scss';
 import ArrowIcon from './svg/arrow.inline.svg';
@@ -7,8 +8,10 @@ import ArrowIcon from './svg/arrow.inline.svg';
 export const Dropdown = ({ currentOption, options, className, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const ddRef = useRef(null);
+  useClickOutside(ddRef, () => setIsOpen(false));
   return (
-    <div className={classNames(styles.wrapper, className)}>
+    <div className={classNames(styles.wrapper, className)} ref={ddRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         type="button"
@@ -19,7 +22,8 @@ export const Dropdown = ({ currentOption, options, className, onChange }) => {
       >
         {currentOption && (
           <span>
-            {options.find((item) => item.value === currentOption).label}
+            {options.find((item) => item.value === currentOption)?.label ??
+              currentOption}
           </span>
         )}
         <ArrowIcon className={styles.icon} />
@@ -30,7 +34,7 @@ export const Dropdown = ({ currentOption, options, className, onChange }) => {
             .filter((option) => option.value !== currentOption)
             .map((option) => (
               <button
-                key={option}
+                key={option.value}
                 type="button"
                 className={styles.menuItem}
                 onClick={() => onChange(option.value)}

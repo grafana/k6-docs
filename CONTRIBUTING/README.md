@@ -128,3 +128,6 @@ To upgrade through the UI,
 1. Optionally add a description and generate release notes, then **Publish release**.
 
 
+**NOTE**: For Grafana Docs releases, set the tag as 'vX.X.X-gcloud'
+
+

@@ -1,6 +1,7 @@
 ---
 title: 'Performance Insights'
 excerpt: 'Performance Insights are automated algorithms that help highlight and diagnose performance issues.'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/analyze-results/get-performance-insights/ 
 ---
 
 Whenever you run a test in k6 Cloud, *Performance Insights* algorithms automatically process the raw metrics and data.
@@ -22,6 +23,7 @@ k6 categorizes performance insights into three sets:
 - [Too many URLs](#too-many-urls)
 - [Too many groups](#too-many-groups)
 - [Too many metrics](#too-many-metrics)
+- [Too many time series](#too-many-time-series)
 - [Outdated k6 Release Used](#outdated-k6-release-used)
 - [High load generator CPU usage](#high-load-generator-cpu-usage)
 - [High load generator memory usage](#high-load-generator-memory-usage)
@@ -224,6 +226,18 @@ for (let id = 1; id <= 1000; id++) {
 
 </CodeGroup>
 
+### Too many time series
+
+*Identifier*: `best_practice_too_many_time_series`
+- **Happens when**:
+  k6 detects a high number of time series in your test script.
+- **What it might indicate**:
+  This alert commonly happens when a test has an excessive number of unique values for `tags`.
+- **Recommendations**:
+  - Use [URL grouping](/using-k6/http-requests#url-grouping) to aggregate data in a single URL metric.
+  - Use fewer tag values when using [custom tags](/using-k6/http-requests/#http-request-tags).
+  - If you followed all previous recommendations and still get this alert, use [`drop_metrics` and `drop_tags`](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options) to reduce the cardinality of time series.
+
 ### Outdated k6 release used
 
 *Identifier*: `best_practice_outdated_k6_release_used`
@@ -279,7 +293,7 @@ An overutilized load generator can skew test results.
 ## Disabling performance insights
 
 You can disable one or more insights from showing up when executing load tests.
-This can be done by using `ext.loadimpct.insights` object in the `options`:
+This can be done by using `ext.loadimpact.insights` object in the `options`:
 
 
 ```javascript
@@ -351,6 +365,7 @@ For all insights and their identifiers, refer to the table below:
 | Too Many URLs                    | `best_practice_too_many_urls`            | `best_practice` |
 | Too Many Groups                  | `best_practice_too_many_groups`          | `best_practice` |
 | Too Many Metrics                 | `best_practice_too_many_metrics`         | `best_practice` |
+| Too Many Time Series             | `best_practice_too_many_time_series`     | `best_practice` |
 | Outdated k6 Release Used         | `best_practice_outdated_k6_release_used` | `best_practice` |
 | High Load Generator CPU Usage    | `health_high_loadgen_cpu_usage`          | `health`        |
 | High Load Generator Memory Usage | `health_high_loadgen_mem_usage`          | `health`        |

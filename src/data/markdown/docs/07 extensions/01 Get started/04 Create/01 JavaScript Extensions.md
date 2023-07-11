@@ -226,7 +226,7 @@ func New() *RootModule {
 func (*RootModule) NewModuleInstance(vu modules.VU) modules.Instance {
     return &ModuleInstance{
         vu: vu,
-        comparator: &Compare{vu: vu}
+        comparator: &Compare{vu: vu},
     }
 }
 
@@ -250,7 +250,7 @@ func (c *Compare) IsGreater(a, b int) bool {
 // Exports implements the modules.Instance interface and returns the exported types for the JS module.
 func (mi *ModuleInstance) Exports() modules.Exports {
     return modules.Exports{
-        Default: c.comparator
+        Default: mi.comparator,
     }
 }
 ```

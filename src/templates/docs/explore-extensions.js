@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { ExtensionsList } from 'components/pages/doc-extensions/extensions-list';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
+import Blockquote from 'components/shared/blockquote';
 import { SEO } from 'components/shared/seo';
 import docPageContent from 'components/templates/doc-page/doc-page-content/doc-page-content.module.scss';
 import LocaleProvider from 'contexts/locale-provider';
@@ -44,13 +46,15 @@ const ExploreExtensionsPage = ({
           description
           url
           logo
-          official
-          categories
-          type
           author {
             name
             url
           }
+          stars
+          type
+          categories
+          tiers
+          cloudEnabled
         }
       }
     }
@@ -68,10 +72,19 @@ const ExploreExtensionsPage = ({
           description={
             'Discover the extensions available to meet your specific needs.'
           }
-          className="container"
           breadcrumbs={breadcrumbs}
         />
-        <div className={docPageContent.inner}>
+        <div className={classNames('container', docPageContent.inner)}>
+          <Blockquote mod="attention" title="Looking for Feedback">
+            Help us improve extensions by completing this{' '}
+            <Link
+              to="https://docs.google.com/forms/d/e/1FAIpQLSeL1RdxAyaoznGKLAdlMa5sLmVWoytpxRCZZVzBeFGSyqGI6A/viewform"
+              className="link"
+            >
+              short survey
+            </Link>
+            .
+          </Blockquote>
           <p>
             With over 50 available extensions, the k6 extension ecosystem has
             many options to meet your requirements and help you incorporate new

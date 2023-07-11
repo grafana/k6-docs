@@ -12,6 +12,7 @@ To construct a `ServiceDisruptor`, use the [ServiceDisruptor() constructor](/jav
 
 | Method | Description |
 | ------ | ----------- |
+| [ServiceDisruptor.injectGrpcFaults()](/javascript-api/xk6-disruptor/api/servicedisruptor/injectgrpcfaults) | Inject [gRPC faults](/javascript-api/xk6-disruptor/api/faults/grpc) in the target Pods|
 | [ServiceDisruptor.injectHTTPFaults()](/javascript-api/xk6-disruptor/api/servicedisruptor/injecthttpfaults) | Inject [HTTTP faults](/javascript-api/xk6-disruptor/api/faults/http) in the target Pods|
  
 
@@ -25,24 +26,21 @@ The following example:
 import { ServiceDisruptor } from 'k6/x/disruptor';
 
 const fault = {
-  averageDelay: 100,
+  averageDelay: '100ms',
   errorRate: 0.1,
   errorCode: 500,
 };
 
 export default function () {
   const disruptor = new ServiceDisruptor('nginx', 'default');
-  const targets = disruptor.targets();
-  if (targets.length != 1) {
-    throw new Error('expected list to have one target');
-  }
-
-  disruptor.injectHTTPFaults(fault, 30);
+  disruptor.injectHTTPFaults(fault, '30s');
 }
 ```
 
 <Blockquote mod="note">
-> You can test this script by creating first a pod running nginx and exposing it as a service with the commands below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
+
+You can test this script by creating first a pod running nginx and exposing it as a service with the commands below, assuming you have [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed in your environment:
+
 ```bash
 > kubectl run nginx --image=nginx
 > kubectl expose pod nginx --port 80

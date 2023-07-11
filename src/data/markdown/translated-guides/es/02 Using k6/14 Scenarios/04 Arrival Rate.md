@@ -32,7 +32,7 @@ export default function () {
   // and we can expect to get 10 iterations completed in total for the
   // full 1m test duration.
 
-  http.get('http://httpbin.test.k6.io/delay/6');
+  http.get('https://httpbin.test.k6.io/delay/6');
 }
 ```
 
@@ -90,7 +90,7 @@ export default function () {
   // new VU iterations will start at a rate of 1 every second,
   // and we can thus expect to get 60 iterations completed
   // for the full 1m test duration.
-  http.get('http://httpbin.test.k6.io/delay/6');
+  http.get('https://httpbin.test.k6.io/delay/6');
 }
 ```
 

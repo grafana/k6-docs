@@ -142,5 +142,5 @@ export default function () {
 ## k6 Cloud environment variables
 
 If you run tests in k6 Cloud, you have additional environment variables that tell you the server, load zone, and distribution of the currently running test.
-[Read about cloud environment variables](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#cloud-environment-variables).
+[Read about cloud environment variables](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-environment-variables).
 

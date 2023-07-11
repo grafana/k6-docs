@@ -21,7 +21,17 @@ export const Features = () => {
       <div className={'row'}>
         <div className="col-md-12">
           <Trait className={styles.trait}>
-            {t('welcome.features.cli-tool')}
+            <Link
+              className={'link'}
+              to={
+                urlLocale === 'es'
+                  ? '/es/usando-k6/opciones/'
+                  : '/using-k6/k6-options/how-to/'
+              }
+            >
+              {t('welcome.features.cli-tool')}
+            </Link>{' '}
+            {t('welcome.features.cli-tool.dev-friendly-apis')}
           </Trait>
 
           <Trait className={styles.trait}>

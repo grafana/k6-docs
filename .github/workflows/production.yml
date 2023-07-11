@@ -3,7 +3,7 @@ name: Production
 on:
   push:
     tags:
-      - v*
+      - 'v*.*.*'
 
 env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.PROD_CI_ALGOLIA_ADMIN_KEY }}
@@ -21,6 +21,9 @@ env:
   GATSBY_DEFAULT_DOC_URL: https://${{ secrets.PROD_CI_MAIN_URL }}/docs
   GATSBY_DEFAULT_MAIN_URL: https://${{ secrets.PROD_CI_MAIN_URL }}
   GATSBY_GOOGLE_API_KEY: ${{ secrets.PROD_CI_GATSBY_GOOGLE_API_KEY }}
+  GATSBY_NEWSLETTER_FORM_URL: https://go2.grafana.com
+  GATSBY_NEWSLETTER_FORM_MUNCHKIN_ID: 356-YFG-389
+  GATSBY_NEWSLETTER_FORM_ID: 1420
 
 jobs:
   update-dependencies:
@@ -28,14 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node.js 16.xs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
@@ -49,14 +52,14 @@ jobs:
       - update-dependencies
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node.js 16.xs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
@@ -76,7 +79,7 @@ jobs:
     name: Lint prose
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: errata-ai/vale-action@reviewdog
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -93,14 +96,14 @@ jobs:
       - lint
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node.js 16.xs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Restore cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}

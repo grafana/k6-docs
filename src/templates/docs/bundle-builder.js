@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ExtensionSelection } from 'components/pages/doc-extensions/extension-selection';
 import { ExtensionsTitleGroup } from 'components/pages/doc-extensions/extensions-title-group';
 import Blockquote from 'components/shared/blockquote';
@@ -38,13 +39,15 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           description
           url
           logo
-          official
-          categories
-          type
           author {
             name
             url
           }
+          stars
+          type
+          categories
+          tiers
+          cloudEnabled
         }
       }
     }
@@ -60,10 +63,19 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
         <ExtensionsTitleGroup
           title={'Bundle'}
           description={`Combine multiple extensions into your reliability testing toolkit.`}
-          className="container"
           breadcrumbs={breadcrumbs}
         />
-        <div className={docPageContent.inner}>
+        <div className={classNames('container', docPageContent.inner)}>
+          <Blockquote mod="attention" title="Looking for Feedback">
+            Help us improve extensions by completing this{' '}
+            <Link
+              to="https://docs.google.com/forms/d/e/1FAIpQLSeL1RdxAyaoznGKLAdlMa5sLmVWoytpxRCZZVzBeFGSyqGI6A/viewform"
+              className="link"
+            >
+              short survey
+            </Link>
+            .
+          </Blockquote>
           <p>
             Extensions are composable; you can combine any extensions, or mix
             and match different test cases. To generate the command for your
@@ -72,10 +84,10 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
           <Blockquote>
             To build successfully, ensure your environment is as described in{' '}
             <Link
-              to="/extensions/guides/build-a-k6-binary-with-extensions/"
+              to="/extensions/guides/build-a-k6-binary-using-go/"
               className="link"
             >
-              Build a k6 binary with extensions
+              Build a k6 binary using Go
             </Link>
             .
           </Blockquote>
@@ -90,7 +102,7 @@ const BundleBuilderPage = ({ pageContext: { sidebarTree, navLinks } }) => {
             Don&apos;t see what you need? Learn how you can{' '}
             <Link
               to={'/extensions/get-started/create/'}
-              class={docPageContent.link}
+              className={docPageContent.link}
             >
               create
             </Link>{' '}

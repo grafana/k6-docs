@@ -21,7 +21,7 @@ This script has two scenarios, `contacts` and `news`, which run in sequence:
 1. At the beginning of the test, k6 starts the `contacts` scenario. 50 VUs try to run as many iterations as possible for 30 seconds.
 1. After 30 seconds, k6 starts the `news` scenario. 50 VUs each try to run 100 iterations in one minute.
 
-Along with `startTime` `duration`, and `maxDuration`, note the different test logic for each scenario.
+Along with `startTime`, `duration`, and `maxDuration`, note the different test logic for each scenario.
 
 <CodeGroup labels={[ "multiple-scenarios.js" ]} lineNumbers={[true]}>
 
@@ -112,7 +112,7 @@ export function news() {
 
 <Blockquote mod="note" title="">
 
-By default, k6 applies a `scenario` tag to all metrics in each scenario (the value is the scenario name.
+By default, k6 applies a `scenario` tag to all metrics in each scenario, whose value is the scenario name.
 You can combine these tags with thresholds, or use them to simplify results filtering.
 
 To disable scenario tags, use the [`--system-tags` option](/using-k6/options#system-tags).

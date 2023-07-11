@@ -11,7 +11,9 @@ a script always runs through these stages in the same order:
 3. VU code runs in the `default` or scenario function, running for as long and as many times as the `options` define. **Required**. 
 4. The `teardown` function runs, postprocessing data and closing the test environment. _Optional._ 
 
-<Blockquote mod="note" title="Lifecycle functions">
+<Blockquote mod="note" title="">
+
+**Lifecycle functions**
 
 Except for init code, each stage occurs in a _lifecycle function_,
 a function called in a specific sequence in the k6 runtime.
@@ -59,12 +61,14 @@ For examples and implementation details of each stage, refer to the subsequent s
 
 **The init stage is required**.
 Before the test runs, k6 needs to initialize the test conditions.
-To prepare the test, the code in the `init` context:
+To prepare the test, code in the `init` context runs once per VU.
 
-- Imports modules
-- Loads files from the local file system
-- Configures the test for all `options`
-- Defines lifecycle functions for the VU, `setup`, and `teardown` stages (and for custom or `handleSummary()` functions, too).
+Some operations that might happen in `init` include the following:
+
+- Import modules
+- Load files from the local file system
+- Configure the test for all `options`
+- Define lifecycle functions for the VU, `setup`, and `teardown` stages (and for custom or `handleSummary()` functions, too).
 
 
 **All code that is outside of a lifecycle function is code in the `init` context**.

@@ -1,6 +1,7 @@
 ---
 title: 'Usage Reports'
 excerpt: 'Discover valuable information about your company testing'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/projects-and-users/usage-reports/
 ---
 
 The *Usage report* helps you keep track of everything happening in your team’s project and follow the activity of your performance testing projects.

@@ -1,11 +1,10 @@
 const path = require('path');
 
+const { isProduction } = require('./src/utils/utils.node');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-
-const mainURL = process.env.GATSBY_DEFAULT_DOC_URL;
-const isProduction = mainURL === 'https://k6.io/docs';
 
 const shouldAnnouncementBannerBeShown = false;
 
@@ -145,7 +144,14 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-sitemap',
     options: {
-      excludes: ['/getting-started/welcome', '/docs/getting-started/welcome'],
+      excludes: ['/get-started/welcome', '/docs/get-started/welcome'],
+    },
+  },
+  {
+    resolve: `@tmttn/gatsby-plugin-linkedin-insight`,
+    options: {
+      partnerId: '4981058',
+      includeInDevelopment: false,
     },
   },
 ];
@@ -195,12 +201,10 @@ if (shouldAnnouncementBannerBeShown) {
 
 if (isProduction) {
   plugins.push({
-    resolve: 'gatsby-plugin-google-analytics',
+    resolve: 'gatsby-plugin-google-tagmanager',
     options: {
-      trackingId: 'UA-158196577-1',
-      head: false,
-      cookieDomain: 'k6.io',
-      allowLinker: true,
+      id: 'GTM-KBV9L4L',
+      includeInDevelopment: false,
     },
   });
 

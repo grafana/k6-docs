@@ -7,7 +7,7 @@ filter your test results.'
 A load test usually targets a service with different subsystems and resources.
 This can make it hard to pinpoint the issues that are degrading performance.
 
-k6 provides two scripting APIs to help you visualize, sort, and filter your test results.
+To help you visualize, sort, and filter your test results, k6 adds the following to your results.
 
 - *Tags* categorize your checks, thresholds, custom metrics, and requests for in-depth filtering.
 - *Groups* apply tags to the script's functions.
@@ -23,10 +23,10 @@ Tags are a powerful way to categorize your k6 entities and filter test results.
 
 k6 provides two types of tags:
 
-- *System tags* are tags that k6 automatically assigns.
-- *User-defined* tags are tags that you add when you write your script.
+- **System tags.** Tags that k6 automatically assigns.
+- **User-defined tags.** Tags that you add when you write your script.
 
-## System tags
+### System tags
 
 Currently, k6 automatically creates the following tags by default:
 
@@ -47,9 +47,10 @@ Currently, k6 automatically creates the following tags by default:
 | `service`           | the RPC service name for gRPC                                                                                                                       |
 | `expected_response` | `true` or `false` based on the [responseCallback](/javascript-api/k6-http/setresponsecallback/); by default checks whether the status is 2xx or 3xx |
 
-To disable some of the above tags, you can use the [`systemTags` option](/using-k6/k6-options/reference/#system-tags).
-Keep in mind that some data collectors (e.g. `cloud`) may require certain tags.
-You can also enable some additional system tags if you need them:
+To disable some of the preceding tags, use the [`systemTags` option](/using-k6/k6-options/reference/#system-tags).
+Note that some data collectors, for example `cloud` runs, may require certain tags.
+
+The following system tags are optional. Enable them as needed:
 
 | Tag           | Description                                                                                                                       |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +61,7 @@ You can also enable some additional system tags if you need them:
 
 ## User-defined tags
 
-You can define your own tags to categorize k6 entities based on your test logic.
+Define your own tags to categorize k6 entities based on your test logic.
 You can tag the following entities:
 
 - requests
@@ -79,7 +80,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('http://httpbin.test.k6.io/', {
+  const res = http.get('https://httpbin.test.k6.io/', {
     tags: {
       my_tag: "I'm a tag",
     },
@@ -166,9 +167,10 @@ export default function () {
 
 ## Tagging stages
 
-Thanks to some helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, if an executor supports the `stages` option, then a tag can be added with the current ongoing stage. Similar to the other ways for tagging, the tag will be added to all the samples collected during the iteration.
+Thanks to some helper functions in the [k6-jslib-utils](/javascript-api/jslib/utils) project, if an executor supports the `stages` option, you can add tags with the current ongoing stage.
+Similar to other tags tag, the tag is added to all samples collected during the iteration.
 
-The first way for tagging the executed operations is invoking the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
+One way to tag the executed operations is to invoke the `tagWithCurrentStageIndex` function for setting a `stage` tag for identifying the stage that has executed them:
 
 ```javascript
 import http from 'k6/http';
@@ -219,7 +221,7 @@ The profile value based on the current stage can be one of the following options
 | `steady`    | The current stage has a target equal to the previous stage's target |
 | `ramp-down` | The current stage has a target less than the previous stage's target |
 
-### Tags in results output
+## Tags in results output
 
 <CodeGroup labels={["output.js"]} lineNumbers={[true]}>
 
@@ -258,10 +260,10 @@ To see how tags affect your test-result output, refer to the [k6 results output 
 
 ## Groups
 
-For extra organization, you can use *groups* to organize a load script by functions.
+For extra organization, use *groups* to organize a load script by functions.
 You can also nest groups for BDD-style testing.
 
-All metrics emitted in a group have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
+All metrics emitted in a [group](/javascript-api/k6/group/) have the tag `group` with a value of all wrapping group names separated by `::` (two colons).
 The root group uses the name '' (empty string).
 If you have a single group named `cool requests`, the actual value of the `group` is `::cool requests`.
 
@@ -334,14 +336,3 @@ If your code looks like the preceding snippet, consider the following strategies
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
 - To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
-
-## Tags and Groups in k6 Cloud Results
-
-In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
-
-When using Groups, you can view [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http-requests) by group.
-You can also switch between the group and list layout by changing the **view as** selection in the top right.
-
-![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
-
-To filter results by tag, you can use the [analysis tab](/cloud/analyzing-results/analysis-tab).

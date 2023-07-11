@@ -129,7 +129,7 @@ k6 run --compatibility-mode=base yourscript.es5.js
 > 
 > Si ejecuta el script en ES5.1 en ves del original en ES6+, k6 puede usar un 50-85% de memoría y reducir significantemente la CPU y tiempo de inicio. 
 
-Puede usar [webpack](https://webpack.js.org/) para transpilar el script fuera de k6. Hemos preparado un [ejemplo webpack.config](https://github.com/grafana/k6-hardware-benchmark/blob/master/webpack.config.js) que transforma código en ES6+ a ES5.1 para k6. 
+Puede usar [webpack](https://webpack.js.org/) para transpilar el script fuera de k6.
 
 Si usa el repositorio [k6-hardware-benchmark](https://github.com/grafana/k6-hardware-benchmark), puede usar las siguientes instrucciones: 
 

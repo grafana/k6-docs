@@ -3,13 +3,23 @@ title: 'Ramping arrival rate'
 excerpt: 'A variable number of iterations are started in a specified period of time.'
 ---
 
-## Description
+With the `ramping-arrival-rate` executor, k6 starts iterations at a variable rate.
+It is an open-model executor, meaning iterations start independently of system response (for details, read
+[Open and Closed models](/using-k6/scenarios/concepts/open-vs-closed)).
 
-A variable number of iterations are started in specified periods of time. This is
-similar to the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), but for iterations instead.
-k6 will attempt to dynamically change the number of VUs to achieve the configured iteration rate.
+This executor has _stages_ that configure target number of iterations and the time k6 takes to reach or stay at this target.
+Unlike the [ramping VUs executor](/using-k6/scenarios/executors/ramping-vus/), which configures VUs,
+this executor dynamically changes the number of iterations to start, and starts these iterations as long as the test has enough allocated VUs.
+To learn how allocation works, read [Arrival-rate VU allocation](/using-k6/scenarios/concepts/arrival-rate-vu-allocation).
 
-See the [arrival rate](/using-k6/scenarios/arrival-rate) section for details.
+<Blockquote mod="Note" title="">
+
+**Iteration starts are spaced fractionally.**
+
+Iterations **do not** start at exactly the same time.
+At a `rate` of `10` with a `timeUnit` of `1s`, each iteration starts about every tenth of a second (that is, each 100ms).
+
+</Blockquote>
 
 ## Options
 
@@ -26,12 +36,25 @@ this executor has the following options:
 
 ## When to use
 
-If you need your tests to not be affected by the system-under-test's performance, and
-would like to ramp the number of iterations up or down during specific periods of time.
+If you need start iterations independent of system-under-test performance, and
+want to ramp the number of iterations up or down during specific periods of time.
 
-## Examples
+<Blockquote mod="note" title="">
 
-In this example, we'll run a four-stage test. We initially stay at the defined rate of starting 300 iterations per minute over a minute period. Then, ramping up the iteration rate from 300 to 600 iterations started per minute over the next two minutes period, and staying at this rate for four more minutes. Finally, down to starting 60 iterations per minute over the last two minutes period.
+**Don't put sleep at the end of an iteration.**
+
+The arrival-rate executors already pace the iteration rate through the `rate` and `timeUnit` properties.
+It's unnecessary to use a `sleep()` function at the end of the VU code.
+
+</Blockquote>
+
+## Example
+
+This is an example of a four-stage test.
+
+It starts at the defined `startRate`, 300 iterations per minute over a one minute period.
+After one minute, the iteration rate ramps to 600 iterations started per minute over the next two minutes, and stays at this rate for four more minutes.
+In the last two minutes, it ramps down to a target of 60 iterations per minute.
 
 <CodeGroup labels={[ "ramping-arr-rate.js" ]} lineNumbers={[true]}>
 
@@ -46,30 +69,27 @@ export const options = {
     contacts: {
       executor: 'ramping-arrival-rate',
 
-      // Our test with at a rate of 300 iterations started per `timeUnit` (e.g minute).
+      // Start iterations per `timeUnit`
       startRate: 300,
 
-      // It should start `startRate` iterations per minute
+      // Start `startRate` iterations per minute
       timeUnit: '1m',
 
-      // It should preallocate 2 VUs before starting the test.
-      preAllocatedVUs: 2,
+      // Pre-allocate necessary VUs.
+      preAllocatedVUs: 50,
 
-      // It is allowed to spin up to 50 maximum VUs in order to sustain the defined
-      // constant arrival rate.
-      maxVUs: 50,
 
       stages: [
-        // It should start 300 iterations per `timeUnit` for the first minute.
+        // Start 300 iterations per `timeUnit` for the first minute.
         { target: 300, duration: '1m' },
 
-        // It should linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
+        // Linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
         { target: 600, duration: '2m' },
 
-        // It should continue starting 600 iterations per `timeUnit` for the following four minutes.
+        // Cntinue starting 600 iterations per `timeUnit` for the following four minutes.
         { target: 600, duration: '4m' },
 
-        // It should linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
+        // Linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
         { target: 60, duration: '2m' },
       ],
     },
@@ -80,7 +100,6 @@ export default function () {
   http.get('https://test.k6.io/contacts.php');
 }
 ```
-
 </CodeGroup>
 
 ## Observations
@@ -91,14 +110,13 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* We've defined 4 stages for a total test duration of 9 minutes.
+* The configuration defines 4 stages for a total test duration of 9 minutes.
 * Stage 1 maintains the `startRate` iteration rate at 300 iterations started per minute for 1 minute.
 * Stage 2 ramps _up_ the iteration rate linearly from the *stage 1* of 300 iterations started per minute, to the target of 600 iterations started per minute over a 2-minute duration.
 * Stage 3 maintains the *stage 2* iteration rate at 600 iterations started per minute over a 4-minute duration.
 * Stage 4 ramps _down_ the iteration rate linearly to the target rate of 60 iterations started per minute over the last two minutes duration.
-* Changes to the iteration rate are performed by k6, adjusting the number of VUs as necessary from `preAllocatedVUs` to a maximum of `maxVUs`.
-* The script waits for a period of time (defined by the `gracefulStop` option) for iterations to finish. It won't start new iterations during the `gracefulStop` period.
-* The script will run the `teardown()` function (if specified) before exiting.
+* Changes to the iteration rate are performed by k6, adjusting the number of VUs
+* The script waits for a period of time (defined by the `gracefulStop` option) for iterations to finish. It doesn't start new iterations during the `gracefulStop` period.
 * Our example performed, 4020 iterations over the course of the test.
 
 ## Get the stage index

@@ -5,9 +5,9 @@ excerpt: 'removes header from the session'
 ---
 
 
-| Parameter | Type            | Description                                                      |
-| --------- | --------------- | ---------------------------------------------------------------- |
-| name  | string  | Header name to be removed |
+| Parameter   | Type      | Description                   |
+|-------------|-----------|-------------------------------|
+| name        | string    | Header name to be removed     |
 
 
 ### Example
@@ -15,7 +15,7 @@ excerpt: 'removes header from the session'
 <CodeGroup labels={[]}>
 
 ```javascript
-import { Httpx } from 'https://jslib.k6.io/httpx/0.0.1/index.js';
+import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 
 const session = new Httpx({ headers: { Authorization: 'token1' } });
 

@@ -134,15 +134,6 @@ $ k6 run checks.js
 > Si necesita que toda la prueba falle según los resultados de una verificación, debe [combinar checks con thresholds](/using-k6/thresholds/#failing-a-load-test-using-checks).
 > Esto es particularmente útil en contextos específicos, como la integración de k6 en sus canalizaciones de CI o la recepción de alertas al programar sus pruebas de rendimiento.
 
-## Checks en los resultados de k6 Cloud
-
-En [k6 Resultados en la cloud](/cloud/analyzing-results/overview) `Checks` están disponibles en su [propia tab](/cloud/analyzing-results/checks-tab) para su análisis.
-
-Aquí podemos ver rápidamente qué checks fallan y, al hacer clic en cualquier check, ver el recuento de aprobados/fallidos
-en determinados puntos de teste. También puede agregar la verificación a la tab de análisis, para una mayor comparación con otras métricas.
-
-![k6 Cloud Checks Tab](./images/Checks/cloud-insights-checks-tab.png)
-
 ## Ver también
 
 - [API de JavaScript](/javascript-api/k6/check/)

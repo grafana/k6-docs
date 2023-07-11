@@ -18,7 +18,7 @@ import { VersionSwitcher } from 'components/shared/version-switcher';
 import { useLocale } from 'contexts/locale-provider';
 import { Link, navigate, withPrefix } from 'gatsby';
 import { I18N_CONFIG } from 'i18n/i18n-config';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import {
   Cookies,
   CookiesProvider,
@@ -99,6 +99,7 @@ const SidebarNode = (props) => {
   const {
     node: { name, meta, children },
   } = props;
+  const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const search = typeof window === 'undefined' ? '' : window.location.search;
@@ -119,8 +120,7 @@ const SidebarNode = (props) => {
       meta.path === '/' ||
       meta.path === '/es/' ||
       meta.path === '/extensions/' ||
-      meta.path === '/javascript-api/xk6-disruptor/' ||
-      meta.path === '/javascript-api/xk6-browser/'
+      meta.path === '/javascript-api/xk6-disruptor/'
         ? false
         : pathname.startsWith(maybePrefixedPath);
 
@@ -144,9 +144,24 @@ const SidebarNode = (props) => {
         isPathLocationPart ||
         doesMatchExtensionsCategory,
     );
+    setIsOpen(
+      doesPathMatchLocation ||
+        isPathLocationPart ||
+        doesMatchExtensionsCategory,
+    );
   }, [search]);
 
   const hasSubMenu = Object.keys(children).length;
+
+  const internalLinkClickHandler = (event) => {
+    event.preventDefault();
+
+    if (event.target.type === 'button') return setIsOpen((prev) => !prev);
+
+    navigate(meta.path);
+
+    return false;
+  };
 
   const nodes = {
     externalLink: () => (
@@ -164,6 +179,7 @@ const SidebarNode = (props) => {
           isActive ? styles.active : ''
         }`}
         to={meta.path}
+        onClick={internalLinkClickHandler}
       >
         {meta.title}
       </Link>
@@ -194,14 +210,20 @@ const SidebarNode = (props) => {
     >
       {nodes[nodeType()]()}
       {hasSubMenu > 0 && (
-        <ArrowLeft
+        <button
           className={classNames(
-            styles.sidebarArrow,
-            isActive && styles.sidebarArrowActive,
+            styles.sidebarButton,
+            isActive && styles.sidebarButtonActive,
+            isOpen && styles.sidebarButtonOpen,
           )}
-        />
+          type="button"
+          aria-label={isOpen ? 'Collapse the menu' : 'Open the menu'}
+          onClick={internalLinkClickHandler}
+        >
+          <ArrowLeft />
+        </button>
       )}
-      {!!Object.keys(children).length && isActive && (
+      {!!Object.keys(children).length && isActive && isOpen && (
         <div className={styles.sidebarNodeChildren}>
           {childrenToList(children).map((node) => (
             <SidebarNode node={node} key={node.name} />
@@ -229,6 +251,7 @@ export const DocLayout = ({
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [showFooter, setShowFooter] = useState(true);
   const { locale, urlLocale, setLocale } = useLocale();
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     if (isMobileNavVisible) {
@@ -261,6 +284,27 @@ export const DocLayout = ({
     }
   }, [location]);
 
+  useLayoutEffect(() => {
+    const handleSidebarScroll = (e) => {
+      localStorage.setItem('sidebar-scroll', e.target.scrollTop);
+    };
+
+    sidebarRef.current?.addEventListener('scroll', handleSidebarScroll);
+
+    return () =>
+      sidebarRef.current?.removeEventListener('scroll', handleSidebarScroll);
+  }, []);
+
+  useLayoutEffect(() => {
+    const sidebarScrollValue = localStorage.getItem('sidebar-scroll');
+
+    if (sidebarRef && sidebarRef.current && sidebarScrollValue) {
+      setTimeout(() => {
+        sidebarRef.current.scrollTop = parseInt(sidebarScrollValue, 10);
+      }, 0);
+    }
+  }, [sidebarRef]);
+
   const showLanguageToggle =
     !I18N_CONFIG.hideLanguageToggle &&
     !!pageTranslations &&
@@ -270,47 +314,53 @@ export const DocLayout = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.sidebar}>
-        <div className={styles.sidebarHeader}>
-          <HeaderLogo theme={'doc'} />
-        </div>
-        {sidebarTree && <SidebarSectionDropdown links={links} />}
-        {sidebarTree &&
-          childrenToList(sidebarTree.children).map((sectionNode) =>
-            sectionNode.meta.hideFromSidebar ? null : (
-              <div className={styles.sidebarSection} key={sectionNode.name}>
-                {sectionNode.meta.title !== sectionName &&
-                sectionNode.meta.isActiveSidebarLink ? (
-                  <Heading
-                    className={styles.sidebarSectionTitle}
-                    size={'sm'}
-                    tag={'h2'}
-                  >
-                    <Link
-                      className={styles.sidebarSectionTitleLink}
-                      to={sectionNode.meta.path}
+        <div ref={sidebarRef} className={classNames(styles.sidebarList)}>
+          <div className={styles.sidebarHeader}>
+            <HeaderLogo theme={'doc'} />
+          </div>
+          {sidebarTree && <SidebarSectionDropdown links={links} />}
+          {sidebarTree &&
+            childrenToList(sidebarTree.children).map((sectionNode) =>
+              sectionNode.meta.hideFromSidebar ? null : (
+                <div className={styles.sidebarSection} key={sectionNode.name}>
+                  {sectionNode.meta.title !== sectionName &&
+                  sectionNode.meta.isActiveSidebarLink ? (
+                    <Heading
+                      className={styles.sidebarSectionTitle}
+                      size={'sm'}
+                      tag={'h2'}
+                    >
+                      <Link
+                        className={
+                          sectionName === 'Guides'
+                            ? styles.sidebarSectionInvisibleLink
+                            : styles.sidebarSectionTitleLink
+                        }
+                        to={sectionNode.meta.path}
+                      >
+                        {sectionNode.meta.title || sectionNode.name}
+                      </Link>
+                    </Heading>
+                  ) : (
+                    <Heading
+                      className={styles.sidebarSectionTitle}
+                      size={'sm'}
+                      tag={'h2'}
                     >
                       {sectionNode.meta.title || sectionNode.name}
-                    </Link>
-                  </Heading>
-                ) : (
-                  <Heading
-                    className={styles.sidebarSectionTitle}
-                    size={'sm'}
-                    tag={'h2'}
-                  >
-                    {sectionNode.meta.title || sectionNode.name}
-                  </Heading>
-                )}
-                {childrenToList(sectionNode.children).length > 0 && (
-                  <div className={styles.sidebarNodeChildren}>
-                    {childrenToList(sectionNode.children).map((node) => (
-                      <SidebarNode node={node} key={node.name} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            ),
-          )}
+                    </Heading>
+                  )}
+                  {childrenToList(sectionNode.children).length > 0 && (
+                    <div className={styles.sidebarNodeChildren}>
+                      {childrenToList(sectionNode.children).map((node) => (
+                        <SidebarNode node={node} key={node.name} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ),
+            )}
+        </div>
         <div
           className={classNames(styles.sidebarSection, styles.sidebarFooter)}
         >
@@ -322,7 +372,6 @@ export const DocLayout = ({
           </a>
         </div>
       </div>
-
       <main className={styles.main}>
         <Header>
           <div

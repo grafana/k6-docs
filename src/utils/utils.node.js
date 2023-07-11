@@ -7,7 +7,9 @@ const {
   stripDirectoryPath,
   dotifyVersion,
 } = require('./utils');
-const { SUPPORTED_VERSIONS, LATEST_VERSION } = require('./versioning');
+
+const isProduction =
+  process.env.GATSBY_DEFAULT_DOC_URL === 'https://k6.io/docs';
 
 const SUPPORTED_LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'en';
@@ -284,7 +286,6 @@ const dedupePath = (path) => Array.from(new Set(path.split('/'))).join('/');
 const redirectWelcome = (path) =>
   path
     .replace(/en\/get-started\/welcome/i, '')
-    .replace(/javascript-api\/xk6-browser\/get-started\/welcome/i, '')
     .replace(/javascript-api\/xk6-disruptor\/get-started\/welcome/i, '')
     .replace(/empezando\/bienvenido/i, '');
 
@@ -328,7 +329,7 @@ function removeParametersFromJavaScriptAPISlug(slug, title) {
 
   // Making sure to change slug only for Javascript API docs that have parameters
   if (
-    /javascript-api\/|jslib\/|xk6-browser\/|xk6-disruptor\//.test(slug) &&
+    /javascript-api\/|jslib\/|xk6-disruptor\//.test(slug) &&
     /\(.+\)/.test(title)
   ) {
     const methodName = title.split('(')[0].toLowerCase().replace('.', '-');
@@ -392,6 +393,9 @@ Object.defineProperties(utils, {
   DEFAULT_LOCALE: {
     value: DEFAULT_LOCALE,
   },
+  isProduction: {
+    value: isProduction,
+  },
   removeEnPrefix: {
     value: removeEnPrefix,
   },
@@ -415,12 +419,6 @@ Object.defineProperties(utils, {
   },
   removeParametersFromJavaScriptAPISlug: {
     value: removeParametersFromJavaScriptAPISlug,
-  },
-  SUPPORTED_VERSIONS: {
-    value: SUPPORTED_VERSIONS,
-  },
-  LATEST_VERSION: {
-    value: LATEST_VERSION,
   },
 });
 

@@ -27,8 +27,8 @@ export const UseCases = () => {
               className={'link'}
               to={
                 urlLocale === 'es'
-                  ? '/es/tipos-de-prueba/stress-testing/#spike-testing'
-                  : '/test-types/stress-testing#spike-testing-in-k6'
+                  ? '/test-types/spike-testing/'
+                  : '/test-types/spike-testing/'
               }
             >
               spike
@@ -65,8 +65,8 @@ export const UseCases = () => {
           </Heading>
           <p>
             {t('welcome.use-cases.browser-testing.pre-description')}
-            <Link className={'link'} to={'/javascript-api/xk6-browser/'}>
-              xk6-browser
+            <Link className={'link'} to={'/using-k6-browser/overview/'}>
+              k6 browser
             </Link>
             {t('welcome.use-cases.browser-testing.description')}
           </p>

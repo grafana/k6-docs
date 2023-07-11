@@ -82,6 +82,10 @@ video {
   }
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 body .show-md-down {
   @include md-down {
     display: initial;

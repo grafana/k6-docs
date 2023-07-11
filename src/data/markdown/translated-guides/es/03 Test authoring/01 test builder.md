@@ -39,7 +39,7 @@ Continuamente mejoramos y añadimos nuevas características al generador de prue
 
 **Configuración de pruebas**
 - Configurar el ramping(aka [stages](/es/usando-k6/opciones/#stages)) usando VUs y la duración.
-- Configurar las [zonas de carga](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#load-zones) para ejecutarlo desde k6 Cloud.
+- Configurar las [zonas de carga](/cloud/creating-and-running-a-test/cloud-scripting-extras/load-zones) para ejecutarlo desde k6 Cloud.
 
 
 **Solicitudes HTTP**

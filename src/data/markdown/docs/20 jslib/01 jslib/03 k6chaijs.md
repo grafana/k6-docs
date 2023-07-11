@@ -21,7 +21,7 @@ There's nothing to install. This library is hosted on [jslib](https://jslib.k6.i
 <CodeGroup labels={[]}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 ```
 
 </CodeGroup>
@@ -36,7 +36,7 @@ The following example tests a hypothetical HTTP API that returns a JSON array of
 
 ```javascript
 import http from 'k6/http';
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   describe('Fetch a list of public crocodiles', () => {

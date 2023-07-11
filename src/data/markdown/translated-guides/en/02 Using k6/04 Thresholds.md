@@ -5,7 +5,7 @@ excerpt: 'Thresholds are a pass/fail criteria used to specify the performance ex
 
 Thresholds are the pass/fail criteria that you define for your test metrics.
 If the performance of the system under test (SUT) does not meet the conditions of your threshold,
-**the test will finish with a failed status.**
+**the test finishes with a failed status.**
 
 Often, testers use thresholds to codify their SLOs.
 For example, you can create thresholds for any combination of the following expectations:
@@ -13,7 +13,7 @@ For example, you can create thresholds for any combination of the following expe
 - 95% of requests have a response time below 200ms.
 - 99% of requests have a response time below 400ms.
 - A specific endpoint always responds within 300ms.
-- Any conditions for a [custom metric](/using-k6/metrics#custom-metrics).
+- Any conditions for a [custom metric](/using-k6/metrics/create-custom-metrics).
 
 Thresholds are also essential for [load-testing automation](/testing-guides/automated-performance-testing):
 
@@ -23,7 +23,8 @@ Thresholds are also essential for [load-testing automation](/testing-guides/auto
 
 After that, you need to worry about the test only after your SUT fails to meet its performance expectations.
 
-## Example: HTTP errors and response duration
+## Example: thresholds for HTTP errors and response duration
+
 
 This sample script specifies two thresholds.
 One threshold evaluates the rate of HTTP errors (`http_req_failed` metric).
@@ -66,12 +67,149 @@ In this case, the test met the criteria for both thresholds.
 k6 considers this test a `pass` and exits with an exit code `0`.
 
 If any of the thresholds had failed, the little green checkmark <span style="color:green; font-weight:bold">✓</span> next to the threshold name
-  (`http_req_failed`, `http_req_duration`) would have been a red cross <span style="color:red; font-weight:bold">✗</span>,
-  and k6 would have generated a non-zero exit code.
+(`http_req_failed`, `http_req_duration`) would be a red cross <span style="color:red; font-weight:bold">✗</span>
+and k6 would exit with a non-zero exit code.
 
-## Copy-paste threshold examples
+## Threshold Syntax
 
-The quickest way to start with thresholds is to use the [standard, built-in k6 metrics](/using-k6/metrics#http-specific-built-in-metrics).
+To use a threshold, follow these steps:
+
+1. In the `thresholds` property of the `options` object, set a key using the name of the metric you want the threshold for:
+  ```
+  export const options = {
+    thresholds: {
+    ...
+  }
+  ```
+2. Define at least one threshold expression. You can do this in two ways:
+    - The short format puts all threshold expressions as strings in an array.
+    - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort).
+
+  ```
+  export const options = {
+    thresholds: {
+      //short format
+      METRIC_NAME: ["THRESHOLD_EXPRESSION", `...`],
+      //long format
+      METRIC_NAME2: [
+        {
+          threshold: "THRESHOLD_EXPRESSION",
+          abortOnFail: true, // boolean
+          delayAbortEval: "10s", // string
+        },
+      ], // full format
+    },
+  };
+  ```
+
+  Note that `METRIC_NAME1` and `THRESHOLD_EXPRESSION` are placeholders.
+  The real text must be the name of the metric and the threshold expression.
+
+
+This declaration configures thresholds for the metrics `metric_name1` and `metric_name2`.
+To determine whether the threshold passes or fails, the script evaluates the `'threshold_expression'.`
+
+### Threshold expression syntax
+
+A threshold expression evaluates to `true` or `false`.
+The threshold expression must be in the following format:
+
+```
+<aggregation_method> <operator> <value>
+```
+
+Some examples of threshold expressions are as follows:
+
+- `avg < 200` // average duration must be less than 200ms
+- `count >= 500` // count must be larger than or equal to 500
+- `p(90) < 300` // 90% of samples must be below 300
+
+
+### Aggregation methods by type
+
+k6 aggregates metrics according to [their type](/using-k6/metrics).
+These aggregation methods form part of the threshold expressions.
+
+
+| Metric type | Aggregation methods                                                                                                                                                                                                |
+|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Counter     | `count` and `rate`                                                                                                                                                                                                 |
+| Gauge       | `value`                                                                                                                                                                                                            |
+| Rate        | `rate`                                                                                                                                                                                                             |
+| Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` specifies the threshold percentile value, expressed as a number between 0.0 and 100. E.g. `p(99.99)` means the 99.99th percentile. The values are in milliseconds. |
+|             |                                                                                                                                                                                                                    |
+
+This (slightly contrived) sample script uses all different types of metrics,
+setting different types of thresholds for each:
+
+<CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import { Trend, Rate, Counter, Gauge } from 'k6/metrics';
+import { sleep } from 'k6';
+
+export const TrendRTT = new Trend('RTT');
+export const RateContentOK = new Rate('Content OK');
+export const GaugeContentSize = new Gauge('ContentSize');
+export const CounterErrors = new Counter('Errors');
+export const options = {
+  thresholds: {
+    // Count: Incorrect content cannot be returned more than 99 times.
+    'Errors': ['count<100'],
+    // Gauge: returned content must be smaller than 4000 bytes
+    'ContentSize': ['value<4000'],
+    // Rate: content must be OK more than 95 times
+    'Content OK': ['rate>0.95'],
+    // Trend: Percentiles, averages, medians, and minimums
+    // must be within specified milliseconds.
+    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
+  },
+};
+
+export default function () {
+  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  const contentOK = res.json('name') === 'Bert';
+
+  TrendRTT.add(res.timings.duration);
+  RateContentOK.add(contentOK);
+  GaugeContentSize.add(res.body.length);
+  CounterErrors.add(!contentOK);
+
+  sleep(1);
+}
+```
+
+</CodeGroup>
+
+<Blockquote mod="attention" title="">
+
+Do not specify multiple thresholds for the same metric by repeating the same object key.
+
+</Blockquote>
+
+Since thresholds are defined as the properties of a JavaScript object, you can't specify multiple ones with the same property name.
+
+<CodeGroup labels={["threshold-duplicate-mistake.js"]} lineNumbers={[true]}>
+
+```javascript
+export const options = {
+  thresholds: {
+    // don't use the same metric more than once here
+    metric_name: ["count<100"],
+    metric_name: ["rate<50"],
+  },
+};
+```
+
+</CodeGroup>
+
+The rest will be **silently** ignored.
+If you want to set multiple thresholds for a metric, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
+
+## Threshold examples to copy and paste
+
+The quickest way to start with thresholds is to use the [built-in metrics](/using-k6/metrics/reference).
 Here are a few copy-paste examples that you can start using right away.
 
 For more specific threshold examples, refer to the [Counter](/javascript-api/k6-metrics/counter#counter-usage-in-thresholds), [Gauge](/javascript-api/k6-metrics/gauge#gauge-usage-in-thresholds), [Trend](/javascript-api/k6-metrics/trend#trend-usage-in-thresholds) and [Rate](/javascript-api/k6-metrics/rate#rate-usage-in-thresholds) pages.
@@ -191,127 +329,9 @@ export default function () {
 </CodeGroup>
 
 
-## Threshold Syntax
 
-To use a threshold, you must define at least one `threshold_expression`:
 
-<CodeGroup labels={["threshold-options.js"]} lineNumbers={[true]}>
-
-```javascript
-export const options = {
-  thresholds: {
-    metric_name1: ['threshold_expression', `...`], // short format
-    metric_name2: [
-      {
-        threshold: 'threshold_expression',
-        abortOnFail: true, // boolean
-        delayAbortEval: '10s', // string
-      },
-    ], // full format
-  },
-};
-```
-
-</CodeGroup>
-
-This declaration configures thresholds for the metrics `metric_name1` and `metric_name2`.
-To determine whether the threshold passes or fails, the script evaluates the `'threshold_expression'.`
-
-The `'threshold_expression'` must follow the format:
-
-`aggregation_method operator value`
-
-Examples:
-
-- `avg < 200` // average duration must be less than 200ms
-- `count >= 500` // count must be larger than or equal to 500
-- `p(90) < 300` // 90% of samples must be below 300
-
-A threshold expression evaluates to `true` or `false`.
-
-Each of the four [metric types](/using-k6/metrics/#metric-types) included in k6 provides a set of aggregation methods that you can use in threshold expressions.
-
-| Metric type | Aggregation methods                                                                                                                                                                                                 |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Counter     | `count` and `rate`                                                                                                                                                                                                  |
-| Gauge       | `value`                                                                                                                                                                                                             |
-| Rate        | `rate`                                                                                                                                                                                                              |
-| Trend       | `avg`, `min`, `max`, `med` and `p(N)` where `N` is a number between 0.0 and 100.0 meaning the percentile value to look at, e.g. `p(99.99)` means the 99.99th percentile. The unit for these values is milliseconds. |
-
-Here is a (slightly contrived) sample script that uses all different types of metrics,
-setting different types of thresholds for each:
-
-<CodeGroup labels={["thresholds-all.js"]} lineNumbers={[true]}>
-
-```javascript
-import http from 'k6/http';
-import { Trend, Rate, Counter, Gauge } from 'k6/metrics';
-import { sleep } from 'k6';
-
-export const TrendRTT = new Trend('RTT');
-export const RateContentOK = new Rate('Content OK');
-export const GaugeContentSize = new Gauge('ContentSize');
-export const CounterErrors = new Counter('Errors');
-export const options = {
-  thresholds: {
-    'Errors': ['count<100'],
-    'ContentSize': ['value<4000'],
-    'Content OK': ['rate>0.95'],
-    'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
-  },
-};
-
-export default function () {
-  const res = http.get('https://test-api.k6.io/public/crocodiles/1/');
-  const contentOK = res.json('name') === 'Bert';
-
-  TrendRTT.add(res.timings.duration);
-  RateContentOK.add(contentOK);
-  GaugeContentSize.add(res.body.length);
-  CounterErrors.add(!contentOK);
-
-  sleep(1);
-}
-```
-
-</CodeGroup>
-
-We have these thresholds:
-
-- A counter metric that keeps track of the total number of times that the content response was *not* `OK`.
-  The success criteria here is that content cannot be bad more than 99 times.
-- A gauge metric that contains the latest size of the returned content.
-  The success criteria for this metric is that the returned content is smaller than 4000 bytes.
-- A rate metric that keeps track of how often the content returned was `OK`. This metric has one
-  success criteria: content must have been `OK` more than 95% of the time.
-- A trend metric that is fed with response time samples and which has the following threshold criteria:
-  - 99th percentile response time must be below 300 ms
-  - 70th percentile response time must be below 250 ms
-  - Average response time must be below 200 ms
-  - Median response time must be below 150 ms
-  - Minimum response time must be below 100 ms
-
-**⚠️ Common mistake** Do not specify multiple thresholds for the same metric by repeating the same object key:
-
-<CodeGroup labels={["threshold-duplicate-mistake.js"]} lineNumbers={[true]}>
-
-```javascript
-export const options = {
-  thresholds: {
-    // avoid using the same metric more than once here
-    // metric_name: [ 'count<100' ],
-    // metric_name: [ 'rate<50' ],
-  },
-};
-```
-</CodeGroup>
-
-Since thresholds are defined as the properties of a JavaScript object, it's not possible to specify multiple ones with the same property name.
-Only the last one will remain.
-The rest will be **silently** ignored.
-Instead, specify them with an [array for the same key](/using-k6/thresholds/#multiple-thresholds-on-a-single-metric).
-
-## Thresholds on tags
+## Set thresholds for specific tags
 
 It's often useful to specify thresholds on a single URL or specific tag.
 In k6, tagged requests create sub-metrics that you can use in thresholds:
@@ -364,7 +384,7 @@ export default function () {
 
 </CodeGroup>
 
-## Aborting a test when a threshold is crossed
+## Abort a test when a threshold is crossed {#abort}
 
 If you want to abort a test as soon as a threshold is crossed,
 set the `abortOnFail` property to `true`.
@@ -431,7 +451,7 @@ Therefore, the `abortOnFail` feature may be delayed by up to 60 seconds.
 
 </Blockquote>
 
-## Failing a load test using checks
+## Fail a load test using checks
 
 [Checks](/using-k6/checks) are nice for codifying assertions, but unlike `thresholds`, `checks` do not affect the exit status of k6.
 
@@ -455,7 +475,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -467,7 +487,7 @@ export default function () {
 
 </CodeGroup>
 
-In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics#built-in-metrics), establishing that the rate of successful checks is higher than 90%.
+In this example, the `threshold` is configured on the [checks metric](/using-k6/metrics/reference), establishing that the rate of successful checks is higher than 90%.
 
 Additionally, you can use `tags` on checks if you want to define a threshold based on a particular check or group of checks. For example:
 
@@ -488,12 +508,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(
     res,
     {
@@ -507,15 +527,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-## Thresholds in k6 Cloud Results
-
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Thresholds` are available in
-their [own tab](/cloud/analyzing-results/thresholds) for analysis.
-
-You can also see how the underlying metric compares to a specific threshold throughout the test.
-The threshold can be added to the analysis tab for further comparison against other metrics.
-
-![k6 Cloud Thresholds Tab](images/Thresholds/cloud-insights-thresholds-tab.png)
-
-Learn more about analyzing results in the [k6 Cloud Results docs](/cloud/analyzing-results/overview).

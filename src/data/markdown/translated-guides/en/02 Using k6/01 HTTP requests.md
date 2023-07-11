@@ -3,11 +3,11 @@ title: 'HTTP Requests'
 excerpt: 'Define the HTTP requests and methods you want to use. k6 adds tags to the requests, making it easier to filter results. You can customize tags as you wish.'
 ---
 
-When you create a new load test, you'll often first define the HTTP requests that you will use to test your system.
+When testers create new load test, the first step is often to define the HTTP requests to test the system with.
 
-## Making HTTP Requests
+## Make HTTP Requests {#making-http-requests}
 
-A simple GET request looks like this:
+A GET request looks like this:
 
 <CodeGroup labels={["http_get.js"]} lineNumbers={[true]}>
 
@@ -21,7 +21,7 @@ export default function () {
 
 </CodeGroup>
 
-For something slightly more complex, here's a POST request to authenticate on a service or site:
+For something slightly more complex, this POST request authenticates on a service or site:
 
 <CodeGroup labels={["http_post.js"]} lineNumbers={[true]}>
 
@@ -107,7 +107,7 @@ Note how the `tags` object groups data.
 
 </CodeGroup>
 
-## URL Grouping
+## Group URLs under one tag {#url-grouping}
 
 By default, tags have a `name` field that holds the value of the request URL.
 If your test has dynamic URL paths, you might not want this behavior, which could bring a large number of unique URLs into the metrics stream.
@@ -210,9 +210,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-## Inside k6 Cloud Results
-
-[k6 Cloud Results HTTP Table](/cloud/analyzing-results/http) organizes requests by URL.
-
-![k6 Cloud URL table](./images/HTTP-requests/cloud-insights-http-tab.png)

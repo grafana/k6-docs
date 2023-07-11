@@ -1,16 +1,18 @@
 ---
 title: 'Environment variables'
 excerpt: 'How to use environment variables in the cloud'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/cloud-environment-variables/
 ---
 
 Environment Variables are key-value pairs that you configure at the organization level.
-k6 encrypts all values before storing them in our database, and they remain encrypted until needed for a test-run.
-If you reference a variable in a test script, k6 will insert the value of the variable on the server that runs the test.
+k6 encrypts all values before storing them in our database, and they remain encrypted until needed for a test run.
+If you reference a variable in a test script, k6 inserts the value of the variable on the server that runs the test.
+
 You can use Environment Variables to store sensitive (and non-sensitive) information that you want to reference in your test-scripts. Managing environment variables in one central place brings the following benefits:
 - Reduced data exposure
 - An easier way to re-use and change values across different test scripts.
 
-> Changes to an Environment Variable won't apply to already started Test-Runs, they only apply to new upcoming Test-Runs.
+> Changes to an Environment Variable don't apply to test runs that have already started.
 
 ## Manage environment variables
 
@@ -40,7 +42,7 @@ The following restrictions apply to environment variable names:
 
 ## Access environment variables
 
-If you create an Environment Variable on k6 Cloud, you can reference it in your k6 script through the __ENV variable, as you would with other [k6 Environment Variables](https://k6.io/docs/using-k6/environment-variables/)
+If you create an Environment Variable on k6 Cloud, you can reference it in your k6 script through the __ENV variable, as you would with other [k6 Environment Variables](/using-k6/environment-variables/)
 
 ```javascript
 import http from 'k6/http';

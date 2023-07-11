@@ -4,7 +4,7 @@ import WIPIcon from 'svg/work-in-progress.inline.svg';
 
 import Tooltip from '../tooltip';
 
-// BWIPT = xk6-browser "Work in Progress" tooltip
+// BWIPT = k6 browser "Work in Progress" tooltip
 const BWIPT = ({ id }) =>
   id ? (
     <Tooltip value="Work in Progress">

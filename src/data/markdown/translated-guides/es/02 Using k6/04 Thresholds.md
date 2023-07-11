@@ -93,7 +93,6 @@ import { sleep } from 'k6';
 export const options = {
   thresholds: {
     // During the whole test execution, the error rate must be lower than 1%.
-    // `http_req_failed` metric is available since v0.31.0
     http_req_failed: ['rate<0.01'],
   },
 };
@@ -398,7 +397,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -432,12 +431,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(
     res,
     {
@@ -451,11 +450,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-## Thresholds en k6 Cloud Results
-
-En los resultados de k6 Cloud los thresholds están disponibles en su [propia pestaña](/cloud/analyzing-results/thresholds) para su análisis.
-
-También puede ver cómo se compara la métrica subyacente con un threshold específico a lo largo de la prueba. El threshold puede añadirse a la pestaña de análisis para su posterior comparación con otras métricas.
-
-![k6 Cloud Thresholds Tab](images/Thresholds/cloud-insights-thresholds-tab.png)

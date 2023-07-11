@@ -3,8 +3,6 @@ title: 'Externally controlled'
 excerpt: 'Control and scale execution at runtime via k6 REST API or the CLI.'
 ---
 
-## Description
-
 Control and scale execution at runtime via [k6's REST API](/misc/k6-rest-api) or
 the [CLI](https://k6.io/blog/how-to-control-a-live-k6-test).
 
@@ -17,8 +15,10 @@ maximum VUs will only affect the externally controlled executor.
 
 ## Options
 
-Besides the [common configuration options](/using-k6/scenarios#options),
-this executor has the following options:
+**The `externally-controlled` executor has no graceful stop**.
+
+Besides that, this executor has all the [common configuration options](/using-k6/scenarios#options),
+and these particular ones:
 
 | Option      | Type    | Description                                         | Default |
 | ----------- | ------- | --------------------------------------------------- | ------- |
@@ -33,7 +33,7 @@ If you want to control the number of VUs while the test is running.
 Important: this is the only executor that is not supported in `k6 cloud`, it can only be used
 locally with `k6 run`.
 
-## Examples
+## Example
 
 In this example, we'll execute a test controllable at runtime, starting with 10 VUs up to
 a maximum of 50, and a total duration of 10 minutes.

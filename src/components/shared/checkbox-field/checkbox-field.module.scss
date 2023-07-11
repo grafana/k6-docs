@@ -9,16 +9,17 @@
   display: block;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
-  color: $color-secondary;
+  color: $color-additional-1;
   padding-left: 28px;
   cursor: pointer;
 
   &:before {
     content: '';
-    display: block;
+    display: inline-flex;
+    justify-content: center;
     width: 24px;
     height: 24px;
-    border: 1px solid $color-secondary;
+    border: 1px solid $color-additional-1;
     color: $color-accent-primary;
     background: #fff;
     position: absolute;

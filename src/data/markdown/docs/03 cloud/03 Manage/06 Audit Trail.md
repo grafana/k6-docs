@@ -2,6 +2,7 @@
 title: 'Audit Trail'
 excerpt: 'Monitor actions performed by your organization'
 slug: '/cloud/manage/audit-trail'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/reference/audit-trails/
 ---
 
 The *Audit Trail* can provide valuable insights into the activity within your organization.

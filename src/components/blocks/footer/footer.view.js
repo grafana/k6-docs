@@ -1,3 +1,4 @@
+import SubscribeForm from 'components/shared/subscribe-form';
 import { Link } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import Logo from 'svg/logo-with-grafana-labs.inline.svg';
@@ -123,17 +124,17 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/cloud`}
+                        href={'https://grafana.com/products/cloud/k6/?src=k6io'}
                       >
-                        Cloud
+                        Grafana Cloud k6
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/pricing`}
+                        href={'https://grafana.com/pricing/?src=k6io'}
                       >
-                        Pricing
+                        Grafana Cloud k6 Pricing
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -147,17 +148,9 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://go2.grafana.com/k6-contact.html'}
+                        href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution`}
                       >
-                        Schedule a Cloud Demo
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
-                        href={`${main}/professional-services`}
-                      >
-                        Professional services
+                        Build vs Buy
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -179,8 +172,11 @@ export const Footer = () => {
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
-                      <Link className={styles.navColumnLink} to={'/cloud/'}>
-                        Cloud Docs
+                      <Link
+                        className={styles.navColumnLink}
+                        href={'https://grafana.com/docs/grafana-cloud/k6'}
+                      >
+                        Grafana Cloud k6 Docs
                       </Link>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -202,14 +198,6 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/deliver-fast-and-reliable-digital-experiences-with-k6`}
-                      >
-                        Not a developer. Why k6?
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
                         href={`${main}/modern-load-testing-for-engineering-teams/`}
                       >
                         Modern Load Testing
@@ -218,9 +206,9 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={`${main}/what-to-consider-when-building-or-buying-a-load-testing-solution/`}
+                        href={`${main}/why-your-organization-should-perform-load-testing`}
                       >
-                        Build vs Buy
+                        Not a developer. Why k6?
                       </a>
                     </li>
                   </ul>
@@ -268,19 +256,16 @@ export const Footer = () => {
                         k6 Champions
                       </a>
                     </li>
-                    <li className={styles.navColumnItem}>
-                      <a
-                        className={styles.navColumnLink}
-                        href={`${main}/k6-cloud-for-education/`}
-                      >
-                        k6 Cloud for Education
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div className={`col-lg-3 col-sm-6 col-12`}>
                   <h3 className={styles.navColumnTitle}>About</h3>
                   <ul className={styles.navColumnList}>
+                    <li className={styles.navColumnItem}>
+                      <a className={styles.navColumnLink} href={`${blog}`}>
+                        Blog
+                      </a>
+                    </li>
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
@@ -295,11 +280,6 @@ export const Footer = () => {
                         href={`${main}/our-beliefs`}
                       >
                         Our beliefs
-                      </a>
-                    </li>
-                    <li className={styles.navColumnItem}>
-                      <a className={styles.navColumnLink} href={`${blog}`}>
-                        Blog
                       </a>
                     </li>
                     <li className={styles.navColumnItem}>
@@ -326,6 +306,8 @@ export const Footer = () => {
         </div>
       </div>
 
+      <SubscribeForm />
+
       <div className={'container'}>
         <div className={'row'}>
           <div className={'col-md-2 col-sm-12 col-auto'}>
@@ -336,41 +318,17 @@ export const Footer = () => {
               <li className={styles.navColumnItem}>
                 <a
                   className={styles.navColumnLink}
-                  href={`${main}/data-processing-agreement`}
+                  href={'https://grafana.com/legal/?src=k6io'}
                 >
-                  GDPR
+                  Legal and Security
                 </a>
               </li>
               <li className={styles.navColumnItem}>
                 <a
                   className={styles.navColumnLink}
-                  href={`${main}/privacy-policy`}
+                  href={'https://grafana.com/legal/privacy-policy/?src=k6io'}
                 >
-                  Privacy
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
-                  href={`${main}/security-policy`}
-                >
-                  Security
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
-                  href={`${main}/services-agreement`}
-                >
-                  Terms
-                </a>
-              </li>
-              <li className={styles.navColumnItem}>
-                <a
-                  className={styles.navColumnLink}
-                  href={`${main}/stewardship`}
-                >
-                  Stewardship
+                  Privacy Policy
                 </a>
               </li>
               <li className={styles.navColumnItem}>

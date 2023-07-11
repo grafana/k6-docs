@@ -131,59 +131,71 @@
       "description": "How to instantly increase the number of VUs or iterations",
       "url": "",
       "to": "/examples/instant-load-increase/"
+    },
+    {
+      "title": "Distribute workloads across VUs",
+      "description": "How to configure different amounts of traffic for different VU behaviors",
+      "url": "",
+      "to": "/examples/distribute-workloads/"
     }
   ],
   "tutorials": [
     {
-      "title": "How to use Datadog alerts and Thresholds to fail your load test",
-      "description": "This article will show how to use Datadog alerts and Thresholds to fail your load test.",
-      "to": "",
-      "url": "https://k6.io/blog/datadog-alerts-fail-load-test"
+      "title": "Get started with k6",
+      "description": "This tutorial provides some procedures for common real-life uses of k6.",
+      "to": "/examples/tutorials/get-started-with-k6/",
+      "url": ""
     },
     {
-      "title": "Load Testing Your API with Postman",
-      "description": "How to use postman collections in k6?",
+      "title": "8 basic tasks to learn k6",
+      "description": "Challenges are great ways to learn. All the tasks in this blog provide a little context about particular k6 features.",
       "to": "",
-      "url": "https://k6.io/blog/load-testing-with-postman-collections"
+      "url": "https://k6.io/blog/learning-js-through-load-testing/"
     },
     {
-      "title": "Load testing with Swagger/OpenAPI",
+      "title": "k6 Learn",
+      "description": "A set of modules to learn about performance testing principles, k6 foundations, and intermediate concepts.", 
+      "to": "",
+      "url": "https://github.com/grafana/k6-learn"
+    },
+    {
+      "title": "Swagger/OpenAPI integration",
       "description": "How to generate a load test script out of an OpenAPI document.",
       "to": "",
       "url": "https://k6.io/blog/load-testing-your-api-with-swagger-openapi-and-k6"
     },
     {
-      "title": "Performance monitoring with cron and k6",
+      "title": "Schedule k6 tests with cron",
       "description": "This tutorial will show you how to schedule k6 tests with cron to monitor the performance of your system.",
       "to": "",
       "url": "https://k6.io/blog/performance-monitoring-with-cron-and-k6"
     },
     {
-      "title": "Load testing GraphQL with k6",
-      "description": "The popularity and adoption of GraphQL have been impressive in the last years, this post provides an example using k6 to load testing a GraphQL service.",
+      "title": "Load test a GraphQL service",
+      "description": "This post provides an example using k6 to load testing a GraphQL service.",
       "to": "",
       "url": "https://k6.io/blog/load-testing-graphql-with-k6"
     },
     {
-      "title": "Load Testing RESTful APIs with k6",
-      "description": "Let's take a look at how we can use the k6 open source load testing tool to performance test REST API endpoints.",
-      "to": "",
-      "url": "https://k6.io/blog/load-testing-restful-apis-with-k6"
-    },
-    {
-      "title": "Using TypeScript in k6 scripts",
+      "title": "Use TypeScript in k6 scripts",
       "description": "This repository provides a scaffolding project to start using Typescript in your k6 scripts.",
       "to": "",
       "url": "https://github.com/k6io/template-typescript"
     },
     {
-      "title": "Debugging Using a Web Proxy",
-      "description": "How to configure k6 to send HTTP traffic through a web proxy. Things to look out for when debugging your performance test.",
+      "title": "Debug using a Web Proxy",
+      "description": "How to configure k6 to send HTTP traffic through a web proxy for debugging k6 tests.",
       "to": "",
       "url": "https://k6.io/blog/k6-load-testing-debugging-using-a-web-proxy/"
     },
     {
-      "title": "Creating a k6 extension",
+      "title": "Distributed k6 tests on K8s",
+      "description": "Deploy the k6 operator in your Kubernetes cluster to run distributed k6 tests.",
+      "to": "",
+      "url": "https://k6.io/blog/running-distributed-tests-on-k8s/"
+    },
+    {
+      "title": "Create a k6 extension",
       "description": "This short tutorial will walk you through the steps to build a k6 extension for Redis and use it in your k6 test.",
       "to": "",
       "url": "https://k6.io/blog/extending-k6-with-xk6"

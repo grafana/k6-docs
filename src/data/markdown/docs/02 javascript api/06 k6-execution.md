@@ -3,7 +3,7 @@ title: "k6/execution"
 excerpt: "Get information about the current test's execution state."
 ---
 
-k6 v0.34.0 introduced the capability to get information about the current test execution state inside the test script. You can now read in your script the execution state during the test execution and change your script logic based on the current state.
+`k6/execution` provides the capability to get information about the current test execution state inside the test script. You can read in your script the execution state during the test execution and change your script logic based on the current state.
 
 The `k6/execution` module provides the test execution information with the following properties:
 
@@ -76,17 +76,18 @@ Control the test execution.
 
 ### vu
 
-Meta information and execution details about the current vu and iteration.
+Meta information and execution details about the current vu.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| iterationInInstance | integer | The identifier of the iteration in the current instance. |
-| iterationInScenario | integer | The identifier of the iteration in the current scenario. |
-| idInInstance        | integer | The identifier of the VU across the instance. |
+| iterationInInstance | integer | The identifier of the iteration in the current instance for this VU. This is only unique for current VU and this instance (if multiple instances). This keeps being aggregated if a given VU is reused between multiple scenarios. |
+| iterationInScenario | integer | The identifier of the iteration in the current scenario for this VU. This is only unique for current VU and scenario it is currently executing. |
+| idInInstance        | integer | The identifier of the VU across the instance. Not unique across multiple instances. |
 | idInTest            | integer | The globally unique (across the whole test run) identifier of the VU. |
-| tags                | object  | The map that gives control over [VU's Tags](/using-k6/tags-and-groups/#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
+| metrics.tags                | object  | The map that gives control over [VU's Tags](/using-k6/tags-and-groups/#tags). The Tags will be included in every metric emitted by the VU and the Tags' state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#tags) below. |
+| metrics.metadata                | object  | The map that gives control over VU's Metadata. The Metadata will be included in every metric emitted by the VU and the Metadata's state is maintained across different iterations of the same Scenario while the VU exists. Check how to use it in the [example](#metadata) below. |
 
-<Collapsible title="Setting vu.tags">
+<Collapsible title="Setting vu.metrics.tags">
 
 Setting a Tag with the same key as a [system tag](/using-k6/k6-options/reference#system-tags) is allowed, but it requires attention to avoid unexpected results. Overwriting system tags will not throw an error, but in most cases will not actually change the value of the emitted metrics as expected. For example, trying to set the `url` tag value will not result in a changed tag value when `http.get()` is called, since the tag value is determined by the HTTP request itself. However, it will add the tag `url` to the metric samples emitted by a `check()` or `metric.add()`, which is probably not the desired behavior. On the other hand, setting the `name` tag will work as expected, since that was already supported for `http.*` methods, for the purposes of the [URL Grouping](/using-k6/http-requests/#url-grouping) feature.
 
@@ -212,7 +213,7 @@ export default function () {
 </CodeGroup>
 
 ### Tags
-The `vu.tags` property can be used for getting or setting [VU's tags](/using-k6/tags-and-groups/#tags).
+The `vu.metrics.tags` property can be used for getting or setting [VU's tags](/using-k6/tags-and-groups/#tags).
 
 <CodeGroup labels={["tags-control.js"]} lineNumbers={[true]}>
 
@@ -221,10 +222,36 @@ import http from 'k6/http';
 import exec from 'k6/execution';
 
 export default function () {
-  exec.vu.tags['mytag'] = 'value1';
-  exec.vu.tags['mytag2'] = 2;
+  exec.vu.metrics.tags['mytag'] = 'value1';
+  exec.vu.metrics.tags['mytag2'] = 2;
 
   // the metrics these HTTP requests emit will get tagged with `mytag` and `mytag2`:
+  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+}
+```
+
+</CodeGroup>
+
+`vu.tags` (without `metrics`) can also be used, but is deprecated for the more context-specific variant.
+
+
+### Metadata
+The `vu.metrics.metadata` property can be used for getting or setting VU's metadata. It is similar to `tags`, but can be used for high cardinality data. It also can not be used in thresholds and will likely be handled differently by each output.
+
+<CodeGroup labels={["metadata-control.js"]} lineNumbers={[true]}>
+
+```javascript
+import http from 'k6/http';
+import exec from 'k6/execution';
+
+export default function () {
+  exec.vu.metrics.metadata['trace_id'] = 'somecoolide';
+
+  // the metrics these HTTP requests emit will get the metadata `trace_id`:
+  http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
+
+  delete exec.vu.metrics.metadata['trace_id'] // this will unset it
+  // which will make the metrics these requests to not have the metadata `trace_id` set on them.
   http.batch(['https://test.k6.io', 'https://test-api.k6.io']);
 }
 ```

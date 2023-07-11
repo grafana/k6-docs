@@ -16,6 +16,7 @@ import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 // icons
 import CloudWatch from 'svg/amazon-cloudwatch.inline.svg';
+import Kafka from 'svg/apache-kafka.inline.svg';
 import AWSCodeBuild from 'svg/aws-codebuild.inline.svg';
 import Azure from 'svg/azure.inline.svg';
 import Bamboo from 'svg/bamboo.inline.svg';
@@ -23,12 +24,14 @@ import Buddy from 'svg/buddy.inline.svg';
 import CircleCI from 'svg/circleci.inline.svg';
 import CSV from 'svg/csv.inline.svg';
 import Datadog from 'svg/datadog.inline.svg';
+import Dynatrace from 'svg/dynatrace.inline.svg';
+import Elasticsearch from 'svg/elastic.inline.svg';
 import Flagger from 'svg/flagger.inline.svg';
 import GitHub from 'svg/github.inline.svg';
 import Gitlab from 'svg/gitlab.inline.svg';
 import GoogleCloudBuild from 'svg/google-cloud-build.inline.svg';
 import Grafana from 'svg/grafana.inline.svg';
-import InfluxGrafana from 'svg/influxdb-grafana.inline.svg';
+import Influx from 'svg/influxdb.inline.svg';
 import Jenkins from 'svg/jenkins.inline.svg';
 import Json from 'svg/json.inline.svg';
 import Keptn from 'svg/keptn.inline.svg';
@@ -49,6 +52,11 @@ const iconsDataSet1 = [
     to: '/results-output/real-time/amazon-cloudwatch',
   },
   {
+    Icon: Kafka,
+    name: 'Apache Kafka',
+    to: '/results-visualization/apache-kafka',
+  },
+  {
     Icon: K6,
     name: 'Cloud',
     to: '/results-output/real-time/cloud',
@@ -64,14 +72,29 @@ const iconsDataSet1 = [
     to: '/results-output/real-time/datadog',
   },
   {
-    Icon: Grafana,
-    name: 'Grafana Cloud',
-    to: '/results-output/real-time/grafana-cloud/',
+    Icon: Dynatrace,
+    name: 'Dynatrace',
+    to: '/results-output/real-time/dynatrace',
   },
   {
-    Icon: InfluxGrafana,
-    name: 'InfluxDB + Grafana',
-    to: '/results-output/real-time/influxdb-grafana',
+    Icon: Elasticsearch,
+    name: 'Elasticsearch',
+    to: '/results-output/real-time/elasticsearch',
+  },
+  {
+    Icon: Grafana,
+    name: 'Grafana Cloud <br/> Prometheus',
+    to: '/results-output/real-time/grafana-cloud-prometheus',
+  },
+  {
+    Icon: Grafana,
+    name: 'Grafana Dashboards',
+    to: '/results-output/grafana-dashboards/',
+  },
+  {
+    Icon: Influx,
+    name: 'InfluxDB',
+    to: '/results-output/real-time/influxdb/',
   },
   {
     Icon: Json,
@@ -91,17 +114,17 @@ const iconsDataSet1 = [
   {
     Icon: Prometheus,
     name: 'Prometheus',
-    to: '/results-output/real-time/prometheus',
-  },
-  {
-    Icon: TimescaleDB,
-    name: 'TimescaleDB',
-    to: '/results-output/real-time/timescaledb',
+    to: '/results-output/real-time/prometheus-remote-write',
   },
   {
     Icon: StatsD,
     name: 'StatsD',
     to: '/results-output/real-time/statsd',
+  },
+  {
+    Icon: TimescaleDB,
+    name: 'TimescaleDB',
+    to: '/results-output/real-time/timescaledb',
   },
 ];
 
@@ -186,6 +209,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
     azureTestImg,
     testRailImg,
     testKubeImg,
+    tracetestImg,
     xrayImg,
   } = useStaticQuery(graphql`
     query stubImageQuery {
@@ -246,6 +270,17 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
       }
       testRailImg: file(
         absolutePath: { regex: "/images/doc-integrations/testrail/" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 44
+            height: 44
+            transformOptions: { cropFocus: CENTER }
+          )
+        }
+      }
+      tracetestImg: file(
+        absolutePath: { regex: "/images/doc-integrations/tracetest/" }
       ) {
         childImageSharp {
           gatsbyImageData(
@@ -383,7 +418,7 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                   image: browserRecorderImg,
                   title: 'Browser Recorder',
                   description: 'Record a user journey to base your k6 test.',
-                  url: 'https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/',
+                  url: 'https://k6.io/docs/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
                 },
               ]}
             />
@@ -498,6 +533,12 @@ const Integrations = ({ pageContext: { sidebarTree, navLinks } }) => {
                   title: 'Testkube',
                   description: 'Load testing with Testkube',
                   url: 'https://kubeshop.github.io/testkube/test-types/executor-k6',
+                },
+                {
+                  image: tracetestImg,
+                  title: 'Tracetest',
+                  description: 'Trace-based testing with Tracetest',
+                  url: 'https://docs.tracetest.io/tools-and-integrations/integrations/k6',
                 },
                 {
                   image: xrayImg,

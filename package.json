@@ -33,9 +33,11 @@
   },
   "dependencies": {
     "@docsearch/react": "^3.3.2",
+    "@hookform/resolvers": "^3.1.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@sentry/gatsby": "^7.21.1",
+    "@tmttn/gatsby-plugin-linkedin-insight": "^5.2.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
     "dateformat": "^4.6.3",
@@ -44,6 +46,8 @@
     "gatsby-plugin-catch-links": "^4.24.0",
     "gatsby-plugin-google-analytics": "^4.24.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-gtag": "^4.24.0",
+    "gatsby-plugin-google-tagmanager": "^4.24.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-mdx": "^3.20.0",
@@ -69,13 +73,16 @@
     "react-clipboard.js": "^2.0.16",
     "react-cookie-banner": "^4.1.0",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.43.9",
     "react-instantsearch-dom": "^6.38.1",
     "react-tooltip": "^4.5.1",
     "runes": "^0.4.3",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@ocular-d/vale-bin": "^1.0.29",
     "@svgr/webpack": "^6.5.1",
     "babel-loader": "^9.1.0",
     "broken-link-checker": "^0.7.8",

@@ -7,6 +7,7 @@
 **Table of contents**
 
  - [Can't serve the site locally](#cant-serve-the-site-locally)
+      - [Windows - 'shx' is not recognized](#shx-is-not-recognized)
  - [Serving suddenly broke](#serving-suddenly-broke)
       - [Check the frontmatter](#check-the-frontmatter)
       - [Check for `<angle brackets>`](#check-for-angle-brackets)
@@ -72,7 +73,22 @@ You can change versions with nvm.
   ```sh
   npm install && npm start
   ```
+  
+### shx is not recognized
+On windows architectures, the component shx is often not found, and windows may prompt the following error message:
+```sh
+'shx' is not recognized as an internal or external command,
+operable program or batch file.
+```
 
+If this happens, you can install shx with the following commands:
+```sh
+yarn add -D shx
+```
+or 
+```sh
+npm i shx --dev
+```
 ## Serving suddenly broke
 
 Great! You figured out versions and got Gatsby serving on your `localhost`.

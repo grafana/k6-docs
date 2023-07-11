@@ -61,7 +61,7 @@ Sometimes it's hard to predict how a SUT might fail.  For those cases, [describe
 <CodeGroup labels={['Showcasing how describe works']}>
 
 ```javascript
-import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.2/index.js';
+import { describe, expect } from 'https://jslib.k6.io/k6chaijs/4.3.4.3/index.js';
 
 export default function testSuite() {
   describe('Test case against a Shaky SUT', (t) => {

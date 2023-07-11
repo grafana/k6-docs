@@ -3,15 +3,20 @@ title: 'Shared iterations'
 excerpt: 'A fixed number of iterations are "shared" between a number of VUs, and the test ends once all iterations are executed.'
 ---
 
-## Description
+The `shared-iterations` executor shares iterations between the number of VUs.
+The test ends once k6 executes all iterations.
 
-In this executor, the iterations are shared between the number of VUs.
-The test ends once all iterations are executed. This executor is equivalent to the global [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) shortcut options.
+For a shortcut to this executor, use the [vus](/using-k6/k6-options/reference#vus) and [iterations](/using-k6/k6-options/reference#iterations) options.
+
+<Blockquote mod="note" title="">
 
 Iterations **are not guaranteed to be evenly distributed** with this executor.
 VU that executes faster will complete more iterations than slower VUs.
 
 To guarantee that every VU completes a specific, fixed number of iterations, [use the per-VU iterations executor](/using-k6/scenarios/executors/per-vu-iterations).
+
+</Blockquote>
+
 
 ## Options
 
@@ -26,16 +31,17 @@ this executor has the following options:
 
 ## When to use
 
-This executor is suitable when you want a specific amount of VUs to complete a fixed
-number of total iterations, and the amount of iterations per VU is not important. This will be 
-the most _"efficient"_ use of VUs, therefore if **time to complete** a number of test iterations
-is your concern, this executor should perform best. 
+This executor is suitable when you want a specific number of VUs to complete a fixed
+number of total iterations, and the amount of iterations per VU is unimportant.
+If the **time to complete** a number of test iterations is your concern, this executor should perform best.
 
-> An example use case could be to incorporate a quick performance test as part of the build cycle during development. As developers compile their changes, the test could be executed against the local code to help insure against performance regressions. This would be considered as part of _"shifting left"_; placing more emphasis on performance early in the development cycle when the _cost_ of the fix is lowest. 
+An example use case is for quick performance tests in the developement build cycle.
+As developers make changes, they might run the test against the local code to test for performance regressions.
+Thus the executor works well with a _shift-left_ policy, where emphasizes testing performance early in the development cycle, when the cost of a fix is lowest.
 
 ## Example
 
-In this example, we'll execute 200 total iterations shared by 10 VUs with a maximum duration of 30 seconds.
+The following example schedules 200 total iterations shared by 10 VUs with a maximum test duration of 30 seconds.
 
 <CodeGroup labels={[ "shared-iters.js" ]} lineNumbers={[true]}>
 
@@ -57,8 +63,8 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
-  // We're injecting a processing pause for illustrative purposes only!
-  // Each iteration will be ~515ms, therefore ~2 iterations/second per VU maximum throughput.
+  // Injecting sleep
+  // Sleep time is 500ms. Total iteration time is sleep + time to finish request.
   sleep(0.5);
 }
 ```
@@ -74,9 +80,8 @@ The following graph depicts the performance of the [example](#example) script:
 Based upon our test scenario inputs and results:
 
 * Test is limited to a fixed number of 200 iterations of the `default` function;
-* the number of VUs is fixed to 10, and are initialized before the test begins;
-* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
-* maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`; 
-* we then see that the maximum throughput is maintained for a larger portion of the test;
-* the 8 second test duration will be the shortest of all executor methods;
-* we know the distribution of iterations may be skewed; one VU may have performed 50 iterations, whereas another may have only performed 10. 
+* The number of VUs is fixed to 10, and are initialized before the test begins;
+* Each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* Maximum throughput (highest efficiency) is therefore expected to be ~20 iters/s, `2 iters/s * 10 VUs`;
+* The maximum throughput is maintained for a larger portion of the test;
+* The distribution of iterations may be skewed: one VU may have performed 50 iterations, another only 10.

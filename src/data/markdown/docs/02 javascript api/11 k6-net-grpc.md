@@ -3,13 +3,10 @@ title: "k6/net/grpc"
 excerpt: "k6 gRPC API"
 ---
 
-The `k6/net/grpc` module, added in k6 v0.29.0, provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
+<GrpcBlockquote />
 
-<Blockquote mod="warning">
+The `k6/net/grpc` module provides a [gRPC](https://grpc.io/) client for Remote Procedure Calls (RPC) over HTTP/2.
 
-The k6 gRPC API is currently considered in beta and is subject to change. Future k6 versions might have slight differences in the method and type signatures described in this documentation.
-
-</Blockquote>
 
 | Class/Method | Description |
 |--------------|-------------|
@@ -21,6 +18,11 @@ The k6 gRPC API is currently considered in beta and is subject to change. Future
 | [Params](/javascript-api/k6-net-grpc/params) | RPC Request specific options. |
 | [Response](/javascript-api/k6-net-grpc/response) | Returned by RPC requests. |
 | [Constants](/javascript-api/k6-net-grpc/constants) | Define constants to distinguish between [gRPC Response](/javascript-api/k6-net-grpc/response) statuses. |
+
+## gRPC metrics
+
+k6 takes specific measurements for gRPC requests.
+For the complete list, refer to the [Metrics reference](/using-k6/metrics/reference#grpc).
 
 ### Example
 

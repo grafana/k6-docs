@@ -12,7 +12,8 @@ Follow along to learn how to:
 With these example snippets, you'll run the test with your machine's resources.
 But, if you have a k6 Cloud account, you can also use the `k6 cloud` command to outsource the test to k6 servers. 
 
-## Running local tests
+<!-- preserving  old anchor --->
+## Run local tests {#running-local-tests}
 
 To run a simple local script:
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
@@ -31,7 +32,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-1. Then, run k6 with this command:
+1. Run k6 with the following command:
 
   <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -55,7 +56,7 @@ To run a simple local script:
 
   </CodeGroup>
 
-## Adding more VUs
+## Add VUs {#adding-more-vus}
 
 Now run a load test with more than one virtual user and a longer duration:
 
@@ -77,11 +78,16 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run --vus 10 --duration 30
 
 _Running a 30-second, 10-VU load test_
 
-k6 works with the concept of _virtual users_ (VUs), which run your test scripts.
+<Blockquote mod="note" title="Virtual users">
+
+k6 runs multiple iterations in parallel with _virtual users_ (VUs).
+In general terms, more virtual users means more simulated traffic.
+
 VUs are essentially parallel `while(true)` loops.
 Scripts are written in JavaScript, as ES6 modules,
 so you can break larger tests into smaller pieces or make reusable pieces as you like.
 
+</Blockquote>
 
 ### The init context and the default function
 
@@ -89,8 +95,8 @@ For a test to run, you need to have *init code*, which prepares the test, and *V
 
 Code in the init context defines functions and configures the test options (like `duration`).
 
-Every test also has a `default` function.
-This function defines the entry point for your VUs.
+Every test also has a `default` function,
+which defines the VU logic.
 
 <CodeGroup labels={[]}>
 
@@ -105,14 +111,14 @@ export default function () {
 </CodeGroup>
 
 Init code runs first and is called only once per VU.
-On the other hand, default code executes as many times as the test options set.
+The `default` code runs as many times or as long as is configured in the test options.
 
-- [The life cycle of a k6 test](/using-k6/test-lifecycle).
+To learn more about how k6 executes, read about the [Test lifecycle](/using-k6/test-lifecycle).
 
-## Using options
+## Set options {#using-options}
 
 Instead of typing `--vus 10` and `--duration 30s` each time you run the script,
-you can include the options in your JavaScript file:
+you can set the options in your JavaScript file:
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
@@ -131,7 +137,7 @@ export default function () {
 
 </CodeGroup>
 
-Then, run the script without those options on the command line:
+If you run the script without flags, k6 uses the options defined in the script:
 
 <CodeGroup labels={["CLI", "Docker", "Docker in Win PowerShell"]}>
 
@@ -149,7 +155,7 @@ PS C:\> cat script.js | docker run --rm -i grafana/k6 run -
 
 </CodeGroup>
 
-## Stages: ramping up/down VUs
+## Ramp VUs up and down in stages {#stages-ramping-up-down-vus}
 
 You can ramp the number of VUs up and down during the test.
 To configure ramping, use the `options.stages` property.
@@ -178,11 +184,13 @@ export default function () {
 
 </CodeGroup>
 
-For advanced ramping, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
+For more granular ramp configuration, you can use [scenarios](/using-k6/scenarios) and the `ramping-vus` executor.
 
 ## Execution modes
 
-<Blockquote mod="note" title="Portability is a major design goal of k6">
+<Blockquote mod="note" title="">
+
+**Portability is a major design goal of k6.**
 
 You can run the same test in different modes with minimal changes.
 
@@ -190,13 +198,13 @@ You can run the same test in different modes with minimal changes.
 
 k6 supports three execution modes to run a k6 test: local, distributed, and cloud. 
 
-- [Local](#running-local-tests): the test execution happens entirely on a single machine, container, or CI server. 
+- **Local**: the test execution happens entirely on a single machine, container, or CI server. 
 
   ```bash
   k6 run script.js
   ```
 
-- [Distributed](https://k6.io/blog/running-distributed-tests-on-k8s/): the test execution is distributed across a Kubernetes cluster. 
+- **Distributed**: the test execution is [distributed across a Kubernetes cluster](https://k6.io/blog/running-distributed-tests-on-k8s/). 
   
   <CodeGroup labels={["Running", "k6-resource.yaml"]} lineNumbers={[true]}> 
 
@@ -220,11 +228,11 @@ k6 supports three execution modes to run a k6 test: local, distributed, and clou
 
   </CodeGroup>
 
-- [Cloud](/cloud): the test execution happens on k6 Cloud.
+- **Cloud**: the test runs on [k6 Cloud](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/) or [Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/).
 
   ```bash
   k6 cloud script.js
   ```
 
-  Additionally, k6 Cloud can run cloud tests on your [own cloud infrastructure](/cloud/creating-and-running-a-test/private-load-zones/), and accept the test results from a [local](/results-output/real-time/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
+  Additionally, cloud-based solutions can run cloud tests on your [own cloud infrastructure](/cloud/creating-and-running-a-test/private-load-zones/), and accept the test results from a [local](/results-output/real-time/cloud/) or [distributed test](https://github.com/grafana/k6-operator#k6-cloud-output).
 

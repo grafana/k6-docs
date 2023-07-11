@@ -51,7 +51,7 @@ Each option has its own detailed reference in a separate section.
 | [Paused](#paused)                                         | A boolean specifying whether the test should start in a paused state                |
 | [Quiet](#quiet)                                           | A boolean specifying whether to show the progress update in the console or not      |
 | [Results output](#results-output)                         | Specify the results output                                                          |
-| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/arrival-rate) instead) |
+| [RPS](#rps)                                               | The maximum number of requests to make per second globally (discouraged, use [arrival-rate executors](/using-k6/scenarios/concepts/open-vs-closed) instead) |
 | [Scenarios](#scenarios)                                   | Define advanced execution scenarios                                                 |
 | [Setup timeout](#setup-timeout)                           | Specify how long the `setup()` function is allow to run before it's terminated      |
 | [Show logs](#show-logs)                                   | A boolean specifying whether the cloud logs are printed out to the terminal         |
@@ -227,7 +227,7 @@ Available in `k6 run` and `k6 cloud` commands:
 <Blockquote mod="note" title="">
 
 When running tests in k6 Cloud and using a non-default config.json file,
-specify the cloud token inside your config file in order to authenticate.
+specify the cloud token inside your config file to authenticate.
 
 </Blockquote>
 
@@ -944,13 +944,15 @@ $ k6 run --out influxdb=http://localhost:8086/k6 script.js
 
 The maximum number of requests to make per second, in total across all VUs. Available in `k6 run` and `k6 cloud` commands.
 
-<Blockquote mod="attention" title="This option is discouraged">
+<Blockquote mod="attention" title="">
+
+**This option is discouraged.""
 
 The `--rps` option has caveats and is difficult to use correctly.
 
 For example, in the cloud or distributed execution, this option affects every k6 instance independently.
 That is, it is not sharded like VUs are.
-We strongly recommend the [arrival-rate executors](/using-k6/scenarios/arrival-rate) to simulate constant RPS instead of this option.
+We strongly recommend the [arrival-rate executors](/using-k6/scenarios/concepts/open-vs-closed) to simulate constant RPS instead of this option.
 
 </Blockquote>
 
@@ -1154,7 +1156,9 @@ Add/override an [environment variable](/using-k6/environment-variables) with `VA
 
 To make the system environment variables available in the k6 script via `__ENV`, use the [`--include-system-env-vars` option](#include-system-env-vars).
 
-<Blockquote mod="note" title="The `-e` flag does not configure options">
+<Blockquote mod="note" title="">
+
+**The `-e` flag does not configure options.**
 
 This flag just provides variables to the script, which the script can use or ignore.
 For example, `-e K6_ITERATIONS=120` does _not_ configure the script iterations.
@@ -1316,7 +1320,7 @@ export const options = {
 ## Throw
 
 A boolean, true or false, specifying whether k6 should throw exceptions when certain errors occur, or if it should just log them with a warning. Behaviors that currently depend on this option:
- - failed [HTTP requests](/javascript-api/k6-http/)
+ - failing to make [HTTP requests](/javascript-api/k6-http/), e.g. due to a network error
  - adding invalid values to [custom metrics](/using-k6/metrics/#custom-metrics)
  - setting invalid [per-VU metric tags](/javascript-api/k6-execution/#tags)
 
@@ -1419,6 +1423,26 @@ export const options = {
 
 </CodeGroup>
 
+
+
+## Upload Only
+
+A boolean specifying whether the test should just be uploaded to the cloud, but not run it. Available in `k6 cloud` command.
+
+This would be useful if you would like to update a given test and run it later. For example, updating test scripts of a scheduled test from the CI pipelines.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| `K6_CLOUD_UPLOAD_ONLY` | `--upload-only` | N/A                | `false`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --upload-only script.js
+```
+
+</CodeGroup>
 
 
 ## User agent

@@ -4,9 +4,17 @@ head_title: k6 Cloud Release Notes
 excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 ---
 
+### v3.17.2 `(2023-2-14)`
+- Fix selected sort component
+- Fix inconsistencies of test runs showing in the trend bar chart
+
+### v3.17.0 `(2023-1-30)`
+- Add support for Grafana authentication mechanism
+- Fix `Failed by threshold` status instead of `Test failed`
+
 ### v3.16.0 `(2022-12-15)`
 - Update the tag filter to allow custom input for tags values
-- Customisable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
+- Customizable [test trends](https://k6.io/docs/cloud/analyzing-results/test-comparison/#explore-test-trends)
 - Fix saving the filter otions in the insights panel
 
 ### v3.15.3 `(2022-12-5)`
@@ -23,13 +31,13 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Fix pdf crashes when fetching urls
 
 ### v3.14.0 `(2022-11-1)`
-- [Cloud REST API](/cloud/cloud-reference/cloud-rest-api/)
+- Cloud REST API
 
 ### v3.13.4 `(2022-10-19)`
 - Protect billing receipt download link
 
 ### v3.13.0 `(2022-10-12)`
-- Drag-and-drop metrics between charts in analysis panel 
+- Drag-and-drop metrics between charts in analysis panel
 
 ### v3.12.0 `(2022-10-11)`
 - Improved UX of metric analysis controls
@@ -181,7 +189,7 @@ excerpt: 'On this page, you can find the product release notes of k6 Cloud.'
 - Fix: the time range filter was not cleared properly.
 
 ### v2.1.2 `(2022-1-18)`
-- New [load zone regions](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/#load-zones): Bahrain, Cape Town, Milan, and Osaka.
+- New [load zone regions](/cloud/creating-and-running-a-test/cloud-scripting-extras/load-zones): Bahrain, Cape Town, Milan, and Osaka.
 
 ### v2.1.0 `(2022-1-12)`
 - Add support for new user role - [project read only](/cloud/project-and-team-management/members/#project-member).

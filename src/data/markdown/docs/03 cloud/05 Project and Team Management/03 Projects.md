@@ -1,6 +1,7 @@
 ---
 title: 'Projects'
 excerpt: 'Keep your tests and team members organized with projects, a filing system built into the k6 web app'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/projects-and-users/projects/
 ---
 
 Organizations can organize their tests and testers into _projects._
@@ -30,7 +31,7 @@ You can grab the project ID from the top-left corner of the dashboard:
 
 ![Test result navigation](images/02-Projects/projectID.png)
 
-Then, modify your script to add the `projectID` to the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#options):
+Then, modify your script to add the `projectID` to the [Cloud execution options](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options):
 
 ```javascript
 export const options = {
@@ -41,3 +42,4 @@ export const options = {
   },
 };
 ```
+

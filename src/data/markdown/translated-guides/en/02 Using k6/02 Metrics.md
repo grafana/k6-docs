@@ -7,15 +7,45 @@ _Metrics_ measure how a system performs under test conditions.
 By default, k6 automatically collects built-in metrics.
 Besides built-ins, you can also make custom metrics.
 
+
 Metrics fall into four broad types:
-- _Counters_ sum values.
-- _Gauges_ track the smallest, largest, and latest values.
-- _Rates_ track how frequently a non-zero value occurs.
-- _Trends_  calculate statistics for multiple values (like mean or mode).
+- **Counters** sum values.
+- **Gauges** track the smallest, largest, and latest values.
+- **Rates** track how frequently a non-zero value occurs.
+- **Trends** calculates statistics for multiple values (like mean, mode or percentile).
 
-## Built-in metrics
 
-The _built-in_ metrics output to `stdout` when you run the simplest possible k6 test:
+To make a test fail a certain criteria, you can write a [Threshold](/using-k6/thresholds) based on the metric criteria (the specifics of the expression depend on the metric type).
+To filter metrics, you can use [Tags and groups](/using-k6/tags-and-groups).
+You can also export metrics in various summary and granular formats, as documented in [Results output](/results-output).
+
+
+| On this page...                                                      | Read about...                                                           |
+|----------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [Built-in metrics](/using-k6/metrics/reference)                      | Each built-in metric for each supported [protocol](/using-k6/protocols) |
+| [Create custom metrics](/using-k6/metrics/create-custom-metrics)     | How to build your own metric for each metric type                       |
+
+## What metrics to look at?
+
+Each metric provides a different perspective on performance.
+So the best metric for your analysis depends on your goals.
+
+However, if you're unsure about the metrics to focus on, you can start with the metrics that measure the requests, errors, and duration (the criteria of the [RED method](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/)).
+- `http_reqs`, to measure requests
+- `http_req_failed`, to measure error rate
+- `req_duration`, to measure duration
+
+<Blockquote mod="note" title="">
+
+In other terminology, these metrics measure traffic (in requests), availability (in error rate), and latency (in request duration).
+SREs might recognize these metrics as three of the [four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals).
+
+</Blockquote>
+
+
+## Example output
+
+An aggregated summary of all _built-in_ and custom metrics outputs to `stdout` when you run a test:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -29,7 +59,7 @@ export default function () {
 
 </CodeGroup>
 
-Running the preceding script outputs something like this:
+The preceding script outputs something like this:
 
 <CodeGroup labels={["output"]} lineNumbers={[false]}>
 
@@ -74,293 +104,20 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 </CodeGroup>
 
 In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
+For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/reference/).
 
-k6 always collects the following built-in metrics:
 
-| Metric Name        | Type    | Description                                                                                                                                                                                                                                                   |
-|--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| vus                | Gauge   | Current number of active virtual users                                                                                                                                                                                                                        |
-| vus_max            | Gauge   | Max possible number of virtual users (VU resources are pre-allocated, ensuring performance will not be affected when scaling up the load level)                                                                                                              |
-| iterations         | Counter | The aggregate number of times the VUs executed the JS script (the `default` function).                                                                                                                                                                        |
-| iteration_duration | Trend   | The time it took to complete one full iteration, including time spent in `setup` and `teardown`. To calculate the duration of the iteration's function for the specific scenario, [try this workaround](/using-k6/workaround-to-calculate-iteration_duration) |
-| dropped_iterations | Counter | The number of iterations that weren't started due to lack of VUs (for the arrival-rate executors) or lack of time (expired maxDuration in the iteration-based executors).                                                                             |
-| data_received      | Counter | The amount of received data. [This example covers how to track data for an individual URL](/examples/track-transmitted-data-per-url).                                                                                                                         |
-| data_sent          | Counter | The amount of data sent. [Track data for an individual URL](/examples/track-transmitted-data-per-url) to track data for an individual URL.                                                                                                                                   |
-| checks             | Rate    | The rate of successful checks.                                                                                                                                                                                                                                |
+### Metric name restrictions
 
-## HTTP-specific built-in metrics
+<Blockquote mod="warning" title="">
 
-These metrics are generated only when the test makes HTTP requests.
+In the future, metrics names will be further limited to comply with OpenTelemetry and Prometheus limitations.
 
-| Metric Name              | Type    | Description                                                                                                                                                                                                                                  |
-|--------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| http_reqs                | Counter | How many total HTTP requests k6 generated.                                                                                                                                                                                                   |
-| http_req_blocked         | Trend   | Time spent blocked (waiting for a free TCP connection slot) before initiating the request. `float`                                                                                                                                           |
-| http_req_connecting      | Trend   | Time spent establishing TCP connection to the remote host. `float`                                                                                                                                                                           |
-| http_req_tls_handshaking | Trend   | Time spent handshaking TLS session with remote host                                                                                                                                                                                          |
-| http_req_sending         | Trend   | Time spent sending data to the remote host. `float`                                                                                                                                                                                          |
-| http_req_waiting         | Trend   | Time spent waiting for response from remote host (a.k.a. “time to first byte”, or “TTFB”). `float`                                                                                                                                           |
-| http_req_receiving       | Trend   | Time spent receiving response data from the remote host. `float`                                                                                                                                                                             |
-| http_req_duration        | Trend   | Total time for the request. It's equal to `http_req_sending + http_req_waiting + http_req_receiving` (i.e. how long did the remote server take to process the request and respond, without the initial DNS lookup/connection times). `float` |
-| http_req_failed          | Rate    | The rate of failed requests according to [setResponseCallback](/javascript-api/k6-http/setresponsecallback).                                                                                                                        |
-|                          |         |                                                                                                                                                                                                                                              |
-
-### Accessing HTTP timings from a script
-
-To access the timing information from an individual HTTP request, the [Response.timings](/javascript-api/k6-http/response) object provides the time spent on the various phases in `ms`:
-
-- blocked: equals to `http_req_blocked`.
-- connecting: equals to `http_req_connecting`.
-- tls_handshaking: equals to `http_req_tls_handshaking`.
-- sending: equals to  `http_req_sending`.
-- waiting: equals to `http_req_waiting`.
-- receiving: equals to `http_req_receiving`.
-- duration: equals to `http_req_duration`.
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import http from 'k6/http';
-
-export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
-  console.log('Response time was ' + String(res.timings.duration) + ' ms');
-}
-```
-
-</CodeGroup>
-
-The expected (partial) output looks like this:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  INFO[0001] Response time was 337.962473 ms               source=console
-```
-
-</CodeGroup>
-
-## Custom metrics
-
-You can also create custom metrics.
-They are reported at the end of a load test, just like HTTP timings:
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import http from 'k6/http';
-import { Trend } from 'k6/metrics';
-
-const myTrend = new Trend('waiting_time');
-
-export default function () {
-  const r = http.get('https://httpbin.test.k6.io');
-  myTrend.add(r.timings.waiting);
-  console.log(myTrend.name); // waiting_time
-}
-```
-
-</CodeGroup>
-
-The preceding code creates a Trend metric called `waiting_time`.
-In the code, it's referred to with the variable name `myTrend`.
-
-Custom metrics are reported at the end of a test.
-Here's how the output might look:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  ...
-  INFO[0001] waiting_time                                  source=console
-
-  ...
-  iteration_duration.............: avg=1.15s    min=1.15s    med=1.15s    max=1.15s    p(90)=1.15s    p(95)=1.15s
-  iterations.....................: 1     0.864973/s
-  waiting_time...................: avg=265.245396 min=265.245396 med=265.245396 max=265.245396 p(90)=265.245396 p(95)=265.245396
-```
-
-</CodeGroup>
-
-You can optionally [tag](/using-k6/tags-and-groups) any value for a custom metric.
-This can be useful when analyzing test results.
-
-<Blockquote mod="note" title="">
-
-Custom metrics are collected from VU threads only at the end of a VU iteration.
-For long-running scripts, custom metrics might appear only after the test runs a while.
+That means metric names can be 1 to 63 symbols of ASCII letters, numbers, or  `_`. Metric names must not start with a number.
 
 </Blockquote>
 
-
-## Metric types
-
-All metrics (both built-in and custom) have a _type_. The four different metric types in k6 are:
-
-| Metric type                                   | Description                                                                                              |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [Counter](/javascript-api/k6-metrics/counter) | A metric that cumulatively sums added values.                                                            |
-| [Gauge](/javascript-api/k6-metrics/gauge)     | A metric that stores the min, max and last values added to it.                                           |
-| [Rate](/javascript-api/k6-metrics/rate)       | A metric that tracks the percentage of added values that are non-zero.                                   |
-| [Trend](/javascript-api/k6-metrics/trend)     | A metric that allows for calculating statistics on the added values (min, max, average and percentiles). |
-
-
-### Counter _(cumulative metric)_
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import { Counter } from 'k6/metrics';
-
-const myCounter = new Counter('my_counter');
-
-export default function () {
-  myCounter.add(1);
-  myCounter.add(2);
-}
-```
-
-</CodeGroup>
-
-The preceding code generates something like the following output:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  ...
-  iteration_duration...: avg=16.48µs min=16.48µs med=16.48µs max=16.48µs p(90)=16.48µs p(95)=16.48µs
-  iterations...........: 1   1327.67919/s
-  my_counter...........: 3   3983.037571/s
-```
-
-</CodeGroup>
-
-If you run the script for one iteration&mdash;without specifying `--iterations` or `--duration`&mdash;the value of `my_counter` will be three.
-
-Note that there is currently no way to access the value of any custom metric from within JavaScript.
-Note also that counters that have a value of zero (`0`) at the end of a test are a special case.
-They will _NOT_ print to the stdout summary.
-
-### Gauge _(keep the latest value only)_
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import { Gauge } from 'k6/metrics';
-
-const myGauge = new Gauge('my_gauge');
-
-export default function () {
-  myGauge.add(3);
-  myGauge.add(1);
-  myGauge.add(2);
-}
-```
-
-</CodeGroup>
-
-The preceding code results in output like this:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  ...
-  iteration_duration...: avg=21.74µs min=21.74µs med=21.74µs max=21.74µs p(90)=21.74µs p(95)=21.74µs
-  iterations...........: 1   1293.475322/s
-  my_gauge.............: 2   min=1         max=3
-```
-
-</CodeGroup>
-
-The value of `my_gauge` will be 2 at the end of the test.
-As with the Counter metric, a Gauge with a value of zero (`0`) will *NOT* be printed to the `stdout` summary at the end of the test.
-
-### Trend _(collect trend statistics (min/max/avg/percentiles) for a series of values)_
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import { Trend } from 'k6/metrics';
-
-const myTrend = new Trend('my_trend');
-
-export default function () {
-  myTrend.add(1);
-  myTrend.add(2);
-}
-```
-
-</CodeGroup>
-
-The preceding code outputs something like this:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  ...
-  iteration_duration...: avg=20.78µs min=20.78µs med=20.78µs max=20.78µs p(90)=20.78µs p(95)=20.78µs
-  iterations...........: 1   1217.544821/s
-  my_trend.............: avg=1.5     min=1       med=1.5     max=2       p(90)=1.9     p(95)=1.95
-```
-
-</CodeGroup>
-
-A _trend metric_ holds a set of sample values, which it can output statistics about (min, max, average, median, or percentiles).
-By default, k6 prints `average`, `min`, `max`, `median`, `90th percentile`, and `95th percentile`.
-
-### Rate _(keeps track of the percentage of values in a series that are non-zero)_
-
-<CodeGroup lineNumbers={[true]}>
-
-```javascript
-import { Rate } from 'k6/metrics';
-
-const myRate = new Rate('my_rate');
-
-export default function () {
-  myRate.add(true);
-  myRate.add(false);
-  myRate.add(1);
-  myRate.add(0);
-}
-```
-
-</CodeGroup>
-
-The preceding code outputs something like this:
-
-<CodeGroup lineNumbers={[false]}>
-
-```bash
-$ k6 run script.js
-
-  ...
-  iteration_duration...: avg=22.12µs min=22.12µs med=22.12µs max=22.12µs p(90)=22.12µs p(95)=22.12µs
-  iterations...........: 1      1384.362792/s
-  my_rate..............: 50.00% ✓ 2           ✗ 2
-```
-
-</CodeGroup>
-
-The value of `my_rate` at the end of the test will be 50%, indicating that half of the values
-added to the metric were non-zero.
-
-## Metric graphs in k6 Cloud Results
-
-If you use [k6 Cloud Results](/cloud/analyzing-results/overview), you can access all test
-metrics within the [Analysis Tab](/cloud/analyzing-results/analysis-tab).
-You can use this tab to analyze, compare, and look for meaningful correlations in your test result data.
-
-![k6 Cloud Analysis Tab](images/Metrics/cloud-insights-analysis-tab.png)
-
-
+At the moment, a metric name can be 1 to 128 symbols of:
+1. any Unicode Letters
+2. any Unicode Number
+3. `.`, `_`, ` `, `!`, `?`. `/`, `#`, `(`. `)`, `<`, `>`, `%` and `-`

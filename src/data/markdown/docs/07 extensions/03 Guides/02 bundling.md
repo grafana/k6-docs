@@ -1,11 +1,16 @@
 ---
-title: 'Build a k6 binary with extensions'
+title: 'Build a k6 binary using Go'
 excerpt: 'Guide to build a k6 binary that includes one or many extensions using xk6.'
 ---
 
 To use an extension that you found on the [Extension page](/extensions/get-started/explore/) or the [xk6 GitHub topic](https://github.com/topics/xk6),
-you need to build a binary.
+you need to build a binary using Go.
 
+<Blockquote mod="note" title="Support for Docker">
+
+  Not interested in setting up a Go environment? You can [use Docker instead](/extensions/guides/build-a-k6-binary-using-docker/).
+
+</Blockquote>
 
 ## Before you start
 

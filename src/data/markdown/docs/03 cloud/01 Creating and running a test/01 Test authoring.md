@@ -13,7 +13,7 @@ Besides writing a test in your text editor or IDE, you can also use a k6-support
 
 - The [Test builder](/test-authoring/test-builder) is a graphical test builder.
 - The [Script editor](/cloud/creating-and-running-a-test/script-editor) is a web-based editor in k6 cloud.
-- [Browser recorders](/test-authoring/recording-a-session/browser-recorder) create scripts from recorded sessions.
+- [Browser recorders](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/) create scripts from recorded sessions.
 - [Converters](/integrations#converters) create tests from HAR, Postman, and OpenAPI files
 
 ## Running a cloud test

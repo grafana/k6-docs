@@ -2,6 +2,8 @@ import { Heading } from 'components/shared/heading';
 import { Link } from 'gatsby';
 import React from 'react';
 
+import Blockquote from '../../../shared/blockquote';
+
 import styles from './what-is-xk6.module.scss';
 
 export const WhatIsXk6 = () => (
@@ -26,5 +28,17 @@ export const WhatIsXk6 = () => (
       </Link>{' '}
       to generate the CLI command that will build your customized k6 binary.
     </p>
+
+    <Blockquote mod="note" title="Support for Docker">
+      You now have a new option that doesn&apos;t require setting a Go
+      environment!{' '}
+      <Link
+        to="/extensions/guides/build-a-k6-binary-using-docker/"
+        className="link"
+      >
+        Use Docker
+      </Link>{' '}
+      to build your custom binary.
+    </Blockquote>
   </section>
 );

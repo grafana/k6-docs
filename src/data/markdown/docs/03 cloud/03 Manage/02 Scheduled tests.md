@@ -2,6 +2,7 @@
 title: 'Schedule a test'
 excerpt: 'How to schedule your k6 Cloud load tests to run in the future and at regular intervals.'
 slug: '/cloud/manage/scheduled-tests'
+canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/schedule-a-test/
 ---
 
 At times, it might be impossible for you to manually run a cloud test at the time you want to.

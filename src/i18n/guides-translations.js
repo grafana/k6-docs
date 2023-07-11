@@ -22,7 +22,9 @@ export const localizedMessages = {
     'welcome.features.title': 'Key features',
     'welcome.features.description':
       'k6 is packed with features, which you can learn all about in the documentation. Key features include:',
-    'welcome.features.cli-tool': 'CLI tool with developer-friendly APIs.',
+    'welcome.features.cli-tool': 'CLI tool',
+    'welcome.features.cli-tool.dev-friendly-apis':
+      'with developer-friendly APIs.',
     'welcome.features.scripting':
       'Scripting in JavaScript ES2015/ES6 - with support for',
     'welcome.features.modules': 'local and remote modules',
@@ -66,7 +68,7 @@ export const localizedMessages = {
     'welcome.k6-does-not.browser.title': 'Does not run natively in a browser',
     'welcome.k6-does-not.browser.description': `By default, k6 does not render web pages the same way a browser does. Browsers can consume significant system resources. Skipping the browser allows running more load within a single machine.`,
     'welcome.k6-does-not.browser.testing.text': 'However, with',
-    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.link': 'k6 browser',
     'welcome.k6-does-not.browser.testing.text2':
       'you can interact with real browsers and collect frontend metrics as part of your k6 tests',
     'welcome.k6-does-not.browser.recorded-session.link':
@@ -102,8 +104,9 @@ export const localizedMessages = {
     'welcome.features.title': 'Características principales',
     'welcome.features.description':
       'k6 está compuesto de varias funcionalidades, que puede conocer en la documentación. Las principales características son las siguientes:',
-    'welcome.features.cli-tool':
-      'Herramienta CLI con APIs amigables para el desarrollador.',
+    'welcome.features.cli-tool': 'Herramienta CLI',
+    'welcome.features.cli-tool.dev-friendly-apis':
+      'con APIs amigables para el desarrollador.',
     'welcome.features.scripting':
       'Scripting en JavaScript ES2015/ES6, con soporte para módulos locales y remotos.',
     'welcome.features.modules': 'Módulos locales and remotos',
@@ -148,7 +151,7 @@ export const localizedMessages = {
       'No ejecuta nativamente en un navegador',
     'welcome.k6-does-not.browser.description': `Por defecto, k6 no renderiza las páginas web de la misma manera que lo hace un navegado. Los navegadores pueden consumir muchos recursos del sistema. No usando el navegador, nos permite ejecutar tests de más carga en una misma máquina.`,
     'welcome.k6-does-not.browser.testing.text': 'Sin embargo, con',
-    'welcome.k6-does-not.browser.testing.link': 'xk6-browser',
+    'welcome.k6-does-not.browser.testing.link': 'k6 browser',
     'welcome.k6-does-not.browser.testing.text2':
       'puedes interactuar con navegadores reales y monitorizar métricas del frontend en tus tests de k6',
     'welcome.k6-does-not.nodejs.title': 'No se ejecuta en NodeJS',

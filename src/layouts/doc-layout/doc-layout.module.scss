@@ -78,7 +78,7 @@
   font-weight: 500;
   outline: none;
   transition: 0.3s border-color;
-  &::-moz-focusring {
+  &:-moz-focusring {
     border: none;
   }
   &:focus {
@@ -107,6 +107,19 @@
   border-bottom: 1px solid $color-additional-2;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
+}
+
+.sidebar-list {
+  position: sticky;
+  top: 0;
+  max-height: calc(100vh - 54px);
+  height: 100%;
+  scrollbar-width: none;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .sidebar-footer {
@@ -150,6 +163,16 @@ h2.sidebar-section-title {
   }
 }
 
+.sidebarSectionInvisibleLink {
+  @extend .sidebar-section-title-link;
+  cursor: default;
+  color: #9c97b5;
+  &:hover {
+    color: #9c97b5;
+    border-color: transparent;
+  }
+}
+
 .sidebar-node {
   position: relative;
 }
@@ -186,14 +209,25 @@ a.sidebar-link {
   font-weight: 500;
 }
 
-.sidebar-arrow {
+.sidebar-button {
   position: absolute;
   right: 0;
   top: 2px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
   pointer-events: none;
 
-  &-active {
+  &-open {
     transform: rotate(90deg);
+  }
+
+  &-active {
+    pointer-events: auto;
+  }
+
+  svg {
+    pointer-events: none;
   }
 }
 

@@ -58,7 +58,7 @@ For debugging, k6 also provides a few builtin options:
   ```javascript
   import http from 'k6/http';
 
-  const res = http.get('http://httpbin.test.k6.io/json');
+  const res = http.get('https://httpbin.test.k6.io/json');
   console.log(JSON.stringify(res));
   ```
 
@@ -94,7 +94,7 @@ If you run tests from the web interface, use the user menu to select a project w
 If you run tests from the k6 CLI, set the `projectID` in the test script.
 
 1. Copy the project ID from the top-left corner of the project dashboard.
-1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/cloud-execution-reference#options).
+1. Set the `projectID` as a [cloud execution option](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options).
 
 <CodeGroup labels={["Example:"]}>
 
@@ -226,16 +226,27 @@ If you need to increase this limit, contact our support team.
 Additionally, you can change the concurrency limit policy that defines how k6 Cloud acts when the organization reaches the limit and a new test run is triggered.
 Two options are available:
 
-- `Abort test`: the new test run will be automatically aborted. This is the default option.
-- `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours.
+- `Queue test`: the new test run will be queued for execution and started once a slot is opened. A queued test will timeout if no slot is available in 6 hours. This is the current default option.
+- `Abort test`: the new test run will be automatically aborted.
+
+<Blockquote mod="note" title="Changes to the default concurrency policy">
+
+On January 31st, 2023, the default concurrency policy changed from `Abort test` to `Queue test`.
+To avoid confusion, k6 kept the old default for organizations who joined before the change.
+
+If your organization uses the old default and wants to upgrade to `Queue test` policy, change the policy as described in the following section.
+
+</Blockquote>
+
+### Changing the concurrency limit policy
 
 To change the concurrency limit policy, you must be the organization owner.
-You can change the policy at in your user menu, at **Organization settings > Settings**:
+You can change the policy in your user menu, at **Organization settings > Settings**:
 
 ![Concurrency limit policy](./images/Troubleshooting/k6-concurrency-limit-policy.png)
 
 
-### Data uploads with k6 Cloud
+## Data uploads with k6 Cloud
 
 The [test builder](/test-authoring/test-builder) and [script editor](/cloud/creating-and-running-a-test/script-editor) in the k6 Cloud don't support uploading data files in your test.
 

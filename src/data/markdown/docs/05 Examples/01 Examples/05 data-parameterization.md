@@ -8,6 +8,8 @@ excerpt: |
   This will, in turn, make your test more realistic.
 ---
 
+_Data parameterization_ is the process of turning test values into reusable parameters, for example, through variables and shared arrays.
+
 This page gives some examples of how to parameterize data in a test script.
 Parameterization is typically necessary when Virtual Users (VUs) will make a POST, PUT, or PATCH request in a test.
 You can also use parameterization when you need to add test data from a separate file.
@@ -244,94 +246,9 @@ export default function () {
 
 </CodeGroup>
 
-## Generating data
+## Generating data using faker.js
 
-See [this example project on GitHub](https://github.com/k6io/example-data-generation) showing how to use faker.js to generate realistic data at runtime.
+The following articles show how to use faker.js in k6 to generate realistic data during the test execution:
 
-## Old workarounds
-
-The following section is here for historical reasons as it was the only way to lower the memory
-usage of k6 prior to v0.30.0 but after v0.27.0, but still have access to a lot of parameterization data
-with some caveats. All of the below should probably not be used as [SharedArray](/javascript-api/k6-data/sharedarray) should be sufficient.
-
-After k6 version v0.27.0, while there was still no way
-to share memory between VUs, the `__VU` variable was now defined during the init
-context which means that we could split the data between the VUs during initialization
-and not have multiple copies of it during the test run. This is not useful now that [SharedArray](/javascript-api/k6-data/sharedarray)
-exists. Combining both will likely not bring any more performance benefit then using just the
-[SharedArray](/javascript-api/k6-data/sharedarray).
-
-<CodeGroup labels={["parse-json-big.js"]} lineNumbers={[true]}>
-
-```javascript
-const splits = 100; // in how many parts are we going to split the data
-let data = [];
-
-if (__VU == 0) {
-  open('./data.json'); // we just open it so it is available in the cloud or if we do k6 archive
-} else {
-  const all_data = JSON.parse(open('./data.json')); // we load and parse the data in one go, no need for temp variables
-  const part_size = all_data.length / splits;
-  const index = part_size * (__VU % splits);
-  data = all_data.slice(index, index + part_size);
-}
-
-export default function () {
-  console.log(`VU=${__VU} has ${data.length} data`);
-}
-```
-
-</CodeGroup>
-
-With 100k lines like:
-
-```json
-{ "username": "test", "password": "qwerty" },
-```
-
-and a total of 4.8MB the script uses 3.5GB to start 300 VUs, while without it for 100 VUs (with all the data for each VU) it requires nearly 10GB.
-For direct comparison 100VUs used near 2GB of memory.
-
-Playing with the value for `splits` will give a different balance between memory used and the amount of data each VU has.
-
-A second approach using another technique will be to pre-split the data in different files and load and parse only the one for each VU.
-
-<CodeGroup labels={["parse-csv-many.js"]} lineNumbers={[true]}>
-
-```javascript
-import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
-import { sleep } from 'k6';
-
-const dataFiles = [
-  './data1.csv',
-  './data2.csv',
-  './data3.csv',
-  './data4.csv',
-  './data5.csv',
-  './data6.csv',
-  './data7.csv',
-  './data8.csv',
-  './data9.csv',
-  './data10.csv',
-];
-let csvData;
-if (__VU == 0) {
-  // workaround to collect all files for the cloud execution
-  for (let i = 0; i < dataFiles.length; i++) {
-    open(dataFiles[i]);
-  }
-} else {
-  csvData = papaparse.parse(open(dataFiles[__VU % dataFiles.length]), {
-    header: true,
-  }).data;
-}
-export default function () {
-  sleep(10);
-}
-```
-
-</CodeGroup>
-
-The files have 10k lines and are in total 128kb. Running 100VUs with this script takes around 2GB, while running the same with a single file takes upwards of 15GBs.
-
-Either approach works for both JSON and CSV files and they can be combined, as that will probably reduce the memory pressure during the initialization even further.
+- [Performance Testing with Generated Data using k6 and Faker](https://dev.to/k6/performance-testing-with-generated-data-using-k6-and-faker-2e)
+- [Load Testing Made Easy with K6: Using Faker Library and CSV Files](https://farhan-labib.medium.com/load-testing-made-easy-with-k6-using-faker-library-and-csv-files-c997d48fb6e2)
