@@ -57,7 +57,7 @@ Besides privileged access to a Kubernetes cluster, installation will require tha
 - [Go](https://go.dev/doc/install)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - [Kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/)
-- [Make](https://www.gnu.org/software/make/).
+- [Make](https://www.gnu.org/software/make/)
 
 </Blockquote>
 
@@ -71,11 +71,23 @@ Then, from the `k6-operator` directory, you may now perform the installation:
 make deploy
 ```
 By default, the operator will be installed into a new namespace, `k6-operator-system`.
-You can verify the successful installation by listing available resources within the namespace, ensuring the status is `Running`:
+You can verify the successful installation by listing available resources within the namespace:
 ```shell
 kubectl get pod -n k6-operator-system
 ```
-Once installed, we're ready to start creating and executing test scripts.
+
+After a few moments, your resulting status should become `Running` as shown below:
+
+<CodeGroup labels={["Output"]} showCopyButton={[false]}>
+
+```bash
+NAME                                              READY   STATUS    RESTARTS   AGE
+k6-operator-controller-manager-7664957cf7-llw54   2/2     Running   0          160m
+```
+
+</CodeGroup>
+
+You are now ready to start create and execute test scripts!
 
 ## 2. Create a test script
 Creating k6 test scripts for Kubernetes is no different from creating the script for the command-line.
@@ -113,7 +125,7 @@ This can give you immediate feedback if you have errors in your script.
 
 </Blockquote>
 
-Let's go ahead verify our script is valid by performing a brief test:
+Let's go ahead and verify our script is valid by performing a brief test:
 ```shell
 k6 run test.js
 ```
@@ -122,7 +134,7 @@ We should see a successful execution and resulting output summary.
 
 ## 3. Add test scripts
 In order for your test scripts to be run, they must be published into your cluster.
-This can be done using [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) or [PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources.
+Two main methods for this are using [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) or [PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources.
 
 ### Add as a ConfigMap
 Using a `ConfigMap` is a quick and straightforward mechanism for adding your test scripts to Kubernetes.
@@ -146,7 +158,7 @@ Check the [motivations](https://kubernetes.io/docs/concepts/configuration/config
 You should see confirmation with `configmap/my-test created`.
 
 ### Add inside a PersistentVolume
-Setting up a `PersistentVolume` is beyond the scope of this guide, but enables access to a shared filesystem from your Kubernetes cluster.
+Setting up a `PersistentVolume` is beyond the scope of this guide, but enables access to a shared filesystem from your Kubernetes cluster via `PersistentVolumeClaim`.
 
 When using this option, organize your test scripts in the applicable filesystem just as you would locally.
 This mechanism is ideal when breaking up monolithic scripts into reusable [modules](/using-k6/modules/).
@@ -163,18 +175,18 @@ When using a `PersistentVolume`, the operator will expect all test scripts to be
 
 </Blockquote>
 
-To learn more about creating `PersistentVolume` resources, review the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+To learn more about creating `PersistentVolume` and `PersistentVolumeClaim` resources, review the [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## 4. Create a custom resource
-During [installation](#install-the-operator), the `K6` [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
-The data we provide in the custom resource contains all the information necessary for the k6 operator to start a distributed load test.
+During [installation](#install-the-operator), the `K6` [Custom Resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) was added to the Kubernetes API.
+The data we provide in the custom resource `K6` object should contain all the information necessary for the k6-operator to start a distributed load test.
 
-The main elements defined within the `K6` resource relate to the name and location of the test script to run, and the amount of [parallelism](/misc/glossary/#parallelism) to utilize.
+Specifically, the main elements defined within the `K6` object relate to the name and location of the test script to run, and the amount of [parallelism](/misc/glossary/#parallelism) to utilize.
 
 <Blockquote mod="note" title="">
 
 The `K6` custom resource provides many configuration options to control the initialization and execution of tests.
-For the full listing of possible options, please refer to the project source and [README](https://github.com/grafana/k6-operator/blob/main/README.md).
+For the full listing of possible options, please refer to the project [source](https://github.com/grafana/k6-operator/blob/main/config/crd/bases/k6.io_k6s.yaml) and [README](https://github.com/grafana/k6-operator/blob/main/README.md).
 
 </Blockquote>
 
