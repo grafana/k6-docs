@@ -147,7 +147,7 @@ jq '. | select(.type == "Point" and .metric == "http_req_duration" and .data.tag
 
 ## Organize requests in groups
 
-You can also organize your test logic into [Groups](/using-k6/tags-and-groups#groups). Test logic inside a `group` tags to all requests and metrics within its block.
+You can also organize your test logic into [Groups](/using-k6/tags-and-groups#groups). Test logic inside a `group` tags all requests and metrics within its block.
 Groups can help you organize the test as a series of logical transactions or blocks.
 
 ### Context: a new test to group test logic
