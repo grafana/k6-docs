@@ -1,8 +1,7 @@
-/* eslint-disable prettier/prettier */
 import { DocSearch } from '@docsearch/react';
 import classNames from 'classnames';
-import React, { useRef } from 'react';
-import { LATEST_VERSION } from 'utils/versioning';
+import React, { useRef, useEffect } from 'react';
+import debounce from 'utils/debounce';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import '@docsearch/css';
 
@@ -11,17 +10,31 @@ import styles from './search-box.module.scss';
 export const SearchBox = () => {
   const rootRef = useRef(null);
 
-  // TODO add env keys and return null if keys do not exist
+  // @NOTE: this is a workaround to prevent scroll to the page bottom when closing search modal in Safari
+  // https://github.com/algolia/docsearch/issues/1260#issuecomment-1011939736
+  useEffect(() => {
+    let div = document.querySelector('.fixed[data-docsearch-fixed]');
+
+    if (!div) {
+      div = document.createElement('div');
+      div.classList.add('fixed');
+      div.setAttribute('data-docsearch-fixed', '');
+      div.innerHTML = '<input type="text" aria-label="hidden">';
+      document.body.appendChild(div);
+    }
+  }, []);
+
   return (
     <div className={classNames(styles.wrapper)} ref={rootRef}>
       <DocSearch
-        appId="MGJ30X6AFY"
-        apiKey="5f8378d0e74b297ad0ce5ac826a76781"
-        indexName="k6"
+        appId={process.env.GATSBY_ALGOLIA_APP_ID}
+        apiKey={process.env.GATSBY_ALGOLIA_SEARCH_API_KEY}
+        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
         placeholder="Search"
-        searchParameters={{
-          facetFilters: [`version:${LATEST_VERSION}`],
-        }}
+        transformSearchClient={(searchClient) => ({
+          ...searchClient,
+          search: debounce(searchClient.search, 500),
+        })}
       />
     </div>
   );
