@@ -66,12 +66,22 @@ After the test finishes, k6 reports the [default result summary](/results-output
   ...
 ```
 
-To make sure you're getting the right response, you could log the response body to the console as follows:
+As an optional step, you can log the response body to the console to make sure you're getting the right response.
+
+<CodeGroup labels={["api-test.js"]} lineNumbers={[]} showCopyButton={[true]}>
 
 ```javascript
-const res = http.post(url, payload, params);
-console.log(res.body);
+export default function () {
+  ...
+
+  const res = http.post(url, payload, params);
+
+  // Log the request body
+  console.log(res.body);
+}
 ```
+
+</CodeGroup>
 
 ## Add response checks
 
@@ -110,6 +120,12 @@ Once you're sure the request is well-formed, add a [check](/using-k6/checks) tha
   ```
   
   </CodeGroup>
+
+1. Run the script again.
+
+  ```bash
+  k6 run api-test.js
+  ```
 
 1. Inspect the result output for your check.
    It should look something like this.
