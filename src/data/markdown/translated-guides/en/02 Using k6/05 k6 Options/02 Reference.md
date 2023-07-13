@@ -351,7 +351,7 @@ export const options = {
 
 ## Extension options
 
-An object used to set configuration options for third-party collectors, like plugins.
+An object used to set configuration options for third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
