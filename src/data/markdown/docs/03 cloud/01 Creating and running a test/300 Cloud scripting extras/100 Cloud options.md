@@ -7,7 +7,7 @@ canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripti
 Cloud execution has a few extra options, including to distribute load across different regions or to change projects.
 These cloud options are **not required**.
 
-> For all available options, refer to [Options](/using-k6/options) in the k6 OSS docs.
+> For all available options, refer to [Options](/using-k6/k6-options/) in the k6 OSS docs.
 
 ## Example configuration
 
