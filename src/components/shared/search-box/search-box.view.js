@@ -35,6 +35,9 @@ export const SearchBox = () => {
           ...searchClient,
           search: debounce(searchClient.search, 500),
         })}
+        searchParameters={{
+          facetFilters: ['language:en'],
+        }}
       />
     </div>
   );
