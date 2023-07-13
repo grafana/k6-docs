@@ -56,8 +56,8 @@ export const options = {
 const baseUrl = 'https://test.k6.io';
 
 // Create custom trends
-const contactsLatency = new Trend('contacts duration');
-const coinflipLatency = new Trend('coinflip duration');
+const contactsLatency = new Trend('contacts_duration');
+const coinflipLatency = new Trend('coinflip_duration');
 
 export default function () {
   // Put visits to contact page in one group
@@ -140,7 +140,7 @@ To do so, follow these steps:
   import { Trend } from "k6/metrics";
   import { group, sleep } from "k6";
   
-  const contactsLatency = new Trend("contact duration");
+  const contactsLatency = new Trend("contact_duration");
 
   export function contacts(baseUrl) {
     group('Contacts flow', function () {
@@ -175,7 +175,7 @@ To do so, follow these steps:
     // Put visits to contact page in one group
     contacts(baseUrl);
     // Coinflip players in another group
-    contacts(baseUrl);
+    coinflip(baseUrl);
   }
 
   //define configuration
@@ -210,7 +210,7 @@ To do so, follow these steps:
   import { Trend } from "k6/metrics";
   import { group, sleep } from "k6";
 
-  const contactsLatency = new Trend("contact duration");
+  const contactsLatency = new Trend("contact_duration");
 
   export function contacts(baseUrl) {
     group('Contacts flow', function () {
@@ -233,7 +233,7 @@ To do so, follow these steps:
   import { Trend } from "k6/metrics";
   import { group, sleep } from "k6";
 
-  const coinflipLatency = new Trend("coinflip duration");
+  const coinflipLatency = new Trend("coinflip_duration");
 
   export function coinflip(baseUrl) {
     group("Coinflip game", function () {

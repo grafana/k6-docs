@@ -47,9 +47,10 @@ At minimum, each source code repository must have the following:
 
 - **builds with a recent k6 version**
 
-  Ideally, the extension should build with the latest release.
+  Ideally, the extension should build with the [latest release](https://github.com/grafana/k6/releases/latest).
   But, it must build with a version of k6 that is no more than three releases old.
   For example, if latest version of k6 is `v0.100`, the extension must build with at least version `v0.98`.
+  Be sure to also match the version of Go as determined by the version of k6.
 
 ## Naming Conventions
 Some extensions may be very specific, where others are more general. 

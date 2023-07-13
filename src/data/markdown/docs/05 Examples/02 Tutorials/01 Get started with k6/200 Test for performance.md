@@ -11,7 +11,7 @@ In this tutorial, learn how to:
 - Use [thresholds](/using-k6/thresholds) to assert for performance criteria
 - Configure load increases through [scenarios](/using-k6/scenarios)
 
-These examples build on the script from the previous section.
+These examples build on the script from the [previous section](/examples/tutorials/get-started-with-k6/test-for-functional-behavior/).
 
 ## Context: meet service-level objectives
 
@@ -24,12 +24,13 @@ The service must meet these SLOs under different types of usual traffic.
 ## Assert for performance with thresholds
 
 To codify the SLOs, add [_thresholds_](/using-k6/thresholds) to test that your system performs to its goal criteria.
-Thresholds are set in options.
+
+Thresholds are set in the [`options`](/using-k6/k6-options/) object.
 
 
 ```javascript
 export const options = {
-  //define thresholds
+  // define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
@@ -37,20 +38,20 @@ export const options = {
 };
 ```
 
-Add this [`options`](/using-k6/k6-options/) object with thresholds to your script `api-test.js`. 
+Add this `options` object with thresholds to your script `api-test.js`. 
 
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
 
 ```javascript
-// Import necessary modules
+// import necessary modules
 import { check } from "k6";
 import http from "k6/http";
 
-//define configuration
+// define configuration
 export const options = {
-  //define thresholds
+  // define thresholds
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ["p(99)<1000"], // 99% of requests should be below 1s
@@ -75,7 +76,7 @@ export default function () {
 
   // check that response is 200
   check(res, {
-    "login response was 200": (res) => res.status == 200,
+    "response code was 200": (res) => res.status == 200,
   });
 }
 
@@ -83,12 +84,11 @@ export default function () {
 
 </CodeGroup>
 
-Run the test as usual: 
+Run the test. 
 
 ```bash
 k6 run api-test.js
 ```
-
 
 Inspect the console output to determine whether performance crossed a threshold.
 
@@ -98,7 +98,7 @@ Inspect the console output to determine whether performance crossed a threshold.
 ✗ http_req_failed................: 0.00% ✓ 0        ✗ 1
 ```
 
-
+The ✓ and ✗ symbols indicate whether the performance thresholds passed or failed.
 
 ## Test performance under increasing load
 
@@ -110,7 +110,7 @@ Scenarios schedule load according to the number of VUs, number of iterations, VU
 
 ### Run a smoke test
 
-Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confirm the script works properly") to see your script can handle minimal load.
+Start small. Run a [smoke test](/test-types/smoke-testing "a small test to confirm the script works properly") to check that your script can handle a minimal load.
 
 To do so, use the [`--iterations`](/using-k6/k6-options/reference/#iterations) flag with an argument of 10 or fewer.
 
@@ -123,19 +123,22 @@ Good thing you ran the test early!
 
 ### Run a test against an average load
 
-Now increase the load.
-
 Generally, traffic doesn't arrive all at once.
 Rather, it gradually increases to a peak load.
 To simulate this, testers increase the load in _stages_.
 
-Since this is a learning environment, the stages are still quite short.
-Add the following _scenario_ to your options `object` and rerun the test.
-Where the smoke test defined the load in terms of iterations, this configuration uses the [`ramping-vus` executor](/using-k6/scenarios/executors/ramping-vus/) to express load through virtual users and duration.
+Add the following `scenario` property to your `options` object and rerun the test.
 
-```json
+```javascript
+export const options = {
+  // define thresholds
+  thresholds: {
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+    http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
+  },
+  // define scenarios
   scenarios: {
-    //arbitrary name of scenario
+    // arbitrary name of scenario
     average_load: {
       executor: "ramping-vus",
       stages: [
@@ -148,7 +151,11 @@ Where the smoke test defined the load in terms of iterations, this configuration
       ],
     },
   }
+};
 ```
+
+Since this is a learning environment, the stages are still quite short.
+Where the smoke test defined the load in terms of iterations, this configuration uses the [`ramping-vus` executor](/using-k6/scenarios/executors/ramping-vus/) to express load through virtual users and duration.
 
 Run the test with no command-line flags: 
 
@@ -158,7 +165,6 @@ k6 run api-test.js
 
 The load is small, so the server should perform within thresholds.
 However, this test server may be under load by many k6 learners, so the results are unpredictable.
-
 
 <Blockquote mod="note" title="To visualize results...">
 
@@ -176,13 +182,13 @@ In this case, run the test until the availability (error rate) threshold is cros
 
 To do this:
 
-1. Configure the threshold to abort when it fails.
+1. Add the `abortOnFail` property to `http_req_failed`.
 
   ```javascript
   http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // http errors should be less than 1%, otherwise abort the test
   ```
 
-1. Configure the load to ramp the test up until it fails.
+1. Update the `scenarios` property to ramp the test up until it fails.
 
   ```javascript
   export const options = {
@@ -191,7 +197,7 @@ To do this:
       http_req_duration: ['p(99)<1000'], 
     },
     scenarios: {
-      //arbitrary name of scenario:
+      // define scenarios
       breaking: {
         executor: "ramping-vus",
         stages: [
@@ -211,20 +217,24 @@ To do this:
   ```
 
 Here is the full script.
-Copy and run it with `k6 run api-test.js`.
 
 <CodeGroup labels={["api-test.js"]} lineNumbers={[true]} showCopyButton={[true]}
 heightTogglers={[true]}>
 
 ```javascript
-// Import necessary modules
+// import necessary modules
 import { check } from "k6";
 import http from "k6/http";
 
-//define configuration
+// define configuration
 export const options = {
+  // define thresholds
+  thresholds: {
+    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
+    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
+  },
+  // define scenarios
   scenarios: {
-    //arbitrary name of scenario:
     breaking: {
       executor: "ramping-vus",
       stages: [
@@ -239,11 +249,6 @@ export const options = {
         //....
       ],
     },
-  },
-  //define thresholds
-  thresholds: {
-    http_req_failed: [{ threshold: "rate<0.01", abortOnFail: true }], // availability threshold for error rate
-    http_req_duration: ["p(99)<1000"], // Latency threshold for percentile
   },
 };
 
@@ -265,7 +270,7 @@ export default function () {
 
   // check that response is 200
   check(res, {
-    "login response was 200": (res) => res.status == 200,
+    "response code was 200": (res) => res.status == 200,
   });
 }
 
@@ -273,12 +278,17 @@ export default function () {
 
 </CodeGroup>
 
+Run the test. 
+
+```bash
+k6 run api-test.js
+```
+
 Did the threshold fail? If not, add another stage with a higher target and try again. Repeat until the threshold aborts the test:
 
 ```bash
 ERRO[0010] thresholds on metrics 'http_req_duration, http_req_failed' were breached; at least one has abortOnFail enabled, stopping test prematurely 
 ```
-
 
 ## Next steps
 

@@ -43,23 +43,28 @@ If you don't want to build with Docker (refer to repo README), you'll need the f
 
 To build locally:
 
-1. Clone the project
+1. Clone the project.
+
   ```bash
   git clone git@github.com:grafana/k6-docs.git
   cd k6-docs
-  npm install  # or yarn install
   ```
+
 2. Use the version manager to install a version of node compatible with the version in `package.json`.
+
  ```bash
   nvm install 16.16
   nvm use 16.16
   ```
+
 3. Install dependencies (only necessary the first time).
+
   ```bash
   npm install  # or yarn install
   ```
 
-4. Run the docs locally:
+4. Run the docs locally.
+
   ```bash
   npm start  # or yarn start
   ```
