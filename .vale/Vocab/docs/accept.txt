@@ -93,6 +93,7 @@ j[qQ]uery
 jq
 loki
 Kibana
+Kustomize
 Lua
 maxfiles
 Netdata

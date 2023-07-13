@@ -13,10 +13,13 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Application performance monitoring](#application-performance-monitoring)
 - [Concurrent sessions](#concurrent-sessions)
 - [Checks](#checks)
+- [Custom resource](#custom-resource)
 - [Data correlation](#data-correlation)
 - [Data parameterization](#data-parameterization)
 - [Dynamic data](#dynamic-data)
 - [Endurance testing](#endurance-testing)
+- [Environment variables](#environment-variables)
+- [Execution segment](#execution-segment)
 - [Goja](#goja)
 - [Graceful stop](#graceful-stop)
 - [Happy path](#happy-path)
@@ -24,11 +27,14 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Iteration](#iteration)
 - [k6 Cloud](#k6-cloud)
 - [k6 options](#k6-options)
+- [Kubernetes](#kubernetes)
 - [Load test](#load-test)
 - [Load zone](#load-zone)
 - [Lifecycle function](#lifecycle-function)
 - [Metric](#metric)
 - [Metric sample](#metric-sample)
+- [Operator pattern](#operator-pattern)
+- [Parallelism](#parallelism)
 - [Reliability](#reliability)
 - [Requests per second](#requests-per-second)
 - [Saturation](#saturation)
@@ -46,6 +52,7 @@ If a certain term in these docs confuses you, consult this list for a definition
 - [Threshold](#threshold)
 - [Throughput](#throughput)
 - [Virtual user](#virtual-user)
+- [YAML](#yaml)
 
 </Glossary>
 
@@ -60,6 +67,9 @@ Concurrent sessions
 Checks
 : Checks are true/false conditions that evaluate the content of some value in the JavaScript runtime.<br/><br/>[Checks reference](/using-k6/checks)
 
+Custom resource
+: An extension to the [Kubernetes](#kubernetes) API.<br/><br/>[Kubernetes reference](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+
 Data correlation
 : The process of taking [dynamic data](#dynamic-data) received from the system under test and reusing the data in a subsequent request.<br/><br/>[Correlation and dynamic data example](/examples/correlation-and-dynamic-data/), [Correlation in testing APIs](/testing-guides/api-load-testing/#correlation-and-data-parameterization)
 
@@ -71,6 +81,12 @@ Dynamic data
 
 Endurance testing
 : A synonym for [soak testing](#soak-test).
+
+Environment variables
+: User-definable values which may be utilized by the operating system and other programs.<br/><br/>[Using environment variables](/using-k6/environment-variables/) 
+
+Execution segment
+: A partition, or fractional portion, of an overall [test run](#test-run).<br/><br/>[The execution-segment options](/using-k6/k6-options/reference#execution-segment)
 
 Goja
 : A JavaScript engine written in Go. k6 binaries are embedded with Goja, enabling test scripting in JavaScript.<br/><br/>[Goja repository](https://github.com/dop251/goja)
@@ -87,11 +103,17 @@ HTTP archive
 Iteration
 : A single run in the execution of the `default function`, or scenario `exec` function. You can set iterations across all VUs, or per VU.<br/><br/>The [test life cycle](/using-k6/test-life-cycle/) document breaks down each stage of a k6 script, including iterations in VU code.
 
+JSON
+: An open standard, human-readable data-serialization format originally derived from JavaScript.
+
 k6 Cloud
 : The proper name for the entire cloud product, comprising both k6 Cloud Execution and k6 Cloud Test Results.<br/><br/>[k6 Cloud docs](/cloud)
 
 k6 options
 : Values that configure a k6 test run. You can set options with command-line flags, environment variables, and in the script.<br/><br/>[k6 Options](/using-k6/k6-options)
+
+Kubernetes
+: An open-source system for automating the deployment, scaling, and management of containerized applications.<br/><br/>[Kubernetes website](https://kubernetes.io/)
 
 Load test
 : A test that assesses the performance of the system under test in terms of concurrent users or requests per second.<br/><br/>[Load Testing](/test-types/load-testing)
@@ -107,6 +129,12 @@ Metric
 
 Metric sample
 : A single value for a metric in a test run. For example, the value of `http_req_duration` from a single VU request.
+
+Operator pattern
+: Extends [Kubernetes](#kubernetes), enabling cluster management of [custom resources](#custom-resource).<br/><br/>[Kubernetes reference](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
+
+Parallelism
+: The simultaneous execution of multiple tasks by dividing a problem into smaller independent parts.
 
 Reliability
 : The probability that a system under test performs as intended.
@@ -159,5 +187,8 @@ Throughput
 
 Virtual user
 : *(Or VU)*. The simulated users that run separate and concurrent iterations of your test script.<br/><br/>[The VU option](/using-k6/k6-options/reference#vus)
+
+YAML
+: Rhymes with "camel," provides a human-readable data-serialization format commonly used for configuration files.  
 
 </DescriptionList>
