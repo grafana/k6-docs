@@ -152,21 +152,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-datadog",
-      "description": "Query Datadog metrics",
-      "url": "https://github.com/dgzlopes/xk6-datadog",
-      "logo": "",
-      "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
-      },
-      "stars": "5",
-      "type": ["JavaScript"],
-      "categories": ["Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-exec",
       "description": "Run external commands",
       "url": "https://github.com/grafana/xk6-exec",
