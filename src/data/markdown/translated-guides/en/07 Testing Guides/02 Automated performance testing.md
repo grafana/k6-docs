@@ -6,15 +6,21 @@ excerpt: 'Automated performance testing enables teams to efficiently execute tes
 
 import {IntegrationsCiIconBlock} from 'templates/docs/integrations'
 
-While automation has been a hot topic in the broader testing community, it is not a silver bullet for all your performance testing problems. It can help set up all the mundane tasks, but analyzing the performance metrics requires human intervention. However, where to start, which tool to choose, or how to get there is not always as straightforward, especially if you don’t already have a lot of experience in performance engineering.
+While automation has been a hot topic in the broader testing community, it is not a silver bullet for all your testing problems. As an example, it can help set up all the mundane tasks, but analyzing the performance metrics requires human intervention. However, where to start, which tool to choose, or how to get there is not always as straightforward, especially if you don’t already have a lot of experience in performance engineering.
 
 This guide aims to lay down the steps and recommended practices for achieving your goal of automated performance testing.
 
 ## Why automate performance tests?
 
-Let’s start by examining first why you would consider automating your performance tests.
+Let’s start by examining why you would consider automating your performance tests. To do that we need to revisit why we run performance tests in the first place:
 
-- Automated performance testing can quickly scale up the number of virtual users or load levels to simulate realistic user scenarios (**scalability**). Performing this manually would be time-consuming and impractical for large-scale tests involving hundreds or thousands of concurrent users.
+- **Avoid launch failures** leading to a missed opportunity window and wasted investments, e.g. your app or site crashing during a high-profile product launch event.
+- **Avoid bad user experience** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to a non responsive app or website.
+- **Avoid performance regressions** as code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
+
+From here, the decision to go for automated testing is hopefully clear:
+
+- **Scalability**, as automated performance testing can quickly scale up the number of virtual users or load levels to simulate realistic user scenarios. Performing this manually would be time-consuming and impractical for large-scale tests involving hundreds or thousands of concurrent users.
 - **Saving time and money**, especially when running the performance tests. Automated performance tests can be executed repeatedly and are faster to run which can significantly reduce the test duration. In addition, computers are great at doing all the boring and repetitive tasks, which opens up your time to explore the application effectively.
 - **Shifting performance testing left**, making sure it happens as close to development as possible, giving developers an early feedback loop for performance matters.
 - **Reduce performance regression and promote continuous testing** by integrating performance tests to your continuous integration and continuous delivery (CI/CD) pipelines. Performance tests can be triggered automatically during build deployments, ensuring that performance issues are identified early in the development process and reducing the risk of performance-related regressions. Automated performance tests are also easier to monitor and incrementally improved when it's conducted throughout the development lifecycle.
@@ -47,6 +53,7 @@ Once you have identified your performance goals, you can start to plan the follo
 
 - a set of tests you need to automate
 - the environment you're running the tests from
+- the different load test types that you would cover
 - the workload and data requirements for a realistic performance simulation
 
 If you haven’t already created test cases for your system, then we suggest having a read through one of our guides for creating tests for websites and APIs/microservices:
@@ -67,15 +74,17 @@ Once you have identified your performance goals and have a rough plan, you can i
 2. [Writing a test](#writing-a-test)
 3. [Adding checks](#adding-checks)
 4. [Setting test criteria with thresholds](#setting-test-criteria-with-thresholds)
-5. [Local vs Cloud execution](#local-vs-cloud-execution)
-6. [Test frequency](#test-frequency)
-7. [Notifications](#notifications)
+5. [Test results](#test-results)
+6. [Local vs Cloud execution](#local-vs-cloud-execution)
+7. [Test frequency](#test-frequency)
+8. [Notifications](#notifications)
+9. [Test organization](#test-organization)
 
 Let's have a closer look at these general steps in more detail below.
 
 ## 1. Installation of k6
 
-The first step to integrating automated performance tests in your CI pipeline is to find and install a performance testing tool.
+The first step to integrating automated performance tests in your Continuous Integration (CI) pipeline is to find and install a performance testing tool.
 
 k6 is a tool built for automation. Using k6, you can test the reliability and performance of your systems and catch performance regressions and problems earlier. One of its key features is its CLI tool which can integrate easily into your tech stack.
 
@@ -96,16 +105,6 @@ Generally, when creating test scripts, the golden rule is to start small and exp
 **Version control test files**
 
 One recommended practice that we advise users and customers to adopt is version control of performance tests, preferably alongside application code like other automated tests. In our experience, this will lead to a higher likeliness of tests being maintained as the application evolves. Developers also get more invested if the tests are co-located in the application code. It also affords you all the usual benefits of version-controlling your code.
-
-**Modules**
-
-Once you’ve gained enough experience with test creation, we strongly advise you to [modularize your tests](/using-k6/modules) to reuse common logic/patterns across members of your team and different performance tests. 
-
-Another approach to group your tests is to use the [resource object model pattern](https://k6.io/blog/load-testing-made-simpler-with-resource-object-model/).
-
-**Scenarios and Groups**
-
-To organize and manage multiple user scenarios effectively, we also advise you to use [scenarios](/using-k6/scenarios) and [groups](/using-k6/groups). Scenarios allow you to model diverse workloads and can be powerful if you also consider a [hybrid approach to performance testing](/testing-guides/load-testing-websites/#hybrid-load-testing). Groups allow you to organize multiple requests by page loads or user actions as a single transaction. k6 shows the response time of grouped requests separately and as a group.
 
 ## 3. Adding checks
 
@@ -200,7 +199,12 @@ export const options = {
 
 If the test ends with one or more failed thresholds, k6 will exit with a non-zero exit code, signaling to the CI/CD tool that the performance test step failed. This will stop the build/pipeline from progressing and notify you so you can take corrective action. [Notifications](#notifications) require additional setup, so we’ve provided further instructions on putting this in place in one of the sections down below.
 
-## 5. Local vs. Cloud execution
+## 5. Test results
+
+**Groups**
+
+Groups allow you to organize multiple requests by page loads or user actions as a single transaction. 
+## 6. Local vs. Cloud execution
 
 When running your tests, k6 supports the following options:
 - **Local execution**: run locally and view results locally (`k6 run ...`)
@@ -234,9 +238,14 @@ k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
 
 To get your personal Grafana k6 Cloud API token, check out [Authenticate on the CLI](https://grafana.com/docs/grafana-cloud/k6/author-run/tokens-and-cli-authentication/).
 
-## 5. Test frequency
+## 7. Test frequency
 
-The boring, but true, answer to the question of how often you should run load tests is that "it depends". It depends on a number of parameters. How often is your application changing? Do you need many or few VUs to generate the necessary load? How long is one full cycle of a VU iteration? etc. Testing a full user journey or just a single API endpoint or website page has different implications on the answer as well.
+The boring but true answer to how often you should run load tests is that "it depends." It depends on several parameters:
+
+- How often is your application changing? 
+- Do you need many or few VUs to generate the necessary load?
+- How long is one complete cycle of a VU iteration? 
+- Are you testing a complete user journey or just a single API endpoint or website page?
 
 Consider these three factors when picking the best solution for you:
 
@@ -300,15 +309,15 @@ If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/ma
 
 Do you need to run your full load test suite on every commit? Probably not, but in any case should not be the initial ambition. Repeating the advice from earlier in the guide, start small and expand from there. Start by evaluating the most business critical transactions/journeys you have in your system and start by automating those.
 
-## 6. Notifications
+## 8. Notifications
 
-Once you have your load tests integrated into a CI pipeline you should make sure you’re also getting notified whenever a build/pipeline fails. You might already get notification via email, Slack, Microsoft Teams or Webhook through your CI tool, but if not you can set it up as follows.
+Once you have your load tests integrated into a CI pipeline, you should make sure you’re also getting notified whenever a build/pipeline fails. You might already get notifications via email, Slack, Microsoft Teams, or Webhook through your CI tool, but if not, you can set it up as follows:
 
 ### For k6 OSS
 
-There’s no builtin notification mechanism in k6 OSS, so you’d have to send a notification from the test script. One way to achieve this is by sending a notification event request to Slack or Microsoft Teams.
+There’s no built-in notification mechanism in k6 OSS, so you’d have to send a notification from the test script. One way to achieve this is by sending a notification event request to Slack or Microsoft Teams.
 
-For Slack you need to first [setup an incoming webhook](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+For Slack, you need to first [set up an incoming webhook](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Once setup, you get a webhook URL that you specify as the target of the POST request in the teardown function:
 
 ```javascript
 import { sleep } from 'k6';
@@ -337,7 +346,7 @@ export function teardown(data) {
 }
 ```
 
-For Microsoft Teams you need to first [setup an incoming webhook connector](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+For Microsoft Teams, you need to first [set up an incoming webhook connector](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Once setup, you get a webhook URL that you specify as the target of the POST request in the teardown function:
 
 ```javascript
 import http from 'k6/http';
@@ -368,11 +377,79 @@ export function teardown(data) {
 }
 ```
 
-### For k6 cloud
+### For Grafana Cloud k6
 
-If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/manage/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
+If you are running cloud tests, you can also configure custom emails and webhook by setting up [notifications in the Grafana Cloud k6 GUI](https://grafana.com/docs/grafana-cloud/k6/author-run/send-notifications/). It includes several pre-made templates, such as Slack and Microsoft Teams.
 
+## 9. Test organization
 
+As you expand your automated tests, you also need to think about organizing your tests so they are easier to maintain and reuse. You also want to ensure that the tests are easier to read so other people can contribute to it easily. You can check out our k6 Office Hours episode on different ways to [manage your test scripts in k6](https://www.youtube.com/watch?v=zDtEzp_JUOE), but here are some general recommendations:
+
+**Functions**
+
+You can break down user flows into different functions especially if multiple user flows will be repeated. 
+
+```javascript
+export default function () {
+  Homepage();
+  ProductPage();
+}
+
+export function Homepage() {
+  // ...
+}
+
+export function ProductPage() {
+  // ...
+}
+```
+
+**Modules**
+
+If your test scripts are still too long, we also advice you to look at [modular scripting](/using-k6/modules) and import the functions that you require from different files. 
+
+```javascript
+//productPage.js
+export function ProductPage() {
+  // ...
+}
+```
+
+```javascript
+//my-test.js
+import { ProductPage } from './productPage.js';
+
+export default function () {
+  ProductPage();
+}
+```
+
+**Scenarios**
+
+When you need to simulate more realistic user flows, a single test may need to cover multiple end-to-end flows simultaneously. For example, you may have users sending requests to the homepage while other users are browsing the product page and adding items to their cart. For such situations, you need to use [scenarios](/using-k6/scenarios). Scenarios allow you to model diverse workloads and can be powerful if you also consider a [hybrid approach to performance testing](/testing-guides/load-testing-websites/#hybrid-load-testing). 
+
+```javascript
+export const options = {
+  scenarios: {
+    homePage: {
+      executor: 'constant-vus',
+      exec: 'HomePage',
+      vus: 3,
+      duration: '10s',
+    },
+    productPage: {
+      executor: 'per-vu-iterations',
+      exec: 'ProductPage',
+      vus: 3,
+      duration: '1m',
+    },
+  },
+};
+```
+
+**Design patterns**
+
+When working with browser-level tests, a design pattern that has become popular when structuring large automated tests is the Page Object Model (POM). A page object represents parts of your website, such as various pages, which serve as an interface to your tests. This design pattern can also be translated to APIs, which we have explained in this article, [Load Testing Made Simpler with Resource Object Model](https://k6.io/blog/load-testing-made-simpler-with-resource-object-model/).
 ## Read more
 
 We have written CI tool specific guides following the steps mentioned above:
