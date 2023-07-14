@@ -18,7 +18,6 @@ The injection of the fault is controlled by the following options:
 | Option    | Type   | Description |
 | --------- | ------ | ----------- |
 | proxyPort | number | port the agent will use to listen for requests in the target pods ( default `8000`) |
-| iface     | string | network interface where the agent will capture the traffic ( default `eth0`) |
 
 <Blockquote mod="note">
 
