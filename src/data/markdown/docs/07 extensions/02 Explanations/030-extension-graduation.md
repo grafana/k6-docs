@@ -28,6 +28,9 @@ Only Grafana-controlled extensions may progress beyond the _extension_ phase to 
 This phase is the first exposure to core k6. 
 The extension is still maintained outside the core of k6 but imported as a Go module, no longer requiring xk6.
 
+Once an extension is promoted as an _experimental module_, the extension will be removed from the [extension listing](/extensions/get-started/explore/).
+At this time, documentation for the functionality will be provided in [k6 API](/javascript-api/k6-experimental/) and [output](/results-output/real-time/) for _JavaScript_ and _Output_ extensions, respectively.
+
 There should be a reasonably high degree of quality and stability at this point.
 This phase makes the feature accessible to more users, which in turn gives k6 developers more chances to receive feedback.
 The key will be to achieve a balance between usability and stability.

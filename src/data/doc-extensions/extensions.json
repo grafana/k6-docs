@@ -46,21 +46,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-websockets",
-      "description": "A WHATWG WebSockets API specification implementation for k6 that might replace k6/ws in the future.",
-      "url": "https://github.com/grafana/xk6-websockets",
-      "logo": "",
-      "author": {
-        "name": "",
-        "url": ""
-      },
-      "stars": "13",
-      "type": ["JavaScript"],
-      "categories": ["WebSockets"],
-      "tiers": ["Official"],
-      "cloudEnabled": true
-    },
-    {
       "name": "xk6-kafka",
       "description": "Load-test Apache Kafka. Includes support for Avro messages",
       "url": "https://github.com/mostafa/xk6-kafka",
@@ -118,36 +103,6 @@
       "stars": "46",
       "type": ["JavaScript"],
       "categories": ["Data"],
-      "tiers": ["Official"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-redis",
-      "description": "Client for testing Redis",
-      "url": "https://github.com/grafana/xk6-redis",
-      "logo": "",
-      "author": {
-        "name": "",
-        "url": "https://github.com/grafana"
-      },
-      "stars": "13",
-      "type": ["JavaScript"],
-      "categories": ["Data"],
-      "tiers": ["Official"],
-      "cloudEnabled": true
-    },
-    {
-      "name": "xk6-distributed-tracing",
-      "description": "Distributed tracing",
-      "url": "https://github.com/grafana/xk6-distributed-tracing",
-      "logo": "",
-      "author": {
-        "name": "grafana",
-        "url": "https://github.com/grafana"
-      },
-      "stars": "58",
-      "type": ["Output"],
-      "categories": ["Observability"],
       "tiers": ["Official"],
       "cloudEnabled": false
     },
@@ -494,21 +449,6 @@
       "type": ["JavaScript"],
       "categories": ["Misc"],
       "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
-      "name": "xk6-output-prometheus-remote",
-      "description": "Export results to Prometheus remote write endpoints",
-      "url": "https://github.com/grafana/xk6-output-prometheus-remote",
-      "logo": "",
-      "author": {
-        "name": "",
-        "url": "https://github.com/grafana"
-      },
-      "stars": "92",
-      "type": ["Output"],
-      "categories": ["Reporting", "Observability"],
-      "tiers": ["Official"],
       "cloudEnabled": false
     },
     {
