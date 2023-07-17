@@ -63,8 +63,8 @@
     {
       "name": "xk6-notification",
       "description": "Create notifications",
-      "url": "https://github.com/dgzlopes/xk6-notification",
-      "logo": "https://github.com/dgzlopes/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true",
+      "url": "https://github.com/grafana/xk6-notification",
+      "logo": "https://github.com/grafana/xk6-notification/blob/db5504667ff7530ee619c42e5c1037703f603b30/assets/logo.png?raw=true",
       "author": {
         "name": "Daniel González",
         "url": "https://github.com/dgzlopes"
@@ -72,7 +72,7 @@
       "stars": "14",
       "type": ["JavaScript"],
       "categories": ["Reporting"],
-      "tiers": ["Community"],
+      "tiers": ["Official"],
       "cloudEnabled": false
     },
     {
