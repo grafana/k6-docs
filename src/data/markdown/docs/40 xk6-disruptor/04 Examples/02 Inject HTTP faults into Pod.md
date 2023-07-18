@@ -93,7 +93,7 @@ This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be e
             preAllocatedVUs: 10,
             maxVUs: 100,
             exec: "default",
-            startTime: '0s',
+            startTime: "0s",
             duration: "30s",
         },
         disrupt: {
@@ -101,9 +101,9 @@ This test defines two [scenarios](https://k6.io/docs/using-k6/scenarios) to be e
             iterations: 1,
             vus: 1,
             exec: "disrupt",
-            startTime: "30s",
-        }
-     }
+            startTime: "0s",
+        },
+    }
  ```
 
  <Blockquote mod="note">
@@ -306,7 +306,7 @@ export const options = {
             preAllocatedVUs: 10,
             maxVUs: 100,
             exec: "default",
-            startTime: '0s',
+            startTime: "0s",
             duration: "30s",
         },
         disrupt: {
