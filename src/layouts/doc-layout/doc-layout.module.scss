@@ -253,3 +253,23 @@ a.sidebar-link {
     margin: 0 auto;
   }
 }
+
+.mobile-nav-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 14px;
+  padding: 4px 12.5px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-nav-inner {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  column-gap: 22px;
+}

@@ -399,17 +399,20 @@ export const DocLayout = ({
               )}
             </div>
           </div>
-          <div className={'d-md-none col-12 d-flex justify-content-between'}>
-            {showLanguageToggle && (
-              <LanguageSwitcher onLanguageChange={languageChangeHandler} />
-            )}
-            {!!version && (
-              <VersionSwitcher
-                currentVersion={version}
-                versions={pageVersions}
-              />
-            )}
-            <Burger onClick={() => setIsMobileNavVisible(true)} />
+          <div className={styles.mobileNavWrapper}>
+            <HeaderLogo />
+            <div className={styles.mobileNavInner}>
+              {showLanguageToggle && (
+                <LanguageSwitcher onLanguageChange={languageChangeHandler} />
+              )}
+              {!!version && (
+                <VersionSwitcher
+                  currentVersion={version}
+                  versions={pageVersions}
+                />
+              )}
+              <Burger onClick={() => setIsMobileNavVisible(true)} />
+            </div>
           </div>
           <div className={`col-xxl-4 col-12 ${styles.searchBox}`}>
             <SearchBox collapse indices={searchIndices} />
