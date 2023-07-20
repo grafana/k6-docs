@@ -18,7 +18,7 @@ In k6, you can import three different kinds of modules:
 k6 provides many built-in modules for core functionalities.
 For example, the `http` client make requests against the
 system under test.
-For the full list of built-in modules, refer to the [the API documentation](/javascript-api).
+For the full list of built-in modules, refer to the [API documentation](/javascript-api).
 
 ```javascript
 import http from 'k6/http';

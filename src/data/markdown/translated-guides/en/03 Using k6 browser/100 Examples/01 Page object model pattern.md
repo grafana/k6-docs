@@ -17,7 +17,7 @@ Let's take an example of a website with a booking form added to the homepage. Im
 
 To model a page object for the homepage, we've created a page object class called `homepage.js`. Different locators are created inside the constructor so that when the homepage class is instantiated, the page locator elements are ready to be used.
 
-There are also different methods for:
+The `homepage.js` class also contains different methods for:
 - Navigating to the homepage
 - Submitting the form
 - Getting the verification message
