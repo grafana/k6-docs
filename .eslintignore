@@ -5,8 +5,10 @@ docs/sources/get-started/run-cloud-tests-from-the-CLI.md
 docs/sources/get-started/run-your-first-tests.md
 CONTRIBUTING_FILE_FORMAT.md
 src/data/markdown/docs/40 xk6-disruptor/01 Get started/01 Welcome.md
+src/data/markdown/docs/40 xk6-disruptor/01 Get started/04 Expose  Your Application.md
 src/data/markdown/docs/40 xk6-disruptor/04 Examples/01 Inject Grpc faults into Service.md
 src/data/markdown/docs/40 xk6-disruptor/04 Examples/02 Inject HTTP faults into Pod.md
 src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/100 Test-for-functional-behavior.md
 src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/200 Test for performance.md
 src/data/markdown/docs/05 Examples/02 Tutorials/01 Get started with k6/400 Reuse and re-run tests.md
+
