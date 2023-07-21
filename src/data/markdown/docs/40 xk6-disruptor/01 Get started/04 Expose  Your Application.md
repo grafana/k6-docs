@@ -23,7 +23,7 @@ Forwarding from 127.0.0.1:8080 -> 80
 
 To be able to inject faults, `xk6-disruptor` must [install an agent on each target](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works) that intercepts the requests and applies the desired disruptions. This process requires any existing connection to the targets to be redirected to the agent.
 
-Due to a existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue arises only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there should not be any issue.
+Due to a existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue happens only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there shouldn't be any issue.
 
 Until this issue is solved in `kubectl`, tests using port forwarding to access a service should ensure the agent is installed in the targets before any traffic is sent by the test.
 
@@ -73,7 +73,7 @@ kubectl -n <name space> patch svc <service name> -p '{\"spec\": {\"type\": \"Loa
 </CodeGroup>
 
 
-You can retrieve the external IP address and store in an environment variable (`SVC_IP` in this example) using the following command:
+You can retrieve the external IP address and store it in an environment variable (`SVC_IP` in this example) using the following command:
 
 <CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
 
