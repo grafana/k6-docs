@@ -7,7 +7,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const shouldAnnouncementBannerBeShown = false;
+const shouldAnnouncementBannerBeShown = true;
 
 const plugins = [
   'gatsby-transformer-sharp',
@@ -184,8 +184,8 @@ if (shouldAnnouncementBannerBeShown) {
         __dirname,
         './src/components/shared/announcement-banner/announcement-banner.js',
       ),
-      text: 'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
-      link: 'https://k6.io/docs/using-k6/scenarios',
+      text: '🎓 We are excited to announce that, starting on July 25th at 14:00 UTC, we will merge the k6 community forum with the Grafana community forum',
+      link: 'https://k6.io/blog/k6-forum-migration/',
       buttonText: 'Learn more',
     },
     // settings below have to match
@@ -199,7 +199,8 @@ if (shouldAnnouncementBannerBeShown) {
       },
     },
     storage: {
-      name: 'k6-ab-was-shown',
+      // changing storage name to force users to see the banner even if it was disabled
+      name: 'k6-sb-was-shown',
     },
   };
   if (isProduction) {
