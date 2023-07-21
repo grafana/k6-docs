@@ -186,7 +186,7 @@ if (shouldAnnouncementBannerBeShown) {
       ),
       text:
         // eslint-disable-next-line max-len
-        '🎓 We are excited to announce that, starting on July 25th at 14:00 UTC, we will merge the k6 community forum with the Grafana community forum',
+        'We are excited to announce that, starting on July 25th at 14:00 UTC, we will merge the k6 community forum with the Grafana community forum',
       link:
         // eslint-disable-next-line max-len
         'https://k6.io/blog/k6-forum-migration/',
