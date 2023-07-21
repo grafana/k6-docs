@@ -188,7 +188,7 @@ export default function () {
   tagWithCurrentStageIndex();
 
   // all the requests will have a `stage` tag
-  // with its value equal to the the index of the stage
+  // with its value equal to the index of the stage
   http.get('https://test.k6.io'); // e.g. {stage: "1"}
 }
 ```
