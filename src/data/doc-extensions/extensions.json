@@ -1081,6 +1081,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-read",
+      "description": "Read files and directories",
+      "url": "https://github.com/acuenca-facephi/xk6-read",
+      "logo": "",
+      "author": {
+        "name": "Adrián Cuenca",
+        "url": "https://github.com/acuenca-facephi"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Misc"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
