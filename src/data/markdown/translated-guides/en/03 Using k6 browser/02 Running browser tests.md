@@ -59,7 +59,9 @@ To run a simple local script:
 
   The preceding code imports the `browser` ([the browser module](/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
     
-  After getting the page, you can interact with it using the [Page](/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page. Afterwards, it closes the page.
+  After getting the page, you can interact with it using the [Page](/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page.
+  
+  Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](/using-k6-browser/browser-metrics/).
 
   <Blockquote mod="note" title="">
 
