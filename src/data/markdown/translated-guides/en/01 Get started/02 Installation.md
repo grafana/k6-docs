@@ -68,4 +68,4 @@ Head to the [bundle builder page](/extensions/get-started/bundle/) to get starte
 ## Troubleshooting
 
 If installation fails, check the [list of common installation issues](/get-started/installation/troubleshooting/).
-If your problem is not listed and persists, reach out via the channel `#community-discussion` on our [official Slack](https://k6io.slack.com/), or report it on our [community forum](https://community.k6.io/).
+If your problem is not listed and persists, reach out via the channel `#community-discussion` on our [official Slack](https://k6io.slack.com/), or report it on our [community forum](https://community.grafana.com/).

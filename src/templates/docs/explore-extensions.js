@@ -98,7 +98,7 @@ const ExploreExtensionsPage = ({
             to join the discussion about extensions in the{' '}
             <Link
               className={docPageContent.link}
-              to={'https://community.k6.io/c/extensions/'}
+              to={'https://community.grafana.com/c/extensions/'}
             >
               k6 Community Forum
             </Link>

@@ -227,7 +227,7 @@ export const Footer = () => {
                     <li className={styles.navColumnItem}>
                       <a
                         className={styles.navColumnLink}
-                        href={'https://community.k6.io'}
+                        href={'https://community.grafana.com'}
                       >
                         Forum
                       </a>

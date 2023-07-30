@@ -57,7 +57,7 @@ const HelperWidget = () => {
               <p className={styles.title}>Have a question?</p>
             </li>
             <li className={styles.listItem}>
-              <a {...itemProps[0]} href={'https://community.k6.io/'}>
+              <a {...itemProps[0]} href={'https://community.grafana.com/'}>
                 <Message />
                 Community forum
               </a>

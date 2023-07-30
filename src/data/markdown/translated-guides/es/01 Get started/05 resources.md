@@ -15,7 +15,7 @@ Estos recursos te ayudarán a escribir y ejecutar k6 tests en un entorno de test
 
 ## Comunidad
 
-- [El foro de la comunidad](https://community.k6.io/). Get support from the k6 team and community.
+- [El foro de la comunidad](https://community.grafana.com/). Get support from the k6 team and community.
 - [Contacta con la comunidad](https://k6.io/community/#join-the-conversation). Slack, Meetup, Twitter, Stack Overflow, LinkedIn, y más.
 
 ## Servidores de tests
