@@ -16,9 +16,9 @@ excerpt: 'S3Client.uploadPart a part in a multipart upload to a bucket'
 
 ### Returns
 
-| Type                                                  | Description                                                                              |
-| :---------------------------------------------------- | :--------------------------------------------------------------------------------------- |
-| [S3Part](/javascript-api/jslib/aws/s3client/s3part)   | An [S3Part](/javascript-api/jslib/aws/s3client/s3part) representing a S3 Part Upload.    |
+| Type                                                         | Description                                                                                                       |
+| :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| Promise<[S3Part](/javascript-api/jslib/aws/s3client/s3part)> | A Promise that fulfills with a [S3Part](/javascript-api/jslib/aws/s3client/s3part) representing a S3 Part Upload. |
 
 ### Example
 
@@ -42,18 +42,18 @@ const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
 const testFileKey = 'multipart.txt';
 
-export default function () {
+export default async function () {
     // Produce random bytes to upload of size ~12MB, that
     // we will upload in two 6MB parts. This is done as the
     // minimum part size supported by S3 is 5MB.
     const bigFile = crypto.randomBytes(12 * 1024 * 1024);
 
     // Initialize a multipart upload
-    const multipartUpload = s3.createMultipartUpload(testBucketName, testFileKey);
+    const multipartUpload = await s3.createMultipartUpload(testBucketName, testFileKey);
 
     // Upload the first part
     const firstPartData = bigFile.slice(0, 6 * 1024 * 1024);
-    const firstPart = s3.uploadPart(
+    const firstPart = await s3.uploadPart(
         testBucketName,
         testFileKey,
         multipartUpload.uploadId,
@@ -63,7 +63,7 @@ export default function () {
 
     // Upload the second part
     const secondPartData = bigFile.slice(6 * 1024 * 1024, 12 * 1024 * 1024);
-    const secondPart = s3.uploadPart(
+    const secondPart = await s3.uploadPart(
         testBucketName,
         testFileKey,
         multipartUpload.uploadId,
@@ -72,14 +72,14 @@ export default function () {
     );
 
     // Complete the multipart upload
-    s3.completeMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId, [
+    await s3.completeMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId, [
         firstPart,
         secondPart,
     ]);
 
     // Let's redownload it verify it's correct, and delete it
-    const obj = s3.getObject(testBucketName, testFileKey);
-    s3.deleteObject(testBucketName, testFileKey);
+    const obj = await s3.getObject(testBucketName, testFileKey);
+    await s3.deleteObject(testBucketName, testFileKey);
 }
 ```
 

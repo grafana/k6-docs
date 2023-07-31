@@ -8,9 +8,9 @@ excerpt: 'S3Client.listBuckets lists the buckets the authenticated user has acce
 
 ### Returns
 
-| Type            | Description                                                              |
-| :-------------- | :----------------------------------------------------------------------- |
-| Array<[Bucket](/javascript-api/jslib/aws/s3client/bucket)> | An array of [Bucket](/javascript-api/jslib/aws/s3client/bucket) objects. |
+| Type                                                                | Description                                                                                           |
+| :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
+| Promise<Array<[Bucket](/javascript-api/jslib/aws/s3client/bucket)>> | A Promise that fulfills with an array of [Bucket](/javascript-api/jslib/aws/s3client/bucket) objects. |
 
 ### Example
 
@@ -30,10 +30,10 @@ const awsConfig = new AWSConfig({
 const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
 
-export default function () {
+export default async function () {
   // List the buckets the AWS authentication configuration
   // gives us access to.
-  const buckets = s3.listBuckets();
+  const buckets = await s3.listBuckets();
 
   // If our test bucket does not exist, abort the execution.
   if (buckets.filter((b) => b.name === testBucketName).length == 0) {

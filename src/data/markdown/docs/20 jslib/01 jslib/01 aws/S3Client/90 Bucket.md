@@ -26,10 +26,10 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig);
 
-export default function () {
+export default async function () {
   // List the buckets the AWS authentication configuration
   // gives us access to.
-  const buckets = s3.listBuckets();
+  const buckets = await s3.listBuckets();
   console.log(JSON.stringify(buckets));
 }
 ```

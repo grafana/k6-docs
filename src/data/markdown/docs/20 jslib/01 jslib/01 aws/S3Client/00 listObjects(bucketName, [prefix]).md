@@ -6,6 +6,8 @@ excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 
 `S3Client.listObjects()` lists the objects contained in a bucket.
 
+### Parameters
+
 | Parameter         | Type   | Description                                                       |
 | :---------------- | :----- | :---------------------------------------------------------------- |
 | bucketName        | string | Name of the bucket to fetch the object from.                      |
@@ -13,9 +15,9 @@ excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 
 ### Returns
 
-| Type                                                       | Description                                                              |
-| :--------------------------------------------------------- | :----------------------------------------------------------------------- |
-| Array<[Object](/javascript-api/jslib/aws/s3client/object)> | An array of [Object](/javascript-api/jslib/aws/s3client/object) objects. |
+| Type                                                                | Description                                                                                           |
+| :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
+| Promise<Array<[Object](/javascript-api/jslib/aws/s3client/object)>> | A Promise that fulfills with an array of [Object](/javascript-api/jslib/aws/s3client/object) objects. |
 
 ### Example
 
@@ -36,9 +38,9 @@ const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
 const testFileKey = 'bonjour.txt';
 
-export default function () {
+export default async function () {
   // List our bucket's objects
-  const objects = s3.listObjects(testBucketName);
+  const objects = await s3.listObjects(testBucketName);
 
   // If our test object does not exist, abort the execution.
   if (objects.filter((o) => o.key === testFileKey).length == 0) {

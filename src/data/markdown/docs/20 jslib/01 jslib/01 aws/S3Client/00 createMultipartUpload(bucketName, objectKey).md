@@ -15,7 +15,7 @@ excerpt: 'S3Client.createMultipartUpload creates a multipart upload to a bucket'
 
 | Type                                                                     | Description                                                                                                       |
 | :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| [S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload) | An [S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
+| Promise<[S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload)> | A Promise that fulfills with a [S3MultipartUpload](/javascript-api/jslib/aws/s3client/s3multipartupload) representing a S3 Multipart Upload. |
 
 ### Example
 
@@ -36,12 +36,12 @@ const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
 const testFileKey = 'multipart.txt';
 
-export default function () {
+export default async function () {
     // Initialize a multipart upload
-    const multipartUpload = s3.createMultipartUpload(testBucketName, testFileKey);
+    const multipartUpload = await s3.createMultipartUpload(testBucketName, testFileKey);
 
     // Abort multipart upload
-    s3.abortMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId);
+    await s3.abortMultipartUpload(testBucketName, testFileKey, multipartUpload.uploadId);
 }
 ```
 
