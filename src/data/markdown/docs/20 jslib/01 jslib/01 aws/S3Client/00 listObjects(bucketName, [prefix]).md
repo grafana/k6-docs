@@ -24,7 +24,7 @@ excerpt: 'S3Client.listObjects lists the objects contained in a bucket'
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.0/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.1/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

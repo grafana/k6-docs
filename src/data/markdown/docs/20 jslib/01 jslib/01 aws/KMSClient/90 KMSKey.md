@@ -18,7 +18,7 @@ excerpt: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.8.0/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.8.1/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
