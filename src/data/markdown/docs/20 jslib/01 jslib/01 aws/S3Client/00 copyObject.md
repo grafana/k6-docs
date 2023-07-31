@@ -22,7 +22,7 @@ excerpt: 'S3Client.copyObject copies an object from a bucket to another'
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.1/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.9.0/s3.js';
 
 
 const awsConfig = new AWSConfig({
