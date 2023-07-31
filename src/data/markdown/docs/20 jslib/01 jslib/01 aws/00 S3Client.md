@@ -13,17 +13,18 @@ S3Client is included in both the dedicated jslib `s3.js` bundle, and the `aws.js
 
 ### Methods
 
-| Function                                                                                                                                     | Description                                                  |
-| :------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------|
-| [listBuckets()](/javascript-api/jslib/aws/s3client/s3client-listbuckets)                                                                     | List the buckets the authenticated user has access to        |
-| [listObjects(bucketName, [prefix])](/javascript-api/jslib/aws/s3client/s3client-listobjects/)                                                | List the objects contained in a bucket                       |
-| [getObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-getobject/)                                                   | Download an object from a bucket                             |
-| [putObject(bucketName, objectKey, data)](/javascript-api/jslib/aws/s3client/s3client-putobject/)                                             | Upload an object to a bucket                                 |
-| [deleteObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-deleteobject/)                                             | Delete an object from a bucket                               |
-| [createMultipartUpload(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-createmultipartupload/)                           | Create a multipart upload for a given objectKey to a bucket  |
-| [uploadPart(bucketName, objectKey, uploadId, partNumber, data)](/javascript-api/jslib/aws/s3client/s3client-uploadpart/)                     | Upload a part in a multipart upload                          |
-| [completeMultipartUpload(bucketName, objectKey, uploadId, parts)](/javascript-api/jslib/aws/s3client/s3client-completemultipartupload/)      | Complete a previously assembled multipart upload             |
-| [abortMultipartUpload(bucketName, objectKey, uploadId)](/javascript-api/jslib/aws/s3client/s3client-abortmultipartupload/)                   | Abort a multipart upload                                     |
+| Function                                                                                                                                | Description                                                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
+| [listBuckets()](/javascript-api/jslib/aws/s3client/s3client-listbuckets)                                                                | List the buckets the authenticated user has access to       |
+| [listObjects(bucketName, [prefix])](/javascript-api/jslib/aws/s3client/s3client-listobjects/)                                           | List the objects contained in a bucket                      |
+| [getObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-getobject/)                                              | Download an object from a bucket                            |
+| [putObject(bucketName, objectKey, data)](/javascript-api/jslib/aws/s3client/s3client-putobject/)                                        | Upload an object to a bucket                                |
+| [deleteObject(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-deleteobject/)                                        | Delete an object from a bucket                              |
+| [copyObject(sourceBucket, sourceKey, destinationBucket, destinationKey)](/javascript-api/jslib/aws/s3client/s3client-copyobject/)       | Copy an object from one bucket to another                   |
+| [createMultipartUpload(bucketName, objectKey)](/javascript-api/jslib/aws/s3client/s3client-createmultipartupload/)                      | Create a multipart upload for a given objectKey to a bucket |
+| [uploadPart(bucketName, objectKey, uploadId, partNumber, data)](/javascript-api/jslib/aws/s3client/s3client-uploadpart/)                | Upload a part in a multipart upload                         |
+| [completeMultipartUpload(bucketName, objectKey, uploadId, parts)](/javascript-api/jslib/aws/s3client/s3client-completemultipartupload/) | Complete a previously assembled multipart upload            |
+| [abortMultipartUpload(bucketName, objectKey, uploadId)](/javascript-api/jslib/aws/s3client/s3client-abortmultipartupload/)              | Abort a multipart upload                                    |
 
 ### Throws
 
