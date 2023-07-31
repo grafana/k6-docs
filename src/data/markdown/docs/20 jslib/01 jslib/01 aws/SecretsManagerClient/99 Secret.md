@@ -36,10 +36,10 @@ const awsConfig = new AWSConfig({
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 
-export default function () {
+export default async function () {
   // List the secrets the AWS authentication configuration
   // gives us access to.
-  const secrets = secretsManager.listSecrets();
+  const secrets = await secretsManager.listSecrets();
 
   // If our test secret does not exist, abort the execution.
   if (secrets.filter((s) => s.name === testSecretName).length == 0) {
@@ -47,7 +47,7 @@ export default function () {
   }
 
   // Let's get it and print its content
-  const downloadedSecret = secretsManager.getSecret(testSecretName);
+  const downloadedSecret = await secretsManager.getSecret(testSecretName);
   console.log(downloadedSecret.secret);
 }
 ```
