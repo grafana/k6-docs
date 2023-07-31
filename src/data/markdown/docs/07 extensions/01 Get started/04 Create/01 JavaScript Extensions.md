@@ -340,7 +340,7 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 - Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create
   custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
 
-> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).
+> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/extensions/).
 
 Next, create an [Output extension](/extensions/get-started/create/output-extensions/) to publish test metrics
 to a destination not already supported by k6.

@@ -7,7 +7,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const shouldAnnouncementBannerBeShown = true;
+const shouldAnnouncementBannerBeShown = false;
 
 const plugins = [
   'gatsby-transformer-sharp',
