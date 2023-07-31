@@ -60,7 +60,6 @@ In the last two minutes, it ramps down to a target of 60 iterations per minute.
 
 ```javascript
 import http from 'k6/http';
-import exec from 'k6/execution';
 
 export const options = {
   discardResponseBodies: true,
@@ -86,10 +85,10 @@ export const options = {
         // Linearly ramp-up to starting 600 iterations per `timeUnit` over the following two minutes.
         { target: 600, duration: '2m' },
 
-        // Cntinue starting 600 iterations per `timeUnit` for the following four minutes.
+        // Continue starting 600 iterations per `timeUnit` for the following four minutes.
         { target: 600, duration: '4m' },
 
-        // Linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minute.
+        // Linearly ramp-down to starting 60 iterations per `timeUnit` over the last two minutes.
         { target: 60, duration: '2m' },
       ],
     },
