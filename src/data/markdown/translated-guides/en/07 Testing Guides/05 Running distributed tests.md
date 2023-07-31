@@ -379,7 +379,7 @@ spec:
 ## 6. When things go wrong
 Sadly nothing works perfectly all the time, so knowing where you can go for help is important.
 
-Be sure to search the [k6-operator category in the community forum](https://community.k6.io/c/k6-operator). 
+Be sure to search the [k6-operator category in the community forum](https://community.grafana.com/c/k6-operator). 
 k6 has a growing and helpful community of engineers working with k6-operator, so there's a good chance your issue has already been discussed and overcome.
 It's also in these forums where you'll be able to get help from members of the k6 development team.
 

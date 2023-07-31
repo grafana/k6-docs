@@ -42,7 +42,7 @@ Myself and the rest of the customer success team are here to support you. Additi
 
 - <a href="https://support.loadimpact.com/4.0/" target="_blank" rel="noreferrer noopener">https://support.loadimpact.com/4.0/</a>
 - <a href="https://docs.k6.io/docs" target="_blank" rel="noreferrer noopener">https://docs.k6.io/docs</a>
-- <a href="https://community.k6.io/" target="_blank" rel="noreferrer noopener">https://community.k6.io/</a>
+- <a href="https://community.grafana.com/" target="_blank" rel="noreferrer noopener">https://community.grafana.com/</a>
 - <a href="https://k6.io/slack/" target="_blank" rel="noreferrer noopener">https://k6.io/slack/</a>
 
 Finally, you are always welcome to contact us directly at <a href="mailto:support@loadimpact.com" target="_blank" rel="noreferrer noopener">support@loadimpact.com</a>. We would be happy to set up a Q&A session or walkthrough to answer your questions after you have some time to explore v4.0 on your own.

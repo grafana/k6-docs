@@ -67,4 +67,4 @@ Si utiliza una o más [extensiones de k6](/extensions), necesita un binario comp
 ## Solución de problemas
 
 Si tiene problemas con la instalación, visite [la lista de problemas y soluciones comúnes](/es/empezando/instalacion/solucion-de-problemas/) para ayuda.
-Si su problema no está listado y persiste, contacte el canal `#lang-spanish` en nuestro [Slack oficial](https://k6io.slack.com/), o repórtelo en nuestro [foro comunitario](https://community.k6.io/).
+Si su problema no está listado y persiste, contacte el canal `#lang-spanish` en nuestro [Slack oficial](https://k6io.slack.com/), o repórtelo en nuestro [foro comunitario](https://community.grafana.com/).

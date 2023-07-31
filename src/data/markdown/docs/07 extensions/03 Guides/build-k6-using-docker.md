@@ -135,5 +135,5 @@ k6.exe run my-script.js
 
 ## Encountering issues?
 
-If you're having issues, search the [k6 Community Forum](https://community.k6.io/c/extensions/). 
+If you're having issues, search the [k6 Community Forum](https://community.grafana.com/c/extensions/). 
 Someone may have had the same issue in the past.
