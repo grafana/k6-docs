@@ -1096,6 +1096,21 @@
       "categories": ["Misc"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-output-clickhouse",
+      "description": "Export results to ClickHouse",
+      "url": "https://github.com/Maksimall89/xk6-output-clickhouse",
+      "logo": "",
+      "author": {
+        "name": "Maksimall89",
+        "url": "https://github.com/Maksimall89"
+      },
+      "stars": "2",
+      "type": ["Output"],
+      "categories": ["Reporting", "Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
