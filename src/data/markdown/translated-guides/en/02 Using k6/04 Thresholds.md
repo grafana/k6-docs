@@ -78,7 +78,8 @@ To use a threshold, follow these steps:
   ```javascript
   export const options = {
     thresholds: {
-    ...
+      /* ... */
+    }
   }
   ```
 2. Define at least one threshold expression. You can do this in two ways:
