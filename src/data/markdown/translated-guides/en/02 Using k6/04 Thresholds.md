@@ -75,7 +75,7 @@ and k6 would exit with a non-zero exit code.
 To use a threshold, follow these steps:
 
 1. In the `thresholds` property of the `options` object, set a key using the name of the metric you want the threshold for:
-  ```
+  ```javascript
   export const options = {
     thresholds: {
     ...
@@ -85,7 +85,7 @@ To use a threshold, follow these steps:
     - The short format puts all threshold expressions as strings in an array.
     - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort).
 
-  ```
+  ```javascript
   export const options = {
     thresholds: {
       //short format
