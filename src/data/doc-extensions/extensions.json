@@ -1111,6 +1111,21 @@
       "categories": ["Reporting", "Observability"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-coap",
+      "description": "Interact with Constrained Application Protocol endpoints.",
+      "url": "https://github.com/golioth/xk6-coap",
+      "logo": "",
+      "author": {
+        "name": "Golioth",
+        "url": "https://github.com/golioth"
+      },
+      "stars": "5",
+      "type": ["JavaScript"],
+      "categories": ["Messaging", "Protocol"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
