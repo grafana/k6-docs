@@ -11,6 +11,12 @@ A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and 
 
 </Blockquote>
 
+<Blockquote mod="attention" title="">
+
+Pages that have been opened ought to be closed using [`Page.close`](/javascript-api/k6-experimental/browser/page/close/). Pages left open could potentially distort the results of Web Vital metrics.
+
+</Blockquote>
+
 <TableWithNestedRows>
 
 | Parameter                                   | Type    | Default                          | Description                                                                                                                                                                                                                                       |
