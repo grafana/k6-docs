@@ -58,10 +58,18 @@ To run a simple local script:
 
 2. Then, run the test on your terminal with this command:
 
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
 $ K6_BROWSER_ENABLED=true k6 run script.js
+```
+
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+# There is also no need to set the K6_BROWSER_ENABLED variable explicitly since this is already
+# defined in the Dockerfile.
+docker run --rm -i --cap-add=SYS_ADMIN grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
@@ -73,6 +81,12 @@ PS C:\k6> $env:K6_BROWSER_ENABLED=true ; k6 run script.js
 ```
 
 </CodeGroup>
+
+<Blockquote mod="note" title="">
+
+  When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](/get-started/installation/#docker) for more information.
+
+</Blockquote>
 
 ## Interact with elements on your webpage
 
@@ -174,7 +188,7 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 
   Keep in mind that there is an additional performance overhead when it comes to spinning up a browser VU and that the resource usage will depend on the system under test.
 
-  </Blockquote>
+</Blockquote>
 
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
