@@ -42,7 +42,7 @@ export default function () {
   const secrets = secretsManager.listSecrets();
 
   // If our test secret does not exist, abort the execution.
-  if (!secrets.filter((s) => s.name === testSecretName).length == 0) {
+  if (secrets.filter((s) => s.name === testSecretName).length == 0) {
     exec.test.abort('test secret not found');
   }
 
