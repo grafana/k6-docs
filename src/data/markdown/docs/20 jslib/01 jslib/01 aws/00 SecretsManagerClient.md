@@ -37,7 +37,7 @@ S3 Client methods will throw errors in case of failure.
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.8.0/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.8.1/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

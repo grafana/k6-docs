@@ -19,7 +19,7 @@ excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in 
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.8.0/ssm.js';
+import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.8.1/ssm.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,

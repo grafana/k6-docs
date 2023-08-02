@@ -19,7 +19,7 @@ S3Part is returned by the [`uploadPart(bucketName, objectKey, uploadId, partNumb
 import crypto from 'k6/crypto';
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.0/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.1/s3.js';
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
