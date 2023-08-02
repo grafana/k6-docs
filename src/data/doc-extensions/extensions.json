@@ -1126,6 +1126,21 @@
       "categories": ["Messaging", "Protocol"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-output-statsd",
+      "description": "Enables real-time output of test metrics to a StatsD service",
+      "url": "https://github.com/LeonAdato/xk6-output-statsd",
+      "logo": "",
+      "author": {
+        "name": "Leon Adato",
+        "url": "https://github.com/LeonAdato"
+      },
+      "stars": "2",
+      "type": ["Output"],
+      "categories": ["Observability"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
