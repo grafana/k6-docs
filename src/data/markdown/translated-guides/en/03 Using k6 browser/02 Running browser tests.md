@@ -113,6 +113,8 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS=false ; k6 run script.js
 
 </CodeGroup>
 
+<Blockquote mod="note" title="">
+
   When using Docker to run k6 browser tests, make sure you have pulled the correct image with Chromium built-in. See [k6 Installation via Docker](/get-started/installation/#docker) for more information.
 
 </Blockquote>
