@@ -34,6 +34,7 @@ excerpt: "Browser module: Frame Class"
 | <a href="https://playwright.dev/docs/api/class-frame#frame-is-enabled" target="_blank" >frame.isEnabled(selector[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-is-hidden" target="_blank" >frame.isHidden(selector[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-is-visible" target="_blank" >frame.isVisible(selector[, options])</a> | - |
+| <a href="https://playwright.dev/docs/api/class-frame#frame-locator" target="_blank" >frame.locator(selector[, options])</a> | - |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-name" target="_blank" >frame.name()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-page" target="_blank" >frame.page()</a> | - |
 | <a href="https://playwright.dev/docs/api/class-frame#frame-parent-frame" target="_blank" >frame.parentFrame()</a> | - |
