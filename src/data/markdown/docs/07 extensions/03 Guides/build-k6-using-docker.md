@@ -13,35 +13,68 @@ For example, to build a k6 latest version binary with the [`xk6-kafka`](https://
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
 ```bash
-docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build latest \
-  --with github.com/mostafa/xk6-kafka@v0.17.0 \
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
+  --with github.com/mostafa/xk6-kafka \
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```bash
 docker run --rm -e GOOS=darwin -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" \
-  grafana/xk6 build latest \
-  --with github.com/mostafa/xk6-kafka@v0.17.0 \
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build \
+  --with github.com/mostafa/xk6-kafka \
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```powershell
 docker run --rm -e GOOS=windows -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" `
-  grafana/xk6 build latest --output k6.exe `
-  --with github.com/mostafa/xk6-kafka@v0.17.0 `
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build --output k6.exe `
+  --with github.com/mostafa/xk6-kafka `
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```batch
 docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
-  grafana/xk6 build latest --output k6.exe ^
-  --with github.com/mostafa/xk6-kafka@v0.17.0 ^
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build --output k6.exe ^
+  --with github.com/mostafa/xk6-kafka ^
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 </CodeGroup>
 
-This creates a `k6` (or `k6.exe`) binary in the current working directory. Replace `latest` in the command above for a concrete version if needed, e.g. `v0.45.1`.
+This creates a `k6` (or `k6.exe`) binary in the current working directory. 
+
+To build the binary with concrete versions, see the example below (`k6` v0.45.1, `xk6-kafka` v0.19.1, and `xk6-output-influxdb` v0.4.1):
+
+<CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
+
+```bash
+docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build v0.45.1 \
+  --with github.com/mostafa/xk6-kafka@v0.19.1 \
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```bash
+docker run --rm -e GOOS=darwin -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" \
+  grafana/xk6 build v0.45.1 \
+  --with github.com/mostafa/xk6-kafka@v0.19.1 \
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```powershell
+docker run --rm -e GOOS=windows -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" `
+  grafana/xk6 build v0.45.1 --output k6.exe `
+  --with github.com/mostafa/xk6-kafka@v0.19.1 `
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```batch
+docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
+  grafana/xk6 build v0.45.1 --output k6.exe ^
+  --with github.com/mostafa/xk6-kafka@v0.19.1 ^
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+</CodeGroup>
 
 ## Breaking down the command
 
