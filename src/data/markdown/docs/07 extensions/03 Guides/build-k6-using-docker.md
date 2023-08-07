@@ -8,7 +8,7 @@ Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify
 
 ## Building your first extension
 
-For example, to build a k6 latest version binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
+For example, to build a custom k6 binary with the latest versions of k6 and the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
 
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
