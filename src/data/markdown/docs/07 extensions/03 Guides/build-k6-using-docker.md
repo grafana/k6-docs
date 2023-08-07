@@ -8,40 +8,40 @@ Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify
 
 ## Building your first extension
 
-For example, to build a k6 v0.43.1 binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
+For example, to build a k6 latest version binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
 
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
 ```bash
-docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build v0.43.1 \
+docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build latest \
   --with github.com/mostafa/xk6-kafka@v0.17.0 \
   --with github.com/grafana/xk6-output-influxdb@v0.3.0
 ```
 
 ```bash
 docker run --rm -e GOOS=darwin -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" \
-  grafana/xk6 build v0.43.1 \
+  grafana/xk6 build latest \
   --with github.com/mostafa/xk6-kafka@v0.17.0 \
   --with github.com/grafana/xk6-output-influxdb@v0.3.0
 ```
 
 ```powershell
 docker run --rm -e GOOS=windows -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" `
-  grafana/xk6 build v0.43.1 --output k6.exe `
+  grafana/xk6 build latest --output k6.exe `
   --with github.com/mostafa/xk6-kafka@v0.17.0 `
   --with github.com/grafana/xk6-output-influxdb@v0.3.0
 ```
 
 ```batch
 docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
-  grafana/xk6 build v0.43.1 --output k6.exe ^
+  grafana/xk6 build latest --output k6.exe ^
   --with github.com/mostafa/xk6-kafka@v0.17.0 ^
   --with github.com/grafana/xk6-output-influxdb@v0.3.0
 ```
 
 </CodeGroup>
 
-This creates a `k6` (or `k6.exe`) binary in the current working directory.
+This creates a `k6` (or `k6.exe`) binary in the current working directory. Replace `latest` in the command above for a concrete version if needed, e.g. `v0.45.1`.
 
 ## Breaking down the command
 
