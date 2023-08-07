@@ -43,7 +43,7 @@ docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
 
 This creates a `k6` (or `k6.exe`) binary in the current working directory. 
 
-To build the binary with concrete versions, see the example below (`k6` v0.45.1, `xk6-kafka` v0.19.1, and `xk6-output-influxdb` v0.4.1):
+To build the binary with concrete versions, see the example below (k6 `v0.45.1`, xk6-kafka `v0.19.1`, and xk6-output-influxdb `v0.4.1`):
 
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
