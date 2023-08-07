@@ -53,7 +53,7 @@ export const options = {
 };
 
 export default () => {
-  const urlRes = http.req('https://test-api.k6.io');
+  const urlRes = http.get('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script
