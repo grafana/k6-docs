@@ -22,6 +22,8 @@ To run a simple local script:
 
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
+Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](/using-k6/k6-options/) and [scenarios](/using-k6/scenarios/) documentation for more information.
+
   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
