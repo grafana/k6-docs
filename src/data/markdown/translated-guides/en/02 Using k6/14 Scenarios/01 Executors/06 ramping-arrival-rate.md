@@ -77,7 +77,6 @@ export const options = {
       // Pre-allocate necessary VUs.
       preAllocatedVUs: 50,
 
-
       stages: [
         // Start 300 iterations per `timeUnit` for the first minute.
         { target: 300, duration: '1m' },
