@@ -5,13 +5,11 @@ description: 'SQSClient enables interaction with the AWS Simple Queue Service (S
 excerpt: 'SQSClient allows interacting with the AWS Simple Queue Service (SQS)'
 ---
 
-<BlockingAwsBlockquote />
-
 `SQSClient` interacts with the AWS Simple Queue Service (SQS).
 
-With it, the user can send messages to specified queues and list available queues in the current region. `SQSClient` operations are blocking.
+With it, the user can send messages to specified queues and list available queues in the current region.
 
-Both the dedicated `sqs.js` jslib bundle and the all-encompassing `aws.js` bundle include the `SQSClient`.
+`SQSClient` is included in both the dedicated `sqs.js` jslib bundle and the all-encompassing `aws.js` one, containing all the services clients.
 
 ### Methods
 

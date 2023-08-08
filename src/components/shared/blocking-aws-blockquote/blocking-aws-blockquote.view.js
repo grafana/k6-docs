@@ -6,9 +6,10 @@ const BlockingAwsBlockquote = () => (
     mod="Attention"
     title="Performance considerations and recommended practices"
   >
-    In some cases, such as downloading large files from S3, this could affect
-    performance and test results. To minimize the impact on test performance, we
-    recommend using these operations in the
+    In some cases, using this javascript library&apos;s operations might impact
+    performance and skew your test results. <br />
+    <br />
+    To ensure accurate results, consider executing these operations in the
     <span className="code-inline">setup</span> and{' '}
     <span className="code-inline">teardown</span>{' '}
     <a href="/docs/using-k6/test-lifecycle/">lifecycle functions</a>. These

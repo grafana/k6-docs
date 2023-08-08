@@ -5,8 +5,6 @@ description: 'SecretsManagerClient allows interacting with AWS secrets stored in
 excerpt: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 ---
 
-<BlockingAwsBlockquote />
-
 `SecretsManagerClient` interacts with the AWS Secrets Manager.
 
 With it, the user can list secrets owned by the authenticated user, download secrets, create new secrets, update secrets, and delete secrets.
