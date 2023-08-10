@@ -82,13 +82,11 @@ $ k6 run script.js
 ```bash
 # When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
 # to grant further system permissions on the host for the Docker container.
-# There is also no need to set the K6_BROWSER_ENABLED variable explicitly since this is already
-# defined in the Dockerfile.
 docker run --rm -i --cap-add=SYS_ADMIN grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
-C:\k6> set "K6_BROWSER_ENABLED=true" && k6 run script.js
+C:\k6> k6 run script.js
 ```
 
 ```bash
@@ -99,10 +97,16 @@ PS C:\k6> k6 run script.js
 
 You can also use [the browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
 
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
 $ K6_BROWSER_HEADLESS=false k6 run script.js
+```
+
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+docker run --rm -i --cap-add=SYS_ADMIN -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash

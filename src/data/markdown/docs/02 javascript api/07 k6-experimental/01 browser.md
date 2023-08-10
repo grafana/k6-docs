@@ -79,10 +79,16 @@ export default async function () {
 
 Then, you can run the test with this command. Also, see the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) for customizing the browser module's behavior using environment variables.
 
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
 $ k6 run script.js
+```
+
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+docker run --rm -i --cap-add=SYS_ADMIN grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
@@ -131,10 +137,15 @@ You can customize the behavior of the browser module by providing browser option
 
 The following command passes the [browser module options](#browser-module-options) as environment variables to launch a headful browser with custom arguments.
 
-<CodeGroup labels={["Bash", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
 $ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run script.js
+```
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+docker run --rm -i --cap-add=SYS_ADMIN -e K6_BROWSER_HEADLESS=false -e K6_BROWSER_ARGS='show-property-changed-rects' grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
