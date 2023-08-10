@@ -58,7 +58,6 @@ It allocates 50 VUs for k6 to dynamically use as needed.
 
 ```javascript
 import http from 'k6/http';
-import { sleep } from 'k6';
 
 export const options = {
   discardResponseBodies: true,
@@ -77,7 +76,6 @@ export const options = {
 
       // Pre-allocate VUs
       preAllocatedVUs: 50,
-
     },
   },
 };
