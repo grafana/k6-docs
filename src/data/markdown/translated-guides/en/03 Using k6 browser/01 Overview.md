@@ -128,4 +128,4 @@ ui   ✓ [======================================] 1 VUs  00m01.3s/10m0s  1/1 sha
 
 </CodeGroup>
 
-This gives you a representation of browser performance as well as the usual HTTP specific metrics that k6 already tracks which lets you have a full picture on how your application behaves from a frontend and backend perspective, all in a single script.
+This gives you a representation of browser performance, via the web vitals, as well as the HTTP requests that came from the browser. 
