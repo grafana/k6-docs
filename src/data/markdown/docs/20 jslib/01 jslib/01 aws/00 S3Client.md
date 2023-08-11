@@ -9,7 +9,7 @@ excerpt: 'S3Client class allows interacting with AWS S3 buckets and objects'
 
 `S3Client` interacts with the AWS Simple Storage Service (S3).
 
-With it, the user can list buckets, list objects in a bucket, download objects from a bucket, upload objects to a bucket, delete objects from a bucket, copy objects from one bucket to another, create multipart uploads, upload parts in a multipart upload, complete multipart uploads, and abort multipart uploads.
+With it, you can do several operations such as list buckets, list objects in a bucket, or download objects from a bucket. For a full list of supported operations, see [Methods](#methods).
 
 Both the dedicated `s3.js` jslib bundle and the all-encompassing `aws.js` bundle include the `S3Client`.
 
