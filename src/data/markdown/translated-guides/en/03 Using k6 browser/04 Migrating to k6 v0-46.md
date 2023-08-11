@@ -6,7 +6,9 @@ slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 
 This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46). The updated version makes the browser module easier to use, with structural changes that reduce the need for manual setup, enhance scenario definitions, and make the code more straightforward.
 
-For all the details, check the complete changelog for the [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0).
+The new version presents a novel functionality that automatically deals with the browser lifecycle. Additionally, a newly required field is introduced to define the browser category within the scenario choices. Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browser` and `browserType`, and the option to import the `chromium` entity from `k6/experimental/browser` has been eliminated.
+
+For all the details, make sure to review the complete changelog for the [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0) for all the information, watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
 
 <Blockquote mod="note" title="">
 
@@ -17,7 +19,7 @@ Users no longer need to use the `K6_BROWSER_ENABLED` flag when running browser t
 
 ## Key changes in the new API
 
-The updated k6 browser API introduces notable structural changes in its operation and API. 
+The updated API introduces notable structural changes in its operation and API. Let's take a look at them.
 
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
