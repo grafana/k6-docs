@@ -70,9 +70,6 @@ export const options = {
         },
       },
     },
-  },
-  thresholds: {
-    checks: ["rate==1.0"]
   }
 }
 
@@ -170,9 +167,6 @@ export const options = {
         },
       },
     },
-  },
-  thresholds: {
-    checks: ["rate==1.0"]
   }
 }
 ```
