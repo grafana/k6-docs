@@ -174,9 +174,8 @@ The following browser options are no longer supported: `slowMo`, `devtools`, `en
 
 ## Scenario options
 
-In the new update, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
+In the new version, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
 
-This change helps identify the test as a browser test and allows automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
@@ -199,7 +198,11 @@ export const options = {
 
 </CodeGroup>
 
+Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration. This repetitive code has been eliminated.
 
+Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration by the browser module, streamlining the process.
+
+This change helps identify the test as a browser test and allows automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
 
 
 ## Opening a new page
@@ -231,10 +234,6 @@ Closing of the page is critical for the calculation of accurate Web Vital metric
 ## Simplified resource management
 
 As [mentioned earlier](#scenario-options), in the new API, there's a shift in how the browser's lifecycle is managed.
-
-Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration.
-
-This repetitive code has been eliminated. Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration, streamlining the process.
 
 Since the browser lifecycle is automatically managed by the browser module, the closing of the browser has been simplified. The explicit `browser.close()` call has been removed. Simply close the page using the [page.close()](/javascript-api/k6-experimental/browser/page/close/) method as in the example below.
 
