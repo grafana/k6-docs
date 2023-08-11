@@ -15,7 +15,7 @@ Users no longer need to use the `K6_BROWSER_ENABLED` flag when running browser t
 </Blockquote>
 
 
-## Key Changes in the New API
+## Key changes in the new API
 
 The updated k6 browser API introduces notable structural changes in its operation and API. 
 
@@ -94,9 +94,9 @@ export default async function () {
 
 
 
-## Import Path
+## Import path
 
-Changes have been made to the way the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (i.e., `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/). In the past, users would rely on `chromium.launch()` for accessing the running browser. Now, a simple import of the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) sufficient.
+Changes have been made to how the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (i.e., `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/). In the past, users relied on `chromium.launch()` for accessing the running browser. Now, a simple import of the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) is sufficient.
 
 <CodeGroup labels={["Before: Import Path"]} lineNumbers={[true]}>
 
@@ -151,9 +151,9 @@ The following browser options are no longer supported: `slowMo`, `devtools`, `en
 
 ## Scenario options
 
-In the new update, users must set the browser type as an option in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
+In the new update, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
 
-This change helps identify the test as a browser test and allows automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will be automatically started at the beginning and closed at the end of each test iteration.
+This change helps identify the test as a browser test and allows automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
