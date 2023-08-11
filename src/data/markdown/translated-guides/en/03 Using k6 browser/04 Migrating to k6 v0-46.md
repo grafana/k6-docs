@@ -266,8 +266,10 @@ page.close();
 
 Since the browser lifecycle is now being managed by the [browser module](/javascript-api/k6-experimental/browser/), the new browser implementation limits the use to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change supports better prediction of resource requirements for a test run and allows for more controlled management of [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s.
 
-If a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) needs to be created, the existing one must be closed first using the [browserContext.close()](/javascript-api/k6-experimental/browser/browsercontext/close) method. And, a new one can be created either with the [browser.newContext()](/javascript-api/k6-experimental/browser/newcontext/) or [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) methods.
+Please click on the links below to see usage examples.
 
-Alongside these changes, the method `browser.contexts()` has been altered to [browser.context()](/javascript-api/k6-experimental/browser/context/) to retrieve the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+* If a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) needs to be created, the existing one must be closed first using the [browserContext.close()](/javascript-api/k6-experimental/browser/browsercontext/close) method.
+* A new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) can be created either with the [browser.newContext()](/javascript-api/k6-experimental/browser/newcontext/) or [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) methods.
+* Alongside these changes, the method `browser.contexts()` has been altered to [browser.context()](/javascript-api/k6-experimental/browser/context/) to retrieve the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
 
 These updates make the usage of our API more straightforward for users, aiding in more consistent and automatic resource management.
