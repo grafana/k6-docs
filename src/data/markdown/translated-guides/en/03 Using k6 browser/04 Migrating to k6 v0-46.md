@@ -19,7 +19,7 @@ Users no longer need to use the `K6_BROWSER_ENABLED` flag when running browser t
 
 ## Key changes in the new API
 
-The updated API introduces notable structural changes in its operation and API. Let's take a look at them.
+The updated version introduces notable structural changes in its operation and API. Let's take a look at them.
 
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
