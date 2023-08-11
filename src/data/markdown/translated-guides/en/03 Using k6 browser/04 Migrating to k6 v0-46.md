@@ -119,12 +119,11 @@ import { browser } from 'k6/experimental/browser';
 
 ## Browser options
 
-In the updated version, the need to manually start a browser and set its configuration has been removed, and this part can simply be omitted from test scripts.
+In the updated version, the need to manually start a browser and set its configuration has been removed, and this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
 
-Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
+### Before:
 
-
-<CodeGroup labels={["Before"]} lineNumbers={[true]}>
+<CodeGroup lineNumbers={[true]}>
 
 <!-- eslint-skip -->
 
@@ -138,6 +137,31 @@ export default async function () {
 ```
 
 </CodeGroup>
+
+### After:
+
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_BROWSER_HEADLESS=false K6_BROWSER_TIMEOUT='60s' k6 run script.js
+```
+
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+docker run --rm -i --cap-add=SYS_ADMIN -e K6_BROWSER_HEADLESS=false -e K6_BROWSER_TIMEOUT='60s' grafana/k6:master-with-browser run - <script.js
+```
+
+```bash
+C:\k6> set "K6_BROWSER_HEADLESS=false" && set "K6_BROWSER_TIMEOUT='60s' " && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 run script.js
+```
+
+</CodeGroup>
+
 
 <Blockquote mod="note" title="">
 
