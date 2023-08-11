@@ -212,7 +212,7 @@ Closing of the page is critical for the calculation of accurate Web Vital metric
 
 As [mentioned earlier](#scenario-options), in the new API, there's a shift in how the browser's lifecycle is managed. Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration. This repetitive code has been eliminated. Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration, streamlining the process.
 
-Since the browser lifecycle is automaticaly managed by the browser module, the closing of the browser has been simplified. The explicit `browser.close()` call has been removed. Simply close the page using the [page.close()](/javascript-api/k6-experimental/browser/page/close/) method as in the example below.
+Since the browser lifecycle is automatically managed by the browser module, the closing of the browser has been simplified. The explicit `browser.close()` call has been removed. Simply close the page using the [page.close()](/javascript-api/k6-experimental/browser/page/close/) method as in the example below.
 
 <CodeGroup labels={["Before"]} lineNumbers={[true]}>
 
