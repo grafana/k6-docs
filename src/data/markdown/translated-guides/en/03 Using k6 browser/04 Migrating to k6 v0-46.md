@@ -141,7 +141,7 @@ export default async function () {
 
 <Blockquote mod="note" title="">
 
-The following browser options are no longer supported: `slowMo`, `devtools`, `env`, and `proxy`.
+The following browser options are no longer supported: `slowMo`, `devtools`, `env`, and `proxy` as they were not proving much value to our users. In the meantime, we're working on providing a much flexible version of `slowMo` (slow motion) option.
 
 </Blockquote>
 
