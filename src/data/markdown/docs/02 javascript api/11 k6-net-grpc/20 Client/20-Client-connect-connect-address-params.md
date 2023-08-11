@@ -22,11 +22,11 @@ See [Client.close()](/javascript-api/k6-net-grpc/client/client-close) to close t
 | `ConnectParams.timeout` | string / number | Connection timeout to use. Default timeout is `"60s"`. <br/> The type can also be a number, in which case k6 interprets it as milliseconds, e.g., `60000` is equivalent to `"60s"`. |
 | `ConnectParams.maxReceiveSize` | number | Sets the maximum message size in bytes the client can receive. Defaults to 0. |
 | `ConnectParams.maxSendSize` | number | Sets the maximum message size in bytes the client can send. Defaults to 0. |
-| `ConnectParams.tls` (optional) | object | [TLS](#tls) | TLS settings of the connection. Defaults not defined. |
+| `ConnectParams.tls` (optional) | object | [TLS](#tls) settings of the connection. Defaults to `null`. |
 
 ## TLS
 
-TLS settings of the connection, if not defined, the main TLS config from options will be used.
+TLS settings of the connection. If not defined, the main TLS config from options will be used.
 
 | Name | Type | Description |
 |------|------|-------------|
