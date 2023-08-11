@@ -6,7 +6,9 @@ slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 
 This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46). The updated version makes the browser module easier to use, with structural changes that reduce the need for manual setup, enhance scenario definitions, and make the code more straightforward.
 
-The new version presents a novel functionality that automatically deals with the browser lifecycle. Additionally, a newly required field is introduced to define the browser category within the scenario choices. Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browser` and `browserType`, and the option to import the `chromium` entity from `k6/experimental/browser` has been eliminated.
+The new version presents a novel functionality that automatically deals with the browser lifecycle. Additionally, a newly required field is introduced to define the browser category within the scenario choices.
+
+Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browser` and `browserType`, and the option to import the `chromium` entity from `k6/experimental/browser` has been eliminated.
 
 For all the details, make sure to review the complete changelog for the [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0) for all the information, watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
 
@@ -180,7 +182,7 @@ export const options = {
 
 ## Opening a new page
 
-You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object.
+You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. You can still using the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
@@ -206,7 +208,11 @@ Closing of the page is critical for the calculation of accurate Web Vital metric
 
 ## Simplified resource management
 
-As [mentioned earlier](#scenario-options), in the new API, there's a shift in how the browser's lifecycle is managed. Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration. This repetitive code has been eliminated. Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration, streamlining the process.
+As [mentioned earlier](#scenario-options), in the new API, there's a shift in how the browser's lifecycle is managed.
+
+Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration.
+
+This repetitive code has been eliminated. Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration, streamlining the process.
 
 Since the browser lifecycle is automatically managed by the browser module, the closing of the browser has been simplified. The explicit `browser.close()` call has been removed. Simply close the page using the [page.close()](/javascript-api/k6-experimental/browser/page/close/) method as in the example below.
 
