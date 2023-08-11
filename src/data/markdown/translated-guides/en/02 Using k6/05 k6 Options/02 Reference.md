@@ -641,6 +641,7 @@ The possible keys with their meanings and default values:
 | `nothing` | the endpoint to which to send logs | `http://127.0.0.1:3100/loki/api/v1/push` |
 | allowedLabels | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]` | N/A |
 | label.`labelName` | adds an additional label with the provided key and value to each message | N/A |
+| header.`headerName` | adds an additional HTTP header with the provided header name and value to each HTTP request made to Loki | N/A |
 | limit | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped | 100 |
 | level | the minimal level of a message so it's send to loki | all |
 | pushPeriod | at what period to send log lines | 1s |
