@@ -4,11 +4,11 @@ excerpt: 'A migration guide to ease the process of transitioning to the new k6 b
 slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 ---
 
-This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46).
+This guide outlines [the key changes](#key-changes) users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0)).
 
-The latest release simplifies the management of the browser lifecycle by automatically providing and releasing browser resources for users. To facilitate this, a new mandatory field is introduced to define the browser within the `scenario`.
+The latest release simplifies the management of the browser lifecycle by automatically providing and releasing browser resources for users. To facilitate this, a new mandatory field is introduced to define the browser type within [scenario options](#scenario-options).
 
-Previously, users had to launch and close the browser process themselves. However, with the recent updates, the API has abstracted the details of `browserType` (i.e., `chromium`). Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
+Previously, users had to launch and close the browser processes themselves. With the recent updates, the API has abstracted the details of `browserType` (i.e., `chromium`). Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
 
 <Blockquote mod="note" title="">
 
@@ -83,7 +83,7 @@ export default async function () {
 The updated version introduces notable structural changes in its operation and API. Let's take a look at them.
 
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
-* Browser options can now only be set using certain [environment variables](/javascript-api/k6-experimental/browser/#browser-module-options). The `launch()` method, used earlier for this purpose, has been removed.
+* [Browser options](#browser-options) can now only be set using certain [environment variables](/javascript-api/k6-experimental/browser/#browser-module-options). The `launch()` method, used earlier for this purpose, has been removed.
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
 * [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. `chromium.launch()`, `chromium.connect()`, and `browser.close()` methods are no longer necessary, as these methods have been removed.
 * [Single browser context per iteration](#browser-context-limit). Users can now only run a single [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) at a time in the same iteration.
@@ -93,7 +93,7 @@ The updated version introduces notable structural changes in its operation and A
 
 ## Import path
 
-Changes have been made to how the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (i.e., `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/). In the past, users relied on `chromium.launch()` for accessing the running browser. Now, a simple import of the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) is sufficient.
+Changes have been made to how the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/). Previously, users relied on `chromium.launch()` for accessing a running browser. Now, a simple import of the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) is sufficient.
 
 <CodeGroup labels={["Before: Import Path"]} lineNumbers={[true]}>
 
@@ -265,7 +265,7 @@ The new browser implementation limits the usage to a single active [BrowserConte
 
 * A new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) can be created either with the [browser.newContext()](/javascript-api/k6-experimental/browser/newcontext/) or [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) methods.
 * If a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) needs to be created, the existing one must be closed first using the [browserContext.close()](/javascript-api/k6-experimental/browser/browsercontext/close) method.
-* Alongside these changes, the method `browser.contexts()` has been altered to [browser.context()](/javascript-api/k6-experimental/browser/context/) to retrieve the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+* Alongside these changes, the `browser.contexts()` method has been altered to [browser.context()](/javascript-api/k6-experimental/browser/context/) to retrieve the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
 
 For instance, the code below will not function as intended, as it attempts to execute two simultaneous [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s within the same iteration.
 
