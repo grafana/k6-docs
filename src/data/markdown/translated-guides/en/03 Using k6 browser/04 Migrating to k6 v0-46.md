@@ -165,7 +165,7 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 
 
 <Blockquote mod="note" title="">
 
-The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. `slowMo` has been removed for now, but we are working on adding it back in.
+The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. Although `slowMo` has been temporarily removed, we're working on reintroducing it.
 
 </Blockquote>
 
