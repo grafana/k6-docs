@@ -66,67 +66,61 @@ export default () => {
 <div class="code-group" data-props='{"labels": ["Different TLS settings"], "lineNumbers": [true]}'>
 
 ```javascript
-import grpc from 'k6/experimental/grpc';
-import { check } from 'k6';
+import grpc from "k6/experimental/grpc";
+import { check } from "k6";
+import { SharedArray } from "k6/data";
+import exec from "k6/execution";
 
-// note: the services in this example don't exist. If you would like 
+// note: the services in this example don't exist. If you would like
 // to run this example, make sure to replace the URLs, and
 // the cacerts, cert, key, and password variables.
-const params = {
-  'foo1.grpcbin.test.k6.io:9001': {
-    plaintext: false,
-    tls: {
-      cacerts: [open('cacerts0.pem')],
-      cert: open('cert0.pem'),
-      key: open('key0.pem'),
-    },
-  },
-  'foo2.grpcbin.test.k6.io:9002': {
-    plaintext: false,
-    tls: {
-      cacerts: open('cacerts1.pem'),
-      cert: open('cert1.pem'),
-      key: open('key1.pem'),
-      password: 'cert1-passphrase',
-    },
-  },
-};
-const clients = {
-  'foo1.grpcbin.test.k6.io:9001': new grpc.Client(),
-  'foo2.grpcbin.test.k6.io:9002': new grpc.Client(),
-};
+const grpcArgs = new SharedArray("grpc", () => {
+	// Using SharedArray here so that not every VU gets a copy of every certificate a key
+	return [
+		{
+			host: "foo1.grpcbin.test.k6.io:9001",
+			plaintext: false,
+			params: {
+				tls: {
+					cacerts: [open("cacerts0.pem")],
+					cert: open("cert0.pem"),
+					key: open("key0.pem"),
+				},
+			},
+		},
+		{
+			host: "foo2.grpcbin.test.k6.io:9002",
+			params: {
+				plaintext: false,
+				tls: {
+					cacerts: open("cacerts1.pem"),
+					cert: open("cert1.pem"),
+					key: open("key1.pem"),
+					password: "cert1-passphrase",
+				},
+			},
+		},
+	];
+});
+
+const client = new grpc.Client();
 
 export default () => {
-  if (__ITER === 0) {
-    clients['foo1.grpcbin.test.k6.io:9001'].connect(
-      'foo1.grpcbin.test.k6.io:9001',
-      params['foo1.grpcbin.test.k6.io:9001']
-    );
-    clients['foo2.grpcbin.test.k6.io:9002'].connect(
-      'foo2.grpcbin.test.k6.io:9002',
-      params['foo2.grpcbin.test.k6.io:9002']
-    );
-  }
+	if (__ITER === 0) {
+		// Take one config and use it for this one VU
+		let grpcArg = grpcArgs[exec.vu.idInTest % grpcArgs.length];
+		client.connect(grpcArg.host, grpcArg.params);
+	}
 
-  const response1 = clients['foo1.grpcbin.test.k6.io:9001'].invoke('hello.HelloService/SayHello', {
-    greeting: 'Bert',
-  });
+	const response = client.invoke("hello.HelloService/SayHello", {
+		greeting: "Bert",
+	});
 
-  check(response1, {
-    'status is OK': (r) => r && r.status === grpc.StatusOK,
-  });
+	check(response, {
+		"status is OK": (r) => r && r.status === grpc.StatusOK,
+	});
 
-  console.log(JSON.stringify(response1.message));
-
-  const response2 = clients['foo2.grpcbin.test.k6.io:9002'].invoke('hello.HelloService/SayHello', {
-    greeting: 'Ernie',
-  });
-
-  check(response2, {
-    'status is OK': (r) => r && r.status === grpc.StatusOK,
-  });
-
-  console.log(JSON.stringify(response2.message));
+	console.log(JSON.stringify(response.message));
 };
 ```
 </div>
