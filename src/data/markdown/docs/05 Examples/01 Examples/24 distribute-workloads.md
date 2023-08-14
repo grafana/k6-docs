@@ -155,5 +155,5 @@ export default function () {
 
 </CodeGroup>
 
-For a more sophisticated example of randomizing, read this [forum post](https://community.grafana.com/t/how-to-distribute-vus-across-different-scenarios-with-k6/49/17).
+For a more sophisticated example of randomizing, read this [forum post](https://community.grafana.com/t/how-to-distribute-vus-across-different-scenarios-with-k6/97698/17).
 
