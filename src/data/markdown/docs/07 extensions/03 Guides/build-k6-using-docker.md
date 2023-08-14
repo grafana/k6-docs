@@ -41,7 +41,7 @@ docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
 
 </CodeGroup>
 
-This creates a `k6` (or `k6.exe`) binary in the current working directory. 
+This creates a `k6` (or `k6.exe`) binary in the current working directory.
 
 To build the binary with concrete versions, see the example below (k6 `v0.45.1`, xk6-kafka `v0.19.1`, and xk6-output-influxdb `v0.4.1`):
 
@@ -84,7 +84,7 @@ The example command line may look a bit intimidating at first, but let's focus o
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6"
 ```
 
-This tells Docker to run a new container from an image. 
+This tells Docker to run a new container from an image.
 - `--rm` means the container will be destroyed once your build is completed.
 - `-u` specifies the user and group IDs of the account on the host machine. This is important for the `k6` file to have the same file permissions as the host user.
 - `-v` is required to mount the current working directory inside the container, so that the `k6` binary can be written to it.
@@ -168,5 +168,5 @@ k6.exe run my-script.js
 
 ## Encountering issues?
 
-If you're having issues, search the [k6 Community Forum](https://community.grafana.com/c/extensions/). 
+If you're having issues, search the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 Someone may have had the same issue in the past.
