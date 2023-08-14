@@ -8,7 +8,7 @@ This guide outlines the key changes users will need to make when moving their ex
 
 The latest release simplifies the management of the browser lifecycle by automatically providing and releasing browser resources for users. To facilitate this, a new mandatory field is introduced to define the browser within the `scenario`.
 
-Previously, users had to launch and close the browser process themselves. However, with the recent updates, the API has abstracted the details of `browserType`. Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
+Previously, users had to launch and close the browser process themselves. However, with the recent updates, the API has abstracted the details of `browserType` (i.e., `chromium`). Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
 
 For all the details, make sure to review the complete changelog for [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0). For more information watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
 
@@ -87,7 +87,7 @@ The updated version introduces notable structural changes in its operation and A
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
 * Browser options can now only be set using certain [environment variables](/javascript-api/k6-experimental/browser/#browser-module-options). The `launch()` method, used earlier for this purpose, has been removed.
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
-* [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. `browser.launch()`, `browser.connect()`, and `browser.close()` methods are no longer necessary, as these methods have been removed.
+* [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. `chromium.launch()`, `chromium.connect()`, and `browser.close()` methods are no longer necessary, as these methods have been removed.
 * [Single browser context per iteration](#browser-context-limit). Users can now only run a single [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) at a time in the same iteration.
 
 
@@ -119,7 +119,7 @@ import { browser } from 'k6/experimental/browser';
 
 ## Browser options
 
-In k6 v0.46.0, the need to manually start a browser via `browser.launch()` or `browser.connect()` and set its configuration through these methods has been removed, so this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
+In k6 v0.46.0, the need to manually start a browser via `chromium.launch()` or `chromium.connect()` and set its configuration through these methods has been removed, so this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
 
 ### Before:
 
