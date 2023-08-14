@@ -196,7 +196,6 @@ The starting '--' have been omitted from the argument names in these lists.
 | no-startup-window | `true` | Does not automatically open a browser window on startup (used when launching Chrome for the purpose of hosting background apps). |
 | no-default-browser-check | `true` | Disables the default browser check. Useful for UI/browser tests where we want to avoid having the default browser info-bar displayed. |
 | headless | `true`/`false` | Run in headless mode, i.e., without a UI or display server dependencies. Set by `K6_BROWSER_HEADLESS` environment variable (default true).  |
-| auto-open-devtools-for-tabs | `true`/`false` | This flag makes Chrome auto-open the DevTools window for each tab. It is intended to be used by developers and automation, not to require user interaction for opening DevTools. Set by [launch options](/javascript-api/k6-experimental/browser/browsertype/launch/) (default false). |
 | window-size | `800,600` | Sets the initial window size. Provided as string in the format "800,600". |
 
 Additionally if headless mode is set to `true` in [browser options](/javascript-api/k6-experimental/browser#browser_options), the following arguments are also set:
