@@ -10,8 +10,6 @@ The latest release simplifies the management of the browser lifecycle by automat
 
 Previously, users had to launch and close the browser process themselves. However, with the recent updates, the API has abstracted the details of `browserType` (i.e., `chromium`). Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
 
-For all the details, make sure to review the complete changelog for [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0). For more information watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
-
 <Blockquote mod="note" title="">
 
 Users no longer need to use the `K6_BROWSER_ENABLED` flag when running browser tests with the `k6` command.
@@ -306,3 +304,5 @@ export default async function() {
 
 
 These updates make the usage of our API more straightforward for users, aiding in more consistent and automatic resource management.
+
+For all the details, make sure to review the complete changelog for [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0). For more information watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
