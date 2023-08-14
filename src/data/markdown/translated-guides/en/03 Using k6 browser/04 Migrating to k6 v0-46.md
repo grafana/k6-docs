@@ -263,7 +263,7 @@ page.close();
 
 ## Browser context limit
 
-The new browser implementation limits the use to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change supports better prediction of resource requirements for a test run.
+The new browser implementation limits the usage to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change enhances the prediction of resource requirements for a test run and promotes the use of [scenarios](/using-k6/scenarios/) to separate independent browser sessions.
 
 Please click on the links below to see usage examples.
 
