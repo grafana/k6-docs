@@ -16,7 +16,6 @@ Users no longer need to use the `K6_BROWSER_ENABLED` flag when running browser t
 
 </Blockquote>
 
-
 ## Before and after comparison
 
 Let's start with an overview of the primary differences between the previous and new versions of the k6 browser API. Subsequent sections will delve into each difference in detail.
@@ -77,7 +76,6 @@ export default async function () {
 
 </CodeGroup>
 
-
 ## Key changes
 
 The updated version introduces notable structural changes in its operation and API. Let's take a look at them.
@@ -87,9 +85,6 @@ The updated version introduces notable structural changes in its operation and A
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
 * [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. `chromium.launch()`, `chromium.connect()`, and `browser.close()` methods are no longer necessary, as these methods have been removed.
 * [Single browser context per iteration](#browser-context-limit). Users can now only run a single [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) at a time in the same iteration.
-
-
-
 
 ## Import path
 
@@ -110,10 +105,6 @@ import { browser } from 'k6/experimental/browser';
 ```
 
 </CodeGroup>
-
-
-
-
 
 ## Browser options
 
@@ -160,20 +151,15 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 
 
 </CodeGroup>
 
-
 <Blockquote mod="note" title="">
 
 The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. Although `slowMo` has been temporarily removed, we're working on reintroducing it.
 
 </Blockquote>
 
-
-
-
 ## Scenario options
 
 In k6 v0.46.0, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
-
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
@@ -202,7 +188,6 @@ Now, all that is needed is to specify the browser type within the [scenario opti
 
 This change allows to identify the test as a browser test and provides automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
 
-
 ## Opening a new page
 
 Users can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. Users can still use the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
@@ -225,9 +210,6 @@ export default async function () {
 Closing of the page is critical for the calculation of accurate Web Vital metrics. See the [browser metrics](/using-k6-browser/browser-metrics/) for more details.
 
 </Blockquote>
-
-
-
 
 ## Simplified resource management
 
@@ -255,9 +237,6 @@ page.close();
 ```
 
 </CodeGroup>
-
-
-
 
 ## Browser context limit
 
@@ -301,7 +280,6 @@ export default async function() {
 ```
 
 </CodeGroup>
-
 
 These updates make the usage of our API more straightforward for users, aiding in more consistent and automatic resource management.
 
