@@ -108,7 +108,7 @@ const client = new grpc.Client();
 export default () => {
 	if (__ITER === 0) {
 		// Take one config and use it for this one VU
-		let grpcArg = grpcArgs[exec.vu.idInTest % grpcArgs.length];
+		const grpcArg = grpcArgs[exec.vu.idInTest % grpcArgs.length];
 		client.connect(grpcArg.host, grpcArg.params);
 	}
 
