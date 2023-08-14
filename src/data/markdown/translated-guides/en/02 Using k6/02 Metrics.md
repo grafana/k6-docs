@@ -109,7 +109,7 @@ For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/r
 
 ### Metric name restrictions
 
-Metric names must comly with OpenTelemetry and Prometheus limitations.
+Metric names must comply with OpenTelemetry and Prometheus limitations.
 
 That means a metric name can be 1 to 63 symbols of:
 1. any Unicode Letters
