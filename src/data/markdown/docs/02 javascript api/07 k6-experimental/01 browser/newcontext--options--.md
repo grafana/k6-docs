@@ -1,9 +1,15 @@
 ---
 title: 'newContext([options])'
-excerpt: 'Browser module: Browser.newContext method'
+excerpt: 'Browser module: newContext method'
 ---
 
-Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
+Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/), if one hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If one has already been initialized an error is thrown.
+
+<Blockquote mod="note" title="">
+
+A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [close](/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
+
+</Blockquote>
 
 <TableWithNestedRows>
 
@@ -52,13 +58,22 @@ Creates and returns a new [BrowserContext](/javascript-api/k6-experimental/brows
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch({
-    headless: false,
-  });
-
   const context = browser.newContext({
     viewport: {
       width: 375,
@@ -72,7 +87,6 @@ export default async function () {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```

@@ -35,10 +35,22 @@ Mouse click on the chosen element.
 <CodeGroup labels={["Click action without navigation"]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/browser.php');
@@ -54,10 +66,22 @@ When a click action results in a page navigation, remember to work with `Promise
 <CodeGroup labels={["Click action with navigation"]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
 
   await page.goto('https://test.k6.io/');

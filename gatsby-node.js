@@ -1670,6 +1670,17 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: '/using-k6-browser/selecting-elements/',
+    toPath: '/using-k6-browser/recommended-practices/selecting-elements/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/using-k6-browser/examples/page-object-model/',
+    toPath: '/using-k6-browser/recommended-practices/page-object-model/',
+    isPermanent: true,
+  });
+
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
       '/javascript-api/k6-http/cookiejar/',

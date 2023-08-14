@@ -1,9 +1,21 @@
 ---
 title: 'newPage([options])'
-excerpt: 'Browser module: Browser.newPage method'
+excerpt: 'Browser module: newPage method'
 ---
 
-Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) and returns the page. You do not need to create a new `BrowserContext` prior to using `newPage`.
+Creates and returns a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) if a `BrowserContext` hasn't already been initialized for the [Browser](/javascript-api/k6-experimental/browser). If a `BrowserContext` has already been initialized an error is thrown.
+
+<Blockquote mod="note" title="">
+
+A 1-to-1 mapping between [Browser](/javascript-api/k6-experimental/browser) and `BrowserContext` means you cannot run `BrowserContexts` concurrently. Due to this restriction, if one already exists, it must be [retrieved](/javascript-api/k6-experimental/browser/context) and [close](/javascript-api/k6-experimental/browser/browsercontext/close)d first before creating a new one.
+
+</Blockquote>
+
+<Blockquote mod="attention" title="">
+
+Pages that have been opened ought to be closed using [`Page.close`](/javascript-api/k6-experimental/browser/page/close/). Pages left open could potentially distort the results of Web Vital metrics.
+
+</Blockquote>
 
 <TableWithNestedRows>
 
@@ -51,13 +63,22 @@ Creates a new [Page](/javascript-api/k6-experimental/browser/page/) in a new [Br
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch({
-    headless: false,
-  });
-
   const page = browser.newPage({
     viewport: {
       width: 375,
@@ -70,7 +91,6 @@ export default async function () {
     await page.goto('https://test.k6.io/');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```

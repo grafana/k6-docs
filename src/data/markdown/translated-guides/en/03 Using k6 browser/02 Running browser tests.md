@@ -22,16 +22,30 @@ To run a simple local script:
 
 1. Copy the following code, paste it into your favorite editor, and save it as `script.js`:
 
+Note that providing an `executor` and setting the `browser` scenario option's `type` to `chromium` is mandatory. Please see the [options](/using-k6/k6-options/) and [scenarios](/using-k6/scenarios/) documentation for more information.
+
   <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
   ```javascript
-  import { chromium } from 'k6/experimental/browser';
+  import { browser } from 'k6/experimental/browser';
+
+  export const options = {
+    scenarios: {
+      ui: {
+        executor: 'shared-iterations',
+        options: {
+          browser: {
+            type: 'chromium',
+          },
+        },
+      },
+    },
+    thresholds: {
+      checks: ["rate==1.0"]
+    }
+  }
 
   export default async function () {
-    const browser = chromium.launch({
-      headless: false,
-      timeout: '60s', // Or whatever time you want to define
-    });
     const page = browser.newPage();
 
     try {
@@ -39,16 +53,17 @@ To run a simple local script:
       page.screenshot({ path: 'screenshot.png' });
     } finally {
       page.close();
-      browser.close();
     }
   }
   ```
 
   </CodeGroup>
 
-  The preceding code imports the `chromium` [BrowserType](/javascript-api/k6-experimental/browser/browsertype/) (currently the only available `BrowserType` implementation), and uses its `launch` method to start up a Chromium [Browser](/javascript-api/k6-experimental/browser/) process. Two parameters are passed to it. One is the `headless` parameter with the value `false` so you can see the browser launching, and `timeout` parameter with the value `60s` which will be the timeout used for various actions and navigation. For a full list of parameters that you can pass, check out the documentation for [BrowserType.launch()](/javascript-api/k6-experimental/browser/browsertype/launch/).
+  The preceding code imports the `browser` ([the browser module](/javascript-api/k6-experimental/browser)), and uses its `newPage` method to open a new page.
+    
+  After getting the page, you can interact with it using the [Page](/javascript-api/k6-experimental/browser/page) methods. This example visits a test URL and takes a screenshot of the page.
   
-  After it starts, you can interact with it using the [browser-level APIs](/javascript-api/k6-experimental/browser/#browser-level-apis). This example visits a test URL and takes a screenshot of the page. Afterwards, it closes the page and the browser.
+  Subsequently, the page is closed. This allows for the freeing up of allocated resources and enables the accurate calculation of [Web Vital metrics](/using-k6-browser/browser-metrics/).
 
   <Blockquote mod="note" title="">
 
@@ -56,28 +71,50 @@ To run a simple local script:
 
   </Blockquote>
 
-2. Then, run the test on your terminal with this command:
+1. Then, run the test on your terminal with this command:
 
 <CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ K6_BROWSER_ENABLED=true k6 run script.js
+$ k6 run script.js
 ```
 
 ```bash
 # When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
 # to grant further system permissions on the host for the Docker container.
-# There is also no need to set the K6_BROWSER_ENABLED variable explicitly since this is already
-# defined in the Dockerfile.
 docker run --rm -i --cap-add=SYS_ADMIN grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
-C:\k6> set "K6_BROWSER_ENABLED=true" && k6 run script.js
+C:\k6> k6 run script.js
 ```
 
 ```bash
-PS C:\k6> $env:K6_BROWSER_ENABLED=true ; k6 run script.js
+PS C:\k6> k6 run script.js
+```
+
+</CodeGroup>
+
+You can also use [the browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) to customize the launching of a browser process. For instance, you can start a headful browser using the previous test script with this command.
+
+<CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
+
+```bash
+$ K6_BROWSER_HEADLESS=false k6 run script.js
+```
+
+```bash
+# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
+# to grant further system permissions on the host for the Docker container.
+docker run --rm -i --cap-add=SYS_ADMIN -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
+```
+
+```bash
+C:\k6> set "K6_BROWSER_HEADLESS=false" && k6 run script.js
+```
+
+```bash
+PS C:\k6> $env:K6_BROWSER_HEADLESS=false ; k6 run script.js
 ```
 
 </CodeGroup>
@@ -103,10 +140,25 @@ You can also use `page.$()` instead of `page.locator()`. You can find the differ
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+  thresholds: {
+    checks: ["rate==1.0"]
+  }
+}
 
 export default async function () {
-  const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
   try {
@@ -119,7 +171,6 @@ export default async function () {
     page.screenshot({ path: 'screenshot.png' });
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
@@ -141,11 +192,26 @@ To avoid timing errors or other race conditions in your script, if you have acti
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
 import { check } from 'k6';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    ui: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+          type: 'chromium',
+        },
+      },
+    },
+  },
+  thresholds: {
+    checks: ["rate==1.0"]
+  }
+}
 
 export default async function () {
-  const browser = chromium.launch({ headless: false });
   const page = browser.newPage();
 
   try {
@@ -163,7 +229,6 @@ export default async function () {
     });
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```
@@ -193,7 +258,7 @@ To run a browser-level and protocol-level test concurrently, you can use [scenar
 <CodeGroup labels={["script.js"]} lineNumbers={[true]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 import { check } from 'k6';
 import http from 'k6/http';
 
@@ -201,21 +266,30 @@ export const options = {
   scenarios: {
     browser: {
       executor: 'constant-vus',
-      exec: 'browser',
+      exec: 'browserTest',
       vus: 1,
       duration: '10s',
+      options: {
+        browser: {
+          type: 'chromium',
+        }
+      }
     },
     news: {
       executor: 'constant-vus',
       exec: 'news',
       vus: 20,
       duration: '1m',
-    },
-  },
+      options: {
+        browser: {
+          type: 'chromium',
+        }
+      }
+    }
+  }
 };
 
-export async function browser() {
-  const browser = chromium.launch({ headless: false });
+export async function browserTest() {
   const page = browser.newPage();
 
   try {
@@ -229,7 +303,6 @@ export async function browser() {
     });
   } finally {
     page.close();
-    browser.close();
   }
 }
 

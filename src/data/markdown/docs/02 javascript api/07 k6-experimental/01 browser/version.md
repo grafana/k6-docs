@@ -1,6 +1,6 @@
 ---
 title: 'version()'
-excerpt: 'Browser module: Browser.version method'
+excerpt: 'Browser module: version method'
 ---
 
 Returns the browser application's version.
@@ -17,14 +17,24 @@ Returns the browser application's version.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   const version = browser.version();
   console.log(version); // 105.0.5195.52
-
-  browser.close();
 }
 ```
 

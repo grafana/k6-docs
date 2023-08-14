@@ -36,28 +36,22 @@ The following snippet is an example:
 
 <Blockquote mod="note" title="">
 
-As Google recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output.
+As Google also recommends measuring the 75th percentile for each web vital metric, there will still be future tweaks to improve the summary output. 
 
 </Blockquote>
 
 ```bash
-  webvital_cumulative_layout_shift.......................: avg=0        min=0        med=0        max=0        p(90)=0        p(95)=0
-  webvital_cumulative_layout_shift_good..................: 1       0.113248/s
-  webvital_first_contentful_paint........................: avg=415.35ms min=302ms    med=415.35ms max=528.7ms  p(90)=506.03ms p(95)=517.36ms
-  webvital_first_contentful_paint_good...................: 2       0.226497/s
-  webvital_first_input_delay.............................: avg=5.59ms   min=5.59ms   med=5.59ms   max=5.59ms   p(90)=5.59ms   p(95)=5.59ms
-  webvital_first_input_delay_good........................: 1       0.113248/s
-  webvital_interaction_to_next_paint.....................: avg=248ms    min=248ms    med=248ms    max=248ms    p(90)=248ms    p(95)=248ms
-  webvital_interaction_to_next_paint_needs_improvement...: 1       0.113248/s
-  webvital_largest_content_paint.........................: avg=528.7ms  min=528.7ms  med=528.7ms  max=528.7ms  p(90)=528.7ms  p(95)=528.7ms
-  webvital_largest_content_paint_good....................: 1       0.113248/s
-  webvital_time_to_first_byte............................: avg=320.59ms min=247.09ms med=320.59ms max=394.1ms  p(90)=379.4ms  p(95)=386.75ms
-  webvital_time_to_first_byte_good.......................: 2       0.226497/s
+  browser_data_received.......: 2.6 kB  2.0 kB/s
+  browser_data_sent...........: 1.9 kB  1.5 kB/s
+  browser_http_req_duration...: avg=215.4ms  min=124.9ms med=126.65ms max=394.64ms p(90)=341.04ms p(95)=367.84ms
+  browser_http_req_failed.....: 0.00%   ✓ 0        ✗ 3  
+  browser_web_vital_cls.......: avg=0        min=0       med=0        max=0        p(90)=0        p(95)=0       
+  browser_web_vital_fcp.......: avg=344.15ms min=269.2ms med=344.15ms max=419.1ms  p(90)=404.11ms p(95)=411.6ms 
+  browser_web_vital_fid.......: avg=200µs    min=200µs   med=200µs    max=200µs    p(90)=200µs    p(95)=200µs   
+  browser_web_vital_inp.......: avg=8ms      min=8ms     med=8ms      max=8ms      p(90)=8ms      p(95)=8ms     
+  browser_web_vital_lcp.......: avg=419.1ms  min=419.1ms med=419.1ms  max=419.1ms  p(90)=419.1ms  p(95)=419.1ms 
+  browser_web_vital_ttfb......: avg=322.4ms  min=251ms   med=322.4ms  max=393.8ms  p(90)=379.52ms p(95)=386.66ms
 ```
-
-After each web vital metric, an additional row with the same metric name is also printed with its rating. The rating can be `good`, `needs_improvement,` or `poor`. When the browser module receives the metric from the [Google's Web Vital Library](https://github.com/GoogleChrome/web-vitals), it counts how many times it sees that metric. 
-
-For example, `webvital_first_contentful_paint_good` was reported twice, indicating that this metric was seen on two pages and has a rating of good. In future releases of k6, we aim to improve how to display the rating for a better developer experience.
 
 You can also visualize these results in different ways depending on your team's needs. For more information, check out our blog post on [visualizing k6 results](https://k6.io/blog/ways-to-visualize-k6-results/). 
 
@@ -82,9 +76,9 @@ Currently, you can only use URLs to specify thresholds for different pages. If y
 ```javascript
 export const options = {
   thresholds: {
-    'webvital_largest_content_paint': ['p(90) < 1000'],
-    'webvital_first_input_delay{url:https://test.k6.io/}': ['p(90) < 80'],
-    'webvital_first_input_delay{url:https://test.k6.io/my_messages.php}': ['p(90) < 100'],
+    'browser_web_vital_lcp': ['p(90) < 1000'],
+    'browser_web_vital_inp{url:https://test.k6.io/}': ['p(90) < 80'],
+    'browser_web_vital_inp{url:https://test.k6.io/my_messages.php}': ['p(90) < 100'],
   },
 };
 ```
@@ -94,12 +88,9 @@ export const options = {
 When the test is run, you should see a similar output as the one below.
 
 ```bash
-  webvital_first_input_delay.....................: avg=6.29ms   min=4.39ms   med=6.29ms   max=8.19ms   p(90)=7.81ms   p(95)=8ms
-  ✓ { url:https://test.k6.io/ }..................: avg=4.39ms   min=4.39ms   med=4.39ms   max=4.39ms   p(90)=4.39ms   p(95)=4.39ms
-  ✓ { url:https://test.k6.io/my_messages.php }...: avg=8.19ms   min=8.19ms   med=8.19ms   max=8.19ms   p(90)=8.19ms   p(95)=8.19ms
-  webvital_first_input_delay_good................: 2       0.16075/s
-  webvital_interaction_to_next_paint.............: avg=56ms     min=56ms     med=56ms     max=56ms     p(90)=56ms     p(95)=56ms
-  webvital_interaction_to_next_paint_good........: 1       0.080375/s
-  ✓ webvital_largest_content_paint.................: avg=446.95ms min=282.19ms med=446.95ms max=611.7ms  p(90)=578.75ms p(95)=595.22ms
+  browser_web_vital_inp..........................: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+  ✓ { url:https://test.k6.io/ }..................: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+  ✓ { url:https://test.k6.io/my_messages.php }...: avg=0s       min=0s       med=0s       max=0s       p(90)=0s       p(95)=0s
+✓ browser_web_vital_lcp..........................: avg=460.1ms  min=460.1ms  med=460.1ms  max=460.1ms  p(90)=460.1ms  p(95)=460.1ms 
+  browser_web_vital_ttfb.........................: avg=339.3ms  min=258.9ms  med=339.3ms  max=419.7ms  p(90)=403.62ms p(95)=411.66ms
 ```
-

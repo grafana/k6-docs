@@ -1,6 +1,6 @@
 ---
 title: 'isConnected()'
-excerpt: 'Browser module: Browser.isConnected method'
+excerpt: 'Browser module: isConnected method'
 ---
 
 <Blockquote mod="attention">
@@ -16,7 +16,7 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 | Type    | Description                                                                                    |
 | ------- | ---------------------------------------------------------------------------------------------- |
-| boolean | Returns `true` if [Browser](/javascript-api/k6-experimental/browser/browser-class/) is connected to the browser application. Otherwise, returns `false`. |
+| boolean | Returns `true` if the [browser module](/javascript-api/k6-experimental/browser) is connected to the browser application. Otherwise, returns `false`. |
 
 
 ### Example
@@ -24,14 +24,24 @@ Indicates whether the [CDP](https://chromedevtools.github.io/devtools-protocol/)
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default function () {
-  const browser = chromium.launch();
   const isConnected = browser.isConnected();
   console.log(isConnected); // true
-
-  browser.close();
 }
 ```
 
