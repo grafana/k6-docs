@@ -33,7 +33,7 @@ $ go install go.k6.io/xk6/cmd/xk6@latest
   ```
 
 1. In the directory, make a Go file for your JavaScript extension.
-  
+
   A simple JavaScript extension requires a struct that exposes methods called by the test script.
 
   <!-- TODO: A better trivial example? A coin flip perhaps? -->
@@ -340,7 +340,7 @@ INFO[0000] Active VUs: 2, Iteration: 2, VU ID: 2, VU ID from runtime: 2  source=
 - Use the registry's [`NewMetric`](https://pkg.go.dev/go.k6.io/k6/metrics#Registry.NewMetric) method to create
   custom metrics; to emit them, use [`metrics.PushIfNotDone()`](https://pkg.go.dev/go.k6.io/k6/metrics#PushIfNotDone).
 
-> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/extensions/).
+> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 
 Next, create an [Output extension](/extensions/get-started/create/output-extensions/) to publish test metrics
 to a destination not already supported by k6.

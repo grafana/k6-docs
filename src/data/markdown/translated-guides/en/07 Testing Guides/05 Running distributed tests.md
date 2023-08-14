@@ -32,18 +32,21 @@ Using [kind](https://kind.sigs.k8s.io/) or [k3d](https://k3d.io/) are awesome op
 
 </Blockquote>
 
-- [1. Install the operator](#install-the-operator)
-- [2. Create a test script](#create-a-test-script)
-- [3. Adding test scripts](#add-test-scripts)
+- [Introducing k6-operator](#introducing-k6-operator)
+- [Get started with k6-operator](#get-started-with-k6-operator)
+- [1. Install the operator](#1-install-the-operator)
+- [2. Create a test script](#2-create-a-test-script)
+- [3. Add test scripts](#3-add-test-scripts)
   - [Add as a ConfigMap](#add-as-a-configmap)
-  - [Add within a PersistentVolume](#add-inside-a-persistentvolume)
-- [4. Create a custom resource](#create-a-custom-resource)
+  - [Add inside a PersistentVolume](#add-inside-a-persistentvolume)
+- [4. Create a custom resource](#4-create-a-custom-resource)
   - [Script in a ConfigMap](#script-in-a-configmap)
   - [Script in a PersistentVolume](#script-in-a-persistentvolume)
   - [Configure the environment](#configure-the-environment)
   - [Change command-line arguments](#change-command-line-arguments)
-- [5. Run your test](#run-your-test)
-- [6. When things go wrong](#when-things-go-wrong)
+- [5. Run your test](#5-run-your-test)
+- [6. When things go wrong](#6-when-things-go-wrong)
+- [See also](#see-also)
 
 ## 1. Install the operator
 The first step to running distributed tests in Kubernetes is to install the operator if not already installed in the cluster.
@@ -52,7 +55,7 @@ Installation commands must be run from the source directory.
 
 <Blockquote mod="note" title="Prerequisites">
 
-Besides privileged access to a Kubernetes cluster, installation will require that the system performing the installation has the following tools installed: 
+Besides privileged access to a Kubernetes cluster, installation will require that the system performing the installation has the following tools installed:
 - [Git](https://git-scm.com/downloads)
 - [Go](https://go.dev/doc/install)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
@@ -216,7 +219,7 @@ spec:
 </CodeGroup>
 
 Recall when the script was [added as a ConfigMap](#add-as-a-configmap) for our configuration values.
-We created the ConfigMap named `my-test`. 
+We created the ConfigMap named `my-test`.
 The test script content was added to the map using the filename as the key-value, therefore the `file` value is `test.js`.
 
 The amount of `parallelism` is up to you; how many pods do you want to split the test amongst?
@@ -259,7 +262,7 @@ It is important that the `PersistentVolumeClaim` and `CustomResource` are create
 </Blockquote>
 
 ### Configure the environment
-Not everything should be included directly in your scripts. 
+Not everything should be included directly in your scripts.
 Well written scripts will allow for variability to support multiple scenarios and to avoid hard-coding values that tend to change.
 These could be anything from passwords to target urls, in addition to system options.
 
@@ -346,7 +349,7 @@ The test configuration is applied as in the following:
 kubectl apply -f /path/to/your/k6-resource.yaml
 ```
 
-After completing a test run, you need to clean up the test jobs created. 
+After completing a test run, you need to clean up the test jobs created.
 This is done by running the following command:
 
 ```shell
@@ -379,7 +382,7 @@ spec:
 ## 6. When things go wrong
 Sadly nothing works perfectly all the time, so knowing where you can go for help is important.
 
-Be sure to search the [k6-operator category in the community forum](https://community.grafana.com/c/k6-operator). 
+Be sure to search the [k6-operator category in the community forum](https://community.grafana.com/c/grafana-k6/k6-operator/73).
 k6 has a growing and helpful community of engineers working with k6-operator, so there's a good chance your issue has already been discussed and overcome.
 It's also in these forums where you'll be able to get help from members of the k6 development team.
 
