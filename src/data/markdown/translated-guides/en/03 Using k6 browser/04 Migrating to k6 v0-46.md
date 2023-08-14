@@ -88,7 +88,7 @@ The updated version introduces notable structural changes in its operation and A
 
 ## Import path
 
-Changes have been made to how the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/). Previously, users relied on `chromium.launch()` for accessing a running browser. Now, a simple import of the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) is sufficient.
+Changes have been made to how the [browser module](/javascript-api/k6-experimental/browser/) is imported. With the browser type (specifically `chromium`) now set in [scenario options](#scenario-options), users should directly import the [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object from the [browser module](/javascript-api/k6-experimental/browser/).
 
 <CodeGroup labels={["Before: Import Path"]} lineNumbers={[true]}>
 
