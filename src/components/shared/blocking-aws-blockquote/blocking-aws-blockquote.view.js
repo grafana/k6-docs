@@ -6,8 +6,8 @@ const BlockingAwsBlockquote = () => (
     mod="Attention"
     title="Performance considerations and recommended practices"
   >
-    In some cases, using this library&apos;s operations might impact
-    performance and skew your test results. <br />
+    In some cases, using this library&apos;s operations might impact performance
+    and skew your test results. <br />
     <br />
     To ensure accurate results, consider executing these operations in the{' '}
     <span className="code-inline">setup</span> and{' '}
