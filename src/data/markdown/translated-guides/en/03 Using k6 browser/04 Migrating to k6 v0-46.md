@@ -6,9 +6,9 @@ slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 
 This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46).
 
-The new version abstracts away the handling of the browser lifecycle and instead takes care of allocating and deallocating browser resources for users. To enable this, a newly required field is introduced to define the browser within the `scenario`.
+The latest release simplifies the management of the browser lifecycle by automatically providing and releasing browser resources for users. To facilitate this, a new mandatory field is introduced to define the browser within the `scenario`.
 
-Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browserType`, and so the `chromium` named export has been removed from `k6/experimental/browser`, which has been replaced with `browser`.
+Previously, users had to launch and close the browser process themselves. However, with the recent updates, the API has abstracted the details of `browserType`. Consequently, the `chromium` named export, previously found in `k6/experimental/browser`, has been replaced with `browser`.
 
 For all the details, make sure to review the complete changelog for [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0). For more information watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
 
