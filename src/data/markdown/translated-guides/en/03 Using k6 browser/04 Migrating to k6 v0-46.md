@@ -265,8 +265,8 @@ page.close();
 
 The new browser implementation limits the usage to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change enhances the prediction of resource requirements for a test run and promotes the use of [scenarios](/using-k6/scenarios/) to separate independent browser sessions.
 
-* If a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) needs to be created, the existing one must be closed first using the [browserContext.close()](/javascript-api/k6-experimental/browser/browsercontext/close) method.
 * A new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) can be created either with the [browser.newContext()](/javascript-api/k6-experimental/browser/newcontext/) or [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) methods.
+* If a new [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) needs to be created, the existing one must be closed first using the [browserContext.close()](/javascript-api/k6-experimental/browser/browsercontext/close) method.
 * Alongside these changes, the method `browser.contexts()` has been altered to [browser.context()](/javascript-api/k6-experimental/browser/context/) to retrieve the current [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/).
 
 For instance, the code below will not function as intended, as it attempts to execute two simultaneous [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s within the same iteration.
