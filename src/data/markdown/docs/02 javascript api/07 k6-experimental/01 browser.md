@@ -17,9 +17,9 @@ To work with the browser module, make sure you are using the latest [k6 version]
 
 </Blockquote>
 
-## Importable Properties
+## Properties
 
-The table below lists the importable properties from the top level module (`'k6/experimental/browser'`).
+The table below lists the properties you can import from the browser module (`'k6/experimental/browser'`).
 
 | Property | Description                                                                                                                                                                          |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
