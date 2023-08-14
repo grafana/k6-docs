@@ -6,7 +6,7 @@ slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 
 This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46).
 
-The new version abstracts away the handling of the browser lifecycle and instead takes care of allocating and deallocating browser resources for you. To enable this, a newly required field is introduced to define the browser within the `scenario`.
+The new version abstracts away the handling of the browser lifecycle and instead takes care of allocating and deallocating browser resources for users. To enable this, a newly required field is introduced to define the browser within the `scenario`.
 
 Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browserType`, and so the `chromium` named export has been removed from `k6/experimental/browser`, which has been replaced with `browser`.
 
@@ -207,7 +207,7 @@ This change allows to identify the test as a browser test and provides automatic
 
 ## Opening a new page
 
-You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. You can still use the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
+Users can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. Users can still use the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
