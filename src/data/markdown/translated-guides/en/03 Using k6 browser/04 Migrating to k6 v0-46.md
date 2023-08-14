@@ -87,7 +87,7 @@ The updated version introduces notable structural changes in its operation and A
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
 * Browser options can now only be set using certain [environment variables](/javascript-api/k6-experimental/browser/#browser-module-options). The `launch()` method, used earlier for this purpose, has been removed.
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
-* [Simplified resource management](#simplified-resource-management). The browser now starts and closes automatically, managed by the browser module itself. There's no need to use `browser.launch()`/`browser.connect()`, nor `browser.close()` anymore.
+* [Simplified resource management](#simplified-resource-management). The browser module now handles the startup and shutdown of browser processes automatically. `browser.launch()`, `browser.connect()`, and `browser.close()` methods are no longer necessary, as these methods have been removed.
 * [Single browser context per iteration](#browser-context-limit). Users can now only run a single [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) at a time in the same iteration.
 
 
