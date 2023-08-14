@@ -20,8 +20,20 @@ See [Client.close()](/javascript-api/k6-experimental/grpc/client/client-close) t
 | `ConnectParams.plaintext` | bool | If `true` will connect to the gRPC server using plaintext i.e. insecure. Defaults to `false` i.e. secure via TLS. |
 | `ConnectParams.reflect` | boolean | Whether to use the [gRPC server reflection protocol](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md) when connecting. |
 | `ConnectParams.timeout` | string / number | Connection timeout to use. Default timeout is `"60s"`. <br/> The type can also be a number, in which case k6 interprets it as milliseconds, e.g., `60000` is equivalent to `"60s"`. |
-| `ConnectParams.maxReceiveSize` | number | Sets the maximum message size in bytes the client can receive.Defaults to 0. |
-| `ConnectParams.maxSendSize` | number | Sets the maximum message size in bytes the client can send.Defaults to 0. |
+| `ConnectParams.maxReceiveSize` | number | Sets the maximum message size in bytes the client can receive. Defaults to 0. |
+| `ConnectParams.maxSendSize` | number | Sets the maximum message size in bytes the client can send. Defaults to 0. |
+| `ConnectParams.tls` (optional) | object | [TLS](#tls) settings of the connection. Defaults to `null`. |
+
+## TLS
+
+TLS settings of the connection. If not defined, the main TLS config from options will be used.
+
+| Name | Type | Description |
+|------|------|-------------|
+| `tls.cert` | string | PEM formatted client certificate. |
+| `tls.key` | string | PEM formatted client private key. |
+| `tls.password` | string | Password for decrypting the client's private key. |
+| `tls.cacerts` | string / array | PEM formatted strings of the certificate authorities. |
 
 ### Examples
 
@@ -47,6 +59,68 @@ const client = new grpc.Client();
 
 export default () => {
   client.connect('localhost:8080', { plaintext: true });
+};
+```
+</div>
+
+<div class="code-group" data-props='{"labels": ["Different TLS settings"], "lineNumbers": [true]}'>
+
+```javascript
+import grpc from "k6/experimental/grpc";
+import { check } from "k6";
+import { SharedArray } from "k6/data";
+import exec from "k6/execution";
+
+// note: the services in this example don't exist. If you would like
+// to run this example, make sure to replace the URLs, and
+// the cacerts, cert, key, and password variables.
+const grpcArgs = new SharedArray("grpc", () => {
+	// Using SharedArray here so that not every VU gets a copy of every certificate a key
+	return [
+		{
+			host: "foo1.grpcbin.test.k6.io:9001",
+			plaintext: false,
+			params: {
+				tls: {
+					cacerts: [open("cacerts0.pem")],
+					cert: open("cert0.pem"),
+					key: open("key0.pem"),
+				},
+			},
+		},
+		{
+			host: "foo2.grpcbin.test.k6.io:9002",
+			params: {
+				plaintext: false,
+				tls: {
+					cacerts: open("cacerts1.pem"),
+					cert: open("cert1.pem"),
+					key: open("key1.pem"),
+					password: "cert1-passphrase",
+				},
+			},
+		},
+	];
+});
+
+const client = new grpc.Client();
+
+export default () => {
+	if (__ITER === 0) {
+		// Take one config and use it for this one VU
+		const grpcArg = grpcArgs[exec.vu.idInTest % grpcArgs.length];
+		client.connect(grpcArg.host, grpcArg.params);
+	}
+
+	const response = client.invoke("hello.HelloService/SayHello", {
+		greeting: "Bert",
+	});
+
+	check(response, {
+		"status is OK": (r) => r && r.status === grpc.StatusOK,
+	});
+
+	console.log(JSON.stringify(response.message));
 };
 ```
 </div>
