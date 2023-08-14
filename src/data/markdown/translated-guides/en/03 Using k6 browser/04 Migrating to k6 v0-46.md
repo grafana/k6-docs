@@ -4,13 +4,13 @@ excerpt: 'A migration guide to ease the process of transitioning to the new k6 b
 slug: '/using-k6-browser/migrating-to-k6-v0-46/'
 ---
 
-This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46). The updated version makes the browser module easier to use, with structural changes that reduce the need for manual setup, enhance scenario definitions, and make the code more straightforward.
+This guide outlines the key changes users will need to make when moving their existing k6 browser test scripts to the new browser module (bundled up with the k6 version 0.46).
 
-The new version presents a novel functionality that automatically deals with the browser lifecycle. Additionally, a newly required field is introduced to define the browser category within the scenario choices.
+The new version abstracts away the handling of the browser lifecycle and instead takes care of allocating and deallocating browser resources for you. To enable this, a newly required field is introduced to define the browser within the `scenario`.
 
 Previously, users were responsible for establishing and shutting down the browser instance. However, with the current changes, the API has concealed the intricacies of `browser` and `browserType`, and the option to import the `chromium` entity from `k6/experimental/browser` has been eliminated.
 
-For all the details, make sure to review the complete changelog for the [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0) for all the information, watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
+For all the details, make sure to review the complete changelog for [k6 version 0.46](https://github.com/grafana/k6/releases/tag/v0.46.0). For more information watch [k6 Office Hours #98](https://www.youtube.com/watch?v=fK6Hpvt0pY0), where we discuss the latest changes in k6 browser, and, as always, ask in [the community forum](https://community.grafana.com/c/grafana-k6/k6-browser/79) if you need our help!
 
 <Blockquote mod="note" title="">
 
@@ -80,14 +80,14 @@ export default async function () {
 </CodeGroup>
 
 
-## Key changes in the new API
+## Key changes
 
 The updated version introduces notable structural changes in its operation and API. Let's take a look at them.
 
 * [Scenario options](#scenario-options) must now be defined for running browser tests.
 * The [import path](#import-path) for the browser module has switched from `chromium` to [browser](/javascript-api/k6-experimental/browser/#browser-module-api).
 * Browser options can now only be set using certain [environment variables](/javascript-api/k6-experimental/browser/#browser-module-options). The `launch()` method, used earlier for this purpose, has been removed.
-* [Simplified resource management](#simplified-resource-management). The browser now starts automatically, managed by the browser module itself. There's no need to use `browser.close()` anymore.
+* [Simplified resource management](#simplified-resource-management). The browser now starts and closes automatically, managed by the browser module itself. There's no need to use `browser.launch()`/`browser.connect()`, nor `browser.close()` anymore.
 * [Single browser context per iteration](#browser-context-limit). Users can now only run a single [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) at a time in the same iteration.
 
 
@@ -119,7 +119,7 @@ import { browser } from 'k6/experimental/browser';
 
 ## Browser options
 
-In the updated version, the need to manually start a browser and set its configuration has been removed, and this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
+In k6 v0.46.0, the need to manually start a browser via `browser.launch()` or `browser.connect()` and set its configuration through these methods has been removed, so this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
 
 ### Before:
 
@@ -165,7 +165,7 @@ PS C:\k6> $env:K6_BROWSER_HEADLESS="false" ; $env:K6_BROWSER_TIMEOUT='60s' ; k6 
 
 <Blockquote mod="note" title="">
 
-The following browser options are no longer supported: `slowMo`, `devtools`, `env`, and `proxy` as they were not proving much value to our users. In the meantime, we're working on providing a much flexible version of `slowMo` (slow motion) option.
+The following browser options are no longer supported: `devtools`, `env`, and `proxy` since they weren't providing much value. `slowMo` has been removed for now, but we are working on adding it back in.
 
 </Blockquote>
 
@@ -174,7 +174,7 @@ The following browser options are no longer supported: `slowMo`, `devtools`, `en
 
 ## Scenario options
 
-In the new version, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
+In k6 v0.46.0, users must set the [executor](/using-k6/scenarios/executors/) and browser type as options in a [k6 scenario](/using-k6/scenarios/) definition. Specifically, the `browser.type` option should be set to `chromium`, as Chromium is the only browser supported.
 
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
@@ -198,16 +198,16 @@ export const options = {
 
 </CodeGroup>
 
-Previously, users were required to handle the creation and closing of the browser instance using methods like `chromium.launch()` and `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration. This repetitive code has been eliminated.
+Previously, users were required to handle the creation and closing of the browser instance using `chromium.launch()` or `chromium.connect()` for creation, and the `browser.close()` method for releasing resources before ending the iteration. This repetitive code has been eliminated.
 
 Now, all that is needed is to specify the browser type within the [scenario options](#scenario-options). A browser instance will be automatically created and closed for each iteration by the browser module, streamlining the process.
 
-This change helps identify the test as a browser test and allows automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
+This change allows to identify the test as a browser test and provides automatic control of the browser's lifecycle. Users no longer need to start or stop the browser manually through the browser API. If the `browser.type` option is set in the scenario options, a browser instance will automatically start at the beginning and close at the end of each test iteration.
 
 
 ## Opening a new page
 
-You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. You can still using the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
+You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. You can still use the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
 
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
@@ -263,7 +263,7 @@ page.close();
 
 ## Browser context limit
 
-Since the browser lifecycle is now being managed by the [browser module](/javascript-api/k6-experimental/browser/), the new browser implementation limits the use to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change supports better prediction of resource requirements for a test run and allows for more controlled management of [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/)s.
+The new browser implementation limits the use to a single active [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/) per iteration. This change supports better prediction of resource requirements for a test run.
 
 Please click on the links below to see usage examples.
 
