@@ -110,7 +110,7 @@ import { browser } from 'k6/experimental/browser';
 
 In k6 v0.46.0, the need to manually start a browser via `chromium.launch()` or `chromium.connect()` and set its configuration through these methods has been removed, so this part can simply be omitted from test scripts. Users can still change some browser settings by using environment variables. For more information, refer to the [browser module options](/javascript-api/k6-experimental/browser/#browser-module-options) documentation.
 
-### Before:
+Before:
 
 <CodeGroup lineNumbers={[true]}>
 
@@ -127,7 +127,7 @@ export default async function () {
 
 </CodeGroup>
 
-### After:
+After:
 
 <CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
