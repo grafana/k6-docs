@@ -249,7 +249,7 @@ for (let id = 1; id <= 1000; id++) {
   - Update the k6 binary that your CI/CD pipeline uses to run tests.
   - If you're part of an organization or team, collectively decide on a version of k6 to use going forward for consistency and ease of comparison.
 
-### Invalid Metric Names
+### Invalid metric names
 
 _Identifier_: `best_practice_invalid_metric_names`
 
