@@ -25,7 +25,7 @@ k6 categorizes performance insights into three sets:
 - [Too many metrics](#too-many-metrics)
 - [Too many time series](#too-many-time-series)
 - [Outdated k6 Release Used](#outdated-k6-release-used)
-- [Invalid Metric Names](#invalid-metric-names)
+- [Invalid metric names](#invalid-metric-names)
 - [High load generator CPU usage](#high-load-generator-cpu-usage)
 - [High load generator memory usage](#high-load-generator-memory-usage)
 
