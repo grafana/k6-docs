@@ -107,7 +107,7 @@ In that output, all the metrics that start with `http`, `iteration`, and `vu` ar
 For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/reference/).
 
 
-### Metric name restrictions
+## Metric name restrictions
 
 Metric names must comply with OpenTelemetry and Prometheus limitations.
 
