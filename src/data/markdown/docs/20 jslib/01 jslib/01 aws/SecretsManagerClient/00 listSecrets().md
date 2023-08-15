@@ -10,7 +10,7 @@ excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated u
 
 | Type                                                                   | Description                                                                          |
 | :--------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| Array<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | An array of [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
+| Promise<Array<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)>> | A Promise that fulfills with an array of [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) objects. |
 
 ### Example
 
@@ -19,7 +19,7 @@ excerpt: 'SecretsManagerClient.listSecrets lists the secrets the authenticated u
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.8.1/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -30,10 +30,10 @@ const awsConfig = new AWSConfig({
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 
-export default function () {
+export default async function () {
   // List the secrets the AWS authentication configuration
   // gives us access to, and verify the test secret exists.
-  const secrets = secretsManager.listSecrets();
+  const secrets = await secretsManager.listSecrets();
   if (secrets.filter((s) => s.name === testSecretName).length == 0) {
     exec.test.abort('test secret not found');
   }

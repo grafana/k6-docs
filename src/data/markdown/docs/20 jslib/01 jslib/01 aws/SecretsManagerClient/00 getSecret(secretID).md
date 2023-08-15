@@ -14,7 +14,7 @@ excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS s
 
 | Type                                                            | Description                                                                                                      |
 | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) | A [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
+| Promise<[Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret)> | A Promise that fulfills with a [Secret](/javascript-api/jslib/aws/secretsmanagerclient/secret) describing and holding the downloaded secret. |
 
 ### Example
 
@@ -23,7 +23,7 @@ excerpt: 'SecretsManagerClient.getSecret(secretID) downloads a secret from AWS s
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.8.1/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -34,16 +34,16 @@ const awsConfig = new AWSConfig({
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 
-export default function () {
+export default async function () {
   // List the secrets the AWS authentication configuration
   // gives us access to.
-  const secrets = secretsManager.listSecrets();
+  const secrets = await secretsManager.listSecrets();
   if (secrets.filter((s) => s.name === testSecretName).length == 0) {
     exec.test.abort('test secret not found');
   }
 
   // Let's get our test secret's value and print it.
-  const secret = secretsManager.getSecret(testSecretName);
+  const secret = await secretsManager.getSecret(testSecretName);
   console.log(JSON.stringify(secret));
 }
 ```

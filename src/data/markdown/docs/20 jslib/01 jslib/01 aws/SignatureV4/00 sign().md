@@ -45,9 +45,9 @@ You can override SignatureV4 options in the context of this specific request. To
 <CodeGroup labels={[]}>
 
 ```javascript
-import http from 'k6/http.js'
+import http from 'k6/http'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.8.1/signature.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.9.0/signature.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,

@@ -15,6 +15,12 @@ excerpt: 'S3Client.copyObject copies an object from a bucket to another'
 | destinationBucket | string | Name of the bucket to copy the object to.          |
 | destinationKey    | string | Name of the destination object.                    |
 
+### Returns
+
+| Type            | Description                                                                         |
+| :-------------- | :---------------------------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the object has been copied from one bucket to another. |
+
 ### Example
 
 <CodeGroup labels={[]}>
@@ -22,7 +28,7 @@ excerpt: 'S3Client.copyObject copies an object from a bucket to another'
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.8.1/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.9.0/s3.js';
 
 
 const awsConfig = new AWSConfig({
@@ -37,12 +43,12 @@ const testBucketName = 'test-jslib-aws';
 const testFileKey = 'bonjour.txt';
 const testDestinationBucketName = 'test-jslib-aws-destination';
 
-export default function () {
+export default async function () {
     // Let's upload our test file to the bucket
-    s3.putObject(testBucketName, testFileKey, testFile);
+    await s3.putObject(testBucketName, testFileKey, testFile);
 
     // Let's create our destination bucket
-    s3.copyObject(testBucketName, testFileKey, testDestinationBucketName, testFileKey);
+    await s3.copyObject(testBucketName, testFileKey, testDestinationBucketName, testFileKey);
 }
 ```
 

@@ -18,7 +18,7 @@ excerpt: "SQSClient.sendMessage sends a message to the specified Amazon SQS queu
 
 | Type     | Description                                                                                                                                                                                                                  |
 | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `object` | The message that was sent, as an object containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string. |
+| `Promise<object>` | A Promise that fulfills with the message that was sent, as an object containing an `id` string property holding the unique identifier for the message, and a `bodyMD5` string property holding the MD5 digest of the non-URL-encoded message body string. |
 
 ### Example
 
@@ -27,7 +27,7 @@ excerpt: "SQSClient.sendMessage sends a message to the specified Amazon SQS queu
 ```javascript
 import exec from 'k6/execution'
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.8.1/sqs.js'
+import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.9.0/sqs.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
@@ -39,15 +39,15 @@ const awsConfig = new AWSConfig({
 const sqs = new SQSClient(awsConfig)
 const testQueue = 'https://sqs.us-east-1.amazonaws.com/000000000/test-queue'
 
-export default function () {
+export default async function () {
     // If our test queue does not exist, abort the execution.
-    const queuesResponse = sqs.listQueues()
+    const queuesResponse = await sqs.listQueues()
     if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
         exec.test.abort()
     }
 
     // Send message to test queue
-    sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
+    await sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
 }
 ```
 

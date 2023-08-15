@@ -18,7 +18,7 @@ excerpt: 'KMSKey is returned by the KMSClient.* methods that query KMS keys'
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.8.1/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.9.0/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -29,10 +29,10 @@ const awsConfig = new AWSConfig({
 const kms = new KMSClient(awsConfig);
 const testKeyId = 'e67f95-4c047567-4-a0b7-62f7ce8ec8f48';
 
-export default function () {
+export default async function () {
   // List the KMS keys the AWS authentication configuration
   // gives us access to.
-  const keys = kms.listKeys();
+  const keys = await kms.listKeys();
 
   // If our test key does not exist, abort the execution.
   if (keys.filter((b) => b.keyId === testKeyId).length == 0) {

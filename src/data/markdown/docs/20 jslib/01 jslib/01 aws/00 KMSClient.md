@@ -8,7 +8,8 @@ excerpt: 'KMSClient allows interacting with the AWS Key Management Service'
 <BlockingAwsBlockquote />
 
 `KMSClient` interacts with the AWS Key Management Service.
-With it, the user can list all the Key Management Service keys in the caller's AWS account and region. They can also generate symmetric data keys to use outside of AWS Key Management Service. `KMSClient` operations are blocking. k6 recommends reserving their use to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) stages as much as possible.
+
+With it, the user can list all the Key Management Service keys in the caller's AWS account and region. They can also generate symmetric data keys to use outside of AWS Key Management Service.
 
 Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundle include the `KMSClient`.
 
@@ -35,7 +36,7 @@ Both the dedicated `kms.js` jslib bundle and the all-encompassing `aws.js` bundl
 ```javascript
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.2/index.js';
 
-import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.8.1/kms.js';
+import { AWSConfig, KMSClient } from 'https://jslib.k6.io/aws/0.9.0/kms.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -46,14 +47,14 @@ const awsConfig = new AWSConfig({
 const kms = new KMSClient(awsConfig);
 const keyAlias = 'alias/k6-key';
 
-export function setup() {
+export async function setup() {
   // Create a symmetric data key
   return {
-    dataKey: kms.generateDataKey(keyAlias, 32),
+    dataKey: await kms.generateDataKey(keyAlias, 32),
   };
 }
 
-export default function (data) {
+export default async function (data) {
   // Use the data key to encrypt data
 }
 

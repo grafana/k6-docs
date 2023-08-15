@@ -27,7 +27,7 @@ import {
   // listBuckets,
   AWSConfig,
   S3Client,
-} from 'https://jslib.k6.io/aws/0.8.1/s3.js';
+} from 'https://jslib.k6.io/aws/0.9.0/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -39,8 +39,8 @@ const s3 = new S3Client(awsConfig);
 const testBucketName = 'test-jslib-aws';
 const testFileKey = 'bonjour.txt';
 
-export default function () {
-  const objects = s3.listObjects(testBucketName);
+export default async function () {
+  const objects = await s3.listObjects(testBucketName);
 
   // If our test object does not exist, abort the execution.
   if (objects.filter((o) => o.key === testFileKey).length == 0) {
@@ -48,7 +48,7 @@ export default function () {
   }
 
   // Let's download our test object and print its content
-  const object = s3.getObject(testBucketName, testFileKey);
+  const object = await s3.getObject(testBucketName, testFileKey);
   console.log(JSON.stringify(object));
 }
 ```
