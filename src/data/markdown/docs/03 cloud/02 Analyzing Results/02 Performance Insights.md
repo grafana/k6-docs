@@ -256,7 +256,7 @@ _Identifier_: `best_practice_invalid_metric_names`
 - **Happens when**:
   you tag your custom metrics with invalid names.
 - **Recommendations**:
-  - Ensure your custom metric names comply with OpenTelemetry and Prometheus limitations. Such as:
+  - Ensure your custom metric names comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Such as:
     - Only contain valid symbols of ASCII letters, numbers, or `_`.
     - Metric names must not start with a number.
 
