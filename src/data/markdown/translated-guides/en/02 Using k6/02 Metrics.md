@@ -107,17 +107,11 @@ In that output, all the metrics that start with `http`, `iteration`, and `vu` ar
 For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/reference/).
 
 
-### Metric name restrictions
+## Metric name restrictions
 
-<Blockquote mod="warning" title="">
+Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
 
-In the future, metrics names will be further limited to comply with OpenTelemetry and Prometheus limitations.
-
-That means metric names can be 1 to 63 symbols of ASCII letters, numbers, or  `_`. Metric names must not start with a number.
-
-</Blockquote>
-
-At the moment, a metric name can be 1 to 128 symbols of:
+That means they must not start with a number and a metric name can be 1 to 63 symbols of:
 1. any Unicode Letters
 2. any Unicode Number
-3. `.`, `_`, ` `, `!`, `?`. `/`, `#`, `(`. `)`, `<`, `>`, `%` and `-`
+3. `_` (an underscore)
