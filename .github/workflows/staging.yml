@@ -132,7 +132,6 @@ jobs:
     name: "Checks broken links"
     runs-on: ubuntu-latest
     needs: [build-deploy-staging]
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
       - uses: JustinBeckwith/linkinator-action@v1
