@@ -194,6 +194,7 @@ You can open a new page by using the imported [browser](/javascript-api/k6-exper
 
 ```javascript
 export default async function () {
+    const browser = chromium.launch();
     const page = browser.newPage();
     // ...
     page.close();
