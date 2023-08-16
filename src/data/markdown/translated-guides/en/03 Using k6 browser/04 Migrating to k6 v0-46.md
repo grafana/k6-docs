@@ -188,6 +188,20 @@ export const options = {
 
 You can open a new page by using the imported [browser](/javascript-api/k6-experimental/browser/#browser-module-api) object's [browser.newPage()](/javascript-api/k6-experimental/browser/newpage) method. You can still use the [Page](/javascript-api/k6-experimental/browser/page/) object as before.
 
+<CodeGroup labels={["Before"]} lineNumbers={[true]}>
+
+<!-- eslint-skip -->
+
+```javascript
+export default async function () {
+    const page = browser.newPage();
+    // ...
+    page.close();
+    browser.close();
+}
+```
+</CodeGroup>
+
 <CodeGroup labels={["After"]} lineNumbers={[true]}>
 
 <!-- eslint-skip -->
