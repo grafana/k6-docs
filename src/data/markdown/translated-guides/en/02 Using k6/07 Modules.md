@@ -166,7 +166,7 @@ Then, install the packages needed:
 $ npm install --save-dev \
     webpack \
     webpack-cli \
-    k6 \
+    @types/k6 \
     babel-loader \
     @babel/core \
     @babel/preset-env \
