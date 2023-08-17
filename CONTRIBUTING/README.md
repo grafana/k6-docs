@@ -122,7 +122,7 @@ Unless k6 OSS has a version upgrade, increment the version by 0.0.1. For example
 As the UI might change, refer to the GitHub [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) doc for the canonical instructions.
 
 Each release has a tag, which you can create either through the Github CLI or from https://github.com/grafana/k6-docs/releases.
-To upgrade through the UI,
+To upgrade through the UI:
 
 1. From the releases page, select **Draft a new Release**.
 ![DraftRelease1](../internal-images/DraftNewRelease.png)
