@@ -68,8 +68,8 @@ Second step is to determine the number of VUs per instance.
 - Tier 3 instances can host up to 5000 VUs
 
 Regardless of the tier, the amount of resources (CPU, Memory, Network) per VU is the same.
-For example, if you start a test with 400VUs, k6 uses 1 Tier 1 server,
-meaning that the traffic generated from our service comes from 1 IP.
+
+For example, if you start a test with 400VUs, k6 uses 2 Tier 1 servers, with each of them hosting 200 VUs. This means that the traffic generated from our service comes from 2 IPs.
 
 If you start a test with 1000VUs in a single load zone, k6 uses 1x Tier 2 server.
 If the same test is started in 2 load zones, k6 would allocate 500 VUs per load zone and use 4x Tier 1 servers.
