@@ -529,7 +529,7 @@
     {
       "name": "xk6-dashboard",
       "description": "Create a web-based metrics dashboard",
-      "url": "https://github.com/szkiba/xk6-dashboard",
+      "url": "https://github.com/grafana/xk6-dashboard",
       "logo": "",
       "author": {
         "name": "Iván Szkiba",
