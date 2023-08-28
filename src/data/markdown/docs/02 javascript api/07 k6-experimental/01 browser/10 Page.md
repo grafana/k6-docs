@@ -41,6 +41,7 @@ Page provides methods to interact with a single tab in a running web browser. A 
 | [page.locator(selector)](/javascript-api/k6-experimental/browser/page/locator/)       | Returns a [Locator](/javascript-api/k6-experimental/browser/locator/) for the given `selector`.                                          |
 | [page.mainFrame()](/javascript-api/k6-experimental/browser/page/mainframe/)       | Returns the page's main [Frame](/javascript-api/k6-experimental/browser/frame/).                                         |
 | [page.mouse](/javascript-api/k6-experimental/browser/page/mouse/)       | Returns the [Mouse](/javascript-api/k6-experimental/browser/mouse/) instance to interact with a virtual mouse on the page.                                        |
+| [page.on(event, handler)](/javascript-api/k6-experimental/browser/page/on/)       | Registers a handler to be called whenever the specified event occurs.                                        |
 | [page.opener()](/javascript-api/k6-experimental/browser/page/opener/)       | Returns the `page` that opened the current `page`.                                        |
 | [page.press(selector, key[, options])](/javascript-api/k6-experimental/browser/page/press/)       | Focuses the element, and then presses the given `key` on the [Keyboard](/javascript-api/k6-experimental/browser/keyboard/). |
 | [page.reload([options])](/javascript-api/k6-experimental/browser/page/reload/)       | Reloads the current page.                                        |
