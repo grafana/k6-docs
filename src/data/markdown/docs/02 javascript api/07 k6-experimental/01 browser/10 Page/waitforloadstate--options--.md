@@ -71,7 +71,7 @@ export default async function () {
     page.waitForLoadState(); // waits for the default `load` event
 
     check(page, {
-      header: page.locator('h2').textContent() == 'Welcome, admin!',
+      'header': page => page.locator('h2').textContent() == 'Welcome, admin!',
     });
   } finally {
     page.close();
