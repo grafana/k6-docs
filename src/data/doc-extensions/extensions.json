@@ -842,21 +842,6 @@
       "cloudEnabled": false
     },
     {
-      "name": "xk6-snowflake",
-      "description": "Load-test Snowflake cloud data warehouse",
-      "url": "https://github.com/tomlegodais/xk6-snowflake",
-      "logo": "",
-      "author": {
-        "name": "Tom LeGodais",
-        "url": "https://github.com/tomlegodais"
-      },
-      "stars": "",
-      "type": ["JavaScript"],
-      "categories": ["Data"],
-      "tiers": ["Community"],
-      "cloudEnabled": false
-    },
-    {
       "name": "xk6-mongo",
       "description": "Load-test Mongo no-SQL databases",
       "url": "https://github.com/GhMartingit/xk6-mongo",
