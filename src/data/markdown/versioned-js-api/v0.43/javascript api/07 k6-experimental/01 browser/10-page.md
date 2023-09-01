@@ -95,7 +95,7 @@ export default async function () {
 
     await Promise.all([page.waitForNavigation(), page.locator('input[type="submit"]').click()]);
     check(page, {
-      'header': page => page.locator('h2').textContent() == 'Welcome, admin!',
+      'header': p => p.locator('h2').textContent() == 'Welcome, admin!',
     });
   } finally {
     page.close();
