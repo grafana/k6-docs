@@ -280,11 +280,6 @@ export const options = {
       exec: 'news',
       vus: 20,
       duration: '1m',
-      options: {
-        browser: {
-          type: 'chromium',
-        }
-      }
     }
   }
 };
