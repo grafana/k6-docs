@@ -199,13 +199,13 @@
     {
       "name": "xk6-kv",
       "description": "Share key-value data between VUs",
-      "url": "https://github.com/dgzlopes/xk6-kv",
+      "url": "https://github.com/oleiade/xk6-kv",
       "logo": "",
       "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
+        "name": "Théo Crevon",
+        "url": "https://github.com/oleiade"
       },
-      "stars": "7",
+      "stars": "2",
       "type": ["JavaScript"],
       "categories": ["Data"],
       "tiers": ["Community"],
