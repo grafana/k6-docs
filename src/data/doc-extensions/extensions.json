@@ -1126,6 +1126,21 @@
       "categories": ["Observability"],
       "tiers": ["Community"],
       "cloudEnabled": false
+    },
+    {
+      "name": "xk6-input-prometheus",
+      "description": "Enables real-time input from prometheus",
+      "url": "https://github.com/JorTurFer/xk6-input-prometheus",
+      "logo": "",
+      "author": {
+        "name": "Jorge Turrado",
+        "url": "https://github.com/JorTurFer"
+      },
+      "stars": "0",
+      "type": ["JavaScript"],
+      "categories": ["Data"],
+      "tiers": ["Community"],
+      "cloudEnabled": false
     }
   ]
 }
