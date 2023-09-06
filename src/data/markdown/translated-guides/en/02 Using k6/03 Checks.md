@@ -139,11 +139,11 @@ $ k6 run checks.js
 > #### About Failing Checks
 >
 > When a check fails, the script will continue executing successfully and will not return a 'failed' exit status.
-> If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](/using-k6/thresholds/#failing-a-load-test-using-checks).
+> If you need the whole test to fail based on the results of a check, you have to [combine checks with thresholds](/using-k6/thresholds/#fail-a-load-test-using-checks).
 > This is particularly useful in specific contexts, such as integrating k6 into your CI pipelines or receiving alerts when scheduling your performance tests.
 
 ## Read more
 
 - [Check Javascript API](/javascript-api/k6/check/)
-- [Failing a load test using checks](/using-k6/thresholds/#failing-a-load-test-using-checks)
+- [Failing a load test using checks](/using-k6/thresholds/#fail-a-load-test-using-checks)
 - [k6chaijs](/javascript-api/jslib/k6chaijs): use BDD assertions in k6
