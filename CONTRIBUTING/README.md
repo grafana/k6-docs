@@ -130,9 +130,4 @@ To upgrade through the UI:
 1. In the next screen, select **Choose a tag**, type a version number increasing the one below (in image, it  should be v0.37.17).
 ![DraftRelease2](../internal-images/DraftNewRelease2.png)
 
-1. Optionally add a description and generate release notes, then **Publish release**.
-
-
-**NOTE**: For Grafana Docs releases, set the tag as 'vX.X.X-gcloud'
-
-
+1. For a small release (fixing a typo or broken link), you can manually add a short description. Otherwise, select **Generate release notes** to automatically include more information about what's changed, and then select **Publish release**.
