@@ -14,9 +14,9 @@ Possible events:
 
 | Event name | Description |
 | --------- | -------- |
-| data       | Emitted when the server sends data|
+| data       | Emitted when the server sends data. |
 | error    | Emitted when an error occurs. In case of the error, an [`Error`](/javascript-api/k6-experimental/grpc/stream/error/) object sends to the handler function.|
-| end      | Emitted when stream closes |
+| end      | Emitted when the server closes the incoming stream.  |
 
 
 ### Example
