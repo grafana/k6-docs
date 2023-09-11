@@ -25,13 +25,13 @@ excerpt: 'Client is a gRPC client that can interact with a gRPC server.'
 import grpc from 'k6/net/grpc';
 
 const client = new grpc.Client();
-// Download addsvc.proto for https://grpcb.in/, located at:
+// Download addsvc.proto for https://grpcbin.test.k6.io/, located at:
 // https://raw.githubusercontent.com/moul/pb/master/addsvc/addsvc.proto
 // and put it in the same folder as this script.
 client.load(null, 'addsvc.proto');
 
 export default () => {
-  client.connect('grpcb.in:9001', { timeout: '5s' });
+  client.connect('grpcbin.test.k6.io:9001', { timeout: '5s' });
 
   const response = client.invoke('addsvc.Add/Sum', {
     a: 1,
