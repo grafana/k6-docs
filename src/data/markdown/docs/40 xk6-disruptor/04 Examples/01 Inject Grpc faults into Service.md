@@ -7,7 +7,7 @@ This example shows a way to use the [ServiceDisruptor](/javascript-api/xk6-disru
 
 The complete [source code](#source-code) is at the end of this document. The next sections examine the code in detail.
 
-The example uses [grpcpbin](https://grpcb.in), a simple request/response application that offers endpoints for testing different gRPC requests.
+The example uses [grpcpbin](https://grpcbin.test.k6.io), a simple request/response application that offers endpoints for testing different gRPC requests.
 
 The test requires `grpcpbin` to be deployed in a cluster in the namespace `grpcbin` and exposed with an external IP. The IP address is expected in the environment variable `GRPC_HOST`.
 

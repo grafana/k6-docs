@@ -541,7 +541,7 @@ const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');
 
 export default () => {
-  client.connect('grpcb.in:9001');
+  client.connect('grpcbin.test.k6.io:9001');
 
   const data = { greeting: 'Bert' };
   const response = client.invoke('hello.HelloService/SayHello', data);

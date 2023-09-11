@@ -36,7 +36,7 @@ const client = new grpc.Client();
 client.load(['definitions'], 'hello.proto');
 
 export default () => {
-  client.connect('grpcb.in:9001', {
+  client.connect('grpcbin.test.k6.io:9001', {
     // plaintext: false
   });
 
