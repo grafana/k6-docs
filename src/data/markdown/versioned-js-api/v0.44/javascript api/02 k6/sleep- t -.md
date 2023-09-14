@@ -29,7 +29,7 @@ export default function () {
 
 </CodeGroup>
 
-Using the [k6-utils](/javascript-api/jslib/utils) library to specify a range between a minimum and maximum:
+Using the [k6-utils](https://k6.io/docs/javascript-api/jslib/utils/) library to specify a range between a minimum and maximum:
 
 <CodeGroup labels={[]}>
 
