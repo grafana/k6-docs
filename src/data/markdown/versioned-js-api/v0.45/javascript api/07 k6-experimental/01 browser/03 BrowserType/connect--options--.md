@@ -16,7 +16,7 @@ Connects to an existing browser instance.
 
 | Type   | Description                                            |
 |--------|--------------------------------------------------------|
-| object | [Browser](/javascript-api/k6-browser/api/browser/) object |
+| object | [Browser](/javascript-api/k6-experimental/browser/browser-class) object |
 
 
 ## Example
