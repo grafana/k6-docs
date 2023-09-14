@@ -31,7 +31,7 @@ Each option has its own detailed reference in a separate section.
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include system Env vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
-| [Insecure skip TLS verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
+| [Insecure skip TLS verify](#insecure-skip-tls-verify)     | A boolean specifying whether k6 should ignore TLS verifications for connections established from code     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
@@ -496,7 +496,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
-This only applies to connections created by VU code, such as http requests.
+This only applies to connections created from code, such as HTTP requests.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env                           | CLI                          | Code / Config file      | Default |
