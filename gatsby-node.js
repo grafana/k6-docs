@@ -1680,6 +1680,11 @@ const createRedirects = ({ actions }) => {
     toPath: '/using-k6-browser/recommended-practices/page-object-model/',
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: '/es/guias-de-prueba/automatizacion-de-pruebas-de-rendimiento/',
+    toPath: '/testing-guides/automated-performance-testing/',
+    isPermanent: true,
+  });
 
   const redirects = {
     '/javascript-api/k6-http/cookiejar-k6-http/':
