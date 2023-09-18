@@ -1,302 +1,303 @@
 ---
 title: 'Automated performance testing'
 head_title: 'How to Automate Performance Testing: The k6 Guide'
-excerpt: 'Automation is a hot topic in the testing community. This guide answers the WHY and HOW of Performance Testing Automation and gives you 6 steps to automate your performance tests.'
+excerpt: 'Performance testing automation is about establishing a repeatable and consistent process that checks reliability issues at distinct phases of the release cycle.'
 ---
 
-import {IntegrationsCiIconBlock} from 'templates/docs/integrations'
 
-Automation, a hot topic in the broader testing community and somewhat of a holy grail, is the end-goal for many organizations when it comes to understanding performance over time. However, where to start, which tool to choose, or how to get there, is not always as straightforward. Especially if you don’t already have a lot of experience in performance engineering.
+Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of development and release cycle. 
 
-This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.
+Performance testing automation does not remove the need to run tests manually. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
 
-## Why automate performance tests?
+This guide provides general recommendations to help you plan and define a strategy for running automated performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**:
 
-Let’s start by examining why you would consider automating your performance tests. To do that we need to revisit why we run performance tests in the first place:
+- Which tests to automate?
+- Which environment to test?
+- What frequency and how to run tests?
+- How to analyze performance results?
 
-- **Avoid launch failures** leading to a missed opportunity window and wasted investments, e.g. your app or site crashing during a high-profile product launch event.
-- **Avoid bad user experience** leading visitors and customers to go with the competition, and you ultimately losing revenue, e.g. churning hard won customers due to a non responsive app or website.
-- **Avoid performance regressions** as code changes get deployed to your production system and put in front of end users. This is what this guide is primarily aimed at.
+Please note that this guide assumes you are familiar with k6 and already have performance tests. If you are new to performance testing or k6, we recommend looking at our [get-started resources](/get-started/resources/#learning).
 
-From here, the decision to go for automated testing is hopefully clear:
+Before we dive in, let's consider the "why" behind automation and how it unlocks the full benefits of your performance testing efforts.
 
-- **Shifting performance testing left**, making sure it happens as close to development as possible, giving developers an early feedback loop for performance matters.
-- **Adding performance regression checks** to your Continuous Integration and Delivery (CI/CD) pipelines.
+## Why automate performance tests
 
-Of course not [all types of performance tests](/test-types/load-test-types) are suitable for automation, A/B type performance tests is one such type of performance test where it probably doesn’t make much sense to automate, unless you're aiming to compare the performance of A and B over time.
+Whether it’s a website loading in less than a second or an API returning a response in milliseconds, we all know "Performance matters." However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
 
-## Know your goals
+Performance is still intangible in many organizations, which react only when bad things happen. Automation changes this approach - **from reactive to proactive**. 
 
-Besides creating a test case itself, the most important step to ensure a successful performance testing automation project is to document your goals. What metrics, and values (in absolute terms; "response times should be less than 500ms", and not "response times should not be slow"), are important to you, your team and the business.
+In performance testing, it's crucial to establish routines to be consistent in our practices. Automation is necessary to create a performance testing habit, and boost some of its [benefits](https://k6.io/why-your-organization-should-perform-load-testing/):  
 
-If you have established [Service Level Agreements (SLAs)](https://en.wikipedia.org/wiki/Service-level_agreement) in place with your customers, or just [Service Level Objectives (SLOs)](https://en.wikipedia.org/wiki/Service-level_objective) and [Service Level Indicators (SLIs)](https://en.wikipedia.org/wiki/Service_level_indicator) defined internally, then that’s a great starting point. If not, then it’s a great opportunity to bring stakeholders together and discuss what goals you should have defined to drive a performance culture.
+- **Increase test coverage**: Automation creates a constant and iterative process. It drives a continuous dedication in the performance testing practice that can result in broader test coverage and better test maintenance.
+- **Detect issues earlier**: Automating performance tests as part of the software delivery process can ensure applications meet reliability goals while catching issues earlier in the SDLC.
+- **Collaborate across teams**: Automation prompts teams to outline a strategy and plan across the SDLC and departments. It fosters engineering leaders to advocate for reliability and implement shared practices.
 
-Starting with the results of a baseline test is another good way to find a starting point for your goals. A baseline test is a test run with a single or very few <abbr title="Virtual Users">VUs</abbr> that you know your system can handle without breaking a sweat. The idea being that you'll get some real numbers on where your system is at in terms of latency and response time. It's important to make sure that your baseline test is not resulting in any unwanted errors and is functionally accurate.
+Without automation, the lack of a shared framework often leads to isolated and sporadic activities. Automation helps drive continuous performance and reliability testing, introducing a **more efficient and effective testing process**.
 
-From the perspective of human perceptive abilities, the following guidance points from [Nielsen Norman Group](https://www.nngroup.com/articles/response-times-3-important-limits/) might be of help when deciding on what latency and response time to aim for:
+### More than CI/CD
 
-> - **0.1 second** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.
-> - **1.0 second** is about the limit for the user's flow of thought to stay uninterrupted, even though the user will notice the delay. Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.
-> - **10 seconds** is about the limit for keeping the user's attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish, so they should be given feedback indicating when the computer expects to be done. Feedback during the delay is especially important if the response time is likely to be highly variable, since users will then not know what to expect.
+Automation often refers to running tests with pass/fail conditions as part of a release process, usually integrated into a continuous integration or continuous delivery pipeline (CI/CD). However, performance testing is not only about pass/fail results or being gatekeepers of the release process.
 
-Once your goals are clear, you need to codify them as [thresholds](/using-k6/thresholds) which is the mechanism by which you specify pass/fail criteria in k6. More on that below.
 
-## How to automate performance testing
+[Automation into CI/CD pipelines](/integrations/#continuous-integration-and-continuous-delivery) is an option, but it's not the only method to schedule the execution of performance tests. When creating a performance testing plan, it’s important to remember that there are different ways to run performance tests and that a complete strategy might include running tests using:
 
-Once your goals are clear, you can start introducing load tests into your automation pipelines. Running load tests from a continuous integration (CI) system is easy with k6. The set up can easily be generalized across the various CI tools into the following sequence of steps:
+- Cron and cron job runners.
+- Cloud testing tools, such as [scheduling in Grafana Cloud k6](https://grafana.com/docs/grafana-cloud/k6/author-run/schedule-a-test/). 
+- Test management tools with automation capabilities.
+- Trigger manual tests. Include this as a step in your release checklist process.
 
-- [Why automate performance tests?](#why-automate-performance-tests)
-- [Know your goals](#know-your-goals)
-- [How to automate performance testing](#how-to-automate-performance-testing)
-- [1. Installation of k6](#installation-of-k6)
-- [2. Create a test](#create-a-test)
-- [3. Pass/fail criteria](#passfail-criteria)
-- [4. Local vs Cloud execution](#local-vs-cloud-execution)
-  - [Authenticating with k6 Cloud](#authenticating-with-k6-cloud)
-- [5. Test frequency](#test-frequency)
-  - [VU iteration duration](#vu-iteration-duration)
-  - [Branching strategy](#branching-strategy)
-  - [Pre-production test environment](#pre-production-test-environment)
-  - [Guidance](#guidance)
-- [6. Notifications](#notifications)
-  - [For k6 OSS](#for-k6-oss)
-  - [For k6 cloud](#for-k6-cloud)
-- [See also](#see-also)
 
-We'll have a closer look at these general steps in more detail below.
+## Determine the purpose of the tests
 
-## 1. Installation of k6
+The first step in the process is reviewing your existing or planned tests and understanding each test's purpose. Can the test serve additional purposes if executed regularly? Some common goals are:
 
-The first step to integrating load testing in your CI is to find and install a performance testing tool.
+- Comparing current performance against an existing performance baseline. 
+- Understanding the overall trend in key performance metrics.
+- Detecting regressions of new releases. 
+- Testing Service Level Objectives (SLOs) on a regular basis.
+- Testing critical areas during the release process.
+- Setting quality gates in the CI/CD pipelines.
 
-We built k6 for automation. It's a CLI tool that can integrate easily into your tech stack.
+When considering a consistent and ongoing purpose for each test, you discover which tests to automate, any lacking functionality, and missing tests in your test suite. It also guides you in determining the best time to run each test and how.
 
-Installing k6 can be done in three different ways:
+## Choose which tests to automate
 
-- Using one of the OS specific package managers
-- Pulling the Docker image
-- Downloading the binary for your OS
+Performance tests can generally be divided into two aspects:
 
-See the full [installation instructions](/get-started/installation) for more information.
+- Test scenario: What is the test verifying?  
+- Test workload: How does the system respond when handling certain traffic? 
 
-Additionally, we also have available [guides for installing k6 in specific CI tools](/integrations#continuous-integration-and-continuous-delivery).
 
-## 2. Create a test
+Your test suite should incorporate a diverse range of tests that can verify critical areas of your system using distinct [load test types](/test-types/load-test-types/).
 
-If you haven’t already created test cases for your system, then we suggest having a read through one of our guides for creating tests for websites and APIs/microservices:
+Any existing test that you want to run on a frequent basis is a candidate for automation. Let's say again, Automation is about running tests frequently and consistently, whether that's daily, weekly, or annually.
 
-- [Website testing guide](/testing-guides/load-testing-websites)
-- [API testing guide](/testing-guides/api-load-testing)
+When designing your performance test suite for automation, consider two key points: start simple and modularize your tests. 
 
-In general, when creating test cases the golden rule is to start small and then expanding from that initial starting point. Identify the most business critical transactions in your system and write test cases covering that part of the system.
+- **Start simple and iterate**: Your test suite, and consequently test coverage, will expand as the team learns and encounters reliability issues to investigate.
+- **Modularize your test suite**: In k6, you can separate the scenario and workload logic and reuse them across different tests. That simplifies the process of creating tests with various traffic patterns for different purposes. Modularization also allows reusing common logic across multiple tests. 
 
-**Version control test files**
+When planning test coverage or automation, consider starting with tests that:
 
-One of the best practices that we advise users and customers to adopt is version controlling load tests, preferably alongside application code like other types of tests. In our experience this will lead to a higher likeliness of tests being maintained as the application evolves. It also affords you all the usual benefits of version controlling your code.
+- Verify the core functionality crucial to the product and business. 
+- Evaluate the performance in scenarios with high traffic.
+- Provide key performance metrics to track trends and compare against baselines. 
+- Validate reliability goals or SLOs with [pass/fail criteria](/using-k6/thresholds/).
 
-**Modules**
+## Model the scenarios and workload
 
-Once you’ve gained enough experience with test creation, we strongly advise you to [modularize your tests](/using-k6/modules) to make them common logic/patterns reusable across members of your team and different performance tests.
+Once one or multiple tests have been selected, you should determine the various types of traffic that need to be tested. 
 
-## 3. Pass/fail criteria
+Let’s illustrate an example with two simple tests: one test to assess the performance of a GET endpoint and one test to verify a checkout process.
 
-Every step in an automation pipeline either passes or fails. As mentioned in [Know your goals](/testing-guides/automated-performance-testing#know-your-goals), the mechanism by which k6 decides whether a test has passed or failed is called [thresholds](/using-k6/thresholds). Without your goals codified as thresholds there's no way for k6 to actually know if your test should be considered a success or failure.
+The next step is to identify the traffic the system under test (SUT) handles for these tests. In this case, we could utilize our analytics and monitoring tools to find the typical traffic patterns for the GET endpoint and checkout flow. 
 
-A basic threshold on the 95th percentile of the response time metric looks like this:
+Depending on the type of traffic, we can create different kinds of tests:
 
-```javascript
-export const options = {
-  thresholds: {
-    // fail the test if 95th percentile response goes above 500ms
-    http_req_duration: ['p(95)<500'],
-  },
-};
-```
 
-You can setup thresholds on any metric in k6 and you can have multiple thresholds per metric. You can also optionally specify that a threshold should immediately abort a test if the threshold is reached. Adding that to the example above would look like this:
+- [Smoke](/test-types/smoke-testing/): Test for script errors and verify SUT with minimal traffic.
+- [Average-Load](/test-types/load-testing/): Test for regular/normal traffic.
+- [Stress](/test-types/stress-testing/): Test for maximum expected traffic. 
+- [Spike](/test-types/spike-testing/): Test for a surge of traffic.
+- [Soak](/test-types/soak-testing/): Test for a prolonged period of traffic. 
 
-```javascript
-export const options = {
-  thresholds: {
-    // fail and abort the test if 95th percentile response goes above 500ms
-    // delay the threshold evaluation for 1 min to gather enought data
-    http_req_duration: [{ threshold: 'p(95)<500', abortOnFail: true, delayAbortEval: '1min' }],
-  },
-};
-```
+In our example, we decided on the following workload for the two scenarios:
 
-If the test ends with one or more failed thresholds k6 will exit with a non-zero exit code signalling to the CI tool that the load test step failed, halting the build/pipeline from progressing further, and hopefully notifying you so you can take corrective action, but more on notifications further down below.
 
-## 4. Local vs Cloud execution
+| Test scenario    | Smoke | Average | Stress | Spike | Soak | 
+| ---------------- | ----- | ------- | ------ | ----- | ---- |
+| GET endpoint     | 1 iteration    | 100 reqs/s - 3m | 1500 reqs/s - 5m | | | 
+| Checkout process | 3 iterations     | 50 VUs - 5m  | | 200 VUs - 1m ||
 
-k6 supports both local (`k6 run ...`) and cloud execution (`k6 cloud ...`) modes. In local execution mode k6 will generate all the traffic from the machine where it's being run. In CI this would be the build servers. When executing a test locally, you can optionally stream the results to k6 Cloud for storage and visualization (`k6 run -o cloud ...`). In cloud execution mode k6 will instead bundle up and send the main JS test file, and all dependent files, to k6 Cloud as an archive for execution on cloud infrastructure managed by our k6 Cloud service. The different modes of execution are appropriate for different use cases. Some general guidance follows:
+> We recommend always creating average-load tests for baseline comparisons and smoke tests to validate test script errors before executing larger tests.
 
-| Use case                                                                                                                                                      | Execution mode  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Load test with <1000 VUs on a machine with consistent dedicated resources                                                                                     | Local execution |
-| The target system is behind a firewall and not accessible from the public Internet                                                                            | Local execution |
-| Can't ensure consistent dedicated resources locally for load test, e.g. your CI tool is running jobs on machines/containers with varying amounts of resources | Cloud execution |
-| Need to run test from multiple geographic locations in a test                                                                                                 | Cloud execution |
+In our example, we have tests that use the same test scenario with distinct workloads. This pattern is extremely common. In this case, the ability to reuse the scenario logic across tests simplifies both test creation and maintenance. A common pattern for organizing tests is prefixing them with the type of workload: 
 
-### Authenticating with k6 Cloud
+- `smoke-get-api.js`:&nbsp;&nbsp; imports the common scenario and set 1 iteration.
+- `load-get-api.js`:&nbsp;&nbsp;&nbsp;&nbsp; imports the common scenario and set 100 reqs/s during 3m.
+- `stress-get-api.js`: imports the common scenario and set 1500 reqs/s during 3m.
 
-If you decide to use the k6 Cloud service, either to stream results with local execution (`k6 run -o cloud ...`) or through cloud execution, you'll need to authenticate with k6 Cloud. The recommended way to do this is by setting the `K6_CLOUD_TOKEN` environment variable in your CI tool.
+_To learn more about configuring workloads in k6, check out [Scenarios](/using-k6/scenarios/#scenario-executors)._
 
-```bash
-K6_CLOUD_TOKEN=$TOKEN k6 cloud script.js
-```
+## Decide the testing frequency for each environment
 
-Alternatively you can pass in your k6 Cloud token to `k6 login cloud` like so:
+The next step is to decide which environment to test and its frequency. Each organization has different environments, and their purpose might also vary from one organization to another.
 
-```bash
-k6 login cloud -t <YOUR_K6_CLOUD_TOKEN>
-```
+Here are some common environments found at organizations, and general guidelines of what kind of testing to use them for.
 
-Get your k6 Cloud token from the [account settings page](https://app.k6.io/account/token).
+### Development environment
 
-## 5. Test frequency
+This environment, whether the personal machine or its dedicated environment,  might not include all the components of the system. It is commonly used for preliminary testing before deploying the application to a more comprehensive environment. 
 
-The boring, but true, answer to the question of how often you should run load tests is that "it depends". It depends on a number of parameters. How often is your application changing? Do you need many or few VUs to generate the necessary load? How long is one full cycle of a VU iteration? etc. Testing a full user journey or just a single API endpoint or website page has different implications on the answer as well.
+This environment is great for verifying the basic functionality of our tests by running smoke tests.
 
-Consider these three factors when picking the best solution for you:
+In this type of environment, debugging and building our performance tests is more common than any type of automation. However, if your project structure permits, you can also schedule the execution of smoke tests on project changes.
 
-- VU iteration duration
-- Your branching strategy
-- Pre-production test environment
+### QA environment
 
-### VU iteration duration
+This environment often deploys the entire application but with minimal infrastructure resources. It’s like a low-scale staging environment that all teams can use to test functional aspects and find regressions for new features. 
 
-A rule of thumb is that the shorter the "VU iteration duration" the more frequent you _can_ run your tests without introducing long delays in the development cycle feedback loop, or blocking your team mates' deployments from access to shared pre-production environments.
+Given the infrastructure does not closely match the production environment, this type of QA environment is unsuitable for assessing the performance and scalability of the application. 
 
-A quick re-cap of the [test life cycle](/using-k6/test-lifecycle) article:
+However, validating the functional aspects of our testing with smoke tests can help to catch errors earlier in this environment. Additionally, it verifies that the same script can run in larger load tests later. 
 
-```javascript
-export default function () {
-  // k6 will execute this default function in a loop for every VU
-  // for the duration of the test run.
-  // The duration it takes for a VU to complete one loop, or iteration,
-  // of this function is what we refer to as "VU iteration duration".
-}
-```
+Run all the available smoke tests: end-to-end, integration, and unit test types. Schedule these tests as part of the suite of automated tests executed in the CI flow.
 
-You can find the VU iteration duration in the k6 terminal output:
+### Pre-release and ephemeral environments
 
-![VI uteration duration in k6 terminal output](images/vu-iteration-duration-k6-cli.png)
+These environments are available to test upcoming releases, with each organization using them differently as part of their unique release process.
 
-### Branching strategy
+As a general rule on pre-release environments, we should run larger tests with quality gates, [Pass/Fail criteria](/using-k6/thresholds/) that validate our SLOs or reliability goals.  However, for major releases or changes, do not rely only on quality gates to guarantee the reliability of the entire system.  
 
-Another important aspect to consider is your team's version control branching policy. If you are strict with keeping feature branches separate from you main team-wide development branch, and you have per-feature test environments, then you can also generally run load tests with a higher frequency than if your builds are competing for exclusive access to a shared pre-production environment.
+It can be challenging to effectively assess all the reliability goals. Frequently, you’ll encounter “false positives” and “true negatives” during your performance testing journey. Only relying on quality gates leads to a wrong sense of security in your release process. 
 
-It's also important to consider that load test might not need to run at the same frequency as unit or functional tests. Running load tests could just as well be run as part of Pull/Merge Request creation or when a feature branch gets merged into the main team-wide development branch. Both of these setup variants can be achieved with most CI tools.
+In major releases, we recommend having these environments available for a few hours or days to properly test the status of the release. Our recommendations include: 
 
-### Pre-production test environment
+- Allocating a period of one to several days for validating the release.
+- Executing all the existing average-load, stress, and spike tests.
+- Executing each test at least twice consecutively.
+- Scheduling all tests to run periodically, for instance, every 4 hours or 8 hours.
 
-As touched upon in the previous section, on branching strategy, the test environment is the third point to consider. We point out "pre-production" specifically as that is the best practices when it comes to load testing. If your team is at the maturity level of running chaos experiments in production then fine, run load test in production as well. If not, stick to pre-production.
+### Staging/pre-production
 
-Things to consider with your test environment:
+In some cases, the staging environment acts like the “Pre-release” environment. If so, follow the strategy mentioned in the previous section.
 
-- Make sure there's no other traffic hitting the same test environment as your test
-- Make sure the system has an adequate amount of data in any database that is being accessed as a result of the test traffic
-- Make sure databases only contains test data, and not real production data
+The staging environment is always available and consistently updated with the latest changes. It’s generally suitable for assessing performance changes like performance trends, regressions, or improvements. 
 
-### Guidance
+In this case, we should choose the tests that assess key performance indicators and schedule them for consistent execution to collect metrics over a period. Start by selecting a few tests and scheduling their runs two to three times per week. 
 
-Generalized, our recommendation is as follows, broken down by VU iteration duration:
+Like in the pre-release environment, we suggest executing each test at least twice consecutively; doing so allows us to ignore unreliable tests.
 
-| VU iteration duration | Test frequency         | Trigger mechanism                                                            |
-| --------------------- | ---------------------- | ---------------------------------------------------------------------------- |
-| <10s                  | On every commit        | Commit push                                                                  |
-| <60s                  | Daily/Nightly          | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >60s                  | Couple of times a week | Scheduling, Pull/Merge Requests or when merging into main development branch |
-| >5min                 | Once a week            | Scheduling, Pull/Merge Requests or when merging into main development branch |
+As we aim to find performance changes, consider scaling the workload of the test according to the staging infrastructure, which often does not match the scale of the production environment.
 
-**Scheduling**
+### Production
 
-Besides triggering tests based on commit events, we also often see users and customers use [cron](https://k6.io/blog/performance-monitoring-with-cron-and-k6) or CI tool equivalent mechanisms for running tests on off-hours or at a particular cadence.
+Typically, the previous testing environments do not perfectly mirror the production environment, with differences in test data, infrastructure resources, and scalability policies. 
 
-If you're using k6 Cloud you can use the built in [scheduling feature](/cloud/manage/scheduled-tests) to trigger tests at a frequency of your choosing.
+Testing in production provides real-world insights that cannot be achieved in other environments. However, production testing requires a careful approach to handling and storing test data in production and avoiding impacting the actual users. 
 
-**Load test suite**
+A low-risk common practice is to utilize smoke tests for synthetic testing, also called synthetic monitoring. Testing production with minimal load is safe. Schedule smoke tests every five minutes, establishing Pass/Fail test conditions and an effective alerting mechanism. For instance, if six consecutive test runs fail, send an alert. 
 
-Do you need to run your full load test suite on every commit? Probably not, but in any case should not be the initial ambition. Repeating the advice from earlier in the guide, start small and expand from there. Start by evaluating the most business critical transactions/journeys you have in your system and start by automating those.
+If release strategies like Blue/Green or Canary deployments are in place, run load tests against the Green or new version to validate the release. It is an ideal moment to see how SLOs behave in production.
 
-## 6. Notifications
+Also, consider scheduling nightly tests or when the system handles less traffic. The goal is not to stress the system, but to consistently gather performance results to compare changes and analyze performance trends. For instance, schedule tests with half of the average traffic level on a weekly basis. 
 
-Once you have your load tests integrated into a CI pipeline you should make sure you’re also getting notified whenever a build/pipeline fails. You might already get notification via email, Slack, Microsoft Teams or Webhook through your CI tool, but if not you can set it up as follows.
 
-### For k6 OSS
+### Example plan
 
-There’s no builtin notification mechanism in k6 OSS, so you’d have to send a notification from the test script. One way to achieve this is by sending a notification event request to Slack or Microsoft Teams.
+| Test    | Deployment Env. | Type | Workload | Automation | Frequency | 
+| ------- | --------------- | ---- | -------- | ---------- | ---------- |
+| Checkout process | QA | Smoke | 1 iteration | CI flow | Branch changes |
+| Checkout process | Pre-release | Average | 50 VUs - 5m | Scheduled during QA/Pre-release period  | 3 times per day during pre-release period |
+| Checkout process | Pre-release | Spike | 200 VUs - 1m | Scheduled during QA/Pre-release period | 3 times per day during pre-release period |
+| Checkout process | Staging | Average | 50 VUs - 5m | Schedule | 2 times per week |
+|  | | | | | |
+| GET endpoint | QA | Smoke | 1 iteration | CI flow | Branch changes |
+| GET endpoint | Pre-release | Average | 100 reqs/s - 3m | Scheduled during QA/Pre-release period | 3 times per day during pre-release period |
+| GET endpoint | Pre-release | Stress | 1500 reqs/s - 5m | Scheduled during QA/Pre-release period | 3 times per day during pre-release period |
+| GET endpoint | Staging | Average | 100 reqs/s - 3m | Schedule | 2 times per week |
+| GET endpoint | Production | 50% Avg. | 50 reqs/s - 3m | Schedule on minimal traffic | Weekly |
 
-For Slack you need to first [setup an incoming webhook](https://slack.com/intl/en-se/help/articles/115005265063-Incoming-WebHooks-for-Slack). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+## Plan the result analysis process
 
-```javascript
-import { sleep } from 'k6';
-import http from 'k6/http';
+Following the previous steps, you should now have an initial performance testing plan. Now, let’s see how we can analyze and interpret performance results.
 
-export const options = {
-  thresholds: {
-    // fail the test if 95th percentile response goes above 500ms
-    http_req_duration: ['p(95)<500'],
-  },
-};
+The first step is learning what options you have for outputting performance results. If you’re using k6, there are a few [options you can choose from](/results-output/overview/). You can review those options and the [k6 metrics](/using-k6/metrics/) to decide on a long-term solution to analyze the results of your test automation plan.
 
-export default function () {
-  http.get('https://test.k6.io/');
-  sleep(5.0);
-}
+Here are some questions to consider when creating your result analysis process.
 
-export function teardown(data) {
-  // send notification request to Slack API
-  const event = {
-    text: 'My test just finished!',
-  };
-  const res = http.post('https://hooks.slack.com/services/...', JSON.stringify(event), {
-    headers: { 'Content-Type': 'application/json' },
-  });
-}
-```
+### How to store your performance results
 
-For Microsoft Teams you need to first [setup an incoming webhook connector](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook). Once setup you get a webhook URL that you specify as the target of the POST request in the teardown function:
+In k6, you can get the [aggregated results](/results-output/end-of-test/) at the end of a test, or [time series metrics in real-time](/results-output/real-time/). Both options allow you to customize the output. 
 
-```javascript
-import http from 'k6/http';
-import { sleep } from 'k6';
+The process we recommend is:
 
-export const options = {
-  thresholds: {
-    // fail the test if 95th percentile response goes above 500ms
-    http_req_duration: ['p(95)<500'],
-  },
-  // Increase teardown function timeout as MS Teams API seems to be slower than >10s
-  teardownTimeout: '60s',
-};
+- Select a storage backend.
+- Understand how it stores your test data and its particular capabilities.
+- Learn how to query and visualize results and any limitations.
+- Establish a policy for deleting old test results, and make sure to retain key performance results for future comparisons like baseline performance data.
+- Test the solution and decide on a long-term storage choice to avoid frequent changes to this critical component. 
 
-export default function () {
-  http.get('https://test.k6.io/');
-  sleep(5.0);
-}
+### Which key performance metrics will be your focus
 
-export function teardown(data) {
-  // send notification request to Microsoft Teams API
-  const event = {
-    text: 'My test just finished!',
-  };
-  const res = http.post('https://outlook.office.com/webhook/...', JSON.stringify(event), {
-    headers: { 'Content-Type': 'application/json' },
-  });
-}
-```
+Think about the goal of each particular test, and make sure you track the metrics that depend on your test goals.
 
-### For k6 cloud
+k6 provides [built-in metrics](/using-k6/metrics/reference/) that aggregate all the interactions against the SUT. You can also utilize [tags](/using-k6/tags-and-groups/#user-defined-tags) and custom metrics to categorize and filter results for one interaction or particular types.
 
-If you are running cloud tests you can also configure custom email- and webhook [notifications in the k6.io cloud GUI](/cloud/manage/notifications). It includes several pre-made templates, such as for Slack and Microsoft Teams.
+Consider defining your own performance criteria and their visualization. For instance, set different colors for what is good, acceptable, slightly concerning, or wrong so you can quickly visualize if a particular set of performance results are ok.
 
+Think about performance changes. Is there any particular metric to compare changes or track its trend over time? Most of the test visualization choices focus on the results of individual test runs. Consider implementing a way to visualize the result of a critical performance metric over time so you can identify any changes and trends.
 
-## Read more
+### How often will you analyze results
 
-We have written CI tool specific guides following the steps mentioned above:
+Consider creating dashboards and custom notifications that can quickly provide an overview of the latest results of any automated tests. These dashboards are the first line to indicate issues requiring investigation.  
 
-<IntegrationsCiIconBlock />
+Additionally, we recommend setting up alerts for important issues. Think about priority and non-priority levels and follow-up actions. Consider these [tips to design alerts](https://grafana.com/docs/grafana/latest/alerting/#design-your-alerting-system).
 
-<LdScript script='{"@context": "http://schema.org", "@type": "HowTo", "name": "How to automate performance testing", "description": "Automation is the end-goal for many organizations when it comes to understanding performance over time. This guide aims to lay down the steps and best practices for achieving your goal of performance testing automation.", "step": [{ "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#installation-of-k6", "name": "Installation of k6", "text": "Install k6 on the machine running the CI jobs." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#create-a-test", "name": "Create a test", "text": "Create and store the test files in version control, alongside application code." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#pass-fail-criteria", "name": "Pass/fail criteria", "text": "Codify pass/fail criteria that can fail your tests when run in CI." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#local-vs-cloud-execution", "name": "Local vs Cloud execution", "text": "Decide what type of tests to run." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#test-frequency", "name": "Test frequency", "text": "Decide how often to run tests." }, { "@type": "HowToStep", "url": "https://k6.io/docs/testing-guides/automated-performance-testing#notifications", "name": "Notifications", "text": "Get notified when your tests fail." }]}'/>
+### Correlate testing and observability data
+
+Last but not least, set up proper instrumentation of the SUT and understand the monitoring and observability in place for system and application data. 
+
+Performance testing results can highlight poor performance, such as slow responses. However, it does not show what happens internally on the SUT, such as a slow SQL query or CPU and memory saturation.
+
+To bridge the gap, work out a way to correlate testing results with how you instrument your infrastructure and application code. For instance, connecting or building custom dashboards with test results or using [trace data from your tests](/javascript-api/k6-experimental/tracing/).
+
+Continuous testing helps detect issues and performance degradations, whether from test results or system data. Proper observability will help to find the root cause.
+
+### Example plan
+
+As we finalize our planning, we can organize our test plan considering how often tests are run, the options to analyze their results, and follow-up actions. For example: 
+
+| Deployment Env. | Test type | Frequency | Alerts | Test overview | Action | 
+| --------------- | --------- | --------- | ------ | ------------- | ------ |
+| QA | Smoke tests | CI on Branch changes | CI | | Fix broken tests |  
+| Pre-release | All performance tests except smoke tests | 2 or 3 times daily during the QA/pre-release period | | | Validate the release after assessing performance results |  
+| Staging | Baseline performance tests | Schedule 2 times per week | Only for critical issues | Custom dashboard | Oversee test results |  
+| Production | Baseline performance tests | Weekly schedule | Priority and Non-priority issues | Custom dashboards and notifications | Oversee test results |  
+| Production | Synthetic tests | Hourly schedule | Custom alerts | | Respond to alerts |  
+
+## Considerations
+
+### Start simple and then iterate
+
+When starting your performance test plan or automation, it is common to think about having a few dozen scenarios to test. Start small to avoid planning paralysis. 
+
+We recommend beginning with a few distinct tests across testing environments. 
+
+Over time, you can add more tests, and your performance test suite will gradually increase its test coverage. 
+
+Focus on proving your test automation plan and solution across the software release process. A successful implementation will pave the way for collaborating with other teams and promoting the value of continuous performance testing.
+
+### Test consistency is critical
+
+One of the primary objectives of continuous performance testing is assessing changes in the key metrics that define reliability and performance goals. To achieve this, we need to compare the value of these metrics between test runs over a period. 
+
+It’s critical to compare test run results of the same test. Otherwise, you’re comparing apples with oranges. Compare identical test runs, the same workload, running the same scenario with the same test data against the same environment.
+
+Make sure not to introduce variance between test runs. If changes are necessary, rename or create a new test and start comparing test results from scratch.
+
+Additionally, we recommend scheduling the execution of the same test twice and almost consecutively. This collects one extra test run result for better comparison and allows us to ignore a potentially unreliable test.
+
+### Complement automation with a repeatable QA process
+
+We mentioned this at the beginning of the guide: automation in performance testing is about establishing a repeatable and consistent testing process.
+
+Certain performance tests, especially heavy-load tests, might cause outages. These tests require a controlled execution and real-time analysis to prevent the system from becoming unresponsive. It may not be desirable to automate the execution of these tests without supervision, but it doesn't mean you should avoid them.
+
+You should also plan the frequency of tests that are manually triggered and require supervision of the system during their execution. To ensure these different cases are consistently tested, set reminders and document them as part of the QA process and release checklists. Common examples are:
+
+- Running soak tests quarterly. 
+- Running heavy-stress tests 2 months before an important seasonal event. 
+- Running heavy-load tests for major releases in a pre-release environment.
+
+### Quality gates in CI/CD may result in false assurance
+
+Quality gates in performance tests are often defined as [Pass/Fail criteria](/using-k6/thresholds/) that verify the release meets its reliability goals.
+
+However, setting up reliable quality gates is challenging when testing thousands or millions of interactions. The test script, the SLO for that particular environment, and the Pass/Fail criteria could easily be wrong.  
+
+Assume reliability checks may have false negatives (and vice versa); ensure performance tests don't block releases wrongly.
+
+Unless your verification process is mature, do not rely entirely on Pass/Fail results to guarantee the reliability of releases. If unsure, start utilizing Pass/Fail results to warn about possible issues for deeper investigation, and continuously tweak the criteria until becoming confident. 
+
+Moreover, note that the load test duration often takes between 3 to 15 minutes or more; thus,  introducing performance testing into CI/CD significantly increases the time of the release process. This is another reason we advise not to run larger tests in pipelines meant for automatic deployment. Instead, plan one or more days for performance testing pre-releases in a dedicated environment.
