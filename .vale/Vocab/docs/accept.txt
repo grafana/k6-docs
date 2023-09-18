@@ -108,6 +108,7 @@ onboarding
 [o|O]verutilize
 [o|O]verutilization
 Ops
+quickpizza
 Palo
 Paulo
 performant
@@ -163,6 +164,7 @@ variadic
 vendored
 walkthrough
 webpages
+webapp
 WooCommerce
 wpnonce
 Zendesk

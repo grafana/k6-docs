@@ -35,7 +35,7 @@ If you need a place to test k6 scripts, you can use these playground/demo server
 - [grpcbin.test.k6.io](https://grpcbin.test.k6.io/). A simple gRPC Request & Response Service. [grafana/k6-grpcbin](https://github.com/grafana/k6-grpcbin)
 
 
-Note that these are shared testing environments - please avoid high-load tests. Alternatively, you can host them on your infrastructure and run the examples on the repo.
+Note that these are shared testing environments - please avoid high-load tests. Alternatively, you can host them on your infrastructure and run the examples in the repository.
 
 
 ## k6 + your favorite tool
