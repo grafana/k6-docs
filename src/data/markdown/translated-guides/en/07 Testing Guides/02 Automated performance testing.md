@@ -5,11 +5,11 @@ excerpt: 'Performance testing automation is about establishing a repeatable and 
 ---
 
 
-Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of development and release cycle. 
+Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of development and release cycle. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
 
-Performance testing automation does not remove the need to run tests manually. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
+In performance testing, automation does not remove the need to run tests manually. It’s about planning performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**. 
 
-This guide provides general recommendations to help you plan and define a strategy for running automated performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**:
+This guide provides general recommendations to help you plan and define a strategy for running automated performance tests:
 
 - Which tests to automate?
 - Which environment to test?
