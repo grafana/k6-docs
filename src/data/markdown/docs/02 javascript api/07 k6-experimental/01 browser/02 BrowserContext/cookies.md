@@ -7,7 +7,7 @@ Returns a list of [cookies](/javascript-api/k6-experimental/browser/browserconte
 
 | Parameter      | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                           |
 |----------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| urls           | array  | A string array of URLs to filter the [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie). |
+| urls           | array  | A string array of URLs to filter the [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext). |
 
 ### Returns
 
