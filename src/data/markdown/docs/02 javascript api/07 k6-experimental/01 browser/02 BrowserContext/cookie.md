@@ -3,7 +3,7 @@ title: "Cookie"
 excerpt: "Browser module: Cookie Class"
 ---
 
-Cookie class representing a cookie in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext).
+Cookie class represents a cookie in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext).
 
 | Property | Type   | Description                                                                                                                                                                          |
 | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
