@@ -1,15 +1,15 @@
 ---
 title: 'Automated performance testing'
 head_title: 'How to Automate Performance Testing: The k6 Guide'
-excerpt: 'Performance testing automation is about establishing a repeatable and consistent process that checks reliability issues at distinct phases of the release cycle.'
+excerpt: 'Performance testing automation is about establishing a repeatable and consistent process that checks reliability issues at different stages of the development and release cycle.'
 ---
 
 
-Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of development and release cycle. 
+Performance testing automation is about establishing **a repeatable and consistent process that checks reliability issues** at different stages of the development and release cycle. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
 
-Performance testing automation does not remove the need to run tests manually. For instance, you could run performance tests from CI/CD pipelines and nightly jobs, or manually trigger load tests and monitor their impact in real-time.
+In performance testing, automation does not remove the need to run tests manually. It’s about planning performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**. 
 
-This guide provides general recommendations to help you plan and define a strategy for running automated performance tests as part of your Software Development Life Cycle (SDLC) for **continuous performance testing**:
+This guide provides general recommendations to help you plan and define a strategy for running automated performance tests:
 
 - Which tests to automate?
 - Which environment to test?
@@ -52,7 +52,7 @@ Automation often refers to running tests with pass/fail conditions as part of a 
 The first step in the process is reviewing your existing or planned tests and understanding each test's purpose. Can the test serve additional purposes if executed regularly? Some common goals are:
 
 - Comparing current performance against an existing performance baseline. 
-- Understanding the overall trend in key performance metrics.
+- Understanding variances over time in key performance metrics. Observing flat or changing trends.
 - Detecting regressions of new releases. 
 - Testing Service Level Objectives (SLOs) on a regular basis.
 - Testing critical areas during the release process.
@@ -64,9 +64,8 @@ When considering a consistent and ongoing purpose for each test, you discover wh
 
 Performance tests can generally be divided into two aspects:
 
-- Test scenario: What is the test verifying?  
-- Test workload: How does the system respond when handling certain traffic? 
-
+- Test scenario (test case): What is the test verifying?  
+- Test workload (test load): How much traffic and which traffic pattern? 
 
 Your test suite should incorporate a diverse range of tests that can verify critical areas of your system using distinct [load test types](/test-types/load-test-types/).
 
@@ -81,8 +80,8 @@ When planning test coverage or automation, consider starting with tests that:
 
 - Verify the core functionality crucial to the product and business. 
 - Evaluate the performance in scenarios with high traffic.
-- Provide key performance metrics to track trends and compare against baselines. 
-- Validate reliability goals or SLOs with [pass/fail criteria](/using-k6/thresholds/).
+- Track key performance metrics to observe their trends and compare against their baselines. 
+- Validate reliability goals or SLOs with Pass/Fail criteria.
 
 ## Model the scenarios and workload
 
@@ -147,11 +146,29 @@ Run all the available smoke tests: end-to-end, integration, and unit test types.
 
 These environments are available to test upcoming releases, with each organization using them differently as part of their unique release process.
 
-As a general rule on pre-release environments, we should run larger tests with quality gates, [Pass/Fail criteria](/using-k6/thresholds/) that validate our SLOs or reliability goals.  However, for major releases or changes, do not rely only on quality gates to guarantee the reliability of the entire system.  
+As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can use [Thresholds](/using-k6/thresholds/) in `options` as follows: 
 
-It can be challenging to effectively assess all the reliability goals. Frequently, you’ll encounter “false positives” and “true negatives” during your performance testing journey. Only relying on quality gates leads to a wrong sense of security in your release process. 
+```javascript
+export const options = {
+  thresholds: {
+    // http errors should be less than 1%
+    http_req_failed: ['rate<0.01'], 
+    // 90% of requests should be below 600ms
+    http_req_duration: ['p(90)<600'], 
+    // 95% of requests tagged as static content should be below 200ms
+    'http_req_duration{type:staticContent}': ['p(99)<250'],
+    // the error rate of my custom metric should be below 5%
+    my_custom_metric: ['rate<0.05']
+  },
+};
+```
 
-In major releases, we recommend having these environments available for a few hours or days to properly test the status of the release. Our recommendations include: 
+
+However, it can be challenging to effectively assess all reliability goals. Frequently, you’ll encounter “false positives” and “true negatives” when testing with distinct types of load.
+
+For larger tests, verifying the release based “only” on a Pass/Fail status can create a false sense of security in your performance testing and release process. 
+
+We recommend keeping the pre-release environment available for a few hours or days to thoroughly test the entire system. Our recommendations include:
 
 - Allocating a period of one to several days for validating the release.
 - Executing all the existing average-load, stress, and spike tests.
