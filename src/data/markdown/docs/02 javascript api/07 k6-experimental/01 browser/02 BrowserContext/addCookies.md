@@ -3,7 +3,7 @@ title: 'addCookies()'
 excerpt: 'Clears context cookies.'
 ---
 
-Adds a list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) into the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie). All pages within this [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie) will have these [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) installed.
+Adds a list of [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) into the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie). All pages within this [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext/cookie) will have these [cookies](/javascript-api/k6-experimental/browser/browsercontext/cookie) set.
 
 <Blockquote mod="info">
 
