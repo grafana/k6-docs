@@ -48,7 +48,7 @@ export default async function () {
         name: 'testcookie',
         value: '1',
         sameSite: 'Strict',
-        domain: '127.0.0.1',
+        domain: 'httpbin.org',
         path: '/',
         httpOnly: true,
         secure: true,
@@ -58,7 +58,7 @@ export default async function () {
         name: 'testcookie2',
         value: '2',
         sameSite: 'Lax',
-        domain: '127.0.0.1',
+        domain: 'httpbin.org',
         path: '/',
         expires: dayAfter,
       },
@@ -67,11 +67,18 @@ export default async function () {
         name: 'testcookie3',
         value: '3',
         sameSite: 'Lax',
-        domain: '127.0.0.1',
+        domain: 'httpbin.org',
         path: '/',
         expires: dayBefore
       }
     ]);
+
+    const response = await page.goto('https://httpbin.org/cookies', {
+      waitUntil: 'networkidle',
+    });
+    console.log(response.json());
+    // prints:
+    // {"cookies":{"testcookie":"1","testcookie2":"2"}}
   } finally {
     page.close();
   }
