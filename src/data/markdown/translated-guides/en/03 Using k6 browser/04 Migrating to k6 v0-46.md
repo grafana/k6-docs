@@ -139,10 +139,10 @@ $ K6_BROWSER_HEADLESS=false K6_BROWSER_TIMEOUT='60s' k6 run script.js
 
 ```bash
 # WARNING!
-# Be aware that grafana/k6:master-with-browser launches Chrome browser setting 'no-sandbox'
-# argument. Use it only with trustworthy websites.
+# Be aware that grafana/k6:master-with-browser launches Chrome browser by setting the
+# 'no-sandbox' argument. Use it only with trustworthy websites.
 #
-# As an alternative, our recomendation is to use a Docker SECCOMP profile instead, and
+# As an alternative, our recommendation is to use a Docker SECCOMP profile instead, and
 # overwrite the Chrome arguments to not use 'no-sandbox' such as:
 # docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
 #
