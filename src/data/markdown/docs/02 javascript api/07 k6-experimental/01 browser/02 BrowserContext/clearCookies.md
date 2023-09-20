@@ -29,8 +29,11 @@ export default async function () {
   const context = browser.newContext();
   const page = context.newPage();
 
-  await page.goto('https://test.k6.io/');
+  await page.goto('https://httpbin.org/cookies/set?testcookie=testcookievalue');
+  console.log(context.cookies().length); // prints: 1
+
   context.clearCookies();
+  console.log(context.cookies().length); // prints: 0
 }
 ```
 
