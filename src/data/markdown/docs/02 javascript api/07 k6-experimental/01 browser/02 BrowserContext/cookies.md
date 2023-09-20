@@ -50,7 +50,7 @@ export default async function () {
     let cookies = context.cookies();
     console.log("initial cookies length:", cookies.length); // prints 0
 
-    // let's add more cookies to filter by urls.
+    // let's add more cookies to filter by urls
     context.addCookies([
       { name: 'foo', value: 'foovalue', sameSite: 'Strict', url: 'http://foo.com' },
       { name: 'bar', value: 'barvalue', sameSite: 'Lax', url: 'https://bar.com' },
