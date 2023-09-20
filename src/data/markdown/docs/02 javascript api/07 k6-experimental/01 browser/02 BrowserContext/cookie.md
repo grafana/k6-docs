@@ -5,6 +5,8 @@ excerpt: "Browser module: Cookie Class"
 
 Cookie class represents a cookie in the [BrowserContext](/javascript-api/k6-experimental/browser/browsercontext).
 
+See the [HTTP Cookies documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) on the Mozilla website for more details about cookies.
+
 | Property | Type   | Default | Description                                                                                                                                                      |
 | -------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name     | string | `""`    | The cookie's name. Required.                                                                                                                                     |
