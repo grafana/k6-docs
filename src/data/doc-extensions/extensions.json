@@ -124,13 +124,13 @@
     {
       "name": "xk6-interpret",
       "description": "Interpret Go code",
-      "url": "https://github.com/dgzlopes/xk6-interpret",
+      "url": "https://github.com/deejiw/xk6-interpret",
       "logo": "",
       "author": {
-        "name": "Daniel González",
-        "url": "https://github.com/dgzlopes"
+        "name": "Tossaporn Jiw",
+        "url": "https://github.com/deejiw"
       },
-      "stars": "9",
+      "stars": "0",
       "type": ["JavaScript"],
       "categories": ["Misc"],
       "tiers": ["Community"],
