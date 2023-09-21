@@ -146,7 +146,7 @@ Run all the available smoke tests: end-to-end, integration, and unit test types.
 
 These environments are available to test upcoming releases, with each organization using them differently as part of their unique release process.
 
-As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can use [Thresholds](/using-k6/thresholds/) in `options` as follows: 
+As a general rule on pre-release environments, we should run our larger tests with quality gates, Pass/Fail criteria that validate SLOs or reliability goals. In k6, you can do that by using [Thresholds](/using-k6/thresholds/) in `options` as follows: 
 
 ```javascript
 export const options = {
@@ -162,7 +162,6 @@ export const options = {
   },
 };
 ```
-
 
 However, it can be challenging to effectively assess all reliability goals. Frequently, you’ll encounter “false positives” and “true negatives” when testing with distinct types of load.
 
@@ -183,7 +182,7 @@ The staging environment is always available and consistently updated with the la
 
 In this case, we should choose the tests that assess key performance indicators and schedule them for consistent execution to collect metrics over a period. Start by selecting a few tests and scheduling their runs two to three times per week. 
 
-Like in the pre-release environment, we suggest executing each test at least twice consecutively; doing so allows us to ignore unreliable tests.
+Like in the pre-release environment, we suggest executing each test at least twice consecutively, allowing us to ignore unreliable tests.
 
 As we aim to find performance changes, consider scaling the workload of the test according to the staging infrastructure, which often does not match the scale of the production environment.
 
@@ -191,11 +190,11 @@ As we aim to find performance changes, consider scaling the workload of the test
 
 Typically, the previous testing environments do not perfectly mirror the production environment, with differences in test data, infrastructure resources, and scalability policies. 
 
-Testing in production provides real-world insights that cannot be achieved in other environments. However, production testing requires a careful approach to handling and storing test data in production and avoiding impacting the actual users. 
+Testing in production provides real-world insights that cannot be achieved in other environments. However, production testing requires a careful approach to handling and storing test data in production and avoiding impacting real users. 
 
 A low-risk common practice is to utilize smoke tests for synthetic testing, also called synthetic monitoring. Testing production with minimal load is safe. Schedule smoke tests every five minutes, establishing Pass/Fail test conditions and an effective alerting mechanism. For instance, if six consecutive test runs fail, send an alert. 
 
-If release strategies like Blue/Green or Canary deployments are in place, run load tests against the Green or new version to validate the release. It is an ideal moment to see how SLOs behave in production.
+If release strategies like Blue/Green or Canary deployments are in place, run load tests against the Green or new version to validate the release. It's an ideal moment to see how SLOs behave in production.
 
 Also, consider scheduling nightly tests or when the system handles less traffic. The goal is not to stress the system, but to consistently gather performance results to compare changes and analyze performance trends. For instance, schedule tests with half of the average traffic level on a weekly basis. 
 
