@@ -25,11 +25,15 @@ These resources help you write and run k6 tests in a safe environment and explor
 
 ## Test servers
 
-If you need a place to test k6 scripts, you can load these servers as much as you want.
+If you need a place to learn k6 and test your scripts, you can use these playground/demo servers:
 
-- [test.k6.io](https://test.k6.io). A demo website
-- [test-api.k6.io](https://test-api.k6.io). A demo REST API (with some WebSocket support).
-- [ecommerce.test.k6.io](http://ecommerce.test.k6.io/). The k6 Fake Shop, a demo WooCommerce site.
+- [pizza.grafana.fun](https://pizza.grafana.fun/). A simple demo webapp. [grafana/quickpizza](https://github.com/grafana/quickpizza)
+- [k6-http.grafana.fun](https://k6-http.grafana.fun). A simple HTTP Request & Response Service. [grafana/httpbin](https://github.com/grafana/httpbin)
+- [k6-php.grafana.fun](https://k6-php.grafana.fun). A simple PHP website. [grafana/test.k6.io](https://github.com/grafana/test.k6.io)
+- [test-api.k6.io](https://test-api.k6.io). A demo HTTP REST API with some WebSocket support. [grafana/test-api.k6.io](https://github.com/grafana/test-api.k6.io)
+- [grpcbin.test.k6.io](https://grpcbin.test.k6.io/). A simple gRPC Request & Response Service. [grafana/k6-grpcbin](https://github.com/grafana/k6-grpcbin)
+
+Note that these are shared testing environments - please avoid high-load tests. Alternatively, you can deploy and host them on your infrastructure and run the examples in the repository.
 
 ## k6 + your favorite tool
 
