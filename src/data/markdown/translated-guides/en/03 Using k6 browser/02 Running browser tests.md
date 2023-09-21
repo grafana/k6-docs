@@ -81,11 +81,11 @@ $ k6 run script.js
 
 ```bash
 # WARNING!
-# Be aware that grafana/k6:master-with-browser launches Chrome browser by setting the
-# 'no-sandbox' argument. Use it only with trustworthy websites.
+# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
+# 'no-sandbox' argument. Only use it with trustworthy websites.
 #
-# As an alternative, our recommendation is to use a Docker SECCOMP profile instead, and
-# overwrite the Chrome arguments to not use 'no-sandbox' such as:
+# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
+# Chrome arguments to not use 'no-sandbox' such as:
 # docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
 #
 # You can find an example of a hardened SECCOMP profile in:
@@ -113,11 +113,11 @@ $ K6_BROWSER_HEADLESS=false k6 run script.js
 
 ```bash
 # WARNING!
-# Be aware that grafana/k6:master-with-browser launches Chrome browser by setting the
-# 'no-sandbox' argument. Use it only with trustworthy websites.
+# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
+# 'no-sandbox' argument. Only use it with trustworthy websites.
 #
-# As an alternative, our recommendation is to use a Docker SECCOMP profile instead, and
-# overwrite the Chrome arguments to not use 'no-sandbox' such as:
+# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
+# Chrome arguments to not use 'no-sandbox' such as:
 # docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
 #
 # You can find an example of a hardened SECCOMP profile in:
