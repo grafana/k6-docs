@@ -43,11 +43,9 @@ First, you have to configure the New Relic integration for an organization.
 
 1. From the Main navigation, go to **Manage > Cloud APM** and select **New Relic**.
 
-  ![Cloud APM - Datadog Form UI](images/datadog-cloud-app-form.png)
+  ![Cloud APM - New Relic Form UI](images/newrelic-cloud-app-form.png)
 
 1. In this form, enter the URL and license key that you copied previously from New Relic.
-
-  ![Cloud APM - New Relic Form UI](images/newrelic-cloud-app-form.png)
 
   For more information on the other input fields, see [configuration parameters](#configuration-parameters).
 
