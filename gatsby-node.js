@@ -1361,7 +1361,15 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/cloud/cloud-faq/private-load-zones/',
-    toPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
     isPermanent: true,
   });
 
