@@ -22,7 +22,7 @@ Before we dive in, let's consider the "why" behind automation and how it unlocks
 
 ## Why automate performance tests
 
-Whether it’s a website loading in less than a second or an API returning a response in milliseconds, we all know "Performance matters." However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
+Whether it’s a website loading in under a second, API responses in milliseconds, or instantaneous fault responses, performance is critical as it directly impacts the end-user experience. However, an organizational challenge is that performance may often not receive the recognition of a feature or requirement.
 
 Performance is still intangible in many organizations, which react only when bad things happen. Automation changes this approach - **from reactive to proactive**. 
 
@@ -69,7 +69,7 @@ Performance tests can generally be divided into two aspects:
 
 Your test suite should incorporate a diverse range of tests that can verify critical areas of your system using distinct [load test types](/test-types/load-test-types/).
 
-Any existing test that you want to run on a frequent basis is a candidate for automation. Let's say again, Automation is about running tests frequently and consistently, whether that's daily, weekly, or annually.
+Any existing test that you wish to run on a frequent basis is a candidate for automation. Fundamentally, automation is about running tests frequently and consistently, whether that's daily, weekly, or annually.
 
 When designing your performance test suite for automation, consider two key points: start simple and modularize your tests. 
 
