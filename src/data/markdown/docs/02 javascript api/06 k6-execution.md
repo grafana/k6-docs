@@ -48,7 +48,7 @@ The instance object provides information associated with the load generator inst
 | iterationsInterrupted  | integer | The number of prematurely interrupted iterations in the current instance. |
 | iterationsCompleted    | integer | The number of completed iterations in the current instance. |
 | vusActive              | integer | The number of active VUs. |
-| vusInitialized         | integer | The number of currently initialized VUs. |
+| vusInitialized         | integer | The number of VUs which finished setup and are ready or running. If more VUs are required, more will be Initialized. |
 | currentTestRunDuration | float   | The time passed from the start of the current test run in milliseconds. |
 
 ### scenario
