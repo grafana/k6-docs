@@ -23,33 +23,32 @@ Forwarding from 127.0.0.1:8080 -> 80
 
 To be able to inject faults, `xk6-disruptor` must [install an agent on each target](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works) that intercepts the requests and applies the desired disruptions. This process requires any existing connection to the targets to be redirected to the agent.
 
-Due to a existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue happens only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there shouldn't be any issue.
+Due to an existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue happens only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there shouldn't be any issue.
 
 Until this issue is solved in `kubectl`, tests using port forwarding to access a service should ensure the agent is installed in the targets before any traffic is sent by the test.
 
-The simplest way to accomplish this is to ensure the scenario that executes the load (2) starts after the scenario that injects the faults (1):
+The simplest way to accomplish this is to ensure the scenario that executes the load (#2) starts after the scenario that injects the faults (#1):
 
 ```javascript
     scenarios: {
-        disrupt: {   (1)
+        disrupt: {   // #1 inject faults
             executor: 'shared-iterations',
             iterations: 1,
             vus: 1,
             exec: "disrupt",
             startTime: "0s",
-        }
-        load: {   (2)
+        },
+        load: {   // #2 execute load
             executor: 'constant-arrival-rate',
             rate: 100,
             preAllocatedVUs: 10,
             maxVUs: 100,
             exec: "default",
-            startTime: '20s',       // give time for the agents to be installed
+            startTime: '20s',  // give time for the agents to be installed
             duration: "30s",
         }
      }
  ```
-
 
 ## As a LoadBalancer service
 
