@@ -9,6 +9,7 @@ k6 provides multiple places to set options:
 - In CLI flags
 - In environment variables
 - In the script `options` object
+- In a configuration file
 
 Most likely, your use case will determine where you want to set the particular options for a particular test.
 You can also access option values as your test runs.
@@ -21,7 +22,7 @@ You can set options in multiple places.
 If there are conflicts, k6 uses the option from the place with the highest _order of precedence_.
 
 1. First, k6 uses the option's default value.
-1. Next, k6 uses the options set by the `--config` flag.
+1. Next, k6 uses the options set in a configuration file via the `--config` flag.
 1. Then, k6 uses the script value (if set).
 1. After, k6 uses the environment variable (if set). 
 1. Finally, k6 takes the value from the CLI flag (if set). 
@@ -141,12 +142,9 @@ export default function () {
 > **Note**: Though this method uses the `--env` flag, this is not the same as using an environment variable.
 > For an explanation, refer to the [environment variables document](/using-k6/environment-variables).
 
-
-<Collapsible title="Set options with config">
-
 ### Set options with the --config flag
 
-You can also define the same options through a config file, then use a CLI flag to specify the config.
+k6 includes a [default configuration file](/using-k6/k6-options/reference/#config) that you can edit, or you can create a new file and then use a CLI flag to point to that file. 
 If you use it, the options take the _second lowest order of precedence_ (after defaults).
 If you set options anywhere else, they will override the `--config` flag options.  
 
@@ -197,8 +195,6 @@ const testConfig = JSON.parse(open('./config/test.json'));
 // combine the above with options set directly:
 export const options = testConfig;
 ```
-
-</Collapsible>
 
 ## Get an option value from the script
 
