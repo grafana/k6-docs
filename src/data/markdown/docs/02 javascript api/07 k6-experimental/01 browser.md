@@ -86,9 +86,17 @@ $ k6 run script.js
 ```
 
 ```bash
-# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
-# to grant further system permissions on the host for the Docker container.
-docker run --rm -i --cap-add=SYS_ADMIN grafana/k6:master-with-browser run - <script.js
+# WARNING!
+# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
+# 'no-sandbox' argument. Only use it with trustworthy websites.
+#
+# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
+# Chrome arguments to not use 'no-sandbox' such as:
+# docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
+#
+# You can find an example of a hardened SECCOMP profile in:
+# https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
+docker run --rm -i grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
@@ -143,9 +151,17 @@ The following command passes the [browser module options](#browser-module-option
 $ K6_BROWSER_HEADLESS=false K6_BROWSER_ARGS='show-property-changed-rects' k6 run script.js
 ```
 ```bash
-# When using the `k6:master-with-browser` Docker image, you need to add `--cap-add=SYS_ADMIN`
-# to grant further system permissions on the host for the Docker container.
-docker run --rm -i --cap-add=SYS_ADMIN -e K6_BROWSER_HEADLESS=false -e K6_BROWSER_ARGS='show-property-changed-rects' grafana/k6:master-with-browser run - <script.js
+# WARNING!
+# The grafana/k6:master-with-browser image launches a Chrome browser by setting the
+# 'no-sandbox' argument. Only use it with trustworthy websites.
+#
+# As an alternative, you can use a Docker SECCOMP profile instead, and overwrite the
+# Chrome arguments to not use 'no-sandbox' such as:
+# docker container run --rm -i -e K6_BROWSER_ARGS='' --security-opt seccomp=$(pwd)/chrome.json grafana/k6:master-with-browser run - <script.js
+#
+# You can find an example of a hardened SECCOMP profile in:
+# https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
+docker run --rm -i -e K6_BROWSER_HEADLESS=false -e K6_BROWSER_ARGS='show-property-changed-rects' grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
