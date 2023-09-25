@@ -3,13 +3,6 @@ title: 'setDefaultNavigationTimeout(timeout)'
 excerpt: 'Sets the default navigation timeout in milliseconds.'
 ---
 
-<Blockquote mod="attention">
-
-This feature has **known issues.** For details, refer to
-[#445](https://github.com/grafana/xk6-browser/issues/445).
-
-</Blockquote>
-
 Sets the default maximum navigation timeout for [Page.goto()](https://playwright.dev/docs/api/class-page#page-goto).
 
 | Parameter | Type   | Default                  | Description                  |
