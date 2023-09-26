@@ -3,6 +3,12 @@ title: 'Azure Monitor'
 excerpt: 'How to export metrics from k6 Cloud to Azure Monitor'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated.
+
+</Blockquote>
+
 You can export test result metrics from the k6 Cloud to [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/),
 and use Azure Monitor to store and analyze all your data from your Azure and other environments.
 

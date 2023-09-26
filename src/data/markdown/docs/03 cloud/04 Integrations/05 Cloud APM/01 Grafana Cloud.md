@@ -3,6 +3,12 @@ title: 'Grafana Cloud'
 excerpt: 'How to export metrics from k6 Cloud to Grafana Cloud'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated.
+
+</Blockquote>
+
 With this integration, you can export test result metrics from the k6 Cloud to a Prometheus instance hosted by [Grafana Cloud](https://grafana.com/products/cloud/).
 After that, you can use Grafana to query, visualize, and correlate k6 metrics with all your other metrics.
 

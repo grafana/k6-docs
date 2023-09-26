@@ -3,6 +3,12 @@ title: 'New Relic'
 excerpt: 'How to export metrics from k6 Cloud to New Relic'
 ---
 
+<Blockquote mod="attention" title="">
+
+This feature is being deprecated.
+
+</Blockquote>
+
 With this integration, you can export test result metrics from the k6 Cloud to the [New Relic](https://newrelic.com/) data platform.
 
 > ⭐️  &nbsp;[Cloud APM](/cloud/integrations/cloud-apm/) integrations are available on Pro and Enterprise plans, as well as the annual Team plan and Trial.
