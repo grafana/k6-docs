@@ -5,27 +5,27 @@ excerpt: 'Use the Prometheus remote write output to send test results to any Pro
 
 <ExperimentalBlockquote />
 
-<Blockquote mod="note" title="">
-
-If you want to export cloud results to remote write,
-refer to [Cloud to Prometheus RW](/cloud/integrations/prometheus-remote-write/).
-
-</Blockquote>
-
 Prometheus remote write is a protocol that makes it possible to reliably propagate data in real-time from a sender to a receiver.
-It has a defined [specification](https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit)
-and multiple implementations.
+It has multiple implementations.
 For example, you can store the metrics in [Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver).
 For other implementations, check the [Prometheus Integrations](https://prometheus.io/docs/operating/integrations) guide.
 
 With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
-The output during the `k6 run` execution gets all the generated data points for the [built-in and custom metrics](/using-k6/metrics/).
-It then generates the equivalent Prometheus remote write time series.
+
+
+The output, during the `k6 run` execution, gets all the generated time-series data points for the [k6 metrics](/using-k6/metrics/).
+It then generates the equivalent Prometheus time series and sends them to the Prometheus remote write endpoint.
 
 
 ## Metrics mapping
 
-All k6 metric types are converted into an equivalent Prometheus remote write type:
+All [k6 metric types](/using-k6/metrics/) are converted into an equivalent [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/). 
+The output maps the metrics into time series with Name labels.
+As much as possible, k6 respects the [naming best practices](https://prometheus.io/docs/practices/naming) that the Prometheus project defines:
+
+* All time series are prefixed with the `k6_` namespace.
+* All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
+* Trends and rates have the relative suffixes, to make them more discoverable.
 
 | k6      | Prometheus                | Name label           |
 |---------|---------------------------|----------------------|
@@ -34,16 +34,9 @@ All k6 metric types are converted into an equivalent Prometheus remote write typ
 | Rate    | Gauge                     | `k6_*_rate`          |
 | Trend   | [Counter and Gauges (default)](#counter-and-gauges) or [Native Histogram](#prometheus-native-histogram) | `k6_*_<unit-suffix>` |
 
-The output maps the metrics into time series with Name labels.
-As much as possible, k6 respects the [naming best practices](https://prometheus.io/docs/practices/naming) that the Prometheus project defines:
-
-* All time series are prefixed with the `k6_` namespace.
-* All time series are suffixed with the base unit of the sample value (if k6 knows what the base unit is).
-* Trends and rates have the relative suffixes, to make them more discoverable.
-
 ## Trend metric conversions
 
-This output provides two distinct mechanisms to send [Trend metrics](/using-k6/metrics/) to Prometheus:
+This output provides two distinct mechanisms to send [k6 Trend metrics](/using-k6/metrics/) to Prometheus:
 
 1. [Counter and Gauge metrics](#counter-and-gauges) (default)
 2. [Prometheus Native histogram](#prometheus-native-histogram) 
@@ -55,7 +48,7 @@ Note that k6 aggregates trend metric data before sending it to Prometheus in bot
 - Prometheus stores data in a millisecond precision (`ms`), but k6 metrics collect data points with higher accuracy, nanosecond (`ns`).
 - A load test could generate vast amounts of data points. High-precision raw data could quickly become expensive and complex to scale and is unnecessary when analyzing performance trends.
 
-### Counter and Gauges
+### 1. Counter and Gauges
 
 By default, Prometheus supports [Counter and Gauge Metric types](https://prometheus.io/docs/concepts/metric_types/). Therefore, this option is the default of this output and converts all the k6 `Trend` metrics to Counter and Gauges Prometheus metrics. 
 
@@ -76,80 +69,81 @@ This option provides a configurable solution to represent `Trend` metrics in Pro
 - It is impossible to aggregate some gauge values (especially percentiles).
 - It uses a memory-expensive k6 data structure.
 
-### Prometheus Native histogram
+### 2. Prometheus Native histogram
 
 
-To resolve the previous drawbacks, you can convert k6 trend metrics to high-fidelity histograms using [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram). Each k6 trend metric maps to its respective Prometheus histogram metric: `k6_*`.
+To address the limitations of the previous option, you can convert k6 trend metrics to high-fidelity histograms using [Prometheus Native Histogram](https://prometheus.io/docs/concepts/metric_types/#histogram). 
+
+With this option, each k6 trend metric maps to its corresponding Prometheus histogram metric: `k6_*`. You can then query them using Prometheus histogram functions, such as [histogram_quantile()](https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile).
 
 
 <Blockquote mod="" title="">
 
-To learn the benefits and outcomes of using Histograms, watch [High-resolution Histograms in the Prometheus TSDB](https://www.youtube.com/watch?v=F72Tk8iaWeA).
+🌟 To learn the benefits and outcomes of using Histograms, watch [High-resolution Histograms in Prometheus](https://www.youtube.com/watch?v=F72Tk8iaWeA).
+
+⚠️ Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet. In the future, when Prometheus makes this feature stable, k6 will consider using it as the default conversion method for Trend metrics.
 
 </Blockquote>
-
-Note that Native Histogram is an experimental feature released in Prometheus v2.40.0, and other remote write implementations might not support it yet. In the future, when Prometheus makes this feature stable, k6 will consider using it as the default conversion method for Trend metrics.
-
-The additional settings to use Native Histogram types are:
-
-1. Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus.
-2. Run the k6 test enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true` environment variable.
-
 
 
 ## Send test metrics to a remote write endpoint
 
-To use remote write in Prometheus 2.x:
+To use remote write in Prometheus 2.x, enable the feature flag [--web.enable-remote-write-receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver). For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
 
-- Enable the feature flag [--web.enable-remote-write-receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver). For remote write storage options, refer to the [Prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write).
+1. To send k6 metrics to a **remote write endpoint without native histograms**:
+    - Set up a running remote write endpoint and ensure k6 can reach it.
 
-- Optionally, enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus 2.40.0 or higher to use [Prometheus Native Histogram](#prometheus-native-histogram).
+    - Run your k6 script with the `--out` flag and the URL of the RW endpoint as follows:
+
+      <CodeGroup labels={["Trend stats"]}>
+
+      ```bash
+      K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
+      k6 run -o experimental-prometheus-rw script.js
+      ```
+
+      </CodeGroup>
+2. To send k6 metrics to a **remote write endpoint with native histograms**:
+    - Enable the feature flag [--enable-feature=native-histograms](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) in Prometheus 2.40.0 or higher. Set up a running remote write endpoint and ensure k6 can reach it.
+
+    - Run your k6 script with the `--out` flag, enabling the `K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM` option, and the URL of the RW endpoint as follows:
+
+      <CodeGroup labels={["Native Histogram"]}>
+
+      ```bash
+      K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write \
+      K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
+      k6 run -o experimental-prometheus-rw script.js
+      ```
+
+      </CodeGroup>
 
 
-To send k6 metrics to a remote write endpoint:
-1. Set up a running remote write endpoint with an endpoint that k6 can reach.
-2. Run your k6 script, using the `--out` flag with `experimental-prometheus-rw` as the argument:
+If the remote write endpoint requires authentication, the output supports the HTTP Basic authentication and it can be used with the following command:
 
-  <CodeGroup labels={["Trend stats", "Native Histogram"]}>
+<CodeGroup labels={["Trend stats", "Native Histogram"]}>
 
-  ```bash
-  k6 run -o experimental-prometheus-rw script.js
-  ```
+```bash
+  K6_PROMETHEUS_RW_USERNAME=foo \
+  K6_PROMETHEUS_RW_PASSWORD=bar \
+  ./k6 run script.js -o experimental-prometheus-rw
+```
 
-  ```bash
-  K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true k6 run -o experimental-prometheus-rw script.js
-  ```
+```bash
+  K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
+  K6_PROMETHEUS_RW_USERNAME=foo \
+  K6_PROMETHEUS_RW_PASSWORD=bar \
+  ./k6 run script.js -o experimental-prometheus-rw
+```
 
-  </CodeGroup>
+</CodeGroup>
 
-    If the remote write endpoint requires authentication, the output supports the HTTP Basic authentication and it can be used with the following command:
 
-  <CodeGroup labels={["Trend stats", "Native Histogram"]}>
-
-  ```bash
-    K6_PROMETHEUS_RW_USERNAME=foo \
-    K6_PROMETHEUS_RW_PASSWORD=bar \
-    ./k6 run script.js -o experimental-prometheus-rw
-  ```
-
-  ```bash
-    K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \
-    K6_PROMETHEUS_RW_USERNAME=foo \
-    K6_PROMETHEUS_RW_PASSWORD=bar \
-    ./k6 run script.js -o experimental-prometheus-rw
-  ```
-
-  </CodeGroup>
-
- 
     All the time series have a [`k6_` prefix](#metrics-mapping).
     In the Metric Explorer UI in Grafana, it looks something  like this:
 
     ![k6 metrics as seen in the Prometheus UI](images/Prometheus/prom-metric-explorer.png)
 
-
-
-The [`xk6-output-prometheus-remote` extension](https://github.com/grafana/xk6-output-prometheus-remote) repository has some docker compose examples. Feel free to request more authentication methods or provide your experience in the [issue tracker](https://github.com/grafana/xk6-output-prometheus-remote/issues).
 
 ## Options
 
