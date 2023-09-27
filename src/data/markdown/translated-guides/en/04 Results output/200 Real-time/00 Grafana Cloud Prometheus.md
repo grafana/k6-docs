@@ -53,15 +53,39 @@ K6_PROMETHEUS_RW_SERVER_URL=Your_REMOTE_WRITE_ENDPOINT \
 k6 run -o experimental-prometheus-rw script.js
 ```
 
-## Explore k6 metrics
+## Visualize test results 
 
-To explore k6 metrics in Grafana Cloud:
-1. Click on the Explore icon on the menu bar.
-1. Choose the Prometheus data source from the dropdown in the top left.
-1. In the query field, query k6 metrics to explore your testing results.
+To visualize test results with Grafana, you can import the [k6 Prometheus dashboard by Grafana k6](https://grafana.com/grafana/dashboards/19665-k6-prometheus/).
+
+On the Dashboards UI:
+
+- Click `New` and select `Import`.
+- Paste the Grafana URL or ID of the dashboard, and click `Load`.
+- Select the Prometheus data source, and click `Import`.
+
+![k6 Prometheus Dashboard](./images/Prometheus/k6-prometheus-dashboard-part1.png)
+
+Optionally, you can set the `testid` tag as a [wide test tag](https://k6.io/docs/using-k6/tags-and-groups/#test-wide-tags) to filter results of specific test runs on this dashboard or in PromQL queries. `testid` can be any unique string that allows you to clearly identify the test run. 
+
+<CodeGroup labels={["Tag metrics with testid"]}>
+
+```bash
+K6_PROMETHEUS_RW_USERNAME=Your_Username \
+K6_PROMETHEUS_RW_PASSWORD=Your_API_KEY \
+K6_PROMETHEUS_RW_SERVER_URL=Your_REMOTE_WRITE_ENDPOINT \
+k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> script.js
+```
+
+</CodeGroup>
+
+Additionally, you can also utilize the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) to query k6 time series, design your visualization panels, and add them to any of your existing dashboards.
 
 ![Explore k6 metrics in Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics_from_extension.png)
 
-## Read more
+All the k6 time series have a **k6_** prefix. 
+For more details, refer to the documentation on the [mapping of k6 metrics with Prometheus metrics](/results-output/real-time/prometheus-remote-write/#metrics-mapping). 
 
-- [K6 makes performance testing easy with Prometheus and Grafana in Docker](https://medium.com/@rody.bothe/turning-data-into-understandable-insights-with-k6-load-testing-fa24e326e221)
+Please be informed about the default [Trend metric conversion](/results-output/real-time/prometheus-remote-write/#trend-metric-conversions) process and understand the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/results-output/real-time/prometheus-remote-write/#options) allows you to convert trend metrics to multiple Prometheus time series.
+
+
+
