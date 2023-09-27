@@ -50,7 +50,7 @@ Note that providing an `executor` and setting the `browser` scenario option's `t
 
     try {
       await page.goto('https://test.k6.io/');
-      page.screenshot({ path: 'screenshot.png' });
+      page.screenshot({ path: 'screenshots/screenshot.png' });
     } finally {
       page.close();
     }
@@ -90,7 +90,7 @@ $ k6 run script.js
 #
 # You can find an example of a hardened SECCOMP profile in:
 # https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
-docker run --rm -i grafana/k6:master-with-browser run - <script.js
+docker run --rm -i --cap-add=SYS_ADMIN -v $(pwd):/home/k6/screenshots grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
@@ -122,7 +122,7 @@ $ K6_BROWSER_HEADLESS=false k6 run script.js
 #
 # You can find an example of a hardened SECCOMP profile in:
 # https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
-docker run --rm -i -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
+docker run --rm -i --cap-add=SYS_ADMIN -v $(pwd):/home/k6/screenshots -e K6_BROWSER_HEADLESS=false grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
@@ -184,7 +184,7 @@ export default async function () {
     page.locator('input[name="login"]').type('admin');
     page.locator('input[name="password"]').type('123');
 
-    page.screenshot({ path: 'screenshot.png' });
+    page.screenshot({ path: 'screenshots/screenshot.png' });
   } finally {
     page.close();
   }
