@@ -65,7 +65,7 @@ On the Dashboards UI:
 
 ![k6 Prometheus Dashboard](./images/Prometheus/k6-prometheus-dashboard-part1.png)
 
-Optionally, you can set the `testid` tag as a [wide test tag](https://k6.io/docs/using-k6/tags-and-groups/#test-wide-tags) to filter results of specific test runs on this dashboard or in PromQL queries. `testid` can be any unique string that allows you to clearly identify the test run. 
+Optionally, when running the test, you can set the `testid` tag as a [wide test tag](https://k6.io/docs/using-k6/tags-and-groups/#test-wide-tags) to filter results of a particular test run on this dashboard (or in PromQL queries). `testid` can be any unique string that allows you to identify the test run. 
 
 <CodeGroup labels={["Tag metrics with testid"]}>
 
@@ -85,7 +85,10 @@ Additionally, you can also utilize the [Explore UI](https://grafana.com/docs/gra
 All the k6 time series have a **k6_** prefix. 
 For more details, refer to the documentation on the [mapping of k6 metrics with Prometheus metrics](/results-output/real-time/prometheus-remote-write/#metrics-mapping). 
 
-Please be informed about the default [Trend metric conversion](/results-output/real-time/prometheus-remote-write/#trend-metric-conversions) process and understand the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/results-output/real-time/prometheus-remote-write/#options) allows you to convert trend metrics to multiple Prometheus time series.
+Please be informed about the default [Trend metric conversion](/results-output/real-time/prometheus-remote-write/#trend-metric-conversions) process and understand the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/results-output/real-time/prometheus-remote-write/#options) allows you to convert trend metrics to multiple Prometheus time series. For instance, `K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),max,min` transforms each k6 trend metric into four Prometheus metrics as follows:
 
-
+- `k6_*_p95`
+- `k6_*_p99`
+- `k6_*_max`
+- `k6_*_min`
 
