@@ -13,6 +13,9 @@ The following examples take a set of arguments, shown in the function documentat
 
 <CodeGroup labels={["azure.js"]} lineNumbers={[true]}>
 
+
+
+
 ```javascript
 import http from 'k6/http';
 
@@ -62,18 +65,43 @@ The following example shows how to authenticate against Azure B2C using the [Cli
 
 This example is build after a JMeter eyample: [Load Test Azure AD B2C Ciam Flows using Azure Load Testing Service](https://github.com/azure-ad-b2c/load-tests)
 
+For trying out this script, you need to do folow the instructions:
+
+1. [Set up your own tenant for Azure B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant)
+    * Note down the name of the tenant name into the settings section of the script.
+2. [Register a web application](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga)
+    * We need to register a single page application, with the redirect url of: https://jwt.ms. This is needed for the flow to get a token.
+    * After the creation we can get the Application (client) ID, and the Directory (tenant) ID.
+    Note them down into the settings section of the script.
+3. [Create user flow so that you can sign up](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows)
+    * Note down the name of the user flow into the settings section of the script.
+    * Test the user flow, create a user, we can use to test the script with.
+
+If you missed to note down any of the information, you can find then in the B2C settings in the Azure portal.
+
+Tenant Id and Client Id under App registrations, all apps and select the created single page application.
+
+Tenant Name is visible under Azure AD B2C overview, it is the first part of the domain name.
+
+
+Some troubles I had during the creation of the script:
+
+* In the self assert call the required data can have different names.
+Instead of email it could be Sign InName.
+If you followed the tutorial, you should be fine.
+
+
 <CodeGroup labels={["azure-b2c.js"]} lineNumbers={[true]}>
 
 ```javascript
 import http from "k6/http";
 import crypto from "k6/crypto";
-import encoding from "k6/encoding";
 import { randomString } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
 
 const B2cGraphSettings = {
   B2C: {
     client_id: "", // Application ID in Azure
-    policy_name: "{policy_name}",
+    user_flow_name: "",
     tenant_id: "", // Directory ID in Azure
     tenant_name: "",
     scope: "openid",
@@ -89,7 +117,7 @@ const B2cGraphSettings = {
  * @return {string} id_token
  */
 export function GetB2cIdToken(username, password) {
-  var state = GetState();
+  const state = GetState();
   SelfAsserted(state, username, password);
   const code = CombinedSigninAndSignup(state);
   return GetToken(code, state.codeVerifier);
@@ -113,7 +141,7 @@ const GetToken = (code, codeVerifier) => {
   const url =
     `https://${B2cGraphSettings.B2C.tenant_name}.b2clogin.com/${B2cGraphSettings.B2C.tenant_id}` +
     `/oauth2/v2.0/token` +
-    `?p=${B2cGraphSettings.B2C.policy_name}` +
+    `?p=${B2cGraphSettings.B2C.user_flow_name}` +
     `&client_id=${B2cGraphSettings.B2C.client_id}` +
     `&grant_type=authorization_code` +
     `&scope=${B2cGraphSettings.B2C.scope}` +
@@ -138,16 +166,13 @@ const GetToken = (code, codeVerifier) => {
  * @returns {string} code
  */
 const CombinedSigninAndSignup = (state) => {
-  const diags =
-    '{"pageViewId":"4c4fb67d-8e6e-40c6-96c5-ad6a892f75d1","pageId":"CombinedSigninAndSignup","trace":[{"ac":"T005","acST":1647878090,"acD":1},{"ac":"T021 - URL:https://login.lagomars.com/static/tenant/templates/AzureBlue/unified.cshtml?slice=001-000&dc=SAN","acST":1647878090,"acD":1093},{"ac":"T029","acST":1647878091,"acD":5},{"ac":"T019","acST":1647878091,"acD":8},{"ac":"T004","acST":1647878091,"acD":2},{"ac":"T003","acST":1647878091,"acD":2},{"ac":"T035","acST":1647878092,"acD":0},{"ac":"T030Online","acST":1647878092,"acD":0},{"ac":"T002","acST":1647878097,"acD":0},{"ac":"T018T010","acST":1647878095,"acD":1605}]}';
   const url =
-    `https://${B2cGraphSettings.B2C.tenant_name}.b2clogin.com/${B2cGraphSettings.B2C.tenant_id}` +
-    `/${B2cGraphSettings.B2C.policy_name}/api/CombinedSigninAndSignup/confirmed` +
+    `https://${B2cGraphSettings.B2C.tenant_name}.b2clogin.com/${B2cGraphSettings.B2C.tenant_name}.onmicrosoft.com` +
+    `/${B2cGraphSettings.B2C.user_flow_name}/api/CombinedSigninAndSignup/confirmed` +
     `?csrf_token=${state.csrfToken}` +
     `&rememberMe=false` +
     `&tx=StateProperties=${state.stateProperty}` +
-    `&p=B2C_1A_signin_rest_api_validation` +
-    `&diags=${encoding.b64encode(diags)}`;
+    `&p=${B2cGraphSettings.B2C.user_flow_name}`;
 
   const response = http.get(url, "", {
     tags: {
@@ -168,11 +193,11 @@ const CombinedSigninAndSignup = (state) => {
 const SelfAsserted = (state, username, password) => {
   const url =
     `https://${B2cGraphSettings.B2C.tenant_name}.b2clogin.com/${B2cGraphSettings.B2C.tenant_id}` +
-    `/${B2cGraphSettings.B2C.policy_name}/SelfAsserted` +
+    `/${B2cGraphSettings.B2C.user_flow_name}/SelfAsserted` +
     `?tx=StateProperties=${state.stateProperty}` +
-    `&p=${B2cGraphSettings.B2C.policy_name}` +
+    `&p=${B2cGraphSettings.B2C.user_flow_name}` +
     `&request_type=RESPONSE` +
-    `&signInName=${username}` +
+    `&email=${username}` +
     `&password=${password}`;
 
   const params = {
@@ -192,13 +217,13 @@ const SelfAsserted = (state, username, password) => {
  * @returns {b2cStateProperties} b2cState
  */
 const GetState = () => {
-  var nonce = randomString(50);
-  var challenge = crypto.sha256(nonce.toString(), "base64rawurl");
+  const nonce = randomString(50);
+  const challenge = crypto.sha256(nonce.toString(), "base64rawurl");
 
   const url =
     `https://${B2cGraphSettings.B2C.tenant_name}.b2clogin.com` +
     `/${B2cGraphSettings.B2C.tenant_id}/oauth2/v2.0/authorize?` +
-    `p=${B2cGraphSettings.B2C.policy_name}` +
+    `p=${B2cGraphSettings.B2C.user_flow_name}` +
     `&client_id=${B2cGraphSettings.B2C.client_id}` +
     `&nonce=${nonce}` +
     `&redirect_uri=${B2cGraphSettings.B2C.redirect_url}` +
@@ -218,7 +243,7 @@ const GetState = () => {
   const vuJar = http.cookieJar();
   const responseCookies = vuJar.cookiesForURL(response.url);
 
-  var b2cState = {};
+  const b2cState = {};
   b2cState.codeVerifier = nonce;
   b2cState.csrfToken = responseCookies["x-ms-cpim-csrf"][0];
   b2cState.stateProperty = response.body.match('.*StateProperties=([^"]*)')[1];
@@ -240,10 +265,12 @@ export const GetAuthorizationHeaderForUser = (user) => {
     },
   };
 };
+
+export default function () {
+  const token = GetB2cIdToken("zimmi.94@live.de", "20B2cTest23");
+  console.log(token);
+}
 ```
-
-
-
 </CodeGroup>
 
 ### Okta
