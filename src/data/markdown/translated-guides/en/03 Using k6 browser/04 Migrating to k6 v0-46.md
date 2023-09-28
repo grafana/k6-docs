@@ -173,7 +173,7 @@ Before:
 
 ```javascript
 export default async function () {
-    const remoteURL = 'your remote URL here'
+    const remoteURL = 'REMOTE_URL'
     const browser = chromium.connect(wsURL);
     const page = browser.newPage();
 }
@@ -186,7 +186,7 @@ After:
 <CodeGroup labels={["Bash", "Docker", "Windows: CMD", "Windows: PowerShell"]} lineNumbers={[false]}>
 
 ```bash
-$ K6_BROWSER_WS_URL='your remote URL here' k6 run script.js
+$ K6_BROWSER_WS_URL='REMOTE_URL' k6 run script.js
 ```
 
 ```bash
@@ -200,15 +200,15 @@ $ K6_BROWSER_WS_URL='your remote URL here' k6 run script.js
 #
 # You can find an example of a hardened SECCOMP profile in:
 # https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json.
-docker run --rm -i -e K6_BROWSER_WS_URL='your remote URL here' grafana/k6:master-with-browser run - <script.js
+docker run --rm -i -e K6_BROWSER_WS_URL='REMOTE_URL' grafana/k6:master-with-browser run - <script.js
 ```
 
 ```bash
-C:\k6> set "K6_BROWSER_WS_URL='your remote URL here'" && set "K6_BROWSER_TIMEOUT='60s' && k6 run script.js
+C:\k6> set "K6_BROWSER_WS_URL='REMOTE_URL'" && set "K6_BROWSER_TIMEOUT='60s' && k6 run script.js
 ```
 
 ```bash
-PS C:\k6> $env:K6_BROWSER_WS_URL='your remote URL here' ; k6 run script.js
+PS C:\k6> $env:K6_BROWSER_WS_URL='REMOTE_URL' ; k6 run script.js
 ```
 
 </CodeGroup>
