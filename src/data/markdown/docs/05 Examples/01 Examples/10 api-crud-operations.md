@@ -12,7 +12,7 @@ CRUD refers to the basic operations in a database: Create, Read, Update, and Del
 - _Update_: HTTP `PUT`or `PATCH` to change an existing resource.
 - _Delete_: HTTP `DELETE` to remove a resource.
 
-This document has two examples, one that uses the core k6 APIs (`k6/http` and `checks`) and another to show the more recent APIs (`httpx` and `k6chaijs`).
+This document has two examples, one that uses the core k6 APIs (`k6/http` and `checks`) and another to show the more recent APIs ([`httpx`](/javascript-api/jslib/httpx/) and [`k6chaijs`](/javascript-api/jslib/k6chaijs/)).
 
 ## Test steps
 
@@ -24,6 +24,8 @@ The steps implemented in the [VU stage](/using-k6/test-lifecycle/#the-vu-stage) 
 2. _Read_ the list of "crocs".
 3. _Update_ the name of the "croc" and _read_ the "croc" to confirm the update operation.
 4. _Delete_ the "croc" resource.
+
+## Core k6 APIs example
 
 <CodeGroup labels={["api-crud-operations-k6-core-apis.js"]} lineNumbers={[true]}>
 
@@ -142,6 +144,8 @@ export default (authToken) => {
 ```
 
 </CodeGroup>
+
+## httpx and k6chaijs example
 
 <CodeGroup labels={["api-crud-operations-k6-new-apis.js"]} lineNumbers={[true]}>
 
