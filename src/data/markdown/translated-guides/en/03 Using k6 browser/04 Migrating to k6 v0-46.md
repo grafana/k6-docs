@@ -174,7 +174,7 @@ Before:
 ```javascript
 export default async function () {
     const remoteURL = 'REMOTE_URL'
-    const browser = chromium.connect(wsURL);
+    const browser = chromium.connect(remoteURL);
     const page = browser.newPage();
 }
 ```
