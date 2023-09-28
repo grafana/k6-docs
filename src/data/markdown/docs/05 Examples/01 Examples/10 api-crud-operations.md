@@ -32,14 +32,6 @@ import http from 'k6/http';
 import { check, group, fail } from 'k6';
 
 export const options = {
-    thresholds: {
-        checks: [{
-            threshold: 'rate == 1.00', abortOnFail: true,
-        }],
-        'http_req_duration': ['p(90)<25000', 'p(95)<30000'],
-        'http_req_duration{name:Create}': ['avg<15000', 'max<25000'],
-    },
-    // for the example, let's run only 1 VU with 1 iteration
     vus: 1,
     iterations: 1
 };
@@ -159,13 +151,6 @@ import { Httpx } from 'https://jslib.k6.io/httpx/0.1.0/index.js';
 import { randomIntBetween, randomItem, randomString } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
 
 export const options = {
-    thresholds: {
-        checks: [{
-            threshold: 'rate == 1.00', abortOnFail: true,
-        }],
-        'http_req_duration': ['p(90)<25000', 'p(95)<30000'],
-        'http_req_duration{name:Create}': ['avg<15000', 'max<25000'],
-    },
     // for the example, let's run only 1 VU with 1 iteration
     vus: 1,
     iterations: 1,
