@@ -70,10 +70,10 @@ Optionally, when running the test, you can set the `testid` tag as a [wide test 
 <CodeGroup labels={["Tag metrics with testid"]}>
 
 ```bash
-K6_PROMETHEUS_RW_USERNAME=Your_Username \
-K6_PROMETHEUS_RW_PASSWORD=Your_API_KEY \
-K6_PROMETHEUS_RW_SERVER_URL=Your_REMOTE_WRITE_ENDPOINT \
-k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> script.js
+K6_PROMETHEUS_RW_USERNAME=USERNAME \
+K6_PROMETHEUS_RW_PASSWORD=API_KEY \
+K6_PROMETHEUS_RW_SERVER_URL=REMOTE_WRITE_ENDPOINT \
+k6 run -o experimental-prometheus-rw --tag testid=TEST_ID script.js
 ```
 
 </CodeGroup>
