@@ -5,11 +5,11 @@ description: 'SecretsManagerClient allows interacting with AWS secrets stored in
 excerpt: 'SecretsManagerClient allows interacting with AWS secrets stored in Secrets Manager'
 ---
 
-<BlockingAwsBlockquote />
+`SecretsManagerClient` interacts with the AWS Secrets Manager.
 
-SecretsManagerClient allows interacting with secrets stored in AWS's Secrets Manager. Namely, it allows the user to list, download, create, modify and delete secrets. Note that the SecretsManagerClient operations are blocking, and we recommend reserving their usage to the [`setup`](/using-k6/test-lifecycle/) and [`teardown`](/using-k6/test-lifecycle/) functions as much as possible.
+With it, you can perform several operations such as listing, creating and downloading secrets owned by the authenticated user. For a full list of supported operations, see [Methods](#methods).
 
-SecretsManagerClient is included in both the dedicated jslib `secrets-manager.js` bundle, and the `aws.js` one, containing all the services clients.
+`SecretsManagerClient` is included in both the dedicated jslib `secrets-manager.js` bundle, and the `aws.js` one, containing all the services clients.
 
 ### Methods
 
@@ -37,7 +37,7 @@ S3 Client methods will throw errors in case of failure.
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.7.2/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -49,9 +49,9 @@ const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 const testSecretValue = 'jslib-test-value';
 
-export function setup() {
+export async function setup() {
   // Let's make sure our test secret is created
-  const testSecret = secretsManager.createSecret(
+  const testSecret = await secretsManager.createSecret(
     testSecretName,
     testSecretValue,
     'this is a test secret, delete me.'
@@ -59,19 +59,19 @@ export function setup() {
 
   // List the secrets the AWS authentication configuration
   // gives us access to, and verify the creation was successful.
-  const secrets = secretsManager.listSecrets();
+  const secrets = await secretsManager.listSecrets();
   if (!secrets.filter((s) => s.name === testSecret.name).length == 0) {
     exec.test.abort('test secret not found');
   }
 }
 
-export default function () {
+export default async function () {
   // Knnowing that we know the secret exist, let's update its value
   const newTestSecretValue = 'new-test-value';
-  secretsManager.putSecretValue(testSecretName, newTestSecretValue);
+  await secretsManager.putSecretValue(testSecretName, newTestSecretValue);
 
   // Let's get its value and verify it was indeed updated
-  const updatedSecret = secretsManager.getSecret(testSecretName);
+  const updatedSecret = await secretsManager.getSecret(testSecretName);
   if (updatedSecret.secret !== newTestSecretValue) {
     exec.test.abort('unable to update test secret');
   }
@@ -79,9 +79,9 @@ export default function () {
   // Let's now use our secret in the context of our load test...
 }
 
-export function teardown() {
+export async function teardown() {
   // Finally, let's clean after ourselves and delete our test secret
-  secretsManager.deleteSecret(testSecretName, { noRecovery: true });
+  await secretsManager.deleteSecret(testSecretName, { noRecovery: true });
 }
 ```
 

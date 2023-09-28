@@ -6,18 +6,26 @@ excerpt: 'S3Client.putObject uploads an object to a bucket'
 
 `S3Client.putObject` uploads an object to a bucket.
 
+### Parameters
+
 | Parameter  | Type                  | Description                                  |
 | :--------- | :-------------------- | :------------------------------------------- |
 | bucketName | string                | Name of the bucket to upload the object to.  |
 | objectKey  | string                | Name of the uploaded object.                 |
 | data       | string \| ArrayBuffer | Content of the object to upload.             |
 
+### Returns
+
+| Type            | Description                                                                 |
+| :-------------- | :-------------------------------------------------------------------------- |
+| `Promise<void>` | A Promise that fulfills when the object has been uploaded to the S3 bucket. |
+
 ### Example
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.2/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.9.0/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -30,12 +38,12 @@ const testBucketName = 'test-jslib-aws';
 const testFileKey = 'bonjour.txt';
 const testFile = open('./bonjour.txt', 'r');
 
-export default function () {
+export default async function () {
   // Let's upload our test file to the bucket
-  s3.putObject(testBucketName, testFileKey, testFile);
+  await s3.putObject(testBucketName, testFileKey, testFile);
 
   // And let's redownload it to verify it's correct
-  const obj = s3.getObject(testBucketName, testFileKey);
+  const obj = await s3.getObject(testBucketName, testFileKey);
   console.log(JSON.stringify(obj));
 }
 ```

@@ -75,17 +75,18 @@ and k6 would exit with a non-zero exit code.
 To use a threshold, follow these steps:
 
 1. In the `thresholds` property of the `options` object, set a key using the name of the metric you want the threshold for:
-  ```
+  ```javascript
   export const options = {
     thresholds: {
-    ...
+      /* ... */
+    }
   }
   ```
 2. Define at least one threshold expression. You can do this in two ways:
     - The short format puts all threshold expressions as strings in an array.
     - The long format puts each threshold in an object, with extra properties to [abort on failure](#abort).
 
-  ```
+  ```javascript
   export const options = {
     thresholds: {
       //short format
@@ -475,7 +476,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
 
   check(res, {
     'status is 500': (r) => r.status == 500,
@@ -508,12 +509,12 @@ export const options = {
 export default function () {
   let res;
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(res, {
     'status is 500': (r) => r.status == 500,
   });
 
-  res = http.get('http://httpbin.test.k6.io');
+  res = http.get('https://httpbin.test.k6.io');
   check(
     res,
     {
@@ -527,15 +528,3 @@ export default function () {
 ```
 
 </CodeGroup>
-
-## Thresholds in k6 Cloud Results
-
-In [k6 Cloud Results](/cloud/analyzing-results/overview) `Thresholds` are available in
-their [own tab](/cloud/analyzing-results/thresholds) for analysis.
-
-You can also see how the underlying metric compares to a specific threshold throughout the test.
-The threshold can be added to the analysis tab for further comparison against other metrics.
-
-![k6 Cloud Thresholds Tab](images/Thresholds/cloud-insights-thresholds-tab.png)
-
-Learn more about analyzing results in the [k6 Cloud Results docs](/cloud/analyzing-results/overview).

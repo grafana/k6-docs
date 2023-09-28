@@ -10,7 +10,7 @@ excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in 
 
 | Type                                                        | Description                                                               |
 | :---------------------------------------------------------- | :------------------------------------------------------------------------ |
-| [`SystemsManagerParameter[]`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) | An array of [`SystemsManagerParameter`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) objects. |
+| [`Promise<SystemsManagerParameter[]>`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) | A Promise that fulfills with an array of [`SystemsManagerParameter`](/javascript-api/jslib/aws/systemsmanagerclient/systemsmanagerparameter/) objects. |
 
 ### Example
 
@@ -19,7 +19,7 @@ excerpt: "SystemsManagerClient.getParameter gets a Systems Manager parameter in 
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.7.2/ssm.js';
+import { AWSConfig, SystemsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/ssm.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -35,19 +35,19 @@ const testParameterSecretName = 'jslib-test-parameter-secret';
 // this value was created with --type SecureString
 const testParameterSecretValue = 'jslib-test-secret-value';
 
-export default function () {
+export default async function () {
   // Currently the parameter needs to be created before hand
 
   // Let's get its value
   // getParameter returns a parameter object: e.g. {name: string, value: string...}
-  const parameter = systemsManager.getParameter(testParameterName);
+  const parameter = await systemsManager.getParameter(testParameterName);
   if (parameter.value !== testParameterValue) {
     exec.test.abort('test parameter not found');
   }
 
   // Let's get the secret value with decryption
   // destructure the parameter object to get to the values you want
-  const { value: encryptedParameterValue } = systemsManager.getParameter(
+  const { value: encryptedParameterValue } = await systemsManager.getParameter(
     testParameterSecretName,
     true
   );

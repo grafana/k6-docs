@@ -21,7 +21,7 @@ On this page, read about how to:
 ## Before you start
 
 To run tests on k6 Cloud, you to need to:
-- [ ] Have a k6 Cloud account. If you don't have one, [sign up](https://app.k6.io/account/register) and get 50 cloud tests with the Free Trial.
+- [ ] Have a k6 Cloud account.
 - [ ] [Install k6](/get-started/installation) on your local machine:
 
 ## Run test on the CLI

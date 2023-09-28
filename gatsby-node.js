@@ -193,6 +193,13 @@ const topLevelLinks = [
   {
     label: 'Cloud Docs',
     to: '/cloud/',
+    submenu: [
+      {
+        label: 'Grafana Cloud k6',
+        to: 'https://grafana.com/docs/grafana-cloud/k6',
+      },
+      { label: 'k6 Cloud', to: `/cloud/` },
+    ],
   },
   {
     label: 'Extensions',
@@ -304,6 +311,7 @@ const getExtensionsPageSidebar = (sidebarTree) => {
 };
 
 function getSupplementaryPagesProps({
+  nodesGuides,
   reporter,
   topLevelNames,
   getSidebar,
@@ -371,6 +379,13 @@ function getSupplementaryPagesProps({
 
   const stubGuidesPagesProps = SUPPORTED_LOCALES.flatMap((locale) =>
     childrenToList(getGuidesSidebar(locale).children).map(({ name, meta }) => {
+      const remarkNode = nodesGuides.find(
+        (node) =>
+          node.name.toLowerCase().includes(meta.title.toLowerCase()) &&
+          node.relativeDirectory === 'markdown/translated-guides/en',
+      );
+      let extendedRemarkNode = null;
+
       const path = `${locale}/${meta.title}`;
       const breadcrumbs = compose(
         buildBreadcrumbs,
@@ -391,6 +406,20 @@ function getSupplementaryPagesProps({
         }
       });
 
+      if (remarkNode) {
+        const { relativeDirectory } = remarkNode;
+
+        extendedRemarkNode = {
+          ...remarkNode.children[0],
+          frontmatter: {
+            ...remarkNode.children[0].frontmatter,
+            fileOrigin: encodeURI(
+              `https://github.com/grafana/k6-docs/blob/main/src/data/${relativeDirectory}/${name}.md`,
+            ),
+          },
+        };
+      }
+
       return {
         path: compose(
           removeEnPrefix,
@@ -407,6 +436,7 @@ function getSupplementaryPagesProps({
           ),
           title: meta.title,
           navLinks: topLevelLinks,
+          remarkNode: extendedRemarkNode,
           directChildren: getGuidesSidebar(locale).children[name].children,
           locale,
           translations: pageTranslations,
@@ -644,7 +674,7 @@ function getDocPagesProps({
         slug = `javascript-api/${slug}`;
         if (slug.includes('xk6-disruptor/get-started/welcome')) {
           // make the section root out of the welcome page
-          slug = `javascript-api/xk6-disruptor/`;
+          slug = `/javascript-api/xk6-disruptor/`;
         }
 
         replacePathsInSidebarTree(
@@ -1029,7 +1059,7 @@ async function fetchGuidesPagesData(graphql) {
                   slug
                   head_title
                   excerpt
-
+                  robots
                   redirect
                   redirectTarget
                   hideFromSidebar
@@ -1146,6 +1176,7 @@ async function createDocPages({
         pathCollisionDetectorInstance,
       }),
       getSupplementaryPagesProps({
+        nodesGuides,
         topLevelNames,
         getSidebar,
         getGuidesSidebar,
@@ -1177,17 +1208,12 @@ const createRedirects = ({ actions }) => {
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/cloud/cloud-faq/calculating-virtual-uses-with-google-analytics',
-    toPath: 'https://k6.io/blog/monthly-visits-concurrent-users',
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: '/getting-started/community/',
+    fromPath: '/getting-started/community',
     toPath: 'https://k6.io/community/',
     isPermanent: true,
   });
   createRedirect({
-    fromPath: '/es/empezando/comunidad/',
+    fromPath: '/es/empezando/comunidad',
     toPath: 'https://k6.io/community/',
     isPermanent: true,
   });
@@ -1281,31 +1307,31 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/cloud/analyzing-results/thresholds-tab/',
-    toPath: '/cloud/analyzing-results/thresholds',
+    toPath: '/cloud/analyzing-results/thresholds/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/cloud/analyzing-results/checks-tab/',
-    toPath: '/cloud/analyzing-results/checks',
+    toPath: '/cloud/analyzing-results/checks/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/cloud/analyzing-results/http-tab/',
-    toPath: '/cloud/analyzing-results/http',
+    toPath: '/cloud/analyzing-results/http/',
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: '/cloud/analyzing-results/performance-trending/',
-    toPath: '/cloud/analyzing-results/test-comparison',
+    toPath: '/cloud/analyzing-results/test-comparison/',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/cloud/billing-user-menu/billing',
-    toPath: '/cloud/your-plan/billing',
+    fromPath: '/cloud/billing-user-menu/billing/',
+    toPath: '/cloud/your-plan/billing/',
     isPermanent: true,
   });
 
@@ -1335,7 +1361,15 @@ const createRedirects = ({ actions }) => {
 
   createRedirect({
     fromPath: '/cloud/cloud-faq/private-load-zones/',
-    toPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/private-load-zones/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripting-extras/load-zones/',
     isPermanent: true,
   });
 
@@ -1530,26 +1564,20 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/using-k6/test-life-cycle',
-    toPath: '/using-k6/test-lifecycle/',
-    isPermanent: true,
-  });
-
-  createRedirect({
     fromPath: '/using-k6/test-life-cycle/',
     toPath: '/using-k6/test-lifecycle/',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/using-k6/scenarios/arrival-rate',
-    toPath: '/using-k6/scenarios/concepts/open-vs-closed',
+    fromPath: '/using-k6/scenarios/arrival-rate/',
+    toPath: '/using-k6/scenarios/concepts/open-vs-closed/',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/using-k6/scenarios/graceful-stop',
-    toPath: '/using-k6/scenarios/concepts/graceful-stop',
+    fromPath: '/using-k6/scenarios/graceful-stop/',
+    toPath: '/using-k6/scenarios/concepts/graceful-stop/',
     isPermanent: true,
   });
 
@@ -1574,13 +1602,13 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
-    fromPath: '/test-types/introduction',
+    fromPath: '/test-types/introduction/',
     toPath: '/test-types/load-test-types/',
     isPermanent: true,
   });
 
   createRedirect({
-    fromPath: '/results-output/real-time/grafana-cloud',
+    fromPath: '/results-output/real-time/grafana-cloud/',
     toPath: '/results-output/real-time/grafana-cloud-prometheus/',
     isPermanent: true,
   });
@@ -1610,103 +1638,159 @@ const createRedirects = ({ actions }) => {
   });
 
   createRedirect({
+    fromPath: '/test-authoring/recording-a-session/browser-recorder/',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/creating-and-running-a-test/recording-a-test-script/',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-browser-recorder/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6/session-recording-har-support/',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-har-converter/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-authoring/recording-a-session/har-converter/',
+    toPath:
+      '/test-authoring/create-tests-from-recordings/using-the-har-converter/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/test-authoring/recording-a-session/',
+    toPath: '/test-authoring/create-tests-from-recordings/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/cloud/cloud-reference/cloud-rest-api/',
+    toPath:
+      'https://grafana.com/docs/grafana-cloud/k6/reference/cloud-rest-api/',
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: '/using-k6-browser/selecting-elements/',
+    toPath: '/using-k6-browser/recommended-practices/selecting-elements/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/using-k6-browser/examples/page-object-model/',
+    toPath: '/using-k6-browser/recommended-practices/page-object-model/',
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: '/es/guias-de-prueba/automatizacion-de-pruebas-de-rendimiento/',
+    toPath: '/testing-guides/automated-performance-testing/',
+    isPermanent: true,
+  });
+  createRedirect({
     fromPath: '/examples/advanced-api-flow/',
     toPath: '/examples/api-crud-operations/',
     isPermanent: true,
   });
 
+
+
   const redirects = {
-    '/javascript-api/k6-http/cookiejar-k6-http':
+    '/javascript-api/k6-http/cookiejar-k6-http/':
       '/javascript-api/k6-http/cookiejar/',
-    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url':
+    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-cookiesforurl-url/':
       '/javascript-api/k6-http/cookiejar/cookiejar-cookiesforurl-url/',
-    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options':
+    '/javascript-api/k6-http/cookiejar-k6-http/cookiejar-set-name-value-options/':
       '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options/',
-    '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options':
+    '/javascript-api/k6-http/cookiejar/cookiejar-set-name-value-options/':
       '/javascript-api/k6-http/cookiejar/cookiejar-set-url-name-value-options/',
-    '/javascript-api/k6-http/filedata-k6-http':
+    '/javascript-api/k6-http/filedata-k6-http/':
       '/javascript-api/k6-http/filedata/',
-    '/javascript-api/k6-http/params-k6-http': '/javascript-api/k6-http/params/',
-    '/javascript-api/k6-http/response-k6-http':
+    '/javascript-api/k6-http/params-k6-http/':
+      '/javascript-api/k6-http/params/',
+    '/javascript-api/k6-http/response-k6-http/':
       '/javascript-api/k6-http/response/',
-    '/javascript-api/k6-http/response-k6-http/response-clicklink-params':
+    '/javascript-api/k6-http/response-k6-http/response-clicklink-params/':
       '/javascript-api/k6-http/response/response-clicklink-params/',
-    '/javascript-api/k6-http/response-k6-http/response-html':
+    '/javascript-api/k6-http/response-k6-http/response-html/':
       '/javascript-api/k6-http/response/response-html/',
-    '/javascript-api/k6-http/response-k6-http/response-json-selector':
+    '/javascript-api/k6-http/response-k6-http/response-json-selector/':
       '/javascript-api/k6-http/response/response-json-selector/',
-    '/javascript-api/k6-http/response-k6-http/response-submitform-params':
+    '/javascript-api/k6-http/response-k6-http/response-submitform-params/':
       '/javascript-api/k6-http/response/response-submitform-params/',
-    '/javascript-api/k6-metrics/counter-k6-metrics':
+    '/javascript-api/k6-metrics/counter-k6-metrics/':
       '/javascript-api/k6-metrics/counter/',
-    '/javascript-api/k6-metrics/gauge-k6-metrics':
+    '/javascript-api/k6-metrics/gauge-k6-metrics/':
       '/javascript-api/k6-metrics/gauge/',
-    '/javascript-api/k6-metrics/rate-k6-metrics':
+    '/javascript-api/k6-metrics/rate-k6-metrics/':
       '/javascript-api/k6-metrics/rate/',
-    '/javascript-api/k6-metrics/trend-k6-metrics':
+    '/javascript-api/k6-metrics/trend-k6-metrics/':
       '/javascript-api/k6-metrics/trend/',
     '/javascript-api/k6-encoding/b64decode-input-encoding/':
       '/javascript-api/k6-encoding/b64decode-input-encoding-format/',
-    '/using-k6/archives-for-bundling-sharing-a-test': '/misc/archive-command/',
-    '/using-k6/ssl-tls': '/using-k6/protocols/ssl-tls/',
-    '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp':
+    '/using-k6/archives-for-bundling-sharing-a-test/': '/misc/archive-command/',
+    '/using-k6/ssl-tls/': '/using-k6/protocols/ssl-tls/',
+    '/using-k6/ssl-tls/online-certificate-status-protocol-ocsp/':
       '/using-k6/protocols/ssl-tls/online-certificate-status-protocol-ocsp/',
-    '/using-k6/ssl-tls/ssl-tls-client-certificates':
+    '/using-k6/ssl-tls/ssl-tls-client-certificates/':
       '/using-k6/protocols/ssl-tls/ssl-tls-client-certificates/',
-    '/using-k6/ssl-tls/ssl-tls-version-and-ciphers':
+    '/using-k6/ssl-tls/ssl-tls-version-and-ciphers/':
       '/using-k6/protocols/ssl-tls/ssl-tls-version-and-ciphers/',
-    '/using-k6/multipart-requests-file-uploads': '/examples/data-uploads/',
+    '/using-k6/multipart-requests-file-uploads/': '/examples/data-uploads/',
     '/results-visualization/apache-kafka/':
       '/results-output/real-time/apache-kafka/',
-    '/getting-started/results-output/cloud': '/results-visualization/cloud/',
+    '/getting-started/results-output/cloud/': '/results-visualization/cloud/',
     '/results-visualization/k6-cloud-test-results':
       '/results-visualization/cloud/',
-    '/getting-started/results-output/datadog':
+    '/getting-started/results-output/datadog/':
       '/results-visualization/datadog/',
-    '/getting-started/results-output/influxdb':
+    '/getting-started/results-output/influxdb/':
       '/results-output/real-time/influxdb/',
-    '/getting-started/results-output/json': '/results-visualization/json/',
-    '/getting-started/results-output/statsd': '/results-visualization/statsd/',
-    '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags':
+    '/getting-started/results-output/json/': '/results-visualization/json/',
+    '/getting-started/results-output/statsd/': '/results-visualization/statsd/',
+    '/javascript-api/k6-metrics/counter-k6-metrics/counter-add-value-tags/':
       '/javascript-api/k6-metrics/counter/counter-add-value-tags/',
-    '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags':
+    '/javascript-api/k6-metrics/gauge-k6-metrics/gauge-add-value-tags/':
       '/javascript-api/k6-metrics/gauge/gauge-add-value-tags/',
-    '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags':
+    '/javascript-api/k6-metrics/rate-k6-metrics/rate-add-value-tags/':
       '/javascript-api/k6-metrics/rate/rate-add-value-tags/',
-    '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags':
+    '/javascript-api/k6-metrics/trend-k6-metrics/trend-add-value-tags/':
       '/javascript-api/k6-metrics/trend/trend-add-value-tags/',
-    '/using-k6/cloud-execution':
+    '/using-k6/cloud-execution/':
       '/cloud/creating-and-running-a-test/cloud-tests-from-the-cli/',
-    '/using-k6/html/working-with-html-forms': '/examples/html-forms/',
-    '/using-k6/html': '/javascript-api/k6-html/',
-    '/using-k6/session-recording-har-support':
-      '/test-authoring/recording-a-session/',
-    '/cloud/creating-and-running-a-test/test-builder':
+    '/using-k6/html/working-with-html-forms/': '/examples/html-forms/',
+    '/using-k6/html/': '/javascript-api/k6-html/',
+    '/cloud/creating-and-running-a-test/test-builder/':
       '/test-authoring/test-builder/',
-    '/cloud/creating-and-running-a-test/in-app-script-editor':
+    '/cloud/creating-and-running-a-test/in-app-script-editor/':
       '/cloud/creating-and-running-a-test/script-editor/',
-    '/cloud/creating-and-running-a-test/recording-a-test-script':
-      '/test-authoring/recording-a-session/browser-recorder/',
-    '/cloud/creating-and-running-a-test/converters': '/integrations/',
+    '/cloud/creating-and-running-a-test/converters/': '/integrations/',
     '/cloud/integrations/ci': '/integrations/',
-    '/cloud/cloud-faq/what-is-data-retention':
+    '/cloud/cloud-faq/what-is-data-retention/':
       '/cloud/billing-user-menu/data-retention/',
-    '/cloud/cloud-faq/pricing-faq': '/cloud/cloud-faq/pricing-questions/',
-    '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud':
+    '/cloud/cloud-faq/pricing-faq/': '/cloud/cloud-faq/pricing-questions/',
+    '/cloud/cloud-faq/what-ip-addresses-are-used-by-the-k6-cloud/':
       '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts':
+    '/cloud/cloud-faq/what-is-the-best-way-to-debug-my-load-test-scripts/':
       '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests':
+    '/cloud/cloud-faq/i-was-invited-to-an-organization-and-i-cannot-run-tests/':
       '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests':
+    '/cloud/cloud-faq/how-to-open-your-firewall-to-k6-cloud-service-for-cloud-executed-tests/':
       '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/test-status-codes': '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/what-are-vus-virtual-users':
+    '/cloud/cloud-faq/test-status-codes/':
       '/cloud/cloud-faq/general-questions/',
-    '/cloud/cloud-faq/data-uploads-with-k6-cloud':
+    '/cloud/cloud-faq/what-are-vus-virtual-users/':
       '/cloud/cloud-faq/general-questions/',
-    '/misc/usage-reports': '/misc/usage-collection/',
-    '/using-k6/using-node-modules': '/using-k6/modules/',
+    '/cloud/cloud-faq/data-uploads-with-k6-cloud/':
+      '/cloud/cloud-faq/general-questions/',
+    '/misc/usage-reports/': '/misc/usage-collection/',
+    '/using-k6/using-node-modules/': '/using-k6/modules/',
     '/javascript-api/k6-x-browser/': '/using-k6-browser/overview/',
     '/javascript-api/xk6-browser/': '/using-k6-browser/overview/',
     '/javascript-api/k6-browser/': '/using-k6-browser/overview/',
@@ -1778,6 +1862,8 @@ const createRedirects = ({ actions }) => {
       '/using-k6-browser/selecting-elements/',
     '/javascript-api/k6-browser/get-started/selecting-elements/':
       '/using-k6-browser/selecting-elements/',
+    '/javascript-api/xk6-disruptor/get-started/welcome/':
+      '/javascript-api/xk6-disruptor/',
     ...newJavascriptURLsRedirects,
   };
 

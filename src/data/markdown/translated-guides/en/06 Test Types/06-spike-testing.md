@@ -3,15 +3,15 @@ title: 'Spike testing'
 excerpt: 'Spike tests simulate moments of short, extreme load'
 ---
 
-A spike test verifies whether the system survives and performs under sudden and massive rushes of utilization. It is one of the least common tests.
+A spike test verifies whether the system survives and performs under sudden and massive rushes of utilization.
 
 Spike tests are useful when the system may experience events of sudden and massive traffic.
-Examples of such events include ticket sales (ComicCon, Taylor Swift), product launches (PS5, fashion apparel), sale announcements (Super Bowl ads), process deadlines (tax declaration), and seasonal sales (Black Friday, Christmas, St.Valentine).
+Examples of such events include ticket sales (Taylor Swift), product launches (PS5), broadcast ads (Super Bowl), process deadlines (tax declaration), and seasonal sales (Black Friday). Also, spikes in traffic could be caused by more frequent events such as rush hours, a particular task, or a use case.
 
 Spike testing increases to extremely high loads in a very short or non-existent ramp-up time.
 Usually, it has no plateau period or is very brief, as real users generally do not stick around doing extra steps in these situations. In the same way, the ramp-down is very fast or non-existent, letting the process iterate only once.
 
-This test usually includes very different processes than the previous test types, as these processes often aren't part of an average day in production. A recommendation is to automate the processes with heavy demand during the event. It may also require adding, removing, or modifying processes on the script that were not in the average-load tests.
+This test might include different processes than the previous test types, as spikes often aren't part of an average day in production. It may also require adding, removing, or modifying processes on the script that were not in the average-load tests.
 
 Occasionally, teams should revamp the system to allow or prioritize resources for the high-demand processes during the event.
 
@@ -19,10 +19,10 @@ Occasionally, teams should revamp the system to allow or prioritize resources fo
 
 ## When to perform a spike test
 
-Spike testing is the least frequent test type. This test must be executed when the system expects to receive a sudden rush of activity, which is not a common behavior on most platforms.
+This test must be executed when the system expects to receive a sudden rush of activity.
  
 
-When the system expects this type of behavior, the spike test helps identify how the system will behave and if it will survive the sudden rush of load. The load is considerably above the average and frequently focuses on a different set of processes than the other test types.
+When the system expects this type of behavior, the spike test helps identify how the system will behave and if it will survive the sudden rush of load. The load is considerably above the average and might focus on a different set of processes than the other test types.
 
 
 ## Considerations
@@ -31,13 +31,13 @@ When preparing for a spike test, consider the following:
 
 * **Focus on key processes in this test type.**
 
-    Generally, the processes triggered are different from the other test types.
+    Assess whether the spike in traffic triggers the same or different processes from the other test types. Create test logic accordingly.
 * **The test often won't finish.**
 
-    Errors are common under these scenarios
+    Errors are common under these scenarios.
 * **Run, tune, repeat.**
 
-    When your system is at risk of spike events, the team must run a spikes test and tune the system several times
+    When your system is at risk of spike events, the team must run a spikes test and tune the system several times.
 * **Monitor.**
 
     Backend monitoring is a must for successful outcomes of this test.
@@ -64,7 +64,7 @@ export const options = {
 };
 
 export default () => {
-  const urlRes = http.req('https://test-api.k6.io');
+  const urlRes = http.get('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Add only the processes that will be on high demand
@@ -87,5 +87,5 @@ A spike test gets its name from the shape of its load when represented graphical
 
 Some performance metrics to assess in spike tests include pod speeds, recovery times after the load rush, time to return to normal, or the behavior on crucial system processes during the overload.
 
-Finding how the system responds (if it survives) to the sudden rush helps to optimize it to guarantee that it can perform during a real event. Often the load is so high that the whole system may have to be optimized to deal with the key processes. In these cases, repeat the test until the system confidence is high.
+Finding how the system responds (if it survives) to the sudden rush helps to optimize it to guarantee that it can perform during a real event. In some events, the load is so high that the whole system may have to be optimized to deal with the key processes. In these cases, repeat the test until the system confidence is high.
 

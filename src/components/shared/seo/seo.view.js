@@ -14,11 +14,10 @@ const getPageHref = (host, slug) => {
 };
 
 export const SEO = ({
-  data: { title, description, image, slug, canonicalUrl } = {},
+  data: { title, description, image, slug, canonicalUrl, robots } = {},
   facebook,
   pageTranslations = null,
   pageVersions = null,
-  version = LATEST_VERSION,
 } = {}) => {
   const {
     site: {
@@ -49,11 +48,6 @@ export const SEO = ({
   const currentUrl = slug && slug !== '*' ? getPageHref(docs, slug) : docs;
   const currentRobotsContent = useRef('index, follow');
   let versionedCanonicalUrl = currentUrl;
-  let currentLanguage = 'en';
-
-  if ((slug && slug.startsWith('es/')) || (slug && slug.startsWith('/es/'))) {
-    currentLanguage = 'es';
-  }
 
   // set canonical path to latest version URL if it's available
   if (pageVersions && typeof pageVersions[LATEST_VERSION] !== 'undefined') {
@@ -80,6 +74,10 @@ export const SEO = ({
       currentRobotsContent.current = 'noindex';
     }
   }, []);
+
+  if (robots) {
+    currentRobotsContent.current = robots;
+  }
 
   if (pageTranslations) {
     if (pageTranslations.es) {
@@ -121,8 +119,7 @@ export const SEO = ({
       <meta name={'twitter:card'} content={'summary'} />
       <meta name={'twitter:creator'} content={authorTwitterAccount} />
 
-      <meta name="docsearch:language" content={currentLanguage} />
-      <meta name="docsearch:version" content={version} />
+      <meta name="category" content="Documentation" />
 
       {/* Canonical links for versioned pages */}
       <link href={versionedCanonicalUrl} rel="canonical" />

@@ -16,7 +16,7 @@ Bucket is returned by the S3Client.* methods that query S3 buckets. Namely, `lis
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.7.2/s3.js';
+import { AWSConfig, S3Client } from 'https://jslib.k6.io/aws/0.9.0/s3.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -26,10 +26,10 @@ const awsConfig = new AWSConfig({
 
 const s3 = new S3Client(awsConfig);
 
-export default function () {
+export default async function () {
   // List the buckets the AWS authentication configuration
   // gives us access to.
-  const buckets = s3.listBuckets();
+  const buckets = await s3.listBuckets();
   console.log(JSON.stringify(buckets));
 }
 ```

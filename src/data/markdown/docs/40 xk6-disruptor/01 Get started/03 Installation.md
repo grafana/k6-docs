@@ -19,7 +19,7 @@ To find out more about how to use xk6 or what it is, check out this guide - [Bui
 
 
 To build the k6 binary with the xk6-disruptor extension:
-1. Ensure you have [Go 1.18](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
+1. Ensure you have [Go 1.19](https://golang.org/doc/install) and [Git](https://git-scm.com/) installed.
 2. Run the following commands in a terminal:
 
 <CodeGroup labels={["Linux/MacOS"]}>

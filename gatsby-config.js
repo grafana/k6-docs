@@ -148,6 +148,13 @@ const plugins = [
       excludes: ['/get-started/welcome', '/docs/get-started/welcome'],
     },
   },
+  {
+    resolve: `@tmttn/gatsby-plugin-linkedin-insight`,
+    options: {
+      partnerId: '4981058',
+      includeInDevelopment: false,
+    },
+  },
 ];
 
 if (
@@ -177,8 +184,12 @@ if (shouldAnnouncementBannerBeShown) {
         __dirname,
         './src/components/shared/announcement-banner/announcement-banner.js',
       ),
-      text: 'Enhanced flexibility for multiple scenarios in your test. Check out the new Scenarios API.',
-      link: 'https://k6.io/docs/using-k6/scenarios',
+      text:
+        // eslint-disable-next-line max-len
+        '🎉 We are excited to announce that, starting on July 25th at 14:00 UTC, we will merge the k6 community forum with the Grafana community forum',
+      link:
+        // eslint-disable-next-line max-len
+        'https://k6.io/blog/k6-forum-migration/',
       buttonText: 'Learn more',
     },
     // settings below have to match
@@ -192,7 +203,8 @@ if (shouldAnnouncementBannerBeShown) {
       },
     },
     storage: {
-      name: 'k6-ab-was-shown',
+      // changing storage name to force users to see the banner even if it was disabled
+      name: 'k6-sb-was-shown',
     },
   };
   if (isProduction) {
@@ -213,12 +225,10 @@ if (shouldAnnouncementBannerBeShown) {
 
 if (isProduction) {
   plugins.push({
-    resolve: 'gatsby-plugin-google-analytics',
+    resolve: 'gatsby-plugin-google-tagmanager',
     options: {
-      trackingId: 'UA-158196577-1',
-      head: false,
-      cookieDomain: 'k6.io',
-      allowLinker: true,
+      id: 'GTM-KBV9L4L',
+      includeInDevelopment: false,
     },
   });
 

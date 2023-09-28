@@ -5,11 +5,11 @@ excerpt: "A Smoke test is a minimal load test to run when you create or modify a
 ---
 
 Smoke tests have a minimal load.
-Run them to verify that the script works well, the system functions under minimal load, and to gather baseline performance values.
+Run them to verify that the system works well under minimal load and to gather baseline performance values.
 
-This test type consists of running tests with only one or a few VUs. Keep the number to 5 VUs or less.
-Exceeding 5 could turn the test into a mini-load test.
-Similarly, the test shouldn't have many iterations. 3 to 10 iterations should be enough (or an iteration duration with a short period).
+This test type consists of running tests with a few VUs — more than 5 VUs could be considered a mini-load test. 
+
+Similarly, the test should execute for a short period, either a low number of [iterations](/using-k6/k6-options/reference/#iterations) or a [duration](/using-k6/k6-options/reference/#duration) from seconds to a few minutes maximum.
 
 ![Overview of a smoke test](images/chart-smoke-test-overview.png)
 
@@ -17,7 +17,7 @@ In some testing conversation, smoke tests are also called shakeout tests.
 
 ## When to run a Smoke test
 
-Teams should run smoke tests whenever a test script is created or updated. Smoke testing should also be done every time the application code is updated.
+Teams should run smoke tests whenever a test script is created or updated. Smoke testing should also be done whenever the relevant application code is updated.
 
 It's a good practice to run a smoke test as a first step, with the following goals: 
 
@@ -37,7 +37,7 @@ When you prepare a smoke test, consider the following:
 
 - **Keep throughput small and duration short**
   
-  Configure your test script to be executed by a small number of VUs (from 2 to 5) with few iterations (3 to 10) or brief durations (30 to 60 seconds).
+  Configure your test script to be executed by a small number of VUs (from 2 to 20) with few iterations or brief durations (30 seconds to 3 minutes).
 
 ## Smoke testing in k6
 
@@ -53,7 +53,7 @@ export const options = {
 };
 
 export default () => {
-  const urlRes = http.req('https://test-api.k6.io');
+  const urlRes = http.get('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script
@@ -67,7 +67,7 @@ export default () => {
 
 
 The following script is an example smoke test. You can copy it, change the endpoints, and start testing. For more comprehensive test logic, refer to [Examples](/examples).
-The VU chart of a smoke test should look similar to this. Again, a smoke test should use only 2 or 3 VUs and run for only a brief period.
+The VU chart of a smoke test should look similar to this.
 
 ![The shape of the smoke test as configured in the preceding script](images/chart-smoke-test-k6-script-example.png)
 

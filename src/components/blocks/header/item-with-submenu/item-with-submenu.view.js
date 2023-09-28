@@ -4,6 +4,7 @@ import React from 'react';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 
 import styles from './item-with-submenu.module.scss';
+import ExternalIcon from './svg/exnternal-link-icon.inline.svg';
 
 export const ItemWithSubmenu = ({ label, submenu, shouldBeHighlighted }) => {
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(submenu.length);
@@ -46,6 +47,9 @@ export const ItemWithSubmenu = ({ label, submenu, shouldBeHighlighted }) => {
                 {...itemProps[i]}
               >
                 {item.label}
+                {item.to.startsWith('http') && !item.to.includes('k6.io/') && (
+                  <ExternalIcon />
+                )}
               </Link>
             </li>
           ))}

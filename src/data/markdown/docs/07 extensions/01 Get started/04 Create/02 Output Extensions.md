@@ -242,5 +242,5 @@ Your output should look something like this:
 - Use the [project template](https://github.com/grafana/xk6-output-template) as a starting point
   for your output extension.
 
-> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.k6.io/c/extensions/).
+> Questions? Feel free to join the discussion on extensions in the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 

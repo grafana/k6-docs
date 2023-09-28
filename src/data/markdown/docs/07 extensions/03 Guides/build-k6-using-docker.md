@@ -8,40 +8,73 @@ Using the [xk6 Docker image](https://hub.docker.com/r/grafana/xk6/) can simplify
 
 ## Building your first extension
 
-For example, to build a k6 v0.43.1 binary with the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
+For example, to build a custom k6 binary with the latest versions of k6 and the [`xk6-kafka`](https://github.com/mostafa/xk6-kafka) and [`xk6-output-influxdb`](https://github.com/grafana/xk6-output-influxdb) extensions, run one of the commands below, depending on your operating system:
 
 <CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
 
 ```bash
-docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build v0.43.1 \
-  --with github.com/mostafa/xk6-kafka@v0.17.0 \
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build \
+  --with github.com/mostafa/xk6-kafka \
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```bash
 docker run --rm -e GOOS=darwin -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" \
-  grafana/xk6 build v0.43.1 \
-  --with github.com/mostafa/xk6-kafka@v0.17.0 \
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build \
+  --with github.com/mostafa/xk6-kafka \
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```powershell
 docker run --rm -e GOOS=windows -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" `
-  grafana/xk6 build v0.43.1 --output k6.exe `
-  --with github.com/mostafa/xk6-kafka@v0.17.0 `
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build --output k6.exe `
+  --with github.com/mostafa/xk6-kafka `
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 ```batch
 docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
-  grafana/xk6 build v0.43.1 --output k6.exe ^
-  --with github.com/mostafa/xk6-kafka@v0.17.0 ^
-  --with github.com/grafana/xk6-output-influxdb@v0.3.0
+  grafana/xk6 build --output k6.exe ^
+  --with github.com/mostafa/xk6-kafka ^
+  --with github.com/grafana/xk6-output-influxdb
 ```
 
 </CodeGroup>
 
 This creates a `k6` (or `k6.exe`) binary in the current working directory.
+
+To build the binary with concrete versions, see the example below (k6 `v0.45.1`, xk6-kafka `v0.19.1`, and xk6-output-influxdb `v0.4.1`):
+
+<CodeGroup labels={["Linux", "Mac", "Windows PowerShell", "Windows"]}>
+
+```bash
+docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" grafana/xk6 build v0.45.1 \
+  --with github.com/mostafa/xk6-kafka@v0.19.1 \
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```bash
+docker run --rm -e GOOS=darwin -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" \
+  grafana/xk6 build v0.45.1 \
+  --with github.com/mostafa/xk6-kafka@v0.19.1 \
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```powershell
+docker run --rm -e GOOS=windows -u "$(id -u):$(id -g)" -v "${PWD}:/xk6" `
+  grafana/xk6 build v0.45.1 --output k6.exe `
+  --with github.com/mostafa/xk6-kafka@v0.19.1 `
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+```batch
+docker run --rm -e GOOS=windows -v "%cd%:/xk6" ^
+  grafana/xk6 build v0.45.1 --output k6.exe ^
+  --with github.com/mostafa/xk6-kafka@v0.19.1 ^
+  --with github.com/grafana/xk6-output-influxdb@v0.4.1
+```
+
+</CodeGroup>
 
 ## Breaking down the command
 
@@ -51,7 +84,7 @@ The example command line may look a bit intimidating at first, but let's focus o
 docker run --rm -u "$(id -u):$(id -g)" -v "${PWD}:/xk6"
 ```
 
-This tells Docker to run a new container from an image. 
+This tells Docker to run a new container from an image.
 - `--rm` means the container will be destroyed once your build is completed.
 - `-u` specifies the user and group IDs of the account on the host machine. This is important for the `k6` file to have the same file permissions as the host user.
 - `-v` is required to mount the current working directory inside the container, so that the `k6` binary can be written to it.
@@ -135,5 +168,5 @@ k6.exe run my-script.js
 
 ## Encountering issues?
 
-If you're having issues, search the [k6 Community Forum](https://community.k6.io/c/extensions/). 
+If you're having issues, search the [k6 Community Forum](https://community.grafana.com/c/grafana-k6/extensions/82).
 Someone may have had the same issue in the past.

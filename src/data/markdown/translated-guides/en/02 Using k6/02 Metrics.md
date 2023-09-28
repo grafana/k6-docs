@@ -106,3 +106,12 @@ default ✓ [======================================] 1 VUs  00m03.8s/10m0s  1/1 
 In that output, all the metrics that start with `http`, `iteration`, and `vu` are _built-in_ metrics, which get written to stdout at the end of a test.
 For details of all metrics, refer to the [Metrics reference](/using-k6/metrics/reference/).
 
+
+## Metric name restrictions
+
+Metric names must comply with OpenTelemetry and [Prometheus limitations](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+
+That means they must not start with a number and a metric name can be 1 to 63 symbols of:
+1. any Unicode Letters
+2. any Unicode Number
+3. `_` (an underscore)

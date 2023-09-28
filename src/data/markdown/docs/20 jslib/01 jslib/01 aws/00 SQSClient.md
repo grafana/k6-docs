@@ -5,11 +5,11 @@ description: 'SQSClient enables interaction with the AWS Simple Queue Service (S
 excerpt: 'SQSClient allows interacting with the AWS Simple Queue Service (SQS)'
 ---
 
-<BlockingAwsBlockquote />
+`SQSClient` interacts with the AWS Simple Queue Service (SQS).
 
-`SQSClient` interacts with the AWS Simple Queue Service (SQS). With it, the user can send messages to specified queues and list available queues in the current region. `SQSClient` operations are blocking.
+With it, the user can send messages to specified queues and list available queues in the current region.
 
-Both the dedicated `sqs.js` jslib bundle and the all-encompassing `aws.js` bundle include the `SQSClient`.
+`SQSClient` is included in both the dedicated `sqs.js` jslib bundle and the all-encompassing `aws.js` one, containing all the services clients.
 
 ### Methods
 
@@ -34,7 +34,7 @@ Both the dedicated `sqs.js` jslib bundle and the all-encompassing `aws.js` bundl
 ```javascript
 import exec from 'k6/execution'
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.7.2/sqs.js'
+import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.9.0/sqs.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
@@ -46,15 +46,15 @@ const awsConfig = new AWSConfig({
 const sqs = new SQSClient(awsConfig)
 const testQueue = 'https://sqs.us-east-1.amazonaws.com/000000000/test-queue'
 
-export default function () {
+export default async function () {
     // If our test queue does not exist, abort the execution.
-    const queuesResponse = sqs.listQueues()
+    const queuesResponse = await sqs.listQueues()
     if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
         exec.test.abort()
     }
 
     // Send message to test queue
-    sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
+    await sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
 }
 ```
 

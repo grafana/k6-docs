@@ -27,11 +27,11 @@ Each option has its own detailed reference in a separate section.
 | [Duration](#duration)                                     | A string specifying the total duration of the test run; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [constant VUs executor](/using-k6/scenarios/executors/constant-vus) |
 | [Execution segment](#execution-segment)                   | Limit execution to a segment of the total test                                      |
 | [Exit on running](#exit-on-running)                       | Exits when test reaches the running status                                          |
-| [Extension options](#extension-options)                   | An object used to set configuration options for third-party collectors              |
+| [Extension options](#extension-options)                   | An object used to set configuration options for cloud parameters and third-party collectors              |
 | [Hosts](#hosts)                                           | An object with overrides to DNS resolution                                          |
 | [HTTP debug](#http-debug)                                 | Log all HTTP requests and responses                                                 |
 | [Include system Env vars](#include-system-env-vars)       | Pass the real system environment variables to the runtime                           |
-| [Insecure skip TLS verify](#insecure-skip-tls-verify)     | A boolean specifying whether should ignore TLS verifications for VU connections     |
+| [Insecure skip TLS verify](#insecure-skip-tls-verify)     | A boolean specifying whether k6 should ignore TLS verifications for connections established from code     |
 | [Iterations](#iterations)                                 | A number specifying a fixed number of iterations to execute of the script; together with the [vus option](#vus), it's a shortcut for a single [scenario](/using-k6/scenarios) with a [shared iterations executor](/using-k6/scenarios/executors/shared-iterations) |
 | [Linger](#linger)                                         | A boolean specifying whether k6 should linger around after test run completion      |
 | [Local IPs](#local-ips)                                   | A list of local IPs, IP ranges, and CIDRs from which VUs will make requests                 |
@@ -351,7 +351,7 @@ export const options = {
 
 ## Extension options
 
-An object used to set configuration options for third-party collectors, like plugins.
+An object used to set configuration options for cloud parameters and third-party collectors, like plugins. For more information about available parameters, refer to [Cloud options](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options/).
 
 | Env | CLI | Code / Config file | Default |
 | --- | --- | ------------------ | ------- |
@@ -496,7 +496,7 @@ $ k6 run --include-system-env-vars ~/script.js
 
 A boolean, true or false. When this option is enabled (set to true), all of the verifications that
 would otherwise be done to establish trust in a server provided TLS certificate will be ignored.
-This only applies to connections created by VU code, such as http requests.
+This only applies to connections created from code, such as HTTP requests.
 Available in `k6 run` and `k6 cloud` commands
 
 | Env                           | CLI                          | Code / Config file      | Default |
@@ -641,6 +641,7 @@ The possible keys with their meanings and default values:
 | `nothing` | the endpoint to which to send logs | `http://127.0.0.1:3100/loki/api/v1/push` |
 | allowedLabels | if set k6 will send only the provided labels as such and all others will be appended to the message in the form `key=value`. The value of the option is in the form `[label1,label2]` | N/A |
 | label.`labelName` | adds an additional label with the provided key and value to each message | N/A |
+| header.`headerName` | adds an additional HTTP header with the provided header name and value to each HTTP request made to Loki | N/A |
 | limit | the limit of message per pushPeriod, an additional log is send when the limit is reached, logging how many logs were dropped | 100 |
 | level | the minimal level of a message so it's send to loki | all |
 | pushPeriod | at what period to send log lines | 1s |
@@ -1423,6 +1424,26 @@ export const options = {
 
 </CodeGroup>
 
+
+
+## Upload Only
+
+A boolean specifying whether the test should just be uploaded to the cloud, but not run it. Available in `k6 cloud` command.
+
+This would be useful if you would like to update a given test and run it later. For example, updating test scripts of a scheduled test from the CI pipelines.
+
+| Env | CLI           | Code / Config file | Default |
+| --- | ------------- | ------------------ | ------- |
+| `K6_CLOUD_UPLOAD_ONLY` | `--upload-only` | N/A                | `false`  |
+
+
+<CodeGroup labels={[]} lineNumbers={[false]}>
+
+```bash
+$ k6 cloud --upload-only script.js
+```
+
+</CodeGroup>
 
 
 ## User agent

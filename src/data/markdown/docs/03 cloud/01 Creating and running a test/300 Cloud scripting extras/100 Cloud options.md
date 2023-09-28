@@ -7,7 +7,7 @@ canonicalUrl: https://grafana.com/docs/grafana-cloud/k6/author-run/cloud-scripti
 Cloud execution has a few extra options, including to distribute load across different regions or to change projects.
 These cloud options are **not required**.
 
-> For all available options, refer to [Options](/using-k6/options) in the k6 OSS docs.
+> For all available options, refer to [Options](/using-k6/k6-options/) in the k6 OSS docs.
 
 ## Example configuration
 
@@ -35,7 +35,7 @@ export const options = {
 | Name                          | Default                                                                                | Description                                                                                                                                                                                                           |
 |-------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name (string)                 | The name of the main script file, so something like `script.js`.                       | The name of the test in the k6 Cloud UI. Test runs with the same name will be grouped together.                                                                                                                       |
-| projectID (number)            | It is empty by default.                                                                | The ID of the project to which the test is assigned in the k6 Cloud UI. That's in the default project of the user's default organization.                                                                             |
+| projectID (number)            | Empty by default.                                                                | The ID of the project to which the test is assigned in the k6 Cloud UI. That's in the default project of the user's default organization.                                                                             |
 | distribution (object)         | The equivalent of `someDefaultLabel: { loadZone: "amazon:us:ashburn", percent: 100 }`. | How the traffic should be distributed across existing [Load Zones](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-options/). The keys are string labels that will be injected as [environment variables](/cloud/creating-and-running-a-test/cloud-scripting-extras/cloud-environment-variables). |
 | staticIPs (boolean)           | `false` by default                                                                     | When set to `true` the cloud system will use dedicated IPs assigned to your organization to execute the test.                                                                                                         |
 | note (string)                 | Empty by default.                                                                      | Notes regarding the test, changes made, or anything that may be worth noting about your test.                                                                                                                         |

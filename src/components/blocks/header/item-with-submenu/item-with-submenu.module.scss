@@ -88,6 +88,19 @@
     padding: 0;
     height: 100%;
   }
+  svg {
+    margin-left: 6px;
+    path {
+      stroke: $color-primary;
+    }
+  }
+  &:hover {
+    svg {
+      path {
+        stroke: $color-accent-primary;
+      }
+    }
+  }
 }
 
 .link {

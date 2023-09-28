@@ -33,18 +33,16 @@ Tap on the chosen element.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
 
 export default async function () {
-  const browser = chromium.launch();
-  const context = browser.newContext();
-  const page = context.newPage({
+  const page = browser.newPage({
     hasTouch: true,
 	});
   
   await page.goto('https://test.k6.io/browser.php');
 	const options = page.locator("#numbers-options");
-	options.tap();  
+	options.tap();
 }
 ```
 

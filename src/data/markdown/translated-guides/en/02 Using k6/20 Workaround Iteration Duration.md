@@ -30,7 +30,7 @@ export const options = {
 };
 
 export function setup() {
-  http.get('http://httpbin.test.k6.io/delay/5');
+  http.get('https://httpbin.test.k6.io/delay/5');
 }
 
 export default function () {
@@ -39,7 +39,7 @@ export default function () {
 }
 
 export function teardown() {
-  http.get('http://httpbin.test.k6.io/delay/3');
+  http.get('https://httpbin.test.k6.io/delay/3');
   sleep(5);
 }
 ```

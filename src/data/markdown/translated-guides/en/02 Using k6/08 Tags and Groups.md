@@ -80,7 +80,7 @@ const myTrend = new Trend('my_trend');
 
 export default function () {
   // Add tag to request metric data
-  const res = http.get('http://httpbin.test.k6.io/', {
+  const res = http.get('https://httpbin.test.k6.io/', {
     tags: {
       my_tag: "I'm a tag",
     },
@@ -188,7 +188,7 @@ export default function () {
   tagWithCurrentStageIndex();
 
   // all the requests will have a `stage` tag
-  // with its value equal to the the index of the stage
+  // with its value equal to the index of the stage
   http.get('https://test.k6.io'); // e.g. {stage: "1"}
 }
 ```
@@ -336,14 +336,3 @@ If your code looks like the preceding snippet, consider the following strategies
 - To provide a meaningful name to your request, set the value of [tags.name](/using-k6/http-requests#http-request-tags).
 - To reuse common logic or organize your code better, group logic in functions, or create a [local JavaScript module](/using-k6/modules#local-filesystem-modules) and import it into the test script.
 - To model advanced user patterns, check out [Scenarios](/using-k6/scenarios).
-
-## Tags and Groups in k6 Cloud Results
-
-In [k6 Cloud Results](/cloud/analyzing-results/overview) you can see groups in the [result tabs](/cloud/analyzing-results/overview#result-tabs).
-
-When using Groups, you can view [Checks](/using-k6/checks) and [HTTP Requests](/using-k6/http-requests) by group.
-You can also switch between the group and list layout by changing the **view as** selection in the top right.
-
-![k6 Cloud URL Grouping](./images/Tags-and-Groups/cloud-insights-http-tab.png)
-
-To filter results by tag, you can use the [analysis tab](/cloud/analyzing-results/analysis-tab).

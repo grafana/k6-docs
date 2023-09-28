@@ -6,17 +6,25 @@ excerpt: 'SecretsManagerClient.deleteSecret deletes a secret'
 
 `SecretsManagerClient.deleteSecret` deletes a secret from AWS' secrets manager.
 
+### Parameters
+
 | Parameter | Type                                      | Description                              |
 | :-------- | :---------------------------------------- | :--------------------------------------- |
 | secretID  | string                                    | The ARN or name of the secret to update. |
 | options   | { recoveryWindow: 30, noRecovery: false } | Use options to control the deletion behavior. recoveryWindow defines how long a secret will remain “soft-deleted”, in days, before being hard-deleted. noRecovery set to true would hard-delete the secret immediately. Note that both options are exclusive. |
+
+### Returns
+
+| Type            | Description                                                |
+| :-------------- | :--------------------------------------------------------- |
+| `Promise<void>` | A promise that will be resolved when the secret is deleted |
 
 ### Example
 
 <CodeGroup labels={[]}>
 
 ```javascript
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.7.2/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -28,16 +36,16 @@ const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 const testSecretValue = 'jslib-test-value';
 
-export default function () {
+export default async function () {
   // Let's make sure our test secret is created
-  const testSecret = secretsManager.createSecret(
+  const testSecret = await secretsManager.createSecret(
     testSecretName,
     testSecretValue,
     'this is a test secret, delete me.'
   );
 
   // Let's hard delete our test secret and verify it worked
-  secretsManager.deleteSecret(testSecretName, { noRecovery: true });
+  await secretsManager.deleteSecret(testSecretName, { noRecovery: true });
 }
 ```
 

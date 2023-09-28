@@ -1,0 +1,29 @@
+---
+title: 'setDefaultTimeout(timeout)'
+excerpt: 'Browser module: page.setDefaultTimeout(timeout) method'
+---
+
+This setting will change the timeout for all the methods accepting a `timeout` option.
+
+| Parameter       | Type   | Default | Description                                                                                                                                                                                                                           |
+|-----------------|--------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| timeout        | number  |     |  Timeout in milliseconds.                              |
+
+
+### Example
+
+<CodeGroup labels={[]}>
+
+```javascript
+import { chromium } from 'k6/experimental/browser';
+
+export default async function () {
+  const browser = chromium.launch();
+  const page = browser.newPage();
+  
+  page.setDefaultTimeout(60000);
+  await page.goto('https://test.k6.io/browser.php');
+}
+```
+
+</CodeGroup>

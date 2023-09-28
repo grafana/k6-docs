@@ -3,10 +3,9 @@ title: 'Ramping VUs'
 excerpt: 'A variable number of VUs execute as many iterations as possible for a specified amount of time.'
 ---
 
-## Description
+With the `ramping-vus` executor, a variable number of VUs executes as many iterations as possible for a specified amount of time.
 
-A variable number of VUs execute as many iterations as possible for a specified
-amount of time. This executor is equivalent to the global [stages](/using-k6/options#stages) option.
+For a shortcut to this executor, use the [stages](/using-k6/options#stages) option.
 
 ## Options
 
@@ -26,7 +25,7 @@ of time.
 
 ## Example
 
-In this example, we'll run a two-stage test, ramping up from 0 to 10 VUs over 20 seconds, then down
+This example schedules a two-stage test, ramping up from 0 to 10 VUs over 20 seconds, then down
 to 0 VUs over 10 seconds.
 
 <CodeGroup labels={[ "ramping-vus.js" ]} lineNumbers={[true]}>
@@ -52,7 +51,7 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io/contacts.php');
-  // We're injecting a processing pause for illustrative purposes only!
+  // Injecting sleep
   // Sleep time is 500ms. Total iteration time is sleep + time to finish request.
   sleep(0.5);
 }
@@ -60,8 +59,12 @@ export default function () {
 
 </CodeGroup>
 
-> Note the setting of `gracefulRampDown` to 0 seconds, which could cause some iterations to be
+<Blockquote mod="note" title="">
+
+With [`gracefulRampDown`](/using-k6/scenarios/concepts/graceful-stop/#the-gracefulrampdown) set to 0 seconds, some iterations might be
 interrupted during the ramp down stage.
+
+</Blockquote>
 
 ## Observations
 
@@ -71,12 +74,12 @@ The following graph depicts the performance of the [example](#example) script:
 
 Based upon our test scenario inputs and results:
 
-* We've defined 2 stages for a total test duration of 30 seconds;
-* stage 1 ramps _up_ VUs linearly from the `startVUs` of 0 to the target of 10 over a 20 second duration;
-* from the 10 VUs at the end of stage 1, stage 2 then ramps _down_ VUs linearly to the target of 0 over a 10 second duration;
-* each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
-* as the number of VUs changes, the iteration rate directly correlates; each addition of a VU increases the rate by \~2 iters/s, whereas each subtraction of a VU reduces by \~2 iters/s;
-* our example performed ~300 iterations over the course of the test.
+* The configuration defines 2 stages for a total test duration of 30 seconds;
+* Stage 1 ramps _up_ VUs linearly from the `startVUs` of 0 to the target of 10 over a 20 second duration;
+* From the 10 VUs at the end of stage 1, stage 2 then ramps _down_ VUs linearly to the target of 0 over a 10 second duration;
+* Each _iteration_ of the `default` function is expected to be roughly 515ms, or ~2/s;
+* As the number of VUs changes, the iteration rate directly correlates; each addition of a VU increases the rate by  about 2 iters/s, whereas each subtraction of a VU reduces by about 2 iters/s;
+* The example performed ~300 iterations over the course of the test.
 
 ## Get the stage index
 

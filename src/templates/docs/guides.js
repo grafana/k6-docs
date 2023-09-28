@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { DocPageNavigation } from 'components/pages/doc-page/doc-page-navigation';
 import TableOfContents from 'components/pages/doc-page/table-of-contents';
 import {
-  Cloud,
   Features,
   Manifesto,
   Quickstart,
@@ -19,7 +18,6 @@ import { useScrollToAnchor } from 'hooks';
 import { DocLayout } from 'layouts/doc-layout';
 import React, { useRef } from 'react';
 import SeoMetaData from 'utils/seo-metadata';
-import { docs } from 'utils/urls';
 import { flattenSidebarTree } from 'utils/utils';
 
 const pageInfo = {
@@ -77,18 +75,6 @@ const GuidesContent = ({
           <UseCases />
           <Manifesto />
           <K6DoesNot />
-          {locale === 'en' && (
-            <Cloud
-              title={'Looking for k6 Cloud?'}
-              btnLink={`${docs}/cloud`}
-              isExternal
-              btnTarget={'_self'}
-              btnText={'Cloud docs'}
-              description={
-                'A tailored SaaS service to bring your team together into load testing.'
-              }
-            />
-          )}
         </div>
         <DocPageNavigation
           prev={null}

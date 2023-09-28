@@ -17,7 +17,7 @@ In some testing conversation, stress tests might also be called rush-hour, surge
 ## When to perform a Stress test
 
 Stress tests verify the stability and reliability of the system under conditions of heavy use.
-Systems may receive higher than usual workloads on unusual moments such as process deadlines, paydays, rush hours, ends of the workweek, and many other isolated behaviors that might combine to create high-load events.
+Systems may receive higher than usual workloads on unusual moments such as process deadlines, paydays, rush hours, ends of the workweek, and many other behaviors that might cause frequent higher-than-average traffic.
 
 ## Considerations
 
@@ -63,13 +63,13 @@ export const options = {
   // Key configurations for Stress in this section
   stages: [
     { duration: '10m', target: 200 }, // traffic ramp-up from 1 to a higher 200 users over 10 minutes.
-    { duration: '30m', target: 200 }, // stay at higher 200 users for 10 minutes
+    { duration: '30m', target: 200 }, // stay at higher 200 users for 30 minutes
     { duration: '5m', target: 0 }, // ramp-down to 0 users
   ],
 };
 
 export default () => {
-  const urlRes = http.req('https://test-api.k6.io');
+  const urlRes = http.get('https://test-api.k6.io');
   sleep(1);
   // MORE STEPS
   // Here you can have more steps or complex script

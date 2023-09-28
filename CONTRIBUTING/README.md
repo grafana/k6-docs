@@ -43,23 +43,28 @@ If you don't want to build with Docker (refer to repo README), you'll need the f
 
 To build locally:
 
-1. Clone the project
+1. Clone the project.
+
   ```bash
   git clone git@github.com:grafana/k6-docs.git
   cd k6-docs
-  npm install  # or yarn install
   ```
+
 2. Use the version manager to install a version of node compatible with the version in `package.json`.
+
  ```bash
   nvm install 16.16
   nvm use 16.16
   ```
+
 3. Install dependencies (only necessary the first time).
+
   ```bash
   npm install  # or yarn install
   ```
 
-4. Run the docs locally:
+4. Run the docs locally.
+
   ```bash
   npm start  # or yarn start
   ```
@@ -117,7 +122,7 @@ Unless k6 OSS has a version upgrade, increment the version by 0.0.1. For example
 As the UI might change, refer to the GitHub [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) doc for the canonical instructions.
 
 Each release has a tag, which you can create either through the Github CLI or from https://github.com/grafana/k6-docs/releases.
-To upgrade through the UI,
+To upgrade through the UI:
 
 1. From the releases page, select **Draft a new Release**.
 ![DraftRelease1](../internal-images/DraftNewRelease.png)
@@ -125,9 +130,4 @@ To upgrade through the UI,
 1. In the next screen, select **Choose a tag**, type a version number increasing the one below (in image, it  should be v0.37.17).
 ![DraftRelease2](../internal-images/DraftNewRelease2.png)
 
-1. Optionally add a description and generate release notes, then **Publish release**.
-
-
-**NOTE**: For Grafana Docs releases, set the tag as 'vX.X.X-gcloud'
-
-
+1. For a small release (fixing a typo or broken link), you can manually add a short description. Otherwise, select **Generate release notes** to automatically include more information about what's changed, and then select **Publish release**.

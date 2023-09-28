@@ -15,7 +15,7 @@ Estos recursos te ayudarán a escribir y ejecutar k6 tests en un entorno de test
 
 ## Comunidad
 
-- [El foro de la comunidad](https://community.k6.io/). Get support from the k6 team and community.
+- [El foro de la comunidad](https://community.grafana.com/). Get support from the k6 team and community.
 - [Contacta con la comunidad](https://k6.io/community/#join-the-conversation). Slack, Meetup, Twitter, Stack Overflow, LinkedIn, y más.
 
 ## Servidores de tests
@@ -28,6 +28,6 @@ Estos recursos te ayudarán a escribir y ejecutar k6 tests en un entorno de test
 
 - [Kubernetes Operator](https://k6.io/blog/running-distributed-tests-on-k8s/). Distribuye la ejecución del test de carga a través de un cluster de Kubernetes.
 - [xk6 extensions](/extensions). Extiende k6 con nuevas funcionalidades.
-- [The browser recorder](/test-authoring/recording-a-session/browser-recorder/). Create un test desde una sesión en el navegador.
+- [The browser recorder](/test-authoring/create-tests-from-recordings/using-the-browser-recorder/). Create un test desde una sesión en el navegador.
 - [k6 TypeScript template](https://github.com/grafana/k6-template-typescript).
 - [Integrations](/integrations/).

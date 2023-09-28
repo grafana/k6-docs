@@ -34,7 +34,7 @@ The main types are as follows. Each type has its own article outlining its essen
 
 <Blockquote mod="note" title="">
 
-In k6 scripts, configure load in the [`options`](/using-k6/k6-options/reference/) object with [Scenarios](/using-k6/scenarios) (or the [`stages` shortcut](/using-k6/k6-options/reference/#stages)). This separates workload configuration from iteration logic.
+In k6 scripts, configure the load configuration using [`options`](/get-started/running-k6/#using-options) or [`scenarios`](/using-k6/scenarios). This separates workload configuration from iteration logic.
 
 </Blockquote>
 
@@ -44,12 +44,12 @@ The following table provides some broad comparisons.
 
 | Type       | VUs/Throughput        | Duration                   | When?                                                                                                            |
 |------------|-----------------------|----------------------------|------------------------------------------------------------------------------------------------------------------|
-| Smoke      | Low                   | Quick (seconds or minutes) | Every time new code or a change is done. It checks scripts, baseline system metrics, and deviations from changes |
-| Load       | Average production    | Mid (15-60 minutes)           | Often to check system maintains performance with average use                                                     |
-| Stress     | High (above average)  | Mid (15-60 minutes)           | When system may receive above-average loads to check how it manages                                              |
-| Soak       | Average               | Long (hours)               | After changes to check system under prolonged continuous use                                                     |
-| Spike      | Very high             | Quick (seconds to minutes)       | Rarely, when system risks sudden rush                                                                            |
-| Breakpoint | Increases until break | As long as necessary       | A few times to find the upper limits of the system                                                               |
+| [Smoke](/test-types/smoke-testing)      | Low                   | Short (seconds or minutes) | When the relevant system or application code changes. It checks functional logic, baseline metrics, and deviations |
+| [Load](/test-types/load-testing)       | Average production    | Mid (5-60 minutes)           | Often to check system maintains performance with average use                                                     |
+| [Stress](/test-types/stress-testing)     | High (above average)  | Mid (5-60 minutes)           | When system may receive above-average loads to check how it manages                                              |
+| [Soak](/test-types/soak-testing)       | Average               | Long (hours)               | After changes to check system under prolonged continuous use                                                     |
+| [Spike](/test-types/spike-testing)      | Very high             | Short (a few minutes)       | When the system prepares for seasonal events or receives frequent traffic peaks                                                                            |
+| [Breakpoint](/test-types/breakpoint-testing) | Increases until break | As long as necessary       | A few times to find the upper limits of the system                                                               |
 
 
 ## General recommendations

@@ -26,12 +26,23 @@ Returns the element attribute value for the given attribute name.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const page = browser.newPage();
-  
   await page.goto('https://test.k6.io/browser.php');
   const textbox = page.locator("#text1");
   const attribute = textbox.getAttribute('onfocus');

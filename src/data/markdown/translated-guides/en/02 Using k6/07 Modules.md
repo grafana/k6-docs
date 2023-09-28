@@ -6,8 +6,8 @@ usage throughout the script. In k6, it is possible to import three different kin
 
 ## Importing modules
 
-While writing test scripts, it's common to import different modules, or part of modules, for
-usage throughout the script. In k6, it is possible to import three different kinds of modules:
+It's common to import modules, or parts of modules, to use in your test scripts.
+In k6, you can import three different kinds of modules:
 
 - [Built-in modules](#built-in-modules)
 - [Local filesystem modules](#local-filesystem-modules)
@@ -15,9 +15,10 @@ usage throughout the script. In k6, it is possible to import three different kin
 
 ### Built-in modules
 
-These modules are provided through the k6 core, and gives access to the functionality built
-into k6. This could, for instance, be the `http` client used for making requests against the
-system under test. For a full list of built-in modules, see [the API documentation](/javascript-api).
+k6 provides many built-in modules for core functionalities.
+For example, the `http` client make requests against the
+system under test.
+For the full list of built-in modules, refer to the [API documentation](/javascript-api).
 
 ```javascript
 import http from 'k6/http';
@@ -26,8 +27,8 @@ import http from 'k6/http';
 ### Local filesystem modules
 
 These modules are stored on the local filesystem, and accessed either through relative
-or absolute filesystem paths. For a module residing in the local filesystem to be compatible
-with k6, the module itself may only use relative or absolute filesystem imports to access its
+or absolute filesystem paths. To make local filesystem modules compatible
+with k6, the module itself may use only relative or absolute filesystem imports to access its
 dependencies.
 
 ```javascript
@@ -49,8 +50,8 @@ export default function () {
 ### Remote HTTP(S) modules
 
 These modules are accessed over HTTP(S), from a source like [the k6 JSLib](#the-jslib-repository) or
-from any publicly accessible web server. The imported modules will be downloaded and executed at
-runtime, making it extremely important to **make sure the code is legit and trusted before including
+from any publicly accessible web server. The imported modules are downloaded and executed at
+runtime, making it extremely important to **make sure you trust the code before including
 it in a test script**.
 
 ```javascript
@@ -63,9 +64,9 @@ export default function () {
 
 ### The JSLib repository
 
-**JSLib** is a set of libraries known to play nicely with k6, and available at https://jslib.k6.io/.
+**JSLib** is a set of libraries known to work well with k6. It is available at https://jslib.k6.io/.
 
-These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports as shown above.
+These libraries can either be downloaded and included with the test project or loaded directly using HTTP imports.
 
 ## Bundling node modules
 
@@ -165,7 +166,7 @@ Then, install the packages needed:
 $ npm install --save-dev \
     webpack \
     webpack-cli \
-    k6 \
+    @types/k6 \
     babel-loader \
     @babel/core \
     @babel/preset-env \

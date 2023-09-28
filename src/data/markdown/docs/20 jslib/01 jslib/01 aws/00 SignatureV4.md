@@ -5,6 +5,8 @@ description: 'SignatureV4 is used to sign or pre-sign requests to AWS services u
 excerpt: 'SignatureV4 is used to sign and pre-sign requests to AWS services using the Signature V4 algorithm'
 ---
 
+<BlockingAwsBlockquote />
+
 With SignatureV4, you can produce authenticated HTTP requests to AWS services. Namely, it lets you sign and pre-sign requests to AWS services using the [Signature V4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) algorithm. The `sign` operation produces a signed request with authorization information stored in its headers.
 The `presign` operation produces a pre-signed request with authorization information stored in its query string parameters.
 
@@ -42,9 +44,9 @@ SignatureV4 methods throw errors on failure.
 <CodeGroup labels={[]}>
 
 ```javascript
-import http from 'k6/http.js'
+import http from 'k6/http'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.2/aws.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.9.0/aws.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,

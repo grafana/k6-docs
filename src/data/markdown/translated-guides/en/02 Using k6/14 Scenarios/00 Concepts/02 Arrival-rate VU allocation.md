@@ -6,6 +6,7 @@ excerpt: How k6 allocates VUs in the open-model, arrival-rate executors
 In arrival-rate executors, as long as k6 has VUs available, it starts iterations according to your target rate.
 The ability to set iteration rate comes with a bit more configuration complexity: you must pre-allocate a sufficient number of VUs.
 In other words, before the tests runs, you must both:
+
 - Configure load (as new iterations per unit of time)
 - Ensure that you've allocated enough VUs.
 
@@ -25,12 +26,13 @@ As [open-model](/using-k6/scenarios/concepts/open-vs-closed/#open-model) scenari
 For example, you can configure arrival-rate executors to start 10 iterations each second, or minute, or hour.
 This behavior is opposed to the closed-model scenarios, in which VUs wait for one iteration to finish before starting another
 
-Each iteration need needs a VU to run it.
+Each iteration needs a VU to run it.
 Because k6 VUs are single threaded, like other JavaScript runtimes, a VU can only run a single iteration (and its event loop) at a time.
 To ensure you have enough, you must pre-allocate a sufficient number.
 
 In your arrival-rate configuration, three properties determine the iteration rate:
--  k6 starts `rate` number of iterations evenly across the `timeUnit` (default 1s)
+
+- k6 starts `rate` number of iterations evenly across the `timeUnit` (default 1s).
 - `preAllocatedVUs` sets the number of VUs to initialize to meet the target iteration rate.
 
 For example, with a `constant-arrival-rate` executor and `rate: 10`, k6 tries to start a new iteration every 100 milliseconds. If the scenario has `rate: 10, timeUnit: '1m'`, k6 tries to start a new iteration every 6 seconds.
@@ -94,9 +96,9 @@ In cloud tests, the number of `maxVUs` counts against your subscription,
 
 </Blockquote>
 
-
 The arrival-rate executors also have a `maxVUs` property.
 If you set it, k6 runs in this sequence:
+
 1. Pre-allocate the `preAllocatedVUs`.
 1. Run the test, trying to reach the target iteration rate.
 1. If the target exceeds the available VUs, allocate another VU.
@@ -109,6 +111,7 @@ This is because k6 must allocate sufficient resources for `maxVUs` to be initial
 In almost all cases, the best thing to do is to pre-allocate the number of VUs you need beforehand.
 
 Some of the times it might make sense to use `maxVUs` include:
+
 - To determine necessary allocation in first-time tests
 - To add a little "cushion" to the pre-allocated VUs that you expect the test needs
 - In huge, highly distributed tests, in which you need to carefully scale load generators as you increment VUs.
@@ -117,4 +120,3 @@ Some of the times it might make sense to use `maxVUs` include:
 
 As with all executors, you can't predict the specific VU that an arrival-rate executor uses for a specific iteration.
 As the test runs on, the executor might use some or all of the allocated VUs, even if it never needs the entire allocated number to reach the iteration rate.
-

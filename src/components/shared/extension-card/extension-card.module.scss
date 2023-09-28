@@ -1,20 +1,14 @@
 .wrapper {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  padding: 20px;
+  padding: 16px 19px;
   text-decoration: none;
   color: $color-primary;
   width: 100%;
+  flex-grow: 1;
   background: $color-tertiary;
+  cursor: pointer;
 
   &.withCheckbox {
-    cursor: pointer;
-
-    & .name {
-      padding-right: 25px;
-    }
-
     &.checked .name {
       color: $color-accent-primary;
     }
@@ -25,17 +19,21 @@
       color: $color-accent-primary;
     }
   }
+
+  @include xs-down {
+    padding: 12px;
+  }
 }
 
 .checkbox {
   position: absolute;
-  top: 20px;
-  right: 20px;
-}
+  top: 18px;
+  right: 16px;
 
-.checked {
-  outline: 1px solid #7d64ff;
-  box-shadow: 0px 1px 5px rgba(60, 60, 100, 0.05);
+  @include xs-down {
+    top: 12px;
+    right: 12px;
+  }
 }
 
 .imageWrapper {
@@ -81,16 +79,13 @@
 
 .tiers-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
   align-items: center;
   list-style-type: none;
   padding: 0;
-  margin-top: 0;
-  margin-bottom: 0px;
+  margin: 0;
 
   li + li {
-    margin-left: 8px;
+    margin-left: 6px;
 
     &::before {
       content: '';
@@ -113,23 +108,6 @@
   font-weight: 400;
   position: relative;
   margin-right: 8px;
-}
-
-.logo-wrapper {
-  margin-left: auto !important;
-  max-height: 28px;
-  //position: absolute;
-  //top: 20px;
-  //right: 20px;
-
-  &:before {
-    content: none;
-  }
-}
-
-.logo {
-  position: relative;
-  max-height: inherit;
 }
 
 .tier {
@@ -172,15 +150,23 @@
 }
 
 .name-wrapper {
-  margin-top: 10px;
+  padding-right: 30px;
   text-align: left;
 }
 
 .name {
+  position: relative;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
   font-weight: 700;
+  text-decoration: none;
   transition: color 0.3s;
+  color: $color-primary;
+  cursor: pointer;
+
+  &:hover {
+    color: #7d64ff;
+  }
 }
 
 .type {
@@ -202,7 +188,7 @@
 }
 
 .description {
-  margin-bottom: 15px;
+  margin-bottom: 21px;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
   margin-top: 10px;
@@ -212,23 +198,32 @@
 .external {
   margin-top: auto;
   display: flex;
-  gap: 16px;
+  align-items: center;
+  column-gap: 10px;
+  width: 100%;
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
-  color: #9691af;
+  color: #8b85ad;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+
+  @media (min-width: 1200px) and (max-width: 1320px) {
+    column-gap: 5px;
+  }
 }
 
 .stars,
 .cloud {
   display: flex;
   align-items: center;
+  white-space: nowrap;
 
   &:before {
     content: '';
     display: inline-block;
     vertical-align: middle;
-    margin-right: 8px;
+    margin-right: 4px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -239,7 +234,6 @@
   &:before {
     width: 14px;
     height: 14px;
-    margin: 0 4px;
     background-image: url(./svg/star.inline.svg);
   }
 }

@@ -12,15 +12,21 @@ Having test results in a dashboard brings various benefits:
 
 ## Options
 
-With [Grafana](https://grafana.com/grafana/), you can create a custom dashboard to query and **visualize data from multiple sources and any type of backend**. With k6, you can stream your test results to any backend using a [custom output extension](/extensions/get-started/create/output-extensions/) or an existing [real-time output](/results-output/real-time/#service).
+With [Grafana](https://grafana.com/grafana/), you can create a custom dashboard to query and **visualize data from multiple sources and any type of backend**. 
+Using k6, you can [stream your local test results to any backend](/results-output/real-time).
 
-The flexibility and interoperability of Grafana and k6 let you join test and observability data in one dashboard, independently of where the data is stored.
+The flexibility and interoperability of Grafana and k6 let you visualize test and observability data in one dashboard, regardless of where the data is stored. 
+The following outputs include pre-built Grafana dashboards for their storage:
 
-For inspiration about how to build a custom dashboard that visualizes k6 results, browse the list of [community-built k6 dashboards](https://grafana.com/grafana/dashboards/?search=k6). The following outputs include pre-built Grafana dashboards for their storage:
+| Output | Grafana Dashboard |
+|---|---|
+| [AWSTimestream](https://github.com/leonyork/xk6-output-timestream)  | [leonyork/xk6-output-timestream](https://github.com/leonyork/xk6-output-timestream/tree/main/grafana/dashboards/)  |
+| [InfluxDB](/results-output/real-time/influxdb)  | [grafana/xk6-output-influxdb](https://github.com/grafana/xk6-output-influxdb/tree/main/grafana/dashboards)   |
+| [Prometheus remote write](/results-output/real-time/prometheus-remote-write)  | [k6 Prometheus](https://grafana.com/grafana/dashboards/19665-k6-prometheus/)   |
+| [Prometheus remote write (Native Histograms)](/results-output/real-time/prometheus-remote-write)  | [k6 Prometheus (Native Histograms)](https://grafana.com/grafana/dashboards/18030-k6-prometheus-native-histograms/)   |
+| [Grafana Cloud Prometheus](/results-output/real-time/grafana-cloud-prometheus/)  | [k6 Prometheus](https://grafana.com/grafana/dashboards/19665-k6-prometheus/)  |
+| [TimescaleDB](/results-output/real-time/timescaledb/)  | [grafana/xk6-output-timescaledb](https://github.com/grafana/xk6-output-timescaledb/tree/main/grafana/dashboards)  |
+| ---- | [More public dashboards from the community](https://grafana.com/grafana/dashboards/?search=k6)  |
 
-- [AWSTimestream](https://github.com/leonyork/xk6-output-timestream)
-- [InfluxDB](/results-output/real-time/influxdb)
-- [Prometheus remote write](/results-output/real-time/prometheus-remote-write)
-- [TimescaleDB](/results-output/real-time/timescaledb/)
 
-For a managed solution, [Grafana Cloud k6](https://grafana.com/products/cloud/k6/) is our commercial offer bringing test storage, pre-built dashboards, enhanced collaboration features, and many more additional capabilities.
+For a fully managed solution, [Grafana Cloud k6](https://grafana.com/products/cloud/k6/) is our commercial product to store, view, scale, and manage your tests with ease. It provides custom views to access your testing and analyze test results, enhanced collaboration features, and many more additional capabilities.

@@ -15,10 +15,22 @@ Toggles the `BrowserContext`'s connectivity on/off.
 <CodeGroup labels={[]}>
 
 ```javascript
-import { chromium } from 'k6/experimental/browser';
+import { browser } from 'k6/experimental/browser';
+
+export const options = {
+  scenarios: {
+    browser: {
+      executor: 'shared-iterations',
+      options: {
+        browser: {
+            type: 'chromium',
+        },
+      },
+    },
+  },
+}
 
 export default async function () {
-  const browser = chromium.launch();
   const context = browser.newContext();
 
   context.setOffline(true);
@@ -30,7 +42,6 @@ export default async function () {
     await page.goto('https://test.k6.io/browser.php');
   } finally {
     page.close();
-    browser.close();
   }
 }
 ```

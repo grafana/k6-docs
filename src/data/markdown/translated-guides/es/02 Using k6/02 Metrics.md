@@ -106,7 +106,7 @@ Si desea acceder a la información de tiempo de una solicitud HTTP individual en
 import http from 'k6/http';
 
 export default function () {
-  const res = http.get('http://httpbin.test.k6.io');
+  const res = http.get('https://httpbin.test.k6.io');
   console.log('Response time was ' + String(res.timings.duration) + ' ms');
 }
 ```
@@ -321,11 +321,3 @@ agregados a la métrica eran distintos de cero.
 
 - las métricas personalizadas solo se recopilan de los subprocesos de VU al final de una iteración de VU, lo que significa que
   en el caso de los scripts de ejecución prolongada, es posible que no vea ninguna métrica personalizada hasta un tiempo después de la prueba.
-
-## Gráficos métricos en k6 Cloud Results
-
-Si usa [k6 resultados en cloud](/cloud/analyzing-results/overview), tiene acceso a todas las pruebas
-métricas dentro de la [Analysis Tab](/cloud/analyzing-results/analysis-tab). Puede utilizar esta tab para analizar y analizar más a fondo
-compare los datos de los resultados de las pruebas para buscar correlaciones significativas en sus datos.
-
-![k6 Cloud Analysis Tab](images/Metrics/cloud-insights-analysis-tab.png)

@@ -7,19 +7,48 @@ To access your application from the test scripts, you must assign it an external
 How you do this depends on the platform you use to deploy the application.
 The following sections explain the different approaches.
 
-You can retrieve the external IP address and store in an environment variable (`SVC_IP` in this example) using the following command:
 
-<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+## Using port-forwarding
 
-```bash
-SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+`kubectl`'s `port-forward` command allows accessing applications running in a Kubernetes cluster using a local port.
+
+For example, the following command will make `my-service`'s port `80` accessible as `localhost:8080`:
+
+```sh
+kubectl port-forward svc/my-service 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
 ```
 
-```Powershell
-$Env:SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
+### Limitations using port forwarding
 
-</CodeGroup>
+To be able to inject faults, `xk6-disruptor` must [install an agent on each target](/javascript-api/xk6-disruptor/explanations/how-xk6-disruptor-works) that intercepts the requests and applies the desired disruptions. This process requires any existing connection to the targets to be redirected to the agent.
+
+Due to an existing bug in `kubectl`, the process of installing the disruptor can potentially [break the port forwarding](https://github.com/grafana/xk6-disruptor/issues/254). Notice that this issue happens only if the faults are injected in the service that is exposed using port forward. If the faults are injected in another service not exposed by port-forwarding, there shouldn't be any issue.
+
+Until this issue is solved in `kubectl`, tests using port forwarding to access a service should ensure the agent is installed in the targets before any traffic is sent by the test.
+
+The simplest way to accomplish this is to ensure the scenario that executes the load (#2) starts after the scenario that injects the faults (#1):
+
+```javascript
+    scenarios: {
+        disrupt: {   // #1 inject faults
+            executor: 'shared-iterations',
+            iterations: 1,
+            vus: 1,
+            exec: "disrupt",
+            startTime: "0s",
+        },
+        load: {   // #2 execute load
+            executor: 'constant-arrival-rate',
+            rate: 100,
+            preAllocatedVUs: 10,
+            maxVUs: 100,
+            exec: "default",
+            startTime: '20s',  // give time for the agents to be installed
+            duration: "30s",
+        }
+     }
+ ```
 
 ## As a LoadBalancer service
 
@@ -42,6 +71,20 @@ kubectl -n <name space> patch svc <service name> -p '{\"spec\": {\"type\": \"Loa
 
 </CodeGroup>
 
+
+You can retrieve the external IP address and store it in an environment variable (`SVC_IP` in this example) using the following command:
+
+<CodeGroup labels={["Linux/MacOS", "Windows PowerShell"]}>
+
+```bash
+SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
+
+```Powershell
+$Env:SVC_IP=$(kubectl -n <name space>  get svc <service name> --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
+
+</CodeGroup>
 
 ### Configuring a LoadBalancer in Kind
 

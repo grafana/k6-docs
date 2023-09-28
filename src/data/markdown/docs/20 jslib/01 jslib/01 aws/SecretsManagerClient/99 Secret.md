@@ -25,7 +25,7 @@ Secret is returned by the SecretsManagerClient.* methods that query secrets. Nam
 ```javascript
 import exec from 'k6/execution';
 
-import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.7.2/secrets-manager.js';
+import { AWSConfig, SecretsManagerClient } from 'https://jslib.k6.io/aws/0.9.0/secrets-manager.js';
 
 const awsConfig = new AWSConfig({
   region: __ENV.AWS_REGION,
@@ -36,18 +36,18 @@ const awsConfig = new AWSConfig({
 const secretsManager = new SecretsManagerClient(awsConfig);
 const testSecretName = 'jslib-test-secret';
 
-export default function () {
+export default async function () {
   // List the secrets the AWS authentication configuration
   // gives us access to.
-  const secrets = secretsManager.listSecrets();
+  const secrets = await secretsManager.listSecrets();
 
   // If our test secret does not exist, abort the execution.
-  if (!secrets.filter((s) => s.name === testSecretName).length == 0) {
+  if (secrets.filter((s) => s.name === testSecretName).length == 0) {
     exec.test.abort('test secret not found');
   }
 
   // Let's get it and print its content
-  const downloadedSecret = secretsManager.getSecret(testSecretName);
+  const downloadedSecret = await secretsManager.getSecret(testSecretName);
   console.log(downloadedSecret.secret);
 }
 ```

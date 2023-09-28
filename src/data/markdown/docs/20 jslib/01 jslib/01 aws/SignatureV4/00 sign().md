@@ -17,10 +17,11 @@ The first parameter of the `sign` method consists of an Object with the followin
 | hostname      | string                   | The hostname the request is sent to                                                                                                                                                                                                                                     |
 | path          | string                   | The path of the request                                                                                                                                                                                                                                                 |
 | headers       | Object                   | The headers of the HTTP request                                                                                                                                                                                                                                         |
-| body?         | string or ArrayBuffer    | The optional body of the HTTP request                                                                                                                                                                                                                                   |
 | uriEscapePath | boolean                  | Whether to uri-escape the request URI path as part of computing the canonical request string. This is required for every AWS service, except Amazon S3, as of late 2017.                                                                                                |
 | applyChecksum | boolean                  | Whether to calculate a checksum of the request body and include it as either a request header (when signing) or as a query string parameter (when pre-signing). This is required for AWS Glacier and Amazon S3 and optional for every other AWS service as of late 2017. |
-|               |                          |                                                                                                                                                                                                                                                                         |
+| body (optional)         | string or ArrayBuffer    | The optional body of the HTTP request                                                                                                                                                                                                                                   |
+| query (optional) | `Object.<string, string \| Array.<string>>` | The optional query parameters of the HTTP request |
+
 
 You can override SignatureV4 options in the context of this specific request. To do this, pass a second parameter to the `sign` method, which is an Object with the following parameters.
 
@@ -44,9 +45,9 @@ You can override SignatureV4 options in the context of this specific request. To
 <CodeGroup labels={[]}>
 
 ```javascript
-import http from 'k6/http.js'
+import http from 'k6/http'
 
-import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.7.2/kms.js'
+import { AWSConfig, SignatureV4 } from 'https://jslib.k6.io/aws/0.9.0/signature.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,

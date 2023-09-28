@@ -16,7 +16,7 @@ excerpt: "SQSClient.listQueues retrieves a list of available Amazon SQS queues"
 
 | Type                                                        | Description                                                               |
 | :---------------------------------------------------------- | :------------------------------------------------------------------------ |
-| `object` | An object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
+| `Promise<object>` | A Promise that fulfills with an object with an `urls` property containing an array of queue URLs, and an optional `nextToken` containing a pagination token to include in the next request when relevant. |
 
 ### Example
 
@@ -25,7 +25,7 @@ excerpt: "SQSClient.listQueues retrieves a list of available Amazon SQS queues"
 ```javascript
 import exec from 'k6/execution'
 
-import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.7.2/sqs.js'
+import { AWSConfig, SQSClient } from 'https://jslib.k6.io/aws/0.9.0/sqs.js'
 
 const awsConfig = new AWSConfig({
     region: __ENV.AWS_REGION,
@@ -37,9 +37,9 @@ const awsConfig = new AWSConfig({
 const sqs = new SQSClient(awsConfig)
 const testQueue = 'https://sqs.us-east-1.amazonaws.com/000000000/test-queue'
 
-export default function () {
+export default async function () {
     // List all queues in the AWS account
-    const queuesResponse = sqs.listQueues()
+    const queuesResponse = await sqs.listQueues()
 
     // If our test queue does not exist, abort the execution.
     if (queuesResponse.queueUrls.filter((q) => q === testQueue).length == 0) {
@@ -47,7 +47,7 @@ export default function () {
     }
 
     // Send message to test queue
-    sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
+    await sqs.sendMessage(testQueue, JSON.stringify({value: '123'}));
 }
 ```
 

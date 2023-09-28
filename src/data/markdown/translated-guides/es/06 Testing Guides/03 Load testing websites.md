@@ -166,7 +166,7 @@ export function Homepage() {
 }
 ```
 
-[Registrar el tráfico del navegador](https://k6.io/docs/test-authoring/recording-a-session/browser-recorder/) le ayuda a crear prototipos para probar sitios web a nivel de protocolos.
+[Registrar el tráfico del navegador](https://k6.io/docs/test-authoring/create-tests-from-recordings/using-the-browser-recorder/) le ayuda a crear prototipos para probar sitios web a nivel de protocolos.
 
 ### Pruebas de carga basadas en el navegador
 
@@ -250,7 +250,7 @@ Cuando escriba un script de prueba para un sitio web, considere estas recomendac
 
 ### Considere los factores que afectan al realismo del script
 
-**Grabe su recorrido de usuario.**  Usar la grabadora del navegador puede servir de ayuda para empezar a crear el script de prueba al capturar todos los recursos insertados en las páginas web. Consulte [Session Recording guide](https://k6.io/docs/test-authoring/recording-a-session) para obtener más información sobre cómo generar automáticamente su prueba de carga a partir de una sesión de usuario.
+**Grabe su recorrido de usuario.**  Usar la grabadora del navegador puede servir de ayuda para empezar a crear el script de prueba al capturar todos los recursos insertados en las páginas web. Consulte [Session Recording guide](https://k6.io/docs/test-authoring/create-tests-from-recordings) para obtener más información sobre cómo generar automáticamente su prueba de carga a partir de una sesión de usuario.
 
 **Correlacione los datos.** Las grabaciones a menudo no tienen en cuenta los valores dinámicos que se generan de nuevo cada vez que se realiza una solicitud. Revise las solicitudes grabadas y determine si necesita [extraer valores de respuestas anteriores](https://k6.io/docs/examples/correlation-and-dynamic-data/) y usar parámetros en solicitudes posteriores. Esta práctica garantiza que sus usuarios virtuales se comporten de una forma más parecida a como lo harían los usuarios reales.
 
@@ -339,6 +339,6 @@ Las pruebas de carga de los sitios web pueden ser complejas debido a la cantidad
 
 - [Browser testing with xk6-browser](https://k6.io/docs/javascript-api/xk6-browser/)
 - [Test types](https://k6.io/docs/test-types/introduction)
-- [Session recording guide](https://k6.io/docs/test-authoring/recording-a-session)
+- [Session recording guide](https://k6.io/docs/test-authoring/create-tests-from-recordings/)
 - [Determining concurrent users in your load tests](https://k6.io/blog/monthly-visits-concurrent-users)
 - [Data correlation in your test script](https://k6.io/docs/examples/correlation-and-dynamic-data)
