@@ -85,7 +85,7 @@ Additionally, you can also use the [Explore UI](https://grafana.com/docs/grafana
 All the k6 time series have a **k6_** prefix. 
 For more details, refer to the documentation on the [mapping of k6 metrics with Prometheus metrics](/results-output/real-time/prometheus-remote-write/#metrics-mapping). 
 
-Please be informed about the default [Trend metric conversion](/results-output/real-time/prometheus-remote-write/#trend-metric-conversions) process and understand the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/results-output/real-time/prometheus-remote-write/#options) allows you to convert trend metrics to multiple Prometheus time series. For instance, `K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),max,min` transforms each k6 trend metric into four Prometheus metrics as follows:
+It's also important to understand the default [Trend metric conversion](/results-output/real-time/prometheus-remote-write/#trend-metric-conversions) process and the format and querying limitations. The [`K6_PROMETHEUS_RW_TREND_STATS` option](/results-output/real-time/prometheus-remote-write/#options) allows you to convert trend metrics to multiple Prometheus time series. For instance, `K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),max,min` transforms each k6 trend metric into four Prometheus metrics as follows:
 
 - `k6_*_p95`
 - `k6_*_p99`
