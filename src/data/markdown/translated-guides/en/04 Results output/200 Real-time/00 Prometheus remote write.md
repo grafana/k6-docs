@@ -5,13 +5,10 @@ excerpt: 'Use the Prometheus remote write output to send test results to any Pro
 
 <ExperimentalBlockquote />
 
-Prometheus remote write is a protocol that makes it possible to reliably propagate data in real-time from a sender to a receiver.
-It has multiple implementations.
-For example, you can store the metrics in [Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver).
-For other implementations, check the [Prometheus Integrations](https://prometheus.io/docs/operating/integrations) guide.
+[Prometheus remote write](https://prometheus.io/docs/concepts/remote_write_spec/) is a protocol that makes it possible to reliably propagate data in real-time from a sender to a receiver.
+It has multiple compatible [implementations](https://prometheus.io/docs/concepts/remote_write_spec/#compatible-senders-and-receivers) and [storage integrations](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations).
 
-With the Prometheus remote write output, k6 can send test-result metrics to a Prometheus remote write endpoint.
-
+For instance, when using the `experimental-prometheus-rw` output, k6 can send test-result metrics to the remote-write endpoint and store them in Prometheus.
 
 The output, during the `k6 run` execution, gets all the generated time-series data points for the [k6 metrics](/using-k6/metrics/).
 It then generates the equivalent Prometheus time series and sends them to the Prometheus remote write endpoint.
