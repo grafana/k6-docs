@@ -178,7 +178,7 @@ For details about staleness, refer to the [Prometheus docs](https://prometheus.i
 
 ## Time series visualization 
 
-To visualize time series with Grafana, you can utilize the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) or import any of the existing pre-built dashboards:
+To visualize time series with Grafana, you can use the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) or import any of the existing pre-built dashboards:
 - [k6 Prometheus dashboard by Grafana k6](https://grafana.com/grafana/dashboards/19665-k6-prometheus/)
 - [k6 Prometheus (Native Histograms) dashboard by Grafana k6](https://grafana.com/grafana/dashboards/18030-k6-prometheus-native-histograms/)
 - [Other public dashboards available from the community](https://grafana.com/grafana/dashboards/?search=k6&dataSource=prometheus)
