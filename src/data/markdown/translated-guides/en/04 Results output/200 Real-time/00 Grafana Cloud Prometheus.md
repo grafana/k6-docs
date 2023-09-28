@@ -78,7 +78,7 @@ k6 run -o experimental-prometheus-rw --tag testid=<SET-HERE-A-UNIQUE-ID> script.
 
 </CodeGroup>
 
-Additionally, you can also utilize the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) to query k6 time series, design your visualization panels, and add them to any of your existing dashboards.
+Additionally, you can also use the [Explore UI](https://grafana.com/docs/grafana/latest/explore/) to query k6 time series, design your visualization panels, and add them to any of your existing dashboards.
 
 ![Explore k6 metrics in Grafana Cloud](./images/GrafanaCloud/grafana_cloud_explore_k6_metrics_from_extension.png)
 
