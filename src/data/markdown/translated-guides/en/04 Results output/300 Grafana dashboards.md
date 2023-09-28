@@ -13,7 +13,7 @@ Having test results in a dashboard brings various benefits:
 ## Options
 
 With [Grafana](https://grafana.com/grafana/), you can create a custom dashboard to query and **visualize data from multiple sources and any type of backend**. 
-Using k6, you can [stream your test results to any backend](/results-output/real-time).
+Using k6, you can [stream your local test results to any backend](/results-output/real-time).
 
 The flexibility and interoperability of Grafana and k6 let you visualize test and observability data in one dashboard, regardless of where the data is stored. 
 The following outputs include pre-built Grafana dashboards for their storage:
